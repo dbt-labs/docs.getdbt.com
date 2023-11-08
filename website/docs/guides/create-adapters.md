@@ -1,8 +1,8 @@
 ---
 title: "Build, test, document, and promote adapters" 
 id: "adapter-creation"
-description: 
-hoverSnippet: Learn how to 
+description: Create an adapter that connects dbt to you platform, and learn how to maintain and version that adapter.
+hoverSnippet: Learn how to build, test, document, and promote adapters as well as maintaining and versioning an adapter.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
@@ -13,7 +13,7 @@ recently_updated: true
 
 ## Introduction
 
-Adapters are an essential component of dbt. At their most basic level, they are how dbt Core connects with the various supported data platforms. At a higher-level, dbt Core adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt Core.
+Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, dbt Core adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt Core.
  
  Navigating and developing around the nuances of different databases can be daunting, but you are not alone. Visit [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel for additional help beyond the documentation.
 

@@ -8,7 +8,7 @@ hoverSnippet: Learn how to debug schema names in dbt.
 platform: 'dbt-core'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Core']
+tags: ['dbt Core','Troubleshooting']
 level: 'Advanced'
 recently_updated: true
 ---

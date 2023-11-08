@@ -1,19 +1,19 @@
 ---
-title: "dbt Semantic Layer integration best practices" 
+title: "Integrate with dbt Semantic Layer using best practices" 
 id: "sl-partner-integration-guide"
 description: Learn about partner integration guidelines, roadmap, and connectivity. 
-hoverSnippet: Learn how to 
+hoverSnippet: Learn how to integrate with the Semantic Layer using best practices
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Semantic layer']
+tags: ['Semantic layer','Best practices']
 level: 'Advanced'
 recently_updated: true
 ---
 
 ## Introduction
 
-To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly. 
+To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
 
 :::note
 This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
