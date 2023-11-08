@@ -34,8 +34,8 @@ The `tag:` method is used to select models that match a specified [tag](/referen
 
 
   ```bash
-  $ dbt run --select tag:nightly    # run all models with the `nightly` tag
-  ```
+dbt run --select "tag:nightly"    # run all models with the `nightly` tag
+```
 
 
 ### The "source" method
@@ -43,22 +43,22 @@ The `source` method is used to select models that select from a specified [sourc
 
 
   ```bash
-  $ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
-  ```
+dbt run --select "source:snowplow+"    # run all models that select from Snowplow sources
+```
 
 ### The "resource_type" method
 Use the `resource_type` method to select nodes of a particular type (`model`, `test`, `exposure`, and so on). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
 
   ```bash
-  $ dbt build --select resource_type:exposure    # build all resources upstream of exposures
-  $ dbt list --select resource_type:test    # list all tests in your project
-  ```
+dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
+dbt list --select "resource_type:test"    # list all tests in your project
+```
 
 Note: This method doesn't work for sources, so use the [`--resource-type`](/reference/commands/list) option of the list command instead:
 
   ```bash
-  $ dbt list --resource-type source
-  ```
+dbt list --resource-type source
+```
 
 ### The "path" method
 The `path` method is used to select models/sources defined at or under a specific path.
@@ -69,12 +69,12 @@ selectors unambiguous.
 
   ```bash
   # These two selectors are equivalent
-  dbt run --select path:models/staging/github
-  dbt run --select models/staging/github
+  dbt run --select "path:models/staging/github"
+  dbt run --select "models/staging/github"
 
   # These two selectors are equivalent
-  dbt run --select path:models/staging/github/stg_issues.sql
-  dbt run --select models/staging/github/stg_issues.sql
+  dbt run --select "path:models/staging/github/stg_issues.sql"
+  dbt run --select "models/staging/github/stg_issues.sql"
   ```
 
 
@@ -85,9 +85,9 @@ The `file` method can be used to select a model by its filename, including the f
 
 ```bash
 # These are equivalent
-dbt run --select file:some_model.sql
-dbt run --select some_model.sql
-dbt run --select some_model
+dbt run --select "file:some_model.sql"
+dbt run --select "some_model.sql"
+dbt run --select "some_model"
 ```
 
 </VersionBlock>
@@ -96,10 +96,10 @@ dbt run --select some_model
 
 The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN.
 
-```
-dbt run --select fqn:some_model
-dbt run --select fqn:your_project.some_model
-dbt run --select fqn:some_package.some_other_model
+```bash
+dbt run --select "fqn:some_model"
+dbt run --select "fqn:your_project.some_model"
+dbt run --select "fqn:some_package.some_other_model"
 ```
 
 ### The "package" method
@@ -111,10 +111,10 @@ selectors unambiguous.
 
   ```bash
   # These three selectors are equivalent
-  dbt run --select package:snowplow
-  dbt run --select snowplow
-  dbt run --select snowplow.*
-  ```
+  dbt run --select "package:snowplow"
+  dbt run --select "snowplow"
+  dbt run --select "snowplow.*"
+```
 
 
 ### The "config" method
@@ -124,10 +124,10 @@ The `config` method is used to select models that match a specified [node config
 
 
   ```bash
-  $ dbt run --select config.materialized:incremental    # run all models that are materialized incrementally
-  $ dbt run --select config.schema:audit                # run all models that are created in the `audit` schema
-  $ dbt run --select config.cluster_by:geo_country      # run all models clustered by `geo_country`
-  ```
+dbt run --select "config.materialized:incremental"    # run all models that are materialized incrementally
+dbt run --select "config.schema:audit"              # run all models that are created in the `audit` schema
+dbt run --select "config.cluster_by:geo_country"      # run all models clustered by `geo_country`
+```
 
 
 <VersionBlock firstVersion="1.3">
@@ -135,7 +135,8 @@ The `config` method is used to select models that match a specified [node config
 While most config values are strings, you can also use the `config` method to match boolean configs, dictionary keys, and values in lists.
 
 For example, given a model with the following configurations:
-```
+
+```bash
 {{ config(
   materialized = 'incremental',
   unique_key = ['column_a', 'column_b'],
@@ -148,10 +149,10 @@ select ...
 
  You can select using any of the following:
 ```bash
-$ dbt ls -s config.materialized:incremental
-$ dbt ls -s config.unique_key:column_a
-$ dbt ls -s config.grants.select:reporter
-$ dbt ls -s config.transient:true
+dbt ls -s config.materialized:incremental
+dbt ls -s config.unique_key:column_a
+dbt ls -s config.grants.select:reporter
+dbt ls -s config.transient:true
 ```
 
 </VersionBlock>
@@ -162,10 +163,10 @@ The `test_type` method is used to select tests based on their type, `singular` o
 
 
 
-  ```bash
-  $ dbt test --select test_type:generic        # run all generic tests
-  $ dbt test --select test_type:singular       # run all singular tests
-  ```
+```bash
+dbt test --select "test_type:generic"        # run all generic tests
+dbt test --select "test_type:singular"       # run all singular tests
+```
 
 
 ### The "test_name" method
@@ -176,10 +177,10 @@ that defines it. For more information about how generic tests are defined, read 
 
 
   ```bash
-  $ dbt test --select test_name:unique            # run all instances of the `unique` test
-  $ dbt test --select test_name:equality          # run all instances of the `dbt_utils.equality` test
-  $ dbt test --select test_name:range_min_max     # run all instances of a custom schema test defined in the local project, `range_min_max`
-  ```
+dbt test --select "test_name:unique"            # run all instances of the `unique` test
+dbt test --select "test_name:equality"          # run all instances of the `dbt_utils.equality` test
+dbt test --select "test_name:range_min_max"     # run all instances of a custom schema test defined in the local project, `range_min_max`
+```
 
 
 ### The "state" method
@@ -204,9 +205,9 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 
   ```bash
-  $ dbt test --select state:new            # run all tests on new models + and new tests on old models
-  $ dbt run --select state:modified        # run all models that have been modified
-  $ dbt ls --select state:modified         # list all modified nodes (not just models)
+dbt test --select "state:new "           # run all tests on new models + and new tests on old models
+dbt run --select "state:modified"        # run all models that have been modified
+dbt ls --select "state:modified"         # list all modified nodes (not just models)
   ```
 
 
@@ -236,18 +237,18 @@ The `exposure` method is used to select parent resources of a specified [exposur
 
 
   ```bash
-  $ dbt run --select +exposure:weekly_kpis                # run all models that feed into the weekly_kpis exposure
-  $ dbt test --select +exposure:*                         # test all resources upstream of all exposures
-  $ dbt ls --select +exposure:* --resource-type source    # list all sources upstream of all exposures
-  ```
+dbt run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
+dbt test --select "+exposure:*"                         # test all resources upstream of all exposures
+dbt ls --select "+exposure:*" --resource-type source    # list all sources upstream of all exposures
+```
 
 ### The "metric" method
 
 The `metric` method is used to select parent resources of a specified [metric](/docs/build/metrics). Use in conjunction with the `+` operator.
 
 ```bash
-$ dbt build --select +metric:weekly_active_users       # build all resources upstream of weekly_active_users metric
-$ dbt ls    --select +metric:* --resource-type source  # list all source tables upstream of all metrics
+dbt build --select "+metric:weekly_active_users"       # build all resources upstream of weekly_active_users metric
+dbt ls    --select "+metric:*" --resource-type source  # list all source tables upstream of all metrics
 ```
 
 ### The "result" method
@@ -255,10 +256,10 @@ $ dbt ls    --select +metric:* --resource-type source  # list all source tables 
 The `result` method is related to the `state` method described above and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator. 
 
 ```bash
-$ dbt run --select result:error --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
-$ dbt test --select result:fail --state path/to/artifacts # run all tests that failed on the prior invocation of dbt test
-$ dbt build --select 1+result:fail --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
-$ dbt seed --select result:error --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
+dbt run --select "result:error" --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
+dbt test --select "result:fail" --state path/to/artifacts # run all tests that failed on the prior invocation of dbt test
+dbt build --select "1+result:fail" --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
+dbt seed --select "result:error" --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
 
 ### The "source_status" method
@@ -276,8 +277,8 @@ After issuing one of the above commands, you can reference the source freshness 
 
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
-$ dbt source freshness # must be run again to compare current to previous state
-$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+dbt source freshness # must be run again to compare current to previous state
+dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
 
 </VersionBlock>
@@ -286,8 +287,8 @@ $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
-$ dbt source freshness # must be run again to compare current to previous state
-$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+dbt source freshness # must be run again to compare current to previous state
+dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
 
 </VersionBlock>
@@ -305,9 +306,9 @@ Supported in v1.5 or newer.
 The `group` method is used to select models defined within a [group](/reference/resource-configs/group).
 
 
-  ```bash
-  dbt run --select group:finance # run all models that belong to the finance group.
-  ```
+```bash
+dbt run --select "group:finance" # run all models that belong to the finance group.
+```
 
 </VersionBlock>
 
@@ -321,12 +322,12 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-The `access` method selects models based on their [access](/reference/resource-properties/access) property.
+The `access` method selects models based on their [access](/reference/resource-configs/access) property.
 
 ```bash
-dbt list --select access:public       # list all public models
-dbt list --select access:private       # list all private models
-dbt list --select access:protected       # list all protected models
+dbt list --select "access:public"      # list all public models
+dbt list --select "access:private"       # list all private models
+dbt list --select "access:protected"       # list all protected models
 ```
 
 </VersionBlock>
@@ -344,11 +345,26 @@ Supported in v1.5 or newer.
 The `version` method selects [versioned models](/docs/collaborate/govern/model-versions) based on their [version identifier](/reference/resource-properties/versions) and [latest version](/reference/resource-properties/latest_version).
 
 ```bash
-dbt list --select version:latest      # only 'latest' versions
-dbt list --select version:prerelease  # versions newer than the 'latest' version
+dbt list --select "version:latest"      # only 'latest' versions
+dbt list --select "version:prerelease"  # versions newer than the 'latest' version
 dbt list --select version:old         # versions older than the 'latest' version
 
-dbt list --select version:none        # models that are *not* versioned
+dbt list --select "version:none"        # models that are *not* versioned
+```
+
+</VersionBlock>
+
+### The "semantic_model" method
+<VersionBlock lastVersion="1.5">
+Supported in v1.6 or newer.
+</VersionBlock>
+<VersionBlock firstVersion="1.6">
+
+The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
+
+```bash
+dbt list --select semantic_model:*        # list all semantic models 
+dbt list --select +semantic_model:orders  # list your semantic model named "orders" and all upstream resources
 ```
 
 </VersionBlock>

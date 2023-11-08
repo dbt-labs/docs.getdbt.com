@@ -4,11 +4,6 @@ id: "sl-partner-integration-guide"
 description: Learn about partner integration guidelines, roadmap, and connectivity. 
 ---
 
-
-import NewChanges from '/snippets/_new-sl-changes.md';
-
-<NewChanges/>
-
 To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly. 
 
 :::note
@@ -32,6 +27,14 @@ To build a dbt Semantic Layer integration:
 The dbt Semantic Layer APIs authenticate with `environmentId`, `SERVICE_TOKEN`, and `host`.
 
 We recommend you provide users with separate input fields with these components for authentication (dbt Cloud will surface these parameters for the user). 
+
+### Exposing metadata to dbt Labs 
+
+When building an integration, we recommend you expose certain metadata in the request for analytics purposes. Among other items, it is helpful to have the following: 
+
+- Your application's name (such as 'Tableau')
+- The email of the person querying your application
+- The version of dbt they are on.
 
 
 ## Best practices on exposing metrics
@@ -85,7 +88,7 @@ Allow users to query either one metric alone without dimensions or multiple metr
 
 - Allow toggling between metrics/dimensions seamlessly.
 
-- Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply, and vice versa.
+- Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply. (Our APIs provide calls for you to get relevant dimensions for metrics, and vice versa).
 
 - Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
   * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
@@ -108,6 +111,15 @@ For better analysis, it's best to have the context of the metrics close to where
   * Include lineage information to understand the metric's origin.
 
 - Allow for creating other metadata that’s useful for the metric. We can provide some of this information in our configuration (Display name, Default Granularity for View, Default Time range), but there may be other metadata that your tool wants to provide to make the metric richer.
+
+### Transparency and using compile
+
+For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. Depending on what API you are using, you can do this by using our `compile` parameter. This is incredibly powerful and emphasizes transparency and openness, particularly for technically inclined users.
+
+
+### Where filters and optimization
+
+In the cases where our APIs support either a string or a filter list for the `where` clause, we always recommend that your application utilizes the filter list in order to gain maximum pushdown benefits. The `where` string may be more intuitive for users writing queries during testing, but it will not have the performance benefits of the filter list in a production environment.
 
 ## Example stages of an integration
 
@@ -136,14 +148,6 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Querying dimensions without metrics and other more advanced querying functionality
 * Suggest metrics to users based on teams/identity, and so on.
 
-### A note on transparency and using compile
-
-For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. Depending on what API you are using, you can do this by using our compile parameter. This is incredibly powerful because we want to be very transparent to the user about what we're doing and do not want to be a black box. This would be mostly beneficial to a technical user.
-
-
-### A note on where filters
-
-In the cases where our APIs support either a string or a filter list for the `where` clause, we always recommend that your application utilizes the filter list in order to gain maximum pushdown benefits. The `where` string may be more intuitive for users writing queries during testing, but it will not have the performance benefits of the filter list in a production environment.
 
 ## Related docs
 

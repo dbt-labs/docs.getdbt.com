@@ -390,7 +390,7 @@ models:
       # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
 ```
 
-Alternatively, here are the same same configurations configured within a model file:
+Alternatively, here are the same configurations configured within a model file:
 
 ```sql
 -- in models/my_incremental_model.sql

@@ -3,28 +3,82 @@ title: "Billing"
 id: billing 
 description: "dbt Cloud billing information." 
 sidebar_label: Billing
+pagination_next: null
+pagination_prev: null
 ---
 
 dbt Cloud offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/regions-ip-addresses) worldwide, dbt Cloud is the fastest and easiest way to begin transforming your data.
 
 ## How does dbt Cloud pricing work?
 
-As a customer, you pay for the number of seats you have and the amount of usage consumed each month. Usage is based on the number of Successful Models Built, and seats are billed primarily on the amount of Developer licenses purchased. All billing computations are conducted in Coordinated Universal Time (UTC).
+As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of Developer and Read licenses purchased. 
 
-### What counts as a Successful Model Built?
+Usage is based on the number of [Successful Models Built](#what-counts-as-a-successful-model-built) and, if purchased and used, Semantic Layer [Queried Metrics](#what-counts-as-a-queried-metric) subject to reasonable usage. All billing computations are conducted in Coordinated Universal Time (UTC).
 
-dbt Cloud considers a Successful Model Built as any model that is successfully built via a run through dbt Cloud’s orchestration functionality in a dbt Cloud deployment environment. Models are counted when built and run. This includes any jobs run via dbt Cloud's scheduler, CI builds (jobs triggered by pull requests), runs kicked off via the dbt Cloud API, and any successor dbt Cloud tools with similar functionality. This also includes models that are successfully built even when a run may fail to complete. For example, you may have a job that contains 100 models and on one of its runs, 51 models are successfully built and then the job fails. In this situation, only 51 models would be counted.
-
-Any models built in a dbt Cloud development environment (for example, via the IDE) do not count towards your usage. Tests, seeds, ephemeral models, and snapshots also do not count. 
-
-
-### What counts as a seat license? 
+### What counts as a seat license?
 
 There are three types of possible seat licenses:
 
 * **Developer** &mdash; for roles and permissions that require interaction with the dbt Cloud environment day-to-day.
 * **Read-Only** &mdash; for access to view certain documents and reports. 
 * **IT** &mdash; for access to specific features related to account management (for example, configuring git integration). 
+
+### What counts as a Successful Model Built?
+
+dbt Cloud considers a Successful Model Built as any <Term id="model">model</Term> that is successfully built via a run through dbt Cloud’s orchestration functionality in a dbt Cloud deployment environment. Models are counted when built and run. This includes any jobs run via dbt Cloud's scheduler, CI builds (jobs triggered by pull requests), runs kicked off via the dbt Cloud API, and any successor dbt Cloud tools with similar functionality. This also includes models that are successfully built even when a run may fail to complete. For example, you may have a job that contains 100 models and on one of its runs, 51 models are successfully built and then the job fails. In this situation, only 51 models would be counted.
+
+Any models built in a dbt Cloud development environment (for example, via the IDE) do not count towards your usage. Tests, seeds, ephemeral models, and snapshots also do not count. 
+
+| What counts towards Successful Models Built |                     |
+|---------------------------------------------|---------------------|
+| View                                        | ✅                  |
+| Table                                       | ✅                  |
+| Incremental                                 | ✅                  |
+| Ephemeral Models                            | ❌                  |
+| Tests                                       | ❌                  |
+| Seeds                                       | ❌                  |
+| Snapshots                                   | ❌                  |
+
+### What counts as a Queried Metric?
+
+The dbt Semantic Layer, powered by MetricFlow, measures usage in distinct Queried Metrics.
+
+- Every successful request you make to render or run SQL to the Semantic Layer API counts as at least one queried metric, even if no data is returned. 
+- If the query calculates or renders SQL for multiple metrics, each calculated metric will be counted as a queried metric.
+- If a request to run a query is not executed successfully in the data platform or if a query results in an error without completion, it is not counted as a queried metric. 
+- Requests for metadata from the Semantic Layer are also not counted as queried metrics.
+
+Examples of queried metrics include:
+
+- Querying one metric, grouping by one dimension → 1 queried metric 
+
+  ```shell
+  dbt sl query --metrics revenue --group_by metric_time
+  ```
+
+- Querying one metric, grouping by two dimensions → 1 queried metric 
+
+  ```shell
+  dbt sl query --metrics revenue --group_by metric_time,user__country
+  ```
+
+- Querying two metrics, grouping by two dimensions → 2 queried metrics 
+
+  ```shell
+  dbt sl query --metrics revenue,gross_sales --group_by metric_time,user__country
+  ```
+
+- Running an explain for one metric → 1 queried metric
+
+  ```shell
+  dbt sl query --metrics revenue --group_by metric_time --explain
+  ```
+
+- Running an explain for two metrics → 2 queried metrics
+
+  ```shell
+  dbt sl query --metrics revenue,gross_sales --group_by metric_time --explain
+  ```
 
 ### Viewing usage in the product 
 
@@ -41,7 +95,7 @@ On each Project Home page, any user with access to that project can see how many
 
 In addition, you can look at the Job Details page's Insights tab to show how many models are being built per month for that particular job and which models are taking the longest to build. 
 
-Any usage data is only an estimate of your usage, and there may be a delay in showing usage data in the product &mdash; your final usage for the month will be visible on your monthly statements (statements applicable to Team and Enterprise plans).
+Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in dbt Cloud is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Team and Enterprise plans).
 
 
 ## Plans and Billing
@@ -59,7 +113,7 @@ All included successful models built numbers above reflect our most current pric
 
 Team customers pay monthly via credit card for seats and usage, and accounts include 15,000 models monthly. Seats are charged upfront at the beginning of the month. If you add seats during the month, seats will be prorated and charged on the same day. Seats removed during the month will be reflected on the next invoice and are not eligible for refunds. You can change the credit card information and the number of seats from the billings section anytime. Accounts will receive one monthly invoice that includes the upfront charge for the seats and the usage charged in arrears from the previous month.
 
-Usage is calculated and charged in arrears for the previous month. If you exceed 15,000 models in any month, you will be billed for additional usage on your next invoice. Additional use is billed at the rates on our [pricing page](https://www.getdbt.com/pricing). 
+Usage is calculated and charged in arrears for the previous month. If you exceed 15,000 models in any month, you will be billed for additional usage on your next invoice. Additional usage is billed at the rates on our [pricing page](https://www.getdbt.com/pricing). 
 
 
 Included models that are not consumed do not roll over to future months. You can estimate your bill with a simple formula:
@@ -68,15 +122,22 @@ Included models that are not consumed do not roll over to future months. You can
 
 All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Team Plan, the included model entitlements may be different from what’s reflected above.
 
-:::note Legacy pricing plans
- 
-Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain on a legacy pricing plan as long as their account is in good standing. The legacy pricing plan is based on seats and includes unlimited models subject to reasonable use. dbt Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use. 
-
-:::
-
 ### Enterprise plan billing
 
 As an Enterprise customer, you pay annually via invoice, monthly in arrears for additional usage (if applicable), and may benefit from negotiated usage rates. Please refer to your order form or contract for your specific pricing details, or [contact the account team](https://www.getdbt.com/contact-demo) with any questions. 
+
+### Legacy plans
+
+Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain on a legacy pricing plan as long as your account is in good standing. The legacy pricing plan is based on seats and includes unlimited models, subject to reasonable use. 
+
+:::note Legacy Semantic Layer
+
+For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/docs/use-dbt-semantic-layer/quickstart-sl#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
+
+:::
+
+dbt Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use.
+
 
 ## Managing usage
 
@@ -191,3 +252,9 @@ _Yes. Your dbt Cloud account will be upgraded without impacting your existing pr
 
 * How do I determine the right plan for me?
  _The best option is to consult with our sales team. They'll help you figure out what is right for your needs. We also offer a free two-week trial on the Team plan._
+
+* What are the Semantic Layer trial terms?
+_Team and Enterprise customers can sign up for a free trial of the dbt Semantic Layer, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. dbt Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. dbt Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
+
+* What is the reasonable use limitation for the dbt Semantic Layer powered by MetricFlow during the trial? 
+_Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of dbt Labs._

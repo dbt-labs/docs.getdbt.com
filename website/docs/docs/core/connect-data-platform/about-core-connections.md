@@ -4,6 +4,8 @@ id: "about-core-connections"
 description: "Information about data platform connections in dbt Core"
 sidebar_label: "About data platform connections in dbt Core"
 hide_table_of_contents: true
+pagination_next: "docs/core/connect-data-platform/profiles.yml"
+pagination_prev: null
 ---
 
 dbt Core can connect with a variety of data platform providers including: 

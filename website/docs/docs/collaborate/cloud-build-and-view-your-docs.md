@@ -2,6 +2,7 @@
 title: "Build and view your docs with dbt Cloud"
 id: "build-and-view-your-docs"
 description: "Automatically generate project documentation as you run jobs."
+pagination_next: null
 ---
 
 dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation).
@@ -39,16 +40,17 @@ To create and schedule documentation-only jobs at the end of your production job
 You configure project documentation to generate documentation when the job you set up in the previous section runs. In the project settings, specify the job that generates documentation artifacts for that project. Once you configure this setting, subsequent runs of the job will automatically include a step to generate documentation.
 
 1. Click the gear icon in the top right.
-2. Select **Projects** and click the project that needs documentation.
-3. Click **Edit**.
-4. Under "Artifacts," select the job that should generate docs when it runs.
+2. Select **Account Settings**.
+3. Navigate to **Projects** and select the project that needs documentation.
+4. Click **Edit**.
+5. Under **Artifacts**, select the job that should generate docs when it runs.
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" title="Configuring project documentation"/>
-5. Click **Save**.
+6. Click **Save**.
 
 ## Generating documentation
 
-To generate documentation in the IDE, run the `dbt docs generate` command in the
-Command Bar in the IDE. This command will generate the Docs for your dbt project as it exists in development in your IDE session.
+To generate documentation in the dbt Cloud IDE, run the `dbt docs generate` command in the
+Command Bar in the dbt Cloud IDE. This command will generate the Docs for your dbt project as it exists in development in your IDE session.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" title="dbt docs generate"/>
 

@@ -15,7 +15,7 @@ default_value: true
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
-    { label: 'Semantic models', value: 'semantic_models', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -251,11 +251,11 @@ exposures:
 
 </TabItem>
 
-<TabItem value="semantic_models">
+<TabItem value="semantic models">
 
 <VersionBlock lastVersion="1.6">
 
-Support for disabling semantic models was added in dbt Core v1.7
+Support for disabling semantic models has been added in dbt Core v1.7
 
 </VersionBlock>
 
@@ -264,10 +264,9 @@ Support for disabling semantic models was added in dbt Core v1.7
 <File name='dbt_project.yml'>
 
 ```yaml
-semantic_models:
+semantic-models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)enabled: true | false
-
 ```
 
 </File>
@@ -275,13 +274,10 @@ semantic_models:
 <File name='models/semantic_models.yml'>
 
 ```yaml
-version: 2
-
 semantic_models:
   - name: [<semantic_model_name>]
     [config](/reference/resource-properties/config):
       enabled: true | false
-
 ```
 
 </File>
