@@ -29,8 +29,6 @@ Support for grouping models was added in dbt Core v1.5
 
 <VersionBlock firstVersion="1.5">
 
-</VersionBlock>
-
 <File name='models/schema.yml'>
 
 ```yml
@@ -68,6 +66,8 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="seeds">
@@ -79,8 +79,6 @@ Support for grouping seeds was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -102,6 +100,8 @@ seeds:
 
 </File>
 
+</VersionBlock>
+
 
 </TabItem>
 
@@ -114,8 +114,6 @@ Support for grouping snapshots was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -143,6 +141,8 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 
 </TabItem>
 
@@ -155,8 +155,6 @@ Support for grouping tests was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -210,6 +208,8 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="analyses">
@@ -239,8 +239,6 @@ Support for grouping metrics was added in dbt Core v1.5
 
 <VersionBlock firstVersion="1.5">
 
-</VersionBlock>
-
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -264,7 +262,10 @@ metrics:
 
 </File>
 
+</VersionBlock>
+
 </TabItem>
+
 
 <TabItem value="semantic models">
 
@@ -276,12 +277,12 @@ Support for grouping semantic models has been added in dbt Core v1.7.
 
 <VersionBlock firstVersion="1.7">
 
-<File name='schema.yml'>
+<File name='models/semantic_models.yml'>
 
-```yml
+```yaml
 semantic_models:
-  - name: model_name
-    group: finance
+  - name: <semantic_model_name>
+    group: <group_name>
 
 ```
 
@@ -289,15 +290,13 @@ semantic_models:
 
 <File name='dbt_project.yml'>
 
-```yml
-semantic_models:
+```yaml
+semantic-models:
   [<resource-path>](resource-path):
-    +group: finance
+    [+](plus-prefix)group: <group_name>
 ```
 
 </File>
-
-The `group` configuration can be nested under the `config` key.
 
 </VersionBlock>
 
@@ -306,7 +305,7 @@ The `group` configuration can be nested under the `config` key.
 </Tabs>
 
 ## Definition
-An optional configuration for grouping models, analysis, snapshots, tests, and metrics. When a resource is grouped, dbt will allow it to reference private models within the same group.
+An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
 For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
 
