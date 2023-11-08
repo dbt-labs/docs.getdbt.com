@@ -15,14 +15,14 @@ There are some important differences between using a `dependencies.yml` compared
 
 - Use `dependencies.yml` when you need to set up cross-project references between different dbt projects, especially in a dbt Mesh setup.
 - Use `dependencies.yml` when you want to include both projects and non-private dbt packages in your project's dependencies. 
-  - Private packages are not supported in `dependencies.yml` because it intentionally doesn't support Jinja rendering or conditional configuration. This is to maintain static and predictable configuration, and ensures compatibility with other services, like dbt Cloud.
-- Use `dependencies.yml` for organization and maintainability. It can help maintain your project's organization by allowing you to specify hub packages like `dbt_utils`. This reduces the need for multiple YAML files to manage dependencies.
+  - Private packages are not supported in `dependencies.yml` because they intentionally don't support Jinja rendering or conditional configuration. This is to maintain static and predictable configuration and ensures compatibility with other services, like dbt Cloud.
+- Use `dependencies.yml` for organization and maintainability. It can help maintain your project's organization by allowing you to specify [dbt Hub packages](https://hub.getdbt.com/) like `dbt_utils`. This reduces the need for multiple YAML files to manage dependencies.
 
 </TabItem>
 
 <TabItem value="packages" label="When to use packages.yml">
 
-Packages allows you to add source code from someone else's dbt project into your own, like a library. Consider using it in the following scenarios:
+Packages allow you to add source code from someone else's dbt project into your own, like a library. Consider using it in the following scenarios:
 
 - Use `packages.yml` when you want to download dbt packages, such as dbt projects, into your root or parent dbt project. Something to note is that it doesn't contribute to the dbt Mesh workflow.
 - Use `packages.yml` to include packages, including private packages, in your project's dependencies. If you have private packages that you need to reference, `packages.yml` is the way to go.
