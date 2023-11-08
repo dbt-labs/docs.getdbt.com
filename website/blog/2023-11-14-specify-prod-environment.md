@@ -1,26 +1,24 @@
 ---
 
-title: Why you need to differentiate your production and staging environments in dbt Cloud
+title: Why you should specify a production environment in dbt Cloud
 description: "The bottom line: You should split your Environments in dbt Cloud based on their purposes (e.g. Production and Staging/CI) and mark one environment as Production. This will improve your CI experience and enable you to use dbt Explorer."
-slug: differentiate-prod-and-staging-environments
-
-# image: /img/blog/2023-10-31-to-defer-or-to-clone/preview.png
+slug: specify-prod-environment
 
 authors: [joel_labes]
 
 tags: [dbt Cloud]
 hide_table_of_contents: false
 
-date: 2023-11-06
+date: 2023-11-14
 is_featured: false
 
 ---
 
 :::tip The Bottom Line:
-You should split your Environments in dbt Cloud based on their purposes (e.g. Production and Staging/CI) and [set one environment as Production](/docs/deploy/deploy-environments#set-as-production-environment-beta). This will improve your CI experience and enable you to use dbt Explorer.
+You should [split your Jobs](#how) across Environments in dbt Cloud based on their purposes (e.g. Production and Staging/CI) and set one environment as Production. This will improve your CI experience and enable you to use dbt Explorer.
 :::
 
-Environmental segmentation has always been an important part of the analytics engineering workflow:
+[Environmental segmentation](/docs/environments-in-dbt) has always been an important part of the analytics engineering workflow:
 
 - When developing new models you can [process a smaller subset of your data](/reference/dbt-jinja-functions/target#use-targetname-to-limit-data-in-dev) by using `target.name` or an environment variable.
 - By building your production-grade models into [a different schema and database](https://docs.getdbt.com/docs/build/custom-schemas#managing-environments), you can experiment in peace without being worried that your changes will accidentally impact downstream users.
@@ -28,11 +26,13 @@ Environmental segmentation has always been an important part of the analytics en
 
 Historically, dbt Cloud required a separate environment for _Development_, but was otherwise unopinionated in how you configured your account. This mostly just worked – as long as you didn't have anything more complex than a CI job mixed in with a couple of production jobs – because important constructs like deferral in CI and documentation were only ever tied to a single job.
 
-But as companies' dbt deployments have grown more complex, it doesn't make sense to assume that a single job is enough anymore. We need to exchange a job-oriented strategy for a more mature and scalable environment-centric view of the world. To support this, a recent change in dbt Cloud enables project administrators to mark one of their environments as the Production environment, just as has long been possible for the Development environment.
+But as companies' dbt deployments have grown more complex, it doesn't make sense to assume that a single job is enough anymore. We need to exchange a job-oriented strategy for a more mature and scalable environment-centric view of the world. To support this, a recent change in dbt Cloud enables project administrators to [mark one of their environments as the Production environment](/docs/deploy/deploy-environments#set-as-production-environment-beta), just as has long been possible for the Development environment.
 
 Explicitly separating your Production workloads lets dbt Cloud be smarter with the metadata it creates, and is particularly important for two new features: dbt Explorer and the revised CI workflows.
 
-## dbt Explorer can always have the freshest information available
+<!-- truncate -->
+
+## Make sure dbt Explorer always has the freshest information available
 
 **The old way**: Your dbt docs site was based on a single job's run.
 
@@ -54,7 +54,7 @@ Just like dbt docs, relying on a single job to define your state for comparison 
 
 By using the environment as the arbiter of state, any time a change is made to your Production deployment it will immediately be taken into consideration by subsequent Slim CI runs.
 
-## The easiest way to break apart your jobs
+## The easiest way to break apart your jobs {#how}
 
 <Lightbox src="/img/blog/2023-11-06-differentiate-prod-and-staging-environments/data-landscape.png" alt="A chart showing the interplay of Data Warehouse, git repo and dbt Cloud project across Dev, CI and Prod environments." title="Your organization's data landscape should separate Dev, CI and Prod environments. To achieve this, configure your data warehouse, git repo and dbt Cloud account as shown above." width="100%"/>
 
@@ -62,7 +62,7 @@ For most projects, changing from a job-centric to environment-centric approach t
 
 1. Create a new dbt Cloud environment called Staging
 2. For each job that belongs to the Staging environment, edit the job and update its environment
-3. Tick the "Mark as Production environment" box in your original environment's settings
+3. Tick the ["Mark as Production environment" box](/docs/deploy/deploy-environments#set-as-production-environment-beta) in your original environment's settings
 
 ## Conclusion
 
