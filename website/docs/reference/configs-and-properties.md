@@ -21,21 +21,6 @@ Whereas you can use **configurations** to:
 * Declare whether a resource should persist its descriptions as comments in the database
 * Apply tags and "meta" properties
 
-### Resource, properties, and configs table
-
-| Resource type | Description      | Supported properties  | Supported configurations    | Config inheritance   |
-|---------------|------------------|-----------------------|-----------------------------|----------------------|
-| Models        | Describes models and their columns | columns, tests, docs, macros   | tags, materialized, persist_docs, tags, etc. | `properties.yml` -> `.yml file` -> `dbt_project.yml`     |
-| Snapshots     |   Periodic snapshots of data              | tests, macros       | tags, materialized, etc.    |   In-file `config()` block -> `.yml file` -> `dbt_project.yml`            |
-| Seeds         |  Uploaded source data for models         | tests, macros            | tags, persist_docs, etc.     |    In-file `config()` block -> `.yml file` -> `dbt_project.yml`              |
-| Tests         | Asserts "truths" about models    | description, tags, macros       |     In-file `config()` block -> `.yml file` -> `dbt_project.yml`         |
-| Sources       | Pointers to tables with raw data    | description, columns, tests, docs, macros  | tags, persist_docs, etc.        | `properties.yml` -> `.yml file` -> `dbt_project.yml`     |
-| Exposures    | Official downstream uses of data models | description, columns, tests, docs, macros  | tags, materialized, etc.     | `properties.yml` -> `.yml file` -> `dbt_project.yml`  |
-|    |             |                  |            |         |
-| Configurations| Extra abilities for resources        |       |    | In-file `config()` block -> `.yml file` -> `dbt_project.yml`    |
-|    |     |           |     |            |
-| Special properties (not configs)| Special properties with unique rendering context | description, tests, docs, columns, quote, source properties, exposure properties, macro properties |  | `properties.yml`    |
-
 ## Where can I define configs?
 
 Depending on the resource type, configurations can be defined:
@@ -50,11 +35,11 @@ dbt prioritizes configurations in order of specificity, from most specificity to
 
 Note - Generic tests work a little differently when it comes to specificity. See [test configs](/reference/test-configs).
 
-Within the project file, configurations are also applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
+Within the project file, configurations are also applied hierarchically. The most specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
 ### Combining configs
 
-Most configurations are "clobbered" when applied hierarchically. Whenever a more-specific value is available, it will completely replace the less-specific value. Note that a few configs have different merge behavior:
+Most configurations are "clobbered" when applied hierarchically. Whenever a more specific value is available, it will completely replace the less specific value. Note that a few configs have different merge behavior:
 - [`tags`](tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags applied in its `.sql` file, the final set of tags will include all of them.
 - [`meta`](/reference/resource-configs/meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key)
 - [`pre-hook` and `post-hook`](/reference/resource-configs/pre-hook-post-hook) are also additive.
