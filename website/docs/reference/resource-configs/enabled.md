@@ -261,20 +261,26 @@ Support for disabling semantic models has been added in dbt Core v1.7
 
 <VersionBlock firstVersion="1.7">
 
-<File name='semantic_models.yml'>
+<File name='dbt_project.yml'>
 
-```yml
-semantic_models:
-  - name: semantic_people
-    model: ref('people')
-    config:
-      enabled: false
-
+```yaml
+semantic-models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 ```
 
 </File>
 
-The `enabled` configuration can be nested under the `config` key.
+<File name='models/semantic_models.yml'>
+
+```yaml
+semantic_models:
+  - name: [<semantic_model_name>]
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
 
 </VersionBlock>
 
@@ -283,7 +289,7 @@ The `enabled` configuration can be nested under the `config` key.
 </Tabs>
 
 ## Definition
-An optional configuration for disabling models, seeds, snapshots, tests, and semantic models.
+An optional configuration for enabling or disabling a resource.
 
 * Default: true
 
