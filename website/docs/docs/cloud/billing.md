@@ -95,7 +95,7 @@ On each Project Home page, any user with access to that project can see how many
 
 In addition, you can look at the Job Details page's Insights tab to show how many models are being built per month for that particular job and which models are taking the longest to build. 
 
-Usage information is available to customers on consumption-based plans, and not all usage visualizations may be visible to customers on legacy plans. Any usage data shown in dbt CLoud is only an estimate of your usage, and there may be a delay in showing usage data in the product &mdash; your final usage for the month will be visible on your monthly statements (statements applicable to Team and Enterprise plans).
+Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in dbt Cloud is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Team and Enterprise plans).
 
 
 ## Plans and Billing
