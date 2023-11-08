@@ -495,6 +495,14 @@ dbt officially provides two command line tools for running dbt commands:
 - [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; This tool allows you to develop locally and execute dbt commands against your dbt Cloud development environment from your local command line.
 - [dbt Core](https://github.com/dbt-labs/dbt-core) &mdash; This open-source tool is designed for local installation, enabling you to use dbt Core on the command line and communicate with databases through adapters.
 
+Here are some examples of what to use and what to avoid: <br />
+
+✅ Set up in the dbt Cloud CLI or dbt Core<br />
+✅ Set up in the dbt Cloud CLI or dbt Core CLI<br />
+
+❌ Set up via dbt CLI<br />
+❌ Set up in dbt Cloud, **or** via the CLI<br />
+
 ### Terms to use or avoid
 
 Use industry-specific terms and research new/improved terminology. Also, refer to the Inclusive Language section of this style guide for inclusive and accessible language and style. 

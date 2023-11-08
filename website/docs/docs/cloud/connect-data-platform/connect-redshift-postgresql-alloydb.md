@@ -15,7 +15,7 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 
 **Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" title="Configuring a Redshift connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
 
 ### Connecting via an SSH Tunnel
 
@@ -23,7 +23,7 @@ To connect to a Postgres, Redshift, or AlloyDB instance via an SSH tunnel, selec
 
 Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize dbt Cloud to connect to your database via the bastion server.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" title="A generated public key for a Redshift connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" width="70%" title="A generated public key for a Redshift connection"/>
 
 #### About the Bastion server in AWS
 
@@ -60,6 +60,37 @@ chmod 600 ~/.ssh/authorized_keys
 - Copy and paste the dbt Cloud generated public key, into the authorized_keys file.
 
 The Bastion server should now be ready for dbt Cloud to use as a tunnel into the Redshift environment.
+
+#### Intermittent connection issues
+
+<details>
+  <summary>Database Error - could not connect to server: Connection timed out</summary>
+  You will have the following components when you configure a connection to a database using an SSH tunnel: <br />
+  - An Elastic Load Balancer (ELB) or Network Load Balancing (NLB) instance.<br />
+  - A bastion host (or jump server) running the <code>sshd</code> process.<br />
+  - A Database (such as Redshift cluster)<br /><br />
+
+dbt Cloud establishes an SSH tunnel connection through the ELB or NLB to the <code>sshd</code> process. This is responsible for routing traffic to the database. When dbt initiates a job run, an SSH tunnel is created at the start of the run. If this SSH tunnel fails at any point, the job will also fail.<br />
+  
+  The most common causes of tunnel failures are:<br />
+  - The SSH daemon terminates the session due to an idle timeout.<br />
+  - The ELB or NLB terminates the connection when it's idle.<br />
+  
+dbt Cloud sets a value for its SSH tunnel called `ServerAliveInterval` and `ServerAliveCountMax` that polls the connection every 30 seconds and the underlying OS in our run "pods" will terminate the connection if the `sshd` process fails to respond after 300s. This will, in many cases, prevent an idle timeout entirely so long as the customer is not using ELB with a firewall-level idle timeout of less than 30 seconds. However, if the customer is using ELB and is using an Idle Connection Timeout of less than 30s, this will be insufficient to prevent tunnels from being terminated. <br />
+  
+Some versions of Linux used on bastion hosts use a version of `sshd` with additional idle timeout settings `ClientAliveCountMax`. This value sets the number of client alive messages that may be sent without `sshd` receiving any messages back from the client. If this threshold is reached while client alive messages are being sent, `sshd` will disconnect the client, terminating the session. The client-alive mechanism is helpful when the client or server needs to know when a connection has become inactive. The default value is 3.<br /><br />
+
+`ClientAliveInterval`:<br />
+This value sets a timeout interval in seconds after which if no data has been received from the client, `sshd` will send a message through the encrypted channel to request a response from the client. The default is 0, indicating that these messages will not be sent to the client.<br />
+
+Using default values, tunnels could be terminated prematurely by `sshd`. To solve this problem, the `/etc/ssh/sshd_config` file on the bastion host can be configured with the following values:<br /><br />
+- `ClientAliveCountMax` 10<br />
+- `ClientAliveInterval` 30<br />
+where `ClientAliveCountMax` should be set to a non-zero value and `ClientAliveInterval` should be a value less than the ELB or NLB idle timeout value.<br />
+
+With these settings, unresponsive SSH clients will be disconnected after approximately 300 seconds, helping to prevent tunnel failures.
+</details>
+
 
 ## Configuration
 
