@@ -65,20 +65,20 @@ Sources can be configured via a `config:` block within their `.yml` definitions,
 
 You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](/docs/build/sources#snapshotting-source-data-freshness) from running on source tables imported from packages. 
 
-- **Note**: To disable a source nested in a YAML file in a subfolder, you will need to supply the path to that YAML file plus the source name in the dbt_project.yml file. For example:
+- **Note**: To disable a source table nested in a YAML file in a subfolder, you will need to supply the subfolder(s) within the path to that YAML file, as well as the source name and the table name in the `dbt_project.yml` file.<br /><br /> 
+  The following example shows how to disable a source table nested in a YAML file in a subfolder: 
 
   <File name='dbt_project.yml'>
 
-  ```yml
+  ```yaml
   sources:
     your_project_name:
       subdirectory_name:
-        source_yaml_file_name:
-          source_name:
-            +enabled: false # This will apply to sources nested in subfolders.
+        source_name:
+          source_table_name:
+            +enabled: false
   ```
   </File>
-
 
 
 ### Examples
