@@ -21,6 +21,7 @@ To define a saved query, refer to the following specification:
 | `metrics` | The metrics included in the saved query. | Required |
 | `group_bys` | The value displayed in downstream tools. | Required |
 | `where` | Filter applied to the query. | Optional |
+| `exports`| Export query as materialization. | Optional |
 
 The following is an example of a saved query:
 
@@ -36,6 +37,12 @@ saved_query:
     - Dimension('listing__capacity_latest')
   where:
     - "{{ Dimension('listing__capacity_latest') }} > 3"
+  exports:
+      - name: my_query 
+        config:
+          export_as: table # options: table, view - FUTURE: incremental_table, window_table, file
+          schema: my_schema  # [optional - DEFAULT to deployment schema]
+          alias: some_table_name # [optional - DEFAULT to export name]
 ```
 
 ### FAQs 
