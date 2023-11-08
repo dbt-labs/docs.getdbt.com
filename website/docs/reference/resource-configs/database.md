@@ -40,7 +40,7 @@ seeds:
       +database: staging
 ```
 
-This would result in the generated relation being located in the `staging` database, so the full relation name would be `staging.finance.product_categories_data`.
+This would result in the generated relation being located in the `staging` database, so the full relation name would be `staging.finance.product_categories`.
 
 </File>
 </TabItem>

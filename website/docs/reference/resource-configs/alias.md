@@ -8,7 +8,7 @@ datatype: string
 <Tabs>
 <TabItem value="model" label="Models">
 
-Specify a custom alias for a model in your `dbt_project.yml` file. 
+Specify a custom alias for a model in your `dbt_project.yml` file or config block. 
 
 For example, if you have a model that calculates `sales_total` and want to give it a more user-friendly alias, you can alias it like this:
 
@@ -23,12 +23,13 @@ models:
 </File>
 
 This would return `analytics.finance.sales_dashboard` in the database, instead of the default `analytics.finance.sales_total`.
+
 </TabItem>
 
 <TabItem value="seeds" label="Seeds">
 
 
-Configure a seed's alias in your `dbt_project.yml` file. 
+Configure a seed's alias in your `dbt_project.yml` file or config block. 
 
 For example, if you have a seed that represents `product_categories` and want to alias it as `categories_data`, you would alias like this:
 
@@ -62,36 +63,36 @@ seeds:
 
 <TabItem value="snapshot" label="Snapshots">
 
-Configure a seed's alias in your `dbt_project.yml` file. 
+Configure a seed's alias in your `dbt_project.yml` file or config block. 
 
-For example, if you have a snapshot that represents `my_snapshot` and want to alias it as `updated_at_id`, you would alias like this:
+For example, if you have a snapshot that represents `your_snapshot` and want to alias it as `updated_at_id`, you would alias like this:
 
 <File name='dbt_project.yml'>
 
 ```yml
 snapshots:
-  - name: my_snapshot
+  - name: your_snapshot
     config:
       target_database: analytics
       target_schema: finance
       unique_key: id
       strategy: timestamp
       updated_at: updated_at
-      +alias: updated_at_id
+      alias: your_snapshot
 ```
 
-This would return the name `analytics.finance.updated_at_id` in the database.
+This would return the name `analytics.finance.your_snapshot` in the database.
 
 </File>
 </TabItem>
 
 <TabItem value="test" label="Tests">
 
-Configure a test's alias in your `dbt_project.yml` file. 
+Configure a test's alias in your `schema.yml` file or config block. 
 
 For example, to add a unique test to the `order_id` column and give it an alias `unique_order_id_test` to identify this specific test, you would alias like this:
 
-<File name='dbt_project.yml'>
+<File name='schema.yml'>
 
 ```yml
 models:
@@ -100,10 +101,10 @@ models:
       - name: order_id
         tests:
           - unique
-            +alias: unique_order_id_test
+            alias: unique_order_id_test
 ```
 
-This would return the name `analytics.finance.orders_order_id_unique_order_id_test` in the database.
+When using `--store-failures`, this would return the name `analytics.finance.orders_order_id_unique_order_id_test` in the database.
 
 </File>
 </TabItem>

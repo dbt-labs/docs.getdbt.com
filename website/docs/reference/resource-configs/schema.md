@@ -40,7 +40,7 @@ seeds:
       +schema: mappings
 ```
 
-This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.mappings.product_mappings_data`. 
+This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.mappings.product_mappings`. 
 </File>
 </TabItem>
 
