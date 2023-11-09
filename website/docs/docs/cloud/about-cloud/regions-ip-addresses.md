@@ -12,7 +12,7 @@ dbt Cloud is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions 
 | Region | Location | Access URL | IP addresses | Developer plan | Team plan | Enterprise plan |
 |--------|----------|------------|--------------|----------------|-----------|-----------------|
 | North America multi-tenant [^1] | AWS us-east-1 (N. Virginia) | cloud.getdbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 | ✅ | ✅ | ✅ |
-| North America Cell 1 [^1]       | AWS use-east-1 (N.Virginia) | {account prefix}.us1.dbt.com | [Located in Account Settings](#locating-your-dbt-cloud-ip-addresses) | ❌ | ❌ | ❌ |
+| North America Cell 1 [^1]       | AWS us-east-1 (N.Virginia) | {account prefix}.us1.dbt.com | [Located in Account Settings](#locating-your-dbt-cloud-ip-addresses) | ❌ | ❌ | ❌ |
 | EMEA [^1] | AWS eu-central-1	(Frankfurt) | emea.dbt.com | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | ❌ | ❌ | ✅ |
 | APAC  [^1] | 	AWS ap-southeast-2  (Sydney)| au.dbt.com | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />| ❌ | ❌ | ✅ |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | ❌ | ❌ | ✅ |
