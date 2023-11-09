@@ -5,7 +5,6 @@ description: Learn how to debug schema names when models build under unexpected 
 displayText: Debug schema names
 hoverSnippet: Learn how to debug schema names in dbt.
 # time_to_complete: '30 minutes' commenting out until we test
-platform: 'dbt-core'
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['dbt Core','Troubleshooting']

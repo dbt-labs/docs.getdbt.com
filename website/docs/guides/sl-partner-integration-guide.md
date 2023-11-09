@@ -6,7 +6,7 @@ hoverSnippet: Learn how to integrate with the Semantic Layer using best practice
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Semantic layer','Best practices']
+tags: ['Semantic Layer','Best practices']
 level: 'Advanced'
 recently_updated: true
 ---

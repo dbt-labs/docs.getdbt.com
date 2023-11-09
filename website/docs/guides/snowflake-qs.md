@@ -3,7 +3,7 @@ title: "Quickstart for dbt Cloud and Snowflake"
 id: "snowflake"
 level: 'Beginner'
 icon: 'snowflake'
-tags: ['dbt Cloud','Quickstart']
+tags: ['dbt Cloud','Quickstart','Snowflake']
 hide_table_of_contents: true
 ---
 ## Introduction

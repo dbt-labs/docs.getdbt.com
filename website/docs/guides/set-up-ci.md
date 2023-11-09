@@ -1,16 +1,16 @@
 ---
 title: "Get started with Continuous Integration tests"
-description: How to implement a CI environment for safe project validation.
-displayText: 
-hoverSnippet: Learn how to
+description: Implement a CI environment for safe project validation.
+hoverSnippet: Learn how to implement a CI environment for safe project validation.
 id: set-up-ci
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Cloud', 'Orchestration']
+tags: ['dbt Cloud', 'Orchestration', 'CI']
 level: 'Intermediate'
 recently_updated: true
 ---
+
 ## Introduction
 
 By validating your code _before_ it goes into production, you don't need to spend your afternoon fielding messages from people whose reports are suddenly broken.

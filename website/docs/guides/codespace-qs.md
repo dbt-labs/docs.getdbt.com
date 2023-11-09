@@ -1,5 +1,5 @@
 ---
-title: "Quickstart for dbt Core using GitHub Codespaces"
+title: Quickstart for dbt Core using GitHub Codespaces
 id: codespace
 platform: 'dbt-core'
 icon: 'fa-github'

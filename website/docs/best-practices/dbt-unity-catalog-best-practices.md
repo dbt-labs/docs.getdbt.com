@@ -1,6 +1,13 @@
-# Best practices for dbt and Unity Catalog
+---
+title: "Best practices for dbt and Unity Catalog"
+id: "dbt-unity-catalog-best-practices"
+description: Learn how to configure your.
+displayText: Writing custom generic tests
+hoverSnippet: Learn how to define your own custom generic tests.
+---
 
-Your Databricks dbt project should be configured after following the ["How to set up your databricks dbt project guide"](how-to-set-up-your-databricks-dbt-project). Now we’re ready to start building a dbt project using Unity Catalog. However, we should first consider how we want to allow dbt users to interact with our different catalogs. We recommend the following best practices to ensure the integrity of your production data:
+
+Your Databricks dbt project should be configured after following the ["How to set up your databricks dbt project guide"](/guides/set-up-your-databricks-dbt-project). Now we’re ready to start building a dbt project using Unity Catalog. However, we should first consider how we want to allow dbt users to interact with our different catalogs. We recommend the following best practices to ensure the integrity of your production data:
 
 ## Isolate your Bronze (aka source) data
 

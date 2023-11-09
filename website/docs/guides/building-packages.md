@@ -1,7 +1,7 @@
 ---
-title: "Building dbt packages" 
-id: "building-packages"
-description: When you have dbt code that might help others, you can create a package for dbt using a GitHub repository. 
+title: Building dbt packages
+id: building-packages
+description: "When you have dbt code that might help others, you can create a package for dbt using a GitHub repository."
 displayText: Building dbt packages
 hoverSnippet: Learn how to create packages for dbt.
 # time_to_complete: '30 minutes' commenting out until we test

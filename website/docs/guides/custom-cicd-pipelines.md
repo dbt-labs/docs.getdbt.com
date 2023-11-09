@@ -7,7 +7,7 @@ hoverSnippet: Learn version-controlled code, custom pipelines, and enhanced code
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Cloud', 'Orchestration']
+tags: ['dbt Cloud', 'Orchestration', 'CI']
 level: 'Intermediate'
 recently_updated: true
 ---

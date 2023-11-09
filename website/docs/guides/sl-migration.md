@@ -6,7 +6,7 @@ hoverSnippet: Migrate from the legacy dbt Semantic Layer to the latest one.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Semantic Layer']
+tags: ['Semantic Layer','Migration']
 level: 'Intermediate'
 recently_updated: true
 ---

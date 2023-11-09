@@ -5,7 +5,7 @@ level: 'Beginner'
 icon: 'databricks'
 hide_table_of_contents: true
 recently_updated: true
-tags: ['dbt Cloud', 'Quickstart']
+tags: ['dbt Cloud', 'Quickstart','Databricks']
 ---
 ## Introduction
 

@@ -1,6 +1,6 @@
 ---
 title: Productionize your dbt Databricks project
-id: "productionize-your-dbt-databricks-project"
+id: productionize-your-dbt-databricks-project
 description: "Learn how to deliver models to end users and use best practices to maintain production data" 
 displayText: Productionize your dbt Databricks project
 hoverSnippet: Learn how to Productionize your dbt Databricks project.
