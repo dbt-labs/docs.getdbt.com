@@ -26,7 +26,7 @@ expect this field will now return errors. See the latest
 
 ### Custom materializations
 
-All <Term id="materialization">materializations</Term> must now [manage dbt's Relation cache](/guides/creating-new-materializations#update-the-relation-cache).
+All <Term id="materialization">materializations</Term> must now manage dbt's Relation cache. For more information, refer to  [Create new materializations](/guides/creating-new-materializations).
 
 ### dbt Server
 

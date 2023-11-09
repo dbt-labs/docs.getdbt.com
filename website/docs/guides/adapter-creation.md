@@ -260,7 +260,7 @@ class MyAdapterCredentials(Credentials):
 There are a few things you can do to make it easier for users when connecting to your database:
 
 - Be sure to implement the Credentials' `_connection_keys` method shown above. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments).
-- Create a `profile_template.yml` to enable configuration prompts for a brand-new user setting up a connection profile via the [`dbt init` command](/reference/commands/init). See more details [below](#other-files).
+- Create a `profile_template.yml` to enable configuration prompts for a brand-new user setting up a connection profile via the [`dbt init` command](/reference/commands/init). You will find more details in the following steps.
 - You may also want to define an `ALIASES` mapping on your Credentials class to include any config names you want users to be able to use in place of 'database' or 'schema'. For example if everyone using the MyAdapter database calls their databases "collections", you might do:
 
 <File name='connections.py'>
@@ -574,8 +574,8 @@ Previously, we offered a packaged suite of tests for dbt adapter functionality: 
 
 This document has two sections:
 
-1. "[About the testing framework](#about-the-testing-framework)" describes the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.
-2. "[Testing your adapter](#testing-your-adapter)" offers a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of dbt functionality.
+1. Refer to "About the testing framework" for a description of the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.
+2. Refer to "Testing your adapter" for a step-by-step guide for using our out-of-the-box suite of "basic" tests, which will validate that your adapter meets a baseline of dbt functionality.
 
 ### Testing prerequisites
 
@@ -1067,7 +1067,7 @@ python3 -m pytest tests/functional --profile databricks_sql_endpoint
 
 ## Document a new adapter
 
-If you've already [built](3-building-a-new-adapter), and [tested](4-testing-a-new-adapter) your adapter, it's time to document it so the dbt community will know that it exists and how to use it.
+If you've already built, and tested your adapter, it's time to document it so the dbt community will know that it exists and how to use it.
 
 ### Making your adapter available
 
@@ -1264,7 +1264,7 @@ There has been a tendency to trust the dbt Labs-maintained adapters over communi
 The adapter verification program aims to quickly indicate to users which adapters can be trusted to use in production. Previously, doing so was uncharted territory for new users and complicated making the business case to their leadership team. We plan to give quality assurances by:
 
 1. appointing a key stakeholder for the adapter repository,
-2. ensuring that the chosen stakeholder fixes bugs and cuts new releases in a timely manner see maintainer your adapter (["Maintaining your new adapter"](2-prerequisites-for-a-new-adapter#maintaining-your-new-adapter)),
+2. ensuring that the chosen stakeholder fixes bugs and cuts new releases in a timely manner. Refer to the "Maintaining your new adapter" step for more information.
 3. demonstrating that it passes our adapter pytest suite tests,
 4. assuring that it works for us internally and ideally an existing team using the adapter in production .
 
