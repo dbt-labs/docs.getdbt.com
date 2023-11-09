@@ -2033,6 +2033,21 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   margin: 10px;
   color: #818589; /* You can adjust the color as needed */
 }
+h3.anchor a.hash-link:before,
+h2.anchor a.hash-link:before {
+  content: "";
+  background-image: url('/img/copy.png');
+  background-size: 18px 18px;
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+}
+h3.anchor.clicked a.hash-link:before,
+h2.anchor.clicked a.hash-link:before {
+  background-image: url('/img/check.png');
+  background-size: 18px 13px;
+  height: 13px;
+}
 
 @media (max-width: 996px) {
   .quickstart-container {
