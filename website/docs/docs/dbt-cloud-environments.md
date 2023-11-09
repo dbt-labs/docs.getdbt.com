@@ -45,4 +45,4 @@ To use the dbt Cloud IDE or dbt Cloud CLI, each developer will need to set up [p
 
 Deployment environments in dbt Cloud are necessary to execute scheduled jobs and use other features. A dbt Cloud project can have multiple deployment environments, allowing for flexibility and customization. However, a dbt Cloud project can only have one deployment environment that represents the production source of truth. 
 
-To learn more about dbt Cloud deployment environments and how to configure them, visit the [Deployment environments](/docs/deploy/deploy-environments) page. For our best practices guide, read [dbt Cloud environment best practices](https://docs.getdbt.com/best-practices/environment-setup/1-env-guide-overview) for more info. 
+To learn more about dbt Cloud deployment environments and how to configure them, refer to the [Deployment environments](/docs/deploy/deploy-environments) page. For our best practices guide, read [dbt Cloud environment best practices](/guides/set-up-ci) for more info.
