@@ -31,7 +31,7 @@ A version tag in a `.yml` property file provides the control tag, which informs 
 
 Starting from version 1.5, dbt will no longer require this configuration in your resource `.yml` files.  If you want to know more about why this tag was previously required, you can refer to the [property file FAQs](reference/configs-and-properties#faqs). 
 
-For more on property files, see their general [documentation](reference/configs-and-properties#where-can-i-define-properties) on the same page.
+For more on property files, see their general [documentation](/reference/configs-and-properties#where-can-i-define-properties) on the same page.
 
 <Tabs
   groupId="resource-version-configs"
@@ -94,7 +94,7 @@ version: version
 
 A version tag in a `.yml` property file provides the control tag, which informs how dbt processes property files. For more on why we require this tag, see property file [FAQs](reference/configs-and-properties#faqs).
 
-For more on property files, see their general [documentation](reference/configs-and-properties#where-can-i-define-properties) on the same page.
+For more on property files, see their general [documentation](/reference/configs-and-properties#where-can-i-define-properties) on the same page.
 
 <File name='<any valid filename>.yml'>
 
