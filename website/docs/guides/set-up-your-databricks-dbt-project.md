@@ -68,7 +68,7 @@ We are not covering python in this post but if you want to learn more, check out
 
 Now that the Databricks components are in place, we can configure our dbt project. This involves connecting dbt to our Databricks SQL warehouse to run SQL queries and using a version control system like GitHub to store our transformation code.
 
-If you are migrating an existing dbt project from the dbt-spark adapter to dbt-databricks, follow this [migration guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-spark-to-databricks#migration) to switch adapters without needing to update developer credentials and other existing configs.
+If you are migrating an existing dbt project from the dbt-spark adapter to dbt-databricks, follow this [migration guide](/guides/migrate-from-spark-to-databricks) to switch adapters without needing to update developer credentials and other existing configs.
 
 If you’re starting a new dbt project, follow the steps below. For a more detailed setup flow, check out our [quickstart guide.](/guides/databricks)
 

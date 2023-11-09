@@ -60,9 +60,9 @@ Ready to start transforming your Unity Catalog datasets with dbt?
 
 Check out the resources below for guides, tips, and best practices:
 
-- [How we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview)
+- [How we structure our dbt projects](/best-practices/how-we-structure/1-guide-overview)
 - [Self-paced dbt fundamentals training videos](https://courses.getdbt.com/courses/fundamentals)
-- [Customizing CI/CD](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/1-cicd-background) & [SQL linting](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/2-lint-on-push)
-- [Debugging errors](https://docs.getdbt.com/best-practices/debugging-errors)
-- [Writing custom generic tests](https://docs.getdbt.com/best-practices/writing-custom-generic-tests)
+- [Customizing CI/CD](/guides/custom-cicd-pipelines)
+- [Debugging errors](/guides/debug-errors)
+- [Writing custom generic tests](/best-practices/writing-custom-generic-tests)
 - [dbt packages hub](https://hub.getdbt.com/)

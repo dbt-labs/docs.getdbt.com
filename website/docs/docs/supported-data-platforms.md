@@ -8,7 +8,7 @@ pagination_next: "docs/connect-adapters"
 pagination_prev: null
 ---
 
-dbt connects to and runs SQL against your database, warehouse, lake, or query engine. These SQL-speaking platforms are collectively referred to as _data platforms_. dbt connects with data platforms by using a dedicated adapter plugin for each. Plugins are built as Python modules that dbt Core discovers if they are installed on your system. Read [What are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters) for more info.
+dbt connects to and runs SQL against your database, warehouse, lake, or query engine. These SQL-speaking platforms are collectively referred to as _data platforms_. dbt connects with data platforms by using a dedicated adapter plugin for each. Plugins are built as Python modules that dbt Core discovers if they are installed on your system. Refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide. for more info.
 
 You can [connect](/docs/connect-adapters) to adapters and data platforms natively in dbt Cloud or install them manually using dbt Core.
 

@@ -18,10 +18,10 @@ Welcome to the third installment of our comprehensive series on optimizing and d
 
 ### Prerequisites
 
-If you don't have any of the following requirements, refer to the instructions in the [setup guide](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) to catch up:
+If you don't have any of the following requirements, refer to the instructions in the [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project) for help meeting these requirements:
 
-- You have [set up your Databricks and dbt Cloud environments](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project).
-- You have [optimized your dbt models for peak performance](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
+- You have [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project).
+- You have [optimized your dbt models for peak performance](/guides/optimize-dbt-models-on-databricks).
 - You have created two catalogs in Databricks: *dev* and *prod*.
 - You have created  Databricks Service Principal to run your production jobs.
 - You have at least one [deployment environment](/docs/deploy/deploy-environments) in dbt Cloud.
@@ -52,7 +52,7 @@ Let’s [create a job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) in dbt
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 2. **Name** the job “Daily refresh”.
 3. Set the **Environment** to your *production* environment.
-    - This will allow the job to inherit the catalog, schema, credentials, and environment variables defined in the [setup guide](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project#defining-your-dbt-deployment-environment).
+    - This will allow the job to inherit the catalog, schema, credentials, and environment variables defined in [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project).
 4. Under **Execution Settings**
     - Check the **Generate docs on run** checkbox to configure the job to automatically generate project docs each time this job runs. This will ensure your documentation stays evergreen as models are added and modified.
     - Select the **Run on source freshness** checkbox to configure dbt [source freshness](/docs/deploy/source-freshness) as the first step of this job. Your sources will need to be configured to [snapshot freshness information](/docs/build/sources#snapshotting-source-data-freshness) for this to drive meaningful insights.
@@ -87,7 +87,7 @@ dbt allows you to write [tests](/docs/build/tests) for your data pipeline, which
 2. **Development**: Running tests during development ensures that your code changes do not break existing assumptions, enabling developers to iterate faster by catching problems immediately after writing code.
 3. **CI checks**: Automated CI jobs run and test your pipeline end-to end when a pull request is created, providing confidence to developers, code reviewers, and end users that the proposed changes are reliable and will not cause disruptions or data quality issues
 
-Your CI job will ensure that the models build properly and pass any tests applied to them. We recommend creating a separate *test* environment and having a dedicated service principal. This will ensure the temporary schemas created during CI tests are in their own catalog and cannot unintentionally expose data to other users. Repeat the [steps](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) used to create your *prod* environment to create a *test* environment. After setup, you should have:
+Your CI job will ensure that the models build properly and pass any tests applied to them. We recommend creating a separate *test* environment and having a dedicated service principal. This will ensure the temporary schemas created during CI tests are in their own catalog and cannot unintentionally expose data to other users. Repeat the steps in [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project) to create your *prod* environment to create a *test* environment. After setup, you should have:
 
 - A catalog called *test*
 - A service principal called *dbt_test_sp*
@@ -130,13 +130,13 @@ The five key steps for troubleshooting dbt Cloud issues are:
 3. Isolate the problem by running one model at a time in the IDE or undoing the code that caused the issue.
 4. Check for problems in compiled files and logs.
 
-Consult the [Debugging errors documentation](/best-practices/debugging-errors) for a comprehensive list of error types and diagnostic methods.
+Consult the [Debugging errors documentation](/guides/debug-errors) for a comprehensive list of error types and diagnostic methods.
 
 To troubleshoot issues with a dbt Cloud job, navigate to the "Deploy > Run History" tab in your dbt Cloud project and select the failed run. Then, expand the run steps to view [console and debug logs](/docs/deploy/run-visibility#access-logs) to review the detailed log messages. To obtain additional information, open the Artifacts tab and download the compiled files associated with the run.
 
 If your jobs are taking longer than expected, use the [model timing](/docs/deploy/run-visibility#model-timing) dashboard to identify bottlenecks in your pipeline. Analyzing the time taken for each model execution helps you pinpoint the slowest components and optimize them for better performance. The Databricks [Query History](https://docs.databricks.com/sql/admin/query-history.html) lets you inspect granular details such as time spent in each task, rows returned, I/O performance, and execution plan.
 
-For more on performance tuning, see our guide on [How to Optimize and Troubleshoot dbt Models on Databricks](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
+For more on performance tuning, see our guide on [How to Optimize and Troubleshoot dbt Models on Databricks](/guides/optimize-dbt-models-on-databricks).
 
 ## Advanced considerations
 
@@ -160,7 +160,7 @@ To trigger your dbt Cloud job from Databricks, follow the instructions in our [D
 
 ## Data masking
 
-Our [Best Practices for dbt and Unity Catalog](/guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices) guide recommends using separate catalogs *dev* and *prod* for development and deployment environments, with Unity Catalog and dbt Cloud handling configurations and permissions for environment isolation. Ensuring security while maintaining efficiency in your development and deployment environments is crucial. Additional security measures may be necessary to protect sensitive data, such as personally identifiable information (PII).
+Our [Best Practices for dbt and Unity Catalog](/best-practices/dbt-unity-catalog-best-practices) guide recommends using separate catalogs *dev* and *prod* for development and deployment environments, with Unity Catalog and dbt Cloud handling configurations and permissions for environment isolation. Ensuring security while maintaining efficiency in your development and deployment environments is crucial. Additional security measures may be necessary to protect sensitive data, such as personally identifiable information (PII).
 
 Databricks leverages [Dynamic Views](https://docs.databricks.com/data-governance/unity-catalog/create-views.html#create-a-dynamic-view) to enable data masking based on group membership. Because views in Unity Catalog use Spark SQL, you can implement advanced data masking by using more complex SQL expressions and regular expressions. You can now also apply fine grained access controls like row filters in preview and column masks in preview on tables in Databricks Unity Catalog, which will be the recommended approach to protect sensitive data once this goes GA. Additionally, in the near term, Databricks Unity Catalog will also enable Attribute Based Access Control natively, which will make protecting sensitive data at scale simpler.
 

@@ -164,8 +164,7 @@ We strongly encourage you to adopt the following approach when versioning and re
 
 This step will walk you through the first creating the necessary adapter classes and macros, and provide some resources to help you validate that your new adapter is working correctly. Make sure you've familiarized yourself with the previous steps in this guide.
 
-Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](4-testing-a-new-adapter)
-), please let the community know that is available to use by adding the adapter to the ["Supported Data Platforms"](/docs/supported-data-platforms) page by following the steps given in [Documenting your adapter](/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter).
+Once the adapter is passing most of the functional tests in the previous "Testing a new adapter" step, please let the community know that is available to use by adding the adapter to the ["Supported Data Platforms"](/docs/supported-data-platforms) page by following the steps given in "Documenting your adapter.
 
 For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
 
@@ -1294,7 +1293,7 @@ Essential functionality includes (but is not limited to the following features):
 
 The adapter should have the required documentation for connecting and configuring the adapter. The dbt docs site should be the single source of truth for this information. These docs should be kept up-to-date.
 
-See [Documenting a new adapter](/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter) for more information.
+Proceed to the "Document a new adapter" step for more information.
 
 ### Release Cadence
 

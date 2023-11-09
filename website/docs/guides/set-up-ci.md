@@ -54,7 +54,7 @@ To be able to find modified nodes, dbt needs to have something to compare agains
 
 ### 3. Test your process
 
-That's it! There are other steps you can take to be even more confident in your work, such as [validating your structure follows best practices](/guides/orchestration/set-up-ci/run-dbt-project-evaluator) and [linting your code](/guides/orchestration/set-up-ci/lint-on-push), but this covers the most critical checks.
+That's it! There are other steps you can take to be even more confident in your work, such as validating your structure follows best practices and linting your code. For more information, refer to [Get started with Continuous Integration tests](/guides/set-up-ci).
 
 To test your new flow, create a new branch in the dbt Cloud IDE then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft). Within a few seconds, you’ll see a new check appear in your git provider.
 
@@ -313,7 +313,7 @@ The git flow will look like this:
 
 ### Advanced prerequisites
 
-- You have the **Development**, **CI**, and **Production** environments, as described in [the Baseline setup](/guides/orchestration/set-up-ci/in-15-minutes).
+- You have the **Development**, **CI**, and **Production** environments, as described in [the Baseline setup](/guides/set-up-ci).
 
 ### 1. Create a `release` branch in your git repo
 
@@ -350,6 +350,6 @@ Adding a regularly-scheduled job inside of the QA environment whose only command
 
 ### 5. Test your process
 
-When the Release Manager is ready to cut a new release, they will manually open a PR from `qa` into `main` from their git provider (e.g. GitHub, GitLab, Azure DevOps). dbt Cloud will detect the new PR, at which point the existing check in the CI environment will trigger and run. When using the [baseline configuration](/guides/orchestration/set-up-ci/in-15-minutes), it's possible to kick off the PR creation from inside of the dbt Cloud IDE. Under this paradigm, that button will create PRs targeting your QA branch instead.
+When the Release Manager is ready to cut a new release, they will manually open a PR from `qa` into `main` from their git provider (e.g. GitHub, GitLab, Azure DevOps). dbt Cloud will detect the new PR, at which point the existing check in the CI environment will trigger and run. When using the [baseline configuration](/guides/set-up-ci), it's possible to kick off the PR creation from inside of the dbt Cloud IDE. Under this paradigm, that button will create PRs targeting your QA branch instead.
 
 To test your new flow, create a new branch in the dbt Cloud IDE then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft) against your `qa` branch. You'll see the integration tests begin to run. Once they complete, manually create a PR against `main`, and within a few seconds you’ll see the tests run again but this time incorporating all changes from all code that hasn't been merged to main yet.
