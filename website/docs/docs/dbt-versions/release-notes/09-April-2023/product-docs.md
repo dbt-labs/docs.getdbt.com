@@ -31,10 +31,10 @@ Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleo
 
 ## New 📚 Guides and ✏️ blog posts
 
-- [Use Databricks workflows to run dbt Cloud jobs](/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs)
+- [Use Databricks workflows to run dbt Cloud jobs](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs)
 - [Refresh Tableau workbook with extracts after a job finishes](/guides/zapier-refresh-tableau-workbook)
 - [dbt Python Snowpark workshop/tutorial](/guides/dbt-python-snowpark)
 - [How to optimize and troubleshoot dbt Models on Databricks](/guides/optimize-dbt-models-on-databricks)
-- [The missing guide to debug() in dbt](https://docs.getdbt.com/blog/guide-to-jinja-debug)
-- [dbt Squared: Leveraging dbt Core and dbt Cloud together at scale](https://docs.getdbt.com/blog/dbt-squared)
-- [Audit_helper in dbt: Bringing data auditing to a higher level](https://docs.getdbt.com/blog/audit-helper-for-migration)
+- [The missing guide to debug() in dbt](/blog/guide-to-jinja-debug)
+- [dbt Squared: Leveraging dbt Core and dbt Cloud together at scale](/blog/dbt-squared)
+- [Audit_helper in dbt: Bringing data auditing to a higher level](/blog/audit-helper-for-migration)

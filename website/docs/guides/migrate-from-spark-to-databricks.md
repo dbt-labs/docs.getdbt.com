@@ -14,7 +14,7 @@ recently_updated: true
 
 ## Introduction
 
-You can [migrate your projects](#migrate-your-dbt-projects) from using the `dbt-spark` adapter to using the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks). In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
+You can migrate your projects from using the `dbt-spark` adapter to using the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks). In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
 
 ### Prerequisites
 

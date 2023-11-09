@@ -156,7 +156,7 @@ Inserting dbt Cloud jobs into a Databricks Workflows allows you to chain togethe
 - Logs and Run History: Accessing logs and run history becomes more convenient when using dbt Cloud.
 - Monitoring and Notification Features: dbt Cloud comes equipped with monitoring and notification features like the ones described above that can help you stay informed about the status and performance of your jobs.
 
-To trigger your dbt Cloud job from Databricks, follow the instructions in our [Databricks Workflows to run dbt Cloud jobs guide](/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
+To trigger your dbt Cloud job from Databricks, follow the instructions in our [Databricks Workflows to run dbt Cloud jobs guide](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
 
 ## Data masking
 

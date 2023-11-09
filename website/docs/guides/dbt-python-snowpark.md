@@ -932,7 +932,7 @@ By now, we are pretty good at creating new files in the correct directories so w
     select * from int_results
     ```
 
-1. Create a *Markdown* file `intermediate.md` that we will go over in depth during the [Testing](/guides/dbt-ecosystem/dbt-python-snowpark/13-testing) and [Documentation](/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation) sections.
+1. Create a *Markdown* file `intermediate.md` that we will go over in depth in the Test and Documentation sections of the [Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python with Snowflake](/guides/dbt-python-snowpark) guide.
 
     ```markdown
     # the intent of this .md is to allow for multi-line long form explanations for our intermediate transformations
@@ -947,7 +947,7 @@ By now, we are pretty good at creating new files in the correct directories so w
     {% docs int_lap_times_years %} Lap times are done per lap. We need to join them out to the race year to understand yearly lap time trends. {% enddocs %}
     ```
 
-1. Create a *YAML* file `intermediate.yml` that we will go over in depth during the [Testing](/guides/dbt-ecosystem/dbt-python-snowpark/13-testing) and [Documentation](/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation) sections.
+1. Create a *YAML* file `intermediate.yml` that we will go over in depth during the Test and Document sections of the [Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python with Snowflake](/guides/dbt-python-snowpark) guide.
 
     ```yaml
     version: 2

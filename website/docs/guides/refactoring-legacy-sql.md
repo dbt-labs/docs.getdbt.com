@@ -31,7 +31,7 @@ When migrating and refactoring code, it’s of course important to stay organize
 Let's get into it!
 
 :::info More resources
-This guide is excerpted from the new dbt Learn On-demand Course, "Refactoring SQL for Modularity" - if you're curious, pick up the [free refactoring course here](https://courses.getdbt.com/courses/refactoring-sql-for-modularity), which includes example and practice refactoring projects. Or for a more in-depth look at migrating DDL and DML from stored procedures check out [this guide](/guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures).
+This guide is excerpted from the new dbt Learn On-demand Course, "Refactoring SQL for Modularity" - if you're curious, pick up the [free refactoring course here](https://courses.getdbt.com/courses/refactoring-sql-for-modularity), which includes example and practice refactoring projects. Or for a more in-depth look at migrating DDL and DML from stored procedures, refer to the[Migrate from stored procedures](/guides/migrate-from-stored-procedures) guide.
 :::
 
 ## Migrate your existing SQL code
