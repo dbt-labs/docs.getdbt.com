@@ -16,7 +16,7 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 
 ## Prerequisites
 
-- You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using the latest version.
+- You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed with version 2021.1 or greater
    - Note that Tableau Online does not currently support custom connectors natively.
 - Log in to Tableau Desktop using either your license or the login details you use for Tableau Server or Tableau Online.

@@ -56,7 +56,7 @@ The dbt Semantic Layer is proprietary; however, some components of the dbt Seman
 
 <VersionBlock lastVersion="1.5">
 
-import DeprecationNotice from '/snippets/sl-deprecation-notice.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
 <DeprecationNotice />
 

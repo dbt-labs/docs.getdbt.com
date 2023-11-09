@@ -13,7 +13,7 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 
 ## Prerequisites
 
-- You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using the latest version.
+- You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You have a Google account with access to Google Sheets.
 - You can install Google add-ons.
 - You have a dbt Cloud Environment ID and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.

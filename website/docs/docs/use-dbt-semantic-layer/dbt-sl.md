@@ -67,7 +67,7 @@ plan="dbt Cloud Team or Enterprise"
 
 <VersionBlock lastVersion="1.5">
 
-import DeprecationNotice from '/snippets/sl-deprecation-notice.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
 <DeprecationNotice />
 

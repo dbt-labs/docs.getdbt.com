@@ -114,7 +114,7 @@ User data passes through the Semantic Layer on its way back from the warehouse. 
 
 <VersionBlock lastVersion="1.5">
 
-import DeprecationNotice from '/snippets/sl-deprecation-notice.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
 <DeprecationNotice />
 

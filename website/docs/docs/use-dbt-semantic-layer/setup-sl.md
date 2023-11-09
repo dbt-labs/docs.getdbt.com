@@ -39,7 +39,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 <VersionBlock lastVersion="1.5">
 
-import DeprecationNotice from '/snippets/sl-deprecation-notice.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
 <DeprecationNotice />
 
