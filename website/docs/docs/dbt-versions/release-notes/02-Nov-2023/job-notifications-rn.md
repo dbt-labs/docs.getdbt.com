@@ -8,7 +8,7 @@ tags: [Nov-2023]
 
 There are new quality-of-life improvements in dbt Cloud for email and Slack notifications about your jobs: 
 
-- You can add external email addresses and receive job notifications from them. External emails can be:
+- You can add external email addresses and send job notifications to them. External emails can be:
     - Addresses that are outside of your dbt Cloud account
     - Third-party integration addresses for configuring notifications to services like Microsoft Teams or PagerDuty 
 - You can configure notifications for multiple Slack channels. Previously, you could only configure one Slack channel. 
