@@ -94,7 +94,7 @@ It is essential to click on each data source (the green book icons on the leftmo
 
 For this step, we identified which operators were used in the data source (for example, joining data, order columns, group by, etc). Usually the Alteryx operators are pretty self-explanatory and all the information needed for understanding appears on the left side of the menu. We also checked the documentation to understand how each Alteryx operator works behind the scenes.
 
-We followed dbt Labs' guide on how to refactor legacy SQL queries in dbt and some [best practices](https://docs.getdbt.com/guides/migration/tools/refactoring-legacy-sql). After we finished refactoring all the Alteryx workflows, we checked if the Alteryx output matched the output of the refactored model built on dbt.
+We followed dbt Labs' guide on how to refactor legacy SQL queries in dbt and some [best practices](https://docs.getdbt.com/guides/refactoring-legacy-sql). After we finished refactoring all the Alteryx workflows, we checked if the Alteryx output matched the output of the refactored model built on dbt.
 
 #### Step 3: Use the `audit_helper` package to audit refactored data models
 
@@ -131,4 +131,4 @@ As we can see, refactoring Alteryx to dbt was an important step in the direction
 >
 > [Audit_helper in dbt: Bringing data auditing to a higher level](https://docs.getdbt.com/blog/audit-helper-for-migration)
 >
-> [Refactoring legacy SQL to dbt](https://docs.getdbt.com/guides/migration/tools/refactoring-legacy-sql)
+> [Refactoring legacy SQL to dbt](https://docs.getdbt.com/guides/refactoring-legacy-sql)

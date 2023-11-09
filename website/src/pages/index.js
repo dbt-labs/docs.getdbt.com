@@ -34,7 +34,7 @@ function Home() {
   const featuredResource = {
     title: "How we structure our dbt projects",
     description: "Our hands-on learnings for how to structure your dbt project for success and gain insights into the principles of analytics engineering.",
-    link: "/guides/best-practices/how-we-structure/1-guide-overview",
+    link: "/best-practices/how-we-structure/1-guide-overview",
     image: "/img/structure-dbt-projects.png",
     sectionTitle: 'Featured resource'
   }
@@ -146,9 +146,9 @@ function Home() {
             <div className="grid--3-col">
               <div>
                 <Card
-                  title="Guides"
+                  title="Best practices"
                   body="Learn battle tested strategies for analytics engineering best practices."
-                  link="/guides/best-practices"
+                  link="/best-practices"
                   icon="guides"
                 />
               </div>

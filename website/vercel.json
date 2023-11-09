@@ -8,6 +8,11 @@
       "permanent": true
     },
     {
+      "source": "/faqs/Project/docs-for-multiple-projects",
+      "destination": "/docs/collaborate/explore-projects#about-project-level-lineage",
+      "permanent": true
+    },
+    {
       "source": "/faqs/Accounts/slack",
       "destination": "/docs/deploy/job-notifications",
       "permanent": true
@@ -4180,11 +4185,6 @@
     {
       "source": "/quickstarts/manual-install",
       "destination": "/guides/manual-install",
-      "permanent": true
-    },
-    {
-      "source": "TODO",
-      "destination": "TODO",
       "permanent": true
     }
   ]

@@ -117,7 +117,7 @@ Setting up [notifications](/docs/deploy/job-notifications) in dbt Cloud allows y
 2. Select the **Notifications** tab.
 3. Choose the desired notification type (Email or Slack) and configure the relevant settings.
 
-If you require notifications through other means than email or Slack, you can use dbt Cloud's outbound [webhooks](/docs/deploy/webhooks) feature to relay job events to other tools. Webhooks enable you to [integrate dbt Cloud with a wide range of SaaS applications](/guides/orchestration/webhooks), extending your pipeline’s automation into other systems.
+If you require notifications through other means than email or Slack, you can use dbt Cloud's outbound [webhooks](/docs/deploy/webhooks) feature to relay job events to other tools. Webhooks enable you to integrate dbt Cloud with a wide range of SaaS applications, extending your pipeline’s automation into other systems.
 
 ## Troubleshooting
 
