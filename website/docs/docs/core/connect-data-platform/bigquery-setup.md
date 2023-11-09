@@ -455,6 +455,7 @@ my-profile:
       dataproc_region: us-central1
       submission_method: serverless
       dataproc_batch:
+        batch_id: MY_CUSTOM_BATCH_ID
         environment_config:
           execution_config:
             service_account: dbt@abc-123.iam.gserviceaccount.com
