@@ -18,9 +18,9 @@ Both the dbt Cloud IDE and the dbt Cloud CLI allow users to natively defer to pr
 
 For specific scenarios:
 - Use [`--favor-state`](/reference/node-selection/defer#favor-state) to always use production artifacts to resolve the ref.
-- If facing issues with outdated tables in the dev schema, `--favor-state` is an alternative to defer.
+- If facing issues with outdated tables in the development schema, `--favor-state` is an alternative to defer.
 
-For a clean slate, it's a good practice to drop the dev schema at the start and end of your development cycle.
+For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 
 ## Required setup
 
