@@ -73,7 +73,7 @@ Your project is switching out the `generate_schema_name` macro for another macro
 
 {%- endmacro %}
 ```
-### I have a `generate_schema_name` macro with custom logic
+### You have a `generate_schema_name` macro with custom logic
 
 If this is the case — it might be a great idea to reach out to the person who added this macro to your project, as they will have context here — you can use [GitHub's blame feature](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/tracking-changes-in-a-file) to do this.
 
