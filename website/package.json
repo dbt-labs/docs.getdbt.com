@@ -44,6 +44,7 @@
     "redoc": "^2.0.0-rc.57",
     "rehype-katex": "^5.0.0",
     "remark-math": "^3.0.1",
+    "remark-react": "^9.0.1",
     "sanitize-html": "^2.8.0",
     "slugify": "^1.6.1",
     "styled-components": "5.3.3",

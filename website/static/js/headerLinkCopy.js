@@ -1,29 +1,52 @@
 /* eslint-disable */
 
-window.addEventListener("load", function () {
-    // Get all the headers with anchor links
-    const headers = document.querySelectorAll("h2.anchor, h3.anchor"); 
+  // Get all the headers with anchor links
+  window.addEventListener("load", function() {
+    const headers = document.querySelectorAll("h2.anchor, h3.anchor");
 
-    headers.forEach((header) => {
-      header.style.cursor = "pointer";
-      const clipboard = new ClipboardJS(header, { 
+headers.forEach((header) => {
+    header.style.cursor = "pointer";
+    const clipboard = new ClipboardJS(header, {
         text: function(trigger) {
-          const anchorLink = trigger.getAttribute("id");
-          return window.location.href.split('#')[0] +'#' + anchorLink;
+            const anchorLink = trigger.getAttribute("id");
+            return window.location.href.split('#')[0] + '#' + anchorLink;
         }
-      });
-  
-      clipboard.on('success', function(e) {
+    });
+
+    clipboard.on('success', function(e) {
         // Provide user feedback (e.g., alert or tooltip) here
-        console.log("e",e);
+        const popup = document.createElement('div');
+        popup.classList.add('copy-popup');
+        popup.innerText = 'Link copied!';
+        document.body.appendChild(popup);
+
+        // Set up timeout to remove the popup after 5 seconds
+        setTimeout(() => {
+            document.body.removeChild(popup);
+        }, 5000);
+
+        // Add close button ('x')
+        const closeButton = document.createElement('span');
+        closeButton.classList.add('close-button');
+        closeButton.innerHTML = ' &times;'; // '×' symbol for 'x'
+        closeButton.addEventListener('click', () => {
+            if (document.body.contains(popup)) {
+                document.body.removeChild(popup);
+            }
+        });
+        popup.appendChild(closeButton);
+
+        // Add and remove the 'clicked' class for styling purposes
         e.trigger.classList.add("clicked");
         setTimeout(() => {
-          e.trigger.classList.remove('clicked')
-        }, 5000) 
-      });
-  
-      clipboard.on('error', function(e) {
-        console.error("Unable to copy to clipboard: " + e.text);
-      });
+            if (document.body.contains(popup)) {
+                document.body.removeChild(popup);
+            }
+        }, 5000);
     });
-  });
+
+    clipboard.on('error', function(e) {
+        console.error("Unable to copy to clipboard: " + e.text);
+    });
+});
+});

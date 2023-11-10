@@ -6,7 +6,7 @@ pagination_next: "docs/collaborate/build-and-view-your-docs"
 pagination_prev: null
 ---
 
-## Related documentation
+## Related documentation <ReleaseStatus status="Beta" />
 
 * [Declaring properties](/reference/configs-and-properties)
 * [`dbt docs` command](/reference/commands/cmd-docs)
@@ -17,7 +17,7 @@ pagination_prev: null
 
 * [Tests](/docs/build/tests)
 
-## Overview
+## Overview 
 
 Good documentation for your dbt models will help downstream consumers discover and understand the datasets which you curate for them.
 

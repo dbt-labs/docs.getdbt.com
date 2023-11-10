@@ -2033,6 +2033,7 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   margin: 10px;
   color: #818589; /* You can adjust the color as needed */
 }
+
 h3.anchor a.hash-link:before,
 h2.anchor a.hash-link:before {
   content: "";
@@ -2042,11 +2043,57 @@ h2.anchor a.hash-link:before {
   width: 18px;
   display: inline-block;
 }
+
 h3.anchor.clicked a.hash-link:before,
 h2.anchor.clicked a.hash-link:before {
   background-image: url('/img/check.png');
   background-size: 18px 13px;
   height: 13px;
+}
+
+.copy-popup {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #047377;
+  color: rgb(236, 236, 236);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.close-button {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.close-button:hover {
+  color: #fff; /* Change color on hover if desired */
+}
+
+.release-status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  margin-right: 8px;
+}
+
+.release-status-beta {
+  background-color:lightgreen; /* Adjust the color as needed */
+  color: #eae6e6;
+}
+
+.release-status-public-preview {
+  background-color: #4caf50; /* Adjust the color as needed */
+  color: #fff;
+}
+
+.release-status-private-preview {
+  background-color: #2196f3; /* Adjust the color as needed */
+  color: #fff;
 }
 
 @media (max-width: 996px) {

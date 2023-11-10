@@ -2,6 +2,7 @@ const path = require("path");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
+const reactPlugin = import('remark-react');
 require("dotenv").config();
 
 /* Debugging */
@@ -215,7 +216,7 @@ var siteSettings = {
           path: "docs",
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [math],
+          remarkPlugins: [math, reactPlugin],
           rehypePlugins: [katex],
 
           editUrl:
