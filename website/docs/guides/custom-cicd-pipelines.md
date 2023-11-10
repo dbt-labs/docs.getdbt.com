@@ -1,5 +1,5 @@
 ---
-title: Customizing CI/CD with Custom Pipelines
+title: Customizing CI/CD with custom pipelines
 id: custom-cicd-pipelines
 description: "Learn the benefits of version-controlled analytics code and custom pipelines in dbt for enhanced code testing and workflow automation during the development process."
 displayText: Learn version-controlled code, custom pipelines, and enhanced code testing.
