@@ -131,4 +131,4 @@ As we can see, refactoring Alteryx to dbt was an important step in the direction
 >
 > [Audit_helper in dbt: Bringing data auditing to a higher level](https://docs.getdbt.com/blog/audit-helper-for-migration)
 >
-> [Refactoring legacy SQL to dbt](https://docs.getdbt.com/guides/refactoring-legacy-sql)
+> [Refactoring legacy SQL to dbt](/guides/refactoring-legacy-sql)
