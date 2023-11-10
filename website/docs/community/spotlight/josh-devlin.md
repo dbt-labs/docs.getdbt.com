@@ -2,11 +2,15 @@
 id: josh-devlin
 title: Josh Devlin
 description: |
-  After "discovering" dbt in early 2020, I <a href="https://www.getdbt.com/community/join-the-community/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2024_dbt-spotlight_aw&utm_content=____&utm_term=all___" title="joined the community" rel="noopener noreferrer" target="_blank">joined the community</a> and used it as a learning tool while I tried to get dbt introduced at my company. By helping others, I learned about common pitfalls, best practices, and the breadth of the tool. When it came time to implement it months later, I already felt like an expert!
+  Josh Devlin has a rich history of community involvement and technical expertise in both the dbt and wider analytics communities.
 
-  In December 2020 I attended the first virtual Coalesce conference, attending all 4 days across 3 time zones! I found my quirky-nerdy-purple-people, and felt at home.
+  Discovering dbt in early 2020, he quickly became an integral member of its <a href="https://www.getdbt.com/community/join-the-community">community</a>, leveraging the platform as a learning tool and aiding others along their dbt journey. Josh has helped thousands of dbt users with his advice and near-encyclopaedic knowledge of dbt.
 
-  3 years later I had the pleasure of presenting at my first <a href="https://www.meetup.com/sydney-dbt-meetup/" title="dbt Meetup in Sydney" rel="noopener noreferrer" target="_blank">dbt Meetup in Sydney</a>, and then <a href="https://coalesce.getdbt.com/blog/babies-and-bathwater-is-kimball-still-relevant" title="at the first in-person Coalesce" rel="noopener noreferrer" target="_blank">at the first in-person Coalesce</a> in New Orleans. My passion is helping people, and I'm glad that the dbt community gives me a place to do that!
+  Beyond the online community, he transitioned from being an attendee at the first virtual Coalesce conference in December 2020 to a <a href="https://coalesce.getdbt.com/blog/babies-and-bathwater-is-kimball-still-relevant" title="at the first in-person Coalesce" rel="noopener noreferrer" target="_blank">presenter at the first in-person Coalesce event</a> in New Orleans in 2022.  He has also contributed to the dbt-core and dbt-snowflake codebases, helping improve the product in the most direct way.
+
+  His continuous contributions echo his philosophy of learning through teaching, a principle that has not only enriched the dbt community but also significantly bolstered his proficiency with the tool, making him a valuable community member.
+
+  Aside from his technical endeavors, Josh carries a heart for communal growth and an individual's ability to contribute to a larger whole, a trait mirrored in his earlier pursuits as an orchestral musician. His story is a blend of technical acumen, communal involvement, and a nuanced appreciation for the symbiotic relationship between teaching and learning, making him a notable figure in the analytics engineering space.
 image: /img/community/spotlight/josh-devlin.jpg
 pronouns: he/him
 location: Melbourne, Australia (but spent most of the last decade in Houston, USA)
