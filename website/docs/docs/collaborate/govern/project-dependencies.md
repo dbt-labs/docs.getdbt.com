@@ -33,7 +33,7 @@ Refer to the [FAQs](#faqs) for more info.
 
 In order to add project dependencies and resolve cross-project `ref`, you must:
 - Use dbt v1.6 or higher for **both** the upstream ("producer") project and the downstream ("consumer") project.
-- Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment-beta)
+- Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment)
 - Have a successful run of the upstream ("producer") project
 - Have a multi-tenant or single-tenant [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account (Azure ST is not supported but coming soon)
 
