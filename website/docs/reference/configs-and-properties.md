@@ -11,7 +11,7 @@ A rule of thumb: properties declare things _about_ your project resources; confi
 
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
-- Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
+* Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
 * Define pointers to existing tables that contain raw data, in the form of [sources](/docs/build/sources), and assert the expected "freshness" of this raw data
 * Define official downstream uses of your data models, in the form of [exposures](/docs/build/exposures)
 
@@ -67,12 +67,14 @@ Previous versions of the docs referred to these as `schema.yml` files — we've 
 dbt has the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
 
 Certain properties are special, because:
+
 - They have a unique Jinja rendering context
 - They create new project resources
 - They don't make sense as hierarchical configuration
 - They're older properties that haven't yet been redefined as configs
 
 These properties are:
+
 - [`description`](/reference/resource-properties/description)
 - [`tests`](/reference/resource-properties/tests)
 - [`docs`](/reference/resource-configs/docs)
@@ -202,3 +204,4 @@ Runtime Error
 ```
 
 This error occurred because a semicolon (`;`) was accidentally used instead of a colon (`:`) after the `description` field. To resolve issues like this, find the `.yml` file referenced in the error message and fix any syntax errors present in the file. There are online YAML validators that can be helpful here, but please be mindful of submitting sensitive information to third-party applications!
+
