@@ -11,8 +11,6 @@ location: Edmond, USA
 jobTitle: Solution Architect
 companyName: phData
 socialLinks:
-  - name: Twitter
-    link: link
   - name: LinkedIn
     link: https://www.linkedin.com/in/dakota-kelley/
 dateCreated: 2023-10-03
