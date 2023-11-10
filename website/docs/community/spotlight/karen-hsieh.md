@@ -12,7 +12,7 @@ description: |
 image: /img/community/spotlight/karen-hsieh.jpg
 pronouns: she/her
 location: Taipei, Taiwan
-jobTitle: Director of Product & Data
+jobTitle: Director of Tech & Data
 companyName: ALPHA Camp
 organization: ""
 socialLinks:
@@ -22,7 +22,7 @@ socialLinks:
     link: https://www.linkedin.com/in/karenhsieh/
   - name: Medium
     link: https://medium.com/@ijacwei
-dateCreated: 2023-03-24
+dateCreated: 2023-11-03
 hide_table_of_contents: true
 ---
 
