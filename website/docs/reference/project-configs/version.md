@@ -13,7 +13,9 @@ dbt projects have two distinct types of `version` tags. This field has a differe
 
 ## `dbt_project.yml` versions
 
-The version tag in a `dbt_project` file represents the version of your dbt project. Starting in dbt version 1.5, `version` in the `dbt_project.yml` is an *optional parameter*. If used, the version must be in a [semantic version](https://semver.org/) format, such as `1.0.0`. The default value is `None` if not specified. For users on dbt version 1.4 or lower, this tag is required, though it isn't currently used meaningfully by dbt.
+The version tag in a `dbt_project` file represents the version of your dbt project. 
+
+Starting in dbt version 1.5, `version` in the `dbt_project.yml` is an *optional parameter*. If used, the version must be in a [semantic version](https://semver.org/) format, such as `1.0.0`. The default value is `None` if not specified. For users on dbt version 1.4 or lower, this tag is required, though it isn't currently used meaningfully by dbt.
 
 For more on Core versions, see [About dbt Core versions](/docs/dbt-versions/core).
 
