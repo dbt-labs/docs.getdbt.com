@@ -32,4 +32,4 @@ Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/) in June:
 
 ## New 📚 Guides, ✏️ blog posts, and FAQs
 
-- Add an Azure DevOps example to the in the [Customizing CI/CD with Custom Pipelines](/guides/custom-cicd-pipelines) guide.
+- Add an Azure DevOps example in the [Customizing CI/CD with Custom Pipelines](/guides/custom-cicd-pipelines) guide.
