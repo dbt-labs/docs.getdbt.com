@@ -186,7 +186,7 @@ This section allows you to determine the credentials that should be used when co
 
 ## Related docs
 
-- [dbt Cloud environment best practices](https://docs.getdbt.com/best-practices/environment-setup/1-env-guide-overview)
+- [dbt Cloud environment best practices](/best-practices/environment-setup/1-env-guide-overview)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Delete a job or environment in dbt Cloud](/faqs/Environments/delete-environment-job)
