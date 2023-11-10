@@ -35,11 +35,11 @@ dbt prioritizes configurations in order of specificity, from most specificity to
 
 Note - Generic tests work a little differently when it comes to specificity. See [test configs](/reference/test-configs).
 
-Within the project file, configurations are also applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
+Within the project file, configurations are also applied hierarchically. The most specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
 ### Combining configs
 
-Most configurations are "clobbered" when applied hierarchically. Whenever a more-specific value is available, it will completely replace the less-specific value. Note that a few configs have different merge behavior:
+Most configurations are "clobbered" when applied hierarchically. Whenever a more specific value is available, it will completely replace the less specific value. Note that a few configs have different merge behavior:
 - [`tags`](tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags applied in its `.sql` file, the final set of tags will include all of them.
 - [`meta`](/reference/resource-configs/meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key)
 - [`pre-hook` and `post-hook`](/reference/resource-configs/pre-hook-post-hook) are also additive.
