@@ -1,7 +1,7 @@
 ---
 title: "Post to Slack with error context when a job fails"
 id: zapier-slack
-description: Use a webhook or Slack message to trigger Zapier and post error context in Slack when a job fails
+description: Use a webhook or Slack message to trigger Zapier and post error context in Slack when a job fails.
 hoverSnippet: Learn how to use a webhook or Slack message to trigger Zapier to post error context in Slack when a job fails.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'

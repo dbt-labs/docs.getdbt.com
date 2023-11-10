@@ -18,7 +18,7 @@ You can migrate your projects from using the `dbt-spark` adapter to using the [d
 
 ### Prerequisites
 
-- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.3](/docs/dbt-versions/core-upgrade/upgrading-to-v1.3).
+- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7).
 - For dbt Cloud, you need administrative (admin) privileges to migrate dbt projects.
 
 ### Simpler authentication

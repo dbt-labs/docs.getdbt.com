@@ -1,7 +1,7 @@
 ---
 title: "Trigger PagerDuty alarms when dbt Cloud jobs fail"
 id: serverless-pagerduty 
-description: Use webhooks to configure a serverless app to trigger PagerDuty alarms
+description: Use webhooks to configure a serverless app to trigger PagerDuty alarms.
 hoverSnippet: Learn how to configure a serverless app that uses webhooks to trigger PagerDuty alarms.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'

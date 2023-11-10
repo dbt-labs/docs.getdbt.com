@@ -98,7 +98,7 @@ Wrote config file fly.toml<br/>
 ## Configure a new webhook in dbt Cloud
 
 1. See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**.
-2. Set the webhook URL to the host name you created earlier (`APP_NAME.fly.dev`)
+2. Set the webhook URL to the host name you created earlier (`APP_NAME.fly.dev`).
 3. Make note of the Webhook Secret Key for later.
 
 *Do not test the endpoint*; it won't work until you have stored the auth keys (next step)

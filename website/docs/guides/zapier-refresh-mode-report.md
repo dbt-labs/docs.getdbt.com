@@ -1,7 +1,7 @@
 ---
 title: "Refresh a Mode dashboard when a job completes"
 id: zapier-refresh-mode-report
-description: Use Zapier to trigger a Mode dashboard refresh when a dbt Cloud job completes
+description: Use Zapier to trigger a Mode dashboard refresh when a dbt Cloud job completes.
 hoverSnippet: Learn how to use Zapier to trigger a Mode dashboard refresh when a dbt Cloud job completes.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'

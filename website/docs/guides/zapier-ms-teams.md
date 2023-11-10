@@ -1,7 +1,7 @@
 ---
 title: "Post to Microsoft Teams when a job finishes"
 id: zapier-ms-teams
-description: Use Zapier and dbt Cloud webhooks to post to Microsoft Teams when a job finishes running
+description: Use Zapier and dbt Cloud webhooks to post to Microsoft Teams when a job finishes running.
 hoverSnippet: Learn how to use Zapier with dbt Cloud webhooks to post in Microsoft Teams when a job finishes running.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'

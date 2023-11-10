@@ -1,7 +1,7 @@
 ---
 title: "Refresh Tableau workbook with extracts after a job finishes"
 id: zapier-refresh-tableau-workbook
-description: Use Zapier to trigger a Tableau workbook refresh once a dbt Cloud job completes successfully
+description: Use Zapier to trigger a Tableau workbook refresh once a dbt Cloud job completes successfully.
 hoverSnippet: Learn how to use Zapier to trigger a Tableau workbook refresh once a dbt Cloud job completes successfully.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
