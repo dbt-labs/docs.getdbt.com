@@ -215,7 +215,7 @@ If you want to ensure that you're building views whenever the logic is changed, 
     Executing `dbt build` in this context is unnecessary because the CI job was used to both run and test the code that just got merged into main.
 5. Under the **Execution Settings**, select the default production job to compare changes against:
     - **Defer to a previous run state** &mdash; Select the “Merge Job” you created so the job compares and identifies what has changed since the last merge.
-6. In your dbt project, follow the steps in Run a dbt Cloud job on merge in the [Customizing CI/CD with Custom Pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the dbt Cloud API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
+6. In your dbt project, follow the steps in Run a dbt Cloud job on merge in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the dbt Cloud API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
 
 The purpose of the merge job is to:
 
