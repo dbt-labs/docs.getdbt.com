@@ -2,9 +2,9 @@
 id: dakota-kelley
 title: Dakota Kelley
 description: |
-  For the last ~2 years I've worked at phData. Before that I spent 8 years working as a Software Developer in the public sector. Currently I'm a Solution Architect, helping our customers and clients implement dbt on Snowflake, working across multiple cloud providers.
+  For the last ~2 years I've worked at phData. Before that I spent 8 years working as a Software Developer   in the public sector. Currently I'm a Solution Architect, helping our customers and clients implement      dbt on Snowflake, working across multiple cloud providers.
 
-  I first started reading about dbt when I was in grad school about 3 years ago. When I began with phData I had a fantastic opportunity to work with dbt. From there I feel in love with the Engineering practices and structure that I always felt were missing from Data Work. Since then, I've been fortunate enough to speak at dbt Coalesce 2022 and I'm speaking again at dbt Coalesce 2023. On top of this, I've written numerous blogs about dbt as well.
+  I first started reading about dbt when I was in grad school about 3 years ago. When I began with phData    I had a fantastic opportunity to work with dbt. From there I feel in love with the Engineering practices   and structure that I always felt were missing from Data Work. Since then, I've been fortunate enough to    speak at dbt Coalesce 2022 and I'm speaking again at dbt Coalesce 2023. On top of this, I've written       numerous blogs about dbt as well.
 image: /img/community/spotlight/dakota.jpg
 pronouns: he/him
 location: Edmond, USA
