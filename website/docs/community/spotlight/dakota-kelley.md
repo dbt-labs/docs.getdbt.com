@@ -1,5 +1,5 @@
 ---
-id: #dakota-kelley
+id: dakota-kelley
 title: Dakota Kelley
 description: |
   For the last ~2 years I've worked at phData. Before that I spent 8 years working as a Software Developer in the public sector. Currently I'm a Solution Architect, helping our customers and clients implement dbt on Snowflake, working across multiple cloud providers.
