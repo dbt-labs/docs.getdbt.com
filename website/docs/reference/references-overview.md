@@ -4,6 +4,8 @@ id: "references-overview"
 sidebar_label: "About References"
 description: "Connect dbt to any data platform in dbt Cloud or dbt Core, using a dedicated adapter plugin"
 hide_table_of_contents: true
+pagination_next: null
+pagination_prev: null
 ---
 
 The References section contains reference materials for developing with dbt, which includes dbt Cloud and dbt Core.
@@ -49,9 +51,27 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     icon="computer"/>
 
 <Card
-    title="Snowflake Permissions Artifacts"
+    title="Snowflake permissions artifacts"
     body="Provides an example Snowflake database role permissions."
-    link="/reference/snowflake-permissions"
+    link="/reference/database-permissions/snowflake-permissions"
+    icon="computer"/>
+
+<Card
+    title="Databricks permissions artifacts"
+    body="Provides an example Databricks database role permissions."
+    link="/reference/database-permissions/databricks-permissions"
+    icon="computer"/>
+
+<Card
+    title="Redshift permissions artifacts"
+    body="Provides an example Redshift database role permissions."
+    link="/reference/database-permissions/redshift-permissions"
+    icon="computer"/>
+
+<Card
+    title="Postgres permissions artifacts"
+    body="Provides an example Postgres database role permissions."
+    link="/reference/database-permissions/postgres-permissions"
     icon="computer"/>
 
 </div>

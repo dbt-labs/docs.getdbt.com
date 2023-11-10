@@ -163,7 +163,7 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 ```
 3. Check out the SQL dbt is running by either:
    * **dbt Cloud:** checking the Details tab.
-   * **dbt CLI:** checking the `target/compiled` directory
+   * **dbt Core:** checking the `target/compiled` directory
 
 
 **Unique test**
@@ -241,7 +241,7 @@ where {{ column_name }} is null
 
 ## Storing test failures
 
-Normally, a test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag or [`store_failures` config](/reference/resource-configs/store_failures), dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
+Normally, a test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag,  the [`store_failures`](/reference/resource-configs/store_failures), or the [`store_failures_as`](/reference/resource-configs/store_failures_as) configs, dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
 
 This workflow allows you to query and examine failing records much more quickly in development:
 

@@ -16,6 +16,7 @@ This functionality is new in v1.5.
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Metrics', value: 'metrics', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -27,8 +28,6 @@ Support for grouping models was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='models/schema.yml'>
 
@@ -67,6 +66,8 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="seeds">
@@ -78,8 +79,6 @@ Support for grouping seeds was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -101,6 +100,8 @@ seeds:
 
 </File>
 
+</VersionBlock>
+
 
 </TabItem>
 
@@ -113,8 +114,6 @@ Support for grouping snapshots was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -142,6 +141,8 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 
 </TabItem>
 
@@ -154,8 +155,6 @@ Support for grouping tests was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -209,6 +208,8 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="analyses">
@@ -238,8 +239,6 @@ Support for grouping metrics was added in dbt Core v1.5
 
 <VersionBlock firstVersion="1.5">
 
-</VersionBlock>
-
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -263,12 +262,50 @@ metrics:
 
 </File>
 
+</VersionBlock>
+
+</TabItem>
+
+
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for grouping semantic models has been added in dbt Core v1.7.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+semantic_models:
+  - name: <semantic_model_name>
+    group: <group_name>
+
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+semantic-models:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)group: <group_name>
+```
+
+</File>
+
+</VersionBlock>
+
 </TabItem>
 
 </Tabs>
 
 ## Definition
-An optional configuration for grouping models, analysis, snapshots, tests, and metrics. When a resource is grouped, dbt will allow it to reference private models within the same group.
+An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
 For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
 

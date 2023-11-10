@@ -4,6 +4,7 @@ id: simple
 description: "Use simple metrics to directly reference a single measure."
 sidebar_label: Simple
 tags: [Metrics, Semantic Layer]
+pagination_next: null
 ---
 
 Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.

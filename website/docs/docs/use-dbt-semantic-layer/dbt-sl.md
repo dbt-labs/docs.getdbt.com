@@ -5,13 +5,12 @@ description: "Learn how the dbt Semantic Layer enables data teams to centrally d
 sidebar_label: "About the dbt Semantic Layer"
 tags: [Semantic Layer]
 hide_table_of_contents: true
+pagination_next: "docs/use-dbt-semantic-layer/quickstart-sl"
+pagination_prev: null
 ---
 
 <VersionBlock firstVersion="1.6">
 
-import NewSLChanges from '/snippets/_new-sl-changes.md';
-
-<NewSLChanges />
 
 
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handles data joins. 
@@ -26,10 +25,8 @@ Refer to the [Why we need a universal semantic layer](https://www.getdbt.com/blo
 import Features from '/snippets/_sl-plan-info.md'
 
 <Features
-cycle="public beta"
 product="dbt Semantic Layer"
 plan="dbt Cloud Team or Enterprise"
-instance="hosted in North America"
 />
 
 <div className="grid--3-col">
@@ -47,20 +44,20 @@ instance="hosted in North America"
     icon="dbt-bit"/>
 
 <Card
-    title="Available integrations"
-    body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
-    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
-    icon="dbt-bit"/>
-
-<Card
     title="Architecture"
     body="Learn about the powerful components that make up the dbt Semantic Layer."
     link="/docs/use-dbt-semantic-layer/sl-architecture"
     icon="dbt-bit"/>
 
 <Card
-    title="Semantic Layer APIs"
-    body="Use the Semantic Layer API to query metrics in downstream tools for consistent, reliable data metrics."
+    title="Available integrations"
+    body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
+    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
+    icon="dbt-bit"/>
+
+<Card
+    title="dbt Semantic Layer APIs"
+    body="Use the dbt Semantic Layer APIs to query metrics in downstream tools for consistent, reliable data metrics."
     link="/docs/dbt-cloud-apis/sl-api-overview"
     icon="dbt-bit"/>
 
