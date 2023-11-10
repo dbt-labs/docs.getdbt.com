@@ -14,7 +14,7 @@ recently_updated: true
 
 ## Introduction
 
-Building on the [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project) guide, we'd like to discuss performance optimization. In this follow-up post,  we outline simple strategies to optimize for cost, performance, and simplicity when you architect data pipelines. We’ve encapsulated these strategies in this acronym-framework:
+Building on the [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project) guide, we'd like to discuss performance optimization. In this follow-up post, we outline simple strategies to optimize for cost, performance, and simplicity when you architect data pipelines. We’ve encapsulated these strategies in this acronym-framework:
 
 - Platform Components
 - Patterns & Best Practices
