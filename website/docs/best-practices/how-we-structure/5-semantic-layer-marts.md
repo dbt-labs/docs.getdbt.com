@@ -39,7 +39,7 @@ models
 ## When to make a mart
 
 - ❓ If we can go directly to staging models and it's better to serve normalized models to the Semantic Layer, then when, where, and why would we make a mart?
-  - 🕰️ We have models that have measures but no time dimension to aggregate against. The details of this are laid out in the [Semantic Layer guide](https://docs.getdbt.com/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) but in short, we need a time dimension to aggregate against in MetricFlow. Dimensional tables that
+  - 🕰️ We have models that have measures but no time dimension to aggregate against. The details of this are laid out in the [Semantic Layer guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) but in short, we need a time dimension to aggregate against in MetricFlow. Dimensional tables that
   - 🧱 We want to **materialize** our model in various ways.
   - 👯 We want to **version** our model.
   - 🛒 We have various related models that make more sense as **one wider component**.
