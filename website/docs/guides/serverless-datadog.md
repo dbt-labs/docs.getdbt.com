@@ -1,7 +1,7 @@
 ---
 title: "Create Datadog events from dbt Cloud results"
 id: serverless-datadog
-description: Configure a serverless app to add dbt Cloud events to Datadog logs
+description: Configure a serverless app to add dbt Cloud events to Datadog logs.
 hoverSnippet: Learn how to configure a serverless app to add dbt Cloud events to Datadog logs.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
