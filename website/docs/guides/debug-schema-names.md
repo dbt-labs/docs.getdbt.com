@@ -49,7 +49,7 @@ This means that you are using dbt's default implementation of the macro, as defi
 
 Note that this logic is designed so that two dbt users won't accidentally overwrite each other's work by writing to the same schema.
 
-### I have a `generate_schema_name` macro in my project that calls another macro
+### You have a `generate_schema_name` macro in my project that calls another macro
 If your `generate_schema_name` macro looks like so:
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
