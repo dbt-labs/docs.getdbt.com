@@ -438,7 +438,7 @@ Additionally, if you change the model definition of your materialized view or st
 We plan to address these limitations during the 1.7.x timeframe.
 </VersionBlock>
 
-## Setting Table Properties
+## Setting table properties
 [Table properties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) can be set with your configuration for tables or views using `tblproperties`:
 
 <File name='with_table_properties.sql'>
