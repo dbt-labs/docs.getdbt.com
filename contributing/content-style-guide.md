@@ -229,7 +229,7 @@ When referring to different sections of the IDE, use the name of the section and
 
 People make use of titles in many places like table headers, section headings (such as an H2, H3, or H4), page titles, sidebars, and so much more.
 
-When generating titles or updating them, use sentence case. It sets a more conversational tone to the docs&mdash;making the content more approachable and creating a friendly feel.
+When generating titles or updating them, use sentence case. It sets a more conversational tone to the docs&mdash; making the content more approachable and creating a friendly feel.
 
 We've defined five content types you can use when contributing to the docs (as in, writing or authoring). Learn more about title guidelines for [each content type](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-types.md).
 
@@ -239,7 +239,7 @@ Placeholder text is something that the user should replace with their own text. 
 
 Use all capital letters([screaming snake case](https://fission.codes/blog/screaming-snake-case/)) to indicate text that changes in the user interface or that the user needs to supply in a command or code snippet. Avoid surrounding it in brackets or braces, which someone might copy and use, producing an error.
 
-Identify what the user should replace the placeholder text with in the paragraph preceding the code snippet or command.
+Identify what the user should replace the placeholder text within the paragraph preceding the code snippet or command.
 
 :white_check_mark: The following is an example of configuring a connection to a Redshift database. In your YAML file, you must replace `CLUSTER_ID` with the ID assigned to you during setup:
 
@@ -276,7 +276,7 @@ Guidelines for making lists are:
 - There are at least two items.
 - All list items follow a consistent, grammatical structure (like each item starts with a verb, each item begins with a capitalized word, each item is a sentence fragment).
 - Lists items don't end in commas, semicolons, or conjunctions (like "and", "or"). However, you can use periods if they’re complete sentences.
-- Introduce the list with a heading or, if it's within text, as a complete sentence or as a sentence fragment followed by a colon.
+- Introduce the list with a heading or, if it's within the text, as a complete sentence or as a sentence fragment followed by a colon.
 
 If the list starts getting lengthy and dense, consider presenting the same content in a different format such as a table, as separate subsections, or a new guide.
 
@@ -286,7 +286,7 @@ A bulleted list with introductory text:
 
 > A dbt project is a directory of `.sql` and .yml` files. The directory must contain at a minimum:
 >
-> - Models: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics, or, more often, is an intermediate step in such a transformation.
+> - Models: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics or, more often, is an intermediate step in such a transformation.
 > - A project file: A `dbt_project.yml` file, which configures and defines your dbt project.
 
 A bulleted list with sentence fragments:
@@ -307,10 +307,10 @@ A numbered list following an H2 heading:
 ## Tables
 Tables provide a great way to present complex information and can help the content be more scannable for users, too.
 
-There are many ways to construct a table, like row spanning and cell splitting. Make sure the content is clear, concise, and presents well on the web page (like avoid awkward word wrapping).
+There are many ways to construct a table, such as row spanning and cell splitting. The content should be clear, concise, and presented well on the web page (for example, avoid awkward word wrapping).
 
 Guidelines for making tables are:
-- Introduce the table with a heading or, if it's within text, as a complete sentence or as a sentence fragment followed by a colon.
+- Introduce the table with a heading or, if it's within the text, as a complete sentence or as a sentence fragment followed by a colon.
 - Use a header row
 - Use sentence case for all content, including the header row
 - Content can be complete sentences, sentence fragments, or single words (like `Currency`)
@@ -338,7 +338,7 @@ A table following an H3 heading:
 > | Name | Description | Values |
 > | -----| ----------- | ------ |
 > | `-help` | Displays information on how to use the command. | Doesn't take any values. |
-> | `-readable` | Print output in human readable format. | <ul><li>`true`</li><li>`false`</li></ul> |
+> | `-readable` | Print output in human-readable format. | <ul><li>`true`</li><li>`false`</li></ul> |
 > | `-file` | Print output to file instead of stdout. | Name of the file. |
 
 ## Cards
@@ -349,7 +349,7 @@ You can configure a card in 2, 3, 4, or 5-column grids. To maintain a good user 
 
 There won't be many instances where you need to display 4 or 5 cards on the docs site. While we recommend you use 2 or 3-column grids, you can use 4 or 5-column grids in the following scenarios:
 
-- For cards that contain little text and limited to under 15 words. (This is to make sure the text isn't squished)
+- For cards that contain little text and are limited to 15 words or less. This is to make sure the text isn't squished.
 - Always have the `hide_table_of_contents:` frontmatter set to `true` (This hides the right table of contents). 
 
 Otherwise, the text will appear squished and provide users with a bad experience.
@@ -360,7 +360,7 @@ Otherwise, the text will appear squished and provide users with a bad experience
 - `<divclassName="grid--5-col">`: creates 5 columns cards (use sparingly)
 - You can't create cards with 6 or more columns as that would provide users a poor experience.
 
-Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/quickstarts/overview) as examples. 
+Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/guides) as examples. 
 
 ### Create cards
 
@@ -371,16 +371,16 @@ To create cards in markdown, you need to:
 - Add the props within the card component, including `title`,`body`,`link`,`icon`.
 - Close out the div by using `</div>`
 
-Refer to the following prop list for detailed explanation and examples:
+Refer to the following prop list for detailed explanations and examples:
 
 | Prop | Type | Info | Example |
 | ---- | ---- | ---- | ------- |
 | `title` | required | The title should be clear and explain an action the user should take or a product/feature. | `title: dbt Cloud IDE`
 | `body` | required | The body contains the actionable or informative text for the user. You can include `<a href="` link within the body of the text. However, if you do this, you must not include the `link` prop set as that'll override any `<a href's` within the body text.  | `body="The IDE is the easiest and most efficient way to develop dbt models`
 | `link` | optional | Add a link to the entire card component so when users click on the card, it'll trigger the link. Adding a link prop means it'll override any links within the body and if users click on the card, they'll be directed to the link set by the link prop. | `link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud`
-| `icon` | optional but recommended | You can add an icon to the card comonent by using any icons found in the [icons](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/static/img/icons) directory. <br /> * Icons are added in .svg format and you must add icons in two locations: website/static/img/icons and website/static/img/icons/white. This is so users can view the icons in dark or light mode on the docs.getdbt.com site. | ` icon="pencil-paper"/>` |
+| `icon` | optional but recommended | You can add an icon to the card component by using any icons found in the [icons](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/static/img/icons) directory. <br /> * Icons are added in .svg format and you must add icons in two locations: website/static/img/icons and website/static/img/icons/white. This is so users can view the icons in dark or light mode on the docs.getdbt.com site. | ` icon="pencil-paper"/>` |
 
-The following is an example of a 4 card column:
+The following is an example of a 4-card column:
 
 ```
 <div className="grid--4-col">
@@ -488,9 +488,24 @@ Avoid ending a sentence with a preposition unless the rewritten sentence would s
 
 Product names, trademarks, services, and tools should be written as proper nouns, unless otherwise specified by the company or trademark owner.
 
+As of October 2023, avoid using "dbt CLI" or "CLI" terminology when referring to the dbt Cloud CLI or dbt Core.  However, if referring to the command line as a tool, CLI is acceptable.
+
+dbt officially provides two command line tools for running dbt commands:
+
+- [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; This tool allows you to develop locally and execute dbt commands against your dbt Cloud development environment from your local command line.
+- [dbt Core](https://github.com/dbt-labs/dbt-core) &mdash; This open-source tool is designed for local installation, enabling you to use dbt Core on the command line and communicate with databases through adapters.
+
+Here are some examples of what to use and what to avoid: <br />
+
+✅ Set up in the dbt Cloud CLI or dbt Core<br />
+✅ Set up in the dbt Cloud CLI or dbt Core CLI<br />
+
+❌ Set up via dbt CLI<br />
+❌ Set up in dbt Cloud, **or** via the CLI<br />
+
 ### Terms to use or avoid
 
-Use industry-specific terms and research new/improved terminology. Also refer to the Inclusive Language section of this style guide for inclusive and accessible language and style. 
+Use industry-specific terms and research new/improved terminology. Also, refer to the Inclusive Language section of this style guide for inclusive and accessible language and style. 
 
 **DO NOT** use jargon or language familiar to a small subset of readers or assume that your readers understand ALL technical terms.
 
@@ -507,11 +522,13 @@ sign in | log in, login
 sign up | signup
 terminal | shell
 username | login
+dbt Cloud CLI | CLI, dbt CLI
+dbt Core | CLI, dbt CLI
 </div></b>
 
 ## Links
 
-Links embedded in documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it's important that links are transparent, up-to-date, and lead to legitimate resources.
+Links embedded in the documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it's important that links are transparent, up-to-date, and lead to legitimate resources.
 
 ### Internal links
 

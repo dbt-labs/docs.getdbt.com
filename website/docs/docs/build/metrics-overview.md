@@ -4,6 +4,7 @@ id: metrics-overview
 description: "Metrics can be defined in the same or separate YAML files from semantic models within the same dbt project repo."
 sidebar_label: "Creating metrics"
 tags: [Metrics, Semantic Layer]
+pagination_next: "docs/build/cumulative"
 ---
   
 Once you've created your semantic models, it's time to start adding metrics! Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo)
@@ -16,7 +17,7 @@ The keys for metrics definitions are:
 | `description` | Provide the description for your metric.   | Optional |
 | `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
-| `configs` | Provide the specific configurations for your metric.   | Optional |
+| `config` | Provide the specific configurations for your metric.   | Optional |
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 |  `meta` | Additional metadata you want to add to your metric. | Optional |
@@ -31,10 +32,10 @@ metrics:
     type: the type of the metric          ## Required
     type_params:                          ## Required
       - specific properties for the metric type
-    configs: here for `enabled`           ## Optional
+    config: here for `enabled`            ## Optional
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
-      {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another name') }} is not
+      {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
       null
 ```
 

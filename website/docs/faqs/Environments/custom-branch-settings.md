@@ -1,7 +1,7 @@
 ---
-title: How do I use the `Custom Branch` settings in a dbt Cloud Environment?
+title: How do I use the 'Custom Branch' settings in a dbt Cloud Environment?
 description: "Use custom code from your repository"
-sidebar_label: 'Custom Branch settings'
+sidebar_label: 'Custom branch settings'
 id: custom-branch-settings
 ---
 
@@ -15,11 +15,20 @@ To specify a custom branch:
 
 ## Development
 
-In a development environment, the default branch (commonly the `main` branch) is a read-only branch found in the IDE's connected repositories, which you can use to create development branches. Identifying a custom branch overrides this default behavior. Instead, your custom branch becomes read-only and can be used to create development branches. You will no longer be able to make commits to the custom branch from within the dbt Cloud IDE.
+In a development environment, the default branch (usually named `main`) is a read-only branch in your connected repositories, which allows you to create new branches for development from it.  
 
-For example, you can use the `develop` branch of a connected repository. Edit an environment, select  **Only run on a custom branch** in **General settings** , enter **develop** as the name of your custom branch.
+Specifying a **Custom branch** overrides the default behavior. It makes the custom branch 'read-only' and enables you to create new development branches from it. This also means you can't edit this custom branch directly.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="Configuring a custom base repository branch"/>
+Only one branch can be read-only, which means when you set up a custom branch, your `main` branch (usually read-only) becomes editable. If you want to protect the `main` branch and prevent any commits on it, you need to set up branch protection rules in your git provider settings. This ensures your `main` branch remains secure and no new commits can be made to it.
+
+For example, if you want to use the `develop` branch of a connected repository:
+
+- Go to an environment and select **Settings** to edit it
+- Select  **Only run on a custom branch** in **General settings**
+- Enter **develop** as the name of your custom branch
+- Click **Save**
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" width="70%" title="Configuring a custom base repository branch"/>
 
 ## Deployment
 

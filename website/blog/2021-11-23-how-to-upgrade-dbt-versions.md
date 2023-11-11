@@ -62,7 +62,7 @@ As noted above, the project is on 0.16.0 right now. 0.17.2 is the final patch re
 >
 > Practically, it also lets you lock in "checkpoints" of known-stable setups. If you need to pause your migration work to deal with an urgent request, you can safely deploy what you've finished so far instead of having a bunch of unrelated half-finished changes.
 
-Review the migration guides to get an initial indication of what changes you might need to make. For example, in [the migration guide for 0.17.0](/guides/migration/versions), there are several significant changes to dbt's functionality, but it's unlikely that all of them will apply to your project. We'll cover this more later.
+Review the migration guides to get an initial indication of what changes you might need to make. For example, in [the migration guide for 0.17.0](/docs/dbt-versions/core-upgrade), there are several significant changes to dbt's functionality, but it's unlikely that all of them will apply to your project. We'll cover this more later.
 
 ## Step 2: `Add require-dbt-version` to your `dbt_project.yml` file.
 
@@ -126,9 +126,9 @@ In this case, our example project probably has dbt 0.3.0 installed. By reviewing
 
 ### Step 5b. Fix errors, then warnings
 
-Obviously, errors that stop you from running your dbt project at all are the most important to deal with. Let's assume that our project used a too-broadly-scoped variable in a macro file, support for which was removed in v0.17. The [migration guide explains what to do instead](/guides/migration/versions), and it's a pretty straightforward fix.
+Obviously, errors that stop you from running your dbt project at all are the most important to deal with. Let's assume that our project used a too-broadly-scoped variable in a macro file, support for which was removed in v0.17. The [migration guide explains what to do instead](/docs/dbt-versions/core-upgrade), and it's a pretty straightforward fix.
 
-Once your errors are out of the way, have a look at warnings. For example, 0.17 introduced `config-version: 2` to `dbt_project.yml`. Although it's backwards compatible for now, we know that support for the old version will be removed in a future version of dbt so we might as well deal with it now. Again, the migration guide explains [what we need to do](/guides/migration/versions), and how to take full advantage of the new functionality in the future.
+Once your errors are out of the way, have a look at warnings. For example, 0.17 introduced `config-version: 2` to `dbt_project.yml`. Although it's backwards compatible for now, we know that support for the old version will be removed in a future version of dbt so we might as well deal with it now. Again, the migration guide explains [what we need to do](/docs/dbt-versions/core-upgrade), and how to take full advantage of the new functionality in the future.
 
 ### Stay focused
 
@@ -156,7 +156,7 @@ Once your compilation issues are resolved, it's time to run your job for real, t
 
 After that, make sure that your CI environment in dbt Cloud or your orchestrator is on the right dbt version, then open a PR.
 
-If you're using [Slim CI](https://docs.getdbt.com/docs/guides/best-practices#run-only-modified-models-to-test-changes-slim-ci), keep in mind that artifacts aren't necessarily compatible from one version to another, so you won't be able to use it until the job you defer to has completed a run with the upgraded dbt version. This doesn't impact our example because support for Slim CI didn't come out until 0.18.0.
+If you're using [Slim CI](https://docs.getdbt.com/docs/best-practices#run-only-modified-models-to-test-changes-slim-ci), keep in mind that artifacts aren't necessarily compatible from one version to another, so you won't be able to use it until the job you defer to has completed a run with the upgraded dbt version. This doesn't impact our example because support for Slim CI didn't come out until 0.18.0.
 
 ## Step 7. Merge and communicate
 

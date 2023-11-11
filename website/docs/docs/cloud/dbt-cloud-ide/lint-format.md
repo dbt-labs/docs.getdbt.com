@@ -45,7 +45,11 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 - Works with Jinja and SQL, 
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the IDE).
-- Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management. 
+- Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management.
+
+:::info Ephemeral models not supported
+Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
+:::
 
 ### Enable linting
 
@@ -123,7 +127,7 @@ group_by_and_order_by_style = implicit
 ```
 </details>
 
-For more info on styling best practices, refer to [How we style our SQL](/guides/best-practices/how-we-style/2-how-we-style-our-sql).
+For more info on styling best practices, refer to [How we style our SQL](/best-practices/how-we-style/2-how-we-style-our-sql).
 :::
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.jpg" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
@@ -221,6 +225,12 @@ Currently, running SQLFluff commands from the terminal isn't supported.
 <summary>Why am I unable to see the <bold>Lint</bold> or <bold>Format</bold> button?</summary>
 
 Make sure you're on a development branch. Formatting or Linting isn't available on "main" or "read-only" branches. 
+</details>
+
+<details>
+<summary>Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE (such as a GitHub Action)?</summary>
+&mdash; Double-check your SQLFluff version matches the one in dbt Cloud IDE (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
+&mdash; If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
 </details>
 
 ## Related docs
