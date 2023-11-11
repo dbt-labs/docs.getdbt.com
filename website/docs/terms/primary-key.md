@@ -75,7 +75,7 @@ The table below gives an overview of primary key support and enforcement in some
    </td>
    <td>✅
    </td>
-   <td>✅
+   <td>❌
    </td>
   </tr>
   <tr>
