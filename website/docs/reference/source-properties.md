@@ -1,5 +1,5 @@
 ---
-title: "About source properties"
+title: "Source properties"
 description: "Learn how to use source properties in dbt."
 ---
 

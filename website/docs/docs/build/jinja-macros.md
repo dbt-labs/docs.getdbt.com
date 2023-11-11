@@ -27,7 +27,7 @@ Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sq
 
 :::info Ready to get started with Jinja and macros?
 
-Check out the [tutorial on using Jinja](/guides/advanced/using-jinja) for a step-by-step example of using Jinja in a model, and turning it into a macro!
+Check out the [tutorial on using Jinja](/guides/using-jinja) for a step-by-step example of using Jinja in a model, and turning it into a macro!
 
 :::
 

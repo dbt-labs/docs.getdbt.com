@@ -8,7 +8,7 @@ tags: [Mar-2023]
 
 dbt Labs is introducing the newest connection option in dbt Cloud: the `dbt-trino` adapter is now available in Public Preview. This allows you to connect to Starburst Galaxy, Starburst Enterprise, and self-hosted Trino from dbt Cloud.
 
-Check out our [Quickstart for dbt Cloud and Starburst Galaxy](/quickstarts/starburst-galaxy) to explore more. 
+Check out our [Quickstart for dbt Cloud and Starburst Galaxy](/guides/starburst-galaxy) to explore more. 
 
 ## What’s the reason users should be excited about this?
 

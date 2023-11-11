@@ -360,7 +360,7 @@ Otherwise, the text will appear squished and provide users with a bad experience
 - `<divclassName="grid--5-col">`: creates 5 columns cards (use sparingly)
 - You can't create cards with 6 or more columns as that would provide users a poor experience.
 
-Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/quickstarts/overview) as examples. 
+Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/guides) as examples. 
 
 ### Create cards
 

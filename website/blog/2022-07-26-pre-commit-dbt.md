@@ -12,7 +12,7 @@ is_featured: true
 
 *Editor's note — since the creation of this post, the package pre-commit-dbt's ownership has moved to another team and it has been renamed to [dbt-checkpoint](https://github.com/dbt-checkpoint/dbt-checkpoint). A redirect has been set up, meaning that the code example below will still work. It is also  possible to replace `repo: https://github.com/offbi/pre-commit-dbt` with `repo: https://github.com/dbt-checkpoint/dbt-checkpoint` in your `.pre-commit-config.yaml` file.*
 
-At dbt Labs, we have [best practices](https://docs.getdbt.com/docs/guides/best-practices) we like to follow for the development of dbt projects. One of them, for example, is that all models should have at least `unique` and `not_null` tests on their primary key. But how can we enforce rules like this?
+At dbt Labs, we have [best practices](https://docs.getdbt.com/docs/best-practices) we like to follow for the development of dbt projects. One of them, for example, is that all models should have at least `unique` and `not_null` tests on their primary key. But how can we enforce rules like this?
 
 That question becomes difficult to answer in large dbt projects. Developers might not follow the same conventions. They might not be aware of past decisions, and reviewing pull requests in git can become more complex. When dbt projects have hundreds of models, it's hard to know which models do not have any tests defined and aren't enforcing your conventions. 
 

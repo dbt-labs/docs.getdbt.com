@@ -28,7 +28,7 @@ If you run a bakery (and we’d be interested in seeing the data person +  baker
 
 Just as eating raw flour isn’t that appetizing, neither is deriving insights from raw data since it rarely has a nice structure that makes it poised for analytics. There’s some considerable work that’s needed to organize data and make it usable for business users.
 
-This is where dimensional modeling comes into play; it’s a method that can help data folks create meaningful entities (cupcakes and cookies) to live inside their [data mart](https://docs.getdbt.com/guides/best-practices/how-we-structure/4-marts) (your glass display) and eventually use for business intelligence purposes (eating said cookies).
+This is where dimensional modeling comes into play; it’s a method that can help data folks create meaningful entities (cupcakes and cookies) to live inside their [data mart](https://docs.getdbt.com/best-practices/how-we-structure/4-marts) (your glass display) and eventually use for business intelligence purposes (eating said cookies).
 
 So I guess we take it back—you’re not just trying to build a bakery, you’re also trying to build a top-notch foundation for meaningful analytics. Dimensional modeling can be a method to get you part of the way there.
 
@@ -135,7 +135,7 @@ If your end data consumers are less comfortable with SQL and your BI tool doesn�
 
 The benefits and drawbacks of dimensional modeling are pretty straightforward. Generally, the main advantages can be boiled down to:
 
-* **More accessibility**: Since the output of good dimensional modeling is a [data mart](https://docs.getdbt.com/guides/best-practices/how-we-structure/4-marts), the tables created are easier to understand and more accessible to end consumers.
+* **More accessibility**: Since the output of good dimensional modeling is a [data mart](https://docs.getdbt.com/best-practices/how-we-structure/4-marts), the tables created are easier to understand and more accessible to end consumers.
 * **More flexibility**: Easy to slice, dice, filter, and view your data in whatever way suits your purpose.
 * **Performance**: Fact and dimension models are typically materialized as tables or [incremental models](https://docs.getdbt.com/docs/build/incremental-models). Since these often form the core understanding of a business, they are queried often. Materializing them as tables allows them to be more performant in downstream BI platforms.
 
@@ -156,4 +156,4 @@ Dimensional modeling is a tough, complex, and opinionated topic in the data worl
 
 * [Modular data modeling techniques](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 * [Stakeholder-friendly model naming conventions](https://docs.getdbt.com/blog/stakeholder-friendly-model-names/)
-* [How we structure our dbt projects guide](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+* [How we structure our dbt projects guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview)
