@@ -156,7 +156,7 @@ Once your compilation issues are resolved, it's time to run your job for real, t
 
 After that, make sure that your CI environment in dbt Cloud or your orchestrator is on the right dbt version, then open a PR.
 
-If you're using [Slim CI](https://docs.getdbt.com/docs/guides/best-practices#run-only-modified-models-to-test-changes-slim-ci), keep in mind that artifacts aren't necessarily compatible from one version to another, so you won't be able to use it until the job you defer to has completed a run with the upgraded dbt version. This doesn't impact our example because support for Slim CI didn't come out until 0.18.0.
+If you're using [Slim CI](https://docs.getdbt.com/docs/best-practices#run-only-modified-models-to-test-changes-slim-ci), keep in mind that artifacts aren't necessarily compatible from one version to another, so you won't be able to use it until the job you defer to has completed a run with the upgraded dbt version. This doesn't impact our example because support for Slim CI didn't come out until 0.18.0.
 
 ## Step 7. Merge and communicate
 

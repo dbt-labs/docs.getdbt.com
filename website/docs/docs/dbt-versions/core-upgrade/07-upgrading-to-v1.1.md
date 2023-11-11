@@ -21,7 +21,7 @@ There are no breaking changes for code in dbt projects and packages. We are comm
 
 ### For maintainers of adapter plugins
 
-We have reworked the testing suite for adapter plugin functionality. For details on the new testing suite, see: [Testing a new adapter](/guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter).
+We have reworked the testing suite for adapter plugin functionality. For details on the new testing suite, refer to the "Test your adapter" step in the [Build, test, document, and promote adapters](/guides/adapter-creation) guide.
 
 The abstract methods `get_response` and `execute` now only return `connection.AdapterReponse` in type hints. Previously, they could return a string. We encourage you to update your methods to return an object of class `AdapterResponse`, or implement a subclass specific to your adapter. This also gives you the opportunity to add fields specific to your adapter's query execution, such as `rows_affected` or `bytes_processed`.
 
