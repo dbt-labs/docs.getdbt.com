@@ -16,7 +16,7 @@ datatype: "{dictionary}"
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
-    { label: 'Semantic models', value: 'semantic_models', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 
@@ -183,7 +183,7 @@ exposures:
 
 </TabItem>
 
-<TabItem value="semantic_models">
+<TabItem value="semantic models">
 
 <VersionBlock lastVersion="1.6">
 
