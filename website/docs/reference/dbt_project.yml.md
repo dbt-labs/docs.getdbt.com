@@ -62,11 +62,17 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
   schema: true | false
   identifier: true | false
 
+metrics:
+  <metric-configs>
+
 models:
   [<model-configs>](/reference/model-configs)
 
 seeds:
   [<seed-configs>](/reference/seed-configs)
+
+semantic-models:
+  <semantic-model-configs>
 
 snapshots:
   [<snapshot-configs>](/reference/snapshot-configs)
