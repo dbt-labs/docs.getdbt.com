@@ -91,6 +91,6 @@ If you want to see what a mature, production project looks like, check out the [
 
 
 ## Related docs
-* [Best practices: How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
+* [Best practices: How we structure our dbt projects](/best-practices/how-we-structure/1-guide-overview)
 * [Quickstarts for dbt Cloud](/guides)
 * [Quickstart for dbt Core](/guides/manual-install)

@@ -1,9 +1,10 @@
 ---
 title: "Quickstart for dbt Cloud and Starburst Galaxy"
 id: "starburst-galaxy"
-platform: 'dbt-cloud'
+level: 'Beginner'
 icon: 'starburst'
 hide_table_of_contents: true
+tags: ['dbt Cloud','Quickstart']
 ---
 ## Introduction
 

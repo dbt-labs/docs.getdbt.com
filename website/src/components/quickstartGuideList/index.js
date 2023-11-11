@@ -86,7 +86,7 @@ function QuickstartList({ quickstartData }) {
           {levelOptions && levelOptions.length > 0 && (
             <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
           )}
-          <SearchInput onChange={(value) => setSearchInput(value)} placeholder='Search Quickstarts' />
+          <SearchInput onChange={(value) => setSearchInput(value)} placeholder='Search Guides' />
         </div>
         <div className={`container ${styles.quickstartCardContainer} `}>
           {filteredData && filteredData.length > 0 ? (

@@ -1,11 +1,10 @@
 ---
 title: "Quickstart for dbt Cloud and Redshift"
-id: "redshift"
-platform: 'dbt-cloud'
+id: redshift
+level: 'Beginner'
 icon: 'redshift'
 hide_table_of_contents: true
-tags: ['Redshift', 'dbt Cloud']
-level: 'Expert'
+tags: ['Redshift', 'dbt Cloud','Quickstart']
 ---
 ## Introduction
 

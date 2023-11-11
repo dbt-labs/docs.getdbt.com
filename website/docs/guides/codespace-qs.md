@@ -1,10 +1,11 @@
 ---
-title: "Quickstart for dbt Core using GitHub Codespaces"
+title: Quickstart for dbt Core using GitHub Codespaces
 id: codespace
 platform: 'dbt-core'
 icon: 'fa-github'
+level: 'Beginner'
 hide_table_of_contents: true
-tags: ['dbt Core']
+tags: ['dbt Core','Quickstart']
 ---
 
 ## Introduction

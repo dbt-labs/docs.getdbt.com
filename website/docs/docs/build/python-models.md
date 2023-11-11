@@ -67,7 +67,7 @@ models:
           - not_null
     tests:
       # Write your own validation logic (in SQL) for Python results
-      - [custom_generic_test](/guides/best-practices/writing-custom-generic-tests)
+      - [custom_generic_test](/best-practices/writing-custom-generic-tests)
 ```
 
 </File>
