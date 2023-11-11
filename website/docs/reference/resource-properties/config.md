@@ -202,6 +202,8 @@ semantic_models:
   - name: <semantic_model_name>
     config:
       enabled: true | false
+      group: <string>
+      meta: {dictionary}
 ```
 
 </File>
