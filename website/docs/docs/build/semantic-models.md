@@ -127,7 +127,7 @@ semantic_models:
 
 Semantic model config in `dbt_project.yml`:
 ```yml
-semantic_models:
+semantic-models:
   my_project_name:
     +enabled: true | false
     +group: some_group
