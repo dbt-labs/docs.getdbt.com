@@ -368,7 +368,7 @@ mutation {
   compileSql(
     environmentId: BigInt!
     metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain:"month"}, {name:"customer__customer_type"}]
+    groupBy: [{name:"metric_time, grain: MONTH}, {name:"customer__customer_type"}]
   ) {
     sql
   }
