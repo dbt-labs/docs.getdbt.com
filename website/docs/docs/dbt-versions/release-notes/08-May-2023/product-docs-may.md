@@ -16,7 +16,7 @@ Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/) in May:
 
 - We made sure everyone knows that Cloud-users don’t need a [profiles.yml file](/docs/core/connect-data-platform/profiles.yml) by adding a callout on several key pages.
 - Fleshed out the [model jinja variable page](/reference/dbt-jinja-functions/model), which originally lacked conceptual info and didn’t link to the schema page.
-- Added a new [Quickstarts landing page](/quickstarts). This new format sets up for future iterations that will include filtering! But for now, we are excited you can step through quickstarts in a focused way.
+- Added a new [Quickstarts landing page](/guides). This new format sets up for future iterations that will include filtering! But for now, we are excited you can step through quickstarts in a focused way.
 
 ## ☁ Cloud projects
 

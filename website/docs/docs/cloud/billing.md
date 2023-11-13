@@ -11,9 +11,11 @@ dbt Cloud offers a variety of [plans and pricing](https://www.getdbt.com/pricing
 
 ## How does dbt Cloud pricing work?
 
-As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of Developer and Read licenses purchased. Usage is based on the number of [Successful Models Built](#what-counts-as-a-successful-model-built) and, if purchased and used, Semantic Layer Query Units subject to reasonable usage. All billing computations are conducted in Coordinated Universal Time (UTC).
+As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of Developer and Read licenses purchased. 
 
-### What counts as a seat license? 
+Usage is based on the number of [Successful Models Built](#what-counts-as-a-successful-model-built) and, if purchased and used, Semantic Layer [Queried Metrics](#what-counts-as-a-queried-metric) subject to reasonable usage. All billing computations are conducted in Coordinated Universal Time (UTC).
+
+### What counts as a seat license?
 
 There are three types of possible seat licenses:
 
@@ -37,47 +39,46 @@ Any models built in a dbt Cloud development environment (for example, via the ID
 | Seeds                                       | ❌                  |
 | Snapshots                                   | ❌                  |
 
-### What counts as a Query Unit?​
+### What counts as a Queried Metric?
 
-The dbt Semantic Layer, powered by MetricFlow, measures usage in distinct query units. Every successful request you make to render or run SQL to the Semantic Layer API counts as at least one query unit, even if no data is returned. If the query calculates or renders SQL for multiple metrics, each calculated metric will be counted as a query unit.
-If a request to run a query is not executed successfully in the data platform or if a query results in an error without completion, it is not counted as a query unit. Requests for metadata from the Semantic Layer are also not counted as query units.
+The dbt Semantic Layer, powered by MetricFlow, measures usage in distinct Queried Metrics.
 
-Examples of query units include:
+- Every successful request you make to render or run SQL to the Semantic Layer API counts as at least one queried metric, even if no data is returned. 
+- If the query calculates or renders SQL for multiple metrics, each calculated metric will be counted as a queried metric.
+- If a request to run a query is not executed successfully in the data platform or if a query results in an error without completion, it is not counted as a queried metric. 
+- Requests for metadata from the Semantic Layer are also not counted as queried metrics.
 
-Querying one metric, grouping by one dimension → 1 query unit 
+Examples of queried metrics include:
 
-```shell
-dbt sl query --metrics revenue --group_by metric_time
-```
-Querying one metric, grouping by two dimensions → 1 query unit 
+- Querying one metric, grouping by one dimension → 1 queried metric 
 
-```shell
-dbt sl query --metrics revenue --group_by metric_time,user__country
-```
+  ```shell
+  dbt sl query --metrics revenue --group_by metric_time
+  ```
 
-Querying two metrics, grouping by two dimensions → 2 query units 
+- Querying one metric, grouping by two dimensions → 1 queried metric 
 
-```shell
-dbt sl query --metrics revenue,gross_sales --group_by metric_time,user__country
-```
+  ```shell
+  dbt sl query --metrics revenue --group_by metric_time,user__country
+  ```
 
-Running an explain for one metric → 1 query unit
+- Querying two metrics, grouping by two dimensions → 2 queried metrics 
 
-```shell
-dbt sl query --metrics revenue --group_by metric_time --explain
-```
+  ```shell
+  dbt sl query --metrics revenue,gross_sales --group_by metric_time,user__country
+  ```
 
-Running an explain for two metrics → 2 query units
+- Running an explain for one metric → 1 queried metric
 
-```shell
-dbt sl query --metrics revenue,gross_sales --group_by metric_time --explain
-```
+  ```shell
+  dbt sl query --metrics revenue --group_by metric_time --explain
+  ```
 
-Running a query for only dimensions such as dimension_values or a query with no metrics → 1 query unit
+- Running an explain for two metrics → 2 queried metrics
 
-```shell
-bt sl list dimension-values --dimension user__country
-```
+  ```shell
+  dbt sl query --metrics revenue,gross_sales --group_by metric_time --explain
+  ```
 
 ### Viewing usage in the product 
 
@@ -94,7 +95,7 @@ On each Project Home page, any user with access to that project can see how many
 
 In addition, you can look at the Job Details page's Insights tab to show how many models are being built per month for that particular job and which models are taking the longest to build. 
 
-Any usage data is only an estimate of your usage, and there may be a delay in showing usage data in the product &mdash; your final usage for the month will be visible on your monthly statements (statements applicable to Team and Enterprise plans).
+Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in dbt Cloud is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Team and Enterprise plans).
 
 
 ## Plans and Billing
@@ -214,7 +215,7 @@ If you want to ensure that you're building views whenever the logic is changed, 
     Executing `dbt build` in this context is unnecessary because the CI job was used to both run and test the code that just got merged into main.
 5. Under the **Execution Settings**, select the default production job to compare changes against:
     - **Defer to a previous run state** &mdash; Select the “Merge Job” you created so the job compares and identifies what has changed since the last merge.
-6. In your dbt project, follow the steps in [Run a dbt Cloud job on merge](/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge) to create a script to trigger the dbt Cloud API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
+6. In your dbt project, follow the steps in Run a dbt Cloud job on merge in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the dbt Cloud API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
 
 The purpose of the merge job is to:
 
@@ -236,7 +237,7 @@ To understand better how long each model takes to run within the context of a sp
 Once you've identified which models could be optimized, check out these other resources that walk through how to optimize your work: 
 * [Build scalable and trustworthy data pipelines with dbt and BigQuery](https://services.google.com/fh/files/misc/dbt_bigquery_whitepaper.pdf) 
 * [Best Practices for Optimizing Your dbt and Snowflake Deployment](https://www.snowflake.com/wp-content/uploads/2021/10/Best-Practices-for-Optimizing-Your-dbt-and-Snowflake-Deployment.pdf) 
-* [How to optimize and troubleshoot dbt models on Databricks](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks)
+* [How to optimize and troubleshoot dbt models on Databricks](/guides/optimize-dbt-models-on-databricks)
 
 ## FAQs
 
@@ -253,8 +254,7 @@ _Yes. Your dbt Cloud account will be upgraded without impacting your existing pr
  _The best option is to consult with our sales team. They'll help you figure out what is right for your needs. We also offer a free two-week trial on the Team plan._
 
 * What are the Semantic Layer trial terms?
-_Team and Enterprise customers can sign up for a free trial of the dbt Semantic Layer, powered by MetricFlow, for use of up to 1,000 query units per month. The trial will be available at least through January 2024. dbt Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. dbt Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
+_Team and Enterprise customers can sign up for a free trial of the dbt Semantic Layer, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. dbt Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. dbt Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
 
 * What is the reasonable use limitation for the dbt Semantic Layer powered by MetricFlow during the trial? 
 _Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of dbt Labs._
-

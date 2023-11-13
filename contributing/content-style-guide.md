@@ -360,7 +360,7 @@ Otherwise, the text will appear squished and provide users with a bad experience
 - `<divclassName="grid--5-col">`: creates 5 columns cards (use sparingly)
 - You can't create cards with 6 or more columns as that would provide users a poor experience.
 
-Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/quickstarts/overview) as examples. 
+Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/guides) as examples. 
 
 ### Create cards
 
@@ -494,6 +494,14 @@ dbt officially provides two command line tools for running dbt commands:
 
 - [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; This tool allows you to develop locally and execute dbt commands against your dbt Cloud development environment from your local command line.
 - [dbt Core](https://github.com/dbt-labs/dbt-core) &mdash; This open-source tool is designed for local installation, enabling you to use dbt Core on the command line and communicate with databases through adapters.
+
+Here are some examples of what to use and what to avoid: <br />
+
+✅ Set up in the dbt Cloud CLI or dbt Core<br />
+✅ Set up in the dbt Cloud CLI or dbt Core CLI<br />
+
+❌ Set up via dbt CLI<br />
+❌ Set up in dbt Cloud, **or** via the CLI<br />
 
 ### Terms to use or avoid
 

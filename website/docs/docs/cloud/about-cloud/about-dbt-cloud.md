@@ -99,6 +99,6 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
-- [Quickstart guides](/quickstarts)
+- [Quickstart guides](/guides)
 - [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 
