@@ -1,7 +1,7 @@
 /* eslint-disable */
 
   // Get all the headers with anchor links
-  window.addEventListener("load", function() {
+  window.addEventListener("popstate", function() {
     const headers = document.querySelectorAll("h2.anchor, h3.anchor");
 
 headers.forEach((header) => {
