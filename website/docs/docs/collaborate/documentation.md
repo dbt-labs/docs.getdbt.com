@@ -6,7 +6,7 @@ pagination_next: "docs/collaborate/build-and-view-your-docs"
 pagination_prev: null
 ---
 
-## Related documentation <Lifecycle status="Beta" />
+## Related documentation
 
 * [Declaring properties](/reference/configs-and-properties)
 * [`dbt docs` command](/reference/commands/cmd-docs)
