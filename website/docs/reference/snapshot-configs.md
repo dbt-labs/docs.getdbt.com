@@ -2,6 +2,11 @@
 title: Snapshot configurations
 description: "Read this guide to learn about using snapshot configurations in dbt."
 ---
+
+import ConfigResource from '/snippets/_config-description-resource.md';
+import ConfigGeneral from '/snippets/_config-description-general.md';
+
+
 ## Related documentation
 * [Snapshots](/docs/build/snapshots)
 * The `dbt snapshot` [command](/reference/commands/snapshot)
@@ -14,6 +19,8 @@ Parts of a snapshot:
 
 ## Available configurations
 ### Snapshot-specific configurations
+
+<ConfigResource />
 
 <Tabs
   groupId="config-languages"
@@ -94,6 +101,8 @@ snapshots:
 
 
 ### General configurations
+
+<ConfigGeneral />
 
 <Tabs
   groupId="config-languages"

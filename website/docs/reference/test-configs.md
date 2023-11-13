@@ -2,6 +2,9 @@
 title: Test configurations
 description: "Read this guide to learn about using test configurations in dbt."
 ---
+import ConfigResource from '/snippets/_config-description-resource.md';
+import ConfigGeneral from '/snippets/_config-description-general.md';
+
 
 ## Related documentation
 
@@ -19,6 +22,8 @@ Test configs are applied hierarchically, in the order of specificity outlined ab
 Click the link on each configuration option to read more about what it can do.
 
 ### Test-specific configurations
+
+<ConfigResource />
 
 <Tabs
   groupId="config-languages"
@@ -113,6 +118,8 @@ This configuration mechanism is supported for specific instances of generic test
 
 
 ### General configurations
+
+<ConfigGeneral />
 
 <Tabs
   groupId="config-languages"
