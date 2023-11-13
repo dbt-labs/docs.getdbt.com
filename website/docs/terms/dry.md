@@ -89,7 +89,7 @@ DRY code is a principle that you should always be striving for. It saves you tim
 ## Further reading
 
 * [Data modeling technique for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-* [Why we use so many CTEs](https://docs.getdbt.com/docs/guides/best-practices)
+* [Why we use so many CTEs](https://docs.getdbt.com/docs/best-practices)
 * [Glossary: CTE](https://docs.getdbt.com/terms/cte)
 * [Glossary: Materialization](https://docs.getdbt.com/terms/materialization)
 * [Glossary: View](https://docs.getdbt.com/terms/view)
