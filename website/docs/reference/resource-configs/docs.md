@@ -17,9 +17,11 @@ default_value: {show: true}
     { label: 'Macros', value: 'macros', },
   ]
 }>
+
 <TabItem value="models">
 
 <File name='models/schema.yml'>
+
 
 ```yml
 version: 2
@@ -29,7 +31,6 @@ models:
     docs:
       show: true | false
       node_color: "black"
-
 ```
 
 </File>
@@ -53,9 +54,7 @@ seeds:
   - name: seed_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
@@ -71,9 +70,7 @@ snapshots:
   - name: snapshot_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
@@ -90,7 +87,6 @@ analyses:
     docs:
       show: true | false
 ```
-
 </File>
 
 </TabItem>
@@ -110,9 +106,7 @@ macros:
   - name: macro_name
     docs:
       show: true | false
-
 ```
-
 </File>
 Also refer to [macro properties](/reference/macro-properties).
 </TabItem>

@@ -91,7 +91,7 @@ The common skills needed for implementing any flavor of dbt (Core or Cloud) are:
 
 * SQL: ‘nuff said
 * YAML: required to generate config files for [writing tests on data models](/docs/build/tests)
-* [Jinja](/guides/advanced/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
+* [Jinja](/guides/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
 
 YAML + Jinja can be learned pretty quickly, but SQL is the non-negotiable you’ll need to get started.
 
@@ -176,7 +176,7 @@ Instead you can now use the following command:
 `dbt build –select result:error+ –defer –state <previous_state_artifacts>` … and that’s it!
 
 
-You can see more examples [here](https://docs.getdbt.com/docs/guides/best-practices#run-only-modified-models-to-test-changes-slim-ci).
+You can see more examples [here](https://docs.getdbt.com/docs/best-practices#run-only-modified-models-to-test-changes-slim-ci).
 
 
 This means that whether you’re actively developing or you simply want to rerun a scheduled job (because of, say, permission errors or timeouts in your database), you now have a unified approach to doing both.

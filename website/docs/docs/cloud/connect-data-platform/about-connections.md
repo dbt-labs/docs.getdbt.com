@@ -23,7 +23,7 @@ You can connect to your database in dbt Cloud by clicking the gear in the top ri
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choose-a-connection.png" title="Choose a connection"/>
 
-These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/quickstarts)
+These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/guides)
 
 ## IP Restrictions
 
