@@ -7,9 +7,20 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 ---
 
 
-[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). This is powered by using a production manifest for comparison, and dbt will resolve the `{{ ref() }}` function with upstream production artifacts.
+[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). This is powered by using a production manifest for comparison, and dbt will resolve the `{{ ref() }}` function with upstream production artifacts. 
 
-Both the dbt Cloud IDE and the dbt Cloud CLI allow users to natively defer to production metadata directly in their development workflows, dramatically reducing development time and warehouse spend by preventing unnecessary model builds. 
+By default, dbt follows these rules:
+
+- Defers to the production environment when there's no development schema.
+- If a development schema exists, dbt will prioritize those changes, which minimizes development time and avoids unnecessary model builds.
+
+Both the dbt Cloud IDE and the dbt Cloud CLI allow users to natively defer to production metadata directly in their development workflows.
+
+For specific scenarios:
+- Use [`--favor-state`](/reference/node-selection/defer#favor-state) to always use production artifacts to resolve the ref.
+- If facing issues with outdated tables in the development schema, `--favor-state` is an alternative to defer.
+
+For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 
 ## Required setup
 

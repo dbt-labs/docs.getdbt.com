@@ -179,8 +179,9 @@ Options:
 
 ### Validate-configs
 
-This command performs validations against the defined semantic model configurations:
-<!--dbt sl validate-configs # In dbt Cloud-->
+The following command performs validations against the defined semantic model configurations.
+
+Note, in dbt Cloud you don't need to validate the Semantic Layer config separately. Running a dbt command (such as `dbt parse`, `dbt build`, `dbt compile`, `dbt run`) automatically checks it.
 
 ```bash
 
@@ -205,11 +206,12 @@ Options:
 
 ### Health checks
 
-This command performs a health check against the data platform you provided in the configs:
-<!--dbt sl health-checks # In dbt Cloud-->
+The following command performs a health check against the data platform you provided in the configs. 
+
+Note, in dbt Cloud the `health-checks` command isn't required since it uses dbt Cloud's credentials to perform the health check.
 
 ```bash
-mf health-checks #in dbt Core
+mf health-checks # In dbt Core
 ```
 
 ### Tutorial
