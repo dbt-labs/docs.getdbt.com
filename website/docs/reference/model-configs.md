@@ -3,12 +3,17 @@ title: Model configurations
 description: "Read this guide to understand model configurations in dbt."
 ---
 
+import ConfigResource from '/snippets/_config-description-resource.md';
+import ConfigGeneral from '/snippets/_config-description-general.md';
+
 ## Related documentation
 * [Models](/docs/build/models)
 * [`run` command](/reference/commands/run)
 
 ## Available configurations
 ### Model-specific configurations
+
+<ConfigResource />
 
 <Tabs
   groupId="config-languages"
@@ -77,6 +82,8 @@ models:
 
 
 ### General configurations
+
+<ConfigGeneral />
 
 <Tabs
   groupId="config-languages"
