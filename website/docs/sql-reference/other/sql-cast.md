@@ -50,7 +50,7 @@ After running this query, the `orders` table will look a little something like t
 
 Let’s be clear: the resulting data from this query looks exactly the same as the upstream `orders` model. However, the `order_id` and `customer_id` fields are now strings, meaning you could easily concat different string variables to them.
 
-> Casting columns to their appropriate types typically happens in our dbt project’s [staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging). A few reasons for that: data cleanup and standardization, such as aliasing, casting, and lower or upper casing, should ideally happen in staging models to create downstream uniformity and improve downstream performance.
+> Casting columns to their appropriate types typically happens in our dbt project’s [staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging). A few reasons for that: data cleanup and standardization, such as aliasing, casting, and lower or upper casing, should ideally happen in staging models to create downstream uniformity and improve downstream performance.
 
 ## SQL CAST function syntax in Snowflake, Databricks, BigQuery, and Redshift
 

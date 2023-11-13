@@ -53,7 +53,7 @@ We recommend leveraging inline comments in the following situations:
 
 - Explain complex code logic that if you had to scratch your head at, someone else will have to scratch their head at
 - Explain niche, unique-to-your-business logic
-- Separate out field types (ex. Ids, booleans, strings, dates, numerics, and timestamps) in [staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging) to create more readable, organized, and formulaic models
+- Separate out field types (ex. Ids, booleans, strings, dates, numerics, and timestamps) in [staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging) to create more readable, organized, and formulaic models
 - Clearly label tech debt (`-- [TODO]: TECH DEBT`) in queries or models
 
 
