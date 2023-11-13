@@ -35,8 +35,8 @@ Support for grouping models was added in dbt Core v1.5
 version: 2
 
 models:
-  - name: model_name
-    group: finance
+  - name: MODEL_NAME
+    group: GROUP_NAME
 ```
 
 </File>
@@ -46,7 +46,7 @@ models:
 ```yml
 models:
   [<resource-path>](resource-path):
-    +group: finance
+    +group: GROUP_NAME
 ```
 
 
@@ -57,7 +57,7 @@ models:
 ```sql
 
 {{ config(
-  group='finance'
+  group='GROUP_NAME'
 ) }}
 
 select ...
@@ -85,7 +85,7 @@ Support for grouping seeds was added in dbt Core v1.5
 ```yml
 models:
   [<resource-path>](resource-path):
-    +group: finance
+    +group: GROUP_NAME
 ```
 
 </File>
@@ -94,8 +94,8 @@ models:
 
 ```yml
 seeds:
-  - name: [<seed-name>]
-    group: finance
+  - name: [SEED_NAME]
+    group: GROUP_NAME
 ```
 
 </File>
@@ -120,7 +120,7 @@ Support for grouping snapshots was added in dbt Core v1.5
 ```yml
 snapshots:
   [<resource-path>](resource-path):
-    +group: finance
+    +group: GROUP_NAME
 ```
 
 </File>
@@ -131,7 +131,7 @@ snapshots:
 {% snapshot [snapshot_name](snapshot_name) %}
 
 {{ config(
-  group='finance'
+  group='GROUP_NAME'
 ) }}
 
 select ...
@@ -161,7 +161,7 @@ Support for grouping tests was added in dbt Core v1.5
 ```yml
 tests:
   [<resource-path>](resource-path):
-    +group: finance
+    +group: GROUP_NAME
 ```
 
 </File>
@@ -176,7 +176,7 @@ version: 2
     tests:
       - <test_name>:
           config:
-            group: finance
+            group: GROUP_NAME
 ```
 
 </File>
@@ -187,7 +187,7 @@ version: 2
 {% test <testname>() %}
 
 {{ config(
-  group='finance'
+  group='GROUP_NAME'
 ) }}
 
 select ...
@@ -202,7 +202,7 @@ select ...
 
 ```sql
 {{ config(
-  group='finance'
+  group='GROUP_NAME'
 ) }}
 ```
 
@@ -220,8 +220,8 @@ select ...
 version: 2
 
 analyses:
-  - name: <analysis_name>
-    group: finance
+  - name: ANALYSIS_NAME
+    group: GROUP_NAME
 ```
 
 </File>
@@ -244,7 +244,7 @@ Support for grouping metrics was added in dbt Core v1.5
 ```yaml
 metrics:
   [<resource-path>](resource-path):
-    [+](plus-prefix)group: finance
+    [+](plus-prefix)group: GROUP_NAME
 ```
 
 </File>
@@ -255,8 +255,8 @@ metrics:
 version: 2
 
 metrics:
-  - name: [<metric-name>]
-    group: finance
+  - name: [METRIC_NAME]
+    group: GROUP_NAME
 
 ```
 
@@ -281,8 +281,8 @@ Support for grouping semantic models has been added in dbt Core v1.7.
 
 ```yaml
 semantic_models:
-  - name: <semantic_model_name>
-    group: <group_name>
+  - name: SEMANTIC_MODEL_NAME
+    group: GROUP_NAME
 
 ```
 
@@ -293,7 +293,7 @@ semantic_models:
 ```yaml
 semantic-models:
   [<resource-path>](resource-path):
-    [+](plus-prefix)group: <group_name>
+    [+](plus-prefix)group: GROUP_NAME
 ```
 
 </File>
