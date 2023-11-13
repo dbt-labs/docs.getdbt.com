@@ -68,11 +68,11 @@ For help writing SQL, reviewing the overall performance of your project, or want
 
 ### Severity level
 
-Support tickets are assigned a severity level based on the impact of the issue to your business. The severity level determines the priority level of support you will receive. For specific ticket response time, Support does not have access to an Enterprise account's service level agreement (SLA). Please contact your legal team for a copy of your contract. <-- NOT SURE WE SHOULD USE STATE THIS - IT MAKES IT SEEM LIKE SUPPORT DONT KNOW WHEN WE HAVE TO RESPOND TO AN ENTERPRISE'S TICKET SINCE WE'RE SAYING WE DON'T HAVE ACCESS TO THEIR CONTRACT. I WOULDN'T WANT USERS TO THINK WE'RE NOT TREATING THEIR TICKET BASED ON THEIR SPECIFIC SLA.
+Support tickets are assigned a severity level based on the impact of the issue to your business. The severity level determines the priority level of support you will receive. For specific ticket response time, Support does not have access to an Enterprise account's service level agreement (SLA). Please contact your legal team for a copy of your contract.
 
 
-| Severity Level | Description | 
-| -------------- | ----------- | 
+| Severity Level | Description |
+| -------------- | ----------- |
 | Severity Level 1 | Any Error which makes the use or continued use of the Subscription or material features impossible; Subscription is not operational, with no alternative available. | 
 | Severity Level 2 | Feature failure, without a workaround, but Subscription is operational. | 
 | Severity Level 3 | Feature failure, but a workaround exists. | 
