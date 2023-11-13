@@ -30,7 +30,9 @@ Types of dbt Cloud-related questions our Support team can assist you with, regar
     - why my CI jobs are not kicking off as expected.
 
 
-### dbt Cloud Enterprise accounts
+Developer and Team accounts are not subject to a service level agreement. If you are interested in adding one, [contact Sales](https://www.getdbt.com/pricing/) to ask about our Enterprise plan.
+
+## dbt Cloud Enterprise accounts
 
 For customers on a dbt Cloud Enterprise plan, we **also** offer basic assistance in troubleshooting issues with your dbt project.  
 - **Something isn't working the way I would expect it to...**
@@ -50,5 +52,16 @@ Types of questions you should ask your Solutions Architect and Sales Director:
 - Here is our data road map for the next year - can we talk through how dbt fits into it and what features we may not be utilizing that can help us achieve our goals?
 - It is time for our contract renewal, what options do I have?
 
+### Severity level
+
+Support tickets are assigned a severity level based on the impact of the issue to your business. The severity level determines the priority level of support you will receive. For specific ticket response time, Support does not have access to an Enterprise account's service level agreement (SLA). Please contact your legal team for a copy of your contract. <-- NOT SURE WE SHOULD USE STATE THIS - IT MAKES IT SEEM LIKE SUPPORT DONT KNOW WHEN WE HAVE TO RESPOND TO AN ENTERPRISE'S TICKET SINCE WE'RE SAYING WE DON'T HAVE ACCESS TO THEIR CONTRACT. I WOULDN'T WANT USERS TO THINK WE'RE NOT TREATING THEIR TICKET BASED ON THEIR SPECIFIC SLA.
+
+
+| Severity Level | Description | 
+| -------------- | ----------- | 
+| Severity Level 1 | Any Error which makes the use or continued use of the Subscription or material features impossible; Subscription is not operational, with no alternative available. | 
+| Severity Level 2 | AFeature failure, without a workaround, but Subscription is operational. | 
+| Severity Level 3 | Feature failure, but a workaround exists. | 
+| Severity Level 4 | Error with low-to-no impact on Client’s access to or use of the Subscription, or Client has a general question or feature enhancement request. | 
 
 When you need help writing SQL, reviewing the overall performance of your project, or want someone to actually help build your dbt project, check out our list of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/) or our [Services](https://www.getdbt.com/dbt-labs/services/) page!
