@@ -363,5 +363,5 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 
 ## Related docs
 
-- [dbt Semantic Layer integration best practices](/guides/dbt-ecosystem/sl-partner-integration-guide)
+- [dbt Semantic Layer integration best practices](/guides/sl-partner-integration-guide)
 

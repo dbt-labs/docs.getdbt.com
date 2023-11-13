@@ -1,5 +1,5 @@
 
-Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate on your project.
+Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate your project.
 
 <VersionBlock lastVersion="1.4">
 
@@ -95,6 +95,7 @@ vars:
 </VersionBlock>
 
 <VersionBlock lastVersion="1.5">
+
 
 <File name='dbt_project.yml'>
 

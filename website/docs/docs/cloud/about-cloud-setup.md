@@ -16,7 +16,7 @@ dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. It conta
 - Configuring the [dbt Cloud IDE](/docs/cloud/about-cloud-develop)
 - Installing and configuring the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation)
 
-These settings are intended for dbt Cloud administrators. If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](/quickstarts).
+These settings are intended for dbt Cloud administrators. If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](/guides).
 
 If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn online courses site](https://courses.getdbt.com/).
 
