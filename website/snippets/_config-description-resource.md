@@ -1,0 +1,1 @@
+Resource-specific configurations are applied to individual dbt resources, influencing their specific attributes. These settings can be defined in the project file (`dbt_project.yml`), a property file (`models/properties.yml` for models, similarly for other resources), or within the resource’s file using the `{{ config() }}` macro.
