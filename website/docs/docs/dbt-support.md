@@ -18,8 +18,17 @@ If you're developing on the command line (CLI) and have questions or need some h
 ## dbt Cloud support
 
 The global dbt Support team is available to dbt Cloud customers by email or in-product live chat:
-- **Enterprise plans** &mdash; Have [priority access](#severity-level), options for custom coverage, receive implementation assistance, dedicated account management, and a dbt Labs Security and Legal review.
-- **Developer and Team plans** &mdash; Have 24x5 support and not subject to a service level agreement. If you are interested in adding one, [contact Sales](https://www.getdbt.com/pricing/) to ask about our Enterprise plan.
+
+- **Enterprise plans** &mdash; 
+  - Have [priority access](#severity-level)
+  - Options for custom support coverage hours
+  - Receive implementation assistance
+  - Dedicated account management
+  - Security and legal review by dbt Labs
+- 
+- **Developer and Team plans** &mdash; 
+  - 24x5 support
+  - No service level agreement included. If you are interested in adding one, [contact Sales](https://www.getdbt.com/pricing/) to ask about our Enterprise plan.
 
 We want to help you work through implementing and utilizing dbt Cloud at your organization. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/) or [the Community Forum](https://discourse.getdbt.com/)? Our Support team is here to `dbt help` you!
 
