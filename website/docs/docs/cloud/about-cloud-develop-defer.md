@@ -12,7 +12,7 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 Both the dbt Cloud IDE and the dbt Cloud CLI allow users to natively defer to production metadata directly in their development workflows. By default, dbt follows these rules:
 
 - dbt uses the production locations of parent models to resolve `{{ ref() }}` functions, based on metadata from the production environment.
-- If a development version of a deferred model exists, dbt preferentially uses that table when resolving the reference.
+- If a development version of a deferred model exists, dbt preferentially uses that database location when resolving the reference.
 - Passing the [`--favor-state`](/reference/node-selection/defer#favor-state) flag will override this behavior and _always_ resolve refs using the production metadata, regardless of the presence of a development relation.
   - If facing issues with outdated tables in the development schema, `--favor-state` is an alternative to defer.
 
