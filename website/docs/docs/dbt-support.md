@@ -7,7 +7,7 @@ pagination_prev: null
 
 Support for dbt is available to all users through the following channels:
 
-- Dedicated dbt Support team (For dbt Cloud users).
+- Dedicated dbt Support team (dbt Cloud users).
 - [The Community Forum](https://discourse.getdbt.com/).
 - [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
   
