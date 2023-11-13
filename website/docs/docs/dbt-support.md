@@ -7,7 +7,7 @@ pagination_prev: null
 
 Support for dbt is available to all users through the following channels:
 
-- The dbt Support team (dbt Cloud users).
+- Dedicated dbt Support team (For dbt Cloud users).
 - [The Community Forum](https://discourse.getdbt.com/).
 - [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
   
@@ -68,7 +68,7 @@ For help writing SQL, reviewing the overall performance of your project, or want
 
 ### Severity level
 
-Support tickets are assigned a severity level based on the impact of the issue to your business. The severity level determines the priority level of support you will receive. For specific ticket response time, Support does not have access to an Enterprise account's service level agreement (SLA). Please contact your legal team for a copy of your contract.
+Enterprise support tickets are assigned a severity level based on the impact of the issue to your business. The severity level determines the priority level of support you will receive. For specific ticket response times, Support does not have access to an Enterprise account's service level agreement (SLA). Please contact your legal team for a copy of your contract.
 
 
 | Severity Level | Description |
