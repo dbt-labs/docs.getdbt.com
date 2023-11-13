@@ -5,13 +5,24 @@ pagination_next: null
 pagination_prev: null
 ---
 
+Support for dbt is available to all users through the following channels:
+
+- The dbt Support team (dbt Cloud users).
+- [The Community Forum](https://discourse.getdbt.com/).
+- [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
+  
 ## dbt Core support
 
 If you're developing on the command line (CLI) and have questions or need some help &mdash; reach out to the helpful dbt community through [the Community Forum](https://discourse.getdbt.com/) or [dbt Community slack](https://www.getdbt.com/community/join-the-community/).
 
 ## dbt Cloud support
 
+The global dbt Support team is available to dbt Cloud customers by email or in-product live chat:
+- **Enterprise plans** &mdash; Have priority access and options for custom coverage, receive implementation assistance, dedicated account management, and a dbt Labs Security and Legal review.
+- **Developer and Team plans** &mdash; Have 24x5 support. Developer and Team accounts are not subject to a service level agreement. If you are interested in adding one, [contact Sales](https://www.getdbt.com/pricing/) to ask about our Enterprise plan.
+
 We want to help you work through implementing and utilizing dbt Cloud at your organization. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/) or [the Community Forum](https://discourse.getdbt.com/)? Our Support team is here to `dbt help` you!
+
 Check out our guide on [getting help](/community/resources/getting-help) - half of the problem is often knowing where to look... and how to ask good questions!
 
 Types of dbt Cloud-related questions our Support team can assist you with, regardless of your dbt Cloud plan:
@@ -29,8 +40,6 @@ Types of dbt Cloud-related questions our Support team can assist you with, regar
     - why I am getting this error message in dbt Cloud.
     - why my CI jobs are not kicking off as expected.
 
-
-Developer and Team accounts are not subject to a service level agreement. If you are interested in adding one, [contact Sales](https://www.getdbt.com/pricing/) to ask about our Enterprise plan.
 
 ## dbt Cloud Enterprise accounts
 
@@ -52,6 +61,11 @@ Types of questions you should ask your Solutions Architect and Sales Director:
 - Here is our data road map for the next year - can we talk through how dbt fits into it and what features we may not be utilizing that can help us achieve our goals?
 - It is time for our contract renewal, what options do I have?
 
+
+For help writing SQL, reviewing the overall performance of your project, or want someone to actually help build your dbt project, refer to the following pages: 
+- List of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/).
+- dbt Labs' [Services](https://www.getdbt.com/dbt-labs/services/).
+
 ### Severity level
 
 Support tickets are assigned a severity level based on the impact of the issue to your business. The severity level determines the priority level of support you will receive. For specific ticket response time, Support does not have access to an Enterprise account's service level agreement (SLA). Please contact your legal team for a copy of your contract. <-- NOT SURE WE SHOULD USE STATE THIS - IT MAKES IT SEEM LIKE SUPPORT DONT KNOW WHEN WE HAVE TO RESPOND TO AN ENTERPRISE'S TICKET SINCE WE'RE SAYING WE DON'T HAVE ACCESS TO THEIR CONTRACT. I WOULDN'T WANT USERS TO THINK WE'RE NOT TREATING THEIR TICKET BASED ON THEIR SPECIFIC SLA.
@@ -60,8 +74,8 @@ Support tickets are assigned a severity level based on the impact of the issue t
 | Severity Level | Description | 
 | -------------- | ----------- | 
 | Severity Level 1 | Any Error which makes the use or continued use of the Subscription or material features impossible; Subscription is not operational, with no alternative available. | 
-| Severity Level 2 | AFeature failure, without a workaround, but Subscription is operational. | 
+| Severity Level 2 | Feature failure, without a workaround, but Subscription is operational. | 
 | Severity Level 3 | Feature failure, but a workaround exists. | 
 | Severity Level 4 | Error with low-to-no impact on Client’s access to or use of the Subscription, or Client has a general question or feature enhancement request. | 
 
-When you need help writing SQL, reviewing the overall performance of your project, or want someone to actually help build your dbt project, check out our list of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/) or our [Services](https://www.getdbt.com/dbt-labs/services/) page!
+
