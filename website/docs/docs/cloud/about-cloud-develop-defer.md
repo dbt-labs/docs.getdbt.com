@@ -7,7 +7,7 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 ---
 
 
-[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). This is powered by using a production manifest for comparison, and dbt will resolve the `{{ ref() }}` function with upstream production artifacts. 
+[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). dbt powers this by using a production manifest for comparison, and resolves the `{{ ref() }}` function with upstream production artifacts. 
 
 Both the dbt Cloud IDE and the dbt Cloud CLI allow users to natively defer to production metadata directly in their development workflows. 
 
