@@ -23,6 +23,21 @@
         "permanent": true
     },
     {
+      "source": "/guides/best-practices/how-we-mesh/mesh-1-intro",
+      "destination": "/best-practices/how-we-mesh/mesh-1-intro",
+      "permanent": true
+    },
+    {
+      "source": "/guides/best-practices/how-we-mesh/mesh-2-structures",
+      "destination": "/best-practices/how-we-mesh/mesh-2-structures",
+      "permanent": true
+    },
+    {
+      "source": "/guides/best-practices/how-we-mesh/mesh-3-implementation",
+      "destination": "/best-practices/how-we-mesh/mesh-3-implementation",
+      "permanent": true
+    },
+    {
         "source": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
         "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
         "permanent": true
@@ -434,7 +449,7 @@
     },
     {
         "source": "/guides/orchestration/set-up-ci/lint-on-push",
-        "destination": "/guides/set-up-ci",
+        "destination": " /guides/set-up-ci",
         "permanent": true
     },
     {
