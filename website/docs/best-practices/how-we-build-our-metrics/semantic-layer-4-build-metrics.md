@@ -36,7 +36,7 @@ metrics:
 
 Use [MetricFlow commands](/docs/build/metricflow-commands#metricflow) for metric validation or queries during development, and apply the following conventions based on your environment:
 
-- For dbt Cloud, use the `dbt sl` prefix before the command (such as, `dbt sl parse` or `dbt sl query`).
+- For dbt Cloud, use the `dbt sl` prefix before the command (such as, `dbt sl query`).
 - For dbt Core, use the `mf` prefix (such as `mf validate-configs` or `mf query)`.
 
 Follow these best practices when updating your semantic layer code, using the `mf` command as an example (replace `mf` with `dbt sl` if you're using dbt Cloud):

@@ -434,7 +434,7 @@
     },
     {
         "source": "/guides/orchestration/set-up-ci/lint-on-push",
-        "destination": " /guides/set-up-ci",
+        "destination": "/guides/set-up-ci",
         "permanent": true
     },
     {
