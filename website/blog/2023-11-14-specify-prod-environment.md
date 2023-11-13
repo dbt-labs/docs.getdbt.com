@@ -46,7 +46,7 @@ To avoid this conflation, you need to mark an environment as the Production envi
 
 ## Run Slimmer CI than ever with environment-level deferral
 
-**The old way**: [Slim CI](/guides/orchestration/set-up-ci/in-15-minutes) deferred to a single job, and would only detect changes as of that job's last build time.
+**The old way**: [Slim CI](/guides/set-up-ci?step=2) deferred to a single job, and would only detect changes as of that job's last build time.
 
 **The new way**: Changes are detected regardless of the job they were deployed in, removing false positives and overbuilding of models in CI.
 
