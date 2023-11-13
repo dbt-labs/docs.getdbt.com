@@ -39,14 +39,14 @@ Types of dbt Cloud-related questions our Support team can assist you with, regar
     - set up a dbt Cloud project?
     - set up a private package in dbt Cloud?
     - configure custom branches on git repos?
-    - link dbt to a new github account?
+    - link dbt to a new GitHub account?
 - **Help! I can't...**
     - log in.
     - access logs.
     - update user groups.
 - **I need help understanding...**
     - why this run failed.
-    - why I am getting this error message in dbt Cloud.
+    - why I am getting this error message in dbt Cloud?
     - why my CI jobs are not kicking off as expected.
 
 
@@ -77,7 +77,7 @@ For help writing SQL, reviewing the overall performance of your project, or want
 
 ### Severity level
 
-Enterprise support tickets are assigned a severity level based on the impact of the issue to your business. The severity level determines the priority level of support you will receive. For specific ticket response times, Support does not have access to an Enterprise account's service level agreement (SLA). Please contact your legal team for a copy of your contract.
+Enterprise support tickets are assigned a severity level based on the impact of the issue on your business. The severity level determines the priority level of support you will receive. For specific ticket response times, Support does not have access to an Enterprise account's service level agreement (SLA). Please contact your legal team for a copy of your contract.
 
 
 | Severity Level | Description |
