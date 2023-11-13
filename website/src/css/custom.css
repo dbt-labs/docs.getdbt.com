@@ -2073,28 +2073,32 @@ h2.anchor.clicked a.hash-link:before {
   color: #fff; /* Change color on hover if desired */
 }
 
-.release-status {
+.lifecycle-badge {
   display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8em;
-  margin-right: 8px;
+  padding: 0.25em 0.5em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  margin-left: 0.5em; /* Adjust for spacing */
+  color: #020101; /* Black text for all badges */
 }
 
-.release-status-beta {
-  background-color:lightgreen; /* Adjust the color as needed */
-  color: #eae6e6;
+.lifecycle-badge.beta {
+  background-color: #28a745; /* Green for beta */
 }
 
-.release-status-public-preview {
-  background-color: #4caf50; /* Adjust the color as needed */
-  color: #fff;
+.lifecycle-badge.public-preview {
+  background-color: #007bff; /* Blue for public preview */
 }
 
-.release-status-private-preview {
-  background-color: #2196f3; /* Adjust the color as needed */
-  color: #fff;
+.lifecycle-badge.private-preview {
+  background-color: #6c757d; /* Grey for private preview */
 }
+
 
 @media (max-width: 996px) {
   .quickstart-container {
