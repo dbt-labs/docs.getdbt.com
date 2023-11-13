@@ -33,7 +33,7 @@ Configure environments to tell dbt Cloud or dbt Core how to build and execute yo
 
 ## Related docs
 
-- [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview)
+- [dbt Cloud environment best practices](/guides/set-up-ci)
 - [Deployment environments](/docs/deploy/deploy-environments)
 - [About dbt Core versions](/docs/dbt-versions/core)
 - [Set Environment variables in dbt Cloud](/docs/build/environment-variables#special-environment-variables)

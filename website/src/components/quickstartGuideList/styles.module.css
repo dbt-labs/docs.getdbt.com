@@ -18,12 +18,23 @@
 .quickstartCardContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 2rem;
-    padding: 5rem 1rem;
+    grid-gap: 1rem;
+    padding: 2rem 1rem 5rem;
+}
+
+.quickstartFilterContainer  {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    padding-top: 4rem;
+}
+
+.quickstartFilterContainer > div:first-child {
+    padding: 0;
 }
 
 @media (max-width: 996px) {
-    .quickstartCardContainer {
+    .quickstartCardContainer, .quickstartFilterContainer {
         grid-template-columns: 1fr;
     }
 }

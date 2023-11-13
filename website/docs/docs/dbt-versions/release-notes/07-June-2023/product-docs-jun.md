@@ -32,4 +32,4 @@ Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/) in June:
 
 ## New 📚 Guides, ✏️ blog posts, and FAQs
 
-- Add an Azure DevOps example to the [Customizing CI/CD guide](/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge).
+- Add an Azure DevOps example in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide.

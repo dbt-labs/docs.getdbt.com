@@ -108,7 +108,7 @@ Here are a few things to look for:
 
 ## Steps 4 & 5: Tidy by category and follow the right order—upstream to downstream
 
-We are ready to unpack our kitchen. Use your design as a guideline for [modularization](/guides/best-practices/how-we-structure/1-guide-overview). 
+We are ready to unpack our kitchen. Use your design as a guideline for [modularization](/best-practices/how-we-structure/1-guide-overview). 
 
 - Build your staging tables first, and then your intermediate tables in your pre-planned buckets.
 - Important, reusable joins that are performed in the final query should be moved upstream into their own modular models, as well as any joins that are repeated in your query.
