@@ -30,7 +30,7 @@ There are two ways of defining tests in dbt:
 Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining tests have their time and place.
 
 :::tip Creating your first tests
-If you're new to dbt, we recommend that you check out our [quickstart guide](/quickstarts) to build your first dbt project with models and tests.
+If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project with models and tests.
 :::
 
 ## Singular tests
@@ -112,7 +112,7 @@ You can find more information about these tests, and additional configurations (
 
 ### More generic tests
 
-Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/guides/best-practices/writing-custom-generic-tests) for more information.
+Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
 
 :::info
 There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](/docs/build/packages) to learn more!

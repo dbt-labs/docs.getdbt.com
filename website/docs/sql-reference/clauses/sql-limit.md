@@ -51,7 +51,7 @@ This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle
 After ensuring that this is the result you want from this query, you can omit the LIMIT in your final data model.
 
 :::tip Save money and time by limiting data in development
-You could limit your data used for development by manually adding a LIMIT statement, a WHERE clause to your query, or by using a [dbt macro to automatically limit data based](https://docs.getdbt.com/guides/legacy/best-practices#limit-the-data-processed-when-in-development) on your development environment to help reduce your warehouse usage during dev periods.
+You could limit your data used for development by manually adding a LIMIT statement, a WHERE clause to your query, or by using a [dbt macro to automatically limit data based](/best-practices/best-practice-workflows#limit-the-data-processed-when-in-development) on your development environment to help reduce your warehouse usage during dev periods.
 :::
 
 ## LIMIT syntax in Snowflake, Databricks, BigQuery, and Redshift
