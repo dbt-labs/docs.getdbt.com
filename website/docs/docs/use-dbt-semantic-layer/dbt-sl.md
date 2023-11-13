@@ -67,9 +67,9 @@ plan="dbt Cloud Team or Enterprise"
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
+<DeprecationNotice />
 
 The dbt Semantic Layer allows your data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and metadata management solutions. The dbt Semantic Layer provides the flexibility to define metrics on top of your existing models and then query those metrics and models in your analysis tools of choice.
 
@@ -99,7 +99,7 @@ The dbt Semantic Layer reduces code duplication and inconsistency regarding your
 
 :::info 📌
 
-New to dbt or metrics? Check out our [quickstart guide](/quickstarts) to build your first dbt project! If you'd like to define your first metrics, try our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example project.
+New to dbt or metrics? Check out our [quickstart guide](/guides) to build your first dbt project! If you'd like to define your first metrics, try our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example project.
 
 :::
 
@@ -130,7 +130,7 @@ You can design and define your metrics in `.yml` files nested under a metrics ke
 <details>
   <summary>How do I migrate from the legacy Semantic Layer to the new one?</summary>
   <div>
-    <div>If you're using the legacy Semantic Layer, we highly recommend you <a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud">upgrade your dbt version </a> to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated <a href="https://docs.getdbt.com/guides/migration/sl-migration"> migration guide</a> for more info.</div>
+    <div>If you're using the legacy Semantic Layer, we highly recommend you <a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud">upgrade your dbt version </a> to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated <a href="https://docs.getdbt.com/guides/sl-migration"> migration guide</a> for more info.</div>
   </div>
 </details>
     

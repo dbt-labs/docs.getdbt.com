@@ -298,7 +298,7 @@ models:
 
 </File>
 
-Check out the guide on writing a [custom generic test](/guides/best-practices/writing-custom-generic-tests) for more information.
+Check out the guide on writing a [custom generic test](/best-practices/writing-custom-generic-tests) for more information.
 
 ### Custom test name
 

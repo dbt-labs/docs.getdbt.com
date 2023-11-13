@@ -177,7 +177,7 @@ To that final point, if presented with the DAG from the narrative modeling appro
 
 ### Users can tie business concepts to source data
 
-- While the schema structure above is focused on business entities, there are still ample use cases for [staging and intermediate tables](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
+- While the schema structure above is focused on business entities, there are still ample use cases for [staging and intermediate tables](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview).
 - After cleaning up source data with staging tables, use the same “what happened” approach to more technical events, creating a three-node dependency from `stg_snowplow_events` to  `int_page_click_captured` to `user_refreshed_cart`  and thus answering the question “where do we get online user behavior information?” in a quick visit to the DAG in dbt docs.
 
 # Should your team use it?
