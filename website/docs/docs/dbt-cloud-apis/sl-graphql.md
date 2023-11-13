@@ -282,7 +282,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name: "order_total"}]
-    groupBy: [{name: "metric_time", grain: "month"}] 
+    groupBy: [{name: "metric_time", grain: MONTH}] 
   ) {
     queryId
   }
@@ -298,7 +298,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name: "metric_time, grain: "month"}, {name: "customer__customer_type"}]
+    groupBy: [{name: "metric_time, grain: MONTH}, {name: "customer__customer_type"}]
   ) {
     queryId
   }
@@ -320,7 +320,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics:[{name: "order_total"}]
-    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: "month"}]
+    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: MONTH}]
     where:[{sql: "{{ Dimension('customer__customer_type') }} = 'new'"}, {sql:"{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"}]
     ) {
      queryId
@@ -335,8 +335,8 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name: "order_total"}]
-    groupBy: [{name: "metric_time", grain: "month"}] 
-    orderBy: [{metric: {name: "order_total"}}, {groupBy: {name: "metric_time", grain: "month"}, descending:true}]
+    groupBy: [{name: "metric_time", grain: MONTH}] 
+    orderBy: [{metric: {name: "order_total"}}, {groupBy: {name: "metric_time", grain: MONTH}, descending:true}]
   ) {
     queryId
   }
@@ -351,7 +351,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain: "month"}, {name: "customer__customer_type"}]
+    groupBy: [{name:"metric_time, grain: MONTH}, {name: "customer__customer_type"}]
     limit: 10 
   ) {
     queryId
@@ -368,7 +368,7 @@ mutation {
   compileSql(
     environmentId: BigInt!
     metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain:"month"}, {name:"customer__customer_type"}]
+    groupBy: [{name:"metric_time, grain: MONTH}, {name:"customer__customer_type"}]
   ) {
     sql
   }
