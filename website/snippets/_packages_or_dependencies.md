@@ -11,7 +11,7 @@ There are some important differences between using a `dependencies.yml` compared
 <Tabs>
 <TabItem value="dependencies" label="When to use dependencies.yml">
 
-`dependencies.yml` is designed for the [dbt Mesh](/guides/best-practices/how-we-mesh/mesh-1-intro) and cross-project reference workflow. Consider using it in the following scenarios:
+`dependencies.yml` is designed for the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) and cross-project reference workflow. Consider using it in the following scenarios:
 
 - Use `dependencies.yml` when you need to set up cross-project references between different dbt projects, especially in a dbt Mesh setup.
 - Use `dependencies.yml` when you want to include both projects and non-private dbt packages in your project's dependencies. 
