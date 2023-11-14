@@ -80,7 +80,7 @@ Types of questions you should ask your Solutions Architect and Sales Director:
 
 ### Severity level for Enterprise support
 
-Support tickets are assigned a severity level based on the impact of the issue on your business. The severity level is assigned by dbt Labs at its sole discretion, and determines the priority level of support you will receive. For specific ticket response time or other questions that relate to your Enterprise account’s SLA, please refer to your Enterprise contract.
+Support tickets are assigned a severity level based on the impact of the issue on your business. The severity level is assigned by dbt Labs, and the level assigned determines the priority level of support you will receive. For specific ticket response time or other questions that relate to your Enterprise account’s SLA, please refer to your Enterprise contract.
 
 | Severity Level | Description |
 | -------------- | ----------- |
