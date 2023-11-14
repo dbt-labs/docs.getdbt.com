@@ -22,7 +22,7 @@ socialLinks:
     link: https://www.linkedin.com/in/karenhsieh/
   - name: Medium
     link: https://medium.com/@ijacwei
-dateCreated: 2023-11-03
+dateCreated: 2023-11-04
 hide_table_of_contents: true
 ---
 
