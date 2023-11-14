@@ -53,7 +53,7 @@ Elevate dbt understanding of and support for Enterprise-size company use cases t
 
 Emphasize rigor with defensive coding and comprehensive testing practices.
 
-Improve the onboarding and up-skilling of dbt engineers through feedback and edits on <a href="https://docs.getdbt.com/" rel="noopener noreferrer" target="_blank">docs.getdbt.com</a>.
+Improve the onboarding and up-skilling of dbt engineers through feedback and edits on <a href="/">docs.getdbt.com</a>.
 
 Contribute to the maintenance of a collaborative and helpful dbt community as the number of dbt practitioners reaches various growth stages and tipping points.
 

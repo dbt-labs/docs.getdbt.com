@@ -29,7 +29,7 @@ The biggest impact to my career is that I gained a lot of visibility! I got to k
 
 Karen Hsieh is the best! She not only brought me in to the dbt Community by way of the #local-taipei channel in dbt Slack, but she also encouraged me to contribute to the community in many ways, without making me feel pressured. With her passion and leading style, Karen successfully built a friendly and diverse group of people in #local-taipei.
 
-I’d also like to recommend <a href="https://docs.getdbt.com/community/spotlight/bruno-de-lima" target="_blank">Bruno de Lima</a>'s LinkedIn posts. His 'dbt Tips of the Day' effectively delivery knowledge in a user-friendly way. In addition, I really enjoyed the dbt exam practice polls. Learning dbt can be a challenge, but Bruno makes it both easy and fun!
+I’d also like to recommend <a href="/community/spotlight/bruno-de-lima">Bruno de Lima</a>'s LinkedIn posts. His 'dbt Tips of the Day' effectively delivery knowledge in a user-friendly way. In addition, I really enjoyed the dbt exam practice polls. Learning dbt can be a challenge, but Bruno makes it both easy and fun!
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
