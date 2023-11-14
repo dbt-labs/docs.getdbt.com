@@ -4,7 +4,7 @@ title: Josh Devlin
 description: |
   Josh Devlin has a rich history of community involvement and technical expertise in both the dbt and wider analytics communities.
 
-  Discovering dbt in early 2020, he quickly became an integral member of its <a href="https://www.getdbt.com/community/join-the-community">community</a>, leveraging the platform as a learning tool and aiding others along their dbt journey. Josh has helped thousands of dbt users with his advice and near-encyclopaedic knowledge of dbt.
+  Discovering dbt in early 2020, he quickly became an integral member of its <a href="https://www.getdbt.com/community/join-the-community" rel="noopener noreferrer" target="_blank">community</a>, leveraging the platform as a learning tool and aiding others along their dbt journey. Josh has helped thousands of dbt users with his advice and near-encyclopaedic knowledge of dbt.
 
   Beyond the online community, he transitioned from being an attendee at the first virtual Coalesce conference in December 2020 to a <a href="https://coalesce.getdbt.com/blog/babies-and-bathwater-is-kimball-still-relevant" title="at the first in-person Coalesce" rel="noopener noreferrer" target="_blank">presenter at the first in-person Coalesce event</a> in New Orleans in 2022.  He has also contributed to the dbt-core and dbt-snowflake codebases, helping improve the product in the most direct way.
 
@@ -16,13 +16,12 @@ pronouns: he/him
 location: Melbourne, Australia (but spent most of the last decade in Houston, USA)
 jobTitle: Senior Analytics Engineer
 companyName: Canva
-organization: ""
 socialLinks:
   - name: Twitter
     link: https://twitter.com/JayPeeDevlin
   - name: LinkedIn
     link: https://www.linkedin.com/in/josh-devlin/
-dateCreated: 2023-06-27
+dateCreated: 2023-11-10
 hide_table_of_contents: true
 ---
 
