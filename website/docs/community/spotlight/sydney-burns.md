@@ -2,7 +2,7 @@
 id: sydney-burns
 title: Sydney Burns
 description: |
-  In 2019, I started as an analytics intern at a healthcare tech startup. I learned about dbt in 2020 and joined the community to self-teach. The following year, I started using dbt professionally as a consultant, and was able to pick up various parts of the stack and dive into different implementations. That experience empowered me to strike a better balance between "best practices" and what suits a specific team best. I also <a href="https://coalesce.getdbt.com/blog/babies-and-bathwater-is-kimball-still-relevant" rel="noopener noreferrer" target="_blank">spoke at Coalesce 2022</a>, a highlight of my career!
+  In 2019, I started as an analytics intern at a healthcare tech startup. I learned about dbt in 2020 and <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">joined the community</a> to self-teach. The following year, I started using dbt professionally as a consultant, and was able to pick up various parts of the stack and dive into different implementations. That experience empowered me to strike a better balance between "best practices" and what suits a specific team best. I also <a href="https://coalesce.getdbt.com/blog/babies-and-bathwater-is-kimball-still-relevant" rel="noopener noreferrer" target="_blank">spoke at Coalesce 2022</a>, a highlight of my career!
 
   Now, I collaborate with other data professionals at Webflow, where focused on enhancing and scaling our data operations. I strive to share the same enthusiasm, support, and knowledge with my team that I've gained from the broader community!
 image: /img/community/spotlight/sydney.jpg
@@ -13,7 +13,7 @@ companyName: Webflow
 socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/sydneyeburns/
-dateCreated: 2023-11-05
+dateCreated: 2023-11-09
 hide_table_of_contents: true
 ---
 
