@@ -15,7 +15,7 @@ socialLinks:
     link: https://www.linkedin.com/in/alisonstanton/
   - name: Github
     link: https://github.com/alison985/
-dateCreated: 2023-07-18
+dateCreated: 2023-11-07
 hide_table_of_contents: true
 ---
 
@@ -48,16 +48,11 @@ The maintainers of dbt packages like dbt-utils, dbt-expectations, dbt-date, etc.
 Everyone who gets over their fear to ask a question, propose an answer that may not work, or otherwise take a risk by sharing their voice.
 
 I hope I can support my employer and my professional development and my dbt community through the following:
-
-Elevate dbt understanding of and support for Enterprise-size company use cases through dialogue, requests, and examples.
-
-Emphasize rigor with defensive coding and comprehensive testing practices.
-
-Improve the onboarding and up-skilling of dbt engineers through feedback and edits on <a href="/">docs.getdbt.com</a>.
-
-Contribute to the maintenance of a collaborative and helpful dbt community as the number of dbt practitioners reaches various growth stages and tipping points.
-
-Engage in dialogue. Providing feedback. Champion developer experience as a priority. Be a good open source citizen on Github.
+-Elevate dbt understanding of and support for Enterprise-size company use cases through dialogue, requests, and examples.
+-Emphasize rigor with defensive coding and comprehensive testing practices.
+-Improve the onboarding and up-skilling of dbt engineers through feedback and edits on <a href="/">docs.getdbt.com</a>.
+-Contribute to the maintenance of a collaborative and helpful dbt community as the number of dbt practitioners reaches various growth stages and tipping points.
+-Engage in dialogue. Providing feedback. Champion developer experience as a priority. Be a good open source citizen on Github.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
