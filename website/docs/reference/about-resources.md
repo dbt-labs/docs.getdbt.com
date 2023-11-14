@@ -65,4 +65,4 @@ Properties or configurations support different resource types and are applied in
 
 ## Related docs
 - [About resource paths](/reference/resource-configs/resource-path)
-- [About configs and properties](/reference/configs-properties)
+- [About configs and properties](/reference/configs-and-properties)
