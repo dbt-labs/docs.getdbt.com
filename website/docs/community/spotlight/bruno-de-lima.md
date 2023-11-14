@@ -6,7 +6,7 @@ description: |
 
   Started my career at the beginning of 2022 at Indicium as an Analytics Engineer, working with dbt from     day 1. By 2023, my path took a global trajectory as I joined phData as a Data Engineer, expanding my       experiences and forging connections beyond Brazil. While dbt is at the heart of my expertise, I've also    delved into data warehouses such as Snowflake, Databricks, and BigQuery; visualization tools like Power    BI and Tableau; and several minor modern data stack tools.
 
-  I actively participate in the dbt community, having attended two <a href="https://www.meetup.com/en-AU/florianopolis-dbt-meetup">dbt meetups in Brazil</a> organized by Indicium; writing about dbt-related    topics in my Medium and LinkedIn profiles; contributing to the code; and frequently checking <a href="https://www.getdbt.com/community/join-the-community">dbt Slack</a> and <a                            href="https://discourse.getdbt.com/">Discourse</a>, helping (and being helped by) other dbt practitioners. If you are a community member, you may have seen me around!
+  I actively participate in the dbt community, having attended two <a href="https://www.meetup.com/en-AU/florianopolis-dbt-meetup" rel="noopener noreferrer" target="_blank">dbt Meetups in Brazil</a> organized by Indicium; writing about dbt-related    topics in my Medium and LinkedIn profiles; contributing to the code; and frequently checking <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">dbt Slack</a> and <a href="https://discourse.getdbt.com/" rel="noopener noreferrer" target="_blank">Discourse</a>, helping (and being helped by) other dbt practitioners. If you are a community member, you may have seen me around!
 image: /img/community/spotlight/bruno-de-lima.jpg
 pronouns: he/him
 location: Florianópolis, Brazil
@@ -18,7 +18,7 @@ socialLinks:
     link: https://www.linkedin.com/in/brunoszdl/
   - name: Medium
     link: https://medium.com/@bruno.szdl
-dateCreated: 2023-11-02
+dateCreated: 2023-11-05
 hide_table_of_contents: true
 ---
 
