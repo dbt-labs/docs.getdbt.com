@@ -7,13 +7,10 @@ keywords:
 tags: [Metrics]
 ---
 
-:::caution Upgrade to access MetricFlow and the new dbt Semantic Layer
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-The dbt_metrics package has been deprecated and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6). If you're using the dbt_metrics package or the legacy Semantic Layer (available on v1.5 or lower), we **highly** recommend [upgrading your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to access MetricFlow and the new [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl?version=1.6).
+<DeprecationNotice />
 
-To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
-
-:::
  
 <VersionBlock firstVersion="1.6">
 
@@ -26,7 +23,7 @@ The dbt_metrics package has been [deprecated](https://docs.getdbt.com/blog/depre
 Anyone who uses the dbt_metrics package or is integrated with the legacy Semantic Layer. The new Semantic Layer is available to [Team or Enterprise](https://www.getdbt.com/pricing/) multi-tenant dbt Cloud plans [hosted in North America](/docs/cloud/about-cloud/regions-ip-addresses). You must be on dbt v1.6 or higher to access it. All users can define metrics using MetricFlow. Users on dbt Cloud Developer plans or dbt Core can only use it to define and test metrics locally, but can't dynamically query them with integrated tools.
 
 **What should you do?** <br /> <br />
-If you've defined metrics using dbt_metrics or integrated with the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use MetricFlow or the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+If you've defined metrics using dbt_metrics or integrated with the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use MetricFlow or the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/sl-migration) for more info.
 
 
 </VersionBlock>
@@ -38,11 +35,7 @@ A metric is an aggregation over a <Term id="table" /> that supports zero or more
 - active users
 - monthly recurring revenue (mrr)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
-
-Review the video below to learn more about metrics, why they're important, and how to get started:
-    
-<LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />    
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting. 
 
 ### Benefits of defining metrics
 

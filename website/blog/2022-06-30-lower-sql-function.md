@@ -75,7 +75,7 @@ After running this query, the `customers` table will look a little something lik
 Now, all characters in the `first_name` and `last_name` columns are lowercase.
 
 > **Where do you lower?**
-> Changing all string columns to lowercase to create uniformity across data sources typically happens in our dbt project’s [staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging). There are a few reasons for that: data cleanup and standardization, such as aliasing, casting, and lowercasing, should ideally happen in staging models to create downstream uniformity. It’s also more performant in downstream models that join on string values to join on strings that are of all the same casing versus having to join and perform lowercasing at the same time.
+> Changing all string columns to lowercase to create uniformity across data sources typically happens in our dbt project’s [staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging). There are a few reasons for that: data cleanup and standardization, such as aliasing, casting, and lowercasing, should ideally happen in staging models to create downstream uniformity. It’s also more performant in downstream models that join on string values to join on strings that are of all the same casing versus having to join and perform lowercasing at the same time.
 
 ## Why we love it
 
