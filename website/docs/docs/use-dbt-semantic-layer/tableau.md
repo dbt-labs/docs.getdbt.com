@@ -34,12 +34,12 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 | Mac | `/Users/[user]/Documents/My Tableau Repository/Connectors` | Not applicable |
 | Linux | `/opt/tableau/connectors` | `/opt/tableau/connectors` |
  
-1. Install the [JDBC driver](/docs/dbt-cloud-apis/sl-jdbc) to the folder based on your operating system:
+2. Install the [JDBC driver](/docs/dbt-cloud-apis/sl-jdbc) to the folder based on your operating system:
    - Windows: `C:\Program Files\Tableau\Drivers`
    - Mac: `~/Library/Tableau/Drivers`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
-2. Open Tableau Desktop and find the **dbt Semantic Layer by dbt Labs** connector on the left-hand side.
-3. Connect with your Host, Environment ID, and Service Token information dbt Cloud provides during [Semantic Layer configuration](/docs/use-dbt-semantic-layer/setup-sl#:~:text=After%20saving%20it%2C%20you%27ll%20be%20provided%20with%20the%20connection%20information%20that%20allows%20you%20to%20connect%20to%20downstream%20tools). 
+3. Open Tableau Desktop and find the **dbt Semantic Layer by dbt Labs** connector on the left-hand side.
+4. Connect with your Host, Environment ID, and Service Token information dbt Cloud provides during [Semantic Layer configuration](/docs/use-dbt-semantic-layer/setup-sl#:~:text=After%20saving%20it%2C%20you%27ll%20be%20provided%20with%20the%20connection%20information%20that%20allows%20you%20to%20connect%20to%20downstream%20tools). 
    - In Tableau Server, the authentication screen may show "User" & "Password" instead, in which case the User is the Environment ID and the password is the Service Token.
 
 
