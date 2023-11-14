@@ -50,4 +50,4 @@ In this query, you’re adding superfluous asterisks to a string using the [CONC
 
 ## TRIM function use cases
 
-If string values in your raw data have extra white spaces or miscellaneous characters, you’ll leverage the TRIM (and subset RTRIM AND LTRIM) functions to help you quickly remove them. You’ll likely do this cleanup in [staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging), where you’re probably standardizing casing and doing other minor formatting changes to string values, so you can use a clean and consistent format across your downstream models.
+If string values in your raw data have extra white spaces or miscellaneous characters, you’ll leverage the TRIM (and subset RTRIM AND LTRIM) functions to help you quickly remove them. You’ll likely do this cleanup in [staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging), where you’re probably standardizing casing and doing other minor formatting changes to string values, so you can use a clean and consistent format across your downstream models.

@@ -16,4 +16,4 @@ dbt Core is an [open-source](https://github.com/dbt-labs/dbt-core) tool that ena
 - [Connecting to a data platform](/docs/core/connect-data-platform/profiles.yml)
 - [How to run your dbt projects](/docs/running-a-dbt-project/run-your-dbt-projects)
 
-If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](https://docs.getdbt.com/quickstarts).
+If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](https://docs.getdbt.com/guides).

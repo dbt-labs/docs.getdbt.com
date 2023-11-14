@@ -215,7 +215,7 @@ If you want to ensure that you're building views whenever the logic is changed, 
     Executing `dbt build` in this context is unnecessary because the CI job was used to both run and test the code that just got merged into main.
 5. Under the **Execution Settings**, select the default production job to compare changes against:
     - **Defer to a previous run state** &mdash; Select the “Merge Job” you created so the job compares and identifies what has changed since the last merge.
-6. In your dbt project, follow the steps in [Run a dbt Cloud job on merge](/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge) to create a script to trigger the dbt Cloud API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
+6. In your dbt project, follow the steps in Run a dbt Cloud job on merge in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide to create a script to trigger the dbt Cloud API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
 
 The purpose of the merge job is to:
 
@@ -237,7 +237,7 @@ To understand better how long each model takes to run within the context of a sp
 Once you've identified which models could be optimized, check out these other resources that walk through how to optimize your work: 
 * [Build scalable and trustworthy data pipelines with dbt and BigQuery](https://services.google.com/fh/files/misc/dbt_bigquery_whitepaper.pdf) 
 * [Best Practices for Optimizing Your dbt and Snowflake Deployment](https://www.snowflake.com/wp-content/uploads/2021/10/Best-Practices-for-Optimizing-Your-dbt-and-Snowflake-Deployment.pdf) 
-* [How to optimize and troubleshoot dbt models on Databricks](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks)
+* [How to optimize and troubleshoot dbt models on Databricks](/guides/optimize-dbt-models-on-databricks)
 
 ## FAQs
 

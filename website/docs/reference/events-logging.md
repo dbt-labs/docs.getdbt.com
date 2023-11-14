@@ -4,7 +4,7 @@ title: "Events and logs"
 
 As dbt runs, it generates events. The most common way to see those events is as log messages, written in real time to two places:
 - The command line terminal (`stdout`), to provide interactive feedback while running dbt.
-- The debug log file (`logs/dbt.log`), to enable detailed [debugging of errors](/guides/best-practices/debugging-errors) when they occur. The text-formatted log messages in this file include all `DEBUG`-level events, as well as contextual information, such as log level and thread name. The location of this file can be configured via [the `log_path` config](/reference/project-configs/log-path).
+- The debug log file (`logs/dbt.log`), to enable detailed [debugging of errors](/guides/debug-errors) when they occur. The text-formatted log messages in this file include all `DEBUG`-level events, as well as contextual information, such as log level and thread name. The location of this file can be configured via [the `log_path` config](/reference/project-configs/log-path).
 
 <File name='CLI'>
 
