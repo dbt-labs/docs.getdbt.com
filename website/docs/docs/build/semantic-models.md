@@ -178,7 +178,6 @@ For semantic models with a measure, you must have a [primary time group](/docs/b
 | `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
 | `expr` | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
 | `non_additive_dimension` | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
-| `create_metric`* | You can create a metric directly from a measure with create_metric: True and specify its display name with create_metric_display_name. | Optional |
 _*Coming soon_
 
 
