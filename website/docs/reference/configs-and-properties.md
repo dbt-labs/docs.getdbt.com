@@ -1,5 +1,5 @@
 ---
-title: Configs, properties, what are they?
+title: About configs and properties
 ---
 
 Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. Resources can also define **configurations**, which are a special kind of property that bring extra abilities. What's the distinction?
@@ -85,6 +85,7 @@ These properties are:
 - [`macro` properties](/reference/macro-properties) (e.g. `arguments`)
 
 ## Example
+
 Here's an example that defines both `sources` and `models` for a project:
 
 <File name='models/jaffle_shop.yml'>
@@ -152,6 +153,8 @@ models:
 </File>
 
 
+
+<!--
 ## Related documentation
 You can find an exhaustive list of each supported property and config, broken down by resource type:
 * Model [properties](/reference/model-properties) and [configs](/reference/model-configs)
@@ -161,6 +164,7 @@ You can find an exhaustive list of each supported property and config, broken do
 * Analysis [properties](analysis-properties)
 * [Macro Properties](/reference/macro-properties)
 * Exposure [properties](/reference/exposure-properties)
+-->
 
 ## FAQs
 <FAQ path="Project/schema-yml-name" />
@@ -171,7 +175,6 @@ You can find an exhaustive list of each supported property and config, broken do
 <FAQ path="Project/yaml-file-extension" />
 
 ## Troubleshooting common errors
-
 ### Invalid test config given in [model name]
 
 This error occurs when your `.yml` file does not conform to the structure expected by dbt. A full error message might look like:
