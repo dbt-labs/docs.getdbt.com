@@ -72,7 +72,7 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - Updating the data source page
 - Using "Extract" mode to view your data
 - Unioning Tables
-- Writing Custom SQL
+- Writing Custom SQL / Initial SQL
 - Table Extensions
 - Cross Database Joins
 - All functions in Analysis --> Create Calculated Field
