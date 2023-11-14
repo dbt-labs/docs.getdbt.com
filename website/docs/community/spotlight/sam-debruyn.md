@@ -16,13 +16,13 @@ socialLinks:
     link: https://www.linkedin.com/in/samueldebruyn/
   - name: Blog
     link: https://debruyn.dev/
-dateCreated: 2023-11-07
+dateCreated: 2023-11-03
 hide_table_of_contents: true
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
 
-I joined the dbt community at the end of 2020, when we had dbt 0.18. At first, I was a bit suspicious. I thought to myself, how could a tool this simple make such a big difference? But after giving it a try, I was convinced: this is what we'll all be using for our data transformations in the future. dbt shines in its simplicity and very low learning curve. Thanks to dbt, a lot more people can become proficient in data analytics. I became a dbt evangelist, both at my job as well as in local and online data communities. I think that data holds the truth. And I think that the more people we can give access to work with data, so that they don't having to depend on others to work with complex tooling, the more we can achieve together.
+I <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">joined the dbt Community</a> at the end of 2020, when we had dbt 0.18. At first, I was a bit suspicious. I thought to myself, how could a tool this simple make such a big difference? But after giving it a try, I was convinced: this is what we'll all be using for our data transformations in the future. dbt shines in its simplicity and very low learning curve. Thanks to dbt, a lot more people can become proficient in data analytics. I became a dbt evangelist, both at my job as well as in local and online data communities. I think that data holds the truth. And I think that the more people we can give access to work with data, so that they don't having to depend on others to work with complex tooling, the more we can achieve together.
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
@@ -30,8 +30,8 @@ It's hard to pick one person. There are lots of folks who inspired me along the 
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
-dbt doesn't only shine when you're using it, but also under the hood. dbt's codebase is very approachable and consistently well written with code that is clean, elegant, and easy to understand. When you're thinking about a potential feature, a bugfix, or building integrations with dbt, just go to Slack or GitHub and see what you can do to make that happen. You can contribute by discussing potential features, adding documentation, writing code, and more. You don't need to be a Python expert to get started.
+dbt doesn't only shine when you're using it, but also under the hood. dbt's codebase is very approachable and consistently well written with code that is clean, elegant, and easy to understand. When you're thinking about a potential feature, a bugfix, or building integrations with dbt, just go to <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">Slack</a> or <a href="https://github.com/dbt-labs" rel="noopener noreferrer" target="_blank">Github</a> and see what you can do to make that happen. You can contribute by discussing potential features, adding documentation, writing code, and more. You don't need to be a Python expert to get started.
 
 ## Anything else interesting you want to tell us?
 
-<a href="https://www.getdbt.com/community" rel="noopener noreferrer" target="_blank">The dbt community</a> is one of the biggest data communities globally, but also the most welcoming one. It's amazing how nice, friendly, and approachable everyone is. It's great to be part of this community.
+The dbt community is one of the biggest data communities globally, but also the most welcoming one. It's amazing how nice, friendly, and approachable everyone is. It's great to be part of this community.
