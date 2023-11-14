@@ -38,7 +38,7 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
    - Mac: `~/Library/Tableau/Drivers`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
 3. Open Tableau Desktop and find the **dbt Semantic Layer by dbt Labs** connector on the left-hand side.
-4. Connect with your Host, Environment ID, and ServiceTtoken information that's provided to you in your dbt Cloud Semantic Layer configuration. In Tableau Server, the authentication screen may show "User" & "Password" instead, in which case the User is the Environment ID and the password is the Service Token.
+4. Connect with your Host, Environment ID, and Service Token information that's provided to you in your dbt Cloud Semantic Layer configuration. In Tableau Server, the authentication screen may show "User" & "Password" instead, in which case the User is the Environment ID and the password is the Service Token.
 
 
 ## Using the integration
@@ -74,7 +74,7 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - Unioning Tables
 - Writing Custom SQL / Initial SQL
 - Table Extensions
-- Cross Database Joins
+- Cross-Database Joins
 - All functions in Analysis --> Create Calculated Field
 - Filtering on a Date Part time dimension for a Cumulative metric type
 - Changing your date dimension to use "Week Number"
