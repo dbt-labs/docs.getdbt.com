@@ -157,7 +157,7 @@ These 3 parts go from least granular (general) to most granular (specific) so yo
 
 ### Coming up...
 
-In this part of the series, we talked about why the model name is the center of understanding for the purpose and content within a model. In the in the upcoming ["How We Structure Our dbt Projects"](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview) guide, you can explore how to use this naming pattern with more specific examples in different parts of your dbt DAG that cover regular use cases:
+In this part of the series, we talked about why the model name is the center of understanding for the purpose and content within a model. In the in the upcoming ["How We Structure Our dbt Projects"](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview) guide, you can explore how to use this naming pattern with more specific examples in different parts of your dbt DAG that cover regular use cases:
 
 - How would you name a model that is filtered on some columns
 - Do we recommend naming snapshots in a specific way

@@ -26,7 +26,7 @@ So let’s all commit to sharing our hard won knowledge with each other—and in
 
 The purpose of this blog is to double down on our long running commitment to contributing to the knowledge loop.
 
-From early posts like ‘[The Startup Founders Guide to Analytics’](https://thinkgrowth.org/the-startup-founders-guide-to-analytics-1d2176f20ac1) to foundational guides like [‘How We Structure Our dbt Projects](/guides/best-practices/how-we-structure/1-guide-overview)’, we’ve had a long standing goal of working with the community to create practical, hands-on tutorials and guides which distill the knowledge we’ve been able to collectively gather.
+From early posts like ‘[The Startup Founders Guide to Analytics’](https://thinkgrowth.org/the-startup-founders-guide-to-analytics-1d2176f20ac1) to foundational guides like [‘How We Structure Our dbt Projects](/best-practices/how-we-structure/1-guide-overview)’, we’ve had a long standing goal of working with the community to create practical, hands-on tutorials and guides which distill the knowledge we’ve been able to collectively gather.
 
 dbt as a product is based around the philosophy that even the most complicated problems can be broken down into modular, reusable components, then mixed and matched to create something novel.
 
