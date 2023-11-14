@@ -3,7 +3,7 @@ title: "Run results JSON file"
 sidebar_label: "Run results"
 ---
 
-**Current schema**: [`v4`](https://schemas.getdbt.com/dbt/run-results/v4/index.html)
+**Current schema**: [`v5`](https://schemas.getdbt.com/dbt/run-results/v5/index.html)
 
  **Produced by:**
  [`build`](/reference/commands/build)
