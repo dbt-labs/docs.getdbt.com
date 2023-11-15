@@ -45,9 +45,9 @@
     icon="starburst"/>
 
 <Card
-    title="Fabric Synapse*"
-    body="<a href='/docs/core/connect-data-platform/fabric-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/><br /> 🚧 Verification in progress"
-    icon="rocket"/>
+    title="Microsoft Fabric"
+    body="<a href='/guides/microsoft-fabric?step=1'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/fabric-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/></a>"
+    icon="fabric"/>
 <Card
     title="Azure Synapse*"
     body="<a href='/docs/core/connect-data-platform/azuresynapse-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/><br /> 🚧 Verification in progress"
