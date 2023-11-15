@@ -12,40 +12,49 @@ The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/db
 
 The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  
 
-This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop.
+This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop or Tableau Server. 
 
 ## Prerequisites
 
 - You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
-- You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed with version 2021.1 or greater
-   - Note that Tableau Online does not currently support custom connectors natively.
-- Log in to Tableau Desktop using either your license or the login details you use for Tableau Server or Tableau Online.
+- You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) version 2021.1 and greater or Tableau Server.
+  - Note that Tableau Online does not currently support custom connectors natively. If you use Tableau Online, you will only be able to access the connector in Tableau Desktop.
+- Log in to Tableau Desktop (with Online or Server credentials) or a license to Tableau Server
 - You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
 
 
-## Installing
+## Installing the Connector
 
 1. Download the GitHub [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/download/v1.0.2/dbt_semantic_layer.taco) locally and add it to your default folder:
-   - Windows: `C:\Users\\[Windows User]\Documents\My Tableau Repository\Connectors`
-   - Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
-   - Linux: `/opt/tableau/connectors`
+
+| Operating system |Tableau Desktop | Tableau Server |
+| ---------------- | -------------- | -------------- |
+| Windows | `C:\Users\\[Windows User]\Documents\My Tableau Repository\Connectors` | `C:\Program Files\Tableau\Connectors` |
+| Mac | `/Users/[user]/Documents/My Tableau Repository/Connectors` | Not applicable |
+| Linux | `/opt/tableau/connectors` | `/opt/tableau/connectors` |
+ 
 2. Install the [JDBC driver](/docs/dbt-cloud-apis/sl-jdbc) to the folder based on your operating system:
    - Windows: `C:\Program Files\Tableau\Drivers`
    - Mac: `~/Library/Tableau/Drivers`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
-3. Open Tableau Desktop and find the **dbt Semantic Layer by dbt Labs** connector on the left-hand side.
-4. Connect with your Host, Environment ID, and service token information that's provided to you in your dbt Cloud Semantic Layer configuration.
+3. Open Tableau Desktop or Tableau Server and find the **dbt Semantic Layer by dbt Labs** connector on the left-hand side. You may need to restart these applications for the connector to be available.
+4. Connect with your Host, Environment ID, and Service Token information dbt Cloud provides during [Semantic Layer configuration](/docs/use-dbt-semantic-layer/setup-sl#:~:text=After%20saving%20it%2C%20you%27ll%20be%20provided%20with%20the%20connection%20information%20that%20allows%20you%20to%20connect%20to%20downstream%20tools). 
+   - In Tableau Server, the authentication screen may show "User" & "Password" instead, in which case the User is the Environment ID and the password is the Service Token.
 
 
 ## Using the integration
 
-Once you authenticate, the system will direct you to the data source page with all the metrics and dimensions configured in your Semantic Layer. 
-
-- From there, go directly to a worksheet in the bottom left-hand corner.
-- Then, you'll find all the metrics and dimensions that are available to query on the left-hand side of your window.
+1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page with all the metrics and dimensions configured in your dbt Semantic Layer. 
+2. **Access worksheet** &mdash; From there, go directly to a worksheet in the bottom left-hand corner.
+3. **Access metrics and dimensions** &mdash; Then, you'll find all the metrics and dimensions that are available to query on the left side of your window.
 
 Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/en-us/gettingstarted_overview.htm) to learn more about how to use Tableau worksheets and dashboards.
+
+### Publish from Tableau Desktop to Tableau Server
+
+- **From Desktop to Server** &mdash; Like any Tableau workflow, you can publish your workbook from Tableau Desktop to Tableau Server. For step-by-step instructions, visit Tableau's [publishing guide](https://help.tableau.com/current/pro/desktop/en-us/publish_workbooks_share.htm).
+
 
 ## Things to note
 
@@ -64,9 +73,9 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - Updating the data source page
 - Using "Extract" mode to view your data
 - Unioning Tables
-- Writing Custom SQL
+- Writing Custom SQL / Initial SQL
 - Table Extensions
-- Cross Database Joins
+- Cross-Database Joins
 - All functions in Analysis --> Create Calculated Field
 - Filtering on a Date Part time dimension for a Cumulative metric type
 - Changing your date dimension to use "Week Number"
