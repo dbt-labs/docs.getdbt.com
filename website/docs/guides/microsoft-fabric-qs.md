@@ -2,9 +2,10 @@
 title: "Quickstart for dbt Cloud and Microsoft Fabric"
 id: "microsoft-fabric"
 level: 'Beginner'
-icon: 'starburst'
+icon: 'fabric'
 hide_table_of_contents: true
 tags: ['dbt Cloud','Quickstart']
+recently_updated: true
 ---
 ## Introduction
 
