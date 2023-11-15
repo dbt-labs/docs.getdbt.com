@@ -64,24 +64,24 @@ dbt generates the `package-lock.yml` file in the _project_root_ where `packages.
 
 When you update the package spec and run `dbt deps` again, the package-lock and package files update accordingly. You can run `dbt deps --lock` to update the `package-lock.yml` with the most recent dependencies from `packages`.
 
-The `--add` flag allows you to add a package to the `packages.yml` with configurable `--version` and `--source` information. The `--dry-run` flag, when set to `False`(default), recompiles the `package-lock.yml` file after a new package is added to the `packages.yml` file. Set the flag to `True` for the changes to not persist. 
+The `--add-package` flag allows you to add a package to the `packages.yml` with configurable `--version` and `--source` information. The `--dry-run` flag, when set to `False`(default), recompiles the `package-lock.yml` file after a new package is added to the `packages.yml` file. Set the flag to `True` for the changes to not persist. 
 
-Examples of the `--add` flag:
+Examples of the `--add-package` flag:
 ```shell
 # add package from hub (--source arg defaults to "hub")
-dbt deps add --package dbt-labs/dbt_utils --version 1.0.0
+dbt deps --add-package dbt-labs/dbt_utils@1.0.0
 
 # add package from hub with semantic version
-dbt deps add --package dbt-labs/snowplow --version ">=0.7.0,<0.8.0"
+dbt deps --add-package dbt-labs/snowplow@">=0.7.0,<0.8.0"
 
 # add package from git
-dbt deps add --package https://github.com/fivetran/dbt_amplitude --version v0.3.0 --source git 
+dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source git
 
 # add package from local (--version not required for local)
-dbt deps add --package /opt/dbt/redshift --source local
+dbt deps --add-package /opt/dbt/redshift --source local
 
 # add package to packages.yml WITHOUT updating package-lock.yml
-dbt deps add --package dbt-labs/dbt_utils --version 1.0.0 --dry-run True
+dbt deps --add-package dbt-labs/dbt_utils@1.0.0 --dry-run
 
 ```
 </VersionBlock>
