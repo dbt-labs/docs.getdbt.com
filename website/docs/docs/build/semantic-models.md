@@ -123,14 +123,18 @@ semantic_models:
     config:
       enabled: true | false
       group: some_group
+      meta:
+        some_key: some_value
 ```
 
 Semantic model config in `dbt_project.yml`:
 ```yml
-semantic_models:
+semantic-models:
   my_project_name:
     +enabled: true | false
     +group: some_group
+    +meta:
+      some_key: some_value
 ```
 
 </VersionBlock>
