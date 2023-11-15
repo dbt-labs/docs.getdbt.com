@@ -2,12 +2,13 @@
 
   // Get all the headers with anchor links. 
   // The 'click' event worked over 'popstate' because click captures page triggers, as well as back/forward button triggers
+  // Adding the 'load' event to also capture the initial page load
   window.addEventListener("click", copyHeader);
+  window.addEventListener("load", copyHeader);
   
   // separating function from eventlistener to understand they are two separate things
   function copyHeader () {
     const headers = document.querySelectorAll("h2.anchor, h3.anchor");
-    console.log("click");
 
 headers.forEach((header) => {
     header.style.cursor = "pointer";
