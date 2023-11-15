@@ -17,6 +17,6 @@ Community-supported plugins are works in progress, and anyone is welcome to cont
 
 ### Create a new adapter
 
-If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the  [Adapter Development](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters) section.
+If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the [Build, test, document, and promote adapters](/guides/adapter-creation).
 
-If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter) for more information.
+If you have a new adapter, please add it to this list using a pull request! You can refer to [Build, test, document, and promote adapters](/guides/adapter-creation) for more information on documenting your adapter.
