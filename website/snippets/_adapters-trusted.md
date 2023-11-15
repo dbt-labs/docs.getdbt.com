@@ -7,7 +7,7 @@
 
 <Card
     title="Glue*"
-    body="<a href='/docs/core/connect-data-platform/athena-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /><a href=https://badge.fury.io/py/dbt-glue><img src=https://badge.fury.io/py/dbt-glue.svg/></a>"
+    body="<a href='/docs/core/connect-data-platform/glue-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /><a href=https://badge.fury.io/py/dbt-glue><img src=https://badge.fury.io/py/dbt-glue.svg/></a>"
     icon="glue"/>
 
 <Card
