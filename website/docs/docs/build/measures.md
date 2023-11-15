@@ -6,19 +6,13 @@ sidebar_label: "Measures"
 tags: [Metrics, Semantic Layer]
 ---
 
-Measures are aggregations performed on columns in your model. They can be used as final metrics or serve as building blocks for more complex metrics. Measures have several inputs, which are described in the following table along with their field types.
+Measures are aggregations performed on columns in your model. They can be used as final metrics or serve as building blocks for more complex metrics. 
 
-| Parameter | Description | Field type |
-| --- | --- | --- |
-| [`name`](#name) | Provide a name for the measure, which must be unique and can't be repeated across all semantic models in your dbt project. | Required |
-| [`description`](#description) | Describes the calculated measure. | Optional |
-| [`agg`](#aggregation) | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
-| [`expr`](#expr) | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
-| [`non_additive_dimension`](#non-additive-dimensions) | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
-| `agg_params` | specific aggregation properties such as a percentile. | Optional |
-| `agg_time_dimension` | The time field. Defaults to the default agg time dimension for the semantic model.  | Optional |
-| `label` | How the metric appears in project docs and downstream integrations. | Required |
+Measures have several inputs, which are described in the following table along with their field types.
 
+import MeasuresParameters from '/snippets/_sl-measures-paramters.md';
+
+<MeasuresParameters />
 
 ## Measure spec
 
