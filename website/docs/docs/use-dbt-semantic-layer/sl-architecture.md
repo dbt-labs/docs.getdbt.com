@@ -56,6 +56,10 @@ The dbt Semantic Layer is proprietary; however, some components of the dbt Seman
 
 <VersionBlock lastVersion="1.5">
 
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
+
+<DeprecationNotice />
+
 ## Product architecture 
 
 The dbt Semantic Layer product architecture includes four primary components:
