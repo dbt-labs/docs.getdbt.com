@@ -162,8 +162,6 @@ Now you have all the working pieces to get up and running with Airflow + dbt Clo
 
 3. Add in your connection details and your default dbt Cloud account id. This is found in your dbt Cloud URL after the accounts route section (`/accounts/{YOUR_ACCOUNT_ID}`), for example the account with id 16173 would see this in their URL: `https://cloud.getdbt.com/#/accounts/16173/projects/36467/jobs/65767/`
 
-![https://lh3.googleusercontent.com/sRxe5xbv_LYhIKblc7eiY7AmByr1OibOac2_fIe54rpU3TBGwjMpdi_j0EPEFzM1_gNQXry7Jsm8aVw9wQBSNs1I6Cyzpvijaj0VGwSnmVf3OEV8Hv5EPOQHrwQgK2RhNBdyBxN2](https://lh3.googleusercontent.com/sRxe5xbv_LYhIKblc7eiY7AmByr1OibOac2_fIe54rpU3TBGwjMpdi_j0EPEFzM1_gNQXry7Jsm8aVw9wQBSNs1I6Cyzpvijaj0VGwSnmVf3OEV8Hv5EPOQHrwQgK2RhNBdyBxN2)
-
 ## Add your `job_id` and `account_id` config details to the python file
 
  Add your `job_id` and `account_id` config details to the python file: [dbt_cloud_provider_eltml.py](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/dags/dbt_cloud_provider_eltml.py).
@@ -188,13 +186,10 @@ Now you have all the working pieces to get up and running with Airflow + dbt Clo
 
 2. Turn on the DAG and verify the job succeeded after running. Note: screenshots taken from different job runs, but the user experience is consistent.
 
-    ![https://lh6.googleusercontent.com/p8AqQRy0UGVLjDGPmcuGYmQ_BRodyL0Zis-eQgSmp69EHbKW51o4S-bCl1fXHlOmwpYEBxD0A-O1Q1hwt-VDVMO1wWH-AIeaoelBx06JXRJ0m1OcHaPpFKH0xDiduIhNlQhhbLiy](https://lh6.googleusercontent.com/p8AqQRy0UGVLjDGPmcuGYmQ_BRodyL0Zis-eQgSmp69EHbKW51o4S-bCl1fXHlOmwpYEBxD0A-O1Q1hwt-VDVMO1wWH-AIeaoelBx06JXRJ0m1OcHaPpFKH0xDiduIhNlQhhbLiy)
-
     ![Airflow DAG](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-dag.png)
 
     ![Task run instance](/img/guides/orchestration/airflow-and-dbt-cloud/task-run-instance.png)
 
-    ![https://lh6.googleusercontent.com/S9QdGhLAdioZ3x634CChugsJRiSVtTTd5CTXbRL8ADA6nSbAlNn4zV0jb3aC946c8SGi9FRTfyTFXqjcM-EBrJNK5hQ0HHAsR5Fj7NbdGoUfBI7xFmgeoPqnoYpjyZzRZlXkjtxS](https://lh6.googleusercontent.com/S9QdGhLAdioZ3x634CChugsJRiSVtTTd5CTXbRL8ADA6nSbAlNn4zV0jb3aC946c8SGi9FRTfyTFXqjcM-EBrJNK5hQ0HHAsR5Fj7NbdGoUfBI7xFmgeoPqnoYpjyZzRZlXkjtxS)
 
 ## How do I rerun the dbt Cloud job and downstream tasks in my pipeline?
 
