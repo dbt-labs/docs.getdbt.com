@@ -8,11 +8,16 @@ sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
 ---
 
-Semantic models serve as the foundation for defining data in MetricFlow, which powers the dbt Semantic Layer. You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that can be used to query metrics.
+Semantic models are the foundation for data definition in MetricFlow, which powers the dbt Semantic Layer:
 
-Each semantic model corresponds to a dbt model in your DAG. Therefore you will have one YAML config for each semantic model in your dbt project. You can create multiple semantic models out of a single dbt model, as long as you give each semantic model a unique name. 
+- Think of semantic models as nodes connected by entities in a semantic graph.
+- MetricFlow uses YAML configuration files to create this graph for querying metrics.
+- Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
+- You can create multiple semantic models from a single dbt model, as long as you give each semantic model a unique name.
+- Configure semantic models in a YAML file within your dbt project directory.
+- Organize them under a `metrics:` folder or within project sources as needed. 
 
-You can configure semantic models in your dbt project directory in a `YAML` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. 
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
 Semantic models have 6 components and this page explains the definitions with some examples:
 
@@ -28,13 +33,14 @@ Semantic models have 6 components and this page explains the definitions with so
 ## Semantic models components
 
 The complete spec for semantic models is below:
+
 ```yaml
 semantic_models:
   - name: the_name_of_the_semantic_model      ## Required
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
     default:                                  ## Required
-        agg_time_dimension: dimension_name    ## Required if the model contains dimensions
+      agg_time_dimension: dimension_name    ## Required if the model contains dimensions
     entities:                                 ## Required
        - see more information in entities
     measures:                                 ## Optional
