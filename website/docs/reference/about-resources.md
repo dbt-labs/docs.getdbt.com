@@ -11,7 +11,6 @@ dbt supports different types of resource types. Each one has a set of supported 
 
 The following tables describes each resource type, its identifier, and a brief description of its purpose. 
 
-WHERE DO WE LINK TO FOR EACH RESOURCE TYPE? CONTENT UNDER DOCS? OR UNDER RESOURCE CONFIGS?
 
 | Resource type     | Identifier         | Description |
 |-------------------|--------------------|-------------|
