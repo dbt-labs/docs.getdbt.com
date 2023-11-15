@@ -60,7 +60,7 @@ Update your versions in packages.yml, then run dbt deps
 
 <VersionBlock firstVersion="1.7">
 
-dbt generates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded, which contains all the resolved packages, the first time you run `dbt deps`. Each subsequent run records the packages installed in this file. If the subsequent `dbt deps` runs contain no updated packages in `depenedencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
+dbt generates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded, which contains all the resolved packages, the first time you run `dbt deps`. Each subsequent run records the packages installed in this file. If the subsequent `dbt deps` runs contain no updated packages in `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
 
 When you update the package spec and run `dbt deps` again, the package-lock and package files update accordingly. You can run `dbt deps --lock` to update the `package-lock.yml` with the most recent dependencies from `packages`.
 
