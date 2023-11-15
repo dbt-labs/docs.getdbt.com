@@ -46,7 +46,7 @@ A public preview of dbt Cloud support for Microsoft Fabric in now available!
 3. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
 4. Choose your warehouse from the table. Or, you can create a new warehouse; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/tutorial-create-warehouse) in the Microsoft docs for more details.
 5. Open the SQL editor by selecting **New SQL query** from the top bar. 
-6. Load the Jaffle Shop example data. Copy these statements into the SQL editor:
+6. Copy these statements into the SQL editor to load the Jaffle Shop example data:
 
     ```sql
     DROP TABLE dbo.customers;
