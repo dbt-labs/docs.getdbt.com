@@ -179,7 +179,7 @@ For semantic models with a measure, you must have a [primary time group](/docs/b
 
 Measures have various parameters which are listed in a table along with their descriptions and types.
 
-import MeasuresParameters from '/snippets/_sl-measures-paramters.md';
+import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
 
 <MeasuresParameters />
 

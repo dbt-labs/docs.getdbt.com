@@ -10,7 +10,7 @@ Measures are aggregations performed on columns in your model. They can be used a
 
 Measures have several inputs, which are described in the following table along with their field types.
 
-import MeasuresParameters from '/snippets/_sl-measures-paramters.md';
+import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
 
 <MeasuresParameters />
 
