@@ -12,7 +12,7 @@ To learn more, check out the [Quickstart for dbt Cloud and Microsoft Fabric](/gu
 
 - Loading the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
 - Connecting dbt Cloud to Microsoft Fabric.
-- Taking a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+- Turning a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Adding tests to your models.
 - Documenting your models.
 - Scheduling a job to run.
