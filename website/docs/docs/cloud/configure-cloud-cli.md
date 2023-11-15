@@ -76,6 +76,8 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
    - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://cloud.getdbt.com/develop/26228/projects/123456`, the project ID is `123456`.
 
+6. You can now [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like `dbt compile`. With your repo recloned, you can add, edit, and sync files with your repo.
+
 ### Set environment variables
 
 To set environment variables in the dbt Cloud CLI for your dbt project:
