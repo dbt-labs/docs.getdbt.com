@@ -20,7 +20,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Microsoft Fabri
 
 :::tip Public preview
 
-A public preview of dbt Cloud support for Microsoft Fabric in now available! 
+A public preview of Microsoft Fabric in dbt Cloud is now available! 
 
 :::
 
