@@ -2,9 +2,9 @@
 id: fabiyi-opeyemi
 title: Opeyemi Fabiyi
 description: |
-  I'm an Analytics Engineer with Data Culture, a Data Consulting firm where I use dbt regularly to help clients build quality-tested data assets. I've also got a background in financial services and supply chain. I'm passionate about helping organizations to become data-driven and I majorly use dbt for data modeling, while the other aspect of the stack is largely dependent on the client infrastructure I'm working for, so I often say I'm tool-agnostic. 😀
+  I'm an Analytics Engineer with Data Culture, a Data Consulting firm where I use dbt regularly to help      clients build quality-tested data assets. I've also got a background in financial services and supply      chain. I'm passionate about helping organizations to become data-driven and I majorly use dbt for data     modeling, while the other aspect of the stack is largely dependent on the client infrastructure I'm        working for, so I often say I'm tool-agnostic. 😀
 
-  I'm the founder of Nigeria's Young Data Professional Community. I'm also the organizer of the <a href="https://www.meetup.com/lagos-dbt-meetup/" title="Lagos dbt Meetup" rel="noopener noreferrer" target="_blank">Lagos dbt Meetup</a> which I started, and one of the organizers of the DataFest Africa Conference. I became an active member of the dbt Community in 2021 & <a href="https://coalesce.getdbt.com/blog/how-to-leverage-dbt-community-as-the-first-and-only-data-hire-to-survive" title="spoke at Coalesce 2022" rel="noopener noreferrer" target="_blank">spoke at Coalesce 2022</a>.
+  I'm the founder of Nigeria's Young Data Professional Community. I'm also the organizer of the <a href="https://www.meetup.com/lagos-dbt-meetup/" title="Lagos dbt Meetup" rel="noopener noreferrer"         target="_blank">Lagos dbt Meetup</a> which I started, and one of the organizers of the DataFest Africa Conference. I became an active member of the dbt Community in 2021 & <a                                    href="https://coalesce.getdbt.com/blog/how-to-leverage-dbt-community-as-the-first-and-only-data-hire-to-survive" title="spoke at Coalesce 2022" rel="noopener noreferrer" target="_blank">spoke at Coalesce        2022</a>.
 image: /img/community/spotlight/fabiyi-opeyemi.jpg
 pronouns: he/him
 location: Lagos, Nigeria
@@ -16,7 +16,7 @@ socialLinks:
     link: https://twitter.com/Opiano_1
   - name: LinkedIn
     link: https://www.linkedin.com/in/opeyemifabiyi/
-dateCreated: 2023-07-02
+dateCreated: 2023-11-06
 hide_table_of_contents: true
 ---
 
