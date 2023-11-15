@@ -71,16 +71,16 @@ Examples of the `--add-package` flag:
 # add package from hub (--source arg defaults to "hub")
 dbt deps --add-package dbt-labs/dbt_utils@1.0.0
 
-# add package from hub with semantic version
+# add package from hub with semantic version range
 dbt deps --add-package dbt-labs/snowplow@">=0.7.0,<0.8.0"
 
 # add package from git
 dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source git
 
-# add package from local (--version not required for local)
+# add package from local
 dbt deps --add-package /opt/dbt/redshift --source local
 
-# add package to packages.yml WITHOUT updating package-lock.yml
+# add package to packages.yml and package-lock.yml WITHOUT actually installing dependencies
 dbt deps --add-package dbt-labs/dbt_utils@1.0.0 --dry-run
 
 ```
