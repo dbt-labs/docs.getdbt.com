@@ -39,9 +39,9 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
+<DeprecationNotice />
 
 With the dbt Semantic Layer, you can define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
 

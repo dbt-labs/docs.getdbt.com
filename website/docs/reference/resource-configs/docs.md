@@ -117,7 +117,9 @@ macros:
       show: true | false
 ```
 </File>
+
 Also refer to [macro properties](/reference/macro-properties).
+
 </TabItem>
 
 </Tabs>
