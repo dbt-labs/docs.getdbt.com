@@ -17,7 +17,7 @@ pagination_prev: null
 
 * [Tests](/docs/build/tests)
 
-## Overview 
+## Overview
 
 Good documentation for your dbt models will help downstream consumers discover and understand the datasets which you curate for them.
 
