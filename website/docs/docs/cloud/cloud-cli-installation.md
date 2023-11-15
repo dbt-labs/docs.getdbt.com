@@ -193,13 +193,13 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 2. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
 
   ```bash
-  pip3 install dbt
+  pip install dbt --no-cache-dir
   ```
 
-3. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
+3. (Optional) To revert to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
 
   ```bash
-  pip3 uninstall dbt-core dbt
+  pip uninstall dbt-core dbt
   pip install dbt-adapter_name --force-reinstall
   ```
 
