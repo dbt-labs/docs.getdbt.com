@@ -7,18 +7,15 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 ---
 
 
-[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). This is powered by using a production manifest for comparison, and dbt will resolve the `{{ ref() }}` function with upstream production artifacts. 
+[Defer](/reference/node-selection/defer) is a powerful feature that allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). dbt powers this by using a production manifest for comparison, and resolves the `{{ ref() }}` function with upstream production artifacts. 
+
+Both the dbt Cloud IDE and the dbt Cloud CLI enable users to natively defer to production metadata directly in their development workflows. 
 
 By default, dbt follows these rules:
 
-- Defers to the production environment when there's no development schema.
-- If a development schema exists, dbt will prioritize those changes, which minimizes development time and avoids unnecessary model builds.
-
-Both the dbt Cloud IDE and the dbt Cloud CLI allow users to natively defer to production metadata directly in their development workflows.
-
-For specific scenarios:
-- Use [`--favor-state`](/reference/node-selection/defer#favor-state) to always use production artifacts to resolve the ref.
-- If facing issues with outdated tables in the development schema, `--favor-state` is an alternative to defer.
+- dbt uses the production locations of parent models to resolve `{{ ref() }}` functions, based on metadata from the production environment.
+- If a development version of a deferred model exists, dbt preferentially uses the development database location when resolving the reference.
+- Passing the [`--favor-state`](/reference/node-selection/defer#favor-state) flag overrides the default behavior and _always_ resolve refs using production metadata, regardless of the presence of a development relation.
 
 For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 
