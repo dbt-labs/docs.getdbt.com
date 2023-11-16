@@ -39,9 +39,9 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
+<DeprecationNotice />
 
 With the dbt Semantic Layer, you can define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
 
@@ -53,7 +53,7 @@ With the dbt Semantic Layer, you can define business metrics, reduce code duplic
 ## Set up dbt Semantic Layer
 
 :::tip
-If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/sl-migration) for more info.
 
 :::
 
@@ -95,5 +95,5 @@ It is _not_ recommended that you use your dbt Cloud credentials due to elevated 
 - [Build your metrics](/docs/build/build-metrics-intro)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 - [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
-- [Migrate your legacy Semantic Layer](/guides/migration/sl-migration)
+- [Migrate your legacy Semantic Layer](/guides/sl-migration)
 - [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)

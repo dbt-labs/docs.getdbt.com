@@ -179,10 +179,11 @@ Options:
 
 ### Validate-configs
 
-This command performs validations against the defined semantic model configurations:
+The following command performs validations against the defined semantic model configurations.
+
+Note, in dbt Cloud you don't need to validate the Semantic Layer config separately. Running a dbt command (such as `dbt parse`, `dbt build`, `dbt compile`, `dbt run`) automatically checks it.
 
 ```bash
-dbt sl validate-configs # In dbt Cloud
 
 mf validate-configs # In dbt Core
 
@@ -205,21 +206,20 @@ Options:
 
 ### Health checks
 
-This command performs a health check against the data platform you provided in the configs:
+The following command performs a health check against the data platform you provided in the configs. 
+
+Note, in dbt Cloud the `health-checks` command isn't required since it uses dbt Cloud's credentials to perform the health check.
 
 ```bash
-dbt sl health-checks #in dbt Cloud
-
-mf health-checks #in dbt Core
+mf health-checks # In dbt Core
 ```
 
 ### Tutorial
 
 Follow the dedicated MetricFlow tutorial to help you get started:
+<!--dbt sl tutorial # In dbt Cloud-->
 
 ```bash
-dbt sl tutorial # In dbt Cloud
-
 mf tutorial # In dbt Core
 ```
 
@@ -522,7 +522,7 @@ mf query --metrics revenue --group-by metric_time__month # In dbt Core
 
 To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: <code>{{Dimension('primary_entity__dimension_name')}}</code>. 
 
-Here's an example query: <code>dbt sl query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"</code>.<br /><br /> Before using the template wrapper, however, you will need to set up your terminal to escape curly braces for the filter template to work. 
+Here's an example query: <code>dbt sl query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"</code>.<br /><br /> Before using the template wrapper, however, set up your terminal to escape curly braces for the filter template to work. 
 
 <details> 
 <summary>How to set up your terminal to escape curly braces? </summary>

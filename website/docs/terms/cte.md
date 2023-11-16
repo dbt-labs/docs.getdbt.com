@@ -66,7 +66,7 @@ When people talk about how CTEs can simplify your queries, they specifically mea
 
 #### Establish Structure
 
-In leveraging CTEs, you can break complex code into smaller segments, ultimately helping provide structure to your code. At dbt Labs, we often like to use the [import, logical, and final structure](/guides/migration/tools/refactoring-legacy-sql#implement-cte-groupings) for CTEs which creates a predictable and organized structure to your dbt models.
+In leveraging CTEs, you can break complex code into smaller segments, ultimately helping provide structure to your code. At dbt Labs, we often like to use the [import, logical, and final structure](/guides/refactoring-legacy-sql?step=5#implement-cte-groupings) for CTEs which creates a predictable and organized structure to your dbt models.
 
 #### Easily identify dependencies
 
@@ -181,7 +181,7 @@ CTEs are essentially temporary views that can be used throughout a query. They a
 
 If you’re interested in reading more about CTE best practices, check out some of our favorite content around model refactoring and style:
 
-- [Refactoring Legacy SQL to dbt](/guides/migration/tools/refactoring-legacy-sql#implement-cte-groupings)
+- [Refactoring Legacy SQL to dbt](/guides/refactoring-legacy-sql?step=5#implement-cte-groupings)
 - [dbt Labs Style Guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md#ctes)
 - [Modular Data Modeling Technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 
