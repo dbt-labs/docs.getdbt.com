@@ -13,9 +13,11 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 
-**Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs.
+**Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
+
+For dbt Cloud users, please log in using the default Database username and password. Note this is because IAM authentication is not compatible with dbt Cloud.
 
 ### Connecting via an SSH Tunnel
 
