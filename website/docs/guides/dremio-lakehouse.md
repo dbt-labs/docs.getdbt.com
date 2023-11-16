@@ -151,7 +151,7 @@ The `schema.yml` file defines Dremio sources and models to be used and what data
 1. The `NYC-weather.csv` stored in the **Samples** database and 
 2. The `sample_data` from the **Samples database**.
 
-The models correspond to both weather & trip data respectively and will be joined for analysis. 
+The models correspond to both weather and trip data respectively and will be joined for analysis. 
 
 The sources can be found by navigating to the **Object Storage** section of the Dremio Cloud UI.
 
