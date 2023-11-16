@@ -210,7 +210,7 @@ Configure a Python virtual environment to isolate package version and code depen
 $ sudo yum install git
 $ python3 -m venv dbt_venv
 $ source dbt_venv/bin/activate
-$ python3 -m python -m pip install --upgrade pip
+$ python3 -m pip install --upgrade pip
 ```
 
 Configure the last version of AWS CLI
