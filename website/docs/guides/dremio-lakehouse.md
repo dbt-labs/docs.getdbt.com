@@ -79,7 +79,7 @@ def quoted_by_component(self, identifier, componentName):
 
 ```
 
-This is required because the plugin doesn’t support schema names in Dremio containing dots and spaces.
+You need to update this pattern because the plugin doesn’t support schema names in Dremio containing dots and spaces.
 
 ## Build your pipeline
 
