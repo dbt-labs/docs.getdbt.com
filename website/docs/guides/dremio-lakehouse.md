@@ -53,7 +53,7 @@ Plugins:
 
 ## Getting started
 
-1. Clone the Dremio dbt Core sample project from the [github repo](https://github.com/dremio-brock/DremioDBTSample/tree/master/dremioSamples).
+1. Clone the Dremio dbt Core sample project from the [GitHub repo](https://github.com/dremio-brock/DremioDBTSample/tree/master/dremioSamples).
 
 2. Open the relation.py file in the Dremio adapter directory `$HOME/Library/Python/3.9/lib/python/site-packages/dbt/adapters/dremio/relation.py` in your integrated development environment (IDE) and locate lines 51 and 52.
 
