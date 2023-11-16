@@ -70,8 +70,9 @@ pip is the easiest way to install the adapter:
 The authentication methods that dbt Core supports are: 
 
 - `database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
-- `IAM` &mdash; IAM 
+- `IAM` &mdash; IAM
 
+For dbt Cloud users, log in using the default **Database username** and **password**. This is necessary because dbt Cloud does not support `IAM` authentication.
 
 Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
 
