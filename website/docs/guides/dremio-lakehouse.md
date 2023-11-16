@@ -177,7 +177,9 @@ Open the **Application folder** and you will see the output of the simple transf
 
 ## Query the data
 
-Now that you have run the job and completed the transformation, it's time to query your data. Click on the `nyc_trips_with_weather` view. That will take you to the SQL Runner page. Click **Show SQL Pane** on the upper right corner of the page. Run the following query:
+Now that you have run the job and completed the transformation, it's time to query your data. Click on the `nyc_trips_with_weather` view. That will take you to the SQL Runner page. Click **Show SQL Pane** on the upper right corner of the page. 
+
+Run the following query:
 
 ```sql
 
