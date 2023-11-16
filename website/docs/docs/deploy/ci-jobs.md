@@ -15,7 +15,7 @@ dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deploy
 - You have a dbt Cloud account.
 - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be connected using dbt Cloud’s native Git integration with [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or [Azure DevOps](/docs/cloud/git/connect-azure-devops).
-    - If you’re using GitLab, you must use a paid or self-hosted account which includes support for GitLab webhooks.
+    - With GitLab, you need a paid or self-hosted account which includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). With GitLab Free, merge requests will invoke CI jobs but CI status updates (success or failure of the job) will not be reported back to GitLab. 
     - If you previously configured your dbt project by providing a generic git URL that clones using SSH, you must reconfigure the project to connect through dbt Cloud's native integration.
 
 
