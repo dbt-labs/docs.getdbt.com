@@ -58,7 +58,7 @@ Plugins:
 2. In your integrated development environment (IDE), open the relation.py file in the Dremio adapter directory:
   `$HOME/Library/Python/3.9/lib/python/site-packages/dbt/adapters/dremio/relation.py`
 
-Update lines 51 and 52 if they don't have the following syntax:
+3. Find and update lines 51 and 52 to match the following syntax:
 
 ```python
 
