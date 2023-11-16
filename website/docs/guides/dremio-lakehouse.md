@@ -47,7 +47,7 @@ Core:
   https://docs.getdbt.com/docs/installation
 
 Plugins:
-  - dremio: 1.5.0 - Up to date! # Must be 1.5+
+  - dremio: 1.5.0 - Up to date! # Must be 1.5 or newer
 
 ```
 
