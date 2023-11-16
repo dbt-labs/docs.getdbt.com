@@ -26,7 +26,7 @@ This guide will demonstrate how to build a data lakehouse with dbt Core 1.5 or n
 
 ## Validate your environment 
 
-Validate your environment by running the following commands in your CLI and verifying the results in your CLI:
+Validate your environment by running the following commands in your CLI and verifying the results are correct:
 
 ```shell
 
