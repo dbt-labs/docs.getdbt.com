@@ -39,7 +39,7 @@ Python 3.11.4 # Must be Python 3
 
 $ dbt --version
 Core:
-  - installed: 1.5.0 # Must be 1.5+
+  - installed: 1.5.0 # Must be 1.5 or newer
   - latest:    1.6.3 - Update available!
 
   Your version of dbt-core is out of date!
