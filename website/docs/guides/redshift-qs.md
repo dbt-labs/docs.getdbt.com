@@ -57,7 +57,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 <Lightbox src="/img/redshift_tutorial/images/cluster_overview.png" title="Available Redshift Cluster" />
 
-7. You might be asked to Configure account. For the purpose of this sandbox environment, we recommend selecting “Configure account”.
+7. You might be asked to Configure account. For this sandbox environment, we recommend selecting “Configure account”.
 
 8. Select your cluster from the list. In the **Connect to** popup, fill out the credentials from the output of the stack:
     - **Authentication** &mdash; Use the default which is **Database user name and password** (NOTE: IAM authentication is not supported in dbt Cloud).
@@ -82,8 +82,7 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
 
 2. Now we are going to use the S3 bucket that you created with CloudFormation and upload the files. Go to the search bar at the top and type in `S3` and click on S3. There will be sample data in the bucket already, feel free to ignore it or use it for other modeling exploration. The bucket will be prefixed with `dbt-data-lake`.
 
-<Lightbox src="/img/redshift_tutorial/images/go_to_s3.png" title="Go to S3" />
-
+<Lightbox src="/img/redshift_tutorial/images/go_to_S3.png" title="Go to S3" />
 
 3. Click on the `name of the bucket` S3 bucket.  If you have multiple S3 buckets, this will be the bucket that was listed under “Workshopbucket” on the Outputs page. 
 
