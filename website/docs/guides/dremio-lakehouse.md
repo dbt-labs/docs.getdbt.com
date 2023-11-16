@@ -188,6 +188,6 @@ GROUP BY vendor_id
 
 ```
 
-<Lightbox src="/img/guides/dremio/dremio-test-results.png" title="Sample output from SQL query"/>
+<Lightbox src="/img/guides/dremio/dremio-test-results.png" width="70%"  title="Sample output from SQL query"/>
 
 This completes the integration setup and data is ready for business consumption.
