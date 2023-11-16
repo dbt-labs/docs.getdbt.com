@@ -149,7 +149,7 @@ Now that you have a running environment and a completed job, you can view the da
 The `schema.yml` file defines Dremio sources and models to be used and what data models are in scope. In this guides sample project, there are two data sources: 
 
 1. The `NYC-weather.csv` stored in the **Samples** database and 
-2. The `sample_data` from the **Samples database**.** 
+2. The `sample_data` from the **Samples database**.
 
 The models correspond to both weather & trip data respectively and will be joined for analysis. 
 
