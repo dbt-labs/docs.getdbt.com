@@ -125,8 +125,8 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 | Constraint type | Support       | Platform enforcement |
 |:-----------------|:-------------|:---------------------|
 | not_null        | ✅ Supported  | ✅ Enforced     |
-| primary_key     | ✅ Supported  | ✅ Enforced     |
-| foreign_key     | ✅ Supported  | ✅ Enforced     |
+| primary_key     | ✅ Supported  | ❌ Not enforced     |
+| foreign_key     | ✅ Supported  | ❌ Not enforced     |
 | unique          | ❌ Not supported | ❌ Not enforced |
 | check           | ❌ Not supported | ❌ Not enforced |
 
