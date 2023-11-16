@@ -40,7 +40,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 pip is the easiest way to install the adapter:
 
-<code>pip install {frontMatter.meta.pypi_package}</code>
+<code>python -m pip install {frontMatter.meta.pypi_package}</code>
 
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
@@ -210,7 +210,7 @@ Configure a Python virtual environment to isolate package version and code depen
 $ sudo yum install git
 $ python3 -m venv dbt_venv
 $ source dbt_venv/bin/activate
-$ python3 -m pip install --upgrade pip
+$ python3 -m python -m pip install --upgrade pip
 ```
 
 Configure the last version of AWS CLI

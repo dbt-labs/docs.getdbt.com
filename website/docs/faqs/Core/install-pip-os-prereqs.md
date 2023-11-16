@@ -6,7 +6,7 @@ id: install-pip-os-prereqs.md
 
 ---
 
-Your operating system may require pre-installation setup before installing dbt Core with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of dbt Core](/docs/core/pip-install).
+Your operating system may require pre-installation setup before installing dbt Core with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [python -m pip installation of dbt Core](/docs/core/pip-install).
 
 ### CentOS
 

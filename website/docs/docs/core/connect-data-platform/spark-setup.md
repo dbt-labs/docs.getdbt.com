@@ -41,7 +41,7 @@ See [Databricks setup](#databricks-setup) for the Databricks version of this pag
 
 pip is the easiest way to install the adapter:
 
-<code>pip install {frontMatter.meta.pypi_package}</code>
+<code>python -m pip install {frontMatter.meta.pypi_package}</code>
 
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
@@ -51,15 +51,15 @@ If connecting to a Spark cluster via the generic thrift or http methods, it requ
 
 ```zsh
 # odbc connections
-$ pip install "dbt-spark[ODBC]"
+$ python -m pip install "dbt-spark[ODBC]"
 
 # thrift or http connections
-$ pip install "dbt-spark[PyHive]"
+$ python -m pip install "dbt-spark[PyHive]"
 ```
 
 ```zsh
 # session connections
-$ pip install "dbt-spark[session]"
+$ python -m pip install "dbt-spark[session]"
 ```
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>

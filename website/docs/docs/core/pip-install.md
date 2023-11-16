@@ -39,7 +39,7 @@ alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
 Once you know [which adapter](/docs/supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For example, if using Postgres:
 
 ```shell
-pip install dbt-postgres
+python -m pip install dbt-postgres
 ```
 
 This will install `dbt-core` and `dbt-postgres` _only_:
@@ -62,7 +62,7 @@ All adapters build on top of `dbt-core`. Some also depend on other adapters: for
 To upgrade a specific adapter plugin:
 
 ```shell
-pip install --upgrade dbt-<adapter>
+python -m pip install --upgrade dbt-<adapter>
 ```
 
 ### Install dbt-core only
@@ -70,7 +70,7 @@ pip install --upgrade dbt-<adapter>
 If you're building a tool that integrates with dbt Core, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool.
 
 ```shell
-pip install dbt-core
+python -m pip install dbt-core
 ```
 ### Change dbt Core versions
 
@@ -79,23 +79,23 @@ You can upgrade or downgrade versions of dbt Core by using the `--upgrade` optio
 To upgrade dbt to the latest version:
 
 ```
-pip install --upgrade dbt-core
+python -m pip install --upgrade dbt-core
 ```
 
 To downgrade to an older version, specify the version you want to use. This command can be useful when you're resolving package dependencies. As an example:
 
 ```
-pip install --upgrade dbt-core==0.19.0
+python -m pip install --upgrade dbt-core==0.19.0
 ```
 
-### `pip install dbt`
+### `python -m pip install dbt`
 
 Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise an explicit error. Since v0.13, the PyPI package named `dbt` was a simple "pass-through" of `dbt-core` and the four original database adapter plugins. For v1, we formalized that split.
 
 If you have workflows or integrations that relied on installing the package named `dbt`, you can achieve the same behavior going forward by installing the same five packages that it used:
 
 ```shell
-pip install \
+python -m pip install \
   dbt-core \
   dbt-postgres \
   dbt-redshift \

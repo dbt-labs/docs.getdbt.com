@@ -51,7 +51,7 @@ In this guide, you'll learn how to:
 You’ll also gain a better understanding of how this will:
 
 - Reduce the cognitive load when building and maintaining pipelines
-- Avoid dependency hell (think: `pip install` conflicts)
+- Avoid dependency hell (think: `python -m pip install` conflicts)
 - Implement better recoveries from failures
 - Define clearer workflows so that data and analytics engineers work better, together ♥️
 

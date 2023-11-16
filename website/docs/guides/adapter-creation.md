@@ -799,7 +799,7 @@ dbt-tests-adapter
 </File>
 
 ```sh
-pip install -r dev_requirements.txt
+python -m pip install -r dev_requirements.txt
 ```
 
 ### Set up and configure pytest

@@ -39,7 +39,7 @@ The dbt-mindsdb package allows dbt to connect to [MindsDB](https://github.com/mi
 
 pip is the easiest way to install the adapter:
 
-<code>pip install {frontMatter.meta.pypi_package}</code>
+<code>python -m pip install {frontMatter.meta.pypi_package}</code>
 
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 

@@ -155,13 +155,13 @@ If you already have dbt Core installed, the dbt Cloud CLI may conflict. Here are
   - Uninstall the dbt Cloud CLI using the command: `pip uninstall dbt`
   - Reinstall dbt Core using the following command, replacing "adapter_name" with the appropriate adapter name:
     ```shell
-    pip install dbt-adapter_name --force-reinstall
+    python -m pip install dbt-adapter_name --force-reinstall
     ```
-    For example, if I used Snowflake as an adapter, I would run: `pip install dbt-snowflake --force-reinstall`
+    For example, if I used Snowflake as an adapter, I would run: `python -m pip install dbt-snowflake --force-reinstall`
 
 --------
 
-Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
+Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [python -m pip installation step](#install-dbt-cloud-cli-in-pip).
 
 ### Install a virtual environment
 
@@ -200,7 +200,7 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
   ```bash
   pip3 uninstall dbt-core dbt
-  pip install dbt-adapter_name --force-reinstall
+  python -m pip install dbt-adapter_name --force-reinstall
   ```
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
@@ -243,7 +243,7 @@ To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-
 
 To update:
 - Make sure you're in your virtual environment
-- Run `pip install --upgrade dbt`.
+- Run `python -m pip install --upgrade dbt`.
 	
 </TabItem>
 

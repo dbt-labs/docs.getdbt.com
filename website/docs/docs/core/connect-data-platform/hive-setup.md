@@ -34,7 +34,7 @@ meta:
 
 pip is the easiest way to install the adapter:
 
-<code>pip install {frontMatter.meta.pypi_package}</code>
+<code>python -m pip install {frontMatter.meta.pypi_package}</code>
 
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
@@ -154,7 +154,7 @@ you must install the `dbt-hive` plugin.
 The following commands will install the latest version of `dbt-hive` as well as the requisite version of `dbt-core` and `impyla` driver used for connections.
 
 ```
-pip install dbt-hive
+python -m pip install dbt-hive
 ```
 
 ### Supported Functionality
