@@ -116,9 +116,9 @@ Also refer to [macro properties](/reference/macro-properties).
 </Tabs>
 
 ## Definition
-The docs field can be used to provide documentation-specific configuration to models. It supports the doc attribute `show`, which controls whether or not models are shown in the auto-generated documentation website. It also supports `node_color` for some node types.
+The docs field can be used to provide documentation-specific configuration to models. It supports the doc attribute `show`, which controls whether or not models are shown in the auto-generated documentation website. It also supports `node_color` for the node type "Model".
 
-**Note:** hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
+**Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
 ## Default
 The default value for `show` is `true`.
