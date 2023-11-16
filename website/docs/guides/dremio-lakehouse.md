@@ -82,7 +82,7 @@ This is required because the plugin doesn’t support schema names in Dremio con
 
 ## Build your pipeline
 
-1. Create a `profile.yml` file in the `$HOME/.dbt/profiles.yml` path and add the following configs:
+1. Create a `profiles.yml` file in the `$HOME/.dbt/profiles.yml` path and add the following configs:
 
 ```yaml
 
