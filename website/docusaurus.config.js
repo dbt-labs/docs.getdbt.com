@@ -193,7 +193,7 @@ var siteSettings = {
           </div>
 
           <div class='footer__items--right'>
-            <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
+            <a href='https://twitter.com/getdbt'><i class="fa-brands fa-x-twitter"></i></a>
             <a href='https://www.getdbt.com/community/join-the-community/'><i class="fa-brands fa-slack"></i></a>
             <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
           </div>
