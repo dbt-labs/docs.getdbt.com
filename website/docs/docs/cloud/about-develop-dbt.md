@@ -3,7 +3,7 @@ title: About developing in dbt
 id: about-develop-dbt
 description: "Learn how to develop your dbt projects using dbt Cloud."
 sidebar_label: "About developing in dbt"
-pagination_next: "docs/cloud/cloud-cli-installation"
+pagination_next: "docs/cloud/about-cloud-develop-defer"
 hide_table_of_contents: false
 ---
 
