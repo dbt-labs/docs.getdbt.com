@@ -34,6 +34,49 @@ const sidebarSettings = {
     },
     {
       type: "category",
+      label: "Develop dbt",
+      collapsed: true,
+      link: { type: "doc", id: "docs/cloud/about-develop-dbt" },
+      items: [
+        "docs/cloud/about-develop-dbt",
+        "docs/cloud/about-cloud-develop-defer",
+        {
+          type: "category",
+          label: "dbt Cloud CLI",
+          collapsed: true,
+          link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
+          items: [
+            "docs/cloud/cloud-cli-installation",
+             "docs/cloud/configure-cloud-cli",
+            ],
+          },
+          {
+            type: "category",
+            label: "dbt Cloud IDE",
+            link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+            items: [
+              "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+              "docs/cloud/dbt-cloud-ide/ide-user-interface",
+              "docs/cloud/dbt-cloud-ide/lint-format",
+              "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+            ],
+          },
+          {
+            type: "category",
+            label: "dbt Core",
+            link: { type: "doc", id: "docs/core/installation-overview", },
+            items: [
+              "docs/core/installation-overview",
+              "docs/core/homebrew-install",
+              "docs/core/pip-install",
+              "docs/core/docker-install",
+              "docs/core/source-install",
+            ],
+          },
+        ],
+      },
+      {
+      type: "category",
       label: "Set up dbt",
       collapsed: true,
       link: { type: "doc", id: "docs/about-setup" },
@@ -122,35 +165,6 @@ const sidebarSettings = {
             }, // Supported Git providers
             {
               type: "category",
-              label: "Develop in dbt Cloud",
-              link: { type: "doc", id: "docs/cloud/about-cloud-develop" },
-              items: [
-                "docs/cloud/about-cloud-develop",
-                "docs/cloud/about-cloud-develop-defer",
-                {
-                  type: "category",
-                  label: "dbt Cloud CLI",
-                  link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
-                  items: [
-                    "docs/cloud/cloud-cli-installation",
-                    "docs/cloud/configure-cloud-cli",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "dbt Cloud IDE",
-                  link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
-                  items: [
-                    "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-                    "docs/cloud/dbt-cloud-ide/ide-user-interface",
-                    "docs/cloud/dbt-cloud-ide/lint-format",
-                    "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
-                  ],
-                },
-              ],
-            }, // dbt Cloud develop directory
-            {
-              type: "category",
               label: "Secure your tenant",
               link: { type: "doc", id: "docs/cloud/secure/secure-your-tenant" },
               items: [
@@ -174,20 +188,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
             "docs/core/about-core-setup",
-            "docs/core/about-dbt-core",
             "docs/core/dbt-core-environments",
-            {
-              type: "category",
-              label: "Install dbt",
-              link: { type: "doc", id: "docs/core/installation" },
-              items: [
-              "docs/core/installation", 
-                "docs/core/homebrew-install",
-                "docs/core/pip-install",
-                "docs/core/docker-install",
-                "docs/core/source-install",
-              ],
-            },
             {
               type: "category",
               label: "Connect data platform",
@@ -955,11 +956,11 @@ const sidebarSettings = {
       type: "category",
       label: "Database Permissions",
       items: [
-	"reference/database-permissions/about-database-permissions",
+        "reference/database-permissions/about-database-permissions",
         "reference/database-permissions/databricks-permissions",
         "reference/database-permissions/postgres-permissions",
-	"reference/database-permissions/redshift-permissions",
-	"reference/database-permissions/snowflake-permissions",
+        "reference/database-permissions/redshift-permissions",
+        "reference/database-permissions/snowflake-permissions",
       ],
     },
   ],

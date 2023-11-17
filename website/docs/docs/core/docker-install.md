@@ -11,7 +11,7 @@ You might also be able to use Docker to install and develop locally if you don't
 
 ### Prerequisites
 * You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site.
-* You understand which database adapter(s) you need. For more information, see [About dbt adapters](/docs/core/installation#about-dbt-adapters).
+* You understand which database adapter(s) you need. For more information, see [About dbt adapters](docs/core/installation-overview#about-dbt-data-platforms-and-adapters).
 * You understand how dbt Core is versioned. For more information, see [About dbt Core versions](/docs/dbt-versions/core).
 * You have a general understanding of the dbt, dbt workflow, developing locally in the command line interface (CLI). For more information, see [About dbt](/docs/introduction#how-do-i-use-dbt).
 

@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/core/about-dbt-core",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
       "source": "/docs/about/overview",
       "destination": "/docs/introduction",
       "permanent": true

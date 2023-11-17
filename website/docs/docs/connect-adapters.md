@@ -15,7 +15,7 @@ Explore the fastest and most reliable way to deploy dbt using dbt Cloud, a hoste
 
 Install dbt Core, an open-source tool, locally using the command line. dbt communicates with a number of different data platforms by using a dedicated  adapter plugin for each. When you install dbt Core, you'll also need to install the specific adapter for your database, [connect to dbt Core](/docs/core/about-core-setup), and set up a `profiles.yml` file.
 
-With a few exceptions [^1], you can install all [Verified adapters](/docs/supported-data-platforms) from PyPI using `pip install adapter-name`. For example to install Snowflake, use the command `pip install dbt-snowflake`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/core/installation).
+With a few exceptions [^1], you can install all [Verified adapters](/docs/supported-data-platforms) from PyPI using `pip install adapter-name`. For example to install Snowflake, use the command `pip install dbt-snowflake`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/core/installation-overview).
 
 [^1]: Here are the two different adapters. Use the PyPI package name when installing with `pip`
 

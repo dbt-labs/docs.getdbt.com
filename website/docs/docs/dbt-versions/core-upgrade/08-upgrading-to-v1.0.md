@@ -13,7 +13,7 @@ import UpgradeMove from '/snippets/_upgrade-move.md';
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation)
+- [CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
 ## What to know before upgrading
