@@ -18,7 +18,7 @@ dbt Labs provides different support levels for different versions, which may inc
 ### Further reading
 
 - To learn how you can use dbt Core versions in dbt Cloud, see [Choosing a dbt Core version](/docs/dbt-versions/upgrade-core-in-cloud).
-- To learn about installing dbt Core, see "[How to install dbt Core](/docs/core/installation)."
+- To learn about installing dbt Core, see "[How to install dbt Core](/docs/core/installation-overview)."
 - To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version).
 
 ## Version support prior to v1.0
