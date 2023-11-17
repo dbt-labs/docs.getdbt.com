@@ -1,0 +1,33 @@
+name: Algolia Crawler
+on:
+  pull_request:
+    types: 
+      - closed
+
+jobs:
+  algolia_recrawl:
+    # Comment out the if check below if running on every merge to current branch
+    if: |
+      contains(github.event.pull_request.labels.*.name, 'trigger-crawl') 
+      && github.event.pull_request.merged == true
+    name: Trigger Algolia Crawl
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repo
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      # Wait 8 minutes to allow Vercel build to complete
+      - run: sleep 480
+
+      # Once deploy URL is found, trigger Algolia crawl
+      - name: Run Algolia Crawler
+        uses: algolia/algoliasearch-crawler-github-actions@v1
+        id: crawler_push
+        with:
+          crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}
+          crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}
+          algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
+          algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
+          site-url: 'https://docs.getdbt.com'
+          crawler-name: ${{ secrets.CRAWLER_NAME }}

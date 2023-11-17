@@ -11,7 +11,7 @@ The following sections outline the commands supported by dbt and their relevant 
 
 ### Available commands
 
-<VersionBlock firstVersion="1.5">
+<VersionBlock firstVersion="1.6">
 
 All commands in the table are compatible with either the dbt Cloud IDE, dbt Cloud CLI, or dbt Core.  
 
@@ -22,12 +22,13 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) | All | All [supported versions](/docs/dbt-versions/core) |
 | cancel  | Cancels the most recent invocation.| dbt Cloud CLI | Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project | All | All [supported versions](/docs/dbt-versions/core) |
-| [clone](/reference/commands/clone) | Clone selected models from the specified state | dbt Cloud CLI <br /> dbt Core | Requires [dbt v1.6 or higher](/docs/dbt-versions/core)  |
+| [clone](/reference/commands/clone) | Clone selected models from the specified state | All | Requires [dbt v1.6 or higher](/docs/dbt-versions/core)  |
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project | All | All [supported versions](/docs/dbt-versions/core) |
-| [debug](/reference/commands/debug)  | Debugs dbt connections and projects  | dbt Core | All [supported versions](/docs/dbt-versions/core) |
+| [debug](/reference/commands/debug)  | Debugs dbt connections and projects  | dbt Cloud IDE <br /> dbt Core  | All [supported versions](/docs/dbt-versions/core) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project | All | All [supported versions](/docs/dbt-versions/core) |
 | help | Displays help information for any command | dbt Core <br /> dbt Cloud CLI | All [supported versions](/docs/dbt-versions/core) |
+| [init](/reference/commands/init)  | Initializes a new dbt project  | dbt Core | All [supported versions](/docs/dbt-versions/core) |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project | All | All [supported versions](/docs/dbt-versions/core) |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info | All | All [supported versions](/docs/dbt-versions/core) |
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. | dbt Cloud CLI | Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
@@ -39,11 +40,11 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh")  | All | All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  | All | All [supported versions](/docs/dbt-versions/core) |
-| [init](/reference/commands/init)  | Initializes a new dbt project  | dbt Core | All [supported versions](/docs/dbt-versions/core) |
+
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.4">
+<VersionBlock lastVersion="1.5">
 
 Select the tabs that are relevant to your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**.  
 

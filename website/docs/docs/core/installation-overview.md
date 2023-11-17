@@ -23,7 +23,7 @@ Most command-line tools, including dbt, have a `--help` flag that you can use to
 
 ## Upgrading dbt Core
 
-dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/guides/migration/versions/upgrading-to-v1.4) highlighting the changes required for each minor and major release, and [core versions](/docs/dbt-versions/core)
+dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade/upgrading-to-v1.4) highlighting the changes required for each minor and major release, and [core versions](/docs/dbt-versions/core)
 
 - [Upgrade Homebrew](/docs/core/homebrew-install#upgrading-dbt-and-your-adapter)
 - [Upgrade `pip`](/docs/core/pip-install#change-dbt-core-versions)
