@@ -1,6 +1,8 @@
 ---
 title: Snapshot configurations
 description: "Read this guide to learn about using snapshot configurations in dbt."
+meta:
+  resource_type: Snapshots
 ---
 
 import ConfigResource from '/snippets/_config-description-resource.md';
@@ -20,7 +22,7 @@ Parts of a snapshot:
 ## Available configurations
 ### Snapshot-specific configurations
 
-<ConfigResource />
+<ConfigResource meta={frontMatter.meta} />
 
 <Tabs
   groupId="config-languages"

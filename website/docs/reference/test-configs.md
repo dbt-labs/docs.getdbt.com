@@ -1,6 +1,8 @@
 ---
 title: Test configurations
 description: "Read this guide to learn about using test configurations in dbt."
+meta:
+  resource_type: Tests
 ---
 import ConfigResource from '/snippets/_config-description-resource.md';
 import ConfigGeneral from '/snippets/_config-description-general.md';
@@ -23,7 +25,7 @@ Click the link on each configuration option to read more about what it can do.
 
 ### Test-specific configurations
 
-<ConfigResource />
+<ConfigResource meta={frontMatter.meta} />
 
 <Tabs
   groupId="config-languages"

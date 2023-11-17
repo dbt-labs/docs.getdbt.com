@@ -1,6 +1,8 @@
 ---
 title: Model configurations
 description: "Read this guide to understand model configurations in dbt."
+meta:
+  resource_type: Models
 ---
 
 import ConfigResource from '/snippets/_config-description-resource.md';
@@ -13,7 +15,7 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 ## Available configurations
 ### Model-specific configurations
 
-<ConfigResource />
+<ConfigResource meta={frontMatter.meta}/>
 
 <Tabs
   groupId="config-languages"
