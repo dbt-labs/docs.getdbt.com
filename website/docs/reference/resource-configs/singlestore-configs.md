@@ -3,10 +3,14 @@ title: "SingleStore configurations"
 id: "singlestore-configs"
 ---
 
+<VersionBlock firstVersion="1.4">
+
 ## Incremental materialization strategies
 The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Currently, SingleStoreDB supports only the `delete+insert` configuration.
 
 The `delete+insert` incremental strategy directs dbt to follow a two-step incremental approach. Initially, it identifies and removes the records flagged by the configured `is_incremental()` block. Subsequently, it re-inserts these records.
+
+</VersionBlock>
 
 ## Performance Optimizations
 [SingleStore Physical Database Schema Design documentation](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/concepts-of-physical-database-schema-design.html) is helpful if you want to use specific options (that are described below) in your dbt project.
@@ -106,6 +110,8 @@ select ...
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.5">
 
 ## Model contracts
 
@@ -215,3 +221,5 @@ It's important to note that certain data type mappings might show up differently
 
 
 Just keep these points in mind when setting up and using your `dbt-singlestore` adapter, and you'll avoid common pitfalls!
+
+</VersionBlock>
