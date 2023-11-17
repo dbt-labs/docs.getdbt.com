@@ -393,6 +393,32 @@ dbt.exceptions.AmbiguousAliasError: Compilation Error
 We opted to use `generate_alias_name` for this functionality so that the logic remains accessible to end users, and could be reimplemented with custom logic.
 :::
 
+### Run a model with multiple versions
+
+To run a model with multiple versions, you can use the [`--select` flag](/reference/node-selection/syntax). For example:
+
+- Run all versions of `dim_customers`:
+
+  ```bash
+  dbt run -s dim_customers # Run all versions of the model
+  ```
+- Run only version 2 of `dim_customers`:
+
+  You can use either of the following commands (both achieve the same result):
+
+  ```bash
+    dbt run -s dim_customers.v2 # Run a specific version of the model
+    dbt run -s dim_customers_v2 # Alternative syntax for the specific version
+  ```
+
+- Run the latest version of `dim_customers`:
+
+  ```bash
+  dbt run -s dim_customers version:latest # Run the latest version of the model
+  ```
+
+These commands provide flexibility in managing and executing different versions of a dbt model.
+
 ### Optimizing model versions
 
 How you define each model version is completely up to you. While it's easy to start by copy-pasting from one model's SQL definition into another, you should think about _what actually is changing_ from one version to another.
