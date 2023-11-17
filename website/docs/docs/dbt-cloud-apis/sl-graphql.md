@@ -48,7 +48,7 @@ Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/se
 {"Authorization": "Bearer <SERVICE TOKEN>"}
 ```
 
-Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and environmentId for authentication.
+Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 
