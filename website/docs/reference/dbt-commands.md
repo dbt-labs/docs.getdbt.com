@@ -5,7 +5,7 @@ title: "dbt Command reference"
 You can run dbt using the following tools:
 
 - In your browser with the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
-- On the command line interface using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-source [dbt Core](/docs/core/about-dbt-core), both of which enable you to execute dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
+- On the command line interface using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-source [dbt Core](/docs/cloud/about-develop-dbt), both of which enable you to execute dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 The following sections outline the commands supported by dbt and their relevant flags. For information about selecting models on the command line, consult the docs on [Model selection syntax](/reference/node-selection/syntax).
 
@@ -71,7 +71,7 @@ Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/
 
 <TabItem value="cli" label="dbt Core">
 
-Use the following dbt commands in [dbt Core](/docs/core/about-dbt-core) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
+Use the following dbt commands in [dbt Core](/docs/core/installation-overview) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
 - [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
 - [clean](/reference/commands/clean): deletes artifacts present in the dbt project
