@@ -81,7 +81,7 @@ var siteSettings = {
     announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts?utm_source=docs&utm_medium=event&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "faith-lierheimer",
+    communitySpotlightMember: "alison-stanton",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
