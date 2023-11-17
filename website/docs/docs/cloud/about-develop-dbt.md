@@ -30,7 +30,7 @@ Develop dbt projects using dbt Cloud or dbt Core. There are a few key difference
 
 </div><br />
 
-To get started with dbt development, you'll need a [developer](/docs/cloud/manage-access/seats-and-users) account. For a more comprehensive guide about developing in dbt, refer to our [quickstart guides](/guides).
+To get started with dbt development, you'll need a [dbt Cloud](https://www.getdbt.com/signup) account and developer seat. For a more comprehensive guide about developing in dbt, refer to our [quickstart guides](/guides).
 
 ## dbt Core
 
