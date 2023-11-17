@@ -73,6 +73,7 @@ I can teach and share about:
 - Demographic questions for sexual orientation and/or gender identity on a form. I'm happy to be your shortcut to the most complicated data and most engrained tech debt in history.
 
 I also geek out talking about: 
+
 - reusing functionality in creative ways,
 - balancing trade-offs in data schema modeling,
 - dealing with all of an organization's data holistically,
