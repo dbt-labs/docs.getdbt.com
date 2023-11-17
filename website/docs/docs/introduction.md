@@ -5,13 +5,14 @@ pagination_next: null
 pagination_prev: null
 ---
 
+
 <Snippet path="what-is-dbt-intro" />
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. This single source of truth, combined with the ability to define tests for your data, reduces errors when logic changes, and alerts you when issues arise.
 
 Read more about why we want to enable analysts to work more like software engineers in [The dbt Viewpoint](/community/resources/viewpoint).
 
-## dbt optimizes your workflow
+## dbt optimizes your workflow <Lifecycle status='Beta' />
 
 - Avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" /> by managing transactions, dropping tables, and managing schema changes. Write business logic with just a SQL `select` statement, or a Python DataFrame, that returns the dataset you need, and dbt takes care of <Term id="materialization" />.
 - Build up reusable, or modular, data models that can be referenced in subsequent work instead of starting at the raw data with every analysis.
