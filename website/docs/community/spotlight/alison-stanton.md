@@ -63,7 +63,7 @@ I have learned:
 - How to make an engineering proposal a community conversation.
 - The <a href="https://www.getdbt.com/product/semantic-layer" rel="noopener noreferrer" target="_blank">dbt semantic layer</a>
 
-So many things that are now so ingrained in me that I can't remember not knowing them.
+So many things that are now so engrained in me that I can't remember not knowing them.
 
 I can teach and share about:
 
