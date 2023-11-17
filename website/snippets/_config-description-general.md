@@ -1,1 +1,1 @@
-General configurations provide broader operational settings applicable across multiple resources. These include enabling or disabling resources, tagging, database and schema specifications, and operational settings like pre-hooks and post-hooks. These can also be set in the project file, property file, or within the resource file.
+General configurations provide broader operational settings applicable across multiple resource types. Like resource-specific configurations, these can also be set in the project file, property files, or within resource-specific files.
