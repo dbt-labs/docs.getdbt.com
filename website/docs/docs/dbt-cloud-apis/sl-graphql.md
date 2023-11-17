@@ -259,7 +259,7 @@ query(
 ): QueryResult!
 ```
 
-The graphql API uses a polling process for querying as queries could be long running in some cases. This means the first mutation `createQuery` return a query ID and will be used to kick off the query. The query ID can then be used in the polling query `query` to fetch the results and status of the job. The typical flow would look as followed,
+The GraphQL API uses a polling process for querying since queries can be long-running in some cases. It works by first creating a query with a mutation, `createQuery, which returns a query ID. This ID is then used to continuously check (poll) for the results and status of your query. The typical flow would look as follows:
 
 1. Kick off a query
 ```graphql
