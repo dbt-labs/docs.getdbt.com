@@ -22,7 +22,7 @@ dbt communicates with a number of different data platforms by using a dedicated 
 
 Data platforms supported in dbt Core may be verified or unverified, and maintained by dbt Labs, partners, or community members.
 
-These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/docs/quickstarts/overview)
+These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/docs/guides)
 
 ## Connection profiles
 

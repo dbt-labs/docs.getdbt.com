@@ -91,7 +91,7 @@ If you're encountering some issues when defining your metrics or setting up the 
 <details>
   <summary>How do I migrate from the legacy Semantic Layer to the new one?</summary>
   <div>
-    <div>If you're using the legacy Semantic Layer, we highly recommend you <a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud">upgrade your dbt version </a> to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated <a href="https://docs.getdbt.com/guides/migration/sl-migration"> migration guide</a> for more info.</div>
+    <div>If you're using the legacy Semantic Layer, we highly recommend you <a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud">upgrade your dbt version </a> to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated <a href="https://docs.getdbt.com/guides/sl-migration"> migration guide</a> for more info.</div>
   </div>
 </details>
 <details>
@@ -114,9 +114,9 @@ User data passes through the Semantic Layer on its way back from the warehouse. 
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
+<DeprecationNotice />
 
 To try out the features of the dbt Semantic Layer, you first need to have a dbt project set up. This quickstart guide will lay out the following steps, and recommends a workflow that demonstrates some of its essential features:
 
@@ -137,7 +137,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 :::info 📌 
 
-New to dbt or metrics? Check out our [quickstart guide](/quickstarts) to build your first dbt project! If you'd like to define your first metrics, try our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example project.
+New to dbt or metrics? Check out our [quickstart guide](/guides) to build your first dbt project! If you'd like to define your first metrics, try our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example project.
 
 :::
 
