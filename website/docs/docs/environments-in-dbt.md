@@ -2,6 +2,7 @@
 title: "About environments"
 id: "environments-in-dbt"
 hide_table_of_contents: true
+pagination_next: null
 ---
 
 In software engineering, environments are used to enable engineers to develop and test code without impacting the users of their software. Typically, there are two types of environments in dbt:
@@ -18,7 +19,7 @@ Configure environments to tell dbt Cloud or dbt Core how to build and execute yo
 
 <Card
     title="Environments in dbt Cloud"
-    body="Seamlessly configure development and deployment environments in dbt Cloud to control how your project runs in both the dbt Cloud IDE and dbt jobs."
+    body="Seamlessly configure development and deployment environments in dbt Cloud to control how your project runs in both the dbt Cloud IDE, dbt Cloud CLI, and dbt jobs."
     link="/docs/dbt-cloud-environments"
     icon="dbt-bit"/>
 
@@ -32,7 +33,7 @@ Configure environments to tell dbt Cloud or dbt Core how to build and execute yo
 
 ## Related docs
 
-- [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview)
+- [dbt Cloud environment best practices](/guides/set-up-ci)
 - [Deployment environments](/docs/deploy/deploy-environments)
 - [About dbt Core versions](/docs/dbt-versions/core)
 - [Set Environment variables in dbt Cloud](/docs/build/environment-variables#special-environment-variables)

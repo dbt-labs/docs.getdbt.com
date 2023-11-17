@@ -5,6 +5,10 @@ description: "Configuring PrivateLink for Snowflake"
 sidebar_label: "PrivateLink for Snowflake"
 ---
 
+import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+
+<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
+
 The following steps will walk you through the setup of a Snowflake AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
 
 :::note Snowflake SSO with PrivateLink

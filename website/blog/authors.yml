@@ -1,6 +1,6 @@
 amy_chen:
   image_url: /img/blog/authors/achen.png
-  job_title: Senior Partner Engineer
+  job_title: Staff Partner Engineer
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/yuanamychen/
@@ -304,6 +304,15 @@ kira_furuichi:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/kira-furuichi/
   name: Kira Furuichi
+  organization: dbt Labs
+
+kshitij_aranke:
+  image_url: /img/blog/authors/kshitij-aranke.jpg
+  job_title: Senior Software Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/aranke/
+  name: Kshitij Aranke
   organization: dbt Labs
 
 lauren_benezra:

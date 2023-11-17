@@ -14,7 +14,7 @@ id: "sql-models"
 
 :::info Building your first models
 
-If you're new to dbt, we recommend that you read a [quickstart guide](/quickstarts) to build your first dbt project with models.
+If you're new to dbt, we recommend that you read a [quickstart guide](/guides) to build your first dbt project with models.
 
 :::
 

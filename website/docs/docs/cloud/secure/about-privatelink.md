@@ -5,6 +5,10 @@ description: "Configuring PrivateLink for AWS"
 sidebar_label: "About PrivateLink"
 ---
 
+import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+
+<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
+
 PrivateLink enables a private connection from any dbt Cloud Multi-Tenant environment to your data platform hosted on AWS using [AWS PrivateLink](https://aws.amazon.com/privatelink/) technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it allows connectivity between dbt Cloud and your data platform without traversing the public internet. This feature is supported in most regions across NA, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability. 
 
 ### Cross-region PrivateLink
@@ -15,6 +19,7 @@ dbt Labs has a worldwide network of regional VPCs. These VPCs are specifically u
 
 dbt Cloud supports the following data platforms for use with the PrivateLink feature. Instructions for enabling PrivateLink for the various data platform providers are unique. The following guides will walk you through the necessary steps, including working with [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) to complete the connection in the dbt private network and setting up the endpoint in dbt Cloud.
 
-- [Redshift](/docs/cloud/secure/redshift-privatelink)
 - [Snowflake](/docs/cloud/secure/snowflake-privatelink)
 - [Databricks](/docs/cloud/secure/databricks-privatelink)
+- [Redshift](/docs/cloud/secure/redshift-privatelink)
+- [Postgres](/docs/cloud/secure/postgres-privatelink)

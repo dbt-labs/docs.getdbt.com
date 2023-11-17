@@ -3,21 +3,14 @@ resource_types: [tests]
 datatype: boolean
 ---
 
-<Changelog>
-
-* `v0.20.0`: Introduced `store_failures` config and functionality
-* `v0.21.0`: Introduced `config` property for tests
-
-</Changelog>
-
-The configured test(s) will store their failures when `dbt test --store-failures` is invoked.
+The configured test(s) will store their failures when `dbt test --store-failures` is invoked. If you set this configuration as `false` but [`store_failures_as`](/reference/resource-configs/store_failures_as) is configured, it will be overriden. 
 
 ## Description
 Optionally set a test to always or never store its failures in the database.
 - If specified as `true` or `false`, the
 `store_failures` config will take precedence over the presence or absence of the `--store-failures` flag.
 - If the `store_failures` config is `none` or omitted, the resource will use the value of the `--store-failures` flag.
-- When true, `store_failures` save all the record(s) that failed the test only if [limit](/reference/resource-configs/limit) is not set or if there are fewer records than the limit. `store_failures` are saved in a new table with the name of the test. By default, `store_failures` use a schema named `dbt_test__audit`, but, you can configure the schema to a different value. 
+- When true, `store_failures` save all the record(s) that failed the test only if [limit](/reference/resource-configs/limit) is not set or if there are fewer records than the limit. `store_failures` are saved in a new table with the name of the test. By default, `store_failures` use a schema named `dbt_test__audit`, but, you can [configure](/reference/resource-configs/schema#tests) the schema to a different value. 
 
 This logic is encoded in the [`should_store_failures()`](https://github.com/dbt-labs/dbt-core/blob/98c015b7754779793e44e056905614296c6e4527/core/dbt/include/global_project/macros/materializations/helpers.sql#L77) macro.
 

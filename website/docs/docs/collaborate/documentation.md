@@ -2,6 +2,8 @@
 title: "About documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
+pagination_next: "docs/collaborate/build-and-view-your-docs"
+pagination_prev: null
 ---
 
 ## Related documentation
@@ -9,7 +11,7 @@ id: "documentation"
 * [Declaring properties](/reference/configs-and-properties)
 * [`dbt docs` command](/reference/commands/cmd-docs)
 * [`doc` Jinja function](/reference/dbt-jinja-functions)
-* If you're new to dbt, we recommend that you check out our [quickstart guide](/quickstarts) to build your first dbt project, complete with documentation.
+* If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project, complete with documentation.
 
 ## Assumed knowledge
 
@@ -147,7 +149,6 @@ as well as the repo for this project \[here](https://github.com/dbt-labs/mrr-pla
 </File>
 
 ### Custom project-level overviews
-<Changelog>New in v0.18.0</Changelog>
 
 You can set different overviews for each dbt project/package included in your documentation site
 by creating a docs block named `__[project_name]__`. For example, in order to define

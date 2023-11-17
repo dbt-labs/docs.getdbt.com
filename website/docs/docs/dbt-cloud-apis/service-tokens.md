@@ -9,8 +9,6 @@ If you have service tokens created on or before July 18, 2023, please read [this
 
 :::
 
-## About service tokens
-
 Service account tokens enable you to securely authenticate with the dbt Cloud API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [User API tokens](user-tokens), service account tokens belong to an account rather than a user.
 
 You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permission sets available in dbt Cloud to your service account token, which can vary slightly depending on your plan:
@@ -20,9 +18,9 @@ You can use service account tokens for system-level integrations that do not run
 
 You can assign as many permission sets as needed to one token. For more on permissions sets, see "[Enterprise Permissions](/docs/cloud/manage-access/enterprise-permissions)."
 
-## Generating service account tokens
+## Generate service account tokens
 
-To make a service token in dbt Cloud, follow these steps:
+You can generate service tokens if you have a Developer [license](/docs/cloud/manage-access/seats-and-users) and account admin [permissions](/docs/cloud/manage-access/about-user-access#permission-sets). To create a service token in dbt Cloud, follow these steps:
 
 1. Open the **Account Settings** page by clicking the gear icon on the right-hand side.
 2. On the left sidebar, click on **Service Tokens**.
@@ -42,6 +40,9 @@ Account Admin service tokens have full `read + write` access to an account, so p
 
 **Metadata Only**<br/>
 Metadata-only service tokens authorize requests to the Discovery API.
+
+**Semantic Layer Only**<br/>
+Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
 
 **Job Admin**<br/>
 Job admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs.  
@@ -67,6 +68,9 @@ Billing Admin service tokens have certain account-level permissions.  For more o
 
 **Metadata Only**<br/>
 Metadata-only service tokens authorize requests to the Discovery API.
+
+**Semantic Layer Only**<br/>
+Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
 
 **Job Admin**<br/>
 Job Admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs. For more on these permissions, see [Job Admin](/docs/cloud/manage-access/enterprise-permissions#job-admin).

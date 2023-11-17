@@ -1,10 +1,12 @@
 ---
 title: "Add tests to your DAG"
-sidebar_title: "Tests"
+sidebar_label: "Tests"
 description: "Read this tutorial to learn how to use tests when building in dbt."
+search_weight: "heavy"
 id: "tests"
+keywords:
+  - test, tests, testing, dag
 ---
-
 ## Related reference docs
 * [Test command](/reference/commands/test)
 * [Test properties](/reference/resource-properties/tests)
@@ -17,11 +19,7 @@ Tests are assertions you make about your models and other resources in your dbt 
 
 You can use tests to improve the integrity of the SQL in each model by making assertions about the results generated. Out of the box, you can test whether a specified column in a model only contains non-null values, unique values, or values that have a corresponding value in another model (for example, a `customer_id` for an `order` corresponds to an `id` in the `customers` model), and values from a specified list. You can extend tests to suit business logic specific to your organization – any assertion that you can make about your model in the form of a select query can be turned into a test.
 
-<Changelog>
-
-* `v0.20.0`: Both types of tests return a set of failing records. Previously, generic/schema tests returned a numeric value representing failures. Generic tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`.
-
-</Changelog>
+Both types of tests return a set of failing records. Previously, generic/schema tests returned a numeric value representing failures. Generic tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`.
 
 Like almost everything in dbt, tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the test returns zero failing rows, it passes, and your assertion has been validated.
 
@@ -32,7 +30,7 @@ There are two ways of defining tests in dbt:
 Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining tests have their time and place.
 
 :::tip Creating your first tests
-If you're new to dbt, we recommend that you check out our [quickstart guide](/quickstarts) to build your first dbt project with models and tests.
+If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project with models and tests.
 :::
 
 ## Singular tests
@@ -114,7 +112,7 @@ You can find more information about these tests, and additional configurations (
 
 ### More generic tests
 
-Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/guides/best-practices/writing-custom-generic-tests) for more information.
+Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
 
 :::info
 There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](/docs/build/packages) to learn more!
@@ -165,7 +163,7 @@ Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 ```
 3. Check out the SQL dbt is running by either:
    * **dbt Cloud:** checking the Details tab.
-   * **dbt CLI:** checking the `target/compiled` directory
+   * **dbt Core:** checking the `target/compiled` directory
 
 
 **Unique test**
@@ -243,13 +241,7 @@ where {{ column_name }} is null
 
 ## Storing test failures
 
-<Changelog>
-
-* `v0.20.0`: Introduced storing test failures in the database
-
-</Changelog>
-
-Normally, a test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag or [`store_failures` config](/reference/resource-configs/store_failures), dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
+Normally, a test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag,  the [`store_failures`](/reference/resource-configs/store_failures), or the [`store_failures_as`](/reference/resource-configs/store_failures_as) configs, dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
 
 This workflow allows you to query and examine failing records much more quickly in development:
 

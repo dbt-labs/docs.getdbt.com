@@ -12,16 +12,14 @@ These validations ensure that configuration files follow the expected schema, th
 
 The code that handles validation [can be found here](https://github.com/dbt-labs/dbt-semantic-interfaces/tree/main/dbt_semantic_interfaces/validations) for those who want to dive deeper into this topic. 
 
-## Prerequisites
-
-- You have installed the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow)
 
 ## Validations command
 
-You can run validations from the CLI with the following commands:
+You can run validations from dbt Cloud or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands):
 
 ```bash
-mf validate-configs
+dbt sl validate-configs # dbt Cloud users
+mf validate-configs # dbt Core users
 ```
 
 ## Parsing

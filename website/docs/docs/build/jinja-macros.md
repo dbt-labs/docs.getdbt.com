@@ -27,7 +27,7 @@ Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sq
 
 :::info Ready to get started with Jinja and macros?
 
-Check out the [tutorial on using Jinja](/guides/advanced/using-jinja) for a step-by-step example of using Jinja in a model, and turning it into a macro!
+Check out the [tutorial on using Jinja](/guides/using-jinja) for a step-by-step example of using Jinja in a model, and turning it into a macro!
 
 :::
 
@@ -76,7 +76,7 @@ You can recognize Jinja based on the delimiters the language uses, which we refe
 
 When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
 * **Using dbt Cloud:** Click the compile button to see the compiled SQL in the Compiled SQL pane
-* **Using the dbt CLI:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
+* **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ### Macros
 [Macros](/docs/build/jinja-macros) in Jinja are pieces of code that can be reused multiple times – they are analogous to "functions" in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in `.sql` files, typically in your `macros` directory ([docs](/reference/project-configs/macro-paths)).
@@ -126,7 +126,7 @@ from app_data.payments
 
 
 ### Using a macro from a package
-A number of useful macros have also been grouped together into [packages](docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
+A number of useful macros have also been grouped together into [packages](/docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
 
 After installing a package into your project, you can use any of the macros in your own project — make sure you qualify the macro by prefixing it with the [package name](/reference/dbt-jinja-functions/project_name):
 

@@ -82,10 +82,10 @@ The scheduler prevents queue clog by canceling runs that aren't needed, ensuring
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.jpg" width="85%" title="The cancelled runs display an error message explaining why the run was cancelled and recommendations"/>
 
-To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/job-triggers).
+To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/deploy-jobs#schedule-days).
 
 ## Related docs
-- [dbt Cloud architecture](/docs/cloud/about-cloud/architecture#about-dbt-cloud-architecture)
+- [dbt Cloud architecture](/docs/cloud/about-cloud/architecture#dbt-cloud-features-architecture)
 - [Job commands](/docs/deploy/job-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Webhooks](/docs/deploy/webhooks)

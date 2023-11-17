@@ -23,6 +23,7 @@ seeds:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[quote_columns](/reference/resource-configs/quote_columns): true | false
     [+](/reference/resource-configs/plus-prefix)[column_types](/reference/resource-configs/column_types): {column_name: datatype}
+    [+](/reference/resource-configs/plus-prefix)[delimiter](/reference/resource-configs/delimiter): <string>
 
 ```
 
@@ -43,6 +44,7 @@ seeds:
     config:
       [quote_columns](/reference/resource-configs/quote_columns): true | false
       [column_types](/reference/resource-configs/column_types): {column_name: datatype}
+      [delimiter](/reference/resource-configs/grants): <string>
 
 ```
 

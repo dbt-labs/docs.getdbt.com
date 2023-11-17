@@ -2,6 +2,8 @@
 title: "About user access in dbt Cloud"
 description: "Learn how dbt Cloud administrators can use dbt Cloud's permissioning model to control user-level access in a dbt Cloud account."
 id: "about-user-access"
+pagination_next: "docs/cloud/manage-access/seats-and-users"
+pagination_prev: null
 ---
 
 :::info "User access" is not "Model access"
@@ -120,12 +122,6 @@ set on the _Internal Analytics_ project.
 
 
 ### Manual assignment
-
-<Changelog>
-
-- New in version 1.1.23 (March, 2021)
-
-</Changelog>
 
 dbt Cloud administrators can manually assign users to groups independently of
 IdP attributes. If a dbt Cloud group is configured _without_ any

@@ -91,7 +91,7 @@ The common skills needed for implementing any flavor of dbt (Core or Cloud) are:
 
 * SQL: ‘nuff said
 * YAML: required to generate config files for [writing tests on data models](/docs/build/tests)
-* [Jinja](/guides/advanced/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
+* [Jinja](/guides/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
 
 YAML + Jinja can be learned pretty quickly, but SQL is the non-negotiable you’ll need to get started.
 
@@ -144,22 +144,22 @@ An analyst will be in the dark when attempting to debug this, and will need to r
 This can be perfectly ok, in the event your data team is structured for data engineers to exclusively own dbt modeling duties, but that’s a quite uncommon org structure pattern from what I’ve seen. And if you have easy solutions for this analyst-blindness problem, I’d love to hear them.
 
 Once the data has been ingested, dbt Core can be used to model it for consumption. Most of the time, users choose to either:
-Use the dbt CLI+ [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator) with Airflow (If you take this route, you can use an external secrets manager to manage credentials externally), or
+Use the dbt Core CLI+ [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator) with Airflow (If you take this route, you can use an external secrets manager to manage credentials externally), or
 Use the [KubernetesPodOperator](https://registry.astronomer.io/providers/kubernetes/modules/kubernetespodoperator) for each dbt job, as data teams have at places like [Gitlab](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_trusted_data.py#L72) and [Snowflake](https://www.snowflake.com/blog/migrating-airflow-from-amazon-ec2-to-kubernetes/).
 
 Both approaches are equally valid; the right one will depend on the team and use case at hand.
 
 |  | Dependency management | Overhead | Flexibility | Infrastructure Overhead |
 |---|---|---|---|---|
-| dbt CLI + BashOperator | Medium | Low | Medium | Low |
+| dbt Core CLI + BashOperator | Medium | Low | Medium | Low |
 | Kubernetes Pod Operator | Very Easy | Medium | High | Medium |
 |  |  |  |  |  |
 
 If you have DevOps resources available to you, and your team is comfortable with concepts like Kubernetes pods and containers, you can use the KubernetesPodOperator to run each job in a Docker image so that you never have to think about Python dependencies. Furthermore, you’ll create a library of images containing your dbt models that can be run on any containerized environment. However, setting up development environments, CI/CD, and managing the arrays of containers can mean a lot of overhead for some teams. Tools like the [astro-cli](https://github.com/astronomer/astro-cli) can make this easier, but at the end of the day, there’s no getting around the need for Kubernetes resources for the Gitlab approach.
 
-If you’re just looking to get started or just don’t want to deal with containers, using the BashOperator to call the dbt CLI can be a great way to begin scheduling your dbt workloads with Airflow.
+If you’re just looking to get started or just don’t want to deal with containers, using the BashOperator to call the dbt Core CLI can be a great way to begin scheduling your dbt workloads with Airflow.
 
-It’s important to note that whichever approach you choose, this is just a first step; your actual production needs may have more requirements. If you need granularity and dependencies between your dbt models, like the team at [Updater does, you may need to deconstruct the entire dbt DAG in Airflow.](https://www.astronomer.io/guides/airflow-dbt#use-case-2-dbt-airflow-at-the-model-level) If you’re okay managing some extra dependencies, but want to maximize control over what abstractions you expose to your end users, you may want to use the [GoCardlessProvider](https://github.com/gocardless/airflow-dbt), which wraps the BashOperator and dbt CLI.
+It’s important to note that whichever approach you choose, this is just a first step; your actual production needs may have more requirements. If you need granularity and dependencies between your dbt models, like the team at [Updater does, you may need to deconstruct the entire dbt DAG in Airflow.](https://www.astronomer.io/guides/airflow-dbt#use-case-2-dbt-airflow-at-the-model-level) If you’re okay managing some extra dependencies, but want to maximize control over what abstractions you expose to your end users, you may want to use the [GoCardlessProvider](https://github.com/gocardless/airflow-dbt), which wraps the BashOperator and dbt Core CLI.
 
 #### Rerunning jobs from failure
 
@@ -176,7 +176,7 @@ Instead you can now use the following command:
 `dbt build –select result:error+ –defer –state <previous_state_artifacts>` … and that’s it!
 
 
-You can see more examples [here](https://docs.getdbt.com/docs/guides/best-practices#run-only-modified-models-to-test-changes-slim-ci).
+You can see more examples [here](https://docs.getdbt.com/docs/best-practices#run-only-modified-models-to-test-changes-slim-ci).
 
 
 This means that whether you’re actively developing or you simply want to rerun a scheduled job (because of, say, permission errors or timeouts in your database), you now have a unified approach to doing both.

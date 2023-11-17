@@ -1,6 +1,7 @@
 const path = require("path");
 const math = require("remark-math");
 const katex = require("rehype-katex");
+
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
@@ -51,6 +52,7 @@ var siteSettings = {
     docs:{
       sidebar: {
         hideable: true,
+        autoCollapseCategories: true,
       },
     },
     image: "/img/avatar.png",
@@ -70,16 +72,16 @@ var siteSettings = {
     announcementBar: {
       id: "biweekly-demos",
       content:
-        "Join our weekly demos and see dbt Cloud in action!",
+        "Join our weekly demos and dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
+    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts?utm_source=docs&utm_medium=event&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "david-effiong",
+    communitySpotlightMember: "faith-lierheimer",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -129,12 +131,12 @@ var siteSettings = {
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Guides',
-              to: '/guides/best-practices',
+              label: 'Best Practices',
+              to: '/best-practices',
             },
             {
-              label: "Quickstarts",
-              to: "/quickstarts",
+              label: "Guides",
+              to: "/guides",
             },
             {
               label: "Developer Blog",
@@ -192,7 +194,7 @@ var siteSettings = {
           </div>
 
           <div class='footer__items--right'>
-            <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
+            <a href='https://twitter.com/getdbt'><i class="fa-brands fa-x-twitter"></i></a>
             <a href='https://www.getdbt.com/community/join-the-community/'><i class="fa-brands fa-slack"></i></a>
             <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
           </div>
@@ -257,6 +259,8 @@ var siteSettings = {
       src: "https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js",
       defer: true,
     },
+    "https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js",
+    "/js/headerLinkCopy.js",
     "/js/gtm.js",
     "/js/onetrust.js",
     "https://kit.fontawesome.com/7110474d41.js",

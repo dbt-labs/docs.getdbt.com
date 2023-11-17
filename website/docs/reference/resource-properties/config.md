@@ -16,6 +16,7 @@ datatype: "{dictionary}"
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 
@@ -108,13 +109,6 @@ version: 2
 
 <TabItem value="sources">
 
-<VersionBlock lastVersion="1.0">
-
-We have added support for the `config` property on sources in dbt Core v1.1
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
 
 <File name='models/<filename>.yml'>
 
@@ -132,8 +126,6 @@ sources:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
@@ -191,6 +183,36 @@ exposures:
 
 </TabItem>
 
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for the `config` property on `semantic_models` was added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+semantic_models:
+  - name: <semantic_model_name>
+    config:
+      enabled: true | false
+      group: <string>
+      meta: {dictionary}
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
+## Definition
 The `config` property allows you to configure resources at the same time you're defining properties in YAML files.

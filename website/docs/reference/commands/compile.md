@@ -29,7 +29,7 @@ This will log the compiled SQL to the terminal, in addition to writing to the `t
 For example:
 
 ```bash
-dbt compile --select stg_payments
+dbt compile --select "stg_payments"
 dbt compile --inline "select * from {{ ref('raw_orders') }}"
 ```
 
@@ -37,7 +37,7 @@ returns the following:
 
 
 ```bash
-dbt compile --select stg_orders
+dbt compile --select "stg_orders"
 21:17:09 Running with dbt=1.5.0-b5
 21:17:09 Found 5 models, 20 tests, 0 snapshots, 0 analyses, 425 macros, 0 operations, 3 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
 21:17:09
@@ -67,8 +67,8 @@ select * from renamed
 </VersionBlock>
 
 The command accesses the data platform to cache-related metadata, and to run introspective queries. Use the flags:
-- `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query.
-- `--no-introspect` to disable [introspective queries](/faqs/warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a model's definition requires running one.
+- `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query. This is a `dbt` flag, which means you need to add `dbt` as a prefix. For example: `dbt --no-populate-cache`.
+- `--no-introspect` to disable [introspective queries](/faqs/warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a model's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix. For example:`dbt compile --no-introspect`.
 
 
 ### FAQs

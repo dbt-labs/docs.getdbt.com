@@ -63,7 +63,7 @@ In the greater data world, you may often hear of data lineage systems based on t
 
 If you use a transformation tool such as dbt that automatically infers relationships between data sources and models, a DAG automatically populates to show you the lineage that exists for your [data transformations](https://www.getdbt.com/analytics-engineering/transformation/).
 
-<Lightbox src="/img/docs/terms/data-lineage/dag_example.png" title="dbt Cloud Project with generated DAG" />
+<Lightbox src="/img/docs/terms/data-lineage/dag_example.jpg" width="80%" title="dbt Cloud Project with generated DAG" />
 
 Your <Term id="dag" /> is used to visually show upstream dependencies, the nodes that must come before a current model, and downstream relationships, the work that is impacted by the current model. DAGs are also directional—they show a defined flow of movement and form non-cyclical loops.
 
@@ -89,7 +89,7 @@ The biggest challenges around data lineage become more apparent as your data, sy
 
 As dbt projects scale with data and organization growth, the number of sources, models, macros, seeds, and [exposures](https://docs.getdbt.com/docs/build/exposures) invariably grow. And with an increasing number of nodes in your DAG, it can become harder to audit your DAG for WET code or inefficiencies.
 
-Working with dbt projects with thousands of models and nodes can feel overwhelming, but remember: your DAG and data lineage are meant to help you, not be your enemy. Tackle DAG audits in chunks, document all models, and [leverage strong structure conventions](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
+Working with dbt projects with thousands of models and nodes can feel overwhelming, but remember: your DAG and data lineage are meant to help you, not be your enemy. Tackle DAG audits in chunks, document all models, and [leverage strong structure conventions](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview).
 
 :::tip dbt project evaluator
 
@@ -113,4 +113,4 @@ DAGs, data lineage, and root cause analysis…tell me more! Check out some of ou
 
 - [Glossary: DRY](https://docs.getdbt.com/terms/dry)
 - [Data techniques for modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-- [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+- [How we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview)
