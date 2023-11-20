@@ -5,7 +5,7 @@ description: "Automatically generate project documentation as you run jobs."
 pagination_next: null
 ---
 
-dbt Cloud enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance. Refer to [Documentation](/docs/collaborate/documentation) for more details. 
+dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation).
 
 ## Set up a documentation job
 
