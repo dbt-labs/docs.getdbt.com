@@ -140,7 +140,16 @@
 
 .infoContainer .time_to_complete {
   font-weight: 700;
-  
+}
+
+.infoContainer .time_to_complete svg {
+  fill: var(--ifm-menu-color);
+  width: 18px;
+  margin: 0 4px -2px 0;
+}
+
+[data-theme='dark'] .infoContainer .time_to_complete svg {
+  fill: #fff;
 }
 
 .infoContainer .recently_updated {

@@ -53,7 +53,7 @@ export function QuickstartGuideTitle({ frontMatter }) {
         <span className={styles.recently_updated}>Updated</span>
       )}
       {time_to_complete && (
-        <span className={styles.time_to_complete}><i className="fa-regular fa-clock"></i> {time_to_complete}</span>
+        <span className={styles.time_to_complete}>{getSvgIcon('fa-clock')} {time_to_complete}</span>
       )}
 
       {(tags || level) && (
