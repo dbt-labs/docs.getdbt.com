@@ -103,6 +103,8 @@ dbt Cloud has a number of pre-defined variables built in. The following environm
 - `DBT_CLOUD_RUN_ID`: The ID of this particular run
 - `DBT_CLOUD_RUN_REASON_CATEGORY`: The "category" of the trigger for this run (one of: `scheduled`, `github_pull_request`, `gitlab_merge_request`, `azure_pull_request`, `other`)
 - `DBT_CLOUD_RUN_REASON`: The specific trigger for this run (eg. `Scheduled`, `Kicked off by <email>`, or custom via `API`)
+- `DBT_CLOUD_ENVIRONMENT_ID`: The ID of the environment for this run
+- `DBT_CLOUD_ACCOUNT_ID`: The ID of the dbt Cloud account for this run
 
 **Git details**
 
