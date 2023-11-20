@@ -32,6 +32,8 @@ This is a relatively small behavior change, but worth calling out in case you no
 - Don't add a `freshness:` block.
 - Explicitly set `freshness: null`
 
+Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) creates or updates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. The `package-lock.yml` file contains a record of all packages installed and, if subsequent `dbt deps` runs contain no updated packages in `depenedencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
+
 ## New and changed features and functionality
 
 - [`dbt docs generate`](/reference/commands/cmd-docs) now supports `--select` to generate [catalog metadata](/reference/artifacts/catalog-json) for a subset of your project. Currently available for Snowflake and Postgres only, but other adapters are coming soon. 
