@@ -19,4 +19,3 @@ Use `pip` to install the adapter, which automatically installs `dbt-core` and an
 
 <p>For {props.meta.platform_name}-specific configuration, please refer to <a href={props.meta.config_page}>{props.meta.platform_name} configs.</a> </p>
 
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${props.meta.github_repo}`}>{props.meta.github_repo}</a></p>
