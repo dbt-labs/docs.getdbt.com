@@ -2042,7 +2042,9 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   top: 0;
   right: 0;
   margin: 10px;
+  width: 18px;
   color: #818589; /* You can adjust the color as needed */
+  fill: #818589;
 }
 
 h3.anchor a.hash-link:before,
