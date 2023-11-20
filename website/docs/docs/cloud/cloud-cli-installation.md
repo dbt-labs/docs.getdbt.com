@@ -161,7 +161,7 @@ If you already have dbt Core installed, the dbt Cloud CLI may conflict. Here are
 
 --------
 
-Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [python -m pip installation step](#install-dbt-cloud-cli-in-pip).
+Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
 
 ### Install a virtual environment
 
