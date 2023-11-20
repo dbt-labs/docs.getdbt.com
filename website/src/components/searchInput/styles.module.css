@@ -1,0 +1,30 @@
+.inputContainer {
+  padding: 0 1rem;
+  border-radius: 0.3125rem;
+  border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
+
+
+}
+
+.inputContainer:active, .input:focus {
+  border: 2px solid #4f5d75;
+  outline: none;
+}
+
+.input::placeholder {
+  all: unset;
+  -webkit-text-security: initial;
+}
+
+.inputContainer .input {
+  border: none;
+  min-height: 38px;
+  font-size: .975rem;
+  color: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-base);
+}
+
+[data-theme='dark'] .input{
+  background: #1b1b1d;
+  color: #e3e3e3;
+}

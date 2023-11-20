@@ -29,8 +29,8 @@ const sidebarSettings = {
     }, // About dbt Cloud directory
     {
       type: "link",
-      label: "Quickstarts",
-      href: `/quickstarts`,
+      label: "Guides",
+      href: `/guides`,
     },
     {
       type: "category",
@@ -716,6 +716,7 @@ const sidebarSettings = {
       label: "Resource configs and properties",
       items: [
         "reference/configs-and-properties",
+        "reference/resource-configs/resource-path",
         {
           type: "category",
           label: "General properties",
@@ -962,7 +963,7 @@ const sidebarSettings = {
       ],
     },
   ],
-  guides: [
+  bestpractices: [
     {
       type: "category",
       label: "Best practices",
@@ -971,7 +972,7 @@ const sidebarSettings = {
         title: "Best practice guides",
         description:
           "Learn how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.",
-        slug: "/guides/best-practices",
+        slug: "best-practices",
       },
       items: [
         {
@@ -979,14 +980,14 @@ const sidebarSettings = {
           label: "How we structure our dbt projects",
           link: {
             type: "doc",
-            id: "guides/best-practices/how-we-structure/1-guide-overview",
+            id: "best-practices/how-we-structure/1-guide-overview",
           },
           items: [
-            "guides/best-practices/how-we-structure/2-staging",
-            "guides/best-practices/how-we-structure/3-intermediate",
-            "guides/best-practices/how-we-structure/4-marts",
-            "guides/best-practices/how-we-structure/5-semantic-layer-marts",
-            "guides/best-practices/how-we-structure/6-the-rest-of-the-project",
+            "best-practices/how-we-structure/2-staging",
+            "best-practices/how-we-structure/3-intermediate",
+            "best-practices/how-we-structure/4-marts",
+            "best-practices/how-we-structure/5-semantic-layer-marts",
+            "best-practices/how-we-structure/6-the-rest-of-the-project",
           ],
         },
         {
@@ -994,15 +995,15 @@ const sidebarSettings = {
           label: "How we style our dbt projects",
           link: {
             type: "doc",
-            id: "guides/best-practices/how-we-style/0-how-we-style-our-dbt-projects",
+            id: "best-practices/how-we-style/0-how-we-style-our-dbt-projects",
           },
           items: [
-            "guides/best-practices/how-we-style/1-how-we-style-our-dbt-models",
-            "guides/best-practices/how-we-style/2-how-we-style-our-sql",
-            "guides/best-practices/how-we-style/3-how-we-style-our-python",
-            "guides/best-practices/how-we-style/4-how-we-style-our-jinja",
-            "guides/best-practices/how-we-style/5-how-we-style-our-yaml",
-            "guides/best-practices/how-we-style/6-how-we-style-conclusion",
+            "best-practices/how-we-style/1-how-we-style-our-dbt-models",
+            "best-practices/how-we-style/2-how-we-style-our-sql",
+            "best-practices/how-we-style/3-how-we-style-our-python",
+            "best-practices/how-we-style/4-how-we-style-our-jinja",
+            "best-practices/how-we-style/5-how-we-style-our-yaml",
+            "best-practices/how-we-style/6-how-we-style-conclusion",
           ],
         },
         {
@@ -1010,15 +1011,14 @@ const sidebarSettings = {
           label: "How we build our metrics",
           link: {
             type: "doc",
-            id: "guides/best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
+            id: "best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
           },
           items: [
-            "guides/best-practices/how-we-build-our-metrics/semantic-layer-2-setup",
-            "guides/best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
-            "guides/best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
-            "guides/best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
-            "guides/best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics",
-            "guides/best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion",
+            "best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
+            "best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
+            "best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
+            "best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics",
+            "best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion",
           ],
         },
         {
@@ -1026,11 +1026,11 @@ const sidebarSettings = {
           label: "How we build our dbt Mesh projects",
           link: {
             type: "doc",
-            id: "guides/best-practices/how-we-mesh/mesh-1-intro",
+            id: "best-practices/how-we-mesh/mesh-1-intro",
           },
           items: [
-            "guides/best-practices/how-we-mesh/mesh-2-structures",
-            "guides/best-practices/how-we-mesh/mesh-3-implementation",
+            "best-practices/how-we-mesh/mesh-2-structures",
+            "best-practices/how-we-mesh/mesh-3-implementation",
           ],
         },
         {
@@ -1038,226 +1038,20 @@ const sidebarSettings = {
           label: "Materialization best practices",
           link: {
             type: "doc",
-            id: "guides/best-practices/materializations/materializations-guide-1-guide-overview",
+            id: "best-practices/materializations/materializations-guide-1-guide-overview",
           },
           items: [
-            "guides/best-practices/materializations/materializations-guide-2-available-materializations",
-            "guides/best-practices/materializations/materializations-guide-3-configuring-materializations",
-            "guides/best-practices/materializations/materializations-guide-4-incremental-models",
-            "guides/best-practices/materializations/materializations-guide-5-best-practices",
-            "guides/best-practices/materializations/materializations-guide-6-examining-builds",
-            "guides/best-practices/materializations/materializations-guide-7-conclusion",
+            "best-practices/materializations/materializations-guide-2-available-materializations",
+            "best-practices/materializations/materializations-guide-3-configuring-materializations",
+            "best-practices/materializations/materializations-guide-4-incremental-models",
+            "best-practices/materializations/materializations-guide-5-best-practices",
+            "best-practices/materializations/materializations-guide-6-examining-builds",
+            "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
-        "guides/best-practices/debugging-errors",
-        "guides/best-practices/writing-custom-generic-tests",
-      ],
-    },
-    {
-      type: "category",
-      label: "Orchestration",
-      link: {
-        type: "generated-index",
-        title: "Orchestration guides",
-        description:
-          "Learn how to orchestrate your data transformations in dbt, using dbt Cloud, a variety of popular tools, or both working together.",
-        slug: "/guides/orchestration",
-      },
-      items: [
-        {
-          type: "category",
-          label: "Airflow and dbt Cloud",
-          link: {
-            type: "doc",
-            id: "guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud",
-          },
-          items: [
-            "guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud",
-            "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
-            "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
-          ],
-        },
-        {
-          type: "category",
-          label: "Set up Continuous Integration",
-          link: {
-            type: "doc",
-            id: "guides/orchestration/set-up-ci/introduction",
-          },
-          items: [
-            "guides/orchestration/set-up-ci/quick-setup",
-            "guides/orchestration/set-up-ci/run-dbt-project-evaluator",
-            "guides/orchestration/set-up-ci/lint-on-push",
-            "guides/orchestration/set-up-ci/multiple-checks",
-          ],
-        },
-        {
-          type: "category",
-          label: "Custom Continuous Deployment Workflows",
-          link: {
-            type: "doc",
-            id: "guides/orchestration/custom-cicd-pipelines/1-cicd-background",
-          },
-          items: [
-            "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
-            "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
-            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
-          ],
-        },
-        {
-          type: "category",
-          label: "Webhooks with dbt Cloud and SaaS apps",
-          link: {
-            type: "generated-index",
-            title: "Use dbt Cloud's webhooks with other SaaS apps",
-            description:
-              "Learn how to use webhooks to trigger actions in other tools by using Zapier or a serverless platform.",
-            slug: "/guides/orchestration/webhooks",
-          },
-          items: [
-            {
-              type: "autogenerated",
-              dirName: "guides/orchestration/webhooks",
-            },
-          ],
-        },
-        "guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
-      ],
-    },
-    {
-      type: "category",
-      label: "Migration",
-      items: [
-        "guides/migration/sl-migration",
-        {
-          type: "category",
-          label: "Versions",
-          items: [
-            "docs/dbt-versions/core-upgrade/upgrading-to-v1.7",
-            "docs/dbt-versions/core-upgrade/upgrading-to-v1.6",
-            "docs/dbt-versions/core-upgrade/upgrading-to-v1.5",
-            "docs/dbt-versions/core-upgrade/upgrading-to-v1.4",
-            "docs/dbt-versions/core-upgrade/upgrading-to-v1.3",
-            "docs/dbt-versions/core-upgrade/upgrading-to-v1.2",
-            "docs/dbt-versions/core-upgrade/upgrading-to-v1.1",
-            "docs/dbt-versions/core-upgrade/upgrading-to-v1.0",
-             ],
-            },
-        {
-          type: "category",
-          label: "Tools",
-          link: {
-            type: "generated-index",
-            title: "Tool migration guides",
-            description:
-              "Learn how to migrate to dbt from other tools and platforms.",
-            slug: "/guides/migration/tools",
-          },
-          items: [
-            {
-              type: "category",
-              label: "Migrating from stored procedures",
-              link: {
-                type: "doc",
-                id: "guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures",
-              },
-              items: [
-                "guides/migration/tools/migrating-from-stored-procedures/2-inserts",
-                "guides/migration/tools/migrating-from-stored-procedures/3-updates",
-                "guides/migration/tools/migrating-from-stored-procedures/4-deletes",
-                "guides/migration/tools/migrating-from-stored-procedures/5-merges",
-                "guides/migration/tools/migrating-from-stored-procedures/6-migrating-from-stored-procedures-conclusion",
-              ],
-            },
-            "guides/migration/tools/migrating-from-spark-to-databricks",
-            "guides/migration/tools/refactoring-legacy-sql",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "dbt Ecosystem",
-      link: {
-        type: "generated-index",
-        title: "dbt Ecosystem guides",
-        description: "Learn about the dbt ecosystem and how to build with dbt.",
-        slug: "/guides/dbt-ecosystem/",
-      },
-      items: [
-        {
-          type: "category",
-          label: "Adapter development",
-          link: {
-            type: "doc",
-            id: "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
-          },
-          items: [
-            "guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
-            "guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
-            "guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
-            "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
-            "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
-            "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
-            "guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter",
-          ],
-        },
-        {
-          type: "category",
-          label: "dbt Python Snowpark",
-          link: {
-            type: "doc",
-            id: "guides/dbt-ecosystem/dbt-python-snowpark/1-overview-dbt-python-snowpark",
-          },
-          items: [
-            "guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration",
-            "guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source",
-            "guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt",
-            "guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name",
-            "guides/dbt-ecosystem/dbt-python-snowpark/6-foundational-structure",
-            "guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure",
-            "guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging",
-            "guides/dbt-ecosystem/dbt-python-snowpark/9-sql-transformations",
-            "guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations",
-            "guides/dbt-ecosystem/dbt-python-snowpark/11-machine-learning-prep",
-            "guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction",
-            "guides/dbt-ecosystem/dbt-python-snowpark/13-testing",
-            "guides/dbt-ecosystem/dbt-python-snowpark/14-documentation",
-            "guides/dbt-ecosystem/dbt-python-snowpark/15-deployment",
-          ],
-        },
-        {
-          type: "category",
-          label: "Databricks and dbt",
-          link: {
-            type: "doc",
-            id: "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
-          },
-          items: [
-            "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
-            "guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
-            "guides/dbt-ecosystem/databricks-guides/productionizing-your-dbt-databricks-project",
-          ],
-        },
-        "guides/dbt-ecosystem/sl-partner-integration-guide",
-      ],
-    },
-    {
-      type: "category",
-      label: "Advanced",
-      items: [
-        "guides/advanced/creating-new-materializations",
-        "guides/advanced/using-jinja",
-      ],
-    },
-    {
-      type: "category",
-      label: "Legacy",
-      items: [
-        "guides/legacy/debugging-schema-names",
-        "guides/legacy/best-practices",
-        "guides/legacy/building-packages",
-        "guides/legacy/videos",
+        "best-practices/writing-custom-generic-tests",
+        "best-practices/best-practice-workflows",
+        "best-practices/dbt-unity-catalog-best-practices",
       ],
     },
   ],

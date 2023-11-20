@@ -455,6 +455,7 @@ my-profile:
       dataproc_region: us-central1
       submission_method: serverless
       dataproc_batch:
+        batch_id: MY_CUSTOM_BATCH_ID # Supported in v1.7+
         environment_config:
           execution_config:
             service_account: dbt@abc-123.iam.gserviceaccount.com
@@ -464,7 +465,7 @@ my-profile:
           role: dev
         runtime_config:
           properties:
-            spark.executor.instances: 3
+            spark.executor.instances: "3"
             spark.driver.memory: 1g
 ```
 
