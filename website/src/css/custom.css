@@ -1507,6 +1507,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 .author-header .author-links a {
   display: block;
   padding: 5px;
+  color: var(--ifm-link-color);
 }
 
 .author-header .author-links a:first-of-type {
@@ -1515,6 +1516,14 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
 .author-header .author-links i {
   font-size: 1.1rem;
+}
+
+.author-header .author-links a .social-icon > svg {
+  width: 15.4px;
+  fill: var(--ifm-link-color);
+}
+.author-header .author-links a:hover .social-icon > svg {
+  fill: var(--ifm-link-hover-color);
 }
 
 .author-posts-section {
