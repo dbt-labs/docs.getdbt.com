@@ -2,10 +2,13 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
 import getIconType from "../../utils/get-icon-type";
+import getSvgIcon from "../../utils/get-svg-icon";
 
 export default function QuickstartGuideCard({ frontMatter }) {
   const { id, title, time_to_complete, icon, tags, level, recently_updated } =
     frontMatter;
+
+  const rightArrow = getSvgIcon('fa-arrow-right')
 
   return (
     <Link to={`/guides/${id}`} className={styles.quickstartCard}>
@@ -21,7 +24,7 @@ export default function QuickstartGuideCard({ frontMatter }) {
       )}
 
       <span to={`/guides/${id}`} className={styles.start}>
-        Start <i className="fa-regular fa-arrow-right"></i>
+        Start <span className={styles.right_arrow}>{rightArrow}</span>
       </span>
 
       {(tags || level) && (
