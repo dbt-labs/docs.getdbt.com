@@ -5,7 +5,7 @@ description: "Automatically generate project documentation as you run jobs."
 pagination_next: null
 ---
 
-dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation).
+dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation) for details
 
 ## Set up a documentation job
 
