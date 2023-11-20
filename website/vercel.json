@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/about/overview",
+      "destination": "/docs/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/dbt-cli/cli-overview",
+      "destination": "/docs/core/about-dbt-core",
+      "permanent": true
+    },  
+    {
     "source": "/guides/advanced/creating-new-materializations",
     "destination": "/guides/create-new-materializations",
     "permanent": true
@@ -1604,7 +1614,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-overview",
-      "destination": "/docs/get-started/getting-started/set-up-dbt-cloud",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
       "permanent": true
     },
     {
@@ -2639,7 +2649,7 @@
     },
     {
       "source": "/docs/cloud-overview",
-      "destination": "/docs/dbt-cloud/cloud-overview",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
       "permanent": true
     },
     {
