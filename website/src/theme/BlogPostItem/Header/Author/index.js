@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import imageCacheWrapper from '../../../../../functions/image-cache-wrapper';
 function MaybeLink(props) {
   if (props.href || props.slug) {
     return <Link {...props} />;
@@ -15,13 +16,13 @@ function MaybeLink(props) {
 */
 
 export default function BlogPostItemHeaderAuthor({author, className}) {
-  const {name, title, url, imageURL, email, key} = author;
+  const {name, url, imageURL, email, key, job_title, organization} = author;
   const link = url || (email && `mailto:${email}`) || undefined;
   return (
     <div className={clsx('avatar margin-bottom--sm', className)}>
       {imageURL && (
         <MaybeLink href={link} className="avatar__photo-link">
-          <img className="avatar__photo" src={imageURL} alt={name} />
+          <img className="avatar__photo" src={imageCacheWrapper(imageURL)} alt={name} />
         </MaybeLink>
       )}
 
@@ -36,9 +37,9 @@ export default function BlogPostItemHeaderAuthor({author, className}) {
               <span itemProp="name">{name}</span>
             </Link>
           </div>
-          {title && (
+          {job_title && organization && (
             <small className="avatar__subtitle" itemProp="description">
-              {title}
+              {job_title && job_title} {organization && `@ ${organization}`} 
             </small>
           )}
         </div>

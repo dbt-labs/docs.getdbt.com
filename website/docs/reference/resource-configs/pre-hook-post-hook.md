@@ -16,7 +16,7 @@ datatype: sql-statement | [sql-statement]
 
 <TabItem value="models">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -51,7 +51,7 @@ select ...
 
 <TabItem value="seeds">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -70,7 +70,7 @@ seeds:
 
 <TabItem value="snapshots">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -115,16 +115,9 @@ Pre- and post-hooks can also call macros that return SQL statements. If your mac
 
 dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out-of-the-box functionality, which you can configure quickly and concisely. In some cases, there may be SQL that you want or need to run, specific to functionality in your data platform, which dbt does not (yet) offer as a built-in feature. In those cases, you can write the exact SQL you need, using dbt's compilation context, and pass it into a `pre-` or `post-` hook to run before or after your model, seed, or snapshot.
 
-<Changelog>
-
-* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the alternative config syntax to apply pre- and post-hooks.
-
-</Changelog>
-
-
 ## Examples
 
-<Snippet src="hooks-to-grants" />
+<Snippet path="hooks-to-grants" />
 
 <VersionBlock firstVersion="1.2">
 
@@ -167,69 +160,6 @@ See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.1">
-
-### Grant privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  +post-hook: "grant select on {{ this }} to group reporter"
-
-```
-
-</File>
-
-### Grant multiple privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  +post-hook:
-    - "grant select on {{ this }} to group reporter"
-    - "grant select on {{ this }} to group transformer"
-
-```
-
-</File>
-
-### Call a macro to grant privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  +post-hook: "{{ grant_select(this) }}"
-
-```
-
-</File>
-
-
-### Grant privileges on a directory of models
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  jaffle_shop: # this is the project name
-    marts:
-      marketing:
-        # this will be applied to all models in marts/marketing/
-        +post-hook: "{{ grant_select(this) }}"
-
-```
-
-</File>
-
-</VersionBlock>
-
 ### Additional examples
 We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).
 
@@ -245,13 +175,17 @@ If multiple instances of any hooks are defined, dbt will run each hook using the
 
 
 ### Transaction behavior
-If you're using an adapter that makes use of transactions (namely Postgres or Redshift), it's worth noting that by default hooks are executed inside of the same transaction as your model being created.
+If you're using an adapter that uses transactions (namely Postgres or Redshift), it's worth noting that by default hooks are executed inside of the same transaction as your model being created.
 
 There may be occasions where you need to run these hooks _outside_ of a transaction, for example:
-* You want to run a `VACUUM` in a `post-hook`, however this cannot be executed within a transaction ([Redshift docs](https://docs.aws.amazon.com/redshift/latest/dg/r_VACUUM_command.html#r_VACUUM_usage_notes))
-* You want to insert a record into an audit <Term id="table" /> at the start of a run, and do not want that statement rolled back if the model creation fails.
+* You want to run a `VACUUM` in a `post-hook`, however, this cannot be executed within a transaction ([Redshift docs](https://docs.aws.amazon.com/redshift/latest/dg/r_VACUUM_command.html#r_VACUUM_usage_notes))
+* You want to insert a record into an audit <Term id="table" /> at the start of a run and do not want that statement rolled back if the model creation fails.
 
-To achieve this, you can use one of the following syntaxes. (Note: You should NOT use this syntax if using a database where dbt does not use transactions by default, including Snowflake, BigQuery, and Spark/Databricks.)
+To achieve this behavior, you can use one of the following syntaxes:
+  - Important note: Do not use this syntax if you are using a database where dbt does not support transactions. This includes databases like Snowflake, BigQuery, and Spark or Databricks.
+
+<Tabs>
+<TabItem value="beforebegin" label="Use before_begin and after_commit">
 
 #### Config block: use the `before_begin` and `after_commit` helper macros
 
@@ -270,6 +204,9 @@ select ...
 ```
 
 </File>
+</TabItem>
+
+<TabItem value="dictionary" label="Use a dictionary">
 
 #### Config block: use a dictionary
 <File name='models/<modelname>.sql'>
@@ -294,6 +231,10 @@ select ...
 
 </File>
 
+</TabItem>
+
+<TabItem value="dbt_project.yml" label="Use dbt_project.yml">
+
 #### `dbt_project.yml`: Use a dictionary
 
 <File name='dbt_project.yml'>
@@ -312,3 +253,5 @@ models:
 ```
 
 </File>
+</TabItem>
+</Tabs>

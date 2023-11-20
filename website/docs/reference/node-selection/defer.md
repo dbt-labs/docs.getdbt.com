@@ -2,31 +2,31 @@
 title: "Defer"
 ---
 
-<Changelog>
-
-- **v0.18.0**: Introduced `--defer` and `--state` flags as beta features.
-- **v0.19.0**: Changed `--defer` to use the current environment's resource, if it exists, and only fall back to the other environment's resource if the first does not. Also added support for `dbt test --defer`.
-
-</Changelog>
-
-Deferral is a powerful, complex feature that enables compelling workflows. As the use cases for `--defer` evolve, dbt Labs might make enhancements to the feature, but commit to providing backward compatibility for supported versions of dbt Core.  For details, see [dbt#5095](https://github.com/dbt-labs/dbt-core/discussions/5095).
-
-Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](docs/collaborate/environments/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
+Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](/docs/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
 Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/reference/node-selection/syntax#about-node-selection).
+
+An alternative command that accomplishes similar functionality for different use cases is `dbt clone` - see the docs for [clone](/reference/commands/clone#when-to-use-dbt-clone-instead-of-deferral) for more information.
+
+<VersionBlock firstVersion="1.6">
+
+It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/`DBT_STATE` and `--defer-state`/`DBT_DEFER_STATE`. This enables more granular control in cases where you want to compare against logical state from one environment or past point in time, and defer to applied state from a different environment or point in time. If `--defer-state` is not specified, deferral will use the manifest supplied to `--state`. In most cases, you will want to use the same state for both: compare logical changes against production, and also "fail over" to the production environment for unbuilt upstream resources.
+
+</VersionBlock>
+
 ### Usage
 
 ```shell
-$ dbt run --select [...] --defer --state path/to/artifacts
-$ dbt test --select [...] --defer --state path/to/artifacts
+dbt run --select [...] --defer --state path/to/artifacts
+dbt test --select [...] --defer --state path/to/artifacts
 ```
 
 
 <VersionBlock lastVersion="0.20">
 
 ```shell
-$ dbt run --models [...] --defer --state path/to/artifacts
-$ dbt test --models [...] --defer --state path/to/artifacts
+dbt run --models [...] --defer --state path/to/artifacts
+dbt test --models [...] --defer --state path/to/artifacts
 ```
 
 </VersionBlock>
@@ -101,7 +101,7 @@ I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 <TabItem value="no_defer">
 
 ```shell
-$ dbt run --select model_b
+dbt run --select "model_b"
 ```
 
 <File name='target/run/my_project/model_b.sql'>
@@ -128,7 +128,7 @@ Unless I had previously run `model_a` into this development environment, `dev_al
 <TabItem value="yes_defer">
 
 ```shell
-$ dbt run --select model_b --defer --state prod-run-artifacts
+dbt run --select "model_b" --defer --state prod-run-artifacts
 ```
 
 <File name='target/run/my_project/model_b.sql'>
@@ -186,7 +186,7 @@ models:
 <TabItem value="no_defer">
 
 ```shell
-dbt test --select model_b
+dbt test --select "model_b"
 ```
 
 <File name='target/compiled/.../relationships_model_b_id__id__ref_model_a_.sql'>
@@ -211,7 +211,7 @@ The `relationships` test requires both `model_a` and `model_b`. Because I did no
 <TabItem value="yes_defer">
 
 ```shell
-dbt test --select model_b --defer --state prod-run-artifacts
+dbt test --select "model_b" --defer --state prod-run-artifacts
 ```
 
 <File name='target/compiled/.../relationships_model_b_id__id__ref_model_a_.sql'>

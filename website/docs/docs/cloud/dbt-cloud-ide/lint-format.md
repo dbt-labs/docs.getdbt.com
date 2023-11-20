@@ -10,7 +10,7 @@ Enhance your development workflow by integrating with popular linters and format
 
 <details>
 <summary>What are linters and formatters? </summary>
-Linters analyze code for errors, bugs, and style issues, while formatters fix style and formatting rules. 
+Linters analyze code for errors, bugs, and style issues, while formatters fix style and formatting rules.  Read more about when to use linters or formatters in the <a href="#faqs">FAQs</a>
 </details>
 
 
@@ -45,7 +45,11 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 - Works with Jinja and SQL, 
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the IDE).
-- Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management. 
+- Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management.
+
+:::info Ephemeral models not supported
+Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
+:::
 
 ### Enable linting
 
@@ -63,11 +67,11 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 
 ### Customize linting
 
-SQLFluff is a configurable SQL linter, which means you can configure your own linting rules instead of using the default linting settings in the IDE.  
+SQLFluff is a configurable SQL linter, which means you can configure your own linting rules instead of using the default linting settings in the IDE. You can exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration.html#id2). 
 
 To configure your own linting rules:
 
-1. Create a new file in the root project directory (the parent or top-level directory for your files).
+1. Create a new file in the root project directory (the parent or top-level directory for your files). Note: The root project directory is the directory where your `dbt_project.yml` file resides.
 2. Name the file `.sqlfluff` (make sure you add the `.` before `sqlfluff`).
 3. [Create](https://docs.sqlfluff.com/en/stable/configuration.html#new-project-configuration) and add your custom config code. 
 4. Save and commit your changes.
@@ -76,7 +80,7 @@ To configure your own linting rules:
 
 :::tip Configure dbtonic linting rules
 
-Use the following code example to incorporate well-written dbt code (or dbtonic) to your linting:
+Refer to the [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) to add the dbt code (or dbtonic) rules we use for our own projects:
 
 <details>
 <summary>dbtonic config code example provided by dbt Labs</summary>
@@ -122,6 +126,8 @@ capitalisation_policy = lower
 group_by_and_order_by_style = implicit
 ```
 </details>
+
+For more info on styling best practices, refer to [How we style our SQL](/best-practices/how-we-style/2-how-we-style-our-sql).
 :::
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.jpg" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
@@ -165,6 +171,11 @@ To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
 
+
+You can add a configuration file to customize formatting rules for YAML, Markdown, or JSON files using Prettier. The IDE looks for the configuration file based on an order of precedence. For example, it first checks for a "prettier" key in your `package.json` file.
+
+For more info on the order of precedence and how to configure files, refer to [Prettier's documentation](https://prettier.io/docs/en/configuration.html). Please note, `.prettierrc.json5`, `.prettierrc.js`, and `.prettierrc.toml` files aren't currently supported.
+
 ### Format Python
 
 To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter.
@@ -177,6 +188,23 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/python-black.gif" width="95%" title="Format Python files using Black."/>
 
 ## FAQs
+
+<details>
+<summary>When should I use SQLFluff and when should I use sqlfmt?</summary>
+
+SQLFluff and sqlfmt are both tools used for formatting SQL code, but there are some differences that may make one preferable to the other depending on your use case. <br />
+
+SQLFluff is a SQL code linter and formatter. This means that it analyzes your code to identify potential issues and bugs, and follows coding standards. It also formats your code according to a set of rules, which are [customizable](#customize-linting), to ensure consistent coding practices. You can also use SQLFluff to keep your SQL code well-formatted and follow styling best practices. <br />
+
+sqlfmt is a SQL code formatter. This means it automatically formats your SQL code according to a set of formatting rules that aren't customizable. It focuses solely on the appearance and layout of the code, which helps ensure consistent indentation, line breaks, and spacing. sqlfmt doesn't analyze your code for errors or bugs and doesn't look at coding issues beyond code formatting. <br />
+
+You can use either SQLFluff or sqlfmt depending on your preference and what works best for you:
+
+- Use SQLFluff to have your code linted and formatted (meaning analyze fix your code for errors/bugs, and format your styling). It allows you the flexibility to customize your own rules.
+
+- Use sqlfmt to only have your code well-formatted without analyzing it for errors and bugs. You can use sqlfmt out of the box, making it convenient to use right away without having to configure it.
+
+</details>
 
 <details>
 <summary>Can I nest <code>.sqlfluff</code> files?</summary>
@@ -197,6 +225,12 @@ Currently, running SQLFluff commands from the terminal isn't supported.
 <summary>Why am I unable to see the <bold>Lint</bold> or <bold>Format</bold> button?</summary>
 
 Make sure you're on a development branch. Formatting or Linting isn't available on "main" or "read-only" branches. 
+</details>
+
+<details>
+<summary>Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE (such as a GitHub Action)?</summary>
+&mdash; Double-check your SQLFluff version matches the one in dbt Cloud IDE (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
+&mdash; If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
 </details>
 
 ## Related docs

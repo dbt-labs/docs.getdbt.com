@@ -30,7 +30,7 @@ In short, a jaffle is:
 
 *See above: Tasty, tasty jaffles.*
 
-Jaffle Shop is a demo repo referenced in [dbt’s Getting Started Guide](/quickstarts), and its jaffles hold a special place in the dbt community’s hearts, as well as on Data Twitter™.
+Jaffle Shop is a demo repo referenced in [dbt’s Getting Started Guide](/guides), and its jaffles hold a special place in the dbt community’s hearts, as well as on Data Twitter™.
 
 ![jaffles on data twitter](/img/blog/2022-02-08-customer-360-view/image_1.png)
 

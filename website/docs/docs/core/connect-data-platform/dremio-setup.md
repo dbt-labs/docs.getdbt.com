@@ -20,17 +20,22 @@ meta:
 Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
 
 :::
+
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
+ 
+Follow the repository's link for OS dependencies.
 
+:::note 
+[Model contracts](/docs/collaborate/govern/model-contracts) are not supported.
+:::
 
 ## Prerequisites for Dremio Cloud
 Before connecting from project to Dremio Cloud, follow these prerequisite steps:
 * Ensure that you have the ID of the Sonar project that you want to use. See [Obtaining the ID of a Project](https://docs.dremio.com/cloud/cloud-entities/projects/#obtaining-the-id-of-a-project).
 * Ensure that you have a personal access token (PAT) for authenticating to Dremio Cloud. See [Creating a Token](https://docs.dremio.com/cloud/security/authentication/personal-access-token/#creating-a-token).
 * Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
-
 
 
 ## Prerequisites for Dremio Software

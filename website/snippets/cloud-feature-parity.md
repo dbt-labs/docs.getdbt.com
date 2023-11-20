@@ -4,11 +4,11 @@ The following table outlines which dbt Cloud features are supported on the diffe
 |-------------------------------|--------------|-----------------------|----------------------|
 | Scheduler                     | ✅           | ✅                     | ✅                   |  
 | Cloud IDE                     | ✅           | ✅                     | ✅                   |  
-| Audit logs                    | ✅           | ✅ (select customers)  | ❌                   |  
-| Discovery API                  | ✅           | ✅ (select customers)  | ❌                   | 
-| Webhooks (Outbound)           | ✅           | ❌                     | ❌                   |
-| Continuous Integration, including Slim CI                       | ✅           | ✅                     | ✅                   | 
+| Audit logs                    | ✅           | ✅                     | ✅                   |  
+| Discovery API                 | ✅           | ✅                     | ❌                   | 
+| Webhooks (Outbound)           | ✅           | ✅                     | ❌                   |
+| Continuous Integration, including CI jobs                      | ✅           | ✅                     | ✅                   | 
 | Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
-| IP Restrictions               | ❌           | ✅                     | ✅                   | 
-| PrivateLink egress            | ✅           | ✅                     | ✅                   | 
+| IP Restrictions               | ✅           | ✅                     | ✅                   | 
+| PrivateLink egress            | ✅ (AWS only)| ✅                     | ✅                   | 
 | PrivateLink ingress           | ❌           | ✅                     | ✅                   | 

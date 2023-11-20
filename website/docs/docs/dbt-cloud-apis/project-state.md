@@ -6,7 +6,7 @@ dbt Cloud provides a stateful way of deploying dbt. Artifacts are accessible pro
 
 With the implementation of the `environment` endpoint in the Discovery API, we've introduced the idea of multiple states. The Discovery API provides a single API endpoint that returns the latest state of models, sources, and other nodes in the DAG. 
 
-A single [deployment environment](/docs/collaborate/environments/environments-in-dbt) should represent the production state of a given dbt Cloud project.
+A single [deployment environment](/docs/environments-in-dbt) should represent the production state of a given dbt Cloud project.
 
 There are two states that can be queried in dbt Cloud:
 
@@ -66,7 +66,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
 | Seed      | Yes              | Yes                  | Yes                | Downstream            | Applied & definition |
 | Snapshot  | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
 | Test      | Yes              | Yes                  | No                 | Upstream              | Applied & definition |
-| Exposure  | No               | No                   | No                 | Upstream              | Applied & definition |
+| Exposure  | No               | No                   | No                 | Upstream              | Definition 	  |
 | Metric    | No               | No                   | No                 | Upstream & downstream | Definition           |
 | Semantic model | No          | No                   | No                 | Upstream & downstream | Definition           |
 | Group     | No               | No                   | No                 | Downstream            | Definition           |

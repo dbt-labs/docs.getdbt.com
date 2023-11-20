@@ -1,13 +1,46 @@
 ---
 title: "Available integrations"
 id: avail-sl-integrations
-description: "Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
+description: "Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
+tags: [Semantic Layer]
 sidebar_label: "Available integrations"
+hide_table_of_contents: true
+meta:
+  api_name: dbt Semantic Layer APIs
 ---
 
-:::info Coming soon
-The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
-:::
+<VersionBlock firstVersion="1.6">
+
+
+There are a number of data applications that seamlessly integrate with the dbt Semantic Layer, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
+
+Use the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to simplify metric queries, optimize your development workflow, and reduce coding. This approach also ensures data governance and consistency for data consumers.
+
+import AvailIntegrations from '/snippets/_sl-partner-links.md';
+
+<AvailIntegrations/>
+
+### Custom integration
+
+- You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
+- You can also connect to tools that allow you to write SQL. These tools must meet one of the two criteria:
+  
+    - Supports a generic JDBC driver option (such as DataGrip) or
+    - Uses Arrow Flight SQL JDBC driver version 12.0.0 or higher.
+
+## Related docs
+
+- <span><a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate and query your metrics in downstream tools.
+- [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
+- [Hex dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.5">
+
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
+
+<DeprecationNotice />
 
 A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer and dbt metrics &mdash; from Business Intelligence tools to notebooks, data catalogs, and more.
 
@@ -15,13 +48,10 @@ The dbt Semantic Layer integrations are capable of querying dbt metrics, importi
 
 For information on the partner integrations, their documentation, and more &mdash; refer to the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
-
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" width="75%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
 ## Related docs
 
-- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer) to learn more about the dbt Semantic Layer.
-- [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) for more information on plan availability.
-- [Public Preview information](/docs/use-dbt-semantic-layer/quickstart-semantic-layer#public-preview) to understand what Public Preview for the dbt Semantic Layer means.
-- [dbt Semantic Layer partner integration guide](/guides/dbt-ecosystem/sl-partner-integration-guide) for information about partner integration guidelines, product roadmap, and API connectivity.
-- [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) to understand best practices for designing and structuring metrics in your dbt project.
+- [About the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
+
+</VersionBlock>

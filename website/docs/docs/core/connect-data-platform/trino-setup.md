@@ -16,7 +16,7 @@ meta:
   config_page: '/reference/resource-configs/trino-configs'
 ---
 
-<Snippet src="warehouse-setups-cloud-callout" />
+<Snippet path="warehouse-setups-cloud-callout" />
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -41,10 +41,10 @@ The following profile fields are always required except for `user`, which is als
 |   `user`   | Format for Starburst Enterprise or Trino: <br/> <ul><li>`user.name`</li><li>`user.name@mydomain.com`</li></ul><br/>Format for Starburst Galaxy:<br/> <ul><li>`user.name@mydomain.com/role`</li></ul> | The username (of the account) to log in to your cluster. When connecting to Starburst Galaxy clusters, you must include the role of the user as a suffix to the username. |
 
 ### Roles in Starburst Enterprise
-<Snippet src="connect-starburst-trino/roles-starburst-enterprise" />
+<Snippet path="connect-starburst-trino/roles-starburst-enterprise" />
 
 ### Schemas and databases
-<Snippet src="connect-starburst-trino/schema-db-fields" />
+<Snippet path="connect-starburst-trino/schema-db-fields" />
 
 ## Additional parameters
 
@@ -54,7 +54,7 @@ The following profile fields are optional to set up. They let you configure your
 | Profile field                 | Example                          | Description                                                                                                 |
 | ----------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `threads`                     | `8`                              | How many threads dbt should use (default is `1`)                                                            |
-| `roles`                       | `system: analyst`                | Catalog roles                                                                                               |
+| `roles`                       | `system: analyst`                | Catalog roles can be set under the optional `roles` parameter using the following format: `catalog: role`.     |
 | `session_properties`          | `query_max_run_time: 4h`         | Sets Trino session properties used in the connection. Execute `SHOW SESSION` to see available options       |
 | `prepared_statements_enabled` | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`)                   |
 | `retries`                     | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)     |

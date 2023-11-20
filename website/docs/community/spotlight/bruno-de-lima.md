@@ -2,23 +2,23 @@
 id: bruno-de-lima
 title: Bruno de Lima
 description: |
-  I am an Analytics Engineer and aspiring tech writer coming from an academic engineering background.
+  Hi all! I'm a Data Engineer, deeply fascinated by the awesomeness dbt. I love talking about dbt,           creating content from daily tips to blogposts and engaging with this vibrant community!
 
-  I worked at Indicium as an Analytics Engineer for more than a year, having worked with dbt (of course, every day) for transformation; BigQuery, Snowflake, and Databricks as data warehouses; Power BI and Tableau for BI; and Airflow for orchestration.
+  Started my career at the beginning of 2022 at Indicium as an Analytics Engineer, working with dbt from     day 1. By 2023, my path took a global trajectory as I joined phData as a Data Engineer, expanding my       experiences and forging connections beyond Brazil. While dbt is at the heart of my expertise, I've also    delved into data warehouses such as Snowflake, Databricks, and BigQuery; visualization tools like Power    BI and Tableau; and several minor modern data stack tools.
 
-  I actively participate in the dbt community, having attended two dbt meetups in Brazil organized by Indicium; writing about dbt-related topics in my Medium and LinkedIn profiles; contributing to the code; and frequently checking dbt Slack and Discourse, helping (and being helped by) other dbt practitioners. If you are a community member, you may have seen me around!
+  I actively participate in the dbt community, having attended two <a href="https://www.meetup.com/en-AU/florianopolis-dbt-meetup" rel="noopener noreferrer" target="_blank">dbt Meetups in Brazil</a> organized by Indicium; writing about dbt-related    topics in my Medium and LinkedIn profiles; contributing to the code; and frequently checking <a href="https://www.getdbt.com/community/join-the-community/" rel="noopener noreferrer" target="_blank">dbt Slack</a> and <a href="https://discourse.getdbt.com/" rel="noopener noreferrer" target="_blank">Discourse</a>, helping (and being helped by) other dbt practitioners. If you are a community member, you may have seen me around!
 image: /img/community/spotlight/bruno-de-lima.jpg
 pronouns: he/him
 location: Florianópolis, Brazil
-jobTitle: Analytics Engineer
-companyName: Indicium
+jobTitle: Data Engineer
+companyName: phData
 organization: ""
 socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/brunoszdl/
   - name: Medium
     link: https://medium.com/@bruno.szdl
-dateCreated: 2023-03-28
+dateCreated: 2023-11-05
 hide_table_of_contents: true
 ---
 
@@ -30,7 +30,7 @@ It took me some time to become an active member of the dbt community. I started 
 
 Inspired by other members, especially Josh Devlin and Owen Prough, I began answering questions on Slack and Discourse. For questions I couldn't answer, I would try engaging in discussions about possible solutions or provide useful links. I also started posting dbt tips on LinkedIn to help practitioners learn about new features or to refresh their memories about existing ones.
 
-By being more involved in the community, I felt more connected and supported. I received help from other members, and now, I could help others, too. I was happy with this arrangement, but more unexpected surprises came my way. My active participation in Slack, discourse, and LinkedIn opened doors to new connections and career opportunities. I had the pleasure of meeting a lot of incredible people and receiving exciting job offers.
+By being more involved in the community, I felt more connected and supported. I received help from other members, and now, I could help others, too. I was happy with this arrangement, but more unexpected surprises came my way. My active participation in Slack, Discourse, and LinkedIn opened doors to new connections and career opportunities. I had the pleasure of meeting a lot of incredible people and receiving exciting job offers, including the one for working at phData.
 
 Thanks to the dbt community, I went from feeling uncertain about my career prospects to having a solid career and being surrounded by incredible people.
 

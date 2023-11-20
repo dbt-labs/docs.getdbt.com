@@ -2,7 +2,9 @@
 title: Analysis properties
 ---
 
-We recommend you define analysis properties in your `analyses/` directory, which is illustrated in the [`analysis-paths`](/reference/project-configs/analysis-paths) configuration.
+import PropsCallout from '/snippets/_config-prop-callout.md';
+
+We recommend you define analysis properties in your `analyses/` directory, which is illustrated in the [`analysis-paths`](/reference/project-configs/analysis-paths) configuration. <PropsCallout title={frontMatter.title}/>  <br /> 
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `analyses/` or `models/` directory.
 
@@ -28,10 +30,3 @@ analyses:
 ```
 
 </File>
-
-
-<Changelog>
-
-* `v0.16.0`: The ability to declare analysis properties was introduced.
-
-</Changelog>

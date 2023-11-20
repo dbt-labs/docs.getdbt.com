@@ -15,9 +15,21 @@ default_value: true
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +enabled: true | false
+
+```
+
+</File>
 
 <File name='models/<modelname>.sql'>
 
@@ -29,17 +41,6 @@ default_value: true
 
 select ...
 
-
-```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-```yml
-models:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +enabled: true | false
 
 ```
 
@@ -65,6 +66,17 @@ seeds:
 
 <TabItem value="snapshots">
 
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +enabled: true | false
+
+```
+
+</File>
+
 <File name='snapshots/<filename>.sql'>
 
 ```sql
@@ -82,20 +94,20 @@ select ...
 
 </File>
 
+</TabItem>
+
+<TabItem value="tests">
+
 <File name='dbt_project.yml'>
 
 ```yml
-snapshots:
+tests:
   [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
 
 </File>
-
-</TabItem>
-
-<TabItem value="tests">
 
 <File name='tests/<filename>.sql'>
 
@@ -124,17 +136,6 @@ select ...
 
 </File>
 
-<File name='dbt_project.yml'>
-
-```yml
-tests:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +enabled: true | false
-
-```
-
-</File>
-
 </TabItem>
 
 <TabItem value="sources">
@@ -150,7 +151,6 @@ sources:
 
 </File>
 
-<VersionBlock firstVersion="1.1">
 
 <File name='models/properties.yml'>
 
@@ -170,7 +170,6 @@ sources:
 
 </File>
 
-</VersionBlock>
 
 </TabItem>
 
@@ -252,10 +251,45 @@ exposures:
 
 </TabItem>
 
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for disabling semantic models has been added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='dbt_project.yml'>
+
+```yaml
+semantic-models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
+```
+
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+semantic_models:
+  - name: [<semantic_model_name>]
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
-An optional configuration for disabling models, seeds, snapshots, and tests.
+An optional configuration for enabling or disabling a resource.
 
 * Default: true
 

@@ -6,7 +6,7 @@ sidebar: "Parsing"
 
 ### Partial Parsing
 
-The `PARTIAL_PARSE` config can turn partial parsing on or off in your project. See [the docs on parsing](parsing#partial-parsing) for more details.
+The `PARTIAL_PARSE` config can turn partial parsing on or off in your project. See [the docs on parsing](/reference/parsing#partial-parsing) for more details.
 
 <File name='profiles.yml'>
 
@@ -29,7 +29,7 @@ dbt --no-partial-parse run
 
 ### Static parser
 
-The `STATIC_PARSER` config can enable or disable use of the static parser. See [the docs on parsing](parsing#static-parser) for more details.
+The `STATIC_PARSER` config can enable or disable the use of the static parser. See [the docs on parsing](/reference/parsing#static-parser) for more details.
 
 <File name='profiles.yml'>
 
@@ -44,7 +44,7 @@ config:
 
 ### Experimental parser
 
-With the `USE_EXPERIMENTAL_PARSER` config, you can opt into the latest and greatest experimental version of the static parser, which is still being sampled for 100% correctness. See [the docs on parsing](parsing#experimental-parser) for more details.
+With the `USE_EXPERIMENTAL_PARSER` config, you can opt into the latest and greatest experimental version of the static parser, which is still being sampled for 100% correctness. See [the docs on parsing](/reference/parsing#experimental-parser) for more details.
 
 <File name='profiles.yml'>
 

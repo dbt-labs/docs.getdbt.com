@@ -11,4 +11,4 @@ To make the API more scalable and reliable, we've implemented a maximum limit of
 
 This maximum limit applies to [multi-tenant instances](/docs/cloud/about-cloud/regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
-Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2#section/Pagination) section for more information on this change. 
+Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#section/Pagination) section for more information on this change. 

@@ -112,13 +112,6 @@ column and relation comments in the database. By default, documentation
 persistence is disabled, but it can be enabled for specific resources or groups of
 resources as needed.
 
-<Changelog>
-
- - Support for this config on Redshift, Postgres, and Snowflake is new in 0.17.0
- - Support for column-level docs persistence is new for all databases in 0.17.0
-
-</Changelog>
-
 ## Support
 
 The `persist_docs` config is supported on the most widely used dbt adapters:
@@ -148,12 +141,6 @@ Some known issues and limitations:
 <VersionBlock firstVersion="1.2">
 
 - No known issues
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.0" lastVersion="1.1">
-
-- Column names that must be quoted, such as column names containing special characters, will cause runtime errors if column-level `persist_docs` is enabled. This is fixed in v1.2.
 
 </VersionBlock>
 

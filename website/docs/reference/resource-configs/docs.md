@@ -1,5 +1,4 @@
 ---
-title: "About docs configuration"
 sidebar_label: "docs"
 resource_types: models
 description: "Docs - Read this in-depth guide to learn about configurations in dbt."
@@ -18,9 +17,11 @@ default_value: {show: true}
     { label: 'Macros', value: 'macros', },
   ]
 }>
+
 <TabItem value="models">
 
 <File name='models/schema.yml'>
+
 
 ```yml
 version: 2
@@ -29,7 +30,7 @@ models:
   - name: model_name
     docs:
       show: true | false
-
+      node_color: "black"
 ```
 
 </File>
@@ -53,9 +54,7 @@ seeds:
   - name: seed_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
@@ -71,9 +70,7 @@ snapshots:
   - name: snapshot_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
@@ -90,7 +87,6 @@ analyses:
     docs:
       show: true | false
 ```
-
 </File>
 
 </TabItem>
@@ -110,25 +106,19 @@ macros:
   - name: macro_name
     docs:
       show: true | false
-
 ```
-
 </File>
+
+Also refer to [macro properties](/reference/macro-properties).
 
 </TabItem>
 
 </Tabs>
 
 ## Definition
-The docs field can be used to provide documentation-specific configuration to models. The only currently supported docs attribute is shown, which controls whether or not models are shown in the auto-generated documentation website.
+The docs field can be used to provide documentation-specific configuration to models. It supports the doc attribute `show`, which controls whether or not models are shown in the auto-generated documentation website. It also supports `node_color` for some node types.
 
 **Note:** hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
-
-<Changelog>
-
-* `v0.16.0`: This property was added
-
-</Changelog>
 
 ## Default
 The default value for `show` is `true`.
@@ -174,7 +164,7 @@ models:
 
 ## Custom node colors
 
-The `docs` attribute now supports `node_color` to customize the node color in the DAG within dbt docs. You can define node colors in the files below and apply overrides where needed.
+The `docs` attribute now supports `node_color` to customize the display color of some node types in the DAG within dbt docs. You can define node colors in the files below and apply overrides where needed.
 
 `node_color` hiearchy:
 
@@ -183,7 +173,7 @@ The `docs` attribute now supports `node_color` to customize the node color in th
 
 ## Examples
 
-Add custom node colors to models within subdirectories based on hex codes or a plain color name.
+Add custom `node_colors` to models that support it within subdirectories based on hex codes or a plain color name.
 
 ![Example](../../../../website/static/img/node_color_example.png)
 

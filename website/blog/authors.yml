@@ -1,6 +1,6 @@
 amy_chen:
   image_url: /img/blog/authors/achen.png
-  job_title: Senior Partner Engineer
+  job_title: Staff Partner Engineer
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/yuanamychen/
@@ -186,7 +186,7 @@ emily_riederer:
       url: https://twitter.com/emilyriederer
     - icon: fa-readme
       url: https://emilyriederer.com
-      
+
 grace_goheen:
   image_url: /img/blog/authors/grace-goheen.jpeg
   job_title: Analytics Engineer
@@ -306,6 +306,15 @@ kira_furuichi:
   name: Kira Furuichi
   organization: dbt Labs
 
+kshitij_aranke:
+  image_url: /img/blog/authors/kshitij-aranke.jpg
+  job_title: Senior Software Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/aranke/
+  name: Kshitij Aranke
+  organization: dbt Labs
+
 lauren_benezra:
   image_url: /img/blog/authors/lauren-benezra.jpeg
   job_title: Analytics Engineer
@@ -372,6 +381,25 @@ pat_kearns:
       url: https://www.linkedin.com/in/pat-kearns/
   name: Pat Kearns
   organization: dbt Labs
+
+pedro_brito_de_sa:
+  image_url: /img/blog/authors/pedro_brito.jpeg
+  job_title: Product Analyst
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/pbritosa/
+  name: Pedro Brito de Sa
+  organization: Sage
+
+
+rastislav_zdechovan:
+  image_url: /img/blog/authors/rastislav-zdechovan.png
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/rastislav-zdechovan/
+  name: Rastislav Zdechovan
+  organization: Infinite Lambda
 
 ross_turk:
   image_url: /img/blog/authors/ross-turk.png
@@ -441,6 +469,17 @@ simon_podhajsky:
       url: https://twitter.com/sim_pod
   name: Simon Podhajsky
   organization: iLife Technologies
+
+sterling_paramore:
+  description: |
+    Sterling Paramore started his career in theoretical and computation biophysics and learned that working with data was way more fun than being locked in the ivory tower.  He loves solving data engineering and data analytics problems and has been a long time evangelist for dbt.
+  image_url: /img/blog/authors/sterling-paramore.png
+  job_title: Sr Staff Data Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/sterlingparamore/
+  name: Sterling Paramore
+  organization: Mainspring Energy
 
 sung_chung:
   image_url: /img/blog/authors/sung.jpeg

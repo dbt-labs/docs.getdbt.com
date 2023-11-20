@@ -3,14 +3,19 @@ title: "Configuring Databricks PrivateLink"
 id: databricks-privatelink
 description: "Configuring PrivateLink for Databricks"
 sidebar_label: "PrivateLink for Databricks"
+pagination_next: null
 ---
+
+import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+
+<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
 The following steps will walk you through the setup of a Databricks AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
 
 ## Configure PrivateLink
 
 1. Locate your [Databricks Workspace ID](https://kb.databricks.com/en_US/administration/find-your-workspace-id#:~:text=When%20viewing%20a%20Databricks%20workspace,make%20up%20the%20workspace%20ID)
-2. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support): 
+2. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support): 
 ```
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Databricks

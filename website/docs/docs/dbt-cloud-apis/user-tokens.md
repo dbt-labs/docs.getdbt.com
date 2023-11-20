@@ -1,6 +1,7 @@
 ---
 title: "User tokens"
 id: "user-tokens"
+pagination_next: "docs/dbt-cloud-apis/service-tokens"
 ---
 
 ## User API tokens
@@ -13,9 +14,9 @@ permissions of the user the that they were created for.
 You can find your User API token in the Profile page under the `API Access`
 label.
 
-<Lightbox src="/img/api-access-profile.png" title="Finding your API token in your dbt Cloud Profile" />
+<Lightbox src="/img/api-access-profile.jpg" title="Finding your API token in your dbt Cloud Profile" />
 
 ## FAQs
 
-<FAQ src="API/rotate-token" />
-<FAQ src="Accounts/find-user-id" />
+<FAQ path="API/rotate-token" />
+<FAQ path="Accounts/find-user-id" />

@@ -1,7 +1,14 @@
 ---
 title: Snapshot configurations
 description: "Read this guide to learn about using snapshot configurations in dbt."
+meta:
+  resource_type: Snapshots
 ---
+
+import ConfigResource from '/snippets/_config-description-resource.md';
+import ConfigGeneral from '/snippets/_config-description-general.md';
+
+
 ## Related documentation
 * [Snapshots](/docs/build/snapshots)
 * The `dbt snapshot` [command](/reference/commands/snapshot)
@@ -14,6 +21,8 @@ Parts of a snapshot:
 
 ## Available configurations
 ### Snapshot-specific configurations
+
+<ConfigResource meta={frontMatter.meta} />
 
 <Tabs
   groupId="config-languages"
@@ -46,10 +55,12 @@ snapshots:
 
 <TabItem value="property-yaml">
 
+**Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
+
+
+<!--  
 <File name='snapshots/properties.yml'>
-
-**Note:** Required snapshot properties may not work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
-
+  
 ```yaml
 version: 2
 
@@ -64,8 +75,8 @@ snapshots:
       [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
 
 ```
-
 </File>
+-->
 
 </TabItem>
 
@@ -92,6 +103,8 @@ snapshots:
 
 
 ### General configurations
+
+<ConfigGeneral />
 
 <Tabs
   groupId="config-languages"

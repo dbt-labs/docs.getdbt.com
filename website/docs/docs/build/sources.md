@@ -8,7 +8,7 @@ search_weight: "heavy"
 
 ## Related reference docs
 * [Source properties](/reference/source-properties)
-* [Source configurations](reference/source-configs)
+* [Source configurations](/reference/source-configs)
 * [`{{ source() }}` jinja function](/reference/dbt-jinja-functions/source)
 * [`source freshness` command](/reference/commands/source)
 
@@ -124,11 +124,11 @@ sources:
 You can find more details on the available properties for sources in the [reference section](/reference/source-properties).
 
 ### FAQs
-<FAQ src="Project/source-has-bad-name" />
-<FAQ src="Project/source-in-different-database" />
-<FAQ src="Models/source-quotes" />
-<FAQ src="Tests/testing-sources" />
-<FAQ src="Runs/running-models-downstream-of-source" />
+<FAQ path="Project/source-has-bad-name" />
+<FAQ path="Project/source-in-different-database" />
+<FAQ path="Models/source-quotes" />
+<FAQ path="Tests/testing-sources" />
+<FAQ path="Runs/running-models-downstream-of-source" />
 
 ## Snapshotting source data freshness
 With a couple of extra configs, dbt can optionally snapshot the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
@@ -204,6 +204,6 @@ where _etl_loaded_at >= date_sub(current_date(), interval 1 day)
 ```
 
 ### FAQs
-<FAQ src="Project/exclude-table-from-freshness" />
-<FAQ src="Snapshots/snapshotting-freshness-for-one-source" />
-<FAQ src="Project/dbt-source-freshness" />
+<FAQ path="Project/exclude-table-from-freshness" />
+<FAQ path="Snapshots/snapshotting-freshness-for-one-source" />
+<FAQ path="Project/dbt-source-freshness" />

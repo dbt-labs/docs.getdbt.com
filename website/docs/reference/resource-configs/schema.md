@@ -1,15 +1,70 @@
 ---
-title: "About schema configuration"
 sidebar_label: "schema"
 resource_types: [models, seeds, tests]
-description: "Schema - Read this in-depth guide to learn about configurations in dbt."
+description: "Override the default schema when dbt creates resources in your data platform."
 datatype: string
 ---
 
-:::caution Heads up!
-This is a work in progress document. While this configuration applies to multiple resource types, the documentation has only been written for seeds.
+<Tabs>
+<TabItem value="model" label="Model">
 
-:::
+Specify a custom schema for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
+
+For example, if you have a group of marketing-related models and you want to place them in a separate schema called `marketing`, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  your_project:
+    marketing: #  Grouping or folder for set of models
+      +schema: marketing
+```
+</File>
+
+This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.marketing.model_name`. 
+</TabItem>
+
+<TabItem value="seeds" label="Seeds">
+
+Configure a custom schema in your `dbt_project.yml` file. 
+
+For example, if you have a seed that should be placed in a separate schema called `mappings`, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  your_project:
+    product_mappings:
+      +schema: mappings
+```
+
+This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.mappings.product_mappings`. 
+</File>
+</TabItem>
+
+<TabItem value="tests" label="Test">
+
+Customize the schema for storing test results in your `dbt_project.yml` file. 
+
+For example, to save test results in a specific schema, you can configure it like this:
+
+
+<File name='dbt_project.yml'>
+
+```yml
+tests:
+  +store_failures: true
+  +schema: test_results
+```
+
+This would result in the test results being stored in the `test_results` schema.
+</File>
+</TabItem>
+</Tabs>
+
+Refer to [Usage](#usage) for more examples.
 
 ## Definition
 Optionally specify a custom schema for a [model](/docs/build/sql-models) or [seed](/docs/build/seeds). (To specify a schema for a [snapshot](/docs/build/snapshots), use the [`target_schema` config](/reference/resource-configs/target_schema)).

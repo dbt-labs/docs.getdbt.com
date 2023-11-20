@@ -2,7 +2,7 @@
 title: "Programmatic invocations"
 ---
 
-In v1.5, dbt-core added support for programmatic invocations. The intent is to expose the existing dbt CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
+In v1.5, dbt-core added support for programmatic invocations. The intent is to expose the existing dbt Core CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
 
 The entry point is a `dbtRunner` class, which allows you to `invoke` the same commands as on the CLI.
 
@@ -30,7 +30,7 @@ Each command returns a `dbtRunnerResult` object, which has three attributes:
 - `result`: If the command completed (successfully or with handled errors), its result(s). Return type varies by command.
 - `exception`: If the dbt invocation encountered an unhandled error and did not complete, the exception it encountered.
 
-There is a 1:1 correspondence between [CLI exit codes](reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
+There is a 1:1 correspondence between [CLI exit codes](/reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
 
 | Scenario                                                                                    | CLI Exit Code | `success` | `result`         | `exception` |
 |---------------------------------------------------------------------------------------------|--------------:|-----------|-------------------|-------------|
