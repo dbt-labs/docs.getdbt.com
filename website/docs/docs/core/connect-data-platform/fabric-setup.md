@@ -4,7 +4,7 @@ description: "Read this guide to learn about the Microsoft Fabric Synapse Data W
 id: fabric-setup
 meta:
   maintained_by: Microsoft
-  authors: '[Microsoft](https://github.com/Microsoft)'
+  authors: 'Microsoft'
   github_repo: 'Microsoft/dbt-fabric'
   pypi_package: 'dbt-fabric'
   min_core_version: '1.4.0'

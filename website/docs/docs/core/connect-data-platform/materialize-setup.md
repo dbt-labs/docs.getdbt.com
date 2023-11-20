@@ -6,7 +6,7 @@ meta:
   maintained_by: Materialize  Inc.
   pypi_package: 'dbt-materialize'
   authors: 'Materialize team'
-  github_repo: 'MaterializeInc/materialize/blob/main/misc/dbt-materialize'
+  github_repo: 'MaterializeInc/materialize'
   min_core_version: 'v0.18.1'
   min_supported_version: 'v0.28.0'
   cloud_support: Not Supported
