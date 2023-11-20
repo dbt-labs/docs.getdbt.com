@@ -1108,7 +1108,7 @@ The following subjects need to be addressed across three pages of this docs site
 
 | How To...            | File to change within `/website/docs/`                       | Action | Info to Include                                                                                                                                                                                      |
 |----------------------|--------------------------------------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Connect              | `/docs/core/connect-data-platform/{MY-DATA-PLATFORM}-setup.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.                |
+| Connect              | `/docs/core/connect-data-platform/{MY-DATA-PLATFORM}-setup.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.             |
 | Configure            | `reference/resource-configs/{MY-DATA-PLATFORM}-configs.md`   | Create | What options and configuration specific to your data platform do users need to know? e.g. table distribution and indexing options, column_quoting policy, which incremental strategies are supported |
 | Discover and Install | `docs/supported-data-platforms.md`                                 | Modify | Is it a vendor- or community- supported adapter? How to install Python adapter package? Ideally with pip and PyPI hosted package, but can also use `git+` link to GitHub Repo                             |
 | Add link to sidebar  | `website/sidebars.js`                                        | Modify | Add the document id to the correct location in the sidebar menu                                                                                                                                      |
@@ -1122,6 +1122,14 @@ Below are some recent pull requests made by partners to document their data plat
 - [TiDB](https://github.com/dbt-labs/docs.getdbt.com/pull/1309)
 - [SingleStore](https://github.com/dbt-labs/docs.getdbt.com/pull/1044)
 - [Firebolt](https://github.com/dbt-labs/docs.getdbt.com/pull/941)
+
+Note &mdash; Use the following re-usable component to auto-fill the frontmatter content on your new page:
+
+```markdown
+import SetUpPages from '/snippets/_setup-pages-intro.md';
+
+<SetUpPages meta={frontMatter.meta} />
+```
 
 ## Promote a new adapter
 
