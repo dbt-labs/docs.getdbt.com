@@ -24,7 +24,7 @@ I joined the dbt community in 2022. My current focus is on building modern data 
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-I like working with dbt Labs' Sean McIntyre to promote Data Vault in Europe and Victoria Mola, also from dbt Labs, is always a great help when I have questions about dbt.
+I like working with dbt Labs' Sean McIntyre to promote Data Vault in Europe and Victoria Perez Mola, also from dbt Labs, is always a great help when I have questions about dbt.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 

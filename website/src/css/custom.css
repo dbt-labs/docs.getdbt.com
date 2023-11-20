@@ -2034,6 +2034,45 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   color: #818589; /* You can adjust the color as needed */
 }
 
+h3.anchor a.hash-link:before,
+h2.anchor a.hash-link:before {
+  content: "";
+  background-image: url('/img/copy.png');
+  background-size: 18px 18px;
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+}
+
+h3.anchor.clicked a.hash-link:before,
+h2.anchor.clicked a.hash-link:before {
+  background-image: url('/img/check.png');
+  background-size: 18px 13px;
+  height: 13px;
+}
+
+.copy-popup {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #047377;
+  color: rgb(236, 236, 236);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.close-button {
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.close-button:hover {
+  color: #fff; /* Change color on hover if desired */
+}
+
 @media (max-width: 996px) {
   .quickstart-container {
     flex-direction: column;

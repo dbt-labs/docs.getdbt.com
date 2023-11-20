@@ -61,6 +61,7 @@ pip is the easiest way to install the adapter:
 | dbt-teradata |  dbt-core  | dbt-teradata-util |  dbt-util      |
 |--------------|------------|-------------------|----------------|
 | 1.2.x        | 1.2.x      | 0.1.0             | 0.9.x or below |
+| 1.6.7        | 1.6.7      | 1.1.1             | 1.1.1          |
 
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
