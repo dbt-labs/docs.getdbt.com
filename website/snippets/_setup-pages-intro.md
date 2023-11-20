@@ -13,7 +13,7 @@
 <h2> Installing {props.meta.pypi_package}</h2>
 
 Use `pip` to install the adapter, which automatically installs `dbt-core` and any additional dependencies. Use the following command for installation:
-<code>pip install {props.meta.pypi_package}</code>
+<code>python -m pip install {props.meta.pypi_package}</code>
 
 <h2> Configuring {props.meta.pypi_package} </h2>
 
