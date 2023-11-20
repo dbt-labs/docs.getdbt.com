@@ -56,7 +56,7 @@ After a minor version reaches the end of its critical support period, one year a
 
 ### Future versions
 
-We aim to release a new minor "feature" every 3 months. _This is an indicative timeline ONLY._ For the latest information about upcoming releases, including their planned release dates and which features and fixes might be included in each, always consult the [`dbt-core` repository milestones](https://github.com/dbt-labs/dbt-core/milestones).
+For the latest information about upcoming releases, including their planned release dates and which features and fixes might be included in each, consult the [`dbt-core` repository milestones](https://github.com/dbt-labs/dbt-core/milestones) and [product roadmaps](https://github.com/dbt-labs/dbt-core/tree/main/docs/roadmap).
 
 ## Best practices for upgrading
 
