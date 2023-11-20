@@ -6,6 +6,7 @@ import clsx from "clsx";
 import style from "./styles.module.css";
 import { useLocation, useHistory } from "@docusaurus/router";
 import queryString from "query-string";
+import getSvgIcon from "../../utils/get-svg-icon";
 
 function QuickstartTOC() {
   const history = useHistory();
@@ -199,28 +200,30 @@ function QuickstartTOC() {
 
     if (tocListStyles.display === "none") {
       tocList.style.display = "block";
-      tocMenuBtn.querySelector("i").style.transform = "rotate(0deg)";
+      tocMenuBtn.querySelector("svg").style.transform = "rotate(0deg)";
     } else {
       tocList.style.display = "none";
-      tocMenuBtn.querySelector("i").style.transform = "rotate(-90deg)";
+      tocMenuBtn.querySelector("svg").style.transform = "rotate(-90deg)";
     }
   };
 
   return (
     <>
-    <a onClick={handleTocMenuClick} className={style.toc_menu_btn}>Menu <i className="fa-solid fa-caret-down"></i></a>
-    <ul className={style.tocList}>
-      {tocData.map((step) => (
-        <li
-          key={step.id}
-          data-step={step.stepNumber}
-          className={clsx(style.tocItem)}
-          onClick={handleTocClick}
-        >
-          <span>{step.stepNumber}</span> {step.title}
-        </li>
-      ))}
-    </ul>
+      <a onClick={handleTocMenuClick} className={style.toc_menu_btn}>
+        Menu {getSvgIcon("fa-caret-down")}
+      </a>
+      <ul className={style.tocList}>
+        {tocData.map((step) => (
+          <li
+            key={step.id}
+            data-step={step.stepNumber}
+            className={clsx(style.tocItem)}
+            onClick={handleTocClick}
+          >
+            <span>{step.stepNumber}</span> {step.title}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

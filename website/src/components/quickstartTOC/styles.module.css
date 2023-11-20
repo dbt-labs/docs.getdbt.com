@@ -160,9 +160,19 @@ html[data-theme="dark"] .stepWrapper[data-step="1"] a.nextButton {
     display: none;
 }
 
-.toc_menu_btn i {
+.toc_menu_btn i, .toc_menu_btn svg {
     transform: rotate(-90deg);
     vertical-align: middle;
+}
+
+.toc_menu_btn svg {
+  width: 10px;
+  fill: var(--ifm-link-color);
+}
+
+.toc_menu_btn:hover svg {
+  width: 10px;
+  fill: var(--ifm-link-hover-color);
 }
 
 @media (max-width: 996px) {
