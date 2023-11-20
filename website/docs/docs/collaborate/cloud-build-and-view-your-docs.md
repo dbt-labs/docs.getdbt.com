@@ -5,7 +5,7 @@ description: "Automatically generate project documentation as you run jobs."
 pagination_next: null
 ---
 
-dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation).
+dbt Cloud enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance. Refer to [Documentation](/docs/collaborate/documentation) for more details. 
 
 ## Set up a documentation job
 
@@ -52,7 +52,7 @@ You configure project documentation to generate documentation when the job you s
 To generate documentation in the dbt Cloud IDE, run the `dbt docs generate` command in the
 Command Bar in the dbt Cloud IDE. This command will generate the Docs for your dbt project as it exists in development in your IDE session.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" title="dbt docs generate"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" width="70%" title="dbt docs generate"/>
 
 After generating your documentation, you can click the **Book** icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
 
