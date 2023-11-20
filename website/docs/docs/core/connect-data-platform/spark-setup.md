@@ -35,15 +35,15 @@ If connecting to a Spark cluster via the generic thrift or http methods, it requ
 
 ```zsh
 # odbc connections
-$ pip install "dbt-spark[ODBC]"
+$ python -m pip install "dbt-spark[ODBC]"
 
 # thrift or http connections
-$ pip install "dbt-spark[PyHive]"
+$ python -m pip install "dbt-spark[PyHive]"
 ```
 
 ```zsh
 # session connections
-$ pip install "dbt-spark[session]"
+$ python -m pip install "dbt-spark[session]"
 ```
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>

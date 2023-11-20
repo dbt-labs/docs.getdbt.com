@@ -17,7 +17,7 @@ MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
 MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the dbt Cloud CLI, dbt Cloud IDE, or dbt Core.
 
-**Note** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
+**Note** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 
 <Tabs>
 
@@ -54,7 +54,7 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 
 1. Create or activate your virtual environment `python -m venv venv`
 2. Run `pip install dbt-metricflow`
-  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
+  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `python -m pip install "dbt-metricflow[snowflake]"`
 
 **Note**, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 

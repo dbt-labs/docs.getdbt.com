@@ -131,7 +131,7 @@ you must install the `dbt-hive` plugin.
 The following commands will install the latest version of `dbt-hive` as well as the requisite version of `dbt-core` and `impyla` driver used for connections.
 
 ```
-pip install dbt-hive
+python -m pip install dbt-hive
 ```
 
 ### Supported Functionality
