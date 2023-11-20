@@ -88,7 +88,7 @@ To downgrade to an older version, specify the version you want to use. This comm
 python -m pip install --upgrade dbt-core==0.19.0
 ```
 
-### `python -m pip install dbt`
+### `pip install dbt`
 
 Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise an explicit error. Since v0.13, the PyPI package named `dbt` was a simple "pass-through" of `dbt-core` and the four original database adapter plugins. For v1, we formalized that split.
 
