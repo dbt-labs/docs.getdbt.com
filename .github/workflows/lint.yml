@@ -12,8 +12,16 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18.12.0'
+      
+    - name: Cache Node Modules
+      uses: actions/cache@v3
+      id: cache-node-mods
+      with:
+        path: node_modules
+        key: node-modules-cache-v3-${{ hashFiles('package.json', 'package-lock.json') }}
 
     - name: Install Packages
+      if: steps.cache-node-mods.outputs.cache-hit != 'true'
       run: cd website && npm ci
       
     - name: Run ESLint
