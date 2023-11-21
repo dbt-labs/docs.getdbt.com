@@ -155,9 +155,9 @@ If you already have dbt Core installed, the dbt Cloud CLI may conflict. Here are
   - Uninstall the dbt Cloud CLI using the command: `pip uninstall dbt`
   - Reinstall dbt Core using the following command, replacing "adapter_name" with the appropriate adapter name:
     ```shell
-    pip install dbt-adapter_name --force-reinstall
+    python -m pip install dbt-adapter_name --force-reinstall
     ```
-    For example, if I used Snowflake as an adapter, I would run: `pip install dbt-snowflake --force-reinstall`
+    For example, if I used Snowflake as an adapter, I would run: `python -m pip install dbt-snowflake --force-reinstall`
 
 --------
 
@@ -243,7 +243,7 @@ To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-
 
 To update:
 - Make sure you're in your virtual environment
-- Run `pip install --upgrade dbt`.
+- Run `python -m pip install --upgrade dbt`.
 	
 </TabItem>
 
