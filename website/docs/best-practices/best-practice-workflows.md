@@ -24,7 +24,7 @@ SQL styles, field naming conventions, and other rules for your dbt project shoul
 
 :::info Our style guide
 
-We've made our [style guide](/best-practices/how-we-style/0-how-we-style-our-dbt-projects.md) public – these can act as a good starting point for your own style guide.
+We've made our [style guide](/best-practices/how-we-style/0-how-we-style-our-dbt-projects) public – these can act as a good starting point for your own style guide.
 
 :::
 
