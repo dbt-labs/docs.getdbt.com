@@ -39,11 +39,14 @@ If you already have ODBC Driver 17 installed, then that one will work as well.
 
 #### Supported configurations
 
-* The adapter is tested with Microsoft Fabric Synapse Data Warehouse.
+* The adapter is tested with Microsoft Fabric Synapse Data Warehouses (aka Warehouses).
 * We test all combinations with Microsoft ODBC Driver 17 and Microsoft ODBC Driver 18.
 * The collations we run our tests on are `Latin1_General_100_BIN2_UTF8`.
 
 The adapter support is not limited to the matrix of the above configurations. If you notice an issue with any other configuration, let us know by opening an issue on [GitHub](https://github.com/microsoft/dbt-fabric).
+
+##### Unsupported configurations
+SQL analytics endpoints are read-only and therefore not appropriate for Transformation workloads, use a Warehouse instead.
 
 ## Authentication methods & profile configuration
 
