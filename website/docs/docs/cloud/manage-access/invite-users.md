@@ -9,18 +9,23 @@ dbt Cloud makes it easy to invite new users to your environment out of the box. 
 
 ## Invite new users
 
-To invite new users to your environment: 
+You must have proper permissions to invite new users:
 
-1. Navigate to the gear icon in the top right corner of your dbt Cloud account and open the **Account Settings**.
+- [**Teams accounts**](/docs/cloud/manage-access/self-service-permissions) &mdash; must have `member` or `owner` permissions.
+- [**Enterprise accounts**](/docs/cloud/manage-access/enterprise-permissions) &mdash; must have `admin`, `account admin`, `project creator`, or `security admin` permissions.
+
+To invite users: 
+
+1. Open the **Account Settings** from the gear menu in your dbt Cloud account.
 2. From the left sidebar, select **Users**.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/users-screen.png" title="The user screen in settings"/>
 
-3. From the top right, click on **Invite Users**.
+3. Click on **Invite Users**.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/invite-users.png" title="The invite users pane"/>
 
-4. In the **Email Addresses** field, enter the email addresses of the users you would like to invite separated by comman, semicolon, or a new line.
+4. In the **Email Addresses** field, enter the email addresses of the users you would like to invite separated by comma, semicolon, or a new line.
 5. Select the license type for the batch of users from the **License** dropdown.
 6. Select the group(s) you would like the invitees to belong to.
 7. Click **Send Invitations**.
@@ -29,9 +34,11 @@ To invite new users to your environment:
 
 ## User experience
 
-dbt will generate and send the email to the addresses defined in dbt Cloud. Be sure to allow traffic from `support@getdbt.com` to prevent emails from going to spam or being blocked (this is the originating email address for all instances worldwide).
+dbt generates and sends the email to the addresses defined in dbt Cloud. Be sure to allow traffic from `support@getdbt.com` to prevent emails from going to spam or being blocked (this is the originating email address for all [instances worldwide](/docs/cloud/about-cloud/regions-ip-addresses)).
 
-The email contains a link to create an account. When the user clicks on this they will be brought to one of two scenarios depending on whether SSO is setup or not.
+The email contains a link to create an account. When the user clicks on this they will be brought to one of two screens depending on whether SSO is configured or not.
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/email-invite.png" title="Example or an email invitation"/>
 
 The default settings send the email, the user clicks the link, and is prompted to create their account:
 
@@ -40,6 +47,8 @@ The default settings send the email, the user clicks the link, and is prompted t
 If SSO is configured for the environment, the user clicks the link, is brought to a confirmation screen, and presented with a link to authenticate against the company's identity provider:
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/sso-user-invite.png" title="User invitation with SSO configured"/>
+
+Once the user completes this process, their email and user information will populate in the **Users** screen in dbt Cloud.
 
 ## FAQ
 
