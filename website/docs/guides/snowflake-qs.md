@@ -464,7 +464,7 @@ Sources make it possible to name and describe the data loaded into your warehous
 
     The results of your `dbt run` will be exactly the same as the previous step. Your `stg_cusutomers` and `stg_orders`
     models will still query from the same raw data source in Snowflake. By using `source`, you can
-    test and document your raw data and also understand the lineage of your sources. 
+    document your raw data and also understand the lineage of your sources. 
 
 
 <Snippet path="quickstarts/test-and-document-your-project" />
