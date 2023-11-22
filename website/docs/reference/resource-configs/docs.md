@@ -20,6 +20,9 @@ default_value: {show: true}
 
 <TabItem value="models">
 
+You can configure `docs` behavior for many resources at once by setting in `dbt_project.yml`. You can also use the `docs` config in `properties.yaml` files, to set or override documentation behaviors for specific resources:
+
+
 <File name='models/schema.yml'>
 
 
@@ -35,6 +38,18 @@ models:
 
 </File>
 
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +docs:
+      show: true | false
+
+```
+
+</File>
+
 </TabItem>
 
 <TabItem value="sources">
@@ -44,6 +59,20 @@ This property is not implemented for sources.
 </TabItem>
 
 <TabItem value="seeds">
+
+You can use the docs property in YAML files, including the `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +docs:
+      show: true | false
+
+```
+
+</File>
 
 <File name='seeds/schema.yml'>
 
@@ -61,6 +90,20 @@ seeds:
 
 <TabItem value="snapshots">
 
+You can use the docs property in YAML files, including the `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +docs:
+      show: true | false
+
+```
+
+</File>
+
 <File name='snapshots/schema.yml'>
 
 ```yml
@@ -76,6 +119,9 @@ snapshots:
 </TabItem>
 
 <TabItem value="analyses">
+
+You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Analysis properties](/reference/analysis-properties) for more info.
+
 
 <File name='analysis/schema.yml'>
 
@@ -93,9 +139,7 @@ analyses:
 
 <TabItem value="macros">
 
-<!----
-To-do: check this
---->
+You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Macro properties](/reference/macro-properties) for more info.
 
 <File name='macros/schema.yml'>
 
