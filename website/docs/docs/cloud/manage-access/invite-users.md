@@ -19,7 +19,7 @@ You must have proper permissions to invite new users:
 1. In your dbt Cloud account, select the gear menu in the upper right corner and then select **Account Settings**.
 2. From the left sidebar, select **Users**.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/users-screen.png" title="The user screen in settings"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/users-screen.png" width"70%" title="The user screen in the Account Settings page"/>
 
 3. Click on **Invite Users**.
 
