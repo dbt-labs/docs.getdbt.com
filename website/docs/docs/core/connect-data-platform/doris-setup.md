@@ -5,7 +5,7 @@ id: "doris-setup"
 meta:
   maintained_by: SelectDB
   authors: long2ice,catpineapple
-  github_repo: 'selectdb/dbt-selectdb'
+  github_repo: 'selectdb/dbt-doris'
   pypi_package: 'dbt-doris'
   min_core_version: 'v1.3.0'
   cloud_support: Not Supported
