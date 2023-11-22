@@ -1,6 +1,6 @@
 .lifecycle {
-    background-color: #047377; /* Yellow background similar to OpenAI's beta badge */
-    color: #fff; /* Dark text color for contrast */
+    background-color: #047377; /* Teal background to align with dbt Labs' color */
+    color: #fff; /* Light text color for contrast */
     font-size: 0.4em; /* Slightly smaller text */
     padding: 1px 8px; /* Adjust padding for a more pill-like shape */
     border-radius: 16px; /* Larger border-radius for rounded edges */
