@@ -1,13 +1,13 @@
 .lifecycle {
-    background-color: #ffeb3b; /* Yellow background similar to OpenAI's beta badge */
-    color: #333; /* Dark text color for contrast */
-    font-size: 0.75em; /* Slightly smaller text */
+    background-color: #047377; /* Yellow background similar to OpenAI's beta badge */
+    color: #fff; /* Dark text color for contrast */
+    font-size: 0.4em; /* Slightly smaller text */
     padding: 1px 8px; /* Adjust padding for a more pill-like shape */
     border-radius: 16px; /* Larger border-radius for rounded edges */
     margin-left: 8px; /* Margin to separate from the header text */
     vertical-align: middle; /* Align with the title */
     display: inline-block; /* Use inline-block for better control */
     font-weight: bold; /* Bold text */
-    text-transform: uppercase; /* Uppercase text */
+    text-transform: capitalize; /* Uppercase text */
     line-height: 1.6; /* Adjust line height for vertical alignment */
 }

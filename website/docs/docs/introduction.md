@@ -12,7 +12,7 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 Read more about why we want to enable analysts to work more like software engineers in [The dbt Viewpoint](/community/resources/viewpoint).
 
-## dbt optimizes your workflow <Lifecycle status='Beta' />
+## dbt optimizes your workflow <Lifecycle status='public preview' />
 
 - Avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" /> by managing transactions, dropping tables, and managing schema changes. Write business logic with just a SQL `select` statement, or a Python DataFrame, that returns the dataset you need, and dbt takes care of <Term id="materialization" />.
 - Build up reusable, or modular, data models that can be referenced in subsequent work instead of starting at the raw data with every analysis.
