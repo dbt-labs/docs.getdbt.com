@@ -7,7 +7,7 @@ sidebar: "Invite users"
 
 dbt Cloud makes it easy to invite new users to your environment out of the box. This feature is available to all dbt Cloud customers on Teams or Enteprise plans (Developer plans are limited to a single user).
 
-## Invite new users
+## Prerequisites
 
 You must have proper permissions to invite new users:
 
