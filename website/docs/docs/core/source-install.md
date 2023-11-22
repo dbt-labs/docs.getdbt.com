@@ -17,10 +17,10 @@ To install `dbt-core` from the GitHub code source:
 ```shell
 git clone https://github.com/dbt-labs/dbt-core.git
 cd dbt-core
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
-This will install `dbt-core` and `dbt-postgres`. To install in editable mode (includes your local changes as you make them), use `pip install -e editable-requirements.txt` instead.
+This will install `dbt-core` and `dbt-postgres`. To install in editable mode (includes your local changes as you make them), use `python -m pip install -e editable-requirements.txt` instead.
 
 ### Installing adapter plugins
 
@@ -29,12 +29,12 @@ To install an adapter plugin from source, you will need to first locate its sour
 ```shell
 git clone https://github.com/dbt-labs/dbt-redshift.git
 cd dbt-redshift
-pip install .
+python -m pip install .
 ```
 
 You do _not_ need to install `dbt-core` before installing an adapter plugin -- the plugin includes `dbt-core` among its dependencies, and it will install the latest compatible version automatically.
 
-To install in editable mode, such as while contributing, use `pip install -e .` instead.
+To install in editable mode, such as while contributing, use `python -m pip install -e .` instead.
 
 <FAQ path="Core/install-pip-os-prereqs" />
 <FAQ path="Core/install-python-compatibility" />

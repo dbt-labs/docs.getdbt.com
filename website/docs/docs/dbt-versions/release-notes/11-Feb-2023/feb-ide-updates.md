@@ -13,7 +13,6 @@ Learn more about the [February changes](https://getdbt.slack.com/archives/C03SAH
 ## New features 
 
 - Support for custom node colors in the IDE DAG visualization
-- Autosave prototype is now available under feature flag. [Contact](mailto:cloud-ide-feedback@dbtlabs.com) the dbt Labs IDE team to try this out
 - Ref autocomplete includes models from seeds and snapshots
 - Prevent menus from getting cropped (git controls dropdown, file tree dropdown, build button, editor tab options)
 - Additional option to access the file menu by right-clicking on the files and folders in the file tree

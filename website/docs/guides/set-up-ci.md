@@ -167,7 +167,7 @@ jobs:
         with:
           python-version: "3.9"
       - name: Install SQLFluff
-        run: "pip install sqlfluff"
+        run: "python -m pip install sqlfluff"
       - name: Lint project
         run: "sqlfluff lint models --dialect snowflake"
 
@@ -204,7 +204,7 @@ lint-project:
   rules:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != 'main'
   script:
-    - pip install sqlfluff
+    - python -m pip install sqlfluff
     - sqlfluff lint models --dialect snowflake
 ```
 
@@ -235,7 +235,7 @@ pipelines:
       - step:
           name: Lint dbt project
           script:
-            - pip install sqlfluff==0.13.1
+            - python -m pip install sqlfluff==0.13.1
             - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
 
     'main': # override if your default branch doesn't run on a branch named "main"

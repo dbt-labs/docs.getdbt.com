@@ -159,7 +159,7 @@ pipelines:
           artifacts:  # Save the dbt run artifacts for the next step (upload)
             - target/*.json
           script:
-            - pip install -r requirements.txt
+            - python -m pip install -r requirements.txt
             - mkdir ~/.dbt
             - cp .ci/profiles.yml ~/.dbt/profiles.yml
             - dbt deps
@@ -208,7 +208,7 @@ pipelines:
             # Set up dbt environment + dbt packages. Rather than passing
             # profiles.yml to dbt commands explicitly, we'll store it where dbt
             # expects it:
-            - pip install -r requirements.txt
+            - python -m pip install -r requirements.txt
             - mkdir ~/.dbt
             - cp .ci/profiles.yml ~/.dbt/profiles.yml
             - dbt deps
