@@ -61,7 +61,7 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
 1. Install the Python package called [jafgen](https://pypi.org/project/jafgen/). At the terminal's prompt, run:
 
     ```shell
-    /workspaces/test (main) $ pip install jafgen
+    /workspaces/test (main) $ python -m pip install jafgen
     ```
 
 1. When installation is done, run:
