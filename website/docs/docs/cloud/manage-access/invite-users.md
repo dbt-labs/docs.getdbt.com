@@ -29,7 +29,7 @@ To invite users:
 5. Select the license type for the batch of users from the **License** dropdown.
 6. Select the group(s) you would like the invitees to belong to.
 7. Click **Send Invitations**.
-    - If the list of invitees exceeds the number of licenses your account has availabe, you will receive a warning when you click **Send Invitations** and the invitations will not be sent. 
+    - If the list of invitees exceeds the number of licenses your account has available, you will receive a warning when you click **Send Invitations** and the invitations will not be sent. 
 
 
 ## User experience
