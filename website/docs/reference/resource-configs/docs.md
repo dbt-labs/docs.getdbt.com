@@ -20,9 +20,6 @@ default_value: {show: true}
 
 <TabItem value="models">
 
-You can configure `docs` behavior for many resources at once by setting in `dbt_project.yml`. You can also use the `docs` config in `properties.yaml` files, to set or override documentation behaviors for specific resources:
-
-
 <File name='models/schema.yml'>
 
 
@@ -48,9 +45,6 @@ This property is not implemented for sources.
 
 <TabItem value="seeds">
 
-You can use the docs property in YAML files, including the `dbt_project.yml`:
-
-
 <File name='seeds/schema.yml'>
 
 ```yml
@@ -66,8 +60,6 @@ seeds:
 </TabItem>
 
 <TabItem value="snapshots">
-
-You can use the docs property in YAML files, including the `dbt_project.yml`:
 
 <File name='snapshots/schema.yml'>
 
@@ -85,9 +77,6 @@ snapshots:
 
 <TabItem value="analyses">
 
-You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Analysis properties](/reference/analysis-properties) for more info.
-
-
 <File name='analysis/schema.yml'>
 
 ```yml
@@ -104,7 +93,9 @@ analyses:
 
 <TabItem value="macros">
 
-You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Macro properties](/reference/macro-properties) for more info.
+<!----
+To-do: check this
+--->
 
 <File name='macros/schema.yml'>
 
