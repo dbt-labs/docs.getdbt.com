@@ -13,13 +13,14 @@ You must have proper permissions to invite new users:
 
 - [**Teams accounts**](/docs/cloud/manage-access/self-service-permissions) &mdash; must have `member` or `owner` permissions.
 - [**Enterprise accounts**](/docs/cloud/manage-access/enterprise-permissions) &mdash; must have `admin`, `account admin`, `project creator`, or `security admin` permissions.
+- The admin inviting the users must have a `developer` or `IT` license.
 
 ## Invite new users
 
 1. In your dbt Cloud account, select the gear menu in the upper right corner and then select **Account Settings**.
 2. From the left sidebar, select **Users**.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/users-screen.png" width"70%" title="The user screen in the Account Settings page"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/users-screen.png" title="The user screen in the Account Settings page"/>
 
 3. Click on **Invite Users**.
 
@@ -40,13 +41,26 @@ The email contains a link to create an account. When the user clicks on this the
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/email-invite.png" title="Example or an email invitation"/>
 
+<Tabs>
+
+<TabItem value="Local user">
+
 The default settings send the email, the user clicks the link, and is prompted to create their account:
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/default-user-invite.png" title="Default user invitation"/>
 
+</TabItem>
+
+<TabItem value="SSO user">
+
 If SSO is configured for the environment, the user clicks the link, is brought to a confirmation screen, and presented with a link to authenticate against the company's identity provider:
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/sso-user-invite.png" title="User invitation with SSO configured"/>
+
+</TabItem>
+
+</Tabs>
+
 
 Once the user completes this process, their email and user information will populate in the **Users** screen in dbt Cloud.
 
