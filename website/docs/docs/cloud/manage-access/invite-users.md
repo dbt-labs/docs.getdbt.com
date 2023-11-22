@@ -14,7 +14,7 @@ You must have proper permissions to invite new users:
 - [**Teams accounts**](/docs/cloud/manage-access/self-service-permissions) &mdash; must have `member` or `owner` permissions.
 - [**Enterprise accounts**](/docs/cloud/manage-access/enterprise-permissions) &mdash; must have `admin`, `account admin`, `project creator`, or `security admin` permissions.
 
-To invite users: 
+## Invite new users
 
 1. Open the **Account Settings** from the gear menu in your dbt Cloud account.
 2. From the left sidebar, select **Users**.
