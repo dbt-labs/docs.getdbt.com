@@ -53,6 +53,12 @@ To interact with the full lineage graph, you can:
 - Hover over any item in the graph to display the resource’s name and type.
 - Zoom in and out on the graph by mouse-scrolling.
 - Grab and move the graph and the nodes.
+- Right click on a node (context menu) to:
+    - Refocus on the node, including its parent and child nodes
+    - Refocus on the node and its children only
+    - Refocus on the node and it parents only
+    - Navigate to the [resource details](#view-resource-details) page
+
 - Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph’s right-hand side that displays a high-level summary of the resource’s details. The side panel includes a **General** tab for information like description, materialized type, and other details.
     - Click the Share icon in the side panel to copy the graph’s link to your clipboard.
     - Click the View Resource icon in the side panel to [view the resource details](#view-resource-details). 
@@ -63,7 +69,7 @@ To interact with the full lineage graph, you can:
 - [View resource details](#view-resource-details) by selecting a node (double-clicking) in the graph.
 - Click the List view icon in the graph's upper right corner to return to the main **Explore** page. 
 
-<LoomVideo id='1c2224ee7d6e4bbca850345e9a7b79aa' />
+<LoomVideo id='4f85654b5cc443478299d2bb1e9211f6?t=0' />
 
 
 ## Search for resources {#search-resources}
@@ -73,6 +79,10 @@ Select a node (single-click) in the lineage graph to highlight its relationship 
 
 ### Search with keywords
 When searching with keywords, dbt Explorer searches through your resource metadata (such as resource type, resource name, column name, source name, tags, schema, database, version, alias/identifier, and package name) and returns any matches.
+
+With keyword search, Explorer provides a side panel (to the right of the main section) where you can filter your search results further by resource type. You can filter by resource tags for all resources or model access levels within the **Models** option. As an example, when searching for “sale”, the results will include all resources with the keyword “sale” in their metadata; and, you can choose **Model** and **Source** in the side panel to filter those results further to only display models or sources with the keyword match.  
+
+For a search on an exact column name, the results will include all relational nodes with that specific column in their schemas. If there is a match, the search result will include a notice indicating that the resource contains the specified column.
 
 ### Search with selector methods 
 
@@ -91,9 +101,11 @@ You can search with [selector methods](/reference/node-selection/methods). Below
 
 </VersionBlock>
 
-### Search with graph operators 
+Because the results of selectors are immutable, the side panel to filter results further is not be available in this view. 
 
-You can use [graph operators](/reference/node-selection/graph-operators) on keywords or selector methods. For example, `+orders` returns all the parents of `orders`. 
+When searching with selector methods, you can also use [graph operators](/reference/node-selection/graph-operators). For example, `+orders` returns all the parents of `orders`. This functionality is not available for keyword search. 
+
+These search methods are also available in the [project full lineage graph](#project-lineage). Searching these methods will filter the DAG shown on screen to narrow your focus on the resources of interest.
 
 ### Search with set operators 
 
@@ -107,7 +119,7 @@ You can use keyword search to highlight results that are filtered by the selecto
 
 When searching in this way, the selectors behave as filters that you can use to narrow the search and keywords as a way to find matches within those filtered results.
 
-<LoomVideo id='7ff433c392dd48d68311e17ce2adc57f' />
+<LoomVideo id='712c8b74a6e242699ad2d32e2b0693a5' />
 
 ## Browse with the sidebar
 
@@ -120,7 +132,7 @@ To browse using a different view, you can choose one of these options from the *
 - **File Tree** &mdash; All resources in the project organized by the file in which they are defined. This mirrors the file tree in your dbt project repository.
 - **Database** &mdash; All resources in the project organized by the database and schema in which they are built. This mirrors your data platform's structure that represents the [applied state](/docs/dbt-cloud-apis/project-state) of your project. 
 
-<LoomVideo id='5d4a4b7904184b76bc907edad1555163' />
+<LoomVideo id='3bd3b16b22ab49ea809c9a863be06d05' />
 
 ## View model versions
 
@@ -132,7 +144,7 @@ You can view the definition and latest run results of any resource in your proje
 The details (metadata) available to you depends on the resource’s type, its definition, and the [commands](/docs/deploy/job-commands) that run within jobs in the production environment. 
 
 
-<LoomVideo id='2b2ae3e376fa46e4b344eb5becfd730e' />
+<LoomVideo id='cefbb113427e45fd8106607476ec0676' />
 
 ### Example of model details
 
@@ -143,11 +155,11 @@ An example of the details you might get for a model:
     - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one parent node and one child node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
     - **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
     - **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
-    - **Tests** section &mdash; [Tests](/docs/build/tests) for the model.
+    - **Tests** section &mdash; [Tests](/docs/build/tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test. 
     - **Details** section &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
     - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.
-- **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. 
+- **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource, you can use the search bar that's located at the top of the columns view. 
 
 
 ### Example of exposure details
