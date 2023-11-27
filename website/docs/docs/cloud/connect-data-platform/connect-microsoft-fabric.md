@@ -18,9 +18,11 @@ The following are the required fields for setting up a connection with a [Micros
 
 
 ## Supported authentication methods
+The two supported authentication methods are: 
+- AAD service principal
+- AAD password
 
-- Service principal in Azure Active Directory (AAD)
-- Username/password in Azure Active Directory (AAD)
+SQL password (LDAP) is not supported in Fabric Synapse so you must use Azure Active Directory (AAD). This means that to use Microsoft Fabric in dbt Cloud, you will need at least one AAD service principal to connect dbt Cloud to Fabric, ideally one service principal for each user.
 
 ## Configuration 
 
