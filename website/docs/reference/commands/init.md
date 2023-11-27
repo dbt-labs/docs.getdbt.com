@@ -17,13 +17,13 @@ Then, it will:
 - Create a new folder with your project name and sample files, enough to get you started with dbt
 - Create a connection profile on your local machine. The default location is `~/.dbt/profiles.yml`. Read more in [configuring your profile](/docs/core/connect-data-platform/connection-profiles).
 
-<VersionBlock firstVersion="1.8">
+<VersionBlock firstVersion="1.7">
 
 When using `dbt init` to initialize your project, include the `--profile` flag to specify an existing `profiles.yml` as the `profile:` key to use instead of creating a new one. For example, `dbt init --profile profile_name`.
 
 
 
-If the profile does not exist in `profiles.yml` or the command is run inside an existing project (that is, if `dbt_project.yml` already exists), the command raises an error.
+If the profile does not exist in `profiles.yml` or the command is run inside an existing project, the command raises an error.
 
 </VersionBlock>
 
