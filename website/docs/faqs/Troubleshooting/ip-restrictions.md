@@ -22,7 +22,7 @@ The following is an example of the 403 response error:
             "data": {
                 "account_id": <account_id>,
                 "user_id": <user_id>,
-                "is_service_token": <boolean describing if it's a service token>,
+                "is_service_token": <boolean describing if it's a service token request>,
                 "account_access_denied": True,
             },
         }
