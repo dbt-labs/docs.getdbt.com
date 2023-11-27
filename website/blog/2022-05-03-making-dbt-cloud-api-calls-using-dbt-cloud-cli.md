@@ -59,7 +59,7 @@ You probably agree that the latter example is definitely more elegant and easier
 
 In addition to CLI commands that interact with a single dbt Cloud API endpoint there are composite helper commands that call one or more API endpoints and perform more complex operations. One example of composite commands are `dbt-cloud job export` and `dbt-cloud job import` where, under the hood, the export command performs a `dbt-cloud job get` and writes the job metadata to a <Term id="json" /> file and the import command reads job parameters from a JSON file and calls `dbt-cloud job create`. The export and import commands can be used in tandem to move dbt Cloud jobs between projects. Another example is the `dbt-cloud job delete-all` which fetches a list of all jobs using `dbt-cloud job list` and then iterates over the list prompting the user if they want to delete the job. For each job that the user agrees to delete  a `dbt-cloud job delete` is performed.
 
-To install the CLI in your Python environment run `pip install dbt-cloud-cli` and you’re all set. You can use it locally in your development environment or e.g. in a GitHub actions workflow.
+To install the CLI in your Python environment run `python -m pip install dbt-cloud-cli` and you’re all set. You can use it locally in your development environment or e.g. in a GitHub actions workflow.
 
 ## How the project came to be
 
@@ -310,7 +310,7 @@ The `CatalogExploreCommand.execute` method implements the interactive exploratio
 I’ve included the app in the latest version of dbt-cloud-cli so you can test it out yourself! To use the app you need install dbt-cloud-cli with extra dependencies:
 
 ```bash
-pip install dbt-cloud-cli[demo]
+python -m pip install dbt-cloud-cli[demo]
 ```
 
 Now you can the run app:

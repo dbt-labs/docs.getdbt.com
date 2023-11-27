@@ -26,7 +26,7 @@ The following tools integrate with the dbt Semantic Layer:
       className="external-link"
       target="_blank"
       rel="noopener noreferrer">
-      <i className="fa fa-external-link"></i>
+      <Icon name='fa-external-link' />
     </a>
   </div>
 
@@ -40,7 +40,7 @@ The following tools integrate with the dbt Semantic Layer:
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
-      <i className="fa fa-external-link"></i>
+      <Icon name='fa-external-link' />
     </a>
 </div>
 
@@ -54,7 +54,7 @@ The following tools integrate with the dbt Semantic Layer:
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
-      <i className="fa fa-external-link"></i>
+      <Icon name='fa-external-link' />
     </a>
 </div>
 
@@ -68,7 +68,7 @@ The following tools integrate with the dbt Semantic Layer:
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
-      <i className="fa fa-external-link"></i>
+      <Icon name='fa-external-link' />
     </a>
 </div>
 
@@ -82,7 +82,7 @@ The following tools integrate with the dbt Semantic Layer:
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
-      <i className="fa fa-external-link"></i>
+      <Icon name='fa-external-link' />
     </a>
 </div>
 
@@ -96,7 +96,7 @@ The following tools integrate with the dbt Semantic Layer:
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
-      <i className="fa fa-external-link"></i>
+      <Icon name='fa-external-link' />
     </a>
 </div>
 

@@ -4,11 +4,15 @@ description: "Learn how to use source configurations in dbt."
 id: source-configs
 ---
 
+import ConfigGeneral from '/snippets/_config-description-general.md';
+
 ## Available configurations
 
 Sources only support one configuration, [`enabled`](/reference/resource-configs/enabled).
 
 ### General configurations
+
+<ConfigGeneral />
 
 <Tabs
   groupId="config-languages"

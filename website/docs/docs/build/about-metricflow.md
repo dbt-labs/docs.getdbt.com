@@ -82,7 +82,7 @@ The following example data is based on the Jaffle Shop repo. You can view the co
 To make this more concrete, consider the metric `order_total`, which is defined using the SQL expression:
 
 `select sum(order_total) as order_total from orders` 
-This expression calculates the revenue from each order by summing the order_total column in the orders table. In a business setting, the metric order_total is often calculated according to different categories, such as"
+This expression calculates the total revenue for all orders by summing the order_total column in the orders table. In a business setting, the metric order_total is often calculated according to different categories, such as"
 - Time, for example `date_trunc(ordered_at, 'day')`
 - Order Type, using `is_food_order` dimension from the `orders` table.
 
