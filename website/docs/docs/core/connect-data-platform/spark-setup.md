@@ -54,7 +54,7 @@ $ python -m pip install "dbt-spark[session]"
 
 ## Connection Methods
 
-dbt-spark can connect to Spark clusters by three different methods:
+dbt-spark can connect to Spark clusters by four different methods:
 
 - [`odbc`](#odbc) is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
 - [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
