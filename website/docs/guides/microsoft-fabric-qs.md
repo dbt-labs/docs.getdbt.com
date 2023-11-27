@@ -108,6 +108,9 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
 2. Enter a project name and click **Continue**.
 3. Choose **Fabric** as your connection and click **Next**.
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
+    - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
+    - **Port** &mdash; 1433 (which is the default).
+    - **Database** &mdash; Use the service principal's **database** value for the Fabric test endpoint. 
 5. Enter the **Development credentials** for your new project:
     - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.

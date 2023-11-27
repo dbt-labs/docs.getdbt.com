@@ -54,6 +54,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/cloud/connect-data-platform/about-connections" },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-microsoft-fabric",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
                 "docs/cloud/connect-data-platform/connect-snowflake",
                 "docs/cloud/connect-data-platform/connect-bigquery",
