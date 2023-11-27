@@ -34,7 +34,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Develop dbt",
+      label: "Develop with dbt",
       collapsed: true,
       link: { type: "doc", id: "docs/cloud/about-develop-dbt" },
       items: [
