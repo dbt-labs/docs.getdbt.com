@@ -17,4 +17,4 @@ Also, check out the [Quickstart for dbt Cloud and Microsoft Fabric](/guides/micr
 - Turning a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Adding tests to your models.
 - Documenting your models.
-- Scheduling a job to run
+- Scheduling a job to run.
