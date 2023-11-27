@@ -44,7 +44,7 @@ By default, all environments will use the default branch in your repository (usu
 For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
 
 
-### Extended attributes (Beta)
+### Extended attributes <Lifecycle status='beta'/>
 
 :::important This feature is currently in beta
 Extended Attributes is currently in [beta](/docs/dbt-versions/product-lifecycles?) for select users and is subject to change.
