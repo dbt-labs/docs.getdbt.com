@@ -45,7 +45,7 @@ Global project macros have been reorganized, and some old unused macros have bee
 ### Installation
 
 - [Installation docs](/docs/supported-data-platforms) reflects adapter-specific installations
-- `pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `pip install dbt-<adapter>`.
+- `python -m pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `python -m pip install dbt-<adapter>`.
 - `brew install dbt` is no longer supported. Install the specific adapter plugin you need (among Postgres, Redshift, Snowflake, or BigQuery) as `brew install dbt-<adapter>`.
 - Removed official support for python 3.6, which is reaching end of life on December 23, 2021
 

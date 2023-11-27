@@ -111,6 +111,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/cloud/manage-access/about-user-access" },
               items: [
                 "docs/cloud/manage-access/about-user-access",
+                "docs/cloud/manage-access/invite-users",
                 {
                   type: "category",
                   label: "User permissions and licenses",

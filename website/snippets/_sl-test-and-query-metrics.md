@@ -48,8 +48,8 @@ The dbt Cloud CLI is strongly recommended to define and query metrics for your d
 
 1. Install [MetricFlow](/docs/build/metricflow-commands) as an extension of a dbt adapter from PyPI.
 2. Create or activate your virtual environment with `python -m venv venv` or `source your-venv/bin/activate`.
-3. Run `pip install dbt-metricflow`.
-   - You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. As an example for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
+3. Run `python -m pip install dbt-metricflow`.
+   - You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `python -m pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. As an example for a Snowflake adapter, run `python -m pip install "dbt-metricflow[snowflake]"`.
    - You'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 4. Run `dbt parse`. This allows MetricFlow to build a semantic graph and generate a `semantic_manifest.json`.
    - This creates the file in your `/target` directory. If you're working from the Jaffle shop example, run `dbt seed && dbt run` before proceeding to ensure the data exists in your warehouse.

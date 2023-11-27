@@ -255,7 +255,7 @@ The only authentication parameter to set for OAuth 2.0 is `method: oauth`. If yo
 
 For more information, refer to both [OAuth 2.0 authentication](https://trino.io/docs/current/security/oauth2.html) in the Trino docs and the [README](https://github.com/trinodb/trino-python-client#oauth2-authentication) for the Trino Python client.
 
-It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
+It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `python -m pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
 
 #### Example profiles.yml for OAuth
 
