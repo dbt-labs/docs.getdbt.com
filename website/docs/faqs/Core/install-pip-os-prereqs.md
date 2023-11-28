@@ -57,7 +57,7 @@ pip install cryptography~=3.4
 
 ```
 
-#### Windows
+### Windows
 
 Windows requires Python and git to successfully install and run dbt Core.
 
