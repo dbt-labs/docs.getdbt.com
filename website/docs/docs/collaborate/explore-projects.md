@@ -80,7 +80,9 @@ Select a node (single-click) in the lineage graph to highlight its relationship 
 ### Search with keywords
 When searching with keywords, dbt Explorer searches through your resource metadata (such as resource type, resource name, column name, source name, tags, schema, database, version, alias/identifier, and package name) and returns any matches.
 
-With keyword search, there is a side panel (to the right of the main section) that you can use to additionally filter the search results by resource type. You can filter by resource tags for all resources or model access levels within the **Models** option. As an example, when searching for “sale”, the results will include all resources with the keyword “sale” in their metadata. And, choosing **Models** and **Sources** in the side panel will filter those search results to contain only models or sources.   
+- Keyword search features a side panel (to the right of the main section) to filter search results by resource type. 
+- Use this panel to select specific resource tags or model access levels under the **Models** option. 
+  - For example, a search for "sale" returns results that include all resources with the keyword "sale" in their metadata. Filtering by **Models** and **Sources** refines these results to only include models or sources.
 
 For a search on an exact column name, the results will include all relational nodes with that specific column in their schemas. If there is a match, the search result will include a notice indicating that the resource contains the specified column.
 
