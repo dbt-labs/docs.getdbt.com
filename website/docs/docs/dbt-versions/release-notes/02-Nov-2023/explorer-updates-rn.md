@@ -4,6 +4,7 @@ description: "November 2023: New features and UI changes to dbt Explorer, includ
 sidebar_label: "Enhancement: New features and UI changes to dbt Explorer"
 sidebar_position: 08
 tags: [Nov-2023]
+date: 2023-11-28
 ---
 
 dbt Labs is excited to announce the latest features and UI updates to dbt Explorer!
