@@ -2,6 +2,11 @@ const sidebarSettings = {
   docs: [
     "docs/introduction",
     {
+      type: "link",
+      label: "Guides",
+      href: `/guides`,
+    },
+    {
       type: "category",
       label: "Supported data platforms",
       collapsed: true,
@@ -27,42 +32,6 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
-    {
-      type: "category",
-      label: "Develop with dbt Cloud",
-      collapsed: true,
-      link: { type: "doc", id: "docs/cloud/about-develop-dbt" },
-      items: [
-        "docs/cloud/about-develop-dbt",
-        "docs/cloud/about-cloud-develop-defer",
-        {
-          type: "category",
-          label: "dbt Cloud CLI",
-          collapsed: true,
-          link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
-          items: [
-            "docs/cloud/cloud-cli-installation",
-             "docs/cloud/configure-cloud-cli",
-            ],
-          },
-          {
-            type: "category",
-            label: "dbt Cloud IDE",
-            link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
-            items: [
-              "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-              "docs/cloud/dbt-cloud-ide/ide-user-interface",
-              "docs/cloud/dbt-cloud-ide/lint-format",
-              "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
-            ],
-          },
-        ],
-      },
-      {
-        type: "link",
-        label: "Guides",
-        href: `/guides`,
-      },
       {
       type: "category",
       label: "Set up dbt",
@@ -250,6 +219,37 @@ const sidebarSettings = {
         "docs/running-a-dbt-project/using-threads",
       ],
     },
+    {
+      type: "category",
+      label: "Develop with dbt Cloud",
+      collapsed: true,
+      link: { type: "doc", id: "docs/cloud/about-develop-dbt" },
+      items: [
+        "docs/cloud/about-develop-dbt",
+        "docs/cloud/about-cloud-develop-defer",
+        {
+          type: "category",
+          label: "dbt Cloud CLI",
+          collapsed: true,
+          link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
+          items: [
+            "docs/cloud/cloud-cli-installation",
+             "docs/cloud/configure-cloud-cli",
+            ],
+          },
+          {
+            type: "category",
+            label: "dbt Cloud IDE",
+            link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+            items: [
+              "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+              "docs/cloud/dbt-cloud-ide/ide-user-interface",
+              "docs/cloud/dbt-cloud-ide/lint-format",
+              "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+            ],
+          },
+        ],
+      },
     {
       type: "category",
       label: "Build dbt projects",
