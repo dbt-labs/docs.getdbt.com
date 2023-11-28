@@ -7,7 +7,7 @@ pagination_next: null
 
 You can also view all the different projects and public models in the account, where the public models are defined, and how they are used to gain a better understanding about your cross-project resources.
 
-When viewing the resource-level lineage graph for a given project that uses cross-project references, you can see cross-project relationships represented in the DAG. The iconography is slightly different depending on whether you're viewing the lineage of an upstream producer project or a downstream consumer project. 
+The resource-level lineage graph for a given project displays the cross-project relationships in the DAG. The different icons indicate whether you’re looking at an upstream producer project (parent) or a downstream consumer project (child).
 
 When you view an upstream (parent) project, its public models display a counter icon in the upper right corner indicating how many downstream (child) projects depend on them. Selecting a model reveals the lineage indicating the projects dependent on that model. These counts include all projects listing the upstream one as a dependency in its `dependencies.yml`, even without a direct `{{ ref() }}`. Selecting a project node from a public model opens its detailed lineage graph, which is subject to your [permission](/docs/cloud/manage-access/enterprise-permissions).
 
