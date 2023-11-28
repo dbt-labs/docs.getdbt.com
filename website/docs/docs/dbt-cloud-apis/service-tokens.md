@@ -115,3 +115,5 @@ To rotate your token:
 4. Copy the new token and replace the old one in your systems. Store it in a safe place, as it will not be available again once the creation screen is closed.
 5. Delete the old token in dbt Cloud by clicking the **trash can icon**. _Only take this action after the new token is in place to avoid service disruptions_.
 
+## FAQs
+<FAQ path="Troubleshooting/ip-restrictions" />
