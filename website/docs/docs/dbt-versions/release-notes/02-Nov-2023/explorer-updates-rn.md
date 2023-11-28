@@ -12,25 +12,21 @@ For more details, refer to [Explore your dbt projects](/docs/collaborate/explore
 
 ## The project's lineage graph 
 
-- The search bar in the full lineage graph is now to the right of the graph and is larger. 
-- The project/account navigation breadcrumbs has been updated.
-- A context menu is now available so you can explore a node's lineage and its details more easily from the full lineage graph.
+- The search bar in the full lineage graph is now more prominent. 
+- It's easier to navigate across projects using the breadcrumbs.
+- The new context menu (right click) makes it easier to focus on a node or to view its lineage.
 
 <LoomVideo id='1d28cc6443a94f00bbcb43d6ab3ad0d9' />
 
 ## Search improvements 
 
-- When searching with keywords, a new side panel UI to filter search results by resource type. 
-- Improved search for only exact column names. 
+- When searching with keywords, a new side panel UI helps you filter search results by resource type, tag, column, and other key properties (instead of manually defining selectors). 
+- Search result logic is clearly explained. For instance, indicating whether a resource contains a column name (exact match only).
 
 <LoomVideo id='5c4dc30afa824897a8c8b3ed37cee782?t=14' />
 
-## Browse with sidebar
-- There are UI updates to browsing your resources with the sidebar.
-
-<LoomVideo id='eb7aad34b581483fb340ab7ef9aac2e0' />
-
 ## Resource details
-- In the resource details for models, there are UI updates to the **Tests** section and the **Columns** tab.
+- Model test result statuses are now displayed on the model details page. 
+- Column names can now be searched within the list.
 
 <LoomVideo id='04f3e35cdc0c41109e91f7692d432059' />
