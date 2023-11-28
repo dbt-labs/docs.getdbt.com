@@ -28,13 +28,8 @@ const sidebarSettings = {
       ],
     }, // About dbt Cloud directory
     {
-      type: "link",
-      label: "Guides",
-      href: `/guides`,
-    },
-    {
       type: "category",
-      label: "Develop with dbt",
+      label: "Develop with dbt Cloud",
       collapsed: true,
       link: { type: "doc", id: "docs/cloud/about-develop-dbt" },
       items: [
@@ -61,19 +56,12 @@ const sidebarSettings = {
               "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
             ],
           },
-          {
-            type: "category",
-            label: "dbt Core",
-            link: { type: "doc", id: "docs/core/installation-overview", },
-            items: [
-              "docs/core/installation-overview",
-              "docs/core/homebrew-install",
-              "docs/core/pip-install",
-              "docs/core/docker-install",
-              "docs/core/source-install",
-            ],
-          },
         ],
+      },
+      {
+        type: "link",
+        label: "Guides",
+        href: `/guides`,
       },
       {
       type: "category",
@@ -190,6 +178,18 @@ const sidebarSettings = {
           items: [
             "docs/core/about-core-setup",
             "docs/core/dbt-core-environments",
+            {
+              type: "category",
+              label: "Install dbt Core",
+              link: { type: "doc", id: "docs/core/installation-overview", },
+              items: [
+                "docs/core/installation-overview",
+                "docs/core/homebrew-install",
+                "docs/core/pip-install",
+                "docs/core/docker-install",
+                "docs/core/source-install",
+              ],
+            },
             {
               type: "category",
               label: "Connect data platform",
