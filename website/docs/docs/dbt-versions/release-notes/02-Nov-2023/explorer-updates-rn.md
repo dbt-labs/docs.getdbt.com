@@ -1,6 +1,6 @@
 ---
 title: "Enhancement: New features and UI changes to dbt Explorer"
-description: "November 2023: New features and UI changes to dbt Explorer"
+description: "November 2023: New features and UI changes to dbt Explorer, including a new filter panel, improved lineage graph, and detailed resource information."
 sidebar_label: "Enhancement: New features and UI changes to dbt Explorer"
 sidebar_position: 08
 tags: [Nov-2023]
