@@ -20,7 +20,7 @@ When viewing a downstream (child) project that imports and refs public models fr
 
 ## Explore the project-level lineage graph
 
-For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore your project's lineage](#project-lineage) but you can also interact with it at the project level and view the details. 
+For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore your project's lineage](/docs/collaborate/explore-projects#project-lineage) but you can also interact with it at the project level and view the details. 
 
 To get a list view of all the projects, select the account name at the top of the **Explore** page near the navigation bar. This view includes a public model list, project list, and a search bar for project searches. You can also view the project-level lineage graph by clicking the Lineage view icon in the page's upper right corner.
 
