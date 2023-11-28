@@ -1050,6 +1050,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",
         "best-practices/dbt-unity-catalog-best-practices",
