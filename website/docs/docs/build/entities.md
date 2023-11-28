@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 Entities are real-world concepts in a business such as customers, transactions, and ad campaigns. We often focus our analyses around specific entities, such as customer churn or annual recurring revenue modeling. We represent entities in our semantic models using id columns that serve as join keys to other semantic models in your semantic graph.
 
-Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter.
+Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter. The `name` for your entity must be unique to the semantic model and can not be the same as an existing `measure` or `dimension` within that same project.
 
 Entities can be specified with a single column or multiple columns. Entities (join keys) in a semantic model are identified by their name. Each entity name must be unique within a semantic model, but it doesn't have to be unique across different semantic models. 
 
