@@ -416,7 +416,15 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/collaborate/collaborate-with-others" },
       items: [
         "docs/collaborate/collaborate-with-others",
-        "docs/collaborate/explore-projects",
+        {
+          type: "category",
+          label: "Explore dbt projects",
+          link: { type: "doc", id: "docs/collaborate/explore-projects" },
+          items: [
+            "docs/collaborate/explore-projects",
+            "docs/collaborate/explore-multiple-projects",
+          ],
+        },
         {
           type: "category",
           label: "Git version control",
