@@ -84,7 +84,7 @@ When searching with keywords, dbt Explorer searches through your resource metada
 - Use this panel to select specific resource tags or model access levels under the **Models** option. 
   - For example, a search for "sale" returns results that include all resources with the keyword "sale" in their metadata. Filtering by **Models** and **Sources** refines these results to only include models or sources.
 
-For a search on an exact column name, the results will include all relational nodes with that specific column in their schemas. If there is a match, the search result will include a notice indicating that the resource contains the specified column.
+- When searching for an exact column name, the results show all relational nodes containing that column in their schemas. If there's a match, a notice in the search result indicates the resource contains the specified column.
 
 ### Search with selectors 
 
