@@ -10,6 +10,8 @@
     {
       "source": "/docs/core/about-dbt-core",
       "destination": "/docs/core/installation-overview",
+      "source": "/docs/deploy/airgapped",
+      "destination": "/docs/cloud/about-cloud/tenancy"
       "permanent": true
     },
     {
