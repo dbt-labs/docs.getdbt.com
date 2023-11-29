@@ -54,8 +54,8 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
     CREATE TABLE dbo.customers
     (
         [ID] [int],
-        [FIRST_NAME] [varchar] (8000),
-        [LAST_NAME] [varchar] (8000)
+        \[FIRST_NAME] [varchar](8000),
+        \[LAST_NAME] [varchar](8000)
     );
 
     COPY INTO [dbo].[customers]
@@ -72,7 +72,7 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
         [USER_ID] [int],
         -- [ORDER_DATE] [int],
         [ORDER_DATE] [date],
-        [STATUS] [varchar] (8000)
+        \[STATUS] [varchar](8000)
     );
 
     COPY INTO [dbo].[orders]
@@ -87,8 +87,8 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
     (
         [ID] [int],
         [ORDERID] [int],
-        [PAYMENTMETHOD] [varchar] (8000),
-        [STATUS] [varchar] (8000),
+        \[PAYMENTMETHOD] [varchar](8000),
+        \[STATUS] [varchar](8000),
         [AMOUNT] [int],
         [CREATED] [date]
     );
