@@ -11,7 +11,7 @@ Before you begin, you must be aware of a few conditions:
 - This strategy only works for warehouse that support zero copy cloning (otherwise `dbt clone` will just create pointer views).
 - Some teams may want to test that their incremental models run in both incremental mode and full-refresh mode.
 
-Imagine you've created a [Slim CI job](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration#slim-ci) in dbt Cloud and it is configured to: 
+Imagine you've created a [Slim CI job](/docs/deploy/continuous-integration) in dbt Cloud and it is configured to: 
 
 - Defer to your production environment.
 - Run the command `dbt build --select state:modified+` to run and test all of the models you've modified and their downstream dependencies.
