@@ -71,7 +71,7 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Join our weekly demos and dbt Cloud in action!",
+      content: "Join our weekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
