@@ -33,7 +33,7 @@ Because your CI job is building modified models into a PR-specific schema, on th
 
 This can be suboptimal because:
 - Typically incremental models are your largest datasets, so they take a long time to build in their entirety which can slow down development time and incur high warehouse costs.
-- There are situations where a `full-refresh` of the incremental model passes successfully in your CI job but an _incremental_ build of that same table in prod would fail when the PR is merged into main (think schema drift where [on_schema_change](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change) config is set to `fail`)
+- There are situations where a `full-refresh` of the incremental model passes successfully in your CI job but an _incremental_ build of that same table in prod would fail when the PR is merged into main (think schema drift where [on_schema_change](/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change) config is set to `fail`)
 
 You can alleviate these problems by zero copy cloning the relevant, pre-exisitng incremental models into your PR-specific schema as the first step of the CI job using the `dbt clone` command. This way, the incremental models already exist in the PR-specific schema when you first execute the command `dbt build --select state:modified+` so the `is_incremental` flag will be `true`. 
 
@@ -43,7 +43,7 @@ You'll have two commands for your dbt Cloud CI check to execute:
 
 Because of your first clone step, the incremental models selected in your `dbt build` on the second step will run in incremental mode.
 
-<Lightbox src="/img/best-practices/clone-command.png" title="Clone command in the CI config" />
+<Lightbox src="/img/best-practices/clone-command.png" width="70%" title="Clone command in the CI config" />
 
 Your CI jobs will run faster, and you're more accurately mimicking the behavior of what will happen once the PR has been merged into main. 
 
