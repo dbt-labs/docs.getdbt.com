@@ -48,7 +48,7 @@ To enable Git repository caching, select **Account settings** from the gear menu
 
 :::note
 
-This feature is only available on dbt Cloud Enterprise plans. 
+This feature is only available on the dbt Cloud Enterprise plan. 
 
 :::
 
