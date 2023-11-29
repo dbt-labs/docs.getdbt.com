@@ -28,6 +28,7 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
 - You have a [dbt Cloud](https://www.getdbt.com/signup/) account.
 - You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.
 - As a Microsoft admin, you’ve enabled service principal authentication. For details, refer to  [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Microsoft Fabric.
+    -  The service principal must be added to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. 
 
 ### Related content
 - [dbt Courses](https://courses.getdbt.com/collections)
