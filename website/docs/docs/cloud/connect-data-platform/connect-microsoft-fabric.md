@@ -4,7 +4,15 @@ description: "Configure Microsoft Fabric connection."
 sidebar_label: "Connect Microsoft Fabric"
 ---
 
-The following are the required fields for setting up a connection with a [Microsoft Fabric](https://docs.starburst.io/starburst-enterprise/index.html) using service principal authentication. 
+## Supported authentication methods
+The two supported authentication methods are: 
+- Azure Active Directory service principal
+- Azure Active Directory password
+
+SQL password (LDAP) is not supported in Microsoft Fabric Synapse Data Warehouse so you must use Azure Active Directory (Azure AD). This means that to use Microsoft Fabric in dbt Cloud, you will need at least one Azure AD service principal to connect dbt Cloud to Fabric, ideally one service principal for each user.
+
+### Active Directory service principal 
+The following are the required fields for setting up a connection with a [Microsoft Fabric](https://docs.starburst.io/starburst-enterprise/index.html) using Azure AD service principal authentication. 
 
 | Field | Description |
 | --- | --- |
@@ -17,12 +25,18 @@ The following are the required fields for setting up a connection with a [Micros
 | **Client secret** | The service principal's **client secret** (not the **client secret id**). |  
 
 
-## Supported authentication methods
-The two supported authentication methods are: 
-- AAD service principal
-- AAD password
+### Active Directory password 
 
-SQL password (LDAP) is not supported in Fabric Synapse so you must use Azure Active Directory (AAD). This means that to use Microsoft Fabric in dbt Cloud, you will need at least one AAD service principal to connect dbt Cloud to Fabric, ideally one service principal for each user.
+The following are the required fields for setting up a connection with a [Microsoft Fabric](https://docs.starburst.io/starburst-enterprise/index.html) using Azure AD password authentication. 
+
+| Field | Description |
+| --- | --- |
+| **Server** | The server hostname. |
+| **Port** | The server port. By default, it's 1433 for the standard SQL server port number. |
+| **Database** | The database name. |
+| **Authentication** | Choose **Active Directory Password** from the dropdown. | 
+| **User** | The AD username. |
+| **Password** | The AD username's password. |
 
 ## Configuration 
 
