@@ -7,21 +7,21 @@ hoverSnippet: Learn how to clone incremental models for CI jobs.
 ---
 
 Before you begin, you must be aware of a few conditions:
-- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud) for help enabling newer versions in dbt Cloud
+- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud) for help enabling newer versions in dbt Cloud
 - This strategy only works for warehouse that support zero copy cloning (otherwise `dbt clone` will just create pointer views).
 - Some teams may want to test that their incremental models run in both incremental mode and full-refresh mode.
 
-Imagine you've created a [Slim CI job](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration#slim-ci) in dbt Cloud and it is configured to: 
+Imagine you've created a [Slim CI job](/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration#slim-ci) in dbt Cloud and it is configured to: 
 
 - Defer to your production environment.
 - Run the command `dbt build --select state:modified+` to run and test all of the models you've modified and their downstream dependencies.
 - Trigger whenever a developer on your team opens a PR against the main branch.
 
-<Lightbox src="/img/best-practices/slim-ci-job.png" title="Example of a slim CI job with the above configurations" />
+<Lightbox src="/img/best-practices/slim-ci-job.png" width="70%" title="Example of a slim CI job with the above configurations" />
 
 Now imagine your dbt project looks something like this in the DAG:
 
-<Lightbox src="/img/best-practices/dag-example.png" title="Sample project DAG" />
+<Lightbox src="/img/best-practices/dag-example.png" width="70%" title="Sample project DAG" />
 
 When you open a pull request (PR) that modifies `dim_wizards`, your CI job will kickoff and build _only the modified models and their downstream dependencies_ (in this case, `dim_wizards` and `fct_orders`) into a temporary schema that's unique to your PR. 
 
