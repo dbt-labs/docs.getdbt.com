@@ -1,0 +1,13 @@
+.lifecycle {
+    background-color: #047377; /* Teal background to align with dbt Labs' color */
+    color: #fff; /* Light text color for contrast */
+    font-size: 0.78rem; /* Using rem so font size is relative to root */
+    padding: 1px 8px; /* Adjust padding for a more pill-like shape */
+    border-radius: 16px; /* Larger border-radius for rounded edges */
+    margin-left: 8px; /* Margin to separate from the header text */
+    vertical-align: middle; /* Align with the title */
+    display: inline-block; /* Use inline-block for better control */
+    font-weight: bold; /* Bold text */
+    text-transform: capitalize; /* Uppercase text */
+    line-height: 1.6; /* Adjust line height for vertical alignment */
+}

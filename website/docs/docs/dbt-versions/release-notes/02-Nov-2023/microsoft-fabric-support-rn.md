@@ -4,6 +4,7 @@ description: "November 2023: Public Preview now available for Microsoft Fabric i
 sidebar_label: "New: Public Preview of Microsoft Fabric support"
 sidebar_position: 09
 tags: [Nov-2023]
+date: 2023-11-28
 ---
 
 Public Preview is now available in dbt Cloud for Microsoft Fabric! 
