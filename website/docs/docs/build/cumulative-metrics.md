@@ -38,7 +38,7 @@ metrics:
 
 ## Limitations
 Cumulative metrics are currently under active development and have the following limitations:
-- You can only use the [`metric_time` dimension](/docs/build/dimensions#time) to check cumulative metrics. If you don't use `metric_time` in the query, the cumulative metric will return incorrect results because it won't perform the time spine join. This means you cannot reference time dimensions other than the `metric_time` in the query.
+- You are required to use [`metric_time` dimension](/docs/build/dimensions#time) when querying cumulative metrics. If you don't use `metric_time` in the query, the cumulative metric will return incorrect results because it won't perform the time spine join. This means you cannot reference time dimensions other than the `metric_time` in the query.
 
 ## Cumulative metrics example
 
