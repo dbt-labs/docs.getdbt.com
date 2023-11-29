@@ -1,6 +1,6 @@
 ---
 title: "New: Support for Git repository caching"
-description: "November 2023: New option in dbt Cloud to enable Git repository caching for your job runs."
+description: "November 2023: dbt Cloud can cache your project's code (as well as other dbt packages) to ensure runs can begin despite an upstream Git provider's outage."
 sidebar_label: "New: Support for Git repository caching"
 sidebar_position: 07
 tags: [Nov-2023]
