@@ -100,6 +100,10 @@ insert into table analytics.databricks_incremental
 
 ### The `insert_overwrite` strategy
 
+:::caution
+This strategy is currently only compatible with All Purpose Clusters, not SQL Warehouses.
+:::
+
 This strategy is most effective when specified alongside a `partition_by` clause in your model config. dbt will run an [atomic `insert overwrite` statement](https://spark.apache.org/docs/3.0.0-preview/sql-ref-syntax-dml-insert-overwrite-table.html) that dynamically replaces all partitions included in your query. Be sure to re-select _all_ of the relevant data for a partition when using this incremental strategy.
 
 If no `partition_by` is specified, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` + `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
@@ -181,9 +185,6 @@ insert overwrite table analytics.databricks_incremental
 </File>
 </TabItem>
 </Tabs>
-
-#### Usage Notes
-* This strategy is not currently compatible with SQL Warehouses
 
 ### The `merge` strategy
 
