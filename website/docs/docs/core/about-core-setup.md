@@ -3,7 +3,7 @@ title: About dbt Core setup
 id: about-core-setup
 description: "Configuration settings for dbt Core."
 sidebar_label: "About dbt Core setup"
-pagination_next: "docs/core/about-dbt-core"
+pagination_next: "docs/core/dbt-core-environments"
 pagination_prev: null
 ---
 
@@ -11,9 +11,10 @@ dbt Core is an [open-source](https://github.com/dbt-labs/dbt-core) tool that ena
 
  This section of our docs will guide you through various settings to get started:
 
-- [About dbt Core](/docs/core/about-dbt-core)
-- [Installing dbt](/docs/core/installation)
 - [Connecting to a data platform](/docs/core/connect-data-platform/profiles.yml)
 - [How to run your dbt projects](/docs/running-a-dbt-project/run-your-dbt-projects)
+
+To learn about developing dbt projects in dbt Cloud or dbt Core, refer to [Develop dbt](/docs/cloud/about-develop-dbt).
+- **Note** &mdash; dbt Cloud provides a command line interface with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). Both the open-sourced dbt Core and the dbt Cloud CLI are command line tools that let you run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](https://docs.getdbt.com/guides).
