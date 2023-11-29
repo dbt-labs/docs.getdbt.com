@@ -9,7 +9,7 @@ recently_updated: true
 ---
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with Microsoft Fabric. It will show you how to:
+In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
 
 - Load the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
 - Connect dbt Cloud to Microsoft Fabric.
