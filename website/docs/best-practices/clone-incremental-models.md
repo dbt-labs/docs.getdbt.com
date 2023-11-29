@@ -29,7 +29,7 @@ This build mimics the behavior of what will happen once the PR is merged into th
 
 ## What happens when one of the modified models (or one of their downstream dependencies) is an incremental model?
 
-Because your CI job is building modified models into a PR-specific schema, on the first execution of `dbt build --select state:modified+`, the modified incremental model will be built in its entirety _because it does not yet exist in the PR-specific schema_ and [is_incremental will be false](/docs/building-a-dbt-project/building-models/configuring-incremental-models#understanding-the-is_incremental-macro). You're running in `full-refresh` mode.
+Because your CI job is building modified models into a PR-specific schema, on the first execution of `dbt build --select state:modified+`, the modified incremental model will be built in its entirety _because it does not yet exist in the PR-specific schema_ and [is_incremental will be false](/docs/build/incremental-models#understanding-the-is_incremental-macro). You're running in `full-refresh` mode.
 
 This can be suboptimal because:
 - Typically incremental models are your largest datasets, so they take a long time to build in their entirety which can slow down development time and incur high warehouse costs.
