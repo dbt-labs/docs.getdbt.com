@@ -6,6 +6,7 @@ import clsx from "clsx";
 import style from "./styles.module.css";
 import { useLocation, useHistory } from "@docusaurus/router";
 import queryString from "query-string";
+import getSvgIcon from "../../utils/get-svg-icon";
 
 function QuickstartTOC() {
   const history = useHistory();
@@ -81,13 +82,14 @@ function QuickstartTOC() {
         buttonContainer.classList.add(style.buttonContainer);
         const prevButton = document.createElement("a");
         const nextButton = document.createElement("a");
-
-        prevButton.textContent = "Back";
+        
+        prevButton.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M7.4 273.4C2.7 268.8 0 262.6 0 256s2.7-12.8 7.4-17.4l176-168c9.6-9.2 24.8-8.8 33.9 .8s8.8 24.8-.8 33.9L83.9 232 424 232c13.3 0 24 10.7 24 24s-10.7 24-24 24L83.9 280 216.6 406.6c9.6 9.2 9.9 24.3 .8 33.9s-24.3 9.9-33.9 .8l-176-168z"/></svg> Back';
         prevButton.classList.add(clsx(style.button, style.prevButton));
         prevButton.disabled = index === 0;
         prevButton.addEventListener("click", () => handlePrev(index + 1));
 
-        nextButton.textContent = "Next";
+        nextButton.innerHTML = 'Next <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M440.6 273.4c4.7-4.5 7.4-10.8 7.4-17.4s-2.7-12.8-7.4-17.4l-176-168c-9.6-9.2-24.8-8.8-33.9 .8s-8.8 24.8 .8 33.9L364.1 232 24 232c-13.3 0-24 10.7-24 24s10.7 24 24 24l340.1 0L231.4 406.6c-9.6 9.2-9.9 24.3-.8 33.9s24.3 9.9 33.9 .8l176-168z"/></svg>';
         nextButton.classList.add(clsx(style.button, style.nextButton));
         nextButton.disabled = index === stepWrappers.length - 1;
         nextButton.addEventListener("click", () => handleNext(index + 1));
@@ -190,19 +192,39 @@ function QuickstartTOC() {
     updateStep(activeStep, stepNumber);
   };
 
+  // Handle TOC menu click
+  const handleTocMenuClick = () => {
+    const tocList = document.querySelector(`.${style.tocList}`);
+    const tocMenuBtn = document.querySelector(`.${style.toc_menu_btn}`);
+    const tocListStyles = window.getComputedStyle(tocList);
+
+    if (tocListStyles.display === "none") {
+      tocList.style.display = "block";
+      tocMenuBtn.querySelector("svg").style.transform = "rotate(0deg)";
+    } else {
+      tocList.style.display = "none";
+      tocMenuBtn.querySelector("svg").style.transform = "rotate(-90deg)";
+    }
+  };
+
   return (
-    <ul className={style.tocList}>
-      {tocData.map((step) => (
-        <li
-          key={step.id}
-          data-step={step.stepNumber}
-          className={clsx(style.tocItem)}
-          onClick={handleTocClick}
-        >
-          <span>{step.stepNumber}</span> {step.title}
-        </li>
-      ))}
-    </ul>
+    <>
+      <a onClick={handleTocMenuClick} className={style.toc_menu_btn}>
+        Menu {getSvgIcon("fa-caret-down")}
+      </a>
+      <ul className={style.tocList}>
+        {tocData.map((step) => (
+          <li
+            key={step.id}
+            data-step={step.stepNumber}
+            className={clsx(style.tocItem)}
+            onClick={handleTocClick}
+          >
+            <span>{step.stepNumber}</span> {step.title}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
 

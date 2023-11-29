@@ -22,33 +22,21 @@ This year, dbt Labs is introducing an expanded notion of `dependencies` across m
 - **Packages** &mdash; Familiar and pre-existing type of dependency. You take this dependency by installing the package's full source code (like a software library).
 - **Projects** &mdash; A _new_ way to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
 
+import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
-Starting in dbt v1.6 or higher, `packages.yml` has been renamed to `dependencies.yml`. However, if you need use Jinja within your packages config, such as an environment variable for your private package, you need to keep using `packages.yml` for your packages for now. Refer to the [FAQs](#faqs) for more info.
+<UseCaseInfo/>
+
+Refer to the [FAQs](#faqs) for more info.
+
 
 ## Prerequisites
 
 In order to add project dependencies and resolve cross-project `ref`, you must:
 - Use dbt v1.6 or higher for **both** the upstream ("producer") project and the downstream ("consumer") project.
-- Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment-beta)
+- Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment)
 - Have a successful run of the upstream ("producer") project
 - Have a multi-tenant or single-tenant [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account (Azure ST is not supported but coming soon)
 
-<!-- commenting out in case we can repurpose content
-### About dependencies.yml
-
-There are some important differences between using a `dependencies.yml` compared to a `packages.yml` file:
-
-- `dependencies.yml`
-  - Primarily designed for dbt Mesh and cross-project reference workflow.
-  - Supports both Projects and non-private dbt packages (private packages aren't supported yet).
-  - Helps maintain your project's organization by allowing you to specify hub packages like `dbt_utils`, reducing the need for multiple YAML files.
-  - Does not support conditional configuration using Jinja-in-yaml 
-
-- `packages.yml`
-  - Does not contribute to the dbt Mesh workflow.
-  - Serves as a list of dbt Packages (such as dbt projects) that you want to download into your root or parent dbt project.
-  - Can only include packages, including private packages (doesn't support Projects)
--->
 ## Example
 
 As an example, let's say you work on the Marketing team at the Jaffle Shop. The name of your team's project is `jaffle_marketing`:
@@ -113,7 +101,7 @@ with monthly_revenue as (
 
 **Cycle detection:** Currently, "project" dependencies can only go in one direction, meaning that the `jaffle_finance` project could not add a new model that depends, in turn, on `jaffle_marketing.roi_by_channel`. dbt will check for cycles across projects and raise errors if any are detected. We are considering support for this pattern in the future, whereby dbt would still check for node-level cycles while allowing cycles at the project level.
 
-For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/guides/best-practices/how-we-mesh/mesh-1-intro).
+For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/best-practices/how-we-mesh/mesh-1-intro).
 
 ### Comparison
 
@@ -139,4 +127,4 @@ If you're using private packages with the [git token method](/docs/build/package
 
 
 ## Related docs
-- Refer to the [dbt Mesh](/guides/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use dbt Mesh.
+- Refer to the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use dbt Mesh.

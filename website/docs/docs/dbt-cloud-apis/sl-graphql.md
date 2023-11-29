@@ -48,7 +48,7 @@ Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/se
 {"Authorization": "Bearer <SERVICE TOKEN>"}
 ```
 
-Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and environmentId for authentication.
+Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 
@@ -150,6 +150,60 @@ metricsForDimensions(
 ): [Metric!]!
 ```
 
+**Metric Types**
+
+```graphql
+Metric {
+  name: String!
+  description: String
+  type: MetricType!
+  typeParams: MetricTypeParams!
+  filter: WhereFilter
+  dimensions: [Dimension!]!
+  queryableGranularities: [TimeGranularity!]!
+}
+```
+
+```
+MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
+```
+
+**Metric Type parameters**
+
+```graphql
+MetricTypeParams {
+  measure: MetricInputMeasure
+  inputMeasures: [MetricInputMeasure!]!
+  numerator: MetricInput
+  denominator: MetricInput
+  expr: String
+  window: MetricTimeWindow
+  grainToDate: TimeGranularity
+  metrics: [MetricInput!]
+}
+```
+
+
+**Dimension Types**
+
+```graphql
+Dimension {
+  name: String!
+  description: String
+  type: DimensionType!
+  typeParams: DimensionTypeParams
+  isPartition: Boolean!
+  expr: String
+  queryableGranularities: [TimeGranularity!]!
+}
+```
+
+```
+DimensionType = [CATEGORICAL, TIME]
+```
+
+### Querying
+
 **Create Dimension Values query**
 
 ```graphql
@@ -205,175 +259,34 @@ query(
 ): QueryResult!
 ```
 
-**Metric Types**
+The GraphQL API uses a polling process for querying since queries can be long-running in some cases. It works by first creating a query with a mutation, `createQuery, which returns a query ID. This ID is then used to continuously check (poll) for the results and status of your query. The typical flow would look as follows:
 
-```graphql
-Metric {
-  name: String!
-  description: String
-  type: MetricType!
-  typeParams: MetricTypeParams!
-  filter: WhereFilter
-  dimensions: [Dimension!]!
-  queryableGranularities: [TimeGranularity!]!
-}
-```
-
-```
-MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
-```
-
-**Metric Type parameters**
-
-```graphql
-MetricTypeParams {
-  measure: MetricInputMeasure
-  inputMeasures: [MetricInputMeasure!]!
-  numerator: MetricInput
-  denominator: MetricInput
-  expr: String
-  window: MetricTimeWindow
-  grainToDate: TimeGranularity
-  metrics: [MetricInput!]
-}
-```
-
-
-**Dimension Types**
-
-```graphql
-Dimension {
-  name: String!
-  description: String
-  type: DimensionType!
-  typeParams: DimensionTypeParams
-  isPartition: Boolean!
-  expr: String
-  queryableGranularities: [TimeGranularity!]!
-}
-```
-
-```
-DimensionType = [CATEGORICAL, TIME]
-```
-
-### Create Query examples 
-
-The following section provides query examples for the GraphQL API, such as how to query metrics, dimensions, where filters, and more.
-
-**Query two metrics grouped by time**
-
+1. Kick off a query
 ```graphql
 mutation {
   createQuery(
-    environmentId: BigInt!
-    metrics: [{name: "food_order_amount"}]
-    groupBy: [{name: "metric_time}, {name: "customer__customer_type"}]
-  ) {
-    queryId
-  }
-}
-```
-
-**Query with a time grain** 
-
-```graphql
-mutation {
-  createQuery(
-    environmentId: BigInt!
+    environmentId: 123456
     metrics: [{name: "order_total"}]
-    groupBy: [{name: "metric_time", grain: "month"}] 
+    groupBy: [{name: "metric_time"}]
   ) {
-    queryId
+    queryId  # => Returns 'QueryID_12345678'
   }
 }
 ```
-
-Note that when using granularity in the query, the output of a time dimension with a time grain applied to it always takes the form of a dimension name appended with a double underscore and the granularity level - `{time_dimension_name}__{DAY|WEEK|MONTH|QUARTER|YEAR}`. Even if no granularity is specified, it will also always have a granularity appended to it and will default to the lowest available (usually daily for most data sources). It is encouraged to specify a granularity when using time dimensions so that there won't be any unexpected results with the output data.
-
-**Query two metrics with a categorical dimension**
-
+2. Poll for results
 ```graphql
-mutation {
-  createQuery(
-    environmentId: BigInt!
-    metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name: "metric_time, grain: "month"}, {name: "customer__customer_type"}]
-  ) {
-    queryId
-  }
-}
-```
-
-**Query with a where filter** 
-
-The `where` filter takes a list argument (or a string for a single input). Depending on the object you are filtering, there are a couple of parameters:
- 
- - `Dimension()` &mdash; Used for any categorical or time dimensions. If used for a time dimension, granularity is required. For example, `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
-  
-- `Entity()` &mdash; Used for entities like primary and foreign keys, such as `Entity('order_id')`.
-
-Note: If you prefer a more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity. For example, `TimeDimension('metric_time', 'MONTH')`.
-
-```graphql
-mutation {
-  createQuery(
-    environmentId: BigInt!
-    metrics:[{name: "order_total"}]
-    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: "month"}]
-    where:[{sql: "{{ Dimension('customer__customer_type') }} = 'new'"}, {sql:"{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"}]
-    ) {
-     queryId
-    }
-}
-```
-
-**Query with Order**
-
-```graphql
-mutation {
-  createQuery(
-    environmentId: BigInt!
-    metrics: [{name: "order_total"}]
-    groupBy: [{name: "metric_time", grain: "month"}] 
-    orderBy: [{metric: {name: "order_total"}}, {groupBy: {name: "metric_time", grain: "month"}, descending:true}]
-  ) {
-    queryId
-  }
-}
-```
-
-
-**Query with Limit**
-
-```graphql
-mutation {
-  createQuery(
-    environmentId: BigInt!
-    metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain: "month"}, {name: "customer__customer_type"}]
-    limit: 10 
-  ) {
-    queryId
-  }
-}
-```
-
-**Query with Explain** 
-
-This takes the same inputs as the `createQuery` mutation.
-
-```graphql
-mutation {
-  compileSql(
-    environmentId: BigInt!
-    metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain:"month"}, {name:"customer__customer_type"}]
-  ) {
+{
+  query(environmentId: 123456, queryId: "QueryID_12345678") {
     sql
+    status
+    error
+    totalPages
+    jsonResult
+    arrowResult
   }
 }
 ```
+3. Keep querying 2. at an appropriate interval until status is `FAILED` or `SUCCESSFUL`
 
 ### Output format and pagination
 
@@ -409,6 +322,7 @@ The `arrowResult` in the GraphQL query response is a byte dump, which isn't visu
 ```python
 import base64
 import pyarrow as pa
+import time
 
 headers = {"Authorization":"Bearer <token>"}
 query_result_request = """
@@ -422,11 +336,16 @@ query_result_request = """
 }
 """
 
-gql_response = requests.post(
-  "https://semantic-layer.cloud.getdbt.com/api/graphql",
-  json={"query": query_result_request},
-  headers=headers,
-)
+while True:
+  gql_response = requests.post(
+    "https://semantic-layer.cloud.getdbt.com/api/graphql",
+    json={"query": query_result_request},
+    headers=headers,
+  )
+  if gql_response.json()["data"]["status"] in ["FAILED", "SUCCESSFUL"]:
+    break
+  # Set an appropriate interval between polling requests
+  time.sleep(1)
 
 """
 gql_response.json() => 
@@ -459,4 +378,122 @@ order_total  ordered_at
          12  2023-08-09
        5123  2023-08-10
 """
+```
+
+### Additional Create Query examples 
+
+The following section provides query examples for the GraphQL API, such as how to query metrics, dimensions, where filters, and more.
+
+**Query two metrics grouped by time**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: BigInt!
+    metrics: [{name: "food_order_amount"}]
+    groupBy: [{name: "metric_time}, {name: "customer__customer_type"}]
+  ) {
+    queryId
+  }
+}
+```
+
+**Query with a time grain** 
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: BigInt!
+    metrics: [{name: "order_total"}]
+    groupBy: [{name: "metric_time", grain: MONTH}] 
+  ) {
+    queryId
+  }
+}
+```
+
+Note that when using granularity in the query, the output of a time dimension with a time grain applied to it always takes the form of a dimension name appended with a double underscore and the granularity level - `{time_dimension_name}__{DAY|WEEK|MONTH|QUARTER|YEAR}`. Even if no granularity is specified, it will also always have a granularity appended to it and will default to the lowest available (usually daily for most data sources). It is encouraged to specify a granularity when using time dimensions so that there won't be any unexpected results with the output data.
+
+**Query two metrics with a categorical dimension**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: BigInt!
+    metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
+    groupBy: [{name: "metric_time, grain: MONTH}, {name: "customer__customer_type"}]
+  ) {
+    queryId
+  }
+}
+```
+
+**Query with a where filter** 
+
+The `where` filter takes a list argument (or a string for a single input). Depending on the object you are filtering, there are a couple of parameters:
+ 
+ - `Dimension()` &mdash; Used for any categorical or time dimensions. If used for a time dimension, granularity is required. For example, `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
+  
+- `Entity()` &mdash; Used for entities like primary and foreign keys, such as `Entity('order_id')`.
+
+Note: If you prefer a more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity. For example, `TimeDimension('metric_time', 'MONTH')`.
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: BigInt!
+    metrics:[{name: "order_total"}]
+    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: MONTH}]
+    where:[{sql: "{{ Dimension('customer__customer_type') }} = 'new'"}, {sql:"{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"}]
+    ) {
+     queryId
+    }
+}
+```
+
+**Query with Order**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: BigInt!
+    metrics: [{name: "order_total"}]
+    groupBy: [{name: "metric_time", grain: MONTH}] 
+    orderBy: [{metric: {name: "order_total"}}, {groupBy: {name: "metric_time", grain: MONTH}, descending:true}]
+  ) {
+    queryId
+  }
+}
+```
+
+
+**Query with Limit**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: BigInt!
+    metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
+    groupBy: [{name:"metric_time, grain: MONTH}, {name: "customer__customer_type"}]
+    limit: 10 
+  ) {
+    queryId
+  }
+}
+```
+
+**Query with just compiling SQL** 
+
+This takes the same inputs as the `createQuery` mutation.
+
+```graphql
+mutation {
+  compileSql(
+    environmentId: BigInt!
+    metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
+    groupBy: [{name:"metric_time, grain: MONTH}, {name:"customer__customer_type"}]
+  ) {
+    sql
+  }
+}
 ```

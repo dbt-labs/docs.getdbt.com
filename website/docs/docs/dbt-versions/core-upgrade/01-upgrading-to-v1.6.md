@@ -17,7 +17,7 @@ dbt Core v1.6 has three significant areas of focus:
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.6.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation)
+- [CLI Installation guide](/docs/core/installation-overview
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/7481)
 
@@ -36,7 +36,7 @@ The [spec for metrics](https://github.com/dbt-labs/dbt-core/discussions/7456) ha
 If your dbt project defines metrics, you must migrate to dbt v1.6 because the YAML spec has moved from dbt_metrics to MetricFlow. Any tests you have won't compile on v1.5 or older. 
 
 - dbt Core v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
-- As part of the [dbt Semantic layer](/docs/use-dbt-semantic-layer/dbt-sl) re-launch (in beta), the spec for `metrics` has changed significantly. Refer to the [migration guide](/guides/migration/sl-migration) for more info on how to migrate to the re-launched dbt Semantic Layer.
+- As part of the [dbt Semantic layer](/docs/use-dbt-semantic-layer/dbt-sl) re-launch (in beta), the spec for `metrics` has changed significantly. Refer to the [migration guide](/guides/sl-migration) for more info on how to migrate to the re-launched dbt Semantic Layer.
 - The manifest schema version is now v10.
 - dbt Labs is ending support for Homebrew installation of dbt-core and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
 

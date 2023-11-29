@@ -3,6 +3,561 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/dbt-cloud-ide",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/installation",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud-develop",
+      "destination": "/docs/cloud/about-develop-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/about-dbt-core",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/deploy/airgapped",
+      "destination": "/docs/cloud/about-cloud/tenancy",
+      "permanent": true
+    },
+    {
+      "source": "/docs/about/overview",
+      "destination": "/docs/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/dbt-cli/cli-overview",
+      "destination": "/docs/core/about-dbt-core",
+      "permanent": true
+    },  
+    {
+    "source": "/guides/advanced/creating-new-materializations",
+    "destination": "/guides/create-new-materializations",
+    "permanent": true
+    },
+    {
+        "source": "/guides/advanced/using-jinja",
+        "destination": "/guides/using-jinja",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices",
+        "destination": "/best-practices",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/debugging-errors",
+        "destination": "/guides/debug-errors",
+        "permanent": true
+    },
+    {
+      "source": "/guides/best-practices/how-we-mesh/mesh-1-intro",
+      "destination": "/best-practices/how-we-mesh/mesh-1-intro",
+      "permanent": true
+    },
+    {
+      "source": "/guides/best-practices/how-we-mesh/mesh-2-structures",
+      "destination": "/best-practices/how-we-mesh/mesh-2-structures",
+      "permanent": true
+    },
+    {
+      "source": "/guides/best-practices/how-we-mesh/mesh-3-implementation",
+      "destination": "/best-practices/how-we-mesh/mesh-3-implementation",
+      "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
+        "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-2-setup",
+        "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-2-setup",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
+        "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
+        "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
+        "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics",
+        "destination": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion",
+        "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-structure/1-guide-overview",
+        "destination": "/best-practices/how-we-structure/1-guide-overview",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-structure/2-staging",
+        "destination": "/best-practices/how-we-structure/2-staging",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-structure/3-intermediate",
+        "destination": "/best-practices/how-we-structure/3-intermediate",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-structure/4-marts",
+        "destination": "/best-practices/how-we-structure/4-marts",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-structure/5-semantic-layer-marts",
+        "destination": "/best-practices/how-we-structure/5-semantic-layer-marts",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-structure/6-the-rest-of-the-project",
+        "destination": "/best-practices/how-we-structure/6-the-rest-of-the-project",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-style/0-how-we-style-our-dbt-projects",
+        "destination": "/best-practices/how-we-style/0-how-we-style-our-dbt-projects",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-style/1-how-we-style-our-dbt-models",
+        "destination": "/best-practices/how-we-style/1-how-we-style-our-dbt-models",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-style/2-how-we-style-our-sql",
+        "destination": "/best-practices/how-we-style/2-how-we-style-our-sql",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-style/3-how-we-style-our-python",
+        "destination": "/best-practices/how-we-style/3-how-we-style-our-python",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-style/4-how-we-style-our-jinja",
+        "destination": "/best-practices/how-we-style/4-how-we-style-our-jinja",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-style/5-how-we-style-our-yaml",
+        "destination": "/best-practices/how-we-style/5-how-we-style-our-yaml",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/how-we-style/6-how-we-style-conclusion",
+        "destination": "/best-practices/how-we-style/6-how-we-style-conclusion",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/materializations/1-guide-overview",
+        "destination": "/best-practices/materializations/1-guide-overview",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/materializations/2-available-materializations",
+        "destination": "/best-practices/materializations/2-available-materializations",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/materializations/3-configuring-materializations",
+        "destination": "/best-practices/materializations/3-configuring-materializations",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/materializations/4-incremental-models",
+        "destination": "/best-practices/materializations/4-incremental-models",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/materializations/5-best-practices",
+        "destination": "/best-practices/materializations/5-best-practices",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/materializations/6-examining-builds",
+        "destination": "/best-practices/materializations/6-examining-builds",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/materializations/7-conclusion",
+        "destination": "/best-practices/materializations/7-conclusion",
+        "permanent": true
+    },
+    {
+        "source": "/guides/best-practices/writing-custom-generic-tests",
+        "destination": "/best-practices/writing-custom-generic-tests",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem",
+        "destination": "/guides",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+        "destination": "/guides/adapter-creation",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
+        "destination": "/guides/adapter-creation",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
+        "destination": "/guides/adapter-creation",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
+        "destination": "/guides/adapter-creation",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
+        "destination": "/guides/adapter-creation",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
+        "destination": "/guides/adapter-creation",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
+        "destination": "/guides/adapter-creation",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
+        "destination": "/best-practices/dbt-unity-catalog-best-practices",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
+        "destination": "/guides/optimize-dbt-models-on-databricks",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+        "destination": "/guides/set-up-your-databricks-dbt-project",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/databricks-guides/productionizing-your-dbt-databricks-project",
+        "destination": "/guides/productionize-your-dbt-databricks-project",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/1-overview-dbt-python-snowpark",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/11-machine-learning-prep",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/13-testing",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/6-foundational-structure",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/dbt-python-snowpark/9-sql-transformations",
+        "destination": "/guides/dbt-python-snowpark",
+        "permanent": true
+    },
+    {
+        "source": "/guides/dbt-ecosystem/sl-partner-integration-guide",
+        "destination": "/guides/sl-partner-integration-guide",
+        "permanent": true
+    },
+    {
+        "source": "/guides/legacy/best-practices",
+        "destination": "/best-practices/best-practice-workflows",
+        "permanent": true
+    },
+    {
+        "source": "/guides/legacy/building-packages",
+        "destination": "/guides/building-packages",
+        "permanent": true
+    },
+    {
+        "source": "/guides/legacy/creating-date-partitioned-tables",
+        "destination": "/docs/build/incremental-models",
+        "permanent": true
+    },
+    {
+        "source": "/guides/legacy/debugging-schema-names",
+        "destination": "/guides/debug-schema-names",
+        "permanent": true
+    },
+    {
+        "source": "/guides/legacy/videos",
+        "destination": "/guides",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/sl-migration",
+        "destination": "/guides/sl-migration",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools",
+        "destination": "/guides",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools/migrating-from-spark-to-databricks",
+        "destination": "/guides/migrate-from-spark-to-databricks",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures",
+        "destination": "/guides/migrate-from-stored-procedures",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools/migrating-from-stored-procedures/2-inserts",
+        "destination": "/guides/migrate-from-stored-procedures",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools/migrating-from-stored-procedures/3-updates",
+        "destination": "/guides/migrate-from-stored-procedures",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools/migrating-from-stored-procedures/4-deletes",
+        "destination": "/guides/migrate-from-stored-procedures",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools/migrating-from-stored-procedures/5-merges",
+        "destination": "/guides/migrate-from-stored-procedures",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools/migrating-from-stored-procedures/6-migrating-from-stored-procedures-conclusion",
+        "destination": "/guides/migrate-from-stored-procedures",
+        "permanent": true
+    },
+    {
+        "source": "/guides/migration/tools/refactoring-legacy-sql",
+        "destination": "/guides/refactoring-legacy-sql",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration",
+        "destination": "/guides",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud",
+        "destination": "/guides/airflow-and-dbt-cloud",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/airflow-and-dbt-cloud/2-setting-up-airflow-and-dbt-cloud",
+        "destination": "/guides/airflow-and-dbt-cloud",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
+        "destination": "/guides/airflow-and-dbt-cloud",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
+        "destination": "/guides/airflow-and-dbt-cloud",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/custom-cicd-pipelines/1-cicd-background",
+        "destination": "/guides/custom-cicd-pipelines",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
+        "destination": "/guides/custom-cicd-pipelines",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
+        "destination": "/guides/custom-cicd-pipelines",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
+        "destination": "/guides/custom-cicd-pipelines",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
+        "destination": "/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/set-up-ci/in-15-minutes",
+        "destination": "/guides/set-up-ci",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/set-up-ci/lint-on-push",
+        "destination": " /guides/set-up-ci",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/set-up-ci/multiple-environments",
+        "destination": "/guides/set-up-ci",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/set-up-ci/overview",
+        "destination": "/guides/set-up-ci",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/set-up-ci/run-dbt-project-evaluator",
+        "destination": "/guides/set-up-ci",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/webhooks",
+        "destination": "/guides",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/webhooks/serverless-datadog",
+        "destination": "/guides/serverless-datadog",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/webhooks/serverless-pagerduty",
+        "destination": "/guides/serverless-pagerduty",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/webhooks/zapier-ms-teams",
+        "destination": "/guides/zapier-ms-team",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/webhooks/zapier-new-cloud-job",
+        "destination": "/guides/zapier-new-cloud-job",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/webhooks/zapier-refresh-mode-report",
+        "destination": "/guides/zapier-refresh-mode-report",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/webhooks/zapier-refresh-tableau-workbook",
+        "destination": "/guides/zapier-refresh-tableau-workbook",
+        "permanent": true
+    },
+    {
+        "source": "/guides/orchestration/webhooks/zapier-slack",
+        "destination": "/guides/zapier-slack",
+        "permanent": true
+    },
+    {
+      "source": "/faqs/Project/docs-for-multiple-projects",
+      "destination": "/docs/collaborate/explore-projects#about-project-level-lineage",
+      "permanent": true
+    },
+    {
+      "source": "/faqs/Project/docs-for-multiple-projects",
+      "destination": "/docs/collaborate/explore-projects#about-project-level-lineage",
+      "permanent": true
+    },
+    {
+      "source": "/faqs/Accounts/slack",
+      "destination": "/docs/deploy/job-notifications",
+      "permanent": true
+    },
+    {
       "source": "/guides/migration/versions",
       "destination": "/docs/dbt-versions/core-upgrade",
       "permanent": true
@@ -1084,7 +1639,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-overview",
-      "destination": "/docs/get-started/getting-started/set-up-dbt-cloud",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
       "permanent": true
     },
     {
@@ -2119,7 +2674,7 @@
     },
     {
       "source": "/docs/cloud-overview",
-      "destination": "/docs/dbt-cloud/cloud-overview",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
       "permanent": true
     },
     {
@@ -4130,6 +4685,46 @@
     {
       "source": "/reference/resource-properties/access",
       "destination": "/reference/resource-configs/access",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts",
+      "destination": "/guides",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/bigquery",
+      "destination": "/guides/bigquery",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/databricks",
+      "destination": "/guides/databricks",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/redshift",
+      "destination": "/guides/redshift",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/snowflake",
+      "destination": "/guides/snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/starburst-galaxy",
+      "destination": "/guides/starburst-galaxy",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/codespace",
+      "destination": "/guides/codespace",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/manual-install",
+      "destination": "/guides/manual-install",
       "permanent": true
     }
   ]

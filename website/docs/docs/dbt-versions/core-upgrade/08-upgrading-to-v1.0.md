@@ -13,7 +13,7 @@ import UpgradeMove from '/snippets/_upgrade-move.md';
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation)
+- [CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
 ## What to know before upgrading
@@ -45,13 +45,13 @@ Global project macros have been reorganized, and some old unused macros have bee
 ### Installation
 
 - [Installation docs](/docs/supported-data-platforms) reflects adapter-specific installations
-- `pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `pip install dbt-<adapter>`.
+- `python -m pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `python -m pip install dbt-<adapter>`.
 - `brew install dbt` is no longer supported. Install the specific adapter plugin you need (among Postgres, Redshift, Snowflake, or BigQuery) as `brew install dbt-<adapter>`.
 - Removed official support for python 3.6, which is reaching end of life on December 23, 2021
 
 ### For users of adapter plugins
 
-- **BigQuery:** Support for [ingestion-time-partitioned tables](/guides/legacy/creating-date-partitioned-tables) has been officially deprecated in favor of modern approaches. Use `partition_by` and incremental modeling strategies instead.
+- **BigQuery:** Support for ingestion-time-partitioned tables has been officially deprecated in favor of modern approaches. Use `partition_by` and incremental modeling strategies instead. For more information, refer to [Incremental models](/docs/build/incremental-models).
 
 ### For maintainers of plugins + other integrations
 
@@ -71,9 +71,9 @@ Several under-the-hood changes from past minor versions, tagged with deprecation
 ## New features and changed documentation
 
 - Add [metrics](/docs/build/metrics), a new node type
-- [Generic tests](/guides/best-practices/writing-custom-generic-tests) can be defined in `tests/generic` (new), in addition to `macros/` (as before)
+- [Generic tests](/best-practices/writing-custom-generic-tests) can be defined in `tests/generic` (new), in addition to `macros/` (as before)
 - [Parsing](/reference/parsing): partial parsing and static parsing have been turned on by default.
 - [Global configs](/reference/global-configs/about-global-configs) have been standardized. Related updates to [global CLI flags](/reference/global-cli-flags) and [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml).
 - [The `init` command](/reference/commands/init) has a whole new look and feel. It's no longer just for first-time users.
-- Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/guides/legacy/best-practices#pro-tips-for-workflows)
+- Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows)
 - Secret-prefixed [env vars](/reference/dbt-jinja-functions/env_var) are now allowed only in `profiles.yml` + `packages.yml`

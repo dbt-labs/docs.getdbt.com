@@ -5,13 +5,13 @@ title: "dbt Command reference"
 You can run dbt using the following tools:
 
 - In your browser with the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
-- On the command line interface using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-source [dbt Core](/docs/core/about-dbt-core), both of which enable you to execute dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
+- On the command line interface using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-source [dbt Core](/docs/core/installation-overview), both of which enable you to execute dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 The following sections outline the commands supported by dbt and their relevant flags. For information about selecting models on the command line, consult the docs on [Model selection syntax](/reference/node-selection/syntax).
 
 ### Available commands
 
-<VersionBlock firstVersion="1.5">
+<VersionBlock firstVersion="1.6">
 
 All commands in the table are compatible with either the dbt Cloud IDE, dbt Cloud CLI, or dbt Core.  
 
@@ -22,9 +22,9 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) | All | All [supported versions](/docs/dbt-versions/core) |
 | cancel  | Cancels the most recent invocation.| dbt Cloud CLI | Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project | All | All [supported versions](/docs/dbt-versions/core) |
-| [clone](/reference/commands/clone) | Clone selected models from the specified state | dbt Cloud CLI <br /> dbt Core | Requires [dbt v1.6 or higher](/docs/dbt-versions/core)  |
+| [clone](/reference/commands/clone) | Clone selected models from the specified state | All | Requires [dbt v1.6 or higher](/docs/dbt-versions/core)  |
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project | All | All [supported versions](/docs/dbt-versions/core) |
-| [debug](/reference/commands/debug)  | Debugs dbt connections and projects  | dbt Core | All [supported versions](/docs/dbt-versions/core) |
+| [debug](/reference/commands/debug)  | Debugs dbt connections and projects  | dbt Cloud IDE <br /> dbt Core  | All [supported versions](/docs/dbt-versions/core) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project | All | All [supported versions](/docs/dbt-versions/core) |
 | help | Displays help information for any command | dbt Core <br /> dbt Cloud CLI | All [supported versions](/docs/dbt-versions/core) |
@@ -44,7 +44,7 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.4">
+<VersionBlock lastVersion="1.5">
 
 Select the tabs that are relevant to your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**.  
 
@@ -71,7 +71,7 @@ Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/
 
 <TabItem value="cli" label="dbt Core">
 
-Use the following dbt commands in [dbt Core](/docs/core/about-dbt-core) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
+Use the following dbt commands in [dbt Core](/docs/core/installation-overview) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
 - [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
 - [clean](/reference/commands/clean): deletes artifacts present in the dbt project
