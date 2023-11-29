@@ -34,7 +34,7 @@ Both development and deployment environments have a section called **General Set
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
 :::
 
-### Repo caching <Lifecycle status='Enterprise plan' /> 
+### Repo caching 
 
 At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of the project code and package code. 
 
@@ -43,6 +43,12 @@ For improved reliability and performance on your job runs, you can enable dbt Cl
 To enable Git repository caching, select **Account settings** from the gear menu and enable the **Repository caching** option. 
 
 <Lightbox src="/img/docs/deploy/example-repo-caching.png" width="85%" title="Example of the Repository caching option" />
+
+:::note
+
+This feature is only available on dbt Cloud Enterprise plans. 
+
+:::
 
 ### Custom branch behavior
 
