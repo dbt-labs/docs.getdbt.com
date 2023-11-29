@@ -38,7 +38,7 @@ Both development and deployment environments have a section called **General Set
 
 At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of your project's code and runs `dbt deps` to install your dependencies. 
 
-For improved reliability and performance on your job runs, you can enable dbt Cloud to keep a cache of the project's Git repository. So, if there's a third-party outage (for example, a GitHub outage) that causes the cloning operation to fail, dbt Cloud will instead use the cached copy of the repository so your jobs can continue running as scheduled. 
+For improved reliability and performance on your job runs, you can enable dbt Cloud to keep a cache of the project's Git repository. So, if there's a third-party outage that causes the cloning operation to fail, dbt Cloud will instead use the cached copy of the repository so your jobs can continue running as scheduled. 
 
 To enable Git repository caching, select **Account settings** from the gear menu and enable the **Repository caching** option. 
 
