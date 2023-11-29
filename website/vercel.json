@@ -3,6 +3,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/about-cloud-develop",
+      "destination": "/docs/cloud/about-develop-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/about-dbt-core",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/deploy/airgapped",
+      "destination": "/docs/cloud/about-cloud/tenancy",
+      "permanent": true
+    },
+    {
       "source": "/docs/about/overview",
       "destination": "/docs/introduction",
       "permanent": true
