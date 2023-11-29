@@ -3,6 +3,12 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/core/installation",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+      
+    },
+    {
       "source": "/docs/cloud/about-cloud-develop",
       "destination": "/docs/cloud/about-develop-dbt",
       "permanent": true
