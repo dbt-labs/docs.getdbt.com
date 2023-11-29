@@ -25,11 +25,11 @@ Now imagine your dbt project looks something like this in the DAG:
 
 When you open a pull request (PR) that modifies `dim_wizards`, your CI job will kickoff and build _only the modified models and their downstream dependencies_ (in this case, `dim_wizards` and `fct_orders`) into a temporary schema that's unique to your PR. 
 
-This build mimics the behavior of what will happen once the PR is merged into the main branch (so you have confidence that you're not introducing breaking changes) without requiring a build of your entire dbt project. 
+This build mimics the behavior of what will happen once the PR is merged into the main branch. It ensures you're not introducing breaking changes, without needing to build your entire dbt project. 
 
 ## What happens when one of the modified models (or one of their downstream dependencies) is an incremental model?
 
-Because your CI job is building modified models into a PR-specific schema, on the first execution of `dbt build --select state:modified+`, the modified incremental model will be built in its entirety _because it does not yet exist in the PR-specific schema_ and [is_incremental will be false](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#understanding-the-is_incremental-macro). You're running in `full-refresh` mode.
+Because your CI job is building modified models into a PR-specific schema, on the first execution of `dbt build --select state:modified+`, the modified incremental model will be built in its entirety _because it does not yet exist in the PR-specific schema_ and [is_incremental will be false](/docs/building-a-dbt-project/building-models/configuring-incremental-models#understanding-the-is_incremental-macro). You're running in `full-refresh` mode.
 
 This can be suboptimal because:
 - Typically incremental models are your largest datasets, so they take a long time to build in their entirety which can slow down development time and incur high warehouse costs.
