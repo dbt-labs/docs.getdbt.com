@@ -54,7 +54,7 @@ Your CI jobs will run faster, and you're more accurately mimicking the behavior 
 ### From the "Better CI for better data quality" coalesce talk
 "If you use the incremental materialization in your dbt project, you should consider cloning your relevant, pre-existing incremental models into your PR-specific schema as the first step of your CI check. This will force your second step to run in incremental mode (where is_incremental is true) because now the models already exist in your PR-specific schema (via cloning). This is beneficial because it more accurately mimics what will happen when you merge your changes into production and it will save time and money by not rebuilding your incremental models (which are often large data sets) from scratch for every PR that modifies them." -Grace Goheen, dbt Labs Product Manager
 
-### Expansion on "think schema drift" where [on_schema_change](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change) config is set to `fail`" from above
+### Expansion on "think schema drift" where [on_schema_change](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) config is set to `fail`" from above
 
 Imagine you have an incremental model `my_incremental_model` with the following config:
 
