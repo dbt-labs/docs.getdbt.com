@@ -416,7 +416,7 @@ To take advantage of this capability, you will need to add compute blocks to you
 </File>
 
 The new compute section is a map of user chosen names to objects with an http_path property.
-Each compute is keyed by a name which is used in the model definition/configuration to indicate which compute you wish to use for that model/selection of models.
+Each compute is keyed by a name which is used in the model definition/configuration to indicate which compute you wish to use for that model/selection of models. We recommend choosing a name that is easily recognized as to what compute resources you're using, such as what the compute resource is named inside of the Databricks UI. 
 
 :::note
 
