@@ -13,7 +13,7 @@ import UpgradeMove from '/snippets/_upgrade-move.md';
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation)
+- [CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
 ## What to know before upgrading
@@ -45,7 +45,7 @@ Global project macros have been reorganized, and some old unused macros have bee
 ### Installation
 
 - [Installation docs](/docs/supported-data-platforms) reflects adapter-specific installations
-- `pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `pip install dbt-<adapter>`.
+- `python -m pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `python -m pip install dbt-<adapter>`.
 - `brew install dbt` is no longer supported. Install the specific adapter plugin you need (among Postgres, Redshift, Snowflake, or BigQuery) as `brew install dbt-<adapter>`.
 - Removed official support for python 3.6, which is reaching end of life on December 23, 2021
 

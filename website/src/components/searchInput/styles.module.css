@@ -2,8 +2,6 @@
   padding: 0 1rem;
   border-radius: 0.3125rem;
   border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
-
-
 }
 
 .inputContainer:active, .input:focus {
@@ -27,4 +25,11 @@
 [data-theme='dark'] .input{
   background: #1b1b1d;
   color: #e3e3e3;
+}
+
+.inputContainer > svg {
+  fill: var(--ifm-font-color-base);
+  width: 16px;
+  height: 16px;
+  margin-bottom: -2px;
 }
