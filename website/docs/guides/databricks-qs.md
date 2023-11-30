@@ -185,11 +185,11 @@ To connect dbt Cloud to Databricks using Partner Connect, do the following:
 
 6. If there are no SQL warehouses in your workspace, do the following:
 
-   a. Click **Create warehouse**. A new tab opens in your browser that displays the **New SQL Warehouse** page in the Databricks SQL UI.
-   #. Follow the steps in [Create a SQL warehouse](https://docs.databricks.com/en/sql/admin/create-sql-warehouse.html#create-a-sql-warehouse) in the Databricks docs.
-   #. Return to the Partner Connect tab in your browser, and then close the dbt tile.
-   #. Re-open the dbt tile.
-   #. Select the SQL warehouse you just created from the drop-down list.
+   1. Click **Create warehouse**. A new tab opens in your browser that displays the **New SQL Warehouse** page in the Databricks SQL UI.
+   2. Follow the steps in [Create a SQL warehouse](https://docs.databricks.com/en/sql/admin/create-sql-warehouse.html#create-a-sql-warehouse) in the Databricks docs.
+   3. Return to the Partner Connect tab in your browser, and then close the dbt tile.
+   4. Re-open the dbt tile.
+   5. Select the SQL warehouse you just created from the drop-down list.
 
 7. Select a schema from the drop-down list, and then click **Add**. The drop-down list displays schemas you own or have access to. You can repeat this step to add multiple schemas.
 
