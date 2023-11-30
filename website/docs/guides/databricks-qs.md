@@ -167,14 +167,56 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 There are two ways to connect dbt Cloud to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, dbt Labs recommends connecting manually.
 
-If you want to use Partner Connect, refer to [Connect to dbt Cloud using Partner Connect](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-using-partner-connect) in the Databricks docs for instructions. 
+This quickstart assumes you'll use Partner Connect.
 
-If you want to connect manually, refer to [Connect to dbt Cloud manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
+:::tip
+ Partner Connect is intended for trial partner accounts. If your organization already has a dbt account, you should connect manually. Refer to [Connect to dbt Cloud manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
+:::
 
-## Set up a dbt Cloud managed repository 
-If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
+To connect dbt Cloud to Databricks using Partner Connect, do the following:
 
-<Snippet path="tutorial-managed-repo" />
+1. In the sidebar, click **Partner Connect**.
+
+2. Click the dbt tile.
+
+3. Select a catalog for dbt to write to, and then click **Next**. The drop-down list displays catalogs you own or have access to. If your workspace isn't <UC>-enabled, the legacy Hive metastore (`hive_metastore`) is used.
+
+5. If there are SQL warehouses in your workspace, select a SQL warehouse from the drop-down list. If your SQL warehouse is stopped, click **Start**.
+
+6. If there are no SQL warehouses in your workspace, do the following:
+
+   a. Click **Create warehouse**. A new tab opens in your browser that displays the **New SQL Warehouse** page in the Databricks SQL UI.
+   #. Follow the steps in [Create a SQL warehouse](https://docs.databricks.com/en/sql/admin/create-sql-warehouse.html#create-a-sql-warehouse) in the Databricks docs.
+   #. Return to the Partner Connect tab in your browser, and then close the dbt tile.
+   #. Re-open the dbt tile.
+   #. Select the SQL warehouse you just created from the drop-down list.
+
+7. Select a schema from the drop-down list, and then click **Add**. The drop-down list displays schemas you own or have access to. You can repeat this step to add multiple schemas.
+
+   Partner Connect creates the following resources in your workspace:
+
+   - A Databricks service principal named **DBT_CLOUD_USER**.
+   - A Databricks personal access token that is associated with the **DBT_CLOUD_USER** service principal.
+  
+   Partner Connect also grants the following privileges to the **DBT_CLOUD_USER** service principal:
+
+   - (Unity Catalog) **USE CATALOG**: Required to interact with objects within the selected catalog.
+   - (Unity Catalog) **USE SCHEMA**: Required to interact with objects within the selected schema.
+   - (Unity Catalog) **CREATE SCHEMA**: Grants the ability to create schemas in the selected catalog.
+   - (Hive metastore) **USAGE**: Required to grant the **SELECT** and **READ_METADATA** privileges for the schemas you selected.
+   - **SELECT**: Grants the ability to read the schemas you selected.
+   - (Hive metastore) **READ_METADATA**: Grants the ability to read metadata for the schemas you selected.
+   - **CAN_USE**: Grants permissions to use the SQL warehouse you selected.
+
+8. Click **Next**.
+
+   The **Email** box displays the email address for your Databricks account. dbt uses this email address to prompt you to create a trial dbt account.
+
+9. Click **Connect to dbt Cloud**.
+
+   A new tab opens in your web browser, which displays the dbt website.
+
+10. Complete the on-screen instructions on the dbt website to create your trial dbt account.
 
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
