@@ -91,13 +91,11 @@ At this point, both the new semantic layer and the old semantic layer will be ru
 
 Now that your Semantic Layer is set up, you will need to update any downstream integrations that used the legacy Semantic Layer. 
 
-### Migration guide for Hex
+### Migration guide for Hex 
 
-To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
+To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex. 
 
-1. Set up a new connection for the Semantic Layer for your account. Something to note is that your old connection will still work. The following Loom video guides you in setting up your Semantic Layer with Hex:
-
-<LoomVideo id="752e85aabfbf4fa585008a5598f3517a" />
+1. Set up a new connection for the dbt Semantic Layer for your account. Something to note is that your legacy connection will still work.
 
 2. Re-create the dashboards or reports that use the legacy dbt Semantic Layer. 
 
