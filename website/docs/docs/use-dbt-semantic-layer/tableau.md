@@ -80,3 +80,5 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - Filtering on a Date Part time dimension for a Cumulative metric type
 - Changing your date dimension to use "Week Number"
   
+## FAQs
+<FAQ path="Troubleshooting/sl-alpn-error" />

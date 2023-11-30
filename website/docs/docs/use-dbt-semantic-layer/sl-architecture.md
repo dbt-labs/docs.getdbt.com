@@ -14,6 +14,8 @@ The dbt Semantic Layer allows you to define metrics and use various interfaces t
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="85%" title="The diagram displays how your data flows using the dbt Semantic Layer and the variety of integration tools it supports."/>
 
+
+
 ## dbt Semantic Layer components
 
 The dbt Semantic Layer includes the following components:
