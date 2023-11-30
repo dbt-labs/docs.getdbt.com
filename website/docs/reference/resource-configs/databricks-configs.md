@@ -388,7 +388,7 @@ To take advantage of this capability, you will need to add compute blocks to you
       compute:
 
         ### Name that you will use to refer to an alternate compute
-        AltCompute:
+       Compute1:
           http_path: [‘/sql/your/http/path’] # Required of each alternate compute
 
         ### A third named compute, use whatever name you like
