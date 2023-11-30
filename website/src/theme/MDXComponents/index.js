@@ -42,6 +42,7 @@ import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard'
 import CommunitySpotlightList from '@site/src/components/communitySpotlightList';
 import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
+import Lifecycle from '@site/src/components/lifeCycle';
 
 const MDXComponents = {
   head: MDXHead,
@@ -90,5 +91,6 @@ const MDXComponents = {
   CommunitySpotlightList,
   dbtEditor: dbtEditor,
   Icon: Icon,
+  Lifecycle: Lifecycle,
 };
 export default MDXComponents;
