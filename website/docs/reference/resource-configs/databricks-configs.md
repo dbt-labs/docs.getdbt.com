@@ -361,6 +361,150 @@ insert into analytics.replace_where_incremental
 </TabItem>
 </Tabs>
 
+<VersionBlock firstVersion="1.7">
+
+## Selecting compute per model
+
+Beginning in version 1.7.2, you can assign which compute to use on a per-model basis.
+To take advantage of this capability, you will need to add compute blocks to your profile:
+
+<File name='profile.yml'>
+
+```yaml
+
+<profile-name>:
+  target: <target-name> # this is the default target
+  outputs:
+    <target-name>:
+      type: databricks
+      catalog: [optional catalog name if you are using Unity Catalog]
+      schema: [schema name] # Required        
+      host: [yourorg.databrickshost.com] # Required
+
+      ### This path is used as the default compute
+      http_path: [/sql/your/http/path] # Required        
+      
+      ### New compute section
+      compute:
+
+        ### Name that you will use to refer to an alternate compute
+        AltCompute:
+          http_path: [‘/sql/your/http/path’] # Required of each alternate compute
+
+        ### A third named compute, use whatever name you like
+        Compute2:
+          http_path: [‘/some/other/path’] # Required of each alternate compute
+      ...
+
+    <target-name>: # additional targets
+      ...
+      ### For each target, you need to define the same compute,
+      ### but you can specify different paths
+      compute:
+
+        ### Name that you will use to refer to an alternate compute
+        Compute1:
+          http_path: [‘/sql/your/http/path’] # Required of each alternate compute
+
+        ### A third named compute, use whatever name you like
+        Compute2:
+          http_path: [‘/some/other/path’] # Required of each alternate compute
+      ...
+
+```
+
+</File>
+
+The new compute section is a map of user chosen names to objects with an http_path property.
+Each compute is keyed by a name which is used in the model definition/configuration to indicate which compute you wish to use for that model/selection of models.
+
+:::note
+
+You need to use the same set of names for compute across your outputs, though you may supply different http_paths, allowing you to use different computes in different deployment scenarios.
+
+:::
+
+### Specifying the compute for models
+
+As with many other configuaration options, you can specify the compute for a model in multiple ways, using `databricks_compute`.
+In your `dbt_project.yml`, the selected compute can be specified for all the models in a given directory:
+
+<File name='dbt_project.yml'>
+
+```yaml
+
+...
+
+models:
+  +databricks_compute: "Compute1"     # use the `Compute1` warehouse/cluster for all models in the project...
+  my_project:
+    clickstream:
+      +databricks_compute: "Compute2" # ...except for the models in the `clickstream` folder, which will use `Compute2`.
+
+snapshots:
+  +databricks_compute: "Compute1"     # all Snapshot models are configured to use `Compute1`.
+
+```
+
+</File>
+
+For an individual model the compute can be specified in the model config in your schema file.
+
+<File name='schema.yml'>
+
+```yaml
+
+models:
+  - name: table_model
+    config:
+      databricks_compute: Compute1
+    columns:
+      - name: id
+        data_type: int
+
+```
+
+</File>
+
+
+Alternatively the warehouse can be specified in the config block of a model's SQL file.
+
+<File name='model.sql'>
+
+```sql
+
+{{
+  config(
+    materialized='table',
+    databricks_compute='Compute1'
+  )
+}}
+select * from {{ ref('seed') }}
+
+```
+
+</File>
+
+:::note
+
+In the absence of a specified compute, we will default to the compute specified by http_path in the top level of the output section in your profile. 
+This is also the compute that will be used for tasks not associated with a particular model, such as gathering metadata for all tables in a schema.
+
+:::
+
+To validate that the specified compute is being used, look for lines in your dbt.log like:
+
+```
+Databricks adapter ... using default compute resource.
+```
+
+or
+
+```
+Databricks adapter ... using compute resource <name of compute>.
+```
+
+</VersionBlock>
 
 ## Persisting model descriptions
 
