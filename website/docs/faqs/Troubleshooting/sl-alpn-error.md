@@ -4,8 +4,11 @@ description: "To resolve the 'Failed ALPN' error in the dbt Semantic Layer, crea
 sidebar_label: 'Use SSL exception to resolve `Failed ALPN` error'
 ---
 
-If you're receiving a `Failed ALPN` error when trying to connect the dbt Semantic Layer with the available [data integration tool](/docs/use-dbt-semantic-layer/avail-sl-integrations), it typically happens when connecting from a computer behind a corporate VPN or Proxy, such as Zscaler. 
+If you're receiving a `Failed ALPN` error when trying to connect the dbt Semantic Layer with the various [data integration tools](/docs/use-dbt-semantic-layer/avail-sl-integrations) (such as Tableau, DBeaver, Datagrip, ADBC, or JDBC), it typically happens when connecting from a computer behind a corporate VPN or Proxy (like Zscaler or Check Point). 
 
-To fix this, add an SSL interception exception for the dbt Cloud domain in your settings.
+The root cause is typically the proxy interfering with the TLS handshake as the dbt Semantic Layer uses gRPC/HTTP2 for connectivity. To resolve this:
 
-This issue is common with integrations like Tableau, DBeaver, Datagrip, ADBC, or JDBC.
+- If your proxy supports gRPC/HTTP2 but isn't configured to allow ALPN, adjust its settings accordingly to allow ALPN. Or create an exception for the dbt Cloud domain.
+- If your proxy does not support gRPC/HTTP2, add an SSL interception exception for the dbt Cloud domain in your proxy settings
+
+This should help in successfully establishing the connection without the Failed ALPN error.
