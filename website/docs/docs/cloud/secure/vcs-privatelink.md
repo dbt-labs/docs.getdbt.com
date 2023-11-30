@@ -69,3 +69,11 @@ When you have been notified that the resources are provisioned within the dbt Cl
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
 
 Once the endpoint connection request is accepted, the PrivateLink endpoint is ready to use in dbt Cloud.
+
+## Configure in dbt Cloud
+
+Once the dbt Labs team confirms that the PrivateLink integration is complete, you can select it as part of a new or existing git configuration. Select **PrivateLink Endpoint** as the connection type, and your configured integrations will appear in the dropdown menu. This is a manual process; the existing connections remain configured as they were until this step is complete.  
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-new.png" width="80%" title="Configuring a new git integration" />
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-existing.png" width="80%" title="Editing an existing git integration" />
