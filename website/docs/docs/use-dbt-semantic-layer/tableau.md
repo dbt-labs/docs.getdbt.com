@@ -36,7 +36,7 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
  
 2. Install the [JDBC driver](/docs/dbt-cloud-apis/sl-jdbc) to the folder based on your operating system:
    - Windows: `C:\Program Files\Tableau\Drivers`
-   - Mac: `~/Library/Tableau/Drivers`
+   - Mac: `~/Library/Tableau/Drivers` or `/Library/JDBC` or `~/Library/JDBC`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
 3. Open Tableau Desktop or Tableau Server and find the **dbt Semantic Layer by dbt Labs** connector on the left-hand side. You may need to restart these applications for the connector to be available.
 4. Connect with your Host, Environment ID, and Service Token information dbt Cloud provides during [Semantic Layer configuration](/docs/use-dbt-semantic-layer/setup-sl#:~:text=After%20saving%20it%2C%20you%27ll%20be%20provided%20with%20the%20connection%20information%20that%20allows%20you%20to%20connect%20to%20downstream%20tools). 
