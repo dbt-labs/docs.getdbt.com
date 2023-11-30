@@ -1,10 +1,10 @@
 # position: 2.5 # float position is supported
-label: 'API'
+label: 'Jinja'
 collapsible: true # make the category collapsible
 collapsed: true # keep the category collapsed by default
 className: red
 link:
   type: generated-index
-  title: API FAQs
+  title: Jinja FAQs
 customProps:
-  description: Frequently asked questions about dbt APIs
+  description: Frequently asked questions about Jinja and dbt

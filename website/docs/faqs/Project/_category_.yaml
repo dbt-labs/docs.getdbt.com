@@ -1,10 +1,10 @@
 # position: 2.5 # float position is supported
-label: 'API'
+label: 'Projects'
 collapsible: true # make the category collapsible
 collapsed: true # keep the category collapsed by default
 className: red
 link:
   type: generated-index
-  title: API FAQs
+  title: Project FAQs
 customProps:
-  description: Frequently asked questions about dbt APIs
+  description: Frequently asked questions about projects in dbt
