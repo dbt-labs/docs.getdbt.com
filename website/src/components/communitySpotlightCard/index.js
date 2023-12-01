@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from '@docusaurus/Link';
+import Head from "@docusaurus/Head";
 import styles from './styles.module.css';
 import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
@@ -51,11 +52,26 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
     communityAward
   } = frontMatter
 
+  // Get meta description text
+  const metaDescription = stripHtml(description)
+
   return (
     <SpotlightWrapper
       isSpotlightMember={isSpotlightMember}
       frontMatter={frontMatter}
     >
+      {isSpotlightMember && metaDescription ? (
+        <Head>
+          <meta
+            name="description"
+            content={metaDescription}
+          />
+          <meta
+            property="og:description"
+            content={metaDescription}
+          />
+        </Head>
+      ) : null}
       {communityAward ? (
         <div className={styles.awardBadge}>
           <span>Community Award Recipient</span>
@@ -162,12 +178,12 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
   );
 }
 
-// Truncate text
+// Truncate description text for community member cards
 function truncateText(str) {
   // Max length of string
   let maxLength = 300
 
-  // Check if anchor link starts within first 300 characters
+  // Check if anchor link starts within maxLength
   let hasLinks = false
   if(str.substring(0, maxLength - 3).match(/(?:<a)/g)) {
     hasLinks = true
@@ -187,6 +203,23 @@ function truncateText(str) {
   return str.length > maxLength
     ? `${substring}...`
     : str
+}
+
+// Strip HTML for meta description
+function stripHtml(desc) {
+  const maxLength = 130
+
+  if(!desc) return null
+
+  // Remove HTML elements from string
+  const strippedHtml = desc?.replace(/(<([^>]+)>)/gi, "")
+
+  // Strip new lines and return 130 character substring for description
+  const updatedDesc = strippedHtml
+    ?.substring(0, maxLength)
+    ?.replace(/(\r\n|\r|\n)/g, "");
+
+  return desc?.length > maxLength ? `${updatedDesc}...` : updatedDesc
 }
 
 export default CommunitySpotlightCard
