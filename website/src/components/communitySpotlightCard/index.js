@@ -50,21 +50,24 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
     socialLinks 
   } = frontMatter
 
-  return (  
-    <SpotlightWrapper isSpotlightMember={isSpotlightMember} frontMatter={frontMatter}>
+  return (
+    <SpotlightWrapper
+      isSpotlightMember={isSpotlightMember}
+      frontMatter={frontMatter}
+    >
+      <div className={styles.awardBadge}>
+        <span>Community Award Recipient</span>
+      </div>
       {image && (
         <div className={styles.spotlightMemberImgContainer}>
           {id && isSpotlightMember ? (
-            <img 
-              src={imageCacheWrapper(image)} 
-              alt={title} 
-            />
+            <img src={imageCacheWrapper(image)} alt={title} />
           ) : (
-            <Link to={`/community/spotlight/${id}`} className={styles.spotlightMemberHeader}>
-              <img 
-                src={imageCacheWrapper(image)} 
-                alt={title} 
-              />
+            <Link
+              to={`/community/spotlight/${id}`}
+              className={styles.spotlightMemberHeader}
+            >
+              <img src={imageCacheWrapper(image)} alt={title} />
             </Link>
           )}
         </div>
@@ -72,19 +75,26 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
       <div className={styles.spotlightMemberContent}>
         {!isSpotlightMember && id ? (
           <h2>
-            <Link to={`/community/spotlight/${id}`} className={`${styles.spotlightMemberHeader} ${styles.spotlightMemberHeaderSmall}`}>{title}</Link>
+            <Link
+              to={`/community/spotlight/${id}`}
+              className={`${styles.spotlightMemberHeader} ${styles.spotlightMemberHeaderSmall}`}
+            >
+              {title}
+            </Link>
           </h2>
-          ) : (
+        ) : (
           <h1 className={styles.spotlightMemberHeader}>{title}</h1>
         )}
-        {pronouns && <div className={styles.spotlightMemberPronouns}>{pronouns}</div>}
-        
+        {pronouns && (
+          <div className={styles.spotlightMemberPronouns}>{pronouns}</div>
+        )}
+
         {isSpotlightMember && (
           <div className={styles.spotlightMemberHeaderContain}>
             {(jobTitle || companyName) && (
               <div className={styles.spotlightMemberInfo}>
                 {jobTitle && jobTitle}
-                {jobTitle && companyName && ', '}
+                {jobTitle && companyName && ", "}
                 {companyName && companyName}
               </div>
             )}
@@ -101,7 +111,10 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
           </div>
         )}
         {description && !isSpotlightMember && (
-          <p className={styles.spotlightMemberDescription} dangerouslySetInnerHTML={{__html: truncateText(description)}} />
+          <p
+            className={styles.spotlightMemberDescription}
+            dangerouslySetInnerHTML={{ __html: truncateText(description) }}
+          />
         )}
         {socialLinks && isSpotlightMember && socialLinks?.length > 0 && (
           <div className={styles.spotlightMemberSocial}>
@@ -109,8 +122,15 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
               <>
                 {item?.name && item?.link && (
                   <>
-                    {i !== 0 && ' | '}
-                    <a href={item.link} title={item.name} target='_blank' rel='noreferrer'>{item.name}</a>
+                    {i !== 0 && " | "}
+                    <a
+                      href={item.link}
+                      title={item.name}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {item.name}
+                    </a>
                   </>
                 )}
               </>
@@ -118,21 +138,25 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
           </div>
         )}
         {id && !isSpotlightMember && (
-          <Link 
-            to={`/community/spotlight/${id}`} 
+          <Link
+            to={`/community/spotlight/${id}`}
             className={styles.spotlightReadMore}
-          >Read More</Link>
+          >
+            Read More
+          </Link>
         )}
       </div>
       {description && isSpotlightMember && (
         <div className={styles.spotlightMemberDescriptionFull}>
           <h2>About</h2>
-          <p className={styles.spotlightMemberDescription} dangerouslySetInnerHTML={{__html: description}} />
-
+          <p
+            className={styles.spotlightMemberDescription}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
       )}
     </SpotlightWrapper>
-  )
+  );
 }
 
 // Truncate text
