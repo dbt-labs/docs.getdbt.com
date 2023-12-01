@@ -17,7 +17,7 @@ To enable Snowflake OAuth, you will need to create a [security integration](http
 
 ### Create a security integration
 
-In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). In the following example `create or replace security integration` query, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). In the following example `create or replace security integration` query, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
 ```
 CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
@@ -42,7 +42,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
 | ENABLED  | Required |
 | OAUTH_CLIENT  | Required |
 | OAUTH_CLIENT_TYPE  | Required |
-| OAUTH_REDIRECT_URI  | Required. Use the access URL that corresponds to your server [region](/docs/cloud/about-cloud/regions-ip-addresses). If dbt Cloud is deployed on-premises, use the domain name of your application instead of the access URL. |
+| OAUTH_REDIRECT_URI  | Required. Use the access URL that corresponds to your server [region](/docs/cloud/about-cloud/access-regions-ip-addresses). If dbt Cloud is deployed on-premises, use the domain name of your application instead of the access URL. |
 | OAUTH_ISSUE_REFRESH_TOKENS  | Required |
 | OAUTH_REFRESH_TOKEN_VALIDITY  | Required. This configuration dictates the number of seconds that a refresh token is valid for. Use a smaller value to force users to re-authenticate with Snowflake more frequently. |
 
@@ -103,7 +103,7 @@ This error might be because of a configuration issue in the Snowflake OAuth flow
 * In the Snowflake OAuth flow, `role` in the profile config is not optional, as it does not inherit from the project connection config. So each user must supply their role, regardless of whether it is provided in the project connection.
 
 #### Server error 500
-If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double-check that you have allow listed [dbt Cloud's IP addresses](/docs/cloud/about-cloud/regions-ip-addresses) on a Snowflake account level.
+If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double-check that you have allow listed [dbt Cloud's IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) on a Snowflake account level.
 
 Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to allow list.
 

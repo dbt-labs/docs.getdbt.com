@@ -36,7 +36,7 @@ You can insert these three fields into the following iFrame, and then embed it *
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the EMEA region, you would use the following iFrame code:
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the EMEA region, you would use the following iFrame code:
 
 ```
 <iframe src='https://metadata.emea.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>' title='Exposure Status Tile'></iframe>
@@ -71,7 +71,7 @@ https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&jobId=<job_i
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the North American region, you would use the following code:
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the North American region, you would use the following code:
 
 ```
 https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
@@ -91,7 +91,7 @@ https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&jobId=<job_i
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the APAC region, you would use the following code:
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your account is hosted in the APAC region, you would use the following code:
 
 ```
 https://metadata.au.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>

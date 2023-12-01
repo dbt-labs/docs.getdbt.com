@@ -26,7 +26,7 @@ You can view or download in-progress and historical logs for your dbt runs. This
 <Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
 
 ## Model timing 
-> Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
+> Available on [multi-tenant](/docs/cloud/about-cloud/access-regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
 
 The model timing dashboard on dbt Cloud displays the composition, order, and time taken by each model in a job run. The visualization appears for successful jobs and highlights the top 1% of model durations. This helps you identify bottlenecks in your runs, so you can investigate them and potentially make changes to improve their performance. 
 

@@ -1,6 +1,6 @@
 You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer. 
 
-You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment. Single-tenant coming soon.
+You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/access-regions-ip-addresses) deployment. Single-tenant coming soon.
 
 - To learn how to use the JDBC or GraphQL API and what tools you can query it with, refer to [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview).
 

@@ -11,5 +11,5 @@ dbt Labs updated the docs for the [dbt Cloud Administrative API](/docs/dbt-cloud
 - Now using Spotlight for improved UI and UX.
 - All endpoints are now documented for v2 and v3. Added automation to the docs so they remain up to date.  
 - Documented many of the request and response bodies.
-- You can now test endpoints directly from within the API docs. And, you can choose which [regional server](/docs/cloud/about-cloud/regions-ip-addresses) to use (North America, APAC, or EMEA).
+- You can now test endpoints directly from within the API docs. And, you can choose which [regional server](/docs/cloud/about-cloud/access-regions-ip-addresses) to use (North America, APAC, or EMEA).
 - With the new UI, you can more easily generate code for any endpoint.

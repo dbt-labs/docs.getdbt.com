@@ -544,14 +544,14 @@ The file or URL paths begin with:
 - /reference/
 - /community/
 
-Let's use the Regions & IP Addresses URL as an example: https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses
+Let's use the Regions & IP Addresses URL as an example: https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses
 If we need to reference this on another page, we can remove the domain entirely:
 
-`For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)`
+`For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/access-regions-ip-addresses)`
 
 The reader will see:
 
-For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)
+For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/access-regions-ip-addresses)
 
 You can link to a specific section of the doc with a `#` at the end of the path. Enter the section’s title after the `#`, with individual words separated by hyphens. Let's use the incremental models page, https://docs.getdbt.com/docs/build/incremental-models, as an example:
 

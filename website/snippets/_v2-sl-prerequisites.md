@@ -1,7 +1,7 @@
 
 <VersionBlock firstVersion="1.6">
 
-- Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment. Single-tenant coming soon.
+- Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/access-regions-ip-addresses) deployment. Single-tenant coming soon.
 - Have both your production and development environments running dbt version 1.6 or higher. Refer to [upgrade in dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) for more info.
 - Use Snowflake, BigQuery, Databricks, or Redshift.
 -  Create a successful run in the environment where you configure the Semantic Layer. 
@@ -16,7 +16,7 @@
 
 <VersionBlock firstVersion="1.3" lastVersion="1.5" >
 
-- Have a multi-tenant dbt Cloud instance, <a href="https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses">hosted</a> in North America <br />
+- Have a multi-tenant dbt Cloud instance, <a href="https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses">hosted</a> in North America <br />
 - Have both your production and development environments running dbt version 1.3 or higher <br />
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>>=1.3.0, <1.4.0</code> in your dbt project <br />
@@ -28,7 +28,7 @@
 
 <VersionBlock lastVersion="1.2">
 
-- Have a multi-tenant dbt Cloud instance, <a href="https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses">hosted</a> in North America <br /> 
+- Have a multi-tenant dbt Cloud instance, <a href="https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses">hosted</a> in North America <br /> 
 - Have both your production and development environments running dbt version 1.2 <br />
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>>=0.3.0, <0.4.0</code> in your dbt project <br />

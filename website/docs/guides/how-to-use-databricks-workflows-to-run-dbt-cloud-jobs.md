@@ -134,7 +134,7 @@ if __name__ == '__main__':
 
 3. Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with the values you used [previously](#set-up-a-databricks-secret-scope)
 
-4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
 :::tip
  To find these values, navigate to **dbt Cloud**, select **Deploy -> Jobs**.  Select the Job you want to run and copy the URL. For example: `https://cloud.getdbt.com/deploy/000000/projects/111111/jobs/222222`
