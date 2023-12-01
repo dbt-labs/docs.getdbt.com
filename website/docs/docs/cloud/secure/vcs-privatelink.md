@@ -77,6 +77,6 @@ Once dbt confirms that the PrivateLink integration is complete, you can use it i
 2. Select the configured endpoint from the drop down list.
 3. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-new.png" width="80%" title="Configuring a new git integration" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-new.png" width="80%" title="Configuring a new git integration with PrivateLink" />
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-existing.png" width="80%" title="Editing an existing git integration" />
