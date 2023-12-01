@@ -47,7 +47,8 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
     jobTitle, 
     companyName, 
     organization, 
-    socialLinks 
+    socialLinks,
+    communityAward
   } = frontMatter
 
   return (
@@ -55,9 +56,11 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
       isSpotlightMember={isSpotlightMember}
       frontMatter={frontMatter}
     >
-      <div className={styles.awardBadge}>
-        <span>Community Award Recipient</span>
-      </div>
+      {communityAward ? (
+        <div className={styles.awardBadge}>
+          <span>Community Award Recipient</span>
+        </div>
+      ) : null}
       {image && (
         <div className={styles.spotlightMemberImgContainer}>
           {id && isSpotlightMember ? (
