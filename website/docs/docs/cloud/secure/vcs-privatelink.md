@@ -19,7 +19,7 @@ This document will cover at a high level the resources necessary to implement th
 
 ### Solution resources
 
-Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing the self-hosted VCS instance. You are responsible for provisioning and maintaining the resources deployed within your AWS account(s) and private network. Once provisioned, connection information and permissions are shared with dbt Labs to complete the connection, allowing for direct VPC to VPC private connectivity. 
+Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in your AWS account(s) and private network containing the self-hosted VCS instance. You are responsible for provisioning and maintaining these resources. Once provisioned, connection information and permissions are shared with dbt Labs to complete the connection, allowing for direct VPC to VPC private connectivity. 
 
 Note: This approach is distinct from and does not require you to implement VPC peering between your AWS account(s) and dbt Cloud.
 
