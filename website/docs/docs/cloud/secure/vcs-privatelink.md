@@ -17,7 +17,7 @@ You will learn, at a high level, the resources necessary to implement this solut
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/privatelink-vcs-architecture.png" width="80%" title="High level overview of the dbt Cloud and AWS PrivateLink for VCS architecture" />
 
-### Solution resources
+### Required resources for creating a connection
 
 Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in your AWS account(s) and private network containing the self-hosted VCS instance. You are responsible for provisioning and maintaining these resources. Once provisioned, connection information and permissions are shared with dbt Labs to complete the connection, allowing for direct VPC to VPC private connectivity. 
 
