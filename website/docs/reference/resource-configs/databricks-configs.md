@@ -418,7 +418,8 @@ To take advantage of this capability, you will need to add compute blocks to you
 </File>
 
 The new compute section is a map of user chosen names to objects with an http_path property.
-Each compute is keyed by a name which is used in the model definition/configuration to indicate which compute you wish to use for that model/selection of models. We recommend choosing a name that is easily recognized as to what compute resources you're using, such as what the compute resource is named inside of the Databricks UI. 
+Each compute is keyed by a name which is used in the model definition/configuration to indicate which compute you wish to use for that model/selection of models. 
+We recommend choosing a name that is easily recognized as the compute resources you're using, such as the name of the compute resource inside the Databricks UI. 
 
 :::note
 
@@ -426,8 +427,7 @@ You need to use the same set of names for compute across your outputs, though yo
 
 :::
 
-To configure this inside of dbt Cloud, use the [extended attributes feature](/docs/dbt-cloud-environments#extended-attributes-) on the desired environments.
-You can input like so:
+To configure this inside of dbt Cloud, use the [extended attributes feature](/docs/dbt-cloud-environments#extended-attributes-) on the desired environments:
 
 ```yaml
 
