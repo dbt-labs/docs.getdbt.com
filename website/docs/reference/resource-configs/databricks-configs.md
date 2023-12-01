@@ -363,9 +363,11 @@ insert into analytics.replace_where_incremental
 
 <VersionBlock firstVersion="1.7">
 
-### Selecting compute per model
+## Selecting compute per model
 
-Beginning in version 1.7.2, you can assign which compute to use on a per-model basis.
+Beginning in version 1.7.2, you can assign which compute resource to use on a per-model basis. 
+For SQL models, you can select a SQL Warehouse (serverless or provisioned) or an all purpose cluster.
+For details on how this feature interacts with python models, see [Specifying compute for Python models](#specifying-compute-for-python-models).
 To take advantage of this capability, you will need to add compute blocks to your profile:
 
 <File name='profile.yml'>
@@ -423,14 +425,20 @@ Each compute is keyed by a name which is used in the model definition/configurat
 You need to use the same set of names for compute across your outputs, though you may supply different http_paths, allowing you to use different computes in different deployment scenarios.
 
 :::
-To configure this inside of dbt Cloud, use the [extended attributes feature](/docs/dbt-cloud-environments#extended-attributes-) on the desired environments. You can input them as such.
+
+To configure this inside of dbt Cloud, use the [extended attributes feature](/docs/dbt-cloud-environments#extended-attributes-) on the desired environments.
+You can input like so:
 
 ```yaml
+
 compute:
   Compute1:
     http_path:[`/some/other/path']
   Compute2:
     http_path:[`/some/other/path']
+
+```
+
 ### Specifying the compute for models
 
 As with many other configuaration options, you can specify the compute for a model in multiple ways, using `databricks_compute`.
@@ -511,7 +519,7 @@ or
 Databricks adapter ... using compute resource <name of compute>.
 ```
 
-### Selecting compute for a Python model
+### Specifying compute for Python models
 
 Materializing a python model requires execution of SQL as well as python.
 Specifically, if your python model is incremental, the current execution pattern involves executing python to create a staging table that is then merged into your target table using SQL.
