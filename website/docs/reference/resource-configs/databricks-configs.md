@@ -363,7 +363,7 @@ insert into analytics.replace_where_incremental
 
 <VersionBlock firstVersion="1.7">
 
-## Selecting compute per model
+### Selecting compute per model
 
 Beginning in version 1.7.2, you can assign which compute to use on a per-model basis.
 To take advantage of this capability, you will need to add compute blocks to your profile:
@@ -510,6 +510,29 @@ or
 ```
 Databricks adapter ... using compute resource <name of compute>.
 ```
+
+### Selecting compute for a Python model
+
+Materializing a python model requires execution of SQL as well as python.
+Specifically, if your python model is incremental, the current execution pattern involves executing python to create a staging table that is then merged into your target table using SQL.
+The python code needs to run on an all purpose cluster, while the SQL code can run on an all purpose cluster or a SQL Warehouse.
+When you specify your `databricks_compute` for a python model, you are currently only specifying which compute to use when running the model-specific SQL.
+If you wish to use a different compute for executing the python itself, you must specify an alternate `http_path` in the config for the model:
+
+<File name="model.py">
+
+ ```python
+
+def model(dbt, session):
+    dbt.config(
+      http_path="sql/protocolv1/..."
+    )
+
+```
+
+</File>
+
+If your default compute is a SQL Warehouse, you will need to specify an all purpose cluster `http_path` in this way.
 
 </VersionBlock>
 
