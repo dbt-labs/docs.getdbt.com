@@ -23,7 +23,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 Note: This approach is distinct from and does not require you to implement VPC peering between your AWS account(s) and dbt Cloud.
 
-The following resources are necessary to create a PrivateLink connection, allowing the dbt Cloud application to connect to your self-hosted cloud VCS. These resources can be created via the AWS Console, AWS CLI, or Infrastructure-as-Code such as [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) or [AWS CloudFormation](https://aws.amazon.com/cloudformation/).
+You need these resource to create a PrivateLink connection, which allows the dbt Cloud application to connect to your self-hosted cloud VCS. These resources can be created via the AWS Console, AWS CLI, or Infrastructure-as-Code such as [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) or [AWS CloudFormation](https://aws.amazon.com/cloudformation/).
 
 - **Target Group(s)** - A [Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html) is attached to a [Listener](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html) on the NLB and is responsible for routing incoming requests to healthy targets in the group. If connecting to the VCS system over both SSH and HTTPS, two **Target Groups** will need to be created.
     - **Target Type (choose most applicable):**
