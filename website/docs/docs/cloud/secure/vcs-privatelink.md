@@ -68,7 +68,7 @@ When you have been notified that the resources are provisioned within the dbt Cl
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
 
-Once the endpoint connection request is accepted, the PrivateLink endpoint is ready to use in dbt Cloud.
+Once you accept the endpoint connection request, you can use the PrivateLink endpoint in dbt Cloud.
 
 ## Configure in dbt Cloud
 
