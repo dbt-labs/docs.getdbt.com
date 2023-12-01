@@ -72,7 +72,10 @@ Once you accept the endpoint connection request, you can use the PrivateLink end
 
 ## Configure in dbt Cloud
 
-Once the dbt Labs team confirms that the PrivateLink integration is complete, you can select it as part of a new or existing git configuration. Select **PrivateLink Endpoint** as the connection type, and your configured integrations will appear in the dropdown menu. This is a manual process; the existing connections remain configured as they were until this step is complete.  
+Once dbt confirms that the PrivateLink integration is complete, you can use it in a new or existing git configuration. 
+1. Select **PrivateLink Endpoint** as the connection type, and your configured integrations will appear in the dropdown menu. 
+2. Select the configured endpoint from the drop down list.
+3. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-new.png" width="80%" title="Configuring a new git integration" />
 
