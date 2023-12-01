@@ -13,7 +13,7 @@ AWS PrivateLink provides private connectivity from dbt Cloud to your self-hosted
 
 This document will cover at a high level the resources necessary to implement this solution. Cloud environments and provisioning processes vary greatly, so information from this guide may need to be adapted to fit your requirements.
 
-## PrivateLink connection
+## PrivateLink connection overview
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/privatelink-vcs-architecture.png" width="80%" title="High level overview of the dbt Cloud and AWS PrivateLink for VCS architecture" />
 
