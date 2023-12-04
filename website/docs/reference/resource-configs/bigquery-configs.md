@@ -718,3 +718,100 @@ Views with this configuration will be able to select from objects in `project_1.
 
 The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
 
+<VersionBlock firstVersion="1.7">
+
+## Materialized views
+
+The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
+with the following configuration parameters:
+
+| Parameter                    | Type                 | Default | Change Monitoring Support | Reference                                        |
+|------------------------------|----------------------|---------|---------------------------|--------------------------------------------------|
+| `cluster_by`                 | LIST[STRING]         | `None`  | DROP/CREATE               | [Clustering](#clustering-clause)                 |
+| `partition_by`               | DICT                 | `None`  | DROP/CREATE               | [Partitioning](#partition-clause)                |
+| `enable_refresh`             | BOOLEAN              | `True`  | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `refresh_interval_minutes`   | FLOAT                | `30`    | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `max_staleness` (in Preview) | INTERVAL             | `None`  | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `description`                | STRING               | `None`  | ALTER                     |                                                  |
+| `labels`                     | DICT[STRING, STRING] | `None`  | ALTER                     | [Labels](#specifying-labels)                     |
+| `hours_to_expiration`        | INTEGER              | `None`  | ALTER                     | [Table expiration](controlling-table-expiration) |
+| `kms_key_name`               | STRING               | `None`  | ALTER                     | [KMS encryption](#using-kms-encryption)          |
+
+#### Sample model file:
+
+<File name='bigquery_materialized_view.sql'>
+
+```sql
+{{ config(
+    materialized='materialized_view',
+    cluster_by=['<field_name>', ...],
+    partition_by={
+        'field': '<field_name>',
+        'data_type': '<timestamp | date | datetime | int64>',
+
+        # only if `data_type` is not 'int64'
+        'granularity': '<hour | day | month | year>'
+
+        # only if `data_type` is 'int64'
+        'range': {
+            'start': <int>,
+            'end': <int>,
+            'interval': <int>,
+        }
+    },
+
+    # auto-refresh options
+    enable_refresh=<bool>,
+    refresh_interval_minutes=<float>,
+    max_staleness='<interval>',
+
+    # additional options
+    description='<long description>',
+    labels={'<label_name>': '<label_value>', ...},
+    hours_to_expiration=<int>,
+    kms_key_name='<path_to_key>',
+) }}
+
+select * from {{ ref('my_base_table') }}
+```
+
+</File>
+
+Many of these parameters correspond to their table counterparts and have been linked above.
+The set of parameters which are unique to materialized views covers auto-refresh functionality, which is covered [below](#auto-refresh).
+
+Find more information about these parameters in the BigQuery docs:
+- [CREATE MATERIALIZED VIEW statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
+- [materialized_view_option_list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#materialized_view_option_list)
+
+### Auto-refresh
+
+| Parameter                     | Type     | Default | Change Monitoring Support |
+|-------------------------------|----------|---------|---------------------------|
+| `enable_refresh`              | BOOLEAN  | `True`  | ALTER                     |
+| `max_staleness` (in Preview)  | INTERVAL | `None`  | ALTER                     |
+| `refresh_interval_minutes`    | FLOAT    | `30`    | ALTER                     |
+
+BigQuery supports [automatic refresh](https://cloud.google.com/bigquery/docs/materialized-views-manage#automatic_refresh) configuration for materialized views.
+By default, a materialized view will automatically refresh within 5 minutes of changes in the base table, but no more frequently than every 30 minutes.
+BigQuery only officially supports configuration of the frequency (the "30 minutes" part);
+however, there is a feature in preview that allows for configuration of the staleness (the "5 minutes" part).
+dbt will monitor these parameters for changes and apply them using an `ALTER` statement.
+
+Find more information about these parameters in the BigQuery docs:
+- [materialized_view_option_list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#materialized_view_option_list)
+- [max_staleness](https://cloud.google.com/bigquery/docs/materialized-views-create#max_staleness)
+
+### Limitations
+
+As with most data platforms, there are limitations associated with materialized views. Some worth noting include:
+
+- Materialized view SQL has a [limited feature set](https://cloud.google.com/bigquery/docs/materialized-views-create#supported-mvs)
+- Materialized view SQL cannot be updated; the materialized view must go through a `--full-refresh` (DROP/CREATE)
+- The `partition_by` clause on a materialized view must match that of the underlying base table
+- While materialized views can have descriptions, materialized view *columns* cannot
+- Recreating/dropping the base table requires recreating/dropping the materialized view
+
+Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
+
+</VersionBlock>
