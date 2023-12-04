@@ -51,7 +51,7 @@ Job admin service tokens can authorize requests for viewing, editing, and creati
 Member service tokens can authorize requests for viewing and editing resources, triggering runs, and inviting members to the account. Tokens assigned the Member permission set will have the same permissions as a Member user. For more information about Member users, see "[Self-service permissions](/docs/cloud/manage-access/self-service-permissions)".
 
 **Read-only**<br/>
-Read-only service tokens can authorize requests for viewing a read-only dashboard, viewing generated documentation, and viewing source freshness reports.
+Read-only service tokens can authorize requests for viewing a read-only dashboard, viewing generated documentation, and viewing source freshness reports. This token can access retrieve account level information endpoints on the Admin API and authorize requests to the Discovery API. 
 
 ### Enterprise plans using service account tokens
 
