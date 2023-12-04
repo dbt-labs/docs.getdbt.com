@@ -134,6 +134,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/databricks-privatelink",
                 "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/postgres-privatelink",
+                "docs/cloud/secure/vcs-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
