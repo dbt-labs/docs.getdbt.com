@@ -1,0 +1,10 @@
+# position: 2.5 # float position is supported
+label: 'Warehouse'
+collapsible: true # make the category collapsible
+collapsed: true # keep the category collapsed by default
+className: red
+link:
+  type: generated-index
+  title: Warehouse FAQs
+customProps:
+  description: Frequently asked questions about warehouses and dbt

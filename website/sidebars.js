@@ -54,6 +54,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/cloud/connect-data-platform/about-connections" },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-microsoft-fabric",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
                 "docs/cloud/connect-data-platform/connect-snowflake",
                 "docs/cloud/connect-data-platform/connect-bigquery",
@@ -133,6 +134,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/databricks-privatelink",
                 "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/postgres-privatelink",
+                "docs/cloud/secure/vcs-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -1059,6 +1061,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",
         "best-practices/dbt-unity-catalog-best-practices",
