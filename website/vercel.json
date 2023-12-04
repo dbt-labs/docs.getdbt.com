@@ -3,6 +3,41 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/dbt-cloud-ide",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/installation",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud-develop",
+      "destination": "/docs/cloud/about-develop-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/about-dbt-core",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/deploy/airgapped",
+      "destination": "/docs/cloud/about-cloud/tenancy",
+      "permanent": true
+    },
+    {
+      "source": "/docs/about/overview",
+      "destination": "/docs/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/dbt-cli/cli-overview",
+      "destination": "/docs/core/about-dbt-core",
+      "permanent": true
+    },  
+    {
     "source": "/guides/advanced/creating-new-materializations",
     "destination": "/guides/create-new-materializations",
     "permanent": true
@@ -1604,7 +1639,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-overview",
-      "destination": "/docs/get-started/getting-started/set-up-dbt-cloud",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
       "permanent": true
     },
     {
@@ -2639,7 +2674,7 @@
     },
     {
       "source": "/docs/cloud-overview",
-      "destination": "/docs/dbt-cloud/cloud-overview",
+      "destination": "/docs/cloud/about-cloud/dbt-cloud-features",
       "permanent": true
     },
     {

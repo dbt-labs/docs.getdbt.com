@@ -30,6 +30,6 @@ Before installing dbt, make sure you have the latest versions:
 
 ```shell
 
-pip install --upgrade pip wheel setuptools
+python -m pip install --upgrade pip wheel setuptools
 
 ```
