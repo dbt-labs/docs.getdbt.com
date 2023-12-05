@@ -368,7 +368,7 @@ Dynamic tables are supported with the following configuration parameters:
 ```sql
 {{ config(
     materialized='dynamic_table',
-    on_configuration_change='<apply | continue | fail>',
+    on_configuration_change='{ apply | continue | fail }',
     target_lag='<<int> { seconds | minutes | hours | days } | DOWNSTREAM>',
     snowflake_warehouse='<warehouse_name>',
 ) }}
