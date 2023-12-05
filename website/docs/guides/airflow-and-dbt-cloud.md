@@ -14,7 +14,7 @@ recently_updated: true
 Many organization already use [Airflow](https://airflow.apache.org/) to orchestrate their data workflows. dbt Cloud works great with Airflow, letting you execute your dbt code in dbt Cloud while keeping orchestration duties with Airflow. This ensures your project's metadata (important for tools like dbt Explorer) is available and up-to-date, while still enabling you to use Airflow for general tasks such as:
 
 - Scheduling other processes outside of dbt runs
-- Ensuring that a [dbt job](https://docs.getdbt.com/docs/dbt-cloud/cloud-overview#schedule-and-run-dbt-jobs-in-production) kicks off before or after another process outside of dbt Cloud
+- Ensuring that a [dbt job](/docs/dbt-cloud/cloud-overview#schedule-and-run-dbt-jobs-in-production) kicks off before or after another process outside of dbt Cloud
 - Triggering a dbt job only after another has completed
 
 In this guide, you'll learn how to:
