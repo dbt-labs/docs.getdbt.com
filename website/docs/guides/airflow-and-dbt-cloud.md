@@ -31,7 +31,7 @@ You’ll also gain a better understanding of how this will:
 
 ## Prerequisites
 
-- [dbt Cloud Teams or Enterprise account](https://www.getdbt.com/pricing/) (with [admin access](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
+- [dbt Cloud Teams or Enterprise account](https://www.getdbt.com/pricing/) (with [admin access](/docs/cloud/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - A [free Docker account](https://hub.docker.com/signup) in order to sign in to Docker Desktop, which will be installed in the initial setup.
 - A local digital scratchpad for temporarily copy-pasting API keys and URLs
 
