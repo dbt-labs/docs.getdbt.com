@@ -145,10 +145,9 @@ select * from {{ ref('my_base_table') }}
 </File>
 
 Many of these parameters correspond to their table counterparts and have been linked above.
-The set of parameters which are unique to materialized views covers auto-refresh and backup functionality, which is covered below.
+The parameters unique to materialized views are the auto-refresh and backup functionality, which are covered below.
 
-Find more information about these parameters in the Redshift docs:
-- [CREATE MATERIALIZED VIEW](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html)
+Find more information about the [CREATE MATERIALIZED VIEW](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html) parameters in the Redshift docs.
 
 #### Auto-refresh
 
@@ -157,11 +156,10 @@ Find more information about these parameters in the Redshift docs:
 | `auto_refresh` | BOOLEAN | NO       | `False` | ALTER                     |
 
 Redshift supports [automatic refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html#materialized-view-auto-refresh) configuration for materialized views.
-By default, a materialized view will not automatically refresh.
-dbt will monitor this parameter for changes and apply them using an `ALTER` statement.
+By default, a materialized view does not automatically refresh.
+dbt monitors this parameter for changes and applies them using an `ALTER` statement.
 
-Find more information about this parameter in the Redshift docs:
-- [Parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters)
+Find more information about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
 
 #### Backup
 
@@ -175,15 +173,14 @@ By default, a materialized view will be backed up during a cluster snapshot.
 dbt cannot monitor this parameter as it is not queryable within Redshift.
 If the value is changed, the materialized view will need to go through a `--full-refresh` in order to set it.
 
-Find more information about this parameter in the Redshift docs:
-- [Parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters)
+Find more information about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
 
 ### Limitations
 
 As with most data platforms, there are limitations associated with materialized views. Some worth noting include:
 
-- Materialized views cannot reference: views, temporary tables, user defined functions, late-binding tables
-- Auto-refresh cannot be used if the materialized view references: mutable functions, external schemas, another materialized view
+- Materialized views cannot reference views, temporary tables, user-defined functions, or late-binding tables.
+- Auto-refresh cannot be used if the materialized view references mutable functions, external schemas, or another materialized view.
 
 Find more information about materialized view limitations in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-limitations).
 
