@@ -9,7 +9,7 @@
     },
     {
       "source": "/reference/resource-properties/tests",
-      "destination": "/reference/resource-properties/data-tests",,
+      "destination": "/reference/resource-properties/data-tests",
       "permanent": true
     },
     {
