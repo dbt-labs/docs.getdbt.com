@@ -725,17 +725,17 @@ The `grant_access_to` config is not thread-safe when multiple views need to be a
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
 with the following configuration parameters:
 
-| Parameter                    | Type                 | Default | Change Monitoring Support | Reference                                        |
-|------------------------------|----------------------|---------|---------------------------|--------------------------------------------------|
-| `cluster_by`                 | LIST[STRING]         | `None`  | DROP/CREATE               | [Clustering](#clustering-clause)                 |
-| `partition_by`               | DICT                 | `None`  | DROP/CREATE               | [Partitioning](#partition-clause)                |
-| `enable_refresh`             | BOOLEAN              | `True`  | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `refresh_interval_minutes`   | FLOAT                | `30`    | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `max_staleness` (in Preview) | INTERVAL             | `None`  | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `description`                | STRING               | `None`  | ALTER                     |                                                  |
-| `labels`                     | DICT[STRING, STRING] | `None`  | ALTER                     | [Labels](#specifying-labels)                     |
-| `hours_to_expiration`        | INTEGER              | `None`  | ALTER                     | [Table expiration](controlling-table-expiration) |
-| `kms_key_name`               | STRING               | `None`  | ALTER                     | [KMS encryption](#using-kms-encryption)          |
+| Parameter                    | Type                 | Required | Default | Change Monitoring Support | Reference                                        |
+|------------------------------|----------------------|----------|---------|---------------------------|--------------------------------------------------|
+| `cluster_by`                 | LIST[STRING]         | NO       |         | DROP/CREATE               | [Clustering](#clustering-clause)                 |
+| `partition_by`               | DICT                 | NO       |         | DROP/CREATE               | [Partitioning](#partition-clause)                |
+| `enable_refresh`             | BOOLEAN              | NO       | `True`  | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `refresh_interval_minutes`   | FLOAT                | NO       | `30`    | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `max_staleness` (in Preview) | INTERVAL             | NO       |         | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `description`                | STRING               | NO       |         | ALTER                     |                                                  |
+| `labels`                     | DICT[STRING, STRING] | NO       |         | ALTER                     | [Labels](#specifying-labels)                     |
+| `hours_to_expiration`        | INTEGER              | NO       |         | ALTER                     | [Table expiration](controlling-table-expiration) |
+| `kms_key_name`               | STRING               | NO       |         | ALTER                     | [KMS encryption](#using-kms-encryption)          |
 
 #### Sample model file:
 
@@ -786,11 +786,11 @@ Find more information about these parameters in the BigQuery docs:
 
 ### Auto-refresh
 
-| Parameter                     | Type     | Default | Change Monitoring Support |
-|-------------------------------|----------|---------|---------------------------|
-| `enable_refresh`              | BOOLEAN  | `True`  | ALTER                     |
-| `max_staleness` (in Preview)  | INTERVAL | `None`  | ALTER                     |
-| `refresh_interval_minutes`    | FLOAT    | `30`    | ALTER                     |
+| Parameter                     | Type     | Required | Default | Change Monitoring Support |
+|-------------------------------|----------|----------|---------|---------------------------|
+| `enable_refresh`              | BOOLEAN  | NO       | `True`  | ALTER                     |
+| `refresh_interval_minutes`    | FLOAT    | NO       | `30`    | ALTER                     |
+| `max_staleness` (in Preview)  | INTERVAL | NO       |         | ALTER                     |
 
 BigQuery supports [automatic refresh](https://cloud.google.com/bigquery/docs/materialized-views-manage#automatic_refresh) configuration for materialized views.
 By default, a materialized view will automatically refresh within 5 minutes of changes in the base table, but no more frequently than every 30 minutes.
