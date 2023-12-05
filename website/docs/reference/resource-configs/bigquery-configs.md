@@ -725,17 +725,18 @@ The `grant_access_to` config is not thread-safe when multiple views need to be a
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
 with the following configuration parameters:
 
-| Parameter                    | Type                 | Required | Default | Change Monitoring Support | Reference                                        |
-|------------------------------|----------------------|----------|---------|---------------------------|--------------------------------------------------|
-| `cluster_by`                 | LIST[STRING]         | NO       |         | DROP/CREATE               | [Clustering](#clustering-clause)                 |
-| `partition_by`               | DICT                 | NO       |         | DROP/CREATE               | [Partitioning](#partition-clause)                |
-| `enable_refresh`             | BOOLEAN              | NO       | `True`  | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `refresh_interval_minutes`   | FLOAT                | NO       | `30`    | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `max_staleness` (in Preview) | INTERVAL             | NO       |         | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `description`                | STRING               | NO       |         | ALTER                     |                                                  |
-| `labels`                     | DICT[STRING, STRING] | NO       |         | ALTER                     | [Labels](#specifying-labels)                     |
-| `hours_to_expiration`        | INTEGER              | NO       |         | ALTER                     | [Table expiration](controlling-table-expiration) |
-| `kms_key_name`               | STRING               | NO       |         | ALTER                     | [KMS encryption](#using-kms-encryption)          |
+| Parameter                    | Type                 | Required | Default   | Change Monitoring Support | Reference                                        |
+|------------------------------|----------------------|----------|-----------|---------------------------|--------------------------------------------------|
+| `on_configuration_change`    | STRING               | NO       | `'apply'` | N/A                       |                                                  |
+| `cluster_by`                 | LIST[STRING]         | NO       |           | DROP/CREATE               | [Clustering](#clustering-clause)                 |
+| `partition_by`               | DICT                 | NO       |           | DROP/CREATE               | [Partitioning](#partition-clause)                |
+| `enable_refresh`             | BOOLEAN              | NO       | `True`    | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `refresh_interval_minutes`   | FLOAT                | NO       | `30`      | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `max_staleness` (in Preview) | INTERVAL             | NO       |           | ALTER                     | [Auto-refresh](#auto-refresh)                    |
+| `description`                | STRING               | NO       |           | ALTER                     |                                                  |
+| `labels`                     | DICT[STRING, STRING] | NO       |           | ALTER                     | [Labels](#specifying-labels)                     |
+| `hours_to_expiration`        | INTEGER              | NO       |           | ALTER                     | [Table expiration](controlling-table-expiration) |
+| `kms_key_name`               | STRING               | NO       |           | ALTER                     | [KMS encryption](#using-kms-encryption)          |
 
 #### Sample model file:
 
@@ -744,6 +745,7 @@ with the following configuration parameters:
 ```sql
 {{ config(
     materialized='materialized_view',
+    on_configuration_change='{ apply | continue | fail }'
     cluster_by=['<field_name>', ...],
     partition_by={
         'field': '<field_name>',
