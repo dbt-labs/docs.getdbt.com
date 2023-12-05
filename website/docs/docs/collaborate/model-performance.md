@@ -31,7 +31,7 @@ You can view historical metadata for up to the past three months. Select the tim
 
 ## The Model performance tab
 
-The Model performance tab allows for historical performance analysis, showing trends in execution times, counts, and failures. Daily execution data includes:
+You can view trends in execution times, counts, and failures by using the Model performance tab for historical performance analysis. Daily execution data includes:
 
 - Average model execution time.
 - Model execution counts, including failures/errors (total sum).

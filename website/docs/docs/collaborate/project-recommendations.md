@@ -12,16 +12,18 @@ The project recommendations feature is now available in dbt Explorer! Check it o
  
 dbt Explorer provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the Discovery API.
 
-Explorer also offers a global view, showing all the recommendations across the project for easy sorting and summarizing. This overview page includes two top-level metrics measuring the test and documentation coverage of the models in your project. 
+Explorer also offers a global view, showing all the recommendations across the project for easy sorting and summarizing. 
+
+These recommendations provide insight into how you can build a more well documented, well tested, and well built project, leading to less confusion and more trust.
+
+The Recommendations overview page includes two top-level metrics measuring the test and documentation coverage of the models in your project. 
 
 - **Model test coverage** &mdash; The percent of models in your project (models not from a package or imported via dbt Mesh) with at least one dbt test configured on them.
 - **Model documentation coverage** &mdash; The percent of models in your project (models not from a package or imported via dbt Mesh) with a description.
 
-These recommendations provide insight into how you can build a more well documented, well tested, and well built project, leading to less confusion and more trust.
-
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-overview.png" width="80%" title="Example of the Recommendations overview page with project metrics and the recommendations for all resources in the project"/>
 
-The current list of rules are:
+## List of rules
 
 | Category | Name | Description | Package Docs Link |
 | --- | --- | --- | --- |
@@ -39,8 +41,9 @@ The current list of rules are:
 | Governance | Public Model Missing Contract | Models with public access that do not have a model contract to ensure the data types | [GitHub](https://dbt-labs.github.io/dbt-project-evaluator/0.8/rules/governance/#public-models-without-contracts) |
 
 
-Models, sources and exposures each also have a Recommendations tab on their resource details page, with the specific recommendations that correspond to that resource:
+## The Recommendations tab
 
+Models, sources and exposures each also have a Recommendations tab on their resource details page, with the specific recommendations that correspond to that resource:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-tab.png" width="80%" title="Example of the Recommendations tab "/>
 
