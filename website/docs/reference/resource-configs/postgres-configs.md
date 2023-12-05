@@ -108,21 +108,43 @@ models:
 
 ## Materialized views
 
-The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html).
-Indexes are the only configuration that is specific to `dbt-postgres`.
-The remaining configuration follows the general [materialized view](/docs/build/materializations#materialized-view) configuration.
-There are also some limitations that we hope to address in the next version.
+The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html)
+with the following configuration parameters:
 
-### Monitored configuration changes
+| Parameter                 | Type       | Required | Default   | Change Monitoring Support | Reference           |
+|---------------------------|------------|----------|-----------|---------------------------|---------------------|
+| `on_configuration_change` | STRING     | NO       | `'apply'` | N/A                       |                     |
+| `indexes`                 | LIST[DICT] | NO       |           | ALTER                     | [Indexes](#indexes) |
 
-The settings below are monitored for changes applicable to `on_configuration_change`.
+#### Sample model file:
 
-#### Indexes
+<File name='postgres_materialized_view.sql'>
 
-Index changes (`CREATE`, `DROP`) can be applied without the need to rebuild the materialized view.
-This differs from a table model, where the table needs to be dropped and re-created to update the indexes.
-If the `indexes` portion of the `config` block is updated, the changes will be detected and applied
-directly to the materialized view in place.
+```sql
+{{ config(
+    materialized='materialized_view',
+    on_configuration_change='{ apply | continue | fail }'
+    indexes=[
+        {
+            'columns': ['<column_name>', ...],
+            'unique': <bool>},
+            'type': '{ HASH | B-TREE | GIST | SP-GIST | GIN | BRIN }',
+    ]
+) }}
+
+select * from {{ ref('my_base_table') }}
+```
+
+</File>
+
+The `indexes` parameter corresponds to that of a table, as linked above.
+It's worth noting that, unlike with tables, dbt will monitor this parameter for changes and apply the changes without dropping the materialized view.
+This happens via a `DROP/CREATE` of the indexes, which could be thought of as a `ALTER` of the materialized view.
+
+Find more information about materialized view parameters in the Postgres docs:
+- [CREATE MATERIALIZED VIEW](https://www.postgresql.org/docs/current/sql-creatematerializedview.html)
+
+<VersionBlock lastVersion="1.6">
 
 ### Limitations
 
@@ -136,5 +158,7 @@ This would only need to be done once as the existing object would then be a mate
 For example,`my_model`, has already been materialized as a table in the underlying data platform via `dbt run`.
 If the user changes the model's config to `materialized="materialized_view"`, they will get an error.
 The solution is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+
+</VersionBlock>
 
 </VersionBlock>
