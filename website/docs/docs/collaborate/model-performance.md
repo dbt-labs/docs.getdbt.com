@@ -15,7 +15,7 @@ The model performance feature is now available in dbt Explorer! Check it out!
 
 ## The Performance overview page 
 
-The Performance overview page presents a comprehensive analysis across all project models, helping to pinpoint areas for performance enhancement. It displays the longest-running models, those most frequently executed, and the ones with the highest failure rates during runs/tests. Data can be segmented by environment and job type which can offer insights into:
+You can pinpoint areas for performance enhancement by using the Performance overview page. This page presents a comprehensive analysis across all project models and displays the longest-running models, those most frequently executed, and the ones with the highest failure rates during runs/tests. Data can be segmented by environment and job type which can offer insights into:
 
 - Most executed models (total count).
 - Models with the longest execution time (average duration).
