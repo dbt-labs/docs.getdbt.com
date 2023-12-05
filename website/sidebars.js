@@ -809,7 +809,7 @@ const sidebarSettings = {
           type: "category",
           label: "For tests",
           items: [
-            "reference/test-configs",
+            "reference/data-test-configs",
             "reference/resource-configs/fail_calc",
             "reference/resource-configs/limit",
             "reference/resource-configs/severity",
