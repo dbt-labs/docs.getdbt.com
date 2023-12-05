@@ -2,7 +2,7 @@
 title: "Explore your dbt projects"
 sidebar_label: "Explore dbt projects"
 description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
-pagination_next: "docs/collaborate/explore-multiple-projects"
+pagination_next: "docs/collaborate/model-performance"
 pagination_prev: null
 ---
 
