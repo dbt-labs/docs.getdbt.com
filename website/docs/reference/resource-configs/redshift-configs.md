@@ -114,14 +114,14 @@ models:
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
 with the following configuration parameters:
 
-| Parameter      | Type         | Default                | Change Monitoring Support | Reference                                       |
-|----------------|--------------|------------------------|---------------------------|-------------------------------------------------|
-| `dist`         | STRING       | `'EVEN'`               | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-| `sort`         | LIST[STRING] | `None`                 | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-| `sort_type`    | STRING       | `'AUTO'` if no `sort`  | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-|                |              | `'COMPOUND'` if `sort` |                           |                                                 |
-| `auto_refresh` | BOOLEAN      | `False`                | ALTER                     | [Auto refresh](#auto-refresh)                   |
-| `backup`       | BOOLEAN      | `True`                 | N/A                       | [Backup](#backup)                               |
+| Parameter      | Type         | Required | Default                | Change Monitoring Support | Reference                                       |
+|----------------|--------------|----------|------------------------|---------------------------|-------------------------------------------------|
+| `dist`         | STRING       | NO       | `'EVEN'`               | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
+| `sort`         | LIST[STRING] | NO       |                        | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
+| `sort_type`    | STRING       | NO       | `'AUTO'` if no `sort`  | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
+|                |              |          | `'COMPOUND'` if `sort` |                           |                                                 |
+| `auto_refresh` | BOOLEAN      | NO       | `False`                | ALTER                     | [Auto refresh](#auto-refresh)                   |
+| `backup`       | BOOLEAN      | HO       | `True`                 | N/A                       | [Backup](#backup)                               |
 
 #### Sample model file:
 
@@ -150,9 +150,9 @@ Find more information about these parameters in the Redshift docs:
 
 #### Auto-refresh
 
-| Parameter      | Type    | Default | Change Monitoring Support |
-|----------------|---------|---------|---------------------------|
-| `auto_refresh` | BOOLEAN | `False` | ALTER                     |
+| Parameter      | Type    | Required | Default | Change Monitoring Support |
+|----------------|---------|----------|---------|---------------------------|
+| `auto_refresh` | BOOLEAN | NO       | `False` | ALTER                     |
 
 Redshift supports [automatic refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html#materialized-view-auto-refresh) configuration for materialized views.
 By default, a materialized view will not automatically refresh.
@@ -163,9 +163,9 @@ Find more information about this parameter in the Redshift docs:
 
 #### Backup
 
-| Parameter | Type    | Default | Change Monitoring Support |
-|-----------|---------|---------|---------------------------|
-| `backup`  | BOOLEAN | `True`  | N/A                       |
+| Parameter | Type    | Required | Default | Change Monitoring Support |
+|-----------|---------|----------|---------|---------------------------|
+| `backup`  | BOOLEAN | NO       | `True`  | N/A                       |
 
 Redshift supports [backup](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html) configuration of clusters at the object level.
 This parameter identifies if the materialized view should be backed up as part of the cluster snapshot.
