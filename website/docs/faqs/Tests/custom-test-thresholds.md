@@ -10,5 +10,5 @@ As of `v0.20.0`, you can use the `error_if` and `warn_if` configs to set custom 
 
 For dbt `v0.19.0` and earlier, you could try these possible solutions:
 
-* Setting the [severity](/reference/resource-properties/tests#severity) to `warn`, or:
+* Setting the [severity](/reference/resource-properties/data-tests#severity) to `warn`, or:
 * Writing a [custom generic test](/best-practices/writing-custom-generic-tests) that accepts a threshold argument ([example](https://discourse.getdbt.com/t/creating-an-error-threshold-for-schema-tests/966))

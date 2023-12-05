@@ -112,7 +112,7 @@ When using `--store-failures`, this would return the name `analytics.finance.ord
 
 ## Definition
 
-Optionally specify a custom alias for a [model](/docs/build/models), [tests](/docs/build/tests), [snapshots](/docs/build/snapshots), or [seed](/docs/build/seeds).
+Optionally specify a custom alias for a [model](/docs/build/models), [tests](/docs/build/data-tests), [snapshots](/docs/build/snapshots), or [seed](/docs/build/seeds).
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 

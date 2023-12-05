@@ -70,7 +70,7 @@ Checking for things like modularity and 1:1 relationships between sources and st
 
 #### Validation of models:
 
-This section should show something to confirm that your model is doing what you intended it to do. This could be a [dbt test](/docs/build/tests) like uniqueness or not null, or could be an ad-hoc query that you wrote to validate your data. Here is a screenshot from a test run on a local development branch:
+This section should show something to confirm that your model is doing what you intended it to do. This could be a [dbt test](/docs/build/data-tests) like uniqueness or not null, or could be an ad-hoc query that you wrote to validate your data. Here is a screenshot from a test run on a local development branch:
 
 ![test validation](/img/blog/pr-template-test-validation.png "dbt test validation")
 

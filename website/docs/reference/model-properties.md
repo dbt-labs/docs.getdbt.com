@@ -23,7 +23,7 @@ models:
       [<model_config>](/reference/model-configs): <config_value>
     [constraints](/reference/resource-properties/constraints):
       - <constraint>
-    [tests](/reference/resource-properties/tests):
+    [tests](/reference/resource-properties/data-tests):
       - <test>
       - ... # declare additional tests
     [columns](/reference/resource-properties/columns):
@@ -33,7 +33,7 @@ models:
         [quote](/reference/resource-properties/quote): true | false
         [constraints](/reference/resource-properties/constraints):
           - <constraint>
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
         [tags](/reference/resource-configs/tags): [<string>]
@@ -51,7 +51,7 @@ models:
           - <constraint>
         [config](/reference/resource-properties/config):
           [<model_config>](/reference/model-configs): <config_value>
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
         columns:
@@ -63,7 +63,7 @@ models:
             [quote](/reference/resource-properties/quote): true | false
             [constraints](/reference/resource-properties/constraints):
               - <constraint>
-            [tests](/reference/resource-properties/tests):
+            [tests](/reference/resource-properties/data-tests):
               - <test>
               - ... # declare additional tests
             [tags](/reference/resource-configs/tags): [<string>]

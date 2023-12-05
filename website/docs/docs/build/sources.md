@@ -91,7 +91,7 @@ You can also:
 - Add tests to sources
 - Add descriptions to sources, that get rendered as part of your documentation site
 
-These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation)).
+These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/data-tests) and [documentation](/docs/collaborate/documentation)).
 
 <File name='models/<filename>.yml'>
 

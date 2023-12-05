@@ -29,9 +29,9 @@ dbt Core v0.20 has reached the end of critical support. No new patch versions wi
 
 ### Tests
 
-- [Building a dbt Project: tests](/docs/build/tests)
-- [Test Configs](/reference/test-configs)
-- [Test properties](/reference/resource-properties/tests)
+- [Building a dbt Project: tests](/docs/build/data-tests)
+- [Test Configs](/reference/data-test-configs)
+- [Test properties](/reference/resource-properties/data-tests)
 - [Node Selection](/reference/node-selection/syntax) (with updated [test selection examples](/reference/node-selection/test-selection-examples))
 - [Writing custom generic tests](/best-practices/writing-custom-generic-tests)
 
