@@ -114,14 +114,15 @@ models:
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
 with the following configuration parameters:
 
-| Parameter      | Type         | Required | Default                | Change Monitoring Support | Reference                                       |
-|----------------|--------------|----------|------------------------|---------------------------|-------------------------------------------------|
-| `dist`         | STRING       | NO       | `'EVEN'`               | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-| `sort`         | LIST[STRING] | NO       |                        | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-| `sort_type`    | STRING       | NO       | `'AUTO'` if no `sort`  | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-|                |              |          | `'COMPOUND'` if `sort` |                           |                                                 |
-| `auto_refresh` | BOOLEAN      | NO       | `False`                | ALTER                     | [Auto refresh](#auto-refresh)                   |
-| `backup`       | BOOLEAN      | HO       | `True`                 | N/A                       | [Backup](#backup)                               |
+| Parameter                 | Type         | Required | Default                | Change Monitoring Support | Reference                                       |
+|---------------------------|--------------|----------|------------------------|---------------------------|-------------------------------------------------|
+| `on_configuration_change` | STRING       | NO       | `'apply'`              | N/A                       |                                                 |
+| `dist`                    | STRING       | NO       | `'EVEN'`               | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
+| `sort`                    | LIST[STRING] | NO       |                        | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
+| `sort_type`               | STRING       | NO       | `'AUTO'` if no `sort`  | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
+|                           |              |          | `'COMPOUND'` if `sort` |                           |                                                 |
+| `auto_refresh`            | BOOLEAN      | NO       | `False`                | ALTER                     | [Auto refresh](#auto-refresh)                   |
+| `backup`                  | BOOLEAN      | HO       | `True`                 | N/A                       | [Backup](#backup)                               |
 
 #### Sample model file:
 
@@ -130,6 +131,7 @@ with the following configuration parameters:
 ```sql
 {{ config(
     materialized='materialized_view',
+    on_configuration_change='{ apply | continue | fail }'
     dist='{ ALL | AUTO | EVEN | <field_name> }',
     sort=['<field_name>', ...],
     sort_type='{ AUTO | COMPOUND | INTERLEAVED }'
