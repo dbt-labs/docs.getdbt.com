@@ -8,9 +8,9 @@ dbt Explorer provides metadata on dbt Cloud runs for in-depth model performance 
 
 <LoomVideo id='98f33b3b7a374df0b7c04747eae6ef44' />
 
-:::tip Public preview 
+:::tip Beta 
 
-The model performance feature is now available in dbt Explorer! Check it out! 
+The model performance beta feature is now available in dbt Explorer! Check it out! 
 :::
 
 ## The Performance overview page 
