@@ -352,6 +352,8 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 
 ## FAQs
 
+<FAQ path="Troubleshooting/sl-alpn-error" />
+
 - **Why do some dimensions use different syntax, like `metric_time` versus `[Dimension('metric_time')`?**<br />
 	When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. However, when you perform operations on the dimension, such as adding granularity, the object syntax `[Dimension('metric_time')` is required. 
 

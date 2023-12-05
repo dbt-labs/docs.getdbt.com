@@ -134,6 +134,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/databricks-privatelink",
                 "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/postgres-privatelink",
+                "docs/cloud/secure/vcs-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -423,6 +424,8 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
+            "docs/collaborate/model-performance",
+            "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
           ],
         },
