@@ -67,4 +67,5 @@ If you have any non-admin users logging into dbt Cloud with a password today:
 1. Ensure that all users have a user account in your identity provider and are assigned dbt Cloud so they won’t lose access.
 2. Alert all dbt Cloud users that they won’t be able to use a password for logging in anymore unless they are already an Admin with a password.
 3. We **DO NOT** recommend promoting any users to Admins just to preserve password-based logins because you will reduce security of your dbt Cloud environment.
+4. If an Admin leaves your company, manually delete their user to prevent non-SSO access via username and password.
 **
