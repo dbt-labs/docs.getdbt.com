@@ -46,7 +46,7 @@ If you don't see the project lineage graph immediately, click **Render Lineage**
 
 The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
-By default, dbt Explorer shows the project's [applied state](/dbt-cloud-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, models that have successfully been built and are available to query, not those just defined in the project
+By default, dbt Explorer shows the project's [applied state](/docs/dbt-cloud-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
 
 To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, dbt Explorer excludes these resources from the full lineage graph unless a search query returns them as results.
 
