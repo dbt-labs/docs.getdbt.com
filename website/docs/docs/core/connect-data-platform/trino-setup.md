@@ -30,7 +30,7 @@ The parameters for setting up a connection are for Starburst Enterprise, Starbur
 
 ## Host parameters
 
-The following profile fields are always required except for `user`, which is also required unless you're using the `oauth`, `cert`, or `jwt` authentication methods.
+The following profile fields are always required except for `user`, which is also required unless you're using the `oauth`, `oauth_console`, `cert`, or `jwt` authentication methods.
 
 | Field     | Example | Description |
 | --------- | ------- | ----------- |
@@ -71,6 +71,7 @@ The authentication methods that dbt Core supports are:
 - `jwt` &mdash; JSON Web Token (JWT)
 - `certificate` &mdash; Certificate-based authentication
 - `oauth` &mdash; Open Authentication (OAuth)
+- `oauth_console` &mdash; Open Authentication (OAuth) with authentication URL printed to the console 
 - `none` &mdash; None, no authentication
 
 Set the `method` field to the authentication method you intend to use for the connection. For a high-level introduction to authentication in Trino, see [Trino Security: Authentication types](https://trino.io/docs/current/security/authentication-types.html).
@@ -85,6 +86,7 @@ Click on one of these authentication methods for further details on how to confi
     {label: 'JWT', value: 'jwt'},
     {label: 'Certificate', value: 'certificate'},
     {label: 'OAuth', value: 'oauth'},
+    {label: 'OAuth (console)', value: 'oauth_console'},
     {label: 'None', value: 'none'},
   ]}
 >
@@ -269,7 +271,34 @@ sandbox-galaxy:
       host: bunbundersders.trino.galaxy-dev.io
       catalog: dbt_target
       schema: dataders
-      port: 433
+      port: 443
+```
+
+</TabItem>
+
+<TabItem value="oauth_console">
+
+The only authentication parameter to set for OAuth 2.0 is `method: oauth_console`. If you're using Starburst Enterprise or Starburst Galaxy, you must enable OAuth 2.0 in Starburst before you can use this authentication method.
+
+For more information, refer to both [OAuth 2.0 authentication](https://trino.io/docs/current/security/oauth2.html) in the Trino docs and the [README](https://github.com/trinodb/trino-python-client#oauth2-authentication) for the Trino Python client.
+
+The only difference between `oauth_console` and `oauth` is that in the latter a browser is automatically opened with authentication URL and in `oauth_console` URL is printed to the console.
+
+It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `python -m pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
+
+#### Example profiles.yml for OAuth
+
+```yaml
+sandbox-galaxy:
+  target: oauth_console
+  outputs:
+    oauth:
+      type: trino
+      method: oauth_console
+      host: bunbundersders.trino.galaxy-dev.io
+      catalog: dbt_target
+      schema: dataders
+      port: 443
 ```
 
 </TabItem>
