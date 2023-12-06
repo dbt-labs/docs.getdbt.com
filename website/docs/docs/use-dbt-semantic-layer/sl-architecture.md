@@ -7,9 +7,6 @@ tags: [Semantic Layer]
 pagination_next: null
 ---
 
-
-<VersionBlock firstVersion="1.6">
-
 The dbt Semantic Layer allows you to define metrics and use various interfaces to query them. The Semantic Layer does the heavy lifting to find where the queried data exists in your data platform and generates the SQL to make the request (including performing joins). 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="85%" title="The diagram displays how your data flows using the dbt Semantic Layer and the variety of integration tools it supports."/>
@@ -46,32 +43,3 @@ The following table compares the features available in dbt Cloud and source avai
 import SlFaqs from '/snippets/_sl-faqs.md';
 
 <SlFaqs/>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
-
-## Product architecture 
-
-The dbt Semantic Layer product architecture includes four primary components:
-
-| Components | Information | Developer plans | Team plans | Enterprise plans | License |
-| --- | --- | :---: | :---: | :---: | --- |
-| **[dbt project](/docs/build/metrics)** | Define models and metrics in dbt Core. <br /> *Note, we will deprecate and no longer support the dbt_metrics package. | ✅ | ✅ |  ✅  | Open source, Core |
-| **[dbt Server](https://github.com/dbt-labs/dbt-server)**| A persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations. | ✅ | ✅ | ✅ | BSL |
-| **SQL Proxy** | Reverse-proxy that accepts dbt-SQL (SQL + Jinja like query models and metrics, use macros), compiles the query into pure SQL, and executes the query against the data platform. | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
-| **[Discovery API](/docs/dbt-cloud-apis/discovery-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, metrics). The Discovery API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
-    
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture-flow.png" title="dbt Semantic components" />
-
-dbt Semantic Layer integrations will:
-
-- Leverage the Discovery API to fetch a list of objects and their attributes, like metrics
-- Generate a dbt-SQL statement
-- Then query the SQL proxy to evaluate the results of this statement
-
-</VersionBlock>

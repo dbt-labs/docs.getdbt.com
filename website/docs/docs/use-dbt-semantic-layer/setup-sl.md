@@ -6,9 +6,6 @@ sidebar_label: "Set up your Semantic Layer"
 tags: [Semantic Layer]
 ---
 
-<VersionBlock firstVersion="1.6">
-
-
 With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
 
 ## Prerequisites
@@ -87,8 +84,6 @@ It is _not_ recommended that you use your dbt Cloud credentials due to elevated 
 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure_sl.png" title="Set up dbt Semantic Layer in dbt Cloud" /><br />
-
-</VersionBlock>
 
 ## Related docs
 
