@@ -29,6 +29,7 @@
 
 [data-theme='dark'] .quickstartCard .icon {
   color: #fff;
+  fill: #fff;
 }
 
 .quickstartCard h3 {
@@ -64,9 +65,17 @@
   color: #fff;
 }
 
-.quickstartCard .start i {
+.quickstartCard .start .right_arrow svg {
   margin-left: 4px;
-  font-size: .9rem;
+  width: 12.6px;
+  fill: var(--ifm-link-color);
+}
+.quickstartCard .start:hover .right_arrow svg {
+  fill: var(--ifm-link-hover-color)
+}
+
+[data-theme='dark'] .quickstartCard .start .right_arrow svg {
+  fill: #fff;
 }
 
 .quickstartCard .recently_updated {
@@ -131,7 +140,16 @@
 
 .infoContainer .time_to_complete {
   font-weight: 700;
-  
+}
+
+.infoContainer .time_to_complete svg {
+  fill: var(--ifm-menu-color);
+  width: 18px;
+  margin: 0 4px -2px 0;
+}
+
+[data-theme='dark'] .infoContainer .time_to_complete svg {
+  fill: #fff;
 }
 
 .infoContainer .recently_updated {

@@ -15,7 +15,8 @@ In a data platform, dimensions is part of a larger structure called a semantic m
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
-All dimensions require a `name`, `type` and in some cases, an `expr` parameter. 
+All dimensions require a `name`, `type` and in some cases, an `expr` parameter. The `name` for your dimension must be unique to the semantic model and can not be the same as an existing `entity` or `measure` within that same model.
+
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |

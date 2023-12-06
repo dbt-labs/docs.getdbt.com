@@ -21,33 +21,9 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 :::
 
-<h2> Overview of {frontMatter.meta.pypi_package} </h2>
+import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<ul>
-    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
-    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
-    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
-    <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
-    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
-    </ul>
-
-
-<h2> Installing {frontMatter.meta.pypi_package} </h2>
-
-pip is the easiest way to install the adapter:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
-
-<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
-
-<h2> Configuring {frontMatter.meta.pypi_package} </h2>
-
-<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
-
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+<SetUpPages meta={frontMatter.meta} />
  
 Follow the repository's link for OS dependencies.
 
@@ -60,7 +36,6 @@ Before connecting from project to Dremio Cloud, follow these prerequisite steps:
 * Ensure that you have the ID of the Sonar project that you want to use. See [Obtaining the ID of a Project](https://docs.dremio.com/cloud/cloud-entities/projects/#obtaining-the-id-of-a-project).
 * Ensure that you have a personal access token (PAT) for authenticating to Dremio Cloud. See [Creating a Token](https://docs.dremio.com/cloud/security/authentication/personal-access-token/#creating-a-token).
 * Ensure that Python 3.9.x or later is installed on the system that you are running dbt on.
-
 
 
 ## Prerequisites for Dremio Software
