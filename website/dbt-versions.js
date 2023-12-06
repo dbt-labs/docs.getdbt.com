@@ -27,6 +27,10 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "reference/resource-properties/unit-tests",
+    "firstVersion": "1.7",
+  },
+  {
     "page": "reference/resource-configs/store_failures_as",
     "firstVersion": "1.7",
   },
