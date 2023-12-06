@@ -129,7 +129,7 @@ with the following configuration parameters:
             'columns': ['<column_name>', ...],
             'unique': <bool>,
             'type': '{ HASH | B-TREE | GIST | SP-GIST | GIN | BRIN }',
-    ]
+    }]
 ) }}
 
 select * from {{ ref('my_base_table') }}
