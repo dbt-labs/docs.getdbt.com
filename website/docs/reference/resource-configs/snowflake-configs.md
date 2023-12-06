@@ -357,7 +357,7 @@ Dynamic tables are supported with the following configuration parameters:
 
 | Parameter                 | Type     | Required | Default   | Change Monitoring Support | Reference                                    |
 |---------------------------|----------|----------|-----------|---------------------------|----------------------------------------------|
-| `on_configuration_change` | STRING   | NO       | `'apply'` | N/A                       |                                              |
+| `on_configuration_change` | STRING   | NO       | `apply` | N/A                       |                                              |
 | `target_lag`              | STRING   | YES      |           | ALTER                     | [Target lag](#target-lag)                    |
 | `snowflake_warehouse`     | STRING   | YES      |           | ALTER                     | [Warehouse](#configuring-virtual-warehouses) |
 
