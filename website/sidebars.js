@@ -744,6 +744,7 @@ const sidebarSettings = {
             "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
+            "reference/resource-properties/unit-tests",
             "reference/resource-properties/versions",
           ],
         },
