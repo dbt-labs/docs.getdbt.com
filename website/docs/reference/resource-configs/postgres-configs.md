@@ -127,7 +127,7 @@ with the following configuration parameters:
     indexes=[
         {
             'columns': ['<column_name>', ...],
-            'unique': <bool>},
+            'unique': <bool>,
             'type': '{ HASH | B-TREE | GIST | SP-GIST | GIN | BRIN }',
     ]
 ) }}
