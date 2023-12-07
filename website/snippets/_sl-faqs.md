@@ -10,6 +10,11 @@
   
     As we refine MetricFlow’s API layers, some users may find it easier to set up their own custom service layers for managing query requests. This is not currently recommended, as the API boundaries around MetricFlow are not sufficiently well-defined for broad-based community use
 
+- **Why is my query limited to 100 rows in the dbt Cloud CLI?**
+- The default `limit` for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
+  
+  However, you can change this limit if needed by setting the `--limit` option in your query. For example, to return 1000 rows, you can run `dbt sl list metrics --limit 1000`.
+
 - **Can I reference MetricFlow queries inside dbt models?**
   - dbt relies on Jinja macros to compile SQL, while MetricFlow is Python-based and does direct SQL rendering targeting at a specific dialect. MetricFlow does not support pass-through rendering of Jinja macros, so we can’t easily reference MetricFlow queries inside of dbt models.
   
