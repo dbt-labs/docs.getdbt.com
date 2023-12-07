@@ -111,10 +111,10 @@ models:
 The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html)
 with the following configuration parameters:
 
-| Parameter               | Type             | Required | Default | Change Monitoring Support |
-|-------------------------|------------------|----------|---------|---------------------------|
-| `on_configuration_change` | <string>         | no       | `apply` | n/a                       |
-| [indexes](#indexes)     | [{<dictionary>}] | no       | `none`  | alter                     |
+| Parameter                 | Type         | Required | Default | Change Monitoring Support |
+|---------------------------|--------------|----------|---------|---------------------------|
+| `on_configuration_change` | <string>     | no       | `apply` | n/a                       |
+| [indexes](#indexes)       | <dictionary> | no       | `none`  | alter                     |
 
 The `indexes` parameter corresponds to that of a table, as linked above.
 It's worth noting that, unlike with tables, dbt will monitor this parameter for changes and apply the changes without dropping the materialized view.
@@ -123,7 +123,7 @@ This happens via a `DROP/CREATE` of the indexes, which could be thought of as a 
 Find more information about materialized view parameters in the Postgres docs:
 - [CREATE MATERIALIZED VIEW](https://www.postgresql.org/docs/current/sql-creatematerializedview.html)
 
-<VersionBlock lastVersion="1.6">
+<VersionBlock firstVersion="1.6" lastVersion="1.6">
 
 ### Limitations
 
