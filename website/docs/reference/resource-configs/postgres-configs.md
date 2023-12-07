@@ -111,31 +111,85 @@ models:
 The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html)
 with the following configuration parameters:
 
-| Parameter                 | Type       | Required | Default   | Change Monitoring Support | Reference           |
-|---------------------------|------------|----------|-----------|---------------------------|---------------------|
-| `on_configuration_change` | STRING     | NO       | `'apply'` | N/A                       |                     |
-| `indexes`                 | LIST[DICT] | NO       |           | ALTER                     | [Indexes](#indexes) |
+| Parameter                 | Type             | Required | Default | Change Monitoring Support |
+|---------------------------|------------------|----------|---------|---------------------------|
+| `on_configuration_change` | <string>         | no       | `apply` | n/a                       |
+| [`indexes`](#indexes)     | [{<dictionary>}] | no       | `none`  | alter                     |
 
-#### Sample model file:
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
 
-<File name='postgres_materialized_view.sql'>
+<TabItem value="project-yaml">
 
-```sql
-{{ config(
-    materialized='materialized_view',
-    on_configuration_change='{ apply | continue | fail }'
-    indexes=[
-        {
-            'columns': ['<column_name>', ...],
-            'unique': <bool>,
-            'type': '{ HASH | B-TREE | GIST | SP-GIST | GIN | BRIN }',
-    }]
-) }}
+<File name='dbt_project.yml'>
 
-select * from {{ ref('my_base_table') }}
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
+    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[indexes](#indexes):
+      - columns: [<column-name>]
+        unique: true | false
+        type: hash | btree
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): materialized_view
+      on_configuration_change: apply | continue | fail
+      [indexes](#indexes):
+        - columns: [<column-name>]
+          unique: true | false
+          type: hash | btree
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="materialized_view",
+    on_configuration_change="apply" | "continue" | "fail"
+    [indexes](#indexes)=[
+        {
+            "columns": ["<column-name>"],
+            "unique": true | false,
+            "type": "hash" | "btree",
+        }
+    ]
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 The `indexes` parameter corresponds to that of a table, as linked above.
 It's worth noting that, unlike with tables, dbt will monitor this parameter for changes and apply the changes without dropping the materialized view.
