@@ -1,7 +1,7 @@
 
 <VersionBlock firstVersion="1.6">
 
-- Have a dbt Cloud Team or Enterprise account. Suitable for both Multi-tenant and Single-tenant deploymnet. 
+- Have a dbt Cloud Team or Enterprise account. Suitable for both Multi-tenant and Single-tenant deployment. 
     - Note: Single-tenant accounts should contact their account representative for necessary setup and enablement.
 - Have both your production and development environments running [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-core-in-cloud).
 - Use Snowflake, BigQuery, Databricks, or Redshift.
