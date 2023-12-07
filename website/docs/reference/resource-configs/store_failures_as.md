@@ -29,7 +29,7 @@ where 1=0
 
 #### Generic test
 
-[Generic tests](https://docs.getdbt.com/docs/build/tests#generic-tests) in `models/_models.yml` file
+[Generic tests](https://docs.getdbt.com/docs/build/tests#generic-data-tests) in `models/_models.yml` file
 
 ```yaml
 models:

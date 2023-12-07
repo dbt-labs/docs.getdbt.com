@@ -133,9 +133,9 @@ This model tries to parse the raw string value into a Python datetime. When not 
 
 #### Testing the result
 
-During the build process, dbt will check if any of the values are null. This is using the built-in [`not_null`](https://docs.getdbt.com/docs/building-a-dbt-project/tests#generic-tests) test, which will generate and execute SQL in the data platform.
+During the build process, dbt will check if any of the values are null. This is using the built-in [`not_null`](https://docs.getdbt.com/docs/building-a-dbt-project/tests#generic-data-tests) test, which will generate and execute SQL in the data platform.
 
-Our initial recommendation for testing Python models is to use [generic](https://docs.getdbt.com/docs/building-a-dbt-project/tests#generic-tests) and [singular](https://docs.getdbt.com/docs/building-a-dbt-project/tests#singular-data-tests) tests.
+Our initial recommendation for testing Python models is to use [generic](https://docs.getdbt.com/docs/building-a-dbt-project/tests#generic-data-tests) and [singular](https://docs.getdbt.com/docs/building-a-dbt-project/tests#singular-data-tests) tests.
 
 ```yaml
 version: 2
