@@ -108,7 +108,7 @@ In general for Redshift, it’s still good practice to define your primary keys 
 
 ### Google BigQuery
 
-BigQuery is pretty unique here in that it doesn’t support or enforce primary keys. If your team is on BigQuery, you’ll need to have some [pretty solid testing](/docs/build/data-tests) in place to ensure your primary key fields are unique and non-null.
+BigQuery is pretty unique here in that it doesn’t support or enforce primary keys. If your team is on BigQuery, you’ll need to have some [pretty solid data testing](/docs/build/data-tests) in place to ensure your primary key fields are unique and non-null.
 
 ### Databricks
 
