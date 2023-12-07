@@ -116,6 +116,84 @@ with the following configuration parameters:
 | `on_configuration_change` | string     | no       | `apply` | n/a                       |
 | [indexes](#indexes)       | dictionary | no       | `none`  | alter                     |
 
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
+    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[indexes](#indexes):
+      - columns: [<column-name>]
+        unique: true | false
+        type: hash | btree
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): materialized_view
+      on_configuration_change: apply | continue | fail
+      [indexes](#indexes):
+        - columns: [<column-name>]
+          unique: true | false
+          type: hash | btree
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="materialized_view",
+    on_configuration_change="apply" | "continue" | "fail",
+    [indexes](#indexes)=[
+        {
+            "columns": ["<column-name>"],
+            "unique": true | false,
+            "type": "hash" | "btree",
+        }
+    ]
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
 The `indexes` parameter corresponds to that of a table, as linked above.
 It's worth noting that, unlike with tables, dbt will monitor this parameter for changes and apply the changes without dropping the materialized view.
 This happens via a `DROP/CREATE` of the indexes, which could be thought of as a `ALTER` of the materialized view.
