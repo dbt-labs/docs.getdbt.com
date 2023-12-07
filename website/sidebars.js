@@ -556,8 +556,6 @@ const sidebarSettings = {
                     "docs/dbt-cloud-apis/discovery-schema-job",
                     "docs/dbt-cloud-apis/discovery-schema-job-model",
                     "docs/dbt-cloud-apis/discovery-schema-job-models",
-                    "docs/dbt-cloud-apis/discovery-schema-job-metric",
-                    "docs/dbt-cloud-apis/discovery-schema-job-metrics",
                     "docs/dbt-cloud-apis/discovery-schema-job-source",
                     "docs/dbt-cloud-apis/discovery-schema-job-sources",
                     "docs/dbt-cloud-apis/discovery-schema-job-seed",

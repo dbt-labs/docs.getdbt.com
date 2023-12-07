@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/dbt-cloud-apis/discovery-schema-job-metric",
+      "destination": "/docs/dbt-cloud-apis/discovery-schema-environment",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/discovery-schema-job-metrics",
+      "destination": "/docs/dbt-cloud-apis/discovery-schema-environment",
+      "permanent": true
+    },
+    {
       "source": "/docs/build/metrics",
       "destination": "/docs/build/build-metrics-intro",
       "permanent": true
