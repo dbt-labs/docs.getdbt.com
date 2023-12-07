@@ -260,7 +260,7 @@ select ...
 
 </File>
 
-#### Disable alldata tests from a package
+#### Disable all data tests from a package
 
 <File name='dbt_project.yml'>
 
