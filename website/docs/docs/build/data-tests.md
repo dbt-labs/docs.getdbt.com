@@ -21,7 +21,7 @@ You can use data tests to improve the integrity of the SQL in each model by maki
 
 Data tests return a set of failing records. Generic data tests (f.k.a. schema tests) are defined using `test` blocks.
 
-Like almost everything in dbt, data tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the test returns zero failing rows, it passes, and your assertion has been validated.
+Like almost everything in dbt, data tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the data test returns zero failing rows, it passes, and your assertion has been validated.
 
 There are two ways of defining data tests in dbt:
 * A **singular** test is testing in its simplest form: If you can write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](/reference/project-configs/test-paths). It's now a test, and it will be executed by the `dbt test` command.
