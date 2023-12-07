@@ -14,7 +14,7 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [models](/docs/build/models) | Each model lives in a single file and contains logic that either transforms raw data into a dataset that is ready for analytics or, more often, is an intermediate step in such a transformation. |
 | [snapshots](/docs/build/snapshots) | A way to capture the state of your mutable tables so you can refer to it later. |
 | [seeds](/docs/build/seeds) | CSV files with static data that you can load into your data platform with dbt. |
-| [tests](/docs/build/data-tests) | SQL queries that you can write to test the models and resources in your project. |
+| [data tests](/docs/build/data-tests) | SQL queries that you can write to test the models and resources in your project. |
 | [macros](/docs/build/jinja-macros) | Blocks of code that you can reuse multiple times. |
 | [docs](/docs/collaborate/documentation) | Docs for your project that you can build. |
 | [sources](/docs/build/sources) | A way to name and describe the data loaded into your warehouse by your Extract and Load tools. |
