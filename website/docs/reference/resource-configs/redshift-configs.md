@@ -114,35 +114,93 @@ models:
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
 with the following configuration parameters:
 
-| Parameter                 | Type         | Required | Default                | Change Monitoring Support | Reference                                       |
-|---------------------------|--------------|----------|------------------------|---------------------------|-------------------------------------------------|
-| `on_configuration_change` | STRING       | NO       | `'apply'`              | N/A                       |                                                 |
-| `dist`                    | STRING       | NO       | `'EVEN'`               | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-| `sort`                    | LIST[STRING] | NO       |                        | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-| `sort_type`               | STRING       | NO       | `'AUTO'` if no `sort`  | DROP/CREATE               | [Sortkey / Distkey](#using-sortkey-and-distkey) |
-|                           |              |          | `'COMPOUND'` if `sort` |                           |                                                 |
-| `auto_refresh`            | BOOLEAN      | NO       | `False`                | ALTER                     | [Auto refresh](#auto-refresh)                   |
-| `backup`                  | BOOLEAN      | HO       | `True`                 | N/A                       | [Backup](#backup)                               |
+| Parameter                                 | Type         | Required | Default              | Change Monitoring Support |
+|-------------------------------------------|--------------|----------|----------------------|---------------------------|
+| `on_configuration_change`                 | `<string>`   | no       | `apply`              | n/a                       |
+| [`dist`](#using-sortkey-and-distkey)      | `<string>`   | no       | `even`               | drop/create               |
+| [`sort`](#using-sortkey-and-distkey)      | `[<string>]` | no       | `none`               | drop/create               |
+| [`sort_type`](#using-sortkey-and-distkey) | `<string>`   | no       | `auto` if no `sort`  | drop/create               |
+|                                           |              |          | `compound` if `sort` |                           |
+| [`auto_refresh`](#auto-refresh)           | `<boolean>`  | no       | `false`              | alter                     |
+| [`backup`](#backup)                       | `<string>`   | no       | `true`               | n/a                       |
 
-#### Sample model file:
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
 
-<File name='redshift_materialized_view.sql'>
 
-```sql
-{{ config(
-    materialized='materialized_view',
-    on_configuration_change='{ apply | continue | fail }'
-    dist='{ ALL | AUTO | EVEN | <field_name> }',
-    sort=['<field_name>', ...],
-    sort_type='{ AUTO | COMPOUND | INTERLEAVED }'
-    auto_refresh=<bool>,
-    backup=<bool>,
-) }}
+<TabItem value="project-yaml">
 
-select * from {{ ref('my_base_table') }}
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
+    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
+    [+](/reference/resource-configs/plus-prefix)[sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
+    [+](/reference/resource-configs/plus-prefix)[sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
+    [+](/reference/resource-configs/plus-prefix)[auto_refresh](#auto-refresh): true | false
+    [+](/reference/resource-configs/plus-prefix)[backup](#backup): true | false
 ```
 
 </File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): materialized_view
+      on_configuration_change: apply | continue | fail
+      [dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
+      [sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
+      [sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
+      [auto_refresh](#auto-refresh): true | false
+      [backup](#backup): true | false
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    materialized="materialized_view",
+    on_configuration_change="apply" | "continue" | "fail",
+    dist="all" | "auto" | "even" | "<field-name>",
+    sort=["<field-name>"],
+    sort_type="auto" | "compound" | "interleaved",
+    auto_refresh=true | false,
+    backup=true | false,
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 Many of these parameters correspond to their table counterparts and have been linked above.
 The parameters unique to materialized views are the auto-refresh and backup functionality, which are covered below.
@@ -151,9 +209,9 @@ Find more information about the [CREATE MATERIALIZED VIEW](https://docs.aws.amaz
 
 #### Auto-refresh
 
-| Parameter      | Type    | Required | Default | Change Monitoring Support |
-|----------------|---------|----------|---------|---------------------------|
-| `auto_refresh` | BOOLEAN | NO       | `False` | ALTER                     |
+| Parameter      | Type        | Required | Default | Change Monitoring Support |
+|----------------|-------------|----------|---------|---------------------------|
+| `auto_refresh` | `<boolean>` | no       | `false` | alter                     |
 
 Redshift supports [automatic refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html#materialized-view-auto-refresh) configuration for materialized views.
 By default, a materialized view does not automatically refresh.
@@ -163,9 +221,9 @@ Find more information about the [parameters](https://docs.aws.amazon.com/redshif
 
 #### Backup
 
-| Parameter | Type    | Required | Default | Change Monitoring Support |
-|-----------|---------|----------|---------|---------------------------|
-| `backup`  | BOOLEAN | NO       | `True`  | N/A                       |
+| Parameter | Type        | Required | Default | Change Monitoring Support |
+|-----------|-------------|----------|---------|---------------------------|
+| `backup`  | `<boolean>` | no       | `true`  | n/a                       |
 
 Redshift supports [backup](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html) configuration of clusters at the object level.
 This parameter identifies if the materialized view should be backed up as part of the cluster snapshot.
