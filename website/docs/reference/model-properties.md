@@ -25,7 +25,7 @@ models:
       - <constraint>
     [tests](/reference/resource-properties/data-tests):
       - <test>
-      - ... # declare additional tests
+      - ... # declare additional data tests
     [columns](/reference/resource-properties/columns):
       - name: <column_name> # required
         [description](/reference/resource-properties/description): <markdown_string>
@@ -35,7 +35,7 @@ models:
           - <constraint>
         [tests](/reference/resource-properties/data-tests):
           - <test>
-          - ... # declare additional tests
+          - ... # declare additional data tests
         [tags](/reference/resource-configs/tags): [<string>]
 
       - name: ... # declare properties of additional columns
@@ -53,7 +53,7 @@ models:
           [<model_config>](/reference/model-configs): <config_value>
         [tests](/reference/resource-properties/data-tests):
           - <test>
-          - ... # declare additional tests
+          - ... # declare additional data tests
         columns:
           # include/exclude columns from the top-level model properties
           - [include](/reference/resource-properties/include-exclude): <include_value>
@@ -65,7 +65,7 @@ models:
               - <constraint>
             [tests](/reference/resource-properties/data-tests):
               - <test>
-              - ... # declare additional tests
+              - ... # declare additional data tests
             [tags](/reference/resource-configs/tags): [<string>]
         - v: ... # declare additional versions
 
