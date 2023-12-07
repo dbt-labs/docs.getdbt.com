@@ -556,3 +556,8 @@ Keep in mind that modifying your shell configuration files can have an impact on
 
 </details>
 
+<details>
+<summary>Why is my query limited to 100 rows in the dbt Cloud CLI?</summary> 
+The default <Code>limit</Code> for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.<br /><br />
+However, you can change this limit if needed by setting the <code>--limit</code> option in your query. For example, to return 1000 rows, you can run <code>dbt sl list metrics --limit 1000</code>.
+</details>
