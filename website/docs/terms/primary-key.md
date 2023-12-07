@@ -141,7 +141,7 @@ If you don't have a field in your table that would act as a natural primary key,
 If your data warehouse doesn’t provide out-of-the box support and enforcement for primary keys, it’s important to clearly label and put your own constraints on primary key fields. This could look like:
 
 * **Creating a consistent naming convention for your primary keys**: You may see an `id` field or fields prefixed with `pk_` (ex. `pk_order_id`) to identify primary keys. You may also see the primary key be named as the obvious table grain (ex. In the jaffle shop’s `orders` table, the primary key is called `order_id`).
-* **Adding automated [tests](/docs/build/data-tests) to your data models**: Use a data tool, such as dbt, to create not null and unique tests for your primary key fields.
+* **Adding automated [data tests](/docs/build/data-tests) to your data models**: Use a data tool, such as dbt, to create not null and unique tests for your primary key fields.
 
 ## Testing primary keys
 
