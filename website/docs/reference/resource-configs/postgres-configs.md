@@ -145,6 +145,7 @@ models:
 
 </TabItem>
 
+
 <TabItem value="property-yaml">
 
 <File name='models/properties.yml'>
@@ -167,6 +168,7 @@ models:
 
 </TabItem>
 
+
 <TabItem value="config">
 
 <File name='models/<model_name>.sql'>
@@ -174,7 +176,7 @@ models:
 ```jinja
 {{ config(
     [materialized](/reference/resource-configs/materialized)="materialized_view",
-    on_configuration_change="apply" | "continue" | "fail"
+    on_configuration_change="apply" | "continue" | "fail",
     [indexes](#indexes)=[
         {
             "columns": ["<column-name>"],
