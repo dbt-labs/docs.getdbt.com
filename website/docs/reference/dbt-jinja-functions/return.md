@@ -1,6 +1,6 @@
 ---
 title: "About return function"
-sidebar_variable: "return"
+sidebar_label: "return"
 id: "return"
 description: "Read this guide to understand the return Jinja function in dbt."
 ---
