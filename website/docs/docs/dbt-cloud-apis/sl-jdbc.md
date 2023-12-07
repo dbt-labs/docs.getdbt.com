@@ -254,11 +254,14 @@ Where filters in API allow for a filter list or string. We recommend using the f
 
 Where Filters have a few objects that you can use:
 
-- `Dimension()` - Used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
+- `Dimension()` - Used for any categorical or time dimensions. `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
 - `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
 
-Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimesion` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'MONTH')`.
+
+Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimesion` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'month')`.
+
+For both `TimeDimension()` and `Dimension()` objects, the grain is only required if the aggregation time dimension for the measures / metrics associated with the where filter is not the same for all measures.
 
 
 - Use the following example to query using a `where` filter with the string format:
@@ -315,7 +318,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   order_by=[-'order_gross_profit']
   }}
 ``` 
-If you are ordering by an object that's been operated on (e.g., change granularity), or you are using the full object notation, descending order must look like:
+If you are ordering by an object that's been operated on (e.g., you changed the the granularity of the time dimension), or you are using the full object notation, descending order must look like:
 
 ```bash
 select * from {{
