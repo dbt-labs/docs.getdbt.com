@@ -355,43 +355,80 @@ of [materialized views](/docs/build/materializations#Materialized-View).
 In particular, dynamic tables have access to the `on_configuration_change` setting.
 Dynamic tables are supported with the following configuration parameters:
 
-| Parameter                 | Type     | Required | Default   | Change Monitoring Support | Reference                                    |
-|---------------------------|----------|----------|-----------|---------------------------|----------------------------------------------|
-| `on_configuration_change` | STRING   | NO       | `apply` | N/A                       |                                              |
-| `target_lag`              | STRING   | YES      |           | ALTER                     | [Target lag](#target-lag)                    |
-| `snowflake_warehouse`     | STRING   | YES      |           | ALTER                     | [Warehouse](#configuring-virtual-warehouses) |
+| Parameter                                                | Type       | Required | Default | Change Monitoring Support |
+|----------------------------------------------------------|------------|----------|---------|---------------------------|
+| `on_configuration_change`                                | `<string>` | no       | `apply` | n/a                       |
+| [`target_lag`](#target-lag)                              | `<string>` | yes      |         | alter                     |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses) | `<string>` | yes      |         | alter                     |
 
-#### Sample model file:
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
 
-<File name='snowflake_dynamic_table.sql'>
 
-```sql
-{{ config(
-    materialized='dynamic_table',
-    on_configuration_change='{ apply | continue | fail }',
-    target_lag='<<int> { seconds | minutes | hours | days } | DOWNSTREAM>',
-    snowflake_warehouse='<warehouse_name>',
-) }}
-
-select * from {{ ref('my_base_table') }}
-```
-
-</File>
-
-#### Sample project file:
+<TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
 
 ```yaml
 models:
-  path:
-    materialized: dynamic_table
-    on_configuration_change: '<apply | continue | fail>'
-    snowflake_warehouse: '<warehouse_name>'
-    target_lag: '<<int> { seconds | minutes | hours | days } | DOWNSTREAM>'
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
+    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
 ```
 
 </File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): dynamic_table
+      on_configuration_change: apply | continue | fail
+      [target_lag](#target-lag): downstream | <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    materialized="dynamic_table",
+    on_configuration_change="apply" | "continue" | "fail",
+    target_lag="downstream" | "<integer> seconds | minutes | hours | days",
+    snowflake_warehouse="<warehouse-name>",
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 Find more information about these parameters in the Snowflake docs:
 - [CREATE DYNAMIC TABLE](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table)
