@@ -19,7 +19,7 @@ Data tests are assertions you make about your models and other resources in your
 
 You can use data tests to improve the integrity of the SQL in each model by making assertions about the results generated. Out of the box, you can test whether a specified column in a model only contains non-null values, unique values, or values that have a corresponding value in another model (for example, a `customer_id` for an `order` corresponds to an `id` in the `customers` model), and values from a specified list. You can extend data tests to suit business logic specific to your organization – any assertion that you can make about your model in the form of a select query can be turned into a data test.
 
-Both types of tests return a set of failing records. Previously, generic/schema tests returned a numeric value representing failures. Generic data tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`.
+Data tests return a set of failing records. Generic data tests (f.k.a. schema tests) are defined using `test` blocks.
 
 Like almost everything in dbt, data tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the test returns zero failing rows, it passes, and your assertion has been validated.
 
