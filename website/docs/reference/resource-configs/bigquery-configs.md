@@ -725,59 +725,146 @@ The `grant_access_to` config is not thread-safe when multiple views need to be a
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
 with the following configuration parameters:
 
-| Parameter                    | Type                 | Required | Default   | Change Monitoring Support | Reference                                        |
-|------------------------------|----------------------|----------|-----------|---------------------------|--------------------------------------------------|
-| `on_configuration_change`    | STRING               | NO       | `'apply'` | N/A                       |                                                  |
-| `cluster_by`                 | LIST[STRING]         | NO       |           | DROP/CREATE               | [Clustering](#clustering-clause)                 |
-| `partition_by`               | DICT                 | NO       |           | DROP/CREATE               | [Partitioning](#partition-clause)                |
-| `enable_refresh`             | BOOLEAN              | NO       | `True`    | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `refresh_interval_minutes`   | FLOAT                | NO       | `30`      | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `max_staleness` (in Preview) | INTERVAL             | NO       |           | ALTER                     | [Auto-refresh](#auto-refresh)                    |
-| `description`                | STRING               | NO       |           | ALTER                     |                                                  |
-| `labels`                     | DICT[STRING, STRING] | NO       |           | ALTER                     | [Labels](#specifying-labels)                     |
-| `hours_to_expiration`        | INTEGER              | NO       |           | ALTER                     | [Table expiration](controlling-table-expiration) |
-| `kms_key_name`               | STRING               | NO       |           | ALTER                     | [KMS encryption](#using-kms-encryption)          |
+| Parameter                                              | Type                   | Required | Default | Change Monitoring Support |
+|--------------------------------------------------------|------------------------|----------|---------|---------------------------|
+| `on_configuration_change`                              | `<string>`             | no       | `apply` | n/a                       |
+| [`cluster_by`](#clustering-clause)                     | `[<string>]`           | no       | `none`  | drop/create               |
+| [`partition_by`](#partition-clause)                    | `{<dictionary>}`       | no       | `none`  | drop/create               |
+| [`enable_refresh`](#auto-refresh)                      | `<boolean>`            | no       | `true`  | alter                     |
+| [`refresh_interval_minutes`](#auto-refresh)            | `<float>`              | no       | `30`    | alter                     |
+| [`max_staleness`](#auto-refresh) (in Preview)          | `<interval>`           | no       | `none`  | alter                     |
+| `description`                                          | `<string>`             | no       | `none`  | alter                     |
+| [`labels`](#specifying-labels)                         | `{<string>: <string>}` | no       | `none`  | alter                     |
+| [`hours_to_expiration`](#controlling-table-expiration) | `<integer>`            | no       | `none`  | alter                     |
+| [`kms_key_name`](#using-kms-encryption)                | `<string>`             | no       | `none`  | alter                     |
 
-#### Sample model file:
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
 
-<File name='bigquery_materialized_view.sql'>
 
-```sql
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+directly to the materialized view in place.
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
+    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[cluster_by](#clustering-clause): <field-name> | [<field-name>]
+    [+](/reference/resource-configs/plus-prefix)[partition_by](#partition-clause):
+      - field: <field-name>
+      - data_type: timestamp | date | datetime | int64
+        # only if `data_type` is not 'int64'
+      - granularity: hour | day | month | year
+        # only if `data_type` is 'int64'
+      - range:
+        - start: <integer>
+        - end: <integer>
+        - interval: <integer>
+    [+](/reference/resource-configs/plus-prefix)[enable_refresh](#auto-refresh): true | false
+    [+](/reference/resource-configs/plus-prefix)[refresh_interval_minutes](#auto-refresh): <float>
+    [+](/reference/resource-configs/plus-prefix)[max_staleness](#auto-refresh): <interval>
+    [+](/reference/resource-configs/plus-prefix)description: <string>
+    [+](/reference/resource-configs/plus-prefix)[labels](#specifying-labels): {<label-name>: <label-value>}
+    [+](/reference/resource-configs/plus-prefix)[hours_to_expiration](#acontrolling-table-expiration): <integer>
+    [+](/reference/resource-configs/plus-prefix)[kms_key_name](##using-kms-encryption): <path-to-key>
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): materialized_view
+      on_configuration_change: apply | continue | fail
+      [cluster_by](#clustering-clause): <field-name> | [<field-name>]
+      [partition_by](#partition-clause):
+        - field: <field-name>
+        - data_type: timestamp | date | datetime | int64
+          # only if `data_type` is not 'int64'
+        - granularity: hour | day | month | year
+          # only if `data_type` is 'int64'
+        - range:
+          - start: <integer>
+          - end: <integer>
+          - interval: <integer>
+      [enable_refresh](#auto-refresh): true | false
+      [refresh_interval_minutes](#auto-refresh): <float>
+      [max_staleness](#auto-refresh): <interval>
+      description: <string>
+      [labels](#specifying-labels): {<label-name>: <label-value>}
+      [hours_to_expiration](#acontrolling-table-expiration): <integer>
+      [kms_key_name](##using-kms-encryption): <path-to-key>
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
 {{ config(
     materialized='materialized_view',
-    on_configuration_change='{ apply | continue | fail }'
-    cluster_by=['<field_name>', ...],
+    on_configuration_change="apply" | "continue" | "fail",
+    cluster_by="<field-name>" | ["<field-name>"],
     partition_by={
-        'field': '<field_name>',
-        'data_type': '<timestamp | date | datetime | int64>',
+        "field": "<field-name>",
+        "data_type": "timestamp" | "date" | "datetime" | "int64",
 
         # only if `data_type` is not 'int64'
-        'granularity': '<hour | day | month | year>'
+        "granularity": "hour" | "day" | "month" | "year,
 
         # only if `data_type` is 'int64'
-        'range': {
-            'start': <int>,
-            'end': <int>,
-            'interval': <int>,
+        "range": {
+            "start": <integer>,
+            "end": <integer>,
+            "interval": <integer>,
         }
     },
 
     # auto-refresh options
-    enable_refresh=<bool>,
+    enable_refresh= true | false,
     refresh_interval_minutes=<float>,
-    max_staleness='<interval>',
+    max_staleness="<interval>",
 
     # additional options
-    description='<long description>',
-    labels={'<label_name>': '<label_value>', ...},
-    hours_to_expiration=<int>,
-    kms_key_name='<path_to_key>',
+    description="<description>",
+    labels={
+        "<label-name>": "<label-value>",
+    },
+    hours_to_expiration=<integer>,
+    kms_key_name="<path_to_key>",
 ) }}
-
-select * from {{ ref('my_base_table') }}
 ```
 
 </File>
+
+</TabItem>
+
+</Tabs>
 
 Many of these parameters correspond to their table counterparts and have been linked above.
 The set of parameters which are unique to materialized views covers auto-refresh functionality, which is covered [below](#auto-refresh).
@@ -788,11 +875,11 @@ Find more information about these parameters in the BigQuery docs:
 
 ### Auto-refresh
 
-| Parameter                     | Type     | Required | Default | Change Monitoring Support |
-|-------------------------------|----------|----------|---------|---------------------------|
-| `enable_refresh`              | BOOLEAN  | NO       | `True`  | ALTER                     |
-| `refresh_interval_minutes`    | FLOAT    | NO       | `30`    | ALTER                     |
-| `max_staleness` (in Preview)  | INTERVAL | NO       |         | ALTER                     |
+| Parameter                    | Type         | Required | Default | Change Monitoring Support |
+|------------------------------|--------------|----------|---------|---------------------------|
+| `enable_refresh`             | `<boolean>`  | no       | `true`  | alter                     |
+| `refresh_interval_minutes`   | `<float>`    | no       | `30`    | alter                     |
+| `max_staleness` (in Preview) | `<interval>` | no       | `none`  | alter                     |
 
 BigQuery supports [automatic refresh](https://cloud.google.com/bigquery/docs/materialized-views-manage#automatic_refresh) configuration for materialized views.
 By default, a materialized view will automatically refresh within 5 minutes of changes in the base table, but no more frequently than every 30 minutes.
