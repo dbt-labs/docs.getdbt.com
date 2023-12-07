@@ -17,7 +17,7 @@ You can configure it in all the same places as `store_failures`, including singu
 
 #### Singular test
 
-[Singular test](https://docs.getdbt.com/docs/build/tests#singular-tests) in `tests/singular/check_something.sql` file
+[Singular test](https://docs.getdbt.com/docs/build/tests#singular-data-tests) in `tests/singular/check_something.sql` file
 
 ```sql
 {{ config(store_failures_as="table") }}
