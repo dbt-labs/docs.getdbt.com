@@ -12,7 +12,7 @@ import UpgradeMove from '/snippets/_upgrade-move.md';
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/8aaed0e29f9560bc53d9d3e88325a9597318e375/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation)
+- [CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/8260)
 
@@ -31,6 +31,8 @@ As part of this change, the `loaded_at_field` is no longer required to generate 
 This is a relatively small behavior change, but worth calling out in case you notice that dbt is calculating freshness for _more_ sources than before. To exclude a source from freshness calculations, you have two options:
 - Don't add a `freshness:` block.
 - Explicitly set `freshness: null`
+
+Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) creates or updates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. The `package-lock.yml` file contains a record of all packages installed and, if subsequent `dbt deps` runs contain no updated packages in `depenedencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
 
 ## New and changed features and functionality
 

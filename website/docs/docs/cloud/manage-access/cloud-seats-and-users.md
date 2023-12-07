@@ -43,7 +43,7 @@ If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/m
 
 - To remove a user, go to **Account Settings**, select **Users** under **Teams**. Select the user you want to remove, click **Edit**, and then **Delete**. This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
 
-- To add a user, go to **Account Settings**, select **Users** under **Teams**. Select **Invite Users**. For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/enterprise-permissions).
+- To add a user, go to **Account Settings**, select **Users** under **Teams**. Select [**Invite Users**](docs/cloud/manage-access/invite-users). For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/enterprise-permissions).
 
 <Lightbox src="/img/docs/dbt-cloud/faq-account-settings-enterprise.jpg" width="85%" title="Navigate to Account Settings --> Users to add or remove users" />
 
@@ -76,14 +76,7 @@ To add a user in dbt Cloud, you must be an account owner or have admin privilege
 <Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
 
 
-Now that you've updated your billing, you can now invite users to join your dbt Cloud account:
-
-4. In **Account Settings**, select **Users** under **Teams**.
-5. Select the user you want to add by clicking **Invite Users**.
-6. In the **Invite Users** side panel, add the invited user's email(s), assign their license, and Groups. 
-7. Click **Send Invitations** at the bottom of the page. 
-
-<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-users.jpg" width="85%" title="Navigate to Account Settings -> Users to modify dbt Cloud users" />
+Now that you've updated your billing, you can now [invite users](/docs/cloud/manage-access/invite-users) to join your dbt Cloud account:
 
 Great work! After completing those these steps, your dbt Cloud user count and billing count should now be the same.
 </TabItem>

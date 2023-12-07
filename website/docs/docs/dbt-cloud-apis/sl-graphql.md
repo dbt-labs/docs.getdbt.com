@@ -48,7 +48,7 @@ Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/se
 {"Authorization": "Bearer <SERVICE TOKEN>"}
 ```
 
-Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and environmentId for authentication.
+Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and `environmentId` for authentication.
 
 ### Metadata calls
 
@@ -150,6 +150,60 @@ metricsForDimensions(
 ): [Metric!]!
 ```
 
+**Metric Types**
+
+```graphql
+Metric {
+  name: String!
+  description: String
+  type: MetricType!
+  typeParams: MetricTypeParams!
+  filter: WhereFilter
+  dimensions: [Dimension!]!
+  queryableGranularities: [TimeGranularity!]!
+}
+```
+
+```
+MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
+```
+
+**Metric Type parameters**
+
+```graphql
+MetricTypeParams {
+  measure: MetricInputMeasure
+  inputMeasures: [MetricInputMeasure!]!
+  numerator: MetricInput
+  denominator: MetricInput
+  expr: String
+  window: MetricTimeWindow
+  grainToDate: TimeGranularity
+  metrics: [MetricInput!]
+}
+```
+
+
+**Dimension Types**
+
+```graphql
+Dimension {
+  name: String!
+  description: String
+  type: DimensionType!
+  typeParams: DimensionTypeParams
+  isPartition: Boolean!
+  expr: String
+  queryableGranularities: [TimeGranularity!]!
+}
+```
+
+```
+DimensionType = [CATEGORICAL, TIME]
+```
+
+### Querying
+
 **Create Dimension Values query**
 
 ```graphql
@@ -205,59 +259,128 @@ query(
 ): QueryResult!
 ```
 
-**Metric Types**
+The GraphQL API uses a polling process for querying since queries can be long-running in some cases. It works by first creating a query with a mutation, `createQuery, which returns a query ID. This ID is then used to continuously check (poll) for the results and status of your query. The typical flow would look as follows:
+
+1. Kick off a query
+```graphql
+mutation {
+  createQuery(
+    environmentId: 123456
+    metrics: [{name: "order_total"}]
+    groupBy: [{name: "metric_time"}]
+  ) {
+    queryId  # => Returns 'QueryID_12345678'
+  }
+}
+```
+2. Poll for results
+```graphql
+{
+  query(environmentId: 123456, queryId: "QueryID_12345678") {
+    sql
+    status
+    error
+    totalPages
+    jsonResult
+    arrowResult
+  }
+}
+```
+3. Keep querying 2. at an appropriate interval until status is `FAILED` or `SUCCESSFUL`
+
+### Output format and pagination
+
+**Output format**
+
+By default, the output is in Arrow format. You can switch to JSON format using the following parameter. However, due to performance limitations, we recommend using the JSON parameter for testing and validation. The JSON received is a base64 encoded string. To access it, you can decode it using a base64 decoder. The JSON is created from pandas, which means you can change it back to a dataframe using `pandas.read_json(json, orient="table")`. Or you can work with the data directly using `json["data"]`, and find the table schema using `json["schema"]["fields"]`. Alternatively, you can pass `encoded:false` to the jsonResult field to get a raw JSON string directly.
+
 
 ```graphql
-Metric {
-  name: String!
-  description: String
-  type: MetricType!
-  typeParams: MetricTypeParams!
-  filter: WhereFilter
-  dimensions: [Dimension!]!
-  queryableGranularities: [TimeGranularity!]!
+{
+  query(environmentId: BigInt!, queryId: Int!, pageNum: Int! = 1) {
+    sql
+    status
+    error
+    totalPages
+    arrowResult
+    jsonResult(orient: PandasJsonOrient! = TABLE, encoded: Boolean! = true)
+  }
 }
 ```
 
-```
-MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
-```
+The results default to the table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
 
-**Metric Type parameters**
+**Pagination**
 
-```graphql
-MetricTypeParams {
-  measure: MetricInputMeasure
-  inputMeasures: [MetricInputMeasure!]!
-  numerator: MetricInput
-  denominator: MetricInput
-  expr: String
-  window: MetricTimeWindow
-  grainToDate: TimeGranularity
-  metrics: [MetricInput!]
+By default, we return 1024 rows per page. If your result set exceeds this, you need to increase the page number using the `pageNum` option.
+
+### Run a Python query
+
+The `arrowResult` in the GraphQL query response is a byte dump, which isn't visually useful. You can convert this byte data into an Arrow table using any Arrow-supported language. Refer to the following Python example explaining how to query and decode the arrow result:
+
+
+```python
+import base64
+import pyarrow as pa
+import time
+
+headers = {"Authorization":"Bearer <token>"}
+query_result_request = """
+{
+  query(environmentId: 70, queryId: "12345678") {
+    sql
+    status
+    error
+    arrowResult
+  }
 }
-```
+"""
 
+while True:
+  gql_response = requests.post(
+    "https://semantic-layer.cloud.getdbt.com/api/graphql",
+    json={"query": query_result_request},
+    headers=headers,
+  )
+  if gql_response.json()["data"]["status"] in ["FAILED", "SUCCESSFUL"]:
+    break
+  # Set an appropriate interval between polling requests
+  time.sleep(1)
 
-**Dimension Types**
-
-```graphql
-Dimension {
-  name: String!
-  description: String
-  type: DimensionType!
-  typeParams: DimensionTypeParams
-  isPartition: Boolean!
-  expr: String
-  queryableGranularities: [TimeGranularity!]!
+"""
+gql_response.json() => 
+{
+  "data": {
+    "query": {
+      "sql": "SELECT\n  ordered_at AS metric_time__day\n  , SUM(order_total) AS order_total\nFROM semantic_layer.orders orders_src_1\nGROUP BY\n  ordered_at",
+      "status": "SUCCESSFUL",
+      "error": null,
+      "arrowResult": "arrow-byte-data"
+    }
+  }
 }
+"""
+
+def to_arrow_table(byte_string: str) -> pa.Table:
+  """Get a raw base64 string and convert to an Arrow Table."""
+  with pa.ipc.open_stream(base64.b64decode(res)) as reader:
+    return pa.Table.from_batches(reader, reader.schema)
+
+
+arrow_table = to_arrow_table(gql_response.json()["data"]["query"]["arrowResult"])
+
+# Perform whatever functionality is available, like convert to a pandas table.
+print(arrow_table.to_pandas())
+"""
+order_total  ordered_at
+          3  2023-08-07
+        112  2023-08-08
+         12  2023-08-09
+       5123  2023-08-10
+"""
 ```
 
-```
-DimensionType = [CATEGORICAL, TIME]
-```
-
-### Create Query examples 
+### Additional Create Query examples 
 
 The following section provides query examples for the GraphQL API, such as how to query metrics, dimensions, where filters, and more.
 
@@ -359,7 +482,7 @@ mutation {
 }
 ```
 
-**Query with Explain** 
+**Query with just compiling SQL** 
 
 This takes the same inputs as the `createQuery` mutation.
 
@@ -373,90 +496,4 @@ mutation {
     sql
   }
 }
-```
-
-### Output format and pagination
-
-**Output format**
-
-By default, the output is in Arrow format. You can switch to JSON format using the following parameter. However, due to performance limitations, we recommend using the JSON parameter for testing and validation. The JSON received is a base64 encoded string. To access it, you can decode it using a base64 decoder. The JSON is created from pandas, which means you can change it back to a dataframe using `pandas.read_json(json, orient="table")`. Or you can work with the data directly using `json["data"]`, and find the table schema using `json["schema"]["fields"]`. Alternatively, you can pass `encoded:false` to the jsonResult field to get a raw JSON string directly.
-
-
-```graphql
-{
-  query(environmentId: BigInt!, queryId: Int!, pageNum: Int! = 1) {
-    sql
-    status
-    error
-    totalPages
-    arrowResult
-    jsonResult(orient: PandasJsonOrient! = TABLE, encoded: Boolean! = true)
-  }
-}
-```
-
-The results default to the table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
-
-**Pagination**
-
-By default, we return 1024 rows per page. If your result set exceeds this, you need to increase the page number using the `pageNum` option.
-
-### Run a Python query
-
-The `arrowResult` in the GraphQL query response is a byte dump, which isn't visually useful. You can convert this byte data into an Arrow table using any Arrow-supported language. Refer to the following Python example explaining how to query and decode the arrow result:
-
-
-```python
-import base64
-import pyarrow as pa
-
-headers = {"Authorization":"Bearer <token>"}
-query_result_request = """
-{
-  query(environmentId: 70, queryId: "12345678") {
-    sql
-    status
-    error
-    arrowResult
-  }
-}
-"""
-
-gql_response = requests.post(
-  "https://semantic-layer.cloud.getdbt.com/api/graphql",
-  json={"query": query_result_request},
-  headers=headers,
-)
-
-"""
-gql_response.json() => 
-{
-  "data": {
-    "query": {
-      "sql": "SELECT\n  ordered_at AS metric_time__day\n  , SUM(order_total) AS order_total\nFROM semantic_layer.orders orders_src_1\nGROUP BY\n  ordered_at",
-      "status": "SUCCESSFUL",
-      "error": null,
-      "arrowResult": "arrow-byte-data"
-    }
-  }
-}
-"""
-
-def to_arrow_table(byte_string: str) -> pa.Table:
-  """Get a raw base64 string and convert to an Arrow Table."""
-  with pa.ipc.open_stream(base64.b64decode(res)) as reader:
-    return pa.Table.from_batches(reader, reader.schema)
-
-
-arrow_table = to_arrow_table(gql_response.json()["data"]["query"]["arrowResult"])
-
-# Perform whatever functionality is available, like convert to a pandas table.
-print(arrow_table.to_pandas())
-"""
-order_total  ordered_at
-          3  2023-08-07
-        112  2023-08-08
-         12  2023-08-09
-       5123  2023-08-10
-"""
 ```

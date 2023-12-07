@@ -74,7 +74,7 @@ Notes:
 * Consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots (see above [FAQ](#faqs))
 
 
-<File name='snapshots/orders_snaphot.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {{
