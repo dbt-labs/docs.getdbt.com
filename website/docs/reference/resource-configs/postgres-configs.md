@@ -111,10 +111,10 @@ models:
 The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html)
 with the following configuration parameters:
 
-| Parameter                 | Type       | Required | Default | Change Monitoring Support |
-|---------------------------|------------|----------|---------|---------------------------|
-| `on_configuration_change` | string     | no       | `apply` | n/a                       |
-| [indexes](#indexes)       | dictionary | no       | `none`  | alter                     |
+| Parameter                 | Type               | Required | Default | Change Monitoring Support |
+|---------------------------|--------------------|----------|---------|---------------------------|
+| `on_configuration_change` | `<string>`         | no       | `apply` | n/a                       |
+| [`indexes`](#indexes)     | `[{<dictionary>}]` | no       | `none`  | alter                     |
 
 <Tabs
   groupId="config-languages"
