@@ -71,6 +71,6 @@ As with most other configurations, `store_failures_as` is "clobbered" when appli
 Additional resources: 
 
 - [Test configurations](/reference/data-test-configs#related-documentation)
-- [Test-specific configurations](/reference/data-test-configs#test-specific-configurations)
+- [Test-specific configurations](/reference/data-test-configs#test-data-specific-configurations)
 - [Configuring directories of models in dbt_project.yml](/reference/model-configs#configuring-directories-of-models-in-dbt_projectyml)
 - [Config inheritance](/reference/configs-and-properties#config-inheritance)
