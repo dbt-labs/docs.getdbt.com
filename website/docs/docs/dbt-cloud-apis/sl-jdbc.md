@@ -261,7 +261,7 @@ Where Filters have a few objects that you can use:
 
 Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimension` input takes the time dimension name optionally requires granularity, like this: `TimeDimension('metric_time', 'month')`.
 
-For both `TimeDimension()` and `Dimension()` objects, the grain is only required if the aggregation time dimensions for the measures & metrics associated with the where filter have different grains. 
+For both `TimeDimension()` and `Dimension()` objects, the grain is only required if in the WHERE filter if the aggregation time dimensions for the measures & metrics associated with the where filter have different grains. 
 
 For example, consider this Semantic Model and Metric Config which contains two metrics that are aggregated across different time grains. This example shows a single Semantic Model, but the same goes for metrics across more than one Semantic Model.
 
@@ -287,9 +287,9 @@ defaults:
         time_granularity: month
     - name: order_year
       type: time
-      time_granularity: year
+      type_params:
+      	time_granularity: year
 ...
-
 
 metrics:
   name: metric_0
@@ -306,7 +306,7 @@ metrics:
 
 ```
 
-Assuming the user is querying metric_0 and metric_1 together, a valid filter would be:
+Assuming the user is querying metric_0 and metric_1 together in a single request, a valid WHERE filter would be:
 
   * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
 
