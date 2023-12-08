@@ -48,3 +48,6 @@ In the manifest, the `metadata` may also include:
 #### Notes:
 - The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at **schemas.getdbt.com**.
 - Artifact versions may change in any minor version of dbt (`v1.x.0`). Each artifact is versioned independently.
+
+## Related docs
+- [Other artifacts](/reference/artifacts/other-artifacts) files such as `index.html` or `graph_summary.json`.
