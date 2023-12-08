@@ -93,7 +93,7 @@ Refer to the following example snippets:
 - `30 */4 * * *`: At minute 30 past every 4th hour (such as 4:30 AM, 8:30 AM, 12:30 PM, and so on, all UTC).
 - `0 0 */2 * *`: At midnight UTC every other day.
 - `0 0 * * 1`: At midnight UTC every Monday.
-- `0 0 L * *`: At 12:00 AM, on the last day of the month.
+- `0 0 L * *`: At 12:00 AM (midnight), on the last day of the month.
 - `0 0 L 1,2,3,4,5,6,8,9,10,11,12 *`: At 12:00 AM, on the last day of the month, only in January, February, March, April, May, June, August, September, October, November, and December.
 - `0 0 L 7 *`: At 12:00 AM, on the last day of the month, only in July.
 - `0 0 L * FRI,SAT`: At 12:00 AM, on the last day of the month, and on Friday and Saturday.
