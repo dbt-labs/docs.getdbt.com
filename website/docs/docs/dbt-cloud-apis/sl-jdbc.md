@@ -259,9 +259,65 @@ Where Filters have a few objects that you can use:
 - `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
 
 
-Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimesion` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'month')`.
+Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimension` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'month')`.
 
-For both `TimeDimension()` and `Dimension()` objects, the grain is only required if the aggregation time dimension for the measures / metrics associated with the where filter is not the same for all measures.
+For both `TimeDimension()` and `Dimension()` objects, the grain is only required if the aggregation time dimensions for the measures & metrics associated with the where filter have different grains. 
+
+For example, consider this Semantic Model and Metric Config which contains two metrics that are aggregated across different time grains. This example shows a single Semantic Model, but the same goes for metrics across more than one Semantic Model.
+
+```yaml
+---
+semantic_model:
+  name: my_model_source
+  
+defaults:
+    agg_time_dimension: created_month
+
+  measures:
+    - name: measure_0
+      agg: sum
+    - name: measure_1
+      agg: sum
+      agg_time_dimension: order_year
+
+  dimensions:
+    - name: created_month
+      type: time
+      type_params:
+        time_granularity: month
+    - name: order_year
+      type: time
+      time_granularity: year
+...
+
+
+metrics:
+  name: metric_0
+  description: A metric with a month grain.
+  type: simple
+  type_params:
+    measure: measure_0
+
+  name: metric_1
+  description: A metric with a year grain
+  type: simple
+  type_params:
+    measure: measure_1
+
+```
+
+Assuming the user is querying metric_0 and metric_1 together, a valid filter would be:
+
+  * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
+
+Invalid Filters would be:
+
+  `* "{{ TimeDimension('metric_time') }} > '2020-01-01'"` - metrics in the query
+    are defined based on measures with different grains.
+
+  * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` - 
+    metric_1 is not available at a month grain.
+
 
 
 - Use the following example to query using a `where` filter with the string format:
