@@ -16,7 +16,7 @@ When you use dbt Core to work with dbt, you will be editing files locally using 
 
 * To use dbt Core, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install dbt Core using the [installation instructions](/docs/core/installation-overview) for your operating system.
-* Complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
+* Complete appropriate Setting up and Loading data steps in the Quickstart for dbt Cloud series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
 
 ### Create a starter project
