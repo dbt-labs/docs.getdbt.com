@@ -259,7 +259,7 @@ Where Filters have a few objects that you can use:
 - `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
 
 
-Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimension` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'month')`.
+Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimension` input takes the time dimension name optionally requires granularity, like this: `TimeDimension('metric_time', 'month')`.
 
 For both `TimeDimension()` and `Dimension()` objects, the grain is only required if the aggregation time dimensions for the measures & metrics associated with the where filter have different grains. 
 
