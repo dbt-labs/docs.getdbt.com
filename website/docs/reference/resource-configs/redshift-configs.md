@@ -185,13 +185,13 @@ models:
 
 ```jinja
 {{ config(
-    materialized="materialized_view",
+    [materialized](/reference/resource-configs/materialized)="materialized_view",
     on_configuration_change="apply" | "continue" | "fail",
-    dist="all" | "auto" | "even" | "<field-name>",
-    sort=["<field-name>"],
-    sort_type="auto" | "compound" | "interleaved",
-    auto_refresh=true | false,
-    backup=true | false,
+    [dist](#using-sortkey-and-distkey)="all" | "auto" | "even" | "<field-name>",
+    [sort](#using-sortkey-and-distkey)=["<field-name>"],
+    [sort_type](#using-sortkey-and-distkey)="auto" | "compound" | "interleaved",
+    [auto_refresh](#auto-refresh)=true | false,
+    [backup](#backup)=true | false,
 ) }}
 ```
 
