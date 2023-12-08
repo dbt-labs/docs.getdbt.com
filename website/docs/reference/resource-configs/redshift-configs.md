@@ -114,15 +114,14 @@ models:
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
 with the following configuration parameters:
 
-| Parameter                                 | Type         | Required | Default              | Change Monitoring Support |
-|-------------------------------------------|--------------|----------|----------------------|---------------------------|
-| `on_configuration_change`                 | `<string>`   | no       | `apply`              | n/a                       |
-| [`dist`](#using-sortkey-and-distkey)      | `<string>`   | no       | `even`               | drop/create               |
-| [`sort`](#using-sortkey-and-distkey)      | `[<string>]` | no       | `none`               | drop/create               |
-| [`sort_type`](#using-sortkey-and-distkey) | `<string>`   | no       | `auto` if no `sort`  | drop/create               |
-|                                           |              |          | `compound` if `sort` |                           |
-| [`auto_refresh`](#auto-refresh)           | `<boolean>`  | no       | `false`              | alter                     |
-| [`backup`](#backup)                       | `<string>`   | no       | `true`               | n/a                       |
+| Parameter                                 | Type         | Required | Default                                        | Change Monitoring Support |
+|-------------------------------------------|--------------|----------|------------------------------------------------|---------------------------|
+| `on_configuration_change`                 | `<string>`   | no       | `apply`                                        | n/a                       |
+| [`dist`](#using-sortkey-and-distkey)      | `<string>`   | no       | `even`                                         | drop/create               |
+| [`sort`](#using-sortkey-and-distkey)      | `[<string>]` | no       | `none`                                         | drop/create               |
+| [`sort_type`](#using-sortkey-and-distkey) | `<string>`   | no       | `auto` if no `sort` <br />`compound` if `sort` | drop/create               |
+| [`auto_refresh`](#auto-refresh)           | `<boolean>`  | no       | `false`                                        | alter                     |
+| [`backup`](#backup)                       | `<string>`   | no       | `true`                                         | n/a                       |
 
 <Tabs
   groupId="config-languages"
