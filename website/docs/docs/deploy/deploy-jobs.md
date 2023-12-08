@@ -87,12 +87,19 @@ Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct 
 Refer to the following example snippets:
 
 
-- `0 * * * *`: Every hour, at minute 0
-- `*/5 * * * *`: Every 5 minutes
-- `5 4 * * *`: At exactly 4:05 AM UTC
-- `30 */4 * * *`: At minute 30 past every 4th hour (e.g. 4:30AM, 8:30AM, 12:30PM, etc., all UTC)
-- `0 0 */2 * *`: At midnight UTC every other day
+- `0 * * * *`: Every hour, at minute 0.
+- `*/5 * * * *`: Every 5 minutes.
+- `5 4 * * *`: At exactly 4:05 AM UTC.
+- `30 */4 * * *`: At minute 30 past every 4th hour (e.g. 4:30AM, 8:30AM, 12:30PM, etc., all UTC).
+- `0 0 */2 * *`: At midnight UTC every other day.
 - `0 0 * * 1`: At midnight UTC every Monday.
+- `0 0 L * *`: At 12:00 AM, on the last day of the month.
+- `0 0 L 1,2,3,4,5,6,8,9,10,11,12 *`: At 12:00 AM, on the last day of the month, only in January, February, March, April, May, June, August, September, October, November, and December.
+- `0 0 L 7 *`: At 12:00 AM, on the last day of the month, only in July.
+- `0 0 L * FRI,SAT`: At 12:00 AM, on the last day of the month, and on Friday and Saturday.
+- `0 12 L * *`: At 12:00 PM, on the last day of the month.
+- `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
+- `30 14 L * *`: At 02:30 PM, on the last day of the month.
 
 ## Related docs
 
