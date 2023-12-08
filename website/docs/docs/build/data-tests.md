@@ -25,9 +25,9 @@ Like almost everything in dbt, data tests are SQL queries. In particular, they a
 
 There are two ways of defining data tests in dbt:
 * A **singular** data test is testing in its simplest form: If you can write a SQL query that returns failing rows, you can save that query in a `.sql` file within your [test directory](/reference/project-configs/test-paths). It's now a data test, and it will be executed by the `dbt test` command.
-* A **generic** test is a parameterized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic tests built in, and we think you should use them!
+* A **generic** data test is a parameterized query that accepts arguments. The test query is defined in a special `test` block (like a [macro](jinja-macros)). Once defined, you can reference the generic test by name throughout your `.yml` files—define it on models, columns, sources, snapshots, and seeds. dbt ships with four generic data tests built in, and we think you should use them!
 
-Defining data tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic data tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining data tests have their time and place.
+Defining data tests is a great way to confirm that your outputs and inputs are as expected, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic data tests tend to be much more common—they should make up the bulk of your dbt data testing suite. That said, both ways of defining data tests have their time and place.
 
 :::tip Creating your first data tests
 If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project with models and tests.
@@ -35,9 +35,9 @@ If you're new to dbt, we recommend that you check out our [quickstart guide](/gu
 
 ## Singular data tests
 
-The simplest way to define a data test is by writing the exact SQL that will return failing records. We call these "singular" tests, because they're one-off assertions usable for a single purpose.
+The simplest way to define a data test is by writing the exact SQL that will return failing records. We call these "singular" data tests, because they're one-off assertions usable for a single purpose.
 
-These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](/reference/project-configs/test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one test:
+These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](/reference/project-configs/test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one data test:
 
 <File name='tests/assert_total_payment_amount_is_positive.sql'>
 
@@ -58,8 +58,8 @@ The name of this test is the name of the file: `assert_total_payment_amount_is_p
 
 Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
 
-## Generic tests
-Certain data tests are generic: they can be reused over and over again. A generic test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
+## Generic data tests
+Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
 
 ```sql
 {% test not_null(model, column_name) %}
@@ -108,11 +108,11 @@ In plain English, these data tests translate to:
 
 Behind the scenes, dbt constructs a `select` query for each data test, using the parametrized query from the generic test block. These queries return the rows where your assertion is _not_ true; if the test returns zero rows, your assertion passes.
 
-You can find more information about these tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests).
+You can find more information about these data tests, and additional configurations (including [`severity`](/reference/resource-configs/severity) and [`tags`](/reference/resource-configs/tags)) in the [reference section](/reference/resource-properties/data-tests).
 
 ### More generic data tests
 
-Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
+Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic data tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
 
 :::info
 There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](/docs/build/packages) to learn more!

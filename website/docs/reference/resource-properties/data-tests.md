@@ -152,7 +152,7 @@ This feature is not implemented for analyses.
 
 ## Related documentation
 
-* [Testing guide](/docs/build/data-tests)
+* [Data testing guide](/docs/build/data-tests)
 
 ## Description
 
@@ -262,7 +262,7 @@ The `to` argument accepts a [Relation](/reference/dbt-classes#relation) – this
 ## Additional examples
 
 ### Test an expression
-Some data tests require multiple columns, so it doesn't make sense to nest them under the `columns:` key. In this case, you can apply the test to the model (or source, seed, or snapshot) instead:
+Some data tests require multiple columns, so it doesn't make sense to nest them under the `columns:` key. In this case, you can apply the data test to the model (or source, seed, or snapshot) instead:
 
 <File name='models/orders.yml'>
 
