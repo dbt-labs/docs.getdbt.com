@@ -312,7 +312,7 @@ Assuming the user is querying metric_0 and metric_1 together in a single request
 
 Invalid Filters would be:
 
-  `* "{{ TimeDimension('metric_time') }} > '2020-01-01'"` - metrics in the query
+  * `"{{ TimeDimension('metric_time') }} > '2020-01-01'"` - metrics in the query
     are defined based on measures with different grains.
 
   * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` - 
