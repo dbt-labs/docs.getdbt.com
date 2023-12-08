@@ -150,7 +150,7 @@ For nested data types such as JSON, you’ll want to check out the JSON parsing 
 
 ### Validating
 
-dbt offers [generic data tests](/docs/build/data-tests#more-generic-tests) in every dbt project that allows you to validate accepted, unique, and null values. They also allow you to validate the relationships between tables and that the primary key is unique.
+dbt offers [generic data tests](/docs/build/data-tests#more-generic-data-tests) in every dbt project that allows you to validate accepted, unique, and null values. They also allow you to validate the relationships between tables and that the primary key is unique.
 
 If you can’t find what you need with the generic tests, you can download an additional dbt testing package called [dbt_expectations](https://hub.getdbt.com/calogica/dbt_expectations/0.1.2/) that dives even deeper into how you can test the values in your columns. This package has useful data tests like `expect_column_values_to_be_in_type_list`, `expect_column_values_to_be_between`, and `expect_column_value_lengths_to_equal`. 
 
