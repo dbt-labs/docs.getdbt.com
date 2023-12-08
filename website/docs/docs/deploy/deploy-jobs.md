@@ -90,7 +90,7 @@ Refer to the following example snippets:
 - `0 * * * *`: Every hour, at minute 0.
 - `*/5 * * * *`: Every 5 minutes.
 - `5 4 * * *`: At exactly 4:05 AM UTC.
-- `30 */4 * * *`: At minute 30 past every 4th hour (e.g. 4:30AM, 8:30AM, 12:30PM, etc., all UTC).
+- `30 */4 * * *`: At minute 30 past every 4th hour (such as 4:30 AM, 8:30 AM, 12:30 PM, and so on, all UTC).
 - `0 0 */2 * *`: At midnight UTC every other day.
 - `0 0 * * 1`: At midnight UTC every Monday.
 - `0 0 L * *`: At 12:00 AM, on the last day of the month.
