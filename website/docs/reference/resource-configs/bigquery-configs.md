@@ -827,10 +827,10 @@ models:
 
 ```jinja
 {{ config(
-    materialized='materialized_view',
+    [materialized](/reference/resource-configs/materialized)='materialized_view',
     on_configuration_change="apply" | "continue" | "fail",
-    cluster_by="<field-name>" | ["<field-name>"],
-    partition_by={
+    [cluster_by](#clustering-clause)="<field-name>" | ["<field-name>"],
+    [partition_by](#partition-clause)={
         "field": "<field-name>",
         "data_type": "timestamp" | "date" | "datetime" | "int64",
 
@@ -846,17 +846,17 @@ models:
     },
 
     # auto-refresh options
-    enable_refresh= true | false,
-    refresh_interval_minutes=<float>,
-    max_staleness="<interval>",
+    [enable_refresh](#auto-refresh)= true | false,
+    [refresh_interval_minutes](#auto-refresh)=<float>,
+    [max_staleness](#auto-refresh)="<interval>",
 
     # additional options
     description="<description>",
-    labels={
+    [labels](#specifying-labels)={
         "<label-name>": "<label-value>",
     },
-    hours_to_expiration=<integer>,
-    kms_key_name="<path_to_key>",
+    [hours_to_expiration](#acontrolling-table-expiration)=<integer>,
+    [kms_key_name](##using-kms-encryption)="<path_to_key>",
 ) }}
 ```
 
