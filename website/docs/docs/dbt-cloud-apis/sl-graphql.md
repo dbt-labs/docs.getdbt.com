@@ -436,7 +436,7 @@ The `where` filter takes a list argument (or a string for a single input). Depen
   
 - `Entity()` &mdash; Used for entities like primary and foreign keys, such as `Entity('order_id')`.
 
-Note: If you prefer a more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension and optionally the granularity level. `TimeDimension('metric_time', 'month')`.
+Note: If you prefer a `where` clause with a more explicit path, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension and optionally the granularity level. `TimeDimension('metric_time', 'month')`.
 
 ```graphql
 mutation {
@@ -502,8 +502,8 @@ Assuming the user is querying metric_0 and metric_1 together, a valid filter wou
   * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
 
 Invalid Filters would be:
-
-  `* "{{ TimeDimension('metric_time') }} > '2020-01-01'"` - metrics in the query
+ 
+  * ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"` - metrics in the query
     are defined based on measures with different grains.
 
   * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` - 
