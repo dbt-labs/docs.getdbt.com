@@ -97,7 +97,7 @@ Refer to the following example snippets:
 - `0 0 L 1,2,3,4,5,6,8,9,10,11,12 *`: At 12:00 AM, on the last day of the month, only in January, February, March, April, May, June, August, September, October, November, and December.
 - `0 0 L 7 *`: At 12:00 AM, on the last day of the month, only in July.
 - `0 0 L * FRI,SAT`: At 12:00 AM, on the last day of the month, and on Friday and Saturday.
-- `0 12 L * *`: At 12:00 PM, on the last day of the month.
+- `0 12 L * *`: At 12:00 PM (afternoon), on the last day of the month.
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
 
