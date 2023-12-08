@@ -84,7 +84,7 @@ To fully customize the scheduling of your job, choose the **Custom cron schedule
 
 Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and returns their plain English translations.
 
-Refer to the following example snippets:
+Here are examples of cron job schedules. The dbt Cloud job scheduler supports using `L` to schedule jobs on the last day of the month:
 
 
 - `0 * * * *`: Every hour, at minute 0.
