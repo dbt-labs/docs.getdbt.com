@@ -477,7 +477,8 @@ defaults:
         time_granularity: month
     - name: order_year
       type: time
-      time_granularity: year
+      type_params:
+        time_granularity: year
 ...
 
 
