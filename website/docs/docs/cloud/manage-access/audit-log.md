@@ -174,7 +174,7 @@ You can use the audit log to export all historical audit results for security, c
 
 :::info Azure single tenant
 
-For customers deployed in [Azure single tenant](https://docs.getdbt.com/docs/cloud/about-cloud/tenancy), the **Export All** button will not be available. Use one of the following APIs to retrieve alll events instead:
+For customers deployed in [Azure single tenant](https://docs.getdbt.com/docs/cloud/about-cloud/tenancy), the **Export All** button will not be available. Use one of the following APIs to retrieve all events instead:
 * [Get Recent Audit Log Events CSV](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Get%20Recent%20Audit%20Log%20Events%20CSV).
   * This API will return all events in a single CSV without pagination.
 * [List Recent Audit Log Events](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events).
