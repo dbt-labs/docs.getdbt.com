@@ -284,7 +284,7 @@ If the list starts getting lengthy and dense, consider presenting the same conte
 
 A bulleted list with introductory text:    
 
-> A dbt project is a directory of `.sql` and .yml` files. The directory must contain at a minimum:
+> A dbt project is a directory of `.sql` and `.yml` files. The directory must contain at a minimum:
 >
 > - Models: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics or, more often, is an intermediate step in such a transformation.
 > - A project file: A `dbt_project.yml` file, which configures and defines your dbt project.
