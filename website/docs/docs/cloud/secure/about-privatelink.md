@@ -23,3 +23,4 @@ dbt Cloud supports the following data platforms for use with the PrivateLink fea
 - [Databricks](/docs/cloud/secure/databricks-privatelink)
 - [Redshift](/docs/cloud/secure/redshift-privatelink)
 - [Postgres](/docs/cloud/secure/postgres-privatelink)
+- [VCS](/docs/cloud/secure/vcs-privatelink)
