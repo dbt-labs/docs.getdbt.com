@@ -17,6 +17,7 @@ socialLinks:
     link: https://www.linkedin.com/in/olycats/
 dateCreated: 2023-11-01
 hide_table_of_contents: true
+communityAward: true
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
