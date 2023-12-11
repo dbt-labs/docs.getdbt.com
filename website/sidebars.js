@@ -2,6 +2,11 @@ const sidebarSettings = {
   docs: [
     "docs/introduction",
     {
+      type: "link",
+      label: "Guides",
+      href: `/guides`,
+    },
+    {
       type: "category",
       label: "Supported data platforms",
       collapsed: true,
@@ -27,12 +32,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
-    {
-      type: "link",
-      label: "Guides",
-      href: `/guides`,
-    },
-    {
+      {
       type: "category",
       label: "Set up dbt",
       collapsed: true,
@@ -54,6 +54,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/cloud/connect-data-platform/about-connections" },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-microsoft-fabric",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
                 "docs/cloud/connect-data-platform/connect-snowflake",
                 "docs/cloud/connect-data-platform/connect-bigquery",
@@ -123,35 +124,6 @@ const sidebarSettings = {
             }, // Supported Git providers
             {
               type: "category",
-              label: "Develop in dbt Cloud",
-              link: { type: "doc", id: "docs/cloud/about-cloud-develop" },
-              items: [
-                "docs/cloud/about-cloud-develop",
-                "docs/cloud/about-cloud-develop-defer",
-                {
-                  type: "category",
-                  label: "dbt Cloud CLI",
-                  link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
-                  items: [
-                    "docs/cloud/cloud-cli-installation",
-                    "docs/cloud/configure-cloud-cli",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "dbt Cloud IDE",
-                  link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
-                  items: [
-                    "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-                    "docs/cloud/dbt-cloud-ide/ide-user-interface",
-                    "docs/cloud/dbt-cloud-ide/lint-format",
-                    "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
-                  ],
-                },
-              ],
-            }, // dbt Cloud develop directory
-            {
-              type: "category",
               label: "Secure your tenant",
               link: { type: "doc", id: "docs/cloud/secure/secure-your-tenant" },
               items: [
@@ -162,6 +134,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/databricks-privatelink",
                 "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/postgres-privatelink",
+                "docs/cloud/secure/vcs-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -175,14 +148,13 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
             "docs/core/about-core-setup",
-            "docs/core/about-dbt-core",
             "docs/core/dbt-core-environments",
             {
               type: "category",
-              label: "Install dbt",
-              link: { type: "doc", id: "docs/core/installation" },
+              label: "Install dbt Core",
+              link: { type: "doc", id: "docs/core/installation-overview", },
               items: [
-              "docs/core/installation", 
+                "docs/core/installation-overview",
                 "docs/core/homebrew-install",
                 "docs/core/pip-install",
                 "docs/core/docker-install",
@@ -249,6 +221,37 @@ const sidebarSettings = {
         "docs/running-a-dbt-project/using-threads",
       ],
     },
+    {
+      type: "category",
+      label: "Develop with dbt Cloud",
+      collapsed: true,
+      link: { type: "doc", id: "docs/cloud/about-develop-dbt" },
+      items: [
+        "docs/cloud/about-develop-dbt",
+        "docs/cloud/about-cloud-develop-defer",
+        {
+          type: "category",
+          label: "dbt Cloud CLI",
+          collapsed: true,
+          link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
+          items: [
+            "docs/cloud/cloud-cli-installation",
+             "docs/cloud/configure-cloud-cli",
+            ],
+          },
+          {
+            type: "category",
+            label: "dbt Cloud IDE",
+            link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+            items: [
+              "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+              "docs/cloud/dbt-cloud-ide/ide-user-interface",
+              "docs/cloud/dbt-cloud-ide/lint-format",
+              "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+            ],
+          },
+        ],
+      },
     {
       type: "category",
       label: "Build dbt projects",
@@ -415,7 +418,17 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/collaborate/collaborate-with-others" },
       items: [
         "docs/collaborate/collaborate-with-others",
-        "docs/collaborate/explore-projects",
+        {
+          type: "category",
+          label: "Explore dbt projects",
+          link: { type: "doc", id: "docs/collaborate/explore-projects" },
+          items: [
+            "docs/collaborate/explore-projects",
+            "docs/collaborate/model-performance",
+            "docs/collaborate/project-recommendations",
+            "docs/collaborate/explore-multiple-projects",
+          ],
+        },
         {
           type: "category",
           label: "Git version control",
@@ -956,11 +969,11 @@ const sidebarSettings = {
       type: "category",
       label: "Database Permissions",
       items: [
-	"reference/database-permissions/about-database-permissions",
+        "reference/database-permissions/about-database-permissions",
         "reference/database-permissions/databricks-permissions",
         "reference/database-permissions/postgres-permissions",
-	"reference/database-permissions/redshift-permissions",
-	"reference/database-permissions/snowflake-permissions",
+        "reference/database-permissions/redshift-permissions",
+        "reference/database-permissions/snowflake-permissions",
       ],
     },
   ],
@@ -1050,6 +1063,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",
         "best-practices/dbt-unity-catalog-best-practices",

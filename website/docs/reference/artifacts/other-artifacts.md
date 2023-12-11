@@ -21,7 +21,7 @@ This file is used to store a compressed representation of files dbt has parsed. 
 
 **Produced by:** commands supporting [node selection](/reference/node-selection/syntax)
 
-Stores the networkx representation of the dbt resource DAG.
+Stores the network representation of the dbt resource DAG.
 
 ### graph_summary.json
 
