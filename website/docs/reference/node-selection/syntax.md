@@ -68,7 +68,7 @@ dbt run --select "path/to/my_model.sql"  # run a specific model by its path
 
 </TabItem>
 
-<TabItem value="subset" label="Examples for subsets of nodes">
+<TabItem value="subset" label="Examples of subsets of nodes">
 
 dbt supports a shorthand language for defining subsets of nodes. This language uses the following characters:
 
