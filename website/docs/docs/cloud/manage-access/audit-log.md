@@ -168,14 +168,15 @@ You can search the audit log to find a specific event or actor, which is limited
 You can use the audit log to export all historical audit results for security, compliance, and analysis purposes:
 
 - **For events within 90 days** &mdash; dbt Cloud will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
-  
+
 - **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin will receive an email link to download a CSV file of all the events that occurred in your organization.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" width="95%" title="View audit log export options"/>
 
-- **Azure Single-tenant deployment** &mdash; For users deployed in [Azure single tenant](/docs/cloud/about-cloud/tenancy), while the **Export All** button isn't available, you can conveniently use specific APIs to access all events:
-  
- - [Get recent audit log events CSV](/dbt-cloud/api-v3#/operations/Get%20Recent%20Audit%20Log%20Events%20CSV).
-   - This API returns all events in a single CSV without pagination.
- - [List recent audit log events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events).
-   - This API returns a limited number of events at a time, which means you will need to paginate the results.
+### Azure Single-tenant deployment
+For users deployed in [Azure single tenant](/docs/cloud/about-cloud/tenancy), while the **Export All** button isn't available, you can conveniently use specific APIs to access all events:
+
+- [Get recent audit log events CSV](/dbt-cloud/api-v3#/operations/Get%20Recent%20Audit%20Log%20Events%20CSV).
+  - This API returns all events in a single CSV without pagination.
+- [List recent audit log events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events).
+  - This API returns a limited number of events at a time, which means you will need to paginate the results.
