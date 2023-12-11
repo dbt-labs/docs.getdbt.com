@@ -35,13 +35,17 @@ To follow [POSIX standards](https://pubs.opengroup.org/onlinepubs/9699919799/bas
 
 3. dbt now has a list of still-selected resources of varying types. As a final step, it tosses away any resource that does not match the resource type of the current task. (Only seeds are kept for `dbt seed`, only models for `dbt run`, only tests for `dbt test`, and so on.)
 
-### Shorthand
+## Shorthand
 
 Select resources to build (run, test, seed, snapshot) or check freshness: `--select`, `-s`
 
 ### Examples
 
 By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--select` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--select`, `--exclude`, and `--selector`) also apply to other dbt tasks, such as `test` and `build`.
+
+
+<Tabs>
+<TabItem value="select" label="Example for select flag">
 
 The `--select` flag accepts one or more arguments. Each argument can be one of:
 
@@ -52,8 +56,7 @@ The `--select` flag accepts one or more arguments. Each argument can be one of:
 
 Examples:
 
-
-  ```bash
+```bash
 dbt run --select "my_dbt_project_name"   # runs all models in your project
 dbt run --select "my_dbt_model"          # runs a specific model
 dbt run --select "path.to.my.models"     # runs all models in a specific directory
@@ -61,12 +64,20 @@ dbt run --select "my_package.some_model" # run a specific model in a specific pa
 dbt run --select "tag:nightly"           # run models with the "nightly" tag
 dbt run --select "path/to/models"        # run models contained in path/to/models
 dbt run --select "path/to/my_model.sql"  # run a specific model by its path
-  ```
+```
 
-dbt supports a shorthand language for defining subsets of nodes. This language uses the characters `+`, `@`, `*`, and `,`.
+</TabItem>
 
+<TabItem value="subset" label="Example for nodes flag">
 
-  ```bash
+dbt supports a shorthand language for defining subsets of nodes. This language uses the following characters:
+
+- plus operator [(`+`)](/reference/node-selection/graph-operators#the-plus-operator)
+- at operator [(`@`)](/reference/node-selection/graph-operators#the-at-operator)
+- asterisk operator (`*`)
+- comma operator (`,`)
+
+```bash
 # multiple arguments can be provided to --select
  dbt run --select "my_first_model my_second_model"
 
@@ -76,6 +87,10 @@ dbt run --select "tag:nightly my_model finance.base.*"
 # use methods and intersections for more complex selectors
 dbt run --select "path:marts/finance,tag:nightly,config.materialized:table"
 ```
+
+</TabItem>
+
+</Tabs>
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
 consider using a [yaml selector](/reference/node-selection/yaml-selectors). You can use a predefined definition with the `--selector` flag.
