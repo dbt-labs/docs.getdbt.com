@@ -169,7 +169,7 @@ There are two ways to connect dbt Cloud to Databricks. The first option is Partn
 
 This quickstart assumes you'll use Partner Connect.
 
-:::tip
+:::note
  Partner Connect is intended for trial partner accounts. If your organization already has a dbt account, you should connect manually. Refer to [Connect to dbt Cloud manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
 :::
 
@@ -179,7 +179,7 @@ To connect dbt Cloud to Databricks using Partner Connect, do the following:
 
 2. Click the dbt tile.
 
-3. Select a catalog for dbt to write to, and then click **Next**. The drop-down list displays catalogs you own or have access to. If your workspace isn't <UC>-enabled, the legacy Hive metastore (`hive_metastore`) is used.
+3. Select a catalog from the drop-down list, and then click **Next**. The drop-down list displays catalogs you have read and write access to. If your workspace isn't <UC>-enabled, the legacy Hive metastore (`hive_metastore`) is used.
 
 5. If there are SQL warehouses in your workspace, select a SQL warehouse from the drop-down list. If your SQL warehouse is stopped, click **Start**.
 
@@ -191,7 +191,7 @@ To connect dbt Cloud to Databricks using Partner Connect, do the following:
    4. Re-open the dbt tile.
    5. Select the SQL warehouse you just created from the drop-down list.
 
-7. Select a schema from the drop-down list, and then click **Add**. The drop-down list displays schemas you own or have access to. You can repeat this step to add multiple schemas.
+7. Select a schema from the drop-down list, and then click **Add**. The drop-down list displays schemas you have read and write access to. You can repeat this step to add multiple schemas.
 
    Partner Connect creates the following resources in your workspace:
 
