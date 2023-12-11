@@ -281,7 +281,6 @@ const sidebarSettings = {
             "docs/build/jinja-macros",
             "docs/build/sources",
             "docs/build/exposures",
-            "docs/build/metrics",
             "docs/build/groups",
             "docs/build/analyses",
           ],
