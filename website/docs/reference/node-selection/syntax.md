@@ -77,6 +77,8 @@ dbt supports a shorthand language for defining subsets of nodes. This language u
 - asterisk operator (`*`)
 - comma operator (`,`)
 
+Examples:
+
 ```bash
 # multiple arguments can be provided to --select
  dbt run --select "my_first_model my_second_model"
