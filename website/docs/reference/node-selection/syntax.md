@@ -45,7 +45,7 @@ By default, `dbt run` will execute _all_ of the models in the dependency graph. 
 
 
 <Tabs>
-<TabItem value="select" label="Examples for select flag">
+<TabItem value="select" label="Examples of select flag">
 
 The `--select` flag accepts one or more arguments. Each argument can be one of:
 
