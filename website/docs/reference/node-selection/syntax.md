@@ -45,7 +45,7 @@ By default, `dbt run` will execute _all_ of the models in the dependency graph. 
 
 
 <Tabs>
-<TabItem value="select" label="Example for select flag">
+<TabItem value="select" label="Examples for select flag">
 
 The `--select` flag accepts one or more arguments. Each argument can be one of:
 
@@ -68,7 +68,7 @@ dbt run --select "path/to/my_model.sql"  # run a specific model by its path
 
 </TabItem>
 
-<TabItem value="subset" label="Example for nodes flag">
+<TabItem value="subset" label="Examples for subsets of nodes">
 
 dbt supports a shorthand language for defining subsets of nodes. This language uses the following characters:
 
