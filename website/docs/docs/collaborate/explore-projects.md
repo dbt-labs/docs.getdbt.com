@@ -2,7 +2,7 @@
 title: "Explore your dbt projects"
 sidebar_label: "Explore dbt projects"
 description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
-pagination_next: "docs/collaborate/explore-multiple-projects"
+pagination_next: "docs/collaborate/model-performance"
 pagination_prev: null
 ---
 
@@ -36,7 +36,7 @@ For a richer experience with dbt Explorer, you must:
 - Run [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment to view source freshness data.
 - Run [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment to view snapshot details.
 
-Richer and more timely metadata will become available as dbt, the Discovery API, and the underlying dbt Cloud platform evolves.
+Richer and more timely metadata will become available as dbt Core, the Discovery API, and the underlying dbt Cloud platform evolves.
 
 ## Explore your project's lineage graph {#project-lineage}
 
@@ -45,6 +45,8 @@ dbt Explorer provides a visualization of your project’s <Term id="dag">DAG</Te
 If you don't see the project lineage graph immediately, click **Render Lineage**. It can take some time for the graph to render depending on the size of your project and your computer’s available memory. The graph of very large projects might not render so you can select a subset of nodes by using selectors, instead.
 
 The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
+
+By default, dbt Explorer shows the project's [applied state](/docs/dbt-cloud-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
 
 To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, dbt Explorer excludes these resources from the full lineage graph unless a search query returns them as results.
 
