@@ -65,8 +65,8 @@ dbt generates the `package-lock.yml` file in the _project_root_ where `packages.
 When you update the package spec and run `dbt deps` again, the `package-lock.yml` and `packages.yml` files update accordingly. 
 
 There are two flags related to `package-lock.yml`:
-- `dbt deps --upgrade` &mdash; creates or updates the `package-lock.yml` file with the most recent dependencies from `packages.yml` and installs them.
-- `dbt deps --lock` &mdash; creates or updates the `package-lock.yml` file but does not install the packages. 
+- `dbt deps --lock` &mdash; creates or updates the `package-lock.yml` file but does not install the packages.
+- `dbt deps --upgrade` &mdash; creates or updates the `package-lock.yml` file with the most recent dependencies from `packages.yml`. Also install the packages unless the `--lock` flag is also passed.
 
 The `--add-package` flag allows you to add a package to the `packages.yml` with configurable `--version` and `--source` information. The `--dry-run` flag, when set to `False`(default), recompiles the `package-lock.yml` file after a new package is added to the `packages.yml` file. Set the flag to `True` for the changes to not persist. 
 
