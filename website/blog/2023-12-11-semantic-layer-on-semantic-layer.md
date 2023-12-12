@@ -37,7 +37,7 @@ There are [plenty of other great resources](https://docs.getdbt.com/docs/build/p
 
 Let’s walk through the DAG from left to right: First, we have raw tables from the Semantic Layer Server loaded into our warehouse, next we have staging models where we apply business logic and finally a clean, normalized `fct_semantic_layer_queries` model. Finally, we built a semantic model named `semantic_layer_queries` on top of our normalized fact model. This is a typical DAG for a dbt project that contains semantic objects. Now let’s zoom in to the section of the DAG that contains our semantic layer objects and look in more detail at how we defined our semantic layer product metrics. 
 
-## How we build semantic models and metrics
+## [How we build semantic models and metrics](https://docs.getdbt.com/best-practices/how-we-build-our-metrics/semantic-layer-1-intro)
 
 What [is a semantic model](https://docs.getdbt.com/docs/build/semantic-models)? Put simply, semantic models contain the components we need to build metrics. Semantic models are YAML files that live in your dbt project. They contain metadata about your dbt models in a format that MetricFlow, the query builder that powers the semantic layer, can understand. The DAG below in [dbt Explorer](https://docs.getdbt.com/docs/collaborate/explore-projects) shows the metrics we’ve built off of `semantic_layer_queries`.
 
