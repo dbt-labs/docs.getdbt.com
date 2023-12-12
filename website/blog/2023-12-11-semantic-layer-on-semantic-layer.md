@@ -58,6 +58,7 @@ Next, we had to decide what we wanted to put into our semantic models. Semantic 
 Finally, we reference the measures defined in our semantic model to create metrics. Our initial set of usage metrics are all relatively simple aggregations. For example, the total number of queries run. 
 
 ```yaml
+## Example of a metric definition 
 metrics:
   - name: queries
     description: The total number of queries run
@@ -66,8 +67,6 @@ metrics:
     type_params:
       measure: queries
 ```
-
-*Queries metric configuration**
 
 Having our metrics in the semantic layer is powerful in a few ways. Firstly, metric definitions and the generated SQL are centralized, and live in our dbt project, instead of being scattered across BI tools or sql clients. Secondly, the types of queries I can run are dynamic and flexible. Traditionally, I would materialize a cube or rollup table which needs to contain all the different dimensional slices my users might be curious about. Now, users can join tables and add dimensionality to their metrics queries on the fly at query time, saving our data team cycles of updating and adding new fields to rollup tables. Thirdly, we can expose these metrics to a variety of downstream BI tools so stakeholders in product, finance, or GTM can understand product performance regardless of their technical skills. 
 
