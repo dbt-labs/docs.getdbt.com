@@ -252,7 +252,7 @@ This example shows how to create slowly changing dimensions (SCD) using a semant
 | 333             | 2    | 2020-08-19 | 2021-10-22| 
 | 333             | 3    | 2021-10-22 | 2048-01-01|  
 
-Take note of the extra arguments under `validity_params`: `is_start` and `is_end`. These arguments indicate the columns in the SCD table that contain the start and end dates for each tier (or beginning or ending timestamp column for a dimensional value).
+Take note of the extra arguments under `validity_params`: `is_start` and `is_end`. These arguments indicate the columns in the SCD table that contain the start and end dates for each tier (or beginning or ending timestamp column for a dimensional value). Note also the entity is tagged as `natural` - this is to distinguish it from a `primary` entity, where we expect one row per entity value. Here, we expect one row per entity value/validity window combination.
 
 ```yaml 
 semantic_models:
@@ -282,7 +282,7 @@ semantic_models:
 
     entities:
       - name: sales_person
-        type: primary 
+        type: natural 
         expr: sales_person_id
 ```
 
