@@ -9,6 +9,14 @@ meta:
   api_name: dbt Semantic Layer APIs
 ---
 
+<VersionBlock lastVersion="1.5">
+
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
+
+<DeprecationNotice />
+ 
+ </VersionBlock>
+
 There are a number of data applications that seamlessly integrate with the dbt Semantic Layer, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
 Use the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to simplify metric queries, optimize your development workflow, and reduce coding. This approach also ensures data governance and consistency for data consumers.

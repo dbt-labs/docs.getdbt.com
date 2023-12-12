@@ -9,6 +9,13 @@ pagination_next: "docs/use-dbt-semantic-layer/quickstart-sl"
 pagination_prev: null
 ---
 
+<VersionBlock lastVersion="1.5">
+
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
+
+<DeprecationNotice />
+ 
+ </VersionBlock>
 
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handles data joins. 
 

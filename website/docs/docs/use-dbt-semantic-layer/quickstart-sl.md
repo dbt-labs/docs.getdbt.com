@@ -8,6 +8,13 @@ meta:
   api_name: dbt Semantic Layer APIs
 ---
 
+<VersionBlock lastVersion="1.5">
+
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
+
+<DeprecationNotice />
+ 
+ </VersionBlock>
 
 import CreateModel from '/snippets/_sl-create-semanticmodel.md';
 import DefineMetrics from '/snippets/_sl-define-metrics.md';

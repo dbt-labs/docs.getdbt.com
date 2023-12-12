@@ -1,7 +1,5 @@
 :::info Deprecation of dbt Metrics and the legacy dbt Semantic Layer
-For users of the dbt Semantic Layer on version 1.5 or lower &mdash; Support for dbt Metrics and the legacy dbt Semantic Layer ends on December 15th, 2023. To access the latest features, migrate to the updated version using the [dbt Semantic Layer migration guide](/guides/sl-migration).
+dbt Labs has deprecated dbt Metrics and the legacy dbt Semantic Layer, both supported on dbt version 1.5 or lower. These changes went into effect on December 15th, 2023.
 
-
-After December 15th, dbt Labs will no longer support these deprecated features, they will be removed from the dbt Cloud user interface, and their documentation removed from the docs site.
-
+To switch over and access [MetricFlow](/docs/build/build-metrics-intro) or the re-released dbt Semantic Layer, use the [dbt Semantic Layer migration guide](/guides/sl-migration) and [upgrade your version](/docs/dbt-versions/upgrade-core-in-cloud) in dbt Cloud.
 :::

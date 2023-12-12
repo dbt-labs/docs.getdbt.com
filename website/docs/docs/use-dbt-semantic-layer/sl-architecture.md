@@ -7,6 +7,14 @@ tags: [Semantic Layer]
 pagination_next: null
 ---
 
+<VersionBlock lastVersion="1.5">
+
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
+
+<DeprecationNotice />
+ 
+ </VersionBlock>
+
 The dbt Semantic Layer allows you to define metrics and use various interfaces to query them. The Semantic Layer does the heavy lifting to find where the queried data exists in your data platform and generates the SQL to make the request (including performing joins). 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="85%" title="The diagram displays how your data flows using the dbt Semantic Layer and the variety of integration tools it supports."/>

@@ -7,10 +7,10 @@ tags: [Semantic Layer, API]
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
 
 The dbt Semantic Layer Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
