@@ -34,8 +34,6 @@ The [re-released dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), power
 ### Engage and support
 
 - Feedback and community support &mdash; Engage and share feedback with the dbt Labs team and dbt Community slack using channels like [#dbt-cloud-semantic-layer](https://getdbt.slack.com/archives/C046L0VTVR6) and [#dbt-metricflow](https://getdbt.slack.com/archives/C02CCBBBR1D). Or reach out to your dbt Cloud account representative.
-
 - Resources for upgrading &mdash;Refer to some additional info and resources to help you upgrade your dbt version:
-
   - [Upgrade version in dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
   - [Version migration guides](/docs/dbt-versions/core-upgrade)
