@@ -1,31 +1,11 @@
 ---
-title: "Tips and tricks"
-id: dbt-cloud-tips
-description: "Check out any dbt Cloud and IDE-related tips."
-sidebar_label: "Tips and tricks"
+title: "dbt tips and tricks"
+description: "Check out any dbt-related tips and tricks to help you work faster and be more productive."
+sidebar_label: "dbt tips and tricks"
 pagination_next: null
 ---
 
-# dbt Cloud tips
-
-The Cloud IDE provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. Use this Cloud IDE cheat sheet to help you quickly reference some common operations.
-
-## Cloud IDE Keyboard shortcuts
-
-There are default keyboard shortcuts that can help make development more productive and easier for everyone.
-
-- Press Fn-F1 to view a full list of the editor shortcuts
-- Command-O on macOS or Control-O on Windows to select a file to open
-- Command-P/Command-Shift-P on macOS or Control-P/Control-Shift-P on Windows to see the command palette
-- Hold Option-click-on-area or press Shift-Option-Command on macOS or Hold-Alt-click-on-area on Windows to select multiple lines and perform a multi-edit. You can also press Command-E to perform this operation on the command line.
-- Command-Enter on macOS or Control-Enter on Windows to Preview your code
-- Command-Shift-Enter on macOS or Control-Shift-Enter on Windows to Compile
-- Highlight a portion of code and use the above shortcuts to Preview or Compile code
-- Enter two underscores (__) in the IDE to reveal a list of dbt functions
-- Press Control-backtick (or Ctrl + `) to toggle the Invocation history
-- Press Command-Option-forward slash on macOS or Control-Alt-forward slash on Windows on the selected code to add a block comment. SQL files will use the Jinja syntax `({# #})` rather than the SQL one `(/* */)`. Markdown files will use the Markdown syntax `(<!-- -->)`
-- Option-W on macOS or Alt-W on Windows will close the currently active editor tab
-
+Use this page to learn about any dbt-related tips and tricks to help you work faster and be more productive. You can also learn about the default dbt Cloud IDE keyboard shortcuts to help make development more productive and easier for everyone.
 
 ## Package tips
 
@@ -61,4 +41,4 @@ There are default keyboard shortcuts that can help make development more product
 
 - [Quickstart guide](/guides)
 - [About dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features)
-- [Develop in the Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- [Develop in the Cloud](/docs/cloud/about-develop-dbt)

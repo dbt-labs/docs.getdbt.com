@@ -10,7 +10,7 @@ pagination_prev: null
 
 The dbt Cloud integrated development environment (IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 
 
-The dbt Cloud IDE offers several [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and more efficient data platform development and governance:
+The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) and [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and more efficient data platform development and governance:
 
 - Syntax highlighting for SQL: Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
 - Auto-completion: Suggests table names, arguments, and column names as you type, saving time and reducing typos.
@@ -44,7 +44,7 @@ To improve your experience using dbt Cloud, we suggest that you turn off ad bloc
 
 ## dbt Cloud IDE features
 
-The dbt Cloud IDE comes with [tips](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips) and [features](/docs/cloud/dbt-cloud-ide/ide-user-interface) that make it easier for you to develop, build, compile, run, and test data models. 
+The dbt Cloud IDE comes with [tips](/docs/build/dbt-tips) and [features](/docs/cloud/dbt-cloud-ide/ide-user-interface) that make it easier for you to develop, build, compile, run, and test data models. 
 
 :::tip Stay informed
 
@@ -54,7 +54,7 @@ To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), 
 
 | Feature  |  Info |
 |---|---|
-| **Keyboard shortcuts** | You can access a variety of [commands and actions](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips#cloud-ide-keyboard-shortcuts) in the IDE by choosing the appropriate keyboard shortcut. This includes the command palette (Command-P or Control-P), which has common shortcuts and build commands to optimize your developer workflow. For example, you can build modified models or continue the build from the last failure point. |
+| **Keyboard shortcuts** | You can access a variety of [commands and actions](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) in the IDE by choosing the appropriate keyboard shortcut. This includes the command palette (Command-P or Control-P), which has common shortcuts and build commands to optimize your developer workflow. For example, you can build modified models or continue the build from the last failure point. |
 | **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, D, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects added files<br/> - Deleted **(D)** &mdash; The IDE detects deleted files.
 | **IDE version control** | The IDE version control section and git button allow you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project directly into the IDE. <br /><br /> - Create or change branches<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/collaborate/git/merge-conflicts)<br /> - Execute git commands using the git button <br /> - Link to the repo directly by clicking the branch name |
 | **Project documentation** | Generate and view your [project documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. |

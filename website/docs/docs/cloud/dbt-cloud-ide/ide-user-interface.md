@@ -53,7 +53,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 1. **File Editor &mdash;** The File Editor is where users edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. 
 
-    * Use intuitive [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips#cloud-ide-keyboard-shortcuts) to help develop easier for you and your team.
+    * Use intuitive [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/-keyboard-shortcuts) to help develop easier for you and your team.
 
 2. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The File Editor tab shows a blue icon for unsaved changes.
 

@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+      "destination": "/docs/build/dbt-tips",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/dbt-cloud-ide",
       "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true

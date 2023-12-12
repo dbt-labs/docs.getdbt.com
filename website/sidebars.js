@@ -245,9 +245,9 @@ const sidebarSettings = {
             link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
             items: [
               "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+              "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
               "docs/cloud/dbt-cloud-ide/ide-user-interface",
               "docs/cloud/dbt-cloud-ide/lint-format",
-              "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
             ],
           },
         ],
@@ -259,6 +259,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/build/projects" },
       items: [
         "docs/build/projects",
+        "docs/build/dbt-tips",
         {
           type: "category",
           label: "Build your DAG",
