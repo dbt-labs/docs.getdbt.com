@@ -8,7 +8,7 @@ authors: [jordan_stein]
 tags: [dbt Cloud]
 hide_table_of_contents: false
 
-date: 2023-12-11
+date: 2023-12-12
 is_featured: false
 ---
 There’s nothing quite like the feeling of launching a new product. 
