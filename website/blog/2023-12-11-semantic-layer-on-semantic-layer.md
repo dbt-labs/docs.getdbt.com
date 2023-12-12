@@ -18,7 +18,7 @@ How many users do we have? How is performance looking? What features are custome
 
 At dbt we recently made the [Semantic Layer Generally Available](https://www.getdbt.com/blog/new-dbt-cloud-features-announced-at-coalesce-2023). The Semantic Layer lets teams define business metrics centrally, in dbt, and access them in multiple analytics tools through our semantic layer APIs. 
 I’m a Product Manager on the Semantic Layer team, and the launch of the Semantic Layer put our team in an interesting, somewhat “meta,” position: we need to understand how a product launch is doing, and the product we just launched is designed to make defining and consuming metrics much more efficient.  It’s the perfect opportunity to put the semantic layer through its paces for product analytics. This blog post walks through the end-to-end process we used to set up product analytics for the dbt Semantic Layer using the dbt Semantic Layer. 
-
+<!-- truncate -->
 ## Getting your data ready for metrics
 
 The first steps to building a product analytics pipeline with the Semantic Layer look the same as just using dbt - it’s all about data transformation. The steps we followed were broadly:
