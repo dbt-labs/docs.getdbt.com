@@ -8,6 +8,13 @@ meta:
   api_name: dbt Semantic Layer APIs
 ---
 
+import CreateModel from '/snippets/_sl-create-semanticmodel.md';
+import DefineMetrics from '/snippets/_sl-define-metrics.md';
+import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
+import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
+import ConnectQueryAPI from '/snippets/_sl-connect-and-query-api.md';
+import RunProdJob from '/snippets/_sl-run-prod-job.md';
+
 <VersionBlock lastVersion="1.5">
 
 import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
@@ -15,13 +22,6 @@ import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 <DeprecationNotice />
  
  </VersionBlock>
-
-import CreateModel from '/snippets/_sl-create-semanticmodel.md';
-import DefineMetrics from '/snippets/_sl-define-metrics.md';
-import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
-import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
-import ConnectQueryAPI from '/snippets/_sl-connect-and-query-api.md';
-import RunProdJob from '/snippets/_sl-run-prod-job.md';
 
 
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools. 
