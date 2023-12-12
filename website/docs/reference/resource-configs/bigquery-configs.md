@@ -752,7 +752,6 @@ with the following configuration parameters:
 <TabItem value="project-yaml">
 
 <File name='dbt_project.yml'>
-directly to the materialized view in place.
 
 ```yaml
 models:
