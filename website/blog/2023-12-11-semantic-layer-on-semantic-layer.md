@@ -29,9 +29,10 @@ The first steps to building a product analytics pipeline with the Semantic Layer
 
 There are [plenty of other great resources](https://docs.getdbt.com/docs/build/projects) on how to accomplish the above steps, I’m going to skip that in this post and focus on how we built business metrics using the Semantic Layer.  Once the data is loaded and modeling is complete, our DAG for the Semantic Layer data looks like the following:
 
-![Screenshot 2023-09-28 at 4.05.25 PM.png](../static/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-dag.png)
 
-*Good old-fashioned debt DAG, with an extra node at the end*
+
+<Lightbox src="/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-dag.png" width="70%" title="Semantic Layer DAG in dbt Explorer" />
+
 
 
 
@@ -41,9 +42,8 @@ Let’s walk through the DAG from left to right: First, we have raw tables from 
 
 What [is a semantic model](https://docs.getdbt.com/docs/build/semantic-models)? Put simply, semantic models contain the components we need to build metrics. Semantic models are YAML files that live in your dbt project. They contain metadata about your dbt models in a format that MetricFlow, the query builder that powers the semantic layer, can understand. The DAG below in [dbt Explorer](https://docs.getdbt.com/docs/collaborate/explore-projects) shows the metrics we’ve built off of `semantic_layer_queries`.
 
-![Screenshot 2023-10-11 at 4.41.13 PM.png](../static/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-metrics-dag.png)
+<Lightbox src="/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-metrics-dag.png" width="80%" title="Semantic Layer DAG in dbt Explorer" />
 
- *Semantic Layer DAG in dbt Explorer*
 
 Let’s dig into semantic models and metrics a bit more, and explain some of the data modeling decisions we made. First, we needed to decide what model to use as a base for our semantic model. We decide to use`fct_semantic_layer`queries as our base model because defining a semantic model on top of a normalized fact table gives us maximum flexibility to join to other tables. This increased the number of dimensions available, which means we  can answer more questions. 
 
@@ -79,15 +79,15 @@ To query to Semantic Layer you have two paths: you can query metrics directly th
 
 The leg work of building our pipeline and defining metrics is all done, which makes last-mile consumption much easier. First, we set up a launch dashboard in Hex as the source of truth for semantic layer product metrics. This tool is used by cross-functional partners like marketing, sales, and the executive team to easily check product and usage metrics like total semantic layer queries, or weekly active semantic layer users. To set up our Hex connection, we simply enter a few details from our dbt Cloud environment and then we can work with metrics directly in Hex notebooks. We can use the JDBC interface, or use Hex’s GUI metric builder to build reports. We run all our WBRs off this dashboard, which allows us to spot trends in consumption and react quickly to changes in our business.
 
-![Screenshot 2023-12-06 at 2.52.03 PM.png](../static/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-hex.png)
 
-*Semantic Layer query builder in Hex*
+<Lightbox src="/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-hex.png" width="70%" title="Semantic Layer query builder in Hex" />
+
 
 On the finance and operations side, product usage data is crucial to making informed pricing decisions. All our pricing models are created in spreadsheets, so we leverage the Google Sheets integration to give those teams access to consistent data sets without the need to download CSVs from the Hex dashboard. This lets the Pricing team add dimensional slices, like tier and company size, to the data in a self-serve manner without having to request data team resources to generate those insights. This allows our finance team to iteratively build financial models and be more self-sufficient in pulling data, instead of relying on data team resources. 
 
-![Screenshot 2023-12-06 at 2.56.18 PM.png](../static/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-gsheets.png)
 
- *Semantic Layer query builder in Google Sheets*
+<Lightbox src="/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-gsheets.png" width="25%" title="Semantic Layer query builder in Google Sheets" />
+
 
 As a former data scientist and data engineer, I personally think this is a huge improvement over the approach I would have used without the semantic layer. My old approach would have been to materialize One Big Table with all the numeric and categorical columns I needed for analysis. Then write a ton of SQL in Hex or various notebooks to create reports for stakeholders. Inevitably I’m signing up for more development cycles to update the pipeline whenever a new dimension needs to be added or the data needs to be aggregated in a slightly different way. From a data team management perspective, using a central semantic layer saves data analysts cycles since users can more easily self-serve. At every company I’ve ever worked at, data analysts are always in high demand, with more requests than they can reasonably accomplish. This means any time a stakeholder can self-serve their data without pulling us in is a huge win.
 
