@@ -29,7 +29,7 @@ The [re-released dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), power
 
 - For users on dbt version 1.6 and lower using dbt Metrics without Snowflake proxy:
   - **Impact**: No immediate disruption, but the package will not receive updates or support after deprecation
-  - **Recommendation**: Plan migration to the new Semantic Layer for compatibility with dbt version 1.6 and higher.
+  - **Recommendation**: Plan migration to the re-released Semantic Layer for compatibility with dbt version 1.6 and higher.
 
 ### Engage and support
 
