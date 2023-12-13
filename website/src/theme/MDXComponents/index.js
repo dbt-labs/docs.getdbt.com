@@ -42,6 +42,7 @@ import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard'
 import CommunitySpotlightList from '@site/src/components/communitySpotlightList';
 import dbtEditor from '@site/src/components/dbt-editor';
 import Mentorship from '@site/src/components/mentorship';
+import detailsToggle from '@site/src/components/detailsToggle';
 
 const MDXComponents = {
   head: MDXHead,
@@ -90,5 +91,6 @@ const MDXComponents = {
   CommunitySpotlightList,
   dbtEditor: dbtEditor,
   Mentorship: Mentorship,
+  detailsToggle: detailsToggle,
 };
 export default MDXComponents;

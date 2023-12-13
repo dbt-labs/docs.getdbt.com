@@ -3,6 +3,18 @@ title: "What is dbt?"
 id: "introduction"
 ---
 
+<detailsToggle alt_header="Interesting question">
+
+This is the content for the question. You can write your detailed answer or information here.
+
+</detailsToggle>
+
+<detailsToggle alt_header="second interesting question">
+
+This is the content for the question. You can write your detailed answer or information here.
+
+</detailsToggle>
+
 <Mentorship/>
 
 <Snippet path="what-is-dbt-intro" />

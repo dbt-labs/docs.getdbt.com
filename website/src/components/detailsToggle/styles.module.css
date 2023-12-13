@@ -1,0 +1,48 @@
+:local(.link) {
+    color: var(--ifm-link-color);
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+:local(.link:hover), :local(.link:focus) {
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1); /* Slight background highlight on hover/focus */
+}
+
+:local(.disclaimer) {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 10px; /* Adjust as needed */
+}
+
+:local(.toggle) {
+    background-image: var(--ifm-menu-link-sublist-icon);
+    background-size: 1.25rem 1.25rem;
+    background-position: center;
+    content: ' ';
+    display: inline-block;
+    height: 1.25rem;
+    width: 1.25rem;
+    vertical-align: middle;
+    transition: transform 0.3s; /* Smooth transition for toggle icon */
+}
+
+/* hack for unswizzled FAQ arrows */
+:local(html[data-theme='dark'] .toggle) {
+    filter: invert(1);
+}
+
+:local(.body) {
+    margin-left: 2em;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-color: #e3f8f8;
+}
+
+:local(html[data-theme='dark'] .body) {
+  background: #333b47;
+}
+
+:local(.body > p:last-child) {
+    margin-bottom: 0px;
+}
