@@ -202,7 +202,7 @@ models:
 </Tabs>
 
 Many of these parameters correspond to their table counterparts and have been linked above.
-The parameters unique to materialized views are the auto-refresh and backup functionality, which are covered below.
+The parameters unique to materialized views are the [auto-refresh](#auto-refresh) and [backup](#backup) functionality, which are covered below.
 
 Find more information about the [CREATE MATERIALIZED VIEW](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html) parameters in the Redshift docs.
 
@@ -216,7 +216,7 @@ Redshift supports [automatic refresh](https://docs.aws.amazon.com/redshift/lates
 By default, a materialized view does not automatically refresh.
 dbt monitors this parameter for changes and applies them using an `ALTER` statement.
 
-Find more information about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
+Learn more information about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
 
 #### Backup
 
@@ -230,7 +230,7 @@ By default, a materialized view will be backed up during a cluster snapshot.
 dbt cannot monitor this parameter as it is not queryable within Redshift.
 If the value is changed, the materialized view will need to go through a `--full-refresh` in order to set it.
 
-Find more information about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
+Learn more about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
 
 ### Limitations
 
