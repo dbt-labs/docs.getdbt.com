@@ -6,7 +6,6 @@
 :local(.link:hover), :local(.link:focus) {
     text-decoration: underline;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1); /* Slight background highlight on hover/focus */
 }
 
 :local(.disclaimer) {
@@ -25,6 +24,10 @@
     width: 1.25rem;
     vertical-align: middle;
     transition: transform 0.3s; /* Smooth transition for toggle icon */
+}
+
+:local(.toggleUpsideDown) {
+    transform: rotateX(180deg)
 }
 
 /* hack for unswizzled FAQ arrows */

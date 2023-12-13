@@ -15,7 +15,7 @@ function detailsToggle({ children, alt_header = null }) {
     if (!hoverActive) return; // Ignore hover if disabled
     const timeout = setTimeout(() => {
       setOn(true);
-    }, 300); // 300ms delay
+    }, 500); // 500ms delay
     setHoverTimeout(timeout);
   };
 
@@ -37,9 +37,9 @@ function detailsToggle({ children, alt_header = null }) {
         onMouseEnter={handleMouseEnter} 
         onMouseLeave={handleMouseLeave}
       >
-        <span className={styles.toggle}></span>&nbsp;
+        <span className={`${styles.toggle} ${isOn ? null : styles.toggleUpsideDown}`}></span>&nbsp;
         <span>{alt_header}</span>
-        {/* Disclaimer or visual cue */}
+        {/* Visual disclaimer */}
         <small className={styles.disclaimer}>Hover to view</small>
       </span>
       <div 
