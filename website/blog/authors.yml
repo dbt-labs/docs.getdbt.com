@@ -287,6 +287,14 @@ jonathan_natkins:
       url: https://twitter.com/nattyice
   name: Jon "Natty" Natkins
   organization: dbt Labs
+jordan_stein:
+  image_url: /img/blog/authors/jordan.jpeg
+  job_title: Product Manager
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/jstein5/
+  name: Jordan Stein
+  organization: dbt Labs  
 
 josh_fell:
   image_url: /img/blog/authors/josh-fell.jpeg
