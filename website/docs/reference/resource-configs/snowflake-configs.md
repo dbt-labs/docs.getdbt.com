@@ -435,21 +435,18 @@ Find more information about these parameters in the Snowflake docs:
 
 ### Target lag
 
-Snowflake allows two configuration scenarios for scheduling automatic refreshes: time-based and dependency-based.
-For time-based automatic refreshes, provide a value of the form `<int> { seconds | minutes | hours | days }`.
-For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
-However, for scenarios where the referenced objects are themselves dynamic tables, it might be desirable to refresh
-the dynamic table whenever the underlying dynamic table is refreshed. In this scenario, use `target_lag='downstream'`.
-This allows for refresh schedules to be controlled once, at the source, instead of at each layer.
+Snowflake allows two configuration scenarios for scheduling automatic refreshes: 
+- **Time-based** &mdash; Provide a value of the form `<int> { seconds | minutes | hours | days }`. For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
+- **Downstream** &mdash; For scenarios where the referenced objects are themselves dynamic tables, it might be desirable to refresh the dynamic table whenever the underlying dynamic table is refreshed. In this scenario, use `target_lag='downstream'`. This allows for refresh schedules to be controlled once, at the source, instead of at each layer.
 
 ### Limitations
 
 As with materialized views on most data platforms, there are limitations associated with dynamic tables. Some worth noting include:
 
-- Dynamic table SQL has a [limited feature set](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#query-constructs-not-currently-supported-in-dynamic-tables)
-- Dynamic table SQL cannot be updated; the dynamic table must go through a `--full-refresh` (DROP/CREATE)
-- Dynamic tables cannot be downstream from: materialized views, external tables, streams
-- Dynamic tables cannot reference a view that is downstream from another dynamic table
+- Dynamic table SQL has a [limited feature set](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#query-constructs-not-currently-supported-in-dynamic-tables).
+- Dynamic table SQL cannot be updated; the dynamic table must go through a `--full-refresh` (DROP/CREATE).
+- Dynamic tables cannot be downstream from: materialized views, external tables, streams.
+- Dynamic tables cannot reference a view that is downstream from another dynamic table.
 
 Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
 
