@@ -258,16 +258,17 @@ To use these extensions, such as dbt-power-user, with the dbt Cloud CLI, you can
 
 ## FAQs
 
-<details>
+<detailsToggle alt_header="What's the difference between the dbt Cloud CLI and dbt Core?">
 
-<summary>What's the difference between the dbt Cloud CLI and dbt Core?</summary>
-The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">features</a>.
+The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. 
 
-</details>
+The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">features</a>.
 
-<details>
-<summary>How do I run both the dbt Cloud CLI and dbt Core?</summary>
-For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running <code>dbt</code>. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).<br />
+</detailsToggle>
+
+<detailsToggle alt_header="How do I run both the dbt Cloud CLI and dbt Core?">
+
+For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 
 If you have dbt Core installed locally, either:
 
@@ -276,10 +277,11 @@ If you have dbt Core installed locally, either:
 3. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the dbt Cloud CLI binary to use both dbt Cloud CLI and dbt Core together.
 
 You can always uninstall the dbt Cloud CLI to return to using dbt Core.
-</details>
 
-<details>
-<summary>How to create an alias?</summary>
+</detailsToggle>
+
+<detailsToggle alt_header="HHow to create an alias?">
+
 To create an alias for the dbt Cloud CLI: <br />
 
 1. Open your shell's profile configuration file. Depending on your shell and system, this could be <code>~/.bashrc</code>, <code>~/.bash_profile</code>, <code>~/.zshrc</code>, or another file.<br />
@@ -297,9 +299,12 @@ As an example, in bash you would run: <code>source ~/.bashrc</code><br />
 
 
 This alias will allow you to use the <code>dbt-cloud</code> command to invoke the dbt Cloud CLI while having dbt Core installed natively.
-</details>
 
-<details>
-<summary>Why am I receiving a <code>Session occupied</code> error?</summary>
+</detailsToggle>
+
+<detailsToggle alt_header="Why am I receiving a `Session occupied` error?">
+
+
 If you've ran a dbt command and receive a <code>Session occupied</code> error, you can reattach to your existing session with <code>dbt reattach</code> and then press <code>Control-C</code> and choose to cancel the invocation.
-</details>
+
+</detailsToggle>
