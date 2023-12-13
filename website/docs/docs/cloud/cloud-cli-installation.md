@@ -280,7 +280,7 @@ You can always uninstall the dbt Cloud CLI to return to using dbt Core.
 
 </detailsToggle>
 
-<detailsToggle alt_header="HHow to create an alias?">
+<detailsToggle alt_header="How to create an alias?">
 
 To create an alias for the dbt Cloud CLI: <br />
 
