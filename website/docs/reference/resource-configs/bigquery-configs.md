@@ -866,7 +866,7 @@ models:
 </Tabs>
 
 Many of these parameters correspond to their table counterparts and have been linked above.
-The set of parameters which are unique to materialized views covers auto-refresh functionality, which is covered [below](#auto-refresh).
+The set of parameters unique to materialized views covers [auto-refresh functionality](#auto-refresh).
 
 Find more information about these parameters in the BigQuery docs:
 - [CREATE MATERIALIZED VIEW statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
@@ -881,9 +881,9 @@ Find more information about these parameters in the BigQuery docs:
 | `max_staleness` (in Preview) | `<interval>` | no       | `none`  | alter                     |
 
 BigQuery supports [automatic refresh](https://cloud.google.com/bigquery/docs/materialized-views-manage#automatic_refresh) configuration for materialized views.
-By default, a materialized view will automatically refresh within 5 minutes of changes in the base table, but no more frequently than every 30 minutes.
-BigQuery only officially supports configuration of the frequency (the "30 minutes" part);
-however, there is a feature in preview that allows for configuration of the staleness (the "5 minutes" part).
+By default, a materialized view will automatically refresh within 5 minutes of changes in the base table, but not more frequently than once every 30 minutes.
+BigQuery only officially supports the configuration of the frequency (the "once every 30 minutes" frequency);
+however, there is a feature in preview that allows for the configuration of the staleness (the "5 minutes" refresh).
 dbt will monitor these parameters for changes and apply them using an `ALTER` statement.
 
 Find more information about these parameters in the BigQuery docs:
@@ -894,11 +894,11 @@ Find more information about these parameters in the BigQuery docs:
 
 As with most data platforms, there are limitations associated with materialized views. Some worth noting include:
 
-- Materialized view SQL has a [limited feature set](https://cloud.google.com/bigquery/docs/materialized-views-create#supported-mvs)
-- Materialized view SQL cannot be updated; the materialized view must go through a `--full-refresh` (DROP/CREATE)
-- The `partition_by` clause on a materialized view must match that of the underlying base table
-- While materialized views can have descriptions, materialized view *columns* cannot
-- Recreating/dropping the base table requires recreating/dropping the materialized view
+- Materialized view SQL has a [limited feature set](https://cloud.google.com/bigquery/docs/materialized-views-create#supported-mvs).
+- Materialized view SQL cannot be updated; the materialized view must go through a `--full-refresh` (DROP/CREATE).
+- The `partition_by` clause on a materialized view must match that of the underlying base table.
+- While materialized views can have descriptions, materialized view *columns* cannot.
+- Recreating/dropping the base table requires recreating/dropping the materialized view.
 
 Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
 
