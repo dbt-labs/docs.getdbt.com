@@ -18,7 +18,7 @@ The [re-released dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), power
 
 - **Deprecation date** &mdash; The legacy Semantic Layer and dbt Metrics will be officially deprecated on December 15th, 2023.
 - **Replacement** &mdash; [MetricFlow](/docs/build/build-metrics-intro) replaces dbt Metrics for defining semantic logic. The `dbt_metrics` package will no longer be supported post-deprecation.
-- **New feature** &mdash; Exports replaces the materializations functionality and will be available in dbt Cloud in December or January.
+- **New feature** &mdash; Exports replaces the materializing data with `metrics.calculate` functionality and will be available in dbt Cloud in December or January.
 
 
 ### Breaking changes and recommendations
