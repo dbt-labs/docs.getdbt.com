@@ -111,39 +111,137 @@ models:
 
 ## Materialized views
 
-The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html).
-Redshift-specific configuration includes the typical `dist`, `sort_type`, `sort`, and `backup`.
-For materialized views, there is also the `auto_refresh` setting, which allows Redshift to [automatically refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) the materialized view for you.
-The remaining configuration follows the general [materialized view](/docs/build/materializations#Materialized-View) configuration.
-There are also some limitations that we hope to address in the next version.
+The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
+with the following configuration parameters:
 
-### Monitored configuration changes
+| Parameter                                 | Type         | Required | Default                                        | Change Monitoring Support |
+|-------------------------------------------|--------------|----------|------------------------------------------------|---------------------------|
+| `on_configuration_change`                 | `<string>`   | no       | `apply`                                        | n/a                       |
+| [`dist`](#using-sortkey-and-distkey)      | `<string>`   | no       | `even`                                         | drop/create               |
+| [`sort`](#using-sortkey-and-distkey)      | `[<string>]` | no       | `none`                                         | drop/create               |
+| [`sort_type`](#using-sortkey-and-distkey) | `<string>`   | no       | `auto` if no `sort` <br />`compound` if `sort` | drop/create               |
+| [`auto_refresh`](#auto-refresh)           | `<boolean>`  | no       | `false`                                        | alter                     |
+| [`backup`](#backup)                       | `<string>`   | no       | `true`                                         | n/a                       |
 
-The settings below are monitored for changes applicable to `on_configuration_change`.
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
 
-#### Dist
 
-Changes to `dist` will result in a full refresh of the existing materialized view (applied at the time of the next `dbt run` of the model). Redshift requires a materialized view to be
-dropped and recreated to apply a change to the `distkey` or `diststyle`.
+<TabItem value="project-yaml">
 
-#### Sort type, sort
+<File name='dbt_project.yml'>
 
-Changes to `sort_type` or `sort` will result in a full refresh. Redshift requires a materialized
-view to be dropped and recreated to apply a change to the `sortkey` or `sortstyle`.
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
+    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
+    [+](/reference/resource-configs/plus-prefix)[sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
+    [+](/reference/resource-configs/plus-prefix)[sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
+    [+](/reference/resource-configs/plus-prefix)[auto_refresh](#auto-refresh): true | false
+    [+](/reference/resource-configs/plus-prefix)[backup](#backup): true | false
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): materialized_view
+      on_configuration_change: apply | continue | fail
+      [dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
+      [sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
+      [sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
+      [auto_refresh](#auto-refresh): true | false
+      [backup](#backup): true | false
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="materialized_view",
+    on_configuration_change="apply" | "continue" | "fail",
+    [dist](#using-sortkey-and-distkey)="all" | "auto" | "even" | "<field-name>",
+    [sort](#using-sortkey-and-distkey)=["<field-name>"],
+    [sort_type](#using-sortkey-and-distkey)="auto" | "compound" | "interleaved",
+    [auto_refresh](#auto-refresh)=true | false,
+    [backup](#backup)=true | false,
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+Many of these parameters correspond to their table counterparts and have been linked above.
+The parameters unique to materialized views are the [auto-refresh](#auto-refresh) and [backup](#backup) functionality, which are covered below.
+
+Find more information about the [CREATE MATERIALIZED VIEW](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html) parameters in the Redshift docs.
+
+#### Auto-refresh
+
+| Parameter      | Type        | Required | Default | Change Monitoring Support |
+|----------------|-------------|----------|---------|---------------------------|
+| `auto_refresh` | `<boolean>` | no       | `false` | alter                     |
+
+Redshift supports [automatic refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html#materialized-view-auto-refresh) configuration for materialized views.
+By default, a materialized view does not automatically refresh.
+dbt monitors this parameter for changes and applies them using an `ALTER` statement.
+
+Learn more information about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
 
 #### Backup
 
-Changes to `backup` will result in a full refresh. Redshift requires a materialized
-view to be dropped and recreated to apply a change to the `backup` setting.
+| Parameter | Type        | Required | Default | Change Monitoring Support |
+|-----------|-------------|----------|---------|---------------------------|
+| `backup`  | `<boolean>` | no       | `true`  | n/a                       |
 
-#### Auto refresh
+Redshift supports [backup](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html) configuration of clusters at the object level.
+This parameter identifies if the materialized view should be backed up as part of the cluster snapshot.
+By default, a materialized view will be backed up during a cluster snapshot.
+dbt cannot monitor this parameter as it is not queryable within Redshift.
+If the value is changed, the materialized view will need to go through a `--full-refresh` in order to set it.
 
-The `auto_refresh` setting can be updated via an `ALTER` statement. This setting effectively toggles
-automatic refreshes on or off. The default setting for this config is off (`False`). If this
-is the only configuration change for the materialized view, dbt will choose to apply
-an `ALTER` statement instead of issuing a full refresh,
+Learn more about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
 
 ### Limitations
+
+As with most data platforms, there are limitations associated with materialized views. Some worth noting include:
+
+- Materialized views cannot reference views, temporary tables, user-defined functions, or late-binding tables.
+- Auto-refresh cannot be used if the materialized view references mutable functions, external schemas, or another materialized view.
+
+Find more information about materialized view limitations in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-limitations).
+
+<VersionBlock firstVersion="1.6" lastVersion="1.6">
 
 #### Changing materialization from "materialized_view" to "table" or "view"
 
@@ -155,5 +253,7 @@ This would only need to be done once as the existing object would then be a mate
 For example, assume that a materialized view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`.
 If the user changes the model's config to `materialized="table"`, they will get an error.
 The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data warehouse before trying the model again.
+
+</VersionBlock>
 
 </VersionBlock>
