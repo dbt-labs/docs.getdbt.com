@@ -195,7 +195,7 @@ models:
 </Tabs>
 
 The [`indexes`](#indexes) parameter corresponds to that of a table, as explained above.
-It's worth noting that, unlike with tables, dbt monitors this parameter for changes and applies the changes without dropping the materialized view.
+It's worth noting that, unlike tables, dbt monitors this parameter for changes and applies the changes without dropping the materialized view.
 This happens via a `DROP/CREATE` of the indexes, which can be thought of as an `ALTER` of the materialized view.
 
 Find more information about materialized view parameters in the Postgres docs:
