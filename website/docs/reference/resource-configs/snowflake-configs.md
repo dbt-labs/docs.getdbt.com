@@ -430,14 +430,15 @@ models:
 
 </Tabs>
 
-Find more information about these parameters in the Snowflake docs:
-- [CREATE DYNAMIC TABLE](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table)
+Find more information about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
 
 ### Target lag
 
 Snowflake allows two configuration scenarios for scheduling automatic refreshes: 
 - **Time-based** &mdash; Provide a value of the form `<int> { seconds | minutes | hours | days }`. For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
-- **Downstream** &mdash; For scenarios where the referenced objects are themselves dynamic tables, it might be desirable to refresh the dynamic table whenever the underlying dynamic table is refreshed. In this scenario, use `target_lag='downstream'`. This allows for refresh schedules to be controlled once, at the source, instead of at each layer.
+- **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
+
+Find more information about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
 
 ### Limitations
 
