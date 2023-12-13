@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
-function detailsToggle({ children, alt_header = null }) {
+function DetailsToggle({ children, alt_header = null }) {
   const [isOn, setOn] = useState(false);
   const [hoverActive, setHoverActive] = useState(true);
   const [hoverTimeout, setHoverTimeout] = useState(null);
 
   const handleToggleClick = () => {
     setOn(!isOn);
-    setHoverActive(false); // Disable hover effect after click
+    setHoverActive(isOn); // Toggle hover activation based on current state
   };
 
   const handleMouseEnter = () => {
@@ -20,9 +20,10 @@ function detailsToggle({ children, alt_header = null }) {
   };
 
   const handleMouseLeave = () => {
-    clearTimeout(hoverTimeout);
-    setOn(false); // Hide content and deactivate hover
-    setHoverActive(true); // Re-enable hover for next interaction
+    if (hoverActive) {
+      clearTimeout(hoverTimeout);
+      setOn(false); // Collapse content only if it was opened by hover
+    }
   };
 
   useEffect(() => {
@@ -52,4 +53,4 @@ function detailsToggle({ children, alt_header = null }) {
   );
 }
 
-export default detailsToggle;
+export default DetailsToggle;
