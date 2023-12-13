@@ -6,7 +6,7 @@ sidebar_position: 09
 date: 2023-12-15
 ---
 
-dbt Labs has deprecated dbt Metrics and the legacy dbt Semantic Layer, both supported on dbt version 1.5 or lower. These changes will be in effect on _December 15th, 2023_.
+dbt Labs has deprecated dbt Metrics and the legacy dbt Semantic Layer, both supported on dbt version 1.5 or lower. This change starts on December 15th, 2023.
 
 This deprecation means dbt Metrics and the legacy Semantic Layer are no longer supported. We also removed the feature from the dbt Cloud user interface and documentation site.
 
