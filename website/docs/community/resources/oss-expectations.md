@@ -94,6 +94,8 @@ PRs are your surest way to make the change you want to see in dbt / packages / d
 
 **Every PR should be associated with an issue.** Why? Before you spend a lot of time working on a contribution, we want to make sure that your proposal will be accepted. You should open an issue first, describing your desired outcome and outlining your planned change. If you've found an older issue that's already open, comment on it with an outline for your planned implementation. Exception to this rule: If you're just opening a PR for a cosmetic fix, such as a typo in documentation, an issue isn't needed.
 
+**PRs should include robust testing.** With the goal to substantially cut down the number and impact of regressions, we are taking a more meticulous approach to the tests that we require to merge a pull request. We recognize that robust testing can often take significantly more effort than the main portion of the code. Thank you for your help in contributing to this goal!
+
 **Our goal is to review most new PRs within 7 days.** The first review will include some high-level comments about the implementation, including (at a high level) whether it’s something we think suitable to merge. Depending on the scope of the PR, the first review may include line-level code suggestions, or we may delay specific code review until the PR is more finalized / until we have more time.
 
 **Automation that can help us:** Many repositories have a template for pull request descriptions, which will include a checklist that must be completed before the PR can be merged. You don’t have to do all of these things to get an initial PR, but they definitely help. Those many include things like:
