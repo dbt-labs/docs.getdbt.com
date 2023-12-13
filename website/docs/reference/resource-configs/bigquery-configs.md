@@ -725,18 +725,18 @@ The `grant_access_to` config is not thread-safe when multiple views need to be a
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
 with the following configuration parameters:
 
-| Parameter                                              | Type                   | Required | Default | Change Monitoring Support |
-|--------------------------------------------------------|------------------------|----------|---------|---------------------------|
-| `on_configuration_change`                              | `<string>`             | no       | `apply` | n/a                       |
-| [`cluster_by`](#clustering-clause)                     | `[<string>]`           | no       | `none`  | drop/create               |
-| [`partition_by`](#partition-clause)                    | `{<dictionary>}`       | no       | `none`  | drop/create               |
-| [`enable_refresh`](#auto-refresh)                      | `<boolean>`            | no       | `true`  | alter                     |
-| [`refresh_interval_minutes`](#auto-refresh)            | `<float>`              | no       | `30`    | alter                     |
-| [`max_staleness`](#auto-refresh) (in Preview)          | `<interval>`           | no       | `none`  | alter                     |
-| `description`                                          | `<string>`             | no       | `none`  | alter                     |
-| [`labels`](#specifying-labels)                         | `{<string>: <string>}` | no       | `none`  | alter                     |
-| [`hours_to_expiration`](#controlling-table-expiration) | `<integer>`            | no       | `none`  | alter                     |
-| [`kms_key_name`](#using-kms-encryption)                | `<string>`             | no       | `none`  | alter                     |
+| Parameter                                                   | Type                   | Required | Default | Change Monitoring Support |
+|-------------------------------------------------------------|------------------------|----------|---------|---------------------------|
+| `on_configuration_change`                                   | `<string>`             | no       | `apply` | n/a                       |
+| [`cluster_by`](#clustering-clause)                          | `[<string>]`           | no       | `none`  | drop/create               |
+| [`partition_by`](#partition-clause)                         | `{<dictionary>}`       | no       | `none`  | drop/create               |
+| [`enable_refresh`](#auto-refresh)                           | `<boolean>`            | no       | `true`  | alter                     |
+| [`refresh_interval_minutes`](#auto-refresh)                 | `<float>`              | no       | `30`    | alter                     |
+| [`max_staleness`](#auto-refresh) (in Preview)               | `<interval>`           | no       | `none`  | alter                     |
+| [`description`](/reference/resource-properties/description) | `<string>`             | no       | `none`  | alter                     |
+| [`labels`](#specifying-labels)                              | `{<string>: <string>}` | no       | `none`  | alter                     |
+| [`hours_to_expiration`](#controlling-table-expiration)      | `<integer>`            | no       | `none`  | alter                     |
+| [`kms_key_name`](#using-kms-encryption)                     | `<string>`             | no       | `none`  | alter                     |
 
 <Tabs
   groupId="config-languages"
@@ -772,7 +772,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[enable_refresh](#auto-refresh): true | false
     [+](/reference/resource-configs/plus-prefix)[refresh_interval_minutes](#auto-refresh): <float>
     [+](/reference/resource-configs/plus-prefix)[max_staleness](#auto-refresh): <interval>
-    [+](/reference/resource-configs/plus-prefix)description: <string>
+    [+](/reference/resource-configs/plus-prefix)[description](/reference/resource-properties/description): <string>
     [+](/reference/resource-configs/plus-prefix)[labels](#specifying-labels): {<label-name>: <label-value>}
     [+](/reference/resource-configs/plus-prefix)[hours_to_expiration](#acontrolling-table-expiration): <integer>
     [+](/reference/resource-configs/plus-prefix)[kms_key_name](##using-kms-encryption): <path-to-key>
@@ -809,7 +809,7 @@ models:
       [enable_refresh](#auto-refresh): true | false
       [refresh_interval_minutes](#auto-refresh): <float>
       [max_staleness](#auto-refresh): <interval>
-      description: <string>
+      [description](/reference/resource-properties/description): <string>
       [labels](#specifying-labels): {<label-name>: <label-value>}
       [hours_to_expiration](#acontrolling-table-expiration): <integer>
       [kms_key_name](##using-kms-encryption): <path-to-key>
@@ -850,7 +850,7 @@ models:
     [max_staleness](#auto-refresh)="<interval>",
 
     # additional options
-    description="<description>",
+    [description](/reference/resource-properties/description)="<description>",
     [labels](#specifying-labels)={
         "<label-name>": "<label-value>",
     },
