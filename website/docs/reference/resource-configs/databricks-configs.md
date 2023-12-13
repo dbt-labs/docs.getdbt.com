@@ -365,9 +365,18 @@ insert into analytics.replace_where_incremental
 
 ## Selecting compute per model
 
-Beginning in version 1.7.2, you can assign which compute resource to use on a per-model basis. 
+Beginning in version 1.7.2, you can assign which compute resource to use on a per-model basis.
 For SQL models, you can select a SQL Warehouse (serverless or provisioned) or an all purpose cluster.
 For details on how this feature interacts with python models, see [Specifying compute for Python models](#specifying-compute-for-python-models).
+
+:::note
+
+This is an optional setting. If you do not configure this as shown below,  we will default to the compute specified by http_path in the top level of the output section in your profile. 
+This is also the compute that will be used for tasks not associated with a particular model, such as gathering metadata for all tables in a schema.
+
+:::
+
+
 To take advantage of this capability, you will need to add compute blocks to your profile:
 
 <File name='profile.yml'>
@@ -500,12 +509,6 @@ select * from {{ ref('seed') }}
 
 </File>
 
-:::note
-
-In the absence of a specified compute, we will default to the compute specified by http_path in the top level of the output section in your profile. 
-This is also the compute that will be used for tasks not associated with a particular model, such as gathering metadata for all tables in a schema.
-
-:::
 
 To validate that the specified compute is being used, look for lines in your dbt.log like:
 
@@ -525,7 +528,7 @@ Materializing a python model requires execution of SQL as well as python.
 Specifically, if your python model is incremental, the current execution pattern involves executing python to create a staging table that is then merged into your target table using SQL.
 The python code needs to run on an all purpose cluster, while the SQL code can run on an all purpose cluster or a SQL Warehouse.
 When you specify your `databricks_compute` for a python model, you are currently only specifying which compute to use when running the model-specific SQL.
-If you wish to use a different compute for executing the python itself, you must specify an alternate `http_path` in the config for the model:
+If you wish to use a different compute for executing the python itself, you must specify an alternate `http_path` in the config for the model. Please note that declaring a separate SQL compute and a python compute for your python dbt models is optional. If you wish to do this:
 
 <File name="model.py">
 
