@@ -12,6 +12,13 @@ This is the content for the question. You can write your detailed answer or info
 <detailsToggle alt_header="second interesting question">
 
 This is the content for the question. You can write your detailed answer or information here.
+This is the content for the question. You can write your detailed answer or information here.
+This is the content for the question. You can write your detailed answer or information here.
+This is the content for the question. You can write your detailed answer or information here.
+This is the content for the question. You can write your detailed answer or information here.
+`code here`
+- bullet here
+- bullet there
 
 </detailsToggle>
 
