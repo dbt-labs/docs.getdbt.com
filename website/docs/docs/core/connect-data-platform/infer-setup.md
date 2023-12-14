@@ -12,14 +12,19 @@ meta:
   slack_channel_name: n/a
   slack_channel_link: 
   platform_name: 'Infer'
-  config_page: '/reference/resource-configs/no-configs'
+  config_page: '/reference/resource-configs/infer-configs'
   min_supported_version: n/a
 ---
+
+:::info Vendor-supported plugin
+
+Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
+
+:::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
-
 
 
 ## Connecting to Infer with **dbt-infer**
@@ -30,10 +35,18 @@ you can build advanced analysis for any business use case.
 Read more about SQL-inf and Infer in the [Infer documentation](https://docs.getinfer.io/).
 
 The `dbt-infer` package allow you to use SQL-inf easily within your DBT models. 
-You can read more about the `dbt-infer` package itself and how it connecst to Infer in the [dbt-infer documentation](https://dbt.getinfer.io/).
+You can read more about the `dbt-infer` package itself and how it connects to Infer in the [dbt-infer documentation](https://dbt.getinfer.io/).
+
+The dbt-infer adapter is maintained via PyPi and installed with pip.
+To install the latest dbt-infer package simply run the following within the same shell as you run dbt.
+```python
+pip install dbt-infer
+```
+
+Versioning of dbt-infer follows the standard dbt versioning scheme - meaning if you are using dbt 1.2 the corresponding dbt-infer will be named 1.2.x where is the latest minor version number.
 
 Before using SQL-inf in your DBT models you need to setup an Infer account and generate an API-key for the connection.
-You can read how to do that in the [Getting Started Guide](https://dbt.getinfer.io/docs/getting_started#sign-up-to-infer).
+You can read how to do that in the [Getting Started Guide](https://docs.getinfer.io/docs/reference/integrations/dbt).
 
 The profile configuration in `profiles.yml` for `dbt-infer` should look something like this:
 
@@ -101,10 +114,10 @@ as native SQL functions.
 
 Infer supports a number of SQL-inf commands, including 
 `PREDICT`, `EXPLAIN`, `CLUSTER`, `SIMILAR_TO`, `TOPICS`, `SENTIMENT`.
-You can read more about SQL-inf and the commands it supports in the [SQL-inf Reference Guide](https://docs.getinfer.io/docs/reference).
+You can read more about SQL-inf and the commands it supports in the [SQL-inf Reference Guide](https://docs.getinfer.io/docs/category/commands).
 
 To get you started we will give a brief example here of what such a model might look like.
-You can find other more complex examples on the [dbt-infer examples page](https://dbt.getinfer.io/docs/examples).
+You can find other more complex examples in the [dbt-infer examples repo](https://github.com/inferlabs/dbt-infer-examples).
 
 In our simple example, we will show how to use a previous model 'user_features' to predict churn
 by predicting the column `has_churned`.
