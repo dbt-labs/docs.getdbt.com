@@ -4,6 +4,7 @@ description: "November 2023: New quality-of-life improvements for setting up and
 sidebar_label: "Enhancement: Job notifications"
 sidebar_position: 10
 tags: [Nov-2023]
+date: 2023-11-28
 ---
 
 There are new quality-of-life improvements in dbt Cloud for email and Slack notifications about your jobs: 

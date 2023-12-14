@@ -26,7 +26,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/regions-ip-addresses) and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
 
 - Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
-- Note that SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections and [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) doesn't support the dbt Cloud CLI yet.
+- Note that SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections doesn't support the dbt Cloud CLI yet.
 
 ## Install dbt Cloud CLI
 
