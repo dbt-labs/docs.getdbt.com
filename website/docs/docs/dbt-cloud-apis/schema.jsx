@@ -173,7 +173,7 @@ export const NodeArgsTable = ({ parent, name, useBetaAPI }) => {
   )
 }
 
-export const SchemaTable = ({ nodeName, useBetaAPI }) => {
+export const SchemaTable = ({ nodeName, useBetaAPI, exclude = [] }) => {
   const [data, setData] = useState(null)
   useEffect(() => {
     const fetchData = () => {
@@ -255,6 +255,7 @@ export const SchemaTable = ({ nodeName, useBetaAPI }) => {
       </thead>
       <tbody>
         {data.data.__type.fields.map(function ({ name, description, type }) {
+          if (exclude.includes(name)) return;
           return (
             <tr key={name}>
               <td><code>{name}</code></td>
