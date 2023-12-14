@@ -174,7 +174,7 @@ dbt's incremental materialization works differently on different databases. Wher
 
 On warehouses that do not support `merge` statements, a merge is implemented by first using a `delete` statement to delete records in the target table that are to be updated, and then an `insert` statement.
 
-Transaction management is used to ensure this is executed as a single unit of work.
+On data platforms that support it, transaction management is used to ensure this is executed as a single unit of work. dbt will roll back open transactions and restore the database to a good state if any statement within the materialization fails.
 
 ## What if the columns of my incremental model change?
 
