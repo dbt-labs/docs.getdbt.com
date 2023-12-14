@@ -26,7 +26,7 @@ MetricFlow, a powerful component of the dbt Semantic Layer, simplifies the creat
 Use this guide to fully experience the power of the universal dbt Semantic Layer. Here are the following steps you'll take:
 
 - [Create a semantic model](#create-a-semantic-model) in dbt Cloud using MetricFlow
-- [Define metrics](#define-metrics) in dbt Cloud using MetricFlow
+- [Define metrics](#define-metrics) in dbt using MetricFlow
 - [Test and query metrics](#test-and-query-metrics) with MetricFlow 
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud 

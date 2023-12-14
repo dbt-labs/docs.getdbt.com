@@ -424,6 +424,8 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
+            "docs/collaborate/model-performance",
+            "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
           ],
         },
@@ -721,6 +723,7 @@ const sidebarSettings = {
         "reference/resource-configs/oracle-configs",
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/starrocks-configs",
+        "reference/resource-configs/infer-configs",
       ],
     },
     {
