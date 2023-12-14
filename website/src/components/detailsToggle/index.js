@@ -7,7 +7,7 @@ function detailsToggle({ children, alt_header = null }) {
   const [hoverTimeout, setHoverTimeout] = useState(null);
 
   const handleToggleClick = () => {
-    setOn(!isOn);
+    setOn(false);
     setHoverActive(isOn); // Toggle hover activation based on current state
   };
 
@@ -20,9 +20,10 @@ function detailsToggle({ children, alt_header = null }) {
   };
 
   const handleMouseLeave = () => {
-    if (hoverActive && isOn) {
+    if (hoverActive && !isOn) {
       clearTimeout(hoverTimeout);
-
+      setOn(false);
+      // isOn (false); can't be used here but setOn triggers a re-render
     }
   };
 
