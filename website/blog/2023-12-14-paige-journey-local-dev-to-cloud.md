@@ -30,7 +30,7 @@ We were a small “spoke” data team in a larger company, and when the central 
 
 At the next workplace, setting up dbt was part of the onboarding checklist that every new data team member accomplished in their first week. We all did local development on our project, and used dbt Cloud only to administer our scheduled job runs. We shared a single login to dbt Cloud (”databot”), and in the nearly two years I worked there I only logged in a few times, exclusively to look at the details of a failed CI run.
 
-Because we shared a login, it wouldn’t have made sense for any of us to do development in dbt Cloud. But even if we’d had individual logins, there were barriers to developing using the Cloud IDE.
+But, there were barriers to developing using the Cloud IDE.
 
 For one, it just wasn’t the norm for the team. dbt Core was decided on and set up before I got there, and everyone was comfortable doing development locally. When new folks would join the data team, often they wouldn’t have dbt or git experience, but we were all available and encouraging when it came to helping someone get used to the local development workflow.
 
@@ -49,7 +49,7 @@ When I realized that my dream was to come and work for dbt Labs, that I wanted t
 
 For the technical assessment I completed for my application here, I decided to use dbt Cloud to do the work of modeling the data, and specifically to do all of the development in the Cloud IDE. This was in June of 2022.
 
-I started by following along with [this “getting started with dbt Cloud” tutorial](/docs/get-started/getting-started/set-up-dbt-cloud) (which has become a [Quickstart guide](/quickstarts/bigquery?step=1)!), which walked me through setting up a connection to BigQuery (where I had uploaded the assignment data), connecting to a repo (I created a private one in my personal GitHub account), and creating my project structure.
+I started by following along with a Getting Started tutorial that evolved into [this Quickstart guide]([/guides/bigquery?step=1)!, which walked me through setting up a connection to BigQuery (where I had uploaded the assignment data), connecting to a repo (I created a private one in my personal GitHub account), and creating my project structure. You can also find more set up informaiton in [About dbt Cloud setup](https://docs.getdbt.com/docs/cloud/about-cloud-setup).
 
 I found the experience really straightforward, in fact the dbt Cloud IDE was a pleasure to use. It’s true that my project was very small and simple, really only one source and maybe a handful of models, and the size and simplicity might be part of the ease I experienced. But I followed the recommendation for project structure that was available at the time, creating staging and intermediate and mart versions of my models, and got more comfortable with pushing the buttons that do git actions and seeing the results in the repo on GitHub.
 
