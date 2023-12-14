@@ -247,8 +247,6 @@ Click the name of the adapter in the below table for more information about supp
 
 The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in dbt v1.6.
 
-Standard strategies available per adapter:
-
 <VersionBlock lastVersion="1.5">
 
 | data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |
@@ -276,18 +274,6 @@ Standard strategies available per adapter:
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✔️    |    ✔️    |        ✔️        |                    |
 
 </VersionBlock>
-
-Default strategy per adapter:
-
-| data platform adapter  | default strategy |
-| :----------------- | :----------------|
-| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         |
-| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) | `append`         |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      | `merge`          |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           | `append`         |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 | `merge`          |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    | `merge`          |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  | `append`         |
 
 <VersionBlock firstVersion="1.3">
 
