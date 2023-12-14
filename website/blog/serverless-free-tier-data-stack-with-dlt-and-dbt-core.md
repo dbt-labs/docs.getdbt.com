@@ -100,7 +100,7 @@ def notify_on_completion(hook):
 The outcome was first and foremost a visualisation highlighting the unique properties available in my specific area of search. The map shown on the left of the page gives a live overview of location, number of duplicates (bubble size) and price (bubble colour) which can amongst other features be filtered using the sliders on the right. This represents a much better decluttered solution from which to observe the actual inventory available.
 
 
-<Lightbox src="/img/blog/2023-12-11-semantic-layer-on-semantic-layer/Screenshot-dag.png" width="70%" title="Semantic Layer DAG in dbt Explorer" />
+<Lightbox src="/img/blog/serverless-free-tier-data-stack-with-dlt-and-dbt-core/map_screenshot.png" width="70%" title="Dashboard mapping overview" />
 
 Further charts highlight additional metrics which can now (given de-duplication has taken place)  accurately be measured including most importantly, the development over time of “average price/square metre” and those properties which have been inferred to have been sold.
 
@@ -119,6 +119,8 @@ Perhaps this is a problem ML or GPT could solve equally well as a human, given t
 The data problem itself was an eye opener into the real-estate market. It’s a messy market full of unknowns and noise, which adds a significant purchase risk to first time buyers.
 
 Tooling wise, it was surprising how quick it was to set everything up. dlt integrates well with dbt and enables fast and simple data ingestion, making this project simpler than I thought it would be.
+
+<Lightbox src="/img/blog/serverless-free-tier-data-stack-with-dlt-and-dbt-core/architecture_diagram.png" width="70%" title="Project architecture" />
 
 ## dlt
 
