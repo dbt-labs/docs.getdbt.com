@@ -29,14 +29,6 @@ Using Databricks workflows to call the dbt Cloud job API can be useful for sever
 - [Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html)
   - **Note**: You only need to set up your authentication. Once you have set up your Host and Token and are able to run `databricks workspace ls /Users/<someone@example.com>`, you can proceed with the rest of this guide.
 
-## Configure Databricks workflows for dbt Cloud jobs
-
-To use Databricks workflows for running dbt Cloud jobs, you need to perform the following steps: 
-
-- [Set up a Databricks secret scope](#set-up-a-databricks-secret-scope)
-- [Create a Databricks Python notebook](#create-a-databricks-python-notebook)
-- [Configure the workflows to run the dbt Cloud jobs](#configure-the-workflows-to-run-the-dbt-cloud-jobs)
-
 ## Set up a Databricks secret scope
 
 1. Retrieve **[User API Token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens#user-api-tokens) **or **[Service Account Token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) **from dbt Cloud
