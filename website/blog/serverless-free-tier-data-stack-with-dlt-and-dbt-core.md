@@ -47,7 +47,9 @@ The solution has pretty standard components
 
 - An EtL pipeline. The little t stands for normalisation, such as
 
-Due to the complexity of deduplication, we needed to add a human element to confirm the deduplication. This is reflected in the diagram below
+Due to the complexity of deduplication, we needed to add a human element to confirm the deduplication. This is reflected in the diagram below:
+
+<Lightbox src="/img/blog/serverless-free-tier-data-stack-with-dlt-and-dbt-core/architecture_diagram.png" width="70%" title="Project architecture" />
 
 ### Ingesting the data
 
@@ -119,8 +121,6 @@ Perhaps this is a problem ML or GPT could solve equally well as a human, given t
 The data problem itself was an eye opener into the real-estate market. It’s a messy market full of unknowns and noise, which adds a significant purchase risk to first time buyers.
 
 Tooling wise, it was surprising how quick it was to set everything up. dlt integrates well with dbt and enables fast and simple data ingestion, making this project simpler than I thought it would be.
-
-<Lightbox src="/img/blog/serverless-free-tier-data-stack-with-dlt-and-dbt-core/architecture_diagram.png" width="70%" title="Project architecture" />
 
 ## dlt
 
