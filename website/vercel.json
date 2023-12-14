@@ -18,6 +18,21 @@
       "permanent": true
     },
     {
+      "source": "/reference/test-configs",
+      "destination": "/reference/data-test-configs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/resource-properties/tests",
+      "destination": "/reference/resource-properties/data-tests",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/tests",
+      "destination": "/docs/build/data-tests",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/dbt-cloud-ide",
       "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true
