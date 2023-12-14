@@ -249,31 +249,29 @@ The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in 
 
 <VersionBlock lastVersion="1.5">
 
-    
-| data platform adapter   | default strategy | additional supported strategies    |
-| :-------------------| ---------------- | -------------------- |
-| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `delete+insert`                          |
-| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) | `append`         | `delete+insert`                          |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      | `merge`          | `insert_overwrite`                       |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           | `append`         | `merge`, `insert_overwrite`              |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 | `merge`          | `append`, `insert_overwrite`             |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    | `merge`          | `append`, `delete+insert`                |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  | `append`         | `merge`, `delete+insert`                 |
+| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |
+|-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|
+| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅   |         |        ✅       |                    |
+| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅   |         |        ✅       |                    |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |          |    ✅   |                 |          ✅        |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅   |    ✅   |                 |          ✅        |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅   |    ✅   |                 |          ✅        |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅   |    ✅   |        ✅       |                    |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅   |    ✅   |        ✅       |                    |
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.6">
 
-    
-| data platform adapter  | default strategy | additional supported strategies  |
-| :----------------- | :----------------| : ---------------------------------- |
-| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `merge` , `delete+insert`                |
-| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) | `append`         | `merge`, `delete+insert`                 |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      | `merge`          | `insert_overwrite`                       |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           | `append`         | `merge`, `insert_overwrite`              |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 | `merge`          | `append`, `insert_overwrite`             |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    | `merge`          | `append`, `delete+insert`                |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  | `append`         | `merge`, `delete+insert`                 |
+| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |
+|-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|
+| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅        |                    |
+| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅        |                    |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |          |     ✅  |                 |          ✅         |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅    |    ✅  |                  |          ✅        |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |                 |          ✅        |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   |        ✅       |                    |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   |        ✅       |                    |
 
 </VersionBlock>
 
