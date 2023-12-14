@@ -38,9 +38,9 @@ When materializing a model as `table`, you may include several optional configs 
 ## Incremental models
 
 dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of four values:
- - **`append`** (default): Insert new records without updating or overwriting any existing data.
+ - **`append`**: Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
- - **`merge`** (Delta and Hudi file format only): Match records based on a `unique_key`, updating old records, and inserting new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - **`merge`** (default; Delta and Hudi file format only): Match records based on a `unique_key`, updating old records, and inserting new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
  - **`replace_where`** (Delta file format only): Match records based on `incremental_predicates`, replacing all records that match the predicates from the existing table with records matching the predicates from the new data. (If no `incremental_predicates` are specified, all new data is inserted, similar to `append`.)
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
@@ -48,8 +48,6 @@ Each of these strategies has its pros and cons, which we'll discuss below. As wi
 ### The `append` strategy
 
 Following the `append` strategy, dbt will perform an `insert into` statement with all new data. The appeal of this strategy is that it is straightforward and functional across all platforms, file types, connection methods, and Apache Spark versions. However, this strategy _cannot_ update, overwrite, or delete existing data, so it is likely to insert duplicate records for many data sources.
-
-Specifying `append` as the incremental strategy is optional, since it's the default strategy used when none is specified.
 
 <Tabs
   defaultValue="source"
@@ -194,6 +192,8 @@ The `merge` incremental strategy requires:
 - Apache Spark for hudi file format
 
 dbt will run an [atomic `merge` statement](https://docs.databricks.com/spark/latest/spark-sql/language-manual/merge-into.html) which looks nearly identical to the default merge behavior on Snowflake and BigQuery. If a `unique_key` is specified (recommended), dbt will update old records with values from new records that match on the key column. If a `unique_key` is not specified, dbt will forgo match criteria and simply insert all new records (similar to `append` strategy).
+
+Specifying `merge` as the incremental strategy is optional since it's the default strategy used when none is specified.
 
 <Tabs
   defaultValue="source"

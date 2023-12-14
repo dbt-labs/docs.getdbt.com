@@ -23,9 +23,9 @@ models:
       [<model_config>](/reference/model-configs): <config_value>
     [constraints](/reference/resource-properties/constraints):
       - <constraint>
-    [tests](/reference/resource-properties/tests):
+    [tests](/reference/resource-properties/data-tests):
       - <test>
-      - ... # declare additional tests
+      - ... # declare additional data tests
     [columns](/reference/resource-properties/columns):
       - name: <column_name> # required
         [description](/reference/resource-properties/description): <markdown_string>
@@ -33,9 +33,9 @@ models:
         [quote](/reference/resource-properties/quote): true | false
         [constraints](/reference/resource-properties/constraints):
           - <constraint>
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
-          - ... # declare additional tests
+          - ... # declare additional data tests
         [tags](/reference/resource-configs/tags): [<string>]
 
       - name: ... # declare properties of additional columns
@@ -51,9 +51,9 @@ models:
           - <constraint>
         [config](/reference/resource-properties/config):
           [<model_config>](/reference/model-configs): <config_value>
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
-          - ... # declare additional tests
+          - ... # declare additional data tests
         columns:
           # include/exclude columns from the top-level model properties
           - [include](/reference/resource-properties/include-exclude): <include_value>
@@ -63,9 +63,9 @@ models:
             [quote](/reference/resource-properties/quote): true | false
             [constraints](/reference/resource-properties/constraints):
               - <constraint>
-            [tests](/reference/resource-properties/tests):
+            [tests](/reference/resource-properties/data-tests):
               - <test>
-              - ... # declare additional tests
+              - ... # declare additional data tests
             [tags](/reference/resource-configs/tags): [<string>]
         - v: ... # declare additional versions
 
