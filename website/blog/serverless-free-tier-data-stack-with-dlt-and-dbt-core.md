@@ -60,14 +60,14 @@ For ingestion, we use a couple of sources
 
 Since these steps run sequentially, I chose to separate them into their own repositories:
 
-- Idealista pipeline: https://github.com/euanjohnston92-berlin/Idealista_pipeline
-- gsheets deduplication pipeline https://github.com/euanjohnston92-berlin/gsheets_check_pipeline
+- Idealista pipeline: https://github.com/euanjohnston-dev/Idealista_pipeline
+- gsheets deduplication pipeline https://github.com/euanjohnston-dev/gsheets_check_pipeline
 
 ### Transforming the data
 
 For transforming I use my favorite solution, dbt core. For running and orchestrating dbt core on cloud functions, I am using dlt’s dbt core runner. The benefit of the runner in this context is that I can re-use the same credential setup
 
-This is the package I created: https://github.com/euanjohnston92-berlin/idealista_dbt_pipeline
+This is the package I created: https://github.com/euanjohnston-dev/idealista_dbt_pipeline
 
 ### Production-readying the pipeline
 
