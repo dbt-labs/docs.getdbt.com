@@ -49,7 +49,7 @@ When I realized that my dream was to come and work for dbt Labs, that I wanted t
 
 For the technical assessment I completed for my application here, I decided to use dbt Cloud to do the work of modeling the data, and specifically to do all of the development in the Cloud IDE. This was in June of 2022.
 
-I started by following along with a Getting Started tutorial that evolved into [this Quickstart guide](/docs/guides/bigquery?step=1)!, which walked me through setting up a connection to BigQuery (where I had uploaded the assignment data), connecting to a repo (I created a private one in my personal GitHub account), and creating my project structure. You can also find more set up informaiton in [About dbt Cloud setup](/docs/cloud/about-cloud-setup).
+I started by following along with a Getting Started tutorial that evolved into [this quickstart guide](/guides/bigquery), which walked me through setting up a connection to BigQuery (where I had uploaded the assignment data), connecting to a repo (I created a private one in my personal GitHub account), and creating my project structure. You can also find more set up information in [About dbt Cloud setup](/docs/cloud/about-cloud-setup).
 
 I found the experience really straightforward, in fact the dbt Cloud IDE was a pleasure to use. It’s true that my project was very small and simple, really only one source and maybe a handful of models, and the size and simplicity might be part of the ease I experienced. But I followed the recommendation for project structure that was available at the time, creating staging and intermediate and mart versions of my models, and got more comfortable with pushing the buttons that do git actions and seeing the results in the repo on GitHub.
 
