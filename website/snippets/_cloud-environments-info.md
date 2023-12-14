@@ -34,24 +34,6 @@ Both development and deployment environments have a section called **General Set
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
 :::
 
-### Git repository caching 
-
-At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of your project's code and runs `dbt deps` to install your dependencies. 
-
-For improved reliability and performance on your job runs, you can enable dbt Cloud to keep a cache of the project's Git repository. So, if there's a third-party outage that causes the cloning operation to fail, dbt Cloud will instead use the cached copy of the repo so your jobs can continue running as scheduled. 
-
-dbt Cloud caches your project's Git repo after each successful run and retains it for 8 days if there are no repo updates. It caches all packages regardless of installation method and does not fetch code outside of the job runs. 
-
-To enable Git repository caching, select **Account settings** from the gear menu and enable the **Repository caching** option. 
-
-<Lightbox src="/img/docs/deploy/example-repo-caching.png" width="85%" title="Example of the Repository caching option" />
-
-:::note
-
-This feature is only available on the dbt Cloud Enterprise plan. 
-
-:::
-
 ### Custom branch behavior
 
 By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the **Default to a custom branch** option. This setting have will have slightly different behavior depending on the environment type:
@@ -91,4 +73,36 @@ dbname: jaffle_shop
 schema: dbt_alice      
 threads: 4
 ```
+
+### Git repository caching 
+
+At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of your project's code and runs `dbt deps` to install your dependencies. 
+
+For improved reliability and performance on your job runs, you can enable dbt Cloud to keep a cache of the project's Git repository. So, if there's a third-party outage that causes the cloning operation to fail, dbt Cloud will instead use the cached copy of the repo so your jobs can continue running as scheduled. 
+
+dbt Cloud caches your project's Git repo after each successful run and retains it for 8 days if there are no repo updates. It caches all packages regardless of installation method and does not fetch code outside of the job runs. 
+
+To enable Git repository caching, select **Account settings** from the gear menu and enable the **Repository caching** option. 
+
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Repository caching option" />
+
+:::note
+
+This feature is only available on the dbt Cloud Enterprise plan. 
+
+:::
+
+### Partial parsing
+
+At the start of every dbt invocation, dbt reads all the files in your project, extracts information, and constructs an internal manifest containing every object (model, source, macro, and so on). Among other things, it uses the `ref()`, `source()`, and `config()` macro calls within models to set properties, infer dependencies, and construct your project's DAG. When dbt finishes parsing your project, it stores the internal manifest in a file called `partial_parse.msgpack`. 
+
+Parsing projects can be time-consuming, especially for large projects (for example, a project with hundreds of models and thousands of files). To reduce the time it takes dbt to parse your project, use the partial parsing feature in dbt Cloud for your environment. When enabled, dbt Cloud uses the `partial_parse.msgpack` file to determine which files have changed (if any) since the project was last parsed. Then, instead of parsing all project files, it _only_ parses the changed files or the files related to those changes.
+
+The partial parsing feature does have some known limitations. Refer to [Known limitations](/reference/parsing#known-limitations) to learn more about them.
+
+To enable, select **Account settings** from the gear menu and enable the **Partial parsing** option.
+
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
+
+
 

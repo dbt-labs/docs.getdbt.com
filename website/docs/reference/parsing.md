@@ -41,7 +41,7 @@ The [`PARTIAL_PARSE` global config](/reference/global-configs/parsing) can be en
 
 Parse-time attributes (dependencies, configs, and resource properties) are resolved using the parse-time context. When partial parsing is enabled, and certain context variables change, those attributes will _not_ be re-resolved, and are likely to become stale.
 
-In particular, you may see **incorrect results** if these attributes depend on "volatile" context variables, such as [`run_started_at`](/reference/dbt-jinja-functions/run_started_at), [`invocation_id`](/reference/dbt-jinja-functions/invocation_id), or [flags](/reference/dbt-jinja-functions/flags). These variables are likely (or even guaranteed!) to change in each invocation. We _highly discourage_ you from using these variables to set parse-time attributes (dependencies, configs, and resource properties).
+In particular, you may see **incorrect results** if these attributes depend on "volatile" context variables, such as [`run_started_at`](/reference/dbt-jinja-functions/run_started_at), [`invocation_id`](/reference/dbt-jinja-functions/invocation_id), or [flags](/reference/dbt-jinja-functions/flags). These variables are likely (or even guaranteed!) to change in each invocation. dbt Labs _strongly discourages_ you from using these variables to set parse-time attributes (dependencies, configs, and resource properties).
 
 Starting in v1.0, dbt _will_ detect changes in environment variables. It will selectively re-parse only the files that depend on that [`env_var`](/reference/dbt-jinja-functions/env_var) value. (If the env var is used in `profiles.yml` or `dbt_project.yml`, a full re-parse is needed.) However, dbt will _not_ re-render **descriptions** that include env vars. If your descriptions include frequently changing env vars (this is highly uncommon), we recommend that you fully re-parse when generating documentation: `dbt --no-partial-parse docs generate`.
 
@@ -51,7 +51,9 @@ If certain inputs change between runs, dbt will trigger a full re-parse. The res
 - `dbt_project.yml` content (or `env_var` values used within)
 - installed packages
 - dbt version
-- certain widely-used macros, e.g. [builtins](/reference/dbt-jinja-functions/builtins) overrides or `generate_x_name` for `database`/`schema`/`alias`
+- certain widely-used macros (for example, [builtins](/reference/dbt-jinja-functions/builtins), overrides, or `generate_x_name` for `database`/`schema`/`alias`)
+
+If you're triggering [CI](/docs/deploy/continuous-integration) job runs, the partial parsing benefits are not available on a new pull request (PR) or new branch. However, they are available on subsequent commits to that new PR or branch. 
 
 If you ever get into a bad state, you can disable partial parsing and trigger a full re-parse by setting the `PARTIAL_PARSE` global config to false, or by deleting `target/partial_parse.msgpack` (e.g. by running `dbt clean`).
 
