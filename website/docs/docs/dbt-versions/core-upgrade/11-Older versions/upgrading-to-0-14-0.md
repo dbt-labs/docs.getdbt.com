@@ -189,7 +189,7 @@ models:
 
 </File>
 
-**Configuring the `incremental_strategy for a single model:**
+**Configuring the `incremental_strategy` for a single model:**
 
 <File name='models/my_model.sql'>
 

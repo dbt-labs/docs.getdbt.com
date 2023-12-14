@@ -22,7 +22,7 @@ snapshots:
       show: true | false
     [config](/reference/resource-properties/config):
       [<snapshot_config>](/reference/snapshot-configs): <config_value>
-    [tests](/reference/resource-properties/tests):
+    [tests](/reference/resource-properties/data-tests):
       - <test>
       - ...
     columns:
@@ -31,7 +31,7 @@ snapshots:
         [meta](/reference/resource-configs/meta): {<dictionary>}
         [quote](/reference/resource-properties/quote): true | false
         [tags](/reference/resource-configs/tags): [<string>]
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
       - ... # declare properties of additional columns

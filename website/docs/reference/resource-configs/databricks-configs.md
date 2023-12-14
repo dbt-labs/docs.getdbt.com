@@ -38,9 +38,9 @@ When materializing a model as `table`, you may include several optional configs 
 ## Incremental models
 
 dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of four values:
- - **`append`** (default): Insert new records without updating or overwriting any existing data.
+ - **`append`**: Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
- - **`merge`** (Delta and Hudi file format only): Match records based on a `unique_key`, updating old records, and inserting new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - **`merge`** (default; Delta and Hudi file format only): Match records based on a `unique_key`, updating old records, and inserting new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
  - **`replace_where`** (Delta file format only): Match records based on `incremental_predicates`, replacing all records that match the predicates from the existing table with records matching the predicates from the new data. (If no `incremental_predicates` are specified, all new data is inserted, similar to `append`.)
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
@@ -48,8 +48,6 @@ Each of these strategies has its pros and cons, which we'll discuss below. As wi
 ### The `append` strategy
 
 Following the `append` strategy, dbt will perform an `insert into` statement with all new data. The appeal of this strategy is that it is straightforward and functional across all platforms, file types, connection methods, and Apache Spark versions. However, this strategy _cannot_ update, overwrite, or delete existing data, so it is likely to insert duplicate records for many data sources.
-
-Specifying `append` as the incremental strategy is optional, since it's the default strategy used when none is specified.
 
 <Tabs
   defaultValue="source"
@@ -194,6 +192,8 @@ The `merge` incremental strategy requires:
 - Apache Spark for hudi file format
 
 dbt will run an [atomic `merge` statement](https://docs.databricks.com/spark/latest/spark-sql/language-manual/merge-into.html) which looks nearly identical to the default merge behavior on Snowflake and BigQuery. If a `unique_key` is specified (recommended), dbt will update old records with values from new records that match on the key column. If a `unique_key` is not specified, dbt will forgo match criteria and simply insert all new records (similar to `append` strategy).
+
+Specifying `merge` as the incremental strategy is optional since it's the default strategy used when none is specified.
 
 <Tabs
   defaultValue="source"
@@ -365,9 +365,18 @@ insert into analytics.replace_where_incremental
 
 ## Selecting compute per model
 
-Beginning in version 1.7.2, you can assign which compute resource to use on a per-model basis. 
+Beginning in version 1.7.2, you can assign which compute resource to use on a per-model basis.
 For SQL models, you can select a SQL Warehouse (serverless or provisioned) or an all purpose cluster.
 For details on how this feature interacts with python models, see [Specifying compute for Python models](#specifying-compute-for-python-models).
+
+:::note
+
+This is an optional setting. If you do not configure this as shown below,  we will default to the compute specified by http_path in the top level of the output section in your profile. 
+This is also the compute that will be used for tasks not associated with a particular model, such as gathering metadata for all tables in a schema.
+
+:::
+
+
 To take advantage of this capability, you will need to add compute blocks to your profile:
 
 <File name='profile.yml'>
@@ -500,12 +509,6 @@ select * from {{ ref('seed') }}
 
 </File>
 
-:::note
-
-In the absence of a specified compute, we will default to the compute specified by http_path in the top level of the output section in your profile. 
-This is also the compute that will be used for tasks not associated with a particular model, such as gathering metadata for all tables in a schema.
-
-:::
 
 To validate that the specified compute is being used, look for lines in your dbt.log like:
 
@@ -525,7 +528,7 @@ Materializing a python model requires execution of SQL as well as python.
 Specifically, if your python model is incremental, the current execution pattern involves executing python to create a staging table that is then merged into your target table using SQL.
 The python code needs to run on an all purpose cluster, while the SQL code can run on an all purpose cluster or a SQL Warehouse.
 When you specify your `databricks_compute` for a python model, you are currently only specifying which compute to use when running the model-specific SQL.
-If you wish to use a different compute for executing the python itself, you must specify an alternate `http_path` in the config for the model:
+If you wish to use a different compute for executing the python itself, you must specify an alternate `http_path` in the config for the model. Please note that declaring a separate SQL compute and a python compute for your python dbt models is optional. If you wish to do this:
 
 <File name="model.py">
 
