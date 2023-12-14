@@ -16,16 +16,16 @@ In dbt-redshift, the following incremental materialization strategies are suppor
 
 <VersionBlock lastVersion="1.5">
 
-- `append` (default)
-- `delete+insert`
-  
+- `append` (default when `unique_key` is not defined)
+- `delete+insert` (default when `unique_key` is defined)
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.6">
 
-- `append` (default)
+- `append` (default when `unique_key` is not defined)
 - `merge`
-- `delete+insert`
+- `delete+insert` (default when `unique_key` is defined)
 
 </VersionBlock>
 
