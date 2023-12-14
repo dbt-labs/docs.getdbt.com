@@ -1,8 +1,8 @@
 ---
-title: Test configurations
-description: "Read this guide to learn about using test configurations in dbt."
+title: Data test configurations
+description: "Read this guide to learn about using data test configurations in dbt."
 meta:
-  resource_type: Tests
+  resource_type: Data tests
 ---
 import ConfigResource from '/snippets/_config-description-resource.md';
 import ConfigGeneral from '/snippets/_config-description-general.md';
@@ -10,20 +10,20 @@ import ConfigGeneral from '/snippets/_config-description-general.md';
 
 ## Related documentation
 
-* [Tests](/docs/build/tests)
+* [Data tests](/docs/build/data-tests)
 
-Tests can be configured in a few different ways:
-1. Properties within `.yml` definition (generic tests only, see [test properties](/reference/resource-properties/tests) for full syntax)
+Data tests can be configured in a few different ways:
+1. Properties within `.yml` definition (generic tests only, see [test properties](/reference/resource-properties/data-tests) for full syntax)
 2. A `config()` block within the test's SQL definition
 3. In `dbt_project.yml`
 
-Test configs are applied hierarchically, in the order of specificity outlined above. In the case of a singular test, the `config()` block within the SQL definition takes precedence over configs in the project file. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
+Data test configs are applied hierarchically, in the order of specificity outlined above. In the case of a singular test, the `config()` block within the SQL definition takes precedence over configs in the project file. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
 
 ## Available configurations
 
 Click the link on each configuration option to read more about what it can do.
 
-### Test-specific configurations
+### Data test-specific configurations
 
 <ConfigResource meta={frontMatter.meta} />
 
@@ -204,7 +204,7 @@ version: 2
                 [alias](/reference/resource-configs/alias): <string>
 ```
 
-This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
+This configuration mechanism is supported for specific instances of generic data tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
 
 
 </TabItem>
@@ -216,7 +216,7 @@ This configuration mechanism is supported for specific instances of generic test
 
 #### Add a tag to one test
 
-If a specific instance of a generic test:
+If a specific instance of a generic data test:
 
 <File name='models/<filename>.yml'>
 
@@ -232,7 +232,7 @@ models:
 
 </File>
 
-If a singular test:
+If a singular data test:
 
 <File name='tests/<filename>.sql'>
 
@@ -244,7 +244,7 @@ select ...
 
 </File>
 
-#### Set the default severity for all instances of a generic test
+#### Set the default severity for all instances of a generic data test
 
 <File name='macros/<filename>.sql'>
 
@@ -260,7 +260,7 @@ select ...
 
 </File>
 
-#### Disable all tests from a package
+#### Disable all data tests from a package
 
 <File name='dbt_project.yml'>
 

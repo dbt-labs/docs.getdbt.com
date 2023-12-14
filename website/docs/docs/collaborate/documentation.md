@@ -15,7 +15,7 @@ pagination_prev: null
 
 ## Assumed knowledge
 
-* [Tests](/docs/build/tests)
+* [Tests](/docs/build/data-tests)
 
 ## Overview
 
@@ -32,7 +32,7 @@ Here's an example docs site:
 <Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-screenshot.png" title="Auto-generated dbt documentation website"/>
 
 ## Adding descriptions to your project
-To add descriptions to your project, use the `description:` key in the same files where you declare [tests](/docs/build/tests), like so:
+To add descriptions to your project, use the `description:` key in the same files where you declare [tests](/docs/build/data-tests), like so:
 
 <File name='models/<filename>.yml'>
 

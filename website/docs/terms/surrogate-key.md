@@ -177,7 +177,7 @@ After executing this, the table would now have the `unique_id` field now uniquel
 
 Amazing, you just made a surrogate key! You can just move on to the next data model, right? No!! It’s  critically important to test your surrogate keys for uniqueness and non-null values to ensure that the correct fields were chosen to create the surrogate key.
 
-In order to test for null and unique values you can utilize code-based tests like [dbt tests](/docs/build/tests), that can check fields for nullness and uniqueness. You can additionally utilize simple SQL queries or unit tests to check if surrogate key count and non-nullness is correct.
+In order to test for null and unique values you can utilize code-based data tests like [dbt tests](/docs/build/data-tests), that can check fields for nullness and uniqueness. You can additionally utilize simple SQL queries or unit tests to check if surrogate key count and non-nullness is correct.
 
 ## A note on hashing algorithms
 

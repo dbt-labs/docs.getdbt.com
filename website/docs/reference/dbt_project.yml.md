@@ -81,7 +81,7 @@ sources:
   [<source-configs>](source-configs)
   
 tests:
-  [<test-configs>](/reference/test-configs)
+  [<test-configs>](/reference/data-test-configs)
 
 vars:
   [<variables>](/docs/build/project-variables)
@@ -153,7 +153,7 @@ sources:
   [<source-configs>](source-configs)
   
 tests:
-  [<test-configs>](/reference/test-configs)
+  [<test-configs>](/reference/data-test-configs)
 
 vars:
   [<variables>](/docs/build/project-variables)
@@ -222,7 +222,7 @@ sources:
   [<source-configs>](source-configs)
   
 tests:
-  [<test-configs>](/reference/test-configs)
+  [<test-configs>](/reference/data-test-configs)
 
 vars:
   [<variables>](/docs/build/project-variables)
