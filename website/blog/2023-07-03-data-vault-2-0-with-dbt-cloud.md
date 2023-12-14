@@ -143,7 +143,7 @@ To help you get started, [we have created a template GitHub project](https://git
 
 ### Entity Relation Diagrams (ERDs) and dbt
 
-Data lineage is dbt's strength, but sometimes it's not enough to help you to understand the relationships between Data Vault components like a classic ERD would. There are a few open source packages to visualize the entities in your Data Vault built with dbt. I recommend checking out the [dbterd](https://dbterd.datnguyen.de/1.2/index.html) which turns your [dbt relationship data quality checks](https://docs.getdbt.com/docs/build/tests#generic-tests) into an ERD.
+Data lineage is dbt's strength, but sometimes it's not enough to help you to understand the relationships between Data Vault components like a classic ERD would. There are a few open source packages to visualize the entities in your Data Vault built with dbt. I recommend checking out the [dbterd](https://dbterd.datnguyen.de/1.2/index.html) which turns your [dbt relationship data quality checks](https://docs.getdbt.com/docs/build/tests#generic-data-tests) into an ERD.
 
 ## Summary
 
