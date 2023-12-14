@@ -193,7 +193,7 @@ The `merge` incremental strategy requires:
 
 dbt will run an [atomic `merge` statement](https://docs.databricks.com/spark/latest/spark-sql/language-manual/merge-into.html) which looks nearly identical to the default merge behavior on Snowflake and BigQuery. If a `unique_key` is specified (recommended), dbt will update old records with values from new records that match on the key column. If a `unique_key` is not specified, dbt will forgo match criteria and simply insert all new records (similar to `append` strategy).
 
-Specifying `merge` as the incremental strategy is optional, since it's the default strategy used when none is specified.
+Specifying `merge` as the incremental strategy is optional since it's the default strategy used when none is specified.
 
 <Tabs
   defaultValue="source"
