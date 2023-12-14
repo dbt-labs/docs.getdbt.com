@@ -11,7 +11,7 @@ A rule of thumb: properties declare things _about_ your project resources; confi
 
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
-* Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
+* Assert "truths" about a model, in the form of [data tests](/docs/build/data-tests), e.g. "this `id` column is unique"
 * Define pointers to existing tables that contain raw data, in the form of [sources](/docs/build/sources), and assert the expected "freshness" of this raw data
 * Define official downstream uses of your data models, in the form of [exposures](/docs/build/exposures)
 
@@ -33,7 +33,7 @@ Depending on the resource type, configurations can be defined:
 
 dbt prioritizes configurations in order of specificity, from most specificity to least specificity. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
 
-Note - Generic tests work a little differently when it comes to specificity. See [test configs](/reference/test-configs).
+Note - Generic data tests work a little differently when it comes to specificity. See [test configs](/reference/data-test-configs).
 
 Within the project file, configurations are also applied hierarchically. The most specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
@@ -76,7 +76,7 @@ Certain properties are special, because:
 These properties are:
 
 - [`description`](/reference/resource-properties/description)
-- [`tests`](/reference/resource-properties/tests)
+- [`tests`](/reference/resource-properties/data-tests)
 - [`docs`](/reference/resource-configs/docs)
 - [`columns`](/reference/resource-properties/columns)
 - [`quote`](/reference/resource-properties/quote)

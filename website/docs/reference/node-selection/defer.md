@@ -234,3 +234,8 @@ dbt will check to see if `dev_alice.model_a` exists. If it doesn't exist, dbt wi
 
 </TabItem>
 </Tabs>
+
+## Related docs
+
+- [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer)
+
