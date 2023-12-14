@@ -25,8 +25,6 @@ is responsible for handling model code that looks like this:
 ```
 
 Review [Model configurations](/reference/model-configs) for examples and more information on valid arguments.
-https://docs.getdbt.com/reference/model-configs
-
 
 ## config.get
 __Args__:
