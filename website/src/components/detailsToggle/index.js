@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
-function DetailsToggle({ children, alt_header = null }) {
+function detailsToggle({ children, alt_header = null }) {
   const [isOn, setOn] = useState(false);
   const [hoverActive, setHoverActive] = useState(true);
   const [hoverTimeout, setHoverTimeout] = useState(null);
@@ -20,9 +20,9 @@ function DetailsToggle({ children, alt_header = null }) {
   };
 
   const handleMouseLeave = () => {
-    if (hoverActive) {
+    if (hoverActive && isOn) {
       clearTimeout(hoverTimeout);
-      setOn(false); // Collapse content only if it was opened by hover
+
     }
   };
 
@@ -53,4 +53,4 @@ function DetailsToggle({ children, alt_header = null }) {
   );
 }
 
-export default DetailsToggle;
+export default detailsToggle;
