@@ -1,3 +1,12 @@
+paige_berry:
+  image_url: /img/blog/authors/pberry.jpg
+  job_title: "Senior Data Analyst: Product"
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/paigeacberry/
+  name: Paige Berry
+  organization: dbt Labs
+
 amy_chen:
   image_url: /img/blog/authors/achen.png
   job_title: Staff Partner Engineer
