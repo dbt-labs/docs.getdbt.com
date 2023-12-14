@@ -98,7 +98,7 @@ At the start of every dbt invocation, dbt reads all the files in your project, e
 
 Parsing projects can be time-consuming, especially for large projects (for example, a project with hundreds of models and thousands of files). To reduce the time it takes dbt to parse your project, use the partial parsing feature in dbt Cloud for your environment. When enabled, dbt Cloud uses the `partial_parse.msgpack` file to determine which files have changed (if any) since the project was last parsed. Then, instead of parsing all project files, it _only_ parses the changed files or the files related to those changes.
 
-The partial parsing feature does have some known limitations. Refer to [Known limitations](/reference/parsing#known-limitations) to learn more about them.
+Partial parsing in dbt Cloud requires dbt version 1.4 or newer. The feature does have some known limitations. Refer to [Known limitations](/reference/parsing#known-limitations) to learn more about them.
 
 To enable, select **Account settings** from the gear menu and enable the **Partial parsing** option.
 
