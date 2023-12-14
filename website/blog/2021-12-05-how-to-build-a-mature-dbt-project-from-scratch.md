@@ -87,7 +87,7 @@ The most important thing we’re introducing when your project is an infant is t
 
 * Introduce modularity with [{{ ref() }}](/reference/dbt-jinja-functions/ref) and [{{ source() }}](/reference/dbt-jinja-functions/source)
 
-* [Document](/docs/collaborate/documentation) and [test](/docs/build/tests) your first models
+* [Document](/docs/collaborate/documentation) and [test](/docs/build/data-tests) your first models
 
 ![image alt text](/img/blog/building-a-mature-dbt-project-from-scratch/image_3.png)
 
