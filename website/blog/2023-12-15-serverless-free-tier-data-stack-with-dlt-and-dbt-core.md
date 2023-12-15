@@ -1,7 +1,7 @@
 ---
-title: Serverless, free-tier data stack with dlt + dbt core."
+title: Serverless, free-tier data stack with dlt + dbt core.
 description: "In this article, we explore how we can use dlt + dbt core in a serverless, free tier data stack by using Google Cloud Functions. I use this setup for a personal project where I try to get property prices to me and my partner make an informed purchase."
-slug: product-analytics-pipeline-with-dbt-semantic-layer
+slug: serverless-dlt-dbt-stack
 
 authors: [euan_johnston]
 
@@ -26,7 +26,7 @@ is_featured: false
 
 ## The starting point
 
-My partner and are considering buying a property in Portugal. Unfortunately, the only data source we have is Idealista, which is a portal where real estate agencies post ads.
+My partner and I are considering buying a property in Portugal. Unfortunately, the only data source we have is Idealista, which is a portal where real estate agencies post ads.
 
 Unfortunately, there are way fewer properties than ads - it seems many real estate companies re-post the same ad that others do, with intentionally different data and often misleading bits of info. The real estate agencies do this so the interested parties reach out to them for clarification, and from there they can start a sales process. At the same time, the website with the ads is incentivised to allow this to continue as they get paid per ad, not per property.
 
@@ -45,7 +45,7 @@ Once we have deduplicated listings with some online history, we can get an idea
 
 The solution has pretty standard components
 
-- An EtL pipeline. The little t stands for normalisation, such as
+- An EtL pipeline. The little t stands for normalisation, such as transforming strings to dates or unpacking nested structures.
 
 Due to the complexity of deduplication, we needed to add a human element to confirm the deduplication. This is reflected in the diagram below:
 
