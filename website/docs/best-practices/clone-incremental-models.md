@@ -38,8 +38,14 @@ This can be suboptimal because:
 You can alleviate these problems by zero copy cloning the relevant, pre-existing incremental models into your PR-specific schema as the first step of the CI job using the `dbt clone` command. This way, the incremental models already exist in the PR-specific schema when you first execute the command `dbt build --select state:modified+` so the `is_incremental` flag will be `true`. 
 
 You'll have two commands for your dbt Cloud CI check to execute:
-1. Clone all of the pre-existing incremental models that have been modified or are downstream of another model that has been modified: `dbt clone --select state:modified+,config.materialized:incremental,state:old`
-2. Build all of the models that have been modified and their downstream dependencies: `dbt build --select state:modified+`
+1. Clone all of the pre-existing incremental models that have been modified or are downstream of another model that has been modified:
+  ```shell
+  dbt clone --select state:modified+,config.materialized:incremental,state:old
+  ```
+2. Build all of the models that have been modified and their downstream dependencies:
+  ```shell
+  dbt build --select state:modified+`
+  ```
 
 Because of your first clone step, the incremental models selected in your `dbt build` on the second step will run in incremental mode.
 
