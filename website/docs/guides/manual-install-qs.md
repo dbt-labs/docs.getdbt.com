@@ -70,24 +70,6 @@ $ pwd
 <Lightbox src="/img/starter-project-dbt-cli.png" title="The starter project in a code editor" />
 </div>
 
-6. Update the following values in the `dbt_project.yml` file:
-
-<File name='dbt_project.yml'>
-
-```yaml
-name: jaffle_shop # Change from the default, `my_new_project`
-
-...
-
-profile: jaffle_shop # Change from the default profile name, `default`
-
-...
-
-models:
-    jaffle_shop: # Change from `my_new_project` to match the previous value for `name:`
-    ...
-```
-
 </File>
 
 ## Connect to BigQuery
