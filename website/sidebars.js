@@ -134,6 +134,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/databricks-privatelink",
                 "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/postgres-privatelink",
+                "docs/cloud/secure/vcs-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -276,7 +277,7 @@ const sidebarSettings = {
             },
             "docs/build/snapshots",
             "docs/build/seeds",
-            "docs/build/tests",
+            "docs/build/data-tests",
             "docs/build/jinja-macros",
             "docs/build/sources",
             "docs/build/exposures",
@@ -423,6 +424,8 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
+            "docs/collaborate/model-performance",
+            "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
           ],
         },
@@ -720,6 +723,7 @@ const sidebarSettings = {
         "reference/resource-configs/oracle-configs",
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/starrocks-configs",
+        "reference/resource-configs/infer-configs",
       ],
     },
     {
@@ -740,7 +744,7 @@ const sidebarSettings = {
             "reference/resource-properties/latest_version",
             "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
-            "reference/resource-properties/tests",
+            "reference/resource-properties/data-tests",
             "reference/resource-properties/versions",
           ],
         },
@@ -806,7 +810,7 @@ const sidebarSettings = {
           type: "category",
           label: "For tests",
           items: [
-            "reference/test-configs",
+            "reference/data-test-configs",
             "reference/resource-configs/fail_calc",
             "reference/resource-configs/limit",
             "reference/resource-configs/severity",

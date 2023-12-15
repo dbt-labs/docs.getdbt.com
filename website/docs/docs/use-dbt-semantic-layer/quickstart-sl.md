@@ -26,7 +26,7 @@ MetricFlow, a powerful component of the dbt Semantic Layer, simplifies the creat
 Use this guide to fully experience the power of the universal dbt Semantic Layer. Here are the following steps you'll take:
 
 - [Create a semantic model](#create-a-semantic-model) in dbt Cloud using MetricFlow
-- [Define metrics](#define-metrics) in dbt Cloud using MetricFlow
+- [Define metrics](#define-metrics) in dbt using MetricFlow
 - [Test and query metrics](#test-and-query-metrics) with MetricFlow 
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud 
@@ -88,20 +88,9 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 If you're encountering some issues when defining your metrics or setting up the dbt Semantic Layer, check out a list of answers to some of the questions or problems you may be experiencing.
     
-<details>
-  <summary>How do I migrate from the legacy Semantic Layer to the new one?</summary>
-  <div>
-    <div>If you're using the legacy Semantic Layer, we highly recommend you <a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud">upgrade your dbt version </a> to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated <a href="https://docs.getdbt.com/guides/sl-migration"> migration guide</a> for more info.</div>
-  </div>
-</details>
-<details>
-<summary>How are you storing my data?</summary>
-User data passes through the Semantic Layer on its way back from the warehouse. dbt Labs ensures security by authenticating through the customer's data warehouse. Currently, we don't cache data for the long term, but it might temporarily stay in the system for up to 10 minutes, usually less. In the future, we'll introduce a caching feature that allows us to cache data on our infrastructure for up to 24 hours.
-</details>
-<details>
-  <summary>Is the dbt Semantic Layer open source?</summary>
-  The dbt Semantic Layer is proprietary; however, some components of the dbt Semantic Layer are open source, such as dbt-core and MetricFlow. <br /><br />dbt Cloud Developer or dbt Core users can define metrics in their project, including a local dbt Core project, using the dbt Cloud IDE, dbt Cloud CLI, or dbt Core CLI. However, to experience the universal dbt Semantic Layer and access those metrics using the API or downstream tools, users must be on a dbt Cloud <a href="https://www.getdbt.com/pricing/">Team or Enterprise</a> plan. <br /><br />Refer to <a href="https://docs.getdbt.com/docs/cloud/billing">Billing</a> for more information.
-</details>
+import SlFaqs from '/snippets/_sl-faqs.md';
+
+<SlFaqs/>
 
 
 ## Next steps

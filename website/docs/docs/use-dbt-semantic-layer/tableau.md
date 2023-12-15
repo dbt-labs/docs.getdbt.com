@@ -21,7 +21,8 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
   - Note that Tableau Online does not currently support custom connectors natively. If you use Tableau Online, you will only be able to access the connector in Tableau Desktop.
 - Log in to Tableau Desktop (with Online or Server credentials) or a license to Tableau Server
 - You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
-- You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
+- You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
+  - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
 
 ## Installing the Connector

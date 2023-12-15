@@ -17,7 +17,7 @@ You can configure it in all the same places as `store_failures`, including singu
 
 #### Singular test
 
-[Singular test](https://docs.getdbt.com/docs/build/tests#singular-tests) in `tests/singular/check_something.sql` file
+[Singular test](https://docs.getdbt.com/docs/build/tests#singular-data-tests) in `tests/singular/check_something.sql` file
 
 ```sql
 {{ config(store_failures_as="table") }}
@@ -29,7 +29,7 @@ where 1=0
 
 #### Generic test
 
-[Generic tests](https://docs.getdbt.com/docs/build/tests#generic-tests) in `models/_models.yml` file
+[Generic tests](https://docs.getdbt.com/docs/build/tests#generic-data-tests) in `models/_models.yml` file
 
 ```yaml
 models:
@@ -70,7 +70,7 @@ As with most other configurations, `store_failures_as` is "clobbered" when appli
 
 Additional resources: 
 
-- [Test configurations](/reference/test-configs#related-documentation)
-- [Test-specific configurations](/reference/test-configs#test-specific-configurations)
+- [Data test configurations](/reference/data-test-configs#related-documentation)
+- [Data test-specific configurations](/reference/data-test-configs#test-data-specific-configurations)
 - [Configuring directories of models in dbt_project.yml](/reference/model-configs#configuring-directories-of-models-in-dbt_projectyml)
 - [Config inheritance](/reference/configs-and-properties#config-inheritance)

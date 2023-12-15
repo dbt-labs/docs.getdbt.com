@@ -173,7 +173,7 @@ dbt test --select "test_type:singular"       # run all singular tests
 
 The `test_name` method is used to select tests based on the name of the generic test
 that defines it. For more information about how generic tests are defined, read about
-[tests](/docs/build/tests).
+[tests](/docs/build/data-tests).
 
 
   ```bash

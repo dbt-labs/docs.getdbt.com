@@ -2,7 +2,7 @@
 title: "Explore your dbt projects"
 sidebar_label: "Explore dbt projects"
 description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
-pagination_next: "docs/collaborate/explore-multiple-projects"
+pagination_next: "docs/collaborate/model-performance"
 pagination_prev: null
 ---
 
@@ -36,7 +36,7 @@ For a richer experience with dbt Explorer, you must:
 - Run [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment to view source freshness data.
 - Run [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment to view snapshot details.
 
-Richer and more timely metadata will become available as dbt, the Discovery API, and the underlying dbt Cloud platform evolves.
+Richer and more timely metadata will become available as dbt Core, the Discovery API, and the underlying dbt Cloud platform evolves.
 
 ## Explore your project's lineage graph {#project-lineage}
 
@@ -45,6 +45,8 @@ dbt Explorer provides a visualization of your project’s <Term id="dag">DAG</Te
 If you don't see the project lineage graph immediately, click **Render Lineage**. It can take some time for the graph to render depending on the size of your project and your computer’s available memory. The graph of very large projects might not render so you can select a subset of nodes by using selectors, instead.
 
 The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
+
+By default, dbt Explorer shows the project's [applied state](/docs/dbt-cloud-apis/project-state#definition-logical-vs-applied-state-of-dbt-nodes) lineage. That is, it shows models that have been successfully built and are available to query, not just the models defined in the project.
 
 To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, dbt Explorer excludes these resources from the full lineage graph unless a search query returns them as results.
 
@@ -147,7 +149,7 @@ An example of the details you might get for a model:
     - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one parent node and one child node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
     - **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
     - **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
-    - **Tests** section &mdash; [Tests](/docs/build/tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test. 
+    - **Tests** section &mdash; [Tests](/docs/build/data-tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test. 
     - **Details** section &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
     - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.

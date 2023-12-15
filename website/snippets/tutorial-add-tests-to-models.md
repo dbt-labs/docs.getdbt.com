@@ -1,4 +1,4 @@
-Adding [tests](/docs/build/tests) to a project helps validate that your models are working correctly.
+Adding [tests](/docs/build/data-tests) to a project helps validate that your models are working correctly.
 
 To add tests to your project:
 
