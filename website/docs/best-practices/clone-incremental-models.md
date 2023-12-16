@@ -44,7 +44,7 @@ You'll have two commands for your dbt Cloud CI check to execute:
   ```
 2. Build all of the models that have been modified and their downstream dependencies:
   ```shell
-  dbt build --select state:modified+`
+  dbt build --select state:modified+
   ```
 
 Because of your first clone step, the incremental models selected in your `dbt build` on the second step will run in incremental mode.
