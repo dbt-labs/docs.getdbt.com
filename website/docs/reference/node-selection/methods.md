@@ -244,7 +244,7 @@ dbt ls --select "+exposure:*" --resource-type source    # list all sources upstr
 
 ### The "metric" method
 
-The `metric` method is used to select parent resources of a specified [metric](/docs/build/metrics). Use in conjunction with the `+` operator.
+The `metric` method is used to select parent resources of a specified [metric](/docs/build/build-metrics-intro). Use in conjunction with the `+` operator.
 
 ```bash
 dbt build --select "+metric:weekly_active_users"       # build all resources upstream of weekly_active_users metric

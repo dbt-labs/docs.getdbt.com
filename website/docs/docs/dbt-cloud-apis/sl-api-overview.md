@@ -9,10 +9,10 @@ pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
  
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.
@@ -57,5 +57,3 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 </div>
-
-
