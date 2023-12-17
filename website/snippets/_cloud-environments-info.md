@@ -62,7 +62,7 @@ By default, all environments will use the default branch in your repository (usu
 For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
 
 
-### Extended attributes <Lifecycle status='beta'/>
+### Extended attributes
 
 :::note 
 Extended attributes are retrieved and applied only at runtime when `profiles.yml` is requested for a specific Cloud run. Extended attributes are currently _not_ taken into consideration for Cloud-specific features such as PrivateLink or SSH Tunneling that do not rely on `profiles.yml` values.
