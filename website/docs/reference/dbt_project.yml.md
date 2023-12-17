@@ -16,7 +16,6 @@ Starting from dbt v1.5 and higher, you can specify your dbt Cloud project ID in 
 </VersionBlock>
 
 :::info YAML syntax
-
 dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries, and strings are represented.
 :::
 
