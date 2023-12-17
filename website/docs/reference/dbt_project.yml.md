@@ -25,28 +25,6 @@ Something to note, you can't set up a "property" in the `dbt_project.yml` file i
 
 The following example is a list of all available configurations in the `dbt_project.yml` file:
 
-
-<VersionBlock lastVersion="1.4">
-
-By default, dbt will look for `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
-By default, dbt will look for `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the `DBT_PROJECT_DIR` environment variable.
-
-Starting from dbt v1.5 and higher, you can specify your dbt Cloud project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. To find your project ID, check your dbt Cloud project URL, such as `https://cloud.getdbt.com/11/projects/123456`, where the project ID is `123456`.
-
-</VersionBlock>
-
-The following is a list of all available configurations in the `dbt_project.yml` file.
-
-:::info YAML syntax
-dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
-:::
-
-
 <VersionBlock firstVersion="1.7">
 
 <File name='dbt_project.yml'>
