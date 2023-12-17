@@ -9,7 +9,9 @@ date: 2023-11-28
 
 Public Preview is now available in dbt Cloud for Microsoft Fabric! 
 
-To learn more, check out the [Quickstart for dbt Cloud and Microsoft Fabric](/guides/microsoft-fabric?step=1). The guide walks you through: 
+To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs).
+
+Also, check out the [Quickstart for dbt Cloud and Microsoft Fabric](/guides/microsoft-fabric?step=1). The guide walks you through: 
 
 - Loading the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
 - Connecting dbt Cloud to Microsoft Fabric.

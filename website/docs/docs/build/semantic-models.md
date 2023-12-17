@@ -43,7 +43,7 @@ semantic_models:
   - name: the_name_of_the_semantic_model      ## Required
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
-    default:                                  ## Required
+    defaults:                                 ## Required
       agg_time_dimension: dimension_name    ## Required if the model contains dimensions
     entities:                                 ## Required
        - see more information in entities
