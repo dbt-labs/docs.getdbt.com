@@ -11,6 +11,7 @@ The dbt Labs team continues to work on adding new features, fixing bugs, and inc
 - The dbt Semantic Layer integration with Tableau now supports queries that resolve to a "NOT IN" clause (for example: using "exclude" in the filtering user interface). Previously it wasn’t supported.
 - The dbt Semantic Layer can support `BIGINT` with precision greater than 18. Previously it would return an error.
 - We fixed a memory leak that would amount in intermittent errors when querying our JDBC API.
+- Added support for converting various Redshift and Postgres specific data types. Previously, the driver would throw an error when encountering columns with those types.
 
 ## Improvements
 - dbt Labs deprecated [dbt Metrics and the legacy dbt Semantic Layer](/docs/dbt-versions/release-notes/Dec-2023/legacy-sl), both supported on dbt version 1.5 or lower. This change came into effect on December 15th, 2023.
