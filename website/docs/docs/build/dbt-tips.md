@@ -8,9 +8,10 @@ pagination_next: null
 Use this page for valuable insights and practical advice to enhance your dbt experience. Whether you're new to dbt or an experienced user, these tips are designed to help you work more efficiently and effectively.
 
 The following tips are organized into the following categories:
-- [Package tips](#package-tips)
-- [Advanced tips adn techniques](#advanced-tips-adn-techniques)
-- [Related docs](#related-docs)
+
+- [Package tips](#package-tips) to help you streamline your workflow.
+- [Advanced tips and techniques](#advanced-tips-adn-techniques) to help you get the most out of dbt.
+
 
 If you're developing with the dbt Cloud IDE, you can refer to the [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) page to help make development more productive and easier for everyone.
 
@@ -28,7 +29,7 @@ Leverage these dbt packages to streamline your workflow:
 | [`dbt_artifacts`](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest) | The package saves information about your dbt runs directly to your data platform so that you can track the performance of models over time. |
 | [`dbt_meta_testing`](https://hub.getdbt.com/tnightengale/dbt_meta_testing/latest) | This package checks that your dbt project is sufficiently tested and documented. |
 
-## Advanced tips adn techniques
+## Advanced tips and techniques
 
 - Use your folder structure as your primary selector method. `dbt build --select marts.marketing` is simpler and more resilient than relying on tagging every model.
 - Think about jobs in terms of build cadences and SLAs. Run models that have hourly, daily, or weekly build cadences together.
