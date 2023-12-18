@@ -14,6 +14,8 @@ pagination_next: "docs/build/incremental-models"
 - ephemeral
 - materialized view
 
+You can also configure [custom materializations](/guides/create-new-materializations?step=1) in dbt. Custom materializations are a powerful way to extend dbt's functionality to meet your specific needs. 
+
 
 ## Configuring materializations
 By default, dbt models are materialized as "views". Models can be configured with a different materialization by supplying the `materialized` configuration parameter as shown below.

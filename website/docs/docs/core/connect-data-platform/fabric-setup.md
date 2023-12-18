@@ -8,7 +8,7 @@ meta:
   github_repo: 'Microsoft/dbt-fabric'
   pypi_package: 'dbt-fabric'
   min_core_version: '1.4.0'
-  cloud_support: Not Supported
+  cloud_support: Supported
   platform_name: 'Microsoft Fabric'
   config_page: '/reference/resource-configs/fabric-configs'
 ---

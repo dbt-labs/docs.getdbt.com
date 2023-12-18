@@ -15,7 +15,8 @@ In a data platform, dimensions is part of a larger structure called a semantic m
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
-All dimensions require a `name`, `type` and in some cases, an `expr` parameter. 
+All dimensions require a `name`, `type` and in some cases, an `expr` parameter. The `name` for your dimension must be unique to the semantic model and can not be the same as an existing `entity` or `measure` within that same model.
+
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
@@ -251,7 +252,8 @@ This example shows how to create slowly changing dimensions (SCD) using a semant
 | 333             | 2    | 2020-08-19 | 2021-10-22| 
 | 333             | 3    | 2021-10-22 | 2048-01-01|  
 
-Take note of the extra arguments under `validity_params`: `is_start` and `is_end`. These arguments indicate the columns in the SCD table that contain the start and end dates for each tier (or beginning or ending timestamp column for a dimensional value).
+
+The `validity_params` include two important arguments &mdash; `is_start` and `is_end`. These specify the columns in the SCD table that mark the start and end dates (or timestamps) for each tier or dimension. Additionally, the entity is tagged as `natural` to differentiate it from a `primary` entity. In a `primary` entity, each entity value has one row. In contrast, a `natural` entity has one row for each combination of entity value and its validity period.
 
 ```yaml 
 semantic_models:
@@ -279,9 +281,11 @@ semantic_models:
       - name: tier
         type: categorical
 
+    primary_entity: sales_person
+
     entities:
       - name: sales_person
-        type: primary 
+        type: natural 
         expr: sales_person_id
 ```
 

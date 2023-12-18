@@ -65,4 +65,3 @@ To streamline your metric querying process, you can connect to the [dbt Semantic
 </TabItem>
 
 </Tabs>
-

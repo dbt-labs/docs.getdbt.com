@@ -7,10 +7,10 @@ tags: [Semantic Layer, API]
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
 
 The dbt Semantic Layer Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
@@ -351,6 +351,8 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 ```
 
 ## FAQs
+
+<FAQ path="Troubleshooting/sl-alpn-error" />
 
 - **Why do some dimensions use different syntax, like `metric_time` versus `[Dimension('metric_time')`?**<br />
 	When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. However, when you perform operations on the dimension, such as adding granularity, the object syntax `[Dimension('metric_time')` is required. 
