@@ -131,7 +131,7 @@ config(
 }}
 ```
 
-For Redshift/BigQuery:
+For Redshift:
 
 ```sql
 {{
@@ -139,6 +139,18 @@ config(
     materialized = 'materialized_view',
     on_configuration_change = 'apply',
     auto_refresh = False
+)
+}}
+```
+For Bigquery
+```sql 
+{{
+config(
+    materialized = 'materialized_view',
+    on_configuration_change = 'apply',
+    auto_refresh = True,
+    refresh_interval_minutes = 30
+    max_staleness = 60,
 )
 }}
 ```
