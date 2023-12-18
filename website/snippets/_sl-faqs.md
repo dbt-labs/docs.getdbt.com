@@ -44,7 +44,7 @@ If you're using the legacy Semantic Layer, we highly recommend you [upgrade your
 
 </detailsToggle>
 
-<detailsToggle alt_header="How are you storing my data?*">
+<detailsToggle alt_header="How are you storing my data?">
 
 User data passes through the Semantic Layer on its way back from the warehouse. dbt Labs ensures security by authenticating through the customer's data warehouse. Currently, we don't cache data for the long term, but it might temporarily stay in the system for up to 10 minutes, usually less. In the future, we'll introduce a caching feature that allows us to cache data on our infrastructure for up to 24 hours.
 
