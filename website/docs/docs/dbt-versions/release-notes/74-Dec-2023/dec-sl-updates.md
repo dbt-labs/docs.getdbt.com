@@ -1,11 +1,11 @@
 ---
-title: “Updates and fixes: dbt Semantic Layer and MetricFlow updates for the month of December 2023.”
-description: “December 2023: Enhanced Tableau integration, BIGINT support, LookML to MetricFlow conversion, and deprecation of legacy features.”
-sidebar_label: “Update ad fixes: dbt Semantic Layer and MetricFlow.”
+title: "Updates and fixes: dbt Semantic Layer and MetricFlow updates for December 2023."
+description: "December 2023: Enhanced Tableau integration, BIGINT support, LookML to MetricFlow conversion, and deprecation of legacy features."
+sidebar_label: "Update ad fixes: dbt Semantic Layer and MetricFlow."
 sidebar_position: 08
 date: 2023-12-22
 ---
-The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the dbt Semantic Layer and MetricFlow. Here are the updates and fixes for the month of December 2023.
+The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the dbt Semantic Layer and MetricFlow. Here are the updates and fixes for December 2023.
 
 ## Bug fixes
 - The dbt Semantic Layer integration with Tableau now supports using exclude in its user interface. Previously it wasn’t supported.
