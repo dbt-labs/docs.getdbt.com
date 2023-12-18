@@ -52,4 +52,4 @@ saved_queries:
 ## Related docs
 
 - [Exports](/docs/use-dbt-semantic-layer/exports)
-- [Set up the dbt Semantic Layer](docs/use-dbt-semantic-layer/setup-sl)
+- [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl)
