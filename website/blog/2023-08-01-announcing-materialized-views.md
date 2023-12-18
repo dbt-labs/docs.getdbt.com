@@ -31,13 +31,13 @@ Today we are announcing that we now support Materialized Views in dbt. So, what 
 
 Materialized views are now an out of the box materialization in your dbt project once you upgrade to the latest version of dbt v1.6 on these following adapters:
 
-- dbt-postgres
-- dbt-redshift
-- dbt-snowflake
-- dbt-databricks
-- dbt-materialize*
-- dbt-trino*
-- dbt-bigquery (available on 1.7)
+- [dbt-postgres](/reference/resource-configs/postgres-configs#materialized-views)
+- [dbt-redshift](reference/resource-configs/redshift-configs#materialized-views)
+- [dbt-snowflake](reference/resource-configs/snowflake-configs#dynamic-tables)
+- [dbt-databricks](/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables)
+- [dbt-materialize*](/reference/resource-configs/materialize-configs#incremental-models-materialized-views)
+- [dbt-trino*](/reference/resource-configs/trino-configs#materialized-view)
+- [dbt-bigquery (available on 1.7)](/reference/resource-configs/bigquery-configs#materialized-views)
 
 *These adapters have supported materialized views in their adapter prior 1.6.
 
