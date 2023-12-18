@@ -1,5 +1,5 @@
 ---
-title: "How we built consistent product launch metrics with the dbt Semantic Layer."
+title: "How we built consistent product launch metrics with the dbt Semantic Layer"
 description: "We built an end-to-end data pipeline for measuring the launch of the dbt Semantic Layer using the dbt Semantic Layer."
 slug: product-analytics-pipeline-with-dbt-semantic-layer
 
