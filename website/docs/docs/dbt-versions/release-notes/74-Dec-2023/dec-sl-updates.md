@@ -9,7 +9,7 @@ The dbt Labs team continues to work on adding new features, fixing bugs, and inc
 
 ## Bug fixes
 - The dbt Semantic Layer integration with Tableau now supports queries that resolve to a "NOT IN" clause (for example: using "exclude" in the filtering user interface). Previously it wasn’t supported.
-- The dbt Semantic Layer can support `BIGINT` with over 18 digits. Previously it would return an error.
+- The dbt Semantic Layer can support `BIGINT` with precision greater than 18. Previously it would return an error.
 - We fixed a memory leak that would amount in intermittent errors when querying our JDBC API.
 
 ## Improvements
