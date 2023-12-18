@@ -148,7 +148,7 @@ For Bigquery
 config(
     materialized = 'materialized_view',
     on_configuration_change = 'apply',
-    auto_refresh = True,
+    enable_refresh = True,
     refresh_interval_minutes = 30
     max_staleness = 60,
 )
