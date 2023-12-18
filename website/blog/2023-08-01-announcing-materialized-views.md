@@ -13,7 +13,7 @@ is_featured: true
 ---
 :::note 
 This blog post was updated on December 18, 2023 to cover the support of MVs on dbt-bigquery 
-and materialized tests. 
+and updates on how to test MVs. 
 :::
 
 
