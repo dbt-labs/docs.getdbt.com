@@ -15,12 +15,14 @@ Starting from dbt v1.5 and higher, you can specify your dbt Cloud project ID in 
 
 </VersionBlock>
 
-The following is a list of all available configurations in the `dbt_project.yml` file.
-
 :::info YAML syntax
-dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
+dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries, and strings are represented.
 :::
 
+
+Something to note, you can't set up a "property" in the `dbt_project.yml` file if it's not a config (an example is [macros](/reference/macro-properties)). This applies to all types of resources. Refer to [Configs and properties](/reference/configs-and-properties) for more detail.
+
+The following example is a list of all available configurations in the `dbt_project.yml` file:
 
 <VersionBlock firstVersion="1.7">
 
