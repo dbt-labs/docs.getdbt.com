@@ -70,7 +70,7 @@ Several under-the-hood changes from past minor versions, tagged with deprecation
 
 ## New features and changed documentation
 
-- Add [metrics](/docs/build/metrics), a new node type
+- Add [metrics](/docs/build/build-metrics-intro), a new node type
 - [Generic tests](/best-practices/writing-custom-generic-tests) can be defined in `tests/generic` (new), in addition to `macros/` (as before)
 - [Parsing](/reference/parsing): partial parsing and static parsing have been turned on by default.
 - [Global configs](/reference/global-configs/about-global-configs) have been standardized. Related updates to [global CLI flags](/reference/global-cli-flags) and [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml).
