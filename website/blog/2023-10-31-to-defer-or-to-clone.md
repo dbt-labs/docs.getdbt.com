@@ -102,7 +102,7 @@ Using the cheat sheet above, let’s explore a few common scenarios and explore 
     
     Therefore, we should use **defer** in this scenario
     
-4. **[Blue/Green Deployments](https://discourse.getdbt.com/t/performing-a-blue-green-deploy-of-your-dbt-project-on-snowflake/1349)**
+3. **[Blue/Green Deployments](https://discourse.getdbt.com/t/performing-a-blue-green-deploy-of-your-dbt-project-on-snowflake/1349)**
 
     In this scenario, we want to:
     1. Ensure that all tests are always passing on the production dataset, even if that dataset is slightly stale
