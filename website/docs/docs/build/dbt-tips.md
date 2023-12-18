@@ -5,17 +5,19 @@ sidebar_label: "dbt tips and tricks"
 pagination_next: null
 ---
 
-Use this page to learn about any dbt-related tips and tricks to help you work faster and be more productive. You can also learn about the default dbt Cloud IDE keyboard shortcuts to help make development more productive and easier for everyone.
+Use this page to learn about any dbt-related tips and tricks to help you work faster and be more productive. You can also learn about the default dbt Cloud IDE [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) to help make development more productive and easier for everyone.
 
 ## Package tips
 
-- Use the [dbt_codegen](https://hub.getdbt.com/dbt-labs/codegen/latest/) package to help you generate YML files for your models and sources and SQL files for your staging models.
-- The [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package contains macros useful for daily development. For example, `date_spine` generates a table with all dates between the ones provided as parameters.
-- The [dbt_project_evaluator](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest) package compares your dbt project against a list of our best practices and provides suggestions and guidelines on how to update your models.
-- The [dbt_expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest) package contains many tests beyond those built into dbt Core.
-- The [dbt_audit_helper](https://hub.getdbt.com/#:~:text=adwords-,audit_helper,-codegen) package lets you compare the output of 2 queries. Use it when refactoring existing logic to ensure that the new results are identical.
-- The [dbt_artifacts](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest) package saves information about your dbt runs directly to your data platform so that you can track the performance of models over time.
-- The [dbt_meta_testing](https://hub.getdbt.com/tnightengale/dbt_meta_testing/latest) package checks that your dbt project is sufficiently tested and documented.
+| Package | Description |
+|---------|-------------|
+| [`dbt_codegen`](https://hub.getdbt.com/dbt-labs/codegen/latest/) |Use the package to help you generate YML files for your models and sources and SQL files for your staging models. |
+| [`dbt_utils`](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) | The package contains macros useful for daily development. For example, `date_spine` generates a table with all dates between the ones provided as parameters. |
+| [`dbt_project_evaluator`](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest) | The package compares your dbt project against a list of our best practices and provides suggestions and guidelines on how to update your models. |
+| [`dbt_expectations`](https://hub.getdbt.com/calogica/dbt_expectations/latest) | The package contains many tests beyond those built into dbt. |
+| [`dbt_audit_helper`](https://hub.getdbt.com/#:~:text=adwords-,audit_helper,-codegen) | The package lets you compare the output of 2 queries. Use it when refactoring existing logic to ensure that the new results are identical. |
+| [`dbt_artifacts`](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest) | The package saves information about your dbt runs directly to your data platform so that you can track the performance of models over time. |
+| [`dbt_meta_testing`](https://hub.getdbt.com/tnightengale/dbt_meta_testing/latest) | This package checks that your dbt project is sufficiently tested and documented. |
 
 ## Advanced tips
 
