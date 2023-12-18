@@ -5,7 +5,9 @@ sidebar_label: "dbt tips and tricks"
 pagination_next: null
 ---
 
-Use this page to learn about any dbt-related tips and tricks to help you work faster and be more productive. You can also learn about the default dbt Cloud IDE [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) to help make development more productive and easier for everyone.
+Use this page to learn about any dbt-related tips and tricks to help you work faster and be more productive. 
+
+You can also learn about the default dbt Cloud IDE [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) to help make development more productive and easier for everyone.
 
 ## Package tips
 
