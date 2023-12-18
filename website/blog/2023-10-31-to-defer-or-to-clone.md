@@ -91,7 +91,7 @@ Using the cheat sheet above, let’s explore a few common scenarios and explore 
     
 2. **[Slim CI](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603)**
 
-   :::tip Use `dbt clone` in CI jobs
+   :::tip Use `dbt clone` in CI jobs to test incremental models
    Learn how to [use `dbt clone` in CI jobs](/best-practices/clone-incremental-models) to efficiently test modified incremental models, simulating post-merge behavior while avoiding full-refresh costs.
    :::
 
