@@ -7,7 +7,7 @@ sidebar_label: "Exports"
 Exports in the dbt Semantic Layer extends the [saved queries](/docs/build/saved-queries) functionality:
 
 - Exports enable you to materialize and automate these queries within your data platform.
-- Exports uses the dbt Cloud job scheduler  to execute saved queries for reliable and fast data reporting.
+- Exports uses the dbt Cloud job scheduler to execute saved queries for reliable and fast data reporting.
 - While saved queries are a way to save and reuse commonly used queries in MetricFlow, Exports takes this a step further by allowing you to materialize these queries as data tables of views using the dbt Cloud job scheduler.
 
 The following table outlines the key differences between them:
@@ -22,8 +22,9 @@ The following table outlines the key differences between them:
 
 ## Exports
 
-Exports are essentially Saved Queries scheduled and executed using dbt’s orchestration capabilities. They include current and future types like table, window_table, incremental_table, and file.
-Saved Queries are defined in YAML format, mirroring the query interfaces used in other APIs. The structure includes:
+Exports are essentially saved queries scheduled and executed using dbt’s orchestration capabilities. They include types like table (available now), and also window_table, incremental_table, and file (coming soon).
+
+Saved queries are defined in YAML format, mirroring the query interfaces used in other APIs. The structure includes:
 
 ```yaml
 saved_queries:
@@ -52,8 +53,8 @@ The API for Exports takes parameters such as saved-query, select, exclude, and e
 
 Exports are seamlessly integrated into dbt DAGs, linked to metrics and semantic models by dependencies. This integration allows exports to be part of dbt jobs, selectable through the dbt build command.
 
-Jobs and Run Pages
-The Jobs and Run pages in dbt Cloud do not require changes for Saved Queries and Exports. These functionalities will appear in the console output and logs, similar to models.
+Jobs page
+The Jobs page in dbt Cloud doesn't require changes for Saved queries and Exports. These functionalities will appear in the console output and logs, similar to models.
 
 ## Orchestration
 Exports are orchestrated as part of the dbt DAG, following model execution. The MetricFlow Server builds the specified dataset, performing necessary operations.
@@ -67,15 +68,12 @@ Various caching strategies like Result Cache, Declarative Result Cache, and Auto
 Management
 Caching can be managed through configurations and interfaces provided in the dbt Semantic Layer. Users can specify caching preferences in the saved_queries config, and interact with the cache through commands like dbt sl drop-cache.
 
-## Interfaces
-MetricFlow CLI and Cloud Interfaces
+## Job commands?
+
 Additional parameters and commands are introduced in MetricFlow CLI and Cloud Interfaces to support Saved Queries and Exports functionalities.
 
-Caching Commands
+Caching commands
 Commands for managing cache, such as create-query, drop-cache, and inspect-cache, are available, providing control and visibility over the caching process.
 
-Work Plan and Implementation
+Work Plan and implementation
 The timeline for implementing Exports, Saved Queries, and Caching features includes various stages of design, development, and integration with existing dbt Cloud functionalities.
-
-
-The integration of Saved Queries and Exports in the dbt Semantic Layer represents a significant advancement in dbt's capabilities, streamlining the process of managing, executing, and caching queries for enhanced efficiency and performance.
