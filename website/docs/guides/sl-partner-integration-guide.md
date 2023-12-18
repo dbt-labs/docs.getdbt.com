@@ -43,12 +43,10 @@ When building an integration, we recommend you expose certain metadata in the re
 
 Please send us the following header with every query:
 
-'X-dbt-partner-source': 'Your-Application'
+`'X-dbt-partner-source': 'Your-Application-Name'`
 
-Additionally, it would be helpful if you also included: 
+Additionally, it would be helpful if you also included the email and username of the person generating the query from your application.
 
-- The email and username of the person generating the query from your application
-- The version of dbt they are on.
 
 
 ## Use best practices when exposing metrics
