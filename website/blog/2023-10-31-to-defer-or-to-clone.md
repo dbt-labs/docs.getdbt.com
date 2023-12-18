@@ -87,7 +87,7 @@ Using the cheat sheet above, let’s explore a few common scenarios and explore 
     1. Make a copy of our production dataset available in our downstream BI tool
     2. To safely iterate on this copy without breaking production datasets
     
-    Therefore, we should use **clone** in this scenario
+    Therefore, we should use **clone** in this scenario.
     
 2. **[Slim CI](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603)**
 
@@ -96,13 +96,13 @@ Using the cheat sheet above, let’s explore a few common scenarios and explore 
     2. Only run and test models in the CI staging environment that have changed from the production environment
     3. Reference models from different environments – prod for unchanged models, and staging for modified models
     
-    Therefore, we should use **defer** in this scenario
+    Therefore, we should use **defer** in this scenario.
 
-    :::tip Use `dbt clone` in CI jobs to test incremental models
-   Learn how to [use `dbt clone` in CI jobs](/best-practices/clone-incremental-models) to efficiently test modified incremental models, simulating post-merge behavior while avoiding full-refresh costs.
-   :::
+:::tip Use `dbt clone` in CI jobs to test incremental models
+Learn how to [use `dbt clone` in CI jobs](/best-practices/clone-incremental-models) to efficiently test modified incremental models, simulating post-merge behavior while avoiding full-refresh costs.
+:::
     
-4. **[Blue/Green Deployments](https://discourse.getdbt.com/t/performing-a-blue-green-deploy-of-your-dbt-project-on-snowflake/1349)**
+3. **[Blue/Green Deployments](https://discourse.getdbt.com/t/performing-a-blue-green-deploy-of-your-dbt-project-on-snowflake/1349)**
 
     In this scenario, we want to:
     1. Ensure that all tests are always passing on the production dataset, even if that dataset is slightly stale
