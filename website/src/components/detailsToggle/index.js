@@ -7,29 +7,29 @@ function detailsToggle({ children, alt_header = null }) {
   const [hoverTimeout, setHoverTimeout] = useState(null);
 
   const handleToggleClick = () => {
-    setOn(false);
-    setHoverActive(isOn); // Toggle hover activation based on current state
-  };
+    setHoverActive(true); // Disable hover when clicked
+    setOn(current => !current); // Toggle the current state
+};
 
-  const handleMouseEnter = () => {
-    if (!hoverActive) return; // Ignore hover if disabled
-    const timeout = setTimeout(() => {
-      setOn(true);
-    }, 500); // 500ms delay
-    setHoverTimeout(timeout);
-  };
+const handleMouseEnter = () => {
+  if (isOn) return; // Ignore hover if already open
+  setHoverActive(true); // Enable hover
+  const timeout = setTimeout(() => {
+      if (hoverActive) setOn(true);
+  }, 500); 
+  setHoverTimeout(timeout);
+};
 
-  const handleMouseLeave = () => {
-    if (hoverActive && !isOn) {
+const handleMouseLeave = () => {
+  if (!isOn) {
       clearTimeout(hoverTimeout);
       setOn(false);
-      // isOn (false); can't be used here but setOn triggers a re-render
-    }
-  };
+  }
+};
 
-  useEffect(() => {
-    return () => clearTimeout(hoverTimeout);
-  }, [hoverTimeout]);
+useEffect(() => {
+  return () => clearTimeout(hoverTimeout);
+}, [hoverTimeout]);
 
   return (
     <div className='detailsToggle'>
