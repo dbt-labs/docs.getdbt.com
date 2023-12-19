@@ -725,18 +725,18 @@ The `grant_access_to` config is not thread-safe when multiple views need to be a
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
 with the following configuration parameters:
 
-| Parameter                                                   | Type                   | Required | Default | Change Monitoring Support |
-|-------------------------------------------------------------|------------------------|----------|---------|---------------------------|
-| `on_configuration_change`                                   | `<string>`             | no       | `apply` | n/a                       |
-| [`cluster_by`](#clustering-clause)                          | `[<string>]`           | no       | `none`  | drop/create               |
-| [`partition_by`](#partition-clause)                         | `{<dictionary>}`       | no       | `none`  | drop/create               |
-| [`enable_refresh`](#auto-refresh)                           | `<boolean>`            | no       | `true`  | alter                     |
-| [`refresh_interval_minutes`](#auto-refresh)                 | `<float>`              | no       | `30`    | alter                     |
-| [`max_staleness`](#auto-refresh) (in Preview)               | `<interval>`           | no       | `none`  | alter                     |
-| [`description`](/reference/resource-properties/description) | `<string>`             | no       | `none`  | alter                     |
-| [`labels`](#specifying-labels)                              | `{<string>: <string>}` | no       | `none`  | alter                     |
-| [`hours_to_expiration`](#controlling-table-expiration)      | `<integer>`            | no       | `none`  | alter                     |
-| [`kms_key_name`](#using-kms-encryption)                     | `<string>`             | no       | `none`  | alter                     |
+| Parameter                                                                        | Type                   | Required | Default | Change Monitoring Support |
+|----------------------------------------------------------------------------------|------------------------|----------|---------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>`             | no       | `apply` | n/a                       |
+| [`cluster_by`](#clustering-clause)                                               | `[<string>]`           | no       | `none`  | drop/create               |
+| [`partition_by`](#partition-clause)                                              | `{<dictionary>}`       | no       | `none`  | drop/create               |
+| [`enable_refresh`](#auto-refresh)                                                | `<boolean>`            | no       | `true`  | alter                     |
+| [`refresh_interval_minutes`](#auto-refresh)                                      | `<float>`              | no       | `30`    | alter                     |
+| [`max_staleness`](#auto-refresh) (in Preview)                                    | `<interval>`           | no       | `none`  | alter                     |
+| [`description`](/reference/resource-properties/description)                      | `<string>`             | no       | `none`  | alter                     |
+| [`labels`](#specifying-labels)                                                   | `{<string>: <string>}` | no       | `none`  | alter                     |
+| [`hours_to_expiration`](#controlling-table-expiration)                           | `<integer>`            | no       | `none`  | alter                     |
+| [`kms_key_name`](#using-kms-encryption)                                          | `<string>`             | no       | `none`  | alter                     |
 
 <Tabs
   groupId="config-languages"
@@ -757,7 +757,7 @@ with the following configuration parameters:
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
-    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[cluster_by](#clustering-clause): <field-name> | [<field-name>]
     [+](/reference/resource-configs/plus-prefix)[partition_by](#partition-clause):
       - field: <field-name>
@@ -794,7 +794,7 @@ models:
   - name: [<model-name>]
     config:
       [materialized](/reference/resource-configs/materialized): materialized_view
-      on_configuration_change: apply | continue | fail
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [cluster_by](#clustering-clause): <field-name> | [<field-name>]
       [partition_by](#partition-clause):
         - field: <field-name>
@@ -827,7 +827,7 @@ models:
 ```jinja
 {{ config(
     [materialized](/reference/resource-configs/materialized)='materialized_view',
-    on_configuration_change="apply" | "continue" | "fail",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [cluster_by](#clustering-clause)="<field-name>" | ["<field-name>"],
     [partition_by](#partition-clause)={
         "field": "<field-name>",
@@ -868,7 +868,7 @@ models:
 Many of these parameters correspond to their table counterparts and have been linked above.
 The set of parameters unique to materialized views covers [auto-refresh functionality](#auto-refresh).
 
-Find more information about these parameters in the BigQuery docs:
+Learn more about these parameters in BigQuery's docs:
 - [CREATE MATERIALIZED VIEW statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
 - [materialized_view_option_list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#materialized_view_option_list)
 
@@ -886,7 +886,7 @@ BigQuery only officially supports the configuration of the frequency (the "once 
 however, there is a feature in preview that allows for the configuration of the staleness (the "5 minutes" refresh).
 dbt will monitor these parameters for changes and apply them using an `ALTER` statement.
 
-Find more information about these parameters in the BigQuery docs:
+Learn more about these parameters in BigQuery's docs:
 - [materialized_view_option_list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#materialized_view_option_list)
 - [max_staleness](https://cloud.google.com/bigquery/docs/materialized-views-create#max_staleness)
 

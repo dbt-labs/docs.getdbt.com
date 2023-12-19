@@ -355,11 +355,11 @@ of [materialized views](/docs/build/materializations#Materialized-View).
 In particular, dynamic tables have access to the `on_configuration_change` setting.
 Dynamic tables are supported with the following configuration parameters:
 
-| Parameter                                                | Type       | Required | Default | Change Monitoring Support |
-|----------------------------------------------------------|------------|----------|---------|---------------------------|
-| `on_configuration_change`                                | `<string>` | no       | `apply` | n/a                       |
-| [`target_lag`](#target-lag)                              | `<string>` | yes      |         | alter                     |
-| [`snowflake_warehouse`](#configuring-virtual-warehouses) | `<string>` | yes      |         | alter                     |
+| Parameter                                                                        | Type       | Required | Default | Change Monitoring Support |
+|----------------------------------------------------------------------------------|------------|----------|---------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply` | n/a                       |
+| [`target_lag`](#target-lag)                                                      | `<string>` | yes      |         | alter                     |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)                         | `<string>` | yes      |         | alter                     |
 
 <Tabs
   groupId="config-languages"
@@ -380,7 +380,7 @@ Dynamic tables are supported with the following configuration parameters:
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
-    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
 ```
@@ -401,7 +401,7 @@ models:
   - name: [<model-name>]
     config:
       [materialized](/reference/resource-configs/materialized): dynamic_table
-      on_configuration_change: apply | continue | fail
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [target_lag](#target-lag): downstream | <time-delta>
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
 ```
@@ -418,7 +418,7 @@ models:
 ```jinja
 {{ config(
     [materialized](/reference/resource-configs/materialized)="dynamic_table",
-    on_configuration_change="apply" | "continue" | "fail",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
 ) }}
@@ -430,7 +430,7 @@ models:
 
 </Tabs>
 
-Find more information about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
+Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
 
 ### Target lag
 
@@ -438,7 +438,7 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 - **Time-based** &mdash; Provide a value of the form `<int> { seconds | minutes | hours | days }`. For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
 - **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
 
-Find more information about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
+Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
 
 ### Limitations
 
