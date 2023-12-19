@@ -23,21 +23,6 @@ default_value: {show: true}
 You can configure `docs` behavior for many resources at once by setting in `dbt_project.yml`. You can also use the `docs` config in `properties.yaml` files, to set or override documentation behaviors for specific resources:
 
 
-<File name='models/schema.yml'>
-
-
-```yml
-version: 2
-
-models:
-  - name: model_name
-    docs:
-      show: true | false
-      node_color: "black"
-```
-
-</File>
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -48,6 +33,19 @@ models:
 
 ```
 
+</File>
+
+<File name='models/schema.yml'>
+
+  ```yml
+version: 2
+
+models:
+  - name: model_name
+    docs:
+      show: true | false
+      node_color: "black"
+```
 </File>
 
 </TabItem>
@@ -153,8 +151,6 @@ macros:
 ```
 </File>
 
-Also refer to [macro properties](/reference/macro-properties).
-
 </TabItem>
 
 </Tabs>
@@ -162,7 +158,7 @@ Also refer to [macro properties](/reference/macro-properties).
 ## Definition
 The docs field can be used to provide documentation-specific configuration to models. It supports the doc attribute `show`, which controls whether or not models are shown in the auto-generated documentation website. It also supports `node_color` for some node types.
 
-**Note:** hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
+**Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
 ## Default
 The default value for `show` is `true`.
