@@ -204,6 +204,8 @@ DimensionType = [CATEGORICAL, TIME]
 
 ### Querying
 
+When querying for data, _either_ a `groupBy` _or_ a `metrics` selection is required. 
+
 **Create Dimension Values query**
 
 ```graphql
@@ -422,6 +424,19 @@ mutation {
     environmentId: BigInt!
     metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
     groupBy: [{name: "metric_time, grain: MONTH}, {name: "customer__customer_type"}]
+  ) {
+    queryId
+  }
+}
+```
+
+**Query a categorical dimension on its own**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: 123456
+    groupBy: [{name: "customer__customer_type"}]
   ) {
     queryId
   }
