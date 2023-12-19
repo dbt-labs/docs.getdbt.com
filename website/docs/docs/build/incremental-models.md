@@ -162,7 +162,7 @@ Building models as tables in your data warehouse is often preferred for better q
 
 Incremental models offer a balance between complexity and improved performance compared to `view` and `table` materializations and offer better performance of your dbt runs. 
 
-In addition to these considerations for incremental models, it's important to understand their limits and challenges, particularly with large datasets. For more insights into efficient strategies, performance considerations, and the handling of late-arriving data in incremental models, refer to the [On the Limits of Incrementality](https://discourse.getdbt.com/t/on-the-limits-of-incrementality/303) discourse discussion. 
+In addition to these considerations for incremental models, it's important to understand their limitations and challenges, particularly with large datasets. For more insights into efficient strategies, performance considerations, and the handling of late-arriving data in incremental models, refer to the [On the Limits of Incrementality](https://discourse.getdbt.com/t/on-the-limits-of-incrementality/303) discourse discussion. 
 
 ## Understanding the is_incremental() macro
 The `is_incremental()` macro will return `True` if _all_ of the following conditions are met:
