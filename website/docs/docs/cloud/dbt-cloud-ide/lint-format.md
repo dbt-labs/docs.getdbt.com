@@ -236,4 +236,4 @@ Make sure you're on a development branch. Formatting or Linting isn't available 
 ## Related docs
 
 - [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
-- [Tips and tricks](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips)
+- [Keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts)
