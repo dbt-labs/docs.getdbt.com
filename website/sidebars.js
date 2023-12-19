@@ -775,6 +775,7 @@ const sidebarSettings = {
             "reference/model-properties",
             "reference/model-configs",
             "reference/resource-configs/materialized",
+            "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/sql_header",
           ],
         },
