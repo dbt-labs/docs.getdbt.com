@@ -7,7 +7,7 @@ displayText: Materializations best practices
 hoverSnippet: Read this guide to understand the incremental models you can create in dbt.
 ---
 
-So far we’ve looked at tables and views, which map to the traditional objects in the data warehouse. As mentioned earlier, incremental models are a little different. This where we start to deviate from this pattern with more powerful and complex materializations.
+So far we’ve looked at tables and views, which map to the traditional objects in the data warehouse. As mentioned earlier, incremental models are a little different. This is where we start to deviate from this pattern with more powerful and complex materializations.
 
 - 📚 **Incremental models generate tables.** They physically persist the data itself to the warehouse, just piece by piece. What’s different is **how we build that table**.
 - 💅 **Only apply our transformations to rows of data with new or updated information**, this maximizes efficiency.
@@ -53,7 +53,7 @@ where
   updated_at > (select max(updated_at) from {{ this }})
 ```
 
-Let’s break down that `where` clause a bit, because this where the action is with incremental models. Stepping through the code **_right-to-left_** we:
+Let’s break down that `where` clause a bit, because this is where the action is with incremental models. Stepping through the code **_right-to-left_** we:
 
 1. Get our **cutoff.**
    1. Select the `max(updated_at)` timestamp — the **most recent record**
@@ -138,7 +138,7 @@ where
 {% endif %}
 ```
 
-Fantastic! We’ve got a working incremental model. On our first run, when there is no corresponding table in the warehouse, `is_incremental` will evaluate to false and we’ll capture the entire table. On subsequent runs is it will evaluate to true and we’ll apply our filter logic, capturing only the newer data.
+Fantastic! We’ve got a working incremental model. On our first run, when there is no corresponding table in the warehouse, `is_incremental` will evaluate to false and we’ll capture the entire table. On subsequent runs it will evaluate to true and we’ll apply our filter logic, capturing only the newer data.
 
 ### Late arriving facts
 
