@@ -4,9 +4,9 @@ sidebar_label: "Project recommendations"
 description: "dbt Explorer provides recommendations that you can take to improve the quality of your dbt project."
 ---
 
-:::tip Public preview 
+:::tip Beta 
 
-The project recommendations feature is now available in dbt Explorer! Check it out!
+The project recommendations beta feature is now available in dbt Explorer! Check it out!
 
 :::
  

@@ -109,27 +109,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 
 ### Materialized View
 
-The `materialized view` materialization allows the creation and maintenance of materialized views
-in the target database. This materialization makes use of the `on_configuration_change` config, which
-aligns with the incremental nature of the namesake database object. This setting tells dbt to attempt to
-make configuration changes directly to the object when possible, as opposed to completely recreating
-the object to implement the updated configuration. Using `dbt-postgres` as an example, indexes can
-be dropped and created on the materialized view without the need to recreate the materialized view itself.
-
-The `on_configuration_change` config has three settings:
-- `apply` (default) &mdash; attempt to update the existing database object if possible, avoiding a complete rebuild
-  - *Note:* if any individual configuration change requires a full refresh, a full refresh be performed in lieu of individual alter statements
-- `continue` &mdash; allow runs to continue while also providing a warning that the object was left untouched
-  - *Note:* this could result in downstream failures as those models may depend on these unimplemented changes
-- `fail` &mdash; force the entire run to fail if a change is detected
-
-Materialized views are implemented following this "drop through" life cycle:
-1. If an object does not exist, create a materialized view
-2. If an object exists, other than a materialized view, that object is dropped and replaced with a materialized view
-3. If `--full-refresh` is supplied, replace the materialized view regardless of changes and the `on_configuration_change` setting
-4. If there are no configuration changes, refresh the materialized view
-5. At this point there are configuration changes, proceed according to the `on_configuration_change` setting
-
+The `materialized view` materialization allows the creation and maintenance of materialized views in the target database.
 Materialized views are a combination of a view and a table, and serve use cases similar to incremental models.
 
 * **Pros:**
@@ -145,7 +125,30 @@ less configuration options available, see your database platform's docs for more
 * **Advice:**
   * Consider materialized views for use cases where incremental models are sufficient, but you would like the data platform to manage the incremental logic and refresh.
 
-**Note:** `dbt-snowflake` _does not_ support materialized views, it uses Dynamic Tables instead. For details, refer to [Snowflake specific configurations](/reference/resource-configs/snowflake-configs#dynamic-tables).
+#### Configuration Change Monitoring
+
+This materialization makes use of the [`on_configuration_change`](/reference/resource-configs/on_configuration_change)
+config, which aligns with the incremental nature of the namesake database object. This setting tells dbt to attempt to
+make configuration changes directly to the object when possible, as opposed to completely recreating
+the object to implement the updated configuration. Using `dbt-postgres` as an example, indexes can
+be dropped and created on the materialized view without the need to recreate the materialized view itself.
+
+#### Scheduled Refreshes
+
+In the context of a `dbt run` command, materialized views should be thought of as similar to views.
+For example, a `dbt run` command is only needed if there is the potential for a change in configuration or sql;
+it's effectively a deploy action.
+By contrast, a `dbt run` command is needed for a table in the same scenarios *AND when the data in the table needs to be updated*.
+This also holds true for incremental and snapshot models, whose underlying relations are tables.
+In the table cases, the scheduling mechanism is either dbt Cloud or your local scheduler;
+there is no built-in functionality to automatically refresh the data behind a table.
+However, most platforms (Postgres excluded) provide functionality to configure automatically refreshing a materialized view.
+Hence, materialized views work similarly to incremental models with the benefit of not needing to run dbt to refresh the data.
+This assumes, of course, that auto refresh is turned on and configured in the model.
+
+:::info
+`dbt-snowflake` _does not_ support materialized views, it uses Dynamic Tables instead. For details, refer to [Snowflake specific configurations](/reference/resource-configs/snowflake-configs#dynamic-tables).
+:::
 
 ## Python materializations
 

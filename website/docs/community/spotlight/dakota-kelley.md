@@ -15,6 +15,7 @@ socialLinks:
     link: https://www.linkedin.com/in/dakota-kelley/
 dateCreated: 2023-11-08
 hide_table_of_contents: true
+communityAward: true
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
