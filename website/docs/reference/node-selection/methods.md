@@ -173,7 +173,7 @@ dbt test --select "test_type:singular"       # run all singular tests
 
 The `test_name` method is used to select tests based on the name of the generic test
 that defines it. For more information about how generic tests are defined, read about
-[tests](/docs/build/tests).
+[tests](/docs/build/data-tests).
 
 
   ```bash
@@ -244,7 +244,7 @@ dbt ls --select "+exposure:*" --resource-type source    # list all sources upstr
 
 ### The "metric" method
 
-The `metric` method is used to select parent resources of a specified [metric](/docs/build/metrics). Use in conjunction with the `+` operator.
+The `metric` method is used to select parent resources of a specified [metric](/docs/build/build-metrics-intro). Use in conjunction with the `+` operator.
 
 ```bash
 dbt build --select "+metric:weekly_active_users"       # build all resources upstream of weekly_active_users metric

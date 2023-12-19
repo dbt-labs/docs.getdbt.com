@@ -7,10 +7,10 @@ tags: [Semantic Layer, APIs]
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
 
 
