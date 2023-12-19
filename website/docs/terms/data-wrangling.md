@@ -37,7 +37,6 @@ Structuring your data is a type of transformation that involves reformatting and
 
 - Is your data in the format you need to perform analysis on it? Does your data need to be potentially unnested? *Should you nest or objectize columns together?*
 - Do the column names and values look correct for your use case?
-Do the column names and values look correct for your use case?
 
 If your data is not in a format that is usable, you can look into different solutions such as pivoting or using different functions to unpack lists and JSON files so that they are in a tabular format. Pivoting is helpful because it allows you to change the way your dataset is structured by rearranging the way columns, rows, and their values are displayed. dbt has a [pre-built macro](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/pivot.sql) that makes pivoting less of a headache and more of a breeze.
 
@@ -52,7 +51,7 @@ The cleaning stage involves using different functions so that the values in your
 - Removing appropriate duplicates or nulls you found in the discovery process
 - Eliminating unnecessary characters or spaces from values
 
-Certain cleaning steps, like removing rows with null values, are helpful to do at the beginning of the process because removing nulls and duplicates from the start can increase the performance of your downstream models.  In the cleaning step, it’s important to follow a standard for your transformations here. This means you should be following a consistent naming convention for your columns (especially for your <Term id="primary-key">primary keys</Term>) and casting to the same timezone and datatypes throughout your models. Examples include making sure all dates are in UTC time rather than source timezone-specific, all string in either lower or upper case, etc. 
+Certain cleaning steps, like removing rows with null values, are helpful to do at the beginning of the process because removing nulls and duplicates from the start can increase the performance of your downstream models.  In the cleaning step, it’s important to follow a standard for your transformations here. This means you should be following a consistent naming convention for your columns (especially for your <Term id="primary-key">primary keys</Term>) and casting to the same timezone and datatypes throughout your models. Examples include making sure all dates are in UTC time rather than source timezone-specific, all strings are in either lower or upper case, etc. 
 
 :::tip dbt to the rescue!
 If you're struggling to do all the cleaning on your own, remember that dbt packages ([dbt expectations](https://github.com/calogica/dbt-expectations), [dbt_utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/), and [re_data](https://www.getre.io/)) and their macros are also available to help you clean up your data.
@@ -151,9 +150,9 @@ For nested data types such as JSON, you’ll want to check out the JSON parsing 
 
 ### Validating
 
-dbt offers [generic tests](/docs/build/tests#more-generic-tests) in every dbt project that allows you to validate accepted, unique, and null values. They also allow you to validate the relationships between tables and that the primary key is unique.
+dbt offers [generic data tests](/docs/build/data-tests#more-generic-data-tests) in every dbt project that allows you to validate accepted, unique, and null values. They also allow you to validate the relationships between tables and that the primary key is unique.
 
-If you can’t find what you need with the generic tests, you can download an additional dbt testing package called [dbt_expectations](https://hub.getdbt.com/calogica/dbt_expectations/0.1.2/) that dives even deeper into how you can test the values in your columns. This package has useful tests like `expect_column_values_to_be_in_type_list`, `expect_column_values_to_be_between`, and `expect_column_value_lengths_to_equal`. 
+If you can’t find what you need with the generic tests, you can download an additional dbt testing package called [dbt_expectations](https://hub.getdbt.com/calogica/dbt_expectations/0.1.2/) that dives even deeper into how you can test the values in your columns. This package has useful data tests like `expect_column_values_to_be_in_type_list`, `expect_column_values_to_be_between`, and `expect_column_value_lengths_to_equal`. 
 
 ## Conclusion
 

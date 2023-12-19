@@ -66,7 +66,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
 | Seed      | Yes              | Yes                  | Yes                | Downstream            | Applied & definition |
 | Snapshot  | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
 | Test      | Yes              | Yes                  | No                 | Upstream              | Applied & definition |
-| Exposure  | No               | No                   | No                 | Upstream              | Applied & definition |
+| Exposure  | No               | No                   | No                 | Upstream              | Definition 	  |
 | Metric    | No               | No                   | No                 | Upstream & downstream | Definition           |
 | Semantic model | No          | No                   | No                 | Upstream & downstream | Definition           |
 | Group     | No               | No                   | No                 | Downstream            | Definition           |
