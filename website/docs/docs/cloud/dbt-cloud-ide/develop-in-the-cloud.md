@@ -44,7 +44,7 @@ To improve your experience using dbt Cloud, we suggest that you turn off ad bloc
 
 ## dbt Cloud IDE features
 
-The dbt Cloud IDE comes with [features](/docs/cloud/dbt-cloud-ide/ide-user-interface) that make it easier for you to develop, build, compile, run, and test data models. 
+The dbt Cloud IDE comes with features that make it easier for you to develop, build, compile, run, and test data models. 
 
 To understand how to navigate the IDE and its user interface elements, refer to the [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface) page.
 
