@@ -84,6 +84,10 @@ mf query --metrics average_purchase_price --dimensions metric_time,user_id__type
 
 ## Multi-hop joins
 
+:::info
+MetricFlow currently supports multi-hop joins with up to two hops. This means we can render joins between three tables at most. 
+:::
+
 MetricFlow allows users to join measures and dimensions across a graph of entities, which we refer to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
 
 Here's an example schema for reference:
