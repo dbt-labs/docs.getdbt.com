@@ -282,7 +282,9 @@ The only authentication parameter to set for OAuth 2.0 is `method: oauth_console
 
 For more information, refer to both [OAuth 2.0 authentication](https://trino.io/docs/current/security/oauth2.html) in the Trino docs and the [README](https://github.com/trinodb/trino-python-client#oauth2-authentication) for the Trino Python client.
 
-The only difference between `oauth_console` and `oauth` is that in the latter a browser is automatically opened with authentication URL and in `oauth_console` URL is printed to the console.
+The only difference between `oauth_console` and `oauth` is:
+- `oauth` &mdash; An authentication URL automatically opens in a browser.
+- `oauth_console` &mdash; A URL is printed to the console.
 
 It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `python -m pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
 
