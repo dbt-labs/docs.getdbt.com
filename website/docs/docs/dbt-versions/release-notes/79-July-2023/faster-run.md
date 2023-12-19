@@ -23,11 +23,11 @@ For all its strengths, Kubernetes has challenges, especially with pod management
 
 Jobs scheduled at the top of the hour used to take over 106 seconds to prepare because of the volume of runs the scheduler has to process. Now, even with increased runs, we have reduced prep time to 27 secs (at a maximum) &mdash; a 75% speed improvement for runs at peak traffic times!
 
-## Unlimited job concurrency for Enterprise accounts
+## Unlimited job concurrency for Enterprise and Team accounts
 
 Our enhanced scheduler offers more durability and empowers users to run jobs effortlessly. 
 
-This means Enterprise, multi-tenant accounts can now enjoy the advantages of unlimited job concurrency. Previously limited to a fixed number of run slots, Enterprise accounts now have the freedom to operate without constraints. Single-tenant support will be coming soon. Team plan customers will continue to have only 2 run slots. 
+This means Enterprise and Teams (multi-tenant accounts) can now enjoy the advantages of unlimited job concurrency. Previously limited to a fixed number of run slots, Enterprise and Team accounts now have the freedom to operate without constraints. Single-tenant support will be coming soon. 
 
 Something to note, each running job occupies a run slot for its duration, and if all slots are occupied, jobs will queue accordingly. 
 
