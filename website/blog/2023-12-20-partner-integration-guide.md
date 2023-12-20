@@ -41,7 +41,7 @@ If you require a partner dbt Cloud account to test on, we can upgrade an existin
     - Metrics definitions can be pulled from the Discovery API (linked above) or the Semantic Layer Driver/GraphQL API. The key difference is that the Discovery API isn't able to pull the semantic graph, which provides the list of available dimensions that one can query per metric. That is only available with the SL Driver/APIs. The trade-off is that the SL Driver/APIs doesn't have access to the lineage of the entire dbt project (that is, how the dbt metrics dependencies on dbt models).
     - [We have three available integration points for the Semantic Layer API.](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview)
 
-## dbt Cloud Hosting and Authentication
+## dbt Cloud hosting and authentication
 
 To use the dbt Cloud APIs, you will need access to the customer’s access urls. Depending on their dbt Cloud setup, they will have a different access url. To find out more, here is the [documentation](https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses) to understand all the possible configurations. My recommendation is to allow the customer to provide their own url to simplify support. 
 
