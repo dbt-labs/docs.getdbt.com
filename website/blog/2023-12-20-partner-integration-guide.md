@@ -90,7 +90,7 @@ For authentication, we highly recommend that your integration uses account servi
 - Can you provide column-level information in the lineage?
     - Column-level lineage is currently in beta release with more information to come.
 - How do I get a Partner Account?
-    - Contact your Partner Manager with your account id (in your URL)
+    - Contact your Partner Manager with your account ID (in your URL).
 - Why should I not use the Admin API to pull out the dbt artifacts for metadata?
     - We recommend not integrating with the Admin API to extract the dbt artifacts documentation. This is because the Discovery API provides more extensive information, a user-friendly structure, and a more reliable integration point.
 - How do I get access to the dbt brand assets?
