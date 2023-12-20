@@ -29,6 +29,12 @@ Our enhanced scheduler offers more durability and empowers users to run jobs eff
 
 This means Enterprise, multi-tenant accounts can now enjoy the advantages of unlimited job concurrency. Previously limited to a fixed number of run slots, Enterprise accounts now have the freedom to operate without constraints. Single-tenant support will be coming soon. Team plan customers will continue to have only 2 run slots. 
 
-Something to note, each running job occupies a run slot for its duration, and if all slots are occupied, jobs will queue accordingly. 
+Something to note, each running job occupies a run slot for its duration, and if all slots are occupied, jobs will queue accordingly.
 
 For more feature details, refer to the [dbt Cloud pricing page](https://www.getdbt.com/pricing/).
+
+- **Update December 2023: New Team plans with unlimited job concurrency**<br />
+  We've introduced a change to our dbt Cloud Scheduler for newly created Team plan accounts:<br /><br />
+    - Unlimited Job concurrency for new Team plans &mdash; New accounts on the Team plan now benefit from unlimited job concurrency.
+      - Existing Team plans &mdash; It's important to note that existing Team plan accounts will continue to operate with their original fixed number of run slots.
+    - Project limitations &mdash; Both Team and Developer plans are limited to one project each. For larger-scale needs, our Enterprise plan, which provides unlimited job concurrency and project capacity, is an ideal upgrade. Refer to our [Enterprise plan page](https://www.getdbt.com/pricing/) for more details.
