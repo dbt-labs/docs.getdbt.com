@@ -19,7 +19,7 @@ Now this guide does not include how to integrate with dbt Core. If you’re inte
 
 Instead, we're going to focus on integrating with dbt Cloud. Integrating with dbt Cloud is a key requirement to become a dbt Labs technology partner, opening the door to a variety of collaborative commercial opportunities. 
 
-Here I will cover how to get started, potential use cases you want to solve for, and points of integrations to do so.
+Here I'll cover how to get started, potential use cases you want to solve for, and points of integrations to do so.
 
 ## New to dbt Cloud?
 
