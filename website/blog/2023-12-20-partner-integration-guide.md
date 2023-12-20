@@ -54,7 +54,7 @@ For authentication, we highly recommend that your integration uses account servi
 - Event-based orchestration
     - **Desired action** &mdash; You want to receive information that a scheduled dbt Cloud job has been completed or has kicked off a dbt Cloud job. You can align your product schedule to the dbt Cloud run schedule.
     - **Examples:** Kicking off a dbt Job after the ETL job of extracting and loading the data is completed. Or receiving a webhook after the job has been completed to kick off your reverse ETL job.
-    - **Integration Points:** Webhooks and/or Admin API
+    - **Integration points** &mdash; Webhooks and/or Admin API
 - dbt Lineage
     - **Desired Action:** You wish to interpolate the dbt lineage metadata into your tool.
     - **Example: In your tool, you wish to pull in the dbt DAG into your lineage diagram. [This is what you could pull and how to do this.](https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-use-cases-and-examples#whats-the-full-data-lineage)**
