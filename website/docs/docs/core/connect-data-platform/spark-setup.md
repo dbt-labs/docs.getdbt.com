@@ -20,10 +20,6 @@ meta:
 <Snippet path="warehouse-setups-cloud-callout" />
 <Snippet path="dbt-databricks-for-databricks" />
 
-:::note
-See [Databricks setup](#databricks-setup) for the Databricks version of this page.
-:::
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
