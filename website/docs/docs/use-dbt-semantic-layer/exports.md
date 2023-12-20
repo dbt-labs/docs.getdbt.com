@@ -16,15 +16,18 @@ The following table outlines the key differences between them:
 |-----------|-----------|----------------|
 | **Availability**    | Available to dbt Cloud users on Team and Enterprise plans. | Available in both dbt Core and dbt Cloud.     |
 | **Purpose**         | To schedule and run saved queries as part of [dbt's job scheduler](/docs/deploy/job-scheduler). | To define and manage common Semantic Layer queries.    |
-| **Usage**           | Used for materializing query results in the data platform. Materialization types include table; window_table, incremental_table, and file coming soon. | Used for organizing and reusing queries within dbt projects. |
+| **Usage**           | Used for materializing query results in the data platform. Materialization types include table; window_table, incremental_table, and file coming soon.<br /><br />**Example**: Creating a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing queries within dbt projects.<br /><br />**Example**: Standardizing a frequently used revenue calculation across multiple reports. | For materializing query results in the data platform. |
 | **Integration**     | Tightly integrated with dbt Cloud's orchestration and job scheduling. | Integrated into dbt DAG and managed alongside other dbt nodes. |
 | **Configuration**   | Configured within dbt Cloud environment and job scheduler settings. | Defined in YAML format within dbt project files.   |
 
-## Exports
+## Define exports
 
-Exports are essentially saved queries scheduled and executed using dbt’s orchestration capabilities. They include types like table (available now), and also window_table, incremental_table, and file (coming soon).
+Exports are essentially saved queries that you can schedule and execute using [dbt's job scheduler](/docs/deploy/job-scheduler) capabilities. Exports include the following materialization types:
 
-Saved queries are defined in YAML format, mirroring the query interfaces used in other APIs. The structure includes:
+- `table` (available now) 
+- and `window_table`, `incremental_table`, and `file` (coming soon)
+
+You can define Exports in a YAML format in the same , mirroring the query interfaces used in other APIs:
 
 ```yaml
 saved_queries:

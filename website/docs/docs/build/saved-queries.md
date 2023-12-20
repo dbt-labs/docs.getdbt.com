@@ -6,29 +6,34 @@ sidebar_label: "Saved queries"
 tags: [Metrics, Semantic Layer]
 ---
 
-Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. 
-
-Saved queries are different from [Exports](/docs/use-dbt-semantic-layer/exports) &mdash; exports are essentially saved queries scheduled and executed using dbt’s job scheduler. 
-
-The following table outlines the key differences between saved queries and exports in dbt:
+Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. They are distinct from [Exports](/docs/use-dbt-semantic-layer/exports), which are scheduled and executed saved queries using dbt's job scheduler.
 
 | Feature      | Saved queries  | Exports    |
 |--------------|----------------|------------|
-| **Availability**    | Available in both dbt Core and dbt Cloud   | Available to dbt Cloud users on Team and Enterprise plans | 
-| **Purpose**    | To define and manage common Semantic Layer queries     | To schedule and run saved queries as part of [dbt's job scheduler](/docs/deploy/job-scheduler) |
-| **Usage**   | For organizing and reusing queries within dbt projects.<br /><br />**Example**: Standardizing a frequently used revenue calculation across multiple reports. | For materializing query results in the data platform.<br /><br /><br />**Example**: Creating a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  |
+| **Availability**   | Available in both dbt Core and dbt Cloud.  | Available to dbt Cloud users on Team and Enterprise plans. | 
+| **Purpose**    | To define and manage common Semantic Layer queries.     | To schedule and run saved queries as part of [dbt's job scheduler](/docs/deploy/job-scheduler). |
+| **Usage**   | For organizing and reusing queries within dbt projects. | For materializing query results in the data platform.  |
 
-For more detailed information on exports, please refer to the [Exports documentation](/docs/cloud/about-cloud/saved-queries-exports).
 
-## Define saved queries
+## Parameters
 
-To define a saved query, refer to the following specification:
+To define a saved query, refer to the following parameters:
 
- Parameter | Description | Type |
-| --------- | ----------- | ---- |
-| `name` | The name of the metric. | Required |
-| `description` | The description of the metric. | Optional |
-| `query_params` | The query parameters for the saved query: `metrics`, `group_by`, and `where`. | Required |
+| Parameter | Type    | Required | Description    |
+|-------|---------|----------|----------------|
+| `name`       | String    | Required     | Name of the saved query object.          |
+| `description`     | String      | Required     | A description of the saved query.     |
+| `query_params`       | Structure   | Required     | Contains the query parameters. |
+| `query_params::metrics   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the CLI. |
+| `query_params::group_bys`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
+| `query_params::where`        | LList or String  or String | Optional  | A list of string which may include the `Dimension` or `TimeDimension` objects. |
+| `exports`     | List or Structure | Optional    | A list of exports to be specified with the exports structure.     |
+| `exports::name`       | String               | Required     | Name of the export object.      |
+| `exports::config`     | List or Structure     | Required     | A config section for any parameters specifying the export.  |
+| `exports::config::export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
+| `exports::config`   | String   | Optional    | The schema used for creating the table or view. This option cannot be used for caching.   |
+| `exports::config`  | String     | Optional    | The table alias to use to write the table or view.  This option cannot be used for caching.  |
+
 
 The following is an example of a saved query:
 
