@@ -59,7 +59,7 @@ For authentication, we highly recommend that your integration uses account servi
     - **Example** &mdash; In your tool, you want to pull in the dbt DAG into your lineage diagram. For details on what you could pull and how to do this, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
     - **Integration points** &mdash; Discovery API
 - dbt environment/job metadata
-    - **Desired Action:** You wish to interpolate dbt Cloud job information into your tool, including the status of the jobs, the status of the tables executed in the run, what tests passed, etc.
+    - **Desired action** &mdash; You want to interpolate the dbt Cloud job information into your tool, including the status of the jobs, the status of the tables executed in the run, what tests passed, etc.
     - **Example** &mdash; In your Business Intelligence tool, stakeholders select from tables that a dbt model created. You show the last time the model passed its tests/last run to show that the tables are current and can be trusted. For details on what you could pull and how to do this, refer to [What's the latest state of each model](/docs/dbt-cloud-apis/discovery-use-cases-and-examples#whats-the-latest-state-of-each-model).
     - **Integration points** &mdash; Discovery API
 - dbt Model Documentation
