@@ -93,7 +93,7 @@ For authentication, we highly recommend that your integration uses account servi
     - Contact your Partner Manager with your account id (in your URL)
 - Why should I not use the Admin API to pull out the dbt artifacts for metadata?
     - We recommend not integrating with the Admin API to extract the dbt artifacts documentation. This is because the Discovery API provides more extensive information, a user-friendly structure and more reliable integration point.
-- How do I get access to the dbt Brand assets?
+- How do I get access to the dbt brand assets?
     - Check out this [page](https://www.getdbt.com/brand-guidelines/). Please make sure you’re not using our old logo(hint: there should only be one hole in the logo). Please also note that the name dbt and the dbt logo are trademarked by dbt Labs, and that use is governed by our brand guidelines - which are fairly specific for commercial uses. If you have any questions about proper use of our marks, please ask for your partner manager.
 - How do I engage with the partnerships team?
     - Email partnerships@dbtlabs.com.
