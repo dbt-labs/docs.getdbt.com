@@ -36,5 +36,5 @@ For more feature details, refer to the [dbt Cloud pricing page](https://www.getd
 - **Update December 2023: New Team plans with unlimited job concurrency**<br />
   We've introduced a change to our dbt Cloud Scheduler for newly created Team plan accounts:<br /><br />
     - Unlimited Job concurrency for new Team plans &mdash; New accounts on the Team plan now benefit from unlimited job concurrency.
-      - Existing Team plans &mdash; It's important to note that existing Team plan accounts will continue to operate with their original fixed number of run slots.
+      - Existing Team plans &mdash; Existing Team plan accounts will continue to operate with their original fixed number of run slots.
       - Project limitations &mdash; Both Team and Developer plans are limited to one project each. For larger-scale needs, our [Enterprise plan](https://www.getdbt.com/pricing/) provides unlimited job concurrency and project capacity. 
