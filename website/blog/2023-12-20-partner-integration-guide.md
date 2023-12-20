@@ -56,7 +56,7 @@ For authentication, we highly recommend that your integration uses account servi
     - **Integration points** &mdash; Webhooks and/or Admin API
 - dbt lineage
     - **Desired action** &mdash; You want to interpolate the dbt lineage metadata into your tool.
-    - **Example: In your tool, you wish to pull in the dbt DAG into your lineage diagram. [This is what you could pull and how to do this.](https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-use-cases-and-examples#whats-the-full-data-lineage)**
+    - **Example** &mdash; In your tool, you want to pull in the dbt DAG into your lineage diagram. For details on what you could pull and how to do this, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
     - **Integration Points:** Discovery API
 - dbt Environment/Job metadata
     - **Desired Action:** You wish to interpolate dbt Cloud job information into your tool, including the status of the jobs, the status of the tables executed in the run, what tests passed, etc.
