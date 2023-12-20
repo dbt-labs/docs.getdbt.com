@@ -42,10 +42,10 @@ alter user jsmith set rsa_public_key='MIIBIjANBgkqh...';
 ```
 
 2. Finally, set the **Private Key** and **Private Key Passphrase** fields in the **Credentials** page to finish configuring dbt Cloud to authenticate with Snowflake using a key pair.
-   
-   **Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud, and the keys must be of size 4096 or smaller.
+   **Note:** Since dbt 0.16.0, unencrypted private keys are allowed. Only add the passphrase if necessary.
+   Starting from dbt v1.5.0, you have the option to use a private_key string instead of a private_key_path. The private_key string should be in either Base64-encoded DER format, representing the key bytes, or a plain-text PEM format. Refer to Snowflake documentation for more info on how they generate the key.
 
-3. To successfully fill in the Private Key field, you **must** include commented lines when you add the passphrase. Leaving the **Private Key Passphrase** field empty will return an error.  If you're receiving a `Could not deserialize key data` or `JWT token` error, refer to [Troubleshooting](#troubleshooting) for more info. 
+4. To successfully fill in the Private Key field, you **must** include commented lines. If you're receiving a `Could not deserialize key data` or `JWT token` error, refer to [Troubleshooting](#troubleshooting) for more info. 
 
 **Example:**
 
