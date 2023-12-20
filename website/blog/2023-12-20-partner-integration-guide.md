@@ -45,7 +45,7 @@ If you require a partner dbt Cloud account to test on, we can upgrade an existin
 
 To use the dbt Cloud APIs, you'll need access to the customer’s access urls. Depending on their dbt Cloud setup, they'll have a different access URL. To find out more, refer to [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses) to understand all the possible configurations. My recommendation is to allow the customer to provide their own URL to simplify support. 
 
-If the customer is on an Azure Single Tenant instance, they do not currently have access to the Discovery API or the Semantic Layer APIs. 
+If the customer is on an Azure single tenant instance, they don't currently have access to the Discovery API or the Semantic Layer APIs. 
 
 For authentication, we highly recommend that your integration uses account service tokens. You can read more about how to create a service token and what permission sets to provide it [here](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens). Please note depending on their plan type, they will have access to different permission sets. We **do not** recommend that users supply their user bearer tokens for authentication. This can cause issues if the user leaves the organization and provides you access to all the dbt Cloud accounts associated to the user rather than just the account (and related projects) that they want to integrate with. 
 
