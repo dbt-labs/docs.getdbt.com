@@ -27,7 +27,7 @@ If you're new to dbt and dbt Cloud, we recommend you and your software developer
 
 If you require a partner dbt Cloud account to test on, we can upgrade an existing account or a trial account. **This account may only be used for development, training, and demonstration purposes.** Please speak to your partner manager if you're interested and provide the account id (provided in the URL). Our partner account has all of the enterprise level functionality and can be provided with a signed partnerships agreement.
 
-## Integration Points
+## Integration points
 
 - [Discovery API (formerly referred to as Metadata API)](https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-api)
     - **Overview**: This GraphQL API allows you to query the metadata that dbt Cloud generates every time you run a dbt Project. We have two schemas available (environment and job level). By default, we always recommend that you integrate with the environment level schema because it contains the latest state and historical run results of all the jobs run on the dbt Cloud project. The job level will only provide you the metadata of one job, giving you only a small snapshot of part of the project.
