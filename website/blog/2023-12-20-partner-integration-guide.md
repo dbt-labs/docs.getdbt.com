@@ -82,7 +82,7 @@ dbt Core only users will have no access to the above integration points. For dbt
 
 - What is a dbt Cloud project?
     - A dbt Cloud project is made up of two connections: one to the Git repository and one to the data warehouse/platform. Most customers will have only one dbt Cloud project in their account but there are enterprise clients who might have more depending on their use cases. The project also encapsulates two types of environments at minimal: a development environment and deployment environment.
-    - Oftentimes folks refer to the [dbt Project](https://docs.getdbt.com/docs/build/projects) as the code hosted in their git repository.
+    - Folks commonly refer to the [dbt project](https://docs.getdbt.com/docs/build/projects) as the code hosted in their Git repository.
 - What is a dbt Cloud environment?
     - For an overview, check out [About environments](https://docs.getdbt.com/docs/environments-in-dbt). At a minimum, a project will have one deployment type environment that they will be executing jobs on. The development environment powers the dbt Cloud IDE and Cloud CLI.
 - Can we write back to the dbt project?
