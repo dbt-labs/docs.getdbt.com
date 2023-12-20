@@ -14,4 +14,4 @@ To find your user ID in dbt Cloud, read the following steps:
 3. In the address bar, the number after `/users` is your user ID. 
 4. Copy that number or save it somewhere safe. <br />
 
-For example, if the URL is `https://cloud.getdbt.com/settings/accounts/12345/users/67891` &mdash; the user ID is `67891`<br /><br />
+For example, if the URL is `https://YOUR_ACCESS_URL/settings/accounts/12345/users/67891` &mdash; the user ID is `67891`<br /><br />
