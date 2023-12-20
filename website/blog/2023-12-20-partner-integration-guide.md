@@ -78,7 +78,7 @@ dbt Core only users will have no access to the above integration points. For dbt
 - **Enterprise** (multi-tenant/multi-cell) &mdash; This plan provides access to the APIs, webhooks, and Semantic Layer. You can have more than one dbt Cloud project based on how many dbt projects/domains they have using dbt. The majority of our enterprise customers are on multi-tenant dbt Cloud instances.
 - **Enterprise** (Single-tenant): This plan may have access to the APIs, Webhooks, and Semantic Layer. If you are working with a specific customer, let us know, and we can confirm if their instance has access.
 
-## Frequently Asked Questions
+## FAQs
 
 - What is a dbt Cloud project?
     - A dbt Cloud project is made up of two connections: one to the git repository and one to the data warehouse/platform. Most customers will have only one dbt Cloud Project in their account but there are enterprise clients who might have more depending on their use cases.The project also encapsulates two types of environments at minimal: a development environment and deployment environment.
