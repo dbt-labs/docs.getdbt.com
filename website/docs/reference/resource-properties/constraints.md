@@ -304,7 +304,7 @@ select
 
 <div warehouse="BigQuery">
 
-BigQuery allows defining `not null` constraints. However, it does _not_ support or enforce the definition of unenforced constraints, such as `primary key`.
+BigQuery allows defining and enforcing `not null` constraints, and defining (but _not_ enforcing) `primary key` and `foreign key` constraints (which may be used for query optimization). BigQuery does not support defining or enforcing other constraints.
 
 Documentation: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language
 
