@@ -73,7 +73,7 @@ dbt Core only users will have no access to the above integration points. For dbt
 
 [The dbt Cloud plan type](https://www.getdbt.com/pricing) will change what the user has access to. There are four different types of plans:
 
-- **Developer**: This is free and available to one user with a limited amount of successful models built. This plan cannot access the APIs, Webhooks, or Semantic Layer. Limited to 1 project.
+- **Developer** &mdash; This is free and available to one user with a limited amount of successful models built. This plan can't access the APIs, Webhooks, or Semantic Layer and is limited to just one project.
 - **Team:** This plan has access to the APIs, Webhooks, and Semantic Layer. You may have up to 8 users on the account and one dbt Cloud Project. This is limited to 15,000 successful models built.
 - **Enterprise** (Multi-tenant/Multi-cell): This plan has access to the APIs, Webhooks, and Semantic Layer. They may have more than one dbt Cloud Project based on how many dbt projects/domains they have using dbt. Majority of our enterprise customers are on multi-tenant dbt Cloud instances.
 - **Enterprise** (Single-tenant): This plan may have access to the APIs, Webhooks, and Semantic Layer. If you are working with a specific customer, let us know, and we can confirm if their instance has access.
