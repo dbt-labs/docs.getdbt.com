@@ -17,7 +17,7 @@ Over the course of my three years running the Partner Engineering team at dbt La
 
 Now this guide does not include how to integrate with dbt Core. If you’re interested in creating an dbt Adapter, **[please check out this documentation instead.](https://docs.getdbt.com/guides/dbt-ecosystem/adapter-development/1-what-are-adapters)** 
 
-Instead we are going to focus on integrating with dbt Cloud. Integrating with dbt Cloud is a key requirement to become a dbt Labs technology partner, opening the door to a variety of collaborative commercial opportunities. 
+Instead, we're going to focus on integrating with dbt Cloud. Integrating with dbt Cloud is a key requirement to become a dbt Labs technology partner, opening the door to a variety of collaborative commercial opportunities. 
 
 Here I will cover how to get started, potential use cases you want to solve for, and points of integrations to do so.
 
