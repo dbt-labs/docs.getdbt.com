@@ -9,7 +9,7 @@ The dbt Labs team continues to work on adding new features, fixing bugs, and inc
 
 Refer to the following updates and fixes for December 2023:
 
-## gBug fixes
+## Bug fixes
 
 The following are fixes for the dbt Semantic Layer and MetricFlow:
 
@@ -17,7 +17,7 @@ The following are fixes for the dbt Semantic Layer and MetricFlow:
 
 - Tableau integration &mdash; The dbt Semantic Layer integration with Tableau now supports queries that resolve to a "NOT IN" clause. This applies to using "exclude" in the filtering user interface. Previously it wasn’t supported.
 - `BIGINT` support &mdash; The dbt Semantic Layer can now support `BIGINT` values with precision greater than 18. Previously it would return an error.
-- Memory leak &mdash; We fixed a memory leak in the JDBC API that would previously lead to intermittent errors when querying it.
+- Memory leak &mdash; Fixed a memory leak in the JDBC API that would previously lead to intermittent errors when querying it.
 - Data conversion support &mdash; Added support for converting various Redshift and Postgres-specific data types. Previously, the driver would throw an error when encountering columns with those types.
 
 **MetricFlow**
@@ -25,7 +25,7 @@ The following are fixes for the dbt Semantic Layer and MetricFlow:
 - Time offset for nested metrics &mdash; Implemented time offset for nested derived and ratio metrics. ([MetricFlow Issue #882](https://github.com/dbt-labs/metricflow/issues/882))
 - SQL column name rendering: &mdash; Fixed incorrect SQL column name rendering in `WhereConstraintNode`. ([MetricFlow Issue #908](https://github.com/dbt-labs/metricflow/issues/908))
 - Cumulative metrics query error &mdash; Fixed the `Unable To Satisfy Query` error with cumulative metrics in Saved Queries. ([MetricFlow Issue #917](https://github.com/dbt-labs/metricflow/issues/917))
-- Dimension-only query &mdash; Fixes a bug in dimension-only queries where the filter column is removed before the filter has been applied. ([MetricFlow Issue #923](https://github.com/dbt-labs/metricflow/issues/923))
+- Dimension-only query &mdash; Fixed a bug in dimension-only queries where the filter column is removed before the filter has been applied. ([MetricFlow Issue #923](https://github.com/dbt-labs/metricflow/issues/923))
 - Where constraint column &mdash; Ensured retention of the where constraint column until used for nested derived offset metric queries. ([MetricFlow Issue #930](https://github.com/dbt-labs/metricflow/issues/930))
 
 ## Improvements
