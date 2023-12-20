@@ -49,7 +49,7 @@ If the customer is on an Azure single tenant instance, they don't currently have
 
 For authentication, we highly recommend that your integration uses account service tokens. You can read more about [how to create a service token and what permission sets to provide it](/docs/dbt-cloud-apis/service-tokens). Please note that depending on their plan type, they'll have access to different permission sets. We _do not_ recommend that users supply their user bearer tokens for authentication. This can cause issues if the user leaves the organization and provides you access to all the dbt Cloud accounts associated to the user rather than just the account (and related projects) that they want to integrate with. 
 
-## Potential Use Cases
+## Potential use cases
 
 - Event-based orchestration
     - **Desired action** &mdash; You want to receive information that a scheduled dbt Cloud job has been completed or has kicked off a dbt Cloud job. You can align your product schedule to the dbt Cloud run schedule.
