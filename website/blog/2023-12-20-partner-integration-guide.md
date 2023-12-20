@@ -34,7 +34,7 @@ If you require a partner dbt Cloud account to test on, we can upgrade an existin
 - [Administrative API (also referred to as the Admin API)](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api)
     - **Overview:** This REST API allows you to orchestrate dbt Cloud jobs runs and help you administer a dbt Cloud account. For metadata retrieval, we recommend integrating with the Discovery API instead.
 - [Webhooks](/docs/deploy/webhooks)
-    - **Overview:** Outbound webhooks can send notifications about your dbt Cloud jobs to other systems. These webhooks allow you to get the latest information on your dbt jobs in real time.
+    - **Overview** &mdash; Outbound webhooks can send notifications about your dbt Cloud jobs to other systems. These webhooks allow you to get the latest information about your dbt jobs in real time.
     - [Link to documentation](https://docs.getdbt.com/docs/deploy/webhooks)
 - Semantic Layers/Metrics
     - **Overview: Our Semantic Layer is made up of two parts: metrics definitions and the ability to interactively query the dbt metrics. For more details, here is a [basic overview](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl) and [our best practices](https://docs.getdbt.com/guides/dbt-ecosystem/sl-partner-integration-guide).**
