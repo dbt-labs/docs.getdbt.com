@@ -52,7 +52,7 @@ For authentication, we highly recommend that your integration uses account servi
 ## Potential Use Cases
 
 - Event-based orchestration
-    - **Desired Action:** You wish to receive information that a scheduled dbt Cloud Job has been completed or kick off a dbt Cloud job. You can align your product schedule to the dbt Cloud run schedule.
+    - **Desired action** &mdash; You want to receive information that a scheduled dbt Cloud job has been completed or has kicked off a dbt Cloud job. You can align your product schedule to the dbt Cloud run schedule.
     - **Examples:** Kicking off a dbt Job after the ETL job of extracting and loading the data is completed. Or receiving a webhook after the job has been completed to kick off your reverse ETL job.
     - **Integration Points:** Webhooks and/or Admin API
 - dbt Lineage
