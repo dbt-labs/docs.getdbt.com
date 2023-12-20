@@ -37,7 +37,7 @@ If you require a partner dbt Cloud account to test on, we can upgrade an existin
     - **Overview** &mdash; Outbound webhooks can send notifications about your dbt Cloud jobs to other systems. These webhooks allow you to get the latest information about your dbt jobs in real time.
     - [Link to documentation](https://docs.getdbt.com/docs/deploy/webhooks)
 - [Semantic Layers/Metrics](/docs/dbt-cloud-apis/sl-api-overview)
-    - **Overview: Our Semantic Layer is made up of two parts: metrics definitions and the ability to interactively query the dbt metrics. For more details, here is a [basic overview](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl) and [our best practices](https://docs.getdbt.com/guides/dbt-ecosystem/sl-partner-integration-guide).**
+    - **Overview** &mdash;  Our Semantic Layer is made up of two parts: metrics definitions and the ability to interactively query the dbt metrics. For more details, here is a [basic overview](/docs/use-dbt-semantic-layer/dbt-sl) and [our best practices](/guides/dbt-ecosystem/sl-partner-integration-guide).
     - Metrics definitions can be pulled from the Discovery API (linked above) or the Semantic Layer Driver/GraphQL API. The key difference is that the Discovery API isn't able to pull the semantic graph, which provides the list of available dimensions that one can query per metric. That is only available with the SL Driver/APIs. The trade-off is that the SL Driver/APIs doesn't have access to the lineage of the entire dbt project (that is, how the dbt metrics dependencies on dbt models).
     - [We have three available integration points for the Semantic Layer API.](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview)
 
