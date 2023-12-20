@@ -91,7 +91,7 @@ For authentication, we highly recommend that your integration uses account servi
     - Column-level lineage is currently in beta release with more information to come.
 - How do I get a Partner Account?
     - Contact your Partner Manager with your account ID (in your URL).
-- Why should I not use the Admin API to pull out the dbt artifacts for metadata?
+- Why shouldn't I use the Admin API to pull out the dbt artifacts for metadata?
     - We recommend not integrating with the Admin API to extract the dbt artifacts documentation. This is because the Discovery API provides more extensive information, a user-friendly structure, and a more reliable integration point.
 - How do I get access to the dbt brand assets?
     - Check out our [Brand guidelines](https://www.getdbt.com/brand-guidelines/) page. Please make sure you’re not using our old logo (hint: there should only be one hole in the logo). Please also note that the name dbt and the dbt logo are trademarked by dbt Labs, and that use is governed by our brand guidelines, which are fairly specific for commercial uses. If you have any questions about proper use of our marks, please ask your partner manager.
