@@ -29,7 +29,7 @@ If you require a partner dbt Cloud account to test on, we can upgrade an existin
 
 ## Integration points
 
-- [Discovery API (formerly referred to as Metadata API)](https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-api)
+- [Discovery API (formerly referred to as Metadata API)](/docs/dbt-cloud-apis/discovery-api)
     - **Overview**: This GraphQL API allows you to query the metadata that dbt Cloud generates every time you run a dbt Project. We have two schemas available (environment and job level). By default, we always recommend that you integrate with the environment level schema because it contains the latest state and historical run results of all the jobs run on the dbt Cloud project. The job level will only provide you the metadata of one job, giving you only a small snapshot of part of the project.
 - [Administrative API (also referred to as the Admin API)](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api)
     - **Overview:** This REST API allows you to orchestrate dbt Cloud jobs runs and help you administer a dbt Cloud account. For metadata retrieval, we recommend integrating with the Discovery API instead.
