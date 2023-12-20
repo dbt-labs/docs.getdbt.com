@@ -56,7 +56,7 @@ For authentication, we highly recommend that your integration uses account servi
     - **Examples:** Kicking off a dbt Job after the ETL job of extracting and loading the data is completed. Or receiving a webhook after the job has been completed to kick off your reverse ETL job.
     - **Integration points** &mdash; Webhooks and/or Admin API
 - dbt lineage
-    - **Desired Action:** You wish to interpolate the dbt lineage metadata into your tool.
+    - **Desired action** &mdash; You want to interpolate the dbt lineage metadata into your tool.
     - **Example: In your tool, you wish to pull in the dbt DAG into your lineage diagram. [This is what you could pull and how to do this.](https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-use-cases-and-examples#whats-the-full-data-lineage)**
     - **Integration Points:** Discovery API
 - dbt Environment/Job metadata
