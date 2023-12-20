@@ -13,7 +13,7 @@ is_featured: false
 ---
 ## Overview
 
-Over the course of my 3 years running the Partner Engineering team at dbt Labs, the most common question I have been asked is “How do we integrate with dbt?”. Because those conversations often start out at the same place, I decided to create this guide so I’m no longer the blocker to fundamental information. This also allows us to skip the intro and get to the fun conversations like what a joint solution for our customers would look like so much faster. 
+Over the course of my three years running the Partner Engineering team at dbt Labs, the most common question I've been asked is, How do we integrate with dbt? Because those conversations often start out at the same place, I decided to create this guide so I’m no longer the blocker to fundamental information. This also allows us to skip the intro and get to the fun conversations so much faster, like what a joint solution for our customers would look like. 
 
 Now this guide does not include how to integrate with dbt Core. If you’re interested in creating an dbt Adapter, **[please check out this documentation instead.](https://docs.getdbt.com/guides/dbt-ecosystem/adapter-development/1-what-are-adapters)** 
 
