@@ -44,6 +44,7 @@ dbt Cloud caches your project's Git repo after each successful run and retains i
 
 Below lists the situations when dbt Cloud uses the cached copy:
 
+- Outages from third-party services (for example, your Git provider)
 - Git authentication fails.
 - There are syntax errors in the `packages.yml` file. To catch these errors sooner, set up and use [continuous integration (CI)](/docs/deploy/continuous-integration).  
 - A package is incompatible with the dbt version being used. To catch this incompatibility sooner, set up and use [continuous integration (CI)](/docs/deploy/continuous-integration).  
