@@ -86,7 +86,7 @@ dbt Core only users will have no access to the above integration points. For dbt
 - What is a dbt Cloud environment?
     - [For an overview, check out this documentation.](https://docs.getdbt.com/docs/environments-in-dbt) At minimal an project will have one deployment type environment that they will be executing jobs on. The development environment powers the dbt Cloud IDE and Cloud CLI.
 - Can we write back to the dbt project?
-    - At this moment, we do not have a Write API. A dbt project is hosted in a git repository, so if you have a git provider integration, you can manually open up a Pull Request on the project to maintain the version control process.
+    - At this moment, we don't have a Write API. A dbt project is hosted in a Git repository, so if you have a Git provider integration, you can manually open a pull request (PR) on the project to maintain the version control process.
 - Can you provide column-level information in the lineage?
     - Column-level lineage is currently in beta release with more information to come.
 - How do I get a Partner Account?
