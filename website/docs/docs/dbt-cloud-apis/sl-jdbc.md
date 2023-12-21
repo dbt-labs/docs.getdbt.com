@@ -403,24 +403,24 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 
 ## FAQs
 
-<FAQ path="Troubleshooting/sl-alpn-error" />
+<FAQ path="Troubleshooting/sl-alpn-error" /><br />
 
-<detailsToggle alt_header="Why do some dimensions use different syntax, like `metric_time` versus `[Dimension('metric_time')`?">
+<detailsToggle alt_header="Why do some dimensions use different syntax, like `metric_time` versus `Dimension('metric_time')`?">
+When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. 
 
-When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. However, when you perform operations on the dimension, such as adding granularity, the object syntax `[Dimension('metric_time')` is required. 
-
+However, when you perform operations on the dimension, such as adding granularity, the object syntax `[Dimension('metric_time')` is required.
 </detailsToggle>
 
-<detailsToggle alt_header="What does the double underscore `"__"` syntax in dimensions mean?">
+<detailsToggle alt_header="What does the double underscore `'__'` syntax in dimensions mean?">
 
 The double underscore `"__"` syntax indicates a mapping from an entity to a dimension, as well as where the dimension is located. For example, `user__country` means someone is looking at the `country` dimension from the `user` table.
-
 </detailsToggle>
 
-
 <detailsToggle alt_header="What is the default output when adding granularity?">
-	
-The default output follows the format `{time_dimension_name}__{granularity_level}`. So for example, if the time dimension name is `ds` and the granularity level is yearly, the output is `ds__year`.
+
+The default output follows the format `{{time_dimension_name}__{granularity_level}}`. 
+
+So for example, if the `time_dimension_name` is `ds` and the granularity level is yearly, the output is `ds__year`.
 
 </detailsToggle>
 
