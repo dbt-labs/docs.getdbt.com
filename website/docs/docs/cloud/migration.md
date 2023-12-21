@@ -16,7 +16,7 @@ This document outlines the steps that you must take to prevent service disruptio
 
 ## Pre-migration checklist
 
-Prior to your migration date, your account admin will need to make some changes to your dbt Cloud account.
+Prior to your migration date, your dbt Cloud account admin will need to make some changes to your account.
 
 If your account has been scheduled for migration, upon login, you will see a banner indicating your migration date. If you do not see a banner, you do not need to take any action.
 
