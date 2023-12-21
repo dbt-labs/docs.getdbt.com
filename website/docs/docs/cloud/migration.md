@@ -38,7 +38,7 @@ If your account has been scheduled for migration, upon login, you will see a ban
 
 ## Post-migration
 
-After migration, if you completed all of the checklist items above, your dbt Cloud resources and jobs will continue to work as they did before. 
+After migration, if you completed all the [Pre-migration checklist](#pre-migration-checklist) items, your dbt Cloud resources and jobs will continue to work as they did before. 
 
 You have the option to log into dbt Cloud at a different URL:
  * If you were previously logging in at `cloud.getdbt.com`, you should instead plan to login at `us1.dbt.com`. The original URL will still work, but you’ll have to click through to be redirected upon login.
