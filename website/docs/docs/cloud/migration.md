@@ -1,0 +1,41 @@
+--- 
+title: "Multi-cell migration checklist"
+id: migration 
+description: "Prepare for account migration to AWS cell based architecture." 
+pagination_next: null
+pagination_prev: null
+---
+
+dbt Labs is in the process of migrating our U.S. based multi-tenant accounts to [AWS cell-based architecture](https://docs.aws.amazon.com/wellarchitected/latest/reducing-scope-of-impact-with-cell-based-architecture/what-is-a-cell-based-architecture.html), a critical component of the [AWS well-architected framework](https://aws.amazon.com/architecture/well-architected/?wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc&wa-guidance-whitepapers.sort-by=item.additionalFields.sortDate&wa-guidance-whitepapers.sort-order=desc). The benefits of the cell-based architecture will improve the performance, reliability, and security of your dbt Cloud environment, but there is some preparation required to ensure a successful migration.
+
+This document outlines the steps that you must take to prevent service disruptions before your environment is migrated over to the cell-based architecture. This will impact areas such as login, IP restrictions, and API access. 
+
+### What’s changing? Pre-migration checklist.
+
+Prior to your migration date, your account admin will need to make some changes to your dbt Cloud account.
+
+If your account has been scheduled for migration, upon login, you will see a banner indicating your migration date. If you do not see a banner, you do not need to take any action.
+
+1. **IP Addresses** &mdash; dbt Cloud has new IPs that will be used to access your warehouse after the migration. Make sure to allow inbound traffic from these IPs in your firewall, and include it in any database grants. All six of the IPs below should be added to allowlists.
+    * Old IPs: `52.45.144.63`, `54.81.134.249`, `52.22.161.231`
+    * New IPs: `52.3.77.232`, `3.214.191.130`, `34.233.79.135`
+2. **APIs and integrations** &mdash; Each dbt Cloud account will be allocated a static Access URL like: `aa000.us1.dbt.com`. You should begin migrating your API access and partner integrations to use the new static subdomain as soon as possible. You can find your Access URL on:
+    * Any page where you generate or manage API tokens.
+    * The **Account Settings** > **Account page**.
+        
+    :::important Multiple account access
+    Each account for which you have access will have a different, dedicated [Access URL](https://next.docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account)!
+    :::
+
+3. **IDE sessions** &mdash; Any uncommitted changes in the IDE may be lost during the migration process. We _strongly_ encourage you to commit all changes in the IDE before your scheduled migration time.
+4. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can re-send the invitations once the migration is complete.
+5. **Git Integrations** &mdash; Integrations with Github, Gitlab, and Azure DevOps will need to be manually updated. We are not migrating any accounts using these integrations at this time. If you are using one of these integrations and your account is scheduled for migration, please contact support and we will delay your migration.
+6. **SSO Integrations** &mdash; Integrations with SSO IdPs will need to be manually updated. We are not migrating any accounts using SSO at this time; if you are using one of these integrations and your account is scheduled for migration, please contact support, and we will delay your migration.
+
+### Post-migration
+
+After migration, if you completed all of the checklist items above, your dbt Cloud resources and jobs will continue to work as they did before. 
+
+You have the option to log into dbt Cloud at a different URL:
+ * If you were previously logging in at `cloud.getdbt.com`, you should instead plan to login at `us1.dbt.com`. The original URL will still work, but you’ll have to click through to be redirected upon login.
+ * You may also log in directly with your account’s unique [Access URL](https://next.docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account).
