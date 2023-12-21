@@ -10,7 +10,7 @@ dbt Labs is in the process of migrating our U.S. based multi-tenant accounts to 
 
 This document outlines the steps that you must take to prevent service disruptions before your environment is migrated over to the cell-based architecture. This will impact areas such as login, IP restrictions, and API access. 
 
-### What’s changing? Pre-migration checklist.
+## Premigration checklist
 
 Prior to your migration date, your account admin will need to make some changes to your dbt Cloud account.
 
