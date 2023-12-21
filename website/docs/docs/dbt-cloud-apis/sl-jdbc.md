@@ -263,7 +263,7 @@ Where Filters have a few objects that you can use:
 
 For `TimeDimension()`, the grain is only required in the `WHERE` filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
 
-For example, consider this Semantic Model and Metric Config which contains two metrics that are aggregated across different time grains. This example shows a single Semantic Model, but the same goes for metrics across more than one Semantic Model.
+For example, consider this Semantic model and Metric config, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
 
 ```yaml
 ---
