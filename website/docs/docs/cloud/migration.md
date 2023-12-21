@@ -14,7 +14,7 @@ Migrations are being scheduled on a per-account basis. **If you have not receive
 
 This document outlines the steps that you must take to prevent service disruptions before your environment is migrated over to the cell-based architecture. This will impact areas such as login, IP restrictions, and API access. 
 
-## Premigration checklist
+## Pre-migration checklist
 
 Prior to your migration date, your account admin will need to make some changes to your dbt Cloud account.
 
