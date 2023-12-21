@@ -35,6 +35,7 @@ The following are updates for the dbt Semantic Layer and MetricFlow:
 
 ## New features
 
-- Simplified group-by-item requests &mdash; Improved support for ambiguous group-by-item resolution. Previously, you need to specify them in detail, like `guest__listing__created_at__month`. This indicates a monthly `created_at` time dimension, linked by `guest` and `listing` entities.
+- Simplified group-by-item requests. We updated the way the MetricFlow query resolver finds queryable dimensions for metrics. The main improvements ares:
+  - If the grain of a time dimension in a query is not specified, then the grain of the requested time dimension is resolved to be the finest grain that is available for the queried metrics. For example, say you have two metrics; revenue which has a weekly grain and orders which has a daily grain. If you query these metrics like this: `dbt sl query --metrics revenue,orders --group-by metric_time` metricflow will automatically query these metrics at a weekly grain.  
   
-  Now you can use a shorter form, like ` listing__created_at__month`. If there's only one way to interpret this, dbt will resolve it automatically. If multiple interpretations are possible, dbt will ask for more details from the user.
+- In a metric filter, if an ambiguous time dimension does not specify the grain, and all semantic models that are used to compute the metric define the time dimension with the same grain, MetricFlow should assume the specific time dimension is that grain. For example, say I have two metrics; revenue and users which are both daily. I can query these metrics without sepcifying the time dimension grain in the filte i.e `mf query --metrics users,revenue --group-by metric_time --where "{{ TimeDimension('metric_time') }} = '2017-07-30' "`
