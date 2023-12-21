@@ -10,7 +10,7 @@ dbt Labs is in the process of migrating dbt Cloud to a new **cell-based architec
 
 There is some preparation required to ensure a successful migration.
 
-Migrations are being scheduled on a per-account basis. _If you have not received any communication (either via a banner or email notification) about a migration date, you do not need to take any action at this time._ dbt Labs will share migration date information with you, with appropriate advance notice, before we complete any migration steps in the dbt Cloud backend.
+Migrations are being scheduled on a per-account basis. _If you haven't received any communication (either with a banner or by email) about a migration date, you don't need to take any action at this time._ dbt Labs will share migration date information with you, with appropriate advance notice, before we complete any migration steps in the dbt Cloud backend.
 
 This document outlines the steps that you must take to prevent service disruptions before your environment is migrated over to the cell-based architecture. This will impact areas such as login, IP restrictions, and API access. 
 
