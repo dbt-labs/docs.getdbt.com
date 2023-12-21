@@ -18,9 +18,9 @@ This document outlines the steps that you must take to prevent service disruptio
 
 Prior to your migration date, your dbt Cloud account admin will need to make some changes to your account.
 
-If your account has been scheduled for migration, upon login, you will see a banner indicating your migration date. If you do not see a banner, you do not need to take any action.
+If your account is scheduled for migration, you will see a banner indicating your migration date when you log in. If you don't see a banner, you don't need to take any action.
 
-1. **IP Addresses** &mdash; dbt Cloud has new IPs that will be used to access your warehouse after the migration. Make sure to allow inbound traffic from these IPs in your firewall, and include it in any database grants. All six of the IPs below should be added to allowlists.
+1. **IP addresses** &mdash; dbt Cloud will be using new IPs to access your warehouse after the migration. Make sure to allow inbound traffic from these IPs in your firewall and include it in any database grants. All six of the IPs below should be added to allowlists.
     * Old IPs: `52.45.144.63`, `54.81.134.249`, `52.22.161.231`
     * New IPs: `52.3.77.232`, `3.214.191.130`, `34.233.79.135`
 2. **APIs and integrations** &mdash; Each dbt Cloud account will be allocated a static access URL like: `aa000.us1.dbt.com`. You should begin migrating your API access and partner integrations to use the new static subdomain as soon as possible. You can find your access URL on:
