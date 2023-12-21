@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-dbt Labs is in the process of migrating dbt Cloud to a new **cell-based architecture**. This architecture will be the foundation of dbt Cloud for years to come, and will bring improved **scalability**, **reliability**, and **security** to all customers and users of dbt Cloud.
+dbt Labs is in the process of migrating dbt Cloud to a new _cell-based architecture_. This architecture will be the foundation of dbt Cloud for years to come, and will bring improved scalability, reliability, and security to all customers and users of dbt Cloud.
 
 There is some preparation required to ensure a successful migration.
 
