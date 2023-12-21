@@ -2,6 +2,7 @@
 title: "More advanced metrics"
 description: Getting started with the dbt and MetricFlow
 hoverSnippet: Learn how to get started with the dbt and MetricFlow
+pagination_next: "docs/best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion"
 ---
 
 ## More advanced metric types

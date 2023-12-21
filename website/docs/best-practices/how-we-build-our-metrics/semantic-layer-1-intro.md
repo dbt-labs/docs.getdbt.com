@@ -2,6 +2,8 @@
 title: "Intro to MetricFlow"
 description: Getting started with the dbt and MetricFlow
 hoverSnippet: Learn how to get started with the dbt and MetricFlow
+pagination_next: "docs/best-practices/how-we-build-our-metrics/semantic-layer-2-setup"
+pagination_prev: null
 ---
 
 Flying cars, hoverboards, and true self-service analytics: this is the future we were promised. The first two might still be a few years out, but real self-service analytics is here today. With dbt Cloud's Semantic Layer, you can resolve the tension between accuracy and flexibility that has hampered analytics tools for years, empowering everybody in your organization to explore a shared reality of metrics. Best of all for analytics engineers, building with these new tools will significantly [DRY](https://docs.getdbt.com/terms/dry) up and simplify your codebase. As you'll see, the deep interaction between your dbt models and the Semantic Layer make your dbt project the ideal place to craft your metrics.
