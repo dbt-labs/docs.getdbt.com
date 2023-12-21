@@ -177,8 +177,6 @@ To query metric values, here are the following parameters that are available:
 |`order`  | Order the data returned by a particular field     | `order_by=['order_gross_profit']`, use `-` for descending, or full object notation if the object is operated on: `order_by=[Metric('order_gross_profit').descending(True)`]   | Optional   |
 | `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`   | Optional |
 
-
-
 ## Note on time dimensions and `metric_time`
 
 You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
@@ -266,20 +264,17 @@ For `TimeDimension()`, the grain is only required in the `WHERE` filter if the a
 For example, consider this Semantic model and Metric config, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
 
 ```yaml
----
 semantic_model:
   name: my_model_source
-  
-defaults:
-    agg_time_dimension: created_month
 
+defaults:
+  agg_time_dimension: created_month
   measures:
     - name: measure_0
       agg: sum
     - name: measure_1
       agg: sum
       agg_time_dimension: order_year
-
   dimensions:
     - name: created_month
       type: time
@@ -288,36 +283,31 @@ defaults:
     - name: order_year
       type: time
       type_params:
-      	time_granularity: year
-...
+        time_granularity: year
 
 metrics:
-  name: metric_0
-  description: A metric with a month grain.
-  type: simple
-  type_params:
-    measure: measure_0
-
-  name: metric_1
-  description: A metric with a year grain
-  type: simple
-  type_params:
-    measure: measure_1
+  - name: metric_0
+    description: A metric with a month grain.
+    type: simple
+    type_params:
+      measure: measure_0
+  - name: metric_1
+    description: A metric with a year grain.
+    type: simple
+    type_params:
+      measure: measure_1
 
 ```
 
-Assuming the user is querying metric_0 and metric_1 together in a single request, a valid WHERE filter would be:
+Assuming the user is querying `metric_0` and `metric_1` together in a single request, a valid `WHERE` filter would be:
 
   * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
 
 Invalid Filters would be:
 
-  * `"{{ TimeDimension('metric_time') }} > '2020-01-01'"` - metrics in the query
-    are defined based on measures with different grains.
+  * `"{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query are defined based on measures with different grains.
 
-  * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` - 
-    metric_1 is not available at a month grain.
-
+  * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` &mdash; `metric_1` is not available at a month grain.
 
 
 - Use the following example to query using a `where` filter with the string format:
@@ -350,7 +340,8 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time')],
   limit=10)
   }}
-``` 
+```
+
 ### Query with Order By Examples 
 
 Order By can take a basic string that's a Dimension, Metric, or Entity and this will default to ascending order
@@ -373,7 +364,8 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   limit=10,
   order_by=[-'order_gross_profit']
   }}
-``` 
+```
+
 If you are ordering by an object that's been operated on (e.g., you changed the the granularity of the time dimension), or you are using the full object notation, descending order must look like:
 
 ```bash
@@ -413,14 +405,24 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 
 <FAQ path="Troubleshooting/sl-alpn-error" />
 
-- **Why do some dimensions use different syntax, like `metric_time` versus `[Dimension('metric_time')`?**<br />
-	When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. However, when you perform operations on the dimension, such as adding granularity, the object syntax `[Dimension('metric_time')` is required. 
+<detailsToggle alt_header="Why do some dimensions use different syntax, like `metric_time` versus `[Dimension('metric_time')`?">
 
-- **What does the double underscore `"__"` syntax in dimensions mean?**<br />
-	The double underscore `"__"` syntax indicates a mapping from an entity to a dimension, as well as where the dimension is located. For example, `user__country` means someone is looking at the `country` dimension from the `user` table.
+When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. However, when you perform operations on the dimension, such as adding granularity, the object syntax `[Dimension('metric_time')` is required. 
 
-- **What is the default output when adding granularity?**<br />
-	The default output follows the format `{time_dimension_name}__{granularity_level}`. So for example, if the time dimension name is `ds` and the granularity level is yearly, the output is `ds__year`.
+</detailsToggle>
+
+<detailsToggle alt_header="What does the double underscore `"__"` syntax in dimensions mean?">
+
+The double underscore `"__"` syntax indicates a mapping from an entity to a dimension, as well as where the dimension is located. For example, `user__country` means someone is looking at the `country` dimension from the `user` table.
+
+</detailsToggle>
+
+
+<detailsToggle alt_header="What is the default output when adding granularity?">
+	
+The default output follows the format `{time_dimension_name}__{granularity_level}`. So for example, if the time dimension name is `ds` and the granularity level is yearly, the output is `ds__year`.
+
+</detailsToggle>
 
 ## Related docs
 
