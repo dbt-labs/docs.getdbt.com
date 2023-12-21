@@ -1,7 +1,7 @@
 --- 
 title: "Multi-cell migration checklist"
 id: migration 
-description: "Prepare for account migration to AWS cell based architecture." 
+description: "Prepare for account migration to AWS cell-based architecture." 
 pagination_next: null
 pagination_prev: null
 ---
