@@ -1,7 +1,7 @@
 ---
 title: "dbt Semantic Layer updates for December 2023"
 description: "December 2023: Enhanced Tableau integration, BIGINT support, LookML to MetricFlow conversion, and deprecation of legacy features."
-sidebar_label: "Update and fixes: dbt Semantic Layer and MetricFlow"
+sidebar_label: "Update and fixes: dbt Semantic Layer"
 sidebar_position: 08
 date: 2023-12-22
 ---
