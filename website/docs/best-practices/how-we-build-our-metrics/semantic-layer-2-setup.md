@@ -50,7 +50,7 @@ python -m pip install "dbt-metricflow[adapter name]"
 git checkout start-here
 ```
 
-For more information, refer to the [MetricFlow commands](/docs/build/metricflow-commands) or a [quickstart guides](/guides) to get more familiar with setting up a dbt project.
+For more information, refer to the [MetricFlow commands](/docs/build/metricflow-commands) or the [quickstart guides](/guides) to get more familiar with setting up a dbt project.
 
 ## Basic commands
 
