@@ -258,7 +258,7 @@ Where Filters have a few objects that you can use:
 
 - `TimeDimension()` &mdash;  Used as a more explicit definition for time dimensions, optionally takes in a granularity `TimeDimension('metric_time', 'month')`
 
-- `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
+- `Entity()` &mdash;  Used for entities like primary and foreign keys - `Entity('order_id')`
 
 
 For `TimeDimension()`, the grain is only required in the WHERE filter if the aggregation time dimensions for the measures & metrics associated with the where filter have different grains. 
