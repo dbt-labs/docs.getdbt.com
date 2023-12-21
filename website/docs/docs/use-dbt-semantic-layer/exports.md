@@ -99,7 +99,7 @@ saved_queries:
         enabled: true|false
 ```
 
-### Cache
+### Parameters
 
 | GraphQL	| dbt Cloud CLI |	ADBC| Description	|
 | --- | --- | --- | --- |
