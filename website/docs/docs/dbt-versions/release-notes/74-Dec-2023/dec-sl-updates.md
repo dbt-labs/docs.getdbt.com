@@ -11,7 +11,7 @@ Refer to the following updates and fixes for December 2023:
 
 ## Bug fixes
 
-The following are updates for the dbt Semantic Layer and MetricFlow:
+The following are updates for the dbt Semantic Layer:
 
 **dbt Semantic Layer**
 
