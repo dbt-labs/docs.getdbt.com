@@ -254,7 +254,7 @@ Where filters in API allow for a filter list or string. We recommend using the f
 
 Where Filters have a few objects that you can use:
 
-- `Dimension()` - Used for any categorical or time dimensions. `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
+- `Dimension()` &mdash; Used for any categorical or time dimensions. `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
 - `TimeDimension()` - Used as a more explicit definition for time dimensions, optionally takes in a granularity `TimeDimension('metric_time', 'month')`
 
