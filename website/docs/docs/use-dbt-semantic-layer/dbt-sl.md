@@ -44,6 +44,12 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
+    title="Materialize queries with Exports"
+    body="Use Exports to materialize saved queries within the data platform on a schedule."
+    link="/docs/use-dbt-semantic-layer/exports"
+    icon="dbt-bit"/>
+
+<Card
     title="Architecture"
     body="Learn about the powerful components that make up the dbt Semantic Layer."
     link="/docs/use-dbt-semantic-layer/sl-architecture"

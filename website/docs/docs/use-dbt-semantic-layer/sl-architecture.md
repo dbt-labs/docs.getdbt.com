@@ -39,7 +39,7 @@ The following table compares the features available in dbt Cloud and source avai
 | Query dimension, entity, and metric metadata  through the CLI | ✅ | ✅ |
 | Query metrics and dimensions through semantic APIs (ADBC, GQL)  | ❌ | ✅ |
 | Connect to downstream integrations (Tableau, Hex, Mode, Google Sheets, and so on.) | ❌ | ✅ |
-| Create and run Exports to save metrics queries as tables in your data platform. | ❌ | Coming soon |
+| Create and run Exports to save metrics queries as tables in your data platform. | ❌ | ✅ |
 
 ## FAQs
 
