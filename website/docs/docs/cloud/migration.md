@@ -36,7 +36,7 @@ If your account has been scheduled for migration, upon login, you will see a ban
 5. **Git integrations** &mdash; Integrations with GitHub, GitLab, and Azure DevOps will need to be manually updated. dbt Labs will not be migrating any accounts using these integrations at this time. If you're using one of these integrations and your account is scheduled for migration, please contact support and we will delay your migration.
 6. **SSO integrations** &mdash; Integrations with SSO identity providers (IdPs) will need to be manually updated. dbt Labs will not be migrating any accounts using SSO at this time. If you're using one of these integrations and your account is scheduled for migration, please contact support and we will delay your migration.
 
-### Post-migration
+## Post-migration
 
 After migration, if you completed all of the checklist items above, your dbt Cloud resources and jobs will continue to work as they did before. 
 
