@@ -19,7 +19,7 @@ Next, before you start writing code, you need to install MetricFlow:
 
 <TabItem value="cloud" label="dbt Cloud">
 
-- [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; MetricFlow commands are embedded in the dbt Cloud CLI. This means you can immediately run them once you install the dbt Cloud CLI. Using dbt Cloud means you won't need to manage versioning — your dbt Cloud account will automatically manage the versioning.
+- [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; MetricFlow commands are embedded in the dbt Cloud CLI. You can immediately run them once you install the dbt Cloud CLI. Using dbt Cloud means you won't need to manage versioning — your dbt Cloud account will automatically manage the versioning.
 
 - [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) &mdash; You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
 
