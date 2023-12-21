@@ -5,7 +5,7 @@ sidebar_label: "Update and fixes: dbt Semantic Layer"
 sidebar_position: 08
 date: 2023-12-22
 ---
-The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the dbt Semantic Layer and MetricFlow.
+The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the dbt Semantic Layer.
 
 Refer to the following updates and fixes for December 2023:
 
