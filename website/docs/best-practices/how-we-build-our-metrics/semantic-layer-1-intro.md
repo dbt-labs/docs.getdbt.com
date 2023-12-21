@@ -2,7 +2,7 @@
 title: "Intro to MetricFlow"
 description: Getting started with the dbt and MetricFlow
 hoverSnippet: Learn how to get started with the dbt and MetricFlow
-pagination_next: "docs/best-practices/how-we-build-our-metrics/semantic-layer-2-setup"
+pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-2-setup"
 pagination_prev: null
 ---
 

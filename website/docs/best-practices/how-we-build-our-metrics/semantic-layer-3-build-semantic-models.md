@@ -2,7 +2,7 @@
 title: "Building semantic models"
 description: Getting started with the dbt and MetricFlow
 hoverSnippet: Learn how to get started with the dbt and MetricFlow
-pagination_next: "docs/best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics"
+pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics"
 ---
 
 ## How to build a semantic model

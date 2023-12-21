@@ -2,7 +2,7 @@
 title: "Refactor an existing mart"
 description: Getting started with the dbt and MetricFlow
 hoverSnippet: Learn how to get started with the dbt and MetricFlow
-pagination_next: "docs/best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics"
+pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics"
 ---
 
 ## A new approach
