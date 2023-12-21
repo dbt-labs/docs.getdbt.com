@@ -1,7 +1,7 @@
 ---
 title: About dbt Core setup
 id: about-core-setup
-description: "Configuration settings for dbt Core."
+description: "Configuration settings for dbt Core"
 sidebar_label: "About dbt Core setup"
 pagination_next: "docs/core/dbt-core-environments"
 pagination_prev: null
