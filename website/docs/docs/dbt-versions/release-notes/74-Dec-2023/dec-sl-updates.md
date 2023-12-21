@@ -7,7 +7,7 @@ date: 2023-12-22
 ---
 The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the dbt Semantic Layer and MetricFlow.
 
-Refer to the following updates and fixes for December 2023.
+Refer to the following updates and fixes for December 2023:
 
 ## Bug fixes
 
@@ -20,24 +20,9 @@ The following are updates for the dbt Semantic Layer and MetricFlow:
 - Memory leak &mdash; Fixed a memory leak in the JDBC API that would previously lead to intermittent errors when querying it.
 - Data conversion support &mdash; Added support for converting various Redshift and Postgres-specific data types. Previously, the driver would throw an error when encountering columns with those types.
 
-**MetricFlow**
-
-- Time offset for nested metrics &mdash; Implemented time offset for nested derived and ratio metrics. ([MetricFlow Issue #882](https://github.com/dbt-labs/metricflow/issues/882))
-- SQL column name rendering: &mdash; Fixed incorrect SQL column name rendering in `WhereConstraintNode`. ([MetricFlow Issue #908](https://github.com/dbt-labs/metricflow/issues/908))
-- Cumulative metrics query error &mdash; Fixed the `Unable To Satisfy Query` error with cumulative metrics in Saved Queries. ([MetricFlow Issue #917](https://github.com/dbt-labs/metricflow/issues/917))
-- Dimension-only query &mdash; Fixed a bug in dimension-only queries where the filter column is removed before the filter has been applied. ([MetricFlow Issue #923](https://github.com/dbt-labs/metricflow/issues/923))
-- Where constraint column &mdash; Ensured retention of the where constraint column until used for nested derived offset metric queries. ([MetricFlow Issue #930](https://github.com/dbt-labs/metricflow/issues/930))
 
 ## Improvements
 
 - Deprecation &mdash; We deprecated [dbt Metrics and the legacy dbt Semantic Layer](/docs/dbt-versions/release-notes/Dec-2023/legacy-sl), both supported on dbt version 1.5 or lower. This change came into effect on December 15th, 2023.
 - Improved dbt converter tool &mdash; The [dbt converter tool](https://github.com/dbt-labs/dbt-converter) can now help automate some of the work in converting from LookML (Looker's modeling language) for those who are migrating. Previously this wasn’t available. 
-
-## New features
-
-- Simplified group-by-item requests. We updated the way the MetricFlow query resolver finds queryable dimensions for metrics. The main improvements ares:
-  - If the grain of a time dimension in a query is not specified, then the grain of the requested time dimension is resolved to be the finest grain that is available for the queried metrics. For example, say you have two metrics; revenue which has a weekly grain and orders which has a daily grain. If you query these metrics like this: `dbt sl query --metrics revenue,orders --group-by metric_time` metricflow will automatically query these metrics at a weekly grain.  
-  
-- Assumes time dimension grain: When using a metric filter, if an ambiguous time dimension doesn't specify the grain, and all used semantic models define this time dimension with the same grain, MetricFlow now automatically assumes the time dimension to be of that grain.
-  - For example, if you have two daily metrics: `revenue` and `users` &mdash; you can now query these metrics without specifying the time dimension grain in the filter:  `mf query --metrics users,revenue --group-by metric_time --where "{{ TimeDimension('metric_time') }} = '2017-07-30' "`
 
