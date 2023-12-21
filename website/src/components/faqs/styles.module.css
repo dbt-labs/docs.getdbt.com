@@ -24,6 +24,12 @@
     filter: invert(1);
 }
 
+:local(.disclaimer) {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 10px; /* Adjust as needed */
+}
+
 :local(.body) {
     margin-left: 2em;
     margin-bottom: 10px;
