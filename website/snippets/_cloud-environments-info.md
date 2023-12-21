@@ -46,7 +46,7 @@ dbt Cloud will use the cached copy of your project's Git repo under these circum
 
 - Outages from third-party services (for example, the [dbt package hub](https://hub.getdbt.com/)).
 - Git authentication fails.
-- There are syntax errors in the `packages.yml` file. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to find these errors earlier.
+- There are syntax errors in the `packages.yml` file. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to find these errors sooner.
 - If a package doesn't work with the current dbt version. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to identify this issue sooner.
 
 To enable Git repository caching, select **Account settings** from the gear menu and enable the **Repository caching** option. 
