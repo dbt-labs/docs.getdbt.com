@@ -6,7 +6,11 @@ pagination_next: null
 pagination_prev: null
 ---
 
-dbt Labs is in the process of migrating our U.S. based multi-tenant accounts to [AWS cell-based architecture](https://docs.aws.amazon.com/wellarchitected/latest/reducing-scope-of-impact-with-cell-based-architecture/what-is-a-cell-based-architecture.html), a critical component of the [AWS well-architected framework](https://aws.amazon.com/architecture/well-architected/?wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc&wa-guidance-whitepapers.sort-by=item.additionalFields.sortDate&wa-guidance-whitepapers.sort-order=desc). The benefits of the cell-based architecture will improve the performance, reliability, and security of your dbt Cloud environment, but there is some preparation required to ensure a successful migration.
+dbt Labs is in the process of migrating dbt Cloud to a new **cell-based architecture**. This architecture will be the foundation of dbt Cloud for years to come, and will bring improved **scalability**, **reliability**, and **security** to all customers and users of dbt Cloud.
+
+There is some preparation required to ensure a successful migration.
+
+Migrations are being scheduled on a per-account basis. **If you have not received any communication (either via a banner, or via an email) about a migration date, you do not need to take any action at this time.** Our team will share a specific migration date with you, with appropriate advance notice, before we complete any migration steps in the dbt Cloud backend.
 
 This document outlines the steps that you must take to prevent service disruptions before your environment is migrated over to the cell-based architecture. This will impact areas such as login, IP restrictions, and API access. 
 
