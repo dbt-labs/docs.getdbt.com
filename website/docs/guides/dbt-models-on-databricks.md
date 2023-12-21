@@ -72,7 +72,7 @@ Most compute engines work best when file sizes are between 32 MB and 256 MB. In 
 
 Under the hood, Databricks will naturally [cluster data based on when it was ingested](https://www.databricks.com/blog/2022/11/18/introducing-ingestion-time-clustering-dbr-112.html). Since many queries include timestamps in `where` conditionals, this will naturally lead to a large amount of file skipping for enhanced performance. Nevertheless, if you have other high cardinality columns (basically columns with a large amount of distinct values such as id columns) that are frequently used in `join` keys or `where` conditionals, performance can typically be augmented further by leveraging Z-order.
 
-The SQL syntax for the Z-Order command is `OPTIMIZE TABLE Z-ORDER BY (col1,col2,col3,etc)`. One caveat to be aware of is that you will rarely want to Z-Order by more than three columns. You will likely want to either run Z-order on run end after your model builds or run Z-Order as a separate scheduled job on a consistent cadence, whether it is daily, weekly, or monthly.
+The SQL syntax for the Z-Order command is `OPTIMIZE table_name ZORDER BY (col1,col2,col3,etc)`. One caveat to be aware of is that you will rarely want to Z-Order by more than three columns. You will likely want to either run Z-order on run end after your model builds or run Z-Order as a separate scheduled job on a consistent cadence, whether it is daily, weekly, or monthly.
 
 ```sql
 config(
@@ -104,7 +104,7 @@ When you delete a record from a Delta table, it is a soft delete. What this mean
 
 Now onto the most final layer &mdash; the gold marts that business stakeholders typically interact with from their preferred BI tool. The considerations here will be fairly similar to the silver layer except that these marts are more likely to handling aggregations. Further, you will likely want to be even more intentional about Z-Ordering these tables as SLAs tend to be lower with these direct stakeholder facing tables.
 
-In addition, these tables are well suited for defining [dbt metrics](/docs/build/metrics) on to ensure simplicity and consistency across your key business KPIs! Using the [dbt_metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/), you can query the metrics inside of your own dbt project even. With the upcoming Semantic Layer Integration, you can also then query the metrics in any of the partner integrated tools.
+In addition, these tables are well suited for defining [metrics](/docs/build/build-metrics-intro) on to ensure simplicity and consistency across your key business KPIs! Using the [MetricFlow](https://github.com/dbt-labs/metricflow), you can query the metrics inside of your own dbt project even. With the upcoming Semantic Layer Integration, you can also then query the metrics in any of the partner integrated tools.
 
 ### Filter rows in target and/or source
 
