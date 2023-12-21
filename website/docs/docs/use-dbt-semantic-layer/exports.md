@@ -21,7 +21,7 @@ While saved queries are a way to save and reuse commonly used queries in MetricF
 
 ## Define exports
 
-Exports are essentially saved queries that you can schedule and execute using [dbt's job scheduler](/docs/deploy/job-scheduler) capabilities. Exports include the following materialization types:
+Exports are essentially saved queries that you can schedule and execute using [dbt's job scheduler](/docs/deploy/job-scheduler) capabilities. Exports include the following materialization types: CAN A USER ALSO USE API OR CI JOBS? WHAT IF THEY USE ANOTHER ORCHESTRATOR?
 
 - `table` (available now) 
 - and `window_table`, `incremental_table`, and `file` (coming soon)

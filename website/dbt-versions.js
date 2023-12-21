@@ -173,7 +173,7 @@ exports.versionedPages = [
   {
     "page": "reference/resource-configs/grants",
     "firstVersion": "1.2",
-
+  },
   {
     "page": "reference/resource-configs/on_configuration_change",
     "firstVersion": "1.6",
