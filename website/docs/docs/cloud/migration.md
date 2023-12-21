@@ -40,6 +40,6 @@ If your account is scheduled for migration, you will see a banner indicating you
 
 After migration, if you completed all the [Pre-migration checklist](#pre-migration-checklist) items, your dbt Cloud resources and jobs will continue to work as they did before. 
 
-You have the option to log into dbt Cloud at a different URL:
+You have the option to log in to dbt Cloud at a different URL:
  * If you were previously logging in at `cloud.getdbt.com`, you should instead plan to login at `us1.dbt.com`. The original URL will still work, but you’ll have to click through to be redirected upon login.
  * You may also log in directly with your account’s unique [access URL](https://next.docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account).
