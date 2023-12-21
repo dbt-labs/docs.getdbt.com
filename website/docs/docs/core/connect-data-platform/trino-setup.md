@@ -4,7 +4,7 @@ description: "Read this guide to learn about the Starburst/Trino warehouse setup
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
-  authors: Marius Grama, Przemek Denkiewicz, Michiel de Smet
+  authors: Marius Grama, Przemek Denkiewicz, Michiel de Smet, Damian Owsianny
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
