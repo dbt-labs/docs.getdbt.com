@@ -256,7 +256,7 @@ Where Filters have a few objects that you can use:
 
 - `Dimension()` &mdash; Used for any categorical or time dimensions. `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
-- `TimeDimension()` - Used as a more explicit definition for time dimensions, optionally takes in a granularity `TimeDimension('metric_time', 'month')`
+- `TimeDimension()` &mdash;  Used as a more explicit definition for time dimensions, optionally takes in a granularity `TimeDimension('metric_time', 'month')`
 
 - `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
 
