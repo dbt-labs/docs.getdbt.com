@@ -256,12 +256,12 @@ Where Filters have a few objects that you can use:
 
 - `Dimension()` - Used for any categorical or time dimensions. `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
+- `TimeDimension()` - Used as a more explicit definition for time dimensions, optionally takes in a granularity `TimeDimension('metric_time', 'month')`
+
 - `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
 
 
-Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimension` input takes the time dimension name optionally requires granularity, like this: `TimeDimension('metric_time', 'month')`.
-
-For both `TimeDimension()` and `Dimension()` objects, the grain is only required if in the WHERE filter if the aggregation time dimensions for the measures & metrics associated with the where filter have different grains. 
+For `TimeDimension()`, the grain is only required in the WHERE filter if the aggregation time dimensions for the measures & metrics associated with the where filter have different grains. 
 
 For example, consider this Semantic Model and Metric Config which contains two metrics that are aggregated across different time grains. This example shows a single Semantic Model, but the same goes for metrics across more than one Semantic Model.
 
