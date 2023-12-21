@@ -21,7 +21,7 @@ While saved queries are a way to save and reuse commonly used queries in MetricF
 
 ## Define exports
 
-Exports are essentially saved queries that you can schedule and execute using [dbt's job scheduler](/docs/deploy/job-scheduler) capabilities. Exports include the following materialization types: CAN A USER ALSO USE API OR CI JOBS? WHAT IF THEY USE ANOTHER ORCHESTRATOR?
+Exports are essentially saved queries that you can schedule and execute using [dbt's job scheduler](/docs/deploy/job-scheduler) capabilities. Exports include the following materialization types: 
 
 - `table` (available now) 
 - and `window_table`, `incremental_table`, and `file` (coming soon)
@@ -67,7 +67,7 @@ Exports in dbt are effectively integrated with your data models and metrics, all
 
 To execute exports using the job scheduler:
 
-- Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud. DO USERS NEED TO HAVE A SUCCESSFUL JOB RUN BEFORE THEY CAN SCHEDULE EXPORTS? WHAT IF THEY DON'T HAVE A SUCCESSFUL JOB RUN?
+- Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud. 
 - Use the built-in `dbt build` command to execute exports and saved queries. Note that although you can selectively run specific saved queries, this level of selection isn't available for individual exports. However, you can always create a different saved query if you want to separate exports. WHAT'S A SAMPLE QUERY? IS IT `export-as export_name` OR `dbt sl export --saved-query sq_name`
 - After dbt completes building the models, the MetricFlow Server processes the exports, compiles the necessary datasets, and executes data operations.
 - You can review the exports execution details in the jobs logs. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the `dbt build` logs.
@@ -115,8 +115,3 @@ Additional parameters and commands are introduced in MetricFlow CLI and Cloud In
 | --- | --- | --- | --- |
 | `create-query` |	`dbt sl query` |	`{{ semantic_layer.query() }}` |	Allows you to build the SQL for a query that does not hit the cache, utilizes a saved-query to specify parameters or specifies whether the cache should be utilized or overwritten	|
 | `export`	| `dbt sl export`	| None, Not possible	| Builds an export using the GraphQL API. Use the export [parameters](#parameters). specified above in  |
-
-
-
-
-  A user can interact with the cache through specification of Exports, Runs or our APIs (i.e. dbt sl drop-cache). We manage the metadata of what is stored in the cache for each of these.
