@@ -3,6 +3,66 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+      "destination": "/docs/build/dbt-tips",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/discovery-schema-job-metric",
+      "destination": "/docs/dbt-cloud-apis/discovery-schema-environment",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/discovery-schema-job-metrics",
+      "destination": "/docs/dbt-cloud-apis/discovery-schema-environment",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/metrics",
+      "destination": "/docs/build/build-metrics-intro",
+      "permanent": true
+    },
+    {
+      "source": "/reference/test-configs",
+      "destination": "/reference/data-test-configs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/resource-properties/tests",
+      "destination": "/reference/resource-properties/data-tests",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/tests",
+      "destination": "/docs/build/data-tests",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/dbt-cloud-ide",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/installation",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud-develop",
+      "destination": "/docs/cloud/about-develop-dbt",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/about-dbt-core",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/deploy/airgapped",
+      "destination": "/docs/cloud/about-cloud/tenancy",
+      "permanent": true
+    },
+    {
       "source": "/docs/about/overview",
       "destination": "/docs/introduction",
       "permanent": true

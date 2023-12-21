@@ -41,7 +41,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/co
 
 ### Command list
 
-You can add or remove as many [dbt commands](/reference/dbt-commands) as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "dbt Core" in the [dbt Command reference doc](/reference/dbt-commands) page. This means they are meant for use in [dbt Core](/docs/core/about-dbt-core) only and are not available in dbt Cloud.
+You can add or remove as many dbt commands as necessary for every job. However, you need to have at least one dbt command. There are few commands listed as "dbt Cloud CLI" or "dbt Core" in the [dbt Command reference page](/reference/dbt-commands) page. This means they are meant for use in dbt Core or dbt Cloud CLI, and not in dbt Cloud IDE.
 
 
 :::tip Using selectors

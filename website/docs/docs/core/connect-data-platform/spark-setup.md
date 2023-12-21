@@ -20,10 +20,6 @@ meta:
 <Snippet path="warehouse-setups-cloud-callout" />
 <Snippet path="dbt-databricks-for-databricks" />
 
-:::note
-See [Databricks setup](#databricks-setup) for the Databricks version of this page.
-:::
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
@@ -54,7 +50,7 @@ $ python -m pip install "dbt-spark[session]"
 
 ## Connection Methods
 
-dbt-spark can connect to Spark clusters by three different methods:
+dbt-spark can connect to Spark clusters by four different methods:
 
 - [`odbc`](#odbc) is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
 - [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
@@ -204,6 +200,7 @@ connect_retries: 3
 
 
 <VersionBlock firstVersion="1.7">
+
 ### Server side configuration
 
 Spark can be customized using [Application Properties](https://spark.apache.org/docs/latest/configuration.html). Using these properties the execution can be customized, for example, to allocate more memory to the driver process. Also, the Spark SQL runtime can be set through these properties. For example, this allows the user to [set a Spark catalogs](https://spark.apache.org/docs/latest/configuration.html#spark-sql).
