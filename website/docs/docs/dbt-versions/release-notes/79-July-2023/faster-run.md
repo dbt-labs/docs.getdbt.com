@@ -33,6 +33,6 @@ Something to note, each running job occupies a run slot for its duration, and if
 
 For more feature details, refer to the [dbt Cloud pricing page](https://www.getdbt.com/pricing/).
 
-Note, newly created Team accounts after xyz can benefit can now benefit from unlimited job concurrency:
-  - Existing Team plans &mdash; Existing Team plan accounts will continue to operate with their original fixed number of run slots.
-  - Project limitations &mdash; Both Team and Developer plans are limited to one project each. For larger-scale needs, our [Enterprise plan](https://www.getdbt.com/pricing/) provides unlimited job concurrency and project capacity. 
+Note, newly created Team accounts after xyz can now benefit from unlimited job concurrency:
+- Existing Team plans &mdash; Existing Team plan accounts will continue to operate with their original fixed number of run slots.
+- Project limitations &mdash; Both Team and Developer plans are limited to one project each. For larger-scale needs, our [Enterprise plan](https://www.getdbt.com/pricing/) provides unlimited job concurrency and project capacity. 
