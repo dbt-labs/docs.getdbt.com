@@ -35,4 +35,4 @@ For more feature details, refer to the [dbt Cloud pricing page](https://www.getd
 
 Note, Team accounts created after July 2023 benefit from unlimited job concurrency:
 - Legacy Team accounts have a fixed number of run slots.
-- Project limitations &mdash; Both Team and Developer plans are limited to one project each. For larger-scale needs, our [Enterprise plan](https://www.getdbt.com/pricing/) offers features such as audit logging, unlimited job concurrency and projects, and more.
+- Both Team and Developer plans are limited to one project each. For larger-scale needs, our [Enterprise plan](https://www.getdbt.com/pricing/) offers features such as audit logging, unlimited job concurrency and projects, and more.
