@@ -7,7 +7,6 @@ hoverSnippet: Learn how to create your own materializations.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Core']
 level: 'Advanced'
 recently_updated: true
 ---

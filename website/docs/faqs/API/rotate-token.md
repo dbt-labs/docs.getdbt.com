@@ -7,6 +7,24 @@ id: rotate-token
 
 For security reasons and best practices, you should aim to rotate API keys every so often.
 
+You can rotate your API key automatically with the push of a button in your dbt Cloud environment or manually using the command line.
+
+<Tabs>
+
+<TabItem value="Automatic">
+
+To automatically rotate your API key:
+
+1. Navigate to the Account settings by clicking the **gear icon** in the top right of your dbt Cloud account.
+2. Select **API Access** from the lefthand side.
+3. In the **API** pane, click `Rotate`.
+
+<Lightbox src="/img/docs/dbt-cloud/rotate-token.png" title="Click the rotate button to generate a new key" />
+
+</TabItem>
+
+<TabItem value="Manual">
+
 1. Rotate your [User API token](/docs/dbt-cloud-apis/user-tokens) by replacing `YOUR_USER_ID`, `YOUR_CURRENT_TOKEN`, and `YOUR_ACCESS_URL `with your information in the following request.
 
 ```
@@ -41,3 +59,7 @@ For example, if your deployment is Virtual Private dbt:
 
 ✅ `http://cloud.customizedurl.getdbt.com/` <br />
 ❌ `http://cloud.getdbt.com/`<br />
+
+</TabItem>
+
+</Tabs>

@@ -25,10 +25,10 @@ dbt Labs recommends completing these steps in a local dev environment (such as t
 1. Create new Semantic Model configs as YAML files in your dbt project.*
 1. Upgrade the metrics configs in your project to the new spec.* 
 1. Delete your old metrics file or remove the `.yml` file extension so they're ignored at parse time. Remove the `dbt-metrics` package from your project. Remove any macros that reference `dbt-metrics`, like `metrics.calculate()`. Make sure that any packages you’re using don't have references to the old metrics spec. 
-1. Install the CLI with `pip install "dbt-metricflow[your_adapter_name]"`. For example: 
+1. Install the CLI with `python -m pip install "dbt-metricflow[your_adapter_name]"`. For example: 
 
     ```bash
-    pip install "dbt-metricflow[snowflake]"
+    python -m pip install "dbt-metricflow[snowflake]"
     ```
     **Note** - The MetricFlow CLI is not available in the IDE at this time. Support is coming soon. 
 
@@ -91,13 +91,11 @@ At this point, both the new semantic layer and the old semantic layer will be ru
 
 Now that your Semantic Layer is set up, you will need to update any downstream integrations that used the legacy Semantic Layer. 
 
-### Migration guide for Hex
+### Migration guide for Hex 
 
-To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
+To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex. 
 
-1. Set up a new connection for the Semantic Layer for your account. Something to note is that your old connection will still work. The following Loom video guides you in setting up your Semantic Layer with Hex:
-
-<LoomVideo id="752e85aabfbf4fa585008a5598f3517a" />
+1. Set up a new connection for the dbt Semantic Layer for your account. Something to note is that your legacy connection will still work.
 
 2. Re-create the dashboards or reports that use the legacy dbt Semantic Layer. 
 

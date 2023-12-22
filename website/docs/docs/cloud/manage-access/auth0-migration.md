@@ -4,11 +4,6 @@ id: "auth0-migration"
 sidebar: "SSO Auth0 Migration"
 description: "Required actions for migrating to Auth0 for SSO services on dbt Cloud."
 ---
-:::warning Limited availability
-
-This is a new feature that is being implemented incrementally to customers using single sign-on features today. If you have any questions or concerns about the availability of the migration feature, please [contact support](mailto:support@getdbt.com).
-
-:::
 
 dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by dbt Cloud. These changes will require some action from customers with SSO configured in dbt Cloud today, and this guide will outline the necessary changes for each environment. 
 

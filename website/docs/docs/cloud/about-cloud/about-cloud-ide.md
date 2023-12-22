@@ -28,4 +28,4 @@ For more information, read the complete [Cloud IDE guide](/docs/cloud/dbt-cloud-
 ## Related docs
 
 - [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
-- [Tips and tricks](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips)
+- [Keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts)

@@ -1089,6 +1089,8 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 /* fontawesome icons in footer */
 .footer .fa-brands {
   color: var(--color-footer-accent);
+  fill: var(--color-footer-accent);
+  width: 25px;
   font-size: 1.6rem;
   transition: all 0.3s ease-in-out;
 }
@@ -1505,6 +1507,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 .author-header .author-links a {
   display: block;
   padding: 5px;
+  color: var(--ifm-link-color);
 }
 
 .author-header .author-links a:first-of-type {
@@ -1513,6 +1516,14 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
 .author-header .author-links i {
   font-size: 1.1rem;
+}
+
+.author-header .author-links a .social-icon > svg {
+  width: 15.4px;
+  fill: var(--ifm-link-color);
+}
+.author-header .author-links a:hover .social-icon > svg {
+  fill: var(--ifm-link-hover-color);
 }
 
 .author-posts-section {
@@ -2031,7 +2042,9 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   top: 0;
   right: 0;
   margin: 10px;
+  width: 18px;
   color: #818589; /* You can adjust the color as needed */
+  fill: #818589;
 }
 
 h3.anchor a.hash-link:before,

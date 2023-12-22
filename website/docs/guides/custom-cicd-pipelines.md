@@ -336,7 +336,7 @@ lint-project:
   rules:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != 'main'
   script:
-    - pip install sqlfluff==0.13.1
+    - python -m pip install sqlfluff==0.13.1
     - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
 
 # this job calls the dbt Cloud API to run a job
@@ -379,7 +379,7 @@ steps:
     displayName: 'Use Python 3.7'
 
   - script: |
-      pip install requests
+      python -m pip install requests
     displayName: 'Install python dependencies'
 
   - script: |
@@ -434,7 +434,7 @@ pipelines:
       - step:
           name: Lint dbt project
           script:
-            - pip install sqlfluff==0.13.1
+            - python -m pip install sqlfluff==0.13.1
             - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
 
     'main': # override if your default branch doesn't run on a branch named "main"
