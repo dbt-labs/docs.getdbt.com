@@ -27,12 +27,12 @@ Jobs scheduled at the top of the hour used to take over 106 seconds to prepare b
 
 Our enhanced scheduler offers more durability and empowers users to run jobs effortlessly. 
 
-This means Enterprise, multi-tenant accounts can now enjoy the advantages of unlimited job concurrency. Previously limited to a fixed number of run slots, Enterprise accounts now have the freedom to operate without constraints. Single-tenant support will be coming soon. Team plan customers will continue to have only 2 run slots. 
+This means Enterprise, multi-tenant accounts can now enjoy the advantages of unlimited job concurrency. Previously limited to a fixed number of run slots, Enterprise accounts now have the freedom to operate without constraints. Single-tenant support will be coming soon.
 
 Something to note, each running job occupies a run slot for its duration, and if all slots are occupied, jobs will queue accordingly.
 
 For more feature details, refer to the [dbt Cloud pricing page](https://www.getdbt.com/pricing/).
 
-Note, newly created Team accounts after July 2023 benefit from unlimited job concurrency:
-- Existing Team plans &mdash; Existing Team plan accounts will continue to operate with their original fixed number of run slots.
+Note, Team accounts created after July 2023 benefit from unlimited job concurrency:
+- Legacy Team accounts have a fixed number of run slots.
 - Project limitations &mdash; Both Team and Developer plans are limited to one project each. For larger-scale needs, our [Enterprise plan](https://www.getdbt.com/pricing/) offers features such as audit logging, unlimited job concurrency and projects, and more.
