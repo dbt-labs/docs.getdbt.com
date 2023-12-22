@@ -252,11 +252,11 @@ Where filters in API allow for a filter list or string. We recommend using the f
 
 Where Filters have a few objects that you can use:
 
-- `Dimension()` &mdash; Used for any categorical or time dimensions. `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
+- `Dimension()` &mdash; Used for any categorical or time dimensions. `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
 
-- `TimeDimension()` &mdash;  Used as a more explicit definition for time dimensions, optionally takes in a granularity `TimeDimension('metric_time', 'month')`
+- `TimeDimension()` &mdash;  Used as a more explicit definition for time dimensions, optionally takes in a granularity `TimeDimension('metric_time', 'month')`.
 
-- `Entity()` &mdash;  Used for entities like primary and foreign keys - `Entity('order_id')`
+- `Entity()` &mdash;  Used for entities like primary and foreign keys - `Entity('order_id')`.
 
 
 For `TimeDimension()`, the grain is only required in the `WHERE` filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
