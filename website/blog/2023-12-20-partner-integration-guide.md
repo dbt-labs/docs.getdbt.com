@@ -23,7 +23,7 @@ Here I'll cover how to get started, potential use cases you want to solve for, a
 
 ## New to dbt Cloud?
 
-If you're new to dbt and dbt Cloud, we recommend you and your software developers try our [Getting Started Quickstarts](https://docs.getdbt.com/guides) after reading [What is dbt?](https://docs.getdbt.com/docs/introduction). The documentation will help you familiarize yourself with how our users interact with dbt. By going through this, you will also create a sample dbt project to test your integration.
+If you're new to dbt and dbt Cloud, we recommend you and your software developers try our [Getting Started Quickstarts](https://docs.getdbt.com/guides) after reading [What is dbt](https://docs.getdbt.com/docs/introduction). The documentation will help you familiarize yourself with how our users interact with dbt. By going through this, you will also create a sample dbt project to test your integration.
 
 If you require a partner dbt Cloud account to test on, we can upgrade an existing account or a trial account. This account may only be used for development, training, and demonstration purposes. Please contact your partner manager if you're interested and provide the account ID (provided in the URL). Our partner account includes all of the enterprise level functionality and can be provided with a signed partnerships agreement.
 
