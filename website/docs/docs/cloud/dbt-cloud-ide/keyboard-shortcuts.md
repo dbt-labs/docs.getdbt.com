@@ -17,8 +17,8 @@ Use this dbt Cloud IDE  page to help you quickly reference some common operation
 | Preview code | Command-Enter | Control-Enter |
 | Compile code | Command-Shift-Enter | Control-Shift-Enter |
 | Reveal a list of dbt functions in the editor | Enter two underscores `__` | Enter two underscores  `__` |
-| Open the command palette to invoke dbt commands and actions  | Command-P <br /> Command-Shift-P | Control-P <br /> Control-Shift-P |
-| Multi-edit in the editor by selecting multiple lines | Option-Click <br />Shift-Option-Command <br /> Shift-Option-Click | Hold Alt and Click |
+| Open the command palette to invoke dbt commands and actions  | - Command-P<br />- Command-Shift-P | Control-P <br /> Control-Shift-P |
+| Multi-edit in the editor by selecting multiple lines | - Option-Click<br />- Shift-Option-Command<br />- Shift-Option-Click | Hold Alt and Click |
 | Toggle open the [Invocation history drawer](/docs/cloud/dbt-cloud-ide/ide-user-interface#invocation-history) located on the bottom of the IDE.  | Control-backtick (or Control + `)  | Control-backtick (or Ctrl + `) |
 | Add a block comment to the selected code. SQL files will use the Jinja syntax `({# #})` rather than the SQL one `(/* */)`.<br /> <br /> Markdown files will use the Markdown syntax `(<!-- -->)` | Command-Option-/ | Control-Alt-/ |
 
