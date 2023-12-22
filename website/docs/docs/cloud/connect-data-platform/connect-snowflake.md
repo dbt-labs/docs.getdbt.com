@@ -47,7 +47,7 @@ alter user jsmith set rsa_public_key='MIIBIjANBgkqh...';
 As of dbt version 1.5.0, you can use a `private_key` string in place of `private_key_path`. This `private_key` string can be either Base64-encoded DER format for the key bytes or plain-text PEM format. For more details on key generation, refer to the [Snowflake documentation](https://community.snowflake.com/s/article/How-to-configure-Snowflake-key-pair-authentication-fields-in-dbt-connection).
 
 
-4. To successfully fill in the Private Key field, you **must** include commented lines. If you're receiving a `Could not deserialize key data` or `JWT token` error, refer to [Troubleshooting](#troubleshooting) for more info. 
+4. To successfully fill in the Private Key field, you _must_ include commented lines. If you receive a `Could not deserialize key data` or `JWT token` error, refer to [Troubleshooting](#troubleshooting) for more info. 
 
 **Example:**
 
