@@ -5,15 +5,9 @@ sidebar_label: "Update and fixes: dbt Semantic Layer"
 sidebar_position: 08
 date: 2023-12-22
 ---
-The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the dbt Semantic Layer.
-
-Refer to the following updates and fixes for December 2023:
+The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the dbt Semantic Layer. The following list explains the updates and fixes for December 2023 in more detail. 
 
 ## Bug fixes
-
-The following are updates for the dbt Semantic Layer:
-
-**dbt Semantic Layer**
 
 - Tableau integration &mdash; The dbt Semantic Layer integration with Tableau now supports queries that resolve to a "NOT IN" clause. This applies to using "exclude" in the filtering user interface. Previously it wasn’t supported.
 - `BIGINT` support &mdash; The dbt Semantic Layer can now support `BIGINT` values with precision greater than 18. Previously it would return an error.
