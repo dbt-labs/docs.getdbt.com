@@ -33,7 +33,7 @@ Something to note, each running job occupies a run slot for its duration, and if
 
 For more feature details, refer to the [dbt Cloud pricing page](https://www.getdbt.com/pricing/).
 
-- **Update December 2023: New Team plans with unlimited job concurrency**<br />
+- **Update: New Team plans with unlimited job concurrency**<br />
   We've introduced a change to our dbt Cloud Scheduler for newly created Team plan accounts:<br /><br />
     - Unlimited Job concurrency for new Team plans &mdash; New accounts on the Team plan now benefit from unlimited job concurrency.
       - Existing Team plans &mdash; Existing Team plan accounts will continue to operate with their original fixed number of run slots.
