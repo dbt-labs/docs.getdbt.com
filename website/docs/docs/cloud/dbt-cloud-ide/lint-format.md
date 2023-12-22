@@ -127,7 +127,7 @@ group_by_and_order_by_style = implicit
 ```
 </details>
 
-For more info on styling best practices, refer to [How we style our SQL](/guides/best-practices/how-we-style/2-how-we-style-our-sql).
+For more info on styling best practices, refer to [How we style our SQL](/best-practices/how-we-style/2-how-we-style-our-sql).
 :::
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.jpg" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
@@ -236,4 +236,4 @@ Make sure you're on a development branch. Formatting or Linting isn't available 
 ## Related docs
 
 - [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
-- [Tips and tricks](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips)
+- [Keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts)

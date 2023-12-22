@@ -4,7 +4,7 @@ MetricFlow supports different metric types like [simple](/docs/build/simple), [r
 
 1. You can define metrics in the same YAML files as your semantic models or create a new file. If you want to create your metrics in a new file, create another directory called `/models/metrics`. The file structure for metrics can become more complex from here if you need to further organize your metrics, for example, by data source or business line.
 
-2. The example metric we'll create is a simple metric that refers directly to the the `order_total` measure, which will be implemented as a `sum()` function in SQL. Again, if you're working in the Jaffle shop sandbox, we recommend deleting the original `orders.yml` file, or removing the .yml extension so it's ignored during parsing. We'll be rebuilding the `order_total` metric from scratch. If you're working in your own project, create a simple metric like the one below using one of the measures you created in the previous step.
+2. The example metric we'll create is a simple metric that refers directly to the `order_total` measure, which will be implemented as a `sum()` function in SQL. Again, if you're working in the Jaffle shop sandbox, we recommend deleting the original `orders.yml` file, or removing the .yml extension so it's ignored during parsing. We'll be rebuilding the `order_total` metric from scratch. If you're working in your own project, create a simple metric like the one below using one of the measures you created in the previous step.
 
 ```yaml
 metrics:

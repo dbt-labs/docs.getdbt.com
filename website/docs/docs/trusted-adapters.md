@@ -21,16 +21,16 @@ pendency on this library?
 
 ### Trusted adapter specifications
 
-See [Building a Trusted Adapter](/guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter) for more information, particularly if you are an adapter maintainer considering having your adapter be added to the trusted list.
+Refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide for more information, particularly if you are an adapter maintainer considering having your adapter be added to the trusted list.
 
 ### Trusted vs Verified
 
-The Verification program exists to highlight adapters that meets both of the following criteria:
+The Verification program exists to highlight adapters that meet both of the following criteria:
 
 - the guidelines given in the Trusted program,
 - formal agreements required for integration with dbt Cloud
 
-For more information on the Verified Adapter program, reach out the [dbt Labs partnerships team](mailto:partnerships@dbtlabs.com)
+For more information on the Verified Adapter program, reach out to the [dbt Labs partnerships team](mailto:partnerships@dbtlabs.com)
 
 ### Trusted adapters
 

@@ -11,11 +11,11 @@ pagination_prev: null
 * [Declaring properties](/reference/configs-and-properties)
 * [`dbt docs` command](/reference/commands/cmd-docs)
 * [`doc` Jinja function](/reference/dbt-jinja-functions)
-* If you're new to dbt, we recommend that you check out our [quickstart guide](/quickstarts) to build your first dbt project, complete with documentation.
+* If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project, complete with documentation.
 
 ## Assumed knowledge
 
-* [Tests](/docs/build/tests)
+* [Tests](/docs/build/data-tests)
 
 ## Overview
 
@@ -32,7 +32,7 @@ Here's an example docs site:
 <Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-screenshot.png" title="Auto-generated dbt documentation website"/>
 
 ## Adding descriptions to your project
-To add descriptions to your project, use the `description:` key in the same files where you declare [tests](/docs/build/tests), like so:
+To add descriptions to your project, use the `description:` key in the same files where you declare [tests](/docs/build/data-tests), like so:
 
 <File name='models/<filename>.yml'>
 

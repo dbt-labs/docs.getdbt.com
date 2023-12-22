@@ -17,11 +17,27 @@ default_value: {show: true}
     { label: 'Macros', value: 'macros', },
   ]
 }>
+
 <TabItem value="models">
+
+You can configure `docs` behavior for many resources at once by setting in `dbt_project.yml`. You can also use the `docs` config in `properties.yaml` files, to set or override documentation behaviors for specific resources:
+
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +docs:
+      show: true | false
+
+```
+
+</File>
 
 <File name='models/schema.yml'>
 
-```yml
+  ```yml
 version: 2
 
 models:
@@ -29,9 +45,7 @@ models:
     docs:
       show: true | false
       node_color: "black"
-
 ```
-
 </File>
 
 </TabItem>
@@ -44,6 +58,20 @@ This property is not implemented for sources.
 
 <TabItem value="seeds">
 
+You can use the docs property in YAML files, including the `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +docs:
+      show: true | false
+
+```
+
+</File>
+
 <File name='seeds/schema.yml'>
 
 ```yml
@@ -53,14 +81,26 @@ seeds:
   - name: seed_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
 
 <TabItem value="snapshots">
+
+You can use the docs property in YAML files, including the `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +docs:
+      show: true | false
+
+```
+
+</File>
 
 <File name='snapshots/schema.yml'>
 
@@ -71,14 +111,15 @@ snapshots:
   - name: snapshot_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
 
 <TabItem value="analyses">
+
+You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Analysis properties](/reference/analysis-properties) for more info.
+
 
 <File name='analysis/schema.yml'>
 
@@ -90,16 +131,13 @@ analyses:
     docs:
       show: true | false
 ```
-
 </File>
 
 </TabItem>
 
 <TabItem value="macros">
 
-<!----
-To-do: check this
---->
+You can use the docs property in YAML files, _except_ in `dbt_project.yml`. Refer to [Macro properties](/reference/macro-properties) for more info.
 
 <File name='macros/schema.yml'>
 
@@ -110,11 +148,9 @@ macros:
   - name: macro_name
     docs:
       show: true | false
-
 ```
-
 </File>
-Also refer to [macro properties](/reference/macro-properties).
+
 </TabItem>
 
 </Tabs>
@@ -122,7 +158,7 @@ Also refer to [macro properties](/reference/macro-properties).
 ## Definition
 The docs field can be used to provide documentation-specific configuration to models. It supports the doc attribute `show`, which controls whether or not models are shown in the auto-generated documentation website. It also supports `node_color` for some node types.
 
-**Note:** hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
+**Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
 ## Default
 The default value for `show` is `true`.
