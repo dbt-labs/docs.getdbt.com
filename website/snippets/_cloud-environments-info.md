@@ -82,6 +82,13 @@ For improved reliability and performance on your job runs, you can enable dbt Cl
 
 dbt Cloud caches your project's Git repo after each successful run and retains it for 8 days if there are no repo updates. It caches all packages regardless of installation method and does not fetch code outside of the job runs. 
 
+dbt Cloud will use the cached copy of your project's Git repo under these circumstances:
+
+- Outages from third-party services (for example, the [dbt package hub](https://hub.getdbt.com/)).
+- Git authentication fails.
+- There are syntax errors in the `packages.yml` file. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to find these errors sooner.
+- If a package doesn't work with the current dbt version. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to identify this issue sooner.
+
 To enable Git repository caching, select **Account settings** from the gear menu and enable the **Repository caching** option. 
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Repository caching option" />
