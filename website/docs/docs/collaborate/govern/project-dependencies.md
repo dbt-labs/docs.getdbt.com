@@ -11,7 +11,7 @@ keyword: dbt mesh, project dependencies, ref, cross project ref, project depende
 
 Project dependencies and cross-project `ref` are features available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing), currently in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
 
-[Enterprise users](https://www.getdbt.com/pricing) can use these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref).
+If you have an [Enterprise account](https://www.getdbt.com/pricing), you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref).
 :::
 
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
