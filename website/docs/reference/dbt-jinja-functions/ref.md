@@ -3,6 +3,7 @@ title: "About ref function"
 sidebar_label: "ref"
 id: "ref"
 description: "Read this guide to understand the builtins Jinja function in dbt."
+keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
 ---
 
 The most important function in dbt is `ref()`; it's impossible to build even moderately complex models without it. `ref()` is how you reference one model within another. This is a very common behavior, as typically models are built to be "stacked" on top of one another. Here is how this looks in practice:
@@ -68,7 +69,7 @@ select * from {{ ref('model_name', version=1) }}
 select * from {{ ref('model_name') }}
 ```
 
-### Two-argument variant
+### Ref project-specific models
 
 You can also use a two-argument variant of the `ref` function. With this variant, you can pass both a namespace (project or package) and model name to `ref` to avoid ambiguity. When using two arguments with projects (not packages), you also need to set [cross project dependencies](/docs/collaborate/govern/project-dependencies).
 
