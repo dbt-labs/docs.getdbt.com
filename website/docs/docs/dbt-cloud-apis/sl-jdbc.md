@@ -33,6 +33,8 @@ You *may* be able to use our JDBC API with tools that do not have an official in
 
 Refer to [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl) for more info.
 
+Note, the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into the Semantic Layer as code.
+
 ## Authentication
 
 dbt Cloud authorizes requests to the dbt Semantic Layer API. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).
