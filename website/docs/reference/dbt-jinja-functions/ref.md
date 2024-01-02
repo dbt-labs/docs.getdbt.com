@@ -71,7 +71,7 @@ select * from {{ ref('model_name') }}
 
 ### Ref project-specific models
 
-You can also reference models from different projects using the two-argument variant of the `ref` function. By specifying both a namespace (which could be a project or package) and model name, you ensure clarity and avoid any ambiguity in the `ref`. This is also useful when dealing with models across various projects or packages. 
+You can also reference models from different projects using the two-argument variant of the `ref` function. By specifying both a namespace (which could be a project or package) and a model name, you ensure clarity and avoid any ambiguity in the `ref`. This is also useful when dealing with models across various projects or packages. 
 
 When using two arguments with projects (not packages), you also need to set [cross project dependencies](/docs/collaborate/govern/project-dependencies).
 
