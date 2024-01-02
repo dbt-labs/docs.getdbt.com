@@ -53,7 +53,7 @@ If certain inputs change between runs, dbt will trigger a full re-parse. The res
 - dbt version
 - certain widely-used macros (for example, [builtins](/reference/dbt-jinja-functions/builtins), overrides, or `generate_x_name` for `database`/`schema`/`alias`)
 
-If you're triggering [CI](/docs/deploy/continuous-integration) job runs, the partial parsing benefits are not available on a new pull request (PR) or new branch. However, they are available on subsequent commits to that new PR or branch. 
+If you're triggering [CI](/docs/deploy/continuous-integration) job runs, the benefits of partial parsing are not applicable to new pull requests (PR) or new branches. However, they are applied on subsequent commits to the new PR or branch. 
 
 If you ever get into a bad state, you can disable partial parsing and trigger a full re-parse by setting the `PARTIAL_PARSE` global config to false, or by deleting `target/partial_parse.msgpack` (e.g. by running `dbt clean`).
 
