@@ -69,7 +69,7 @@ function FAQ({ path, alt_header = null }) {
     <div className={styles.faqs} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <span className={styles.link} onClick={toggleOn}>
         <span className={styles.toggle} style={{ transform: isOn ? 'rotateX(0deg)' : 'rotateX(180deg)' }}></span>
-        &nbsp;{alt_header || (fileContent?.meta && fileContent.meta.title)}
+        <span className={styles.headerText}>{alt_header || (fileContent?.meta && fileContent.meta.title)}</span>
         <small className={styles.disclaimer}>Hover to view</small>
       </span>
       <div style={{ display: isOn ? 'block' : 'none' }} className={styles.body}>
