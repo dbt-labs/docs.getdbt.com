@@ -209,7 +209,7 @@ Yes! As long as a user has permissions (at least read-only access) on all projec
 
 </detailsToggle>
 
-<detailsToggle alt_header="TO DO -- How do these things interact: model-level access; role-based access in dbt Cloud; access to underlying data within the data platform?">
+<detailsToggle alt_header="TO DO -- How do model-level access, dbt Cloud's role-based access, and data platform access interact?">
 
 OUTSTANDING COPY
 
