@@ -59,10 +59,10 @@ A model group in dbt is a concept used to organize models under a common categor
 
 <detailsToggle alt_header="What are the main benefits of implementing dbt Mesh?">
 
-1. **Agility in Development**: With a more modular architecture, teams can make changes rapidly and independently in specific areas without impacting the entire system, leading to faster development cycles.
-2. **Improved Collaboration**: Teams are able to share and build upon each other's work without duplicating efforts.
+1. **Agility in development**: With a more modular architecture, teams can make changes rapidly and independently in specific areas without impacting the entire system, leading to faster development cycles.
+2. **Improved collaboration**: Teams are able to share and build upon each other's work without duplicating efforts.
 3. **Reduced Complexity**: By organizing transformation logic into distinct domains, dbt Mesh reduces the complexity inherent in large, monolithic projects, making them easier to manage and understand.
-4. **Improved Data Trust.** Adopting a dbt Mesh can help ensure that changes in one domain's data models do not unexpectedly break dependencies in other domain areas, leading to a more secure and predictable data environment.
+4. **Improved data trust.** Adopting a dbt Mesh can help ensure that changes in one domain's data models do not unexpectedly break dependencies in other domain areas, leading to a more secure and predictable data environment.
 
 Most importantly, all this can be accomplished without the central data team losing the ability to see lineage across the entire organization, or compromising on governance mechanisms.
 
