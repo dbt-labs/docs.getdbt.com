@@ -26,7 +26,7 @@ dbt Labs recommends completing these steps in a local dev environment (such as t
 1. Upgrade the metrics configs in your project to the new spec.* 
 1. Delete your old metrics file or remove the `.yml` file extension so they're ignored at parse time. Remove the `dbt-metrics` package from your project. Remove any macros that reference `dbt-metrics`, like `metrics.calculate()`. Make sure that any packages you’re using don't have references to the old metrics spec. 
 1. Install the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to run MetricFlow commands and define your semantic model configurations.
-   - If you're using dbt Core, you can install the [MetricFlow CLI](/docs/build/metricflow-commands) with `python -m pip install "dbt-metricflow[your_adapter_name]"`. For example: 
+   - If you're using dbt Core, install the [MetricFlow CLI](/docs/build/metricflow-commands) with `python -m pip install "dbt-metricflow[your_adapter_name]"`. For example: 
 
     ```bash
     python -m pip install "dbt-metricflow[snowflake]"
