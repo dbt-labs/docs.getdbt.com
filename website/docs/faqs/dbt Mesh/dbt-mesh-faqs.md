@@ -1,8 +1,6 @@
 ---
 title: "dbt Mesh FAQs"
 description: "Read some frequently asked questions about dbt Mesh."
-hoverSnippet: "dbt Mesh FAQs"
-sidebar_label: "Frequently asked dbt Mesh questions"
 ---
 
 dbt Mesh is a new architecture enabled by dbt Cloud. It allows you to better manage complexity by deploying multiple interconnected dbt projects instead of a single large, monolithic project. It’s designed to accelerate development, without compromising governance.
