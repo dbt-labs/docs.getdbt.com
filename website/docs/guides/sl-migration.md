@@ -43,7 +43,7 @@ dbt Labs recommends completing these steps in a local dev environment (such as t
 6. Push these changes to a new branch in your repo.
 
 :::info `ref` not supported
-The dbt Semantic Layer API doesn't support `ref` to call dbt objects. This is currently due to differences in architecture between the legacy Semantic Layer and the re-released Semantic Layer. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into the Semantic Layer as code.
+The dbt Semantic Layer API doesn't support `ref` to call dbt objects. This is currently due to differences in architecture between the legacy Semantic Layer and the re-released Semantic Layer. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
 :::
 
 **To make this process easier, dbt Labs provides a [custom migration tool](https://github.com/dbt-labs/dbt-converter) that automates these steps for you. You can find installation instructions in the [README](https://github.com/dbt-labs/dbt-converter/blob/master/README.md). Derived metrics aren’t supported in the migration tool, and will have to be migrated manually.*
