@@ -114,14 +114,14 @@ models:
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
 with the following configuration parameters:
 
-| Parameter                                 | Type         | Required | Default                                        | Change Monitoring Support |
-|-------------------------------------------|--------------|----------|------------------------------------------------|---------------------------|
-| `on_configuration_change`                 | `<string>`   | no       | `apply`                                        | n/a                       |
-| [`dist`](#using-sortkey-and-distkey)      | `<string>`   | no       | `even`                                         | drop/create               |
-| [`sort`](#using-sortkey-and-distkey)      | `[<string>]` | no       | `none`                                         | drop/create               |
-| [`sort_type`](#using-sortkey-and-distkey) | `<string>`   | no       | `auto` if no `sort` <br />`compound` if `sort` | drop/create               |
-| [`auto_refresh`](#auto-refresh)           | `<boolean>`  | no       | `false`                                        | alter                     |
-| [`backup`](#backup)                       | `<string>`   | no       | `true`                                         | n/a                       |
+| Parameter                                                                        | Type         | Required | Default                                        | Change Monitoring Support |
+|----------------------------------------------------------------------------------|--------------|----------|------------------------------------------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>`   | no       | `apply`                                        | n/a                       |
+| [`dist`](#using-sortkey-and-distkey)                                             | `<string>`   | no       | `even`                                         | drop/create               |
+| [`sort`](#using-sortkey-and-distkey)                                             | `[<string>]` | no       | `none`                                         | drop/create               |
+| [`sort_type`](#using-sortkey-and-distkey)                                        | `<string>`   | no       | `auto` if no `sort` <br />`compound` if `sort` | drop/create               |
+| [`auto_refresh`](#auto-refresh)                                                  | `<boolean>`  | no       | `false`                                        | alter                     |
+| [`backup`](#backup)                                                              | `<string>`   | no       | `true`                                         | n/a                       |
 
 <Tabs
   groupId="config-languages"
@@ -142,7 +142,7 @@ with the following configuration parameters:
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
-    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
     [+](/reference/resource-configs/plus-prefix)[sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
     [+](/reference/resource-configs/plus-prefix)[sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
@@ -166,7 +166,7 @@ models:
   - name: [<model-name>]
     config:
       [materialized](/reference/resource-configs/materialized): materialized_view
-      on_configuration_change: apply | continue | fail
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
       [sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
       [sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
@@ -186,7 +186,7 @@ models:
 ```jinja
 {{ config(
     [materialized](/reference/resource-configs/materialized)="materialized_view",
-    on_configuration_change="apply" | "continue" | "fail",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [dist](#using-sortkey-and-distkey)="all" | "auto" | "even" | "<field-name>",
     [sort](#using-sortkey-and-distkey)=["<field-name>"],
     [sort_type](#using-sortkey-and-distkey)="auto" | "compound" | "interleaved",
@@ -204,7 +204,7 @@ models:
 Many of these parameters correspond to their table counterparts and have been linked above.
 The parameters unique to materialized views are the [auto-refresh](#auto-refresh) and [backup](#backup) functionality, which are covered below.
 
-Find more information about the [CREATE MATERIALIZED VIEW](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html) parameters in the Redshift docs.
+Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html).
 
 #### Auto-refresh
 
@@ -230,7 +230,7 @@ By default, a materialized view will be backed up during a cluster snapshot.
 dbt cannot monitor this parameter as it is not queryable within Redshift.
 If the value is changed, the materialized view will need to go through a `--full-refresh` in order to set it.
 
-Learn more about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
+Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters).
 
 ### Limitations
 

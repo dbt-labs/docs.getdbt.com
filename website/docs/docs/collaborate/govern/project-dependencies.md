@@ -4,15 +4,15 @@ id: project-dependencies
 sidebar_label: "Project dependencies"
 description: "Reference public models across dbt projects"
 pagination_next: null
+keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
 ---
 
 :::info Available in Public Preview for dbt Cloud Enterprise accounts
 
 Project dependencies and cross-project `ref` are features available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing), currently in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
 
-Enterprise users can use these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-use-ref).
+If you have an [Enterprise account](https://www.getdbt.com/pricing), you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref).
 :::
-
 
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
 
@@ -80,9 +80,9 @@ When you're building on top of another team's work, resolving the references in 
 - You don't need to mirror any conditional configuration of the upstream project such as `vars`, environment variables, or `target.name`. You can reference them directly wherever the Finance team is building their models in production. Even if the Finance team makes changes like renaming the model, changing the name of its schema, or [bumping its version](/docs/collaborate/govern/model-versions), your `ref` would still resolve successfully.
 - You eliminate the risk of accidentally building those models with `dbt run` or `dbt build`. While you can select those models, you can't actually build them. This prevents unexpected warehouse costs and permissions issues. This also ensures proper ownership and cost allocation for each team's models.
 
-### How to use ref
+### How to write cross-project ref
 
-**Writing `ref`:** Models referenced from a `project`-type dependency must use [two-argument `ref`](/reference/dbt-jinja-functions/ref#two-argument-variant), including the project name:
+**Writing `ref`:** Models referenced from a `project`-type dependency must use [two-argument `ref`](/reference/dbt-jinja-functions/ref#ref-project-specific-models), including the project name:
 
 <File name="models/marts/roi_by_channel.sql">
 
