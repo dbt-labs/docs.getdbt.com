@@ -209,6 +209,18 @@ Yes! As long as a user has permissions (at least read-only access) on all projec
 
 </detailsToggle>
 
+<detailsToggle alt_header="TO DO -- How do these things interact: model-level access; role-based access in dbt Cloud; access to underlying data within the data platform?">
+
+OUTSTANDING COPY
+
+</detailsToggle>
+
+<detailsToggle alt_header="TO DO -- How can I limit my developers from accessing production data when referencing from other projects?">
+
+My production environments contain sensitive data. How can I limit my developers from accessing production data when referencing from other projects?
+
+</detailsToggle>
+
 ## Compatibility with other features
 
 <detailsToggle alt_header="How does the dbt Semantic Layer relate to and work with dbt Mesh?">
@@ -218,6 +230,12 @@ The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dbt Mesh are c
 The Semantic Layer in dbt Cloud allows teams to centrally define business metrics and dimensions. It ensures consistent and reliable metric definitions across various analytics tools and platforms.
 
 dbt Mesh enables organizations to split their data architecture into multiple domain-specific projects, while retaining the ability to reference “public” models across projects. It is also possible to reference a “public” model from another project for the purpose of defining semantic models and metrics. In this way, your organization can have multiple dbt projects feed into a unified semantic layer, ensuring that metrics and dimensions are consistently defined and understood across these different domains.
+
+</detailsToggle>
+
+<detailsToggle alt_header="TO DO -- Can dbt Mesh help control permissions in the Semantic Layer? How does it work with semantic tokens?">
+
+OUTSTANDING COPY
 
 </detailsToggle>
 
@@ -264,11 +282,16 @@ Yes, a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) plan is required t
 
 <detailsToggle alt_header="Is there a recommended migration or implementation process?">
 
-Refer to our developer guide on [How we structure our dbt Mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from Coalesce 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro).
+Refer to our developer guide on [How we structure our dbt Mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from Coalesce 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
 
 </detailsToggle>
 
 <detailsToggle alt_header="Are there tools available to help me migrate to a dbt Mesh?">
 
 `dbt-meshify` is a [CLI tool](https://github.com/dbt-labs/dbt-meshify) that automates the creation of model governance and cross-project lineage features introduced in dbt-core v1.5 and v1.6. This package will leverage your dbt project metadata to create and/or edit the files in your project to properly configure the models in your project with these features.
+</detailsToggle>
+
+<detailsToggle alt_header="TO DO -- What aspects of dbt Mesh are relevant to me?">
+
+ My team isn’t structured in a way that would require multiple projects today (though that may change in the future). What aspects of dbt Mesh are relevant to me?
 </detailsToggle>
