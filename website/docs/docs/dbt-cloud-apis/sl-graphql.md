@@ -26,7 +26,7 @@ The dbt Semantic Layer GraphQL API allows you to explore and query metrics and d
 
 dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
 
-Note, the dbt Semantic Layer API doesn't currently support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into the Semantic Layer as code.
+Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
 
 ## Requirements to use the GraphQL API
 - A dbt Cloud project on dbt v1.6 or higher
