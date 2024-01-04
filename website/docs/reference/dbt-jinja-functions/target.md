@@ -8,7 +8,7 @@ description: "The `target` variable Contains information about your connection t
 The `target` variable contains information about your connection to the warehouse.
 
 - **dbt Core:** These values are based on the target defined in your [profiles.yml](/docs/core/connect-data-platform/profiles.yml) file. Please note that for certain adapters, additional configuration steps may be required. Refer to the [set up page](/docs/core/connect-data-platform/about-core-connections) for your data platform.
-- **dbt Cloud** To learn more about setting up your adapter in dbt Cloud, refer to the [About data platform connections](/docs/cloud/connect-data-platform/about-connections).
+- **dbt Cloud** To learn more about setting up your adapter in dbt Cloud, refer to [About data platform connections](/docs/cloud/connect-data-platform/about-connections).
    - **dbt Cloud Scheduler:** `target.name` is defined per job as described in [Custom target names](/docs/build/custom-target-names). For other attributes, values are defined by the deployment connection. To check these values, click **Deploy** and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
    - **dbt Cloud IDE:** These values are defined by your connection and credentials. To edit these values, click the cog in the top right, select **Profile settings**, and click **Credentials**. Select and edit a project to set up the credentials and target name.
 
