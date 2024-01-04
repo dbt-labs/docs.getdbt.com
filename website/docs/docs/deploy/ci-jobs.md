@@ -11,12 +11,12 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 
 dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
+
 ### Prerequisites
 - You have a dbt Cloud account.
 - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-- You must be connected using dbt Cloud’s native Git integration with [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or [Azure DevOps](/docs/cloud/git/connect-azure-devops).
-    - With GitLab, you need a paid or self-hosted account which includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). With GitLab Free, merge requests will invoke CI jobs but CI status updates (success or failure of the job) will not be reported back to GitLab. 
-    - If you previously configured your dbt project by providing a generic git URL that clones using SSH, you must reconfigure the project to connect through dbt Cloud's native integration.
+- If you're using [GitLab](/docs/cloud/git/connect-gitlab), you need a paid or self-hosted account which includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). With GitLab Free, merge requests will invoke CI jobs but CI status updates (success or failure of the job) will not be reported back to GitLab. 
+- If you previously configured your dbt project by providing a generic git URL that clones using SSH, you must reconfigure the project to connect through dbt Cloud's native integration.
 
 
 To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.
@@ -63,12 +63,13 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
 
 
 1. Set up a CI job with the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint using `"job_type": ci` or from the [dbt Cloud UI](#set-up-ci-jobs).
-1. Call the [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run) API endpoint to trigger the CI job. You must include these fields to the payload:
-   - Provide the pull request (PR) ID with one of these fields, even if you're using a different Git provider (like Bitbucket). This can make your code less human-readable but it will _not_ affect dbt functionality. 
+1. Call the [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run) API endpoint to trigger the CI job. You must include both of these fields to the payload:
+   - Provide the pull request (PR) ID using one of these fields:
 
       - `github_pull_request_id`
       - `gitlab_merge_request_id`
-      - `azure_devops_pull_request_id` 
+      - `azure_devops_pull_request_id`
+      - `non_native_pull_request_id` (for example, BitBucket)
    - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
 ## Example pull requests
