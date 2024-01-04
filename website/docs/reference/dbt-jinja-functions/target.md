@@ -5,16 +5,16 @@ id: "target"
 description: "Contains information about your connection to the warehouse."
 ---
 
-`target` contains information about your connection to the warehouse.
 
-* **dbt Core:** These values are based on the target defined in your [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml)
-* **dbt Cloud Scheduler:**
-    * `target.name` is defined per job as described [here](/docs/build/custom-target-names).
-    * For all other attributes, the values are defined by the deployment connection. To check these values, click **Deploy** from the upper left and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
-* **dbt Cloud IDE:** The values are defined by your connection and credentials. To check any of these values, head to your account (via your profile image in the top right hand corner), and select the project under "Credentials".
+The `target` variable contains information about your connection to the warehouse.
 
+- **dbt Core:** These values are based on the target defined in your profiles.yml file. Please note that for certain adapters, such as Spark, additional configuration steps may be required. Refer to the [profiles documentation](https://docs.getdbt.com/dbt-cli/configure-your-profile#about-profiles) for adapter-specific details.
 
-Some configs are shared between all adapters, while others are adapter-specific.
+- **dbt Cloud Scheduler:** `target.name` is defined per job as described [here](https://docs.getdbt.com/reference/dbt-jinja-functions/target). For other attributes, values are defined by the deployment connection. To check these values, click Deploy from the upper left and select Environments. Then, select the relevant deployment environment, and click Settings.
+
+- **dbt Cloud IDE:** The values are defined by your connection and credentials. To check any of these values, head to your account (via your profile image in the top right-hand corner), and select the project under "Credentials".
+
+Some configurations are shared between all adapters, while others are adapter-specific.
 
 ## Common
 | Variable | Example | Description |
