@@ -511,7 +511,7 @@ This section is only for those projects that connect to their git repository usi
 
 :::
 
-The setup for this pipeline will use the same steps as the prior page. Before moving on, **follow steps 1-5 from the [prior page](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge)**
+The setup for this pipeline will use the same steps as the prior page. Before moving on, follow steps 1-5 from the [prior page](https://docs.getdbt.com/guides/custom-cicd-pipelines?step=2).
 
 ### 1. Create a pipeline job that runs when PRs are created
 

@@ -135,7 +135,6 @@ const sidebarSettings = {
                 "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/postgres-privatelink",
                 "docs/cloud/secure/vcs-privatelink",
-                "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
             "docs/cloud/billing",
@@ -1030,6 +1029,8 @@ const sidebarSettings = {
             id: "best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
           },
           items: [
+            "best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
+            "best-practices/how-we-build-our-metrics/semantic-layer-2-setup",
             "best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
             "best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
             "best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
