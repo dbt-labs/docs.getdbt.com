@@ -160,7 +160,7 @@ This is not currently possible, but something we hope to enable in the near futu
 
 <detailsToggle alt_header="Is it possible to orchestrate job runs across multiple different projects?">
 
-dbt Cloud will soon offer a capability to trigger jobs on the completion of another job, including a job in a different project. This offers one mechanism for executing a pipeline from start to finish across projects.
+dbt Cloud will soon offer the capability to trigger jobs on the completion of another job, including a job in a different project. This offers one mechanism for executing a pipeline from start to finish across projects.
 
 </detailsToggle>
 
