@@ -82,6 +82,4 @@ Here is a  example of a dbt-extrica profile parameters. At a minimum, you need t
 | port       | integer  | The port parameter specifies the port number on which the Extrica's Trino server is listening.        |
 | schema     | string   | Schema or database name for the connection. |
 | catalog    | string   | Name of the catalog representing the data source. |
-| threads    | integer  | Number of threads for parallel execution of queries. (1 or more |
-
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+| threads    | integer  | Number of threads for parallel execution of queries. (1 or more) |
