@@ -9,6 +9,17 @@ dbt Mesh is a new architecture enabled by dbt Cloud. It allows you to better man
 
 ## Overview of Mesh
 
+<detailsToggle alt_header="What are the main benefits of implementing dbt Mesh?">
+Here are some benefits of implementing dbt Mesh:
+1. **Ship data products faster**: With a more modular architecture, teams can make changes rapidly and independently in specific areas without impacting the entire system, leading to faster development cycles.
+2. **Improve trust in data:** Adopting dbt Mesh helps ensure that changes in one domain's data models do not unexpectedly break dependencies in other domain areas, leading to a more secure and predictable data environment.
+3. **Reduce complexity**: By organizing transformation logic into distinct domains, dbt Mesh reduces the complexity inherent in large, monolithic projects, making them easier to manage and understand.
+4. **Improve collaboration**: Teams are able to share and build upon each other's work without duplicating efforts.
+
+Most importantly, all this can be accomplished without the central data team losing the ability to see lineage across the entire organization, or compromising on governance mechanisms.
+
+</detailsToggle>
+
 <detailsToggle alt_header="What are model contracts?">
 
 dbt [model contracts](/docs/collaborate/govern/model-contracts) serve as a governance tool enabling the definition and enforcement of data structure standards in your dbt models. They allow you to specify and uphold data model guarantees, including column data types, allowing for the stability of dependent models. Should a model fail to adhere to its established contracts, it will not build successfully.
@@ -40,17 +51,6 @@ A [model access modifier](/docs/collaborate/govern/model-access) in dbt determin
 <detailsToggle alt_header="What are model groups?">
 
 A [model group](/docs/collaborate/govern/model-access#groups) in dbt is a concept used to organize models under a common category or ownership. This categorization can be based on various criteria, such as the team responsible for the models or the specific data source they model.
-
-</detailsToggle>
-
-<detailsToggle alt_header="What are the main benefits of implementing dbt Mesh?">
-Here are some benefits of implementing dbt Mesh:
-1. **Ship data products faster**: With a more modular architecture, teams can make changes rapidly and independently in specific areas without impacting the entire system, leading to faster development cycles.
-2. **Improve trust in data:** Adopting dbt Mesh helps ensure that changes in one domain's data models do not unexpectedly break dependencies in other domain areas, leading to a more secure and predictable data environment.
-3. **Reduce complexity**: By organizing transformation logic into distinct domains, dbt Mesh reduces the complexity inherent in large, monolithic projects, making them easier to manage and understand.
-4. **Improve collaboration**: Teams are able to share and build upon each other's work without duplicating efforts.
-
-Most importantly, all this can be accomplished without the central data team losing the ability to see lineage across the entire organization, or compromising on governance mechanisms.
 
 </detailsToggle>
 
