@@ -140,7 +140,7 @@ No. A contract applies to an entire model, including all columns in the model’
 
 </detailsToggle>
 
-<detailsToggle alt_header="Can you have multiple owners in a group?">
+<detailsToggle alt_header="Can I have multiple owners in a group?">
 
 No, a [group](/docs/collaborate/govern/model-access#groups) can only be assigned to a single owner.  However, the assigned owner can be a _team_, rather than an individual.
 
@@ -208,7 +208,8 @@ First things first: access to underlying data is always defined and enforced by 
 
 **Public:** Models with `public` access can be referenced everywhere. These are the “data products” of your organization.
 
-**Protected:** Models with `protected` access can only be referenced within the same project. This is the default level of model access. (We are discussing a future extension to `protected` models that will allow for their reference in *specific* downstream projects. Please read [the GitHub issue](https://github.com/dbt-labs/dbt-core/issues/9340), and upvote/comment if you’re interested in this use case.)
+**Protected:** Models with `protected` access can only be referenced within the same project. This is the default level of model access. 
+We are discussing a future extension to `protected` models to allow for their reference in _specific_ downstream projects. Please read [the GitHub issue](https://github.com/dbt-labs/dbt-core/issues/9340), and upvote/comment if you’re interested in this use case.
 
 **Private:** Model `groups` enable more-granular control over where `private` models can be referenced. By defining a group, and configuring models to belong to that group, you can restrict other models (not in the same group) from referencing any `private` models the group contains. Groups also provide a standard mechanism for defining the `owner` of all resources it contains.
 
@@ -218,9 +219,9 @@ Because dbt does not implicitly coordinate data warehouse `grants` with model-le
 
 </detailsToggle>
 
-<detailsToggle alt_header="Is it possible to request access permissions from other teams?">
+<detailsToggle alt_header="Is it possible to request access permissions from other teams within dbt Cloud?">
 
-There is not currently! But this is something we may evaluate for the future.
+Not currently! But this is something we may evaluate for the future.
 
 </detailsToggle>
 
@@ -248,7 +249,7 @@ The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dbt Mesh are c
 
 The Semantic Layer in dbt Cloud allows teams to centrally define business metrics and dimensions. It ensures consistent and reliable metric definitions across various analytics tools and platforms.
 
-dbt Mesh enables organizations to split their data architecture into multiple domain-specific projects, while retaining the ability to reference “public” models across projects. It is also possible to reference a “public” model from another project for the purpose of defining semantic models and metrics. In this way, your organization can have multiple dbt projects feed into a unified semantic layer, ensuring that metrics and dimensions are consistently defined and understood across these different domains.
+dbt Mesh enables organizations to split their data architecture into multiple domain-specific projects, while retaining the ability to reference “public” models across projects. It is also possible to reference a “public” model from another project for the purpose of defining semantic models and metrics. Your organization can have multiple dbt projects feed into a unified semantic layer, ensuring that metrics and dimensions are consistently defined and understood across these domains.
 
 </detailsToggle>
 
@@ -270,17 +271,17 @@ The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) allows users to develop 
 
 <detailsToggle alt_header="Does dbt Mesh require me to be on a specific version of dbt?">
 
-Yes — your account must be on at least dbt v1.6 to take advantage of [cross-project dependencies](/docs/collaborate/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
+Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-core-in-cloud) to take advantage of [cross-project dependencies](/docs/collaborate/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
 
 </detailsToggle>
 
 <detailsToggle alt_header="Is there a way to leverage dbt Mesh capabilities in dbt Core?">
 
-Not all of them. While dbt Core defines several of the foundational elements for dbt Mesh, dbt Cloud offers an enhanced experience that leverages these elements for scaled collaboration across multiple teams, facilitated by multi-project discovery in dbt Explorer that’s tailored to each user’s individual access.
+While dbt Core defines several of the foundational elements for dbt Mesh, dbt Cloud offers an enhanced experience that leverages these elements for scaled collaboration across multiple teams, facilitated by multi-project discovery in dbt Explorer that’s tailored to each user’s access.
 
-Several of the key components that underpin the dbt Mesh pattern — including model contracts, versions, and access modifiers — are defined and implemented in dbt Core. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
+Several key components that underpin the dbt Mesh pattern, including model contracts, versions, and access modifiers, are defined and implemented in dbt Core. We believe these are components of the core language, which is why their implementations are open source. We want to define a standard pattern that analytics engineers everywhere can adopt, extend, and help us improve.
 
-To reference models defined in another project, users can also leverage a longstanding feature of dbt Core: [packages](/docs/build/packages). By importing an upstream project as a package, dbt will import all models defined in that project, which enables the resolution of cross-project references to those models — [optionally restricted](/docs/collaborate/govern/model-access#how-do-i-restrict-access-to-models-defined-in-a-package) to just the models with `public` access.
+To reference models defined in another project, users can also leverage [packages](/docs/build/packages), a longstanding feature of dbt Core. By importing an upstream project as a package, dbt will import all models defined in that project, which enables the resolution of cross-project references to those models. They can be [optionally restricted](/docs/collaborate/govern/model-access#how-do-i-restrict-access-to-models-defined-in-a-package) to just the models with `public` access.
 
 The major distinction comes with dbt Cloud's metadata service, which is unique to the dbt Cloud platform and allows for the resolution of references to only the public models in a project. This service enables users to take dependencies on upstream projects, and reference just their `public` models, *without* needing to load the full complexity of those upstream projects into their local development environment.
 
@@ -307,8 +308,8 @@ Refer to our developer guide on [How we structure our dbt Mesh projects](https:/
 
 <detailsToggle alt_header="My team isn’t structured to require multiple projects today. What aspects of dbt Mesh are relevant to me?">
 
-Let’s say your organization has fewer than 500 models, and fewer than a dozen regular contributors to dbt. You’re operating at a scale that’s well served by the monolith (a single project), and the larger pattern of dbt Mesh probably isn’t a good fit.
+Let’s say your organization has fewer than 500 models and fewer than a dozen regular contributors to dbt. You're operating at a scale well served by the monolith (a single project), and the larger pattern of dbt Mesh probably won't provide any immediate benefits.
 
-That said, it’s *never too early* to think about how you’re organizing models **within** that project. Use model `groups` to define clear ownership boundaries, and `private` access to restrict purpose-built models from becoming load-bearing blocks in an unrelated section of the DAG. Your future selves will thank you for having defined these interfaces, especially if you reach a scale where it makes sense to “graduate” the interfaces between `groups` into boundaries between projects.
+It’s never too early to think about how you’re organizing models _within_ that project. Use model `groups` to define clear ownership boundaries and `private` access to restrict purpose-built models from becoming load-bearing blocks in an unrelated section of the DAG. Your future selves will thank you for defining these interfaces, especially if you reach a scale where it makes sense to “graduate” the interfaces between `groups` into boundaries between projects.
 
 </detailsToggle>
