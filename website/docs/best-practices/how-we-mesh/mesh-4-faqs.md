@@ -7,15 +7,6 @@ sidebar_label: "dbt Mesh FAQs"
 
 dbt Mesh is a new architecture enabled by dbt Cloud. It allows you to better manage complexity by deploying multiple interconnected dbt projects instead of a single large, monolithic project. It’s designed to accelerate development, without compromising governance.
 
-The following frequently asked questions (FAQs) are categorized into the following topics:
-
-- [Overview of Mesh](#overview-of-mesh)
-- [How dbt Mesh works](#how-dbt-mesh-works)
-- [Access and permissions](#access-and-permissions)
-- [Compatibility with other features](#compatibility-with-other-features)
-- [When and where dbt Mesh is available](#when-and-where-dbt-mesh-is-available)
-- [Tips on implementing dbt Mesh](#tips-on-implementing-dbt-mesh)
-
 ## Overview of Mesh
 
 <detailsToggle alt_header="How do I implement contracts for my models?">
