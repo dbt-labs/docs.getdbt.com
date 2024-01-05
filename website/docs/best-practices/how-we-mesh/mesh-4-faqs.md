@@ -204,7 +204,7 @@ First things first: access to underlying data is always defined and enforced by 
 
 [dbt Cloud Enterprise plans](https://www.getdbt.com/pricing) support [role-based access control (RBAC)](/docs/cloud/manage-access/enterprise-permissions#how-to-set-up-rbac-groups-in-dbt-cloud) that manages granular permissions for users and user groups. You can control which users can see or edit all aspects of a dbt Cloud project. A user’s access to dbt Cloud projects also determines whether they can “explore” that project in detail. Roles, users, and groups are defined within the dbt Cloud application via the UI or by integrating with an identity provider.
 
-[Model access](/docs/collaborate/govern/model-access) is about defining where models can be **referenced.** It also informs the discoverability of those projects within dbt Explorer. Model `access` is defined in code, just like any other model configuration (`materialized`, `tags`, etc).
+[Model access](/docs/collaborate/govern/model-access) defines where models can be referenced. It also informs the discoverability of those projects within dbt Explorer. Model `access` is defined in code, just like any other model configuration (`materialized`, `tags`, etc).
 
 **Public:** Models with `public` access can be referenced everywhere. These are the “data products” of your organization.
 
