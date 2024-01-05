@@ -54,7 +54,7 @@ Most importantly, all this can be accomplished without the central data team los
 
 </detailsToggle>
 
-<detailsToggle alt_header="What are some potential drawbacks of using a dbt Mesh?">
+<detailsToggle alt_header="What are some potential drawbacks of using dbt Mesh?">
 
 This is a new way of working, and the intentionality required to build, and then maintain, cross-project interfaces and dependencies may feel like a slowdown versus what some developers are used to. This way of working introduces intentional friction that makes it more difficult to change everything at once.
 
