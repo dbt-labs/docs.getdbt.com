@@ -188,7 +188,7 @@ We also expose some of this information in dbt Cloud itself in [jobs](/docs/depl
 
 ## Permissions and access
 
-<detailsToggle alt_header="How do user access permissions work in a dbt Mesh? ">
+<detailsToggle alt_header="How do user access permissions work in dbt Mesh? ">
 
 The existence of projects that have at least one public model will be visible to everyone in the organization with [read-only access](/docs/cloud/manage-access/seats-and-users). 
 
