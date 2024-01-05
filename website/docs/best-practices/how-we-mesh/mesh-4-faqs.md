@@ -56,7 +56,7 @@ A [model group](/docs/collaborate/govern/model-access#groups) in dbt is a concep
 
 <detailsToggle alt_header="What are some potential challenges when using dbt Mesh?">
 
-This is a new way of working, and the intentionality required to build, and then maintain, cross-project interfaces and dependencies may feel like a slowdown versus what some developers are used to. This way of working introduces intentional friction that makes it more difficult to change everything at once.
+This is a new way of working, and the intentionality required to build, and then maintain, cross-project interfaces and dependencies may feel like a slowdown versus what some developers are used to. The intentional friction introduced promotes thoughtful changes, fostering a mindset that values stability and systematic adjustments over rapid transformations.
 
 Orchestration across multiple projects is also likely to be slightly more challenging for many organizations, although we’re currently developing new functionality that will make this process simpler.
 
