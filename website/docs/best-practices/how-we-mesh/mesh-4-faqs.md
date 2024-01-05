@@ -62,11 +62,11 @@ Orchestration across multiple projects is also likely to be slightly more challe
 
 </detailsToggle>
 
-<detailsToggle alt_header="How does this relate to the concept of Data Mesh?">
+<detailsToggle alt_header="How does this relate to the concept of data mesh?">
 
-dbt Mesh allows you to better **operationalize** a Data Mesh by enabling decentralized, domain-specific data ownership and collaboration.
+dbt Mesh allows you to better _operationalize_ data mesh by enabling decentralized, domain-specific data ownership and collaboration.
 
-In a Data Mesh, each business domain is responsible for its own data as a product. This is the same goal that dbt Mesh facilitates by enabling organizations to break down large, monolithic data projects into smaller, domain-specific dbt projects. Each team or domain can independently develop, maintain, and share their data models, fostering a decentralized data environment.
+In data mesh, each business domain is responsible for its data as a product. This is the same goal that dbt Mesh facilitates by enabling organizations to break down large, monolithic data projects into smaller, domain-specific dbt projects. Each team or domain can independently develop, maintain, and share its data models, fostering a decentralized data environment.
 
 dbt Mesh also enhances the interoperability and reusability of data across different domains, a key aspect of the Data Mesh philosophy. By allowing cross-project references and shared governance through model contracts and access controls, dbt Mesh ensures that while data ownership is decentralized, there is still a governed structure to the overall data architecture.
 
