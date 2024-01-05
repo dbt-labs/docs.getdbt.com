@@ -54,7 +54,7 @@ Most importantly, all this can be accomplished without the central data team los
 
 </detailsToggle>
 
-<detailsToggle alt_header="What are some potential drawbacks of using dbt Mesh?">
+<detailsToggle alt_header="What are some potential challenges when using dbt Mesh?">
 
 This is a new way of working, and the intentionality required to build, and then maintain, cross-project interfaces and dependencies may feel like a slowdown versus what some developers are used to. This way of working introduces intentional friction that makes it more difficult to change everything at once.
 
@@ -68,7 +68,7 @@ dbt Mesh allows you to better _operationalize_ data mesh by enabling decentraliz
 
 In data mesh, each business domain is responsible for its data as a product. This is the same goal that dbt Mesh facilitates by enabling organizations to break down large, monolithic data projects into smaller, domain-specific dbt projects. Each team or domain can independently develop, maintain, and share its data models, fostering a decentralized data environment.
 
-dbt Mesh also enhances the interoperability and reusability of data across different domains, a key aspect of the Data Mesh philosophy. By allowing cross-project references and shared governance through model contracts and access controls, dbt Mesh ensures that while data ownership is decentralized, there is still a governed structure to the overall data architecture.
+dbt Mesh also enhances the interoperability and reusability of data across different domains, a key aspect of the data mesh philosophy. By allowing cross-project references and shared governance through model contracts and access controls, dbt Mesh ensures that while data ownership is decentralized, there is still a governed structure to the overall data architecture.
 
 </detailsToggle>
 
@@ -102,13 +102,13 @@ No, unless downstream projects are installed as [packages](/docs/build/packages)
 
 <detailsToggle alt_header="If each project/domain has its own data warehouse, is it still possible to build models across them?">
 
-Yes; as long as they’re in the same data platform (such as BigQuery, Databricks, Redshift, Snowflake, or Starburst) and you have configured permissions and sharing in that data platform provider to allow for this.
+Yes, as long as they’re in the same data platform (BigQuery, Databricks, Redshift, Snowflake, etc.) and you have configured permissions and sharing in that data platform provider to allow this.
 
 </detailsToggle>
 
 <detailsToggle alt_header="Can I run tests that involve tables from multiple different projects?">
 
-Yes! because the cross-project collaboration is done using the `{{ ref() }}` macro, you can use those models from other teams in [singular tests](/docs/build/data-tests#singular-data-tests). 
+Yes, because the cross-project collaboration is done using the `{{ ref() }}` macro, you can use those models from other teams in [singular tests](/docs/build/data-tests#singular-data-tests). 
 
 </detailsToggle>
 
@@ -118,8 +118,8 @@ Each team defines their connection to the data warehouse, and the default schema
 
 By default, each project belonging to a team will create:
 
-- One schema for production runs (for example, `finance`)
-- One schema per developer (for example, `dev_jerco`)
+- One schema for production runs (for example, `finance`).
+- One schema per developer (for example, `dev_jerco`).
 
 Depending on each team’s needs, this can be customized with model-level [schema configurations](/docs/build/custom-schemas), including the ability to define different rules by environment.
 
@@ -127,7 +127,7 @@ Depending on each team’s needs, this can be customized with model-level [schem
 
 <detailsToggle alt_header="Is it possible to apply model contracts to source data?">
 
-No, contracts can currently only be applied at the [model level](/docs/collaborate/govern/model-contracts). It is a recommended best practice to [define staging models](/best-practices/how-we-structure/2-staging) on top of sources, and it is possible to define contracts on top of those staging models.
+No, contracts can only be applied at the [model level](/docs/collaborate/govern/model-contracts). It is a recommended best practice to [define staging models](/best-practices/how-we-structure/2-staging) on top of sources, and it is possible to define contracts on top of those staging models.
 
 </detailsToggle>
 
@@ -136,13 +136,13 @@ No, contracts can currently only be applied at the [model level](/docs/collabora
 No. A contract applies to an entire model, including all columns in the model’s output. This is the same set of columns that a consumer would see when viewing the model’s details in Explorer, or when querying the model in the data platform. 
 
 - If you wish to contract only a subset of columns, you can create a separate model (materialized as a view) selecting only that subset. 
-- If you wish to limit which rows or columns a downstream consumer can see when they query the model’s data, depending on who they are, specific data platforms offer advanced capabilities around dynamic row-level access and column-level data masking.
+- If you wish to limit which rows or columns a downstream consumer can see when they query the model’s data, depending on who they are, some data platforms offer advanced capabilities around dynamic row-level access and column-level data masking.
 
 </detailsToggle>
 
 <detailsToggle alt_header="Can you have multiple owners in a group?">
 
-No, a [group](/docs/collaborate/govern/model-access#groups) can currently only be assigned to have a single owner. Note, however, that the assigned can be a _team_, not just an individual.
+No, a [group](/docs/collaborate/govern/model-access#groups) can only be assigned to a single owner.  However, the assigned owner can be a _team_, rather than an individual.
 
 </detailsToggle>
 
