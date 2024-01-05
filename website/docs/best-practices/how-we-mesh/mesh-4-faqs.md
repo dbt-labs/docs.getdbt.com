@@ -198,7 +198,7 @@ Private or protected models require a user to have read-only access on the speci
 
 <detailsToggle alt_header="How do all the different types of “access” interact?">
 
-There’s model-level access within dbt; role-based access for users and groups in dbt Cloud; and access to actual underlying data within the data platform.
+There’s model-level access within dbt, role-based access for users and groups in dbt Cloud, and access to the underlying data within the data platform.
 
 First things first: access to underlying data is always defined and enforced by the underlying data platform (for example, BigQuery, Databricks, Redshift, Snowflake, Starburst, etc.) This access is managed by executing “DCL statements” (namely `grant`). dbt makes it easy to [configure `grants` on models](/reference/resource-configs/grants), which provision data access for other roles/users/groups in the data warehouse. However, dbt does _not_ automatically define or coordinate those grants unless they are configured explicitly. Refer to your organization's system for managing data warehouse permissions.
 
