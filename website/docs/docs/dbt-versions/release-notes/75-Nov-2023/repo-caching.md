@@ -11,4 +11,4 @@ Now available for dbt Cloud Enterprise plans is a new option to enable Git repos
 
 To learn more, refer to [Repo caching](/docs/deploy/deploy-environments#git-repository-caching).
 
-<Lightbox src="/img/docs/deploy/example-repo-caching.png" width="85%" title="Example of the Repository caching option" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Repository caching option" />
