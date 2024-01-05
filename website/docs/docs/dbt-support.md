@@ -97,4 +97,3 @@ For SQL writing, project performance review, or project building, refer to dbt P
 For help writing SQL, reviewing the overall performance of your project, or want someone to actually help build your dbt project, refer to the following pages:
 - List of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/).
 - dbt Labs' [Services](https://www.getdbt.com/dbt-labs/services/).
-
