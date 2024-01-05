@@ -9,21 +9,21 @@ dbt Mesh is a new architecture enabled by dbt Cloud. It allows you to better man
 
 ## Overview of Mesh
 
-<detailsToggle alt_header="How do I implement contracts for my models?">
+<detailsToggle alt_header="What are model contracts?">
 
-In dbt, [model contracts](/docs/collaborate/govern/model-contracts) serve as a governance tool enabling the definition and enforcement of data structure standards in your dbt models. They allow you to specify and uphold data model guarantees, including column data types, allowing for stability of dependent models. Should a model fail to adhere to its established contracts, it will not successfully build.
+dbt [model contracts](/docs/collaborate/govern/model-contracts) serve as a governance tool enabling the definition and enforcement of data structure standards in your dbt models. They allow you to specify and uphold data model guarantees, including column data types, allowing for the stability of dependent models. Should a model fail to adhere to its established contracts, it will not build successfully.
 
 </detailsToggle>
 
 <detailsToggle alt_header="What are model versions?">
 
-dbt [model versions](https://docs.getdbt.com/docs/collaborate/govern/model-versions) are iterations of your dbt models made over time. In many cases, you may knowingly choose to change a model’s structure in a way that “breaks” the previous model contract, and may break downstream queries depending on that model’s structure. When you do so, you may find it useful to create a new version of the model to signify this change.
+dbt [model versions](https://docs.getdbt.com/docs/collaborate/govern/model-versions) are iterations of your dbt models made over time. In many cases, you might knowingly choose to change a model’s structure in a way that “breaks” the previous model contract, and may break downstream queries depending on that model’s structure. When you do so, creating a new version of the model is useful to signify this change.
 
-You can use **model versions** to:
+You can use model versions to:
 
-- Test "prerelease" changes (in production, in downstream systems)
-- Bump the latest version, to be used as the canonical source of truth
-- Offer a migration window off the "old" version
+- Test "prerelease" changes (in production, in downstream systems).
+- Bump the latest version, to be used as the canonical "source of truth."
+- Offer a migration window off the "old" version.
 
 </detailsToggle>
 
