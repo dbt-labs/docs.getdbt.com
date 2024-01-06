@@ -450,5 +450,62 @@ The syntax depends on how you configure your `incremental_strategy`:
 
 </VersionBlock>
 
+### Custom strategies
+
+<VersionBlock lastVersion="1.1">
+
+Custom incremental strategies can be defined beginning in dbt v1.2.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2">
+
+As an easier alternative to [creating an entirely new materialization](/guides/create-new-materializations), users can define and use their own "custom" user-defined incremental strategies by:
+
+1. defining a macro named `get_incremental_{STRATEGY}_sql`
+2. configuring `incremental_strategy: {STRATEGY}` within an incremental model
+
+
+<File name='macros/my_custom_strategies.sql'>
+
+```sql
+{% macro get_incremental_insert_only_sql(arg_dict) %}
+
+  {% do return(some_custom_macro_with_sql(arg_dict["target_relation"], arg_dict["temp_relation"], arg_dict["unique_key"], arg_dict["dest_columns"], arg_dict["incremental_predicates"])) %}
+
+{% endmacro %}
+
+
+{% macro some_custom_macro_with_sql(target_relation, temp_relation, unique_key, dest_columns, incremental_predicates) %}
+
+    {%- set dest_cols_csv = get_quoted_csv(dest_columns | map(attribute="name")) -%}
+
+    insert into {{ target_relation }} ({{ dest_cols_csv }})
+    (
+        select {{ dest_cols_csv }}
+        from {{ temp_relation }}
+    )
+
+{% endmacro %}
+```
+
+</File>
+
+<File name='models/my_model.sql'>
+
+```sql
+{{ config(
+    materialized="incremental",
+    incremental_strategy="insert_only",
+    ...
+) }}
+
+...
+```
+
+</File>
+
+</VersionBlock>
+
 <Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="incremental"/>
