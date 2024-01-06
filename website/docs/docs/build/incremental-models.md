@@ -466,6 +466,8 @@ As an easier alternative to [creating an entirely new materialization](/guides/c
 2. configuring `incremental_strategy: {STRATEGY}` within an incremental model
 
 
+For example, a user-defined strategy named `insert_only` can be defined and used with the following files:
+
 <File name='macros/my_custom_strategies.sql'>
 
 ```sql
