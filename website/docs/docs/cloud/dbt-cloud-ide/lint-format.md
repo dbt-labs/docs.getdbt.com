@@ -235,7 +235,7 @@ Make sure you're on a development branch. Formatting or Linting isn't available 
 
 <details>
 <summary>What are some other known limitations with dbt Cloud linting?</summary>
-&mdash; Currently, the dbt Cloud IDE can only lint or fix files up to a certain size and complexity. If you attempt to lint or fix files that are too large (which would take more than 60 seconds for the dbt Cloud backend to process), you will see an 'Unable to complete linting this file' error. Please break up your model into smaller models (files) so that they are less complex to lint or fix.
+&mdash; Currently, the dbt Cloud IDE can only lint or fix files up to a certain size and complexity. If you attempt to lint or fix files that are too large (which would take more than 60 seconds for the dbt Cloud backend to process), you will see an 'Unable to complete linting this file' error. Please break up your model into smaller models (files) so that they are less complex to lint or fix. Note that linting is less complex than fixing so you may run into a scenario where a file can be linted but not fixed.
 </details>
 
 ## Related docs
