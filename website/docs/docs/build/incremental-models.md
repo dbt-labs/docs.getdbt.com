@@ -507,6 +507,16 @@ For example, a user-defined strategy named `insert_only` can be defined and used
 
 </File>
 
+### Custom strategies from a package
+
+To use the `merge_null_safe` custom incremental strategy from the `example` package, first [install the package](/build/packages#how-do-i-add-a-package-to-my-project), then add this macro to your project:
+
+```sql
+{% macro get_incremental_merge_null_safe_sql(arg_dict) %}
+    {% do return(example.get_incremental_merge_null_safe_sql(arg_dict)) %}
+{% endmacro %}
+```
+
 </VersionBlock>
 
 <Snippet path="discourse-help-feed-header" />
