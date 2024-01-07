@@ -233,6 +233,11 @@ Make sure you're on a development branch. Formatting or Linting isn't available 
 &mdash; If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
 </details>
 
+<details>
+<summary>What are some other known limitations with dbt Cloud linting?</summary>
+&mdash; Currently, the dbt Cloud IDE can only lint or fix files up to a certain size and complexity. If you attempt to lint or fix files that are too large (which would take more than 60 seconds for the dbt Cloud backend to process), you will see an 'Unable to complete linting this file' error. Please break up your model into smaller models (files) so that they are less complex to lint or fix.
+</details>
+
 ## Related docs
 
 - [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
