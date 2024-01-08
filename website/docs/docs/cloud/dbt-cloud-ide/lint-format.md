@@ -210,18 +210,17 @@ To ensure optimal code quality, consistent code, and styles &mdash; it's highly 
 
 However, you can customize and include an additional child `.sqlfluff` configuration file within specific subfolders of your dbt project. <br /><br />By nesting a `.sqlfluff` file in a subfolder, SQLFluff will apply the rules defined in that subfolder's configuration file to any files located within it. The rules specified in the parent `.sqlfluff` file will be used for all other files and folders outside of the subfolder. This hierarchical approach allows for tailored linting rules while maintaining consistency throughout your project. Refer to [SQLFluff documentation](https://docs.sqlfluff.com/en/stable/configuration.html#configuration-files) for more info.
 
-</<detailsToggle>
+</detailsToggle>
 
 <detailsToggle alt_header="Can I run SQLFluff commands from the terminal?">
 
 Currently, running SQLFluff commands from the terminal isn't supported. 
-</details>
+</detailsToggle>
 
-<details>
-<summary>Why am I unable to see the <bold>Lint</bold> or <bold>Format</bold> button?</summary>
+<detailsToggle alt_header="Why am I unable to see the <bold>Lint</bold> or <bold>Format</bold> button?">
 
 Make sure you're on a development branch. Formatting or Linting isn't available on "main" or "read-only" branches. 
-</<detailsToggle>
+</detailsToggle>
 
 <detailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE (such as a GitHub Action)?">
 - Double-check that your SQLFluff version matches the one in dbt Cloud IDE (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
