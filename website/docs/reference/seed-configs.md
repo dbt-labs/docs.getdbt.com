@@ -1,10 +1,18 @@
 ---
 title: Seed configurations
 description: "Read this guide to learn about using seed configurations in dbt."
+meta:
+  resource_type: Seeds
 ---
+
+import ConfigResource from '/snippets/_config-description-resource.md';
+import ConfigGeneral from '/snippets/_config-description-general.md';
+
 
 ## Available configurations
 ### Seed-specific configurations
+
+<ConfigResource meta={frontMatter.meta} />
 
 <Tabs
   groupId="config-languages"
@@ -55,6 +63,8 @@ seeds:
 </Tabs>
 
 ### General configurations
+
+<ConfigGeneral />
 
 <Tabs
   groupId="config-languages"

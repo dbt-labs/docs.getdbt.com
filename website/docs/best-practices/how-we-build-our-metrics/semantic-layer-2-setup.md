@@ -2,6 +2,7 @@
 title: "Set up MetricFlow"
 description: Getting started with the dbt and MetricFlow
 hoverSnippet: Learn how to get started with the dbt and MetricFlow
+pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models"
 ---
 
 ## Getting started
@@ -13,9 +14,23 @@ git clone git@github.com:dbt-labs/jaffle-sl-template.git
 cd path/to/project
 ```
 
-Next, before you start writing code, you need to install MetricFlow as an extension of a dbt adapter from PyPI  (dbt Core users only). The MetricFlow is compatible with Python versions 3.8 through 3.11.
+Next, before you start writing code, you need to install MetricFlow:
 
-We'll use pip to install MetricFlow and our dbt adapter:
+<Tabs>
+
+<TabItem value="cloud" label="dbt Cloud">
+
+- [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; MetricFlow commands are embedded in the dbt Cloud CLI. You can immediately run them once you install the dbt Cloud CLI. Using dbt Cloud means you won't need to manage versioning — your dbt Cloud account will automatically manage the versioning.
+
+- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) &mdash; You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
+
+</TabItem>
+
+<TabItem value="core" label="dbt Core">
+
+- Download MetricFlow as an extension of a dbt adapter from PyPI  (dbt Core users only). The MetricFlow is compatible with Python versions 3.8 through 3.11. 
+  - **Note**: You'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
+- We'll use pip to install MetricFlow and our dbt adapter:
 
 ```shell
 # activate a virtual environment for your project,
@@ -23,17 +38,20 @@ We'll use pip to install MetricFlow and our dbt adapter:
 python -m venv [virtual environment name]
 source [virtual environment name]/bin/activate
 # install dbt and MetricFlow
-pip install "dbt-metricflow[adapter name]"
-# e.g. pip install "dbt-metricflow[snowflake]"
+python -m pip install "dbt-metricflow[adapter name]"
+# e.g. python -m pip install "dbt-metricflow[snowflake]"
 ```
 
-Lastly, to get to the pre-Semantic Layer starting state, checkout the `start-here` branch.
+</TabItem>
+</Tabs>
+
+- Now that you're ready to use MetricFlow, get to the pre-Semantic Layer starting state by checking out the `start-here` branch:
 
 ```shell
 git checkout start-here
 ```
 
-For more information, refer to the [MetricFlow commands](/docs/build/metricflow-commands) or a [quickstart](/guides) to get more familiar with setting up a dbt project.
+For more information, refer to the [MetricFlow commands](/docs/build/metricflow-commands) or the [quickstart guides](/guides) to get more familiar with setting up a dbt project.
 
 ## Basic commands
 

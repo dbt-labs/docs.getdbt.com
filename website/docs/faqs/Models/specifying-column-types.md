@@ -38,6 +38,6 @@ So long as your model queries return the correct column type, the table you crea
 
 To define additional column options:
 
-* Rather than enforcing uniqueness and not-null constraints on your column, use dbt's [testing](/docs/build/tests) functionality to check that your assertions about your model hold true.
+* Rather than enforcing uniqueness and not-null constraints on your column, use dbt's [data testing](/docs/build/data-tests) functionality to check that your assertions about your model hold true.
 * Rather than creating default values for a column, use SQL to express defaults (e.g. `coalesce(updated_at, current_timestamp()) as updated_at`)
 * In edge-cases where you _do_ need to alter a column (e.g. column-level encoding on Redshift), consider implementing this via a [post-hook](/reference/resource-configs/pre-hook-post-hook).

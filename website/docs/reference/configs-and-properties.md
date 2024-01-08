@@ -3,7 +3,7 @@ title: Configs, properties, what are they?
 ---
 
 Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. Resources can also define **configurations**, which are a special kind of property that bring extra abilities. What's the distinction?
-- Properties are declared for resources one-by-one in `.yml` files. Configs can be defined there, nested under a `config` property. They can also be set one-by-one via a `config()` macro (right within `.sql` files), and for many resources at once in `dbt_project.yml`.
+- Properties are declared for resources one-by-one in  `properties.yml` files. Configs can be defined there, nested under a `config` property. They can also be set one-by-one via a `config()` macro (right within `.sql` files), and for many resources at once in `dbt_project.yml`.
 - Because configs can be set in multiple places, they are also applied hierarchically. An individual resource might _inherit_ or _override_ configs set elsewhere.
 - You can select resources based on their config values using the `config:` selection method, but not the values of non-config properties
 
@@ -11,7 +11,7 @@ A rule of thumb: properties declare things _about_ your project resources; confi
 
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
-* Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
+* Assert "truths" about a model, in the form of [data tests](/docs/build/data-tests), e.g. "this `id` column is unique"
 * Define pointers to existing tables that contain raw data, in the form of [sources](/docs/build/sources), and assert the expected "freshness" of this raw data
 * Define official downstream uses of your data models, in the form of [exposures](/docs/build/exposures)
 
@@ -33,7 +33,7 @@ Depending on the resource type, configurations can be defined:
 
 dbt prioritizes configurations in order of specificity, from most specificity to least specificity. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
 
-Note - Generic tests work a little differently when it comes to specificity. See [test configs](/reference/test-configs).
+Note - Generic data tests work a little differently when it comes to specificity. See [test configs](/reference/data-test-configs).
 
 Within the project file, configurations are also applied hierarchically. The most specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
@@ -46,9 +46,7 @@ Most configurations are "clobbered" when applied hierarchically. Whenever a more
 
 ## Where can I define properties?
 
-In dbt, properties are declared in `.yml` files, in the same directory as your resources.
-
-You can name these files `whatever_you_want.yml` and nest them arbitrarily deeply in subfolders within each directory.
+In dbt, you can use `properties.yml` files to define properties for resources. You can declare properties in `.yml` files, in the same directory as your resources. You can name these files `whatever_you_want.yml` and nest them arbitrarily in sub-folders within each directory. 
 
 We highly recommend that you define properties in dedicated paths alongside the resources they're describing.
 
@@ -58,13 +56,13 @@ We highly recommend that you define properties in dedicated paths alongside the 
 
 Previous versions of the docs referred to these as `schema.yml` files — we've moved away from that terminology since the word `schema` is used to mean other things when talking about databases, and people often thought that you _had_ to name these files `schema.yml`.
 
-(Of course, you're still free to name your files `schema.yml`)
+Instead, we now refer to these files as `properties.yml` files. (Of course, you're still free to name your files `schema.yml`)
 
 :::
 
 ### Which properties are _not_ also configs?
 
-dbt has the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
+In dbt, you can define node configs in `properties.yml` files, in addition to `config()` blocks and `dbt_project.yml`. However, some special properties can only be defined in the `.yml` file and you cannot configure them using `config()` blocks or the `dbt_project.yml` file:
 
 Certain properties are special, because:
 
@@ -76,7 +74,7 @@ Certain properties are special, because:
 These properties are:
 
 - [`description`](/reference/resource-properties/description)
-- [`tests`](/reference/resource-properties/tests)
+- [`tests`](/reference/resource-properties/data-tests)
 - [`docs`](/reference/resource-configs/docs)
 - [`columns`](/reference/resource-properties/columns)
 - [`quote`](/reference/resource-properties/quote)
@@ -157,9 +155,9 @@ You can find an exhaustive list of each supported property and config, broken do
 * Model [properties](/reference/model-properties) and [configs](/reference/model-configs)
 * Source [properties](/reference/source-properties) and [configs](source-configs)
 * Seed [properties](/reference/seed-properties) and [configs](/reference/seed-configs)
-* [Snapshot Properties](snapshot-properties)
+* Snapshot [properties](snapshot-properties)
 * Analysis [properties](analysis-properties)
-* [Macro Properties](/reference/macro-properties)
+* Macro [properties](/reference/macro-properties)
 * Exposure [properties](/reference/exposure-properties)
 
 ## FAQs
