@@ -127,4 +127,4 @@ We've provided a set of example projects you can use to explore the topics cover
 
 ### dbt-meshify
 
-We recommend using the `dbt-meshify` [command line tool](<https://dbt-labs.github.io/dbt-meshify/0.1/>) to help you do this. This comes with CLI operations to automate most of the above steps.
+We recommend using the `dbt-meshify` [command line tool](<https://dbt-labs.github.io/dbt-meshify/>) to help you do this. This comes with CLI operations to automate most of the above steps.
