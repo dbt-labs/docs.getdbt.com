@@ -486,6 +486,8 @@ For example, a built-in strategy for the `append` can be defined and used with t
 
 {% endmacro %}
 ```
+</File>
+
 Define a model models/my_model.sql:
 
 ```sql
@@ -570,7 +572,6 @@ To use the `merge_null_safe` custom incremental strategy from the `example` pack
 ```
 
 </File>
-
 </VersionBlock>
 
 <Snippet path="discourse-help-feed-header" />
