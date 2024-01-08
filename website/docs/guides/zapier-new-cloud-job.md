@@ -83,7 +83,7 @@ hook_data = full_body['data']
 if hook_data['runStatus'] == "Success":
 
   # Trigger a new run with the dbt Cloud Admin API
-  url = f'https://cloud.getdbt.com/api/v2/accounts/{full_body['accountId']}/jobs/{target_job_id}/run'
+  url = f'https://YOUR_ACCESS_URL/api/v2/accounts/{full_body['accountId']}/jobs/{target_job_id}/run'
 
   body = {'cause':  f"Triggered by Zapier because {hook_data['jobName']} Run #{hook_data['runId']} completed successfully"}
   headers = {'Authorization': f'Token {api_token}'}

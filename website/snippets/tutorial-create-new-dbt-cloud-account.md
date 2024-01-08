@@ -1,6 +1,6 @@
 Let's start this section by creating a dbt Cloud account if you haven't already.
 
-1. Navigate to [dbt Cloud](https://cloud.getdbt.com).
+1. Navigate to [dbt Cloud](/docs/cloud/about-cloud/regions-ip-addresses).
 2. If you don't have a dbt Cloud account, create a new one, and verify your account via email.
 3. If you already have a dbt Cloud account, you can create a new project from your existing account:
     1. Click the gear icon in the top-right, then click **Projects**.
