@@ -1,9 +1,11 @@
-:local(.link) {
+:local(.link) :local(.headerText) {
     color: var(--ifm-link-color);
-    transition: background-color 0.3s; /* Smooth transition for background color */
+    text-decoration: none;
+    transition: text-decoration 0.3s; /* Smooth transition */
 }
 
-:local(.link:hover), :local(.link:focus) {
+:local(.link:hover) :local(.headerText),
+:local(.link:focus) :local(.headerText) {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -12,6 +14,7 @@
     font-size: 0.8em;
     color: #666;
     margin-left: 10px; /* Adjust as needed */
+    text-decoration: none;
 }
 
 :local(.toggle) {
