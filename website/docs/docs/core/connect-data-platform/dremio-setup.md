@@ -15,12 +15,6 @@ meta:
   config_page: '/reference/resource-configs/no-configs'
 ---
 
-:::info Vendor plugin
-
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
-
-:::
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />

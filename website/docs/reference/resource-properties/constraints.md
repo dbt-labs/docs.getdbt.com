@@ -270,7 +270,7 @@ models:
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
         tests:
-          - unique            # primary_key constraint is not enforced
+          - unique            # need this test because primary_key constraint is not enforced
       - name: customer_name
         data_type: text
       - name: first_transaction_date
