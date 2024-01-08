@@ -2,7 +2,7 @@
 title: "About target variables"
 sidebar_label: "target"
 id: "target"
-description: "The `target` variable Contains information about your connection to the warehouse."
+description: "The `target` variable contains information about your connection to the warehouse."
 ---
 
 The `target` variable contains information about your connection to the warehouse.
