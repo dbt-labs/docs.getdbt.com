@@ -26,7 +26,7 @@ If your dbt job run completed with a status of **Error**, you can rerun it from 
 <Lightbox src="/img/docs/deploy/native-retry.gif" width="70%" title="Example of the Rerun options in dbt Cloud"/>
 
 ## Related content
-- [Retry a failed run for a job](/dbt-cloud/api-v2#/operations/Retry%20a%20failed%20run%20for%20a%20job) API endpoint
+- [Retry a failed run for a job](/dbt-cloud/api-v2#/operations/Retry%20Failed%20Job) API endpoint
 - [Run visibility](/docs/deploy/run-visibility)
 - [Jobs](/docs/deploy/jobs)
 - [Job commands](/docs/deploy/job-commands)

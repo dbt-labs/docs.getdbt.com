@@ -1,13 +1,14 @@
 You can set up the dbt Semantic Layer in dbt Cloud at the environment and project level. Before you begin:
 
-- You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment. Single-tenant coming soon.
+- You must have a dbt Cloud Team or Enterprise account. Suitable for both Multi-tenant and Single-tenant deployment.
+  - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 - You must be part of the Owner group, and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/self-service-permissions) to configure the Semantic Layer:
     * Enterprise plan &mdash; Developer license with Account Admin permissions. Or Owner with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
     * Team plan &mdash; Owner with a Developer license.
 - You must have a successful run in your new environment.
 
 :::tip
-If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt version 1.6 or newer to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/sl-migration) for details.
+If you've configured the legacy Semantic Layer, it has been deprecated, and dbt Labs strongly recommends that you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt version 1.6 or higher to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/sl-migration) for details.
 :::
 
 1. In dbt Cloud, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.

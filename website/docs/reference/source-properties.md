@@ -57,7 +57,7 @@ sources:
         [meta](/reference/resource-configs/meta): {<dictionary>}
         [identifier](/reference/resource-properties/identifier): <table_name>
         [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
         [tags](/reference/resource-configs/tags): [<string>]
@@ -80,7 +80,7 @@ sources:
             [description](/reference/resource-properties/description): <markdown_string>
             [meta](/reference/resource-configs/meta): {<dictionary>}
             [quote](/reference/resource-properties/quote): true | false
-            [tests](/reference/resource-properties/tests):
+            [tests](/reference/resource-properties/data-tests):
               - <test>
               - ... # declare additional tests
             [tags](/reference/resource-configs/tags): [<string>]

@@ -17,15 +17,16 @@ MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
 MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the dbt Cloud CLI, dbt Cloud IDE, or dbt Core.
 
-**Note** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
+Using MetricFlow with dbt Cloud means you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
+
+**dbt Cloud jobs** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 
 <Tabs>
 
 <TabItem value="cloudcli" label="dbt Cloud CLI">
 
-MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them once you install the dbt Cloud CLI. 
-
-A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
+- MetricFlow commands are embedded in the dbt Cloud CLI. This means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately.
+- You don't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
 
 </TabItem>
 
@@ -35,7 +36,7 @@ A benefit to using the dbt Cloud is that you won't need to manage versioning &md
 You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
 :::
 
-A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
+
 
 </TabItem>
 
@@ -556,3 +557,8 @@ Keep in mind that modifying your shell configuration files can have an impact on
 
 </details>
 
+<details>
+<summary>Why is my query limited to 100 rows in the dbt Cloud CLI?</summary> 
+The default <code>limit</code> for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.<br /><br />
+However, you can change this limit if needed by setting the <code>--limit</code> option in your query. For example, to return 1000 rows, you can run <code>dbt sl list metrics --limit 1000</code>.
+</details>
