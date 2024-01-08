@@ -204,7 +204,7 @@ You can use either SQLFluff or sqlfmt depending on your preference and what work
 
 </detailsToggle>
 
-<detailsToggle alt_header="Can I nest <code>.sqlfluff</code> files?">
+<detailsToggle alt_header="Can I nest `.sqlfluff` files?">
 
 To ensure optimal code quality, consistent code, and styles &mdash; it's highly recommended you have one main `.sqlfluff` configuration file in the root folder of your project. Having multiple files can result in various different SQL styles in your project. <br /><br />
 
@@ -217,12 +217,12 @@ However, you can customize and include an additional child `.sqlfluff` configura
 Currently, running SQLFluff commands from the terminal isn't supported. 
 </detailsToggle>
 
-<detailsToggle alt_header="Why am I unable to see the <bold>Lint</bold> or <bold>Format</bold> button?">
+<detailsToggle alt_header="Why am I unable to see the **Lint** or **Format** button?">
 
 Make sure you're on a development branch. Formatting or Linting isn't available on "main" or "read-only" branches. 
 </detailsToggle>
 
-<detailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE (such as a GitHub Action)?">
+<detailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE?">
 - Double-check that your SQLFluff version matches the one in dbt Cloud IDE (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
 - If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
 </detailsToggle>
