@@ -14,7 +14,7 @@ Linters analyze code for errors, bugs, and style issues, while formatters fix st
 </details>
 
 
-In the dbt Cloud IDE, you have the capability to perform linting, auto-fix, and formatting on five different file types:
+In the dbt Cloud IDE, you can perform linting, auto-fix, and formatting on five different file types:
  
 - SQL &mdash; [Lint](#lint) and fix with SQLFluff, and [format](#format) with sqlfmt
 - YAML, Markdown, and JSON &mdash; Format with Prettier
@@ -146,7 +146,7 @@ The Cloud IDE formatting integrations take care of manual tasks like code format
 
 To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja. 
 
-By default, the IDE uses sqlfmt rules to format your code, making the **Format** button available and convenient to use right away. However, if you have a file named .sqlfluff in the root directory of your dbt project, the IDE will default to SQLFluff rules instead.
+By default, the IDE uses sqlfmt rules to format your code, making the **Format** button available and convenient to use immediately. However, if you have a file named .sqlfluff in the root directory of your dbt project, the IDE will default to SQLFluff rules instead.
 
 To enable sqlfmt:
 
@@ -189,10 +189,8 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 
 ## FAQs
 
-<details>
-<summary>When should I use SQLFluff and when should I use sqlfmt?</summary>
-
-SQLFluff and sqlfmt are both tools used for formatting SQL code, but there are some differences that may make one preferable to the other depending on your use case. <br />
+<detailsToggle alt_header="When should I use SQLFluff and when should I use sqlfmt?">
+SQLFluff and sqlfmt are both tools used for formatting SQL code, but some differences may make one preferable to the other depending on your use case. <br />
 
 SQLFluff is a SQL code linter and formatter. This means that it analyzes your code to identify potential issues and bugs, and follows coding standards. It also formats your code according to a set of rules, which are [customizable](#customize-linting), to ensure consistent coding practices. You can also use SQLFluff to keep your SQL code well-formatted and follow styling best practices. <br />
 
@@ -204,34 +202,37 @@ You can use either SQLFluff or sqlfmt depending on your preference and what work
 
 - Use sqlfmt to only have your code well-formatted without analyzing it for errors and bugs. You can use sqlfmt out of the box, making it convenient to use right away without having to configure it.
 
-</details>
+</detailsToggle>
 
-<details>
-<summary>Can I nest <code>.sqlfluff</code> files?</summary>
+<detailsToggle alt_header="Can I nest `.sqlfluff` files?">
 
 To ensure optimal code quality, consistent code, and styles &mdash; it's highly recommended you have one main `.sqlfluff` configuration file in the root folder of your project. Having multiple files can result in various different SQL styles in your project. <br /><br />
 
 However, you can customize and include an additional child `.sqlfluff` configuration file within specific subfolders of your dbt project. <br /><br />By nesting a `.sqlfluff` file in a subfolder, SQLFluff will apply the rules defined in that subfolder's configuration file to any files located within it. The rules specified in the parent `.sqlfluff` file will be used for all other files and folders outside of the subfolder. This hierarchical approach allows for tailored linting rules while maintaining consistency throughout your project. Refer to [SQLFluff documentation](https://docs.sqlfluff.com/en/stable/configuration.html#configuration-files) for more info.
 
-</details>
+</detailsToggle>
 
-<details>
-<summary>Can I run SQLFluff commands from the terminal?</summary>
+<detailsToggle alt_header="Can I run SQLFluff commands from the terminal?">
 
 Currently, running SQLFluff commands from the terminal isn't supported. 
-</details>
+</detailsToggle>
 
-<details>
-<summary>Why am I unable to see the <bold>Lint</bold> or <bold>Format</bold> button?</summary>
+<detailsToggle alt_header="Why am I unable to see the Lint or Format button?">
 
 Make sure you're on a development branch. Formatting or Linting isn't available on "main" or "read-only" branches. 
-</details>
+</detailsToggle>
 
-<details>
-<summary>Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE (such as a GitHub Action)?</summary>
-&mdash; Double-check your SQLFluff version matches the one in dbt Cloud IDE (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
-&mdash; If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
-</details>
+<detailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE?">
+- Double-check that your SQLFluff version matches the one in dbt Cloud IDE (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
+- If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
+</detailsToggle>
+
+<detailsToggle alt_header="What are some considerations when using dbt Cloud linting?">
+Currently, the dbt Cloud IDE can lint or fix files up to a certain size and complexity. If you attempt to lint or fix files that are too large, taking more than 60 seconds for the dbt Cloud backend to process, you will see an 'Unable to complete linting this file' error. 
+
+To avoid this, break up your model into smaller models (files) so that they are less complex to lint or fix. Note that linting is simpler than fixing so there may be cases where a file can be linted but not fixed. 
+
+</detailsToggle>
 
 ## Related docs
 
