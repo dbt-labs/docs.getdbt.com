@@ -11,7 +11,7 @@ These adapters then earn a "Verified" status so that users can have a certain le
 
 The verification process serves as the on-ramp to integration with dbt Cloud. As such, we restrict applicants to data platform vendors with whom we are already engaged.
 
-To learn more, see [Verifying a new adapter](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter).
+To learn more, refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide.
 
 import MSCallout from '/snippets/_microsoft-adapters-soon.md';
 

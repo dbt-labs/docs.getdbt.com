@@ -284,7 +284,7 @@ If the list starts getting lengthy and dense, consider presenting the same conte
 
 A bulleted list with introductory text:    
 
-> A dbt project is a directory of `.sql` and .yml` files. The directory must contain at a minimum:
+> A dbt project is a directory of `.sql` and `.yml` files. The directory must contain at a minimum:
 >
 > - Models: A model is a single `.sql` file. Each model contains a single `select` statement that either transforms raw data into a dataset that is ready for analytics or, more often, is an intermediate step in such a transformation.
 > - A project file: A `dbt_project.yml` file, which configures and defines your dbt project.
@@ -360,7 +360,7 @@ Otherwise, the text will appear squished and provide users with a bad experience
 - `<divclassName="grid--5-col">`: creates 5 columns cards (use sparingly)
 - You can't create cards with 6 or more columns as that would provide users a poor experience.
 
-Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/quickstarts/overview) as examples. 
+Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/guides) as examples. 
 
 ### Create cards
 
@@ -479,6 +479,9 @@ Some common Latin abbreviations and other words to use instead:
 | i.e.               |  that is    | Use incremental models when your dbt runs are becoming too slow (that is, don't start with incremental models) |
 | e.g.               | <ul><li>for example</li><li>like</li></ul> | <ul><li>Join both the dedicated #adapter-ecosystem channel in dbt Slack and the channel for your adapter's data store (for example, #db-sqlserver and #db-athena)</li><li>Using Jinja in SQL provides a way to use control structures (like `if` statements and `for` loops) in your queries </li></ul> |
 | etc.               | <ul><li>and more</li><li>and so forth</li></ul> | <ul><li>A continuous integration environment running pull requests in GitHub, GitLab, and more</li><li>While reasonable defaults are provided for many such operations (like `create_schema`, `drop_schema`, `create_table`, and so forth), you might need to override one or more macros when building a new adapter</li></ul> |
+| N.B.               |  note    | Note: State-based selection is a powerful, complex feature. |
+
+https://www.thoughtco.com/n-b-latin-abbreviations-in-english-3972787
 
 ### Prepositions
 

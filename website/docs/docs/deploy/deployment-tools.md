@@ -126,14 +126,14 @@ Cron is a decent way to schedule bash commands. However, while it may seem like 
 
 Use Databricks workflows to call the dbt Cloud job API, which has several benefits such as integration with other ETL processes, utilizing dbt Cloud job features, separation of concerns, and custom job triggering based on custom conditions or logic. These advantages lead to more modularity, efficient debugging, and flexibility in scheduling dbt Cloud jobs.
 
-For more info, refer to the guide on [Databricks workflows and dbt Cloud jobs](/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
+For more info, refer to the guide on [Databricks workflows and dbt Cloud jobs](/guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
 
 
 
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
-- [Quickstart guides](/quickstarts)
+- [Quickstart guides](/guides)
 - [Webhooks for your jobs](/docs/deploy/webhooks)
 - [Orchestration guides](https://docs.getdbt.com/guides/orchestration)
 - [Commands for your production deployment](https://discourse.getdbt.com/t/what-are-the-dbt-commands-you-run-in-your-production-deployment-of-dbt/366)

@@ -60,6 +60,6 @@ Some data warehouses, such as Snowflake and Google BigQuery, additionally suppor
 We most commonly see queries using COUNT to:
 - Perform initial data exploration on a dataset to understand dataset volume, primary key uniqueness, distribution of column values, and more.
 - Calculate the counts of key business metrics (daily orders, customers created, etc.) in your data models or BI tool.
-- Define [dbt metrics](/docs/build/metrics) to aggregate key metrics.
+- Define [metrics](/docs/build/build-metrics-intro) to aggregate key metrics.
 
 This isn’t an extensive list of where your team may be using COUNT throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

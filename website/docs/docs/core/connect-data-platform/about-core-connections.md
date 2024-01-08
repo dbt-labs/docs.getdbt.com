@@ -14,6 +14,7 @@ dbt Core can connect with a variety of data platform providers including:
 - [Apache Spark](/docs/core/connect-data-platform/spark-setup) 
 - [Databricks](/docs/core/connect-data-platform/databricks-setup) 
 - [Google BigQuery](/docs/core/connect-data-platform/bigquery-setup)
+- [Microsoft Fabric](/docs/core/connect-data-platform/fabric-setup)
 - [PostgreSQL](/docs/core/connect-data-platform/postgres-setup)
 - [Snowflake](/docs/core/connect-data-platform/snowflake-setup)
 - [Starburst or Trino](/docs/core/connect-data-platform/trino-setup)
@@ -22,7 +23,7 @@ dbt communicates with a number of different data platforms by using a dedicated 
 
 Data platforms supported in dbt Core may be verified or unverified, and maintained by dbt Labs, partners, or community members.
 
-These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/docs/quickstarts/overview)
+These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/docs/guides)
 
 ## Connection profiles
 

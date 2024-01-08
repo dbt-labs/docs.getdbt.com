@@ -62,7 +62,7 @@ Before you can get started:
 - You must have Python 3.8 or above installed
 - You must have dbt version 1.3.0 or above installed
 - You should have a basic understanding of [SQL](https://www.sqltutorial.org/)
-- You should have a basic understanding of [dbt](https://docs.getdbt.com/quickstarts)
+- You should have a basic understanding of [dbt](https://docs.getdbt.com/guides)
 
 ### Step 2: Clone the repository
 
@@ -79,12 +79,12 @@ Depending on which database you’ve chosen, install the relevant database adapt
 
 ```text
 # install adaptor for duckdb
-pip install dbt-duckdb
+python -m pip install dbt-duckdb
 
 # OR 
 
 # install adaptor for postgresql
-pip install dbt-postgres
+python -m pip install dbt-postgres
 ```
 
 ### Step 4: Setup dbt profile

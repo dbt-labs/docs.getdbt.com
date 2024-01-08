@@ -26,7 +26,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/regions-ip-addresses) and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
 
 - Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
-- Note that SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections and [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) doesn't support the dbt Cloud CLI yet.
+- Note that SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections doesn't support the dbt Cloud CLI yet.
 
 ## Install dbt Cloud CLI
 
@@ -73,7 +73,9 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
    
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
-4. After you've verified the installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile` to compile a project using dbt Cloud and validate your models and tests.
+4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
+
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 
 </TabItem>
@@ -102,7 +104,9 @@ Note that if you are using VS Code, you must restart it to pick up modified envi
    
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
-4. After installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile`, to compile a project using dbt Cloud and confirm that it works.
+4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
+
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -134,7 +138,9 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
    
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
-4. After installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile`, to compile a project using dbt Cloud and confirm that it works.
+4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
+
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -149,9 +155,9 @@ If you already have dbt Core installed, the dbt Cloud CLI may conflict. Here are
   - Uninstall the dbt Cloud CLI using the command: `pip uninstall dbt`
   - Reinstall dbt Core using the following command, replacing "adapter_name" with the appropriate adapter name:
     ```shell
-    pip install dbt-adapter_name --force-reinstall
+    python -m pip install dbt-adapter_name --force-reinstall
     ```
-    For example, if I used Snowflake as an adapter, I would run: `pip install dbt-snowflake --force-reinstall`
+    For example, if I used Snowflake as an adapter, I would run: `python -m pip install dbt-snowflake --force-reinstall`
 
 --------
 
@@ -187,17 +193,19 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 2. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
 
   ```bash
-  pip3 install dbt
+  pip install dbt --no-cache-dir
   ```
 
-1. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
+3. (Optional) To revert to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
 
   ```bash
-  pip3 uninstall dbt-core dbt
+  pip uninstall dbt-core dbt
   pip install dbt-adapter_name --force-reinstall
   ```
 
-4. After you've verified the installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. You can then use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile` to compile a project using dbt Cloud and validate your models and tests.
+4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
+
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -235,7 +243,7 @@ To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-
 
 To update:
 - Make sure you're in your virtual environment
-- Run `pip install --upgrade dbt`.
+- Run `python -m pip install --upgrade dbt`.
 	
 </TabItem>
 
@@ -250,16 +258,17 @@ To use these extensions, such as dbt-power-user, with the dbt Cloud CLI, you can
 
 ## FAQs
 
-<details>
+<detailsToggle alt_header="What's the difference between the dbt Cloud CLI and dbt Core?">
 
-<summary>What's the difference between the dbt Cloud CLI and dbt Core?</summary>
-The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">features</a>.
+The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. 
 
-</details>
+The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">features</a>.
 
-<details>
-<summary>How do I run both the dbt Cloud CLI and dbt Core?</summary>
-For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running <code>dbt</code>. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).<br />
+</detailsToggle>
+
+<detailsToggle alt_header="How do I run both the dbt Cloud CLI and dbt Core?">
+
+For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 
 If you have dbt Core installed locally, either:
 
@@ -268,10 +277,11 @@ If you have dbt Core installed locally, either:
 3. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the dbt Cloud CLI binary to use both dbt Cloud CLI and dbt Core together.
 
 You can always uninstall the dbt Cloud CLI to return to using dbt Core.
-</details>
 
-<details>
-<summary>How to create an alias?</summary>
+</detailsToggle>
+
+<detailsToggle alt_header="How to create an alias?">
+
 To create an alias for the dbt Cloud CLI: <br />
 
 1. Open your shell's profile configuration file. Depending on your shell and system, this could be <code>~/.bashrc</code>, <code>~/.bash_profile</code>, <code>~/.zshrc</code>, or another file.<br />
@@ -289,9 +299,12 @@ As an example, in bash you would run: <code>source ~/.bashrc</code><br />
 
 
 This alias will allow you to use the <code>dbt-cloud</code> command to invoke the dbt Cloud CLI while having dbt Core installed natively.
-</details>
 
-<details>
-<summary>Why am I receiving a <code>Session occupied</code> error?</summary>
+</detailsToggle>
+
+<detailsToggle alt_header="Why am I receiving a `Session occupied` error?">
+
+
 If you've ran a dbt command and receive a <code>Session occupied</code> error, you can reattach to your existing session with <code>dbt reattach</code> and then press <code>Control-C</code> and choose to cancel the invocation.
-</details>
+
+</detailsToggle>

@@ -20,6 +20,17 @@ default_value: true
 }>
 <TabItem value="models">
 
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +enabled: true | false
+
+```
+
+</File>
+
 <File name='models/<modelname>.sql'>
 
 ```sql
@@ -30,17 +41,6 @@ default_value: true
 
 select ...
 
-
-```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-```yml
-models:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +enabled: true | false
 
 ```
 
@@ -66,6 +66,17 @@ seeds:
 
 <TabItem value="snapshots">
 
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +enabled: true | false
+
+```
+
+</File>
+
 <File name='snapshots/<filename>.sql'>
 
 ```sql
@@ -83,20 +94,20 @@ select ...
 
 </File>
 
+</TabItem>
+
+<TabItem value="tests">
+
 <File name='dbt_project.yml'>
 
 ```yml
-snapshots:
+tests:
   [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
 
 </File>
-
-</TabItem>
-
-<TabItem value="tests">
 
 <File name='tests/<filename>.sql'>
 
@@ -121,17 +132,6 @@ select ...
 {{ config(
   enabled=true | false
 ) }}
-```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-```yml
-tests:
-  [<resource-path>](/reference/resource-configs/resource-path):
-    +enabled: true | false
-
 ```
 
 </File>

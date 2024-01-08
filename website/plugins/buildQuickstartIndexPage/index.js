@@ -6,10 +6,13 @@ module.exports = function buildQuickstartIndexPage() {
     name: 'docusaurus-build-quickstart-index-page-plugin',
     async loadContent() {
       // Quickstart files directory
-      const quickstartDirectory = 'docs/quickstarts'
+      const quickstartDirectory = 'docs/guides'
 
       // Get all Quickstart files and content
-      const quickstartFiles = fs.readdirSync(quickstartDirectory)
+      const quickstartFiles = fs.readdirSync(quickstartDirectory, { withFileTypes: true })
+        .filter(dirent => dirent.isFile())
+        .map(dirent => dirent.name)
+    
 
       const quickstartData = quickstartFiles.reduce((arr, quickstartFile) => {
         const fileData = fs.readFileSync(
@@ -19,8 +22,12 @@ module.exports = function buildQuickstartIndexPage() {
         if(!fileData)
           return null
         
-        // convert frontmatter to json
+        // Convert frontmatter to json
         const fileJson = matter(fileData)
+
+        // Add the original directory to build links
+        fileJson.data.original_directory = quickstartDirectory.replace('docs/', '')
+
         if(!fileJson)
           return null
 
@@ -35,7 +42,7 @@ module.exports = function buildQuickstartIndexPage() {
     async contentLoaded({content, actions}) {
       const {createData, addRoute} = actions;
 
-      // Sort quickstarts by platform if available
+      // Sort guides by platform if available
       const contentSorted = content.sort((a, b) => {
         if(!a?.data?.platform || !b?.data?.platform) return
 
@@ -53,7 +60,7 @@ module.exports = function buildQuickstartIndexPage() {
       
       // Build the quickstart index page
       addRoute({
-        path: `/quickstarts`,
+        path: `/guides`,
         component: '@site/src/components/quickstartGuideList/index.js',
         modules: {
           // propName -> JSON file path
