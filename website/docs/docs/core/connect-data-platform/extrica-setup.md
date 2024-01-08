@@ -11,7 +11,6 @@ meta:
   cloud_support: 'Not Supported'
   min_supported_version: 'n/a'
   platform_name: 'Extrica'
-  config_page: '/reference/resource-configs/extrica-configs'
 ---
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
