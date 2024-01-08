@@ -13,7 +13,7 @@ import UpgradeMove from '/snippets/_upgrade-move.md';
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation)
+- [CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
 ## What to know before upgrading
@@ -34,7 +34,7 @@ dbt Core major version 1.0 includes a number of breaking changes! Wherever possi
 
 ### Tests
 
-The two **test types** are now "singular" and "generic" (instead of "data" and "schema", respectively). The `test_type:` selection method accepts `test_type:singular` and `test_type:generic`. (It will also accept `test_type:schema` and `test_type:data` for backwards compatibility.) **Not backwards compatible:** The `--data` and `--schema` flags to dbt test are no longer supported, and tests no longer have the tags `'data'` and `'schema'` automatically applied. Updated docs: [tests](/docs/build/tests), [test selection](/reference/node-selection/test-selection-examples), [selection methods](/reference/node-selection/methods).
+The two **test types** are now "singular" and "generic" (instead of "data" and "schema", respectively). The `test_type:` selection method accepts `test_type:singular` and `test_type:generic`. (It will also accept `test_type:schema` and `test_type:data` for backwards compatibility.) **Not backwards compatible:** The `--data` and `--schema` flags to dbt test are no longer supported, and tests no longer have the tags `'data'` and `'schema'` automatically applied. Updated docs: [tests](/docs/build/data-tests), [test selection](/reference/node-selection/test-selection-examples), [selection methods](/reference/node-selection/methods).
 
 The `greedy` flag/property has been renamed to **`indirect_selection`**, which is now eager by default. **Note:** This reverts test selection to its pre-v0.20 behavior by default. `dbt test -s my_model` _will_ select multi-parent tests, such as `relationships`, that depend on unselected resources. To achieve the behavior change in v0.20 + v0.21, set `--indirect-selection=cautious` on the CLI or `indirect_selection: cautious` in YAML selectors. Updated docs: [test selection examples](/reference/node-selection/test-selection-examples), [yaml selectors](/reference/node-selection/yaml-selectors).
 
@@ -45,7 +45,7 @@ Global project macros have been reorganized, and some old unused macros have bee
 ### Installation
 
 - [Installation docs](/docs/supported-data-platforms) reflects adapter-specific installations
-- `pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `pip install dbt-<adapter>`.
+- `python -m pip install dbt` is no longer supported, and will raise an explicit error. Install the specific adapter plugin you need as `python -m pip install dbt-<adapter>`.
 - `brew install dbt` is no longer supported. Install the specific adapter plugin you need (among Postgres, Redshift, Snowflake, or BigQuery) as `brew install dbt-<adapter>`.
 - Removed official support for python 3.6, which is reaching end of life on December 23, 2021
 
@@ -70,7 +70,7 @@ Several under-the-hood changes from past minor versions, tagged with deprecation
 
 ## New features and changed documentation
 
-- Add [metrics](/docs/build/metrics), a new node type
+- Add [metrics](/docs/build/build-metrics-intro), a new node type
 - [Generic tests](/best-practices/writing-custom-generic-tests) can be defined in `tests/generic` (new), in addition to `macros/` (as before)
 - [Parsing](/reference/parsing): partial parsing and static parsing have been turned on by default.
 - [Global configs](/reference/global-configs/about-global-configs) have been standardized. Related updates to [global CLI flags](/reference/global-cli-flags) and [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml).

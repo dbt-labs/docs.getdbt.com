@@ -49,9 +49,9 @@ The **prod** service principal should have “read” access to raw source data,
 
 |  | Source Data | Development catalog | Production catalog | Test catalog |
 | --- | --- | --- | --- | --- |
-| developers | use | use, create table & create view | use or none | none |
-| production service principal | use | none | use, create table & create view | none |
-| Test service principal | use | none | none | use, create table & create view |
+| developers | use | use, create schema, table, & view | use or none | none |
+| production service principal | use | none | use, create schema, table & view | none |
+| Test service principal | use | none | none | use, create schema, table & view |
 
 
 ## Next steps

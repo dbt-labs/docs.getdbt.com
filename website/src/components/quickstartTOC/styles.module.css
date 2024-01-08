@@ -99,6 +99,32 @@ html[data-theme="dark"] .stepWrapper .buttonContainer a:hover {
     margin-right: .4rem;
 }
 
+.buttonContainer > a > svg {
+    width: 11.2px;
+    fill: var(--color-green-blue);
+    margin-bottom: -1px;
+}
+
+.buttonContainer > a:hover > svg {
+    width: 11.2px;
+    fill: var(--color-white);
+}
+
+html[data-theme="dark"] .buttonContainer > a > svg {
+    fill: var(--color-green-blue);
+}
+
+html[data-theme="dark"] .buttonContainer > a:hover > svg {
+    fill: var(--color-white);
+}
+
+.buttonContainer .prevButton svg {
+  margin-right: .4rem;
+}
+.buttonContainer .nextButton svg {
+  margin-left: .4rem;
+}
+
 .buttonContainer .nextButton {
     margin-left: auto;
 }
@@ -111,6 +137,11 @@ html[data-theme="dark"] .stepWrapper .buttonContainer a:hover {
 .stepWrapper[data-step="1"] a.nextButton {
     background: var(--color-green-blue);
     color: var(--color-white);
+    fill: var(--color-white);
+}
+
+.stepWrapper[data-step="1"] a.nextButton > svg {
+    fill: var(--color-white);
 }
 
 html[data-theme="dark"] .stepWrapper[data-step="1"] a.nextButton {
@@ -129,9 +160,19 @@ html[data-theme="dark"] .stepWrapper[data-step="1"] a.nextButton {
     display: none;
 }
 
-.toc_menu_btn i {
+.toc_menu_btn i, .toc_menu_btn svg {
     transform: rotate(-90deg);
     vertical-align: middle;
+}
+
+.toc_menu_btn svg {
+  width: 10px;
+  fill: var(--ifm-link-color);
+}
+
+.toc_menu_btn:hover svg {
+  width: 10px;
+  fill: var(--ifm-link-hover-color);
 }
 
 @media (max-width: 996px) {

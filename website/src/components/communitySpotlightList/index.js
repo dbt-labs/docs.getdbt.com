@@ -36,6 +36,7 @@ function CommunitySpotlightList({ spotlightData }) {
       <Head>
         <title>{metaTitle}</title>
         <meta property="og:title" content={metaTitle} />
+        <meta property="description" content={communityDescription} />
         <meta property="og:description" content={communityDescription} />
       </Head>
       <Hero 

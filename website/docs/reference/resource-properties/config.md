@@ -98,7 +98,7 @@ version: 2
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               config:
-                [<test_config>](/reference/test-configs): <config-value>
+                [<test_config>](/reference/data-test-configs): <config-value>
                 ...
 
 ```

@@ -21,14 +21,14 @@ To begin configuring dbt now, select the option that is right for you.
 
 <Card
     title="dbt Cloud setup"
-    body="Learn how to connect to a data platform, integrate with secure authentication methods, configure a sync with a git repo, how to use the IDE, and how to install the dbt Cloud CLI."
+    body="Learn how to connect to a data platform, integrate with secure authentication methods, and configure a sync with a git repo."
     link="/docs/cloud/about-cloud-setup"
     icon="dbt-bit"/>
 
 <Card
-    title="dbt Core installation"
-    body="Learn how to connect install dbt Core using Pip, Homebrew, Docker, or the open source repo."
-    link="/docs/core/installation"
+    title="dbt Core setup"
+    body="Learn about dbt Core and how to setup data platform connections."
+    link="/docs/core/about-core-setup"
     icon="dbt-bit"/>
 
 </div>

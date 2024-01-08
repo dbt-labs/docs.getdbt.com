@@ -57,7 +57,7 @@ All modern data warehouses support the ability to use the SUM function (and foll
 We most commonly see queries using SUM to:
 
 - Calculate the cumulative sum of a metric across a customer/user id using a CASE WHEN statement (ex. `sum(case when order_array is not null then 1 else 0 end) as count_orders`)
-- Create [dbt metrics](/docs/build/metrics) for key business values, such as LTV
+- Create [dbt metrics](/docs/build/build-metrics-intro) for key business values, such as LTV
 - Calculate the total of a field across a dimension (ex. total session time, total time spent per ticket) that you typically use in `fct_` or `dim_` models
 - Summing clicks, spend, impressions, and other key ad reporting metrics in tables from ad platforms
 

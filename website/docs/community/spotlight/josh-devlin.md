@@ -23,6 +23,7 @@ socialLinks:
     link: https://www.linkedin.com/in/josh-devlin/
 dateCreated: 2023-11-10
 hide_table_of_contents: true
+communityAward: true
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?

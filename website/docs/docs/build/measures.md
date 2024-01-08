@@ -34,7 +34,8 @@ measures:
 
 When you create a measure, you can either give it a custom name or use the `name` of the data platform column directly. If the `name` of the measure is different from the column name, you need to add an `expr` to specify the column name. The `name` of the measure is used when creating a metric. 
 
-Measure names must be **unique** across all semantic models in a project.
+Measure names must be unique across all semantic models in a project and can not be the same as an existing `entity` or `dimension` within that same model.
+
 
 ### Description
 

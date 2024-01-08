@@ -99,7 +99,7 @@ You can use `on_schema_change` parameter with values `ignore`, `fail` and `appen
 </Tabs>
 
 
-#### Configuring the `apppend_new_columns` parameter
+#### Configuring the `append_new_columns` parameter
 
 
 <Tabs
