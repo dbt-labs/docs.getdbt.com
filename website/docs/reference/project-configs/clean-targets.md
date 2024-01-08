@@ -19,10 +19,11 @@ Optionally specify a custom list of directories to be removed by the `dbt clean`
 If this configuration is not included in your `dbt_project.yml` file, the `clean` command will remove files in your [target-path](/reference/project-configs/target-path).
 
 ## Examples
+
 ### Remove packages and compiled files as part of `dbt clean`
-:::info
+
 This is our preferred configuration, but is not the default.
-:::
+
 To remove packages as well as compiled files, include the value of your [packages-install-path](/reference/project-configs/packages-install-path) configuration in your `clean-targets` configuration.
 
 <File name='dbt_project.yml'>

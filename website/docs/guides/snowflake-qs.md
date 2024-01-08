@@ -21,11 +21,9 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It w
 
 Snowflake also provides a quickstart for you to learn how to use dbt Cloud. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with dbt Cloud & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
 
-:::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
 
-You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
-:::
+Check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free and the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG) if you're interested in course learning with videos.
+ 
 
 ### Prerequisites​
 

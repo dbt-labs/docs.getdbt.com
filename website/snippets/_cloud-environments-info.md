@@ -28,13 +28,12 @@ Both development and deployment environments have a section called **General Set
 | Default to Custom Branch | ☑️ | Determines whether to use a branch other than the repository’s default  | See below |
 | Custom Branch | dev | Custom Branch name | See below |
 
-:::note About dbt version
+### About versions in dbt Cloud
 
-- dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
-- If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
-:::
+dbt Cloud allows users to select from multiple dbt releases. At this time, environments must use a dbt version greater than or equal to v1.0.0 [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
+If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
 
-### Git repository caching 
+### Git repository caching (Enterprise plans only)
 
 At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of your project's code and runs `dbt deps` to install your dependencies. 
 
@@ -53,11 +52,6 @@ To enable Git repository caching, select **Account settings** from the gear menu
 
 <Lightbox src="/img/docs/deploy/example-repo-caching.png" width="85%" title="Example of the Repository caching option" />
 
-:::note
-
-This feature is only available on the dbt Cloud Enterprise plan. 
-
-:::
 
 ### Custom branch behavior
 
