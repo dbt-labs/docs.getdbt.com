@@ -450,7 +450,7 @@ The syntax depends on how you configure your `incremental_strategy`:
 
 </VersionBlock>
 
-### Built-in strategies and their corresponding macros
+### Built-in strategies
 
 Before diving into [custom strategies](#custom-strategies), it's important to understand the built-in incremental strategies in dbt and their corresponding macros:
 
