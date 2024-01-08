@@ -2,6 +2,7 @@
 title: "Best practices"
 description: Getting started with the dbt and MetricFlow
 hoverSnippet: Learn how to get started with the dbt and MetricFlow
+pagination_next: null
 ---
 
 ## Putting it all together

@@ -12,7 +12,7 @@ Regardless of your organization's size and complexity, dbt should empower data t
 
 dbt Mesh is not a single product: it is a pattern enabled by a convergence of several features in dbt:
 
-- **[Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-use-ref)** - this is the foundational feature that enables the multi-project deployments. `{{ ref() }}`s now work across dbt Cloud projects on Enterprise plans.
+- **[Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)** - this is the foundational feature that enables the multi-project deployments. `{{ ref() }}`s now work across dbt Cloud projects on Enterprise plans.
 - **[dbt Explorer](/docs/collaborate/explore-projects)** - dbt Cloud's metadata-powered documentation platform, complete with full, cross-project lineage.
 - **Governance** - dbt's new governance features allow you to manage access to your dbt models both within and across projects.
   - **[Groups](/docs/collaborate/govern/model-access#groups)** - groups allow you to assign models to subsets within a project.
@@ -31,6 +31,8 @@ The multi-project architecture helps organizations with mature, complex transfor
 dbt Cloud is designed to coordinate the features above and simplify the complexity to solve for these problems.
 
 If you're just starting your dbt journey, don't worry about building a multi-project architecture right away. You can _incrementally_ adopt the features in this guide as you scale. The collection of features work effectively as independent tools. Familiarizing yourself with the tooling and features that make up a multi-project architecture, and how they can apply to your organization will help you make better decisions as you grow.
+
+For additional information, refer to the [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-4-faqs).
 
 ## Learning goals
 
