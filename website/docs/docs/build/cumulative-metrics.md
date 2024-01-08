@@ -31,8 +31,8 @@ metrics:
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
       measure: The measure you are referencing # Required
-      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Can not be used with window. 
-      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with grain_to_date
+      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Cannot be used with grain_to_date
+      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with window
 
 ```
 
