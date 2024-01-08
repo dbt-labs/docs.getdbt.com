@@ -32,6 +32,8 @@ dbt Cloud is designed to coordinate the features above and simplify the complexi
 
 If you're just starting your dbt journey, don't worry about building a multi-project architecture right away. You can _incrementally_ adopt the features in this guide as you scale. The collection of features work effectively as independent tools. Familiarizing yourself with the tooling and features that make up a multi-project architecture, and how they can apply to your organization will help you make better decisions as you grow.
 
+For additional information, refer to the [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-4-faqs).
+
 ## Learning goals
 
 - Understand the **purpose and tradeoffs** of building a multi-project architecture.
