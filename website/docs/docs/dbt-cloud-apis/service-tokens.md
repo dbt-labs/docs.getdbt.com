@@ -51,7 +51,7 @@ Job admin service tokens can authorize requests for viewing, editing, and creati
 Member service tokens can authorize requests for viewing and editing resources, triggering runs, and inviting members to the account. Tokens assigned the Member permission set will have the same permissions as a Member user. For more information about Member users, see "[Self-service permissions](/docs/cloud/manage-access/self-service-permissions)".
 
 **Read-only**<br/>
-Read-only service tokens can authorize requests for viewing a read-only dashboard, viewing generated documentation, and viewing source freshness reports.
+Read-only service tokens can authorize requests for viewing a read-only dashboard, viewing generated documentation, and viewing source freshness reports. This token can access and retrieve account-level information endpoints on the [Admin API](/docs/dbt-cloud-apis/admin-cloud-api) and authorize requests to the [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
 
 ### Enterprise plans using service account tokens
 
@@ -115,3 +115,5 @@ To rotate your token:
 4. Copy the new token and replace the old one in your systems. Store it in a safe place, as it will not be available again once the creation screen is closed.
 5. Delete the old token in dbt Cloud by clicking the **trash can icon**. _Only take this action after the new token is in place to avoid service disruptions_.
 
+## FAQs
+<FAQ path="Troubleshooting/ip-restrictions" />

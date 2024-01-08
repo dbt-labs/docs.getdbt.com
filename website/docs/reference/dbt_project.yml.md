@@ -15,14 +15,94 @@ Starting from dbt v1.5 and higher, you can specify your dbt Cloud project ID in 
 
 </VersionBlock>
 
-The following is a list of all available configurations in the `dbt_project.yml` file.
-
 :::info YAML syntax
-dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
+dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries, and strings are represented.
 :::
 
 
-<VersionBlock firstVersion="1.6">
+Something to note, you can't set up a "property" in the `dbt_project.yml` file if it's not a config (an example is [macros](/reference/macro-properties)). This applies to all types of resources. Refer to [Configs and properties](/reference/configs-and-properties) for more detail.
+
+The following example is a list of all available configurations in the `dbt_project.yml` file:
+
+<VersionBlock firstVersion="1.7">
+
+<File name='dbt_project.yml'>
+
+```yml
+[name](/reference/project-configs/name): string
+
+[config-version](/reference/project-configs/config-version): 2
+[version](/reference/project-configs/version): version
+
+[profile](/reference/project-configs/profile): profilename
+
+[model-paths](/reference/project-configs/model-paths): [directorypath]
+[seed-paths](/reference/project-configs/seed-paths): [directorypath]
+[test-paths](/reference/project-configs/test-paths): [directorypath]
+[analysis-paths](/reference/project-configs/analysis-paths): [directorypath]
+[macro-paths](/reference/project-configs/macro-paths): [directorypath]
+[snapshot-paths](/reference/project-configs/snapshot-paths): [directorypath]
+[docs-paths](/reference/project-configs/docs-paths): [directorypath]
+[asset-paths](/reference/project-configs/asset-paths): [directorypath]
+
+[target-path](/reference/project-configs/target-path): directorypath
+[log-path](/reference/project-configs/log-path): directorypath
+[packages-install-path](/reference/project-configs/packages-install-path): directorypath
+
+[clean-targets](/reference/project-configs/clean-targets): [directorypath]
+
+[query-comment](/reference/project-configs/query-comment): string
+
+[require-dbt-version](/reference/project-configs/require-dbt-version): version-range | [version-range]
+
+[dbt-cloud](/docs/cloud/cloud-cli-installation):
+  [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
+  [defer-env-id](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional
+
+[quoting](/reference/project-configs/quoting):
+  database: true | false
+  schema: true | false
+  identifier: true | false
+
+metrics:
+  <metric-configs>
+
+models:
+  [<model-configs>](/reference/model-configs)
+
+seeds:
+  [<seed-configs>](/reference/seed-configs)
+
+semantic-models:
+  <semantic-model-configs>
+
+snapshots:
+  [<snapshot-configs>](/reference/snapshot-configs)
+
+sources:
+  [<source-configs>](source-configs)
+  
+tests:
+  [<test-configs>](/reference/data-test-configs)
+
+vars:
+  [<variables>](/docs/build/project-variables)
+
+[on-run-start](/reference/project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
+[on-run-end](/reference/project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
+
+[dispatch](/reference/project-configs/dispatch-config):
+  - macro_namespace: packagename
+    search_order: [packagename]
+
+[restrict-access](/docs/collaborate/govern/model-access): true | false
+
+```
+
+</File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6" lastVersion="1.6">
 
 <File name='dbt_project.yml'>
 
@@ -75,7 +155,7 @@ sources:
   [<source-configs>](source-configs)
   
 tests:
-  [<test-configs>](/reference/test-configs)
+  [<test-configs>](/reference/data-test-configs)
 
 vars:
   [<variables>](/docs/build/project-variables)
@@ -144,7 +224,7 @@ sources:
   [<source-configs>](source-configs)
   
 tests:
-  [<test-configs>](/reference/test-configs)
+  [<test-configs>](/reference/data-test-configs)
 
 vars:
   [<variables>](/docs/build/project-variables)

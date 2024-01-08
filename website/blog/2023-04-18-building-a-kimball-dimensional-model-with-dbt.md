@@ -79,12 +79,12 @@ Depending on which database you’ve chosen, install the relevant database adapt
 
 ```text
 # install adaptor for duckdb
-pip install dbt-duckdb
+python -m pip install dbt-duckdb
 
 # OR 
 
 # install adaptor for postgresql
-pip install dbt-postgres
+python -m pip install dbt-postgres
 ```
 
 ### Step 4: Setup dbt profile

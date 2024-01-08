@@ -25,12 +25,12 @@ Refer to the [Build, test, document, and promote adapters](/guides/adapter-creat
 
 ### Trusted vs Verified
 
-The Verification program exists to highlight adapters that meets both of the following criteria:
+The Verification program exists to highlight adapters that meet both of the following criteria:
 
 - the guidelines given in the Trusted program,
 - formal agreements required for integration with dbt Cloud
 
-For more information on the Verified Adapter program, reach out the [dbt Labs partnerships team](mailto:partnerships@dbtlabs.com)
+For more information on the Verified Adapter program, reach out to the [dbt Labs partnerships team](mailto:partnerships@dbtlabs.com)
 
 ### Trusted adapters
 
