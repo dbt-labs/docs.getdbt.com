@@ -70,8 +70,6 @@ $ pwd
 <Lightbox src="/img/starter-project-dbt-cli.png" title="The starter project in a code editor" />
 </div>
 
-</File>
-
 6. dbt provides the following values in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
