@@ -217,7 +217,7 @@ However, you can customize and include an additional child `.sqlfluff` configura
 Currently, running SQLFluff commands from the terminal isn't supported. 
 </detailsToggle>
 
-<detailsToggle alt_header="Why am I unable to see the **Lint** or **Format** button?">
+<detailsToggle alt_header="Why am I unable to see the Lint or Format button?">
 
 Make sure you're on a development branch. Formatting or Linting isn't available on "main" or "read-only" branches. 
 </detailsToggle>
