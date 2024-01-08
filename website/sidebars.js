@@ -722,7 +722,6 @@ const sidebarSettings = {
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/starrocks-configs",
         "reference/resource-configs/infer-configs",
-        "reference/resource-configs/extrica-configs",
       ],
     },
     {
