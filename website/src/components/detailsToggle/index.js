@@ -40,7 +40,7 @@ useEffect(() => {
         onMouseLeave={handleMouseLeave}
       >
         <span className={`${styles.toggle} ${isOn ? null : styles.toggleUpsideDown}`}></span>&nbsp;
-        <span>{alt_header}</span>
+        <span className={styles.headerText}>{alt_header}</span>
         {/* Visual disclaimer */}
         <small className={styles.disclaimer}>Hover to view</small>
       </span>

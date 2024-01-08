@@ -6,9 +6,9 @@ description: "The `{{ debug() }}` macro will open an iPython debugger."
 ---
 
 
-:::caution New in v0.14.1
+:::warning Development environment only
 
-The `debug` macro is new in dbt v0.14.1, and is only intended to be used in a development context with dbt. Do not deploy code to production which uses the `debug` macro.
+The `debug` macro is only intended to be used in a development context with dbt. Do not deploy code to production that uses the `debug` macro.
 
 :::
 

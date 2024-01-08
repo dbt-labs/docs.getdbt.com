@@ -1027,6 +1027,8 @@ const sidebarSettings = {
             id: "best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
           },
           items: [
+            "best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
+            "best-practices/how-we-build-our-metrics/semantic-layer-2-setup",
             "best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
             "best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
             "best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
@@ -1044,6 +1046,7 @@ const sidebarSettings = {
           items: [
             "best-practices/how-we-mesh/mesh-2-structures",
             "best-practices/how-we-mesh/mesh-3-implementation",
+            "best-practices/how-we-mesh/mesh-4-faqs",
           ],
         },
         {
