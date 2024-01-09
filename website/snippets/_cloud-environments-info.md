@@ -30,7 +30,9 @@ Both development and deployment environments have a section called **General Set
 
 ### About versions in dbt Cloud
 
-dbt Cloud allows users to select from multiple dbt releases. At this time, environments must use a dbt version greater than or equal to v1.0.0 [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
+- Multiple dbt releases: dbt Cloud enables users to choose from various dbt versions.
+- Version requirements: Environments must use dbt version v1.0.0 or higher. [Lower versions are not supported](/docs/dbt-versions/upgrade-core-in-cloud).
+- Automatic updates: Selecting a version labeled `(latest)` ensures your environment automatically installs the latest stable release of that minor version selected.
 If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
 
 
