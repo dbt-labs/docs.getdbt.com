@@ -33,7 +33,7 @@ Use `pip` to install the adapter, which automatically installs `dbt-core` and an
 <h2> Connecting to {frontMatter.meta.platform_name} </h2>
 
 #### Example profiles.yml 
-Here is a  example of a dbt-extrica profile parameters. At a minimum, you need to specify `type`, `method`, `username`, `password` `host`, `port`, `schema`, `catalog` and `threads`.
+Here is an example of dbt-extrica profiles. At a minimum, you need to specify `type`, `method`, `username`, `password` `host`, `port`, `schema`, `catalog` and `threads`. 
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
