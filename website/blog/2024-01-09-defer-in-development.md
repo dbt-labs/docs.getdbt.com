@@ -1,5 +1,5 @@
 ---
-title: "Mastering Defer to Prod"
+title: "More time coding, less time waiting: Mastering defer in dbt"
 description: "Learn how to take advantage of the defer to prod feature in dbt Cloud"
 slug: defer-to-prod
 
@@ -12,7 +12,7 @@ date: 2024-01-09
 is_featured: true
 ---
 
-Picture this — you’ve got a massive dbt project, thousands of models chugging along, creating actionable insights for your stakeholders. A ticket comes your way &mdash; a model needs to be refactored! "No problem," you think to yourself, "I will simply make that change and test it locally!" You look at you lineage, and realize this model is many layers deep, buried underneath a long chain tables and views.
+Picture this — you’ve got a massive dbt project, thousands of models chugging along, creating actionable insights for your stakeholders. A ticket comes your way &mdash; a model needs to be refactored! "No problem," you think to yourself, "I will simply make that change and test it locally!" You look at you lineage, and realize this model is many layers deep, buried underneath a long chain of tables and views.
 
 “OK,” you think further, “I’ll just run a `dbt build -s +my_changed_model` to make sure I have everything I need built into my dev schema and I can test my changes”. You run the command. You wait. You wait some more. You get some coffee, and completely take yourself out of your dbt development flow state. A lot of time and money down the drain to get to a point where you can *start* your work. That’s no good!
 
@@ -20,7 +20,37 @@ Luckily, dbt’s defer functionality allow you to *only* build what you care abo
 <!-- truncate -->
 ## Defer to prod or prefer to slog
 
-A lot of dbt’s magic relies on the elegance and simplicity of the `{{ ref() }}` function, which is how you can build your lineage graph, and how dbt can be run in different environments &mdash; when in dev, those refs resolve your development models, but will properly resolve to your production locations when your environment settings change.
+A lot of dbt’s magic relies on the elegance and simplicity of the `{{ ref() }}` function, which is how you can build your lineage graph, and how dbt can be run in different environments &mdash; the `{{ ref() }}` functions dynamically compile depending on your environment settings, so that you can run your project in development and production without changing any code. 
+
+Here's how a simple `{{ ref() }}` would compile in different environments:
+
+<Tabs defaultValue="Raw Model Code">
+
+  <TabItem value="Raw Model Code">
+
+  ```sql
+  -- in models/my_model.sql
+  select * from {{ ref('model_a') }}
+  ```
+  </TabItem>
+
+  <TabItem value="Compiled in Dev">
+
+  ```sql
+  -- in target/compiled/models/my_model.sql
+  select * from analytics.dbt_dconnors.model_a
+  ```
+  </TabItem>
+
+  <TabItem value="Compiled in Prod">
+
+  ```sql
+  -- in target/compiled/models/my_model.sql
+  select * from analytics.analytics.model_a
+  ```
+  </TabItem>
+
+</Tabs>
 
 All of that is made possible by the dbt `manifest.json`, [the artifact](https://docs.getdbt.com/reference/artifacts/manifest-json) that is produced each time you run a dbt command, containing the comprehensive and encyclopedic compendium of all things in your project. Each node is assigned a `unique_id` (like `model.my_project.my_model` ) and the manifest stores all the metadata about that model in a dictionary associated to that id. This includes the data warehouse location that gets returned when you write `{{ ref('my_model') }}` in SQL. Different runs of your project in different environments result in different metadata written to the manifest.
 
@@ -34,7 +64,7 @@ And you’re tasked with making changes to `model_f`. Without defer, you would n
 
 <Lightbox src="/img/blog/2023-12-04-defer-in-development/prod-and-dev-full.png" width="85%" title="The whole project has been rebuilt into the dev schema, which can be time consuming and expensive!" />
 
-With defer, we should not build anything other than the models we care about! Let’s tell dbt to use production metadata to resolve our refs, and only build the model I care about &mdash; that command would be `dbt run -s model_f --defer` .**
+With defer, we should not build anything other than the models that have changed, and are now different from their production counterparts! Let’s tell dbt to use production metadata to resolve our refs, and only build the model I have changed &mdash; that command would be `dbt run -s model_f --defer` .**
 
 <Lightbox src="/img/blog/2023-12-04-defer-in-development/prod-and-dev-defer.png" width="85%" title="Using defer, we can only build one single model" />
 
@@ -42,7 +72,7 @@ This results in a *much slimmer build* &mdash; we read data in directly from the
 
 \* [Another option](https://docs.getdbt.com/reference/commands/clone) is to run `dbt clone -s +model_f` , which will make clones of your production models into your development schema, making use of zero copy cloning where available. Check out this [great dev blog](https://docs.getdbt.com/blog/to-defer-or-to-clone) from Doug and Kshitij on when to use `clone` vs `defer`!
 
-** in dbt Core, you also have to tell dbt where to find the production artifacts! Otherwise it doesn’t know what to defer to. You can either use the `--state path/to/artifact/folder` option, or set a `DBT_STATE_PATH` environment variable.
+** in dbt Core, you also have to tell dbt where to find the production artifacts! Otherwise it doesn’t know what to defer to. You can either use the `--state path/to/artifact/folder` option, or set a `DBT_STATE` environment variable.
 
 ### Batteries included deferral in dbt Cloud
 
@@ -98,6 +128,7 @@ model_c as (
 to
 
 ```sql
+# in target/compiled/models/model_f.sql
 with 
 
 model_b as (
