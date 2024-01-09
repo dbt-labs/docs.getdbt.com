@@ -297,15 +297,14 @@ You can change the default to display the number of conversions by setting the `
 
 <TabItem value="constproperty" label="Constant property">
 
-*If you’re not sure what a constant property is [Amplitude has a great blog post on constant properties. I recommend](https://amplitude.com/blog/holding-constant) reading this to get up to speed on the concept.*
+*Refer to [Amplitude's blog posts on constant properties](https://amplitude.com/blog/holding-constant) to learn about this concept.*
 
-It's possible to add a constant property to a conversion metric to only count a conversions if this dimension or entity is the same for both the base and conversion event. For example, say you work at an e-commerce company and want to answer the following questions:
+You can add a constant property to a conversion metric to count only those conversions where a specific dimension or entity matches in both the base and conversion events. For example, if you're at an e-commerce company and want to answer the following questions:
 
-*How often did visitors convert from View Item Details to Complete Purchase with the same product in each step?*
+- How often did visitors convert from _View Item Details_ to _Complete Purchase_ with the same product in each step?
+  What makes this question tricky to answer is users could have completed these two conversion milestones across many products. For example, viewed a pair of shoes, then a T-shirt,  and eventually checked out with a bow tie. This would still count as a conversion, even though the conversion event only happened for the bow tie.
 
-What makes this question tricky to answer is users could have completed these two conversion milestones across many products. For example, viewed a pair of shoes, then a T-shirt,  and eventually checked out with a bow tie. This would still count as a conversion, even tho the conversion event only happened for the bow tie. 
-
-Back to our initial questions, we want to see how many customers viewed an item detail page and then completed *a purchase for the same product.* In this case, we would want to set product_id as the constant property. We would specify this in the configs as follows:
+Back to our initial questions, we want to see how many customers viewed an item detail page and then completed a purchase for the _same_ product. In this case, we would want to set `product_id` as the constant property. We would specify this in the configs as follows:
 
 ```yaml
 - name: view_item_detail_to_purchase_with_same_item
@@ -324,24 +323,27 @@ Back to our initial questions, we want to see how many customers viewed an item 
           conversion_property: product
 ```
 
-We will add an additional condition to the join to make sure the constant property is the same across conversion. 
+We will add an additional condition to the join to make sure the constant property is the same across conversion.
 
 ```sql
-SELECT DISTINCT
-        first_value(v.ds) OVER (PARTITION BY buy_source.ds, buy_source.user_id, buy_source.session_id ORDER BY v.ds DESC ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS ds
-        , first_value(v.user_id) OVER (PARTITION BY buy_source.ds, buy_source.user_id, buy_source.session_id ORDER BY v.ds DESC ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS user_id
-        , first_value(v.referrer_id) OVER (PARTITION BY buy_source.ds, buy_source.user_id, buy_source.session_id ORDER BY v.ds DESC ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS referrer_id
-        , buy_source.uuid
-        , 1 AS buys
-        FROM {{ source_schema }}.fct_view_item_details v
-        INNER JOIN
-        (
-          SELECT *, {{ generate_random_uuid() }} AS uuid FROM {{ source_schema }}.fct_purchases
-        ) buy_source
-        ON
-         v.user_id = buy_source.user_id
-         v.user_id = b.user_id AND v.ds <= b.ds AND v.ds > b.ds - INTERVAL '7 day';
-         AND buy_source.product_id = v.product_id #Joining on the constant property product ID
+select distinct
+  first_value(v.ds) over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as ds,
+  first_value(v.user_id) over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as user_id,
+  first_value(v.referrer_id) over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as referrer_id,
+  buy_source.uuid,
+  1 as buys
+from {{ source_schema }}.fct_view_item_details v
+inner join
+  (
+    select *, {{ generate_random_uuid() }} as uuid from {{ source_schema }}.fct_purchases
+  ) buy_source
+on
+  v.user_id = buy_source.user_id
+  and v.ds <= buy_source.ds
+  and v.ds > buy_source.ds - interval '7 day'
+  and buy_source.product_id = v.product_id --Joining on the constant property product_id
+
 ```
+
 </TabItem>
 </Tabs>
