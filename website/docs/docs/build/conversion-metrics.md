@@ -54,7 +54,7 @@ metrics:
 
 ## Conversion metric example
 
-The following example will measure conversions from website visits (`VISITS` table) to order completions (`BUYS` table). Let's calculate a conversion metric step by step.
+The following example will measure conversions from website visits (`VISITS` table) to order completions (`BUYS` table). Let's calculate a conversion metric for this scenario step by step.
 
 Suppose we have two semantic models, `VISITS` and `BUYS`:
 
@@ -161,7 +161,7 @@ The dataset returns the following:
 
 This workflow links the two conversions to the correct visit events. Due to the join, we end up with multiple combinations, leading to fanout results. After applying the window function, duplicates appear. 
 
-To resolve this and eliminate duplicates, use a distinct select. The UUID also helps identify which conversion is unique. The next step go in to more detail on how to do this.
+To resolve this and eliminate duplicates, use a distinct select. The UUID also helps identify which conversion is unique. The next steps provide more detail on how to do this.
 
 ### Step 3: Remove duplicates
 
@@ -198,7 +198,7 @@ We now have a dataset where every conversion is connected to a visit event. To p
 
 ### Step 4: Aggregate and calculate
 
-Now that we’ve tied each conversion event to a visit, we can calculate the aggregated conversions and opportunities measures, and join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows: 
+Now that we’ve tied each conversion event to a visit, we can calculate the aggregated conversions and opportunities measures. Then we can join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows:
 
 ```sql
 select
@@ -224,7 +224,7 @@ full outer join ( -- conversion measure
   from (
     -- ...
     -- The output of this subquery is the table produced in Step 3. The SQL is hidden for legibility.
-    -- To see the full SQL output and --explain to your conversion metric query. 
+    -- To see the full SQL output, add --explain to your conversion metric query. 
   ) subq_10
   group by
     metric_time__day
@@ -244,7 +244,7 @@ Use the following additional settings to customize your conversion metrics:
 - Constant property: Add conditions to join conversions on constant properties for specific scenarios.
 
 <Tabs>
-<TabItem value="null" label="Null conversion events">
+<TabItem value="null" label="Set null conversion events to zero">
 
 To return zero in the final data set, you may want to set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
 
@@ -271,7 +271,7 @@ This will return the following result set:
 
 </TabItem>
 
-<TabItem value="calctype" label="Calculation type">
+<TabItem value="calctype" label="Set calculation type parameter">
 
 Use the conversion calculation parameter to either show the raw number of conversions or the conversion rate. The default value is the conversion rate.
 
@@ -295,16 +295,19 @@ You can change the default to display the number of conversions by setting the `
 
 </TabItem>
 
-<TabItem value="constproperty" label="Constant property">
+<TabItem value="constproperty" label="Set constant property">
 
 *Refer to [Amplitude's blog posts on constant properties](https://amplitude.com/blog/holding-constant) to learn about this concept.*
 
-You can add a constant property to a conversion metric to count only those conversions where a specific dimension or entity matches in both the base and conversion events. For example, if you're at an e-commerce company and want to answer the following questions:
+You can add a constant property to a conversion metric to count only those conversions where a specific dimension or entity matches in both the base and conversion events. 
 
-- How often did visitors convert from _View Item Details_ to _Complete Purchase_ with the same product in each step?
-  What makes this question tricky to answer is users could have completed these two conversion milestones across many products. For example, viewed a pair of shoes, then a T-shirt,  and eventually checked out with a bow tie. This would still count as a conversion, even though the conversion event only happened for the bow tie.
+For example, if you're at an e-commerce company and want to answer the following questions:
+- _How often did visitors convert from `View Item Details` to `Complete Purchase` with the same product in each step?_<br />
+  - What makes this question tricky to answer is users could have completed these two conversion milestones across many products. For example, viewed a pair of shoes, then a T-shirt,  and eventually checked out with a bow tie. This would still count as a conversion, even though the conversion event only happened for the bow tie.
 
-Back to our initial questions, we want to see how many customers viewed an item detail page and then completed a purchase for the _same_ product. In this case, we would want to set `product_id` as the constant property. We would specify this in the configs as follows:
+Back to our initial questions, we want to see how many customers viewed an item detail page and then completed a purchase for the _same_ product.
+
+In this case, we would want to set `product_id` as the constant property. We would specify this in the configs as follows:
 
 ```yaml
 - name: view_item_detail_to_purchase_with_same_item
