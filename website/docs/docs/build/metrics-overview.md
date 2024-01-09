@@ -48,6 +48,27 @@ This page explains the different supported metric types you can add to your dbt 
 - [Ratio](#ratio-metrics) — Create a ratio out of two measures. 
 -->
 
+### Conversion metrics <Lifecycle status='new'/>
+
+[Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
+
+```yaml
+metrics:
+  - name: The metric name # Required
+    description: the metric description # Required
+    type: conversion
+    type_params:
+      conversion_type_params:
+        entity: _entity_ # Required
+        calculation: _calculation_type_ # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
+        base_measure: _measure_ # Required
+        conversion_measure: _measure_ # Required
+        window: _time_window_ # Optional. default: inf. window to join the two events on. Follows similar format as time windows elsewhere (such as, 7 days)
+        constant_properties: # Optional. List of constant properties default: None
+          - base_property: _dimension_or_entity_ # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
+            conversion_property: _dimension_or_entity_ # Same as base above, but to the semantic model of the conversion_measure
+```
+
 ### Cumulative metrics 
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window would accumulate the measure over all time. **Note**, you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
@@ -66,6 +87,7 @@ metrics:
       window: 7 days
       
 ```
+
 ### Derived metrics
 
 [Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
