@@ -11,18 +11,15 @@ date: 2023-12-14
 is_featured: false
 ---
 
-<aside>
 💡 In this article, we explore how we can use dlt + dbt core in a serverless, free tier data stack by using Google Cloud Functions. I use this setup for a personal project where I try to get property prices to me and my partner make an informed purchase.
-
-</aside>
 
 ## The problem, the builder and tooling
 
-**The problem**: There is no reference data for the real estate market - how many houses are being sold, for what price? nobody knows except the property office and maybe the banks, and they don’t tell. A secondary goal for this analysis is to try dlt, a python library for data ingestion I have been looking to try.
+**The problem**: There is no reference data for the real estate market in Portugal - how many houses are being sold, for what price? nobody knows except the property office and maybe the banks, and they don’t tell.
 
 **The builder:** I’m a data freelancer who deploys end to end solutions, so when I have a data problem, I cannot just let it go. 
 
-**The tools:** I want to be able to run my project on `google cloud functions` due to the generous free tier. I will try `dlt` for ingestion, which I wanted to test for some time. And for transformation I will use `dbt core`.
+**The tools:** I want to be able to run my project on [Google Cloud Functions](https://cloud.google.com/functions) due to the generous free tier. [dlt](https://dlthub.com/) is a new Python library for declarative data ingestion which I have wanted to test for some time. Finally, I will use dbt Core for transformation.
 
 ## The starting point
 
@@ -30,7 +27,7 @@ My partner and I are considering buying a property in Portugal. Unfortunately, t
 
 Unfortunately, there are way fewer properties than ads - it seems many real estate companies re-post the same ad that others do, with intentionally different data and often misleading bits of info. The real estate agencies do this so the interested parties reach out to them for clarification, and from there they can start a sales process. At the same time, the website with the ads is incentivised to allow this to continue as they get paid per ad, not per property.
 
-So it seems if I want to collect some information I will need to 
+So it seems if I want to have reliable information on the state of the market I will need to 
 
 - Grab the data and historize it
 - Deduplicate existing listings
@@ -55,13 +52,11 @@ Due to the complexity of deduplication, we needed to add a human element to conf
 
 For ingestion, we use a couple of sources
 
-- A freemium api wrapper for Idealista found at: https://rapidapi.com/apidojo/api/idealista2
-- A google sheet for manually confirming the deduplication. To make this work, we first load the data to BigQuery then access it via the sheet client. We then do manual annotation before re-loading this data back to BigQuery. For this we will use the [ready-made dlt sheets source connector](https://dlthub.com/docs/dlt-ecosystem/verified-sources/google_sheets).
+First, I ingest home listings from the Idealista API, accessed through [API Dojo's freemium wrapper](https://rapidapi.com/apidojo/api/idealista2). The dlt pipeline I created for ingestion is in [this repo](https://github.com/euanjohnston-dev/Idealista_pipeline).
 
-Since these steps run sequentially, I chose to separate them into their own repositories:
+After an initial round of transformation (described in the next section), the deduplicated data is loaded into BigQuery where I can query it from the Google Sheets client and manually review the deduplication. 
 
-- Idealista pipeline: https://github.com/euanjohnston-dev/Idealista_pipeline
-- gsheets deduplication pipeline https://github.com/euanjohnston-dev/gsheets_check_pipeline
+When I'm happy with the results, I use the [ready-made dlt Sheets source connector](https://dlthub.com/docs/dlt-ecosystem/verified-sources/google_sheets) to pull the data back into BigQuery, [as defined here](https://github.com/euanjohnston-dev/gsheets_check_pipeline).
 
 ### Transforming the data
 
@@ -122,7 +117,7 @@ The data problem itself was an eye opener into the real-estate market. It’s a 
 
 Tooling wise, it was surprising how quick it was to set everything up. dlt integrates well with dbt and enables fast and simple data ingestion, making this project simpler than I thought it would be.
 
-## dlt
+### dlt
 
 Good:
 
@@ -134,9 +129,9 @@ Bad:
 - I did have a small hiccup with the google sheets connector assuming an oauth authentication over my desired sdk but this was relatively easy to rectify.
 - Using both a verified source in the gsheets connector and building my own from Rapid API endpoints seemed equally intuitive. However I would have wanted more documentation on how to run these 2 pipelines in the same script with the dbt pipeline.
 
-## dbt
+### dbt
 
-No surprises there. I developed the package locally, and to deploy to cloud functions I injected credentials to dbt via the dlt runner. This meant I could re-use the setup I did for the other dlt pipelines.
+No surprises there. I developed the project locally, and to deploy to cloud functions I injected credentials to dbt via the dlt runner. This meant I could re-use the setup I did for the other dlt pipelines.
 
 ```python
 def dbt_run():
@@ -163,6 +158,6 @@ While I had used cloud functions before, I had never previously set them up for 
 
 ### To sum up
 
-DLT feels like the perfect solution for anyone who has scratched the surface of python development. To be able to have schema’s ready for transformation in such a short space of time is truly… transformatory. As a freelancer, being able to accelerate the development of pipelines is a huge benefit for getting to results within companies often frustrated with the period of time it takes to start ‘showing value’.
+dlt feels like the perfect solution for anyone who has scratched the surface of python development. To be able to have schemas ready for transformation in such a short space of time is truly… transformational. As a freelancer, being able to accelerate the development of pipelines is a huge benefit within companies who are often frustrated with the amount of time it takes to start ‘showing value’.
 
 I’d welcome the chance to discuss what’s been built to date or discuss any potential further development.
