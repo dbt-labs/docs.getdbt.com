@@ -16,7 +16,7 @@ Picture this — you’ve got a massive dbt project, thousands of models chuggin
 
 “OK,” you think further, “I’ll just run a `dbt build -s +my_changed_model` to make sure I have everything I need built into my dev schema and I can test my changes”. You run the command. You wait. You wait some more. You get some coffee, and completely take yourself out of your dbt development flow state. A lot of time and money down the drain to get to a point where you can *start* your work. That’s no good!
 
-Luckily, dbt’s defer functionality allow you to *only* build what you care about when you need it, and nothing more. This feature (which has been around for a long time!) helps developers spend less time and money in development, helping ship trusted data products faster. dbt Cloud now offers native support for this workflow in development, so it’s never been easier to master the defer feature in dbt!
+Luckily, dbt’s defer functionality allow you to *only* build what you care about when you need it, and nothing more. This feature helps developers spend less time and money in development, helping ship trusted data products faster. dbt Cloud offers native support for this workflow in development, so you can start deferring without any additional overhead!
 <!-- truncate -->
 ## Defer to prod or prefer to slog
 
