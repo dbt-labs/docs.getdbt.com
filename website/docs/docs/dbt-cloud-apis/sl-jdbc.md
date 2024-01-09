@@ -7,10 +7,10 @@ tags: [Semantic Layer, API]
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
 
 The dbt Semantic Layer Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
@@ -32,6 +32,8 @@ If you are a dbt user or partner with access to dbt Cloud and the [dbt Semantic 
 You *may* be able to use our JDBC API with tools that do not have an official integration with the dbt Semantic Layer. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the Semantic Layer API.
 
 Refer to [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl) for more info.
+
+Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
 
 ## Authentication
 
@@ -165,17 +167,17 @@ select * from {{
 
 ## Querying the API for metric values
 
-To query metric values, here are the following parameters that are available:
+To query metric values, here are the following parameters that are available. Your query must have _either_ a `metric` **or** a `group_by` parameter to be valid. 
 
-| Parameter | Description  | Example    | Type |
-| --------- | -----------| ------------ | -------------------- |
-| `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=['revenue']` | Required    |
-| `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=['user__country', 'metric_time']`     | Optional   |
-| `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | Optional     |
-| `where`     | A where clause that allows you to filter on dimensions and entities using parameters. This takes a filter list OR string. Inputs come with `Dimension`, and `Entity` objects. Granularity is required if the `Dimension` is a time dimension | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
-| `limit`   | Limit the data returned    | `limit=10` | Optional  |
-|`order`  | Order the data returned by a particular field     | `order_by=['order_gross_profit']`, use `-` for descending, or full object notation if the object is operated on: `order_by=[Metric('order_gross_profit').descending(True)`]   | Optional   |
-| `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`   | Optional |
+| Parameter | Description  | Example    | 
+| --------- | -----------| ------------ |
+| `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=['revenue']` | 
+| `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=['user__country', 'metric_time']`    |
+| `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | 
+| `where`     | A where clause that allows you to filter on dimensions and entities using parameters. This takes a filter list OR string. Inputs come with `Dimension`, and `Entity` objects. Granularity is required if the `Dimension` is a time dimension | `"{{ where=Dimension('customer__country') }} = 'US')"`   | 
+| `limit`   | Limit the data returned    | `limit=10` | 
+|`order`  | Order the data returned by a particular field     | `order_by=['order_gross_profit']`, use `-` for descending, or full object notation if the object is operated on: `order_by=[Metric('order_gross_profit').descending(True)`]   | 
+| `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`  | 
 
 
 
@@ -247,6 +249,16 @@ select * from {{
 	group_by=[Dimension('metric_time').grain('month'), 'customer__customer_type'])
 	}}
 ``` 
+
+### Query only a dimension
+
+In this case, you'll get the full list of dimension values for the chosen dimension.
+
+```bash
+select * from {{
+    semantic_layer.query(group_by=['customer__customer_type'])
+                  }}
+```
 
 ### Query with where filters
 

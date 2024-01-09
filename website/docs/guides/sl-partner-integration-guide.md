@@ -39,11 +39,14 @@ We recommend you provide users with separate input fields with these components 
 
 ### Exposing metadata to dbt Labs 
 
-When building an integration, we recommend you expose certain metadata in the request for analytics purposes. Among other items, it is helpful to have the following: 
+When building an integration, we recommend you expose certain metadata in the request for analytics and troubleshooting purpose.
 
-- Your application's name (such as 'Tableau')
-- The email of the person querying your application
-- The version of dbt they are on.
+Please send us the following header with every query:
+
+`'X-dbt-partner-source': 'Your-Application-Name'`
+
+Additionally, it would be helpful if you also included the email and username of the person generating the query from your application.
+
 
 
 ## Use best practices when exposing metrics

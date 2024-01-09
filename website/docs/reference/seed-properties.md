@@ -18,7 +18,7 @@ seeds:
       show: true | false
     [config](/reference/resource-properties/config):
       [<seed_config>](/reference/seed-configs): <config_value>
-    [tests](/reference/resource-properties/tests):
+    [tests](/reference/resource-properties/data-tests):
       - <test>
       - ... # declare additional tests
     columns:
@@ -27,7 +27,7 @@ seeds:
         [meta](/reference/resource-configs/meta): {<dictionary>}
         [quote](/reference/resource-properties/quote): true | false
         [tags](/reference/resource-configs/tags): [<string>]
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
 

@@ -3,6 +3,41 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+      "destination": "/docs/build/dbt-tips",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/discovery-schema-job-metric",
+      "destination": "/docs/dbt-cloud-apis/discovery-schema-environment",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-cloud-apis/discovery-schema-job-metrics",
+      "destination": "/docs/dbt-cloud-apis/discovery-schema-environment",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/metrics",
+      "destination": "/docs/build/build-metrics-intro",
+      "permanent": true
+    },
+    {
+      "source": "/reference/test-configs",
+      "destination": "/reference/data-test-configs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/resource-properties/tests",
+      "destination": "/reference/resource-properties/data-tests",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/tests",
+      "destination": "/docs/build/data-tests",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/dbt-cloud-ide",
       "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true
@@ -3810,11 +3845,6 @@
     {
       "source": "/reference/connections",
       "destination": "/dbt-cloud/api",
-      "permanent": true
-    },
-    {
-      "source": "/reference/data-test-configs",
-      "destination": "/reference/test-configs",
       "permanent": true
     },
     {
