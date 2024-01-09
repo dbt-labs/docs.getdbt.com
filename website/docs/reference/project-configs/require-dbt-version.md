@@ -70,7 +70,10 @@ require-dbt-version: ">=1.0.0,<2.0.0"
 </File>
 
   
-### Require a specific dbt version (not recommended)
+### Require a specific dbt version
+
+:::info Not recommended
+Pinning to a specific dbt version is discouraged because it limits project flexibility and can cause compatibility issues, especially with dbt packages. It's recommended to [pin to a major release](#pin-to-a-range), using a version range (for example, `">=1.0.0", "<2.0.0"`) for broader compatibility and to benefit from updates.
 
 While you can restrict your project to run only with an exact version of dbt Core, we do not recommend this for dbt Core v1.0.0 and higher. 
 
