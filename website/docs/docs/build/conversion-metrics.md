@@ -43,7 +43,7 @@ metrics:
     type_params:
       conversion_type_params:
         entity: _entity_ # Required
-        calculation: _calculation_type_ # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits) and more to come.
+        calculation: _calculation_type_ # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
         base_measure: _measure_ # Required
         conversion_measure: _measure_ # Required
         window: _time_window_ # Optional. default: inf. window to join the two events on. Follows similar format as time windows elsewhere (such as, 7 days)
@@ -129,7 +129,7 @@ Note that there are two potential conversion events for the first visit.
 | 2020-01-04 | bob | google | 2020-01-07 | uuid2 | 1 |
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 
-### Step 2: Refine with Window Function
+### Step 2: Refine with window function
 
 Instead of returning the raw visit values, use window functions to link conversions to the closest base event. You can partition by the conversion source and get the `first_value` ordered by `visit ds`, descending to get the closest base event from the conversion event:
 
@@ -161,104 +161,121 @@ The dataset returns the following:
 
 This workflow links the two conversions to the correct visit events. Due to the join, we end up with multiple combinations, leading to fanout results. After applying the window function, duplicates appear. 
 
-To resolve this and eliminate duplicates, use a distinct select, and the UUID helps identify which conversion is unique.
+To resolve this and eliminate duplicates, use a distinct select. The UUID also helps identify which conversion is unique. The next step go in to more detail on how to do this.
 
 ### Step 3: Remove duplicates
 
-Instead of regular select in the [Step 2](#step-2-refine-with-window-function), use a distinct select to remove the duplicates.
+Instead of regular select used in the [Step 2](#step-2-refine-with-window-function), use a distinct select to remove the duplicates:
 
 ```sql
-SELECT DISTINCT
-  first_value(v.ds) OVER (PARTITION BY b.ds, b.user_id, b.uuid ORDER BY v.ds DESC NULLS FIRST) AS v.ds
-  , first_value(v.user_id) OVER (PARTITION BY b.ds, b.user_id, b.uuid ORDER BY v.ds DESC NULLS FIRST) AS user_id
-  , first_value(v.referrer_id) OVER (PARTITION BY b.ds, b.user_id, b.uuid ORDER BY v.ds DESC NULLS FIRST) AS referrer_id
-  , b.ds
-  , b.uuid
-  , 1 AS buys
-FROM VISITS v
-INNER JOIN (
-    SELECT *, UUID_STRING() AS uuid FROM BUYS
+select distinct
+  first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as v_ds,
+  first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as user_id,
+  first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as referrer_id,
+  b.ds,
+  b.uuid,
+  1 as buys
+from visits v
+inner join (
+    select *, uuid_string() as uuid from buys
 ) b
-ON
-v.user_id = b.user_id AND v.ds <= b.ds AND v.ds > b.ds - INTERVAL '7 day';
+on
+v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day';
 ```
+
+The dataset returns the following:
 
 | V.DS | V.USER_ID | V.REFERRER_ID | B.DS | UUID | BUYS |
 | --- | --- | --- | --- | --- | --- |
 | 2020-01-01 | bob | facebook | 2020-01-02 | uuid1 | 1 |
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 
-Now we have a data set that contains each conversion linked to a visit event.
+We now have a dataset where every conversion is connected to a visit event. To proceed:
 
-1. aggregate the "conversions" table to get the total number of conversions
-2. join the aggregated base measure table "opportunities" to the "conversions" table using the group by keys
-3. calculate the conversion
+1. Sum up the total conversions in the "conversions" table.
+2. Combine this table with the "opportunities" table, matching them based on group keys.
+3. Calculate the conversion rate.
 
-### **Step 4:**
+### Step 4: Aggregate and calculate
 
-Now that we’ve tied each conversion event to a visit we can calculate the aggregated conversions and opportunities measures, and join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows: 
+Now that we’ve tied each conversion event to a visit, we can calculate the aggregated conversions and opportunities measures, and join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows: 
 
 ```sql
-SELECT
-  COALESCE(subq_3.metric_time__day, subq_13.metric_time__day) AS metric_time__day
-, CAST(MAX(subq_13.buys) AS DOUBLE) / CAST(NULLIF(MAX(subq_3.visits), 0) AS DOUBLE) AS visit_to_buy_conversion_rate_7d
-FROM ( -- Base Measure
-  SELECT
-    metric_time__day
-    , SUM(visits) AS mqls
-  FROM (
-    SELECT
-      DATE_TRUNC('day', first_contact_date) AS metric_time__day
-      , 1 as visits
-    FROM visits
+select
+  coalesce(subq_3.metric_time__day, subq_13.metric_time__day) as metric_time__day,
+  cast(max(subq_13.buys) as double) / cast(nullif(max(subq_3.visits), 0) as double) as visit_to_buy_conversion_rate_7d
+from ( -- base measure
+  select
+    metric_time__day,
+    sum(visits) as mqls
+  from (
+    select
+      date_trunc('day', first_contact_date) as metric_time__day,
+      1 as visits
+    from visits
   ) subq_2
-  GROUP BY
+  group by
     metric_time__day
 ) subq_3
-FULL OUTER JOIN ( -- Conversion Measure
-  SELECT
-    metric_time__day
-    , SUM(buys) AS sellers
-  FROM (
-	.....
-#The output of this subquery is the table produced in Step 3. The SQL is hidden for legibility. 
-#To see the full SQL output and --explain to your conversion metric query. 
+full outer join ( -- conversion measure
+  select
+    metric_time__day,
+    sum(buys) as sellers
+  from (
+    -- ...
+    -- The output of this subquery is the table produced in Step 3. The SQL is hidden for legibility.
+    -- To see the full SQL output and --explain to your conversion metric query. 
   ) subq_10
-  GROUP BY
+  group by
     metric_time__day
 ) subq_13
-ON
+on
   subq_3.metric_time__day = subq_13.metric_time__day
-GROUP BY
+group by
+  metric_time__day
 ```
 
-**Set the value of null conversion events**
+### Additional settings
 
-You may want to set the value of a null conversion event to zero instead of null, so the final data set returns zero. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
+Use the following additional settings to customize your conversion metrics:
+
+- Null conversion values: Set null conversions to zero using `fill_nulls_with`.
+- Calculation type: Choose between showing raw conversions or conversion rate.
+- Constant property: Add conditions to join conversions on constant properties for specific scenarios.
+
+<Tabs>
+<TabItem value="null" label="Null conversion events">
+
+To return zero in the final data set, you may want to set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
 
 ```yaml
 - name: vist_to_buy_conversion_rate_7_day_window
-    description: "Conversion rate from MQL to seller"
-    type: conversion
-    label: MQL to Seller Conversion Rate (1 week day window)
-    type_params:
-      conversion_type_params:
-        # calculation: CONVERSIONS
-        base_measure: mqls
-        conversion_measure: 
-          name: sellers
-          fill_nulls_with: 0
-        entity: mql
-        window: 1 week
+  description: "Conversion rate from MQL to seller"
+  type: conversion
+  label: MQL to Seller Conversion Rate (1 week day window)
+  type_params:
+    conversion_type_params:
+      calculation: conversions
+      base_measure: mqls
+      conversion_measure: 
+        name: sellers
+        fill_nulls_with: 0
+      entity: mql
+      window: 1 week
+
 ```
 
 This will return the following result set:
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="85%" title="Conversion metric with fill nulls with parameter"/>
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Conversion metric with fill nulls with parameter"/>
 
-**Setting the calculation type:**
+</TabItem>
 
-The conversion calculation parameter can be used to either show the raw number of conversions or the conversion rate. The default value is the conversion rate. I can change the default to show the number of conversions by setting the `calculation: conversion` parameter:
+<TabItem value="calctype" label="Calculation type">
+
+Use the conversion calculation parameter to either show the raw number of conversions or the conversion rate. The default value is the conversion rate.
+
+You can change the default to display the number of conversions by setting the `calculation: conversion` parameter:
 
 ```yaml
 - name: vist_to_buy_conversions_1_week_window
@@ -276,7 +293,9 @@ The conversion calculation parameter can be used to either show the raw number o
         window: 1 week
 ```
 
-**Setting a constant property for a conversion metric**
+</TabItem>
+
+<TabItem value="constproperty" label="Constant property">
 
 *If you’re not sure what a constant property is [Amplitude has a great blog post on constant properties. I recommend](https://amplitude.com/blog/holding-constant) reading this to get up to speed on the concept.*
 
@@ -290,17 +309,17 @@ Back to our initial questions, we want to see how many customers viewed an item 
 
 ```yaml
 - name: view_item_detail_to_purchase_with_same_item
-    description: "Conversion rate for users who viewed the item detail page and purchased the item"
-    type: Conversion
-    label: View Item Detail > Purchase 
-    type_params:
-      conversion_type_params:
-        calculation: conversions
-        base_measure: view_item_detail
-        conversion_measure: purchase
-        entity: user
-        window: 1 week
-				constant_properties:
+  description: "Conversion rate for users who viewed the item detail page and purchased the item"
+  type: Conversion
+  label: View Item Detail > Purchase
+  type_params:
+    conversion_type_params:
+      calculation: conversions
+      base_measure: view_item_detail
+      conversion_measure: purchase
+      entity: user
+      window: 1 week
+      constant_properties:
         - base_property: product
           conversion_property: product
 ```
@@ -324,3 +343,5 @@ SELECT DISTINCT
          v.user_id = b.user_id AND v.ds <= b.ds AND v.ds > b.ds - INTERVAL '7 day';
          AND buy_source.product_id = v.product_id #Joining on the constant property product ID
 ```
+</TabItem>
+</Tabs>
