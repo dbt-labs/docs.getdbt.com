@@ -8,7 +8,7 @@ datatype: test
 <file name='dbt_project.yml'>
 
 ```yml
-unit-tests:
+unit_tests:
   - name: <test-name> # this is the unique name of the test
     model: <model-name> 
     config: 
