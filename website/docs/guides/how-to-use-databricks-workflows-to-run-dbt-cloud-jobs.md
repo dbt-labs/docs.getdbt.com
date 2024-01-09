@@ -131,7 +131,7 @@ if __name__ == '__main__':
     * To find these values, navigate to **dbt Cloud**, select **Deploy -> Jobs**.  Select the Job you want to run and copy the URL. For example: `https://cloud.getdbt.com/deploy/000000/projects/111111/jobs/222222`
     and therefore valid code would be:
 
-    Your URL is structured https://<YOUR_BASE_URL>/deploy/<YOUR_ACCOUNT_ID>/projects/<YOUR_PROJECT_ID>/jobs/<YOUR_JOB_ID>
+Your URL is structured `https://<YOUR_BASE_URL>/deploy/<YOUR_ACCOUNT_ID>/projects/<YOUR_PROJECT_ID>/jobs/<YOUR_JOB_ID>`
     account_id = 000000
     job_id = 222222
     base_url =  "cloud.getdbt.com"
