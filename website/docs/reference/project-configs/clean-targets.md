@@ -20,7 +20,7 @@ If this configuration is not included in your `dbt_project.yml` file, the `clean
 
 ## Examples
 
-### Remove packages and compiled files as part of `dbt clean`
+### Remove packages and compiled files as part of `dbt clean` (preferred) 
 
 This is our preferred configuration, but is not the default.
 
