@@ -52,18 +52,19 @@ metrics:
             conversion_property: _dimension_or_entity_ # Same as base above, but to the semantic model of the conversion_measure
 ```
 
-### Conversion metric example
+## Conversion metric example
 
-The following example will measure conversions from website visits (_Visits_ table) to order completions (_Buys_ table).Let's go through how to calculate a conversion metric step by step. 
+The following example will measure conversions from website visits (`VISITS` table) to order completions (`BUYS` table). Let's calculate a conversion metric step by step.
 
-1. Suppose we have two semantic models, _Visits_ and _Buys_:
+Suppose we have two semantic models, `VISITS` and `BUYS`:
 
-- The _Visits_ table represents visits to an e-commerce site
-- The _Buys_ table represents someone completing an order on that site.  
+- The `VISITS` table represents visits to an e-commerce site
+- The `BUYS` table represents someone completing an order on that site.  
 
-The underlying tables look like the following: 
+The underlying tables look like the following:
 
-**VISITS**
+`VISITS`<br />
+Contains user visits with `USER_ID` and `REFERRER_ID`.
 
 | DS | USER_ID | REFERRER_ID |
 | --- | --- | --- |
@@ -71,7 +72,8 @@ The underlying tables look like the following:
 | 2020-01-04 | bob | google |
 | 2020-01-07 | bob | amazon |
 
-**BUYS**
+`BUYS`<br />
+Records completed orders with `USER_ID` and `REFERRER_ID`.
 
 | DS | USER_ID | REFERRER_ID |
 | --- | --- | --- |
@@ -82,42 +84,43 @@ Next, we define a conversion metric as follows:
 
 ```yaml
 - name: visit_to_buy_conversion_rate_7d
-    description: "Conversion rate from visiting the website to completing a transaction in 7 days"
-    type: conversion
-    label: Visit to Buy Conversion Rate (7 day window)
-    type_params:
-      conversion_type_params:
-        base_measure: visits
-        conversion_measure: sellers
-        entity: user
-        window: 7 days
+  description: "Conversion rate from visiting to transaction in 7 days"
+  type: conversion
+  label: Visit to Buy Conversion Rate (7 day window)
+  type_params:
+    conversion_type_params:
+      base_measure: visits
+      conversion_measure: sellers
+      entity: user
+      window: 7 days
 ```
 
-To calculate the conversion, we need to be able to link the BUYS event to a VISITS event. Our approach is that a conversion will be linked to its closest base event. We walk through how the conversion is calculated in the following steps:
+To calculate the conversion, link the `BUYS` event to the nearest `VISITS` event (or closest base event). The following steps explain this process in more detail:
 
-### Step 1:
+### Step 1: Join `VISITS` and `BUYS`
 
-This step joins the `buys` table to the `visits` table and gets all combinations of visits-buys events that match the join condition (any rows that have the same user and the buy happened at most 7 days after the visit).
+This step joins the `BUYS` table to the `VISITS` table and gets all combinations of visits-buys events that match the join condition where buys occur within 7 days of the visit (any rows that have the same user and a buy happened at most 7 days after the visit).
 
 The SQL generated in these steps looks like the following:
 
 ```sql
-SELECT
-  v.ds
-  , v.user_id
-  , v.referrer_id
-  , b.ds
-  , b.uuid
-  , 1 AS buys
-FROM VISITS v
-INNER JOIN (
-    SELECT *, UUID_STRING() AS uuid FROM BUYS -- Adds a UUID column to uniquely identify the different rows
+select
+  v.ds,
+  v.user_id,
+  v.referrer_id,
+  b.ds,
+  b.uuid,
+  1 as buys
+from visits v
+inner join (
+    select *, uuid_string() as uuid from buys -- Adds a uuid column to uniquely identify the different rows
 ) b
-ON
-v.user_id = b.user_id AND v.ds <= b.ds AND v.ds > b.ds - INTERVAL '7 day';
+on
+v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day'
 ```
 
-The data set returns look like this. Note that there are two potential conversion events for the first visit.
+The dataset returns the following:
+Note that there are two potential conversion events for the first visit.
 
 | V.DS | V.USER_ID | V.REFERRER_ID | B.DS | UUID | BUYS |
 | --- | --- | --- | --- | --- | --- |
@@ -126,27 +129,28 @@ The data set returns look like this. Note that there are two potential conversio
 | 2020-01-04 | bob | google | 2020-01-07 | uuid2 | 1 |
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 
-### Step 2:
+### Step 2: Refine with Window Function
 
-Now in step 1, instead of returning the raw visit values, we can instead use a window function, we can partition by the conversion source and get the first_value ordered by visit ds descending to get the closest base event from the conversion event.
+Instead of returning the raw visit values, use window functions to link conversions to the closest base event. You can partition by the conversion source and get the `first_value` ordered by `visit ds`, descending to get the closest base event from the conversion event:
 
 ```sql
-SELECT
-  first_value(v.ds) OVER (PARTITION BY b.ds, b.user_id, b.uuid ORDER BY v.ds DESC NULLS FIRST) AS v.ds
-  , first_value(v.user_id) OVER (PARTITION BY b.ds, b.user_id, b.uuid ORDER BY v.ds DESC NULLS FIRST) AS user_id
-  , first_value(v.referrer_id) OVER (PARTITION BY b.ds, b.user_id, b.uuid ORDER BY v.ds DESC NULLS FIRST) AS referrer_id
-  , b.ds
-  , b.uuid
-  , 1 AS buys
-FROM VISITS v
-INNER JOIN (
-    SELECT *, UUID_STRING() AS uuid FROM BUYS
+select
+  first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as v_ds,
+  first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as user_id,
+  first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as referrer_id,
+  b.ds,
+  b.uuid,
+  1 as buys
+from visits v
+inner join (
+    select *, uuid_string() as uuid from buys
 ) b
-ON
-v.user_id = b.user_id AND v.ds <= b.ds AND v.ds > b.ds - INTERVAL '7 day';
+on
+v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day'
+
 ```
 
-**Returns**
+The dataset returns the following:
 
 | V.DS | V.USER_ID | V.REFERRER_ID | B.DS | UUID | BUYS |
 | --- | --- | --- | --- | --- | --- |
@@ -155,11 +159,13 @@ v.user_id = b.user_id AND v.ds <= b.ds AND v.ds > b.ds - INTERVAL '7 day';
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 
-As you can see we successfully linked the 2 conversions to the correct visit events. Now because of the join, we got every combination so there is a fanout result and after the window function, we get duplicates. To resolve this, we can use a distinct select to remove the duplicates and the UUID here helps identify which conversion is unique.
+This workflow links the two conversions to the correct visit events. Due to the join, we end up with multiple combinations, leading to fanout results. After applying the window function, duplicates appear. 
 
-### Step 3:
+To resolve this and eliminate duplicates, use a distinct select, and the UUID helps identify which conversion is unique.
 
-Instead of regular select in the step 2, we use a distinct select to remove the duplicates.
+### Step 3: Remove duplicates
+
+Instead of regular select in the [Step 2](#step-2-refine-with-window-function), use a distinct select to remove the duplicates.
 
 ```sql
 SELECT DISTINCT
