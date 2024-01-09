@@ -35,7 +35,7 @@ Both development and deployment environments have a section called **General Set
 - Automatic updates: Selecting a version labeled `(latest)` ensures your environment automatically installs the latest stable release of that minor version selected.
 
 
-### Git repository caching <Lifecycle status='Enterprise only' />
+### Git repository caching 
 
 At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of your project's code and runs `dbt deps` to install your dependencies. 
 
