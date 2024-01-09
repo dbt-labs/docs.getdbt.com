@@ -29,10 +29,6 @@ Use `pip` to install the adapter, which automatically installs `dbt-core` and an
 
 <code>python -m pip install {frontMatter.meta.pypi_package}</code>
 
-<h2> Configuring {frontMatter.meta.pypi_package} </h2>
-
-<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
-
 
 <h2> Connecting to {frontMatter.meta.platform_name} </h2>
 
