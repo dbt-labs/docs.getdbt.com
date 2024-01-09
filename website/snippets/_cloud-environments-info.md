@@ -34,7 +34,7 @@ dbt Cloud allows users to select from multiple dbt releases. At this time, envir
 If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
 
 
-### Git repository caching (Enterprise plans only)
+### Git repository caching <Lifecycle status='Enterprise only' />
 
 At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of your project's code and runs `dbt deps` to install your dependencies. 
 
