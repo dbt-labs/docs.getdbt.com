@@ -3848,11 +3848,6 @@
       "permanent": true
     },
     {
-      "source": "/reference/data-test-configs",
-      "destination": "/reference/test-configs",
-      "permanent": true
-    },
-    {
       "source": "/reference/declaring-properties",
       "destination": "/reference/configs-and-properties",
       "permanent": true
