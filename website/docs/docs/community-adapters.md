@@ -17,4 +17,4 @@ Community adapters are adapter plugins contributed and maintained by members of 
 | [TiDB](/docs/core/connect-data-platform/tidb-setup)        | [Firebolt](/docs/core/connect-data-platform/firebolt-setup)  | [MindsDB](/docs/core/connect-data-platform/mindsdb-setup)
 | [Vertica](/docs/core/connect-data-platform/vertica-setup)     | [AWS Glue](/docs/core/connect-data-platform/glue-setup) | [MySQL](/docs/core/connect-data-platform/mysql-setup) | 
 | [Upsolver](/docs/core/connect-data-platform/upsolver-setup) | [Databend Cloud](/docs/core/connect-data-platform/databend-setup) | [fal - Python models](/docs/core/connect-data-platform/fal-setup) |
-| [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) |  |  |
+| [TimescaleDB](https://dbt-timescaledb.debruyn.dev/) | [Extrica](/docs/core/connect-data-platform/extrica-setup) |  |
