@@ -8,34 +8,35 @@ datatype: test
 <file name='dbt_project.yml'>
 
 ```yml
+
 unit_tests:
   - name: <test-name> # this is the unique name of the test
     model: <model-name> 
     config: 
-			meta: {dictionary}
-			tags: <string> | [<string>]
-		given:
+      meta: {dictionary}
+      tags: <string> | [<string>]
+    given:
       - input: <ref_or_source_call> # optional for seeds
-				format: dict | csv
+        format: dict | csv
         # if format csv, either define dictionary of rows or name of fixture
         rows:
           - {dictionary}
         fixture: <fixture-name>
-			- input: ... # declare additional inputs
+      - input: ... # declare additional inputs
     expect:
-		  format: dict | csv
+      format: dict | csv
       # if format csv, either define dictionary of rows or name of fixture
-	    rows: 
-			  - {dictionary}
+      rows: 
+        - {dictionary}
       fixture: <fixture-name>
     overrides: # optional: configuration for the dbt execution environment
       macros:
         is_incremental: true | false
         dbt_utils.current_timestamp: str
-					# ... any other jinja function from https://docs.getdbt.com/reference/dbt-jinja-functions
-          # ... any other context property
-       vars: {dictionary}
-       env_vars: {dictionary}
+        # ... any other jinja function from https://docs.getdbt.com/reference/dbt-jinja-functions
+        # ... any other context property
+      vars: {dictionary}
+      env_vars: {dictionary}
   - name: <test-name> ... # declare additional unit tests
 
   ```
