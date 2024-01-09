@@ -19,7 +19,7 @@ Then, it will:
 
 <VersionBlock firstVersion="1.7">
 
-When using `dbt init` to initialize your project, include the `--profile` flag to specify an existing `profiles.yml` as the `profile:` key to use instead of creating a new one. For example, `dbt init --profile`.
+When using `dbt init` to initialize your project, include the `--profile` flag to specify an existing `profiles.yml` as the `profile:` key to use instead of creating a new one. For example, `dbt init --profile profile_name`.
 
 
 
