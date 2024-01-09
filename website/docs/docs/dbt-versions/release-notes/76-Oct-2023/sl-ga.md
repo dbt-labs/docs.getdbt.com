@@ -17,7 +17,7 @@ It aims to bring the best of modeling and semantics to downstream applications b
 
 - Brand new [integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) such as Tableau, Google Sheets, Hex, Mode, and Lightdash.
 - New [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using GraphQL and JDBC to query metrics and build integrations.
-- dbt Cloud [multi-tenant regional](/docs/cloud/about-cloud/regions-ip-addresses) support for North America, EMEA, and APAC. Single-tenant support coming soon.
+- dbt Cloud [multi-tenant regional](/docs/cloud/about-cloud/access-regions-ip-addresses) support for North America, EMEA, and APAC. Single-tenant support coming soon.
 - Use the APIs to call an export (a way to build tables in your data platform), then access them in your preferred BI tool.  Starting from dbt v1.7 or higher, you will be able to schedule exports as part of your dbt job.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="80%" title="Use the universal dbt Semantic Layer to define and queried metrics in integration tools."/>

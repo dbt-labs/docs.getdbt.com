@@ -1,6 +1,7 @@
 ---
-title: "Regions & IP addresses"
-id: "regions-ip-addresses"
+title: "Access, Regions, & IP addresses"
+sidebar: "Access, Regions, & IP Addresses"
+id: "access-regions-ip-addresses"
 description: "Available regions and ip addresses"
 ---
 
@@ -12,13 +13,25 @@ dbt Cloud is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions 
 | Region | Location | Access URL | IP addresses | Developer plan | Team plan | Enterprise plan |
 |--------|----------|------------|--------------|----------------|-----------|-----------------|
 | North America multi-tenant [^1] | AWS us-east-1 (N. Virginia) | cloud.getdbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | ✅ | ✅ | ✅ |
-| North America Cell 1 [^1]       | AWS us-east-1 (N. Virginia) | {account prefix}.us1.dbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | ❌ | ❌ | ✅ |
+| North America Cell 1 [^1]       | AWS us-east-1 (N. Virginia) | {account prefix}.us1.dbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 <br />52.3.77.232 <br />3.214.191.130 <br />34.233.79.135 | ✅  | ❌ | ✅ |
 | EMEA [^1] | AWS eu-central-1	(Frankfurt) | emea.dbt.com | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | ❌ | ❌ | ✅ |
 | APAC  [^1] | 	AWS ap-southeast-2  (Sydney)| au.dbt.com | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />| ❌ | ❌ | ✅ |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/community/resources/getting-help#dbt-cloud-support) for your IPs | ❌ | ❌ | ✅ |
 
 
 [^1]: These regions support [multi-tenant](/docs/cloud/about-cloud/tenancy) deployment environments hosted by dbt Labs.
+
+## Accessing your account
+
+To login to dbt Cloud, use the URL that applies to your environment.  Your access URL used will depend on a few factors including location and tenancy:
+- **US multi-tenant:** Use your unique URL that starts with your account prefix, followed by `us1.dbt.com`. For example, `abc123.us1.dbt.com`.
+    - If you are unsure of your access URL, navigate to `us1.dbt.com` and enter your credentials. If you are a member of a single account, you will be logged in and your URL will be displayed in the browser. If you are a member of muliple accounts, you will be presented with a list of options, along with the appropriate login URLs for each
+
+    <Lightbox src="/img/docs/dbt-cloud/find-account.png" title="dbt Cloud accounts" />
+
+- **EMEA multi-tenant:** Use the URL `emea.dbt.com`.
+- **APAC multi-tenant:** Use the URL `au.dbt.com`.
+- **Worldwide single-tenant and VPC:** Use the vanity URL provided during your onboarding.
 
 ### Locating your dbt Cloud IP addresses
 

@@ -50,7 +50,7 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 | JDBC parameter | Description | Example |
 | -------------- | ----------- | ------- |
 | `jdbc:arrow-flight-sql://` | The protocol for the JDBC driver.  | `jdbc:arrow-flight-sql://` |
-| `semantic-layer.cloud.getdbt.com` | The [access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your account's dbt Cloud region. You must always add the `semantic-layer` prefix before the access URL.  | For dbt Cloud deployment hosted in North America, use `semantic-layer.cloud.getdbt.com`  |
+| `semantic-layer.cloud.getdbt.com` | The [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your account's dbt Cloud region. You must always add the `semantic-layer` prefix before the access URL.  | For dbt Cloud deployment hosted in North America, use `semantic-layer.cloud.getdbt.com`  |
 | `environmentId` | The unique identifier for the dbt production environment, you can retrieve this from the dbt Cloud URL <br /> when you navigate to **Environments** under **Deploy**. | If your URL ends with `.../environments/222222`, your `environmentId` is `222222`<br /><br />   |
 | `SERVICE_TOKEN` | dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) with “Semantic Layer Only” and "Metadata Only" permissions. Create a new service token on the **Account Settings** page. | `token=SERVICE_TOKEN` |
 

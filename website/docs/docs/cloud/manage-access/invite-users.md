@@ -35,7 +35,7 @@ You must have proper permissions to invite new users:
 
 ## User experience
 
-dbt Cloud generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/cloud/about-cloud/regions-ip-addresses).
+dbt Cloud generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/cloud/about-cloud/access-regions-ip-addresses).
 
 
 The email contains a link to create an account. When the user clicks on this they will be brought to one of two screens depending on whether SSO is configured or not.
