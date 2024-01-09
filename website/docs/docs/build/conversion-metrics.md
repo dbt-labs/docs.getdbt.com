@@ -6,7 +6,13 @@ sidebar_label: Conversion
 tags: [Metrics, Semantic Layer]
 ---
 
-Conversion metrics allow us to define when a base event happens and then a conversion event happens for a specific entity within some time range. For example, we might want to measure how often a user(entity) completes a visit(base event) and then purchases (conversion event) within 7 days(time window). This requires a time range and an entity to join on. This is different from a ratio metric because we include an entity in the pre-aggregated join. 
+Conversion metrics allow us to define when a base event happens and a subsequent conversion event happens for a specific entity within some time range.
+
+- **Example**: Track how often a user (entity) completes a visit (base event) and then makes a purchase (conversion event) within 7 days (time window).
+- **Requirements**: A time range and an entity to join on.
+- **How it differs from [Ratio metrics](/docs/build/ratio)**: Includes an entity in the pre-aggregated join.
+
+## Parameters
 
 The specification for conversion metrics is as follows:
 
@@ -14,41 +20,48 @@ The specification for conversion metrics is as follows:
 | --- | --- | --- | --- |
 | name | The name of the metric. | String | Required |
 | description | The description of the metric. | String | Optional |
-| type | The type of the metric. In this case conversion. | String | Required |
-| label | The value that will be displayed in downstream tools. | String | Required |
-| type_parameters | Configurations that are specific to each metric type | List | Required |
-| conversion_type_params | Additional configuration specific to conversion metrics | List  | Required |
-| entity | The entity for each conversion event | Entity | Required |
-| calculation | How we perform the calculation. Either conversion_rate or conversions. Default is conversion_rate | String | Required |
-| base_measure | The base conversion event measure | Measure | Required |
-| conversion_measure | The conversion event measure | Measure | Required |
-| window | The time window for the conversion event to occur i.e 7 days, 1 week, 3 months. Defaults to infinity.  | String | Required |
+| type | The type of the metric (such as derived, ratio, and so on). In this case, set as 'conversion' | String | Required |
+| label | Displayed value in downstream tools. | String | Required |
+| type_parameters | Specific configurations for each metric type. | List | Required |
+| conversion_type_params | Additional configuration specific to conversion metrics. | List  | Required |
+| entity | The entity for each conversion event. | Entity | Required |
+| calculation | Method of calculation. Either `conversion_rate` or `conversions`. Default is `conversion_rate`. | String | Required |
+| base_measure | The base conversion event measure. | Measure | Required |
+| conversion_measure | The conversion event measure. | Measure | Required |
+| window | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity.  | String | Required |
 | constant_properties | List of constant properties. Defaults to None.  | List | Optional |
 | base_property | The property from the base semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 | conversion_property | The property from the conversion semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 
-The following displays the complete specification for ratio metrics, along with an example:
+The following code example displays the complete specification for conversion metrics and details how they're applied:
 
-```bash
-metric:
-	- name: The metric name # Required
-		description: the metric description # Required
-		type: conversion
-	  type_params:
-	    conversion_type_params:
-	      entity: _entity_ # required
-	      calculation: _calculation_type_ # optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits) + more to come
-	      base_measure: _measure_ # required
-	      conversion_measure: _measure_ # required
-	      window: _time_window_ # optional. default: inf. window to join the two events on. Follows similar format as time windows elsewhere (i.e. 7 days)
-	      constant_properties: # optional. List of constant properties default: None
-	        - base_property: _dimension_or_entity_ # required. A reference to a dimension/entity of the semantic model linked to the base_measure
-	          conversion_property: _dimension_or_entity_ # same as base above, but to the semantic model of the conversion_measure
+```yaml
+metrics:
+  - name: The metric name # Required
+    description: the metric description # Required
+    type: conversion
+    type_params:
+      conversion_type_params:
+        entity: _entity_ # Required
+        calculation: _calculation_type_ # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits) and more to come.
+        base_measure: _measure_ # Required
+        conversion_measure: _measure_ # Required
+        window: _time_window_ # Optional. default: inf. window to join the two events on. Follows similar format as time windows elsewhere (such as, 7 days)
+        constant_properties: # Optional. List of constant properties default: None
+          - base_property: _dimension_or_entity_ # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
+            conversion_property: _dimension_or_entity_ # Same as base above, but to the semantic model of the conversion_measure
 ```
 
-**Conversion Metric Example**
+### Conversion metric example
 
-The following example walks through how we calculate a conversion metric step by step. Suppose we have two semantic models, Visits and Buys. The Visits table represents visits to an e-commerce site, and the buys table represents someone completing an order on that site.  The underlying tables look like the following: 
+The following example will measure conversions from website visits (_Visits_ table) to order completions (_Buys_ table).Let's go through how to calculate a conversion metric step by step. 
+
+1. Suppose we have two semantic models, _Visits_ and _Buys_:
+
+- The _Visits_ table represents visits to an e-commerce site
+- The _Buys_ table represents someone completing an order on that site.  
+
+The underlying tables look like the following: 
 
 **VISITS**
 
@@ -172,7 +185,7 @@ v.user_id = b.user_id AND v.ds <= b.ds AND v.ds > b.ds - INTERVAL '7 day';
 Now we have a data set that contains each conversion linked to a visit event.
 
 1. aggregate the "conversions" table to get the total number of conversions
-2. join the aggregated base measure table "opportunties" to the "conversions" table using the group by keys
+2. join the aggregated base measure table "opportunities" to the "conversions" table using the group by keys
 3. calculate the conversion
 
 ### **Step 4:**
@@ -235,7 +248,7 @@ You may want to set the value of a null conversion event to zero instead of null
 
 This will return the following result set:
 
-![Screenshot 2024-01-04 at 2.31.11 PM.png](../website/static/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png)
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="85%" title="Conversion metric with fill nulls with parameter"/>
 
 **Setting the calculation type:**
 
