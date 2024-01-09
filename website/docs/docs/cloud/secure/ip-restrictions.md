@@ -3,6 +3,8 @@ title: "Configuring IP restrictions"
 id: ip-restrictions
 description: "Configuring IP restrictions to outside traffic from accessing your dbt Cloud environment"
 sidebar_label: "IP restrictions"
+pagination_next: "docs/cloud/secure/about-privatelink"
+pagination_prev: null
 ---
 
 import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';
@@ -34,7 +36,7 @@ To add an IP to the allowlist, from the **IP Restrictions** page:
 4. Select **Allow**
 5. Add the ranges in the CIDR notation
 	- For example, 1.1.1.1/8
-	- You cannot add multiple ranges in the same rule. Instead, create a rule per CIDR range.
+	- You can add multiple ranges in the same rule.
 6. Click **Save**
 
 Note that simply adding the IP Ranges will not enforce IP restrictions. For more information, see the section “Enabling Restrictions.”

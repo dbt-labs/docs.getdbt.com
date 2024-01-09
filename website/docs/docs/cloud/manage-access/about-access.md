@@ -2,6 +2,8 @@
 title: "About user access in dbt Cloud"
 description: "Learn how dbt Cloud administrators can use dbt Cloud's permissioning model to control user-level access in a dbt Cloud account."
 id: "about-user-access"
+pagination_next: "docs/cloud/manage-access/seats-and-users"
+pagination_prev: null
 ---
 
 :::info "User access" is not "Model access"

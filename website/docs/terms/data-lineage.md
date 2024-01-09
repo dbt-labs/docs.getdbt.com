@@ -89,7 +89,7 @@ The biggest challenges around data lineage become more apparent as your data, sy
 
 As dbt projects scale with data and organization growth, the number of sources, models, macros, seeds, and [exposures](https://docs.getdbt.com/docs/build/exposures) invariably grow. And with an increasing number of nodes in your DAG, it can become harder to audit your DAG for WET code or inefficiencies.
 
-Working with dbt projects with thousands of models and nodes can feel overwhelming, but remember: your DAG and data lineage are meant to help you, not be your enemy. Tackle DAG audits in chunks, document all models, and [leverage strong structure conventions](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
+Working with dbt projects with thousands of models and nodes can feel overwhelming, but remember: your DAG and data lineage are meant to help you, not be your enemy. Tackle DAG audits in chunks, document all models, and [leverage strong structure conventions](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview).
 
 :::tip dbt project evaluator
 
@@ -113,4 +113,4 @@ DAGs, data lineage, and root cause analysis…tell me more! Check out some of ou
 
 - [Glossary: DRY](https://docs.getdbt.com/terms/dry)
 - [Data techniques for modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-- [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+- [How we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview)

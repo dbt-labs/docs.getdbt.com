@@ -14,6 +14,7 @@ meta:
   slack_channel_link: 'https://join.slack.com/t/upsolvercommunity/shared_invite/zt-1zo1dbyys-hj28WfaZvMh4Z4Id3OkkhA'
   platform_name: 'Upsolver'
   config_page: '/reference/resource-configs/upsolver-configs'
+pagination_next: null
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
@@ -32,7 +33,7 @@ meta:
 
 pip is the easiest way to install the adapter:
 
-<code>pip install {frontMatter.meta.pypi_package}</code>
+<code>python -m pip install {frontMatter.meta.pypi_package}</code>
 
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 

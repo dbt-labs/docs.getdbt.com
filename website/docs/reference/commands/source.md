@@ -20,10 +20,10 @@ By default, `dbt source freshness` will calculate freshness information for all 
 
 ```bash
 # Snapshot freshness for all Snowplow tables:
-$ dbt source freshness --select source:snowplow
+$ dbt source freshness --select "source:snowplow"
 
 # Snapshot freshness for a particular source table:
-$ dbt source freshness --select source:snowplow.event
+$ dbt source freshness --select "source:snowplow.event"
 ```
 
 ### Configuring source freshness output

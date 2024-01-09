@@ -36,11 +36,13 @@ The IDE streamlines your workflow, and features a popular user interface layout 
       * Added (A) — The IDE detects added files
       * Deleted (D) — The IDE detects deleted files.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-cmd-status.jpg" width="120%" title="Use the Command bar to write dbt commands and the status button for the current IDE status"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-bar.jpg" width="120%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
 
 5. **Command bar &mdash;**  The Command bar, located in the lower left of the IDE, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
-6. **IDE Status button &mdash;** The IDE Status button, located on the lower right of the IDE, displays the current IDE status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [IDE Status modal](#modals-and-menus), simply click on this button.
+6. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
+
+7. **Status button &mdash;** The IDE Status button, located on the lower right of the IDE, displays the current IDE status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [IDE Status modal](#modals-and-menus), simply click on this button.
 
 
 ## Editing features
@@ -51,7 +53,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 1. **File Editor &mdash;** The File Editor is where users edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. 
 
-    * Use intuitive [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips#cloud-ide-keyboard-shortcuts) to help develop easier for you and your team.
+    * Use intuitive [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) to help develop easier for you and your team.
 
 2. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The File Editor tab shows a blue icon for unsaved changes.
 

@@ -3,7 +3,7 @@ title: "Packages"
 id: "packages"
 ---
 
-## What is a package?
+
 Software engineers frequently modularize code into libraries. These libraries help programmers operate with leverage: they can spend more time focusing on their unique business logic, and less time implementing code that someone else has already spent the time perfecting.
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
@@ -22,12 +22,12 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
+* It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
 
-:::note Using Python packages
 
-Defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages).
+import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
-:::
+<UseCaseInfo/>
 
 ## How do I add a package to my project?
 1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
@@ -366,3 +366,4 @@ packages:
 ```
 
 </File>
+

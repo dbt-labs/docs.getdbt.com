@@ -2,7 +2,7 @@
 featured_image: ""
 
 # This CTA lives in right sidebar on blog index
-featured_cta: "coalesce_2023_signup"
+featured_cta: "coalesce_2023_catchup"
 
 # Show or hide hero title, description, cta from blog index
 show_title: true

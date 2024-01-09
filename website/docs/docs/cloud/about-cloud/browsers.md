@@ -2,6 +2,7 @@
 title: "Supported browsers"
 id: "browsers"
 description: "dbt Cloud supports the latest browsers like Chrome and Firefox."
+pagination_next: null
 ---
 
 To have the best experience with dbt Cloud, we recommend using the latest versions of the following browsers:

@@ -12,35 +12,19 @@ meta:
   slack_channel_name: n/a
   slack_channel_link: 
   platform_name: 'Infer'
-  config_page: '/reference/resource-configs/no-configs'
+  config_page: '/reference/resource-configs/infer-configs'
   min_supported_version: n/a
 ---
 
-<h2> Overview of {frontMatter.meta.pypi_package} </h2>
+:::info Vendor-supported plugin
 
-<ul>
-    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
-    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
-    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
-    <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
-    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
-    </ul>
+Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
 
+:::
 
-<h2> Installing {frontMatter.meta.pypi_package} </h2>
+import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-pip is the easiest way to install the adapter:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
-
-<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
-
-<h2> Configuring {frontMatter.meta.pypi_package} </h2>
-
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+<SetUpPages meta={frontMatter.meta} />
 
 
 ## Connecting to Infer with **dbt-infer**
@@ -51,10 +35,18 @@ you can build advanced analysis for any business use case.
 Read more about SQL-inf and Infer in the [Infer documentation](https://docs.getinfer.io/).
 
 The `dbt-infer` package allow you to use SQL-inf easily within your DBT models. 
-You can read more about the `dbt-infer` package itself and how it connecst to Infer in the [dbt-infer documentation](https://dbt.getinfer.io/).
+You can read more about the `dbt-infer` package itself and how it connects to Infer in the [dbt-infer documentation](https://dbt.getinfer.io/).
+
+The dbt-infer adapter is maintained via PyPi and installed with pip.
+To install the latest dbt-infer package simply run the following within the same shell as you run dbt.
+```python
+pip install dbt-infer
+```
+
+Versioning of dbt-infer follows the standard dbt versioning scheme - meaning if you are using dbt 1.2 the corresponding dbt-infer will be named 1.2.x where is the latest minor version number.
 
 Before using SQL-inf in your DBT models you need to setup an Infer account and generate an API-key for the connection.
-You can read how to do that in the [Getting Started Guide](https://dbt.getinfer.io/docs/getting_started#sign-up-to-infer).
+You can read how to do that in the [Getting Started Guide](https://docs.getinfer.io/docs/reference/integrations/dbt).
 
 The profile configuration in `profiles.yml` for `dbt-infer` should look something like this:
 
@@ -122,10 +114,10 @@ as native SQL functions.
 
 Infer supports a number of SQL-inf commands, including 
 `PREDICT`, `EXPLAIN`, `CLUSTER`, `SIMILAR_TO`, `TOPICS`, `SENTIMENT`.
-You can read more about SQL-inf and the commands it supports in the [SQL-inf Reference Guide](https://docs.getinfer.io/docs/reference).
+You can read more about SQL-inf and the commands it supports in the [SQL-inf Reference Guide](https://docs.getinfer.io/docs/category/commands).
 
 To get you started we will give a brief example here of what such a model might look like.
-You can find other more complex examples on the [dbt-infer examples page](https://dbt.getinfer.io/docs/examples).
+You can find other more complex examples in the [dbt-infer examples repo](https://github.com/inferlabs/dbt-infer-examples).
 
 In our simple example, we will show how to use a previous model 'user_features' to predict churn
 by predicting the column `has_churned`.

@@ -1,7 +1,8 @@
 ---
 title: "Set up BigQuery OAuth"
-description: "Learn how dbt Cloud administrators can use licenses and seats to control access in a dbt Cloud account."
+description: "Learn how dbt Cloud administrators can use BigQuery OAuth to control access in a dbt Cloud account"
 id: "set-up-bigquery-oauth"
+pagination_next: null
 ---
 
 :::info Enterprise Feature
@@ -73,3 +74,7 @@ You will then be redirected to BigQuery and asked to approve the drive, cloud pl
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" title="BigQuery access request" />
 
 Select **Allow**. This redirects you back to dbt Cloud. You should now be an authenticated BigQuery user, ready to use the dbt Cloud IDE.
+
+## FAQs
+
+<FAQ path="Warehouse/bg-oauth-drive-scope"/>

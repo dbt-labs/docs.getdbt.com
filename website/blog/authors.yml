@@ -1,6 +1,6 @@
 amy_chen:
   image_url: /img/blog/authors/achen.png
-  job_title: Staff Partner Engineer
+  job_title: Product Ecosystem Manager
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/yuanamychen/
@@ -287,6 +287,14 @@ jonathan_natkins:
       url: https://twitter.com/nattyice
   name: Jon "Natty" Natkins
   organization: dbt Labs
+jordan_stein:
+  image_url: /img/blog/authors/jordan.jpeg
+  job_title: Product Manager
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/jstein5/
+  name: Jordan Stein
+  organization: dbt Labs  
 
 josh_fell:
   image_url: /img/blog/authors/josh-fell.jpeg
@@ -304,6 +312,15 @@ kira_furuichi:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/kira-furuichi/
   name: Kira Furuichi
+  organization: dbt Labs
+
+kshitij_aranke:
+  image_url: /img/blog/authors/kshitij-aranke.jpg
+  job_title: Senior Software Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/aranke/
+  name: Kshitij Aranke
   organization: dbt Labs
 
 lauren_benezra:

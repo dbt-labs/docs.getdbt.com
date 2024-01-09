@@ -42,7 +42,7 @@ You may also commonly see queries that `select * from table_name`. The asterisk 
 Leverage [dbt utils’ star macro](/blog/star-sql-love-letter) to be able to both easily select many and specifically exclude certain columns.
 :::
 
-In a dbt project, analytics engineers will typically write models that contain multiple CTEs that build to one greater query. For folks that are newer to analytics engineering or dbt, we recommend they check out the [“How we structure our dbt projects” guide](/guides/best-practices/how-we-structure/1-guide-overview) to better understand why analytics folks like modular data modeling and CTEs.
+In a dbt project, analytics engineers will typically write models that contain multiple CTEs that build to one greater query. For folks that are newer to analytics engineering or dbt, we recommend they check out the [“How we structure our dbt projects” guide](/best-practices/how-we-structure/1-guide-overview) to better understand why analytics folks like modular data modeling and CTEs.
 
 ## SELECT statement syntax in Snowflake, Databricks, BigQuery, and Redshift
 

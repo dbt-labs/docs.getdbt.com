@@ -14,7 +14,7 @@ id: "sql-models"
 
 :::info Building your first models
 
-If you're new to dbt, we recommend that you read a [quickstart guide](/quickstarts) to build your first dbt project with models.
+If you're new to dbt, we recommend that you read a [quickstart guide](/guides) to build your first dbt project with models.
 
 :::
 
@@ -262,7 +262,7 @@ Additionally, the `ref` function encourages you to write modular transformations
 
 ## Testing and documenting models
 
-You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation) for more information.
+You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/data-tests) and [documentation](/docs/collaborate/documentation) for more information.
 
 ## Additional FAQs
 <FAQ path="Project/example-projects" alt_header="Are there any example dbt models?" />

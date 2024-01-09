@@ -4,14 +4,15 @@ id: sl-manifest
 description: "Learn about the semantic manifest.json file and how you can use artifacts to gain insights about your dbt Semantic Layer."
 tags: [Semantic Layer, APIs]
 sidebar_label: "Semantic manifest"
+pagination_next: null
 ---
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
 
 dbt creates an [artifact](/reference/artifacts/dbt-artifacts) file called the _Semantic Manifest_ (`semantic_manifest.json`), which MetricFlow requires to build and run metric queries properly for the dbt Semantic Layer. This artifact contains comprehensive information about your dbt Semantic Layer. It is an internal file that acts as the integration point with MetricFlow. 
@@ -96,4 +97,3 @@ Top-level keys for the semantic manifest are:
 
 - [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview)
 - [About dbt artifacts](/reference/artifacts/dbt-artifacts)
-

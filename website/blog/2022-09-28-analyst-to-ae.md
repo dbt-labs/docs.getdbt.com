@@ -111,7 +111,7 @@ The analyst caught the issue because they have the appropriate context to valida
 
 An analyst is able to identify which areas do *not* need to be 100% accurate, which means they can also identify which areas *do* need to be 100% accurate.
 
-> dbt makes it very quick to add [data quality tests](/docs/build/tests). In fact, it’s so quick, that it’ll take an analyst longer to write up what tests they want than it would take for an analyst to completely finish coding them.
+> dbt makes it very quick to add [data quality tests](/docs/build/data-tests). In fact, it’s so quick, that it’ll take an analyst longer to write up what tests they want than it would take for an analyst to completely finish coding them.
 
 When data quality issues are identified by the business, we often see that analysts are the first ones to be asked:
 

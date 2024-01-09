@@ -6,6 +6,7 @@ keywords:
   - dbt metrics layer
 sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
+pagination_next: "docs/build/dimensions"
 ---
 
 Semantic models are the foundation for data definition in MetricFlow, which powers the dbt Semantic Layer:
@@ -16,6 +17,8 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - You can create multiple semantic models from a single dbt model, as long as you give each semantic model a unique name.
 - Configure semantic models in a YAML file within your dbt project directory.
 - Organize them under a `metrics:` folder or within project sources as needed. 
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
 Semantic models have 6 components and this page explains the definitions with some examples:
 
@@ -37,17 +40,17 @@ The complete spec for semantic models is below:
 
 ```yaml
 semantic_models:
-  - name: the_name_of_the_semantic_model  ## Required
-    description: same as always           ## Optional
-    model: ref('some_model')              ## Required
-    defaults:                             ## Required
-      agg_time_dimension: dimension_name  ## Required if the model contains dimensions
-    entities:                             ## Required
-      - see more information in entities
-    measures:                             ## Optional
-      - see more information in measures section
-    dimensions:                           ## Required
-      - see more information in dimensions section
+  - name: the_name_of_the_semantic_model      ## Required
+    description: same as always               ## Optional
+    model: ref('some_model')                  ## Required
+    defaults:                                 ## Required
+      agg_time_dimension: dimension_name    ## Required if the model contains dimensions
+    entities:                                 ## Required
+       - see more information in entities
+    measures:                                 ## Optional
+       - see more information in measures section
+    dimensions:                               ## Required
+       - see more information in dimensions section
     primary_entity: >-
       if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
 ```
@@ -120,14 +123,18 @@ semantic_models:
     config:
       enabled: true | false
       group: some_group
+      meta:
+        some_key: some_value
 ```
 
 Semantic model config in `dbt_project.yml`:
 ```yml
-semantic_models:
+semantic-models:
   my_project_name:
     +enabled: true | false
     +group: some_group
+    +meta:
+      some_key: some_value
 ```
 
 </VersionBlock>
@@ -223,16 +230,14 @@ For semantic models with a measure, you must have a [primary time group](/docs/b
 
 ### Measures
 
-[Measures](/docs/build/measures) are aggregations applied to columns in your data model. They can be used as the foundational building blocks for more complex metrics, or be the final metric itself. Measures have various parameters which are listed in a table along with their descriptions and types.
+[Measures](/docs/build/measures) are aggregations applied to columns in your data model. They can be used as the foundational building blocks for more complex metrics, or be the final metric itself. 
 
-| Parameter | Description | Field type |
-| --- | --- | --- |
-| `name`| Provide a name for the measure, which must be unique and can't be repeated across all semantic models in your dbt project. | Required |
-| `description` | Describes the calculated measure. | Optional |
-| `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
-| `expr` | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
-| `non_additive_dimension` | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
-| `create_metric` | You can create a metric directly from a measure with `create_metric: True` and specify its display name with create_metric_display_name. Default is false. | Optional |
+Measures have various parameters which are listed in a table along with their descriptions and types.
+
+import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
+
+<MeasuresParameters />
+
 
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';

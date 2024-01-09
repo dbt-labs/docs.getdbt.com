@@ -23,11 +23,11 @@ Using Jinja turns your dbt project into a programming environment for SQL, givin
 
 In fact, if you've used the [`{{ ref() }}` function](/reference/dbt-jinja-functions/ref), you're already using Jinja!
 
-Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](/docs/build/analyses), [tests](/docs/build/tests), and even [hooks](/docs/build/hooks-operations).
+Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](/docs/build/analyses), [tests](/docs/build/data-tests), and even [hooks](/docs/build/hooks-operations).
 
 :::info Ready to get started with Jinja and macros?
 
-Check out the [tutorial on using Jinja](/guides/advanced/using-jinja) for a step-by-step example of using Jinja in a model, and turning it into a macro!
+Check out the [tutorial on using Jinja](/guides/using-jinja) for a step-by-step example of using Jinja in a model, and turning it into a macro!
 
 :::
 
@@ -71,12 +71,12 @@ group by 1
 
 You can recognize Jinja based on the delimiters the language uses, which we refer to as "curlies":
 - **Expressions `{{ ... }}`**: Expressions are used when you want to output a string. You can use expressions to reference [variables](/reference/dbt-jinja-functions/var) and call [macros](/docs/build/jinja-macros#macros).
-- **Statements `{% ... %}`**: Statements are used for control flow, for example, to set up `for` loops and `if` statements, or to define macros.
--  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from compiling.
+- **Statements `{% ... %}`**: Statements don't output a string. They are used for control flow, for example, to set up `for` loops and `if` statements, to [set](https://jinja.palletsprojects.com/en/3.1.x/templates/#assignments) or [modify](https://jinja.palletsprojects.com/en/3.1.x/templates/#expression-statement) variables, or to define macros.
+-  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from executing or outputing a string.
 
 When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
 * **Using dbt Cloud:** Click the compile button to see the compiled SQL in the Compiled SQL pane
-* **Using the dbt CLI:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
+* **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ### Macros
 [Macros](/docs/build/jinja-macros) in Jinja are pieces of code that can be reused multiple times – they are analogous to "functions" in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in `.sql` files, typically in your `macros` directory ([docs](/reference/project-configs/macro-paths)).

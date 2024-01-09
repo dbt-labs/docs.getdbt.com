@@ -12,7 +12,7 @@ The `dbt seed` command will load `csv` files located in the `seed-paths` directo
 Specific seeds can be run using the `--select` flag to `dbt seed`. Example:
 
 ```
-$ dbt seed --select country_codes
+$ dbt seed --select "country_codes"
 Found 2 models, 3 tests, 0 archives, 0 analyses, 53 macros, 0 operations, 2 seed files
 
 14:46:15 | Concurrency: 1 threads (target='dev')

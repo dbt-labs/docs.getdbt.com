@@ -2,7 +2,7 @@
 title: "Programmatic invocations"
 ---
 
-In v1.5, dbt-core added support for programmatic invocations. The intent is to expose the existing dbt CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
+In v1.5, dbt-core added support for programmatic invocations. The intent is to expose the existing dbt Core CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
 
 The entry point is a `dbtRunner` class, which allows you to `invoke` the same commands as on the CLI.
 

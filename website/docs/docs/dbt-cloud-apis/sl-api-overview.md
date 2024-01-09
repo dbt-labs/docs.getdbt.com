@@ -4,17 +4,18 @@ id: sl-api-overview
 description: "Integrate and query metrics and dimensions in downstream tools using the Semantic Layer APIs"
 tags: [Semantic Layer, API]
 hide_table_of_contents: true
+pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
 ---
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
  
-The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.
+The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.<br />
 
 The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define metrics in code (with [MetricFlow](/docs/build/about-metricflow)) and dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics and models. Integrating with the dbt Semantic Layer will help organizations that use your product make more efficient and trustworthy decisions with their data. It also helps you to avoid duplicative coding, optimize development workflow, ensure data governance, and guarantee consistency for data consumers.  
 
@@ -31,10 +32,8 @@ You can use the dbt Semantic Layer for a variety of tools and applications of da
 import Features from '/snippets/_sl-plan-info.md'
 
 <Features
-cycle="public beta"
 product="dbt Semantic Layer"
-plan="dbt Cloud Team and Enterprise"
-instance="hosted in North America"
+plan="dbt Cloud Team or Enterprise"
 />
 
 <div className="grid--3-col">
@@ -58,5 +57,3 @@ instance="hosted in North America"
     icon="dbt-bit"/>
 
 </div>
-
-

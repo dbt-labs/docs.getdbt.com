@@ -74,7 +74,7 @@ To connect a personal GitHub account:
 
 4. Once you approve authorization, you will be redirected to dbt Cloud, and you should now see your connected account. 
 
-The next time you log into dbt Cloud, you will be able to do so via OAuth through GitHub, and if you're on the Enterprise plan, you're ready to use the dbt Cloud IDE.
+The next time you log into dbt Cloud, you will be able to do so via OAuth through GitHub, and if you're on the Enterprise plan, you're ready to use the dbt Cloud IDE or dbt Cloud CLI.
 
 
 ## FAQs
