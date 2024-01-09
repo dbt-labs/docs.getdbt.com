@@ -22,7 +22,6 @@ If this configuration is not included in your `dbt_project.yml` file, the `clean
 
 ### Remove packages and compiled files as part of `dbt clean` (preferred) 
 
-This is our preferred configuration, but is not the default.
 
 To remove packages as well as compiled files, include the value of your [packages-install-path](/reference/project-configs/packages-install-path) configuration in your `clean-targets` configuration.
 
