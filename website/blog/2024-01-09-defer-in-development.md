@@ -8,7 +8,7 @@ authors: [dave_connors]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2023-12-04
+date: 2024-01-09
 is_featured: true
 ---
 
@@ -17,7 +17,7 @@ Picture this — you’ve got a massive dbt project, thousands of models chuggin
 “OK,” you think further, “I’ll just run a `dbt build -s +my_changed_model` to make sure I have everything I need built into my dev schema and I can test my changes”. You run the command. You wait. You wait some more. You get some coffee, and completely take yourself out of your dbt development flow state. A lot of time and money down the drain to get to a point where you can *start* your work. That’s no good!
 
 Luckily, dbt’s defer functionality allow you to *only* build what you care about when you need it, and nothing more. This feature (which has been around for a long time!) helps developers spend less time and money in development, helping ship trusted data products faster. dbt Cloud now offers native support for this workflow in development, so it’s never been easier to master the defer feature in dbt!
-
+<!-- truncate -->
 ## Defer to prod or prefer to slog
 
 A lot of dbt’s magic relies on the elegance and simplicity of the `{{ ref() }}` function, which is how you can build your lineage graph, and how dbt can be run in different environments &mdash; when in dev, those refs resolve your development models, but will properly resolve to your production locations when your environment settings change.
