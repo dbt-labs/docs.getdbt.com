@@ -1,20 +1,18 @@
 ---
-title: "About target variable"
+title: "About target variables"
 sidebar_label: "target"
 id: "target"
-description: "Contains information about your connection to the warehouse."
+description: "The `target` variable contains information about your connection to the warehouse."
 ---
 
-`target` contains information about your connection to the warehouse.
+The `target` variable contains information about your connection to the warehouse.
 
-* **dbt Core:** These values are based on the target defined in your [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml)
-* **dbt Cloud Scheduler:**
-    * `target.name` is defined per job as described [here](/docs/build/custom-target-names).
-    * For all other attributes, the values are defined by the deployment connection. To check these values, click **Deploy** from the upper left and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
-* **dbt Cloud IDE:** The values are defined by your connection and credentials. To check any of these values, head to your account (via your profile image in the top right hand corner), and select the project under "Credentials".
+- **dbt Core:** These values are based on the target defined in your [profiles.yml](/docs/core/connect-data-platform/profiles.yml) file. Please note that for certain adapters, additional configuration steps may be required. Refer to the [set up page](/docs/core/connect-data-platform/about-core-connections) for your data platform.
+- **dbt Cloud** To learn more about setting up your adapter in dbt Cloud, refer to [About data platform connections](/docs/cloud/connect-data-platform/about-connections).
+   - **[dbt Cloud Scheduler](/docs/deploy/job-scheduler)**: `target.name` is defined per job as described in [Custom target names](/docs/build/custom-target-names). For other attributes, values are defined by the deployment connection. To check these values, click **Deploy** and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.
+   - **[dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)**: These values are defined by your connection and credentials. To edit these values, click the gear icon in the top right, select **Profile settings**, and click **Credentials**. Select and edit a project to set up the credentials and target name.
 
-
-Some configs are shared between all adapters, while others are adapter-specific.
+Some configurations are shared between all adapters, while others are adapter-specific.
 
 ## Common
 | Variable | Example | Description |
@@ -54,6 +52,7 @@ Some configs are shared between all adapters, while others are adapter-specific.
 | `target.dataset` | dbt_alice | The dataset the active profile |
 
 ## Examples
+
 ### Use `target.name` to limit data in dev
 
 As long as you use sensible target names, you can perform conditional logic to limit data when working in dev.
@@ -68,6 +67,7 @@ where created_at >= dateadd('day', -3, current_date)
 ```
 
 ### Use `target.name` to change your source database
+
 If you have specific Snowflake databases configured for your dev/qa/prod environments,
 you can set up your sources to compile to different databases depending on your 
 environment. 
