@@ -4,10 +4,6 @@ displayed_sidebar: "docs"
 
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/dev/marian-anderson/CHANGELOG.md)
