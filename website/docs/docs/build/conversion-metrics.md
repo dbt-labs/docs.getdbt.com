@@ -6,7 +6,7 @@ sidebar_label: Conversion
 tags: [Metrics, Semantic Layer]
 ---
 
-Conversion metrics allow us to define when a base event happens and a subsequent conversion event happens for a specific entity within some time range.
+Conversion metrics allow you to define when a base event and a subsequent conversion event happen for a specific entity within some time range.
 
 - **Example**: Track how often a user (entity) completes a visit (base event) and then makes a purchase (conversion event) within 7 days (time window).
 - **Requirements**: A time range and an entity to join on.
@@ -20,7 +20,7 @@ The specification for conversion metrics is as follows:
 | --- | --- | --- | --- |
 | `name` | The name of the metric. | String | Required |
 | `description` | The description of the metric. | String | Optional |
-| `type` | The type of the metric (such as derived, ratio, and so on). In this case, set as 'conversion' | String | Required |
+| `type` | The type of metric (such as derived, ratio, and so on.). In this case, set as 'conversion' | String | Required |
 | `label` | Displayed value in downstream tools. | String | Required |
 | `type_params` | Specific configurations for each metric type. | List | Required |
 | `conversion_type_params` | Additional configuration specific to conversion metrics. | List  | Required |
@@ -28,8 +28,8 @@ The specification for conversion metrics is as follows:
 | `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`. | String | Optional |
 | `base_measure` | The base conversion event measure. | Measure | Required |
 | `conversion_measure` | The conversion event measure. | Measure | Required |
-| `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity.  | String | Required |
-| `constant_properties` | List of constant properties. Defaults to None.  | List | Optional |
+| `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity.  | String | Optional |
+| `constant_properties` | List of constant properties.  | List | Optional |
 | `base_property` | The property from the base semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 | `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 
@@ -42,23 +42,23 @@ metrics:
     type: conversion
     type_params:
       conversion_type_params:
-        entity: _entity_ # Required
-        calculation: _calculation_type_ # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
-        base_measure: _measure_ # Required
-        conversion_measure: _measure_ # Required
-        window: _time_window_ # Optional. default: infinity. window to join the two events on. Follows similar format as time windows elsewhere (such as, 7 days)
+        entity: ENTITY # Required
+        calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
+        base_measure: MEASURE # Required
+        conversion_measure: MEASURE # Required
+        window: TIME_WINDOW # Optional. default: infinity. window to join the two events. Follows a similar format as time windows elsewhere (such as 7 days)
         constant_properties: # Optional. List of constant properties default: None
-          - base_property: _dimension_or_entity_ # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
-            conversion_property: _dimension_or_entity_ # Same as base above, but to the semantic model of the conversion_measure
+          - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
+            conversion_property: DIMENSION or ENTITY # Same as base above, but to the semantic model of the conversion_measure
 ```
 
 ## Conversion metric example
 
-The following example will measure conversions from website visits (`VISITS` table) to order completions (`BUYS` table). Let's calculate a conversion metric for this scenario step by step.
+The following example will measure conversions from website visits (`VISITS` table) to order completions (`BUYS` table) and calculate a conversion metric for this scenario step by step.
 
-Suppose we have two semantic models, `VISITS` and `BUYS`:
+Suppose you have two semantic models, `VISITS` and `BUYS`:
 
-- The `VISITS` table represents visits to an e-commerce site
+- The `VISITS` table represents visits to an e-commerce site.
 - The `BUYS` table represents someone completing an order on that site.  
 
 The underlying tables look like the following:
@@ -80,7 +80,7 @@ Records completed orders with `USER_ID` and `REFERRER_ID`.
 | 2020-01-02 | bob | facebook |
 | 2020-01-07 | bob | amazon |
 
-Next, we define a conversion metric as follows:
+Next, define a conversion metric as follows:
 
 ```yaml
 - name: visit_to_buy_conversion_rate_7d
@@ -119,8 +119,7 @@ on
 v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day'
 ```
 
-The dataset returns the following:
-Note that there are two potential conversion events for the first visit.
+The dataset returns the following (note that there are two potential conversion events for the first visit):
 
 | V.DS | V.USER_ID | V.REFERRER_ID | B.DS | UUID | BUYS |
 | --- | --- | --- | --- | --- | --- |
@@ -159,7 +158,7 @@ The dataset returns the following:
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 
-This workflow links the two conversions to the correct visit events. Due to the join, we end up with multiple combinations, leading to fanout results. After applying the window function, duplicates appear. 
+This workflow links the two conversions to the correct visit events. Due to the join, you end up with multiple combinations, leading to fanout results. After applying the window function, duplicates appear. 
 
 To resolve this and eliminate duplicates, use a distinct select. The UUID also helps identify which conversion is unique. The next steps provide more detail on how to do this.
 
@@ -190,7 +189,7 @@ The dataset returns the following:
 | 2020-01-01 | bob | facebook | 2020-01-02 | uuid1 | 1 |
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 
-We now have a dataset where every conversion is connected to a visit event. To proceed:
+You now have a dataset where every conversion is connected to a visit event. To proceed:
 
 1. Sum up the total conversions in the "conversions" table.
 2. Combine this table with the "opportunities" table, matching them based on group keys.
@@ -198,7 +197,7 @@ We now have a dataset where every conversion is connected to a visit event. To p
 
 ### Step 4: Aggregate and calculate
 
-Now that we’ve tied each conversion event to a visit, we can calculate the aggregated conversions and opportunities measures. Then we can join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows:
+Now that you’ve tied each conversion event to a visit, you can calculate the aggregated conversions and opportunities measures. Then, you can join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows:
 
 ```sql
 select
@@ -239,9 +238,9 @@ group by
 
 Use the following additional settings to customize your conversion metrics:
 
-- Null conversion values: Set null conversions to zero using `fill_nulls_with`.
-- Calculation type: Choose between showing raw conversions or conversion rate.
-- Constant property: Add conditions for specific scenarios to join conversions on constant properties.
+- **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
+- **Calculation type:** Choose between showing raw conversions or conversion rate.
+- **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.
 
 <Tabs>
 <TabItem value="null" label="Set null conversion events to zero">
@@ -265,7 +264,7 @@ To return zero in the final data set, you can set the value of a null conversion
 
 ```
 
-This will return the following result set:
+This will return the following results:
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Conversion metric with fill nulls with parameter"/>
 
@@ -301,13 +300,13 @@ You can change the default to display the number of conversions by setting the `
 
 You can add a constant property to a conversion metric to count only those conversions where a specific dimension or entity matches in both the base and conversion events. 
 
-For example, if you're at an e-commerce company and want to answer the following questions:
+For example, if you're at an e-commerce company and want to answer the following question:
 - _How often did visitors convert from `View Item Details` to `Complete Purchase` with the same product in each step?_<br />
-  - What makes this question tricky to answer is users could have completed these two conversion milestones across many products. For example, viewed a pair of shoes, then a T-shirt,  and eventually checked out with a bow tie. This would still count as a conversion, even though the conversion event only happened for the bow tie.
+  - This question is tricky to answer because users could have completed these two conversion milestones across many products. For example, they may have viewed a pair of shoes, then a T-shirt, and eventually checked out with a bow tie. This would still count as a conversion, even though the conversion event only happened for the bow tie.
 
-Back to our initial questions, we want to see how many customers viewed an item detail page and then completed a purchase for the _same_ product.
+Back to the initial questions, you want to see how many customers viewed an item detail page and then completed a purchase for the _same_ product.
 
-In this case, we would want to set `product_id` as the constant property. We would specify this in the configs as follows:
+In this case, you want to set `product_id` as the constant property. You can specify this in the configs as follows:
 
 ```yaml
 - name: view_item_detail_to_purchase_with_same_item
@@ -326,7 +325,7 @@ In this case, we would want to set `product_id` as the constant property. We wou
           conversion_property: product
 ```
 
-We will add an additional condition to the join to make sure the constant property is the same across conversion.
+You will add an additional condition to the join to make sure the constant property is the same across conversions.
 
 ```sql
 select distinct
