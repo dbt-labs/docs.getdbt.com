@@ -59,14 +59,14 @@ metrics:
     type: conversion
     type_params:
       conversion_type_params:
-        entity: _entity_ # Required
-        calculation: _calculation_type_ # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
-        base_measure: _measure_ # Required
-        conversion_measure: _measure_ # Required
-        window: _time_window_ # Optional. default: infinity. window to join the two events on. Follows similar format as time windows elsewhere (such as, 7 days)
+        entity: ENTITY # Required
+        calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
+        base_measure: MEASURE # Required
+        conversion_measure: MEASURE # Required
+        window: TIME_WINDOW # Optional. default: infinity. window to join the two events. Follows a similar format as time windows elsewhere (such as 7 days)
         constant_properties: # Optional. List of constant properties default: None
-          - base_property: _dimension_or_entity_ # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
-            conversion_property: _dimension_or_entity_ # Same as base above, but to the semantic model of the conversion_measure
+          - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
+            conversion_property: DIMENSION or ENTITY # Same as base above, but to the semantic model of the conversion_measure
 ```
 
 ### Cumulative metrics 
