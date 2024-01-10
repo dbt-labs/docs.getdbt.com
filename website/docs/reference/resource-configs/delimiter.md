@@ -4,7 +4,7 @@ datatype: <string>
 default_value: ","
 ---
 
-Supported in v1.7 and higher
+Supported in v1.7 and higher.
 
 ## Definition
 
