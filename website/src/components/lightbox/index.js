@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
@@ -10,6 +10,7 @@ function Lightbox({
   title = undefined, 
   width = undefined,
 }) {
+  const [isHovered, setIsHovered] = useState(false);
 
   // Set alignment class if alignment prop used
   let imageAlignment = ''
@@ -19,6 +20,15 @@ function Lightbox({
     imageAlignment = styles.rightAlignLightbox
   }
 
+  // Event handlers for mouse enter and leave
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <>
       <link href="/css/featherlight-styles.css" type="text/css" rel="stylesheet" />
@@ -27,8 +37,11 @@ function Lightbox({
           ${styles.docImage} 
           ${collapsed ? styles.collapsed : ''}
           ${imageAlignment}
+          ${isHovered ? styles.hovered : ''} // Add class for hover state
         `}
         style={width && {maxWidth: width}}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <span>
           <a href="#" data-featherlight={src}>
