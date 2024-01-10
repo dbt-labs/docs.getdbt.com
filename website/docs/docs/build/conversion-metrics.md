@@ -8,7 +8,9 @@ tags: [Metrics, Semantic Layer]
 
 Conversion metrics allow you to define when a base event and a subsequent conversion event happen for a specific entity within some time range.
 
-For example, using conversion metrics allows you to track how often a user (entity) completes a visit (base event) and then makes a purchase (conversion event) within 7 days (time window). You would need to add a time range and an entity to join. Conversion metrics are different from [ratio metrics](/docs/build/ratio) because you need to include an entity in the pre-aggregated join.
+For example, using conversion metrics allows you to track how often a user (entity) completes a visit (base event) and then makes a purchase (conversion event) within 7 days (time window). You would need to add a time range and an entity to join. 
+
+Conversion metrics are different from [ratio metrics](/docs/build/ratio) because you need to include an entity in the pre-aggregated join.
 
 ## Parameters
 
