@@ -209,7 +209,7 @@ models:
 
 ## Custom node colors
 
-The `docs` attribute now supports `node_color` to customize the display color of some node types in the DAG within dbt docs. You can define node colors in the files below and apply overrides where needed.
+The `docs` attribute now supports `node_color` to customize the display color of some node types in the DAG within dbt docs. You can define node colors in the following files and apply overrides where needed. Note, you need to run or re-run the command `dbt docs generate`.
 
 `node_color` hierarchy:
 
