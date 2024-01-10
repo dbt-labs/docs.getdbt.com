@@ -158,7 +158,7 @@ The dataset returns the following:
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 
-This workflow links the two conversions to the correct visit events. Due to the join, we end up with multiple combinations, leading to fanout results. After applying the window function, duplicates appear. 
+This workflow links the two conversions to the correct visit events. Due to the join, you end up with multiple combinations, leading to fanout results. After applying the window function, duplicates appear. 
 
 To resolve this and eliminate duplicates, use a distinct select. The UUID also helps identify which conversion is unique. The next steps provide more detail on how to do this.
 
