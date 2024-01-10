@@ -160,7 +160,7 @@ DbtJobRunStatus.RUNNING
 DbtJobRunStatus.SUCCESS
 ```
 
-**Note:** You can cancel the job from dbt Cloud if necessary.
+You can cancel the job from dbt Cloud if necessary.
 
 ## Configure the workflows to run the dbt Cloud jobs
 
