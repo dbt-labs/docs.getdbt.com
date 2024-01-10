@@ -302,7 +302,7 @@ You can add a constant property to a conversion metric to count only those conve
 
 For example, if you're at an e-commerce company and want to answer the following question:
 - _How often did visitors convert from `View Item Details` to `Complete Purchase` with the same product in each step?_<br />
-  - What makes this question tricky to answer is users could have completed these two conversion milestones across many products. For example, viewed a pair of shoes, then a T-shirt,  and eventually checked out with a bow tie. This would still count as a conversion, even though the conversion event only happened for the bow tie.
+  - This question is tricky to answer because users could have completed these two conversion milestones across many products. For example, they may have viewed a pair of shoes, then a T-shirt, and eventually checked out with a bow tie. This would still count as a conversion, even though the conversion event only happened for the bow tie.
 
 Back to our initial questions, we want to see how many customers viewed an item detail page and then completed a purchase for the _same_ product.
 
