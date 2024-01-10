@@ -1,4 +1,3 @@
-
 ## Types of environments
 
 In dbt Cloud, there are two types of environments:
@@ -110,6 +109,3 @@ Partial parsing in dbt Cloud requires dbt version 1.4 or newer. The feature does
 To enable, select **Account settings** from the gear menu and enable the **Partial parsing** option.
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
-
-
-
