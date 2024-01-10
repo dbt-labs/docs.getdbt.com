@@ -20,8 +20,11 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Schedule a job to run.
 - Connect to multiple data sources in addition to your S3 bucket. 
 
-Check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free and [Build Better Data Pipelines with dbt and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc if you're interested in course learning with videos.
+:::tip Videos for you
+You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
 
+You can also watch the [Build Better Data Pipelines with dbt and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc.
+:::
 
 ### Prerequisites 
 
