@@ -325,7 +325,7 @@ In this case, we would want to set `product_id` as the constant property. We wou
           conversion_property: product
 ```
 
-We will add an additional condition to the join to make sure the constant property is the same across conversion.
+You will add an additional condition to the join to make sure the constant property is the same across conversions.
 
 ```sql
 select distinct
