@@ -20,7 +20,7 @@ The specification for conversion metrics is as follows:
 | --- | --- | --- | --- |
 | `name` | The name of the metric. | String | Required |
 | `description` | The description of the metric. | String | Optional |
-| `type` | The type of the metric (such as derived, ratio, and so on). In this case, set as 'conversion' | String | Required |
+| `type` | The type of metric (such as derived, ratio, and so on.). In this case, set as 'conversion' | String | Required |
 | `label` | Displayed value in downstream tools. | String | Required |
 | `type_params` | Specific configurations for each metric type. | List | Required |
 | `conversion_type_params` | Additional configuration specific to conversion metrics. | List  | Required |
