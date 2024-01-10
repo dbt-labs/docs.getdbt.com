@@ -6,7 +6,7 @@ sidebar_label: Conversion
 tags: [Metrics, Semantic Layer]
 ---
 
-Conversion metrics allow us to define when a base event happens and a subsequent conversion event happens for a specific entity within some time range.
+Conversion metrics allow you to define when a base event and a subsequent conversion event happen for a specific entity within some time range.
 
 - **Example**: Track how often a user (entity) completes a visit (base event) and then makes a purchase (conversion event) within 7 days (time window).
 - **Requirements**: A time range and an entity to join on.
