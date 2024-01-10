@@ -264,7 +264,7 @@ To return zero in the final data set, you can set the value of a null conversion
 
 ```
 
-This will return the following result set:
+This will return the following results:
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Conversion metric with fill nulls with parameter"/>
 
