@@ -54,7 +54,7 @@ metrics:
 
 ## Conversion metric example
 
-The following example will measure conversions from website visits (`VISITS` table) to order completions (`BUYS` table). Let's calculate a conversion metric for this scenario step by step.
+The following example will measure conversions from website visits (`VISITS` table) to order completions (`BUYS` table) and calculate a conversion metric for this scenario step by step.
 
 Suppose we have two semantic models, `VISITS` and `BUYS`:
 
