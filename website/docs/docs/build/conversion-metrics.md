@@ -22,7 +22,7 @@ The specification for conversion metrics is as follows:
 | `description` | The description of the metric. | String | Optional |
 | `type` | The type of the metric (such as derived, ratio, and so on). In this case, set as 'conversion' | String | Required |
 | `label` | Displayed value in downstream tools. | String | Required |
-| `type_parameters` | Specific configurations for each metric type. | List | Required |
+| `type_params` | Specific configurations for each metric type. | List | Required |
 | `conversion_type_params` | Additional configuration specific to conversion metrics. | List  | Required |
 | `entity` | The entity for each conversion event. | Entity | Required |
 | `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Default is `conversion_rate`. | String | Required |
