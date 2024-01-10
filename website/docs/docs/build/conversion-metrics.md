@@ -80,7 +80,7 @@ Records completed orders with `USER_ID` and `REFERRER_ID`.
 | 2020-01-02 | bob | facebook |
 | 2020-01-07 | bob | amazon |
 
-Next, we define a conversion metric as follows:
+Next, define a conversion metric as follows:
 
 ```yaml
 - name: visit_to_buy_conversion_rate_7d
