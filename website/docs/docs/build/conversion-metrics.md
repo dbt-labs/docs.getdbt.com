@@ -300,7 +300,7 @@ You can change the default to display the number of conversions by setting the `
 
 You can add a constant property to a conversion metric to count only those conversions where a specific dimension or entity matches in both the base and conversion events. 
 
-For example, if you're at an e-commerce company and want to answer the following questions:
+For example, if you're at an e-commerce company and want to answer the following question:
 - _How often did visitors convert from `View Item Details` to `Complete Purchase` with the same product in each step?_<br />
   - What makes this question tricky to answer is users could have completed these two conversion milestones across many products. For example, viewed a pair of shoes, then a T-shirt,  and eventually checked out with a bow tie. This would still count as a conversion, even though the conversion event only happened for the bow tie.
 
