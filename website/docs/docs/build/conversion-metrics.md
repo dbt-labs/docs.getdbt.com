@@ -28,7 +28,7 @@ The specification for conversion metrics is as follows:
 | `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`. | String | Optional |
 | `base_measure` | The base conversion event measure. | Measure | Required |
 | `conversion_measure` | The conversion event measure. | Measure | Required |
-| `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity.  | String | Required |
+| `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity.  | String | Optional |
 | `constant_properties` | List of constant properties. Defaults to None.  | List | Optional |
 | `base_property` | The property from the base semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 | `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Entity or Dimension | Optional |
