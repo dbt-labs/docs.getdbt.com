@@ -6,16 +6,7 @@ default_value: {contract: false}
 id: "contract"
 ---
 
-:::info New functionality
-This functionality is new in v1.5.
-:::
-
-## Related documentation
-- [What is a model contract?](/docs/collaborate/govern/model-contracts)
-- [Defining `columns`](/reference/resource-properties/columns)
-- [Defining `constraints`](/reference/resource-properties/constraints)
-
-# Definition
+Supported in dbt v1.5 and higher.
 
 When the `contract` configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml:
 - `name` and `data_type` for every column
@@ -120,3 +111,8 @@ Imagine:
 - The result is a delta between the yaml-defined contract, and the actual table in the database - which means the contract is now incorrect!
 
 Why `append_new_columns`, rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models!
+
+## Related documentation
+- [What is a model contract?](/docs/collaborate/govern/model-contracts)
+- [Defining `columns`](/reference/resource-properties/columns)
+- [Defining `constraints`](/reference/resource-properties/constraints)

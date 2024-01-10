@@ -7,18 +7,6 @@ keywords:
   - groups access mesh
 ---
 
-:::info New functionality
-This functionality is new in v1.5.
-:::
-
-## Related docs
-
-* [Model Access](/docs/collaborate/govern/model-access#groups)
-* [Group configuration](/reference/resource-configs/group)
-* [Group selection](/reference/node-selection/methods#the-group-method)
-
-## About groups 
-
 A group is a collection of nodes within a dbt DAG. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](/reference/resource-configs/access) models.
 
 Group members may include models, tests, seeds, snapshots, analyses, and metrics. (Not included: sources and exposures.) Each node may belong to only one group.
@@ -126,3 +114,9 @@ dbt.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```
+
+## Related docs
+
+* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Group configuration](/reference/resource-configs/group)
+* [Group selection](/reference/node-selection/methods#the-group-method)

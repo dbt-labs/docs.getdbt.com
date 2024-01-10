@@ -4,10 +4,6 @@ id: "upgrading-to-0-14-0"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 This guide outlines migration instructions for:
 
 1. [Upgrading archives to snapshots](#upgrading-to-snapshot-blocks)

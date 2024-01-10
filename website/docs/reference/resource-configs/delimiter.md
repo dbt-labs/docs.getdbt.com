@@ -4,19 +4,14 @@ datatype: <string>
 default_value: ","
 ---
 
+Supported in v1.7 and higher.
+
 ## Definition
 
 You can use this optional seed configuration to customize how you separate values in a [seed](/docs/build/seeds) by providing the one-character string.
 
 * The delimiter defaults to a comma when not specified.
 * Explicitly set the `delimiter` configuration value if you want seed files to use a different delimiter, such as "|" or ";".
-
-:::info New in 1.7!
-
-Delimiter is new functionality available beginning with dbt Core v1.7.
-
-:::
-
   
 ## Usage
 
