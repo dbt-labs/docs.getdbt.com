@@ -306,7 +306,7 @@ For example, if you're at an e-commerce company and want to answer the following
 
 Back to the initial questions, you want to see how many customers viewed an item detail page and then completed a purchase for the _same_ product.
 
-In this case, we would want to set `product_id` as the constant property. We would specify this in the configs as follows:
+In this case, you want to set `product_id` as the constant property. You can specify this in the configs as follows:
 
 ```yaml
 - name: view_item_detail_to_purchase_with_same_item
