@@ -48,5 +48,5 @@ unit_tests:
 
 Unit tests validate your modeling logic on a small set of static inputs before you materialize your full model in production. Unit tests enable test-driven development, with benefits for developer efficiency and code reliability. 
 
-To run just your unit tests:
+To run only your unit tests, use the command:
 `dbt test —-select test_type:unit`
