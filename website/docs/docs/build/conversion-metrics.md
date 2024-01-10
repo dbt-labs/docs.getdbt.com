@@ -189,7 +189,7 @@ The dataset returns the following:
 | 2020-01-01 | bob | facebook | 2020-01-02 | uuid1 | 1 |
 | 2020-01-07 | bob | amazon | 2020-01-07 | uuid2 | 1 |
 
-We now have a dataset where every conversion is connected to a visit event. To proceed:
+You now have a dataset where every conversion is connected to a visit event. To proceed:
 
 1. Sum up the total conversions in the "conversions" table.
 2. Combine this table with the "opportunities" table, matching them based on group keys.
