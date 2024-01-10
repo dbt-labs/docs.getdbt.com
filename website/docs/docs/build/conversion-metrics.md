@@ -240,7 +240,7 @@ Use the following additional settings to customize your conversion metrics:
 
 - **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
 - **Calculation type:** Choose between showing raw conversions or conversion rate.
-- Constant property: Add conditions for specific scenarios to join conversions on constant properties.
+- **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.
 
 <Tabs>
 <TabItem value="null" label="Set null conversion events to zero">
