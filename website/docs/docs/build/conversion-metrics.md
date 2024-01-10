@@ -25,7 +25,7 @@ The specification for conversion metrics is as follows:
 | `type_params` | Specific configurations for each metric type. | List | Required |
 | `conversion_type_params` | Additional configuration specific to conversion metrics. | List  | Required |
 | `entity` | The entity for each conversion event. | Entity | Required |
-| `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Default is `conversion_rate`. | String | Required |
+| `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`. | String | Optional |
 | `base_measure` | The base conversion event measure. | Measure | Required |
 | `conversion_measure` | The conversion event measure. | Measure | Required |
 | `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity.  | String | Required |
