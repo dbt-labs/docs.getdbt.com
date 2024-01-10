@@ -120,7 +120,6 @@ v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day'
 ```
 
 The dataset returns the following (note that there are two potential conversion events for the first visit):
-Note that there are two potential conversion events for the first visit.
 
 | V.DS | V.USER_ID | V.REFERRER_ID | B.DS | UUID | BUYS |
 | --- | --- | --- | --- | --- | --- |
