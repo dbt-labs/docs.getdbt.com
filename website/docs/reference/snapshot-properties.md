@@ -20,6 +20,7 @@ snapshots:
     [meta](/reference/resource-configs/meta): {<dictionary>}
     [docs](/reference/resource-configs/docs):
       show: true | false
+      node_color: color_id # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
     [config](/reference/resource-properties/config):
       [<snapshot_config>](/reference/snapshot-configs): <config_value>
     [tests](/reference/resource-properties/data-tests):
