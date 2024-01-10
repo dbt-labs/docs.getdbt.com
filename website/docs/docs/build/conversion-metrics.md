@@ -58,7 +58,7 @@ The following example will measure conversions from website visits (`VISITS` tab
 
 Suppose you have two semantic models, `VISITS` and `BUYS`:
 
-- The `VISITS` table represents visits to an e-commerce site
+- The `VISITS` table represents visits to an e-commerce site.
 - The `BUYS` table represents someone completing an order on that site.  
 
 The underlying tables look like the following:
