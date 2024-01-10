@@ -86,7 +86,7 @@ Next, we define a conversion metric as follows:
 - name: visit_to_buy_conversion_rate_7d
   description: "Conversion rate from visiting to transaction in 7 days"
   type: conversion
-  label: Visit to Buy Conversion Rate (7 day window)
+  label: Visit to Buy Conversion Rate (7-day window)
   type_params:
     conversion_type_params:
       base_measure: visits
@@ -135,9 +135,9 @@ Instead of returning the raw visit values, use window functions to link conversi
 
 ```sql
 select
-  first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as v_ds,
-  first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as user_id,
-  first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as referrer_id,
+  first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as v_ds,
+  first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as user_id,
+  first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as referrer_id,
   b.ds,
   b.uuid,
   1 as buys
@@ -169,9 +169,9 @@ Instead of regular select used in the [Step 2](#step-2-refine-with-window-functi
 
 ```sql
 select distinct
-  first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as v_ds,
-  first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as user_id,
-  first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc nulls first) as referrer_id,
+  first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as v_ds,
+  first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as user_id,
+  first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as referrer_id,
   b.ds,
   b.uuid,
   1 as buys
@@ -241,12 +241,12 @@ Use the following additional settings to customize your conversion metrics:
 
 - Null conversion values: Set null conversions to zero using `fill_nulls_with`.
 - Calculation type: Choose between showing raw conversions or conversion rate.
-- Constant property: Add conditions to join conversions on constant properties for specific scenarios.
+- Constant property: Add conditions for specific scenarios to join conversions on constant properties.
 
 <Tabs>
 <TabItem value="null" label="Set null conversion events to zero">
 
-To return zero in the final data set, you may want to set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
+To return zero in the final data set, you can set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
 
 ```yaml
 - name: vist_to_buy_conversion_rate_7_day_window
