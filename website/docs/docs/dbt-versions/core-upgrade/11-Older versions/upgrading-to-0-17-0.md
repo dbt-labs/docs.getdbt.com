@@ -248,8 +248,8 @@ BigQuery:
 
 **Core**
 - [`path:` selectors](/reference/node-selection/methods#the-path-method)
-- [`--fail-fast`](/reference/commands/run#failing-fast)
-- The `as_text` Jinja filter no longer functions.
+- [`--fail-fast` command](/reference/commands/run#failing-fast)
+- `as_text` Jinja filter: removed this defunct filter
 - [accessing nodes in the `graph` object](/reference/dbt-jinja-functions/graph)
 - [persist_docs](/reference/resource-configs/persist_docs)
 - [source properties](reference/source-properties)

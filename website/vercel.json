@@ -3633,6 +3633,11 @@
       "permanent": true
     },
     {
+      "source": "/reference/dbt-jinja-functions/as_text",
+      "destination": "/reference/dbt-jinja-functions",
+      "permanent": true
+    },
+    {
       "source": "/docs/writing-code-in-dbt/jinja-context/builtins",
       "destination": "/reference/dbt-jinja-functions/builtins",
       "permanent": true
