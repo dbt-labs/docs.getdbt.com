@@ -14,7 +14,7 @@ function detailsToggle({ children, alt_header = null }) {
     if (isOn || isScrolling) return; // Ignore hover if already open or if scrolling
     const timeout = setTimeout(() => {
       if (!isScrolling) setOn(true);
-    }, 700); // Change the delay to 9 milliseconds
+    }, 700); // 
     setHoverTimeout(timeout);
   };
   
@@ -30,7 +30,7 @@ function detailsToggle({ children, alt_header = null }) {
     clearTimeout(hoverTimeout);
     setOn(false);
 
-    // Reset scrolling state after a short delay
+    // Reset scrolling state after a  delay
     setTimeout(() => {
       setIsScrolling(false);
     }, 800);
