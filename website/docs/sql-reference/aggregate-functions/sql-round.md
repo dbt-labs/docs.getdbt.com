@@ -24,11 +24,8 @@ In this function, you’ll need to input the *numeric* field or data you want ro
 
 ### SQL ROUND function example
 
-:::note What dataset is this?
-This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop).
-:::
 
-You can round some of the numeric fields of the Jaffle Shop’s `orders` model using the following code:
+You can round some of the numeric fields of the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` model using the following code:
 
 ```sql
 select 
