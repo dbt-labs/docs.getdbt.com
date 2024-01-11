@@ -12,4 +12,4 @@ Previously, when dbt Labs released a new [version](/docs/dbt-versions/core#how-d
 To see which version you are currently using and to upgrade, select **Deploy** in the top navigation bar and select **Environments**. Choose the preferred environment and click **Settings**. Click **Edit** to make a change to the current dbt version. dbt Labs recommends always using the latest version whenever possible to take advantage of new features and functionality. 
 
 
-<Lightbox src="/img/docs/release-notes/dbt-cloud-versions.png" title="dbt Cloud versions dropdown"/>
+<Lightbox src="/img/docs/release-notes/dbt-cloud-versions.png" width="65%" title="dbt Cloud versions dropdown"/>

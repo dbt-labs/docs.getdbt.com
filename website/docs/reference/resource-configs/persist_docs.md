@@ -186,8 +186,8 @@ models:
 Run dbt and observe that the created relation and columns are annotated with
 your descriptions:
 
-<Lightbox src="/img/reference/persist_docs_relation.png"
+<Lightbox src="/img/reference/persist_docs_relation.png" width="65%"
           title="Relation descriptions in BigQuery"/>
 
-<Lightbox src="/img/reference/persist_docs_columns.png"
+<Lightbox src="/img/reference/persist_docs_columns.png" width="65%"
           title="Column descriptions in BigQuery"/>

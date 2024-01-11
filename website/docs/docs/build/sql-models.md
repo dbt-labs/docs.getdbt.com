@@ -254,7 +254,7 @@ create view analytics.customers as (
 
 dbt uses the `ref` function to:
 * Determine the order to run the models by creating a dependent acyclic graph (DAG).
-<Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
+<Lightbox src="/img/dbt-dag.png" width="65%" title="The DAG for our dbt project" />
 
 * Manage separate environments &mdash; dbt will replace the model specified in the `ref` function with the database name for the <Term id="table" /> (or view). Importantly, this is environment-aware &mdash; if you're running dbt with a target schema named `dbt_alice`, it will select from an upstream table in the same schema. Check out the tabs above to see this in action.
 

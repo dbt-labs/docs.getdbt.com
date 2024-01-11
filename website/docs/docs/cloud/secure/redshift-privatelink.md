@@ -23,17 +23,17 @@ While Redshift Serverless does support Redshift-managed type VPC endpoints, this
 
 1. On the running Redshift cluster, select the **Properties** tab.
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink1.png" title="Redshift Properties tab"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink1.png" width="65%" title="Redshift Properties tab"/>
 
 2. In the **Granted accounts** section, click **Grant access**.
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink2.png" title="Redshift granted accounts"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink2.png" width="65%" title="Redshift granted accounts"/>
 
 3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to dbt Cloud Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support)._
 
 4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink3.png" title="Redshift grant access"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink3.png" width="65%" title="Redshift grant access"/>
 
 5. Add the required information to the following template, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
 
@@ -62,14 +62,14 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
         - **Standard Redshift**
 
             - Use IP addresses from the Redshift cluster’s **Network Interfaces** whenever possible. While IPs listed in the **Node IP addresses** section will work, they are also more likely to change.
-            <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
+            <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" width="65%" title="Target type: IP address"/>
 
             - There will likely be only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will also be created for that AZ. The NI IP from the original AZ will still work, but the new NI IP can also be added to the Target Group. If adding additional IPs, note that the NLB will also need to add the corresponding AZ. Once created, the NI(s) should stay the same (This is our observation from testing, but AWS does not officially document it).
 
         - **Redshift Serverless**
 
             - To find the IP addresses for Redshift Serverless instance locate and copy the endpoint (only the URL listed before the port) in the Workgroup configuration section of the AWS console for the instance.
-            <Lightbox src="/img/docs/dbt-cloud/redshiftserverless.png" title="Redshift Serverless endpoint"/>
+            <Lightbox src="/img/docs/dbt-cloud/redshiftserverless.png" width="65%" title="Redshift Serverless endpoint"/>
 
             - From a command line run the command `nslookup <endpoint>` using the endpoint found in the previous step and use the associated IP(s) for the Target Group.
 
@@ -85,13 +85,13 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
  - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" title="Enter ARN"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" width="65%" title="Enter ARN"/>
 
 ### 3. Obtain VPC Endpoint Service Name
 
 Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" title="Get service name field value"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" width="65%" title="Get service name field value"/>
 
 ### 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
 ```

@@ -24,7 +24,7 @@ Once you configure SSO, even partially, you cannot disable or revert it. When yo
 
 The diagram below explains the basic process by which users are provisioned in dbt Cloud upon logging in with SSO.
 
-<Lightbox src="/img/sso_overview.png" title="SSO diagram" />
+<Lightbox src="/img/sso_overview.png" width="65%" title="SSO diagram" />
 
 #### Diagram Explanation
 

@@ -80,7 +80,7 @@ dbt Cloud uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordi
 To fully customize the scheduling of your job, choose the **Custom cron schedule** option and use the cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" title="Schedule your dbt job"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" width="65%" title="Schedule your dbt job"/>
 
 Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and returns their plain English translations.
 

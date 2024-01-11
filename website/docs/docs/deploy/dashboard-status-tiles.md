@@ -9,11 +9,11 @@ In dbt Cloud, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power 
 ## Functionality
 The dashboard status tile looks like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/passing-tile.jpeg"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/passing-tile.jpeg" width="65%"/>
 
 The data freshness check fails if any sources feeding into the exposure are stale. The data quality check fails if any dbt tests fail. A failure state could look like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/failing-tile.jpeg"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/failing-tile.jpeg" width="65%"/>
 
 Clicking into **see details** from the Dashboard Status Tile takes you to a landing page where you can learn more about the specific sources, models, and tests feeding into this exposure.
 
@@ -60,7 +60,7 @@ Looker does not allow you to directly embed HTML and instead requires creating a
 
 - Once you have set up your custom visualization, you can use it on any dashboard! You can configure it with the exposure name, jobID, and token relevant to that dashboard.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/custom-looker.jpeg "/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/custom-looker.jpeg " width="65%"/>
 
 ### Tableau
 Tableau does not require you to embed an iFrame. You only need to use a Web Page object on your Tableau Dashboard and a URL in the following format:

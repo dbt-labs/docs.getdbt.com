@@ -27,7 +27,7 @@ Users connecting to Snowflake using SSO over a PrivateLink connection from dbt C
   - AWS account ID: `346425330055` - _NOTE: This account ID only applies to dbt Cloud Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support)._
 - You will need to have `ACCOUNTADMIN` access to the Snowflake instance to submit a Support request.
 
-<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
+<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" width="65%" title="Open snowflake case"/>
 
 2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 

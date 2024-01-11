@@ -32,7 +32,7 @@ One of the great things about DAGs is that they are *visual*. You can clearly id
 
 Take this mini-DAG for an example:
 
-<Lightbox src="/img/docs/terms/dag/mini_dag.png" title="A miniature DAG" />
+<Lightbox src="/img/docs/terms/dag/mini_dag.png" width="65%" title="A miniature DAG" />
 
 What can you learn from this DAG? Immediately, you may notice a handful of things:
 
@@ -57,7 +57,7 @@ You can additionally use your DAG to help identify bottlenecks, long-running dat
 
 ...to name just a few. Understanding the factors impacting model performance can help you decide on [refactoring approaches](https://courses.getdbt.com/courses/refactoring-sql-for-modularity), [changing model materialization](https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model#attempt-2-moving-to-an-incremental-model)s, replacing multiple joins with <Term id="surrogate-key">surrogate keys</Term>, or other methods.
 
-<Lightbox src="/img/docs/terms/dag/bad_dag.png" title="A bad DAG, one that follows non-modular data modeling techniques" />
+<Lightbox src="/img/docs/terms/dag/bad_dag.png" width="65%" title="A bad DAG, one that follows non-modular data modeling techniques" />
 
 ### Modular data modeling best practices
 
@@ -83,7 +83,7 @@ The marketing team at dbt Labs would be upset with us if we told you we think db
 
 Whether you’re using dbt Core or Cloud, dbt docs and the Lineage Graph are available to all dbt developers. The Lineage Graph in dbt Docs can show a model or source’s entire lineage, all within a visual frame. Clicking within a model, you can view the Lineage Graph and adjust selectors to only show certain models within the DAG. Analyzing the DAG here is a great way to diagnose potential inefficiencies or lack of modularity in your dbt project.
 
-<Lightbox src="/img/docs/terms/dag/lineage_graph.png" title="The Lineage Graph in dbt Docs" />
+<Lightbox src="/img/docs/terms/dag/lineage_graph.png" width="65%" title="The Lineage Graph in dbt Docs" />
 
 The DAG is also [available in the dbt Cloud IDE](https://www.getdbt.com/blog/on-dags-hierarchies-and-ides/), so you and your team can refer to your lineage while you build your models.
 

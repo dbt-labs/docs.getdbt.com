@@ -104,7 +104,7 @@ If no `partition_by` is specified, then the `insert_overwrite` strategy will ato
 - This strategy is not available when connecting via Databricks SQL endpoints (`method: odbc` + `endpoint`).
 - If connecting via a Databricks cluster + ODBC driver (`method: odbc` + `cluster`), you **must** include `set spark.sql.sources.partitionOverwriteMode DYNAMIC` in the [cluster Spark Config](https://docs.databricks.com/clusters/configure.html#spark-config) in order for dynamic partition replacement to work (`incremental_strategy: insert_overwrite` + `partition_by`).
 
-<Lightbox src="/img/reference/databricks-cluster-sparkconfig-partition-overwrite.png" title="Databricks cluster: Spark Config" />
+<Lightbox src="/img/reference/databricks-cluster-sparkconfig-partition-overwrite.png" width="65%" title="Databricks cluster: Spark Config" />
 
 <Tabs
   defaultValue="source"

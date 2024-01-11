@@ -19,7 +19,7 @@ To automatically rotate your API key:
 2. Select **API Access** from the lefthand side.
 3. In the **API** pane, click `Rotate`.
 
-<Lightbox src="/img/docs/dbt-cloud/rotate-token.png" title="Click the rotate button to generate a new key" />
+<Lightbox src="/img/docs/dbt-cloud/rotate-token.png" width="65%" title="Click the rotate button to generate a new key" />
 
 </TabItem>
 

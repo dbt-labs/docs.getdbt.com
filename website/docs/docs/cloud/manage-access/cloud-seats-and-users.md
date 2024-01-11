@@ -130,8 +130,7 @@ to allocate for the user. If your account does not have an available license to
 allocate, you will need to add more licenses to your plan to complete the license
 change.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png"
-          title="Manually assigning licenses"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png" width="65%" title="Manually assigning licenses"/>
 
 ### Mapped configuration
 
@@ -149,7 +148,7 @@ license. To assign Read-Only licenses to certain groups of users, create a new
 License Mapping for the Read-Only license type and include a comma separated
 list of IdP group names that should receive a Read-Only license at sign-in time.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/license-mapping.png"
+<Lightbox src="/img/docs/dbt-cloud/access-control/license-mapping.png" width="65%"
           title="Configuring IdP group license mapping"/>
 
 Usage notes:

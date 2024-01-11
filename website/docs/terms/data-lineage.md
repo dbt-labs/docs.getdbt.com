@@ -69,7 +69,7 @@ Your <Term id="dag" /> is used to visually show upstream dependencies, the nodes
 
 Ultimately, DAGs are an effective way to see relationships between data sources, models, and dashboards. DAGs are also a great way to see visual bottlenecks, or inefficiencies in your data work (see image below for a DAG with...many bottlenecks). Data teams can additionally add [meta fields](https://docs.getdbt.com/reference/resource-configs/meta) and documentation to nodes in the DAG to add an additional layer of governance to their dbt project.
 
-<Lightbox src="/img/docs/terms/data-lineage/bad_dag.png" title="A bad DAG" />
+<Lightbox src="/img/docs/terms/data-lineage/bad_dag.png" width="65%" title="A bad DAG" />
 
 :::tip Automatic > Manual
 

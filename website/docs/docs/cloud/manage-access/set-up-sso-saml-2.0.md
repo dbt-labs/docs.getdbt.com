@@ -426,7 +426,7 @@ To complete setup, follow the steps below in dbt Cloud:
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
    | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access. |
    | Slug | Enter your desired login slug. |
-    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png" width="65%"
         title="Configuring the application in dbt Cloud" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.

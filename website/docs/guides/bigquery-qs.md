@@ -56,7 +56,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
     Click **Run**, then check for results from the queries. For example: 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/bigquery/query-results.png" title="Bigquery Query Results" />
+    <Lightbox src="/img/bigquery/query-results.png" width="65%" title="Bigquery Query Results" />
     </div>
 2. Create new datasets from the [BigQuery Console](https://console.cloud.google.com/bigquery). For more information, refer to [Create datasets](https://cloud.google.com/bigquery/docs/datasets#create-dataset) in the Google Cloud docs. Datasets in BigQuery are equivalent to schemas in a traditional database. On the **Create dataset** page:
     - **Dataset ID** &mdash; Enter a name that fits the purpose. This name is used like schema in fully qualified references to your database objects such as `database.schema.table`. As an example for this guide, create one for `jaffle_shop` and another one for `stripe` afterward.
@@ -64,7 +64,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
     - **Enable table expiration** &mdash; Leave it unselected (the default). The default for the billing table expiration is 60 days. Because billing isn’t enabled for this project, GCP defaults to deprecating tables.
     - **Google-managed encryption key** &mdash; This option is available under **Advanced options**. Allow Google to manage encryption (the default). 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/bigquery/create-dataset-id.png" title="Bigquery Create Dataset ID" />
+    <Lightbox src="/img/bigquery/create-dataset-id.png" width="65%" title="Bigquery Create Dataset ID" />
     </div>
 3. After you create the `jaffle_shop` dataset, create one for `stripe` with all the same values except for **Dataset ID**.
 

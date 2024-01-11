@@ -22,7 +22,7 @@ After that, there's time to get fancy, but let's walk before we run.
 In this guide, we're going to add a **CI environment**, where proposed changes can be validated in the context of the entire project without impacting production systems. We will use a single set of deployment credentials (like the Prod environment), but models are built in a separate location to avoid impacting others (like the Dev environment).
 
 Your git flow will look like this:
-<Lightbox src="/img/best-practices/environment-setup/one-branch-git.png" title="git flow diagram" />
+<Lightbox src="/img/best-practices/environment-setup/one-branch-git.png" width="65%" title="git flow diagram" />
 
 ### Prerequisites
 
@@ -309,7 +309,7 @@ The team at Sunrun maintained a SOX-compliant deployment in dbt while reducing t
 In this section, we will add a new **QA** environment. New features will branch off from and be merged back into the associated `qa` branch, and a member of your team (the "Release Manager") will create a PR against `main` to be validated in the CI environment before going live.
 
 The git flow will look like this:
-<Lightbox src="/img/best-practices/environment-setup/many-branch-git.png" title="git flow diagram with an intermediary branch" />
+<Lightbox src="/img/best-practices/environment-setup/many-branch-git.png" width="65%" title="git flow diagram with an intermediary branch" />
 
 ### Advanced prerequisites
 
@@ -323,7 +323,7 @@ As noted above, this branch will outlive any individual feature, and will be the
 
 See [Custom branch behavior](/docs/dbt-cloud-environments#custom-branch-behavior). Setting `qa` as your custom branch ensures that the IDE creates new branches and PRs with the correct target, instead of using `main`.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="A demonstration of configuring a custom branch for an environment" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" width="65%" title="A demonstration of configuring a custom branch for an environment" />
 
 ### 3. Create a new QA environment
 

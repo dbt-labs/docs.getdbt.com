@@ -36,4 +36,4 @@ HTTP and Thrift connection methods:
 | Auth | Optional, supply if using Kerberos | `KERBEROS` |
 | Kerberos Service Name | Optional, supply if using Kerberos | `hive` |
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/spark-connection.png" title="Configuring a Spark connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/spark-connection.png" width="65%" title="Configuring a Spark connection"/>

@@ -35,7 +35,7 @@ This results in a lot of the same columns (e.g. `account_id`) existing in differ
 
 In fact, I found a better way using some CLI commands, the dbt Codegen package and docs blocks. I also made the following meme in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/) channel #memes-and-off-topic-chatter to encapsulate this method:
 
-<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/1.png" title="Meme of writing documentation" />
+<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/1.png" width="65%" title="Meme of writing documentation" />
 
 ## What pain is being solved?
 
@@ -279,7 +279,7 @@ To confirm the formatting works, run the following command to get dbt Docs up an
 ```
 $ dbt docs && dbt docs serve
 ```
-<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/2.jpg" title="dbt Docs UI" />
+<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/2.jpg" width="65%" title="dbt Docs UI" />
 
 Here, you can confirm that the column descriptions using the doc blocks are working as intended.
  
@@ -326,7 +326,7 @@ user_id
 ```
 Now, open your code editor, and replace `(.*)` with `{% docs column__activity_based_interest__$1 %}\n\n{% enddocs %}\n`, which will result in the following in your markdown file:
 
-<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/3.png" title="Replace content in your markdown file" />
+<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/3.png" width="65%" title="Replace content in your markdown file" />
 
 Now you can add documentation to each of your columns.
 
@@ -334,7 +334,7 @@ Now you can add documentation to each of your columns.
 
 You can programmatically identify all columns, and have them point towards the newly-created documentation. In your code editor, replace `\s{6}- name: (.*)\n        description: ""` with `      - name: $1\n        description: "{{ doc('column__activity_based_interest__$1') }}`:
 
-<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/4.png" title="Replace descriptions with dynamic doc blocks" />
+<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/4.png" width="65%" title="Replace descriptions with dynamic doc blocks" />
 
 ⚠️ Some of your columns may already be available in existing docs blocks. In this example, the following replacements are done:
 - `{{ doc('column__activity_based_interest__user_id') }}` → `{{ doc("column_user_id") }}`
@@ -343,7 +343,7 @@ You can programmatically identify all columns, and have them point towards the n
 ## Check that everything works
 Run `dbt docs generate`. If there are syntax errors, this will be found out at this stage. If successful, we can run `dbt docs serve` to perform a smoke test and ensure everything looks right:
 
-<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/5.jpg" title="dbt Docs UI showing successful documentation leveraging docs blocks" />
+<Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/5.jpg" width="65%" title="dbt Docs UI showing successful documentation leveraging docs blocks" />
 
 ## Additional considerations
 
