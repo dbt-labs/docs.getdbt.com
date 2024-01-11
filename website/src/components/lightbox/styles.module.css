@@ -25,9 +25,9 @@
   margin: 10px 0 10px auto;
 }
 
-.hovered img {
-  /* Example: Scale up the image on hover */
+.hovered {
   transform: scale(1.3);
   transition: transform 0.5s ease;
 }
+
 

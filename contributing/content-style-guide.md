@@ -56,7 +56,7 @@ docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markd
 | Link - topic in different folder            | `[Title](/folder/file-name) without file extension`*   |
 | Link - section in topic in same folder      | `[Title](/folder/file-name#section-name)`*             |
 | Link - section in topic in different folder | `[Title](/folder/file-name#section-name)`*            |
-| Image                                       | `<Lightbox src="/img/docs/<image-name>.jpg" title="Concise description of image"/>`|
+| Image                                       | `<Lightbox src="/img/docs/<image-name>.jpg" width: "size_%" title="Concise description of image"/>`|
 
 *docs.getdbt.com uses specific folders when linking to topics or sections. A successful link syntax begins with one of the following folder paths:
 
