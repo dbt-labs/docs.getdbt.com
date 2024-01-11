@@ -58,15 +58,15 @@ Let’s think back to the hypothetical above &mdash; what if we made use of the 
 
 Let’s take a look at a simplified example &mdash; let’s say your project looks like this in production:
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-environment-plain.png" width="85%" title="A simplified dbt project running in production." />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-environment-plain.png" width="65%" width="85%" title="A simplified dbt project running in production." />
 
 And you’re tasked with making changes to `model_f`. Without defer, you would need to make sure to at minimum execute a `dbt run -s +model_f` to ensure all the upstream dependencies of `model_f` are present in your development schema so that you can start to run `model_f`.* You just spent a whole bunch of time and money duplicating your models, and now your warehouse looks like this:
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-and-dev-full.png" width="85%" title="The whole project has been rebuilt into the dev schema, which can be time consuming and expensive!" />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-and-dev-full.png" width="65%" width="85%" title="The whole project has been rebuilt into the dev schema, which can be time consuming and expensive!" />
 
 With defer, we should not build anything other than the models that have changed, and are now different from their production counterparts! Let’s tell dbt to use production metadata to resolve our refs, and only build the model I have changed &mdash; that command would be `dbt run -s model_f --defer` .**
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-and-dev-defer.png" width="85%" title="Using defer, we can only build one single model" />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-and-dev-defer.png" width="65%" width="85%" title="Using defer, we can only build one single model" />
 
 This results in a *much slimmer build* &mdash; we read data in directly from the production version of `model_b` and `model_c`, and don’t have to worry about building anything other than what we selected!
 
@@ -80,7 +80,7 @@ dbt Cloud offers a seamless deferral experience in both the dbt Cloud IDE and th
 
 In the dbt Cloud IDE, there’s as simple toggle switch labeled `Defer to production`. Simply enabling this toggle will defer your command to the production environment when you run any dbt command in the IDE!
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/defer-toggle.png" title="The defer to prod toggle in the IDE" />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/defer-toggle.png" width="65%" title="The defer to prod toggle in the IDE" />
 
 The cloud CLI has this setting *on by default* — there’s nothing else you need to do to set this up! If you prefer not to defer, you can pass the `--no-defer` flag to override this behavior. You can also set an environment other than your production environment as the deferred to environment in your `dbt-cloud` settings in your `dbt_project.yml` :
 
@@ -100,13 +100,13 @@ One of the major gotchas in the defer workflow is that when you’re in defer mo
 
 Let’s take a look at that example above again, and pretend that some time before we went to make this edit, we did some work on `model_c`, and we have a local copy of `model_c` hanging out in our development schema:
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-and-dev-model-c.png" width="85%" title="Hypothetical starting point, with a development copy of model_c in the development schema at the start of the development cycle." />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-and-dev-model-c.png" width="65%" width="85%" title="Hypothetical starting point, with a development copy of model_c in the development schema at the start of the development cycle." />
 
 When you run `dbt run -s model_f --defer` , dbt will detect the development copy of `model_c` and say “Hey, y’know, I bet Dave is working on that model too, and he probably wants to make sure his changes to `model_c` work together with his changes to `model_f` . Because I am a kind and benevolent data transformation tool, i’ll make sure his `{{ ref('model_c') }]` function compiles to his development changes!” Thanks dbt!
 
 As a result, we’ll effectively see this behavior when we run our command:
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-and-dev-mixed.png" width="85%" title="With a development version of model_a in our dev schema, dbt will preferentially use that version instead of deferring" />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/prod-and-dev-mixed.png" width="65%" width="85%" title="With a development version of model_a in our dev schema, dbt will preferentially use that version instead of deferring" />
 
 Where our code would compile from
 
@@ -155,6 +155,6 @@ While defer is a faster and cheaper option for most folks in most situations, de
 
 ### Call me Willem Defer
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/willem.png" title="Willem Dafoe after using the `-—defer` flag" />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/willem.png" width="65%" title="Willem Dafoe after using the `-—defer` flag" />
 
 Defer to prod is a powerful way to improve your development velocity with dbt, and dbt Cloud makes it easier than ever to make use of this feature! You too could look this cool while you’re saving time and money developing on your dbt projects!

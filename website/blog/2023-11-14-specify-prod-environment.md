@@ -56,7 +56,7 @@ By using the environment as the arbiter of state, any time a change is made to y
 
 ## The easiest way to break apart your jobs {#how}
 
-<Lightbox src="/img/blog/2023-11-06-differentiate-prod-and-staging-environments/data-landscape.png" alt="A chart showing the interplay of Data Warehouse, git repo and dbt Cloud project across Dev, CI and Prod environments." title="Your organization's data landscape should separate Dev, CI and Prod environments. To achieve this, configure your data warehouse, git repo and dbt Cloud account as shown above." width="100%"/>
+<Lightbox src="/img/blog/2023-11-06-differentiate-prod-and-staging-environments/data-landscape.png" width="65%" alt="A chart showing the interplay of Data Warehouse, git repo and dbt Cloud project across Dev, CI and Prod environments." title="Your organization's data landscape should separate Dev, CI and Prod environments. To achieve this, configure your data warehouse, git repo and dbt Cloud account as shown above." width="100%"/>
 
 For most projects, changing from a job-centric to environment-centric approach to metadata is straightforward and immediately pays dividends as described above. Assuming that your Staging/CI and Production jobs are currently intermingled, you can extricate them as follows:
 

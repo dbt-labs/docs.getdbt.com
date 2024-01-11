@@ -10,5 +10,5 @@ To help save compute time, new jobs will no longer be triggered to run by defaul
 
 For more information, refer to [Deploy jobs](/docs/deploy/deploy-jobs).
 
-<Lightbox src="/img/docs/release-notes/new-jobs-default-as-off.png" title="Default for newly created jobs"/>
+<Lightbox src="/img/docs/release-notes/new-jobs-default-as-off.png" width="65%" title="Default for newly created jobs"/>
 

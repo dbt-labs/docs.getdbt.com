@@ -110,7 +110,7 @@ On July 18, 2023, dbt Labs made critical infrastructure changes to service accou
 To rotate your token:
 1. Navigate to **Account settings** and click **Service tokens** on the left side pane.
 2. Verify the **Created** date for the token is _on or before_ July 18, 2023. 
-    <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/service-token-date.png" title="Service token created date"/>
+    <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/service-token-date.png" width="65%" title="Service token created date"/>
 3. Click **+ New Token** on the top right side of the screen. Ensure the new token has the same permissions as the old one. 
 4. Copy the new token and replace the old one in your systems. Store it in a safe place, as it will not be available again once the creation screen is closed.
 5. Delete the old token in dbt Cloud by clicking the **trash can icon**. _Only take this action after the new token is in place to avoid service disruptions_.

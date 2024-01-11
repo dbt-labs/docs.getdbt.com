@@ -15,7 +15,7 @@ You will learn, at a high level, the resources necessary to implement this solut
 
 ## PrivateLink connection overview
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/privatelink-vcs-architecture.png" width="80%" title="High level overview of the dbt Cloud and AWS PrivateLink for VCS architecture" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/privatelink-vcs-architecture.png" width="65%" width="80%" title="High level overview of the dbt Cloud and AWS PrivateLink for VCS architecture" />
 
 ### Required resources for creating a connection
 
@@ -56,7 +56,7 @@ To complete the connection, dbt Labs must now provision a VPC Endpoint to connec
  
  - VPC Endpoint Service name:
 
- <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vpc-endpoint-service-name.png" width="80%" title="Location of the VPC Endpoint Service name in the AWS console" />
+ <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vpc-endpoint-service-name.png" width="65%" width="80%" title="Location of the VPC Endpoint Service name in the AWS console" />
 
  - **DNS configuration:** If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the dbt Labs Infrastructure team in the dbt Cloud private network. For example:
     - **Private hosted zone:** `examplecorp.com`
@@ -66,7 +66,7 @@ To complete the connection, dbt Labs must now provision a VPC Endpoint to connec
 
 When you have been notified that the resources are provisioned within the dbt Cloud environment, you must accept the endpoint connection (unless the VPC Endpoint Service is set to auto-accept connection requests). Requests can be accepted through the AWS console, as seen below, or through the AWS CLI.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="65%" width="80%" title="Accept the connection request" />
 
 Once you accept the endpoint connection request, you can use the PrivateLink endpoint in dbt Cloud.
 
@@ -77,6 +77,6 @@ Once dbt confirms that the PrivateLink integration is complete, you can use it i
 2. Select the configured endpoint from the drop down list.
 3. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-new.png" width="80%" title="Configuring a new git integration with PrivateLink" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-new.png" width="65%" width="80%" title="Configuring a new git integration with PrivateLink" />
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-existing.png" width="80%" title="Editing an existing git integration with PrivateLink" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vcs-setup-existing.png" width="65%" width="80%" title="Editing an existing git integration with PrivateLink" />

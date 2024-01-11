@@ -11,7 +11,7 @@ dbt Cloud now has two distinct job types: [deploy jobs](/docs/deploy/deploy-jobs
 
 With two types of jobs, instead of one generic type, we can better guide you through the setup flow. Best practices are built into the default settings so you can go from curious to being set up in seconds.
 
-<Lightbox src="/img/docs/release-notes/ci-job-setup.gif" width="60%" title="Example of setting up a CI job"/>
+<Lightbox src="/img/docs/release-notes/ci-job-setup.gif" width="65%" width="60%" title="Example of setting up a CI job"/>
 
 And, we now have more efficient state comparisons on CI checks: never waste a build or test on code that hasn’t been changed. We now diff between the Git pull request (PR) code and what’s running in production more efficiently with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in dbt Cloud](/docs/deploy/continuous-integration). 
 
@@ -39,4 +39,4 @@ Below is a comparison table that describes how deploy jobs and CI jobs behave di
 
     To check for the job type, review your CI jobs in dbt Cloud's [Run History](/docs/deploy/run-visibility#run-history) and check for the **CI Job** tag below the job name. If it doesn't have this tag, it was misclassified and you need to re-create the job.
 
-    <Lightbox src="/img/docs/release-notes/ci-job-tag.png" width="60%" title="Example of a correct CI job type"/>
+    <Lightbox src="/img/docs/release-notes/ci-job-tag.png" width="65%" width="60%" title="Example of a correct CI job type"/>

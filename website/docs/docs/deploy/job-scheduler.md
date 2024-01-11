@@ -50,7 +50,7 @@ If there is an available run slot and there isn't an actively running instance o
 
 Together, **wait time** plus **prep time** is the total time a run spends in the queue (or **Time in queue**).
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="65%" width="85%" title="An overview of a dbt Cloud job run"/>
 
 ### Treatment of CI jobs
 When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/continuous-integration). It queues a CI job to be processed when it's triggered to run by a Git pull request, and the conditions the scheduler checks to determine if the run can start executing are also different: 
@@ -80,7 +80,7 @@ The dbt Cloud scheduler prevents too many job runs from clogging the queue by ca
 
 The scheduler prevents queue clog by canceling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is queued, the scheduler cancels any previously queued run for that job and displays an error message.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.jpg" width="85%" title="The cancelled runs display an error message explaining why the run was cancelled and recommendations"/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.jpg" width="65%" width="85%" title="The cancelled runs display an error message explaining why the run was cancelled and recommendations"/>
 
 To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/deploy-jobs#schedule-days).
 

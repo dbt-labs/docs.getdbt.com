@@ -49,7 +49,7 @@ You can clone nodes between states in dbt Cloud using the `dbt clone` command. T
 
   - Set up your **Production environment** and have a successful job run.
   - Enable **Defer to production** by toggling the switch in the lower-right corner of the command bar.
-    <Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="80%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the dbt Cloud IDE."/>
+    <Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="65%" width="80%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the dbt Cloud IDE."/>
   - Run the `dbt clone` command from the command bar.
   
   

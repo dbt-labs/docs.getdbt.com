@@ -55,7 +55,7 @@ For a semantic model, there are three main pieces of metadata:
 * [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="65%" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
 ### Metrics 
 

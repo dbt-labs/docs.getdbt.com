@@ -29,7 +29,7 @@ dbt run --select "3+my_model+4"        # select my_model, its parents up to the 
 ### The "at" operator
 The `@` operator is similar to `+`, but will also include _the parents of the children of the selected model_. This is useful in continuous integration environments where you want to build a model and all of its children, but the _parents_ of those children might not exist in the database yet. The selector `@snowplow_web_page_context` will build all three models shown in the diagram below.
 
-<Lightbox src="/img/docs/running-a-dbt-project/command-line-interface/1643e30-Screen_Shot_2019-03-11_at_7.18.20_PM.png" title="@snowplow_web_page_context will select all of the models shown here"/>
+<Lightbox src="/img/docs/running-a-dbt-project/command-line-interface/1643e30-Screen_Shot_2019-03-11_at_7.18.20_PM.png" width="65%" title="@snowplow_web_page_context will select all of the models shown here"/>
 
 ```bash
 dbt run --models @my_model          # select my_model, its children, and the parents of its children

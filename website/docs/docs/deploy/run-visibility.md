@@ -17,13 +17,13 @@ dbt Cloud developers can access their run history for the last 365 days through 
 
 We limit self-service retrieval of run history metadata to 365 days to improve dbt Cloud's performance. For more info on the run history retrieval change, refer to [Older run history retrieval change](/docs/dbt-versions/release-notes/May-2023/run-history-endpoint).
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="85%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="65%" width="85%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
 
 ## Access logs
 
 You can view or download in-progress and historical logs for your dbt runs. This makes it easier for the team to debug errors more efficiently.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
+<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.gif" width="65%" width="85%" title="Access logs for run steps" />
 
 ## Model timing 
 > Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
@@ -32,4 +32,4 @@ The model timing dashboard on dbt Cloud displays the composition, order, and tim
 
 You can find the dashboard on the **Run Overview** page. 
 
-<Lightbox src="/img/docs/dbt-cloud/model-timing.jpg" width="85%" title="The model timing tab displays the top 1% of model durations and visualizes model bottlenecks" />
+<Lightbox src="/img/docs/dbt-cloud/model-timing.jpg" width="65%" width="85%" title="The model timing tab displays the top 1% of model durations and visualizes model bottlenecks" />

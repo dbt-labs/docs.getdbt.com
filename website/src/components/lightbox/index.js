@@ -1,43 +1,32 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
 function Lightbox({
-  src, 
+  src,
   collapsed = false,
-  alignment = "center", 
-  alt = undefined, 
-  title = undefined, 
+  alignment = "center",
+  alt = undefined,
+  title = undefined,
   width = undefined,
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [hoverStyle, setHoverStyle] = useState({});
-  const imgRef = useRef(null);
+  const [expandImage, setExpandImage] = useState(false);
 
   useEffect(() => {
-    if (imgRef.current && !width) {
-      const naturalWidth = imgRef.current.naturalWidth;
-      const naturalHeight = imgRef.current.naturalHeight;
+    let timeoutId;
 
-      // Calculate the expanded size for images without a specified width
-      const expandedWidth = naturalWidth * 1.2; // Example: 20% increase
-      const expandedHeight = naturalHeight * 1.2;
-
-      setHoverStyle({
-        width: `${expandedWidth}px`,
-        height: `${expandedHeight}px`,
-        transition: 'width 0.5s ease, height 0.5s ease',
-      });
+    if (isHovered) {
+      // Delay the expansion by 5 milliseconds
+      timeoutId = setTimeout(() => {
+        setExpandImage(true);
+      }, 5);
     }
-  }, [width]);
 
-  // Set alignment class if alignment prop used
-  let imageAlignment = '';
-  if(alignment === "left") {
-    imageAlignment = styles.leftAlignLightbox;
-  } else if(alignment === "right") {
-    imageAlignment = styles.rightAlignLightbox;
-  }
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isHovered]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -45,39 +34,39 @@ function Lightbox({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setHoverStyle({});
+    setExpandImage(false);
   };
 
   return (
     <>
       <link href="/css/featherlight-styles.css" type="text/css" rel="stylesheet" />
-      <span 
+      <div
         className={`
-          ${styles.docImage} 
+          ${styles.docImage}
           ${collapsed ? styles.collapsed : ''}
-          ${imageAlignment}
+          ${alignment === "left" ? styles.leftAlignLightbox : ''}
+          ${alignment === "right" ? styles.rightAlignLightbox : ''}
           ${isHovered ? styles.hovered : ''}
         `}
-        style={width && {maxWidth: width}}
+        style={width && { maxWidth: width }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <span>
           <a href="#" data-featherlight={src}>
             <img
-              ref={imgRef}
               data-toggle="lightbox"
               alt={alt ? alt : title ? title : ''}
               title={title ? title : ''}
               src={imageCacheWrapper(src)}
-              style={isHovered && !width ? hoverStyle : {}}
+              style={expandImage ? { transform: 'scale(1.3)', transition: 'transform 0.3s ease', zIndex: '9999' } : {}}
             />
           </a>
         </span>
         {title && (
-          <span className={styles.title}>{title}</span>
+          <span className={styles.title}>{ title }</span>
         )}
-      </span>
+      </div>
     </>
   );
 }

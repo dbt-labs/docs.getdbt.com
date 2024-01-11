@@ -68,7 +68,7 @@ from
 
 Enter the Client ID and Client Secret into dbt Cloud to complete the creation of your Connection.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="65%" title="Configuring Snowflake OAuth credentials in dbt Cloud" />
 
 ### Authorize Developer Credentials
 
@@ -76,7 +76,7 @@ Once Snowflake SSO is enabled, users on the project will be able to configure th
 
 ### SSO OAuth Flow Diagram
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" title="SSO OAuth flow diagram" />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" width="65%" title="SSO OAuth flow diagram" />
 
 Once a user has authorized dbt Cloud with Snowflake via their identity provider, Snowflake will return a Refresh Token to the dbt Cloud application. dbt Cloud is then able to exchange this refresh token for an Access Token which can then be used to open a Snowflake connection and execute queries in the dbt Cloud IDE on behalf of users.
 

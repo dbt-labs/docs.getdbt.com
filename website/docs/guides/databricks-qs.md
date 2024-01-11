@@ -42,7 +42,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 1. Use your existing account or sign up for a Databricks account at [Try Databricks](https://databricks.com/). Complete the form with your user information.
     
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
+    <Lightbox src="/img/databricks_tutorial/images/signup_form.png" width="65%" title="Sign up for Databricks" />
     </div>
 
 2. For the purpose of this tutorial, you will be selecting AWS as our cloud provider but if you use Azure or GCP internally, please choose one of them. The setup process will be similar.
@@ -50,28 +50,28 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 4. After setting up your password, you will be guided to choose a subscription plan. Select the `Premium` or `Enterprise` plan to access the SQL Compute functionality required for using the SQL warehouse for dbt. We have chosen `Premium` for this tutorial. Click **Continue** after selecting your plan.
     
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/choose_plan.png" title="Choose Databricks Plan" />
+    <Lightbox src="/img/databricks_tutorial/images/choose_plan.png" width="65%" title="Choose Databricks Plan" />
     </div>
 
 5. Click **Get Started** when you come to this below page and then **Confirm** after you validate that you have everything needed.
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/validate_1.png" />
+    <Lightbox src="/img/databricks_tutorial/images/validate_1.png" width="65%" />
     </div>
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/validate_2.png" />
+    <Lightbox src="/img/databricks_tutorial/images/validate_2.png" width="65%" />
     </div>
 
 6. Now it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, etc into one place.  Provide the name of your workspace and choose the appropriate AWS region and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for the purpose of this tutorial. 
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" title="Setup First Workspace" />
+    <Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" width="65%" title="Setup First Workspace" />
     </div>
 
 7. By clicking on `Start Quickstart`, you will be redirected to AWS and asked to log in if you haven’t already. After logging in, you should see a page similar to this. 
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/quick_create_stack.png" title="Create AWS resources" />
+    <Lightbox src="/img/databricks_tutorial/images/quick_create_stack.png" width="65%" title="Create AWS resources" />
     </div>
 
 :::tip
@@ -80,16 +80,16 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 8. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/parameters.png" title="Parameters" />
+    <Lightbox src="/img/databricks_tutorial/images/parameters.png" width="65%" title="Parameters" />
     </div>    
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/create_stack.png" title="Capabilities" />
+    <Lightbox src="/img/databricks_tutorial/images/create_stack.png" width="65%" title="Capabilities" />
     </div>    
 
 10. Go back to the Databricks tab. You should see that your workspace is ready to use.
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/workspaces.png" title="A Databricks Workspace" />
+    <Lightbox src="/img/databricks_tutorial/images/workspaces.png" width="65%" title="A Databricks Workspace" />
     </div>
 11. Now let’s jump into the workspace. Click **Open** and log into the workspace using the same login as you used to log into the account. 
 
@@ -102,7 +102,7 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 2. First we need a SQL warehouse. Find the drop down menu and toggle into the SQL space.
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/go_to_sql.png" title="SQL space" />
+    <Lightbox src="/img/databricks_tutorial/images/go_to_sql.png" width="65%" title="SQL space" />
     </div>
 3. We will be setting up a SQL warehouse now.  Select **SQL Warehouses** from the left hand side console.  You will see that a default SQL Warehouse exists.  
 
@@ -110,12 +110,12 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 5. Once the SQL Warehouse is up, click **New** and then **File upload** on the dropdown menu. 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/new_file_upload_using_databricks_SQL.png" title="New File Upload Using Databricks SQL" />
+    <Lightbox src="/img/databricks_tutorial/images/new_file_upload_using_databricks_SQL.png" width="65%" title="New File Upload Using Databricks SQL" />
     </div>
 
 6. Let's load the Jaffle Shop Customers data first. Drop in the `jaffle_shop_customers.csv` file into the UI.
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/databricks_table_loader.png" title="Databricks Table Loader" />
+    <Lightbox src="/img/databricks_tutorial/images/databricks_table_loader.png" width="65%" title="Databricks Table Loader" />
     </div>
 
 7. Update the Table Attributes at the top:
@@ -129,7 +129,7 @@ If you get a session error and don’t get redirected to this page, you can go b
         - <b>LAST_NAME</b> = string
 
     <div style={{maxWidth: '600px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/jaffle_shop_customers_upload.png" title="Load jaffle shop customers" />
+    <Lightbox src="/img/databricks_tutorial/images/jaffle_shop_customers_upload.png" width="65%" title="Load jaffle shop customers" />
     </div>
 
 8. Click **Create** on the bottom once you’re done. 
@@ -137,11 +137,11 @@ If you get a session error and don’t get redirected to this page, you can go b
 9. Now let’s do the same for `Jaffle Shop Orders` and `Stripe Payments`. 
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/jaffle_shop_orders_upload.png" title="Load jaffle shop orders" />
+    <Lightbox src="/img/databricks_tutorial/images/jaffle_shop_orders_upload.png" width="65%" title="Load jaffle shop orders" />
     </div>
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/stripe_payments_upload.png" title="Load stripe payments" />
+    <Lightbox src="/img/databricks_tutorial/images/stripe_payments_upload.png" width="65%" title="Load stripe payments" />
     </div>
     
 10. Once that's done, make sure you can query the training data.  Navigate to the `SQL Editor` through the left hand menu.  This will bring you to a query editor.
@@ -154,7 +154,7 @@ If you get a session error and don’t get redirected to this page, you can go b
     ```
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/query_check.png" title="Query Check" />
+    <Lightbox src="/img/databricks_tutorial/images/query_check.png" width="65%" title="Query Check" />
     </div>
 
 12. To ensure any users who might be working on your dbt project has access to your object, run this command.

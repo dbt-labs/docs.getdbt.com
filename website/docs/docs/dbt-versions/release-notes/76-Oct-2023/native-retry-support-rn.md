@@ -12,4 +12,4 @@ Previously in dbt Cloud, you could only rerun an errored job from start but now 
 You can view which job failed to complete successully, which command failed in the run step, and choose how to rerun it. To learn more, refer to [Retry jobs](/docs/deploy/retry-jobs).
 
 
-<Lightbox src="/img/docs/deploy/native-retry.gif" width="70%" title="Example of the Rerun options in dbt Cloud"/>
+<Lightbox src="/img/docs/deploy/native-retry.gif" width="65%" width="70%" title="Example of the Rerun options in dbt Cloud"/>

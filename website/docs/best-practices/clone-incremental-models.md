@@ -17,11 +17,11 @@ Imagine you've created a [Slim CI job](/docs/deploy/continuous-integration) in d
 - Run the command `dbt build --select state:modified+` to run and test all of the models you've modified and their downstream dependencies.
 - Trigger whenever a developer on your team opens a PR against the main branch.
 
-<Lightbox src="/img/best-practices/slim-ci-job.png" width="70%" title="Example of a slim CI job with the above configurations" />
+<Lightbox src="/img/best-practices/slim-ci-job.png" width="65%" width="70%" title="Example of a slim CI job with the above configurations" />
 
 Now imagine your dbt project looks something like this in the DAG:
 
-<Lightbox src="/img/best-practices/dag-example.png" width="70%" title="Sample project DAG" />
+<Lightbox src="/img/best-practices/dag-example.png" width="65%" width="70%" title="Sample project DAG" />
 
 When you open a pull request (PR) that modifies `dim_wizards`, your CI job will kickoff and build _only the modified models and their downstream dependencies_ (in this case, `dim_wizards` and `fct_orders`) into a temporary schema that's unique to your PR. 
 
@@ -49,7 +49,7 @@ You'll have two commands for your dbt Cloud CI check to execute:
 
 Because of your first clone step, the incremental models selected in your `dbt build` on the second step will run in incremental mode.
 
-<Lightbox src="/img/best-practices/clone-command.png" width="70%" title="Clone command in the CI config" />
+<Lightbox src="/img/best-practices/clone-command.png" width="65%" width="70%" title="Clone command in the CI config" />
 
 Your CI jobs will run faster, and you're more accurately mimicking the behavior of what will happen once the PR has been merged into main. 
 

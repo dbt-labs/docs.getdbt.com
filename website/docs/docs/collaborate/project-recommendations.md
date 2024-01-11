@@ -21,7 +21,7 @@ The Recommendations overview page includes two top-level metrics measuring the t
 - **Model test coverage** &mdash; The percent of models in your project (models not from a package or imported via dbt Mesh) with at least one dbt test configured on them.
 - **Model documentation coverage** &mdash; The percent of models in your project (models not from a package or imported via dbt Mesh) with a description.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-overview.png" width="80%" title="Example of the Recommendations overview page with project metrics and the recommendations for all resources in the project"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-overview.png" width="65%" width="80%" title="Example of the Recommendations overview page with project metrics and the recommendations for all resources in the project"/>
 
 ## List of rules
 
@@ -45,6 +45,6 @@ The Recommendations overview page includes two top-level metrics measuring the t
 
 Models, sources and exposures each also have a Recommendations tab on their resource details page, with the specific recommendations that correspond to that resource:
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-tab.png" width="80%" title="Example of the Recommendations tab "/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-recommendations-tab.png" width="65%" width="80%" title="Example of the Recommendations tab "/>
 
 

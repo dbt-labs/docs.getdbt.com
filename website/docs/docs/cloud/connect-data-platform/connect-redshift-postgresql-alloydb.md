@@ -15,7 +15,7 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 
 **Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="65%" width="70%" title="Configuring a Redshift connection"/>
 
 For dbt Cloud users, please log in using the default Database username and password. Note this is because [`IAM` authentication](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html) is not compatible with dbt Cloud.
 
@@ -25,7 +25,7 @@ To connect to a Postgres, Redshift, or AlloyDB instance via an SSH tunnel, selec
 
 Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize dbt Cloud to connect to your database via the bastion server.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" width="70%" title="A generated public key for a Redshift connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" width="65%" width="70%" title="A generated public key for a Redshift connection"/>
 
 #### About the Bastion server in AWS
 

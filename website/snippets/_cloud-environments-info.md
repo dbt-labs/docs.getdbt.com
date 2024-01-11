@@ -56,7 +56,7 @@ Extended Attributes is a text box extension at the environment level that overri
 
 Something to note, Extended Attributes doesn't mask secret values. We recommend avoiding setting secret values to prevent visibility in the text box and logs. 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Cloud Environment settings using a free form text box." /> <br />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="65%" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Cloud Environment settings using a free form text box." /> <br />
 
 If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
 
@@ -91,7 +91,7 @@ dbt Cloud will use the cached copy of your project's Git repo under these circum
 
 To enable Git repository caching, select **Account settings** from the gear menu and enable the **Repository caching** option. 
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Repository caching option" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="65%" width="85%" title="Example of the Repository caching option" />
 
 :::note
 
@@ -109,7 +109,7 @@ Partial parsing in dbt Cloud requires dbt version 1.4 or newer. The feature does
 
 To enable, select **Account settings** from the gear menu and enable the **Partial parsing** option.
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="65%" width="85%" title="Example of the Partial parsing option" />
 
 
 

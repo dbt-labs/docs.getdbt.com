@@ -103,7 +103,7 @@ When we talk about using materialized views in development, the question to thin
 
 Outside of the scheduling part, development will be pretty standard. Your pipeline is likely going to look something like this:
 
-<Lightbox src="/img/blog/2023-08-01-announcing-materialized-views/streaming-pipeline.png" title="A Real Time Pipeline" />
+<Lightbox src="/img/blog/2023-08-01-announcing-materialized-views/streaming-pipeline.png" width="65%" title="A Real Time Pipeline" />
 
 This is assuming you have a near real time pipeline where you are pulling from a streaming data source like a Kafka Topic via an ingestion tool of your choice like Snowpipe for Streaming into your data platform. After your data is in the data platform, you will:
 

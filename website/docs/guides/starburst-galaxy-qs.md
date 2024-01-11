@@ -92,11 +92,11 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
 
     The **Amazon S3** page should look similar to this, except for the **Authentication to S3** section which is dependant on your setup:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-config-s3.png" title="Amazon S3 connection settings in Starburst Galaxy" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-config-s3.png" width="65%" title="Amazon S3 connection settings in Starburst Galaxy" />
 
 8. Click **Test connection**. This verifies that Starburst Galaxy can access your S3 bucket. 
 9. Click **Connect catalog** if the connection test passes.
-    <Lightbox src="/img/quickstarts/dbt-cloud/test-connection-success.png" title="Successful connection test" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/test-connection-success.png" width="65%" title="Successful connection test" />
 
 10. On the **Set permissions** page, click **Skip**. You can add permissions later if you want.
 11. On the **Add to cluster** page, choose the cluster you want to add the catalog to from the dropdown and click **Add to cluster**.
@@ -113,7 +113,7 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
     
     When done, click **Add privileges**.
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/add-privilege.png" title="Add privilege to accountadmin role" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/add-privilege.png" width="65%" title="Add privilege to accountadmin role" />
 
 ## Create tables with Starburst Galaxy
 To query the Jaffle Shop data with Starburst Galaxy, you need to create tables using the Jaffle Shop data that you [loaded to your S3 bucket](#load-data-to-s3). You can do this (and run any SQL statement) from the [query editor](https://docs.starburst.io/starburst-galaxy/query/query-editor.html). 
@@ -121,7 +121,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 1. Click **Query > Query editor** on the left sidebar of the Starburst Galaxy UI. The main body of the page is now the query editor. 
 2. Configure the query editor so it queries your S3 bucket. In the upper right corner of the query editor, select your cluster in the first gray box and select your catalog in the second gray box:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-editor.png" title="Set the cluster and catalog in query editor" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-editor.png" width="65%" title="Set the cluster and catalog in query editor" />
 
 3. Copy and paste these queries into the query editor. Then **Run** each query individually. 
 
@@ -181,7 +181,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     ```
 4. When the queries are done, you can see the following hierarchy on the query editor's left sidebar:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-data-hierarchy.png" title="Hierarchy of data in query editor" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-data-hierarchy.png" width="65%" title="Hierarchy of data in query editor" />
 
 5. Verify that the tables were created successfully. In the query editor, run the following queries:
 

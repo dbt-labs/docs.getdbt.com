@@ -92,14 +92,14 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 <br />
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql_header.jpg" width="85%" title="Enter the header key and Bearer auth token values"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql_header.jpg" width="65%" width="85%" title="Enter the header key and Bearer auth token values"/>
 
 1. Run your query by clicking the blue query button in the top right of the **Operation** editor (to the right of the query). You should see a successful query response on the right side of the explorer.
 
 <!-- TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment { applied { modelHistoricalRuns } }` -->
 <!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql.jpg" width="65%" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
 
 ### Fragments
 

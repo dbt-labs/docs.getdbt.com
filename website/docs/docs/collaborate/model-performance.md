@@ -23,11 +23,11 @@ You can pinpoint areas for performance enhancement by using the Performance over
 
 Each data point links to individual models in Explorer. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-performance-overview-page.png" width="80%" title="Example of Performance overview page"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-performance-overview-page.png" width="65%" width="80%" title="Example of Performance overview page"/>
 
 You can view historical metadata for up to the past three months. Select the time horizon using the filter, which defaults to a two-week lookback.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/ex-2-week-default.png" title="Example of dropdown"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/ex-2-week-default.png" width="65%" title="Example of dropdown"/>
 
 ## The Model performance tab
 
@@ -38,4 +38,4 @@ You can view trends in execution times, counts, and failures by using the Model 
 
 Clicking on a data point reveals a table listing all job runs for that day, with each row providing a direct link to the details of a specific run.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-performance-tab.png" title="Example of the Model performance tab"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-performance-tab.png" width="65%" title="Example of the Model performance tab"/>

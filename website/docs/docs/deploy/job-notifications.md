@@ -23,7 +23,7 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
     If you're an account admin, you can choose a different email address to receive notifications. Select the **Notification email** dropdown and choose another address from the list. The list includes **Internal Users** with access to the account and **External Emails** that have been added. 
     - To add an external email address, select the **Notification email** dropdown and choose **Add external email**. After you add the external email, it becomes available for selection in the **Notification email** dropdown list. External emails can be addresses that are outside of your dbt Cloud account and also for third-party integrations like [channels in Microsoft Teams](https://support.microsoft.com/en-us/office/tip-send-email-to-a-channel-2c17dbae-acdf-4209-a761-b463bdaaa4ca) and [PagerDuty email integration](https://support.pagerduty.com/docs/email-integration-guide).
 
-    <Lightbox src="/img/docs/deploy/example-notification-external-email.png" width="50%" title="Example of the Notification email dropdown"/>
+    <Lightbox src="/img/docs/deploy/example-notification-external-email.png" width="65%" width="50%" title="Example of the Notification email dropdown"/>
 
 1. Select the **Environment** for the jobs you want to receive notifications about from the dropdown. 
 
@@ -35,7 +35,7 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
     
     To set up alerts on jobs from a different environment, select another **Environment** from the dropdown, **Edit** those job notification settings, and **Save** the changes. 
 
-    <Lightbox src="/img/docs/deploy/example-email-notification-settings-page.png" width="100%" title="Example of the Email notifications page"/>
+    <Lightbox src="/img/docs/deploy/example-email-notification-settings-page.png" width="65%" width="100%" title="Example of the Email notifications page"/>
 
 ### Unsubscribe from email notifications
 1. From the gear menu, choose **Notification settings**.
@@ -75,7 +75,7 @@ Any account admin can edit the Slack notifications but they'll be limited to con
 
     To set up alerts on jobs from a different environment, select another **Environment** from the dropdown, **Edit** those job notification settings, and **Save** the changes.
 
-    <Lightbox src="/img/docs/deploy/example-slack-notification-settings-page.png" width="100%" title="Example of the Slack notifications page"/>
+    <Lightbox src="/img/docs/deploy/example-slack-notification-settings-page.png" width="65%" width="100%" title="Example of the Slack notifications page"/>
 
 ### Disable the Slack integration
 

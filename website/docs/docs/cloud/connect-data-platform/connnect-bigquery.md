@@ -32,7 +32,7 @@ In addition to these fields, there are two other optional fields that can be con
 
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/bigquery-connection.png" title="A valid BigQuery connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/bigquery-connection.png" width="65%" title="A valid BigQuery connection"/>
 
 ### BigQuery OAuth
 **Available in:** Development environments, Enterprise plans only
@@ -43,7 +43,7 @@ more information on the initial configuration of a BigQuery OAuth connection in 
 [the docs on setting up BigQuery OAuth](/docs/cloud/manage-access/set-up-bigquery-oauth).
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in dbt Cloud, like so:
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" width="65%" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Configuration
 

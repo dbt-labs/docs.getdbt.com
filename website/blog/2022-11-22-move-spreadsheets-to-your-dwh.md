@@ -70,9 +70,9 @@ An obvious choice if you have data to load into your warehouse would be your exi
 
 [Fivetran’s browser uploader](https://fivetran.com/docs/files/browser-upload) does exactly what it says on the tin: you upload a file to their web portal and it creates a table containing that data in a predefined schema in your warehouse. With a visual interface to modify data types, it’s easy for anyone to use. And with an account type with the permission to only upload files, you don’t need to worry about your stakeholders accidentally breaking anything either.
 
-<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/fivetran-uploader-1.png" title="Converting data types from text to dates and numbers is easy in the visual editor" />
+<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/fivetran-uploader-1.png" width="65%" title="Converting data types from text to dates and numbers is easy in the visual editor" />
 
-<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/fivetran-uploader-2.png" title="Picking the matching date format from a list of options to convert them to a standardized format" />
+<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/fivetran-uploader-2.png" width="65%" title="Picking the matching date format from a list of options to convert them to a standardized format" />
 
 A nice benefit of the uploader is support for updating data in the table over time. If a file with the same name and same columns is uploaded, any new records will be added, and existing records (per the <Term id="primary-key"/>) will be updated.
 
@@ -100,7 +100,7 @@ The main benefit of connecting to Google Sheets instead of a static spreadsheet 
 
 Instead of syncing all cells in a sheet, you create a [named range](https://fivetran.com/docs/files/google-sheets/google-sheets-setup-guide) and connect Fivetran to that range. Each Fivetran connector can only read a single range—if you have multiple tabs then you’ll need to create multiple connectors, each with its own schema and table in the target warehouse. When a sync takes place, it will [truncate](https://docs.getdbt.com/terms/ddl#truncate) and reload the table from scratch as there is no primary key to use for matching.
 
-<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/google-sheets-uploader.png" title="Creating a named range in Google Sheets to sync via the Fivetran Google Sheets Connector" />
+<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/google-sheets-uploader.png" width="65%" title="Creating a named range in Google Sheets to sync via the Fivetran Google Sheets Connector" />
 
 Beware of inconsistent data types though—if someone types text into a column that was originally numeric, Fivetran will automatically convert the column to a string type which might cause issues in your downstream transformations. [The recommended workaround](https://fivetran.com/docs/files/google-sheets#typetransformationsandmapping) is to explicitly cast your types in [staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging) to ensure that any undesirable records are converted to null.
 
@@ -119,7 +119,7 @@ Beware of inconsistent data types though—if someone types text into a column t
 
 I’m a big fan of [Fivetran’s Google Drive connector](https://fivetran.com/docs/files/google-drive); in the past I’ve used it to streamline a lot of weekly reporting. It allows stakeholders to use a tool they’re already familiar with (Google Drive) instead of dealing with another set of credentials. Every file uploaded into a specific folder on Drive (or [Box, or consumer Dropbox](https://fivetran.com/docs/files/magic-folder)) turns into a table in your warehouse.
 
-<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/google-drive-uploader.png" title="Fivetran will add each of these csv files to a single schema in your warehouse, making it ideal for regular uploads" />
+<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/google-drive-uploader.png" width="65%" title="Fivetran will add each of these csv files to a single schema in your warehouse, making it ideal for regular uploads" />
 
 Like the Google Sheets connector, the data types of the columns are determined automatically. Dates, in particular, are finicky though—if you can control your input data, try to get it into [ISO 8601 format](https://xkcd.com/1179/) to minimize the amount of cleanup you have to do on the other side.
 
@@ -174,7 +174,7 @@ Each of the major data warehouses also has native integrations to import spreads
 
 Snowflake’s options are robust and user-friendly, offering both a [web-based loader](https://docs.snowflake.com/en/user-guide/data-load-web-ui.html) as well as [a bulk importer](https://docs.snowflake.com/en/user-guide/data-load-bulk.html). The web loader is suitable for small to medium files (up to 50MB) and can be used for specific files, all files in a folder, or files in a folder that match a given pattern. It’s also the most provider-agnostic, with support for Amazon S3, Google Cloud Storage, Azure and the local file system.
 
-<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/snowflake-uploader.png" title="Snowflake’s web-based Load Data Wizard via the Snowflake Blog https://www.snowflake.com/blog/tech-tip-getting-data-snowflake/" />
+<Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/snowflake-uploader.png" width="65%" title="Snowflake’s web-based Load Data Wizard via the Snowflake Blog https://www.snowflake.com/blog/tech-tip-getting-data-snowflake/" />
 
 ### BigQuery
 

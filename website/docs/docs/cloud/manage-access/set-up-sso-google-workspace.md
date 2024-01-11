@@ -52,7 +52,7 @@ Client Secret for use in dbt Cloud.
 | **Authorized domains** | `getdbt.com` (US multi-tenant) `getdbt.com` and `dbt.com`(US Cell 1) `dbt.com` (EMEA or AU) | If deploying into a VPC, use the domain for your deployment |
 | **Scopes** | `email, profile, openid` | The default scopes are sufficient |
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-consent-top.png" title="GSuite Consent Screen configuration"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-consent-top.png" width="65%" title="GSuite Consent Screen configuration"/>
 
 6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
    id** page.
@@ -65,7 +65,7 @@ Client Secret for use in dbt Cloud.
 | **Authorized Javascript origins** | `https://YOUR_ACCESS_URL` |
 | **Authorized Redirect URIs** | `https://YOUR_AUTH0_URI/login/callback` |
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" width="65%" title="GSuite Credentials configuration"/>
 
 8. Press "Create" to create your new credentials. A popup will appear
 with a **Client ID** and **Client Secret**. Write these down as you will need them later!
@@ -77,7 +77,7 @@ Group Membership information from the GSuite API. To enable the Admin SDK for
 this project, navigate to the [Admin SDK Settings page](https://console.developers.google.com/apis/api/admin.googleapis.com/overview)
 and ensure that the API is enabled.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/7f36f50-Screen_Shot_2019-12-03_at_10.15.01_AM.png" title="The 'Admin SDK' page"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/7f36f50-Screen_Shot_2019-12-03_at_10.15.01_AM.png" width="65%" title="The 'Admin SDK' page"/>
 
 ## Configuration in dbt Cloud
 
@@ -99,7 +99,7 @@ Settings.
       Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. The `LOGIN-SLUG` must
       be unique across all dbt Cloud accounts, so pick a slug that uniquely
       identifies your company.
-    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" width="65%" title="GSuite SSO Configuration"/>
 3. Click **Save &amp; Authorize** to authorize your credentials. You should be
    dropped into the GSuite OAuth flow and prompted to log into dbt Cloud with
    your work email address. If authentication is successful, you will be
@@ -109,7 +109,7 @@ Settings.
    you do not see a `groups` entry in the IdP attribute list, consult the following
    Troubleshooting steps.
 
-    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" title="GSuite verify groups"/>
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" width="65%" title="GSuite verify groups"/>
 
 If the verification information looks appropriate, then you have completed the configuration of GSuite SSO. 
 

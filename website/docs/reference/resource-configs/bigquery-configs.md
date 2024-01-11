@@ -379,7 +379,7 @@ models:
 
 
 
-<Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" title="Viewing labels in the BigQuery console"/>
+<Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" width="65%" title="Viewing labels in the BigQuery console"/>
 
 ### Specifying tags
 BigQuery table and view *tags* can be created by supplying an empty string for the label value.
