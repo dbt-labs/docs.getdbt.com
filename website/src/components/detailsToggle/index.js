@@ -14,10 +14,10 @@ function detailsToggle({ children, alt_header = null }) {
     if (isOn || isScrolling) return; // Ignore hover if already open or if scrolling
     const timeout = setTimeout(() => {
       if (!isScrolling) setOn(true);
-    }, 550); 
+    }, 700); // Change the delay to 9 milliseconds
     setHoverTimeout(timeout);
   };
-
+  
   const handleMouseLeave = () => {
     if (!isOn) {
       clearTimeout(hoverTimeout);
@@ -33,7 +33,7 @@ function detailsToggle({ children, alt_header = null }) {
     // Reset scrolling state after a short delay
     setTimeout(() => {
       setIsScrolling(false);
-    }, 350);
+    }, 800);
   };
 
   useEffect(() => {
