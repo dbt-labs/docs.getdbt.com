@@ -51,19 +51,19 @@ Overall we are going to set up the environments, build scalable pipelines in dbt
 1. Log in to your trial Snowflake account. You can [sign up for a Snowflake Trial Account using this form](https://signup.snowflake.com/) if you don’t have one.
 2. Ensure that your account is set up using **AWS** in the **US East (N. Virginia)**. We will be copying the data from a public AWS S3 bucket hosted by dbt Labs in the us-east-1 region. By ensuring our Snowflake environment setup matches our bucket region, we avoid any multi-region data copy and retrieval latency issues.
 
-<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/1-snowflake-trial-AWS-setup.png" width="65%" title="Snowflake trial"/>
+<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/1-snowflake-trial-AWS-setup.png" title="Snowflake trial"/>
 
 3. After creating your account and verifying it from your sign-up email, Snowflake will direct you back to the UI called Snowsight.
 
 4. When Snowsight first opens, your window should look like the following, with you logged in as the ACCOUNTADMIN with demo worksheets open:
 
-<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/2-new-snowflake-account.png" width="65%" title="Snowflake trial demo worksheets"/>
+<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/2-new-snowflake-account.png" title="Snowflake trial demo worksheets"/>
 
 5. Navigate to **Admin > Billing & Terms**. Click **Enable > Acknowledge & Continue** to enable Anaconda Python Packages to run in Snowflake.
 
-<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/3-accept-anaconda-terms.jpeg" width="65%" title="Anaconda terms"/>
+<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/3-accept-anaconda-terms.jpeg" title="Anaconda terms"/>
 
-<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/4-enable-anaconda.jpeg" width="65%" title="Enable Anaconda"/>
+<Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/4-enable-anaconda.jpeg" title="Enable Anaconda"/>
 
 6. Finally, create a new Worksheet by selecting **+ Worksheet** in the upper right corner.
 
@@ -80,7 +80,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 
 3. Rename the worksheet to `data setup script` since we will be placing code in this worksheet to ingest the Formula 1 data. Make sure you are still logged in as the **ACCOUNTADMIN** and select the **COMPUTE_WH** warehouse.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/1-rename-worksheet-and-select-warehouse.png" width="65%" title="Rename worksheet and select warehouse"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/1-rename-worksheet-and-select-warehouse.png" title="Rename worksheet and select warehouse"/>
 
 4. Copy the following code into the main body of the Snowflake worksheet. You can also find this setup script under the `setup` folder in the [Git repository](https://github.com/dbt-labs/python-snowpark-formula1/blob/main/setup/setup_script_s3_to_snowflake.sql). The script is long since it's bring in all of the data we'll need today!
 
@@ -233,7 +233,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 
 5. Ensure all the commands are selected before running the query &mdash; an easy way to do this is to use Ctrl-a to highlight all of the code in the worksheet. Select **run** (blue triangle icon). Notice how the dot next to your **COMPUTE_WH** turns from gray to green as you run the query. The **status** table is the final table of all 8 tables loaded in.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/2-load-data-from-s3.png" width="65%" title="Load data from S3 bucket"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/2-load-data-from-s3.png" title="Load data from S3 bucket"/>
 
 6. Let’s unpack that pretty long query we ran into component parts. We ran this query to load in our 8 Formula 1 tables from a public S3 bucket. To do this, we:
     - Created a new database called `formula1` and a schema called `raw` to place our raw (untransformed) data into.
@@ -244,7 +244,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 
 7. Now let's take a look at some of our cool Formula 1 data we just loaded up!
     1. Create a new worksheet by selecting the **+** then **New Worksheet**.
-        <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/3-create-new-worksheet-to-query-data.png" width="65%" title="Create new worksheet to query data"/>
+        <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/3-create-new-worksheet-to-query-data.png" title="Create new worksheet to query data"/>
     2. Navigate to **Database > Formula1 > RAW > Tables**.
     3. Query the data using the following code. There are only 76 rows in the circuits table, so we don’t need to worry about limiting the amount of data we query.
 
@@ -256,7 +256,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
     5. Review the query results, you should see information about Formula 1 circuits, starting with Albert Park in Australia!
     6. Finally, ensure you have all 8 tables starting with `CIRCUITS` and ending with `STATUS`. Now we are ready to connect into dbt Cloud!
 
-        <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/4-query-circuits-data.png" width="65%" title="Query circuits data"/>
+        <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/4-query-circuits-data.png" title="Query circuits data"/>
 
 ## Configure dbt Cloud
 
@@ -264,19 +264,19 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 2. Navigate out of your worksheet back by selecting **home**.
 3. In Snowsight, confirm that you are using the **ACCOUNTADMIN** role.
 4. Navigate to the **Admin** **> Partner Connect**. Find **dbt** either by using the search bar or navigating the **Data Integration**. Select the **dbt** tile.
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/1-open-partner-connect.png" width="65%" title="Open Partner Connect"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/1-open-partner-connect.png" title="Open Partner Connect"/>
 5. You should now see a new window that says **Connect to dbt**. Select **Optional Grant** and add the `FORMULA1` database. This will grant access for your new dbt user role to the FORMULA1 database.
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/2-partner-connect-optional-grant.png" width="65%" title="Partner Connect Optional Grant"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/2-partner-connect-optional-grant.png" title="Partner Connect Optional Grant"/>
 
 6. Ensure the `FORMULA1` is present in your optional grant before clicking **Connect**.  This will create a dedicated dbt user, database, warehouse, and role for your dbt Cloud trial.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/3-connect-to-dbt.png" width="65%" title="Connect to dbt"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/3-connect-to-dbt.png" title="Connect to dbt"/>
 
 7. When you see the **Your partner account has been created** window, click **Activate**.
 
 8. You should be redirected to a dbt Cloud registration page. Fill out the form. Make sure to save the password somewhere for login in the future.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/4-dbt-cloud-sign-up.png" width="65%" title="dbt Cloud sign up"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/4-dbt-cloud-sign-up.png" title="dbt Cloud sign up"/>
 
 9. Select **Complete Registration**. You should now be redirected to your dbt Cloud account, complete with a connection to your Snowflake account, a deployment and a development environment, and a sample job.
 
@@ -286,43 +286,43 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 
 1. First we are going to change the name of our default schema to where our dbt models will build. By default, the name is `dbt_`. We will change this to `dbt_<YOUR_NAME>` to create your own personal development schema. To do this, select **Profile Settings** from the gear icon in the upper right.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/1-settings-gear-icon.png" width="65%" title="Settings menu"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/1-settings-gear-icon.png" title="Settings menu"/>
 
 2. Navigate to the **Credentials** menu and select **Partner Connect Trial**, which will expand the credentials menu.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/2-credentials-edit-schema-name.png" width="65%" title="Credentials edit schema name"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/2-credentials-edit-schema-name.png" title="Credentials edit schema name"/>
 
 3. Click **Edit** and change the name of your schema from `dbt_` to `dbt_YOUR_NAME` replacing `YOUR_NAME` with your initials and name (`hwatson` is used in the lab screenshots). Be sure to click **Save** for your changes!
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/3-save-new-schema-name.png" width="65%" title="Save new schema name"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/3-save-new-schema-name.png" title="Save new schema name"/>
 
 4. We now have our own personal development schema, amazing! When we run our first dbt models they will build into this schema.
 5. Let’s open up dbt Cloud’s Integrated Development Environment (IDE) and familiarize ourselves. Choose **Develop** at the top of the UI.
 
 6. When the IDE is done loading, click **Initialize dbt project**. The initialization process creates a collection of files and folders necessary to run your dbt project.
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/4-initialize-dbt-project.png" width="65%" title="Initialize dbt project"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/4-initialize-dbt-project.png" title="Initialize dbt project"/>
 
 7. After the initialization is finished, you can view the files and folders in the file tree menu. As we move through the workshop we'll be sure to touch on a few key files and folders that we'll work with to build out our project.
 8. Next click **Commit and push** to commit the new files and folders from the initialize step. We always want our commit messages to be relevant to the work we're committing, so be sure to provide a message like `initialize project` and select **Commit Changes**.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/5-first-commit-and-push.png" width="65%" title="First commit and push"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/5-first-commit-and-push.png" title="First commit and push"/>
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/6-initalize-project.png" width="65%" title="Initialize project"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/6-initalize-project.png" title="Initialize project"/>
 
 9. [Committing](https://www.atlassian.com/git/tutorials/saving-changes/git-commit) your work here will save it to the managed git repository that was created during the Partner Connect signup. This initial commit is the only commit that will be made directly to our `main` branch and from *here on out we'll be doing all of our work on a development branch*. This allows us to keep our development work separate from our production code.
 10. There are a couple of key features to point out about the IDE before we get to work. It is a text editor, an SQL and Python runner, and a CLI with Git version control all baked into one package! This allows you to focus on editing your SQL and Python files, previewing the results with the SQL runner (it even runs Jinja!), and building models at the command line without having to move between different applications. The Git workflow in dbt Cloud allows both Git beginners and experts alike to be able to easily version control all of their work with a couple clicks.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/7-IDE-overview.png" width="65%" title="IDE overview"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/7-IDE-overview.png" title="IDE overview"/>
 
 11. Let's run our first dbt models! Two example models are included in your dbt project in the `models/examples` folder that we can use to illustrate how to run dbt at the command line. Type `dbt run` into the command line and click **Enter** on your keyboard. When the run bar expands you'll be able to see the results of the run, where you should see the run complete successfully.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/8-dbt-run-example-models.png" width="65%" title="dbt run example models"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/8-dbt-run-example-models.png" title="dbt run example models"/>
 
 12. The run results allow you to see the code that dbt compiles and sends to Snowflake for execution. To view the logs for this run, select one of the model tabs using the  **>** icon and then **Details**. If you scroll down a bit you'll be able to see the compiled code and how dbt interacts with Snowflake. Given that this run took place in our development environment, the models were created in your development schema.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/9-second-model-details.png" width="65%" title="Details about the second model"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/9-second-model-details.png" title="Details about the second model"/>
 
 13. Now let's switch over to Snowflake to confirm that the objects were actually created. Click on the three dots **…** above your database objects and then **Refresh**. Expand the **PC_DBT_DB** database and you should see your development schema. Select the schema, then **Tables**  and **Views**. Now you should be able to see `MY_FIRST_DBT_MODEL` as a table and `MY_SECOND_DBT_MODEL` as a view.
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/10-confirm-example-models-built-in-snowflake.png" width="65%" title="Confirm example models are built in Snowflake"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name/10-confirm-example-models-built-in-snowflake.png" title="Confirm example models are built in Snowflake"/>
 
 ## Create branch and set up project configs
 
@@ -414,15 +414,15 @@ dbt Labs has developed a [project structure guide](/best-practices/how-we-struct
 
 1. In your file tree, use your cursor and hover over the `models` subdirectory, click the three dots **…** that appear to the right of the folder name, then select **Create Folder**. We're going to add two new folders to the file path, `staging` and `formula1` (in that order) by typing `staging/formula1` into the file path.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure/1-create-folder.png" width="65%" title="Create folder"/>
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure/2-file-path.png" width="65%" title="Set file path"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure/1-create-folder.png" title="Create folder"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure/2-file-path.png" title="Set file path"/>
 
     - If you click into your `models` directory now, you should see the new `staging` folder nested within `models` and the `formula1` folder nested within `staging`.
 2. Create two additional folders the same as the last step. Within the `models` subdirectory, create new directories `marts/core`.
 
 3. We will need to create a few more folders and subfolders using the UI. After you create all the necessary folders, your folder tree should look like this when it's all done:
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure/3-tree-of-new-folders.png" width="65%" title="File tree of new folders"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure/3-tree-of-new-folders.png" title="File tree of new folders"/>
 
 Remember you can always reference the entire project in [GitHub](https://github.com/dbt-labs/python-snowpark-formula1/tree/python-formula1) to view the complete folder and file strucutre.  
 
@@ -742,21 +742,21 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     After the source and all the staging models are complete for each of the 8 tables, your staging folder should look like this:
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/1-staging-folder.png" width="65%" title="Staging folder"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/1-staging-folder.png" title="Staging folder"/>
 
 1. It’s a good time to delete our example folder since these two models are extraneous to our formula1 pipeline and `my_first_model` fails a `not_null` test that we won’t spend time investigating. dbt Cloud will warn us that this folder will be permanently deleted, and we are okay with that so select **Delete**.
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/2-delete-example.png" width="65%" title="Delete example folder"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/2-delete-example.png" title="Delete example folder"/>
 
 1. Now that the staging models are built and saved, it's time to create the models in our development schema in Snowflake. To do this we're going to enter into the command line `dbt build` to run all of the models in our project, which includes the 8 new staging models and the existing example models.
 
     Your run should complete successfully and you should see green checkmarks next to all of your models in the run results. We built our 8 staging models as views and ran 13 source tests that we configured in the `f1_sources.yml` file with not that much code, pretty cool!
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/3-successful-run-in-snowflake.png" width="65%" title="Successful dbt build in Snowflake"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/3-successful-run-in-snowflake.png" title="Successful dbt build in Snowflake"/>
 
     Let's take a quick look in Snowflake, refresh database objects, open our development schema, and confirm that the new models are there. If you can see them, then we're good to go!
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/4-confirm-models.png" width="65%" title="Confirm models"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/4-confirm-models.png" title="Confirm models"/>
 
     Before we move onto the next section, be sure to commit your new models to your Git branch. Click **Commit and push** and give your commit a message like `profile, sources, and staging setup` before moving on.
 
@@ -1055,7 +1055,7 @@ By now, we are pretty good at creating new files in the correct directories so w
 
 1. Let’s talk about our lineage so far. It’s looking good 😎. We’ve shown how SQL can be used to make data type, column name changes, and handle hierarchical joins really well; all while building out our automated lineage!
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/9-sql-transformations/1-dag.png" width="65%" title="The DAG"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/9-sql-transformations/1-dag.png" title="The DAG"/>
 
 1. Time to **Commit and push** our changes and give your commit a message like `intermediate and fact models` before moving on.
 
@@ -1128,7 +1128,7 @@ First, we want to find out: which constructor had the fastest pit stops in 2021?
     - The `snowflake-snowpark-python` library has been picked up to execute our Python code. Even though this wasn’t explicitly stated this is picked up by the dbt class object because we need our Snowpark package to run Python!
 
     Python models take a bit longer to run than SQL models, however we could always speed this up by using [Snowpark-optimized Warehouses](https://docs.snowflake.com/en/user-guide/warehouses-snowpark-optimized.html) if we wanted to. Our data is sufficiently small, so we won’t worry about creating a separate warehouse for Python versus SQL files today.
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/1-python-model-details-output.png" width="65%" title="We can see our python model is run a stored procedure in our personal development schema"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/1-python-model-details-output.png" title="We can see our python model is run a stored procedure in our personal development schema"/>
 
     The rest of our **Details** output gives us information about how dbt and Snowpark for Python are working together to define class objects and apply a specific set of methods to run our models.
 
@@ -1142,7 +1142,7 @@ First, we want to find out: which constructor had the fastest pit stops in 2021?
     ```
 
     and preview the output:
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/2-fastest-pit-stops-preview.png" width="65%" title="Looking at our new python data model we can see that Red Bull had the fastest pit stops!"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/2-fastest-pit-stops-preview.png" title="Looking at our new python data model we can see that Red Bull had the fastest pit stops!"/>
 
     Not only did Red Bull have the fastest average pit stops by nearly 40 seconds, they also had the smallest standard deviation, meaning they are both fastest and most consistent teams in pit stops. By using the `.describe()` method we were able to avoid verbose SQL requiring us to create a line of code per column and repetitively use the `PERCENTILE_COUNT()` function.
 
@@ -1187,7 +1187,7 @@ First, we want to find out: which constructor had the fastest pit stops in 2021?
  in the command bar.
 
 12. Once again previewing the output of our data using the same steps for our `fastest_pit_stops_by_constructor` model.
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/3-lap-times-trends-preview.png" width="65%" title="Viewing our lap trends and 5 year rolling trends"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/3-lap-times-trends-preview.png" title="Viewing our lap trends and 5 year rolling trends"/>
 
     We can see that it looks like lap times are getting consistently faster over time. Then in 2010 we see an increase occur! Using outside subject matter context, we know that significant rule changes were introduced to Formula 1 in 2010 and 2011 causing slower lap times.
 
@@ -1314,7 +1314,7 @@ At a high level we’ll be:
         - The `.apply()` function in the pandas library is used to apply a function to a specified axis of a DataFrame or a Series. In our case the function we used was our lambda function!
         - The `.apply()` function takes two arguments: the first is the function to be applied, and the second is the axis along which the function should be applied. The axis can be specified as 0 for rows or 1 for columns. We are using the default value of 0 so we aren’t explicitly writing it in the code. This means that the function will be applied to each *row* of the DataFrame or Series.
 6. Let’s look at the preview of our clean dataframe after running our `ml_data_prep` model:
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/11-machine-learning-prep/1-completed-ml-data-prep.png" width="65%" title="What our clean dataframe fit for machine learning looks like"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/11-machine-learning-prep/1-completed-ml-data-prep.png" title="What our clean dataframe fit for machine learning looks like"/>
 
 ### Covariate encoding
 
@@ -1565,7 +1565,7 @@ If you haven’t seen code like this before or use joblib files to save machine 
         - Right now our model is only in memory, so we need to use our nifty function `save_file` to save our model file to our Snowflake stage. We save our model as a joblib file so Snowpark can easily call this model object back to create predictions. We really don’t need to know much else as a data practitioner unless we want to. It’s worth noting that joblib files aren’t able to be queried directly by SQL. To do this, we would need to transform the joblib file to an SQL querable format such as JSON or CSV (out of scope for this workshop).
         - Finally we want to return our dataframe, but create a new column indicating what rows were used for training and those for training.
 5. Viewing our output of this model:
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/1-preview-train-test-position.png" width="65%" title="Preview which rows of our model were used for training and testing"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/1-preview-train-test-position.png" title="Preview which rows of our model were used for training and testing"/>
 
 6. Let’s pop back over to Snowflake and check that our logistic regression model has been stored in our `MODELSTAGE` using the command:
 
@@ -1573,10 +1573,10 @@ If you haven’t seen code like this before or use joblib files to save machine 
     list @modelstage
     ```
 
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/2-list-snowflake-stage.png" width="65%" title="List the objects in our Snowflake stage to check for our logistic regression to predict driver position"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/2-list-snowflake-stage.png" title="List the objects in our Snowflake stage to check for our logistic regression to predict driver position"/>
 
 7. To investigate the commands run as part of `train_test_position` script, navigate to Snowflake query history to view it **Activity > Query History**. We can view the portions of query that we wrote such as `create or replace stage MODELSTAGE`, but we also see additional queries that Snowflake uses to interpret python code.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/3-view-snowflake-query-history.png" width="65%" title="View Snowflake query history to see how python models are run under the hood"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/3-view-snowflake-query-history.png" title="View Snowflake query history to see how python models are run under the hood"/>
 
 ### Predicting on new data
 
@@ -1731,7 +1731,7 @@ Since the output of our Python models are tables, we can test SQL and Python mod
 ### Generic tests
 
 1. To implement generic out-of-the-box tests dbt comes with, we can use YAML files to specify information about our models. To add generic tests to our aggregates model, create a file called `aggregates.yml`, copy the code block below into the file, and save.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/1-generic-testing-file-tree.png" width="65%" title="The aggregates.yml file in our file tree"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/1-generic-testing-file-tree.png" title="The aggregates.yml file in our file tree"/>
 
     ```yaml
     version: 2
@@ -1762,7 +1762,7 @@ Since the output of our Python models are tables, we can test SQL and Python mod
 ### Using macros for testing
 
 1. Under your `macros` folder, create a new file and name it `test_all_values_gte_zero.sql`. Copy the code block below and save the file. For clarity, “gte” is an abbreviation for greater than or equal to.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/2-macro-testing.png" width="65%" title="macro file for reusable testing code"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/2-macro-testing.png" title="macro file for reusable testing code"/>
 
     ```sql
     {% macro test_all_values_gte_zero(table, column) %}
@@ -1776,7 +1776,7 @@ Since the output of our Python models are tables, we can test SQL and Python mod
 3. We use the `{% macro %}` to indicate the start of the macro and `{% endmacro %}` for the end. The text after the beginning of the macro block is the name we are giving the macro to later call it. In this case, our macro is called `test_all_values_gte_zero`. Macros take in *arguments* to pass through, in this case the `table` and the `column`. In the body of the macro, we see an SQL statement that is using the `ref` function to dynamically select the table and then the column. You can always view macros without having to run them by using `dbt run-operation`. You can learn more [here](https://docs.getdbt.com/reference/commands/run-operation).
 4. Great, now we want to reference this macro as a test! Let’s create a new test file called `macro_pit_stops_mean_is_positive.sql` in our `tests` folder.
 
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/3-gte-macro-applied-to-pit-stops.png" width="65%" title="creating a test on our pit stops model referencing the macro"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/3-gte-macro-applied-to-pit-stops.png" title="creating a test on our pit stops model referencing the macro"/>
 
 5. Copy the following code into the file and save:
 
@@ -1805,7 +1805,7 @@ These tests are defined in `.sql` files, typically in your `tests` directory (as
 Let’s add a custom test that asserts that the moving average of the lap time over the last 5 years is greater than zero (it’s impossible to have time less than 0!). It is easy to assume if this is not the case the data has been corrupted.
 
 1. Create a file `lap_times_moving_avg_assert_positive_or_null.sql` under the `tests` folder.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/4-custom-singular-test.png" width="65%" title="custom singular test for testing lap times are positive values"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/4-custom-singular-test.png" title="custom singular test for testing lap times are positive values"/>
 
 2. Copy the following code and save the file:
 
@@ -1841,11 +1841,11 @@ Let’s add a custom test that asserts that the moving average of the lap time o
     dbt test --select fastest_pit_stops_by_constructor lap_times_moving_avg
     ```
 
-    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/5-running-tests-on-python-models.png" width="65%" title="running tests on our python models"/>
+    <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/5-running-tests-on-python-models.png" title="running tests on our python models"/>
 
 3. All 4 of our tests passed (yay for clean data)! To understand the SQL being run against each of our tables, we can click into the details of the test.
 4. Navigating into the **Details** of the `unique_fastest_pit_stops_by_constructor_name`, we can see that each line `constructor_name` should only have one row.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/6-testing-output-details.png" width="65%" title="view details of testing our python model that used SQL to test data assertions"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/6-testing-output-details.png" title="view details of testing our python model that used SQL to test data assertions"/>
 
 ## Document your dbt project
 
@@ -1865,17 +1865,17 @@ To start, let’s look back at our `intermediate.md` file. We can see that we pr
   ```
 
   This will generate the documentation for your project. Click the book button, as shown in the screenshot below to access the docs.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/1-docs-icon.png" width="65%" title="dbt docs book icon"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/1-docs-icon.png" title="dbt docs book icon"/>
 
 2. Go to our project area and view `int_results`. View the description that we created in our doc block.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/2-view-docblock-description.png" width="65%" title="Docblock description within docs site"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/2-view-docblock-description.png" title="Docblock description within docs site"/>
 
 3. View the mini-lineage that looks at the model we are currently selected on (`int_results` in this case).
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/3-mini-lineage-docs.png" width="65%" title="Mini lineage view on docs site"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/3-mini-lineage-docs.png" title="Mini lineage view on docs site"/>
 
 4. In our `dbt_project.yml`, we configured `node_colors` depending on the file directory. Starting in dbt v1.3, we can see how our lineage in our docs looks. By color coding your project, it can help you cluster together similar models or steps and more easily troubleshoot.
 
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/4-full-dag-docs.png" width="65%" title="Full project DAG on docs site"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/4-full-dag-docs.png" title="Full project DAG on docs site"/>
 
 ## Deploy your code
 
@@ -1890,18 +1890,18 @@ Now that we've completed testing and documenting our work, we're ready to deploy
 
 1. Before getting started, let's make sure that we've committed all of our work to our feature branch. If you still have work to commit, you'll be able to select the **Commit and push**, provide a message, and then select **Commit** again.
 2. Once all of your work is committed, the git workflow button will now appear as **Merge to main**. Select **Merge to main** and the merge process will automatically run in the background.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/1-merge-to-main-branch.png" width="65%" title="Merge into main"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/1-merge-to-main-branch.png" title="Merge into main"/>
 
 3. When it's completed, you should see the git button read **Create branch** and the branch you're currently looking at will become **main**.
 4. Now that all of our development work has been merged to the main branch, we can build our deployment job. Given that our production environment and production job were created automatically for us through Partner Connect, all we need to do here is update some default configurations to meet our needs.
 5. In the menu, select **Deploy** **> Environments**
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/2-ui-select-environments.png" width="65%" title="Navigate to environments within the UI"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/2-ui-select-environments.png" title="Navigate to environments within the UI"/>
 
 6. You should see two environments listed and you'll want to select the **Deployment** environment then **Settings** to modify it.
 7. Before making any changes, let's touch on what is defined within this environment. The Snowflake connection shows the credentials that dbt Cloud is using for this environment and in our case they are the same as what was created for us through Partner Connect. Our deployment job will build in our `PC_DBT_DB` database and use the default Partner Connect role and warehouse to do so. The deployment credentials section also uses the info that was created in our Partner Connect job to create the credential connection. However, it is using the same default schema that we've been using as the schema for our development environment.
 8. Let's update the schema to create a new schema specifically for our production environment. Click **Edit** to allow you to modify the existing field values. Navigate to **Deployment Credentials >** **schema.**
 9. Update the schema name to **production**. Remember to select **Save** after you've made the change.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/3-update-deployment-credentials-production.png" width="65%" title="Update the deployment credentials schema to production"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/3-update-deployment-credentials-production.png" title="Update the deployment credentials schema to production"/>
 10. By updating the schema for our production environment to **production**, it ensures that our deployment job for this environment will build our dbt models in the **production** schema within the `PC_DBT_DB` database as defined in the Snowflake Connection section.
 11. Now let's switch over to our production job. Click on the deploy tab again and then select **Jobs**. You should see an existing and preconfigured **Partner Connect Trial Job**. Similar to the environment, click on the job, then select **Settings** to modify it. Let's take a look at the job to understand it before making changes.
 
@@ -1912,11 +1912,11 @@ Now that we've completed testing and documenting our work, we're ready to deploy
   
   So, what are we changing then? Just the name! Click **Edit** to allow you to make changes. Then update the name of the job to **Production Job** to denote this as our production deployment job. After that's done, click **Save**.
 12. Now let's go to run our job. Clicking on the job name in the path at the top of the screen will take you back to the job run history page where you'll be able to click **Run run** to kick off the job. If you encounter any job failures, try running the job again before further troubleshooting.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/4-run-production-job.png" width="65%" title="Run production job"/>
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/5-job-details.png" width="65%" title="View production job details"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/4-run-production-job.png" title="Run production job"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/5-job-details.png" title="View production job details"/>
 
 13. Let's go over to Snowflake to confirm that everything built as expected in our production schema. Refresh the database objects in your Snowflake account and you should see the production schema now within our default Partner Connect database. If you click into the schema and everything ran successfully, you should be able to see all of the models we developed.
-  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/6-all-models-generated.png" width="65%" title="Check all our models in our pipeline are in Snowflake"/>
+  <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/15-deployment/6-all-models-generated.png" title="Check all our models in our pipeline are in Snowflake"/>
 
 ### Conclusion
 

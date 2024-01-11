@@ -16,11 +16,11 @@ New dbt Cloud accounts will automatically be created with a Development Environm
 
 To create a development environment, choose **Deploy** > **Environments** from the top left. Then, click **Create Environment**.
 
-<Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/empty-env-page.png" width="65%" title="Creating a new environment for the Analytics project"/>
+<Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/empty-env-page.png" title="Creating a new environment for the Analytics project"/>
 
 Enter an environment **Name** that would help you identify it among your other environments (for example, `Nate's Development Environment`). Choose **Development** as the **Environment Type**. You can also select which **dbt Version** to use at this time. For compatibility reasons, we recommend that you select the same dbt version that you plan to use in your deployment environment. Finally, click **Save** to finish creating your development environment.
 
-<Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/create-dev-env.png" width="65%" title="Creating a development environment"/>
+<Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/create-dev-env.png" title="Creating a development environment"/>
 
 ### Setting up developer credentials
 
@@ -28,14 +28,14 @@ The IDE uses *developer credentials* to connect to your database. These develope
 
 New dbt Cloud accounts should have developer credentials created automatically as a part of Project creation in the initial application setup.
 
-<Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/dev-cred-project-setup.png" width="65%" title="Developer credentials are created during project setup"/>
+<Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/dev-cred-project-setup.png" title="Developer credentials are created during project setup"/>
 
 New users on existing accounts *might not* have their development credentials already configured. 
 To manage your development credentials: 
 1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. 
 2. Select the relevant project in the list. After entering your developer credentials, you'll be able to access the dbt IDE.
 
-<Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/dev-cred-edit-proj.png" width="65%" title="Configure developer credentials in your Profile."/>
+<Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/dev-cred-edit-proj.png" title="Configure developer credentials in your Profile."/>
 
 ### Compiling and running SQL
 

@@ -32,7 +32,7 @@ To unlock your account and select a plan, review the following guidance per plan
 3. Confirm your plan selection on the pop up message. 
 4. This automatically unlocks your dbt Cloud account, and you can now enjoy the benefits of the Developer plan. 🎉
 
-<Lightbox src="/img/docs/dbt-cloud/downgrade-dev-flow.gif" width="65%"/>
+<Lightbox src="/img/docs/dbt-cloud/downgrade-dev-flow.gif"/>
 
 ### Team plan
 
@@ -42,7 +42,7 @@ To unlock your account and select a plan, review the following guidance per plan
 4. Enter your payment details and click **Save**.
 5. This automatically unlocks your dbt Cloud account, and you can now enjoy the benefits of the Team plan. 🎉
 
-<Lightbox src="/img/docs/dbt-cloud/trial-team-flow.gif" width="65%"/>
+<Lightbox src="/img/docs/dbt-cloud/trial-team-flow.gif"/>
 
 ### Enterprise plan
 
@@ -50,7 +50,7 @@ To unlock your account and select a plan, review the following guidance per plan
 2. Click **Contact Sales** on the right. This opens a chat window for you to contact the dbt Cloud Support team, who will connect you to our Sales team.
 3. Once you submit your request, our Sales team will contact you with more information. 
 
-<Lightbox src="/img/docs/dbt-cloud/enterprise-upgrade.gif" width="65%"/>
+<Lightbox src="/img/docs/dbt-cloud/enterprise-upgrade.gif"/>
 
 4. Alternatively, you can [contact](https://www.getdbt.com/contact/) our Sales team directly to chat about how dbt Cloud can help you and your team. 
 

@@ -35,7 +35,7 @@ For more info on `gitignore` syntax, refer to the [Git docs](https://git-scm.com
 4. Save the changes but _don't commit_.
 5. Restart the IDE by clicking on the three dots next to the **IDE Status button** on the lower right corner of the IDE screen and select **Restart IDE**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/restart-ide.jpg" width="65%" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/restart-ide.jpg" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
 
 6. Once the IDE restarts, go to the **File Explorer** to delete the following files or folders (if they exist).  No data will be lost:
     * `target`, `dbt_modules`, `dbt_packages`, `logs`
@@ -50,7 +50,7 @@ For more info on `gitignore` syntax, refer to the [Git docs](https://git-scm.com
 12. Once the branch has changed, click the **Pull from remote** button to pull in all the changes. 
 13. Verify the changes by making sure the files/folders in the `.gitignore `file are in italics. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.jpg" width="65%" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.jpg" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
 
 ### Fix in the git provider
 
@@ -144,7 +144,7 @@ For more info on `gitignore` syntax, refer to the [Git docs](https://git-scm.com
 4. Save the changes but _don't commit_.
 5. Restart the IDE by clicking on the three dots next to the **IDE Status button** on the lower right corner of the IDE screen and select **Restart IDE**.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/restart-ide.jpg" width="65%" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/restart-ide.jpg" width="50%" title="Restart the IDE by clicking the three dots on the lower right or click on the Status bar" />
 
 6. Once the IDE restarts, go to the **File Explorer** to delete the following files or folders (if they exist).  No data will be lost:
     * `target`, `dbt_modules`, `dbt_packages`, `logs`
@@ -159,7 +159,7 @@ For more info on `gitignore` syntax, refer to the [Git docs](https://git-scm.com
 12. Once the branch has changed, click the **Pull from remote** button to pull in all the changes. 
 13. Verify the changes by making sure the files/folders in the `.gitignore `file are in italics. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.jpg" width="65%" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.jpg" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
 
 
 ### Fix in the git provider

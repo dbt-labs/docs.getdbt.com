@@ -14,7 +14,7 @@ is_featured: true
 
 <Term id="dimensional-modeling">Dimensional modeling</Term> is one of many data modeling techniques that are used by data practitioners to organize and present data for analytics. Other data modeling techniques include Data Vault (DV), Third Normal Form (3NF), and One Big Table (OBT) to name a few.
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/data-modelling.png" width="65%" width="85%" title="Data modeling techniques on a normalization vs denormalization scale"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/data-modelling.png" width="85%" title="Data modeling techniques on a normalization vs denormalization scale"/>
 
 While the relevance of dimensional modeling [has been debated by data practitioners](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225/6), it is still one of the most widely adopted data modeling technique for analytics.
 
@@ -39,7 +39,7 @@ Dimensional modeling is a technique introduced by Ralph Kimball in 1996 with his
 
 The goal of dimensional modeling is to take raw data and transform it into Fact and Dimension tables that represent the business. 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/3nf-to-dimensional-model.png" width="65%" title="Raw 3NF data to dimensional model"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/3nf-to-dimensional-model.png" title="Raw 3NF data to dimensional model"/>
 
 The benefits of dimensional modeling are: 
 
@@ -143,7 +143,7 @@ Examine the database source schema below, paying close attention to:
 - Keys
 - Relationships
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/source-schema.png" width="65%" width="85%" title="Source schema"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/source-schema.png" width="85%" title="Source schema"/>
 
 ### Step 8: Query the tables
 
@@ -185,7 +185,7 @@ Now that you’ve set up the dbt project, database, and have taken a peek at the
 
 Identifying the business process is done in collaboration with the business user. The business user has context around the business objectives and business processes, and can provide you with that information. 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/conversation.png" width="65%" width="65%" title="Conversation between business user and analytics engineer"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/conversation.png" width="65%" title="Conversation between business user and analytics engineer"/>
 
 Upon speaking with the CEO of AdventureWorks, you learn the following information: 
 
@@ -222,11 +222,11 @@ There are two tables in the sales schema that catch our attention. These two tab
 - The `sales.salesorderheader` table contains information about the credit card used in the order, the shipping address, and the customer. Each record in this table represents an order header that contains one or more order details.
 - The `sales.salesorderdetail` table contains information about the product that was ordered, and the order quantity and unit price, which we can use to calculate the revenue. Each record in this table represents a single order detail.
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/sales-order-header-detail.png" width="65%" width="85%" title="Sales Order Header and Detail"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/sales-order-header-detail.png" width="85%" title="Sales Order Header and Detail"/>
 
 Let’s define a fact table called `fct_sales` which joins `sales.salesorderheader` and `sales.salesorderdetail` together. Each record in the fact table (also known as the [grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)) is an order detail. 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/fct_sales.png" width="65%" width="85%" title="fct_sales table"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/fct_sales.png" width="85%" title="fct_sales table"/>
 
 ### Dimension tables
 
@@ -250,19 +250,19 @@ Based on the business questions that our business user would like answered, we c
 
 There are different ways we could create the dimension tables. We could use the existing relationships between the tables as depicted in the diagram below. 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/snowflake-schema.png" width="65%" width="85%" title="Snowflake schema"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/snowflake-schema.png" width="85%" title="Snowflake schema"/>
 
 This is known as a snowflake schema design, where the fact table is the centre of the snowflake, and there are many fractals branching off the centre of the snowflake. However, this results in many joins that need to be performed by the consumer of the dimensional model. 
 
 Instead, we can denormalize the dimension tables by performing joins. 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/star-schema.png" width="65%" width="85%" title="Star schema"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/star-schema.png" width="85%" title="Star schema"/>
 
 This is known as a star schema and this approach reduces the amount of joins that need to be performed by the consumer of the dimensional model. 
 
 Using the star schema approach, we can identify 6 dimensions as shown below that will help us answer the business questions: 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dimension-tables.png" width="65%" width="85%" title="Dimension tables"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dimension-tables.png" width="85%" title="Dimension tables"/>
 
 - `dim_product` : a dimension table that joins `product` , `productsubcategory`, `productcategory`
 - `dim_address` : a dimension table that joins `address` , `stateprovince`, `countryregion`
@@ -617,7 +617,7 @@ Great work, you have successfully created your very first fact and dimension tab
 
 Let’s make it easier for consumers of our dimensional model to understand the relationships between tables by creating an [Entity Relationship Diagram (ERD)](https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/). 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/target-schema.png" width="65%" width="85%" title="Final dimensional model ERD"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/target-schema.png" width="85%" title="Final dimensional model ERD"/>
 
 The ERD will enable consumers of our dimensional model to quickly identify the keys and relationship type (one-to-one, one-to-many) that need to be used to join tables. 
 
@@ -694,7 +694,7 @@ Using `dbt_utils.star()`, we select all columns except the surrogate key columns
 
 We can then build the OBT by running `dbt run`. Your dbt DAG should now look like this: 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dbt-dag.png" width="65%" width="85%" title="Final dbt DAG"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dbt-dag.png" width="85%" title="Final dbt DAG"/>
 
 Congratulations, you have reached the end of this tutorial. If you want to learn more, please see the learning resources below on dimensional modeling. 
 

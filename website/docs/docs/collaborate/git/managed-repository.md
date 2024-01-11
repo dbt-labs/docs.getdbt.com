@@ -13,7 +13,7 @@ To set up a project with a managed repository:
 4. Select **Managed**.
 5. Enter a name for the repository. For example, "analytics" or "dbt-models."
 6. Click **Create**.
-   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/managed-repo.png" width="65%" title="Adding a managed repository"/>
+   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/managed-repo.png" title="Adding a managed repository"/>
 
 dbt Cloud will host and manage this repository for you. If in the future you choose to host this repository elsewhere, you can export the information from dbt Cloud at any time.
 

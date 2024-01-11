@@ -71,6 +71,6 @@ Once you are done adding all your ranges, IP restrictions can be enabled by sele
 
 Once enabled, when someone attempts to access dbt Cloud from a restricted IP, they will encounter one of the following messages depending on whether they use email & password or SSO login. 
 
-<Lightbox src="/img/docs/dbt-cloud/ip-restricted-email.png" width="65%" title="IP restricted access denied message for email logins"/>
+<Lightbox src="/img/docs/dbt-cloud/ip-restricted-email.png" title="IP restricted access denied message for email logins"/>
 
-<Lightbox src="/img/docs/dbt-cloud/ip-restricted-sso.png" width="65%" title="IP restricted access denied message for SSO logins"/>
+<Lightbox src="/img/docs/dbt-cloud/ip-restricted-sso.png" title="IP restricted access denied message for SSO logins"/>

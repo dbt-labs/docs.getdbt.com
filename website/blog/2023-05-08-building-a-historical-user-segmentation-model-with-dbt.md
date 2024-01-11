@@ -21,7 +21,7 @@ Take for example a Customer Experience (CX) team that uses Salesforce as a CRM. 
 An improvement to this would be to prioritize the tickets based on the customer segment, answering our most valuable customers first. An Analytics Engineer can build a segmentation to identify the power users (for example with an RFM approach) and store it in the data warehouse. The Data Engineering team can then export that user attribute to the CRM, allowing the customer experience team to build rules on top of it.
 
 <!--truncate-->
-<Lightbox src="/img/blog/2023-05-08-building-a-historical-user-segmentation-model-with-dbt/rfm-segments-example.png" width="65%" width="40%" title="Example of an RFM user segmentation"/>
+<Lightbox src="/img/blog/2023-05-08-building-a-historical-user-segmentation-model-with-dbt/rfm-segments-example.png" width="40%" title="Example of an RFM user segmentation"/>
 
 ## Problems
 
@@ -58,7 +58,7 @@ The goal of RFM analysis is to segment customers into groups based on how recent
 
 We are going to use just the Recency and Frequency matrix, and use the Monetary value as an accessory attribute. This is a common approach in companies where the Frequency and the Monetary Value are highly correlated.
 
-<Lightbox src="/img/blog/2023-05-08-building-a-historical-user-segmentation-model-with-dbt/rfm-segmentation-matrix.png" width="65%" width="100%" title="Example of a Recency and Frequency matrix"/>
+<Lightbox src="/img/blog/2023-05-08-building-a-historical-user-segmentation-model-with-dbt/rfm-segmentation-matrix.png" width="100%" title="Example of a Recency and Frequency matrix"/>
 
 ### RFM model for current segment
 
@@ -390,7 +390,7 @@ FROM current_segments
 
 With the new approach, our dependency graph would look like this:
 
-<Lightbox src="/img/blog/2023-05-08-building-a-historical-user-segmentation-model-with-dbt/rfm-models-dependency-graph.png" width="65%" width="100%" title="RFM models dependency graph"/>
+<Lightbox src="/img/blog/2023-05-08-building-a-historical-user-segmentation-model-with-dbt/rfm-models-dependency-graph.png" width="100%" title="RFM models dependency graph"/>
 
 - For analysts that want to see how the segments changed over time, they can query the historical model. There is also an option to build an aggregated model before loading it in a Business Intelligence tool.
 - For ML model training, data scientists and machine learning practitioners can import this model into their notebooks or their feature store, instead of rebuilding the attributes from scratch.

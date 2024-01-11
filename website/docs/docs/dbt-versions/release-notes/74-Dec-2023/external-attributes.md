@@ -13,4 +13,4 @@ To learn more, refer to [Extended attributes](/docs/dbt-cloud-environments#exten
 
 The **Extended Atrributes** text box is available from your environment's settings page: 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="65%" width="85%" title="Example of the Extended Attributes text box" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="85%" title="Example of the Extended Attributes text box" />

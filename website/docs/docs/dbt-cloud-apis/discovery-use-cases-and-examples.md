@@ -25,7 +25,7 @@ For performance use cases, people typically query the historical or latest appli
 
 It’s helpful to understand how long it takes to build models (tables) and tests to execute during a dbt run. Longer model build times result in higher infrastructure costs and fresh data arriving later to stakeholders. Analyses like these can be in observability tools or ad-hoc queries, like in a notebook.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.jpg" width="65%" width="200%" title="Model timing visualization in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.jpg" width="200%" title="Model timing visualization in dbt Cloud"/>
 
 <details>
 <summary>Example query with code</summary>
@@ -158,10 +158,10 @@ plt.show()
 
 Plotting examples:
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/plot-of-runelapsedtime.png" width="65%" width="80%" title="The plot of runElapsedTime over time"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/plot-of-runelapsedtime.png" width="80%" title="The plot of runElapsedTime over time"/>
 
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/plot-of-executiontime.png" width="65%" width="80%" title="The plot of executionTime over time"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/plot-of-executiontime.png" width="80%" title="The plot of executionTime over time"/>
 
 </details>
 
@@ -687,7 +687,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 Lineage, enabled by the `ref` function, is at the core of dbt. Understanding lineage provides many benefits, such as understanding the structure and relationships of datasets (and metrics) and performing impact-and-root-cause analyses to resolve or present issues given changes to definitions or source data. With the Discovery API, you can construct lineage using the `parents` nodes or its `children` and query the entire upstream lineage using `ancestors`.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/example-dag.png" width="65%" width="80%" title="Example of a DAG"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/example-dag.png" width="80%" title="Example of a DAG"/>
 
 <details>
 <summary>Example query with code</summary>
@@ -1056,7 +1056,7 @@ For development use cases, people typically query the historical or latest defin
 ### How is this model or metric used in downstream tools?
 [Exposures](/docs/build/exposures) provide a method to define how a model or metric is actually used in dashboards and other analytics tools and use cases. You can query an exposure’s definition to see how project nodes are used and query its upstream lineage results to understand the state of the data used in it, which powers use cases like a freshness and quality status tile.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/data-freshness-metadata.jpg" width="65%" width="25%" title="Status tiles in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/data-freshness-metadata.jpg" width="25%" title="Status tiles in dbt Cloud"/>
 
 
 <details>

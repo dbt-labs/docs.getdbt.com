@@ -144,7 +144,7 @@ In Azure:
 - Click *OK* and then *Save* to save the variable
 - Save your new Azure pipeline
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png" width="65%" title="View of the Azure pipelines window for entering DBT_API_KEY"/>
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png" title="View of the Azure pipelines window for entering DBT_API_KEY"/>
 
 </TabItem>
 <TabItem value="bitbucket">
@@ -486,9 +486,9 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 </TabItem>
 <TabItem value="ado">
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png" width="65%" width="85%" title="dbt run on merge job in ADO"/>
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png" width="85%" title="dbt run on merge job in ADO"/>
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="65%" width="100%" title="ADO-triggered job in dbt Cloud"/>
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="100%" title="ADO-triggered job in dbt Cloud"/>
 
 </TabItem>
 <TabItem value="bitbucket">

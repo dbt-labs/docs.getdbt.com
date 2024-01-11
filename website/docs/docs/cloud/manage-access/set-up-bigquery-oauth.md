@@ -28,7 +28,7 @@ To get started, you need to create a client ID and secret for [authentication](h
 
 In the BigQuery console, navigate to **APIs & Services** and select **Credentials**:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-nav.gif" width="65%" title="BigQuery navigation to credentials" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-nav.gif" title="BigQuery navigation to credentials" />
 
 On the **Credentials** page, you can see your existing keys, client IDs, and service accounts.
 
@@ -46,7 +46,7 @@ Fill in the application, replacing `YOUR_ACCESS_URL` with the [appropriate Acces
 
 Then click **Create** to create the BigQuery OAuth app and see the app client ID and secret values. These values are available even if you close the app screen, so this isn't the only chance you have to save them.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/bq-oauth-app.gif" width="65%" title="Creating an OAuth app in BigQuery" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/bq-oauth-app.gif" title="Creating an OAuth app in BigQuery" />
 
 
 
@@ -59,7 +59,7 @@ Now that you have an OAuth app set up in BigQuery, you'll need to add the client
  - add the client ID and secret from the BigQuery OAuth app under the **OAuth2.0 Settings** section
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/dbt-cloud-bq-id-secret.gif" width="65%" title="Adding BigQuery OAuth application client ID and secret to dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/dbt-cloud-bq-id-secret.gif" title="Adding BigQuery OAuth application client ID and secret to dbt Cloud" />
 
 ### Authenticating to BigQuery
 Once the BigQuery OAuth app is set up for a dbt Cloud project, each dbt Cloud user will need to authenticate with BigQuery in order to use the IDE. To do so:
@@ -68,10 +68,10 @@ Once the BigQuery OAuth app is set up for a dbt Cloud project, each dbt Cloud us
 - Select **Credentials**.
 - choose your project from the list
 - select **Authenticate BigQuery Account**
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/developer-bq-auth.gif" width="65%" title="Authenticating to BigQuery" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/developer-bq-auth.gif" title="Authenticating to BigQuery" />
 
 You will then be redirected to BigQuery and asked to approve the drive, cloud platform, and BigQuery scopes, unless the connection is less privileged.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" width="65%" title="BigQuery access request" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" title="BigQuery access request" />
 
 Select **Allow**. This redirects you back to dbt Cloud. You should now be an authenticated BigQuery user, ready to use the dbt Cloud IDE.
 

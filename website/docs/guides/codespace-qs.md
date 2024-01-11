@@ -35,7 +35,7 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 1. Click **Code** (at the top of the new repository’s page). Under the **Codespaces** tab,  choose **Create codespace on main**. Depending on how you've configured your computer's settings, this either opens a new browser tab with the Codespace development environment with VSCode running in it or opens a new VSCode window with the codespace in it. 
 1. Wait for the codespace to finish building by waiting for the `postCreateCommand` command to complete; this can take several minutes:
 
-    <Lightbox src="/img/codespace-quickstart/postCreateCommand.png" width="65%" title="Wait for postCreateCommand to complete" />
+    <Lightbox src="/img/codespace-quickstart/postCreateCommand.png" title="Wait for postCreateCommand to complete" />
 
     When this command completes, you can start using the codespace development environment. The terminal the command ran in will close and you will get a prompt in a brand new terminal. 
 

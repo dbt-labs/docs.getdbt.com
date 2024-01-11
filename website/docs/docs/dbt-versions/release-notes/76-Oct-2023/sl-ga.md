@@ -20,7 +20,7 @@ It aims to bring the best of modeling and semantics to downstream applications b
 - dbt Cloud [multi-tenant regional](/docs/cloud/about-cloud/regions-ip-addresses) support for North America, EMEA, and APAC. Single-tenant support coming soon.
 - Use the APIs to call an export (a way to build tables in your data platform), then access them in your preferred BI tool.  Starting from dbt v1.7 or higher, you will be able to schedule exports as part of your dbt job.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="65%" width="80%" title="Use the universal dbt Semantic Layer to define and queried metrics in integration tools."/>
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="80%" title="Use the universal dbt Semantic Layer to define and queried metrics in integration tools."/>
 
 The dbt Semantic Layer is available to [dbt Cloud Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on dbt v1.6 or higher. 
 - Team and Enterprise customers can use 1,000 Queried Metrics per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/cloud/billing#what-counts-as-a-queried-metric) for more information.

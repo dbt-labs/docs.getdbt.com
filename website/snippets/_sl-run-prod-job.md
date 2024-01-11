@@ -4,4 +4,4 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 2. Select **Jobs** to rerun the job with the most recent code in the deployment environment.
 3. Your metric should appear as a red node in the dbt Cloud IDE and dbt directed acyclic graphs (DAG).
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" width="65%" width="85%" title="DAG with metrics appearing as a red node" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" width="85%" title="DAG with metrics appearing as a red node" />

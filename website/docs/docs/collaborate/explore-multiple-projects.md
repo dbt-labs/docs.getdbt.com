@@ -11,12 +11,12 @@ The resource-level lineage graph for a given project displays the cross-project 
 
 When you view an upstream (parent) project, its public models display a counter icon in the upper right corner indicating how many downstream (child) projects depend on them. Selecting a model reveals the lineage indicating the projects dependent on that model. These counts include all projects listing the upstream one as a dependency in its `dependencies.yml`, even without a direct `{{ ref() }}`. Selecting a project node from a public model opens its detailed lineage graph, which is subject to your [permission](/docs/cloud/manage-access/enterprise-permissions).
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-parent.png" width="65%" width="80%" height="100" title="Cross-project lineage in a parent project"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-parent.png" width="80%" height="100" title="Cross-project lineage in a parent project"/>
 
 When viewing a downstream (child) project that imports and refs public models from upstream (parent) projects, public models will show up in the lineage graph and display an icon on the graph edge that indicates what the relationship is to a model from another project. Hovering over this icon indicates the specific dbt Cloud project that produces that model. Double-clicking on a model from another project opens the resource-level lineage graph of the parent project, which is subject to your permissions.
 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-child.png" width="65%" width="85%" height="100" title="Cross-project lineage in a child project"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-child.png" width="85%" height="100" title="Cross-project lineage in a child project"/>
 
 ## Explore the project-level lineage graph
 

@@ -26,13 +26,13 @@ import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
 To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="65%" width="85%" title="Navigate to Deploy ->  Environments to create a deployment environment" />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="85%" title="Navigate to Deploy ->  Environments to create a deployment environment" />
 
 ### Set as production environment
 
 In dbt Cloud, each project can have one designated deployment environment, which serves as its production environment. This production environment is _essential_ for using features like dbt Explorer and cross-project references. It acts as the source of truth for the project's production state in dbt Cloud.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings.jpg" width="65%" width="70%" title="Set your production environment as the default environment in your Environment Settings"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings.jpg" width="70%" title="Set your production environment as the default environment in your Environment Settings"/>
 
 ### Semantic Layer
 
@@ -65,7 +65,7 @@ This section will not appear if you are using Redshift, as all values are inferr
 
 <div warehouse="Snowflake">
 
-<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-connection.png" width="65%" width="85%" title="Snowflake Deployment Connection Settings"/>
+<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-connection.png" width="85%" title="Snowflake Deployment Connection Settings"/>
 
 #### Editable fields
 
@@ -89,7 +89,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 <div warehouse="Databricks">
 
-<Lightbox src="/img/docs/collaborate/databricks-deploy-env-deploy-connection.png" width="65%" width="85%" title="Databricks Deployment Connection Settings"/>
+<Lightbox src="/img/docs/collaborate/databricks-deploy-env-deploy-connection.png" width="85%" title="Databricks Deployment Connection Settings"/>
 
 #### Editable fields
 
@@ -108,7 +108,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Postgres">
 
-<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" width="65%" width="85%" title="Postgres Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" width="85%" title="Postgres Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -120,7 +120,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Redshift">
 
-<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" width="65%" width="85%" title="Redshift Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" width="85%" title="Redshift Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -132,7 +132,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Snowflake">
 
-<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-credentials.png" width="65%" width="85%" title="Snowflake Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-credentials.png" width="85%" title="Snowflake Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -151,7 +151,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Bigquery">
 
-<Lightbox src="/img/docs/collaborate/bigquery-deploy-env-deploy-credentials.png" width="65%" width="85%" title="Bigquery Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/bigquery-deploy-env-deploy-credentials.png" width="85%" title="Bigquery Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -161,7 +161,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Spark">
 
-<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" width="65%" width="85%" title="Spark Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" width="85%" title="Spark Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -172,7 +172,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Databricks">
 
-<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" width="65%" width="85%" title="Databricks Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" width="85%" title="Databricks Deployment Credentials Settings"/>
 
 #### Editable fields
 

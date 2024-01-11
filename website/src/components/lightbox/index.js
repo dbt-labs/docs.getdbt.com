@@ -1,56 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './styles.module.css';
 import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
 function Lightbox({
-  src,
+  src, 
   collapsed = false,
-  alignment = "center",
-  alt = undefined,
-  title = undefined,
+  alignment = "center", 
+  alt = undefined, 
+  title = undefined, 
   width = undefined,
 }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [expandImage, setExpandImage] = useState(false);
 
-  useEffect(() => {
-    let timeoutId;
-
-    if (isHovered) {
-      // Delay the expansion by 5 milliseconds
-      timeoutId = setTimeout(() => {
-        setExpandImage(true);
-      }, 5);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [isHovered]);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setExpandImage(false);
-  };
+  // Set alignment class if alignment prop used
+  let imageAlignment = ''
+  if(alignment === "left") {
+    imageAlignment = styles.leftAlignLightbox
+  } else if(alignment === "right") {
+    imageAlignment = styles.rightAlignLightbox
+  }
 
   return (
     <>
       <link href="/css/featherlight-styles.css" type="text/css" rel="stylesheet" />
-      <div
+      <span 
         className={`
-          ${styles.docImage}
+          ${styles.docImage} 
           ${collapsed ? styles.collapsed : ''}
-          ${alignment === "left" ? styles.leftAlignLightbox : ''}
-          ${alignment === "right" ? styles.rightAlignLightbox : ''}
-          ${isHovered ? styles.hovered : ''}
+          ${imageAlignment}
         `}
-        style={width && { maxWidth: width }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        style={width && {maxWidth: width}}
       >
         <span>
           <a href="#" data-featherlight={src}>
@@ -59,14 +37,13 @@ function Lightbox({
               alt={alt ? alt : title ? title : ''}
               title={title ? title : ''}
               src={imageCacheWrapper(src)}
-              style={expandImage ? { transform: 'scale(1.3)', transition: 'transform 0.3s ease', zIndex: '9999' } : {}}
             />
           </a>
         </span>
         {title && (
           <span className={styles.title}>{ title }</span>
         )}
-      </div>
+      </span>
     </>
   );
 }

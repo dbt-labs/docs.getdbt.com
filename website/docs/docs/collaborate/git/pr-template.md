@@ -9,7 +9,7 @@ open a new Pull Request for the code changes. To enable this functionality, ensu
 that a PR Template URL is configured in the Repository details page in your
 Account Settings. If this setting is blank, the IDE will prompt users to merge the changes directly into their default branch.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/configure-template-url-new-ide.png" width="65%" title="Open a PR in the IDE"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/configure-template-url-new-ide.png" title="Open a PR in the IDE"/>
 
 ### PR Template URL by git provider
 

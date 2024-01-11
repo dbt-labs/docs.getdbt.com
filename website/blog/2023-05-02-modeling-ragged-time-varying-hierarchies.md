@@ -22,7 +22,7 @@ To help visualize this data, we're going to pretend we are a company that manufa
 
 Obviously, a real bike could have a hundred or more separate components.  To keep things simple for this article, let's just consider the bike, the frame, a wheel, the wheel rim, tire, and tube.  Our component hierarchy looks like:
 
-<Lightbox src="/img/blog/2023-05-02-modeling-ragged-time-varying-hierarchies/hierarchy.png" width="65%" title="eBike Hierarchy" />
+<Lightbox src="/img/blog/2023-05-02-modeling-ragged-time-varying-hierarchies/hierarchy.png" title="eBike Hierarchy" />
 
 This hierarchy is *ragged* because different paths through the hierarchy terminate at different depths.  It is *time-varying* because specific components can be added and removed.
 

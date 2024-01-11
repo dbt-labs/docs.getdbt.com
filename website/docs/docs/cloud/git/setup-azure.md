@@ -34,11 +34,11 @@ Many customers ask why they need to select Multitenant instead of Single tenant,
 6. Add a redirect URI by selecting **Web** and, in the field, entering `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 7. Click **Register**.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" width="65%" title="Navigating to the Azure AD app registrations"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Azure AD app registrations"/>
 
 Here's what your app should look like before registering it:
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" width="65%" title="Registering an Active Directory app"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering an Active Directory app"/>
 
 
 ## Add permissions to your new app
@@ -51,7 +51,7 @@ Provide your new app access to Azure DevOps:
 4. Select **Azure DevOps**.
 5. Select the **user_impersonation** permission. This is the only permission available for Azure DevOps.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/user-impersonation.gif" width="65%" title="Adding permissions to the app"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/user-impersonation.gif" title="Adding permissions to the app"/>
 
 ## Add another redirect URI
 
@@ -63,7 +63,7 @@ You also need to add another redirect URI to your Azure AD application. This red
 `https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
 4. Click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/redirect-uri.gif" width="65%" title="Adding the Service User redirect URI"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/redirect-uri.gif" title="Adding the Service User redirect URI"/>
 
 
 
@@ -77,7 +77,7 @@ If you have already connected your Azure DevOps account to Active Directory, the
 4. Select the directory you want to connect.
 5. Click **Connect**.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/connect AD to Azure DevOps.gif" width="65%" title="Connecting Azure DevOps and Active Directory"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/connect AD to Azure DevOps.gif" title="Connecting Azure DevOps and Active Directory"/>
 
 ## Add your Azure AD app to dbt Cloud
 
@@ -91,7 +91,7 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
     - **Application (client) ID:** Found in the Azure AD App.
     - **Client Secrets:** You need to first create a secret in the Azure AD App under **Client credentials**. Make sure to copy the **Value** field in the Azure AD App and paste it in the **Client Secret** field in dbt Cloud. You are responsible for the Azure AD app secret expiration and rotation.
     - **Directory(tenant) ID:** Found in the Azure AD App.
-        <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" width="65%" title="Adding an Active Directory App to dbt Cloud"/>
+        <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
 
 Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in the dbt Cloud IDE or dbt Cloud CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 
@@ -345,7 +345,7 @@ To connect the service user:
 2. The admin should click **Link Azure Service User** in dbt Cloud.
 3. The admin will be directed to Azure DevOps and must accept the Azure AD app's permissions.
 4. Finally, the admin will be redirected to dbt Cloud, and the service user will be connected.
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" width="65%" title="Connecting an Azure Service User"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" title="Connecting an Azure Service User"/>
 
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
 

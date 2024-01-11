@@ -27,7 +27,7 @@ username (specifically, the `login_name`) and the corresponding user's Snowflake
 to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowflake user.
 
 **Note**: The schema field in the **Developer Credentials** section is a required field.
-<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="65%" title="Snowflake username/password authentication"/>
+<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" title="Snowflake username/password authentication"/>
 
 ### Key Pair
 
@@ -59,7 +59,7 @@ As of dbt version 1.5.0, you can use a `private_key` string in place of `private
 -----END ENCRYPTED PRIVATE KEY-----
 ```
 
-   <Lightbox src="/img/docs/dbt-cloud/snowflake-keypair-auth.png" width="65%" width="60%" title="Snowflake keypair authentication"/>
+   <Lightbox src="/img/docs/dbt-cloud/snowflake-keypair-auth.png" width="60%" title="Snowflake keypair authentication"/>
 
 ### Snowflake OAuth
 
@@ -68,7 +68,7 @@ As of dbt version 1.5.0, you can use a `private_key` string in place of `private
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in dbt Cloud. For
 more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="65%" title="Configuring Snowflake OAuth connection"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth connection"/>
 
 ## Configuration
 

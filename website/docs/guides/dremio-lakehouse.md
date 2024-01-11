@@ -143,7 +143,7 @@ dremioSamples:
 
 Now that you have a running environment and a completed job, you can view the data in Dremio and expand your code. This is a snapshot of the project structure in an IDE:
 
-<Lightbox src="/img/guides/dremio/dremio-cloned-repo.png" width="65%" title="Cloned repo in an IDE"/>
+<Lightbox src="/img/guides/dremio/dremio-cloned-repo.png" title="Cloned repo in an IDE"/>
 
 ## About the schema.yml
 
@@ -156,7 +156,7 @@ The models correspond to both weather and trip data respectively and will be joi
 
 The sources can be found by navigating to the **Object Storage** section of the Dremio Cloud UI.
 
-<Lightbox src="/img/guides/dremio/dremio-nyc-weather.png" width="65%" title="NYC-weather.csv location in Dremio Cloud"/>
+<Lightbox src="/img/guides/dremio/dremio-nyc-weather.png" title="NYC-weather.csv location in Dremio Cloud"/>
 
 ## About the models
 
@@ -170,11 +170,11 @@ The sources can be found by navigating to the **Object Storage** section of the 
 
 When you run the dbt job, it will create a **dev** space folder that has all the data assets created. This is what you will see in Dremio Cloud UI. Spaces in Dremio is a way to organize data assets which map to business units or data products.
 
-<Lightbox src="/img/guides/dremio/dremio-dev-space.png" width="65%" title="Dremio Cloud dev space"/>
+<Lightbox src="/img/guides/dremio/dremio-dev-space.png" title="Dremio Cloud dev space"/>
 
 Open the **Application folder** and you will see the output of the simple transformation we did using dbt.
 
-<Lightbox src="/img/guides/dremio/dremio-dev-application.png" width="65%" title="Application folder transformation output"/>
+<Lightbox src="/img/guides/dremio/dremio-dev-application.png" title="Application folder transformation output"/>
 
 ## Query the data
 
@@ -191,6 +191,6 @@ GROUP BY vendor_id
 
 ```
 
-<Lightbox src="/img/guides/dremio/dremio-test-results.png" width="65%" width="70%"  title="Sample output from SQL query"/>
+<Lightbox src="/img/guides/dremio/dremio-test-results.png" width="70%"  title="Sample output from SQL query"/>
 
 This completes the integration setup and data is ready for business consumption.

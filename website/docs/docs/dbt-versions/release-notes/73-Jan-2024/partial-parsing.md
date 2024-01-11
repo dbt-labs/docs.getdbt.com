@@ -11,5 +11,5 @@ By default, dbt parses all the files in your project at the beginning of every d
 
 To learn more, refer to [Partial parsing](/docs/deploy/deploy-environments#partial-parsing).
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="65%" width="85%" title="Example of the Partial parsing option" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
 

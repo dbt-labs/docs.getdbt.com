@@ -20,7 +20,7 @@ The dbt Cloud audit log stores all the events that occurred in your organization
 
 To access the audit log, click the gear icon in the top right, then click **Audit Log**.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" width="65%" width="30%" title="Audit log menu"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" width="30%" title="Audit log menu"/>
 
 ## Understanding the audit log
 
@@ -160,7 +160,7 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 You can search the audit log to find a specific event or actor, which is limited to the ones listed in [Events in audit log](#events-in-audit-log). The audit log successfully lists historical events spanning the last 90 days. You can search for an actor or event using the search bar, and then narrow your results using the time window.
 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" width="65%" width="95%" title="Use search bar to find content in the audit log"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" width="95%" title="Use search bar to find content in the audit log"/>
 
 
 ## Exporting logs
@@ -171,7 +171,7 @@ You can use the audit log to export all historical audit results for security, c
 
 - **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin will receive an email link to download a CSV file of all the events that occurred in your organization.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" width="65%" width="95%" title="View audit log export options"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" width="95%" title="View audit log export options"/>
 
 ### Azure Single-tenant
 

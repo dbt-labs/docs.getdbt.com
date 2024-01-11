@@ -97,15 +97,23 @@ You can use the instructions in this section to configure Okta as your identity 
 
 1. Log into your Okta account. Using the Admin dashboard, create a new app.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app.png" width="75%" title="Create a new app" />
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app.png"
+    title="Create a new app"
+/>
 
-1. Select the following configurations:
+2. Select the following configurations:
    - **Platform**: Web
    - **Sign on method**: SAML 2.0
 
-2. Click **Create** to continue the setup process.
+3. Click **Create** to continue the setup process.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app-create.png" width="75%" title="Configure a new app"/>
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-1-new-app-create.png"
+    title="Configure a new app"
+/>
 
 ### Configure the Okta application
 
@@ -123,7 +131,11 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 
 2. Click **Next** to continue.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-2-general-settings.png" width="75%" title="Configure the app's General Settings"/>
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-2-general-settings.png"
+    title="Configure the app's General Settings"
+/>
 
 ### Configure SAML Settings
 
@@ -133,12 +145,12 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
    * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`
    * **Relay State**: `<login slug>`
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" width="75%" title="Configure the app's SAML Settings"/>
+  <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 
-1. Map your organization's Okta User and Group Attributes to the format that
+2. Map your organization's Okta User and Group Attributes to the format that
 dbt Cloud expects by using the Attribute Statements and Group Attribute Statements forms.
 
-1. The following table illustrates expected User Attribute Statements:
+3. The following table illustrates expected User Attribute Statements:
 
    | Name           | Name format | Value                | Description                |
    | -------------- | ----------- | -------------------- | -------------------------- |
@@ -146,7 +158,7 @@ dbt Cloud expects by using the Attribute Statements and Group Attribute Statemen
    | `first_name`   | Unspecified | `user.firstName`  | _The user's first name_    |
    | `last_name`    | Unspecified | `user.lastName`   | _The user's last name_     |
 
-2. The following table illustrates expected **Group Attribute Statements**:
+4. The following table illustrates expected **Group Attribute Statements**:
 
    | Name     | Name format | Filter        | Value | Description                           |
    | -------- | ----------- | ------------- | ----- | ------------------------------------- |
@@ -160,9 +172,13 @@ only returns 100 groups for each user, so if your users belong to more than 100
 IdP groups, you will need to use a more restrictive filter**. Please contact
 support if you have any questions.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png" width="75%" title="Configure the app's User and Group Attribute Statements"/>
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-bottom.png"
+    title="Configure the app's User and Group Attribute Statements"
+/>
 
-1. Click **Next** to continue.
+5. Click **Next** to continue.
 
 ### Finish Okta setup
 
@@ -171,7 +187,11 @@ support if you have any questions.
 3. Click **Finish** to finish setting up the
 app.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-4-feedback.png" width="75%" title="Finishing setup in Okta"/>
+<Lightbox
+    collapsed={false}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-4-feedback.png"
+    title="Finishing setup in Okta"
+/>
 
 ### View setup instructions
 
@@ -179,11 +199,19 @@ app.
 2. In the steps below, you'll supply these values in your dbt Cloud Account Settings to complete
 the integration between Okta and dbt Cloud.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-view-instructions.png" width="75%" title="Viewing the configured application"/>
+<Lightbox
+    collapsed={true}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-view-instructions.png"
+    title="Viewing the configured application"
+/>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-instructions.png" width="75%" title="Application setup instructions"/>
+<Lightbox
+    collapsed={true}
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-5-instructions.png"
+    title="Application setup instructions"
+/>
 
-1. After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
+3. After creating the Okta application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 section to complete the integration.
 
 ## Google integration
@@ -398,11 +426,11 @@ To complete setup, follow the steps below in dbt Cloud:
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
    | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access. |
    | Slug | Enter your desired login slug. |
+    <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
+        title="Configuring the application in dbt Cloud" />
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png" width="75%" title="Configuring the application in dbt Cloud" />
-
-1. Click **Save** to complete setup for the SAML 2.0 integration.
-2. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to dbt Cloud from the IdP directly.
+4. Click **Save** to complete setup for the SAML 2.0 integration.
+5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to dbt Cloud from the IdP directly.
 
 
 <Snippet path="login_url_note" />

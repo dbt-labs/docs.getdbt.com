@@ -107,7 +107,7 @@ A set of *materializations* and their corresponding helper macros defined in dbt
 
 Below is a diagram of how dbt-postgres, the adapter at the center of dbt-core, works.
 
-<Lightbox src="/img/adapter-guide/adapter architecture - postgres.png" width="65%" title="adapter architecture diagram"/>
+<Lightbox src="/img/adapter-guide/adapter architecture - postgres.png" title="adapter architecture diagram"/>
 
 ## Prerequisites
 
@@ -1225,17 +1225,17 @@ This can vary substantially depending on the nature of the release but a good ba
 Breaking this down:
 
 - Visually distinctive announcement - make it clear this is a release
-    <Lightbox src="/img/adapter-guide/1-announcement.png" width="65%" title="title"/>
+    <Lightbox src="/img/adapter-guide/1-announcement.png" title="title"/>
 - Short written description of what is in the release
-    <Lightbox src="/img/adapter-guide/2-short-description.png" width="65%" title="description"/>
+    <Lightbox src="/img/adapter-guide/2-short-description.png" title="description"/>
 - Links to additional resources
-   <Lightbox src="/img/adapter-guide/3-additional-resources.png" width="65%" title="more resources"/>
+   <Lightbox src="/img/adapter-guide/3-additional-resources.png" title="more resources"/>
 - Implementation instructions:
-    <Lightbox src="/img/adapter-guide/4-installation.png" width="65%" title="more installation"/>
+    <Lightbox src="/img/adapter-guide/4-installation.png" title="more installation"/>
 - Future plans
-    <Lightbox src="/img/adapter-guide/5-coming-up.png" width="65%" title="coming soon"/>
+    <Lightbox src="/img/adapter-guide/5-coming-up.png" title="coming soon"/>
 - Contributor recognition (if applicable)
-    <Lightbox src="/img/adapter-guide/6-thank-contribs.png" width="65%" title="thank yous"/>
+    <Lightbox src="/img/adapter-guide/6-thank-contribs.png" title="thank yous"/>
 
 
 ## Verify a new adapter

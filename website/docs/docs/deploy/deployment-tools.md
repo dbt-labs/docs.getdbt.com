@@ -19,8 +19,8 @@ If your organization is using [Airflow](https://airflow.apache.org/), there are 
 
 Installing the [dbt Cloud Provider](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/index.html) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud.
 
-<Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" width="65%" title="Airflow DAG using DbtCloudRunJobOperator"/>
-<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" width="65%" title="dbt Cloud job triggered by Airflow"/>
+<Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
+<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt Cloud job triggered by Airflow"/>
 
 </TabItem>
 
@@ -71,7 +71,7 @@ If your organization is using [Prefect](https://www.prefect.io/), the way you wi
 - As jobs are executing, you can poll dbt to see whether or not the job completes without failures, through the [Prefect user interface (UI)](https://docs.prefect.io/ui/overview/).
 
 
-<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_job_prefect.jpg" width="65%" title="dbt Cloud job triggered by Prefect"/> 
+<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_job_prefect.jpg" title="dbt Cloud job triggered by Prefect"/> 
 
 </TabItem>
 

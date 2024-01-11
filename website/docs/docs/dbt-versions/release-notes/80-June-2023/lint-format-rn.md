@@ -17,10 +17,10 @@ For more info, read [Lint and format your code](/docs/cloud/dbt-cloud-ide/lint-f
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfluff.gif" width="65%" width="100%" title="Use SQLFluff to lint/format your SQL code, and view code errors in the Code Quality tab."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfluff.gif" width="100%" title="Use SQLFluff to lint/format your SQL code, and view code errors in the Code Quality tab."/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfmt.gif" width="65%" width="95%" title="Use sqlfmt to format your SQL code."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfmt.gif" width="95%" title="Use sqlfmt to format your SQL code."/>
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/prettier.gif" width="65%" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
 
 </DocCarousel>

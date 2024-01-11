@@ -125,7 +125,7 @@ In both cases, the operation can be done on a single partition at a time so it r
 
 On a 192 GB partition here is how the different methods compare:
 
-<Lightbox src="/img/blog/2023-02-01-ingestion-time-partitioning-bigquery/merge-vs-select.png" width="65%" />
+<Lightbox src="/img/blog/2023-02-01-ingestion-time-partitioning-bigquery/merge-vs-select.png" />
 
 Also, the `SELECT` statement consumed more than 10 hours of slot time while `MERGE` statement took days of slot time.
 

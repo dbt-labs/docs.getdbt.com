@@ -38,7 +38,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Frequency** that runs the job at specific times of day, **Specific Intervals** that runs the job every specified number of hours, or **Cron Schedule** that runs the job specified using [cron syntax](#custom-cron-schedule).
     - **Days of the Week** &mdash; By default, it’s set to every day when **Frequency** or **Specific Intervals** is chosen for **Timing**.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-deploy-job.png" width="65%" width="90%" title="Example of Deploy Job page in dbt Cloud UI"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-deploy-job.png" width="90%" title="Example of Deploy Job page in dbt Cloud UI"/>
 
 5. (optional) Options in the **Advanced Settings** section: 
     - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
@@ -53,7 +53,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
 
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="65%" width="90%" title="Example of Advanced Settings on Deploy Job page"/>
+    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on Deploy Job page"/>
 
 ### Schedule days
 
@@ -80,7 +80,7 @@ dbt Cloud uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordi
 To fully customize the scheduling of your job, choose the **Custom cron schedule** option and use the cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" width="65%" title="Schedule your dbt job"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" title="Schedule your dbt job"/>
 
 Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and returns their plain English translations.
 

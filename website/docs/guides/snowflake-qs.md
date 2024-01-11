@@ -143,35 +143,35 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Admin**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
-    <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" width="65%" title="Snowflake Partner Connect Box" />
+    <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 
     If you’re using the classic version of the Snowflake UI, you can click the **Partner Connect** button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
 
-    <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" width="65%" title="Snowflake Classic UI - Partner Connect" />
+    <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 
 2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each database. Then, click **Connect**.
 
-    <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" width="65%" title="Snowflake Classic UI - Connection Box" />
+    <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
 
-    <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_connection_box.png" width="65%" title="Snowflake New UI - Connection Box" />
+    <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_connection_box.png" title="Snowflake New UI - Connection Box" />
 
 3. Click **Activate** when a popup appears: 
 
-<Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_activation_window.png" width="65%" title="Snowflake Classic UI - Actviation Window" />
+<Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_activation_window.png" title="Snowflake Classic UI - Actviation Window" />
 
-<Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" width="65%" title="Snowflake New UI - Activation Window" />
+<Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" title="Snowflake New UI - Activation Window" />
 
 4. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password.
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" width="65%" title="dbt Cloud - Account Info" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt Cloud - Account Info" />
 
 5. After you have filled out the form and clicked **Complete Registration**, you will be logged into dbt Cloud automatically.
 
 6. From your **Account Settings** in dbt Cloud (using the gear menu in the upper right corner), choose the "Partner Connect Trial" project and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" width="65%" title="dbt Cloud - Snowflake Project Overview" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
 
-<Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" width="65%" title="dbt Cloud - Update Database and Warehouse" />
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt Cloud - Update Database and Warehouse" />
 
 </TabItem>
 <TabItem value="manual-connect" label="Connect manually">
@@ -181,7 +181,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 2. Enter a project name and click **Continue**.
 3. For the warehouse, click **Snowflake** then **Next** to set up your connection.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" width="65%" title="dbt Cloud - Choose Snowflake Connection" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt Cloud - Choose Snowflake Connection" />
 
 4. Enter your **Settings** for Snowflake with: 
     * **Account** &mdash; Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
@@ -192,7 +192,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
     * **Warehouse** &mdash; `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" width="65%" title="dbt Cloud - Snowflake Account Settings" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
 
 5. Enter your **Development Credentials** for Snowflake with: 
     * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
@@ -201,7 +201,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
     * **Target name** &mdash; Leave as the default.
     * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that dbt Cloud will make to build models concurrently.
 
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" width="65%" title="dbt Cloud - Snowflake Development Credentials" />
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt Cloud - Snowflake Development Credentials" />
 
 6. Click **Test Connection**. This verifies that dbt Cloud can access your Snowflake account.
 7. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.

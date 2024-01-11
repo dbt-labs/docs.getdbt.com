@@ -118,8 +118,8 @@ dbt test -s +exposure:weekly_jaffle_report
 
 When we generate our documentation site, you'll see the exposure appear:
 
-<Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-exposures.png" width="65%" title="Dedicated page in dbt-docs for each exposure"/>
-<Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" width="65%" title="Exposures appear as orange-y nodes in the DAG"/>
+<Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-exposures.png" title="Dedicated page in dbt-docs for each exposure"/>
+<Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as orange-y nodes in the DAG"/>
 
 ## Related docs
 

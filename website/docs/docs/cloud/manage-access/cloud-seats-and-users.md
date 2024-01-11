@@ -45,7 +45,7 @@ If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/m
 
 - To add a user, go to **Account Settings**, select **Users** under **Teams**. Select [**Invite Users**](docs/cloud/manage-access/invite-users). For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/enterprise-permissions).
 
-<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-enterprise.jpg" width="65%" width="85%" title="Navigate to Account Settings --> Users to add or remove users" />
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-enterprise.jpg" width="85%" title="Navigate to Account Settings --> Users to add or remove users" />
 
 </TabItem>
 
@@ -66,14 +66,14 @@ To add a user in dbt Cloud, you must be an account owner or have admin privilege
 
 1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
 
-<Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="65%" width="85%" title="Navigate to Account Settings" />
+<Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
 
 2. In **Account Settings**, select **Billing**. 
 3. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. Leaving these blank won't allow you to save your changes.
 4. Press **Update Payment Information** to save your changes. 
         
 
-<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="65%" width="85%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
 
 
 Now that you've updated your billing, you can now [invite users](/docs/cloud/manage-access/invite-users) to join your dbt Cloud account:
@@ -87,13 +87,13 @@ To delete a user in dbt Cloud, you must be an account owner or have admin privil
 
 1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
 
-<Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="65%" width="85%" title="Navigate to Account Settings" />
+<Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
 
 2. In **Account Settings**, select **Users** under **Teams**.
 3. Select the user you want to delete, then click **Edit**. 
 4. Click **Delete** in the bottom left. Click **Confirm Delete** to immediately delete the user without additional password prompts. This action cannot be undone. However, you can re-invite the user with the same information if the deletion was made in error. 
 
-<Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" width="65%" width="85%" title="Deleting a user" />
+<Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" width="85%" title="Deleting a user" />
 
 
 If you are on a **Teams** plan and you're deleting users to reduce the number of billable seats, follow these steps to lower the license count to avoid being overcharged:
@@ -102,7 +102,7 @@ If you are on a **Teams** plan and you're deleting users to reduce the number of
 2. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. If you leave any field blank, you won't be able to save your changes.
 3. Click **Update Payment Information** to save your changes. 
         
-<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="65%" width="85%" title="The **Billing** page in your **Account Settings**" />
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="The **Billing** page in your **Account Settings**" />
 
 Great work! After completing these steps, your dbt Cloud user count and billing count should now be the same.
 
@@ -130,7 +130,7 @@ to allocate for the user. If your account does not have an available license to
 allocate, you will need to add more licenses to your plan to complete the license
 change.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png" width="65%"
+<Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png"
           title="Manually assigning licenses"/>
 
 ### Mapped configuration
@@ -149,7 +149,7 @@ license. To assign Read-Only licenses to certain groups of users, create a new
 License Mapping for the Read-Only license type and include a comma separated
 list of IdP group names that should receive a Read-Only license at sign-in time.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/license-mapping.png" width="65%"
+<Lightbox src="/img/docs/dbt-cloud/access-control/license-mapping.png"
           title="Configuring IdP group license mapping"/>
 
 Usage notes:
