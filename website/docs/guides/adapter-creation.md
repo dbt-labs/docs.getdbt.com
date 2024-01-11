@@ -566,12 +566,6 @@ It should be noted that both of these files are included in the bootstrapped out
 
 ## Test your adapter
 
-:::info
-
-Previously, we offered a packaged suite of tests for dbt adapter functionality: [`pytest-dbt-adapter`](https://github.com/dbt-labs/dbt-adapter-tests). We are deprecating that suite, in favor of the newer testing framework outlined in this document.
-
-:::
-
 This document has two sections:
 
 1. Refer to "About the testing framework" for a description of the standard framework that we maintain for using pytest together with dbt. It includes an example that shows the anatomy of a simple test case.

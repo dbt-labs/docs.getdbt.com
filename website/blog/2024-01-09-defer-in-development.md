@@ -12,7 +12,7 @@ date: 2024-01-09
 is_featured: true
 ---
 
-Picture this — you’ve got a massive dbt project, thousands of models chugging along, creating actionable insights for your stakeholders. A ticket comes your way &mdash; a model needs to be refactored! "No problem," you think to yourself, "I will simply make that change and test it locally!" You look at you lineage, and realize this model is many layers deep, buried underneath a long chain of tables and views.
+Picture this — you’ve got a massive dbt project, thousands of models chugging along, creating actionable insights for your stakeholders. A ticket comes your way &mdash; a model needs to be refactored! "No problem," you think to yourself, "I will simply make that change and test it locally!" You look at your lineage, and realize this model is many layers deep, buried underneath a long chain of tables and views.
 
 “OK,” you think further, “I’ll just run a `dbt build -s +my_changed_model` to make sure I have everything I need built into my dev schema and I can test my changes”. You run the command. You wait. You wait some more. You get some coffee, and completely take yourself out of your dbt development flow state. A lot of time and money down the drain to get to a point where you can *start* your work. That’s no good!
 
