@@ -4,10 +4,6 @@ id: "upgrading-to-0-15-0"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 The dbt v0.15.0 release contains a handful of breaking code changes for users upgrading from v0.14.0.
 
 
