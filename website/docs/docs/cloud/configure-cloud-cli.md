@@ -68,7 +68,6 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
     name:
 
     version:
-    ...
 
     dbt-cloud: 
         project-id: PROJECT_ID
