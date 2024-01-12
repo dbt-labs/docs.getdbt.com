@@ -318,7 +318,7 @@ This macro yields the database-specific data type for a `TIMESTAMP` (which may o
 TIMESTAMP
 ```
 
-### dbt.current_timestamp()
+### current_timestamp
 
 The `dbt.current_timestamp()` macro allows you to generate the current timestamp in a format suitable for database queries. This is useful when you need to capture the current date and time within your SQL queries or models.
 
