@@ -3633,8 +3633,8 @@
       "permanent": true
     },
     {
-      "source": "/docs/writing-code-in-dbt/jinja-context/as_text",
-      "destination": "/reference/dbt-jinja-functions/as_text",
+      "source": "/reference/dbt-jinja-functions/as_text",
+      "destination": "/reference/dbt-jinja-functions",
       "permanent": true
     },
     {
