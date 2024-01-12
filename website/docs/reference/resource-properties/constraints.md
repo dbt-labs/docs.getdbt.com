@@ -3,10 +3,6 @@ resource_types: [models]
 datatype: "{dictionary}"
 ---
 
-:::info New functionality
-This functionality is new in v1.5.
-:::
-
 Constraints are a feature of many data platforms. When specified, the platform will perform additional validation on data as it is being populated in a new table or inserted into a preexisting table. If the validation fails, the table creation or update fails, the operation is rolled back, and you will see a clear error message.
 
 When enforced, a constraint guarantees that you will never see invalid data in the table materialized by your model. Enforcement varies significantly by data platform.
