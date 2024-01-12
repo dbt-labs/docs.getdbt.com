@@ -30,6 +30,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [type\_numeric](#type_numeric)
     - [type\_string](#type_string)
     - [type\_timestamp](#type_timestamp)
+    - [dbt.current\_timestamp()](#dbtcurrent_timestamp)
   - [Set functions](#set-functions)
     - [except](#except)
     - [intersect](#intersect)
@@ -76,6 +77,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [type\_numeric](#type_numeric)
     - [type\_string](#type_string)
     - [type\_timestamp](#type_timestamp)
+    - [dbt.current\_timestamp()](#dbtcurrent_timestamp)
   - [Set functions](#set-functions)
     - [except](#except)
     - [intersect](#intersect)
@@ -315,6 +317,51 @@ This macro yields the database-specific data type for a `TIMESTAMP` (which may o
 ```sql
 TIMESTAMP
 ```
+
+### dbt.current_timestamp()
+
+The `dbt.current_timestamp()` macro allows you to generate the current timestamp in a format suitable for database queries. This is useful when you need to capture the current date and time within your SQL queries or models.
+
+**Args**
+- None
+
+**Usage**
+- You can use the `dbt.current_timestamp()` macro within your dbt SQL files like this:
+
+```sql
+{{ dbt.current_timestamp() }}
+```
+
+<Tabs>
+<TabItem value="postgres" label="Sample output (PostgresSQL)">
+
+```sql
+CURRENT_TIMESTAMP OR TIMESTAMP?
+```
+</TabItem>
+
+<TabItem value="sonwflake" label="Sample output (Snowflake)">
+
+```sql
+CURRENT_TIMESTAMP() OR [TIMESTAMP_TZ](https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz)?
+```
+</TabItem>
+
+<TabItem value="bq" label="Sample output (BigQuery)">
+
+```sql
+CURRENT_DATETIME() OR TIMESTAMP?
+```
+</TabItem>
+
+<TabItem value="redshift" label="Sample output (Redshift)">
+
+```sql
+CURRENT_TIMESTAMP OR TIMESTAMP?
+```
+
+</TabItem>
+</Tabs>
 
 ## Set functions
 
