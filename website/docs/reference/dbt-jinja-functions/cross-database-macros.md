@@ -340,7 +340,7 @@ now()
 ```
 </TabItem>
 
-<TabItem value="sonwflake" label="Sample output (Snowflake)">
+<TabItem value="snowflake" label="Sample output (Snowflake)">
 
 ```sql
 CURRENT_TIMESTAMP() OR [TIMESTAMP_TZ](https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz)?
