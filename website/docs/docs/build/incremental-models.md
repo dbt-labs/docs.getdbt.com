@@ -236,7 +236,7 @@ Instead, whenever the logic of your incremental changes, execute a full-refresh 
 
 ## About `incremental_strategy`
 
-There are various ways (strategies) to implement the concept of an incremental materializations. The value of each strategy depends on:
+There are various ways (strategies) to implement the concept of incremental materializations. The value of each strategy depends on:
 
 * the volume of data,
 * the reliability of your `unique_key`, and
@@ -448,6 +448,130 @@ The syntax depends on how you configure your `incremental_strategy`:
 - There's a decent amount of conceptual overlap with the `insert_overwrite` incremental strategy.
 :::
 
+</VersionBlock>
+
+### Built-in strategies
+
+Before diving into [custom strategies](#custom-strategies), it's important to understand the built-in incremental strategies in dbt and their corresponding macros:
+
+| `incremental_strategy` | Corresponding macro                    |
+|------------------------|----------------------------------------|
+| `append`               | `get_incremental_append_sql`           |
+| `delete+insert`        | `get_incremental_delete_insert_sql`    |
+| `merge`                | `get_incremental_merge_sql`            |
+| `insert_overwrite`     | `get_incremental_insert_overwrite_sql` |
+
+
+For example, a built-in strategy for the `append` can be defined and used with the following files:
+
+<File name='macros/append.sql'>
+
+```sql
+{% macro get_incremental_append_sql(arg_dict) %}
+
+  {% do return(some_custom_macro_with_sql(arg_dict["target_relation"], arg_dict["temp_relation"], arg_dict["unique_key"], arg_dict["dest_columns"], arg_dict["incremental_predicates"])) %}
+
+{% endmacro %}
+
+
+{% macro some_custom_macro_with_sql(target_relation, temp_relation, unique_key, dest_columns, incremental_predicates) %}
+
+    {%- set dest_cols_csv = get_quoted_csv(dest_columns | map(attribute="name")) -%}
+
+    insert into {{ target_relation }} ({{ dest_cols_csv }})
+    (
+        select {{ dest_cols_csv }}
+        from {{ temp_relation }}
+    )
+
+{% endmacro %}
+```
+</File>
+
+Define a model models/my_model.sql:
+
+```sql
+{{ config(
+    materialized="incremental",
+    incremental_strategy="append",
+) }}
+
+select * from {{ ref("some_model") }}
+```
+
+### Custom strategies
+
+<VersionBlock lastVersion="1.1">
+
+Custom incremental strategies can be defined beginning in dbt v1.2.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2">
+
+As an easier alternative to [creating an entirely new materialization](/guides/create-new-materializations), users can define and use their own "custom" user-defined incremental strategies by:
+
+1. defining a macro named `get_incremental_STRATEGY_sql`. Note that `STRATEGY` is a placeholder and you should replace it with the name of your custom incremental strategy.
+2. configuring `incremental_strategy: STRATEGY` within an incremental model
+
+dbt won't validate user-defined strategies, it will just look for the macro by that name, and raise an error if it can't find one.
+
+For example, a user-defined strategy named `insert_only` can be defined and used with the following files:
+
+<File name='macros/my_custom_strategies.sql'>
+
+```sql
+{% macro get_incremental_insert_only_sql(arg_dict) %}
+
+  {% do return(some_custom_macro_with_sql(arg_dict["target_relation"], arg_dict["temp_relation"], arg_dict["unique_key"], arg_dict["dest_columns"], arg_dict["incremental_predicates"])) %}
+
+{% endmacro %}
+
+
+{% macro some_custom_macro_with_sql(target_relation, temp_relation, unique_key, dest_columns, incremental_predicates) %}
+
+    {%- set dest_cols_csv = get_quoted_csv(dest_columns | map(attribute="name")) -%}
+
+    insert into {{ target_relation }} ({{ dest_cols_csv }})
+    (
+        select {{ dest_cols_csv }}
+        from {{ temp_relation }}
+    )
+
+{% endmacro %}
+```
+
+</File>
+
+<File name='models/my_model.sql'>
+
+```sql
+{{ config(
+    materialized="incremental",
+    incremental_strategy="insert_only",
+    ...
+) }}
+
+...
+```
+
+</File>
+
+### Custom strategies from a package
+
+To use the `merge_null_safe` custom incremental strategy from the `example` package:
+- [Install the package](/docs/build/packages#how-do-i-add-a-package-to-my-project)
+- Then add the following macro to your project:
+
+<File name='macros/my_custom_strategies.sql'>
+
+```sql
+{% macro get_incremental_merge_null_safe_sql(arg_dict) %}
+    {% do return(example.get_incremental_merge_null_safe_sql(arg_dict)) %}
+{% endmacro %}
+```
+
+</File>
 </VersionBlock>
 
 <Snippet path="discourse-help-feed-header" />
