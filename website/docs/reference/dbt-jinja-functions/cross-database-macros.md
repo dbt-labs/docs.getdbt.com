@@ -77,7 +77,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [type\_numeric](#type_numeric)
     - [type\_string](#type_string)
     - [type\_timestamp](#type_timestamp)
-    - [dbt.current\_timestamp()](#dbtcurrent_timestamp)
+    - [current\_timestamp](#current_timestamp)
   - [Set functions](#set-functions)
     - [except](#except)
     - [intersect](#intersect)
