@@ -66,8 +66,8 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
     ```yaml
     # dbt_project.yml
     name:
-
     version:
+    # Your project configs...
 
     dbt-cloud: 
         project-id: PROJECT_ID
