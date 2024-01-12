@@ -350,7 +350,7 @@ convert_timezone('UTC', current_timestamp())
 <TabItem value="bq" label="Sample output (BigQuery)">
 
 ```sql
-CURRENT_DATETIME() OR TIMESTAMP?
+current_timestamp()
 ```
 </TabItem>
 
