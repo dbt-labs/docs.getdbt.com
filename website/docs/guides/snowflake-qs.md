@@ -188,7 +188,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
         <Snippet path="snowflake-acct-name" />
     
-    * **Role** &mdash; Leave blank for now. You can update this to a default Snowflake role later.
+    * **Role** &mdash; `transform` or `ACCOUNTADMIN`. This tells dbt what Snowflake role should be assumed after connecting to Snowflake.
     * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
     * **Warehouse** &mdash; `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
 
@@ -219,8 +219,9 @@ Now that you have a repository configured, you can initialize your project and s
 
 1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
-4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
+3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to create a new branch where you can add new dbt code. Note, the main branch is set to read-only mode.
+4. Create a new branch by clicking the **+ Create new branch** button below the **Version control** section.
+5. You can now add new dbt code, directly query data from your warehouse, and execute `dbt run`. Try this out now:
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
         ```sql
         select * from raw.jaffle_shop.customers
