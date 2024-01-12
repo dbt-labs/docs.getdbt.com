@@ -343,7 +343,7 @@ now()
 <TabItem value="snowflake" label="Sample output (Snowflake)">
 
 ```sql
-CURRENT_TIMESTAMP() OR [TIMESTAMP_TZ](https://docs.snowflake.com/en/sql-reference/data-types-datetime#timestamp-ltz-timestamp-ntz-timestamp-tz)?
+convert_timezone('UTC', current_timestamp())
 ```
 </TabItem>
 
