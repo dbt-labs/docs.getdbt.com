@@ -333,7 +333,7 @@ The `dbt.current_timestamp()` macro allows you to generate the current timestamp
 ```
 
 <Tabs>
-<TabItem value="postgres" label="Sample output (PostgresSQL)">
+<TabItem value="postgres" label="Sample output (PostgreSQL)">
 
 ```sql
 CURRENT_TIMESTAMP OR TIMESTAMP?
