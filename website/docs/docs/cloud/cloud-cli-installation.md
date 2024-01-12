@@ -260,7 +260,6 @@ You can use extensions like [dbt-power-user](https://www.dbt-power-user.com/) wi
 
 This setup allows dbt-power-user to continue to work with dbt Core in the background, alongside the dbt Cloud CLI.
 
-
 ## FAQs
 
 <detailsToggle alt_header="What's the difference between the dbt Cloud CLI and dbt Core?">
