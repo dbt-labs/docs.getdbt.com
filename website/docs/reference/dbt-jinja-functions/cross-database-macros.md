@@ -357,7 +357,7 @@ CURRENT_DATETIME() OR TIMESTAMP?
 <TabItem value="redshift" label="Sample output (Redshift)">
 
 ```sql
-CURRENT_TIMESTAMP OR TIMESTAMP?
+getdate()
 ```
 
 </TabItem>
