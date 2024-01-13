@@ -249,18 +249,18 @@ To return zero in the final data set, you can set the value of a null conversion
 
 ```yaml
 - name: vist_to_buy_conversion_rate_7_day_window
-  description: "Conversion rate from MQL to seller"
+  description: "Conversion rate from viewing a page to making a purchase"
   type: conversion
-  label: MQL to Seller Conversion Rate (1 week day window)
+  label: Visit to Seller Conversion Rate (7 day window)
   type_params:
     conversion_type_params:
       calculation: conversions
-      base_measure: mqls
+      base_measure: visits
       conversion_measure: 
-        name: sellers
+        name: buys
         fill_nulls_with: 0
-      entity: mql
-      window: 1 week
+      entity: user
+      window: 7 days 
 
 ```
 
