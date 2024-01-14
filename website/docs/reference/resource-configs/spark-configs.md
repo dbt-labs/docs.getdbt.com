@@ -21,7 +21,7 @@ When materializing a model as `table`, you may include several optional configs 
 
 | Option  | Description                                                                                                                        | Required?               | Example                  |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------|--------------------------|
-| file_format | The file format to use when creating tables (`parquet`, `delta`, `iceberg`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`). | Optional | `parquet`|
+| file_format | The file or table format to use when creating tables (`parquet`, `delta`, `iceberg`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`). | Optional | `parquet`|
 | location_root  | The created table uses the specified directory to store its data. The table alias is appended to it.                               | Optional                | `/mnt/root`              |
 | partition_by  | Partition the created table by the specified columns. A directory is created for each partition.                                   | Optional                | `date_day`              |
 | clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                         | Optional               | `country_code`              |
@@ -29,14 +29,14 @@ When materializing a model as `table`, you may include several optional configs 
 
 ## Incremental models
 
-dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and <Term id="materialization">materializations</Term>. Because there is so much variance between Apache Spark clusters out in the world—not to mention the powerful features offered to Databricks users by the Delta file format and custom runtime—making sense of all the available options is an undertaking in its own right.
+dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and <Term id="materialization">materializations</Term>. Because there is so much variance between Apache Spark clusters out in the world—not to mention the powerful features offered to Databricks users by the Delta table format and custom runtime—making sense of all the available options is an undertaking in its own right.
 
-Alternatively, you can use Apache Iceberg or Apache Hudi file format with Apache Spark runtime for building incremental models.
+Alternatively, you can use Apache Iceberg or Apache Hudi table format with Apache Spark runtime for building incremental models.
 
 For that reason, the dbt-spark plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
- - **`merge`** (Delta, Iceberg and Hudi file format only): Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - **`merge`** (Delta, Iceberg and Hudi table format only): Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
 
@@ -188,8 +188,8 @@ insert overwrite table analytics.spark_incremental
 
 **Usage notes:** The `merge` incremental strategy requires:
 - `file_format: delta, iceberg or hudi`
-- Databricks Runtime 5.1 and above for delta file format
-- Apache Spark for Iceberg or Hudi file format
+- Databricks Runtime 5.1 and above for delta table format
+- Apache Spark for Iceberg or Hudi table format
 
 dbt will run an [atomic `merge` statement](https://docs.databricks.com/spark/latest/spark-sql/language-manual/merge-into.html) which looks nearly identical to the default merge behavior on Snowflake and BigQuery. If a `unique_key` is specified (recommended), dbt will update old records with values from new records that match on the key column. If a `unique_key` is not specified, dbt will forgo match criteria and simply insert all new records (similar to `append` strategy).
 
@@ -288,11 +288,11 @@ use or set `database` as a node config or in the target profile when running dbt
 If you want to control the schema/database in which dbt will materialize models,
 use the `schema` config and `generate_schema_name` macro _only_.
 
-## Default file format configurations
+## Default table format configurations
 
 To access advanced incremental strategies features, such as 
 [snapshots](/docs/build/snapshots) and the `merge` incremental strategy, you will want to
-use the Delta, Iceberg or Hudi file format as the default file format when materializing models as tables.
+use the Delta, Iceberg or Hudi table format as the default table format when materializing models as tables.
 
 It's quite convenient to do this by setting a top-level configuration in your
 project file:
