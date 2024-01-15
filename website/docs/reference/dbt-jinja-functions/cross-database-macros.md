@@ -320,13 +320,16 @@ TIMESTAMP
 
 ### current_timestamp
 
-The `dbt.current_timestamp()` macro allows you to generate the current timestamp in a format suitable for database queries. This is useful when you need to capture the current date and time within your SQL queries or models.
+This macro returns the current date and time for the system. Depending on the adapter:
+
+- The result may be an aware or naive timestamp.
+- The result may correspond to the start of the statement or the start of the transaction.
 
 **Args**
 - None
 
 **Usage**
-- You can use the `dbt.current_timestamp()` macro within your dbt SQL files like this:
+- You can use the `current_timestamp()` macro within your dbt SQL files like this:
 
 ```sql
 {{ dbt.current_timestamp() }}
