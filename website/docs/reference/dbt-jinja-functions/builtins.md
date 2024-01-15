@@ -42,9 +42,9 @@ From dbt v1.5 and higher, use the following macro to extract user-provided argum
 -- call builtins.ref based on provided positional arguments
 {% set rel = None %}
 {% if packagename is not none %}
-    {% set rel = return(builtins.ref(packagename, modelname, version=version)) %}
+    {% set rel = builtins.ref(packagename, modelname, version=version) %}
 {% else %}
-    {% set rel = return(builtins.ref(modelname, version=version)) %}
+    {% set rel = builtins.ref(modelname, version=version) %}
 {% endif %}
 
 -- finally, override the database name with "dev"
