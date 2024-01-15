@@ -1,35 +1,33 @@
 ---
 title: Serverless, free-tier data stack with dlt + dbt core.
-description: "In this article, I explore how its possible to use dlt + dbt core in a serverless, free tier data stack by using Google Cloud Functions. I use this setup for a personal project where I try to get property prices to me and my partner make an informed purchase."
+description: "In this article, Euan shares his personal project to fetch property price data during his and his partner's house-hunting process, and how he created a serverless free-tier data stack by using Google Cloud Functions to run data ingestion tool dlt alongside dbt for transformation."
 slug: serverless-dlt-dbt-stack
 
 authors: [euan_johnston]
 
 hide_table_of_contents: false
 
-date: 2023-12-14
+date: 2023-01-15
 is_featured: false
 ---
 
-💡 In this article, I explore how how its possible to use dlt + dbt core in a serverless, free tier data stack by using Google Cloud Functions. I use this setup for a personal project where I try to get property prices such that my partner and I can make an informed purchase.
+
 
 ## The problem, the builder and tooling
 
-**The problem**: There is no reference data for the real estate market in Portugal - how many houses are being sold, for what price? nobody knows except the property office and maybe the banks, and they don’t readily divulge this information.
+**The problem**: My partner and I are considering buying a property in Portugal. There is no reference data for the real estate market here - how many houses are being sold, for what price? Nobody knows except the property office and maybe the banks, and they don’t readily divulge this information. The only data source we have is Idealista, which is a portal where real estate agencies post ads.
 
-**The builder:** I’m a data freelancer who deploys end to end solutions, so when I have a data problem, I cannot just let it go. 
+Unfortunately, there are significantly fewer properties than ads - it seems many real estate companies re-post the same ad that others do, with intentionally different data and often misleading bits of info. The real estate agencies do this so the interested parties reach out to them for clarification, and from there they can start a sales process. At the same time, the website with the ads is incentivised to allow this to continue as they get paid per ad, not per property.
+
+**The builder:** I’m a data freelancer who deploys end to end solutions, so when I have a data problem, I cannot just let it go.
 
 **The tools:** I want to be able to run my project on [Google Cloud Functions](https://cloud.google.com/functions) due to the generous free tier. [dlt](https://dlthub.com/) is a new Python library for declarative data ingestion which I have wanted to test for some time. Finally, I will use dbt Core for transformation.
 
 ## The starting point
 
-My partner and I are considering buying a property in Portugal. A significant limiting factor is the only data source we have is Idealista, which is a portal where real estate agencies post ads.
+If I want to have reliable information on the state of the market I will need to:
 
-Unfortunately, there are significantly fewer properties than ads - it seems many real estate companies re-post the same ad that others do, with intentionally different data and often misleading bits of info. The real estate agencies do this so the interested parties reach out to them for clarification, and from there they can start a sales process. At the same time, the website with the ads is incentivised to allow this to continue as they get paid per ad, not per property.
-
-So it seems if I want to have reliable information on the state of the market I will need to :
-
-- Grab the data and historize it.
+- Grab the messy data from Idealista and historize it.
 - Deduplicate existing listings.
 - Try to infer what listings sold for how much.
 
@@ -43,8 +41,8 @@ Once I have deduplicated listings with some online history, I can get an idea:
 The solution has pretty standard components:
 
 - An EtL pipeline. The little t stands for normalisation, such as transforming strings to dates or unpacking nested structures. This is handled by dlt functions written in Python.
-- A transformation layer taking the source data loaded by my dlt functions and creating the tables necessary
-- Due to the complexity of deduplication, I needed to add a human element to confirm the deduplication.  
+- A transformation layer taking the source data loaded by my dlt functions and creating the tables necessary, handled by dbt.
+- Due to the complexity of deduplication, I needed to add a human element to confirm the deduplication in Google Sheets.
 
 These elements are reflected in the diagram below and further clarified in greater detail later in the article:
 
@@ -56,21 +54,22 @@ For ingestion, I use a couple of sources:
 
 First, I ingest home listings from the Idealista API, accessed through [API Dojo's freemium wrapper](https://rapidapi.com/apidojo/api/idealista2). The dlt pipeline I created for ingestion is in [this repo](https://github.com/euanjohnston-dev/Idealista_pipeline).
 
-After an initial round of transformation (described in the next section), the deduplicated data is loaded into BigQuery where I can query it from the Google Sheets client and manually review the deduplication. 
+After an initial round of transformation (described in the next section), the deduplicated data is loaded into BigQuery where I can query it from the Google Sheets client and manually review the deduplication.
 
 When I'm happy with the results, I use the [ready-made dlt Sheets source connector](https://dlthub.com/docs/dlt-ecosystem/verified-sources/google_sheets) to pull the data back into BigQuery, [as defined here](https://github.com/euanjohnston-dev/gsheets_check_pipeline).
 
 ### Transforming the data
 
-For transforming I use my favorite solution, dbt core. For running and orchestrating dbt core on cloud functions, I am using dlt’s dbt core runner. The benefit of the runner in this context is that I can re-use the same credential setup
+For transforming I use my favorite solution, dbt Core. For running and orchestrating dbt on Cloud Functions, I am using dlt’s dbt Core runner. The benefit of the runner in this context is that I can re-use the same credential setup, instead of creating a separate profiles.yml file.
 
-This is the package I created: https://github.com/euanjohnston-dev/idealista_dbt_pipeline
+This is the package I created: <https://github.com/euanjohnston-dev/idealista_dbt_pipeline>
 
 ### Production-readying the pipeline
 
 To make the pipeline more “production ready”, I made some improvements:
 
-- Be notified when it runs and what the outcome is. For this I will send data to slack. To do this I asked GPT to write me a decorator that will send the error on failure or the metadata on success.
+- Using a credential store instead of hard-coding passwords, in this case Google Secret Manager.
+- Be notified when the pipeline runs and what the outcome is. For this I sent data to Slack via a dlt decorator that posts the error on failure and the metadata on success.
 
 ```python
 from dlt.common.runtime.slack import send_slack_message
@@ -91,23 +90,19 @@ def notify_on_completion(hook):
     return decorator
 ```
 
-- Use credentials from a credential store, in this case google secrets.
-
-
 ## The outcome
 
 The outcome was first and foremost a visualisation highlighting the unique properties available in my specific area of search. The map shown on the left of the page gives a live overview of location, number of duplicates (bubble size) and price (bubble colour) which can amongst other features be filtered using the sliders on the right. This represents a much better decluttered solution from which to observe the actual inventory available.
 
-
 <Lightbox src="/img/blog/serverless-free-tier-data-stack-with-dlt-and-dbt-core/map_screenshot.png" width="70%" title="Dashboard mapping overview" />
 
-Further charts highlight additional metrics which can now (given de-duplication has taken place)  accurately be measured including most importantly, the development over time of “average price/square metre” and those properties which have been inferred to have been sold.
+Further charts highlight additional metrics which – now that deduplication is complete – can be accurately measured including most importantly, the development over time of “average price/square metre” and those properties which have been inferred to have been sold.
 
 ### Next steps
 
 This version was very much about getting a base from which to analyze the properties for my own personal use case.
 
-In terms of further development which could take place, I have had interest from people to run the solution on their own specific target area. 
+In terms of further development which could take place, I have had interest from people to run the solution on their own specific target area.
 
 For this to work at scale I would need a more robust method to deal with duplicate attribution, which is a difficult problem as real estate agencies intentionally change details like number of rooms or surface area.
 
@@ -137,17 +132,17 @@ No surprises there. I developed the project locally, and to deploy to cloud func
 
 ```python
 def dbt_run():
-		# make an authenticated connection with dlt to the dwh
+  # make an authenticated connection with dlt to the dwh
     pipeline = dlt.pipeline(
         pipeline_name='dbt_pipeline',
         destination='bigquery', # credentials read from env
         dataset_name='dbt'
     )
-		# make a venv in case we have lib conflicts between dlt and current env
+  # make a venv in case we have lib conflicts between dlt and current env
     venv = dlt.dbt.get_venv(pipeline)
-		# package the pipeline, dbt package and env
+  # package the pipeline, dbt package and env
     dbt = dlt.dbt.package(pipeline, "dbt/property_analytics", venv=venv)
-		# and run it
+  # and run it
     models = dbt.run_all()
     # show outcome
     for m in models:
@@ -156,10 +151,10 @@ def dbt_run():
 
 ### Cloud functions
 
-While I had used cloud functions before, I had never previously set them up for dbt and I was able to easily follow dlt’s docs to run the pipelines there. Cloud functions is a great solution to cheaply run small scale pipelines and my running cost of the project is a few cents a month. If the insights drawn from the project help us save even 1% of a house price, the project will have been a success. 
+While I had used cloud functions before, I had never previously set them up for dbt and I was able to easily follow dlt’s docs to run the pipelines there. Cloud functions is a great solution to cheaply run small scale pipelines and my running cost of the project is a few cents a month. If the insights drawn from the project help us save even 1% of a house price, the project will have been a success.
 
 ### To sum up
 
 dlt feels like the perfect solution for anyone who has scratched the surface of python development. To be able to have schemas ready for transformation in such a short space of time is truly… transformational. As a freelancer, being able to accelerate the development of pipelines is a huge benefit within companies who are often frustrated with the amount of time it takes to start ‘showing value’.
 
-I’d welcome the chance to discuss what’s been built to date or collaborate on any potential further development.
+I’d welcome the chance to discuss what’s been built to date or collaborate on any potential further development in the comments below.
