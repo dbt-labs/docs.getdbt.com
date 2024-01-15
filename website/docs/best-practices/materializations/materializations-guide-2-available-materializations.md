@@ -10,7 +10,7 @@ hoverSnippet: Read this guide to understand the different types of materializati
 Views and tables and incremental models, oh my! In this section we’ll start getting our hands dirty digging into the three basic materializations that ship with dbt. They are considerably less scary and more helpful than lions, tigers, or bears — although perhaps not as cute (can data be cute? We at dbt Labs think so). We’re going to define, implement, and explore:
 
 - 🔍 [**views**](/docs/build/materializations#view)
-- ⚒️ [**tables**](m/docs/build/materializations#table)
+- ⚒️ [**tables**](/docs/build/materializations#table)
 - 📚 [**incremental model**](/docs/build/materializations#incremental)
 
 :::info
