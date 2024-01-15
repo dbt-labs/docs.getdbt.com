@@ -338,24 +338,17 @@ Refer to the documentation for your adapter for specific timestamp information.
 ```
 
 <Tabs>
-<TabItem value="postgres" label="Sample output (PostgreSQL)">
-
-```sql
-now()
-```
-</TabItem>
-
-<TabItem value="snowflake" label="Sample output (Snowflake)">
-
-```sql
-convert_timezone('UTC', current_timestamp())
-```
-</TabItem>
-
 <TabItem value="bq" label="Sample output (BigQuery)">
 
 ```sql
 current_timestamp()
+```
+</TabItem>
+
+<TabItem value="postgres" label="Sample output (PostgreSQL)">
+
+```sql
+now()
 ```
 </TabItem>
 
@@ -365,6 +358,13 @@ current_timestamp()
 getdate()
 ```
 
+</TabItem>
+
+<TabItem value="snowflake" label="Sample output (Snowflake)">
+
+```sql
+convert_timezone('UTC', current_timestamp())
+```
 </TabItem>
 </Tabs>
 
