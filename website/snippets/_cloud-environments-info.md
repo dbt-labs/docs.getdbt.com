@@ -1,4 +1,3 @@
-
 ## Types of environments
 
 In dbt Cloud, there are two types of environments:
@@ -47,7 +46,7 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 ### Extended attributes
 
 :::note 
-Extended attributes are retrieved and applied only at runtime when `profiles.yml` is requested for a specific Cloud run. Extended attributes are currently _not_ taken into consideration for Cloud-specific features such as PrivateLink or SSH Tunneling that do not rely on `profiles.yml` values.
+Extended attributes are retrieved and applied only at runtime when `profiles.yml` is requested for a specific Cloud run. Extended attributes are currently _not_ taken into consideration for SSH Tunneling which do not rely on `profiles.yml` values.
 :::
 
 Extended Attributes is a feature that allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
@@ -110,6 +109,3 @@ Partial parsing in dbt Cloud requires dbt version 1.4 or newer. The feature does
 To enable, select **Account settings** from the gear menu and enable the **Partial parsing** option.
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
-
-
-
