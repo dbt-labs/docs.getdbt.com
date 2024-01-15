@@ -342,7 +342,7 @@ _[CLI users only]_
 
 4. Run `dbt docs serve` — the image will be rendered as part of your project documentation:
 
-<Lightbox src="/img/reference/image-in-docs.png" width="65%" title="The image at assets/dbt-logo.svg is rendered correctly"/>
+<Lightbox src="/img/reference/image-in-docs.png" title="The image at assets/dbt-logo.svg is rendered correctly"/>
 
 If mixing images and text together, also consider using a docs block.
 

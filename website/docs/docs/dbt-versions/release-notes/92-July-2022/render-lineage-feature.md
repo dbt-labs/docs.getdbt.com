@@ -13,4 +13,4 @@ Large DAGs can take a long time (10 or more seconds, if not minutes) to render a
 
 The new button prevents large DAGs from rendering automatically. Instead, you can select **Render Lineage** to load the visualization. This should affect about 15% of the DAGs.
 
-<Lightbox src="/img/docs/dbt-cloud/dag v1.1.56 release.png" width="65%" title="Render Lineage"/>
+<Lightbox src="/img/docs/dbt-cloud/dag v1.1.56 release.png" title="Render Lineage"/>

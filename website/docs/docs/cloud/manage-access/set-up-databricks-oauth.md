@@ -60,7 +60,7 @@ Now that you have an OAuth app set up in Databricks, you'll need to add the clie
  - select **Connection** to edit the connection details
  - add the `OAuth Client ID` and `OAuth Client Secret` from the Databricks OAuth app under the **Optional Settings** section
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth.png" width="65%" title="Adding Databricks OAuth application client ID and secret to dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth.png" title="Adding Databricks OAuth application client ID and secret to dbt Cloud" />
 
 ### Authenticating to Databricks (dbt Cloud IDE developer)
 
@@ -72,6 +72,6 @@ Once the Databricks connection via OAuth is set up for a dbt Cloud project, each
 - Select `OAuth` as the authentication method, and click **Save**
 - Finalize by clicking the **Connect Databricks Account** button
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth-user.png" width="65%" title="Connecting to Databricks from an IDE user profile" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth-user.png" title="Connecting to Databricks from an IDE user profile" />
 
 You will then be redirected to Databricks and asked to approve the connection. This redirects you back to dbt Cloud. You should now be an authenticated Databricks user, ready to use the dbt Cloud IDE.

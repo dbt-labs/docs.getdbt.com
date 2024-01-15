@@ -20,7 +20,7 @@ If you attended [Coalesce 2022](https://www.youtube.com/watch?v=smbRwmcM1Ok), yo
 
 Don’t believe me??? Here’s photographic proof.
 
-<Lightbox src="/img/blog/2022-11-30-dbt-project-evaluator/proserv_aliens.png" width="65%" title="Rare photographic evidence of the dbt Labs Professional Services team" />
+<Lightbox src="/img/blog/2022-11-30-dbt-project-evaluator/proserv_aliens.png" title="Rare photographic evidence of the dbt Labs Professional Services team" />
 
 Since the inception of dbt Labs, our team has been embedded with a variety of different data teams — from an over-stretched-data-team-of-one to a data-mesh-multiverse.
 
@@ -120,4 +120,4 @@ If something isn’t working quite right or you have ideas for future functional
 
 Together, we can ensure that dbt projects across the galaxy are set up for success as they grow to infinity and beyond.
 
-<Lightbox src="/img/blog/2022-11-30-dbt-project-evaluator/grace_at_coalesce.png" width="65%" title="Alien Graceline beams back to dbt Labs’ mission control center…for now" />
+<Lightbox src="/img/blog/2022-11-30-dbt-project-evaluator/grace_at_coalesce.png" title="Alien Graceline beams back to dbt Labs’ mission control center…for now" />

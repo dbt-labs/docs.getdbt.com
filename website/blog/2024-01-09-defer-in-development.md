@@ -80,7 +80,7 @@ dbt Cloud offers a seamless deferral experience in both the dbt Cloud IDE and th
 
 In the dbt Cloud IDE, there’s as simple toggle switch labeled `Defer to production`. Simply enabling this toggle will defer your command to the production environment when you run any dbt command in the IDE!
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/defer-toggle.png" width="65%" title="The defer to prod toggle in the IDE" />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/defer-toggle.png" title="The defer to prod toggle in the IDE" />
 
 The cloud CLI has this setting *on by default* — there’s nothing else you need to do to set this up! If you prefer not to defer, you can pass the `--no-defer` flag to override this behavior. You can also set an environment other than your production environment as the deferred to environment in your `dbt-cloud` settings in your `dbt_project.yml` :
 
@@ -155,6 +155,6 @@ While defer is a faster and cheaper option for most folks in most situations, de
 
 ### Call me Willem Defer
 
-<Lightbox src="/img/blog/2024-01-09-defer-in-development/willem.png" width="65%" title="Willem Dafoe after using the `-—defer` flag" />
+<Lightbox src="/img/blog/2024-01-09-defer-in-development/willem.png" title="Willem Dafoe after using the `-—defer` flag" />
 
 Defer to prod is a powerful way to improve your development velocity with dbt, and dbt Cloud makes it easier than ever to make use of this feature! You too could look this cool while you’re saving time and money developing on your dbt projects!

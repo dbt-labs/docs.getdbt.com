@@ -44,7 +44,7 @@ While refactoring you'll be **moving around** a lot of logic, but ideally you wo
 
 To get going, you'll copy your legacy SQL query into your dbt project, by saving it in a `.sql` file under the `/models` directory of your project.
 
-<Lightbox src="/img/tutorial/refactoring/legacy-query-model.png" width="65%" title="Your dbt project's folder structure" />
+<Lightbox src="/img/tutorial/refactoring/legacy-query-model.png" title="Your dbt project's folder structure" />
 
 Once you've copied it over, you'll want to `dbt run` to execute the query and populate the <Term id="table" /> in your warehouse.
 
@@ -76,7 +76,7 @@ If you're migrating multiple stored procedures into dbt, with sources you can se
 
 This allows you to consolidate modeling work on those base tables, rather than calling them separately in multiple places.
 
-<Lightbox src="/img/docs/building-a-dbt-project/sources-dag.png" width="65%" title="Sources appear in green in your DAG in dbt docs" />
+<Lightbox src="/img/docs/building-a-dbt-project/sources-dag.png" title="Sources appear in green in your DAG in dbt docs" />
 
 #### Build the habit of analytics-as-code
 Sources are an easy way to get your feet wet using config files to define aspects of your transformation pipeline.

@@ -16,4 +16,4 @@ Highlights include:
 - Cleaner look and feel with iconography
 - Helpful tool tips
 
-<Lightbox src="/img/docs/release-notes/run-details-and-logs-improvements.gif" width="65%" title="Improvements to run details and logs in dbt Cloud" />
+<Lightbox src="/img/docs/release-notes/run-details-and-logs-improvements.gif" title="Improvements to run details and logs in dbt Cloud" />

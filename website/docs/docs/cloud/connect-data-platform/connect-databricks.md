@@ -37,4 +37,4 @@ To set up the Databricks connection, supply the following fields:
 | HTTP Path | The HTTP path of the Databricks cluster or SQL warehouse | /sql/1.0/warehouses/1a23b4596cd7e8fg |
 | Catalog | Name of Databricks Catalog (optional) | Production |
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dbt-databricks.png" width="65%" title="Configuring a Databricks connection using the dbt-databricks adapter"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dbt-databricks.png" title="Configuring a Databricks connection using the dbt-databricks adapter"/>

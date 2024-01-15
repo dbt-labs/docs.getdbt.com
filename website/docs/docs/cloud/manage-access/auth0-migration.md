@@ -17,11 +17,11 @@ If you have not yet configured SSO in dbt Cloud, refer instead to our setup guid
 
 The Auth0 migration feature is being rolled out incrementally to customers who have SSO features already enabled. When the migration option has been enabled on your account, you will see **SSO Updates Available** on the right side of the menu bar, near the settings icon. 
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/sso-migration-available.png" width="65%" title="SSO migration available"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/sso-migration-available.png" title="SSO migration available"/>
 
 Alternatively, you can start the process from the **Settings** page in the **Single Sign-on** pane. Click the **Begin Migration** button to start. 
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/begin-migration.png" width="65%" title="Begin Migration"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/begin-migration.png" title="Begin Migration"/>
 
 Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. You can just skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/cloud/manage-access/sso-overview).
 
@@ -48,15 +48,15 @@ Below are sample steps to update. You must complete all of them to ensure uninte
 
 Here is an example of an updated SAML 2.0 setup in Okta.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-config.png" width="65%" title="Okta configuration with new URL"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-config.png" title="Okta configuration with new URL"/>
 
 2. Save the configuration, and your SAML settings will look something like this:
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-completed.png" width="65%" title="New Okta configuration completed"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-completed.png" title="New Okta configuration completed"/>
 
 3. Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The new SSO migration action is final and cannot be undone_
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" width="65%" title="Enable new SSO for SAML/Okta"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable new SSO for SAML/Okta"/>
 
 4. Save the settings and test the new configuration using the SSO login URL provided on the settings page. 
 
@@ -68,17 +68,17 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 1. Open the [Google Cloud console](https://console.cloud.google.com/) and select the project with your dbt Cloud single sign-on settings. From the project page **Quick Access**, select **APIs and Services**
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/google-cloud-sso.png" width="65%" title="Google Cloud Console"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/google-cloud-sso.png" title="Google Cloud Console"/>
 
 2. Click **Credentials** from the left side pane and click the appropriate name from **OAuth 2.0 Client IDs**
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/sso-project.png" width="65%" title="Select the OAuth 2.0 Client ID"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/sso-project.png" title="Select the OAuth 2.0 Client ID"/>
 
 3. In the **Client ID for Web application** window, find the **Authorized Redirect URIs** field and click **Add URI** and enter `https://<YOUR_AUTH0_URI>/login/callback`.
 
 Click **Save** once you are done. 
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/google-uri.png" width="65%" title="Add Redirect URI"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/google-uri.png" title="Add Redirect URI"/>
 
 4. _You will need a person with Google Workspace admin privileges to complete these steps in dbt Cloud_. In dbt Cloud, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
 
@@ -88,7 +88,7 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/google-enable.png" width="65%" title="Enable new SSO for Google Workspace"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/google-enable.png" title="Enable new SSO for Google Workspace"/>
 
 ## Azure Active Directory
 
@@ -98,15 +98,15 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 1. Click **App Registrations** on the left side menu. 
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/aad-app-registration.png" width="65%" title="Select App Registrations"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/aad-app-registration.png" title="Select App Registrations"/>
 
 2. Select the proper **dbt Cloud** app (name may vary) from the list. From the app overview, click on the hyperlink next to **Redirect URI**
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/app-overview.png" width="65%" title="Click the Redirect URI hyperlink"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/app-overview.png" title="Click the Redirect URI hyperlink"/>
 
 3. In the **Web** pane with **Redirect URIs**, click **Add URI** and enter the appropriate `https://<YOUR_AUTH0_URI>/login/callback`. Save the settings and verify it is counted in the updated app overview.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" width="65%" title="Enter new redirect URI"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
 4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Azure AD. Toggle the **Enable New SSO Authentication** option and **Save**. _Once this option is enabled, it cannot be undone._
 
@@ -116,4 +116,4 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" width="65%" title="Enable new SSO for Azure AD"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable new SSO for Azure AD"/>
