@@ -2086,6 +2086,12 @@ h2.anchor.clicked a.hash-link:before {
   color: #fff; /* Change color on hover if desired */
 }
 
+.scroll-table {
+  max-width: 100%; /* Set the maximum width for the table */
+  overflow-x: auto; /* Add a scrollbar if content overflows */
+  white-space: nowrap; /* Prevent table cell content from wrapping */
+}
+
 @media (max-width: 996px) {
   .quickstart-container {
     flex-direction: column;
