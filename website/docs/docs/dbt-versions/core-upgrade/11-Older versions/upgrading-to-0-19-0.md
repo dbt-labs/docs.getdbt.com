@@ -4,10 +4,6 @@ displayed_sidebar: "docs"
 
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/1951)

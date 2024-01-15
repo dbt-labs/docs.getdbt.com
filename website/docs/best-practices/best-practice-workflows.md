@@ -39,7 +39,7 @@ Your dbt project will depend on raw data stored in your database. Since this dat
 
 :::info Using sources for raw data references
 
-As of v0.13.0, we recommend defining your raw data as [sources](/docs/build/sources), and selecting from the source rather than using the direct relation reference. Our dbt projects no longer contain any direct relation references in any models.
+We recommend defining your raw data as [sources](/docs/build/sources), and selecting from the source rather than using the direct relation reference. Our dbt projects don't contain any direct relation references in any models.
 
 :::
 

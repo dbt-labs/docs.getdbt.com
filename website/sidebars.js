@@ -212,6 +212,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/decodable-setup",
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
+                "docs/core/connect-data-platform/extrica-setup",
               ],
             },
           ],
