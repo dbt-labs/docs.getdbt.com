@@ -35,9 +35,9 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 8. Click the run and watch its progress under "Run history."
 9. Once the run is complete, click **View Documentation** to see the docs for your project.
 
-:::tip
+
 Congratulations 🎉! You've just deployed your first dbt project!
-:::
+
 
 #### FAQs
 

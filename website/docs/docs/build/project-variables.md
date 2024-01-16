@@ -25,13 +25,6 @@ Jinja is not supported within the `vars` config, and all values will be interpre
 
 :::
 
-:::info New in v0.17.0
-
-The syntax for specifying vars in the `dbt_project.yml` file has changed in
-dbt v0.17.0. See the [migration guide](/docs/dbt-versions/core-upgrade)
-for more information on these changes.
-
-:::
 
 To define variables in a dbt project, add a `vars` config to your `dbt_project.yml` file.
 These `vars` can be scoped globally, or to a specific package imported in your

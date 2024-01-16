@@ -5,14 +5,10 @@ id: "upgrading-to-v1.1"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.1.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation)
+- [CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
 ## What to know before upgrading
@@ -21,7 +17,7 @@ There are no breaking changes for code in dbt projects and packages. We are comm
 
 ### For maintainers of adapter plugins
 
-We have reworked the testing suite for adapter plugin functionality. For details on the new testing suite, see: [Testing a new adapter](/guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter).
+We have reworked the testing suite for adapter plugin functionality. For details on the new testing suite, refer to the "Test your adapter" step in the [Build, test, document, and promote adapters](/guides/adapter-creation) guide.
 
 The abstract methods `get_response` and `execute` now only return `connection.AdapterReponse` in type hints. Previously, they could return a string. We encourage you to update your methods to return an object of class `AdapterResponse`, or implement a subclass specific to your adapter. This also gives you the opportunity to add fields specific to your adapter's query execution, such as `rows_affected` or `bytes_processed`.
 
@@ -43,7 +39,7 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 [**Incremental models**](/docs/build/incremental-models) can now accept a list of multiple columns as their `unique_key`, for models that need a combination of columns to uniquely identify each row. This is supported by the most common <Term id="data-warehouse">data warehouses</Term>, for incremental strategies that make use of the `unique_key` config (`merge` and `delete+insert`).
 
-[**Generic tests**](/reference/resource-properties/tests) can define custom names. This is useful to "prettify" the synthetic name that dbt applies automatically. It's needed to disambiguate the case when the same generic test is defined multiple times with different configurations.
+[**Generic tests**](/reference/resource-properties/data-tests) can define custom names. This is useful to "prettify" the synthetic name that dbt applies automatically. It's needed to disambiguate the case when the same generic test is defined multiple times with different configurations.
 
 [**Sources**](/reference/source-properties) can define configuration inline with other `.yml` properties, just like other resource types. The only supported config is `enabled`; you can use this to dynamically enable/disable sources based on environment or package variables.
 

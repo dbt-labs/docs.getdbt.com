@@ -5,10 +5,6 @@ id: "upgrading-to-v1.5"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 dbt Core v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/collaborate/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
 2. A Python entry point for [**programmatic invocations**](/reference/programmatic-invocations), at parity with the CLI
@@ -16,7 +12,7 @@ dbt Core v1.5 is a feature release, with two significant additions:
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation)
+- [CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/6715)
 

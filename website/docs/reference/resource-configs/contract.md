@@ -6,16 +6,7 @@ default_value: {contract: false}
 id: "contract"
 ---
 
-:::info New functionality
-This functionality is new in v1.5.
-:::
-
-## Related documentation
-- [What is a model contract?](/docs/collaborate/govern/model-contracts)
-- [Defining `columns`](/reference/resource-properties/columns)
-- [Defining `constraints`](/reference/resource-properties/constraints)
-
-# Definition
+Supported in dbt v1.5 and higher.
 
 When the `contract` configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml:
 - `name` and `data_type` for every column
@@ -48,7 +39,7 @@ models:
 
 </VersionBlock>
 
-When dbt compares data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. You can accomplish a more-precise assertion by [writing or using a custom test](/guides/best-practices/writing-custom-generic-tests).
+When dbt compares data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. You can accomplish a more-precise assertion by [writing or using a custom test](/best-practices/writing-custom-generic-tests).
 
 Note that you need to specify a varchar size or numeric scale, otherwise dbt relies on default values. For example, if a `numeric` type defaults to a precision of 38 and a scale of 0, then the numeric column stores 0 digits to the right of the decimal (it only stores whole numbers), which might cause it to fail contract enforcement. To avoid this implicit coercion, specify your `data_type` with a nonzero scale, like `numeric(38, 6)`. dbt Core 1.7 and higher provides a warning if you don't specify precision and scale when providing a numeric data type.
 
@@ -120,3 +111,8 @@ Imagine:
 - The result is a delta between the yaml-defined contract, and the actual table in the database - which means the contract is now incorrect!
 
 Why `append_new_columns`, rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models!
+
+## Related documentation
+- [What is a model contract?](/docs/collaborate/govern/model-contracts)
+- [Defining `columns`](/reference/resource-properties/columns)
+- [Defining `constraints`](/reference/resource-properties/constraints)

@@ -16,6 +16,7 @@ The `clone` command is useful for:
 - handling incremental models in dbt Cloud CI jobs (on data warehouses that support zero-copy cloning tables)
 - testing code changes on downstream dependencies in your BI tool
 
+
 ```bash
 # clone all of my models from specified state to my target schema(s)
 dbt clone --state path/to/artifacts
@@ -38,4 +39,18 @@ For example, by creating actual data warehouse objects, `dbt clone` allows you t
 
 As another example, you could `clone` your modified incremental models as the first step of your dbt Cloud CI job to prevent costly `full-refresh` builds for warehouses that support zero-copy cloning.
 
+## Cloning in dbt Cloud
+
+You can clone nodes between states in dbt Cloud using the `dbt clone` command. This is available in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in dbt Cloud, read [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer).
+
+- **Using dbt Cloud CLI** &mdash; The `dbt clone` command in the dbt Cloud CLI automatically includes the `--defer` flag. This means you can use the `dbt clone` command without any additional setup.
+
+- **Using dbt Cloud IDE** &mdash; To use the `dbt clone` command in the dbt Cloud IDE, follow these steps before running the `dbt clone` command:
+
+  - Set up your **Production environment** and have a successful job run.
+  - Enable **Defer to production** by toggling the switch in the lower-right corner of the command bar.
+    <Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="80%" title="Select the 'Defer to production' toggle on the bottom right of the command bar to enable defer in the dbt Cloud IDE."/>
+  - Run the `dbt clone` command from the command bar.
+  
+  
 Check out [this Developer blog post](https://docs.getdbt.com/blog/to-defer-or-to-clone) for more details on best practices when to use `dbt clone` vs. deferral.

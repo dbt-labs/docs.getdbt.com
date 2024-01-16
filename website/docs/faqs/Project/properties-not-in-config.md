@@ -16,7 +16,7 @@ Certain properties are special, because:
 
 These properties are:
 - [`description`](/reference/resource-properties/description)
-- [`tests`](/reference/resource-properties/tests)
+- [`tests`](/reference/resource-properties/data-tests)
 - [`docs`](/reference/resource-configs/docs)
 - `columns`
 - [`quote`](/reference/resource-properties/quote)

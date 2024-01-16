@@ -4,10 +4,6 @@ id: "upgrading-to-0-15-0"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 The dbt v0.15.0 release contains a handful of breaking code changes for users upgrading from v0.14.0.
 
 
@@ -26,7 +22,7 @@ expect this field will now return errors. See the latest
 
 ### Custom materializations
 
-All <Term id="materialization">materializations</Term> must now [manage dbt's Relation cache](/guides/advanced/creating-new-materializations#update-the-relation-cache).
+All <Term id="materialization">materializations</Term> must now manage dbt's Relation cache. For more information, refer to  [Create new materializations](/guides/create-new-materializations).
 
 ### dbt Server
 
