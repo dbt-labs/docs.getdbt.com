@@ -59,7 +59,7 @@ function Lightbox({
               alt={alt ? alt : title ? title : ''}
               title={title ? title : ''}
               src={imageCacheWrapper(src)}
-              style={expandImage ? { transform: 'scale(1.3)', transition: 'transform 0.3s ease', zIndex: '9999' } : {}}
+              style={expandImage ? { transform: 'scale(1.2)', transition: 'transform 0.3s ease', zIndex: '9999' } : {}}
             />
           </a>
         </span>
