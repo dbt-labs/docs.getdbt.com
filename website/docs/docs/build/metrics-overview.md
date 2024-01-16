@@ -14,7 +14,7 @@ The keys for metrics definitions are:
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
-| `description` | Provide the description for your metric.   | Optional |
+| `description` | Describe your metric.   | Optional |
 | `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `config` | Provide the specific configurations for your metric.   | Optional |
@@ -55,10 +55,11 @@ This page explains the different supported metric types you can add to your dbt 
 ```yaml
 metrics:
   - name: The metric name # Required
-    description: the metric description # Required
-    type: conversion
-    type_params:
-      conversion_type_params:
+    description: the metric description # Optional
+    type: conversion # Required
+    label: # Required
+    type_params: # Required
+      conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
         base_measure: MEASURE # Required
@@ -71,10 +72,10 @@ metrics:
 
 ### Cumulative metrics 
 
-[Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window would accumulate the measure over all time. **Note**, you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
+[Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
 ```yaml
-# Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all time)
+# Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all of time)
 metrics:
   - name: wau_rolling_7
     owners:
@@ -126,7 +127,7 @@ metrics:
 
 ### Ratio metrics 
 
-[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied, to both numerator and denominator, or applied separately to the numerator or denominator. 
+[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied to both the numerator and denominator or separately to the numerator or denominator. 
 
 ```yaml
 # Ratio Metric
@@ -191,9 +192,6 @@ filter: |
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner
 
 - **Description** &mdash;  Write a detailed description of the metric.
-
-<!--Provide a detailed description of the metric. This description surfaced in the main “definition” section of the metric page using rich Markdown formatting in the Transform UI. [this includes transform and not sure how this looks in core and cloud]-->
-
 
 ## Related docs
 
