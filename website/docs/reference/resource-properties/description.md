@@ -306,9 +306,12 @@ models:
 
 ### Include an image from your repo in your descriptions
 
-If you're developing with dbt Core, you can include an image from your repository in your descriptions. 
+When adding images to your descriptions in dbt, the process differs based on whether you're using dbt Core or dbt Cloud.
 
-dbt Cloud users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions):
+- If you're using dbt Core, you can include an image from your repository. 
+- If you're using dbt Cloud, you can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions).
+
+To include an image from your repository:
 
 1. Add the file in a subdirectory, e.g. `assets/dbt-logo.svg`
 2. Set the [`asset-paths` config](/reference/project-configs/asset-paths) in your `dbt_project.yml` file so that this directory gets copied to the `target/` directory as part of `dbt docs generate`
