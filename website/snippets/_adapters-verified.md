@@ -22,7 +22,7 @@
 <Card
     title="Postgres"
     body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/postgres-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
-    icon="redshift"/>
+    icon="postgres"/>
 
 <Card
     title="Redshift"
@@ -37,7 +37,7 @@
 <Card
     title="Spark"
     body="<a href='/docs/cloud/connect-data-platform/connect-apache-spark'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/spark-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
-    icon="databricks"/>
+    icon="spark"/>
 
 <Card
     title="Starburst/Trino"
