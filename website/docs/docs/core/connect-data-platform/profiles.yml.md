@@ -33,6 +33,8 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
   [static_parser](/reference/global-configs/parsing): <true | false>
   [cache_selected_only](/reference/global-configs/cache): <true | false>
   [no_print](/reference/global-configs/print-output#suppress-print-messages-in-stdout): <true | false>
+  [target-path](/reference/global-configs/logs#log-and-target-paths): "other-target"
+  [log-path](/reference/global-configs/logs#log-and-target-paths): "other-logs"
 
 <profile-name>:
   target: <target-name> # this is the default target
