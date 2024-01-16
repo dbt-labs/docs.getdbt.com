@@ -277,7 +277,7 @@ Use the conversion calculation parameter to either show the raw number of conver
 You can change the default to display the number of conversions by setting the `calculation: conversion` parameter:
 
 ```yaml
-- name: vist_to_buy_conversions_1_week_window
+- name: visit_to_buy_conversions_1_week_window
     description: "Visit to Buy Conversions"
     type: conversion
     label: Visit to Buy Conversions (1 week window)
