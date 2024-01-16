@@ -61,6 +61,9 @@ The following example is a list of all available configurations in the `dbt_proj
   schema: true | false
   identifier: true | false
 
+[printer_width](/reference/global-configs/print-output#printer-width): <integer>
+[log_format](/reference/global-configs/logs): <text | json | default>
+
 metrics:
   <metric-configs>
 
