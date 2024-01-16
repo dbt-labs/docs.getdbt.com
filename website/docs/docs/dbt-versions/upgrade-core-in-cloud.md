@@ -134,12 +134,6 @@ If you believe your project might be affected, read more details in the migratio
 <br></br>
 <div>
 
-:::info Important   
-
-If you have not already, you must add `config-version: 2` to your dbt_project.yml file.
-See **Upgrading to v0.17.latest from v0.16** below for more details.
-
-:::
 </div>
 
 

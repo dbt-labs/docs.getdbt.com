@@ -212,6 +212,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/decodable-setup",
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
+                "docs/core/connect-data-platform/extrica-setup",
               ],
             },
           ],
@@ -323,6 +324,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
                 "docs/build/metrics-overview",
+                "docs/build/conversion",
                 "docs/build/cumulative",
                 "docs/build/derived",
                 "docs/build/ratio",

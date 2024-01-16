@@ -15,10 +15,7 @@ recently_updated: true
 
 To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
 
-:::note
 This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
-:::
-
 
 ### Prerequisites
 

@@ -8,9 +8,6 @@ you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
 <VersionBlock firstVersion="1.5">
 
-:::info New functionality
-New in v1.5!
-:::
 
 Many of the methods below support Unix-style wildcards:
 
