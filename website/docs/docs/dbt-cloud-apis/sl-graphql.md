@@ -32,10 +32,10 @@ The schema explorer URLs vary depending on your [deployment region](/docs/cloud/
 | EMEA multi-tenant	|	https://semantic-layer.emea.dbt.com/api/graphql |
 | APAC multi-tenant	|	https://semantic-layer.au.dbt.com/api/graphql |
 | Single tenant | `https://YOUR_ACCESS_URL.semantic-layer/api/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate Access URL for your region and plan.|
-| North America Cell 1	| `https://YOUR_ACCOUNT_PREFIX.semantic-layer.<region>.dbt.com/api/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account prefix and make sure you leave `us1.dbt.com` in the URL. |<br />
+| Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.semantic-layer.REGION.dbt.com/api/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
 
 **Example**
-- If your access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://ABC123.getdbt.com.semantic-layer/api/graphql`.
+- If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://ABC123.getdbt.com.semantic-layer/api/graphql`.
 
 dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
 
