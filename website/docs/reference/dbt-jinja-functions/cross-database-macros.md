@@ -325,7 +325,7 @@ This macro returns the current date and time for the system. Depending on the ad
 - The result may be an aware or naive timestamp.
 - The result may correspond to the start of the statement or the start of the transaction.
 
-Refer to the documentation for your adapter for specific timestamp information.
+Refer to your adapter's documentation for specific timestamp information.
 
 **Args**
 - None
