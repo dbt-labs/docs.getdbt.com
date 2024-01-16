@@ -35,7 +35,7 @@ The schema explorer URLs vary depending on your [deployment region](/docs/cloud/
 | North America Cell 1	|	`https://YOUR_ACCOUNT_PREFIX.semantic-layer.us1.dbt.com/api/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account prefix and make sure you leave `us1.dbt.com` in the URL. |<br />
 
 **Example**
-- If your access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://semantic-layer.ABC123.getdbt.com/api/graphql`.
+- If your access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://ABC123.getdbt.com.semantic-layer/api/graphql`.
 
 dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
 
