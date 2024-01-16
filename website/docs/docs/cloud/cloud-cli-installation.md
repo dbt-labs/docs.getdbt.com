@@ -223,7 +223,7 @@ During the public preview period, we recommend updating before filing a bug repo
 
 <TabItem value="mac" label="macOS (brew)">
 
-To update the dbt Cloud CLI, run `brew upgrade dbt`. (You can also use `brew install dbt`). 
+To update the dbt Cloud CLI, run `brew update` and then `brew upgrade dbt`.
 
 </TabItem>
 
@@ -235,7 +235,7 @@ To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-
 
 <TabItem value="linux" label="Linux (executable)">
 
-To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-installation?install=linux#install-dbt-cloud-cli) and replace the existing `dbt` executable with the new one.
+To update, follow the same process explained in [Linux](/docs/cloud/cloud-cli-installation?install=linux#install-dbt-cloud-cli) and replace the existing `dbt` executable with the new one.
 
 </TabItem>
 
