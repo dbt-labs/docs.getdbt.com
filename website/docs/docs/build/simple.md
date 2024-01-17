@@ -68,6 +68,7 @@ If you've already defined the measure using the `create_metric: true` parameter,
 Use the following additional settings to customize your conversion metrics:
 
 - **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
+
 <!-- **Calculation type:** Choose between showing raw conversions or conversion rate.
 - **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.-->
 
@@ -87,7 +88,6 @@ To return zero in the final data set, you can set the value of a null conversion
         fill_nulls_with: 0
       entity: user
       window: 7 days 
-
 ```
 
 This will return the following results:

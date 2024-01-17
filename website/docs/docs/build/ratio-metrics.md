@@ -54,8 +54,8 @@ metrics:
     type_params: 
       numerator: food_orders
       denominator: orders
-  
 ```
+
 ## Ratio metrics using different semantic models
 
 The system will simplify and turn the numerator and denominator in a ratio metric from different semantic models by computing their values in sub-queries. It will then join the result set based on common dimensions to calculate the final ratio. Here's an example of the SQL generated for such a ratio metric.
@@ -133,6 +133,7 @@ Note the `filter` and `alias` parameters for the metric referenced in the numera
 Use the following additional settings to customize your conversion metrics:
 
 - **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
+
 <!-- **Calculation type:** Choose between showing raw conversions or conversion rate.
 - **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.-->
 
@@ -152,7 +153,6 @@ To return zero in the final data set, you can set the value of a null conversion
         fill_nulls_with: 0
       entity: user
       window: 7 days 
-
 ```
 
 This will return the following results:
