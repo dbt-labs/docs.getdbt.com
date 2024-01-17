@@ -150,7 +150,7 @@ If you already have dbt Core installed, the dbt Cloud CLI may conflict. Here are
 
 - **Prevent conflicts** <br /> Use both the dbt Cloud CLI and dbt Core with `pip` and create a new virtual environment.<br /><br />
 - **Use both dbt Cloud CLI and dbt Core with brew or native installs** <br /> If you use Homebrew, consider aliasing the dbt Cloud CLI as "dbt-cloud" to avoid conflict. For more details, check the [FAQs](#faqs) if your operating system experiences path conflicts.<br /><br />
-- **Reverting back to dbt Core from the dbt Cloud CLI** <br />
+- **Reverting to dbt Core from the dbt Cloud CLI** <br />
   If you've already installed the dbt Cloud CLI and need to switch back to dbt Core:<br />
   - Uninstall the dbt Cloud CLI using the command: `pip uninstall dbt`
   - Reinstall dbt Core using the following command, replacing "adapter_name" with the appropriate adapter name:
@@ -251,10 +251,14 @@ To update:
 
 ## Using VS Code extensions
 
-Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however it doesn't support some dbt Core APIs required by certain tools, for example VS Code extensions. 
+Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however, it doesn't support some dbt Core APIs required by certain tools, for example, VS Code extensions. 
 
-To use these extensions, such as dbt-power-user, with the dbt Cloud CLI, you can install it using Homebrew (along with dbt Core) and create an alias to run the dbt Cloud CLI as `dbt-cloud`. This allows dbt-power-user to continue to invoke dbt Core under the hood, alongside the dbt Cloud CLI.
+You can use extensions like [dbt-power-user](https://www.dbt-power-user.com/) with the dbt Cloud CLI by following these steps:
 
+- [Install](/docs/cloud/cloud-cli-installation?install=brew) it using Homebrew along with dbt Core.
+- [Create an alias](#faqs) to run the dbt Cloud CLI as `dbt-cloud`.
+
+This setup allows dbt-power-user to continue to work with dbt Core in the background, alongside the dbt Cloud CLI.
 
 ## FAQs
 
