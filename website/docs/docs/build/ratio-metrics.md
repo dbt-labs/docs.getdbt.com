@@ -22,6 +22,8 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 | `filter` | Optional filter for the numerator or denominator. | Optional |
 | `alias` | Optional alias for the numerator or denominator. | Optional |
 
+Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
+
 The following displays the complete specification for ratio metrics, along with an example.
 
 ```yaml
@@ -61,16 +63,16 @@ The system will simplify and turn the numerator and denominator in a ratio metri
 
 ```sql
 select
-  subq_15577.metric_time as metric_time
-  , cast(subq_15577.mql_queries_created_test as double) / cast(nullif(subq_15582.distinct_query_users, 0) as double) as mql_queries_per_active_user
+  subq_15577.metric_time as metric_time,
+  cast(subq_15577.mql_queries_created_test as double) / cast(nullif(subq_15582.distinct_query_users, 0) as double) as mql_queries_per_active_user
 from (
   select
-    metric_time
-    , sum(mql_queries_created_test) as mql_queries_created_test
+    metric_time,
+    sum(mql_queries_created_test) as mql_queries_created_test
   from (
     select
-      cast(query_created_at as date) as metric_time
-      , case when query_status in ('PENDING','MODE') then 1 else 0 end as mql_queries_created_test
+      cast(query_created_at as date) as metric_time,
+      case when query_status in ('PENDING','MODE') then 1 else 0 end as mql_queries_created_test
     from prod_dbt.mql_query_base mql_queries_test_src_2552 
   ) subq_15576
   group by
@@ -78,12 +80,12 @@ from (
 ) subq_15577
 inner join (
   select
-    metric_time
-    , count(distinct distinct_query_users) as distinct_query_users
+    metric_time,
+    count(distinct distinct_query_users) as distinct_query_users
   from (
     select
-      cast(query_created_at as date) as metric_time
-      , case when query_status in ('MODE','PENDING') then email else null end as distinct_query_users
+      cast(query_created_at as date) as metric_time,
+      case when query_status in ('MODE','PENDING') then email else null end as distinct_query_users
     from prod_dbt.mql_query_base mql_queries_src_2585 
   ) subq_15581
   group by
@@ -125,3 +127,34 @@ metrics:
 ```
 
 Note the `filter` and `alias` parameters for the metric referenced in the numerator. Use the `filter` parameter to apply a filter to the metric it's attached to. The `alias` parameter is used to avoid naming conflicts in the rendered SQL queries when the same metric is used with different filters. If there are no naming conflicts, the `alias` parameter can be left out.
+
+### Additional settings
+
+Use the following additional settings to customize your conversion metrics:
+
+- **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
+<!-- **Calculation type:** Choose between showing raw conversions or conversion rate.
+- **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.-->
+
+To return zero in the final data set, you can set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
+
+```yaml
+- name: vist_to_buy_conversion_rate_7_day_window
+  description: "Conversion rate from viewing a page to making a purchase"
+  type: conversion
+  label: Visit to Seller Conversion Rate (7 day window)
+  type_params:
+    conversion_type_params:
+      calculation: conversions
+      base_measure: visits
+      conversion_measure: 
+        name: buys
+        fill_nulls_with: 0
+      entity: user
+      window: 7 days 
+
+```
+
+This will return the following results:
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Metric with fill nulls with parameter"/>

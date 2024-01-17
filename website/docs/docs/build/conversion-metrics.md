@@ -33,6 +33,8 @@ The specification for conversion metrics is as follows:
 | `base_property` | The property from the base semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 | `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 
+Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
+
 The following code example displays the complete specification for conversion metrics and details how they're applied:
 
 ```yaml

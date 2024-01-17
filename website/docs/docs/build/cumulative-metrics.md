@@ -21,6 +21,8 @@ This metric is common for calculating things like weekly active users, or month-
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
 
+Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
+
 The following displays the complete specification for cumulative metrics, along with an example:
 
 ```yaml
@@ -244,3 +246,35 @@ group by
   metric_time
 limit 100
 ```
+
+### Additional settings
+
+Use the following additional settings to customize your conversion metrics:
+
+- **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
+<!-- **Calculation type:** Choose between showing raw conversions or conversion rate.
+- **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.-->
+
+To return zero in the final data set, you can set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
+
+```yaml
+- name: vist_to_buy_conversion_rate_7_day_window
+  description: "Conversion rate from viewing a page to making a purchase"
+  type: conversion
+  label: Visit to Seller Conversion Rate (7 day window)
+  type_params:
+    conversion_type_params:
+      calculation: conversions
+      base_measure: visits
+      conversion_measure: 
+        name: buys
+        fill_nulls_with: 0
+      entity: user
+      window: 7 days 
+
+```
+
+This will return the following results:
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Metric with fill nulls with parameter"/>
+

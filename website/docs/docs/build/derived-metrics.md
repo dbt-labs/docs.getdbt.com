@@ -23,6 +23,8 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `filter` | Optional filter to apply to the metric. | Optional |
 | `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Required |
 
+Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
+
 The following displays the complete specification for derived metrics, along with an example.
 
 ```yaml
@@ -157,3 +159,35 @@ bookings - bookings_7_days_ago would be compile as 7438 - 7252 = 186.
 | d7_booking_change | metric_time__month |
 | ----------------- | ------------------ |
 | 186 | 2017-07-01 |
+
+
+### Additional settings
+
+Use the following additional settings to customize your conversion metrics:
+
+- **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
+<!-- **Calculation type:** Choose between showing raw conversions or conversion rate.
+- **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.-->
+
+To return zero in the final data set, you can set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
+
+```yaml
+- name: vist_to_buy_conversion_rate_7_day_window
+  description: "Conversion rate from viewing a page to making a purchase"
+  type: conversion
+  label: Visit to Seller Conversion Rate (7 day window)
+  type_params:
+    conversion_type_params:
+      calculation: conversions
+      base_measure: visits
+      conversion_measure: 
+        name: buys
+        fill_nulls_with: 0
+      entity: user
+      window: 7 days 
+
+```
+
+This will return the following results:
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Metric with fill nulls with parameter"/>
