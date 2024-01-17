@@ -13,11 +13,10 @@ dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deploy
 
 
 ### Prerequisites
-- You have a dbt Cloud account.
-- Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering. 
-- For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features:
-   - Your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-   - You must be using one of these native Git integrations with dbt Cloud: [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or [Azure DevOps](/docs/cloud/git/connect-azure-devops). If you have a GitLab integration, you need a paid or self-hosted account which includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). With GitLab Free, merge requests will invoke CI jobs but CI status updates (success or failure of the job) will not be reported back to GitLab. 
+- You have a dbt Cloud account. 
+- For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
+   - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account which includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). With GitLab Free, merge requests will invoke CI jobs but CI status updates (success or failure of the job) will not be reported back to GitLab. 
 
 
 To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.

@@ -32,6 +32,7 @@ The [dbt Cloud scheduler](/docs/deploy/job-scheduler) executes CI jobs different
 
 - **Concurrent CI checks** &mdash; CI runs triggered by the same dbt Cloud CI job execute concurrently (in parallel), when appropriate
 - **Smart cancellation of stale builds** &mdash; Automatically cancels stale, in-flight CI runs when there are new commits to the PR
+- **Run slot treatment** &mdash; CI runs don't consume a run slot
 
 ### Concurrent CI checks
 
@@ -49,3 +50,6 @@ When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the late
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-smart-cancel-job.png" width="70%" title="Example of an automatically canceled run"/>
 
+### Run slot treatment
+
+CI runs for accounts on the [Enterprise, Team, and Developer plans](https://www.getdbt.com/pricing) don't consume run slots so a CI check will never block a production run. 
