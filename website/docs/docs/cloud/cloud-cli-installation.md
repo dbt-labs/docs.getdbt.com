@@ -255,7 +255,7 @@ Visual Studio (VS) Code extensions enhance command line tools by adding extra fu
 
 You can use extensions like [dbt-power-user](https://www.dbt-power-user.com/) with the dbt Cloud CLI by following these steps:
 
-- Install it using Homebrew along with dbt Core.
+- [Install](/docs/cloud/cloud-cli-installation?install=brew) it using Homebrew along with dbt Core.
 - Create an alias to run the dbt Cloud CLI as `dbt-cloud`.
 
 This setup allows dbt-power-user to continue to work with dbt Core in the background, alongside the dbt Cloud CLI.
