@@ -38,10 +38,11 @@ The following code example displays the complete specification for conversion me
 ```yaml
 metrics:
   - name: The metric name # Required
-    description: the metric description # Required
-    type: conversion
-    type_params:
-      conversion_type_params:
+    description: the metric description # Optional
+    type: conversion # Required
+    label: # Required
+    type_params: # Required
+      conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
         base_measure: MEASURE # Required
