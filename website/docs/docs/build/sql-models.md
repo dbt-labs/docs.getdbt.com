@@ -29,7 +29,7 @@ dbt's Python capabilities are an extension of its capabilities with SQL models. 
 A SQL model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
 - The model name is inherited from the filename.
-- Use underscores for model names for better compatibility and clarity (such as `model_without_dots`); avoid using dots to prevent potential issues with database interpretations (`model.with.dots`). 
+- Use underscores for model names for better compatibility and clarity (such as `model_without_dots`); avoid using dots to prevent issues with the dbt Cloud parser and database interpretations (`model.with.dots`). 
 - Models can be nested in subdirectories within the `models` directory.
 
 Refer to [How we style our dbt models](/best-practices/how-we-style/1-how-we-style-our-dbt-models) for details on how we recommend you name your models.
