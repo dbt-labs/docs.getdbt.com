@@ -13,7 +13,7 @@ import SetUpPages from '/snippets/_available-enterprise-only.md';
 
 :::info Licenses vs Permission Sets
 
-The type of [licenses](https://docs.getdbt.com/docs/cloud/manage-access/seats-and-users) that a user has takes 
+The type of [license](https://docs.getdbt.com/docs/cloud/manage-access/seats-and-users) that a user has takes 
 precedence over the exact permission set that the user has. This means that if a user has a "Read-Only" license
 but is placed in a dbt Cloud group with "Account Admin" permissions - that user would still not be able to take
 any administrative actions on the account as the license would restrict them from doing so.
