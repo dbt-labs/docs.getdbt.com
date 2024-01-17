@@ -530,7 +530,14 @@ dbt Cloud CLI | CLI, dbt CLI
 dbt Core | CLI, dbt CLI
 </div></b>
 
-Make sure you keep the reader close to the content and documentation (second person). For example, to explain that a feature is available to a particular dbt Cloud plan &mdash; use “XYZ is available on Enterprise plans” or “People on Enterprise plans can XYZ..” to keep users closer to the documentation. This will signal to users to check their plan or account status on their own. 
+Note, let's make sure we're talking to our readers and keep them close to the content and documentation (second person). 
+
+For example, to explain that a feature is available to a particular dbt Cloud plan, you can use:
+- “XYZ is available on Enterprise plans”,
+- “If you're on an Enterprise plan, you can access XYZ..” or 
+- "Enterprise plans can access XYZ..." to keep users closer to the documentation. 
+
+This will signal users to check their plan or account status independently.
 
 ## Links
 
