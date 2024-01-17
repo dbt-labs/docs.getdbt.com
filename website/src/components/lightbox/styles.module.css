@@ -10,7 +10,7 @@
   margin: 10px auto;
   padding-right: 10px;
   display: block;
-  max-width: 100%;
+  max-width: 400px;
 }
 
 :local(.collapsed) {
