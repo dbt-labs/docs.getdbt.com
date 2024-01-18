@@ -28,6 +28,10 @@ The user's assigned license determines the specific capabilities they can access
 *Available on Enterprise and Team plans only and doesn't count toward seat usage. Please note, that IT seats are limited to 1 seat per Team or Enterprise account.
 
 ## Licenses
+::::tip Licenses or Permission sets
+
+The user's license type always overrides their assigned [Enterprise permission](/docs/cloud/manage-access/enterprise-permissions) set. This means that even if a user belongs to a dbt Cloud group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
+:::
 
 Each dbt Cloud plan comes with a base number of Developer, IT, and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 
