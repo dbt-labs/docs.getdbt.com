@@ -21,8 +21,8 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `metrics` |  The list of metrics used in the derived metrics. | Required  |
 | `alias` | Optional alias for the metric that you can use in the expr. | Optional |
 | `filter` | Optional filter to apply to the metric. | Optional |
-| `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Required |
 | `fill_nulls_with` | Set the value to zero instead of null in your metric definition. | Optional |
+| `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Optional |
 
 The following displays the complete specification for derived metrics, along with an example.
 
@@ -39,7 +39,7 @@ metrics:
         - name: the name of the metrics. must reference a metric you have already defined # Required
           alias: optional alias for the metric that you can use in the expr # Optional
           filter: optional filter to apply to the metric # Optional
-          offset_window: set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time. # Required
+          offset_window: set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time. # Optional
 ```
 
 ## Derived metrics example
