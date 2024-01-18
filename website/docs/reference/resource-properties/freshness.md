@@ -50,7 +50,7 @@ To exclude a source from freshness calculations, you have two options:
 - Explicitly set `freshness: null`.
 
 Freshness blocks are applied hierarchically:
-- A `freshness` property added to a source will be applied to all all tables defined in that source
+- A `freshness` property added to a source will be applied to all tables defined in that source.
 - A `freshness` property added to a source _table_ will override any properties applied to the source.
 
 This is useful when all of the tables in a source have the same `loaded_at_field`.
