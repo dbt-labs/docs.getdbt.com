@@ -45,6 +45,7 @@
     "redoc": "^2.0.0-rc.57",
     "rehype-katex": "^5.0.0",
     "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
     "remark-html": "^16.0.1",
     "remark-math": "^3.0.1",
     "remark-parse": "^11.0.0",

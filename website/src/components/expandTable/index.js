@@ -3,6 +3,8 @@ import { unified } from 'unified';
 import parse from 'remark-parse';
 import remark2html from 'remark-html';
 import parseHtml from 'html-react-parser';
+import gfm from 'remark-gfm';
+import rawLoader from 'raw-loader';
 
 function expandTable({ markdown }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -14,6 +16,8 @@ function expandTable({ markdown }) {
     if (markdown) {
       unified()
         .use(parse)
+        .use(rawLoader)
+        .use(gfm) 
         .use(remark2html)
         .process(markdown)
         .then(file => {
