@@ -32,7 +32,6 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
   [use_experimental_parser](/reference/global-configs/parsing): <true | false>
   [static_parser](/reference/global-configs/parsing): <true | false>
   [cache_selected_only](/reference/global-configs/cache): <true | false>
-  [no_print](/reference/global-configs/print-output#suppress-print-messages-in-stdout): <true | false>
   [printer_width](/reference/global-configs/print-output#printer-width): <integer>
   [log_format](/reference/global-configs/logs): <text | json | default>
 
