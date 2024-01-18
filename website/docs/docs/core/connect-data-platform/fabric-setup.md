@@ -39,7 +39,7 @@ If you already have ODBC Driver 17 installed, then that one will work as well.
 
 #### Supported configurations
 
-* The adapter is tested with Microsoft Fabric Synapse Data Warehouses (aka Warehouses).
+* The adapter is tested with Microsoft Fabric Synapse Data Warehouses (also referred to as Warehouses).
 * We test all combinations with Microsoft ODBC Driver 17 and Microsoft ODBC Driver 18.
 * The collations we run our tests on are `Latin1_General_100_BIN2_UTF8`.
 
