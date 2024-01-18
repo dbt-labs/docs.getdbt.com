@@ -46,7 +46,7 @@ If you already have ODBC Driver 17 installed, then that one will work as well.
 The adapter support is not limited to the matrix of the above configurations. If you notice an issue with any other configuration, let us know by opening an issue on [GitHub](https://github.com/microsoft/dbt-fabric).
 
 ##### Unsupported configurations
-SQL analytics endpoints are read-only and therefore not appropriate for Transformation workloads, use a Warehouse instead.
+SQL analytics endpoints are read-only and so are not appropriate for Transformation workloads, use a Warehouse instead.
 
 ## Authentication methods & profile configuration
 
