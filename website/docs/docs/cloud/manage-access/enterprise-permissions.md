@@ -20,6 +20,11 @@ control (RBAC).
 
 The following roles and permission sets are available for assignment in dbt Cloud Enterprise accounts. They can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group can be associated with more than one role and permission set. Roles with more access take precedence. 
 
+:::tip Licenses or Permission sets
+
+The user's [license](/docs/cloud/manage-access/seats-and-users) type always overrides their assigned permission set. This means that even if a user belongs to a dbt Cloud group with 'Account Admin' permissions, having a 'Read-Only' license would still prevent them from performing administrative actions on the account.
+:::
+
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
 
 ## How to set up RBAC Groups in dbt Cloud
