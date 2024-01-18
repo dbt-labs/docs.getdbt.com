@@ -20,8 +20,7 @@ This metric is common for calculating things like weekly active users, or month-
 | `measure` | The measure you are referencing. | Required |
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
-
-Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
+| `fill_nulls_with` | Set the value to zero instead of null in your metric definition. | Optional |
 
 The following displays the complete specification for cumulative metrics, along with an example:
 
@@ -32,6 +31,7 @@ metrics:
     type: cumulative # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
+      fill_nulls_with: Set value to zero instead of null # Optional
       measure: The measure you are referencing # Required
       window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Cannot be used with grain_to_date
       grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with window
@@ -39,6 +39,7 @@ metrics:
 ```
 
 ## Limitations
+
 Cumulative metrics are currently under active development and have the following limitations:
 - You are required to use [`metric_time` dimension](/docs/build/dimensions#time) when querying cumulative metrics. If you don't use `metric_time` in the query, the cumulative metric will return incorrect results because it won't perform the time spine join. This means you cannot reference time dimensions other than the `metric_time` in the query.
 
@@ -61,12 +62,14 @@ metrics:
     description: The cumulative value of all orders
     type: cumulative
     type_params:
+      fill_nulls_with: 0
       measure: order_total
   - name: cumulative_order_total_l1m
     label: Cumulative Order total (L1M)   
     description: Trailing 1 month cumulative order amount
     type: cumulative
     type_params:
+      fills_nulls_with: 0
       measure: order_total
       window: 1 month
   - name: cumulative_order_total_mtd
@@ -74,6 +77,7 @@ metrics:
     description: The month to date value of all orders
     type: cumulative
     type_params:
+      fills_nulls_with: 0
       measure: order_total
       grain_to_date: month
 ```
@@ -203,16 +207,16 @@ The current method connects the metric table to a timespine table using the prim
 
 ``` sql
 select
-  count(distinct distinct_users) as weekly_active_users
-  , metric_time
+  count(distinct distinct_users) as weekly_active_users,
+  metric_time
 from (
   select
-    subq_3.distinct_users as distinct_users
-    , subq_3.metric_time as metric_time
+    subq_3.distinct_users as distinct_users,
+    subq_3.metric_time as metric_time
   from (
     select
-      subq_2.distinct_users as distinct_users
-      , subq_1.metric_time as metric_time
+      subq_2.distinct_users as distinct_users,
+      subq_1.metric_time as metric_time
     from (
       select
         metric_time
@@ -225,8 +229,8 @@ from (
     ) subq_1
     inner join (
       select
-        distinct_users as distinct_users
-        , date_trunc('day', ds) as metric_time
+        distinct_users as distinct_users,
+        date_trunc('day', ds) as metric_time
       from demo_schema.transactions transactions_src_426
       where (
         (date_trunc('day', ds)) >= cast('1999-12-26' as timestamp)
@@ -243,38 +247,7 @@ from (
   ) subq_3
 )
 group by
-  metric_time
-limit 100
-```
-
-### Additional settings
-
-Use the following additional settings to customize your conversion metrics:
-
-- **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
-<!-- **Calculation type:** Choose between showing raw conversions or conversion rate.
-- **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.-->
-
-To return zero in the final data set, you can set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
-
-```yaml
-- name: vist_to_buy_conversion_rate_7_day_window
-  description: "Conversion rate from viewing a page to making a purchase"
-  type: conversion
-  label: Visit to Seller Conversion Rate (7 day window)
-  type_params:
-    conversion_type_params:
-      calculation: conversions
-      base_measure: visits
-      conversion_measure: 
-        name: buys
-        fill_nulls_with: 0
-      entity: user
-      window: 7 days 
+  metric_time,
+limit 100;
 
 ```
-
-This will return the following results:
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Metric with fill nulls with parameter"/>
-

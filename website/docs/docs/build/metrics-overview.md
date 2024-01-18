@@ -9,7 +9,7 @@ pagination_next: "docs/build/cumulative"
   
 Once you've created your semantic models, it's time to start adding metrics! Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo)
 
-The keys for metrics definitions are: 
+The keys for metrics definitions are:
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
@@ -21,7 +21,6 @@ The keys for metrics definitions are:
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 |  `meta` | Additional metadata you want to add to your metric. | Optional |
-
 
 Here's a complete example of the metrics spec configuration:
 
@@ -39,14 +38,7 @@ metrics:
       null
 ```
 
-This page explains the different supported metric types you can add to your dbt project. 
-<!--
-- [Cumulative](#cumulative-metrics) — Cumulative metrics aggregate a measure over a given window.
-- [Derived](#derived-metrics) — An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Expression](#expression-metrics) — Allow measures to be modified using a SQL expression.
-- [Measure proxy](#measure-proxy-metrics) — Metrics that refer directly to one measure.
-- [Ratio](#ratio-metrics) — Create a ratio out of two measures. 
--->
+This page explains the different supported metric types you can add to your dbt project.
 
 ### Conversion metrics <Lifecycle status='new'/>
 
@@ -55,10 +47,11 @@ This page explains the different supported metric types you can add to your dbt 
 ```yaml
 metrics:
   - name: The metric name # Required
-    description: the metric description # Optional
+    description: The metric description # Optional
     type: conversion # Required
     label: # Required
     type_params: # Required
+      fills_nulls_with: Set value to zero instead of null # Optional
       conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
@@ -82,9 +75,10 @@ metrics:
       - support@getdbt.com
     type: cumulative
     type_params:
+      fills_nulls_with: 0
       measures:
         - distinct_users
-    #Omitting window will accumulate the measure over all time
+    # Omitting window will accumulate the measure over all time
       window: 7 days
       
 ```
@@ -100,6 +94,7 @@ metrics:
     type: derived
     label: Order Gross Profit
     type_params:
+      fills_nulls_with: 0
       expr: revenue - cost
       metrics:
         - name: order_total
@@ -139,6 +134,7 @@ metrics:
 # Define the metrics from the semantic manifest as numerator or denominator
     type: ratio
     type_params:
+      fills_nulls_with: 0
       numerator: cancellations
       denominator: transaction_amount
       filter: |     # add optional constraint string. This applies to both the numerator and denominator
@@ -157,6 +153,7 @@ metrics:
       filter: |   #  add optional constraint string. This applies to both the numerator and denominator
         {{ Dimension('customer__country') }} = 'MX'  
 ```
+
 ### Simple metrics
 
 [Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
@@ -171,6 +168,7 @@ metrics:
   - name: cancellations
     type: simple
     type_params:
+      fills_nulls_with: 0
       measure: cancellations_usd  # Specify the measure you are creating a proxy for.
     filter: |
       {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
@@ -187,6 +185,7 @@ filter: |
 filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 ```
+
 ### Further configuration 
 
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner

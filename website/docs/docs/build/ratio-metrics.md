@@ -21,8 +21,7 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 | `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  |
 | `filter` | Optional filter for the numerator or denominator. | Optional |
 | `alias` | Optional alias for the numerator or denominator. | Optional |
-
-Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
+| `fill_nulls_with` | Set the value to zero instead of null in your metric definition. | Optional |
 
 The following displays the complete specification for ratio metrics, along with an example.
 
@@ -33,6 +32,7 @@ metrics:
     type: ratio # Required
     label: The value that will be displayed in downstream tools #Required
     type_params: # Required
+      fill_nulls_with: Value to zero instead of null # Optional
       numerator: The name of the metric used for the numerator, or structure of properties # Required
         name: Name of metric used for the numerator # Required
         filter: Filter for the numerator # Optional
@@ -52,6 +52,7 @@ metrics:
     label: Food Order Ratio
     type: ratio
     type_params: 
+      fill_nulls_with: 0
       numerator: food_orders
       denominator: orders
 ```
@@ -117,6 +118,7 @@ metrics:
       - support@getdbt.com
     type: ratio
     type_params:
+      fill_nulls_with: 0
       numerator:
         name: distinct_purchasers
         filter: |
@@ -126,35 +128,7 @@ metrics:
         name: distinct_purchasers
 ```
 
-Note the `filter` and `alias` parameters for the metric referenced in the numerator. Use the `filter` parameter to apply a filter to the metric it's attached to. The `alias` parameter is used to avoid naming conflicts in the rendered SQL queries when the same metric is used with different filters. If there are no naming conflicts, the `alias` parameter can be left out.
-
-### Additional settings
-
-Use the following additional settings to customize your conversion metrics:
-
-- **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
-
-<!-- **Calculation type:** Choose between showing raw conversions or conversion rate.
-- **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.-->
-
-To return zero in the final data set, you can set the value of a null conversion event to zero instead of null. You can add the `fill_nulls_with` parameter to your conversion metric definition like this:
-
-```yaml
-- name: vist_to_buy_conversion_rate_7_day_window
-  description: "Conversion rate from viewing a page to making a purchase"
-  type: conversion
-  label: Visit to Seller Conversion Rate (7 day window)
-  type_params:
-    conversion_type_params:
-      calculation: conversions
-      base_measure: visits
-      conversion_measure: 
-        name: buys
-        fill_nulls_with: 0
-      entity: user
-      window: 7 days 
-```
-
-This will return the following results:
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Metric with fill nulls with parameter"/>
+Note the `filter` and `alias` parameters for the metric referenced in the numerator. 
+- Use the `filter` parameter to apply a filter to the metric it's attached to. 
+- The `alias` parameter is used to avoid naming conflicts in the rendered SQL queries when the same metric is used with different filters. 
+- If there are no naming conflicts, the `alias` parameter can be left out.
