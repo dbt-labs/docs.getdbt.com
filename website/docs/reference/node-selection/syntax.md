@@ -158,7 +158,6 @@ If both the flag and env var are provided, the flag takes precedence.
 
 #### Notes:
 - The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
-- The path to state artifacts can be set via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable. If both the flag and env var are provided, the flag takes precedence.
 - These are powerful, complex features. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
 ### The "result" status
@@ -174,7 +173,7 @@ The following dbt commands produce `run_results.json` artifacts whose results ca
 After issuing one of the above commands, you can reference the results by adding a selector to a subsequent command as follows: 
 
 ```bash
-# You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
+# You can also set the DBT_STATE environment variable instead of the --state flag.
 dbt run --select "result:<status> --defer --state path/to/prod/artifacts"
 ```
 
