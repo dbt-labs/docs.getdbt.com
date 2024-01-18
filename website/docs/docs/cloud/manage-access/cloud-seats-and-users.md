@@ -11,7 +11,7 @@ In dbt Cloud, _licenses_ are used to allocate users to your account. There are t
 
 - **Developer** &mdash; Granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud.
 - **Read-Only** &mdash; Intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Read-Only users can receive job notifications but not configure them.
-- **IT** &mdash; Can manage users, groups, and licenses, among other permissions. IT users can receive job notifications but not configure them. Available on Enterprise and Team plans only.  In Enterprise plans, the IT license type grants access equivalent to the ['Security admin' role](/docs/cloud/manage-access/enterprise-permissions#account-permissions-for-account-roles). 
+- **IT** &mdash; Can manage users, groups, and licenses, among other permissions. IT users can receive job notifications but not configure them. Available on Enterprise and Team plans only.  In Enterprise plans, the IT license type grants access equivalent to the ['Security admin' and 'Billing admin' roles](/docs/cloud/manage-access/enterprise-permissions#account-permissions-for-account-roles). 
 
 The user's assigned license determines the specific capabilities they can access in dbt Cloud.
 
