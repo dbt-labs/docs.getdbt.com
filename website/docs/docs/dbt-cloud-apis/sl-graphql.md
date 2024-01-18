@@ -7,10 +7,10 @@ tags: [Semantic Layer, APIs]
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
 
 
@@ -22,9 +22,24 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 ## dbt Semantic Layer GraphQL API
 
-The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through the [schema explorer](https://semantic-layer.cloud.getdbt.com/api/graphql).
+The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
+
+The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/regions-ip-addresses). Use the following table to find the right link for your region:
+
+| Deployment type |	Schema explorer URL |
+| --------------- | ------------------- |
+| North America multi-tenant	|	https://semantic-layer.cloud.getdbt.com/api/graphql |
+| EMEA multi-tenant	|	https://semantic-layer.emea.dbt.com/api/graphql |
+| APAC multi-tenant	|	https://semantic-layer.au.dbt.com/api/graphql |
+| Single tenant | `https://YOUR_ACCESS_URL.semantic-layer/api/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate Access URL for your region and plan.|
+| Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.semantic-layer.REGION.dbt.com/api/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
+
+**Example**
+- If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://ABC123.getdbt.com.semantic-layer/api/graphql`.
 
 dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
+
+Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
 
 ## Requirements to use the GraphQL API
 - A dbt Cloud project on dbt v1.6 or higher

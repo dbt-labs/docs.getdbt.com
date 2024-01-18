@@ -15,8 +15,8 @@ When you use dbt Core to work with dbt, you will be editing files locally using 
 ### Prerequisites
 
 * To use dbt Core, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
-* Install dbt Core using the [installation instructions](/docs/core/installation) for your operating system.
-* Complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
+* Install dbt Core using the [installation instructions](/docs/core/installation-overview) for your operating system.
+* Complete appropriate Setting up and Loading data steps in the Quickstart for dbt Cloud series. For example, for BigQuery, complete [Setting up (in BigQuery)](/guides/bigquery?step=2) and [Loading data (BigQuery)](/guides/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
 
 ### Create a starter project
@@ -70,7 +70,7 @@ $ pwd
 <Lightbox src="/img/starter-project-dbt-cli.png" title="The starter project in a code editor" />
 </div>
 
-6. Update the following values in the `dbt_project.yml` file:
+6. dbt provides the following values in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 
@@ -92,7 +92,7 @@ models:
 
 ## Connect to BigQuery
 
-When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connect-data-platform/connection-profiles), which is a YAML file with all the connection details to your warehouse.
+When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connect-data-platform/connection-profiles), which is a YAML file with all the connection details to your warehouse. 
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.

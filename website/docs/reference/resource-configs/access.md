@@ -27,7 +27,7 @@ You can apply access modifiers in config files, including `the dbt_project.yml`,
 
 There are multiple approaches to configuring access:
 
-In the model configs of `dbt_project.yml``: 
+In the model configs of `dbt_project.yml`: 
 
 ```yaml
 models:

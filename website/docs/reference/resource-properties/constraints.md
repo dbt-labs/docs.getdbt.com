@@ -3,10 +3,6 @@ resource_types: [models]
 datatype: "{dictionary}"
 ---
 
-:::info New functionality
-This functionality is new in v1.5.
-:::
-
 Constraints are a feature of many data platforms. When specified, the platform will perform additional validation on data as it is being populated in a new table or inserted into a preexisting table. If the validation fails, the table creation or update fails, the operation is rolled back, and you will see a clear error message.
 
 When enforced, a constraint guarantees that you will never see invalid data in the table materialized by your model. Enforcement varies significantly by data platform.
@@ -270,7 +266,7 @@ models:
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
         tests:
-          - unique            # primary_key constraint is not enforced
+          - unique            # need this test because primary_key constraint is not enforced
       - name: customer_name
         data_type: text
       - name: first_transaction_date
@@ -304,7 +300,7 @@ select
 
 <div warehouse="BigQuery">
 
-BigQuery allows defining `not null` constraints. However, it does _not_ support or enforce the definition of unenforced constraints, such as `primary key`.
+BigQuery allows defining and enforcing `not null` constraints, and defining (but _not_ enforcing) `primary key` and `foreign key` constraints (which can be used for query optimization). BigQuery does not support defining or enforcing other constraints. For more information, refer to [Platform constraint support](/docs/collaborate/govern/model-contracts#platform-constraint-support)
 
 Documentation: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language
 

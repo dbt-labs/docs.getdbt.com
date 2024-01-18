@@ -9,7 +9,7 @@ recently_updated: true
 ---
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with Microsoft Fabric. It will show you how to:
+In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
 
 - Load the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
 - Connect dbt Cloud to Microsoft Fabric.
@@ -27,7 +27,7 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
 ### Prerequisites
 - You have a [dbt Cloud](https://www.getdbt.com/signup/) account.
 - You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.
-- As a Microsoft admin, you’ve enabled service principal authentication. For details, refer to  [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Microsoft Fabric.
+- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Microsoft Fabric.
 
 ### Related content
 - [dbt Courses](https://courses.getdbt.com/collections)
@@ -54,8 +54,8 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
     CREATE TABLE dbo.customers
     (
         [ID] [int],
-        [FIRST_NAME] [varchar] (8000),
-        [LAST_NAME] [varchar] (8000)
+        \[FIRST_NAME] [varchar](8000),
+        \[LAST_NAME] [varchar](8000)
     );
 
     COPY INTO [dbo].[customers]
@@ -72,7 +72,7 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
         [USER_ID] [int],
         -- [ORDER_DATE] [int],
         [ORDER_DATE] [date],
-        [STATUS] [varchar] (8000)
+        \[STATUS] [varchar](8000)
     );
 
     COPY INTO [dbo].[orders]
@@ -87,8 +87,8 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
     (
         [ID] [int],
         [ORDERID] [int],
-        [PAYMENTMETHOD] [varchar] (8000),
-        [STATUS] [varchar] (8000),
+        \[PAYMENTMETHOD] [varchar](8000),
+        \[STATUS] [varchar](8000),
         [AMOUNT] [int],
         [CREATED] [date]
     );
@@ -108,6 +108,9 @@ A public preview of Microsoft Fabric in dbt Cloud is now available!
 2. Enter a project name and click **Continue**.
 3. Choose **Fabric** as your connection and click **Next**.
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
+    - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
+    - **Port** &mdash; 1433 (which is the default).
+    - **Database** &mdash; Use the service principal's **database** value for the Fabric test endpoint. 
 5. Enter the **Development credentials** for your new project:
     - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.

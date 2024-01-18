@@ -60,4 +60,4 @@ If you want to receive dbt training, check out our [dbt Learn](https://learn.get
 - Billing
 - Bug reports related to the web interface
 
-As a rule of thumb, if you are using dbt Cloud, but your problem is related to code within your dbt project, then please follow the above process rather than reaching out to support.
+As a rule of thumb, if you are using dbt Cloud, but your problem is related to code within your dbt project, then please follow the above process rather than reaching out to support. Refer to [dbt Cloud support](/docs/dbt-support) for more information.
