@@ -336,37 +336,11 @@ Refer to your adapter's documentation for specific timestamp information.
 ```sql
 {{ dbt.current_timestamp() }}
 ```
-
-<Tabs>
-<TabItem value="bq" label="Sample output (BigQuery)">
-
-```sql
-current_timestamp()
-```
-</TabItem>
-
-<TabItem value="postgres" label="Sample output (PostgreSQL)">
+**Sample output (PostgreSQL)**
 
 ```sql
 now()
 ```
-</TabItem>
-
-<TabItem value="redshift" label="Sample output (Redshift)">
-
-```sql
-getdate()
-```
-
-</TabItem>
-
-<TabItem value="snowflake" label="Sample output (Snowflake)">
-
-```sql
-convert_timezone('UTC', current_timestamp())
-```
-</TabItem>
-</Tabs>
 
 ## Set functions
 
