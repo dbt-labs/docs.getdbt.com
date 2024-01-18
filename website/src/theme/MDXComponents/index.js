@@ -45,6 +45,7 @@ import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
 import detailsToggle from '@site/src/components/detailsToggle';
 import ExpandableFilterableTable from '../../components/expandTable';
+import expandTable from '../../components/expandTable';
 
 const MDXComponents = {
   head: MDXHead,
@@ -95,7 +96,7 @@ const MDXComponents = {
   Icon: Icon,
   Lifecycle: Lifecycle,
   detailsToggle: detailsToggle,
-  ExpandableFilterableTable: ExpandableFilterableTable,
-
+  expandTable: expandTable,
 };
+
 export default MDXComponents;
