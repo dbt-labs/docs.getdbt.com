@@ -39,7 +39,6 @@ In the `freshness` block, one or both of `warn_after` and `error_after` can be p
 
 <VersionBlock firstVersion="1.7">
 
-Source freshness is calculated for all tables by default.
 
 If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
 - If a `loaded_at_field` is provided, dbt will calculate freshness via a select query (behavior prior to v1.7).
