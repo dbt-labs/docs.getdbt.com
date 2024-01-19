@@ -188,7 +188,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
         <Snippet path="snowflake-acct-name" />
     
-    * **Role** &mdash; `transform` or `ACCOUNTADMIN`. This tells dbt what Snowflake role should be assumed after connecting to Snowflake.
+    * **Role** &mdash; `transform`, `transformer`, or `ACCOUNTADMIN`. This tells dbt what Snowflake role should be assumed after connecting to Snowflake.
     * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
     * **Warehouse** &mdash; `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
 
