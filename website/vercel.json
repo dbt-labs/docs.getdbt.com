@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/reference/profiles.yml",
+      "destination": "/docs/core/connect-data-platform/profiles.yml",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
       "destination": "/docs/build/dbt-tips",
       "permanent": true
