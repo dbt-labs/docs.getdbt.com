@@ -8,7 +8,7 @@ sidebar: "Print output"
 
 <VersionBlock lastVersion="1.4">
 
-By default, dbt includes `print()` messages in standard out (stdout). You can use the `NO_PRINT` config to prevent these messages from showing up in stdout.
+By default, dbt includes `print()` messages in standard out (stdout). You can use the `DBT_NO_PRINT` environment variable to prevent these messages from showing up in stdout.
 
 <File name='profiles.yml'>
 
@@ -23,7 +23,7 @@ config:
 
 <VersionBlock firstVersion="1.5">
 
-By default, dbt includes `print()` messages in standard out (stdout). You can use the `PRINT` config to prevent these messages from showing up in stdout.
+By default, dbt includes `print()` messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
 
 <File name='profiles.yml'>
 
@@ -36,7 +36,7 @@ config:
 
 :::warning Syntax deprecation
 
-The original `NO_PRINT` syntax has been deprecated, starting with dbt v1.5. Backward compatibility is supported but will be removed in an as-of-yet-undetermined future release.
+The original `DBT_NO_PRINT` environment variable has been deprecated, starting with dbt v1.5. Backward compatibility is supported but will be removed in an as-of-yet-undetermined future release.
 
 :::
 
