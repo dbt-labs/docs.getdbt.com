@@ -46,8 +46,6 @@ Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showin
 
 ```text
 dbt --no-print run
-...
-
 ```
 
 ### Printer width
