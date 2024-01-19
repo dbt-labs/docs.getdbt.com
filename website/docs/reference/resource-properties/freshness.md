@@ -64,7 +64,7 @@ To exclude a source from freshness calculations, you have two options:
 - Explicitly set `freshness: null`.
 
 ## loaded_at_field
-(Required. Optional on adaters that support pulling freshness from warehouse metadata tables.)
+(Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.)
 </VersionBlock>
 
 <VersionBlock lastVersion="1.6">
