@@ -10,29 +10,11 @@ sidebar: "Print output"
 
 By default, dbt includes `print()` messages in standard out (stdout). You can use the `DBT_NO_PRINT` environment variable to prevent these messages from showing up in stdout.
 
-<File name='profiles.yml'>
-
-```yaml
-config:
-  no_print: true
-```
-
-</File>
-
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
 By default, dbt includes `print()` messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
-
-<File name='profiles.yml'>
-
-```yaml
-config:
-  print: false
-```
-
-</File>
 
 :::warning Syntax deprecation
 
