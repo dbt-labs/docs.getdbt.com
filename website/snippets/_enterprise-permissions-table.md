@@ -78,12 +78,12 @@ The project roles enable you to work within the projects in various capacities. 
 | Credentials              |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
 | Custom env. variables    |   W   |    W    |       W        |     W     |     W     |     W     |      R      |          |                |     R       |     W      |        |
 | dbt adapters             |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
-| Develop (IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |          |                |             |            |        |
+| Develop <br />(IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |          |                |             |            |        |
 | Environments             |   W   |    R    |       R        |     R     |     R     |     W     |      R      |          |                |     R       |     R      |        |
 | Jobs                     |   W   |    R    |       R        |     W     |     R     |     W     |      R      |          |                |     R       |     R      |        |
 | Metadata                 |   R   |    R    |       R        |     R     |     R     |     R     |      R      |     R    |                |     R       |     R      |        |
-| Permissions              |   W   |         |       R        |     R     |     R     |           |             |          |                |             |     W      |        |
-| Profile                  |   W   |    R    |       W        |     R     |     R     |     R     |             |          |                |     R       |     R      |        |
+| Permissions (Groups & Licenses)              |   W   |         |       R        |     R     |     R     |           |             |          |                |             |     W      |        |
+| Profile (Credentials)                 |   W   |    R    |       W        |     R     |     R     |     R     |             |          |                |     R       |     R      |        |
 | Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |      R      |          |                |     R       |     W      |        |
 | Repositories             |   W   |         |       R        |     R     |     W     |           |             |          |                |     R       |     R      |        |
 | Runs                     |   W   |    R    |       R        |     W     |     R     |     W     |      R      |          |                |     R       |     R      |        |
