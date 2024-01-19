@@ -162,3 +162,11 @@ If you're experiencing any issues, review some of the common questions and answe
       If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.</div>
    </div>
 </details>
+<details>
+   <summary>The status of the CI job run remains as pending in Azure DevOps after the run execution completed</summary>
+   <div>
+      <div>Upon triggering of a CI job, the status of the check in your Pull Request should change to `pending` while awaiting an update from dbt. After the CI job run completes, dbt sends the status to ADO which will update to either `succeeded` or `failed`. If this does not update after run completion, ensure that there are no branch policies in place that is preventing ADO from receiving these updates. Relevant articles can be found here:<br></br>
+          <a href="https://support.hashicorp.com/hc/en-us/articles/18670331556627-Azure-DevOps-Services-Pull-Request-Stuck-Waiting-on-Status-Update-from-Terraform-Cloud-Enterprise-Run">Azure DevOps Services Pull Request Stuck Waiting on Status Update</a><br></br>
+          <a href="https://learn.microsoft.com/en-us/azure/devops/repos/git/pull-request-status?view=azure-devops#pull-request-status">Pull request status</a><br></br><br></br>
+   </div>
+</details>
