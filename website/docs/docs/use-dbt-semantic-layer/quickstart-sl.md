@@ -34,7 +34,7 @@ Use this guide to fully experience the power of the universal dbt Semantic Layer
 - [Define metrics](#define-metrics) in dbt using MetricFlow
 - [Test and query metrics](#test-and-query-metrics) with MetricFlow 
 - [Run a production job](#run-a-production-job) in dbt Cloud
-- [Set up dbt Semantic Layer](#setup) in dbt Cloud 
+- [Set up dbt Semantic Layer](#set-up-dbt-semantic-layer) in dbt Cloud 
 - [Connect and query API](#connect-and-query-api) with dbt Cloud
 
 MetricFlow allows you to define metrics in your dbt project and query them whether in dbt Cloud or dbt Core with [MetricFlow commands](/docs/build/metricflow-commands).
