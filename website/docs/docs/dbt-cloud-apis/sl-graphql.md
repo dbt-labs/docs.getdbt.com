@@ -513,7 +513,7 @@ Assuming the user is querying `metric_0` and `metric_1` together, a valid filter
 
 Invalid filters would be:
  
-  * ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query b are defined based on measures with different grains.
+  * ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query are defined based on measures with different grains.
 
   * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` &mdash; `metric_1` is not available at a month grain.
 
