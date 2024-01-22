@@ -1,68 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
-function DetailsToggle({ children, alt_header = null, index }) {
+function detailsToggle({ children, alt_header = null }) {
   const [isOn, setOn] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false); // New state to track scrolling
   const [hoverTimeout, setHoverTimeout] = useState(null);
 
   const handleToggleClick = () => {
-    if (isOn) {
-      closeToggle();
-    } else {
-      closePreviouslyOpenToggle();
-      openToggle();
-    }
+    setOn(current => !current); // Toggle the current state
   };
 
   const handleMouseEnter = () => {
-    if (isScrolling) return;
+    if (isOn || isScrolling) return; // Ignore hover if already open or if scrolling
     const timeout = setTimeout(() => {
-      closeToggle(); // close the toggle first
-      openToggle(); // then open it
-    }, 700);
+      if (!isScrolling) setOn(true);
+    }, 700); // 
     setHoverTimeout(timeout);
-    closePreviouslyOpenToggle();
   };
-
+  
   const handleMouseLeave = () => {
     if (!isOn) {
       clearTimeout(hoverTimeout);
-      closeToggle();
+      setOn(false);
     }
   };
 
   const handleScroll = () => {
     setIsScrolling(true);
     clearTimeout(hoverTimeout);
+    //setOn(false);
 
-    if (isOn) {
-      closeToggle();
-    }
-
+    // Reset scrolling state after a  delay
     setTimeout(() => {
       setIsScrolling(false);
-    }, 300);
-  };
-
-  const openToggle = () => {
-    setOn(true);
-  };
-
-  const closeToggle = () => {
-    setOn(false);
-  };
-
-  const closePreviouslyOpenToggle = () => {
-    const allToggles = document.querySelectorAll('.detailsToggle');
-    allToggles.forEach((toggle, toggleIndex) => {
-      if (toggleIndex !== index) {
-        const toggleIsOpen = toggle.querySelector(`.${styles.body}`).style.display === 'block';
-        if (toggleIsOpen) {
-          toggle.querySelector(`.${styles.body}`).style.display = 'none';
-        }
-      }
-    });
+    }, 800);
   };
 
   useEffect(() => {
@@ -99,4 +70,4 @@ function DetailsToggle({ children, alt_header = null, index }) {
   );
 }
 
-export default DetailsToggle;
+export default detailsToggle;
