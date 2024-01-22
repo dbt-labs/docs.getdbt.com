@@ -1,4 +1,4 @@
-name: Orchestration team: Request changes to docs
+name: Orchestration team - Request changes to docs
 description: File a docs update request that is not already tracked in Orch team's Release Plans (Notion database). 
 labels: ["content","improvement","internal-orch-team"]
 body:
