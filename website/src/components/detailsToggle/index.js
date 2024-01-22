@@ -28,7 +28,8 @@ function detailsToggle({ children, alt_header = null }) {
   const handleScroll = () => {
     setIsScrolling(true);
     clearTimeout(hoverTimeout);
-    setOn(false);
+    //setOn(false);
+
 
     // Reset scrolling state after a  delay
     setTimeout(() => {
