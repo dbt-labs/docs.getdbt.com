@@ -15,7 +15,7 @@ Column-level lineage is now available in beta. Check it out! We'd love to [know 
 
 There is no additional setup required for CLL if your account is on an Enterprise plan that can use Explorer. You can access the CLL by expanding the column card in the **Columns** tab of an Explorer [resource details page](/docs/collaborate/explore-projects#view-resource-details) for a model, source, or snapshot.
 
-dbt updates the lineage after each run that's executed in the production environment. You must make sure that `docs generate` runs within at least one job in the environment. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
+dbt updates the lineage after each run that's executed in the production environment. You must make sure that `dbt docs generate` runs within at least one job in the environment. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" title="Example of the Columns tab and where to expand for the CLL"/>
 
