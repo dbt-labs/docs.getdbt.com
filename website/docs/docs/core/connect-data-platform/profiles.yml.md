@@ -31,6 +31,9 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
   [fail_fast](/reference/global-configs/failing-fast): <true | false>
   [use_experimental_parser](/reference/global-configs/parsing): <true | false>
   [static_parser](/reference/global-configs/parsing): <true | false>
+  [cache_selected_only](/reference/global-configs/cache): <true | false>
+  [printer_width](/reference/global-configs/print-output#printer-width): <integer>
+  [log_format](/reference/global-configs/logs): <text | json | default>
 
 <profile-name>:
   target: <target-name> # this is the default target
