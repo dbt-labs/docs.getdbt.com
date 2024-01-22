@@ -68,6 +68,12 @@ Subject: New Multi-Tenant PrivateLink Request
 
 dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the endpoint is available.
 
+### 5. Accepting the connection request
+
+When you have been notified that the resources are provisioned within the dbt Cloud environment, you must accept the endpoint connection (unless the VPC Endpoint Service is set to auto-accept connection requests). Requests can be accepted through the AWS console, as seen below, or through the AWS CLI.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/accept-request.png" width="80%" title="Accept the connection request" />
+
 ## Create Connection in dbt Cloud
 
 Once dbt Cloud support completes the configuration, you can start creating new connections using PrivateLink.
