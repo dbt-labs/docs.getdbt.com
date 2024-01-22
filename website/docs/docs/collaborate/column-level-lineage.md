@@ -1,37 +1,37 @@
 ---
-title: "Column level lineage (beta)"
-description: "Use dbt Explorer's column level lineage to gain insights about your data at a granular level."
+title: "Column-level lineage (beta)"
+description: "Use dbt Explorer's column-level lineage to gain insights about your data at a granular level."
 ---
 
-dbt Explorer now offers column level lineage (CLL) for the resources in your dbt project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a dbt project, Explorer provides end-to-end lineage for the data in that column given how it's used.
+dbt Explorer now offers column-level lineage (CLL) for the resources in your dbt project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a dbt project, Explorer provides end-to-end lineage for the data in that column given how it's used.
 
-Column level lineage is available to dbt Cloud Enterprise accounts that can use Explorer. It’s also available through the Discovery API.
+CLL is available to dbt Cloud Enterprise accounts that can use Explorer. It’s also available through the [Discovery API](/docs/dbt-cloud-apis/discovery-api).
 
 :::tip Beta
 Column-level lineage is now available in beta. Check it out! We'd love to [know what you think](https://docs.google.com/forms/d/e/1FAIpQLSdpCbVkGY9QwfExFonpWE4DTOKi3fQxBGLD0wwKYpkMjgcE7g/viewform)!
 :::
 
-## Access the column level lineage
+## Access the column-level lineage
 
-There is no additional setup required for column level lineage if your account is on an Enterprise plan that can use Explorer. You can access the column level lineage by expanding the column card in the **Columns** tab of an Explorer [resource details page](/docs/collaborate/explore-projects#view-resource-details) for a model, source, or snapshot.
+There is no additional setup required for CLL if your account is on an Enterprise plan that can use Explorer. You can access the CLL by expanding the column card in the **Columns** tab of an Explorer [resource details page](/docs/collaborate/explore-projects#view-resource-details) for a model, source, or snapshot.
 
-dbt updates the lineage after each run that's executed in the production environment. You must make sure that `docs generate` is running within at least one job in the environment. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
+dbt updates the lineage after each run that's executed in the production environment. You must make sure that `docs generate` runs within at least one job in the environment. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" title="Example of the Columns tab and where to expand for the CLL"/>
 
 <LoomVideo id='278c948ba387457884cc6b9545793685' />
 
-## Column level lineage use cases {#use-cases}
+## Column-level lineage use cases {#use-cases}
 
-Learn more about why and how you can use column level lineage in these sections. 
+Learn more about why and how you can use CLL in the following sections. 
 
 ### Root cause analysis
 
-When there is an unexpected breakage in a data pipeline, column level lineage can be a valuable tool to understand the exact point in the pipeline where the error took place. For example, a failing data test on a particular column in your dbt model might've stemmed from an untested column upstream. Using CLL can help quickly identify and fix breakages when they happen.
+When there is an unexpected breakage in a data pipeline, column-level lineage can be a valuable tool to understand the exact point where the error occurred in the pipeline. For example, a failing data test on a particular column in your dbt model might've stemmed from an untested column upstream. Using CLL can help quickly identify and fix breakages when they happen.
 
 ### Impact analysis
 
-During development, analytics engineers can use column level lineage to understand the full scope of the impact of their proposed changes. This knowledge empowers them to create higher quality pull requests that require less rework, as they can anticipate and preempt issues that would've been unchecked without column level insights. 
+During development, analytics engineers can use column-level lineage to understand the full scope of the impact of their proposed changes. This knowledge empowers them to create higher quality pull requests that require fewer edits, as they can anticipate and preempt issues that would've been unchecked without column-level insights. 
 
 ### Collaboration and efficiency
 
@@ -39,9 +39,13 @@ When exploring your data products, navigating column lineage allows analytics en
 
 ## Caveats
 
-Column level lineage relies on SQL parsing. Errors can occur when parsing fails or a column's origin is unknown (like with JSON unpacking, lateral joins, and so forth). In these cases, lineage may be incomplete and dbt Cloud will provide a warning about it in the column lineage. To review the error details, open the [full lineage graph](/docs/collaborate/explore-projects#project-lineage) and select the node to open the column’s details panel. 
+Column-level lineage relies on SQL parsing. Errors can occur when parsing fails or a column's origin is unknown (like with JSON unpacking, lateral joins, and so on). In these cases, lineage may be incomplete and dbt Cloud will provide a warning about it in the column lineage. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-parsing-error-pill.png" width="90%" title="Example of warning in the full lineage graph"/>
+
+To review the error details:
+1. Click the Expand icon in the upper right corner to open the column's lineage graph
+1. Select the node to open the column’s details panel
 
 Possible error cases are:
 
