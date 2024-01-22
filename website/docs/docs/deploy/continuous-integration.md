@@ -52,4 +52,4 @@ When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the late
 
 ### Run slot treatment
 
-CI runs for accounts on the [Enterprise, Team](https://www.getdbt.com/pricing), and [Free (trial)](https://www.getdbt.com/signup) plans don't consume run slots so a CI check will never block a production run. 
+For accounts on the [Enterprise or Team](https://www.getdbt.com/pricing) plans, CI runs won't consume run slots. This guarantees a CI check will never block a production run. 
