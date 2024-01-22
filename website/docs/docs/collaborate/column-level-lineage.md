@@ -44,7 +44,7 @@ Column-level lineage relies on SQL parsing. Errors can occur when parsing fails 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-parsing-error-pill.png" width="90%" title="Example of warning in the full lineage graph"/>
 
 To review the error details:
-1. Click the Expand icon in the upper right corner to open the column's lineage graph
+1. Click the **Expand** icon in the upper right corner to open the column's lineage graph
 1. Select the node to open the column’s details panel
 
 Possible error cases are:
