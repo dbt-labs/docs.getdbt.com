@@ -1,41 +1,68 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
-function detailsToggle({ children, alt_header = null }) {
+function DetailsToggle({ children, alt_header = null, index }) {
   const [isOn, setOn] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false); // New state to track scrolling
+  const [isScrolling, setIsScrolling] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState(null);
 
   const handleToggleClick = () => {
-    setOn(current => !current); // Toggle the current state
+    if (isOn) {
+      closeToggle();
+    } else {
+      closePreviouslyOpenToggle();
+      openToggle();
+    }
   };
 
   const handleMouseEnter = () => {
-    if (isOn || isScrolling) return; // Ignore hover if already open or if scrolling
+    if (isScrolling) return;
     const timeout = setTimeout(() => {
-      if (!isScrolling) setOn(true);
-    }, 700); // 
+      closeToggle(); // close the toggle first
+      openToggle(); // then open it
+    }, 700);
     setHoverTimeout(timeout);
+    closePreviouslyOpenToggle();
   };
-  
+
   const handleMouseLeave = () => {
     if (!isOn) {
       clearTimeout(hoverTimeout);
-      setOn(false);
+      closeToggle();
     }
   };
 
   const handleScroll = () => {
-    if (isOn)  {
-      setIsScrolling(true);
-      clearTimeout(hoverTimeout);
-      setOn(false);
-  }
+    setIsScrolling(true);
+    clearTimeout(hoverTimeout);
 
-    // Reset scrolling state after a  delay
+    if (isOn) {
+      closeToggle();
+    }
+
     setTimeout(() => {
       setIsScrolling(false);
-    }, 800);
+    }, 300);
+  };
+
+  const openToggle = () => {
+    setOn(true);
+  };
+
+  const closeToggle = () => {
+    setOn(false);
+  };
+
+  const closePreviouslyOpenToggle = () => {
+    const allToggles = document.querySelectorAll('.detailsToggle');
+    allToggles.forEach((toggle, toggleIndex) => {
+      if (toggleIndex !== index) {
+        const toggleIsOpen = toggle.querySelector(`.${styles.body}`).style.display === 'block';
+        if (toggleIsOpen) {
+          toggle.querySelector(`.${styles.body}`).style.display = 'none';
+        }
+      }
+    });
   };
 
   useEffect(() => {
@@ -72,4 +99,4 @@ function detailsToggle({ children, alt_header = null }) {
   );
 }
 
-export default detailsToggle;
+export default DetailsToggle;
