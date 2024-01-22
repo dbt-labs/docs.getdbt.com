@@ -27,7 +27,7 @@ Each data point links to individual models in Explorer.
 
 You can view historical metadata for up to the past three months. Select the time horizon using the filter, which defaults to a two-week lookback.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/ex-2-week-default.png" title="Example of dropdown"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/ex-2-week-default.png" width="55%" title="Example of dropdown"/>
 
 ## The Model performance tab
 
