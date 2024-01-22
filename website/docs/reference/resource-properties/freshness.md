@@ -47,10 +47,10 @@ If a source has a `freshness:` block, dbt will attempt to calculate freshness fo
 
 Currently, calculating freshness from warehouse metadata tables is supported on:
 - [Snowflake](/reference/resource-configs/snowflake-configs)
+- [BigQuery](/reference/resource-configs/bigquery-configs)
 
 Support is coming soon to the following adapters:
 - [Redshift](/reference/resource-configs/redshift-configs)
-- [BigQuery](/reference/resource-configs/bigquery-configs)
 - [Spark](/reference/resource-configs/spark-configs)
 
 Freshness blocks are applied hierarchically:
