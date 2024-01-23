@@ -51,7 +51,7 @@ metrics:
     type: conversion # Required
     label: # Required
     type_params: # Required
-      fills_nulls_with: Set value to zero instead of null # Optional
+      fills_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
