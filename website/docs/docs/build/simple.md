@@ -19,7 +19,7 @@ Simple metrics are metrics that directly reference a single measure, without any
 | `label` | The value that will be displayed in downstream tools. | Required |
 | `type_params` | The type parameters of the metric. | Required |
 | `measure` | The measure you're referencing. | Required |
-| `fill_nulls_with` | Set the value to zero instead of null in your metric definition. | Optional |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
 
 The following displays the complete specification for simple metrics, along with an example.
 
