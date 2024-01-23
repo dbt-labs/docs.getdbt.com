@@ -32,7 +32,7 @@ The specification for conversion metrics is as follows:
 | `constant_properties` | List of constant properties.  | List | Optional |
 | `base_property` | The property from the base semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 | `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Entity or Dimension | Optional |
-| `fill_nulls_with` | Set the value of a null conversion event to zero instead of null. | String | Optional |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | String | Optional |
 
 Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
 
