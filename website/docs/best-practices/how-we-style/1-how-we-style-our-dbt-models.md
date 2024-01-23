@@ -11,8 +11,7 @@ id: 1-how-we-style-our-dbt-models
 - Use underscores for naming dbt models; avoid dots.
   - ✅  `models_without_dots`
   - ❌ `models.with.dots`
-  - Use underscores because they’re more compatible and clear across platforms. Dots can cause
- dbt Cloud parser, quoting, and case sensitivity issues, especially in systems like Snowflake. Databases may also misinterpret dots as schema or database name separators. [dbt uses dots](https://discourse.getdbt.com/t/why-cant-model-names-contain-dots/422) in its `unique_id` generation to differentiate resource types, package names, and resource names, which is another reason to avoid dots in model name. Read the [discussion](https://github.com/dbt-labs/dbt-core/issues/3246) for more details.
+  - Most data platforms use dots to separate `database.schema.object`, so using underscores instead of dots reduces your need for [quoting](/reference/resource-properties/quoting) as well as the risk of issues in certain parts of dbt Cloud. For more background, refer to [this GitHub issue](https://github.com/dbt-labs/dbt-core/issues/3246).
 - 🔑 Keys should be string data types.
 - 🔑 Consistency is key! Use the same field names across models where possible. For example, a key to the `customers` table should be named `customer_id` rather than `user_id` or 'id'.
 - ❌ Do not use abbreviations or aliases. Emphasize readability over brevity. For example, do not use `cust` for `customer` or `o` for `orders`.
