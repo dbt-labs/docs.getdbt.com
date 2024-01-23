@@ -32,7 +32,7 @@ metrics:
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
       measure: The measure you're referencing # Required
-      fill_nulls_with: Value to zero instead of null # Optional
+      fill_nulls_with: Set value instead of null  (such as zero) # Optional
 
 ```
 
