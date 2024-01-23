@@ -466,7 +466,7 @@ The `where` filter takes a list argument (or a string for a single input). Depen
   
 - `Entity()` &mdash; Used for entities like primary and foreign keys, such as `Entity('order_id')`.
 
-Note: If you prefer a `where` clause with a more explicit path, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension and optionally the granularity level. `TimeDimension('metric_time', 'month')`.
+Note: If you prefer a `where` clause with a more explicit path, you can optionally use `TimeDimension()` to separate categorical dimensions from time ones. The `TimeDimension` input takes the time dimension and optionally the granularity level. `TimeDimension('metric_time', 'month')`.
 
 ```graphql
 mutation {
