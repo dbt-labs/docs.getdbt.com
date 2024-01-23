@@ -378,7 +378,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   }}
 ```
 
-If you are ordering by an object that's been operated on (e.g., you changed the the granularity of the time dimension), or you are using the full object notation, descending order must look like:
+If you are ordering by an object that's been operated on (for example, you changed the the granularity of the time dimension), or you are using the full object notation, descending order must look like:
 
 ```bash
 select * from {{
