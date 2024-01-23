@@ -92,9 +92,9 @@ select * from {{
 
 <TabItem value="dimensionvalueformetrics" label="Fetch dimension values">
 
-Use this query to fetch dimension values for one or multiple metrics and single dimension. 
+Use this query to fetch dimension values for one or multiple metrics and a single dimension. 
 
-Note, `metrics` is a required argument that lists one or multiple metrics in it, and a single dimension. 
+Note, `metrics` is a required argument that lists one or multiple metrics, and a single dimension. 
 
 ```bash
 select * from {{ 
@@ -105,9 +105,9 @@ semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['custom
 
 <TabItem value="queryablegranularitiesformetrics" label="Fetch queryable granularities for metrics">
 
-Use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
+You can use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
 
-Note, `metrics` is a required argument that lists one or multiple metrics in it.
+Note, `metrics` is a required argument that lists one or multiple metrics.
 
 ```bash
 select * from {{
@@ -124,7 +124,7 @@ select * from {{
 
 Use this query to fetch available metrics given dimensions. This command is essentially the opposite of getting dimensions given a list of metrics.
 
-Note, `group_by` is a required argument that lists one or multiple dimensions in it.
+Note, `group_by` is a required argument that lists one or multiple dimensions.
 
 ```bash
 select * from {{
@@ -137,7 +137,7 @@ select * from {{
 
 <TabItem value="queryablegranularitiesalltimedimensions" label="Fetch queryable granularities for all time dimensions">
 
-Use this example query to fetch available granularities for all time dimesensions (the similar queryable granularities API call only returns granularities for the primary time dimensions for metrics). The following call is a derivative of the `dimensions()` call and specifically selects the granularities field.
+You can use this example query to fetch available granularities for all time dimensions (the similar queryable granularities API call only returns granularities for the primary time dimensions for metrics). The following call is a derivative of the `dimensions()` call and specifically selects the granularity field.
 
 ```bash
 select NAME, QUERYABLE_GRANULARITIES from {{
@@ -344,7 +344,7 @@ where=["{{ Dimension('metric_time').grain('month') }} >= '2017-03-09'", "{{ Dime
 
 ### Query with a limit
 
-Use the following example to query using a `limit` or `order_by` clauses:
+Use the following example to query using a `limit` or `order_by` clause:
 
 ```bash
 select * from {{
@@ -356,7 +356,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 
 ### Query with Order By Examples 
 
-Order By can take a basic string that's a Dimension, Metric, or Entity and this will default to ascending order
+Order By can take a basic string that's a Dimension, Metric, or Entity, and this will default to ascending order
 
 ```bash
 select * from {{
@@ -367,7 +367,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   }}
 ``` 
 
-For descending order, you can add a `-` sign in front of the object. However, you can only use this short hand notation if you aren't operating on the object or using the full object notation. 
+For descending order, you can add a `-` sign in front of the object. However, you can only use this short-hand notation if you aren't operating on the object or using the full object notation. 
 
 ```bash
 select * from {{
@@ -378,7 +378,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   }}
 ```
 
-If you are ordering by an object that's been operated on (for example, you changed the the granularity of the time dimension), or you are using the full object notation, descending order must look like:
+If you are ordering by an object that's been operated on (for example, you changed the granularity of the time dimension), or you are using the full object notation, descending order must look like:
 
 ```bash
 select * from {{
