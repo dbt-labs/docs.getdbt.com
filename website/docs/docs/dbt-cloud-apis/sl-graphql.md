@@ -219,6 +219,8 @@ DimensionType = [CATEGORICAL, TIME]
 
 ### Querying
 
+When querying for data, _either_ a `groupBy` _or_ a `metrics` selection is required. 
+
 **Create Dimension Values query**
 
 ```graphql
@@ -443,28 +445,90 @@ mutation {
 }
 ```
 
+**Query a categorical dimension on its own**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: 123456
+    groupBy: [{name: "customer__customer_type"}]
+  ) {
+    queryId
+  }
+}
+```
+
 **Query with a where filter** 
 
 The `where` filter takes a list argument (or a string for a single input). Depending on the object you are filtering, there are a couple of parameters:
  
- - `Dimension()` &mdash; Used for any categorical or time dimensions. If used for a time dimension, granularity is required. For example, `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
+ - `Dimension()` &mdash; Used for any categorical or time dimensions. For example, `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
   
 - `Entity()` &mdash; Used for entities like primary and foreign keys, such as `Entity('order_id')`.
 
-Note: If you prefer a more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity. For example, `TimeDimension('metric_time', 'MONTH')`.
+Note: If you prefer a `where` clause with a more explicit path, you can optionally use `TimeDimension()` to separate categorical dimensions from time ones. The `TimeDimension` input takes the time dimension and optionally the granularity level. `TimeDimension('metric_time', 'month')`.
 
 ```graphql
 mutation {
   createQuery(
     environmentId: BigInt!
     metrics:[{name: "order_total"}]
-    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: MONTH}]
+    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: month}]
     where:[{sql: "{{ Dimension('customer__customer_type') }} = 'new'"}, {sql:"{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"}]
     ) {
      queryId
     }
 }
 ```
+
+For both `TimeDimension()`, the grain is only required in the WHERE filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
+
+For example, consider this Semantic model and Metric configuration, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
+
+```yaml
+semantic_model:
+  name: my_model_source
+
+defaults:
+  agg_time_dimension: created_month
+  measures:
+    - name: measure_0
+      agg: sum
+    - name: measure_1
+      agg: sum
+      agg_time_dimension: order_year
+  dimensions:
+    - name: created_month
+      type: time
+      type_params:
+        time_granularity: month
+    - name: order_year
+      type: time
+      type_params:
+        time_granularity: year
+
+metrics:
+  - name: metric_0
+    description: A metric with a month grain.
+    type: simple
+    type_params:
+      measure: measure_0
+  - name: metric_1
+    description: A metric with a year grain.
+    type: simple
+    type_params:
+      measure: measure_1
+```
+
+Assuming the user is querying `metric_0` and `metric_1` together, a valid filter would be:
+
+  * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
+
+Invalid filters would be:
+ 
+  * ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query are defined based on measures with different grains.
+
+  * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` &mdash; `metric_1` is not available at a month grain.
 
 **Query with Order**
 
