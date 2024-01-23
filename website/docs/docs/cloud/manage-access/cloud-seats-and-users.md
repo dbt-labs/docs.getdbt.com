@@ -136,8 +136,7 @@ to allocate for the user. If your account does not have an available license to
 allocate, you will need to add more licenses to your plan to complete the license
 change.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png"
-          title="Manually assigning licenses"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png" title="Manually assigning licenses"/>
 
 ### Mapped configuration
 
