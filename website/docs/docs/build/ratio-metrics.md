@@ -32,7 +32,7 @@ metrics:
     type: ratio # Required
     label: The value that will be displayed in downstream tools #Required
     type_params: # Required
-      fill_nulls_with: Value to zero instead of null # Optional
+      fill_nulls_with: Set value instead of null (such as zero)  # Optional
       numerator: The name of the metric used for the numerator, or structure of properties # Required
         name: Name of metric used for the numerator # Required
         filter: Filter for the numerator # Optional
