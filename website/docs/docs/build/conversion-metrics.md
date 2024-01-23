@@ -32,16 +32,20 @@ The specification for conversion metrics is as follows:
 | `constant_properties` | List of constant properties.  | List | Optional |
 | `base_property` | The property from the base semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 | `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Entity or Dimension | Optional |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | String | Optional |
+
+Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
 
 The following code example displays the complete specification for conversion metrics and details how they're applied:
 
 ```yaml
 metrics:
   - name: The metric name # Required
-    description: the metric description # Optional
+    description: The metric description # Optional
     type: conversion # Required
     label: # Required
     type_params: # Required
+      fills_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
@@ -89,6 +93,7 @@ Next, define a conversion metric as follows:
   type: conversion
   label: Visit to Buy Conversion Rate (7-day window)
   type_params:
+    fills_nulls_with: 0
     conversion_type_params:
       base_measure: visits
       conversion_measure: sellers
