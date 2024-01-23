@@ -22,7 +22,20 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 ## dbt Semantic Layer GraphQL API
 
-The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through the [schema explorer](https://semantic-layer.cloud.getdbt.com/api/graphql).
+The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
+
+The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/regions-ip-addresses). Use the following table to find the right link for your region:
+
+| Deployment type |	Schema explorer URL |
+| --------------- | ------------------- |
+| North America multi-tenant	|	https://semantic-layer.cloud.getdbt.com/api/graphql |
+| EMEA multi-tenant	|	https://semantic-layer.emea.dbt.com/api/graphql |
+| APAC multi-tenant	|	https://semantic-layer.au.dbt.com/api/graphql |
+| Single tenant | `https://YOUR_ACCESS_URL.semantic-layer/api/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate Access URL for your region and plan.|
+| Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.semantic-layer.REGION.dbt.com/api/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
+
+**Example**
+- If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://ABC123.getdbt.com.semantic-layer/api/graphql`.
 
 dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
 
