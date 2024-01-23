@@ -44,7 +44,6 @@ import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
 import detailsToggle from '@site/src/components/detailsToggle';
-import ExpandableFilterableTable from '../../components/expandTable';
 import expandTable from '../../components/expandTable';
 
 const MDXComponents = {
