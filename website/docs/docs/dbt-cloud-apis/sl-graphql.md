@@ -481,7 +481,7 @@ mutation {
 }
 ```
 
-For both `TimeDimension()`, the grain is only required in the WHERE filter if the aggregation time dimensions for the measures & metrics associated with the where filter have different grains. 
+For both `TimeDimension()`, the grain is only required in the WHERE filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
 
 For example, consider this Semantic model and Metric configuration, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
 
