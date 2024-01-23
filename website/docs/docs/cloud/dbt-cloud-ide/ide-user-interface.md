@@ -59,7 +59,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 3. **Version Control &mdash;** This menu contains all git-related elements, including the Git actions button. The button updates relevant actions based on your editor's state, such as prompting to pull remote changes, commit and sync when reverted commit changes are present, or creating a merge/pull request when appropriate.
    - The dropdown menu on the Git actions button allows users to revert changes, refresh Git state, create merge/pull requests, and change branches.
-     - Keep in mind, although you can't delete branches from the remote branches directly using this menu, you can [reclone your repository](/docs/cloud/dbt-cloud-ide/ide-user-interface#modals-and-menus). Doing this will hide deleted branches from the **Change Branch** list.
+     - Keep in mind that although you can't delete local branches in the IDE using this menu, you can [reclone your repository](/docs/cloud/dbt-cloud-ide/ide-user-interface#modals-and-menus), which will delete all local branches and resync with all existing remote branches.
    - You can also [resolve merge conflicts](/docs/collaborate/git/merge-conflicts) and for more info on git, refer to [Version control basics](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide).
    - **Version Control Options menu &mdash;** The **Changes** section, under the Git actions button, lists all file changes since the last commit. You can click on a change to open the Git Diff View to see the inline changes. You can also right-click any file and use the file-specific options in the Version Control Options menu.
 
