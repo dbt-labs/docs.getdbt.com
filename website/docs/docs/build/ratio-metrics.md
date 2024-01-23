@@ -21,7 +21,7 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 | `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  |
 | `filter` | Optional filter for the numerator or denominator. | Optional |
 | `alias` | Optional alias for the numerator or denominator. | Optional |
-| `fill_nulls_with` | Set the value to zero instead of null in your metric definition. | Optional |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
 
 The following displays the complete specification for ratio metrics, along with an example.
 
