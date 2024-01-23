@@ -105,18 +105,19 @@ This step joins the `BUYS` table to the `VISITS` table and gets all combinations
 The SQL generated in these steps looks like the following:
 
 ```sql
-SELECT v.ds,
-       v.user_id,
-       v.referrer_id,
-       b.ds,
-       b.uuid,
-       1 as buys
-FROM visits v
-         INNER JOIN (SLECT *, uuid_string() as uuid
-                     FROM buys -- Adds a uuid column to uniquely identify the different rows
-    ) b
-                    ON
-                                v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day'
+select
+  v.ds,
+  v.user_id,
+  v.referrer_id,
+  b.ds,
+  b.uuid,
+  1 as buys
+from visits v
+inner join (
+    select *, uuid_string() as uuid from buys -- Adds a uuid column to uniquely identify the different rows
+) b
+on
+v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 days'
 ```
 
 The dataset returns the following (note that there are two potential conversion events for the first visit):
@@ -133,18 +134,19 @@ The dataset returns the following (note that there are two potential conversion 
 Instead of returning the raw visit values, use window functions to link conversions to the closest base event. You can partition by the conversion source and get the `first_value` ordered by `visit ds`, descending to get the closest base event from the conversion event:
 
 ```sql
-SELECT first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc)          as v_ds,
-       first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc)     as user_id,
-       first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as referrer_id,
-       b.ds,
-       b.uuid,
-       1                                                                                         as buys
-FROM visits v
-         INNER JOIN (select *, uuid_string() as uuid
-                     from buys) b
-                    ON
-                                v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day'
-
+select
+  first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as v_ds,
+  first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as user_id,
+  first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as referrer_id,
+  b.ds,
+  b.uuid,
+  1 as buys
+from visits v
+inner join (
+    select *, uuid_string() as uuid from buys
+) b
+on
+v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day'
 ```
 
 The dataset returns the following:
@@ -165,18 +167,19 @@ To resolve this and eliminate duplicates, use a distinct select. The UUID also h
 Instead of regular select used in the [Step 2](#step-2-refine-with-window-function), use a distinct select to remove the duplicates:
 
 ```sql
-SELECT DISTINCT first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc)          as v_ds,
-                first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc)     as user_id,
-                first_value(v.referrer_id)
-                            over (partition by b.ds, b.user_id, b.uuid order by v.ds desc)                as referrer_id,
-                b.ds,
-                b.uuid,
-                1                                                                                         as buys
-FROM visits v
-         INNER JOIN (select *, uuid_string() as uuid
-                     from buys) b
-                    ON
-                                v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day';
+select distinct
+  first_value(v.ds) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as v_ds,
+  first_value(v.user_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as user_id,
+  first_value(v.referrer_id) over (partition by b.ds, b.user_id, b.uuid order by v.ds desc) as referrer_id,
+  b.ds,
+  b.uuid,
+  1 as buys
+from visits v
+inner join (
+    select *, uuid_string() as uuid from buys
+) b
+on
+v.user_id = b.user_id and v.ds <= b.ds and v.ds > b.ds - interval '7 day';
 ```
 
 The dataset returns the following:
@@ -197,28 +200,38 @@ You now have a dataset where every conversion is connected to a visit event. To 
 Now that you’ve tied each conversion event to a visit, you can calculate the aggregated conversions and opportunities measures. Then, you can join them to calculate the actual conversion rate. The SQL to calculate the conversion rate is as follows:
 
 ```sql
-SELECT coalesce(subq_3.metric_time__day, subq_13.metric_time__day)                       as metric_time__day,
-       cast(max(subq_13.buys) as double) /
-       cast(nullif(max(subq_3.visits), 0) as double)                                     as visit_to_buy_conversion_rate_7d
-FROM ( -- base measure
-         SELECT metric_time__day,
-                sum(visits) as mqls
-         FROM (SELECT date_trunc('day', first_contact_date) as metric_time__day,
-                      1                                     as visits
-               FROM visits) subq_2
-         GROUP BY metric_time__day) subq_3
-         FULL OUTER JOIN ( -- conversion measure
-    SELECT metric_time__day,
-           sum(buys) as sellers
-    FROM (
-             -- ...
-             -- The output of this subquery is the table produced in Step 3. The SQL is hidden for legibility.
-             -- To see the full SQL output, add --explain to your conversion metric query.
-         ) subq_10
-    GROUP BY metric_time__day) subq_13
-                         ON
-                             subq_3.metric_time__day = subq_13.metric_time__day
-GROUP BY metric_time__day
+select
+  coalesce(subq_3.metric_time__day, subq_13.metric_time__day) as metric_time__day,
+  cast(max(subq_13.buys) as double) / cast(nullif(max(subq_3.visits), 0) as double) as visit_to_buy_conversion_rate_7d
+from ( -- base measure
+  select
+    metric_time__day,
+    sum(visits) as mqls
+  from (
+    select
+      date_trunc('day', first_contact_date) as metric_time__day,
+      1 as visits
+    from visits
+  ) subq_2
+  group by
+    metric_time__day
+) subq_3
+full outer join ( -- conversion measure
+  select
+    metric_time__day,
+    sum(buys) as sellers
+  from (
+    -- ...
+    -- The output of this subquery is the table produced in Step 3. The SQL is hidden for legibility.
+    -- To see the full SQL output, add --explain to your conversion metric query. 
+  ) subq_10
+  group by
+    metric_time__day
+) subq_13
+on
+  subq_3.metric_time__day = subq_13.metric_time__day
+group by
+  metric_time__day
 ```
 
 ### Additional settings
@@ -315,25 +328,22 @@ In this case, you want to set `product_id` as the constant property. You can spe
 You will add an additional condition to the join to make sure the constant property is the same across conversions.
 
 ```sql
-SELECT DISTINCT first_value(v.ds)
-                            over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as ds,
-                first_value(v.user_id)
-                            over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as user_id,
-                first_value(v.referrer_id)
-                            over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as referrer_id,
-                buy_source.uuid,
-                1                                                                                                                                                                    as buys
-FROM {{ source_schema }}.fct_view_item_details v
-INNER JOIN
+select distinct
+  first_value(v.ds) over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as ds,
+  first_value(v.user_id) over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as user_id,
+  first_value(v.referrer_id) over (partition by buy_source.ds, buy_source.user_id, buy_source.session_id order by v.ds desc rows between unbounded preceding and unbounded following) as referrer_id,
+  buy_source.uuid,
+  1 as buys
+from {{ source_schema }}.fct_view_item_details v
+inner join
   (
-    SELECT *, {{ generate_random_uuid() }} as uuid FROM {{ source_schema }}.fct_purchases
+    select *, {{ generate_random_uuid() }} as uuid from {{ source_schema }}.fct_purchases
   ) buy_source
-ON
-    v.user_id = buy_source.user_id
-    AND v.ds <= buy_source.ds
-    AND v.ds > buy_source.ds - INTERVAL '7 day'
-    AND buy_source.product_id = v.product_id --Joining on the constant property product_id
-
+on
+  v.user_id = buy_source.user_id
+  and v.ds <= buy_source.ds
+  and v.ds > buy_source.ds - interval '7 day'
+  and buy_source.product_id = v.product_id --Joining on the constant property product_id
 ```
 
 </TabItem>
