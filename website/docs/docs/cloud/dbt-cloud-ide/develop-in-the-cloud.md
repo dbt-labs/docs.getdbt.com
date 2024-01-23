@@ -149,7 +149,7 @@ Refer to <a href="https://www.getdbt.com/pricing/">dbt pricing plans</a> for mor
 </detailsToggle>
 
 <detailsToggle alt_header="Can I be a contributor to dbt Cloud?">
-Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open-source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS).
+As a proprietary product, dbt Cloud's source code isn't available for community contributions. If you want to build something in the dbt ecosystem, we encourage you to review [this article](/community/contributing/contributing-coding) about contributing to a dbt package, a plugin, dbt-core, or this documentation site. Participation in open-source is a great way to level yourself up as a developer, and give back to the community.
 </detailsToggle>
 
 <detailsToggle alt_header="What is the difference between developing on the dbt Cloud IDE, the dbt Cloud CLI, and dbt Core?">
