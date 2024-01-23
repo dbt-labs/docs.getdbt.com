@@ -315,7 +315,7 @@ Assuming the user is querying `metric_0` and `metric_1` together in a single req
 
   * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
 
-Invalid Filters would be:
+Invalid filters would be:
 
   * `"{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query are defined based on measures with different grains.
 
