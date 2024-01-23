@@ -33,7 +33,7 @@ metrics:
     type: derived # Required
     label: The value that will be displayed in downstream tools #Required
     type_params: # Required
-      fill_nulls_with: Set value to zero instead of null # Optional
+      fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       expr: the derived expression # Required
       metrics: # The list of metrics used in the derived metrics # Required
         - name: the name of the metrics. must reference a metric you have already defined # Required
