@@ -17,9 +17,9 @@ There is no additional setup required for CLL if your account is on an Enterpris
 
 dbt updates the lineage after each run that's executed in the production environment. You must make sure that `docs generate` runs within at least one job in the environment. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" title="Example of the Columns tab and where to expand for the CLL"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-cll.png" width="40%" title="Example of the Columns tab and where to expand for the CLL"/>
 
-<LoomVideo id='278c948ba387457884cc6b9545793685' />
+<LoomVideo id='3040bf2a2ade45eca7942a7aed6b730c' />
 
 ## Column-level lineage use cases {#use-cases}
 
@@ -41,7 +41,7 @@ When exploring your data products, navigating column lineage allows analytics en
 
 Column-level lineage relies on SQL parsing. Errors can occur when parsing fails or a column's origin is unknown (like with JSON unpacking, lateral joins, and so on). In these cases, lineage may be incomplete and dbt Cloud will provide a warning about it in the column lineage. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-parsing-error-pill.png" width="90%" title="Example of warning in the full lineage graph"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-parsing-error-pill.png" title="Example of warning in the full lineage graph"/>
 
 To review the error details:
 1. Click the Expand icon in the upper right corner to open the column's lineage graph
