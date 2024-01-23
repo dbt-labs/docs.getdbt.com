@@ -415,7 +415,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 
 ## FAQs
 
-<FAQ path="Troubleshooting/sl-alpn-error" /><br />
+<FAQ path="Troubleshooting/sl-alpn-error" />
 
 <detailsToggle alt_header="Why do some dimensions use different syntax, like `metric_time` versus `Dimension('metric_time')`?">
 When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. 
