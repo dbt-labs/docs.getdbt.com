@@ -20,7 +20,7 @@ This metric is common for calculating things like weekly active users, or month-
 | `measure` | The measure you are referencing. | Required |
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `fill_nulls_with` | Set the value to zero instead of null in your metric definition. | Optional |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
 
 The following displays the complete specification for cumulative metrics, along with an example:
 
