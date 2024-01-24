@@ -55,11 +55,13 @@ Once these resources have been provisioned, access needs to be granted for the d
 
  - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
+ <Lightbox src="/img/docs/dbt-cloud/privatelink-allow-principals.png" width="70%" title="Enter ARN"/>
+
 ### 3. Obtain VPC Endpoint Service Name
 
 Once the VPC Endpoint Service is provisioned and configured find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. Copy the service name field value and include it in your communication to dbt Cloud support.
 
- <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vpc-endpoint-service-name.png" width="80%" title="Location of the VPC Endpoint Service name in the AWS console" />
+ <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
 
 :::note Custom DNS configuration
  
