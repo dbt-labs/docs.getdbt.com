@@ -19,6 +19,13 @@ While saved queries are a way to save and reuse commonly used queries in MetricF
 | **Integration**     | Must have the dbt Semantic Layer configured in your dbt project.<br /><br />Tightly integrated with the [MetricFlow Server](/docs/use-dbt-semantic-layer/sl-architecture#components) and dbt Cloud's job scheduler. | Integrated into dbt DAG and managed alongside other dbt nodes. |
 | **Configuration**   | Configured within dbt Cloud environment and job scheduler settings. | Defined in YAML format within dbt project files.   |
 
+## Prerequisites
+
+- Have a dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan.
+- Be on dbt version 1.7 or higher.
+- Have a dbt Semantic Layer configured in your dbt project.
+- Have a dbt Cloud environment with a [job scheduler](/docs/deploy/job-scheduler) enabled.
+
 ## Define exports
 
 Exports are essentially saved queries that you can schedule and execute using [dbt's job scheduler](/docs/deploy/job-scheduler) capabilities. Exports include the following materialization types: 
@@ -67,12 +74,12 @@ Exports in dbt are effectively integrated with your data models and metrics, all
 
 To execute exports using the job scheduler:
 
-- Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud.
-- Use the built-in `dbt build` command to execute exports and saved queries. 
+1. Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud.
+2. Use the built-in `dbt build` command to execute exports and saved queries. 
   - Note that although you can selectively run specific saved queries, this level of selection isn't available for individual exports. However, you can always create a different saved query if you want to separate exports. WHAT'S A SAMPLE QUERY? IS IT `export-as export_name` OR `dbt sl export --saved-query sq_name`
-- After dbt completes building the models, the MetricFlow Server processes the exports, compiles the necessary datasets, and executes data operations.
-- You can review the exports execution details in the jobs logs. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the `dbt build` logs.
-- Your data is now available in the data platform for querying.
+3. After dbt completes building the models, the MetricFlow Server processes the exports, compiles the necessary datasets, and executes data operations.
+4. Review the exports execution details in the jobs logs. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the `dbt build` logs.
+5. Your data is now available in the data platform for querying.
 
    <Lightbox src="/img/docs/dbt-cloud/semantic-layer/saved_queries_run.jpg" width="90%" title="TeThe st"/>
 
