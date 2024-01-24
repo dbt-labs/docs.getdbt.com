@@ -132,8 +132,8 @@ This is a **required configuration**. There is no default value.
 
 ### Advanced: define and use custom snapshot strategy
 Behind the scenes, snapshot strategies are implemented as macros, named `snapshot_<strategy>_strategy`
-* [Source code](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/materializations/snapshots/strategies.sql#L65) for the timestamp strategy
-* [Source code](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/materializations/snapshots/strategies.sql#L131) for the check strategy
+* [Source code](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/adapters/include/global_project/macros/materializations/snapshots/strategies.sql#L52) for the timestamp strategy
+* [Source code](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/adapters/include/global_project/macros/materializations/snapshots/strategies.sql#L136) for the check strategy
 
 It's possible to implement your own snapshot strategy by adding a macro with the same naming pattern to your project. For example, you might choose to create a strategy which records hard deletes, named `timestamp_with_deletes`.
 

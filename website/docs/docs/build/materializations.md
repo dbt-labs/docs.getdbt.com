@@ -120,7 +120,7 @@ required with incremental materializations
   * `dbt run` on materialized views corresponds to a code deployment, just like views
 * **Cons:**
   * Due to the fact that materialized views are more complex database objects, database platforms tend to have
-less configuration options available, see your database platform's docs for more details
+fewer configuration options available; see your database platform's docs for more details
   * Materialized views may not be supported by every database platform
 * **Advice:**
   * Consider materialized views for use cases where incremental models are sufficient, but you would like the data platform to manage the incremental logic and refresh.

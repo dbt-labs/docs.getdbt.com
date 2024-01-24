@@ -22,17 +22,17 @@ All metrics in a saved query need to use the same dimensions in the `group_by` o
 
 ```yaml
 saved_queries:
-  name: p0_booking
-  description: Booking-related metrics that are of the highest priority.
-  query_params:
-    metrics:
-      - bookings
-      - instant_bookings
-    group_by:
-      - TimeDimension('metric_time', 'day')
-      - Dimension('listing__capacity_latest')
-    where:
-      - "{{ Dimension('listing__capacity_latest') }} > 3"
+  - name: p0_booking
+    description: Booking-related metrics that are of the highest priority.
+    query_params:
+      metrics:
+        - bookings
+        - instant_bookings
+      group_by:
+        - TimeDimension('metric_time', 'day')
+        - Dimension('listing__capacity_latest')
+      where:
+        - "{{ Dimension('listing__capacity_latest') }} > 3"
 ```
 
 ## Parameters
