@@ -338,7 +338,7 @@ where="{{ Dimension('metric_time').grain('month')  }} >= '2017-03-09' AND {{ Dim
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where=["{{ Dimension('metric_time').grain('month') }} >= '2017-03-09'", "{{ Dimension('customer__customer_type' }} in ('new')", "{{ Entity('order_id') }} = 10"]
+where=["{{ Dimension('metric_time').grain('month') }} >= '2017-03-09'", "{{ Dimension('customer__customer_type') }} in ('new')", "{{ Entity('order_id') }} = 10"])
 }}
 ```
 
@@ -363,7 +363,7 @@ select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time')],
   limit=10,
-  order_by=['order_gross_profit']
+  order_by=['order_gross_profit'])
   }}
 ``` 
 
@@ -374,7 +374,7 @@ select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time')],
   limit=10,
-  order_by=[-'order_gross_profit']
+  order_by=[-'order_gross_profit'])
   }}
 ```
 
@@ -385,7 +385,7 @@ select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time').grain('week')],
   limit=10,
-  order_by=[Metric('order_gross_profit').descending(True), Dimension('metric_time').grain('week').descending(True) ]
+  order_by=[Metric('order_gross_profit').descending(True), Dimension('metric_time').grain('week').descending(True) ])
   }}
 ``` 
 
@@ -396,7 +396,7 @@ select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time').grain('week')],
   limit=10,
-  order_by=[Metric('order_gross_profit'), Dimension('metric_time').grain('week')]
+  order_by=[Metric('order_gross_profit'), Dimension('metric_time').grain('week')])
   }}
 ``` 
 
