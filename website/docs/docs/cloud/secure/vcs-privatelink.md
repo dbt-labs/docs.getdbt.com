@@ -49,7 +49,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     - **Load balancer:** Attach the NLB created in the previous step.
     - **Acceptance required (recommended)**:  When enabled, requires a new connection request to the VPC Endpoint Service to be accepted by the customer before connectivity is allowed ([details](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#accept-reject-connection-requests)).
 
- ### 2. Grant dbt AWS account access to the VPC Endpoint Service
+### 2. Grant dbt AWS account access to the VPC Endpoint Service
 
 Once these resources have been provisioned, access needs to be granted for the dbt Labs AWS account to create a VPC Endpoint in our VPC. On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the following IAM role in the appropriate production AWS account and save your changes ([details](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#add-remove-permissions)).
 
