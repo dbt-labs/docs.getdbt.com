@@ -1,7 +1,7 @@
 ---
 title: "Exports"
 description: "Use Exports to materialize tables to the data platform on a schedule."
-sidebar_label: "Materialize queries with Exports"
+sidebar_label: "Materialize with Exports"
 ---
 
 Exports in the dbt Semantic Layer extends the [saved queries](/docs/build/saved-queries) functionality:
@@ -13,9 +13,9 @@ While saved queries are a way to save and reuse commonly used queries in MetricF
 
 | Feature    | Exports  | Saved queries  |
 |-----------|-----------|----------------|
-| **Availability**    | Available to dbt Cloud users on [Team or Enterprise](https://www.getdbt.com/pricing/) plan on  on dbt versions 1.7 or higher.| Available in both dbt Core and dbt Cloud.     |
+| **Availability**    | Available to dbt Cloud users on [Team or Enterprise](https://www.getdbt.com/pricing/) plans, on dbt versions 1.7 or higher.| Available in both dbt Core and dbt Cloud.     |
 | **Purpose**         | To schedule and run saved queries as part of [dbt's job scheduler](/docs/deploy/job-scheduler). | To define and manage common Semantic Layer queries in YAML, which includes metrics and dimensions.   |
-| **Usage**           | Automatically runs saved queries and materializes them within your data platform. <br /><br />**Example**: Creating a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing common MetricFlow queries within dbt projects.<br /><br />**Example**: Standardizing a frequently used revenue calculation across multiple reports. | For materializing query results in the data platform. |
+| **Usage**           | Automatically runs saved queries and materializes them within your data platform. Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. <br /><br />**Example**: Creating a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing common MetricFlow queries within dbt projects.<br /><br />**Example**: Standardizing a frequently used revenue calculation across multiple reports. | For materializing query results in the data platform. |
 | **Integration**     | Must have the dbt Semantic Layer configured in your dbt project.<br /><br />Tightly integrated with the [MetricFlow Server](/docs/use-dbt-semantic-layer/sl-architecture#components) and dbt Cloud's job scheduler. | Integrated into dbt DAG and managed alongside other dbt nodes. |
 | **Configuration**   | Configured within dbt Cloud environment and job scheduler settings. | Defined in YAML format within dbt project files.   |
 
@@ -67,8 +67,9 @@ Exports in dbt are effectively integrated with your data models and metrics, all
 
 To execute exports using the job scheduler:
 
-- Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud. 
-- Use the built-in `dbt build` command to execute exports and saved queries. Note that although you can selectively run specific saved queries, this level of selection isn't available for individual exports. However, you can always create a different saved query if you want to separate exports. WHAT'S A SAMPLE QUERY? IS IT `export-as export_name` OR `dbt sl export --saved-query sq_name`
+- Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud.
+- Use the built-in `dbt build` command to execute exports and saved queries. 
+  - Note that although you can selectively run specific saved queries, this level of selection isn't available for individual exports. However, you can always create a different saved query if you want to separate exports. WHAT'S A SAMPLE QUERY? IS IT `export-as export_name` OR `dbt sl export --saved-query sq_name`
 - After dbt completes building the models, the MetricFlow Server processes the exports, compiles the necessary datasets, and executes data operations.
 - You can review the exports execution details in the jobs logs. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the `dbt build` logs.
 - Your data is now available in the data platform for querying.
@@ -115,3 +116,6 @@ Additional parameters and commands are introduced in MetricFlow CLI and Cloud In
 | --- | --- | --- | --- |
 | `create-query` |	`dbt sl query` |	`{{ semantic_layer.query() }}` |	Allows you to build the SQL for a query that does not hit the cache, utilizes a saved-query to specify parameters or specifies whether the cache should be utilized or overwritten	|
 | `export`	| `dbt sl export`	| None, Not possible	| Builds an export using the GraphQL API. Use the export [parameters](#parameters). specified above in  |
+
+
+## FAQs
