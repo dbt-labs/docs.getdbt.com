@@ -61,10 +61,12 @@ Once the VPC Endpoint Service is provisioned and configured find the service nam
 
  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vpc-endpoint-service-name.png" width="80%" title="Location of the VPC Endpoint Service name in the AWS console" />
 
- :::note Custom DNS configuration
- If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the dbt Labs Infrastructure team in the dbt Cloud private network. For example:
+:::note Custom DNS configuration
+ 
+If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the dbt Labs Infrastructure team in the dbt Cloud private network. For example:
     - **Private hosted zone:** `examplecorp.com`
     - **DNS record:** `github.examplecorp.com`
+    
 :::
 
 ### 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
