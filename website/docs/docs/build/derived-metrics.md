@@ -21,6 +21,7 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `metrics` |  The list of metrics used in the derived metrics. | Required  |
 | `alias` | Optional alias for the metric that you can use in the expr. | Optional |
 | `filter` | Optional filter to apply to the metric. | Optional |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
 | `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Optional |
 
 The following displays the complete specification for derived metrics, along with an example.
@@ -32,6 +33,7 @@ metrics:
     type: derived # Required
     label: The value that will be displayed in downstream tools #Required
     type_params: # Required
+      fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       expr: the derived expression # Required
       metrics: # The list of metrics used in the derived metrics # Required
         - name: the name of the metrics. must reference a metric you have already defined # Required
@@ -49,6 +51,7 @@ metrics:
     type: derived
     label: Order Gross Profit
     type_params:
+      fill_nulls_with: 0
       expr: revenue - cost
       metrics:
         - name: order_total
@@ -60,6 +63,7 @@ metrics:
     description: "The gross profit for each food order."
     type: derived
     type_params:
+      fill_nulls_with: 0
       expr: revenue - cost
       metrics:
         - name: order_total
@@ -96,6 +100,7 @@ The following example displays how you can calculate monthly revenue growth usin
   description: Percentage of customers that are active now and those active 1 month ago
   label: customer_retention
   type_params:
+    fill_nulls_with: 0
     expr: (active_customers/ active_customers_prev_month)
     metrics:
       - name: active_customers
@@ -115,6 +120,7 @@ You can query any granularity and offset window combination. The following examp
   type: derived
   label: d7 Bookings Change
   type_params:
+    fill_nulls_with: 0
     expr: bookings - bookings_7_days_ago
     metrics:
       - name: bookings
@@ -126,10 +132,10 @@ You can query any granularity and offset window combination. The following examp
 
 When you run the query  `dbt sl query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated. For dbt Core, you can use the `mf query` prefix. 
 
-1. We retrieve the raw, unaggregated dataset with the specified measures and dimensions at the smallest level of detail, which is currently 'day'.
-2. Then, we perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.
+1. Retrieve the raw, unaggregated dataset with the specified measures and dimensions at the smallest level of detail, which is currently 'day'.
+2. Then, perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.
    For example, to calculate `d7_booking_change` for July 2017: 
-   - First, we sum up all the booking values for each day in July to calculate the bookings metric.
+   - First, sum up all the booking values for each day in July to calculate the bookings metric.
    - The following table displays the range of days that make up this monthly aggregation.
 
 |   | Orders | Metric_time |
@@ -139,7 +145,7 @@ When you run the query  `dbt sl query --metrics d7_booking_change --group-by met
 |   | 78 | 2017-07-01 |
 | Total  | 7438 | 2017-07-01 |
 
-3. Next, we calculate July's bookings with a 7-day offset. The following table displays the range of days that make up this monthly aggregation. Note that the month begins 7 days later (offset by 7 days) on 2017-07-24.
+3. Calculate July's bookings with a 7-day offset. The following table displays the range of days that make up this monthly aggregation. Note that the month begins 7 days later (offset by 7 days) on 2017-07-24.
 
 |   | Orders | Metric_time |
 | - | ---- | -------- |
@@ -148,7 +154,7 @@ When you run the query  `dbt sl query --metrics d7_booking_change --group-by met
 |   | 83 | 2017-06-24 |
 | Total  | 7252 | 2017-07-01 |
 
-4. Lastly, we calculate the derived metric and return the final result set:
+4. Lastly, calculate the derived metric and return the final result set:
    
 ```bash
 bookings - bookings_7_days_ago would be compile as 7438 - 7252 = 186. 
