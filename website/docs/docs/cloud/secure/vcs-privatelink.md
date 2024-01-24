@@ -64,8 +64,8 @@ Once the VPC Endpoint Service is provisioned and configured find the service nam
 :::note Custom DNS configuration
  
 If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the dbt Labs Infrastructure team in the dbt Cloud private network. For example:
-    - **Private hosted zone:** `examplecorp.com`
-    - **DNS record:** `github.examplecorp.com`
+    - Private hosted zone: examplecorp.com
+    - DNS record: github.examplecorp.com
     
 :::
 
