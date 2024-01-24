@@ -56,35 +56,35 @@ The project roles enable you to work within the projects in various capacities. 
 
 #### Account permissions for project roles
 
-| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webhook |
-|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:------:|  
-| Account settings         |   R   |         |      R         |           |     R     |           |             |          |                |             |     R      |        |
-| Auth provider            |       |         |                |           |           |           |             |          |                |             |            |        |
-| Billing                  |       |         |                |           |           |           |             |          |                |             |            |        |
-| Groups                   |   R   |         |      R         |     R     |     R     |           |             |          |                |      R      |     R      |        |
-| Invitations              |   W   |    R    |      R         |     R     |     R     |     R     |      R      |          |                |      R      |     R      |        |
-| Licenses                 |   W   |    R    |      R         |     R     |     R     |     R     |      R      |          |                |             |     R      |        |
-| Members                  |   W   |         |      R         |     R     |     R     |           |             |          |                |      R      |     R      |        |
-| Project (create)         |       |         |                |           |           |           |             |          |                |             |            |        |
-| Public models            |   R   |    R    |      R         |     R     |     R     |     R     |      R      |     R    |        R       |      R      |     R      |    R   |
-| Service tokens           |       |         |                |           |           |           |             |          |                |             |            |        |
-| Webhooks                 |   W   |         |                |     W     |           |           |             |          |                |             |            |    W   |
+| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webhook |
+|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
+| Account settings         |   R   |         |      R         |           |     R     |           |             |             |          |                |             |     R      |         |
+| Auth provider            |       |         |                |           |           |           |             |             |          |                |             |            |         |
+| Billing                  |       |         |                |           |           |           |             |             |          |                |             |            |         |
+| Groups                   |   R   |         |      R         |     R     |     R     |           |             |             |          |                |      R      |     R      |         |
+| Invitations              |   W   |    R    |      R         |     R     |     R     |     R     |             |      R      |          |                |      R      |     R      |         |
+| Licenses                 |   W   |    R    |      R         |     R     |     R     |     R     |             |      R      |          |                |             |     R      |         |
+| Members                  |   W   |         |      R         |     R     |     R     |           |             |             |          |                |      R      |     R      |         |
+| Project (create)         |       |         |                |           |           |           |             |             |          |                |             |            |         |
+| Public models            |   R   |    R    |      R         |     R     |     R     |     R     |             |      R      |     R    |        R       |      R      |     R      |    R    |
+| Service tokens           |       |         |                |           |           |           |             |             |          |                |             |            |         |
+| Webhooks                 |   W   |         |                |     W     |           |           |             |             |          |                |             |            |    W    |
 
 #### Project permissions for project roles
 
-|Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webhook |
-|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:------:|  
-| Connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |          |                |     R       |     R      |        |
-| Credentials              |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
-| Custom env. variables    |   W   |    W    |       W        |     W     |     W     |     W     |      R      |          |                |     R       |     W      |        |
-| dbt adapters             |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
-| Develop <br />(IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |          |                |             |            |        |
-| Environments             |   W   |    R    |       R        |     R     |     R     |     W     |      R      |          |                |     R       |     R      |        |
-| Jobs                     |   W   |    R    |       R        |     W     |     R     |     W     |      R      |          |                |     R       |     R      |        |
-| Metadata                 |   R   |    R    |       R        |     R     |     R     |     R     |      R      |     R    |                |     R       |     R      |        |
-| Permissions (Groups & Licenses)              |   W   |         |       R        |     R     |     R     |           |             |          |                |             |     W      |        |
-| Profile (Credentials)                 |   W   |    R    |       W        |     R     |     R     |     R     |             |          |                |     R       |     R      |        |
-| Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |      R      |          |                |     R       |     W      |        |
-| Repositories             |   W   |         |       R        |     R     |     W     |           |             |          |                |     R       |     R      |        |
-| Runs                     |   W   |    R    |       R        |     W     |     R     |     W     |      R      |          |                |     R       |     R      |        |
-| Semantic Layer Config    |   W   |    R    |       W        |     R     |     R     |     R     |             |          |        W       |     R       |     R      |        |
+|Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webhook |
+|--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
+| Connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |                |     R       |     R      |         |
+| Credentials              |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
+| Custom env. variables    |   W   |    W    |       W        |     W     |     W     |     W     |             |      R      |          |                |     R       |     W      |         |
+| dbt adapters             |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
+| Develop <br />(IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |             |          |                |             |            |         |
+| Environments             |   W   |    R    |       R        |     R     |     R     |     W     |             |      R      |          |                |     R       |     R      |         |
+| Jobs                     |   W   |    R    |       R        |     W     |     R     |     W     |             |      R      |          |                |     R       |     R      |         |
+| Metadata                 |   R   |    R    |       R        |     R     |     R     |     R     |             |      R      |     R    |                |     R       |     R      |         |
+| Permissions (Groups & Licenses)              |   W   |         |       R        |     R     |     R     |           |             |             |          |                |             |     W      |         |
+| Profile (Credentials)                 |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |                |     R       |     R      |         |
+| Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |             |      R      |          |                |     R       |     W      |         |
+| Repositories             |   W   |         |       R        |     R     |     W     |           |             |             |          |                |     R       |     R      |         |
+| Runs                     |   W   |    R    |       R        |     W     |     R     |     W     |             |      R      |          |                |     R       |     R      |         |
+| Semantic Layer Config    |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |        W       |     R       |     R      |         |
