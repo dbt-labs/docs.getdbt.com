@@ -7,7 +7,7 @@ With the Discovery API, you can query the metadata in dbt Cloud to learn more ab
 
 You can use the API in a variety of ways to get answers to your business questions. Below describes some of the uses of the API and is meant to give you an idea of the questions this API can help you answer.
 
-| Use Case | Outcome | Example Questions |
+| Use case | Outcome | <div style={{width:'400px'}}>Example questions</div> |
 | --- | --- | --- |
 | [Performance](#performance) | Identify inefficiencies in pipeline execution to reduce infrastructure costs and improve timeliness. | <ul><li>What’s the latest status of each model?</li> <li>Do I need to run this model?</li><li>How long did my DAG take to run?</li> </ul>|
 | [Quality](#quality) | Monitor data source freshness and test results to resolve issues and drive trust in data. | <ul><li>How fresh are my data sources?</li><li>Which tests and models failed?</li><li>What’s my project’s test coverage?</li></ul>  |
