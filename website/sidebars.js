@@ -504,6 +504,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
             "docs/dbt-cloud-apis/authentication",
+            "docs/dbt-cloud-apis/personal-access-tokens",
             "docs/dbt-cloud-apis/user-tokens",
             "docs/dbt-cloud-apis/service-tokens",
           ],

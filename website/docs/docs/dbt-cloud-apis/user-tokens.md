@@ -4,6 +4,14 @@ id: "user-tokens"
 pagination_next: "docs/dbt-cloud-apis/service-tokens"
 ---
 
+:::warning
+
+Personal API Keys are being deprecated. Please create a new account-scoped API token (under account settings) and use that instead. Make this change before March X, 2024. Learn more about this change and the migration process on the [Personal Access Token](/docs/dbt-cloud-apis/personal-access-tokens) page.
+
+Please [contact support](/docs/dbt-support#dbt-cloud-support) with any questions or concerns.
+
+:::
+
 ## User API tokens
 
 Each dbt Cloud user with a [Developer license](/docs/cloud/manage-access/seats-and-users) is
