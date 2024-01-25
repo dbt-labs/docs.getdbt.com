@@ -21,13 +21,11 @@ We're not limited to just passing measures through to our metrics, we can also _
 
 ```YAML
  - name: food_revenue
-    description: The revenue from food in each order.
-    label: Food Revenue
-    type: simple
-    type_params:
-      measure: revenue
-      filter: |
-        {{ Dimension('order__is_food_order') }} = true
+   description: The revenue from food in each order.
+   label: Food Revenue
+   type: simple
+   type_params:
+     measure: food_revenue
 ```
 
 - 📝 Now we can set up our ratio metric.
