@@ -7,7 +7,7 @@ date: 2023-10-17
 sidebar_position: 06
 ---
 
-The dbt Cloud IDE and dbt Cloud CLI now automatically installs `dbt deps` when your environment starts or when necessary. Previously, it would prompt you to run `dbt deps` during initialization. 
+The dbt Cloud IDE and dbt Cloud CLI now automatically installs `dbt deps` when your environment starts or when necessary for dbt version 1.6 and higher. Previously, it would prompt you to run `dbt deps` during initialization. 
 
 This improved workflow is available to all multi-tenant dbt Cloud users (Single-tenant support coming next week) and applies to dbt versions.
 
