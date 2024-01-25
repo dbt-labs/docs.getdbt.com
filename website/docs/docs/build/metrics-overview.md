@@ -20,7 +20,7 @@ The keys for metrics definitions are:
 | `config` | Provide the specific configurations for your metric.   | Optional |
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
-|  `meta` | Additional metadata you want to add to your metric. | Optional |
+
 
 Here's a complete example of the metrics spec configuration:
 
