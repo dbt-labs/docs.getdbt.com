@@ -5,7 +5,7 @@ sidebar_label: "Update and fixes: dbt Semantic Layer"
 sidebar_position: 08
 date: 2024-01-31
 ---
-The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/use-dbt-semantic-layer/dbt-sl).
+The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
 
 The following list explains the new features, updates, and fixes for January 2024 in more detail.
 
