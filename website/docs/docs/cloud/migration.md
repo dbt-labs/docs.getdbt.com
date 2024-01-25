@@ -33,7 +33,7 @@ If your account is scheduled for migration, you will see a banner indicating you
 
 3. **IDE sessions** &mdash; Any uncommitted changes in the IDE might be lost during the migration process. dbt Labs _strongly_ encourages you to commit all changes in the IDE before your scheduled migration time.
 4. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can resend the invitations once the migration is complete.
-5. **Git integrations** &mdash; Integrations with GitHub, GitLab, and Azure DevOps will need to be manually updated. dbt Labs will not be migrating any accounts using these integrations at this time. If you're using one of these integrations and your account is scheduled for migration, please contact support and we will delay your migration.
+5. **Git integrations** &mdash; Native integrations with [GitLab](/docs/cloud/git/connect-gitlab#for-the-dbt-cloud-enterprise-tier) and [Azure DevOps](/docs/cloud/git/connect-azure-devops) will need to be manually updated. dbt Labs will not be migrating any accounts using these integrations at this time. If you're using one of these integrations and your account is scheduled for migration, please contact support and we will delay your migration.
 6. **SSO integrations** &mdash; Integrations with SSO identity providers (IdPs) will need to be manually updated. dbt Labs will not be migrating any accounts using SSO at this time. If you're using one of these integrations and your account is scheduled for migration, please contact support and we will delay your migration.
 
 ## Post-migration
