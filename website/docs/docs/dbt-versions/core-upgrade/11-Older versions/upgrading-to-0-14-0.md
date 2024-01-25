@@ -4,10 +4,6 @@ id: "upgrading-to-0-14-0"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 This guide outlines migration instructions for:
 
 1. [Upgrading archives to snapshots](#upgrading-to-snapshot-blocks)
@@ -189,7 +185,7 @@ models:
 
 </File>
 
-**Configuring the `incremental_strategy for a single model:**
+**Configuring the `incremental_strategy` for a single model:**
 
 <File name='models/my_model.sql'>
 

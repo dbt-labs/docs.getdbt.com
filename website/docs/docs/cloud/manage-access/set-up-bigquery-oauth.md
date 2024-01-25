@@ -77,4 +77,5 @@ Select **Allow**. This redirects you back to dbt Cloud. You should now be an aut
 
 ## FAQs
 
-<FAQ path="Warehouse/bg-oauth-drive-scope"/>
+<FAQ path="Warehouse/bq-oauth-drive-scope" />
+

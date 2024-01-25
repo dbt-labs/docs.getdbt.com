@@ -70,7 +70,7 @@ $ pwd
 <Lightbox src="/img/starter-project-dbt-cli.png" title="The starter project in a code editor" />
 </div>
 
-6. Update the following values in the `dbt_project.yml` file:
+6. dbt provides the following values in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 
@@ -92,7 +92,7 @@ models:
 
 ## Connect to BigQuery
 
-When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connect-data-platform/connection-profiles), which is a YAML file with all the connection details to your warehouse.
+When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connect-data-platform/connection-profiles), which is a YAML file with all the connection details to your warehouse. 
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.

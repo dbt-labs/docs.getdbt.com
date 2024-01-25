@@ -20,6 +20,7 @@ This metric is common for calculating things like weekly active users, or month-
 | `measure` | The measure you are referencing. | Required |
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
 
 The following displays the complete specification for cumulative metrics, along with an example:
 
@@ -30,13 +31,15 @@ metrics:
     type: cumulative # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
+      fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       measure: The measure you are referencing # Required
-      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Can not be used with window. 
-      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with grain_to_date
+      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Cannot be used with grain_to_date
+      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with window
 
 ```
 
 ## Limitations
+
 Cumulative metrics are currently under active development and have the following limitations:
 - You are required to use [`metric_time` dimension](/docs/build/dimensions#time) when querying cumulative metrics. If you don't use `metric_time` in the query, the cumulative metric will return incorrect results because it won't perform the time spine join. This means you cannot reference time dimensions other than the `metric_time` in the query.
 
@@ -59,12 +62,14 @@ metrics:
     description: The cumulative value of all orders
     type: cumulative
     type_params:
+      fill_nulls_with: 0
       measure: order_total
   - name: cumulative_order_total_l1m
     label: Cumulative Order total (L1M)   
     description: Trailing 1 month cumulative order amount
     type: cumulative
     type_params:
+      fills_nulls_with: 0
       measure: order_total
       window: 1 month
   - name: cumulative_order_total_mtd
@@ -72,6 +77,7 @@ metrics:
     description: The month to date value of all orders
     type: cumulative
     type_params:
+      fills_nulls_with: 0
       measure: order_total
       grain_to_date: month
 ```
@@ -201,16 +207,16 @@ The current method connects the metric table to a timespine table using the prim
 
 ``` sql
 select
-  count(distinct distinct_users) as weekly_active_users
-  , metric_time
+  count(distinct distinct_users) as weekly_active_users,
+  metric_time
 from (
   select
-    subq_3.distinct_users as distinct_users
-    , subq_3.metric_time as metric_time
+    subq_3.distinct_users as distinct_users,
+    subq_3.metric_time as metric_time
   from (
     select
-      subq_2.distinct_users as distinct_users
-      , subq_1.metric_time as metric_time
+      subq_2.distinct_users as distinct_users,
+      subq_1.metric_time as metric_time
     from (
       select
         metric_time
@@ -223,8 +229,8 @@ from (
     ) subq_1
     inner join (
       select
-        distinct_users as distinct_users
-        , date_trunc('day', ds) as metric_time
+        distinct_users as distinct_users,
+        date_trunc('day', ds) as metric_time
       from demo_schema.transactions transactions_src_426
       where (
         (date_trunc('day', ds)) >= cast('1999-12-26' as timestamp)
@@ -241,6 +247,7 @@ from (
   ) subq_3
 )
 group by
-  metric_time
-limit 100
+  metric_time,
+limit 100;
+
 ```

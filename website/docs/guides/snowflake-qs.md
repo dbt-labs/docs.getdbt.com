@@ -26,7 +26,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
-
+ 
 ### Prerequisites​
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
@@ -462,7 +462,7 @@ Sources make it possible to name and describe the data loaded into your warehous
 
 5. Execute `dbt run`. 
 
-    The results of your `dbt run` will be exactly the same as the previous step. Your `stg_cusutomers` and `stg_orders`
+    The results of your `dbt run` will be exactly the same as the previous step. Your `stg_customers` and `stg_orders`
     models will still query from the same raw data source in Snowflake. By using `source`, you can
     test and document your raw data and also understand the lineage of your sources. 
 

@@ -4,10 +4,6 @@ id: "upgrading-to-v0.20"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 :::caution Unsupported version
 dbt Core v0.20 has reached the end of critical support. No new patch versions will be released, and it will stop running in dbt Cloud on June 30, 2022. Read ["About dbt Core versions"](/docs/dbt-versions/core) for more details.
 :::
@@ -29,9 +25,9 @@ dbt Core v0.20 has reached the end of critical support. No new patch versions wi
 
 ### Tests
 
-- [Building a dbt Project: tests](/docs/build/tests)
-- [Test Configs](/reference/test-configs)
-- [Test properties](/reference/resource-properties/tests)
+- [Building a dbt Project: tests](/docs/build/data-tests)
+- [Test Configs](/reference/data-test-configs)
+- [Test properties](/reference/resource-properties/data-tests)
 - [Node Selection](/reference/node-selection/syntax) (with updated [test selection examples](/reference/node-selection/test-selection-examples))
 - [Writing custom generic tests](/best-practices/writing-custom-generic-tests)
 

@@ -16,7 +16,7 @@ To set up a job to generate docs:
 1. In the top left, click **Deploy** and select **Jobs**.
 2. Create a new job or select an existing job and click **Settings**.
 3. Under "Execution Settings," select **Generate docs on run**.
-   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-job-execution-settings.png" title="Setting up a job to generate documentation"/>
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-job-execution-settings.png" width="65%" title="Setting up a job to generate documentation"/>
 
 4. Click **Save**. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.
 
@@ -44,7 +44,7 @@ You configure project documentation to generate documentation when the job you s
 3. Navigate to **Projects** and select the project that needs documentation.
 4. Click **Edit**.
 5. Under **Artifacts**, select the job that should generate docs when it runs.
-   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" title="Configuring project documentation"/>
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" width="55%" title="Configuring project documentation"/>
 6. Click **Save**.
 
 ## Generating documentation
@@ -52,7 +52,7 @@ You configure project documentation to generate documentation when the job you s
 To generate documentation in the dbt Cloud IDE, run the `dbt docs generate` command in the
 Command Bar in the dbt Cloud IDE. This command will generate the Docs for your dbt project as it exists in development in your IDE session.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" width="70%" title="dbt docs generate"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" width="80%" title="Executing the dbt docs generate in the dbt Cloud IDE"/>
 
 After generating your documentation, you can click the **Book** icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
 
@@ -65,4 +65,4 @@ These generated docs always show the last fully successful run, which means that
 The dbt Cloud IDE makes it possible to view [documentation](/docs/collaborate/documentation)
 for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/98c05c5-Screen_Shot_2019-02-08_at_9.18.22_PM.png" title="Project documentation"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/98c05c5-Screen_Shot_2019-02-08_at_9.18.22_PM.png" width="65%" title="Project documentation"/>
