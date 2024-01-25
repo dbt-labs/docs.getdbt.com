@@ -133,38 +133,32 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 
 ## Related docs
 
-- [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features)
-- [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
+- [How we style our dbt projects](/best-practices/how-we-style/0-how-we-style-our-dbt-projects)
+- [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/reference/dbt-commands)
-- [dbt Cloud IDE release notes](/tags/ide)
 
 ## Related questions
 
-<FAQ path="Git/gitignore"/> <br />
+<FAQ path="Git/gitignore"/>
 
-<details>
-  <summary>Is there a cost to using the Cloud IDE?</summary>
-  <div>
-    <div>Not at all! You can use dbt Cloud when you sign up for the <a href="https://www.getdbt.com/pricing/">Free Developer plan</a>, which comes with one developer seat. If you’d like to access more features or have more developer seats, you can upgrade your account to the Team or Enterprise plan. See <a href="https://www.getdbt.com/pricing/">dbt pricing plans</a> for more details. </div>
-  </div>
-</details>
-<details>
-  <summary>Can I be a contributor to dbt Cloud?</summary>
-  <div>
-    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open-source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
-  </div>
-</details>
-<details>
-  <summary>What is the difference between developing on the dbt Cloud IDE, the dbt Cloud CLI, and dbt Core?</summary>
-  <div>
-    <div>You can develop dbt using the web-based IDE in dbt Cloud or on the command line interface using the dbt Cloud CLI or open-source dbt Core, all of which enable you to execute dbt commands. The key distinction between the dbt Cloud CLI and dbt Core is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its features.<br /><br />
-      <span>&mdash; </span>
-      <b>dbt Cloud IDE:</b> <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">dbt Cloud</a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project. <br /><br />
-      <span>&mdash; </span>
-      <b>dbt Cloud CLI: </b> <a href="https://docs.getdbt.com/docs/cloud/cloud-cli-installation">The dbt Cloud CLI</a> allows you to run dbt commands against your dbt Cloud development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more. <br /><br />
-      <span>&mdash; </span>
-      <b>dbt Core:</b> dbt Core is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that’s freely available. You can build your dbt project in a code editor, and run dbt commands from the command line.
-    </div>
-  </div>
-</details>
+<detailsToggle alt_header="Is there a cost to using the Cloud IDE?">
+Not at all! You can use dbt Cloud when you sign up for the <a href="https://www.getdbt.com/pricing/">Free Developer plan</a>, which comes with one developer seat. If you’d like to access more features or have more developer seats, you can upgrade your account to the Team or Enterprise plan.<br />
+
+Refer to <a href="https://www.getdbt.com/pricing/">dbt pricing plans</a> for more details.
+</detailsToggle>
+
+<detailsToggle alt_header="Can I be a contributor to dbt Cloud?">
+As a proprietary product, dbt Cloud's source code isn't available for community contributions. If you want to build something in the dbt ecosystem, we encourage you to review [this article](/community/contributing/contributing-coding) about contributing to a dbt package, a plugin, dbt-core, or this documentation site. Participation in open-source is a great way to level yourself up as a developer, and give back to the community.
+</detailsToggle>
+
+<detailsToggle alt_header="What is the difference between developing on the dbt Cloud IDE, the dbt Cloud CLI, and dbt Core?">
+You can develop dbt using the web-based IDE in dbt Cloud or on the command line interface using the dbt Cloud CLI or open-source dbt Core, all of which enable you to execute dbt commands. The key distinction between the dbt Cloud CLI and dbt Core is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its features:
+
+- dbt Cloud IDE: <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">dbt Cloud</a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project.
+
+- dbt Cloud CLI: <a href="https://docs.getdbt.com/docs/cloud/cloud-cli-installation">The dbt Cloud CLI</a> allows you to run dbt commands against your dbt Cloud development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more.
+
+- dbt Core: dbt Core is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that’s freely available. You can build your dbt project in a code editor, and run dbt commands from the command line
+
+</detailsToggle>
