@@ -25,7 +25,7 @@ Using MetricFlow with dbt Cloud means you won't need to manage versioning &mdash
 
 <TabItem value="cloudcli" label="dbt Cloud CLI">
 
-- MetricFlow commands are embedded in the dbt Cloud CLI. This means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately.
+- MetricFlow [commands](#metricflow-commands) are embedded in the dbt Cloud CLI. This means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately.
 - You don't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
 
 </TabItem>
@@ -36,20 +36,16 @@ Using MetricFlow with dbt Cloud means you won't need to manage versioning &mdash
 You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
 :::
 
-
-
 </TabItem>
 
 <TabItem value="core" label="dbt Core">
 
+:::tip Use dbt Cloud CLI for semantic layer development
 
-:::info Use dbt Cloud CLI for semantic layer development
-
-Use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project on dbt Cloud or dbt Core with MetricFlow. 
+You can use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project.
 
 A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
 :::
-
 
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
@@ -70,16 +66,16 @@ Something to note, MetricFlow `mf` commands return an error if you have a Metafo
 MetricFlow provides the following commands to retrieve metadata and query metrics. 
 
 <Tabs>
-<TabItem value="cloud" label="Commands for dbt Cloud">
+<TabItem value="cloud" label="Commands for dbt Cloud CLI">
 
-Use the `dbt sl` prefix before the command name to execute them in dbt Cloud. For example, to list all metrics, run `dbt sl list metrics`. 
+You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`.
 
 - [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
 - [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
-- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
+- [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
 
 <!--below commands aren't supported in dbt cloud yet
 - [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
@@ -226,10 +222,11 @@ mf tutorial # In dbt Core
 
 ### Query
 
-Create a new query with MetricFlow, execute that query against the user's data platform, and return the result:
+Create a new query with MetricFlow and execute it against your data platform. The query returns the following result:
 
 ```bash
 dbt sl query --metrics <metric_name> --group-by <dimension_name> # In dbt Cloud 
+dbt sl query --saved-query <name> # In dbt Cloud
 
 mf query --metrics <metric_name> --group-by <dimension_name> # In dbt Core
 
@@ -372,7 +369,6 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
 You can further filter the data set by adding a `where` clause to your query.
 
 **Query**
-
 ```bash
 # In dbt Cloud 
 dbt sl query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True" 
@@ -406,7 +402,6 @@ To filter by time, there are dedicated start and end time options. Using these o
 
 **Query**
 ```bash
-
 # In dbt Cloud
 dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 
@@ -429,9 +424,27 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
 
 </TabItem>
 
+<TabItem value="eg6" label=" Saved queries">
 
+You can use this for frequently used queries. Replace `<name>` with the name of your [saved query](/docs/build/saved-queries). 
+
+**Query**
+```bash
+dbt sl query --saved-query <name> # In dbt Cloud
+
+mf query --saved-query <name> # In dbt Core
+```
+
+For example, if you use dbt Cloud and have a saved query named `new_customer_orders`, you would run `dbt sl query --saved-query new_customer_orders`.
+
+:::info A note on querying saved queries
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, note that `metric` or `group_by` parameters aren't available in this context.
+
+(SHOULD WE SAY WHY TEY CAN'T USE IT? BC IT'S PREDEFINED RIGHT? SHOULD WE LINK TO [THESE PARAMETERS](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-values)?)
+:::
+
+</TabItem>
 </Tabs>
-
 
 ### Additional query examples
 

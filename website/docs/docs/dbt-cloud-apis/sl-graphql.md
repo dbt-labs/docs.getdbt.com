@@ -217,6 +217,31 @@ Dimension {
 DimensionType = [CATEGORICAL, TIME]
 ```
 
+**List saved queries**
+  
+  ```graphql
+  {
+  savedQueries(environmentId: 200532) {
+    name
+    description
+    label
+    queryParams {
+      metrics {
+        name
+      }
+      groupBy {
+        name
+        grain
+        datePart
+      }
+      where {
+        whereSqlTemplate
+      }
+    }
+  }
+}
+```
+
 ### Querying
 
 When querying for data, _either_ a `groupBy` _or_ a `metrics` selection is required. 
@@ -576,3 +601,41 @@ mutation {
   }
 }
 ```
+
+**Querying compile SQL with saved queries** 
+
+This query includes the field `savedQuery` and generates the SQL based on a predefined [saved query](/docs/build/saved-queries),rather than dynamically building it from a list of metrics and groupings. You can use this for frequently used queries.
+
+```graphql
+mutation {
+  compileSql(
+    environmentId: 200532
+    savedQuery: "new_customer_orders" # new field
+  ) {
+    queryId
+    sql
+  }
+}
+```
+
+:::info A note on querying saved queries
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, note that `metric` or `group_by` parameters aren't available in this context.
+
+(SHOULD WE SAY WHY TEY CAN'T USE IT? BC IT'S PREDEFINED RIGHT? SHOULD WE LINK TO [THESE PARAMETERS](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-values) OR CREATE A NEW SECTION FOR THEM FOR GRAPHQL?)
+:::
+
+**Create query with saved queries** 
+
+This takes the same inputs as the `createQuery` mutation, but includes the field `savedQuery`. You can use this for frequently used queries.
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: 200532
+    savedQuery: "new_customer_orders"  # new field
+  ) {
+    queryId
+  }
+}
+```
+

@@ -403,23 +403,26 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 
 ### Query with compile keyword
 
-Use the following example to query using a `compile` keyword:
+- Use the following example to query using a `compile` keyword:
+  ```sql
+  select * from {{
+  semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+      group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
+      compile=True)
+      }}
+  ```
 
-```bash
-select * from {{
-semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
-		group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-		compile=True)
-		}}
-```
+- Use the following example to compile SQL with a [saved query](/docs/build/saved-queries). You can use this for frequently used queries.
 
-You can compile SQL with a [saved query](/docs/build/saved-queries) using the following example:
+  ```sql
+  select * from {{ semantic_layer.query(saved_query="new_customer_orders", limit=5, compile=True}}
+  ```
 
-```sql
-select * from {{ semantic_layer.query(saved_query="new_customer_orders", limit=5, compile=True}}
-```
+:::info A note on querying saved queries
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, note that `metric` or `group_by` parameters aren't available in this context.
 
-In the previous saved query example, the `compile=True` argument indicates that the SQL will be compiled using a saved query before executed. This means the JDBC API will first translate the saved query (`new_customer_orders`) into executable SQL code and then apply the limit of 5 records.
+(SHOULD WE SAY WHY TEY CAN'T USE IT? BC IT'S PREDEFINED RIGHT? SHOULD WE LINK TO [THESE PARAMETERS](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-values)?)
+:::
 
 ### Query a saved query
 
