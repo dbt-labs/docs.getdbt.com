@@ -100,8 +100,9 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
   - Ephemeral models can help keep your <Term id="data-warehouse" /> clean by reducing clutter (also consider splitting your models across multiple schemas by [using custom schemas](/docs/build/custom-schemas)).
 * **Cons:**
     * You cannot select directly from this model.
-    * Operations (e.g. macros called via `dbt run-operation` cannot `ref()` ephemeral nodes)
+    * [Operations](/docs/build/hooks-operations#about-operations) (for example, macros called using [`dbt run-operation`](/reference/commands/run-operation) cannot `ref()` ephemeral nodes)
     * Overuse of ephemeral materialization can also make queries harder to debug.
+    * Ephemeral materialization doesn't support [model contracts](/docs/collaborate/govern/model-contracts#where-are-contracts-supported).
 * **Advice:**  Use the ephemeral materialization for:
     * very light-weight transformations that are early on in your DAG
     * are only used in one or two downstream models, and
