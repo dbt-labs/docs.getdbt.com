@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#all-things-risingwave'
   slack_channel_link: 'https://www.risingwave.com/slack'
   platform_name: 'RisingWave'
- config_page: '/reference/resource-configs/no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Vendor-supported plugin
