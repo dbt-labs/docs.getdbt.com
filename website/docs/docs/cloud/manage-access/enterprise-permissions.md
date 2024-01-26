@@ -31,13 +31,13 @@ The user's [license](/docs/cloud/manage-access/seats-and-users) type always over
 
 Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations.
 
-1. Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
+1. Click the gear icon to the top right and select **Account Settings**. Click **Groups & Licenses**
 
-<Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
+<Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" width="70%" title="Navigate to Groups"/>
 
-1. Select an existing group or create a new group to add RBAC. Name the group (this can be any name you like, but it's recommended to keep it consistent with the SSO groups). If you have configured SSO with SAML 2.0, you may have to use the GroupID instead of the name of the group.
-2. Configure the SSO provider groups you want to add RBAC by clicking **Add** in the **SSO** section. These fields are case-sensitive and must match the source group formatting.
-3. Configure the permissions for users within those groups by clicking **Add** in the **Access** section of the window.
-<Lightbox src="/img/docs/dbt-cloud/Configure-SSO-Access.png" title="Configure SSO groups and Access permissions"/>
+2. Select an existing group or create a new group to add RBAC. Name the group (this can be any name you like, but it's recommended to keep it consistent with the SSO groups). If you have configured SSO with SAML 2.0, you may have to use the GroupID instead of the name of the group.
+3. Configure the SSO provider groups you want to add RBAC by clicking **Add** in the **SSO** section. These fields are case-sensitive and must match the source group formatting.
+4. Configure the permissions for users within those groups by clicking **Add** in the **Access** section of the window.
+<Lightbox src="/img/docs/dbt-cloud/Configure-SSO-Access.png" width="45%"  title="Configure SSO groups and Access permissions"/>
 
-4. When you've completed your configurations, click **Save**. Users will begin to populate the group automatically once they have signed in to dbt Cloud with their SSO credentials.
+5. When you've completed your configurations, click **Save**. Users will begin to populate the group automatically once they have signed in to dbt Cloud with their SSO credentials.
