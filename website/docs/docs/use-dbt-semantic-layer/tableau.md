@@ -63,7 +63,7 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
    - To display available metrics and dimensions, dbt Semantic Layer returns metadata for a fake table with the dimensions and metrics as 'columns' on this table. Because of this, you can't actually query this table for previews or extracts. 
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 - In any of our Semantic Layer interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
-- We support calculated fields to create a parameter filter and using a calculated field to dynamically select metrics and dimensions, but other calculated field functions are not supported.
+- We support calculated fields to the extent that you are using them to create a parameter filter or dynamically select metrics and dimensions, but other calculated field functions are not supported.
 
 
 
