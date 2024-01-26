@@ -413,6 +413,24 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 		}}
 ```
 
+You can compile SQL with a [saved query](/docs/build/saved-queries) using the following example:
+
+```sql
+select * from {{ semantic_layer.query(saved_query="new_customer_orders", limit=5, compile=True}}
+```
+
+In the previous saved query example, the `compile=True` argument indicates that the SQL will be compiled using a saved query before executed. This means the JDBC API will first translate the saved query (`new_customer_orders`) into executable SQL code and then apply the limit of 5 records.
+
+### Query a saved query
+
+Use the following example to query a [saved query](/docs/build/saved-queries):
+
+```sql
+select * from {{ semantic_layer.query(saved_query="new_customer_orders", limit=5}}
+```
+
+The JDBC API will use the saved query (`new_customer_orders`) as defined and apply a limit of 5 records.
+
 ## FAQs
 
 <FAQ path="Troubleshooting/sl-alpn-error" />
