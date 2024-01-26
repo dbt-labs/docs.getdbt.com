@@ -14,7 +14,7 @@ The following list explains the new features, updates, and fixes for January 202
 - **Introducing Conversion metrics** &mdash; This new metric type allows you to measure conversion events easily. For example, users who viewed a web page and then filled out a form. You can learn more about [conversion metrics in our docs](/docs/build/conversion).
 - **Introducing Exports** &mdash; Use Exports to materialize saved queries within the data platform on a schedule. It uses the dbt Cloud job scheduler to execute saved queries for reliable and fast data reporting.
 - **Simplified dimension resolution** &mdash; Instead of specifying the fully qualified dimension name (for example, `order__user__country`) in the group by or filter expression, you now only need to provide the primary entity and dimensions name, like `user__county`.
-- **Query saved queries** &mdash; You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer in GraphQL, JDBC, and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
+- **Query saved queries** &mdash; You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
 
 ## Updates
 
