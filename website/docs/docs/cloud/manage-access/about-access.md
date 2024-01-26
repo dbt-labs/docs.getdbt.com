@@ -69,11 +69,11 @@ Cloud administrators can manage access to dbt Cloud resources via identity
 management software like Azure AD, Okta, or GSuite. See _SSO Mappings_ below for
 more information.
 
-You can view the groups in your account or create new groups from the **Team > Groups**
+You can view the groups in your account or create new groups from the **Groups & Licenses**
 page in your Account Settings.
 
 <Lightbox
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-list.png"
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-list-2.png"
     title="Viewing a list of groups in the Account Settings page."
 />
 
