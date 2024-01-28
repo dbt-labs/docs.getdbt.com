@@ -924,27 +924,39 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Global configs",
+          label: "Flags (global configs)",
           link: {
             type: "doc",
             id: "reference/global-configs/about-global-configs",
           },
           items: [
-            "reference/global-configs/command-line-flags",
-            "reference/global-configs/environment-variable-configs",
-            "reference/global-configs/logs",
-            "reference/global-configs/cache",
-            "reference/global-configs/failing-fast",
-            "reference/global-configs/json-artifacts",
-            "reference/global-configs/parsing",
-            "reference/global-configs/print-output",
-            "reference/global-configs/usage-stats",
-            "reference/global-configs/version-compatibility",
-            "reference/global-configs/warnings",
-            "reference/global-configs/yaml-configurations",
+            {
+              type: "category",
+              label: "Setting flags",
+              items: [
+                "reference/global-configs/command-line-options",
+                "reference/global-configs/environment-variable-configs",
+                "reference/global-configs/project-flags",
+              ]
+            },
+            {
+              type: "category",
+              label: "Available flags",
+              items: [
+                "reference/global-configs/logs",
+                "reference/global-configs/cache",
+                "reference/global-configs/failing-fast",
+                "reference/global-configs/json-artifacts",
+                "reference/global-configs/legacy-behaviors",
+                "reference/global-configs/parsing",
+                "reference/global-configs/print-output",
+                "reference/global-configs/usage-stats",
+                "reference/global-configs/version-compatibility",
+                "reference/global-configs/warnings",
+              ]
+            },
           ],
         },
-        "reference/global-cli-flags",
         "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",

@@ -52,6 +52,9 @@ The following example is a list of all available configurations in the `dbt_proj
 
 [require-dbt-version](/reference/project-configs/require-dbt-version): version-range | [version-range]
 
+[flags](/reference/global-configs/project-flags):
+  <global-configs>
+
 [dbt-cloud](/docs/cloud/cloud-cli-installation):
   [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
   [defer-env-id](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional

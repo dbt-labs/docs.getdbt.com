@@ -1,18 +1,57 @@
 ---
-title: "About global configs"
+title: "About flags (global configs)"
 id: "about-global-configs"
-sidebar: "About global configs"
+sidebar: "About flags (global configs)"
 ---
 
-Global configs enable you to fine-tune _how_ dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. In general, they differ from most [project configs](/reference/dbt_project.yml) and [resource configs](/reference/configs-and-properties), which tell dbt _what_ to run.
+In dbt, "flags" (also called "global configs") are configurations for fine-tuning _how_ dbt runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell dbt about _what_ to run.
 
-Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model. These configs are "global" because they are available for all dbt commands, and because they can be set for all projects running on the same machine or in the same environment.
+Flags control things like the visual output of logs, whether to treat specific warning messages as errors, or whether to "fail fast" after encountering the first error. These flags are "global" because they are available for all dbt commands, and because they can be set in multiple places.
 
-### Global config precedence
+There is significant overlap between dbt's flags and dbt's command line options, but they are not the same:
+- Certain flags can only be set in `dbt_project.yml`, and cannot be overridden for specific invocations via CLI option.
+- If a CLI option is supported by specific commands, rather than supported by all commands ("global"), it is generally not considered to be a "flag".
 
-Starting in v1.0, you can set global configs in three places. dbt will evaluate the configs in the following order:
-1. [user config](https://docs.getdbt.com/reference/global-configs/yaml-configurations)
-1. [environment variable](https://docs.getdbt.com/reference/global-configs/environment-variable-configs)
-1. [CLI flag](https://docs.getdbt.com/reference/global-configs/command-line-flags)
+### Setting flags
 
-Each config is prioritized over the previous one. For example, if all three are provided, then the CLI flag takes precedence.
+There are multiple ways of setting flags, which depend on the use case:
+- **[Project-level `flags` (`dbt_project.yml`)](https://docs.getdbt.com/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Preserve legacy behaviors until their slated deprecation.
+- **[Environment variables](https://docs.getdbt.com/reference/global-configs/environment-variable-configs):** Define behavior that should be different in different runtime environments (development vs. production vs. [continuous integration](https://docs.getdbt.com/docs/deploy/continuous-integration), or different for different users in development (based on personal preferences).
+- **[CLI options](https://docs.getdbt.com/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all dbt commands.
+
+The precedence order is CLI > Env Var > Project.
+
+Most flags can be set in all three places:
+```yaml
+# dbt_project.yml
+flags:
+  # set default for running this project -- anywhere, anytime, by anyone
+  fail_fast: true
+```
+```bash
+# set this environment variable to 'True' (bash syntax)
+export DBT_FAIL_FAST=1
+dbt run
+```
+```bash
+dbt run --fail-fast # set to True for this specific invocation
+dbt run --no-fail-fast # set to False
+```
+
+However, there are exceptions:
+- Flags for impermanent file paths (e.g. `--log-path` or `--state-path`) cannot be set in `dbt_project.yml`. To override defaults, pass CLI options or set environment variables (`DBT_LOG_PATH`, `DBT_STATE_PATH`).
+- Flags opting into legacy dbt behaviors can _only_ be defined in `dbt_project.yml`. These are intended to be set in version control, and migrated via pull/merge request. Their values should not diverge indefinitely across invocations, environments, or users.
+
+### Accessing flags
+
+Custom user-defined logic, written in Jinja, can check the values of flags using [the `flags` context variable](https://docs.getdbt.com/reference/dbt-jinja-functions/flags).
+
+```yaml
+# dbt_project.yml
+
+on-run-start:
+  - '{{ log("I will stop at the first sign of trouble", info = true) if flags.FAIL_FAST }}'
+```
+
+Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](https://docs.getdbt.com/reference/parsing#known-limitations).
+
