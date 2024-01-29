@@ -68,8 +68,6 @@ There are two flags related to `package-lock.yml`:
 - `dbt deps --lock` &mdash; creates or updates the `package-lock.yml` file but does not install the packages.
 - `dbt deps --upgrade` &mdash; creates or updates the `package-lock.yml` file with the most recent dependencies from `packages.yml`. Also install the packages unless the `--lock` flag is also passed.
 
-The `--add-package` flag allows you to add a package to the `packages.yml` with configurable `--version` and `--source` information. The `--dry-run` flag, when set to `False`(default), recompiles the `package-lock.yml` file after a new package is added to the `packages.yml` file. Set the flag to `True` for the changes to not persist. 
-
 Examples of the `--add-package` flag:
 ```shell
 # add package from hub (--source arg defaults to "hub")
@@ -83,9 +81,5 @@ dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source
 
 # add package from local
 dbt deps --add-package /opt/dbt/redshift --source local
-
-# add package to packages.yml and package-lock.yml WITHOUT actually installing dependencies
-dbt deps --add-package dbt-labs/dbt_utils@1.0.0 --dry-run
-
 ```
 </VersionBlock>
