@@ -25,7 +25,7 @@ You can also follow along via this video:
 Do a file search to check if you have a macro named `generate_schema_name` in the `macros` directory of your project.
 
 ### You do not have a macro named `generate_schema_name` in your project
-This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql)
+This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-adapters/blob/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql)
 
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
