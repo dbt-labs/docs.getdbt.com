@@ -4,7 +4,7 @@ sidebar_label: "environment"
 id: dbt-environment
 ---
 
-The `dbt environment` command enables you to interact with your dbt Cloud environment. The `dbt environment` command is useful for:
+The `dbt environment` command enables you to interact with your dbt Cloud environment. Use the command for:
 
 - Viewing your local configuration details (account ID, active project ID, deployment environment, and more).
 - Viewing your dbt Cloud configuration details (environment ID, environment name, connection type, and more).
