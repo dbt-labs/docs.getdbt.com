@@ -887,6 +887,7 @@ const sidebarSettings = {
             "reference/commands/compile",
             "reference/commands/debug",
             "reference/commands/deps",
+            "reference/commands/dbt-environment",
             "reference/commands/init",
             "reference/commands/list",
             "reference/commands/parse",
