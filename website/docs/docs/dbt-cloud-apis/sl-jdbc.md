@@ -177,7 +177,8 @@ To query metric values, here are the following parameters that are available. Yo
 | `where`     | A where clause that allows you to filter on dimensions and entities using parameters. This takes a filter list OR string. Inputs come with `Dimension`, and `Entity` objects. Granularity is required if the `Dimension` is a time dimension | `"{{ where=Dimension('customer__country') }} = 'US')"`   | 
 | `limit`   | Limit the data returned    | `limit=10` | 
 |`order`  | Order the data returned by a particular field     | `order_by=['order_gross_profit']`, use `-` for descending, or full object notation if the object is operated on: `order_by=[Metric('order_gross_profit').descending(True)`]   | 
-| `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`  | 
+| `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`  |
+| `saved_query` | A saved query you can use for frequently used queries. | `select * from {{ semantic_layer.query(saved_query="new_customer_orders"` |
 
 ## Note on time dimensions and `metric_time`
 
@@ -419,9 +420,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   ```
 
 :::info A note on querying saved queries
-When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, note that `metric` or `group_by` parameters aren't available in this context.
-
-(SHOULD WE SAY WHY TEY CAN'T USE IT? BC IT'S PREDEFINED RIGHT? SHOULD WE LINK TO [THESE PARAMETERS](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-values)?)
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
 :::
 
 ### Query a saved query

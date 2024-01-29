@@ -619,9 +619,7 @@ mutation {
 ```
 
 :::info A note on querying saved queries
-When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, note that `metric` or `group_by` parameters aren't available in this context.
-
-(SHOULD WE SAY WHY TEY CAN'T USE IT? BC IT'S PREDEFINED RIGHT? SHOULD WE LINK TO [THESE PARAMETERS](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-values) OR CREATE A NEW SECTION FOR THEM FOR GRAPHQL?)
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
 :::
 
 **Create query with saved queries** 
@@ -638,4 +636,3 @@ mutation {
   }
 }
 ```
-
