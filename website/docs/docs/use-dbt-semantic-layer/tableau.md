@@ -45,7 +45,7 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 
 ## Using the integration
 
-1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page that allows you to choose between all the metrics, dimensions, and entities configured in your dbt Semantic Layer under the data source called "ALL". You can optionally access individual [saved queries](https://docs.getdbt.com/docs/build/saved-queries) that you've defined. These will also show up as data sources when you log in with the connector.
+1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page that allows you to choose between all the metrics, dimensions, and entities configured in your dbt Semantic Layer under the data source called "ALL". You can optionally access individual [saved queries](/docs/build/saved-queries) that you've defined. These will also show up as data sources when you log in with the connector.
 2. **Access worksheet** &mdash; From there, go directly to a worksheet in the bottom left-hand corner.
 3. **Access metrics and dimensions** &mdash; Then, you'll find all the metrics, dimensions, entities that are available to query on the left side of your window.
 
