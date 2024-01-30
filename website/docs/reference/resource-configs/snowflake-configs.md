@@ -360,6 +360,10 @@ Dynamic tables are supported with the following configuration parameters:
 | [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply` | n/a                       |
 | [`target_lag`](#target-lag)                                                      | `<string>` | yes      |         | alter                     |
 | [`snowflake_warehouse`](#configuring-virtual-warehouses)                         | `<string>` | yes      |         | alter                     |
+| [`refresh_mode`](#refresh-mode)                                | `<string>` | no       |         | n/a                       |
+| [`initialize`](#initialize)                                  | `<string>` | no       |         | n/a                       |
+| [`comment`](#comment)                                     | `<string>` | no       |         | n/a                       |
+
 
 <Tabs
   groupId="config-languages"
@@ -421,6 +425,7 @@ models:
     [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [refresh_mode]
 ) }}
 ```
 
@@ -439,6 +444,34 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 - **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
 
 Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
+
+
+### Refresh Mode
+Specifies the refresh type for the dynamic table. 
+- AUTO
+
+  Enforces an incremental refresh of the dynamic table by default. If the CREATE DYNAMIC TABLE statement does not support the incremental refresh mode, the dynamic table is automatically created with the full refresh mode.
+
+  You can verify the refresh mode using the SHOW DYNAMIC TABLES statement. The refresh_mode column shows the refresh mode in use, while the text column shows the user-specified refresh mode.
+- FULL
+
+  Enforces a full refresh of the dynamic table, even if the dynamic table can be incrementally refreshed.
+- INCREMENTAL
+
+  Enforces an incremental refresh of the dynamic table. If the query that underlies the dynamic table can’t perform an incremental refresh, dynamic table creation fails and displays an error message.
+
+### Initialize
+Specifies the behavior of the initial refresh of the dynamic table
+
+  - ON_CREATE
+
+    Refreshes the dynamic table synchronously at creation.
+  - ON_SCHEDULE
+
+    Refreshes the dynamic table at the next scheduled refresh.
+
+### Comment
+Specifies a comment for the dynamic table.
 
 ### Limitations
 
