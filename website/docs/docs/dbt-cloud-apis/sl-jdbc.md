@@ -60,13 +60,125 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 
 ## Querying the API for metric metadata
 
-The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions. 
+The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions.
 
-Refer to the following tabs for metadata commands and examples:
+The following toggles provide fetching examples and metadata commands:
 
+<detailsToggle alt_header="Fetch defined metrics">
+
+You can use this query to fetch all defined metrics in your dbt project:
+
+```bash
+select * from {{ 
+	semantic_layer.metrics() 
+}}
+```
+</detailsToggle>
+
+<detailsToggle alt_header="Fetch dimension for a metric">
+
+You can use this query to fetch all dimensions for a metric.
+
+Note, metrics is a required argument that lists one or multiple metrics in it.
+
+```bash
+select * from {{ 
+    semantic_layer.dimensions(metrics=['food_order_amount'])}}
+```
+</detailsToggle>
+
+<detailsToggle alt_header="Fetch dimension values">
+
+You can use this query to fetch dimension values for one or multiple metrics and a single dimension.
+
+Note, metrics is a required argument that lists one or multiple metrics, and a single dimension.
+
+```bash
+select * from {{ 
+semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['customer__customer_name'])}}
+```
+</detailsToggle>
+
+<detailsToggle alt_header="Fetch granularities for metrics">
+
+You can use this query to fetch queryable granularities for a list of metrics. 
+
+This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as metric_time), but if you want queryable granularities for other time dimensions, you can use the dimensions() call, and find the column queryable_granularities.
+
+Note, metrics is a required argument that lists one or multiple metrics.
+```bash
+select * from {{
+    semantic_layer.queryable_granularities(metrics=['food_order_amount', 'order_gross_profit'])}}
+```
+
+</detailsToggle>
+
+<detailsToggle alt_header="Fetch available metrics given dimensions">
+
+You can use this query to fetch available metrics given dimensions. This command is essentially the opposite of getting dimensions given a list of metrics.
+
+Note, group_by is a required argument that lists one or multiple dimensions.
+
+```bash
+select * from {{
+    semantic_layer.metrics_for_dimensions(group_by=['customer__customer_type'])
+}}
+```
+
+</detailsToggle>
+
+<detailsToggle alt_header="Fetch granularities for all time dimensions">
+
+You can use this example query to fetch available granularities for all time dimensions (the similar queryable granularities API call only returns granularities for the primary time dimensions for metrics).
+
+The following call is a derivative of the dimensions() call and specifically selects the granularity field.
+
+```bash
+select NAME, QUERYABLE_GRANULARITIES from {{
+    semantic_layer.dimensions(
+        metrics=["order_total"]
+    )
+}}
+```
+
+</detailsToggle>
+
+<detailsToggle alt_header="Fetch primary time dimension names">
+
+It may be useful in your application to expose the names of the time dimensions that represent metric_time or the common thread across all metrics.
+
+You can first query the metrics() argument to fetch a list of measures, then use the measures() call which will return the name(s) of the time dimensions that make up metric time.
+
+```bash
+select * from {{
+    semantic_layer.measures(metrics=['orders'])
+}}
+```
+
+</detailsToggle>
+
+<detailsToggle alt_header="List saved queries">
+
+You can use this example query to list all available saved queries in your dbt project.
+
+**Command**
+
+```bash
+select * from semantic_layer.saved_queries()
+```
+
+**Output**
+
+```bash
+| NAME | DESCRIPTION | LABEL | METRICS | GROUP_BY | WHERE_FILTER |
+```
+
+</detailsToggle>
+
+<!--
 <Tabs>
 
-<TabItem value="allmetrics" label="Fetch defined metrics">
+<TabItem value="allmetrics" label="Defined metrics">
 
 Use this query to fetch all defined metrics in your dbt project:
 
@@ -77,7 +189,7 @@ select * from {{
 ```
 </TabItem>
 
-<TabItem value="alldimensions" label="Fetch dimensions for a metric">
+<TabItem value="alldimensions" label="Dimensions for a metric">
 
 Use this query to fetch all dimensions for a metric. 
 
@@ -90,7 +202,7 @@ select * from {{
 
 </TabItem>
 
-<TabItem value="dimensionvalueformetrics" label="Fetch dimension values">
+<TabItem value="dimensionvalueformetrics" label="Dimension values">
 
 Use this query to fetch dimension values for one or multiple metrics and a single dimension. 
 
@@ -103,9 +215,11 @@ semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['custom
 
 </TabItem>
 
-<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable granularities for metrics">
+<TabItem value="queryablegranularitiesformetrics" label="Granularities for metrics">
 
-You can use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
+You can use this query to fetch queryable granularities for a list of metrics. 
+
+This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
 
 Note, `metrics` is a required argument that lists one or multiple metrics.
 
@@ -120,7 +234,7 @@ select * from {{
 
 <Tabs>
 
-<TabItem value="metricsfordimensions" label="Fetch available metrics given dimensions">
+<TabItem value="metricsfordimensions" label="Available metrics given dimensions">
 
 Use this query to fetch available metrics given dimensions. This command is essentially the opposite of getting dimensions given a list of metrics.
 
@@ -135,9 +249,11 @@ select * from {{
 
 </TabItem>
 
-<TabItem value="queryablegranularitiesalltimedimensions" label="Fetch queryable granularities for all time dimensions">
+<TabItem value="queryablegranularitiesalltimedimensions" label="Granularities for all time dimensions">
 
-You can use this example query to fetch available granularities for all time dimensions (the similar queryable granularities API call only returns granularities for the primary time dimensions for metrics). The following call is a derivative of the `dimensions()` call and specifically selects the granularity field.
+You can use this example query to fetch available granularities for all time dimensions (the similar queryable granularities API call only returns granularities for the primary time dimensions for metrics). 
+
+The following call is a derivative of the `dimensions()` call and specifically selects the granularity field.
 
 ```bash
 select NAME, QUERYABLE_GRANULARITIES from {{
@@ -150,7 +266,7 @@ select NAME, QUERYABLE_GRANULARITIES from {{
 
 </TabItem>
 
-<TabItem value="fetchprimarytimedimensionnames" label="Fetch primary time dimension names">
+<TabItem value="fetchprimarytimedimensionnames" label="Primary time dimension names">
 
 It may be useful in your application to expose the names of the time dimensions that represent `metric_time` or the common thread across all metrics.
 
@@ -162,14 +278,15 @@ select * from {{
 }}
 ```
 </TabItem>
-
 </Tabs>
+
+-->
 
 ## Querying the API for metric values
 
 To query metric values, here are the following parameters that are available. Your query must have _either_ a `metric` **or** a `group_by` parameter to be valid. 
 
-| Parameter | Description  | Example    | 
+| Parameter | <div style={{width:'400px'}}>Description</div>  | <div style={{width:'100px'}}>Example</div>  | 
 | --------- | -----------| ------------ |
 | `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=['revenue']` | 
 | `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=['user__country', 'metric_time']`    |
