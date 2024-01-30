@@ -14,7 +14,7 @@ recently_updated: true
 
 ## Introduction
 
-If a model uses the [`schema` config](/reference/resource-properties/schema) but builds under an unexpected schema, here are some steps for debugging the issue. The full explanation on custom schemas can be found [here](/docs/build/custom-schemas).
+If a model uses the [`schema` config](/reference/resource-properties/schema) but builds under an unexpected schema, here are some steps for debugging the issue. The full explanation of custom schemas can be found [here](/docs/build/custom-schemas).
 
 
 You can also follow along via this video:
@@ -25,7 +25,7 @@ You can also follow along via this video:
 Do a file search to check if you have a macro named `generate_schema_name` in the `macros` directory of your project.
 
 ### You do not have a macro named `generate_schema_name` in your project
-This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L47C1-L60)
+This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-adapters/blob/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql)
 
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
@@ -53,7 +53,7 @@ If your `generate_schema_name` macro looks like so:
     {{ generate_schema_name_for_env(custom_schema_name, node) }}
 {%- endmacro %}
 ```
-Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L47-L60).
+Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql).
 ```sql
 {% macro generate_schema_name_for_env(custom_schema_name, node) -%}
 
