@@ -123,7 +123,7 @@ dbt --quiet run
 
 ### Logging relational cache events
 
-The `LOG_CACHE_EVENTS` config enables verbose logging for [relational cache](reference/global-configs/cache) events which are disabled by default.
+The `LOG_CACHE_EVENTS` config allows detailed logging for [relational cache](reference/global-configs/cache) events, which are disabled by default.
 
 ```text
 dbt --log-cache-events compile
