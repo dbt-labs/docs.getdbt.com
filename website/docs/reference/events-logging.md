@@ -34,7 +34,7 @@ _For more details about how the eventing system has been implemented in dbt-core
 
 <VersionBlock firstVersion="1.4">
 
-Starting in v1.4, the structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.proto) file within the `dbt-core` codebase.
+Starting in v1.4, the structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt-core/blob/3bf148c443e6b1da394b62e88a08f1d7f1d8ccaa/core/dbt/events/core_types.proto) file within the `dbt-core` codebase.
 
 Every event has the same two top-level keys:
 - `info`: Information common to all events. See the table below for the breakdown.
