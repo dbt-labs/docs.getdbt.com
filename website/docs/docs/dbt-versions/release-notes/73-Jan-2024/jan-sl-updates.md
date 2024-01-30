@@ -29,7 +29,7 @@ The following list explains the new features, updates, and fixes for January 202
 ## Bug fixes
 
 - **BigQuery numeric types** &mdash; Support for numeric types with precision greater than 38 (like `BIGDECIMAL`) in BigQuery is now available. Previously, it was unsupported so would return an error.
-- **Support for scientific notation** &mdash; Scientific notation for large numbers is displayed and correctly interpreted. Previously, they were unsupported. 
+- **Support for scientific notation** &mdash; Scientific notation for large numbers is displayed and correctly interpreted. 
 - **Google Sheets dimension values** &mdash; We now preserve dimension values accurately instead of being inadvertently converted into strings. 
 - **Multiple derived metrics resolution** &mdash; Resolved issues with naming collisions in queries involving multiple derived metrics using the same metric input. Previously, this could cause a naming collision. Input metrics are now deduplicated, ensuring each is referenced only once.
 - **Deduplication of input measures** &mdash; Resolved warnings related to using two duplicate input measures in a derived metric. Previously, this would trigger a warning. Input measures are now deduplicated, enhancing query processing and clarity.
