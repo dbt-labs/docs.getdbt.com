@@ -62,7 +62,7 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 
 The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions.
 
-The following toggles provide fetching examples and metadata commands:
+Expand the following toggles for examples and metadata commands:
 
 <detailsToggle alt_header="Fetch defined metrics">
 
