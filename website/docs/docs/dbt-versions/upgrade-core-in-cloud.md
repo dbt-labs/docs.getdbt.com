@@ -5,7 +5,7 @@ id: "upgrade-core-in-cloud"
 
 In dbt Cloud, both jobs and environments are configured to use a specific version of dbt Core. The version can be upgraded at any time.
 
-### Environments
+## Environments
 
 Navigate to the settings page of an environment, then click **edit**. Click the **dbt Version** dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
 
@@ -13,7 +13,7 @@ Navigate to the settings page of an environment, then click **edit**. Click the 
 
 Be sure to save your changes before navigating away.
 
-### Jobs
+## Jobs
 
 Each job in dbt Cloud can be configured to inherit parameters from the environment it belongs to.
 
