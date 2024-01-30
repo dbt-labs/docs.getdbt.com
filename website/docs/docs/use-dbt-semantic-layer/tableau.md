@@ -58,7 +58,7 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 - **From Desktop to Server** &mdash; Like any Tableau workflow, you can publish your workbook from Tableau Desktop to Tableau Server. For step-by-step instructions, visit Tableau's [publishing guide](https://help.tableau.com/current/pro/desktop/en-us/publish_workbooks_share.htm).
 
 
-## Things to Note
+## Things to note
 
 **Aggregation**
 All metrics are shown as using the "SUM" aggregation type in Tableau's UI, and this cannot be altered using Tableau's interface. The dbt Semantic Layer controls the aggregation type in code and it is intentionally fixed. Keep in mind that the underlying aggregation in the dbt Semantic Layer might not be "SUM" ("SUM" is Tableau's default).
