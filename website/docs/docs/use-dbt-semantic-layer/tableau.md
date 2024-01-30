@@ -45,9 +45,11 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 
 ## Using the integration
 
-1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page that allows you to choose between all the metrics, dimensions, and entities configured in your dbt Semantic Layer under the data source called "ALL". You can optionally access individual [saved queries](/docs/build/saved-queries) that you've defined. These will also show up as data sources when you log in with the connector.
-2. **Access worksheet** &mdash; From there, go directly to a worksheet in the bottom left-hand corner.
-3. **Access metrics and dimensions** &mdash; Then, you'll find all the metrics, dimensions, and entities that are available to query on the left side of your window.
+1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page. 
+2. **Access all Semantic Layer Objects** &mdash; You can choose between all the metrics, dimensions, and entities configured in your dbt Semantic Layer under the data source called "ALL". (Note: "METRICS_AND_DIMENSIONS" was the original name of this data source, and it contains the same information as "ALL". In the future, we will deprecate "METRICS_AND_DIMENSIONS" in favor of "ALL") 
+3. **Access Saved Queries** &mdash; You can optionally access individual [saved queries](/docs/build/saved-queries) that you've defined. These will also show up as unique data sources when you log in.
+3. **Access worksheet** &mdash; From your data source selection, go directly to a worksheet in the bottom left-hand corner.
+4. **Access metrics and dimensions** &mdash; Then, you'll find all the metrics, dimensions, and entities that are available to query on the left side of your window based on your selection.
 
 Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/en-us/gettingstarted_overview.htm) to learn more about how to use Tableau worksheets and dashboards.
 
@@ -56,16 +58,20 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 - **From Desktop to Server** &mdash; Like any Tableau workflow, you can publish your workbook from Tableau Desktop to Tableau Server. For step-by-step instructions, visit Tableau's [publishing guide](https://help.tableau.com/current/pro/desktop/en-us/publish_workbooks_share.htm).
 
 
-## Things to note
+## Things to Note
 
-- All metrics use the "SUM" aggregation type, and this can't be altered. The dbt Semantic Layer controls the aggregation type and it is intentionally fixed. Keep in mind that the underlying aggregation in the dbt Semantic Layer might not be "SUM" (even though "SUM" is Tableau's default).
+**Aggregation**
+All metrics are shown as using the "SUM" aggregation type in Tableau's UI, and this cannot be altered using Tableau's interface. The dbt Semantic Layer controls the aggregation type in code and it is intentionally fixed. Keep in mind that the underlying aggregation in the dbt Semantic Layer might not be "SUM" ("SUM" is Tableau's default).
+
+### Data Sources and Display
 -  In the "ALL" data source, Tableau surfaces all metrics and dimensions from the dbt Semantic Layer on the left-hand side. Note, that not all metrics and dimensions can be combined. You will receive an error message if a particular dimension cannot be sliced with a metric (or vice versa). You can use saved queries for smaller pieces of data that you want to combine.
-   - To display available metrics and dimensions, dbt Semantic Layer returns metadata for a fake table with the dimensions and metrics as 'columns' on this table. Because of this, you can't actually query this table for previews or extracts. 
+- To display available metrics and dimensions, dbt Semantic Layer returns metadata for a fake table with the dimensions and metrics as 'columns' on this table. Because of this, you can't actually query this table for previews or extracts.
+
+### Calculations & Querying
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 - In any of our Semantic Layer interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
-- We support calculated fields to the extent that you are using them to create a parameter filter or dynamically select metrics and dimensions, but other calculated field functions are not supported.
-
-
+- We can support calculated fields for creating parameter filters or dynamically selecting metrics and dimensions. However, other calculated field functions are not supported. _Note: If you have use cases for calculated fields that are not currently covered, please reach out to dbt Support we understand the use case_
+- When using Saved Queries that include filters, we will automatically apply any filters that the query has.
 
 
 ## Unsupported functionality
