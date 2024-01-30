@@ -67,7 +67,7 @@ All metrics are shown as using the "SUM" aggregation type in Tableau's UI, and t
 -  In the "ALL" data source, Tableau surfaces all metrics and dimensions from the dbt Semantic Layer on the left-hand side. Note, that not all metrics and dimensions can be combined. You will receive an error message if a particular dimension cannot be sliced with a metric (or vice versa). You can use saved queries for smaller pieces of data that you want to combine.
 - To display available metrics and dimensions, dbt Semantic Layer returns metadata for a fake table with the dimensions and metrics as 'columns' on this table. Because of this, you can't actually query this table for previews or extracts.
 
-### Calculations & Querying
+### Calculations and querying
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 - In any of our Semantic Layer interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
 - We can support calculated fields for creating parameter filters or dynamically selecting metrics and dimensions. However, other calculated field functions are not supported. _Note: If you have use cases for calculated fields that are not currently covered, please reach out to dbt Support we understand the use case_
