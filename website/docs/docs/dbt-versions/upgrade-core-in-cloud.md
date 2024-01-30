@@ -21,6 +21,24 @@ Each job in dbt Cloud can be configured to inherit parameters from the environme
 
 The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
 
+## Override dbt version
+
+You can override the dbt Core version used by your project &mdash; with it affecting only your user account and no one else's. Use this to safely test newer versions of dbt before officially migrating your projects. 
+
+1. From the gear menu, choose **Profile settings**. 
+1. Choose **Credentials** from the sidebar and select a project. 
+1. In the side panel, scroll to the **User development settings** section. Select a version in the **dbt version** dropdown and click **Save**. When saving, dbt Cloud automatically creates an environment variable for this user-level override and lists it in the **Environment variables** section. 
+
+  An example of overriding version 1.5 with 1.7 for the selected project:
+
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" title="Example of overriding the dbt version on your user account"/>
+
+1. (Optional) Verify that the project will be built using your dbt version override setting. Run `dbt build` in the IDE's command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version dbt Cloud is using.
+
+  Example output of a successful `dbt build` run: 
+
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-verify-overridden-version.png" title="Example output showing version 1.7  being used, not 1.5"/>
+
 ## Supported versions
 
 dbt Labs has always encouraged users to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in dbt Cloud.
