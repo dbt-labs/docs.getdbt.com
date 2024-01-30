@@ -2,59 +2,59 @@
 
 <Card
     title="AlloyDB"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/alloydb-setup'>Install with dbt Core </a> </li><br /><a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a></ul>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/alloydb-setup'>Install with dbt Core </a> </li></ul><br /><a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
     icon="alloydb"/>
 <Card
     title="BigQuery"
-    body="<a href='/docs/cloud/connect-data-platform/connect-bigquery'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/bigquery-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-bigquery><img src=https://badge.fury.io/py/dbt-bigquery.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-bigquery'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/bigquery-setup'>Install with dbt Core </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-bigquery><img src=https://badge.fury.io/py/dbt-bigquery.svg/></a>"
     icon="bigquery"/>
 
 <Card
     title="Databricks"
-    body="<a href='/docs/cloud/connect-data-platform/connect-databricks'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/databricks-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-databricks><img src=https://badge.fury.io/py/dbt-databricks.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-databricks'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/databricks-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-databricks><img src=https://badge.fury.io/py/dbt-databricks.svg/></a>"
     icon="databricks"/>
 
 <Card
     title="Dremio"
-    body="<a href='/docs/core/connect-data-platform/dremio-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-dremio><img src=https://badge.fury.io/py/dbt-dremio.svg/><br />"
+    body="<ul><li><a href='/docs/core/connect-data-platform/dremio-setup'>Install with dbt Core  </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-dremio><img src=https://badge.fury.io/py/dbt-dremio.svg/></a>"
     icon="dremio"/>
 
 <Card
     title="Postgres"
-    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/postgres-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/postgres-setup'>Install with dbt Core </a> </li></ul><br />  <a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
     icon="redshift"/>
 
 <Card
     title="Redshift"
-    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/redshift-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-redshift><img src=https://badge.fury.io/py/dbt-redshift.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/redshift-setup'>Install with dbt Core </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-redshift><img src=https://badge.fury.io/py/dbt-redshift.svg/></a>"
     icon="redshift"/>
 
 <Card
     title="Snowflake"
-    body="<a href='/docs/cloud/connect-data-platform/connect-snowflake'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/snowflake-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-snowflake><img src=https://badge.fury.io/py/dbt-snowflake.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-snowflake'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/snowflake-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-snowflake><img src=https://badge.fury.io/py/dbt-snowflake.svg/></a>"
     icon="snowflake"/>
 
 <Card
     title="Spark"
-    body="<a href='/docs/cloud/connect-data-platform/connect-apache-spark'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/spark-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/spark-setup'>Install with dbt Core </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
     icon="databricks"/>
 
 <Card
     title="Starburst/Trino"
-    body="<a href='/docs/cloud/connect-data-platform/connect-starburst-trino'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/trino-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /> <br /> <a href=https://badge.fury.io/py/dbt-trino><img src=https://badge.fury.io/py/dbt-trino.svg/>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-starburst-trino'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/trino-setup'>Install with dbt Core  </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-trino><img src=https://badge.fury.io/py/dbt-trino.svg/></a>"
     icon="starburst"/>
 
 <Card
     title="Microsoft Fabric"
-    body="<a href='/docs/cloud/connect-data-platform/connect-microsoft-fabric'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/fabric-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-microsoft-fabric'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/fabric-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/></a>"
     icon="fabric"/>
 <Card
     title="Azure Synapse"
-    body="<a href='/docs/core/connect-data-platform/azuresynapse-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/><br /> 🚧 Verification in progress"
+    body="<ul><li><a href='/docs/core/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /> <br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a><br /> 🚧 Verification in progress"
     icon="rocket"/>
 <Card
     title="Teradata"
-    body="<a href='/docs/core/connect-data-platform/teradata-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-teradata><img src=https://badge.fury.io/py/dbt-teradata.svg/><br />"
+    body="<ul><li><a href='/docs/core/connect-data-platform/teradata-setup'>Install with dbt Core  </a> </li> </ul><br /><br /> <a href=https://badge.fury.io/py/dbt-teradata><img src=https://badge.fury.io/py/dbt-teradata.svg/></a>"
     icon="teradata"/>
 
 </div>
