@@ -2,7 +2,7 @@
 
 <Card
     title="AlloyDB"
-    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/alloydb-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install with dbt Core </a> <br /><br /><a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/alloydb-setup'>Install with dbt Core </a> </li><br /><a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a></ul>"
     icon="alloydb"/>
 <Card
     title="BigQuery"
