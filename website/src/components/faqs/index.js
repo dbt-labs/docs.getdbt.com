@@ -37,18 +37,6 @@ function FAQ({ path, alt_header = null }) {
     }
   }, [filePath])
 
-  const handleMouseEnter = () => {
-    setHoverTimeout(setTimeout(() => {
-      setOn(true);
-    }, 500));
-  };
-
-  const handleMouseLeave = () => {
-  if (!isOn) {
-      clearTimeout(hoverTimeout);
-      setOn(false);
-  }
-};
 
   useEffect(() => {
     return () => {
@@ -66,11 +54,10 @@ function FAQ({ path, alt_header = null }) {
   };
 
   return (
-    <div className={styles.faqs} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className={styles.faqs}>
       <span className={styles.link} onClick={toggleOn}>
         <span className={styles.toggle} style={{ transform: isOn ? 'rotateX(0deg)' : 'rotateX(180deg)' }}></span>
         <span className={styles.headerText}>{alt_header || (fileContent?.meta && fileContent.meta.title)}</span>
-        <small className={styles.disclaimer}>Hover to view</small>
       </span>
       <div style={{ display: isOn ? 'block' : 'none' }} className={styles.body}>
         {fileContent?.contents}
