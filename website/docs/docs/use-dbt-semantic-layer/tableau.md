@@ -70,7 +70,7 @@ All metrics are shown as using the "SUM" aggregation type in Tableau's UI, and t
 ### Calculations and querying
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 - In any of our Semantic Layer interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
-- We can support calculated fields for creating parameter filters or dynamically selecting metrics and dimensions. However, other calculated field functions are not supported. _Note: If you have use cases for calculated fields that are not currently covered, please reach out to dbt Support we understand the use case_
+- We can support calculated fields for creating parameter filters or dynamically selecting metrics and dimensions. However, other calculated field functions are not supported. _Note: For calculated fields use cases that are not currently covered, please reach out to [dbt Support](mailto:support@getdbt.com) and share them so we can further understand._
 - When using Saved Queries that include filters, we will automatically apply any filters that the query has.
 
 
