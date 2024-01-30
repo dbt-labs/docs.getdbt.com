@@ -24,7 +24,7 @@ The following list explains the new features, updates, and fixes for January 202
 - **Additional parameters for GraphQL API** &mdash;  Added support to expose `expr` and `agg` for [Measures](/docs/build/measures) in the [GraphQL API](/docs/dbt-cloud-apis/sl-graphql).
 - **Improved error messages** &mdash; When querying a dimension that is not reachable for a given metric, you now have improved error messages returned in the command line interface.
 - **Entities in Tableau** &mdash; We now surface entities in our Tableau integration and these can be queried like dimensions.
-- **New Tableau Data Source** &mdash; We introduced a new data source in our Tableau integration called "ALL", which contains all semantic objects defined. This has the same information as "METRICS_AND_DIMENSIONS". In the future, we will deprecate "METRICS_AND_DIMENSIONS" in favor of "ALL" for clarity. 
+- **New Tableau data source** &mdash; A new data source is available in our Tableau integration called "ALL", which contains all semantic objects defined. This has the same information as "METRICS_AND_DIMENSIONS". In the future, we will deprecate "METRICS_AND_DIMENSIONS" in favor of "ALL" for clarity. 
 
 ## Bug fixes
 
