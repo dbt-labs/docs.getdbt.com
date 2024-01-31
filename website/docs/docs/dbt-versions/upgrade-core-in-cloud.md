@@ -25,7 +25,7 @@ Configure your project to use a different dbt Core version than what's configure
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" title="Example of overriding the dbt version on your user account"/>
 
-1. (Optional) Verify that the project will be built using your dbt version override setting. Run `dbt build` in the IDE's command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version dbt Cloud is using.
+1. (Optional) Verify that dbt Cloud will use your override setting to build the project. Invoke `dbt build` in the IDE's command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version dbt Cloud is using.
 
   Example output of a successful `dbt build` run: 
 
