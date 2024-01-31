@@ -91,6 +91,8 @@ We recommend organizing metrics and dimensions in ways that a non-technical user
 
 - **Organizing Metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
 
+-**Using Saved Queries** &mdash; The Semantic Layer has a concept of Saved Queries which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to our JDBC and GraphQL guides for syntax. 
+
 ### Query flexibility
 
 Allow users to query either one metric alone without dimensions or multiple metrics with dimensions.
