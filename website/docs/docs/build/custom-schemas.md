@@ -53,11 +53,11 @@ models:
 
 ## Understanding custom schemas
 
-When first using custom schemas, it's common to assume that a model will use _only_ the new `schema` configuration, for example, a model that has the configuration `schema: marketing`, would be built in the `marketing` schema. However, dbt will actually put it in a schema like `<target_schema>_marketing` – there's a good reason for this!
+When first using custom schemas, it's a common misunderstanding to assume that a model will use _only_ the new `schema` configuration, for example, a model that has the configuration `schema: marketing` would be built in the `marketing` schema. However, dbt will actually put it in a schema like `<target_schema>_marketing`.
 
-Each dbt user has their own target schema for development (see [Managing Environments](#managing-environments)). If dbt ignored the target schema and only used the model's custom schema, every dbt user would create models in the same schema and would overwrite each other's work.
+There's a good reason for this deviation! Each dbt user has their own target schema for development (see [Managing Environments](#managing-environments)). If dbt ignored the target schema and only used the model's custom schema, every dbt user would create models in the same schema and would overwrite each other's work.
 
-This would be bad enough if it was only development schemas overwriting each other, but it would _also_ impact your production models. By combining the target schema and the custom schema, dbt ensures that objects it creates in your data warehouse don't collide with one another.
+By combining the target schema and the custom schema, dbt ensures that objects it creates in your data warehouse don't collide with one another.
 
 If you prefer to use different logic for generating a schema name, you can change the way dbt generates a schema name (see below).
 
