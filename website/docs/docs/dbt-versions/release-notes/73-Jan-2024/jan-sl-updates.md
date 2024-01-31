@@ -3,6 +3,7 @@ title: "dbt Semantic Layer updates and fixes for January 2024"
 description: "January 2024: New Exports feature, conversion metrics, enhanced metrics labels, support for shorthand to create metrics and Tableau parameter filters, and bug fixes."
 sidebar_label: "Updates and fixes: dbt Semantic Layer"
 sidebar_position: 08
+tags: [Jan-2024]
 date: 2024-01-31
 ---
 The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
