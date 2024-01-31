@@ -23,13 +23,13 @@ The example job seen in the screenshot above belongs to the environment "Prod". 
 
 ## Override dbt version
 
-You can override the dbt Core version used by your project &mdash; with it affecting only your user account and no one else's. Use this to safely test newer versions of dbt before officially migrating your projects. 
+You can override the dbt Core version used by your project. The override only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
 
-1. From the gear menu, choose **Profile settings**. 
+1. From the gear menu, select **Profile settings**. 
 1. Choose **Credentials** from the sidebar and select a project. 
-1. In the side panel, scroll to the **User development settings** section. Select a version in the **dbt version** dropdown and click **Save**. When saving, dbt Cloud automatically creates an environment variable for this user-level override and lists it in the **Environment variables** section. 
+1. In the side panel, scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**. When saving, dbt Cloud automatically creates an environment variable for this user-level override and lists it in the **Environment variables** section. 
 
-  An example of overriding version 1.5 with 1.7 for the selected project:
+  An example of overriding with version 1.7 for the selected project:
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" title="Example of overriding the dbt version on your user account"/>
 
