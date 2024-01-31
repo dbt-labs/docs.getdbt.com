@@ -74,7 +74,7 @@ Optionally set a resource to always or never full-refresh.
 
 </VersionBlock>
 
-This logic is encoded in the [`should_full_refresh()`](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/adapters/include/global_project/macros/materializations/configs.sql#L6) macro.
+This logic is encoded in the [`should_full_refresh()`](https://github.com/dbt-labs/dbt-adapters/blob/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/materializations/configs.sql) macro.
 
 ## Usage
 
