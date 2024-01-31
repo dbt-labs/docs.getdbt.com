@@ -6,7 +6,6 @@ function FAQ({ path, alt_header = null }) {
   const [isOn, setOn] = useState(false);
   const [filePath, setFilePath] = useState(path);
   const [fileContent, setFileContent] = useState({});
-  const [hoverTimeout, setHoverTimeout] = useState(null);
 
   // Get all faq file paths from plugin
   const { faqFiles } = usePluginData('docusaurus-build-global-data-plugin');
@@ -37,21 +36,9 @@ function FAQ({ path, alt_header = null }) {
     }
   }, [filePath])
 
-
-  useEffect(() => {
-    return () => {
-      if (hoverTimeout) {
-        clearTimeout(hoverTimeout);
-      }
-    };
-  }, [hoverTimeout]);
-
-  const toggleOn = () => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-    }
+  const toggleOn = function () {
     setOn(!isOn);
-  };
+  }
 
   return (
     <div className={styles.faqs}>

@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 
 function detailsToggle({ children, alt_header = null }) {
   const [isOn, setOn] = useState(false);
-  const [hoverTimeout, setHoverTimeout] = useState(null);
 
   const handleToggleClick = () => {
     setOn(current => !current);
   };
 
-  useEffect(() => {
-    return () => clearTimeout(hoverTimeout);
-  }, [hoverTimeout]);
 
   return (
     <div className='detailsToggle'>
