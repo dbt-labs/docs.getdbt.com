@@ -5,10 +5,6 @@ id: "upgrading-to-v1.5"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 dbt Core v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/collaborate/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
 2. A Python entry point for [**programmatic invocations**](/reference/programmatic-invocations), at parity with the CLI
@@ -36,7 +32,7 @@ This release includes significant new features, and rework to `dbt-core`'s CLI a
 
 Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated for consistency with other invocation-specific runtime configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882)). We recommend setting via env var or CLI flag instead.
 
-The `dbt list` command will now include `INFO` level logs by default. Previously, the `list` command (and _only_ the `list` command) had `WARN`-level stdout logging, to support piping its results to [`jq`](https://stedolan.github.io/jq/manual/), a file, or another process. To achieve that goal, you can use either of the following parameters:
+The `dbt list` command will now include `INFO` level logs by default. Previously, the `list` command (and _only_ the `list` command) had `WARN`-level stdout logging, to support piping its results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process. To achieve that goal, you can use either of the following parameters:
 - `dbt --log-level warn list` (recommended; equivalent to previous default)
 - `dbt --quiet list` (suppresses all logging less than ERROR level, except for "printed" messages and `list` output)
 

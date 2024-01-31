@@ -26,7 +26,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
-
+ 
 ### Prerequisites​
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/). 

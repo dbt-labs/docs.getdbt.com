@@ -1,8 +1,8 @@
 ---
-title: Configure dbt Cloud CLI
+title: Configure and use the dbt Cloud CLI
 id: configure-cloud-cli
 description: "Instructions on how to configure the dbt Cloud CLI"
-sidebar_label: "Configure dbt Cloud CLI"
+sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
 
@@ -66,9 +66,8 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
     ```yaml
     # dbt_project.yml
     name:
-
     version:
-    ...
+    # Your project configs...
 
     dbt-cloud: 
         project-id: PROJECT_ID
@@ -76,7 +75,9 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
    - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://cloud.getdbt.com/develop/26228/projects/123456`, the project ID is `123456`.
 
-6. You can now [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like `dbt compile`. With your repo recloned, you can add, edit, and sync files with your repo.
+6. You should now be able to [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration details or `dbt compile` to compile models in your dbt project.
+
+With your repo recloned, you can add, edit, and sync files with your repo.
 
 ### Set environment variables
 
@@ -86,10 +87,11 @@ To set environment variables in the dbt Cloud CLI for your dbt project:
 2. Then select **Profile Settings**, then **Credentials**.
 3. Click on your project and scroll to the **Environment Variables** section.
 4. Click **Edit** on the lower right and then set the user-level environment variables.  
+   - Note, when setting up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), using [environment variables](/docs/build/environment-variables) like `{{env_var('DBT_WAREHOUSE')}}` is not supported. You should use the actual credentials instead.
 
 ## Use the dbt Cloud CLI
 
-- The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide.
+- The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your dbt Cloud configuration details.
 - It allows you to automatically defer build artifacts to your Cloud project's production environment.
 - It also supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.

@@ -596,9 +596,9 @@ with events as (
 
 <VersionBlock firstVersion="1.4">
 
-#### Copying ingestion-time partitions
+#### Copying partitions
 
-If you have configured your incremental model to use "ingestion"-based partitioning (`partition_by.time_ingestion_partitioning: True`), you can opt to use a legacy mechanism for inserting and overwriting partitions. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets. Behind the scenes, dbt will add or replace each partition via the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators.
+If you are replacing entire partitions in your incremental runs, you can opt to do so with the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators rather than a `merge` statement. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets because the copy table API does not incur any costs for inserting the data - it's equivalent to the `bq cp` gcloud command line interface (CLI) command.
 
 You can enable this by switching on `copy_partitions: True` in the `partition_by` configuration. This approach works only in combination with "dynamic" partition replacement.
 
@@ -715,8 +715,7 @@ models:
 Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
 
 #### Limitations
-
-The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
+Starting in v1.4, `grant_access_to` config _is thread-safe_. In earlier versions, it wasn't safe to use multiple threads for authorizing several views at once with `grant_access_to` for the same dataset. Initially, after adding a new `grant_access_to` setting, you can execute `dbt run` in a single thread. Later runs with the same configuration won't repeat the existing access grants and can use multiple threads.
 
 <VersionBlock firstVersion="1.7">
 

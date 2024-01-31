@@ -16,6 +16,7 @@ models:
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
+      node_color: <color_id> # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
     [latest_version](/reference/resource-properties/latest_version): <version_identifier>
     [deprecation_date](/reference/resource-properties/deprecation_date): <YAML_DateTime>
     [access](/reference/resource-configs/access): private | protected | public

@@ -5,9 +5,6 @@ id: "upgrading-to-v1.0"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
 
 ### Resources
 

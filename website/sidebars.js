@@ -212,6 +212,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/decodable-setup",
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
+                "docs/core/connect-data-platform/extrica-setup",
               ],
             },
           ],
@@ -323,6 +324,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
                 "docs/build/metrics-overview",
+                "docs/build/conversion",
                 "docs/build/cumulative",
                 "docs/build/derived",
                 "docs/build/ratio",
@@ -885,6 +887,7 @@ const sidebarSettings = {
             "reference/commands/compile",
             "reference/commands/debug",
             "reference/commands/deps",
+            "reference/commands/dbt-environment",
             "reference/commands/init",
             "reference/commands/list",
             "reference/commands/parse",
@@ -1046,6 +1049,7 @@ const sidebarSettings = {
           items: [
             "best-practices/how-we-mesh/mesh-2-structures",
             "best-practices/how-we-mesh/mesh-3-implementation",
+            "best-practices/how-we-mesh/mesh-4-faqs",
           ],
         },
         {
