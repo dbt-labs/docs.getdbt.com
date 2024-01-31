@@ -19,7 +19,7 @@ The following list explains the new features, updates, and fixes for January 202
 ## Updates
 
 - **Display `label` for dbt Semantic Layer metrics** &mdash; The YAML spec parameter `label` is now available for Semantic Layer metrics in [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview). This means you can conveniently use `label` as a display name for your metrics when exposing them.
-- **Use shorthand to create metrics** &mdash; Added support for `create_metric=true` for a measure, which is a shorthand to quickly create metrics. This is useful in cases when metrics are only used to build other metrics.
+- **Use shorthand to create metrics** &mdash; Added support for `create_metric: true` for a measure, which is a shorthand to quickly create metrics. This is useful in cases when metrics are only used to build other metrics.
 - **Support for Tableau parameter filters** &mdash; Added support for Tableau parameter filters. You can use the [Tableau connector](docs/use-dbt-semantic-layer/tableau) to create and use parameters with your dbt Semantic Layer data.
 - **Additional parameters for GraphQL API** &mdash;  Added support to expose `expr` and `agg` for [Measures](/docs/build/measures) in the [GraphQL API](/docs/dbt-cloud-apis/sl-graphql).
 - **Improved error messages** &mdash; When querying a dimension that is not reachable for a given metric, you now have improved error messages returned in the command line interface.
