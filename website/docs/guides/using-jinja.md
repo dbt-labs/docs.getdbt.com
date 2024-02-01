@@ -306,7 +306,7 @@ order by 1
 {% endmacro %}
 
 
-{% macro get_payment_methods() %}
+{% macro get_payment_methods(column_name, relation) %}
 
 {{ return(get_column_values('payment_method', ref('raw_payments'))) }}
 
