@@ -25,16 +25,17 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 1. Ensure you meet the prerequisites above and go to dbt Cloud to download your credentials by clicking on the **Try the dbt Cloud CLI** banner.
    
 <details>
-   <summary>Click to expand the URLs based on your region</summary>
+  
+  <summary>Click to expand the URLs based on your region</summary>
    You can also download the credentials from the links provided based on your region:
    
     - North America: https://cloud.getdbt.com/cloud-cli
     - EMEA: https://emea.dbt.com/cloud-cli
     - APAC: https://au.dbt.com/cloud-cli
-    - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
-    - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
-   
-   </details>
+    - North American Cell 1: <code>https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli</code>
+    - Single-tenant: <code>https://YOUR_ACCESS_URL/cloud-cli</code>
+    
+</details>
    
   
 2. Save the config file to your local computer's filesystem. Make sure to store your `dbt_cloud.yml` config file in a safe place as it contains API keys.
