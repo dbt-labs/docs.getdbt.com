@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 
@@ -24,7 +25,6 @@ function expandable({ children, alt_header = null }) {
   };
 
   return (
-    // Note the use of `styles.expandableContainer` for styling the container
     <div id={anchorId} className={`${styles.expandableContainer} ${styles.local} expandable-anchor anchor`}>
       <a 
         href={`#${anchorId}`}
