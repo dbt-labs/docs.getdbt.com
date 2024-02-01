@@ -10,7 +10,6 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 
 <CloudCLIFlag/>
 
-
 ## Prerequisites
 
 - You must set up a project in dbt Cloud.
@@ -23,21 +22,19 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project. 
 
 1. Ensure you meet the prerequisites above and go to dbt Cloud to download your credentials by clicking on the **Try the dbt Cloud CLI** banner.
-   
+
 <details>
-  
-  <summary>Click to expand the URLs based on your region</summary>
-   You can also download the credentials from the links provided based on your region:
-   
-    - North America: https://cloud.getdbt.com/cloud-cli
-    - EMEA: https://emea.dbt.com/cloud-cli
-    - APAC: https://au.dbt.com/cloud-cli
-    - North American Cell 1: <code>https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli</code>
-    - Single-tenant: <code>https://YOUR_ACCESS_URL/cloud-cli</code>
-    
+<summary>Region URLs to download credentials</summary>
+You can also download the credentials from the links provided based on your region:
+
+- North America: <a href="https://cloud.getdbt.com/cloud-cli">https://cloud.getdbt.com/cloud-cli</a>
+- EMEA: <a herf="https://emea.dbt.com/cloud-cli">https://emea.dbt.com/cloud-cli</a>
+- APAC: <a href="https://au.dbt.com/cloud-cli">https://au.dbt.com/cloud-cli</a>
+- North American Cell 1: <code>https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli</code>
+- Single-tenant: <code>https://YOUR_ACCESS_URL/cloud-cli</code>
+
 </details>
-   
-  
+
 2. Save the config file to your local computer's filesystem. Make sure to store your `dbt_cloud.yml` config file in a safe place as it contains API keys.
 
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
