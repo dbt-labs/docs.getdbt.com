@@ -12,7 +12,7 @@ function Lightbox({ src, collapsed = false, alignment = "center", alt = undefine
     if (isHovered && !isScrolling) {
       timeoutId = setTimeout(() => {
         setExpandImage(true);
-      }, 300);
+      }, 200);
     }
     return () => clearTimeout(timeoutId);
   }, [isHovered, isScrolling]);
