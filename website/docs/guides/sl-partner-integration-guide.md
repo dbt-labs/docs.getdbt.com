@@ -148,7 +148,7 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Listing available dimensions based on one or many metrics
 * Querying defined metric values on their own or grouping by available dimensions
 * Display metadata from [Discovery API](/docs/dbt-cloud-apis/discovery-api) and other context
-* Use [saved queries](/docs/build/saved-queries) to query pre-build metrics, dimensions, and filters. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+* Expose [Saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that Semantic Layer developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 **Stage 3 - More querying flexibility and better user experience (UX)**
 * More advanced filtering
