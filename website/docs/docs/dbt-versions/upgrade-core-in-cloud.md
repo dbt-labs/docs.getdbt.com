@@ -3,9 +3,9 @@ title: "Upgrade Core version in Cloud"
 id: "upgrade-core-in-cloud"
 ---
 
-In dbt Cloud, both jobs and environments are configured to use a specific version of dbt Core. The version can be upgraded at any time.
+In dbt Cloud, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-environments) are configured to use a specific version of dbt Core. The version can be upgraded at any time.
 
-### Environments
+## Environments
 
 Navigate to the settings page of an environment, then click **edit**. Click the **dbt Version** dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
 
@@ -13,7 +13,28 @@ Navigate to the settings page of an environment, then click **edit**. Click the 
 
 Be sure to save your changes before navigating away.
 
-### Jobs
+### Override dbt version
+
+Configure your project to use a different dbt Core version than what's configured in your [development environment](/docs/dbt-cloud-environments#types-of-environments). This _override_ only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
+
+1. From the gear menu, select **Profile settings**. 
+1. Choose **Credentials** from the sidebar and select a project. This opens a side panel.
+1. In the side panel, click **Edit** and scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**. When saving, dbt Cloud automatically creates a `DBT_DEVELOP_CORE_VERSION` environment variable for this user-level override and lists it in the **Environment variables** section. 
+
+  An example of overriding the configured version with 1.7 for the selected project:
+
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" title="Example of overriding the dbt version on your user account"/>
+
+1. (Optional) Verify that dbt Cloud will use your override setting to build the project. Invoke `dbt build` in the IDE's command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version dbt Cloud is using.
+
+  Example output of a successful `dbt build` run: 
+
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-verify-overridden-version.png" title="Example output showing version 1.7 being used, not 1.5"/>
+
+1. If you upgrade the version for your development environment, make sure to delete the `DBT_DEVELOP_CORE_VERSION` environment variable from the **Environment variables** section in your project's credentials.
+
+
+## Jobs
 
 Each job in dbt Cloud can be configured to inherit parameters from the environment it belongs to.
 
