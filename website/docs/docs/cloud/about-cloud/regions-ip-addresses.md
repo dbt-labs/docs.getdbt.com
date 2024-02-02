@@ -23,17 +23,17 @@ dbt Cloud is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions 
 
 ## Accessing your account
 
-To login to dbt Cloud, use the URL that applies to your environment.  Your access URL used will depend on a few factors including location and tenancy:
-- **US multi-tenant:** Use your unique URL that starts with your account prefix, followed by `us1.dbt.com`. For example, `abc123.us1.dbt.com`. You can also use `cloud.getdbt.com`, but this URL will be deprecated in the future. 
-    - If you are unsure of your access URL, navigate to `us1.dbt.com` and enter your credentials. If you are a member of a single account, you will be logged in and your URL will be displayed in the browser. If you are a member of muliple accounts, you will be presented with a list of options, along with the appropriate login URLs for each.
+To log into dbt Cloud, use the URL that applies to your environment.  Your access URL used will depend on a few factors, including location and tenancy:
+- **US multi-tenant:** Use your unique URL that starts with your account prefix, followed by `us1.dbt.com`. For example, `abc123.us1.dbt.com`. You can also use `cloud.getdbt.com`, but this URL will be removed in the future. 
+    - If you are unsure of your access URL, navigate to `us1.dbt.com` and enter your dbt Cloud credentials. If you are a member of a single account, you will be logged in, and your URL will be displayed in the browser. If you are a member of multiple accounts, you will be presented with a list of options, along with the appropriate login URLs for each.
 
     <Lightbox src="/img/docs/dbt-cloud/find-account.png" title="dbt Cloud accounts" />
 
-- **EMEA multi-tenant:** Use the URL `emea.dbt.com`.
-- **APAC multi-tenant:** Use the URL `au.dbt.com`.
+- **EMEA multi-tenant:** Use `emea.dbt.com`.
+- **APAC multi-tenant:** Use `au.dbt.com`.
 - **Worldwide single-tenant and VPC:** Use the vanity URL provided during your onboarding.
 
-### Locating your dbt Cloud IP addresses
+## Locating your dbt Cloud IP addresses
 
 There are two ways to view your dbt Cloud IP addresses:
 - If no projects exist in the account, create a new project, and the IP addresses will be displayed during the **Configure your environment** steps.
