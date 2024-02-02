@@ -197,7 +197,7 @@ When using this macro, you'll need to set the target name in your production job
 
 ## Managing environments
 
-In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must ensure that your different dbt environments are configured accordingly. While you can use any naming scheme you'd like, we typically recommend:
+In the `generate_schema_name` macro examples shown in the [built-in alternative pattern](#a-built-in-alternative-pattern-for-generating-schema-names) section, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must ensure that your different dbt environments are configured accordingly. While you can use any naming scheme you'd like, we typically recommend:
 
 * **dev** &mdash; Your local development environment; configured in a `profiles.yml` file on your computer.
 * **ci** &mdash; A [continuous integration](/docs/cloud/git/connect-github) environment running on pull pequests in GitHub, GitLab, and so on.
