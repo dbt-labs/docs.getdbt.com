@@ -8,7 +8,7 @@ By default, all dbt models are built in the schema specified in your [environmen
 
 For dbt projects with lots of models, it's common to build models across multiple schemas and group similar models together. For example, you might want to:
 
-* Group models based on the business unit using the model, creating schemas such as `core`, `marketing`, `finance` and `support`
+* Group models based on the business unit using the model, creating schemas such as `core`, `marketing`, `finance` and `support`.
 * Hide intermediate models in a `staging` schema, and only present models that should be queried by an end user in an `analytics` schema.
 
 To do this, specify a custom schema. dbt generates the schema name for a model by appending the custom schema to the target schema. For example, `<target_schema>_<custom_schema>`.
