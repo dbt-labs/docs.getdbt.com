@@ -122,16 +122,14 @@ dbt --quiet run
 
 ### dbt list logging
 
-In [dbt version 1.5](/docs/dbt-versions/core-upgrade/upgrading-to-v1.5#behavior-changes), there have been changes to the logging behavior of the [dbt list](/reference/commands/list) command. In version 1.5, the default behavior has been updated, and it now includes `INFO` level logs by default
+In [dbt version 1.5](/docs/dbt-versions/core-upgrade/upgrading-to-v1.5#behavior-changes), we updated the logging behavior of the [dbt list](/reference/commands/list) command to include `INFO` level logs by default.
 
-Previously, the list command (and only the list command) had `WARN`-level stdout logging, to support piping its results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process.
 
-To achieve that goal, you can use either of the following parameters:
+You can use either of these parameters to ensure clean output that's compatible with downstream processes, such as piping results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process:
 
 - `dbt --log-level warn list` (recommended; equivalent to previous default)
 - `dbt --quiet list` (suppresses all logging less than ERROR level, except for "printed" messages and list output)
 
-By using `--log-level warn list` or `--quiet list`, you ensure that the output is clean and compatible with downstream processes.
 
 
 ### Logging relational cache events
