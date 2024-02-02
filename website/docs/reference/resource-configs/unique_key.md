@@ -31,7 +31,7 @@ A column name or expression that is unique for the results of a snapshot. dbt us
 
 :::caution 
 
-Providing a non-unique key will result in unexpected snapshot results. dbt **will not** test the uniqueness of this key, consider adding a test to your project to ensure that this key is indeed unique.
+Providing a non-unique key will result in unexpected snapshot results. dbt **will not** test the uniqueness of this key, consider [testing](/blog/primary-key-testing) the source data to ensure that this key is indeed unique.
 
 :::
 
