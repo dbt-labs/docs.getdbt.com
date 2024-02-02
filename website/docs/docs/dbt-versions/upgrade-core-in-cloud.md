@@ -29,7 +29,7 @@ Configure your project to use a different dbt Core version than what's configure
 
   Example output of a successful `dbt build` run: 
 
-  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-verify-overridden-version.png" title="Example output showing version 1.7  being used, not 1.5"/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-verify-overridden-version.png" title="Example output showing version 1.7 being used, not 1.5"/>
 
 1. If you upgrade the version for your development environment, make sure to delete the `DBT_DEVELOP_CORE_VERSION` environment variable from the **Environment variables** section in your project's credentials.
 
