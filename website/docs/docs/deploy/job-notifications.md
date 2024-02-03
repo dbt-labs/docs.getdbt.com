@@ -52,7 +52,7 @@ Any account admin can edit the Slack notifications but they'll be limited to con
 ### Prerequisites 
 - You must be an administrator of the Slack workspace. 
 - You must be an account admin to configure Slack notifications in dbt Cloud. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
-- The notification channel must be a public channel. The integration only supports public channels in the Slack workspace. 
+- The notification channel must be a public channel. The integration only supports public channels that are in the Slack workspace. 
 
 ### Set up the Slack integration
 
