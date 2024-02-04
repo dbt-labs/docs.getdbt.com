@@ -10,7 +10,7 @@ meta:
   min_core_version: 'v1.6.1'
   min_supported_version: ''
   cloud_support: Not Supported
-  slack_channel_name: '#all-things-risingwave'
+  slack_channel_name: 'N/A'
   slack_channel_link: 'https://www.risingwave.com/slack'
   platform_name: 'RisingWave'
   config_page: '/reference/resource-configs/no-configs'
