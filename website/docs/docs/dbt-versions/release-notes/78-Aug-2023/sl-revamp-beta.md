@@ -44,7 +44,7 @@ By bringing these enhancements to the dbt Semantic Layer, we enable organization
 
 The dbt Semantic Layer is currently available as a public beta, which means:
 
-- **Who** &mdash; To experience the new dbt Semantic Layer, you must be on a dbt Cloud [Team and Enterprise](https://www.getdbt.com/pricing/) multi-tenant dbt Cloud plan, [hosted](/docs/cloud/about-cloud/regions-ip-addresses) in North America and on dbt v1.6 and higher. Look out for announcements on removing the location requirement soon.
+- **Who** &mdash; To experience the new dbt Semantic Layer, you must be on a dbt Cloud [Team and Enterprise](https://www.getdbt.com/pricing/) multi-tenant dbt Cloud plan, [hosted](/docs/cloud/about-cloud/access-regions-ip-addresses) in North America and on dbt v1.6 and higher. Look out for announcements on removing the location requirement soon.
 
   - Developer plans or dbt Core users can use MetricFlow to define and test metrics using the dbt MetricFlow CLI only.
 
