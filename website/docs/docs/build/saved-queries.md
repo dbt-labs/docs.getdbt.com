@@ -33,6 +33,4 @@ saved_queries:
         - "{{ Dimension('listing__capacity_latest') }} > 3"
 ```
 
-### FAQs 
-
-* All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
+All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
