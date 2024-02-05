@@ -54,8 +54,12 @@ To define a saved query, refer to the following parameters:
 | `exports::config`   | String   | Optional    | The schema used for creating the table or view. This option cannot be used for caching.   |
 | `exports::config`  | String     | Optional    | The table alias to use to write the table or view.  This option cannot be used for caching.  |
 
+All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
+
 
 ## Related docs
 
 - [Exports](/docs/use-dbt-semantic-layer/exports)
 - [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl)
+
+
