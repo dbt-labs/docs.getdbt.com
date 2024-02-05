@@ -24,7 +24,7 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
 
-The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/regions-ip-addresses). Use the following table to find the right link for your region:
+The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/access-regions-ip-addresses). Use the following table to find the right link for your region:
 
 | Deployment type |	Schema explorer URL |
 | --------------- | ------------------- |
