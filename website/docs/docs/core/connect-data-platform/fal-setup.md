@@ -3,7 +3,7 @@ title: "fal setup (Python models)"
 description: "Read this guide to learn about the fal warehouse setup in dbt."
 meta:
   maintained_by: fal.ai
-  authors: 'Features & Labels ([https://github.com/fal-ai](https://github.com/fal-ai/dbt-fal))'
+  authors: 'Features & Labels'
   github_repo: 'fal-ai/fal'
   pypi_package: 'dbt-fal'
   min_core_version: 'v1.3.0'
