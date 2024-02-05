@@ -10,7 +10,6 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 
 <CloudCLIFlag/>
 
-
 ## Prerequisites
 
 - You must set up a project in dbt Cloud.
@@ -22,17 +21,22 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 
 Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project. 
 
-1. Ensure you meet the prerequisites above.
+1. Ensure you meet the prerequisites above and go to dbt Cloud to download your credentials by clicking on the **Try the dbt Cloud CLI** banner.
 
-2. Download your credentials from dbt Cloud by clicking on the **Try the dbt Cloud CLI** banner on the dbt Cloud homepage. Alternatively, if you're in dbt Cloud, you can download the credentials from the links provided based on your region:
-   
-    - North America: https://cloud.getdbt.com/cloud-cli
-    - EMEA: https://emea.dbt.com/cloud-cli
-    - APAC: https://au.dbt.com/cloud-cli
-    - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
-    - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
-  
-3. Follow the banner instructions and download the config file to:
+    <details>
+    <summary>Region URLs to download credentials</summary>
+    You can also download the credentials from the links provided based on your region:
+
+    - North America: <a href="https://cloud.getdbt.com/cloud-cli">https://cloud.getdbt.com/cloud-cli</a>
+    - EMEA: <a herf="https://emea.dbt.com/cloud-cli">https://emea.dbt.com/cloud-cli</a>
+    - APAC: <a href="https://au.dbt.com/cloud-cli">https://au.dbt.com/cloud-cli</a>
+    - North American Cell 1: <code>https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli</code>
+    - Single-tenant: <code>https://YOUR_ACCESS_URL/cloud-cli</code>
+
+    </details>
+
+2. Save the config file to your local computer's filesystem. Make sure to store your `dbt_cloud.yml` config file in a safe place as it contains API keys.
+
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
    - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
   
@@ -52,16 +56,15 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
     - project-id: "<project-id>"
         account-host: "<account-host>"
         api-key: "<user-api-key>"
-
     ```
 
-4. After downloading the config file, navigate to a dbt project in your terminal:
+3. After downloading the config file, navigate to a dbt project in your terminal:
 
     ```bash
     cd ~/dbt-projects/jaffle_shop
     ```
 
-5. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
+4. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
 
     ```yaml
     # dbt_project.yml
@@ -75,7 +78,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
    - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://cloud.getdbt.com/develop/26228/projects/123456`, the project ID is `123456`.
 
-6. You should now be able to [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration details or `dbt compile` to compile models in your dbt project.
+5. You should now be able to [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration details or `dbt compile` to compile models in your dbt project.
 
 With your repo recloned, you can add, edit, and sync files with your repo.
 
