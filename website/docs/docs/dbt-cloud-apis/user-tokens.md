@@ -4,9 +4,11 @@ id: "user-tokens"
 pagination_next: "docs/dbt-cloud-apis/service-tokens"
 ---
 
-:::warning
+:::warning Action required
 
-Personal API Keys are being deprecated. Please create a new account-scoped API token (under account settings) and use that instead. Learn more about this change and the migration process on the [Personal Access Token](/docs/dbt-cloud-apis/personal-access-tokens) page.
+The [user API tokens](/docs/dbt-cloud-apis/user-tokens) is being be deprecated. The deprecation date is yet to be determined, but we recommend you update to account-scoped personal access tokens to avoid service disruptions in the future.
+
+The current API key is located under **Personal Settings → API Key.** 
 
 Please [contact support](/docs/dbt-support#dbt-cloud-support) with any questions or concerns.
 
@@ -29,15 +31,8 @@ label.
 
 Each dbt Cloud user with a [developer license](https://docs.getdbt.com/docs/cloud/manage-access/seats-and-users) can create a personal access token (PAT) to access the dbt Cloud API. This token is used to execute queries against the dbt Cloud API on the user's behalf. User API tokens inherit the permissions of the user that they were created for. These tokens are account-specific; If a user has access to more than one dbt Cloud account with the same email address, you need to create a unique PAT for each one of these accounts. 
 
-:::warning Action required
 
-The [user API tokens](/docs/dbt-cloud-apis/user-tokens) is being be deprecated. The deprecation date is yet to be determined, but we recommend you update to account-scoped personal access tokens to avoid service disruptions in the future.
-
-The current API key is located under **Personal Settings → API Key.** 
-
-:::
-
-On Jan X, 2024, all new personal API Access Tokens (PATs) created will be account-specific. PATs differ from [Service Tokens](/docs/dbt-cloud-apis/service-tokens), which remain unaffected by this change. Prior to this update, API keys were user-specific and, as such, were not scoped to an account. To enhance the security of dbt Cloud, we are moving away from this model to account-specific tokens. This has a few implications if you’re using a user token today:
+All new personal API Access Tokens (PATs) created will be account-specific. PATs differ from [Service Tokens](/docs/dbt-cloud-apis/service-tokens), which remain unaffected by this change. Prior to this update, API keys were user-specific and, as such, were not scoped to an account. To enhance the security of dbt Cloud, we are moving away from this model to account-specific tokens. This has a few implications if you’re using a user token today:
 
 * **All existing API keys will stop working after April X, 2024:** 
     * To promote least privilege and high security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped personal access tokens. 
@@ -66,15 +61,6 @@ If you are not using a user API key to access dbt Cloud APIs, you do not need to
 3. Use this new PAT to replace the old user API key. 
 4. Ensure that you’re using a PAT only where it’s needed. For any workflows that require a service account, please use a [service token](/docs/dbt-cloud-apis/service-tokens).
 
-
-### Service tokens vs. personal access token (PAT)
-
-The following use cases highlight scenarios where you should use a PAT vs. a service token. Service tokens are broadly used for any production workflow where service accounts are required. PATs are recommended only for developmental workflows _or_ dbt Cloud client workflows that require user context. 
-
-* **Connecting a partner integration to dbt Cloud** &mdash; Examples here are Hightouch, Datafold, a custom app you’ve created, etc. All of these integrations should use a service token instead of a PAT. This is because service tokens give you visibility, and you can scope them specifically to only what the integrations need and ensure the least privilege. If you’re using a user API key for these today, we highly recommend that you switch to a service token. 
-* **Production Terraform** &mdash; Use a service token since this is a production workflow and is acting as a service account and not a user account. 
-* **Cloud CLI and Semantic Layer Sheets Integration** &mdash; Use a PAT since both the dbt Cloud CLI and Semantic Layer Google Sheets integrations work within the context of a user (the user is making the requests and has to operate within the context of their user account).
-* **Testing a custom script and staging Terraform or Postman** &mdash; We recommend using a PAT as this is a developmental workflow and is scoped to the user making the changes. There are certain instances where you may need/require a service token. However, when you push this script or Terraform into production, use a service token instead.
 
 ## FAQs
 
