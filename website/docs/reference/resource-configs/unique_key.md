@@ -27,7 +27,7 @@ snapshots:
 </File>
 
 ## Description
-A column name or expression that is unique for the results of a snapshot. dbt uses this to match records between a result set and an existing snapshot, so that changes can be captured correctly.
+A column name or expression that is unique for the inputs of a snapshot. dbt uses this to match records between a result set and an existing snapshot, so that changes can be captured correctly.
 
 :::caution 
 
