@@ -1,16 +1,16 @@
 ---
-title: Saved queries
+title: Saved Queries
 id: saved-queries
-description: "Saved queries are a way to save commonly used queries in MetricFlow. They can be used to save time and avoid writing the same query over and over again."
-sidebar_label: "Saved queries"
+description: "Saved Queries are a way to save commonly used queries in MetricFlow. They can be used to save time and avoid writing the same query over and over again."
+sidebar_label: "Saved Queries"
 tags: [Metrics, Semantic Layer]
 ---
 
-Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. 
+Saved Queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. 
 
 ### Exports and Saved Queries comparison
 
-Saved queries are distinct from [Exports](/docs/use-dbt-semantic-layer/exports), which schedule and execute saved queries using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). The following table compares the features and usage of Exports and Saved Queries:
+Saved Queries are distinct from [Exports](/docs/use-dbt-semantic-layer/exports), which schedule and execute Saved Queries using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). The following table compares the features and usage of Exports and Saved Queries:
 
 | Feature |  Exports | <div style={{width:'250px, text-align: center'}}>Saved Queries</div>  |
 | ----------- | ----------- | ---------------- |
@@ -23,6 +23,8 @@ Saved queries are distinct from [Exports](/docs/use-dbt-semantic-layer/exports),
 The following is an example of a saved query:
 
 All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
+
+<File name='saved_queries.yml'>
 
 ```yaml
 saved_queries:
@@ -38,6 +40,7 @@ saved_queries:
       where:
         - "{{ Dimension('listing__capacity_latest') }} > 3"
 ```
+</File>
 
 ## Parameters
 
@@ -65,5 +68,3 @@ All metrics in a saved query need to use the same dimensions in the `group_by` o
 
 - [Exports](/docs/use-dbt-semantic-layer/exports)
 - [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl)
-
-

@@ -49,7 +49,7 @@ plan="dbt Cloud Team or Enterprise"
 
 <Card
     title="Materialize queries with Exports"
-    body="Use Exports to materialize saved queries within the data platform on a schedule."
+    body="Use Exports to materialize commonly used queries directly within your data platform, on a schedule."
     link="/docs/use-dbt-semantic-layer/exports"
     icon="dbt-bit"/>
 
