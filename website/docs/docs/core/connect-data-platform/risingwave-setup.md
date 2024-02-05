@@ -39,12 +39,12 @@ default:
   outputs:
     dev:
       type: risingwave
-      host: 127.0.0.1 
-      user: root
-      pass: ""
-      dbname: dev
-      port: 4566
-      schema: public
+      host: [host name] 
+      user: [user name]
+      pass: [password]
+      dbname: [database name]
+      port: [port]
+      schema: [dbt schema]
   target: dev
 ```
 
@@ -74,7 +74,6 @@ The dbt models for managing data transformations in RisingWave are similar to ty
 |`table` |Yes |Creates a [table](https://docs.risingwave.com/docs/dev/sql-create-table/). To use this materialization, add `{{ config(materialized='table') }}` to your model SQL files. |
 |`view`|Yes | Creates a [view](https://docs.risingwave.com/docs/dev/sql-create-view/). To use this materialization, add `{{ config(materialized='view') }}` to your model SQL files. |
 |`ephemeral`|Yes| This materialization uses [common table expressions](https://docs.risingwave.com/docs/dev/query-syntax-with-clause/) in RisingWave under the hood. To use this materialization, add `{{ config(materialized='ephemeral') }}` to your model SQL files.|
-|`materializedview`| To be deprecated. |It is available only for backward compatibility purposes. Use `materialized_view` instead.|
 |`materialized_view`| Yes| Creates a [materialized view](https://docs.risingwave.com/docs/dev/sql-create-mv/). This materialization corresponds the `incremental` one in dbt. To use this materialization, add `{{ config(materialized='materialized_view') }}` to your model SQL files.|
 | `incremental`|No|Please use `materialized_view` instead. Since RisingWave is designed to use materialized view to manage data transformation in an incremental way, you can just use the `materialized_view` materialization.|
 |`source`| Yes| Creates a [source](https://docs.risingwave.com/docs/dev/sql-create-source/). To use this materialization, add {{ config(materialized='source') }} to your model SQL files. You need to provide your create source statement as a whole in this model. See [Example model files](https://docs.risingwave.com/docs/dev/use-dbt/#example-model-files) for details.|
