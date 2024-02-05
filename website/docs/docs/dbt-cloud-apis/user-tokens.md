@@ -32,15 +32,15 @@ label.
 Each dbt Cloud user with a [developer license](https://docs.getdbt.com/docs/cloud/manage-access/seats-and-users) can create a personal access token (PAT) to access the dbt Cloud API. This token is used to execute queries against the dbt Cloud API on the user's behalf. User API tokens inherit the permissions of the user that they were created for. These tokens are account-specific; If a user has access to more than one dbt Cloud account with the same email address, you need to create a unique PAT for each one of these accounts. 
 
 
-All new personal API Access Tokens (PATs) created will be account-specific. PATs differ from [Service Tokens](/docs/dbt-cloud-apis/service-tokens), which remain unaffected by this change. Prior to this update, API keys were user-specific and, as such, were not scoped to an account. To enhance the security of dbt Cloud, we are moving away from this model to account-specific tokens. This has a few implications if you’re using a user token today:
+All new personal API Access Tokens (PATs) created will be account-specific. PATs differ from [Service Tokens](/docs/dbt-cloud-apis/service-tokens), which remain unaffected by this change. Prior to this update, API keys were user-specific and were not scoped to an account. To enhance the security of dbt Cloud, we are moving away from this model to account-specific tokens. This deprecation has a few implications if you’re using a user token today:
 
-* **All existing API keys will stop working after April X, 2024:** 
+* **All existing API keys will stop working:** 
     * To promote least privilege and high security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped personal access tokens. 
 * **You must create and implement unique tokens in each of your dbt Cloud accounts associated with the same email:** 
     * For example, paul@atreides.com belongs to two dbt Cloud accounts: Spice Harvesting Account and Guild Navigator Account. Before this release, the same API key was used to access both accounts.
     * After this release, Paul has to individually go into these accounts and create a unique PAT for each account he wants to access the API. These API tokens are account-specific and not user-specific. 
-* **Cross-Account API endpoints will stop working after April X, 2024:**
-    * These are /v2/accounts and /v3/accounts. Since all tokens are now account-specific, tying all accounts to a username will not work. So /v3/accounts will be deprecated.
+* **Cross-Account API endpoints will stop working:**
+    * These are /v2/accounts and /v3/accounts. Since all tokens are now account-specific, tying all accounts to a username will not work.
     * Moving forward, dbt Cloud will no longer support this model. User account metadata will only contain information about the specific account under which the request is made. 
     * Any other accounts that belong to that user account will need to be requested through the PAT that belongs to that account.
 
