@@ -63,7 +63,7 @@ In GitLab, when creating your Group Application, input the following:
 | **Confidential** | ✔️ |
 | **Scopes** | ✔️ api |
 
-Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
 The application form in GitLab should look as follows when completed:
 
