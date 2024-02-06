@@ -34,9 +34,9 @@ The following table compares the features and usage between exports and saved qu
 
 ## Define exports
 
-Exports are an additional configuration added to a Saved Query. They define how to materialize a Saved Query, along with the schema and table name.
+Exports are an additional configuration added to a saved query. They define how to materialize a saved query, along with the schema and table name.
 
-You can define exports in a YAML format as a key within the `saved_queries` configuration and in the same file as your metric definitions.  Here's an example of a Saved Query with an Export:
+You can define exports in a YAML format as a key within the `saved_queries` configuration and in the same file as your metric definitions.  Here's an example of a saved query with an Export:
 
 <File name='semantic_model.yml'>
 
@@ -66,9 +66,9 @@ You can use the following parameters to define an Export:
 | Parameters | Type    | Required | Description    |
 | ------- | --------- | ---------- | ---------------- |
 | `name` | String    | Required     | Name of the Export object.    |
-| `saved-query` | String    | Required     | A name of a Saved Query that could be used.    |
-| `select` | List or String   | Optional    | Names of exports to be selected from the Saved Query. |
-| `exclude` | String  | Optional    | The names of exports to be excluded from the from the Saved Query. |
+| `saved-query` | String    | Required     | A name of a saved query that could be used.    |
+| `select` | List or String   | Optional    | Names of exports to be selected from the saved query. |
+| `exclude` | String  | Optional    | The names of exports to be excluded from the from the saved query. |
 | `export_as` | String  | Optional    | Type of Export to create from the `export_as` types available in the config. Options available are `table` or `view`. |
 | `schema` | String  | Optional    | Schema to use for creating the table or view. |
 | `alias` | String  | Optional    | Table alias to use to write the table or view. |
@@ -88,7 +88,7 @@ You can run an Export in your development environment using your development cre
 dbt sl export
 ```
 
-You can also use the following command to run any Export defined for the Saved Query and materialize the table or view in your development environment:
+You can also use the following command to run any Export defined for the saved query and materialize the table or view in your development environment:
 
 ```bash
 dbt sl export --saved-query sq_name
@@ -98,7 +98,7 @@ dbt sl export --saved-query sq_name
 
 ### Use the `select` flag
 
-By default, all exports are run for a Saved Query. You can use the `select` flag in [development](#exports-in-development) or [production](#exports-in-production) to select or exclude a specific Export.
+By default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development) or [production](#exports-in-production) to select or exclude a specific Export.
 
 For example, the following command will run the `export_1` and `export_2` and doesn't work with the `--alias` or `--export_as` flags:
 
@@ -152,16 +152,16 @@ dbt build --include-saved-query --select orders+
 Yes, this is possible. However, the only difference would be the name, schema, and materialization strategy of the Export.
 </detailsToggle>
 
-<detailsToggle alt_header="How do I run all exports for a Saved Query?">
+<detailsToggle alt_header="How do I run all exports for a saved query?">
 
 - In production runs, you build a model and any exports downstream of that model. There is currently no way to call the Export directly from the Job scheduler.
 - In development, you can run all exports by running `dbt sl Export --saved-query sq_name`.
 
 </detailsToggle>
 
-<detailsToggle alt_header="Will I run duplicate exports if multiple models are downstream of my Saved Query?">
+<detailsToggle alt_header="Will I run duplicate exports if multiple models are downstream of my saved query?">
 
-We will only run each Export once even if we build multiple models that are downstream of the Saved Query. For example, you may have a Saved Query called `order_metrics`, which has metrics from both the `orders` and `order_items` semantic models. 
+We will only run each Export once even if we build multiple models that are downstream of the saved query. For example, you may have a saved query called `order_metrics`, which has metrics from both the `orders` and `order_items` semantic models. 
 
 You can run a job that includes both models: `dbt build --include-saved-query`. This runs both the `orders` and `order_items` models, however it will only run the `order_metrics` Export once.
 </detailsToggle>

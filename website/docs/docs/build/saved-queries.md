@@ -1,5 +1,5 @@
 ---
-title: SavedQueries
+title: Saved queries
 id: saved-queries
 description: "Saved queries are a way to save commonly used queries in MetricFlow. They can be used to save time and avoid writing the same query over and over again."
 sidebar_label: "Saved queries"
