@@ -217,7 +217,7 @@ Dimension {
 DimensionType = [CATEGORICAL, TIME]
 ```
 
-**List Saved Queries**
+**List saved queries**
   
   ```graphql
   {
@@ -602,7 +602,7 @@ mutation {
 }
 ```
 
-**Querying compile SQL with Saved Queries** 
+**Querying compile SQL with saved queries** 
 
 This query includes the field `savedQuery` and generates the SQL based on a predefined [saved query](/docs/build/saved-queries),rather than dynamically building it from a list of metrics and groupings. You can use this for frequently used queries.
 
@@ -618,11 +618,11 @@ mutation {
 }
 ```
 
-:::info A note on querying Saved Queries
-When querying [Saved Queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for Saved Queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
+:::info A note on querying saved queries
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
 :::
 
-**Create query with Saved Queries** 
+**Create query with saved queries** 
 
 This takes the same inputs as the `createQuery` mutation, but includes the field `savedQuery`. You can use this for frequently used queries.
 

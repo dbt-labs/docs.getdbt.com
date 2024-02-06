@@ -1,22 +1,22 @@
 ---
-title: Saved Queries
+title: SavedQueries
 id: saved-queries
-description: "Saved Queries are a way to save commonly used queries in MetricFlow. They can be used to save time and avoid writing the same query over and over again."
-sidebar_label: "Saved Queries"
+description: "Saved queries are a way to save commonly used queries in MetricFlow. They can be used to save time and avoid writing the same query over and over again."
+sidebar_label: "Saved queries"
 tags: [Metrics, Semantic Layer]
 ---
 
-Saved Queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. 
+Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. 
 
-### Exports and Saved Queries comparison
+### Exports and Saved queries comparison
 
-Saved Queries are distinct from [Exports](/docs/use-dbt-semantic-layer/exports), which schedule and execute Saved Queries using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). The following table compares the features and usage of Exports and Saved Queries:
+Saved queries are distinct from [exports](/docs/use-dbt-semantic-layer/exports), which schedule and execute saved queries using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). The following table compares the features and usage of exports and saved queries:
 
-| Feature |  Exports | <div style={{width:'250px, text-align: center'}}>Saved Queries</div>  |
+| Feature |  Exports | <div style={{width:'250px, text-align: center'}}>Saved queries</div>  |
 | ----------- | ----------- | ---------------- |
 | **Availability**    | Available on dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plans (dbt versions 1.7 or higher).| Available in both dbt Core and dbt Cloud.     |
-| **Purpose**         | To materialize Saved Queries in your data platform and expose metrics and dimensions as a view or table. | To define and manage common Semantic Layer queries in YAML, which includes metrics and dimensions.   |
-| **Usage**           | Automatically runs Saved Queries and materializes them within your data platform. Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. <br /><br />**Example**: Creating a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing common MetricFlow queries within dbt projects.<br /><br /><br />**Example**: Group related metrics together for better organization, and include commonly uses dimensions and filters. | For materializing query results in the data platform. |
+| **Purpose**         | To materialize saved queries in your data platform and expose metrics and dimensions as a view or table. | To define and manage common Semantic Layer queries in YAML, which includes metrics and dimensions.   |
+| **Usage**           | Automatically runs saved queries and materializes them within your data platform. Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. <br /><br />**Example**: Creating a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing common MetricFlow queries within dbt projects.<br /><br /><br />**Example**: Group related metrics together for better organization, and include commonly uses dimensions and filters. | For materializing query results in the data platform. |
 | **Integration**     | Must have the dbt Semantic Layer configured in your dbt project.<br /><br />Tightly integrated with the [MetricFlow Server](/docs/use-dbt-semantic-layer/sl-architecture#components) and dbt Cloud's job scheduler. | Integrated into the dbt <Term id="dag" /> and managed alongside other dbt nodes. |
 | **Configuration**   | Configured within dbt Cloud environment and job scheduler settings. | Defined in YAML format within dbt project files.   |
 

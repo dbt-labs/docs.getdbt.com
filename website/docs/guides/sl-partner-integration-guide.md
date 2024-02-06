@@ -52,7 +52,7 @@ Best practices for exposing metrics are summarized into five themes:
 
 - [Governance](#governance-and-traceability) &mdash; Recommendations on how to establish guardrails for governed data work.
 - [Discoverability](#discoverability) &mdash; Recommendations on how to make user-friendly data interactions.
-- [Organization](#organization) &mdash; Organize metrics and dimensions for all audiences, use [Saved Queries](/docs/build/saved-queries).
+- [Organization](#organization) &mdash; Organize metrics and dimensions for all audiences, use [saved queries](/docs/build/saved-queries).
 - [Query flexibility](#query-flexibility) &mdash; Allow users to query either one metric alone without dimensions or multiple metrics with dimensions.
 - [Context and interpretation](#context-and-interpretation) &mdash; Contextualize metrics for better analysis; expose definitions, metadata, lineage, and freshness.
 
@@ -91,7 +91,7 @@ We recommend organizing metrics and dimensions in ways that a non-technical user
 
 - **Organizing metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
 
-- **Using Saved Queries** &mdash; The dbt Semantic Layer has a concept of [Saved Queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+- **Using saved queries** &mdash; The dbt Semantic Layer has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 ### Query flexibility
 
@@ -148,7 +148,7 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Listing available dimensions based on one or many metrics
 * Querying defined metric values on their own or grouping by available dimensions
 * Display metadata from [Discovery API](/docs/dbt-cloud-apis/discovery-api) and other context
-* Expose [Saved Queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that Semantic Layer developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+* Expose [saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that Semantic Layer developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 **Stage 3 - More querying flexibility and better user experience (UX)**
 * More advanced filtering

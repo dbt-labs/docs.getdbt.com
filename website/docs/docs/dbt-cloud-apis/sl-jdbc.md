@@ -159,7 +159,7 @@ select * from {{
 
 <detailsToggle alt_header="List saved queries">
 
-You can use this example query to list all available Saved Queries in your dbt project.
+You can use this example query to list all available saved queries in your dbt project.
 
 **Command**
 
@@ -536,8 +536,8 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   select * from {{ semantic_layer.query(saved_query="new_customer_orders", limit=5, compile=True}}
   ```
 
-:::info A note on querying Saved Queries
-When querying [Saved Queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for Saved Queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
+:::info A note on querying saved queries
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
 :::
 
 ### Query a saved query
