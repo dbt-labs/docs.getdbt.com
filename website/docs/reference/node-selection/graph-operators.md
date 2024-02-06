@@ -3,7 +3,7 @@ title: "Graph operators"
 ---
 
 ### The "plus" operator
-If placed at the front of the model selector, + will select all parents of the selected model and the model itself. If placed at the end of the string, + will select all children of the selected model and the model itself.
+If placed at the front of the model selector, `+` will select all parents of the selected model and the model itself. If placed at the end of the string, `+` will select all children of the selected model and the model itself.
 
 
    ```bash
