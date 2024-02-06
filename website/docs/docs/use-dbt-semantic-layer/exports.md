@@ -106,20 +106,23 @@ For example, the following command will run the `export_1` and `export_2` and do
 dbt sl export --select export_1,export2
 ```
 
-:::tip Overrides and configurations
-The `--select` flag is mainly used to include or exclude specific Exports. However, it can't be used with `alias` or `schema` to override the Export configurations.
+<details>
+<summary>Overriding Export configurations</summary>
 
-If you need to change these settings, you can use the following flags:
-- `--export-as` &mdash; Defines the materialization type (table or view) for the Export. This would be an entirely new export for this saved query with its own name and confirmation and a way to test out what the export would look like in development.
+The `--select` flag is mainly used to include or exclude specific Exports. If you need to change these settings, you can use the following flags to override Export configurations:
+
+- `--export-as` &mdash; Defines the materialization type (table or view) for the Export. This creates a new export with its own settings, useful for testing in development.
 - `--schema` &mdash;  Specifies the schema to be used for the  materialized table or view.
 - `--alias` &mdash; Assigns a custom alias to the materialized table or view, overriding the default Export name.
+
+Note that `--select` flag can't be used with `alias` or `schema`.
 
 For example, you can use the following command to create a new Export named `new_export` as a table:
 
 ```bash
 dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 ```
-:::
+</details>
 
 ### Exports in Production
 
@@ -145,18 +148,26 @@ dbt build --include-saved-query --select orders+
 ## FAQs
 
 <detailsToggle alt_header="Can I have multiple Exports in a single saved-query?">
+
 Yes, this is possible. However, the only difference would be the name, schema, and materialization strategy of the Export.
 </detailsToggle>
 
 <detailsToggle alt_header="How do I run all Exports for a Saved Query?">
-In production runs, you build a model and any Exports downstream of that model. There is currently no way to call the Export directly from the Job scheduler. In development, you can run all Exports by running `dbt sl Export --saved-query sq_name`.
+
+- In production runs, you build a model and any Exports downstream of that model. There is currently no way to call the Export directly from the Job scheduler.
+- In development, you can run all Exports by running `dbt sl Export --saved-query sq_name`.
+
 </detailsToggle>
 
 <detailsToggle alt_header="Will I run duplicate Exports if multiple models are downstream of my Saved Query?">
-We will only run each Export once even if we build multiple models that are downstream of the Saved Query. For example, you may have a Saved Query called `order_metrics`, which has metrics from both the `orders` and `order_items` semantic models. You can run a job that includes both models: `dbt build --include-saved-query`. This runs both the `orders` and `order_items` models, however it will only run the `order_metrics` Export once.
+
+We will only run each Export once even if we build multiple models that are downstream of the Saved Query. For example, you may have a Saved Query called `order_metrics`, which has metrics from both the `orders` and `order_items` semantic models. 
+
+You can run a job that includes both models: `dbt build --include-saved-query`. This runs both the `orders` and `order_items` models, however it will only run the `order_metrics` Export once.
 </detailsToggle>
 
 <detailsToggle alt_header="Can I reference an Export as a dbt model using ref()">
+
 No, you won't be able to reference an Export using `ref`. Exports are treated as leaf nodes in your DAG. Modifying an Export cold lead to inconsistencies with the the original metrics from the Semantic Layer.
 </detailsToggle>
 
