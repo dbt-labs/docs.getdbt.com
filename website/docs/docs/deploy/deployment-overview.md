@@ -120,7 +120,7 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
 
 If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.-->
 
+## Related docs
 
-## Related docs 
-
+- [Materialize Saved Queries with Exports](/docs/use-dbt-semantic-layer/exports)
 - [Integrate with other orchestration tools](/docs/deploy/deployment-tools)

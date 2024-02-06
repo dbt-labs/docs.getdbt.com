@@ -34,11 +34,11 @@ The following table compares the features and usage between Exports and Saved Qu
 
 ## Define Exports
 
-Exports are an additional configuration added to a Saved Query. They define how to materialize a Saved Query, along with the schema and table name. 
+Exports are an additional configuration added to a Saved Query. They define how to materialize a Saved Query, along with the schema and table name.
 
-You can define Exports in a YAML format as a key within the `saved_queries` configuration. Here's an example of a Saved Query with an Export:
+You can define Exports in a YAML format as a key within the `saved_queries` configuration and in the same file as your metric definitions.  Here's an example of a Saved Query with an Export:
 
-<File name='saved_queries.yml'>
+<File name='semantic_model.yml'>
 
 ```yaml
 saved_queries:
@@ -98,7 +98,7 @@ dbt sl export --saved-query sq_name
 
 ### Use the `select` flag
 
-By default, all Exports are run for a Saved Query. You can use the `select` flag in [development](#exports-in-development) or [production](#exports-in-production) to select or exclude a specific Export. 
+By default, all Exports are run for a Saved Query. You can use the `select` flag in [development](#exports-in-development) or [production](#exports-in-production) to select or exclude a specific Export.
 
 For example, the following command will run the `export_1` and `export_2` and doesn't work with the `--alias` or `--export_as` flags:
 
@@ -106,13 +106,18 @@ For example, the following command will run the `export_1` and `export_2` and do
 dbt sl export --select export_1,export2
 ```
 
-:::info Overrides and configurations
+:::tip Overrides and configurations
 The `--select` flag is mainly used to include or exclude specific Exports. However, it can't be used with `alias` or `schema` to override the Export configurations.
 
-If you need to change these settings, use the `--export-as` flag, along with `--schema` and `--alias`. For example, you can use the following command to create a new Export named `new_export` as a table:
+If you need to change these settings, you can use the following flags:
+- `--export-as` &mdash; Defines the materialization type (table or view) for the Export. This would be an entirely new export for this saved query with its own name and confirmation and a way to test out what the export would look like in development.
+- `--schema` &mdash;  Specifies the schema to be used for the  materialized table or view.
+- `--alias` &mdash; Assigns a custom alias to the materialized table or view, overriding the default Export name.
+
+For example, you can use the following command to create a new Export named `new_export` as a table:
 
 ```bash
-dbt sl export --saved_query sq_number1 --export-as table --alias new_export
+dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 ```
 :::
 
@@ -137,10 +142,9 @@ You can use the selector syntax `--select` or `-s` to specify a particular dbt m
 dbt build --include-saved-query --select orders+
 ```
 
-
 ## FAQs
 
-<detailsToggle alt_header="Can I have multiple Exports in a single saved_query?">
+<detailsToggle alt_header="Can I have multiple Exports in a single saved-query?">
 Yes, this is possible. However, the only difference would be the name, schema, and materialization strategy of the Export.
 </detailsToggle>
 

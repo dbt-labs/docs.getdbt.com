@@ -20,11 +20,9 @@ Saved Queries are distinct from [Exports](/docs/use-dbt-semantic-layer/exports),
 | **Integration**     | Must have the dbt Semantic Layer configured in your dbt project.<br /><br />Tightly integrated with the [MetricFlow Server](/docs/use-dbt-semantic-layer/sl-architecture#components) and dbt Cloud's job scheduler. | Integrated into the dbt <Term id="dag" /> and managed alongside other dbt nodes. |
 | **Configuration**   | Configured within dbt Cloud environment and job scheduler settings. | Defined in YAML format within dbt project files.   |
 
-The following is an example of a saved query:
+All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses. The following is an example of a saved query:
 
-All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
-
-<File name='saved_queries.yml'>
+<File name='semantic_model.yml'>
 
 ```yaml
 saved_queries:
