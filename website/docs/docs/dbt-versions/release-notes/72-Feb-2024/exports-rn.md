@@ -4,7 +4,7 @@ description: "February 2024: Use Exports to materialize and schedule Saved Queri
 sidebar_label: "New: Use Exports to materialize Saved Queries"
 sidebar_position: 09
 tags: [Feb-2024]
-date: 2024-02-08
+date: 2024-02-07
 ---
 
 You can now use [Exports](/docs/use-dbt-semantic-layer/exports) with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), allowing you to query reliable metrics and fast data reporting. Exports enhance the Saved Queries feature, allowing you to materialize commonly used queries directly within your data platform using dbt Cloud's Job scheduler.
