@@ -35,7 +35,7 @@ Essentially, exports are like any other table in your data platform. They enable
 
 Exports are an additional configuration added to a saved query. They define how to materialize a saved query, along with the schema and table name.
 
-You can define exports in a YAML format as a key within the `saved_queries` configuration and in the same file as your metric definitions.
+You can define `exports` in YAML format as a key within the `saved_queries` configuration and in the same file as your metric definitions.
 
 An example of a saved query with an export:
 
