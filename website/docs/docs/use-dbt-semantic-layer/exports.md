@@ -67,7 +67,7 @@ You can use the following parameters to define an `export`:
 | Parameters | Type    | Required | Description    |
 | ------- | --------- | ---------- | ---------------- |
 | `name` | String    | Required     | Name of the Export object.    |
-| `saved-query` | String    | Required     | A name of a saved query that could be used.    |
+| `saved-query` | String    | Required     | Name of a saved query that could be used.    |
 | `select` | List or String   | Optional    | Names of exports to be selected from the saved query. |
 | `exclude` | String  | Optional    | The names of exports to be excluded from the from the saved query. |
 | `export_as` | String  | Optional    | Type of Export to create from the `export_as` types available in the config. Options available are `table` or `view`. |
