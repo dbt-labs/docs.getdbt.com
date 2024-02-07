@@ -170,7 +170,7 @@ You can run a job that includes both models: `dbt build`. This runs both the `or
 
 <detailsToggle alt_header="Can I reference an export as a dbt model using ref()">
 
-No, you won't be able to reference an Export using `ref`. Exports are treated as leaf nodes in your DAG. Modifying an Export cold lead to inconsistencies with the the original metrics from the Semantic Layer.
+No, you won't be able to reference an export using `ref`. Exports are treated as leaf nodes in your DAG. Modifying an export could lead to inconsistencies with the the original metrics from the Semantic Layer.
 </detailsToggle>
 
 <detailsToggle alt_header="How do exports help me use the dbt Semantic Layer in tools that don't support it, such as PowerBI?">
