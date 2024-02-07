@@ -149,7 +149,7 @@ dbt build --select orders+
 
 ## FAQs
 
-<detailsToggle alt_header="Can I have multiple exports in a single saved-query?">
+<detailsToggle alt_header="Can I have multiple exports in a single saved query?">
 
 Yes, this is possible. However, the difference would be the name, schema, and materialization strategy of the export.
 </detailsToggle>
