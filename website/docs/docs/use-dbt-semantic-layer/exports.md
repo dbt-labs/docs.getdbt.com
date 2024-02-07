@@ -138,7 +138,7 @@ To create an export:
 2.  Set the environment variable `DBT_INCLUDE_SAVED_QUERY=TRUE` in your environment to run any Export that needs to be refreshed after a model is build. 
    - You can use the [selector syntax](/reference/node-selection/syntax) `--select` to only run the exports downstream of a particular model.
 3. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform.
-4. Review the exports execution details in the jobs logs and confirm the Export was run successfully. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
+4. Review the exports execution details in the jobs logs and confirm the export was run successfully. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
 5. Your data is now available in the data platform for querying.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Adding --include-saved-query to the dbt build command in your job execution settings." />
