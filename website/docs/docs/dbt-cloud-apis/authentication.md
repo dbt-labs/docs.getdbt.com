@@ -31,7 +31,7 @@ pagination_prev: null
 
 ### Which token type should you use
 
-The following use cases highlight scenarios where you should use a personal access token (PAT) vs. a service token. Service tokens are broadly used for any production workflow where service accounts are required. PATs are recommended only for developmental workflows _or_ dbt Cloud client workflows that require user context. 
+You should use service tokens broadly for any production workflow where you need a service account. You should use PATs only for developmental workflows _or_ dbt Cloud client workflows that require user context. The following examples show you when to use a personal access token (PAT) or a service token: 
 
 * **Connecting a partner integration to dbt Cloud** &mdash; Some examples include Hightouch, Datafold, a custom app you’ve created, etc. These types of integrations should use a service token instead of a PAT because service tokens give you visibility, and you can scope them to only what the integration needs and ensure the least privilege. We highly recommend switching to a service token if you’re using a user API key for these integrations today. 
 * **Production Terraform** &mdash; Use a service token since this is a production workflow and is acting as a service account and not a user account. 
