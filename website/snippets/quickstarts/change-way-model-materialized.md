@@ -19,8 +19,8 @@ By default, everything gets created as a view. You can override that at the dire
       models:
         jaffle_shop:
           +materialized: table
-          example:
-            +materialized: view
+        example:
+          +materialized: view
       ```
 
       </File>
