@@ -28,7 +28,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/dbt-cloud-features",
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
-        "docs/cloud/about-cloud/regions-ip-addresses",
+        "docs/cloud/about-cloud/access-regions-ip-addresses",
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
@@ -213,6 +213,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
                 "docs/core/connect-data-platform/extrica-setup",
+		"docs/core/connect-data-platform/risingwave-setup",
               ],
             },
           ],

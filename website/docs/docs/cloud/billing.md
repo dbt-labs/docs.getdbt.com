@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-dbt Cloud offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/regions-ip-addresses) worldwide, dbt Cloud is the fastest and easiest way to begin transforming your data.
+dbt Cloud offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/access-regions-ip-addresses) worldwide, dbt Cloud is the fastest and easiest way to begin transforming your data.
 
 ## How does dbt Cloud pricing work?
 
