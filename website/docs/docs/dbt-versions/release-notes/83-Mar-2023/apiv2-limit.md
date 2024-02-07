@@ -9,6 +9,6 @@ tags: [Mar-2023, API]
 
 To make the API more scalable and reliable, we've implemented a maximum limit of `100` for all API requests to our `list` endpoints. If API requests exceed the maximum limit parameter of `100`, a user will receive an API error message.
 
-This maximum limit applies to [multi-tenant instances](/docs/cloud/about-cloud/regions-ip-addresses) only, and _does not_ apply to single tenant instances.
+This maximum limit applies to [multi-tenant instances](/docs/cloud/about-cloud/access-regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
 Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#section/Pagination) section for more information on this change. 
