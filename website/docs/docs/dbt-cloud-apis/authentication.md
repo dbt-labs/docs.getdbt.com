@@ -23,11 +23,11 @@ pagination_prev: null
 
 ## Types of API access tokens
 
-**User API Keys (Legacy):** User API keys were historically the only method available to access dbt Cloud APIs on the user’s behalf. They are scoped to the user and not the account. User API Keys will eventually be deprecated for the more secure Personal Access Tokens.
+**User API keys (Legacy):** User API keys were historically the only method available to access dbt Cloud APIs on the user’s behalf. They are scoped to the user and not the account. User API Keys will eventually be deprecated for the more secure Personal Access Tokens.
 
-**Personal Access Tokens (New):** Personal Access Tokens (PATs) are the new, preferred, and secure way of accessing dbt Cloud APIs on behalf of a user. They are more secure than user API Keys. PATs are scoped to an account and can be enhanced with more granularity and control. 
+**Personal access tokens (New):** Personal access tokens (PATs) are the new, preferred, and secure way of accessing dbt Cloud APIs on behalf of a user. They are more secure than user API Keys. PATs are scoped to an account and can be enhanced with more granularity and control. 
 
-**Service Tokens:** Service Tokens are similar to service accounts and are the preferred method to enable access on behalf of the dbt Cloud account.
+**Service tokens:** Service tokens are similar to service accounts and are the preferred method to enable access on behalf of the dbt Cloud account.
 
 ### Which token type should you use
 
