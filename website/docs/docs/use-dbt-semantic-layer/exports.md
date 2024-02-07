@@ -89,10 +89,15 @@ You can run an export in your development environment using your development cre
 dbt sl export
 ```
 
-You can also run any export defined for the saved query and materialize the table or view in your development environment. For example: 
+You can also run any export defined for the saved query and materialize the table or view in your development environment. Refer to the following command example and output:
 
+**Example**
 ```bash
 dbt sl export --saved-query sq_name
+```
+
+**Output**
+```bash
 Polling for export status - query_id: 2c1W6M6qGklo1LR4QqzsH7ASGFs..
 Export completed.
 ```
