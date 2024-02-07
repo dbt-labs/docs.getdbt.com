@@ -96,7 +96,6 @@ dbt sl export --saved-query sq_name
 Polling for export status - query_id: 2c1W6M6qGklo1LR4QqzsH7ASGFs..
 Export completed.
 ```
----- ADD OUTPUT OF THE COMMAND HERE ----
 
 ### Use the select flag
 
