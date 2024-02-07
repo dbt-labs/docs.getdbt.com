@@ -167,7 +167,7 @@ Yes, this is possible. However, the difference would be the name, schema, and ma
 
 dbt will only run each export once even if it builds multiple models that are downstream of the saved query. For example, you may have a saved query called order_metrics, which has metrics from both the orders and order_items semantic models.
 
-You can run a job that includes both models: `dbt build`. This runs both the `orders` and `order_items` models, however it will only run the `order_metrics` export once.
+You can run a job that includes both models using `dbt build`. This runs both the `orders` and `order_items` models, however, it will only run the `order_metrics` export once.
 </detailsToggle>
 
 <detailsToggle alt_header="Can I reference an export as a dbt model using ref()">
