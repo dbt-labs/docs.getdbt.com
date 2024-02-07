@@ -83,7 +83,7 @@ Once you define exports in your dbt project, then you can run them. There are tw
 
 ### Exports in Development
 
-You can run an Export in your development environment using your development credentials if you want to test the output of the Export before production. You can use the following command in the dbt Cloud CLI:
+You can run an export in your development environment using your development credentials if you want to test the output of the export before production. You can use the following command in the dbt Cloud CLI:
 
 ```bash
 dbt sl export
