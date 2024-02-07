@@ -58,7 +58,7 @@ saved_queries:
         config:
           export_as: table # Options available: table, view
           schema: YOUR_SCHEMA # Optional - defaults to deployment schema
-          alias: some_table_name # Optional - defaults to Export name
+          alias: SOME_TABLE_NAME # Optional - defaults to Export name
 ```
 </File>
 
