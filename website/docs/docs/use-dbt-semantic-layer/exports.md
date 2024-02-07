@@ -98,7 +98,7 @@ Export completed.
 ```
 ---- ADD OUTPUT OF THE COMMAND HERE ----
 
-### Use the `select` flag
+### Use the select flag
 
 By default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development).
 
