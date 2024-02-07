@@ -119,7 +119,7 @@ The `--select` flag is mainly used to include or exclude specific exports. If yo
 
 Note that `--select` flag can't be used with `alias` or `schema`.
 
-For example, you can use the following command to create a new Export named `new_export` as a table:
+For example, you can use the following command to create a new export named `new_export` as a table:
 
 ```bash
 dbt sl export --saved-query sq_number1 --export-as table --alias new_export
