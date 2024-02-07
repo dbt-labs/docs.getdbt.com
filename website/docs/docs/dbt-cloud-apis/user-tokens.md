@@ -33,7 +33,7 @@ The migration to PATs is critical if you are using user API keys today. The curr
  There are a few things to understand if you are using a user API key today: 
 
 * Personal access tokens are more secure. 
-    * To promote least privilege and high security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped Personal Access Tokens.
+    * To promote least privilege and high security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped personal access tokens.
 * You must create and use unique tokens in each one of your dbt Cloud accounts that share the same email address.
     * For example, if paul@atreides.com belongs to two dbt Cloud accounts: Spice Harvesting Account and Guild Navigator Account. Prior to this release, the same API key was used to access both of these accounts. 
     * After this release, Paul has to individually go into these accounts and create a unique PAT for each account he wants to access the API for. These PATs are account-specific and not user specific. 
