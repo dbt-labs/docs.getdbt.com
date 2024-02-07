@@ -168,7 +168,7 @@ Yes, this is possible. However, the difference would be the name, schema, and ma
 
 <detailsToggle alt_header="How do I run all exports for a saved query?">
 
-- In production runs, you can build the saved query by calling it directly in the build command, or you build a model and any exports downstream of that model
+- In production runs, you can build the saved query by calling it directly in the build command, or you build a model and any exports downstream of that model.
 - In development, you can run all exports by running `dbt sl export --saved-query sq_name`.
 
 </detailsToggle>
