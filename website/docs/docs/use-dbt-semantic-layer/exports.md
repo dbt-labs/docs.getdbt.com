@@ -62,7 +62,7 @@ saved_queries:
 ```
 </File>
 
-You can use the following parameters to define an Export:
+You can use the following parameters to define an `export`:
 
 | Parameters | Type    | Required | Description    |
 | ------- | --------- | ---------- | ---------------- |
