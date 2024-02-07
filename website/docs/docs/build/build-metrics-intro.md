@@ -22,14 +22,14 @@ MetricFlow allows you to:
 <div className="grid--3-col">
 
  <Card
-    title="Get started with the dbt Semantic Layer"
+    title="Get started with the dbt Semantic Layer and MetricFlow"
     body="Use this guide to build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using downstream tools."
     link="/docs/build/sl-getting-started"
     icon="dbt-bit"/>
 
 <Card
     title="About MetricFlow"
-    body="Understand MetricFlow's core concepts, key principles, and how to use this powerful tool."
+    body="Understand MetricFlow's core concepts, how to use joins, how to save commonly used queries, and what commands are available."
     link="/docs/build/about-metricflow"
     icon="dbt-bit"/>
 
