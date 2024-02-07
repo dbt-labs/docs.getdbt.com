@@ -11,7 +11,7 @@ While saved queries are a way to save and reuse commonly used queries in MetricF
 - Enabling you to materialize these queries within your data platform using dbt Cloud.
 - Proving an integration path for tools that don't natively support the dbt Semantic Layer by exposing tables of metrics and dimensions.
 
-Essentially, exports are like any other table in your data platform. They allow you to query metric definition through any SQL interface or connect to downstream tools without needing a first class Semantic Layer integration. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
+Essentially, exports are like any other table in your data platform. They enable you to query metric definition through any SQL interface or connect to downstream tools without needing a first class Semantic Layer integration. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
 
 ## Prerequisites
 
