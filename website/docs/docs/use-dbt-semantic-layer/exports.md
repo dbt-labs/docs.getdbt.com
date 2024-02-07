@@ -127,7 +127,10 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 ### Exports in production
 
-To enable exports in production using the dbt Cloud job scheduler, follow these steps:
+To enable exports in production using the dbt Cloud job scheduler:
+
+1. [Set environment variable](#set-environment-variable)
+1. [Create and execute exports](#create-and-execute-exports)
 
 #### Set environment variable
 
