@@ -130,7 +130,9 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 You can run an Export against your production data by setting the environment variable `DBT_INCLUDE_SAVED_QUERY=TRUE`. This will run saved queries and any configured exports as part of your `dbt build` job. For example, running `dbt build sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
 
-When you run a build job, any saved queries downstream of the dbt models in that job will run as well. To make sure your Export data is up-to-date, run the Export as a downstream step (after the model). The steps to create an Export are:
+When you run a build job, any saved queries downstream of the dbt models in that job will also run. To make sure your export data is up-to-date, run the export as a downstream step (after the model). 
+
+To create an export: 
 
 1. Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud.
 2.  Set the environment variable `DBT_INCLUDE_SAVED_QUERY=TRUE` in your environment to run any Export that needs to be refreshed after a model is build. 
