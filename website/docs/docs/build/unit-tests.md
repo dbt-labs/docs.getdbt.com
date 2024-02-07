@@ -59,26 +59,27 @@ This type of logic can be challenging to validate. Let’s add a unit test to th
 
 ```yaml
 unit_tests:
-  - name: test_is_valid_email_address # this is the unique name of the test
-    description: Check my is_valid_email_address logic captures all known edge cases - emails without ., emails without @, and emails from invalid domains.
-    model: dim_customers # name of the model I'm unit testing
-    given: # the mock data for your inputs
+  - name: test_is_valid_email_address
+    description: "Check my is_valid_email_address logic captures all known edge cases - emails without ., emails without @, and emails from invalid domains."
+    model: dim_customers
+    given:
       - input: ref('stg_customers')
         rows:
-         - {customer_id: 1, email: cool@example.com,     email_top_level_domain: example.com}
-         - {customer_id: 2, email: cool@unknown.com,     email_top_level_domain: unknown.com}
-         - {customer_id: 3, email: badgmail.com,         email_top_level_domain: gmail.com}
-         - {customer_id: 4, email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
+          - {customer_id: 1, email: cool@example.com, email_top_level_domain: example.com}
+          - {customer_id: 2, email: cool@unknown.com, email_top_level_domain: unknown.com}
+          - {customer_id: 3, email: badgmail.com, email_top_level_domain: gmail.com}
+          - {customer_id: 4, email: missingdot@gmailcom, email_top_level_domain: gmail.com}
       - input: ref('top_level_email_domains')
         rows:
-         - {tld: example.com}
-         - {tld: gmail.com}
-    expect: # the expected output given the inputs above
+          - {tld: example.com}
+          - {tld: gmail.com}
+    expect:
       rows:
-	- {customer_id: 1, is_valid_email_address: true}
-	- {customer_id: 2, is_valid_email_address: false}
-	- {customer_id: 3, is_valid_email_address: false}
-	- {customer_id: 4, is_valid_email_address: false}
+        - {customer_id: 1, is_valid_email_address: true}
+        - {customer_id: 2, is_valid_email_address: false}
+        - {customer_id: 3, is_valid_email_address: false}
+        - {customer_id: 4, is_valid_email_address: false}
+
 ```
 
 The above example defines the mock data using the inline `dict` format, but there are a handful of different options for how you format your mock data. 
