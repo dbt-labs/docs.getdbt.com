@@ -109,7 +109,7 @@ dbt sl export --saved-query sq_name --select export_1,export2
 ```
 
 <details>
-<summary>Overriding Export configurations</summary>
+<summary>Overriding export configurations</summary>
 
 The `--select` flag is mainly used to include or exclude specific exports. If you need to change these settings, you can use the following flags to override export configurations:
 
@@ -128,22 +128,33 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 ### Exports in production
 
-You can run an Export against your production data by setting the environment variable `DBT_INCLUDE_SAVED_QUERY=TRUE`. This will run saved queries and any configured exports as part of your `dbt build` job. For example, running `dbt build sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
+To enable exports in production using the dbt Cloud job scheduler, follow these steps:
 
-When you run a build job, any saved queries downstream of the dbt models in that job will also run. To make sure your export data is up-to-date, run the export as a downstream step (after the model). 
+**Set environment variable**
 
-To create an export: 
+1. Go to your **Environments** page by clicking **Deploy** in the navigation.
+2. Select **Environment variables**
+3. [Set the environment variable]((/docs/build/environment-variables#setting-and-overriding-environment-variables)) to `DBT_INCLUDE_SAVED_QUERY=TRUE`.
 
-1. Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud.
-2.  Set the environment variable `DBT_INCLUDE_SAVED_QUERY=TRUE` in your environment to run any Export that needs to be refreshed after a model is build. 
-   - You can use the [selector syntax](/reference/node-selection/syntax) `--select` to only run the exports downstream of a particular model.
-3. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform.
-4. Review the exports execution details in the jobs logs and confirm the export was run successfully. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
-5. Your data is now available in the data platform for querying.
+Doing this ensures saved queries and exports are included in your dbt build job. For example, running `dbt build sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Adding --include-saved-query to the dbt build command in your job execution settings." />
+If exports aren't needed, you can set this variable to `FALSE` (`DBT_INCLUDE_SAVED_QUERY=FALSE`).
 
-You can use the selector syntax `--select` or `-s` to specify a particular dbt model to run in your build command in order to only run the exports downstream of that model, or to select a saved query to run. As an example, the following command will run any saved queries that are downstream of the `orders` semantic model:
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Add an environment variable to run exports in your production run." />
+
+When you run a build job, any saved queries downstream of the dbt models in that job will also run. To make sure your export data is up-to-date, run the export as a downstream step (after the model).
+
+**Create and execute exports**
+
+1. Create a [deploy job](/docs/deploy/deploy-jobs) and ensure the `DBT_INCLUDE_SAVED_QUERY=TRUE` environment variable is set, as described earlier. 
+   - This enables you to run any export that needs to be refreshed after a model is build.
+2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform.
+3. Review the exports execution details in the jobs logs and confirm the export was run successfully. This helps troubleshoot or ensure accuracy. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
+4. Your data is now available in the data platform for querying.
+
+Enabling and executing exports in dbt Cloud optimizes data workflows and ensures real-time data access. It enhances efficiency and governance for smarter decisions.
+
+You can use the [selector syntax](/reference/node-selection/syntax) `--select` or `-s` to specify a particular dbt model to run in your build command to only run the exports downstream of that model, or to select a saved query to run. As an example, the following command will run any saved queries that are downstream of the `orders` semantic model:
 
 ```bash
 dbt build --select orders+
