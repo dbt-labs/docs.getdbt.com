@@ -47,7 +47,7 @@ saved_queries:
     description: YOUR_DESCRIPTION
     query_params:
       metrics:
-        - your_metric_name
+        - YOUR_METRIC_NAME
       group_bys:
         - TimeDimension()
         - ... # Additional group_bys
