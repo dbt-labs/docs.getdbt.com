@@ -126,7 +126,7 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 ```
 </details>
 
-### Exports in Production
+### Exports in production
 
 You can run an Export against your production data by setting the environment variable `DBT_INCLUDE_SAVED_QUERY=TRUE`. This will run saved queries and any configured exports as part of your `dbt build` job. For example, running `dbt build sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
 
