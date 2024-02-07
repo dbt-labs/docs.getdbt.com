@@ -278,6 +278,7 @@ const sidebarSettings = {
             "docs/build/snapshots",
             "docs/build/seeds",
             "docs/build/tests",
+            "docs/build/unit-tests",
             "docs/build/jinja-macros",
             "docs/build/sources",
             "docs/build/exposures",
