@@ -113,7 +113,7 @@ dbt sl export --saved-query sq_name --select export_1,export2
 
 The `--select` flag is mainly used to include or exclude specific exports. If you need to change these settings, you can use the following flags to override export configurations:
 
-- `--export-as` &mdash; Defines the materialization type (table or view) for the Export. This creates a new export with its own settings, useful for testing in development.
+- `--export-as` &mdash; Defines the materialization type (table or view) for the export. This creates a new export with its own settings and is useful for testing in development.
 - `--schema` &mdash;  Specifies the schema to use for the  materialized table or view.
 - `--alias` &mdash; Assigns a custom alias to the materialized table or view, overriding the default Export name.
 
