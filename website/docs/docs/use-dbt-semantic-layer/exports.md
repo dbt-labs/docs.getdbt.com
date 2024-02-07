@@ -22,7 +22,6 @@ Essentially, exports are like any other table in your data platform. They enable
 
 ### Comparison between exports and saved queries
 
-The following table compares the features and usage between exports and saved queries: 
 
 | Feature |  Exports | <div style={{width:'250px, text-align: center'}}>Saved queries</div>  |
 | ----------- | ----------- | ---------------- |
