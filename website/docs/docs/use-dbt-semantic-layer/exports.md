@@ -52,7 +52,7 @@ saved_queries:
         - ... # Additional group_bys
       where:
         - ... # Additional where clauses
-    export:
+    exports:
       - name: your_export
         config:
           export_as: table # Options available: table, view
@@ -92,18 +92,19 @@ You can also use the following command to run any Export defined for the saved q
 
 ```bash
 dbt sl export --saved-query sq_name
+Polling for export status - query_id: 2c1W6M6qGklo1LR4QqzsH7ASGFs..
+Export completed.
 ```
-
 ---- ADD OUTPUT OF THE COMMAND HERE ----
 
 ### Use the `select` flag
 
-By default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development) or [production](#exports-in-production) to select or exclude a specific Export.
+By default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development).
 
 For example, the following command will run the `export_1` and `export_2` and doesn't work with the `--alias` or `--export_as` flags:
 
 ```bash
-dbt sl export --select export_1,export2
+dbt sl export --saved-query sq_name --select export_1,export2
 ```
 
 <details>
@@ -126,12 +127,12 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 ### Exports in Production
 
-You can run an Export against your production data by adding the `--include-saved-query` flag to the `dbt build` **Commands** box, in your deployment **Execution Settings**. Running `dbt build --include-saved-query` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
+You can run an Export against your production data by setting the environment variable `DBT_INCLUDE_SAVED_QUERY=TRUE`. This will run saved queries and any configured exports as part of your `dbt build` job. For example, running `dbt build sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
 
 When you run a build job, any saved queries downstream of the dbt models in that job will run as well. To make sure your Export data is up-to-date, run the Export as a downstream step (after the model). The steps to create an Export are:
 
 1. Create a [deploy job](/docs/deploy/deploy-jobs) in dbt Cloud.
-2. Add the `--include-saved-query` to the `dbt build` command in your **Execution Settings** to re-run any Export that needs to be refreshed after a model is build. 
+2.  Set the environment variable `DBT_INCLUDE_SAVED_QUERY=TRUE` in your environment to run any Export that needs to be refreshed after a model is build. 
    - You can use the [selector syntax](/reference/node-selection/syntax) `--select` to only run the exports downstream of a particular model.
 3. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform.
 4. Review the exports execution details in the jobs logs and confirm the Export was run successfully. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
@@ -139,10 +140,10 @@ When you run a build job, any saved queries downstream of the dbt models in that
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Adding --include-saved-query to the dbt build command in your job execution settings." />
 
-You can use the selector syntax `--select` or `-s` to specify a particular dbt model to run in your build command in order to only run the exports downstream of that model. As an example, the following command will run any saved queries that are downstream of the `orders` semantic model:
+You can use the selector syntax `--select` or `-s` to specify a particular dbt model to run in your build command in order to only run the exports downstream of that model, or to select a saved query to run. As an example, the following command will run any saved queries that are downstream of the `orders` semantic model:
 
 ```bash
-dbt build --include-saved-query --select orders+
+dbt build --select orders+
 ```
 
 ## FAQs
@@ -154,7 +155,7 @@ Yes, this is possible. However, the only difference would be the name, schema, a
 
 <detailsToggle alt_header="How do I run all exports for a saved query?">
 
-- In production runs, you build a model and any exports downstream of that model. There is currently no way to call the Export directly from the Job scheduler.
+- In production runs, you can build the saved query by calling it directly in the build command, or you build a model and any exports downstream of that model
 - In development, you can run all exports by running `dbt sl Export --saved-query sq_name`.
 
 </detailsToggle>
@@ -163,10 +164,10 @@ Yes, this is possible. However, the only difference would be the name, schema, a
 
 We will only run each Export once even if we build multiple models that are downstream of the saved query. For example, you may have a saved query called `order_metrics`, which has metrics from both the `orders` and `order_items` semantic models. 
 
-You can run a job that includes both models: `dbt build --include-saved-query`. This runs both the `orders` and `order_items` models, however it will only run the `order_metrics` Export once.
+You can run a job that includes both models: `dbt build`. This runs both the `orders` and `order_items` models, however it will only run the `order_metrics` export once.
 </detailsToggle>
 
-<detailsToggle alt_header="Can I reference an Export as a dbt model using ref()">
+<detailsToggle alt_header="Can I reference an export as a dbt model using ref()">
 
 No, you won't be able to reference an Export using `ref`. Exports are treated as leaf nodes in your DAG. Modifying an Export cold lead to inconsistencies with the the original metrics from the Semantic Layer.
 </detailsToggle>
