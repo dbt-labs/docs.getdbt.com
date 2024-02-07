@@ -16,7 +16,7 @@ Essentially, exports are like any other table in your data platform. They enable
 ## Prerequisites
 
 - You have a dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan.
-- You are on [dbt version](/docs/dbt-versions/upgrade-core-in-cloud) 1.7 or higher.
+- You are on [dbt version](/docs/dbt-versions/upgrade-core-in-cloud) 1.7 or newer.
 - You have the dbt Semantic Layer [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a dbt Cloud environment with a [Job scheduler](/docs/deploy/job-scheduler) enabled.
 
