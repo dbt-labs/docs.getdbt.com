@@ -145,7 +145,7 @@ When you run a build job, any saved queries downstream of the dbt models in that
 
 #### Create and execute exports
 
-1. Create a [deploy job](/docs/deploy/deploy-jobs) and ensure the `DBT_INCLUDE_SAVED_QUERY=TRUE` environment variable is set, as described earlier. 
+1. Create a [deploy job](/docs/deploy/deploy-jobs) and ensure the `DBT_INCLUDE_SAVED_QUERY=TRUE` environment variable is set, as described in [Set environment variable](#set-environment-variable). 
    - This enables you to run any export that needs to be refreshed after a model is build.
 2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform.
 3. Review the exports' execution details in the jobs logs and confirm the export was run successfully. This helps troubleshoot and to ensure accuracy. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
