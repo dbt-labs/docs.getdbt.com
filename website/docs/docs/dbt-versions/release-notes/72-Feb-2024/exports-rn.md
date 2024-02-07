@@ -1,6 +1,6 @@
 ---
 title: "New: Use exports to materialize saved queries"
-description: "February 2024: Use exports to materialize and schedule saved queries with dbt Cloud, and integrate with additional tools."
+description: "February 2024: Use the exports feature to materialize and schedule saved queries with dbt Cloud, and to integrate with additional tools."
 sidebar_label: "New: Use exports to materialize saved queries"
 sidebar_position: 09
 tags: [Feb-2024]
