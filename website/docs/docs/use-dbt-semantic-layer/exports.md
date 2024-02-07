@@ -117,7 +117,7 @@ The `--select` flag is mainly used to include or exclude specific exports. If yo
 - `--schema` &mdash;  Specifies the schema to use for the  materialized table or view.
 - `--alias` &mdash; Assigns a custom alias to the materialized table or view. This overrides the default export name.
 
-Note that `--select` flag can't be used with `alias` or `schema`.
+Be careful. The `--select` flag _can't_ be used with `alias` or `schema`.
 
 For example, you can use the following command to create a new export named `new_export` as a table:
 
