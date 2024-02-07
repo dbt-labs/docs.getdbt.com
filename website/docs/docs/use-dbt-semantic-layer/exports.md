@@ -102,7 +102,7 @@ Export completed.
 
 By default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development).
 
-For example, the following command will run the `export_1` and `export_2` and doesn't work with the `--alias` or `--export_as` flags:
+For example, the following command runs `export_1` and `export_2` and doesn't work with the `--alias` or `--export_as` flags:
 
 ```bash
 dbt sl export --saved-query sq_name --select export_1,export2
