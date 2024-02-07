@@ -66,7 +66,7 @@ You can use the following parameters to define an `export`:
 
 | Parameters | Type    | Required | Description    |
 | ------- | --------- | ---------- | ---------------- |
-| `name` | String    | Required     | Name of the Export object.    |
+| `name` | String    | Required     | Name of the `export` object.    |
 | `saved-query` | String    | Required     | Name of a saved query that could be used.    |
 | `select` | List or String   | Optional    | Specify the names of exports to select from the saved query. |
 | `exclude` | String  | Optional    | Specify the names of exports to exclude from the saved query. |
