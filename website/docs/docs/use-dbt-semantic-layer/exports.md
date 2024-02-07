@@ -143,7 +143,7 @@ If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_INCLUDE_SAVE
 
 When you run a build job, any saved queries downstream of the dbt models in that job will also run. To make sure your export data is up-to-date, run the export as a downstream step (after the model).
 
-**Create and execute exports**
+#### Create and execute exports
 
 1. Create a [deploy job](/docs/deploy/deploy-jobs) and ensure the `DBT_INCLUDE_SAVED_QUERY=TRUE` environment variable is set, as described earlier. 
    - This enables you to run any export that needs to be refreshed after a model is build.
