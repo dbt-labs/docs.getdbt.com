@@ -26,19 +26,19 @@ Each dbt Cloud user with a [Developer license](https://docs.getdbt.com/docs/clo
 
 PATs inherit the permissions of the user that created them. For example, if a developer-licensed user with Project Admin role access to specific projects creates a PAT, the token will get the Project Admin role with access to the same projects as the user. These tokens are also account-specific, so if a user has access to more than one dbt Cloud account with the same email address, they need to create a unique PAT for each one of these accounts. 
 
-### Migrating from user API keys to personal access tokens
+### Migrate from user API keys to personal access tokens
 
-This is critical if you’ve been using user API keys. Today, the current API key is located under **Personal Settings → API Key**
+The migration to PATs is critical if you are using user API keys today. The current API key is located under **Personal Settings → API Key**.
 
- This has a few implications if you are using a user API key today: 
+ There are a few things to understand if you are using a user API key today: 
 
-* **Personal access tokens are more secure** 
-    * To promote least privPATs away from user API keys.
-* **You must create and use unique tokens in each one of your dbt Cloud accounts that are tied to the same email.** 
+* Personal access tokens are more secure. 
+    * To promote least privilege and high security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped Personal Access Tokens.
+* You must create and use unique tokens in each one of your dbt Cloud accounts that share the same email address.
     * For example, if paul@atreides.com belongs to two dbt Cloud accounts: Spice Harvesting Account and Guild Navigator Account. Prior to this release, the same API key was used to access both of these accounts. 
     * After this release, Paul has to individually go into these accounts and create a unique PAT for each account he wants to access the API for. These PATs are account-specific and not user specific. 
-* **Cross-Account API endpoints will change in behavior when using the personal access tokens**
-    * These are namely /v2/accounts and /v3/accounts. Since all PATs are now account specific, getting all accounts tied to a username cannot work. /v3/accounts will only return account metadata that’s relevant to the PAT that’s being used. 
+* Cross-Account API endpoints will change in behavior when using the personal access tokens.
+    * These are namely /v2/accounts and /v3/accounts. Since all PATs are now account specific, getting all accounts associated to a username cannot work. /v3/accounts will only return account metadata that’s relevant to the PAT that’s being used. 
     * User account metadata will only contain information about the specific account under which the request is being made. 
     * Any other accounts that belong to that user account will need to be requested through the PAT that belongs to that account. 
 
