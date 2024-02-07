@@ -175,10 +175,6 @@ exports.versionedPages = [
     "firstVersion": "1.2",
   },
   {
-    "page": "docs/build/saved-queries",
-    "firstVersion": "1.7",
-  },
-  {
     "page": "reference/resource-configs/on_configuration_change",
     "firstVersion": "1.6",
   }

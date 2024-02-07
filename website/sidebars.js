@@ -480,6 +480,7 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/dbt-sl",
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
+        "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
         {
           type: "category",
