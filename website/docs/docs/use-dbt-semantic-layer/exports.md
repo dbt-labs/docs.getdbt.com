@@ -44,7 +44,7 @@ An example of a saved query with an export:
 ```yaml
 saved_queries:
   - name: YOUR_QUERY
-    description: your_description
+    description: YOUR_DESCRIPTION
     query_params:
       metrics:
         - your_metric_name
