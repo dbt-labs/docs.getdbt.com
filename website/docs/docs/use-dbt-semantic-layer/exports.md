@@ -134,11 +134,11 @@ To enable exports in production using the dbt Cloud job scheduler, follow these 
 
 1. Go to your **Environments** page by clicking **Deploy** in the navigation.
 2. Select **Environment variables**
-3. [Set the environment variable]((/docs/build/environment-variables#setting-and-overriding-environment-variables)) to `DBT_INCLUDE_SAVED_QUERY=TRUE`.
+3. [Set the environment variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) key to `DBT_INCLUDE_SAVED_QUERY` and the environment variable(s) value to `TRUE` (`DBT_INCLUDE_SAVED_QUERY=TRUE`).
 
 Doing this ensures saved queries and exports are included in your dbt build job. For example, running `dbt build sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
 
-If exports aren't needed, you can set this variable to `FALSE` (`DBT_INCLUDE_SAVED_QUERY=FALSE`).
+If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_INCLUDE_SAVED_QUERY=FALSE`).
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Add an environment variable to run exports in your production run." />
 
