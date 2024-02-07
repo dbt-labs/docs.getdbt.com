@@ -81,7 +81,7 @@ Once you define exports in your dbt project, then you can run them. There are tw
 - [Run exports in development](#exports-in-development) using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
 - [Run exports in production](#exports-in-production) using the [dbt Cloud job scheduler](/docs/deploy/job-scheduler).
 
-### Exports in Development
+### Exports in development
 
 You can run an export in your development environment using your development credentials if you want to test the output of the export before production. You can use the following command in the dbt Cloud CLI:
 
