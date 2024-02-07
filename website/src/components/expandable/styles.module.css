@@ -32,6 +32,10 @@
     transform: rotate(315deg); /* Right-pointing arrow */
 }
 
+:local(.toggle)::before {
+    border-color: rgb(253, 153, 83); /* Orange arrow color in light mode */
+}
+
 /* Adjusting for Light and Dark Modes */
 :local(html[data-theme='dark'] .link), :local(html[data-theme='dark'] .headerText) {
     color: white; /* White text in dark mode */
@@ -39,6 +43,7 @@
 
 :local(html[data-theme='dark'] .toggle)::before {
     border-color: white; /* White arrow in dark mode */
+    border-color: rgb(253, 153, 83);
 }
 
 :local(.body) {
@@ -73,7 +78,7 @@
 
   :local(.link:not(.toggleOpen)):hover::after {
     opacity: 1; /* Only show icon on hover when toggle is not open */
-  }
+    }
 
 .expandableContainer {
     margin-bottom: 10px; /* Adjust this value as needed to create space */
