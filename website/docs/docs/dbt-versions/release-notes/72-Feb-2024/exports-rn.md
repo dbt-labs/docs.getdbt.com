@@ -11,6 +11,6 @@ You can now use the [exports](/docs/use-dbt-semantic-layer/exports) feature with
 
 By exposing tables of metrics and dimensions, exports enable you to integrate with additional tools that don't natively connect with the dbt Semantic Layer, such as PowerBI.
 
-Exports are available on dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plans, on dbt versions 1.7 or higher.
+Exports are available for dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plans on dbt versions 1.7 or newer.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Adding --include-saved-query to the dbt build command in your job execution settings." />
