@@ -79,7 +79,7 @@ You can use the following parameters to define an `export`:
 Once you define exports in your dbt project, then you can run them. There are two ways to run an export:
   
 - [Run exports in development](#exports-in-development) using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
-2. [Run exports in production](#exports-in-production) using the [dbt Cloud Job scheduler](/docs/deploy/job-scheduler).
+- [Run exports in production](#exports-in-production) using the [dbt Cloud job scheduler](/docs/deploy/job-scheduler).
 
 ### Exports in Development
 
