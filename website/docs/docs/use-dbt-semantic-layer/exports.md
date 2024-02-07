@@ -20,7 +20,7 @@ Essentially, exports are like any other table in your data platform. They enable
 - You have the dbt Semantic Layer [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a dbt Cloud environment with a [Job scheduler](/docs/deploy/job-scheduler) enabled.
 
-### Exports and saved queries
+### Comparison between exports and saved queries
 
 The following table compares the features and usage between exports and saved queries: 
 
