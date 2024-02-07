@@ -24,7 +24,7 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
 
-The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/regions-ip-addresses). Use the following table to find the right link for your region:
+The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/access-regions-ip-addresses). Use the following table to find the right link for your region:
 
 | Deployment type |	Schema explorer URL |
 | --------------- | ------------------- |
@@ -215,6 +215,31 @@ Dimension {
 
 ```
 DimensionType = [CATEGORICAL, TIME]
+```
+
+**List saved queries**
+  
+  ```graphql
+  {
+  savedQueries(environmentId: 200532) {
+    name
+    description
+    label
+    queryParams {
+      metrics {
+        name
+      }
+      groupBy {
+        name
+        grain
+        datePart
+      }
+      where {
+        whereSqlTemplate
+      }
+    }
+  }
+}
 ```
 
 ### Querying
@@ -573,6 +598,41 @@ mutation {
     groupBy: [{name:"metric_time, grain: MONTH}, {name:"customer__customer_type"}]
   ) {
     sql
+  }
+}
+```
+
+**Querying compile SQL with saved queries** 
+
+This query includes the field `savedQuery` and generates the SQL based on a predefined [saved query](/docs/build/saved-queries),rather than dynamically building it from a list of metrics and groupings. You can use this for frequently used queries.
+
+```graphql
+mutation {
+  compileSql(
+    environmentId: 200532
+    savedQuery: "new_customer_orders" # new field
+  ) {
+    queryId
+    sql
+  }
+}
+```
+
+:::info A note on querying saved queries
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
+:::
+
+**Create query with saved queries** 
+
+This takes the same inputs as the `createQuery` mutation, but includes the field `savedQuery`. You can use this for frequently used queries.
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: 200532
+    savedQuery: "new_customer_orders"  # new field
+  ) {
+    queryId
   }
 }
 ```

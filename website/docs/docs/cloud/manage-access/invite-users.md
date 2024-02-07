@@ -5,7 +5,7 @@ id: "invite-users"
 sidebar: "Invite users"
 ---
 
-dbt Cloud makes it easy to invite new users to your environment out of the box. This feature is available to all dbt Cloud customers on Teams or Enteprise plans (Developer plans are limited to a single user).
+dbt Cloud makes it easy to invite new users to your environment out of the box. This feature is available to all dbt Cloud customers on Teams or Enterprise plans (Developer plans are limited to a single user).
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ You must have proper permissions to invite new users:
 
 3. Click on **Invite Users**.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/invite-users.png" title="The invite users pane"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/invite-users.png" width="60%" title="The invite users pane"/>
 
 4. In the **Email Addresses** field, enter the email addresses of the users you would like to invite separated by comma, semicolon, or a new line.
 5. Select the license type for the batch of users from the **License** dropdown.
@@ -35,12 +35,12 @@ You must have proper permissions to invite new users:
 
 ## User experience
 
-dbt Cloud generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/cloud/about-cloud/regions-ip-addresses).
+dbt Cloud generates and sends emails from `support@getdbt.com` to the specified addresses. Make sure traffic from the `support@getdbt.com` email is allowed in your settings to avoid emails from going to spam or being blocked. This is the originating email address for all [instances worldwide](/docs/cloud/about-cloud/access-regions-ip-addresses).
 
 
 The email contains a link to create an account. When the user clicks on this they will be brought to one of two screens depending on whether SSO is configured or not.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/email-invite.png" title="Example or an email invitation"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/email-invite.png" width="60%" title="Example or an email invitation"/>
 
 <Tabs>
 
@@ -48,7 +48,7 @@ The email contains a link to create an account. When the user clicks on this the
 
 The default settings send the email, the user clicks the link, and is prompted to create their account:
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/default-user-invite.png" title="Default user invitation"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/default-user-invite.png" width="60%" title="Default user invitation"/>
 
 </TabItem>
 
@@ -56,7 +56,7 @@ The default settings send the email, the user clicks the link, and is prompted t
 
 If SSO is configured for the environment, the user clicks the link, is brought to a confirmation screen, and presented with a link to authenticate against the company's identity provider:
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/sso-user-invite.png" title="User invitation with SSO configured"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/sso-user-invite.png" width="60%" title="User invitation with SSO configured"/>
 
 </TabItem>
 
@@ -73,4 +73,4 @@ Once the user completes this process, their email and user information will popu
 * What happens if I need to resend the invitation? _From the Users page, click on the invite record, and you will be presented with the option to resend the invitation._
 * What can I do if I entered an email address incorrectly? _From the Users page, click on the invite record, and you will be presented with the option to revoke it. Once revoked, generate a new invitation to the correct email address._
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/resend-invite.png" title="Resend or revoke the users invitation"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/resend-invite.png" width="60%" title="Resend or revoke the users invitation"/>
