@@ -4,7 +4,7 @@ description: "Use exports to materialize tables to the data platform on a schedu
 sidebar_label: "Materialize with exports"
 ---
 
-Exports with the dbt Semantic Layer enhance the [saved queries](/docs/build/saved-queries) feature, allowing you to materialize commonly used queries directly within your data platform.
+The exports feature in dbt Semantic Layer enhances the [saved queries](/docs/build/saved-queries) by allowing you to materialize commonly used queries directly within your data platform.
 
 While saved queries are a way to save and reuse commonly used queries in MetricFlow, exports take this functionality a step further by:
 
