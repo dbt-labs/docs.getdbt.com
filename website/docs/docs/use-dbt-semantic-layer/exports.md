@@ -54,7 +54,7 @@ saved_queries:
       where:
         - ... # Additional where clauses
     exports:
-      - name: your_export
+      - name: YOUR_EXPORT
         config:
           export_as: table # Options available: table, view
           schema: your_schema # Optional - defaults to deployment schema
