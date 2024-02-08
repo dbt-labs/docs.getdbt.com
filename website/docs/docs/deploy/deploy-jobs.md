@@ -25,35 +25,40 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
 ## Create and schedule jobs {#create-and-schedule-jobs}
 
-1. On your deployment environment page, click **Create Job** > **Deploy Job** to create a new deploy job. 
-2. Options in the **Job Description** section:
-    - **Job Name** &mdash; Specify the name for the deploy job. For example, `Daily build`.
+1. On your deployment environment page, click **Create job** > **Deploy job** to create a new deploy job. 
+2. Options in the **Job settings** section:
+    - **Job name** &mdash; Specify the name for the deploy job. For example, `Daily build`.
+    - (Optional) **Description** &mdash; Provide a description of what the job does (for example, what the job consumes and what the job produces). 
     - **Environment** &mdash;  By default, it’s set to the deployment environment you created the deploy job from.
-3. Options in the **Execution Settings** section:
+3. Options in the **Execution settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
     - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this deploy job runs.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
-4. Options in the **Schedule** section:
-    - **Run on schedule** &mdash; Enable this option to run the deploy job on a set schedule.
-    - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Frequency** that runs the job at specific times of day, **Specific Intervals** that runs the job every specified number of hours, or **Cron Schedule** that runs the job specified using [cron syntax](#custom-cron-schedule).
-    - **Days of the Week** &mdash; By default, it’s set to every day when **Frequency** or **Specific Intervals** is chosen for **Timing**.
+4. Options in the **Triggers** section:
+    - **Run on schedule** &mdash; Run the deploy job on a set schedule.
+        - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Hours of the day** that runs the job at specific times of day, **Exact intervals** that runs the job every specified number of hours, or **Cron Schedule** that runs the job specified using [cron syntax](#custom-cron-schedule).
+        - **Days of the week** &mdash; By default, it’s set to every day when **Hours of the day** or **Specific intervals** is chosen for **Timing**.
+    - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
+        - **Project** &mdash; Specify the parent project that has that deploy job. 
+        - **Job** &mdash; Specify that deploy job. 
+        - **Completes on** &mdash; Select the run status(es) when the upstream deploy job completes that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.  
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-deploy-job.png" width="90%" title="Example of Deploy Job page in dbt Cloud UI"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
-5. (optional) Options in the **Advanced Settings** section: 
-    - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
-    - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
-    - **Run Timeout** &mdash; Cancel the deploy job if the run time exceeds the timeout value. 
+5. (optional) Options in the **Advanced settings** section: 
+    - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
+    - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
+    - **Run timeout** &mdash; Cancel the deploy job if the run time exceeds the timeout value. 
     - **Compare changes against** &mdash; By default, it’s set to **No deferral**. Select either **Environment** or **This Job** to let dbt Cloud know what it should compare the changes against.  
 
     :::info
     Older versions of dbt Cloud only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. While deferral to an environment is more efficient as dbt Cloud will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ deploy jobs that run in the deferred environment, dbt Cloud will get a more accurate, latest project representation state.
     :::
 
-    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
+    - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
 
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on Deploy Job page"/>
+    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the Deploy Job page"/>
 
 ### Schedule days
 
@@ -100,6 +105,15 @@ Here are examples of cron job schedules. The dbt Cloud job scheduler supports us
 - `0 12 L * *`: At 12:00 PM (afternoon), on the last day of the month.
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
+
+### Trigger on job completion
+
+To chain deploy jobs together, enable the **Run when another job finishes** option and specify the upstream job that when it completes will trigger your job. You must have access (permissions) to the upstream project and job to configure the trigger.
+
+To configure your job to run based on the completion of an upstream job, enable the **Run when another job finishes** option and specify the upstream job that will act as the trigger.  
+
+For jobs that are triggered to run by another job, a link to the upstream job run is available from your job's run details. 
+
 
 ## Related docs
 
