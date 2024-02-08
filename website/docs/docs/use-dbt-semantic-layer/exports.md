@@ -13,11 +13,11 @@ While saved queries are a way to save and reuse commonly used queries in MetricF
 - Enabling you to materialize these queries within your data platform using dbt Cloud.
 - Proving an integration path for tools that don't natively support the dbt Semantic Layer by exposing tables of metrics and dimensions.
 
-Essentially, exports are like any other table in your data platform. They enable you to query metric definitions through any SQL interface or connect to downstream tools without needing a first-class Semantic Layer integration. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
+Essentially, exports are like any other table in your data platform. They enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class Semantic Layer integration. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
 
 ## Prerequisites
 
-- You have a dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan.
+- You have a multi-tenant dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan. (Single tenant is not supported at this time)
 - You are on [dbt version](/docs/dbt-versions/upgrade-core-in-cloud) 1.7 or newer.
 - You have the dbt Semantic Layer [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a dbt Cloud environment with a [Job scheduler](/docs/deploy/job-scheduler) enabled.
