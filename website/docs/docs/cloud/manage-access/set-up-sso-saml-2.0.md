@@ -305,16 +305,23 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 8. Click the application you just created.
 9. Select **Single sign-on** under Manage in the left navigation.
 10. Click **Set up single sign on** under Getting Started.
-11. Click **SAML** in "Select a single sign-on method" section.
-12. Click **Edit** in the Basic SAML Configuration section.
-13. Use the following table to complete the required fields and connect to dbt:
+<Lightbox src="/img/docs/dbt-cloud/access-control/single-sign-on-overview.jpg" width="75%" title="In your Overview page, select 'Set up single sign on" />
+
+11.  Click **SAML** in "Select a single sign-on method" section.
+<Lightbox src="/img/docs/dbt-cloud/access-control/saml.jpg" width="75%" title="Select the 'SAML' card in the 'Seelct a single sign-on method' section. " />
+
+12.   Click **Edit** in the Basic SAML Configuration section.
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/basic-saml.jpg" width="75%" title="In the 'Set up Single Sign-On with SAML' page, click 'Edit' in the the 'Basic SAML Configuration' card"  />
+
+13.    Use the following table to complete the required fields and connect to dbt:
 
    | Field | Value |
    | ----- | ----- |
    | **Identifier (Entity ID)** | Use `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`. |
    | **Reply URL (Assertion Consumer Service URL)** | Use `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`. |
    | **Relay State** | `<login slug>` |
-14. Click **Save** at the top of the form.
+14.   Click **Save** at the top of the form.
 
 ### Creating SAML settings
 
