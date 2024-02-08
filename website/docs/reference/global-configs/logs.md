@@ -118,7 +118,25 @@ Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs and suppr
 ```text
 dbt --quiet run
 ...
+```
 
+### dbt list logging
+
+In [dbt version 1.5](/docs/dbt-versions/core-upgrade/upgrading-to-v1.5#behavior-changes), we updated the logging behavior of the [dbt list](/reference/commands/list) command to include `INFO` level logs by default.
+
+
+You can use either of these parameters to ensure clean output that's compatible with downstream processes, such as piping results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process:
+
+- `dbt --log-level warn list` (recommended; equivalent to previous default)
+- `dbt --quiet list` (suppresses all logging less than ERROR level, except for "printed" messages and list output)
+
+
+### Logging relational cache events
+
+The `LOG_CACHE_EVENTS` config allows detailed logging for [relational cache](reference/global-configs/cache) events, which are disabled by default.
+
+```text
+dbt --log-cache-events compile
 ```
 
 <VersionBlock firstVersion="1.5">
