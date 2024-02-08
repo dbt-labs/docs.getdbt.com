@@ -39,9 +39,9 @@ You can create a deploy job and configure it to run on [scheduled days and times
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Hours of the day** that runs the job at specific times of day, **Exact intervals** that runs the job every specified number of hours, or **Cron schedule** that runs the job specified using [cron syntax](#cron-schedule).
         - **Days of the week** &mdash; By default, it’s set to every day when **Hours of the day** or **Exact intervals** is chosen for **Timing**.
     - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
-        - **Project** &mdash; Specify the parent project that has that deploy job. 
-        - **Job** &mdash; Specify that deploy job. 
-        - **Completes on** &mdash; Select the run status(es) when the upstream deploy job completes that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.  
+        - **Project** &mdash; Specify the parent project that has that upstream deploy job. 
+        - **Job** &mdash; Specify the upstream deploy job. 
+        - **Completes on** &mdash; Select the job run status(es) that will [enqueue](/docs/deploy/job-scheduler#scheduler-queue) the deploy job.  
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 

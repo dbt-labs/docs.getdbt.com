@@ -25,7 +25,7 @@ From the **Run history** dashboard, select a run to view complete details about 
 
 To rerun the job immediately, click **Rerun now**. 
 
-An example of a run that's configured with a [job chaining trigger](/docs/deploy/deploy-jobs#trigger-on-job-completion): 
+An example of a completed run with a configuration for a [job completion trigger](/docs/deploy/deploy-jobs#trigger-on-job-completion):
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/example-job-details.png" width="70%" title="Example of run details" />
 

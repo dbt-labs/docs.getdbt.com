@@ -7,9 +7,9 @@ tags: [Feb-2024]
 date: 2024-02-15
 ---
 
-Now available in dbt Cloud is the ability to trigger deploy jobs when other deploy jobs complete. You can enable this feature [in the UI](/docs/deploy/deploy-jobs#create-and-schedule-jobs) with the  **Run when another job finishes** option or with the [Create Job API endpoint](/dbt-cloud/api-v2#/operations/Create%20Job). 
+Now available in dbt Cloud is the ability to trigger deploy jobs when other deploy jobs complete. You can enable this feature [in the UI](/docs/deploy/deploy-jobs) with the  **Run when another job finishes** option or with the [Create Job API endpoint](/dbt-cloud/api-v2#/operations/Create%20Job). 
 
-When enabled, your job will run when the upstream job that you specified completes. You can configure which job run status(es) will trigger your job. It can be just on `Success` or all statuses. If you have dependencies between your dbt projects, this allows you to _natively_ orchestrate your jobs within dbt Cloud &mdash; no need to set up a third-party tool.
+When enabled, your job will run when the upstream job that you specified completes. You can configure which run status(es) will trigger your job. It can be just on `Success` or on all statuses. If you have dependencies between your dbt projects, this allows you to _natively_ orchestrate your jobs within dbt Cloud &mdash; no need to set up a third-party tool.
 
 An example of the **Triggers** section when creating the job:  
 
