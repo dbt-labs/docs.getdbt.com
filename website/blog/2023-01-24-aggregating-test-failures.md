@@ -16,9 +16,9 @@ Testing the quality of data in your warehouse is an important aspect in any matu
 
 <!--truncate-->
 
-At [Tempus](https://www.tempus.com/), a precision medicine company specializing in oncology, high quality data is a necessary component for high quality clinical models. With roughly 1,000 dbt models, nearly a hundred data sources, and a dozen different data quality stakeholders, producing a framework that allows stakeholders to take action on test failures is challenging. Without an actionable framework, data quality tests can backfire — in early 2022, we had nearly a thousand tests, hundreds of which failed on a daily basis yet were wholly ignored. 
+At [Tempus](https://www.tempus.com/), a precision medicine company specializing in oncology, high quality data is a necessary component for high quality clinical models. With around a thousand dbt models and a dozen different data quality stakeholders, producing a framework that allows stakeholders to take action on test failures is challenging. Without an actionable framework, data quality tests can backfire — one failing test becomes two becomes ten and suddenly you have too many test failures to act on any of them.
 
-Recently, we overhauled our testing framework. We cut the number of tests down to 200, creating a more mature framework that includes metadata and emphasizes actionability. Our system for managing data quality is a three step process, described below:
+Recently, we overhauled our testing framework. We cut the number of tests down by 80% to create a more mature framework that includes metadata and emphasizes actionability. Our system for managing data quality is a three step process, described below:
 
 1. Leveraging the contextual knowledge of stakeholders, writing specific, high quality data tests, perpetuating test failure results into aliased models for easy access. 
 1. Aggregating test failure results using Jinja macros and pre-configured metadata to pull together high level summary tables. 
