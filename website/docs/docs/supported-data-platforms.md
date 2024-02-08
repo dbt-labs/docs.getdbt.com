@@ -22,5 +22,5 @@ import MSCallout from '/snippets/_microsoft-adapters-soon.md';
 
 There are two types of adapters available today:
 
-- **Trusted** &mdash; [Trusted adapters](trusted-adapters) are those where the adapter maintainers have agreed to meet a higher standard of quality.
+- **Trusted** &mdash; [Trusted adapters](trusted-adapters) are those where the adapter maintainers have agreed to meet a higher standard of quality. For adapters supported in dbt Cloud, maintainers have gone through an additional rigorous process that cover contractual requirements for development, documentation, user experience, and maintenance.
 - **Community** &mdash; [Community adapters](community-adapters) are open-source and maintained by community members. 
