@@ -60,7 +60,7 @@ Context Driven Tests are more complex and look a lot more like models. Essential
 
 SELECT
     id,
-    birth_date
+    purchase_date
 FROM
     {{ ref('customer') }}
 WHERE purchase_date < '1900-01-01'
