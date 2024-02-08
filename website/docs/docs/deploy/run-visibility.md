@@ -9,7 +9,7 @@ You can view the history of your runs and the model timing dashboard to help ide
 
 ## Run history
 
-The **Run History** dashboard in dbt Cloud helps you monitor the health of your dbt project. It provides a detailed overview of all of your project's job runs and empowers you with a variety of filters to help you focus on specific aspects. You can also use it to review recent runs, find errored runs, and track the progress of runs in progress. You can access it on the top navigation menu by clicking **Deploy** and then **Run History**. 
+The **Run history** dashboard in dbt Cloud helps you monitor the health of your dbt project. It provides a detailed overview of all of your project's job runs and empowers you with a variety of filters to help you focus on specific aspects. You can also use it to review recent runs, find errored runs, and track the progress of runs in progress. You can access it on the top navigation menu by clicking **Deploy** and then **Run history**. 
 
 The dashboard displays your full run history, including job name, status, associated environment, job trigger, commit SHA, schema, and timing info. 
 
@@ -17,7 +17,17 @@ dbt Cloud developers can access their run history for the last 365 days through 
 
 We limit self-service retrieval of run history metadata to 365 days to improve dbt Cloud's performance. For more info on the run history retrieval change, refer to [Older run history retrieval change](/docs/dbt-versions/release-notes/May-2023/run-history-endpoint).
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="85%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="85%" title="Run history dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
+
+## Job run details
+
+From the **Run history** dashboard, select a run to view complete details about it. The job run details page displays job trigger, commit SHA, time spent in the scheduler queue, all the run steps and their [logs](#access-logs), [model timing](#model-timing), and more. 
+
+To rerun the job immediately, click **Rerun now**. 
+
+An example of a run that's configured with a [job chaining trigger](/docs/deploy/deploy-jobs#trigger-on-job-completion): 
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/example-job-details.png" width="70%" title="Example of run details" />
 
 ## Access logs
 

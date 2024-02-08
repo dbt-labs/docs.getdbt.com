@@ -13,7 +13,7 @@ You can use deploy jobs to build production data assets. Deploy jobs make it eas
 - Job run details, including run timing, [model timing data](#model-timing), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their run step statuses
 
-You can create a deploy job and configure it to run on [scheduled days and times](#schedule-days) or enter a [custom cron schedule](#custom-cron-schedules).
+You can create a deploy job and configure it to run on [scheduled days and times](#schedule-days) or enter a [custom cron schedule](#cron-schedule).
 
 
 ## Prerequisites
@@ -36,8 +36,8 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 4. Options in the **Triggers** section:
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
-        - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Hours of the day** that runs the job at specific times of day, **Exact intervals** that runs the job every specified number of hours, or **Cron Schedule** that runs the job specified using [cron syntax](#custom-cron-schedule).
-        - **Days of the week** &mdash; By default, it’s set to every day when **Hours of the day** or **Specific intervals** is chosen for **Timing**.
+        - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Hours of the day** that runs the job at specific times of day, **Exact intervals** that runs the job every specified number of hours, or **Cron schedule** that runs the job specified using [cron syntax](#cron-schedule).
+        - **Days of the week** &mdash; By default, it’s set to every day when **Hours of the day** or **Exact intervals** is chosen for **Timing**.
     - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
         - **Project** &mdash; Specify the parent project that has that deploy job. 
         - **Job** &mdash; Specify that deploy job. 
@@ -62,13 +62,13 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
 ### Schedule days
 
-To set your job's schedule, use the **Schedule Days** option to choose specific days of the week, and select customized hours or intervals.
+To set your job's schedule, use the **Run on schedule** option to choose specific days of the week, and select customized hours or intervals.
 
 Under **Timing**, you can either use customizable hours for jobs that need to run frequently throughout the day or exact intervals for jobs that need to run at specific times:
 
-- **Every n hours** &mdash; Use this option to set how often your job runs, in hours. Enter a number between 1 and 23 to represent the interval between job runs. For example, if you set it to "every 2 hours", the job will run every 2 hours from midnight UTC. This option is useful if you need to run jobs multiple times per day at regular intervals.
+- **Exact intervals** &mdash; Use this option to set how often your job runs, in hours. Enter a number between 1 and 23 to represent the interval between job runs. For example, if you set it to **Every 2 hours**, the job will run every 2 hours from midnight UTC. This option is useful if you need to run jobs multiple times per day at regular intervals.
 
-- **At exact intervals** &mdash; Use this option to set specific times when your job should run. You can enter a comma-separated list of hours (in UTC) when you want the job to run. For example, if you set it to `0,12,23,` the job will run at midnight, noon, and 11 PM UTC. This option is useful if you want your jobs to run at specific times of day and don't need them to run more frequently than once a day.
+- **Hours of the day** &mdash; Use this option to set specific times when your job should run. You can enter a comma-separated list of hours (in UTC) when you want the job to run. For example, if you set it to `0,12,23,` the job will run at midnight, noon, and 11 PM UTC. This option is useful if you want your jobs to run at specific times of day and don't need them to run more frequently than once a day.
 
 :::info
 
@@ -80,12 +80,9 @@ dbt Cloud uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordi
 
 :::
 
-### Custom cron schedule
+### Cron schedule
 
-To fully customize the scheduling of your job, choose the **Custom cron schedule** option and use the cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
-
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" title="Schedule your dbt job"/>
+To fully customize the scheduling of your job, choose the **Cron schedule** option and use cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
 
 Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and returns their plain English translations.
 
@@ -108,7 +105,7 @@ Here are examples of cron job schedules. The dbt Cloud job scheduler supports us
 
 ### Trigger on job completion
 
-To chain deploy jobs together, enable the **Run when another job finishes** option and specify the upstream job that when it completes will trigger your job. You must have access (permissions) to the upstream project and job to configure the trigger.
+To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream job so that when it completes it will trigger your job. You can also set this up through the API. You must have access (permissions) to the upstream project and job to configure the trigger. 
 
 To configure your job to run based on the completion of an upstream job, enable the **Run when another job finishes** option and specify the upstream job that will act as the trigger.  
 
