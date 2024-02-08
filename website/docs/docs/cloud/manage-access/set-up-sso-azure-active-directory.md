@@ -1,16 +1,16 @@
 ---
-title: "Set up SSO with Azure Active Directory"
-description: "Learn how dbt Cloud administrators can use Azure Active Directory to control access in a dbt Cloud account."
+title: "Set up SSO with Microsoft Entra ID (formerly Azure AD)"
+description: "Learn how dbt Cloud administrators can use Microsoft Entra ID to control access in a dbt Cloud account."
 id: "set-up-sso-azure-active-directory"
-sidebar_label: "Set up SSO with Azure AD"
+sidebar_label: "Set up SSO with Microsoft Entra ID"
 ---
 
 import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
 <SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
-dbt Cloud Enterprise supports single-sign on via Azure Active Directory (Azure AD).
-You will need permissions to create and manage a new Azure AD application.
+dbt Cloud Enterprise supports single-sign on via Microsoft Entra ID (formerly Azure AD).
+You will need permissions to create and manage a new Entra ID application.
 Currently supported features include:
 
 * IdP-initiated SSO
@@ -19,11 +19,11 @@ Currently supported features include:
 
 ## Configuration
 
-dbt Cloud supports both single tenant and multi-tenant Azure Active Directory SSO Connections. For most Enterprise purposes, you will want to use the single-tenant flow when creating an Azure AD Application.
+dbt Cloud supports both single tenant and multi-tenant Microsoft Entra ID (formerly Azure AD) SSO Connections. For most Enterprise purposes, you will want to use the single-tenant flow when creating an Azure AD Application.
 
 ### Creating an application
 
-Log into the Azure portal for your organization. Using the [**Azure Active Directory**](https://portal.azure.com/#home) page, you will need to select the appropriate directory and then register a new application.
+Log into the Azure portal for your organization. Using the [**Microsoft Entra ID**](https://portal.azure.com/#home) page, you will need to select the appropriate directory and then register a new application.
 
 1. Under **Manage**, select **App registrations**.
 2. Click **+ New Registration** to begin creating a new application registration.
@@ -46,11 +46,11 @@ Log into the Azure portal for your organization. Using the [**Azure Active Direc
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-new-application-alternative.png" width="70%" title="Configuring a new app registration"/>
 
-5. Save the App registration to continue setting up Azure AD SSO
+5. Save the App registration to continue setting up Microsoft Entra ID SSO
 
-#### Configuration with the new Azure AD interface (optional)
+#### Configuration with the new Microsoft Entra ID interface (optional)
 
-Depending on your Azure AD settings, your App Registration page might look different than the screenshots shown above. If you are _not_ prompted to configure a Redirect URI on the **New Registration** page, then follow steps 7 and 7 below after creating your App Registration. If you were able to set up the Redirect URI in the steps above, then skip ahead to [step 8](#adding-users-to-an-enterprise-application).
+Depending on your Microsoft Entra ID settings, your App Registration page might look different than the screenshots shown above. If you are _not_ prompted to configure a Redirect URI on the **New Registration** page, then follow steps 7 and 7 below after creating your App Registration. If you were able to set up the Redirect URI in the steps above, then skip ahead to [step 8](#adding-users-to-an-enterprise-application).
 
 6. After registering the new application without specifying a Redirect URI, click on **App registration** and then navigate to the **Authentication** tab for the new application.
 
@@ -75,7 +75,7 @@ Once you've registered the application, the next step is to assign users to it. 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-enterprise-app-users.png" title="Adding Users to an Enterprise Application a Redirect URI"/>
 
 :::info User assignment required?
-Under **Properties** check the toggle setting for **User assignment required?** and confirm it aligns to your requirements. Most customers will want this toggled to **Yes** so that only users/groups explicitly assigned to dbt Cloud will be able to sign in. If this setting is toggled to **No** any user will be able to access the application if they have a direct link to the application per [Azure AD Documentation](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/assign-user-or-group-access-portal#configure-an-application-to-require-user-assignment)
+Under **Properties** check the toggle setting for **User assignment required?** and confirm it aligns to your requirements. Most customers will want this toggled to **Yes** so that only users/groups explicitly assigned to dbt Cloud will be able to sign in. If this setting is toggled to **No** any user will be able to access the application if they have a direct link to the application per [Microsoft Entra ID Documentation](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/assign-user-or-group-access-portal#configure-an-application-to-require-user-assignment)
 :::
 
 ### Configuring permissions
@@ -124,21 +124,21 @@ To complete setup, follow the steps below in the dbt Cloud application.
 
 | Field | Value |
 | ----- | ----- |
-| **Log&nbsp;in&nbsp;with** | Azure AD Single Tenant |
+| **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant |
 | **Client&nbspID** | Paste the **Application (client) ID** recorded in the steps above |
-| **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) recorded in the steps above; <br />**Note:** When the client secret expires, an Azure AD admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access. |
+| **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) recorded in the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access. |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
 | **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/manage-access/sso-overview#auth0-multi-tenant-uris) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Azure AD SSO in dbt Cloud" />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Entra ID AD SSO in dbt Cloud" />
 
-27. Click **Save** to complete setup for the Azure AD SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Azure AD.
+1.  Click **Save** to complete setup for the Microsoft Entra ID SSO integration. From here, you can navigate to the login URL generated for your account's _slug_ to test logging in with Entra ID.
 
 <Snippet path="login_url_note" />
 
 ## Setting up RBAC
-Now you have completed setting up SSO with Azure AD, the next steps will be to set up
+Now you have completed setting up SSO with Entra ID, the next steps will be to set up
 [RBAC groups](/docs/cloud/manage-access/enterprise-permissions) to complete your access control configuration.
 
 ## Troubleshooting Tips
