@@ -479,6 +479,7 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/dbt-sl",
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
+        "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
         {
           type: "category",
@@ -501,7 +502,7 @@ const sidebarSettings = {
         "docs/dbt-cloud-apis/overview",
         {
           type: "category",
-          label: "Authentication",
+          label: "API Access",
           link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
             "docs/dbt-cloud-apis/authentication",
