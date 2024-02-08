@@ -192,15 +192,14 @@ dbt sl list saved-queries --show-exports
 **Output**
 
 ```bash
-[*main}[~/git/jaffle-sl-template]$ ../dbti/dbt sl list saved-queries --show-exports
-WARNING: version 0.35.23 of the dbt Cloud CLI is now available. During beta, old versions are not supported.
+dbt sl list saved-queries --show-exports
 
 The list of available saved queries:
 - new_customer_orders
   exports:
-       - Export(name_customer_orders, exportAS=TABLE)
-       - Export(name_customer_orderss, exportAS=VIEW)
-       - Export(name_customer_ordersss, alias=test, schemas=lfg, exportAS=TABLE)
+       - Export(new_customer_orders_table, exportAs=TABLE)
+       - Export(new_customer_orders_view, exportAs=VIEW)
+       - Export(new_customer_orders, alias=orders, schemas=customer_schema, exportAs=TABLE)
 ```
 
 ### Validate-configs
