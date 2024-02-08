@@ -7,8 +7,7 @@ Community adapters are adapter plugins contributed and maintained by members of 
 
 | Data platforms (click to view setup guide) ||
 | ------------------------------------------ | -------------------------------- | ------------------------------------- |
-| [Greenplum](/docs/core/connect-data-platform/greenplum-setup)     |
-| [Clickhouse](/docs/core/connect-data-platform/clickhouse-setup)  | [Hive](/docs/core/connect-data-platform/hive-setup)   | [Rockset](/docs/core/connect-data-platform/rockset-setup)   |
+| [Greenplum](/docs/core/connect-data-platform/greenplum-setup) | [Clickhouse](/docs/core/connect-data-platform/clickhouse-setup)  | [Hive](/docs/core/connect-data-platform/hive-setup)   | [Rockset](/docs/core/connect-data-platform/rockset-setup)   |
 | [IBM DB2](/docs/core/connect-data-platform/ibmdb2-setup)  | [Impala](/docs/core/connect-data-platform/impala-setup)           | [SingleStore](/docs/core/connect-data-platform/singlestore-setup)  |
 | [Doris & SelectDB](/docs/core/connect-data-platform/doris-setup) | [Infer](/docs/core/connect-data-platform/infer-setup)  | [SQLite](/docs/core/connect-data-platform/sqlite-setup) |
 | [Starrocks](/docs/core/connect-data-platform/starrocks-setup) | [DuckDB](/docs/core/connect-data-platform/duckdb-setup)  | [iomete](/docs/core/connect-data-platform/iomete-setup) 
