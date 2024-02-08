@@ -503,7 +503,7 @@ const sidebarSettings = {
         "docs/dbt-cloud-apis/overview",
         {
           type: "category",
-          label: "Authentication",
+          label: "API Access",
           link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
             "docs/dbt-cloud-apis/authentication",
