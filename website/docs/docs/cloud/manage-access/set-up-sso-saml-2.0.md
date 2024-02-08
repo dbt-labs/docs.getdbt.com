@@ -164,7 +164,6 @@ dbt Cloud expects by using the Attribute Statements and Group Attribute Statemen
    | -------- | ----------- | ------------- | ----- | ------------------------------------- |
    | `groups` | Unspecified | Matches regex | `.*`  | _The groups that the user belongs to_ |
 
-
 You can instead use a more restrictive Group Attribute Statement than the
 example shown in the previous steps. For example, if all of your dbt Cloud groups start with
 `DBT_CLOUD_`, you may use a filter like `Starts With: DBT_CLOUD_`. **Okta
