@@ -35,7 +35,7 @@ The migration to PATs is critical if you are using user API keys today. The curr
 * Personal access tokens are more secure. 
     * To promote least privilege and high security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped personal access tokens.
 * You must create and use unique tokens in each one of your dbt Cloud accounts that share the same email address.
-    * For example, if paul@atreides.com belongs to two dbt Cloud accounts: Spice Harvesting Account and Guild Navigator Account. Prior to this release, the same API key was used to access both of these accounts. 
+    * For example, if paul.atreides@example.com belongs to two dbt Cloud accounts: Spice Harvesting Account and Guild Navigator Account. Prior to this release, the same API key was used to access both of these accounts. 
     * After this release, Paul has to individually go into these accounts and create a unique PAT for each account he wants to access the API for. These PATs are account-specific and not user specific. 
 * Cross-Account API endpoints will change in behavior when using the personal access tokens.
     * These are namely /v2/accounts and /v3/accounts. Since all PATs are now account specific, getting all accounts associated to a username cannot work. /v3/accounts will only return account metadata that’s relevant to the PAT that’s being used. 
