@@ -4,14 +4,14 @@ description: "Use exports to materialize tables to the data platform on a schedu
 sidebar_label: "Materialize with exports"
 ---
 
-The exports feature in dbt Semantic Layer enhances the [saved queries](/docs/build/saved-queries) by allowing you to materialize commonly used queries directly within your data platform.
+The exports feature in the dbt Semantic Layer enhances the [saved queries](/docs/build/saved-queries) by allowing you to materialize commonly used queries directly within your data platform.
 
 While saved queries are a way to save and reuse commonly used queries in MetricFlow, exports take this functionality a step further by:
 
 - Enabling you to materialize these queries within your data platform using dbt Cloud.
 - Proving an integration path for tools that don't natively support the dbt Semantic Layer by exposing tables of metrics and dimensions.
 
-Essentially, exports are like any other table in your data platform. They enable you to query metric definition through any SQL interface or connect to downstream tools without needing a first class Semantic Layer integration. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
+Essentially, exports are like any other table in your data platform. They enable you to query metric definitions through any SQL interface or connect to downstream tools without needing a first-class Semantic Layer integration. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
 
 ## Prerequisites
 
@@ -27,9 +27,9 @@ Essentially, exports are like any other table in your data platform. They enable
 | ----------- | ----------- | ---------------- |
 | **Availability**    | Available on dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plans with dbt versions 1.7 or newer.| Available in both dbt Core and dbt Cloud.     |
 | **Purpose**         | To materialize saved queries in your data platform and expose metrics and dimensions as a view or table. | To define and manage common Semantic Layer queries in YAML, including metrics and dimensions.   |
-| **Usage**           | Automatically runs saved queries and materializes them within your data platform. Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. <br /><br />Example: Create a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing common MetricFlow queries within dbt projects.<br /><br /><br />Example: Group related metrics together for better organization, and include commonly uses dimensions and filters. | For materializing query results in the data platform. |
+| **Usage**           | Automatically runs saved queries and materializes them within your data platform. Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. <br /><br />Example: Create a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing common MetricFlow queries within dbt projects.<br /><br /><br />Example: Group related metrics together for better organization, and include commonly used dimensions and filters. | For materializing query results in the data platform. |
 | **Integration**     | Must have the dbt Semantic Layer configured in your dbt project.<br /><br />Tightly integrated with the [MetricFlow Server](/docs/use-dbt-semantic-layer/sl-architecture#components) and dbt Cloud's job scheduler. | Integrated into the dbt <Term id="dag" /> and managed alongside other dbt nodes. |
-| **Configuration**   | Configured within dbt Cloud environment and job scheduler settings. | Defined in YAML format within dbt project files.   |
+| **Configuration**   | Defined within the `saved_queries` configuration. Configured within the dbt Cloud environment and job scheduler settings. | Defined in YAML format within dbt project files.   |
 
 ## Define exports
 
@@ -154,7 +154,7 @@ When you run a build job, any saved queries downstream of the dbt models in that
 #### Create and execute exports
 
 1. Create a [deploy job](/docs/deploy/deploy-jobs) and ensure the `DBT_INCLUDE_SAVED_QUERY=TRUE` environment variable is set, as described in [Set environment variable](#set-environment-variable). 
-   - This enables you to run any export that needs to be refreshed after a model is build.
+   - This enables you to run any export that needs to be refreshed after a model is built.
 2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform.
 3. Review the exports' execution details in the jobs logs and confirm the export was run successfully. This helps troubleshoot and to ensure accuracy. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
 4. Your data is now available in the data platform for querying.
