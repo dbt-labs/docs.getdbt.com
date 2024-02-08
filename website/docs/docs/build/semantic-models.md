@@ -20,7 +20,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
-Semantic models have 6 components and this page explains the definitions with some examples:
+Here we describe the Semantic model components with examples:
 
 | Component | Description | Type |
 | --------- | ----------- | ---- |

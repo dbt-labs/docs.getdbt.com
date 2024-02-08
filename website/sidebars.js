@@ -28,7 +28,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/dbt-cloud-features",
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
-        "docs/cloud/about-cloud/regions-ip-addresses",
+        "docs/cloud/about-cloud/access-regions-ip-addresses",
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
@@ -213,6 +213,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
                 "docs/core/connect-data-platform/extrica-setup",
+		"docs/core/connect-data-platform/risingwave-setup",
               ],
             },
           ],
@@ -324,6 +325,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
                 "docs/build/metrics-overview",
+                "docs/build/conversion",
                 "docs/build/cumulative",
                 "docs/build/derived",
                 "docs/build/ratio",
@@ -477,6 +479,7 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/dbt-sl",
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
+        "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
         {
           type: "category",
@@ -499,7 +502,7 @@ const sidebarSettings = {
         "docs/dbt-cloud-apis/overview",
         {
           type: "category",
-          label: "Authentication",
+          label: "API Access",
           link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
             "docs/dbt-cloud-apis/authentication",
@@ -886,6 +889,7 @@ const sidebarSettings = {
             "reference/commands/compile",
             "reference/commands/debug",
             "reference/commands/deps",
+            "reference/commands/dbt-environment",
             "reference/commands/init",
             "reference/commands/list",
             "reference/commands/parse",

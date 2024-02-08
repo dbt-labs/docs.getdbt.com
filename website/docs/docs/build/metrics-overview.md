@@ -9,18 +9,17 @@ pagination_next: "docs/build/cumulative"
   
 Once you've created your semantic models, it's time to start adding metrics! Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo)
 
-The keys for metrics definitions are: 
+The keys for metrics definitions are:
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
-| `description` | Provide the description for your metric.   | Optional |
+| `description` | Describe your metric.   | Optional |
 | `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `config` | Provide the specific configurations for your metric.   | Optional |
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
-|  `meta` | Additional metadata you want to add to your metric. | Optional |
 
 
 Here's a complete example of the metrics spec configuration:
@@ -39,33 +38,51 @@ metrics:
       null
 ```
 
-This page explains the different supported metric types you can add to your dbt project. 
-<!--
-- [Cumulative](#cumulative-metrics) — Cumulative metrics aggregate a measure over a given window.
-- [Derived](#derived-metrics) — An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Expression](#expression-metrics) — Allow measures to be modified using a SQL expression.
-- [Measure proxy](#measure-proxy-metrics) — Metrics that refer directly to one measure.
-- [Ratio](#ratio-metrics) — Create a ratio out of two measures. 
--->
+This page explains the different supported metric types you can add to your dbt project.
+
+### Conversion metrics
+
+[Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
+
+```yaml
+metrics:
+  - name: The metric name # Required
+    description: The metric description # Optional
+    type: conversion # Required
+    label: # Required
+    type_params: # Required
+      fills_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
+      conversion_type_params: # Required
+        entity: ENTITY # Required
+        calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
+        base_measure: MEASURE # Required
+        conversion_measure: MEASURE # Required
+        window: TIME_WINDOW # Optional. default: infinity. window to join the two events. Follows a similar format as time windows elsewhere (such as 7 days)
+        constant_properties: # Optional. List of constant properties default: None
+          - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
+            conversion_property: DIMENSION or ENTITY # Same as base above, but to the semantic model of the conversion_measure
+```
 
 ### Cumulative metrics 
 
-[Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window would accumulate the measure over all time. **Note**, you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
+[Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
 ```yaml
-# Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all time)
+# Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all of time)
 metrics:
   - name: wau_rolling_7
     owners:
       - support@getdbt.com
     type: cumulative
     type_params:
+      fills_nulls_with: 0
       measures:
         - distinct_users
-    #Omitting window will accumulate the measure over all time
+    # Omitting window will accumulate the measure over all time
       window: 7 days
       
 ```
+
 ### Derived metrics
 
 [Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
@@ -77,6 +94,7 @@ metrics:
     type: derived
     label: Order Gross Profit
     type_params:
+      fills_nulls_with: 0
       expr: revenue - cost
       metrics:
         - name: order_total
@@ -104,7 +122,7 @@ metrics:
 
 ### Ratio metrics 
 
-[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied, to both numerator and denominator, or applied separately to the numerator or denominator. 
+[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied to both the numerator and denominator or separately to the numerator or denominator. 
 
 ```yaml
 # Ratio Metric
@@ -116,6 +134,7 @@ metrics:
 # Define the metrics from the semantic manifest as numerator or denominator
     type: ratio
     type_params:
+      fills_nulls_with: 0
       numerator: cancellations
       denominator: transaction_amount
       filter: |     # add optional constraint string. This applies to both the numerator and denominator
@@ -134,6 +153,7 @@ metrics:
       filter: |   #  add optional constraint string. This applies to both the numerator and denominator
         {{ Dimension('customer__country') }} = 'MX'  
 ```
+
 ### Simple metrics
 
 [Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
@@ -148,6 +168,7 @@ metrics:
   - name: cancellations
     type: simple
     type_params:
+      fills_nulls_with: 0
       measure: cancellations_usd  # Specify the measure you are creating a proxy for.
     filter: |
       {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
@@ -164,14 +185,12 @@ filter: |
 filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 ```
+
 ### Further configuration 
 
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner
 
 - **Description** &mdash;  Write a detailed description of the metric.
-
-<!--Provide a detailed description of the metric. This description surfaced in the main “definition” section of the metric page using rich Markdown formatting in the Transform UI. [this includes transform and not sure how this looks in core and cloud]-->
-
 
 ## Related docs
 

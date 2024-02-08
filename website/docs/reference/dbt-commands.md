@@ -17,7 +17,7 @@ All commands in the table are compatible with either the dbt Cloud IDE, dbt Clou
 
 You can run dbt commands in your specific tool by prefixing them with `dbt`.  For example, to run the `test` command, type `dbt test`.
 
-| Command | Description | Compatible tools | Version |
+| Command | Description | Compatible tools | <div style={{width:'220px'}}>Version</div> |
 | ------- | ----------- | ---------------- | ------- |
 | [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) | All | All [supported versions](/docs/dbt-versions/core) |
 | cancel  | Cancels the most recent invocation.| dbt Cloud CLI | Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
@@ -27,6 +27,7 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [debug](/reference/commands/debug)  | Debugs dbt connections and projects  | dbt Cloud IDE <br /> dbt Core  | All [supported versions](/docs/dbt-versions/core) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project | All | All [supported versions](/docs/dbt-versions/core) |
+| [environment](/reference/commands/dbt-environment)  | Enables you to interact with your dbt Cloud environment.  | dbt Cloud CLI | Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
 | help | Displays help information for any command | dbt Core <br /> dbt Cloud CLI | All [supported versions](/docs/dbt-versions/core) |
 | [init](/reference/commands/init)  | Initializes a new dbt project  | dbt Core | All [supported versions](/docs/dbt-versions/core) |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project | All | All [supported versions](/docs/dbt-versions/core) |

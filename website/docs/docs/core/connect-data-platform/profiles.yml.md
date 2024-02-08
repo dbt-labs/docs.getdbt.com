@@ -3,14 +3,13 @@ title: "About profiles.yml"
 id: profiles.yml
 ---
 
-If you're using [dbt Core](/docs/core/installation-overview), you'll need a `profiles.yml` file that contains the connection details for your data platform. When you run dbt Core from the command line, it reads your `dbt_project.yml` file to find the `profile` name, and then looks for a profile with the same name in your `profiles.yml` file. This profile contains all the information dbt needs to connect to your data platform. 
+If you're using [dbt Core](/docs/core/installation-overview), you'll need a `profiles.yml` file that contains the connection details for your data platform. When you run dbt Core from the command line, it reads your `dbt_project.yml` file to find the `profile` name, and then looks for a profile with the same name in your `profiles.yml` file. This profile contains all the information dbt needs to connect to your data platform.
 
 For detailed info, you can refer to the [Connection profiles](/docs/core/connect-data-platform/connection-profiles).
 
 :::tip No `profiles.yml` file needed for dbt Cloud
 If you're using dbt Cloud, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the dbt Cloud interface and don't need a `profiles.yml` file.
 :::
-
 
 This section identifies the parts of your `profiles.yml` that aren't specific to a particular data platform. For specific connection details, refer to the relevant page for your data platform.
 
@@ -31,6 +30,7 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
   [fail_fast](/reference/global-configs/failing-fast): <true | false>
   [use_experimental_parser](/reference/global-configs/parsing): <true | false>
   [static_parser](/reference/global-configs/parsing): <true | false>
+  [cache_selected_only](/reference/global-configs/cache): <true | false>
 
 <profile-name>:
   target: <target-name> # this is the default target
