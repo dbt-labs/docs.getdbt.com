@@ -6,7 +6,6 @@ description: "Learn how to create and set up CI checks to test code changes befo
 
 You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request (PR) in your dbt Git repository. By running and testing only _modified_ models, dbt Cloud ensures these jobs are as efficient and resource conscientious as possible on your data platform.
 
-
 ## Set up CI jobs {#set-up-ci-jobs}
 
 dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
@@ -147,11 +146,15 @@ If you're experiencing any issues, review some of the common questions and answe
       If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.</div>
    </div>
 </details>
+
 <details>
-   <summary>The status of the CI job run remains as pending in Azure DevOps after the run execution completed</summary>
-   <div>
-      <div>Upon triggering of a CI job, the status of the check in your Pull Request should change to `pending` while awaiting an update from dbt. After the CI job run completes, dbt sends the status to ADO which will update to either `succeeded` or `failed`. If this does not update after run completion, ensure that there are no branch policies in place that is preventing ADO from receiving these updates. Relevant articles can be found here:<br></br>
-          <a href="https://support.hashicorp.com/hc/en-us/articles/18670331556627-Azure-DevOps-Services-Pull-Request-Stuck-Waiting-on-Status-Update-from-Terraform-Cloud-Enterprise-Run">Azure DevOps Services Pull Request Stuck Waiting on Status Update</a><br></br>
-          <a href="https://learn.microsoft.com/en-us/azure/devops/repos/git/pull-request-status?view=azure-devops#pull-request-status">Pull request status</a><br></br><br></br>
-   </div>
+   <summary>PR status for CI job stays in 'pending' in Azure DevOps after job run finishes</summary>
+
+   When you start a CI job, the pull request status should show as `pending` while it waits for an update from dbt. Once the CI job finishes, dbt sends the status to Azure DevOps (ADO), and the status will change to either `succeeded` or `failed`. 
+   
+   If the status doesn't get updated after the job runs, check if there are any git branch policies in place that's blocking ADO from receiving these updates. You can find relevant information here: <br />
+   <ul>
+   <li><a href="https://support.hashicorp.com/hc/en-us/articles/18670331556627-Azure-DevOps-Services-Pull-Request-Stuck-Waiting-on-Status-Update-from-Terraform-Cloud-Enterprise-Run">Azure DevOps Services Pull Request Stuck Waiting on Status Update</a></li>
+   <li><a href="https://learn.microsoft.com/en-us/azure/devops/repos/git/pull-request-status?view=azure-devops#pull-request-status">Pull request status</a></li>
+   </ul>
 </details>
