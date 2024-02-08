@@ -4,7 +4,7 @@ id: "trusted-adapters"
 hide_table_of_contents: true
 ---
 
-Trusted adapters are adapters not maintained by dbt Labs, that we feel comfortable recommending to users for use in production.
+Trusted adapters are adapters that we feel comfortable recommending to users for use in production. They are maintained by dbt Labs, partners, and community members. For all adapters in dbt Cloud, they have gone through an additional rigorous process that cover development, documentation, user experience, and maintenance requirements.
 
 Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a *good thing*, however it requires due diligence that wasn't required in a paid-license, closed-source software world. As a user, there are questions to answer important before taking a dependency on an open-source project. The trusted adapter designation is meant to streamline this process for end users.
 
@@ -23,14 +23,6 @@ pendency on this library?
 
 Refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide for more information, particularly if you are an adapter maintainer considering having your adapter be added to the trusted list.
 
-### Trusted vs Verified
-
-The Verification program exists to highlight adapters that meet both of the following criteria:
-
-- the guidelines given in the Trusted program,
-- formal agreements required for integration with dbt Cloud
-
-For more information on the Verified Adapter program, reach out to the [dbt Labs partnerships team](mailto:partnerships@dbtlabs.com)
 
 ### Trusted adapters
 
@@ -39,3 +31,12 @@ The following are **Trusted adapters** ✓ you can connect to in dbt Core:
 import AdaptersTrusted from '/snippets/_adapters-trusted.md';
 
 <AdaptersTrusted />
+
+<MSCallout />
+
+Here are the verified data platforms that connect to dbt and its latest version.
+
+import AdaptersVerified from '/snippets/_adapters-verified.md';
+
+<AdaptersVerified />
+

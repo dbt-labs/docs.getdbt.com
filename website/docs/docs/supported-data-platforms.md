@@ -20,24 +20,7 @@ import MSCallout from '/snippets/_microsoft-adapters-soon.md';
 
 ## Types of Adapters
 
-There are three types of adapters available today:
+There are two types of adapters available today:
 
-- **Verified** &mdash; [Verified adapters](verified-adapters) are those that have completed a rigorous verification process in collaboration with dbt Labs.
 - **Trusted** &mdash; [Trusted adapters](trusted-adapters) are those where the adapter maintainers have agreed to meet a higher standard of quality.
 - **Community** &mdash; [Community adapters](community-adapters) are open-source and maintained by community members. 
-
-### Verified adapters
-
-The following are **Verified adapters** ✓ you can connect to either in dbt Cloud or dbt Core:
-
-import AdaptersVerified from '/snippets/_adapters-verified.md';
-
-<AdaptersVerified />
-
-### Trusted adapters
-
-The following are **Trusted adapters** ✓ you can connect to in dbt Core:
-
-import AdaptersTrusted from '/snippets/_adapters-trusted.md';
-
-<AdaptersTrusted />
