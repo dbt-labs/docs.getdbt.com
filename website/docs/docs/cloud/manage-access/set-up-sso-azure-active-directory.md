@@ -48,9 +48,10 @@ Log into the Azure portal for your organization. Using the [**Microsoft Entra ID
 
 5. Save the App registration to continue setting up Microsoft Entra ID SSO
 
-#### Configuration with the new Microsoft Entra ID interface (optional)
+:::info Configuration with the new Microsoft Entra ID interface (optional)
 
-Depending on your Microsoft Entra ID settings, your App Registration page might look different than the screenshots shown above. If you are _not_ prompted to configure a Redirect URI on the **New Registration** page, then follow steps 7 and 7 below after creating your App Registration. If you were able to set up the Redirect URI in the steps above, then skip ahead to [step 8](#adding-users-to-an-enterprise-application).
+Depending on your Microsoft Entra ID settings, your App Registration page might look different than the screenshots shown earlier. If you are _not_ prompted to configure a Redirect URI on the **New Registration** page, then follow steps 6 - 7 below after creating your App Registration. If you were able to set up the Redirect URI in the steps above, then skip ahead to [step 8](#adding-users-to-an-enterprise-application).
+:::
 
 6. After registering the new application without specifying a Redirect URI, click on **App registration** and then navigate to the **Authentication** tab for the new application.
 
