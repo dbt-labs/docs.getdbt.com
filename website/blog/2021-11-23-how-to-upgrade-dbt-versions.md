@@ -16,6 +16,12 @@ As we get closer to dbt v1.0 shipping in December, it's a perfect time to get yo
 
 Even with all the new shinies on offer, upgrading can be daunting – you rely on dbt to power your analytics workflow and can’t afford to change things just to discover that your daily run doesn’t work anymore. I’ve been there. This is the checklist I wish I had when I owned my last company’s dbt project.
 
+:::tip Beta for Keep on latest version
+
+You can upgrade your version in dbt Cloud by using the **Keep on latest version** setting. No more manual upgrades and you no longer have to "create a second sandbox project" for your experimentation. For details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud). 
+
+:::
+
 <!--truncate-->
 
 This guide covers the steps to safely upgrade, using a hypothetical project as a case study. The project uses dbt v0.16.0 and is relatively mature. It contains a couple of hundred models and uses a wide swathe of dbt functionality - custom tests, macros from dbt-utils, and snapshots to capture changes in critical business data.
