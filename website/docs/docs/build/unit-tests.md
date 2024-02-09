@@ -103,7 +103,7 @@ Use the `—-empty` flag to build an empty version of those models to save wareh
 
 ```bash
 
-`dbt run —-select "stg_customers top_level_email_domains" --empty`.
+dbt run —-select "stg_customers top_level_email_domains" --empty
 
 ```
 
