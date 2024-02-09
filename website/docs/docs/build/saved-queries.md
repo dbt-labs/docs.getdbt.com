@@ -56,8 +56,8 @@ To define a saved query, refer to the following parameters:
 | `exports::name`       | String               | Required     | Name of the export object.      |
 | `exports::config`     | List or Structure     | Required     | A config section for any parameters specifying the export.  |
 | `exports::config::export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
-| `exports::config`   | String   | Optional    | The schema used for creating the table or view. This option cannot be used for caching.   |
-| `exports::config`  | String     | Optional    | The table alias to use to write the table or view.  This option cannot be used for caching.  |
+| `exports::config::schema`   | String   | Optional    | The schema used for creating the table or view. This option cannot be used for caching.   |
+| `exports::config::alias`  | String     | Optional    | The table alias to use to write the table or view.  This option cannot be used for caching.  |
 
 All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
 
