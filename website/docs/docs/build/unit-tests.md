@@ -114,7 +114,7 @@ Now we’re ready to run this unit test! We have a couple of options for command
 
 [add screenshot]
 
-It looks like our clever regex statement wasn’t as clever as we thought as our model is incorrectly flagging `missingdot@gmailcom` as a valid email address.
+It looks like our clever regex statement wasn’t as clever as we thought as our model is incorrectly flagging `cool@example.com` as an invalid email address.
 
 Updating our regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those darn escape characters!) and running the unit test again does the trick:
 
