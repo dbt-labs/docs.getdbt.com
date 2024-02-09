@@ -49,7 +49,7 @@ check_valid_emails as (
         customers.customer_id,
         customers.first_name,
         customers.last_name,
-				coalesce (regexp_like(
+	coalesce (regexp_like(
             customers.email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'
         )
         = true
