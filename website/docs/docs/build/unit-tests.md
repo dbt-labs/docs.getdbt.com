@@ -101,7 +101,7 @@ You’ll notice that you only_had to define the mock data for the columns you ca
 
 The direct parents of the model that you’re unit testing (in this example `stg_customers` and `top_level_email_domains`) need to exist in the warehouse before you’re able to execute the unit test.
 
-Use the `—-empty` flag to build an empty version of those models to save warehouse spend. 
+Use the `--empty` flag to build an empty version of those models to save warehouse spend. 
 
 ```bash
 
