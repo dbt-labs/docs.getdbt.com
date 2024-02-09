@@ -275,6 +275,15 @@ const sidebarSettings = {
                 "docs/build/python-models",
               ],
             },
+            {
+              type: "category",
+              label: "Tests",
+              link: { type: "doc", id: "docs/build/models" },
+              items: [
+                "docs/build/tests",
+                "docs/build/unit-tests",
+              ],
+            },
             "docs/build/snapshots",
             "docs/build/seeds",
             "docs/build/tests",
@@ -745,7 +754,6 @@ const sidebarSettings = {
             "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
-            "reference/resource-properties/unit-tests",
             "reference/resource-properties/versions",
           ],
         },
@@ -809,7 +817,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "For tests",
+          label: "For data tests",
           items: [
             "reference/test-configs",
             "reference/resource-configs/fail_calc",
@@ -818,6 +826,13 @@ const sidebarSettings = {
             "reference/resource-configs/store_failures",
             "reference/resource-configs/store_failures_as",
             "reference/resource-configs/where",
+          ],
+        },
+        {
+          type: "category",
+          label: "For unit tests",
+          items: [
+            "reference/resource-properties/unit-tests",
           ],
         },
         {

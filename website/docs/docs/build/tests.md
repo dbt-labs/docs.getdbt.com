@@ -1,6 +1,6 @@
 ---
 title: "Add tests to your DAG"
-sidebar_label: "Tests"
+sidebar_label: "Data tests"
 description: "Read this tutorial to learn how to use tests when building in dbt."
 search_weight: "heavy"
 id: "tests"

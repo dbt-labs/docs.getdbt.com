@@ -19,6 +19,15 @@ Historically, the test coverage capabilities of dbt were limited to “data” t
 
 Now, we are introducing a new type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
+:::note Before you begin
+
+- We currently only support unit testing SQL models.
+- We currently only support adding unit tests to models in your _current_ project.
+- If your model has multiple versions, be default the unit test will run on *all* versions of your model. Read [unit testing versioned models for more information](#unit-testing-versioned-models).
+
+Read the [refernce doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
+:::
+
 Let’s say you’re creating a new `dim_customers` model with a field `is_valid_email_address`, that calculates whether or not the customer’s email is valid: 
 
 ```sql
@@ -121,6 +130,53 @@ Updating our regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'`
 [to add screenshot of example logs]
 
 Your model is now ready for production! Adding this unit test helped us catch an issue with the SQL logic _before_ you materialized `dim_customers` in your warehouse and will better ensure the reliability of this model in the future. 
+
+### Unit testing versioned models
+
+When a unit test is added to a model, with no supplied version, the unit test will run on all versions of the model.
+Using the example on this page, if you have version 1, 2, and 3 of `my_model`, `my test_is_valid_email_address` unit test will run on all 3 versions.
+
+To to only unit test a specific version (or versions) of a model, you can include the desired version(s) in the model config:
+
+```yml
+
+unit-tests:
+  - name: test_is_valid_email_address # this is the unique name of the test
+    model: my_model # name of the model I'm unit testing
+      versions:
+        include: 
+          - 2
+    given: # optional: list of inputs to provide as fixtures
+
+```
+
+In this scenario, if you have version 1, 2, and 3 of `my_model`, `my test_is_valid_email_address` unit test will run on _only_ version 2.
+
+To to unit test all versions except a specific version (or versions) of a model, you can exclude the relevant version(s) in the model config:
+
+```yml
+
+unit-tests:
+  - name: test_is_valid_email_address # this is the unique name of the test
+    model: my_model # name of the model I'm unit testing
+      versions:
+        exclude: 
+          - 1
+    given: # optional: list of inputs to provide as fixtures
+
+```
+So if you have version 1, 2, and 3 of `my_model`, your `test_is_valid_email_address` unit test will run on _only_ version 2 and 3.
+
+If you want to unit test a model that references a pinned version of model, you should specify that in the ref of your input:
+
+```yml
+
+unit-tests:
+  - name: test_is_valid_email_address # this is the unique name of the test
+    model: my_model # name of the model I'm unit testing
+    given: # optional: list of inputs to provide as fixtures
+
+```
 
 ### Best practices for “when to add a unit test to your model”:
 
