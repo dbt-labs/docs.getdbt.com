@@ -15,6 +15,7 @@ function slugify(text) {
 }
 
 function expandable({ children, alt_header = null }) {
+  if(!alt_header) { return null; }
   const [isOn, setOn] = useState(false);
   // generate a slug from the alt_header
   const anchorId = slugify(alt_header);

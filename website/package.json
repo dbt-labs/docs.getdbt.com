@@ -14,7 +14,6 @@
     "@docusaurus/plugin-ideal-image": "2.3.1",
     "@docusaurus/preset-classic": "2.3.1",
     "@docusaurus/theme-search-algolia": "2.3.1",
-    "@headlessui/react": "^1.7.18",
     "@mdx-js/react": "^1.6.21",
     "@monaco-editor/react": "^4.4.6",
     "@stoplight/elements": "^7.7.17",

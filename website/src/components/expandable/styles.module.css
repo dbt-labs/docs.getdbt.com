@@ -46,11 +46,11 @@
     border-color: rgb(253, 153, 83);
 }
 
-:local(.body) {
+.expandableContainer :local(.body) {
     margin-top: 10px;
-    margin-left: 1em;
+    margin-left: .5em;
     padding: 10px;
-    background-color: transparent; /* Changed from a color to transparent */
+    background-color: transparent;
 }
 
 :local(html[data-theme='dark'] .link),
