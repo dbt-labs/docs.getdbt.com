@@ -1,5 +1,9 @@
 exports.versions = [
   {
+    version: "1.8",
+    isPrerelease: "true",
+  },
+  {
     version: "1.7",
     EOLDate: "2024-10-30",
   },
@@ -173,10 +177,6 @@ exports.versionedPages = [
   {
     "page": "reference/resource-configs/grants",
     "firstVersion": "1.2",
-  },
-  {
-    "page": "docs/build/saved-queries",
-    "firstVersion": "1.7",
   },
   {
     "page": "reference/resource-configs/on_configuration_change",

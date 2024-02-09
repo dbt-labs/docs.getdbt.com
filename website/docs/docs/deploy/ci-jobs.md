@@ -6,7 +6,6 @@ description: "Learn how to create and set up CI checks to test code changes befo
 
 You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request (PR) in your dbt Git repository. By running and testing only _modified_ models, dbt Cloud ensures these jobs are as efficient and resource conscientious as possible on your data platform.
 
-
 ## Set up CI jobs {#set-up-ci-jobs}
 
 dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
@@ -51,7 +50,6 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the CI Job page"/>
 
-
 ## Trigger a CI job with the API
 
 If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or [Azure DevOps](/docs/cloud/git/connect-azure-devops), you can use the [Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) to trigger a CI job to run. However, dbt Cloud will not automatically delete the temporary schema for you. This is because automatic deletion relies on incoming webhooks from Git providers, which is only available through the native integrations.
@@ -88,62 +86,63 @@ The green checkmark means the dbt build and tests were successful. Clicking on t
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" width="70%" title="Azure DevOps pull request"/>
 
-
 ## Troubleshooting
 
-If you're experiencing any issues, review some of the common questions and answers below.
+If you're experiencing any issues, review some of the common questions and answers.
 
-<details>
-  <summary>Temporary schemas aren't dropping</summary>
-  <div>
-    <div>If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates one of these issues:
-      <ul>
-        <li> You have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix.<br></br><br></br> To resolve this, change your macro so that the temporary PR schema name contains the required prefix. For example:
-    <br></br><br></br>
-        ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>). <br></br>
-        ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>). <br></br>
-        </li>
-        <br/>
-        <li>
-          A macro is creating a schema but there are no dbt models writing to that schema. dbt Cloud doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
-        </li>
-      </ul>
-    </div>
-  </div>
-</details>
-<details>
-   <summary>Error messages that refer to schemas from previous PRs</summary>
-   <div>
-      <div>If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the CI job for the current PR is kicked off.<br></br> <br></br>
-      
-      To fix this issue, select a production job run to defer to instead of self.
-      </div>
-   </div>
-</details>
-<details>
-   <summary>Production job runs failing at the <b>Clone Git Repository</b> step</summary>
-   <div>
-      <div>dbt Cloud can only check out commits that belong to the original repository. dbt Cloud <i>cannot</i> checkout commits that belong to a fork of that repository.<br></br><br></br>
-      
-      If you receive the following error message at the <b>Clone Git Repository</b> step of your job run:<br></br>
-         <code>
-         Error message:<br></br>
-         Cloning into '/tmp/jobs/123456/target'...<br></br>
-         Successfully cloned repository.<br></br>
-         Checking out to e845be54e6dc72342d5a8f814c8b3316ee220312...<br></br>
-         Failed to checkout to specified revision.<br></br>
-         git checkout e845be54e6dc72342d5a8f814c8b3316ee220312<br></br>
-         fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312<br></br>
-         </code><br></br><br></br>
-         
-         Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.</div>
-   </div>
-</details>
-<details>
-   <summary>CI job not triggering for Virtual Private dbt users</summary>
-   <div>
-      <div>To trigger jobs on dbt Cloud using the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api">API</a>, your Git provider needs to connect to your dbt Cloud account.<br></br><br></br>
-      
-      If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.</div>
-   </div>
-</details>
+<detailsToggle alt_header="Temporary schemas aren't dropping">
+If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates one of these issues:
+- You have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix.
+
+To resolve this, change your macro so that the temporary PR schema name contains the required prefix. For example:
+
+- ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>).
+- ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>).
+
+A macro is creating a schema but there are no dbt models writing to that schema. dbt Cloud doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
+
+</detailsToggle>
+
+<detailsToggle alt_header="Error messages that refer to schemas from previous PRs">
+
+If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the CI job for the current PR is kicked off.
+
+To fix this issue, select a production job run to defer to instead of self.
+
+</detailsToggle>
+
+<detailsToggle alt_header="Production job runs failing at the 'Clone Git Repository step'">
+
+dbt Cloud can only check out commits that belong to the original repository. dbt Cloud <i>cannot</i> checkout commits that belong to a fork of that repository.
+
+If you receive the following error message at the **Clone Git Repository** step of your job run:
+
+```
+Error message:
+Cloning into '/tmp/jobs/123456/target'...
+Successfully cloned repository.
+Checking out to e845be54e6dc72342d5a8f814c8b3316ee220312...>
+Failed to checkout to specified revision.
+git checkout e845be54e6dc72342d5a8f814c8b3316ee220312
+fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
+```
+
+Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
+</detailsToggle>
+
+<detailsToggle alt_header="CI job not triggering for Virtual Private dbt users"> 
+
+To trigger jobs on dbt Cloud using the [API](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api), your Git provider needs to connect to your dbt Cloud account.
+
+If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.
+</detailsToggle>
+
+<detailsToggle alt_header="PR status for CI job stays in 'pending' in Azure DevOps after job run finishes">
+
+When you start a CI job, the pull request status should show as `pending` while it waits for an update from dbt. Once the CI job finishes, dbt sends the status to Azure DevOps (ADO), and the status will change to either `succeeded` or `failed`. 
+
+If the status doesn't get updated after the job runs, check if there are any git branch policies in place that's blocking ADO from receiving these updates. You can find relevant information here:
+- [Azure DevOps Services Pull Request Stuck Waiting on Status Update](https://support.hashicorp.com/hc/en-us/articles/18670331556627-Azure-DevOps-Services-Pull-Request-Stuck-Waiting-on-Status-Update-from-Terraform-Cloud-Enterprise-Run)
+- [Pull request status](https://learn.microsoft.com/en-us/azure/devops/repos/git/pull-request-status?view=azure-devops#pull-request-status)
+
+</detailsToggle>
