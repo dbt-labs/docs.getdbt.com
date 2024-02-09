@@ -13,8 +13,8 @@ unit_tests:
   - name: <test-name> # this is the unique name of the test
     model: <model-name> 
       versions: #optional
-				include: <list-of-versions-to-include> #optional
-				exclude: <list-of-versions-to-exclude> #optional
+	include: <list-of-versions-to-include> #optional
+	exclude: <list-of-versions-to-exclude> #optional
     config: 
       meta: {dictionary}
       tags: <string> | [<string>]
