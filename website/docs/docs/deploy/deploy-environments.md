@@ -48,7 +48,7 @@ For Semantic Layer-eligible customers, the next section of environment settings 
 
 This section determines the exact location in your warehouse dbt should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.
 
-For all warehouse, if needed, use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override missing or greyed-out settings.
+For all warehouses, use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override missing or greyed-out settings.
 
 <WHCode>
 
