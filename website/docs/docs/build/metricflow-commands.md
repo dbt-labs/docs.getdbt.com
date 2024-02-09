@@ -75,6 +75,7 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
 - [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
+- [`list saved queries`)(#list-saved-queries) &mdash; Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query.
 - [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
 
 <!--below commands aren't supported in dbt cloud yet
@@ -172,6 +173,33 @@ mf list entities --metrics <metric_name> # In dbt Core
 Options:
   --metrics SEQUENCE  List entities by given metrics (intersection). Ex. --metrics bookings,messages
   --help              Show this message and exit.
+```
+
+### List saved queries
+
+This command lists all available saved queries:
+
+```bash
+dbt sl list saved-queries
+```
+
+You can also add the `--show-exports` flag (or option) to show each export listed under a saved query:
+
+```bash
+dbt sl list saved-queries --show-exports
+```
+
+**Output**
+
+```bash
+dbt sl list saved-queries --show-exports
+
+The list of available saved queries:
+- new_customer_orders
+  exports:
+       - Export(new_customer_orders_table, exportAs=TABLE)
+       - Export(new_customer_orders_view, exportAs=VIEW)
+       - Export(new_customer_orders, alias=orders, schemas=customer_schema, exportAs=TABLE)
 ```
 
 ### Validate-configs
