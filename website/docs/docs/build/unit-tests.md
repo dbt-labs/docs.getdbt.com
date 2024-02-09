@@ -68,6 +68,8 @@ select * from check_valid_emails
 
 This type of logic can be challenging to validate. You can add a unit test to this model to ensure your `is_valid_email_address` logic captures all known edge cases: emails without `.`, emails without `@`, and emails from invalid domains.
 
+<file name='dbt_project.yml'> 
+
 ```yaml
 unit_tests:
   - name: test_is_valid_email_address
