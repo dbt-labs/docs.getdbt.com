@@ -2,9 +2,9 @@ import React from 'react'
 import styles from './styles.module.css';
 
 const statusColors = {
-  enterprise: '#f3f4f6',
-  team: '#f3f4f6',
-  developer: '#f3f4f6',
+  enterprise: '#EBEDF0',
+  team: '#EBEDF0',
+  developer: '#EBEDF0',
   new: '#047377',
   beta: '#047377',
   ga: '#047377',
@@ -12,13 +12,16 @@ const statusColors = {
 };
 
 const fontColors = {
-    enterprise: '#000000',
-    team: '#000000', 
-    developer: '#000000', 
+    enterprise: '#262A38',
+    team: '#262A38', 
+    developer: '#262A38', 
     // lifecycle statuses use the css determined font color (white)
   };
 
 export default function Lifecycle(props) {
+  if (!props.status || (Array.isArray(props.status) && props.status.length === 0)) {
+    return null;
+  }
   // Check if props.status is an array or a single value
   const statuses = Array.isArray(props.status) ? props.status : [props.status];
 
@@ -31,7 +34,7 @@ export default function Lifecycle(props) {
         };
 
         return (
-          <span key={index} className={styles.lifecycle} style={style}>
+          <span key={index} className={`${styles.lifecycle} lifecycle-badge`} style={style}>
             {status}
           </span>
         );

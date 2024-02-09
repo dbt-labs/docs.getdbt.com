@@ -47,8 +47,6 @@ function useDocTOC() {
     // get html elements
     const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
 
-    // filter out the Lifecycle badge from the headings
-    const filteredHeadings = headings.filter(heading => !heading.classList.contains('lifecycle'));
     
     // if headings exist on page
     // compare against toc
