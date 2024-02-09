@@ -1324,7 +1324,7 @@
     },
     {
       "source": "/docs/deploy/regions-ip-addresses",
-      "destination": "/docs/cloud/about-cloud/access-regions-ip-addresses",
+      "destination": "/docs/cloud/about-cloud/regions-ip-addresses",
       "permanent": true
     },
     {
