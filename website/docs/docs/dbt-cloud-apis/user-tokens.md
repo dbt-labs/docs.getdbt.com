@@ -33,18 +33,18 @@ The migration to PATs is critical if you are using user API keys today. The curr
  There are a few things to understand if you are using a user API key today: 
 
 * Personal access tokens are more secure. 
-    * To promote least privilege and high security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped personal access tokens.
+    * To promote the least privilege and high-security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped personal access tokens.
 * You must create and use unique tokens in each one of your dbt Cloud accounts that share the same email address.
-    * For example, if paul.atreides@example.com belongs to two dbt Cloud accounts: Spice Harvesting Account and Guild Navigator Account. Prior to this release, the same API key was used to access both of these accounts. 
+    * For example, if paul.atreides@example.com belongs to two dbt Cloud accounts: Spice Harvesting Account and Guild Navigator Account. Before this release, the same API key was used to access both of these accounts. 
     * After this release, Paul has to individually go into these accounts and create a unique PAT for each account he wants to access the API for. These PATs are account-specific and not user specific. 
 * Cross-Account API endpoints will change in behavior when using the personal access tokens.
-    * These are namely /v2/accounts and /v3/accounts. Since all PATs are now account specific, getting all accounts associated to a username cannot work. /v3/accounts will only return account metadata that’s relevant to the PAT that’s being used. 
+    * These are namely /v2/accounts and /v3/accounts. Since all PATs are now account specific, getting all accounts associated with a username cannot work. /v3/accounts will only return account metadata that’s relevant to the PAT that’s being used. 
     * User account metadata will only contain information about the specific account under which the request is being made. 
     * Any other accounts that belong to that user account will need to be requested through the PAT that belongs to that account. 
 
 :::warning Undocumented APIs
 
-If you’re using any undocumented and unsupported API endpoints, please note that these can be deprecated without any notice. If you are using any undocumented endpoints and have use-cases that are not satisfied by the current API, please reach out to [support@dbt.com](mailto:support@dbt.com). 
+If you’re using any undocumented and unsupported API endpoints, please note that these can be deprecated without any notice. If you are using any undocumented endpoints and have use-cases that are not satisfied by the current API, please reach out to [support@getdbt.com](mailto:support@getdbt.com). 
 
 :::
 
@@ -55,14 +55,14 @@ Are you using a user API key today to access dbt Cloud APIs in any of your workf
 1. Make a list of all the places where you’re making a call to the dbt Cloud API using the dbt Cloud user API key. 
 2. Create a new personal access token under **Account Settings → API Tokens → Personal Tokens.** 
 3. Create and copy the new PAT to replace the old user API key. 
-4. Ensure that you’re using a PAT only where its needed. For any flows that requires a service account, please use a service token. Read the section below for more information.
+4. Ensure that you’re using a PAT only where it's needed. For any flows that requires a service account, please use a service token. Read the section below for more information.
 
 ## User API tokens
 
 Each dbt Cloud user with a [Developer license](/docs/cloud/manage-access/seats-and-users) is
 issued an API token. This token can be used to execute queries against
 the dbt Cloud API on the user's behalf. User API tokens inherit the
-permissions of the user the that they were created for.
+permissions of the user that they were created for.
 
 You can find your user API token in the **Profile page** under the **API Access**
 label.
