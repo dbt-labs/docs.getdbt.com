@@ -186,13 +186,13 @@ unit_tests:
          - {user_id: 3, email: badgmail.com,         email_top_level_domain: gmail.com}
          - {user_id: 4, email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
       - input: ref('top_level_domains')
-				format: csv
-				rows: |
-					tld
+        format: csv
+        rows: |
+          tld
           example.com
           gmail.com
     expect: # the expected output given the inputs above
-			format: csv
+      format: csv
       fixture: my_model_fixture
 
 ```
