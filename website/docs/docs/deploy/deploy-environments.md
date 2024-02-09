@@ -48,18 +48,20 @@ For Semantic Layer-eligible customers, the next section of environment settings 
 
 This section determines the exact location in your warehouse dbt should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.
 
+For all warehouses, use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override missing or inactive (grayed-out) settings.
+
 <WHCode>
 
 
 <div warehouse="Postgres">
 
-This section will not appear if you are using Postgres, as all values are inferred from the project's connection.
+This section will not appear if you are using Postgres, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
 
 </div>
 
 <div warehouse="Redshift">
 
-This section will not appear if you are using Redshift, as all values are inferred from the project's connection.
+This section will not appear if you are using Redshift, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
 
 </div>
 
@@ -77,13 +79,13 @@ This section will not appear if you are using Redshift, as all values are inferr
 
 <div warehouse="Bigquery">
 
-This section will not appear if you are using Bigquery, as all values are inferred from the project's connection.
+This section will not appear if you are using Bigquery, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
 
 </div>
 
 <div warehouse="Spark">
 
-This section will not appear if you are using Spark, as all values are inferred from the project's connection.
+This section will not appear if you are using Spark, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
 
 </div>
 
