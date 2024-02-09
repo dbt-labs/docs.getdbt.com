@@ -3,6 +3,7 @@ title: How do I transfer account ownership to another user?
 description: "Instructions on how to transfer your dbt Cloud user account to another user"
 sidebar_label: 'How to transfer dbt Cloud account?'
 id: transfer-account
+
 ---
 
 You can transfer your dbt Cloud [access control](/docs/cloud/manage-access/about-user-access) to another user by following the steps below, depending on your dbt Cloud account plan:
