@@ -7,11 +7,23 @@ In dbt Cloud, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-
 
 ## Environments
 
-Navigate to the settings page of an environment, then click **edit**. Click the **dbt Version** dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
+Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select either the [Keep on latest version](#keep-on-latest-version) setting or an available version of Core to associate with this environment. Be sure to save your changes before navigating away.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/Environment-settings.png" title="Settings of a dbt Cloud environment"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
-Be sure to save your changes before navigating away.
+### Keep on latest version <Lifecycle status='beta' />
+
+With the **Keep on latest version** setting, you allow dbt Labs to manage the environment's dbt version on your behalf. When enabled, you never need to manually upgrade the Core version to get the latest dbt features, fixes, and updates. dbt Labs handles that automatically for you.
+
+You can upgrade to **Keep on latest version** only after you successfully upgrade to 1.7. Use the [Override dbt version](#override-dbt-version) feature to test a dbt version on your user account before safely upgrading to it. 
+
+
+:::tip Join our beta 
+
+If you're interested in joining our beta, please contact us. We would love to hear what you think!
+
+:::
+
 
 ### Override dbt version
 
