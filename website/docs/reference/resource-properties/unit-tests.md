@@ -165,11 +165,11 @@ unit_tests:
          - {tld: example.com}
          - {tld: gmail.com}
     expect: # the expected output given the inputs above
-			rows:
-	      - {user_id: 1, is_valid_email_address: true}
-	      - {user_id: 2, is_valid_email_address: false}
-	      - {user_id: 3, is_valid_email_address: false}
-	      - {user_id: 4, is_valid_email_address: false}
+      rows:
+        - {user_id: 1, is_valid_email_address: true}
+        - {user_id: 2, is_valid_email_address: false}
+        - {user_id: 3, is_valid_email_address: false}
+        - {user_id: 4, is_valid_email_address: false}
 
 ```
 
