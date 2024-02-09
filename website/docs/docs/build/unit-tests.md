@@ -64,7 +64,7 @@ check_valid_emails as (
 select * from check_valid_emails
 ```
 
-This type of logic can be challenging to validate. Let’s add a unit test to this model to ensure our `is_valid_email_address` logic captures all known edge cases: emails without `.`, emails without `@`, and emails from invalid domains.
+This type of logic can be challenging to validate. You can add a unit test to this model to ensure your `is_valid_email_address` logic captures all known edge cases: emails without `.`, emails without `@`, and emails from invalid domains.
 
 ```yaml
 unit_tests:
@@ -93,7 +93,7 @@ unit_tests:
 
 The above example defines the mock data using the inline `dict` format, but there are a handful of different options for how you format your mock data. 
 
-You’ll notice that we _only_ had to define the mock data for the columns we care about. This enables you to write succinct and _specific_ unit tests.
+You’ll notice that you only_had to define the mock data for the columns you care about. This enables you to write succinct and _specific_ unit tests.
 
 :::note
 
@@ -121,13 +121,63 @@ Now we’re ready to run this unit test! We have a couple of options for command
 - `dbt test —-select "dim_customers,test_type:unit"` runs all of the _unit_ tests on `dim_customers`.
 - `dbt test —-select test_is_valid_email_address` runs the test named `test_is_valid_email_address`.
 
-[add screenshot]
+```bash
 
-It looks like our clever regex statement wasn’t as clever as we thought as our model is incorrectly flagging `missingdot@gmailcom` as a valid email address.
+dbt test --select test_is_valid_email_address
+16:03:49  Running with dbt=1.8.0-a1
+16:03:49  Registered adapter: postgres=1.8.0-a1
+16:03:50  Found 6 models, 5 seeds, 4 data tests, 0 sources, 0 exposures, 0 metrics, 410 macros, 0 groups, 0 semantic models, 1 unit test
+16:03:50  
+16:03:50  Concurrency: 5 threads (target='postgres')
+16:03:50  
+16:03:50  1 of 1 START unit_test dim_customers::test_is_valid_email_address ................... [RUN]
+16:03:51  1 of 1 FAIL 1 dim_customers::test_is_valid_email_address ............................ [FAIL 1 in 0.26s]
+16:03:51  
+16:03:51  Finished running 1 unit_test in 0 hours 0 minutes and 0.67 seconds (0.67s).
+16:03:51  
+16:03:51  Completed with 1 error and 0 warnings:
+16:03:51  
+16:03:51  Failure in unit_test test_is_valid_email_address (models/marts/unit_tests.yml)
+16:03:51    
 
-Updating our regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those darn escape characters!) and running the unit test again does the trick:
+actual differs from expected:
 
-[to add screenshot of example logs]
+@@ ,customer_id,is_valid_email_address
+→  ,1        ,True→False
+   ,2        ,False
+...,...      ,...
+
+
+16:03:51  
+16:03:51    compiled Code at models/marts/unit_tests.yml
+16:03:51  
+16:03:51  Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+
+```
+
+It looks like the clever regex statement wasn’t as clever as we thought as the model is incorrectly flagging `missingdot@gmailcom` as a valid email address.
+
+Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those darn escape characters!) and running the unit test again solves the problem:
+
+```bash
+
+dbt test --select test_is_valid_email_address
+16:09:11  Running with dbt=1.8.0-a1
+16:09:12  Registered adapter: postgres=1.8.0-a1
+16:09:12  Found 6 models, 5 seeds, 4 data tests, 0 sources, 0 exposures, 0 metrics, 410 macros, 0 groups, 0 semantic models, 1 unit test
+16:09:12  
+16:09:13  Concurrency: 5 threads (target='postgres')
+16:09:13  
+16:09:13  1 of 1 START unit_test dim_wizards::test_is_valid_email_address ................... [RUN]
+16:09:13  1 of 1 PASS dim_wizards::test_is_valid_email_address .............................. [PASS in 0.26s]
+16:09:13  
+16:09:13  Finished running 1 unit_test in 0 hours 0 minutes and 0.75 seconds (0.75s).
+16:09:13  
+16:09:13  Completed successfully
+16:09:13  
+16:09:13  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+
+```
 
 Your model is now ready for production! Adding this unit test helped us catch an issue with the SQL logic _before_ you materialized `dim_customers` in your warehouse and will better ensure the reliability of this model in the future. 
 
