@@ -135,7 +135,6 @@ const sidebarSettings = {
                 "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/postgres-privatelink",
                 "docs/cloud/secure/vcs-privatelink",
-                "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
             "docs/cloud/billing",
@@ -213,6 +212,8 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/decodable-setup",
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
+                "docs/core/connect-data-platform/extrica-setup",
+		"docs/core/connect-data-platform/risingwave-setup",
               ],
             },
           ],
@@ -245,9 +246,9 @@ const sidebarSettings = {
             link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
             items: [
               "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+              "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
               "docs/cloud/dbt-cloud-ide/ide-user-interface",
               "docs/cloud/dbt-cloud-ide/lint-format",
-              "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
             ],
           },
         ],
@@ -259,6 +260,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/build/projects" },
       items: [
         "docs/build/projects",
+        "docs/build/dbt-tips",
         {
           type: "category",
           label: "Build your DAG",
@@ -286,12 +288,11 @@ const sidebarSettings = {
             },
             "docs/build/snapshots",
             "docs/build/seeds",
-            "docs/build/tests",
+            "docs/build/data-tests",
             "docs/build/unit-tests",
             "docs/build/jinja-macros",
             "docs/build/sources",
             "docs/build/exposures",
-            "docs/build/metrics",
             "docs/build/groups",
             "docs/build/analyses",
           ],
@@ -334,6 +335,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
                 "docs/build/metrics-overview",
+                "docs/build/conversion",
                 "docs/build/cumulative",
                 "docs/build/derived",
                 "docs/build/ratio",
@@ -487,6 +489,7 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/dbt-sl",
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
+        "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
         {
           type: "category",
@@ -509,7 +512,7 @@ const sidebarSettings = {
         "docs/dbt-cloud-apis/overview",
         {
           type: "category",
-          label: "Authentication",
+          label: "API Access",
           link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
             "docs/dbt-cloud-apis/authentication",
@@ -566,8 +569,6 @@ const sidebarSettings = {
                     "docs/dbt-cloud-apis/discovery-schema-job",
                     "docs/dbt-cloud-apis/discovery-schema-job-model",
                     "docs/dbt-cloud-apis/discovery-schema-job-models",
-                    "docs/dbt-cloud-apis/discovery-schema-job-metric",
-                    "docs/dbt-cloud-apis/discovery-schema-job-metrics",
                     "docs/dbt-cloud-apis/discovery-schema-job-source",
                     "docs/dbt-cloud-apis/discovery-schema-job-sources",
                     "docs/dbt-cloud-apis/discovery-schema-job-seed",
@@ -733,6 +734,7 @@ const sidebarSettings = {
         "reference/resource-configs/oracle-configs",
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/starrocks-configs",
+        "reference/resource-configs/infer-configs",
       ],
     },
     {
@@ -753,7 +755,7 @@ const sidebarSettings = {
             "reference/resource-properties/latest_version",
             "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
-            "reference/resource-properties/tests",
+            "reference/resource-properties/data-tests",
             "reference/resource-properties/versions",
           ],
         },
@@ -786,6 +788,7 @@ const sidebarSettings = {
             "reference/model-properties",
             "reference/model-configs",
             "reference/resource-configs/materialized",
+            "reference/resource-configs/on_configuration_change",
             "reference/resource-configs/sql_header",
           ],
         },
@@ -819,7 +822,7 @@ const sidebarSettings = {
           type: "category",
           label: "For data tests",
           items: [
-            "reference/test-configs",
+            "reference/data-test-configs",
             "reference/resource-configs/fail_calc",
             "reference/resource-configs/limit",
             "reference/resource-configs/severity",
@@ -903,6 +906,7 @@ const sidebarSettings = {
             "reference/commands/compile",
             "reference/commands/debug",
             "reference/commands/deps",
+            "reference/commands/dbt-environment",
             "reference/commands/init",
             "reference/commands/list",
             "reference/commands/parse",
@@ -1045,6 +1049,8 @@ const sidebarSettings = {
             id: "best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
           },
           items: [
+            "best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
+            "best-practices/how-we-build-our-metrics/semantic-layer-2-setup",
             "best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
             "best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
             "best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
@@ -1062,6 +1068,7 @@ const sidebarSettings = {
           items: [
             "best-practices/how-we-mesh/mesh-2-structures",
             "best-practices/how-we-mesh/mesh-3-implementation",
+            "best-practices/how-we-mesh/mesh-4-faqs",
           ],
         },
         {

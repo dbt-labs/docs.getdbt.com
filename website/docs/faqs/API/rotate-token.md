@@ -36,7 +36,7 @@ curl --location --request POST 'https://YOUR_ACCESS_URL/api/v2/users/YOUR_USER_I
 * Find your `YOUR_CURRENT_TOKEN` by going to **Profile Settings** -> **API Access** and copying the API key.
 * Find [`YOUR_ACCESS_URL`](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
-:::info Example
+Example:
 
 If `YOUR_USER_ID` = `123`, `YOUR_CURRENT_TOKEN` = `abcf9g`, and your `ACCESS_URL` = `cloud.getdbt.com`, then your curl request will be:
 
@@ -44,7 +44,7 @@ If `YOUR_USER_ID` = `123`, `YOUR_CURRENT_TOKEN` = `abcf9g`, and your `ACCESS_URL
 curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/123/apikey/' \
 --header 'Authorization: Token abcf9g'
 ```
-:::
+
 
 2. Find the new key in the API response or in dbt Cloud. 
 

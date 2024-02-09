@@ -596,9 +596,9 @@ with events as (
 
 <VersionBlock firstVersion="1.4">
 
-#### Copying ingestion-time partitions
+#### Copying partitions
 
-If you have configured your incremental model to use "ingestion"-based partitioning (`partition_by.time_ingestion_partitioning: True`), you can opt to use a legacy mechanism for inserting and overwriting partitions. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets. Behind the scenes, dbt will add or replace each partition via the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators.
+If you are replacing entire partitions in your incremental runs, you can opt to do so with the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators rather than a `merge` statement. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets because the copy table API does not incur any costs for inserting the data - it's equivalent to the `bq cp` gcloud command line interface (CLI) command.
 
 You can enable this by switching on `copy_partitions: True` in the `partition_by` configuration. This approach works only in combination with "dynamic" partition replacement.
 
@@ -715,6 +715,190 @@ models:
 Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
 
 #### Limitations
+Starting in v1.4, `grant_access_to` config _is thread-safe_. In earlier versions, it wasn't safe to use multiple threads for authorizing several views at once with `grant_access_to` for the same dataset. Initially, after adding a new `grant_access_to` setting, you can execute `dbt run` in a single thread. Later runs with the same configuration won't repeat the existing access grants and can use multiple threads.
 
-The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
+<VersionBlock firstVersion="1.7">
 
+## Materialized views
+
+The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
+with the following configuration parameters:
+
+| Parameter                                                                        | Type                   | Required | Default | Change Monitoring Support |
+|----------------------------------------------------------------------------------|------------------------|----------|---------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>`             | no       | `apply` | n/a                       |
+| [`cluster_by`](#clustering-clause)                                               | `[<string>]`           | no       | `none`  | drop/create               |
+| [`partition_by`](#partition-clause)                                              | `{<dictionary>}`       | no       | `none`  | drop/create               |
+| [`enable_refresh`](#auto-refresh)                                                | `<boolean>`            | no       | `true`  | alter                     |
+| [`refresh_interval_minutes`](#auto-refresh)                                      | `<float>`              | no       | `30`    | alter                     |
+| [`max_staleness`](#auto-refresh) (in Preview)                                    | `<interval>`           | no       | `none`  | alter                     |
+| [`description`](/reference/resource-properties/description)                      | `<string>`             | no       | `none`  | alter                     |
+| [`labels`](#specifying-labels)                                                   | `{<string>: <string>}` | no       | `none`  | alter                     |
+| [`hours_to_expiration`](#controlling-table-expiration)                           | `<integer>`            | no       | `none`  | alter                     |
+| [`kms_key_name`](#using-kms-encryption)                                          | `<string>`             | no       | `none`  | alter                     |
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[cluster_by](#clustering-clause): <field-name> | [<field-name>]
+    [+](/reference/resource-configs/plus-prefix)[partition_by](#partition-clause):
+      - field: <field-name>
+      - data_type: timestamp | date | datetime | int64
+        # only if `data_type` is not 'int64'
+      - granularity: hour | day | month | year
+        # only if `data_type` is 'int64'
+      - range:
+        - start: <integer>
+        - end: <integer>
+        - interval: <integer>
+    [+](/reference/resource-configs/plus-prefix)[enable_refresh](#auto-refresh): true | false
+    [+](/reference/resource-configs/plus-prefix)[refresh_interval_minutes](#auto-refresh): <float>
+    [+](/reference/resource-configs/plus-prefix)[max_staleness](#auto-refresh): <interval>
+    [+](/reference/resource-configs/plus-prefix)[description](/reference/resource-properties/description): <string>
+    [+](/reference/resource-configs/plus-prefix)[labels](#specifying-labels): {<label-name>: <label-value>}
+    [+](/reference/resource-configs/plus-prefix)[hours_to_expiration](#acontrolling-table-expiration): <integer>
+    [+](/reference/resource-configs/plus-prefix)[kms_key_name](##using-kms-encryption): <path-to-key>
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): materialized_view
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [cluster_by](#clustering-clause): <field-name> | [<field-name>]
+      [partition_by](#partition-clause):
+        - field: <field-name>
+        - data_type: timestamp | date | datetime | int64
+          # only if `data_type` is not 'int64'
+        - granularity: hour | day | month | year
+          # only if `data_type` is 'int64'
+        - range:
+          - start: <integer>
+          - end: <integer>
+          - interval: <integer>
+      [enable_refresh](#auto-refresh): true | false
+      [refresh_interval_minutes](#auto-refresh): <float>
+      [max_staleness](#auto-refresh): <interval>
+      [description](/reference/resource-properties/description): <string>
+      [labels](#specifying-labels): {<label-name>: <label-value>}
+      [hours_to_expiration](#acontrolling-table-expiration): <integer>
+      [kms_key_name](##using-kms-encryption): <path-to-key>
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    [materialized](/reference/resource-configs/materialized)='materialized_view',
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [cluster_by](#clustering-clause)="<field-name>" | ["<field-name>"],
+    [partition_by](#partition-clause)={
+        "field": "<field-name>",
+        "data_type": "timestamp" | "date" | "datetime" | "int64",
+
+        # only if `data_type` is not 'int64'
+        "granularity": "hour" | "day" | "month" | "year,
+
+        # only if `data_type` is 'int64'
+        "range": {
+            "start": <integer>,
+            "end": <integer>,
+            "interval": <integer>,
+        }
+    },
+
+    # auto-refresh options
+    [enable_refresh](#auto-refresh)= true | false,
+    [refresh_interval_minutes](#auto-refresh)=<float>,
+    [max_staleness](#auto-refresh)="<interval>",
+
+    # additional options
+    [description](/reference/resource-properties/description)="<description>",
+    [labels](#specifying-labels)={
+        "<label-name>": "<label-value>",
+    },
+    [hours_to_expiration](#acontrolling-table-expiration)=<integer>,
+    [kms_key_name](##using-kms-encryption)="<path_to_key>",
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+Many of these parameters correspond to their table counterparts and have been linked above.
+The set of parameters unique to materialized views covers [auto-refresh functionality](#auto-refresh).
+
+Learn more about these parameters in BigQuery's docs:
+- [CREATE MATERIALIZED VIEW statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
+- [materialized_view_option_list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#materialized_view_option_list)
+
+### Auto-refresh
+
+| Parameter                    | Type         | Required | Default | Change Monitoring Support |
+|------------------------------|--------------|----------|---------|---------------------------|
+| `enable_refresh`             | `<boolean>`  | no       | `true`  | alter                     |
+| `refresh_interval_minutes`   | `<float>`    | no       | `30`    | alter                     |
+| `max_staleness` (in Preview) | `<interval>` | no       | `none`  | alter                     |
+
+BigQuery supports [automatic refresh](https://cloud.google.com/bigquery/docs/materialized-views-manage#automatic_refresh) configuration for materialized views.
+By default, a materialized view will automatically refresh within 5 minutes of changes in the base table, but not more frequently than once every 30 minutes.
+BigQuery only officially supports the configuration of the frequency (the "once every 30 minutes" frequency);
+however, there is a feature in preview that allows for the configuration of the staleness (the "5 minutes" refresh).
+dbt will monitor these parameters for changes and apply them using an `ALTER` statement.
+
+Learn more about these parameters in BigQuery's docs:
+- [materialized_view_option_list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#materialized_view_option_list)
+- [max_staleness](https://cloud.google.com/bigquery/docs/materialized-views-create#max_staleness)
+
+### Limitations
+
+As with most data platforms, there are limitations associated with materialized views. Some worth noting include:
+
+- Materialized view SQL has a [limited feature set](https://cloud.google.com/bigquery/docs/materialized-views-create#supported-mvs).
+- Materialized view SQL cannot be updated; the materialized view must go through a `--full-refresh` (DROP/CREATE).
+- The `partition_by` clause on a materialized view must match that of the underlying base table.
+- While materialized views can have descriptions, materialized view *columns* cannot.
+- Recreating/dropping the base table requires recreating/dropping the materialized view.
+
+Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
+
+</VersionBlock>

@@ -3,10 +3,9 @@ import styles from './styles.module.css';
 import { usePluginData } from '@docusaurus/useGlobalData';
 
 function FAQ({ path, alt_header = null }) {
-
   const [isOn, setOn] = useState(false);
-  const [filePath, setFilePath] = useState(path)
-  const [fileContent, setFileContent] = useState({})
+  const [filePath, setFilePath] = useState(path);
+  const [fileContent, setFileContent] = useState({});
 
   // Get all faq file paths from plugin
   const { faqFiles } = usePluginData('docusaurus-build-global-data-plugin');
@@ -42,19 +41,15 @@ function FAQ({ path, alt_header = null }) {
   }
 
   return (
-    <div className='faqs'>
+    <div className={styles.faqs}>
       <span className={styles.link} onClick={toggleOn}>
-        <span className={styles.toggle}
-          style={{
-            transform: isOn ? null : 'rotateX(180deg)'
-          }}>
-        </span >&nbsp;
-        <span>{alt_header || fileContent?.meta && fileContent.meta.title}</span>
-      </span >
-      <div style={{ display: (isOn ? 'block' : 'none') }} className={styles.body}>
-        {fileContent?.contents && fileContent.contents}
+        <span className={styles.toggle} style={{ transform: isOn ? 'rotateX(0deg)' : 'rotateX(180deg)' }}></span>
+        <span className={styles.headerText}>{alt_header || (fileContent?.meta && fileContent.meta.title)}</span>
+      </span>
+      <div style={{ display: isOn ? 'block' : 'none' }} className={styles.body}>
+        {fileContent?.contents}
       </div>
-    </div >
+    </div>
   );
 }
 

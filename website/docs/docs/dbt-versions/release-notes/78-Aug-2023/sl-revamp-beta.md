@@ -8,7 +8,7 @@ sidebar_position: 7
 ---
 
 :::important
-If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/sl-migration) for more info.
+If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/sl-migration) for more info.
 :::
 
 dbt Labs are thrilled to announce the re-release of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), now available in [public beta](#public-beta). It aims to bring the best of modeling and semantics to downstream applications by introducing:

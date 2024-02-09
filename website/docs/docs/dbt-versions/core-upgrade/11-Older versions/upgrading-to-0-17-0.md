@@ -5,10 +5,6 @@ displayed_sidebar: "docs"
 
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 dbt v0.17.0 makes compilation more consistent, improves performance, and fixes a number of bugs.
 
 ## Articles:
@@ -252,8 +248,8 @@ BigQuery:
 
 **Core**
 - [`path:` selectors](/reference/node-selection/methods#the-path-method)
-- [`--fail-fast`](/reference/commands/run#failing-fast)
-- [as_text Jinja filter](/reference/dbt-jinja-functions/as_text)
+- [`--fail-fast` command](/reference/commands/run#failing-fast)
+- `as_text` Jinja filter: removed this defunct filter
 - [accessing nodes in the `graph` object](/reference/dbt-jinja-functions/graph)
 - [persist_docs](/reference/resource-configs/persist_docs)
 - [source properties](reference/source-properties)

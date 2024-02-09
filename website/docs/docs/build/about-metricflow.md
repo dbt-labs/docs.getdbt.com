@@ -17,7 +17,7 @@ Before you start, consider the following guidelines:
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
 - You must be on [dbt version](/docs/dbt-versions/upgrade-core-in-cloud) 1.6 or higher to use MetricFlow. 
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (dbt Core only), or Redshift. 
-- Discover insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations).  You must have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
+- Discover insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations). 
 
 ## MetricFlow
 
@@ -63,6 +63,7 @@ Metrics, which is a key concept, are functions that combine measures, constraint
 
 MetricFlow supports different metric types:
 
+- [Conversion](/docs/build/conversion) &mdash; Helps you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
 - [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a measure over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.

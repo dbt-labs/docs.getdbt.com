@@ -149,7 +149,7 @@ An example of the details you might get for a model:
     - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one parent node and one child node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
     - **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
     - **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
-    - **Tests** section &mdash; [Tests](/docs/build/tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test. 
+    - **Tests** section &mdash; [Tests](/docs/build/data-tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test. 
     - **Details** section &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
     - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.

@@ -9,8 +9,13 @@ meta:
   api_name: dbt Semantic Layer APIs
 ---
 
-<VersionBlock firstVersion="1.6">
+<VersionBlock lastVersion="1.5">
 
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
+
+<DeprecationNotice />
+ 
+ </VersionBlock>
 
 There are a number of data applications that seamlessly integrate with the dbt Semantic Layer, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
@@ -22,11 +27,11 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 ### Custom integration
 
-- You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
-- You can also connect to tools that allow you to write SQL. These tools must meet one of the two criteria:
-  
-    - Supports a generic JDBC driver option (such as DataGrip) or
-    - Uses Arrow Flight SQL JDBC driver version 12.0.0 or higher.
+- [Exports](/docs/use-dbt-semantic-layer/exports) enable custom integration with additional tools that don't natively connect with the dbt Semantic Layer, such as PowerBI.
+- Develop custom integrations using different languages and tools, supported through JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
+- Connect to any tool that supports SQL queries. These tools must meet one of the two criteria:
+    - Offers a generic JDBC driver option (such as DataGrip) or
+    - Is compatible Arrow Flight SQL JDBC driver version 12.0.0 or higher.
 
 ## Related docs
 
@@ -34,25 +39,3 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 - [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
 - [Hex dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
 - [Resolve 'Failed APN'](/faqs/Troubleshooting/sl-alpn-error) error when connecting to the dbt Semantic Layer.
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
-
-A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer and dbt metrics &mdash; from Business Intelligence tools to notebooks, data catalogs, and more.
-
-The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and leveraging the dbt Server. 
-
-For information on the partner integrations, their documentation, and more &mdash; refer to the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" width="75%" title="The universal dbt Semantic Layer connecting to integration tools."/>
-
-## Related docs
-
-- [About the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
-
-</VersionBlock>

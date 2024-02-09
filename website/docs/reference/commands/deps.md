@@ -62,9 +62,11 @@ Update your versions in packages.yml, then run dbt deps
 
 dbt generates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded, which contains all the resolved packages, the first time you run `dbt deps`. Each subsequent run records the packages installed in this file. If the subsequent `dbt deps` runs contain no updated packages in `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
 
-When you update the package spec and run `dbt deps` again, the package-lock and package files update accordingly. You can run `dbt deps --lock` to update the `package-lock.yml` with the most recent dependencies from `packages`.
+When you update the package spec and run `dbt deps` again, the `package-lock.yml` and `packages.yml` files update accordingly. 
 
-The `--add-package` flag allows you to add a package to the `packages.yml` with configurable `--version` and `--source` information. The `--dry-run` flag, when set to `False`(default), recompiles the `package-lock.yml` file after a new package is added to the `packages.yml` file. Set the flag to `True` for the changes to not persist. 
+There are two flags related to `package-lock.yml`:
+- `dbt deps --lock` &mdash; creates or updates the `package-lock.yml` file but does not install the packages.
+- `dbt deps --upgrade` &mdash; creates or updates the `package-lock.yml` file with the most recent dependencies from `packages.yml`. Also install the packages unless the `--lock` flag is also passed.
 
 Examples of the `--add-package` flag:
 ```shell
@@ -79,9 +81,5 @@ dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source
 
 # add package from local
 dbt deps --add-package /opt/dbt/redshift --source local
-
-# add package to packages.yml and package-lock.yml WITHOUT actually installing dependencies
-dbt deps --add-package dbt-labs/dbt_utils@1.0.0 --dry-run
-
 ```
 </VersionBlock>
