@@ -30,6 +30,8 @@ Read the [refernce doc](/reference/resource-properties/unit-tests) for more deta
 
 Let’s say you’re creating a new `dim_customers` model with a field `is_valid_email_address`, that calculates whether or not the customer’s email is valid: 
 
+<file name='my_model.slq'>
+
 ```sql
 with customers as (
 

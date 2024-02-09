@@ -5,6 +5,13 @@ resource_types: [models]
 datatype: test
 ---
 
+## Definition
+
+Unit tests validate your SQL modeling logic on a small set of static inputs before you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and code reliability.
+
+To run only your unit tests, use the command:
+`dbt test --select test_type:unit`
+
 <file name='dbt_project.yml'>
 
 ```yml
@@ -46,13 +53,6 @@ unit_tests:
 
 </file>
 
-
-## Definition
-
-Unit tests validate your SQL modeling logic on a small set of static inputs before you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and code reliability.
-
-To run only your unit tests, use the command:
-`dbt test --select test_type:unit`
 
 ### About writing unit tests
 
