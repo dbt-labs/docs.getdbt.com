@@ -78,7 +78,7 @@ In the following project, this would apply to models in the `staging/` directory
 
 ```
 
-### Apply config to all models in one model
+### Apply config to all models in one folder
 
 To apply a configuration to one model, nest the full path under the project name. For a model at `/staging/stripe/payments.sql`, this would look like:
 
