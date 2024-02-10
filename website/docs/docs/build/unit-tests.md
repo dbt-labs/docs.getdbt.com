@@ -104,7 +104,7 @@ Notice that you only have to define the mock data for the columns you care about
 The direct parents of the model that you’re unit testing (in this example, `stg_customers` and `top_level_email_domains`) need to exist in the warehouse before you can execute the unit test.
 
 Use the `--empty` flag to build an empty version of the models to save warehouse spend. 
-:::
+
 ```bash
 
 dbt run —-select "stg_customers top_level_email_domains" --empty
@@ -117,6 +117,7 @@ Alternatively, use `dbt build` to, in lineage order:
 - Materialize your model in the warehouse.
 - Run the data tests on your model.
 
+:::
 
 Now you’re ready to run this unit test. You have a couple of options for commands depending on how specific you want to be: 
 
