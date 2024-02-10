@@ -226,7 +226,7 @@ If you want to unit test a model that references the pinned version of the model
 
 unit-tests:
   - name: test_is_valid_email_address # this is the unique name of the test
-    model: my_model # name of the model I'm unit testing
+    model: my_model # name of the model I am unit testing
     given: # optional: list of inputs to provide as fixtures
 
 ```
