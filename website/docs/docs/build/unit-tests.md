@@ -232,6 +232,7 @@ unit-tests:
 ```
 
 ### When to add a unit test to your model
+
 There are a number of scenarios where unit testing a mode is appropriate, including:
 - When your SQL contains complex logic:
     - Regex
