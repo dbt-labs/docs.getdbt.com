@@ -23,14 +23,14 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
-- If your model has multiple versions, be default the unit test will run on *all* versions of your model. Read [unit testing versioned models for more information](#unit-testing-versioned-models).
+- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models for more information](#unit-testing-versioned-models).
 
-Read the [refernce doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
+Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 :::
 
 Let’s say you’re creating a new `dim_customers` model with a field `is_valid_email_address`, that calculates whether or not the customer’s email is valid: 
 
-<file name='dim_customers.slq'>
+<file name='dim_customers.sql'>
 
 ```sql
 with customers as (
