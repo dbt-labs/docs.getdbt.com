@@ -35,7 +35,7 @@ For more information on writing tests, see the [Testing Documentation](/docs/bui
 
 <VersionBlock firstVersion="1.8">
 
-`dbt test` runs data tests and unit tests defined on models, sources, snapshots, and seeds. It expects that you have already created those resources through the appropriate commands.
+`dbt test` runs data tests defined on models, sources, snapshots, and seeds and unit tests defined on SQL models. It expects that you have already created those resources through the appropriate commands.
 
 The tests to run can be selected using the `--select` flag discussed [here](/reference/node-selection/syntax).
 
