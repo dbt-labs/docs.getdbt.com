@@ -237,7 +237,7 @@ There are a number of scenarios where unit testing a mode is appropriate, includ
     - Regex
     - Date math
     - Window functions
-    - `case when` statements when many `when`s
+    - `case when` statements when there are many `when`s
     - Truncation
     - Recursion
 - Add a unit test for anything that feels like writing a function. For example, it involves your own logic processing the input.
@@ -246,3 +246,4 @@ There are a number of scenarios where unit testing a mode is appropriate, includ
 - Edge cases not yet seen in your actual data that you want to handle.
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
 - Models with high “criticality” (public, contracted models or models directly upstream of an exposure).
+
