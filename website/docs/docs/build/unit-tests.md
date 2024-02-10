@@ -246,5 +246,5 @@ There are a number of scenarios where unit testing a mode is appropriate, includ
 - Logic for which you had bugs reported before.
 - Edge cases not yet seen in your actual data that you want to handle.
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
-- Models with high “criticality” (public, contracted models or models directly upstream of an exposure).
+- Models with high "criticality" (public, contracted models or models directly upstream of an exposure).
 
