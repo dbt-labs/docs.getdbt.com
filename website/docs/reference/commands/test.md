@@ -55,16 +55,16 @@ dbt test --select "one_specific_model"
 # run tests for all models in package
 dbt test --select "some_package.*"
 
-# run only tests defined singularly
+# run only data tests defined singularly
 dbt test --select "test_type:singular"
 
-# run only tests defined generically
+# run only data tests defined generically
 dbt test --select "test_type:generic"
 
-# run singular tests limited to one_specific_model
+# run singular data tests limited to one_specific_model
 dbt test --select "one_specific_model,test_type:singular"
 
-# run generic tests limited to one_specific_model
+# run generic data tests limited to one_specific_model
 dbt test --select "one_specific_model,test_type:generic"
 ```
 
