@@ -97,13 +97,13 @@ unit_tests:
 
 The above example defines the mock data using the inline `dict` format, but there are a handful of different options for how you format your mock data. 
 
-You’ll notice that you only_had to define the mock data for the columns you care about. This enables you to write succinct and _specific_ unit tests.
+Notice that you only have to define the mock data for the columns you care about. This enables you to write succinct and _specific_ unit tests.
 
 :::note
 
-The direct parents of the model that you’re unit testing (in this example `stg_customers` and `top_level_email_domains`) need to exist in the warehouse before you’re able to execute the unit test.
+The direct parents of the model that you’re unit testing (in this example, `stg_customers` and `top_level_email_domains`) need to exist in the warehouse before you can execute the unit test.
 
-Use the `--empty` flag to build an empty version of those models to save warehouse spend. 
+Use the `--empty` flag to build an empty version of the models to save warehouse spend. 
 
 ```bash
 
@@ -117,9 +117,8 @@ Alternatively, use `dbt build` to, in lineage order:
 - Materialize your model in the warehouse.
 - Run the data tests on your model.
 
-:::
 
-Now we’re ready to run this unit test! We have a couple of options for commands depending on how specific we want to be: 
+Now you’re ready to run this unit test. You have a couple of options for commands depending on how specific you want to be: 
 
 - `dbt test —-select dim_customers` runs _all_ of the tests on `dim_customers`.
 - `dbt test —-select "dim_customers,test_type:unit"` runs all of the _unit_ tests on `dim_customers`.
@@ -159,9 +158,9 @@ actual differs from expected:
 
 ```
 
-It looks like the clever regex statement wasn’t as clever as we thought as the model is incorrectly flagging `missingdot@gmailcom` as a valid email address.
+The clever regex statement wasn’t as clever as initially thought, as the model incorrectly flagged `missingdot@gmailcom` as a valid email address.
 
-Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those darn escape characters!) and running the unit test again solves the problem:
+Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those pesky escape characters) and rerunning the unit test solves the problem:
 
 ```bash
 
@@ -183,14 +182,14 @@ dbt test --select test_is_valid_email_address
 
 ```
 
-Your model is now ready for production! Adding this unit test helped us catch an issue with the SQL logic _before_ you materialized `dim_customers` in your warehouse and will better ensure the reliability of this model in the future. 
+Your model is now ready for production! Adding this unit test helped catch an issue with the SQL logic _before_ you materialized `dim_customers` in your warehouse and will better ensure the reliability of this model in the future. 
 
 ### Unit testing versioned models
 
-When a unit test is added to a model, with no supplied version, the unit test will run on all versions of the model.
-Using the example on this page, if you have version 1, 2, and 3 of `my_model`, `my test_is_valid_email_address` unit test will run on all 3 versions.
+When a unit test is added to a model, it will run on all versions of the model by default.
+Using the example in this article, if you have versions 1, 2, and 3 of `my_model`, the `my test_is_valid_email_address` unit test will run on all 3 versions.
 
-To to only unit test a specific version (or versions) of a model, you can include the desired version(s) in the model config:
+To only unit test a specific version (or versions) of a model, include the desired version(s) in the model config:
 
 ```yml
 
@@ -206,7 +205,7 @@ unit-tests:
 
 In this scenario, if you have version 1, 2, and 3 of `my_model`, `my test_is_valid_email_address` unit test will run on _only_ version 2.
 
-To to unit test all versions except a specific version (or versions) of a model, you can exclude the relevant version(s) in the model config:
+To unit test all versions except a specific version (or versions) of a model, you can exclude the relevant version(s) in the model config:
 
 ```yml
 
@@ -219,9 +218,9 @@ unit-tests:
     given: # optional: list of inputs to provide as fixtures
 
 ```
-So if you have version 1, 2, and 3 of `my_model`, your `test_is_valid_email_address` unit test will run on _only_ version 2 and 3.
+So, if you have versions 1, 2, and 3 of `my_model`, your `test_is_valid_email_address` unit test will run on _only_ versions 2 and 3.
 
-If you want to unit test a model that references a pinned version of model, you should specify that in the ref of your input:
+If you want to unit test a model that references the pinned version of the model, you should specify that in the `ref` of your input:
 
 ```yml
 
@@ -232,9 +231,9 @@ unit-tests:
 
 ```
 
-### Best practices for “when to add a unit test to your model”:
-
-- when your SQL contains complex logic:
+### When to add a unit test to your model
+There are a number of scenarios where unit testing a mode is appropriate, including:
+- When your SQL contains complex logic:
     - Regex
     - Date math
     - Window functions
@@ -242,7 +241,7 @@ unit-tests:
     - Truncation
     - Recursion
 - Add a unit test for anything that feels like writing a function. For example, it involves your own logic processing the input.
-    - You wouldn't need to prioritize unit testing just calling `min()`, for example. That's already tested extensively by the warehouse and if something unexpected happens it's going to be a result of issues in the underlying data, so your fixture data in the unit test isn't going to help you.
+    - For example, you wouldn't need to prioritize unit testing just calling `min()`. That's already been tested extensively by the warehouse. If something unexpected happens, it's going to be a result of issues in the underlying data, so your fixture data in the unit test isn't going to help you.
 - Logic for which you had bugs reported before.
 - Edge cases not yet seen in your actual data that you want to handle.
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
