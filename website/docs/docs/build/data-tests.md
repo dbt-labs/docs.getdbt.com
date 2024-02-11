@@ -49,7 +49,7 @@ select
     sum(amount) as total_amount
 from {{ ref('fct_payments' )}}
 group by 1
-having not(total_amount >= 0)
+having total_amount < 0
 ```
 
 </File>
