@@ -81,5 +81,5 @@ Here are some limitations of the state representation in the Discovery API:
 - Users must access the default production environment to know the latest state of a project.
 - The API gets the definition from the latest manifest generated in a given deployment environment, but that often won’t reflect the latest project code state.
 - Compiled code results may be outdated depending on dbt Cloud run step order and failures.
-- Catalog info can be outdated, or incomplete (in the applied state), based on if/when docs were last generated.
+- Catalog info can be outdated, or incomplete (in the applied state), based on if/when `docs generate` was last run.
 - Source freshness checks can be out of date (in the applied state) depending on when the command was last run, and it’s not included in `build`. 
