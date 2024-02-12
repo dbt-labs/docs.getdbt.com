@@ -41,6 +41,8 @@ Tables in Amazon Redshift have two powerful optimizations to improve query perfo
 - `sort` accepts a list of sort keys, for example: `['reporting_day', 'category']`. dbt will build the sort key in the same order the fields are supplied.
 - `sort_type` can have a setting of `interleaved` or `compound`. if no setting is specified, sort_type defaults to `compound`.
 
+When working with sort keys, it's highly recommended you follow [Redshift's best practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/query-best-practices-redshift/best-practices-tables.html#sort-keys) on sort key effectiveness and cardinatlity. 
+
 Sort and dist keys should be added to the `{{ config(...) }}` block in model `.sql` files, eg:
 
 <File name='my_model.sql'>
