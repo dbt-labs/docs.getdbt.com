@@ -3,6 +3,9 @@ datatype: version-range | [version-range]
 description: "Read this guide to understand the require-dbt-version configuration in dbt."
 default_value: None
 ---
+
+<Snippet path="_config-dbt-version-check" />
+
 <File name='dbt_project.yml'>
 
 ```yml
