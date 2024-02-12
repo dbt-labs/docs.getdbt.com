@@ -40,7 +40,7 @@ metrics:
 
 This page explains the different supported metric types you can add to your dbt project.
 
-### Conversion metrics <Lifecycle status='new'/>
+### Conversion metrics
 
 [Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
 
