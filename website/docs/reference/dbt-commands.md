@@ -41,6 +41,7 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh")  | All | All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  | All | All [supported versions](/docs/dbt-versions/core) |
+| [--version](/reference/commands/version) | Displays the currently installed version of dbt CLI | dbt Core <br /> dbt Cloud CLI | All [supported versions](/docs/dbt-versions/core) |
 
 
 </VersionBlock>

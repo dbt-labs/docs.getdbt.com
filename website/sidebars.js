@@ -902,6 +902,7 @@ const sidebarSettings = {
             "reference/commands/snapshot",
             "reference/commands/source",
             "reference/commands/test",
+            "reference/commands/version",
           ],
         },
         {
