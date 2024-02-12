@@ -51,7 +51,7 @@ To define a saved query, refer to the following parameters:
 | `query_params`       | Structure   | Required     | Contains the query parameters. |
 | `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
 | `query_params::group_bys`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
-| `query_params::where`        | LList or String  or String | Optional  | A list of string which may include the `Dimension` or `TimeDimension` objects. |
+| `query_params::where`        | List or String | Optional  | A list of string which may include the `Dimension` or `TimeDimension` objects. |
 | `exports`     | List or Structure | Optional    | A list of exports to be specified with the exports structure.     |
 | `exports::name`       | String               | Required     | Name of the export object.      |
 | `exports::config`     | List or Structure     | Required     | A config section for any parameters specifying the export.  |
