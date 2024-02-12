@@ -5,22 +5,29 @@ id: "upgrade-core-in-cloud"
 
 In dbt Cloud, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-environments) are configured to use a specific version of dbt Core. The version can be upgraded at any time.
 
+:::tip New in 2024! In dbt Cloud, simply "Keep on latest version" <Lifecycle status='beta' />
+
+_Is it Core? Is it Cloud? From now on, it's just dbt._
+
+As a dbt Cloud customer, you get early access to new functionality before it lands in final releases of dbt Core, without the hassle of managing your own version upgrades.
+
+:::
+
 ## Environments
 
-Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select either the [Keep on latest version](#keep-on-latest-version) setting or an available version of Core to associate with this environment. Be sure to save your changes before navigating away.
+Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a previous release of dbt Core, or (new!) ["Keep on latest version"](#keep-on-latest-version). Be sure to save your changes before navigating away.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
 ### Keep on latest version <Lifecycle status='beta' />
 
-With the **Keep on latest version** setting, you allow dbt Labs to manage the environment's dbt version on your behalf. When enabled, you never need to manually upgrade the Core version to get the latest dbt features, fixes, and updates. dbt Labs handles that automatically for you.
+By choosing to **Keep on latest version**, you always get the latest fixes, and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application—just like other capabilities of dbt Cloud, and the other SaaS tools you're using.
 
-You can upgrade to **Keep on latest version** only after you successfully upgrade to 1.7. Use the [Override dbt version](#override-dbt-version) feature to test a dbt version on your user account before safely upgrading to it. 
+You can upgrade to **Keep on latest version** no matter which version of dbt you currently have selected. That said, we recommend testing the upgrade in development first. Use the personal [Override dbt version](#override-dbt-version) settuing to try _your_ project on **"latest"**, before upgrading your deployment environments and the default development environment for all your colleagues.
 
+:::tip Interested? Let us know!
 
-:::tip Join our beta 
-
-If you're interested in joining our beta, please contact us. We would love to hear what you think!
+In February 2024, "Keep on latest version" will be available to select customers. Do you want early access to new features? Contact your account team.
 
 :::
 

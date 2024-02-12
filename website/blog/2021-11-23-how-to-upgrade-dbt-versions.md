@@ -12,15 +12,19 @@ date: 2021-11-29
 is_featured: true
 ---
 
+:::tip **February 2024 Update!**
+
+It's been a few years since dbt-core turned 1.0! Since then, we've committed to zero breaking changes whenever possible, and it's become much easier to upgrade dbt-core versions.
+
+Now, we're taking it one step further, by introducing **Keep on latest version** <Lifecycle status='beta' /> in dbt Cloud (currently available to select customers). No more manual upgrades, and no more need for a "a second sandbox project." For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud).
+
+We're leaving the rest of this post as-is, so we can all remember how it used to be. Enjoy a stroll down memory lane.
+
+:::
+
 As we get closer to dbt v1.0 shipping in December, it's a perfect time to get your installation up to scratch. dbt 1.0 represents the culmination of over five years of development and refinement to the analytics engineering experience - smoothing off sharp edges, speeding up workflows and enabling whole new classes of work.
 
 Even with all the new shinies on offer, upgrading can be daunting – you rely on dbt to power your analytics workflow and can’t afford to change things just to discover that your daily run doesn’t work anymore. I’ve been there. This is the checklist I wish I had when I owned my last company’s dbt project.
-
-:::tip Beta for Keep on latest version
-
-You can upgrade your version in dbt Cloud by using the **Keep on latest version** setting. No more manual upgrades and you no longer have to "create a second sandbox project" for your experimentation. For details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud). 
-
-:::
 
 <!--truncate-->
 

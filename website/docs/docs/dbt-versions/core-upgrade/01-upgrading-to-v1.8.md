@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.8 (alpha)"
+title: "Upgrading to v1.8 (beta)"
 id: upgrading-to-v1.8
 description: New features and changes in dbt Core v1.8
 displayed_sidebar: "docs"
@@ -12,9 +12,13 @@ displayed_sidebar: "docs"
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 - Release schedule (coming soon)
 
-:::tip Beta for Keep on latest version
+:::tip In dbt Cloud, simply "Keep on latest version" <Lifecycle status='beta' />
 
-With dbt Cloud, you can upgrade by using the **Keep on latest version** setting. Let dbt Labs handle version upgrades for you. For details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud).
+_Is it Core? Is it Cloud? From now on, it's just dbt._
+
+Starting this year, let dbt Labs handle version upgrades for you. As a dbt Cloud customer, you get early access to new functionality before it lands in the final release of dbt Core v1.8, and without the hassle of managing your own version upgrades. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud).
+
+"Keep on latest version" is currently available in beta for select dbt Cloud customers. The first beta release of dbt-core v1.8 is planned for February 28.
 
 :::
 
