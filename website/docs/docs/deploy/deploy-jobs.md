@@ -18,7 +18,8 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
 ## Prerequisites
 
-- You must have a dbt Cloud account and [Developer seat license](/docs/cloud/manage-access/seats-and-users). If you don't, you can [sign up](https://www.getdbt.com/signup/) for a [free account](https://www.getdbt.com/pricing/). 
+- You must have a [dbt Cloud account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users).
+    - For the [Trigger on job completion](#trigger-on-job-completion) feature, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
 - You must set up a [deployment environment](/docs/deploy/deploy-environments). 
@@ -103,14 +104,11 @@ Here are examples of cron job schedules. The dbt Cloud job scheduler supports us
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
 
-### Trigger on job completion
+### Trigger on job completion <Lifecycle status={['team', 'enterprise']} />
 
-To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream job so that when it completes it will trigger your job. You can also set this up through the API. You must have access (permissions) to the upstream project and job to configure the trigger. 
+To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream job so that when it completes it will trigger your job. You can also set this up through the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job). You must have access (permissions) to the upstream project and job to configure the trigger.  
 
-To configure your job to run based on the completion of an upstream job, enable the **Run when another job finishes** option and specify the upstream job that will act as the trigger.  
-
-For jobs that are triggered to run by another job, a link to the upstream job run is available from your job's run details. 
-
+For jobs that are triggered to run by another job, a link to the upstream job run is available from your [job's run details](/docs/deploy/run-visibility#job-run-details). 
 
 ## Related docs
 

@@ -23,7 +23,7 @@ We limit self-service retrieval of run history metadata to 365 days to improve d
 
 From the **Run history** dashboard, select a run to view complete details about it. The job run details page displays job trigger, commit SHA, time spent in the scheduler queue, all the run steps and their [logs](#access-logs), [model timing](#model-timing), and more. 
 
-To rerun the job immediately, click **Rerun now**. 
+You can click **Rerun now** to rerun the job immediately. 
 
 An example of a completed run with a configuration for a [job completion trigger](/docs/deploy/deploy-jobs#trigger-on-job-completion):
 
