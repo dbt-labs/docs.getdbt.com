@@ -61,6 +61,14 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the Deploy Job page"/>
 
+
+### Trigger on job completion <Lifecycle status={['team', 'enterprise']} /> 
+
+To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream job so that when it completes it will trigger your job. You can also set this up through the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job). You must have access (permissions) to the upstream project and job to configure the trigger.  
+
+For jobs that are triggered to run by another job, a link to the upstream job run is available from your [job's run details](/docs/deploy/run-visibility#job-run-details). 
+
+
 ### Schedule days
 
 To set your job's schedule, use the **Run on schedule** option to choose specific days of the week, and select customized hours or intervals.
@@ -103,12 +111,6 @@ Here are examples of cron job schedules. The dbt Cloud job scheduler supports us
 - `0 12 L * *`: At 12:00 PM (afternoon), on the last day of the month.
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
-
-### Trigger on job completion
-
-To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream job so that when it completes it will trigger your job. You can also set this up through the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job). You must have access (permissions) to the upstream project and job to configure the trigger.  
-
-For jobs that are triggered to run by another job, a link to the upstream job run is available from your [job's run details](/docs/deploy/run-visibility#job-run-details). 
 
 ## Related docs
 
