@@ -15,7 +15,7 @@ meta:
 
 :::info
 
-Below is a guide for use with [Synapse Data Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse), a new product within Microsoft Fabric.
+Below is a guide for use with [Synapse Data Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse), a new product within Microsoft Fabric. The adapter currently only supports connecting to a warehouse and not a lakehouse endpoint. You can access data in your lakehouse via the warehouse if you are in the same workspace. 
 
 To learn how to set up dbt with Azure Synapse Dedicated Pools, refer to [Microsoft Azure Synapse DWH setup](/docs/core/connect-data-platform/azuresynapse-setup).
 
