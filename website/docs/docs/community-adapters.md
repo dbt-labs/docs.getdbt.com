@@ -11,7 +11,7 @@ Community adapters are adapter plugins contributed and maintained by members of 
 | [IBM DB2](/docs/core/connect-data-platform/ibmdb2-setup)  | [Impala](/docs/core/connect-data-platform/impala-setup)           | [SingleStore](/docs/core/connect-data-platform/singlestore-setup)  |
 | [Doris & SelectDB](/docs/core/connect-data-platform/doris-setup) | [Infer](/docs/core/connect-data-platform/infer-setup)  | [SQLite](/docs/core/connect-data-platform/sqlite-setup) |
 | [Starrocks](/docs/core/connect-data-platform/starrocks-setup) | [DuckDB](/docs/core/connect-data-platform/duckdb-setup)  | [iomete](/docs/core/connect-data-platform/iomete-setup) 
-| [SQL Server & Azure SQL](/docs/core/connect-data-platform/mssql-setup)| [Layer](/docs/core/connect-data-platform/layer-setup) 
+| [SQL Server & Azure SQL](/docs/core/connect-data-platform/mssql-setup) 
 | [Exasol Analytics](/docs/core/connect-data-platform/exasol-setup) 
 | [TiDB](/docs/core/connect-data-platform/tidb-setup)        | [Firebolt](/docs/core/connect-data-platform/firebolt-setup)  | [MindsDB](/docs/core/connect-data-platform/mindsdb-setup)
 | [Vertica](/docs/core/connect-data-platform/vertica-setup) | [MySQL](/docs/core/connect-data-platform/mysql-setup) | 
