@@ -1,14 +1,16 @@
 ---
-title: "Column-level lineage (beta)"
+title: "Column-level lineage"
 description: "Use dbt Explorer's column-level lineage to gain insights about your data at a granular level."
 ---
+
+# Column-level lineage <Lifecycle status='beta' />
 
 dbt Explorer now offers column-level lineage (CLL) for the resources in your dbt project. Analytics engineers can quickly and easily gain insight into the provenance of their data products at a more granular level. For each column in a resource (model, source, or snapshot) in a dbt project, Explorer provides end-to-end lineage for the data in that column given how it's used.
 
 CLL is available to dbt Cloud Enterprise accounts that can use Explorer. It’s also available through the [Discovery API](/docs/dbt-cloud-apis/discovery-api).
 
-:::tip Beta
-Column-level lineage is now available in beta. Check it out! We'd love to [know what you think](https://docs.google.com/forms/d/e/1FAIpQLSdpCbVkGY9QwfExFonpWE4DTOKi3fQxBGLD0wwKYpkMjgcE7g/viewform)!
+:::tip Check out our beta
+Explorer's CLL is currently available as a [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) for Enterprise plans. Please check it out! We'd love to [know what you think](https://docs.google.com/forms/d/e/1FAIpQLSdpCbVkGY9QwfExFonpWE4DTOKi3fQxBGLD0wwKYpkMjgcE7g/viewform)!
 :::
 
 ## Access the column-level lineage
