@@ -60,26 +60,31 @@ Update your versions in packages.yml, then run dbt deps
 
 <VersionBlock firstVersion="1.7">
 
-dbt generates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded, which contains all the resolved packages, the first time you run `dbt deps`. Each subsequent run records the packages installed in this file. If the subsequent `dbt deps` runs contain no updated packages in `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
+### "Locking" packages for predictable installs
 
-When you update the package spec and run `dbt deps` again, the `package-lock.yml` and `packages.yml` files update accordingly. 
+Starting in dbt Core v1.7, dbt generates an additional `package-lock.yml` file, in the root of your project. This contains the full set of resolved packages, based on the `packages` configuration (in `dependencies.yml` or `packages.yml`). Each subsequent invocation of `dbt deps` will install from the "locked" set of packages specified in this file. This ensures predictable installs in production, and ensures consistency across all developers and environments, by storing the full set of required packages (with pinned versions) in version-controlled code.
 
-There are two flags related to `package-lock.yml`:
-- `dbt deps --lock` &mdash; creates or updates the `package-lock.yml` file but does not install the packages.
-- `dbt deps --upgrade` &mdash; creates or updates the `package-lock.yml` file with the most recent dependencies from `packages.yml`. Also install the packages unless the `--lock` flag is also passed.
+The `package-lock.yml` file includes a `sha1_hash` of the `packages` config. This enables dbt to detect if the `packages` config has updated, and to rerun dependency resolution. If you want to only check for changes to the `packages` config, and update the lock file accordingly, without actually installing those packages, you can provide the `--lock` option: `dbt deps --lock`.
 
-Examples of the `--add-package` flag:
+It is also possible to force package resolution to rerun, even if the `packages` config has not changed, by running `dbt deps --upgrade`. For example, this enables you to always get the latest commits from the `main` branch of an internally maintained `git` package, while accepting the risk of unpredictable builds. An alternative to always running `dbt deps --upgrade` in production is to "ignore" the lock file, by adding `package-lock.yml` to your project's `.gitignore` file. If you pursue either approach, we strongly recommend adding version pins for third-party packages within your `packages` config.
+
+### Adding specific packages
+
+Have trouble remembering the exact syntax for package configurations? `dbt deps` is also capable of adding or updating an existing package configuration. It's easiest for Hub packages (default):
 ```shell
-# add package from hub (--source arg defaults to "hub")
 dbt deps --add-package dbt-labs/dbt_utils@1.0.0
 
-# add package from hub with semantic version range
+# with semantic version range
 dbt deps --add-package dbt-labs/snowplow@">=0.7.0,<0.8.0"
+```
 
+The command also supports git and local packages, via the `--source` option:
+```shell
 # add package from git
 dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source git
 
 # add package from local
 dbt deps --add-package /opt/dbt/redshift --source local
 ```
+
 </VersionBlock>
