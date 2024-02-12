@@ -30,6 +30,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [type\_numeric](#type_numeric)
     - [type\_string](#type_string)
     - [type\_timestamp](#type_timestamp)
+    - [current\_timestamp](#current_timestamp)
   - [Set functions](#set-functions)
     - [except](#except)
     - [intersect](#intersect)
@@ -76,6 +77,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [type\_numeric](#type_numeric)
     - [type\_string](#type_string)
     - [type\_timestamp](#type_timestamp)
+    - [current\_timestamp](#current_timestamp)
   - [Set functions](#set-functions)
     - [except](#except)
     - [intersect](#intersect)
@@ -314,6 +316,29 @@ This macro yields the database-specific data type for a `TIMESTAMP` (which may o
 
 ```sql
 TIMESTAMP
+```
+
+### current_timestamp
+
+This macro returns the current date and time for the system. Depending on the adapter:
+
+- The result may be an aware or naive timestamp.
+- The result may correspond to the start of the statement or the start of the transaction.
+
+
+**Args**
+- None
+
+**Usage**
+- You can use the `current_timestamp()` macro within your dbt SQL files like this:
+
+```sql
+{{ dbt.current_timestamp() }}
+```
+**Sample output (PostgreSQL)**
+
+```sql
+now()
 ```
 
 ## Set functions

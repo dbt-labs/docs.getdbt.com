@@ -10,7 +10,7 @@ In an attempt to provide an improved dbt Cloud Administrative API experience, th
 
 ## Key differences
 
-When using the [List runs](/dbt-cloud/api-v2-legacy#tag/Runs) endpoint, you can include triggered runs and sort by ID. You can use the following request in v2 to get a similar response as v4, replacing the `{accountId}` with your own and `{YOUR_ACCESS_URL}` with the appropriate [Access URL](https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan:
+When using the [List runs](/dbt-cloud/api-v2-legacy#tag/Runs) endpoint, you can include triggered runs and sort by ID. You can use the following request in v2 to get a similar response as v4, replacing the `{accountId}` with your own and `{YOUR_ACCESS_URL}` with the appropriate [Access URL](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
 
 ```shell
 GET https://{YOUR_ACCESS_URL}/api/v2/accounts/{accountId}/runs/?include_related=[%22trigger%22]&order_by=-id
