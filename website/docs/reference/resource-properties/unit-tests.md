@@ -59,7 +59,7 @@ unit_tests:
 Unit tests are currently limited to testing SQL models and only models in your current project. When writing your unit tests, keep the following in mind:
 - If your model has multiple versions, be default the unit test will run on *all* versions of your model. To specify version(s) of your model to unit test, `include` or `exclude` the desired versions in your model versions config:
 
- ```yaml
+```yaml
 
 # my test_is_valid_email_address unit test will run on all versions of my_model
 unit-tests:
