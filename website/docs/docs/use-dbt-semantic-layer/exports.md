@@ -50,9 +50,9 @@ saved_queries:
     query_params:
       metrics:
         - YOUR_METRIC_NAME
-      group_bys:
+      group_by:
         - TimeDimension()
-        - ... # Additional group_bys
+        - ... # Additional group_by
       where:
         - ... # Additional where clauses
     exports:
