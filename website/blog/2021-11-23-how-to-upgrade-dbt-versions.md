@@ -12,13 +12,13 @@ date: 2021-11-29
 is_featured: true
 ---
 
-:::tip **February 2024 Update!**
+:::tip February 2024 Update
 
-It's been a few years since dbt-core turned 1.0! Since then, we've committed to zero breaking changes whenever possible, and it's become much easier to upgrade dbt-core versions.
+It's been a few years since dbt-core turned 1.0! Since then, we've committed to releasing zero breaking changes whenever possible and it's become much easier to upgrade dbt Core versions.
 
-Now, we're taking it one step further, by introducing **Keep on latest version** <Lifecycle status='beta' /> in dbt Cloud (currently available to select customers). No more manual upgrades, and no more need for a "a second sandbox project." For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud).
+Now, we're taking it one step further by introducing **Keep on latest version** in dbt Cloud (currently available to select customers). No more manual upgrades and no more need for "a second sandbox project." For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud).
 
-We're leaving the rest of this post as-is, so we can all remember how it used to be. Enjoy a stroll down memory lane.
+We're leaving the rest of this post as is, so we can all remember how it used to be. Enjoy a stroll down memory lane.
 
 :::
 
