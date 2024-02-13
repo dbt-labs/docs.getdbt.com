@@ -112,7 +112,7 @@ unit_tests:
       given:
         - input: ref('my_model_a')
           format: csv
-        	rows: |
+          rows: |
             id,name
             1,gerda
             2,michelle
