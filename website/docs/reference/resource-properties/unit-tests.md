@@ -145,7 +145,7 @@ unit_tests:
 - `input:` is optional for seeds:
     - If you don’t supply an input for a seed, we will use the seed *as* the input.
     - If you do supply an input for a seed, we will use that input instead.
-- You can also have “empty” inputs, by setting rows to an empty list `rows: []`:
+- You can also have “empty” inputs, by setting rows to an empty list `rows: []`
 
 Examples:
 ```yml
