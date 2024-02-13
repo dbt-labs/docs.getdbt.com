@@ -1,6 +1,6 @@
 ---
-title: "My Good Title"
-description: "Learn about how to get the most out of dbt Explorer"
+title: "Column-Level Lineage, Model Performance, and Recommendations: ship trusted data products with dbt Explorer"
+description: "Learn about how to get the most out of the new features in dbt Explorer"
 slug: dbt-explorer
 
 authors: [dave_connors]
@@ -20,10 +20,10 @@ Once the project could dress and feed itself, we also worked hard to get buy-in 
 
 When our teammates ask about where the data in their reports come from, how fresh it is, or about the right calculation for a metric, what a joy! This means they want to put what we’ve built to good use — the challenge is that, historically, *it hasn’t been all that easy to answer these questions well.* That has often meant a manual, painstaking process of cross checking run logs and your dbt documentation site to get the stakeholder the information they need.
 
-Enter [dbt Explorer](https://www.getdbt.com/product/dbt-explorer)! Explorer centralizes documentation, lineage, and execution metadata to reduce the work required to to ship trusted data products faster.
+Enter [dbt Explorer](https://www.getdbt.com/product/dbt-explorer)! dbt Explorer centralizes documentation, lineage, and execution metadata to reduce the work required to ship trusted data products faster.
 
 <!-- truncate -->
-## dbt Explorer: the missing navigation tool in your stack
+## dbt Explorer: an upgrade to data discovery
 
 In the days of yore, answering a question about your data platform may have required a bit of cryptography, sifting through possibly-up-to-date documentation in your internal wiki, run logs to figure out when your models were executed, and slacking the data team member with the most tenure. In the past several years, dbt Docs helped centralize the documentation workflow and dramatically improved the documentation process. While useful, dbt Docs only ever provides a single point in time snapshot, and lacks any sense of your platform’s deployment and execution information. dbt Explorer supercharges the docs experience by providing stateful awareness of your data platform, making support and triage of your platform easier than ever — it even proactively lets you know what to focus on to build even higher quality data products!
 
@@ -81,6 +81,6 @@ dbt Explorer now surfaces model execution metadata to take the guesswork out of 
 
 <Lightbox src="/img/blog/2024-02-13-dbt-explorer/model-execution.png" width="85%" title="maybe I should check on that one long run!" />
 
-## Oh, the data you’ll explore!
+## Bon voyage!
 
 They say the best time to ~~invest~~ ~~plant a tree~~ document your dbt project is yesterday, and the second best time is today. With all the bells and whistles that supercharge your documentation experience in dbt Explorer, there’s no time like the present! Leaning into your documentation and taking advantage of your metadata in dbt Explorer will lead to better data products shipped faster — get out there and explore!
