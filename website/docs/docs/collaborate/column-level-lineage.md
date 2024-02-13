@@ -10,7 +10,7 @@ dbt Explorer now offers column-level lineage (CLL) for the resources in your dbt
 CLL is available to dbt Cloud Enterprise accounts that can use Explorer. It’s also available through the [Discovery API](/docs/dbt-cloud-apis/discovery-api).
 
 :::tip Check out our beta
-Explorer's CLL is currently available as a [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) for Enterprise plans. Please check it out! We'd love to [know what you think](https://docs.google.com/forms/d/e/1FAIpQLSdpCbVkGY9QwfExFonpWE4DTOKi3fQxBGLD0wwKYpkMjgcE7g/viewform)!
+Explorer's CLL is currently available as a [public beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) for Enterprise plans. Please check it out! We'd love to [know what you think](https://docs.google.com/forms/d/e/1FAIpQLSdpCbVkGY9QwfExFonpWE4DTOKi3fQxBGLD0wwKYpkMjgcE7g/viewform)!
 :::
 
 ## Access the column-level lineage
