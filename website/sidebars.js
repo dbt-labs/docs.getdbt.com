@@ -280,7 +280,7 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Tests",
-              link: { type: "doc", id: "docs/build/models" },
+              link: { type: "doc", id: "docs/build/data-tests" },
               items: [
                 "docs/build/data-tests",
                 "docs/build/unit-tests",
