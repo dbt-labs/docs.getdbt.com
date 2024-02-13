@@ -9,7 +9,7 @@ sidebar_label: "Google Sheets (beta)"
 Google Sheets integration with the dbt Semantic Layer is a [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) feature.
 :::
 
-The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheet.
+The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheets.
 
 ## Prerequisites
 
@@ -20,7 +20,11 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
   - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
-## Installing the add-on 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
+
+## Installing the add-on
 
 1. Navigate to the [dbt Semantic Layer for Sheets App](https://gsuite.google.com/marketplace/app/foo/392263010968) to install the add-on.
 

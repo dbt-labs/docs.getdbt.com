@@ -21,7 +21,6 @@ The keys for metrics definitions are:
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 
-
 Here's a complete example of the metrics spec configuration:
 
 ```yaml
@@ -39,6 +38,10 @@ metrics:
 ```
 
 This page explains the different supported metric types you can add to your dbt project.
+
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
 
 ### Conversion metrics
 

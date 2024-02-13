@@ -11,7 +11,7 @@ The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/db
 
 The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  
 
-This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop or Tableau Server. 
+This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop or Tableau Server.
 
 ## Prerequisites
 
@@ -22,6 +22,10 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 - You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
   - Single-tenant accounts should contact their account representative for necessary setup and enablement.
+
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
 
 ## Installing the Connector
 

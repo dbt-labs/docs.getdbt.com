@@ -30,6 +30,10 @@ MetricFlow allows you to define metrics in your dbt project and query them wheth
 
 However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
+
 ## Prerequisites
 
 import SetUp from '/snippets/_v2-sl-prerequisites.md';

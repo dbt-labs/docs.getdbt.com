@@ -62,23 +62,23 @@ metrics:
     description: The cumulative value of all orders
     type: cumulative
     type_params:
-      fill_nulls_with: 0
       measure: order_total
+        fill_nulls_with: 0
   - name: cumulative_order_total_l1m
     label: Cumulative Order total (L1M)   
     description: Trailing 1 month cumulative order amount
     type: cumulative
     type_params:
-      fills_nulls_with: 0
       measure: order_total
+        fill_nulls_with: 0
       window: 1 month
   - name: cumulative_order_total_mtd
     label: Cumulative Order total (MTD)
     description: The month to date value of all orders
     type: cumulative
     type_params:
-      fills_nulls_with: 0
       measure: order_total
+        fill_nulls_with: 0
       grain_to_date: month
 ```
 

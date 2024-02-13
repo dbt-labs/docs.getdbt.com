@@ -17,6 +17,10 @@ To fit your tool within the world of the Semantic Layer, dbt Labs offers some be
 
 This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
+
 ### Prerequisites
 
 To build a dbt Semantic Layer integration: 
