@@ -97,7 +97,7 @@ unit_tests:
 ```
 </file>
 
-The above example defines the mock data using the inline `dict` format, but there are a handful of different options for how you format your mock data. 
+The above example defines the mock data using the inline `dict` format, but you can also use `csv` either inline or in a separate fixture file. 
 
 Notice that you only have to define the mock data for the columns you care about. This enables you to write succinct and _specific_ unit tests.
 
