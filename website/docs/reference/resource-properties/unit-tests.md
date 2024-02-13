@@ -133,7 +133,7 @@ unit_tests:
         ...
     ```
         
-    ```yaml
+    ```csv
     # tests/fixtures/my_model_a_fixture.csv
     1,gerda
     2,michelle
