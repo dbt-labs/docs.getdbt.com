@@ -1,4 +1,4 @@
---- 
+---
 title: "Billing"
 id: billing 
 description: "dbt Cloud billing information." 
