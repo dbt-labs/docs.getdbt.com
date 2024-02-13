@@ -46,6 +46,7 @@ function useDocTOC() {
   async function fetchElements() {
     // get html elements
     const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
+
     
     // if headings exist on page
     // compare against toc
