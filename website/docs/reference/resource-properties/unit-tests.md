@@ -96,7 +96,7 @@ unit_tests:
     given:
       - input: ref('my_model_a')
         format: dict
-    		rows:
+        rows:
           - {id: 1, name: gerda}
           - {id: 2, b: michelle}    
 
