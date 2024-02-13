@@ -4,7 +4,7 @@ description: "Use exports to materialize tables to the data platform on a schedu
 sidebar_label: "Materialize with exports"
 ---
 
-### Materialize queries with exports <Lifecycle status={[ 'team', 'enterprise' ]}/>
+# Materialize queries with exports <Lifecycle status= 'new' />
 
 The exports feature in the dbt Semantic Layer enhances the [saved queries](/docs/build/saved-queries) by allowing you to materialize commonly used queries directly within your data platform.
 
