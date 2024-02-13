@@ -4,7 +4,7 @@ description: "Read this guide to understand the require-dbt-version configuratio
 default_value: None
 ---
 
-<Snippet path="_config-dbt-version-check" />
+
 
 <File name='dbt_project.yml'>
 
@@ -21,6 +21,12 @@ You can use `require-dbt-version` to restrict your project to only work with a r
 When you set this configuration, dbt sends a helpful error message for any user who attempts to run the project with an unsupported version of dbt. This can be useful for package maintainers (such as [dbt-utils](https://github.com/dbt-labs/dbt-utils)) to ensure that users' dbt version is compatible with the package. Setting this configuration might also help your whole team remain synchronized on the same version of dbt for local development, to avoid compatibility issues from changed behaviour.
 
 If this configuration is not specified, no version check will occur.
+
+:::info Keep on latest version
+
+<Snippet path="_config-dbt-version-check" />
+
+:::
 
 ### YAML quoting
 
