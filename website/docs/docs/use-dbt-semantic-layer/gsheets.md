@@ -26,7 +26,7 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 
 1. Navigate to the [dbt Semantic Layer for Sheets App](https://gsuite.google.com/marketplace/app/foo/392263010968) to install the add-on. You can also find it in Google Sheets by going to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on) and searching for it there.
 2. After installing, open the Add-On menu and select the "dbt Semantic Layer for Sheets". This will open a custom menu to the right-hand side of your screen.
-3. Find your **Host** and **Environment ID** in dbt Cloud. Go to **Account Settings** and select **Projects** on the left sidebar.Select your project and then navigate to the **Semantic Layer** settings.  You'll need this to authenticate in Google Sheets in the following step.
+3. Find your **Host** and **Environment ID** in dbt Cloud. Navigate to **Account Settings** and select **Projects** on the left sidebar. Select your project and then navigate to the **Semantic Layer** settings.  You'll need this to authenticate in Google Sheets in the following step.
    - You can [generate your service token](/docs/dbt-cloud-apis/service-tokens) by clicking **Generate Service Token** within the Semantic Layer configuration page or navigating to **API tokens** in dbt Cloud.
 
 4. In Google Sheets, authenticate with your Host, dbt Cloud Environment ID, and Service Token.
