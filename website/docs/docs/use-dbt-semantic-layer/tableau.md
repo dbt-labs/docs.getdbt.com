@@ -5,6 +5,9 @@ tags: [Semantic Layer]
 sidebar_label: "Tableau (beta)"
 ---
 
+# Tableau <Lifecycle status='beta'/>
+
+
 :::info Beta functionality
 The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/dbt-versions/product-lifecycles#dbt-cloud).
 :::
