@@ -81,7 +81,7 @@ dbt deps --add-package dbt-labs/dbt_utils@1.0.0
 dbt deps --add-package dbt-labs/snowplow@">=0.7.0,<0.8.0"
 ```
 
-For other package types, use the `--source` option:
+For other package types, use the `--source` flag:
 ```shell
 # add package from git
 dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source git
