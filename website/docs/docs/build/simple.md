@@ -40,7 +40,7 @@ metrics:
 <!-- create_metric not supported yet
 :::tip
 
-If you've already defined the measure using the `create_metric: true` parameter, you don't need to create simple metrics. However, if you want to include a filter or in the final metric, you'll need to define and create a simple metric.
+If you've already defined the measure using the `create_metric: true` parameter, you don't need to create simple metrics. However, if you want to include a filter in the final metric, you'll need to define and create a simple metric.
 :::
 -->
 
