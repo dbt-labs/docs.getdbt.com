@@ -124,7 +124,7 @@ When `format: csv`, can either supply:
     ```
 
         
-    - The name of a csv file in the `tests/fixtures` directory in your project (or the directory configured for [test-paths](https://docs.getdbt.com/reference/project-configs/test-paths)) for `fixture`:
+  - The name of a csv file in the `tests/fixtures` directory in your project (or the directory configured for [test-paths](https://docs.getdbt.com/reference/project-configs/test-paths)) for `fixture`:
         
     ```yaml
     unit_tests:

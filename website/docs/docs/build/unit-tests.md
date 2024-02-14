@@ -145,7 +145,7 @@ Now you’re ready to run this unit test. You have a couple of options for comma
 - `dbt test --select "dim_customers,test_type:unit"` runs all of the _unit_ tests on `dim_customers`.
 - `dbt test --select test_is_valid_email_address` runs the test named `test_is_valid_email_address`.
 
-```bash
+```shell
 
 dbt test --select test_is_valid_email_address
 16:03:49  Running with dbt=1.8.0-a1
@@ -183,7 +183,7 @@ The clever regex statement wasn’t as clever as initially thought, as the model
 
 Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those pesky escape characters) and rerunning the unit test solves the problem:
 
-```bash
+```shell
 
 dbt test --select test_is_valid_email_address
 16:09:11  Running with dbt=1.8.0-a1
