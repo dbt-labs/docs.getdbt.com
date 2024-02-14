@@ -31,6 +31,7 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
   [use_experimental_parser](/reference/global-configs/parsing): <true | false>
   [static_parser](/reference/global-configs/parsing): <true | false>
   [cache_selected_only](/reference/global-configs/cache): <true | false>
+  [populate_cache](/reference/global-configs/cache): <true | false>
 
 <profile-name>:
   target: <target-name> # this is the default target
