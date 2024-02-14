@@ -179,7 +179,7 @@ actual differs from expected:
 
 ```
 
-The clever regex statement wasn’t as clever as initially thought, as the model incorrectly flagged `missingdot@gmailcom` as a valid email address.
+The clever regex statement wasn’t as clever as initially thought, as the model incorrectly flagged `cool@example.com` (customer 1's email) as an invalid email address.
 
 Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those pesky escape characters) and rerunning the unit test solves the problem:
 
