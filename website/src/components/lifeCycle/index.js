@@ -19,13 +19,14 @@ const fontColors = {
   };
 
 export default function Lifecycle(props) {
+  const statuses = props.status?.split(',')
+  if (!statuses?.length) {
+    return null;
+  }
+
   if (!props.status || (Array.isArray(props.status) && props.status.length === 0)) {
     return null;
   }
-  // Check if props.status is an array or a single value amd to handle strings separated by commas
-  const statuses = typeof props.status ==='string'
-  ?props.status.split(',').map(s => s.trim()) 
-  : Array.isArray(props.status) ? props.status : [props.status];
 
   return (
     <>

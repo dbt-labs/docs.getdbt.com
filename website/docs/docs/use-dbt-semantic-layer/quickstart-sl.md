@@ -8,8 +8,6 @@ meta:
   api_name: dbt Semantic Layer APIs
 ---
 
-### test <Lifecycle status="team,enterprise"/>
-
 import CreateModel from '/snippets/_sl-create-semanticmodel.md';
 import DefineMetrics from '/snippets/_sl-define-metrics.md';
 import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
