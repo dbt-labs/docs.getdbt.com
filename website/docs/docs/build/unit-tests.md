@@ -244,7 +244,7 @@ There are a number of scenarios where unit testing a mode is appropriate, includ
     - `case when` statements when there are many `when`s
     - Truncation
     - Recursion
-- Add a unit test for anything that feels like writing a function. For example, it involves your own logic processing the input.
+- When you're writing custom logic to process input data, similar to creating a function.
     - For example, you wouldn't need to prioritize unit testing just calling `min()`. That's already been tested extensively by the warehouse. If something unexpected happens, it's going to be a result of issues in the underlying data, so your fixture data in the unit test isn't going to help you.
 - Logic for which you had bugs reported before.
 - Edge cases not yet seen in your actual data that you want to handle.
