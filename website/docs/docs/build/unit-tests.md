@@ -244,7 +244,7 @@ You should unit test a model:
     - Truncation
     - Recursion
 - When you're writing custom logic to process input data, similar to creating a function.
-    - For example, you wouldn't need to prioritize unit testing just calling `min()`. That's already been tested extensively by the warehouse. If something unexpected happens, it's going to be a result of issues in the underlying data, so your fixture data in the unit test isn't going to help you.
+- We don't recommend conducting unit testing for functions like `min()` since these functions are tested extensively by the warehouse. If an unexpected issue arises, it's more likely a result of issues in the underlying data rather than the function itself. Therefore, fixture data in the unit test won't provide valuable information.
 - Logic for which you had bugs reported before.
 - Edge cases not yet seen in your actual data that you want to handle.
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
