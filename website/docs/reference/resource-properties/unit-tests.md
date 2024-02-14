@@ -55,34 +55,36 @@ unit_tests:
 
 ## About writing unit tests
 
-Unit tests are currently limited to testing SQL models and only models in your current project. When writing your unit tests, keep the following in mind:
-- If your model has multiple versions, the default unit test will run on *all* versions of your model. To specify version(s) of your model to unit test, use `include` or `exclude` for the desired versions in your model versions config:
+Unit tests are currently limited to testing SQL models and only models in your current project. 
+
+### Versions
+If your model has multiple versions, the default unit test will run on *all* versions of your model. To specify version(s) of your model to unit test, use `include` or `exclude` for the desired versions in your model versions config:
 
 ```yaml
 
 # my test_is_valid_email_address unit test will run on all versions of my_model
-unit-tests:
+unit_tests:
   - name: test_is_valid_email_address
     model: my_model
-...
+    ...
             
 # my test_is_valid_email_address unit test will run on ONLY version 2 of my_model
-unit-tests:
+unit_tests:
   - name: test_is_valid_email_address 
     model: my_model 
       versions:
         include: 
           - 2
-...
+    ...
             
 # my test_is_valid_email_address unit test will run on all versions EXCEPT 1 of my_model
-unit-tests:
+unit_tests:
   - name: test_is_valid_email_address
     model: my_model 
       versions:
         exclude: 
           - 1
-...
+    ...
 
 ```
 
@@ -101,7 +103,7 @@ unit_tests:
         rows:
           - {id: 1, name: gerda}
           - {id: 2, b: michelle}    
-
+        ...
 ```
 
 When `format: csv`, can either supply:
@@ -118,7 +120,6 @@ When `format: csv`, can either supply:
             id,name
             1,gerda
             2,michelle
-
         ...
     ```
 
@@ -152,29 +153,29 @@ When `format: csv`, can either supply:
     - If you do supply an input for a seed, we will use that input instead.
 - You can also have “empty” inputs, by setting rows to an empty list `rows: []`
 
-### Examples
+## Examples
 ```yml
 
 unit_tests:
   - name: test_is_valid_email_address # this is the unique name of the test
-    model: my_model # name of the model I'm unit testing
+    model: dim_customers # name of the model I'm unit testing
     given: # the mock data for your inputs
-      - input: ref('users')
+      - input: ref('stg_customers')
         rows:
-         - {user_id: 1, email: cool@example.com,     email_top_level_domain: example.com}
-         - {user_id: 2, email: cool@unknown.com,     email_top_level_domain: unknown.com}
-         - {user_id: 3, email: badgmail.com,         email_top_level_domain: gmail.com}
-         - {user_id: 4, email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
-      - input: ref('top_level_domains')
+         - {customer_id: 1, email: cool@example.com,     email_top_level_domain: example.com}
+         - {customer_id: 2, email: cool@unknown.com,     email_top_level_domain: unknown.com}
+         - {customer_id: 3, email: badgmail.com,         email_top_level_domain: gmail.com}
+         - {customer_id: 4, email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
         rows:
          - {tld: example.com}
          - {tld: gmail.com}
     expect: # the expected output given the inputs above
       rows:
-        - {user_id: 1, is_valid_email_address: true}
-        - {user_id: 2, is_valid_email_address: false}
-        - {user_id: 3, is_valid_email_address: false}
-        - {user_id: 4, is_valid_email_address: false}
+        - {customer_id: 1, is_valid_email_address: true}
+        - {customer_id: 2, is_valid_email_address: false}
+        - {customer_id: 3, is_valid_email_address: false}
+        - {customer_id: 4, is_valid_email_address: false}
 
 ```
 
@@ -182,15 +183,15 @@ unit_tests:
 
 unit_tests:
   - name: test_is_valid_email_address # this is the unique name of the test
-    model: my_model # name of the model I'm unit testing
+    model: dim_customers # name of the model I'm unit testing
     given: # the mock data for your inputs
-      - input: ref('users')
+      - input: ref('stg_customers')
         rows:
-         - {user_id: 1, email: cool@example.com,     email_top_level_domain: example.com}
-         - {user_id: 2, email: cool@unknown.com,     email_top_level_domain: unknown.com}
-         - {user_id: 3, email: badgmail.com,         email_top_level_domain: gmail.com}
-         - {user_id: 4, email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
-      - input: ref('top_level_domains')
+         - {customer_id: 1, email: cool@example.com,     email_top_level_domain: example.com}
+         - {customer_id: 2, email: cool@unknown.com,     email_top_level_domain: unknown.com}
+         - {customer_id: 3, email: badgmail.com,         email_top_level_domain: gmail.com}
+         - {customer_id: 4, email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
         format: csv
         rows: |
           tld
@@ -198,6 +199,6 @@ unit_tests:
           gmail.com
     expect: # the expected output given the inputs above
       format: csv
-      fixture: my_model_fixture
+      fixture: valid_email_address_fixture_output
 
 ```

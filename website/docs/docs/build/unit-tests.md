@@ -127,7 +127,7 @@ Use the `--empty` flag to build an empty version of the models to save warehouse
 
 ```bash
 
-dbt run —-select "stg_customers top_level_email_domains" --empty
+dbt run --select "stg_customers top_level_email_domains" --empty
 
 ```
 
@@ -143,7 +143,7 @@ Now you’re ready to run this unit test. You have a couple of options for comma
 
 - `dbt test --select dim_customers` runs _all_ of the tests on `dim_customers`.
 - `dbt test --select "dim_customers,test_type:unit"` runs all of the _unit_ tests on `dim_customers`.
-- `dbt test —-select test_is_valid_email_address` runs the test named `test_is_valid_email_address`.
+- `dbt test --select test_is_valid_email_address` runs the test named `test_is_valid_email_address`.
 
 ```bash
 
@@ -192,8 +192,8 @@ dbt test --select test_is_valid_email_address
 16:09:12  
 16:09:13  Concurrency: 5 threads (target='postgres')
 16:09:13  
-16:09:13  1 of 1 START unit_test dim_wizards::test_is_valid_email_address ................... [RUN]
-16:09:13  1 of 1 PASS dim_wizards::test_is_valid_email_address .............................. [PASS in 0.26s]
+16:09:13  1 of 1 START unit_test dim_customers::test_is_valid_email_address ................... [RUN]
+16:09:13  1 of 1 PASS dim_customers::test_is_valid_email_address .............................. [PASS in 0.26s]
 16:09:13  
 16:09:13  Finished running 1 unit_test in 0 hours 0 minutes and 0.75 seconds (0.75s).
 16:09:13  
@@ -208,47 +208,49 @@ Your model is now ready for production! Adding this unit test helped catch an is
 ## Unit testing versioned models
 
 When a unit test is added to a model, it will run on all versions of the model by default.
-Using the example in this article, if you have versions 1, 2, and 3 of `my_model`, the `my test_is_valid_email_address` unit test will run on all 3 versions.
+Using the example in this article, if you have versions 1, 2, and 3 of `dim_customers`, the `test_is_valid_email_address` unit test will run on all 3 versions.
 
 To only unit test a specific version (or versions) of a model, include the desired version(s) in the model config:
 
 ```yml
 
-unit-tests:
-  - name: test_is_valid_email_address # this is the unique name of the test
-    model: my_model # name of the model I'm unit testing
+unit_tests::
+  - name: test_is_valid_email_address
+    model: dim_customers
       versions:
         include: 
           - 2
-    given: # optional: list of inputs to provide as fixtures
+    ...
 
 ```
 
-In this scenario, if you have version 1, 2, and 3 of `my_model`, `my test_is_valid_email_address` unit test will run on _only_ version 2.
+In this scenario, if you have version 1, 2, and 3 of `dim_customers `, my `test_is_valid_email_address` unit test will run on _only_ version 2.
 
 To unit test all versions except a specific version (or versions) of a model, you can exclude the relevant version(s) in the model config:
 
 ```yml
 
-unit-tests:
-  - name: test_is_valid_email_address # this is the unique name of the test
-    model: my_model # name of the model I'm unit testing
+unit_tests:
+  - name: test_is_valid_email_address
+    model: dim_customers
       versions:
         exclude: 
           - 1
-    given: # optional: list of inputs to provide as fixtures
+    ...
 
 ```
-So, if you have versions 1, 2, and 3 of `my_model`, your `test_is_valid_email_address` unit test will run on _only_ versions 2 and 3.
+So, if you have versions 1, 2, and 3 of `dim_customers`, your `test_is_valid_email_address` unit test will run on _only_ versions 2 and 3.
 
 If you want to unit test a model that references the pinned version of the model, you should specify that in the `ref` of your input:
 
 ```yml
 
-unit-tests:
-  - name: test_is_valid_email_address # this is the unique name of the test
-    model: my_model # name of the model I am unit testing
-    given: # optional: list of inputs to provide as fixtures
+unit_tests:
+  - name: test_is_valid_email_address
+    model: dim_customers
+    given: 
+      - input: ref('stg_customers', v=1)
+      ...
 
 ```
 

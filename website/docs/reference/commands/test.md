@@ -61,11 +61,11 @@ dbt test --select "test_type:singular"
 # run only data tests defined generically
 dbt test --select "test_type:generic"
 
-# run singular data tests limited to one_specific_model
-dbt test --select "one_specific_model,test_type:singular"
+# run data tests limited to one_specific_model
+dbt test --select "one_specific_model,test_type:data"
 
-# run generic data tests limited to one_specific_model
-dbt test --select "one_specific_model,test_type:generic"
+# run unit tests limited to one_specific_model
+dbt test --select "one_specific_model,test_type:unit"
 ```
 
 For more information on writing tests, read the [data testing](/docs/build/tests) and [unit testing](/docs/build/unit-tests) documentation.
