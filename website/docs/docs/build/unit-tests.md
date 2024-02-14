@@ -9,7 +9,7 @@ keywords:
 ---
 :::note closed beta
 
-Unit testing is currently in closed beta for dbt Cloud accounts that have updated to a [versionless environment](/docs/dbt-versions/upgrade-core-in-cloud).
+Unit testing is currently in closed beta for dbt Cloud accounts that have updated to a [versionless environment](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 It is available now as an alpha feature for dbt Core v1.8 users.
 
