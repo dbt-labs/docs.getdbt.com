@@ -29,7 +29,7 @@ import SLCourses from '/snippets/_sl-course.md';
 ## Installing the add-on
 
 1. Navigate to the [dbt Semantic Layer for Sheets App](https://gsuite.google.com/marketplace/app/foo/392263010968) to install the add-on. You can also find it in Google Sheets by going to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on) and searching for it there.
-2. After installing, open the Add-On menu and select the "dbt Semantic Layer for Sheets". This will open a custom menu to the right-hand side of your screen.
+2. After installing, open the Add-On menu and select the "dbt Semantic Layer for Sheets". This will open a custom menu on the right-hand side of your screen.
 3. Find your **Host** and **Environment ID** in dbt Cloud. Navigate to **Account Settings** and select **Projects** on the left sidebar. Select your project and then navigate to the **Semantic Layer** settings.  You'll need this to authenticate in Google Sheets in the following step.
    - You can [generate your service token](/docs/dbt-cloud-apis/service-tokens) by clicking **Generate Service Token** within the Semantic Layer configuration page or navigating to **API tokens** in dbt Cloud.
 
@@ -54,17 +54,17 @@ The custom menu provides the following capabilities:
 | Group By      | Search and select dimensions to group by. Dimensions are grouped by the entity of the semantic model they come from. |
 | Granularity   | Modify the granularity of the primary time dimension.      |
 | Where         | Filter your data. This includes categorical and time filters. |
-| Order By      | Return your data ordered.                              |
+| Order By      | Return your data order.                              |
 | Limit         | Set a limit for the rows of your output.               |
 
 
 ## Filtering data 
 
 To use the filter functionality, choose the [dimension](docs/build/dimensions) you want to filter by and select the operation you want to filter on. 
-   - For categorical dimensiosn, type in the dimension value you want to filter by (no quotes needed) and press enter. 
+   - For categorical dimensions, type in the dimension value you want to filter by (no quotes needed) and press enter. 
    - Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar. 
 
-**Limited Use Policy Disclosure**
+**Limited use policy disclosure**
 
 The dbt Semantic Layer for Sheet's use and transfer to any other app of information received from Google APIs will adhere to [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
