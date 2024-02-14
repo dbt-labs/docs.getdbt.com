@@ -4,7 +4,7 @@ sidebar_label: "version"
 id: "version"
 ---
 
-The `--version` command-line option returns information about the currently installed version of dbt Core or the dbt Cloud CLI.
+The `--version` command-line flag returns information about the currently installed version of dbt Core or the dbt Cloud CLI.
 
 This option is not supported when invoking dbt in other dbt Cloud runtimes (like, the IDE or scheduled runs).
 
