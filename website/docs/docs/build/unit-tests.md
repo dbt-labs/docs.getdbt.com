@@ -19,7 +19,7 @@ Historically, the test coverage capabilities of dbt were limited to [“data” 
 
 Now, we are introducing a new type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
-:::note Before you begin
+## Before you begin
 
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
