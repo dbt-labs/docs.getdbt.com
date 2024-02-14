@@ -27,6 +27,8 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
+## Unit testing a model
+
 This example creates a new `dim_customers` model with a field `is_valid_email_address` that calculates whether or not the customer’s email is valid: 
 
 <file name='dim_customers.sql'>
