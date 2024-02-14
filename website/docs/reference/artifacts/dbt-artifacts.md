@@ -28,6 +28,10 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [catalog](catalog-json): produced by `docs generate`
 - [sources](/reference/artifacts/sources-json): produced by `source freshness`
 
+## Where are artifacts produced?
+
+By default, artifacts are written to the `/target` directory of your dbt project, and this location is configurable via the [`target-path`](/reference/project-configs/target-path#configuration).
+
 ## Common metadata
 
 All artifacts produced by dbt include a `metadata` dictionary with these properties:
