@@ -16,7 +16,7 @@ is_featured: true
 
 It's been a few years since dbt-core turned 1.0! Since then, we've committed to releasing zero breaking changes whenever possible and it's become much easier to upgrade dbt Core versions.
 
-Now, we're taking it one step further by introducing **Keep on latest version** in dbt Cloud (currently available to select customers). No more manual upgrades and no more need for "a second sandbox project." For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud).
+Now, we're taking it one step further by introducing **Keep on latest version** in dbt Cloud (currently available to select customers). No more manual upgrades and no more need for "a second sandbox project." For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 
 We're leaving the rest of this post as is, so we can all remember how it used to be. Enjoy a stroll down memory lane.
 
