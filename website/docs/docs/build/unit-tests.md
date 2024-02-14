@@ -27,6 +27,23 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
+### When to add a unit test to your model
+
+You should unit test a model:
+- When your SQL contains complex logic:
+    - Regex
+    - Date math
+    - Window functions
+    - `case when` statements when there are many `when`s
+    - Truncation
+    - Recursion
+- When you're writing custom logic to process input data, similar to creating a function.
+- We don't recommend conducting unit testing for functions like `min()` since these functions are tested extensively by the warehouse. If an unexpected issue arises, it's more likely a result of issues in the underlying data rather than the function itself. Therefore, fixture data in the unit test won't provide valuable information.
+- Logic for which you had bugs reported before.
+- Edge cases not yet seen in your actual data that you want to handle.
+- Prior to refactoring the transformation logic (especially if the refactor is significant).
+- Models with high "criticality" (public, contracted models or models directly upstream of an exposure).
+
 ## Unit testing a model
 
 This example creates a new `dim_customers` model with a field `is_valid_email_address` that calculates whether or not the customer’s email is valid: 
@@ -235,20 +252,5 @@ unit-tests:
 
 ```
 
-### When to add a unit test to your model
 
-You should unit test a model:
-- When your SQL contains complex logic:
-    - Regex
-    - Date math
-    - Window functions
-    - `case when` statements when there are many `when`s
-    - Truncation
-    - Recursion
-- When you're writing custom logic to process input data, similar to creating a function.
-- We don't recommend conducting unit testing for functions like `min()` since these functions are tested extensively by the warehouse. If an unexpected issue arises, it's more likely a result of issues in the underlying data rather than the function itself. Therefore, fixture data in the unit test won't provide valuable information.
-- Logic for which you had bugs reported before.
-- Edge cases not yet seen in your actual data that you want to handle.
-- Prior to refactoring the transformation logic (especially if the refactor is significant).
-- Models with high "criticality" (public, contracted models or models directly upstream of an exposure).
 
