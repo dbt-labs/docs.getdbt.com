@@ -86,6 +86,8 @@ Pinning to a specific dbt version is discouraged because it limits project flexi
 
 While you can restrict your project to run only with an exact version of dbt Core, we do not recommend this for dbt Core v1.0.0 and higher. 
 
+:::
+
 In the following example, the project will only run with dbt v1.5: 
 
 <File name='dbt_project.yml'>
