@@ -29,7 +29,7 @@ dbt test --select "one_specific_model,test_type:singular"
 dbt test --select "one_specific_model,test_type:generic"
 ```
 
-For more information on writing tests, see the [Testing Documentation](/docs/build/tests).
+For more information on writing tests, see the [Testing Documentation](/docs/build/data-tests).
 
 </VersionBlock>
 
@@ -68,7 +68,7 @@ dbt test --select "one_specific_model,test_type:data"
 dbt test --select "one_specific_model,test_type:unit"
 ```
 
-For more information on writing tests, read the [data testing](/docs/build/tests) and [unit testing](/docs/build/unit-tests) documentation.
+For more information on writing tests, read the [data testing](/docs/build/data-tests) and [unit testing](/docs/build/unit-tests) documentation.
 
 </VersionBlock>
 
