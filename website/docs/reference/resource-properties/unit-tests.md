@@ -86,7 +86,9 @@ unit-tests:
 ...
 
 ```
-            
+
+### Format
+
 -When using `format: dict` you must supply an in-line dictionary for `rows:` (this is the default, if you don’t specify a `format`)
     
 ```yml
