@@ -61,6 +61,14 @@ Possible error cases are:
 
 ### Data platform support
 
-CLL works with the dbt Cloud supported warehouses, including but not limited to Snowflake, BigQuery, Redshift, and Databricks (Unity Catalog). 
+CLL in dbt Cloud works with the following data platforms: 
+- Snowflake
+- BigQuery
+- Redshift
+- Databricks (Unity Catalog) 
 
-CLL doesn’t currently support the Hive metastore version of Databricks, Apache Spark, Starburst/Trino, or Microsoft Fabric. Coming soon. 
+The following adapters aren't currently supported by CLL in dbt Cloud. More of these platforms will be supported in the future. 
+- Hive metastore version of Databricks
+- Apache Spark
+- Starburst/Trino
+- Microsoft Fabric 
