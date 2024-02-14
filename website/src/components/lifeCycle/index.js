@@ -20,11 +20,7 @@ const fontColors = {
 
 export default function Lifecycle(props) {
   const statuses = props.status?.split(',')
-  if (!statuses?.length) {
-    return null;
-  }
-
-  if (!props.status || (Array.isArray(props.status) && props.status.length === 0)) {
+  if (!props.status || !statuses?.length) {
     return null;
   }
 
