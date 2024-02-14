@@ -235,7 +235,7 @@ unit-tests:
 
 ### When to add a unit test to your model
 
-There are a number of scenarios where unit testing a mode is appropriate, including:
+You should unit test a model:
 - When your SQL contains complex logic:
     - Regex
     - Date math
