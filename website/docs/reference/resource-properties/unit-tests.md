@@ -88,7 +88,7 @@ unit-tests:
 
 ### Format
 
--When using `format: dict` you must supply an in-line dictionary for `rows:` (this is the default, if you don’t specify a `format`)
+When using `format: dict` you must supply an in-line dictionary for `rows:` (this is the default, if you don’t specify a `format`)
     
 ```yml
 
@@ -104,7 +104,7 @@ unit_tests:
 
 ```
 
-- When `format: csv`, can either supply:
+When `format: csv`, can either supply:
   - An inline csv string for `rows:`
         
   ```yaml
@@ -142,6 +142,8 @@ unit_tests:
     2,michelle
     ```
         
+### Input
+        
 - `input:` string that represents a `ref` or `source` call:
     - `ref('my_model')` or `ref('my_model', v='2')` or `ref('dougs_project', 'users')`
     - `source('source_schema', 'source_name')`
@@ -150,7 +152,7 @@ unit_tests:
     - If you do supply an input for a seed, we will use that input instead.
 - You can also have “empty” inputs, by setting rows to an empty list `rows: []`
 
-Examples:
+### Examples
 ```yml
 
 unit_tests:
