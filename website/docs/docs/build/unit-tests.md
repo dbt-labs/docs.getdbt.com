@@ -9,9 +9,9 @@ keywords:
 ---
 :::note closed beta
 
-Unit testing is currently in closed beta for dbt Cloud accounts that have updated to a [versionless environment](/docs/dbt-versions/upgrade-core-in-cloud).
+Support for unit testing dbt models is available to dbt Cloud customers who have chosen to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). This is currently in closed beta, starting with select customers and rolling out to wider availability through February and March.
 
-It is available now as an alpha feature for dbt Core v1.8 users.
+For dbt Core, unit tests will be available in v1.8, planned for late April 2024. The v1.8.0-b1 release of `dbt-core` & dbt Labs-maintained adapters is planned for February 28.
 
 :::
 
