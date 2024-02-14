@@ -186,7 +186,7 @@ dbt test --select test_is_valid_email_address
 
 Your model is now ready for production! Adding this unit test helped catch an issue with the SQL logic _before_ you materialized `dim_customers` in your warehouse and will better ensure the reliability of this model in the future. 
 
-### Unit testing versioned models
+## Unit testing versioned models
 
 When a unit test is added to a model, it will run on all versions of the model by default.
 Using the example in this article, if you have versions 1, 2, and 3 of `my_model`, the `my test_is_valid_email_address` unit test will run on all 3 versions.
