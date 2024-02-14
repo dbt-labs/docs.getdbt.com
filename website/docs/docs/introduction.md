@@ -11,21 +11,21 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 Read more about why we want to enable analysts to work more like software engineers in [The dbt Viewpoint](/community/resources/viewpoint).
 
-## dbt optimizes your workflow <Lifecycle status="team,enterprise" />
+## dbt optimizes your workflow
 
 - Avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" /> by managing transactions, dropping tables, and managing schema changes. Write business logic with just a SQL `select` statement, or a Python DataFrame, that returns the dataset you need, and dbt takes care of <Term id="materialization" />.
 - Build up reusable, or modular, data models that can be referenced in subsequent work instead of starting at the raw data with every analysis.
 - Dramatically reduce the time your queries take to run: Leverage metadata to find long-running models that you want to optimize and use [incremental models](/docs/build/incremental-models) which dbt makes easy to configure and use.
 - Write <Term id="dry" />er code by leveraging [macros](/docs/build/jinja-macros), [hooks](/docs/build/hooks-operations), and [package management](/docs/build/packages).
 
-## dbt provides more reliable analysis <Lifecycle status="" />
+## dbt provides more reliable analysis
 
 - No longer copy and paste SQL, which can lead to errors when logic changes. Instead, build reusable data models that get pulled into subsequent models and analysis. Change a model once and that change will propagate to all its dependencies.
 - Publish the canonical version of a particular data model, encapsulating all complex business logic. All analysis on top of this model will incorporate the same business logic without needing to reimplement it.
 - Use mature source control processes like branching, pull requests, and code reviews.
 - Write data quality tests quickly and easily on the underlying data. Many analytic errors are caused by edge cases in the data: testing helps analysts find and handle those edge cases.
 
-## dbt products <Lifecycle />
+## dbt products
 
 You can access dbt using dbt Core or dbt Cloud. dbt Cloud is built around dbt Core, but it also provides:
 
@@ -36,7 +36,7 @@ You can access dbt using dbt Core or dbt Cloud. dbt Cloud is built around dbt Co
 
 You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com/pricing/).
 
-### dbt Cloud <Lifecycle status="custom" />
+### dbt Cloud
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. It also natively supports developing using a command line with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
 Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/guides).
