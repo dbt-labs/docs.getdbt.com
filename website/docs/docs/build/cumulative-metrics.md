@@ -21,6 +21,7 @@ This metric is common for calculating things like weekly active users, or month-
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
 | `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
+| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for cumulative metrics, along with an example:
 
@@ -31,10 +32,11 @@ metrics:
     type: cumulative # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
-      fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
-      measure: The measure you are referencing # Required
-      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Cannot be used with grain_to_date
-      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with window
+      measure: 
+        name: The measure you are referencing # Required
+        fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
+        window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Cannot be used with grain_to_date
+        grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with window
 
 ```
 
@@ -62,24 +64,27 @@ metrics:
     description: The cumulative value of all orders
     type: cumulative
     type_params:
-      measure: order_total
+      measure: 
+        name: order_total
         fill_nulls_with: 0
   - name: cumulative_order_total_l1m
     label: Cumulative Order total (L1M)   
     description: Trailing 1 month cumulative order amount
     type: cumulative
     type_params:
-      measure: order_total
+      measure: 
+        name: order_total
         fill_nulls_with: 0
-      window: 1 month
+        window: 1 month
   - name: cumulative_order_total_mtd
     label: Cumulative Order total (MTD)
     description: The month to date value of all orders
     type: cumulative
     type_params:
-      measure: order_total
+      measure: 
+        name: order_total
         fill_nulls_with: 0
-      grain_to_date: month
+        grain_to_date: month
 ```
 
 ### Window options

@@ -20,6 +20,8 @@ The keys for metrics definitions are:
 | `config` | Provide the specific configurations for your metric.   | Optional |
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
+| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
+| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 Here's a complete example of the metrics spec configuration:
 
@@ -54,7 +56,7 @@ metrics:
     type: conversion # Required
     label: # Required
     type_params: # Required
-      fills_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
+      fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
@@ -78,11 +80,13 @@ metrics:
       - support@getdbt.com
     type: cumulative
     type_params:
-      fills_nulls_with: 0
-      measures:
-        - distinct_users
-    # Omitting window will accumulate the measure over all time
-      window: 7 days
+      measure:
+        name: active_users
+        fill_nulls_with: 0
+      measure:
+        name: distinct_users
+        # Omitting window will accumulate the measure over all time
+        window: 7 days
       
 ```
 
@@ -97,7 +101,6 @@ metrics:
     type: derived
     label: Order Gross Profit
     type_params:
-      fills_nulls_with: 0
       expr: revenue - cost
       metrics:
         - name: order_total
@@ -137,7 +140,6 @@ metrics:
 # Define the metrics from the semantic manifest as numerator or denominator
     type: ratio
     type_params:
-      fills_nulls_with: 0
       numerator: cancellations
       denominator: transaction_amount
       filter: |     # add optional constraint string. This applies to both the numerator and denominator
@@ -171,15 +173,17 @@ metrics:
   - name: cancellations
     type: simple
     type_params:
-      fills_nulls_with: 0
-      measure: cancellations_usd  # Specify the measure you are creating a proxy for.
-    filter: |
-      {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
+      measure:
+        name: cancellations_usd  # Specify the measure you are creating a proxy for.
+        fill_nulls_with: 0
+        filter: |
+        {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
 ```
 
 ## Filters
 
 A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, and time dimensions in filters:
+
 ```yaml
 filter: |
   {{ Entity('entity_name') }} 
@@ -189,7 +193,7 @@ filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 ```
 
-### Further configuration 
+### Further configuration
 
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner
 
@@ -200,7 +204,3 @@ You can set more metadata for your metrics, which can be used by other tools lat
 - [Semantic models](/docs/build/semantic-models)
 - [Cumulative](/docs/build/cumulative)
 - [Derived](/docs/build/derived)
-
-
-
-

@@ -20,10 +20,9 @@ Simple metrics are metrics that directly reference a single measure, without any
 | `type_params` | The type parameters of the metric. | Required |
 | `measure` | The measure you're referencing. | Required |
 | `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
-| `join_to_timespine` | Boolean that supports metric nodes with `true` or `false` options. | Optional |
+| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for simple metrics, along with an example.
-
 
 ```yaml
 metrics:
@@ -33,7 +32,8 @@ metrics:
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
       measure: The measure you're referencing # Required
-      fill_nulls_with: Set value instead of null  (such as zero) # Optional
+        name: Name of your measure # Required
+        fill_nulls_with: Set value instead of null  (such as zero) # Optional
 
 ```
 
@@ -53,14 +53,16 @@ If you've already defined the measure using the `create_metric: true` parameter,
       type: simple # Pointers to a measure you created in a semantic model
       label: Count of customers
       type_params:
-        measure: customers # The measure you're creating a proxy of.
+        measure: 
+          name: customers # The measure you're creating a proxy of.
           fill_nulls_with: 0
     - name: large_orders
       description: "Order with order values over 20."
       type: SIMPLE
       label: Large Orders
       type_params:
-        measure: orders
+        measure: 
+          name: orders
           fill_nulls_with: 0
       filter: | # For any metric you can optionally include a filter on dimension values
         {{Dimension('customer__order_total_dim')}} >= 20

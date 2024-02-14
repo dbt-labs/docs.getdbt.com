@@ -33,6 +33,7 @@ The specification for conversion metrics is as follows:
 | `base_property` | The property from the base semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 | `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Entity or Dimension | Optional |
 | `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | String | Optional |
+| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
 
@@ -45,7 +46,7 @@ metrics:
     type: conversion # Required
     label: # Required
     type_params: # Required
-      fills_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
+      fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
@@ -93,7 +94,7 @@ Next, define a conversion metric as follows:
   type: conversion
   label: Visit to Buy Conversion Rate (7-day window)
   type_params:
-    fills_nulls_with: 0
+    fill_nulls_with: 0
     conversion_type_params:
       base_measure: visits
       conversion_measure: sellers

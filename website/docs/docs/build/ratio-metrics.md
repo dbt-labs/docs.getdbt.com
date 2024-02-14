@@ -21,6 +21,7 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 | `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  |
 | `filter` | Optional filter for the numerator or denominator. | Optional |
 | `alias` | Optional alias for the numerator or denominator. | Optional |
+| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for ratio metrics, along with an example.
 
@@ -114,7 +115,7 @@ metrics:
     owners:
       - support@getdbt.com
     type: ratio
-    type_params:0
+    type_params:
       numerator:
         name: distinct_purchasers
         filter: |
@@ -124,7 +125,7 @@ metrics:
         name: distinct_purchasers
 ```
 
-Note the `filter` and `alias` parameters for the metric referenced in the numerator.
+Note the `filter` and `alias` parameters for the metric referenced in the numerator. 
 - Use the `filter` parameter to apply a filter to the metric it's attached to. 
 - The `alias` parameter is used to avoid naming conflicts in the rendered SQL queries when the same metric is used with different filters. 
 - If there are no naming conflicts, the `alias` parameter can be left out.
