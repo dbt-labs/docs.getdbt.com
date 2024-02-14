@@ -95,7 +95,7 @@ To set environment variables in the dbt Cloud CLI for your dbt project:
 ## Use the dbt Cloud CLI
 
 - The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your dbt Cloud configuration details.
-- You can run multiple different invocations or commands in parallel. Note, that you're unable to run the same dbt commands in parallel. (For example, `dbt build` in parallel isn't supported). 
+- You can run multiple different invocations or commands in parallel. For example, `dbt build` and `dbt parse`.  Note, that you're unable to run the same dbt commands in parallel. For example, running `dbt build` at the same time isn't supported.
 - It allows you to automatically defer build artifacts to your Cloud project's production environment.
 - It also supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
