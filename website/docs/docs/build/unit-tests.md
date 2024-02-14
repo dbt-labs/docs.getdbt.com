@@ -9,9 +9,9 @@ keywords:
 ---
 :::note closed beta
 
-Support for unit testing dbt models is available to dbt Cloud customers who have selected [**Keep on latest version**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). This is currently in closed beta, starting with select customers, and rolling out to wider availability through February and March.
+Support for unit testing dbt models is available to dbt Cloud customers who have chosen to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). This is currently in closed beta, starting with select customers and rolling out to wider availability through February and March.
 
-For users of dbt Core, unit tests will be included in v1.8, planned for late April 2024. The v1.8.0-b1 release of `dbt-core` & dbt Labs-maintained adapters is planned for February 28.
+For dbt Core, unit tests will be available in v1.8, planned for late April 2024. The v1.8.0-b1 release of `dbt-core` & dbt Labs-maintained adapters is planned for February 28.
 
 :::
 
