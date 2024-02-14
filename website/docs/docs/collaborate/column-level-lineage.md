@@ -41,6 +41,10 @@ When exploring your data products, navigating column lineage allows analytics en
 
 ## Caveats
 
+Following are the CLL caveats/limitations. 
+
+### SQL parsing
+
 Column-level lineage relies on SQL parsing. Errors can occur when parsing fails or a column's origin is unknown (like with JSON unpacking, lateral joins, and so on). In these cases, lineage may be incomplete and dbt Cloud will provide a warning about it in the column lineage. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-parsing-error-pill.png" title="Example of warning in the full lineage graph"/>
@@ -54,3 +58,9 @@ Possible error cases are:
 - **Parsing error** &mdash; Error occurs when the SQL is ambiguous or too complex for parsing. An example of ambiguous parsing scenarios are _complex_ lateral joins.
 - **Python error** &mdash; Error occurs when a Python model is used within the lineage. Due to the nature of Python models, it's not possible to parse and determine the lineage.
 - **Unknown error** &mdash; Error occurs when the lineage can't be determined for an unknown reason. An example of this would be if a dbt best practice is not being followed, like using hardcoded table names instead of `ref` statements.
+
+### Data platform support
+
+CLL works with the dbt Cloud supported warehouses, including but not limited to Snowflake, BigQuery, Redshift, and Databricks (Unity Catalog). 
+
+CLL doesn’t currently support the Hive metastore version of Databricks, Apache Spark, Starburst/Trino, or Microsoft Fabric. Coming soon. 
