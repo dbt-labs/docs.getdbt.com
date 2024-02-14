@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/docs/cloud/about-cloud/regions-ip-addresses",
-      "destination": "/docs/cloud/about-cloud/accesss-regions-ip-addresses",
+      "destination": "/docs/cloud/about-cloud/access-regions-ip-addresses",
       "permanent": true
     },
     {
