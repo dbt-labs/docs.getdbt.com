@@ -56,7 +56,7 @@ unit_tests:
 ### About writing unit tests
 
 Unit tests are currently limited to testing SQL models and only models in your current project. When writing your unit tests, keep the following in mind:
-- If your model has multiple versions, be default the unit test will run on *all* versions of your model. To specify version(s) of your model to unit test, `include` or `exclude` the desired versions in your model versions config:
+- If your model has multiple versions, the default unit test will run on *all* versions of your model. To specify version(s) of your model to unit test, use `include` or `exclude` for the desired versions in your model versions config:
 
 ```yaml
 
