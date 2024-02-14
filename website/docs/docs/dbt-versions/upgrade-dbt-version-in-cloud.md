@@ -19,7 +19,7 @@ You can upgrade to **Keep on latest version** no matter which version of dbt you
 
 :::tip Interested? Let us know!
 
-Currently, this feature is available in beta for select customers, rolling out to wider availability through February and March. Are you interested in getting early access? Please contact your account team to join!
+This feature is available in beta for select customers, rolling out to wider availability through February and March. If you're interested in early access, please contact your account team to join!
 
 :::
 
