@@ -141,8 +141,8 @@ Alternatively, use `dbt build` to, in lineage order:
 
 Now you’re ready to run this unit test. You have a couple of options for commands depending on how specific you want to be: 
 
-- `dbt test —-select dim_customers` runs _all_ of the tests on `dim_customers`.
-- `dbt test —-select "dim_customers,test_type:unit"` runs all of the _unit_ tests on `dim_customers`.
+- `dbt test --select dim_customers` runs _all_ of the tests on `dim_customers`.
+- `dbt test --select "dim_customers,test_type:unit"` runs all of the _unit_ tests on `dim_customers`.
 - `dbt test —-select test_is_valid_email_address` runs the test named `test_is_valid_email_address`.
 
 ```bash
