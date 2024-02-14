@@ -70,7 +70,7 @@ It's possible to force package resolution to rerun, even if the `packages` confi
 
 ## Add specific packages
 
-You can use the `dbt deps` command to add or update an existing package configuration &mdash; no need to remember the exact syntax for package configurations. 
+The `dbt deps` command can add or update an existing package configuration &mdash; no need to remember the exact syntax for package configurations. 
 
 For Hub packages (default), which are the easiest to install:
 
