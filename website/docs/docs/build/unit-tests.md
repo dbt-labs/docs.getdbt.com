@@ -1,7 +1,7 @@
 ---
 title: "Unit tests"
 sidebar_label: "Unit tests"
-description: "Read this tutorial to learn how to use unit tests on your SQL models."
+description: "Learn how to use unit tests on your SQL models."
 search_weight: "heavy"
 id: "unit-tests"
 keywords:
