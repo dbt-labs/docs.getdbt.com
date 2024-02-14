@@ -15,7 +15,7 @@ It is available now as an alpha feature for dbt Core v1.8 users.
 
 :::
 
-Historically, the test coverage capabilities of dbt were limited to [“data” tests](/docs/build/data-tests) &dash; testing the quality of input data or the shape of the resulting datasets &mdash; that could only be executed _after_ a model had been built. 
+Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ a building a model. 
 
 Now, we are introducing a new type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
