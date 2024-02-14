@@ -6,7 +6,7 @@ datatype: test
 ---
 
 
-Unit tests validate your SQL modeling logic on a small set of static inputs before you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and code reliability.
+Unit tests validate your SQL modeling logic on a small set of static inputs before you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and reliability of code.
 
 To run only your unit tests, use the command:
 `dbt test --select test_type:unit`
