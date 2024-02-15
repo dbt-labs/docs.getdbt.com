@@ -2,7 +2,7 @@
 title: "New: Trigger on job completion"
 description: "February 2024: Native support now available in dbt Cloud for triggering deploy jobs when other deploy jobs finish."
 sidebar_label: "New: Trigger on job completion"
-sidebar_position: 05
+sidebar_position: 07
 tags: [Feb-2024]
 date: 2024-02-15
 ---
