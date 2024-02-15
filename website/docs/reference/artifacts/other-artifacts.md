@@ -44,3 +44,12 @@ It includes that information at two separate points in time:
 2. `with_test_edges` &mdash; after test edges have been added.
 
 Each of those points in time contains the `name` and `type` of each node and `succ` contains the keys of its child nodes.
+
+### semantic_manifest.json
+
+The [`semantic_manifest.json`](/docs/dbt-cloud-apis/sl-manifest) file is useful as an internal interface between `dbt-core` and MetricFlow. As such, it functions as a behind-the-scenes bridge for interaction between the two systems. You can find all of the `semantic_manifest.json` information in the [`manifest.json`](/reference/artifacts/manifest-json).
+
+There are two main reasons why `semantic_manifest.json` exists alongside `manifest.json`:
+
+- Deserialization: `dbt-core` and MetricFlow use different libraries for handling data serialization.
+- Efficiency and performance: MetricFlow and the dbt Semantic Layer need specific semantic details from the manifest. This means by trimming down the information into `semantic_manifest.json`, the process becomes more efficient and enables quicker data handling between `dbt-core` and MetricFlow.
