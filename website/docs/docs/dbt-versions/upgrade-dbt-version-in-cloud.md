@@ -1,17 +1,28 @@
 ---
-title: "Upgrade Core version in Cloud"
-id: "upgrade-core-in-cloud"
+title: "Upgrade dbt version in Cloud"
+id: "upgrade-dbt-version-in-cloud"
 ---
 
 In dbt Cloud, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-environments) are configured to use a specific version of dbt Core. The version can be upgraded at any time.
 
 ## Environments
 
-Navigate to the settings page of an environment, then click **edit**. Click the **dbt Version** dropdown bar and make your selection. From this list, you can select an available version of Core to associate with this environment.
+Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a previous release of dbt Core or [Keep on latest version](#keep-on-latest-version). Be sure to save your changes before navigating away.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/Environment-settings.png" title="Settings of a dbt Cloud environment"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
-Be sure to save your changes before navigating away.
+### Keep on latest version <Lifecycle status='beta' />
+
+By choosing to **Keep on latest version**, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades for you, as part of testing and redeploying the dbt Cloud SaaS application.
+
+You can upgrade to **Keep on latest version** no matter which version of dbt you currently have selected. As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
+
+:::tip Interested? Let us know!
+
+This feature is available in beta for select customers, rolling out to wider availability through February and March. If you're interested in early access, please contact your account team to join!
+
+:::
+
 
 ### Override dbt version
 
@@ -68,13 +79,13 @@ For more on version support and future releases, see [Understanding dbt Core ver
 
 #### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/core-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-core-in-cloud#upgrading-legacy-versions-under-10).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/core-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-dbt-version-in-cloud#upgrading-legacy-versions-under-10).
 
 ## Upgrading legacy versions under 1.0
 
-You can use the following sections to successfully upgrade your version of dbt Core in dbt Cloud. We recommend everyone upgrade to the most recent version of dbt Core, as new versions contain enhancements, bug fixes, and updated security features. We document which [versions of dbt Core are currently supported](/docs/dbt-versions/upgrade-core-in-cloud#supported-versions).
+You can use the following sections to successfully upgrade your version of dbt Core in dbt Cloud. We recommend everyone upgrade to the most recent version of dbt Core, as new versions contain enhancements, bug fixes, and updated security features. We document which [versions of dbt Core are currently supported](/docs/dbt-versions/upgrade-dbt-version-in-cloud#supported-versions).
 
-There aren't many breaking changes between minor versions, and it may be the case that you don't need to change any code to upgrade to a newer version of dbt in dbt Cloud. There are only breaking changes between minor versions of dbt before dbt 1.0. Minor releases starting with dbt 1.0, do not have breaking code changes. If there are no code changes needed, all you have to do is [change the settings](/docs/dbt-versions/upgrade-core-in-cloud#upgrading-to-the-latest-version-of-dbt-in-cloud) in your environment or job to run a more recent version of dbt.
+There aren't many breaking changes between minor versions, and it may be the case that you don't need to change any code to upgrade to a newer version of dbt in dbt Cloud. There are only breaking changes between minor versions of dbt before dbt 1.0. Minor releases starting with dbt 1.0, do not have breaking code changes. If there are no code changes needed, all you have to do is [change the settings](/docs/dbt-versions/upgrade-dbt-version-in-cloud#upgrading-to-the-latest-version-of-dbt-in-cloud) in your environment or job to run a more recent version of dbt.
 
 #### Changes between minor versions of dbt that will affect your project
 
@@ -290,7 +301,7 @@ If you believe your project might be affected, read more details in the migratio
 
 
 #### Testing your changes before upgrading
-Once you know what code changes you'll need to make, you can start implementing them. We recommend you create a separate dbt project, **Upgrade Project**, to test your changes before making them live in your main dbt project. In your **Upgrade Project**, connect to the same repository you use for your production project. This time, set the development environment [settings](/docs/dbt-versions/upgrade-core-in-cloud) to run the latest version of dbt Core. Next, check out a branch `dbt-version-upgrade`, make the appropriate updates to your project, and verify your dbt project compiles and runs with the new version in the IDE. If upgrading directly to the latest version results in too many issues, try testing your project iteratively on successive minor versions. There are years of development and a few breaking changes between distant versions of dbt Core (for example, 0.14 --> 1.0). The likelihood of experiencing problems upgrading between successive minor versions is much lower, which is why upgrading regularly is recommended.
+Once you know what code changes you'll need to make, you can start implementing them. We recommend you create a separate dbt project, **Upgrade Project**, to test your changes before making them live in your main dbt project. In your **Upgrade Project**, connect to the same repository you use for your production project. This time, set the development environment [settings](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to run the latest version of dbt Core. Next, check out a branch `dbt-version-upgrade`, make the appropriate updates to your project, and verify your dbt project compiles and runs with the new version in the IDE. If upgrading directly to the latest version results in too many issues, try testing your project iteratively on successive minor versions. There are years of development and a few breaking changes between distant versions of dbt Core (for example, 0.14 --> 1.0). The likelihood of experiencing problems upgrading between successive minor versions is much lower, which is why upgrading regularly is recommended.
 
 Once you have your project compiling and running on the latest version of dbt in the development environment for your `dbt-version-upgrade` branch, try replicating one of your production jobs to run off your branch's code. You can do this by creating a new deployment environment for testing, setting the custom branch to 'ON' and referencing your `dbt-version-upgrade` branch. You'll also need to set the dbt version in this environment to the latest dbt Core version.
 
