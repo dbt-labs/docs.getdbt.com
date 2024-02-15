@@ -84,6 +84,10 @@ The following code represents the default macro's logic:
 {%- endmacro %}
 ```
 
+import WhitespaceControl from '/snippets/_whitespace-control.md';
+
+<WhitespaceControl/>
+
 ## Changing the way dbt generates a schema name
 
 If your dbt project has a custom macro called `generate_schema_name`, dbt will use it instead of the default macro. This allows you to customize the name generation according to your needs.
@@ -92,8 +96,7 @@ To customize this macro, copy the example code in the section [How does dbt gene
 
 Be careful. dbt will ignore any custom `generate_schema_name` macros included in installed packages.
 
-<details>
-<summary>❗️ Warning: Don't replace <code>default_schema</code> in the macro.</summary>
+<expandable alt_header="❗️ Warning: Don't replace `default_schema` in the macro">
 
 If you're modifying how dbt generates schema names, don't just replace ```{{ default_schema }}_{{ custom_schema_name | trim }}``` with ```{{ custom_schema_name | trim }}``` in the ```generate_schema_name``` macro.
 
@@ -119,7 +122,7 @@ If you remove ```{{ default_schema }}```, it causes developers to override each 
 
 ```
 
-</details>
+</expandable>
 
 ### generate_schema_name arguments
 
