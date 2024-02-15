@@ -30,7 +30,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 
 ## Where are artifacts produced?
 
-By default, artifacts are written to the `/target` directory of your dbt project, and this location is configurable via the [`target-path`](/reference/project-configs/target-path#configuration).
+By default, artifacts are written to the `/target` directory of your dbt project. You can configure the location using the [`target-path`](/reference/project-configs/target-path#configuration).
 
 ## Common metadata
 
