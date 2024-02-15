@@ -433,7 +433,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name: "food_order_amount"}]
-    groupBy: [{name: "metric_time}, {name: "customer__customer_type"}]
+    groupBy: [{name: "metric_time"}, {name: "customer__customer_type"}]
   ) {
     queryId
   }
@@ -463,7 +463,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name: "metric_time, grain: MONTH}, {name: "customer__customer_type"}]
+    groupBy: [{name: "metric_time", grain: MONTH}, {name: "customer__customer_type"}]
   ) {
     queryId
   }
@@ -578,7 +578,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain: MONTH}, {name: "customer__customer_type"}]
+    groupBy: [{name:"metric_time", grain: MONTH}, {name: "customer__customer_type"}]
     limit: 10 
   ) {
     queryId
@@ -595,7 +595,7 @@ mutation {
   compileSql(
     environmentId: BigInt!
     metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain: MONTH}, {name:"customer__customer_type"}]
+    groupBy: [{name:"metric_time", grain: MONTH}, {name:"customer__customer_type"}]
   ) {
     sql
   }
