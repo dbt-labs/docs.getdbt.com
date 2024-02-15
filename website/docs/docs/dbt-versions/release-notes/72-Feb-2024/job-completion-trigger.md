@@ -7,7 +7,7 @@ tags: [Feb-2024]
 date: 2024-02-15
 ---
 
-# New: Trigger on job completion <Lifecycle status={['team', 'enterprise']} />
+# New: Trigger on job completion <Lifecycle status="team,enterprise" />
 
 Now available for dbt Cloud Team and Enterprise plans is the ability to trigger deploy jobs when other deploy jobs complete. You can enable this feature [in the UI](/docs/deploy/deploy-jobs) with the  **Run when another job finishes** option or with the [Create Job API endpoint](/dbt-cloud/api-v2#/operations/Create%20Job). 
 
