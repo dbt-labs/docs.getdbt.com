@@ -99,3 +99,44 @@ Use the following dbt commands in [dbt Core](/docs/core/installation-overview) a
 
 </Tabs>
 </VersionBlock>
+
+### Execute dbt commands
+
+When you're managing your dbt project, it's important to understand that dbt commands are categorized into the following types:
+
+- **Write commands** &mdash; Commands such as `dbt build` and `dbt run` that perform write operations to your data platform.These commands are limited to one invocation at any given time (1 parallelism). This is to prevent any potential conflicts, such as overwriting the same table in your data platform, at the same time.
+
+- **Read commands** &mdash; Commands such as `dbt parse` and `dbt source snapshot-freshness` that don't write to your platform. These commands aren't limited to one invocation at any given time and you can run multiple invocations in parallel.
+
+To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel):
+
+- For example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation) at the same time.
+- For example, you can't run `dbt build` and `dbt run` at the same time.
+
+This is because it combines commands that interact differently with your data platform and avoids any potential conflicts.
+
+<expandable alt_header="Parallelizable commands table">
+
+The following table highlights write or read commands and whether you can execute them in parallel with each other. Note that some dbt commands aren't listed in the following table since they're not relevant to the parallelization of dbt commands.
+
+| Command          | Type       | Parallel execution |
+|------------------|------------|--------------------|
+| `build`          | Write      | No                 |
+| `clone`          | Write      | No                 |
+| `retry`          | Write      | No                 |
+| `run`            | Write      | No                 |
+| `run-operation`  | Write      | No                 |
+| `seed`           | Write      | No                 |
+| `snapshot`       | Write      | No                 |
+| `clean`          | Non-Write  | Yes                |
+| `compile`        | Non-Write  | Yes                |
+| `debug`          | Non-Write  | Yes                |
+| `deps`           | Non-Write  | Yes                |
+| `docs`           | Non-Write  | Yes                |
+| `init`           | Non-Write  | Yes                |
+| `list`           | Non-Write  | Yes                |
+| `parse`          | Non-Write  | Yes                |
+| `show`           | Non-Write  | Yes                |
+| `source`         | Non-Write  | Yes                |
+| `test`           | Non-Write  | Yes                |
+</expandable>
