@@ -99,7 +99,7 @@ You can also search with [selectors](/reference/node-selection/methods) within t
 
 </VersionBlock>
 
-When searching with selector methods, you can also use [graph operators](/reference/node-selection/graph-operators). For example, `+orders` returns all of the nodes upstream of `orders` and `orders+1` returns just the nodes immediately downstream (the children) of `orders`.
+When searching with selector methods, you can also use [graph operators](/reference/node-selection/graph-operators). For example, `+orders` returns all the upstream nodes of `orders` and `orders+1` returns just the nodes immediately downstream (the children) of `orders`.
 
 You can use multiple selector methods in your search query with [set operators](/reference/node-selection/set-operators). A space implies a union set operator and a comma for an intersection. For example:
 - `resource_type:metric,tag:nightly` &mdash; Returns metrics with the tag `nightly`
