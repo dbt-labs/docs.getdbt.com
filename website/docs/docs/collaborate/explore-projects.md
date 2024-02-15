@@ -84,7 +84,7 @@ You can then refine the search results using the filters in the panel on the rig
 
 ### Search with selectors 
 
-You can also search with [selectors](/reference/node-selection/methods) within the full-screen lineage graph using the input bar in the upper-right hand corner. Below are the selectors currently available in dbt Explorer:   
+You can search with [selectors](/reference/node-selection/methods) within the full lineage graph using the search bar. Below are the selectors currently available in dbt Explorer:   
 
 - `fqn:` &mdash; Find resources by [file or fully qualified name](/reference/node-selection/methods#the-fqn-method). This selector is the search bar's default. If you want to use the default, it's unnecessary to add `fqn:` before the search term.
 - `source:` &mdash; Find resources by a specified [source](/reference/node-selection/methods#the-source-method).
