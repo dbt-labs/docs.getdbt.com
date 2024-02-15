@@ -82,7 +82,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 With your repo recloned, you can add, edit, and sync files with your repo.
 
-### Set environment variables
+## Set environment variables
 
 To set environment variables in the dbt Cloud CLI for your dbt project:
 
@@ -94,8 +94,7 @@ To set environment variables in the dbt Cloud CLI for your dbt project:
 
 ## Use the dbt Cloud CLI
 
-- The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your dbt Cloud configuration details.
-- You can run multiple different invocations or commands in parallel. For example, `dbt build` and `dbt parse`.  Note, that you're unable to run the same dbt commands in parallel. For example, running `dbt build` at the same time isn't supported.
+The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your dbt Cloud configuration details.
 - It allows you to automatically defer build artifacts to your Cloud project's production environment.
 - It also supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
@@ -105,3 +104,13 @@ As a tip, most command-line tools have a `--help` flag to show available command
 - `dbt --help`: Lists the commands available for dbt<br />
 - `dbt run --help`: Lists the flags available for the `run` command
 :::
+
+### Run dbt commands
+
+When you're managing your dbt project, it's important to understand that dbt commands are categorized into the following types:
+
+- **Data platform write commands** &mdash; Commands such as `dbt build` and `dbt run` that perform write operations to your data platform. These commands are limited to one invocation at any given time. This is to prevent any potential conflicts, such as overwriting the same table in your data platform, at the same time. For example, you can't run `dbt build` and `dbt run` at the same time.
+
+- **Data platform read commands** &mdash; Commands such as `dbt parse` and `dbt source snapshot-freshness` that don't write to your platform. These commands aren't limited to one invocation at any given time and you can run multiple invocations in parallel. For example, you can run `dbt parse` and `dbt source snapshot-freshness` at the same time.
+
+To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel). For example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation). This is because it combines commands that interact differently with your data platform and avoids any potential conflicts.
