@@ -75,7 +75,7 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
 - [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
-- [`list saved queries`)(#list-saved-queries) &mdash; Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query.
+- [`list saved queries`](#list-saved-queries) &mdash; Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query.
 - [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
 
 <!--below commands aren't supported in dbt cloud yet

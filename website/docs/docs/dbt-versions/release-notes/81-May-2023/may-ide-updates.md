@@ -26,7 +26,7 @@ Stay up-to-date with [IDE-related changes](/tags/ide).
 - Performance-related upgrades:
     - Reduced cold start time by 60+%
     - Improved render time of modals in the IDE by 98%
-    - Improved IDE performance with dbt Core v1.5+ (faster and snappier – highly encourage you to [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud)!)
+    - Improved IDE performance with dbt Core v1.5+ (faster and snappier – highly encourage you to [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud)!)
 - Upgraded sqlfmt (which powers the Format button) to 0.18.0
 - Updated Build button to change menu options based on file/model type (snapshot, macro, etc.)
 - Display message to disable adblocker for file contents error
