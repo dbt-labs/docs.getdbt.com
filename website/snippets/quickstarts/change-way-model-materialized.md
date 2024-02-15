@@ -55,7 +55,7 @@ By default, everything gets created as a view. You can override that at the dire
     </File>
 
 4. Enter the `dbt run` command. Your model, customers should now build as a view. 
-   - BigQuery users should run `dbt run --full-refresh` (mentioned in step 5) to ensure the materialization changes are fully applied
+   - BigQuery users need to run `dbt run --full-refresh` instead of `dbt run` to full apply materialization changes.
 5. Enter the `dbt run --full-refresh` command for this to take effect in your warehouse.
 
 ### FAQs
