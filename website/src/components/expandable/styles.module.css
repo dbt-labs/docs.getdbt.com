@@ -1,0 +1,86 @@
+:local(.link) :local(.headerText) {
+    content: '';
+    color: black; /* Black text in normal mode */
+    text-decoration: none;
+    transition: text-decoration 0.3s; /* Smooth transition */
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+:local(.link:hover) :local(.headerText),
+:local(.link:focus) :local(.headerText) {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+:local(.toggle)::before {
+    content: '';
+    display: inline-block;
+    border: solid black; /* Arrow color */
+    border-width: 0 2px 2px 0; /* Adjust for 'boldness' */
+    padding: 3px; /* Adjust size */
+    transform: rotate(45deg); /* Initial right-pointing arrow */
+    transition: transform 0.3s; /* Smooth transition for toggle icon */
+    margin-right: 8px;
+}
+
+:local(.toggleDown)::before {
+    transform: rotate(225deg); /* Downward arrow */
+}
+
+:local(.toggleRight)::before {
+    transform: rotate(315deg); /* Right-pointing arrow */
+}
+
+:local(.toggle)::before {
+    border-color: rgb(253, 153, 83); /* Orange arrow color in light mode */
+}
+
+/* Adjusting for Light and Dark Modes */
+:local(html[data-theme='dark'] .link), :local(html[data-theme='dark'] .headerText) {
+    color: white; /* White text in dark mode */
+}
+
+:local(html[data-theme='dark'] .toggle)::before {
+    border-color: white; /* White arrow in dark mode */
+    border-color: rgb(253, 153, 83);
+}
+
+.expandableContainer :local(.body) {
+    margin-top: 10px;
+    margin-left: .5em;
+    padding: 10px;
+    background-color: transparent;
+}
+
+:local(html[data-theme='dark'] .link),
+:local(html[data-theme='dark'] .headerText) {
+    color: white; /* White text in dark mode */
+}
+
+:local(.body > p:last-child) {
+    margin-bottom: 0px;
+    
+}
+
+:local(.link)::after {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url('/img/copy.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0; /* Start with icon hidden */
+    transition: opacity 0.3s ease-in-out;
+    margin-left: 8px;
+  }
+
+  :local(.link:not(.toggleOpen)):hover::after {
+    opacity: 1; /* Only show icon on hover when toggle is not open */
+    }
+
+.expandableContainer {
+    margin-bottom: 10px; /* Adjust this value as needed to create space */
+  }
+  
