@@ -34,4 +34,7 @@ After migration, if you completed all the [Pre-migration checklist](#pre-migrati
 
 You have the option to log in to dbt Cloud at a different URL:
  * If you were previously logging in at `cloud.getdbt.com`, you should instead plan to login at `us1.dbt.com`. The original URL will still work, but you’ll have to click through to be redirected upon login.
- * You may also log in directly with your account’s unique [access URL](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account).
+ * You may also log in directly with your account’s unique [access URL](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account)
+
+:::info Login with GitHub
+Users who previously utilized the "Login with GitHub" functionality will no longer be able to use this method to login to dbt Cloud after migration. To continue accessing your account, you can use your existing username and password.
