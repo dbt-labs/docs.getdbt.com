@@ -46,7 +46,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
-5. (optional) Options in the **Advanced settings** section: 
+5. (Optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
     - **Run timeout** &mdash; Cancel the deploy job if the run time exceeds the timeout value. 
