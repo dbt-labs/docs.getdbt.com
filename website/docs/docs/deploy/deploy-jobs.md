@@ -106,9 +106,12 @@ Here are examples of cron job schedules. The dbt Cloud job scheduler supports us
 
 ### Trigger on job completion  <Lifecycle status="team,enterprise" /> 
 
-To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream job so that when it completes it will trigger your job. You can also set this up through the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job). You must have access (permissions) to the upstream project and job to configure the trigger.  
+To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream (parent) job so that when it completes it will trigger your job. You can also use the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this.
+
+It's possible to set up a configuration where an upstream job triggers multiple downstream (child) jobs and, also, to trigger jobs that are in other projects. You must have access (permissions) to the project and job to configure the trigger. 
 
 For jobs that are triggered to run by another job, a link to the upstream job run is available from your [job's run details](/docs/deploy/run-visibility#job-run-details).
+
 
 ## Related docs
 
