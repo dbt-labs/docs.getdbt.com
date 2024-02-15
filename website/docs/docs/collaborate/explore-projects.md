@@ -80,7 +80,7 @@ With the search bar (on the upper left corner of the page or in a lineage graph)
 ### Search with keywords
 When searching with keywords, dbt Explorer searches through your resource metadata, such as resource name, and returns any matches. When searching for an exact column name, the results show all relational nodes containing that column in their schemas. If there's a match, a notice in the search result indicates the resource contains the specified column.
 
-You can then refine the search results using the filters in the panel on the right side of the page. Use this panel to select specific resource types or tags to apply. You can filter on model properties (access or materialization type) under the **Models** option. 
+You can then refine the search results using the filters in the panel on the right-hand side of the page. Use this panel to select specific resource types or tags to apply. You can filter on model properties (access or materialization type) under the **Models** option. 
 
 ### Search with selectors 
 
