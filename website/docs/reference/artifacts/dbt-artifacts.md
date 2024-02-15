@@ -19,7 +19,7 @@ They could also be used to:
 
 dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in dbt v0.19.0, we are committing to a stable and sustainable way of versioning, documenting, and validating dbt artifacts.
 
-## When are artifacts produced?
+### When are artifacts produced? <Lifecycle status="team,enterprise"/>
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [semantic manifest](/docs/dbt-cloud-apis/sl-manifest): produced whenever your dbt project is parsed
