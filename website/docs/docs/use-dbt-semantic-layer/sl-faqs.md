@@ -224,7 +224,9 @@ Yes, dbt Cloud [Enterprise or Team](https://www.getdbt.com/pricing) plan custome
 
 <expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities in dbt Core?">
 
-The dbt Semantic Layer is proprietary to dbt Cloud, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a dbt Cloud plan. They can also query their semantic layer locally using the command line. However, they won't be able to use the [API](/docs/dbt-cloud-apis/sl-api-overview) or [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) to access metrics dynamically.
+The dbt Semantic Layer is proprietary to dbt Cloud, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a dbt Cloud plan.
+
+dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-cloud-apis/sl-api-overview) or [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) to access metrics dynamically.
 
 </expandable>
 
