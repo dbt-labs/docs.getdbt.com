@@ -201,3 +201,6 @@ Exports provide an integration path for tools that don't natively connect with t
 
 You can use exports to create a custom integration with tools such as PowerBI, and more.
 </detailsToggle>
+
+## Related docs
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

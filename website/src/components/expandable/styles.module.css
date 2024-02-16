@@ -55,7 +55,7 @@
 
 :local(html[data-theme='dark'] .link),
 :local(html[data-theme='dark'] .headerText) {
-    color: rgba(255, 255, 255, 0.763); /* White text in dark mode */
+    color: rgba(255, 255, 255, 0.801); /* White text in dark mode */
 }
 
 :local(.body > p:last-child) {
