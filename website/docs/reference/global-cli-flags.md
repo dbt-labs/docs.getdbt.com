@@ -9,20 +9,6 @@ As of v1.0, the vast majority of global CLI flags map to [global configs](/refer
 
 The `--version` and `--record-timing-info` flags remain available to the CLI only.
 
-## Version
-
-The `--version` flag returns information about the currently installed version of dbt.
-
-<File name='Usage'>
-
-```text
-$ dbt --version
-installed version: 0.15.1
-   latest version: 0.15.1
-
-Up to date!
-```
-
 </File>
 
 ## Record timing info
