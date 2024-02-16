@@ -37,4 +37,4 @@ You have the option to log in to dbt Cloud at a different URL:
  * You may also log in directly with your account’s unique [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses#accessing-your-account)
 
 :::info Login with GitHub
-Users who previously utilized the "Login with GitHub" functionality will no longer be able to use this method to login to dbt Cloud after migration. To continue accessing your account, you can use your existing email and password.
+Users who previously used the "Login with GitHub" functionality will no longer be able to use this method to login to dbt Cloud after migration. To continue accessing your account, you can use your existing email and password.
