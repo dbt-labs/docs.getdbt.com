@@ -9,7 +9,6 @@ As of v1.0, the vast majority of global CLI flags map to [global configs](/refer
 
 The `--version` and `--record-timing-info` flags remain available to the CLI only.
 
-</File>
 
 ## Record timing info
 
