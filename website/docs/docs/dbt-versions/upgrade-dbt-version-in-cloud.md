@@ -30,7 +30,7 @@ Configure your project to use a different dbt Core version than what's configure
 
 1. From the gear menu, select **Profile settings**. 
 1. Choose **Credentials** from the sidebar and select a project. This opens a side panel.
-1. In the side panel, click **Edit** and scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**. When saving, dbt Cloud automatically creates a `DBT_DEVELOP_CORE_VERSION` environment variable for this user-level override and lists it in the **Environment variables** section. 
+1. In the side panel, click **Edit** and scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**.
 
   An example of overriding the configured version with 1.7 for the selected project:
 
@@ -41,9 +41,6 @@ Configure your project to use a different dbt Core version than what's configure
   Example output of a successful `dbt build` run: 
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-verify-overridden-version.png" title="Example output showing version 1.7 being used, not 1.5"/>
-
-1. If you upgrade the version for your development environment, make sure to delete the `DBT_DEVELOP_CORE_VERSION` environment variable from the **Environment variables** section in your project's credentials.
-
 
 ## Jobs
 
