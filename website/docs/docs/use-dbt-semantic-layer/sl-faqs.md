@@ -11,9 +11,9 @@ The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) is a dbt Cloud off
 
 The dbt Semantic Layer offers:
 
-- Dynamic SQL generation to compute metrics,
-- Use [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics and dimensions,
-- First-class [integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) to query those centralized metrics in downstream tools.
+- Dynamic SQL generation to compute metrics
+- APIs to query metrics and dimensions
+- First-class [integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) to query those centralized metrics in downstream tools
 
 The dbt Semantic Layer is powered by MetricFlow, which is a source-available component.
 
@@ -237,12 +237,12 @@ If you're interested in the this type of implementation, please reach out to us 
 
 ## Implementation
 
-<expandable alt_header="Which ‘staging layer’ should the dbt Semantic Layer should talk to? Raw, staging, or marts?">
+<expandable alt_header="Which ‘staging layer’ should the dbt Semantic Layer talk to? Raw, staging, or marts?">
 
 We recommend to build your semantic layer on top of the [marts layer](/best-practices/how-we-structure/5-semantic-layer-marts), which represents the clean and transformed data from your dbt models.
 </expandable>
 
-<expandable alt_header="Should Semantic Layer credentials mirror those for production environments? Or should they be different?">
+<expandable alt_header="Should semantic layer credentials mirror those for production environments? Or should they be different?">
 
 Semantic layer credentials are different than the credentials you use to run dbt models. Specifically, we recommend a less privileged set of credentials since consumers are only reading data.
 </expandable>
