@@ -64,6 +64,31 @@ While the dbt Semantic Layer will work for both cases, it's best to allow Metric
 The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to the [Billing](/docs/cloud/billing#what-counts-as-a-queried-metric) to learn more about pricing.
 </expandable>
 
+## Availability
+
+<expandable alt_header="Do I need to be on a specific version of dbt to use dbt Semantic Layer?">
+
+Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+</expandable>
+
+<expandable alt_header="Does dbt Semantic Layer require a specific dbt Cloud plan?">
+
+Yes, dbt Cloud [Enterprise or Team](https://www.getdbt.com/pricing) plan customers can access the dbt Semantic Layer.
+</expandable>
+
+<expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities in dbt Core?">
+
+The dbt Semantic Layer is proprietary to dbt Cloud, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a dbt Cloud plan.
+
+dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-cloud-apis/sl-api-overview) or [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) to access metrics dynamically.
+
+</expandable>
+
+<expandable alt_header="Is there a solution or licensing path for an organization that doesn't use dbt for pipelining, but might like to implement the dbt Semantic Layer?">
+
+If you're interested in the this type of implementation, please reach out to us [here](https://www.getdbt.com/get-started).
+</expandable>
+
 ## How does the dbt Semantic Layer work?
 
 <expandable alt_header="Why is the dbt Semantic Layer better than using tables or dbt models to calculate  metrics?">
@@ -208,31 +233,6 @@ Yes, all of our interfaces or APIs expose metric descriptions, which you can sur
 Currently, the credentials you configure when setting up the dbt Semantic Layer are used for every request. Any physical access policies you have tied to your credentials will be respected.
 
 We are currently working on introducing more fine-grained access controls, including user-level access and group credentials, that enable flexible granular permissions.
-</expandable>
-
-## Availability
-
-<expandable alt_header="Do I need to be on a specific version of dbt to use dbt Semantic Layer?">
-
-Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-</expandable>
-
-<expandable alt_header="Does dbt Semantic Layer require a specific dbt Cloud plan?">
-
-Yes, dbt Cloud [Enterprise or Team](https://www.getdbt.com/pricing) plan customers can access the dbt Semantic Layer.
-</expandable>
-
-<expandable alt_header="Is there a way to leverage dbt Semantic Layer capabilities in dbt Core?">
-
-The dbt Semantic Layer is proprietary to dbt Cloud, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a dbt Cloud plan.
-
-dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-cloud-apis/sl-api-overview) or [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) to access metrics dynamically.
-
-</expandable>
-
-<expandable alt_header="Is there a solution or licensing path for an organization that doesn't use dbt for pipelining, but might like to implement the dbt Semantic Layer?">
-
-If you're interested in the this type of implementation, please reach out to us [here](https://www.getdbt.com/get-started).
 </expandable>
 
 ## Implementation
