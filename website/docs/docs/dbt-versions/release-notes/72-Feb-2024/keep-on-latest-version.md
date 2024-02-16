@@ -2,7 +2,7 @@
 title: "New: Keep on latest version"
 description: "February 2024: New setting, called Keep on latest version, that allows dbt Labs to handle version upgrades for you."
 sidebar_label: "New: Keep on latest version"
-sidebar_position: 06
+sidebar_position: 08
 tags: [Feb-2024]
 date: 2024-02-14
 ---
