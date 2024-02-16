@@ -173,7 +173,7 @@ Yes, while [entities](/docs/build/entities) must be defined under â€œentities,â€
 
 ## Available integrations
 
-<expandable alt_header="What analytics tool integration are supported today?">
+<expandable alt_header="What integrations are supported today?">
 
 There are a number of data applications have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, and Mode, among others.
 
