@@ -277,9 +277,17 @@ const sidebarSettings = {
                 "docs/build/python-models",
               ],
             },
+            {
+              type: "category",
+              label: "Tests",
+              link: { type: "doc", id: "docs/build/data-tests" },
+              items: [
+                "docs/build/data-tests",
+                "docs/build/unit-tests",
+              ],
+            },
             "docs/build/snapshots",
             "docs/build/seeds",
-            "docs/build/data-tests",
             "docs/build/jinja-macros",
             "docs/build/sources",
             "docs/build/exposures",
@@ -612,7 +620,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/core" },
       items: [
         "docs/dbt-versions/core",
-        "docs/dbt-versions/upgrade-core-in-cloud",
+        "docs/dbt-versions/upgrade-dbt-version-in-cloud",
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",
         {
@@ -811,7 +819,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "For tests",
+          label: "For data tests",
           items: [
             "reference/data-test-configs",
             "reference/resource-configs/fail_calc",
@@ -820,6 +828,13 @@ const sidebarSettings = {
             "reference/resource-configs/store_failures",
             "reference/resource-configs/store_failures_as",
             "reference/resource-configs/where",
+          ],
+        },
+        {
+          type: "category",
+          label: "For unit tests",
+          items: [
+            "reference/resource-properties/unit-tests",
           ],
         },
         {
@@ -903,6 +918,7 @@ const sidebarSettings = {
             "reference/commands/snapshot",
             "reference/commands/source",
             "reference/commands/test",
+            "reference/commands/version",
           ],
         },
         {

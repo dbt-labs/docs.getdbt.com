@@ -4,7 +4,7 @@ description: "Use exports to materialize tables to the data platform on a schedu
 sidebar_label: "Materialize with exports"
 ---
 
-# Materialize queries with exports <Lifecycle status='new'/>
+# Materialize queries with exports <Lifecycle status='new' />
 
 The exports feature in the dbt Semantic Layer enhances the [saved queries](/docs/build/saved-queries) by allowing you to materialize commonly used queries directly within your data platform.
 
@@ -18,7 +18,7 @@ Essentially, exports are like any other table in your data platform. They enable
 ## Prerequisites
 
 - You have a multi-tenant dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan. (Single-tenant is not supported at this time)
-- You are on [dbt version](/docs/dbt-versions/upgrade-core-in-cloud) 1.7 or newer.
+- You are on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.7 or newer.
 - You have the dbt Semantic Layer [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a dbt Cloud environment with a [Job scheduler](/docs/deploy/job-scheduler) enabled.
 
@@ -50,9 +50,9 @@ saved_queries:
     query_params:
       metrics:
         - YOUR_METRIC_NAME
-      group_bys:
+      group_by:
         - TimeDimension()
-        - ... # Additional group_bys
+        - ... # Additional group_by
       where:
         - ... # Additional where clauses
     exports:
