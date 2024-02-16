@@ -12,17 +12,15 @@ function Lightbox({ src, collapsed = false, alignment = "center", alt = undefine
     if (isHovered && !isScrolling) {
       timeoutId = setTimeout(() => {
         setExpandImage(true);
-      }, 200);
+      }, 200); // Delay for expanding image after hover
+    } else {
+      setExpandImage(false);
     }
     return () => clearTimeout(timeoutId);
   }, [isHovered, isScrolling]);
 
   const handleMouseEnter = () => {
-    setTimeout(() => {
-      if (!isScrolling) {
-        setIsHovered(true);
-      }
-    }, 300);
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
@@ -31,12 +29,12 @@ function Lightbox({ src, collapsed = false, alignment = "center", alt = undefine
   };
 
   const handleScroll = () => {
-    setIsScrolling(true);
-    setExpandImage(false);
-
-    setTimeout(() => {
-      setIsScrolling(false);
-    }, 300); // Delay to reset scrolling state
+    if (!isScrolling) {
+      setIsScrolling(true);
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, 200); // Delay to reset scrolling state
+    }
   };
 
   useEffect(() => {
@@ -68,12 +66,12 @@ function Lightbox({ src, collapsed = false, alignment = "center", alt = undefine
               alt={alt ? alt : title ? title : ''}
               title={title ? title : ''}
               src={imageCacheWrapper(src)}
-              style={expandImage ? { transform: 'scale(1.2)', transition: 'transform 0.5s ease', zIndex: '9999' } : {}}
+              style={expandImage ? { transform: 'scale(1.04)', transition: 'transform 0.3s ease' } : {}}
             />
           </a>
         </span>
         {title && (
-          <span className={styles.title}>{ title }</span>
+          <span className={styles.title}>{title}</span>
         )}
       </div>
     </>
