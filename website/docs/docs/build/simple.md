@@ -18,9 +18,10 @@ Simple metrics are metrics that directly reference a single measure, without any
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
 | `label` | The value that will be displayed in downstream tools. | Required |
 | `type_params` | The type parameters of the metric. | Required |
-| `measure` | The measure you're referencing. | Required |
-| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
-| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+| `measure` | A list of measure inputs | Required |
+| `measure:name` | The measure you're referencing. | Required |
+| `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
+| `mesure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for simple metrics, along with an example.
 
@@ -31,9 +32,10 @@ metrics:
     type: simple # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
-      measure: The measure you're referencing # Required
-        name: Name of your measure # Required
+      measure: 
+        name: The name of your measure # Required
         fill_nulls_with: Set value instead of null  (such as zero) # Optional
+        join_to_timespine: Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. #Optinal
 
 ```
 
@@ -54,8 +56,9 @@ If you've already defined the measure using the `create_metric: true` parameter,
       label: Count of customers
       type_params:
         measure: 
-          name: customers # The measure you're creating a proxy of.
-          fill_nulls_with: 0
+          name: customers # The measure you are creating a proxy of.
+          fill_nulls_with: 0 
+          join_to_timespine: true
     - name: large_orders
       description: "Order with order values over 20."
       type: SIMPLE
@@ -63,7 +66,6 @@ If you've already defined the measure using the `create_metric: true` parameter,
       type_params:
         measure: 
           name: orders
-          fill_nulls_with: 0
       filter: | # For any metric you can optionally include a filter on dimension values
         {{Dimension('customer__order_total_dim')}} >= 20
 ```

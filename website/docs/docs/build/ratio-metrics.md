@@ -21,7 +21,6 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 | `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  |
 | `filter` | Optional filter for the numerator or denominator. | Optional |
 | `alias` | Optional alias for the numerator or denominator. | Optional |
-| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for ratio metrics, along with an example.
 

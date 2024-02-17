@@ -22,7 +22,6 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `alias` | Optional alias for the metric that you can use in the expr. | Optional |
 | `filter` | Optional filter to apply to the metric. | Optional |
 | `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Optional |
-| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for derived metrics, along with an example.
 
