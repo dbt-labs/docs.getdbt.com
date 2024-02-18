@@ -6,16 +6,12 @@ id: access_token_error
 
 ---
 
-If you're seeing the below error when you try to run queries in the IDE, have no fear - we'll do our best to get you unstuck with the following steps! 
+If you're seeing a Database Error labelled `access_token` when you try to run queries in the IDE, your OAuth connection between Snowflake and dbt Cloud has expired and you need to reconnect the two tools.
 
- `access_token`
+To resolve the issue, complete the following steps:
 
-In order to resolve the issue, you'll want to:
-
-1. Go to you Profile (upper right corner of dbt Cloud)
+1. Go to your Profile settings page (accessible from the gear icon at the upper right corner of dbt Cloud)
 2. Click on the correct warehouse connection under "Credentials"
-3. Click "Connect Snowflake Account" green button in the "Development Credentials" section. This drives you through reauthentication through the SSO flow. 
+3. Click the green "Reconnect Snowflake Account" button in the "Development Credentials" section. This drives you through reauthentication through the SSO flow. 
 
-If you've tried the step above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
-
-
+If you've tried the step above and are still experiencing this behavior, reach out to the Support team at support@getdbt.com for further assistance.
