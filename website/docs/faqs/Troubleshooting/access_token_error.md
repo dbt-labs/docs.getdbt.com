@@ -14,8 +14,8 @@ Your Snowflake administrator can [configure](/docs/cloud/manage-access/set-up-sn
 
 To resolve the issue, complete the following steps:
 
-1. Go to your Profile settings page (accessible from the gear icon at the upper right corner of dbt Cloud)
-2. Click on the correct warehouse connection under "Credentials"
-3. Click the green "Reconnect Snowflake Account" button in the "Development Credentials" section. This drives you through reauthentication through the SSO flow. 
+1. Go to your **Profile settings** page (accessible from the gear icon at the upper right corner of dbt Cloud).
+2. Click on the correct warehouse connection under **Credentials**.
+3. Click the green **Reconnect Snowflake Account** button in the **Development Credentials** section. This drives you through reauthentication through the SSO flow. 
 
 If you've tried the step above and are still experiencing this behavior, reach out to the Support team at support@getdbt.com for further assistance.
