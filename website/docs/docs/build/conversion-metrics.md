@@ -16,7 +16,7 @@ Conversion metrics are different from [ratio metrics](/docs/build/ratio) because
 
 The specification for conversion metrics is as follows:
 
-| Parameter | Description | Required/Optional |
+| Parameter | Description | Type |
 | --- | --- | --- | --- |
 | `name` | The name of the metric. |  Required |
 | `description` | The description of the metric. | Optional |
