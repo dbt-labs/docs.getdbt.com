@@ -34,11 +34,11 @@ metrics:
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
       measure: 
-        name: The measure you are referencing # Required
-        fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
-        join_to_timespine: Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
-      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Cannot be used with grain_to_date
-      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with windo
+        name: The measure you are referencing. # Required
+        fill_nulls_with: Set the value in your metric definition instead of null (such as zero). # Optional
+        join_to_timespine: false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. It cannot be used with grain_to_date.
+      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. It cannot be used with window.
 
 ```
 
@@ -52,7 +52,7 @@ Cumulative metrics measure data over a given window and consider the window infi
 
 metrics:
   - name: cumulative_order_total
-    label: Cumulative Order total (All Time)    
+    label: Cumulative Order total (All-Time)    
     description: The cumulative value of all orders
     type: cumulative
     type_params:
@@ -61,7 +61,7 @@ metrics:
         fill_nulls_with: 0
   - name: cumulative_order_total_l1m
     label: Cumulative Order total (L1M)   
-    description: Trailing 1 month cumulative order amount
+    description: Trailing 1-month cumulative order amount
     type: cumulative
     type_params:
       measure: 
@@ -70,7 +70,7 @@ metrics:
       window: 1 month
   - name: cumulative_order_total_mtd
     label: Cumulative Order total (MTD)
-    description: The month to date value of all orders
+    description: The month-to-date value of all orders
     type: cumulative
     type_params:
       measure: 
@@ -184,14 +184,14 @@ We can compare the difference between a 1-month window and a monthly grain to da
 metrics:
   - name: cumulative_order_total_l1m  #For this metric, we use a window of 1 month 
     label: Cumulative Order total (L1M)
-    description: Trailing 1 month cumulative order amount
+    description: Trailing 1-month cumulative order amount
     type: cumulative
     type_params:
       measure: order_total
       window: 1 month
-  - name: cumulative_order_total_mtd   #For this metric, we use a monthly grain to date 
+  - name: cumulative_order_total_mtd   #For this metric, we use a monthly grain-to-date 
     label: Cumulative Order total (MTD)
-    description: The month to date value of all orders
+    description: The month-to-date value of all orders
     type: cumulative
     type_params:
       measure: order_total
