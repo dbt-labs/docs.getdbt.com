@@ -1,7 +1,7 @@
 ---
 title: I'm receiving an `access_token` error when trying to run queries in the IDE.
 description: "Reauthenticate warehouse when seeing `access_token` error"
-sidebar_label: '`access_token` error in the IDE'
+sidebar_label: 'Receiving `access_token` error in the IDE'
 id: access_token_error
 
 ---
