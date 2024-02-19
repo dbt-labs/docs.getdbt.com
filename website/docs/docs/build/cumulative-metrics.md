@@ -42,8 +42,6 @@ metrics:
 
 ```
 
-
-
 ## Cumulative metrics example
 
 Cumulative metrics measure data over a given window and consider the window infinite when no window parameter is passed, accumulating the data over all time.
@@ -250,5 +248,17 @@ limit 100;
 ```
 ## Limitations
 
-Cumulative metrics have the following limitations:
-- If you specify a window in your cumulatve metric definiton then you must include metric_time as a dimension in the query. This is because the accumulation window is based of of metric time.
+If you specify a `window` in your cumulatve metric definition, you must include `metric_time` as a dimension in the SQL query. This is because the accumulation window is based on metric time. For example,
+
+```sql
+select
+  count(distinct subq_3.distinct_users) as weekly_active_users,
+  subq_3.metric_time
+from (
+  select
+    subq_2.distinct_users as distinct_users,
+    subq_1.metric_time as metric_time
+group by
+  subq_3.metric_time
+```
+
