@@ -166,7 +166,7 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 
 
 ### Related docs
-
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
 - [Build your metrics](/docs/build/build-metrics-intro) for more info about MetricFlow and its components. 
 - [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
