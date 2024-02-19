@@ -6,7 +6,11 @@ id: access_token_error
 
 ---
 
-If you're seeing a Database Error labelled `access_token` when you try to run queries in the IDE, your OAuth connection between Snowflake and dbt Cloud has expired and you need to reconnect the two tools. The validity period for these refresh tokens is [configurable by your Snowflake administrator](/docs/cloud/manage-access/set-up-snowflake-oauth#create-a-security-integration), but cannot be longer than 90 days.
+If you're seeing a database error labeled `access_token` when you try to run queries in the IDE, this means your [OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) connection between Snowflake and dbt Cloud has expired.
+
+To fix this, you'll need to re-connect the two tools.
+
+Your Snowflake administrator can [configure](/docs/cloud/manage-access/set-up-snowflake-oauth#create-a-security-integration) the refresh tokens' validity, which has a maximum 90-day validity period.
 
 To resolve the issue, complete the following steps:
 
