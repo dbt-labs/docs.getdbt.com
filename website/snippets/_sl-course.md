@@ -1,5 +1,5 @@
 <details>
-<summary>📹 Discover dbt Semantic Layer on-demand video courses!</summary>
+<summary>📹 Learn about the dbt Semantic Layer with on-demand video courses!</summary>
 
 Explore our [dbt Semantic Layer on-demand course](https://courses.getdbt.com/courses/semantic-layer) to learn how to define and query metrics in your dbt project.
 
