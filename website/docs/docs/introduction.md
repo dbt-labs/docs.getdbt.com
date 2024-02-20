@@ -60,7 +60,7 @@ As a dbt user, your main focus will be on writing models (i.e. select queries) t
 | Load seed files| Often in analytics, raw values need to be mapped to a more readable value (for example, converting a country-code to a country name) or enriched with static or infrequently changing data. These data sources, known as seed files, can be saved as a CSV file in your `project` and loaded into your data warehouse using the `seed` command. Read more about [Seeds](/docs/build/seeds).|
 | Snapshot data | Often, records in a data source are mutable, in that they change over time. This can be difficult to handle in analytics if you want to reconstruct historic values. dbt provides a mechanism to snapshot raw data for a point in time, through use of [snapshots](/docs/build/snapshots).|
 
-### Related docs
+## Related docs
 
 - [Quickstarts for dbt](/guides)
 - [Best practice guides](/best-practices)

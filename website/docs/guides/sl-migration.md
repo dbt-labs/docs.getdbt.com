@@ -131,6 +131,7 @@ If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in
 
 ### Related docs 
 
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [MetricFlow quickstart guide](/docs/build/sl-getting-started)
 - [Example dbt project](https://github.com/dbt-labs/jaffle-sl-template)
 - [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
