@@ -50,6 +50,8 @@ If there is an available run slot and there isn't an actively running instance o
 
 Together, **Wait time**, including jitter time, plus **Prep time** is the total time a run spends in the queue (or **Time in queue**). 
 
+**Prep time**, including jitter time, is the total time a run spends in the queue (or **Time in queue**). 
+
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
 ### Treatment of CI jobs
