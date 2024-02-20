@@ -132,7 +132,7 @@ Read our [Quickstart](/docs/use-dbt-semantic-layer/quickstart-sl) for more infor
 
 Beginning in March 2024, the dbt Semantic Layer will offer two layers of caching:
 
-- The result cache which caches query results in the data platform so subsequent runs of the same query are faster.
+- The result cache, which caches query results in the data platform so that subsequent runs of the same query are faster.
 - A declarative cache which also lives in your data platform.
 
 </expandable>
