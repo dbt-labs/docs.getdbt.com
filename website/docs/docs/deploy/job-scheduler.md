@@ -48,7 +48,7 @@ Before the job starts executing, the scheduler checks these conditions to determ
 
 If there is an available run slot and there isn't an actively running instance of the job, the scheduler will prepare the job to run in your cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and Git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time** in the UI.
 
-Together, **wait time** plus **prep time** is the total time a run spends in the queue (or **Time in queue**).
+Together, **Wait time**, including jitter time, plus **Prep time** is the total time a run spends in the queue (or **Time in queue**). 
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
