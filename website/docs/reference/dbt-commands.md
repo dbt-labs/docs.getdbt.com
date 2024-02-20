@@ -17,9 +17,9 @@ All commands in the table are compatible with either the dbt Cloud IDE, dbt Clou
 
 You can run dbt commands in your specific tool by prefixing them with `dbt`.  For example, to run the `test` command, type `dbt test`.
 
-| Command | Description | Compatible tools | <div style={{width:'220px'}}>Version</div> |
-| ------- | ----------- | ---------------- | ------- |
-| [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) | All | All [supported versions](/docs/dbt-versions/core) |
+| Command | Description | Compatible tools | <div style={{width:'220px'}}>Version</div> | 
+| ------- | ----------- | ---------------- | ------- | 
+| [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) | All | All [supported versions](/docs/dbt-versions/core) | 
 | cancel  | Cancels the most recent invocation.| dbt Cloud CLI | Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project | All | All [supported versions](/docs/dbt-versions/core) |
 | [clone](/reference/commands/clone) | Clone selected models from the specified state | All | Requires [dbt v1.6 or higher](/docs/dbt-versions/core)  |
@@ -42,7 +42,6 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh")  | All | All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [--version](/reference/commands/version) | Displays the currently installed version of dbt CLI | dbt Core <br /> dbt Cloud CLI | All [supported versions](/docs/dbt-versions/core) |
-
 
 </VersionBlock>
 
@@ -100,43 +99,44 @@ Use the following dbt commands in [dbt Core](/docs/core/installation-overview) a
 </Tabs>
 </VersionBlock>
 
-### Execute dbt commands
+### Execute commands
 
 When you're managing your dbt project, it's important to understand that dbt commands are categorized into the following types:
 
-- **Write commands** &mdash; Commands such as `dbt build` and `dbt run` that perform write operations to your data platform.These commands are limited to one invocation at any given time (1 parallelism). This is to prevent any potential conflicts, such as overwriting the same table in your data platform, at the same time.
+- **Write commands** &mdash; These commands perform actions that modify data or metadata in your data platform.
+- **Read commands** &mdash; These commands involve operations that fetch or read data without making any modifications to your data platform.
 
-- **Read commands** &mdash; Commands such as `dbt parse` and `dbt source snapshot-freshness` that don't write to your platform. These commands aren't limited to one invocation at any given time and you can run multiple invocations in parallel.
+You can run multiple dbt commands at the same time, but it's important to understand which commands can be run in parallel and which can't. We call this 'parallel execution' and it's important when distinguishing between write and read commands:
 
-To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel):
+- Write commands &mdash; Commands such as `dbt build` and `dbt run` are limited to one invocation at any given time (1 parallelism). This is to prevent any potential conflicts, such as overwriting the same table in your data platform, at the same time.
+- Read commands &mdash; Commands such as `dbt parse` and `dbt source snapshot-freshness` can have multiple invocations in parallel and aren't limited to one invocation at any given time.
 
-- For example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation) at the same time.
-- For example, you can't run `dbt build` and `dbt run` at the same time.
+To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel). For example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation) at the same time. However, you can't run `dbt build` and `dbt run` (both write operations) at the same time.
 
-This is because it combines commands that interact differently with your data platform and avoids any potential conflicts.
+<expandable alt_header="View the parallel execution commands table for more detail.">
 
-<expandable alt_header="Parallelizable commands table">
+The following table highlights write or read commands and whether you can execute them in parallel with each other. 
 
-The following table highlights write or read commands and whether you can execute them in parallel with each other. Note that some dbt commands aren't listed in the following table since they're not relevant to the parallelization of dbt commands.
+Note that some dbt commands aren't listed in the following table since they're not relevant to the parallelization of dbt commands.
 
-| Command          | Type       | Parallel execution |
-|------------------|------------|--------------------|
-| `build`          | Write      | No                 |
-| `clone`          | Write      | No                 |
-| `retry`          | Write      | No                 |
-| `run`            | Write      | No                 |
-| `run-operation`  | Write      | No                 |
-| `seed`           | Write      | No                 |
-| `snapshot`       | Write      | No                 |
-| `clean`          | Non-Write  | Yes                |
-| `compile`        | Non-Write  | Yes                |
-| `debug`          | Non-Write  | Yes                |
-| `deps`           | Non-Write  | Yes                |
-| `docs`           | Non-Write  | Yes                |
-| `init`           | Non-Write  | Yes                |
-| `list`           | Non-Write  | Yes                |
-| `parse`          | Non-Write  | Yes                |
-| `show`           | Non-Write  | Yes                |
-| `source`         | Non-Write  | Yes                |
-| `test`           | Non-Write  | Yes                |
+| Command          | Type       | Parallel execution <br /> with other commands |
+| :-----------------: | :----------:|:------------------:|
+| `build`          | Write  |     ❌             |
+| `clone`          | Write  |     ❌              |
+| `retry`          | Write  |     ❌             |
+| `run`            | Write  |     ❌             |
+| `run-operation`  | Write  |     ❌             |
+| `seed`           | Write  |     ❌             |
+| `snapshot`       | Write  |     ❌             |
+| `clean`          | Read |      ✅           |
+| `compile`        | Read |      ✅           |
+| `debug`          | Read |      ✅           |
+| `deps`           | Read |      ✅           |
+| `docs`           | Read |      ✅           |
+| `init`           | Read |      ✅           |
+| `list`           | Read |      ✅           |
+| `parse`          | Read |      ✅           |
+| `show`           | Read |      ✅           |
+| `source`         | Read |     ✅           |
+| `test`           | Read |     ✅           |
 </expandable>
