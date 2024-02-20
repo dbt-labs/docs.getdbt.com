@@ -40,12 +40,10 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 8. You’re done 🎉! The semantic layer should is now enabled for your project. 
 -->
 
-
-
 ## Related docs
 
 - [Build your metrics](/docs/build/build-metrics-intro)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 - [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
-- [Migrate your legacy Semantic Layer](/guides/sl-migration)
 - [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

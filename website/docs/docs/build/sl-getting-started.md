@@ -70,19 +70,21 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 <ConnectQueryAPI/>
 
-## FAQs
-
-If you're encountering some issues when defining your metrics or setting up the dbt Semantic Layer, check out a list of answers to some of the questions or problems you may be experiencing.
-    
-import SlFaqs from '/snippets/_sl-faqs.md';
-
-<SlFaqs/>
-
 
 ## Next steps
 
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [About MetricFlow](/docs/build/about-metricflow)
 - [Build your metrics](/docs/build/build-metrics-intro)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 - Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
 - [Billing](/docs/cloud/billing)
+
+<!--
+## FAQs
+
+If you're encountering some issues when defining your metrics or setting up the dbt Semantic Layer, check out a list of answers to some of the questions or problems you may be experiencing.
+import SlFaqs from '/snippets/_sl-faqs.md';
+
+<SlFaqs/>
+-->
