@@ -9,7 +9,33 @@ You can run dbt using the following tools:
 
 The following sections outline the commands supported by dbt and their relevant flags. For information about selecting models on the command line, consult the docs on [Model selection syntax](/reference/node-selection/syntax).
 
-### Available commands
+## Available commands
+
+| Command | Description | <div style={{width:'200px'}}>Compatible tools and version</div>  | Type | Parallel execution with other commands |
+|---------|-------------|-------------------------------|------|----------------------------------------|
+| [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Write | ❌ |
+| cancel | Cancels the most recent invocation. | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) | N/A | N/A |
+| [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [clone](/reference/commands/clone) | Clone selected models from the specified state | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) | Write | ❌ |
+| [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [debug](/reference/commands/debug) | Debugs dbt connections and projects | dbt Cloud IDE, dbt Core <br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [deps](/reference/commands/deps) | Downloads dependencies for a project | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [docs](/reference/commands/cmd-docs) | Generates documentation for a project | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [environment](/reference/commands/dbt-environment) | Enables you to interact with your dbt Cloud environment. | dbt Cloud CLI <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) | N/A | N/A |
+| help | Displays help information for any command | dbt Core, dbt Cloud CLI <br /> All tools [supported versions](/docs/dbt-versions/core) | N/A | N/A |
+| [init](/reference/commands/init) | Initializes a new dbt project | dbt Core<br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [list](/reference/commands/list) | Lists resources defined in a dbt project | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [parse](/reference/commands/parse) | Parses a project and writes detailed timing info | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) | N/A | N/A |
+| [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) | Write | ❌ |
+| [run](/reference/commands/run) | Runs the models in a project | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Write | ❌ |
+| [run-operation](/reference/commands/run-operation) | Invoke a macro, including running arbitrary maintenance SQL against the database | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Write | ❌ |
+| [seed](/reference/commands/seed) | Loads CSV files into the database | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Write | ❌ |
+| [show](/reference/commands/show) | Preview table rows post-transformation | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project | All tools <br /> All [supported versions](/docs/dbt-versions/core) | Write | ❌ |
+| [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | All tools<br /> All [supported versions](/docs/dbt-versions/core) | Read | ✅ |
+| [test](/reference/commands/test)
+
 
 <VersionBlock firstVersion="1.6">
 
@@ -113,7 +139,6 @@ You can run multiple dbt commands at the same time, but it's important to unders
 
 To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel). For example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation) at the same time. However, you can't run `dbt build` and `dbt run` (both write operations) at the same time.
 
-
 For a detailed view of which commands can execute in parallel, expand and check out the following table:
 <expandable alt_header="Detailed table of parallel execution commands.">
 
@@ -142,3 +167,7 @@ Note that some dbt commands aren't listed in the following table since they're n
 | `source`         | Read |     ✅           |
 | `test`           | Read |     ✅           |
 </expandable>
+
+## Programmatic invocations
+
+about how running multiple dbt-core invocations simultaneously in the same process is currently NOT safe, officially discouraged, and requires a wrapping process/application to handle sub-processes
