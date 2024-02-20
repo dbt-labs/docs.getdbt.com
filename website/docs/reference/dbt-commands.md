@@ -109,11 +109,13 @@ When you're managing your dbt project, it's important to understand that dbt com
 You can run multiple dbt commands at the same time, but it's important to understand which commands can be run in parallel and which can't. We call this 'parallel execution' and it's important when distinguishing between write and read commands:
 
 - Write commands &mdash; Commands such as `dbt build` and `dbt run` are limited to one invocation at any given time (1 parallelism). This is to prevent any potential conflicts, such as overwriting the same table in your data platform, at the same time.
-- Read commands &mdash; Commands such as `dbt parse` and `dbt source snapshot-freshness` can have multiple invocations in parallel and aren't limited to one invocation at any given time.
+- Read commands &mdash; Commands such as `dbt parse` and `dbt source snapshot-freshness` can have multiple invocations in parallel and aren't limited to one invocation at any given time. This means read commands can run in parallel with both other read commands and write commands.
 
 To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel). For example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation) at the same time. However, you can't run `dbt build` and `dbt run` (both write operations) at the same time.
 
-<expandable alt_header="View the parallel execution commands table for more detail.">
+
+For a detailed view of which commands can execute in parallel, expand and check out the following table:
+<expandable alt_header="Detailed table of parallel execution commands.">
 
 The following table highlights write or read commands and whether you can execute them in parallel with each other. 
 
