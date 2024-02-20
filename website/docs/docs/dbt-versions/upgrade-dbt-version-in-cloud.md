@@ -30,11 +30,11 @@ Configure your project to use a different dbt Core version than what's configure
 
 1. From the gear menu, select **Profile settings**. 
 1. Choose **Credentials** from the sidebar and select a project. This opens a side panel.
-1. In the side panel, click **Edit** and scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**. When saving, dbt Cloud automatically creates a `DBT_DEVELOP_CORE_VERSION` environment variable for this user-level override and lists it in the **Environment variables** section. 
+1. In the side panel, click **Edit** and scroll to the **User development settings** section. Choose a version from the **dbt version** dropdown and click **Save**.
 
   An example of overriding the configured version with 1.7 for the selected project:
 
-  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" title="Example of overriding the dbt version on your user account"/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
 
 1. (Optional) Verify that dbt Cloud will use your override setting to build the project. Invoke `dbt build` in the IDE's command bar. Expand the **System Logs** section and find the output's first line. It should begin with `Running with dbt=` and list the version dbt Cloud is using.
 
@@ -42,14 +42,11 @@ Configure your project to use a different dbt Core version than what's configure
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-verify-overridden-version.png" title="Example output showing version 1.7 being used, not 1.5"/>
 
-1. If you upgrade the version for your development environment, make sure to delete the `DBT_DEVELOP_CORE_VERSION` environment variable from the **Environment variables** section in your project's credentials.
-
-
 ## Jobs
 
 Each job in dbt Cloud can be configured to inherit parameters from the environment it belongs to.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" title="Settings of a dbt Cloud job"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/job-settings.png" width="65%" title="Settings of a dbt Cloud job"/>
 
 The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
 

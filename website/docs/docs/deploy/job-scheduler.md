@@ -38,7 +38,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 
 ## Scheduler queue
 
-The scheduler queues a deployment job to be processed when it's triggered to run because of a [set schedule](#create-and-schedule-jobs), an API call, or manual action. 
+The scheduler queues a deployment job to be processed when it's triggered to run by a [set schedule](/docs/deploy/deploy-jobs#schedule-days), [a job completed](/docs/deploy/deploy-jobs#trigger-on-job-completion), an API call, or manual action. 
 
 Before the job starts executing, the scheduler checks these conditions to determine if the run can start executing:
 
