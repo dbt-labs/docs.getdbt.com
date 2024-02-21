@@ -24,7 +24,7 @@ exposures:
   - name: weekly_jaffle_metrics
     label: Jaffles by the Week
     type: dashboard
-    maturity: high
+    maturity: high 
     url: https://bi.tool/dashboards/1
     description: >
       Did someone say "exponential growth"?
@@ -96,9 +96,9 @@ _Expected:_
 </VersionBlock>
 
 _Optional:_
-- **label**:  may contain spaces, capital letters, or special characters.
-- **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
-- **maturity**: one of `high`, `medium`, `low`
+- **label**:  May contain spaces, capital letters, or special characters.
+- **url**:  Activates and populates the link to **View this exposure** in the upper right corner of the generated documentation site
+- **maturity**: Indicates level of confidence or stability in the exposure. One of `high`, `medium`, `low`. For example, You could use `high` maturity for a well-established dashboard, widely used and trusted within your organization. Use `low` maturity for a new or experimental analysis.
 
 _General properties (optional)_
 - **description**
