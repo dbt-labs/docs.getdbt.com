@@ -24,7 +24,7 @@ exposures:
   - name: weekly_jaffle_metrics
     label: Jaffles by the Week
     type: dashboard
-    maturity: high 
+    maturity: high
     url: https://bi.tool/dashboards/1
     description: >
       Did someone say "exponential growth"?
