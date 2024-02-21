@@ -45,7 +45,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ### Conversion metrics
 
-[Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
+[Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occur for an entity within a set time period.
 
 ```yaml
 metrics:
