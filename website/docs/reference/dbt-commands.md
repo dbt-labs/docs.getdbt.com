@@ -52,7 +52,7 @@ Commands marked with a '❌' indicate write commands and those with a checkmark 
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
 | [run](/reference/commands/run) | Runs the models in a project |   ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [run-operation](/reference/commands/run-operation) | Invoke a macro, including running arbitrary maintenance SQL against the database | Write | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [run-operation](/reference/commands/run-operation) | Invoke a macro, including running arbitrary maintenance SQL against the database | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [seed](/reference/commands/seed) | Loads CSV files into the database |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [show](/reference/commands/show) | Preview table rows post-transformation | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
