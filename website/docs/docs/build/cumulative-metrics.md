@@ -248,7 +248,7 @@ limit 100;
 ```
 ## Limitations
 
-If you specify a `window` in your cumulatve metric definition, you must include `metric_time` as a dimension in the SQL query. This is because the accumulation window is based on metric time. For example,
+If you specify a `window` in your cumulative metric definition, you must include `metric_time` as a dimension in the SQL query. This is because the accumulation window is based on metric time. For example,
 
 ```sql
 select
