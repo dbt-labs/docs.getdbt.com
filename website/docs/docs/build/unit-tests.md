@@ -256,11 +256,11 @@ unit_tests:
 
 ## Unit testing incremental models
 
-When configuring your unit test, you can override the output of macros, vars, or environment variables for a given unit test. This enables you to unit test your incremental models - both in "full refresh" and "incremental" mode. 
+When configuring your unit test, you can override the output of macros, vars, or environment variables. This enables you to unit test your incremental models in "full refresh" and "incremental" modes. 
 
-When testing an incremental model, the expected output is the __result of the materialization__ (i.e. what will be merged/inserted), not the resulting model itself (i.e. what the final table will look like after the merge/insert).
+When testing an incremental model, the expected output is the __result of the materialization__ (what will be merged/inserted), not the resulting model itself (what the final table will look like after the merge/insert).
 
-Let's say I have an incremental model in my project:
+For example, say you have an incremental model in your project:
 
 <file name='my_incremental_model.sql'>
 
@@ -279,7 +279,7 @@ where event_time > (select max(event_time) from {{ this }})
 
 ```
 
-I can define unit tests on `my_incremental_model` to ensure my incremental logic is working as expected:
+You can define unit tests on `my_incremental_model` to ensure your incremental logic is working as expected:
 
 ```yml
 
