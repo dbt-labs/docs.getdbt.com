@@ -279,6 +279,8 @@ where event_time > (select max(event_time) from {{ this }})
 
 ```
 
+</file>
+
 You can define unit tests on `my_incremental_model` to ensure your incremental logic is working as expected:
 
 ```yml
