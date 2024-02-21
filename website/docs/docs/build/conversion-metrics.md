@@ -16,23 +16,28 @@ Conversion metrics are different from [ratio metrics](/docs/build/ratio) because
 
 The specification for conversion metrics is as follows:
 
-| Parameter | Description | Type | Required/Optional |
-| --- | --- | --- | --- |
-| `name` | The name of the metric. | String | Required |
-| `description` | The description of the metric. | String | Optional |
-| `type` | The type of metric (such as derived, ratio, and so on.). In this case, set as 'conversion' | String | Required |
-| `label` | Displayed value in downstream tools. | String | Required |
-| `type_params` | Specific configurations for each metric type. | List | Required |
-| `conversion_type_params` | Additional configuration specific to conversion metrics. | List  | Required |
-| `entity` | The entity for each conversion event. | Entity | Required |
-| `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`. | String | Optional |
-| `base_measure` | The base conversion event measure. | Measure | Required |
-| `conversion_measure` | The conversion event measure. | Measure | Required |
-| `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity.  | String | Optional |
-| `constant_properties` | List of constant properties.  | List | Optional |
-| `base_property` | The property from the base semantic model that you want to hold constant.  | Entity or Dimension | Optional |
-| `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Entity or Dimension | Optional |
-| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | String | Optional |
+| Parameter | Description | Type |
+| --- | --- | --- | 
+| `name` | The name of the metric. |  Required |
+| `description` | The description of the metric. | Optional |
+| `type` | The type of metric (such as derived, ratio, and so on.). In this case, set as 'conversion' | Required |
+| `label` | Displayed value in downstream tools. | Required |
+| `type_params` | Specific configurations for each metric type. |  Required |
+| `conversion_type_params` | Additional configuration specific to conversion metrics. | Required |
+| `entity` | The entity for each conversion event. | Required |
+| `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`.  | Optional |
+| `base_measure` | A list of base measure inputs | Required |
+| `base_measure:name` | The base conversion event measure. |  Required |
+| `base_measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
+| `base_measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+| `conversion_measure` | A list of conversion measure inputs. | Required |
+| `conversion_measure:name` | The base conversion event measure.| Required |
+| `conversion_measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
+| `conversion_measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+| `window` | The time window for the conversion event, such as 7 days, 1 week, 3 months. Defaults to infinity. | Optional |
+| `constant_properties` | List of constant properties.  | Optional |
+| `base_property` | The property from the base semantic model that you want to hold constant.  |  Optional |
+| `conversion_property` | The property from the conversion semantic model that you want to hold constant.  | Optional |
 
 Refer to [additional settings](#additional-settings) to learn how to customize conversion metrics with settings for null values, calculation type, and constant properties.
 
@@ -43,14 +48,19 @@ metrics:
   - name: The metric name # Required
     description: The metric description # Optional
     type: conversion # Required
-    label: # Required
+    label: YOUR_LABEL # Required
     type_params: # Required
-      fills_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
-        base_measure: MEASURE # Required
-        conversion_measure: MEASURE # Required
+        base_measure: 
+          name: The name of the measure # Required
+          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
+          join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+        conversion_measure:
+          name: The name of the measure # Required
+          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
+          join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
         window: TIME_WINDOW # Optional. default: infinity. window to join the two events. Follows a similar format as time windows elsewhere (such as 7 days)
         constant_properties: # Optional. List of constant properties default: None
           - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
@@ -93,10 +103,12 @@ Next, define a conversion metric as follows:
   type: conversion
   label: Visit to Buy Conversion Rate (7-day window)
   type_params:
-    fills_nulls_with: 0
     conversion_type_params:
-      base_measure: visits
+      base_measure:
+        name: visits
+        fill_nulls_with: 0
       conversion_measure: sellers
+        name: sellers
       entity: user
       window: 7 days
 ```
@@ -260,7 +272,8 @@ To return zero in the final data set, you can set the value of a null conversion
   type_params:
     conversion_type_params:
       calculation: conversions
-      base_measure: visits
+      base_measure:
+        name: visits
       conversion_measure: 
         name: buys
         fill_nulls_with: 0
@@ -289,7 +302,8 @@ You can change the default to display the number of conversions by setting the `
     type_params:
       conversion_type_params:
         calculation: conversions
-        base_measure: visits
+        base_measure:
+          name: visits
         conversion_measure: 
           name: buys
           fill_nulls_with: 0
@@ -321,7 +335,8 @@ In this case, you want to set `product_id` as the constant property. You can spe
   type_params:
     conversion_type_params:
       calculation: conversions
-      base_measure: view_item_detail
+      base_measure:
+        name: view_item_detail 
       conversion_measure: purchase
       entity: user
       window: 1 week
