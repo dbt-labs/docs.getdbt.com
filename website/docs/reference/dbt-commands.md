@@ -15,14 +15,14 @@ dbt Cloud allows for parallel execution of commands, enhancing efficiency withou
 
 In contrast, [`dbt-core` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
 
+To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel) &mdash; for example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation) at the same time. However, you can't run `dbt build` and `dbt run` (both write operations) at the same time.
+
 dbt commands can be `read` or `write` commands:
 
 | Command type | Description | <div style={{width:'200px'}}>Example</div> |
 |------|-------------|---------|
 | **Write** | These commands perform actions that change data or metadata in your data platform.<br /><br /> Limited to one invocation at any given time, which prevents any potential conflicts, such as overwriting the same table in your data platform at the same time. | `dbt build`<br />`dbt run` |
 | **Read** | These commands involve operations that fetch or read data without making any changes to your data platform.<br /><br /> Can have multiple invocations in parallel and aren't limited to one invocation at any given time. This means read commands can run in parallel with other read commands and a single write command.| `dbt parse`<br />`dbt compile`|
-
-To ensure your dbt workflows are both efficient and safe, you can run different types of dbt commands at the same time (in parallel) &mdash; for example, `dbt build` (write operation) can safely run alongside `dbt parse` (read operation) at the same time. However, you can't run `dbt build` and `dbt run` (both write operations) at the same time.
 
 ## Available commands
 
