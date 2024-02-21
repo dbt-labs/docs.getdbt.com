@@ -104,7 +104,7 @@ Next, define a conversion metric as follows:
   label: Visit to Buy Conversion Rate (7-day window)
   type_params:
     conversion_type_params:
-      base_measure: visits
+      base_measure:
         name: visits
         fill_nulls_with: 0
       conversion_measure: sellers
@@ -272,7 +272,8 @@ To return zero in the final data set, you can set the value of a null conversion
   type_params:
     conversion_type_params:
       calculation: conversions
-      base_measure: visits
+      base_measure:
+        name: visits
       conversion_measure: 
         name: buys
         fill_nulls_with: 0
@@ -301,7 +302,8 @@ You can change the default to display the number of conversions by setting the `
     type_params:
       conversion_type_params:
         calculation: conversions
-        base_measure: visits
+        base_measure:
+          name: visits
         conversion_measure: 
           name: buys
           fill_nulls_with: 0
@@ -333,7 +335,8 @@ In this case, you want to set `product_id` as the constant property. You can spe
   type_params:
     conversion_type_params:
       calculation: conversions
-      base_measure: view_item_detail
+      base_measure:
+        name: view_item_detail 
       conversion_measure: purchase
       entity: user
       window: 1 week
