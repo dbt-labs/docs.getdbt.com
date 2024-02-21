@@ -88,7 +88,7 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - Some functions in Analysis --> Create Calculated Field
 - Filtering on a Date Part time dimension for a Cumulative metric type
 - Changing your date dimension to use "Week Number"
-- Performing joins between tables that are created by the Semantic Layer (note: you can join tables outside of the Semantic Layer)
+- Performing joins between tables that are created by the Semantic Layer. The Semantic Layer handles joins for you, so there's no need to join things together in the Semantic Layer (note: you _can_ join to tables outside of the Semantic Layer)
   
 ## FAQs
 <FAQ path="Troubleshooting/sl-alpn-error" />
