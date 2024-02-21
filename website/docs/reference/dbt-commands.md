@@ -28,35 +28,37 @@ To ensure your dbt workflows are both efficient and safe, you can run different 
 
 <VersionBlock firstVersion="1.6">
 
-The following sections outline the commands supported by dbt and their relevant flags. They are available in all tools and all [supported versions](/docs/dbt-versions/core) unless noted otherwise. You can run these commands in your specific tool by prefixing them with `dbt` &mdash; for example, to run the `test` command, type `dbt test`. 
+The following sections outline the commands supported by dbt and their relevant flags. They are available in all tools and all [supported versions](/docs/dbt-versions/core) unless noted otherwise. You can run these commands in your specific tool by prefixing them with `dbt` &mdash; for example, to run the `test` command, type `dbt test`.
 
 For information about selecting models on the command line, refer to [Model selection syntax](/reference/node-selection/syntax).
 
-| Command | Description |  Type | Parallel execution | <div style={{width:'250px'}}>Caveats</div> |
-|---------|-------------|-------------------------------| :-----: | ------------------------------|
-| [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) | Write | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) | 
-| cancel | Cancels the most recent invocation. |  N/A | N/A | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
-| [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project | Read | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [clone](/reference/commands/clone) | Clone selected models from the specified state |  Write | ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
-| [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  Read | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [debug](/reference/commands/debug) | Debugs dbt connections and projects | Read | ✅ | dbt Cloud IDE, dbt Core <br /> All [supported versions](/docs/dbt-versions/core) |
-| [deps](/reference/commands/deps) | Downloads dependencies for a project | Read | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |  Read | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [environment](/reference/commands/dbt-environment) | Enables you to interact with your dbt Cloud environment. |  N/A | N/A | dbt Cloud CLI <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
-| help | Displays help information for any command | N/A | N/A | dbt Core, dbt Cloud CLI <br /> All [supported versions](/docs/dbt-versions/core) |
-| [init](/reference/commands/init) | Initializes a new dbt project |  Read | ✅ | dbt Core<br /> All [supported versions](/docs/dbt-versions/core) |
-| [list](/reference/commands/list) | Lists resources defined in a dbt project |  Read | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  Read | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |  N/A | N/A | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
-| [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure | Write | ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
-| [run](/reference/commands/run) | Runs the models in a project |  Write | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+Commands marked with a '❌' indicate write commands and those with a checkmark ('✅') indicate read commands.
+
+| Command | Description | Parallel execution | <div style={{width:'250px'}}>Caveats</div> |
+|---------|-------------| :-----------------:| ------------------------------------------ |
+| [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) | 
+| cancel | Cancels the most recent invocation. | N/A | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
+| [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [clone](/reference/commands/clone) | Clone selected models from the specified state |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
+| [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [debug](/reference/commands/debug) | Debugs dbt connections and projects | ✅ | dbt Cloud IDE, dbt Core <br /> All [supported versions](/docs/dbt-versions/core) |
+| [deps](/reference/commands/deps) | Downloads dependencies for a project |  ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [docs](/reference/commands/cmd-docs) | Generates documentation for a project |   ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [environment](/reference/commands/dbt-environment) | Enables you to interact with your dbt Cloud environment. |   N/A | dbt Cloud CLI <br /> Requires [dbt v1.5 or higher](/docs/dbt-versions/core) |
+| help | Displays help information for any command | N/A | dbt Core, dbt Cloud CLI <br /> All [supported versions](/docs/dbt-versions/core) |
+| [init](/reference/commands/init) | Initializes a new dbt project |   ✅ | dbt Core<br /> All [supported versions](/docs/dbt-versions/core) |
+| [list](/reference/commands/list) | Lists resources defined in a dbt project |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [parse](/reference/commands/parse) | Parses a project and writes detailed timing info |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. |   N/A | dbt Cloud CLI <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
+| [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure |  ❌ | All tools <br /> Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
+| [run](/reference/commands/run) | Runs the models in a project |   ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [run-operation](/reference/commands/run-operation) | Invoke a macro, including running arbitrary maintenance SQL against the database | Write | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [seed](/reference/commands/seed) | Loads CSV files into the database |  Write | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [show](/reference/commands/show) | Preview table rows post-transformation | Read | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  Write | ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") |  Read | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions/core) |
-| [test](/reference/commands/test) | Executes tests defined in a project  |  Read | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [--version](/reference/commands/version) | Displays the currently installed version of dbt CLI |  N/A  | N/A | dbt Core, dbt Cloud CLI  <br />  All [supported versions](/docs/dbt-versions/core) | <br />
+| [seed](/reference/commands/seed) | Loads CSV files into the database |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [show](/reference/commands/show) | Preview table rows post-transformation | ✅ |  All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions/core) |
+| [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
+| [--version](/reference/commands/version) | Displays the currently installed version of dbt CLI |  N/A | dbt Core, dbt Cloud CLI  <br />  All [supported versions](/docs/dbt-versions/core) | <br />
 
 Note that some have "N/A" since they're not relevant to the parallelization of dbt commands.
 </VersionBlock>
