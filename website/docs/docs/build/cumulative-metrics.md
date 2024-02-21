@@ -36,7 +36,7 @@ metrics:
       measure: 
         name: The measure you are referencing. # Required
         fill_nulls_with: Set the value in your metric definition instead of null (such as zero). # Optional
-        join_to_timespine: false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+        join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
       window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. It cannot be used with grain_to_date.
       grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. It cannot be used with window.
 

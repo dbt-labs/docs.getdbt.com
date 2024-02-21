@@ -56,11 +56,11 @@ metrics:
         base_measure: 
           name: The name of the measure # Required
           fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
-          join_to_timespine: Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+          join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
         conversion_measure:
           name: The name of the measure # Required
           fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
-          join_to_timespine: Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+          join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
         window: TIME_WINDOW # Optional. default: infinity. window to join the two events. Follows a similar format as time windows elsewhere (such as 7 days)
         constant_properties: # Optional. List of constant properties default: None
           - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
@@ -103,10 +103,12 @@ Next, define a conversion metric as follows:
   type: conversion
   label: Visit to Buy Conversion Rate (7-day window)
   type_params:
-    fill_nulls_with: 0
     conversion_type_params:
       base_measure: visits
+        name: visits
+        fill_nulls_with: 0
       conversion_measure: sellers
+        name: sellers
       entity: user
       window: 7 days
 ```

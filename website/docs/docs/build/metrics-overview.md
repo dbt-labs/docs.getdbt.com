@@ -20,8 +20,6 @@ The keys for metrics definitions are:
 | `config` | Provide the specific configurations for your metric.   | Optional |
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
-| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
-| `join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 Here's a complete example of the metrics spec configuration:
 
@@ -54,14 +52,19 @@ metrics:
   - name: The metric name # Required
     description: The metric description # Optional
     type: conversion # Required
-    label: # Required
+    label: YOUR_LABEL # Required
     type_params: # Required
-      fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       conversion_type_params: # Required
         entity: ENTITY # Required
         calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
-        base_measure: MEASURE # Required
-        conversion_measure: MEASURE # Required
+        base_measure: 
+          name: The name of the measure # Required
+          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
+          join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+        conversion_measure:
+          name: The name of the measure # Required
+          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
+          join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
         window: TIME_WINDOW # Optional. default: infinity. window to join the two events. Follows a similar format as time windows elsewhere (such as 7 days)
         constant_properties: # Optional. List of constant properties default: None
           - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
@@ -79,10 +82,12 @@ metrics:
     owners:
       - support@getdbt.com
     type: cumulative
+    label: Weekly Active Users
     type_params:
       measure:
         name: active_users
         fill_nulls_with: 0
+        join_to_timespine: true
       measure:
         name: distinct_users
         # Omitting window will accumulate the measure over all time
@@ -128,10 +133,9 @@ metrics:
 
 ### Ratio metrics 
 
-[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied to both the numerator and denominator or separately to the numerator or denominator. 
+[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
 ```yaml
-# Ratio Metric
 metrics:
   - name: cancellation_rate
     owners:
@@ -139,6 +143,7 @@ metrics:
 # Ratio metrics create a ratio out of two metrics.
 # Define the metrics from the semantic manifest as numerator or denominator
     type: ratio
+    label: Cancellation rate
     type_params:
       numerator: cancellations
       denominator: transaction_amount
@@ -171,13 +176,16 @@ metrics:
 ```yaml
 metrics:
   - name: cancellations
+    description: The number of cancellations
     type: simple
+    label: Cancellations
     type_params:
       measure:
         name: cancellations_usd  # Specify the measure you are creating a proxy for.
         fill_nulls_with: 0
         filter: |
         {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
+        join_to_timespine: true
 ```
 
 ## Filters

@@ -21,7 +21,7 @@ Simple metrics are metrics that directly reference a single measure, without any
 | `measure` | A list of measure inputs | Required |
 | `measure:name` | The measure you're referencing. | Required |
 | `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
-| `mesure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+| `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for simple metrics, along with an example.
 
@@ -35,7 +35,7 @@ metrics:
       measure: 
         name: The name of your measure # Required
         fill_nulls_with: Set value instead of null  (such as zero) # Optional
-        join_to_timespine: Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. #Optinal
+        join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. # Optional
 
 ```
 
@@ -69,4 +69,3 @@ If you've already defined the measure using the `create_metric: true` parameter,
       filter: | # For any metric you can optionally include a filter on dimension values
         {{Dimension('customer__order_total_dim')}} >= 20
 ```
-
