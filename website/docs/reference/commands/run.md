@@ -80,3 +80,11 @@ See [global configs](/reference/global-configs/failing-fast)
 ## Enable or Disable Colorized Logs
 
 See [global configs](/reference/global-configs/print-output#print-color)
+
+<VersionBlock firstVersion="1.8">
+
+## The `--empty` flag
+
+The `run` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will build the project and models, parse the files to identify changes, but won't actually execute the SQL against the target data warehouse. This ensures your models will build properly and validates dependencies.
+
+</VersionBlock>

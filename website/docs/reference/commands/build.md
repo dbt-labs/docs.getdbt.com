@@ -25,6 +25,14 @@ In DAG order, for selected resources or an entire project.
 
 **Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types (e.g. both models and seeds will be full refreshed).
 
+<VersionBlock firstVersion="1.8">
+
+### The `--empty` flag
+
+The `build` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will build the project and models, parse the files to identify changes, but won't actually execute the SQL against the target data warehouse. This ensures your models will build properly and validates dependencies.
+
+</VersionBlock>
+
 ### Examples
 
 ```
