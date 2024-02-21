@@ -15,7 +15,7 @@ dbt Cloud allows for parallel execution of commands, enhancing efficiency withou
 
 In contrast, [`dbt-core` _doesn't_ support](/reference/programmatic-invocations#parallel-execution-not-supported) safe parallel execution for multiple invocations in the same process, and requires users to manage concurrency manually to ensure data integrity and system stability.
 
-dbt commands are categorized into the following types:
+dbt commands can be `read` or `write` commands:
 
 | Command type | Description | <div style={{width:'200px'}}>Example</div> |
 |------|-------------|---------|
