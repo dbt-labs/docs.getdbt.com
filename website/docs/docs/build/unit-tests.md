@@ -322,4 +322,4 @@ unit_tests:
 
 ```
 
-There is currently no way to unit test whether the dbt framework actually inserted/merged the records into your existing model correctly or not - but [we're investigating a way to support this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
