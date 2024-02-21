@@ -56,7 +56,7 @@ metrics:
 
 ## Ratio metrics using different semantic models
 
-The system will simplify and turn the numerator and denominator in a ratio metric from different semantic models by computing their values in sub-queries. It will then join the result set based on common dimensions to calculate the final ratio. Here's an example of the SQL generated for such a ratio metric.
+The system will simplify and turn the numerator and denominator into a ratio metric from different semantic models by computing their values in sub-queries. It will then join the result set based on common dimensions to calculate the final ratio. Here's an example of the SQL generated for such a ratio metric.
 
 
 ```sql
