@@ -68,7 +68,12 @@ The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to th
 
 <expandable alt_header="What data platforms are supported by the dbt Semantic Layer?">
 
-The dbt Semantic Layer supports the following data platforms: Snowflake, BigQuery, Databricks, or Redshift.
+The dbt Semantic Layer supports the following data platforms: 
+
+- Snowflake 
+- BigQuery 
+- Databricks  
+- Redshift
 
 Support for other data platforms, such as Fabric and Trino, isn't available at this time. If you're interested in using the dbt Semantic Layer with a different data platform, please reach out to us [here](https://www.getdbt.com/get-started).
 </expandable>
