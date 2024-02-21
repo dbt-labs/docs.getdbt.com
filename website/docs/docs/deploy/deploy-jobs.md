@@ -37,7 +37,7 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 4. Options in the **Triggers** section:
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
-        - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that runs the job every specified number of hours, **Specific hours** that runs the job at specific times of day, or **Cron schedule** that runs the job specified using [cron syntax](#cron-schedule).
+        - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
         - **Days of the week** &mdash; By default, it’s set to every day when **Intervals** or **Specific hours** is chosen for **Timing**.
     - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
         - **Project** &mdash; Specify the parent project that has that upstream deploy job. 
