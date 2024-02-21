@@ -75,7 +75,7 @@ The dbt Semantic Layer supports the following data platforms:
 - Databricks  
 - Redshift
 
-Support for other data platforms, such as Fabric and Trino, isn't available at this time. If you're interested in using the dbt Semantic Layer with a different data platform, please reach out to us [here](https://www.getdbt.com/get-started).
+Support for other data platforms, such as Fabric and Trino, isn't available at this time. If you're interested in using the dbt Semantic Layer with a data platform not on the list, please [contact us](https://www.getdbt.com/get-started).
 </expandable>
 
 <expandable alt_header="Do I need to be on a specific version of dbt to use dbt Semantic Layer?">
