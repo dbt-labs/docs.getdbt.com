@@ -98,7 +98,7 @@ _Expected:_
 _Optional:_
 - **label**:  May contain spaces, capital letters, or special characters.
 - **url**:  Activates and populates the link to **View this exposure** in the upper right corner of the generated documentation site
-- **maturity**: Indicates level of confidence or stability in the exposure. One of `high`, `medium`, `low`. For example, You could use `high` maturity for a well-established dashboard, widely used and trusted within your organization. Use `low` maturity for a new or experimental analysis.
+- **maturity**: Indicates the level of confidence or stability in the exposure. One of `high`, `medium`, or `low`. For example, you could use `high` maturity for a well-established dashboard, widely used and trusted within your organization. Use `low` maturity for a new or experimental analysis.
 
 _General properties (optional)_
 - **description**
