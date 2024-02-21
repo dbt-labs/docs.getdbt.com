@@ -28,7 +28,12 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## New and changed features and functionality
 
-Coming soon!
+Features and functionality new in dbt v1.8
+
+### The `--empty` flag
+
+The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/run#the-`--empty`-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will build the project and models, parse the files to identify changes, but won't actually execute the SQL against the target data warehouse. This ensures your models will build properly and validates dependencies.
+
 
 ## Quick hits
 
