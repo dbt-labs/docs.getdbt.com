@@ -17,14 +17,14 @@ Conversion metrics are different from [ratio metrics](/docs/build/ratio) because
 The specification for conversion metrics is as follows:
 
 | Parameter | Description | Type |
-| --- | --- | --- | --- |
+| --- | --- | --- | 
 | `name` | The name of the metric. |  Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of metric (such as derived, ratio, and so on.). In this case, set as 'conversion' | Required |
 | `label` | Displayed value in downstream tools. | Required |
 | `type_params` | Specific configurations for each metric type. |  Required |
 | `conversion_type_params` | Additional configuration specific to conversion metrics. | Required |
-| `entity` | The entity for each conversion event. | Entity | Required |
+| `entity` | The entity for each conversion event. | Required |
 | `calculation` | Method of calculation. Either `conversion_rate` or `conversions`. Defaults to `conversion_rate`.  | Optional |
 | `base_measure` | A list of base measure inputs | Required |
 | `base_measure:name` | The base conversion event measure. |  Required |

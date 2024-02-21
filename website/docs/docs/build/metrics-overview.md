@@ -49,26 +49,26 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ```yaml
 metrics:
-  - name: The metric name # Required
-    description: The metric description # Optional
-    type: conversion # Required
-    label: YOUR_LABEL # Required
-    type_params: # Required
-      conversion_type_params: # Required
-        entity: ENTITY # Required
-        calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
+  - name: The metric name 
+    description: The metric description 
+    type: conversion 
+    label: YOUR_LABEL 
+    type_params: #
+      conversion_type_params: 
+        entity: ENTITY
+        calculation: CALCULATION_TYPE 
         base_measure: 
-          name: The name of the measure # Required
-          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
-          join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+          name: The name of the measure 
+          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) 
+          join_to_timespine: true/false
         conversion_measure:
-          name: The name of the measure # Required
-          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
-          join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
-        window: TIME_WINDOW # Optional. default: infinity. window to join the two events. Follows a similar format as time windows elsewhere (such as 7 days)
-        constant_properties: # Optional. List of constant properties default: None
-          - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
-            conversion_property: DIMENSION or ENTITY # Same as base above, but to the semantic model of the conversion_measure
+          name: The name of the measure 
+          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) 
+          join_to_timespine: true/false
+        window: TIME_WINDOW
+        constant_properties:
+          - base_property: DIMENSION or ENTITY 
+            conversion_property: DIMENSION or ENTITY 
 ```
 
 ### Cumulative metrics 
@@ -90,7 +90,6 @@ metrics:
         join_to_timespine: true
       measure:
         name: distinct_users
-        # Omitting window will accumulate the measure over all time
         window: 7 days
       
 ```
@@ -140,27 +139,23 @@ metrics:
   - name: cancellation_rate
     owners:
       - support@getdbt.com
-# Ratio metrics create a ratio out of two metrics.
-# Define the metrics from the semantic manifest as numerator or denominator
     type: ratio
     label: Cancellation rate
     type_params:
       numerator: cancellations
       denominator: transaction_amount
-      filter: |     # add optional constraint string. This applies to both the numerator and denominator
+      filter: |   
         {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
     owners:
       - support@getdbt.com
-      # Ratio metrics create a ratio out of two measures. 
-      # Define the metrics from the semantic model as numerator or denominator
     type: ratio
     type_params:
       numerator:
         name: cancellations
-        filter: {{ Dimension('company__tier' )}} = 'enterprise'  # constraint only applies to the numerator
+        filter: {{ Dimension('company__tier' )}} = 'enterprise'  
       denominator: transaction_amount
-      filter: |   #  add optional constraint string. This applies to both the numerator and denominator
+      filter: | 
         {{ Dimension('customer__country') }} = 'MX'  
 ```
 
