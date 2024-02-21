@@ -262,7 +262,7 @@ When testing an incremental model, the expected output is the __result of the ma
 
 For example, say you have an incremental model in your project:
 
-<file name='my_incremental_model.sql'>
+<File name='my_incremental_model.sql'>
 
 ```sql
 
