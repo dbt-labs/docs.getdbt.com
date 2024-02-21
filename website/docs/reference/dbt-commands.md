@@ -5,7 +5,7 @@ title: "dbt Command reference"
 You can run dbt using the following tools:
 
 - In your browser with the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
-- On the command line interface using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-source [dbt Core](/docs/core/installation-overview), both of which enable you to execute dbt commands.
+- On the command line interface using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-source [dbt Core](/docs/core/installation-overview).
   
 A key distinction with the tools mentioned, is that dbt Cloud CLI and IDE are designed to support safe parallel execution of dbt commands, leveraging dbt Cloud's infrastructure and its comprehensive [features](/docs/cloud/about-cloud/dbt-cloud-features). In contrast, `dbt-core` _doesn't support_ safe parallel execution for multiple invocations in the same process. Learn more in the [parallel execution](#parallel-execution) section.
 
