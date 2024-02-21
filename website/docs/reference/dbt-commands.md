@@ -58,7 +58,7 @@ For information about selecting models on the command line, refer to [Model sele
 | [test](/reference/commands/test) | Executes tests defined in a project  |  Read | ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [--version](/reference/commands/version) | Displays the currently installed version of dbt CLI |  N/A  | N/A | dbt Core, dbt Cloud CLI  <br />  All [supported versions](/docs/dbt-versions/core) | <br />
 
-Note that some have 'N/A" since they're not relevant to the parallelization of dbt commands.
+Note that some have "N/A" since they're not relevant to the parallelization of dbt commands.
 </VersionBlock>
 
 <VersionBlock lastVersion="1.5">
