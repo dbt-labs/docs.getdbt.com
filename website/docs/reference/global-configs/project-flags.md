@@ -4,7 +4,7 @@ id: "project-flags"
 sidebar: "Project flags"
 ---
 
-<File name='dbt_project.yml.yml'>
+<File name='dbt_project.yml'>
 
 ```yaml
 
@@ -14,6 +14,10 @@ flags:
 ```
 
 </File>
+
+See the [table of all flags](/reference/global-configs/about-global-configs#available-flags) to see which global configs are available for setting in `dbt_project.yml`.
+
+The `flags` dictionary is the _only_ place you can opt out of [behavior changes](/reference/global-configs/legacy-behaviors), while the legacy behavior is still supported.
 
 <VersionBlock lastVersion="1.7">
 

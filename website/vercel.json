@@ -3918,6 +3918,16 @@
       "permanent": true
     },
     {
+      "source": "/reference/project-configs/log-path",
+      "destination": "/reference/global-configs/logs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/project-configs/target-path",
+      "destination": "/reference/global-configs/json-artifacts",
+      "permanent": true
+    },
+    {
       "source": "/reference/repositories",
       "destination": "/dbt-cloud/api",
       "permanent": true
