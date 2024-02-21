@@ -72,7 +72,7 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 - In any of our Semantic Layer interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
 - We can support calculated fields for creating parameter filters or dynamically selecting metrics and dimensions. However, other uses of calculated fields are not supported. 
-  - _Note: For calculated fields use cases that are not currently covered, please reach out to <a href="mailto:support@getdbt.com?subject=dbt Semantic Layer feedback">dbt Support</a> and share them so we can further understand._
+  - _Note: For calculated field use cases that are not currently covered, please reach out to <a href="mailto:support@getdbt.com?subject=dbt Semantic Layer feedback">dbt Support</a> and share them so we can further understand._
 - When using saved queries that include filters, we will automatically apply any filters that the query has.
 
 ## Unsupported functionality
@@ -88,7 +88,7 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - Some functions in Analysis --> Create Calculated Field
 - Filtering on a Date Part time dimension for a Cumulative metric type
 - Changing your date dimension to use "Week Number"
-- Performing joins between tables that the dbt Semantic Layer creates. It handles joins for you, so there's no need to join components in the dbt Semantic Layer. Note, that you _can_  join tables from the dbt Semantic Layer to ones outside your data platform.
+- Performing joins between tables that the dbt Semantic Layer creates. It handles joins for you, so there's no need to join components in the dbt Semantic Layer. Note, that you _can_ join tables from the dbt Semantic Layer to ones outside your data platform.
   
 ## FAQs
 <FAQ path="Troubleshooting/sl-alpn-error" />
