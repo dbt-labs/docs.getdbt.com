@@ -130,4 +130,4 @@ Note the `filter` and `alias` parameters for the metric referenced in the numera
 - If there are no naming conflicts, the `alias` parameter can be left out.
 
 ## Related docs
-- [Fill null values for simple and derived or ratio metrics](/docs/build/fill-nulls-advanced)
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)

@@ -159,4 +159,5 @@ bookings - bookings_7_days_ago would be compile as 7438 - 7252 = 186.
 | 186 | 2017-07-01 |
 
 ## Related docs
-- [Fill null values for simple and derived or ratio metrics](/docs/build/fill-nulls-advanced)
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
+

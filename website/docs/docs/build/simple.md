@@ -71,4 +71,5 @@ If you've already defined the measure using the `create_metric: true` parameter,
 ```
 
 ## Related docs
-- [Fill null values for simple and derived or ratio metrics](/docs/build/fill-nulls-advanced)
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
+

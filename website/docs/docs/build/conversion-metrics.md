@@ -368,3 +368,6 @@ on
 
 </TabItem>
 </Tabs>
+
+## Related docs
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
