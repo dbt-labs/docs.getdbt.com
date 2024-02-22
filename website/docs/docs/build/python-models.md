@@ -238,6 +238,7 @@ def model(dbt, session):
 
 </File>
 
+<VersionBlock firstVersion="1.8">
 #### Dynamic configurations
 
 In addition to the existing methods of configuring Python models, you also have dynamic access to configuration values set with `dbt.config()` within Python models using f-strings. This expands the possibilities for custom logic and configuration management.
