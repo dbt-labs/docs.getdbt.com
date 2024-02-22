@@ -168,7 +168,7 @@ print(f"{dbt.config.get('my_var')}")  # Output before change: None
 print(f"{dbt.config.get('my_var')}")  # Output after change: 5
 ```
 
-This also means you can use `dbt.config.get()` within Python models, ensuring that configuration values are now effectively retrievable and usable within Python f-strings.
+This also means you can use `dbt.config.get()` within Python models to ensure that configuration values are effectively retrievable and usable within Python f-strings.
 
 </File>
 </VersionBlock>
