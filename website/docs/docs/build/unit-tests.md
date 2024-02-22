@@ -255,9 +255,9 @@ unit_tests:
 
 ```
 
-## Supported data types
+## Supported data formats
 
-Currently, mock data for unit testing in dbt supports two data types:
+Currently, mock data for unit testing in dbt supports two formats:
 
 - `dict` (default): Inline dictionary values.
 - `csv`: Inline CSV values or a CSV file.
