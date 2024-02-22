@@ -342,7 +342,7 @@ const sidebarSettings = {
             },
             {
               type: "category",
-              label: "Advanced topics",
+              label: "Advanced data modeling",
               link: { type: "doc", id: "docs/build/advanced-topics" },
               items: [
                 "docs/build/fill-nulls-advanced",
