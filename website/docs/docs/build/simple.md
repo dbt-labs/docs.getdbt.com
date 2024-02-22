@@ -69,3 +69,6 @@ If you've already defined the measure using the `create_metric: true` parameter,
       filter: | # For any metric you can optionally include a filter on dimension values
         {{Dimension('customer__order_total_dim')}} >= 20
 ```
+
+## Related docs
+- [Fill null values for simple and derived or ratio metrics](/docs/build/fill-nulls-advanced)

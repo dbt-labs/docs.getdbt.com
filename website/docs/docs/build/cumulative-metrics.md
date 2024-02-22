@@ -262,3 +262,5 @@ group by
   subq_3.metric_time
 ```
 
+## Related docs
+- [Fill null values for simple and derived or ratio metrics](/docs/build/fill-nulls-advanced)

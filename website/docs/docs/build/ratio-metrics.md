@@ -128,3 +128,6 @@ Note the `filter` and `alias` parameters for the metric referenced in the numera
 - Use the `filter` parameter to apply a filter to the metric it's attached to. 
 - The `alias` parameter is used to avoid naming conflicts in the rendered SQL queries when the same metric is used with different filters. 
 - If there are no naming conflicts, the `alias` parameter can be left out.
+
+## Related docs
+- [Fill null values for simple and derived or ratio metrics](/docs/build/fill-nulls-advanced)

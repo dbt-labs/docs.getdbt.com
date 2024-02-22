@@ -340,6 +340,14 @@ const sidebarSettings = {
                 "docs/build/simple",
               ],
             },
+            {
+              type: "category",
+              label: "Advanced topics",
+              link: { type: "doc", id: "docs/build/advanced-topics" },
+              items: [
+                "docs/build/fill-nulls-advanced",
+              ],
+            },
           ],
         },
         {
