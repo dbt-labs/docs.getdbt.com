@@ -203,7 +203,7 @@ Out of the box, the `dbt` class supports:
 - Accessing the database location of the current model: `dbt.this()` (also: `dbt.this.database`, `.schema`, `.identifier`)
 - Determining if the current model's run is incremental: `dbt.is_incremental`
 
-It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). The `dbt.config.get()` method now supports [dynamic access to configurations](#dynamic-configurations) within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values to power conditional logic in your model, we require setting them through a dedicated `.yml` file config:
+It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). Starting from dbt v1.8, the `dbt.config.get()` method supports [dynamic access to configurations](#dynamic-configurations) within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values to power conditional logic in your model, we require setting them through a dedicated `.yml` file config:
 
 <File name='models/config.yml'>
 
