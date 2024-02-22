@@ -256,7 +256,7 @@ def model(dbt, session):
 ```
 
 </File>
-
+</VersionBlock>
 
 ### Materializations
 
