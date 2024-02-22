@@ -7,7 +7,7 @@ sidebar_label: Fill null values for metrics
 
 Understanding and implementing strategies to fill null values in metrics is key for accurate analytics. This guide explains `fill_nulls_with` and `join_to_timespine` to ensure data completeness, helping end users make more informed decisions and enhancing your dbt workflows.
 
-### About `fill_nulls_with`
+### About null values
 
 You can use `fill_nulls_with` to replace null values in metrics with a value like zero (or your chosen integer). This ensures every data row shows a numeric value.
 
@@ -78,18 +78,14 @@ Although there are no days without visits, there are days without leads. After a
 | 2024-01-02 | 37 | 0 |
 | 2024-01-03 | 79 | 8 |
 
-### Use `join_to_timespine` to fill null values
+### Use join_to_timespine to fill null values
 
-To ensure you have a complete set of data for every and daily coverage for metrics calculated from other metrics, you can use `join_to_timespine` to fill null values for `derived` and `ratio` metrics. `derived` and `ratio` metrics take *metrics* (other calculatation) as inputs instead of *measures* (raw data). This is why you'll need to use `join_to_timespine` to fill null values for these metrics.
-
-When MetricFlow renders SQL the for `derived` or `ratio` metrics, there is an additional subquery needed to render the metric:
+To ensure you have a complete set of data for every and daily coverage for metrics calculated from other metrics, you can use `join_to_timespine` to fill null values for `derived` and `ratio` metrics. These metrics are built from other metrics (other calculations), not direct measures (raw data), requiring MetricFlow to have an extra subquery layer to render the metric. The subquery nesting is as follows:
 
 - For `derived` and `ratio` metrics, there are three levels of subquery nesting &mdash; derived or ratio metric → input metrics → input measures.
 - For `simple` and `cumulative` metrics, there are only two levels of subquery nesting &mdash; simple or cumulative metric → input measure.
 
-This means you could still have nulls in the final result set because `COALESCE` isn't applied for the third, outer rendering layer for the final metric calculation in `derived` or `ratio` metrics.
-
-Note, the aggregation and calculation for [`conversion` metrics](/docs/build/conversion) are designed to work without needing a time spine for daily data coverage. This is because the metric's logic revolves around event pairing rather than daily metric values.
+Because `coalesce` isn't applied to the third, subquery layer for `derived` or `ratio` metrics, this means you could still have nulls in the final result set. This is different to [`conversion` metrics](/docs/build/conversion), which focus on event relationships and don't need daily fills.
 
 ### Fill null values for derived and ratio metrics
 
