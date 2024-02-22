@@ -153,7 +153,9 @@ with upstream_python_model as (
 Referencing [ephemeral](/docs/build/materializations#ephemeral) models is currently not supported (see [feature request](https://github.com/dbt-labs/dbt-core/issues/7288)) 
 :::
 
-Python models also support dynamic referencing of models and configurations within Python f-strings. This allows for more nuanced and dynamic model configurations directly within your Python code. For example:
+<VersionBlock firstVersion="1.8">
+
+From dbt version 1.8, Python models also support dynamic referencing of models and configurations within Python f-strings. This allows for more nuanced and dynamic model configurations directly within your Python code. For example:
 
 <File name='models/my_python_model.py'>
 
