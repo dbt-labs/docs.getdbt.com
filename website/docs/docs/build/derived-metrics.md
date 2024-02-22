@@ -21,7 +21,6 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `metrics` |  The list of metrics used in the derived metrics. | Required  |
 | `alias` | Optional alias for the metric that you can use in the expr. | Optional |
 | `filter` | Optional filter to apply to the metric. | Optional |
-| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
 | `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Optional |
 
 The following displays the complete specification for derived metrics, along with an example.
@@ -33,7 +32,6 @@ metrics:
     type: derived # Required
     label: The value that will be displayed in downstream tools #Required
     type_params: # Required
-      fill_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
       expr: the derived expression # Required
       metrics: # The list of metrics used in the derived metrics # Required
         - name: the name of the metrics. must reference a metric you have already defined # Required
@@ -51,7 +49,6 @@ metrics:
     type: derived
     label: Order Gross Profit
     type_params:
-      fill_nulls_with: 0
       expr: revenue - cost
       metrics:
         - name: order_total
@@ -63,7 +60,6 @@ metrics:
     description: "The gross profit for each food order."
     type: derived
     type_params:
-      fill_nulls_with: 0
       expr: revenue - cost
       metrics:
         - name: order_total
@@ -100,7 +96,6 @@ The following example displays how you can calculate monthly revenue growth usin
   description: Percentage of customers that are active now and those active 1 month ago
   label: customer_retention
   type_params:
-    fill_nulls_with: 0
     expr: (active_customers/ active_customers_prev_month)
     metrics:
       - name: active_customers
@@ -120,7 +115,6 @@ You can query any granularity and offset window combination. The following examp
   type: derived
   label: d7 Bookings Change
   type_params:
-    fill_nulls_with: 0
     expr: bookings - bookings_7_days_ago
     metrics:
       - name: bookings
