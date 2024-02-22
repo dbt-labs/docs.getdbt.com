@@ -31,7 +31,7 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "/reference/global-configs/indirect-selection",
+    "page": "reference/global-configs/indirect-selection",
     "firstVersion": "1.8",
   },
   {
