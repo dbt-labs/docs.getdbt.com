@@ -17,7 +17,7 @@ The branch is now displayed with a lock icon to identify it as a protected branc
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/protected.png" width="90%" title="New protected experience"/>
 
-When you a commit to the branch, you receive a prompt that warns them that it is a protected branch, with the option to cancel the commit or create a new branch:
+When you make a commit to the branch, you receive a prompt that warns that it is a protected branch, with the option to cancel the commit or create a new branch:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/commit-popup.png" width="90%" title="Protected branch pop-up window"/>
 
