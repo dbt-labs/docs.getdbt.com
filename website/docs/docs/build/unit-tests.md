@@ -69,7 +69,8 @@ check_valid_emails as (
         customers.customer_id,
         customers.first_name,
         customers.last_name,
-	coalesce (regexp_like(
+        customers.email,
+	      coalesce (regexp_like(
             customers.email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'
         )
         = true
@@ -97,20 +98,20 @@ unit_tests:
     given:
       - input: ref('stg_customers')
         rows:
-          - {customer_id: 1, email: cool@example.com, email_top_level_domain: example.com}
-          - {customer_id: 2, email: cool@unknown.com, email_top_level_domain: unknown.com}
-          - {customer_id: 3, email: badgmail.com, email_top_level_domain: gmail.com}
-          - {customer_id: 4, email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
       - input: ref('top_level_email_domains')
         rows:
           - {tld: example.com}
           - {tld: gmail.com}
     expect:
       rows:
-        - {customer_id: 1, is_valid_email_address: true}
-        - {customer_id: 2, is_valid_email_address: false}
-        - {customer_id: 3, is_valid_email_address: false}
-        - {customer_id: 4, is_valid_email_address: false}
+        - {email: cool@example.com,    is_valid_email_address: true}
+        - {email: cool@unknown.com,    is_valid_email_address: false}
+        - {email: badgmail.com,        is_valid_email_address: false}
+        - {email: missingdot@gmailcom, is_valid_email_address: false}
 
 ```
 </file>
@@ -166,10 +167,10 @@ dbt test --select test_is_valid_email_address
 
 actual differs from expected:
 
-@@ ,customer_id,is_valid_email_address
-→  ,1        ,True→False
-   ,2        ,False
-...,...      ,...
+@@ ,email           ,is_valid_email_address
+→  ,cool@example.com,True→False
+   ,cool@unknown.com,False
+...,...             ,...
 
 
 16:03:51  
@@ -179,7 +180,7 @@ actual differs from expected:
 
 ```
 
-The clever regex statement wasn’t as clever as initially thought, as the model incorrectly flagged `cool@example.com` (customer 1's email) as an invalid email address.
+The clever regex statement wasn’t as clever as initially thought, as the model incorrectly flagged `cool@example.com` as an invalid email address.
 
 Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those pesky escape characters) and rerunning the unit test solves the problem:
 
