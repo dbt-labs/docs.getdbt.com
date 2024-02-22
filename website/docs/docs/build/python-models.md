@@ -169,7 +169,7 @@ print(f"{dbt.config.get('my_var')}")  # Output after change: 5
 This also means you can use `dbt.config.get()` within Python models, ensuring that configuration values are now effectively retrievable and usable within Python f-strings.
 
 </File>
-
+</VersionBlock>
 ## Configuring Python models
 
 Just like SQL models, there are three ways to configure Python models:
