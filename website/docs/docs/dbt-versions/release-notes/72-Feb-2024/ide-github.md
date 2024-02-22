@@ -13,14 +13,14 @@ The old experience was read-only:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/read-only.png" width="90%" title="Old read-only experience"/>
 
-Now the branch is displayed with a lock icon to identify it as a protected branch:
+The branch is now displayed with a lock icon to identify it as a protected branch:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/protected.png" width="90%" title="New protected experience"/>
 
-When a developer makes a commit to the branch, they receive a prompt that warns them that it is a protected branch, with the option to cancel the commit or create a new branch:
+When you a commit to the branch, you receive a prompt that warns them that it is a protected branch, with the option to cancel the commit or create a new branch:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/commit-popup.png" width="90%" title="Protected branch pop-up window"/>
 
-When the user chooses **Create new branch**, they are presented with the window where they can enter the branch name and commit message:
+When you choose **Create new branch**, you are presented with a window where you can enter the branch name and commit message:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="90%" title="Create new branch window"/>
