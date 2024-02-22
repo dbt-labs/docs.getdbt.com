@@ -31,6 +31,10 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "/reference/global-configs/indirect-selection",
+    "firstVersion": "1.8",
+  },
+  {
     "page": "reference/resource-configs/store_failures_as",
     "firstVersion": "1.7",
   },

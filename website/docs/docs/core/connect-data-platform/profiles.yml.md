@@ -32,6 +32,7 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
   [static_parser](/reference/global-configs/parsing): <true | false>
   [cache_selected_only](/reference/global-configs/cache): <true | false>
   [populate_cache](/reference/global-configs/cache): <true | false>
+  [indirect_selection](/reference/global-configs/indirect-selection): <eager | cautious | buildable | empty>
 
 <profile-name>:
   target: <target-name> # this is the default target
@@ -56,4 +57,4 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
 
 ## User config
 
-You can set default values of global configs for all projects that you run using your local machine. See the docs on [global configs](/reference/global-configs/about-global-configs) for details.
+You can set default values of global configs for all projects that you run using your local machine. Read the docs on [global configs](/reference/global-configs/about-global-configs) for details.
