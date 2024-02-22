@@ -36,11 +36,20 @@ Each entry in `results` is a [`Result` object](/reference/dbt-classes#result-obj
 - `execution_time`: Total time spent executing this node
 - `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
 - `message`: How dbt will report this result on the CLI, based on information returned from the database
-
 import RowsAffected from '/snippets/_run-result.md'; 
 
 <RowsAffected/>
 
 <!-- this partial comes from https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/snippets/_run-result-->
 
+<VersionBlock firstVersion="1.8">
 
+There are three attributes related to the `applied` state in the run_results.json (to complement unique_id):
+
+- `compiled`: Boolean entry of the node compilation status (`False` after parsing, but `True` after compiling).
+- `compiled_code`: rendered string of the code that was compiled (empty after parsing, but full string after compiling).
+- `relation_name`: the fully-qualified name of the object that was (or will be) created/updated within the database.
+
+Any additional information about the `logical` state of nodes should continue to be looked up in the full node object in manifest.json via the unique_id.
+
+</VersionBlock>

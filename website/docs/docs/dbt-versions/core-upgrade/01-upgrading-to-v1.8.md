@@ -28,7 +28,14 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## New and changed features and functionality
 
-Coming soon!
+### Additional attributes in run_results.json
+
+There are three attributes related to the `applied` state in the run_results.json (to complement unique_id):
+
+- `compiled`: Boolean entry of the node compilation status (`False` after parsing, but `True` after compiling).
+- `compiled_code`: rendered string of the code that was compiled (empty after parsing, but full string after compiling).
+- `relation_name`: the fully-qualified name of the object that was (or will be) created/updated within the database.
+
 
 ## Quick hits
 
