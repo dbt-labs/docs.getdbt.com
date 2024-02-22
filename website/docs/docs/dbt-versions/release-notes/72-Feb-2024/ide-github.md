@@ -7,7 +7,7 @@ tags: [Feb-2024]
 date: 2024-02-22
 ---
 
-You can now edit the primary branch of your GitHub repo in the dbt Cloud IDE. The primary branch of GitHub has traditionally been _read-only_ in the IDE. This update changes the branch to _protected_ and allows direct edits. When a commit is made, dbt Cloud will prompt you to create a new branch. debt Cloud will pre-populate the new branch name with the _username_-patch-#; however, you can edit the field with a custom branch name.
+You can now edit the primary branch of your GitHub repo in the dbt Cloud IDE. The primary branch of GitHub has traditionally been _read-only_ in the IDE. This update changes the branch to _protected_ and allows direct edits. When a commit is made, dbt Cloud will prompt you to create a new branch. dbt Cloud will pre-populate the new branch name with the _username_-patch-#; however, you can edit the field with a custom branch name.
 
 The old experience was read-only:
 
