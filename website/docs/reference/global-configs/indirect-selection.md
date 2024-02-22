@@ -18,6 +18,8 @@ For example, you can run tests that only refer to selected nodes using a CLI con
 dbt test --indirect-selection cautious
 ```
 
+</File>
+
 For example, you can run tests that only refer to selected nodes using an environment variable example:
 
 <File name='Env var'>
