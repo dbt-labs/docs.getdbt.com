@@ -84,17 +84,15 @@ mf query --metrics average_purchase_price --dimensions metric_time,user_id__type
 
 ## Multi-hop joins
 
-:::info
-MetricFlow can join three tables at most, supporting multi-hop joins with a limit of two hops.
-:::
+MetricFlow allows users to join measures and dimensions across a graph of entities, referred to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
 
-MetricFlow allows users to join measures and dimensions across a graph of entities, which we refer to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
+MetricFlow can join up to three tables, supporting multi-hop joins with a limit of two hops. This enables complex data analysis without ambiguous paths. It supports navigating through data models, like moving from `orders` to `customers` to `country` tables. While direct three-hop paths are limited to prevent confusion from multiple routes to the same data, MetricFlow does allow joining more than three tables if the joins don’t exceed two hops to reach a dimension. 
 
-Here's an example schema for reference:
+For example, if you have two models, `country` and `region`, where customers are linked to countries, which in turn are linked to regions. You can join all of them in a single SQL query and can dissect `orders` by `customer__country_country_name` but not by `customer__country__region_name`.
 
-![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png)
+![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png "Example schema for reference")
 
-Notice how this schema can be translated into the three MetricFlow semantic models below to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
+Notice how the schema can be translated into the following three MetricFlow semantic models to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
 
 ```yaml
 semantic_models:
