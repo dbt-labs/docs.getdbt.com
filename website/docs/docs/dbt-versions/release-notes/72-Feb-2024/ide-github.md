@@ -7,20 +7,16 @@ tags: [Feb-2024]
 date: 2024-02-22
 ---
 
-You can now edit the primary branch of your GitHub repo in the dbt Cloud IDE. The primary branch of GitHub has traditionally been _read-only_ in the IDE. This update changes the branch to _protected_ and allows direct edits. When a commit is made, dbt Cloud will prompt you to create a new branch. dbt Cloud will pre-populate the new branch name with the _username_-patch-#; however, you can edit the field with a custom branch name.
+You can now edit the primary branch of your GitHub repo in the dbt Cloud IDE. The primary branch of GitHub has traditionally been _read-only_ in the IDE. This update changes the branch to _protected_ and allows direct edits. When a commit is made, dbt Cloud will prompt you to create a new branch. dbt Cloud will pre-populate the new branch name with the USERNAME-patch-#; however, you can edit the field with a custom branch name.
 
-The old experience was read-only:
+Previously, the primary branch was displayed as read-only:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/read-only.png" width="90%" title="Old read-only experience"/>
 
-The branch is now displayed with a lock icon to identify it as a protected branch:
+Now, the branch is displayed with a lock icon to identify it as protected:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/protected.png" width="90%" title="New protected experience"/>
 
-When you make a commit to the branch, you receive a prompt that warns that it is a protected branch, with the option to cancel the commit or create a new branch:
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/commit-popup.png" width="90%" title="Protected branch pop-up window"/>
-
-When you choose **Create new branch**, you are presented with a window where you can enter the branch name and commit message:
+When you make a commit while on the primary branch, a model window will open prompting you to create a new branch and enter a commit message:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="90%" title="Create new branch window"/>
