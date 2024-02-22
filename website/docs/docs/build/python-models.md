@@ -255,7 +255,6 @@ def model(dbt, session):
     dbt.config(materialized="table")
     
     # Dynamic configuration access within Python f-strings, which allows for real-time retrieval and use of configuration values.
-    # Example: Dynamically accessing a configuration value
     print(f"Dynamic config value: {dbt.config.get('my_var')}")
     # Assuming 'my_var' is set to 5, this will print: Dynamic config value: 5
 
