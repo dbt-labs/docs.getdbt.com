@@ -162,20 +162,20 @@ unit_tests:
     given: # the mock data for your inputs
       - input: ref('stg_customers')
         rows:
-         - {customer_id: 1, email: cool@example.com,     email_top_level_domain: example.com}
-         - {customer_id: 2, email: cool@unknown.com,     email_top_level_domain: unknown.com}
-         - {customer_id: 3, email: badgmail.com,         email_top_level_domain: gmail.com}
-         - {customer_id: 4, email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
+         - {email: cool@example.com,     email_top_level_domain: example.com}
+         - {email: cool@unknown.com,     email_top_level_domain: unknown.com}
+         - {email: badgmail.com,         email_top_level_domain: gmail.com}
+         - {email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
       - input: ref('top_level_email_domains')
         rows:
          - {tld: example.com}
          - {tld: gmail.com}
     expect: # the expected output given the inputs above
       rows:
-        - {customer_id: 1, is_valid_email_address: true}
-        - {customer_id: 2, is_valid_email_address: false}
-        - {customer_id: 3, is_valid_email_address: false}
-        - {customer_id: 4, is_valid_email_address: false}
+        - {email: cool@example.com,    is_valid_email_address: true}
+        - {email: cool@unknown.com,    is_valid_email_address: false}
+        - {email: badgmail.com,        is_valid_email_address: false}
+        - {email: missingdot@gmailcom, is_valid_email_address: false}
 
 ```
 
@@ -187,10 +187,10 @@ unit_tests:
     given: # the mock data for your inputs
       - input: ref('stg_customers')
         rows:
-         - {customer_id: 1, email: cool@example.com,     email_top_level_domain: example.com}
-         - {customer_id: 2, email: cool@unknown.com,     email_top_level_domain: unknown.com}
-         - {customer_id: 3, email: badgmail.com,         email_top_level_domain: gmail.com}
-         - {customer_id: 4, email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
+         - {email: cool@example.com,     email_top_level_domain: example.com}
+         - {email: cool@unknown.com,     email_top_level_domain: unknown.com}
+         - {email: badgmail.com,         email_top_level_domain: gmail.com}
+         - {email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
       - input: ref('top_level_email_domains')
         format: csv
         rows: |
