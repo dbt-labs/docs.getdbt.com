@@ -264,9 +264,9 @@ Currently, mock data for unit testing in dbt supports two formats:
 
 We will support more in the future, so watch our [upgrade guides](/docs/dbt-versions/core-upgrade) and this page for updates.
 
-The `dict` data type is the default if no `format` is defined.
+The `dict` data format is the default if no `format` is defined.
 
-The `dict` format requires an inline dictionary for `rows`:
+`dict` requires an inline dictionary for `rows`:
 
 ```yml
 
@@ -282,7 +282,7 @@ unit_tests:
 
 ```
 
-When formatting a `csv` type, you can use either an inline CSV string for `rows`:
+When using the `csv` format, you can use either an inline CSV string for `rows`:
 
 ```yml
 
