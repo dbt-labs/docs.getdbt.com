@@ -153,6 +153,10 @@ When `format: csv`, can either supply:
     - If you do supply an input for a seed, we will use that input instead.
 - You can also have “empty” inputs, by setting rows to an empty list `rows: []`
 
+### Overrides
+
+When configuring your unit test, you can override the output of macros, vars, or environment variables for a given unit test. 
+
 ## Examples
 ```yml
 
