@@ -26,7 +26,7 @@ For example, you can run tests that only refer to selected nodes using an enviro
 
 ```text
 
-$ export DBT_indirect-selection=cautious
+$ export DBT_INDIRECT_SELECTION=cautious
 dbt run
 
 ```
