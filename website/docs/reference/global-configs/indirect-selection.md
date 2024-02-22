@@ -10,7 +10,7 @@ When all flags are set, CLI configurations take precedence, then environment var
 
 Options are `empty`, `buildable`, `cautious`, and `eager` (default). By default, dbt indirectly selects all tests if they touch any resource you select. Read more about these options in [Indirect selection in Test selection examples](/reference/node-selection/test-selection-examples?indirect-selection-mode=empty#indirect-selection).
 
-For example, you can run tests that only refer to selected nodes using a CLI configuration:
+You can run tests that only refer to selected nodes using a CLI configuration, for example:
 
 <File name='Usage'>
 
@@ -20,7 +20,7 @@ dbt test --indirect-selection cautious
 
 </File>
 
-For example, you can run tests that only refer to selected nodes using an environment variable example:
+You can run tests that only refer to selected nodes using an environment variable, for example:
 
 <File name='Env var'>
 
@@ -33,9 +33,8 @@ dbt run
 
 </File>
 
-For example, you can run tests that only refer to selected nodes using `profiles.yml` user configurations:
+You can run tests that only refer to selected nodes using `profiles.yml` user configurations, for example:
 
-dbt Core users can configure 
 <File name='profiles.yml'>
 
 ```yaml
