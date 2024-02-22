@@ -1,6 +1,6 @@
 ---
 title: "New: Edit in primary branch in IDE"
-description: "February 2024: Write access to the primary GitHub branch while in the IDE. This was previously a read-only feature."
+description: "February 2024: Edit access to the primary GitHub branch while in the IDE. This was previously a read-only feature."
 sidebar_label: "New: Edit primary branch in IDE"
 sidebar_position: 06
 tags: [Feb-2024]
