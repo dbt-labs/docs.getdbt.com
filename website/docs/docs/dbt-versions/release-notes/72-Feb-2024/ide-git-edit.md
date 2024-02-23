@@ -17,7 +17,7 @@ Previously, the primary branch was displayed as read-only, but now the branch is
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/read-only.png" width="85%" title="Previous read-only experience"/>
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/protected.png" width="85%" title="New protected experience"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/protected.png" width="75%" title="New protected experience"/>
 
 </DocCarousel>
 
