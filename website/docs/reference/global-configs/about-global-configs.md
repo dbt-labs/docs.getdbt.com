@@ -16,7 +16,7 @@ There is significant overlap between dbt's flags and dbt's command line options,
 
 There are multiple ways of setting flags, which depend on the use case:
 - **[Project-level `flags` (`dbt_project.yml`)](https://docs.getdbt.com/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Preserve legacy behaviors until their slated deprecation.
-- **[Environment variables](https://docs.getdbt.com/reference/global-configs/environment-variable-configs):** Define behavior that should be different in different runtime environments (development vs. production vs. [continuous integration](https://docs.getdbt.com/docs/deploy/continuous-integration), or different for different users in development (based on personal preferences).
+- **[Environment variables](https://docs.getdbt.com/reference/global-configs/environment-variable-configs):** Define different behavior in different runtime environments (development vs. production vs. [continuous integration](https://docs.getdbt.com/docs/deploy/continuous-integration), or different behavior for different users in development (based on personal preferences).
 - **[CLI options](https://docs.getdbt.com/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all dbt commands.
 
 The most specific setting "wins." If you set the same flag in all three ways, the CLI option will take precedence, followed by the environment variable, followed lastly by the value in `dbt_project.yml`. If you set the flag in none of those places, it will use the default value defined within dbt.
