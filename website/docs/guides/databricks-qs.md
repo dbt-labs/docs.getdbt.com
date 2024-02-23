@@ -191,7 +191,7 @@ Now that you have a repository configured, you can initialize your project and s
 ## Build your first model
 In the dbt Cloud IDE, you have two options for working with files:
 
-- Direct editing in the protected primary branch &mdash; You can edit, format, or lint files and execute dbt commands directly in your primary git branch. Once you're ready, you can commit those changes to a new branch.
+- Direct editing in the protected primary branch &mdash; You can edit, format, or lint files and execute dbt commands directly in your primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch.
 
 - Create a new branch before editing &mdash; If you prefer to keep the primary branch unchanged, you can create a new branch before starting your edits. To do this, go to **Version Control** on the left sidebar and click **Create branch**.
 
