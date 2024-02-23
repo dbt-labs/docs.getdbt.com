@@ -10,7 +10,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 5. Click **Merge this branch to main** to add these changes to the main branch on your repo.
 
 
-**If you created a new branch before editing**<br />
+**If you created a new branch before editing:**<br />
 1. Since you already branched out of the primary protected branch, go to  **Version Control** on the left.
 2. Click **Commit and sync** to add a message.
 3. Add a commit message, such as "Add customers model, tests, docs."
