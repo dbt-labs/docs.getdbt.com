@@ -21,7 +21,7 @@ These flags can _only_ be set in `dbt_project.yml`. They configure behaviors clo
 ## Behaviors
 
 ### `source_freshness_run_project_hooks`
-- Should the 'dbt source freshness' command include [on-run-start / on-run-end hooks](https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end)?
+- Should the 'dbt source freshness' command include [on-run-start / on-run-end hooks](/reference/project-configs/on-run-start-on-run-end)?
 - Planned introduction in v1.8, with default 'True'
 - Planned removal in v1.9
 

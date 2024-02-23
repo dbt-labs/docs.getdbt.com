@@ -15,9 +15,9 @@ There is significant overlap between dbt's flags and dbt's command line options,
 ### Setting flags
 
 There are multiple ways of setting flags, which depend on the use case:
-- **[Project-level `flags` (`dbt_project.yml`)](https://docs.getdbt.com/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Preserve legacy behaviors until their slated deprecation.
-- **[Environment variables](https://docs.getdbt.com/reference/global-configs/environment-variable-configs):** Define different behavior in different runtime environments (development vs. production vs. [continuous integration](https://docs.getdbt.com/docs/deploy/continuous-integration), or different behavior for different users in development (based on personal preferences).
-- **[CLI options](https://docs.getdbt.com/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all dbt commands.
+- **[Project-level `flags` (`dbt_project.yml`)](/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Preserve legacy behaviors until their slated deprecation.
+- **[Environment variables](/reference/global-configs/environment-variable-configs):** Define different behavior in different runtime environments (development vs. production vs. [continuous integration](/docs/deploy/continuous-integration), or different behavior for different users in development (based on personal preferences).
+- **[CLI options](/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all dbt commands.
 
 The most specific setting "wins." If you set the same flag in all three ways, the CLI option will take precedence, followed by the environment variable, followed lastly by the value in `dbt_project.yml`. If you set the flag in none of those places, it will use the default value defined within dbt.
 
@@ -44,7 +44,7 @@ There are two categories of exceptions:
 
 ### Accessing flags
 
-Custom user-defined logic, written in Jinja, can check the values of flags using [the `flags` context variable](https://docs.getdbt.com/reference/dbt-jinja-functions/flags).
+Custom user-defined logic, written in Jinja, can check the values of flags using [the `flags` context variable](/reference/dbt-jinja-functions/flags).
 
 ```yaml
 # dbt_project.yml
@@ -53,7 +53,7 @@ on-run-start:
   - '{{ log("I will stop at the first sign of trouble", info = true) if flags.FAIL_FAST }}'
 ```
 
-Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](https://docs.getdbt.com/reference/parsing#known-limitations).
+Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
 
 ### Available flags
 
