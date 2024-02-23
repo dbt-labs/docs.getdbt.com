@@ -4,7 +4,7 @@ description: "February 2024: Edit directly on your primary git branch and commit
 sidebar_label: "Enhancement: Edit primary git branch in IDE"
 sidebar_position: 06
 tags: [Feb-2024]
-date: 2024-02-22
+date: 2024-02-23
 ---
 
 You can now edit, format, or lint files and execute dbt commands directly in your primary git branch in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  This enhancement is available across various repositories: native integrations, imported git URLs, and managed repos.
