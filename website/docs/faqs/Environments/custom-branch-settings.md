@@ -14,11 +14,11 @@ To specify a custom branch:
 
 ## Development
 
-In a development environment, the default branch (usually named `main`) is a protected branch in your connected repositories. This means you can directly edit, format, or lint files and execute dbt commands in your protected primary git branch. When ready, you can commit those changes to a new branch.
+In a development environment, the default branch (usually named `main`) is a protected branch in your connected repositories. This means you can directly edit, format, or lint files and execute dbt commands in your protected default git branch. When ready, you can commit those changes to a new branch.
 
-Specifying a **Custom branch** overrides the default behavior. It makes the custom branch 'read-only' and enables you to create new development branches from it. This also means you can't edit this custom branch directly.
+Specifying a **Custom branch** overrides the default behavior. It makes the custom branch a protected branch and enables you to create new development branches from it. This also means you can directly edit, format, or lint files and execute dbt commands in your custom branch. When ready, you can commit those changes to a new branch.
 
-Only one branch can be read-only, which means when you set up a custom branch, your `main` branch (usually read-only) becomes editable. If you want to protect the `main` branch and prevent any commits on it, you need to set up branch protection rules in your git provider settings. This ensures your `main` branch remains secure and no new commits can be made to it.
+Only one branch can be protected. If you specify a custom branch, the default branch is no longer protected.
 
 For example, if you want to use the `develop` branch of a connected repository:
 
