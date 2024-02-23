@@ -149,7 +149,7 @@ To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/),
 
 By default, the IDE uses sqlfmt rules to format your code, making the **Format** button available and convenient to use immediately. However, if you have a file named .sqlfluff in the root directory of your dbt project, the IDE will default to SQLFluff rules instead.
 
-Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch.
+Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. Open a `.sql` file and click on the **Code Quality** tab.
 2. Click on the **`</> Config`** button on the right side of the console.
