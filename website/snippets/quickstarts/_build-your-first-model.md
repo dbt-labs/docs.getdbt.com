@@ -1,6 +1,6 @@
 You have two options for working with files in the dbt Cloud IDE:
 
-- Editing in the protected primary branch &mdash; Edit, format, or lint files and execute dbt commands directly in your primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+- Edit in the protected primary branch &mdash; Edit, format, or lint files and execute dbt commands directly in your primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 - Create a new branch before editing &mdash; If you prefer to keep the primary branch unchanged, create a new branch before starting your edits. Navigate to **Version Control** on the left sidebar and click **Create branch**.
 
