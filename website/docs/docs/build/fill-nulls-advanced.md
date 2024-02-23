@@ -78,14 +78,16 @@ Although there are no days without visits, there are days without leads. After a
 | 2024-01-02 | 37 | 0 |
 | 2024-01-03 | 79 | 8 |
 
-### Use join_to_timespine to fill null values
+### Use join_to_timespine to fill null values for derived and ratio metrics
 
 To ensure you have a complete set of data for every and daily coverage for metrics calculated from other metrics, you can use `join_to_timespine` to fill null values for `derived` and `ratio` metrics. These metrics are built from other metrics (other calculations), not direct measures (raw data), requiring MetricFlow to have an extra subquery layer to render the metric. The subquery nesting is as follows:
 
 - For `derived` and `ratio` metrics, there are three levels of subquery nesting &mdash; derived or ratio metric → input metrics → input measures.
 - For `simple` and `cumulative` metrics, there are only two levels of subquery nesting &mdash; simple or cumulative metric → input measure.
 
-Because `coalesce` isn't applied to the third, subquery layer for `derived` or `ratio` metrics, this means you could still have nulls in the final result set. This is different to [`conversion` metrics](/docs/build/conversion), which focus on event relationships and don't need daily fills.
+Because `coalesce` isn't applied to the third, subquery layer for `derived` or `ratio` metrics, this means you could still have nulls in the final result set. 
+
+* Note you can use `join_to_timespine` with metrics that take measure inputs as well if you want to include a row for every date, even if there is no data. 
 
 ### Fill null values for derived and ratio metrics
 
