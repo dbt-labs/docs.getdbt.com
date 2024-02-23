@@ -49,7 +49,7 @@ semantic_models:
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
     defaults:                                 ## Required
-      agg_time_dimension: dimension_name    ## Required if the model contains dimensions
+      agg_time_dimension: dimension_name    ## Required if the model contains measures
     entities:                                 ## Required
        - see more information in entities
     measures:                                 ## Optional
