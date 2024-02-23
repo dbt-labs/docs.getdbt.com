@@ -176,7 +176,7 @@ For more info on the order of precedence and how to configure files, refer to [P
 
 ### Format Python
 
-To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter. Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch.
+To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter. Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. Open a `.py` file.
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
