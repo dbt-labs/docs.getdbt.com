@@ -53,7 +53,7 @@ Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FA
 
 ### Enable linting
 
-Linting is available on all branches, including your protected primary git branch. When ready, you can commit those changes to a new branch.
+Linting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch.
 
 1. To enable linting, open a `.sql` file and click the **Code Quality** tab.
 2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section), below the **File editor**. 
