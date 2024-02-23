@@ -149,7 +149,7 @@ To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/),
 
 By default, the IDE uses sqlfmt rules to format your code, making the **Format** button available and convenient to use immediately. However, if you have a file named .sqlfluff in the root directory of your dbt project, the IDE will default to SQLFluff rules instead.
 
-Formatting is available on all branches, including your protected primary git branch. When ready, you can commit those changes to a new branch.
+Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch.
 
 1. Open a `.sql` file and click on the **Code Quality** tab.
 2. Click on the **`</> Config`** button on the right side of the console.
@@ -162,7 +162,7 @@ Formatting is available on all branches, including your protected primary git br
 
 ### Format YAML, Markdown, JSON
 
-To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter. Formatting is available on all branches, including your protected primary git branch. When ready, you can commit those changes to a new branch.
+To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter. Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch.
 
 1. Open a `.yml`, `.md`, or `.json` file.
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. Use the **Code Quality** tab to view code errors. 
@@ -176,7 +176,7 @@ For more info on the order of precedence and how to configure files, refer to [P
 
 ### Format Python
 
-To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter. Formatting is available on all branches, including your protected primary git branch. When ready, you can commit those changes to a new branch.
+To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter. Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch.
 
 1. Open a `.py` file.
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
