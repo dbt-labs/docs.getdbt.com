@@ -21,6 +21,6 @@ Previously, the primary branch was displayed as read-only, but now the branch is
 
 </DocCarousel>
 
-When you make a commit while on the primary branch, a model window will open prompting you to create a new branch and enter a commit message:
+When you make a commit while on the primary branch, a modal window will open prompting you to create a new branch and enter a commit message:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="75%" title="Create new branch window"/>
