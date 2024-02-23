@@ -2,7 +2,7 @@
 
 Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
 
-**If you edited directly in the protected primary branch**<br />
+**If you edited directly in the protected primary branch:**<br />
 1. Click the **Commit and sync git** button. This action prepares your changes for commit.
 2. A modal titled **Commit to a new branch** will appear.
 3. In the modal window, name your new branch `add-customers-model`. This branches off from your primary branch with your new changes.
