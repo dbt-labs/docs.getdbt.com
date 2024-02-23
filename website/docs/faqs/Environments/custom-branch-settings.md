@@ -16,7 +16,7 @@ To specify a custom branch:
 
 In a development environment, the default branch (usually named `main`) is protected in your connected repositories. You can directly edit, format, or lint files and execute dbt commands in your protected default git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch when you're ready.
 
-Specifying a **Custom branch** overrides the default behavior. It makes the custom branch a protected branch and enables you to create new development branches from it. This also means you can directly edit, format, or lint files and execute dbt commands in your custom branch. When ready, you can commit those changes to a new branch.
+Specifying a **Custom branch** overrides the default behavior. It makes the custom branch protected and enables you to create new development branches from it. You can directly edit, format, or lint files and execute dbt commands in your custom branch, but you cannot make commits to it. dbt Cloud prompts you to commit those changes to a new branch.
 
 Only one branch can be protected. If you specify a custom branch, the default branch is no longer protected.  If you want to protect the default branch and prevent any commits on it, you need to set up branch protection rules in your git provider settings. This ensures your default branch remains secure and no new commits can be made to it.
 
