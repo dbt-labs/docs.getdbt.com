@@ -195,7 +195,7 @@ In the dbt Cloud IDE, you have two options for working with files:
 
 - Create a new branch before editing &mdash; If you prefer to keep the primary branch unchanged, you can create a new branch before starting your edits. To do this, go to **Version Control** on the left sidebar and click **Create branch**.
 
-You can name the new branch `add-customers-model`.
+Name the new branch `add-customers-model`.
 
 1. Click the **...** next to the `models` directory, then select **Create file**.  
 2. Name the file `customers.sql`, then click **Create**.
