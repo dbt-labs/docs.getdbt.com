@@ -162,7 +162,7 @@ Formatting is available on all branches, including your protected primary git br
 
 ### Format YAML, Markdown, JSON
 
-To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter. Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch.
+To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter. Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
 1. Open a `.yml`, `.md`, or `.json` file.
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. Use the **Code Quality** tab to view code errors. 
