@@ -14,17 +14,17 @@ When all flags are set, the order of precedence are as follows. Refer to [About 
 
 You can set the flag to: `empty`, `buildable`, `cautious`, or `eager` (default). By default, dbt indirectly selects all tests if they touch any resource you select. Learn more about these options in [Indirect selection in Test selection examples](/reference/node-selection/test-selection-examples?indirect-selection-mode=empty#indirect-selection).
 
-You can run tests that only refer to selected nodes using a CLI configuration, for example:
+For example, you can run tests that only refer to selected nodes using a CLI configuration:
 
 <File name='Usage'>
 
-```text
+```shell
 dbt test --indirect-selection cautious
 ```
 
 </File>
 
-You can run tests that only refer to selected nodes using an environment variable, for example:
+For example, you can run tests that only refer to selected nodes using an environment variable
 
 <File name='Env var'>
 
@@ -37,7 +37,7 @@ dbt run
 
 </File>
 
-You can run tests that only refer to selected nodes using `profiles.yml` user configurations, for example:
+For example, you can run tests that only refer to selected nodes using `profiles.yml` user configurations:
 
 <File name='profiles.yml'>
 
