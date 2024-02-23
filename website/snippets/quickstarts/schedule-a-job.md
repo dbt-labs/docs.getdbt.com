@@ -2,8 +2,19 @@
 
 Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
 
-1. Under **Version Control** on the left, click **Commit and sync** and add a message. For example, "Add customers model, tests, docs."
-2. Click **Merge this branch to main** to add these changes to the main branch on your repo.
+**If you edited directly in the protected primary branch**<br />
+1. Click the **Commit and sync git** button. This action prepares your changes for commit.
+2. A modal titled **Commit to a new branch** will appear.
+3. In the modal popup, name your new branch `add-customers-model`. This branches off from your primary branch with your new changes.
+4. Add a commit message, such as "Add customers model, tests, docs" and and commit your changes.
+5. Click **Merge this branch to main** to add these changes to the main branch on your repo.
+
+
+**If you created a new branch before editing**<br />
+1. Since you already branched out of the primary protected branch, go to  **Version Control** on the left.
+2. Click **Commit and sync** to add a message.
+3. Add a commit message, such as "Add customers model, tests, docs."
+4. Click **Merge this branch to main** to add these changes to the main branch on your repo.
 
 ## Deploy dbt
 

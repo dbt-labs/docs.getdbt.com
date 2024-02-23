@@ -18,8 +18,8 @@ The IDE streamlines your workflow, and features a popular user interface layout 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-side-menu.jpg" width="30%" title="The Git repo link, documentation site button, Version Control menu, and File Explorer"/>
 
-1. **Git repository link &mdash;** Clicking the Git repository link, located on the upper left of the IDE, takes you to your repository on the same active branch. 
-    * **Note:** This feature is only available for GitHub or GitLab repositories on multi-tenant dbt Cloud accounts.
+1. **Git repository and link &mdash;** The Git repository link, located on the upper left of the IDE, takes you to your repository on the same active branch. It also shows the repository name and the active branch name.
+    * **Note:** This linking feature is only available for GitHub or GitLab repositories on multi-tenant dbt Cloud accounts.
 
 2. **Documentation site button &mdash;** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
 
@@ -29,7 +29,6 @@ The IDE streamlines your workflow, and features a popular user interface layout 
     - Click on any file in the filetree to open the file in the File Editor. 
     - Click and drag files between directories to move files. 
     - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
-    - **Note**: To perform these actions, the user must not be in `read-only` mode, which generally happens when the user is viewing the default branch.
     - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
       * Unsaved (•) — The IDE detects unsaved changes to your file/folder
       * Modification (M) — The IDE detects a modification of existing files/folders
@@ -38,12 +37,11 @@ The IDE streamlines your workflow, and features a popular user interface layout 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-bar.jpg" width="90%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
 
-5. **Command bar &mdash;**  The Command bar, located in the lower left of the IDE, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
+1. **Command bar &mdash;**  The Command bar, located in the lower left of the IDE, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
-6. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
+2. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
 
-7. **Status button &mdash;** The IDE Status button, located on the lower right of the IDE, displays the current IDE status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [IDE Status modal](#modals-and-menus), simply click on this button.
-
+3. **Status button &mdash;** The IDE Status button, located on the lower right of the IDE, displays the current IDE status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [IDE Status modal](#modals-and-menus), simply click on this button.
 
 ## Editing features
 
@@ -51,7 +49,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.jpg" width="90%" title="Use the file editor, version control section, and save button during your development workflow"/>
 
-1. **File Editor &mdash;** The File Editor is where users edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. 
+1. **File Editor &mdash;** The File Editor is where users edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. You can directly edit, format, or lint files and execute dbt commands in your protected primary git branch. When ready, you can commit those changes to a new branch.
 
     * Use intuitive [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) to help develop easier for you and your team.
 
@@ -162,6 +160,9 @@ Use menus and modals to interact with IDE and access useful options to help your
 
 - **IDE Status modal &mdash;**  The IDE Status modal shows the current error message and debug logs for the server. This also contains an option to restart the IDE. Open this by clicking on the IDE Status button.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-status-modal-with-save.jpg" width="90%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
+
+- **Commit to a new branch** &mdash; Edit directly on your primary git branch and commit those changes to a new branch when ready.
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="70%" title="Commit changes to a new branch"/>
 
 - **Commit Changes modal &mdash;** The Commit Changes modal is accessible via the Git Actions button to commit all changes or via the Version Control Options menu to commit individual changes. Once you enter a commit message, you can use the modal to commit and sync the selected changes.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/commit-changes-modal.png" width="90%" title="The Commit Changes modal is how users commit changes to their branch."/>

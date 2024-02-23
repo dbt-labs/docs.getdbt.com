@@ -12,10 +12,9 @@ To specify a custom branch:
 2. Select **Only run on a custom branch** under General Settings
 3. Specify the **branch name or tag**
 
-
 ## Development
 
-In a development environment, the default branch (usually named `main`) is a read-only branch in your connected repositories, which allows you to create new branches for development from it.  
+In a development environment, the default branch (usually named `main`) is a protected branch in your connected repositories. This means you can directly edit, format, or lint files and execute dbt commands in your protected primary git branch. When ready, you can commit those changes to a new branch.
 
 Specifying a **Custom branch** overrides the default behavior. It makes the custom branch 'read-only' and enables you to create new development branches from it. This also means you can't edit this custom branch directly.
 

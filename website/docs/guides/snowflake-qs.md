@@ -228,10 +228,18 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
-3. Click the **...** next to the `models` directory, then select **Create file**.  
-4. Name the file `customers.sql`, then click **Create**.
-5. Copy the following query into the file and click **Save**.
+In the dbt Cloud IDE, you have two options for working with files:
+
+- Direct editing in the protected primary branch &mdash; You can edit, format, or lint files and execute dbt commands directly in your primary git branch. Once you're ready, you can commit those changes to a new branch.
+
+- Create a new branch before editing &mdash; If you prefer to keep the primary branch unchanged, you can create a new branch before starting your edits. To do this, go to **Version Control** on the left sidebar and click **Create branch**.
+
+You can name the new branch `add-customers-model`.
+
+1. Click the **...** next to the `models` directory, then select **Create file**.  
+2. Name the file `customers.sql`, then click **Create**.
+3. Copy the following query into the file and click **Save**.
+
 ```sql
 with customers as (
 
@@ -290,7 +298,7 @@ final as (
 select * from final
 ```
 
-6. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
+4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 
