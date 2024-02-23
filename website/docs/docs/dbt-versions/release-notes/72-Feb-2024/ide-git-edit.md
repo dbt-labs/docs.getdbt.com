@@ -1,6 +1,6 @@
 ---
 title: "Enhancement: Edit in primary git branch in IDE"
-description: "February 2024: Edit directly on your primary git branch and commit those changes to a new branch when ready. This was previously a read-only feature." 
+description: "February 2024: Edit directly on your primary git branch and create a new branch when ready to commit. The primary branch was previously read-only but now allows editing while remaining protected." 
 sidebar_label: "Enhancement: Edit primary git branch in IDE"
 sidebar_position: 06
 tags: [Feb-2024]
