@@ -57,4 +57,4 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
 
 ## User config
 
-You can set default values of global configs for all projects that you run using your local machine. Read the docs on [global configs](/reference/global-configs/about-global-configs) for details.
+You can set default values of global configs for all projects that you run using your local machine. Refer to [About global configs](/reference/global-configs/about-global-configs) for details.
