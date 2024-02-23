@@ -155,7 +155,7 @@ When `format: csv`, can either supply:
 
 ### Overrides
 
-When configuring your unit test, you can override the output of [macros](https://docs.getdbt.com/docs/build/jinja-macros#macros), [project variables](https://docs.getdbt.com/docs/build/project-variables), or [environment variables](https://docs.getdbt.com/docs/build/environment-variables) for a given unit test. 
+When configuring your unit test, you can override the output of [macros](/docs/build/jinja-macros#macros), [project variables](/docs/build/project-variables), or [environment variables](/docs/build/environment-variables) for a given unit test. 
 
 ```yml
 
@@ -179,8 +179,8 @@ unit_tests:
 
 You can override the output of any macro in your unit test defition. 
 
-There are some macros you _must_ override if the model your unit testing uses them:
-  - [`is_incremental`](https://docs.getdbt.com/docs/build/incremental-models#understanding-the-is_incremental-macro): If you're unit testing an incremental model, you must explicity set `is_incremental` to `true` or `false`. See more docs on unit testing incremental models [here](https://docs.getdbt.com/docs/build/unit-tests#unit-testing-incremental-models). 
+There are some macros you _must_ override if the model you're unit testing uses them:
+  - [`is_incremental`](/docs/build/incremental-models#understanding-the-is_incremental-macro): If you're unit testing an incremental model, you must explicity set `is_incremental` to `true` or `false`. See more docs on unit testing incremental models [here](/docs/build/unit-tests#unit-testing-incremental-models). 
 
   ```yml
 
@@ -195,7 +195,7 @@ There are some macros you _must_ override if the model your unit testing uses th
 
   ```
 
-  - [`dbt_utils.star`](https://docs.getdbt.com/blog/star-sql-love-letter): If you're unit testing a model that uses the `star` macro, you must explicity set `star` to a list of columns. This is because the `star` only accepts a [relation](https://docs.getdbt.com/reference/dbt-classes#relation) for the `from` argument; the unit test mock input data is injected directly into the model SQL, replacing the `ref('')` or `source('')` function, causing the `star` macro to fail unless overidden.
+  - [`dbt_utils.star`](/blog/star-sql-love-letter): If you're unit testing a model that uses the `star` macro, you must explicity set `star` to a list of columns. This is because the `star` only accepts a [relation](/reference/dbt-classes#relation) for the `from` argument; the unit test mock input data is injected directly into the model SQL, replacing the `ref('')` or `source('')` function, causing the `star` macro to fail unless overidden.
 
   ```yml
 
