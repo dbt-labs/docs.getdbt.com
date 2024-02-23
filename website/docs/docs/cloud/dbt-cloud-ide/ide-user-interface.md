@@ -161,7 +161,7 @@ Use menus and modals to interact with IDE and access useful options to help your
 - **IDE Status modal &mdash;**  The IDE Status modal shows the current error message and debug logs for the server. This also contains an option to restart the IDE. Open this by clicking on the IDE Status button.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-status-modal-with-save.jpg" width="90%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
 
-- **Commit to a new branch** &mdash; Edit directly on your primary git branch and commit those changes to a new branch when ready.
+- **Commit to a new branch** &mdash; Edit directly on your protected primary git branch and commit those changes to a new branch when ready.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="70%" title="Commit changes to a new branch"/>
 
 - **Commit Changes modal &mdash;** The Commit Changes modal is accessible via the Git Actions button to commit all changes or via the Version Control Options menu to commit individual changes. Once you enter a commit message, you can use the modal to commit and sync the selected changes.
