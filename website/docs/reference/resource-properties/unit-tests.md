@@ -58,100 +58,16 @@ unit_tests:
 Unit tests are currently limited to testing SQL models and only models in your current project. 
 
 ### Versions
-If your model has multiple versions, the default unit test will run on *all* versions of your model. To specify version(s) of your model to unit test, use `include` or `exclude` for the desired versions in your model versions config:
 
-```yaml
-
-# my test_is_valid_email_address unit test will run on all versions of my_model
-unit_tests:
-  - name: test_is_valid_email_address
-    model: my_model
-    ...
-            
-# my test_is_valid_email_address unit test will run on ONLY version 2 of my_model
-unit_tests:
-  - name: test_is_valid_email_address 
-    model: my_model 
-      versions:
-        include: 
-          - 2
-    ...
-            
-# my test_is_valid_email_address unit test will run on all versions EXCEPT 1 of my_model
-unit_tests:
-  - name: test_is_valid_email_address
-    model: my_model 
-      versions:
-        exclude: 
-          - 1
-    ...
-
-```
+See [Unit testing versioned SQL models](/reference/resource-properties/unit-testing-versions)
 
 ### Format
 
-When using `format: dict` you must supply an in-line dictionary for `rows:` (this is the default, if you don’t specify a `format`)
-    
-```yml
-
-unit_tests:
-  - name: test_my_model
-    model: my_model
-    given:
-      - input: ref('my_model_a')
-        format: dict
-        rows:
-          - {id: 1, name: gerda}
-          - {id: 2, b: michelle}    
-        ...
-```
-
-When `format: csv`, can either supply:
-  - An inline csv string for `rows:`
-        
-  ```yaml
-  unit_tests:
-    - name: test_my_model
-      model: my_model
-      given:
-        - input: ref('my_model_a')
-          format: csv
-          rows: |
-            id,name
-            1,gerda
-            2,michelle
-        ...
-    ```
-
-        
-  - The name of a csv file in the `tests/fixtures` directory in your project (or the directory configured for [test-paths](https://docs.getdbt.com/reference/project-configs/test-paths)) for `fixture`:
-        
-    ```yaml
-    unit_tests:
-      - name: test_my_model
-        model: my_model
-        given:
-          - input: ref('my_model_a')
-            format: csv
-            fixture: my_model_a_fixture
-        ...
-    ```
-        
-    ```csv
-    # tests/fixtures/my_model_a_fixture.csv
-    1,gerda
-    2,michelle
-    ```
+See [Data formats](/reference/resource-properties/data-formats)
         
 ### Input
-        
-- `input:` string that represents a `ref` or `source` call:
-    - `ref('my_model')` or `ref('my_model', v='2')` or `ref('dougs_project', 'users')`
-    - `source('source_schema', 'source_name')`
-- `input:` is optional for seeds:
-    - If you don’t supply an input for a seed, we will use the seed *as* the input.
-    - If you do supply an input for a seed, we will use that input instead.
-- You can also have “empty” inputs, by setting rows to an empty list `rows: []`
+
+See [Input](/reference/resource-properties/unit-test-input)
 
 ## Examples
 ```yml
