@@ -155,7 +155,7 @@ Referencing [ephemeral](/docs/build/materializations#ephemeral) models is curren
 
 <VersionBlock firstVersion="1.8">
 
-From dbt version 1.8, Python models also support dynamic referencing of models and configurations within Python f-strings. This allows for more nuanced and dynamic model configurations directly within your Python code. For example:
+From dbt version 1.8, Python models also support dynamic configurations within Python f-strings. This allows for more nuanced and dynamic model configurations directly within your Python code. For example:
 
 <File name='models/my_python_model.py'>
 
@@ -242,7 +242,6 @@ def model(dbt, session):
 </File>
 
 <VersionBlock firstVersion="1.8">
-    
 
 #### Dynamic configurations
 
@@ -254,10 +253,10 @@ In addition to the existing methods of configuring Python models, you also have 
 def model(dbt, session):
     dbt.config(materialized="table")
     
-    # Dynamic configuration access within Python f-strings, which allows for real-time retrieval and use of configuration values.
-    print(f"Dynamic config value: {dbt.config.get('my_var')}")
+    # Dynamic configuration access within Python f-strings, 
+    # which allows for real-time retrieval and use of configuration values.
     # Assuming 'my_var' is set to 5, this will print: Dynamic config value: 5
-
+    print(f"Dynamic config value: {dbt.config.get('my_var')}")
 ```
 
 </File>
