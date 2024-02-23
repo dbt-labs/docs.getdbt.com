@@ -18,7 +18,7 @@ The IDE streamlines your workflow, and features a popular user interface layout 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-side-menu.jpg" width="30%" title="The Git repo link, documentation site button, Version Control menu, and File Explorer"/>
 
-1. **Git repository and link &mdash;** The Git repository link, located on the upper left of the IDE, takes you to your repository on the same active branch. It also shows the repository name and the active branch name.
+1. **Git repository link &mdash;** The Git repository link, located on the upper left of the IDE, takes you to your repository on the same active branch. It also displays the repository name and the active branch name.
     * **Note:** This linking feature is only available for GitHub or GitLab repositories on multi-tenant dbt Cloud accounts.
 
 2. **Documentation site button &mdash;** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
