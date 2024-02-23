@@ -127,6 +127,9 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 
 </VersionBlock>
 
+import WhitespaceControl from '/snippets/_whitespace-control.md';
+
+<WhitespaceControl/>
 
 ### Dispatch macro - SQL alias management for databases and dbt packages
 
