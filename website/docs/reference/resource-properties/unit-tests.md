@@ -71,25 +71,7 @@ See [Input](/reference/resource-properties/unit-test-input)
 
 ### Overrides
 
-When configuring your unit test, you can override the output of [macros](/docs/build/jinja-macros#macros), [project variables](/docs/build/project-variables), or [environment variables](/docs/build/environment-variables) for a given unit test. 
-
-```yml
-
-unit_tests:
-  - name: my_favorite_unit_test
-    model: my_favorite_model
-    overrides:
-      macros:
-        is_incremental: false 
-        current_timestamp: "date('2023-01-15')"
-      vars:
-        my_name: grace
-        platforms: ['web', 'mobile']
-      env_vars:
-        DBT_ENVIRONMENT_NAME: prod
-    ...
-
-```
+See [Overrides](/reference/resource-properties/unit-test-overrides)
 
 #### Macros
 

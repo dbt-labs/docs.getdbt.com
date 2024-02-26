@@ -12,7 +12,7 @@ The `dbt build` command will:
 
 In DAG order, for selected resources or an entire project.
 
-### Details
+## Details
 
 **Artifacts:** The `build` task will write a single [manifest](/reference/artifacts/manifest-json) and a single [run results artifact](/reference/artifacts/run-results-json). The run results will include information about all models, tests, seeds, and snapshots that were selected to build, combined into one file.
 
@@ -25,7 +25,22 @@ In DAG order, for selected resources or an entire project.
 
 **Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types (e.g. both models and seeds will be full refreshed).
 
-### Examples
+<VersionBlock firstVersion="1.8">
+
+## Unit tests
+
+When `dbt build` is executed with unit tests, the models will be processed according to their lineage and dependencies. The tests will be executed as follows:
+
+- [Unit tests](/docs/build/unit-tests) are run on a SQL model.
+- The model is materialized.
+- [Data tests](/docs/build/data-tests) are run on the model.
+
+This saves on warehouse spend because the model won't be materialized unless the unit tests pass successfully.
+
+Unit tests and data tests can be selected using `--select test_type:unit` or `--select test_type:data` for `dbt build` (same for the `--exclude` flag).
+
+
+## Examples
 
 ```
 $ dbt build
