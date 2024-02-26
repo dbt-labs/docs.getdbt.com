@@ -12,3 +12,23 @@ Inputs in unit testing are used to reference a specific model or source for the 
     - If you don’t supply an input for a seed, we will use the seed _as_ the input.
     - If you do supply an input for a seed, we will use that input instead.
 - You can also have “empty” inputs, by setting rows to an empty list `rows: []`
+
+```yml
+
+unit_tests:
+  - name: test_is_valid_email_address # this is the unique name of the test
+    model: dim_customers # name of the model I'm unit testing
+    given: # the mock data for your inputs
+      - input: ref('stg_customers')
+        rows:
+         - {email: cool@example.com,     email_top_level_domain: example.com}
+         - {email: cool@unknown.com,     email_top_level_domain: unknown.com}
+         - {email: badgmail.com,         email_top_level_domain: gmail.com}
+         - {email: missingdot@gmailcom,  email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        rows:
+         - {tld: example.com}
+         - {tld: gmail.com}
+...
+
+```
