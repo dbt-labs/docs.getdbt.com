@@ -207,3 +207,4 @@ You can set more metadata for your metrics, which can be used by other tools lat
 - [Semantic models](/docs/build/semantic-models)
 - [Cumulative](/docs/build/cumulative)
 - [Derived](/docs/build/derived)
+- [Fill null values for metrics](/docs/build/fill-nulls-advanced)
