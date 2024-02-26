@@ -33,7 +33,7 @@ The `build` command supports the `--empty` flag for building schema-only dry run
 
 ## Unit tests
 
-When `dbt build` is executed with unit tests, the models will be processed according to their lineage and dependencies. The tests will be executed as follows:
+When `dbt build` is executed with unit tests applied, the models will be processed according to their lineage and dependencies. The tests will be executed as follows:
 
 - [Unit tests](/docs/build/unit-tests) are run on a SQL model.
 - The model is materialized.
