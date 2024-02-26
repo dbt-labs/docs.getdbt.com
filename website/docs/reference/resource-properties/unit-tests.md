@@ -52,63 +52,8 @@ unit_tests:
 
 </file>
 
-
-## About writing unit tests
-
-Unit tests are currently limited to testing SQL models and only models in your current project. 
-
-### Versions
-
-See [Unit testing versioned SQL models](/reference/resource-properties/unit-testing-versions)
-
-### Format
-
-See [Data formats](/reference/resource-properties/data-formats)
-        
-### Input
-
-See [Input](/reference/resource-properties/unit-test-input)
-
-### Overrides
-
-See [Overrides](/reference/resource-properties/unit-test-overrides)
-
-#### Macros
-
-You can override the output of any macro in your unit test defition. 
-
-There are some macros you _must_ override if the model you're unit testing uses them:
-  - [`is_incremental`](/docs/build/incremental-models#understanding-the-is_incremental-macro): If you're unit testing an incremental model, you must explicity set `is_incremental` to `true` or `false`. See more docs on unit testing incremental models [here](/docs/build/unit-tests#unit-testing-incremental-models). 
-
-  ```yml
-
-  unit_tests:
-    - name: my_unit_test
-      model: my_incremental_model
-      overrides:
-        macros:
-          # unit test this model in "full refresh" mode
-          is_incremental: false 
-      ...
-
-  ```
-
-  - [`dbt_utils.star`](/blog/star-sql-love-letter): If you're unit testing a model that uses the `star` macro, you must explicity set `star` to a list of columns. This is because the `star` only accepts a [relation](/reference/dbt-classes#relation) for the `from` argument; the unit test mock input data is injected directly into the model SQL, replacing the `ref('')` or `source('')` function, causing the `star` macro to fail unless overidden.
-
-  ```yml
-
-  unit_tests:
-    - name: my_other_unit_test
-      model: my_model_that_uses_star
-      overrides:
-        macros:
-          # explicity set star to relevant list of columns
-          star: col_a,col_b,col_c 
-      ...
-
-  ```  
-
 ## Examples
+
 ```yml
 
 unit_tests:

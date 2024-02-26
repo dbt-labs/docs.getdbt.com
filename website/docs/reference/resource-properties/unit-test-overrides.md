@@ -30,3 +30,38 @@ When configuring your unit test, you can override the output of [macros](/docs/b
         - {macro_call: override, var_call: var_override, env_var_call: env_var_override, invocation_id: 123}
 
 ```
+
+## Macros
+
+You can override the output of any macro in your unit test defition. 
+
+There are some macros you _must_ override if the model you're unit testing uses them:
+  - [`is_incremental`](/docs/build/incremental-models#understanding-the-is_incremental-macro): If you're unit testing an incremental model, you must explicity set `is_incremental` to `true` or `false`. See more docs on unit testing incremental models [here](/docs/build/unit-tests#unit-testing-incremental-models). 
+
+  ```yml
+
+  unit_tests:
+    - name: my_unit_test
+      model: my_incremental_model
+      overrides:
+        macros:
+          # unit test this model in "full refresh" mode
+          is_incremental: false 
+      ...
+
+  ```
+
+  - [`dbt_utils.star`](/blog/star-sql-love-letter): If you're unit testing a model that uses the `star` macro, you must explicity set `star` to a list of columns. This is because the `star` only accepts a [relation](/reference/dbt-classes#relation) for the `from` argument; the unit test mock input data is injected directly into the model SQL, replacing the `ref('')` or `source('')` function, causing the `star` macro to fail unless overidden.
+
+  ```yml
+
+  unit_tests:
+    - name: my_other_unit_test
+      model: my_model_that_uses_star
+      overrides:
+        macros:
+          # explicity set star to relevant list of columns
+          star: col_a,col_b,col_c 
+      ...
+
+  ``` 
