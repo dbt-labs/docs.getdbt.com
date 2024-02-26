@@ -40,6 +40,8 @@ metrics:
           offset_window: set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time. # Optional
 ```
 
+For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
+
 ## Derived metrics example
 
 ```yaml
@@ -157,3 +159,7 @@ bookings - bookings_7_days_ago would be compile as 7438 - 7252 = 186.
 | d7_booking_change | metric_time__month |
 | ----------------- | ------------------ |
 | 186 | 2017-07-01 |
+
+## Related docs
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
+
