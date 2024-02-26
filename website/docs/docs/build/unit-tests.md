@@ -329,7 +329,7 @@ There is currently no way to unit test whether the dbt framework inserted/merged
 
 ## Additional resources
 
-- [Unit testing reference page](/reference/resource-properties/unit-testing)
+- [Unit testing reference page](/reference/resource-properties/unit-tests)
 - [Supported data formats for mock data](/reference/resource-properties/data-formats)
 - [Unit testing versioned models](/reference/resource-properties/unit-testing-versions)
 - [Unit test inputs](/reference/resource-properties/unit-test-input)
