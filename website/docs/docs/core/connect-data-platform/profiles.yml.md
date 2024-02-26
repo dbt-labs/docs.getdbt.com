@@ -32,7 +32,6 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
   [static_parser](/reference/global-configs/parsing): <true | false>
   [cache_selected_only](/reference/global-configs/cache): <true | false>
   [populate_cache](/reference/global-configs/cache): <true | false>
-  [indirect_selection](/reference/global-configs/indirect-selection): <eager | cautious | buildable | empty>
 
 <profile-name>:
   target: <target-name> # this is the default target
