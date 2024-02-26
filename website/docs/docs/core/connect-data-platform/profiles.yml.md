@@ -28,6 +28,7 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
   [debug](/reference/global-configs/logs#log-level): <true | false>
   [version_check](/reference/global-configs/version-compatibility): <true | false>
   [fail_fast](/reference/global-configs/failing-fast): <true | false>
+  [indirect_selection](/reference/global-configs/indirect-selection): <eager | cautious | buildable | empty>
   [use_experimental_parser](/reference/global-configs/parsing): <true | false>
   [static_parser](/reference/global-configs/parsing): <true | false>
   [cache_selected_only](/reference/global-configs/cache): <true | false>
