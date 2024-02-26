@@ -13,6 +13,14 @@ If you're using dbt Cloud, you can [connect to your data platform](/docs/cloud/c
 
 This section identifies the parts of your `profiles.yml` that aren't specific to a particular data platform. For specific connection details, refer to the relevant page for your data platform.
 
+<VersionBlock lastVersion="1.7">
+
+:::warning Global configs
+
+Starting in dbt v1.8, global configs have been deprecated from the `profiles.yml` file and should be configured in the [`dbt_project.yml`](/reference/dbt_project.yml) file instead. 
+
+:::
+
 <File name='profiles.yml'>
 
 ```yml
@@ -53,6 +61,37 @@ This section identifies the parts of your `profiles.yml` that aren't specific to
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+<File name='profiles.yml'>
+
+```yml
+
+<profile-name>:
+  target: <target-name> # this is the default target
+  outputs:
+    <target-name>:
+      type: <bigquery | postgres | redshift | snowflake | other>
+      schema: <schema_identifier>
+      threads: <natural_number>
+
+      ### database-specific connection details
+      ...
+
+    <target-name>: # additional targets
+      ...
+
+<profile-name>: # additional profiles
+  ...
+
+```
+
+</File>
+
+</VersionBlock>
 
 ## User config
 
