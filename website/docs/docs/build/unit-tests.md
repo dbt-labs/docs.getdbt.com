@@ -335,4 +335,3 @@ There is currently no way to unit test whether the dbt framework inserted/merged
 - [Unit testing versioned models](/reference/resource-properties/unit-testing-versions)
 - [Unit test inputs](/reference/resource-properties/unit-test-input)
 - [Unit test overrides](/reference/resource-properties/unit-test-overrides)
-- [The `--empty` flag](/reference/commands/build#the---empty-flag)
