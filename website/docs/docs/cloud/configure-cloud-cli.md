@@ -82,7 +82,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 With your repo recloned, you can add, edit, and sync files with your repo.
 
-### Set environment variables
+## Set environment variables
 
 To set environment variables in the dbt Cloud CLI for your dbt project:
 
@@ -94,9 +94,11 @@ To set environment variables in the dbt Cloud CLI for your dbt project:
 
 ## Use the dbt Cloud CLI
 
-- The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your dbt Cloud configuration details.
-- It allows you to automatically defer build artifacts to your Cloud project's production environment.
-- It also supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
+The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) and [MetricFlow commands](/docs/build/metricflow-commands) as dbt Core to execute the commands you provide. For example, use the [`dbt environment`](/reference/commands/dbt-environment) command to view your dbt Cloud configuration details. With the dbt Cloud CLI, you can:
+
+- Run [multiple invocations in parallel](/reference/dbt-commands) and ensure [safe parallelism](/reference/dbt-commands#parallel-execution), which is currently not guaranteed by `dbt-core`.
+- Automatically defers build artifacts to your Cloud project's production environment.
+- Supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
 
 :::tip Use the <code>--help</code> flag

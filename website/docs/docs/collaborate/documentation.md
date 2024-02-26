@@ -64,7 +64,7 @@ models:
 ## Generating project documentation
 You can generate a documentation site for your project (with or without descriptions) using the CLI.
 
-First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. To see documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
+First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. To see the documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
 
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 
@@ -74,7 +74,6 @@ Then, run `dbt docs serve` to use these `.json` files to populate a local websit
 <FAQ path="Docs/long-descriptions" />
 <FAQ path="Docs/sharing-documentation" />
 <FAQ path="Docs/document-other-resources" />
-<FAQ path="Project/docs-for-multiple-projects" />
 
 
 ## Using Docs Blocks

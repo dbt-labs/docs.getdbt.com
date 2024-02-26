@@ -430,6 +430,15 @@ ross_turk:
   name: Ross Turk
   organization: Datakin
 
+roxi_dahlke:
+  image_url: /img/blog/authors/roxi-dahlke.png
+  job_title: Product Manager
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/roxanna-dahlke-pourzand-445a3035
+  name: Roxi Dahlke 
+  organization: dbt Labs  
+
 sam_harting:
   description: Sam is a graduate of the inaugural Foundry Program. When Sam isn't helping clients build out their project, he is usually playing video games or making bad jokes to his friends, family, and coworkers.
   image_url: /img/blog/authors/sam-harting.png

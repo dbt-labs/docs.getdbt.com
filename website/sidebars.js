@@ -340,6 +340,14 @@ const sidebarSettings = {
                 "docs/build/simple",
               ],
             },
+            {
+              type: "category",
+              label: "Advanced data modeling",
+              link: { type: "doc", id: "docs/build/advanced-topics" },
+              items: [
+                "docs/build/fill-nulls-advanced",
+              ],
+            },
           ],
         },
         {
@@ -490,9 +498,10 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        "docs/use-dbt-semantic-layer/sl-faqs",
         {
           type: "category",
-          label: "Integrations",
+          label: "Available integrations",
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
           items: [
             "docs/use-dbt-semantic-layer/avail-sl-integrations",
