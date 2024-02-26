@@ -5,8 +5,8 @@ description: "Read this guide to understand the project parsing configuration in
 
 ## Related documentation
 - The `dbt parse` [command](/reference/commands/parse)
-- Partial parsing [profile config](/docs/core/connect-data-platform/profiles.yml#partial_parse) and [CLI flags](/reference/global-cli-flags#partial-parsing)
-- Experimental parser [CLI flag](/reference/global-cli-flags#experimental-parser)
+- Partial parsing [profile config](/docs/core/connect-data-platform/profiles.yml#partial_parse) and [CLI flags](/reference/global-configs/parsing)
+- Experimental parser [CLI flag](/reference/global-configs/parsing)
 
 ## What is parsing?
 
