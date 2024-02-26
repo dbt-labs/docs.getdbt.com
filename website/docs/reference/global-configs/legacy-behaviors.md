@@ -6,10 +6,10 @@ sidebar: "Legacy behaviors"
 
 Most flags exist to configure runtime behaviors with multiple valid choices. The right choice may vary based on the environment, user preference, or the specific invocation.
 
-Another category of flags provides existing projects with a migration window for runtime behaviors that are changing in newer releases of dbt. These flags help us achieve a balance between these goals, which can otherwise be in tension:
-1. Providing a better, more sensible, and more consistent default behaviour for new users/projects going forward
-2. Providing a migration window for existing users/projects — nothing changes overnight without warning
-3. Maintainability of dbt software. Every fork in behaviour requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
+Another category of flags provides existing projects with a migration window for runtime behaviors that are changing in newer releases of dbt. These flags help us achieve a balance between these goals, which can otherwise be in tension, by:
+- Providing a better, more sensible, and more consistent default behavior for new users/projects.
+- Providing a migration window for existing users/projects &mdash; nothing changes overnight without warning.
+- Providing maintainability of dbt software. Every fork in behavior requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
 
 These flags go through three phases of development:
 1. **Introduction:** The flag is introduced, and the logic added within dbt to support both 'old' + 'new' behaviours.

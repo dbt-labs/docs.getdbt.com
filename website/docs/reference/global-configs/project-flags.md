@@ -15,17 +15,17 @@ flags:
 
 </File>
 
-See the [table of all flags](/reference/global-configs/about-global-configs#available-flags) to see which global configs are available for setting in `dbt_project.yml`.
+Reference the [table of all flags](/reference/global-configs/about-global-configs#available-flags) to see which global configs are available for setting in `dbt_project.yml`.
 
 The `flags` dictionary is the _only_ place you can opt out of [behavior changes](/reference/global-configs/legacy-behaviors), while the legacy behavior is still supported.
 
 <VersionBlock lastVersion="1.7">
 
 :::warning Deprecated functionality
-In older versions of dbt, custom default values of flags (global configs) were set in `profiles.yml`. Starting in v1.8, these configs should be set in `dbt_project.yml` instead.
+In older versions of dbt, custom default values of flags (global configs) were set in `profiles.yml`. Starting in v1.8, these configs are set in `dbt_project.yml` instead.
 :::
 
-For most global configurations, you can set "user profile" configurations in the `config:` block of `profiles.yml`. This style of configuration sets default values for all projects using this profile directory—usually, all projects running on your local machine.
+For most global configurations, you can set "user profile" configurations in the `config:` block of `profiles.yml`. This style of configuration sets default values for all projects using this profile directory &mdash; usually, all projects running on your local machine.
 
 <File name='profiles.yml'>
 

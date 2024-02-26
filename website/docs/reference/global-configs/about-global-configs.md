@@ -6,10 +6,10 @@ sidebar: "About flags (global configs)"
 
 In dbt, "flags" (also called "global configs") are configurations for fine-tuning _how_ dbt runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell dbt about _what_ to run.
 
-Flags control things like the visual output of logs, whether to treat specific warning messages as errors, or whether to "fail fast" after encountering the first error. These flags are "global" because they are available for all dbt commands, and because they can be set in multiple places.
+Flags control things like the visual output of logs, whether to treat specific warning messages as errors, or whether to "fail fast" after encountering the first error. Flags are "global" configs because they are available for all dbt commands and they can be set in multiple places.
 
-There is significant overlap between dbt's flags and dbt's command line options, but they are not the same:
-- Certain flags can only be set in `dbt_project.yml`, and cannot be overridden for specific invocations via CLI option.
+There is a significant overlap between dbt's flags and dbt's command line options, but there are differences:
+- Certain flags can only be set in `dbt_project.yml` and cannot be overridden for specific invocations via CLI options.
 - If a CLI option is supported by specific commands, rather than supported by all commands ("global"), it is generally not considered to be a "flag".
 
 ### Setting flags
@@ -19,7 +19,7 @@ There are multiple ways of setting flags, which depend on the use case:
 - **[Environment variables](/reference/global-configs/environment-variable-configs):** Define different behavior in different runtime environments (development vs. production vs. [continuous integration](/docs/deploy/continuous-integration), or different behavior for different users in development (based on personal preferences).
 - **[CLI options](/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all dbt commands.
 
-The most specific setting "wins." If you set the same flag in all three ways, the CLI option will take precedence, followed by the environment variable, followed lastly by the value in `dbt_project.yml`. If you set the flag in none of those places, it will use the default value defined within dbt.
+The most specific setting "wins." If you set the same flag in all three places, the CLI option will take precedence, followed by the environment variable, and finally, the value in `dbt_project.yml`. If you set the flag in none of those places, it will use the default value defined within dbt.
 
 Most flags can be set in all three places:
 ```yaml
@@ -39,8 +39,8 @@ dbt run --no-fail-fast # set to False
 ```
 
 There are two categories of exceptions:
-1. **Flags setting file paths:** Flags for file paths that are relevant to runtime execution (e.g. `--log-path` or `--state`) cannot be set in `dbt_project.yml`. To override defaults, pass CLI options or set environment variables (`DBT_LOG_PATH`, `DBT_STATE`). Flags that tell dbt where to find project resources (e.g. `model-paths`) are set in `dbt_project.yml`, but as a top-level key, outside the `flags` dictionary; these configs are expected to be fully static and never vary based on the command or execution environment.
-2. Flags opting into legacy dbt behaviors can _only_ be defined in `dbt_project.yml`. These are intended to be set in version control, and migrated via pull/merge request. Their values should not diverge indefinitely across invocations, environments, or users.
+1. **Flags setting file paths:** Flags for file paths that are relevant to runtime execution (for example, `--log-path` or `--state`) cannot be set in `dbt_project.yml`. To override defaults, pass CLI options or set environment variables (`DBT_LOG_PATH`, `DBT_STATE`). Flags that tell dbt where to find project resources (for example, `model-paths`) are set in `dbt_project.yml`, but as a top-level key, outside the `flags` dictionary; these configs are expected to be fully static and never vary based on the command or execution environment.
+2. Flags opting into legacy dbt behaviors can _only_ be defined in `dbt_project.yml`. These are intended to be set in version control and migrated via pull/merge request. Their values should not diverge indefinitely across invocations, environments, or users.
 
 ### Accessing flags
 
