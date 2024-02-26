@@ -32,7 +32,7 @@ Features and functionality new in dbt v1.8
 
 ### The `--empty` flag
 
-The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/run#the-`--empty`-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
 
 ## Quick hits
