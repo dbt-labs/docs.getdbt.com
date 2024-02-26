@@ -957,6 +957,7 @@ const sidebarSettings = {
                 "reference/global-configs/legacy-behaviors",
                 "reference/global-configs/parsing",
                 "reference/global-configs/print-output",
+                "reference/global-configs/record-timing-info",
                 "reference/global-configs/usage-stats",
                 "reference/global-configs/version-compatibility",
                 "reference/global-configs/warnings",
