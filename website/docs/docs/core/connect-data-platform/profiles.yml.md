@@ -36,6 +36,7 @@ Starting in dbt v1.8, global configs have been deprecated from the `profiles.yml
   [debug](/reference/global-configs/logs#log-level): <true | false>
   [version_check](/reference/global-configs/version-compatibility): <true | false>
   [fail_fast](/reference/global-configs/failing-fast): <true | false>
+  [indirect_selection](/reference/global-configs/indirect-selection): <eager | cautious | buildable | empty>
   [use_experimental_parser](/reference/global-configs/parsing): <true | false>
   [static_parser](/reference/global-configs/parsing): <true | false>
   [cache_selected_only](/reference/global-configs/cache): <true | false>
@@ -95,4 +96,4 @@ Starting in dbt v1.8, global configs have been deprecated from the `profiles.yml
 
 ## User config
 
-You can set default values of global configs for all projects that you run using your local machine. See the docs on [global configs](/reference/global-configs/about-global-configs) for details.
+You can set default values of global configs for all projects that you run using your local machine. Refer to [About global configs](/reference/global-configs/about-global-configs) for details.
