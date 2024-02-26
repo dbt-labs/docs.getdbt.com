@@ -24,7 +24,7 @@ dbt test --indirect-selection cautious
 
 </File>
 
-For example, you can run tests that only refer to selected nodes using an environment variable
+Or you can run tests that only refer to selected nodes using an environment variable:
 
 <File name='Env var'>
 
@@ -37,7 +37,7 @@ dbt run
 
 </File>
 
-For example, you can run tests that only refer to selected nodes using `profiles.yml` user configurations:
+You can also run tests that only refer to selected nodes using `profiles.yml` user configurations:
 
 <File name='profiles.yml'>
 
