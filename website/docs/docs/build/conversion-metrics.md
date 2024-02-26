@@ -255,7 +255,7 @@ group by
 
 Use the following additional settings to customize your conversion metrics:
 
-- **Null conversion values:** Set null conversions to zero using `fill_nulls_with`.
+- **Null conversion values:** Set null conversions to zero using `fill_nulls_with`. Refer to [Fill null values for metrics](/docs/build/fill-nulls-advanced) for more info.
 - **Calculation type:** Choose between showing raw conversions or conversion rate.
 - **Constant property:** Add conditions for specific scenarios to join conversions on constant properties.
 
@@ -285,6 +285,8 @@ To return zero in the final data set, you can set the value of a null conversion
 This will return the following results:
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/conversion-metrics-fill-null.png" width="75%" title="Conversion metric with fill nulls with parameter"/>
+
+Refer to [Fill null values for metrics](/docs/build/fill-nulls-advanced) for more info.
 
 </TabItem>
 

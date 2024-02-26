@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
-This metric is common for calculating things like weekly active users, or month-to-date revenue.  The parameters, description, and type for cumulative metrics are: 
+This metric is common for calculating things like weekly active users, or month-to-date revenue. You can use `fill_nulls_with` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row. The parameters, description, and type for cumulative metrics are: 
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |

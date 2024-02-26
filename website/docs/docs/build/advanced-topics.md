@@ -14,8 +14,8 @@ This section covers advanced topics for the dbt Semantic Layer and MetricFlow, s
 <div className="grid--2-col">
 
 <Card
-    title="Fill null values for simple and derived or ratio metrics"
-    body="Use <code>fill_nulls_with</code> to set null metric values to zero, ensuring numeric values for every data row, even with derived metrics."
+    title="Fill null values for metrics"
+    body="Use <code>fill_nulls_with</code> to set null metric values to zero, ensuring numeric values for every data row."
     link="/docs/build/fill-nulls-advanced"
     icon="dbt-bit"/>
 
