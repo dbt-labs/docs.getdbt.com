@@ -132,71 +132,10 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
-1. Click the **...** next to the `models` directory, then select **Create file**.  
-1. Name the file `customers.sql`, then click **Create**.
-1. Copy the following query into the file and click **Save**.
 
-    <File name='customers.sql'>
+import BuildFirstModel from '/snippets/quickstarts/_build-your-first-model.md';
 
-    ```sql
-    with customers as (
-
-    select
-        ID as customer_id,
-        FIRST_NAME as first_name,
-        LAST_NAME as last_name
-
-    from dbo.customers
-    ),
-
-    orders as (
-
-        select
-            ID as order_id,
-            USER_ID as customer_id,
-            ORDER_DATE as order_date,
-            STATUS as status
-
-        from dbo.orders
-    ),
-
-    customer_orders as (
-
-        select
-            customer_id,
-
-            min(order_date) as first_order_date,
-            max(order_date) as most_recent_order_date,
-            count(order_id) as number_of_orders
-
-        from orders
-
-        group by customer_id
-    ),
-
-    final as (
-
-        select
-            customers.customer_id,
-            customers.first_name,
-            customers.last_name,
-            customer_orders.first_order_date,
-            customer_orders.most_recent_order_date,
-            coalesce(customer_orders.number_of_orders, 0) as number_of_orders
-
-        from customers
-
-        left join customer_orders on customers.customer_id = customer_orders.customer_id
-    )
-
-    select * from final
-    ```
-    </File>
-
-1. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
-
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+<BuildFirstModel/>
 
 #### FAQs
 
