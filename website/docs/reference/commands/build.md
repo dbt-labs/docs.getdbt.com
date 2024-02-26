@@ -26,23 +26,27 @@ In DAG order, for selected resources or an entire project.
 **Flags:** The `build` task supports all the same flags as `run`, `test`, `snapshot`, and `seed`. For flags that are shared between multiple tasks (e.g. `--full-refresh`), `build` will use the same value for all selected resource types (e.g. both models and seeds will be full refreshed).
 
 <VersionBlock firstVersion="1.8">
+  
+### The `--empty` flag
 
-## Unit tests
+The `build` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
-When `dbt build` is executed with unit tests, the models will be processed according to their lineage and dependencies. The tests will be executed as follows:
+## Tests
+
+When `dbt build` is executed with unit tests applied, the models will be processed according to their lineage and dependencies. The tests will be executed as follows:
 
 - [Unit tests](/docs/build/unit-tests) are run on a SQL model.
 - The model is materialized.
 - [Data tests](/docs/build/data-tests) are run on the model.
 
-This saves on warehouse spend because the model won't be materialized unless the unit tests pass successfully.
+This saves on warehouse spend as the model will only be materialized if the unit tests pass successfully.
 
 Unit tests and data tests can be selected using `--select test_type:unit` or `--select test_type:data` for `dbt build` (same for the `--exclude` flag).
 
-
 </VersionBlock>
 
-## Examples
+### Examples
+
 
 ```
 $ dbt build
