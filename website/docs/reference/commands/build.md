@@ -40,6 +40,8 @@ This saves on warehouse spend because the model won't be materialized unless the
 Unit tests and data tests can be selected using `--select test_type:unit` or `--select test_type:data` for `dbt build` (same for the `--exclude` flag).
 
 
+</VersionBlock>
+
 ## Examples
 
 ```
