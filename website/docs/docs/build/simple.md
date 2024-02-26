@@ -39,6 +39,8 @@ metrics:
 
 ```
 
+For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
+
 <!-- create_metric not supported yet
 :::tip
 
@@ -69,3 +71,6 @@ If you've already defined the measure using the `create_metric: true` parameter,
       filter: | # For any metric you can optionally include a filter on dimension values
         {{Dimension('customer__order_total_dim')}} >= 20
 ```
+
+## Related docs
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
