@@ -22,12 +22,12 @@ For example, if you'd like to handle days with site visits but no leads, you can
 
 Let's say you have three metrics:
 
-- `website` `visits`, and `leads`
+- `website_visits` and `leads`
 - and a derived metric called `leads_to_website_visit` that calculates the ratio of leads to site visits.
 
 On the days when there are no conversions, you can set the value for leads to zero by adding the `fill_nulls_with` parameter to the measure input on the leads metric:
 
-<File name='models/metrics/website.yml'>
+<File name='models/metrics/website_vists.yml'>
 
 ```yaml
 metrics:
