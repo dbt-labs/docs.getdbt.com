@@ -39,7 +39,7 @@ When `dbt build` is executed with unit tests, the models will be processed accor
 - The model is materialized.
 - [Data tests](/docs/build/data-tests) are run on the model.
 
-This saves on warehouse spend because the model won't be materialized unless the unit tests pass successfully.
+This saves on warehouse spend as the model will only be materialized if the unit tests pass successfully.
 
 Unit tests and data tests can be selected using `--select test_type:unit` or `--select test_type:data` for `dbt build` (same for the `--exclude` flag).
 
