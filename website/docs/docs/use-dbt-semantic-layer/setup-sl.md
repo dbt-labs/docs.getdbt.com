@@ -23,6 +23,10 @@ import SetUp from '/snippets/_v2-sl-prerequisites.md';
 
 <SetUp/>
 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
+
 ## Set up dbt Semantic Layer
 
 import SlSetUp from '/snippets/_new-sl-setup.md';  

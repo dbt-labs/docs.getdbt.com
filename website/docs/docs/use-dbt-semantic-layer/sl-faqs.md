@@ -66,6 +66,18 @@ The dbt Semantic Layer measures usage in distinct 'Queried Metrics'. Refer to th
 
 ## Availability
 
+<expandable alt_header="What data platforms are supported by the dbt Semantic Layer?">
+
+The dbt Semantic Layer supports the following data platforms: 
+
+- Snowflake 
+- BigQuery 
+- Databricks  
+- Redshift
+
+Support for other data platforms, such as Fabric and Trino, isn't available at this time. If you're interested in using the dbt Semantic Layer with a data platform not on the list, please [contact us](https://www.getdbt.com/get-started).
+</expandable>
+
 <expandable alt_header="Do I need to be on a specific version of dbt to use dbt Semantic Layer?">
 
 Yes, the dbt Semantic Layer is compatible with [dbt v1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
@@ -132,8 +144,8 @@ Read our [Quickstart](/docs/use-dbt-semantic-layer/quickstart-sl) for more infor
 
 Beginning in March 2024, the dbt Semantic Layer will offer two layers of caching:
 
-- The result cache which is a Redis cache.
-- A declarative cache which lives in your data platform.
+- The result cache, which caches query results in the data platform so that subsequent runs of the same query are faster.
+- A declarative cache which also lives in your data platform.
 
 </expandable>
 

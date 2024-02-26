@@ -37,8 +37,8 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 4. Options in the **Triggers** section:
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
-        - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Hours of the day** that runs the job at specific times of day, **Exact intervals** that runs the job every specified number of hours, or **Cron schedule** that runs the job specified using [cron syntax](#cron-schedule).
-        - **Days of the week** &mdash; By default, it’s set to every day when **Hours of the day** or **Exact intervals** is chosen for **Timing**.
+        - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
+        - **Days of the week** &mdash; By default, it’s set to every day when **Intervals** or **Specific hours** is chosen for **Timing**.
     - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
         - **Project** &mdash; Specify the parent project that has that upstream deploy job. 
         - **Job** &mdash; Specify the upstream deploy job. 
@@ -65,11 +65,12 @@ You can create a deploy job and configure it to run on [scheduled days and times
 
 To set your job's schedule, use the **Run on schedule** option to choose specific days of the week, and select customized hours or intervals.
 
-Under **Timing**, you can either use customizable hours for jobs that need to run frequently throughout the day or exact intervals for jobs that need to run at specific times:
+Under **Timing**, you can either use regular intervals for jobs that need to run frequently throughout the day or customizable hours for jobs that need to run at specific times:
 
-- **Exact intervals** &mdash; Use this option to set how often your job runs, in hours. Enter a number between 1 and 23 to represent the interval between job runs. For example, if you set it to **Every 2 hours**, the job will run every 2 hours from midnight UTC. This option is useful if you need to run jobs multiple times per day at regular intervals.
+- **Intervals** &mdash; Use this option to set how often your job runs, in hours. For example, if you choose **Every 2 hours**, the job will run every 2 hours from midnight UTC. This doesn't mean that it will run at exactly midnight UTC. However, subsequent runs will always be run with the same amount of time between them. For example, if the previous scheduled pipeline ran at 00:04 UTC, the next run will be at 02:04 UTC. This option is useful if you need to run jobs multiple times per day at regular intervals.
 
-- **Hours of the day** &mdash; Use this option to set specific times when your job should run. You can enter a comma-separated list of hours (in UTC) when you want the job to run. For example, if you set it to `0,12,23,` the job will run at midnight, noon, and 11 PM UTC. This option is useful if you want your jobs to run at specific times of day and don't need them to run more frequently than once a day.
+- **Specific hours** &mdash; Use this option to set specific times when your job should run. You can enter a comma-separated list of hours (in UTC) when you want the job to run. For example, if you set it to `0,12,23,` the job will run at midnight, noon, and 11 PM UTC. Job runs will always be consistent between both hours and days, so if your job runs at 00:05, 12:05, and 23:05 UTC, it will run at these same hours each day. This option is useful if you want your jobs to run at specific times of day and don't need them to run more frequently than once a day.
+
 
 :::info
 
