@@ -55,7 +55,7 @@ on-run-start:
 
 Because the values of `flags` can differ across invocations, we strongly advise against using `flags` as an input to configurations or dependencies (`ref` + `source`) that dbt resolves [during parsing](/reference/parsing#known-limitations).
 
-### Available flags
+## Available flags
 
 | Flag name | Type | Default | Supported in project? | Environment variable | Command line option | Supported in Cloud CLI? |
 |-----------|------|---------|-----------------------|----------------------|---------------------|-------------------------|
