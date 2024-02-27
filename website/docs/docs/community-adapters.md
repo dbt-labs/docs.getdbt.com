@@ -5,8 +5,8 @@ id: "community-adapters"
 
 Community adapters are adapter plugins contributed and maintained by members of the community. We welcome and encourage [adapter plugins contributions](/docs/contribute-core-adapters#contribute-to-a-pre-existing-adapter) from the dbt community.  Please be mindful that these [community maintainers](/docs/connect-adapters#maintainers) are intrepid volunteers who donate their time and effort — so be kind, understanding, and help out where you can!
 
-| Data platforms (click to view setup guide)  |     |       |
-| ------------------------------------------ | -------------------------------- | ------------------------------------- |
+| Data platforms (click to view setup guide)  |     |       |       |
+| ------------------------------------------- | -------------------------------- | ------------------------------------- | --------------------------------------- |
 | [Athena](/docs/core/connect-data-platform/athena-setup)  | [Greenplum](/docs/core/connect-data-platform/greenplum-setup)  | [Oracle](/docs/core/connect-data-platform/oracle-setup)    |
 | [Clickhouse](/docs/core/connect-data-platform/clickhouse-setup)  | [Hive](/docs/core/connect-data-platform/hive-setup)   | [Rockset](/docs/core/connect-data-platform/rockset-setup)   |
 | [IBM DB2](/docs/core/connect-data-platform/ibmdb2-setup)  | [Impala](/docs/core/connect-data-platform/impala-setup)   | [SingleStore](/docs/core/connect-data-platform/singlestore-setup)  |
