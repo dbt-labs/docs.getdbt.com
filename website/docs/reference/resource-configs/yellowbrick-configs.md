@@ -19,7 +19,7 @@ To improve query performance, tables in Yellowbrick Data support several optimiz
 as model-level configurations in dbt.  These will be applied to `CREATE TABLE` <Term id="ddl" /> statements 
 generated at compile or run time. Note that these settings will have no effect on models set to `view` or `ephemeral`.
 
-dbt-yellowbrick supports the following Yellowbrick specific features when defining tables:
+dbt-yellowbrick supports the following Yellowbrick-specific features when defining tables:
 - `dist` - applies a single-column distribution key, or sets the distribution to `RANDOM` or `REPLICATE`
 - `sort_col` - applies the `SORT ON (column)` clause that names a single column to sort on before data is stored on media
 - `cluster_cols` - applies the `CLUSTER ON (column, column, ...)` clause that names up to four columns to cluster on before data is stored 
@@ -31,6 +31,7 @@ documentation.
 
 
 ### Some example model configurations
+
 * ```DISTRIBUTE REPLICATE``` with a ```SORT``` column...
 ```sql
 {{
@@ -141,9 +142,10 @@ distribute on (match_key)
 cluster on (season_key, match_date_key, home_team_key, away_team_key);
 ```
 ## Cross-Database Materializations
-Yellowbrick supports cross-database queries and the dbt-yellowbrick adapter will permit 
-cross-database reads into a specific target on the same appliance instance.
+
+Yellowbrick supports cross-database queries and the dbt-yellowbrick adapter will permit cross-database reads into a specific target on the same appliance instance.
 
 ## Limitations
-This is an initial implementation of the dbt adapter for Yellowbrick Data Warehouse and may not support some use cases. 
+
+This initial implementation of the dbt adapter for Yellowbrick Data Warehouse may not support some use cases. 
 We strongly advise validating all records or transformations resulting from the adapter output.
