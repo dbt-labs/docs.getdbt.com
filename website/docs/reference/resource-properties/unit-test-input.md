@@ -3,9 +3,9 @@ title: "Input for unit tests"
 sidebar_label: "Input"
 ---
 
-Inputs in unit testing are used to reference a specific model or source for the test:
+Use inputs in your unit tests to reference a specific model or source for the test:
 
-- `input:` string that represents a `ref` or `source` call:
+-  For `input:`, use a string that represents a `ref` or `source` call:
     - `ref('my_model')` or `ref('my_model', v='2')` or `ref('dougs_project', 'users')`
     - `source('source_schema', 'source_name')`
 - Optionally use for seeds:
