@@ -188,7 +188,7 @@ One of the most important choices you will make during the cookiecutter generati
 
 ### Implementation details
 
-Regardless if you decide to use the cookiecutter template or manually create the plugin, this section will go over each method that is required to be implemented. The table below provides a high-level overview of the classes, methods, and macros you may have to define for your data platform.
+Regardless if you decide to use the cookiecutter template or manually create the plugin, this section will go over each method that is required to be implemented. The following table provides a high-level overview of the classes, methods, and macros you may have to define for your data platform.
 
 | File | Component     | <div style={{width:'350px'}}>Purpose</div>    |
 | ---- | ------------- | --------------------------------------------- |
