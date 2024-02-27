@@ -141,7 +141,13 @@
 
 <Card
     title="Spark"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/spark-setup'>Install with dbt Core </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/spark-setup'>Install with dbt Core </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a><br /><br /><div style='background: #E5E7EB;
+  border-radius: 1.5rem;
+  color:#262A38;
+  padding: 0rem 0.75rem; display:inline-block'>dbt Cloud</div> <div style='  background: #E5E7EB;
+  border-radius: 1.5rem;
+  color:#262A38;
+  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
     icon="databricks"/>
 
 <Card
