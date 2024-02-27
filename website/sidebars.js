@@ -842,6 +842,10 @@ const sidebarSettings = {
           label: "For unit tests",
           items: [
             "reference/resource-properties/unit-tests",
+            "reference/resource-properties/unit-test-input",
+            "reference/resource-properties/unit-testing-versions",
+            "reference/resource-properties/unit-test-overrides",
+            "reference/resource-properties/data-formats",
           ],
         },
         {
