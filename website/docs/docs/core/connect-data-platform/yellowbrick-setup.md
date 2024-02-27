@@ -4,10 +4,10 @@ description: "Read this guide to learn about the Yellowbrick warehouse setup in 
 id: "yellowbrick-setup"
 meta:
   maintained_by: Community
-  authors: 'David Antelmi'
+  authors: 'InfoCapital team'
   github_repo: 'InfoCapital-AU/dbt-yellowbrick'
   pypi_package: 'dbt-yellowbrick'
-  min_core_version: 'v1.5.0'
+  min_core_version: 'v1.7.0'
   cloud_support: Not Supported
   min_supported_version: 'Yellowbrick 5.2'
   slack_channel_name: 'n/a'
@@ -16,13 +16,15 @@ meta:
   config_page: '/reference/resource-configs/yellowbrick-configs'
 ---
 
+:::info Community plugin
+
+Some core functionality may be limited. 
+
+:::
+
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<SetUpPages meta={frontMatter.meta} />
-
-
-For further (and more likely up-to-date) info, see the [README](https://github.com/infocapital/dbt-yellowbrick#README.md)
-
+<SetUpPages meta={frontMatter.meta}/>
 
 ## Profile Configuration
 
@@ -42,17 +44,24 @@ company-name:
       port: [port]
       dbname: [database name]
       schema: [dbt schema]
-      threads: [1 or more]
-      keepalives_idle: 0 # default 0, indicating the system default. See below
-      connect_timeout: 10 # default 10 seconds
-      search_path: [optional, override the default postgres search_path]
-      role: [optional, set the role dbt assumes when executing queries]
-      sslmode: [optional, set the sslmode used to connect to the database]
-
+      [role](#role): [optional, set the role dbt assumes when executing queries]
+      [sslmode](#sslmode): [optional, set the sslmode used to connect to the database]
+      [sslrootcert](#sslrootcert): [optional, set the sslrootcert config value to a new file path in order to customize the file location that contain root certificates]
+  
 ```
 
 </File>
 
-### Notes
+### Configuration Notes
 
-This adapter strongly depends on dbt-postgres, so you can read more about configurations here [Profile Setup](postgres-setup)
+This adapter is based on the dbt-postgres adapter documented here [Postgres Profile Setup](postgres-setup)
+
+#### role
+
+The `role` config controls the user role that dbt assumes when opening new connections to the database.
+
+#### sslmode / sslrootcert
+
+The ssl config parameters control how dbt connects to Yellowbrick using SSL. Refer to the [Yellowbrick documentation](https://docs.yellowbrick.com/5.2.27/client_tools/config_ssl_for_clients_intro.html) for
+details.
+

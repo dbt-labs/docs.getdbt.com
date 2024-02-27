@@ -1,134 +1,149 @@
 ---
-title: "Greenplum configurations"
-description: "Greenplum Configurations - Read this in-depth guide to learn about configurations in dbt."
-id: "greenplum-configs"
+title: "Yellowbrick configurations"
+description: "Yellowbrick Configurations - Read this in-depth guide to learn about configurations in dbt."
+id: "yellowbrick-configs"
 ---
+
+## Incremental materialization strategies
+
+The dbt-yellowbrick adapter supports the following incremental materialization strategies:
+
+- `append` (default when `unique_key` is not defined)
+- `delete+insert` (default when `unique_key` is defined)
+
+All of these strategies are inherited from the dbt-postgres adapter.
 
 ## Performance Optimizations
     
-Tables in Greenplum have powerful optimization configurations to improve query performance:
- 
- - distribution
- - column orientation
- - compression
- - `appendonly` toggle
- - partitions
- 
-Supplying these values as model-level configurations apply the corresponding settings in the generated `CREATE TABLE`(except partitions). Note that these settings will have no effect for models set to `view`.
+To improve query performance, tables in Yellowbrick Data support several optimizations that can be defined 
+as model-level configurations in dbt.  These will be applied to `CREATE TABLE` <Term id="ddl" /> statements 
+generated at compile or run time. Note that these settings will have no effect on models set to `view` or `ephemeral`.
 
-### Distribution
+dbt-yellowbrick supports the following Yellowbrick specific features when defining tables:
+- `dist` - applies a single-column distribution key, or sets the distribution to `RANDOM` or `REPLICATE`
+- `sort_col` - applies the `SORT ON (column)` clause that names a single column to sort on before data is stored on media
+- `cluster_cols` - applies the `CLUSTER ON (column, column, ...)` clause that names up to four columns to cluster on before data is stored 
+on the media
 
-In Greenplum, you can choose a [distribution key](https://gpdb.docs.pivotal.io/6-4/admin_guide/distribution.html), that will be used to sort data by segments. Joining on the partition will become more performant after specifying distribution.
+A table that has sorted or clustered columns facilitates the skipping of blocks when tables are scanned with 
+restrictions applied in the query.  Further details can be found in the [Yellowbrick Data Warehouse](https://docs.yellowbrick.com/latest/ybd_sqlref/clustered_tables.html#clustered-tables) 
+documentation.
 
-By default dbt-greenplum distributes data `RANDOMLY`. To implement a distribution key you need to specify the `distributed_by` parameter in model's config:
 
+### Some example model configurations
+* ```DISTRIBUTE REPLICATE``` with a ```SORT``` column...
 ```sql
 {{
-    config(
-        ...
-        distributed_by='<field_name>'
-        ...
-    )
+  config(
+    materialized = "table",
+    dist = "replicate",
+    sort_col = "stadium_capacity"
+  )
 }}
 
-
-select ...
-```
-
-Also you can choose `DISTRIBUTED REPLICATED` option:
+select
+    hash(stg.name) as team_key
+    , stg.name as team_name
+    , stg.nickname as team_nickname
+    , stg.city as home_city
+    , stg.stadium as stadium_name
+    , stg.capacity as stadium_capacity
+    , stg.avg_att as average_game_attendance
+    , current_timestamp as md_create_timestamp
+from
+    {{ source('premdb_public','team') }} stg
+where
+    stg.name is not null
+``` 
+gives the following model output:
 
 ```sql
+create table if not exists marts.dim_team as (
+select
+    hash(stg.name) as team_key
+    , stg.name as team_name
+    , stg.nickname as team_nickname
+    , stg.city as home_city
+    , stg.stadium as stadium_name
+    , stg.capacity as stadium_capacity
+    , stg.avg_att as average_game_attendance
+    , current_timestamp as md_create_timestamp
+from
+    premdb.public.team stg
+where
+    stg.name is not null
+)
+distribute REPLICATE
+sort on (stadium_capacity);
+```
+<br>
+
+* ```DISTRIBUTE``` on a single column and define up to four ```CLUSTER``` columns...
+
+```sql 
 {{
-    config(
-        ...
-        distributed_replicated=true
-        ...
-    )
+  config(
+    materialized = 'table',
+    dist = 'match_key',
+    cluster_cols = ['season_key', 'match_date_key', 'home_team_key', 'away_team_key']
+  )
 }}
 
-
-select ...
+select
+	hash(concat_ws('||',
+	    lower(trim(s.season_name)),
+		translate(left(m.match_ts,10), '-', ''),
+	    lower(trim(h."name")),
+		lower(trim(a."name")))) as match_key
+	, hash(lower(trim(s.season_name))) as season_key
+	, cast(translate(left(m.match_ts,10), '-', '') as integer) as match_date_key
+	, hash(lower(trim(h."name"))) as home_team_key
+	, hash(lower(trim(a."name"))) as away_team_key
+	, m.htscore
+	, split_part(m.htscore, '-', 1)  as home_team_goals_half_time
+	, split_part(m.htscore , '-', 2)  as away_team_goals_half_time
+	, m.ftscore
+	, split_part(m.ftscore, '-', 1)  as home_team_goals_full_time
+	, split_part(m.ftscore, '-', 2)  as away_team_goals_full_time
+from
+	{{ source('premdb_public','match') }} m
+		inner join {{ source('premdb_public','team') }} h on (m.htid = h.htid)
+		inner join {{ source('premdb_public','team') }} a on (m.atid = a.atid)
+		inner join {{ source('premdb_public','season') }} s on (m.seasonid = s.seasonid)
 ```
-
-### Column orientation
-
-Greenpum supports two type of [orientation](https://gpdb.docs.pivotal.io/6-6/admin_guide/ddl/ddl-storage.html#topic39) row and column:
+gives the following model output:
 
 ```sql
-{{
-    config(
-        ...
-        orientation='column'
-        ...
-    )
-}}
-
-
-select ...
+create  table if not exists marts.fact_match as (
+select
+    hash(concat_ws('||',
+        lower(trim(s.season_name)),
+        translate(left(m.match_ts,10), '-', ''),
+        lower(trim(h."name")),
+        lower(trim(a."name")))) as match_key
+    , hash(lower(trim(s.season_name))) as season_key
+    , cast(translate(left(m.match_ts,10), '-', '') as integer) as match_date_key
+    , hash(lower(trim(h."name"))) as home_team_key
+    , hash(lower(trim(a."name"))) as away_team_key
+    , m.htscore
+    , split_part(m.htscore, '-', 1)  as home_team_goals_half_time
+    , split_part(m.htscore , '-', 2)  as away_team_goals_half_time
+    , m.ftscore
+    , split_part(m.ftscore, '-', 1)  as home_team_goals_full_time
+    , split_part(m.ftscore, '-', 2)  as away_team_goals_full_time
+from
+    premdb.public.match m
+        inner join premdb.public.team h on (m.htid = h.htid)
+        inner join premdb.public.team a on (m.atid = a.atid)
+        inner join premdb.public.season s on (m.seasonid = s.seasonid)
+)
+distribute on (match_key)
+cluster on (season_key, match_date_key, home_team_key, away_team_key);
 ```
+## Cross-Database Materializations
+Yellowbrick supports cross-database queries and the dbt-yellowbrick adapter will permit 
+cross-database reads into a specific target on the same appliance instance.
 
-### Compression
-
-Compression allows reducing read-write time. Greenplum suggest several [algorithms](https://gpdb.docs.pivotal.io/6-6/admin_guide/ddl/ddl-storage.html#topic40) algotihms to compress append-optimized tables:
- - RLE_TYPE(only for column oriented table)
- - ZLIB
- - ZSTD 
- - QUICKLZ
-
-```sql
-{{
-    config(
-        ...
-        appendonly='true',
-        compresstype='ZLIB',
-        compresslevel=3,
-        blocksize=32768
-        ...
-    )
-}}
-
-
-select ...
-```
-
-As you can see, you can also specify `compresslevel` and `blocksize`.
-
-### Partition
-
-Greenplum does not support partitions with `create table as` [construction](https://gpdb.docs.pivotal.io/6-9/ref_guide/sql_commands/CREATE_TABLE_AS.html), so you need to build model in two steps
-    
-1. create table schema
-2. insert data
-
-To implement partitions into your dbt-model you need to specify the following config parameters:
- - `fields_string` - definition of columns name, type and constraints
- - `raw_partition` - partition specification 
-
-```sql
-{% set fields_string %}
-    some_filed int4 null,
-    date_field timestamp NULL
-{% endset %}
-
-
-{% set raw_partition %}
-   PARTITION BY RANGE (date_field)
-   (
-       START ('2021-01-01'::timestamp) INCLUSIVE
-       END ('2023-01-01'::timestamp) EXCLUSIVE
-       EVERY (INTERVAL '1 day'),
-       DEFAULT PARTITION default_part
-   );
-{% endset %}
-
-{{
-   config(
-       ...
-       fields_string=fields_string,
-       raw_partition=raw_partition,
-       ...
-   )
-}}
-
-select *
-```
+## Limitations
+This is an initial implementation of the dbt adapter for Yellowbrick Data Warehouse and may not support some use cases. 
+We strongly advise validating all records or transformations resulting from the adapter output.
