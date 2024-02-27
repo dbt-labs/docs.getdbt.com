@@ -77,7 +77,7 @@ where
 distribute REPLICATE
 sort on (stadium_capacity);
 ```
-<br><br/>
+<br />
 
 * ```DISTRIBUTE``` on a single column and define up to four ```CLUSTER``` columns...
 
