@@ -186,20 +186,20 @@ One of the most important choices you will make during the cookiecutter generati
 - Most adapters do fall under SQL adapters which is why we chose it as the default `True` value.
 - It is very possible to build out a fully functional `BaseAdapter`. This will require a little more ground work as it doesn't come with some prebuilt methods the `SQLAdapter` class provides. See `dbt-bigquery` as a good guide.
 
-### Implementation Details
+### Implementation details
 
 Regardless if you decide to use the cookiecutter template or manually create the plugin, this section will go over each method that is required to be implemented. The table below provides a high-level overview of the classes, methods, and macros you may have to define for your data platform.
 
-| file                                              | component                                                         | purpose                                                                                                                                                                               |
-|---------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `./setup.py`                                      | `setup()` function                                                | adapter meta-data (package name, version, author, homepage, etc)                                                                                                                      |
-| `myadapter/dbt/adapters/myadapter/__init__.py`    | `AdapterPlugin`                                                   | bundle all the information below into a dbt plugin                                                                                                                                    |
-| `myadapter/dbt/adapters/myadapter/connections.py` | `MyAdapterCredentials` class                                      | parameters to connect to and configure the database, via a the chosen Python driver                                                                                                   |
-| `myadapter/dbt/adapters/myadapter/connections.py` | `MyAdapterConnectionManager` class                                | telling dbt how to interact with the database w.r.t opening/closing connections, executing queries, and fetching data. Effectively a wrapper around the db API or driver.             |
-| `myadapter/dbt/include/bigquery/`                 | a dbt project of macro "overrides" in the format of "myadapter__" | any differences in SQL syntax for regular db operations will be modified here from the global_project (e.g. "Create Table As Select", "Get all relations in the current schema", etc) |
-| `myadapter/dbt/adapters/myadapter/impl.py`        | `MyAdapterConfig`                                                 | database- and relation-level configs and                                                                                                                                              |
-| `myadapter/dbt/adapters/myadapter/impl.py`        | `MyAdapterAdapter`                                                | for changing _how_ dbt performs operations like macros and other needed Python functionality                                                                                          |
-| `myadapter/dbt/adapters/myadapter/column.py`      | `MyAdapterColumn`                                                 | for defining database-specific column such as datatype mappings                                                                                                                       |
+| File | Component     | <div style={{width:'350px'}}>Purpose</div>    |
+| ---- | ------------- | --------------------------------------------- |
+| `./setup.py`              | `setup()` function           | adapter meta-data (package name, version, author, homepage, etc)   |
+| `myadapter/dbt/adapters/myadapter/__init__.py`    | `AdapterPlugin`  | bundle all the information below into a dbt plugin |
+| `myadapter/dbt/adapters/myadapter/connections.py` | `MyAdapterCredentials` class  | parameters to connect to and configure the database, via a the chosen Python driver  |
+| `myadapter/dbt/adapters/myadapter/connections.py` | `MyAdapterConnectionManager` class  | telling dbt how to interact with the database w.r.t opening/closing connections, executing queries, and fetching data. Effectively a wrapper around the db API or driver.  |
+| `myadapter/dbt/include/bigquery/` | a dbt project of macro "overrides" in the format of "myadapter__" | any differences in SQL syntax for regular db operations will be modified here from the global_project (e.g. "Create Table As Select", "Get all relations in the current schema", etc) |
+| `myadapter/dbt/adapters/myadapter/impl.py`        | `MyAdapterConfig` | database- and relation-level configs and   |
+| `myadapter/dbt/adapters/myadapter/impl.py`        | `MyAdapterAdapter`            | for changing _how_ dbt performs operations like macros and other needed Python functionality    |
+| `myadapter/dbt/adapters/myadapter/column.py`   | `MyAdapterColumn`  | for defining database-specific column such as datatype mappings  |
 
 ### Editing `setup.py`
 
@@ -1096,12 +1096,12 @@ To simplify things, assume the reader of this documentation already knows how bo
 
 ### Topics and Pages to Cover
 
-The following subjects need to be addressed across three pages of this docs site to have your data platform be listed on our documentation. After the corresponding pull request is merged, we ask that you link to these pages from your adapter repo's `REAMDE` as well as from your product documentation.
+The following subjects need to be addressed across three pages of this docs site to have your data platform be listed on our documentation. After the corresponding pull request is merged, we ask that you link to these pages from your adapter repo's `README` as well as from your product documentation.
 
- To contribute, all you will have to do make the changes listed in the table below.
+To contribute, all you will have to do make the changes listed in the table below.
 
-| How To...            | File to change within `/website/docs/`                       | Action | Info to Include                                                                                                                                                                                      |
-|----------------------|--------------------------------------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| How To...    | File to change within `/website/docs/`     | Action | <div style={{width:'200px'}}>Info to include</div>         |
+|--------------|--------------------------------------------|--------|-------------------------|
 | Connect              | `/docs/core/connect-data-platform/{MY-DATA-PLATFORM}-setup.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.             |
 | Configure            | `reference/resource-configs/{MY-DATA-PLATFORM}-configs.md`   | Create | What options and configuration specific to your data platform do users need to know? e.g. table distribution and indexing options, column_quoting policy, which incremental strategies are supported |
 | Discover and Install | `docs/supported-data-platforms.md`                                 | Modify | Is it a vendor- or community- supported adapter? How to install Python adapter package? Ideally with pip and PyPI hosted package, but can also use `git+` link to GitHub Repo                             |
