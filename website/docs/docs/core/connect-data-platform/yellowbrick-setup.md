@@ -26,7 +26,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta}/>
 
-## Profile Configuration
+## Profile configuration
 
 Yellowbrick targets should be set up using the following configuration in your `profiles.yml` file.
 
@@ -46,15 +46,15 @@ company-name:
       schema: [dbt schema]
       [role](#role): [optional, set the role dbt assumes when executing queries]
       [sslmode](#sslmode): [optional, set the sslmode used to connect to the database]
-      [sslrootcert](#sslrootcert): [optional, set the sslrootcert config value to a new file path in order to customize the file location that contain root certificates]
+      [sslrootcert](#sslrootcert): [optional, set the sslrootcert config value to a new file path to customize the file location that contains root certificates]
   
 ```
 
 </File>
 
-### Configuration Notes
+### Configuration notes
 
-This adapter is based on the dbt-postgres adapter documented here [Postgres Profile Setup](postgres-setup)
+This adapter is based on the dbt-postgres adapter documented here [Postgres profile setup](/docs/core/connect-data-platform/postgres-setup)
 
 #### role
 
