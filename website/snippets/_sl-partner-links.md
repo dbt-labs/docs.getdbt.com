@@ -92,7 +92,7 @@ The following tools integrate with the dbt Semantic Layer:
     body="Explore how to connect and use metrics to power reports and insights that drive change."
     link="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer"
     icon="push"/>
-    <a href="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer"
+    <a href="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer?utm_source=dbt&utm_medium=referral&utm_campaign=available-sl-integrations"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">

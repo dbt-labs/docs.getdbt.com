@@ -243,7 +243,7 @@ your_profile_name:
       port: 1433
       database: exampledb
       schema: schema_name
-      authentication: MSI
+      authentication: ActiveDirectoryMsi
 ```
 
 </File>
@@ -457,6 +457,6 @@ Valid values for `authentication`:
 * `ActiveDirectoryIntegrated`: Active Directory authentication using the current user's credentials
 * `ServicePrincipal`: Azure Active Directory authentication using a service principal
 * `CLI`: Azure Active Directory authentication using the account you're logged in with in the Azure CLI
-* `MSI`: Azure Active Directory authentication using a managed identity available on the system
+* `ActiveDirectoryMsi`: Azure Active Directory authentication using a managed identity available on the system
 * `environment`: Azure Active Directory authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
 * `auto`: Azure Active Directory authentication trying the previous authentication methods until it finds one that works

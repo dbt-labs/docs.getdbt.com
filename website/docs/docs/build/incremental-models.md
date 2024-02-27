@@ -57,8 +57,8 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
-  -- (uses > to include records whose timestamp occurred since the last run of this model)
-  where event_time > (select max(event_time) from {{ this }})
+  -- (uses >= to include records whose timestamp occurred since the last run of this model)
+  where event_time >= (select max(event_time) from {{ this }})
 
 {% endif %}
 ```
@@ -434,7 +434,7 @@ with large_source_table as (
 
     select * from {{ ref('large_source_table') }}
     {% if is_incremental() %}
-        where session_start > dateadd(day, -3, current_date)
+        where session_start >= dateadd(day, -3, current_date)
     {% endif %}
 
 ),

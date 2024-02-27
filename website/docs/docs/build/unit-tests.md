@@ -15,7 +15,7 @@ For dbt Core, unit tests will be available in v1.8, planned for late April 2024.
 
 :::
 
-Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ a building a model. 
+Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
 Now, we are introducing a new type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
@@ -24,6 +24,7 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
+- Unit tests must be defined in a YML file in your `models/` directory.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
@@ -69,7 +70,8 @@ check_valid_emails as (
         customers.customer_id,
         customers.first_name,
         customers.last_name,
-	coalesce (regexp_like(
+        customers.email,
+	      coalesce (regexp_like(
             customers.email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'
         )
         = true
@@ -97,20 +99,20 @@ unit_tests:
     given:
       - input: ref('stg_customers')
         rows:
-          - {customer_id: 1, email: cool@example.com, email_top_level_domain: example.com}
-          - {customer_id: 2, email: cool@unknown.com, email_top_level_domain: unknown.com}
-          - {customer_id: 3, email: badgmail.com, email_top_level_domain: gmail.com}
-          - {customer_id: 4, email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
       - input: ref('top_level_email_domains')
         rows:
           - {tld: example.com}
           - {tld: gmail.com}
     expect:
       rows:
-        - {customer_id: 1, is_valid_email_address: true}
-        - {customer_id: 2, is_valid_email_address: false}
-        - {customer_id: 3, is_valid_email_address: false}
-        - {customer_id: 4, is_valid_email_address: false}
+        - {email: cool@example.com,    is_valid_email_address: true}
+        - {email: cool@unknown.com,    is_valid_email_address: false}
+        - {email: badgmail.com,        is_valid_email_address: false}
+        - {email: missingdot@gmailcom, is_valid_email_address: false}
 
 ```
 </file>
@@ -123,7 +125,7 @@ You only have to define the mock data for the columns you care about. This enabl
 
 The direct parents of the model that you’re unit testing (in this example, `stg_customers` and `top_level_email_domains`) need to exist in the warehouse before you can execute the unit test.
 
-Use the `--empty` flag to build an empty version of the models to save warehouse spend. 
+Use the [`--empty`](/reference/commands/build#the---empty-flag) flag to build an empty version of the models to save warehouse spend. 
 
 ```bash
 
@@ -166,10 +168,10 @@ dbt test --select test_is_valid_email_address
 
 actual differs from expected:
 
-@@ ,customer_id,is_valid_email_address
-→  ,1        ,True→False
-   ,2        ,False
-...,...      ,...
+@@ ,email           ,is_valid_email_address
+→  ,cool@example.com,True→False
+   ,cool@unknown.com,False
+...,...             ,...
 
 
 16:03:51  
@@ -179,7 +181,7 @@ actual differs from expected:
 
 ```
 
-The clever regex statement wasn’t as clever as initially thought, as the model incorrectly flagged `cool@example.com` (customer 1's email) as an invalid email address.
+The clever regex statement wasn’t as clever as initially thought, as the model incorrectly flagged `cool@example.com` as an invalid email address.
 
 Updating the regex logic to `'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'` (those pesky escape characters) and rerunning the unit test solves the problem:
 
@@ -254,5 +256,82 @@ unit_tests:
 
 ```
 
+## Unit testing incremental models
 
+When configuring your unit test, you can override the output of macros, vars, or environment variables. This enables you to unit test your incremental models in "full refresh" and "incremental" modes. 
 
+When testing an incremental model, the expected output is the __result of the materialization__ (what will be merged/inserted), not the resulting model itself (what the final table will look like after the merge/insert).
+
+For example, say you have an incremental model in your project:
+
+<File name='my_incremental_model.sql'>
+
+```sql
+
+{{
+    config(
+        materialized='incremental'
+    )
+}}
+
+select * from {{ ref('events') }}
+{% if is_incremental() %}
+where event_time > (select max(event_time) from {{ this }})
+{% endif %}
+
+```
+
+</File>
+
+You can define unit tests on `my_incremental_model` to ensure your incremental logic is working as expected:
+
+```yml
+
+unit_tests:
+  - name: my_incremental_model_full_refresh_mode
+    model: my_incremental_model
+    overrides:
+      macros:
+        # unit test this model in "full refresh" mode
+        is_incremental: false 
+    given:
+      - input: ref('events')
+        rows:
+          - {event_id: 1, event_time: 2020-01-01}
+    expect:
+      rows:
+        - {event_id: 1, event_time: 2020-01-01}
+
+  - name: my_incremental_model_incremental_mode
+    model: my_incremental_model
+    overrides:
+      macros:
+        # unit test this model in "incremental" mode
+        is_incremental: true 
+    given:
+      - input: ref('events')
+        rows:
+          - {event_id: 1, event_time: 2020-01-01}
+          - {event_id: 2, event_time: 2020-01-02}
+          - {event_id: 3, event_time: 2020-01-03}
+      - input: this 
+        # contents of current my_incremental_model
+        rows:
+          - {event_id: 1, event_time: 2020-01-01}
+    expect:
+      # what will be inserted/merged into my_incremental_model
+      rows:
+        - {event_id: 2, event_time: 2020-01-02}
+        - {event_id: 3, event_time: 2020-01-03}
+
+```
+
+There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+
+## Additional resources
+
+- [Unit testing reference page](/reference/resource-properties/unit-tests)
+- [Supported data formats for mock data](/reference/resource-properties/data-formats)
+- [Unit testing versioned models](/reference/resource-properties/unit-testing-versions)
+- [Unit test inputs](/reference/resource-properties/unit-test-input)
+- [Unit test overrides](/reference/resource-properties/unit-test-overrides)
