@@ -26,17 +26,10 @@ Refer to the [Build, test, document, and promote adapters](/guides/adapter-creat
 
 ### Trusted adapters
 
-The following are **Trusted adapters** ✓ you can connect to in dbt Core:
-
 import AdaptersTrusted from '/snippets/_adapters-trusted.md';
 
 <AdaptersTrusted />
 
 <MSCallout />
 
-Here are the verified data platforms that connect to dbt and its latest version.
-
-import AdaptersVerified from '/snippets/_adapters-verified.md';
-
-<AdaptersVerified />
 
