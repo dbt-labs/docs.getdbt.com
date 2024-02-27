@@ -2,6 +2,7 @@
 title: "About flags (global configs)"
 id: "about-global-configs"
 sidebar: "About flags (global configs)"
+pagination_next: null
 ---
 
 In dbt, "flags" (also called "global configs") are configurations for fine-tuning _how_ dbt runs your project. They differ from [resource-specific configs](/reference/configs-and-properties) that tell dbt about _what_ to run.
