@@ -12,14 +12,13 @@ To specify a custom branch:
 2. Select **Only run on a custom branch** under General Settings
 3. Specify the **branch name or tag**
 
-
 ## Development
 
-In a development environment, the default branch (usually named `main`) is a read-only branch in your connected repositories, which allows you to create new branches for development from it.  
+In a development environment, the primary branch (usually named `main`) is protected in your connected repositories. You can directly edit, format, or lint files and execute dbt commands in your protected default git branch. Since the dbt Cloud IDE prevents commits to the protected branch, you can commit those changes to a new branch when you're ready.
 
-Specifying a **Custom branch** overrides the default behavior. It makes the custom branch 'read-only' and enables you to create new development branches from it. This also means you can't edit this custom branch directly.
+Specifying a **Custom branch** overrides the default behavior. It makes the custom branch protected and enables you to create new development branches from it. You can directly edit, format, or lint files and execute dbt commands in your custom branch, but you cannot make commits to it. dbt Cloud prompts you to commit those changes to a new branch.
 
-Only one branch can be read-only, which means when you set up a custom branch, your `main` branch (usually read-only) becomes editable. If you want to protect the `main` branch and prevent any commits on it, you need to set up branch protection rules in your git provider settings. This ensures your `main` branch remains secure and no new commits can be made to it.
+Only one branch can be protected. If you specify a custom branch, the primary branch is no longer protected.  If you want to protect the primary branch and prevent any commits on it, you need to set up branch protection rules in your git provider settings. This ensures your primary branch remains secure and no new commits can be made to it.
 
 For example, if you want to use the `develop` branch of a connected repository:
 
