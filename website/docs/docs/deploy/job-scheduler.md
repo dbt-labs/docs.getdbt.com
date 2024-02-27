@@ -38,7 +38,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 
 ## Scheduler queue
 
-The scheduler queues a deployment job to be processed when it's triggered to run because of a [set schedule](#create-and-schedule-jobs), an API call, or manual action. 
+The scheduler queues a deployment job to be processed when it's triggered to run by a [set schedule](/docs/deploy/deploy-jobs#schedule-days), [a job completed](/docs/deploy/deploy-jobs#trigger-on-job-completion), an API call, or manual action. 
 
 Before the job starts executing, the scheduler checks these conditions to determine if the run can start executing:
 
@@ -46,9 +46,7 @@ Before the job starts executing, the scheduler checks these conditions to determ
 
 - **Does this same job have a run already in progress?** &mdash; The scheduler executes distinct runs of the same dbt Cloud job serially to avoid model build collisions. If there's a job already running, the queued job will wait, and the wait time will be displayed in dbt Cloud.
 
-If there is an available run slot and there isn't an actively running instance of the job, the scheduler will prepare the job to run in your cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and Git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time** in the UI.
-
-Together, **wait time** plus **prep time** is the total time a run spends in the queue (or **Time in queue**).
+If there is an available run slot and there isn't an actively running instance of the job, the scheduler will prepare the job to run in your cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and Git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **Prep time** in the UI.
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 

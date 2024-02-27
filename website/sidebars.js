@@ -28,7 +28,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/dbt-cloud-features",
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
-        "docs/cloud/about-cloud/regions-ip-addresses",
+        "docs/cloud/about-cloud/access-regions-ip-addresses",
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
@@ -213,6 +213,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
                 "docs/core/connect-data-platform/extrica-setup",
+                "docs/core/connect-data-platform/risingwave-setup",
                 "docs/core/connect-data-platform/yellowbrick-setup",
               ],
             },
@@ -277,9 +278,17 @@ const sidebarSettings = {
                 "docs/build/python-models",
               ],
             },
+            {
+              type: "category",
+              label: "Tests",
+              link: { type: "doc", id: "docs/build/data-tests" },
+              items: [
+                "docs/build/data-tests",
+                "docs/build/unit-tests",
+              ],
+            },
             "docs/build/snapshots",
             "docs/build/seeds",
-            "docs/build/data-tests",
             "docs/build/jinja-macros",
             "docs/build/sources",
             "docs/build/exposures",
@@ -330,6 +339,14 @@ const sidebarSettings = {
                 "docs/build/derived",
                 "docs/build/ratio",
                 "docs/build/simple",
+              ],
+            },
+            {
+              type: "category",
+              label: "Advanced data modeling",
+              link: { type: "doc", id: "docs/build/advanced-topics" },
+              items: [
+                "docs/build/fill-nulls-advanced",
               ],
             },
           ],
@@ -426,6 +443,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
+            "docs/collaborate/column-level-lineage",
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
@@ -479,10 +497,12 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/dbt-sl",
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
+        "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        "docs/use-dbt-semantic-layer/sl-faqs",
         {
           type: "category",
-          label: "Integrations",
+          label: "Available integrations",
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
           items: [
             "docs/use-dbt-semantic-layer/avail-sl-integrations",
@@ -501,7 +521,7 @@ const sidebarSettings = {
         "docs/dbt-cloud-apis/overview",
         {
           type: "category",
-          label: "Authentication",
+          label: "API Access",
           link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
             "docs/dbt-cloud-apis/authentication",
@@ -610,7 +630,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/core" },
       items: [
         "docs/dbt-versions/core",
-        "docs/dbt-versions/upgrade-core-in-cloud",
+        "docs/dbt-versions/upgrade-dbt-version-in-cloud",
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",
         {
@@ -810,7 +830,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "For tests",
+          label: "For data tests",
           items: [
             "reference/data-test-configs",
             "reference/resource-configs/fail_calc",
@@ -819,6 +839,13 @@ const sidebarSettings = {
             "reference/resource-configs/store_failures",
             "reference/resource-configs/store_failures_as",
             "reference/resource-configs/where",
+          ],
+        },
+        {
+          type: "category",
+          label: "For unit tests",
+          items: [
+            "reference/resource-properties/unit-tests",
           ],
         },
         {
@@ -889,6 +916,7 @@ const sidebarSettings = {
             "reference/commands/compile",
             "reference/commands/debug",
             "reference/commands/deps",
+            "reference/commands/dbt-environment",
             "reference/commands/init",
             "reference/commands/list",
             "reference/commands/parse",
@@ -901,6 +929,7 @@ const sidebarSettings = {
             "reference/commands/snapshot",
             "reference/commands/source",
             "reference/commands/test",
+            "reference/commands/version",
           ],
         },
         {

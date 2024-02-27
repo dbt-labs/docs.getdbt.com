@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud/regions-ip-addresses",
+      "destination": "/docs/cloud/about-cloud/access-regions-ip-addresses",
+      "permanent": true
+    },
+    {
       "source": "/reference/profiles.yml",
       "destination": "/docs/core/connect-data-platform/profiles.yml",
       "permanent": true
@@ -1669,7 +1679,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {
@@ -2374,7 +2384,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {
@@ -2849,7 +2859,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {

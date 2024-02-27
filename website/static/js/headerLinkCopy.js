@@ -8,7 +8,7 @@
   
   // separating function from eventlistener to understand they are two separate things
   function copyHeader () {
-    const headers = document.querySelectorAll("h2.anchor, h3.anchor");
+    const headers = document.querySelectorAll("h2.anchor, h3.anchor, .expandable-anchor.anchor");
 
 headers.forEach((header) => {
     header.style.cursor = "pointer";
