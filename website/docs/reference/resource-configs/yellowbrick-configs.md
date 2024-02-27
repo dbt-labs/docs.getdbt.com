@@ -1,6 +1,6 @@
 ---
 title: "Yellowbrick configurations"
-description: "Yellowbrick Configurations - Read this in-depth guide to learn about configurations in dbt."
+description: "Yellowbrick Configurations: Read this in-depth guide to learn about configurations in dbt."
 id: "yellowbrick-configs"
 ---
 
@@ -13,7 +13,7 @@ The dbt-yellowbrick adapter supports the following incremental materialization s
 
 All of these strategies are inherited from the dbt-postgres adapter.
 
-## Performance Optimizations
+## Performance optimizations
     
 To improve query performance, tables in Yellowbrick Data support several optimizations that can be defined 
 as model-level configurations in dbt.  These will be applied to `CREATE TABLE` <Term id="ddl" /> statements 
@@ -29,10 +29,10 @@ A table that has sorted or clustered columns facilitates the skipping of blocks 
 restrictions applied in the query.  Further details can be found in the [Yellowbrick Data Warehouse](https://docs.yellowbrick.com/latest/ybd_sqlref/clustered_tables.html#clustered-tables) 
 documentation.
 
-
 ### Some example model configurations
 
 * ```DISTRIBUTE REPLICATE``` with a ```SORT``` column...
+
 ```sql
 {{
   config(
@@ -141,11 +141,11 @@ from
 distribute on (match_key)
 cluster on (season_key, match_date_key, home_team_key, away_team_key);
 ```
-## Cross-Database Materializations
+
+## Cross-database materializations
 
 Yellowbrick supports cross-database queries and the dbt-yellowbrick adapter will permit cross-database reads into a specific target on the same appliance instance.
 
 ## Limitations
 
-This initial implementation of the dbt adapter for Yellowbrick Data Warehouse may not support some use cases. 
-We strongly advise validating all records or transformations resulting from the adapter output.
+This initial implementation of the dbt adapter for Yellowbrick Data Warehouse may not support some use cases. We strongly advise validating all records or transformations resulting from the adapter output.
