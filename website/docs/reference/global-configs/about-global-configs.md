@@ -16,7 +16,7 @@ There is a significant overlap between dbt's flags and dbt's command line option
 ### Setting flags
 
 There are multiple ways of setting flags, which depend on the use case:
-- **[Project-level `flags` (`dbt_project.yml`)](/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Preserve legacy behaviors until their slated deprecation.
+- **[Project-level `flags` in `dbt_project.yml`](/reference/global-configs/project-flags):** Define version-controlled defaults for everyone running this project. Preserve [legacy behaviors](/reference/global-configs/legacy-behaviors) until their slated deprecation.
 - **[Environment variables](/reference/global-configs/environment-variable-configs):** Define different behavior in different runtime environments (development vs. production vs. [continuous integration](/docs/deploy/continuous-integration), or different behavior for different users in development (based on personal preferences).
 - **[CLI options](/reference/global-configs/command-line-options):** Define behavior specific to _this invocation_. Supported for all dbt commands.
 
@@ -41,7 +41,7 @@ dbt run --no-fail-fast # set to False
 
 There are two categories of exceptions:
 1. **Flags setting file paths:** Flags for file paths that are relevant to runtime execution (for example, `--log-path` or `--state`) cannot be set in `dbt_project.yml`. To override defaults, pass CLI options or set environment variables (`DBT_LOG_PATH`, `DBT_STATE`). Flags that tell dbt where to find project resources (for example, `model-paths`) are set in `dbt_project.yml`, but as a top-level key, outside the `flags` dictionary; these configs are expected to be fully static and never vary based on the command or execution environment.
-2. Flags opting into legacy dbt behaviors can _only_ be defined in `dbt_project.yml`. These are intended to be set in version control and migrated via pull/merge request. Their values should not diverge indefinitely across invocations, environments, or users.
+2. **Opt-in flags:** Flags opting into [legacy dbt behaviors](/reference/global-configs/legacy-behaviors) can _only_ be defined in `dbt_project.yml`. These are intended to be set in version control and migrated via pull/merge request. Their values should not diverge indefinitely across invocations, environments, or users.
 
 ### Accessing flags
 
