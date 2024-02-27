@@ -44,7 +44,7 @@ import RowsAffected from '/snippets/_run-result.md';
 
 <VersionBlock firstVersion="1.8">
 
-There are three attributes related to the `applied` state in the run_results.json (to complement unique_id):
+The run_results.json includes three attributes related to the `applied` state that complement `unique_id`:
 
 - `compiled`: Boolean entry of the node compilation status (`False` after parsing, but `True` after compiling).
 - `compiled_code`: Rendered string of the code that was compiled (empty after parsing, but full string after compiling).
