@@ -12,23 +12,46 @@ displayed_sidebar: "docs"
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 - Release schedule (coming soon)
 
-:::tip Keep on latest version, always
-
-Starting this year, let dbt Labs handle version upgrades for you. With dbt Cloud, you can get early access to new functionality before it lands in the final release of dbt Core v1.8 and without the need of managing your own version upgrades. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
-
-The **Keep on latest version** setting is currently available in beta for select dbt Cloud customers, rolling out to wider availability through February and March.
-
-For users of dbt Core, the v1.8.0-b1 release of `dbt-core` & dbt Labs-maintained adapters is planned for February 28.
-
-:::
-
 ## What to know before upgrading
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
+The dbt Core v1.8.0-b1 release of dbt-core & dbt Labs-maintained adapters is planned for February 28th.
+
+## Keep on the latest version in dbt Cloud
+
+ With dbt Cloud, you can get early access to many new features and functionality before it is in the GA release of dbt Core v1.8 without the need to manage version upgrades. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+
+The **Keep on latest version** setting is currently available in closed beta for select dbt Cloud customers and will have wider availability in March of 2024.
+
 ## New and changed features and functionality
 
-Features and functionality new in dbt v1.8
+Features and functionality new in dbt v1.8.
+
+### Updated installation procedure
+
+Before v1.8, when you installed an adapter, you would automatically get `dbt-core ` installed along with the adapter package (if you didn’t already have an existing, compatible version of dbt-core).
+
+Beginning in v1.8, you must install _both_ dbt-core and the desired adapter. A new `pip` installation needs to look like this:
+
+```shell
+pip install dbt-core dbt-ADAPTER_NAME
+```
+
+### Unit Tests
+
+Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. In v1.8, we are introducing [unit testing](/docs/build/unit-tests) for SQL models. Unit tests are a standard programming practice for testing small code sections before deployment. Unit testing in dbt is similar - testing your SQL models' logic to ensure that they will build _before_ they are materialized.
+
+When you execute `dbt test` in v1.8+, it will run both unit and data tests. Use the [`test_type`](/reference/node-selection/methods#the-test_type-method) method to run only unit or data tests:
+
+```shell
+
+dbt test --select "test_type:unit"           # run all unit tests
+dbt test --select "test_type:data"           # run all data tests
+
+```
+
+Unit tests are defined in YML files in your `models/` directory and are currently only supported on SQL models. To distinguish between the two, the `tests:` config has been renamed to `data_tests:`. Both are currently supported for backward compatibility.
 
 ### Unit testing
 
@@ -45,4 +68,5 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 
 ## Quick hits
 
-Coming soon!
+- [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the `dbt_project.yml`.
+- A new subcategory of flags has been created for [legacy behaviors](reference/global-configs/legacy-behaviors)
