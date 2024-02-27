@@ -40,7 +40,9 @@ pip install dbt-core dbt-ADAPTER_NAME
 
 ### Unit Tests
 
-Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. In v1.8, we are introducing [unit testing](/docs/build/unit-tests) for SQL models. Unit tests are a standard programming practice for testing small code sections before deployment. Unit testing in dbt is similar - testing your SQL models' logic to ensure that they will build _before_ they are materialized.
+Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure.
+
+In `1.8`, we're introducing native support for [unit testing](/docs/build/unit-tests). Unit tests validate your SQL modeling logic on a small set of static inputs __before__ you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and reliability of code.
 
 When you execute `dbt test` in v1.8+, it will run both unit and data tests. Use the [`test_type`](/reference/node-selection/methods#the-test_type-method) method to run only unit or data tests:
 
@@ -52,14 +54,6 @@ dbt test --select "test_type:data"           # run all data tests
 ```
 
 Unit tests are defined in YML files in your `models/` directory and are currently only supported on SQL models. To distinguish between the two, the `tests:` config has been renamed to `data_tests:`. Both are currently supported for backward compatibility.
-
-### Unit testing
-
-Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure.
-
-In `1.8`, we're introducing native support for [unit testing](/docs/build/unit-tests). Unit tests validate your SQL modeling logic on a small set of static inputs __before__ you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and reliability of code.
-
-To distinguish between unit test and data test configurations, the `tests:` config has been renamed to `data_tests:` - both will currently be supported for backwards compatability.
 
 ### The `--empty` flag
 
