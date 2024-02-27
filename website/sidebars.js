@@ -936,7 +936,7 @@ const sidebarSettings = {
             id: "reference/global-configs/about-global-configs",
           },
           items: [
-	    "reference/global-configs/about-global-configs",
+            "reference/global-configs/about-global-configs",
             {
               type: "category",
               label: "Setting flags",
