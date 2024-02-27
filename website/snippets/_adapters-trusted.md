@@ -23,6 +23,14 @@
     icon="athena"/>
 
 <Card
+    title="Azure Synapse"
+    body="<ul><li><a href='/docs/core/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /> <br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a><br /><br /><div style='background: #E5E7EB;
+  border-radius: 1.5rem;
+  color:#262A38;
+  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
+    icon="rocket"/>
+
+<Card
     title="BigQuery"
     body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-bigquery'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/bigquery-setup'>Install with dbt Core </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-bigquery><img src=https://badge.fury.io/py/dbt-bigquery.svg/></a><br /><br /><div style='background: #E5E7EB;
   border-radius: 1.5rem;
@@ -74,6 +82,17 @@
   color:#262A38;
   padding: 0rem 0.75rem; display:inline-block'>Trusted</div>"
     icon="materialize"/>
+
+<Card
+    title="Microsoft Fabric"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-microsoft-fabric'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/fabric-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/></a><br /><br /><div style='background: #E5E7EB;
+  border-radius: 1.5rem;
+  color:#262A38;
+  padding: 0rem 0.75rem; display:inline-block'>dbt Cloud</div> <div style='  background: #E5E7EB;
+  border-radius: 1.5rem;
+  color:#262A38;
+  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
+    icon="fabric"/>
 
 <Card
     title="Oracle Autonomous Database"
@@ -136,23 +155,6 @@
   padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
     icon="starburst"/>
 
-<Card
-    title="Microsoft Fabric"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-microsoft-fabric'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/fabric-setup'>Install with dbt Core  </a> </li></ul><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/></a><br /><br /><div style='background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Cloud</div> <div style='  background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
-    icon="fabric"/>
-<Card
-    title="Azure Synapse"
-    body="<ul><li><a href='/docs/core/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /> <br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a><br /><br /><div style='background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
-    icon="rocket"/>
 <Card
     title="Teradata"
     body="<ul><li><a href='/docs/core/connect-data-platform/teradata-setup'>Install with dbt Core  </a> </li> </ul><br /><br /> <a href=https://badge.fury.io/py/dbt-teradata><img src=https://badge.fury.io/py/dbt-teradata.svg/></a><br /><br /><div style='background: #E5E7EB;
