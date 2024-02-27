@@ -77,7 +77,7 @@ where
 distribute REPLICATE
 sort on (stadium_capacity);
 ```
-<br>
+<br><br/>
 
 * ```DISTRIBUTE``` on a single column and define up to four ```CLUSTER``` columns...
 
@@ -112,6 +112,7 @@ from
 		inner join {{ source('premdb_public','team') }} a on (m.atid = a.atid)
 		inner join {{ source('premdb_public','season') }} s on (m.seasonid = s.seasonid)
 ```
+
 gives the following model output:
 
 ```sql
@@ -146,4 +147,6 @@ cluster on (season_key, match_date_key, home_team_key, away_team_key);
 
 Yellowbrick supports cross-database queries and the dbt-yellowbrick adapter will permit cross-database reads into a specific target on the same appliance instance.
 
+## Limitations
 
+This initial implementation of the dbt adapter for Yellowbrick Data Warehouse may not support some use cases. We strongly advise validating all records or transformations resulting from the adapter output.
