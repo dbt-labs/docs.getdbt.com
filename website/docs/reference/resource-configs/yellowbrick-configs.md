@@ -146,6 +146,4 @@ cluster on (season_key, match_date_key, home_team_key, away_team_key);
 
 Yellowbrick supports cross-database queries and the dbt-yellowbrick adapter will permit cross-database reads into a specific target on the same appliance instance.
 
-## Limitations
 
-This initial implementation of the dbt adapter for Yellowbrick Data Warehouse may not support some use cases. We strongly advise validating all records or transformations resulting from the adapter output.
