@@ -47,7 +47,7 @@ import RowsAffected from '/snippets/_run-result.md';
 There are three attributes related to the `applied` state in the run_results.json (to complement unique_id):
 
 - `compiled`: Boolean entry of the node compilation status (`False` after parsing, but `True` after compiling).
-- `compiled_code`: rendered string of the code that was compiled (empty after parsing, but full string after compiling).
+- `compiled_code`: Rendered string of the code that was compiled (empty after parsing, but full string after compiling).
 - `relation_name`: the fully-qualified name of the object that was (or will be) created/updated within the database.
 
 Any additional information about the `logical` state of nodes should continue to be looked up in the full node object in manifest.json via the unique_id.
