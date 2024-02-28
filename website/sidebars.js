@@ -213,7 +213,8 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
                 "docs/core/connect-data-platform/extrica-setup",
-		"docs/core/connect-data-platform/risingwave-setup",
+                "docs/core/connect-data-platform/risingwave-setup",
+                "docs/core/connect-data-platform/yellowbrick-setup",
               ],
             },
           ],
@@ -741,6 +742,7 @@ const sidebarSettings = {
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/starrocks-configs",
         "reference/resource-configs/infer-configs",
+        "reference/resource-configs/yellowbrick-configs",
       ],
     },
     {
