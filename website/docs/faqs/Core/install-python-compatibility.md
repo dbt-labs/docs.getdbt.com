@@ -5,7 +5,7 @@ sidebar_label: 'Python version'
 id: install-python-compatibility
 ---
 
-You can use the followign table to match your dbt-core version with the compatible version of Python. New dbt minor versions will add support for new Python3 minor versions as soon as all dependencies can support it. In addition, dbt minor versions will drop support for old Python3 minor versions right before they reach [end of life](https://endoflife.date/python).
+Use this table to match dbt-core versions with their compatible Python versions. New dbt minor versions will add support for new Python3 minor versions as soon as all dependencies can support it. In addition, dbt minor versions will drop support for old Python3 minor versions right before they reach [end of life](https://endoflife.date/python).
 
 | dbt-core → <br/> Python ↓ | 1.0 | 1.1 | 1.2 | 1.3 | 1.4 | 1.5 | 1.6 | 1.7 | 1.8 |
 |---------------------------:|-----|-----|-----|-----|-----|-----|-----|-----|-----|
