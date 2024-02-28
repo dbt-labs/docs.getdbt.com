@@ -1278,7 +1278,7 @@ We envision that data platform vendors will be most interested in having their a
 
 ## Build a trusted adapter
 
-The Trusted adapter program exists to allow adapter maintainers to demonstrate to the dbt community that your adapter is trusted to be used in production.
+The Trusted Adapter Program exists to allow adapter maintainers to demonstrate to the dbt community that your adapter is trusted to be used in production.
 
 ### What it means to be trusted
 
@@ -1286,7 +1286,7 @@ By opting into the below, you agree to this, and we take you at your word. dbt L
 
 ### Feature Completeness
 
-To be considered for the Trusted Adapter program, the adapter must cover the essential functionality of dbt Core given below, with best effort given to support the entire feature set.
+To be considered for the Trusted Adapter Program, the adapter must cover the essential functionality of dbt Core given below, with best effort given to support the entire feature set.
 
 Essential functionality includes (but is not limited to the following features):
 
