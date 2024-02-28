@@ -31,7 +31,6 @@ unit_tests:
            object_field: {'Alberta':'Edmonton','Manitoba':'Winnipeg'}
            str_array_field: ['a','b','c']
            int_array_field: [1, 2, 3]
-		...
 
 ```
 
