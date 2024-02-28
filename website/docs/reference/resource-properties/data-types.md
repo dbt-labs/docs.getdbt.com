@@ -22,9 +22,9 @@ unit_tests:
            str_field: my_string
            str_escaped_field: "my,cool'string"
            date_field: 2020-01-02
-				   timestamp_field: 2013-11-03 00:00:00-0
+           timestamp_field: 2013-11-03 00:00:00-0
            timestamptz_field: 2013-11-03 00:00:00-0
-	         number_field: 3
+           number_field: 3
            variant_field: 3
            geometry_field: POINT(1820.12 890.56)
            geography_field: POINT(-122.35 37.55)
