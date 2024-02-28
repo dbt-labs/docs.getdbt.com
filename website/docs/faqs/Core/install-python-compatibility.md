@@ -7,7 +7,7 @@ id: install-python-compatibility
 
 import Pythonmatrix from '/snippets/_python-compatibility-matrix.md';
 
-Use this table to match dbt-core versions with their compatible Python versions. New dbt minor versions will add support for new Python3 minor versions as soon as all dependencies can support it. In addition, dbt minor versions will drop support for old Python3 minor versions right before they reach [end of life](https://endoflife.date/python).
+Use this table to match dbt-core versions with their compatible Python versions. New [dbt minor versions](/docs/dbt-versions/core#minor-versions) will add support for new Python3 minor versions when all dependencies can support it. In addition, dbt minor versions will withdraw support for old Python3 minor versions before their [end of life](https://endoflife.date/python).
 
 <Pythonmatrix/>
 
