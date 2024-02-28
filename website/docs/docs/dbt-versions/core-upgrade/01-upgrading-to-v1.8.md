@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ## Resources
 
 - Changelog (coming soon)
-- [CLI Installation guide](/docs/core/installation-overview)
+- [dbt Core CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 - Release schedule (coming soon)
 
