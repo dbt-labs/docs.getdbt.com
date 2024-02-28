@@ -12,7 +12,7 @@ Downloading and building dbt Core will enable you to contribute to the project b
 
 ### Installing dbt Core
 
-Beginning in v1.8, you must install both dbt Core and the desired adapter because `dbt-core` has been decoupled from the adapter installation.
+Beginning in v1.8, installing an adapter no longer automatically installs `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations
 
 <VersionBlock firstVersion="1.8">
 
