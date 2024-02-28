@@ -16,10 +16,7 @@
     body="<ul><li><a href='/docs/core/connect-data-platform/athena-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-athena-community><img src=https://badge.fury.io/py/dbt-athena-community.svg/></a><br /><br /><div style='background: #E5E7EB;
   border-radius: 1.5rem;
   color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div> <div style='  background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>Trusted</div>"
+  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
     icon="athena"/>
 
 <Card
@@ -65,10 +62,7 @@
     body="<ul><li><a href='/docs/core/connect-data-platform/glue-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-glue><img src=https://badge.fury.io/py/dbt-glue.svg/></a><br /><br /><div style='background: #E5E7EB;
   border-radius: 1.5rem;
   color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div> <div style='  background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>Trusted</div>"
+  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
     icon="glue"/>
 
 <Card
@@ -77,10 +71,7 @@
     href=https://badge.fury.io/py/dbt-materialize><img src=https://badge.fury.io/py/dbt-materialize.svg/></a><br /><br /><div style='background: #E5E7EB;
   border-radius: 1.5rem;
   color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div> <div style='  background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>Trusted</div>"
+  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
     icon="materialize"/>
 
 <Card
@@ -100,10 +91,7 @@
     href=https://badge.fury.io/py/dbt-oracle><img src=https://badge.fury.io/py/dbt-oracle.svg/></a><br /><br /><div style='background: #E5E7EB;
   border-radius: 1.5rem;
   color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div> <div style='  background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>Trusted</div>"
+  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
     icon="oracle"/>
 
 <Card
