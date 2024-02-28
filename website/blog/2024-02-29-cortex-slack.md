@@ -1,5 +1,5 @@
 ---
-title: "More time coding, less time waiting: Mastering defer in dbt"
+title: "LLM powered anlytics engineering - using Snowflake Cortex and dbt Cloud to solve production data problems, today"
 description: "Learn how to take advantage of the defer to prod feature in dbt Cloud"
 slug: defer-to-prod
 
@@ -23,12 +23,23 @@ A decade ago, the big change was cloud data warehouses - all of a sudden it was 
 - We can’t store that clickstream data (without pre-aggregating and transforming it)
 - Some other good examples
 
-Today, the next wave of innovation is happening in AI and LLMs, and they’re coming to the same cloud data platforms dbt practitioners have been using since the start. For one example, Snowflake have just released their Cortex functions to access specialised ML and LLM models tuned for specific tasks on top of your existing datasets where they already live. In doing so, there are a new set of boundaries lifted away from us:
+Today, the next wave of innovation is happening in AI and LLMs, and they’re coming to the same cloud data platforms dbt practitioners have been using since the start. For one example, Snowflake have just released their Cortex functions to access specialised ML and LLM models tuned for specific tasks on top of your existing datasets where they already live. In doing so, there are a new set of opportunities available to us:
 
-- We can’t derive meaning from these huge blocks of text (without moving the data somewhere else)
-- We can’t XXX (without YYYY)
+- We can now derive meaning from these arbitraliy large blocks of text (without moving the data somewhere else)
+- We can now elegantly extract structured data from unstructured data (like images)
+- We can bake reasoning capabilities into our dbt models.
 
 Which means that there is a new set of work that it’s possible to do inside of the existing tooling and mindset you know and love: dbt.
+
+## Anatomy of an LLM-powered workflow
+
+When we were looking for our first AI powered use case in our analytics stack, we wanted to find something at the intersection of:
+
+- Solves a real business problem for us today
+- Makes use of the unique capabilities of LLMs
+- Does so in a way that hedges against their current uncertainties and limitations
+- Understanding that we can build workflows with expected model improvements in mind (things that don't work today might soon work very well indeed)
+
 
 ## Developing our first LLM-powered analytics workflow in dbt Cloud
 
