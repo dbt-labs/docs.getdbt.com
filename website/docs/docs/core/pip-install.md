@@ -44,7 +44,7 @@ Once you decide [which adapter](/docs/supported-data-platforms) you're using, yo
 <VersionBlock firstVersion="1.8">
 
 ```shell
-python3 -m pip install dbt-core dbt-ADAPTER_NAME. 
+python -m pip install dbt-core dbt-ADAPTER_NAME. 
 ```
 
 </VersionBlock>
@@ -52,7 +52,7 @@ python3 -m pip install dbt-core dbt-ADAPTER_NAME.
 <VersionBlock lastVersion="1.7">
 
 ```shell
-python3 -m pip install dbt-ADAPTER_NAME
+python -m pip install dbt-ADAPTER_NAME
 ```
 
 </VersionBlock>
@@ -62,7 +62,7 @@ For example, if using Postgres:
 <VersionBlock lastVersion="1.8">
 
 ```shell
-python3 -m pip install dbt-core dbt-postgres
+python -m pip install dbt-core dbt-postgres
 ```
 
 This will install `dbt-core` and `dbt-postgres` _only_:
@@ -84,7 +84,7 @@ All adapters build on top of `dbt-core`. Some also depend on other adapters: for
 <VersionBlock lastVersion="1.7">
 
 ```shell
-python3 -m pip install dbt-postgres
+python -m pip install dbt-postgres
 ```
 
 This will install `dbt-core` and `dbt-postgres` _only_:
@@ -108,7 +108,7 @@ Some adapters depend on other adapters. For example, `dbt-redshift` builds on to
 To upgrade a specific adapter plugin:
 
 ```shell
-python3 -m pip install --upgrade dbt-<adapter>
+python -m pip install --upgrade dbt-<adapter>
 ```
 
 ### Install dbt-core only
@@ -116,7 +116,7 @@ python3 -m pip install --upgrade dbt-<adapter>
 If you're building a tool that integrates with dbt Core, you may want to install the core library alone, without a database adapter. Note that you won't be able to use dbt as a CLI tool.
 
 ```shell
-python3 -m pip install dbt-core
+python -m pip install dbt-core
 ```
 
 ### Change dbt Core versions
@@ -126,13 +126,13 @@ You can upgrade or downgrade versions of dbt Core by using the `--upgrade` optio
 To upgrade dbt to the latest version:
 
 ```
-python3 -m pip install --upgrade dbt-core
+python -m pip install --upgrade dbt-core
 ```
 
 To downgrade to an older version, specify the version you want to use. This command can be useful when you're resolving package dependencies. As an example:
 
 ```
-python3 -m pip install --upgrade dbt-core==0.19.0
+python -m pip install --upgrade dbt-core==0.19.0
 ```
 
 ### `pip install dbt`
@@ -142,7 +142,7 @@ Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise
 If you have workflows or integrations that relied on installing the package named `dbt`, you can achieve the same behavior going forward by installing the same five packages that it used:
 
 ```shell
-python3 -m pip install \
+python -m pip install \
   dbt-core \
   dbt-postgres \
   dbt-redshift \
