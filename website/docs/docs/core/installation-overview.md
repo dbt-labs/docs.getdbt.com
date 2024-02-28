@@ -26,7 +26,7 @@ If you're using the command line, we recommend learning some basics of your term
 You can install dbt Core on the command line by using one of these methods:
 
 - [Use pip to install dbt](/docs/core/pip-install) (recommended)
-- [Use Homebrew to install dbt](/docs/core/homebrew-install)
+- [Use Homebrew to install dbt](/docs/core/homebrew-install)(No longer supported after v1.5)
 - [Use a Docker image to install dbt](/docs/core/docker-install)
 - [Install dbt from source](/docs/core/source-install)
 - You can also develop locally using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). The dbt Cloud CLI and dbt Core are both command line tools that let you run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
@@ -35,7 +35,7 @@ You can install dbt Core on the command line by using one of these methods:
 
 dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade/upgrading-to-v1.4) highlighting the changes required for each minor and major release, and [core versions](/docs/dbt-versions/core)
 
-- [Upgrade Homebrew](/docs/core/homebrew-install#upgrading-dbt-and-your-adapter)
+- [Upgrade Homebrew](/docs/core/homebrew-install#upgrading-dbt-and-your-adapter)(No longer supported after v1.5)
 - [Upgrade `pip`](/docs/core/pip-install#change-dbt-core-versions)
 
 
