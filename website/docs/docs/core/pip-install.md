@@ -108,7 +108,7 @@ Some adapters depend on other adapters. For example, `dbt-redshift` builds on to
 To upgrade a specific adapter plugin:
 
 ```shell
-python -m pip install --upgrade dbt-<adapter>
+python -m pip install --upgrade dbt-ADAPTER_NAME
 ```
 
 ### Install dbt-core only
