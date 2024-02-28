@@ -13,6 +13,29 @@ keywords:
 * [Data test configurations](/reference/data-test-configs)
 * [Test selection examples](/reference/node-selection/test-selection-examples)
 
+<VersionBlock firstVersion="1.8">
+
+:::important
+
+With the addition of unit tests in dbt v1.8, `tests` are now `data tests`. In dbt v1.8, `tests:` is still supported in your YML configuration file as an alias but will be deprecated in the future in favor of `data_tests:`. Please update your configuration YML to prepare for these changes:
+
+```yml
+
+models:
+
+name: orders
+columns:
+name: order_id
+data_tests:
+unique
+not_null
+
+```
+
+:::
+
+</VersionBlock>
+
 ## Overview
 
 Data tests are assertions you make about your models and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
