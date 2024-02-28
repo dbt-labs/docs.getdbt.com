@@ -91,7 +91,7 @@ unit_tests:
 
 ```
 
-Note that `array` is not supported at this time.
+Currently, the `array` is not supported.
 
 </div>
 
