@@ -32,7 +32,7 @@ Features and functionality new in dbt v1.8.
 
 Before v1.8, when you installed an adapter, you would automatically get `dbt-core` installed along with the adapter package (if you didn’t already have an existing, compatible version of dbt-core).
 
-Beginning in v1.8, you must install _both_ dbt-core and the desired adapter. A new `pip` installation needs to look like this:
+Beginning in v1.8, the [dbt adapters and dbt Core have been decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). As a result, you must install _both_ dbt-core and the desired adapter. A new `pip` installation needs to look like this:
 
 ```shell
 pip install dbt-core dbt-ADAPTER_NAME
