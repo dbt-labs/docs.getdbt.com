@@ -21,7 +21,6 @@ Ratio allows you to create a ratio between two metrics. You simply specify a num
 | `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  |
 | `filter` | Optional filter for the numerator or denominator. | Optional |
 | `alias` | Optional alias for the numerator or denominator. | Optional |
-| `fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
 
 The following displays the complete specification for ratio metrics, along with an example.
 
@@ -32,7 +31,6 @@ metrics:
     type: ratio # Required
     label: The value that will be displayed in downstream tools #Required
     type_params: # Required
-      fill_nulls_with: Set value instead of null (such as zero)  # Optional
       numerator: The name of the metric used for the numerator, or structure of properties # Required
         name: Name of metric used for the numerator # Required
         filter: Filter for the numerator # Optional
@@ -43,6 +41,8 @@ metrics:
         alias: Alias for the denominator # Optional
 ```
 
+For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
+
 ## Ratio metrics example
 
 ```yaml
@@ -52,14 +52,13 @@ metrics:
     label: Food Order Ratio
     type: ratio
     type_params: 
-      fill_nulls_with: 0
       numerator: food_orders
       denominator: orders
 ```
 
 ## Ratio metrics using different semantic models
 
-The system will simplify and turn the numerator and denominator in a ratio metric from different semantic models by computing their values in sub-queries. It will then join the result set based on common dimensions to calculate the final ratio. Here's an example of the SQL generated for such a ratio metric.
+The system will simplify and turn the numerator and denominator into a ratio metric from different semantic models by computing their values in sub-queries. It will then join the result set based on common dimensions to calculate the final ratio. Here's an example of the SQL generated for such a ratio metric.
 
 
 ```sql
@@ -118,7 +117,6 @@ metrics:
       - support@getdbt.com
     type: ratio
     type_params:
-      fill_nulls_with: 0
       numerator:
         name: distinct_purchasers
         filter: |
@@ -132,3 +130,6 @@ Note the `filter` and `alias` parameters for the metric referenced in the numera
 - Use the `filter` parameter to apply a filter to the metric it's attached to. 
 - The `alias` parameter is used to avoid naming conflicts in the rendered SQL queries when the same metric is used with different filters. 
 - If there are no naming conflicts, the `alias` parameter can be left out.
+
+## Related docs
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
