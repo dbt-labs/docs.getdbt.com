@@ -5,7 +5,7 @@ hide_table_of_contents: true
 ---
 
 
-Trusted adapters belong to the Trusted Adapter Program, including a commitment to meet the program's requirements. These adapters are maintained by dbt Labs, partners, and community members. All adapters in dbt Cloud have undergone an additional rigorous process that covers development, documentation, user experience, and maintenance requirements. dbt Labs recommends using trusted adapters in a production environment. 
+Trusted adapters take part in the Trusted Adapter Program, including a commitment to meet the program's requirements. They are maintained by dbt Labs, partners, and community members. Trusted adapters in dbt Cloud undergo an additional rigorous process that covers development, documentation, user experience, and maintenance requirements. We strongly recommend using them in production environments. 
 
 Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a *good thing*, however it requires due diligence that wasn't required in a paid-license, closed-source software world. As a user, there are questions to answer important before taking a dependency on an open-source project. The trusted adapter designation is meant to streamline this process for end users.
 
