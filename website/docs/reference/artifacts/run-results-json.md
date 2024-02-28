@@ -50,7 +50,7 @@ The run_results.json includes three attributes related to the `applied` state th
 - `compiled_code`: Rendered string of the code that was compiled (empty after parsing, but full string after compiling).
 - `relation_name`: The fully-qualified name of the object that was (or will be) created/updated within the database.
 
-Any additional information about the `logical` state of nodes should continue to be looked up in the full node object in manifest.json via the unique_id.
+Continue to look up additional information about the `logical` state of nodes using the full node object in manifest.json via the `unique_id`.
 
 ## Examples
 
@@ -74,7 +74,7 @@ Compile the model:
 dbt compile -s my_model
 ```
 
-This is a printed snippet from the `run_results.json`:
+Here's a printed snippet from the `run_results.json`:
 
 ```json
     {
@@ -131,7 +131,7 @@ Run the built-in `unique` test and store the failures as a table:
 dbt test -s my_model
 ```
 
-This is a printed snippet from the `run_results.json`:
+Here's a printed snippet from the `run_results.json`:
 
 ```json
   "results": [
