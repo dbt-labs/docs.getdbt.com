@@ -7,7 +7,9 @@ Unit tests are designed to test for the expected _values_, not for the data type
 
 How you specify input and expected values in your unit test YML definitions are largely consistent across data warehouses, with some variation for more complex data types.
 
-## Snowflake data types
+<WHCode>
+
+<div warehouse="Snowflake">
 
 ```yml
 
@@ -34,7 +36,9 @@ unit_tests:
 
 ```
 
-## BigQuery data types
+</div>
+
+<div warehouse="BigQuery">
 
 ```yml
 
@@ -63,7 +67,10 @@ unit_tests:
 
 ```
 
-## Redshift data types
+</div>
+
+
+<div warehouse="Redshift">
 
 ```yml
 
@@ -86,7 +93,9 @@ unit_tests:
 
 Note that `array` is not supported at this time.
 
-## Spark data types
+</div>
+
+<div warehouse="Spark">
 
 ```yml
 
@@ -110,8 +119,9 @@ unit_tests:
 
 
 ```
+</div>
 
-### Postgres data types
+<div warehouse="Postgres">
 
 ```yml
 
@@ -135,3 +145,7 @@ unit_tests:
 ```
 
 Note that `array` is not supported at this time.
+
+</div>
+
+</WHCode>
