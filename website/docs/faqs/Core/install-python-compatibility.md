@@ -5,23 +5,13 @@ sidebar_label: 'Python version'
 id: install-python-compatibility
 ---
 
-<VersionBlock firstVersion="1.6">
-
-The latest version of `dbt-core` is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.4" lastVersion="1.5">
-
-The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, 3.10 and 3.11.
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.3">
-
-The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, and 3.10
-
-</VersionBlock>
+| dbt-core → <br/> Python ↓ | 1.0 | 1.1 | 1.2 | 1.3 | 1.4 | 1.5 | 1.6 | 1.7 | 1.8 |
+|---------------------------:|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| **3.8**                   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   |
+| **3.9**                   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   |
+| **3.10**                  | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   | ✓   |
+| **3.11**                  | ✖️   | ✖️   | ✖️   | ✖️   | ✓   | ✓   | ✓   | ✓   | ✓   |
+| **3.12**                  | ✖️   | ✖️   | ✖️   | ✖️   | ✖️   | ✖️   | ✖️   | ✓   | ✓   |
 
 Adapter plugins and their dependencies are not always compatible with the latest version of Python. For example, dbt-snowflake v0.19 is not compatible with Python 3.9, but dbt-snowflake versions 0.20+ are.
 
