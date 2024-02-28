@@ -19,7 +19,7 @@ Permissions:
 
 #### Account permissions for account roles
 
-| Account-level permission| Owner | Member | Read-onlu |
+| Account-level permission| Owner | Member | Read-only |
 |:-------------------------|:----:|:------:|:---------:|
 | Account settings        |   W   |   W    |           |
 | Audit logs              |   R   |        |           |
