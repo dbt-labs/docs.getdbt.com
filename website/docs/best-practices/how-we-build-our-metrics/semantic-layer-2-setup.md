@@ -30,7 +30,7 @@ Next, before you start writing code, you need to install MetricFlow:
 
 - Download MetricFlow as an extension of a dbt adapter from PyPI  (dbt Core users only). The MetricFlow is compatible with Python versions 3.8 through 3.11. 
   - **Note**: You'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
-- Beginning in v1.8, installing an adapter no longer automatically installs `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations.
+- Beginning in v1.8, installing an adapter does not automatically install `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations.
 - Use pip to install MetricFlow and the dbt adapter.
 
 ```shell
