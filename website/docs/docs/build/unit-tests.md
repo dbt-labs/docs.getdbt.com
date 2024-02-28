@@ -24,6 +24,7 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
+- Unit tests must be defined in a YML file in your `models/` directory.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
@@ -124,7 +125,7 @@ You only have to define the mock data for the columns you care about. This enabl
 
 The direct parents of the model that you’re unit testing (in this example, `stg_customers` and `top_level_email_domains`) need to exist in the warehouse before you can execute the unit test.
 
-Use the `--empty` flag to build an empty version of the models to save warehouse spend. 
+Use the [`--empty`](/reference/commands/build#the---empty-flag) flag to build an empty version of the models to save warehouse spend. 
 
 ```bash
 
@@ -326,3 +327,11 @@ unit_tests:
 ```
 
 There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+
+## Additional resources
+
+- [Unit testing reference page](/reference/resource-properties/unit-tests)
+- [Supported data formats for mock data](/reference/resource-properties/data-formats)
+- [Unit testing versioned models](/reference/resource-properties/unit-testing-versions)
+- [Unit test inputs](/reference/resource-properties/unit-test-input)
+- [Unit test overrides](/reference/resource-properties/unit-test-overrides)

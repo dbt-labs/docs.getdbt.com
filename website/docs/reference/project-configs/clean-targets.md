@@ -16,7 +16,7 @@ clean-targets: [directorypath]
 Optionally specify a custom list of directories to be removed by the `dbt clean` [command](/reference/commands/clean). As such, you should only include directories containing artifacts (e.g. compiled files, logs, installed packages) in this list.
 
 ## Default
-If this configuration is not included in your `dbt_project.yml` file, the `clean` command will remove files in your [target-path](/reference/project-configs/target-path).
+If this configuration is not included in your `dbt_project.yml` file, the `clean` command will remove files in your [target-path](/reference/global-configs/json-artifacts).
 
 ## Examples
 
