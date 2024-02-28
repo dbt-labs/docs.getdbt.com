@@ -4,20 +4,10 @@ description: "Learn how dbt Cloud administrators can use self-service permission
 id: "self-service-permissions"
 ---
 
-dbt Cloud supports two different permission sets to manage permissions for self-service accounts: **Member** and **Owner**.  
+import Permissions from '/snippets/_self-service-permissions-table.md';
 
-The permissions afforded to each role are described below:
 
-| Action | Member | Owner |
-| ------ | ------ | ----- |
-| View and edit resources | ✅ | ✅ |
-| Trigger runs | ✅ | ✅ |
-| Access the dbt Cloud IDE | ✅ | ✅ |
-| Access the dbt Cloud CLI | ✅ | ✅ |
-| Invite Members to the account | ✅ | ✅ |
-| Manage billing | ❌ | ✅ |
-| Manage team permissions | ❌ | ✅ |
-| Invite Owners to the account | ❌ | ✅ |
+<Permissions features={'/snippets/_self-service-permissions-table.md'}/>
 
 ## Read-Only vs. Developer License Types
 
