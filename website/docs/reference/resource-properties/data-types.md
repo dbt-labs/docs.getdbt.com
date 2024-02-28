@@ -104,7 +104,7 @@ unit_tests:
            date_field: 2020-01-02
            timestamp_field: 2013-11-03 00:00:00-0
            timestamptz_field: 2013-11-03 00:00:00-0
-	   int_array_field: 'array(1, 2, 3)'
+           int_array_field: 'array(1, 2, 3)'
            map_field: 'map("10", "t", "15", "f", "20", NULL)'
            named_struct_field: 'named_struct("a", 1, "b", 2, "c", 3)'
 
