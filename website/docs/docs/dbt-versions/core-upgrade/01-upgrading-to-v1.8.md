@@ -37,9 +37,12 @@ Beginning in v1.8, the [dbt adapters and dbt Core have been decoupled](https://g
 ```shell
 pip install dbt-core dbt-ADAPTER_NAME
 ```
+
 For example, you would use the following command if you use Snowflake:
 ```shell
 pip install dbt-core dbt-snowflake
+```
+
 ### Unit Tests
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure.
