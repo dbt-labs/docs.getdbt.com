@@ -37,7 +37,9 @@ Beginning in v1.8, you must install _both_ dbt-core and the desired adapter. A n
 ```shell
 pip install dbt-core dbt-ADAPTER_NAME
 ```
-
+For example, you would use the following command if you use Snowflake:
+```shell
+pip install dbt-core dbt-snowflake
 ### Unit Tests
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure.
