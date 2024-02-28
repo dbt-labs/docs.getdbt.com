@@ -14,9 +14,9 @@ displayed_sidebar: "docs"
 
 ## What to know before upgrading
 
-dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-The dbt Core v1.8.0-b1 release of dbt-core & dbt Labs-maintained adapters is planned for February 28th.
+dbt Labs plans to release dbt Core v1.8.0-b1 and dbt Labs-maintained adapters on February 28th, 2024.
 
 ## Keep on the latest version in dbt Cloud
 
@@ -30,7 +30,7 @@ Features and functionality new in dbt v1.8.
 
 ### New dbt Core adapter installation procedure
 
-Before v1.8, when you installed an adapter, you would automatically get `dbt-core ` installed along with the adapter package (if you didn’t already have an existing, compatible version of dbt-core).
+Before v1.8, when you installed an adapter, you would automatically get `dbt-core` installed along with the adapter package (if you didn’t already have an existing, compatible version of dbt-core).
 
 Beginning in v1.8, you must install _both_ dbt-core and the desired adapter. A new `pip` installation needs to look like this:
 
@@ -65,5 +65,5 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 ## Quick hits
 
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
-- A new subcategory of flags has been created for [legacy behaviors](reference/global-configs/legacy-behaviors).
+- A new subcategory of flags has been created for [legacy behaviors](/reference/global-configs/legacy-behaviors).
 - The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
