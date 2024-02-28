@@ -8,7 +8,7 @@ displayed_sidebar: "docs"
 ## Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/8aaed0e29f9560bc53d9d3e88325a9597318e375/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation-overview)
+- [dbt Core CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/8260)
 
