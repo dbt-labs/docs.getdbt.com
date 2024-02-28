@@ -12,8 +12,19 @@
 
 <h2> Installing {props.meta.pypi_package}</h2>
 
-Use `pip` to install the adapter, which automatically installs `dbt-core` and any additional dependencies. Use the following command for installation:
+Use `pip` to install the adapter. Before 1.8, installing the adapter would automatically install `dbt-core` and any additional dependencies. Beginning in 1.8, installing an adapter does not automatically install `dbt-core`. This is because adapters and dbt Core versions have been decoupled from each other so we no longer want to overwrite existing dbt-core installations.
+Use the following command for installation:
+<VersionBlock firstVersion="1.8">
+
+<code>python -m pip install dbt-core {props.meta.pypi_package}</code>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.7">
+
 <code>python -m pip install {props.meta.pypi_package}</code>
+
+</VersionBlock>
 
 <h2> Configuring {props.meta.pypi_package} </h2>
 
