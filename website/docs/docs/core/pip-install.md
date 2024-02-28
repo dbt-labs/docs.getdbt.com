@@ -39,7 +39,7 @@ alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
 
 ### Installing the adapter
 
-Once you decide [which adapter](/docs/supported-data-platforms) you're using, you can install using the command line. Beginning in v1.8, you must install both dbt Core and the desired adapter because dbt-core has been decoupled from the adapter installation.
+Once you decide [which adapter](/docs/supported-data-platforms) you're using, you can install using the command line. Beginning in v1.8, you must install both dbt Core and the desired adapter because `dbt-core` has been decoupled from the adapter installation.
 
 <VersionBlock firstVersion="1.8">
 
