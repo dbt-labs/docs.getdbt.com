@@ -17,7 +17,7 @@ We recommend using virtual environments (venv) to namespace pip modules.
 1. Create a new venv:
 
 ```shell
-python3 -m venv dbt-env				# create the environment
+python -m venv dbt-env				# create the environment
 ```
 
 2. Activate that same virtual environment each time you create a shell window or session:
