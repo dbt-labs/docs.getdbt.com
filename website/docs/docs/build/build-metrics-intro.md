@@ -42,6 +42,12 @@ MetricFlow allows you to:
     body="Define metrics through the powerful combination of measures, constraints, or functions, effortlessly organized in either YAML files or separate files."
     link="/docs/build/metrics-overview"
     icon="dbt-bit"/>
+  
+  <Card
+    title="Advanced topics"
+    body="Learn about advanced topics for dbt Semantic Layer and MetricFlow, such as data modeling workflows, and more."
+    link="/docs/build/advanced-topics"
+    icon="dbt-bit"/>
 
   <Card
     title="About the dbt Semantic Layer"
