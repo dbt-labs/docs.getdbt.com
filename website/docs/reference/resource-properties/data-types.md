@@ -33,7 +33,6 @@ unit_tests:
            int_array_field: [1, 2, 3]
 		...
 
-
 ```
 
 ## BigQuery data types
@@ -51,9 +50,9 @@ unit_tests:
            str_field: my_string
            str_escaped_field: "my,cool'string"
            date_field: 2020-01-02
-				   timestamp_field: 2013-11-03 00:00:00-0
+           timestamp_field: 2013-11-03 00:00:00-0
            timestamptz_field: 2013-11-03 00:00:00-0
-	         bigint_field: 1
+           bigint_field: 1
            geography_field: 'st_geogpoint(75, 45)'
            json_field: {"name": "Cooper", "forname": "Alice"}
            str_array_field: ['a','b','c']
