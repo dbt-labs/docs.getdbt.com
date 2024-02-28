@@ -28,7 +28,7 @@ The **Keep on latest version** setting is currently available in closed beta for
 
 Features and functionality new in dbt v1.8.
 
-### Updated installation procedure
+### New dbt Core adapter installation procedure
 
 Before v1.8, when you installed an adapter, you would automatically get `dbt-core ` installed along with the adapter package (if you didn’t already have an existing, compatible version of dbt-core).
 
