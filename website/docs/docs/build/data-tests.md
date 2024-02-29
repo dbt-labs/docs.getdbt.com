@@ -17,20 +17,7 @@ keywords:
 
 :::important
 
-With the addition of unit tests in dbt v1.8, `tests` are now `data tests`. In dbt v1.8, `tests:` is still supported in your YML configuration file as an alias but will be deprecated in the future in favor of `data_tests:`. Please update your configuration YML to prepare for these changes:
-
-```yml
-
-models:
-
-name: orders
-columns:
-name: order_id
-data_tests:
-unique
-not_null
-
-```
+With the addition of unit tests in dbt v1.8, `tests` are now `data tests`. In dbt v1.8, `tests:` is still supported in your YML configuration file as an alias but will be deprecated in the future in favor of `data_tests:`. See [New syntax](#new-syntax) for more information.
 
 :::
 
@@ -273,6 +260,29 @@ This workflow allows you to query and examine failing records much more quickly 
 Note that, if you select to store test failures:
 * Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
+
+<VersionBlock firstVersion="1.8">
+
+## New `tests:` syntax
+
+With the addition of unit tests in dbt v1.8, `tests` are now `data tests`. In dbt v1.8, `tests:` is still supported in your YML configuration file as an alias but will be deprecated in the future in favor of `data_tests:`. 
+
+As we progress towards this deprecation, the examples in our docs pages will be updated to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
+
+```yml
+
+models:
+
+name: orders
+columns:
+name: order_id
+data_tests:
+unique
+not_null
+
+
+```
+</VersionBlock>
 
 ## FAQs
 
