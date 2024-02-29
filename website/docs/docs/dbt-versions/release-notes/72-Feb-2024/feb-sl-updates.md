@@ -44,7 +44,7 @@ The following list explains the new features, updates, and fixes for February 20
   - If you query a time offset metric with multiple instances of `metric_time`/`agg_time_dimension`, only one of the instances will be offset. All of them should be.
   - If you query a time offset metric with one instance of `metric_time`/`agg_time_dimension` but filter by a different one, the query will fail.
 - **Join type selection** &mdash; MetricFlow prioritizes a candidate join type over the default type when evaluating nodes to join. For example, the default join type for distinct values queries is `FULL OUTER JOIN`, however, time spine joins require `CROSS JOIN`, which is more appropriate.
-- **Entity reference error in filter** &mdash; You can successfully reference entities in where filters. Previously, references to entities in the where filter caused an error.
+- **Entity reference error in filter** &mdash; Fixed a bug that previously caused errors when entities were referenced in `where` filters.
 
 **Dependencies**
 
