@@ -53,7 +53,7 @@ The custom menu provides the following capabilities:
 |---------------|-------------------------------------------------------|
 | Metrics       | Search and select metrics.                             |
 | Group By      | Search and select dimensions to group by. Dimensions are grouped by the entity of the semantic model they come from. |
-| Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time). You can still optionally use "where" to filter time ranges|
+| Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time). You can still optionally use `where` to filter time ranges|
 | Granularity   | Modify the granularity of the primary time dimension.      |
 | Where         | Filter your data. This includes categorical and time filters. |
 | Order By      | Return your data order.                              |
