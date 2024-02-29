@@ -17,7 +17,7 @@ keywords:
 
 :::important
 
-With the addition of unit tests in dbt v1.8, what was previously called "tests" are now "data tests". In dbt v1.8, `tests:` is still supported in your YML configuration file as an alias for data tests but will be deprecated in the future in favor of `data_tests:`. See [New syntax](#new-tests-syntax) for more information.
+In dbt v1.8, what was previously known as "tests" are now called "data tests" with the addition of [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for data tests but will be deprecated in the future in favor of `data_tests:`. Refer to [New syntax](#new-tests-syntax) for more information.
 
 :::
 
