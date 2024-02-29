@@ -80,7 +80,7 @@ semantic_models:
     description: A record of every transaction that takes place. Carts are considered  multiple transactions for each SKU.
     model: ref('schema.transactions')
     defaults:
-      agg_time_dimensions:
+      agg_time_dimensions: metric_time
 
 # --- entities ---
   entities:
