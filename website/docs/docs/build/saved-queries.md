@@ -22,21 +22,33 @@ Saved queries are distinct from [exports](/docs/use-dbt-semantic-layer/exports),
 
 All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses. The following is an example of a saved query:
 
+<!-- For versions 1.8 and higher -->
+<VersionBlock firstVersion="1.8">
+
 <File name='semantic_model.yml'>
 
 ```yaml
 saved_queries:
-  - name: p0_booking
-    description: Booking-related metrics that are of the highest priority.
+  - name: test_saved_query
+    description: "{{ doc('saved_query_description') }}"
+    label: Test saved query
+    config:
+      cache:
+        enabled: True | False
     query_params:
-      metrics:
-        - bookings
-        - instant_bookings
-      group_by:
-        - TimeDimension('metric_time', 'day')
-        - Dimension('listing__capacity_latest')
-      where:
-        - "{{ Dimension('listing__capacity_latest') }} > 3"
+        metrics:
+            - simple_metric
+        group_by:
+            - "Dimension('user__ds')"
+        where:
+            - "{{ Dimension('user__ds', 'DAY') }} <= now()"
+            - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
+    exports:
+        - name: my_export
+          config:
+            alias: my_export_alias
+            export_as: table
+            schema: my_export_schema_name
 ```
 </File>
 
@@ -48,6 +60,9 @@ To define a saved query, refer to the following parameters:
 |-------|---------|----------|----------------|
 | `name`       | String    | Required     | Name of the saved query object.          |
 | `description`     | String      | Required     | A description of the saved query.     |
+| `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
+| `config`     | String      | Required     | A config section for any parameters specifying the saved query.   |
+| `config::cache`     | String      | Optional     |  A boolean to specify if a saved query should be used to populate the cache. Accepts `True` or `False`. Defaults to `False` |
 | `query_params`       | Structure   | Required     | Contains the query parameters. |
 | `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
 | `query_params::group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
@@ -59,8 +74,58 @@ To define a saved query, refer to the following parameters:
 | `exports::config::schema`   | String   | Optional    | The schema for creating the table or view. This option cannot be used for caching.   |
 | `exports::config::alias`  | String     | Optional    | The table alias to use to write the table or view.  This option cannot be used for caching.  |
 
-All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
+</VersionBlock> 
 
+<!-- For versions 1.7 and lower-->
+<VersionBlock lasttVersion="1.7">
+
+<File name='semantic_model.yml'>
+
+```yaml
+saved_queries:
+  - name: test_saved_query
+    description: "{{ doc('saved_query_description') }}"
+    label: Test saved query
+    query_params:
+        metrics:
+            - simple_metric
+        group_by:
+            - "Dimension('user__ds')"
+        where:
+            - "{{ Dimension('user__ds', 'DAY') }} <= now()"
+            - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
+    exports:
+        - name: my_export
+          config:
+            alias: my_export_alias
+            export_as: table
+            schema: my_export_schema_name
+```
+</File>
+
+## Parameters
+
+To define a saved query, refer to the following parameters:
+
+| Parameter | Type    | Required | Description    |
+|-------|---------|----------|----------------|
+| `name`       | String    | Required     | Name of the saved query object.          |
+| `description`     | String      | Required     | A description of the saved query.     |
+| `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
+| `query_params`       | Structure   | Required     | Contains the query parameters. |
+| `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
+| `query_params::group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
+| `query_params::where`        | List or String | Optional  | A list of strings that may include the `Dimension` or `TimeDimension` objects. |
+| `exports`     | List or Structure | Optional    | A list of exports to be specified within the exports structure.     |
+| `exports::name`       | String               | Required     | Name of the export object.      |
+| `exports::config`     | List or Structure     | Required     | A config section for any parameters specifying the export.  |
+| `exports::config::export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
+| `exports::config::schema`   | String   | Optional    | The schema for creating the table or view. This option cannot be used for caching.   |
+| `exports::config::alias`  | String     | Optional    | The table alias to use to write the table or view.  This option cannot be used for caching.  |
+
+</VersionBlock> 
+
+All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
 
 ## Related docs
 
