@@ -19,7 +19,7 @@ The following list explains the new features, updates, and fixes for February 20
 
 **Updates**
 
-- **Google Sheets integration** &mdash; The dbt Semantic Layer [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) now exposes a note on the cell where the data was requested, indicating clearer data requests. The integration also now exposes a new **Time Range** options, which allows you to quickly select what date ranges.
+- **Google Sheets integration** &mdash; The dbt Semantic Layer [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) now exposes a note on the cell where the data was requested, indicating clearer data requests. The integration also now exposes a new **Time Range** options, which allows you to quickly select date ranges.
 - **GraphQL API enhancements** &mdash; The [GraphQL API](/docs/dbt-cloud-apis/sl-graphql) includes a `requiresMetricTime` parameter to better handle metrics that must be grouped by time. (Certain metrics defined in MetricFlow can't be looked at without a time dimension).
 
 **Bug fixes**
