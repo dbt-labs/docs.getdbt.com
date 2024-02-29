@@ -40,9 +40,10 @@ import SLCourses from '/snippets/_sl-course.md';
 
 When querying your data with Google Sheets:
 
-- It returns the data to the cell you have clicked on.
+- It returns the data to the cell you have clicked on, and each cell where data is requested will have a note attached to it, indicating what has been queried.
 - The custom menu operation has a timeout limit of six (6) minutes.
 - If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues.
+
   
 ## Custom menu functions
 
@@ -52,6 +53,7 @@ The custom menu provides the following capabilities:
 |---------------|-------------------------------------------------------|
 | Metrics       | Search and select metrics.                             |
 | Group By      | Search and select dimensions to group by. Dimensions are grouped by the entity of the semantic model they come from. |
+| Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time). You can still optionally use "where" to filter time ranges|
 | Granularity   | Modify the granularity of the primary time dimension.      |
 | Where         | Filter your data. This includes categorical and time filters. |
 | Order By      | Return your data order.                              |
@@ -63,6 +65,7 @@ The custom menu provides the following capabilities:
 To use the filter functionality, choose the [dimension](docs/build/dimensions) you want to filter by and select the operation you want to filter on. 
    - For categorical dimensions, type in the dimension value you want to filter by (no quotes needed) and press enter. 
    - Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar. 
+
 
 **Limited use policy disclosure**
 
