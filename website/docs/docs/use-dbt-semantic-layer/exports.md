@@ -201,9 +201,10 @@ No, you won't be able to reference an export using `ref`. Exports are treated as
 Exports provide an integration path for tools that don't natively connect with the dbt Semantic Layer by exposing tables of metrics and dimensions in the data platform.
 
 You can use exports to create a custom integration with tools such as PowerBI, and more.
+
 </detailsToggle>
 
-<detailsToggle alt_header="How can I select `saved_queries` by their resource type?"
+<detailsToggle alt_header="How can I select saved_queries by their resource type?">
 
 To select `saved_queries` by resource type, run `dbt build --resource-type saved_queries`.
 
