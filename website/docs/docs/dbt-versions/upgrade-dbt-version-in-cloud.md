@@ -17,9 +17,9 @@ By choosing to **Keep on latest version**, you always get the latest fixes and e
 
 You can upgrade to **Keep on latest version** no matter which version of dbt you currently have selected. As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
-:::tip Interested? Let us know!
+:::tip Interested? 
 
-This feature is available in beta for select customers, rolling out to wider availability through February and March. If you're interested in early access, please contact your account team to join!
+This feature is currently available in beta for all dbt-Labs-maintained adapters; rolling out to wider availability in March.
 
 :::
 
