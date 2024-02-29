@@ -1,12 +1,13 @@
 ---
 title: "dbt Semantic Layer updates and fixes for February 2024"
-description: "Feb 2024 updates for dbt Semantic Layer & MetricFlow: New export features, enhanced date filters, Google Sheets & GraphQL enhancements, and bug fixes"
+description: "Feb 2024 updates for dbt Semantic Layer & MetricFlow: New export features, enhanced date filters, Tableau, Google Sheets & GraphQL API enhancements, and bug fixes."
 sidebar_label: "Updates and fixes: dbt Semantic Layer"
 sidebar_position: 05
 tags: [Feb-2024]
 date: 2024-02-29
 ---
-The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and MetricFlow.
+
+The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow).
 
 The following list explains the new features, updates, and fixes for February 2024 in more detail.
 
