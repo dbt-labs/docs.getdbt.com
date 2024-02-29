@@ -16,6 +16,7 @@ default_value: {}
     { label: 'Macros', value: 'macros', },
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic Models', value: 'semantic models', },
+    { label: 'Metrics', value: 'metrics', },
   ]
 }>
 <TabItem value="models">
@@ -198,6 +199,48 @@ semantic_models:
 
 The `meta` config can also be defined under the `semantic-models` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
 
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="metrics">
+
+<VersionBlock lastVersion="1.7">
+
+<File name='models/metrics.yml'>
+
+```yml
+metrics:
+  - name: number_of_people
+    label: "Number of people"
+    description: Total count of people
+    type: simple
+    type_params:
+      measure: people
+    meta:
+      my_meta_direct: 'direct'
+```
+
+</File>
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8"> 
+<File name='models/metrics.yml'>
+
+```yml
+metrics:
+  - name: number_of_people
+    label: "Number of people"
+    description: Total count of people
+    type: simple
+    type_params:
+      measure: people
+    config:
+      meta:
+        my_meta_config: 'config_value'
+```
+
+</File>
 </VersionBlock>
 
 </TabItem>
