@@ -146,7 +146,7 @@ To enable exports in production using the dbt Cloud job scheduler:
 2. Select **Environment variables**.
 3. [Set the environment variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) key to `DBT_INCLUDE_SAVED_QUERY` and the environment variable's value to `TRUE` (`DBT_INCLUDE_SAVED_QUERY=TRUE`).
 
-Doing this ensures saved queries and exports are included in your dbt build job. For example, running `dbt build sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
+Doing this ensures saved queries and exports are included in your dbt build job. For example, running `dbt build --select sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler. 
 
 If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_INCLUDE_SAVED_QUERY=FALSE`).
 
@@ -201,6 +201,12 @@ No, you won't be able to reference an export using `ref`. Exports are treated as
 Exports provide an integration path for tools that don't natively connect with the dbt Semantic Layer by exposing tables of metrics and dimensions in the data platform.
 
 You can use exports to create a custom integration with tools such as PowerBI, and more.
+</detailsToggle>
+
+<detailsToggle alt_header="How can I select `saved_queries` by their resource type?"
+
+To select `saved_queries` by resource type, run `dbt build --resource-type saved_queries`.
+
 </detailsToggle>
 
 ## Related docs
