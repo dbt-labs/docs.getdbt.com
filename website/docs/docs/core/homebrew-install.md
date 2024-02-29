@@ -35,13 +35,13 @@ brew install git
 brew tap dbt-labs/dbt
 ```
 
-Now you're ready to install dbt. Once you know [which adapter](/docs/supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For instance, if using Postgres:
+Now you're ready to install dbt. Once you know [which adapter](/docs/supported-data-platforms) you're using, you can install it as `dbt-ADAPTER_NAME`. For instance, if using Postgres:
 
 ```shell
 brew install dbt-postgres
 ```
 
-Everywhere below that you see `<adapter>`, replace it with the adapter name you're using.
+Everywhere below that you see `ADAPTER_NAME`, replace it with the adapter name you're using.
 
 **Note**: If you're using an adapter that isn't available as a Homebrew formula, we recommend you use [pip](/docs/core/pip-install) instead.
 
@@ -51,7 +51,7 @@ To upgrade dbt, use:
 
 ```shell
 brew update
-brew upgrade dbt-<adapter>
+brew upgrade dbt-ADAPTER_NAME
 ```
 
 ### Switching versions
@@ -59,9 +59,9 @@ brew upgrade dbt-<adapter>
 You can install and use multiple versions of dbt with Homebrew through something called Homebrew "links." To allow installation of another version of dbt, first unlink the current version:
 
 ```shell
-brew unlink dbt-<adapter>
-brew install dbt-<adapter>@1.0.0
-brew link dbt-<adapter>@1.0.0
+brew unlink dbt-ADAPTER_NAME
+brew install dbt-ADAPTER_NAME@1.0.0
+brew link dbt-ADAPTER_NAME@1.0.0
 ```
 
 Now, you can use dbt Core v1.0.0:
@@ -74,12 +74,12 @@ installed version: 1.0.0
 Up to date!
 
 Plugins:
-  - <adapter>: 1.0.0
+  - ADAPTER_NAME: 1.0.0
 ```
 
 You can switch between versions by linking the one you want to use:
 
 ```shell
-brew unlink dbt-<adapter>@1.0.0
-brew link dbt-<adapter>@0.21.1
+brew unlink dbt-ADAPTER_NAME@1.0.0
+brew link dbt-ADAPTER_NAME@0.21.1
 ```
