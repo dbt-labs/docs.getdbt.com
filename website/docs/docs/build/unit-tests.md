@@ -207,54 +207,6 @@ dbt test --select test_is_valid_email_address
 
 Your model is now ready for production! Adding this unit test helped catch an issue with the SQL logic _before_ you materialized `dim_customers` in your warehouse and will better ensure the reliability of this model in the future. 
 
-## Unit testing versioned models
-
-When a unit test is added to a model, it will run on all versions of the model by default.
-Using the example in this article, if you have versions 1, 2, and 3 of `dim_customers`, the `test_is_valid_email_address` unit test will run on all 3 versions.
-
-To only unit test a specific version (or versions) of a model, include the desired version(s) in the model config:
-
-```yml
-
-unit_tests::
-  - name: test_is_valid_email_address
-    model: dim_customers
-      versions:
-        include: 
-          - 2
-    ...
-
-```
-
-In this scenario, if you have version 1, 2, and 3 of `dim_customers `, my `test_is_valid_email_address` unit test will run on _only_ version 2.
-
-To unit test all versions except a specific version (or versions) of a model, you can exclude the relevant version(s) in the model config:
-
-```yml
-
-unit_tests:
-  - name: test_is_valid_email_address
-    model: dim_customers
-      versions:
-        exclude: 
-          - 1
-    ...
-
-```
-So, if you have versions 1, 2, and 3 of `dim_customers`, your `test_is_valid_email_address` unit test will run on _only_ versions 2 and 3.
-
-If you want to unit test a model that references the pinned version of the model, you should specify that in the `ref` of your input:
-
-```yml
-
-unit_tests:
-  - name: test_is_valid_email_address
-    model: dim_customers
-    given: 
-      - input: ref('stg_customers', v=1)
-      ...
-
-```
 
 ## Unit testing incremental models
 
@@ -335,3 +287,4 @@ There is currently no way to unit test whether the dbt framework inserted/merged
 - [Unit testing versioned models](/reference/resource-properties/unit-testing-versions)
 - [Unit test inputs](/reference/resource-properties/unit-test-input)
 - [Unit test overrides](/reference/resource-properties/unit-test-overrides)
+- [Platform-specific data types](/reference/resource-properties/data-types)
