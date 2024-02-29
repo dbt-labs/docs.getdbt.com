@@ -74,7 +74,7 @@ MetricFlow will use `user_id` as the join key to join two semantic models, `tran
 
 Note that the `average_purchase_price` measure is defined in the `transactions` semantic model, where `user_id` is a foreign entity. However, the `user_signup` semantic model has `user_id` as a primary entity. 
 
-Since this is a foreign-to-primary relationship, a left join is implemented where the `transactions` semantic model joins the `user_signup` semantic model, since the `average_purchase_price` measure is defined in the `transactions` semantic model.
+Since this is a foreign-to-primary relationship, a left join is implemented where the `transactions` semantic model joins the `user_signup` semantic model since the `average_purchase_price` measure is defined in the `transactions` semantic model.
 
 When querying dimensions from different semantic models using the CLI, a double underscore (or dunder) is added to the dimension name after the joining entity. In the CLI query shown below, `user_id__type` is included as a `dimension`.
 
@@ -86,7 +86,10 @@ mf query --metrics average_purchase_price --dimensions metric_time,user_id__type
 
 MetricFlow allows users to join measures and dimensions across a graph of entities, referred to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
 
-MetricFlow can join up to three tables, supporting multi-hop joins with a limit of two hops. This enables complex data analysis without ambiguous paths. It supports navigating through data models, like moving from `orders` to `customers` to `country` tables. While direct three-hop paths are limited to prevent confusion from multiple routes to the same data, MetricFlow does allow joining more than three tables if the joins don’t exceed two hops to reach a dimension. 
+MetricFlow can join up to three tables, supporting multi-hop joins with a limit of two hops. This does the following:
+- Enables complex data analysis without ambiguous paths.
+- Supports navigating through data models, like moving from `orders` to `customers` to `country` tables.
+- While direct three-hop paths are limited to prevent confusion from multiple routes to the same data, MetricFlow does allow joining more than three tables if the joins don’t exceed two hops to reach a dimension. 
 
 For example, if you have two models, `country` and `region`, where customers are linked to countries, which in turn are linked to regions. You can join all of them in a single SQL query and can dissect `orders` by `customer__country_country_name` but not by `customer__country__region_name`.
 
