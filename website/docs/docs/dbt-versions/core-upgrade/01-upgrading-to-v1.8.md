@@ -64,15 +64,6 @@ Unit tests are defined in YML files in your `models/` directory and are currentl
 
 The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
-### Additional attributes in run_results.json
-
-The run_results.json now includes three attributes related to the `applied` state that complement `unique_id`:
-
-- `compiled`: Boolean entry of the node compilation status (`False` after parsing, but `True` after compiling).
-- `compiled_code`: Rendered string of the code that was compiled (empty after parsing, but full string after compiling).
-- `relation_name`: The fully-qualified name of the object that was (or will be) created/updated within the database.
-
-
 ## Quick hits
 
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
