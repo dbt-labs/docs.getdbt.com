@@ -17,7 +17,7 @@ Use this dbt Cloud IDE  page to help you quickly reference some common operation
 | Preview code. | Command-Enter | Control-Enter |
 | Compile code. | Command-Shift-Enter | Control-Shift-Enter |
 | Reveal a list of dbt functions in the editor. | Enter two underscores `__` | Enter two underscores  `__` |
-| Access the navigation command palette from anywhere in dbt Cloud to easily navigate to your other projects or dbt Cloud settings. | Command-K  | Control-K  |
+| Access the global search command palette from anywhere in dbt Cloud to easily navigate to your other projects or dbt Cloud settings. | Command-K  | Control-K  |
 | Open the command palette to invoke dbt commands and actions.  | Command-P / Command-Shift-P | Control-P / Control-Shift-P |
 | Multi-edit in the editor by selecting multiple lines. | Option-Click / Shift-Option-Command / Shift-Option-Click  | Hold Alt and Click |
 | Open the [**Invocation History Drawer**](/docs/cloud/dbt-cloud-ide/ide-user-interface#invocation-history) located at the bottom of the IDE. | Control-backtick (or Control + `) | Control-backtick (or Ctrl + `) | 
