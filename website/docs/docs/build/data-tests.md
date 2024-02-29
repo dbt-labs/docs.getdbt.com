@@ -261,7 +261,7 @@ Note that, if you select to store test failures:
 * Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
 
-<VersionBlock firstVersion="1.8">
+<VersionBlock firstVersion="1.8" lastVersion="1.8">
 
 ## New `tests:` syntax
 
