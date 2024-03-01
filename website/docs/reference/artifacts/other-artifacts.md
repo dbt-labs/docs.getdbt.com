@@ -52,4 +52,4 @@ The [`semantic_manifest.json`](/docs/dbt-cloud-apis/sl-manifest) file is useful 
 There are two reasons why `semantic_manifest.json` exists alongside `manifest.json`:
 
 - Deserialization: `dbt-core` and MetricFlow use different libraries for handling data serialization.
-- Efficiency and performance: MetricFlow and the dbt Semantic Layer need specific semantic details from the manifest. This means by trimming down the information into `semantic_manifest.json`, the process becomes more efficient and enables quicker data handling between `dbt-core` and MetricFlow.
+- Efficiency and performance: MetricFlow and the dbt Semantic Layer need specific semantic details from the manifest. By trimming down the information printed into `semantic_manifest.json`, the process becomes more efficient and enables faster data handling between `dbt-core` and MetricFlow.
