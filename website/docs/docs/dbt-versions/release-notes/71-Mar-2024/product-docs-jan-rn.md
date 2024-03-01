@@ -1,7 +1,7 @@
 ---
 title: "January 2024 product docs updates"
 id: "product-docs-jan24"
-description: "Jan 2024: The Product docs team merged 110 PRs, made various updates to dbt, such as adding new Mesh FAQs, three new developer blog posts, and new conversion metrics for Semantic Layer."
+description: "Jan 2024: The Product docs team merged 110 PRs, made various updates to dbt, such as adding new Mesh FAQs, three new developer blog posts, new conversion metrics for Semantic Layer, and more."
 sidebar_label: "Update: Product docs changes"
 tags: [Jan-2024, product-docs]
 date: 2024-03-01
