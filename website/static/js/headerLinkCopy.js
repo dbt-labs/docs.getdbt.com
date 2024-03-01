@@ -68,13 +68,11 @@ function removeTrailingDashes(header) {
 
   // Get id attribute
   const thisId = updatedHeader?.getAttribute("id");
-  
+
   // If header's id ends with trailing dash, remove dash
   if (thisId?.endsWith("-")) {
-    console.log(`Updating ID: ${thisId}`);
     // Remove `-` from end of ID string
     updatedHeader.id = thisId?.substring(0, thisId?.length - 1);
-    console.log(`Header ID after update: ${updatedHeader.id}`);
 
     // Recursively run function to check for another trailing slash
     removeTrailingDashes(updatedHeader);
