@@ -569,7 +569,7 @@
     },
     {
         "source": "/guides/orchestration/webhooks/zapier-ms-teams",
-        "destination": "/guides/zapier-ms-team",
+        "destination": "/guides/zapier-ms-teams",
         "permanent": true
     },
     {
