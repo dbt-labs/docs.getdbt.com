@@ -272,13 +272,12 @@ As we progress towards this deprecation, the examples in our docs pages will be 
 ```yml
 
 models:
-
-name: orders
-columns:
-name: order_id
-data_tests:
-unique
-not_null
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
 
 
 ```
