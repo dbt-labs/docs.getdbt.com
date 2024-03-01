@@ -73,7 +73,7 @@ To grant users or roles database permissions (access rights and privileges), ref
 ## FAQs
 
 <detailsToggle alt_header="Database Error - could not connect to server: Connection timed out">
-When setting up a database connection using an SSH tunnel, you typically need these parts:
+When setting up a database connection using an SSH tunnel, you need the following components:
 
 - A Load Balancer (like ELB or NLB) to manage traffic.
 - A bastion host (or jump server) that runs the SSH protocol, acting as a secure entry point.
