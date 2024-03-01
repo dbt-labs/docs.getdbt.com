@@ -14,13 +14,7 @@ function copyHeader () {
     header.style.cursor = "pointer";
 
     // Remove trailing `-` if exists
-    const thisId = header?.getAttribute('id')
-    if(thisId?.endsWith('-')) {
-      console.log(`Updating ID: ${thisId}`);
-      // Remove `-` from end of ID string
-      header.id = thisId?.substring(0, thisId?.length - 1)
-      console.log(`header.id after update: ${header.id}`);
-    }
+    header = removeTrailingDashes(header)
 
     const clipboard = new ClipboardJS(header, {
       text: function(trigger) {
@@ -66,3 +60,25 @@ function copyHeader () {
     });
   });
 };
+
+// Util function to remove trailing dashes from ID attribute on headers
+function removeTrailingDashes(header) {
+  // Create copy of header element
+  const updatedHeader = header;
+
+  // Get id attribute
+  const thisId = updatedHeader?.getAttribute("id");
+  
+  // If header's id ends with trailing dash, remove dash
+  if (thisId?.endsWith("-")) {
+    console.log(`Updating ID: ${thisId}`);
+    // Remove `-` from end of ID string
+    updatedHeader.id = thisId?.substring(0, thisId?.length - 1);
+    console.log(`Header ID after update: ${updatedHeader.id}`);
+
+    // Recursively run function to check for another trailing slash
+    removeTrailingDashes(updatedHeader);
+  }
+
+  return updatedHeader;
+}
