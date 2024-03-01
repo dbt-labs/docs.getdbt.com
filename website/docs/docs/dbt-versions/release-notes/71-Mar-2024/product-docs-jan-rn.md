@@ -12,7 +12,8 @@ Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleo
 
 Here's how we improved the [docs.getdbt.com](http://docs.getdbt.com/) experience:
 
-- Added new hover behavior for images and FAQs. This was subsequently modified to improve user experience.
+- Added new hover behavior for images
+- Added new expandables for FAQs
 - Pruned outdated notices and snippets as part of the docs site maintenance
 
 ## New content
@@ -25,17 +26,17 @@ January saw some great new content:
   - [More time coding, less time waiting: Mastering defer in dbt](https://docs.getdbt.com/blog/defer-to-prod)
   - [Deprecation of dbt Server](https://docs.getdbt.com/blog/deprecation-of-dbt-server)
   - From the community: [Serverless, free-tier data stack with dlt + dbt core](https://docs.getdbt.com/blog/serverless-dlt-dbt-stack)
-- Extrica team added docs for the [dbt-extrica community adapter](https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup)
-- Semantic Layer: New [conversion metrics docs](https://docs.getdbt.com/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types  (launching this week January 12, 2024)
-- New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the cloud CLI
+- The Extrica team added docs for the [dbt-extrica community adapter](https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup)
+- Semantic Layer: New [conversion metrics docs](https://docs.getdbt.com/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types (launched the week of January 12, 2024).
+- New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the dbt Cloud CLI
 
 ## Updated content
 
-January also some some refreshed content, either aligning with new product features or requests from the community:
+January also saw some refreshed content, either aligning with new product features or requests from the community:
 
 - Native support for [partial parsing in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud-environments#partial-parsing)
 - Updated guidance on using dots or underscores in the [Best practice guide for models](https://docs.getdbt.com/best-practices/how-we-style/1-how-we-style-our-dbt-models)
 - Updated [PrivateLink for VCS docs](https://docs.getdbt.com/docs/cloud/secure/vcs-privatelink)
 - Added a new `job_runner` role in our [Enterprise project role permissions docs](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions#project-role-permissions)
-- Added saved queries to [metricflow commands](https://docs.getdbt.com/docs/build/metricflow-commands#list-saved-queries)
+- Added saved queries to [Metricflow commands](https://docs.getdbt.com/docs/build/metricflow-commands#list-saved-queries)
 - Removed [as_text docs](https://github.com/dbt-labs/docs.getdbt.com/pull/4726) that were wildly outdated
