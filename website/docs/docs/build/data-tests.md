@@ -263,7 +263,7 @@ Note that, if you select to store test failures:
 
 <VersionBlock firstVersion="1.8" lastVersion="1.8">
 
-## New `tests:` syntax
+## New `data_tests:` syntax
 
 Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. As of v1.8,  `tests:` is still supported in your YML configuration file as an alias but will be deprecated in the future in favor of `data_tests:`. 
 
