@@ -21,9 +21,10 @@ January saw some great new content:
 
 - New [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs) page
 - Beta launch of [Explorer’s column-level lineage](https://docs.getdbt.com/docs/collaborate/column-level-lineage) feature
-- Dev blog: [More time coding, less time waiting: Mastering defer in dbt](https://docs.getdbt.com/blog/defer-to-prod)
-- Dev blog: [Deprecation of dbt Server](https://docs.getdbt.com/blog/deprecation-of-dbt-server)
-- Dev blog from the community: [Serverless, free-tier data stack with dlt + dbt core](https://docs.getdbt.com/blog/serverless-dlt-dbt-stack)
+- Developer blog posts:
+  - [More time coding, less time waiting: Mastering defer in dbt](https://docs.getdbt.com/blog/defer-to-prod)
+  - [Deprecation of dbt Server](https://docs.getdbt.com/blog/deprecation-of-dbt-server)
+  - From the community: [Serverless, free-tier data stack with dlt + dbt core](https://docs.getdbt.com/blog/serverless-dlt-dbt-stack)
 - Extrica team added docs for the [dbt-extrica community adapter](https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup)
 - Semantic Layer: New [conversion metrics docs](https://docs.getdbt.com/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types  (launching this week January 12, 2024)
 - New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the cloud CLI
