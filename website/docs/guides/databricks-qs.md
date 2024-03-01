@@ -38,7 +38,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ## Create a Databricks workspace
 
-1. Use your existing account or sign up for a Databricks account at [Try Databricks](https://databricks.com/). Complete the form with your user information.
+1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
