@@ -60,6 +60,23 @@ dbt test --select "test_type:data"           # run all data tests
 
 Unit tests are defined in YML files in your `models/` directory and are currently only supported on SQL models. To distinguish between the two, the `tests:` config has been renamed to `data_tests:`. Both are currently supported for backward compatibility.
 
+#### New `data_tests:` syntax
+
+The `tests:` syntax is changing to reflect the addition of unit tests. Start migrating your [data test](/docs/build/data-tests#new-test-syntax) YML to use `data_tests:` after you upgrade to v1.8 to prevent issues in the future.
+
+```yml
+
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+
+
+```
+
 ### The `--empty` flag
 
 The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
@@ -69,4 +86,4 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
 - A new subcategory of flags has been created for [legacy behaviors](/reference/global-configs/legacy-behaviors).
 - The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
-- The `tests:` syntax will be deprecated in a future release. Start migrating your [data test](/docs/build/data-tests#new-test-syntax) YML to use `data_tests:` after you upgrade to v1.8 to prevent issues in the future.
+
