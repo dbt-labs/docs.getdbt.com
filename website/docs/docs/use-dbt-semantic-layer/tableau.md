@@ -1,16 +1,10 @@
 ---
-title: "Tableau (beta)"
+title: "Tableau"
 description: "Use Tableau worksheets to query the dbt Semantic Layer and produce dashboards with trusted date."
 tags: [Semantic Layer]
-sidebar_label: "Tableau (beta)"
+sidebar_label: "Tableau"
 ---
 
-# Tableau <Lifecycle status='beta'/>
-
-
-:::info Beta functionality
-The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/dbt-versions/product-lifecycles#dbt-cloud).
-:::
 
 The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  
 
