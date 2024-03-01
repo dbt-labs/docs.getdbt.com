@@ -84,7 +84,7 @@ dbt Cloud uses an SSH tunnel to connect through the load balancer to the databas
 Tunnel failures usually happen because:
 
 - The SSH daemon times out if it's idle for too long.
-- The Load Balancer cuts off the connection if it's idle.
+- The load balancer cuts off the connection if it's idle.
 - dbt Cloud tries to keep the connection alive by checking in every 30 seconds, and the system will end the connection if there's no response from the SSH service after 300 seconds. This helps avoid drops due to inactivity unless the Load Balancer's timeout is less than 30 seconds.
 
 Bastion hosts might have additional SSH settings to disconnect inactive clients after several checks without a response. By default, it checks three times.
