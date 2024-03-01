@@ -25,9 +25,9 @@ Today, the next wave of innovation is happening in AI and LLMs, and it's coming 
 
 <!-- truncate -->
 
-- We can now derive meaning from large unstructured blocks of text, without painstakingly building complex regexes
-- We can now summarize or translate content without having to call out to external third-party APIs.
-- Most significantly, we can now bake reasoning capabilities into our dbt models by describing what we want to happen.
+- We can now **derive meaning from large unstructured blocks of text**, without painstakingly building complex regexes
+- We can now **summarize or translate content** without having to call out to external third-party APIs.
+- Most significantly, we can now **bake reasoning capabilities into our dbt models** by describing what we want to happen.
 
 Analytics Engineers have always existed at the intersection of business context and data - LLMs on the warehouse make it possible to embed more business context _and_ unlock more data, increasing our leverage in both directions at once.
 
