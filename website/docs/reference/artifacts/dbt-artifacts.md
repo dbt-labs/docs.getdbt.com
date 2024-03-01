@@ -36,7 +36,7 @@ By default, artifacts are written to the `/target` directory of your dbt project
 
 All artifacts produced by dbt include a `metadata` dictionary with these properties:
 
-- `dbt_version`: Version of dbt that produced this artifact.
+- `dbt_version`: Version of dbt that produced this artifact. For details about release versioning, refer to [Versioning](/reference/dbt-jinja-functions/dbt_version#versioning). 
 - `dbt_schema_version`: URL of this artifact's schema. See notes below.
 - `generated_at`: Timestamp in UTC when this artifact was produced.
 - `adapter_type`: The adapter (database), e.g. `postgres`, `spark`, etc.
