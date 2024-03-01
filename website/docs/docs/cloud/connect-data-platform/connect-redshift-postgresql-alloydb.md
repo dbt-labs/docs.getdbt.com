@@ -91,7 +91,7 @@ Bastion hosts might have additional SSH settings to disconnect inactive clients 
 
 To prevent premature disconnections, you can adjust the settings on the bastion host:
 
-- `ClientAliveCountMax 10` &mdash; Allows more checks before deciding the client is inactive.
+- `ClientAliveCountMax ` &mdash; Configures the number of checks before deciding the client is inactive. For example, `ClientAliveCountMax 10` checks 10 times.
 - `ClientAliveInterval 30` &mdash; Checks for client activity every 30 seconds.
 These adjustments ensure that inactive SSH clients are disconnected after about 300 seconds, reducing the chance of tunnel failures.
 
