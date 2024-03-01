@@ -15,13 +15,13 @@ import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
 <DeprecationNotice />
  
- </VersionBlock>
+</VersionBlock>
 
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handles data joins. 
 
-Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. 
+Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications.
 
-Refer to the [Why we need a universal semantic layer](https://www.getdbt.com/blog/universal-semantic-layer/)  blog post to learn more.
+Refer to the [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs) or [Why we need a universal semantic layer](https://www.getdbt.com/blog/universal-semantic-layer/)  blog post to learn more.
 
 ## Explore the dbt Semantic Layer
 <!-- this partial lives here: https://github.com/dbt-labs/docs.getdbt.com/website/snippets/_sl-plan-info. Use it on diff pages and to tailor the message depending which instance can access the SL and what product lifecycle we're in. -->
@@ -45,6 +45,12 @@ plan="dbt Cloud Team or Enterprise"
     title="Set up the dbt Semantic Layer"
     body="Set up the dbt Semantic Layer in dbt Cloud using intuitive navigation."
     link="/docs/use-dbt-semantic-layer/setup-sl"
+    icon="dbt-bit"/>
+
+<Card
+    title="Materialize queries with exports"
+    body="Use exports to materialize commonly used queries directly within your data platform, on a schedule."
+    link="/docs/use-dbt-semantic-layer/exports"
     icon="dbt-bit"/>
 
 <Card

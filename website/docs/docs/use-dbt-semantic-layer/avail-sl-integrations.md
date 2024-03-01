@@ -27,11 +27,11 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 ### Custom integration
 
-- You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
-- You can also connect to tools that allow you to write SQL. These tools must meet one of the two criteria:
-  
-    - Supports a generic JDBC driver option (such as DataGrip) or
-    - Uses Arrow Flight SQL JDBC driver version 12.0.0 or higher.
+- [Exports](/docs/use-dbt-semantic-layer/exports) enable custom integration with additional tools that don't natively connect with the dbt Semantic Layer, such as PowerBI.
+- Develop custom integrations using different languages and tools, supported through JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
+- Connect to any tool that supports SQL queries. These tools must meet one of the two criteria:
+    - Offers a generic JDBC driver option (such as DataGrip) or
+    - Is compatible Arrow Flight SQL JDBC driver version 12.0.0 or higher.
 
 ## Related docs
 
@@ -39,3 +39,5 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 - [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
 - [Hex dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
 - [Resolve 'Failed APN'](/faqs/Troubleshooting/sl-alpn-error) error when connecting to the dbt Semantic Layer.
+- [dbt Semantic Layer on-demand courses](https://courses.getdbt.com/courses/semantic-layer)
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
