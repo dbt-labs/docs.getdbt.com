@@ -79,7 +79,7 @@ When setting up a database connection using an SSH tunnel, you need the followin
 - A bastion host (or jump server) that runs the SSH protocol, acting as a secure entry point.
 - The database itself (such as a Redshift cluster).
 
-dbt Cloud uses an SSH tunnel to connect through the Load Balancer to the database. This tunnel is set up at the start of any dbt job run. If the tunnel drops, the job fails.
+dbt Cloud uses an SSH tunnel to connect through the load balancer to the database. This connection is established at the start of any dbt job run. If the tunnel connection drops, the job fails.
 
 Tunnel failures usually happen because:
 
