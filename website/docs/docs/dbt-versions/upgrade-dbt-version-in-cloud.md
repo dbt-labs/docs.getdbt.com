@@ -19,7 +19,7 @@ You can upgrade to **Keep on latest version** no matter which version of dbt you
 
 :::tip Interested? 
 
-This feature is currently available in beta for all dbt-Labs-maintained adapters; rolling out to wider availability in March.
+This feature is currently available in beta for all dbt Labs-maintained adapters and will be widely available in March.
 
 :::
 
