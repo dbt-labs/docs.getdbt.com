@@ -42,7 +42,7 @@ import RowsAffected from '/snippets/_run-result.md';
 
 <!-- this partial comes from https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/snippets/_run-result-->
 
-<VersionBlock firstVersion="1.8">
+<VersionBlock firstVersion="1.7">
 
 The run_results.json includes three attributes related to the `applied` state that complement `unique_id`:
 
