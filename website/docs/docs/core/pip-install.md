@@ -137,9 +137,11 @@ python -m pip install --upgrade dbt-core==0.19.0
 
 ### `pip install dbt`
 
-Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise an explicit error. Since v0.13, the PyPI package named `dbt` was a simple "pass-through" of `dbt-core` and the four original database adapter plugins. For v1, we formalized that split.
+Note that, as of v1.0.0, `pip install dbt` is no longer supported and will raise an explicit error. Since v0.13, PyPI package named `dbt` was a simple "pass-through" of dbt-core and the four original database adapter plugins.
 
-If you have workflows or integrations that relied on installing the package named `dbt`, you can achieve the same behavior going forward by installing the same five packages that it used:
+Upon the release of dbt-core v1.0.0, `pip install dbt` was no longer a supported installation method by dbt Labs, and the `dbt` package on PyPI stopped receiving updates. In fall of 2023, the `dbt` package on PyPI became a supported method to install the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli-in-pip).
+
+If you have workflows or integrations that relied on installing the package named `dbt`, ryou can achieve the same behavior going forward by installing the same five packages that it used:
 
 ```shell
 python -m pip install \
