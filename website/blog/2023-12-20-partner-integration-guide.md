@@ -20,7 +20,7 @@ This guide doesn't include how to integrate with dbt Core. If you’re intereste
 Instead, we're going to focus on integrating with dbt Cloud. Integrating with dbt Cloud is a key requirement to become a dbt Labs technology partner, opening the door to a variety of collaborative commercial opportunities. 
 
 Here I'll cover how to get started, potential use cases you want to solve for, and points of integrations to do so.
-
+<!-- truncate -->
 ## New to dbt Cloud?
 
 If you're new to dbt and dbt Cloud, we recommend you and your software developers try our [Getting Started Quickstarts](https://docs.getdbt.com/guides) after reading [What is dbt](https://docs.getdbt.com/docs/introduction). The documentation will help you familiarize yourself with how our users interact with dbt. By going through this, you will also create a sample dbt project to test your integration.
@@ -42,7 +42,7 @@ If you require a partner dbt Cloud account to test on, we can upgrade an existin
 
 ## dbt Cloud hosting and authentication
 
-To use the dbt Cloud APIs, you'll need access to the customer’s access urls. Depending on their dbt Cloud setup, they'll have a different access URL. To find out more, refer to [Regions & IP addresses](https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses) to understand all the possible configurations. My recommendation is to allow the customer to provide their own URL to simplify support. 
+To use the dbt Cloud APIs, you'll need access to the customer’s access urls. Depending on their dbt Cloud setup, they'll have a different access URL. To find out more, refer to [Regions & IP addresses](https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses) to understand all the possible configurations. My recommendation is to allow the customer to provide their own URL to simplify support. 
 
 If the customer is on an Azure single tenant instance, they don't currently have access to the Discovery API or the Semantic Layer APIs. 
 

@@ -5,7 +5,7 @@ The following tools integrate with the dbt Semantic Layer:
 <div className="grid--3-col">
 
  <Card
-    title="Tableau (beta)"
+    title="Tableau"
     link="/docs/use-dbt-semantic-layer/tableau"
     body="Learn how to connect to Tableau for querying metrics and collaborating with your team."
     icon="tableau-software"/>
@@ -29,6 +29,20 @@ The following tools integrate with the dbt Semantic Layer:
       <Icon name='fa-external-link' />
     </a>
   </div>
+
+  <div className="card-container">
+  <Card
+    title="Delphi"
+    body="Learn how to connect Delphi to the dbt Semantic Layer and access metrics from any integrated tool."
+    link="https://docs.delphihq.com/getting-started"
+    icon="delphi"/>
+    <a href="https://docs.delphihq.com/getting-started"
+    className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <Icon name='fa-external-link' />
+    </a>
+</div>
 
 <div className="card-container">
   <Card
@@ -78,7 +92,7 @@ The following tools integrate with the dbt Semantic Layer:
     body="Explore how to connect and use metrics to power reports and insights that drive change."
     link="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer"
     icon="push"/>
-    <a href="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer"
+    <a href="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer?utm_source=dbt&utm_medium=referral&utm_campaign=available-sl-integrations"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
@@ -88,11 +102,11 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="card-container">
   <Card
-    title="Delphi"
-    body="Learn how to connect Delphi to the dbt Semantic Layer and access metrics from any integrated tool."
-    link="https://docs.delphihq.com/getting-started"
-    icon="delphi"/>
-    <a href="https://docs.delphihq.com/getting-started"
+    title="Steep"
+    body="Connect Steep to the dbt Semantic Layer for centralized, scalable analytics."
+    link="https://help.steep.app/integrations/dbt-cloud"
+    icon="steep"/>
+    <a href="https://help.steep.app/integrations/dbt-cloud"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">

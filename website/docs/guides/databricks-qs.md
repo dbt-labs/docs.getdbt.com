@@ -21,7 +21,6 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Databricks. It 
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
-
 :::
 
 ### Prerequisites​
@@ -39,7 +38,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ## Create a Databricks workspace
 
-1. Use your existing account or sign up for a Databricks account at [Try Databricks](https://databricks.com/). Complete the form with your user information.
+1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
@@ -190,72 +189,10 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
-3. Click the **...** next to the `models` directory, then select **Create file**.  
-4. Name the file `customers.sql`, then click **Create**.
-5. Copy the following query into the file and click **Save**.
 
-```sql
-with customers as (
+import BuildFirstModel from '/snippets/quickstarts/_build-your-first-model.md';
 
-    select
-        id as customer_id,
-        first_name,
-        last_name
-
-    from jaffle_shop_customers
-
-),
-
-orders as (
-
-    select
-        id as order_id,
-        user_id as customer_id,
-        order_date,
-        status
-
-    from jaffle_shop_orders
-
-),
-
-customer_orders as (
-
-    select
-        customer_id,
-
-        min(order_date) as first_order_date,
-        max(order_date) as most_recent_order_date,
-        count(order_id) as number_of_orders
-
-    from orders
-
-    group by 1
-
-),
-
-final as (
-
-    select
-        customers.customer_id,
-        customers.first_name,
-        customers.last_name,
-        customer_orders.first_order_date,
-        customer_orders.most_recent_order_date,
-        coalesce(customer_orders.number_of_orders, 0) as number_of_orders
-
-    from customers
-
-    left join customer_orders using (customer_id)
-
-)
-
-select * from final
-```
-
-6. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
-
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+<BuildFirstModel/>
 
 #### FAQs
 

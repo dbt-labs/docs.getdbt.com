@@ -8,9 +8,6 @@ you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
 <VersionBlock firstVersion="1.5">
 
-:::info New functionality
-New in v1.5!
-:::
 
 Many of the methods below support Unix-style wildcards:
 
@@ -159,15 +156,35 @@ dbt ls -s config.transient:true
 
 ### The "test_type" method
 
+<VersionBlock lastVersion="1.7">
+
 The `test_type` method is used to select tests based on their type, `singular` or `generic`:
-
-
 
 ```bash
 dbt test --select "test_type:generic"        # run all generic tests
 dbt test --select "test_type:singular"       # run all singular tests
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+The `test_type` method is used to select tests based on their type: 
+
+- [Unit tests](/docs/build/unit-tests)
+- [Data tests](/docs/build/data-tests):
+  - [Singular](/docs/build/data-tests#singular-data-tests)
+  - [Generic](/docs/build/data-tests#generic-data-tests)
+
+
+```bash
+dbt test --select "test_type:unit"           # run all unit tests
+dbt test --select "test_type:data"           # run all data tests
+dbt test --select "test_type:generic"        # run all generic data tests
+dbt test --select "test_type:singular"       # run all singular data tests
+```
+
+</VersionBlock>
 
 ### The "test_name" method
 

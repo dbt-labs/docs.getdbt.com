@@ -34,7 +34,7 @@ exposures:
     [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
-    maturity: {high, medium, low}
+    maturity: {high, medium, low}  # Indicates level of confidence or stability in the exposure
     [tags](/reference/resource-configs/tags): [<string>]
     [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:
@@ -69,7 +69,7 @@ exposures:
     [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
-    maturity: {high, medium, low}
+    maturity: {high, medium, low} # Indicates level of confidence or stability in the exposure
     [tags](/reference/resource-configs/tags): [<string>]
     [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:

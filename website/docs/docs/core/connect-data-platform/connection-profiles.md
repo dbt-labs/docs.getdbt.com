@@ -83,11 +83,8 @@ To set up your profile, copy the correct sample profile for your warehouse into 
 
 You can find more information on which values to use in your targets below.
 
-:::info Validating your warehouse credentials
+Use the [debug](/reference/dbt-jinja-functions/debug-method) command to validate your warehouse connection. Run `dbt debug` from within a dbt project to test your connection.
 
-Use the [debug](/reference/dbt-jinja-functions/debug-method) command to check whether you can successfully connect to your warehouse. Simply run `dbt debug` from within a dbt project to test your connection.
-
-:::
 
 ## Understanding targets in profiles
 
