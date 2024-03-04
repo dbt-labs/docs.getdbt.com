@@ -46,7 +46,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 |--------------|------------|-------------------|----------------|
 | 1.2.x        | 1.2.x      | 0.1.0             | 0.9.x or below |
 | 1.6.7        | 1.6.7      | 1.1.1             | 1.1.1          |
-| 1.7.0        | 1.7.3      | 1.1.1             | 1.1.1          |
+| 1.7.1        | 1.7.3      | 1.1.1             | 1.1.1          |
 
 
 ### Connecting to Teradata
@@ -149,7 +149,18 @@ To learn more about dbt incremental strategies please check [the dbt incremental
 All dbt commands are supported.
 
 ## Support for model contracts
-Model contracts are not yet supported with dbt-teradata.
+Model contracts are supported with dbt-teradata v1.7.1 and onwards.
+Constraint support and enforcement in dbt-teradata
+
+| Constraint type |	Support	Platform | enforcement |
+|-----------------|------------------|-------------|
+| not_null	      | ✅ Supported	 | ✅ Enforced |
+| primary_key	  | ✅ Supported	 | ✅ Enforced |
+| foreign_key	  | ✅ Supported	 | ✅ Enforced |
+| unique	      | ✅ Supported	 | ✅ Enforced |
+| check	          | ✅ Supported	 | ✅ Enforced |
+
+To find more on model contracts please follow dbt documentations https://docs.getdbt.com/docs/collaborate/govern/model-contracts
 
 ## Support for `dbt-utils` package
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
@@ -217,7 +228,8 @@ For using cross DB macros, teradata-utils as a macro namespace will not be used,
 ## Limitations
 
 ### Transaction mode
-Only ANSI transaction mode is supported.
+Both ANSI and TERA modes are now supported in dbt-teradata. TERA mode's support is introduced with dbt-teradata 1.7.1, it is an initial implementation.
+IMPORTANT NOTE: This is an initial implementation of the TERA transaction mode and may not support some use cases. We strongly advise validating all records or transformations utilizing this mode to preempt any potential anomalies or errors
 
 ## Credits
 
