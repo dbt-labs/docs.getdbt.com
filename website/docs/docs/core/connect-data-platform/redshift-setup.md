@@ -148,6 +148,7 @@ please refer to the official AWS documentation on [Configuration and credential 
       host: hostname.region.redshift.amazonaws.com
       user: alice
       iam_profile: analyst
+      region: us-east-1
       dbname: analytics
       schema: analytics
       port: 5439
@@ -160,7 +161,6 @@ please refer to the official AWS documentation on [Configuration and credential 
       sslmode: prefer 
       ra3_node: true  
       autocommit: true  
-      region: us-east-1
       autocreate: true  
       db_groups: ['ANALYSTS']
 
