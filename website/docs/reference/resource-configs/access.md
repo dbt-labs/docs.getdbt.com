@@ -77,7 +77,7 @@ Some models (not all) are designed to be referenced through the [ref](/reference
 |-----------|-------------------------------|
 | private   | Same group                    |
 | protected | Same project/package          |
-| public    | Any group, package, or project*|
+| public    | Any group, package, or project. When defined, rerun a production job to apply the change. |
 
 If you try to reference a model outside of its supported access, you will see an error:
 
