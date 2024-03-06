@@ -118,14 +118,16 @@ seeds:
 
 ### Tests
 
-Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results:
+Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results.
+The resulting schema is `{{ profile.schema }}_{{ tests.schema }}`, with a default suffix of `dbt_test_audit`.
+To use the same profile schema, set `+schema: null`.
 
 <File name='dbt_project.yml'>
 
 ```yml
 tests:
   +store_failures: true
-  +schema: the_island_of_misfit_tests
+  +schema: test_failures
 ```
 
 </File>
