@@ -66,7 +66,7 @@ select ...
 
 </VersionBlock>
 
-Note, once you define `access`, re-run a production job to apply the change. 
+After you define `access`, rerun a production job to apply the change. 
 
 ## Definition
 The access level of the model you are declaring properties for.
