@@ -621,7 +621,7 @@ In their initial launch, Python models are supported on three of the most popula
 
 **Installing packages:** Snowpark supports several popular packages via Anaconda. The complete list is at https://repo.anaconda.com/pkgs/snowflake/. Packages are installed at the time your model is being run. Different models can have different package dependencies. If you are using third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
 
-**Python Version:** To specify a different python version, use the configuration:
+**Python version:** To specify a different python version, use the following configuration:
 ```
 def model(dbt, session):
     dbt.config(
