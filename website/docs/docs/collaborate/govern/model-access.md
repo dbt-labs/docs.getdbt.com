@@ -61,7 +61,7 @@ Some models are implementation details, meant for reference only within their gr
 |-----------|----------------------------------------|
 | private   | Same group                             |
 | protected | Same project (or installed as a package) |
-| public    | Any group, package, or project* |
+| public    | Any group, package, or project. When defined, rerun a production job to apply the change |
 *Once defined, re-run a production job to apply the change.
 
 If you try to reference a model outside of its supported access, you will see an error:
