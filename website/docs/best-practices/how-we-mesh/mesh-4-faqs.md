@@ -273,7 +273,7 @@ The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) allows users to develop 
 
 <detailsToggle alt_header="Does dbt Mesh require me to be on a specific version of dbt?">
 
-Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-core-in-cloud) to take advantage of [cross-project dependencies](/docs/collaborate/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
+Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to take advantage of [cross-project dependencies](/docs/collaborate/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
 
 </detailsToggle>
 

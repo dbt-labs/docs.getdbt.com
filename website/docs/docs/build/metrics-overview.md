@@ -21,7 +21,6 @@ The keys for metrics definitions are:
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 
-
 Here's a complete example of the metrics spec configuration:
 
 ```yaml
@@ -40,27 +39,36 @@ metrics:
 
 This page explains the different supported metric types you can add to your dbt project.
 
-### Conversion metrics <Lifecycle status='new'/>
+import SLCourses from '/snippets/_sl-course.md';
 
-[Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occurs for an entity within a set time period.
+<SLCourses/>
+
+### Conversion metrics
+
+[Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occur for an entity within a set time period.
 
 ```yaml
 metrics:
-  - name: The metric name # Required
-    description: The metric description # Optional
-    type: conversion # Required
-    label: # Required
-    type_params: # Required
-      fills_nulls_with: Set the value in your metric definition instead of null (such as zero) # Optional
-      conversion_type_params: # Required
-        entity: ENTITY # Required
-        calculation: CALCULATION_TYPE # Optional. default: conversion_rate. options: conversions(buys) or conversion_rate (buys/visits), and more to come.
-        base_measure: MEASURE # Required
-        conversion_measure: MEASURE # Required
-        window: TIME_WINDOW # Optional. default: infinity. window to join the two events. Follows a similar format as time windows elsewhere (such as 7 days)
-        constant_properties: # Optional. List of constant properties default: None
-          - base_property: DIMENSION or ENTITY # Required. A reference to a dimension/entity of the semantic model linked to the base_measure
-            conversion_property: DIMENSION or ENTITY # Same as base above, but to the semantic model of the conversion_measure
+  - name: The metric name 
+    description: The metric description 
+    type: conversion 
+    label: YOUR_LABEL 
+    type_params: #
+      conversion_type_params: 
+        entity: ENTITY
+        calculation: CALCULATION_TYPE 
+        base_measure: 
+          name: The name of the measure 
+          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) 
+          join_to_timespine: true/false
+        conversion_measure:
+          name: The name of the measure 
+          fill_nulls_with: Set the value in your metric definition instead of null (such as zero) 
+          join_to_timespine: true/false
+        window: TIME_WINDOW
+        constant_properties:
+          - base_property: DIMENSION or ENTITY 
+            conversion_property: DIMENSION or ENTITY 
 ```
 
 ### Cumulative metrics 
@@ -74,12 +82,15 @@ metrics:
     owners:
       - support@getdbt.com
     type: cumulative
+    label: Weekly Active Users
     type_params:
-      fills_nulls_with: 0
-      measures:
-        - distinct_users
-    # Omitting window will accumulate the measure over all time
-      window: 7 days
+      measure:
+        name: active_users
+        fill_nulls_with: 0
+        join_to_timespine: true
+      measure:
+        name: distinct_users
+        window: 7 days
       
 ```
 
@@ -94,7 +105,6 @@ metrics:
     type: derived
     label: Order Gross Profit
     type_params:
-      fills_nulls_with: 0
       expr: revenue - cost
       metrics:
         - name: order_total
@@ -122,35 +132,30 @@ metrics:
 
 ### Ratio metrics 
 
-[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied to both the numerator and denominator or separately to the numerator or denominator. 
+[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
 ```yaml
-# Ratio Metric
 metrics:
   - name: cancellation_rate
     owners:
       - support@getdbt.com
-# Ratio metrics create a ratio out of two metrics.
-# Define the metrics from the semantic manifest as numerator or denominator
     type: ratio
+    label: Cancellation rate
     type_params:
-      fills_nulls_with: 0
       numerator: cancellations
       denominator: transaction_amount
-      filter: |     # add optional constraint string. This applies to both the numerator and denominator
+      filter: |   
         {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
     owners:
       - support@getdbt.com
-      # Ratio metrics create a ratio out of two measures. 
-      # Define the metrics from the semantic model as numerator or denominator
     type: ratio
     type_params:
       numerator:
         name: cancellations
-        filter: {{ Dimension('company__tier' )}} = 'enterprise'  # constraint only applies to the numerator
+        filter: {{ Dimension('company__tier' )}} = 'enterprise'  
       denominator: transaction_amount
-      filter: |   #  add optional constraint string. This applies to both the numerator and denominator
+      filter: | 
         {{ Dimension('customer__country') }} = 'MX'  
 ```
 
@@ -166,17 +171,22 @@ metrics:
 ```yaml
 metrics:
   - name: cancellations
+    description: The number of cancellations
     type: simple
+    label: Cancellations
     type_params:
-      fills_nulls_with: 0
-      measure: cancellations_usd  # Specify the measure you are creating a proxy for.
-    filter: |
-      {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
+      measure:
+        name: cancellations_usd  # Specify the measure you are creating a proxy for.
+        fill_nulls_with: 0
+        filter: |
+        {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
+        join_to_timespine: true
 ```
 
 ## Filters
 
 A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, and time dimensions in filters:
+
 ```yaml
 filter: |
   {{ Entity('entity_name') }} 
@@ -186,7 +196,7 @@ filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 ```
 
-### Further configuration 
+### Further configuration
 
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner
 
@@ -197,7 +207,4 @@ You can set more metadata for your metrics, which can be used by other tools lat
 - [Semantic models](/docs/build/semantic-models)
 - [Cumulative](/docs/build/cumulative)
 - [Derived](/docs/build/derived)
-
-
-
-
+- [Fill null values for metrics](/docs/build/fill-nulls-advanced)

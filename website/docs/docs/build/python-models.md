@@ -153,6 +153,26 @@ with upstream_python_model as (
 Referencing [ephemeral](/docs/build/materializations#ephemeral) models is currently not supported (see [feature request](https://github.com/dbt-labs/dbt-core/issues/7288)) 
 :::
 
+<VersionBlock firstVersion="1.8">
+
+From dbt version 1.8, Python models also support dynamic configurations within Python f-strings. This allows for more nuanced and dynamic model configurations directly within your Python code. For example:
+
+<File name='models/my_python_model.py'>
+
+```python
+# Previously, attempting to access a configuration value like this would result in None
+print(f"{dbt.config.get('my_var')}")  # Output before change: None
+
+# Now you can access the actual configuration value
+# Assuming 'my_var' is configured to 5 for the current model
+print(f"{dbt.config.get('my_var')}")  # Output after change: 5
+```
+
+This also means you can use `dbt.config.get()` within Python models to ensure that configuration values are effectively retrievable and usable within Python f-strings.
+
+</File>
+</VersionBlock>
+
 ## Configuring Python models
 
 Just like SQL models, there are three ways to configure Python models:
@@ -173,7 +193,7 @@ def model(dbt, session):
 
 </File>
 
-There's a limit to how complex you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the [`config` property](/reference/resource-properties/config) in a YAML file.
+There's a limit to how complex you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types) and dynamic configuration. Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the [`config` property](/reference/resource-properties/config) in a YAML file.
 
 #### Accessing project context
 
@@ -184,7 +204,7 @@ Out of the box, the `dbt` class supports:
 - Accessing the database location of the current model: `dbt.this()` (also: `dbt.this.database`, `.schema`, `.identifier`)
 - Determining if the current model's run is incremental: `dbt.is_incremental`
 
-It is possible to extend this context by "getting" them via `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values to power conditional logic in your model, we require setting them through a dedicated `.yml` file config:
+It is possible to extend this context by "getting" them with `dbt.config.get()` after they are configured in the [model's config](/reference/model-configs). Starting from dbt v1.8, the `dbt.config.get()` method supports dynamic access to configurations within Python models, enhancing flexibility in model logic. This includes inputs such as `var`, `env_var`, and `target`. If you want to use those values for the conditional logic in your model, we require setting them through a dedicated YAML file config:
 
 <File name='models/config.yml'>
 
@@ -220,6 +240,27 @@ def model(dbt, session):
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.8">
+
+#### Dynamic configurations
+
+In addition to the existing methods of configuring Python models, you also have dynamic access to configuration values set with `dbt.config()` within Python models using f-strings. This increases the possibilities for custom logic and configuration management.
+
+<File name='models/my_python_model.py'>
+
+```python
+def model(dbt, session):
+    dbt.config(materialized="table")
+    
+    # Dynamic configuration access within Python f-strings, 
+    # which allows for real-time retrieval and use of configuration values.
+    # Assuming 'my_var' is set to 5, this will print: Dynamic config value: 5
+    print(f"Dynamic config value: {dbt.config.get('my_var')}")
+```
+
+</File>
+</VersionBlock>
 
 ### Materializations
 
@@ -579,6 +620,15 @@ In their initial launch, Python models are supported on three of the most popula
 **Additional setup:** You will need to [acknowledge and accept Snowflake Third Party Terms](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#getting-started) to use Anaconda packages.
 
 **Installing packages:** Snowpark supports several popular packages via Anaconda. The complete list is at https://repo.anaconda.com/pkgs/snowflake/. Packages are installed at the time your model is being run. Different models can have different package dependencies. If you are using third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
+
+**Python version:** To specify a different python version, use the following configuration:
+```
+def model(dbt, session):
+    dbt.config(
+        materialized = "table",
+        python_version="3.11"
+    )
+```
 
 **About "sprocs":** dbt submits Python models to run as _stored procedures_, which some people call _sprocs_ for short. By default, dbt will create a named sproc containing your model's compiled Python code, and then _call_ it to execute. Snowpark has an Open Preview feature for _temporary_ or _anonymous_ stored procedures ([docs](https://docs.snowflake.com/en/sql-reference/sql/call-with.html)), which are faster and leave a cleaner query history. You can switch this feature on for your models by configuring `use_anonymous_sproc: True`. We plan to switch this on for all dbt + Snowpark Python models starting with the release of dbt Core version 1.4.
 

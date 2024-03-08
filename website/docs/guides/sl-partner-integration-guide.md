@@ -17,6 +17,10 @@ To fit your tool within the world of the Semantic Layer, dbt Labs offers some be
 
 This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
+
 ### Prerequisites
 
 To build a dbt Semantic Layer integration: 
@@ -91,7 +95,7 @@ We recommend organizing metrics and dimensions in ways that a non-technical user
 
 - **Organizing metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
 
-- **Using Saved queries** &mdash; The dbt Semantic Layer has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+- **Using saved queries** &mdash; The dbt Semantic Layer has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 ### Query flexibility
 
@@ -148,7 +152,7 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Listing available dimensions based on one or many metrics
 * Querying defined metric values on their own or grouping by available dimensions
 * Display metadata from [Discovery API](/docs/dbt-cloud-apis/discovery-api) and other context
-* Expose [Saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that Semantic Layer developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
+* Expose [saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that Semantic Layer developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 **Stage 3 - More querying flexibility and better user experience (UX)**
 * More advanced filtering
@@ -166,7 +170,7 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 
 
 ### Related docs
-
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
 - [Build your metrics](/docs/build/build-metrics-intro) for more info about MetricFlow and its components. 
 - [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.

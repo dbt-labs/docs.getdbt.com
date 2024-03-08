@@ -3,8 +3,13 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/about-cloud/regions-ip-addresses",
-      "destination": "/docs/cloud/about-cloud/accesss-regions-ip-addresses",
+      "destination": "/docs/cloud/about-cloud/access-regions-ip-addresses",
       "permanent": true
     },
     {
@@ -564,7 +569,7 @@
     },
     {
         "source": "/guides/orchestration/webhooks/zapier-ms-teams",
-        "destination": "/guides/zapier-ms-team",
+        "destination": "/guides/zapier-ms-teams",
         "permanent": true
     },
     {
@@ -855,6 +860,21 @@
     {
       "source": "/reference/global-configs",
       "destination": "/reference/global-configs/about-global-configs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-cli-flags.yml",
+      "destination": "/reference/global-configs/about-global-configs.yml",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/command-line-flags",
+      "destination": "/reference/global-configs/command-line-options",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/yaml-configurations",
+      "destination": "/reference/global-configs/project-flags",
       "permanent": true
     },
     {
@@ -1674,7 +1694,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {
@@ -2379,7 +2399,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {
@@ -2854,7 +2874,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {
@@ -3895,6 +3915,16 @@
     {
       "source": "/reference/project-configs/on-run-start",
       "destination": "/reference/project-configs/on-run-start-on-run-end",
+      "permanent": true
+    },
+    {
+      "source": "/reference/project-configs/log-path",
+      "destination": "/reference/global-configs/logs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/project-configs/target-path",
+      "destination": "/reference/global-configs/json-artifacts",
       "permanent": true
     },
     {
