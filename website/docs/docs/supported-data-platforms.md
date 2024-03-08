@@ -32,6 +32,6 @@ There are two types of adapters available today:
 3. Do bugs get fixed quickly?
 4. Does it stay up-to-date with new dbt Core features?
 5. Is the usage substantial enough to self-sustain?
-6. Do other well-known well-adopted projects already depend on this library?
+6. Do other known projects depend on this library?
 
 </details>
