@@ -20,6 +20,11 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
+
+
 Here we describe the Semantic model components with examples:
 
 | Component | Description | Type |
@@ -44,13 +49,13 @@ semantic_models:
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
     defaults:                                 ## Required
-      agg_time_dimension: dimension_name    ## Required if the model contains dimensions
+      agg_time_dimension: dimension_name    ## Required if the model contains measures
     entities:                                 ## Required
        - see more information in entities
     measures:                                 ## Optional
-       - see more information in measures section
+       - see more information in the measures section
     dimensions:                               ## Required
-       - see more information in dimensions section
+       - see more information in the dimensions section
     primary_entity: >-
       if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
 ```
@@ -218,9 +223,9 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 [Dimensions](/docs/build/dimensions) are the different ways you can group or slice data for a metric. It can be time-consuming and error-prone to anticipate all possible options in a single table, such as region, country, user role, and so on. 
 
-MetricFlow simplifies this by allowing you to query all metric groups and construct the join during the query. To specify dimensions parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical groups represent qualitative values, while time groups represent dates of varying granularity.
+MetricFlow simplifies this by allowing you to query all metric groups and construct the join during the query. To specify dimension parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical groups represent qualitative values, while time groups represent dates of varying granularity.
 
-Dimensions are identified using the name parameter, just like identifiers. The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups. MetricFlow requires all dimensions be tied to a primary entity. 
+Dimensions are identified using the name parameter, just like identifiers. The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups. MetricFlow requires all dimensions to be tied to a primary entity. 
 
 :::info For time groups
 
