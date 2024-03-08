@@ -31,16 +31,16 @@ It includes logic to extract user-provided arguments, including <code>version</c
 
   
 ```
-{% macro ref() %}
 -- extract user-provided positional and keyword arguments
-  {% set version = kwargs.get('version') %}
-  {% set packagename = none %}
-  {%- if (varargs | length) == 1 -%}
+{% set version = kwargs.get('version') %}
+{% set packagename = none %}
+{%- if (varargs | length) == 1 -%}
     {% set modelname = varargs[0] %}
 {%- else -%}
     {% set packagename = varargs[0] %}
     {% set modelname = varargs[1] %}
 {% endif %}
+
 -- call builtins.ref based on provided positional arguments
 {% set rel = None %}
 {% if packagename is not none %}
