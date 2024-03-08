@@ -75,14 +75,10 @@ From dbt v1.4 and lower, use the following macro to override the `ref` method av
 ```
 </VersionBlock>
 
-The ref macro can also be used to control which elements of the model path are rendered when run, for example the following macro overrides the `ref` method to render only the schema and object identifier, but not the database reference i.e. `my_schema.my_model` rather than `my_database.my_schema.my_model`. This is especially useful when using snowflake as a warehouse, if you intend to change the name of the database post-build and wish the references to remain accurate.
+Logic within the ref macro can also be used to control which elements of the model path are rendered when run, for example the following logic renders only the schema and object identifier, but not the database reference i.e. `my_schema.my_model` rather than `my_database.my_schema.my_model`. This is especially useful when using snowflake as a warehouse, if you intend to change the name of the database post-build and wish the references to remain accurate.
 
 ```
--- Macro to override ref and to render identifiers without a database.
 
-{% macro ref(model_name) %}
-
-  {% do return(builtins.ref(model_name).include(database=false)) %}
-
-{% endmacro %}
+  -- render identifiers without a database
+  {% do return(rel.include(database=false)) %}
 ```
