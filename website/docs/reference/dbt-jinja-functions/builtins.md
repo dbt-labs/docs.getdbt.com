@@ -22,8 +22,10 @@ Using the `builtins` variable in this way is an advanced development workflow. U
 :::
 
 <VersionBlock firstVersion="1.5">
-  
-From dbt v1.5 and higher, use the following macro to extract user-provided arguments, including <code>version</code>, and call the <code>builtins.ref()</code> function with either a single <code>modelname</code> argument or both <code>packagename</code> and <code>modelname</code> arguments, based on the number of positional arguments in <code>varargs</code>:
+
+From dbt v1.5 and higher, use the following macro to override the `ref` method available in the model compilation context to return a [Relation](/reference/dbt-classes#relation) with the database name overriden to `dev`.
+
+It includes logic to extract user-provided arguments, including <code>version</code>, and call the <code>builtins.ref()</code> function with either a single <code>modelname</code> argument or both <code>packagename</code> and <code>modelname</code> arguments, based on the number of positional arguments in <code>varargs</code>.
 
 <br /><br />
 
