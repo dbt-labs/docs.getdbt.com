@@ -34,7 +34,7 @@ It includes logic to extract user-provided arguments, including <code>version</c
 {% macro ref() %}
 
 -- extract user-provided positional and keyword arguments
-{% set version = kwargs.get('version') %}
+{% set version = kwargs.get('version') or kwargs.get('v') %}
 {% set packagename = none %}
 {%- if (varargs | length) == 1 -%}
     {% set modelname = varargs[0] %}
