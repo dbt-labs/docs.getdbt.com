@@ -10,7 +10,6 @@ displayed_sidebar: "docs"
 - Changelog (coming soon)
 - [dbt Core CLI Installation guide](/docs/core/installation-overview)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
-- Release schedule (coming soon)
 
 ## What to know before upgrading
 

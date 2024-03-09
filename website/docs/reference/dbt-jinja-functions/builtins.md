@@ -31,7 +31,7 @@ From dbt v1.5 and higher, use the following macro to extract user-provided argum
 ```
 {% macro ref() %}
 -- extract user-provided positional and keyword arguments
-  {% set version = kwargs.get('version') %}
+  {% set version = kwargs.get('version') or kwargs.get('v') %}
   {% set packagename = none %}
   {%- if (varargs | length) == 1 -%}
     {% set modelname = varargs[0] %}
