@@ -95,7 +95,7 @@ loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
 If using a non-UTC timestamp, cast it to UTC first:
 
 ```yml
-loaded_at_field: "convert_timezone('UTC', 'Australia/Sydney', created_at_local)"
+loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
 ```
 
 ## count
