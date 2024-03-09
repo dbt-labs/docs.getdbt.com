@@ -103,7 +103,7 @@ The automatic authentication setting is in most cases the easiest choice and wor
 <Tabs
   defaultValue="azure_cli"
   values={[
-    {label: 'AAD username & password', value: 'aad_password'},
+    {label: 'Microsoft Entra ID username & password', value: 'meid_password'},
     {label: 'Service principal', value: 'service_principal'},
     {label: 'Managed Identity', value: 'managed_identity'},
     {label: 'Environment-based', value: 'environment_based'},
@@ -112,7 +112,7 @@ The automatic authentication setting is in most cases the easiest choice and wor
   ]}
 >
 
-<TabItem value="aad_password">
+<TabItem value="meid_password">
 
 <File name='profiles.yml'>
 
@@ -251,23 +251,23 @@ your_profile_name:
 
 </Tabs>
 
-#### Additional options for AAD on Windows
+#### Additional options for Microsoft Entra ID on Windows
 
 On Windows systems, the following additional authentication methods are also available for Azure SQL:
 
-* AAD interactive
-* AAD integrated
+* Microsoft Entra ID interactive
+* Microsoft Entra ID integrated
 * Visual Studio authentication (available through the automatic option above)
 
 <Tabs
-  defaultValue="aad_interactive"
+  defaultValue="meid_interactive"
   values={[
-    {label: 'AAD interactive', value: 'aad_interactive'},
-    {label: 'AAD integrated', value: 'aad_integrated'}
+    {label: 'Microsoft Entra ID interactive', value: 'meid_interactive'},
+    {label: 'Microsoft Entra ID integrated', value: 'meid_integrated'}
   ]}
 >
 
-<TabItem value="aad_interactive">
+<TabItem value="meid_interactive">
 
 This setting can optionally show Multi-Factor Authentication prompts.
 
@@ -292,7 +292,7 @@ your_profile_name:
 
 </TabItem>
 
-<TabItem value="aad_integrated">
+<TabItem value="meid_integrated">
 
 This uses the credentials you're logged in with on the current machine.
 
@@ -332,7 +332,7 @@ You can optionally set the principal who should own all schemas created by dbt. 
 CREATE SCHEMA [schema_name] AUTHORIZATION [schema_authorization]
 ```
 
-A common use case is to use this when you are authenticating with a principal who has permissions based on a group, such as an AAD group. When that principal creates a schema, the server will first try to create an individual login for this principal and then link the schema to that principal. If you would be using Microsoft Entra ID in this case,
+A common use case is to use this when you are authenticating with a principal who has permissions based on a group, such as a Microsoft Entra ID group. When that principal creates a schema, the server will first try to create an individual login for this principal and then link the schema to that principal. If you would be using Microsoft Entra ID in this case,
 then this would fail since Azure SQL can't create logins for individuals part of an AD group automatically.
 
 ### Reference of all connection options

@@ -141,7 +141,7 @@ As a result, MFA must be explicity disabled in the Office 365 or Microsoft Entra
 
 Note, this procedure involves disabling Security Defaults on Microsoft Entra ID.
 
-1. Go to the AAD Admin Center. Scroll down to Microsoft Entra ID ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults"
+1. Go to the Microsoft Entra admin center. Scroll down to Microsoft Entra ID ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults"
 2. Select **Save**
 3. Go to **Microsoft Entra ID** -> Manage -> Users ->Click on the ellipsis (...) and then the Multi-Factor Authentication link. If the link is grayed out, you need to make sure you disable **Security Defaults**
 4. The link will take you to a "multi-factor authentication" page.
