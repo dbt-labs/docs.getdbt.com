@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/cloud/manage-access/set-up-sso-azure-active-directory",
+      "destination": "/docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-versions/upgrade-core-in-cloud",
       "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
@@ -1459,7 +1464,7 @@
     },
     {
       "source": "/docs/collaborate/manage-access/set-up-sso-azure-active-directory",
-      "destination": "/docs/cloud/manage-access/set-up-sso-azure-active-directory",
+      "destination": "/docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
       "permanent": true
     },
     {

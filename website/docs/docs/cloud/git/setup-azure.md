@@ -1,7 +1,7 @@
 ---
 title: "Set up Azure DevOps"
 id: "setup-azure"
-description: "You can set up your Azure DevOps by creating an Azure AD app and adding it to dbt Cloud."
+description: "You can set up your Azure DevOps by creating a Microsoft Entra ID app and adding it to dbt Cloud."
 sidebar_label: "Set up Azure DevOps"
 ---
 
@@ -9,29 +9,29 @@ sidebar_label: "Set up Azure DevOps"
 
 ## Overview
 
-To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Azure Active Directory (Azure AD) app. We recommend setting up a separate [Azure AD application than used for SSO](/docs/cloud/manage-access/set-up-sso-azure-active-directory).
+To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up a Microsoft Entra ID app. We recommend setting up a separate [Microsoft Entra ID application than used for SSO](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id).
 
-1. [Register an Azure AD app](#register-an-azure-ad-app).
+1. [Register a Microsoft Entra ID app](#register-a-microsoft-entra-id-app).
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
 3. [Add another redirect URI](#add-another-redirect-uri).
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
-5. [Add your Azure AD app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
+5. [Add your Microsoft Entra ID app to dbt Cloud](#add-your-microsoft-entra-id-app-to-dbt-cloud).
 
-Once the Azure AD app is added to dbt Cloud, an account admin must also connect a service user via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
+Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also connect a service user via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 1. [Connecting a Service User](#connecting-a-service-user).
 
 
-Once the Azure AD app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
+Once the Microsoft Entra ID app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
 
-## Register an Azure AD app
+## Register a Microsoft Entra ID app
 
-1. Sign into your Azure portal and click **Azure Active Directory** under Azure services.
+1. Sign into your Azure portal and click **Microsoft Entra ID** under Azure services.
 2. Select **App registrations** in the left panel.
-3. Select **New registration**. The form for creating a new Active Directory app opens.
+3. Select **New registration**. The form for creating a new Microsoft Entra ID app opens.
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".
-5. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** as the Supported Account Types.
-Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Azure Active Directory as separate tenants, and in order for this Active Directory application to work properly, you must select Multitenant.
-6. Add a redirect URI by selecting **Web** and, in the field, entering `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+5. Select **Accounts in any organizational directory (Any Microsoft Entra ID directory - Multitenant)** as the Supported Account Types.
+Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Microsoft Entra ID as separate tenants, and in order for this Microsoft Entra ID application to work properly, you must select Multitenant.
+6. Add a redirect URI by selecting **Web** and, in the field, entering `https://YOUR_ACCESS_URL/complete/microsoft_entra_id`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 7. Click **Register**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Azure AD app registrations"/>
@@ -55,12 +55,12 @@ Provide your new app access to Azure DevOps:
 
 ## Add another redirect URI
 
-You also need to add another redirect URI to your Azure AD application. This redirect URI will be used to authenticate the service user for headless actions in deployment environments.
+You also need to add another redirect URI to your Microsoft Entra ID application. This redirect URI will be used to authenticate the service user for headless actions in deployment environments.
 
-1. Navigate to your Azure AD application.
+1. Navigate to your Microsoft Entra ID application.
 2. Select the link next to **Redirect URIs**
 3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
-`https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
+`https://YOUR_ACCESS_URL/complete/microsoft_entra_id_service_user`
 4. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/redirect-uri.gif" title="Adding the Service User redirect URI"/>
@@ -69,31 +69,31 @@ You also need to add another redirect URI to your Azure AD application. This red
 
 
 ## Connect Azure DevOps to your new app
-If you have already connected your Azure DevOps account to Active Directory, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Active Directory App you just created:
+If you have already connected your Azure DevOps account to Microsoft Entra ID, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID App you just created:
 
 1. From your Azure DevOps account, select **Organization settings** in the bottom left.
-2. Navigate to Azure Active Directory.
+2. Navigate to Microsoft Entra ID.
 3. Click **Connect directory**.
 4. Select the directory you want to connect.
 5. Click **Connect**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/connect AD to Azure DevOps.gif" title="Connecting Azure DevOps and Active Directory"/>
 
-## Add your Azure AD app to dbt Cloud
+## Add your Microsoft Entra ID app to dbt Cloud
 
-Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Cloud information about the app:
+Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provide dbt Cloud information about the app:
 
 1. Navigate to your account settings in dbt Cloud.
 2. Select **Integrations**.
 3. Scroll to the Azure DevOps section.
 4. Complete the form:
     - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly. Do not include the `dev.azure.com/` prefix in this field. ✅ Use `my-devops-org` ❌ Avoid `dev.azure.com/my-devops-org`
-    - **Application (client) ID:** Found in the Azure AD App.
-    - **Client Secrets:** You need to first create a secret in the Azure AD App under **Client credentials**. Make sure to copy the **Value** field in the Azure AD App and paste it in the **Client Secret** field in dbt Cloud. You are responsible for the Azure AD app secret expiration and rotation.
-    - **Directory(tenant) ID:** Found in the Azure AD App.
+    - **Application (client) ID:** Found in the Microsoft Entra ID App.
+    - **Client Secrets:** You need to first create a secret in the Microsoft Entra ID App under **Client credentials**. Make sure to copy the **Value** field in the Microsoft Entra ID App and paste it in the **Client Secret** field in dbt Cloud. You are responsible for the Microsoft Entra ID app secret expiration and rotation.
+    - **Directory(tenant) ID:** Found in the Microsoft Entra ID App.
         <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
 
-Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in the dbt Cloud IDE or dbt Cloud CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
+Your Microsoft Entra ID app should now be added to your dbt Cloud Account. People on your team who want to develop in the dbt Cloud IDE or dbt Cloud CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 
 ## Connect a service user
 
@@ -131,19 +131,19 @@ The service user's permissions will also power which repositories a team can sel
 
 While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone the repository. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
 
-As a result, MFA must be explicity disabled in the Office 365 or Azure AD administration panel for the service user.  Just having it "un-connected" will not be sufficient, as dbt Cloud will be prompted to set up MFA instead of allowing the credentials to be used as intended.
+As a result, MFA must be explicity disabled in the Office 365 or Microsoft Entra ID administration panel for the service user.  Just having it "un-connected" will not be sufficient, as dbt Cloud will be prompted to set up MFA instead of allowing the credentials to be used as intended.
 
 **To disable MFA for a single user using the Office 365 Administration console:**
 
 - Go to Microsoft 365 admin center -> Users -> Active users -> Select the user -> Manage multifactor authentication -> Select the user -> Disable multi-factor authentication.
 
-**To use the Azure AD interface:**
+**To use the Microsoft Entra ID interface:**
 
-Note, this procedure involves disabling Security Defaults on AAD.
+Note, this procedure involves disabling Security Defaults on Microsoft Entra ID.
 
-1. Go to the AAD Admin Center. Scroll down to Azure Active Directory ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults"
+1. Go to the AAD Admin Center. Scroll down to Microsoft Entra ID ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults"
 2. Select **Save**
-3. Go to **Azure Active Directory** -> Manage -> Users ->Click on the ellipsis (...) and then the Multi-Factor Authentication link. If the link is grayed out, you need to make sure you disable **Security Defaults**
+3. Go to **Microsoft Entra ID** -> Manage -> Users ->Click on the ellipsis (...) and then the Multi-Factor Authentication link. If the link is grayed out, you need to make sure you disable **Security Defaults**
 4. The link will take you to a "multi-factor authentication" page.
 5. If MFA is enabled for users, select the user(s) and select **Disable** under **Quick steps** 
 6. Select **Yes** to confirm your changes 
@@ -343,7 +343,7 @@ You must connect your service user before setting up a dbt Cloud project, as the
 To connect the service user:
 1. An admin must first be signed into the service user's Azure DevOps account.
 2. The admin should click **Link Azure Service User** in dbt Cloud.
-3. The admin will be directed to Azure DevOps and must accept the Azure AD app's permissions.
+3. The admin will be directed to Azure DevOps and must accept the Microsoft Entra ID app's permissions.
 4. Finally, the admin will be redirected to dbt Cloud, and the service user will be connected.
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" title="Connecting an Azure Service User"/>
 
