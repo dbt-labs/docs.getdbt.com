@@ -347,7 +347,7 @@ On Windows systems, the following additional authentication methods are also ava
 * Visual Studio authentication (available through the automatic option above)
 
 <Tabs
-  defaultValue="aad_interactive"
+  defaultValue="meid_interactive"
   values={[
     {label: 'Microsoft Entra ID interactive', value: 'meid_interactive'},
     {label: 'Microsoft Entra ID integrated', value: 'meid_integrated'}
