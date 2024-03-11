@@ -1,15 +1,15 @@
 ---
-title: Switch from dbt Core to dbt Cloud
+title: Switch to dbt Cloud - Getting started
 id: core-to-cloud-1
-description: "Create an adapter that connects dbt to you platform, and learn how to maintain and version that adapter."
-hoverSnippet: "Learn how to build, test, document, and promote adapters as well as maintaining and versioning an adapter."
+description: "Learn how to Switch from dbt Core to dbt Cloud and what you need to get started."
+hoverSnippet: "Use this guide to learn how to switch from dbt Core to dbt Cloud."
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Migration','dbt Core','dbt Cloud']
 level: 'Intermediate'
 recently_updated: true
 ---
-## Switch to dbt Cloud
+## Getting started
 
 Switching from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed service.
 
