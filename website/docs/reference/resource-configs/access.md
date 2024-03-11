@@ -17,7 +17,7 @@ models:
 
 <VersionBlock lastVersion="1.6">
 
-Access modifiers may be applied to models one-by-one in YAML properties. In v1.5 and v1.6, you are unable to configure `access` for multiple models at once. Upgrade to v1.7 for additional configuration options. A group or subfolder contains models with varying access levels, so when you designate a model with `access: public`, make sure you intend for this behavior.
+Access modifiers may be applied to models one-by-one in YAML properties. In v1.5 and v1.6, you are unable to configure `access` for multiple models at once. Upgrade to v1.7 for additional configuration options. A group or subfolder contains models with varying access levels, so when you designate a model with `access: public`, make sure you intend for this behavior. 
 
 </VersionBlock>
 
@@ -66,6 +66,8 @@ select ...
 
 </VersionBlock>
 
+After you define `access`, rerun a production job to apply the change. 
+
 ## Definition
 The access level of the model you are declaring properties for.
 
@@ -73,9 +75,9 @@ Some models (not all) are designed to be referenced through the [ref](/reference
 
 | Access    | Referenceable by              |
 |-----------|-------------------------------|
-| private   | same group                    |
-| protected | same project/package          |
-| public    | any group, package or project |
+| private   | Same group                    |
+| protected | Same project/package          |
+| public    | Any group, package, or project. When defined, rerun a production job to apply the change. |
 
 If you try to reference a model outside of its supported access, you will see an error:
 
