@@ -1,5 +1,5 @@
 ---
-title: Switch to dbt Cloud - Getting started
+title: Switch from dbt Core to dbt Cloud - Getting started
 id: core-to-cloud-1
 description: "Learn how to Switch from dbt Core to dbt Cloud and what you need to get started."
 hoverSnippet: "Use this guide to learn how to switch from dbt Core to dbt Cloud."
