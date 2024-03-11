@@ -9,7 +9,6 @@ tags: ['Migration','dbt Core','dbt Cloud']
 level: 'Intermediate'
 recently_updated: true
 ---
-
 ## Switch to dbt Cloud
 
 Switching from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed service.
@@ -22,7 +21,7 @@ This guide outlines the considerations needed to switch your dbt project from db
 
 - dbt Core is an open-source tool that enables data teams to transform data following analytics engineering best practices using a command line interface. It must be self-hosted and maintained.
 
-## Prerequisites
+### Prerequisites
 
 - You have dbt Core installed.
 - You have an existing dbt Core project connected to a data platform and Git repository.
@@ -77,7 +76,7 @@ This section explains the considerations and methods to connect your data platfo
 3. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform’s SSO.  <Lifecycle status='enterprise' />
 
 ## Git set up
-_*Time to complete: Approximately 10 mins_
+_*Time to complete: Approximately 10 to 30 mins_
 
 Your existing dbt project source code should live in a Git repository. In this step, you should connect your existing dbt project source code from Git to dbt Cloud.
 
@@ -93,7 +92,7 @@ Your existing dbt project source code should live in a Git repository. In this s
   Set up groups for dbt project access with those configured for repository access to streamline permissions.
 
 ## Developer set up
-_*Time to complete: Approximately 30 mins_
+_*Time to complete: Approximately 30 mins to 1 hour_
 
 This section highlights the development configurations you’ll need for your dbt Cloud project. The following categories are covered in this section:
 
@@ -169,7 +168,7 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 3. Run your jobs in a production environment to fully implement CI/CD. Future pull requests will also leverage the last production runs to compare against.
 
 ## Models configuration
-_*Time to complete: Approximately 30 mins to 1 hour_
+_*Time to complete: Approximately 30 mins_
 
 In this section, you’ll be able to validate whether your models run or compile correctly in your development tool of choice: [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
 
