@@ -80,7 +80,7 @@ Your existing dbt project source code should live in a Git repository. In this s
 - Once you’ve set up a dbt Cloud account, you can [connect and configure Git](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud to connect your Git repository:
   - Connect with one of the [native integrations](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud.
   - [Import a git repository](/docs/cloud/git/import-a-project-by-git-url) from any valid git URL that points to a dbt project.
-- Log into dbt Cloud using [OAuth connections](/docs/collaborate/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status='enterprise' />
+- Log into dbt Cloud using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status='enterprise' />
   
   Set up groups for dbt project access with those configured for repository access to streamline permissions.
 
@@ -150,9 +150,12 @@ In this section, you’ll be able to switch and configure your dbt models to dbt
 - Once your first job has successfully run in your production environment, use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their [lineage](/terms/data-lineage) to gain a better understanding of its latest production state.
 
 ## What’s next?
+Congrats on completing the first part of your migration to dbt Cloud! You should have learned how to set up your dbt Cloud account, connect your data platform, Git repository, and configure your development, orchestration, and CI/CD environments. You’ve also set up your models and are ready to run your first job in dbt Cloud.
 
+For next steps, we will 
 - Link to the next guide (managing your migration or switch, etc.)
 - Link to tips and faqs?
+
 
 ## Related docs
 
