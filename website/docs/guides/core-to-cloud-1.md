@@ -112,21 +112,26 @@ This difference streamlines the process of switching between development, stagin
 - Review the [dbt commands](/reference/dbt-commands) supported for dbt Cloud development. For example, `dbt debug` isn’t needed in dbt Cloud since the UI displays logs for your viewing.
 
 ## Orchestration set up
-*Time to complete: Approximately 30 mins to 1 hour
+_*Time to complete: Approximately 30 mins to 1 hour_
 
-- To use the [dbt Cloud's scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This would be the [deployment](/docs/deploy/deploy-environments) environment.
-- In your environment settings, configure dbt Cloud with the same dbt Core version.
+### dbt Cloud environments
+To use the [dbt Cloud's scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This would be the [deployment](/docs/deploy/deploy-environments) environment. You can set up multiple environments for different stages of your deployment pipeline, such as development, staging/QA, and production.
+
+### Initial set up steps
+- **dbt Core version** &mdash; In your environment settings, configure dbt Cloud with the same dbt Core version.
   - Once your full migration is complete, consider upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) to always get the latest fixes and more.
-- [Configure your jobs](/docs/deploy/deploy-jobs) for automated or event-driven dbt jobs. You can use cron execution, manual, pull requests, or API triggers.
+- **[Configure your jobs](/docs/deploy/deploy-jobs)** &mdash; You can create jobs for automated or event-driven dbt jobs. You can use cron execution, manual, pull requests, or API triggers.
   - Note that alongside [dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
-- You should set a `custom target.name` for every single [corresponding dbt Cloud job](/docs/build/custom-target-names). We recommend modifying the code to use [environment variables](/docs/build/environment-variables) instead since those can be set at the environment level.
-- Add any relevant [dbt commands](/docs/deploy/job-commands) to execute your dbt Cloud jobs runs.
-- Set up [notifications](/docs/deploy/job-notifications) by configuring email and Slack alerts to monitor your jobs.
-- Use [monitoring tools](/docs/deploy/monitor-jobs) like run history, job retries, job chaining, dashboard status tiles, and more for a seamless orchestration experience.
-- If you use [dbt Explorer](/docs/collaborate/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view resources and its metadata in dbt Explorer. Running `dbt compile` will not update resources and its metadata.
+
+### Additional configurations
+- **Custom target names** &mdash; You should set a `custom target.name` for every single [corresponding dbt Cloud job](/docs/build/custom-target-names). We recommend modifying the code to use [environment variables](/docs/build/environment-variables) instead since those can be set at the environment level.
+- **dbt commands** &mdash; Add any relevant [dbt commands](/docs/deploy/job-commands) to execute your dbt Cloud jobs runs.
+- **Notifications** &mdash; Set up [notifications](/docs/deploy/job-notifications) by configuring email and Slack alerts to monitor your jobs.
+- **Monitoring tools** &mdash; Use [monitoring tools](/docs/deploy/monitor-jobs) like run history, job retries, job chaining, dashboard status tiles, and more for a seamless orchestration experience.
+- **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/collaborate/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view resources and its metadata in dbt Explorer. Running `dbt compile` will not update resources and its metadata.
 
 ### CI/CD set up
-*Time to complete: Approximately 30 mins to 1 hour
+_*Time to complete: Approximately 30 mins to 1 hour_
 
 Building a custom solution to efficiently check code upon pull requests is complicated. With dbt Cloud, you can enable continuous integration / continuous deployment (CI/CD) and configure dbt Cloud to run your dbt projects in a temporary schema when new commits are pushed to open pull requests. This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool for data practitioners.
 
@@ -135,7 +140,7 @@ Building a custom solution to efficiently check code upon pull requests is compl
 - Run your jobs in a production environment to fully implement CI/CD. Future pull requests will also leverage the last production runs to compare against.
 
 ## Models configuration
-*Time to complete: Approximately 30 mins to 1 hour
+_*Time to complete: Approximately 30 mins to 1 hour_
 
 In this section, you’ll be able to switch and configure your dbt models to dbt Cloud. You’ll want to make sure you set up your [development environment and credentials](#developer-set-up).
 
