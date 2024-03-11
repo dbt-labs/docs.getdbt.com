@@ -87,25 +87,28 @@ Your existing dbt project source code should live in a Git repository. In this s
 ## Developer set up
 _*Time to complete: Approximately 30 mins_
 
-<details>
-<summary>💡 What is a <code>target</code> in dbt Cloud?</summary>
+This section highlights what foundational configurations you’ll need to set up your dbt Cloud project.
+
+### dbt Cloud environments
 
 The concept of a `target` in dbt Core is the same as a [dbt Cloud environment](/docs/environments-in-dbt).
 
 The main difference between `target` in dbt Core and a dbt Cloud environment is that you can make these configurations through the dbt Cloud UI, as opposed to within your **`profiles.yml`** file.
 
 This difference streamlines the process of switching between development, staging, and production contexts, removing the need to manually edit a **`profiles.yml`** file. dbt Cloud environments also integrate with additional features such as job scheduling, version control, and more, making it easier to manage the full lifecycle of your dbt projects within a single platform You can [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in dbt Cloud.
-</details>
 
-This section highlights what foundational configurations you’ll need to set up your dbt Cloud project. After setting up your dbt Cloud account and git integration:
+### Initial set up steps
+- **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
+- **dbt Core version** &mdash; In your dbt Cloud environment and credentials, use the same dbt Core version you use locally. You can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
+  - Once your full migration is complete, consider upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) to always get the latest fixes and more.
+- **Connect to your data platform** &mdash; When using dbt Cloud, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI and don't need a `profiles.yml` file. Each environment is roughly equivalent to an entry in your `profiles.yml` file.
 
-- Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
-  - In your dbt Cloud environment and credentials, use the same dbt Core version you use locally. You can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
-    - Once your full migration is complete, consider upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) to always get the latest fixes and more.
-  - When using dbt Cloud, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI and don't need a `profiles.yml` file. Each environment is roughly analogous to an entry in your `profiles.yml` file.
-- If you’re using a [`custom target.name`](/reference/dbt-jinja-functions/target) in your project, we recommend you set them using [environment variables](/docs/build/environment-variables). Alternatively, you can update it at the developer credentials level.
-- Set up your development workspace with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to edit and develop your dbt code in your tool of choice.
-- Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [dbt Cloud APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="team,enterprise" />
+### Advanced configuration
+- **Custom target names** &mdash; If you’re using a [`custom target.name`](/reference/dbt-jinja-functions/target) in your project, we recommend you set them using [environment variables](/docs/build/environment-variables). Alternatively, you can update it at the developer credentials level.
+- **Development tools** &mdash; Set up your development workspace with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to edit and develop your dbt code in your tool of choice.
+- **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [dbt Cloud APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="team,enterprise" />
+
+### dbt Cloud commands
 - Review the [dbt commands](/reference/dbt-commands) supported for dbt Cloud development. For example, `dbt debug` isn’t needed in dbt Cloud since the UI displays logs for your viewing.
 
 ## Orchestration set up
