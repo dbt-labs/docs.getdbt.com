@@ -7,6 +7,7 @@ pagination_next: "docs/cloud/connect-data-platform/connect-microsoft-fabric"
 pagination_prev: null
 ---
 dbt Cloud can connect with a variety of data platform providers including: 
+- [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
 - [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
