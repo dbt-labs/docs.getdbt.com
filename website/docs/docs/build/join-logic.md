@@ -125,6 +125,8 @@ semantic_models:
       - name: signup_date
         type: time
       - name: country_dim
+
+  - name: country
     entities:
       - name: country_id
         type: primary
