@@ -111,6 +111,10 @@ exports.versionedPages = [
     "firstVersion": "1.6",
   },
   {
+    "page": "docs/core/homebrew-install",
+    "lastVersion": "1.5",
+  },
+  {
     "page": "docs/build/groups",
     "firstVersion": "1.5",
   },
