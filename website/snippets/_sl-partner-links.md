@@ -5,7 +5,7 @@ The following tools integrate with the dbt Semantic Layer:
 <div className="grid--3-col">
 
  <Card
-    title="Tableau (beta)"
+    title="Tableau"
     link="/docs/use-dbt-semantic-layer/tableau"
     body="Learn how to connect to Tableau for querying metrics and collaborating with your team."
     icon="tableau-software"/>
