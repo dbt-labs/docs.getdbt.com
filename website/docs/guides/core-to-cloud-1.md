@@ -1,8 +1,8 @@
 ---
-title: Switch from dbt Core to dbt Cloud - Getting started
+title: Move from dbt Core to dbt Cloud - Getting started
 id: core-to-cloud-1
-description: "Learn how to Switch from dbt Core to dbt Cloud and what you need to get started."
-hoverSnippet: "Use this guide to learn how to switch from dbt Core to dbt Cloud."
+description: "Learn how to move from dbt Core to dbt Cloud and what you need to get started."
+hoverSnippet: "Use this guide to learn how to move from dbt Core to dbt Cloud."
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Migration','dbt Core','dbt Cloud']
@@ -11,7 +11,7 @@ recently_updated: true
 ---
 ## Introduction
 
-Switching from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed service.
+Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed service.
 
 - dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, deploy, and explore data products using a single, fully managed service. It also supports the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line with [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for development, a [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics, and domain ownership of data with multi-project “[dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)” setups.
   
@@ -21,7 +21,7 @@ Switching from dbt Core to dbt Cloud streamlines analytics engineering workflows
 
 ### What you'll learn
 
-This guide outlines what you need to do in order to switch from dbt Core to dbt Cloud and highlights the necessary technical changes: .
+This guide outlines what you need to do in order to move from dbt Core to dbt Cloud and highlights the necessary technical changes: .
 
 - [Account setup](/guides/core-to-cloud-1?step=3#account-set-up): Learn how to create a dbt Cloud account, invite team members, and configure it for your team.
 - [Environment variables](/guides/core-to-cloud-1?step=4#environment-variables): Discover how to manage environment variables in dbt Cloud, including their priority.
@@ -213,7 +213,7 @@ import ConfettiTrigger from '/src/components/confetti/index.js';
 
 <ConfettiTrigger>
 
-Congrats on completing the first part of your switch to dbt Cloud 🎉! 
+Congrats on completing the first part of your move to dbt Cloud 🎉! 
 
 You should have learned:
 - How to set up your dbt Cloud account
@@ -221,10 +221,10 @@ You should have learned:
 - Configure your development, orchestration, and CI/CD environments
 - You’ve also set up your models and are ready to run your first job in dbt Cloud.
 
-For next steps, we'll soon share other guides on how to manage your switch and trips. Stay tuned!
+For next steps, we'll soon share other guides on how to manage your move and tips/faqs. Stay tuned!
 
 <!--
-- Link to the next guide (managing your migration or switch, etc.)
+- Link to the next guide (managing your migration or move, etc.)
 - Link to tips and faqs?
 -->
 
