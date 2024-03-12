@@ -9,11 +9,9 @@ tags: ['Migration','dbt Core','dbt Cloud']
 level: 'Intermediate'
 recently_updated: true
 ---
-## Getting started
+## Introduction
 
 Switching from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed service.
-
-This guide outlines the considerations needed to switch your dbt project from dbt Core to dbt Cloud, highlighting collaboration enhancements and technical adjustments.
 
 - dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, deploy, and explore data products using a single, fully managed service. It also supports the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line with [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for development, a [Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics, and domain ownership of data with multi-project “[dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)” setups.
   
@@ -21,11 +19,31 @@ This guide outlines the considerations needed to switch your dbt project from db
 
 - dbt Core is an open-source tool that enables data teams to transform data following analytics engineering best practices using a command line interface. It must be self-hosted and maintained.
 
-### Prerequisites
+### What you'll learn
+
+This guide outlines what you need to do in order to switch from dbt Core to dbt Cloud and highlights the necessary technical changes: .
+
+- [Account set up](/guides/core-to-cloud-1?step=3#account-set-up): Learn how to create a dbt Cloud account, invite team members, and configure it for your team.
+- [Environment variables](m/guides/core-to-cloud-1?step=4#environment-variables): Discover how to manage environment variables in dbt Cloud, including their priority.
+- [Data platform set up](/guides/core-to-cloud-1?step=5#data-platform-set-up): Find out about connecting your data platform to dbt Cloud.
+- [Git set up](/guides/core-to-cloud-1?step=6#git-set-up): Learn to link your dbt project's Git repository with dbt Cloud.
+- [Developer set up:](/guides/core-to-cloud-1?step=7#developer-set-up) Understand the setup needed for developing in dbt Cloud.
+- [Orchestration set up](/guides/core-to-cloud-1?step=8#orchestration-set-up): Learn how to prepare your dbt Cloud environment and jobs for orchestration.
+- [Models configuration](/guides/core-to-cloud-1?step=9#models-configuration): Get insights on validating and running your models in dbt Cloud, using either the IDE or CLI.
+- [What's next?](/guides/core-to-cloud-1?step=10#whats-next): Summarizes key takeaways and introduces what to expect in the following guides.
+
+## Prerequisites
 
 - You have dbt Core installed.
 - You have an existing dbt Core project connected to a data platform and Git repository.
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
+
+### Related docs
+- [Learn dbt Cloud](https://courses.getdbt.com/collections)
+- [Develop with dbt Cloud](/docs/cloud/about-develop-dbt)
+- [Deploy jobs](/docs/deploy/deployments)
+- Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
+- Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
 ## Account set up
 *Time to complete: Approximately 30 mins to 1 hour*
@@ -68,7 +86,16 @@ _*Time to complete: Approximately 10-30 mins_
 
 This section explains the considerations and methods to connect your data platform to dbt Cloud.
 
-1. Set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/guides/core-to-cloud-1?step=4) in dbt Cloud.
+1. Set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/guides/core-to-cloud-1?step=4) in dbt Cloud. dbt Cloud can connect with a variety of data platform providers including:
+   - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
+   - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
+   - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
+   - [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
+   - [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery)
+   - [Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric)
+   - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
+   - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
+   - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
 
 2. You can verify your data platform connections by clicking the **Test connection** button in your deployment and development credentials settings.
 
