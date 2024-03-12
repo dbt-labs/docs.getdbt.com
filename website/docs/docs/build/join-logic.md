@@ -84,7 +84,7 @@ mf query --metrics average_purchase_price --dimensions metric_time,user_id__type
 
 ## Multi-hop joins
 
-MetricFlow allows users to join measures and dimensions across a graph of entities, referred to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
+MetricFlow allows users to join measures and dimensions across a graph of entities, referred to as a 'multi-hop join' because users can move from one table to another like a 'hop' within a graph.
 
 MetricFlow can join up to three tables, supporting multi-hop joins with a limit of two hops. This does the following:
 - Enables complex data analysis without ambiguous paths.
