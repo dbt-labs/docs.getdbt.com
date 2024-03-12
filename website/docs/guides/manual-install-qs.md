@@ -26,7 +26,7 @@ If you'd rather edit files and run projects using the web-based Integrated Devel
 After setting up BigQuery to work with dbt, you are ready to create a starter project with example models, before building your own models.
 
 ### Related docs
-- [Switch from dbt Core to dbt Cloud](/guides/core-to-cloud-1?step=1)
+- [Move from dbt Core to dbt Cloud](/guides/core-to-cloud-1?step=1)
 
 ## Create a repository
 
