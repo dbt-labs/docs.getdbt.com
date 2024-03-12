@@ -38,7 +38,7 @@ default:
       region_name: [region_name]
       database: [database name]
       schema: [dev_schema]
-      aws_profile_name: [optional, profile to use from your AWS shared credentials file.]
+      aws_profile_name: [optional profile to use from your AWS shared credentials file.]
       threads: [1 or more]
       num_retries: [0 or more] # number of retries performed by the adapter, by default 5
   target: dev
