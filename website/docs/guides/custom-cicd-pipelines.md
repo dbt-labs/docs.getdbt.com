@@ -261,8 +261,8 @@ jobs:
       DBT_JOB_BRANCH: ${{ github.ref_name }}
 
     steps:
-      - uses: "actions/checkout@v3"
-      - uses: "actions/setup-python@v4"
+      - uses: "actions/checkout@v4"
+      - uses: "actions/setup-python@v5"
         with:
           python-version: "3.9"
       - name: Run dbt Cloud job

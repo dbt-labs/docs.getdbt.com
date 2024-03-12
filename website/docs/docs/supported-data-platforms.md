@@ -30,8 +30,8 @@ There are two types of adapters available today:
 1. Does it work?
 2. Does anyone "own" the code, or is anyone liable for ensuring it works?
 3. Do bugs get fixed quickly?
-4. Does it stay up-to-date with new Core features?
+4. Does it stay up-to-date with new dbt Core features?
 5. Is the usage substantial enough to self-sustain?
-pendency on this library?
+6. Do other known projects depend on this library?
 
 </details>
