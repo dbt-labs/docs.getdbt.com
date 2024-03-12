@@ -11,6 +11,17 @@
   padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
     icon="alloydb"/>
 
+<Card
+    title="Apache Spark"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/spark-setup'>Install with dbt Core </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a><br /><br /><div style='background: #E5E7EB;
+  border-radius: 1.5rem;
+  color:#262A38;
+  padding: 0rem 0.75rem; display:inline-block'>dbt Cloud</div> <div style='  background: #E5E7EB;
+  border-radius: 1.5rem;
+  color:#262A38;
+  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
+    icon="apache-spark"/>
+
  <Card
     title="Athena"
     body="<ul><li><a href='/docs/core/connect-data-platform/athena-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-athena-community><img src=https://badge.fury.io/py/dbt-athena-community.svg/></a><br /><br /><div style='background: #E5E7EB;
@@ -103,7 +114,7 @@
   border-radius: 1.5rem;
   color:#262A38;
   padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
-    icon="redshift"/>
+    icon="postgres"/>
 
 <Card
     title="Redshift"
@@ -126,17 +137,6 @@
   color:#262A38;
   padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
     icon="snowflake"/>
-
-<Card
-    title="Spark"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in dbt Cloud </a> <br /></li><li><a href='/docs/core/connect-data-platform/spark-setup'>Install with dbt Core </a> </li></ul> <br /> <a href=https://badge.fury.io/py/dbt-spark><img src=https://badge.fury.io/py/dbt-spark.svg/></a><br /><br /><div style='background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Cloud</div> <div style='  background: #E5E7EB;
-  border-radius: 1.5rem;
-  color:#262A38;
-  padding: 0rem 0.75rem; display:inline-block'>dbt Core</div>"
-    icon="databricks"/>
 
 <Card
     title="Starburst/Trino"
