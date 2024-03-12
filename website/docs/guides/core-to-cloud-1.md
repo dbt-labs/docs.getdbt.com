@@ -24,7 +24,7 @@ Switching from dbt Core to dbt Cloud streamlines analytics engineering workflows
 This guide outlines what you need to do in order to switch from dbt Core to dbt Cloud and highlights the necessary technical changes: .
 
 - [Account set up](/guides/core-to-cloud-1?step=3#account-set-up): Learn how to create a dbt Cloud account, invite team members, and configure it for your team.
-- [Environment variables](m/guides/core-to-cloud-1?step=4#environment-variables): Discover how to manage environment variables in dbt Cloud, including their priority.
+- [Environment variables](/guides/core-to-cloud-1?step=4#environment-variables): Discover how to manage environment variables in dbt Cloud, including their priority.
 - [Data platform set up](/guides/core-to-cloud-1?step=5#data-platform-set-up): Find out about connecting your data platform to dbt Cloud.
 - [Git set up](/guides/core-to-cloud-1?step=6#git-set-up): Learn to link your dbt project's Git repository with dbt Cloud.
 - [Developer set up:](/guides/core-to-cloud-1?step=7#developer-set-up) Understand the set up needed for developing in dbt Cloud.
