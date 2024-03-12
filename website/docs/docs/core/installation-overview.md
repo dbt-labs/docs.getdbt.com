@@ -52,4 +52,4 @@ Most command-line tools, including dbt, have a `--help` flag that you can use to
 :::
 
 ## Related docs
-- [Switch from dbt Core to dbt Cloud](/guides/core-to-cloud-1?step=1)
+- [Move from dbt Core to dbt Cloud](/guides/core-to-cloud-1?step=1)
