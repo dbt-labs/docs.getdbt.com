@@ -191,7 +191,7 @@ models:
         data_type: date
 ```
 
-Note that by default (or when specified without a length), `varchar` in Redshift limits the maximum length of the values to 256 characters. This means that any string data exceeding 256 characters will be truncated, potentially leading to loss of information. To allow more characters, use `varchar(max)`: `data_type: varchar(max)`.  
+Note that by default (or when specified without a length), `varchar` in Redshift limits the maximum length of the values to 256 characters. This means that any string data exceeding 256 characters will be truncated. To allow the maximum length, use `varchar(max)`. For example, `data_type: varchar(max)`.  
 
 </File>
 
