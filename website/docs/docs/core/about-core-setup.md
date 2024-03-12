@@ -19,4 +19,4 @@ You can also learn about [developing dbt projects in dbt Cloud](/docs/cloud/abou
 If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](https://docs.getdbt.com/guides).
 
 ## Related docs
-- [Switch from dbt Core to dbt Cloud](/guides/core-to-cloud-1?step=1)
+- [Move from dbt Core to dbt Cloud](/guides/core-to-cloud-1?step=1)
