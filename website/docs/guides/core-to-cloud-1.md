@@ -27,9 +27,9 @@ This guide outlines what you need to do in order to switch from dbt Core to dbt 
 - [Environment variables](m/guides/core-to-cloud-1?step=4#environment-variables): Discover how to manage environment variables in dbt Cloud, including their priority.
 - [Data platform set up](/guides/core-to-cloud-1?step=5#data-platform-set-up): Find out about connecting your data platform to dbt Cloud.
 - [Git set up](/guides/core-to-cloud-1?step=6#git-set-up): Learn to link your dbt project's Git repository with dbt Cloud.
-- [Developer set up:](/guides/core-to-cloud-1?step=7#developer-set-up) Understand the setup needed for developing in dbt Cloud.
+- [Developer set up:](/guides/core-to-cloud-1?step=7#developer-set-up) Understand the set up needed for developing in dbt Cloud.
 - [Orchestration set up](/guides/core-to-cloud-1?step=8#orchestration-set-up): Learn how to prepare your dbt Cloud environment and jobs for orchestration.
-- [Models configuration](/guides/core-to-cloud-1?step=9#models-configuration): Get insights on validating and running your models in dbt Cloud, using either the IDE or CLI.
+- [Models configuration](/guides/core-to-cloud-1?step=9#models-configuration): Get insights on validating and running your models in dbt Cloud, using either the dbt Cloud IDE or dbt Cloud CLI.
 - [What's next?](/guides/core-to-cloud-1?step=10#whats-next): Summarizes key takeaways and introduces what to expect in the following guides.
 
 ## Prerequisites
