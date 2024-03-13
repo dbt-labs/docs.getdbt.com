@@ -26,7 +26,7 @@ dbt Core is an open-source tool that enables data teams to transform data follow
 
 ### What you'll learn
 
-This guide outlines what you need to do in order to move from dbt Core to dbt Cloud and highlights the necessary technical changes:
+This guide outlines the steps you need to take to move from dbt Core to dbt Cloud and highlights the necessary technical changes:
 
 - [Account setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=3#account-setup): Learn how to create a dbt Cloud account, invite team members, and configure it for your team.
 - [Environment variables](https://docs.getdbt.com/guides/core-to-cloud-1?step=4#environment-variables): Discover how to manage environment variables in dbt Cloud, including their priority.
