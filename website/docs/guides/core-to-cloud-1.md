@@ -15,12 +15,12 @@ recently_updated: true
 Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed service.
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, deploy, and explore data products using a single, fully managed service. It also supports: 
-  - The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line with [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for development
-  - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
-  - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
-  - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
-  
-  Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
+- The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line with [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for development
+- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+- Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
+- [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
+
+Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 dbt Core is an open-source tool that enables data teams to transform data following analytics engineering best practices using a command line interface. It must be self-hosted and maintained.
 
@@ -40,6 +40,7 @@ This guide outlines what you need to do in order to move from dbt Core to dbt Cl
 ## Prerequisites
 
 - You have an existing dbt Core project connected to a data platform and Git repository.
+- You are dbt version 1.0 or later.
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ### Related docs
