@@ -39,7 +39,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 
 ## Prerequisites
 
-- You have an existing dbt Core project connected to a data platform and Git repository.
+- You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ### Related docs
