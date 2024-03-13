@@ -86,7 +86,7 @@ This section outlines the considerations and methods to connect your data platfo
 
 Your existing dbt project source code should live in a Git repository. In this section, you will connect your existing dbt project source code from Git to dbt Cloud.
 
-1. Ensure your dbt project is in a Git repository
+1. Ensure your dbt project is in a Git repository.
 
 2. Once you’ve set up a dbt Cloud account, you can [connect and configure Git](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud to connect your Git repository:
    - Connect with one of the [native integrations](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud (such as GitHub, GitLab, and Azure DevOps).
