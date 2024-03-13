@@ -64,7 +64,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 
 ## Data platform setup
 
-This section explains the considerations and methods to connect your data platform to dbt Cloud.
+This section outlines the considerations and methods to connect your data platform(s) to dbt Cloud.
 
 1. Set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/guides/core-to-cloud-1?step=4) in dbt Cloud. dbt Cloud can connect with a variety of data platform providers including:
    - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
