@@ -6,6 +6,24 @@ description: "Instructions for installing and configuring dbt Cloud CLI"
 pagination_next: "docs/cloud/configure-cloud-cli"
 ---
 
+<expandable alt_header="Test expandable with header">
+
+## Has h2 heading
+
+demo content
+
+### Has h3 heading
+
+demo content
+
+</expandable>
+
+<expandable alt_header="Test expandable without header">
+
+content
+
+</expandable>
+
 import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 
 <CloudCLIFlag/>

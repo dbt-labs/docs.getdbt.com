@@ -51,7 +51,7 @@ function useDocTOC() {
 
     // Headings to remove from TOC
     const headingsToFilter = await getElements(
-      ".tabs-container h2, .tabs-container h3"
+      ".tabs-container h2, .tabs-container h3, .expandable-anchor h2, .expandable-anchor h3"
     );
     
     // if headings exist on page
