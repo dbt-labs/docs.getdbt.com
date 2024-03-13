@@ -150,7 +150,7 @@ All dbt commands are supported.
 
 ## Support for model contracts
 Model contracts are supported with dbt-teradata v1.7.1 and onwards.
-Constraint support and enforcement in dbt-teradata
+Constraint support and enforcement in dbt-teradata:
 
 | Constraint type |	Support	Platform | enforcement |
 |-----------------|------------------|-------------|
