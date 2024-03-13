@@ -149,7 +149,7 @@ In dbt Cloud, you can set [environment variables](/docs/build/environment-variab
 
 ### dbt Cloud environment variables order of precedence
 Environment variables in dbt Cloud are managed with a clear order of precedence, allowing users to define values at four levels (highest to lowest order of precedence):
-   - The job level (job override) or in the IDE for an individual developer (personal override). _(Highest precedence)_
+   - The job level (job override) or in the IDE for an individual developer (personal override). _Highest precedence_
    - The environment level, which can be overridden by the job level or personal override.
    - A project-wide default value, which can be overridden by the environment level, job level, or personal override.
    - The optional default argument supplied to the `env_var` Jinja function in the code. _Lowest precedence_
