@@ -172,7 +172,7 @@ This section outlines the considerations and methods to set up your dbt Cloud en
 - [CI/CD setup](/guides/core-to-cloud-1?step=8#cicd-set-up)
 
 ### dbt Cloud environments
-To use the [dbt Cloud's scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This would be the [deployment](/docs/deploy/deploy-environments) environment. You can set up multiple environments for different stages of your deployment pipeline, such as development, staging/QA, and production.
+To use the [dbt Cloud's scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This is the [deployment](/docs/deploy/deploy-environments) environment. You can set up multiple environments for different stages of your deployment pipeline, such as development, staging/QA, and production.
 
 ### Initial setup steps
 1. **dbt Core version** &mdash; In your environment settings, configure dbt Cloud with the same dbt Core version.
