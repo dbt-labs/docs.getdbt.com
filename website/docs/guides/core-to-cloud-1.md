@@ -22,7 +22,7 @@ dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, dep
   
   Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
 
-- dbt Core is an open-source tool that enables data teams to transform data following analytics engineering best practices using a command line interface. It must be self-hosted and maintained.
+dbt Core is an open-source tool that enables data teams to transform data following analytics engineering best practices using a command line interface. It must be self-hosted and maintained.
 
 ### What you'll learn
 
