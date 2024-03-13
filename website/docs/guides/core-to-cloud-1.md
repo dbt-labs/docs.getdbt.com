@@ -206,7 +206,7 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 
 ## Models configuration
 
-In this section, you’ll be able to validate whether your models run or compile correctly in your development tool of choice: [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
+In this section, you’ll be able to validate whether your models run or compile correctly in your development tool of choice: The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
 
 You’ll want to make sure you set up your [development environment and credentials](#developer-set-up).
 
