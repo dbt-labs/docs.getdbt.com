@@ -12,7 +12,7 @@ recently_updated: true
 ---
 ## Introduction
 
-Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed service.
+Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, deploy, and explore data products using a single, fully managed service. It also supports: 
 - The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line with [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for development
@@ -39,7 +39,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 
 ## Prerequisites
 
-- You have an existing dbt Core project connected to a data platform and Git repository.
+- You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
 - You are dbt version 1.0 or later.
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
@@ -59,15 +59,15 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 3. Configure [Single Sign-On (SSO)](/docs/cloud/manage-access/sso-overview) or [Role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) for easy and secure access. <Lifecycle status='enterprise' />
    - This removes the need to save passwords and secret environment variables locally.
 
-4. In **Account settings**, switch on [partial parsing](/docs/deploy/deploy-environments#partial-parsing) to only reparse changed files, saving time.
+4. In **Account settings**, enable [partial parsing](/docs/deploy/deploy-environments#partial-parsing) to only reparse changed files, saving time.
 
 5. In **Account settings**, enable [Git repo caching](/docs/deploy/deploy-environments#git-repository-caching) to ensure job reliability, protection from third-party outages, and performance. <Lifecycle status='enterprise' />
 
 ## Data platform setup
 
-This section explains the considerations and methods to connect your data platform to dbt Cloud.
+This section outlines the considerations and methods to connect your data platform(s) to dbt Cloud.
 
-1. Set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/guides/core-to-cloud-1?step=4) in dbt Cloud. dbt Cloud can connect with a variety of data platform providers including:
+1. Set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/docs/build/environment-variables) in dbt Cloud. dbt Cloud can connect with a variety of data platform providers including:
    - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
    - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
    - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
@@ -85,9 +85,9 @@ This section explains the considerations and methods to connect your data platfo
 
 ## Git setup
 
-Your existing dbt project source code should live in a Git repository. In this step, you should connect your existing dbt project source code from Git to dbt Cloud.
+Your existing dbt project source code should live in a Git repository. In this section, you will connect your existing dbt project source code from Git to dbt Cloud.
 
-1. Ensure your dbt project is in a Git repository
+1. Ensure your dbt project is in a Git repository.
 
 2. Once you’ve set up a dbt Cloud account, you can [connect and configure Git](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud to connect your Git repository:
    - Connect with one of the [native integrations](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud (such as GitHub, GitLab, and Azure DevOps).
