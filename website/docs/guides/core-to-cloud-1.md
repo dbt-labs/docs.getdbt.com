@@ -226,7 +226,7 @@ Congratulations on completing the first part of your move to dbt Cloud 🎉!
 
 You should have learned:
 - How to set up your dbt Cloud account
-- Connect your data platform and Git repository
+- How to connect your data platform and Git repository
 - Configure your development, orchestration, and CI/CD environments
 You’ve set up your models and are ready to run your first job in dbt Cloud.
 
