@@ -16,7 +16,7 @@ meta:
   config_page: '/reference/resource-configs/teradata-configs'
 ---
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for the repository listed below.
+Some core functionality may be limited. If you're interested in contributing, check out the source code in the repository listed in the next section.
 
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
@@ -166,9 +166,9 @@ Refer to [Model contracts](/docs/collaborate/govern/model-contracts) for more in
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
 
 ### Cross DB macros
-Starting with release 1.3, some macros were migrated from [teradata-dbt-utils](https://github.com/Teradata/dbt-teradata-utils) dbt package to the connector. See the table below for the macros supported from the connector.
+Starting with release 1.3, some macros were migrated from [teradata-dbt-utils](https://github.com/Teradata/dbt-teradata-utils) dbt package to the connector. Refer the following table for the macros supported by the connector.
 
-For using cross DB macros, teradata-utils as a macro namespace will not be used, as cross DB macros have been migrated from teradata-utils to Dbt-Teradata.
+For using cross-DB macros, teradata-utils as a macro namespace will not be used, as cross-DB macros have been migrated from teradata-utils to Dbt-Teradata.
 
 
 #### Compatibility
@@ -229,7 +229,10 @@ For using cross DB macros, teradata-utils as a macro namespace will not be used,
 
 ### Transaction mode
 Both ANSI and TERA modes are now supported in dbt-teradata. TERA mode's support is introduced with dbt-teradata 1.7.1, it is an initial implementation.
-IMPORTANT NOTE: This is an initial implementation of the TERA transaction mode and may not support some use cases. We strongly advise validating all records or transformations utilizing this mode to preempt any potential anomalies or errors
+
+:::info TERA transaction mode
+This is an initial implementation of the TERA transaction mode and may not support some use cases. We highly recommend validating all records or transformations using this mode to avoid unexpected issues or errors.
+:::
 
 ## Credits
 
