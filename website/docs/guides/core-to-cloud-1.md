@@ -79,7 +79,6 @@ This section explains the considerations and methods to connect your data platfo
 3. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform’s SSO.  <Lifecycle status='enterprise' />
 
 ## Git setup
-_*Time to complete: Approximately 10 to 30 mins_
 
 Your existing dbt project source code should live in a Git repository. In this step, you should connect your existing dbt project source code from Git to dbt Cloud.
 
