@@ -53,7 +53,6 @@ function useDocTOC() {
     const headingsToFilter = await getElements(
       ".tabs-container h2, .tabs-container h3"
     );
-    console.log("headingsToFilter", headingsToFilter);
     
     // if headings exist on page
     // compare against toc
