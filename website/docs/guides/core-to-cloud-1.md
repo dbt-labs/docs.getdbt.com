@@ -59,28 +59,6 @@ This guide outlines what you need to do in order to move from dbt Core to dbt Cl
 
 5. In **Account settings**, enable [Git repo caching](/docs/deploy/deploy-environments#git-repository-caching) to ensure job reliability, protection from third-party outages, and performance. <Lifecycle status='enterprise' />
 
-## Environment variables
-
-1. In dbt Cloud, [environment variables](/docs/build/environment-variables) are managed with a clear order of precedence, allowing users to define values at four levels (highest to lowest order of precedence):
-   - The job level (job override) or in the IDE for an individual developer (personal override). _(Highest precedence)_
-   - The environment level, which can be overridden by the job level or personal override.
-   - A project-wide default value, which can be overridden by the environment level, job level, or personal override.
-   - The optional default argument supplied to the `env_var` Jinja function in code. _(Lowest precedence)_
-  
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
-
-2. dbt Cloud secures environment variables, offering additional measures for sensitive values, such as prefixing keys with `DBT_ENV_SECRET_` to obscure them in logs and the user interface (UI).
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
-
-3. Ensure that all [environment variables](/docs/build/environment-variables) start with `DBT_` or `DBT_ENV_SECRET_`. If your dbt Core environment variables don’t follow this naming convention, perform a “find and replace” in your project to make sure all references to these environment variables contain the proper naming conventions.
-
-### How to set environment variables in dbt Cloud
-
-- To set these variables for an entire project or specific environments, navigate to **Deploy** > **Environments** > **Environment variables** tab.
-- To set these variables at the job level, navigate to **Deploy** > **Jobs** > **Select your job** > **Settings** > **Advanced settings**.
-- To set these variables at the personal override level, navigate to **Profile Settings** > **Credentials** > **Select your project** > **Environment variables**.
-
 ## Data platform setup
 _*Time to complete: Approximately 10-30 mins_
 
@@ -152,6 +130,38 @@ This difference streamlines the process of switching between development, stagin
 
 ### dbt Cloud commands
 7. Review the [dbt commands](/reference/dbt-commands) supported for dbt Cloud development. For example, `dbt debug` isn’t needed in dbt Cloud since the UI displays logs for your viewing.
+
+## Environment variables
+
+This section will help you understand how to manage environment variables in dbt Cloud and how to set them up for your project. The following categories are covered in this section:
+- [Environment variables in dbt Cloud](/guides/core-to-cloud-1?step=7#dbt-cloud-environment-variables)
+- [dbt Cloud environment variables order of precedence](/guides/core-to-cloud-1?step=7#dbt-cloud-environment-variables-order-of-precedence)
+- [Set environment variables in dbt Cloud](/guides/core-to-cloud-1?step=7#set-environment-variables-in-dbt-cloud)
+
+In dbt Core, environment variables, or the [`env_var` function](/reference/dbt-jinja-functions/env_var), are defined in the `profiles.yml` file.
+In dbt Cloud, you can set [environment variables](/docs/build/environment-variables) in the dbt Cloud user interface (UI). Read [Set up environment variables](#set-environment-variables-in-dbt-cloud) for more info.
+
+### dbt Cloud environment variables
+  - dbt Cloud environment variables must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET_`).
+  - If your dbt Core environment variables don’t follow this naming convention, perform a “find and replace” in your project to make sure all references to these environment variables contain the proper naming conventions.
+- dbt Cloud secures environment variables, offering additional measures for sensitive values, such as prefixing keys with `DBT_ENV_SECRET_` to obscure them in logs and the UI.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
+
+### dbt Cloud environment variables order of precedence
+Environment variables in dbt Cloud are managed with a clear order of precedence, allowing users to define values at four levels (highest to lowest order of precedence):
+   - The job level (job override) or in the IDE for an individual developer (personal override). _(Highest precedence)_
+   - The environment level, which can be overridden by the job level or personal override.
+   - A project-wide default value, which can be overridden by the environment level, job level, or personal override.
+   - The optional default argument supplied to the `env_var` Jinja function in code. _(Lowest precedence)_
+  
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
+
+### How to set environment variables in dbt Cloud
+
+- To set these variables for an entire project or specific environments, navigate to **Deploy** > **Environments** > **Environment variables** tab.
+- To set these variables at the job level, navigate to **Deploy** > **Jobs** > **Select your job** > **Settings** > **Advanced settings**.
+- To set these variables at the personal override level, navigate to **Profile Settings** > **Credentials** > **Select your project** > **Environment variables**.
 
 ## Orchestration setup
 _*Time to complete: Approximately 30 mins to 1 hour_
