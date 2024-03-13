@@ -222,7 +222,7 @@ import ConfettiTrigger from '/src/components/confetti/index.js';
 
 <ConfettiTrigger>
 
-Congrats on completing the first part of your move to dbt Cloud 🎉! 
+Congratulations on completing the first part of your move to dbt Cloud 🎉! 
 
 You should have learned:
 - How to set up your dbt Cloud account
