@@ -160,7 +160,7 @@ Constraint support and enforcement in dbt-teradata
 | unique	      | ✅ Supported	 | ✅ Enforced |
 | check	          | ✅ Supported	 | ✅ Enforced |
 
-To find more on model contracts please follow dbt documentations https://docs.getdbt.com/docs/collaborate/govern/model-contracts
+Refer to [Model contracts](/docs/collaborate/govern/model-contracts) for more info.
 
 ## Support for `dbt-utils` package
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
