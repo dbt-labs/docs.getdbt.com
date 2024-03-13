@@ -134,14 +134,14 @@ This difference streamlines the process of switching between development, stagin
 ## Environment variables
 
 This section will help you understand how to manage environment variables in dbt Cloud and how to set them up for your project. The following categories are covered in this section:
-- [Environment variables in dbt Cloud](/guides/core-to-cloud-1?step=7#dbt-cloud-environment-variables)
+- [Environment variables in dbt Cloud](/guides/core-to-cloud-1?step=7#environment-variables-in-dbt-cloud)
 - [dbt Cloud environment variables order of precedence](/guides/core-to-cloud-1?step=7#dbt-cloud-environment-variables-order-of-precedence)
 - [Set environment variables in dbt Cloud](/guides/core-to-cloud-1?step=7#set-environment-variables-in-dbt-cloud)
 
 In dbt Core, environment variables, or the [`env_var` function](/reference/dbt-jinja-functions/env_var), are defined in the `profiles.yml` file.
 In dbt Cloud, you can set [environment variables](/docs/build/environment-variables) in the dbt Cloud user interface (UI). Read [Set up environment variables](#set-environment-variables-in-dbt-cloud) for more info.
 
-### dbt Cloud environment variables
+### Environment variables in dbt Cloud
   - dbt Cloud environment variables must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET_`).
   - If your dbt Core environment variables don’t follow this naming convention, perform a “find and replace” in your project to make sure all references to these environment variables contain the proper naming conventions.
 - dbt Cloud secures environment variables, offering additional measures for sensitive values, such as prefixing keys with `DBT_ENV_SECRET_` to obscure them in logs and the UI.
@@ -157,7 +157,7 @@ Environment variables in dbt Cloud are managed with a clear order of precedence,
   
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
 
-### How to set environment variables in dbt Cloud
+### Set environment variables in dbt Cloud
 
 - To set these variables for an entire project or specific environments, navigate to **Deploy** > **Environments** > **Environment variables** tab.
 - To set these variables at the job level, navigate to **Deploy** > **Jobs** > **Select your job** > **Settings** > **Advanced settings**.
