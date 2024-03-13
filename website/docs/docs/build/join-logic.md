@@ -89,7 +89,8 @@ MetricFlow allows users to join measures and dimensions across a graph of entiti
 MetricFlow can join up to three tables, supporting multi-hop joins with a limit of two hops. This does the following:
 - Enables complex data analysis without ambiguous paths.
 - Supports navigating through data models, like moving from `orders` to `customers` to `country` tables.
-- While direct three-hop paths are limited to prevent confusion from multiple routes to the same data, MetricFlow does allow joining more than three tables if the joins don’t exceed two hops to reach a dimension. 
+
+While direct three-hop paths are limited to prevent confusion from multiple routes to the same data, MetricFlow does allow joining more than three tables if the joins don’t exceed two hops to reach a dimension. 
 
 For example, if you have two models, `country` and `region`, where customers are linked to countries, which in turn are linked to regions, you can join all of them in a single SQL query and can dissect `orders` by `customer__country_country_name` but not by `customer__country__region_name`.
 
