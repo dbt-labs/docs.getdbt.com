@@ -17,7 +17,7 @@ Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by
 - dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, deploy, and explore data products using a single, fully managed service. It also supports: 
   - The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line with [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for development
   - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
-  - Domain ownership of data with multi-project “[dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro)” setups
+  - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
   - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
   
   Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
