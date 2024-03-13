@@ -46,7 +46,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the service is available.
+dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 3-5 business days for this process to complete. Support will contact you when the service is available.
 
 ## Configuring Redshift Interface-type PrivateLink
 
@@ -102,7 +102,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the endpoint is available.
+dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 3-5 business days for this process to complete. Support will contact you when the endpoint is available.
 
 ## Create Connection in dbt Cloud
 

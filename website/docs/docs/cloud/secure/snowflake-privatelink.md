@@ -42,7 +42,7 @@ Subject: New Multi-Tenant PrivateLink Request
 ```
 _*By default dbt Cloud will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the endpoint is available. 
+dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 3-5 business days for this process to complete. Support will contact you when the endpoint is available. 
 
 ## Create Connection in dbt Cloud
 
