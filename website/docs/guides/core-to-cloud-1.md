@@ -200,7 +200,7 @@ Building a custom solution to efficiently check code upon pull requests is compl
 
 This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool for data practitioners.
 
-1. Set up an integration with a native git application (such as Azure DevOps, GitHub, GitLab) and a CI environment in dbt Cloud.
+1. Set up an integration with a native Git application (such as Azure DevOps, GitHub, GitLab) and a CI environment in dbt Cloud.
 2. Create [a CI/CD job](/docs/deploy/ci-jobs) to optimize workflows.
 3. Run your jobs in a production environment to fully implement CI/CD. Future pull requests will also leverage the last production runs to compare against.
 
