@@ -210,7 +210,7 @@ In this section, you’ll be able to validate whether your models run or compile
 
 You’ll want to make sure you set up your [development environment and credentials](#developer-set-up).
 
-1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project and ensure your project is set up correctly and you’re able to run commands. This means:
+1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project and ensure your project is set up correctly and you’re able to run commands. This will:
    - Make sure your project compiles correctly.
    - Run a few models in the dbt Cloud IDE or dbt Cloud CLI to ensure you’re experiencing accurate results in development.
 
