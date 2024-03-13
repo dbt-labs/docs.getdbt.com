@@ -7,11 +7,11 @@ id: "unit-tests"
 keywords:
   - unit test, unit tests, unit testing, dag
 ---
-:::note closed beta
+:::note beta
 
-Support for unit testing dbt models is available to dbt Cloud customers who have chosen to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). This is currently in closed beta, starting with select customers and rolling out to wider availability through February and March.
+Support for unit testing dbt models is available to dbt Cloud customers who have chosen to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). This feature is currently available in beta, and supports all dbt-Labs-maintained adapters, with more adapter availability rolling out through March.
 
-For dbt Core, unit tests will be available in v1.8, planned for late April 2024. The v1.8.0-b1 release of `dbt-core` & dbt Labs-maintained adapters is planned for February 28.
+For dbt Core, the v1.8.0-b1 release of `dbt-core` and dbt Labs-maintained adapters are available now.
 
 :::
 
