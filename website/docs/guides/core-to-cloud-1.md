@@ -58,7 +58,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 3. Configure [Single Sign-On (SSO)](/docs/cloud/manage-access/sso-overview) or [Role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) for easy and secure access. <Lifecycle status='enterprise' />
    - This removes the need to save passwords and secret environment variables locally.
 
-4. In **Account settings**, switch on [partial parsing](/docs/deploy/deploy-environments#partial-parsing) to only reparse changed files, saving time.
+4. In **Account settings**, enable [partial parsing](/docs/deploy/deploy-environments#partial-parsing) to only reparse changed files, saving time.
 
 5. In **Account settings**, enable [Git repo caching](/docs/deploy/deploy-environments#git-repository-caching) to ensure job reliability, protection from third-party outages, and performance. <Lifecycle status='enterprise' />
 
