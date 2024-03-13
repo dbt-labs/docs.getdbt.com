@@ -4,6 +4,7 @@ id: core-to-cloud-1
 description: "Learn how to move from dbt Core to dbt Cloud and what you need to get started."
 hoverSnippet: "Use this guide to learn how to move from dbt Core to dbt Cloud."
 icon: 'guides'
+time_to_complete: 'Total estimated time: 3-4 hours'
 hide_table_of_contents: true
 tags: ['Migration','dbt Core','dbt Cloud']
 level: 'Intermediate'
@@ -45,7 +46,6 @@ This guide outlines what you need to do in order to move from dbt Core to dbt Cl
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
 ## Account setup
-*Time to complete: Approximately 30 mins to 1 hour*
 
 1. [Create your dbt Cloud account](https://www.getdbt.com/signup).
 
@@ -59,7 +59,6 @@ This guide outlines what you need to do in order to move from dbt Core to dbt Cl
 5. In **Account settings**, enable [Git repo caching](/docs/deploy/deploy-environments#git-repository-caching) to ensure job reliability, protection from third-party outages, and performance. <Lifecycle status='enterprise' />
 
 ## Data platform setup
-_*Time to complete: Approximately 10-30 mins_
 
 This section explains the considerations and methods to connect your data platform to dbt Cloud.
 
@@ -96,7 +95,6 @@ Your existing dbt project source code should live in a Git repository. In this s
   Set up groups for dbt project access with those configured for repository access to streamline permissions.
 
 ## Developer setup
-_*Time to complete: Approximately 30 mins to 1 hour_
 
 This section highlights the development configurations you’ll need for your dbt Cloud project. The following categories are covered in this section:
 
@@ -161,7 +159,6 @@ Environment variables in dbt Cloud are managed with a clear order of precedence,
 - To set these variables at the personal override level, navigate to **Profile Settings** > **Credentials** > **Select your project** > **Environment variables**.
 
 ## Orchestration setup
-_*Time to complete: Approximately 30 mins to 1 hour_
 
 This section outlines the considerations and methods to set up your dbt Cloud environments and jobs for orchestration. The following categories are covered in this section:
 
@@ -204,7 +201,6 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 3. Run your jobs in a production environment to fully implement CI/CD. Future pull requests will also leverage the last production runs to compare against.
 
 ## Models configuration
-_*Time to complete: Approximately 30 mins_
 
 In this section, you’ll be able to validate whether your models run or compile correctly in your development tool of choice: [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
 
