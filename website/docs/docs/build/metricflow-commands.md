@@ -156,8 +156,10 @@ Options:
                       [required]
   --end-time TEXT     Optional iso8601 timestamp to constraint the end time of
                       the data (inclusive)
+                      *Not available in dbt Cloud yet
   --start-time TEXT   Optional iso8601 timestamp to constraint the start time
                       of the data (inclusive)
+                      *Not available in dbt Cloud yet
   --help              Show this message and exit.
 ```
 
@@ -268,10 +270,12 @@ Options:
                            ds, org.
 
   --end-time TEXT          Optional iso8601 timestamp to constraint the end
-                           time of the data (inclusive)
+                           time of the data (inclusive).
+                           *Not available in dbt Cloud yet 
 
   --start-time TEXT        Optional iso8601 timestamp to constraint the start
                            time of the data (inclusive)
+                           *Not available in dbt Cloud yet
 
   --where TEXT             SQL-like where statement provided as a string. For
                            example: --where "revenue > 100". To add a dimension filter to 
@@ -306,7 +310,7 @@ Options:
 
 ### Query examples
 
-The following tabs present various different types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
+The following tabs present various types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
 
 <Tabs>
 
@@ -428,11 +432,14 @@ mf query --metrics order_total --group-by metric_time --where "{{ Dimension('ord
 
 To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
 
-**Query**
-```bash
+
+<!--
+bash not support in cloud yet
 # In dbt Cloud
 dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
-
+-->
+**Query**
+```bash
 # In dbt Core
 mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 ```

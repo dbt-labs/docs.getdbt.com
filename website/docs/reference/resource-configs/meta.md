@@ -324,7 +324,7 @@ select 1 as id
 
 ### Assign owner in the dbt_project.yml as a config property
 
-<File name='models/my_model.sql'>
+<File name='dbt_project.yml'>
 
 ```yml
 models:
