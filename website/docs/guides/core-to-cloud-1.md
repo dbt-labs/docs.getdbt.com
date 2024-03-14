@@ -109,7 +109,7 @@ This section highlights the development configurations you’ll need for your db
 
 ### dbt Cloud environments
 
-The concept of a `target` in dbt Core is the same as a [dbt Cloud environment](/docs/environments-in-dbt).
+The concept of an [environment](/docs/environments-in-dbt) in dbt Cloud is the same as a `target` in dbt Core.
 
 The primary difference between a dbt Cloud environment and a `target` in dbt Core is that you can make these configurations through the dbt Cloud UI instead of within the `profiles.yml` file.
 
