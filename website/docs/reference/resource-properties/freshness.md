@@ -45,12 +45,12 @@ If a source has a `freshness:` block, dbt will attempt to calculate freshness fo
 - If a `loaded_at_field` is provided, dbt will calculate freshness via a select query (behavior prior to v1.7).
 - If a `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new in v1.7 on supported adapters).
 
-Currently, calculating freshness from warehouse metadata tables is supported on:
+Currently, calculating freshness from warehouse metadata tables is supported on the following adapters:
 - [Snowflake](/reference/resource-configs/snowflake-configs)
-
-Support is coming soon to the following adapters:
 - [Redshift](/reference/resource-configs/redshift-configs)
 - [BigQuery](/reference/resource-configs/bigquery-configs)
+- 
+Support is coming soon to the following adapter:
 - [Spark](/reference/resource-configs/spark-configs)
 
 Freshness blocks are applied hierarchically:
