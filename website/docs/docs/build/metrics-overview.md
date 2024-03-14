@@ -22,7 +22,7 @@ The keys for metrics definitions are:
 | `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `config` | Provide the specific configurations for your metric.   | Optional |
-| `config::meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
+| `config:meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 
