@@ -21,16 +21,17 @@ These flags can _only_ be set in `dbt_project.yml`. They configure behaviors clo
 ## Behaviors
 
 ### `source_freshness_run_project_hooks`
-- Should the 'dbt source freshness' command include [on-run-start / on-run-end hooks](/reference/project-configs/on-run-start-on-run-end)?
-- Planned introduction in v1.8, with default 'True'
-- Planned removal in v1.9
 
-If you have specific project `on-run-start` / `on-run-end` hooks that should not run before/after `source freshness` command, you can add a conditional check to those hooks:
+If you have specific project [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end) hooks that should not run before/after `source freshness` command, you can add a conditional check to those hooks:
+
+<File name='dbt_project.yml'>
+
 ```yaml
-# dbt_project.yml
-
 on-run-start:
   - '{{ ... if flags.WHICH != 'freshness' }}'
 ```
+</File>
+
+You can configure the `dbt source freshness` command to include on-run-start / on-run-end hooks in v1.8 with a planned removal in v1.9. The default value is `True`.
 
 In the meantime, you can set `source_freshness_run_project_hooks: False` to preserve the legacy behavior.
