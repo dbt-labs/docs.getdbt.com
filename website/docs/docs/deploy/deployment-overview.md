@@ -16,7 +16,7 @@ dbt Cloud offers the easiest and most reliable way to run your dbt project in pr
 - Identify the root cause of failures in deployment environments
 - Maintain high-quality code and data in production
 - Gain visibility into the health of deployment jobs, models, and tests
-- Uses [exports](/docs/use-dbt-semantic-layer/exports) to materialize [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
+- Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
 
