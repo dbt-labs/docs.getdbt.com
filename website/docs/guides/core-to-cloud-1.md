@@ -52,9 +52,11 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 
 ## Account setup
 
+This section outlines the steps to set up your dbt Cloud account and configure it for your team.
+
 1. [Create your dbt Cloud account](https://www.getdbt.com/signup).
 
-2. Learn about [access](/docs/cloud/manage-access/about-user-access) and [invite users](/docs/cloud/manage-access/about-user-access) to your dbt Cloud account and dbt Cloud project.
+2. Provide user [access](/docs/cloud/manage-access/about-user-access) and [invite users](/docs/cloud/manage-access/about-user-access) to your dbt Cloud account and project.
 
 3. Configure [Single Sign-On (SSO)](/docs/cloud/manage-access/sso-overview) or [Role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) for easy and secure access. <Lifecycle status='enterprise' />
    - This removes the need to save passwords and secret environment variables locally.
@@ -65,9 +67,9 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 
 ## Data platform setup
 
-This section outlines the considerations and methods to connect your data platform(s) to dbt Cloud.
+This section outlines the considerations and methods to connect your data platform to dbt Cloud.
 
-1. Set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/docs/build/environment-variables) in dbt Cloud. dbt Cloud can connect with a variety of data platform providers including:
+1. In dbt Cloud, set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/docs/build/environment-variables). dbt Cloud can connect with a variety of data platform providers including:
    - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
    - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
    - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
@@ -81,6 +83,9 @@ This section outlines the considerations and methods to connect your data platfo
 2. You can verify your data platform connections by clicking the **Test connection** button in your deployment and development credentials settings.
 
 ### Additional configuration
+
+Explore these additional configurations to optimize your data platform setup further:
+
 1. Use [OAuth connections](/docs/cloud/manage-access/set-up-snowflake-oauth), which enables secure authentication using your data platform’s SSO.  <Lifecycle status='enterprise' />
 
 ## Git setup
@@ -94,6 +99,8 @@ Your existing dbt project source code should live in a Git repository. In this s
    - [Import a Git repository](/docs/cloud/git/import-a-project-by-git-url) from any valid Git URL that points to a dbt project.
 
 ### Additional configuration
+Explore these additional configurations to optimize Git setup further:
+
 1. Log into dbt Cloud using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status='enterprise' />
   
   Set up groups for dbt project access with those configured for repository access to streamline permissions.
@@ -126,10 +133,11 @@ This difference streamlines the process of switching between development, stagin
 4. **Development tools** &mdash; Set up your development workspace with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to edit and develop your dbt code in your tool of choice.
 
 ### Additional configuration
+Explore these additional configurations to optimize your developer setup further:
 1. **Custom target names** &mdash; If you’re using a [`custom target.name`](/reference/dbt-jinja-functions/target) in your project, we recommend you set them using [environment variables](/docs/build/environment-variables). Alternatively, you can update it at the developer credentials level.
 
 ### dbt Cloud commands
-- Review the [dbt commands](/reference/dbt-commands) supported for dbt Cloud development. For example, `dbt debug` isn’t needed in dbt Cloud since the UI displays logs for your viewing.
+1. Review the [dbt commands](/reference/dbt-commands) supported for dbt Cloud development. For example, `dbt debug` isn’t needed in dbt Cloud since the UI displays logs for your viewing.
 
 ## Environment variables
 This section will help you understand how to set up and manage dbt Cloud environment variables for your project. The following categories are covered:
@@ -182,17 +190,19 @@ To use the [dbt Cloud's job scheduler](/docs/deploy/job-scheduler), set up one e
    - Note that alongside [jobs in dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
 
 ### Additional configuration
+Explore these additional configurations to optimize your dbt Cloud orchestration setup further:
+
 1. **Custom target names** &mdash; Set a `custom target.name` for every single [corresponding dbt Cloud job](/docs/build/custom-target-names). We recommend modifying the code to use [environment variables](/docs/build/environment-variables) instead since those can be set at the environment level.
 
-- **dbt commands** &mdash; Add any relevant [dbt commands](/docs/deploy/job-commands) to execute your dbt Cloud jobs runs.
+2. **dbt commands** &mdash; Add any relevant [dbt commands](/docs/deploy/job-commands) to execute your dbt Cloud jobs runs.
 
-- **Notifications** &mdash; Set up [notifications](/docs/deploy/job-notifications) by configuring email and Slack alerts to monitor your jobs.
+3. **Notifications** &mdash; Set up [notifications](/docs/deploy/job-notifications) by configuring email and Slack alerts to monitor your jobs.
 
-- **Monitoring tools** &mdash; Use [monitoring tools](/docs/deploy/monitor-jobs) like run history, job retries, job chaining, dashboard status tiles, and more for a seamless orchestration experience.
+4. **Monitoring tools** &mdash; Use [monitoring tools](/docs/deploy/monitor-jobs) like run history, job retries, job chaining, dashboard status tiles, and more for a seamless orchestration experience.
 
-- **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [dbt Cloud APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="team,enterprise" />
+5. **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [dbt Cloud APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="team,enterprise" />
 
-- **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/collaborate/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view resources and its metadata in dbt Explorer. Running `dbt compile` will not update resources and its metadata. <Lifecycle status="team,enterprise" />
+6. **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/collaborate/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view resources and its metadata in dbt Explorer. Running `dbt compile` will not update resources and its metadata. <Lifecycle status="team,enterprise" />
 
 ### CI/CD setup
 
