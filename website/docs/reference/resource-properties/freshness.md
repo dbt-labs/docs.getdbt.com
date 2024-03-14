@@ -49,12 +49,12 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [Snowflake](/reference/resource-configs/snowflake-configs)
 - [Redshift](/reference/resource-configs/redshift-configs)
 - [BigQuery](/reference/resource-configs/bigquery-configs)
-- 
+
 Support is coming soon to the following adapter:
 - [Spark](/reference/resource-configs/spark-configs)
 
 Freshness blocks are applied hierarchically:
-- a `freshness` and `loaded_at_field` property added to a source will be applied to all all tables defined in that source
+- a `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source
 - a `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
 
 This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
@@ -72,7 +72,7 @@ To exclude a source from freshness calculations, you have two options:
 Additionally, the `loaded_at_field` is required to calculate freshness for a table. If a `loaded_at_field` is not provided, then dbt will not calculate freshness for the table.
 
 Freshness blocks are applied hierarchically:
-- a `freshness` and `loaded_at_field` property added to a source will be applied to all all tables defined in that source
+- a `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source
 - a `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
 
 This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
@@ -117,7 +117,7 @@ This filter *only* applies to dbt's source freshness queries - it will not impac
 
 This is particularly useful if:
 - You are using BigQuery and your source tables are [partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
-- You are using Snowflake, Databricks or Spark with large tables, and this results in a performance benefit
+- You are using Snowflake, Databricks, or Spark with large tables, and this results in a performance benefit
 
 
 ## Examples
