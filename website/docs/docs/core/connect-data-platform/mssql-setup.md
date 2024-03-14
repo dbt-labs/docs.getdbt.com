@@ -152,7 +152,7 @@ you might opt to use one of the authentication methods below for Azure SQL.
 
 The following additional methods are available to authenticate to Azure SQL products:
 
-* Microsoft Entra ID username and password
+* Microsoft Entra ID (formerly Azure AD) username and password
 * Service principal
 * Managed Identity
 * Environment-based authentication

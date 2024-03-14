@@ -86,7 +86,7 @@ SQL Server and windows authentication are not supported by Microsoft Fabric Syna
 
 ### Microsoft Entra ID authentication
 
-Microsoft Entra ID authentication is a default authentication mechanism in Microsoft Fabric Synapse Data Warehouse.
+Microsoft Entra ID (formerly Azure AD) authentication is a default authentication mechanism in Microsoft Fabric Synapse Data Warehouse.
 
 The following additional methods are available to authenticate to Azure SQL products:
 
