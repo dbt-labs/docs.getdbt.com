@@ -1,5 +1,5 @@
 name: dbt Core - Request changes to docs
-description: File a docs update request that is not already tracked in Orch team's Release Plans (Notion database).
+description: "File a docs update or feature request related to dbt Core content."
 title: "[Core] <title>"
 labels: ["content","dbt Core"]
 body:
