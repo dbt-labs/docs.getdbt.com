@@ -77,7 +77,7 @@ To define a saved query, refer to the following parameters:
 </VersionBlock> 
 
 <!-- For versions 1.7 and lower-->
-<VersionBlock lasttVersion="1.7">
+<VersionBlock lastVersion="1.7">
 
 <File name='semantic_model.yml'>
 
