@@ -48,8 +48,8 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Materialize queries with exports"
-    body="Use exports to materialize commonly used queries directly within your data platform, on a schedule."
+    title="Write queries with exports"
+    body="Use exports to write commonly used queries directly within your data platform, on a schedule."
     link="/docs/use-dbt-semantic-layer/exports"
     icon="dbt-bit"/>
 
