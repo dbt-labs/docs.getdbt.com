@@ -40,7 +40,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 ## Prerequisites
 
 - You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
-- You are dbt version 1.0 or later.
+- You are using dbt version 1.0 or later.
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ### Related docs
@@ -113,7 +113,7 @@ The concept of an [environment](/docs/environments-in-dbt) in dbt Cloud is the s
 
 The primary difference between a dbt Cloud environment and a `target` in dbt Core is that you can make these configurations through the dbt Cloud UI instead of within the `profiles.yml` file.
 
-This difference streamlines the process of switching between development, staging, and production contexts, removing the need to manually edit the `profiles.yml` file. dbt Cloud environments also integrate with additional features such as job scheduling, version control, and more, making it easier to manage the full lifecycle of your dbt projects within a single platform. You can [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in dbt Cloud.
+This difference streamlines the process of switching between development, staging, and production contexts, removing the need to manually edit the `profiles.yml` file. dbt Cloud environments also integrate with additional features such as job scheduling, version control, and more &mdash; making it easier to manage the full lifecycle of your dbt projects within a single platform. You can [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in dbt Cloud.
 
 ### Initial setup steps
 1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
