@@ -1,5 +1,6 @@
 name: "Propose new content"
 description: "For proposing new content, such as a new guide or a new page."
+title: "[idea] <title>"
 labels: ["content","idea"]
 body:
   - type: markdown
