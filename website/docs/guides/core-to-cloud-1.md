@@ -14,7 +14,7 @@ recently_updated: true
 
 Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
 - The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line with [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for development
 - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
 - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
@@ -61,7 +61,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 
 4. In **Account settings**, enable [partial parsing](/docs/deploy/deploy-environments#partial-parsing) to only reparse changed files, saving time.
 
-5. In **Account settings**, enable [Git repo caching](/docs/deploy/deploy-environments#git-repository-caching) to ensure job reliability, protection from third-party outages, and performance. <Lifecycle status='enterprise' />
+5. In **Account settings**, enable [Git repo caching](/docs/deploy/deploy-environments#git-repository-caching) for job reliability & third-party outage protection. <Lifecycle status='enterprise' />
 
 ## Data platform setup
 
@@ -89,9 +89,9 @@ Your existing dbt project source code should live in a Git repository. In this s
 
 1. Ensure your dbt project is in a Git repository.
 
-2. In **Account settings**, select **Integrations** and [connect and configure Git](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud to connect your Git repository:
+2. In **Account settings**, select **Integrations**, and [connect and configure Git](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud to connect your Git repository:
    - Connect with one of the [native integrations](/docs/cloud/git/git-configuration-in-dbt-cloud) in dbt Cloud (such as GitHub, GitLab, and Azure DevOps).
-   - [Import a git repository](/docs/cloud/git/import-a-project-by-git-url) from any valid git URL that points to a dbt project.
+   - [Import a Git repository](/docs/cloud/git/import-a-project-by-git-url) from any valid Git URL that points to a dbt project.
 
 ### Additional configuration
 - Log into dbt Cloud using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status='enterprise' />
@@ -172,14 +172,14 @@ This section outlines the considerations and methods to set up your dbt Cloud en
 - [CI/CD setup](/guides/core-to-cloud-1?step=8#cicd-setup)
 
 ### dbt Cloud environments
-To use the [dbt Cloud's scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This is the [deployment](/docs/deploy/deploy-environments) environment. You can set up multiple environments for different stages of your deployment pipeline, such as development, staging/QA, and production.
+To use the [dbt Cloud's job scheduler](/docs/deploy/job-scheduler), set up one environment as the production environment. This is the [deployment](/docs/deploy/deploy-environments) environment. You can set up multiple environments for different stages of your deployment pipeline, such as development, staging/QA, and production.
 
 ### Initial setup steps
 1. **dbt Core version** &mdash; In your environment settings, configure dbt Cloud with the same dbt Core version.
    - Once your full migration is complete, we recommend upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) to always get the latest features and more.
 
-2. **[Configure your jobs](/docs/deploy/deploy-jobs)** &mdash; Create jobs for automated or event-driven dbt jobs. You can use cron execution, manual, pull requests, or API triggers.
-   - Note that alongside [dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
+2. **Configure your jobs** &mdash; [Create jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs) for automated or event-driven dbt jobs. You can use cron execution, manual, pull requests, or API triggers.
+   - Note that alongside [jobs in dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
 
 ### Additional configuration
 - **Custom target names** &mdash; Set a `custom target.name` for every single [corresponding dbt Cloud job](/docs/build/custom-target-names). We recommend modifying the code to use [environment variables](/docs/build/environment-variables) instead since those can be set at the environment level.
@@ -208,13 +208,13 @@ This build-on-PR functionality is a great way to catch bugs before deploying to 
 
 In this section, you’ll be able to validate whether your models run or compile correctly in your development tool of choice: The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
 
-You’ll want to make sure you set up your [development environment and credentials](#developer-set-up).
+You’ll want to make sure you set up your [development environment and credentials](/docs/dbt-cloud-environments#set-developer-credentials).
 
 1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project and ensure your project is set up correctly and you’re able to run commands. This will:
    - Make sure your project compiles correctly.
    - Run a few models in the dbt Cloud IDE or dbt Cloud CLI to ensure you’re experiencing accurate results in development.
 
-2. Once your first job has successfully run in your production environment, use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their [lineage](/terms/data-lineage) to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
+2. Once your first job has successfully run in your production environment, use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
 
 ## What’s next?
 
