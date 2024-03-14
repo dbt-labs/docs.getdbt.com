@@ -33,6 +33,7 @@ body:
         - Who will this new content help?
     validations:
       required: true
+
 - type: textarea
     attributes:
       label: Where would you recommend this content live on the docs.getdbt.com?
