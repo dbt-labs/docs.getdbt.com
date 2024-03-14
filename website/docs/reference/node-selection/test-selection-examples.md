@@ -82,7 +82,7 @@ The `buildable`, `cautious`, and `empty` modes can be useful in environments whe
 
   Restrict to tests that are only for the selected node and ignore all tests from the attached nodes 
 
-To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c` and associated data tests. Here's what it will look like when you execute `dbt run` and then the various indirect selction modes:
+To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c` and associated data tests. Here's what it will look like when you execute `dbt run` vs. `dbt build` with the various indirect selection modes:
 
 <DocCarousel slidesPerView={1}>
 
