@@ -5,7 +5,7 @@ const ConfettiTrigger = ({ children }) => {
   const triggerRef = useRef(null); // Use a ref to refer to the component's section
 
   useEffect(() => {
-    const triggerConfetti = () => {
+    const triggerConfetti = (event?.target?.closest) => {
         if (event.target.closest('a, h2, h3')) {
             // Do nothing if the click is on these elements
             return;
