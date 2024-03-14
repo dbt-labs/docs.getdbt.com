@@ -10,6 +10,7 @@ body:
           * You can submit ideas or suggest changes to our content by opening an [Issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose).
           * Before filing an issue, please [search our current issues](https://github.com/dbt-labs/docs.getdbt.com/issues) to avoid duplicates.
           * Please read the [Contributing guide](https://github.com/dbt-labs/docs.getdbt.com#contributing) if you want to open a pull request. 
+          * If known, add the `priority: high/medium/low` label (Optional)
 
   - type: textarea
     attributes:
