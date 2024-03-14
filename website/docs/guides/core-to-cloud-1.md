@@ -99,7 +99,7 @@ Your existing dbt project source code should live in a Git repository. In this s
    - [Import a Git repository](/docs/cloud/git/import-a-project-by-git-url) from any valid Git URL that points to a dbt project.
 
 ### Additional configuration
-Explore these additional configurations to optimize Git setup further:
+Explore these additional configurations to optimize your Git setup further:
 
 1. Log into dbt Cloud using [OAuth connections](/docs/cloud/git/connect-github) to integrate with your source code platform. It automatically links to the repository using one of the native integrations set at the account level. <Lifecycle status='enterprise' />
   
