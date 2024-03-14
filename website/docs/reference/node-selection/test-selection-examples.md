@@ -62,23 +62,31 @@ The "buildable" and "cautious" modes can be useful in environments when you're o
 
 <VersionBlock firstVersion="1.5" >
 
-These are the modes to configure the behavior when performing indirect selection (with `eager` as the default). Test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
+You can use the following modes to configure the behavior when performing indirect selection (with `eager` as the default). Test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
 
 The `buildable`, `cautious`, and `empty` modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in `eager` mode caused by unbuilt resources. You can also achieve this with [deferral](/reference/node-selection/defer).
 
-* `eager` indirect selection (default):
+#### Eager mode (default)
+
   By default, runs tests if any of their parent nodes are selected, regardless of whether all dependencies are met. This includes ANY tests that reference the selected nodes. Models will be built if they depend on the selected model. In this mode, any tests depending on unbuilt resources will raise an error, helping to identify potential issues.
-* `cautious` indirect selection:
+
+#### Cautious mode
+
   Ensures that tests are executed and models are built only when all necessary dependencies of the selected models are met. Restricts tests to only those that exclusively reference selected nodes. Tests will only be executed if all the nodes they depend on are selected, which prevents tests from running if one or more of its parents nodes are unselected and, consequently, unbuilt.
-* `buildable` indirect selection:
+
+#### Buildable mode
+
   Only runs tests that refer to selected nodes (or their ancestors). Only builds models that rely on the selected nodes (or their ancestors). This mode is slightly more inclusive than "cautious" by including tests whose references are each within the selected nodes (or their ancestors). This mode is useful when a test depends on a model **and** a direct ancestor of that model, like confirming an aggregation has the same totals as its input.
-* `empty` indirect selection:
+
+#### Empty mode
+
   Restrict to tests that are only for the selected node and ignore all tests from the attached nodes 
 
 </VersionBlock>
 
 <!--tabs for eager mode, cautious mode, and buildable mode -->
 <!--Tabs for 1.5+ -->
+### Indirect selection examples
 
 <VersionBlock firstVersion="1.5">
 
@@ -230,7 +238,7 @@ dbt build --select "orders" --indirect-selection=cautious
 
 <!--End of tabs for eager mode, cautious mode, buildable mode, and empty mode -->
 
-### Syntax examples
+### Test selection syntax examples
 
 Setting `indirect_selection` can also be specified in a [yaml selector](/reference/node-selection/yaml-selectors#indirect-selection).
 
