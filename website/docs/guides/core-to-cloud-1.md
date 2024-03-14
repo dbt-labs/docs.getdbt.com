@@ -218,8 +218,6 @@ You’ll want to make sure you set up your [development environment and credenti
 
 ## What’s next?
 
-import ConfettiTrigger from '/src/components/confetti/index.js';
-
 <ConfettiTrigger>
 
 Congratulations on completing the first part of your move to dbt Cloud 🎉!
