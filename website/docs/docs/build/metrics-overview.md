@@ -37,7 +37,7 @@ metrics:
       - specific properties for the metric type
     config: here for `enabled`            ## Optional
       meta:
-        my_meta_config:  "config"         ## Optional
+        my_meta_config:  'config'         ## Optional
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
