@@ -125,7 +125,7 @@ If you've never had a `.dbt` directory, you should perform the following recomme
      mkdir ~/.dbt
      ```
 
-This will create a `.dbt` folder in the current directory.
+This will create a `.dbt` folder in the root directory.
 
 For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. To view hidden files and folders, press Command + Shift + G.
 
