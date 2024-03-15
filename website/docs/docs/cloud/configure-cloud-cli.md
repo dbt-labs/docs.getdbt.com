@@ -114,7 +114,7 @@ As a tip, most command-line tools have a `--help` flag to show available command
 ## FAQs
 <expandable alt_header="How to create a .dbt directory and move your file">
 
-If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have `.dbt` directory, then you should be able to move the `dbt_cloud.yml` file into it.
+If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have a `.dbt` directory, move the `dbt_cloud.yml` file into it.
 
 <Tabs>
 <TabItem value="Create a .dbt directory">
