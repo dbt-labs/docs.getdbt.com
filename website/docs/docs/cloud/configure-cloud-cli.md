@@ -6,7 +6,7 @@ sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
 
-Find out how to configure the dbt Cloud CLI for your dbt Cloud project. Doing so enables you to run dbt commands, like `dbt environment show` to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
+Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt commands, like `dbt environment show` to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
 - Secure credential storage in the dbt Cloud platform.
 - [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
