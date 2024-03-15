@@ -85,7 +85,7 @@ Here are some limitations of the state representation in the Discovery API:
 - Source freshness checks can be out of date (in the applied state) depending on when the command was last run, and it’s not included in `build`. 
 
 
-## Adapter features for applied state
+## Supported features for applied state
 
 The following lists the features available for adapters:
 
