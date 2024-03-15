@@ -73,7 +73,7 @@ The "buildable" and "cautious" modes can be useful in environments when you're o
 
 <VersionBlock firstVersion="1.5">
 
-To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c` and associated data tests. Here's what it will look like when you execute `dbt run` vs. `dbt build` with the various indirect selection modes:
+To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c` and associated data tests. The following illustrates which tests will be run when you execute `dbt run` versus `dbt build` with the various indirect selection modes:
 
 <DocCarousel slidesPerView={1}>
 
