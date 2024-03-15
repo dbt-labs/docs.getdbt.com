@@ -14,7 +14,7 @@ There are two states that can be queried in dbt Cloud:
     
 - **Definition state** depends on what exists in the project given the code defined in it (for example, manifest state), which hasn’t necessarily been executed in the data platform (maybe just the result of `dbt compile`).
 
-### Definition (logical) vs. applied state of dbt nodes
+## Definition (logical) vs. applied state of dbt nodes
 
 In a dbt project, the state of a node _definition_ represents the configuration, transformations, and dependencies defined in the SQL and YAML files. It captures how the node should be processed in relation to other nodes and tables in the data warehouse and may be produced by a `dbt build`, `run`, `parse`, or `compile`. It changes whenever the project code changes. 
 
@@ -57,7 +57,7 @@ query Compare($environmentId: Int!, $first: Int!) {
 
 Most Discovery API use cases will favor the _applied state_ since it pertains to what has actually been run and can be analyzed.
  
-### Affected states by node type
+## Affected states by node type
 
 | Node      | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
 |-----------|------------------|----------------------|--------------------|-----------------------|----------------------|
@@ -72,7 +72,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
 | Group     | No               | No                   | No                 | Downstream            | Definition           |
 | Macro     | Yes              | No                   | No                 | N/A                   | Definition           |
 
- ### Caveats about state/metadata updates 
+## Caveats about state/metadata updates 
 
 Over time, Cloud Artifacts will provide information to maintain state for features/services in dbt Cloud and enable you to access state in dbt Cloud and its downstream ecosystem. Cloud Artifacts is currently focused on the latest production state, but this focus will evolve.
 
@@ -83,3 +83,21 @@ Here are some limitations of the state representation in the Discovery API:
 - Compiled code results may be outdated depending on dbt Cloud run step order and failures.
 - Catalog info can be outdated, or incomplete (in the applied state), based on if/when `docs generate` was last run.
 - Source freshness checks can be out of date (in the applied state) depending on when the command was last run, and it’s not included in `build`. 
+
+
+## Adapter features for applied state
+
+The following lists the features available for adapters:
+
+| Adapter | Catalog | Source freshness |
+|---------|---------|------------------|
+| `dbt-snowflake` | incremental | metadata-based |
+| `dbt-spark` | manual run | `loaded_at` field |
+
+### Catalog 
+
+You can build the catalog incrementally for adapters that support it. This allows for the catalog to be built along with the model, which eliminates the need to run a lengthy `dbt docs generate` at the end of a dbt run. For adapters that don't support incremental catalog generation, you must run `dbt docs generate` to build the catalog.
+
+### Source freshness
+
+You can measure source freshness using the metadata when the adapter supports it. This allows for calculating source freshness without using the `loaded_at` field and without querying the table directly. This is faster and more flexible. You can override this with the `loaded_at` field in the model config. If the adapter doesn't support this, you can still use the `loaded_at` field.
