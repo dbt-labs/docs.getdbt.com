@@ -110,7 +110,6 @@ As a tip, most command-line tools have a `--help` flag to show available command
 - `dbt run --help`: Lists the flags available for the `run` command
 :::
 
-
 ## FAQs
 <expandable alt_header="How to create a .dbt directory and move your file">
 
@@ -139,15 +138,15 @@ For Mac users, since it's a hidden folder (due to the dot prefix), it won't be v
 
 <TabItem value="Move the dbt_cloud.yml file">
 
-**On Mac or Linux**
-- In your command line, use the `mv` command to move your `dbt_cloud.yml` file into the `.dbt` directory. If you've just downloaded the `dbt_cloud.yml` file and it's in your Downloads folder, the command might look something like this:
+### Mac or Linux
+In your command line, use the `mv` command to move your `dbt_cloud.yml` file into the `.dbt` directory. If you've just downloaded the `dbt_cloud.yml` file and it's in your Downloads folder, the command might look something like this:
 
 ```bash
 mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
 ```
 
-**On Windows**
-- In your command line, use the move command. Assuming your file is in the Downloads folder, the command might look like this:
+### Windows
+In your command line, use the move command. Assuming your file is in the Downloads folder, the command might look like this:
 
 ```bash
 move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
@@ -156,6 +155,6 @@ move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
 </TabItem>
 </Tabs>
 
-This command moves the `dbt_cloud.yml` from the Downloads folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
+This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
 
 </expandable>
