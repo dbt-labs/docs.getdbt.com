@@ -6,7 +6,7 @@ sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
 
-Find out how to configure the dbt Cloud CLI for your dbt Cloud project. Doing so enables you to run dbt commands, like `dbt environment show` to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
+Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt commands, like `dbt environment show` to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
 - Secure credential storage in the dbt Cloud platform.
 - [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
@@ -24,7 +24,7 @@ Find out how to configure the dbt Cloud CLI for your dbt Cloud project. Doing so
 
 Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project. 
 
-1. Go to dbt Cloud to download your `dbt_cloud.yml` credentials file by navigating to **Develop** and select **Configure dbt Cloud CLI**.
+1. In dbt Cloud, navigate to **Develop** and click **Configure dbt Cloud CLI** to download your `dbt_cloud.yml` credentials file.
 
     <details>
     <summary>Region URLs to download credentials</summary>
@@ -38,10 +38,10 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
     </details>
 
-2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys.
+2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
+   
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
    - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
-   - For detailed steps on how to create a `.dbt` directory and move the `dbt_cloud.yml` file, check out the [FAQs](#faqs).
 
   The config file looks like this:
 
@@ -61,7 +61,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
         api-key: "<user-api-key>"
     ```
 
-3. After downloading the config file, navigate to a dbt project in your terminal:
+3. After downloading the config file and creating your directory, navigate to a dbt project in your terminal:
 
     ```bash
     cd ~/dbt-projects/jaffle_shop
@@ -113,7 +113,7 @@ As a tip, most command-line tools have a `--help` flag to show available command
 ## FAQs
 <expandable alt_header="How to create a .dbt directory and move your file">
 
-If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have `.dbt` directory, then you should be able to move the `dbt_cloud.yml` file into it.
+If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have a `.dbt` directory, move the `dbt_cloud.yml` file into it.
 
 <Tabs>
 <TabItem value="Create a .dbt directory">
@@ -132,7 +132,7 @@ If you've never had a `.dbt` directory, you should perform the following recomme
 
 This will create a `.dbt` folder in the current directory. 
 
-For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. However, to view hidden files and folders press Command + Shift + G. 
+For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. To view hidden files and folders, press Command + Shift + G. 
 
 </TabItem>
 
