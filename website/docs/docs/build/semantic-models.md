@@ -225,7 +225,9 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 Instead of trying to figure out all the possible groupings ahead of time, MetricFlow lets you ask for the data you need and sorts out how to group it dynamically. You tell it what groupings (dimensions parameters) you're interested in by giving it a `name` (either a column or SQL expression like "country" or "user role") and the `type` of grouping it is (`categorical` or `time`). Categorical groups are for things you can't measure in numbers, while time groups represent dates.
 
-Dimensions are identified using the name parameter, just like identifiers. The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups. MetricFlow requires all dimensions to be tied to a primary entity. 
+- Dimensions are identified using the name parameter, just like identifiers.
+- The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups.
+- MetricFlow requires all dimensions to be tied to a primary entity. 
 
 While there's technically no limit to the number of dimensions in a semantic model, it's important to ensure the model remains effective and efficient for its intended purpose.
 
