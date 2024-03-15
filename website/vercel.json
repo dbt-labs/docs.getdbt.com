@@ -579,7 +579,7 @@
     },
     {
         "source": "/guides/zapier-new-cloud-job",
-        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
+        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion",
         "permanent": true
     },
     {
