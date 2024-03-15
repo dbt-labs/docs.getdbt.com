@@ -119,20 +119,15 @@ If you've never had a `.dbt` directory, you should perform the following recomme
 <TabItem value="Create a .dbt directory">
 
   1. Clone your dbt project repository locally.
-  2. Use the `cd` command to change directories and navigate to the root of your filesystem. (For example, if you're a Mac user it might be `Macintosh HD -> Users -> YOUR_USERNAME`):
+  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to to create a `.dbt` folder in the root of your filesystem:
 
      ```bash
-     cd ~/Users
-      ```
-  3. Use the `mkdir` command followed by the name of the folder you want to create. To create a `.dbt` folder, use:
-
-     ```bash
-     mkdir .dbt
+     mkdir ~/.dbt
      ```
 
-This will create a `.dbt` folder in the current directory. 
+This will create a `.dbt` folder in the current directory.
 
-For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. To view hidden files and folders, press Command + Shift + G. 
+For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. To view hidden files and folders, press Command + Shift + G.
 
 </TabItem>
 
