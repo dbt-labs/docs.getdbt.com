@@ -38,10 +38,10 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
     </details>
 
-2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys.
+2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
+   
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
    - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
-   - For detailed steps on how to create a `.dbt` directory and move the `dbt_cloud.yml` file, check out the [FAQs](#faqs).
 
   The config file looks like this:
 
@@ -61,7 +61,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
         api-key: "<user-api-key>"
     ```
 
-3. After downloading the config file, navigate to a dbt project in your terminal:
+3. After downloading the config file and creating your directory, navigate to a dbt project in your terminal:
 
     ```bash
     cd ~/dbt-projects/jaffle_shop
