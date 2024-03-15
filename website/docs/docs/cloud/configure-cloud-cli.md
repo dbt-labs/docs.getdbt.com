@@ -24,7 +24,7 @@ Find out how to configure the dbt Cloud CLI for your dbt Cloud project. Doing so
 
 Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project. 
 
-1. Ensure you meet the prerequisites above and go to dbt Cloud to download your credentials by clicking on the **Try the dbt Cloud CLI** banner.
+1. Go to dbt Cloud to download your `dbt_cloud.yml` credentials file by navigating to **Develop** and select **Configure dbt Cloud CLI**.
 
     <details>
     <summary>Region URLs to download credentials</summary>
@@ -38,59 +38,10 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
     </details>
 
-2. Save the config file in the root of your local computer's filesystem (usually represented by the `~` in the file path). Make sure to store your `dbt_cloud.yml` config file in a safe place as it contains API keys.
-
+2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys.
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
    - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
-
-<expandable alt_header="How to create a `.dbt` directory">
-  
-- If you already have `.dbt` directory, then you should be able to store your `dbt_cloud.yml` file without any issues.
-- If you've never had a `.dbt` directory, you should perform the following recommended steps to create one:
-
-### Create a .dbt directory
-
-  1. Clone your dbt project repository locally.
-  2. Use the `cd` command to change directories and navigate to the root of your filesystem. (For example, it might be `Macintosh HD -> Users -> YOUR_USERNAME`)
-
-     ```bash
-     cd ~/Users
-      ```
-  3. Use the `mkdir` command followed by the name of the folder you want to create. To create a `.dbt` folder, use:
-     ```bash
-     mkdir .dbt
-     ```
-This will create a `.dbt` folder in the current directory. Since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. However, to view hidden files and folders press Command + Shift + G.
-
-### Move the dbt_cloud.yml file
-
-<Tabs>
-
-<TabItem value="On Mac or Linux">
-  
-- In your command line, use the `mv` command to move your `dbt_cloud.yml` file into the `.dbt` directory. If you've just downloaded the `dbt_cloud.yml` file and it's in your Downloads folder, the command might look something like this:
-
-```bash
-mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
-```
-
-</TabItem>
-
-<TabItem value="On Windows">
-  
-- In your command line, use the move command. Assuming your file is in the Downloads folder, the command might look like this:
-
-```bash
-move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
-```
-</TabItem>
-
-</Tabs>
-
-This command moves the `dbt_cloud.yml` from the Downloads folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
-
-
-</expandable>
+   - For detailed steps on how to create a `.dbt` directory and move the `dbt_cloud.yml` file, check out the [FAQs](#faqs).
 
   The config file looks like this:
 
@@ -158,3 +109,53 @@ As a tip, most command-line tools have a `--help` flag to show available command
 - `dbt --help`: Lists the commands available for dbt<br />
 - `dbt run --help`: Lists the flags available for the `run` command
 :::
+
+
+## FAQs
+<expandable alt_header="How to create a .dbt directory">
+
+If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have `.dbt` directory, then you should be able to move the `dbt_cloud.yml` file into it.
+
+<Tabs>
+<TabItem value="Create a .dbt directory">
+
+  1. Clone your dbt project repository locally.
+  2. Use the `cd` command to change directories and navigate to the root of your filesystem. (For example, if you're a Mac user it might be `Macintosh HD -> Users -> YOUR_USERNAME`):
+
+     ```bash
+     cd ~/Users
+      ```
+  3. Use the `mkdir` command followed by the name of the folder you want to create. To create a `.dbt` folder, use:
+
+     ```bash
+     mkdir .dbt
+     ```
+
+This will create a `.dbt` folder in the current directory. 
+
+For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. However, to view hidden files and folders press Command + Shift + G. 
+
+</TabItem>
+
+<TabItem value="Move the dbt_cloud.yml file">
+
+**On Mac or Linux**
+- In your command line, use the `mv` command to move your `dbt_cloud.yml` file into the `.dbt` directory. If you've just downloaded the `dbt_cloud.yml` file and it's in your Downloads folder, the command might look something like this:
+
+```bash
+mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
+```
+
+**On Windows**
+- In your command line, use the move command. Assuming your file is in the Downloads folder, the command might look like this:
+
+```bash
+move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
+```
+
+</TabItem>
+</Tabs>
+
+This command moves the `dbt_cloud.yml` from the Downloads folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
+
+</expandable>
