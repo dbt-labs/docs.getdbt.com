@@ -6,11 +6,6 @@ description: "Instructions for installing and configuring dbt Cloud CLI"
 pagination_next: "docs/cloud/configure-cloud-cli"
 ---
 
-import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
-
-<CloudCLIFlag/>
-
-
 dbt Cloud natively supports developing using a command line (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The dbt Cloud CLI allows you to run dbt commands against your dbt Cloud development environment from your local command line.
 
 dbt commands are run against dbt Cloud's infrastructure and benefit from:
