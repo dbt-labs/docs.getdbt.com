@@ -133,7 +133,7 @@ If you've never had a `.dbt` directory, you should perform the following recomme
 
 This will create a `.dbt` folder in the current directory. 
 
-For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. However, to view hidden files and folders press Command + Shift + G. 
+For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. To view hidden files and folders, press Command + Shift + G. 
 
 </TabItem>
 
