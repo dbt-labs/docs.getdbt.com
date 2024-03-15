@@ -6,9 +6,12 @@ sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
 
-import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
+Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt commands, like `dbt environment show` to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You'll also benefit from:
 
-<CloudCLIFlag/>
+- Secure credential storage in the dbt Cloud platform.
+- [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment.
+- Speedier, lower-cost builds.
+- Support for dbt Mesh ([cross-project ref](/docs/collaborate/govern/project-dependencies)), and more.
 
 ## Prerequisites
 
@@ -21,7 +24,7 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 
 Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project. 
 
-1. Ensure you meet the prerequisites above and go to dbt Cloud to download your credentials by clicking on the **Try the dbt Cloud CLI** banner.
+1. In dbt Cloud, navigate to **Develop** and click **Configure dbt Cloud CLI** to download your `dbt_cloud.yml` credentials file.
 
     <details>
     <summary>Region URLs to download credentials</summary>
@@ -35,11 +38,11 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
     </details>
 
-2. Save the config file to your local computer's filesystem. Make sure to store your `dbt_cloud.yml` config file in a safe place as it contains API keys.
-
+2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
+   
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
    - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
-  
+
   The config file looks like this:
 
     ```yaml
@@ -58,7 +61,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
         api-key: "<user-api-key>"
     ```
 
-3. After downloading the config file, navigate to a dbt project in your terminal:
+3. After downloading the config file and creating your directory, navigate to a dbt project in your terminal:
 
     ```bash
     cd ~/dbt-projects/jaffle_shop
@@ -106,3 +109,47 @@ As a tip, most command-line tools have a `--help` flag to show available command
 - `dbt --help`: Lists the commands available for dbt<br />
 - `dbt run --help`: Lists the flags available for the `run` command
 :::
+
+## FAQs
+<expandable alt_header="How to create a .dbt directory and move your file">
+
+If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have a `.dbt` directory, move the `dbt_cloud.yml` file into it.
+
+<Tabs>
+<TabItem value="Create a .dbt directory">
+
+  1. Clone your dbt project repository locally.
+  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to to create a `.dbt` folder in the root of your filesystem:
+
+     ```bash
+     mkdir ~/.dbt
+     ```
+
+This will create a `.dbt` folder in the root directory.
+
+For Mac users, since it's a hidden folder (due to the dot prefix), it won't be visible in Finder by default. To view hidden files and folders, press Command + Shift + G.
+
+</TabItem>
+
+<TabItem value="Move the dbt_cloud.yml file">
+
+### Mac or Linux
+In your command line, use the `mv` command to move your `dbt_cloud.yml` file into the `.dbt` directory. If you've just downloaded the `dbt_cloud.yml` file and it's in your Downloads folder, the command might look something like this:
+
+```bash
+mv ~/Downloads/dbt_cloud.yml ~/.dbt/dbt_cloud.yml
+```
+
+### Windows
+In your command line, use the move command. Assuming your file is in the Downloads folder, the command might look like this:
+
+```bash
+move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
+```
+
+</TabItem>
+</Tabs>
+
+This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
+
+</expandable>
