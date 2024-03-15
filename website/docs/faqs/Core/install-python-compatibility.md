@@ -12,4 +12,3 @@ Use this table to match dbt-core versions with their compatible Python versions.
 <Pythonmatrix/>
 
 Adapter plugins and their dependencies are not always compatible with the latest version of Python. For example, dbt-snowflake v0.19 is not compatible with Python 3.9, but dbt-snowflake versions 0.20+ are.
-
