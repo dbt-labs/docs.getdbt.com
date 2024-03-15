@@ -2,7 +2,7 @@
 
 You can use the following modes to configure the behavior when performing indirect selection (with `eager` as the default). Test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
 
-The `buildable`, `cautious`, and `empty` modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in `eager` mode caused by unbuilt resources. You can also achieve this with [deferral](/reference/node-selection/defer).
+The `buildable` and `cautious` can be useful in environments when you're only building a subset of your DAG, and you want to avoid the test failures you'd see in `eager` mode caused by unbuilt resources. You can also achieve this with [deferral](/reference/node-selection/defer).
 
 #### Eager mode (default)
 
