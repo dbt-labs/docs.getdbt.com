@@ -6,10 +6,6 @@ sidebar_label: "Configuration and usage"
 pagination_next: null
 ---
 
-import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
-
-<CloudCLIFlag/>
-
 ## Prerequisites
 
 - You must set up a project in dbt Cloud.
