@@ -105,7 +105,7 @@ Here are examples of cron job schedules. The dbt Cloud job scheduler supports us
 - `0 7 L * 5`: At 07:00 AM, on the last day of the month, and on Friday.
 - `30 14 L * *`: At 02:30 PM, on the last day of the month.
 
-
+### Trigger on job completion  <Lifecycle status="team,enterprise" />
 
 To _chain_ deploy jobs together, enable the **Run when another job finishes** option and specify the upstream (parent) job that, when it completes, will trigger your job. You can also use the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this.
 
