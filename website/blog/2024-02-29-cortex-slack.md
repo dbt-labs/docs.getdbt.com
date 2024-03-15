@@ -58,7 +58,7 @@ We already pull Slack data into Snowflake for basic analytics, but having a tria
 
 Once it was finished, it looked like this:
 
-<Lightbox src="/img/blog/2024-02-29-cortex-slack.png" width="85%" title="An example of some summarized threads for review (lightly edited for anonymity)." />
+<Lightbox src="/img/blog/2024-02-29-cortex-slack/slack-summaries.png" width="85%" title="An example of some summarized threads for review (lightly edited for anonymity)." />
 
 Up to once a day, we'll get a post in our internal Slack with links to a handful of interesting threads for each person's focus areas and a brief summary of the discussion so far. From there, we can go deeper by diving into the thread ourselves, wherever it happens to take place. While developing this I found multiple threads that I wouldn't have found any other way (which was itself a problem, since my model filters out threads once a dbt Labs employee is participating in it, so I kept losing all my testing data).
 
