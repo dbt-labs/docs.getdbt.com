@@ -1,6 +1,6 @@
 ---
 title: "LLM-powered Analytics Engineering: How we're using AI inside of our dbt project, today, with no new tools."
-description: "With Snowflake's new Cortex functions and the dbt Cloud orchestrator, we can quickly and safely do analytics that was once impractical."
+description: "By orchestrating Snowflake's new Cortex functions inside of dbt Cloud, we can do once-impractical analytics with no additional tooling."
 slug: dbt-models-with-snowflake-cortex
 
 authors: [joel_labes]
@@ -33,6 +33,8 @@ Analytics Engineers have always existed at the intersection of business context 
 
 ## Anatomy of an LLM-powered workflow
 
+My colleagues and I did some [experiments last year](https://roundup.getdbt.com/p/semantic-layer-as-the-data-interface) using GPT-4 to enhance the Semantic Layer, but this is the first time it's been possible to use AI directly inside of our dbt project, without any additional tooling.
+
 When we were looking for a first AI-powered use case in our analytics stack, we wanted to find something that:
 
 - Solves a real business problem for us today
@@ -52,11 +54,11 @@ In short, the same dbt I know and love, but augmented by the new power that Cort
 
 When thinking about a project that would only be possible if we could make sense of a large volume of unstructured text, I pretty quickly realised this could help me keep up to date with the dbt Community Slack. Even though we spend a lot of time in Slack, there's hundreds of threads taking place across dozens of channels every day, so we often miss important or interesting conversations.
 
-We already pull Slack data into Snowflake for basic analytics, but having triage agent that could keep a watchful eye over the Slack, and let us know about things we'd otherwise have missed would help the Developer Experience team do a better job of keeping our finger on the pulse of dbt developers' needs.
+We already pull Slack data into Snowflake for basic analytics, but having a triage agent that could keep a watchful eye over the Slack – and let us know about things we'd otherwise have missed – would help the Developer Experience team do a better job of keeping our finger on the pulse of dbt developers' needs.
 
 Once it was finished, it looked like this:
 
-[ screenshot tk].
+<Lightbox src="/img/blog/2024-02-29-cortex-slack.png" width="85%" title="An example of some summarized threads for review (lightly edited for anonymity)." />
 
 Up to once a day, we'll get a post in our internal Slack with links to a handful of interesting threads for each person's focus areas and a brief summary of the discussion so far. From there, we can go deeper by diving into the thread ourselves, wherever it happens to take place. While developing this I found multiple threads that I wouldn't have found any other way (which was itself a problem, since my model filters out threads once a dbt Labs employee is participating in it, so I kept losing all my testing data).
 
@@ -68,11 +70,11 @@ You probably don't have the exact same use case as I do, but you can imagine a w
 
 ## Tips for building LLM-powered dbt models
 
-- **Always build incrementally.** Anyone who's interacted with any LLM-powered tool knows that it can take some time to get results back from a request, and that the results can vary from one invocation to another. For speed, cost and consistency reasons, I implemented both models incrementally even though in terms of row count the tables are tiny. I also added the full-refresh: false config to protect against full refreshes we run to capture late-arriving facts.
+- **Always build incrementally.** Anyone who's interacted with any LLM-powered tool knows that it can take some time to get results back from a request, and that the results can vary from one invocation to another. For speed, cost and consistency reasons, I implemented both models incrementally even though in terms of row count the tables are tiny. I also added the [full_refresh: false](https://docs.getdbt.com/reference/resource-configs/full_refresh) config to protect against other full refreshes we run to capture late-arriving facts.
 - **Beware of token limits.** Requests that contain [too many tokens](https://docs.snowflake.com/LIMITEDACCESS/cortex-functions#model-restrictions) are truncated, which can lead to unexpected results if the cutoff point is halfway through a message. In future I would first try to use the llama-70b model (~4k token limit), and for unsuccessful rows make a second pass using the mistral-7b model (~32k token limit). Like many aspects of LLM powered workflows, we expect token length constraints to increase substantially in the near term.
 - **Orchestrate defensively, for now**. Because of the above considerations, I've got these steps running in their own dbt Cloud job, triggered by the successful completion of our main project job. I don't want the data team to be freaked out by a failing production run due to my experiments. We use YAML selectors to define what gets run in our default job; I added another selector for these models and then added that selector to the default job's exclusion list. Once this becomes more stable, I'll fold it into our normal job.
-- **Iterate on your prompt.** In the same way as you gradually iterate on a SQL query, you have to tweak your prompt frequently in development to ensure you're getting the expected results. One slightly disappointing part of prompt engineering: I can spend an afternoon working on a problem, and at the end of it only have a single line of code to check into a commit.
-- **Remember that your results are non-deterministic.** For someone who loves to talk about <Term id="idempotent">idempotency</Term> , having a model whose results vary based on the vibes of some rocks we tricked into dreaming is a bit weird, and requires a bit more defensive coding than you may be used to. For example, one of the prompts I use is classification-focused (identifying the discussion's product area), and normally the result is just the name of that product. But sometimes it will return a little spiel explaining its thinking, so I need to explicitly extract that value from the response instead of unthinkingly accepting whatever I get back. Defining the valid options in a Jinja variable has helped keep them in sync.
+- **Iterate on your prompt.** In the same way as you gradually iterate on a SQL query, you have to tweak your prompt frequently in development to ensure you're getting the expected results. In general, I started with the shortest command I thought could work and tweaked it based on the results I was seeing. One slightly disappointing part of prompt engineering: I can spend an afternoon working on a problem, and at the end of it only have a single line of code to check into a commit.
+- **Remember that your results are non-deterministic.** For someone who loves to talk about <Term id="idempotent">idempotency</Term> , having a model whose results vary based on the vibes of some rocks we tricked into dreaming is a bit weird, and requires a bit more defensive coding than you may be used to. For example, one of the prompts I use is classification-focused (identifying the discussion's product area), and normally the result is just the name of that product. But sometimes it will return a little spiel explaining its thinking, so I need to explicitly extract that value from the response instead of unthinkingly accepting whatever I get back. Defining the valid options in a Jinja variable has helped keep them in sync: I can pass them into the prompt and then reuse the same list when extracting the correct answer.
 
 ## Share your experiences
 
