@@ -11,6 +11,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+website/docs/guides/zapier-new-cloud-job.md
+
 ## Introduction
 
 This guide will show you how to trigger a dbt Cloud job based on the successful completion of a different job. This can be useful when you need to trigger a job in a different project. Remember that dbt works best when it understands the whole context of the <Term id="dag"/> it has been asked to run, so use this ability judiciously.
