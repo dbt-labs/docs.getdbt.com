@@ -73,7 +73,7 @@ The "buildable" and "cautious" modes can be useful in environments when you're o
 
 <VersionBlock firstVersion="1.5">
 
-To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c` and associated data tests. The following illustrates which tests will be run when you execute `dbt run` versus `dbt build` with the various indirect selection modes:
+To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c` and associated data tests. The following illustrates which tests will be run when you execute `dbt build` with the various indirect selection modes:
 
 <DocCarousel slidesPerView={1}>
 
@@ -92,7 +92,7 @@ To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c`
 <Tabs queryString="indirect-selection-mode">
 <TabItem value="eager" label="Eager mode (default)">
 
-For example, during the build process, any model that depends on the selected "orders" model or its dependent models will be built. Tests that refer to the selected "order" model or its dependent models will be executed during the testing process:
+In this example, during the build process, any test that depends on the selected "orders" model or its dependent models will be executed, even if it depends other models as well.
  
 ```shell
 dbt test --select "orders"
@@ -103,7 +103,7 @@ dbt build --select "orders"
 
 <TabItem value="cautious" label="Cautious mode">
 
-For example, only the "orders" model (or node) and its dependent models will be selected for testing or building:
+In this example, only tests that depend _exclusively_ on the "orders" model will be executed:
 
 ```shell
 dbt test --select "orders" --indirect-selection=cautious
@@ -115,7 +115,7 @@ dbt build --select "orders" --indirect-selection=cautious
 
 <TabItem value="buildable" label="Buildable mode">
 
-For example, dbt runs tests that reference "orders" within the selected nodes (or their ancestors).
+In this example, dbt executes tests that reference "orders" within the selected nodes (or their ancestors).
 
 
 ```shell
@@ -127,7 +127,7 @@ dbt build --select "orders" --indirect-selection=buildable
 
 <TabItem value="empty" label="Empty mode">
 
-This mode not execute any tests, whether they are directly attached to the selected node or not
+This mode does not execute any tests, whether they are directly attached to the selected node or not.
 
 ```shell
 
