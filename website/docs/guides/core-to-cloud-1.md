@@ -238,7 +238,7 @@ You have learned:
 - How to set up your dbt Cloud account
 - How to connect your data platform and Git repository
 - How to configure your development, orchestration, and CI/CD environments
-- How to set up environment variables and validate your models. You should now be ready to run your first job in dbt Cloud!
+- How to set up environment variables and validate your models. 
 
 For next steps, we'll soon share other guides on how to manage your move and tips/faqs. Stay tuned!
 
