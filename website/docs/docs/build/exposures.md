@@ -105,8 +105,6 @@ _General properties (optional)_
 - **tags**
 - **meta**
 
-We plan to add more subtypes and optional properties in future releases.
-
 ### Referencing exposures
 
 Once an exposure is defined, you can run commands that reference it:
