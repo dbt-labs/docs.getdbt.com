@@ -568,11 +568,11 @@ For more information about server availability, please refer to our [Regions & I
 
 You can link to a specific section of the doc with a `#` at the end of the path. Enter the section’s title after the `#`, with individual words separated by hyphens. Let's use the incremental models page, https://docs.getdbt.com/docs/build/incremental-models, as an example:
 
-`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).`
+`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understand-incremental-models).`
 
 This will appear to the reader as follows:
 
-To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).
+To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understand-incremental-models).
 
 When you click on the link, it automatically takes you to the section defined at the end of the path. If the path syntax is incorrect(or does not exist), the link will take the reader to the top of the page specified in the path. 
 
