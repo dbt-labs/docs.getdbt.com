@@ -296,7 +296,7 @@ The three configuration fields in this example are the most important ones.
 
 - Setting `materialized='incremental'` tells dbt to apply UPSERT logic to the target table.
 - The `unique_key` should be a primary key of the target table. This is used to match records with the existing table.
-- `incremental_strategy` here is set to MERGE any existing rows in the target table with a value for the `unique_key` which matches the incoming batch of data. There are [various incremental strategies](/docs/build/incremental-models#about-incremental_strategy) for different situations and warehouses.
+- `incremental_strategy` here is set to MERGE any existing rows in the target table with a value for the `unique_key` which matches the incoming batch of data. There are [various incremental strategies](/docs/build/incremental-strategy) for different situations and warehouses.
 
 The bulk of the work in converting a model to an incremental materialization comes in determining how the logic should change for incremental loads versus full backfills or initial loads. dbt offers a special macro, `is_incremental()`, which evaluates false for initial loads or for backfills (called full refreshes in dbt parlance), but true for incremental loads.
 
