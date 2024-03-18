@@ -1207,7 +1207,7 @@ Let’s take a step back before starting machine learning to both review and go 
   - Within the model's `.py` file, using the `dbt.config()` method
   - Calling the `dbt.config()` method will set configurations for your model within your `.py` file, similar to the `{{ config() }} macro` in `.sql` model files:
 
-        ```python
+    ```python
         def model(dbt, session):
 
             # setting configuration
