@@ -8,7 +8,7 @@ pagination_prev: null
 
 Incremental models in dbt is a [materialization](/docs/build/materializations) strategy designed to efficiently update your data warehouse tables by only transforming and loading new or changed data since the last run. Instead of processing your entire dataset every time, incremental models append or update only the new rows, significantly reducing the time and resources required for your data transformations.
 
-This overview page will provide you with a brief overview of incremental models, their importance in data transformations, and the core concepts of incremental materializations in dbt.
+This page will provide you with a brief overview of incremental models, their importance in data transformations, and the core concepts of incremental materializations in dbt.
 
 <Lightbox src="/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title="A visual representation of how incremental models work. Source: Materialization best practices page." />
 
