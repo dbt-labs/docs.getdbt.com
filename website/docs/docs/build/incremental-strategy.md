@@ -6,7 +6,7 @@ id: "incremental-strategy"
 
 There are various strategies to implement the concept of incremental materializations. The value of each strategy depends on:
 
-* the volume of data,
+* The volume of data.
 * the reliability of your `unique_key`, and
 * the support of certain features in your data platform
 
