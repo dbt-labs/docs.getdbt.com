@@ -25,9 +25,7 @@ Building models as tables in your data warehouse is often preferred for better q
 
 Incremental models offer a balance between complexity and improved performance compared to `view` and `table` materializations and offer better performance of your dbt runs.
 
-In addition to these considerations for incremental models, it's important to understand their limitations and challenges, particularly with large datasets. For more insights into efficient strategies, performance considerations, and the handling of late-arriving data in incremental models, refer to the [On the Limits of Incrementality](https://discourse.getdbt.com/t/on-the-limits-of-incrementality/303) discourse discussion.
-
-Refer to [Materialization best practices](/best-practices/materializations/2-available-materializations) for more information.
+In addition to these considerations for incremental models, it's important to understand their limitations and challenges, particularly with large datasets. For more insights into efficient strategies, performance considerations, and the handling of late-arriving data in incremental models, refer to the [On the Limits of Incrementality](https://discourse.getdbt.com/t/on-the-limits-of-incrementality/303) discourse discussion or to our [Materialization best practices](/best-practices/materializations/2-available-materializations) page.
 
 ### How incremental models work in dbt
 
