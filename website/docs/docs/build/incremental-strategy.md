@@ -269,15 +269,9 @@ select * from {{ ref("some_model") }}
 
 ### Custom strategies
 
-<VersionBlock lastVersion="1.1">
-
-Custom incremental strategies can be defined beginning in dbt v1.2.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.2">
 
-As an easier alternative to [creating an entirely new materialization](/guides/create-new-materializations), users can define and use their own "custom" incremental strategies by:
+Starting from dbt version 1.2 and onwards, users have an easier alternative to [creating an entirely new materialization](/guides/create-new-materializations). They define and use their own "custom" incremental strategies by:
 
 1. Defining a macro named `get_incremental_STRATEGY_sql`. Note that `STRATEGY` is a placeholder and you should replace it with the name of your custom incremental strategy.
 2. Configuring `incremental_strategy: STRATEGY` within an incremental model.
