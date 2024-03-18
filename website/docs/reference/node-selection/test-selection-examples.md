@@ -86,7 +86,7 @@ To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c`
 
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src src="/img/docs/reference/indirect-selection-dbt-run.png" width="85%" title="dbt run"/>
+<Lightbox src src="/img/docs/reference/indirect-selection-dbt-build.png" width="85%" title="dbt build" />
 
 <Lightbox src src="/img/docs/reference/indirect-selection-eager.png" width="85%" title="Eager (default)"/>
 
