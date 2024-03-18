@@ -41,5 +41,5 @@ dbt Core v0.20 has reached the end of critical support. No new patch versions wi
 ### Plugins
 - New partition-related [BigQuery configs](/reference/resource-configs/bigquery-configs#additional-partition-configs): `require_partition_filter` and `partition_expiration_days`
 - On BigQuery, dbt can now add [query comment](/reference/project-configs/query-comment) items as job labels
-- Snowflake and BigQuery [incremental models](/docs/build/incremental-models#strategy-specific-configs) using the `merge` strategy accept a new optional config, `merge_update_columns`.
+- Snowflake and BigQuery [incremental models](/docs/build/incremental-strategy#strategy-specific-configs) using the `merge` strategy accept a new optional config, `merge_update_columns`.
 - [Postgres configs](/reference/resource-configs/postgres-configs) now include first-class support for `indexes`
