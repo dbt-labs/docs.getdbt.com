@@ -8,7 +8,7 @@ There are various strategies to implement the concept of incremental materializa
 
 * The volume of data.
 * The reliability of your `unique_key`.
-* the support of certain features in your data platform
+* The support of certain features in your data platform.
 
 An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses
 to build incremental models.
