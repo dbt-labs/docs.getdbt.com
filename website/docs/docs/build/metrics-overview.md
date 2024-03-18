@@ -19,7 +19,7 @@ The keys for metrics definitions are:
 | --------- | ----------- | ---- |
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
 | `description` | Describe your metric.   | Optional |
-| `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
+| `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `config` | Provide the specific configurations for your metric.   | Optional |
 | `config:meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
