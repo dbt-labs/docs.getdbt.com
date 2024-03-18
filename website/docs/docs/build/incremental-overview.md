@@ -16,7 +16,7 @@ This page will provide you with a brief overview of incremental models, their im
 
 Incremental models enable you to significantly reduce the build time by just transforming new records. This is particularly useful for large datasets, where the cost of processing the entire dataset is high.
 
-Incremental models [require extra configuration](/docs/build/incremental-models) and are an advanced usage of dbt. You can use it when your dbt runs are becoming too slow.
+Incremental models [require extra configuration](/docs/build/incremental-models) and are an advanced usage of dbt. We recommend using them when your dbt runs are becoming too slow.
 
 ### When to use an incremental model
 
