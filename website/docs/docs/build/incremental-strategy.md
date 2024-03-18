@@ -277,7 +277,7 @@ Custom incremental strategies can be defined beginning in dbt v1.2.
 
 <VersionBlock firstVersion="1.2">
 
-As an easier alternative to [creating an entirely new materialization](/guides/create-new-materializations), users can define and use their own "custom" user-defined incremental strategies by:
+As an easier alternative to [creating an entirely new materialization](/guides/create-new-materializations), users can define and use their own "custom" incremental strategies by:
 
 1. Defining a macro named `get_incremental_STRATEGY_sql`. Note that `STRATEGY` is a placeholder and you should replace it with the name of your custom incremental strategy.
 2. Configuring `incremental_strategy: STRATEGY` within an incremental model.
