@@ -329,7 +329,7 @@ For example, a user-defined strategy named `insert_only` can be defined and used
 
 To use the `merge_null_safe` custom incremental strategy from the `example` package:
 - [Install the package](/docs/build/packages#how-do-i-add-a-package-to-my-project)
-- Then add the following macro to your project:
+- Add the following macro to your project:
 
 <File name='macros/my_custom_strategies.sql'>
 
