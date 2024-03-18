@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/build/incremental-models#about-incremental_strategy",
+      "destination": "/docs/build/incremental-strategy",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-versions/upgrade-core-in-cloud",
       "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true

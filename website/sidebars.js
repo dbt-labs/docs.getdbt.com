@@ -358,7 +358,16 @@ const sidebarSettings = {
           items: [
             "docs/build/enhance-your-models",
             "docs/build/materializations",
-            "docs/build/incremental-models",
+            {
+              type: "category",
+              label: "Incremental models",
+              link: { type: "doc", id: "docs/build/incremental-models-overview",},
+              items: [           
+                "docs/build/incremental-models-overview",
+                "docs/build/incremental-models",
+                "docs/build/incremental-strategy",
+              ],
+            },
           ],
         },
         {
