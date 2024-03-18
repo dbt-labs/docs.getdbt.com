@@ -361,10 +361,11 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Incremental models",
-              link: { type: "doc", id: "docs/build/incrementals-overview",},
+              link: { type: "doc", id: "docs/build/incremental-overview",},
               items: [           
-                "docs/build/incrementals-overview",
+                "docs/build/incremental-overview",
                 "docs/build/incremental-models",
+                "docs/build/incremental-strategy",
               ],
             },
           ],
