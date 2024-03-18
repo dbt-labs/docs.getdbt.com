@@ -11,24 +11,24 @@ This method not only speeds up the data processing tasks but also optimizes your
 - Brief overview of incremental models
 - Importance of incremental models in data transformations
 
-<Lightbox src="website/static/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title="test test incremental" />
+<Lightbox src="/img/docs/building-a-dbt-project/incremental-diagram.jpg" width="60%" title="A visual representation of how incremental models work. Source: Materialization best practices page." />
 
 ## Prerequistes
-- The `is_incremental()` macro is what powers incremental materializations. It only run (and will return True) if all of the following conditions are met:
+The `is_incremental()` macro is what powers incremental materializations. It only run (and will return True) if all of the following conditions are met:
 
 - The model must already exist in the database
 - The destination table already exist in the database
 - The model is configured with `materialized='incremental'`
 - Ensure the `full-refresh` flag isn't passed
 
-## Core Concepts
+## Core concepts
 - Understanding Incremental Models
   - Definition and significance
   - How incremental models work in dbt
 - Materializations in dbt
   - Incremental vs. other types of materializations
 
-## Configuring Incremental Models
+## Configuring Incremental models
 - Basic Configuration
   - Defining your model
   - Using the incremental materialization
