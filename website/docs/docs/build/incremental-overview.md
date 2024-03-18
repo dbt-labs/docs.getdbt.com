@@ -23,7 +23,7 @@ Incremental models [require extra configuration](/docs/build/incremental-models)
 Building models as tables in your data warehouse is often preferred for better query performance. However, using `table` materialization can be computationally intensive, especially when:
 
 - Source data has millions or billions of rows.
-- Data transformations on the source data are computationally expensive (take a long time to execute) and complex, like using Regex or UDFs.
+- Data transformations on the source data are computationally expensive (take a long time to execute) and complex, like when using Regex or UDFs.
 
 Incremental models offer a balance between complexity and improved performance compared to `view` and `table` materializations and offer better performance of your dbt runs.
 
