@@ -94,7 +94,7 @@ select ...
 
 ### Strategy-specific configs
 
-If you are using the `merge` strategy and have specified a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
+If you use the `merge` strategy and specify a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
 
 On adapters which support the `merge` strategy (including Snowflake, BigQuery, Apache Spark, and Databricks), you may optionally pass a list of column names to a `merge_update_columns` config. In that case, dbt will update _only_ the columns specified by the config, and keep the previous values of other columns.
 
