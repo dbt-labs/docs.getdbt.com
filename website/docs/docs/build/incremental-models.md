@@ -116,7 +116,7 @@ While common incremental strategies, such as`delete+insert` + `merge`, might use
 
 #### `unique_key` example
 
-[text](http://localhost:3000/docs/build/incremental-overview)Consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
+Consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
 
 <File name='models/staging/fct_daily_active_users.sql'>
 
