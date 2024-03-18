@@ -1,7 +1,7 @@
 ---
 title: "Write queries with exports"
 description: "Use exports to write tables to the data platform on a schedule."
-sidebar_label: "Write commonly used queries"
+sidebar_label: "Write queries with exports"
 ---
 
 The exports feature in the dbt Semantic Layer enhances the [saved queries](/docs/build/saved-queries) by allowing you to write commonly used queries directly within your data platform.
