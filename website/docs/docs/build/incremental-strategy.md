@@ -1,5 +1,5 @@
 ---
-title: "Incremental strategies"
+title: "Incremental strategy"
 description: "Learn about the various ways (strategies) to implement incremental materializations."
 id: "incremental-strategy"
 ---

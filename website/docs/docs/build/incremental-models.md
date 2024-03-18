@@ -29,6 +29,16 @@ To use incremental models, you also need to tell dbt:
 * How to filter the rows on an incremental run
 * The unique key of the model (if any)
 
+### Understand the is_incremental() macro
+
+The `is_incremental()` macro powers incremental materializations. It will return `True` if _all_ of the following conditions are met:
+
+- The model must already exist in the database
+- The destination table already exists in the database
+- The `full-refresh` flag _is not_ passed
+* The running model is configured with `materialized='incremental'`
+
+Note that the SQL in your model needs to be valid whether `is_incremental()` evaluates to `True` or `False`.
 ### Filtering rows on an incremental run
 
 To tell dbt which rows it should transform on an incremental run, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
@@ -75,7 +85,7 @@ For more complex incremental models that make use of Common Table Expressions (C
 
 ### Defining a unique key (optional)
 
-A `unique_key` enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
+A `unique_key` enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
 
 Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
@@ -95,18 +105,18 @@ Alternatively, you can define a single-column [surrogate key](/terms/surrogate-k
 
 When you define a `unique_key`, you'll see this behavior for each row of "new" data returned by your dbt model:
 
-* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](#about-incremental_strategy), and [strategy specific configs](#strategy-specific-configs).
+* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](/docs/build/incremental-strategy), and [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs).
 * If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
-Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](#about-incremental_strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
+Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](/docs/build/incremental-strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
 
 :::info
-While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
+While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](/docs/build/incremental-strategy).
 :::
 
 #### `unique_key` example
 
-Consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
+[text](http://localhost:3000/docs/build/incremental-overview)Consider a model that calculates the number of daily active users (DAUs), based on an event stream. As source data arrives, you will want to recalculate the number of DAUs for both the day that dbt last ran, and any days since then. The model would look as follows:
 
 <File name='models/staging/fct_daily_active_users.sql'>
 
