@@ -142,7 +142,7 @@ The following incremental materialization strategies are supported:
 * `delete+insert`
 * `merge`
 
-To learn more about dbt incremental strategies please check [the dbt incremental strategy documentation](https://docs.getdbt.com/docs/build/incremental-models#about-incremental_strategy).
+To learn more about dbt incremental strategies please check [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
 
 ### Commands
 
