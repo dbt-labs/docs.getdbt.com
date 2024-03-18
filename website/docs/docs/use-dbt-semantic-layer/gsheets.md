@@ -22,6 +22,8 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
   - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
+If you're using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added [Google’s IP addresses](https://www.gstatic.com/ipranges/goog.txt) to your IP allowlist. Otherwise, the Google Sheets connection will fail.
+
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
