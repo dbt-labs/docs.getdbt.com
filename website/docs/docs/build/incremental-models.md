@@ -36,7 +36,7 @@ The `is_incremental()` macro powers incremental materializations. It will return
 - The model must already exist in the database
 - The destination table already exists in the database
 - The `full-refresh` flag _is not_ passed
-* The running model is configured with `materialized='incremental'`
+- The running model is configured with `materialized='incremental'`
 
 Note that the SQL in your model needs to be valid whether `is_incremental()` evaluates to `True` or `False`.
 ### Filtering rows on an incremental run
