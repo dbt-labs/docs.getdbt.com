@@ -31,7 +31,7 @@ In addition to these considerations for incremental models, it's important to un
 
 ### How incremental models work in dbt
 
-dbt's [incremental materialization strategy](/docs/build/incremental-models#about-incremental_strategy) works differently on different databases. Where supported, a `merge` statement is used to insert new records and update existing records.
+dbt's [incremental materialization strategy](/docs/build/incremental-strategy) works differently on different databases. Where supported, a `merge` statement is used to insert new records and update existing records.
 
 On warehouses that do not support `merge` statements, a merge is implemented by first using a `delete` statement to delete records in the target table that are to be updated, and then an `insert` statement.
 
