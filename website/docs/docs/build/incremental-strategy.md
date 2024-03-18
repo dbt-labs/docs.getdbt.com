@@ -59,7 +59,7 @@ dbt v1.3 changed the default materialization for incremental table merges from `
 
 ### Configuring incremental strategy
 
-The `incremental_strategy` config can either be specified in specific models, or
+The `incremental_strategy` config can either be defined in specific models or
 for all models in your `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
