@@ -7,7 +7,7 @@ id: "incremental-strategy"
 There are various strategies to implement the concept of incremental materializations. The value of each strategy depends on:
 
 * The volume of data.
-* the reliability of your `unique_key`, and
+* The reliability of your `unique_key`.
 * the support of certain features in your data platform
 
 An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses
