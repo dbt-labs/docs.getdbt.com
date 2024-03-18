@@ -1,7 +1,8 @@
 ---
-title: "Incremental models"
-description: "Read this tutorial to learn how to use incremental models when building in dbt."
+title: "Configure incremental models"
+description: "Learn how to configure incremental models when building in dbt."
 id: "incremental-models"
+keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration"]
 ---
 
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
