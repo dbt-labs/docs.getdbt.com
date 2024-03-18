@@ -39,10 +39,10 @@ Or in a `schema.yml` file.
 <File name='models/google_analytics/schema.yml'>
 
 ```yaml
-- models:
-    - name: ga_sessions
-      config:
-        alias: sessions
+models:
+  - name: ga_sessions
+    config:
+      alias: sessions
 ```
 
 </File>
