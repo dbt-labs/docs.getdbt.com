@@ -4,7 +4,7 @@ description: "Learn about the various ways (strategies) to implement incremental
 id: "incremental-strategy"
 ---
 
-There are various ways (strategies) to implement the concept of incremental materializations. The value of each strategy depends on:
+There are various strategies to implement the concept of incremental materializations. The value of each strategy depends on:
 
 * the volume of data,
 * the reliability of your `unique_key`, and
