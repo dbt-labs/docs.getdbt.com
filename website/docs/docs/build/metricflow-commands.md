@@ -285,8 +285,8 @@ Options:
   --limit TEXT             Limit the number of rows out using an int or leave
                            blank for no limit. For example: --limit 100
 
-  --order SEQUENCE         Metrics or group bys to order by ("-" prefix for
-                           DESC). For example: --order -ds or --order
+  --order-by SEQUENCE         Metrics or group bys to order by ("-" prefix for
+                           DESC). For example: --order-by -ds or --order-by
                            ds,-revenue
 
   --csv FILENAME           Provide filepath for data frame output to csv
@@ -375,10 +375,10 @@ You can add order and limit functions to filter and present the data in a readab
 **Query**
 ```bash
 # In dbt Cloud 
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time 
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time 
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time 
 ```
 
 **Result**
@@ -436,12 +436,12 @@ To filter by time, there are dedicated start and end time options. Using these o
 <!--
 bash not support in cloud yet
 # In dbt Cloud
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 -->
 **Query**
 ```bash
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 ```
 
  **Result**
@@ -495,10 +495,10 @@ Add `--compile` (or `--explain` for dbt Core users) to your query to view the SQ
 
 ```bash
 # In dbt Cloud
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --compile
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --compile
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
 ```
 
  **Result**
@@ -535,10 +535,10 @@ Add the `--csv file_name.csv` flag to export the results of your query to a csv.
 
 ```bash
 # In dbt Cloud
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
 ```
 
 **Result**

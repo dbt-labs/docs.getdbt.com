@@ -579,7 +579,12 @@
     },
     {
         "source": "/guides/orchestration/webhooks/zapier-new-cloud-job",
-        "destination": "/guides/zapier-new-cloud-job",
+        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
+        "permanent": true
+    },
+    {
+        "source": "/guides/zapier-new-cloud-job",
+        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
         "permanent": true
     },
     {

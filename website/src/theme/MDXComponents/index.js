@@ -97,5 +97,6 @@ const MDXComponents = {
   Lifecycle: Lifecycle,
   detailsToggle: detailsToggle,
   expandable: expandable,
+  ConfettiTrigger: ConfettiTrigger,
 };
 export default MDXComponents;
