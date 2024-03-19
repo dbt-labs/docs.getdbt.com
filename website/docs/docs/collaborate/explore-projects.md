@@ -30,11 +30,12 @@ To view a resource and its metadata, you must define the resource in your projec
 
 | To view in Explorer | You must successfully run |
 |---------------------|---------------------------|
-| Model details or results | [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment |
+| Model lineage, details, or results | [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment |
 | Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within a job in the environment |
 | Test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment | 
-| Source freshness data | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
+| Source freshness results | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
 | Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
+| Seeds | [dbt seed](/reference/commands/seed) or [dbt build](/reference/commands/build) within a job in the environment |
 
 Richer and more timely metadata will become available as dbt Core, the Discovery API, and the underlying dbt Cloud platform evolves.
 
