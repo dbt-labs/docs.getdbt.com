@@ -51,7 +51,6 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [BigQuery](/reference/resource-configs/bigquery-configs)
 
 Support is coming soon to the [Spark](/reference/resource-configs/spark-configs) adapter.
-- [Spark](/reference/resource-configs/spark-configs)
 
 Freshness blocks are applied hierarchically:
 - a `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source
