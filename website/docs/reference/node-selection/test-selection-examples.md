@@ -58,13 +58,17 @@ There are three modes to configure the behavior when performing indirect selecti
 
 Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
 
-The "buildable" and "cautious" modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](/reference/node-selection/defer)).
+:::tip Building subsets of a DAG
+The `buildable` and `cautious` modes can be useful when you're only building a subset of your DAG, and you want to avoid test failures in `eager` mode caused by unbuilt resources. You can also achieve this with [deferral](/reference/node-selection/defer).
+:::
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.5" >
 
 <IndirSelect features={'/snippets/indirect-selection-definitions.md'}/>
 
+</VersionBlock>
 
 <!--tabs for eager mode, cautious mode, empty, and buildable mode -->
 <!--Tabs for 1.5+ -->
@@ -81,9 +85,9 @@ To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c`
 
 <Lightbox src src="/img/docs/reference/indirect-selection-eager.png" width="85%" title="Eager (default)"/>
 
-<Lightbox src src="/img/docs/reference/indirect-selection-cautious.png" width="85%" title="Cautious"/>
-
 <Lightbox src src="/img/docs/reference/indirect-selection-buildable.png" width="85%" title="Buildable"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-cautious.png" width="85%" title="Cautious"/>
 
 <Lightbox src src="/img/docs/reference/indirect-selection-empty.png" width="85%" title="Empty"/>
 
@@ -101,18 +105,6 @@ dbt build --select "orders"
 
 </TabItem>
 
-<TabItem value="cautious" label="Cautious mode">
-
-In this example, only tests that depend _exclusively_ on the "orders" model will be executed:
-
-```shell
-dbt test --select "orders" --indirect-selection=cautious
-dbt build --select "orders" --indirect-selection=cautious
-
-```
-
-</TabItem>
-
 <TabItem value="buildable" label="Buildable mode">
 
 In this example, dbt executes tests that reference "orders" within the selected nodes (or their ancestors).
@@ -121,6 +113,18 @@ In this example, dbt executes tests that reference "orders" within the selected 
 ```shell
 dbt test --select "orders" --indirect-selection=buildable
 dbt build --select "orders" --indirect-selection=buildable
+```
+
+</TabItem>
+
+<TabItem value="cautious" label="Cautious mode">
+
+In this example, only tests that depend _exclusively_ on the "orders" model will be executed:
+
+```shell
+dbt test --select "orders" --indirect-selection=cautious
+dbt build --select "orders" --indirect-selection=cautious
+
 ```
 
 </TabItem>

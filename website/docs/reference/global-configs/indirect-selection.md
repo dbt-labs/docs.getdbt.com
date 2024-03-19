@@ -14,9 +14,14 @@ When all flags are set, the order of precedence is as follows. Refer to [About g
 1. Environment variables
 1. User configurations
 
-You can set the flag to: `empty`, `buildable`, `cautious`, or `eager` (default). By default, dbt indirectly selects all tests if they touch any resource you select. Learn more about these options in [Indirect selection in Test selection examples](/reference/node-selection/test-selection-examples?indirect-selection-mode=empty#indirect-selection).
+You can set the flag to: `empty`, `buildable`, `cautious`, or `eager` (default). By default, dbt indirectly selects all tests if they touch any resource you select. Learn more about these options in [Indirect selection in Test selection examples](/reference/node-selection/test-selection-examples?indirect-selection-mode=eager#indirect-selection).
+
+
+<VersionBlock firstVersion="1.5" >
 
 <IndirSelect features={'/snippets/indirect-selection-definitions.md'}/>
+
+</VersionBlock>
 
 For example, you can run tests that only refer to selected nodes using a CLI configuration:
 
@@ -53,5 +58,3 @@ flags:
 ```
 
 </File>
-
-
