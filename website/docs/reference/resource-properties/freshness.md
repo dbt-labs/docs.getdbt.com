@@ -50,7 +50,7 @@ Currently, calculating freshness from warehouse metadata tables is supported on 
 - [Redshift](/reference/resource-configs/redshift-configs)
 - [BigQuery](/reference/resource-configs/bigquery-configs)
 
-Support is coming soon to the following adapter:
+Support is coming soon to the [Spark](/reference/resource-configs/spark-configs) adapter.
 - [Spark](/reference/resource-configs/spark-configs)
 
 Freshness blocks are applied hierarchically:
