@@ -87,8 +87,8 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 | [state](/reference/node-selection/defer) | path | none | ❌ | `DBT_STATE`, `DBT_DEFER_STATE` | `--state`, `--defer-state` | ❌ |
 | [static_parser](/reference/global-configs/parsing#static-parser) | boolean | True | ✅ | `DBT_STATIC_PARSER` | `--static-parser`, `--no-static-parser` | ❌ |
 | [store_failures](/reference/resource-configs/store_failures) | boolean | False | ✅ (as resource config) | `DBT_STORE_FAILURES` | `--store-failures`, `--no-store-failures` | ✅ |
-| [target_path](/reference/global-configs/json-artifacts) | path | none | ❌ | `DBT_TARGET_PATH` | `--target-path` | ❌ |
-| [target](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None (uses `target/`) | ❌ | `DBT_TARGET` | `--target` | ❌ |
+| [target_path](/reference/global-configs/json-artifacts) | path | None (uses `target/`) | ❌ | `DBT_TARGET_PATH` | `--target-path` | ❌ |
+| [target](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None | ❌ | `DBT_TARGET` | `--target` | ❌ |
 | [use_colors_file](/reference/global-configs/logs#color) | boolean | True | ✅ | `DBT_USE_COLORS_FILE` | `--use-colors-file`, `--no-use-colors-file` | ❌ |
 | [use_colors](/reference/global-configs/print-output#print-color) | boolean | True | ✅ | `DBT_USE_COLORS` | `--use-colors`, `--no-use-colors` | ❌ |
 | [use_experimental_parser](/reference/global-configs/parsing#experimental-parser) | boolean | False | ✅ | `DBT_USE_EXPERIMENTAL_PARSER` | `--use-experimental-parser`, `--no-use-experimental-parser` | ❌ |
