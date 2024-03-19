@@ -26,11 +26,9 @@ Try dbt Explorer! It's available in [Public Preview](/docs/dbt-versions/product-
 
 dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ in your dbt Cloud project. dbt Explorer automatically retrieves the metadata updates after each job run in the production deployment environment so it always has the latest results for your project. 
 
-To view a resource and its metadata, you must define the resource in your project and run a job in the production environment. The resulting metadata depends on the [commands executed by the jobs](/docs/deploy/job-commands). 
+To view a resource and its metadata, you must define the resource in your project and run a job in the production environment. The resulting metadata depends on these [commands](/docs/deploy/job-commands) executed successfully by the jobs: 
 
-For a richer experience with dbt Explorer, you must:
-
-- Run [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment to update model details or results.
+- Run [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment to update the model details or results.
 - Run [dbt docs generate](/reference/commands/cmd-docs) within a job in the environment to view catalog statistics and columns for models, sources, and snapshots.
 - Run [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment to view test results.
 - Run [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment to view source freshness data.
