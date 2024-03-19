@@ -192,7 +192,7 @@ To use the [dbt Cloud's job scheduler](/docs/deploy/job-scheduler), set up one e
 ### Additional configuration
 Explore these additional configurations to optimize your dbt Cloud orchestration setup further:
 
-1. **Custom target names** &mdash; Set a `custom target.name` for every single [corresponding dbt Cloud job](/docs/build/custom-target-names). We recommend modifying the code to use [environment variables](/docs/build/environment-variables) instead since those can be set at the environment level.
+1. **Custom target names** &mdash; Use environment variables to set a `custom target.name` for every [corresponding dbt Cloud job](/docs/build/custom-target-names) at the environment level.
 
 2. **dbt commands** &mdash; Add any relevant [dbt commands](/docs/deploy/job-commands) to execute your dbt Cloud jobs runs.
 
