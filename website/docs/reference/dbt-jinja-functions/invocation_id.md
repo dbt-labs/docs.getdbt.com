@@ -12,3 +12,7 @@ If available, the `invocation_id` is:
 - included in the `info` dictionary in dbt [events and logs](/reference/events-logging#info)
 - included in the `metadata` dictionary in [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata)
 - included as a label in all BigQuery jobs that dbt originates
+- This function is currently supported in Databricks and Postgres. 
+
+Implementation:
+`SELECT '{{ invocation_id }} AS audit_id FROM <table_name>`
