@@ -15,4 +15,4 @@ If available, the `invocation_id` is:
 - This function is currently supported in Databricks and Postgres. 
 
 Implementation:
-`SELECT '{{ invocation_id }} AS audit_id FROM <table_name>`
+`select '{{ invocation_id }} as audit_id from <table_name>`
