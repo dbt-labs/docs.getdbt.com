@@ -184,7 +184,7 @@ To use the [dbt Cloud's job scheduler](/docs/deploy/job-scheduler), set up one e
 
 ### Initial setup steps
 1. **dbt Core version** &mdash; In your environment settings, configure dbt Cloud with the same dbt Core version.
-   - Once your full migration is complete, we recommend upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) to always get the latest features and more.
+   - Once your full migration is complete, we recommend upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) to always get the latest features and more. You only need to do this once.
 
 2. **Configure your jobs** &mdash; [Create jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs) for automated or event-driven dbt jobs. You can use cron execution, manual, pull requests, or API triggers.
    - Note that alongside [jobs in dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
@@ -192,7 +192,7 @@ To use the [dbt Cloud's job scheduler](/docs/deploy/job-scheduler), set up one e
 ### Additional configuration
 Explore these additional configurations to optimize your dbt Cloud orchestration setup further:
 
-1. **Custom target names** &mdash; Set a `custom target.name` for every single [corresponding dbt Cloud job](/docs/build/custom-target-names). We recommend modifying the code to use [environment variables](/docs/build/environment-variables) instead since those can be set at the environment level.
+1. **Custom target names** &mdash; Use environment variables to set a `custom target.name` for every [corresponding dbt Cloud job](/docs/build/custom-target-names) at the environment level.
 
 2. **dbt commands** &mdash; Add any relevant [dbt commands](/docs/deploy/job-commands) to execute your dbt Cloud jobs runs.
 
@@ -202,7 +202,7 @@ Explore these additional configurations to optimize your dbt Cloud orchestration
 
 5. **API access** &mdash; Create [API auth tokens](/docs/dbt-cloud-apis/authentication) and access to [dbt Cloud APIs](/docs/dbt-cloud-apis/overview) as needed.  <Lifecycle status="team,enterprise" />
 
-6. **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/collaborate/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view resources and its metadata in dbt Explorer. Running `dbt compile` will not update resources and its metadata. <Lifecycle status="team,enterprise" />
+6. **dbt Explorer** &mdash; If you use [dbt Explorer](/docs/collaborate/explore-projects) and run production jobs with an external orchestrator, ensure your production jobs run `dbt run` or `dbt build` to update and view models and their [metadata](/docs/collaborate/explore-projects#generate-metadata) in dbt Explorer. Running `dbt compile`  alone will not update model metadata. In addition, features like column-level lineage also requires catalog metadata produced through running `dbt docs generate`. <Lifecycle status="team,enterprise" />
 
 ### CI/CD setup
 
@@ -220,8 +220,8 @@ In this section, you’ll be able to validate whether your models run or compile
 
 You’ll want to make sure you set up your [development environment and credentials](/docs/dbt-cloud-environments#set-developer-credentials).
 
-1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project and ensure your project is set up correctly and you’re able to run commands. This will:
-   - Make sure your project compiles correctly.
+1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and that you can run dbt commands. For example:
+   - Run `dbt compile` to make sure your project compiles correctly.
    - Run a few models in the dbt Cloud IDE or dbt Cloud CLI to ensure you’re experiencing accurate results in development.
 
 2. Once your first job has successfully run in your production environment, use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage" />  to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
@@ -236,7 +236,7 @@ You have learned:
 - How to set up your dbt Cloud account
 - How to connect your data platform and Git repository
 - How to configure your development, orchestration, and CI/CD environments
-You’ve set up your models and are ready to run your first job in dbt Cloud.
+- How to set up environment variables and validate your models. 
 
 For next steps, we'll soon share other guides on how to manage your move and tips/faqs. Stay tuned!
 
