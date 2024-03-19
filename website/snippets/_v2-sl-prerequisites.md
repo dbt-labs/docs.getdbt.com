@@ -7,4 +7,4 @@
 - Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
   - dbt Core or Developer accounts can define metrics but won't be able to dynamically query them.<br />
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the latest dbt Semantic Layer.  
-- Note that the dbt Semantic Layer doesn't yet support SSH tunneling for [Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections or SSO for the Semantic Layer production credential (SSO for the development user is supported).
+- Note that the dbt Semantic Layer doesn't yet support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections.  It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for Semantic Layer  [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
