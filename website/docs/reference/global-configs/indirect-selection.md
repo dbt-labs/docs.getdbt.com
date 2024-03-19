@@ -21,6 +21,20 @@ You can set the flag to: `empty`, `buildable`, `cautious`, or `eager` (default).
 
 <IndirSelect features={'/snippets/indirect-selection-definitions.md'}/>
 
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-dbt-build.png" width="85%" title="dbt build" />
+
+<Lightbox src src="/img/docs/reference/indirect-selection-eager.png" width="85%" title="Eager (default)"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-buildable.png" width="85%" title="Buildable"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-cautious.png" width="85%" title="Cautious"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-empty.png" width="85%" title="Empty"/>
+
+</DocCarousel>
+
 </VersionBlock>
 
 For example, you can run tests that only refer to selected nodes using a CLI configuration:
