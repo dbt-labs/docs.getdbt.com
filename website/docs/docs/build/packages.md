@@ -56,6 +56,11 @@ The default [`packages-install-path`](/reference/project-configs/packages-instal
 You can specify a package using one of the following methods, depending on where your package is stored.
 
 ### Hub packages (recommended)
+
+::: info
+dbt Labs hosts the Package Hub as a courtesy to the dbt Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [dbt Labs Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
+:::
+
 [dbt Hub](https://hub.getdbt.com) is a registry for dbt packages. Packages that are listed on dbt Hub can be installed like so:
 
 <File name='packages.yml'>
@@ -81,7 +86,9 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 * Your project uses both the dbt-utils and Snowplow packages; and the Snowplow package _also_ uses the dbt-utils package.
 * Your project uses both the Snowplow and Stripe packages, both of which use the dbt-utils package.
 
-In comparison, other package installation methods are unable to handle the duplicate dbt-utils package.
+In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
+
+Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the DBT_PACKAGE_HUB_URL environment variable.
 
 #### Prerelease versions
 
