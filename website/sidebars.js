@@ -358,7 +358,16 @@ const sidebarSettings = {
           items: [
             "docs/build/enhance-your-models",
             "docs/build/materializations",
-            "docs/build/incremental-models",
+            {
+              type: "category",
+              label: "Incremental models",
+              link: { type: "doc", id: "docs/build/incremental-models-overview",},
+              items: [           
+                "docs/build/incremental-models-overview",
+                "docs/build/incremental-models",
+                "docs/build/incremental-strategy",
+              ],
+            },
           ],
         },
         {
@@ -1115,6 +1124,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",
