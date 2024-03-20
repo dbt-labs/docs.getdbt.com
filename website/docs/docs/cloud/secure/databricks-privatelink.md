@@ -24,7 +24,10 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 3-5 business days for this process to complete. Support will contact you when the endpoint is available.
+import PrivateLink from '/snippets/_PrivateLink-SLA.md';
+
+<PrivateLink />
+
 
 3. Once dbt Cloud support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace
 
