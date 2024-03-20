@@ -28,7 +28,6 @@ import PrivateLink from '/snippets/_PrivateLink-SLA.md';
 
 <PrivateLink />
 
-
 3. Once dbt Cloud support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace
 
 ## Create Connection in dbt Cloud
