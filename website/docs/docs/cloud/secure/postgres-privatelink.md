@@ -67,9 +67,9 @@ Subject: New Multi-Tenant PrivateLink Request
 ```
 
 
-import PrivateLink from '/snippets/_PrivateLink-SLA.md';
+import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
 
-<PrivateLink />
+<PrivateLinkSLA />
 
 ### 5. Accepting the connection request
 

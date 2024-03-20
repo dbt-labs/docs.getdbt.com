@@ -43,9 +43,9 @@ Subject: New Multi-Tenant PrivateLink Request
 _*By default dbt Cloud will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
 
 
-import PrivateLink from '/snippets/_PrivateLink-SLA.md';
+import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
 
-<PrivateLink />
+<PrivateLinkSLA />
 
 ## Create Connection in dbt Cloud
 
