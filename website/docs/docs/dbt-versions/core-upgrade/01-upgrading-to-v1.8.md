@@ -17,11 +17,15 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 dbt Labs plans to release dbt Core v1.8.0-b1 and dbt Labs-maintained adapters on February 28th, 2024.
 
-## Keep on the latest version in dbt Cloud
+## Keep on the latest version <Lifecycle status='public preview' />
 
-With dbt Cloud, you can get early access to many new features and functionality before it's in the Generally Available (GA) release of dbt Core v1.8 without the need to manage version upgrades. For more details, refer to [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+With dbt Cloud, you can get early access to many new features and functionality before it's in the Generally Available (GA) release of dbt Core v1.8 without the need to manage version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) setting for more details.
 
-The **Keep on latest version** setting is currently available in beta for most dbt Cloud customers, with full availability by the end of March 2024.
+:::note Availability  
+
+Public preview is currently available in dbt Cloud for Databricks and Starburst/Trino connections. Additional support will be coming in late March.
+
+:::
 
 ## New and changed features and functionality
 

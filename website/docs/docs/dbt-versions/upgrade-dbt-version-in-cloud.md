@@ -11,18 +11,17 @@ Navigate to the settings page of an environment, then click **Edit**. Click the 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
-### Keep on latest version <Lifecycle status='beta' />
+### Keep on latest version <Lifecycle status='public preview' />
 
 By choosing to **Keep on latest version**, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades for you, as part of testing and redeploying the dbt Cloud SaaS application.
 
 You can upgrade to **Keep on latest version** no matter which version of dbt you currently have selected. As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
-:::tip Interested? 
+:::note Availability  
 
-This feature is currently available in beta for all dbt Labs-maintained adapters and will be widely available in March.
+Public preview is currently available for Databricks and Starburst/Trino connections. Additional support will be coming in late March.
 
 :::
-
 
 ### Override dbt version
 
