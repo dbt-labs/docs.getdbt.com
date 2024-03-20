@@ -104,7 +104,6 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-
 <PrivateLinkSLA />
 
 ## Create Connection in dbt Cloud
