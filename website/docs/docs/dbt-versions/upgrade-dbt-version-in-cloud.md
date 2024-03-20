@@ -19,7 +19,7 @@ You can upgrade to **Keep on latest version** no matter which version of dbt you
 
 :::note Availability  
 
-Public preview is currently available for Databricks and Starburst/Trino connections. Additional support will be coming in late March.
+[Microsoft Fabric support](https://docs.getdbt.com/docs/cloud/connect-data-platform/connect-microsoft-fabric) will be coming in late March. All other connections are supported.
 
 :::
 
