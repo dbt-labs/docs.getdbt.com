@@ -116,3 +116,106 @@ Here's an extract of some of the code, using the [cortex.complete() function](ht
 ## Share your experiences
 
 If you're doing anything like this in your work or side project, I'd love to hear about it in the comment section on Discourse or in machine-learning-general in Slack.
+
+## Appendix: An example complete model
+
+Here's the full model that I'm running to create the overall rollup messages that get posted to Slack, built on top of the row-by-row summary in an earlier model:
+
+```sql
+{{
+    config(
+        materialized='incremental',
+        unique_key='unique_key',
+        full_refresh=false
+    )
+-}}
+
+
+{# 
+    This partition_by dict is to dry up the columns that are used in different parts of the query. 
+    The SQL is used in the partition by components of the window function aggregates, and the column 
+    names are used (in conjunction with the SQL) to select the relevant columns out in the final model.
+    They could be written out manually, but it creates a lot of places to update when changing from 
+    day to week truncation for example. 
+
+    Side note: I am still not thrilled with this approach, and would be happy to hear about alternatives!
+#}
+{%- set partition_by = [
+    {'column': 'summary_period', 'sql': 'date_trunc(day, sent_at)'},
+    {'column': 'product_segment', 'sql': 'lower(product_segment)'},
+    {'column': 'is_further_attention_needed', 'sql': 'is_further_attention_needed'},
+] -%}
+
+{% set partition_by_sqls = [] -%}
+{% set partition_by_columns = [] -%}
+
+{% for p in partition_by -%}
+    {% do partition_by_sqls.append(p.sql) -%}
+    {% do partition_by_columns.append(p.column) -%}
+{% endfor -%}
+
+
+with
+
+summaries as (
+
+    select * from {{ ref('fct_slack_thread_llm_summaries') }}
+    where not has_townie_participant
+
+),
+
+aggregated as (
+    select distinct
+        {# Using the columns defined above #}
+        {% for p in partition_by -%}
+            {{ p.sql }} as {{ p.column }},
+        {% endfor -%}
+
+        -- This creates a JSON array, where each element is one thread + its permalink. 
+        -- Each array is broken down by the partition_by columns defined above, so there's
+        -- one summary per time period and product etc.
+        array_agg(
+            object_construct(
+                'permalink', thread_permalink,
+                'thread', thread_summary
+            )
+        ) over (partition by {{ partition_by_sqls | join(', ') }}) as agg_threads,
+        count(*) over (partition by {{ partition_by_sqls | join(', ') }}) as num_records,
+        
+        -- The partition columns are the grain of the table, and can be used to create
+        -- a unique key for incremental purposes
+        {{ dbt_utils.generate_surrogate_key(partition_by_columns) }} as unique_key
+    from summaries
+    {% if is_incremental() %}
+        where unique_key not in (select this.unique_key from {{ this }} as this) 
+    {% endif %}
+
+),
+
+summarised as (
+
+    select
+        *,
+        trim(snowflake.cortex.complete(
+            'llama2-70b-chat',
+            concat(
+                'In a few bullets, describe the key takeaways from these threads. For each object in the array, summarise the `thread` field, then provide the Slack permalink URL from the `permalink` field for that element in markdown format at the end of each summary. Do not repeat my request back to me in your response.',
+                agg_threads::text
+            )
+        )) as overall_summary
+    from aggregated
+
+),
+
+final as (
+    select 
+        * exclude overall_summary,
+        -- The LLM loves to say something like "Sure, here's your summary:" despite my best efforts. So this strips that line out
+        regexp_replace(
+            overall_summary, '(^Sure.+:\n*)', ''
+        ) as overall_summary
+
+    from summarised
+
+select * from final
+```
