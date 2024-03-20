@@ -97,20 +97,19 @@ Here's an extract of some of the code, using the [cortex.complete() function](ht
 -- a cut down list of segments for the sake of readability
 {% set segments = ['Warehouse configuration', 'dbt Cloud IDE', 'dbt Core', 'SQL', 'dbt Orchestration', 'dbt Explorer', 'Unknown'] %}
 
-    select
-        select trim(
-            snowflake.cortex.complete(
-                'llama2-70b-chat',
-                concat(
-                    'Identify the dbt product segment that this message relates to, out of [{{ segments | join ("|") }}]. Your response should be only the segment with no explanation. <message>',
-                    text,
-                    '</message>'
-                )
+    select trim(
+        snowflake.cortex.complete(
+            'llama2-70b-chat',
+            concat(
+                'Identify the dbt product segment that this message relates to, out of [{{ segments | join ("|") }}]. Your response should be only the segment with no explanation. <message>',
+                text,
+                '</message>'
             )
-        ) as product_segment_raw,
+        )
+    ) as product_segment_raw,
 
-        -- reusing the segments Jinja variable here
-        coalesce(regexp_substr(product_segment_raw, '{{ segments | join ("|") }}'), 'Unknown') as product_segment
+    -- reusing the segments Jinja variable here
+    coalesce(regexp_substr(product_segment_raw, '{{ segments | join ("|") }}'), 'Unknown') as product_segment
 ```
 
 ## Share your experiences
