@@ -215,6 +215,7 @@ final as (
         ) as overall_summary
 
     from summarised
+)
 
 select * from final
 ```
