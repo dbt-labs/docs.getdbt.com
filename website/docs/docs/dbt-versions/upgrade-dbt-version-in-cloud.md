@@ -19,7 +19,7 @@ You can upgrade to **Keep on latest version** no matter which version of dbt you
 
 :::note Availability  
 
-[Microsoft Fabric support](https://docs.getdbt.com/docs/cloud/connect-data-platform/connect-microsoft-fabric) will be coming in late March. All other connections are supported.
+[Microsoft Fabric support](/docs/cloud/connect-data-platform/connect-microsoft-fabric) will be coming in late March. All other connections are supported.
 
 :::
 
