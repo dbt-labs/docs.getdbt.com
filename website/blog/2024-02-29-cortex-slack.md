@@ -68,13 +68,50 @@ You probably don't have the exact same use case as I do, but you can imagine a w
 - A mobile app developer might pull in app store reviews for sentiment analysis
 - By calculating the vector embeddings for text, deduplicating similar but nonidentical text becomes more tractable.
 
+Here's an extract of some of the code, using the [cortex.complete() function](https://docs.snowflake.com/sql-reference/functions/complete-snowflake-cortex) - notice that the whole thing feels just like normal SQL, because it is!
+
+```sql
+        select trim(
+            snowflake.cortex.complete(
+                'llama2-70b-chat',
+                concat(
+                    'Write a short, two sentence summary of this Slack thread. Focus on issues raised. Be brief. <thread>',
+                    text_to_summarize,
+                    '</thread>. The users involved are: <users>',
+                    participant_metadata.participant_users::text,
+                    '</users>'
+                )
+            )
+        ) as thread_summary,
+```
+
 ## Tips for building LLM-powered dbt models
 
 - **Always build incrementally.** Anyone who's interacted with any LLM-powered tool knows that it can take some time to get results back from a request, and that the results can vary from one invocation to another. For speed, cost and consistency reasons, I implemented both models incrementally even though in terms of row count the tables are tiny. I also added the [full_refresh: false](https://docs.getdbt.com/reference/resource-configs/full_refresh) config to protect against other full refreshes we run to capture late-arriving facts.
 - **Beware of token limits.** Requests that contain [too many tokens](https://docs.snowflake.com/LIMITEDACCESS/cortex-functions#model-restrictions) are truncated, which can lead to unexpected results if the cutoff point is halfway through a message. In future I would first try to use the llama-70b model (~4k token limit), and for unsuccessful rows make a second pass using the mistral-7b model (~32k token limit). Like many aspects of LLM powered workflows, we expect token length constraints to increase substantially in the near term.
-- **Orchestrate defensively, for now**. Because of the above considerations, I've got these steps running in their own dbt Cloud job, triggered by the successful completion of our main project job. I don't want the data team to be freaked out by a failing production run due to my experiments. We use YAML selectors to define what gets run in our default job; I added another selector for these models and then added that selector to the default job's exclusion list. Once this becomes more stable, I'll fold it into our normal job.
+- **Orchestrate defensively, for now**. Because of the above considerations, I've got these steps running in their own dbt Cloud job, triggered by the successful completion of our main project job. I don't want the data team to be freaked out by a failing production run due to my experiments. We use [YAML selectors](/reference/node-selection/yaml-selectors) to define what gets run in our default job; I created a new selector for these models and then added that selector to the default job's exclusion list. Once this becomes more stable, I'll fold it into our normal job.
 - **Iterate on your prompt.** In the same way as you gradually iterate on a SQL query, you have to tweak your prompt frequently in development to ensure you're getting the expected results. In general, I started with the shortest command I thought could work and tweaked it based on the results I was seeing. One slightly disappointing part of prompt engineering: I can spend an afternoon working on a problem, and at the end of it only have a single line of code to check into a commit.
-- **Remember that your results are non-deterministic.** For someone who loves to talk about <Term id="idempotent">idempotency</Term> , having a model whose results vary based on the vibes of some rocks we tricked into dreaming is a bit weird, and requires a bit more defensive coding than you may be used to. For example, one of the prompts I use is classification-focused (identifying the discussion's product area), and normally the result is just the name of that product. But sometimes it will return a little spiel explaining its thinking, so I need to explicitly extract that value from the response instead of unthinkingly accepting whatever I get back. Defining the valid options in a Jinja variable has helped keep them in sync: I can pass them into the prompt and then reuse the same list when extracting the correct answer.
+- **Remember that your results are non-deterministic.** For someone who loves to talk about <Term id="idempotent">idempotency</Term>, having a model whose results vary based on the vibes of some rocks we tricked into dreaming is a bit weird, and requires a bit more defensive coding than you may be used to. For example, one of the prompts I use is classification-focused (identifying the discussion's product area), and normally the result is just the name of that product. But sometimes it will return a little spiel explaining its thinking, so I need to explicitly extract that value from the response instead of unthinkingly accepting whatever I get back. Defining the valid options in a Jinja variable has helped keep them in sync: I can pass them into the prompt and then reuse the same list when extracting the correct answer.
+
+```sql
+-- a cut down list of segments for the sake of readability
+{% set segments = ['Warehouse configuration', 'dbt Cloud IDE', 'dbt Core', 'SQL', 'dbt Orchestration', 'dbt Explorer', 'Unknown'] %}
+
+    select
+        select trim(
+            snowflake.cortex.complete(
+                'llama2-70b-chat',
+                concat(
+                    'Identify the dbt product segment that this message relates to, out of [{{ segments | join ("|") }}]. Your response should be only the segment with no explanation. <message>',
+                    text,
+                    '</message>'
+                )
+            )
+        ) as product_segment_raw,
+
+        -- reusing the segments Jinja variable here
+        coalesce(regexp_substr(product_segment_raw, '{{ segments | join ("|") }}'), 'Unknown') as product_segment
+```
 
 ## Share your experiences
 
