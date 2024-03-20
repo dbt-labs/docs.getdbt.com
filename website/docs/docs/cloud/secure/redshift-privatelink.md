@@ -104,7 +104,6 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
 
 <PrivateLinkSLA />
 
