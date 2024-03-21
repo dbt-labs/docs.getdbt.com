@@ -12,7 +12,6 @@ If available, the `invocation_id` is:
 - included in the `info` dictionary in dbt [events and logs](/reference/events-logging#info)
 - included in the `metadata` dictionary in [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata)
 - included as a label in all BigQuery jobs that dbt originates
-- This function is currently supported in Databricks and Postgres. 
 
 **Example usage**:
 You can use the following example code for all data platforms. Remember to replace `TABLE_NAME` with the actual name of your target table:
