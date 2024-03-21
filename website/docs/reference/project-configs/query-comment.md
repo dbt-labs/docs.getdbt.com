@@ -17,6 +17,10 @@ The `query-comment` configuration also accepts a dictionary input, like so:
 <File name='dbt_project.yml'>
 
 ```yml
+models:
+  my_dbt_project:
+    +materliazed: table
+
 query-comment:
   comment: string
   append: true | false
