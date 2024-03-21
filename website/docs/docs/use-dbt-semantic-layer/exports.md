@@ -26,7 +26,7 @@ Essentially, exports are like any other table in your data platform. They enable
 
 | Feature |  Exports | <div style={{width:'250px, text-align: center'}}>Saved queries</div>  |
 | ----------- | ----------- | ---------------- |
-| **Availability**    | Available on dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plans with dbt versions 1.7 or newer.| Available in both dbt Core and dbt Cloud.     |
+| **Availability**    | Available on dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plans with dbt versions 1.7 or newer. <br /> Note, Exports are not supported in dbt Cloud IDE yet. | Available in both dbt Core and dbt Cloud.     |
 | **Purpose**         | To write saved queries in your data platform and expose metrics and dimensions as a view or table. | To define and manage common Semantic Layer queries in YAML, including metrics and dimensions.   |
 | **Usage**           | Automatically runs saved queries and writes them within your data platform. Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. <br /><br />Example: Create a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing common MetricFlow queries within dbt projects.<br /><br /><br />Example: Group related metrics together for better organization, and include commonly used dimensions and filters. | For materializing query results in the data platform. |
 | **Integration**     | Must have the dbt Semantic Layer configured in your dbt project.<br /><br />Tightly integrated with the [MetricFlow Server](/docs/use-dbt-semantic-layer/sl-architecture#components) and dbt Cloud's job scheduler. | Integrated into the dbt <Term id="dag" /> and managed alongside other dbt nodes. |
@@ -79,7 +79,7 @@ You can use the following parameters to define an `export`:
 
 Once you define exports in your dbt project, then you can run them. There are two ways to run an export:
   
-- [Run exports in development](#exports-in-development) using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
+- [Run exports in development](#exports-in-development) using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). Note, the dbt Cloud IDE doesn't support Exports yet.
 - [Run exports in production](#exports-in-production) using the [dbt Cloud job scheduler](/docs/deploy/job-scheduler).
 
 ### Exports in development

@@ -36,7 +36,7 @@ When configuring your unit test, you can override the output of [macros](/docs/b
 You can override the output of any macro in your unit test defition. 
 
 If the model you're unit testing uses these macros, you must override them:
-  - [`is_incremental`](/docs/build/incremental-models#understanding-the-is_incremental-macro): If you're unit testing an incremental model, you must explicity set `is_incremental` to `true` or `false`. See more docs on unit testing incremental models [here](/docs/build/unit-tests#unit-testing-incremental-models). 
+  - [`is_incremental`](/docs/build/incremental-models#understand-the-is_incremental-macro): If you're unit testing an incremental model, you must explicity set `is_incremental` to `true` or `false`. See more docs on unit testing incremental models [here](/docs/build/unit-tests#unit-testing-incremental-models). 
 
   ```yml
 
@@ -61,7 +61,7 @@ If the model you're unit testing uses these macros, you must override them:
       overrides:
         macros:
           # explicity set star to relevant list of columns
-          star: col_a,col_b,col_c 
+          dbt_utils.star: col_a,col_b,col_c 
       ...
 
   ``` 
