@@ -2,10 +2,10 @@
 title: "Google Sheets (beta)"
 description: "Integrate with Google Sheets to query your metrics in a spreadsheet."
 tags: [Semantic Layer]
-sidebar_label: "Google Sheets (beta)"
+sidebar_label: "Google Sheets (Preview)"
 ---
 
-# Google Sheets <Lifecycle status='beta'/>
+# Google Sheets <Lifecycle status='preview'/>
 
 :::info Beta functionality
 Google Sheets integration with the dbt Semantic Layer is a [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) feature.
