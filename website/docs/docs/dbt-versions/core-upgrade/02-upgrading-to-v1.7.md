@@ -59,7 +59,6 @@ dbt Core v1.5 introduced model governance which we're continuing to refine.  v1.
 - **[Set `access` as a config](/reference/resource-configs/access):** You can now set a model's `access` within config blocks in the model's file or in the `dbt_project.yml` for an entire subfolder at once.
 - **[Type aliasing for model contracts](/reference/resource-configs/contract):** dbt will use each adapter's built-in type aliasing for user-provided data types—meaning you can now write `string` always, and dbt will translate to `text` on Postgres/Redshift. This is "on" by default, but you can opt-out.
 - **[Raise warning for numeric types](/reference/resource-configs/contract):** Because of issues when putting `numeric` in model contracts without considering that default values such as `numeric(38,0)` might round decimals accordingly. dbt will now warn you if it finds a numeric type without specified precision/scale.
-scale.
 
 ### dbt clean
 
