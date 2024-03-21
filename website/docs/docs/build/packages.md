@@ -59,7 +59,7 @@ You can specify a package using one of the following methods, depending on where
 
 dbt Labs hosts the [Package hub](https://hub.getdbt.com) as a courtesy to the dbt Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [dbt Labs Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
 
-You can install available hub packages listed in the Package hub in the following way:
+You can install available hub packages in the following way:
 
 <File name='packages.yml'>
 
