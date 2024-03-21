@@ -8,7 +8,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Discovery API                 | ✅           | ✅                     | ❌                   | 
 | Webhooks (Outbound)           | ✅           | ✅                     | ❌                   |
 | Continuous Integration, including CI jobs                      | ✅           | ✅                     | ✅                   | 
-| Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
+| Semantic Layer                | ✅           | ✅ (Upon request)      | ❌                   | 
 | IP Restrictions               | ✅           | ✅                     | ✅                   | 
 | PrivateLink egress            | ✅ (AWS only)| ✅                     | ✅                   | 
 | PrivateLink ingress           | ❌           | ✅                     | ✅                   | 
