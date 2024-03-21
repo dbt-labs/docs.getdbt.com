@@ -96,7 +96,7 @@ The following lists the features available for adapters:
 
 ### Catalog 
 
-You can build the catalog incrementally for adapters that support it. This allows for the catalog to be built along with the model, which eliminates the need to run a lengthy `dbt docs generate` at the end of a dbt run. For adapters that don't support incremental catalog generation, you must run `dbt docs generate` to build the catalog.
+You can build the catalog incrementally for adapters that support it. This allows for the catalog to be built along with the model, which eliminates the need to run a lengthy `dbt docs generate` at the end of a dbt run. For adapters that don't support incremental catalog generation, you must run `dbt docs generate --select ...` to build the catalog.
 
 ### Source freshness
 
