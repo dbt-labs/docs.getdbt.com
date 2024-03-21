@@ -16,10 +16,25 @@ When all flags are set, the order of precedence is as follows. Refer to [About g
 
 You can set the flag to: `empty`, `buildable`, `cautious`, or `eager` (default). By default, dbt indirectly selects all tests if they touch any resource you select. Learn more about these options in [Indirect selection in Test selection examples](/reference/node-selection/test-selection-examples?indirect-selection-mode=eager#indirect-selection).
 
-
 <VersionBlock firstVersion="1.5" >
 
 <IndirSelect features={'/snippets/indirect-selection-definitions.md'}/>
+
+The following is a visualization of the impact `--indirect-selection` and the various flags have using three models, three tests, and `dbt build` as an example:
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-dbt-build.png" width="85%" title="dbt build" />
+
+<Lightbox src src="/img/docs/reference/indirect-selection-eager.png" width="85%" title="Eager (default)"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-buildable.png" width="85%" title="Buildable"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-cautious.png" width="85%" title="Cautious"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-empty.png" width="85%" title="Empty"/>
+
+</DocCarousel>
 
 </VersionBlock>
 
