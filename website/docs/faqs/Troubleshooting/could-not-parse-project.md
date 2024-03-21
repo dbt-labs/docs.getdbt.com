@@ -4,14 +4,13 @@ description: "Receiving a Could not parse the dbt project' error error in dbt Cl
 sidebar_label: 'Could not parse the dbt project error in dbt Cloud'
 ---
 
-If you're receiving a `Could not parse the dbt project. Please check that the repository contains a valid dbt project` error in a dbt Cloud job run, here are the some reasons why you're seeing this error:
+The error message `Could not parse the dbt project. Please check that the repository contains a valid dbt project` in your dbt Cloud job run or development usually occurs for a couple of reasons:
 
-- You have a tab indentation in your `dbt_project.yml` file instead of spaces.
-- Your `dbt_project.yml` file doesn't exist in your dbt project repository.
-- There's a parsing failure in a YAML file.
+- There's a parsing failure in a YAML file (such as a a tab indentation)
 - Your `dbt_project.yml` file has missing fields or incorrect formatting.
+- Your `dbt_project.yml` file doesn't exist in your dbt project repository.
 
-To identify and confirm this error:
+To resolve this issue, consider the following:
 - Use an online YAML parser or validator to check for any parsing errors in your YAML file. Some known parsing errors include missing fields, incorrect formatting, or tab indentation.
 - Or ensure your `dbt_project.yml` file.
 
