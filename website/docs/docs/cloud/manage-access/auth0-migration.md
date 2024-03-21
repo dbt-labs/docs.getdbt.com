@@ -116,4 +116,4 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable new SSO for Azure AD"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable new SSO"/>

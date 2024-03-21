@@ -38,7 +38,7 @@ Many customers ask why they need to select Multitenant instead of Single tenant,
 
 Here's what your app should look like before registering it:
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering an Active Directory app"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering a Microsoft Entra app"/>
 
 
 ## Add permissions to your new app

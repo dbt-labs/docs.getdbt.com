@@ -35,8 +35,8 @@ The following are the required fields for setting up a connection with a Microso
 | **Port** | The server port. You can use `1433` (the default), which is the standard SQL server port number. |
 | **Database** | The database name. |
 | **Authentication** | Choose **Active Directory Password** from the dropdown. | 
-| **User** | The AD username. |
-| **Password** | The AD username's password. |
+| **User** | The Microsoft Entra username. |
+| **Password** | The Microsoft Entra password. |
 
 ## Configuration 
 
