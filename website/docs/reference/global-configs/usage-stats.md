@@ -13,6 +13,7 @@ Usage statistics are fired when dbt is invoked and when models are run. These ev
 - How long it took.
 - An anonymized hash key representing the raw model content.
 - Number of nodes that were run.
+
 For full transparency, you can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/tracking.py).
 
 - dbt Cloud has telemetry enabled by default to help us enhance the user experience and improve the product by using real user feedback and usage patterns. While it cannot be disabled, we ensure the data is [secure](https://www.getdbt.com/security) and used responsibly. Collecting this data enables us to provide a better product experience, including improvements to the performance of dbt. 
