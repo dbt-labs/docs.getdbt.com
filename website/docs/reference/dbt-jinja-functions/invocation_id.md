@@ -14,5 +14,7 @@ If available, the `invocation_id` is:
 - included as a label in all BigQuery jobs that dbt originates
 - This function is currently supported in Databricks and Postgres. 
 
-Implementation:
-`select '{{ invocation_id }} as audit_id from <table_name>`
+**Example usage**:
+You can use the following example code for all data platforms. Remember to replace `TABLE_NAME` with the actual name of your target table:
+
+`select '{{ invocation_id }}' as test_id from TABLE_NAME`
