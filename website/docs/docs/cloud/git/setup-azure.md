@@ -34,7 +34,7 @@ Many customers ask why they need to select Multitenant instead of Single tenant,
 6. Add a redirect URI by selecting **Web** and, in the field, entering `https://YOUR_ACCESS_URL/complete/microsoft_entra_id`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 7. Click **Register**.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Azure AD app registrations"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Microsoft Entra app registrations"/>
 
 Here's what your app should look like before registering it:
 
