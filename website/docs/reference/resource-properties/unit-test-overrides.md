@@ -61,7 +61,7 @@ If the model you're unit testing uses these macros, you must override them:
       overrides:
         macros:
           # explicity set star to relevant list of columns
-          star: col_a,col_b,col_c 
+          dbt_utils.star: col_a,col_b,col_c 
       ...
 
   ``` 
