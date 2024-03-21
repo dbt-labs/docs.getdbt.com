@@ -13,6 +13,10 @@ It will also produce an artifact with detailed timing information, which is usef
 
 Starting in v1.5, `dbt parse` will write or return a [manifest](/reference/artifacts/manifest-json), enabling you to introspect dbt's understanding of all the resources in your project.
 
+By default, the IDE will attempt to do a "partial" parse, which means we will attempt to only parse changes to the project since the last parse. Since the IDE peforms parsing in the background anytime changes are saved, a manually invoked `dbt parse` will almost always be a very fast partial with few to no changes parsed.
+
+As an option, you can use the flag `--no-partial-parse` to force dbt to do a full re-parse of the project.
+
 </VersionBlock>
 
 ```
