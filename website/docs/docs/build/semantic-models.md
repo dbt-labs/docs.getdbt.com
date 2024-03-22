@@ -20,11 +20,16 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
+
+
 Here we describe the Semantic model components with examples:
 
 | Component | Description | Type |
 | --------- | ----------- | ---- |
-| [Name](#name) | Choose a unique name for the semantic model. Avoid using double underscores (__) in the name as they're not supported. | Required |
+| [Name](#name) | Choose a unique name for the semantic model. Avoid using double underscores (__) in the name as they're not supported.  | Required |
 | [Description](#description) | Includes important details in the description | Optional |
 | [Model](#model) | Specifies the dbt model for the semantic model using the `ref` function | Required |
 | [Defaults](#defaults) | The defaults for the model, currently only `agg_time_dimension` is supported.  | Required |
@@ -44,13 +49,13 @@ semantic_models:
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
     defaults:                                 ## Required
-      agg_time_dimension: dimension_name    ## Required if the model contains dimensions
+      agg_time_dimension: dimension_name    ## Required if the model contains measures
     entities:                                 ## Required
        - see more information in entities
     measures:                                 ## Optional
-       - see more information in measures section
+       - see more information in the measures section
     dimensions:                               ## Required
-       - see more information in dimensions section
+       - see more information in the dimensions section
     primary_entity: >-
       if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
 ```
@@ -216,11 +221,15 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 ### Dimensions 
 
-[Dimensions](/docs/build/dimensions) are the different ways you can group or slice data for a metric. It can be time-consuming and error-prone to anticipate all possible options in a single table, such as region, country, user role, and so on. 
+[Dimensions](/docs/build/dimensions) are different ways to organize or look at data. For example, you might group data by things like region, country, or what job someone has. However, trying to set up a system that covers every possible way to group data can be time-consuming and prone to errors.
 
-MetricFlow simplifies this by allowing you to query all metric groups and construct the join during the query. To specify dimensions parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical groups represent qualitative values, while time groups represent dates of varying granularity.
+Instead of trying to figure out all the possible groupings ahead of time, MetricFlow lets you ask for the data you need and sorts out how to group it dynamically. You tell it what groupings (dimensions parameters) you're interested in by giving it a `name` (either a column or SQL expression like "country" or "user role") and the `type` of grouping it is (`categorical` or `time`). Categorical groups are for things you can't measure in numbers, while time groups represent dates.
 
-Dimensions are identified using the name parameter, just like identifiers. The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups. MetricFlow requires all dimensions be tied to a primary entity. 
+- Dimensions are identified using the name parameter, just like identifiers.
+- The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups.
+- MetricFlow requires all dimensions to be tied to a primary entity. 
+
+While there's technically no limit to the number of dimensions in a semantic model, it's important to ensure the model remains effective and efficient for its intended purpose.
 
 :::info For time groups
 

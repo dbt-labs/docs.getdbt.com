@@ -14,7 +14,6 @@ const sidebarSettings = {
       items: [
         "docs/supported-data-platforms",
         "docs/connect-adapters",
-        "docs/verified-adapters",
         "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-core-adapters",
@@ -213,7 +212,8 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/upsolver-setup",
                 "docs/core/connect-data-platform/starrocks-setup",
                 "docs/core/connect-data-platform/extrica-setup",
-		"docs/core/connect-data-platform/risingwave-setup",
+                "docs/core/connect-data-platform/risingwave-setup",
+                "docs/core/connect-data-platform/yellowbrick-setup",
               ],
             },
           ],
@@ -340,6 +340,14 @@ const sidebarSettings = {
                 "docs/build/simple",
               ],
             },
+            {
+              type: "category",
+              label: "Advanced data modeling",
+              link: { type: "doc", id: "docs/build/advanced-topics" },
+              items: [
+                "docs/build/fill-nulls-advanced",
+              ],
+            },
           ],
         },
         {
@@ -350,7 +358,16 @@ const sidebarSettings = {
           items: [
             "docs/build/enhance-your-models",
             "docs/build/materializations",
-            "docs/build/incremental-models",
+            {
+              type: "category",
+              label: "Incremental models",
+              link: { type: "doc", id: "docs/build/incremental-models-overview",},
+              items: [           
+                "docs/build/incremental-models-overview",
+                "docs/build/incremental-models",
+                "docs/build/incremental-strategy",
+              ],
+            },
           ],
         },
         {
@@ -490,9 +507,10 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        "docs/use-dbt-semantic-layer/sl-faqs",
         {
           type: "category",
-          label: "Integrations",
+          label: "Available integrations",
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
           items: [
             "docs/use-dbt-semantic-layer/avail-sl-integrations",
@@ -689,7 +707,6 @@ const sidebarSettings = {
         "reference/project-configs/seed-paths",
         "reference/project-configs/dispatch-config",
         "reference/project-configs/docs-paths",
-        "reference/project-configs/log-path",
         "reference/project-configs/macro-paths",
         "reference/project-configs/packages-install-path",
         "reference/project-configs/name",
@@ -700,7 +717,6 @@ const sidebarSettings = {
         "reference/project-configs/require-dbt-version",
         "reference/project-configs/snapshot-paths",
         "reference/project-configs/model-paths",
-        "reference/project-configs/target-path",
         "reference/project-configs/test-paths",
         "reference/project-configs/version",
       ],
@@ -734,6 +750,7 @@ const sidebarSettings = {
         "reference/resource-configs/upsolver-configs",
         "reference/resource-configs/starrocks-configs",
         "reference/resource-configs/infer-configs",
+        "reference/resource-configs/yellowbrick-configs",
       ],
     },
     {
@@ -835,6 +852,11 @@ const sidebarSettings = {
           label: "For unit tests",
           items: [
             "reference/resource-properties/unit-tests",
+            "reference/resource-properties/unit-test-input",
+            "reference/resource-properties/unit-testing-versions",
+            "reference/resource-properties/unit-test-overrides",
+            "reference/resource-properties/data-formats",
+            "reference/resource-properties/data-types",
           ],
         },
         {
@@ -880,22 +902,6 @@ const sidebarSettings = {
         "reference/dbt-commands",
         {
           type: "category",
-          label: "Node selection",
-          items: [
-            "reference/node-selection/syntax",
-            "reference/node-selection/graph-operators",
-            "reference/node-selection/set-operators",
-            "reference/node-selection/exclude",
-            "reference/node-selection/methods",
-            "reference/node-selection/putting-it-together",
-            "reference/node-selection/yaml-selectors",
-            "reference/node-selection/test-selection-examples",
-            "reference/node-selection/defer",
-            "reference/node-selection/state-comparison-caveats",
-          ],
-        },
-        {
-          type: "category",
           label: "List of commands",
           items: [
             "reference/commands/build",
@@ -923,27 +929,58 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Global configs",
+          label: "Node selection",
+          items: [
+            "reference/node-selection/syntax",
+            "reference/node-selection/graph-operators",
+            "reference/node-selection/set-operators",
+            "reference/node-selection/exclude",
+            "reference/node-selection/methods",
+            "reference/node-selection/putting-it-together",
+            "reference/node-selection/yaml-selectors",
+            "reference/node-selection/test-selection-examples",
+            "reference/node-selection/defer",
+            "reference/node-selection/state-comparison-caveats",
+          ],
+        },
+        {
+          type: "category",
+          label: "Flags (global configs)",
           link: {
             type: "doc",
             id: "reference/global-configs/about-global-configs",
           },
           items: [
-            "reference/global-configs/command-line-flags",
-            "reference/global-configs/environment-variable-configs",
-            "reference/global-configs/logs",
-            "reference/global-configs/cache",
-            "reference/global-configs/failing-fast",
-            "reference/global-configs/json-artifacts",
-            "reference/global-configs/parsing",
-            "reference/global-configs/print-output",
-            "reference/global-configs/usage-stats",
-            "reference/global-configs/version-compatibility",
-            "reference/global-configs/warnings",
-            "reference/global-configs/yaml-configurations",
+            "reference/global-configs/about-global-configs",
+            {
+              type: "category",
+              label: "Setting flags",
+              items: [
+                "reference/global-configs/command-line-options",
+                "reference/global-configs/environment-variable-configs",
+                "reference/global-configs/project-flags",
+              ]
+            },
+            {
+              type: "category",
+              label: "Available flags",
+              items: [
+                "reference/global-configs/logs",
+                "reference/global-configs/cache",
+                "reference/global-configs/failing-fast",
+                "reference/global-configs/indirect-selection",
+                "reference/global-configs/json-artifacts",
+                "reference/global-configs/legacy-behaviors",
+                "reference/global-configs/parsing",
+                "reference/global-configs/print-output",
+                "reference/global-configs/record-timing-info",
+                "reference/global-configs/usage-stats",
+                "reference/global-configs/version-compatibility",
+                "reference/global-configs/warnings",
+              ]
+            },
           ],
         },
-        "reference/global-cli-flags",
         "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
@@ -1087,6 +1124,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",

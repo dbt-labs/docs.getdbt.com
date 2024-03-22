@@ -36,6 +36,9 @@ models:
     constraints:
       - type: primary_key
         columns: [<first_column>, <second_column>, ...]
+        type: foreign_key # multi_column
+        columns: [<first_column>, <second_column>, ...]
+        expression: "<other_model_schema>.<other_model_name> (<other_model_first_column>, <other_model_second_column>, ...)"
       - type: check
         columns: [<first_column>, <second_column>, ...]
         expression: "<first_column> != <second_column>"
@@ -188,6 +191,8 @@ models:
         data_type: date
 ```
 
+Note that Redshift limits the maximum length of the `varchar` values to 256 characters by default (or when specified without a length). This means that any string data exceeding 256 characters might get truncated _or_ return a "value too long for character type" error. To allow the maximum length, use `varchar(max)`. For example, `data_type: varchar(max)`.  
+
 </File>
 
 Expected DDL to enforce constraints:
@@ -224,7 +229,7 @@ select
 - Snowflake constraints documentation: [here](https://docs.snowflake.com/en/sql-reference/constraints-overview.html)
 - Snowflake data types: [here](https://docs.snowflake.com/en/sql-reference/intro-summary-data-types.html)
 
-Snowflake suppports four types of constraints: `unique`, `not null`, `primary key` and `foreign key`.
+Snowflake suppports four types of constraints: `unique`, `not null`, `primary key`, and `foreign key`.
 
 It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked today.
 The rest of the constraints are purely metadata, not verified when inserting data.
@@ -434,7 +439,7 @@ Databricks allows you to define:
 - a `not null` constraint
 - and/or additional `check` constraints, with conditional expressions including one or more columns
 
-As Databricks does not support transactions nor allows using `create or replace table` with a column schema, the table is first created without a schema and `alter` statements are then executed to add the different constraints. 
+As Databricks does not support transactions nor allows using `create or replace table` with a column schema, the table is first created without a schema, and `alter` statements are then executed to add the different constraints. 
 
 This means that:
 

@@ -32,4 +32,4 @@ pagination_next: null
 
 The dbt Semantic Layer is the biggest paradigm shift thus far in the young practice of analytics engineering. It's ready to provide value right away, but is most impactful if you move your project towards increasing normalization, and allow MetricFlow to do the denormalization for you with maximum dimensionality.
 
-We will be releasing more resources soon covering implementation of the Semantic Layer in dbt Cloud with various integrated BI tools. This is just the beginning, hopefully this guide has given you a path forward for building your data platform in this new era.
+We will be releasing more resources soon covering implementation of the Semantic Layer in dbt Cloud with various integrated BI tools. This is just the beginning, hopefully this guide has given you a path forward for building your data platform in this new era. Refer to [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
