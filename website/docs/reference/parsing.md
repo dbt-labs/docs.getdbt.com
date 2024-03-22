@@ -67,4 +67,4 @@ For now, the static parser only works with models, and models whose Jinja is lim
 
 ## Experimental parser
 
-We plan to make iterative improvements to static parsing in future versions, and to use random sampling (via anonymous usage tracking) to verify that it yields correct results. You can opt into the latest "experimental" version of the static parser using the [`USE_EXPERIMENTAL_PARSER` global config](/reference/global-configs/parsing).
+We plan to make iterative improvements to static parsing in future versions, and to use random sampling (via [anonymous usage tracking](/reference/global-configs/usage-stats)) to verify that it yields correct results. You can opt into the latest "experimental" version of the static parser using the [`USE_EXPERIMENTAL_PARSER` global config](/reference/global-configs/parsing).
