@@ -10,7 +10,7 @@ In dbt, "flags" (also called "global configs") are configurations for fine-tunin
 Flags control things like the visual output of logs, whether to treat specific warning messages as errors, or whether to "fail fast" after encountering the first error. Flags are "global" configs because they are available for all dbt commands and they can be set in multiple places.
 
 There is a significant overlap between dbt's flags and dbt's command line options, but there are differences:
-- Certain flags can only be set in `dbt_project.yml` and cannot be overridden for specific invocations via CLI options.
+- Certain flags can only be set in [`dbt_project.yml`](/reference/dbt_project.yml) and cannot be overridden for specific invocations via CLI options.
 - If a CLI option is supported by specific commands, rather than supported by all commands ("global"), it is generally not considered to be a "flag".
 
 ### Setting flags
