@@ -254,6 +254,25 @@ var siteSettings = {
     path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        /**
+         * Required for any multi-instance plugin
+         */
+        id: 'release-notes',
+        /**
+         * URL route for the blog section of your site.
+         * *DO NOT* include a trailing slash.
+         */
+        routeBasePath: 'release-notes',
+        /**
+         * Path to data on filesystem relative to site dir.
+         */
+        path: './release-notes',
+        blogSidebarTitle: 'Release Notes',
+      },
+    ],
   ],
   scripts: [
     {
