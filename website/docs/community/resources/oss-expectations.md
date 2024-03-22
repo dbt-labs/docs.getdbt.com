@@ -4,7 +4,7 @@ title: "Expectations for OSS contributors"
 
 Whether it's a dbt package, a plugin, `dbt-core`, or this very documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt open source software (OSS). While we can only speak for our own experience as open source maintainers, many of these guidelines apply when contributing to other open source projects, too.
 
-Have you seen things in other OSS projects that you quite like, and think we could learn from? [Open a discussion on the Developer Hub](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), or start a conversation in the dbt Community Slack (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
+Have you seen things in other OSS projects that you quite like, and think we could learn from? [Open a discussion on the dbt Community Forum](https://discourse.getdbt.com), or start a conversation in the dbt Community Slack (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
 
 ## Principles
 
@@ -51,7 +51,7 @@ An issue could be a bug you’ve identified while using the product or reading t
 
 ### Best practices for issues
 
-- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on the Developer Hub](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-help` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
+- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on the dbt Community Forum](https://discourse.getdbt.com), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-help` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
 - Always search existing issues first, to see if someone else had the same idea / found the same bug you did.
 - Many repositories offer templates for creating issues, such as when reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This will help other people understand your issue and respond.
 
@@ -93,6 +93,8 @@ In some cases, the right resolution to an open issue might be tangential to the 
 PRs are your surest way to make the change you want to see in dbt / packages / docs, especially when the change is straightforward.
 
 **Every PR should be associated with an issue.** Why? Before you spend a lot of time working on a contribution, we want to make sure that your proposal will be accepted. You should open an issue first, describing your desired outcome and outlining your planned change. If you've found an older issue that's already open, comment on it with an outline for your planned implementation. Exception to this rule: If you're just opening a PR for a cosmetic fix, such as a typo in documentation, an issue isn't needed.
+
+**PRs should include robust testing.** Comprehensive testing within pull requests is crucial for the stability of our project. By prioritizing robust testing, we ensure the reliability of our codebase, minimize unforeseen issues and safeguard against potential regressions. We understand that creating thorough tests often requires significant effort, and your dedication to this process greatly contributes to the project's overall reliability. Thank you for your commitment to maintaining the integrity of our codebase!"
 
 **Our goal is to review most new PRs within 7 days.** The first review will include some high-level comments about the implementation, including (at a high level) whether it’s something we think suitable to merge. Depending on the scope of the PR, the first review may include line-level code suggestions, or we may delay specific code review until the PR is more finalized / until we have more time.
 

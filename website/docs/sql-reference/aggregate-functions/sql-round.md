@@ -24,11 +24,8 @@ In this function, you’ll need to input the *numeric* field or data you want ro
 
 ### SQL ROUND function example
 
-:::note What dataset is this?
-This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop).
-:::
 
-You can round some of the numeric fields of the Jaffle Shop’s `orders` model using the following code:
+You can round some of the numeric fields of the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` model using the following code:
 
 ```sql
 select 
@@ -57,7 +54,7 @@ Google BigQuery, Amazon Redshift, Snowflake, and Databricks all support the abil
 
 ## ROUND function use cases
 
-If you find yourself rounding numeric data, either in data models or ad-hoc analyses, you’re probably rounding to improve the readability and usability of your data using downstream [intermediate](https://docs.getdbt.com/guides/best-practices/how-we-structure/3-intermediate) or [mart models](https://docs.getdbt.com/guides/best-practices/how-we-structure/4-marts). Specifically, you’ll likely use the ROUND function to:
+If you find yourself rounding numeric data, either in data models or ad-hoc analyses, you’re probably rounding to improve the readability and usability of your data using downstream [intermediate](/best-practices/how-we-structure/3-intermediate) or [mart models](/best-practices/how-we-structure/4-marts). Specifically, you’ll likely use the ROUND function to:
 
 - Make numeric calculations using division or averages a little cleaner and easier to understand
 - Create concrete buckets of data for a cleaner distribution of values during ad-hoc analysis

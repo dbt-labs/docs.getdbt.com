@@ -2,7 +2,9 @@
 title: Analysis properties
 ---
 
-We recommend you define analysis properties in your `analyses/` directory, which is illustrated in the [`analysis-paths`](/reference/project-configs/analysis-paths) configuration.
+import PropsCallout from '/snippets/_config-prop-callout.md';
+
+We recommend you define analysis properties in your `analyses/` directory, which is illustrated in the [`analysis-paths`](/reference/project-configs/analysis-paths) configuration. <PropsCallout title={frontMatter.title}/>  <br /> 
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `analyses/` or `models/` directory.
 
@@ -16,6 +18,7 @@ analyses:
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
+      node_color: <color_id> # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
     config:
       [tags](/reference/resource-configs/tags): <string> | [<string>]
     columns:

@@ -12,12 +12,11 @@ jobs:
     - name: Add new contributor label
       uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.DOCS_SECRET }}
         script: |
-          async function run() {
-            const creator = github.context.payload.sender.login;
-            const opts = github.context.repo.issues.listForRepo.endpoint.merge({
-              ...github.context.issue,
+            const creator = context.payload.sender.login;
+            const opts = github.rest.issues.listForRepo.endpoint.merge({
+              ...context.issue,
               creator,
               state: 'all',
             });
@@ -27,7 +26,7 @@ jobs:
             let isAlreadyContributor = false;
             
             for (const issue of issues) {
-              if (issue.number === github.context.issue.number) {
+              if (issue.number === context.issue.number) {
                 continue;
               }
               if (issue.pull_request && issue.user.login === creator) {
@@ -39,14 +38,9 @@ jobs:
             if (!isAlreadyContributor) {
               console.log('Adding label: new contributor');
               await github.rest.issues.addLabels({
-                issue_number: github.context.issue.number,
-                owner: github.context.repo.owner,
-                repo: github.context.repo.repo,
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 labels: ['new contributor'],
               });
-            } else {
-              console.log('User is already a contributor, no label added.');
-            }
-          }
-          
-          run(); // Call the async function to execute the code
+            } 

@@ -8,7 +8,7 @@ With dbt Cloud, you can create outbound webhooks to send events (notifications) 
 
 A webhook is an HTTP-based callback function that allows event-driven communication between two different web applications. This allows you to get the latest information on your dbt jobs in real time. Without it, you would need to make API calls repeatedly to check if there are any updates that you need to account for (polling). Because of this, webhooks are also called _push APIs_ or _reverse APIs_ and are often used for infrastructure development.
 
-dbt Cloud sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/orchestration/webhooks/zapier-slack) notification, a [Microsoft Teams](/guides/orchestration/webhooks/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/orchestration/webhooks/serverless-pagerduty) when a dbt job fails, [and more](/guides/orchestration/webhooks). 
+dbt Cloud sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/zapier-slack) notification, a [Microsoft Teams](/guides/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/serverless-pagerduty) when a dbt job fails. 
 
 You can create webhooks for these events from the [dbt Cloud web-based UI](#create-a-webhook-subscription) and by using the [dbt Cloud API](#api-for-webhooks):
 
@@ -31,11 +31,11 @@ You can also check out the free [dbt Fundamentals course](https://courses.getdbt
 - For `write` access to webhooks: 
     - **Enterprise plan accounts** &mdash; Permission sets are the same for both API service tokens and the dbt Cloud UI. You, or the API service token, must have the [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin), [Admin](/docs/cloud/manage-access/enterprise-permissions#admin), or [Developer](/docs/cloud/manage-access/enterprise-permissions#developer) permission set.  
     - **Team plan accounts** &mdash; For the dbt Cloud UI, you need to have a [Developer license](/docs/cloud/manage-access/self-service-permissions). For API service tokens, you must assign the service token to have the [Account Admin or Member](/docs/dbt-cloud-apis/service-tokens#team-plans-using-service-account-tokens) permission set. 
-- You have a multi-tenant deployment model in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy). 
+- You have a multi-tenant or an AWS single-tenant deployment model in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy). 
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
 
-From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).
+From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).
 
 To configure your new webhook: 
 
@@ -167,7 +167,7 @@ An example of a webhook payload for an errored run:
 You can use the dbt Cloud API to create new webhooks that you want to subscribe to, get detailed information about your webhooks, and to manage the webhooks that are associated with your account. The following sections describe the API endpoints you can use for this. 
 
 :::info Access URLs
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).   
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).   
 :::
 
 ### List all webhook subscriptions
@@ -549,5 +549,5 @@ DELETE https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscript
 
 ## Related docs 
 - [dbt Cloud CI](/docs/deploy/continuous-integration)
-- [Use dbt Cloud's webhooks with other SaaS apps](/guides/orchestration/webhooks)
+- [Use dbt Cloud's webhooks with other SaaS apps](/guides)
 

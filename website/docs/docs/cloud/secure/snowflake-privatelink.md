@@ -5,6 +5,10 @@ description: "Configuring PrivateLink for Snowflake"
 sidebar_label: "PrivateLink for Snowflake"
 ---
 
+import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+
+<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
+
 The following steps will walk you through the setup of a Snowflake AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
 
 :::note Snowflake SSO with PrivateLink
@@ -38,7 +42,10 @@ Subject: New Multi-Tenant PrivateLink Request
 ```
 _*By default dbt Cloud will be configured to use `privatelink-account-url` from the provided [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) as the PrivateLink endpoint. Upon request, `regionless-privatelink-account-url` can be used instead._
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the endpoint is available. 
+
+import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
+
+<PrivateLinkSLA />
 
 ## Create Connection in dbt Cloud
 

@@ -5,30 +5,29 @@ description: "Learn about MetricFlow and build your metrics with semantic models
 sidebar_label: Build your metrics
 tags: [Metrics, Semantic Layer, Governance]
 hide_table_of_contents: true
+pagination_next: "docs/build/sl-getting-started"
+pagination_prev: null
 ---
 
-Use MetricFlow in dbt to centrally define your metrics. As a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics.
+Use MetricFlow in dbt to centrally define your metrics. As a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
-Use familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
-
-:::info
-MetricFlow is currently available on dbt v1.6 or higher and allows users to define metrics in their dbt project whether in dbt Cloud or dbt Core. dbt Core users can use the MetricFlow CLI to define metrics in their local dbt Core project. However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
-
-:::
-
-Before you start, consider the following guidelines:
-
-- Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- You must be on dbt v1.6 or higher to use MetricFlow. [Upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to get started.
-- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (CLI only), or Redshift. (dbt Cloud Postgres support coming soon)
-- Unlock insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations).
-
+MetricFlow allows you to:
+- Intuitively define metrics in your dbt project
+- Develop from your preferred environment, whether that's the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [dbt Core](/docs/core/installation-overview)
+- Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
+- Harness the true magic of the universal dbt Semantic Layer and dynamically query these metrics in downstream tools (Available for dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) accounts only).
 
 <div className="grid--3-col">
 
+ <Card
+    title="Get started with the dbt Semantic Layer and MetricFlow"
+    body="Use this guide to build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using downstream tools."
+    link="/docs/build/sl-getting-started"
+    icon="dbt-bit"/>
+
 <Card
     title="About MetricFlow"
-    body="Understand MetricFlow's core concepts, key principles, and how to use this powerful tool."
+    body="Understand MetricFlow's core concepts, how to use joins, how to save commonly used queries, and what commands are available."
     link="/docs/build/about-metricflow"
     icon="dbt-bit"/>
 
@@ -43,17 +42,17 @@ Before you start, consider the following guidelines:
     body="Define metrics through the powerful combination of measures, constraints, or functions, effortlessly organized in either YAML files or separate files."
     link="/docs/build/metrics-overview"
     icon="dbt-bit"/>
+  
+  <Card
+    title="Advanced topics"
+    body="Learn about advanced topics for dbt Semantic Layer and MetricFlow, such as data modeling workflows, and more."
+    link="/docs/build/advanced-topics"
+    icon="dbt-bit"/>
 
   <Card
     title="About the dbt Semantic Layer"
     body="Introducing the dbt Semantic Layer, the universal process that allows data teams to centrally define and query metrics"
     link="/docs/use-dbt-semantic-layer/dbt-sl"
-    icon="dbt-bit"/>
-
- <Card
-    title="Get started with the dbt Semantic Layer"
-    body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer API"
-    link="/docs/use-dbt-semantic-layer/quickstart-sl"
     icon="dbt-bit"/>
 
   <Card
@@ -62,13 +61,11 @@ Before you start, consider the following guidelines:
     link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
     icon="dbt-bit"/>
 
-
 </div> <br />
-
 
 ## Related docs
 
 - [The dbt Semantic Layer: what's next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog
 - [Get started with MetricFlow](/docs/build/sl-getting-started)
-
-
+- [dbt Semantic Layer on-demand courses](https://courses.getdbt.com/courses/semantic-layer)
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

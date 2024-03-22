@@ -89,7 +89,7 @@ The biggest challenges around data lineage become more apparent as your data, sy
 
 As dbt projects scale with data and organization growth, the number of sources, models, macros, seeds, and [exposures](https://docs.getdbt.com/docs/build/exposures) invariably grow. And with an increasing number of nodes in your DAG, it can become harder to audit your DAG for WET code or inefficiencies.
 
-Working with dbt projects with thousands of models and nodes can feel overwhelming, but remember: your DAG and data lineage are meant to help you, not be your enemy. Tackle DAG audits in chunks, document all models, and [leverage strong structure conventions](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
+Working with dbt projects with thousands of models and nodes can feel overwhelming, but remember: your DAG and data lineage are meant to help you, not be your enemy. Tackle DAG audits in chunks, document all models, and [leverage strong structure conventions](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview).
 
 :::tip dbt project evaluator
 
@@ -101,16 +101,16 @@ Is your DAG keeping up with best practices? Instead of manually auditing your DA
 
 Complex workflows also add to the difficulties a data lineage system will encounter. For example, consider the challenges in describing a data source's movement through a pipeline as it's filtered, pivoted, and joined with other tables. These challenges increase when the granularity of the data lineage shifts from the table to the column level.
 
-As data lineage graphs mature and grow, it becomes clear that column or field-level lineage is often a needed layer of specificity that is not typically built-in to data lineage systems. [Some of the third party tooling](#third-party-tooling) from above can support column-level lineage.
+As data lineage graphs mature and grow, it becomes clear that column- or field-level lineage is often a needed layer of specificity that is not typically built in to data lineage systems. Learn more about the [column-level lineage](/docs/collaborate/column-level-lineage) feature in [dbt Explorer](https://www.getdbt.com/product/dbt-explorer) and how it can help you gain insights. 
 
-## **Conclusion**
+## Conclusion
 
 Data lineage is the holistic overview of how data moves through an organization or system, and is typically represented by a DAG. Analytics engineering practitioners use their DAG and data lineage to unpack root causes in broken pipelines, audit their models for inefficiencies, and promote greater transparency in their data work to business users. Overall, using your data lineage and DAG to know when your data is transformed and where it’s consumed is the foundation for good analytics work.
 
-## **Further reading**
+## Further reading
 
 DAGs, data lineage, and root cause analysis…tell me more! Check out some of our favorite resources of writing modular models, DRY code, and data modeling best practices:
 
 - [Glossary: DRY](https://docs.getdbt.com/terms/dry)
 - [Data techniques for modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-- [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+- [How we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview)

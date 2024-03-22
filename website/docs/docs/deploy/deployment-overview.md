@@ -4,6 +4,8 @@ id: "deployments"
 sidebar: "Use dbt Cloud's capabilities to seamlessly run a dbt job in production."
 hide_table_of_contents: true
 tags: ["scheduler"]
+pagination_next: "docs/deploy/job-scheduler"
+pagination_prev: null
 ---
 
 Use dbt Cloud's capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [dbt Cloud's in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
@@ -14,6 +16,7 @@ dbt Cloud offers the easiest and most reliable way to run your dbt project in pr
 - Identify the root cause of failures in deployment environments
 - Maintain high-quality code and data in production
 - Gain visibility into the health of deployment jobs, models, and tests
+- Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
 
@@ -56,6 +59,12 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     title="Run visibility"
     body="View the history of your runs and the model timing dashboard to help identify where improvements can be made to the scheduled jobs."
     link="/docs/deploy/run-visibility"
+    icon="dbt-bit"/>
+
+<Card
+    title="Retry jobs"
+    body="Rerun your errored jobs from start or the failure point."
+    link="/docs/deploy/retry-jobs"
     icon="dbt-bit"/>
 
 <Card
@@ -111,7 +120,7 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
 
 If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.-->
 
+## Related docs
 
-## Related docs 
-
+- [Use exports to materialize saved queries](/docs/use-dbt-semantic-layer/exports)
 - [Integrate with other orchestration tools](/docs/deploy/deployment-tools)

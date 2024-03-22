@@ -4,7 +4,7 @@ description: "Read this guide to learn about the Starburst/Trino warehouse setup
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
-  authors: Marius Grama, Przemek Denkiewicz, Michiel de Smet
+  authors: Marius Grama, Przemek Denkiewicz, Michiel de Smet, Damian Owsianny
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
@@ -18,38 +18,9 @@ meta:
 
 <Snippet path="warehouse-setups-cloud-callout" />
 
-<h2> Overview of {frontMatter.meta.pypi_package} </h2>
+import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<ul>
-    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
-    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
-    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a> <a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
-    <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
-    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
-    </ul>
-
-:::info Vendor-supported plugin
-
-Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
-
-:::
-
-<h2> Installing {frontMatter.meta.pypi_package} </h2>
-
-pip is the easiest way to install the adapter:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
-
-<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
-
-<h2> Configuring {frontMatter.meta.pypi_package} </h2>
-
-<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
-
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+<SetUpPages meta={frontMatter.meta}/>
 
 ## Connecting to Starburst/Trino
 
@@ -59,7 +30,7 @@ The parameters for setting up a connection are for Starburst Enterprise, Starbur
 
 ## Host parameters
 
-The following profile fields are always required except for `user`, which is also required unless you're using the `oauth`, `cert`, or `jwt` authentication methods.
+The following profile fields are always required except for `user`, which is also required unless you're using the `oauth`, `oauth_console`, `cert`, or `jwt` authentication methods.
 
 | Field     | Example | Description |
 | --------- | ------- | ----------- |
@@ -83,7 +54,7 @@ The following profile fields are optional to set up. They let you configure your
 | Profile field                 | Example                          | Description                                                                                                 |
 | ----------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `threads`                     | `8`                              | How many threads dbt should use (default is `1`)                                                            |
-| `roles`                       | `system: analyst`                | Catalog roles                                                                                               |
+| `roles`                       | `system: analyst`                | Catalog roles can be set under the optional `roles` parameter using the following format: `catalog: role`.     |
 | `session_properties`          | `query_max_run_time: 4h`         | Sets Trino session properties used in the connection. Execute `SHOW SESSION` to see available options       |
 | `prepared_statements_enabled` | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`)                   |
 | `retries`                     | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)     |
@@ -100,6 +71,7 @@ The authentication methods that dbt Core supports are:
 - `jwt` &mdash; JSON Web Token (JWT)
 - `certificate` &mdash; Certificate-based authentication
 - `oauth` &mdash; Open Authentication (OAuth)
+- `oauth_console` &mdash; Open Authentication (OAuth) with authentication URL printed to the console 
 - `none` &mdash; None, no authentication
 
 Set the `method` field to the authentication method you intend to use for the connection. For a high-level introduction to authentication in Trino, see [Trino Security: Authentication types](https://trino.io/docs/current/security/authentication-types.html).
@@ -114,6 +86,7 @@ Click on one of these authentication methods for further details on how to confi
     {label: 'JWT', value: 'jwt'},
     {label: 'Certificate', value: 'certificate'},
     {label: 'OAuth', value: 'oauth'},
+    {label: 'OAuth (console)', value: 'oauth_console'},
     {label: 'None', value: 'none'},
   ]}
 >
@@ -284,7 +257,7 @@ The only authentication parameter to set for OAuth 2.0 is `method: oauth`. If yo
 
 For more information, refer to both [OAuth 2.0 authentication](https://trino.io/docs/current/security/oauth2.html) in the Trino docs and the [README](https://github.com/trinodb/trino-python-client#oauth2-authentication) for the Trino Python client.
 
-It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
+It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `python -m pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
 
 #### Example profiles.yml for OAuth
 
@@ -298,7 +271,36 @@ sandbox-galaxy:
       host: bunbundersders.trino.galaxy-dev.io
       catalog: dbt_target
       schema: dataders
-      port: 433
+      port: 443
+```
+
+</TabItem>
+
+<TabItem value="oauth_console">
+
+The only authentication parameter to set for OAuth 2.0 is `method: oauth_console`. If you're using Starburst Enterprise or Starburst Galaxy, you must enable OAuth 2.0 in Starburst before you can use this authentication method.
+
+For more information, refer to both [OAuth 2.0 authentication](https://trino.io/docs/current/security/oauth2.html) in the Trino docs and the [README](https://github.com/trinodb/trino-python-client#oauth2-authentication) for the Trino Python client.
+
+The only difference between `oauth_console` and `oauth` is:
+- `oauth` &mdash; An authentication URL automatically opens in a browser.
+- `oauth_console` &mdash; A URL is printed to the console.
+
+It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `python -m pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
+
+#### Example profiles.yml for OAuth
+
+```yaml
+sandbox-galaxy:
+  target: oauth_console
+  outputs:
+    oauth:
+      type: trino
+      method: oauth_console
+      host: bunbundersders.trino.galaxy-dev.io
+      catalog: dbt_target
+      schema: dataders
+      port: 443
 ```
 
 </TabItem>

@@ -25,7 +25,7 @@ The two concepts will be closely related, as we develop multi-project collaborat
 
 ## Related documentation
 * [`groups`](/docs/build/groups)
-* [`access`](/reference/resource-properties/access)
+* [`access`](/reference/resource-configs/access)
 
 ## Groups
 
@@ -35,7 +35,7 @@ Why define model `groups`? There are two reasons:
 - It turns implicit relationships into an explicit grouping, with a defined owner. By thinking about the interface boundaries _between_ groups, you can have a cleaner (less entangled) DAG. In the future, those interface boundaries could be appropriate as the interfaces between separate projects.
 - It enables you to designate certain models as having "private" access—for use exclusively within that group. Other models will be restricted from referencing (taking a dependency on) those models. In the future, they won't be visible to other teams taking a dependency on your project—only "public" models will be.
 
-If you follow our [best practices for structuring a dbt project](/guides/best-practices/how-we-structure/1-guide-overview), you're probably already using subdirectories to organize your dbt project. It's easy to apply a `group` label to an entire subdirectory at once:
+If you follow our [best practices for structuring a dbt project](/best-practices/how-we-structure/1-guide-overview), you're probably already using subdirectories to organize your dbt project. It's easy to apply a `group` label to an entire subdirectory at once:
 
 <File name="dbt_project.yml">
 
@@ -59,9 +59,9 @@ Some models are implementation details, meant for reference only within their gr
 
 | Access    | Referenceable by                       |
 |-----------|----------------------------------------|
-| private   | same group                             |
-| protected | same project (or installed as package) |
-| public    | any group, package or project          |
+| private   | Same group                             |
+| protected | Same project (or installed as a package) |
+| public    | Any group, package, or project. When defined, rerun a production job to apply the change |
 
 If you try to reference a model outside of its supported access, you will see an error:
 
@@ -73,7 +73,7 @@ dbt.exceptions.DbtReferenceError: Parsing Error
   which is not allowed because the referenced node is private to the finance group.
 ```
 
-By default, all models are `protected`. This means that other models in the same project can reference them, regardless of their group. This is largely for backwards compatability when assigning groups to an existing set of models, as there may already be existing references across group assignments.
+By default, all models are `protected`. This means that other models in the same project can reference them, regardless of their group. This is largely for backward compatibility when assigning groups to an existing set of models, as there may already be existing references across group assignments.
 
 However, it is recommended to set the access modifier of a new model to `private` to prevent other project resources from taking dependencies on models not intentionally designed for sharing across groups.
 
@@ -112,7 +112,7 @@ models:
 
 Models with `materialized` set to `ephemeral` cannot have the access property set to public.
 
-For example, if you have model confg set as:
+For example, if you have a model config set as:
 
 <File name="models/my_model.sql">
 
@@ -185,7 +185,7 @@ Source code installed from a package becomes part of your runtime environment. Y
 
 For this reason, model access restrictions are "off" by default for models defined in packages. You can reference models from that package regardless of their `access` modifier.
 
-The project being installed as a package can optionally restrict external `ref` access to just its public models. The package maintainer does this by setting a `restrict-access` config to `True` in `dbt_project.yml`.
+The project is installed as a package can optionally restrict external `ref` access to just its public models. The package maintainer does this by setting a `restrict-access` config to `True` in `dbt_project.yml`.
 
 By default, the value of this config is `False`. This means that:
 - Models in the package with `access: protected` may be referenced by models in the root project, as if they were defined in the same project

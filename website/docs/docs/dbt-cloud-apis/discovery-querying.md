@@ -2,6 +2,7 @@
 title: "Query the Discovery API"
 id: "discovery-querying"
 sidebar_label: "Query the Discovery API"
+pagination_next: "docs/dbt-cloud-apis/discovery-schema-environment"
 ---
 
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-cloud-apis/discovery-api) for an introduction.
@@ -24,7 +25,7 @@ Once you've created a token, you can use it in the Authorization header of reque
 
 2. Find your API URL using the endpoint `https://metadata.{YOUR_ACCESS_URL}/graphql`.
 
-    * Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your multi-tenant region is North America, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. If your multi-tenant region is EMEA, your endpoint is `https://metadata.emea.dbt.com/graphql`.
+    * Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your multi-tenant region is North America, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. If your multi-tenant region is EMEA, your endpoint is `https://metadata.emea.dbt.com/graphql`.
 
 3. For specific query points, refer to the [schema documentation](/docs/dbt-cloud-apis/discovery-schema-job).
 
@@ -32,7 +33,7 @@ Once you've created a token, you can use it in the Authorization header of reque
 ## Run queries using HTTP requests
 
 You can run queries by sending a `POST` request to the `https://metadata.YOUR_ACCESS_URL/graphql` endpoint, making sure to replace:
-* `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+* `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 * `YOUR_TOKEN` in the Authorization header with your actual API token. Be sure to include the Token prefix.
 * `QUERY_BODY` with a GraphQL query, for example `{ "query": "<query text>" }`
 * `VARIABLES` with a dictionary of your GraphQL query variables, such as a job ID or a filter.

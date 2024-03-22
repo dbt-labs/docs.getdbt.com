@@ -109,7 +109,7 @@ select ...
 ## Definition
 A SQL statement (or list of SQL statements) to be run before or after a model, seed, or snapshot is built.
 
-Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](/docs/building-a-dbt-project/dont-nest-your-curlies#an-exception).
+Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](/best-practices/dont-nest-your-curlies#an-exception).
 
 ### Why would I use hooks?
 
@@ -175,13 +175,17 @@ If multiple instances of any hooks are defined, dbt will run each hook using the
 
 
 ### Transaction behavior
-If you're using an adapter that makes use of transactions (namely Postgres or Redshift), it's worth noting that by default hooks are executed inside of the same transaction as your model being created.
+If you're using an adapter that uses transactions (namely Postgres or Redshift), it's worth noting that by default hooks are executed inside of the same transaction as your model being created.
 
 There may be occasions where you need to run these hooks _outside_ of a transaction, for example:
-* You want to run a `VACUUM` in a `post-hook`, however this cannot be executed within a transaction ([Redshift docs](https://docs.aws.amazon.com/redshift/latest/dg/r_VACUUM_command.html#r_VACUUM_usage_notes))
-* You want to insert a record into an audit <Term id="table" /> at the start of a run, and do not want that statement rolled back if the model creation fails.
+* You want to run a `VACUUM` in a `post-hook`, however, this cannot be executed within a transaction ([Redshift docs](https://docs.aws.amazon.com/redshift/latest/dg/r_VACUUM_command.html#r_VACUUM_usage_notes))
+* You want to insert a record into an audit <Term id="table" /> at the start of a run and do not want that statement rolled back if the model creation fails.
 
-To achieve this, you can use one of the following syntaxes. (Note: You should NOT use this syntax if using a database where dbt does not use transactions by default, including Snowflake, BigQuery, and Spark/Databricks.)
+To achieve this behavior, you can use one of the following syntaxes:
+  - Important note: Do not use this syntax if you are using a database where dbt does not support transactions. This includes databases like Snowflake, BigQuery, and Spark or Databricks.
+
+<Tabs>
+<TabItem value="beforebegin" label="Use before_begin and after_commit">
 
 #### Config block: use the `before_begin` and `after_commit` helper macros
 
@@ -200,6 +204,9 @@ select ...
 ```
 
 </File>
+</TabItem>
+
+<TabItem value="dictionary" label="Use a dictionary">
 
 #### Config block: use a dictionary
 <File name='models/<modelname>.sql'>
@@ -224,6 +231,10 @@ select ...
 
 </File>
 
+</TabItem>
+
+<TabItem value="dbt_project.yml" label="Use dbt_project.yml">
+
 #### `dbt_project.yml`: Use a dictionary
 
 <File name='dbt_project.yml'>
@@ -242,3 +253,5 @@ models:
 ```
 
 </File>
+</TabItem>
+</Tabs>

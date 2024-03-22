@@ -1,8 +1,11 @@
 exports.versions = [
   {
+    version: "1.8",
+    isPrerelease: "true",
+  },
+  {
     version: "1.7",
-    EOLDate: "2024-07-31",
-    isPrerelease: "true"
+    EOLDate: "2024-10-30",
   },
   {
     version: "1.6",
@@ -27,6 +30,14 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
+  {
+    "page": "reference/global-configs/indirect-selection",
+    "firstVersion": "1.8",
+  },
+  {
+    "page": "reference/resource-configs/store_failures_as",
+    "firstVersion": "1.7",
+  },
   {
     "page": "docs/build/build-metrics-intro",
     "firstVersion": "1.6",
@@ -170,6 +181,10 @@ exports.versionedPages = [
   {
     "page": "reference/resource-configs/grants",
     "firstVersion": "1.2",
+  },
+  {
+    "page": "reference/resource-configs/on_configuration_change",
+    "firstVersion": "1.6",
   }
 ]
 

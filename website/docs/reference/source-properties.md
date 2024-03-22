@@ -1,5 +1,5 @@
 ---
-title: "About source properties"
+title: "Source properties"
 description: "Learn how to use source properties in dbt."
 ---
 
@@ -8,9 +8,13 @@ description: "Learn how to use source properties in dbt."
 - [Declaring resource properties](/reference/configs-and-properties)
 
 ## Overview
-Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)).
 
-You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
+import PropsCallout from '/snippets/_config-prop-callout.md';
+
+Source properties can be declared in any `properties.yml` file in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)). <PropsCallout title={frontMatter.title}/>  <br /> 
+
+
+You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory:
 
 <File name='models/<filename>.yml'>
 
@@ -53,7 +57,7 @@ sources:
         [meta](/reference/resource-configs/meta): {<dictionary>}
         [identifier](/reference/resource-properties/identifier): <table_name>
         [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
           - ... # declare additional tests
         [tags](/reference/resource-configs/tags): [<string>]
@@ -76,7 +80,7 @@ sources:
             [description](/reference/resource-properties/description): <markdown_string>
             [meta](/reference/resource-configs/meta): {<dictionary>}
             [quote](/reference/resource-properties/quote): true | false
-            [tests](/reference/resource-properties/tests):
+            [tests](/reference/resource-properties/data-tests):
               - <test>
               - ... # declare additional tests
             [tags](/reference/resource-configs/tags): [<string>]

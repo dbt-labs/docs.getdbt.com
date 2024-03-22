@@ -14,6 +14,7 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 | [compile](/reference/commands/compile)     | `--select`, `--exclude`, `--selector`, `--inline`                    |
 | [freshness](/reference/commands/source)    | `--select`, `--exclude`, `--selector`                                |
 | [build](/reference/commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
+| [docs generate](/reference/commands/cmd-docs) | `--select`, `--exclude`, `--selector`                  |
 
 :::info Nodes and resources
 
@@ -24,6 +25,8 @@ We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"
 
 By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--select` flag is used to specify a subset of nodes to execute.
 
+To follow [POSIX standards](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) and make things easier to understand, we recommend CLI users use quotes when passing arguments to the `--select` or `--exclude` option (including single or multiple space-delimited, or comma-delimited arguments). Not using quotes might not work reliably on all operating systems, terminals, and user interfaces. For example, `dbt run --select "my_dbt_project_name"` runs all models in your project. 
+
 ### How does selection work?
 
 1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators ([unions](/reference/node-selection/set-operators#unions), [intersections](/reference/node-selection/set-operators#intersections), [exclusions](/reference/node-selection/exclude)).
@@ -32,13 +35,16 @@ By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt
 
 3. dbt now has a list of still-selected resources of varying types. As a final step, it tosses away any resource that does not match the resource type of the current task. (Only seeds are kept for `dbt seed`, only models for `dbt run`, only tests for `dbt test`, and so on.)
 
-### Shorthand
+## Shorthand
 
 Select resources to build (run, test, seed, snapshot) or check freshness: `--select`, `-s`
 
 ### Examples
 
 By default, `dbt run` will execute _all_ of the models in the dependency graph. During development (and deployment), it is useful to specify only a subset of models to run. Use the `--select` flag with `dbt run` to select a subset of models to run. Note that the following arguments (`--select`, `--exclude`, and `--selector`) also apply to other dbt tasks, such as `test` and `build`.
+
+<Tabs>
+<TabItem value="select" label="Examples of select flag">
 
 The `--select` flag accepts one or more arguments. Each argument can be one of:
 
@@ -49,30 +55,49 @@ The `--select` flag accepts one or more arguments. Each argument can be one of:
 
 Examples:
 
+```bash
+dbt run --select "my_dbt_project_name"   # runs all models in your project
+dbt run --select "my_dbt_model"          # runs a specific model
+dbt run --select "path.to.my.models"     # runs all models in a specific directory
+dbt run --select "my_package.some_model" # run a specific model in a specific package
+dbt run --select "tag:nightly"           # run models with the "nightly" tag
+dbt run --select "path/to/models"        # run models contained in path/to/models
+dbt run --select "path/to/my_model.sql"  # run a specific model by its path
+```
 
-  ```bash
-  $ dbt run --select my_dbt_project_name   # runs all models in your project
-  $ dbt run --select my_dbt_model          # runs a specific model
-  $ dbt run --select path.to.my.models     # runs all models in a specific directory
-  $ dbt run --select my_package.some_model # run a specific model in a specific package
-  $ dbt run --select tag:nightly           # run models with the "nightly" tag
-  $ dbt run --select path/to/models        # run models contained in path/to/models
-  $ dbt run --select path/to/my_model.sql  # run a specific model by its path
-  ```
+</TabItem>
 
-dbt supports a shorthand language for defining subsets of nodes. This language uses the characters `+`, `@`, `*`, and `,`.
+<TabItem value="subset" label="Examples of subsets of nodes">
 
+dbt supports a shorthand language for defining subsets of nodes. This language uses the following characters:
 
-  ```bash
-  # multiple arguments can be provided to --select
-  $ dbt run --select my_first_model my_second_model
+- plus operator [(`+`)](/reference/node-selection/graph-operators#the-plus-operator)
+- at operator [(`@`)](/reference/node-selection/graph-operators#the-at-operator)
+- asterisk operator (`*`)
+- comma operator (`,`)
 
-  # these arguments can be projects, models, directory paths, tags, or sources
-  $ dbt run --select tag:nightly my_model finance.base.*
+Examples:
 
-  # use methods and intersections for more complex selectors
-  $ dbt run --select path:marts/finance,tag:nightly,config.materialized:table
-  ```
+```bash
+# multiple arguments can be provided to --select
+dbt run --select "my_first_model my_second_model"
+
+# select my_model and all of its children
+dbt run --select "my_model+"     
+
+# select my_model, its children, and the parents of its children
+dbt run --models @my_model          
+
+# these arguments can be projects, models, directory paths, tags, or sources
+dbt run --select "tag:nightly my_model finance.base.*"
+
+# use methods and intersections for more complex selectors
+dbt run --select "path:marts/finance,tag:nightly,config.materialized:table"
+```
+
+</TabItem>
+
+</Tabs>
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
 consider using a [yaml selector](/reference/node-selection/yaml-selectors). You can use a predefined definition with the `--selector` flag.
@@ -93,7 +118,7 @@ by comparing code in the current project against the state manifest.
 - [Deferring](/reference/node-selection/defer) to another environment, whereby dbt can identify upstream, unselected resources that don't exist in your current environment and instead "defer" their references to the environment provided by the state manifest.
 - The [`dbt clone` command](/reference/commands/clone), whereby dbt can clone nodes based on their location in the manifest provided to the `--state` flag.
 
-Together, the `state:` selector and deferral enable ["slim CI"](/guides/legacy/best-practices#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.
+Together, the `state:` selector and deferral enable ["slim CI"](/best-practices/best-practice-workflows#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.
 
 ### Establishing state
 
@@ -133,7 +158,6 @@ If both the flag and env var are provided, the flag takes precedence.
 
 #### Notes:
 - The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
-- The path to state artifacts can be set via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable. If both the flag and env var are provided, the flag takes precedence.
 - These are powerful, complex features. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
 ### The "result" status
@@ -149,8 +173,8 @@ The following dbt commands produce `run_results.json` artifacts whose results ca
 After issuing one of the above commands, you can reference the results by adding a selector to a subsequent command as follows: 
 
 ```bash
-# You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
-$ dbt run --select result:<status> --defer --state path/to/prod/artifacts
+# You can also set the DBT_STATE environment variable instead of the --state flag.
+dbt run --select "result:<status> --defer --state path/to/prod/artifacts"
 ```
 
 The available options depend on the resource (node) type: 
@@ -169,7 +193,7 @@ The available options depend on the resource (node) type:
 The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run OR any new or modified models.
 
 ```bash
-$ dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>
+dbt run --select "result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>"
 ```
 
 ### Fresh rebuilds
@@ -183,11 +207,11 @@ As example:
 ```bash
 # Command step order
 dbt source freshness
-dbt build --select source_status:fresher+
+dbt build --select "source_status:fresher+"
 ```
 
 
-For more example commands, refer to [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
+For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).
 
 ### The "source_status" status
 
@@ -202,6 +226,6 @@ After issuing one of the above commands, you can reference the source freshness 
 
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
-$ dbt source freshness # must be run again to compare current to previous state
-$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+dbt source freshness # must be run again to compare current to previous state
+dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```

@@ -17,6 +17,8 @@ The AVG function is a part of the group of mathematical or aggregate functions (
 
 ### AVG function example
 
+The following example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
+
 ```sql
 select
 	date_trunc('month', order_date) as order_month,
@@ -25,10 +27,6 @@ from {{ ref('orders') }}
 where status not in ('returned', 'return_pending')
 group by 1
 ```
-
-:::note What dataset is this?
-This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop).
-:::
 
 This query using the Jaffle Shop’s `orders` table will return the rounded order amount per each order month:
 
@@ -48,7 +46,7 @@ Snowflake, Databricks, Google BigQuery, and Amazon Redshift all support the abil
 ## AVG function use cases
 
 We most commonly see the AVG function used in data work to calculate:
-- The average of key metrics (ex. Average CSAT, average lead time, average order amount) in downstream [fact or dim models](https://docs.getdbt.com/guides/best-practices/how-we-structure/4-marts)
+- The average of key metrics (ex. Average CSAT, average lead time, average order amount) in downstream [fact or dim models](/best-practices/how-we-structure/4-marts)
 - Rolling or moving averages (ex. 7-day, 30-day averages for key metrics) using window functions
 - Averages in [dbt metrics](https://docs.getdbt.com/docs/build/metrics)
 

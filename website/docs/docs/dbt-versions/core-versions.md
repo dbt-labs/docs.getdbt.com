@@ -2,9 +2,19 @@
 title: "About dbt Core versions"
 id: "core"
 description: "Learn about semantic versioning for dbt Core, and how long those versions are supported."
+pagination_next: "docs/dbt-versions/upgrade-dbt-version-in-cloud"
+pagination_prev: null
 ---
 
 dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning). 
+
+:::tip Keep on latest version, always
+
+_Did you know that you can always be working on the latest version?_ 
+
+With dbt Cloud, you can get early access to new functionality before it becomes available in dbt Core and without the need of managing your own version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) setting for details.
+
+:::
 
 dbt Labs provides different support levels for different versions, which may include new features, bug fixes, or security patches:
 
@@ -15,8 +25,8 @@ dbt Labs provides different support levels for different versions, which may inc
 
 ### Further reading
 
-- To learn how you can use dbt Core versions in dbt Cloud, see [Choosing a dbt Core version](/docs/dbt-versions/upgrade-core-in-cloud).
-- To learn about installing dbt Core, see "[How to install dbt Core](/docs/core/installation)."
+- To learn how you can use dbt Core versions in dbt Cloud, see [Choosing a dbt Core version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
+- To learn about installing dbt Core, see "[How to install dbt Core](/docs/core/installation-overview)."
 - To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version).
 
 ## Version support prior to v1.0
@@ -27,7 +37,7 @@ All dbt Core versions released prior to 1.0 and their version-specific documenta
 
 All dbt Core minor versions that have reached end-of-life (EOL) will have no new patch releases. This means they will no longer receive any fixes, including for known bugs that have been identified. Fixes for those bugs will instead be made in newer minor versions that are still under active support.
 
-We recommend upgrading to a newer version in [dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) or [dbt Core](/docs/core/installation#upgrading-dbt-core) to continue receiving support. 
+We recommend upgrading to a newer version in [dbt Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or [dbt Core](/docs/core/installation-overview#upgrading-dbt-core) to continue receiving support. 
 
 All dbt Core v1.0 and later are available in dbt Cloud until further notice. In the future, we intend to align dbt Cloud availability with dbt Core ongoing support. You will receive plenty of advance notice before any changes take place.
 
@@ -39,7 +49,7 @@ All dbt Core v1.0 and later are available in dbt Cloud until further notice. In 
 Minor versions include new features and capabilities. They will be supported for one year from their initial release date. _dbt Labs is committed to this 12-month support timeframe._ Our mechanism for continuing to support a minor version is by releasing new patches: small, targeted bug fixes. Whenever we refer to a minor version, such as v1.0, we always mean its latest available patch release (v1.0.x).
 
 While a minor version is officially supported:
-- You can use it in dbt Cloud. For more on dbt Cloud versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-core-in-cloud).
+- You can use it in dbt Cloud. For more on dbt Cloud versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - You can select it from the version dropdown on this website, to see documentation that is accurate for use with that minor version.
 
 ### Ongoing patches
@@ -54,7 +64,7 @@ After a minor version reaches the end of its critical support period, one year a
 
 ### Future versions
 
-We aim to release a new minor "feature" every 3 months. _This is an indicative timeline ONLY._ For the latest information about upcoming releases, including their planned release dates and which features and fixes might be included in each, always consult the [`dbt-core` repository milestones](https://github.com/dbt-labs/dbt-core/milestones).
+For the latest information about upcoming releases, including planned release dates and which features and fixes might be included, consult the [`dbt-core` repository milestones](https://github.com/dbt-labs/dbt-core/milestones) and [product roadmaps](https://github.com/dbt-labs/dbt-core/tree/main/docs/roadmap).
 
 ## Best practices for upgrading
 
@@ -82,7 +92,7 @@ Like many software projects, dbt Core releases follow [semantic versioning](http
 
 We are committed to avoiding breaking changes in minor versions for end users of dbt. There are two types of breaking changes that may be included in minor versions:
 
-- Changes to the [Python interface for adapter plugins](/guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter). These changes are relevant _only_ to adapter maintainers, and they will be clearly communicated in documentation and release notes.
+- Changes to the Python interface for adapter plugins. These changes are relevant _only_ to adapter maintainers, and they will be clearly communicated in documentation and release notes. For more information, refer to [Build, test, document, and promote adapters](/guides/adapter-creation) guide.
 - Changes to metadata interfaces, including [artifacts](/docs/deploy/artifacts) and [logging](/reference/events-logging), signalled by a version bump. Those version upgrades may require you to update external code that depends on these interfaces, or to coordinate upgrades between dbt orchestrations that share metadata, such as [state-powered selection](/reference/node-selection/syntax#about-node-selection).
 
 ### How we version adapter plugins

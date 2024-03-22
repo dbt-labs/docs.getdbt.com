@@ -22,34 +22,9 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 :::
 
-<h2> Overview of {frontMatter.meta.pypi_package} </h2>
+import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<ul>
-    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
-    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
-    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
-    <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
-    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
-    </ul>
-
-
-<h2> Installing {frontMatter.meta.pypi_package} </h2>
-
-pip is the easiest way to install the adapter:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
-
-<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
-
-<h2> Configuring {frontMatter.meta.pypi_package} </h2>
-
-<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
-
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
-
+<SetUpPages meta={frontMatter.meta}/>
 
 Starting with the release of dbt-core 1.0.0, versions of dbt-sqlite are aligned to the same major+minor [version](https://semver.org/) of dbt-core.
 - versions 1.1.x of this adapter work with dbt-core 1.1.x
@@ -110,7 +85,7 @@ your_profile_name:
 
   - SQLite does not allow views in one schema (i.e. database file) to reference objects in another schema. You'll get this error from SQLite: "view [someview] cannot reference objects in database [somedatabase]". You must set `materialized='table'` in models that reference other schemas.
 
-- Materializations are simplified: they drop and re-create the model, instead of doing the backup-and-swap-in new model that the other dbt database adapters support. This choice was made because SQLite doesn't support `DROP ... CASCADE` or `ALTER VIEW` or provide information about relation dependencies in something information_schema-like. These limitations make it really difficult to make the backup-and-swap-in functionality work properly. Given how SQLite aggressively [locks](https://sqlite.org/lockingv3.html the database anyway, it's probably not worth the effort.
+- Materializations are simplified: they drop and re-create the model, instead of doing the backup-and-swap-in new model that the other dbt database adapters support. This choice was made because SQLite doesn't support `DROP ... CASCADE` or `ALTER VIEW` or provide information about relation dependencies in something information_schema-like. These limitations make it really difficult to make the backup-and-swap-in functionality work properly. Given how SQLite aggressively [locks](https://sqlite.org/lockingv3.html) the database anyway, it's probably not worth the effort.
 
 ## SQLite Extensions
 
