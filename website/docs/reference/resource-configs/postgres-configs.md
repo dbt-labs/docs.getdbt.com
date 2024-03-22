@@ -10,16 +10,16 @@ In dbt-postgres, the following incremental materialization strategies are suppor
 
 <VersionBlock lastVersion="1.5">
 
-- `append` (default)
-- `delete+insert`
+- `append` (default when `unique_key` is not defined)
+- `delete+insert` (default when `unique_key` is defined)
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.6">
 
-- `append` (default)
+- `append` (default when `unique_key` is not defined)
 - `merge`
-- `delete+insert`
+- `delete+insert` (default when `unique_key` is defined)
 
 </VersionBlock>
 
@@ -27,12 +27,6 @@ In dbt-postgres, the following incremental materialization strategies are suppor
 ## Performance optimizations
 
 ### Unlogged
-
-<Changelog>
-
-  - **v0.14.1:** Introduced native support for `unlogged` config
-
-</Changelog>
 
 "Unlogged" tables can be considerably faster than ordinary tables, as they are not written to the write-ahead log nor replicated to read replicas. They are also considerably less safe than ordinary tables. See [Postgres docs](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED) for details.
 
@@ -58,12 +52,6 @@ models:
 ### Indexes
 
 While Postgres works reasonably well for datasets smaller than about 10m rows, database tuning is sometimes required. It's important to create indexes for columns that are commonly used in joins or where clauses.
-
-<Changelog>
-
-  - **v0.20.0:** Introduced native support for `indexes` config
-
-</Changelog>
 
 Table models, incremental models, seeds, snapshots, and materialized views may have a list of `indexes` defined. Each Postgres index can have three components:
 - `columns` (list, required): one or more columns on which the index is defined
@@ -120,21 +108,99 @@ models:
 
 ## Materialized views
 
-The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html).
-Indexes are the only configuration that is specific to `dbt-postgres`.
-The remaining configuration follows the general [materialized view](/docs/build/materializations#materialized-view) configuration.
-There are also some limitations that we hope to address in the next version.
+The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html)
+with the following configuration parameters:
 
-### Monitored configuration changes
+| Parameter                                                                        | Type               | Required | Default | Change Monitoring Support |
+|----------------------------------------------------------------------------------|--------------------|----------|---------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>`         | no       | `apply` | n/a                       |
+| [`indexes`](#indexes)                                                            | `[{<dictionary>}]` | no       | `none`  | alter                     |
 
-The settings below are monitored for changes applicable to `on_configuration_change`.
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
 
-#### Indexes
 
-Index changes (`CREATE`, `DROP`) can be applied without the need to rebuild the materialized view.
-This differs from a table model, where the table needs to be dropped and re-created to update the indexes.
-If the `indexes` portion of the `config` block is updated, the changes will be detected and applied
-directly to the materialized view in place.
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[indexes](#indexes):
+      - columns: [<column-name>]
+        unique: true | false
+        type: hash | btree
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): materialized_view
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [indexes](#indexes):
+        - columns: [<column-name>]
+          unique: true | false
+          type: hash | btree
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="materialized_view",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [indexes](#indexes)=[
+        {
+            "columns": ["<column-name>"],
+            "unique": true | false,
+            "type": "hash" | "btree",
+        }
+    ]
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+The [`indexes`](#indexes) parameter corresponds to that of a table, as explained above.
+It's worth noting that, unlike tables, dbt monitors this parameter for changes and applies the changes without dropping the materialized view.
+This happens via a `DROP/CREATE` of the indexes, which can be thought of as an `ALTER` of the materialized view.
+
+Learn more about these parameters in Postgres's [docs](https://www.postgresql.org/docs/current/sql-creatematerializedview.html).
+
+<VersionBlock firstVersion="1.6" lastVersion="1.6">
 
 ### Limitations
 
@@ -148,5 +214,7 @@ This would only need to be done once as the existing object would then be a mate
 For example,`my_model`, has already been materialized as a table in the underlying data platform via `dbt run`.
 If the user changes the model's config to `materialized="materialized_view"`, they will get an error.
 The solution is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+
+</VersionBlock>
 
 </VersionBlock>

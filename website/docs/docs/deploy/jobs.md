@@ -1,15 +1,16 @@
 ---
 title: "Jobs in dbt Cloud"
-sidebar_label: "Jobs"
+sidebar_label: "About Jobs"
 description: "Learn about deploy jobs and continuous integration (CI) jobs in dbt Cloud and what their differences are." 
 tags: [scheduler]
+pagination_next: "docs/deploy/deploy-jobs"
 ---
 
 In dbt Cloud, there are two types of jobs: 
 - [Deploy jobs](/docs/deploy/deploy-jobs) &mdash; To create and set up triggers for building production data assets
 - [Continuous integration (CI) jobs](/docs/deploy/continuous-integration) &mdash; To create and set up triggers for checking code changes
 
-Below is a comparison table that describes how deploy jobs and CI jobs behave differently:
+Below is a comparison table that describes how deploy jobs and CI jobs behave:
 
 |  | Deploy Jobs | CI Jobs |
 | --- | --- | --- |
@@ -19,3 +20,4 @@ Below is a comparison table that describes how deploy jobs and CI jobs behave di
 | Execution mode | Runs execute sequentially, so as to not have collisions on the underlying DAG. | Runs execute in parallel to promote team velocity. |
 | Efficiency run savings | Detects over-scheduled jobs and cancels unnecessary runs to avoid queue clog. | Cancels existing runs when a newer commit is pushed to avoid redundant work. |
 | State comparison | Only sometimes needs to detect state. | Almost always needs to compare state against the production environment to build on modified code and its dependents. |
+| Job run duration | Limit is 24 hours. | Limit is 24 hours. |

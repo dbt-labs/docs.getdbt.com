@@ -3,6 +3,7 @@ developer blog:
 
 guides:
 - website/docs/guides/**/*
+- website/docs/quickstarts/**/*
 
 content:
 - website/docs/**/*

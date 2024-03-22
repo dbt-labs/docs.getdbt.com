@@ -57,7 +57,7 @@ Since the ORDER BY clause is a SQL fundamental, data warehouses, including Snowf
 ## ORDER BY use cases
 
 We most commonly see the ORDER BY clause used in data work to:
-- Analyze data for both initial exploration of raw data sources and ad hoc querying of [mart datasets](https://docs.getdbt.com/guides/best-practices/how-we-structure/4-marts)
+- Analyze data for both initial exploration of raw data sources and ad hoc querying of [mart datasets](/best-practices/how-we-structure/4-marts)
 - Identify the top 5/10/50/100 of a dataset when used in pair with a [LIMIT](/sql-reference/limit)
 - (For Snowflake) Optimize the performance of large incremental models that use both a `cluster_by` [configuration](https://docs.getdbt.com/reference/resource-configs/snowflake-configs#using-cluster_by) and ORDER BY statement
 - Control the ordering of window function partitions (ex. `row_number() over (partition by user_id order by updated_at)`)

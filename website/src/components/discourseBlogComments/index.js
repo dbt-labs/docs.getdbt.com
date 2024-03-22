@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styles from './styles.module.css'
 import axios from 'axios'
 import sanitizeHtml from 'sanitize-html';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export const DiscourseBlogComments = ({title,slug}) => {
-
-  const { siteConfig: {customFields} } = useDocusaurusContext();
 
     const DISCOURSE_TOPIC_ENDPOINT = `https://discourse.getdbt.com/t/`
     const commentsToLoad = 6
@@ -31,9 +28,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
       const fetchData = async () => {
         try {
 
-          const endpoint = customFields?.isVercel === '1'
-          ? `/api/get-discourse-comments?title=${title}&slug=${slug}`
-          : `/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
+          const endpoint = `/api/get-discourse-comments?title=${title}&slug=${slug}`
         
           const { data } = await axios.get(endpoint)
   

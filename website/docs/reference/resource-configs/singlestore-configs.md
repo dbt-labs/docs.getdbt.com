@@ -3,13 +3,6 @@ title: "SingleStore configurations"
 id: "singlestore-configs"
 ---
 
-
-<Changelog>
-
-  - **v1.1.2:** Added support for for `storage_type`, `indexes`, `primary_key`, `sort_key`, `shard_key`, `unique_table_key`, `charset`, `collation`  options for creating SingleStore tables.
-
-</Changelog>
-
 ## Performance Optimizations
 [SingleStore Physical Database Schema Design documentation](https://docs.singlestore.com/managed-service/en/create-a-database/physical-database-schema-design/concepts-of-physical-database-schema-design.html) is helpful if you want to use specific options (that are described below) in your dbt project.
 

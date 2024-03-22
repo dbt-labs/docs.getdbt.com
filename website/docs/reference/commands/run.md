@@ -71,32 +71,20 @@ For more information on running parents or children of specific models, see the 
 
 ## Treat warnings as errors
 
-<Changelog>
-
-- Moved to [global configs](/reference/global-configs/about-global-configs) in v1.0
-
-</Changelog>
-
 See [global configs](/reference/global-configs/warnings)
 
 ## Failing fast
-
-<Changelog>
-
-- The `--fail-fast` flag is new in dbt v0.17.0
-- Moved to [global configs](/reference/global-configs/about-global-configs) in v1.0
-
-</Changelog>
 
 See [global configs](/reference/global-configs/failing-fast)
 
 ## Enable or Disable Colorized Logs
 
-<Changelog>
-
-- The `--use-colors` and `--no-use-colors` flags are new in dbt v0.18.0
-- Moved to [global configs](/reference/global-configs/about-global-configs) in v1.0
-
-</Changelog>
-
 See [global configs](/reference/global-configs/print-output#print-color)
+
+<VersionBlock firstVersion="1.8">
+
+## The `--empty` flag
+
+The `run` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+
+</VersionBlock>

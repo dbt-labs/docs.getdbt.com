@@ -4,7 +4,7 @@ title: "Events and logs"
 
 As dbt runs, it generates events. The most common way to see those events is as log messages, written in real time to two places:
 - The command line terminal (`stdout`), to provide interactive feedback while running dbt.
-- The debug log file (`logs/dbt.log`), to enable detailed [debugging of errors](/guides/best-practices/debugging-errors) when they occur. The text-formatted log messages in this file include all `DEBUG`-level events, as well as contextual information, such as log level and thread name. The location of this file can be configured via [the `log_path` config](/reference/project-configs/log-path).
+- The debug log file (`logs/dbt.log`), to enable detailed [debugging of errors](/guides/debug-errors) when they occur. The text-formatted log messages in this file include all `DEBUG`-level events, as well as contextual information, such as log level and thread name. The location of this file can be configured via [the `log-path` flag](/reference/global-configs/logs).
 
 <File name='CLI'>
 
@@ -34,7 +34,7 @@ _For more details about how the eventing system has been implemented in dbt-core
 
 <VersionBlock firstVersion="1.4">
 
-Starting in v1.4, the structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.proto) file within the `dbt-core` codebase.
+Starting in v1.4, the structure of each event in `dbt-core` is backed by a schema defined using [protocol buffers](https://developers.google.com/protocol-buffers). All schemas are defined in the [`types.proto`](https://github.com/dbt-labs/dbt-core/blob/3bf148c443e6b1da394b62e88a08f1d7f1d8ccaa/core/dbt/events/core_types.proto) file within the `dbt-core` codebase.
 
 Every event has the same two top-level keys:
 - `info`: Information common to all events. See the table below for the breakdown.

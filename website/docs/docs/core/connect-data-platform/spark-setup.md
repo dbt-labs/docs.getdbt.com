@@ -20,30 +20,10 @@ meta:
 <Snippet path="warehouse-setups-cloud-callout" />
 <Snippet path="dbt-databricks-for-databricks" />
 
-:::note
-See [Databricks setup](#databricks-setup) for the Databricks version of this page.
-:::
+import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<h2> Overview of {frontMatter.meta.pypi_package} </h2>
+<SetUpPages meta={frontMatter.meta} />
 
-<ul>
-    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
-    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
-    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
-    <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
-    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
-    </ul>
-
-<h2> Installing {frontMatter.meta.pypi_package} </h2>
-
-pip is the easiest way to install the adapter:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
-
-<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 If connecting to Databricks via ODBC driver, it requires `pyodbc`. Depending on your system, you can install it seperately or via pip. See the [`pyodbc` wiki](https://github.com/mkleehammer/pyodbc/wiki/Install) for OS-specific installation details.
 
@@ -51,20 +31,16 @@ If connecting to a Spark cluster via the generic thrift or http methods, it requ
 
 ```zsh
 # odbc connections
-$ pip install "dbt-spark[ODBC]"
+$ python -m pip install "dbt-spark[ODBC]"
 
 # thrift or http connections
-$ pip install "dbt-spark[PyHive]"
+$ python -m pip install "dbt-spark[PyHive]"
 ```
-
-<VersionBlock firstVersion="1.1">
 
 ```zsh
 # session connections
-$ pip install "dbt-spark[session]"
+$ python -m pip install "dbt-spark[session]"
 ```
-
-</VersionBlock>
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
@@ -74,13 +50,12 @@ $ pip install "dbt-spark[session]"
 
 ## Connection Methods
 
-dbt-spark can connect to Spark clusters by three different methods:
+dbt-spark can connect to Spark clusters by four different methods:
 
 - [`odbc`](#odbc) is the preferred method when connecting to Databricks. It supports connecting to a SQL Endpoint or an all-purpose interactive cluster.
 - [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
 - [`http`](#http) is a more generic method for connecting to a managed service that provides an HTTP endpoint. Currently, this includes connections to a Databricks interactive cluster.
 
-<VersionBlock firstVersion="1.1">
 
 - [`session`](#session) connects to a pySpark session, running locally or on a remote machine.
 
@@ -88,11 +63,8 @@ dbt-spark can connect to Spark clusters by three different methods:
 The `session` connection method is intended for advanced users and experimental dbt development. This connection method is not supported by dbt Cloud.
 :::
 
-</VersionBlock>
 
 ### ODBC
-
-<Changelog>New in v0.18.1</Changelog>
 
 Use the `odbc` connection method if you are connecting to a Databricks SQL endpoint or interactive cluster via ODBC driver. (Download the latest version of the official driver [here](https://databricks.com/spark/odbc-driver-download).)
 
@@ -186,8 +158,6 @@ Databricks interactive clusters can take several minutes to start up. You may
 include the optional profile configs `connect_timeout` and `connect_retries`,
 and dbt will periodically retry the connection.
 
-<VersionBlock firstVersion="1.1">
-
 ### Session
 
 Use the `session` method if you want to run `dbt` against a pySpark session. 
@@ -208,8 +178,6 @@ your_profile_name:
 ```
 
 </File>
-
-</VersionBlock>
 
 ## Optional configurations
 
@@ -232,6 +200,7 @@ connect_retries: 3
 
 
 <VersionBlock firstVersion="1.7">
+
 ### Server side configuration
 
 Spark can be customized using [Application Properties](https://spark.apache.org/docs/latest/configuration.html). Using these properties the execution can be customized, for example, to allocate more memory to the driver process. Also, the Spark SQL runtime can be set through these properties. For example, this allows the user to [set a Spark catalogs](https://spark.apache.org/docs/latest/configuration.html#spark-sql).

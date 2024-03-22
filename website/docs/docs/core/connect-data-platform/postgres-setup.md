@@ -18,33 +18,9 @@ meta:
 
 <Snippet path="warehouse-setups-cloud-callout" />
 
-<h2> Overview of {frontMatter.meta.pypi_package} </h2>
+import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<ul>
-    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
-    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
-    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
-    <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
-    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
-    </ul>
-
-
-<h2> Installing {frontMatter.meta.pypi_package} </h2>
-
-pip is the easiest way to install the adapter:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
-
-<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
-
-<h2> Configuring {frontMatter.meta.pypi_package} </h2>
-
-<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
-
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+<SetUpPages meta={frontMatter.meta} />
 
 
 ## Profile Configuration
@@ -88,32 +64,22 @@ The `search_path` config controls the Postgres "search path" that dbt configures
 
 #### role
 
-<Changelog> Added in v0.16.0 </Changelog>
-
 The `role` config controls the Postgres role that dbt assumes when opening new connections to the database.
 
 #### sslmode
-
-<Changelog> Added in v0.16.0 </Changelog>
 
 The `sslmode` config controls how dbt connectes to Postgres databases using SSL. See [the Postgres docs](https://www.postgresql.org/docs/9.1/libpq-ssl.html) on `sslmode` for usage information. When unset, dbt will connect to databases using the Postgres default, `prefer`, as the `sslmode`.
 
 
 #### sslcert
 
-<Changelog> Added in v0.21.0 </Changelog>
-
 The `sslcert` config controls the location of the certificate file used to connect to Postgres when using client SSL connections. To use a certificate file that is not in the default location, set that file path using this value. Without this config set, dbt uses the Postgres default locations. See [Client Certificates](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-CLIENTCERT) in the Postgres SSL docs for the default paths.
 
 #### sslkey
 
-<Changelog> Added in v0.21.0 </Changelog>
-
 The `sslkey` config controls the location of the private key for connecting to Postgres using client SSL connections. If this config is omitted, dbt uses the default key location for Postgres. See [Client Certificates](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-CLIENTCERT) in the Postgres SSL docs for the default locations.
 
 #### sslrootcert
-
-<Changelog> Added in v0.21.0 </Changelog>
 
 When connecting to a Postgres server using a client SSL connection, dbt verifies that the server provides an SSL certificate signed by a trusted root certificate. These root certificates are in the `~/.postgresql/root.crt` file by default. To customize the location of this file, set the `sslrootcert` config value to a new file path.
 

@@ -3,6 +3,8 @@ title: "The audit log for dbt Cloud Enterprise"
 id: audit-log
 description: "You can troubleshoot possible issues and provide security audits by reviewing event activity in your organization."
 sidebar_label: "Audit log"
+pagination_next: null
+pagination_prev: "docs/cloud/manage-access/about-user-access"
 ---
 
 To review actions performed by people in your organization, dbt provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
@@ -32,7 +34,7 @@ On the audit log page, you will see a list of various events and their associate
 
 Click the event card to see the details about the activity that triggered the event. This view provides important details, including when it happened and what type of event was triggered. For example, if someone changes the settings for a job, you can use the event details to see which job was changed (type of event: `v1.events.job_definition.Changed`), by whom (person who triggered the event: `actor`), and when (time it was triggered: `created_at_utc`). For types of events and their descriptions, see [Events in audit log](#events-in-audit-log).
 
-The event details provides the key factors of an event:
+The event details provide the key factors of an event:
 
 | Name                 | Description                                   |
 | -------------------- | --------------------------------------------- |
@@ -158,16 +160,22 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 You can search the audit log to find a specific event or actor, which is limited to the ones listed in [Events in audit log](#events-in-audit-log). The audit log successfully lists historical events spanning the last 90 days. You can search for an actor or event using the search bar, and then narrow your results using the time window.
 
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" width="85%" title="Use search bar to find content in the audit log"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" width="95%" title="Use search bar to find content in the audit log"/>
 
 
 ## Exporting logs
 
 You can use the audit log to export all historical audit results for security, compliance, and analysis purposes:
 
-- For events within 90 days &mdash; dbt Cloud will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
-- For events beyond 90 days &mdash; Select **Export All**. The Account Admin will receive an email link to download a CSV file of all the events that occurred in your organization.
+- **For events within 90 days** &mdash; dbt Cloud will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" width="85%" title="View audit log export options"/>
+- **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin will receive an email link to download a CSV file of all the events that occurred in your organization.
 
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" width="95%" title="View audit log export options"/>
 
+### Azure Single-tenant
+
+For users deployed in [Azure single tenant](/docs/cloud/about-cloud/tenancy), while the **Export All** button isn't available, you can conveniently use specific APIs to access all events:
+
+- [Get recent audit log events CSV](/dbt-cloud/api-v3#/operations/Get%20Recent%20Audit%20Log%20Events%20CSV) &mdash; This API returns all events in a single CSV without pagination.
+- [List recent audit log events](/dbt-cloud/api-v3#/operations/List%20Recent%20Audit%20Log%20Events) &mdash; This API returns a limited number of events at a time, which means you will need to paginate the results.

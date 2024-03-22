@@ -74,7 +74,7 @@ MetricFlow will use `user_id` as the join key to join two semantic models, `tran
 
 Note that the `average_purchase_price` measure is defined in the `transactions` semantic model, where `user_id` is a foreign entity. However, the `user_signup` semantic model has `user_id` as a primary entity. 
 
-Since this is a foreign-to-primary relationship, a left join is implemented where the `transactions` semantic model joins the `user_signup` semantic model, since the `average_purchase_price` measure is defined in the `transactions` semantic model.
+Since this is a foreign-to-primary relationship, a left join is implemented where the `transactions` semantic model joins the `user_signup` semantic model since the `average_purchase_price` measure is defined in the `transactions` semantic model.
 
 When querying dimensions from different semantic models using the CLI, a double underscore (or dunder) is added to the dimension name after the joining entity. In the CLI query shown below, `user_id__type` is included as a `dimension`.
 
@@ -84,17 +84,19 @@ mf query --metrics average_purchase_price --dimensions metric_time,user_id__type
 
 ## Multi-hop joins
 
-:::info
-This feature is currently in development and not currently available. 
-:::
+MetricFlow allows users to join measures and dimensions across a graph of entities by moving from one table to another within a graph. This is referred to as "multi-hop join". 
 
-MetricFlow allows users to join measures and dimensions across a graph of entities, which we refer to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
+MetricFlow can join up to three tables, supporting multi-hop joins with a limit of two hops. This does the following:
+- Enables complex data analysis without ambiguous paths.
+- Supports navigating through data models, like moving from `orders` to `customers` to `country` tables.
 
-Here's an example schema for reference:
+While direct three-hop paths are limited to prevent confusion from multiple routes to the same data, MetricFlow does allow joining more than three tables if the joins don’t exceed two hops to reach a dimension. 
 
-![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png)
+For example, if you have two models, `country` and `region`, where customers are linked to countries, which in turn are linked to regions, you can join all of them in a single SQL query and can dissect `orders` by `customer__country_country_name` but not by `customer__country__region_name`.
 
-Notice how this schema can be translated into the three MetricFlow semantic models below to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
+![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png "Example schema for reference")
+
+Notice how the schema can be translated into the following three MetricFlow semantic models to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
 
 ```yaml
 semantic_models:
@@ -124,6 +126,8 @@ semantic_models:
       - name: signup_date
         type: time
       - name: country_dim
+
+  - name: country
     entities:
       - name: country_id
         type: primary
@@ -134,9 +138,6 @@ semantic_models:
 
 ### Query multi-hop joins
 
-:::info 
-This feature is currently in development and not currently available.
-::: 
 
 To query dimensions _without_ a multi-hop join involved, you can use the fully qualified dimension name with the syntax entity double underscore (dunder) dimension, like `entity__dimension`. 
 

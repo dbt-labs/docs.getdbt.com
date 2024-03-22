@@ -3,12 +3,6 @@ datatype: [directorypath]
 default_value: [test]
 ---
 
-<Changelog>
-
-* `v1.0.0`: Generic tests can be defined in the `tests/generic` subfolder, in addition to the `macros/` directory
-
-</Changelog>
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -19,7 +13,7 @@ test-paths: [directorypath]
 
 ## Definition
 
-Optionally specify a custom list of directories where [singular tests](/docs/build/tests) are located.
+Optionally specify a custom list of directories where [singular tests](/docs/build/data-tests) are located.
 
 
 ## Default

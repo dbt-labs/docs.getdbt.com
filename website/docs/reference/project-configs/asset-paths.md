@@ -15,12 +15,6 @@ asset-paths: [directorypath]
 ## Definition
 Optionally specify a custom list of directories to copy to the `target` directory as part of the `docs generate` command. This is useful for rendering images in your repository in your project documentation.
 
-<Changelog>
-
-* `v0.18.0`: This configuration was introduced — see the [migration guide](/guides/migration/versions) for more details.
-
-</Changelog>
-
 ## Default
 By default, dbt will not copy any additional files as part of docs generate, i.e. `asset-paths: []`
 

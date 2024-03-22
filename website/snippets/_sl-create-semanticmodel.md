@@ -1,4 +1,4 @@
-The following steps will walk you through setting up semantic models, which you can do with the dbt Cloud IDE or the CLI. Semantic models consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).  
+The following steps describe how to set up semantic models. Semantic models consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).  
 
 We highly recommend you read the overview of what a [semantic model](/docs/build/semantic-models) is before getting started. If you're working in the [Jaffle shop example](https://github.com/dbt-labs/jaffle-sl-template), delete the `orders.yml` config or delete the .yml extension so it's ignored during parsing. **We'll be rebuilding it step by step in this example.**
 

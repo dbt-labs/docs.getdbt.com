@@ -2,6 +2,8 @@
 title: "About documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
+pagination_next: "docs/collaborate/build-and-view-your-docs"
+pagination_prev: null
 ---
 
 ## Related documentation
@@ -9,11 +11,11 @@ id: "documentation"
 * [Declaring properties](/reference/configs-and-properties)
 * [`dbt docs` command](/reference/commands/cmd-docs)
 * [`doc` Jinja function](/reference/dbt-jinja-functions)
-* If you're new to dbt, we recommend that you check out our [quickstart guide](/quickstarts) to build your first dbt project, complete with documentation.
+* If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project, complete with documentation.
 
 ## Assumed knowledge
 
-* [Tests](/docs/build/tests)
+* [Tests](/docs/build/data-tests)
 
 ## Overview
 
@@ -30,7 +32,7 @@ Here's an example docs site:
 <Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-screenshot.png" title="Auto-generated dbt documentation website"/>
 
 ## Adding descriptions to your project
-To add descriptions to your project, use the `description:` key in the same files where you declare [tests](/docs/build/tests), like so:
+To add descriptions to your project, use the `description:` key in the same files where you declare [tests](/docs/build/data-tests), like so:
 
 <File name='models/<filename>.yml'>
 
@@ -62,7 +64,7 @@ models:
 ## Generating project documentation
 You can generate a documentation site for your project (with or without descriptions) using the CLI.
 
-First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. To see documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
+First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. To see the documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
 
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 
@@ -72,7 +74,6 @@ Then, run `dbt docs serve` to use these `.json` files to populate a local websit
 <FAQ path="Docs/long-descriptions" />
 <FAQ path="Docs/sharing-documentation" />
 <FAQ path="Docs/document-other-resources" />
-<FAQ path="Project/docs-for-multiple-projects" />
 
 
 ## Using Docs Blocks
@@ -147,7 +148,6 @@ as well as the repo for this project \[here](https://github.com/dbt-labs/mrr-pla
 </File>
 
 ### Custom project-level overviews
-<Changelog>New in v0.18.0</Changelog>
 
 You can set different overviews for each dbt project/package included in your documentation site
 by creating a docs block named `__[project_name]__`. For example, in order to define

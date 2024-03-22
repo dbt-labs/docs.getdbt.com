@@ -8,7 +8,11 @@ description: "Read this guide to understand exposure properties in dbt."
 - [Declaring resource properties](/reference/configs-and-properties)
 
 ## Overview
-Exposures are defined in `.yml` files nested under an `exposures:` key. You may define `exposures` in YAML files that also define define `sources` or `models`.
+
+import PropsCallout from '/snippets/_config-prop-callout.md';
+
+Exposures are defined in `properties.yml` files nested under an `exposures:` key. You may define `exposures` in YAML files that also define `sources` or `models`. <PropsCallout title={frontMatter.title}/>  <br /> 
+
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
@@ -30,7 +34,7 @@ exposures:
     [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
-    maturity: {high, medium, low}
+    maturity: {high, medium, low}  # Indicates level of confidence or stability in the exposure
     [tags](/reference/resource-configs/tags): [<string>]
     [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:
@@ -65,7 +69,7 @@ exposures:
     [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
-    maturity: {high, medium, low}
+    maturity: {high, medium, low} # Indicates level of confidence or stability in the exposure
     [tags](/reference/resource-configs/tags): [<string>]
     [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:

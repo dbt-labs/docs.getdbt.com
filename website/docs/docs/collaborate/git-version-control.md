@@ -3,6 +3,8 @@ title: "About git"
 id: git-version-control
 description: "Git overview"
 sidebar_label: "About git"
+pagination_next: "docs/collaborate/git/version-control-basics"
+pagination_prev: null
 ---
 
 A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in your dbt project.
@@ -22,3 +24,4 @@ When you develop in the command line interface (CLI) or Cloud  integrated develo
 - [Merge conflicts](/docs/collaborate/git/merge-conflicts) 
 - [Connect to GitHub](/docs/cloud/git/connect-github)
 - [Connect to GitLab](/docs/cloud/git/connect-gitlab)
+- [Connect to Azure DevOps](/docs/cloud/git/connect-azure-devops)

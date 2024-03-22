@@ -18,33 +18,9 @@ meta:
 
 <Snippet path="warehouse-setups-cloud-callout" />
 
-<h2> Overview of {frontMatter.meta.pypi_package} </h2>
+import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<ul>
-    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
-    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
-    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a>   <a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
-    <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
-    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
-    </ul>
-
-<h2> Installing {frontMatter.meta.pypi_package} </h2>
-
-pip is the easiest way to install the adapter:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
-
-<p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
-
-<h2> Configuring {frontMatter.meta.pypi_package} </h2>
-
-<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
-
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
-
+<SetUpPages meta={frontMatter.meta} />
 
 ## Authentication Methods
 
@@ -74,17 +50,15 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 # Must be a value of 1 or greater 
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
 
 **Default project**
-
-<Changelog>New in dbt v0.19.0</Changelog>
 
 If you do not specify a `project`/`database` and are using the `oauth` method, dbt will use the default `project` associated with your user, as defined by `gcloud config set`.
 
@@ -92,14 +66,7 @@ If you do not specify a `project`/`database` and are using the `oauth` method, d
 
 See [docs](https://developers.google.com/identity/protocols/oauth2) on using OAuth 2.0 to access Google APIs.
 
-<Tabs
-  defaultValue="refresh"
-  values={[
-    {label: 'Refresh token', value: 'refresh'},
-    {label: 'Temporary token', value: 'temp'},
-  ]}>
-
-<TabItem value="refresh">
+#### Refresh token
 
 Using the refresh token and client information, dbt will mint new access tokens as necessary.
 
@@ -112,21 +79,19 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth-secrets
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      refresh_token: [token]
-      client_id: [client id]
-      client_secret: [client secret]
-      token_uri: [redirect URI]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 # Must be a value of 1 or greater
+      refresh_token: TOKEN
+      client_id: CLIENT_ID
+      client_secret: CLIENT_SECRET
+      token_uri: REDIRECT_URI
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
 
-</TabItem>
-
-<TabItem value="temp">
+#### Temporary token
 
 dbt will use the one-time access token, no questions asked. This approach makes sense if you have an external deployment process that can mint new access tokens and update the profile file accordingly.
 
@@ -139,18 +104,15 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth-secrets
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      token: [temporary access token] # refreshed + updated by external process
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 # Must be a value of 1 or greater
+      token: TEMPORARY_ACCESS_TOKEN # refreshed + updated by external process
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
 
-</TabItem>
-
-</Tabs>
 
 ### Service Account File
 
@@ -163,11 +125,11 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: service-account
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset]
-      threads: [1 or more]
-      keyfile: [/path/to/bigquery/keyfile.json]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME
+      threads: 4 # Must be a value of 1 or greater
+      keyfile: /PATH/TO/BIGQUERY/keyfile.json
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
@@ -191,10 +153,10 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: service-account-json
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset]
-      threads: [1 or more]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME
+      threads: 4 # Must be a value of 1 or greater
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 
       # These fields come from the service account json keyfile
       keyfile_json:
@@ -232,8 +194,6 @@ my-profile:
 ```
 
 ### Timeouts and Retries
-
-<VersionBlock firstVersion="1.1">
 
 The `dbt-bigquery` plugin uses the BigQuery Python client library to submit queries. Each query requires two steps:
 1. Job creation: Submit the query job to BigQuery, and receive its job ID.
@@ -321,7 +281,6 @@ my-profile:
 
 </File>
 
-</VersionBlock>
 
 ### Dataset locations
 
@@ -342,12 +301,6 @@ my-profile:
 ```
 
 ### Maximum Bytes Billed
-
-<Changelog>
-
-- New in dbt v0.17.0
-
-</Changelog>
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile,
 queries executed by dbt will fail if they exceed the configured maximum bytes
@@ -395,7 +348,6 @@ my-profile:
 ```
 
 ### Service Account Impersonation
-<Changelog>New in v0.18.0</Changelog>
 
 This feature allows users authenticating via local OAuth to access BigQuery resources based on the permissions of a service account.
 
@@ -417,7 +369,6 @@ For a general overview of this process, see the official docs for [Creating Shor
 <FAQ path="Warehouse/bq-impersonate-service-account-setup" />
 
 ### Execution project
-<Changelog>New in v0.21.0</Changelog>
 
 By default, dbt will use the specified `project`/`database` as both:
 1. The location to materialize resources (models, seeds, snapshots, etc), unless they specify a custom `project`/`database` config
@@ -480,6 +431,7 @@ my-profile:
       dataproc_region: us-central1
       submission_method: serverless
       dataproc_batch:
+        batch_id: MY_CUSTOM_BATCH_ID # Supported in v1.7+
         environment_config:
           execution_config:
             service_account: dbt@abc-123.iam.gserviceaccount.com
@@ -489,7 +441,7 @@ my-profile:
           role: dev
         runtime_config:
           properties:
-            spark.executor.instances: 3
+            spark.executor.instances: "3"
             spark.driver.memory: 1g
 ```
 

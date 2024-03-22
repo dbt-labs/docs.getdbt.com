@@ -1,0 +1,1 @@
+<span>{props.title} are "special properties" in that you can't configure them in the <code>dbt_project.yml</code> file or using <code>config()</code> blocks. Refer to <a href="https://docs.getdbt.com/reference/configs-and-properties#which-properties-are-not-also-configs" target="_self"> Configs and properties</a> for more info.</span>

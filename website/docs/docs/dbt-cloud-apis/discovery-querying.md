@@ -2,6 +2,7 @@
 title: "Query the Discovery API"
 id: "discovery-querying"
 sidebar_label: "Query the Discovery API"
+pagination_next: "docs/dbt-cloud-apis/discovery-schema-environment"
 ---
 
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-cloud-apis/discovery-api) for an introduction.
@@ -24,7 +25,7 @@ Once you've created a token, you can use it in the Authorization header of reque
 
 2. Find your API URL using the endpoint `https://metadata.{YOUR_ACCESS_URL}/graphql`.
 
-    * Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your multi-tenant region is North America, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. If your multi-tenant region is EMEA, your endpoint is `https://metadata.emea.dbt.com/graphql`.
+    * Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your multi-tenant region is North America, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. If your multi-tenant region is EMEA, your endpoint is `https://metadata.emea.dbt.com/graphql`.
 
 3. For specific query points, refer to the [schema documentation](/docs/dbt-cloud-apis/discovery-schema-job).
 
@@ -32,7 +33,7 @@ Once you've created a token, you can use it in the Authorization header of reque
 ## Run queries using HTTP requests
 
 You can run queries by sending a `POST` request to the `https://metadata.YOUR_ACCESS_URL/graphql` endpoint, making sure to replace:
-* `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+* `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 * `YOUR_TOKEN` in the Authorization header with your actual API token. Be sure to include the Token prefix.
 * `QUERY_BODY` with a GraphQL query, for example `{ "query": "<query text>" }`
 * `VARIABLES` with a dictionary of your GraphQL query variables, such as a job ID or a filter.
@@ -172,7 +173,7 @@ Below is an example that returns the `first` 500 models `after` the specified Ob
 <!-- TODO: Update screenshot to use `$environmentId: BigInt!, or remove it` -->
 <!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
 
-<Lightbox src="/img/paginate.png" width="75%" title="Example of pagination"/>
+<Lightbox src="/img/Paginate.png" width="75%" title="Example of pagination"/>
 
 Below is a code example of the `PageInfo` object:
 
@@ -191,7 +192,7 @@ Filtering helps to narrow down the results of an API query. If you want to query
 
 Below is an example that filters for results of models that have succeeded on their `lastRunStatus`:
 
-<Lightbox src="/img/filtering.png" width="75%" title="Example of filtering"/>
+<Lightbox src="/img/Filtering.png" width="75%" title="Example of filtering"/>
 
 Below is an example that filters for models that have an error on their last run and tests that have failed:
 

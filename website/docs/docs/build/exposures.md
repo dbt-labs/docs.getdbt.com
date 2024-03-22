@@ -4,13 +4,6 @@ sidebar_label: "Exposures"
 id: "exposures"
 ---
 
-<Changelog>
-
-* **v0.18.1**: Exposures are new!
-* **v0.20.0**: Exposures support `tags` and `meta` properties
-
-</Changelog>
-
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
 - populate a dedicated page in the auto-generated [documentation](/docs/collaborate/documentation) site with context relevant to data consumers
@@ -103,16 +96,14 @@ _Expected:_
 </VersionBlock>
 
 _Optional:_
-- **label**:  may contain spaces, capital letters, or special characters.
-- **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
-- **maturity**: one of `high`, `medium`, `low`
+- **label**:  May contain spaces, capital letters, or special characters.
+- **url**:  Activates and populates the link to **View this exposure** in the upper right corner of the generated documentation site
+- **maturity**: Indicates the level of confidence or stability in the exposure. One of `high`, `medium`, or `low`. For example, you could use `high` maturity for a well-established dashboard, widely used and trusted within your organization. Use `low` maturity for a new or experimental analysis.
 
 _General properties (optional)_
 - **description**
 - **tags**
 - **meta**
-
-We plan to add more subtypes and optional properties in future releases.
 
 ### Referencing exposures
 

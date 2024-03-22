@@ -58,12 +58,6 @@ models:
 
 ### Secrets
 
-<Changelog>
-
-  **v1.0.0:** Restricted use of secret env vars to `profiles.yml` and `packages.yml`
-
-</Changelog>
-
 For certain configurations, you can use "secret" env vars. Any env var named with the prefix `DBT_ENV_SECRET_` will be:
 - Available for use in `profiles.yml` + `packages.yml`, via the same `env_var()` function
 - Disallowed everywhere else, including `dbt_project.yml` and model SQL, to prevent accidentally writing these secret values to the <Term id="data-warehouse" /> or metadata artifacts
@@ -81,12 +75,6 @@ host: "www.{{ env_var('DBT_ENV_SECRET_HOST_DOMAIN') }}.com/{{ env_var('DBT_ENV_S
 ```
 
 ### Custom metadata
-
-<Changelog>
-
-  - **v0.19.0:** Introduced `DBT_ENV_CUSTOM_ENV_` prefix and artifact `metadata.env`
-
-</Changelog>
 
 Any env var named with the prefix `DBT_ENV_CUSTOM_ENV_` will be included in two places, with its prefix-stripped name as the key:
 - [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata): `metadata` -> `env`
@@ -112,6 +100,7 @@ select 1 as id
 
 </VersionBlock>
 
-:::info dbt Cloud Usage
+### dbt Cloud usage
+
 If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with `DBT_` (including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET_`). Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
-:::
+

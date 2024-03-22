@@ -16,7 +16,7 @@ Using CI helps:
 
 ## How CI works
 
-When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt Cloud listens for webhooks from your Git provider indicating that a new PR has been opened or updated with new commits. When dbt Cloud receives one of these webhooks, it enqueues a new run of the CI job. If you want CI checks to run on each new commit, you need to mark your PR as **Ready for review** in your Git provider &mdash; draft PRs _don't_ trigger CI jobs. 
+When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt Cloud listens for webhooks from your Git provider indicating that a new PR has been opened or updated with new commits. When dbt Cloud receives one of these webhooks, it enqueues a new run of the CI job. 
 
 dbt Cloud builds and tests the models affected by the code change in a temporary schema, unique to the PR. This process ensures that the code builds without error and that it matches the expectations as defined by the project's dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
 
@@ -24,7 +24,7 @@ dbt Cloud builds and tests the models affected by the code change in a temporary
 
 When the CI run completes, you can view the run status directly from within the pull request. dbt Cloud updates the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message states whether the models and tests ran successfully or not. 
 
-dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has database or schema customization using the [generate_database_name](/docs/build/custom-databases#generate_database_name) or [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros, dbt Cloud might not drop the temporary schema from your data warehouse. For more information, refer to [Temp PR schema limitations](/docs/deploy/ci-jobs#temp-pr-schema-limitations).
+dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has schema customization using the [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macro, dbt Cloud might not drop the temporary schema from your data warehouse. For more information, refer to [Troubleshooting](/docs/deploy/ci-jobs#troubleshooting).
 
 ## Differences between CI jobs and other deployment jobs
 
@@ -52,6 +52,4 @@ When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the late
 
 ### Run slot treatment
 
-Your CI runs don't consume run slots so a CI check will never block a production run.
-
-
+For accounts on the [Enterprise or Team](https://www.getdbt.com/pricing) plans, CI runs won't consume run slots. This guarantees a CI check will never block a production run. 

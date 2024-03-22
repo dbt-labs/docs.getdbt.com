@@ -65,7 +65,7 @@ See the DAG above? It follows a more traditional approach to data modeling where
 
 Instead, there are some key elements that can help you create a more streamlined DAG and [modular data models](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/):
 
-- Leveraging [staging, intermediate, and mart layers](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview) to create layers of distinction between sources and transformed data
+- Leveraging [staging, intermediate, and mart layers](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview) to create layers of distinction between sources and transformed data
 - Abstracting code that’s used across multiple models to its own model
 - Joining on surrogate keys versus on multiple values
 
@@ -106,6 +106,6 @@ A Directed acyclic graph (DAG) is a visual representation of your data models an
 Ready to restructure (or create your first) DAG? Check out some of the resources below to better understand data modularity, data lineage, and how dbt helps bring it all together:
 
 - [Data modeling techniques for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-- [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+- [How we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview)
 - [How to audit your DAG](https://www.youtube.com/watch?v=5W6VrnHVkCA)
-- [Refactoring legacy SQL to dbt](/guides/migration/tools/refactoring-legacy-sql)
+- [Refactoring legacy SQL to dbt](/guides/refactoring-legacy-sql)

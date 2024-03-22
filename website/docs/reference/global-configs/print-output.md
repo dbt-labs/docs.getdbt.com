@@ -8,35 +8,17 @@ sidebar: "Print output"
 
 <VersionBlock lastVersion="1.4">
 
-By default, dbt includes `print()` messages in standard out (stdout). You can use the `NO_PRINT` config to prevent these messages from showing up in stdout.
-
-<File name='profiles.yml'>
-
-```yaml
-config:
-  no_print: true
-```
-
-</File>
+By default, dbt includes `print()` messages in standard out (stdout). You can use the `DBT_NO_PRINT` environment variable to prevent these messages from showing up in stdout.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
-By default, dbt includes `print()` messages in standard out (stdout). You can use the `PRINT` config to prevent these messages from showing up in stdout.
-
-<File name='profiles.yml'>
-
-```yaml
-config:
-  print: false
-```
-
-</File>
+By default, dbt includes `print()` messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
 
 :::warning Syntax deprecation
 
-The original `NO_PRINT` syntax has been deprecated, starting with dbt v1.5. Backward compatibility is supported but will be removed in an as-of-yet-undetermined future release.
+The original `DBT_NO_PRINT` environment variable has been deprecated, starting with dbt v1.5. Backward compatibility is supported but will be removed in an as-of-yet-undetermined future release.
 
 :::
 
@@ -46,8 +28,6 @@ Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showin
 
 ```text
 dbt --no-print run
-...
-
 ```
 
 ### Printer width
@@ -74,13 +54,24 @@ config:
   use_colors: False
 ```
 
+</File>
+
 ```text
 dbt --use-colors run
 dbt --no-use-colors run
 ```
 <VersionBlock firstVersion="1.5">
 
-You can set the color preferences for the file logs only using the `--use-colors-file / --no-use-colors-file` flags.
+You can set the color preferences for the file logs only within `profiles.yml` or using the `--use-colors-file / --no-use-colors-file` flags.
+
+<File name='profiles.yml'>
+
+```yaml
+config:
+  use_colors_file: False
+```
+
+</File>
 
 ```text
 dbt --use-colors-file run
@@ -88,5 +79,3 @@ dbt --no-use-colors-file run
 ```
 
 </VersionBlock>
-
-</File>

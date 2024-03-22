@@ -31,7 +31,7 @@ dbt --cache-selected-only run --select salesforce
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.1" lastVersion="1.4">
+<VersionBlock lastVersion="1.4">
 
 ### Cache database objects for selected resource
 

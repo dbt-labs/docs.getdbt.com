@@ -3,7 +3,7 @@ title: "Packages"
 id: "packages"
 ---
 
-## What is a package?
+
 Software engineers frequently modularize code into libraries. These libraries help programmers operate with leverage: they can spend more time focusing on their unique business logic, and less time implementing code that someone else has already spent the time perfecting.
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
@@ -22,12 +22,12 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
+* It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
 
-:::note Using Python packages
 
-Defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages).
+import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
-:::
+<UseCaseInfo/>
 
 ## How do I add a package to my project?
 1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
@@ -48,11 +48,7 @@ packages:
 
 </File>
 
-<Changelog>
-
-- **v1.0.0:** The default [`packages-install-path`](/reference/project-configs/packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
-
-</Changelog>
+The default [`packages-install-path`](/reference/project-configs/packages-install-path) is `dbt_packages`.
 
 3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_packages` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
 
@@ -60,7 +56,10 @@ packages:
 You can specify a package using one of the following methods, depending on where your package is stored.
 
 ### Hub packages (recommended)
-[dbt Hub](https://hub.getdbt.com) is a registry for dbt packages. Packages that are listed on dbt Hub can be installed like so:
+
+dbt Labs hosts the [Package hub](https://hub.getdbt.com), registry for dbt packages, as a courtesy to the dbt Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [dbt Labs Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
+
+You can install available hub packages in the following way:
 
 <File name='packages.yml'>
 
@@ -85,16 +84,11 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 * Your project uses both the dbt-utils and Snowplow packages; and the Snowplow package _also_ uses the dbt-utils package.
 * Your project uses both the Snowplow and Stripe packages, both of which use the dbt-utils package.
 
-In comparison, other package installation methods are unable to handle the duplicate dbt-utils package.
+In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
+
+Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the `DBT_PACKAGE_HUB_URL` environment variable.
 
 #### Prerelease versions
-
-<Changelog>
-
-* `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
-* `v1.0.0`: When you provide an explicit prerelease version, dbt will install that version.
-
-</Changelog>
 
 Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
 
@@ -129,12 +123,6 @@ packages:
 ```
 
 </File>
-
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to specify commit hashes as package revisions
-
-</Changelog>
 
 Add the Git URL for the package, and optionally specify a revision. The revision can be:
 - a branch name
@@ -265,12 +253,6 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 #### Configure subdirectory for packaged projects
 
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to specify `subdirectory`
-
-</Changelog>
-
 In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the packaged project is instead nested in a subdirectory—perhaps within a much larger mono repo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
 
 <File name='packages.yml'>
@@ -389,3 +371,4 @@ packages:
 ```
 
 </File>
+

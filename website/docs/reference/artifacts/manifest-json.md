@@ -3,15 +3,9 @@ title: "Manifest JSON file"
 sidebar_label: "Manifest"
 ---
 
-| dbt Core version | Manifest version                                              |
-|------------------|---------------------------------------------------------------|
-| v1.6             | [v10](https://schemas.getdbt.com/dbt/manifest/v10/index.html) |
-| v1.5             | [v9](https://schemas.getdbt.com/dbt/manifest/v9/index.html)   |
-| v1.4             | [v8](https://schemas.getdbt.com/dbt/manifest/v8/index.html)   |
-| v1.3             | [v7](https://schemas.getdbt.com/dbt/manifest/v7/index.html)   |
-| v1.2             | [v6](https://schemas.getdbt.com/dbt/manifest/v6/index.html)   |
-| v1.1             | [v5](https://schemas.getdbt.com/dbt/manifest/v5/index.html)   |
-| v1.0             | [v4](https://schemas.getdbt.com/dbt/manifest/v4/index.html)   |
+import ManifestVersions from '/snippets/_manifest-versions.md';
+
+<ManifestVersions />
 
 **Produced by:** Any command that parses your project. This includes all commands **except** [`deps`](/reference/commands/deps), [`clean`](/reference/commands/clean), [`debug`](/reference/commands/debug), [`init`](/reference/commands/init)
 
@@ -53,12 +47,4 @@ You can refer to [dbt JSON Schema](https://schemas.getdbt.com/) for info on desc
 
 **Note**: The `manifest.json` version number is related to (but not _equal_ to) your dbt version, so you _must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, select the dbt version on the top navigation (such as `v1.5`). 
 
-Use the following table to understand how the versioning pattern works and match the Manifest version with the dbt version:
-
-| dbt version | Manifest version |
-| ----------- | ---------------- |
-| `v1.5` | [Manifest v9](https://schemas.getdbt.com/dbt/manifest/v9/index.html)
-| `v1.4` | [Manifest v8](https://schemas.getdbt.com/dbt/manifest/v8/index.html)
-| `v1.3` | [Manifest v7](https://schemas.getdbt.com/dbt/manifest/v7/index.html)
-| `v1.2` | [Manifest v6](https://schemas.getdbt.com/dbt/manifest/v6/index.html)
-| `v1.1` | [Manifest v5](https://schemas.getdbt.com/dbt/manifest/v5/index.html)
+Refer to the table at the beginning of [this page](/reference/artifacts/manifest-json) to understand how the Manifest version matches the dbt version.

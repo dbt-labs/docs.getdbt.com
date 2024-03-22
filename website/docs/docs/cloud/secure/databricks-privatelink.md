@@ -3,7 +3,12 @@ title: "Configuring Databricks PrivateLink"
 id: databricks-privatelink
 description: "Configuring PrivateLink for Databricks"
 sidebar_label: "PrivateLink for Databricks"
+pagination_next: null
 ---
+
+import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+
+<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
 The following steps will walk you through the setup of a Databricks AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
 
@@ -18,6 +23,11 @@ Subject: New Multi-Tenant PrivateLink Request
 - Databricks cluster AWS Region (e.g., us-east-1, eu-west-2):
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
+
+import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
+
+<PrivateLinkSLA />
+
 3. Once dbt Cloud support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace
 
 ## Create Connection in dbt Cloud

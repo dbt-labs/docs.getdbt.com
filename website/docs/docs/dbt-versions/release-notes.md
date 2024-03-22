@@ -2,6 +2,8 @@
 title: "About dbt Cloud Release Notes"
 id: "dbt-cloud-release-notes"
 description: "Release notes for dbt Cloud"
+pagination_next: null
+pagination_prev: null
 ---
 
 dbt provides release notes for dbt Cloud so you can see recent and historical changes. Generally, you'll see release notes for these changes:

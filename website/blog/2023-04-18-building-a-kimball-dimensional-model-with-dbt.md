@@ -62,7 +62,7 @@ Before you can get started:
 - You must have Python 3.8 or above installed
 - You must have dbt version 1.3.0 or above installed
 - You should have a basic understanding of [SQL](https://www.sqltutorial.org/)
-- You should have a basic understanding of [dbt](https://docs.getdbt.com/quickstarts)
+- You should have a basic understanding of [dbt](https://docs.getdbt.com/guides)
 
 ### Step 2: Clone the repository
 
@@ -79,12 +79,12 @@ Depending on which database you’ve chosen, install the relevant database adapt
 
 ```text
 # install adaptor for duckdb
-pip install dbt-duckdb
+python -m pip install dbt-duckdb
 
 # OR 
 
 # install adaptor for postgresql
-pip install dbt-postgres
+python -m pip install dbt-postgres
 ```
 
 ### Step 4: Setup dbt profile
@@ -185,7 +185,7 @@ Now that you’ve set up the dbt project, database, and have taken a peek at the
 
 Identifying the business process is done in collaboration with the business user. The business user has context around the business objectives and business processes, and can provide you with that information. 
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/conversation.png" width="65%" title="Conversation between business user and analytics engineer"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/conversation.png" title="Conversation between business user and analytics engineer"/>
 
 Upon speaking with the CEO of AdventureWorks, you learn the following information: 
 
@@ -563,7 +563,7 @@ You may choose from one of the following materialization types supported by dbt:
 - Table
 - Incremental
 
-It is common for fact tables to be materialized as `incremental` or `table` depending on the data volume size. [As a rule of thumb](https://docs.getdbt.com/docs/build/incremental-models#when-should-i-use-an-incremental-model), if you are transforming millions or billions of rows, then you should start using the `incremental` materialization. In this example, we have chosen to go with `table` for simplicity. 
+It is common for fact tables to be materialized as `incremental` or `table` depending on the data volume size. [As a rule of thumb](https://docs.getdbt.com/docs/build/incremental-overview#when-to-use-an-incremental-model), if you are transforming millions or billions of rows, then you should start using the `incremental` materialization. In this example, we have chosen to go with `table` for simplicity. 
 
 ### Step 8: Create model documentation and tests
 
