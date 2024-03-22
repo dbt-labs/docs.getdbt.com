@@ -25,7 +25,7 @@ When materializing a model as `table`, you may include several optional configs 
 
 dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and <Term id="materialization">materializations</Term>. Because there is so much variance between Fabric Spark job clusters out in the world—not to mention the powerful features offered by the Delta file format and custom runtime—making sense of all the available options is an undertaking in its own right.
 
-For that reason, the dbt-fabricspark plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
+For that reason, the dbt-fabricspark plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
  - **`merge`** (Delta format only): Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
