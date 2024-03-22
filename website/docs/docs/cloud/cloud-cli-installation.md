@@ -73,7 +73,6 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
 
 5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
-
 </TabItem>
 
 <TabItem value="windows" label="Windows (native executable)">
