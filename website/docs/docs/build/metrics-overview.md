@@ -11,13 +11,18 @@ Once you've created your semantic models, it's time to start adding metrics! Met
 
 The keys for metrics definitions are:
 
+<!-- for v1.8 and higher -->
+
+<VersionBlock firstVersion="1.8">
+
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
 | `description` | Describe your metric.   | Optional |
-| `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
+| `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `config` | Provide the specific configurations for your metric.   | Optional |
+| `config:meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 
@@ -31,11 +36,48 @@ metrics:
     type_params:                          ## Required
       - specific properties for the metric type
     config: here for `enabled`            ## Optional
+      meta:
+        my_meta_config:  'config'         ## Optional
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
       null
 ```
+</VersionBlock>
+
+<!-- for v1.7 and lower -->
+
+<VersionBlock lastVersion="1.7">
+
+| Parameter | Description | Type |
+| --------- | ----------- | ---- |
+| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
+| `description` | Describe your metric.   | Optional |
+| `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
+| `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
+| `config` | Provide the specific configurations for your metric.   | Optional |
+| `meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
+| `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
+| `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
+
+Here's a complete example of the metrics spec configuration:
+
+```yaml
+metrics:
+  - name: metric name                     ## Required
+    description: same as always           ## Optional
+    type: the type of the metric          ## Required
+    type_params:                          ## Required
+      - specific properties for the metric type
+    config: here for `enabled`            ## Optional
+    meta:
+        my_meta_direct: 'direct'           ## Optional
+    label: The display name for your metric. This value will be shown in downstream tools. ## Required
+    filter: |                             ## Optional            
+      {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
+      null
+```
+</VersionBlock>
 
 This page explains the different supported metric types you can add to your dbt project.
 

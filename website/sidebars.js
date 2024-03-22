@@ -359,7 +359,16 @@ const sidebarSettings = {
           items: [
             "docs/build/enhance-your-models",
             "docs/build/materializations",
-            "docs/build/incremental-models",
+            {
+              type: "category",
+              label: "Incremental models",
+              link: { type: "doc", id: "docs/build/incremental-models-overview",},
+              items: [           
+                "docs/build/incremental-models-overview",
+                "docs/build/incremental-models",
+                "docs/build/incremental-strategy",
+              ],
+            },
           ],
         },
         {
@@ -894,22 +903,6 @@ const sidebarSettings = {
         "reference/dbt-commands",
         {
           type: "category",
-          label: "Node selection",
-          items: [
-            "reference/node-selection/syntax",
-            "reference/node-selection/graph-operators",
-            "reference/node-selection/set-operators",
-            "reference/node-selection/exclude",
-            "reference/node-selection/methods",
-            "reference/node-selection/putting-it-together",
-            "reference/node-selection/yaml-selectors",
-            "reference/node-selection/test-selection-examples",
-            "reference/node-selection/defer",
-            "reference/node-selection/state-comparison-caveats",
-          ],
-        },
-        {
-          type: "category",
           label: "List of commands",
           items: [
             "reference/commands/build",
@@ -933,6 +926,22 @@ const sidebarSettings = {
             "reference/commands/source",
             "reference/commands/test",
             "reference/commands/version",
+          ],
+        },
+        {
+          type: "category",
+          label: "Node selection",
+          items: [
+            "reference/node-selection/syntax",
+            "reference/node-selection/graph-operators",
+            "reference/node-selection/set-operators",
+            "reference/node-selection/exclude",
+            "reference/node-selection/methods",
+            "reference/node-selection/putting-it-together",
+            "reference/node-selection/yaml-selectors",
+            "reference/node-selection/test-selection-examples",
+            "reference/node-selection/defer",
+            "reference/node-selection/state-comparison-caveats",
           ],
         },
         {
@@ -1116,6 +1125,7 @@ const sidebarSettings = {
             "best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        "best-practices/dont-nest-your-curlies",
         "best-practices/clone-incremental-models",
         "best-practices/writing-custom-generic-tests",
         "best-practices/best-practice-workflows",

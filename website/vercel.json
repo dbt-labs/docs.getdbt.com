@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/building-a-dbt-project/dont-nest-your-curlies",
+      "destination": "/best-practices/dont-nest-your-curlies",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/incremental-models#about-incremental_strategy",
+      "destination": "/docs/build/incremental-strategy",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-versions/upgrade-core-in-cloud",
       "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
@@ -574,7 +584,12 @@
     },
     {
         "source": "/guides/orchestration/webhooks/zapier-new-cloud-job",
-        "destination": "/guides/zapier-new-cloud-job",
+        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
+        "permanent": true
+    },
+    {
+        "source": "/guides/zapier-new-cloud-job",
+        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
         "permanent": true
     },
     {
