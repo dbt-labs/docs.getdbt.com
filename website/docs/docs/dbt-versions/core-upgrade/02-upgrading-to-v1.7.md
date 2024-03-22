@@ -60,6 +60,14 @@ dbt Core v1.5 introduced model governance which we're continuing to refine.  v1.
 - **[Type aliasing for model contracts](/reference/resource-configs/contract):** dbt will use each adapter's built-in type aliasing for user-provided data types—meaning you can now write `string` always, and dbt will translate to `text` on Postgres/Redshift. This is "on" by default, but you can opt-out.
 - **[Raise warning for numeric types](/reference/resource-configs/contract):** Because of issues when putting `numeric` in model contracts without considering that default values such as `numeric(38,0)` might round decimals accordingly. dbt will now warn you if it finds a numeric type without specified precision/scale.
 
+### dbt clean
+
+Starting in v1.7, `dbt clean` will only clean paths within the current working directory. The `--no-clean-project-files-only` flag will delete all paths specified in `clean-paths`, even if they're outside the dbt project.
+
+Supported flags:
+-  `--clean-project-files-only` (default) 
+-  `--no-clean-project-files-only`
+
 ### Additional attributes in run_results.json
 
 The run_results.json now includes three attributes related to the `applied` state that complement `unique_id`:
