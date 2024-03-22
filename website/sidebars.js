@@ -184,7 +184,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/oracle-setup",
                 "docs/core/connect-data-platform/azuresynapse-setup",
                 "docs/core/connect-data-platform/fabric-setup",
-		"docs/core/connect-data-platform/fabricspark-setup"
+		"docs/core/connect-data-platform/fabricspark-setup",
                 "docs/core/connect-data-platform/dremio-setup",
                 "docs/core/connect-data-platform/clickhouse-setup",
                 "docs/core/connect-data-platform/materialize-setup",
