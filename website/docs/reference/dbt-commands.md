@@ -58,7 +58,7 @@ Commands with a ('❌') indicate write commands, commands with a ('✅') indicat
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-Note, the [`--version`](/reference/commands/version) flag displays the installed dbt Core or dbt Cloud CLI version. (Not applicable for the dbt Cloud IDE). Available on all [supported versions](/docs/dbt-versions/core).
+Note, use the [`--version`](/reference/commands/version) flag to display the installed dbt Core or dbt Cloud CLI version. (Not applicable for the dbt Cloud IDE). Available on all [supported versions](/docs/dbt-versions/core).
 </VersionBlock>
 
 <VersionBlock lastVersion="1.5">
