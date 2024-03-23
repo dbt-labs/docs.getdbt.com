@@ -32,7 +32,7 @@ The following sections outline the commands supported by dbt and their relevant 
 
 For information about selecting models on the command line, refer to [Model selection syntax](/reference/node-selection/syntax).
 
-Commands marked with a '❌' indicate write commands and those with a checkmark ('✅') indicate read commands.
+Commands marked with a ('❌') indicate write commands and those with a checkmark ('✅') indicate read commands and (N/A) indicate not relevant to the parallelization of dbt commands.
 
 | Command | Description | Parallel execution | <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
@@ -58,9 +58,7 @@ Commands marked with a '❌' indicate write commands and those with a checkmark 
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project |  ❌ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh") | ✅ | All tools<br /> All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  |  ✅ | All tools <br /> All [supported versions](/docs/dbt-versions/core) |
-| [--version](/reference/commands/version) | Displays the currently installed version of dbt CLI |  N/A | dbt Core, dbt Cloud CLI  <br />  All [supported versions](/docs/dbt-versions/core) | <br />
 
-Note that some have "N/A" since they're not relevant to the parallelization of dbt commands.
 </VersionBlock>
 
 <VersionBlock lastVersion="1.5">
