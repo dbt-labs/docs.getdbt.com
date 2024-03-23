@@ -32,7 +32,7 @@ The following sections outline the commands supported by dbt and their relevant 
 
 For information about selecting models on the command line, refer to [Model selection syntax](/reference/node-selection/syntax).
 
-Commands marked with a ('❌') indicate write commands and those with a checkmark ('✅') indicate read commands and (N/A) indicate not relevant to the parallelization of dbt commands.
+Commands with a ('❌') indicate write commands, commands with a ('✅') indicate read commands, and commands with a (N/A) indicate it's not relevant to the parallelization of dbt commands.
 
 | Command | Description | Parallel execution | <div style={{width:'250px'}}>Caveats</div> |
 |---------|-------------| :-----------------:| ------------------------------------------ |
