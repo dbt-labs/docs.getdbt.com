@@ -41,4 +41,4 @@ It's important that your freshness jobs run frequently enough to snapshot data l
 
 ## Further reading
 
-For more on exposing links to the latest documentation and sharing source freshness reports to your team, see [Building and configuring artifacts](/docs/deploy/artifacts).
+For more on exposing links to the latest documentation and sharing source freshness reports to your team, see [Building and configuring artifacts](REPLACE_THIS_LINK_TO_A_GOOD_ONE_NOT_THE_SAME_THAT_THIS_WEBSITE).
