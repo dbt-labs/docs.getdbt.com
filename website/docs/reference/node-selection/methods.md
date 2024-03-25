@@ -392,7 +392,7 @@ Supported in v1.7 or newer.
 </VersionBlock>
 <VersionBlock firstVersion="1.7">
 
-The `semantic_model` method selects [semantic models](/docs/build/saved-queries).
+The `saved_query` method selects [saved queries](/docs/build/saved-queries).
 
 ```bash
 dbt list --select "saved_query:*"                    # list all saved queries 
