@@ -222,9 +222,9 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 
   ```bash
-dbt test --select "state:new "           # run all tests on new models + and new tests on old models
-dbt run --select "state:modified"        # run all models that have been modified
-dbt ls --select "state:modified"         # list all modified nodes (not just models)
+dbt test --select "state:new" --state path/to/artifacts      # run all tests on new models + and new tests on old models
+dbt run --select "state:modified" --state path/to/artifacts  # run all models that have been modified
+dbt ls --select "state:modified" --state path/to/artifacts   # list all modified nodes (not just models)
   ```
 
 
@@ -364,7 +364,7 @@ The `version` method selects [versioned models](/docs/collaborate/govern/model-v
 ```bash
 dbt list --select "version:latest"      # only 'latest' versions
 dbt list --select "version:prerelease"  # versions newer than the 'latest' version
-dbt list --select version:old         # versions older than the 'latest' version
+dbt list --select "version:old"         # versions older than the 'latest' version
 
 dbt list --select "version:none"        # models that are *not* versioned
 ```
@@ -380,8 +380,23 @@ Supported in v1.6 or newer.
 The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
 
 ```bash
-dbt list --select semantic_model:*        # list all semantic models 
-dbt list --select +semantic_model:orders  # list your semantic model named "orders" and all upstream resources
+dbt list --select "semantic_model:*"        # list all semantic models 
+dbt list --select "+semantic_model:orders"  # list your semantic model named "orders" and all upstream resources
+```
+
+</VersionBlock>
+
+### The "saved_query" method
+<VersionBlock lastVersion="1.6">
+Supported in v1.7 or newer.
+</VersionBlock>
+<VersionBlock firstVersion="1.7">
+
+The `saved_query` method selects [saved queries](/docs/build/saved-queries).
+
+```bash
+dbt list --select "saved_query:*"                    # list all saved queries 
+dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
 ```
 
 </VersionBlock>
