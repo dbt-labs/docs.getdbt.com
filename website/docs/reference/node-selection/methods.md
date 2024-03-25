@@ -364,7 +364,7 @@ The `version` method selects [versioned models](/docs/collaborate/govern/model-v
 ```bash
 dbt list --select "version:latest"      # only 'latest' versions
 dbt list --select "version:prerelease"  # versions newer than the 'latest' version
-dbt list --select version:old         # versions older than the 'latest' version
+dbt list --select "version:old"         # versions older than the 'latest' version
 
 dbt list --select "version:none"        # models that are *not* versioned
 ```
@@ -380,8 +380,8 @@ Supported in v1.6 or newer.
 The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
 
 ```bash
-dbt list --select semantic_model:*        # list all semantic models 
-dbt list --select +semantic_model:orders  # list your semantic model named "orders" and all upstream resources
+dbt list --select "semantic_model:*"        # list all semantic models 
+dbt list --select "+semantic_model:orders"  # list your semantic model named "orders" and all upstream resources
 ```
 
 </VersionBlock>
