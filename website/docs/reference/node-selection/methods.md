@@ -395,8 +395,8 @@ Supported in v1.7 or newer.
 The `semantic_model` method selects [semantic models](/docs/build/saved-queries).
 
 ```bash
-dbt list --select saved_query:*                    # list all saved queries 
-dbt list --select +saved_query:orders_saved_query  # list your saved query named "orders_saved_query" and all upstream resources
+dbt list --select "saved_query:*"                    # list all saved queries 
+dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
 ```
 
 </VersionBlock>
