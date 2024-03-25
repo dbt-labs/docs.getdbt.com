@@ -222,9 +222,9 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 
   ```bash
-dbt test --select "state:new"            # run all tests on new models + and new tests on old models
-dbt run --select "state:modified"        # run all models that have been modified
-dbt ls --select "state:modified"         # list all modified nodes (not just models)
+dbt test --select "state:new" --state path/to/artifacts      # run all tests on new models + and new tests on old models
+dbt run --select "state:modified" --state path/to/artifacts  # run all models that have been modified
+dbt ls --select "state:modified" --state path/to/artifacts   # list all modified nodes (not just models)
   ```
 
 
