@@ -278,8 +278,6 @@ models:
         data_tests:
           - unique
           - not_null
-
-
 ```
 
 </VersionBlock>
