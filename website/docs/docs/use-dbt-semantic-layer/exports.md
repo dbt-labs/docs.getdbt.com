@@ -59,6 +59,7 @@ saved_queries:
         - ... # Additional group_by
       where:
         - "{{TimeDimension('metric_time')}} > current_timestamp - interval '1 week'"
+         - ... # Additional where clauses
     exports:
       - name: order_metrics
         config:
