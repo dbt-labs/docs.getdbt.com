@@ -249,7 +249,20 @@ models:
 
 <div warehouse="Redshift">
 
-* Granting to / revoking from is only fully supported for Redshift users (not groups or roles).
+For Redshift, you need to explicitly grant roles and groups access to your models, whether to single users, groups, or roles, and you can revoke access as well.
+
+In the following example, you're granting permission to a user group named `dbt_reporter` for the models in `my_schema`. Note that the group must already exist in Redshift. Ensure you use the groups or role keyword in your string and `+grants` has a + prefix to signify adding to or modifying existing grants.
+
+```yaml
+models:
+  my_schema:
+    schema: my_schema
+    description: "My schema"
+    +grants:
+      select: ["group my_group_name"]
+```
+
+The `+` before grants ensures modifications add to, rather than replace, existing configurations.
 
 </div>
 

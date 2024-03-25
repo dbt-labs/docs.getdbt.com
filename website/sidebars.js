@@ -1,18 +1,24 @@
 const sidebarSettings = {
   docs: [
-    "docs/introduction",
+    // Introduction and Guides remain unchanged
+    "docs/introduction", // Directly linking to the doc for simplicity
     {
       type: "link",
       label: "Guides",
       href: `/guides`,
     },
     {
+      type: "doc",
+      id: "docs/supported-data-platforms", // Direct link to the main category overview
+    },
+    {
       type: "category",
       label: "Supported data platforms",
-      collapsed: true,
-      link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
-        "docs/supported-data-platforms",
+        { 
+          type: "doc", 
+          id: "docs/supported-data-platforms", // Main category overview
+        },
         "docs/connect-adapters",
         "docs/trusted-adapters",
         "docs/community-adapters",
@@ -22,9 +28,11 @@ const sidebarSettings = {
     {
       type: "category",
       label: "About dbt Cloud",
-      link: { type: "doc", id: "docs/cloud/about-cloud/dbt-cloud-features" },
       items: [
-        "docs/cloud/about-cloud/dbt-cloud-features",
+        {
+          type: "doc",
+          id: "docs/cloud/about-cloud/dbt-cloud-features",
+        }, // Main document for "About dbt Cloud"
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/access-regions-ip-addresses",
