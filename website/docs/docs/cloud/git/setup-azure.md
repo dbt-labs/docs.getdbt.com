@@ -27,10 +27,10 @@ Once the Entra ID app is added to dbt Cloud and the service user is connected, t
 
 1. Sign into your Azure portal and click **Microsoft Entra ID** under Azure services.
 2. Select **App registrations** in the left panel.
-3. Select **New registration**. The form for creating a new Active Directory app opens.
+3. Select **New registration**. The form for creating a new Entra ID app opens.
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".
 5. Select **Accounts in any organizational directory (Any Entra ID directory - Multitenant)** as the Supported Account Types.
-Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Microsoft Entra ID as separate tenants, and in order for this Active Directory application to work properly, you must select Multitenant.
+Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Microsoft Entra ID as separate tenants, and in order for this Entra ID application to work properly, you must select Multitenant.
 6. Add a redirect URI by selecting **Web** and, in the field, entering `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 7. Click **Register**.
 
@@ -38,7 +38,7 @@ Many customers ask why they need to select Multitenant instead of Single tenant,
 
 Here's what your app should look like before registering it:
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering an Active Directory app"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering an Entra ID app"/>
 
 
 ## Add permissions to your new app
@@ -69,7 +69,7 @@ You also need to add another redirect URI to your Entra ID application. This red
 
 
 ## Connect Azure DevOps to your new app
-If you have already connected your Azure DevOps account to Active Directory, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Active Directory App you just created:
+If you have already connected your Azure DevOps account to Entra ID, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Entra ID App you just created:
 
 1. From your Azure DevOps account, select **Organization settings** in the bottom left.
 2. Navigate to Microsoft Entra ID.
@@ -77,7 +77,7 @@ If you have already connected your Azure DevOps account to Active Directory, the
 4. Select the directory you want to connect.
 5. Click **Connect**.
 
-<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/connect AD to Azure DevOps.gif" title="Connecting Azure DevOps and Active Directory"/>
+<Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/connect AD to Azure DevOps.gif" title="Connecting Azure DevOps and Entra ID"/>
 
 ## Add your Entra ID app to dbt Cloud
 
@@ -91,7 +91,7 @@ Once you connect your Entra ID app and Azure DevOps, you need to provide dbt Clo
     - **Application (client) ID:** Found in the Entra ID App.
     - **Client Secrets:** You need to first create a secret in the Entra ID App under **Client credentials**. Make sure to copy the **Value** field in the Entra ID App and paste it in the **Client Secret** field in dbt Cloud. You are responsible for the Entra ID app secret expiration and rotation.
     - **Directory(tenant) ID:** Found in the Entra ID App.
-        <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
+        <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding an Entra ID App to dbt Cloud"/>
 
 Your Entra ID app should now be added to your dbt Cloud Account. People on your team who want to develop in the dbt Cloud IDE or dbt Cloud CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 

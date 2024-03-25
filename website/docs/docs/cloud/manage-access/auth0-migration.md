@@ -92,7 +92,7 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 ## Microsoft Entra ID
 
-Microsoft Entra ID admins will need to make a slight adjustment to the existing authentication app in the Entra ID portal. This migration does not require that the entire app be deleted or recreated; you can edit the existing app. Start by opening the Azure portal and navigating to the Active Directory overview.
+Microsoft Entra ID admins will need to make a slight adjustment to the existing authentication app in the Entra ID portal. This migration does not require that the entire app be deleted or recreated; you can edit the existing app. Start by opening the Azure portal and navigating to the Entra ID overview.
 
 Below are steps to update. You must complete all of them to ensure uninterrupted access to dbt Cloud and you should coordinate with your identity provider admin when making these changes.
 

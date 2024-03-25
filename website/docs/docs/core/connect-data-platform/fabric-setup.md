@@ -359,9 +359,9 @@ then this would fail since Azure SQL can't create logins for individuals part of
 
 Valid values for `authentication`:
 
-* `ActiveDirectoryPassword`: Active Directory authentication using username and password
-* `ActiveDirectoryInteractive`: Active Directory authentication using a username and MFA prompts
-* `ActiveDirectoryIntegrated`: Active Directory authentication using the current user's credentials
+* `ActiveDirectoryPassword`: Entra ID authentication using username and password
+* `ActiveDirectoryInteractive`: Entra ID authentication using a username and MFA prompts
+* `ActiveDirectoryIntegrated`: Entra ID authentication using the current user's credentials
 * `ServicePrincipal`: Microsoft Entra ID authentication using a service principal
 * `CLI`: Microsoft Entra ID authentication using the account you're logged in within the Azure CLI
 * `environment`: Microsoft Entra ID authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)

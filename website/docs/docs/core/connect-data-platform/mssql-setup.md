@@ -452,9 +452,9 @@ then this would fail since Azure SQL can't create logins for individuals part of
 Valid values for `authentication`:
 
 * `sql`: SQL authentication using username and password
-* `ActiveDirectoryPassword`: Active Directory authentication using username and password
-* `ActiveDirectoryInteractive`: Active Directory authentication using a username and MFA prompts
-* `ActiveDirectoryIntegrated`: Active Directory authentication using the current user's credentials
+* `ActiveDirectoryPassword`: Entra ID authentication using username and password
+* `ActiveDirectoryInteractive`: Entra ID authentication using a username and MFA prompts
+* `ActiveDirectoryIntegrated`: Entra ID authentication using the current user's credentials
 * `ServicePrincipal`: Microsoft Entra ID authentication using a service principal
 * `CLI`: Microsoft Entra ID authentication using the account you're logged in with in the Azure CLI
 * `ActiveDirectoryMsi`: Microsoft Entra ID authentication using a managed identity available on the system
