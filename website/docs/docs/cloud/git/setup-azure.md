@@ -17,7 +17,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the Entra ID app is added to dbt Cloud, an account admin must also [connect a service user]((#connecting-a-service-user)) via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
+Once the Entra ID app is added to dbt Cloud, an account admin must also [connect a service user](#connecting-a-service-user) via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 
 Once the Entra ID app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
 
