@@ -385,3 +385,18 @@ dbt list --select "+semantic_model:orders"  # list your semantic model named "or
 ```
 
 </VersionBlock>
+
+### The "saved_query" method
+<VersionBlock lastVersion="1.6">
+Supported in v1.7 or newer.
+</VersionBlock>
+<VersionBlock firstVersion="1.7">
+
+The `saved_query` method selects [saved queries](/docs/build/saved-queries).
+
+```bash
+dbt list --select "saved_query:*"                    # list all saved queries 
+dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
+```
+
+</VersionBlock>
