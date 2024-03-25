@@ -1,5 +1,5 @@
 ---
-title: "Set up SSO with Microsoft Entra ID (formerly Azure AD)"
+title: "Set up SSO with Microsoft Entra ID (formerly Entra ID)"
 description: "Learn how dbt Cloud administrators can use Microsoft Entra ID to control access in a dbt Cloud account."
 id: "set-up-sso-azure-active-directory"
 sidebar_label: "Set up SSO with Microsoft Entra ID"
@@ -9,7 +9,7 @@ import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
 <SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
-dbt Cloud Enterprise supports single-sign on via Microsoft Entra ID (formerly Azure AD).
+dbt Cloud Enterprise supports single-sign on via Microsoft Entra ID (formerly Entra ID).
 You will need permissions to create and manage a new Entra ID application.
 Currently supported features include:
 
@@ -19,7 +19,7 @@ Currently supported features include:
 
 ## Configuration
 
-dbt Cloud supports both single tenant and multi-tenant Microsoft Entra ID (formerly Azure AD) SSO Connections. For most Enterprise purposes, you will want to use the single-tenant flow when creating an Azure AD Application.
+dbt Cloud supports both single tenant and multi-tenant Microsoft Entra ID (formerly Entra ID) SSO Connections. For most Enterprise purposes, you will want to use the single-tenant flow when creating an Entra ID Application.
 
 ### Creating an application
 

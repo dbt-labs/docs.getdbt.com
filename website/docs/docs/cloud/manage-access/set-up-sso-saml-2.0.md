@@ -281,9 +281,9 @@ Expected **Attributes**:
 
 After creating the Google application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 
-## Microsoft Entra ID (formerly Azure AD) integration
+## Microsoft Entra ID (formerly Entra ID) integration
 
-If you're using Microsoft Entra ID (formerly Azure AD), the instructions below will help you configure it as your identity provider.
+If you're using Microsoft Entra ID (formerly Entra ID), the instructions below will help you configure it as your identity provider.
 
 ### Create a Microsoft Entra ID Enterprise application
 

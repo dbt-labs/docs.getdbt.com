@@ -225,7 +225,7 @@ dbt Cloud application.
 - [On-premises] Upgrade boto3 to support KIAM authentication
 
 #### Fixed
-- [Enterprise] Fix for missing IdP group membership mappings when users belong to >100 Azure AD groups
+- [Enterprise] Fix for missing IdP group membership mappings when users belong to >100 Entra ID groups
 - Disallow the creation of symlinks in the IDE
 - Improve reliability of background cleanup processes
 - Improve performance and reliability of artifact management and PR webhook processing
@@ -276,7 +276,7 @@ includes a number of bugfixes.
 
 #### Fixed
 
-- Fix enterprise SSO configuration when old Auth0 Azure AD is configured
+- Fix enterprise SSO configuration when old Auth0 Entra ID is configured
 - Do not schedule jobs for deleted job definitions or environments
 - Fix permissions issues
 - Fix a bug with metadata set in azure storage provider
@@ -287,7 +287,7 @@ includes a number of bugfixes.
 
 ## dbt Cloud v1.1.3 (July 7, 2020)
 
-This release contains a number of IDE features and bugfixes, a new release candidate of dbt, and a brand new Enterprise Single-Sign On method: Azure Active Directory!
+This release contains a number of IDE features and bugfixes, a new release candidate of dbt, and a brand new Enterprise Single-Sign On method: Microsoft Entra ID!
 
 #### Enhancements
 

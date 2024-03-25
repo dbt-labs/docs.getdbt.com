@@ -84,9 +84,9 @@ More details about how these values affect your connection and how they are used
 
 SQL Server and windows authentication are not supported by Microsoft Fabric Synapse Data Warehouse.
 
-### Azure Active Directory Authentication (AAD)
+### Microsoft Entra ID Authentication (AAD)
 
-Azure Active Directory authentication is a default authentication mechanism in Microsoft Fabric Synapse Data Warehouse.
+Microsoft Entra ID authentication is a default authentication mechanism in Microsoft Fabric Synapse Data Warehouse.
 
 The following additional methods are available to authenticate to Azure SQL products:
 
@@ -332,7 +332,7 @@ You can optionally set the principal who should own all schemas created by dbt. 
 CREATE SCHEMA [schema_name] AUTHORIZATION [schema_authorization]
 ```
 
-A common use case is to use this when you are authenticating with a principal who has permissions based on a group, such as an AAD group. When that principal creates a schema, the server will first try to create an individual login for this principal and then link the schema to that principal. If you would be using Azure AD in this case,
+A common use case is to use this when you are authenticating with a principal who has permissions based on a group, such as an AAD group. When that principal creates a schema, the server will first try to create an individual login for this principal and then link the schema to that principal. If you would be using Entra ID in this case,
 then this would fail since Azure SQL can't create logins for individuals part of an AD group automatically.
 
 ### Reference of all connection options
@@ -347,9 +347,9 @@ then this would fail since Azure SQL can't create logins for individuals part of
 | `authentication`       | The authentication method to use. This is not required for Windows authentication.                                                                 |                    | `'sql'`       |
 | `UID`                  | Username used to authenticate. This can be left out depending on the authentication method.                                                        |                    |               |
 | `PWD`                  | Password used to authenticate. This can be left out depending on the authentication method.                                                        |                    |               |
-| `tenant_id`            | The tenant ID of the Azure Active Directory instance. This is only used when connecting to Azure SQL with a service principal.                     |                    |               |
-| `client_id`            | The client ID of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.       |                    |               |
-| `client_secret`        | The client secret of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.   |                    |               |
+| `tenant_id`            | The tenant ID of the Microsoft Entra ID instance. This is only used when connecting to Azure SQL with a service principal.                     |                    |               |
+| `client_id`            | The client ID of the Microsoft Entra ID service principal. This is only used when connecting to Azure SQL with an AAD service principal.       |                    |               |
+| `client_secret`        | The client secret of the Microsoft Entra ID service principal. This is only used when connecting to Azure SQL with an AAD service principal.   |                    |               |
 | `encrypt`              | Set this to `false` to disable the use of encryption. See [above](#connection-encryption).                                                         |                    | `true`        |
 | `trust_cert`           | Set this to `true` to trust the server certificate. See [above](#connection-encryption).                                                           |                    | `false`       |
 | `retries`              | The number of times to retry a failed connection.                                                                                                  |                    | `1`           |
@@ -362,7 +362,7 @@ Valid values for `authentication`:
 * `ActiveDirectoryPassword`: Active Directory authentication using username and password
 * `ActiveDirectoryInteractive`: Active Directory authentication using a username and MFA prompts
 * `ActiveDirectoryIntegrated`: Active Directory authentication using the current user's credentials
-* `ServicePrincipal`: Azure Active Directory authentication using a service principal
-* `CLI`: Azure Active Directory authentication using the account you're logged in within the Azure CLI
-* `environment`: Azure Active Directory authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
-* `auto`: Azure Active Directory authentication trying the previous authentication methods until it finds one that works
+* `ServicePrincipal`: Microsoft Entra ID authentication using a service principal
+* `CLI`: Microsoft Entra ID authentication using the account you're logged in within the Azure CLI
+* `environment`: Microsoft Entra ID authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
+* `auto`: Microsoft Entra ID authentication trying the previous authentication methods until it finds one that works

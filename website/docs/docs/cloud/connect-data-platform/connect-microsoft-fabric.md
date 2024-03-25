@@ -6,13 +6,13 @@ sidebar_label: "Connect Microsoft Fabric"
 
 ## Supported authentication methods
 The supported authentication methods are: 
-- Azure Active Directory (Azure AD) service principal
-- Azure AD password
+- Microsoft Entra ID (Entra ID) service principal
+- Entra ID password
 
-SQL password (LDAP) is not supported in Microsoft Fabric Synapse Data Warehouse so you must use Azure AD. This means that to use [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric) in dbt Cloud, you will need at least one Azure AD service principal to connect dbt Cloud to Fabric, ideally one service principal for each user.
+SQL password (LDAP) is not supported in Microsoft Fabric Synapse Data Warehouse so you must use Entra ID. This means that to use [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric) in dbt Cloud, you will need at least one Entra ID service principal to connect dbt Cloud to Fabric, ideally one service principal for each user.
 
 ### Active Directory service principal 
-The following are the required fields for setting up a connection with a Microsoft Fabric using Azure AD service principal authentication. 
+The following are the required fields for setting up a connection with a Microsoft Fabric using Entra ID service principal authentication. 
 
 | Field | Description |
 | --- | --- |
@@ -27,7 +27,7 @@ The following are the required fields for setting up a connection with a Microso
 
 ### Active Directory password 
 
-The following are the required fields for setting up a connection with a Microsoft Fabric using Azure AD password authentication. 
+The following are the required fields for setting up a connection with a Microsoft Fabric using Entra ID password authentication. 
 
 | Field | Description |
 | --- | --- |
