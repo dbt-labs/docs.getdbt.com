@@ -44,18 +44,24 @@ An example of a saved query with an export:
 
 ```yaml
 saved_queries:
-  - name: YOUR_QUERY
-    description: YOUR_DESCRIPTION
+  - name: order_metrics
+    description: Relevant order metrics
     query_params:
       metrics:
-        - YOUR_METRIC_NAME
+        - orders
+        - large_order
+        - food_orders
+        - order_total
       group_by:
-        - TimeDimension()
+        - Entity('order_id')
+        - TimeDimension('metric_time', 'day')
+        - Dimension('customer__customer_name')
         - ... # Additional group_by
       where:
-        - ... # Additional where clauses
+        - "{{TimeDimension('metric_time')}} > current_timestamp - interval '1 week'"
+         - ... # Additional where clauses
     exports:
-      - name: YOUR_EXPORT
+      - name: order_metrics
         config:
           export_as: table # Options available: table, view
           schema: YOUR_SCHEMA # Optional - defaults to deployment schema
