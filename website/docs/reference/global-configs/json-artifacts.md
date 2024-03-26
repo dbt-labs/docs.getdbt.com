@@ -11,7 +11,7 @@ The `WRITE_JSON` config determines whether dbt writes [JSON artifacts](/referenc
 <File name='Usage'>
 
 ```text
-dbt --no-write-json run
+dbt run --no-write-json 
 ```
 
 </File>

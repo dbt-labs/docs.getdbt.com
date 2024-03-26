@@ -50,3 +50,6 @@ Most command-line tools, including dbt, have a `--help` flag that you can use to
 &mdash; `dbt run --help`: Lists the flags available for the `run` command
 
 :::
+
+## Related docs
+- [Move from dbt Core to dbt Cloud](/guides/core-to-cloud-1?step=1)
