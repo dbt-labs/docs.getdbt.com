@@ -235,6 +235,17 @@ dbt will check to see if `dev_alice.model_a` exists. If it doesn't exist, dbt wi
 </TabItem>
 </Tabs>
 
+### compile
+
+Defer does not work with simple compile. This will compile to SQL that uses the dev schema tables:
+```
+dbt compile --defer --state prod-run-artifacts
+```
+However, if you need to compile production SQL for a specific table, this will work:
+```
+dbt compile --defer --state prod-run-artifacts --select model_a
+```
+
 ## Related docs
 
 - [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer)
