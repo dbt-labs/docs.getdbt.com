@@ -47,7 +47,7 @@ If you're new to dbt, we recommend that you check out our [quickstart guide](/gu
 
 The simplest way to define a data test is by writing the exact SQL that will return failing records. We call these "singular" data tests, because they're one-off assertions usable for a single purpose.
 
-These tests are defined in `.sql` s, typically in your `tests` directory (as defined by your [`test-paths` config](/reference/project-configs/test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one data test:
+These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](/reference/project-configs/test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one data test:
 
 <File name='tests/assert_total_payment_amount_is_positive.sql'>
 
