@@ -131,4 +131,3 @@ For additional examples and discussion on how to handle null values in derived m
 
 </expandable>
 
-See [Metricflow Issue #1031](https://github.com/dbt-labs/metricflow/issues/1031) for additional examples and discussion on how to handle null values in derived metrics that use data from multiple tables. 
