@@ -62,7 +62,7 @@ group by 1
 having total_amount < 0
 ```
 
-</>
+</File>
 
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
 
