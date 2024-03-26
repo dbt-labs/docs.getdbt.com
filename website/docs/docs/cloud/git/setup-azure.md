@@ -25,6 +25,7 @@ The following personas are required to complete the steps on this page:
 - Entra ID admin
 - Azure DevOps admin
 - dbt Cloud account admin
+- Azure admin (if your Entra ID and Azure DevOps environments are not connected)
 
 ## Register an Entra ID app
 
