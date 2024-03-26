@@ -47,9 +47,9 @@ If you're new to dbt, we recommend that you check out our [quickstart guide](/gu
 
 The simplest way to define a data test is by writing the exact SQL that will return failing records. We call these "singular" data tests, because they're one-off assertions usable for a single purpose.
 
-These tests are defined in `.sql` files, typically in your `tests` directory (as defined by your [`test-paths` config](/reference/project-configs/test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one data test:
+These tests are defined in `.sql` s, typically in your `tests` directory (as defined by your [`test-paths` config](/reference/project-configs/test-paths)). You can use Jinja (including `ref` and `source`) in the test definition, just like you can when creating models. Each `.sql` file contains one `select` statement, and it defines one data test:
 
-<File name='tests/assert_total_payment_amount_is_positive.sql'>
+< name='tests/assert_total_payment_amount_is_positive.sql'>
 
 ```sql
 -- Refunds have a negative amount, so the total amount should always be >= 0.
@@ -62,7 +62,7 @@ group by 1
 having total_amount < 0
 ```
 
-</File>
+</>
 
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
 
@@ -133,7 +133,7 @@ To add a generic (or "schema") test to your project:
 
 1. Add a `.yml` file to your `models` directory, e.g. `models/schema.yml`, with the following content (you may need to adjust the `name:` values for an existing model)
 
-<File name='models/schema.yml'>
+< name='models/schema.yml'>
 
 ```yaml
 version: 2
@@ -148,7 +148,7 @@ models:
 
 ```
 
-</File>
+</>
 
 2. Run the [`dbt test` command](/reference/commands/test):
 
@@ -281,12 +281,17 @@ models:
           - not_null
 ```
 
+</File>
+
 <File name='dbt_project.yml'>
 
 ```yml
 data_tests:
   +store_failures: true
 ```
+
+</File>
+
 </VersionBlock>
 
 ## FAQs
