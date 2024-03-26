@@ -322,17 +322,16 @@ select 1 as id
 
 </File><br />
 
-### Assign owner in the dbt_project.yml as a config property
+### Assign owner and favorite_color in the dbt_project.yml as a config property
 
 <File name='dbt_project.yml'>
 
 ```yml
 models:
   jaffle_shop:
-      materialized: table
-      config:
-        meta:
-          owner: "@alice"
+    +meta:
+      owner: "@alice"
+      favorite_color: "red"
 ```
 
 </File>
