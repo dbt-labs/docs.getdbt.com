@@ -91,7 +91,7 @@ Because `coalesce` isn't applied to the third, subquery layer for `derived` or `
 
 To fill null values for derived and ratio metrics, you can link them with a time spine to ensure daily data coverage. As mentioned in [the previous section](#use-join_to_timespine-for-derived-and-ratio-metrics), this is because `derived` and `ratio` metrics take *metrics* as inputs instead of *measures*.
 
-For example, the following structure leaves nulls in final results (`leads_to_website_visit` column) because `COALESCE` isn't applied at the third outer rendering layer for the final metric calculation in `derived` metrics:
+For example, the following structure leaves nulls in the final results (`leads_to_website_visit` column) because `COALESCE` isn't applied at the third outer rendering layer for the final metric calculation in `derived` metrics:
 
 | metric_time | bookings | leads | leads_to_website_visit |
 | --- | --- | --- | --- |
