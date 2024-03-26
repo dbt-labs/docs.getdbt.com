@@ -9,7 +9,7 @@ sidebar_label: "Set up Azure DevOps"
 
 ## Overview
 
-To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Microsoft Entra ID app. We recommend setting up a separate [Entra ID application than used for SSO](/docs/cloud/manage-access/set-up-sso-azure-active-directory).
+To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Microsoft Entra ID app. We recommend setting up a separate [Entra ID application than used for SSO](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id).
 
 1. [Register an Entra ID app](#register-a-microsoft-entra-id-app).
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
