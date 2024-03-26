@@ -124,6 +124,11 @@ Once you do this, if you query the `leads` metric after the timespine join, ther
 
 Now, if you combine the metrics in a `derived` metric, there will be a zero value for `leads_to_website_visit` on `2024-01-02` and the final result set will not have any null values
 
-### Handling null values in derived metrics defined on top of multiple tables
+## FAQs
+<expandable alt_header="How to handle null values in derived metrics defined on top of multiple tables"/>
+
+For additional examples and discussion on how to handle null values in derived metrics that use data from multiple tables, check out [Metricflow issue #1031](https://github.com/dbt-labs/metricflow/issues/1031).
+
+</expandable>
 
 See [Metricflow Issue #1031](https://github.com/dbt-labs/metricflow/issues/1031) for additional examples and discussion on how to handle null values in derived metrics that use data from multiple tables. 
