@@ -357,11 +357,11 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 You must connect your service user before setting up a dbt Cloud project, as the service user's permissions determine which projects dbt Cloud can import.
 
-To connect the service user:
-1. An admin must first be signed into the service user's Azure DevOps account.
-2. The admin should click **Link Azure Service User** in dbt Cloud.
-3. The admin will be directed to Azure DevOps and must accept the Entra ID app's permissions.
-4. Finally, the admin will be redirected to dbt Cloud, and the service user will be connected.
+A dbt Cloud account admin with access to the service users Azure DevOps account must complete the following to connect the service user:
+1. Sign into the service user's Azure DevOps account.
+2. In dbt Cloud, click **Link Azure Service User**.
+3. You will be directed to Azure DevOps and must accept the Entra ID app's permissions.
+4. Finally, you will be redirected to dbt Cloud, and the service user will be connected.
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" title="Connecting an Azure Service User"/>
 
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
