@@ -91,7 +91,7 @@ Because `coalesce` isn't applied to the third, subquery layer for `derived` or `
 
 To fill null values for derived and ratio metrics, you can link them with a time spine to ensure daily data coverage. As mentioned in [the previous section](#use-join_to_timespine-for-derived-and-ratio-metrics), this is because `derived` and `ratio` metrics take *metrics* as inputs instead of *measures*.
 
-For example, the following structure leaves nulls in final results (`leads_to_website_visit` column) because `COALESCE` isn't applied at the third outer rendering layer for the final metric calculation in `derived` metrics:
+For example, the following structure leaves nulls in the final results (`leads_to_website_visit` column) because `COALESCE` isn't applied at the third outer rendering layer for the final metric calculation in `derived` metrics:
 
 | metric_time | bookings | leads | leads_to_website_visit |
 | --- | --- | --- | --- |
@@ -122,4 +122,13 @@ Once you do this, if you query the `leads` metric after the timespine join, ther
 | 2024-01-02 | 0 | 0 |
 | 2024-01-03 |  8 | .1 |
 
-Now, if you combine the metrics in a `derived` metric, there will be a zero value for `leads_to_website_visit` on `2024-01-02` and the final result set will not have any null values
+Now, if you combine the metrics in a `derived` metric, there will be a zero value for `leads_to_website_visit` on `2024-01-02` and the final result set will not have any null values.
+
+## FAQs
+
+<expandable alt_header="How to handle null values in derived metrics defined on top of multiple tables">
+
+For additional examples and discussion on how to handle null values in derived metrics that use data from multiple tables, check out [MetricFlow issue #1031](https://github.com/dbt-labs/metricflow/issues/1031).
+
+</expandable>
+
