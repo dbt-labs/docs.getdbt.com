@@ -256,7 +256,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
   ```bash
 dbt run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
 dbt test --select "+exposure:*"                         # test all resources upstream of all exposures
-dbt ls --select "+exposure:*" --resource-type source    # list all sources upstream of all exposures
+dbt ls --select "+exposure:*" --resource-type snowplow  # list all sources of type "snowplow" upstream of all exposures
 ```
 
 ### The "metric" method
