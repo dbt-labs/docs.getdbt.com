@@ -28,7 +28,7 @@ The following personas are required to complete the steps on this page:
 
 ## Register an Entra ID app
 
-An Entra ID account admin needs to perform the following steps:
+An Entra ID admin needs to perform the following steps:
 
 1. Sign into your Azure portal and click **Microsoft Entra ID**.
 2. Select **App registrations** in the left panel.
