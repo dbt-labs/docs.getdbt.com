@@ -267,7 +267,8 @@ var siteSettings = {
     "https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js",
     "/js/headerLinkCopy.js",
     "/js/gtm.js",
-    "/js/onetrust.js"
+    "/js/onetrust.js",
+    "/js/mutiny.js",
   ],
   stylesheets: [
     "/css/fonts.css",
