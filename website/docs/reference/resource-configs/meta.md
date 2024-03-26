@@ -331,7 +331,7 @@ models:
   jaffle_shop:
     +meta:
       owner: "@alice"
-      favorite_color: "red"
+      favorite_color: red
 ```
 
 </File>
