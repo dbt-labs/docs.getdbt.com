@@ -148,7 +148,7 @@ models:
 
 ```
 
-</>
+</File>
 
 2. Run the [`dbt test` command](/reference/commands/test):
 
