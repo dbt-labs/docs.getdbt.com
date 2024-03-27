@@ -6,13 +6,9 @@ pagination_next: "docs/collaborate/model-performance"
 pagination_prev: null
 ---
 
+# Explore your dbt projects <Lifecycle status='public preview' />
+
 With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
-
-:::tip Public preview 
-
-Try dbt Explorer! It's available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) as of October 17, 2023 for dbt Cloud customers. More updates coming soon.
- 
-:::
 
 ## Prerequisites
 
