@@ -17,20 +17,20 @@ This section is for people using the dbt Cloud CLI (support for dbt Cloud IDE is
 - You can run MetricFlow commands after installing the dbt Cloud CLI. They're integrated with dbt Cloud so you can use them immediately.
 - Your account will automatically manage version control for you.
 
-To get started:
+Refer to the following steps to get started:
 
-1. Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
-2. Navigate to your dbt project directory.
-3. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....". Anytime you make changes to metrics, you need to run `dbt parse` at the minimum, so the semantic manifest is regenerated and you can have your changes reflected when querying the SL.
-   
-<expandable alt_header="Why do I need to run a dbt command?">
-MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
-</expandable>
+1. **Installation** &mdash; Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). Then, navigate to your dbt project directory.
+2. **Initial command** &mdash; Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....".
+3. **Semantic graph and manifest** &mdash; MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
 
-4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
-5. Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `dbt sl query --metrics order_total --group-by metric_time`
-6. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--compile` in the command line.
-7. Commit and merge the code changes that contain the metric definitions.
+:::info Run dbt parse when you make changes to metrics
+Anytime you make changes to metrics, you need to run `dbt parse` at the minimum. This ensures the `semantic_manifest.json` file is updated and you can have your changes reflected when querying metrics.
+:::
+
+4. **MetricFlow confirmation** &mdash; Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
+5. **Query metrics** &mdash; Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `dbt sl query --metrics order_total --group-by metric_time`.
+6. **Metrics verification** &mdash; Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--compile` in the command line.
+7. **Commit changes** &mdash; Commit and merge the code changes that contain the metric definitions.
 
 </TabItem>
 
