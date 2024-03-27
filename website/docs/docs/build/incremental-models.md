@@ -40,6 +40,7 @@ The `is_incremental()` macro powers incremental materializations. It will return
 - The running model is configured with `materialized='incremental'`
 
 Note that the SQL in your model needs to be valid whether `is_incremental()` evaluates to `True` or `False`.
+
 ### Filtering rows on an incremental run
 
 To tell dbt which rows it should transform on an incremental run, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
@@ -63,7 +64,7 @@ select
     *,
     my_slow_function(my_column)
 
-from raw_app_data.events
+rom {{ ref('app_data_events') }}
 
 {% if is_incremental() %}
 
@@ -90,7 +91,7 @@ A `unique_key` enables updating existing rows instead of just appending new rows
 
 Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
-The optional `unique_key` parameter specifies a field (or combination of fields) that define the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
+The optional `unique_key` parameter specifies a field (or combination of fields) that defines the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
 
 The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental model run may fail. Either ensure that each column has no nulls (for example with `coalesce(COLUMN_NAME, 'VALUE_IF_NULL')`), or define a single-column [surrogate key](/terms/surrogate-key) (for example with [`dbt_utils.generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source)).
 
@@ -133,7 +134,7 @@ select
     date_trunc('day', event_at) as date_day,
     count(distinct user_id) as daily_active_users
 
-from raw_app_data.events
+rom {{ ref('app_data_events') }}
 
 
 {% if is_incremental() %}
