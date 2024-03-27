@@ -1013,6 +1013,11 @@
       "permanent": true
     },
     {
+      "source": "/reference/warehouse-setups/fabricspark-setup",
+      "destination": "/docs/core/connect-data-platform/fabricspark-setup",
+      "permanent": true
+    },
+    {
       "source": "/reference/warehouse-setups/dremio-setup",
       "destination": "/docs/core/connect-data-platform/dremio-setup",
       "permanent": true
@@ -4415,6 +4420,11 @@
     {
       "source": "/reference/warehouse-profiles/azuresynapse-profile",
       "destination": "/reference/warehouse-setups/azuresynapse-setup",
+      "permanent": true
+    },
+    {
+      "source": "/reference/warehouse-profiles/fabricspark-profile",
+      "destination": "/reference/warehouse-setups/fabricspark-setup",
       "permanent": true
     },
     {
