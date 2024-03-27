@@ -52,11 +52,15 @@ When executing a `statement`, dbt needs to understand how to resolve references 
 
 ```sql
 
-{%- call statement('states', fetch_result=True) -%}
+{% call statement('states', fetch_result=True) -%}
 
     select distinct state from {{ ref('users') }}
 
-{%- endcall -%}
+    /*
+    The unique states are: {{ load_result('states')['data'] }}
+    */
+
+{%- endcall %}
 
 select id * 2 from {{ ref('users') }}
 ```
