@@ -17,6 +17,7 @@ Each dbt Cloud project can have only one [development environment](#create-a-dev
 
 Use environments to customize settings for different stages of your project and streamline the execution process by using software engineering principles. This page will detail the different types of environments and how to intuitively configure your development environment in dbt Cloud. 
 
+[comment]: I'm trying to modify a typo in this text: "This setting have will have slightly different behavior depending on the environment type:" but it's impossible since the text to modify is linked (not hardcoded) and I'can't access the link. Could you make the correction. It's this: "This setting will have slightly different behavior depending on the environment type:". Thanks. Regards. IL.
 
 import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
@@ -44,5 +45,7 @@ To use the dbt Cloud IDE or dbt Cloud CLI, each developer will need to set up [p
 ## Deployment environment
 
 Deployment environments in dbt Cloud are necessary to execute scheduled jobs and use other features. A dbt Cloud project can have multiple deployment environments, allowing for flexibility and customization. However, a dbt Cloud project can only have one deployment environment that represents the production source of truth. 
+
+[comment]: Sorry, but I don't understand the previous sentence because, as it's written, it contradicts itself. Either a dbt Cloud project can have many deployment environments or a dbt Cloud project can have only one, but not both configurations at the same time, and at the same paragraph!!!.
 
 To learn more about dbt Cloud deployment environments and how to configure them, refer to the [Deployment environments](/docs/deploy/deploy-environments) page. For our best practices guide, read [dbt Cloud environment best practices](/guides/set-up-ci) for more info.
