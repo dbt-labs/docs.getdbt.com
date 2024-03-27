@@ -33,7 +33,7 @@ The signature of the `statement` block looks like this:
 statement(name=None, fetch_result=False, auto_begin=True)
 ```
 
-When executing a `statement`, dbt needs to understand how to resolve references to other dbt models or resources. You can explicitly specify it using `-- depends_on` or doing a `ref()` function outside the statement block to ensure proper execution.
+When executing a `statement`, dbt needs to understand how to resolve references to other dbt models or resources. If you are already `ref`ing the model outside of the statement block, the dependency will be automatically inferred, but otherwise you will need to [force the dependency](/reference/dbt-jinja-functions/ref#forcing-dependencies) with `-- depends_on`.
 
 <expandable alt_header="Example using -- depends_on">
 
