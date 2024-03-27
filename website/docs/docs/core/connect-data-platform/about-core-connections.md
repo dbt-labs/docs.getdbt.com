@@ -54,6 +54,6 @@ For adapters that support it, you can partially build the catalog. This allows f
 
 ### Source freshness
 You can measure source freshness using the warehouse metadata tables when the adapter supports it. This allows for calculating source freshness without using the `loaded_at` field and without querying the table directly. This is faster and more flexible. You can override this with the `loaded_at` field in the model config. If the adapter doesn't support this, you can still use the `loaded_at` field.
-You can measure source freshness using the metadata when the adapter supports it. This allows for calculating source freshness without using the `loaded_at` field and without querying the table directly. This is faster and more flexible. You can override this with the `loaded_at` field in the model config. If the adapter doesn't support this, you can still use the `loaded_at` field.
+You can measure source freshness using the metadata when the adapter supports it. This allows for calculating source freshness without using the `loaded_at` field and without querying the table directly. This is faster and more flexible (though it might be inaccurate at times). You can override this with the `loaded_at` field in the model config. If the adapter doesn't support this, you can still use the `loaded_at` field.
 
 </VersionBlock>
