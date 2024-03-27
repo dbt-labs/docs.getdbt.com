@@ -21,15 +21,16 @@ To get started:
 
 1. Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 2. Navigate to your dbt project directory.
-3. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts...."
-   - MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
+3. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....". Anytime you make changes to metrics, you need to run `dbt parse` at the minimum, so the semantic manifest is regenerated and you can have your changes reflected when querying the SL.
+   
+<expandable alt_header="Why do I need to run a dbt command?">
+MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
+</expandable>
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
 5. Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `dbt sl query --metrics order_total --group-by metric_time`
 6. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--compile` in the command line.
 7. Commit and merge the code changes that contain the metric definitions.
-
-To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
 
 </TabItem>
 
@@ -55,8 +56,9 @@ The dbt Cloud CLI is strongly recommended to define and query metrics for your d
 8. Run `mf validate-configs` to run validation on your semantic models and metrics.
 9. Commit and merge the code changes that contain the metric definitions.
 
-To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
-
 </TabItem>
 
 </Tabs>
+
+To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
+
