@@ -26,6 +26,8 @@ dbt uses built-in type aliasing for the `data_type` defined in your YAML. For ex
 
 Example for disabling: 
 
+<File name='FOLDER_NAME/FILE_NAME.yml'>
+
 ```yml
 
 models:
@@ -37,6 +39,7 @@ models:
 
 ```
 
+</File>
 </VersionBlock>
 
 When dbt compares data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. You can accomplish a more-precise assertion by [writing or using a custom test](/best-practices/writing-custom-generic-tests).
