@@ -64,7 +64,7 @@ select
     *,
     my_slow_function(my_column)
 
-rom {{ ref('app_data_events') }}
+from {{ ref('app_data_events') }}
 
 {% if is_incremental() %}
 
