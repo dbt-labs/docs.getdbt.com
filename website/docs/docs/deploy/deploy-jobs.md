@@ -113,6 +113,11 @@ You can set up a configuration where an upstream job triggers multiple downstrea
 
 For jobs that are triggered to run by another job, a link to the upstream job run is available from your [job's run details](/docs/deploy/run-visibility#job-run-details).
 
+## Reenable a deactivated job
+
+1. On your deployment environment page, select the deactivated job from the **Jobs** tab. 
+1. On the job's page, click **Settings** and verify that the job is configured correctly. To make changes, click **Edit** and make sure to click **Save** when done. 
+1. Navigate back to the job's page and click **Run now**. The job is now reenabled.
 
 ## Related docs
 
