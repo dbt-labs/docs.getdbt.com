@@ -39,13 +39,13 @@ The following table lists the features available for adapters:
 
 | Adapter | Catalog | Source freshness |
 |---------|---------|------------------|
-| dbt default configuration | manual run | `loaded_at` field |
-| `dbt-bigquery` | incremental | metadata-based and `loaded_at` field |
-| `dbt-databricks` | manual run | metadata-based and `loaded_at` field |
-| `dbt-postgres` | incremental | `loaded_at` field |
-| `dbt-redshift` | incremental | metadata-based and `loaded_at` field |
-| `dbt-snowflake` | incremental | metadata-based and `loaded_at` field |
-| `dbt-spark` | manual run | `loaded_at` field |
+| dbt default configuration | full | `loaded_at` field |
+| `dbt-bigquery` | partial and full | metadata-based and `loaded_at` field |
+| `dbt-databricks` | full | metadata-based and `loaded_at` field |
+| `dbt-postgres` | partial and full | `loaded_at` field |
+| `dbt-redshift` | partial and full | metadata-based and `loaded_at` field |
+| `dbt-snowflake` | partial and full | metadata-based and `loaded_at` field |
+| `dbt-spark` | full | `loaded_at` field |
 
 
 ### Catalog 
