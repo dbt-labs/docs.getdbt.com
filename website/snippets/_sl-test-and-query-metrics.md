@@ -4,22 +4,20 @@ This section explains how you can test and run MetricFlow commands with dbt Clou
 
 Support for running [MetricFlow commands](/docs/build/metricflow-commands) in the dbt Cloud IDE is not available but is coming soon. 
 
-You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. Alternatively, you can run commands with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or with SQL client tools like DataGrip, DBeaver, or RazorSQL. 
+You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. Alternatively, you can run commands with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or with SQL client tools like DataGrip, DBeaver, or RazorSQL.
 
 :::
 
 <Tabs>
 
-
 <TabItem value="cloud" label="dbt Cloud">
-
 
 This section is for people using the dbt Cloud CLI (support for dbt Cloud IDE is coming soon). With dbt Cloud:
 
 - You can run MetricFlow commands after installing the dbt Cloud CLI. They're integrated with dbt Cloud so you can use them immediately.
 - Your account will automatically manage version control for you.
 
-To get started: 
+To get started:
 
 1. Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 2. Navigate to your dbt project directory.
@@ -33,15 +31,13 @@ To get started:
 
 To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
 
-
 </TabItem>
 
 <TabItem value="core" label="dbt Core">
 
-
 This step is for dbt Core users only. MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11. You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
-:::note 
+:::note
 The dbt Cloud CLI is strongly recommended to define and query metrics for your dbt project in dbt Cloud or dbt Core with MetricFlow. If you're using dbt Core, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 :::
 
@@ -60,7 +56,6 @@ The dbt Cloud CLI is strongly recommended to define and query metrics for your d
 9. Commit and merge the code changes that contain the metric definitions.
 
 To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
-
 
 </TabItem>
 
