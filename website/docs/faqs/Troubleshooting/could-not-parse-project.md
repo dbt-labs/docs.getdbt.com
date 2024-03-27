@@ -6,7 +6,7 @@ sidebar_label: 'Could not parse dbt_project.yml error in dbt Cloud'
 
 The error message `Could not parse dbt_project.yml: while scanning for ... ` in your dbt Cloud job run or development usually occurs for several reasons:
 
-- There's a parsing failure in a YAML file (such as a tab indentation or Unicode characters)
+- There's a parsing failure in a YAML file (such as a tab indentation or Unicode characters).
 - Your `dbt_project.yml` file has missing fields or incorrect formatting.
 - Your `dbt_project.yml` file doesn't exist in your dbt project repository.
 
