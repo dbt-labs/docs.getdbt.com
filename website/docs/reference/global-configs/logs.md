@@ -4,9 +4,11 @@ id: "logs"
 sidebar: "logs"
 ---
 
-### Log Formatting
+### Log formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the command line and more detailed in `logs/dbt.log`.
+
+
 
 <File name='Usage'>
 
@@ -23,7 +25,7 @@ To set the `LOG_FORMAT_FILE` type output for the file without impacting the cons
 
 
 ```text
-dbt --log-format-file json run
+dbt run --log-format-file json
 ```
 
 </VersionBlock>
@@ -50,7 +52,7 @@ Setting the `--log-level` will configure console and file logs.
 
 
 ```text
-dbt --log-level debug run
+dbt run --log-level debug
 ```
 
 To set the file log level as a different value than the console, use the `--log-level-file` flag. 
