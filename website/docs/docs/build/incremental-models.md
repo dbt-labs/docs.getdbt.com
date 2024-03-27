@@ -134,7 +134,7 @@ select
     date_trunc('day', event_at) as date_day,
     count(distinct user_id) as daily_active_users
 
-rom {{ ref('app_data_events') }}
+from {{ ref('app_data_events') }}
 
 
 {% if is_incremental() %}
