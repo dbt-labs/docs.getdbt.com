@@ -26,6 +26,8 @@ dbt uses built-in type aliasing for the `data_type` defined in your YAML. For ex
 
 Example for disabling: 
 
+<File name='FOLDER_NAME/FILE_NAME.yml'>
+
 ```yml
 
 models:
