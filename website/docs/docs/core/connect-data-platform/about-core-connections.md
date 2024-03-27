@@ -31,6 +31,7 @@ If you're using dbt from the command line (CLI), you'll need a profiles.yml file
 
 For detailed info, you can refer to the [Connection profiles](/docs/core/connect-data-platform/connection-profiles).
 
+<VersionBlock firstVersion="1.7">
 
 ## Adapter features
 
@@ -39,18 +40,20 @@ The following table lists the features available for adapters:
 | Adapter | Catalog | Source freshness |
 |---------|---------|------------------|
 | dbt default configuration | manual run | `loaded_at` field |
-| `dbt-bigquery` | incremental | metadata-based |
-| `dbt-databricks` | manual run | metadata-based |
+| `dbt-bigquery` | incremental | metadata-based and `loaded_at` field |
+| `dbt-databricks` | manual run | metadata-based and `loaded_at` field |
 | `dbt-postgres` | incremental | `loaded_at` field |
-| `dbt-redshift` | incremental | metadata-based |
-| `dbt-snowflake` | incremental | metadata-based |
+| `dbt-redshift` | incremental | metadata-based and `loaded_at` field |
+| `dbt-snowflake` | incremental | metadata-based and `loaded_at` field |
 | `dbt-spark` | manual run | `loaded_at` field |
 
 
 ### Catalog 
 
-You can build the catalog incrementally for adapters that support it. This allows for the catalog to be built along with the model, which eliminates the need to run a lengthy `dbt docs generate --select ...` at the end of a dbt run. For adapters that don't support incremental catalog generation, you must run `dbt docs generate --select ...` to build the catalog.
+For adapters that support it, you can partially build the catalog. This allows for the catalog to be built along with the model, eliminating the need to run a lengthy `dbt docs generate --select ...` at the end of a dbt run. For adapters that don't support incremental catalog generation, you must run `dbt docs generate --select ...` to build the catalog.
 
 ### Source freshness
-
+You can measure source freshness using the warehouse metadata tables when the adapter supports it. This allows for calculating source freshness without using the `loaded_at` field and without querying the table directly. This is faster and more flexible. You can override this with the `loaded_at` field in the model config. If the adapter doesn't support this, you can still use the `loaded_at` field.
 You can measure source freshness using the metadata when the adapter supports it. This allows for calculating source freshness without using the `loaded_at` field and without querying the table directly. This is faster and more flexible. You can override this with the `loaded_at` field in the model config. If the adapter doesn't support this, you can still use the `loaded_at` field.
+
+</VersionBlock>
