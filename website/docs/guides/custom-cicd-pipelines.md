@@ -75,9 +75,9 @@ When running a CI/CD pipeline you’ll want to use a service token instead of an
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png" title="View of the dbt Cloud page where service tokens are created" width="85%" />
 
 Here’s a video showing the steps as well:
- <div style={{maxWidth: '800px'}}>
-    <WistiaVideo id="iub17te9ir" />
-    </div>
+
+<WistiaVideo id="iub17te9ir" />
+
 
 ### 2. Put your dbt Cloud API key into your repo
 
@@ -108,9 +108,8 @@ This next part will happen in you code hosting platform. We need to save your AP
 
 Here’s a video showing these steps:
 
- <div style={{maxWidth: '800px'}}>
-    <WistiaVideo id="u7mo30puql" />
-    </div>
+<WistiaVideo id="u7mo30puql" />
+
 </TabItem>
 
 <TabItem value="gitlab">
@@ -127,10 +126,8 @@ Here’s a video showing these steps:
   <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-gitlab.png" title="[View of the GitLab window for entering DBT_API_KEY" width="80%" />
 
     Here’s a video showing these steps:
-
-  <div style={{maxWidth: '800px'}}>
     <WistiaVideo id="rgqs14f816" />
-    </div>
+
 
 </TabItem>
 <TabItem value="ado">
@@ -169,9 +166,7 @@ In Bitbucket:
     ![View of the Bitbucket window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-bitbucket.png)
 
     Here’s a video showing these steps:
-    <div style={{maxWidth: '800px'}}>
     <WistiaVideo id="1fddpsqpfv" />
-    </div>
 
   
 
