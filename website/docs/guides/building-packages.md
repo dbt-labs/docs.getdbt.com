@@ -12,6 +12,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 Creating packages is an **advanced use of dbt**. If you're new to the tool, we recommend that you first use the product for your own analytics before attempting to create a package for others.
@@ -169,3 +171,5 @@ The release notes should contain an overview of the changes introduced in the ne
 ## Add the package to hub.getdbt.com
 
 Our package registry, [hub.getdbt.com](https://hub.getdbt.com/), gets updated by the [hubcap script](https://github.com/dbt-labs/hubcap). To add your package to hub.getdbt.com, create a PR on the [hubcap repository](https://github.com/dbt-labs/hubcap) to include it in the `hub.json` file.
+
+</div>

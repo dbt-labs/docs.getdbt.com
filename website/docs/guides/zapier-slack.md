@@ -11,6 +11,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 This guide will show you how to set up an integration between dbt Cloud jobs and Slack using [dbt Cloud webhooks](/docs/deploy/webhooks) and Zapier. It builds on the native [native Slack integration](/docs/deploy/job-notifications#slack-notifications) by attaching error message details of models and tests in a thread. 
@@ -309,3 +311,5 @@ Set the **Message Text** to **5. Threaded Errors Post** from the Run Python step
 ### 8. Test and deploy
 
 When you're done testing your Zap, publish it.
+
+</div>
