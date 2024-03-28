@@ -125,7 +125,7 @@ You can find more information about these data tests, and additional configurati
 Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic data tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
 
 :::info
-There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](/docs/build/packages) to learn more!
+There are generic tests defined in some open-source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](/docs/build/packages) to learn more!
 :::
 
 ### Example
@@ -267,7 +267,7 @@ Note that, if you select to store test failures:
 
 Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. As of v1.8,  `tests:` is still supported in your YML configuration files as an alias but will be deprecated in the future in favor of `data_tests:`. 
 
-As we progress towards this deprecation, the examples in our docs pages will be updated to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
+As we progress towards this deprecation, we'll update the examples in our docs pages to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
 
 <File name='models/schema.yml'>
 
