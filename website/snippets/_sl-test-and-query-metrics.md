@@ -29,7 +29,7 @@ Anytime you make changes to metrics, you need to run `dbt parse` at the minimum.
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
 5. Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `dbt sl query --metrics order_total --group-by metric_time`.
-6. **Metrics verification** &mdash; Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--compile` in the command line.
+6. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--compile` in the command line.
 7. **Commit changes** &mdash; Commit and merge the code changes that contain the metric definitions.
 
 </TabItem>
