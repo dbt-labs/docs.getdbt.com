@@ -36,7 +36,7 @@ Anytime you make changes to metrics, you need to run `dbt parse` at the minimum.
 
 <TabItem value="core" label="dbt Core">
 
-This step is for dbt Core users only. MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11. You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
+This step is for dbt Core users only. MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11. You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
 :::note
 The dbt Cloud CLI is strongly recommended to define and query metrics for your dbt project in dbt Cloud or dbt Core with MetricFlow. If you're using dbt Core, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
