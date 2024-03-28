@@ -29,7 +29,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 | Job | A collection of run steps, settings, and a trigger to invoke dbt commands against a project in the user's cloud data platform. |
 | Job queue | The job queue acts as a waiting area for job runs when they are scheduled or triggered to run; runs remain in queue until execution begins. More specifically, the Scheduler checks the queue for runs that are due to execute, ensures the run is eligible to start, and then prepares an environment with appropriate settings, credentials, and commands to begin execution. Once execution begins, the run leaves the queue. |
 | Over-scheduled job | A situation when a cron-scheduled job's run duration becomes longer than the frequency of the job’s schedule, resulting in a job queue that will grow faster than the scheduler can process the job’s runs. |
-| Abandoned job | A situation where a job has had 10 or more consecutive run errors, it has been over 10 days since its last successful run, and there hasn't been any code changes to the branch since the initial failure. |
+| Deactivated job | A situation where a job has had 100 or more consecutive Git clone errors. |
 | Prep time | The time dbt Cloud takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the dbt Cloud Scheduler experiences a lot of run traffic. |
 | Run | A single, unique execution of a dbt job. |
 | Run slot | Run slots control the number of jobs that can run concurrently. Developer plans have a fixed number of run slots, while Enterprise and Team plans have [unlimited run slots](/docs/dbt-versions/release-notes/July-2023/faster-run#unlimited-job-concurrency-for-enterprise-accounts). Each running job occupies a run slot for the duration of the run. <br /><br />Team and Developer plans are limited to one project each. For additional projects, consider upgrading to the [Enterprise plan](https://www.getdbt.com/pricing/).| 
@@ -83,22 +83,17 @@ The scheduler prevents queue clog by canceling runs that aren't needed, ensuring
 
 To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/deploy-jobs#schedule-days).
 
-## Deactivation of abandoned jobs
+## Deactivation of jobs
 
-The scheduler will consider a job abandoned if it meets these criteria: 
-- It's had 10 or more consecutive run errors
-- It's been 10 or more days since its last successful run
-- No code changes to the branch since the first failure
+To reduce unnecessary resource consumption and reduce contention for run slots in your account, dbt Cloud will deactivate a deploy job or a CI job if it reaches 100 Git clone errors and indicate this through the use of banners. When this happens, scheduled and triggered-to-run jobs will no longer be enqueued. 
 
-Abandoned jobs, typically, are not used by anyone and with no one monitoring them becomes a performance drain and load balancing issue for the scheduler. To mitigate this situation, the scheduler will deactivate a job if it meets the defintion for abandoned and the job will no longer be enqueued to run. 
+To reactivate a deactivated job, you can either:
+- Perform a manual run by clicking **Run now** on the job's page
+- Update the job's settings
 
-Before deactivation, dbt will send a notification to warn you about it. Notifications are sent when a job has had 5 or more sequential run errors and it has been over 5 days since its last successful run with no code changes since the first failure. 
-
-When a job has been deactivated, there will be a banner indicating this. For example: 
+Example of deactivation banner on job's page: 
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/example-deactivated-deploy-job.png" title="Example of deactivation banner on job's page"/>
-
-If you didn't intend to abandon the job, you can reenable it. Refer to [Reeable a deactivated job](/docs/deploy/deploy-jobs#reenable-a-deactivated-job) for details.
 
 ## Related docs
 - [dbt Cloud architecture](/docs/cloud/about-cloud/architecture#dbt-cloud-features-architecture)
