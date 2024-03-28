@@ -8,7 +8,7 @@ Environment variables can be used to customize the behavior of a dbt project dep
 [env_var](/reference/dbt-jinja-functions/env_var) for more information on how to call the jinja function `{{env_var('DBT_KEY','OPTIONAL_DEFAULT')}}` in your project code.
 
 :::info Environment Variable Naming and Prefixing
-Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_` or `DBT_ENV_CUSTOM_ENV_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
 ### Setting and overriding environment variables
@@ -20,8 +20,8 @@ Environment variable values can be set in multiple places within dbt Cloud. As a
  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
 
 There are four levels of environment variables:
- 1. the optional default argument supplied to the `env_var` Jinja function in code
- 2. a project-wide default value, which can be overridden at
+ 1. the optional default argument supplied to the `env_var` Jinja function in code, which can be overridden at
+ 2. the project-wide level by its default value, which can be overridden at
  3. the environment level, which can in turn be overridden again at
  4. the job level (job override) or in the IDE for an individual dev (personal override).
 
