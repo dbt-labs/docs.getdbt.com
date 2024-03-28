@@ -11,8 +11,6 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 The focus of this workshop will be to demonstrate how we can use both *SQL and python together* in the same workflow to run *both analytics and machine learning models* on dbt Cloud.
@@ -1925,5 +1923,3 @@ Now that we've completed testing and documenting our work, we're ready to deploy
 Fantastic! You’ve finished the workshop! We hope you feel empowered in using both SQL and Python in your dbt Cloud workflows with Snowflake. Having a reliable pipeline to surface both analytics and machine learning is crucial to creating tangible business value from your data.
 
 For more help and information join our [dbt community Slack](https://www.getdbt.com/community/) which contains more than 50,000 data practitioners today. We have a dedicated slack channel #db-snowflake to Snowflake related content. Happy dbt'ing!
-
-</div>

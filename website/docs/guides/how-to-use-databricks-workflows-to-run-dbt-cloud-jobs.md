@@ -12,8 +12,6 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 Using Databricks workflows to call the dbt Cloud job API can be useful for several reasons:
@@ -206,5 +204,3 @@ You can set up workflows directly from the notebook OR by adding this notebook t
 Multiple Workflow tasks can be set up using the same notebook by configuring the `job_id` parameter to point to different dbt Cloud jobs. 
 
 Using Databricks workflows to access the dbt Cloud job API can improve integration of your data pipeline processes and enable scheduling of more complex workflows.
-
-</div>

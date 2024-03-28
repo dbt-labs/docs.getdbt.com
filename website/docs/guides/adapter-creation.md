@@ -11,8 +11,6 @@ level: 'Advanced'
 recently_updated: true
 ---
 
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, dbt Core adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt Core.
@@ -51,6 +49,7 @@ The outermost layers of a database map roughly to the areas in which the dbt ada
 
 Even amongst ANSI-compliant databases, there are differences in the SQL grammar. 
 Here are some categories and examples of SQL statements that can be constructed differently:
+
 
 | Category                                     | Area of differences                                                                     | Examples                                                                                                                                                                                           |
 |----------------------------------------------|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -191,7 +190,7 @@ One of the most important choices you will make during the cookiecutter generati
 
 Regardless if you decide to use the cookiecutter template or manually create the plugin, this section will go over each method that is required to be implemented. The following table provides a high-level overview of the classes, methods, and macros you may have to define for your data platform.
 
-|File  | Component     | <div style={{width:'200px'}}>Purpose</div>    |
+| File | Component     | <div style={{width:'350px'}}>Purpose</div>    |
 | ---- | ------------- | --------------------------------------------- |
 | `./setup.py`              | `setup()` function           | adapter meta-data (package name, version, author, homepage, etc)   |
 | `myadapter/dbt/adapters/myadapter/__init__.py`    | `AdapterPlugin`  | bundle all the information below into a dbt plugin |
@@ -201,7 +200,6 @@ Regardless if you decide to use the cookiecutter template or manually create the
 | `myadapter/dbt/adapters/myadapter/impl.py`        | `MyAdapterConfig` | database- and relation-level configs and   |
 | `myadapter/dbt/adapters/myadapter/impl.py`        | `MyAdapterAdapter`            | for changing _how_ dbt performs operations like macros and other needed Python functionality    |
 | `myadapter/dbt/adapters/myadapter/column.py`   | `MyAdapterColumn`  | for defining database-specific column such as datatype mappings  |
-
 
 ### Editing `setup.py`
 
@@ -1354,5 +1352,3 @@ The approval workflow is as follows:
 ### Getting help for my trusted adapter
 
 Ask your question in #adapter-ecosystem channel of the dbt community Slack.
-
-</div>

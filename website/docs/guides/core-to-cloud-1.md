@@ -10,9 +10,6 @@ tags: ['Migration','dbt Core','dbt Cloud']
 level: 'Intermediate'
 recently_updated: true
 ---
-
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
@@ -256,5 +253,3 @@ For next steps, we'll soon share other guides on how to manage your move and tip
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
 </ConfettiTrigger>
-
-</div>

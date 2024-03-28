@@ -8,8 +8,6 @@ hide_table_of_contents: true
 tags: ['dbt Core','Quickstart']
 ---
 
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 In this quickstart guide, you’ll learn how to create a codespace and be able to execute the `dbt build` command from it in _less than 5 minutes_. 
@@ -74,4 +72,3 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
 
 As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
 
-</div>

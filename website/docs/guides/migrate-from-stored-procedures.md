@@ -13,8 +13,6 @@ level: 'Beginner'
 recently_updated: true
 ---
 
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 One of the more common situations that new dbt adopters encounter is a historical codebase of transformations written as a hodgepodge of DDL and DML statements, or stored procedures. Going from DML statements to dbt models is often a challenging hump for new users to get over, because the process involves a significant paradigm shift between a procedural flow of building a dataset (e.g. a series of DDL and DML statements) to a declarative approach to defining a dataset (e.g. how dbt uses SELECT statements to express data models). This guide aims to provide tips, tricks, and common patterns for converting DML statements to dbt models.
@@ -377,5 +375,3 @@ There are a couple important concepts to understand here:
 ## Migrate Stores procedures
 
 The techniques shared above are useful ways to get started converting the individual DML statements that are often found in stored procedures. Using these types of patterns, legacy procedural code can be rapidly transitioned to dbt models that are much more readable, maintainable, and benefit from software engineering best practices like <Term id='dry'>DRY principles</Term>. Additionally, once transformations are rewritten as dbt models, it becomes much easier to test the transformations to ensure that the data being used downstream is high-quality and trustworthy.
-
-</div>

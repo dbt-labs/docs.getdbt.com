@@ -12,8 +12,6 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 Welcome to the third installment of our comprehensive series on optimizing and deploying your data pipelines using Databricks and dbt Cloud. In this guide, we'll dive into delivering these models to end users while incorporating best practices to ensure that your production data remains reliable and timely.
@@ -196,5 +194,3 @@ To get the most out of both tools, you can use the [persist docs config](/refere
 - [Trigger a dbt Cloud Job in your automated workflow with Python](https://discourse.getdbt.com/t/triggering-a-dbt-cloud-job-in-your-automated-workflow-with-python/2573)
 - [Databricks + dbt Cloud Quickstart Guide](/guides/databricks)
 - Reach out to your Databricks account team to get access to preview features on Databricks.
-
-</div>

@@ -12,8 +12,6 @@ level: 'Advanced'
 recently_updated: true
 ---
 
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 If a model uses the [`schema` config](/reference/resource-properties/schema) but builds under an unexpected schema, here are some steps for debugging the issue. The full explanation of custom schemas can be found [here](/docs/build/custom-schemas).
@@ -102,5 +100,3 @@ Now that you understand how a model's schema is being generated, you can adjust 
 - You can also adjust your `target` details (for example, changing the name of a target)
 
 If you change the logic in `generate_schema_name`, it's important that you consider whether two users will end up writing to the same schema when developing dbt models. This consideration is the reason why the default implementation of the macro concatenates your target schema and custom schema together — we promise we were trying to be helpful by implementing this behavior, but acknowledge that the resulting schema name is unintuitive.
-
-</div>

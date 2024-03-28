@@ -13,8 +13,6 @@ level: 'Advanced'
 recently_updated: true
 ---
 
-<div style={{maxWidth: '900px'}}>
-
 ## Introduction
 
 You may have already learned how to build dbt models from scratch. But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into dbt.
@@ -259,5 +257,3 @@ Sure, we could write our own query manually to audit these models, but using the
 Head to the free on-demand course, [Refactoring from Procedural SQL to dbt](https://courses.getdbt.com/courses/refactoring-sql-for-modularity) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
 
 Questions on this guide or the course? Drop a note in #learn-on-demand in [dbt Community Slack](https://getdbt.com/community).
-
-</div>
