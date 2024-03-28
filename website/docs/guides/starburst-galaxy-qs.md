@@ -6,6 +6,9 @@ icon: 'starburst'
 hide_table_of_contents: true
 tags: ['dbt Cloud','Quickstart']
 ---
+
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/platform/starburst-galaxy/). It will show you how to:
@@ -406,6 +409,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 4. Execute `dbt run`.
 
     This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
+
+</div>
 
 #### FAQs {#faq-2}
 
