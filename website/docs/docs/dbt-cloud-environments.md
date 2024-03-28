@@ -17,7 +17,6 @@ Each dbt Cloud project can have only one [development environment](#create-a-dev
 
 Use environments to customize settings for different stages of your project and streamline the execution process by using software engineering principles. This page will detail the different types of environments and how to intuitively configure your development environment in dbt Cloud. 
 
-[comment]: I'm trying to modify a typo in this text: "This setting have will have slightly different behavior depending on the environment type:" but it's impossible since the text to modify is linked (not hardcoded) and I'can't access the link. Could you make the correction. It's this: "This setting will have slightly different behavior depending on the environment type:". Thanks. Regards. IL.
 
 import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
