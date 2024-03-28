@@ -10,6 +10,8 @@ You can use deploy jobs to build production data assets. Deploy jobs make it eas
 - Commit SHA
 - Environment name
 - Sources and documentation info, if applicable
+
+  [comment]: You should take a look at this: [model timing data](#model-timing), because there is no such bulletpoint in this particular website: https://docs.getdbt.com/docs/deploy/deploy-jobs. The most alike links in your docs are these: https://docs.getdbt.com/docs/deploy/run-visibility#model-timing, https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model#your-new-best-friend-the-model-timing-tab
 - Job run details, including run timing, [model timing data](#model-timing), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their run step statuses
 
@@ -39,6 +41,8 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
         - **Days of the week** &mdash; By default, it’s set to every day when **Intervals** or **Specific hours** is chosen for **Timing**.
+     
+   [comment]: You should either modify this [job completes](#trigger-on-job-completion) to this [job completes](#trigger-on-job-completion--), to send the reader to this local link: https://docs.getdbt.com/docs/deploy/deploy-jobs#trigger-on-job-completion--, or you modify the local link to that particular bulletpoint to be this: https://docs.getdbt.com/docs/deploy/deploy-jobs#trigger-on-job-completion
     - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
         - **Project** &mdash; Specify the parent project that has that upstream deploy job. 
         - **Job** &mdash; Specify the upstream deploy job. 
