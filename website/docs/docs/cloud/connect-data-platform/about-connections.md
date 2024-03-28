@@ -7,6 +7,7 @@ pagination_next: "docs/cloud/connect-data-platform/connect-microsoft-fabric"
 pagination_prev: null
 ---
 dbt Cloud can connect with a variety of data platform providers including: 
+- [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
 - [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
@@ -28,7 +29,7 @@ These connection instructions provide the basic fields required for configuring 
 
 ## IP Restrictions
 
-dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses) page.
+dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses) page.
 
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 

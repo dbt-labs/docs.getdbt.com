@@ -1,4 +1,3 @@
-
 ## Types of environments
 
 In dbt Cloud, there are two types of environments:
@@ -30,8 +29,9 @@ Both development and deployment environments have a section called **General Set
 
 :::note About dbt version
 
-- dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
+- dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
+- In 2024 we are introducing **Keep on latest version**, which removes the need for manually upgrading environments in the future, while ensuring you get access to the latest fixes and features. This feature is currently in beta for select customers, rolling out to wider availability through February and March._
 :::
 
 ### Custom branch behavior
@@ -47,7 +47,7 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 ### Extended attributes
 
 :::note 
-Extended attributes are retrieved and applied only at runtime when `profiles.yml` is requested for a specific Cloud run. Extended attributes are currently _not_ taken into consideration for Cloud-specific features such as PrivateLink or SSH Tunneling that do not rely on `profiles.yml` values.
+Extended attributes are retrieved and applied only at runtime when `profiles.yml` is requested for a specific Cloud run. Extended attributes are currently _not_ taken into consideration for SSH Tunneling which do not rely on `profiles.yml` values.
 :::
 
 Extended Attributes is a feature that allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
@@ -110,6 +110,3 @@ Partial parsing in dbt Cloud requires dbt version 1.4 or newer. The feature does
 To enable, select **Account settings** from the gear menu and enable the **Partial parsing** option.
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
-
-
-

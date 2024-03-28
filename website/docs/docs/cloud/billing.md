@@ -1,4 +1,4 @@
---- 
+---
 title: "Billing"
 id: billing 
 description: "dbt Cloud billing information." 
@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-dbt Cloud offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/regions-ip-addresses) worldwide, dbt Cloud is the fastest and easiest way to begin transforming your data.
+dbt Cloud offers a variety of [plans and pricing](https://www.getdbt.com/pricing/) to fit your organization’s needs. With flexible billing options that appeal to large enterprises and small businesses and [server availability](/docs/cloud/about-cloud/access-regions-ip-addresses) worldwide, dbt Cloud is the fastest and easiest way to begin transforming your data.
 
 ## How does dbt Cloud pricing work?
 
@@ -170,7 +170,7 @@ When thinking of ways to optimize your costs from successful models built, there
 Many dbt Cloud users utilize views, which don’t always need to be rebuilt every time you run a job. For any jobs that contain views that _do not_ include macros that dynamically generate code (for example, case statements) based on upstream tables and also _do not_ have tests, you can implement these steps:
 
 1. Go to your current production deployment job in dbt Cloud.
-2. Modify your command to include: `-exclude config.materialized:view`.
+2. Modify your command to include: `--exclude config.materialized:view`.
 3. Save your job changes.
 
 If you have views that contain macros with case statements based on upstream tables, these will need to be run each time to account for new values. If you still need to test your views with each run, follow the [Exclude views while still running tests](#exclude-views-while-running-tests) best practice to create a custom selector. 

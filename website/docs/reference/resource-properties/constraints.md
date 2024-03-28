@@ -36,6 +36,9 @@ models:
     constraints:
       - type: primary_key
         columns: [<first_column>, <second_column>, ...]
+      - type: foreign_key # multi_column
+        columns: [<first_column>, <second_column>, ...]
+        expression: "<other_model_schema>.<other_model_name> (<other_model_first_column>, <other_model_second_column>, ...)"
       - type: check
         columns: [<first_column>, <second_column>, ...]
         expression: "<first_column> != <second_column>"
@@ -188,6 +191,8 @@ models:
         data_type: date
 ```
 
+Note that Redshift limits the maximum length of the `varchar` values to 256 characters by default (or when specified without a length). This means that any string data exceeding 256 characters might get truncated _or_ return a "value too long for character type" error. To allow the maximum length, use `varchar(max)`. For example, `data_type: varchar(max)`.  
+
 </File>
 
 Expected DDL to enforce constraints:
@@ -224,9 +229,9 @@ select
 - Snowflake constraints documentation: [here](https://docs.snowflake.com/en/sql-reference/constraints-overview.html)
 - Snowflake data types: [here](https://docs.snowflake.com/en/sql-reference/intro-summary-data-types.html)
 
-Snowflake suppports four types of constraints: `unique`, `not null`, `primary key` and `foreign key`.
+Snowflake suppports four types of constraints: `unique`, `not null`, `primary key`, and `foreign key`.
 
-It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked today.
+It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked at present.
 The rest of the constraints are purely metadata, not verified when inserting data.
 
 Currently, Snowflake doesn't support the `check` syntax and dbt will skip the `check` config and raise a warning message if it is set on some models in the dbt project.
@@ -300,7 +305,7 @@ select
 
 <div warehouse="BigQuery">
 
-BigQuery allows defining `not null` constraints. However, it does _not_ support or enforce the definition of unenforced constraints, such as `primary key`.
+BigQuery allows defining and enforcing `not null` constraints, and defining (but _not_ enforcing) `primary key` and `foreign key` constraints (which can be used for query optimization). BigQuery does not support defining or enforcing other constraints. For more information, refer to [Platform constraint support](/docs/collaborate/govern/model-contracts#platform-constraint-support)
 
 Documentation: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language
 
@@ -434,7 +439,7 @@ Databricks allows you to define:
 - a `not null` constraint
 - and/or additional `check` constraints, with conditional expressions including one or more columns
 
-As Databricks does not support transactions nor allows using `create or replace table` with a column schema, the table is first created without a schema and `alter` statements are then executed to add the different constraints. 
+As Databricks does not support transactions nor allows using `create or replace table` with a column schema, the table is first created without a schema, and `alter` statements are then executed to add the different constraints. 
 
 This means that:
 

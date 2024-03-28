@@ -26,15 +26,16 @@ Try dbt Explorer! It's available in [Public Preview](/docs/dbt-versions/product-
 
 dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ in your dbt Cloud project. dbt Explorer automatically retrieves the metadata updates after each job run in the production deployment environment so it always has the latest results for your project. 
 
-To view a resource and its metadata, you must define the resource in your project and run a job in the production environment. The resulting metadata depends on the [commands executed by the jobs](/docs/deploy/job-commands). 
+To view a resource and its metadata, you must define the resource in your project and run a job in the production environment. The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs.
 
-For a richer experience with dbt Explorer, you must:
-
-- Run [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment to update model details or results.
-- Run [dbt docs generate](/reference/commands/cmd-docs) within a job in the environment to view catalog statistics and columns for models, sources, and snapshots.
-- Run [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment to view test results.
-- Run [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment to view source freshness data.
-- Run [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment to view snapshot details.
+| To view in Explorer | You must successfully run |
+|---------------------|---------------------------|
+| Model lineage, details, or results | [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment |
+| Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within a job in the environment |
+| Test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment | 
+| Source freshness results | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
+| Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
+| Seed details | [dbt seed](/reference/commands/seed) or [dbt build](/reference/commands/build) within a job in the environment |
 
 Richer and more timely metadata will become available as dbt Core, the Discovery API, and the underlying dbt Cloud platform evolves.
 
@@ -75,22 +76,16 @@ To interact with the full lineage graph, you can:
 
 
 ## Search for resources {#search-resources}
-With the search bar (on the upper left corner of the page or in a lineage graph), you can search with keywords or by using [node selection syntax](/reference/node-selection/syntax). The resources that match your search criteria will display as a lineage graph and a table in the main section of the page. 
-
-Select a node (single-click) in the lineage graph to highlight its relationship with your other search results and to display which project contains the resource's definition. When you choose a node (double-click) in the lineage graph or when you select a resource in the table, dbt Explorer displays the [resource's details page](#view-resource-details).
+With the search bar (on the upper left corner of the page or in a lineage graph), you can search with keywords or selectors. The resources that match your search criteria will display in a list (keyword search) or the lineage graph (selector search). 
 
 ### Search with keywords
-When searching with keywords, dbt Explorer searches through your resource metadata (such as resource type, resource name, column name, source name, tags, schema, database, version, alias/identifier, and package name) and returns any matches.
+When searching with keywords, dbt Explorer searches through your resource metadata, such as resource name, and returns any matches. When searching for an exact column name, the results show all relational nodes containing that column in their schemas. If there's a match, a notice in the search result indicates the resource contains the specified column.
 
-- Keyword search features a side panel (to the right of the main section) to filter search results by resource type. 
-- Use this panel to select specific resource tags or model access levels under the **Models** option. 
-  - For example, a search for "sale" returns results that include all resources with the keyword "sale" in their metadata. Filtering by **Models** and **Sources** refines these results to only include models or sources.
-
-- When searching for an exact column name, the results show all relational nodes containing that column in their schemas. If there's a match, a notice in the search result indicates the resource contains the specified column.
+You can then refine the search results using the filters in the panel on the right-hand side of the page. Use this panel to select specific resource types or tags to apply. You can filter on model properties (access or materialization type) under the **Models** option. 
 
 ### Search with selectors 
 
-You can search with [selectors](/reference/node-selection/methods). Below are the selectors currently available in dbt Explorer:   
+You can search with [selectors](/reference/node-selection/methods) within the full lineage graph using the search bar. Below are the selectors currently available in dbt Explorer:   
 
 - `fqn:` &mdash; Find resources by [file or fully qualified name](/reference/node-selection/methods#the-fqn-method). This selector is the search bar's default. If you want to use the default, it's unnecessary to add `fqn:` before the search term.
 - `source:` &mdash; Find resources by a specified [source](/reference/node-selection/methods#the-source-method).
@@ -105,9 +100,7 @@ You can search with [selectors](/reference/node-selection/methods). Below are th
 
 </VersionBlock>
 
-Because the results of selectors are immutable, the filter side panel is not available with this search method. 
-
-When searching with selector methods, you can also use [graph operators](/reference/node-selection/graph-operators). For example, `+orders` returns all the parents of `orders`. This functionality is not available for keyword search.
+When searching with selector methods, you can also use [graph operators](/reference/node-selection/graph-operators). For example, `+orders` returns all the upstream nodes of `orders` and `orders+1` returns just the nodes immediately downstream (the children) of `orders`.
 
 You can use multiple selector methods in your search query with [set operators](/reference/node-selection/set-operators). A space implies a union set operator and a comma for an intersection. For example:
 - `resource_type:metric,tag:nightly` &mdash; Returns metrics with the tag `nightly`

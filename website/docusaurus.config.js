@@ -71,7 +71,7 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Join our weekly demos and see dbt Cloud in action!",
+      content: "Join our bi-weekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
@@ -267,7 +267,8 @@ var siteSettings = {
     "https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js",
     "/js/headerLinkCopy.js",
     "/js/gtm.js",
-    "/js/onetrust.js"
+    "/js/onetrust.js",
+    "/js/mutiny.js",
   ],
   stylesheets: [
     "/css/fonts.css",

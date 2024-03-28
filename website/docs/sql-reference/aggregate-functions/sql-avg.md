@@ -17,6 +17,8 @@ The AVG function is a part of the group of mathematical or aggregate functions (
 
 ### AVG function example
 
+The following example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
+
 ```sql
 select
 	date_trunc('month', order_date) as order_month,
@@ -25,10 +27,6 @@ from {{ ref('orders') }}
 where status not in ('returned', 'return_pending')
 group by 1
 ```
-
-:::note What dataset is this?
-This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop).
-:::
 
 This query using the Jaffle Shop’s `orders` table will return the rounded order amount per each order month:
 

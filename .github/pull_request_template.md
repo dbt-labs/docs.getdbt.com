@@ -19,5 +19,5 @@ Uncomment when publishing docs for a prerelease version of dbt:
 Adding or removing pages (delete if not applicable):
 - [ ] Add/remove page in `website/sidebars.js`
 - [ ] Provide a unique filename for new pages
-- [ ] Add an entry for deleted pages in `website/static/_redirects`
+- [ ] Add an entry for deleted pages in `website/vercel.json`
 - [ ] Run link testing locally with `npm run build` to update the links that point to deleted pages
