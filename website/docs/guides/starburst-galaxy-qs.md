@@ -410,13 +410,14 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
     This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
 
-</div>
 
 #### FAQs {#faq-2}
 
 <FAQ path="Runs/run-one-model" />
 <FAQ path="Models/unique-model-names" />
 <FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+
+</div>
 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
