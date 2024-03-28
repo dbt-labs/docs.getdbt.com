@@ -19,7 +19,7 @@ This section is for people using the dbt Cloud CLI (support for dbt Cloud IDE is
 
 Refer to the following steps to get started:
 
-1. **Installation** &mdash; Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). Then, navigate to your dbt project directory.
+1. Install the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) (if you haven't already). Then, navigate to your dbt project directory.
 2. **Initial command** &mdash; Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....".
 3. **Semantic graph and manifest** &mdash; MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
 
