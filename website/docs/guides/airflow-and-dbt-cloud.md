@@ -9,6 +9,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 Many organization already use [Airflow](https://airflow.apache.org/) to orchestrate their data workflows. dbt Cloud works great with Airflow, letting you execute your dbt code in dbt Cloud while keeping orchestration duties with Airflow. This ensures your project's metadata (important for tools like dbt Explorer) is available and up-to-date, while still enabling you to use Airflow for general tasks such as:
@@ -244,3 +246,5 @@ Yes, either through [Airflow's email/slack](https://www.astronomer.io/guides/err
 ### How should I plan my dbt Cloud + Airflow implementation?
 
 Check out [this recording](https://www.youtube.com/watch?v=n7IIThR8hGk) of a dbt meetup for some tips.
+
+</div>
