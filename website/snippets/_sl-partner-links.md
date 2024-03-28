@@ -11,7 +11,7 @@ The following tools integrate with the dbt Semantic Layer:
     icon="tableau-software"/>
 
   <Card
-    title="Google Sheets (beta)"
+    title="Google Sheets (Preview)"
     link="/docs/use-dbt-semantic-layer/gsheets"
     body="Discover how to connect to Google Sheets for querying metrics and collaborating with your team."
     icon="google-sheets-logo-icon"/>
