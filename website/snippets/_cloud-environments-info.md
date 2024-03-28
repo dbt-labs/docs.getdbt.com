@@ -36,7 +36,7 @@ Both development and deployment environments have a section called **General Set
 
 ### Custom branch behavior
 
-By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the **Default to a custom branch** option. This setting have will have slightly different behavior depending on the environment type:
+By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the **Default to a custom branch** option. This setting will have slightly different behavior depending on the environment type:
 
 - **Development**: determines which branch in the dbt Cloud IDE or dbt Cloud CLI developers create branches from and open PRs against.
 - **Deployment:** determines the branch is cloned during job executions for each environment.
@@ -47,14 +47,14 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 ### Extended attributes
 
 :::note 
-Extended attributes are retrieved and applied only at runtime when `profiles.yml` is requested for a specific Cloud run. Extended attributes are currently _not_ taken into consideration for SSH Tunneling which do not rely on `profiles.yml` values.
+Extended attributes are retrieved and applied only at runtime when `profiles.yml` is requested for a specific Cloud run. Extended attributes are currently _not_ taken into consideration for SSH Tunneling which does not rely on `profiles.yml` values.
 :::
 
 Extended Attributes is a feature that allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
 
 Extended Attributes is a text box extension at the environment level that overrides connection or environment credentials, including any custom environment variables. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`.
 
-Something to note, Extended Attributes doesn't mask secret values. We recommend avoiding setting secret values to prevent visibility in the text box and logs. 
+Something to note, Extended Attributes don't mask secret values. We recommend avoiding setting secret values to prevent visibility in the text box and logs. 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Cloud Environment settings using a free form text box." /> <br />
 
