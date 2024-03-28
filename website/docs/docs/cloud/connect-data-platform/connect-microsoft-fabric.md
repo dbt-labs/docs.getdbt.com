@@ -6,13 +6,13 @@ sidebar_label: "Connect Microsoft Fabric"
 
 ## Supported authentication methods
 The supported authentication methods are: 
-- Azure Active Directory (Azure AD) service principal
-- Azure AD password
+- Microsoft Entra service principal
+- Microsoft Entra password
 
-SQL password (LDAP) is not supported in Microsoft Fabric Synapse Data Warehouse so you must use Azure AD. This means that to use [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric) in dbt Cloud, you will need at least one Azure AD service principal to connect dbt Cloud to Fabric, ideally one service principal for each user.
+SQL password (LDAP) is not supported in Microsoft Fabric Synapse Data Warehouse so you must use Microsoft Entra ID. This means that to use [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric) in dbt Cloud, you will need at least one Microsoft Entra service principal to connect dbt Cloud to Fabric, ideally one service principal for each user.
 
-### Active Directory service principal 
-The following are the required fields for setting up a connection with a Microsoft Fabric using Azure AD service principal authentication. 
+### Microsoft Entra service principal 
+The following are the required fields for setting up a connection with a Microsoft Fabric using Microsoft Entra service principal authentication. 
 
 | Field | Description |
 | --- | --- |
@@ -25,9 +25,9 @@ The following are the required fields for setting up a connection with a Microso
 | **Client secret** | The service principal's **client secret** (not the **client secret id**). |  
 
 
-### Active Directory password 
+### Microsoft Entra password 
 
-The following are the required fields for setting up a connection with a Microsoft Fabric using Azure AD password authentication. 
+The following are the required fields for setting up a connection with a Microsoft Fabric using Microsoft Entra password authentication. 
 
 | Field | Description |
 | --- | --- |
@@ -35,8 +35,8 @@ The following are the required fields for setting up a connection with a Microso
 | **Port** | The server port. You can use `1433` (the default), which is the standard SQL server port number. |
 | **Database** | The database name. |
 | **Authentication** | Choose **Active Directory Password** from the dropdown. | 
-| **User** | The AD username. |
-| **Password** | The AD username's password. |
+| **User** | The Microsoft Entra username. |
+| **Password** | The Microsoft Entra password. |
 
 ## Configuration 
 

@@ -60,7 +60,7 @@ of a group inherit any permissions applied to the group itself.
 Users can be added to a dbt Cloud group based on their group memberships in the
 configured [Identity Provider](sso-overview) for the account. In this way, dbt
 Cloud administrators can manage access to dbt Cloud resources via identity
-management software like Azure AD, Okta, or GSuite. See _SSO Mappings_ below for
+management software like Microsoft Entra ID (formerly Azure AD), Okta, or GSuite. See _SSO Mappings_ below for
 more information.
 
 You can view the groups in your account or create new groups from the **Team > Groups**

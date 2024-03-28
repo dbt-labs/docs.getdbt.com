@@ -145,15 +145,15 @@ your_profile_name:
 
 </Tabs>
 
-### Azure Active Directory Authentication (AAD)
+### Microsoft Entra ID authentication 
 
 While you can use the SQL username and password authentication as mentioned above,
 you might opt to use one of the authentication methods below for Azure SQL.
 
 The following additional methods are available to authenticate to Azure SQL products:
 
-* AAD username and password
-* Service principal (a.k.a. AAD Application)
+* Microsoft Entra ID (formerly Azure AD) username and password
+* Service principal
 * Managed Identity
 * Environment-based authentication
 * Azure CLI authentication
@@ -166,7 +166,7 @@ The automatic authentication setting is in most cases the easiest choice and wor
 <Tabs
   defaultValue="azure_cli"
   values={[
-    {label: 'AAD username & password', value: 'aad_password'},
+    {label: 'Microsoft Entra ID username & password', value: 'meid_password'},
     {label: 'Service principal', value: 'service_principal'},
     {label: 'Managed Identity', value: 'managed_identity'},
     {label: 'Environment-based', value: 'environment_based'},
@@ -175,7 +175,7 @@ The automatic authentication setting is in most cases the easiest choice and wor
   ]}
 >
 
-<TabItem value="aad_password">
+<TabItem value="meid_password">
 
 <File name='profiles.yml'>
 
@@ -338,23 +338,23 @@ your_profile_name:
 
 </Tabs>
 
-#### Additional options for AAD on Windows
+#### Additional options for Microsoft Entra ID on Windows
 
 On Windows systems, the following additional authentication methods are also available for Azure SQL:
 
-* AAD interactive
-* AAD integrated
+* Microsoft Entra ID interactive
+* Microsoft Entra ID integrated
 * Visual Studio authentication (available through the automatic option above)
 
 <Tabs
-  defaultValue="aad_interactive"
+  defaultValue="meid_interactive"
   values={[
-    {label: 'AAD interactive', value: 'aad_interactive'},
-    {label: 'AAD integrated', value: 'aad_integrated'}
+    {label: 'Microsoft Entra ID interactive', value: 'meid_interactive'},
+    {label: 'Microsoft Entra ID integrated', value: 'meid_integrated'}
   ]}
 >
 
-<TabItem value="aad_interactive">
+<TabItem value="meid_interactive">
 
 This setting can optionally show Multi-Factor Authentication prompts.
 
@@ -379,7 +379,7 @@ your_profile_name:
 
 </TabItem>
 
-<TabItem value="aad_integrated">
+<TabItem value="meid_integrated">
 
 This uses the credentials you're logged in with on the current machine.
 
@@ -405,13 +405,13 @@ your_profile_name:
 
 </Tabs>
 
-### Automatic AAD principal provisioning for grants
+### Automatic Microsoft Entra ID principal provisioning for grants
 
 In dbt 1.2 or newer you can use the [grants](https://docs.getdbt.com/reference/resource-configs/grants) config block to automatically grant/revoke permissions on your models to users or groups. This is fully supported in this adapter and comes with an additional feature.
 
-By setting `auto_provision_aad_principals` to `true` in your model configuration, you can automatically provision Azure Active Directory (AAD) principals (users or groups) that don't exist yet.
+By setting `auto_provision_aad_principals` to `true` in your model configuration, you can automatically provision Microsoft Entra ID principals (users or groups) that don't exist yet.
 
-In Azure SQL, you can sign in using AAD authentication, but to be able to grant an AAD principal certain permissions, it needs to be linked in the database first. ([Microsoft documentation](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql))
+In Azure SQL, you can sign in using Microsoft Entra ID authentication, but to be able to grant a Microsoft Entra ID principal certain permissions, it needs to be linked in the database first. ([Microsoft documentation](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql))
 
 Note that principals will not be deleted automatically when they are removed from the `grants` block.
 
@@ -423,7 +423,7 @@ You can optionally set the principal who should own all schemas created by dbt. 
 CREATE SCHEMA [schema_name] AUTHORIZATION [schema_authorization]
 ```
 
-A common use case is to use this when you are authenticating with a principal who has permissions based on a group, such as an AAD group. When that principal creates a schema, the server will first try to create an individual login for this principal and then link the schema to that principal. If you would be using Azure AD in this case,
+A common use case is to use this when you are authenticating with a principal who has permissions based on a group, such as a Microsoft Entra ID group. When that principal creates a schema, the server will first try to create an individual login for this principal and then link the schema to that principal. If you would be using Microsoft Entra ID in this case,
 then this would fail since Azure SQL can't create logins for individuals part of an AD group automatically.
 
 ### Reference of all connection options
@@ -439,9 +439,9 @@ then this would fail since Azure SQL can't create logins for individuals part of
 | `UID`                  | Username used to authenticate. This can be left out depending on the authentication method.                                                        |                    |               |
 | `PWD`                  | Password used to authenticate. This can be left out depending on the authentication method.                                                        |                    |               |
 | `windows_login`        | Set this to `true` to use Windows authentication. This is only available for SQL Server.                                                           |                    |               |
-| `tenant_id`            | The tenant ID of the Azure Active Directory instance. This is only used when connecting to Azure SQL with a service principal.                     |                    |               |
-| `client_id`            | The client ID of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.       |                    |               |
-| `client_secret`        | The client secret of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.   |                    |               |
+| `tenant_id`            | The tenant ID of the Microsoft Entra ID instance. This is only used when connecting to Azure SQL with a service principal.                     |                    |               |
+| `client_id`            | The client ID of the Microsoft Entra service principal. This is only used when connecting to Azure SQL with a Microsoft Entra service principal.       |                    |               |
+| `client_secret`        | The client secret of the Microsoft Entra service principal. This is only used when connecting to Azure SQL with a Microsoft Entra service principal.   |                    |               |
 | `encrypt`              | Set this to `false` to disable the use of encryption. See [above](#connection-encryption).                                                         |                    | `true`        |
 | `trust_cert`           | Set this to `true` to trust the server certificate. See [above](#connection-encryption).                                                           |                    | `false`       |
 | `retries`              | The number of times to retry a failed connection.                                                                                                  |                    | `1`           |
@@ -455,8 +455,8 @@ Valid values for `authentication`:
 * `ActiveDirectoryPassword`: Active Directory authentication using username and password
 * `ActiveDirectoryInteractive`: Active Directory authentication using a username and MFA prompts
 * `ActiveDirectoryIntegrated`: Active Directory authentication using the current user's credentials
-* `ServicePrincipal`: Azure Active Directory authentication using a service principal
-* `CLI`: Azure Active Directory authentication using the account you're logged in with in the Azure CLI
-* `ActiveDirectoryMsi`: Azure Active Directory authentication using a managed identity available on the system
-* `environment`: Azure Active Directory authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
-* `auto`: Azure Active Directory authentication trying the previous authentication methods until it finds one that works
+* `ServicePrincipal`: Microsoft Entra ID authentication using a service principal
+* `CLI`: Microsoft Entra ID authentication using the account you're logged in with in the Azure CLI
+* `ActiveDirectoryMsi`: Microsoft Entra ID authentication using a managed identity available on the system
+* `environment`: Microsoft Entra ID authentication using environment variables as documented [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
+* `auto`: Microsoft Entra ID authentication trying the previous authentication methods until it finds one that works
