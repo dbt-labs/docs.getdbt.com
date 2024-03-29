@@ -67,7 +67,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
     - `+orders` &mdash; Returns all the upstream nodes of `orders`
     - `+dim_customers,resource_type:source` &mdash; Returns all sources that are upstream of `dim_customers`
 - Use [set operators](/reference/node-selection/set-operators) (in the search bar) to select specific resources or a subset of the DAG. This can help narrow the focus on the resources that interest you. For example:
-    - `+snowplow_sessions +fct_orders` &mdash; Use space-delineated arguments for a union operation. Returns resources that are upstream nodes of either `snowplow_sessions` or `fct_orders`
+    - `+snowplow_sessions +fct_orders` &mdash; Use space-delineated arguments for a union operation. Returns resources that are upstream nodes of either `snowplow_sessions` or `fct_orders`.
 
 - [View resource details](#view-resource-details) by selecting a node (double-clicking) in the graph.
 - Click the List view icon in the graph's upper right corner to return to the main **Explore** page. 
