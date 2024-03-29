@@ -89,7 +89,7 @@ When you apply a lens, tags become visible on the nodes in the lineage graph, in
 <expandable alt_header="List of available lenses">
 
 - **Default** (resource type)
-- **Materialization Type** (for example, identify incremental model dependencies)
+- **Materialization Type** (for example, identifying incremental model dependencies)
 - **Lastest Status** (for example, diagnose a failed DAG region)
 - **Model Layer** (for example, discover marts models to analyze)
     - **Marts** &mdash; A model with the prefix `fct_` or `dim_`. Or, a model that lives in the `/marts/` subdirectory.
