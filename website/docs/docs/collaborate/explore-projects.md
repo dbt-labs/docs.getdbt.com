@@ -89,10 +89,10 @@ When you apply a lens, tags become visible on the nodes in the lineage graph, in
 <expandable alt_header="List of available lenses">
 
 - **Default** (resource type)
-- **Materialization Type** (for example, identify incremental model dependencies)
-- **Lastest Status** (for example, diagnose a failed DAG region)
-- **Model Layer** (for example, discover marts models to analyze)
-    - **Marts** &mdash; A model with the prefix `fct_` or `dim_`. Or, a model that lives in the `/marts/` subdirectory.
+- **Materialization Type** (for example, identifying incremental model dependencies)
+- **Lastest Status** (for example, diagnosing a failed DAG region)
+- **Model Layer** (for example, discovering marts models to analyze)
+    - **Marts** &mdash; A model with the prefix `fct_` or `dim_` or a model that lives in the `/marts/` subdirectory.
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
 
@@ -107,7 +107,7 @@ Example of applying the **Materialization Type** _lens_ with the lineage graph s
 
 ## Keyword search {#search-resources}
 
-You can locate resources in your project by performing keyword search in the search bar. All resource names, column names, resource descriptions, warehouse relations, and code that match your search criteria will display as a list on the main (center) section of the page. When searching for an exact column name, the results show all relational nodes containing that column in their schemas. If there's a match, a notice in the search result indicates the resource contains the specified column. Also, you can apply filters to further refine your search results.
+You can locate resources in your project by performing a keyword search in the search bar. All resource names, column names, resource descriptions, warehouse relations, and code matching your search criteria will be displayed as a list on the main (center) section of the page. When searching for an exact column name, the results show all relational nodes containing that column in their schemas. If there's a match, a notice in the search result indicates the resource contains the specified column. Also, you can apply filters to further refine your search results.
 
 <expandable alt_header="Search features">
 
