@@ -134,7 +134,7 @@ Under the the **Models** option, you can filter on model properties (access or m
 </expandable>
 
 ### Example of keyword search
-Example of results from searching on the keyword`item` and applying the filters models, description, and code:
+Example of results from searching on the keyword `item` and applying the filters models, description, and code:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-keyword-search.png" width="100%" title="Example of keyword search" />
 
