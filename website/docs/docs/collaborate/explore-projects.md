@@ -92,7 +92,7 @@ When you apply a lens, tags become visible on the nodes in the lineage graph, in
 - **Materialization Type** (for example, identifying incremental model dependencies)
 - **Lastest Status** (for example, diagnosing a failed DAG region)
 - **Model Layer** (for example, discovering marts models to analyze)
-    - **Marts** &mdash; A model with the prefix `fct_` or `dim_`. Or, a model that lives in the `/marts/` subdirectory.
+    - **Marts** &mdash; A model with the prefix `fct_` or `dim_` or a model that lives in the `/marts/` subdirectory.
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
 
