@@ -114,7 +114,7 @@ You can locate resources in your project by performing a keyword search in the s
 - **Partial keyword search** &mdash; This is also referred to as [fuzzy search](https://en.wikipedia.org/wiki/Approximate_string_matching).
 - **Exclude keywords** &mdash; Prepend a minus sign (-) to the keyword you want to exclude from search results. For example, `-user` will exclude all matches of that keyword from search results.
 - **Boolean operators** &mdash; Use Boolean operators to enhance your keyword search. For example, the search results for `users OR github` will include matches for either keyword.
-- **Phrase search** &mdash; Surround a string of keywords with double quotation marks to search for that specific phrase. For example, the search results for `"stg users"` will include matches that contain that specific phrase. To learn more, refer to [Phrase search](https://en.wikipedia.org/wiki/Phrase_search) on Wikipedia.
+- **Phrase search** &mdash; Surround a string of keywords with double quotation marks to search for that exact phrase (for example, `"stg users"`). To learn more, refer to [Phrase search](https://en.wikipedia.org/wiki/Phrase_search) on Wikipedia.
 - **SQL keyword search** &mdash; Use SQL keywords in your search. For example, the search results `int github users joined` will include matches that contain that specific string of keywords (similar to phrase searching).
 
 </expandable>
