@@ -85,11 +85,12 @@ To prevent over-scheduling, users will need to take action by either refactoring
 
 ## Deactivation of jobs <Lifecycle status='beta' />
 
-To reduce unnecessary resource consumption and reduce contention for run slots in your account, dbt Cloud will deactivate a [deploy job](/docs/deploy/deploy-jobs) or a [CI job](/docs/deploy/ci-jobs) if it reaches 100 Git clone errors and indicate this through the use of banners. When this happens, scheduled and triggered-to-run jobs will no longer be enqueued. 
+To reduce unnecessary resource consumption and reduce contention for run slots in your account, dbt Cloud will deactivate a [deploy job](/docs/deploy/deploy-jobs) or a [CI job](/docs/deploy/ci-jobs) if it reaches 100 consecutive failing runs and indicate this through the use of banners. When this happens, scheduled and triggered-to-run jobs will no longer be enqueued. 
 
 To reactivate a deactivated job, you can either:
+- Update the job's settings to fix the issue and save the job
 - Perform a manual run by clicking **Run now** on the job's page
-- Update the job's settings
+
 
 Example of deactivation banner on job's page: 
 
