@@ -82,7 +82,7 @@ Example of exploring the `order_items` model in the project's lineage graph:
 
 ## Lenses
 
-The **Lenses** feature is available from your [project's lineage graph](#project-lineage). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models. 
+The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models. 
 
 When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value. If you're significantly zoomed out, only the tags and their colors are visible in the graph.
 
