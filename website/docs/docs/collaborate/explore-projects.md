@@ -160,7 +160,7 @@ The details (metadata) available to you depends on the resource’s type, its de
 
 <expandable alt_header="What details are available for a model?">
 
-- Status bar (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
+- **Status bar** (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
 - **General** tab includes:
     - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
     - **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
@@ -175,7 +175,7 @@ The details (metadata) available to you depends on the resource’s type, its de
 
 <expandable alt_header="What details are available for an exposure?">
 
-- Status bar (below the page title) &mdash; Information on the last time the exposure was updated. 
+- **Status bar** (below the page title) &mdash; Information on the last time the exposure was updated. 
 - **General** tab includes:
     - **Status** section &mdash; The status on data freshness and data quality.
     - **Lineage** graph &mdash; The exposure’s lineage graph. Click the Expand icon in the graph's upper right corner to view the exposure in full lineage graph mode.
@@ -187,7 +187,7 @@ The details (metadata) available to you depends on the resource’s type, its de
 
 <expandable alt_header="What details are available for a test?">
 
-- Status bar (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. 
+- **Status bar** (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. 
 - **General** tab includes:
     - **Lineage** graph &mdash; The test’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the test resource. Click the Expand icon in the graph's upper right corner to view the test in full lineage graph mode.
     - **Description** section &mdash; A description of the test.
@@ -200,7 +200,7 @@ The details (metadata) available to you depends on the resource’s type, its de
 
 <expandable alt_header="What details are available for each source table within a source collection?">
 
-- Status bar (below the page title) &mdash; Information on the last time the source was updated and the number of tables the source uses. 
+- **Status bar** (below the page title) &mdash; Information on the last time the source was updated and the number of tables the source uses. 
 - **General** tab includes:
     - **Lineage** graph &mdash; The source’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the source. Click the Expand icon in the graph's upper right corner to view the source in full lineage graph mode.
     - **Description** section &mdash; A description of the source.
