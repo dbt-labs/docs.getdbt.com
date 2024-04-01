@@ -53,6 +53,6 @@ The following table lists the features available for adapters:
 For adapters that support it, you can partially build the catalog. This allows the catalog to be built for only a select number of models via `dbt docs generate --select ...`. For adapters that don't support partial catalog generation, you must run `dbt docs generate` to build the full catalog.
 
 ### Source freshness
-You can measure source freshness using the warehouse metadata tables on supported adapters. This allows for calculating source freshness without using the `loaded_at_field` and without querying the table directly. This is faster and more flexible (though it might sometimes be inaccurate, depending on how the warehouse tracks altered tables). You can override this with the `loaded_at_field` in the model config. If the adapter doesn't support this, you can still use the `loaded_at_field`.
+You can measure source freshness using the warehouse metadata tables on supported adapters. This allows for calculating source freshness without using the [`loaded_at_field`](/reference/resource-properties/freshness#loaded_at_field) and without querying the table directly. This is faster and more flexible (though it might sometimes be inaccurate, depending on how the warehouse tracks altered tables). You can override this with the `loaded_at_field` in the model config. If the adapter doesn't support this, you can still use the `loaded_at_field`.
 
 </VersionBlock>
