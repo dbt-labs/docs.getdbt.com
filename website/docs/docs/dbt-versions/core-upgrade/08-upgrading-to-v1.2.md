@@ -8,8 +8,8 @@ displayed_sidebar: "docs"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.2.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation-overview)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
+- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 ## What to know before upgrading
 
@@ -33,7 +33,7 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 - **[Metrics](/docs/build/build-metrics-intro)** now support an `expression` type (metrics-on-metrics), as well as a `metric()` function to use when referencing metrics from within models, macros, or `expression`-type metrics. For more information on how to use expression metrics, check out the [**`dbt_metrics` package**](https://github.com/dbt-labs/dbt_metrics)
 - **[dbt-Jinja functions](/reference/dbt-jinja-functions)** now include the [`itertools` Python module](/reference/dbt-jinja-functions/modules#itertools), as well as the [set](/reference/dbt-jinja-functions/set) and [zip](/reference/dbt-jinja-functions/zip) functions.
 - **[Node selection](/reference/node-selection/syntax)** includes a [file selection method](/reference/node-selection/methods#the-file-method) (`-s model.sql`), and [yaml selector](/reference/node-selection/yaml-selectors) inheritance.
-- **[Global configs](/reference/global-configs/about-global-configs)** now include CLI flag and environment variable settings for [`target-path`](/reference/project-configs/target-path) and [`log-path`](/reference/project-configs/log-path), which can be used to override the values set in `dbt_project.yml`
+- **[Global configs](/reference/global-configs/about-global-configs)** now include CLI flag and environment variable settings for [`target-path`](/reference/global-configs/json-artifacts) and [`log-path`](/reference/global-configs/logs), which can be used to override the values set in `dbt_project.yml`
 
 ### Specific adapters
 

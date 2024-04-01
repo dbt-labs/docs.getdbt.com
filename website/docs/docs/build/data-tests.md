@@ -13,6 +13,16 @@ keywords:
 * [Data test configurations](/reference/data-test-configs)
 * [Test selection examples](/reference/node-selection/test-selection-examples)
 
+<VersionBlock firstVersion="1.8">
+
+:::important
+
+In dbt v1.8, what was previously known as "tests" are now called "data tests" with the addition of [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for data tests but will be deprecated in the future in favor of `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
+
+:::
+
+</VersionBlock>
+
 ## Overview
 
 Data tests are assertions you make about your models and other resources in your dbt project (e.g. sources, seeds and snapshots). When you run `dbt test`, dbt will tell you if each test in your project passes or fails.
@@ -250,6 +260,39 @@ This workflow allows you to query and examine failing records much more quickly 
 Note that, if you select to store test failures:
 * Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
+
+<VersionBlock firstVersion="1.8" lastVersion="1.8">
+
+## New `data_tests:` syntax
+
+Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. As of v1.8,  `tests:` is still supported in your YML configuration files as an alias but will be deprecated in the future in favor of `data_tests:`. 
+
+As we progress towards this deprecation, the examples in our docs pages will be updated to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: orders
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yml
+data_tests:
+  +store_failures: true
+```
+
+</File>
+
+</VersionBlock>
 
 ## FAQs
 

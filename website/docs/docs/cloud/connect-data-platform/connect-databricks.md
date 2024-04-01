@@ -5,7 +5,7 @@ description: "Setup instructions for connecting Databricks to dbt Cloud"
 sidebar_label: "Connect Databricks"
 ---
 
-The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark has been deprecated.
+The dbt-databricks adapter is maintained by the Databricks team. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark has been deprecated.
 
 ## About the dbt-databricks adapter
 

@@ -39,10 +39,10 @@ Or in a `schema.yml` file.
 <File name='models/google_analytics/schema.yml'>
 
 ```yaml
-- models:
-    - name: ga_sessions
-      config:
-        alias: sessions
+models:
+  - name: ga_sessions
+    config:
+      alias: sessions
 ```
 
 </File>
@@ -127,6 +127,9 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 
 </VersionBlock>
 
+import WhitespaceControl from '/snippets/_whitespace-control.md';
+
+<WhitespaceControl/>
 
 ### Dispatch macro - SQL alias management for databases and dbt packages
 

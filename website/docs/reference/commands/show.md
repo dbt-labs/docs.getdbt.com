@@ -6,6 +6,7 @@ id: "show"
 
 Use `dbt show` to:
 - Compile the dbt-SQL definition of a `model`, `test`, `analysis`, or an arbitrary dbt-SQL query passed `--inline`
+  - `dbt show` does not support [Python (dbt-py)](/docs/build/python-models) models.
 - Run that query against the data warehouse
 - Preview the results in the terminal
 

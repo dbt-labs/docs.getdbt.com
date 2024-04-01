@@ -8,8 +8,8 @@ displayed_sidebar: "docs"
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.4.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/core/installation-overview)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
+- [dbt Core CLI Installation guide](/docs/core/installation-overview)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 
 **Final release:** January 25, 2023
 
@@ -53,7 +53,7 @@ For more detailed information and to ask any questions, please visit [dbt-core/d
 
 ### Advanced configurations for incremental models
 
-- [**`incremental_predicates`** config](/docs/build/incremental-models#about-incremental_predicates) is now supported on the most popular adapters, enabling greater flexibility when tuning performance in `merge` and `delete` statements against large datasets.
+- [**`incremental_predicates`** config](/docs/build/incremental-strategy#about-incremental_predicates) is now supported on the most popular adapters, enabling greater flexibility when tuning performance in `merge` and `delete` statements against large datasets.
 - **BigQuery:** The `insert_overwrite` incremental strategy supports a new (old) mechanism, [`time_ingestion_partitioning`](/reference/resource-configs/bigquery-configs#partitioning-by-an-ingestion-date-or-timestamp) + [`copy_partitions`](#copying-ingestion-time-partitions), that can yield significant savings in cost + time for large datasets.
 
 ### Updates to Python models

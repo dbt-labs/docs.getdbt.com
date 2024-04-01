@@ -19,8 +19,8 @@ By default, everything gets created as a view. You can override that at the dire
       models:
         jaffle_shop:
           +materialized: table
-        example:
-          +materialized: view
+          example:
+            +materialized: view
       ```
 
       </File>
@@ -54,10 +54,11 @@ By default, everything gets created as a view. You can override that at the dire
 
     </File>
 
-4. Enter the `dbt run` command. Your model, `customers` should now build as a view.
+4. Enter the `dbt run` command. Your model, `customers`, should now build as a view. 
+   - BigQuery users need to run `dbt run --full-refresh` instead of `dbt run` to full apply materialization changes.
 5. Enter the `dbt run --full-refresh` command for this to take effect in your warehouse.
 
-#### FAQs
+### FAQs
 
 <FAQ path="Models/available-materializations" />
 <FAQ path="Project/which-materialization" />

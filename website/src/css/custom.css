@@ -2090,6 +2090,7 @@ h2.anchor.clicked a.hash-link:before {
   display: none;
 }
 
+
 @media (max-width: 996px) {
   .quickstart-container {
     flex-direction: column;
