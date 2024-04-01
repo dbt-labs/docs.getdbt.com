@@ -85,6 +85,8 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse 
     );
     ```
 
+    <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-azure-syn-analytics.png" width="80%" title="Example of loading data" />
+
 ## Connect dbt Cloud to Azure Synapse Analytics
 
 1. Create a new project in dbt Cloud. From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.

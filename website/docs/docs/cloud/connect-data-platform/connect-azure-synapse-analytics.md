@@ -7,7 +7,7 @@ sidebar_label: "Connect Azure Synapse Analytics"
 ## Supported authentication methods
 The supported authentication methods are: 
 - Microsoft Entra ID service principal
-- Azure AD password
+- Active Directory password
 
 ### Microsoft Entra ID service principal 
 The following are the required fields for setting up a connection with Azure Synapse Analytics using Microsoft Entra ID service principal authentication. 
