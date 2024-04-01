@@ -16,6 +16,9 @@ It is possible to use separate state for `state:modified` and `--defer`, by pass
 
 ### Usage
 
+[comment]: When I create documentation related to the usage of some app I've working on, I like to give a detailed set of instructions, specially when there are several use cases to eliminate as many doubts as possible. This mindset it's what powers me to look for the same kind of documentation in other environtments. Having said that as background, I have several proposals that might improve this tricky subject, Defer.
+
+[comment]: Since the docs explain that there are several possible configurations, passing different artifacts to --defer, to --state or even using --defer-state, it'd be a good idea to provide one example for each and every one of them and not just two of the same, because, it doesn't matter how you look at them, the two following examples are essentially the same.
 ```shell
 dbt run --select [...] --defer --state path/to/artifacts
 dbt test --select [...] --defer --state path/to/artifacts
@@ -35,6 +38,7 @@ When the `--defer` flag is provided, dbt will resolve `ref` calls differently de
 1. Is the referenced node included in the model selection criteria of the current run?
 2. Does the reference node exist as a database object in the current environment?
 
+[comment]: It'd be a good idea to provide and explanation for the these possible scenarios: 1- The answer is yes to both options. 2- The answer is yes to the first option and no to the second. 3- The answer is no to the first option and yes to the second
 If the answer to both is **no**—a node is not included _and_ it does not exist as a database object in the current environment—references to it will use the other namespace instead, provided by the state manifest.
 
 Ephemeral models are never deferred, since they serve as "passthroughs" for other `ref` calls.
@@ -59,6 +63,7 @@ Deferral requires both `--defer` and `--state` to be set, either by passing flag
 
 #### Favor state
 
+[comment]: It'd a good idea to specify which is the second criterion and provide and example of usage of "--favor-state".
 You can optionally skip the second criterion by passing the `--favor-state` flag. If passed, dbt will favor using the node defined in your `--state` namespace, even if the node exists in the current target.
 
 </VersionBlock>
