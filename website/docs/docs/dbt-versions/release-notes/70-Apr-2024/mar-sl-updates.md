@@ -20,12 +20,12 @@ The following list explains the new features, updates, and fixes for March 2024 
 
 **Updates**
 
-- **Entities are selectable in the Google Sheets app:** You can select entities to Group By, Filter By, and Order By. For instance the Customer entity here:
+**Entities are selectable in the Google Sheets app:** You can select entities to Group By, Filter By, and Order By. For instance the Customer entity here:
 
-<Lightbox src="/img/docs/release-notes/selected-entity.png" title="Selects Customer entity in ascending order."/>
+<Lightbox src="/img/docs/release-notes/selected-entity.png" title="Customer entity ascending"/>
 
 **Bug fixes**
 
-- If you used a list of filters (instead of just a string filter) on a metric, `dbt parse` would error.
-- `join_to_timespine` was not being applied to conversion metric input measures.
-- Exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open. This is fixed now.
+- `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric, 
+- `join_to_timespine` now properly gets applied to conversion metric input measures.
+- Fixed an issue where exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open.
