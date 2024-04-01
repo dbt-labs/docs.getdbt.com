@@ -53,12 +53,12 @@ your_profile_name:
   outputs:
     dev:
       type: databricks
-      catalog: [optional catalog name if you are using Unity Catalog]
-      schema: [schema name] # Required
-      host: [yourorg.databrickshost.com] # Required
-      http_path: [/sql/your/http/path] # Required
-      token: [dapiXXXXXXXXXXXXXXXXXXXXXXX] # Required Personal Access Token (PAT) if using token-based authentication
-      threads: [1 or more]  # Optional, default 1
+      catalog: CATALOG_NAME #optional catalog name if you are using Unity Catalog]
+      schema: SCHEMA_NAME # Required
+      host: YOURORG.databrickshost.com # Required
+      http_path: /SQL/YOUR/HTTP/PATH # Required
+      token: dapiXXXXXXXXXXXXXXXXXXXXXXX # Required Personal Access Token (PAT) if using token-based authentication
+      threads: 1_OR_MORE  # Optional, default 1
 ```
 
 </File>
@@ -76,14 +76,14 @@ your_profile_name:
   outputs:
     dev:
       type: databricks
-      catalog: [optional catalog name if you are using Unity Catalog]
-      schema: [schema name] # Required
-      host: [yourorg.databrickshost.com] # Required
-      http_path: [/sql/your/http/path] # Required
+      catalog: CATALOG_NAME #optional catalog name if you are using Unity Catalog
+      schema: SCHEMA_NAME # Required
+      host: YOUR_ORG.databrickshost.com # Required
+      http_path: /SQL/YOUR/HTTP/PATH # Required
       auth_type: oauth # Required if using OAuth-based authentication
-      client_id: [OAuth-Client-ID] # The ID of your OAuth application. Required if using OAuth-based authentication
-      client_secret: [XXXXXXXXXXXXXXXXXXXXXXXXXXX] # OAuth client secret. # Required if using OAuth-based authentication
-      threads: [1 or more]  # Optional, default 1
+      client_id: OAUTH_CLIENT_ID # The ID of your OAuth application. Required if using OAuth-based authentication
+      client_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXX # OAuth client secret. # Required if using OAuth-based authentication
+      threads: 1_OR_MORE  # Optional, default 1
 ```
 </File>
 

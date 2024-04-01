@@ -442,9 +442,9 @@ To configure this inside of dbt Cloud, use the [extended attributes feature](/do
 
 compute:
   Compute1:
-    http_path:[`/some/other/path']
+    http_path: /SOME/OTHER/PATH
   Compute2:
-    http_path:[`/some/other/path']
+    http_path: /SOME/OTHER/PATH
 
 ```
 
