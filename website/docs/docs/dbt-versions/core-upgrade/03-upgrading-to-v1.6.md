@@ -14,7 +14,7 @@ dbt Core v1.6 has three significant areas of focus:
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.6.latest/CHANGELOG.md)
 - [dbt Core installation guide](/docs/core/installation-overview)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/7481)
 
 ## What to know before upgrading

@@ -29,7 +29,7 @@ This will log the compiled SQL to the terminal, in addition to writing to the `t
 For example:
 
 ```bash
-dbt compile --select "stg_payments"
+dbt compile --select "stg_orders"                           
 dbt compile --inline "select * from {{ ref('raw_orders') }}"
 ```
 

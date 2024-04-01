@@ -12,6 +12,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 Databricks and dbt Labs are partnering to help data teams think like software engineering teams and ship trusted data, faster. The dbt-databricks adapter enables dbt users to leverage the latest Databricks features in their dbt project. Hundreds of customers are now using dbt and Databricks to build expressive and reliable data pipelines on the Lakehouse, generating data assets that enable analytics, ML, and AI use cases throughout the business.
@@ -114,3 +116,5 @@ Next, you’ll need somewhere to store and version control your code that allows
 ### Next steps
 
 Now that your project is configured, you can start transforming your Databricks data with dbt. To help you scale efficiently, we recommend you follow our best practices, starting with the [Unity Catalog best practices](/best-practices/dbt-unity-catalog-best-practices), then you can [Optimize dbt models on Databricks](/guides/optimize-dbt-models-on-databricks).
+
+</div>
