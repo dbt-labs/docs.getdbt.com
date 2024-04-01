@@ -7,9 +7,8 @@ tags: [Mar-2024]
 date: 2024-04-01
 ---
 
-The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow).
+The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow). This release note includes our work in March 2024:
 
-The following list explains the new features, updates, and fixes for March 2024 in more detail.
 
 ## dbt Semantic Layer and MetricFlow
 
