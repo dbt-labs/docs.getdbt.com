@@ -15,7 +15,7 @@ The following list explains the new features, updates, and fixes for March 2024 
 
 **New features**
 
-- **Privatelink:** The Semantic Layer services now support using Privatelink for customers who have it enabled
+- **Privatelink:** The Semantic Layer services now support using Privatelink for customers who have it enabled.
 - **SSO support for Semantic Layer development:** You can now develop against and test your Semantic Layer in the Cloud CLI if your developer credential uses SSO.
 
 **Updates**
@@ -25,6 +25,6 @@ The following list explains the new features, updates, and fixes for March 2024 
 
 **Bug fixes**
 
-- `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric, 
+- `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric.
 - `join_to_timespine` now properly gets applied to conversion metric input measures.
 - Fixed an issue where exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open.
