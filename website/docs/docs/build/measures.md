@@ -232,15 +232,15 @@ We can query the semi-additive metrics using the following syntax:
 For dbt Cloud:
 
 ```bash
-dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
-dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
+dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
+dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
 ```
 
 For dbt Core:
 
 ```bash
-mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
-mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
+mf query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
+mf query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
 ```
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';
