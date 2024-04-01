@@ -54,14 +54,14 @@ Here's an example of using this (though if you're using `run_query` to return th
 
 ```sql
 
+[comment]: I propose this modification to make the code more elegant and less demanding on the warehouse. Regards.
 {% set payment_methods_query %}
 select distinct payment_method from app_data.payments
 order by 1
 {% endset %}
 
-{% set results = run_query(payment_methods_query) %}
-
 {% if execute %}
+{% set results = run_query(payment_methods_query) %}
 {# Return the first column #}
 {% set results_list = results.columns[0].values() %}
 {% else %}
