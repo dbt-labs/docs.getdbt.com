@@ -50,7 +50,9 @@ In the manifest, the `metadata` may also include:
 - `user_id`: User identifier, stored by default in `~/dbt/.user.yml`, sent with anonymous usage stats if enabled.
 
 #### Notes:
-- The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at **schemas.getdbt.com**.
+
+[comment]: Modification proposal to try to keep the links starndard.
+- The structure of dbt artifacts is canonized by [JSON schemas](https://json-schema.org/), which are hosted at [schemas.getdbt.com](https://schemas.getdbt.com/).
 - Artifact versions may change in any minor version of dbt (`v1.x.0`). Each artifact is versioned independently.
 
 ## Related docs
