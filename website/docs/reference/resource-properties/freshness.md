@@ -85,7 +85,7 @@ This is useful when all of the tables in a source have the same `loaded_at_field
 (Required)
 </VersionBlock>
 
-<br/>A column name (or expression) that returns a timestamp indicating freshness.<br/>
+<br/><br/>A column name (or expression) that returns a timestamp indicating freshness.<br/>
 If using a date field, you may have to cast it to a timestamp:
 ```yml
 loaded_at_field: "completed_date::timestamp"
