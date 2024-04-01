@@ -20,9 +20,8 @@ The following list explains the new features, updates, and fixes for March 2024 
 
 **Updates**
 
-**Entities are selectable in the Google Sheets app:** You can select entities to Group By, Filter By, and Order By. For instance the Customer entity here:
+**Entities are selectable in the Google Sheets app:** You can select entities to Group By, Filter By, and Order By.
 
-<Lightbox src="/img/docs/release-notes/selected-entity.png" title="Customer entity ascending"/>
 
 **Bug fixes**
 
