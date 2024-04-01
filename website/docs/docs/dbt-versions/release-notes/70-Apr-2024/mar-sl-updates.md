@@ -14,13 +14,15 @@ The following list explains the new features, updates, and fixes for March 2024 
 ## dbt Semantic Layer and MetricFlow
 
 **New features**
+
 - **Privatelink:** The Semantic Layer services now support using Privatelink for customers who have it enabled
 - **SSO support for Semantic Layer development:** You can now develop against and test your Semantic Layer in the Cloud CLI if your developer credential uses SSO.
 
 **Updates**
 
-- **Entities are selectable in the Gsheets app:** You can select entities to Group By, Filter By, & Order By. For instance the Customer entity here:
-  ![Selected entities](/img/docs/release-notes/selected-entity.png)
+- **Entities are selectable in the Google Sheets app:** You can select entities to Group By, Filter By, and Order By. For instance the Customer entity here:
+
+<Lightbox src="/img/docs/release-notes/selected-entity.png" title="Selects Customer entity in ascending order."/>
 
 **Bug fixes**
 
