@@ -15,6 +15,8 @@ Constraints require the declaration and enforcement of a model [contract](/refer
 
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
 
+If you are defining multiple `primary_key` constraints for a single model, those MUST be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported. 
+
 The structure of a constraint is:
 - `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`
 - `expression`: Free text input to qualify the constraint. Required for certain constraint types, and optional for others.
