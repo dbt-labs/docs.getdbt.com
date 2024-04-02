@@ -13,7 +13,7 @@ The `--version` command-line flag returns information about the currently instal
 ## Versioning
 To learn more about release versioning for dbt Core, refer to [How dbt Core uses semantic versioning](docs/dbt-versions/core#how-dbt-core-uses-semantic-versioning). 
 
-If the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) setting is selected in dbt Cloud, then `dbt_version` will be the latest (continuous) release version. This also follows semantic versioning guidelines, in the format `YYYY.xx.yy`, with the major version representing the year (for example, `2024.04.1234`).
+If dbt Cloud is set to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version), then `dbt_version` uses the latest (continuous) release version. This also follows semantic versioning guidelines, using the `YYYY.xx.yy` format, where the year is the major version (for example, `2024.04.1234`)
 
 ## Example usages
 
