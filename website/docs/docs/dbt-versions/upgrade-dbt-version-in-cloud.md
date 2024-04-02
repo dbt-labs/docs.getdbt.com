@@ -11,7 +11,7 @@ Navigate to the settings page of an environment, then click **Edit**. Click the 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
-### Keep on latest version <Lifecycle status='public preview' />
+### Keep on latest version
 
 By choosing to **Keep on latest version**, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades for you, as part of testing and redeploying the dbt Cloud SaaS application.
 
