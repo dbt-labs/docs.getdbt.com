@@ -2,7 +2,7 @@
 title: "dbt Semantic Layer updates and fixes for March 2024"
 description: "March 2024 updates for dbt Semantic Layer & MetricFlow: New export features, enhanced date filters, Tableau, Google Sheets & GraphQL API enhancements, and bug fixes."
 sidebar_label: "Updates and fixes: dbt Semantic Layer"
-sidebar_position: 10
+sidebar_position: 07
 tags: [Mar-2024]
 date: 2024-04-01
 ---
