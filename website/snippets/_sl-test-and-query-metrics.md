@@ -24,7 +24,7 @@ Refer to the following steps to get started:
 3. MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle Shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
 
 :::info Run dbt parse when you make changes to metrics
-Anytime you make changes to metrics, you need to run `dbt parse` at the minimum. This ensures the `semantic_manifest.json` file is updated and you can have your changes reflected when querying metrics.
+Anytime you make changes to metrics, you need to run `dbt parse` at a minimum. This ensures the `semantic_manifest.json` file is updated and you can have your changes reflected when querying metrics.
 :::
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
