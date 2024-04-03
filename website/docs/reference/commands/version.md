@@ -6,7 +6,7 @@ id: "version"
 
 The `--version` command-line flag returns information about the currently installed version of dbt Core or the dbt Cloud CLI. This flag is not supported when invoking dbt in other dbt Cloud runtimes (for example, the IDE or scheduled runs).
 
-- **dbt Core** &mdash; Returns the installed version of dbt-core and the adapters (which is one local bundle).
+- **dbt Core** &mdash; Returns the installed version of dbt-core and the versions of all installed adapters.
 - **dbt Cloud CLI** &mdash; Returns the installed version of the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and, for the other `dbt_version` values, the _latest_ version of the dbt runtime in dbt Cloud.
 
 
