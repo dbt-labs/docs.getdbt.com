@@ -51,8 +51,8 @@ your_profile_name:
     dev:
       type: hive
       host: localhost
-      port: [port] # default value: 10000
-      schema: [schema name]
+      port: PORT # default value: 10000
+      schema: SCHEMA_NAME
       
 ```
 
