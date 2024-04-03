@@ -39,6 +39,8 @@ dimensions:
 
 Refer to the following example to see how dimensions are used in a semantic model:
 
+[comment]: According to the previous table, the "type_params" parameter is "required". It that statement is true, it'd be a good idea to correct the following example adding that parameter to the dimensions present in it, and some values for it. Also, if I'm not wrong, dimensions (entities and mesures as well) are attached to a particular semantic model. If I'm not wrong, the entities, measures and dimensions present in the example should have their indentation corrected increasing it.
+
 ```yaml
 semantic_models:
   - name: transactions
@@ -82,6 +84,7 @@ semantic_model:
 
 Dimensions have 2 types. This section further explains the definitions and provides examples.
 
+[comment]: If there are two types, why there are 3 bulletpoints?
 - [Dimensions types](#dimensions-types)
   - [Categorical](#categorical)
   - [Time](#time)
@@ -91,6 +94,7 @@ Dimensions have 2 types. This section further explains the definitions and provi
 
 Categorical is used to group metrics by different categories such as product type, color, or geographical area. They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a category dimension is `is_bulk_transaction`, which is a group created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
 
+[comment]: According to a previous table, the "type_params" parameter is "required". It that statement is true, it'd be a good idea to correct the following example adding that parameter to the dimension present in it, and some values for it.
 ```yaml
 dimensions: 
   - name: is_bulk_transaction
@@ -154,6 +158,7 @@ dimensions:
     type_params:
       time_granularity: day
 
+[comment]: According to the table present at the measures link (https://docs.getdbt.com/docs/build/measures), the "label" parameter is "required". It that statement is true, it'd be a good idea to correct the following example adding that parameter to the measures present in it, and some values for it.
 measures:
   - name: users_deleted
     expr: 1
@@ -291,6 +296,7 @@ semantic_models:
 
 The following code represents a separate semantic model that holds a fact table for `transactions`:  
 
+[comment]: According to the table present at the measures link (https://docs.getdbt.com/docs/build/measures), the "label" parameter is "required". It that statement is true, it'd be a good idea to correct the following example adding that parameter to the measures present in it, and some values for it.
 ```yaml
 semantic_models: 
   - name: transactions 
