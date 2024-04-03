@@ -10,7 +10,7 @@ This functionality is currently only supported for [materialized views](/docs/bu
 
 The `on_configuration_change` config has three settings:
 - `apply` (default) &mdash; Attempt to update the existing database object if possible, avoiding a complete rebuild.
-  - *Note:* If any individual configuration change requires a full refresh, a full refresh be performed in lieu of individual alter statements.
+  - *Note:* If any individual configuration change requires a full refresh, a full refresh is performed in lieu of individual alter statements.
 - `continue` &mdash; Allow runs to continue while also providing a warning that the object was left untouched.
   - *Note:* This could result in downstream failures as those models may depend on these unimplemented changes.
 - `fail` &mdash; Force the entire run to fail if a change is detected.
