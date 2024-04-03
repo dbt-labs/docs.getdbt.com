@@ -24,6 +24,8 @@ You can also use entities as a dimensions, which allows you to aggregate a metri
 MetricFlow's join logic depends on the entity `type` you use, and it also determines how to join semantic models. Refer to [Joins](/docs/build/join-logic) for more info on how to construct joins.
 
 * **Primary &mdash;** A primary key has **only one** record for each row in the table, and it includes every record in the data platform.
+
+[comment]: It'd be a good idea to provide some examples to differentiate between Primary and Unique because, for instance, what does it mean that Unique may have a subset of records? Regards.
 * **Unique &mdash;** A unique key contains **only one** record per row in the table, but it may have a subset of records in the data warehouse. It can also include nulls.
 * **Foreign &mdash;** A foreign key can include zero, one, or multiple instances of the same record. Null values may also be present.
 * **Natural &mdash;** Natural keys are column or combination of columns in a table that uniquely identify a record based on real-world data. For instance, in a sales_person_department dimension table, the sales_person_id can serve as a natural key.
