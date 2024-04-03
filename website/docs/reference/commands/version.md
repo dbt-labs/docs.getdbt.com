@@ -4,10 +4,20 @@ sidebar_label: "version"
 id: "version"
 ---
 
-The `--version` command-line flag returns information about the currently installed version of dbt Core or the dbt Cloud CLI.
+The `--version` command-line flag returns information about the currently installed version of dbt Core or the dbt Cloud CLI. This flag is not supported when invoking dbt in other dbt Cloud runtimes (for example, the IDE or scheduled runs).
 
-This flag is not supported when invoking dbt in other dbt Cloud runtimes (for example, the IDE or scheduled runs).
+- **dbt Core** &mdash; Returns the installed version of dbt-core and the versions of all installed adapters.
+- **dbt Cloud CLI** &mdash; Returns the installed version of the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and, for the other `dbt_version` values, the _latest_ version of the dbt runtime in dbt Cloud.
 
+
+## Versioning
+To learn more about release versioning for dbt Core, refer to [How dbt Core uses semantic versioning](docs/dbt-versions/core#how-dbt-core-uses-semantic-versioning). 
+
+If dbt Cloud is set to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version), then `dbt_version` uses the latest (continuous) release version. This also follows semantic versioning guidelines, using the `YYYY.xx.yy` format, where the year is the major version (for example, `2024.04.1234`)
+
+## Example usages
+
+dbt Core example: 
 <File name='dbt Core'>
 
 ```text
@@ -20,6 +30,8 @@ Plugins:
 ```
 
 </File>
+
+dbt Cloud CLI example:
 
 <File name='dbt Cloud CLI'>
 
