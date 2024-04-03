@@ -74,6 +74,7 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 
 ### Model with different aggregations
 
+[comment]: I think that entities, measures and dimensions are attached to particular semantic models. If I'm not wrong. the entities, measures and dimensions present in the following example should have their indentation increased. Also, according to the tables of parameters present in measures (https://docs.getdbt.com/docs/build/measures) and dimensions (https://docs.getdbt.com/docs/build/dimensions), "label" and "type_params" respectively are required parameters and so, they'd be added to the following esample.
 ```yaml
 semantic_models:
  - name: transactions
@@ -125,6 +126,7 @@ semantic_models:
       agg: average 
     - name: transactions_amount_usd_valid #Notice here how we use expr to compute the aggregation based on a condition
       description: The total USD value of valid transactions only
+[comment]: It'd be a good idea to be coherent, that is, all the SQL clauses in uppercase or in lowercase, but not mixing them. Regarding the option taken, consider that there's another SQL expression some rows downwards.
       expr: CASE WHEN is_valid = True then 1 else 0 end 
       agg: sum
     - name: transactions
@@ -195,6 +197,7 @@ semantic_models:
         type_params:
           time_granularity: day
 
+[comment]: According to the table of parameters present in measures (https://docs.getdbt.com/docs/build/measures) the "label" is a required parameter and so, it'd be added to the following esample.
     measures: 
       - name: count_users_end_of_month 
         description: Count of users at the end of the month 
