@@ -30,7 +30,7 @@ dbt-hive supports two transport mechanisms:
 - binary
 - HTTP(S)
 
-The default mechanism is `binary`. To use HTTP transport, use the boolean option `use_http_transport: [true / false]`.
+The default mechanism is `binary`. To use HTTP transport, use the boolean option. For example, `use_http_transport: true`.
 
 ## Authentication Methods
 
