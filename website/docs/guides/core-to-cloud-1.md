@@ -7,6 +7,7 @@ icon: 'guides'
 time_to_complete: 'Total estimated time: 3-4 hours'
 hide_table_of_contents: true
 tags: ['Migration','dbt Core','dbt Cloud']
+keywords: ['dbt Core','dbt Cloud','Migration', 'Move dbt', 'Migrate dbt']
 level: 'Intermediate'
 recently_updated: true
 ---
