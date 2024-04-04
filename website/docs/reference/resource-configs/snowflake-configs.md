@@ -479,3 +479,17 @@ The workaround is to execute `DROP TABLE my_model` on the data warehouse before 
 </VersionBlock>
 
 </VersionBlock>
+
+
+## Source freshness known limitation
+
+Snowflake source freshness is calculated using information from the `LAST_ALTERED` column. 
+
+Per the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/info-schema/tables#usage-notes): 
+
+  >The `LAST_ALTERED` column is updated when the following operations are performed on an object:
+  >- DDL operations.
+  >- DML operations (for tables only).
+  >- Background maintenance operations on metadata performed by Snowflake.
+
+This means that Snowflake source frehssness is determined by a field that is updated when any object is updated, not just data updates. There is no action that needs to be taken, but analytics teams should note this caveat. 
