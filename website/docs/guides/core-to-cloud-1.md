@@ -126,7 +126,7 @@ This section highlights the development configurations you’ll need for your db
 
 ### dbt Cloud environments
 
-The most common data environments are production, staging, development. The way dbt Core manages [environments](/docs/environments-in-dbt) is through `target`, which are different sets of connection details. 
+The most common data environments are production, staging, and development. The way dbt Core manages [environments](/docs/environments-in-dbt) is through `target`, which are different sets of connection details. 
 
 [dbt Cloud environments](/docs/dbt-cloud-environments) go further by:
 - Integrating with features such as job scheduling or version control &mdash; making it easier to manage the full lifecycle of your dbt projects within a single platform.
@@ -139,7 +139,7 @@ The most common data environments are production, staging, development. The way 
 1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
 
 2. **dbt Core version** &mdash; In your dbt Cloud environment and credentials, use the same dbt Core version you use locally. You can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
-   - Once your full migration is complete, consider upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) to always get the latest features and more.
+   - When using dbt Core, you need to think about which version you’re using, and manage your own upgrades. When using dbt Cloud and [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-), you don’t have to.
 
 3. **Connect to your data platform** &mdash; When using dbt Cloud, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI.
    - Each environment is roughly equivalent to an entry in your `profiles.yml` file. This means you don't need a `profiles.yml` file in your project.
