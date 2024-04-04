@@ -53,31 +53,31 @@ Examples of queried metrics include:
 - Querying one metric, grouping by one dimension → 1 queried metric 
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time
+  dbt sl query --metrics revenue --group-by metric_time
   ```
 
 - Querying one metric, grouping by two dimensions → 1 queried metric 
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time,user__country
+  dbt sl query --metrics revenue --group-by metric_time,user__country
   ```
 
 - Querying two metrics, grouping by two dimensions → 2 queried metrics 
 
   ```shell
-  dbt sl query --metrics revenue,gross_sales --group_by metric_time,user__country
+  dbt sl query --metrics revenue,gross_sales --group-by metric_time,user__country
   ```
 
 - Running an explain for one metric → 1 queried metric
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time --explain
+  dbt sl query --metrics revenue --group-by metric_time --explain
   ```
 
 - Running an explain for two metrics → 2 queried metrics
 
   ```shell
-  dbt sl query --metrics revenue,gross_sales --group_by metric_time --explain
+  dbt sl query --metrics revenue,gross_sales --group-by metric_time --explain
   ```
 
 ### Viewing usage in the product 

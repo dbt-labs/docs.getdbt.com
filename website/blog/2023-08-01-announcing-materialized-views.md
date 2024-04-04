@@ -150,7 +150,7 @@ config(
     on_configuration_change = 'apply',
     enable_refresh = True,
     refresh_interval_minutes = 30
-    max_staleness = 60,
+    max_staleness = 'INTERVAL 60 MINUTE'
 )
 }}
 ```
