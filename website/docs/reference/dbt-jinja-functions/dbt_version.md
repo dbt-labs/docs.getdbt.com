@@ -6,9 +6,9 @@ description: "Read this guide to understand the dbt_version Jinja function in db
 ---
 
 The `dbt_version` variable returns the installed version of dbt that is
-currently running. It can be used for debugging or auditing purposes.
+currently running. It can be used for debugging or auditing purposes. For details about release versioning, refer to [Versioning](/reference/commands/version#versioning).
 
-### Example Usage
+## Example usages
 
 <File name="macros/get_version.sql">
 
