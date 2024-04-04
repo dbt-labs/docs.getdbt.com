@@ -35,7 +35,7 @@ When you create a [custom materialization](/guides/create-new-materializations),
 materialization_{materialization_name}_{adapter}
 ```
 
-To document a custom materialization, use the format above to determine the associated macro name(s) to document.
+To document a custom materialization, use the previously mentioned format to determine the associated macro name(s) to document.
 
 <File name='macros/properties.yml'>
 
