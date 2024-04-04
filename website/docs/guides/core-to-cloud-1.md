@@ -24,14 +24,16 @@ Explore our 3-guide series on moving from dbt Core to dbt Cloud:
 The series is ideal for intermediate users aiming for streamlined workflows and enhanced analytics. Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
-- The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line with [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for development
+- Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
+- Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
 - [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+- A [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
 - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
 - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
 
 Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
 
-dbt Core is an open-source tool that enables data teams to transform data following analytics engineering best practices using a command line interface. dbt Core isn’t a managed platform offering, so it must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
+dbt Core is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
 
 ### What you'll learn
 
