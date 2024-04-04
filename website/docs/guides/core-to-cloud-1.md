@@ -17,7 +17,7 @@ recently_updated: true
 ## Introduction
 
 Explore our 3-guide series on moving from dbt Core to dbt Cloud:
-- Start with [Get started](/guides/core-to-cloud-1?step=10) to learn how to move from dbt Core to dbt Cloud and what you need to get started.
+- Start with [Get started](/guides/core-to-cloud-1?step=1) to learn how to move from dbt Core to dbt Cloud and what you need to get started.
 - Move on to [Everything you need to know](/docs/guides/core-to-cloud-2) to understand the considerations and methods you need to move from dbt Core to dbt Cloud.
 - Lastly, conclude with Optimization tips and FAQs to learn how to optimize your dbt Cloud experience and get answers to common questions.
 
