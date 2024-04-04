@@ -37,7 +37,7 @@ models:
         tests:
           - unique:
               config:
-                fail_calc: "sum(n_records)"
+                fail_calc: "case when count(*) > 0 then sum(n_records) else 0 end"
 ```
 
 </File>
