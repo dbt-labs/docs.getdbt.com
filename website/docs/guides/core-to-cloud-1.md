@@ -241,7 +241,7 @@ You have learned:
 - How to configure your development, orchestration, and CI/CD environments
 - How to set up environment variables and validate your models. 
 
-For next steps, we'll soon share other guides on how to manage your move and tips/faqs. Stay tuned!
+Review the next guide, [Move from dbt Core to dbt Cloud: Everything you need to know](/docs/guides/core-to-cloud-2), in this series to learn about the strategic considerations you need to take to move from dbt Core to dbt Cloud.
 
 <!--
 - Link to the next guide (managing your migration or move, etc.)
@@ -250,8 +250,6 @@ For next steps, we'll soon share other guides on how to manage your move and tip
 
 ### Related docs
 - [Learn dbt Cloud](https://courses.getdbt.com/collections)
-- [Develop with dbt Cloud](/docs/cloud/about-develop-dbt)
-- [Deploy jobs](/docs/deploy/deployments)
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
