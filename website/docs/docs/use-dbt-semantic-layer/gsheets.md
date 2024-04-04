@@ -47,14 +47,14 @@ When querying your data with Google Sheets:
 - If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues.
 
   
-## Custom menu functions
+## Query Builder functions
 
 The custom menu provides the following capabilities:
 
 | Menu items    | Description                                           |
 |---------------|-------------------------------------------------------|
 | Metrics       | Search and select metrics.                             |
-| Group By      | Search and select dimensions to group by. Dimensions are grouped by the entity of the semantic model they come from. |
+| Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. |
 | Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time). You can still optionally use `where` to filter time ranges|
 | Granularity   | Modify the granularity of the primary time dimension.      |
 | Where         | Filter your data. This includes categorical and time filters. |
@@ -62,12 +62,21 @@ The custom menu provides the following capabilities:
 | Limit         | Set a limit for the rows of your output.               |
 
 
-## Filtering data 
+**Filtering data**
 
 To use the filter functionality, choose the [dimension](docs/build/dimensions) you want to filter by and select the operation you want to filter on. 
    - For categorical dimensions, type in the dimension value you want to filter by (no quotes needed) and press enter. 
-   - Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar. 
+   - Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar.
 
+
+## Creating Saved Selections
+Saved Selections allow you to save your inputs that you've created in the query builder and easily access them again so you don't have to continuously build common queries from scratch. These selections will be saved by your Google Sheets application and are viewable and editable from the hamburger menu under "Saved Selections". You can also make these selections private or public. Public selections will be available in the menu to everyone in the sheet whereas private ones will only be visible to you.
+
+
+## Using Saved Queries in Google Sheets
+Saved Queries (add link) in MetricFlow can be accessed in Google Sheets to quickly get results from these pre-defined sets of data. In the hamburger menu, navigate to "Saved Queries" to access the ones available to you. You can also choose "Customize", which allows you to jump off and explore from the existing query, but it will never change the query as defined in code. Note that for these saved queries, if a WHERE filter is defined in the query, we will surface the advanced syntax. 
+
+maybe: Note that difference between using Saved Queries and Saved Selections? Saved query = use predefined in-code input to get result, jump off. Saved selection =  create sets of things that can be re-used in gooogle sheets in the app, not in code (this includes saving the results from a saved query)
 
 **Limited use policy disclosure**
 
