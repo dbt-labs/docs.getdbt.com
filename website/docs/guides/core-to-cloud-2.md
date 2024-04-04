@@ -27,17 +27,11 @@ The guide outlines the following steps:
 - [Considerations](https://docs.getdbt.com/guides/core-to-cloud-1?step=3#account-setup): Learn about the most important things you need to think about when moving from Core to Cloud.
 - [Plan your move](https://docs.getdbt.com/guides/core-to-cloud-1?step=4#data-platform-setup): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
 - [Move to dbt Cloud](https://docs.getdbt.com/guides/core-to-cloud-1?step=5#git-setup): Review the steps to move your dbt Core project to dbt Cloud, including setting up your account, data platform, and Git repository.
-- [Test and validation](https://docs.getdbt.com/guides/core-to-cloud-1?step=6#developer-setup): Discover how to ensure model accuracy and performance post-move,.
-- [Environment variables](https://docs.getdbt.com/guides/core-to-cloud-1?step=7#environment-variables): Discover how to manage environment variables in dbt Cloud, including their priority.
+- [Test and validate](https://docs.getdbt.com/guides/core-to-cloud-1?step=6#developer-setup): Discover how to ensure model accuracy and performance post-move,.
 - [Transition and training](https://docs.getdbt.com/guides/core-to-cloud-1?step=8#orchestration-setup): Learn how to fully transition to dbt Cloud and what training and support you may need. 
 - [Beyond your move](https://docs.getdbt.com/guides/core-to-cloud-1?step=9#models-configuration): Get insights on additional features you can use to unlock the full potential of dbt Cloud.
-- [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=10#whats-next): Summarizes key takeaways and introduces what to expect in the following guides.
-
-### Related docs
-- [Move from dbt Core to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1)
-- [Learn dbt Cloud](https://courses.getdbt.com/collections)
-- Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
-- Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
+- [Summary](link): Summarizes key takeaways and what you've learned in this guide.
+- [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=10#whats-next): Introduces what to expect in the following guides.
 
 ## Considerations
 
@@ -179,14 +173,15 @@ This guide should now have given you some insight and equipped you with a framew
 
 <ConfettiTrigger>
 
-Congratulations on finishing this guide, we hope it's given you insight into the considerations you need to take to best plan your move to dbt Cloud.
+Congratulations on finishing this guide, we hope it's given you insight into the considerations you need to take to best plan your move to dbt Cloud. 
 
-- Review the next guide in this series to learn about the technical steps you need to take to move from dbt Core to dbt Cloud
-- [Move to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1)
-- Link to the next guide (tips and faqs)
+For next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
+
+- Begin with [Get started](/guides/core-to-cloud-1?step=11) to learn how to move from dbt Core to dbt Cloud and what you need to get started.
+- Conclude with Optimization tips to learn how to optimize your dbt Cloud experience and get answers to common questions.
 
 ### Related docs
-- [Learn dbt Cloud](https://courses.getdbt.com/collections)
+- [Learn dbt Cloud](https://courses.getdbt.com/collections) courses
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
