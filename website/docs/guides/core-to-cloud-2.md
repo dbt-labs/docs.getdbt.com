@@ -1,5 +1,5 @@
 ---
-title: 'Move from dbt Core to dbt Cloud: What you need to know'
+title: 'Move from dbt Core to dbt Cloud: Everything you need to know'
 id: core-to-cloud-2
 description: "Use this second guide to understand the considerations and methods you need to move from dbt Core to dbt Cloud."
 hoverSnippet: ""Use this second guide to understand the considerations and methods you need to move from dbt Core to dbt Cloud."
@@ -11,15 +11,20 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+Explore our 3-guide series on moving from dbt Core to dbt Cloud:
+- Start with Get started for setup information
+- Move to Everything you need to know for deep insights
+- Conclude with optimization tips.
 
+The series is ideal for intermediate users aiming for streamlined workflows and enhanced analytics. Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
+
+## Introduction
 
 Your team has a custom deployment of dbt Core today.
 
 You could be reading this guide because you’ve realized the burden of maintaining that deployment, because the person who set it up has since left, or because you’re interested in what dbt Cloud could do to standardize your deployment and consolidate some of the toolings that you may already have in place — enabling you to streamline collaboration, enhance workflow efficiency, and leverage powerful features for analytics engineering teams.  
 
 This guide shares the technical adjustments and team collaboration strategies you’ll need to know to move your project from dbt Core to dbt Cloud.  Each “BYO” (build your own) deployment of dbt Core will look a little different, but after seeing hundreds of teams make the migration, there are many things in common.
-
-## Introduction
 
 Migrating from dbt Core to dbt Cloud can yield significant benefits, and a standard way of working. Understanding the differences between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
 
