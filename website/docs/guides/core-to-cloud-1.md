@@ -45,7 +45,7 @@ If you are hosting dbt Core yourself, you need to answer these questions too. db
 ## Prerequisites
 
 - You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
-- A supported version of dbt or select [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) of dbt. <Lifecycle status="public preview"/>
+- A supported version of dbt or select [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) of dbt. <Lifecycle status="Preview"/>
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ### Related docs
