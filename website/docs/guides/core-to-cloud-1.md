@@ -139,7 +139,7 @@ The most common data environments are production, staging, and development. The 
 1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
 
 2. **dbt Core version** &mdash; In your dbt Cloud environment and credentials, use the same dbt Core version you use locally. You can run `dbt --version` in the command line to find out which version of dbt Core you’re using.
-   - When using dbt Core, you need to think about which version you’re using, and manage your own upgrades. When using dbt Cloud, leverage [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) so you don’t have to.
+   - When using dbt Core, you need to think about which version you’re using and manage your own upgrades. When using dbt Cloud, leverage [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version-) so you don’t have to.
 
 3. **Connect to your data platform** &mdash; When using dbt Cloud, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the UI.
    - Each environment is roughly equivalent to an entry in your `profiles.yml` file. This means you don't need a `profiles.yml` file in your project.
@@ -147,7 +147,7 @@ The most common data environments are production, staging, and development. The 
 
 ### Additional configuration
 Explore these additional configurations to optimize your developer setup further:
-1. **Custom target names** &mdash; If you’re using a [`custom target.name`](/reference/dbt-jinja-functions/target) in your project, we recommend you set them using [environment variables](/docs/build/environment-variables). Alternatively, you can update it at the developer credentials level.
+1. **Custom target names** &mdash; If you’re using a [`custom target.name`](/reference/dbt-jinja-functions/target) in your project, we recommend setting them at the developer credentials level. Alternatively, you can set them using [environment variables](/docs/build/environment-variables).
 
 ### dbt Cloud commands
 1. Review the [dbt commands](/reference/dbt-commands) supported for dbt Cloud development. For example, `dbt init` isn’t needed in dbt Cloud as you can create a new project directly in dbt Cloud.
