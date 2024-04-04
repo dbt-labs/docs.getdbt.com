@@ -125,7 +125,7 @@ This guide is your roadmap to help you think about migration strategies and what
 
 After setting the foundations of dbt Cloud, it's important to validate your migration to ensure seamless functionality and data integrity:
 
-- **Review your dbt project:** Ensure your project compiles correctly and that you can run commands. Make sure your model are accurate and monitor performance post-move.
+- **Review your dbt project:** Ensure your project compiles correctly and that you can run commands. Make sure your models are accurate and monitor performance post-move.
 - **Start cutover:** You can start the cutover to dbt Cloud by creating a dbt Cloud job with commands that only run a small subset of the DAG. Validate the tables are being populated in the proper database/schemas as expected. Then continue to expand the scope of the job to include more sections of the DAG as you gain confidence in the results.
 - **Precision in testing:** Use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
 - **Access and permissions**: Review and adjust access controls and permissions within dbt Cloud to maintain security protocols and safeguard your data.
@@ -145,7 +145,7 @@ Familiarize your team with dbt Cloud's [features](/docs/cloud/about-cloud/dbt-cl
 
 - **Audit logs:** Use [audit logs](/docs/cloud/manage-access/audit-log) to review actions performed by people in your organization. Audit logs contain audited user and system events in real time. You can even export *all* the activity (beyond the 90 days you can view in dbt Cloud). <Lifecycle status="enterprise"/>
 - **dbt Cloud APIs:** Use dbt Cloud's robust [APIs](/docs/dbt-cloud-apis/overview) to Create, Read, Update, and Delete (CRUD) projects/jobs/environments project. The [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job) facilitate programmatic access and configuration storage, while the [Discovery API](/docs/dbt-cloud-apis/discovery-api) offers extensive metadata querying capabilities, such as job data, model configurations, usage, and overall project health. <Lifecycle status="team,enterprise"/>
-- **dbt Sematic Layer:** The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define universal metrics on top of your models, that can subsequently be queried in your BI layer. This means no more inconsistent metrics — there’s now a centralized way to define these metrics and create visibility in every component of the data flow. <Lifecycle status="team,enterprise"/>
+- **dbt Semantic Layer:** The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define universal metrics on top of your models, that can subsequently be queried in your BI layer. This means no more inconsistent metrics — there’s now a centralized way to define these metrics and create visibility in every component of the data flow. <Lifecycle status="team,enterprise"/>
 
 ### Additional help
 
@@ -165,13 +165,15 @@ Now that you’ve chosen dbt Cloud as your platform, you’ve unlocked the power
 
 This guide should now have given you some insight and equipped you with a framework for moving from dbt Core to dbt Cloud. This guide has covered the following key areas:
 
-- **Preparation and planning:** Understanding the foundational steps required for a successful migration, including evaluating your current setup and identifying key considerations unique to your team's structure and workflow needs.
+- **Considerations:** Understanding the foundational steps required for a successful migration, including evaluating your current setup and identifying key considerations unique to your team's structure and workflow needs.
 
-- **Workflow optimization**: Highlighting the importance of workflow redesign, role-specific responsibilities, and the adoption of new processes to harness dbt Cloud's collaborative and efficient environment.
+- **Plan you move**: Highlighting the importance of workflow redesign, role-specific responsibilities, and the adoption of new processes to harness dbt Cloud's collaborative and efficient environment.
 
-- **Transition and validation**: Emphasizing technical transitions, including the essential task of testing and validating your dbt projects within the dbt Cloud ecosystem to ensure data integrity and performance.
+- **Move to dbt Cloud**: Outlining the technical steps required to transition your dbt Core project to dbt Cloud, including setting up your account, data platform, and Git repository.
 
-- **Training**: Stressing the significance of comprehensive training and onboarding for your team to fully leverage dbt Cloud's capabilities, from development tools (dbt Cloud CLI and dbt Cloud IDE) to advanced features such as dbt Explorer, the Semantic Layer, and dbt Mesh.
+- **Test and validate**: Emphasizing technical transitions, including the essential task of testing and validating your dbt projects within the dbt Cloud ecosystem to ensure data integrity and performance.
+
+- **Training**: Share useful transition, training, and onboarding information for your team. Fully leverage dbt Cloud's capabilities, from development tools (dbt Cloud CLI and dbt Cloud IDE) to advanced features such as dbt Explorer, the Semantic Layer, and dbt Mesh.
 
 ## What’s next?
 
