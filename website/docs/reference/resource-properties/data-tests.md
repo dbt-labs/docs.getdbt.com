@@ -212,6 +212,9 @@ This test validates that all of the values in a column are present in a supplied
 
 The `accepted_values` test supports an optional `quote` parameter which, by default, will single-quote the list of accepted values in the test query. To test non-strings (like integers or boolean values) explicitly set the `quote` config to `false`.
 
+[comment]: To be coherent with Unique, since this feature is also available for this particular test (see examples already present below).
+The config and where clause are optional.
+
 <File name='schema.yml'>
 
 ```yaml
