@@ -492,4 +492,4 @@ Per the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/in
   >- DML operations (for tables only).
   >- Background maintenance operations on metadata performed by Snowflake.
 
-This means that Snowflake source frehssness is determined by a field that is updated when any object is updated, not just data updates. There is no action that needs to be taken, but analytics teams should note this caveat. 
+This means that Snowflake source freshness is determined by a field that is updated when any object is updated, not just data updates. No action must be taken, but analytics teams should note this caveat. 
