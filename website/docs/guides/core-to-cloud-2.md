@@ -152,7 +152,7 @@ Now that you’ve chosen dbt Cloud as your platform, you’ve unlocked the power
 
 - Use dbt Cloud’s [advanced monitoring](/docs/deploy/monitor-jobs) to receive immediate notifications for job failures, with direct links to job details. Access comprehensive logs for all job runs to facilitate troubleshooting.
 - Implement the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent, centralized metric definitions.
-- Use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their [lineage](https://docs.getdbt.com/terms/data-lineage) to gain a better understanding of its latest production state.
+- Use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their [lineage](https://docs.getdbt.com/terms/data-lineage) to gain a better understanding of its latest production state. Lifecycle status="team,enterprise"/>
 - Use dbt Cloud's robust [APIs](/docs/dbt-cloud-apis/overview) to Create, Read, Update, and Delete (CRUD) projects/jobs/environments project. The [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job) facilitate programmatic access and configuration storage, while the [Discovery API](/docs/dbt-cloud-apis/discovery-api) offers extensive metadata querying capabilities, such as job data, model configurations, usage, and overall project health. <Lifecycle status="team,enterprise"/>
 
 ## Summary
