@@ -316,9 +316,303 @@ sources:
      - name: orders
 ```
 
-1. Hover over the `models` directory and click the **...**, then select **Create file**.
-2. Name the file `staging/stripe/stripe.yml` , then click **Create**.
-3. Copy the following text into the file and click **Save**.
+In your source file, you can also use the **Generate model** button to create a new model file for each source. This will create a new file in the models directory with the given source name and fill in the SQL code of the source definition.
+
+4. Hover over the `models` directory and click the **...**, then select **Create file**.
+5. Name the file `staging/stripe/stripe.yml` , then click **Create**.
+6. Copy the following text into the file and click **Save**.
+
+```yaml
+version: 2
+
+sources:
+ - name: stripe
+   database: raw
+   schema: stripe
+   tables:
+     - name: payment
+```
+
+## Building out your project: Adding staging models
+[Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in dbt. They clean and prepare your raw data, making it ready for more complex transformations and analyses. Follow these steps to add your staging models to your project.
+
+1. Create the file `models/staging/jaffle_shop/stg_customers.sql`. Or you can use the **Generate model** button to create a new model file for each source.
+2. Copy the following query into the file and click **Save**.
+3. Create the file `models/staging/jaffle_shop/stg_orders.sql`
+4. Copy the following query into the file and click **Save**.
+
+```sql
+select
+   id as order_id,
+   user_id as customer_id,
+   order_date,
+   status
+from {{ source('jaffle_shop', 'orders') }}
+```
+5. Create the file `models/staging/stripe/stg_payments.sql`.
+6. Copy the following query into the file and click **Save**.
+
+```sql
+select
+   id as payment_id,
+   orderid as order_id,
+   paymentmethod as payment_method,
+   status,
+   -- amount is stored in cents, convert it to dollars
+   amount / 100 as amount,
+   created as created_at
+
+
+from {{ source('stripe', 'payment') }}
+```
+7. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
+
+## Finishing up building your project
+This phase involves creating[ models that serve as the entity layer or concept layer of your dbt project](/best-practices/how-we-structure/4-marts), making the data ready for reporting and analysis.  It also includes adding [packages](/docs/build/packages) and the [MetricFlow time spine](/docs/build/metricflow-time-spine) that extend dbt's functionality.
+
+1. Create the file `models/marts/fct_orders.sql`.
+2. Copy the following query into the file and click **Save**.
+
+```sql
+with orders as  (
+   select * from {{ ref('stg_orders' )}}
+),
+
+
+payments as (
+   select * from {{ ref('stg_payments') }}
+),
+
+
+order_payments as (
+   select
+       order_id,
+       sum(case when status = 'success' then amount end) as amount
+
+
+   from payments
+   group by 1
+),
+
+
+final as (
+
+
+   select
+       orders.order_id,
+       orders.customer_id,
+       orders.order_date,
+       coalesce(order_payments.amount, 0) as amount
+
+
+   from orders
+   left join order_payments using (order_id)
+)
+
+
+select * from final
+
+```
+
+3. Create the file `models/marts/dim_customers.sql`.
+4. Copy the following query into the file and click **Save**.
+
+```sql
+with customers as (
+   select * from {{ ref('stg_customers')}}
+),
+orders as (
+   select * from {{ ref('fct_orders')}}
+),
+customer_orders as (
+   select
+       customer_id,
+       min(order_date) as first_order_date,
+       max(order_date) as most_recent_order_date,
+       count(order_id) as number_of_orders,
+       sum(amount) as lifetime_value
+   from orders
+   group by 1
+),
+final as (
+   select
+       customers.customer_id,
+       customers.first_name,
+       customers.last_name,
+       customer_orders.first_order_date,
+       customer_orders.most_recent_order_date,
+       coalesce(customer_orders.number_of_orders, 0) as number_of_orders,
+       customer_orders.lifetime_value
+   from customers
+   left join customer_orders using (customer_id)
+)
+select * from final
+```
+
+5. Create the file `packages.yml` in your main directory
+6. Copy the following text into the file and click **Save**.
+
+```sql
+packages:
+ - package: dbt-labs/dbt_utils
+   version: 1.1.1
+```
+
+7. Create the file `models/metrics/metricflow_time_spine.sql` in your main directory.
+8. Copy the following query into the file and click **Save**.
+
+```sql
+{{
+   config(
+       materialized = 'table',
+   )
+}}
+with days as (
+   {{
+       dbt_utils.date_spine(
+           'day',
+           "to_date('01/01/2000','mm/dd/yyyy')",
+           "to_date('01/01/2027','mm/dd/yyyy')"
+       )
+   }}
+),
+final as (
+   select cast(date_day as date) as date_day
+   from days
+)
+select * from final
+
+```
+9. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run popup and also see in the run details that dbt has successfully built five models.
+
+## Semantic models
+The following steps describe how to set up [semantic models](/docs/build/semantic-models). Semantic models contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
+
+- Each semantic model will be 1:1 with a dbt SQL/python model
+- Each semantic model will contain (at most) 1 primary or natural entity
+- Each semantic model will contain zero, one, or many foreign or unique entities used to connect to other entities
+- Each semantic model may also contain dimensions, measures, and metrics–the stuff that actually gets fed into and queried by your downstream BI tool.
+
+Semantic models define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
+
+1. Create a new file `models/metrics/fct_orders.yml` 
+2. Add the following code to that newly created file:
+
+```sql
+   semantic_models:
+ - name: orders
+   description: |
+     Order fact table. This table’s grain is one row per order.
+   model: ref('fct_orders')
+```
+
+The following section will explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
+
+- Dimensions allow us to categorize and filter data, making it easier to organize.
+- Entities act as unique identifiers (like ID columns) that link data together from different tables.
+- Measures help us calculate data, providing valuable insights through aggregation.
+
+### Entities
+
+[Entities](/docs/build/semantic-models#entities) are a real-world concept in a business, serving as the backbone of your semantic model. These are going to be id columns (like `order_id`) in our semantic models. These will serve as join keys to other semantic models.
+
+1. Add entities to your `fct_orders.yml` semantic model file:
+
+```yaml
+semantic_models:
+  - name: orders
+    defaults:
+      agg_time_dimension: order_date
+    description: |
+      Order fact table. This table’s grain is one row per order.
+    model: ref('fct_orders')
+    entities: # Newly added
+      - name: order_id
+        type: primary
+      - name: customer_id
+        type: foreign
+```
+
+### Dimensions
+
+[Dimensions](/docs/build/semantic-models#entities) are a way to group or filter information based on categories or time. 
+
+1. Add dimensions to your `fct_orders.yml` semantic model file:
+
+```yaml
+semantic_models:
+  - name: orders
+    defaults:
+      agg_time_dimension: order_date
+    description: |
+      Order fact table. This table’s grain is one row per order.
+    model: ref('fct_orders')
+    entities:
+      - name: order_id
+        type: primary
+      - name: customer_id
+        type: foreign  
+    dimensions:   # Newly added
+     - name: order_date
+       type: time
+       type_params:
+         time_granularity: day
+```
+
+### Measures
+
+[Measures](/docs/build/semantic-models#measures) are aggregations performed on columns in your model. Often, you’ll find yourself using them as final metrics themselves. Measures can also serve as building blocks for more complicated metrics.
+
+1. Add measures to your `fct_orders.yml` semantic model file:
+
+```yaml
+semantic_models:
+  - name: orders
+    defaults:
+      agg_time_dimension: order_date
+    description: |
+      Order fact table. This table’s grain is one row per order.
+    model: ref('fct_orders')
+    entities:
+      - name: order_id
+        type: primary
+      - name: customer_id
+        type: foreign
+    dimensions:
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
+    measures:   ## Newly added
+      - name: order_total
+        description: The total amount for each order including taxes.
+        agg: sum
+        expr: amount
+      - name: order_count
+        expr: 1
+        agg: sum
+      - name: customers_with_orders
+        description: Distinct count of customers placing orders
+        agg: count_distinct
+        expr: customer_id
+      - name: order_value_p99 ## The 99th percentile order value
+        expr: amount
+        agg: percentile
+        agg_params:
+          percentile: 0.99
+          use_discrete_percentile: True
+          use_approximate_percentile: False
+```
+
+## Metrics
+
+[Metrics](/docs/build/metrics-overview) are the language your business users speak and measure business performance. To be technical about it, they are an aggregation over a column in your warehouse that you enrich with dimensional cuts. Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics. There are a few different types of metrics we can configure.
+
+- **[Conversion metrics](/docs/build/conversion)**: Track when a base event and a subsequent conversion event occur for an entity within a set time period. We won't be going into too much detail about conversion metrics in this course.
+- [**Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics):** Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the time spine model before you add cumulative metrics.
+- [**Derived metrics](/docs/build/metrics-overview#derived-metrics): A**llows you to do calculations on top of metrics.
+- [**Simple metrics**](/docs/build/metrics-overview#simple-metrics): Directly reference a single measure, without any additional measures involved.
+- [**Ratio metrics](/docs/build/metrics-overview#ratio-metrics):** Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
 
 
