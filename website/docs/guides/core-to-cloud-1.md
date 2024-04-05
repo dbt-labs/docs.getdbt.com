@@ -18,7 +18,7 @@ recently_updated: true
 
 Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
 
-Explore our 3-part-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+Explore our 3-part-guide series on moving from dbt Core to dbt Cloud. This series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
