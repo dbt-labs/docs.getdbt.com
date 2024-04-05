@@ -112,7 +112,7 @@ Transition to dbt Cloud's [access control](/docs/cloud/manage-access/about-user-
 
 <expandable alt_header="Manage environments"> 
 
-If you require isolation between production and non-production data environments due to sensitive data, dbt Cloud can support Development, Staging (_soon_), and Production data environments.
+If you require isolation between production and pre-production data environments due to sensitive data, dbt Cloud can support Development, Staging (_soon_), and Production data environments.
 
 This provides developers with the benefits of an enhanced workflow while ensuring isolation between Staging and Production data, and locking down permissions on Prod.
 
