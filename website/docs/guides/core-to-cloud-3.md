@@ -14,10 +14,13 @@ recently_updated: true
 ## Introduction
 Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
 
-Explore our 3-guide series on moving from dbt Core to dbt Cloud. The series is ideal for intermediate users aiming for streamlined workflows and enhanced analytics:
-- Begin with [Get started](/guides/core-to-cloud-1?step=10) to learn how to move from dbt Core to dbt Cloud and what you need to get started.
-- Move on to [Everything you need to know](/docs/guides/core-to-cloud-2) to understand the considerations and methods you need to move from dbt Core to dbt Cloud.
-- Lastly, conclude with Optimization tips to learn how to optimize your dbt Cloud experience and get answers to common questions.
+Explore our 3-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+
+| Guide | Information | Audience |
+|------------|-------------|----------|
+| [Move from dbt Core to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1) | Learn the steps needed to move from dbt Core to dbt Cloud. | Developers, Data engineers, Data analysts |
+| [Move from dbt Core to dbt Cloud: What you need to know](/docs/guides/core-to-cloud-2) | Understand the considerations and methods needed. | Team leads, Admins |
+| [Move from dbt Core to dbt Cloud: Optimization tips] | Learn how to optimize your dbt Cloud experience with common scenarios and useful tips. | Everyone |
 
 This guide shares some tips, enhancements, technical adjustments, and frequently asked questions that you may encounter during your move.
 

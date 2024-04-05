@@ -14,13 +14,16 @@ recently_updated: true
 ## Introduction
 Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
 
-Explore our 3-guide series on moving from dbt Core to dbt Cloud. The series is ideal for intermediate users aiming for streamlined workflows and enhanced analytics:
-- Begin with [Get started](/guides/core-to-cloud-1?step=10) to learn how to move from dbt Core to dbt Cloud and what you need to get started.
-- Move on to [Everything you need to know](/docs/guides/core-to-cloud-2) to understand the considerations and methods you need to move from dbt Core to dbt Cloud.
-- Lastly, conclude with Optimization tips and FAQs to learn how to optimize your dbt Cloud experience and get answers to common questions.
+Explore our 3-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+
+| Guide | Information | Audience |
+|------------|-------------|----------|
+| [Move from dbt Core to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1) | Learn the steps needed to move from dbt Core to dbt Cloud. | Developers, Data engineers, Data analysts |
+| [Move from dbt Core to dbt Cloud: What you need to know](/docs/guides/core-to-cloud-2) | Understand the considerations and methods needed. | Team leads, Admins |
+| [Move from dbt Core to dbt Cloud: Optimization tips] | Learn how to optimize your dbt Cloud experience with common scenarios and useful tips. | Everyone |
 
 ### What you'll learn
-Migrating from dbt Core to dbt Cloud can yield significant benefits, and a standard way of working. Understanding the differences between dbt Cloud and your current Core deployment will help you strategize and plan for your move. 
+Migrating from dbt Core to dbt Cloud can yield significant benefits, and a standard way of working. Understanding the differences between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
 
 The guide outlines the following steps:
 
@@ -45,7 +48,7 @@ The most important things you need to think about when moving from dbt Core to d
 - Should you have one project or multiple? Which dbt resources do you want to standardize & keep central?
 - Who should have permissions to view, develop, administer?
 - How are you scheduling your dbt models to run in production?
-- How are you currently managing CI/CD of logical changes (if at all)?
+- How are you currently managing Continuous integration/Continuous deployment (CI/CD) of logical changes (if at all)?
 - How do your data developers prefer to work?
 - How do you manage different data environments, and different behaviors in those environments?
 
@@ -75,7 +78,7 @@ Assess the users or personas involved in the pre-move, during the move, and post
 
 If you have multiple teams of dbt developers, think about how to start your onboarding sequence for dbt Cloud.
 - Start with downstream (like business-embedded teams) who may benefit from the dbt Cloud IDE as dev experience (less technical users) and sharing features (like Auto-deferral and dbt Explorer) to share with their stakeholders, moving to more technical teams later.
-- Consider setting up Continuous integration (CI) in dbt Cloud (even before development or production jobs) to streamline development workflows. This is especially beneficial if there's no existing CI process.
+- Consider setting up CI in dbt Cloud (even before development or production jobs) to streamline development workflows. This is especially beneficial if there's no existing CI process.
 
 </expandable>
 
