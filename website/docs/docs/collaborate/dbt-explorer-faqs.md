@@ -29,7 +29,7 @@ dbt Explorer is the default documentation experience for dbt Cloud customers. db
 
 ## How dbt Explorer works
 
-<expandable alt_header="Can I use dbt Explorer on-prem or with my self-hosted dbt Core deployment?" >
+<expandable alt_header="Can I use dbt Explorer on-premise or with my self-hosted dbt Core deployment?" >
 
 No. dbt Explorer and all of its features are only available as a dbt Cloud user experience. dbt Explorer reflects the metadata from your dbt Cloud project(s) and their runs. 
 
@@ -153,7 +153,7 @@ Read-only users can consume metadata in dbt Explorer. More bespoke experiences a
 
 <expandable alt_header="Does dbt Explorer require a specific dbt Cloud plan?" >
 
-dbt Explorer is available on the dbt Cloud Team or Enterprise plans. Certain features within dbt Explorer, like multi-project lineage and column-level lineage, are only available on the Enterprise plan. 
+dbt Explorer is available on the dbt Cloud Team and Enterprise plans. Certain features within dbt Explorer, like multi-project lineage and column-level lineage, are only available on the Enterprise plan. 
 
 </expandable>
 
