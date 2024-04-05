@@ -62,8 +62,6 @@ To exclude a source from freshness calculations, you have two options:
 - Don't add a `freshness:` block.
 - Explicitly set `freshness: null`.
 
-## loaded_at_field
-(Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.)
 </VersionBlock>
 
 <VersionBlock lastVersion="1.6">
@@ -75,11 +73,19 @@ Freshness blocks are applied hierarchically:
 - A `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
 
 This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
+</VersionBlock>
 
 ## loaded_at_field
+
+<VersionBlock firstVersion="1.7">
+(Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.)
+</VersionBlock>
+
+<VersionBlock lastVersion="1.6">
 (Required)
 </VersionBlock>
-A column name (or expression) that returns a timestamp indicating freshness.
+
+<br/><br/>A column name (or expression) that returns a timestamp indicating freshness.
 
 If using a date field, you may have to cast it to a timestamp:
 ```yml
