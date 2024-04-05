@@ -154,7 +154,7 @@ Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered 
 - Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="enterprise"/>
 
 ### Caveats
-- There has been at least one successful job run in the production deployment environment.
+- There must be at least one successful job run in the production deployment environment for Explorer to populate information. 
 - Familiarize yourself with dbt Explorer’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
 
 ## What's next?
