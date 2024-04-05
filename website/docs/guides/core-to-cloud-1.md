@@ -28,7 +28,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
 - Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
-- A [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+- The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
 - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
 - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
 
