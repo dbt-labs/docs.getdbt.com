@@ -93,7 +93,7 @@ The dbt Cloud CLI allows you to run dbt [commands](/reference/dbt-commands#avail
 
 ## Orchestration
 
-dbt Cloud provides a robust orchestration that enables users to schedule, run, and monitor dbt jobs with ease. Here are some tips and caveats to consider when using dbt Cloud's orchestration features:
+dbt Cloud provides robust orchestration that enables you to schedule, run, and monitor dbt jobs with ease. Here are some tips and caveats to consider when using dbt Cloud's orchestration features:
 
 ### Tips
 
