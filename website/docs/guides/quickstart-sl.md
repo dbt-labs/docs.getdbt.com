@@ -47,14 +47,6 @@ In this quickstart guide, you'll learn how to configure the Semantic Layer in db
 - Set up dbt Semantic Layer in dbt Cloud
 - Connect and query API with dbt Cloud
 
-Use this guide to fully experience the power of the universal dbt Semantic Layer. Here are the following steps you'll take:
-
-- [Create a semantic model](#create-a-semantic-model) in dbt Cloud using MetricFlow
-- [Define metrics](#define-metrics) in dbt using MetricFlow
-- [Test and query metrics](#test-and-query-metrics) with MetricFlow 
-- [Run a production job](#run-a-production-job) in dbt Cloud
-- [Set up dbt Semantic Layer](#set-up-dbt-semantic-layer) in dbt Cloud 
-- [Connect and query API](#connect-and-query-api) with dbt Cloud
 
 MetricFlow allows you to define metrics in your dbt project and query them whether in dbt Cloud or dbt Core with [MetricFlow commands](/docs/build/metricflow-commands).
 
@@ -66,13 +58,28 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Prerequisites
 
-import SetUp from '/snippets/_v2-sl-prerequisites.md';
+- You have a [dbt Cloud](https://www.getdbt.com/signup/) Team or Enterprise account
+  - Suitable for both Multi-tenant and Single-tenant deployment. Note, Single-tenant accounts should contact their account representative for necessary setup and enablement.
+- You have both your production and development environments running [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+- You have a [trial Snowflake account.](https://signup.snowflake.com/)
+  - Select the Enterprise edition: During trial account creation, make sure to choose the Enterprise Snowflake edition so you have ACCOUNTADMIN access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms) in the Snowflake docs.
+  - Choose a cloud provider and region: Before proceeding, you will need to select a cloud provider. For this setup, all cloud providers and regions will work so choose whichever you’d like.
+- Have a basic understanding of SQL and dbt (meaning you either used dbt before or completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course).
 
-<SetUp />
+## Create a new Snowflake worksheet
 
-:::tip 
-New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
-:::
+1. Log in to your trial Snowflake account.
+2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
+3. Select **SQL Worksheet** to create a new worksheet.
+
+ADD IMAGE HERE
+
+## Set up your Snowflake Environment
+The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
+
+1. Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for jaffle_shop data, the other for stripe data).
+
+To do this, run the following SQL commands one by one. Type them into the Editor of your new Snowflake SQL worksheet to set up your environment. 
 
 ## Create a semantic model
 
