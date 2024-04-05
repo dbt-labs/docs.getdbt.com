@@ -155,7 +155,8 @@ Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered 
 
 ### Caveats
 - There must be at least one successful job run in the production deployment environment for Explorer to populate information. 
-- Familiarize yourself with dbt Explorer’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
+
+Familiarize yourself with dbt Explorer’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
 
 ## What's next?
 
