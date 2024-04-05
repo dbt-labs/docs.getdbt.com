@@ -52,7 +52,7 @@ Most command-line tools, including dbt, have a `--help` flag that you can use to
 :::
 
 ## Related docs
-- Refer to the 3-part guides series for details, considerations, and tips on how to move to dbt Cloud:
+Refer to the 3-part guides series for details, considerations, and tips on how to move to dbt Cloud and upgrade your environment:
   - [Move from dbt Core to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1)
   - [Move from dbt Core to dbt Cloud: What you need to know](/guides/core-to-cloud-2?step=1)
   - [Move from dbt Core to dbt Cloud: Optimization tips](/guides/core-to-cloud-3?step=1)
