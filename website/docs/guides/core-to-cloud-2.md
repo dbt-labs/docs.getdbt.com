@@ -66,7 +66,7 @@ As you plan your move, consider your workflow and team layout to ensure a smooth
 
 <expandable alt_header="Start small to minimize risk and maximize learning">
 
-You don’t need to move every team and every developer’s workflow all at once. Many customers with large ‘BYO’ (build your own) dbt deployments start by moving one team and one project.
+You don’t need to move every team and every developer’s workflow all at once. Many customers with large dbt deployments start by moving one team and one project.
 
 Once they see the benefits of a consolidated platform, they move the rest of their teams and workflows. While long-term ‘hybrid’ deployments can be challenging, it may make sense as a temporary on-ramp.
 </expandable>
