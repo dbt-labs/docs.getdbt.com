@@ -36,6 +36,12 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 dbt Core is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
 
+## Prerequisites
+
+- You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
+- A supported version of dbt or select [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) of dbt. <Lifecycle status="Preview"/>
+- You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
+
 ### What you'll learn
 
 This guide outlines the steps you need to take to move from dbt Core to dbt Cloud and highlights the necessary technical changes:
@@ -49,18 +55,9 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 - [Models configuration](https://docs.getdbt.com/guides/core-to-cloud-1?step=9#models-configuration): Get insights on validating and running your models in dbt Cloud, using either the dbt Cloud IDE or dbt Cloud CLI.
 - [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=10#whats-next): Summarizes key takeaways and introduces what to expect in the following guides.
 
-If you are hosting dbt Core yourself, you need to answer these questions too. dbt Cloud provides a toolbox of options with sensible out-of-the-box defaults so you can focus on your data and analytics engineering workflows.
-
-## Prerequisites
-
-- You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
-- A supported version of dbt or select [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) of dbt. <Lifecycle status="Preview"/>
-- You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ### Related docs
-- [Learn dbt Cloud](https://courses.getdbt.com/collections)
-- [Develop with dbt Cloud](/docs/cloud/about-develop-dbt)
-- [Deploy jobs](/docs/deploy/deployments)
+- [Learn dbt Cloud](https://courses.getdbt.com/collections) on-demand video learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
