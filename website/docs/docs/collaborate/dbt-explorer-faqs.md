@@ -5,7 +5,7 @@ description: "Learn more with the FAQs about dbt Explorer, how it works, how to 
 pagination_next: null
 ---
 
-[dbt Explorer](/docs/collaborate/explore-projects) is dbt Cloud’s new knowledge base and lineage visualization experience. It offers an interactive and high-level view of your company’s entire data estate, where you can do dive deeps for the context you need to understand and improve lineage so your teams can trust the data they’re using to make decisions.
+[dbt Explorer](/docs/collaborate/explore-projects) is dbt Cloud’s new knowledge base and lineage visualization experience. It offers an interactive and high-level view of your company’s entire data estate, where you can dive deep into the context you need to understand and improve lineage so your teams can trust the data they’re using to make decisions.
 
 ## Overview
 
