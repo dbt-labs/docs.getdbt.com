@@ -258,6 +258,7 @@ You have learned:
 - How to configure your development, orchestration, and CI/CD environments
 - How to set up environment variables and validate your models
 
+
 For the next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
 
 <CoretoCloudTable/>
