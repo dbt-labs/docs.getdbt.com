@@ -50,7 +50,7 @@ The most important things you need to think about when moving from dbt Core to d
 - How are you scheduling your dbt models to run in production?
 - How are you currently managing Continuous integration/Continuous deployment (CI/CD) of logical changes (if at all)?
 - How do your data developers prefer to work?
-- How do you manage different data environments, and different behaviors in those environments?
+- How do you manage different data environments and the different behaviors in those environments?
 
 dbt Cloud provides standard mechanisms for tackling these considerations, all of which delivers long-term benefits to your organization:
 - cross-team collaboration
