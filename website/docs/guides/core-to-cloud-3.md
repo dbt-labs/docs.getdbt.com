@@ -70,7 +70,7 @@ A web-based interface for building, testing, running, and version-controlling db
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
 - Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in dbt Cloud's infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
-The dbt Cloud IDE provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the dbt Cloud IDE due to its focus on simplicity and audience:
+The dbt Cloud IDE provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the dbt Cloud IDE due to its focus on simplicity and ease of use:
 
 - Pre-commit for automated checks before *committing* code is not available (yet).
 - Mass-generating files / interacting with the file system are not available.
