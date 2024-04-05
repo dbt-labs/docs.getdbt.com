@@ -90,7 +90,7 @@ If you have multiple teams of dbt developers, think about how to start your onbo
 
 <expandable alt_header="Analyze current workflows, review processes, and team structures">
 
-Discover how dbt Cloud can help simplify development, orchestration, and testing.
+Discover how dbt Cloud can help simplify development, orchestration, and testing:
 - **Development**: Develop dbt models, allowing you to build, test, run, and version control your dbt projects using the dbt Cloud CLI (command line interface or code editor) or dbt Cloud IDE (browser-based).
 - **Orchestration**: Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval.
   - Set up CI to ensure developer effectiveness, and CD jobs to deploy changes as soon as they’re merged. 
