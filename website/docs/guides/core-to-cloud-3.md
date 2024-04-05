@@ -141,7 +141,7 @@ Congratulations on making it through the guide 🎉!
 
 We hope you’re equipped with useful insights and tips to help you with your move. Something to note is that moving from dbt Core to dbt Cloud isn’t just about evolving your data projects — it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team.
 
-For next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
+For the next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
 
 <CoretoCloudTable/>
 
