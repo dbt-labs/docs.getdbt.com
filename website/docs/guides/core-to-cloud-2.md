@@ -58,7 +58,7 @@ dbt Cloud provides standard mechanisms for tackling these considerations, all of
 - Orchestration
 - isolated data environments
 
-If you have rolled your own dbt Core deployment, you have probably come up with different answers.
+If you have rolled out your own dbt Core deployment, you have probably come up with different answers.
 
 ## Plan your move
 
