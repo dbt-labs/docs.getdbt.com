@@ -136,7 +136,7 @@ The most common data environments are production, staging, and development. The 
 [dbt Cloud environments](/docs/dbt-cloud-environments) go further by:
 - Integrating with features such as job scheduling or version control, making it easier to manage the full lifecycle of your dbt projects within a single platform.
 - Streamlining the process of switching between development, staging, and production contexts.
-- Making it easy to configure environments through the dbt Cloud UI instead of manually editing `profiles.yml` file. You can also [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in dbt Cloud.
+- Making it easy to configure environments through the dbt Cloud UI instead of manually editing the `profiles.yml` file. You can also [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in dbt Cloud.
 - Adding `profiles.yml` attributes to dbt Cloud environment settings with [Extended Attributes](/docs/dbt-cloud-environments#extended-attributes).
 - Using [Git repo caching](/docs/dbt-cloud-environments#git-repository-caching) to protect you from third-party outages, Git auth fails, and more. <Lifecycle status="enterprise"/>
 
