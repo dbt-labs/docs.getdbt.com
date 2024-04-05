@@ -94,7 +94,7 @@ Yes. Today, you can edit descriptions in the dbt Cloud IDE or CLI by changing th
 
 <expandable alt_header="Where do recommendations come from? Can they be customized?" >
 
-Recommendations largely mirror the best practice rules dbt project evaluator. At this time, recommendations can’t be customized. In the future, dbt Explorer will likely support recommendation customization capabilities (for example, in project code). 
+Recommendations largely mirror the best practice rules from the `dbt_project_evaluator` package. At this time, recommendations can’t be customized. In the future, dbt Explorer will likely support recommendation customization capabilities (for example, in project code). 
 
 </expandable>
 
