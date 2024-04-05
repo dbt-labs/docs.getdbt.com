@@ -56,7 +56,7 @@ dbt Cloud provides standard mechanisms for tackling these considerations, all of
 - Cross-team collaboration
 - access control
 - Orchestration
-- isolated data environments
+- Isolated data environments
 
 If you have rolled out your own dbt Core deployment, you have probably come up with different answers.
 
