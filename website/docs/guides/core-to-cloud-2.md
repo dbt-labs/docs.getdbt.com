@@ -40,7 +40,7 @@ If your team has a custom deployment of dbt Core today, you could be reading thi
 - The person who set it up has since left.
 - You’re interested in what dbt Cloud could do to standardize your deployment and consolidate some of the toolings that you may already have in place.
 
-This guide shares the technical adjustments and team collaboration strategies you’ll need to know to move your project from dbt Core to dbt Cloud.  Each “BYO” (build your own) deployment of dbt Core will look a little different, but after seeing hundreds of teams make the migration, there are many things in common.
+This guide shares the technical adjustments and team collaboration strategies you’ll need to know to move your project from dbt Core to dbt Cloud.  Each "build your own" deployment of dbt Core will look a little different, but after seeing hundreds of teams make the migration, there are many things in common.
 
 The most important things you need to think about when moving from dbt Core to dbt Cloud:
 
