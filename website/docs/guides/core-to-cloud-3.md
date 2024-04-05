@@ -173,7 +173,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 
 ### Resources
 
-If you need any additional help or have some questions, you can reach out to us in the following ways:
+If you need any additional help or have some questions, use the following resources:
 
 - [dbt Cloud learn courses](https://courses.getdbt.com/collections) for on-demand video learning.
 - Our [Support team](https://docs.getdbt.com/docs/dbt-support) is always available to help you troubleshoot your dbt Cloud issues.
