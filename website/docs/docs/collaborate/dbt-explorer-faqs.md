@@ -125,7 +125,7 @@ No. Cross-project column lineage is supported in the sense of viewing how a publ
 
 <expandable alt_header="Is column-level lineage data available through the API?" >
 
-Yes. Column-level lineage is available through a beta endpoint in the Discovery API to dbt Cloud Enterprise plan customers. 
+Yes. Column-level lineage is available through a beta endpoint using the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to dbt Cloud Enterprise plan customers. 
 
 </expandable>
 
