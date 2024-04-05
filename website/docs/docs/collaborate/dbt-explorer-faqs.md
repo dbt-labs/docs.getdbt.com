@@ -70,7 +70,7 @@ Yes. Refer to [Explore multiple projects](/docs/collaborate/explore-multiple-pro
 
 <expandable alt_header="What kind of search capabilities does dbt Explorer support?" >
 
-Resource search capabilities include using keywords, partial strings (fuzzy search), and set operators like `OR`. Meanwhile, lineage search supports using dbt selectors. For details, refer to [Keyword search](/docs/collaborate/explore-projects#search-resources) 
+Resource search capabilities include using keywords, partial strings (fuzzy search), and set operators like `OR`. Meanwhile, lineage search supports using dbt selectors. For details, refer to [Keyword search](/docs/collaborate/explore-projects#search-resources).
 
 </expandable>
 
