@@ -63,7 +63,7 @@ A web-based interface for building, testing, running, and version-controlling db
 
 **Key features**
 
-- The dbt Cloud IDE has a simplified Git functionality:
+- The dbt Cloud IDE has simplified Git functionality:
   - Create feature branches from the branch configured in the development environment.
   - View saved but not-committed code changes directly in the IDE.
 - [Format or lint](/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
