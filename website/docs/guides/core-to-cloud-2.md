@@ -187,7 +187,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 
 <CoretoCloudTable/>
 
-### Related docs
+### Related content
 - [Learn dbt Cloud](https://courses.getdbt.com/collections) courses
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
