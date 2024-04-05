@@ -77,7 +77,7 @@ The dbt Cloud IDE provides a simplified interface that's accessible to all users
 - Combining/piping commands, such as `dbt run -s (bash command)`, is not available.
 
 ### dbt Cloud CLI
-The dbt Cloud CLI allows you to run dbt commands against your dbt Cloud development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
+The dbt Cloud CLI allows you to run dbt [commands](/reference/dbt-commands#available-commands) against your dbt Cloud development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
 
 **Who might prefer the dbt Cloud CLI?**
 
