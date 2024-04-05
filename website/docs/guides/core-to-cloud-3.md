@@ -53,7 +53,7 @@ dbt Cloud empowers data practitioners to develop in the tool of their choice. It
 Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team’s workflow, it's important to know who will prefer the dbt Cloud IDE and who might lean towards the dbt Cloud CLI. This section aims to clarify these preferences.
 
 ### dbt Cloud IDE
-A web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database.
+A web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. The dbt Cloud IDE makes developing fast and easy for new and seasoned data practitioners to build and test changes.
 
 **Who might prefer the dbt Cloud IDE?**
 
