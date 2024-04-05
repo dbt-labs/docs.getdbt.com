@@ -42,7 +42,7 @@ function Card({ title, body, link, icon, pills }) {
           dangerouslySetInnerHTML={{ __html: body }}
         ></div>
         {parsedPills && parsedPills.length > 0 && (
-          <div className={styles.pillsContainer}> {/* Container for pills */}
+          <div className={styles.pillsContainer}>
             {parsedPills.map((pill, index) => (
               <span key={index} className={styles.pill}>
                 {pill}
