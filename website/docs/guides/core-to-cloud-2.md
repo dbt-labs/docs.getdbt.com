@@ -54,7 +54,7 @@ The most important things you need to think about when moving from dbt Core to d
 
 dbt Cloud provides standard mechanisms for tackling these considerations, all of which delivers long-term benefits to your organization:
 - Cross-team collaboration
-- access control
+- Access control
 - Orchestration
 - Isolated data environments
 
