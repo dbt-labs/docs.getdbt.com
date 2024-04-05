@@ -16,12 +16,13 @@ recently_updated: true
 
 ## Introduction
 
-Explore our 3-guide series on moving from dbt Core to dbt Cloud:
-- Start with [Get started](/guides/core-to-cloud-1?step=1) to learn how to move from dbt Core to dbt Cloud and what you need to get started.
-- Move on to [Everything you need to know](/guides/core-to-cloud-2) to understand the considerations and methods you need to move from dbt Core to dbt Cloud.
-- Lastly, conclude with [Optimization tips](/guides/core-to-cloud-3) to learn how to optimize your dbt Cloud experience and get answers to common questions.
+Explore our 3-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
-The series is ideal for intermediate users aiming for streamlined workflows and enhanced analytics. Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
+import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
+
+<CoretoCloudTable/>
+
+Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
 - Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
@@ -242,7 +243,7 @@ In this section, you’ll be able to validate whether your models run or compile
 
 You’ll want to make sure you set up your [development environment and credentials](/docs/dbt-cloud-environments#set-developer-credentials).
 
-1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and that you can run dbt commands. For example:
+1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and you can run dbt commands. For example:
    - Run `dbt compile` to make sure your project compiles correctly.
    - Run a few models in the dbt Cloud IDE or dbt Cloud CLI to ensure you’re experiencing accurate results in development.
 
@@ -260,12 +261,9 @@ You have learned:
 - How to configure your development, orchestration, and CI/CD environments
 - How to set up environment variables and validate your models. 
 
-Review the next guide, [Move from dbt Core to dbt Cloud: Everything you need to know](/docs/guides/core-to-cloud-2), in this series to learn about the strategic considerations you need to take to move from dbt Core to dbt Cloud.
+For next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
 
-<!--
-- Link to the next guide (managing your migration or move, etc.)
-- Link to tips and faqs?
--->
+<CoretoCloudTable/>
 
 ### Related docs
 - [Learn dbt Cloud](https://courses.getdbt.com/collections)
