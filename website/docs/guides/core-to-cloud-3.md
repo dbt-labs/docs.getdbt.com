@@ -147,15 +147,15 @@ Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered 
 [dbt Explorer](/docs/collaborate/explore-projects) enhances your ability to discover and understand your data models through rich metadata and lineage visualization. Here are some tips and caveats to consider when using dbt Explorer:
 
 ### Tips
-- Improve documentation accessibility, making it easier for teams to find and understand the data assets available to them.
 - Use the search and filter capabilities in dbt Explorer to quickly locate models, sources, and tests, streamlining your workflow.
 - View all the [different projects](/docs/collaborate/explore-multiple-projects) and public models in the account, where the public models are defined, and how they are used to gain a better understanding of your cross-project resources.
-- Use the [Lenses](/docs/collaborate/explore-projects#lenses) feature, which are like a map layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
+- Use the [Lenses](/docs/collaborate/explore-projects#lenses) feature, which are map-like layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
 - Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="enterprise"/>
 
 ### Caveats
-- There has been at least one successful job run in the production deployment environment.
-- Familiarize yourself with dbt Explorer’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
+- There must be at least one successful job run in the production deployment environment for Explorer to populate information. 
+
+Familiarize yourself with dbt Explorer’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
 
 ## What's next?
 
@@ -163,9 +163,9 @@ Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered 
 
 Congratulations on making it through the guide 🎉!
 
-We hope you’re equipped with useful insights and tips to help you with your move. Something to note is that moving from dbt Core to dbt Cloud isn’t just about evolving your data projects — it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team.
+We hope you’re equipped with useful insights and tips to help you with your move. Something to note is that moving from dbt Core to dbt Cloud isn’t just about evolving your data projects, it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team.
 
-For the next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
+For the next steps, continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
 
 <CoretoCloudTable/>
 
@@ -173,7 +173,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 
 ### Resources
 
-If you need any additional help or have some questions, you can reach out to us in the following ways:
+If you need any additional help or have some questions, use the following resources:
 
 - [dbt Cloud learn courses](https://courses.getdbt.com/collections) for on-demand video learning.
 - Our [Support team](https://docs.getdbt.com/docs/dbt-support) is always available to help you troubleshoot your dbt Cloud issues.
