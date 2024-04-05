@@ -19,4 +19,7 @@ If you're interested in using a command line interface to [develop dbt projects 
 If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](https://docs.getdbt.com/guides).
 
 ## Related docs
-- [Move from dbt Core to dbt Cloud](/guides/core-to-cloud-1?step=1)
+- Refer to the 3-part guides series for details, considerations, and tips on how to move to dbt Cloud:
+  - [Move from dbt Core to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1)
+  - [Move from dbt Core to dbt Cloud: What you need to know](/guides/core-to-cloud-2?step=1)
+  - [Move from dbt Core to dbt Cloud: Optimization tips](/guides/core-to-cloud-3?step=1)
