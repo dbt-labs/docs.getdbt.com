@@ -31,7 +31,7 @@ dbt Explorer is the default documentation experience for dbt Cloud customers. db
 
 <expandable alt_header="Can I use dbt Explorer on-prem or with my self-hosted dbt Core deployment?" >
 
-No. dbt Explorer is only available as a dbt Cloud user experience. dbt Explorer reflects the metadata from your dbt Cloud project(s) and their runs. 
+No. dbt Explorer and all of its features are only available as a dbt Cloud user experience. dbt Explorer reflects the metadata from your dbt Cloud project(s) and their runs. 
 
 </expandable>
 
