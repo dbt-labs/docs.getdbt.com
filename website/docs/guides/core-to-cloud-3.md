@@ -22,7 +22,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 <CoretoCloudTable/>
 
 ## What you'll learn
-If you're reading this guide, you may have already started your move to dbt Cloud and are looking for tips to help you optimize your dbt Cloud experience, including tips and caveats for the following areas:
+You may have already started your move to dbt Cloud and are looking for tips to help you optimize your dbt Cloud experience. This guide includes tips and caveats for the following areas:
 
 - [Adapters and connections](https://docs.getdbt.com/guides/core-to-cloud-3?step=3) 
 - [Development tools](https://docs.getdbt.com)/guides/core-to-cloud-3?step=4) 
