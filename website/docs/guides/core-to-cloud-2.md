@@ -142,7 +142,7 @@ Once you’ve confirmed that dbt Cloud orchestration and CI/CD are working as ex
 Familiarize your team with dbt Cloud's [features](/docs/cloud/about-cloud/dbt-cloud-features) and optimize development and deployment processes. Some key features to consider include:
 - **Version management:** Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team synchronization with dbt Cloud's one-click feature, eliminating the hassle of manual updates and version discrepancies. You can also **[Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)** to always get the latest fixes and early access to new functionality for your dbt project.
 - **Development tools**: Use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to build, test, run, and version control your dbt projects.
-- **Documentation and Source freshness:**  Automate storage of documentation and track [source freshness](/docs/deploy/source-freshness) in dbt Cloud, streamlining project maintenance.
+- **Documentation and Source freshness:**  Automate storage of [documentation](/docs/collaborate/documentation) and track [source freshness](/docs/deploy/source-freshness) in dbt Cloud, streamlining project maintenance.
 - **Notifications and logs:** Receive immediate [notifications](/docs/deploy/monitor-jobs) for job failures, with direct links to job details. Access comprehensive logs for all job runs to help with troubleshooting.
 - **CI/CD:** Use dbt Cloud's [CI/CD](/docs/deploy/ci-jobs) feature to run your dbt projects in a temporary schema when new commits are pushed to open pull requests, helpful in catching bugs before deploying to production.
 
