@@ -44,7 +44,7 @@ In dbt Cloud, you can natively connect to your data platform and test its [conn
 
 ### Caveats
 - Not all parameters are available for adapters.
-- One project can only use one warehouse type.
+- A project can only use one warehouse type.
 
 ## Development tools
 
