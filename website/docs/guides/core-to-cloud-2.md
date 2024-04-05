@@ -14,7 +14,7 @@ recently_updated: true
 ## Introduction
 Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
 
-Explore our 3-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+Explore our 3-part-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
@@ -92,7 +92,7 @@ If you have multiple teams of dbt developers, think about how to start your onbo
 
 Discover how dbt Cloud can help simplify development, orchestration, and testing.
 - **Development**: Develop dbt models, allowing you to build, test, run, and version control your dbt projects using the dbt Cloud CLI (command line interface or code editor) or dbt Cloud IDE (browser-based).
-- **Orchestration**: Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. 
+- **Orchestration**: Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval.
   - Set up CI to ensure developer effectiveness, and CD jobs to deploy changes as soon as they’re merged. 
   - Link deploy jobs together by [triggering a job](/docs/deploy/deploy-jobs#trigger-on-job-completion) when another one is completed. 
   - For the most flexibility, you can use the [dbt Cloud API](https://docs.getdbt.com/dbt-cloud/api-v2#/) to trigger jobs. This makes sense when you want to integrate dbt execution with other data workflows.
@@ -161,7 +161,7 @@ Now that you’ve chosen dbt Cloud as your platform, you’ve unlocked the power
 - **dbt Learn courses**: Access our free [Learn dbt Cloud](https://courses.getdbt.com/collections) video courses for on-demand training.
 - **dbt Community:** Join the [dbt Community](https://community.getdbt.com/) to connect with other dbt users, ask questions, and share best practices.
 - **dbt Support team:** Our dbt Support team is always available to help you troubleshoot your dbt Cloud issues. Create a support ticket in dbt Cloud and we’ll be happy to help!
-- **Account management** Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. <Lifecycle status="enterprise"/>
+- **Account management** Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. [Book a demo](https://www.getdbt.com/contact) to learn more. <Lifecycle status="enterprise"/>
 
 ## Summary
 

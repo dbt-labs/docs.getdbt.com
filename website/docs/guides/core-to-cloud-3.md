@@ -12,102 +12,134 @@ recently_updated: true
 ---
 
 ## Introduction
+
 Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
 
-Explore our 3-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+Explore our 3-part-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <CoretoCloudTable/>
 
-This guide shares some tips, enhancements, technical adjustments, and frequently asked questions that you may encounter during your move.
+## What you'll learn
+If you're reading this guide, you may have already started your move to dbt Cloud and are looking for tips to help you optimize your dbt Cloud experience, including tips and caveats for the following areas:
 
-## dbt Cloud CLI and dbt Cloud IDE
-**dbt Cloud IDE and dbt Cloud CLI tips**
-- The dbt Cloud IDE has a simplified Git functionality
-  - You can create feature branches from the branch configured in the development environment.
-  - The dbt Cloud IDE makes it possible view saved but not-committed code changes directly in the IDE
-  - You can [format or lint](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
-  - Advanced users who prefer to have more control over their git commands can use the [dbt Cloud CLI](https://docs.getdbt.com/docs/cloud/cloud-cli-installation), allowing users to run dbt commands against their dbt Cloud development environment from their local command line with minimal configuration.
-- Whichever they pick, your users will be getting a powerful development experience backed by dbt Cloud. This means the dbt Cloud CLI and the dbt Cloud IDE enable users to natively [defer to production](https://docs.getdbt.com/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows. This reduces the number of objects in - The dbt Cloud CLI and dbt Cloud IDE are designed to support [safe parallel execution](https://docs.getdbt.com/reference/dbt-commands#parallel-execution) of dbt commands, leveraging dbt Cloud's infrastructure and its comprehensive [features](https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features). In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
-- **Caveats**
-- Pre-commit for automated checks before *committing* code is not available (yet).
-- Mass-generating files / interacting with the file system are not available
-- Combining/piping commands, such as `dbt run -s (bash command)` is not available
-  
-## Orchestration
-
-**dbt Cloud job scheduler tips**
-- Enable [partial parsing](https://docs.getdbt.com/docs/deploy/deploy-environments#partial-parsing) between jobs in dbt Cloud to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
-- The dbt Cloud job scheduler can [run multiple CI/CD](https://docs.getdbt.com/docs/deploy/continuous-integration) jobs at the same time, will not block production runs, and stale runs are automatically canceled when a newer commit is pushed. This is because each PR will run in its own schema.
-- dbt Cloud automatically cancels a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
-- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](https://docs.getdbt.com/docs/deploy/deploy-environments#git-repository-caching), which keeps a cache of the project's Git repository. (Enterprise only)
-- You can *[chain* deploy jobs](https://docs.getdbt.com/docs/deploy/deploy-jobs#trigger-on-job-completion--) across dbt Cloud projects by configuring your job or using the [Create Job API](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/Create%20Job) to do this. (Team or Enterprise only)
-- [Rerun your jobs](https://docs.getdbt.com/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
-- **Caveats**
-- To store your job configurations as code within a repository, you can:
-  - Check out our [Terraform provider.](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job)
-  - Alternatively, check out our [jobs-as-code](https://github.com/dbt-labs/dbt-jobs-as-code) repository, which is a tool built to handle dbt Cloud jobs as a well-defined YAML file.
-- dbt Cloud users and external emails can receive notifications if a job fails, succeeds, or is cancelled. To get notifications for warnings, you can create a [webhook subscription](https://docs.getdbt.com/guides/zapier-slack) and post to Slack.
+- [Adapters and connections](https://docs.getdbt.com/guides/core-to-cloud-3?step=3) 
+- [Development tools](https://docs.getdbt.com)/guides/core-to-cloud-3?step=4) 
+- [Orchestration](https://docs.getdbt.com/guides/core-to-cloud-3?step=5)
+- [dbt Mesh](https://docs.getdbt.com/guides/core-to-cloud-3?step=6)
+- [dbt Semantic Layer](https://docs.getdbt.com/guides/core-to-cloud-3?step=7)
+- [dbt Explorer](https://docs.getdbt.com/guides/core-to-cloud-3?step=8)
+- [What's next?](https://docs.getdbt.com/guides/core-to-cloud-3?step=9)
 
 ## Adapters and connections
 
-**Adapters tips**
-- In dbt Cloud, you can natively connect to your data platform and test its [connection](https://docs.getdbt.com/docs/connect-adapters) with a click of a button!
-- Manage [dbt versions](https://docs.getdbt.com/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team synchronization with dbt Cloud's one-click feature, eliminating the hassle of manual updates and version discrepancies.
-- dbt Cloud supports a whole host of cloud providers, including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few). Check out the full list of supported adapters [here](https://docs.getdbt.com/docs/cloud/connect-data-platform/about-connections).
-- Use [Extended Attributes](https://docs.getdbt.com/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](https://docs.getdbt.com/docs/core/connect-data-platform/profiles.yml) snippet in your dbt Cloud Environment settings. It gives you more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
+In dbt Cloud, you can natively connect to your data platform and test its [connection](/docs/connect-adapters) with a click of a button. This is especially useful for users who are new to dbt Cloud or are looking to streamline their connection setup. Here are some tips and caveats to consider:
+
+### Tips
+- Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team synchronization with dbt Cloud's one-click feature, eliminating the hassle of manual updates and version discrepancies.
+- dbt Cloud supports a whole host of [cloud providers](/docs/cloud/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
+- Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in your dbt Cloud Environment settings. It gives you more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
   - For example, if you have a field in your `profiles.yml` that you’d like to add to the dbt Cloud adapter user interface, you can use Extended Attributes to set it.
-**Caveats**
+
+### Caveats
 - Not all parameters are available for adapters.
 - One project can only use one warehouse type.
 
+## Development tools
+
+dbt Cloud empowers data practitioners to develop in the tool of their choice. It ships with a [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) (local) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (browser-based) to build, test, run, and version control your dbt projects.
+
+Here are some tips and caveats to consider when using dbt Cloud's development tools:
+
+### Tips
+
+- The dbt Cloud IDE has a simplified Git functionality:
+  - Create feature branches from the branch configured in the development environment.
+  - View saved but not-committed code changes directly in the IDE.
+  - [Format or lint](/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
+- Advanced users who prefer to have more control over their Git commands can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), allowing users to run dbt commands against their dbt Cloud development environment from their local command line with minimal configuration.
+- Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in dbt Cloud's infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+
+### Caveats
+- Pre-commit for automated checks before *committing* code is not available (yet).
+- Mass-generating files / interacting with the file system are not available.
+- Combining/piping commands, such as `dbt run -s (bash command)` is not available.
+  
+## Orchestration
+
+dbt Cloud provides a robust orchestration that enables users to schedule, run, and monitor dbt jobs with ease. Here are some tips and caveats to consider when using dbt Cloud's orchestration features:
+
+### Tips
+
+- Enable [partial parsing](/docs/deploy/deploy-environments#partial-parsing) between jobs in dbt Cloud to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
+- [Run multiple CI/CD](/docs/deploy/continuous-integration) jobs at the same time which will not block production runs. The Job scheduler automatically cancels stale runs  when a newer commit is pushed. This is because each PR will run in its own schema.
+- dbt Cloud automatically cancels a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
+- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/deploy/deploy-environments#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="enterprise"/>
+- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion--) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="team,enterprise"/>
+- [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
+
+### Caveats
+- To store your job configurations as code within a repository, you can:
+  - Check out our [Terraform provider.](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job)
+  - Alternatively, check out our [jobs-as-code](https://github.com/dbt-labs/dbt-jobs-as-code) repository, which is a tool built to handle dbt Cloud jobs as a well-defined YAML file.
+- dbt Cloud users and external emails can receive notifications if a job fails, succeeds, or is cancelled. To get notifications for warnings, you can create a [webhook subscription](/guides/zapier-slack) and post to Slack.
+
 ## dbt Mesh
 
-To use [cross-project references](https://docs.getdbt.com/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with dbt Cloud (either with the dbt Cloud CLI or dbt Cloud IDE). Cross-project references are not supported in dbt Core.
+Use [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) to seamlessly integrate and navigate between different projects and models with [cross-project dependencies](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), enhancing collaboration and data governance. Here are some tips and caveats to consider when using dbt Mesh:
 
-**dbt Mesh tips**
-- Use [dbt Mesh](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro) to seamlessly integrate and navigate between different projects and models with [cross-project dependencies](https://docs.getdbt.com/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), enhancing collaboration and data governance.
+### Tips
+- To use [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with dbt Cloud (either with the dbt Cloud CLI or dbt Cloud IDE). Cross-project references are not supported in dbt Core.
 - Link models across projects for a modular and scalable approach for your project and teams.
 - Manage access to your dbt models both within and across projects using:
-  - **[Groups](https://docs.getdbt.com/docs/collaborate/govern/model-access#groups)** - Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
-  - **[Access](https://docs.getdbt.com/docs/collaborate/govern/model-access#access-modifiers)** - Control who can reference models.
-  - **[Model Versions](https://docs.getdbt.com/docs/collaborate/govern/model-versions)** - Enable adoption and deprecation of models as they evolve.
-  - **[Model Contracts](https://docs.getdbt.com/docs/collaborate/govern/model-contracts)** -Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
-  - Use [dbt-meshify](https://github.com/dbt-labs/dbt-meshify) if you’d separate your mono-repo in order to move to dbt Cloud.
-**Caveat**
+  - **[Groups](/docs/collaborate/govern/model-access#groups)** - Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
+  - **[Access](/docs/collaborate/govern/model-access#access-modifiers)** - Control who can reference models.
+  - **[Model Versions](/docs/collaborate/govern/model-versions)** - Enable adoption and deprecation of models as they evolve.
+  - **[Model Contracts](/docs/collaborate/govern/model-contracts)** -Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
+- Use [dbt-meshify](https://github.com/dbt-labs/dbt-meshify) to separate your mono-repo and move to dbt Cloud.
+
+### Caveat
 - Currently, dbt Mesh does not support circular project dependencies.
  
-## dbt Semantic Layer
+ ## dbt Semantic Layer
 
-**dbt Semantic Layer tips**
-- Leverage the [dbt Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools.
-- Define semantic models and metrics once with MetricFlow, and reuse them across various analytics platforms, reducing redundancy and errors.
-- Use the dbt Semantic Layer APIs to query metrics in downstream tools for consistent, reliable data metrics.
-- Connect to several data applications, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more, to query your metrics. Available integrations include Tableau, Google Sheets, Hex, and more!
-- Use exports to materialize commonly used queries directly within your data platform, on a schedule.
-**Caveats**
+Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools. Here are some tips and caveats to consider when using dbt Semantic Layer:
+
+### Tips
+- Define semantic models and metrics once in dbt Cloud with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) (powered by MetricFlow). Reuse them across various analytics platforms, reducing redundancy and errors.
+- Use the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics in downstream tools for consistent, reliable data metrics.
+- Connect to several data applications, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more, to query your metrics. [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) include Tableau, Google Sheets, Hex, and more.
+- Use [exports](/docs/use-dbt-semantic-layer/exports) to write commonly used queries directly within your data platform, on a schedule.
+
+### Caveats
 - dbt Semantic Layer currently supports the Deployment environment for querying. Development querying experience coming soon.
-- You can run queries/semantic layer commands in the dbt Cloud CLI, however running queries/semantic layer commands in the dbt Cloud IDE isn’t supported *yet.*
-  - Note that SSH tunneling for [Postgres and Redshift](https://docs.getdbt.com/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections, [PrivateLink](https://docs.getdbt.com/docs/cloud/secure/about-privatelink), and [Single sign-on (SSO)](https://docs.getdbt.com/docs/cloud/manage-access/sso-overview) isn’t supported in the dbt Semantic Layer *yet*.
+- Run queries/semantic layer commands in the dbt Cloud CLI, however running queries/semantic layer commands in the dbt Cloud IDE isn’t supported *yet.*
+- dbt Semantic Layer doesn't yet support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections. It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for Semantic Layer [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
 
 ## dbt Explorer
 
-**dbt Explorer tips**
-- [dbt Explorer](https://docs.getdbt.com/docs/collaborate/explore-projects) enhances your ability to discover and understand your data models through rich metadata and lineage visualization.
+[dbt Explorer](/docs/collaborate/explore-projects) enhances your ability to discover and understand your data models through rich metadata and lineage visualization. Here are some tips and caveats to consider when using dbt Explorer:
+
+### Tips
 - Improve documentation accessibility, making it easier for teams to find and understand the data assets available to them.
 - Use the search and filter capabilities in dbt Explorer to quickly locate models, sources, and tests, streamlining your workflow.
-- View all the different projects and public models in the account, where the public models are defined, and how they are used to gain a better understanding of your cross-project resources.
-- Access column-level lineage (CLL) for the resources in your dbt project. (Enterprise plan only).
+- View all the [different projects](/docs/collaborate/explore-multiple-projects) and public models in the account, where the public models are defined, and how they are used to gain a better understanding of your cross-project resources.
+- Use the [Lenses](/docs/collaborate/explore-projects#lenses) feature, which are like a map layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
+- Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="enterprise"/>
 
-**Caveats**
+### Caveats
 - There has been at least one successful job run in the production deployment environment.
 - Familiarize yourself with dbt Explorer’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
 
 ## What's next?
 
 <ConfettiTrigger>
-Congratulations on making it through the Move from dbt Core to dbt Cloud guide 🎉! We hope you’re equipped with useful insights and tips to help you with your move. Something to note is that moving from dbt Core to dbt Cloud isn’t just about evolving your data projects — it's about unlocking new levels of collaboration, governance, efficiency, and innovation within your team.
+
+Congratulations on making it through the guide 🎉!
+
+We hope you’re equipped with useful insights and tips to help you with your move. Something to note is that moving from dbt Core to dbt Cloud isn’t just about evolving your data projects — it's about exploring new levels of collaboration, governance, efficiency, and innovation within your team.
 
 For next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
 
@@ -115,20 +147,20 @@ For next steps, you can continue exploring our 3-part-guide series on moving fro
 
 </ConfettiTrigger>
 
-## Support
+### Resources
 
 If you need any additional help or have some questions, you can reach out to us in the following ways:
 
-- Our [Support team](https://docs.getdbt.com/docs/dbt-support)
-- The dbt Slack community. We have specific slack channels dedicated to different product surface areas.
+- [dbt Cloud learn courses](https://courses.getdbt.com/collections) for on-demand video learning.
+- Our [Support team](https://docs.getdbt.com/docs/dbt-support) is always available to help you troubleshoot your dbt Cloud issues.
+- Join the [dbt Community](https://community.getdbt.com/) to connect with other dbt users, ask questions, and share best practices.
 - Subscribe to the [dbt Cloud RSS alerts](https://status.getdbt.com/)
-- Your Account representative
+- Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. [Book a demo](https://www.getdbt.com/contact) to learn more.
 
 ....we’re happy to help!
-
-## Resources
 
 For tailored assistance, you can use the following resources:
 
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and move.
+
