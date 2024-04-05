@@ -16,7 +16,7 @@ recently_updated: true
 
 ## Introduction
 
-Explore our 3-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
+Explore our 3-part-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
@@ -259,15 +259,15 @@ You have learned:
 - How to set up your dbt Cloud account
 - How to connect your data platform and Git repository
 - How to configure your development, orchestration, and CI/CD environments
-- How to set up environment variables and validate your models. 
+- How to set up environment variables and validate your models
 
 For next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
 
 <CoretoCloudTable/>
 
 ### Related docs
-- [Learn dbt Cloud](https://courses.getdbt.com/collections)
-- Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
+- [Learn dbt Cloud](https://courses.getdbt.com/collections) video courses for on-demand learning.
+- Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights.
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
 </ConfettiTrigger>
