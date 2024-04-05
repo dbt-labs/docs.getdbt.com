@@ -16,18 +16,18 @@ recently_updated: true
 
 ## Introduction
 
+Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
+
 Explore our 3-part-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
 import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <CoretoCloudTable/>
 
-Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
 - Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
-- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
 - A [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
 - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
 - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
@@ -36,30 +36,29 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 dbt Core is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
 
-## Prerequisites
-
-- You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
-- A supported version of dbt or select [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) of dbt. <Lifecycle status="Preview"/>
-- You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
-
-### What you'll learn
+## What you'll learn
 
 This guide outlines the steps you need to take to move from dbt Core to dbt Cloud and highlights the necessary technical changes:
 
-- [Account setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=3#account-setup): Learn how to create a dbt Cloud account, invite team members, and configure it for your team.
-- [Data platform setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=4#data-platform-setup): Find out about connecting your data platform to dbt Cloud.
-- [Git setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=5#git-setup): Learn to link your dbt project's Git repository with dbt Cloud.
-- [Developer setup:](https://docs.getdbt.com/guides/core-to-cloud-1?step=6#developer-setup) Understand the setup needed for developing in dbt Cloud.
-- [Environment variables](https://docs.getdbt.com/guides/core-to-cloud-1?step=7#environment-variables): Discover how to manage environment variables in dbt Cloud, including their priority.
-- [Orchestration setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=8#orchestration-setup): Learn how to prepare your dbt Cloud environment and jobs for orchestration.
-- [Models configuration](https://docs.getdbt.com/guides/core-to-cloud-1?step=9#models-configuration): Get insights on validating and running your models in dbt Cloud, using either the dbt Cloud IDE or dbt Cloud CLI.
-- [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=10#whats-next): Summarizes key takeaways and introduces what to expect in the following guides.
-
+- [Account setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=4): Learn how to create a dbt Cloud account, invite team members, and configure it for your team.
+- [Data platform setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=5): Find out about connecting your data platform to dbt Cloud.
+- [Git setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=6): Learn to link your dbt project's Git repository with dbt Cloud.
+- [Developer setup:](https://docs.getdbt.com/guides/core-to-cloud-1?step=7) Understand the setup needed for developing in dbt Cloud.
+- [Environment variables](https://docs.getdbt.com/guides/core-to-cloud-1?step=8): Discover how to manage environment variables in dbt Cloud, including their priority.
+- [Orchestration setup](https://docs.getdbt.com/guides/core-to-cloud-1?step=9): Learn how to prepare your dbt Cloud environment and jobs for orchestration.
+- [Models configuration](https://docs.getdbt.com/guides/core-to-cloud-1?step=10): Get insights on validating and running your models in dbt Cloud, using either the dbt Cloud IDE or dbt Cloud CLI.
+- [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
 
 ### Related docs
 - [Learn dbt Cloud](https://courses.getdbt.com/collections) on-demand video learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
+
+## Prerequisites
+
+- You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
+- A supported version of dbt or select [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) of dbt. <Lifecycle status="Preview"/>
+- You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ## Account setup
 
