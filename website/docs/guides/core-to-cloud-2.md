@@ -95,7 +95,7 @@ Discover how dbt Cloud can help simplify development, orchestration, and testing
 - **Orchestration**: Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval.
   - Set up CI to ensure developer effectiveness, and CD jobs to deploy changes as soon as they’re merged. 
   - Link deploy jobs together by [triggering a job](/docs/deploy/deploy-jobs#trigger-on-job-completion) when another one is completed. 
-  - For the most flexibility, you can use the [dbt Cloud API](https://docs.getdbt.com/dbt-cloud/api-v2#/) to trigger jobs. This makes sense when you want to integrate dbt execution with other data workflows.
+  - For the most flexibility, use the [dbt Cloud API](https://docs.getdbt.com/dbt-cloud/api-v2#/) to trigger jobs. This makes sense when you want to integrate dbt execution with other data workflows.
 - **Continuous integration (CI)**: Run your dbt projects in a temporary schema when new commits are pushed to open pull requests. This build-on-PR functionality is a great way to catch bugs before deploying to production.
   - For many teams, dbt Cloud CI represents a major improvement compared to their previous development workflows.
 - **How are you defining tests today?**: While testing production data is important, it’s not the most efficient way to catch logical errors introduced by developers You can use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
