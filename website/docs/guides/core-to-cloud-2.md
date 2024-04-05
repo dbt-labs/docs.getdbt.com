@@ -82,7 +82,7 @@ Assess the users or personas involved in the pre-move, during the move, and post
 
 <expandable alt_header="Onboarding order"> 
 
-If you have multiple teams of dbt developers, think about how to start your onboarding sequence for dbt Cloud.
+If you have multiple teams of dbt developers, think about how to start your onboarding sequence for dbt Cloud:
 - Start with downstream (like business-embedded teams) who may benefit from the dbt Cloud IDE as dev experience (less technical users) and sharing features (like auto-deferral and dbt Explorer) to share with their stakeholders, moving to more technical teams later.
 - Consider setting up CI in dbt Cloud (even before development or production jobs) to streamline development workflows. This is especially beneficial if there's no existing CI process.
 
