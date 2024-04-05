@@ -150,7 +150,7 @@ Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered 
 - Improve documentation accessibility, making it easier for teams to find and understand the data assets available to them.
 - Use the search and filter capabilities in dbt Explorer to quickly locate models, sources, and tests, streamlining your workflow.
 - View all the [different projects](/docs/collaborate/explore-multiple-projects) and public models in the account, where the public models are defined, and how they are used to gain a better understanding of your cross-project resources.
-- Use the [Lenses](/docs/collaborate/explore-projects#lenses) feature, which are like a map layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
+- Use the [Lenses](/docs/collaborate/explore-projects#lenses) feature, which are map-like layers for your DAG, available from your project's lineage graph. Lenses help you further understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
 - Access column-level lineage (CLL) for the resources in your dbt project. <Lifecycle status="enterprise"/>
 
 ### Caveats
