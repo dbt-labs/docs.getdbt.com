@@ -74,13 +74,262 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ADD IMAGE HERE
 
-## Set up your Snowflake Environment
+## Set up your Snowflake environment
 The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
 
 1. Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for jaffle_shop data, the other for stripe data).
 
-To do this, run the following SQL commands one by one. Type them into the Editor of your new Snowflake SQL worksheet to set up your environment. 
+To do this, run the following SQL commands one by one. Type them into the Editor of your new Snowflake SQL worksheet to set up your environment.
 
+2. Click **Run** in the upper right corner of the UI for each one:
+
+```sql
+-- Create a virtual warehouse named 'transforming'
+create warehouse transforming;
+
+-- Create two databases: one for raw data and another for analytics
+create database raw;
+create database analytics;
+
+-- Within the 'raw' database, create two schemas: 'jaffle_shop' and 'stripe'
+create schema raw.jaffle_shop;
+create schema raw.stripe;
+```
+
+Now that your environment is set up, you can start loading data into it. You will be working within the raw database, using the `jaffle_shop` and stripe schemas to organize your tables.
+
+1. Create customer table &mdash; First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the customer table in the `jaffle_shop` schema:
+
+```sql
+create table raw.jaffle_shop.customers
+( id integer,
+  first_name varchar,
+  last_name varchar
+);
+```
+
+You should see a ‘Table `CUSTOMERS` successfully created.’ message.
+
+2. Load data &mdash; After creating the table, delete all contents in the Editor. Run this command to load data from the S3 bucket into the customer table:
+
+```sql
+copy into raw.jaffle_shop.customers (id, first_name, last_name)
+from 's3://dbt-tutorial-public/jaffle_shop_customers.csv'
+file_format = (
+    type = 'CSV'
+    field_delimiter = ','
+    skip_header = 1
+    );
+```
+
+You should see a confirmation message after running the command.
+
+3. Create `orders` table  &mdash; Delete all contents in the Editor. Run the following command to create…
+
+```sql
+create table raw.jaffle_shop.orders
+( id integer,
+  user_id integer,
+  order_date date,
+  status varchar,
+  _etl_loaded_at timestamp default current_timestamp
+);
+```
+
+You should see a confirmation message after running the command.
+
+4. Load data &mdash;  Delete all contents in the Editor, then run this command to load data into the orders table:
+
+```sql
+copy into raw.jaffle_shop.orders (id, user_id, order_date, status)
+from 's3://dbt-tutorial-public/jaffle_shop_orders.csv'
+file_format = (
+    type = 'CSV'
+    field_delimiter = ','
+    skip_header = 1
+    );
+
+```
+
+You should see a confirmation message after running the command.
+
+5. Create `payment` table &mdash; Delete all contents in the Editor. Run the following command to create the payment table:
+
+```sql
+create table raw.stripe.payment
+( id integer,
+  orderid integer,
+  paymentmethod varchar,
+  status varchar,
+  amount integer,
+  created date,
+  _batched_at timestamp default current_timestamp
+);
+
+```
+
+You should see a confirmation message after running the command.
+
+6. Load data &mdash; Delete all contents in the Editor. Run the following command to load data into the payment table:
+
+```sql
+copy into raw.stripe.payment (id, orderid, paymentmethod, status, amount, created)
+from 's3://dbt-tutorial-public/stripe_payments.csv'
+file_format = (
+    type = 'CSV'
+    field_delimiter = ','
+    skip_header = 1
+    );
+
+```
+
+You should see a confirmation message after running the command.
+
+7. Verify data &mdash; Verify that the data is loaded by running these SQL queries. Confirm that you can see output for each one, like the following confirmation image.
+
+```sql
+select * from raw.jaffle_shop.customers;
+select * from raw.jaffle_shop.orders;
+select * from raw.stripe.payment;
+```
+
+ADD IMAGE HERE
+
+## Connect dbt Cloud to Snowflake
+
+There are two ways to connect dbt Cloud to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Snowflake trial account. The second option is to create your dbt Cloud account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, dbt Labs recommends connecting manually.
+
+<Tabs>
+<TabItem value="partner-connect" label="Use Partner Connect" default>
+
+Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
+
+1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Admin**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+
+    <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
+
+    If you’re using the classic version of the Snowflake UI, you can click the **Partner Connect** button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
+
+    <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
+
+2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each database. Then, click **Connect**.
+
+    <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
+
+    <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_connection_box.png" title="Snowflake New UI - Connection Box" />
+
+3. Click **Activate** when a popup appears: 
+
+<Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_activation_window.png" title="Snowflake Classic UI - Actviation Window" />
+
+<Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" title="Snowflake New UI - Activation Window" />
+
+4. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password.
+
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt Cloud - Account Info" />
+
+5. After you have filled out the form and clicked **Complete Registration**, you will be logged into dbt Cloud automatically.
+
+6. From your **Account Settings** in dbt Cloud (using the gear menu in the upper right corner), choose the "Partner Connect Trial" project and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
+
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
+
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt Cloud - Update Database and Warehouse" />
+
+</TabItem>
+<TabItem value="manual-connect" label="Connect manually">
+
+
+1. Create a new project in dbt Cloud. From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
+2. Enter a project name and click **Continue**.
+3. For the warehouse, click **Snowflake** then **Next** to set up your connection.
+
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt Cloud - Choose Snowflake Connection" />
+
+4. Enter your **Settings** for Snowflake with: 
+    * **Account** &mdash; Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
+
+        <Snippet path="snowflake-acct-name" />
+    
+    * **Role** &mdash; Leave blank for now. You can update this to a default Snowflake role later.
+    * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
+    * **Warehouse** &mdash; `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
+
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
+
+5. Enter your **Development Credentials** for Snowflake with: 
+    * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
+    * **Password** &mdash; The password you set when creating your Snowflake account.
+    * **Schema** &mdash; You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
+    * **Target name** &mdash; Leave as the default.
+    * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that dbt Cloud will make to build models concurrently.
+
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt Cloud - Snowflake Development Credentials" />
+
+6. Click **Test Connection**. This verifies that dbt Cloud can access your Snowflake account.
+7. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.
+
+</TabItem>
+</Tabs>
+
+## Set up a dbt Cloud managed repository 
+If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
+
+<Snippet path="tutorial-managed-repo" />
+
+## Initialize your dbt project and start developing
+Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+
+1. Click **Start developing in the dbt Cloud IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
+3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
+    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:
+      ```sql
+      select * from raw.jaffle_shop.customers
+      ```
+    - In the command line bar at the bottom, enter dbt run and click Enter. You should see a dbt run succeeded message.
+
+## Building out your project: Adding sources
+[Sources](/docs/build/sources) in dbt are the raw data tables you'll transform. By organizing your source definitions, you document the origin of your data. It also makes your project and transformation more reliable, structured, and understandable. Let’s add our sources now.
+
+You have two options for working with files in the dbt Cloud IDE:
+
+- Create a new branch (recommended) — Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
+- Edit in the protected primary branch — If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+
+Name the new branch `build-project`.
+
+1. Hover over the `models` directory and click the **...**, then select **Create file**.
+2. Name the file `staging/jaffle_shop/src_jaffle_shop.yml` , then click **Create**.
+3. Copy the following text into the file and click **Save**.
+
+```yaml
+version: 2
+
+sources:
+ - name: jaffle_shop
+   database: raw
+   schema: jaffle_shop
+   tables:
+     - name: customers
+     - name: orders
+```
+
+1. Hover over the `models` directory and click the **...**, then select **Create file**.
+2. Name the file `staging/stripe/stripe.yml` , then click **Create**.
+3. Copy the following text into the file and click **Save**.
+
+
+
+
+
+
+
+
+
+
+-----
 ## Create a semantic model
 
 <CreateModel />
