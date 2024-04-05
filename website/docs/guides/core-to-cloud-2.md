@@ -21,7 +21,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 <CoretoCloudTable/>
 
 ## What you'll learn
-Migrating from dbt Core to dbt Cloud can yield significant benefits, and a standard way of working. Understanding the differences between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
+Migrating from dbt Core to dbt Cloud can yield significant benefits and a standardized way of working. Understanding the differences between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
 
 The guide outlines the following steps:
 
