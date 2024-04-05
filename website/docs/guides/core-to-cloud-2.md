@@ -132,7 +132,7 @@ After setting the foundations of dbt Cloud, it's important to validate your migr
 
 - **Review your dbt project:** Ensure your project compiles correctly and that you can run commands. Make sure your models are accurate and monitor performance post-move.
 - **Start cutover:** You can start the cutover to dbt Cloud by creating a dbt Cloud job with commands that only run a small subset of the DAG. Validate the tables are being populated in the proper database/schemas as expected. Then continue to expand the scope of the job to include more sections of the DAG as you gain confidence in the results.
-- **Precision in testing:** Use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
+- **Precision testing:** Use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
 - **Access and permissions**: Review and adjust [access controls and permissions](/docs/cloud/manage-access/about-user-access) within dbt Cloud to maintain security protocols and safeguard your data.
 
 ## Transition and training
