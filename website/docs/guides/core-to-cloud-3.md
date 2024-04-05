@@ -58,7 +58,7 @@ A web-based interface for building, testing, running, and version-controlling db
 **Who might prefer the dbt Cloud IDE?**
 
 - New dbt users or those transitioning from other tools who appreciate a more guided experience through a browser-based interface.
-- Team members focused on development speed and convenience, including analysts and less technical stakeholders.
+- Team members focused on development speed and convenience.
 - Individuals who prioritize direct feedback from the IDE, such as seeing unsaved changes.
 
 **Key features**
