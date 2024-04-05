@@ -23,7 +23,7 @@ With the current Preview, dbt Explorer is available to everyone on the dbt Cloud
 
 <expandable alt_header="What happened to dbt Docs?" >
 
-dbt Explorer will become the default documentation experience for dbt Cloud customers. dbt Docs is still available but doesn't offer the same speed, metadata, or visibility as dbt Explorer and will become a legacy feaure.
+dbt Explorer is the default documentation experience for dbt Cloud customers. dbt Docs is still available but doesn't offer the same speed, metadata, or visibility as dbt Explorer and will become a legacy feature.
 
 </expandable>
 
