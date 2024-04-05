@@ -118,7 +118,7 @@ Use [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) to seamlessly integrate
 - To use [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with dbt Cloud (either with the dbt Cloud CLI or dbt Cloud IDE). Cross-project references are not supported in dbt Core.
 - Link models across projects for a modular and scalable approach for your project and teams.
 - Manage access to your dbt models both within and across projects using:
-  - **[Groups](/docs/collaborate/govern/model-access#groups)** - Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
+  - **[Groups](/docs/collaborate/govern/model-access#groups)** &mdash; Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
   - **[Access](/docs/collaborate/govern/model-access#access-modifiers)** - Control who can reference models.
   - **[Model Versions](/docs/collaborate/govern/model-versions)** - Enable adoption and deprecation of models as they evolve.
   - **[Model Contracts](/docs/collaborate/govern/model-contracts)** -Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
