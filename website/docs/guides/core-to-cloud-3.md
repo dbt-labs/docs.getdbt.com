@@ -2,7 +2,7 @@
 title: 'Move from dbt Core to dbt Cloud: Optimization tips'
 id: core-to-cloud-3
 description: "Use this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
-hoverSnippet: "se this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
+hoverSnippet: "Use this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Migration','dbt Core','dbt Cloud']
@@ -22,7 +22,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 <CoretoCloudTable/>
 
 ## What you'll learn
-If you're reading this guide, you may have already started your move to dbt Cloud and are looking for tips to help you optimize your dbt Cloud experience, including tips and caveats for the following areas:
+You may have already started your move to dbt Cloud and are looking for tips to help you optimize your dbt Cloud experience. This guide includes tips and caveats for the following areas:
 
 - [Adapters and connections](https://docs.getdbt.com/guides/core-to-cloud-3?step=3) 
 - [Development tools](https://docs.getdbt.com)/guides/core-to-cloud-3?step=4) 
@@ -44,40 +44,40 @@ In dbt Cloud, you can natively connect to your data platform and test its [conn
 
 ### Caveats
 - Not all parameters are available for adapters.
-- One project can only use one warehouse type.
+- A project can only use one warehouse type.
 
 ## Development tools
 
 dbt Cloud empowers data practitioners to develop in the tool of their choice. It ships with a [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) (local) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (browser-based) to build, test, run, and version control your dbt projects.
 
-Both development tools are tailored to suit different roles and preferences within your team. To streamline your team’s workflow, it's important to know who is likely to prefer the dbt Cloud IDE and who might lean towards the dbt Cloud CLI. This section is a little different to the others and aims to clarify these preferences.
+Both development tools are tailored to suit different audiences and preferences within your team. To streamline your team’s workflow, it's important to know who will prefer the dbt Cloud IDE and who might lean towards the dbt Cloud CLI. This section aims to clarify these preferences.
 
 ### dbt Cloud IDE
-A single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database.
+A web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. The dbt Cloud IDE makes developing fast and easy for new and seasoned data practitioners to build and test changes.
 
 **Who might prefer the dbt Cloud IDE?**
 
 - New dbt users or those transitioning from other tools who appreciate a more guided experience through a browser-based interface.
-- Team members focused on development speed and convenience, including analysts and less technical stakeholders.
+- Team members focused on development speed and convenience.
 - Individuals who prioritize direct feedback from the IDE, such as seeing unsaved changes.
 
 **Key features**
 
-- The dbt Cloud IDE has a simplified Git functionality:
+- The dbt Cloud IDE has simplified Git functionality:
   - Create feature branches from the branch configured in the development environment.
   - View saved but not-committed code changes directly in the IDE.
 - [Format or lint](/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
 - Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in dbt Cloud's infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
-The dbt Cloud IDE provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the dbt Cloud IDE due to its focus on simplicity and audience:
+The dbt Cloud IDE provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the dbt Cloud IDE due to its focus on simplicity and ease of use:
 
 - Pre-commit for automated checks before *committing* code is not available (yet).
 - Mass-generating files / interacting with the file system are not available.
-- Combining/piping commands, such as `dbt run -s (bash command)` is not available.
+- Combining/piping commands, such as `dbt run -s (bash command)`, is not available.
 
 ### dbt Cloud CLI
-The dbt Cloud CLI allows you to run dbt commands against your dbt Cloud development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
+The dbt Cloud CLI allows you to run dbt [commands](/reference/dbt-commands#available-commands) against your dbt Cloud development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
 
 **Who might prefer the dbt Cloud CLI?**
 
@@ -93,13 +93,13 @@ The dbt Cloud CLI allows you to run dbt commands against your dbt Cloud developm
 
 ## Orchestration
 
-dbt Cloud provides a robust orchestration that enables users to schedule, run, and monitor dbt jobs with ease. Here are some tips and caveats to consider when using dbt Cloud's orchestration features:
+dbt Cloud provides robust orchestration that enables you to schedule, run, and monitor dbt jobs with ease. Here are some tips and caveats to consider when using dbt Cloud's orchestration features:
 
 ### Tips
 
 - Enable [partial parsing](/docs/deploy/deploy-environments#partial-parsing) between jobs in dbt Cloud to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
 - [Run multiple CI/CD](/docs/deploy/continuous-integration) jobs at the same time which will not block production runs. The Job scheduler automatically cancels stale runs  when a newer commit is pushed. This is because each PR will run in its own schema.
-- dbt Cloud automatically cancels a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
+- dbt Cloud automatically [cancels](/docs/deploy/job-scheduler#run-cancellation-for-over-scheduled-jobs) a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
 - Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/deploy/deploy-environments#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="enterprise"/>
 - [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion--) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="team,enterprise"/>
 - [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
@@ -118,10 +118,10 @@ Use [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) to seamlessly integrate
 - To use [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with dbt Cloud (either with the dbt Cloud CLI or dbt Cloud IDE). Cross-project references are not supported in dbt Core.
 - Link models across projects for a modular and scalable approach for your project and teams.
 - Manage access to your dbt models both within and across projects using:
-  - **[Groups](/docs/collaborate/govern/model-access#groups)** - Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
-  - **[Access](/docs/collaborate/govern/model-access#access-modifiers)** - Control who can reference models.
-  - **[Model Versions](/docs/collaborate/govern/model-versions)** - Enable adoption and deprecation of models as they evolve.
-  - **[Model Contracts](/docs/collaborate/govern/model-contracts)** -Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
+  - **[Groups](/docs/collaborate/govern/model-access#groups)** &mdash; Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
+  - **[Model Access](/docs/collaborate/govern/model-access#access-modifiers)** &mdash; Control who can reference models.
+  - **[Model Versions](/docs/collaborate/govern/model-versions)** &mdash; Enable adoption and deprecation of models as they evolve.
+  - **[Model Contracts](/docs/collaborate/govern/model-contracts)** &mdash; Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
 - Use [dbt-meshify](https://github.com/dbt-labs/dbt-meshify) to separate your mono-repo and move to dbt Cloud.
 
 ### Caveat
