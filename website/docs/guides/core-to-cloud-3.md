@@ -156,11 +156,9 @@ If you need any additional help or have some questions, you can reach out to us 
 - Join the [dbt Community](https://community.getdbt.com/) to connect with other dbt users, ask questions, and share best practices.
 - Subscribe to the [dbt Cloud RSS alerts](https://status.getdbt.com/)
 - Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. [Book a demo](https://www.getdbt.com/contact) to learn more.
-
-....we’re happy to help!
+- [How dbt CLou compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.
 
 For tailored assistance, you can use the following resources:
 
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and move.
-

@@ -191,5 +191,6 @@ For next steps, you can continue exploring our 3-part-guide series on moving fro
 - [Learn dbt Cloud](https://courses.getdbt.com/collections) courses
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
+- [How dbt CLou compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.
 
 </ConfettiTrigger>
