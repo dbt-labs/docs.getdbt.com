@@ -75,7 +75,7 @@ Once the benefits of a consolidated platform are clear, move the rest of your te
 
 Assess the users or personas involved in the pre-move, during the move, and post-move.
 - **Administrators**: Plan for new access controls in dbt Cloud, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
-- **Data developers** (Data analysts, Data engineers, Analytics engineers, Business analysts): Determine onboarding order, workflow adaptation in dbt Cloud, training on dbt Cloud CLI or dbt Cloud IDE usage, and role changes.
+- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in dbt Cloud, training on dbt Cloud CLI or dbt Cloud IDE usage, and role changes.
 - **Data consumers:** Discover data insights by using [dbt Explorer](/docs/collaborate/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
 
 </expandable>
