@@ -50,23 +50,47 @@ In dbt Cloud, you can natively connect to your data platform and test its [conn
 
 dbt Cloud empowers data practitioners to develop in the tool of their choice. It ships with a [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) (local) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (browser-based) to build, test, run, and version control your dbt projects.
 
-Here are some tips and caveats to consider when using dbt Cloud's development tools:
+Both development tools are tailored to suit different roles and preferences within your team. To streamline your team’s workflow, it's important to know who is likely to prefer the dbt Cloud IDE and who might lean towards the dbt Cloud CLI. This section is a little different to the others and aims to clarify these preferences.
 
-### Tips
+### dbt Cloud IDE
+A single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database.
+
+**Who might prefer the dbt Cloud IDE?**
+
+- New dbt users or those transitioning from other tools who appreciate a more guided experience through a browser-based interface.
+- Team members focused on development speed and convenience, including analysts and less technical stakeholders.
+- Individuals who prioritize direct feedback from the IDE, such as seeing unsaved changes.
+
+**Key features**
 
 - The dbt Cloud IDE has a simplified Git functionality:
   - Create feature branches from the branch configured in the development environment.
   - View saved but not-committed code changes directly in the IDE.
-  - [Format or lint](/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
-- Advanced users who prefer to have more control over their Git commands can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), allowing users to run dbt commands against their dbt Cloud development environment from their local command line with minimal configuration.
+- [Format or lint](/docs/cloud/dbt-cloud-ide/lint-format) your code with `sqlfluff` or `sqlfmt`. This includes support for adding your custom linting rules.
 - Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
 - Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in dbt Cloud's infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
 
-### Caveats
+The dbt Cloud IDE provides a simplified interface that's accessible to all users, regardless of their technical background. However, there are some capabilities that are intentionally not available in the dbt Cloud IDE due to its focus on simplicity and audience:
+
 - Pre-commit for automated checks before *committing* code is not available (yet).
 - Mass-generating files / interacting with the file system are not available.
 - Combining/piping commands, such as `dbt run -s (bash command)` is not available.
-  
+
+### dbt Cloud CLI
+The dbt Cloud CLI allows you to run dbt commands against your dbt Cloud development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
+
+**Who might prefer the dbt Cloud CLI?**
+
+- Experienced dbt users and developers looking for granular control over their Git workflows.
+- Data engineers and practitioners who need to perform complex operations, like mass file generation or specific command combinations.
+
+**Key features**
+
+- Allows users to run dbt commands against their dbt Cloud development environment from their local command line with minimal configuration.
+- Allows users to natively [defer to production](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli) metadata directly in their development workflows, reducing the number of objects.
+- Support running multiple dbt commands at the same time through [safe parallel execution](/reference/dbt-commands#parallel-execution), a [feature](/docs/cloud/about-cloud/dbt-cloud-features) available in dbt Cloud's infrastructure. In contrast, `dbt-core` *doesn't support* safe parallel execution for multiple invocations in the same process.
+- Able to use Visual Studio (VS) Code extensions (such as [dbt-power-user](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user) to enhance the development experience by adding extra functionalities.
+
 ## Orchestration
 
 dbt Cloud provides a robust orchestration that enables users to schedule, run, and monitor dbt jobs with ease. Here are some tips and caveats to consider when using dbt Cloud's orchestration features:
@@ -81,7 +105,7 @@ dbt Cloud provides a robust orchestration that enables users to schedule, run, a
 - [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
 
 ### Caveats
-- To store your job configurations as code within a repository, you can:
+- To automate the setup and configuration of your dbt Cloud platform, you can store your job configurations as code within a repository:
   - Check out our [Terraform provider.](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job)
   - Alternatively, check out our [jobs-as-code](https://github.com/dbt-labs/dbt-jobs-as-code) repository, which is a tool built to handle dbt Cloud jobs as a well-defined YAML file.
 - dbt Cloud users and external emails can receive notifications if a job fails, succeeds, or is cancelled. To get notifications for warnings, you can create a [webhook subscription](/guides/zapier-slack) and post to Slack.
