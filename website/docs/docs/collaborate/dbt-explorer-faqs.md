@@ -131,7 +131,7 @@ Yes. Column-level lineage is available through a beta endpoint using the [Discov
 
 <expandable alt_header="Can column descriptions be propagated down in downstream lineage automatically?" >
 
-Not currently, but this type of functionality is planned in future releases.
+Not currently, but this type of functionality is planned for future releases.
 
 </expandable>
 
