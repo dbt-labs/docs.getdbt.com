@@ -55,7 +55,7 @@ Yes. The lineage that powers dbt Explorer is also available through the Discover
 
 <expandable alt_header="How does dbt Explorer integrate with third-party tools to show end-to-end lineage?" >
 
-dbt Explorer reflects all the lineage defined within the dbt project. Our vision for dbt Explorer will be to incorporate additional metadata from external tools like data loaders (sources) and BI/analytics tools (exposures) integrated with dbt Cloud, all seamlessly incorporated into the lineage of the dbt Cloud project.
+dbt Explorer reflects all the lineage defined within the dbt project. Our vision for dbt Explorer is to incorporate additional metadata from external tools like data loaders (sources) and BI/analytics tools (exposures) integrated with dbt Cloud, all seamlessly incorporated into the lineage of the dbt Cloud project.
 
 </expandable>
 
