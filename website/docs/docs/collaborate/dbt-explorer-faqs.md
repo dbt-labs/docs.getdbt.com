@@ -17,7 +17,7 @@ dbt Explorer makes it easy and intuitive to understand your entire lineage &mdas
 
 <expandable alt_header="How is dbt Explorer priced?" >
 
-With the current Public Preview, dbt Explorer is available to everyone on the dbt Cloud Enterprise and Team plans. Certain features within dbt Explorer, such as multi-project lineage and column-level lineage, are only available on the Enterprise plan. dbt Explorer can be accessed by users with developer and read-only seats during the Public Preview period.
+With the current Preview, dbt Explorer is available to everyone on the dbt Cloud Enterprise and Team plans. Certain features within dbt Explorer, such as multi-project lineage and column-level lineage, are only available on the Enterprise plan. dbt Explorer can be accessed by users with developer and read-only seats during the Preview period.
 
 </expandable>
 
@@ -165,7 +165,7 @@ No. dbt Explorer is a dbt Cloud-only product experience.
 
 <expandable alt_header="Is it possible to access dbt Explorer using a read-only license?" >
 
-Yes, during the current Public Preview period. 
+Yes, during the current Preview period. 
 
 </expandable>
 
