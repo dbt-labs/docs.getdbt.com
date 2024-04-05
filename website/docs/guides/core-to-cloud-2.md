@@ -31,7 +31,7 @@ The guide outlines the following steps:
 - [Test and validate](https://docs.getdbt.com/guides/core-to-cloud-2?step=6): Discover how to ensure model accuracy and performance post-move,.
 - [Transition and training](https://docs.getdbt.com/guides/core-to-cloud-2?step=7): Learn how to fully transition to dbt Cloud and what training and support you may need. 
 - [Summary](https://docs.getdbt.com//guides/core-to-cloud-2?step=8): Summarizes key takeaways and what you've learned in this guide.
-- [What's next?](https://docs.getdbt.com//guides/core-to-cloud-2?step=9): Introduces what to expect in the following guides.
+- [What's next?](https://docs.getdbt.com/guides/core-to-cloud-2?step=9): Introduces what to expect in the following guides.
 
 ## Considerations
 
@@ -191,6 +191,6 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 - [Learn dbt Cloud](https://courses.getdbt.com/collections) courses
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
-- [How dbt CLou compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.
+- [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.
 
 </ConfettiTrigger>
