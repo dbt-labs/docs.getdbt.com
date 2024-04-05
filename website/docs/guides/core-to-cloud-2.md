@@ -120,7 +120,7 @@ This provides developers with the benefits of an enhanced workflow while ensurin
 
 ## Move to dbt Cloud
 
-After reviewing the considerations and planning your move, you may want to start moving your dbt Core project to dbt Cloud &mdash; check out the detailed [Move to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1) guide for useful tasks and insights for a smooth move from dbt Core to dbt Cloud.
+After reviewing the considerations and planning your move, you may want to start moving your dbt Core project to dbt Cloud. Check out the detailed [Move to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1) guide for useful tasks and insights for a smooth transition from dbt Core to dbt Cloud.
 
 This guide is your roadmap to help you think about migration strategies and what moving from dbt Core to dbt Cloud would look like. 
 
