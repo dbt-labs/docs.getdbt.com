@@ -70,7 +70,12 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
 
 
 ## Creating Saved selections
-Saved Selections allow you to save your inputs that you've created in the query builder and easily access them again so you don't have to continuously build common queries from scratch. These selections will be saved by your Google Sheets application and are viewable and editable from the hamburger menu under "Saved Selections". You can also make these selections private or public. Public selections will be available in the menu to everyone in the sheet whereas private ones will only be visible to you.
+Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. 
+
+The Google Sheets application saves these selections, allowing you to view and edit them from the hamburger menu under **Saved Selections**. You can also make these selections private or public:
+
+- Public selections mean your inputs are available in the menu to everyone on the sheet.
+- Private selections mean your inputs are only visible to you.
 
 
 ## Using Saved Queries in Google Sheets
