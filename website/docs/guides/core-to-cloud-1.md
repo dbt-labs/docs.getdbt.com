@@ -1,8 +1,8 @@
 ---
 title: 'Move from dbt Core to dbt Cloud: Get started'
+id: core-to-cloud-1
 description: "Learn how to move from dbt Core to dbt Cloud and what you need to get started."
 hoverSnippet: "Learn how to move from dbt Core to dbt Cloud."
-sidebar_position: 2
 icon: 'guides'
 time_to_complete: 'Total estimated time: 3-4 hours'
 hide_table_of_contents: true

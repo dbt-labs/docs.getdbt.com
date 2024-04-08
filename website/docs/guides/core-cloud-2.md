@@ -1,8 +1,8 @@
 ---
 title: 'Move from dbt Core to dbt Cloud: What you need to know'
+id: core-cloud-2
 description: "Use this guide to understand the considerations and methods you need to move from dbt Core to dbt Cloud."
 hoverSnippet: "Use this guide to understand the considerations and methods you need to move from dbt Core to dbt Cloud."
-sidebar_position: 1
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Migration','dbt Core','dbt Cloud']
