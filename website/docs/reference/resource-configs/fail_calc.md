@@ -11,6 +11,29 @@ Most tests do not use the `fail_calc` config, preferring to return a count of fa
 
 For instance, you can configure a `unique` test to return `sum(n_records)` instead of `count(*)` as the failure calculation: that is, the number of rows in the model containing a duplicated column value, rather than the number of distinct column values that are duplicated.
 
+:::tip Tip
+Beware using functions like `sum()` for `fail_calc` in any test that has the potential to return no rows at all.
+
+Such a test would break (neither pass nor fail), and return the following error: 
+
+```
+None is not of type 'integer'
+
+Failed validating 'type' in schema['properties']['failures']:
+    {'type': 'integer'}
+
+On instance['failures']:
+    None
+```
+
+This scenario can be handled with a case statement that returns `0` when there are no rows:
+
+```yaml
+fail_calc: "case when count(*) > 0 then sum(n_records) else 0 end"
+```
+
+:::
+
 <Tabs
   defaultValue="specific"
   values={[
