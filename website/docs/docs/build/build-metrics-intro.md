@@ -5,7 +5,7 @@ description: "Learn about MetricFlow and build your metrics with semantic models
 sidebar_label: Build your metrics
 tags: [Metrics, Semantic Layer, Governance]
 hide_table_of_contents: true
-pagination_next: "docs/build/sl-getting-started"
+pagination_next: "guides/quickstart-sl"
 pagination_prev: null
 ---
 

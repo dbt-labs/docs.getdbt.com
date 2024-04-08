@@ -302,7 +302,11 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
-            "guides/quickstart-sl",
+            {
+              type: "link",
+              label: "Quickstart with the dbt Semantic Layer",
+              href: `/guides/quickstart-sl`,
+            },
             {
               type: "category",
               label: "About MetricFlow",
@@ -503,7 +507,11 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
         "docs/use-dbt-semantic-layer/dbt-sl",
-        "guides/quickstart-sl",
+        {
+          type: "link",
+          label: "Quickstart with the dbt Semantic Layer",
+          href: `/guides/quickstart-sl`,
+        },
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",

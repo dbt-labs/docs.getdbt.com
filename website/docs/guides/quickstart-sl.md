@@ -1,18 +1,19 @@
 ---
-title: "Get started with the dbt Semantic Layer, with Snowflake"
+title: "Quickstart with the dbt Semantic Layer and Snowflake"
 id: quickstart-sl
 description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
-sidebar_label: "Get started with the dbt Semantic Layer"
+sidebar_label: "Quickstart with the dbt Semantic Layer and Snowflake"
 meta:
   api_name: dbt Semantic Layer APIs
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Semantic Layer','Quickstart']
+tags: ['Semantic Layer', 'Snowflake', 'dbt Cloud','Quickstart']
 keywords: ['dbt Semantic Layer','Metrics','dbt Cloud', 'Snowflake', 'Google Sheets']
 level: 'Intermediate'
 recently_updated: true
 ---
 
+<!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) -->
 import CreateModel from '/snippets/_sl-create-semanticmodel.md';
 import DefineMetrics from '/snippets/_sl-define-metrics.md';
 import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
@@ -29,44 +30,44 @@ import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
  
  </VersionBlock>
 
+## Introduction 
+
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools.
 
 MetricFlow, a powerful component of the dbt Semantic Layer, simplifies the creation and management of company metrics. It offers flexible abstractions, SQL query generation, and enables fast retrieval of metric datasets from a data platform.
-
-## Introduction 
-In this quickstart guide, you'll learn how to build and define metrics, configure the Semantic Layer in dbt Cloud project, with Snowflake as your data warehouse. It will show you how to:
-
-- Create a new Snowflake worksheet.
-- Load sample data into your Snowflake account.
-- Connect dbt Cloud to Snowflake.
-- Build out an example dbt Cloud project
-- Create a semantic model in dbt Cloud using MetricFlow
-- Define metrics in dbt using MetricFlow
-- Test and query metrics with MetricFlow
-- Run a production job in dbt Cloud
-- Set up dbt Semantic Layer in dbt Cloud
-- Connect and query with Google Sheets with dbt Cloud
-
-
-MetricFlow allows you to define metrics in your dbt project and query them whether in dbt Cloud or dbt Core with [MetricFlow commands](/docs/build/metricflow-commands).
-
-However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account.
 
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
+In this quickstart guide, you'll learn how to build and define metrics, configure the Semantic Layer in dbt Cloud project, with Snowflake as your data warehouse. It will show you how to:
+
+- Create a new Snowflake worksheet and set up your environment
+- Load sample data into your Snowflake account
+- Connect dbt Cloud to Snowflake
+- Build out an example dbt Cloud project
+- Create a semantic model in dbt Cloud
+- Define metrics in dbt Cloud
+- Test and query metrics in dbt Cloud
+- Run a production job in dbt Cloud
+- Set up dbt Semantic Layer in dbt Cloud
+- Connect and query with Google Sheets
+
+MetricFlow allows you to define metrics in your dbt project and query them whether in dbt Cloud or dbt Core with [MetricFlow commands](/docs/build/metricflow-commands).
+
+However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account.
+
 ## Prerequisites
 
-- You have a [dbt Cloud](https://www.getdbt.com/signup/) Team or Enterprise account
-  - Suitable for both Multi-tenant and Single-tenant deployment. Note, Single-tenant accounts should contact their account representative for necessary setup and enablement.
-- You have both your production and development environments running [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+- You have a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account. Suitable for both Multi-tenant and Single-tenant deployment. 
+  - Note, Single-tenant accounts should contact their account representative for necessary setup and enablement.
+- Both your production and development environments running [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
 - You have a [trial Snowflake account.](https://signup.snowflake.com/)
   - Select the Enterprise edition: During trial account creation, make sure to choose the Enterprise Snowflake edition so you have ACCOUNTADMIN access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms) in the Snowflake docs.
   - Choose a cloud provider and region: Before proceeding, you will need to select a cloud provider. For this setup, all cloud providers and regions will work so choose whichever you’d like.
-- Have a basic understanding of SQL and dbt (meaning you either used dbt before or completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course).
+- Basic understanding of SQL and dbt (meaning you either used dbt before or completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course).
 
-## Create a new Snowflake worksheet
+## Create new Snowflake worksheet and set up environment
 
 1. Log in to your trial Snowflake account.
 2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
@@ -74,12 +75,11 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ADD IMAGE HERE
 
-## Set up your Snowflake environment
+### Set up Snowflake environment
+
 The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
 
-1. Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for jaffle_shop data, the other for stripe data).
-
-To do this, run the following SQL commands one by one. Type them into the Editor of your new Snowflake SQL worksheet to set up your environment.
+1. Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for `jaffle_shop` data, the other for stripe data). To do this, run the following SQL commands one by one. Type them into the Editor of your new Snowflake SQL worksheet to set up your environment.
 
 2. Click **Run** in the upper right corner of the UI for each one:
 
@@ -96,104 +96,105 @@ create schema raw.jaffle_shop;
 create schema raw.stripe;
 ```
 
+## Load data into Snowflake
 Now that your environment is set up, you can start loading data into it. You will be working within the raw database, using the `jaffle_shop` and stripe schemas to organize your tables.
 
 1. Create customer table &mdash; First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the customer table in the `jaffle_shop` schema:
 
-```sql
-create table raw.jaffle_shop.customers
-( id integer,
-  first_name varchar,
-  last_name varchar
-);
-```
+  ```sql
+  create table raw.jaffle_shop.customers
+  ( id integer,
+    first_name varchar,
+    last_name varchar
+  );
+  ```
 
-You should see a ‘Table `CUSTOMERS` successfully created.’ message.
+  You should see a ‘Table `CUSTOMERS` successfully created.’ message.
 
 2. Load data &mdash; After creating the table, delete all contents in the Editor. Run this command to load data from the S3 bucket into the customer table:
 
-```sql
-copy into raw.jaffle_shop.customers (id, first_name, last_name)
-from 's3://dbt-tutorial-public/jaffle_shop_customers.csv'
-file_format = (
-    type = 'CSV'
-    field_delimiter = ','
-    skip_header = 1
-    );
-```
+  ```sql
+  copy into raw.jaffle_shop.customers (id, first_name, last_name)
+  from 's3://dbt-tutorial-public/jaffle_shop_customers.csv'
+  file_format = (
+      type = 'CSV'
+      field_delimiter = ','
+      skip_header = 1
+      );
+  ```
 
-You should see a confirmation message after running the command.
+  You should see a confirmation message after running the command.
 
 3. Create `orders` table  &mdash; Delete all contents in the Editor. Run the following command to create…
 
-```sql
-create table raw.jaffle_shop.orders
-( id integer,
-  user_id integer,
-  order_date date,
-  status varchar,
-  _etl_loaded_at timestamp default current_timestamp
-);
-```
+  ```sql
+  create table raw.jaffle_shop.orders
+  ( id integer,
+    user_id integer,
+    order_date date,
+    status varchar,
+    _etl_loaded_at timestamp default current_timestamp
+  );
+  ```
 
-You should see a confirmation message after running the command.
+  You should see a confirmation message after running the command.
 
 4. Load data &mdash;  Delete all contents in the Editor, then run this command to load data into the orders table:
 
-```sql
-copy into raw.jaffle_shop.orders (id, user_id, order_date, status)
-from 's3://dbt-tutorial-public/jaffle_shop_orders.csv'
-file_format = (
-    type = 'CSV'
-    field_delimiter = ','
-    skip_header = 1
-    );
+  ```sql
+  copy into raw.jaffle_shop.orders (id, user_id, order_date, status)
+  from 's3://dbt-tutorial-public/jaffle_shop_orders.csv'
+  file_format = (
+      type = 'CSV'
+      field_delimiter = ','
+      skip_header = 1
+      );
 
-```
+  ```
 
-You should see a confirmation message after running the command.
+  You should see a confirmation message after running the command.
 
 5. Create `payment` table &mdash; Delete all contents in the Editor. Run the following command to create the payment table:
 
-```sql
-create table raw.stripe.payment
-( id integer,
-  orderid integer,
-  paymentmethod varchar,
-  status varchar,
-  amount integer,
-  created date,
-  _batched_at timestamp default current_timestamp
-);
+  ```sql
+  create table raw.stripe.payment
+  ( id integer,
+    orderid integer,
+    paymentmethod varchar,
+    status varchar,
+    amount integer,
+    created date,
+    _batched_at timestamp default current_timestamp
+  );
 
-```
+  ```
 
-You should see a confirmation message after running the command.
+  You should see a confirmation message after running the command.
 
 6. Load data &mdash; Delete all contents in the Editor. Run the following command to load data into the payment table:
 
-```sql
-copy into raw.stripe.payment (id, orderid, paymentmethod, status, amount, created)
-from 's3://dbt-tutorial-public/stripe_payments.csv'
-file_format = (
-    type = 'CSV'
-    field_delimiter = ','
-    skip_header = 1
-    );
+  ```sql
+  copy into raw.stripe.payment (id, orderid, paymentmethod, status, amount, created)
+  from 's3://dbt-tutorial-public/stripe_payments.csv'
+  file_format = (
+      type = 'CSV'
+      field_delimiter = ','
+      skip_header = 1
+      );
 
-```
+  ```
 
-You should see a confirmation message after running the command.
+  You should see a confirmation message after running the command.
 
 7. Verify data &mdash; Verify that the data is loaded by running these SQL queries. Confirm that you can see output for each one, like the following confirmation image.
 
-```sql
-select * from raw.jaffle_shop.customers;
-select * from raw.jaffle_shop.orders;
-select * from raw.stripe.payment;
-```
+  ```sql
+  select * from raw.jaffle_shop.customers;
+  select * from raw.jaffle_shop.orders;
+  select * from raw.stripe.payment;
+  ```
 
-ADD IMAGE HERE
+  <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-snowflake-confirm.jpg" width="90%" title="The image displays Snowflake's confirmation output when data loaded correctly in the Editor." />
 
 ## Connect dbt Cloud to Snowflake
 
@@ -290,7 +291,11 @@ Now that you have a repository configured, you can initialize your project and s
       ```
     - In the command line bar at the bottom, enter dbt run and click Enter. You should see a dbt run succeeded message.
 
-## Building out your project: Adding sources
+## Build your dbt project
+The next step is to build your project. This involves adding sources, staging models, business-defined entities, and packages to your project.
+
+### Add sources
+
 [Sources](/docs/build/sources) in dbt are the raw data tables you'll transform. By organizing your source definitions, you document the origin of your data. It also makes your project and transformation more reliable, structured, and understandable. Let’s add our sources now.
 
 You have two options for working with files in the dbt Cloud IDE:
@@ -316,7 +321,9 @@ sources:
      - name: orders
 ```
 
+:::tip
 In your source file, you can also use the **Generate model** button to create a new model file for each source. This will create a new file in the models directory with the given source name and fill in the SQL code of the source definition.
+:::
 
 4. Hover over the `models` directory and click the **...**, then select **Create file**.
 5. Name the file `staging/stripe/stripe.yml` , then click **Create**.
@@ -333,22 +340,32 @@ sources:
      - name: payment
 ```
 
-## Building out your project: Adding staging models
+### Add staging models
 [Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in dbt. They clean and prepare your raw data, making it ready for more complex transformations and analyses. Follow these steps to add your staging models to your project.
 
 1. Create the file `models/staging/jaffle_shop/stg_customers.sql`. Or you can use the **Generate model** button to create a new model file for each source.
 2. Copy the following query into the file and click **Save**.
+
+```sql
+  select
+   id as customer_id,
+   first_name,
+   last_name
+from {{ source('jaffle_shop', 'customers') }}
+```
+
 3. Create the file `models/staging/jaffle_shop/stg_orders.sql`
 4. Copy the following query into the file and click **Save**.
 
 ```sql
-select
-   id as order_id,
-   user_id as customer_id,
-   order_date,
-   status
-from {{ source('jaffle_shop', 'orders') }}
+  select
+    id as order_id,
+    user_id as customer_id,
+    order_date,
+    status
+  from {{ source('jaffle_shop', 'orders') }}
 ```
+
 5. Create the file `models/staging/stripe/stg_payments.sql`.
 6. Copy the following query into the file and click **Save**.
 
@@ -365,10 +382,14 @@ select
 
 from {{ source('stripe', 'payment') }}
 ```
+
 7. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-## Finishing up building your project
-This phase involves creating[ models that serve as the entity layer or concept layer of your dbt project](/best-practices/how-we-structure/4-marts), making the data ready for reporting and analysis.  It also includes adding [packages](/docs/build/packages) and the [MetricFlow time spine](/docs/build/metricflow-time-spine) that extend dbt's functionality.
+### Add business-defined entities
+
+This phase involves creating [models that serve as the entity layer or concept layer of your dbt project](/best-practices/how-we-structure/4-marts), making the data ready for reporting and analysis.  It also includes adding [packages](/docs/build/packages) and the [MetricFlow time spine](/docs/build/metricflow-time-spine) that extend dbt's functionality.
+
+This phase is the [marts layer](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview), which brings together modular pieces into a wide, rich vision of the entities an organization cares about.
 
 1. Create the file `models/marts/fct_orders.sql`.
 2. Copy the following query into the file and click **Save**.
@@ -483,34 +504,37 @@ final as (
 select * from final
 
 ```
+
 9. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run popup and also see in the run details that dbt has successfully built five models.
 
-## Semantic models
+## Create semantic models
+
 The following steps describe how to set up [semantic models](/docs/build/semantic-models). Semantic models contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
-- Each semantic model will be 1:1 with a dbt SQL/python model
+- Each semantic model will be 1:1 with a dbt SQL/Python model
 - Each semantic model will contain (at most) 1 primary or natural entity
 - Each semantic model will contain zero, one, or many foreign or unique entities used to connect to other entities
-- Each semantic model may also contain dimensions, measures, and metrics–the stuff that actually gets fed into and queried by your downstream BI tool.
+- Each semantic model may also contain dimensions, measures, and metrics &mdash; this is what actually gets fed into and queried by your downstream BI tool.
 
-Semantic models define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
+In the following steps, semantic models help us define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
 
 1. Create a new file `models/metrics/fct_orders.yml` 
 2. Add the following code to that newly created file:
 
-```sql
-   semantic_models:
- - name: orders
-   description: |
-     Order fact table. This table’s grain is one row per order.
-   model: ref('fct_orders')
+```yaml
+semantic_models:
+  - name: orders
+    description: |
+      Order fact table. This table’s grain is one row per order.
+    model: ref('fct_orders')
+
 ```
 
 The following section will explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
 
-- Dimensions allow us to categorize and filter data, making it easier to organize.
-- Entities act as unique identifiers (like ID columns) that link data together from different tables.
-- Measures help us calculate data, providing valuable insights through aggregation.
+- [Entities](#entities) act as unique identifiers (like ID columns) that link data together from different tables.
+- [Dimensions](#dimensions) allow us to categorize and filter data, making it easier to organize.
+- [Measures](#measures) help us calculate data, providing valuable insights through aggregation.
 
 ### Entities
 
@@ -526,7 +550,8 @@ semantic_models:
     description: |
       Order fact table. This table’s grain is one row per order.
     model: ref('fct_orders')
-    entities: # Newly added
+    # Newly added
+    entities: 
       - name: order_id
         type: primary
       - name: customer_id
@@ -552,7 +577,8 @@ semantic_models:
         type: primary
       - name: customer_id
         type: foreign  
-    dimensions:   # Newly added
+    # Newly added
+    dimensions:   
      - name: order_date
        type: time
        type_params:
@@ -583,7 +609,8 @@ semantic_models:
         type: time
         type_params:
           time_granularity: day
-    measures:   ## Newly added
+    # Newly added      
+    measures:   
       - name: order_total
         description: The total amount for each order including taxes.
         agg: sum
@@ -604,15 +631,19 @@ semantic_models:
           use_approximate_percentile: False
 ```
 
-## Metrics
+## Define metrics
 
-[Metrics](/docs/build/metrics-overview) are the language your business users speak and measure business performance. To be technical about it, they are an aggregation over a column in your warehouse that you enrich with dimensional cuts. Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics. There are a few different types of metrics we can configure.
+[Metrics](/docs/build/metrics-overview) are the language your business users speak and measure business performance. To be technical about it, they are an aggregation over a column in your warehouse that you enrich with dimensional cuts.
 
-- **[Conversion metrics](/docs/build/conversion)**: Track when a base event and a subsequent conversion event occur for an entity within a set time period. 
-- [**Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics):** Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the time spine model before you add cumulative metrics.
-- [**Derived metrics](/docs/build/metrics-overview#derived-metrics): Allows you to do calculations on top of metrics.
-- [**Simple metrics**](/docs/build/metrics-overview#simple-metrics): Directly reference a single measure, without any additional measures involved.
-- [**Ratio metrics](/docs/build/metrics-overview#ratio-metrics):** Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
+There are different types of metrics you can configure:
+
+- **[Conversion metrics](/docs/build/conversion)**: Track when a base event and a subsequent conversion event occur for an entity within a set time period.
+- **[Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics):** Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the time spine model before you add cumulative metrics.
+- **[Derived metrics](/docs/build/metrics-overview#derived-metrics)**: Allows you to do calculations on top of metrics.
+- **[Simple metrics](/docs/build/metrics-overview#simple-metrics)**: Directly reference a single measure, without any additional measures involved.
+- **[Ratio metrics](/docs/build/metrics-overview#ratio-metrics):** Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
+
+Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics:
 
 1. Add metrics to your `fct_orders.yml` semantic model file:
 
@@ -770,9 +801,19 @@ This semantic model uses simple metrics to focus on customer metrics and emphasi
 
 ## Test and query metrics
 
+<!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) 
+
+https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-test-and-query-metrics.md
+-->
+
 <TestQuery />
 
 ## Run a production job
+
+<!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) 
+
+https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-run-prod-job.md
+-->
 
 <RunProdJob/>
 
@@ -786,16 +827,34 @@ This semantic model uses simple metrics to focus on customer metrics and emphasi
 
 ## Set up dbt Semantic Layer
 
+<!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) 
+
+https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_new-sl-setup.md
+-->
+
 <SlSetUp/>
 
 ## Connect and query with Google Sheets
+
+<!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) 
+
+https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-connect-and-query-api.md
+-->
 
 <ConnectQueryAPI/>
 
 ## What's next
 
-Great job, you've configured the Semantic Layer 🎉! You've learned how to build and define metrics, configure the Semantic Layer in dbt Cloud project, with Snowflake, and query metrics with Google Sheets.
+<ConfettiTrigger>
 
+Great job on completing the dbt Semantic Layer guide 🎉! You've learned:
+- How to build and define metrics
+- Configure the dbt Semantic Layer in a dbt Cloud project
+- Query metrics with Google Sheets
+
+</ConfettiTrigger>
+
+Here are some additional resources to help you continue your journey:
 
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)

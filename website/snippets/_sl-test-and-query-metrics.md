@@ -1,24 +1,24 @@
-This section explains how you can test and run MetricFlow commands with dbt Cloud or dbt Core (dbt Cloud IDE support coming soon). dbt Cloud IDE users can skip to [Run a production job](#run-a-production-job) to run a model.
+This section explains how you can validate or run commands with dbt Cloud or dbt Core (dbt Cloud IDE support coming soon).
 
-:::important Testing and querying metrics in the dbt Cloud IDE is currently not supported
+:::important Validating and querying metrics in the dbt Cloud IDE is currently not supported
 
-Support for running [MetricFlow commands](/docs/build/metricflow-commands) in the dbt Cloud IDE is not available but is coming soon. 
+Support for running [MetricFlow commands](/docs/build/metricflow-commands) in the dbt Cloud IDE is not available but is coming soon.
 
-You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. Alternatively, you can run commands with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or with SQL client tools like DataGrip, DBeaver, or RazorSQL.
+You can use the **Preview** or **Compile** buttons in the IDE, or use the DAG for semantic validations and make sure your metrics are defined. Alternatively, you can run commands with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or with SQL client tools like DataGrip, DBeaver, or RazorSQL.
 
 :::
 
 <Tabs>
 
-<TabItem value="cloud" label="dbt Cloud CLI">
+<TabItem value="cloudide" label="dbt Cloud IDE">
 
-You can validate your metrics in the dbt Cloud IDE by selecting the metric you want to validate and viewing it in the **Lineage** tab.
+You can validate your metrics in the dbt Cloud IDE by selecting the metric you want to validate and viewing it in the **Lineage** tab. (Suport for running commands in the dbt Cloud IDE support coming soon).
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-ide-dag.jpg" title="Validate your metrics using the Lineage tab in the IDE." />
 
 </TabItem>
 
-<TabItem value="cloud" label="dbt Cloud CLI">
+<TabItem value="cloudcli" label="dbt Cloud CLI">
 
 This section is for people using the dbt Cloud CLI (support for dbt Cloud IDE is coming soon). With dbt Cloud:
 
@@ -67,6 +67,3 @@ The dbt Cloud CLI is strongly recommended to define and query metrics for your d
 </TabItem>
 
 </Tabs>
-
-To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata).
-
