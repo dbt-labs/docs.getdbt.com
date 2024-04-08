@@ -6,7 +6,7 @@
       "source": "/docs/deploy/job-notifications#slack-notifications",
       "destination": "/docs/cloud/slack-integration",
       "permanent": true
-    }
+    },
     {
       "source": "/docs/cloud/manage-access/set-up-sso-azure-active-directory",
       "destination": "/docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
