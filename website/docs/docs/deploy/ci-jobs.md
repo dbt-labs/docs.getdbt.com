@@ -90,7 +90,7 @@ Create a job that dbt Cloud will invoke when a pull request merges in your Git r
     - **Job name** &mdash; Specify the name for the merge job.
     - **Description** &mdash; Provide a descripion about the job. 
     - **Environment** &mdash; By default, it’s set to your production environment.
-1. In the **Git trigger** section, enable **Run on merge** to run this job when a PR merges (to the main branch) in your Git repo.  
+1. In the **Git trigger** section, the **Run on merge** option is enabled by default. Every time a PR merges (to the main branch) in your Git repo, this job will get triggered to run. 
 1. In the **Execution settings** section, add the dbt commands that you want to invoke when this job runs. By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. For more [commands](/docs/deploy/job-commands), click **Add command**.
 1. (optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this job runs.
