@@ -74,7 +74,13 @@ Saved Selections allow you to save your inputs that you've created in the query 
 
 
 ## Using Saved Queries in Google Sheets
-Saved Queries (add link) in MetricFlow can be accessed in Google Sheets to quickly get results from these pre-defined sets of data. In the hamburger menu, navigate to "Saved Queries" to access the ones available to you. You can also choose "Customize", which allows you to jump off and explore from the existing query, but it will never change the query as defined in code. Note that for these saved queries, if a WHERE filter is defined in the query, we will surface the advanced syntax. 
+Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Google Sheets to quickly get results from pre-defined sets of data. 
+
+To access the saved queries in Google Sheets:
+1. Open the hamburger menu in Google Sheets.
+2. Navigate to "Saved Queries" to access the ones available to you. 
+3. You can also select **Customize**, which allows you to explore from the existing query. This won't change the original query that's defined in the code. 
+  - For saved queries, if you use a `WHERE` filter in a query, Google Sheets dispalys the advanced syntax for this filter.
 
 maybe: Note that difference between using Saved Queries and Saved Selections? Saved query = use predefined in-code input to get result, jump off. Saved selection =  create sets of things that can be re-used in gooogle sheets in the app, not in code (this includes saving the results from a saved query)
 
