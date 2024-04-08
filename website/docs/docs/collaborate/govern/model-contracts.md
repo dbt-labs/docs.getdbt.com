@@ -111,7 +111,7 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 <TabItem value="Redshift" label="Redshift">
 
 | Constraint type | Definable       | Enforced         |
-|:----------------|:-------------|:------------------|
+|:----------------|:-------------:|:------------------:|
 | not_null        | ✅ | ✅ |
 | primary_key     | ✅ | ❌ |
 | foreign_key     | ✅ | ❌ |
@@ -122,7 +122,7 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 <TabItem value="Snowflake" label="Snowflake">
 
 | Constraint type | Definable     | Enforced |
-|:----------------|:-------------|:---------------------|
+|:----------------|:-------------:|:---------------------:|
 | not_null        | ✅  | ✅ |
 | primary_key     | ✅  | ❌ |
 | foreign_key     | ✅  | ❌ |
@@ -133,7 +133,7 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 <TabItem value="BigQuery" label="BigQuery">
 
 | Constraint type | Definable     | Enforced |
-|:-----------------|:-------------|:---------------------|
+|:-----------------|:-------------:|:---------------------:|
 | not_null        | ✅ | ✅  |
 | primary_key     | ✅ | ❌  |
 | foreign_key     | ✅ | ❌  |
@@ -144,7 +144,7 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 <TabItem value="Postgres" label="Postgres">
 
 | Constraint type | Definable     | Enforced |
-|:----------------|:-------------|:--------------------|
+|:----------------|:-------------:|:--------------------:|
 | not_null        | ✅  |	✅  |
 | primary_key     | ✅  |	✅  |
 | foreign_key     | ✅  |	✅  |
@@ -157,7 +157,7 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 Currently, `not_null` and `check` constraints are enforced only after a model builds. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the "model contract" since these constraints can't be enforced at build time. This table will change as the features evolve.
 
 | Constraint type | Definable    | Enforced |
-|:----------------|:------------|:---------------------|
+|:----------------|:------------:|:---------------------:|
 | not_null        |	✅  | ❌ |
 | primary_key     |	✅  | ❌ |
 | foreign_key     |	✅  | ❌ |
@@ -170,7 +170,7 @@ Currently, `not_null` and `check` constraints are enforced only after a model bu
 Currently, `not_null` and `check` constraints are enforced only after a model builds. Because of this platform limitation, dbt considers these constraints supported but not enforced, which means they're not part of the "model contract" since these constraints can't be enforced at build time. This table will change as the features evolve.
 
 | Constraint type | Definable     | Enforced |
-|:----------------|:-------------|:---------------------|
+|:----------------|:-------------:|:---------------------:|
 | not_null        |	✅  | ❌ |
 | primary_key     | ✅  | ❌ |
 | foreign_key     |	✅  | ❌ |
