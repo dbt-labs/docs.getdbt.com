@@ -69,7 +69,7 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
    - Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar.
 
 
-## Creating Saved Selections
+## Creating Saved selections
 Saved Selections allow you to save your inputs that you've created in the query builder and easily access them again so you don't have to continuously build common queries from scratch. These selections will be saved by your Google Sheets application and are viewable and editable from the hamburger menu under "Saved Selections". You can also make these selections private or public. Public selections will be available in the menu to everyone in the sheet whereas private ones will only be visible to you.
 
 
