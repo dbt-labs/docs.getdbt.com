@@ -102,7 +102,7 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 
 - **Definable and enforced** &mdash; The model won't build if it violates the constraint.
 - **Definable and not enforced** &mdash; The platform supports specifying the type of constraint, but a model can still build even if building the model violates the constraint. This constraint exists for metadata purposes only. This approach is more typical in cloud data warehouses than in transactional databases, where strict rule enforcement is more common.
-- **Not difinable and not enforced** &mdash; You can't specify the type of constraint for the platform.
+- **Not definable and not enforced** &mdash; You can't specify the type of constraint for the platform.
 
 
 
