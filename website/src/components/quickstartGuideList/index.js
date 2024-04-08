@@ -45,6 +45,17 @@ function QuickstartList({ quickstartData }) {
     return Array.from(levels).map(level => ({ value: level, label: level }));
   }, [quickstartData]);
 
+  const updateUrlParams = (selectedTags, selectedLevel) => {
+    const params = new URLSearchParams();
+  
+    selectedTags.forEach(tag => params.append('tags', tag.value));
+    selectedLevel.forEach(level => params.append('level', level.value));
+
+    // Use history.pushState to update URL without reloading
+  const newUrl = `${window.location.pathname}?${params.toString()}`;
+  window.history.pushState({ path: newUrl }, '', newUrl);
+};
+
   // Handle all filters
   const handleDataFilter = () => {
     const filteredGuides = quickstartData.filter((guide) => {
@@ -61,7 +72,19 @@ function QuickstartList({ quickstartData }) {
   };
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tagsFromUrl = params.getAll('tags').map(tag => ({ value: tag, label: tag }));
+    const levelsFromUrl = params.getAll('level').map(level => ({ value: level, label: level }));
+    setSelectedTags(tagsFromUrl);
+    setSelectedLevel(levelsFromUrl)
+
+  // Ensure data is filtered based on URL parameters on initial load
+  handleDataFilter();
+}, []); // Empty dependency array means this effect runs once on mount
+
+  useEffect(() => {
     handleDataFilter();
+    updateUrlParams(selectedTags, selectedLevel); // Call this after filters are applied
   }, [selectedTags, selectedLevel, searchInput]);
 
   return (
@@ -81,10 +104,10 @@ function QuickstartList({ quickstartData }) {
       <section id='quickstart-card-section'>
         <div className={`container ${styles.quickstartFilterContainer} `}>
           {tagOptions && tagOptions.length > 0 && (
-            <SelectDropdown options={tagOptions} onChange={setSelectedTags} isMulti placeHolder={'Filter by topic'} />
+            <SelectDropdown options={tagOptions} onChange={setSelectedTags} value={selectedTags} isMulti placeHolder={'Filter by topic'} />
           )}
           {levelOptions && levelOptions.length > 0 && (
-            <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
+            <SelectDropdown options={levelOptions} onChange={setSelectedLevel} value={selectedLevel} isMulti placeHolder={'Filter by level'} />
           )}
           <SearchInput onChange={(value) => setSearchInput(value)} placeholder='Search Guides' />
         </div>
