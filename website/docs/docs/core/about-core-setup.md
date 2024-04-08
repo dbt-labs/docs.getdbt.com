@@ -17,9 +17,3 @@ dbt Core is an [open-source](https://github.com/dbt-labs/dbt-core) tool that ena
 If you're interested in using a command line interface to [develop dbt projects in dbt Cloud](/docs/cloud/about-develop-dbt), the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) lets you run dbt commands locally. The dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](https://docs.getdbt.com/guides).
-
-## Related docs
-- Refer to the 3-part guides series for details, considerations, and tips on how to move to dbt Cloud:
-  - [Move from dbt Core to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1)
-  - [Move from dbt Core to dbt Cloud: What you need to know](/guides/core-to-cloud-2?step=1)
-  - [Move from dbt Core to dbt Cloud: Optimization tips](/guides/core-to-cloud-3?step=1)
