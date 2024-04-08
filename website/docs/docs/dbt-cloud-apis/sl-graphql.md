@@ -405,7 +405,7 @@ gql_response.json() =>
 
 def to_arrow_table(byte_string: str) -> pa.Table:
   """Get a raw base64 string and convert to an Arrow Table."""
-  with pa.ipc.open_stream(base64.b64decode(res)) as reader:
+  with pa.ipc.open_stream(base64.b64decode(byte_string)) as reader:
     return pa.Table.from_batches(reader, reader.schema)
 
 
