@@ -18,7 +18,7 @@ If there has been a change in user roles or Slack permissions where you no longe
 
 ### Set up the Slack integration
 
-1. From the gear menu, select **Account settings** and select **Integrations** from the left navigation pane. 
+1. From the gear menu, select **Account settings** and then select **Integrations** from the left navigation pane. 
 1. Locate the **OAuth** section with the Slack application and click **Link**.
    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
 
