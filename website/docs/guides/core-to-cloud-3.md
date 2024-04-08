@@ -58,7 +58,7 @@ A web-based interface for building, testing, running, and version-controlling db
 **Who might prefer the dbt Cloud IDE?**
 
 - New dbt users or those transitioning from other tools who appreciate a more guided experience through a browser-based interface.
-- Team members focused on development speed and convenience.
+- Team members focused on speed and convenience for getting started with a new or existing project.
 - Individuals who prioritize direct feedback from the IDE, such as seeing unsaved changes.
 
 **Key features**
@@ -81,8 +81,8 @@ The dbt Cloud CLI allows you to run dbt [commands](/reference/dbt-commands#avail
 
 **Who might prefer the dbt Cloud CLI?**
 
-- Experienced dbt users and developers looking for granular control over their Git workflows.
-- Data engineers and practitioners who need to perform complex operations, like mass file generation or specific command combinations.
+- dbt users and developers looking for granular control over their Git workflows (such as pre-commits for automated checks before committing code).
+- Data practitioners who need to perform complex operations, like mass file generation or specific command combinations.
 
 **Key features**
 
@@ -112,7 +112,11 @@ dbt Cloud provides robust orchestration that enables you to schedule, run, and m
 
 ## dbt Mesh
 
-Use [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) to seamlessly integrate and navigate between different projects and models with [cross-project dependencies](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), enhancing collaboration and data governance. Here are some tips and caveats to consider when using dbt Mesh:
+[dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) helps organizations with mature, complex transformation workflows in dbt increase the flexibility and performance of their dbt projects. It deploys multiple interconnected dbt projects instead of a single large, monolithic project.
+
+It enables you to integrate and navigate between different projects and models with [cross-project dependencies](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), enhancing collaboration and data governance.
+
+Here are some tips and caveats to consider when using dbt Mesh:
 
 ### Tips
 - To use [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with dbt Cloud (either with the dbt Cloud CLI or dbt Cloud IDE). Cross-project references are not supported in dbt Core.
