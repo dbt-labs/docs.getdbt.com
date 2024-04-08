@@ -38,7 +38,7 @@ plan="dbt Cloud Team or Enterprise"
 <Card
     title="Quickstart with the dbt Semantic Layer"
     body="Build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using our first-class integrations."
-    link="/docs/guides/quickstart-sl"
+    link="/guides/sl-snowflake-qs"
     icon="dbt-bit"/>
 
 <Card

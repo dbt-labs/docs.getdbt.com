@@ -4,12 +4,12 @@
   "redirects": [
     {
       "source": "/docs/build/sl-getting-started",
-      "destination": "guides/quickstart-sl", 
+      "destination": "/guides/sl-snowflake-qs", 
       "permanent": true
     },
     {
       "source": "/docs/use-dbt-semantic-layer/quickstart-sl",
-      "destination": "guides/quickstart-sl", 
+      "destination": "/guides/sl-snowflake-qs", 
       "permanent": true
     },
     {

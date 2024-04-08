@@ -22,7 +22,7 @@ MetricFlow allows you to:
  <Card
     title="Get started with the dbt Semantic Layer and MetricFlow"
     body="Use this guide to build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using downstream tools."
-    link="/docs/build/sl-getting-started"
+    link="/guides/sl-snowflake-qs"
     icon="dbt-bit"/>
 
 <Card

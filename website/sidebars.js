@@ -304,8 +304,8 @@ const sidebarSettings = {
             "docs/build/build-metrics-intro",
             {
               type: "link",
-              label: "Quickstart with the dbt Semantic Layer",
-              href: `/guides/quickstart-sl`,
+              label: "Quickstart with the dbt Cloud Semantic Layer",
+              href: `/guides/sl-snowflake-qs`,
             },
             {
               type: "category",
@@ -510,8 +510,8 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/dbt-sl",
         {
           type: "link",
-          label: "Quickstart with the dbt Semantic Layer",
-          href: `/guides/quickstart-sl`,
+          label: "Quickstart with the dbt Cloud Semantic Layer",
+          href: `/guides/sl-snowflake-qs`,
         },
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/exports",
