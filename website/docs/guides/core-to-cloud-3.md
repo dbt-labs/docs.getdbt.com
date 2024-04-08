@@ -2,7 +2,6 @@
 title: 'Move from dbt Core to dbt Cloud: Optimization tips'
 description: "Use this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
 hoverSnippet: "Use this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
-sidebar_position: 3
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Migration','dbt Core','dbt Cloud']
