@@ -136,7 +136,6 @@ const sidebarSettings = {
                 "docs/cloud/secure/vcs-privatelink",
               ],
             }, // PrivateLink
-            "docs/cloud/slack-integration",
             "docs/cloud/billing",
           ],
         },
