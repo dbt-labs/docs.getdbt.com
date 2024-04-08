@@ -42,7 +42,7 @@ Anytime you make changes to metrics, you need to run `dbt parse` at a minimum. T
 
 </TabItem>
 
-<TabItem value="core" label="dbt Core">
+<TabItem value="core" label="dbt Core"> 
 
 This step is for dbt Core users only. MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11. You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
