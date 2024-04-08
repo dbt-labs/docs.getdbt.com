@@ -1,7 +1,7 @@
 ---
-title: "Quickstart with the dbt Semantic Layer and Snowflake"
+title: "Quickstart with the dbt Cloud Semantic Layer and Snowflake"
 id: quickstart-sl
-description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
+description: "Use this guide to build and define metrics, set up the dbt Cloud Semantic Layer, and query them using Google Sheets."
 sidebar_label: "Quickstart with the dbt Semantic Layer and Snowflake"
 meta:
   api_name: dbt Semantic Layer APIs
