@@ -43,10 +43,6 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 
 ## Slack notifications
 
-See [Slack integration](/docs/cloud/slack-integration) for setup instructions before proceeding to the notification configuration. 
-
-### Configure Slack notifications
-
 You can receive Slack alerts about jobs by setting up the Slack integration, then configuring the dbt Cloud Slack notification settings. dbt Cloud integrates with Slack via OAuth to ensure secure authentication.
 
 :::note 
