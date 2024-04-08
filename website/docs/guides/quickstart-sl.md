@@ -610,7 +610,7 @@ semantic_models:
 
 - **[Conversion metrics](/docs/build/conversion)**: Track when a base event and a subsequent conversion event occur for an entity within a set time period. We won't be going into too much detail about conversion metrics in this course.
 - [**Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics):** Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the time spine model before you add cumulative metrics.
-- [**Derived metrics](/docs/build/metrics-overview#derived-metrics): A**llows you to do calculations on top of metrics.
+- [**Derived metrics](/docs/build/metrics-overview#derived-metrics): Allows you to do calculations on top of metrics.
 - [**Simple metrics**](/docs/build/metrics-overview#simple-metrics): Directly reference a single measure, without any additional measures involved.
 - [**Ratio metrics](/docs/build/metrics-overview#ratio-metrics):** Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
