@@ -46,7 +46,7 @@ select
   -- getdata() returns a list!
   {% for i in get_data() %}
     {{ i }}
-    {% if not loop.last %},{% endif %}
+    {%- if not loop.last %},{% endif -%}
   {% endfor %}
 ```
 
