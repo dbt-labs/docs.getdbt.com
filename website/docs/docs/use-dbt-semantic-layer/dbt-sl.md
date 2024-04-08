@@ -5,7 +5,7 @@ description: "Learn how the dbt Semantic Layer enables data teams to centrally d
 sidebar_label: "About the dbt Semantic Layer"
 tags: [Semantic Layer]
 hide_table_of_contents: true
-pagination_next: "guides/quickstart-sl"
+pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
 ---
 
@@ -36,7 +36,7 @@ plan="dbt Cloud Team or Enterprise"
 <div className="grid--3-col">
 
 <Card
-    title="Quickstart with the dbt Semantic Layer"
+    title="Quickstart with the dbt Cloud Semantic Layer"
     body="Build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using our first-class integrations."
     link="/guides/sl-snowflake-qs"
     icon="dbt-bit"/>
