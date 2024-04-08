@@ -20,15 +20,16 @@ dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deploy
 
 To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.
 
-1. On your deployment environment page, click **Create Job** > **Continuous Integration Job** to create a new CI job. 
+1. On your deployment environment page, click **Create job** > **Continuous integration job** to create a new CI job. 
 
-2. Options in the **Job Description** section:
-    - **Job Name** &mdash; Specify the name for this CI job.
+2. Options in the **Job settings** section:
+    - **Job name** &mdash; Specify the name for this CI job.
+    - **Description** &mdash; Provide a description about the CI job.
     - **Environment** &mdash; By default, it’s set to the environment you created the CI job from.
     - **Triggered by pull requests** &mdash; By default, it’s enabled. Every time a developer opens up a pull request or pushes a commit to an existing pull request, this job will get triggered to run.
       - **Run on Draft Pull Request** &mdash; Enable this option if you want to also trigger the job to run every time a developer opens up a draft pull request or pushes a commit to that draft pull request. 
 
-3. Options in the **Execution Settings** section:
+3. Options in the **Execution settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
     - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
 
@@ -38,17 +39,23 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 
     - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this job runs. This option is disabled by default since most teams do not want to test doc generation on every CI check.
 
-  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in dbt Cloud UI"/>
-
-4. (optional) Options in the **Advanced Settings** section: 
-    - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context. It's common for teams to process only a subset of data for CI runs, using environment variables to branch logic in their dbt project code.
-    - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
-    - **Run Timeout** &mdash; Cancel this CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources.
-    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
+4. (optional) Options in the **Advanced settings** section: 
+    - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context. It's common for teams to process only a subset of data for CI runs, using environment variables to branch logic in their dbt project code.
+    - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
+    - **Run timeout** &mdash; Cancel this CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources.
+    - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the CI Job page"/>
+### Examples
+
+- Example of creating a CI job:
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" title="Example of CI Job page in dbt Cloud UI"/>
+
+- Example of GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" title="GitHub pull request example"/>
+
 
 ## Trigger a CI job with the API
 
@@ -70,21 +77,31 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
       - `non_native_pull_request_id` (for example, BitBucket)
    - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
-## Example pull requests
 
-The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+## Trigger on Git merge <Lifecycle status="beta" /> {#trigger-on-merge}
 
-### GitHub pull request example
+Create a job that dbt Cloud will invoke when a pull request merges in your Git repository.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="70%" title="GitHub pull request example"/>
+### Prerequisites
+- You have a dbt Cloud account. 
 
-### GitLab pull request example
+1. On your deployment environment page, click **Create Job** > **Merge Job**. 
+1. Options in the **Job settings** section:
+    - **Job name** &mdash; Specify the name for the merge job.
+    - **Description** &mdash; Provide a descripion about the job. 
+    - **Environment** &mdash; By default, it’s set to your production environment.
+1. In the **Git trigger** section, enable **Run on merge** to run this job when a PR merges (to the main branch) in your Git repo.  
+1. In the **Execution settings** section, add the dbt commands that you want to invoke when this job runs. By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. For more [commands](/docs/deploy/job-commands), click **Add command**.
+1. (optional) Options in the **Advanced settings** section: 
+    - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this job runs.
+    - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. 
+    - **Run timeout** &mdash; Cancel this job if the run time exceeds the timeout value.
+    - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
+    - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" width="70%" title="GitLab pull request"/>
+### Example 
 
-### Azure DevOps pull request example
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" width="70%" title="Azure DevOps pull request"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
 
 ## Troubleshooting
 
