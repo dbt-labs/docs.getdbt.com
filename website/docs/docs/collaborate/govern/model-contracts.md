@@ -154,7 +154,7 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 </TabItem>
 <TabItem value="Spark" label="Spark">
 
-Currently, `not_null` and `check` constraints are enforced only after a model builds. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the "model contract" since these constraints can't be enforced at build time. This table will change as the features evolve.
+Currently, `not_null` and `check` constraints are enforced only after a model is built. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the "model contract" since they can't be enforced at build time. This table will change as the features evolve.
 
 | Constraint type | Definable    | Enforced |
 |:----------------|:------------:|:---------------------:|
@@ -167,7 +167,7 @@ Currently, `not_null` and `check` constraints are enforced only after a model bu
 </TabItem>
 <TabItem value="Databricks" label="Databricks">
 
-Currently, `not_null` and `check` constraints are enforced only after a model builds. Because of this platform limitation, dbt considers these constraints supported but not enforced, which means they're not part of the "model contract" since these constraints can't be enforced at build time. This table will change as the features evolve.
+Currently, `not_null` and `check` constraints are enforced only after a model is built. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the "model contract" since they can't be enforced at build time. This table will change as the features evolve.
 
 | Constraint type | Definable     | Enforced |
 |:----------------|:-------------:|:---------------------:|
