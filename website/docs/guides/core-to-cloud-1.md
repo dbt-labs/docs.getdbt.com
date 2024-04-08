@@ -1,8 +1,8 @@
 ---
 title: 'Move from dbt Core to dbt Cloud: Get started'
-id: core-to-cloud-1
 description: "Learn how to move from dbt Core to dbt Cloud and what you need to get started."
 hoverSnippet: "Learn how to move from dbt Core to dbt Cloud."
+sidebar_position: 2
 icon: 'guides'
 time_to_complete: 'Total estimated time: 3-4 hours'
 hide_table_of_contents: true
@@ -241,7 +241,7 @@ You have learned:
 - How to configure your development, orchestration, and CI/CD environments
 - How to set up environment variables and validate your models. 
 
-Review the next guide, [Move from dbt Core to dbt Cloud: Everything you need to know](/guides/core-to-cloud-2), in this series to learn about the strategic considerations you need to take to move from dbt Core to dbt Cloud.
+Review the next guide, [Move from dbt Core to dbt Cloud: Everything you need to know](/guides/core-cloud-2), in this series to learn about the strategic considerations you need to take to move from dbt Core to dbt Cloud.
 
 <!--
 - Link to the next guide (managing your migration or move, etc.)
