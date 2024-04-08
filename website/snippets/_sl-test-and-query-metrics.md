@@ -10,7 +10,15 @@ You can use the **Preview** or **Compile** buttons in the IDE to run semantic va
 
 <Tabs>
 
-<TabItem value="cloud" label="dbt Cloud">
+<TabItem value="cloud" label="dbt Cloud CLI">
+
+You can validate your metrics in the dbt Cloud IDE by selecting the metric you want to validate and viewing it in the **Lineage** tab.
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-ide-dag.jpg" title="Validate your metrics using the Lineage tab in the IDE." />
+
+</TabItem>
+
+<TabItem value="cloud" label="dbt Cloud CLI">
 
 This section is for people using the dbt Cloud CLI (support for dbt Cloud IDE is coming soon). With dbt Cloud:
 

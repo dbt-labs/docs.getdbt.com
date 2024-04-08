@@ -20,6 +20,7 @@ import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
 import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
 import ConnectQueryAPI from '/snippets/_sl-connect-and-query-api.md';
 import RunProdJob from '/snippets/_sl-run-prod-job.md';
+import SlSetUp from '/snippets/_new-sl-setup.md'; 
 
 <VersionBlock lastVersion="1.5">
 
@@ -608,29 +609,165 @@ semantic_models:
 
 [Metrics](/docs/build/metrics-overview) are the language your business users speak and measure business performance. To be technical about it, they are an aggregation over a column in your warehouse that you enrich with dimensional cuts. Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics. There are a few different types of metrics we can configure.
 
-- **[Conversion metrics](/docs/build/conversion)**: Track when a base event and a subsequent conversion event occur for an entity within a set time period. We won't be going into too much detail about conversion metrics in this course.
+- **[Conversion metrics](/docs/build/conversion)**: Track when a base event and a subsequent conversion event occur for an entity within a set time period. 
 - [**Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics):** Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the time spine model before you add cumulative metrics.
 - [**Derived metrics](/docs/build/metrics-overview#derived-metrics): Allows you to do calculations on top of metrics.
 - [**Simple metrics**](/docs/build/metrics-overview#simple-metrics): Directly reference a single measure, without any additional measures involved.
 - [**Ratio metrics](/docs/build/metrics-overview#ratio-metrics):** Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
+1. Add metrics to your `fct_orders.yml` semantic model file:
 
+```yaml
+semantic_models:
+  - name: orders
+    defaults:
+      agg_time_dimension: order_date
+    description: |
+      Order fact table. This table’s grain is one row per order
+    model: ref('fct_orders')
+    entities:
+      - name: order_id
+        type: primary
+      - name: customer_id
+        type: foreign
+    dimensions:
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - name: order_total
+        description: The total amount for each order including taxes.
+        agg: sum
+        expr: amount
+      - name: order_count
+        expr: 1
+        agg: sum
+      - name: customers_with_orders
+        description: Distinct count of customers placing orders
+        agg: count_distinct
+        expr: customer_id
+      - name: order_value_p99
+        expr: amount
+        agg: percentile
+        agg_params:
+          percentile: 0.99
+          use_discrete_percentile: True
+          use_approximate_percentile: False
+# Newly added          
+metrics: 
+  # Simple type metrics
+  - name: "order_total"
+    description: "Sum of orders value"
+    type: simple
+    label: "order_total"
+    type_params:
+      measure: order_total
+  - name: "order_count"
+    description: "number of orders"
+    type: simple
+    label: "order_count"
+    type_params:
+      measure: order_count
+  - name: large_orders
+    description: "Count of orders with order total over 20."
+    type: simple
+    label: "Large Orders"
+    type_params:
+      measure: order_count
+    filter: |
+      {{ Dimension('order_id__order_total_dim') }} >= 20
+  # Ratio type metric
+  - name: "avg_order_value"
+    label: "avg_order_value"
+    description: "average value of each order"
+    type: ratio
+    type_params:
+      numerator: order_total
+      denominator: order_count
+  # Cumulative type metrics
+  - name: "cumulative_order_amount_mtd"
+    label: "cumulative_order_amount_mtd"
+    description: "The month to date value of all orders"
+    type: cumulative
+    type_params:
+      measure: order_total
+      grain_to_date: month
+  # Derived metric
+  - name: "pct_of_orders_that_are_large"
+    label: "pct_of_orders_that_are_large"
+    description: "percent of orders that are large"
+    type: derived
+    type_params:
+      expr: large_orders/order_count
+      metrics:
+        - name: large_orders
+        - name: order_count
+```
 
+## Add second semantic model to your project
 
+Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, measures, and metrics.
 
+Let’s expand your project's analytical capabilities by adding another semantic model in your other marts model: `dim_customers.yml`.
 
+After setting up your orders model:
 
+1. Create the file `models/metrics/dim_customers.yml`.
+2. Copy the following query into the file and click **Save**.
 
+```yaml
+semantic_models:
+  - name: dim_customers
+    defaults:
+      agg_time_dimension: most_recent_order_date
+    description: |
+      semantic model for dim_customers
+    model: ref('dim_customers')
+    entities:
+      - name: customer
+        expr: customer_id
+        type: primary
+    dimensions:
+      - name: customer_name
+        type: categorical
+      - name: customer_type
+        type: categorical
+      - name: first_order_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: most_recent_order_date
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - name: count_lifetime_orders
+        description: Total count of orders per customer.
+        agg: sum
+      - name: lifetime_spend
+        agg: sum
+        description: Gross customer lifetime spend inclusive of taxes.
+      - name: customers
+        expr: customer_id
+        agg: count_distinct
 
+metrics:
+  - name: "customers"
+    description: "Count of customers"
+    type: simple
+    label: "customers"
+    type_params:
+      measure: customers
+  - name: "customers_with_orders"
+    label: "customers_with_orders"
+    description: "Unique count of customers placing orders"
+    type: simple
+    type_params:
+      measure: customers
+```
 
------
-## Create a semantic model
-
-<CreateModel />
-
-## Define metrics
-
-<DefineMetrics />
+This semantic model uses simple metrics to focus on customer metrics and emphasizes customer dimensions like name, type, and order dates. It uniquely analyzes customer behavior, lifetime value, and order patterns.
 
 ## Test and query metrics
 
@@ -638,9 +775,7 @@ semantic_models:
 
 ## Run a production job
 
-
 <RunProdJob/>
-
 
 <details>
 
@@ -652,10 +787,7 @@ semantic_models:
 
 ## Set up dbt Semantic Layer
 
-import SlSetUp from '/snippets/_new-sl-setup.md';  
-
 <SlSetUp/>
-
 
 ## Connect and query API
 
