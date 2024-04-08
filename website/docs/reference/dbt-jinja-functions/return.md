@@ -23,6 +23,19 @@ The `return` function can be used in macros to return data to the caller. The ty
 
 </File>
 
+or
+
+<File name='macros/get_data.sql'>
+
+```sql
+{% macro get_data() %}
+
+  {% do return([1,2,3]) %}
+  
+{% endmacro %}
+```
+
+</File>
 
 
 <File name='models/my_model.sql'>
