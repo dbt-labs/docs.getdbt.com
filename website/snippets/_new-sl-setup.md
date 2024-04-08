@@ -33,5 +33,3 @@ Now that we've created and successfully run a job in your environment, you're re
 7. Save and copy your environment ID, service token, and host, which you'll need to use downstream tools. For more info on how to integrate with partner integrations, refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations).
 
 8. Return to the **Project Details** page and click the **Generate a [Service Token](/docs/dbt-cloud-apis/service-tokens)** button. Make sure it has Semantic Layer Only and Metadata Only permissions. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.  
-
-Great job, you've configured the Semantic Layer 🎉!

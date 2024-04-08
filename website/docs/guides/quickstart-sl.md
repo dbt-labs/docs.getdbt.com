@@ -1,15 +1,14 @@
 ---
-title: "Get started with the dbt Semantic Layer"
+title: "Get started with the dbt Semantic Layer, with Snowflake"
 id: quickstart-sl
-description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
+description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using Google Sheets."
 sidebar_label: "Get started with the dbt Semantic Layer"
-tags: [Semantic Layer]
 meta:
   api_name: dbt Semantic Layer APIs
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['Semantic Layer','Metrics']
-keywords: ['dbt Semantic Layer','Metrics','dbt Cloud']
+tags: ['Semantic Layer','Quickstart']
+keywords: ['dbt Semantic Layer','Metrics','dbt Cloud', 'Snowflake', 'Google Sheets']
 level: 'Intermediate'
 recently_updated: true
 ---
@@ -35,7 +34,7 @@ The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), s
 MetricFlow, a powerful component of the dbt Semantic Layer, simplifies the creation and management of company metrics. It offers flexible abstractions, SQL query generation, and enables fast retrieval of metric datasets from a data platform.
 
 ## Introduction 
-In this quickstart guide, you'll learn how to configure the Semantic Layer in dbt Cloud project, with Snowflake as your data warehouse. It will show you how to:
+In this quickstart guide, you'll learn how to build and define metrics, configure the Semantic Layer in dbt Cloud project, with Snowflake as your data warehouse. It will show you how to:
 
 - Create a new Snowflake worksheet.
 - Load sample data into your Snowflake account.
@@ -46,7 +45,7 @@ In this quickstart guide, you'll learn how to configure the Semantic Layer in db
 - Test and query metrics with MetricFlow
 - Run a production job in dbt Cloud
 - Set up dbt Semantic Layer in dbt Cloud
-- Connect and query API with dbt Cloud
+- Connect and query with Google Sheets with dbt Cloud
 
 
 MetricFlow allows you to define metrics in your dbt project and query them whether in dbt Cloud or dbt Core with [MetricFlow commands](/docs/build/metricflow-commands).
@@ -789,14 +788,16 @@ This semantic model uses simple metrics to focus on customer metrics and emphasi
 
 <SlSetUp/>
 
-## Connect and query API
+## Connect and query with Google Sheets
 
 <ConnectQueryAPI/>
 
-## Next steps
+## What's next
+
+Great job, you've configured the Semantic Layer 🎉! You've learned how to build and define metrics, configure the Semantic Layer in dbt Cloud project, with Snowflake, and query metrics with Google Sheets.
+
 
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
-- [Set up dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 - Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
 - [Billing](/docs/cloud/billing)

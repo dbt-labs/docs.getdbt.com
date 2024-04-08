@@ -10,4 +10,4 @@ To query your metrics using Google Sheets:
   
 ## What's next
 
-Congratulations 🎉! You've just defined your 
+Congratulations 🎉! You've just defined 
