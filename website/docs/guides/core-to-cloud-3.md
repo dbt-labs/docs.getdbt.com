@@ -1,5 +1,6 @@
 ---
 title: 'Move from dbt Core to dbt Cloud: Optimization tips'
+id: core-to-cloud-3
 description: "Use this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
 hoverSnippet: "Use this guide to learn how to optimize your dbt Cloud experience and get answers to common questions."
 icon: 'guides'

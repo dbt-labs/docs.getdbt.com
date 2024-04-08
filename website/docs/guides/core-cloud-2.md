@@ -1,5 +1,6 @@
 ---
 title: 'Move from dbt Core to dbt Cloud: What you need to know'
+id: core-cloud-2
 description: "Use this guide to understand the considerations and methods you need to move from dbt Core to dbt Cloud."
 hoverSnippet: "Use this guide to understand the considerations and methods you need to move from dbt Core to dbt Cloud."
 icon: 'guides'
