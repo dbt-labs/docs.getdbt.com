@@ -152,7 +152,8 @@ The most common data environments are production, staging, and development. The 
 
 ### Additional configuration
 Explore these additional configurations to optimize your developer setup further:
-1. **Custom target names** &mdash; If you’re using a [`custom target.name`](/reference/dbt-jinja-functions/target) in your project, we recommend setting them at the developer credentials level. Alternatively, you can set them using [environment variables](/docs/build/environment-variables).
+
+1. **Custom target names** &mdash; Using [`custom target.names`](/docs/build/custom-target-names) in your dbt projects helps identify different environments (like development, staging, and production). While you can specify the `custom target.name` values in your developer credentials, we recommend using [environment variables](/docs/build/environment-variables) as the preferred method. They offer a clearer way to handle different environments and are better supported by dbt's partial parsing feature, unlike using [`{{ target }}` logic](/reference/dbt-jinja-functions/target) which is meant for defining the data warehouse connection.
 
 ### dbt Cloud commands
 1. Review the [dbt commands](/reference/dbt-commands) supported for dbt Cloud development. For example, `dbt init` isn’t needed in dbt Cloud as you can create a new project directly in dbt Cloud.
