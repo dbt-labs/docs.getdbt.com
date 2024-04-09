@@ -1,7 +1,7 @@
 ---
 title: "Jobs in dbt Cloud"
 sidebar_label: "About Jobs"
-description: "Learn about deploy jobs and continuous integration (CI) jobs in dbt Cloud and what their differences are." 
+description: "Learn about the different job types in dbt Cloud and what their differences are." 
 tags: [scheduler]
 pagination_next: "docs/deploy/deploy-jobs"
 ---
