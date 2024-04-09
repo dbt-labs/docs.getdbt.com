@@ -26,7 +26,7 @@ On instance['failures']:
     None
 ```
 
-This scenario can be handled with a case statement that returns `0` when there are no rows:
+To avoid this issue, use a case statement to ensure that `0` is returned when no rows exist:
 
 ```yaml
 fail_calc: "case when count(*) > 0 then sum(n_records) else 0 end"
