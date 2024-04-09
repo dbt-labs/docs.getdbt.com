@@ -1,5 +1,5 @@
 ---
-title: "Quickstart with the dbt Cloud Semantic Layer and Snowflake"
+title: "Quickstart for the dbt Cloud Semantic Layer and Snowflake"
 id: sl-snowflake-qs
 description: "Use this guide to build and define metrics, set up the dbt Cloud Semantic Layer, and query them using Google Sheets."
 sidebar_label: "Quickstart with the dbt Semantic Layer and Snowflake"
@@ -30,32 +30,26 @@ import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
  
  </VersionBlock>
 
-## Introduction 
+## Introduction
 
-The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools.
+The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies setting up key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics with ease, allowing you to define metrics in your dbt project and query them in dbt Cloud with [MetricFlow commands](/docs/build/metricflow-commands).
 
-MetricFlow, a powerful component of the dbt Semantic Layer, simplifies the creation and management of company metrics. It offers flexible abstractions, SQL query generation, and enables fast retrieval of metric datasets from a data platform.
 
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-In this quickstart guide, you'll learn how to build and define metrics, configure the Semantic Layer in dbt Cloud project, with Snowflake as your data warehouse. It will show you how to:
+This quickstart guide is designed for dbt Cloud users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the dbt Semantic Layer in a dbt Cloud project, and querying metrics in Google Sheets.
 
-- Create a new Snowflake worksheet and set up your environment
-- Load sample data into your Snowflake account
-- Connect dbt Cloud to Snowflake
-- Build out an example dbt Cloud project
-- Create a semantic model in dbt Cloud
-- Define metrics in dbt Cloud
-- Test and query metrics in dbt Cloud
-- Run a production job in dbt Cloud
-- Set up dbt Semantic Layer in dbt Cloud
-- Connect and query with Google Sheets
+If you're using a data platform other than Snowflake, this guide is also applicable to you. To adapt the setup for your specific platform, follow the account setup and data loading instructions detailed on the following pages:
 
-MetricFlow allows you to define metrics in your dbt project and query them whether in dbt Cloud or dbt Core with [MetricFlow commands](/docs/build/metricflow-commands).
+- [BigQuery](https://docs.getdbt.com/guides/bigquery?step=2) (Steps 2 - 5)
+- [Databricks](https://docs.getdbt.com/guides/databricks?step=2) (Steps 2 - 4)
+- [Microsoft Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2) (Steps 2 - 3)
+- [Redshift](https://docs.getdbt.com/guides/redshift?step=2) (Steps 2 - 4)
+- [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2) (Steps 2 - 5)
 
-However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account.
+The rest of this guide applies universally across all supported platforms, ensuring you can fully leverage the dbt Semantic Layer.
 
 ## Prerequisites
 
@@ -66,6 +60,21 @@ However, to experience the power of the universal [dbt Semantic Layer](/docs/use
   - Select the Enterprise edition: During trial account creation, make sure to choose the Enterprise Snowflake edition so you have ACCOUNTADMIN access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms) in the Snowflake docs.
   - Choose a cloud provider and region: Before proceeding, you will need to select a cloud provider. For this setup, all cloud providers and regions will work so choose whichever you’d like.
 - Basic understanding of SQL and dbt (meaning you either used dbt before or completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course).
+
+### What you'll learn
+
+This guide will cover the following topics:
+
+- Create a new Snowflake worksheet and set up your environment
+- Load sample data into your Snowflake account
+- Connect dbt Cloud to Snowflake
+- Build out an example dbt Cloud project
+- Create a semantic model in dbt Cloud
+- Define metrics in dbt Cloud
+- Test and query metrics in dbt Cloud
+- Run a production job in dbt Cloud
+- Set up dbt Semantic Layer in dbt Cloud
+- Connect and query metrics with Google Sheets
 
 ## Create new Snowflake worksheet and set up environment
 
@@ -848,11 +857,16 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-co
 <ConfettiTrigger>
 
 Great job on completing the dbt Semantic Layer guide 🎉! You've learned:
-- How to build and define metrics
-- Configure the dbt Semantic Layer in a dbt Cloud project
-- Query metrics with Google Sheets
 
-</ConfettiTrigger>
+- Create a new Snowflake worksheet and set up your environment
+- Load sample data into your Snowflake account
+- Connect dbt Cloud to Snowflake
+- Build out an example dbt Cloud project
+- How to build and define metrics
+- Test and query metrics in dbt Cloud
+- Run a production job in dbt Cloud
+- Set up dbt Semantic Layer in dbt Cloud
+- Connect and query metrics with Google Sheets
 
 Here are some additional resources to help you continue your journey:
 
@@ -860,3 +874,5 @@ Here are some additional resources to help you continue your journey:
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 - Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
 - [Billing](/docs/cloud/billing)
+
+</ConfettiTrigger>
