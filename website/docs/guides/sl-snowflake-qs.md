@@ -81,7 +81,6 @@ This guide will cover the following topics:
 2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
 3. Select **SQL Worksheet** to create a new worksheet.
 
-ADD IMAGE HERE
 
 ### Set up Snowflake environment
 
