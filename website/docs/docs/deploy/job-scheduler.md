@@ -57,6 +57,10 @@ When compared to deployment jobs, the scheduler behaves differently when handlin
 - **Will the CI run consume a run slot?** &mdash; CI runs don't consume run slots and will never block production runs.
 - **Does this same job have a run already in progress?** &mdash; CI runs can execute concurrently (in parallel). CI runs build into unique temporary schemas, and CI checks execute in parallel to help increase team productivity. Teammates never have to wait to get a CI check review.
 
+### Treatment of merge jobs
+
+
+
 ## Job memory
 
 In dbt Cloud, the setting to provision memory available to a job is defined at the account-level and applies to each job running in the account; the memory limit cannot be customized per job. If a running job reaches its memory limit, the run is terminated with a "memory limit error" message.
