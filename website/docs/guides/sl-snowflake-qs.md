@@ -53,12 +53,11 @@ The rest of this guide applies universally across all supported platforms, ensur
 
 ## Prerequisites
 
-- You have a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account. Suitable for both Multi-tenant and Single-tenant deployment. 
-  - Note, Single-tenant accounts should contact their account representative for necessary setup and enablement.
-- Both your production and development environments running [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud) or[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
-- You have a [trial Snowflake account.](https://signup.snowflake.com/)
-  - Select the Enterprise edition: During trial account creation, make sure to choose the Enterprise Snowflake edition so you have ACCOUNTADMIN access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms) in the Snowflake docs.
-  - Choose a cloud provider and region: Before proceeding, you will need to select a cloud provider. For this setup, all cloud providers and regions will work so choose whichever you’d like.
+- You have a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account, which is suitable for both Multi-tenant and Single-tenant deployments. If you have a Single-tenant account, please contact your account representative for the necessary setup steps.
+- Your production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to alway remain on the latest version.
+- You have a [trial Snowflake account.](https://signup.snowflake.com/). When creating an account:
+  - Select the Enterprise Snowflake edition to ensure you have ACCOUNTADMIN access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms) in the Snowflake documentation.
+  - Before proceeding, you will need to select a cloud provider and region. For this setup, all cloud providers and regions will work so choose whichever you’d like.
 - Basic understanding of SQL and dbt (meaning you either used dbt before or completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course).
 
 ### What you'll learn
