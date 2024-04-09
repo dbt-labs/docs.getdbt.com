@@ -86,7 +86,9 @@ This guide will cover the following topics:
 
 The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
 
-1. Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for `jaffle_shop` data, the other for stripe data). To do this, run the following SQL commands one by one. Type them into the Editor of your new Snowflake SQL worksheet to set up your environment.
+Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for `jaffle_shop` data, the other for stripe data).
+
+1. Run the following SQL commands one by one by typing them into the Editor of your new Snowflake SQL worksheet to set up your environment.
 
 2. Click **Run** in the upper right corner of the UI for each one:
 
