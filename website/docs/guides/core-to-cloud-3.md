@@ -25,7 +25,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 You may have already started your move to dbt Cloud and are looking for tips to help you optimize your dbt Cloud experience. This guide includes tips and caveats for the following areas:
 
 - [Adapters and connections](https://docs.getdbt.com/guides/core-to-cloud-3?step=3) 
-- [Development tools](https://docs.getdbt.com)/guides/core-to-cloud-3?step=4) 
+- [Development tools](https://docs.getdbt.com/guides/core-to-cloud-3?step=4) 
 - [Orchestration](https://docs.getdbt.com/guides/core-to-cloud-3?step=5)
 - [dbt Mesh](https://docs.getdbt.com/guides/core-to-cloud-3?step=6)
 - [dbt Semantic Layer](https://docs.getdbt.com/guides/core-to-cloud-3?step=7)
