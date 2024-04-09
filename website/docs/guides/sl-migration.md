@@ -133,7 +133,7 @@ If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in
 
 ### Related docs 
 
-- [Quickstart guide with the dbt Semantic Layer](/docs/guides/sl-snowflake-qs)
+- [Quickstart guide with the dbt Semantic Layer](/guides/sl-snowflake-qs)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
 - [Why we're deprecating the dbt_metrics package](/blog/deprecating-dbt-metrics) blog post
