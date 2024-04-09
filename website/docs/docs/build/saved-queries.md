@@ -131,6 +131,7 @@ To define a saved query, refer to the following parameters:
 </VersionBlock> 
 
 All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
+When using the `Dimension` object, prepend the semantic model name, for example `Dimension('user__ds')`
 
 ## Related docs
 
