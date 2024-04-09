@@ -60,7 +60,7 @@ To update your Databricks connection in dbt Cloud:
 3. Click the hyperlinked Connection for the project.
 4. Click **Edit** in the top right corner.
 5. Select **Databricks** for the warehouse
-6. Select **Databricks (dbt-databricks)** for the adapter and enter the:
+6. Enter the:
     1. `hostname`
     2. `http_path`
     3. (optional) catalog name
