@@ -1,7 +1,7 @@
 To work with metrics in dbt, you have several tools to validate or run commands. Here's how you can test and query metrics depending on your setup:
 
 - [**dbt Cloud IDE users**](#dbt-cloud-ide-users) &mdash; Currently, running MetricFlow commands directly in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) isn't supported, but it's on the way! You can still validate metrics using the **Preview** or **Compile** options, or visually through the DAG for semantic checks. This ensures your metrics are correctly defined without directly running commands.
-- [**dbt Cloud CLI users**](#dbt-cloud-cli-users) &mdash; The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) enables you to run MetricFlow commands for direct interaction with metrics.
+- [**dbt Cloud CLI users**](#dbt-cloud-cli-users) &mdash; The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) enables you to run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) for direct interaction with metrics.
 - **dbt Core users** &mdash; Use the MetricFlow CLI for command execution. Whicle this guide focuses on dbt Cloud users, dbt Core users can find detailed MetricFlow CLI instructions in the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page.
 
 Alternatively, you can run commands with SQL client tools like DataGrip, DBeaver, or RazorSQL.
