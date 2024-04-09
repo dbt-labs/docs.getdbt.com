@@ -4,7 +4,6 @@
 Starting from dbt v1.6, `dependencies.yml` has replaced `packages.yml`. The `dependencies.yml` file can now contain both types of dependencies: "package" and "project" dependencies.
 - ["Package" dependencies](/docs/build/packages#how-do-i-add-a-package-to-my-project) lets you add source code from someone else's dbt project into your own, like a library.
 
-  [comment]: Why add a link to this bulletpoint that redirects the reader to the same website? It makes no sense because it's a never ending loop. It's like having a website named "Make a meal", that has a list of bulletpoints like: "1- Buy it from a restaurant. 2- Make a meal" and the second bulletpoint sends the reader to itself. My proposal is to remove this looping link. Regards.
 - ["Project" dependencies](/docs/collaborate/govern/project-dependencies) provide a different way to build on top of someone else's work in dbt. 
 
 If your dbt project doesn't require the use of Jinja within the package specifications, you can simply rename your existing `packages.yml` to `dependencies.yml`. However, something to note is if your project's package specifications use Jinja, particularly for scenarios like adding an environment variable or a [Git token method](/docs/build/packages#git-token-method) in a private Git package specification, you should continue using the `packages.yml` file name. 
