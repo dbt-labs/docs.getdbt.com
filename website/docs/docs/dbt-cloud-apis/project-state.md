@@ -14,7 +14,7 @@ There are two states that can be queried in dbt Cloud:
     
 - **Definition state** depends on what exists in the project given the code defined in it (for example, manifest state), which hasn’t necessarily been executed in the data platform (maybe just the result of `dbt compile`).
 
-### Definition (logical) vs. applied state of dbt nodes
+## Definition (logical) vs. applied state of dbt nodes
 
 In a dbt project, the state of a node _definition_ represents the configuration, transformations, and dependencies defined in the SQL and YAML files. It captures how the node should be processed in relation to other nodes and tables in the data warehouse and may be produced by a `dbt build`, `run`, `parse`, or `compile`. It changes whenever the project code changes. 
 
@@ -57,7 +57,7 @@ query Compare($environmentId: Int!, $first: Int!) {
 
 Most Discovery API use cases will favor the _applied state_ since it pertains to what has actually been run and can be analyzed.
  
-### Affected states by node type
+## Affected states by node type
 
 | Node      | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
 |-----------|------------------|----------------------|--------------------|-----------------------|----------------------|
@@ -72,7 +72,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
 | Group     | No               | No                   | No                 | Downstream            | Definition           |
 | Macro     | Yes              | No                   | No                 | N/A                   | Definition           |
 
- ### Caveats about state/metadata updates 
+## Caveats about state/metadata updates 
 
 Over time, Cloud Artifacts will provide information to maintain state for features/services in dbt Cloud and enable you to access state in dbt Cloud and its downstream ecosystem. Cloud Artifacts is currently focused on the latest production state, but this focus will evolve.
 

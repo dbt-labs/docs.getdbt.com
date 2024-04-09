@@ -15,6 +15,8 @@ Constraints require the declaration and enforcement of a model [contract](/refer
 
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
 
+If you are defining multiple `primary_key` constraints for a single model, those _must_ be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported. 
+
 The structure of a constraint is:
 - `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`
 - `expression`: Free text input to qualify the constraint. Required for certain constraint types, and optional for others.
@@ -36,7 +38,7 @@ models:
     constraints:
       - type: primary_key
         columns: [<first_column>, <second_column>, ...]
-        type: foreign_key # multi_column
+      - type: foreign_key # multi_column
         columns: [<first_column>, <second_column>, ...]
         expression: "<other_model_schema>.<other_model_name> (<other_model_first_column>, <other_model_second_column>, ...)"
       - type: check
@@ -231,7 +233,7 @@ select
 
 Snowflake suppports four types of constraints: `unique`, `not null`, `primary key`, and `foreign key`.
 
-It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked today.
+It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked at present.
 The rest of the constraints are purely metadata, not verified when inserting data.
 
 Currently, Snowflake doesn't support the `check` syntax and dbt will skip the `check` config and raise a warning message if it is set on some models in the dbt project.

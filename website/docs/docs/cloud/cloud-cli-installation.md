@@ -10,11 +10,11 @@ dbt Cloud natively supports developing using a command line (CLI), empowering te
 
 dbt commands are run against dbt Cloud's infrastructure and benefit from:
 
-* Secure credential storage in the dbt Cloud platform.
-* [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment. 
-* Speedier, lower-cost builds.
-* Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies)),
-* Significant platform improvements, to be released over the coming months.
+* Secure credential storage in the dbt Cloud platform
+* [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment 
+* Speedier, lower-cost builds
+* Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies))
+* Significant platform improvements, to be released over the coming months
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-cli-overview.jpg" title="Diagram of how the dbt Cloud CLI works with dbt Cloud's infrastructure to run dbt commands from your local command line." />
 
@@ -22,7 +22,6 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
 
 - Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
-- Note that SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections doesn't support the dbt Cloud CLI yet.
 
 ## Install dbt Cloud CLI
 
