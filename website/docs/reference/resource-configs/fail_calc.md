@@ -14,7 +14,7 @@ For instance, you can configure a `unique` test to return `sum(n_records)` inste
 :::tip Tip
 Beware using functions like `sum()` for `fail_calc` in any test that has the potential to return no rows at all.
 
-Such a test would break (neither pass nor fail), and return the following error: 
+If no rows are returned, the test won't pass or fail but will return the following error: 
 
 ```
 None is not of type 'integer'
