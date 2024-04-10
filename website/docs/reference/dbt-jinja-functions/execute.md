@@ -40,7 +40,6 @@ Compilation Error in model order_payment_methods (models/order_payment_methods.s
   'None' has no attribute 'table'
 
 ```
-[comment]: Since the number of the line is mentioned, it'd be a good idea to add line numbers to the code, so easying the reader the task of counting lines to ascertain which line to look at. Regards.
 This is because Line #11 assumes that a <Term id="table" /> has been returned, when, during the parse phase, this query hasn't been run.
 
 To work around this, wrap any problematic Jinja in an `{% if execute %}` statement:
