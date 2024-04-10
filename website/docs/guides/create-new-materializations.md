@@ -125,7 +125,7 @@ Materializations should [return](/reference/dbt-jinja-functions/return) the list
 {%- materialization my_view, default -%}
 
   {%- set target_relation = api.Relation.create(
-        identifier=identifier, schema=schema, database=database,
+        identifier=this.identifier, schema=this.schema, database=this.database,
         type='view') -%}
 
   -- ... setup database ...
