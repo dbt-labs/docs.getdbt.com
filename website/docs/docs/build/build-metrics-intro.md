@@ -20,8 +20,8 @@ MetricFlow allows you to:
 <div className="grid--3-col">
 
  <Card
-    title="Get started with the dbt Semantic Layer and MetricFlow"
-    body="Use this guide to build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using downstream tools."
+    title="Quickstart for the dbt Cloud Semantic Layer"
+    body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using downstream tools."
     link="/guides/sl-snowflake-qs"
     icon="dbt-bit"/>
 
