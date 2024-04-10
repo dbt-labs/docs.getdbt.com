@@ -267,7 +267,7 @@ Note that, if you select to store test failures:
 
 <VersionBlock lastVersion="1.7">
 
-The `tests` config has been renamed to `data_tests` in dbt version 1.8. To read more about this change, switch to version v1.8 in the documentation navigation menu.
+In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For detailed information on this update, please select version v1.8 from the documentation navigation menu.
 
 </VersionBlock>
 
