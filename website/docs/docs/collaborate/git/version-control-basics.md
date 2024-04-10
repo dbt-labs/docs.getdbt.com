@@ -61,12 +61,11 @@ dbt_packages/
 logs/
 target/
 ```
+**Note** &mdash; By using a trailing slash, these lines in the `gitignore` file serve as 'folder wildcards', excluding all files and folders within those folders from being tracked by git
 
 This file, found in the root of your dbt project, prevents these directories from being tracked by git. Although this global setting is in place, dbt Cloud also acknowledges individual `.gitignore` files, allowing you to specify additional exclusions as needed for your project.
 
-It's worth noting that while some git providers generate a basic `.gitignore` file when the repository is created, these often lack the necessary exclusions for dbt Cloud. This means it's important to ensure you add the three lines mentioned previously in your `.gitignore` to ensure dbt Cloud operates smoothly.
-
-**Note** &mdash; By using a trailing slash, these lines in the `gitignore` file serve as 'folder wildcards', excluding all files and folders within those folders from being tracked by git. 
+It's worth noting that while some git providers generate a basic `.gitignore` file when the repository is created, these often lack the necessary exclusions for dbt Cloud. This means it's important to ensure you add the three lines mentioned previously in your `.gitignore` to ensure dbt Cloud operates smoothly.. 
 
 :::note
 
