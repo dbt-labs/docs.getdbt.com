@@ -75,7 +75,7 @@ Once the benefits of a consolidated platform are clear, move the rest of your te
 
 Assess the users or personas involved in the pre-move, during the move, and post-move.
 - **Administrators**: Plan for new access controls in dbt Cloud, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
-- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in dbt Cloud, training on dbt Cloud CLI or dbt Cloud IDE usage, and role changes.
+- **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in dbt Cloud, training on [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) usage, and role changes.
 - **Data consumers:** Discover data insights by using [dbt Explorer](/docs/collaborate/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
 
 </expandable>
@@ -93,10 +93,10 @@ If you have multiple teams of dbt developers, think about how to start your onbo
 Discover how dbt Cloud can help simplify development, orchestration, and testing:
 - **Development**: Develop dbt models, allowing you to build, test, run, and version control your dbt projects using the dbt Cloud CLI (command line interface or code editor) or dbt Cloud IDE (browser-based).
 - **Orchestration**: Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval.
-  - Set up CI to ensure developer effectiveness, and CD jobs to deploy changes as soon as they’re merged. 
+  - Set up [CI](/docs/deploy/ci-jobs) to ensure developer effectiveness, and CD jobs to deploy changes as soon as they’re merged. 
   - Link deploy jobs together by [triggering a job](/docs/deploy/deploy-jobs#trigger-on-job-completion) when another one is completed. 
   - For the most flexibility, use the [dbt Cloud API](https://docs.getdbt.com/dbt-cloud/api-v2#/) to trigger jobs. This makes sense when you want to integrate dbt execution with other data workflows.
-- **Continuous integration (CI)**: Run your dbt projects in a temporary schema when new commits are pushed to open pull requests. This build-on-PR functionality is a great way to catch bugs before deploying to production.
+- **Continuous integration (CI)**: Use [CI jobs](/docs/deploy/ci-jobs) to run your dbt projects in a temporary schema when new commits are pushed to open pull requests. This build-on-PR functionality is a great way to catch bugs before deploying to production.
   - For many teams, dbt Cloud CI represents a major improvement compared to their previous development workflows.
 - **How are you defining tests today?**: While testing production data is important, it’s not the most efficient way to catch logical errors introduced by developers You can use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
 
@@ -112,7 +112,7 @@ Transition to dbt Cloud's [access control](/docs/cloud/manage-access/about-user-
 
 <expandable alt_header="Manage environments"> 
 
-If you require isolation between production and pre-production data environments due to sensitive data, dbt Cloud can support Development, Staging (_soon_), and Production data environments.
+If you require isolation between production and pre-production data environments due to sensitive data, dbt Cloud can support Development, Staging (_soon_), and Production data [environments](/docs/dbt-cloud-environments).
 
 This provides developers with the benefits of an enhanced workflow while ensuring isolation between Staging and Production data, and locking down permissions on Prod.
 
@@ -120,9 +120,10 @@ This provides developers with the benefits of an enhanced workflow while ensurin
 
 ## Move to dbt Cloud
 
-After reviewing the considerations and planning your move, you may want to start moving your dbt Core project to dbt Cloud. Check out the detailed [Move to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1) guide for useful tasks and insights for a smooth transition from dbt Core to dbt Cloud.
+This guide is your roadmap to help you think about migration strategies and what moving from dbt Core to dbt Cloud could look like.
 
-This guide is your roadmap to help you think about migration strategies and what moving from dbt Core to dbt Cloud could look like. 
+After reviewing the considerations and planning your move, you may want to start moving your dbt Core project to dbt Cloud:
+- Check out the detailed [Move to dbt Cloud: Get started](/guides/core-to-cloud-1?step=1) guide for useful tasks and insights for a smooth transition from dbt Core to dbt Cloud.
 
 For a more detailed comparison of dbt Core and dbt Cloud, check out [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud).
 
