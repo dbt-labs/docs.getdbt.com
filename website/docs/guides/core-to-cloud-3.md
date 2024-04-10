@@ -124,14 +124,18 @@ Here are some tips and caveats to consider when using dbt Mesh:
 - Manage access to your dbt models both within and across projects using:
   - **[Groups](/docs/collaborate/govern/model-access#groups)** &mdash; Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
   - **[Model access](/docs/collaborate/govern/model-access#access-modifiers)** &mdash; Control which other models or projects can reference this model.
-  - **[Model Versions](/docs/collaborate/govern/model-versions)** &mdash; Enable adoption and deprecation of models as they evolve.
-  - **[Model Contracts](/docs/collaborate/govern/model-contracts)** &mdash; Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
+  - **[Model versions](/docs/collaborate/govern/model-versions)** &mdash; Enable adoption and deprecation of models as they evolve.
+  - **[Model contracts](/docs/collaborate/govern/model-contracts)** &mdash; Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
 - Use [dbt-meshify](https://github.com/dbt-labs/dbt-meshify) to accelerate splitting apart your monolith into multiple projects.
 
-### Caveat
-- Currently, dbt Mesh does not support circular project dependencies.
- 
- ## dbt Semantic Layer
+### Caveats
+- To use cross-project references in dbt, each dbt project must correspond to just one dbt Cloud project. We strongly discourage defining multiple projects for the same codebase, even if you're trying to manage access permissions, connect to different data warehouses, or separate production and non-production data.  While this was required historically, upcoming features like Staging environments (_coming soon_), Environment-level RBAC (_coming soon_), and [Extended attributes](/docs/dbt-cloud-environments#extended-attributes) will make it unnecessary.
+- Project dependencies are uni-directional, meaning they go in one direction. This means dbt checks for cycles across projects (circular dependencies) and raise errors if any are detected. However, we are considering support to allow projects to depend on each other in both directions in the future, with dbt still checking for node-level cycles while allowing cycles at the project level.
+- Everyone in the account can view public model metadata, which helps users find data products more easily. This is separate from who can access the actual data, which is controlled by permissions in the data warehouse. For use cases where even metadata about a reusable data asset is sensitive, we are [considering](dbt-labs/dbt-core#9340) an optional extension of protected models.
+
+Refer to the [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-4-faqs) for more questions.
+
+## dbt Semantic Layer
 
 Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered by MetricFlow, to create a unified view of your business metrics, ensuring consistency across all analytics tools. Here are some tips and caveats to consider when using dbt Semantic Layer:
 
