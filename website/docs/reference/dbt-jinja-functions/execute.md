@@ -55,6 +55,7 @@ from {{ ref('raw_payments') }}
 order by 1
 {% endset %}
 
+{% set results = run_query(payment_method_query) %}
 {% if execute %}
 {% set results = run_query(payment_method_query) %}
 {# Return the first column #}
