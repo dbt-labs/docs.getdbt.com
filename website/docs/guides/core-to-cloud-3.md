@@ -119,7 +119,7 @@ It enables you to integrate and navigate between different projects and models w
 Here are some tips and caveats to consider when using dbt Mesh:
 
 ### Tips
-- To use [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with dbt Cloud (either with the dbt Cloud CLI or dbt Cloud IDE). Cross-project references are not supported in dbt Core.
+- To dynamically resolve [cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), all developers need to develop with dbt Cloud (either with the dbt Cloud CLI or dbt Cloud IDE). Cross-project references aren't natively supported in dbt Core, except by installing the source code from upstream projects [as packages](/docs/build/packages#how-do-i-add-a-package-to-my-project)
 - Link models across projects for a modular and scalable approach for your project and teams.
 - Manage access to your dbt models both within and across projects using:
   - **[Groups](/docs/collaborate/govern/model-access#groups)** &mdash; Organize nodes in your dbt DAG that share a logical connection and assign an owner to the entire group.
