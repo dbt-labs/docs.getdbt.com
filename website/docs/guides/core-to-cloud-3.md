@@ -126,7 +126,7 @@ Here are some tips and caveats to consider when using dbt Mesh:
   - **[Model access](/docs/collaborate/govern/model-access#access-modifiers)** &mdash; Control which other models or projects can reference this model.
   - **[Model Versions](/docs/collaborate/govern/model-versions)** &mdash; Enable adoption and deprecation of models as they evolve.
   - **[Model Contracts](/docs/collaborate/govern/model-contracts)** &mdash; Set clear expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers' data products.
-- Use [dbt-meshify](https://github.com/dbt-labs/dbt-meshify) to separate your mono-repo and move to dbt Cloud.
+- Use [dbt-meshify](https://github.com/dbt-labs/dbt-meshify) to accelerate splitting apart your monolith into multiple projects.
 
 ### Caveat
 - Currently, dbt Mesh does not support circular project dependencies.
