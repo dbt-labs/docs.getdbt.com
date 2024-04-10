@@ -4,44 +4,41 @@ This section explains how you can test and run MetricFlow commands with dbt Clou
 
 Support for running [MetricFlow commands](/docs/build/metricflow-commands) in the dbt Cloud IDE is not available but is coming soon. 
 
-You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. Alternatively, you can run commands with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or with SQL client tools like DataGrip, DBeaver, or RazorSQL. 
+You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. Alternatively, you can run commands with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or with SQL client tools like DataGrip, DBeaver, or RazorSQL.
 
 :::
 
 <Tabs>
 
-
 <TabItem value="cloud" label="dbt Cloud">
-
 
 This section is for people using the dbt Cloud CLI (support for dbt Cloud IDE is coming soon). With dbt Cloud:
 
 - You can run MetricFlow commands after installing the dbt Cloud CLI. They're integrated with dbt Cloud so you can use them immediately.
 - Your account will automatically manage version control for you.
 
-To get started: 
+Refer to the following steps to get started:
 
-1. Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
-2. Navigate to your dbt project directory.
-3. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts...."
-   - MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
+1. Install the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) (if you haven't already). Then, navigate to your dbt project directory.
+2. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....".
+3. MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle Shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
+
+:::info Run dbt parse when you make changes to metrics
+Anytime you make changes to metrics, you need to run `dbt parse` at a minimum. This ensures the `semantic_manifest.json` file is updated and you can have your changes reflected when querying metrics.
+:::
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
-5. Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `dbt sl query --metrics order_total --group-by metric_time`
+5. Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `dbt sl query --metrics order_total --group-by metric_time`.
 6. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--compile` in the command line.
 7. Commit and merge the code changes that contain the metric definitions.
-
-To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
-
 
 </TabItem>
 
 <TabItem value="core" label="dbt Core">
 
+This step is for dbt Core users only. MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11. You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
-This step is for dbt Core users only. MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11. You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
-
-:::note 
+:::note
 The dbt Cloud CLI is strongly recommended to define and query metrics for your dbt project in dbt Cloud or dbt Core with MetricFlow. If you're using dbt Core, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 :::
 
@@ -59,9 +56,9 @@ The dbt Cloud CLI is strongly recommended to define and query metrics for your d
 8. Run `mf validate-configs` to run validation on your semantic models and metrics.
 9. Commit and merge the code changes that contain the metric definitions.
 
-To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
-
-
 </TabItem>
 
 </Tabs>
+
+To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata).
+
