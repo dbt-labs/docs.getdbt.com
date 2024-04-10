@@ -32,7 +32,7 @@ import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
 ## Introduction
 
-The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies setting up key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics with ease, allowing you to define metrics in your dbt project and query them in dbt Cloud with [MetricFlow commands](/docs/build/metricflow-commands).
+The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies setting up key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics with ease, allowing you to define metrics in your dbt project and query them in dbt Cloud with [MetricFlow commands](/docs/build/metricflow-commands).
 
 
 import SLCourses from '/snippets/_sl-course.md';
