@@ -56,7 +56,6 @@ order by 1
 
 {% set results = run_query(payment_method_query) %}
 {% if execute %}
-{% set results = run_query(payment_method_query) %}
 {# Return the first column #}
 {% set payment_methods = results.columns[0].values() %}
 {% else %}
