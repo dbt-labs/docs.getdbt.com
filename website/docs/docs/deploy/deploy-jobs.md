@@ -117,7 +117,6 @@ You can set up a configuration where an upstream job triggers multiple downstrea
 
 For jobs that are triggered to run by another job, a link to the upstream job run is available from your [job's run details](/docs/deploy/run-visibility#job-run-details).
 
-
 ## Related docs
 
 - [Artifacts](/docs/deploy/artifacts)

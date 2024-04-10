@@ -90,7 +90,7 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/set-up-sso-saml-2.0",
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
-                    "docs/cloud/manage-access/set-up-sso-azure-active-directory",
+                    "docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
                     "docs/cloud/manage-access/set-up-databricks-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
@@ -455,6 +455,7 @@ const sidebarSettings = {
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
+            "docs/collaborate/dbt-explorer-faqs",
           ],
         },
         {

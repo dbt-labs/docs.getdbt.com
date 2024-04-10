@@ -12,6 +12,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 You can migrate your projects from using the `dbt-spark` adapter to using the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks). In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
@@ -58,7 +60,7 @@ To update your Databricks connection in dbt Cloud:
 3. Click the hyperlinked Connection for the project.
 4. Click **Edit** in the top right corner.
 5. Select **Databricks** for the warehouse
-6. Select **Databricks (dbt-databricks)** for the adapter and enter the:
+6. Enter the:
     1. `hostname`
     2. `http_path`
     3. (optional) catalog name
@@ -128,3 +130,5 @@ your_profile_name:
 ```
 
 </File>
+
+</div>
