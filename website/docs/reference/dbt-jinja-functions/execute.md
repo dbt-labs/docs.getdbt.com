@@ -17,17 +17,17 @@ Any Jinja that relies on a result being returned from the database will error du
 <File name='models/order_payment_methods.sql'>
 
 ```sql
-{% set payment_method_query %}
-select distinct
-payment_method
-from {{ ref('raw_payments') }}
-order by 1
-{% endset %}
-
-{% set results = run_query(payment_method_query) %}
-
-{# Return the first column #}
-{% set payment_methods = results.columns[0].values() %}
+1   {% set payment_method_query %}
+2   select distinct
+3   payment_method
+4   from {{ ref('raw_payments') }}
+5   order by 1
+6   {% endset %}
+7
+8   {% set results = run_query(payment_method_query) %}
+9
+10  {# Return the first column #}
+11  {% set payment_methods = results.columns[0].values() %}
 
 ```
 
