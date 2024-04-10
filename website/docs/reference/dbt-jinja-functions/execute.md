@@ -46,7 +46,6 @@ To work around this, wrap any problematic Jinja in an `{% if execute %}` stateme
 
 <File name='models/order_payment_methods.sql'>
 
-[comment]: I propose an alternative coding, more elegant and at the same time, less demanding on the warehouse.
 ```sql
 {% set payment_method_query %}
 select distinct
