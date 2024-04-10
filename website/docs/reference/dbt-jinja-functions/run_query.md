@@ -8,7 +8,7 @@ description: "Use `run_query` macro to run queries and fetch results."
 The `run_query` macro provides a convenient way to run queries and fetch their results. It is a wrapper around the [statement block](/reference/dbt-jinja-functions/statement-blocks), which is more flexible, but also more complicated to use.
 
 __Args__:
- * `sql`: The SQL query to execute
+ * `query`: The SQL query to execute
 
 Returns a [Table](https://agate.readthedocs.io/page/api/table.html) object with the result of the query. If the specified query does not return results (eg. a <Term id="ddl" />, <Term id="dml" />, or maintenance query), then the return value will be `none`.
 
