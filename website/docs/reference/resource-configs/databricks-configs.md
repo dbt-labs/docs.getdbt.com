@@ -20,7 +20,7 @@ When materializing a model as `table`, you may include several optional configs 
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.6">
+<VersionBlock firstVersion="1.6" lastVersion="1.6">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
