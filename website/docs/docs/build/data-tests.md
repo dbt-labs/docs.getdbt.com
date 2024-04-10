@@ -273,7 +273,9 @@ In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For de
 
 <VersionBlock firstVersion="1.8" lastVersion="1.8">
   
-Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. As of v1.8,  `tests:` is still supported in your YML configuration files as an alias but will be deprecated in the future in favor of `data_tests:`. 
+Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. 
+
+As of v1.8, `tests:` is still supported in your YML configuration files as an alias but will be deprecated in the future in favor of `data_tests:`. 
 
 As we progress towards this deprecation, we'll update the examples in our docs pages to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
 
