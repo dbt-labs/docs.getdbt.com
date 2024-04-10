@@ -261,10 +261,18 @@ Note that, if you select to store test failures:
 * Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
 
-<VersionBlock firstVersion="1.8" lastVersion="1.8">
+
 
 ## New `data_tests:` syntax
 
+<VersionBlock lastVersion="1.7">
+
+The `tests` config has been renamed to `data_tests`in dbt version 1.8. To read more about this change, switch to version v1.8 in the documentation navigation menu.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8" lastVersion="1.8">
+  
 Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. As of v1.8,  `tests:` is still supported in your YML configuration files as an alias but will be deprecated in the future in favor of `data_tests:`. 
 
 As we progress towards this deprecation, we'll update the examples in our docs pages to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
