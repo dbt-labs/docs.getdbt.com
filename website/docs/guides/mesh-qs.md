@@ -286,6 +286,7 @@ projects:
 </File>
 
 Add the following files:
+
 4. models/staging/sources.yml
 
     <File name='models/staging/sources.yml'>
