@@ -6,9 +6,10 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Get started with dbt by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud with your data respective data platform.
+Start your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud with your data respective data platform. dbt Cloud enables you to develop, test, deploy, and explore data products using a single, fully managed service.
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+dbt Cloud is designed to empower data teams with advanced capabilities, including:
+
 - Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
 - The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
@@ -21,44 +22,44 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 <Card
     title="Quickstart for dbt Cloud and BigQuery"
-    body="Add text."
+    body="Discover how to leverage dbt Cloud with BigQuery to streamline your analytics workflows."
     link="https://docs.getdbt.com/guides/bigquery"
     icon="bigquery"/>
 
 <Card
     title="Quickstart for dbt Cloud and Databricks"
-    body="Add text."
+    body="Learn how to integrate dbt Cloud with Databricks for efficient data processing and analysis."
     link="https://docs.getdbt.com/guides/databricks"
     icon="databricks"/>
 
 <Card
     title="Quickstart for dbt Cloud and Microsoft Fabric"
-    body="Add text."
+    body="Explore the synergy between dbt Cloud and Microsoft Fabric to optimize your data transformations."
     link="https://docs.getdbt.com/guides/microsoft-fabric"
     icon="fabric"/>
 
 <Card
     title="Quickstart for dbt Cloud and Redshift"
-    body="Add text."
+    body="Learn how to connect dbt Cloud to Redshift for more agile data transformations and streamlined analytics processes."
     link="https://docs.getdbt.com/guides/redshift"
     icon="redshift"/>
 
 <Card
     title="Quickstart for dbt Cloud and Snowflake"
-    body="Add text."
+    body="Unlock the full potential of using dbt Cloud with Snowflake for your data transformations."
     link="https://docs.getdbt.com/guides/snowflake"
     icon="snowflake"/>
 
 <Card
     title="Quickstart for dbt Cloud and Starburst Galaxy"
-    body="Add text."
+    body="Dive into using dbt Cloud with Starburst Galaxy to supercharge your data analytics."
     link="https://docs.getdbt.com/guides/starburst-galaxy"
     icon="starburst"/>
 
 </div>
 
 ### dbt Core
-[dbt Core](https://github.com/dbt-labs/dbt-core) is a command-line open-source tool for data transformations that enables data teams to transform data using [analytics engineering best practices](https://docs.getdbt.com/best-practices).
+[dbt Core](https://github.com/dbt-labs/dbt-core) is a command-line open-source tool for data transformations that enables data teams to transform data using [analytics engineering best practices](https://docs.getdbt.com/best-practices). It's suitable for ‘single players’ and small technical teams who prefer manual setup and customization.
 
 Refer to the following quickstarts to get started with dbt Core:
 
