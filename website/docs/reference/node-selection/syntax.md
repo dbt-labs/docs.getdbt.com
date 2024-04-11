@@ -106,7 +106,6 @@ Note that when you're using `--selector`, most other flags (namely `--select` an
 <Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="node-selection"/>
 
-### Troubleshooting tip: Use the `ls` command!
 
 Constructing and debugging selection logic can be challenging.  One of the best ways to get a "preview" of what will be selected is to use the [ls](/reference/commands/list) command.  This command, when combined with your selection syntax, will output a list of the nodes that meet that selection criteria.  All of the selection syntax argument types are supported.
 
