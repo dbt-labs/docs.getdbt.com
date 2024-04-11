@@ -185,7 +185,7 @@ After issuing one of the above commands, you can reference the results by adding
 
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
-dbt run --select "result:<status> --defer --state path/to/prod/artifacts"
+dbt run --select result:<status> --defer --state path/to/prod/artifacts
 ```
 
 The available options depend on the resource (node) type: 
@@ -204,7 +204,7 @@ The available options depend on the resource (node) type:
 The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run OR any new or modified models.
 
 ```bash
-dbt run --select "result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>"
+dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>
 ```
 
 ### Fresh rebuilds
