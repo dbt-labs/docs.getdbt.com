@@ -75,11 +75,16 @@ Support will provide you with the VPCE ID that you can use to create a network p
 7. Set the type to `AWS VPCE ID` and the mode to `Ingress`.
 8. Enter the VPCE ID provided by dbt Cloud Support as an identifier.
 9. Click **Create Network Rule**.
+
+<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink2.png" title="Create Network Rule"/>
+
 10. In the **Network Policy** tab, edit the policy you want to add the rule to.
 
 - _*This could be your account level policy, or a policy specific to the users who will be connecting from dbt Cloud._
 
-11. Add the new rule to the allowed list and save.
+11. Add the new rule to the allowed list and click **Update Network Policy**.
+
+<Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink3.png" title="Update Network Policy"/>
 
 ### Using SQL
 1. Create a new network rule with the following SQL:
