@@ -108,7 +108,7 @@ Note that when you're using `--selector`, most other flags (namely `--select` an
 Constructing and debugging your selection syntax can be challenging.  To get a "preview" of what will be selected, we recommend using the [`list` command](/reference/commands/list).  This command, when combined with your selection syntax, will output a list of the nodes that meet that selection criteria.  The `dbt ls` command supports all types of selection syntax arguments, for example:
 
 ```bash
-dbt ls --select "path.to.my.models" # Lists all models in a specific directory.
+dbt ls --select "path/to/my/models" # Lists all models in a specific directory.
 dbt ls --select "source_status:fresher+" # Shows sources updated since the last dbt source freshness run.
 dbt ls --select state:modified+ # Displays nodes modified in comparison to a previous state.
 dbt ls --select "result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>" # Lists nodes that match certain result statuses and are modified, which can help with troubleshooting.
