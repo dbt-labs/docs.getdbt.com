@@ -106,6 +106,19 @@ Note that when you're using `--selector`, most other flags (namely `--select` an
 <Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="node-selection"/>
 
+### Troubleshooting tip: Use the `ls` command!
+
+Constructing and debugging selection logic can be challenging.  One of the best ways to get a "preview" of what will be selected is to use the [ls](/reference/commands/list) command.  This command, when combined with your selection syntax, will output a list of the nodes that meet that selection criteria.  All of the selection syntax argument types are supported.
+
+Examples:
+
+```bash
+dbt ls --select "path.to.my.models"
+dbt ls --select "source_status:fresher+"
+dbt ls --select state:modified+
+dbt ls --select "result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>"
+```
+
 ## Stateful selection
 
 One of the greatest underlying assumptions about dbt is that its operations should be **stateless** and **<Term id="idempotent" />**. That is, it doesn't matter how many times a model has been run before, or if it has ever been run before. It doesn't matter if you run it once or a thousand times. Given the same raw data, you can expect the same transformed result. A given run of dbt doesn't need to "know" about _any other_ run; it just needs to know about the code in the project and the objects in your database as they exist _right now_.
