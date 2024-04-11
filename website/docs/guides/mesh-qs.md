@@ -3,7 +3,7 @@ title: "Quickstart for dbt Mesh"
 id: "mesh-qs"
 level: 'Intermediate'
 icon: 'guides'
-tags: ['dbt Cloud','Intermediate']
+tags: ['dbt Cloud','Quickstart']
 hide_table_of_contents: true
 ---
 
@@ -548,15 +548,16 @@ select * from final
 
 ```
 
-</File> 
+</File>
 
 Then, commit & merge the change. Go to the “Deploy -> Jobs” page and click “Run Now” on the Finance Job. We’ll see that the the agg_customer_payment_journey model builds but surfaces a warning with the deprecation date.
 
 <!-- <Lightbox src="/img/guides/dbt-mesh/deprecation_date_warning.png" title="Deprecation date warning" /> -->
 
+## View lineage with dbt Explorer
 
-## View Explore
-
-Head over to the Explore page for each of your projects. You can now see the [lineage seamlessly across projects](https://docs.getdbt.com/docs/collaborate/explore-multiple-projects)!
+In dbt Cloud, navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects)!
 
 Congratulations 🎉! You're ready to bring the benefits of dbt Mesh to your organization.
+
+</div>
