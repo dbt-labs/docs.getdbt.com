@@ -4,7 +4,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Get started with dbt",
-      collapsed: false,
+      collapsed: true,
       link: { type: "doc", id: "docs/get-started-dbt" },
       items: [
         "docs/get-started-dbt",
