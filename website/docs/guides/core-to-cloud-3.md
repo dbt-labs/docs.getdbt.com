@@ -79,6 +79,8 @@ The dbt Cloud IDE provides a simplified interface that's accessible to all users
 ### dbt Cloud CLI
 The dbt Cloud CLI allows you to run dbt [commands](/reference/dbt-commands#available-commands) against your dbt Cloud development environment from your local command line. For users who seek full control over their development environment and ideal for those comfortable with the command line.
 
+When moving from dbt Core to dbt Cloud, make sure you check the `.gitignore` file contains the [necessary folders](/docs/collaborate/git/version-control-basics#the-gitignore-file). dbt Core doesn't interact with git so dbt Cloud doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, dbt Cloud won't add any missing entries to the `.gitignore file`.
+
 **Who might prefer the dbt Cloud CLI?**
 
 - dbt users and developers looking for granular control over their Git workflows (such as pre-commits for automated checks before committing code).
@@ -150,6 +152,8 @@ Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered 
 - Run queries/semantic layer commands in the dbt Cloud CLI, however running queries/semantic layer commands in the dbt Cloud IDE isn’t supported *yet.*
 - dbt Semantic Layer doesn't yet support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections. It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for Semantic Layer [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), however, SSO is supported for development user accounts.
 
+Refer to the [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for more information.
+
 ## dbt Explorer
 
 [dbt Explorer](/docs/collaborate/explore-projects) enhances your ability to discover and understand your data models through rich metadata and lineage visualization. Here are some tips and caveats to consider when using dbt Explorer:
@@ -164,6 +168,8 @@ Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered 
 - There must be at least one successful job run in the production deployment environment for Explorer to populate information. 
 
 Familiarize yourself with dbt Explorer’s features to fully leverage its capabilities to avoid missed opportunities for efficiency gains.
+
+Refer to the [dbt Explorer FAQs](/docs/collaborate/dbt-explorer-faqs) for more information.
 
 ## What's next?
 
