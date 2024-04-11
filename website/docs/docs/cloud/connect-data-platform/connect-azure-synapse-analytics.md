@@ -4,10 +4,13 @@ description: "Configure Azure Synapse Analytics connection."
 sidebar_label: "Connect Azure Synapse Analytics"
 ---
 
+# Connect Azure Synapse Analytics <Lifecycle status="beta" />
+
 ## Supported authentication methods
 The supported authentication methods are: 
 - Microsoft Entra ID service principal
 - Active Directory password
+- SQL server authentication
 
 ### Microsoft Entra ID service principal 
 The following are the required fields for setting up a connection with Azure Synapse Analytics using Microsoft Entra ID service principal authentication. 
@@ -35,6 +38,21 @@ The following are the required fields for setting up a connection with Azure Syn
 | **Authentication** | Choose **Active Directory Password** from the dropdown. | 
 | **User** | The AD username. |
 | **Password** | The AD username's password. |
+
+
+### SQL server authentication
+
+The following are the required fields for setting up a connection with Azure Synapse Analytics using SQL server authentication. 
+
+| Field | Description |
+| --- | --- |
+| **Server** | The server hostname or IP to connect to Azure Synapse Analytics. |
+| **Port** | The server port. You can use `1433` (the default), which is the standard SQL server port number. |
+| **Database** | The database name. |
+| **Authentication** | Choose **SQL** from the dropdown. | 
+| **User** | The username. |
+| **Password** | The username's password. |
+
 
 ## Configuration 
 
