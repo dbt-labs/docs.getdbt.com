@@ -3,9 +3,12 @@ const sidebarSettings = {
     "docs/introduction",
     {
       type: "category",
-      label: "Get started",
+      label: "Get started with dbt",
       collapsed: false,
       link: { type: "doc", id: "docs/get-started-dbt" },
+      items: [
+        "docs/get-started-dbt",
+      ],
     }, // Get started quickstarts directory
     {
       type: "category",
