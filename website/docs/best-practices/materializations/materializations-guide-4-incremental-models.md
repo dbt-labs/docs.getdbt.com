@@ -111,7 +111,7 @@ So we’re going to use an **if statement** to apply our cutoff filter **only wh
 - ➕  we’ve set the materialization **config** to incremental,
 - 🛠️  there is an **existing table** for this model in the warehouse to build on,
 - 🙅‍♀️  and the `--full-refresh` **flag was _not_ passed.**
-  - [full refresh](reference/resource-configs/full_refresh) is a configuration and flag that is specifically designed to let us override the incremental materialization and build a table from scratch again.
+  - [full refresh](/reference/resource-configs/full_refresh) is a configuration and flag that is specifically designed to let us override the incremental materialization and build a table from scratch again.
 
 Thankfully, we don’t have to dig into the guts of dbt to sort out each of these conditions individually.
 
