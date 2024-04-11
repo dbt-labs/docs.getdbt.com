@@ -5,7 +5,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-
+Get started using dbt Cloud by trying one of our product quickstarts. Each quickstart provides a step-by-step guide to help you set up dbt Cloud with your data warehouse.
 
 <div className="grid--3-col">
 
