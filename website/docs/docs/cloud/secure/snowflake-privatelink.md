@@ -56,3 +56,39 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
+
+## Advanced - Network Policies
+If your organization uses [Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your snowflake account, you will also need to add a network rule for dbt Cloud. 
+
+Support will provide you with the VPCE ID that you can use to create a network policy. 
+
+### Using the UI
+1. Navigate to the Snowflake UI.
+2. Go to the **Security** tab.
+3. Click on **Network Rules**.
+4. Click on **Add Rule**.
+5. Give the rule a name.
+6. Select a database and schema for the rule to live in.
+  - The database and schema are used for organizational purposes and do not affect the rule.
+7. Set the type to `AWS VPCE ID` and the mode to `Ingress`.
+8. Enter the VPCE ID provided by dbt Cloud Support as an identifier.
+9. Click **Create Network Rule**.
+10. In the **Network Policy** tab, edit the policy you want to add the rule to.
+  - This could be your account level policy, or a policy specific to the users who will be connecting from dbt Cloud.
+11. Add the new rule to the allowed list and save.
+
+### Using SQL
+1. Create a new network rule with the following SQL:
+```sql
+CREATE NETWORK RULE allow_dbt_cloud_access
+  MODE = INGRESS
+  TYPE = AWSVPCEID
+  VALUE_LIST = ('<VPCE_ID>');
+```
+
+2. Add the rule to a network policy with the following SQL:
+```sql
+ALTER NETWORK POLICY <network_policy_name>
+  ADD ALLOWED_NETWORK_RULE_LIST =('allow_dbt_cloud_access');
+```
+
