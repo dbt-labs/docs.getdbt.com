@@ -16,15 +16,18 @@ A dbt Cloud project can have multiple deployment environments, providing you the
 To learn different approaches to managing dbt Cloud environments and recommendations for your organization's unique needs, read [dbt Cloud environment best practices](/guides/set-up-ci).
 ::: 
  
-This page reviews the different types of environments and how to configure your deployment environment in dbt Cloud. 
+Learn more about development vs. deployment environments in [dbt Cloud Environments](/docs/dbt-cloud-environments).
 
-import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
+There are three types of deployment environments that serve different needs:
+- **Production**: Environment for transforming data and building pipelines for production use.
+- **Staging**<Lifecycle status='beta' />: Environment for working with production tools while limiting access to production data.
+- **General**: General use environment for deployment development. 
 
-<CloudEnvInfo setup={'/snippets/_cloud-environments-info.md'} />
+We highly recommend using the `Production` environment type for the final, source of truth deployment data. There can be only one environment marked for final production workflows and we don't recommend using a `General` environment for this purpose. 
 
 ## Create a deployment environment
 
-To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type.
+To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. If you already have a development environment, the option will be greyed out.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="85%" title="Navigate to Deploy ->  Environments to create a deployment environment" />
 
@@ -38,7 +41,8 @@ In dbt Cloud, each project can have one designated deployment environment, which
 
 For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions!
 
-### Deployment connection
+
+## Deployment connection
 
 :::info Warehouse Connections
 
@@ -184,6 +188,37 @@ This section allows you to determine the credentials that should be used when co
 </div>
 
 </WHCode>
+
+
+## Staging environment <Lifecycle status='beta' />
+
+:::note
+Currently in limited availability beta.
+:::
+
+Staging environments are a useful way to grant developers access to deployment workflows and tools while limiting access to production data. Staging environments are configured with their own, long living branch (for example, `staging`) that may be very similar to `main` in many ways, but limits the data that the developers can access. 
+
+Ideally, the workflows would move upstream from Developer environment -> Staging environment -> Production environment with developer branches feeding in to the staging branch, then ultimately `main`. In many cases, `main` and `staging` branches will be identical after a merge, and remain that way until the next batch of changes from `developer` branches are ready to be elevated. We recommend setting branch protection rules on `stagin` similar to `main`.
+
+### Create a staging environment 
+
+In the dbt Cloud, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. If you already have a development environment, the option will be greyed out.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-staging-environment.png" width="85%" title="Create a staging environment" />
+
+The "dbt version" should match the version used in production. 
+
+Follow the steps outlined in [deployment credentials](#deployment-connection) to complete the remainder of the environment setup.
+
+// do we recommend specific credentials.
+
+### Use cases
+
+There are a variety of reasons to incorporate a staging environment into existing workflows, including (but not limited to):
+- Securing the source of truth production environment
+- Access control over sensitive data
+- Limiting the amount of production data developers can access
+- Protecting data access using cross project refs (if staging environments are defined in those projects)
 
 
 ## Related docs
