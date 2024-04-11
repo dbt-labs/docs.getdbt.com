@@ -1,22 +1,22 @@
 ---
-title: "Quickstarts"
+title: "dbt Quickstarts"
 id: get-started-dbt
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
 ---
 
-Start your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud with your data respective data platform. dbt Cloud enables you to develop, test, deploy, and explore data products using a single, fully managed service.
+Start your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections). dbt Cloud enables you to develop, test, deploy, and explore data products using a single, fully managed service.
 
 dbt Cloud is designed to empower data teams with advanced capabilities, including:
 
-- Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation)).
+- Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
 - The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
 - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
 - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
 
-Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [start with dbt Cloud](https://www.getdbt.com/signup/) today.
+Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today.
 
 <div className="grid--3-col">
 
@@ -40,7 +40,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 <Card
     title="Quickstart for dbt Cloud and Redshift"
-    body="Learn how to connect dbt Cloud to Redshift for more agile data transformations and streamlined analytics processes."
+    body="Learn how to connect dbt Cloud to Redshift for more agile data transformations."
     link="https://docs.getdbt.com/guides/redshift"
     icon="redshift"/>
 
@@ -52,24 +52,25 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 <Card
     title="Quickstart for dbt Cloud and Starburst Galaxy"
-    body="Dive into using dbt Cloud with Starburst Galaxy to supercharge your data analytics."
+    body="Leverage dbt Cloud with Starburst Galaxy to enhance up your data transformation workflows."
     link="https://docs.getdbt.com/guides/starburst-galaxy"
     icon="starburst"/>
 
 </div>
 
 ### dbt Core
-[dbt Core](https://github.com/dbt-labs/dbt-core) is a command-line open-source tool for data transformations that enables data teams to transform data using [analytics engineering best practices](https://docs.getdbt.com/best-practices). It's suitable for ‘single players’ and small technical teams who prefer manual setup and customization.
+[dbt Core](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data teams to transform data using [analytics engineering best practices](https://docs.getdbt.com/best-practices). It's suitable for ‘single players’ and small technical teams who prefer manual setup and customization.
 
 Refer to the following quickstarts to get started with dbt Core:
 
-- [dbt Core from a manual install](/guides/manual-install) to learn how to install dbt and set up a project.
+- [dbt Core from a manual install](/guides/manual-install) to learn how to install dbt Core and set up a project.
 - [dbt Core using GitHub Codespace](/guides/codespace?step=1) to learn how to create a codespace and execute the `dbt build` command.
 
 ## Related docs
 <!-- use as an op to link to other useful guides when the query params pr is merged -->
-Expand your dbt knowledge and expertise with these additional resources
+Expand your dbt knowledge and expertise with these additional resources:
 
 - [Best practices](https://docs.getdbt.com/best-practices) to learn how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
 - [Install the dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to learn how to install the dbt Cloud CLI develop in your local environment.
+- [dbt Learn](https://courses.getdbt.com/collections) for free online courses that cover dbt fundamentals, advanced topics, and more.
 - [Get started with Continuous Integration tests](/guides/set-up-ci) to learn how to set up CI tests for your dbt project.
