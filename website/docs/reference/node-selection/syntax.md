@@ -111,6 +111,7 @@ Constructing and debugging your selection syntax can be challenging.  To get a "
 dbt ls --select "path/to/my/models" # Lists all models in a specific directory.
 dbt ls --select "source_status:fresher+" # Shows sources updated since the last dbt source freshness run.
 dbt ls --select state:modified+ # Displays nodes modified in comparison to a previous state.
+dbt ls --select result:<status>+ state:modified+ --state ./<dbt-artifact-path> # Lists nodes that match certain [result statuses](/reference/node-selection/syntax#the-result-status) and are modified.
 ```
 
 <Snippet path="discourse-help-feed-header" />
