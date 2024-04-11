@@ -10,7 +10,7 @@ Start your dbt journey by trying one of our quickstarts, which provides a step-b
 
 dbt Cloud is designed to empower data teams with advanced capabilities, including:
 
-- Development experiences tailored to multiple personas &mdash; [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) for an in-browser experience or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) for a local development environment.
+- Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation)).
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
 - The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
 - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
