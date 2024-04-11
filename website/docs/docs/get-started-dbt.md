@@ -63,7 +63,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 Refer to the following quickstarts to get started with dbt Core:
 
-- [dbt Core from a manual install](m/guides/manual-install) to learn how to install dbt and set up a project.
+- [dbt Core from a manual install](/guides/manual-install) to learn how to install dbt and set up a project.
 - [dbt Core using GitHub Codespace](/guides/codespace?step=1) to learn how to create a codespace and execute the `dbt build` command.
 
 ## Related docs
