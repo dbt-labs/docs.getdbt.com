@@ -58,7 +58,7 @@ Examples:
 ```bash
 dbt run --select "my_dbt_project_name"   # runs all models in your project
 dbt run --select "my_dbt_model"          # runs a specific model
-dbt run --select "path.to.my.models"     # runs all models in a specific directory
+dbt run --select "path/to/my/models"     # runs all models in a specific directory
 dbt run --select "my_package.some_model" # run a specific model in a specific package
 dbt run --select "tag:nightly"           # run models with the "nightly" tag
 dbt run --select "path/to/models"        # run models contained in path/to/models
