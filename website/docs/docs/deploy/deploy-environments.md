@@ -198,7 +198,7 @@ Currently in limited availability beta.
 
 Staging environments are useful ways to grant developers access to deployment workflows and tools while controlling access to production data. They are configured with their own long-living branch (for example, `staging`) that may be very similar to `main` in many ways while potentially limiting the data the developers can access. 
 
-Ideally, the workflows would move upstream from Developer environment -> Staging environment -> Production environment with developer branches feeding in to the staging branch, then ultimately `main`. In many cases, `main` and `staging` branches will be identical after a merge, and remain that way until the next batch of changes from `developer` branches are ready to be elevated. We recommend setting branch protection rules on `stagin` similar to `main`.
+Ideally, the workflows would move upstream from the Development environment -> Staging environment -> Production environment with developer branches feeding into the staging branch, then ultimately `main`. In many cases, the `main` and `staging` branches will be identical after a merge and remain until the next batch of changes from the `development` branches are ready to be elevated. We recommend setting branch protection rules on `staging` similar to `main`.
 
 ### Create a staging environment 
 
