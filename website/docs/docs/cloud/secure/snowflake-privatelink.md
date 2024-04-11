@@ -57,10 +57,10 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
 
-## Advanced - Network Policies
-If your organization uses [Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will also need to add a network rule for dbt Cloud. 
+## Configuring Network Policies
+If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will also need to add a network rule for dbt Cloud. 
 
-Support will provide you with the VPCE ID that you can use to create a network policy. 
+You will receive the VPCE ID from dbt Cloud Support that you can use to create a network policy. 
 
 ### Using the UI
 1. Navigate to the Snowflake UI.
@@ -68,12 +68,10 @@ Support will provide you with the VPCE ID that you can use to create a network p
 3. Click on **Network Rules**.
 4. Click on **Add Rule**.
 5. Give the rule a name.
-6. Select a database and schema for the rule to live in.
-
-- _*The database and schema are used for organizational purposes and do not affect the rule._
+6. Select a database and schema where the rule will be stored. These selections are for permission settings and organizational purposes. They do not affect the rule itself.
 
 7. Set the type to `AWS VPCE ID` and the mode to `Ingress`.
-8. Enter the VPCE ID provided by dbt Cloud Support as an identifier.
+8. Type the VPCE ID provided by dbt Cloud Support into identifier box and press **Enter**.
 9. Click **Create Network Rule**.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink2.png" title="Create Network Rule"/>
@@ -87,12 +85,14 @@ Support will provide you with the VPCE ID that you can use to create a network p
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink3.png" title="Update Network Policy"/>
 
 ### Using SQL
+For quick and automated setup of network rules via SQL in Snowflake, the following commands allow you to create and configure access rules for dbt Cloud. These SQL examples demonstrate how to add a network rule and update your network policy accordingly.
+
 1. Create a new network rule with the following SQL:
 ```sql
 CREATE NETWORK RULE allow_dbt_cloud_access
   MODE = INGRESS
   TYPE = AWSVPCEID
-  VALUE_LIST = ('<VPCE_ID>');
+  VALUE_LIST = ('<VPCE_ID>'); -- Replace '<VPCE_ID>' with the actual ID provided
 ```
 
 2. Add the rule to a network policy with the following SQL:
