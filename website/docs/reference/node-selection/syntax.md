@@ -191,14 +191,14 @@ dbt run --select "result:<status> --defer --state path/to/prod/artifacts"
 
 The available options depend on the resource (node) type: 
 
-|      result:\<status>          | model | seed | snapshot | test |
+|      `result:\<status>`        | model | seed | snapshot | test |
 |----------------|-------|------|------|----------|
-| `result:error`   | ✅    | ✅    | ✅    |  ✅      |
-| `result:success` | ✅    | ✅    | ✅     |         |
-| `result:skipped` | ✅    |      |  ✅    | ✅       |
-| `result:fail`    |       |      |     |   ✅       |
-| `result:warn`    |       |      |      |  ✅        |
-| `result:pass`    |       |      |      |  ✅      |
+| `result:error`   | ✅  | ✅   | ✅   |  ✅      |
+| `result:success` | ✅  | ✅   | ✅   |          |
+| `result:skipped` | ✅  |      | ✅   |  ✅      |
+| `result:fail`    |     |      |      |  ✅      |
+| `result:warn`    |     |      |      |  ✅      |
+| `result:pass`    |     |      |      |  ✅      |
 
 ### Combining `state` and `result` selectors
 
