@@ -6,7 +6,16 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Get started using dbt Cloud by trying one of our product quickstarts. Each quickstart provides a step-by-step guide to help you set up dbt Cloud with your data warehouse.
+Get started with dbt by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud with your data respective data platform.
+
+dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+- Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
+- Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
+- The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+- Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
+- [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
+
+Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 <div className="grid--3-col">
 
@@ -49,7 +58,7 @@ Get started using dbt Cloud by trying one of our product quickstarts. Each quick
 </div>
 
 ### dbt Core
-[dbt Core](https://github.com/dbt-labs/dbt-core) is a command-line open-source tool for data transformations that enables data teams to transform data using [analytics engineering best practices](https://docs.getdbt.com/best-practices), with SQL and Jinja.
+[dbt Core](https://github.com/dbt-labs/dbt-core) is a command-line open-source tool for data transformations that enables data teams to transform data using [analytics engineering best practices](https://docs.getdbt.com/best-practices).
 
 Refer to the following quickstarts to get started with dbt Core:
 
