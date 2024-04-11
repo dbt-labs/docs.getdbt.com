@@ -36,6 +36,8 @@ You can access dbt using dbt Core or dbt Cloud. dbt Cloud is built around dbt Co
 
 You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com/pricing/).
 
+<Lightbos src="c/img/docs/cloud-overview.jpg" title="Develop, test, schedule, and investigate data models all in one web-based UI" />
+
 ### dbt Cloud
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. It also natively supports developing using a command line with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
