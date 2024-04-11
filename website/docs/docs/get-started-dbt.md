@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Start your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections). dbt Cloud enables you to develop, test, deploy, and explore data products using a single, fully managed service.
+Start your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections). dbt Cloud is the scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed service.
 
 dbt Cloud is designed to empower data teams with advanced capabilities, including:
 
@@ -59,7 +59,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 </div>
 
 ### dbt Core
-[dbt Core](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data teams to transform data using [analytics engineering best practices](https://docs.getdbt.com/best-practices). It's suitable for ‘single players’ and small technical teams who prefer manual setup and customization.
+[dbt Core](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data teams to transform data using analytics engineering best practices. It's suitable for ‘single players’ and small technical teams who prefer manual setup and customization.
 
 Refer to the following quickstarts to get started with dbt Core:
 

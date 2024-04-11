@@ -11,7 +11,7 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 Read more about why we want to enable analysts to work more like software engineers in [The dbt Viewpoint](/community/resources/viewpoint).
 
-<Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, allowing you to transform data directly in your cloud data platform." />
+<Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
 
 ## dbt products
 
