@@ -27,7 +27,7 @@ We highly recommend using the `Production` environment type for the final, sourc
 
 ## Create a deployment environment
 
-To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. If you already have a development environment, the option will be greyed out.
+To create a new dbt Cloud deployment environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. The option will be greyed out if you already have a development environment.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="85%" title="Navigate to Deploy ->  Environments to create a deployment environment" />
 
@@ -193,24 +193,23 @@ This section allows you to determine the credentials that should be used when co
 ## Staging environment <Lifecycle status='beta' />
 
 :::note
-Currently in limited availability beta.
+Currently in limited availability beta. Contact support or your account team if you're interested in beta access.
 :::
 
-Staging environments are a useful way to grant developers access to deployment workflows and tools while limiting access to production data. Staging environments are configured with their own, long living branch (for example, `staging`) that may be very similar to `main` in many ways, but limits the data that the developers can access. 
+Staging environments are useful ways to grant developers access to deployment workflows and tools while controlling access to production data. They are configured with their own long-living branch (for example, `staging`) that may be very similar to `main` in many ways while potentially limiting the data the developers can access. 
 
-Ideally, the workflows would move upstream from Developer environment -> Staging environment -> Production environment with developer branches feeding in to the staging branch, then ultimately `main`. In many cases, `main` and `staging` branches will be identical after a merge, and remain that way until the next batch of changes from `developer` branches are ready to be elevated. We recommend setting branch protection rules on `stagin` similar to `main`.
+Ideally, the workflows would move upstream from the Development environment -> Staging environment -> Production environment with developer branches feeding into the staging branch, then ultimately `main`. In many cases, the `main` and `staging` branches will be identical after a merge and remain until the next batch of changes from the `development` branches are ready to be elevated. We recommend setting branch protection rules on `staging` similar to `main`.
 
 ### Create a staging environment 
 
-In the dbt Cloud, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. If you already have a development environment, the option will be greyed out.
+In the dbt Cloud, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. The option will be greyed out if you already have a development environment.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-staging-environment.png" width="85%" title="Create a staging environment" />
 
-The "dbt version" should match the version used in production. 
 
 Follow the steps outlined in [deployment credentials](#deployment-connection) to complete the remainder of the environment setup.
 
-// do we recommend specific credentials.
+We recommend that the data warehouse credentials be for a dedicated user or service principal.
 
 ### Why use a staging environment
 
