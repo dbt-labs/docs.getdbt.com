@@ -71,6 +71,6 @@ Refer to the following quickstarts to get started with dbt Core:
 Expand your dbt knowledge and expertise with these additional resources:
 
 - [Best practices](https://docs.getdbt.com/best-practices) to learn how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
-- [Install the dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to learn how to install the dbt Cloud CLI and develop in your local environment.
 - [dbt Learn](https://courses.getdbt.com/collections) for free online courses that cover dbt fundamentals, advanced topics, and more.
-- [Get started with Continuous Integration tests](/guides/set-up-ci) to learn how to set up CI tests for your dbt project.
+- [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners around the world are using dbt, share your own experiences, and get help with your dbt projects.
+- [Install the dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to learn how to install the dbt Cloud CLI and develop in your local environment.
