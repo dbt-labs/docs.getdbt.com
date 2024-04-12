@@ -193,7 +193,7 @@ This section allows you to determine the credentials that should be used when co
 ## Staging environment <Lifecycle status='beta' />
 
 :::note
-Currently in limited availability beta.
+Currently in limited availability beta. Contact support or your account team if you're interested in beta access.
 :::
 
 Staging environments are useful ways to grant developers access to deployment workflows and tools while controlling access to production data. They are configured with their own long-living branch (for example, `staging`) that may be very similar to `main` in many ways while potentially limiting the data the developers can access. 
