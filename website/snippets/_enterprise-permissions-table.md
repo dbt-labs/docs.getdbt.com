@@ -1,16 +1,16 @@
 
 Key:
 
-* (W)rite &mdash; Create new or modify existing. Includes `send`, `create`, `delete`, `allocate`, `modify`, and `read`.
+* (W)rite &mdash; Create new or modify existing. Includes `send`, `create`, `delete`, `allocate`, `modify`, `develop`, and `read`.
 * (R)ead &mdash; Can view but can not create or change any fields.
 
 Permissions: 
 
-* Account-level permissions &mdash; Permissions related to management of the dbt Cloud account. For example, billing and account settings.
+* Account-level permissions &mdash; Permissions related to the management of the dbt Cloud account. For example, billing and account settings.
 * Project-level permissions &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the IDE or dbt Cloud CLI. 
 
 ### Account roles
-Account roles enable you to manage the dbt Cloud account and manage the account settings (for example, generating service tokens, inviting users, configuring SSO). They also provide project-level permissions. The **Account Admin** role is the highest level of access you can assign.  
+Account roles enable you to manage the dbt Cloud account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** role is the highest level of access you can assign.  
 
 #### Account permissions for account roles
 
