@@ -20,7 +20,7 @@ You can use dbt to quickly and collaboratively transform data and deploy analyti
 To cater to the diverse needs of data teams, dbt offers two primary solutions:
 
 - [**dbt Cloud**](#dbt-cloud) &mdash; A comprehensive, full managed service enabling teams to develop, test, deploy, and explore data products safely and reliably.
-- [**dbt Core**](#dbt-core) &mdash; An open-source CLI tool that enables data teams to transform data using analytics engineering best practices.
+- [**dbt Core**](#dbt-core) &mdash; An open-source CLI tool that's suitable for users who prefer a manual setup.
 
 ### dbt Cloud
 
