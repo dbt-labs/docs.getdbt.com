@@ -95,8 +95,9 @@ To enhance performance, job scheduling frequencies vary by dbt Cloud plan:
 
 **Examples**
 
-Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and return their plain English translations. Here are examples of cron job schedules. The dbt Cloud job scheduler supports using `L` to schedule jobs on the last day of the month:
+Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and return their plain English translations. The dbt Cloud job scheduler supports using `L` to schedule jobs on the last day of the month.
 
+Here are examples of cron job schedules:
 
 - `0 * * * *`: Every hour, at minute 0.
 - `*/5 * * * *`: Every 5 minutes. (Not available on Developer plans)
