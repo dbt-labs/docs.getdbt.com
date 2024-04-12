@@ -260,7 +260,7 @@ Last but not least, let’s run our first deployment dbt Cloud Job. Go to the **
 
 Check the **Generate docs on run** box so that we can later represent the state of this project in the Explore page. Then, click **Run Now**.
 <Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" title="Jaffle | Generate docs on run" />
-<Lightbox src="/img/guides/dbt-mesh/jon_run_now.png" title="Jaffle | Trigger job" />
+<Lightbox src="/img/guides/dbt-mesh/job_run_now.png" title="Jaffle | Trigger job" />
 
 After the run is complete, go to the **Project Setting** page and link documentation to the job:
 <Lightbox src="/img/guides/dbt-mesh/set_project_artifacts.png" title="Configure project artifacts" />
