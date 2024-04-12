@@ -44,18 +44,24 @@ An example of a saved query with an export:
 
 ```yaml
 saved_queries:
-  - name: YOUR_QUERY
-    description: YOUR_DESCRIPTION
+  - name: order_metrics
+    description: Relevant order metrics
     query_params:
       metrics:
-        - YOUR_METRIC_NAME
+        - orders
+        - large_order
+        - food_orders
+        - order_total
       group_by:
-        - TimeDimension()
+        - Entity('order_id')
+        - TimeDimension('metric_time', 'day')
+        - Dimension('customer__customer_name')
         - ... # Additional group_by
       where:
-        - ... # Additional where clauses
+        - "{{TimeDimension('metric_time')}} > current_timestamp - interval '1 week'"
+         - ... # Additional where clauses
     exports:
-      - name: YOUR_EXPORT
+      - name: order_metrics
         config:
           export_as: table # Options available: table, view
           schema: YOUR_SCHEMA # Optional - defaults to deployment schema
@@ -186,7 +192,7 @@ When you run a build job, any saved queries downstream of the dbt models in that
 
 </VersionBlock>
 
-2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform.
+2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform. It directly executes a "create table" statement so the data stays within your data platform.
 3. Review the exports' execution details in the jobs logs and confirm the export was run successfully. This helps troubleshoot and to ensure accuracy. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
 4. Your data is now available in the data platform for querying.
 
@@ -234,7 +240,7 @@ You can use exports to create a custom integration with tools such as PowerBI, a
 
 <detailsToggle alt_header="How can I select saved_queries by their resource type?">
 
-To select `saved_queries` by resource type, run `dbt build --resource-type saved_queries`.
+To select `saved_queries` by resource type, run `dbt build --resource-type saved_query`.
 
 </detailsToggle>
 
