@@ -24,7 +24,7 @@ Current limitations:
 
 ### Configure Databricks OAuth (Databricks admin)
 
-To get started, you will need to [add dbt as an OAuth application](https://docs.databricks.com/en/integrations/configure-oauth-dbt.html) with Databricks. There are two ways of configuring this application (CLI or Databricks UI). The following is the instruction for setting this up through Databricks UI:
+To get started, you will need to [add dbt as an OAuth application](https://docs.databricks.com/en/integrations/configure-oauth-dbt.html) with Databricks. There are two ways of configuring this application (CLI or Databricks UI). Here's how you can set this up in the Databricks UI:
 
 1. Log in to the [account console](https://accounts.cloud.databricks.com/?_ga=2.255771976.118201544.1712797799-1002575874.1704693634) and click the **Settings** icon in the sidebar.
 
@@ -32,23 +32,23 @@ To get started, you will need to [add dbt as an OAuth application](https://docs.
 
 3. Enter the following details:
    - A name for your connection.
-   - The redirect URLs for your OAuth connection.*
+   - The redirect URLs for your OAuth connection, which you can find in the followingguideline table.
    - For Access scopes, the APIs the application should have access to:
       - For BI applications, the SQL scope is required to allow the connected app to access Databricks SQL APIs (this is required for SQL models).
       - For applications that need to access Databricks APIs for purposes other than querying, the ALL APIs scope is required (this is required if running Python models).
    - The access token time-to-live (TTL) in minutes. Default: 60.
    - The refresh token time-to-live (TTL) in minutes. Default: 10080.
-4. Select Generate a client secret, copy and securely store the client secret. You can’t retrieve the client secret later.
+4. Select **Generate a client secret**. Copy and securely store the client secret. The client secret will not be available later.
 
-*Please follow the below guideline for setting up the redirect URLs for your application:
+You can use the following table to set up the redirect URLs for your application, replacing ACCOUNT_PREFIX with the cell 1 prefix for your region and INSTANCE_NAME with the custom name of your instance:
 
 | Region | Redirect URLs |
 | ------ | ----- |
 | **US multi-tenant** | https://cloud.getdbt.com/callback <br /> https://cloud.getdbt.com/complete/databricks |
-| **US cell 1** | https://{account prefix}.us1.dbt.com/callback <br /> https://{account prefix}.us1.dbt.com/complete/databricks |
+| **US cell 1** | https://ACCOUNT_PREFIX.us1.dbt.com/callback <br /> https://ACCOUNT_PREFIX.us1.dbt.com/complete/databricks |
 | **EMEA** | https://emea.dbt.com/callback <br /> https://emea.dbt.com/complete/databricks |
 | **APAC** | https://au.dbt.com/callback <br /> https://au.dbt.com/complete/databricks |
-| **Single tenant** | https://{instance name}.getdbt.com/callback <br /> https://{instance name}.getdbt.com/complete/databricks
+| **Single tenant** | https://INSTANCE_NAME.getdbt.com/callback <br /> https://INSTANCE_NAME.getdbt.com/complete/databricks
 
 
 ### Configure the Connection in dbt Cloud (dbt Cloud project admin)
