@@ -249,9 +249,10 @@ models:
 
 <div warehouse="Redshift">
 
-For Redshift, you need to explicitly grant roles and groups access to your models, whether to single users, groups, or roles, and you can revoke access as well.
+For Redshift, you need to distinguish between users, roles, and groups. It is important to explicitly grant roles and groups access to your models. You can revoke access as well.
 
-In the following example, you're granting permission to a user group named `dbt_reporter` for the models in `my_schema`. Note that the group must already exist in Redshift. Ensure you use the groups or role keyword in your string and `+grants` has a + prefix to signify adding to or modifying existing grants.
+**For users:**
+When granting access to individual users, use the `+grants` syntax in your configuration to add or modify permissions for these users without replacing existing configurations. In the following example, you only need to list the users:
 
 ```yaml
 models:
@@ -259,10 +260,27 @@ models:
     schema: my_schema
     description: "My schema"
     +grants:
-      select: ["group my_group_name"]
+      select: ["gspider"]  # example of user access
 ```
 
-The `+` before grants ensures modifications add to, rather than replace, existing configurations.
+**For roles and groups:**
+For roles and groups, the `+grants` syntax is not supported. You need to provide the complete list of roles or groups that require access each time you make a change. Additionally, you must prefix each role or group with 'role' or 'group':
+
+```
+yaml
+models:
+  my_schema:
+    schema: my_schema
+    description: "Schema for reporting"
+    grants:
+      select: ["role my_role", "group my_group"]
+```
+
+Some things to note:
+
+- Ensure that any roles or groups mentioned must already exist in Redshift.
+- Use the keyword `+grants` to add to or modify users for existing grants (rather than replace), however this syntax does not apply to roles and groups.
+- Always use the appropriate prefix (role or group) when specifying roles and groups in the grants configuration.
 
 </div>
 
