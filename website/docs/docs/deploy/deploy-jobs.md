@@ -90,7 +90,7 @@ To fully customize the scheduling of your job, choose the **Cron schedule** opti
 
 To enhance performance, job scheduling frequencies vary by dbt Cloud plan:
 
-- Developer plans: dbt Cloud sets a minimum interval of every 10 minutes for scheduling jobs. This means scheduling jobs to run more frequently than this interval is not supported.
+- Developer plans: dbt Cloud sets a minimum interval of every 10 minutes for scheduling jobs. This means scheduling jobs to run more frequently, or at less than 10 minute intervals, is not supported.
 - Team and Enterprise plans: No restrictions on job execution frequency.
 
 **Examples**
