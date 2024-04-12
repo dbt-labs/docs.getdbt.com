@@ -1,5 +1,5 @@
 ---
-title: "Quickstart for dbt Mesh"
+title: "Get started with dbt Mesh"
 id: "mesh-qs"
 level: 'Intermediate'
 icon: 'guides'
