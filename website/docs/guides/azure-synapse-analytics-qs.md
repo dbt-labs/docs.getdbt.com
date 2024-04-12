@@ -118,7 +118,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
-1. Click the **...** next to the `models` directory, then select **Create file**.  
+1. Click the three dot menu (**...**) next to the `models` directory, then select **Create file**.  
 1. Name the file `customers.sql`, then click **Create**.
 1. Copy the following query into the file and click **Save**.
 
