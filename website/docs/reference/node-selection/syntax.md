@@ -58,7 +58,7 @@ Examples:
 ```bash
 dbt run --select "my_dbt_project_name"   # runs all models in your project
 dbt run --select "my_dbt_model"          # runs a specific model
-dbt run --select "path.to.my.models"     # runs all models in a specific directory
+dbt run --select "path/to/my/models"     # runs all models in a specific directory
 dbt run --select "my_package.some_model" # run a specific model in a specific package
 dbt run --select "tag:nightly"           # run models with the "nightly" tag
 dbt run --select "path/to/models"        # run models contained in path/to/models
@@ -103,8 +103,20 @@ As your selection logic gets more complex, and becomes unwieldly to type out as 
 consider using a [yaml selector](/reference/node-selection/yaml-selectors). You can use a predefined definition with the `--selector` flag.
 Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
 
+### Troubleshoot with the `ls` command
+
+Constructing and debugging your selection syntax can be challenging.  To get a "preview" of what will be selected, we recommend using the [`list` command](/reference/commands/list).  This command, when combined with your selection syntax, will output a list of the nodes that meet that selection criteria.  The `dbt ls` command supports all types of selection syntax arguments, for example:
+
+```bash
+dbt ls --select "path/to/my/models" # Lists all models in a specific directory.
+dbt ls --select "source_status:fresher+" # Shows sources updated since the last dbt source freshness run.
+dbt ls --select state:modified+ # Displays nodes modified in comparison to a previous state.
+dbt ls --select "result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>" # Lists nodes that match certain [result statuses](/reference/node-selection/syntax#the-result-status) and are modified.
+```
+
 <Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="node-selection"/>
+
 
 ## Stateful selection
 
@@ -179,14 +191,14 @@ dbt run --select "result:<status> --defer --state path/to/prod/artifacts"
 
 The available options depend on the resource (node) type: 
 
-|                | model | seed | snapshot | test |
+|      `result:\<status>`        | model | seed | snapshot | test |
 |----------------|-------|------|------|----------|
-| `result:error`   | ✅    | ✅    | ✅    |  ✅      |
-| `result:success` | ✅    | ✅    | ✅     |         |
-| `result:skipped` | ✅    |      |  ✅    | ✅       |
-| `result:fail`    |       |      |     |   ✅       |
-| `result:warn`    |       |      |      |  ✅        |
-| `result:pass`    |       |      |      |  ✅      |
+| `result:error`   | ✅  | ✅   | ✅   |  ✅      |
+| `result:success` | ✅  | ✅   | ✅   |          |
+| `result:skipped` | ✅  |      | ✅   |  ✅      |
+| `result:fail`    |     |      |      |  ✅      |
+| `result:warn`    |     |      |      |  ✅      |
+| `result:pass`    |     |      |      |  ✅      |
 
 ### Combining `state` and `result` selectors
 
