@@ -212,13 +212,15 @@ Follow the steps outlined in [deployment credentials](#deployment-connection) to
 
 // do we recommend specific credentials.
 
-### Use cases
+### Why use a staging environment
 
-There are a variety of reasons to incorporate a staging environment into existing workflows, including (but not limited to):
-- Securing the source of truth production environment
-- Access control over sensitive data
-- Limiting the amount of production data developers can access
-- Protecting data access using cross project refs (if staging environments are defined in those projects)
+Staging environments provide a layer of separation between you development and production deployment environment. It isolates the prod and pre-prod data, which aids in protecting sensitive information and limiting access to large data sets. Developers can edit job definitions in the staging environment while production is limited to only those who need access. It also helps to have additional verification steps between development and deployment. 
+
+Let's say you have `Project A` and `Project B` and that `Project B` is downstream of `Project A` with cross-project refs configured in the models. With a staging environment configured in `Project A`, when developers are working in the IDE for `Project B`, those refs will resolve to the staging environment of `Project A`, rather than production. You'll get the same results with those refs when jobs are run in the staging environment (or other non-production deployments). Only the production environment will reference the production data, isolating the environment, reducing need to duplicate projects. 
+
+It will also resolve refs to the staging environment of `Project B`for schemas that haven't been built yet. When you [defer](/docs/cloud/about-cloud-develop-defer) to a model inside the same project, it will further isolate that production data by resolving to staging.
+
+Additionally, the staging environment has it's own view in [dbt Explorer](/docs/collaborate/explore-projects) enabling you to have a full view of your prod and pre-prod data.
 
 
 ## Related docs
