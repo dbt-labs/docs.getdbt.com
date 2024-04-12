@@ -1,5 +1,5 @@
 ---
-title: "Quickstart for dbt Cloud and Azure Synapse Analytics"
+title: "Quickstart for dbt Cloud and Azure Synapse Analytics (beta)"
 id: "azure-synapse-analytics"
 level: 'Beginner'
 icon: 'azure-synapse-analytics'
