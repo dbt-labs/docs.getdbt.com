@@ -221,11 +221,11 @@ There are two primary motivations for using a Staging environment:
 Provide developers with the ability to create, edit, and trigger ad hoc jobs in the Staging environment, while keeping the Production environment locked down.
 :::
 
-Let's say you have `Project B` downstream of `Project A` with cross-project refs configured in the models. When developers work in the IDE for `Project B`, cross-project refs will resolve to the staging environment of `Project A`, rather than production. You'll get the same results with those refs when jobs are run in the Staging environment. Only the Production environment will reference the Production data, keeping the data and access isolated without the need for separate projects.
+Let's say you have `Project B` downstream of `Project A` with cross-project refs configured in the models. When developers work in the IDE for `Project B`, cross-project refs will resolve to the Staging environment of `Project A`, rather than production. You'll get the same results with those refs when jobs are run in the Staging environment. Only the Production environment will reference the Production data, keeping the data and access isolated without needing separate projects.
 
 If `Project B` also has a Staging deployment, then references to unbuilt upstream models within `Project B` will resolve to that environment, using [deferral](/docs/cloud/about-cloud-develop-defer), rather than resolving to the models in Production. This saves developers time and warehouse spend, while preserving clear separation of environments.
 
-Finally, the staging environment has its own view in [dbt Explorer](/docs/collaborate/explore-projects), enabling you to have a full view of your prod and pre-prod data.
+Finally, the Staging environment has its own view in [dbt Explorer](/docs/collaborate/explore-projects), giving you a full view of your prod and pre-prod data.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
 
