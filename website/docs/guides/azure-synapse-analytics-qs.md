@@ -35,7 +35,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse 
 
 1. Log in to your [Azure portal account](https://portal.azure.com/#home).  
 1. On the home page, select the **SQL databases** tile.
-1. From **SQL databases** page, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a Synapse workspace](https://learn.microsoft.com/en-us/azure/synapse-analytics/quickstart-create-workspace) in the Microsoft docs for more details.
+1. From the **SQL databases** page, navigate to your organization’s workspace or create a new workspace; refer to [Create a Synapse workspace](https://learn.microsoft.com/en-us/azure/synapse-analytics/quickstart-create-workspace) in the Microsoft docs for more details.
 1. From the workspace's sidebar, select **Data**. Click the three dot menu on your database and select **New SQL script** to open the SQL editor. 
 1. Copy these statements into the SQL editor to load the Jaffle Shop example data:
 
