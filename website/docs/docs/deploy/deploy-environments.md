@@ -210,7 +210,7 @@ The "dbt version" should match the version used in production.
 
 Follow the steps outlined in [deployment credentials](#deployment-connection) to complete the remainder of the environment setup.
 
-// do we recommend specific credentials.
+We recommend that the data warehouse credentials be for a dedicated user or service principal.
 
 ### Use cases
 
