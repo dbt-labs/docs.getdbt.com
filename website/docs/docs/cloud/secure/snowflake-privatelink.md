@@ -60,7 +60,7 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 ## Configuring Network Policies
 If your organization uses [Snowflake Network Policies](https://docs.snowflake.com/en/user-guide/network-policies) to restrict access to your Snowflake account, you will also need to add a network rule for dbt Cloud. 
 
-You will receive the VPCE ID from dbt Cloud Support that you can use to create a network policy. 
+You may request the VPCE ID from dbt Cloud Support that you can use to create a network policy. 
 
 ### Using the UI
 1. Navigate to the Snowflake UI.
