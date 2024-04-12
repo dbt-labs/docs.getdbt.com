@@ -158,7 +158,6 @@ Now that your environment is set up, you can start loading data into it. You wil
       field_delimiter = ','
       skip_header = 1
       );
-
   ```
 
   You should see a confirmation message after running the command.
@@ -175,7 +174,6 @@ Now that your environment is set up, you can start loading data into it. You wil
     created date,
     _batched_at timestamp default current_timestamp
   );
-
   ```
 
   You should see a confirmation message after running the command.
@@ -190,7 +188,6 @@ Now that your environment is set up, you can start loading data into it. You wil
       field_delimiter = ','
       skip_header = 1
       );
-
   ```
 
   You should see a confirmation message after running the command.
