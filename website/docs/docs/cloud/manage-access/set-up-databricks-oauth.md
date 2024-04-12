@@ -32,7 +32,7 @@ To get started, you will need to [add dbt as an OAuth application](https://docs.
 
 3. Enter the following details:
    - A name for your connection.
-   - The redirect URLs for your OAuth connection, which you can find in the table that follows these steps.
+   - The redirect URLs for your OAuth connection, which you can find in the table later in this section.
    - For Access scopes, the APIs the application should have access to:
       - For BI applications, the SQL scope is required to allow the connected app to access Databricks SQL APIs (this is required for SQL models).
       - For applications that need to access Databricks APIs for purposes other than querying, the ALL APIs scope is required (this is required if running Python models).
