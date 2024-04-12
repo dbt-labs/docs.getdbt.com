@@ -206,7 +206,6 @@ In the dbt Cloud, navigate to **Deploy** -> **Environments** and then click **Cr
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-staging-environment.png" width="85%" title="Create a staging environment" />
 
-The "dbt version" should match the version used in production. 
 
 Follow the steps outlined in [deployment credentials](#deployment-connection) to complete the remainder of the environment setup.
 
