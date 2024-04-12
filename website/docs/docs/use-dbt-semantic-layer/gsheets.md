@@ -42,7 +42,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 When querying your data with Google Sheets:
 
-- It returns the data to the cell you have clicked on, and each cell where data is requested will have a note attached to it, indicating what has been queried.
+- It returns the data to the cell you have clicked on, and each cell where data is requested will have a note attached to it, indicating what has been queried and the timestamp.
 - The custom menu operation has a timeout limit of six (6) minutes.
 - If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues.
 
@@ -70,12 +70,16 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
 
 
 ## Creating Saved selections
-Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. 
+Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection, run a query and choose the option to save selection.
 
 The Google Sheets application saves these selections, allowing you to view and edit them from the hamburger menu under **Saved Selections**. You can also make these selections private or public:
 
 - Public selections mean your inputs are available in the menu to everyone on the sheet.
 - Private selections mean your inputs are only visible to you.
+
+## Refreshing Selections
+
+You can also refresh saved selections on load. When creating the saved selection option, choose the option to "Refresh on Load", which will refresh the data automaticallu when the addon is accessed. 
 
 
 ## Using Saved Queries in Google Sheets
@@ -87,7 +91,7 @@ To access the saved queries in Google Sheets:
 3. You can also select **Customize**, which allows you to explore from the existing query. This won't change the original query that's defined in the code. 
   - For saved queries, if you use a `WHERE` filter in a query, Google Sheets dispalys the advanced syntax for this filter.
 
-maybe: Note that difference between using Saved Queries and Saved Selections? Saved query = use predefined in-code input to get result, jump off. Saved selection =  create sets of things that can be re-used in gooogle sheets in the app, not in code (this includes saving the results from a saved query)
+Note: Saved selections are saved components in the Google Sheets application and only able to be created while using it. Saved Queries are code-defined slices of data that you can easily access. You can always create a saved selection from the output of a saved query.  
 
 **Limited use policy disclosure**
 
