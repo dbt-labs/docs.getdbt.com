@@ -27,7 +27,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
  
 ### Prerequisites​
 
-:::warning
+:::warning dbt Cloud Enterprise Required
 
 This guide assumes you have a [dbt Cloud Enterprise Account](https://www.getdbt.com/get-started/enterprise-contact-pricing) (required for multiple projects)
 
