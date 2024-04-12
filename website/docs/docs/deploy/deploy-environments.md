@@ -213,13 +213,21 @@ We recommend that the data warehouse credentials be for a dedicated user or serv
 
 ### Why use a staging environment
 
-Staging environments provide a layer of separation between you development and production deployment environment. It isolates the prod and pre-prod data, which aids in protecting sensitive information and limiting access to large data sets. Developers can edit job definitions in the staging environment while production is limited to only those who need access. It also helps to have additional verification steps between development and deployment. 
+There are two primary motivations for using a Staging environment:
+1. An additional validation layer before changes are deployed into Production. You can deploy, test, and explore your dbt models in Staging.
+2. Clear isolation between development workflows and production data. It enables developers to work in metadata-powered ways, using features like deferral and cross-project references, without accessing data in production deployments.
 
-Let's say you have `Project B` downstream of `Project A` with cross-project refs configured in the models. When developers work in the IDE for `Project B`, those refs will resolve to the staging environment of `Project A`, rather than production. You'll get the same results with those refs when jobs are run in the staging environment (or other non-production deployments). Only the production environment will reference the production data, isolating the environment and reducing the need to duplicate projects. 
+:::info Coming soon: environment-level permissions
+Provide developers with the ability to create, edit, and trigger ad hoc jobs in the Staging environment, while keeping the Production environment locked down.
+:::
 
-It will also resolve refs to the staging environment of `Project B`for schemas that haven't been built yet. When you [defer](/docs/cloud/about-cloud-develop-defer) to a model inside the same project, it will further isolate that production data by resolving to staging.
+Let's say you have `Project B` downstream of `Project A` with cross-project refs configured in the models. When developers work in the IDE for `Project B`, cross-project refs will resolve to the staging environment of `Project A`, rather than production. You'll get the same results with those refs when jobs are run in the Staging environment. Only the Production environment will reference the Production data, keeping the data and access isolated without the need for separate projects.
 
-Additionally, the staging environment has it's own view in [dbt Explorer](/docs/collaborate/explore-projects) enabling you to have a full view of your prod and pre-prod data.
+If `Project B` also has a Staging deployment, then references to unbuilt upstream models within `Project B` will resolve to that environment, using [deferral](/docs/cloud/about-cloud-develop-defer), rather than resolving to the models in Production. This saves developers time and warehouse spend, while preserving clear separation of environments.
+
+Finally, the staging environment has its own view in [dbt Explorer](/docs/collaborate/explore-projects), enabling you to have a full view of your prod and pre-prod data.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
 
 
 ## Related docs
