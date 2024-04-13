@@ -54,6 +54,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [bool\_or](#bool_or)
     - [listagg](#listagg)
   - [Cast functions](#cast-functions)
+    - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
@@ -101,6 +102,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [bool\_or](#bool_or)
     - [listagg](#listagg)
   - [Cast functions](#cast-functions)
+    - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
@@ -169,6 +171,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [listagg](#listagg)
 
 [**Cast functions**](#cast-functions)
+- [cast](#cast)
 - [cast_bool_to_text](#cast_bool_to_text)
 - [safe_cast](#safe_cast)
 
@@ -776,6 +779,34 @@ array_to_string(
 ```
 
 ## Cast functions
+
+### cast
+
+**Availability**:
+dbt v1.8 or higher
+
+__Args__:
+
+ * `field`: [attribute name or expression](#sql-expressions).
+ * `type`: data type to convert to
+
+This macro casts a value to the specified data type. Unlike [safe\_cast](#safe_cast), this macro will raise an error when the cast fails.
+
+**Usage**:
+
+```sql
+{{ dbt.cast("column_1", api.Column.translate_type("string")) }}
+{{ dbt.cast("column_2", api.Column.translate_type("integer")) }}
+{{ dbt.cast("'2016-03-09'", api.Column.translate_type("date")) }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+    cast(column_1 as TEXT)
+    cast(column_2 as INT)
+    cast('2016-03-09' as date)
+```
 
 ### cast_bool_to_text
 __Args__:
