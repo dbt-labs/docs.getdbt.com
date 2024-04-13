@@ -64,7 +64,11 @@ unit_tests:
 
 ## sql
 
-This format provides more flexbility for the types of data you can unit test, but when using `format: sql` you must supply mock data for _all rows_.
+This format:
+- provides more flexbility for the types of data you can unit test
+- allows you to unit test a model that depends on an ephemeral model
+
+However, when using `format: sql` you must supply mock data for _all rows_.
 
 When using the `sql` format, you can use either an inline SQL query for `rows`:
 
