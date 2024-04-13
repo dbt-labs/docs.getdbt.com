@@ -95,7 +95,7 @@ unit_tests:
     model: my_model
     given:
       - input: ref('my_model_a')
-        format: csv
+        format: sql
         fixture: my_model_a_fixture
 
 ```
