@@ -13,14 +13,14 @@ hide_table_of_contents: true
 
 dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections &mdash; for faster data development.
 
-In this guide you’ll walk through how to set up a multi-project design using foundational concepts of [dbt Mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh). In this guide, you’ll:
+In this guide you’ll learn how to set up a multi-project design using foundational concepts of [dbt Mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh). In this guide, you’ll:
 
 - Set up a foundational project called “Jaffle | Data Analytics”
 - Set up a downstream project called “Jaffle | Finance”
 - Add model access, versions, and contracts
 - Set up a dbt Cloud job that is triggered on completion of an upstream job
  
-This guide explains how to implement a data mesh in dbt Cloud. For more information on why data mesh is important, read this post:[What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
+This guide explains how to implement a data mesh in dbt Cloud. For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
@@ -59,15 +59,15 @@ In this section, create two new, empty projects in dbt Cloud to use as your foun
 
 To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
 
-- From **Account settings**, click **+ New Project**.
-- Enter a project name and click **Continue**.
+1. From **Account settings**, click **+ New Project**.
+2. Enter a project name and click **Continue**.
   - Use "Jaffle | Data Analytics" for one project
   - Use "Jaffle | Finance" for the other project
-- Select your data platform, then **Next** to set up your connection.
-- In the **Configure your environment** section, enter the **Settings** for your new project.
-- Click **Test Connection**. This verifies that dbt Cloud can access your data platform account.
-- Click **Next** if the test succeeded. If it failed, you might need to go back and double check your settings.
-- For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
+3. Select your data platform, then **Next** to set up your connection.
+4. In the **Configure your environment** section, enter the **Settings** for your new project.
+5. Click **Test Connection**. This verifies that dbt Cloud can access your data platform account.
+6. Click **Next** if the test succeeded. If it failed, you might need to go back and double check your settings.
+    For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
   - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
   - For "Jaffle | Finance", set the default database to `jaffle_finance`
 
@@ -593,8 +593,24 @@ select * from final
 
 Use dbt Explorer to view the lineage across projects in dbt Cloud. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects).
 
+## What's next
 
+<ConfettiTrigger>
 
-Congratulations 🎉! You're ready to bring the benefits of dbt Mesh to your organization.
+Congratulations 🎉! You're ready to bring the benefits of dbt Mesh to your organization. You've learned:
+
+- How to establish a foundational project "Jaffle | Data Analytics."
+- Create a downstream project "Jaffle | Finance."
+- Implement model access, versions, and contracts.
+- Set up up dbt Cloud jobs triggered by upstream job completions.
+
+Here are some additional resources to help you continue your journey:
+
+- [How we build our dbt mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro)
+- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs)
+- [Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)
+- [dbt Explorer](/docs/collaborate/explore-projects)
+
+</ConfettiTrigger>
 
 </div>
