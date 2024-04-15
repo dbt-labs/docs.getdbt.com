@@ -12,7 +12,7 @@ recently_updated: true
 ---
 
 ## Introduction
-Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed platform.
+Moving from dbt Core to dbt Cloud streamlines analytics engineering workflows by allowing teams to develop, test, deploy, and explore data products using a single, fully managed software service.
 
 Explore our 3-part-guide series on moving from dbt Core to dbt Cloud. The series is ideal for users aiming for streamlined workflows and enhanced analytics:
 
@@ -21,7 +21,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 <CoretoCloudTable/>
 
 ## What you'll learn
-Migrating from dbt Core to dbt Cloud can yield significant benefits and a standardized way of working. Understanding the differences between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
+Today thousands of companies, with data teams ranging in size from 2 to 2,000, rely on dbt Cloud to accelerate data work, increase collaboration, and win the trust of the business. Understanding what you'll need to do in order to move between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
 
 The guide outlines the following steps:
 
@@ -35,10 +35,10 @@ The guide outlines the following steps:
 
 ## Considerations
 
-If your team has a custom deployment of dbt Core today, you could be reading this guide because:
+If your team has is using dbt Core today, you could be reading this guide because:
 - You’ve realized the burden of maintaining that deployment.
 - The person who set it up has since left.
-- You’re interested in what dbt Cloud could do to standardize your deployment and consolidate some of the toolings that you may already have in place.
+- You’re interested in what dbt Cloud could do to better manage the complexity of your dbt deployment, democratize access to more contributors, or improve security and governance practices.
 
 This guide shares the technical adjustments and team collaboration strategies you’ll need to know to move your project from dbt Core to dbt Cloud.  Each "build your own" deployment of dbt Core will look a little different, but after seeing hundreds of teams make the migration, there are many things in common.
 
