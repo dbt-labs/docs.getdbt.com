@@ -20,7 +20,7 @@ This guide will teach you how to set a multi-project design using foundational c
 - Add model access, versions, and contracts
 - Set up a dbt Cloud job that is triggered on completion of an upstream job
  
-This guide explains how to implement a data mesh in dbt Cloud. For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
+For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
