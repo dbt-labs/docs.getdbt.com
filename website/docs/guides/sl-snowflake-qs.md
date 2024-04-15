@@ -759,7 +759,7 @@ semantic_models:
       agg_time_dimension: most_recent_order_date
     description: |
       semantic model for dim_customers
-    model: ref('dim_customers')
+    model: ref('customers')
     entities:
       - name: customer
         expr: customer_id
