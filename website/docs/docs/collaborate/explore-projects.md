@@ -154,7 +154,7 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 
 If you have been assigned a [developer license](/docs/cloud/manage-access/about-user-access#license-based-access-control), you can open the resource in the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) directly from Explorer. For example, the IDE opens all the corresponding files for the model. This includes the model's SQL or Python definition and any YAML files that include an entry for that model. The feature is available from the [full lineage graph](#example-of-full-lineage-graph) and the [resource's details view](#example-of-model-details). 
 
-Example of the Open in IDE icon in the upper right corner of the resource details page. The icon is inactive (grayed out) if you haven't been assigned a developer license.  
+Here's an example of the Open in IDE icon in the upper right corner of the resource details page. The icon is inactive (grayed out) if you haven't been assigned a developer license.  
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-open-in-ide-icon.png" title="Example of icon for Open in IDE" />
 
 
