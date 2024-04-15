@@ -83,7 +83,8 @@ When moving from dbt Core to dbt Cloud, make sure you check the `.gitignore` fil
 
 **Who might prefer the dbt Cloud CLI?**
 
-- dbt users and developers looking for granular control over their Git workflows (such as pre-commits for automated checks before committing code).
+- Data practitioners accustomed to working with a specific set of development tooling.
+- Users looking for granular control over their Git workflows (such as pre-commits for automated checks before committing code).
 - Data practitioners who need to perform complex operations, like mass file generation or specific command combinations.
 
 **Key features**
@@ -114,9 +115,9 @@ dbt Cloud provides robust orchestration that enables you to schedule, run, and m
 
 ## dbt Mesh
 
-[dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) helps organizations with mature, complex transformation workflows in dbt increase the flexibility and performance of their dbt projects. It deploys multiple interconnected dbt projects instead of a single large, monolithic project.
+[dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) helps organizations with mature, complex transformation workflows in dbt increase the flexibility and performance of their dbt projects. It allows you to make use of multiple interconnected dbt projects instead of a single large, monolithic project.
 
-It enables you to integrate and navigate between different projects and models with [cross-project dependencies](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), enhancing collaboration and data governance.
+It enables you to interface and navigate between different projects and models with [cross-project dependencies](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref), enhancing collaboration and data governance.
 
 Here are some tips and caveats to consider when using dbt Mesh:
 
@@ -156,7 +157,7 @@ Refer to the [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs) for
 
 ## dbt Explorer
 
-[dbt Explorer](/docs/collaborate/explore-projects) enhances your ability to discover and understand your data models through rich metadata and lineage visualization. Here are some tips and caveats to consider when using dbt Explorer:
+[dbt Explorer](/docs/collaborate/explore-projects) enhances your ability to discover, understand, and troubleshoot your data assets through rich metadata and lineage visualization. Here are some tips and caveats to consider when using dbt Explorer:
 
 ### Tips
 - Use the search and filter capabilities in dbt Explorer to quickly locate models, sources, and tests, streamlining your workflow.
