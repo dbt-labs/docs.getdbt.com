@@ -152,7 +152,7 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 
 ## Open in IDE
 
-If you have been assigned to a [developer license](/docs/cloud/manage-access/about-user-access#license-based-access-control), you can open the resource source file in the [IDE]((/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)) directly from Explorer. This feature is available from the [full lineage graph](#example-of-full-lineage-graph) and the [resource's details view](#example-of-model-details). 
+If you have been assigned to a [developer license](/docs/cloud/manage-access/about-user-access#license-based-access-control), you can open the resource source file in the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) directly from Explorer. This feature is available from the [full lineage graph](#example-of-full-lineage-graph) and the [resource's details view](#example-of-model-details). 
 
 
 Example of the Open in IDE icon in the upper right corner of the resource details page. The icon is inactive (grayed out) if you haven't been assigned a developer license.  
