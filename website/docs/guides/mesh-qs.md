@@ -13,7 +13,7 @@ hide_table_of_contents: true
 
 dbt Mesh, available in [dbt Cloud Enterprise](https://www.getdbt.com/), is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections &mdash; for faster data development. 
 
-This guide will teach you how to set a multi-project design using foundational concepts of [dbt Mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) and how to implement a data mesh in dbt Cloud:
+This guide will teach you how to set up a multi-project design using foundational concepts of [dbt Mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) and how to implement a data mesh in dbt Cloud:
 
 - Set up a foundational project called “Jaffle | Data Analytics”
 - Set up a downstream project called “Jaffle | Finance”
