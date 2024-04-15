@@ -30,9 +30,9 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 ### Related content:
 - [Data mesh concepts: What it is and how to get started](https://www.getdbt.com/blog/data-mesh-concepts-what-it-is-and-how-to-get-started)
-- [Deciding how to structure your dbt Mesh](/best-practices/how-we-mesh/mesh-2-structures)
-- [Implementation guide](/best-practices/how-we-mesh/mesh-3-implementation)
-- [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-4-faqs)
+- [Deciding how to structure your dbt Mesh](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-2-structures)
+- [Implementation guide](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-3-implementation)
+- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs)
 
 ## Prerequisites​
 
@@ -544,9 +544,10 @@ This simplifies the process of staying in sync with the upstream tables and remo
 
 ## View deprecation warning
 
-How would a finance team member know how long they have to migrate over from `fct_orders_v1` to `fct_orders_v2`?
+To find out how long the Finance team has to migrate from `fct_orders_v1` to `fct_orders_v2`, follow these steps:
 
-Let’s check. Head back to the **Develop** page in the “Jaffle | Finance” project. Edit the cross project ref to use v=1 in `models/marts/agg_customer_payment_journey.sql`:
+1. In the “Jaffle | Finance” project, navigate to the **Develop** page.
+2. Edit the cross-project ref to use v=1 in `models/marts/agg_customer_payment_journey.sql`:
 
 <File name='models/core/agg_customer_payment_journey.sql'>
 
@@ -579,18 +580,20 @@ final as (
 )
 
 select * from final
-
 ```
 
 </File>
 
-Then, commit & merge the change. Go to the **Deploy** -> **Jobs** page and click **Run Now** on the Finance Job. We’ll see that the the agg_customer_payment_journey model builds but surfaces a warning with the deprecation date.
+3. In the dbt Cloud IDE, go to **Version control** to commit and merge the changes.
+4. Go to the **Deploy** -> **Jobs** page and click **Run Now** to run the Finance job. The `agg_customer_payment_journey` model will build and display a deprecation date warning.
 
-<Lightbox src="/img/guides/dbt-mesh/deprecation_date_warning.png" title="Deprecation date warning" />
+<Lightbox src="/img/guides/dbt-mesh/deprecation_date_warning.png" title="The model will display a deprecation date warning." />
 
-## View lineage with dbt Explorer
+## View lineage with dbt Explorer <Lifecycle status="enterprise"/>
 
-In dbt Cloud, navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects)!
+Use dbt Explorer to view the lineage across projects in dbt Cloud. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects).
+
+
 
 Congratulations 🎉! You're ready to bring the benefits of dbt Mesh to your organization.
 
