@@ -1,4 +1,4 @@
-Once you’ve defined metrics in your dbt project, you can perform a job run in your deployment environment in dbt Cloud to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer currently. 
+Once you’ve committed and merged your metric changes in your dbt project, you can perform a job run in your deployment environment in dbt Cloud to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer currently. 
 
 1. In dbt Cloud, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
     * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
