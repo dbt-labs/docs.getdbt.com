@@ -66,10 +66,12 @@ For "Jaffle | Data Analytics" we set the default database to `jaffle_da`. For "J
 
 :::
 
-## Set up a foundational (i.e. hub) project
+## Set up a foundational project
+
+Set up a foundational (i.e. hub) project
 
 Before a downstream team can leverage assets from this foundational project, we’ll need to first:
-- Create and define at least one model as “public”
+- [Create and define](/docs/collaborate/govern/model-access) at least one model as “public”
 - Run a deployment job successfully 
     - Note: toggle on “Generate docs on run” for this job to update dbt Explorer. Once run, you can tie Explorer to a deployment job on the **Project Settings** page (details [here](https://docs.getdbt.com/docs/deploy/artifacts)).
 
@@ -267,7 +269,9 @@ After the run is complete, go to the **Project Setting** page and link documenta
 
 Click **Explore** from the upper menu bar. If all has gone to plan, we should now see our lineage, tests, and documentation coming through successfully!
 
-## Reference a public model in your downstream (i.e. spoke) project
+## Reference a public model in your downstream project
+
+Reference a public model in your downstream (i.e. spoke) project
 
 Now, let’s switch over to "Jaffle | Finance" and head to the **Develop** page. A couple quick tasks to set up our project:
 1. Click **Initialize dbt project** (in the upper left) if you’ve also started with an new git repo
