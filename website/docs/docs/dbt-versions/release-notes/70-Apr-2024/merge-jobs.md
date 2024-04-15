@@ -9,6 +9,6 @@ date: 2024-04-16
 
 # New: Merge jobs <Lifecycle status="beta" />
 
-You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. A beta release of [Merge jobs](/docs/deploy/merge-jobs) is now available that enables you to trigger dbt job runs as soon as Git pull requests (changes) merge into production. 
+You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. A beta release of [Merge jobs](/docs/deploy/merge-jobs), a new [job type](/docs/deploy/jobs), is now available that enables you to trigger dbt job runs as soon as Git pull requests (changes) merge into production. 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
