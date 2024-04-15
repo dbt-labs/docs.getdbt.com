@@ -8,13 +8,13 @@ pagination_prev: null
 
 Start your dbt journey by trying one of our quickstarts, which provide a step-by-step guide to help you set up dbt Cloud with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections). dbt Cloud is the scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed service.
 
-dbt Cloud is designed to empower data teams with advanced capabilities, including:
+dbt Cloud enables teams with varying skillsets build reliable data products, at any scale, with capabilities including:
 
 - Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
-- The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+- The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any end-point
 - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
-- [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
+- [dbt Explorer](/docs/collaborate/explore-projects) for collaborative data discovery and understanding
 
 Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [start your free trial](https://www.getdbt.com/signup/) today.
 
