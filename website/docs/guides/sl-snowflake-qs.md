@@ -754,7 +754,7 @@ After setting up your orders model:
 
 ```yaml
 semantic_models:
-  - name: dim_customers
+  - name: customers
     defaults:
       agg_time_dimension: most_recent_order_date
     description: |
