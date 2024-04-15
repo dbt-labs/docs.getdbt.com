@@ -1,5 +1,5 @@
 ---
-title: "Get started with dbt Mesh"
+title: "Quickstart with dbt Mesh"
 id: "mesh-qs"
 level: 'Intermediate'
 icon: 'guides'
@@ -11,52 +11,69 @@ hide_table_of_contents: true
 
 ## Introduction
 
-In this guide you’ll walk through how to set up a multi-project design using foundational concepts of [dbt Mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh). In this example, you’ll:
-- Set up a foundational (i.e. hub) project called “Jaffle | Data Analytics”
-- Set up a downstream (i.e. spoke) project called “Jaffle | Finance”
-- Add model access, versions, and contracts 
-- Set up a dbt Cloud Job that is triggered on completion of an upstream job
+dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections &mdash; for faster data development.
 
-This framework enables organizations to scale – across both teams and data assets – in a way that enforces governance best practices while distributing large projects into manageable data domains—for faster data development. This guide will focus on the "how" of data mesh in dbt Cloud, for more on the "why" of data mesh check out this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
+In this guide you’ll walk through how to set up a multi-project design using foundational concepts of [dbt Mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh). In this guide, you’ll:
+
+- Set up a foundational project called “Jaffle | Data Analytics”
+- Set up a downstream project called “Jaffle | Finance”
+- Add model access, versions, and contracts
+- Set up a dbt Cloud job that is triggered on completion of an upstream job
+ 
+This guide explains how to implement a data mesh in dbt Cloud. For more information on why data mesh is important, read this post:[What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
 
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
- 
-### Prerequisites​
-
-:::warning dbt Cloud Enterprise Required
-
-This guide assumes you have a [dbt Cloud Enterprise Account](https://www.getdbt.com/get-started/enterprise-contact-pricing) (required for multiple projects)
-
-:::
-
-- You have access to a cloud data warehouse, permissions to load the sample data tables, and dbt Cloud permissions to create new projects.
-- Load the Jaffle Shop sample data (customers, orders, and payments tables) into your data platform. You can find the steps to do so for each platform, respectively, here:
-    - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
-    - [Databricks](https://docs.getdbt.com/guides/databricks?step=3)
-    - [Redshift](https://docs.getdbt.com/guides/redshift?step=3)
-    - [BigQuery](https://docs.getdbt.com/guides/bigquery?step=3)
-    - [Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
-    - [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
-- Set dbt [version](https://docs.getdbt.com/docs/dbt-versions/core) to 1.6 or later in your Development and Deployment Environments
-- This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course first if you are brand new to dbt.
 
 ### Related content:
 - [Data mesh concepts: What it is and how to get started](https://www.getdbt.com/blog/data-mesh-concepts-what-it-is-and-how-to-get-started)
-- [Deciding how to structure your dbt Mesh](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-2-structures)
-- [Implementation guide](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-3-implementation)
-- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs)
+- [Deciding how to structure your dbt Mesh](/best-practices/how-we-mesh/mesh-2-structures)
+- [Implementation guide](m/best-practices/how-we-mesh/mesh-3-implementation)
+- [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-4-faqs)
 
-## Create and configure two new dbt Cloud Projects
+## Prerequisites​
 
-We’ll create two new, empty projects in dbt Cloud to use in this tutorial. Here, the always-enterprising Jaffle Labs is setting up a project for their Data Analytics and Finance team, respectively:
+To leverage dbt Mesh, you need the following:
 
-<Lightbox src="/img/guides/dbt-mesh/project_names.png" title="Two new dbt Cloud Projects" />
+- You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="enterprise"/>
+- You have access to a cloud data platform, permissions to load the sample data tables, and dbt Cloud permissions to create new projects.
+- Set dbt [version](/docs/dbt-versions/core) to 1.6 or later in your development and deployment [environments](/docs/dbt-cloud-environments) or select [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) dbt. 
+- Load the Jaffle Shop sample data (customers, orders, and payments tables) into your data platform. You can find the steps to do so for each platform, respectively, here:
+  - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
+  - [Databricks](https://docs.getdbt.com/guides/databricks?step=3)
+  - [Redshift](https://docs.getdbt.com/guides/redshift?step=3)
+  - [BigQuery](https://docs.getdbt.com/guides/bigquery?step=3)
+  - [Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
+  - [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
 
-Once each project is [configured](https://docs.getdbt.com/docs/cloud/about-cloud-setup) with a) a data platform connection, b) new git repo, and c) 1+ [Environments](https://docs.getdbt.com/docs/deploy/deploy-environments) we’re ready to begin. 
+This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course first if you are brand new to dbt.
+
+## Create and configure two projects
+
+In this section, create two new, empty projects in dbt Cloud to use as your foundational and downstream projects. The always-enterprising and fictional account "Jaffle Labs" is setting up a project for their data analytics and finance team, respectively:
+
+<Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Two new dbt Cloud Projects" />
+
+To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
+
+- From **Account settings**, click **+ New Project**.
+- Enter a project name and click **Continue**.
+  - Use "Jaffle | Data Analytics" for one project
+  - Use "Jaffle | Finance" for the other project
+- Select your data platform, then **Next** to set up your connection.
+- In the **Configure your environment** section, enter the **Settings** for your new project.
+- Click **Test Connection**. This verifies that dbt Cloud can access your data platform account.
+- Click **Next** if the test succeeded. If it failed, you might need to go back and double check your settings.
+
+<Lightbox src="/img/guides/dbt-mesh/create-new-project.gif" width="70%" title="Navigate to 'Account settings' and then click + 'New Project' to create new projects in dbt Cloud" /> 
+
+- Once configured, each project should have:
+  - A data platform connection
+  - New git repo
+  - one or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
 
 :::note
 
