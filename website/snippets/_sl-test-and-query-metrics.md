@@ -10,6 +10,8 @@ Alternatively, you can run commands with SQL client tools like DataGrip, DBeaver
 
 You can validate your metrics in the dbt Cloud IDE by selecting the metric you want to validate and viewing it in the **Lineage** tab. (Support for running commands in the dbt Cloud IDE support coming soon).
 
+Once validated, make sure you commit and merge your changes in your project. 
+
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-ide-dag.jpg" title="Validate your metrics using the Lineage tab in the IDE." />
 
 ### dbt Cloud CLI users
