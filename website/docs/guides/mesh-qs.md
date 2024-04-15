@@ -55,7 +55,7 @@ This guide assumes you have experience with or fundamental knowledge of dbt. Tak
 
 In this section, create two new, empty projects in dbt Cloud to use as your foundational and downstream projects. The always-enterprising and fictional account "Jaffle Labs" is setting up a project for their data analytics and finance team, respectively:
 
-<Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Two new dbt Cloud Projects" />
+<Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Create two new dbt Cloud projects named 'Jaffle | Data Analytics' and 'Jaffle Finance' " />
 
 To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
 
@@ -67,30 +67,21 @@ To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
 - In the **Configure your environment** section, enter the **Settings** for your new project.
 - Click **Test Connection**. This verifies that dbt Cloud can access your data platform account.
 - Click **Next** if the test succeeded. If it failed, you might need to go back and double check your settings.
+- For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
+  - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
+  - For "Jaffle | Finance", set the default database to `jaffle_finance`
 
-<Lightbox src="/img/guides/dbt-mesh/create-new-project.gif" width="70%" title="Navigate to 'Account settings' and then click + 'New Project' to create new projects in dbt Cloud" /> 
+<Lightbox src="/img/guides/dbt-mesh/create-new-project.gif" width="80%" title="Navigate to 'Account settings' and then click + 'New Project' to create new projects in dbt Cloud" /> 
 
-- Once configured, each project should have:
+Once configured, each project should have:
   - A data platform connection
   - New git repo
   - one or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
 
-:::note
-
-For our walkthrough, we created a single [Development](https://docs.getdbt.com/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](https://docs.getdbt.com/docs/deploy/deploy-environments) per project. 
-
-For "Jaffle | Data Analytics" we set the default database to `jaffle_da`. For "Jaffle | Finance" we set the default database to `jaffle_finance`
-
-:::
-
 ## Set up a foundational project
 
-Set up a foundational (i.e. hub) project
+A foundation project is where 
 
-Before a downstream team can leverage assets from this foundational project, we’ll need to first:
-- [Create and define](/docs/collaborate/govern/model-access) at least one model as “public”
-- Run a deployment job successfully 
-    - Note: toggle on “Generate docs on run” for this job to update dbt Explorer. Once run, you can tie Explorer to a deployment job on the **Project Settings** page (details [here](https://docs.getdbt.com/docs/deploy/artifacts)).
 
 Let’s walk through setting this up in our “Jaffle | Data Analytics” project. First, head to the **Develop** page to verify our setup. Click **Initializing dbt project** if you’ve started with an empty repo:
 
@@ -211,6 +202,11 @@ We’ll set up our staging layer as follows:
     </File>
 
 6. Execute `dbt build`. 
+
+Before a downstream team can leverage assets from this foundational project, you need to first:
+- [Create and define](/docs/collaborate/govern/model-access) at least one model as “public”
+- Run a [deployment job](/docs/deploy/deploy-jobs) successfully
+  - Note, Enable the **Generate docs on run** toggle for this job to update the dbt Explorer. Once run, you can link dbt Explorer to a deployment job on the **Project Settings** page (Refer to [artifacts](/docs/deploy/artifacts) for more information).
 
 ## Define a public model & run first job
 
