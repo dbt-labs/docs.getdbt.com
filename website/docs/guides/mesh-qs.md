@@ -31,7 +31,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 ### Related content:
 - [Data mesh concepts: What it is and how to get started](https://www.getdbt.com/blog/data-mesh-concepts-what-it-is-and-how-to-get-started)
 - [Deciding how to structure your dbt Mesh](/best-practices/how-we-mesh/mesh-2-structures)
-- [Implementation guide](m/best-practices/how-we-mesh/mesh-3-implementation)
+- [Implementation guide](/best-practices/how-we-mesh/mesh-3-implementation)
 - [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-4-faqs)
 
 ## Prerequisites​
@@ -202,13 +202,17 @@ Before a downstream team can leverage assets from this foundational project, you
 
 ## Define a public model and run first job
 
-In the previous section, you've arranged your basic building blocks, now let's integrate dbt Mesh. Although the Finance team requires the `fct_orders` model for analyzing payment trends, other models, particularly those in the staging layer used for data cleansing and joining, are not needed by downstream teams.
+In the previous section, you've arranged your basic building blocks, now let's integrate dbt Mesh.
 
-To make `fct_orders` publicly available, add an `access: public` clause to the relevant YAML file. Add and save the following file to the project:
+Although the Finance team requires the `fct_orders` model for analyzing payment trends, other models, particularly those in the staging layer used for data cleansing and joining, are not needed by downstream teams.
+
+To make `fct_orders` publicly available:
+
+1. Add an `access: public` clause to the relevant YAML file by adding and saving the following file to the project:
 
 <File name='models/core/core.yml'>
 
-```yml
+```yaml
 
 version: 2
 
@@ -248,22 +252,23 @@ models:
       - name: days_as_customer_at_purchase
         data_type: number
         description: "Days between this purchase and customer's first purchase"
-
 ```
-
 </File>
 
-Note: if unspecified, model access defaults to “protected” (i.e. referenceable in the same project only). You can learn more about access types and model groups [here](https://docs.getdbt.com/docs/collaborate/govern/model-access#access-modifiers).
+Note: By default, model access is set to "protected", which means they can only be referenced within the same project. Learn more about access types and model groups [here](/docs/collaborate/govern/model-access#access-modifiers).
 
-Now in the **Lineage** tab we should see the model noted as “public”:
+2. Navigate to the dbt Cloud IDE **Lineage** tab and you should see the model noted as `public`, under the model name
 
 <Lightbox src="/img/guides/dbt-mesh/da_lineage.png" title="Jaffle | Data Analytics lineage" />
 
-Let’s **Commit & Sync** our changes, then merge them to the main/prod branch.
+3. In the dbt Cloud IDE **Version control** section, click the **Commit and Sync** button to commit your changes, 
+4. Merge your changes to the main or production branch.
 
-Last but not least, let’s run our first deployment dbt Cloud Job. Go to the **Deploy** -> **Jobs** page. Click **Create job** -> **Deploy job**.
-
-Check the **Generate docs on run** box so that we can later represent the state of this project in the Explore page. Then, click **Run Now**.
+### Create a dbt Cloud job
+To run your first deployment dbt Cloud job, you will need to create a new dbt Cloud job.  
+1. Click **Deploy** and then **Jobs**. 
+2. Click **Create job** and then **Deploy job**.
+3. Check the **Generate docs on run** box so that we can later represent the state of this project in the Explore page. Then, click **Run Now**.
 <Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" title="Jaffle | Generate docs on run" />
 <Lightbox src="/img/guides/dbt-mesh/job_run_now.png" title="Jaffle | Trigger job" />
 
