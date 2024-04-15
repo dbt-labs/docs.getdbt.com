@@ -210,50 +210,49 @@ To make `fct_orders` publicly available:
 
 1. Add an `access: public` clause to the relevant YAML file by adding and saving the following file to the project:
 
-<File name='models/core/core.yml'>
+  <File name='models/core/core.yml'>
 
-```yaml
+  ```yaml
+  version: 2
 
-version: 2
+  models:
+    - name: fct_orders
+      access: public
+      description: "Customer and order details"
+      columns:
+        - name: order_id
+          data_type: number
+          description: ""
 
-models:
-  - name: fct_orders
-    access: public
-    description: "Customer and order details"
-    columns:
-      - name: order_id
-        data_type: number
-        description: ""
+        - name: order_date
+          data_type: date
+          description: ""
 
-      - name: order_date
-        data_type: date
-        description: ""
+        - name: status
+          data_type: varchar
+          description: "Indicates the status of the order"
 
-      - name: status
-        data_type: varchar
-        description: "Indicates the status of the order"
+        - name: customer_id
+          data_type: number
+          description: ""
 
-      - name: customer_id
-        data_type: number
-        description: ""
+        - name: first_name
+          data_type: varchar
+          description: ""
 
-      - name: first_name
-        data_type: varchar
-        description: ""
+        - name: last_name
+          data_type: varchar
+          description: ""
 
-      - name: last_name
-        data_type: varchar
-        description: ""
+        - name: first_order_date
+          data_type: date
+          description: ""
 
-      - name: first_order_date
-        data_type: date
-        description: ""
-
-      - name: days_as_customer_at_purchase
-        data_type: number
-        description: "Days between this purchase and customer's first purchase"
-```
-</File>
+        - name: days_as_customer_at_purchase
+          data_type: number
+          description: "Days between this purchase and customer's first purchase"
+  ```
+  </File>
 
 Note: By default, model access is set to "protected", which means they can only be referenced within the same project. Learn more about access types and model groups [here](/docs/collaborate/govern/model-access#access-modifiers).
 
@@ -264,47 +263,55 @@ Note: By default, model access is set to "protected", which means they can only 
 3. In the dbt Cloud IDE **Version control** section, click the **Commit and Sync** button to commit your changes, 
 4. Merge your changes to the main or production branch.
 
-### Create a dbt Cloud job
+### Create and run a dbt Cloud job
 To run your first deployment dbt Cloud job, you will need to create a new dbt Cloud job.  
 1. Click **Deploy** and then **Jobs**. 
 2. Click **Create job** and then **Deploy job**.
-3. Check the **Generate docs on run** box so that we can later represent the state of this project in the Explore page. Then, click **Run Now**.
-<Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" title="Jaffle | Generate docs on run" />
-<Lightbox src="/img/guides/dbt-mesh/job_run_now.png" title="Jaffle | Trigger job" />
+3. Select the **Generate docs on run** option. This will reflect the state of this project in the **Explore** section. 
 
-After the run is complete, go to the **Project Setting** page and link documentation to the job:
-<Lightbox src="/img/guides/dbt-mesh/set_project_artifacts.png" title="Configure project artifacts" />
+<Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" width="75%" title=" Select the 'Generate docs on run' option when configuring your dbt Cloud job." />
 
-Click **Explore** from the upper menu bar. If all has gone to plan, we should now see our lineage, tests, and documentation coming through successfully!
+4. Then, click **Run now**.
+<Lightbox src="/img/guides/dbt-mesh/job_run_now.png" width="80%" title="Trigger a job by clicking the 'Run now' button." />
+
+5. After the run is complete, navigate to **Project Setting** and go to **Artifacts** to link the documentation to the job.
+<Lightbox src="/img/guides/dbt-mesh/set_project_artifacts.png" width="80%" title="Configure project artifacts." />
+
+6. After configuring artifacts, click **Explore** from the upper menu bar. You should now see your lineage, tests, and documentation coming through successfully.
 
 ## Reference a public model in your downstream project
 
-Reference a public model in your downstream (i.e. spoke) project
+In this section, you will set up the downstream project, "Jaffle | Finance", and reference the `fct_orders` model from the foundational project. Navigate to the **Develop** page to set up our project:
 
-Now, let’s switch over to "Jaffle | Finance" and head to the **Develop** page. A couple quick tasks to set up our project:
-1. Click **Initialize dbt project** (in the upper left) if you’ve also started with an new git repo
-2. Delete the `models/example` folder and remove lines 39-42 from the `dbt_project.yml` file 
-3. Create a `dependencies.yml` file. Add the upstream `analytics` project and the `dbt_utils` package.
-<Lightbox src="/img/guides/dbt-mesh/finance_create_file.png" title="Create file" />
+1. If you’ve also started with a new git repo, click **Initialize dbt project** under the **Version control** section.
+2. Delete the `models/example` folder
+3. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
+4. In the **File explorer**, hover over the project directory and click the **...**, then select **Create file**. Name the file `dependencies.yml`.
 
-<File name='dependencies.yml'>
+<Lightbox src="/img/guides/dbt-mesh/finance_create_file.png" width="70%" title="Create file in the dbt Cloud IDE." />
 
-```yml
+5. Add the upstream `analytics` project and the `dbt_utils` package. Click **Save**.
 
-packages:
-  - package: dbt-labs/dbt_utils
-    version: 1.1.1
+  <File name='dependencies.yml'>
 
-projects:
-  - name: analytics
+  ```yaml
 
-```
+  packages:
+    - package: dbt-labs/dbt_utils
+      version: 1.1.1
 
-</File>
+  projects:
+    - name: analytics
 
+  ```
+  </File>
+
+### Staging layer
+
+Now that you've set up the foundational project, let's start building the data assets. Set up the staging layer as follows:
 Add the following files:
 
-4. `models/staging/sources.yml`
+6. Create a new YAML file `models/staging/sources.yml` and declare the sources by copying the following into the file and clicking **Save**.
 
     <File name='models/staging/sources.yml'>
 
@@ -321,7 +328,7 @@ Add the following files:
 
     </File>
 
-5. `models/staging/stg_payments.sql`
+2. Create `models/staging/stg_payments.sql` to select from the `payment` table in the `stripe` source.
 
     <File name='models/staging/stg_payments.sql'>
 
@@ -345,11 +352,13 @@ Add the following files:
 
     ```
 
-    </File> 
+    </File>
 
-Alright, now we’re ready to add the model to answer the question the exec team would like to understand: how does payment type change through a customer journey? This will be important to understand if coupon gift card amounts decrease as a customer repeats purchases (as hoped by our marketing team) or persists. 
+### Reference the public model
 
-6. We can use the following logic to ascertain this:
+You're now set to add a model that explores how payment types vary throughout a customer's journey. This will help determine whether coupon gift cards decrease with repeat purchases, as our marketing team anticipates, or remains consistent.
+
+1. To reference the model, use the following logic to ascertain this:
 
     <File name='models/core/agg_customer_payment_journey.sql'>
 
@@ -387,25 +396,28 @@ Alright, now we’re ready to add the model to answer the question the exec team
 
     </File> 
 
+2. Notice the cross-project ref at work! When you add the `ref`, the dbt Cloud IDE's auto-complete feature recognizes the public model as available.
+<Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_autocomplete.png" title="Cross-project ref autocomplete in the dbt Cloud IDE" />
 
-Notice the cross-project ref at work! As we add the familiar ref, the auto-complete helper in the IDE also detects the public model as available.
-<Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_autocomplete.png" title="Cross-project ref autocomplete" />
-
-This resolves to the appropriate database, schema, and table/view as defined by the upstream project:
+3. This automatically resolves (or links) to the correct database, schema, and table/view set by the upstream project.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_compile.png" title="Cross-project ref compile" />
 
-We now see this represented in the live “lineage” tab as well:
+4. You can also see this connection displayed in the live **Lineage** tab.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_lineage.png" title="Cross-project ref lineage" />
 
-## Enrich this handoff with model versions & contracts
-How can we build in additional resilience and guardrails to this type of multi-project relationship? Pulling from software engineering best practices, we can now:
-1. Define model [contracts](https://docs.getdbt.com/docs/collaborate/govern/model-contracts) in dbt to define a set of upfront "guarantees" that define the shape of your model. While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract, or it will fail to build.
-2. Define model [versions](https://docs.getdbt.com/docs/collaborate/govern/model-versions) to offer a clear migration path in cases where a breaking change is required
+## Add model versions and contracts
 
-Let’s switch back to our example: we’re on the Data Analytics team and want to set guarantees on fct_orders so that downstream teams – like the Finance team – can be certain of its reliability.
+How can you enhance resilience and add guardrails to this type of multi-project relationship? By adopting best practices from software engineering, you can:
 
-Add a data contract to fct_orders. Go to `models/core/core.yml` and add the following underneath the model name:
-```yml
+1. Define model contracts &mdash; Set up [model contracts](/docs/collaborate/govern/model-contracts) in dbt to define a set of upfront "guarantees" that define the shape of your model. While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract; if not, the build fails.
+2. Define model versions &mdash; Use [model versions](/docs/collaborate/govern/model-versions) to manage updates and handle breaking changes systematically.
+
+### Set up data contracts
+As part of the Data Analytics team, you may want to ensure the `fct_orders` model is reliable for downstream users, like the Finance team.
+
+1. Navigate to `models/core/core.yml` and under the `fct_orders` model, add a data contract to enforce reliability:
+
+```yaml
 models:
   - name: fct_orders
     access: public
@@ -413,29 +425,31 @@ models:
     config:
       contract:
         enforced: true
-
 ```
-So, what would happen if this contract were violated? Let’s see. Open up `models/core/fct_orders.sql`, comment out the `orders.status` column, and click **Build** to try building the model.
 
-In the command bar history, we can see that the contract failed because the status field was removed:
-<Lightbox src="/img/guides/dbt-mesh/break_contract.png" title="Broken contract" />
+2. Test what would happen if this contract were violated. In `models/core/fct_orders.sql`, comment out the `orders.status` column and click **Build** to try building the model.
+   - If the contract is breached, the build fails, as seen in the command bar history.
+    <Lightbox src="/img/guides/dbt-mesh/break_contract.png" title="The data contract was breached and the dbt build run failed." />
 
-Now, let’s walk through how model versions can be used by the Data Analytics team as they upgrade the `fct_orders` model while offering backward compatibility and a migration notice to the downstream Finance team.
 
-Rename `models/core/fct_orders.sql` to `models/core/fct_orders_v1.sql` and create a new file named `models/core/fct_orders_v2.sql`:
+### Set up model versions
+In this section, you will set up model versions by the Data Analytics team as they upgrade the `fct_orders` model while offering backward compatibility and a migration notice to the downstream Finance team.
 
-In `models/core/fct_orders_v2.sql`, comment out `orders.status` and instead add a new field, is_return, that yields true if status = ‘returned’ and false otherwise.
+1. Rename the existing model file from` models/core/fct_orders.sql` to `models/core/fct_orders_v1.sql`.
+2. Create a new file `models/core/fct_orders_v2.sql` and adjust the schema:
+   - Comment out `orders.status`  
+   - Add a new field, `is_return` to indicate if an order was returned.
+3. Then, add the following to your `models/core/core.yml` file:
+   - The `is_return` column
+   - The two model `versions`
+   - A `latest_version` to indicate which model is the latest (and should be used by default, unless specified otherwise)
+   - A `deprecation_date` to version 1 as well to indicate 
 
-Then, add the following to your `models/core/core.yml` file:
-- the “is_return” column
-- the two model versions
-- a latest_version to indicate which model is the latest (and should be used by default, unless specified otherwise)
-- a deprecation_date to version 1 as well to indicate 
+4. It should now read as follows:
 
-It should now read as follows:
 <File name='models/core/core.yml'>
 
-```yml
+```yaml
 
 version: 2
 
@@ -499,13 +513,11 @@ models:
           # This means: use the 'columns' list from above, but exclude status
           - include: all
             exclude: [status]
-
-
 ```
 
 </File>
 
-Let’s verify how dbt compiles the ref statement now based on the version that we scope. Open a new file, add the following select statements, and click **Compile**.
+5. Verify how dbt compiles the `ref` statement based on the updates. Open a new file, add the following select statements, and click **Compile**.
 
 ```sql
 select * from {{ ref('fct_orders', v=1) }}
@@ -513,17 +525,22 @@ select * from {{ ref('fct_orders', v=2) }}
 select * from {{ ref('fct_orders') }}
 ```
 
-## Add a dbt Cloud Job in the downstream project
-Before proceeding, commit & merge your changes in both the “Jaffle | Data Analytics” and “Jaffle | Finance” projects. 
+## Add a dbt Cloud job in the downstream project
+Before proceeding, make sure you commit and merge your changes in both the “Jaffle | Data Analytics” and “Jaffle | Finance” projects.
 
-A member of the Finance team would like to schedule a dbt Cloud Job their customer payment journey analysis immediately after the Data Analytics team refreshes their pipelines.
+A member of the Finance team would like to schedule a dbt Cloud job their customer payment journey analysis immediately after the data analytics team refreshes their pipelines.
 
-In the “Jaffle | Finance” project, go to the Jobs page (**Deploy** -> **Jobs**) and click **Create job** -> **Deploy job**. Add a name for the job, then scroll to the bottom and configure the job to **Run when another job finishes**. Select the upstream job, like so:
+1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Deploy** -> **Jobs**. 
+2. Then click **Create job** -> **Deploy job**.
+3. Add a name for the job, then scroll to the bottom to the **Job completion** section.  
+4. In **Job completion** section, configure the job to **Run when another job finishes** and select the upstream job from the “Jaffle | Data Analytics” project.
 <Lightbox src="/img/guides/dbt-mesh/trigger_on_completion.png" title="Trigger job on completion" />
 
-Click **Save**. Let’s verify this works as we expect. Go to the “Jaffle | Data Analytics” Jobs page, select the **Daily Job**, and click **Run Now**. Once this job completes successfully, go back the “Jaffle | Finance” Jobs page. Boom! The Finance team’s job was triggered automatically.
+5. Click **Save** and verify the job is set up correctly.
+6. Go to the “Jaffle | Data Analytics” jobs page. Select the **Daily job** and click **Run now**. 
+7. Once this job completes successfully, go back the “Jaffle | Finance” jobs page. You should see that the Finance team’s job was triggered automatically.
 
-This makes it dead simple to stay in sync with the upstream tables and removes the need for more sophisticated orchestration skills (e.g. coordinating jobs across projects via an external orchestrator).
+This simplifies the process of staying in sync with the upstream tables and removes the need for more sophisticated orchestration skills, such coordinating jobs across projects via an external orchestrator.
 
 ## View deprecation warning
 
