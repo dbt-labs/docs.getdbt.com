@@ -30,7 +30,7 @@ dbt Cloud offers the fastest, most reliable and scalable way to deploy dbt. Deve
 
 Exclusive features of dbt Cloud include:
 
-- Hosted environment so it’s faster to get up and running,  without having to manage ongoing infrastructure maintenance.
+- Hosted environment so it’s faster to get up and running,  without having to manage ongoing infrastructure maintenance
 - Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Features designed to help you deploy and scale with ease, such as: [stateful metadata](/docs/dbt-cloud-apis/discovery-api), [intuitive data discovery with dbt Explorer](/docs/collaborate/explore-projects), [in-app job scheduler](/docs/deploy/deployments), out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs), [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro), and more.
 
