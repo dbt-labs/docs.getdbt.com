@@ -28,7 +28,7 @@ The guide outlines the following steps:
 - [Considerations](https://docs.getdbt.com/guides/core-cloud-2?step=3): Learn about the most important things you need to think about when moving from Core to Cloud.
 - [Plan your move](https://docs.getdbt.com/guides/core-cloud-2?step=4): Considerations you need to make, such as user roles and permissions, onboarding order, current workflows, and more.
 - [Move to dbt Cloud](https://docs.getdbt.com/guides/core-cloud-2?step=5): Review the steps to move your dbt Core project to dbt Cloud, including setting up your account, data platform, and Git repository.
-- [Test and validate](https://docs.getdbt.com/guides/core-cloud-2?step=6): Discover how to ensure model accuracy and performance post-move,.
+- [Test and validate](https://docs.getdbt.com/guides/core-cloud-2?step=6): Discover how to ensure model accuracy and performance post-move.
 - [Transition and training](https://docs.getdbt.com/guides/core-cloud-2?step=7): Learn how to fully transition to dbt Cloud and what training and support you may need. 
 - [Summary](https://docs.getdbt.com//guides/core-cloud-2?step=8): Summarizes key takeaways and what you've learned in this guide.
 - [What's next?](https://docs.getdbt.com/guides/core-cloud-2?step=9): Introduces what to expect in the following guides.
