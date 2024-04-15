@@ -80,141 +80,131 @@ Once configured, each project should have:
 
 ## Set up a foundational project
 
-A foundation project is where 
+A foundation project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
+
+dbt Cloud enables data practitioners to develop in their tool of choice and comes equipped with a local [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+
+In this section of the guide, you will set the "Jaffle | Data Analytics" project as your foundational project using the dbt Cloud IDE.
+
+1. First, navigate to the **Develop** page to verify your setup.
+2. Click **Initialize dbt project** if you’ve started with an empty repo:
+
+<Lightbox src="/img/guides/dbt-mesh/initialize_repo.png" width="40%" title="Initialize repo" />
+
+3. Delete the `models/example` folder  
+4. In your `dbt_project.yml` file, rename the project (line 5) from `my_new_project` to `analytics`.
+5. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
+6. In the file tree, create two new folders: `models/staging` and `models/core`.
 
 
-Let’s walk through setting this up in our “Jaffle | Data Analytics” project. First, head to the **Develop** page to verify our setup. Click **Initializing dbt project** if you’ve started with an empty repo:
+### Staging layer
+Now that you've set up the foundational project, let's start building the data assets. Set up the staging layer as follows:
 
-<Lightbox src="/img/guides/dbt-mesh/initialize_repo.png" title="Initialize repo" />
-
-Delete the `models/example` folder and remove lines 39-42 from the dbt_project.yml file. While there, let’s also rename the project (line 5) from `my_new_project` to `analytics`.
-
-Create two new folders: `models/staging` and `models/core`.
-
-We’ll set up our staging layer as follows:
-1. Create a new YML file `models/staging/sources.yml`.
+1. Create a new YAML file `models/staging/sources.yml`.
 2. Declare the sources by copying the following into the file and clicking **Save**.
 
-    <File name='models/staging/sources.yml'>
+  <File name='models/staging/sources.yml'>
 
-    ```yml
-    version: 2
+  ```yaml
+  version: 2
 
-    sources:
-        - name: jaffle_shop
-          description: This is a replica of the Postgres database used by our app
-          database: raw
-          schema: jaffle_shop
-          tables:
-              - name: customers
-                description: One record per customer.
-              - name: orders
-                description: One record per order. Includes cancelled and deleted orders.
-    ```
-
-    </File>
+  sources:
+    - name: jaffle_shop
+      description: This is a replica of the Postgres database used by our app
+      database: raw
+      schema: jaffle_shop
+      tables:
+        - name: customers
+          description: One record per customer.
+        - name: orders
+          description: One record per order. Includes cancelled and deleted orders.
+  ```
+  </File>
 
 3. Create a `models/staging/stg_customers.sql` file to select from the `customers` table in the `jaffle_shop` source.
 
-    <File name='models/staging/stg_customers.sql'>
+  <File name='models/staging/stg_customers.sql'>
 
-    ```sql
-    select
-        id as customer_id,
-        first_name,
-        last_name
+  ```sql
+  select
+      id as customer_id,
+      first_name,
+      last_name
 
-    from {{ source('jaffle_shop', 'customers') }}
-    ```
-
-    </File>
+  from {{ source('jaffle_shop', 'customers') }}
+  ```
+  </File>
 
 4. Create a `models/staging/stg_orders.sql` file to select from the `orders` table in the `jaffle_shop` source.
 
-    <File name='models/staging/stg_orders.sql'>
+  <File name='models/staging/stg_orders.sql'>
 
-    ```sql
-    select
-        id as order_id,
-        user_id as customer_id,
-        order_date,
-        status
+  ```sql
+  select
+      id as order_id,
+      user_id as customer_id,
+      order_date,
+      status
 
-    from {{ source('jaffle_shop', 'orders') }}
-    ```
+  from {{ source('jaffle_shop', 'orders') }}
+  ```
+  </File>
 
-    </File>
+5. Create a `models/core/fct_orders.sql` file to build a fact table with customer and order details.
 
-5. Create a `models/core/fct_orders.sql` file to build a fact table with customer and order details
+  <File name='models/core/fct_orders.sql'>
 
-    <File name='models/core/fct_orders.sql'>
+  ```sql
+  with customers as (
+      select * 
+      from {{ ref('stg_customers') }}
+  ),
 
-    ```sql
-    with customers as (
+  orders as (
+      select * 
+      from {{ ref('stg_orders') }}
+  ),
 
-    select * from {{ ref('stg_customers') }}
+  customer_orders as (
+      select
+          customer_id,
+          min(order_date) as first_order_date
+      from orders
+      group by customer_id
+  ),
 
-    ),
+  final as (
+      select
+          o.order_id,
+          o.order_date,
+          o.status,
+          c.customer_id,
+          c.first_name,
+          c.last_name,
+          co.first_order_date,
+          -- Note that we've used a macro for this so that the appropriate DATEDIFF syntax is used for each respective data platform
+          {{ dbt_utils.datediff('first_order_date', 'order_date', 'day') }} as days_as_customer_at_purchase
+      from orders o
+      left join customers c using (customer_id)
+      left join customer_orders co using (customer_id)
+  )
 
-    orders as (
+  select * from final
+  ```
+  </File>
 
-        select * from {{ ref('stg_orders') }}
-
-    ),
-
-    customer_orders as (
-
-        select
-            customer_id,
-            min(order_date) as first_order_date,
-
-        from orders
-
-        group by 1
-
-    ),
-
-    final as (
-
-        select 
-            orders.order_id,
-            orders.order_date,
-            orders.status,
-            
-            customers.customer_id,
-            customers.first_name,
-            customers.last_name,
-            
-            customer_orders.first_order_date,
-            -- Note that we've used a macro for this so that the appropriate DATEDIFF syntax is used for each respective data platform
-            {{ dbt.datediff("first_order_date", "order_date", "day") }} as days_as_customer_at_purchase
-
-        from orders 
-        left join customers using (customer_id)
-        left join customer_orders using (customer_id)
-
-    )
-
-    select * from final
-
-    ```
-
-    </File>
-
-6. Execute `dbt build`. 
+6. Execute `dbt build` command.
 
 Before a downstream team can leverage assets from this foundational project, you need to first:
 - [Create and define](/docs/collaborate/govern/model-access) at least one model as “public”
 - Run a [deployment job](/docs/deploy/deploy-jobs) successfully
   - Note, Enable the **Generate docs on run** toggle for this job to update the dbt Explorer. Once run, you can link dbt Explorer to a deployment job on the **Project Settings** page (Refer to [artifacts](/docs/deploy/artifacts) for more information).
 
-## Define a public model & run first job
+## Define a public model and run first job
 
-Alright, we have our basic building blocks arranged. How does dbt Mesh come in?
+In the previous section, you've arranged your basic building blocks, now let's integrate dbt Mesh. Although the Finance team requires the `fct_orders` model for analyzing payment trends, other models, particularly those in the staging layer used for data cleansing and joining, are not needed by downstream teams.
 
-We know our Finance team will need to build on fct_orders as they analyze payment trends. That said, many of the other models in our project – namely the staging layer where we cleansed and joined the data, in this example – aren’t needed by downstream teams.
-
-To make fct_orders available, we’ll just need to add an “access: public” clause to the relevant yml file. Let’s add the following file into the project and save it:
+To make `fct_orders` publicly available, add an `access: public` clause to the relevant YAML file. Add and save the following file to the project:
 
 <File name='models/core/core.yml'>
 
