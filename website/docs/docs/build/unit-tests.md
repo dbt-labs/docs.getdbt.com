@@ -37,7 +37,6 @@ You should unit test a model:
     - Window functions
     - `case when` statements when there are many `when`s
     - Truncation
-    - Recursion
 - When you're writing custom logic to process input data, similar to creating a function.
 - We don't recommend conducting unit testing for functions like `min()` since these functions are tested extensively by the warehouse. If an unexpected issue arises, it's more likely a result of issues in the underlying data rather than the function itself. Therefore, fixture data in the unit test won't provide valuable information.
 - Logic for which you had bugs reported before.

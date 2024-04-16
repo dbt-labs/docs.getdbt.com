@@ -13,14 +13,14 @@ hide_table_of_contents: true
 
 dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections &mdash; for faster data development. dbt Mesh is available for [dbt Cloud Enterprise](https://www.getdbt.com/) accounts.
 
-In this guide you’ll learn how to set up a multi-project design using foundational concepts of [dbt Mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh). In this guide, you’ll:
+This guide will teach you how to set up a multi-project design using foundational concepts of [dbt Mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) and how to implement a data mesh in dbt Cloud:
 
 - Set up a foundational project called “Jaffle | Data Analytics”
 - Set up a downstream project called “Jaffle | Finance”
 - Add model access, versions, and contracts
 - Set up a dbt Cloud job that is triggered on completion of an upstream job
  
-This guide explains how to implement a data mesh in dbt Cloud. For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
+For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
@@ -40,8 +40,8 @@ To leverage dbt Mesh, you need the following:
 
 - You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="enterprise"/>
 - You have access to a cloud data platform, permissions to load the sample data tables, and dbt Cloud permissions to create new projects.
-- Set dbt [version](/docs/dbt-versions/core) to 1.6 or later in your development and deployment [environments](/docs/dbt-cloud-environments) or select [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) dbt. 
-- Load the Jaffle Shop sample data (customers, orders, and payments tables) into your data platform. You can find the steps to do so for each platform, respectively, here:
+- Set your development and deployment [environments](/docs/dbt-cloud-environments) to use dbt [version](/docs/dbt-versions/core) 1.6 or later. You can also opt [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version of dbt.
+- This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
   - [Databricks](https://docs.getdbt.com/guides/databricks?step=3)
   - [Redshift](https://docs.getdbt.com/guides/redshift?step=3)
@@ -53,7 +53,12 @@ This guide assumes you have experience with or fundamental knowledge of dbt. Tak
 
 ## Create and configure two projects
 
-In this section, create two new, empty projects in dbt Cloud to use as your foundational and downstream projects. The always-enterprising and fictional account "Jaffle Labs" is setting up a project for their data analytics and finance team, respectively:
+In this section, you'll create two new, empty projects in dbt Cloud to serve as your foundational and downstream projects:
+
+- **Foundational projects** typically contain core models and datasets that serve as the base for further analysis and reporting.
+- **Downstream projects** build on these foundations, often adding more specific transformations or business logic for dedicated teams or purposes. 
+
+For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: Jaffle | Data Analytics and Jaffle | Finance.
 
 <Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Create two new dbt Cloud projects named 'Jaffle | Data Analytics' and 'Jaffle Finance' " />
 
@@ -66,7 +71,7 @@ To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
 3. Select your data platform, then **Next** to set up your connection.
 4. In the **Configure your environment** section, enter the **Settings** for your new project.
 5. Click **Test Connection**. This verifies that dbt Cloud can access your data platform account.
-6. Click **Next** if the test succeeded. If it failed, you might need to go back and double check your settings.
+6. Click **Next** if the test succeeded. If it fails, you might need to go back and double-check your settings.
     For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
   - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
   - For "Jaffle | Finance", set the default database to `jaffle_finance`
@@ -80,7 +85,7 @@ Once configured, each project should have:
 
 ## Set up a foundational project
 
-A foundation project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
+This upstream project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
 
 dbt Cloud enables data practitioners to develop in their tool of choice and comes equipped with a local [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
@@ -517,7 +522,7 @@ models:
 
 </File>
 
-5. Verify how dbt compiles the `ref` statement based on the updates. Open a new file, add the following select statements, and click **Compile**.
+5. Verify how dbt compiles the `ref` statement based on the updates. Open a new file, add the following select statements, and click **Compile**. Note how each ref is compiled to the specified version (or the latest version if not specified).
 
 ```sql
 select * from {{ ref('fct_orders', v=1) }}
@@ -592,6 +597,8 @@ select * from final
 ## View lineage with dbt Explorer <Lifecycle status="enterprise"/>
 
 Use dbt Explorer to view the lineage across projects in dbt Cloud. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects).
+
+<Lightbox src="/img/guides/dbt-mesh/jaffle_da_final_lineage.png" width="50%" title="View 'Jaffle | Data Analytics' lineage with dbt Explorer " />
 
 ## What's next
 
