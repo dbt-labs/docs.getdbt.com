@@ -34,7 +34,7 @@ import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
 - [Create or update your workspace](https://docs.databricks.com/en/security/network/classic/privatelink.html#step-3d-create-or-update-the-workspace-front-end-back-end-or-both) - Create a workspace (if not already existing). Under **Advanced configurations -> Private Link** choose the private access settings object created in the previous step
 
 :::note Warning
-If using an existing workspace all workloads running in the workspace will need to be stopped to enable Private Link! Workloads also cannot be started for another 20 minutes after changes are made. From the [Databricks documentation](https://docs.databricks.com/en/security/network/classic/privatelink.html#step-3d-create-or-update-the-workspace-front-end-back-end-or-both):
+If using an existing Databricks workspace, all workloads running in the workspace will need to be stopped to enable Private Link! Workloads also cannot be started for another 20 minutes after changes are made. From the [Databricks documentation](https://docs.databricks.com/en/security/network/classic/privatelink.html#step-3d-create-or-update-the-workspace-front-end-back-end-or-both):
 
 >After creating (or updating) a workspace, wait until it’s available for using or creating clusters. The workspace status stays at status RUNNING and the VPC change happens immediately. However, you cannot use or create clusters for another 20 minutes. If you create or use clusters before this time interval elapses, clusters do not launch successfully, fail, or could cause other unexpected behavior.
 
