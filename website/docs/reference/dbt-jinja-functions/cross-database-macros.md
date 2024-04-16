@@ -783,7 +783,9 @@ array_to_string(
 ### cast
 
 **Availability**:
-dbt v1.8 or higher
+dbt v1.8 or higher. For more information, select the version from the documentation navigation menu.
+
+<VersionBlock firstVersion="1.8">
 
 __Args__:
 
@@ -807,6 +809,8 @@ This macro casts a value to the specified data type. Unlike [safe\_cast](#safe_c
     cast(column_2 as INT)
     cast('2016-03-09' as date)
 ```
+
+</VersionBlock>
 
 ### cast_bool_to_text
 __Args__:
