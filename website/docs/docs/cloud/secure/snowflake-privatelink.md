@@ -76,9 +76,8 @@ Open the Snowflake UI and take the following steps:
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink2.png" title="Create Network Rule"/>
 
-9. In the **Network Policy** tab, edit the policy you want to add the rule to.
+9. In the **Network Policy** tab, edit the policy you want to add the rule to. This could be your account-level policy or a policy specific to the users connecting from dbt Cloud.
 
-- _*This could be your account level policy, or a policy specific to the users who will be connecting from dbt Cloud._
 
 10. Add the new rule to the allowed list and click **Update Network Policy**.
 
