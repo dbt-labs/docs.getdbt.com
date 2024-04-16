@@ -37,11 +37,11 @@ The IDE streamlines your workflow, and features a popular user interface layout 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-bar.jpg" width="90%" title="Use the Command bar to write dbt commands, toggle 'Defer', and view the current IDE status"/>
 
-4. **Command bar &mdash;**  The Command bar, located in the lower left of the IDE, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
+5. **Command bar &mdash;**  The Command bar, located in the lower left of the IDE, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
-5. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
+6. **Defer to production &mdash;** The **Defer to production** toggle allows developers to only build and run and test models they've edited without having to first run and build all the models that come before them (upstream parents). Refer to [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer#defer-in-the-dbt-cloud-ide) for more info.
 
-6. **Status button &mdash;** The IDE Status button, located on the lower right of the IDE, displays the current IDE status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [IDE Status modal](#modals-and-menus), simply click on this button.
+7. **Status button &mdash;** The IDE Status button, located on the lower right of the IDE, displays the current IDE status. If there is an error in the status or in the dbt code that stops the project from parsing, the button will turn red and display "Error". If there aren't any errors, the button will display a green "Ready" status. To access the [IDE Status modal](#modals-and-menus), simply click on this button.
 
 ## Editing features
 
@@ -104,7 +104,7 @@ Starting from dbt v1.6 or higher, when you save changes to a model, you can comp
 
 3. **Build button &mdash;** The build button allows users to quickly access dbt commands related to the active model in the File Editor. The available commands include dbt build, dbt test, and dbt run, with options to include only the current resource, the resource and its upstream dependencies, the resource, and its downstream dependencies, or the resource with all dependencies. This menu is available for all executable nodes.
 
-3. **Format button &mdash;** The editor has a **Format** button that can reformat the contents of your files. For SQL files, it uses either `sqlfmt` or `sqlfluff`, and for Python files, it uses `black`.
+4. **Format button &mdash;** The editor has a **Format** button that can reformat the contents of your files. For SQL files, it uses either `sqlfmt` or `sqlfluff`, and for Python files, it uses `black`.
 
 5. **Results tab &mdash;** The Results console tab displays the most recent Preview results in tabular format. 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/results-console-tab.jpg" width="90%" title="Preview results show up in the Results console tab"/>
