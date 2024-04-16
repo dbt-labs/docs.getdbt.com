@@ -240,7 +240,7 @@ In this section, you’ll be able to validate whether your models run or compile
 
 You’ll want to make sure you set up your [development environment and credentials](/docs/dbt-cloud-environments#set-developer-credentials).
 
-1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and you can run dbt commands. For example:
+1. In your [development tool](/docs/cloud/about-develop-dbt) of choice, you can review your dbt project, ensure it's set up correctly, and run some [dbt commands](/reference/dbt-command):
    - Run `dbt compile` to make sure your project compiles correctly.
    - Run a few models in the dbt Cloud IDE or dbt Cloud CLI to ensure you’re experiencing accurate results in development.
 
@@ -269,6 +269,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights.
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 - [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.
+- Subscribe to the [dbt Cloud RSS alerts](https://status.getdbt.com/)
 
 </ConfettiTrigger>
 
