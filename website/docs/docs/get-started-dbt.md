@@ -6,7 +6,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Start your dbt journey by trying one of our quickstarts, which provide a step-by-step guide to help you set up dbt Cloud with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections). dbt Cloud is the scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed service.
+Start your dbt journey by trying one of our quickstarts, which provide a step-by-step guide to help you set up dbt Cloud with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections). dbt Cloud is the scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service.
 
 dbt Cloud enables teams with varying skillsets build reliable data products, at any scale, with capabilities including:
 
