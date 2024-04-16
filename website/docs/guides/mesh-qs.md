@@ -53,7 +53,12 @@ This guide assumes you have experience with or fundamental knowledge of dbt. Tak
 
 ## Create and configure two projects
 
-In this section, create two new, empty projects in dbt Cloud to use as your foundational and downstream projects. The always-enterprising and fictional account "Jaffle Labs" is setting up a project for their data analytics and finance team, respectively:
+In this section, you'll create two new, empty projects in dbt Cloud to serve as your foundational and downstream projects:
+
+- **Foundational projects** typically contain core models and datasets that serve as the base for further analysis and reporting.
+- **Downstream projects** build on these foundations, often adding more specific transformations or business logic for dedicated teams or purposes. 
+
+For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: Jaffle | Data Analytics and Jaffle | Finance.
 
 <Lightbox src="/img/guides/dbt-mesh/project_names.png" width="50%" title="Create two new dbt Cloud projects named 'Jaffle | Data Analytics' and 'Jaffle Finance' " />
 
@@ -66,7 +71,7 @@ To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
 3. Select your data platform, then **Next** to set up your connection.
 4. In the **Configure your environment** section, enter the **Settings** for your new project.
 5. Click **Test Connection**. This verifies that dbt Cloud can access your data platform account.
-6. Click **Next** if the test succeeded. If it failed, you might need to go back and double check your settings.
+6. Click **Next** if the test succeeded. If it fails, you might need to go back and double-check your settings.
     For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
   - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
   - For "Jaffle | Finance", set the default database to `jaffle_finance`
