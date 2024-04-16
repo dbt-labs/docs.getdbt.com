@@ -63,7 +63,7 @@ Unit tests are defined in YML files in your `models/` directory and are currentl
 
 #### New `data_tests:` syntax
 
-The `tests:` syntax is changing to reflect the addition of unit tests. Start migrating your [data test](/docs/build/data-tests#new-test-syntax) YML to use `data_tests:` after you upgrade to v1.8 to prevent issues in the future.
+The `tests:` syntax is changing to reflect the addition of unit tests. Start migrating your [data test](/docs/build/data-tests#new-data_tests-syntax) YML to use `data_tests:` after you upgrade to v1.8 to prevent issues in the future.
 
 ```yml
 
