@@ -25,7 +25,7 @@ Project dependencies are designed for the [dbt Mesh](/best-practices/how-we-mesh
 
 Package dependencies allow you to add source code from someone else's dbt project into your own, like a library:
 
-- If you're only using packages like those from the [dbt Hub](https://hub.getdbt.com/), remain with `packages.yml`.
+- If you only use packages like those from the [dbt Hub](https://hub.getdbt.com/), remain with `packages.yml`.
 - Use `packages.yml` when you want to download dbt packages, such as dbt projects, into your root or parent dbt project. Something to note is that it doesn't contribute to the dbt Mesh workflow.
 - Use `packages.yml` to include packages, including private packages, in your project's dependencies. If you have private packages that you need to reference, `packages.yml` is the way to go.
 - `packages.yml` supports Jinja rendering for historical reasons, allowing dynamic configurations. This can be useful if you need to insert values, like a [Git token method](/docs/build/packages#git-token-method) from an environment variable, into your package specifications.
