@@ -78,7 +78,7 @@ To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
 
 <Lightbox src="/img/guides/dbt-mesh/create-new-project.gif" width="80%" title="Navigate to 'Account settings' and then click + 'New Project' to create new projects in dbt Cloud" /> 
 
-1. Continue the prompts to complete the project setup. Once configured, each project should have:
+7. Continue the prompts to complete the project setup. Once configured, each project should have:
     - A data platform connection
     - New git repo
     - One or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
@@ -96,10 +96,11 @@ In this section of the guide, you will set the "Jaffle | Data Analytics" project
 
 <Lightbox src="/img/guides/dbt-mesh/initialize_repo.png" width="40%" title="Initialize repo" />
 
-3. Delete the `models/example` folder  
-4. In your `dbt_project.yml` file, rename the project (line 5) from `my_new_project` to `analytics`.
-5. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
-6. In the file tree, create two new folders: `models/staging` and `models/core`.
+3. Delete the `models/example` folder.  
+4. Navigate to the `dbt_project.yml` file and rename the project (line 5) from `my_new_project` to `analytics`.
+5. In your `dbt_project.yml` file, remove lines 39-42 (the `my_new_project` model reference).
+6. In the **File Explorer**, hover over the project directory and click the **...**, then select **Create file**.
+7. Create two new folders: `models/staging` and `models/core`.
 
 
 ### Staging layer
@@ -198,7 +199,7 @@ Now that you've set up the foundational project, let's start building the data a
   ```
   </File>
 
-6. Execute `dbt build` command.
+6. Navigate to the **Command bar** and execute `dbt build`.
 
 Before a downstream team can leverage assets from this foundational project, you need to first:
 - [Create and define](/docs/collaborate/govern/model-access) at least one model as “public”
@@ -213,7 +214,7 @@ Although the Finance team requires the `fct_orders` model for analyzing payment 
 
 To make `fct_orders` publicly available:
 
-1. Add an `access: public` clause to the relevant YAML file by adding and saving the following file to the project:
+1. In the `models/core/core.yml` file, add a `access: public` clause to the relevant YAML file by adding and saving the following:
 
   <File name='models/core/core.yml'>
 
@@ -261,41 +262,42 @@ To make `fct_orders` publicly available:
 
 Note: By default, model access is set to "protected", which means they can only be referenced within the same project. Learn more about access types and model groups [here](/docs/collaborate/govern/model-access#access-modifiers).
 
-2. Navigate to the dbt Cloud IDE **Lineage** tab and you should see the model noted as `public`, under the model name
+2. Navigate to the dbt Cloud IDE **Lineage** tab to see the model noted as **Public**, below the model name.
 
 <Lightbox src="/img/guides/dbt-mesh/da_lineage.png" title="Jaffle | Data Analytics lineage" />
 
-3. In the dbt Cloud IDE **Version control** section, click the **Commit and Sync** button to commit your changes, 
+3. Go to **Version control** and click the **Commit and Sync** button to commit your changes.
 4. Merge your changes to the main or production branch.
 
 ### Create and run a dbt Cloud job
 To run your first deployment dbt Cloud job, you will need to create a new dbt Cloud job.  
 1. Click **Deploy** and then **Jobs**. 
 2. Click **Create job** and then **Deploy job**.
-3. Select the **Generate docs on run** option. This will reflect the state of this project in the **Explore** section. 
+3. Select the **Generate docs on run** option. This will reflect the state of this project in the **Explore** section.
 
 <Lightbox src="/img/guides/dbt-mesh/generate_docs_on_run.png" width="75%" title=" Select the 'Generate docs on run' option when configuring your dbt Cloud job." />
 
-4. Then, click **Run now**.
+4. Then, click **Run now** to trigger the job.
 <Lightbox src="/img/guides/dbt-mesh/job_run_now.png" width="80%" title="Trigger a job by clicking the 'Run now' button." />
 
-5. After the run is complete, navigate to **Project Setting** and go to **Artifacts** to link the documentation to the job.
+5. After the run is complete, navigate to **Project Setting** and go to the **Artifacts** section to link the documentation to the job.
 <Lightbox src="/img/guides/dbt-mesh/set_project_artifacts.png" width="80%" title="Configure project artifacts." />
 
 6. After configuring artifacts, click **Explore** from the upper menu bar. You should now see your lineage, tests, and documentation coming through successfully.
 
 ## Reference a public model in your downstream project
 
-In this section, you will set up the downstream project, "Jaffle | Finance", and reference the `fct_orders` model from the foundational project. Navigate to the **Develop** page to set up our project:
+In this section, you will set up the downstream project, "Jaffle | Finance", and [cross-project reference](/docs/collaborate/govern/project-dependencies) the `fct_orders` model from the foundational project. Navigate to the **Develop** page to set up our project:
 
 1. If you’ve also started with a new git repo, click **Initialize dbt project** under the **Version control** section.
 2. Delete the `models/example` folder
 3. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
-4. In the **File explorer**, hover over the project directory and click the **...**, then select **Create file**. Name the file `dependencies.yml`.
+4. In the **File Explorer**, hover over the project directory, click the **...** and Select **Create file**.
+5. Name the file `dependencies.yml`.
 
 <Lightbox src="/img/guides/dbt-mesh/finance_create_file.png" width="70%" title="Create file in the dbt Cloud IDE." />
 
-5. Add the upstream `analytics` project and the `dbt_utils` package. Click **Save**.
+6. Add the upstream `analytics` project and the `dbt_utils` package. Click **Save**.
 
   <File name='dependencies.yml'>
 
@@ -314,9 +316,8 @@ In this section, you will set up the downstream project, "Jaffle | Finance", and
 ### Staging layer
 
 Now that you've set up the foundational project, let's start building the data assets. Set up the staging layer as follows:
-Add the following files:
 
-6. Create a new YAML file `models/staging/sources.yml` and declare the sources by copying the following into the file and clicking **Save**.
+1. Create a new YAML file `models/staging/sources.yml` and declare the sources by copying the following into the file and clicking **Save**.
 
     <File name='models/staging/sources.yml'>
 
@@ -361,7 +362,7 @@ Add the following files:
 
 ### Reference the public model
 
-You're now set to add a model that explores how payment types vary throughout a customer's journey. This will help determine whether coupon gift cards decrease with repeat purchases, as our marketing team anticipates, or remains consistent.
+You're now set to add a model that explores how payment types vary throughout a customer's journey. This helps determine whether coupon gift cards decrease with repeat purchases, as our marketing team anticipates, or remains consistent.
 
 1. To reference the model, use the following logic to ascertain this:
 
@@ -404,20 +405,20 @@ You're now set to add a model that explores how payment types vary throughout a 
 2. Notice the cross-project ref at work! When you add the `ref`, the dbt Cloud IDE's auto-complete feature recognizes the public model as available.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_autocomplete.png" title="Cross-project ref autocomplete in the dbt Cloud IDE" />
 
-3. This automatically resolves (or links) to the correct database, schema, and table/view set by the upstream project.
+1. This automatically resolves (or links) to the correct database, schema, and table/view set by the upstream project.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_compile.png" title="Cross-project ref compile" />
 
-4. You can also see this connection displayed in the live **Lineage** tab.
+1. You can also see this connection displayed in the live **Lineage** tab.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_lineage.png" title="Cross-project ref lineage" />
 
 ## Add model versions and contracts
 
-How can you enhance resilience and add guardrails to this type of multi-project relationship? By adopting best practices from software engineering, you can:
+How can you enhance resilience and add guardrails to this type of multi-project relationship? You can adopt best practices from software engineering by:
 
-1. Define model contracts &mdash; Set up [model contracts](/docs/collaborate/govern/model-contracts) in dbt to define a set of upfront "guarantees" that define the shape of your model. While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract; if not, the build fails.
-2. Define model versions &mdash; Use [model versions](/docs/collaborate/govern/model-versions) to manage updates and handle breaking changes systematically.
+1. Defining model contracts &mdash; Set up [model contracts](/docs/collaborate/govern/model-contracts) in dbt to define a set of upfront "guarantees" that define the shape of your model. While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract; if not, the build fails.
+2. Defining model versions &mdash; Use [model versions](/docs/collaborate/govern/model-versions) to manage updates and handle breaking changes systematically.
 
-### Set up data contracts
+### Set up model contracts
 As part of the Data Analytics team, you may want to ensure the `fct_orders` model is reliable for downstream users, like the Finance team.
 
 1. Navigate to `models/core/core.yml` and under the `fct_orders` model, add a data contract to enforce reliability:
@@ -535,8 +536,8 @@ Before proceeding, make sure you commit and merge your changes in both the “Ja
 
 A member of the Finance team would like to schedule a dbt Cloud job their customer payment journey analysis immediately after the data analytics team refreshes their pipelines.
 
-1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Deploy** -> **Jobs**. 
-2. Then click **Create job** -> **Deploy job**.
+1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Deploy** and then **Jobs**. 
+2. Then click **Create job** and then **Deploy job**.
 3. Add a name for the job, then scroll to the bottom to the **Job completion** section.  
 4. In **Job completion** section, configure the job to **Run when another job finishes** and select the upstream job from the “Jaffle | Data Analytics” project.
 <Lightbox src="/img/guides/dbt-mesh/trigger_on_completion.png" title="Trigger job on completion" />
@@ -590,15 +591,16 @@ select * from final
 </File>
 
 3. In the dbt Cloud IDE, go to **Version control** to commit and merge the changes.
-4. Go to the **Deploy** -> **Jobs** page and click **Run Now** to run the Finance job. The `agg_customer_payment_journey` model will build and display a deprecation date warning.
+4. Go to the **Deploy** and then **Jobs** page.
+5. Click **Run now** to run the Finance job. The `agg_customer_payment_journey` model will build and display a deprecation date warning.
 
 <Lightbox src="/img/guides/dbt-mesh/deprecation_date_warning.png" title="The model will display a deprecation date warning." />
 
-## View lineage with dbt Explorer <Lifecycle status="enterprise"/>
+## View lineage with dbt Explorer
 
-Use dbt Explorer to view the lineage across projects in dbt Cloud. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects).
+Use [dbt Explorer](/docs/collaborate/explore-projects) to view the lineage across projects in dbt Cloud. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects).
 
-<Lightbox src="/img/guides/dbt-mesh/jaffle_da_final_lineage.png" width="50%" title="View 'Jaffle | Data Analytics' lineage with dbt Explorer " />
+<Lightbox src="/img/guides/dbt-mesh/jaffle_da_final_lineage.png" width="85%" title="View 'Jaffle | Data Analytics' lineage with dbt Explorer " />
 
 ## What's next
 
