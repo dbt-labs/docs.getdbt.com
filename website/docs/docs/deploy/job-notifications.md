@@ -43,10 +43,6 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 
 ## Slack notifications
 
-See [Slack integration](/docs/cloud/slack-integration) for setup instructions before proceeding to the notification configuration. 
-
-### Configure Slack notifications
-
 You can receive Slack alerts about jobs by setting up the Slack integration, then configuring the dbt Cloud Slack notification settings. dbt Cloud integrates with Slack via OAuth to ensure secure authentication.
 
 :::note 
@@ -60,17 +56,17 @@ If there has been a change in user roles or Slack permissions where you no longe
 
 ### Set up the Slack integration
 
-1. From the gear menu, select **Account settings** and then select **Integrations** from the left navigation pane. 
+1. From the gear menu, select **Account settings** and then select **Integrations** from the left sidebar. 
 1. Locate the **OAuth** section with the Slack application and click **Link**.
    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
 
 ### Logged in to Slack
-If you are already logged in to Slack, the handover will only require allowing the app access. If you are a member of multiple workspaces, you can select the appropriate workspace from the dropdown menu in the upper right corner.
+If you're already logged in to Slack, the handshake only requires allowing the app access. If you're a member of multiple workspaces, you can select the appropriate workspace from the dropdown menu in the upper right corner.
    <Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" width="75%" title="Allow dbt access to Slack"/>
 
 ## Logged out
 
-If you are logged out or the Slack app/website is closed, you will need to authenticate before completing the integraion.
+If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
 1. Complete the field defining the Slack workspace you want to integrate with dbt Cloud.
     <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="75%" title="Define the workspace"/>
@@ -97,4 +93,4 @@ If you are logged out or the Slack app/website is closed, you will need to authe
 ### Disable the Slack integration
 
 1. From the gear menu, select **Account settings**. On the **Integrations** page, scroll to the **OAuth** section.
-1. Click the trash can icon to the right of the Slack integration, and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
+1. Click the trash can icon (on the far right of the Slack integration) and click **Unlink**. Channels that you configured will no longer receive Slack notifications. _This is not an account-wide action._ Channels configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit their configuration.
