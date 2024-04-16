@@ -66,7 +66,7 @@ If you're already logged in to Slack, the handshake only requires allowing the a
 
 ## Logged out
 
-If you are logged out or the Slack app/website is closed, you will need to authenticate before completing the integraion.
+If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
 1. Complete the field defining the Slack workspace you want to integrate with dbt Cloud.
     <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="75%" title="Define the workspace"/>
