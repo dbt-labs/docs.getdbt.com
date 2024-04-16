@@ -55,7 +55,7 @@ This guide assumes you have experience with or fundamental knowledge of dbt. Tak
 
 In this section, you'll create two new, empty projects in dbt Cloud to serve as your foundational and downstream projects:
 
-- **Foundational projects** typically contain core models and datasets that serve as the base for further analysis and reporting.
+- **Foundational projects** (or upstream projects) typically contain core models and datasets that serve as the base for further analysis and reporting.
 - **Downstream projects** build on these foundations, often adding more specific transformations or business logic for dedicated teams or purposes. 
 
 For example, the always-enterprising and fictional account "Jaffle Labs" will create two projects for their data analytics and finance team: Jaffle | Data Analytics and Jaffle | Finance.
@@ -66,22 +66,22 @@ To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
 
 1. From **Account settings**, click **+ New Project**.
 2. Enter a project name and click **Continue**.
-  - Use "Jaffle | Data Analytics" for one project
-  - Use "Jaffle | Finance" for the other project
+   - Use "Jaffle | Data Analytics" for one project
+   - Use "Jaffle | Finance" for the other project
 3. Select your data platform, then **Next** to set up your connection.
 4. In the **Configure your environment** section, enter the **Settings** for your new project.
 5. Click **Test Connection**. This verifies that dbt Cloud can access your data platform account.
 6. Click **Next** if the test succeeded. If it fails, you might need to go back and double-check your settings.
-    For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
-  - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
-  - For "Jaffle | Finance", set the default database to `jaffle_finance`
+   - For this guide, make sure you create a single [development](/docs/dbt-cloud-environments#create-a-development-environment) and [Deployment](/docs/deploy/deploy-environments) per project.
+     - For "Jaffle | Data Analytics", set the default database to `jaffle_da`.
+     - For "Jaffle | Finance", set the default database to `jaffle_finance`
 
 <Lightbox src="/img/guides/dbt-mesh/create-new-project.gif" width="80%" title="Navigate to 'Account settings' and then click + 'New Project' to create new projects in dbt Cloud" /> 
 
-Once configured, each project should have:
-  - A data platform connection
-  - New git repo
-  - one or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
+1. Continue the prompts to complete the project setup. Once configured, each project should have:
+    - A data platform connection
+    - New git repo
+    - One or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
 
 ## Set up a foundational project
 
