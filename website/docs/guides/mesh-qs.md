@@ -80,7 +80,7 @@ Once configured, each project should have:
 
 ## Set up a foundational project
 
-A foundation project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
+This upstream project is where you build your core data assets. This project will contain the raw data sources, staging models, and core business logic.
 
 dbt Cloud enables data practitioners to develop in their tool of choice and comes equipped with a local [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
@@ -517,7 +517,7 @@ models:
 
 </File>
 
-5. Verify how dbt compiles the `ref` statement based on the updates. Open a new file, add the following select statements, and click **Compile**.
+5. Verify how dbt compiles the `ref` statement based on the updates. Open a new file, add the following select statements, and click **Compile**. Note how each ref is compiled to the specified version (or the latest version if not specified).
 
 ```sql
 select * from {{ ref('fct_orders', v=1) }}
@@ -592,6 +592,8 @@ select * from final
 ## View lineage with dbt Explorer <Lifecycle status="enterprise"/>
 
 Use dbt Explorer to view the lineage across projects in dbt Cloud. Navigate to the **Explore** page for each of your projects &mdash; you should now view the [lineage seamlessly across projects](/docs/collaborate/explore-multiple-projects).
+
+<Lightbox src="/img/guides/dbt-mesh/jaffle_da_final_lineage.png" width="50%" title="View 'Jaffle | Data Analytics' lineage with dbt Explorer " />
 
 ## What's next
 
