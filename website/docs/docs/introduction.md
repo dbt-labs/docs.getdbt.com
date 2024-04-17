@@ -26,7 +26,7 @@ To cater to the diverse needs of data teams, dbt offers two primary solutions:
 
 ### dbt Cloud
 
-dbt Cloud offers the fastest, most reliable and scalable way to deploy dbt. Develop, test, schedule, and investigate data models using a single, fully managed service through a web-based user interface (UI).
+dbt Cloud offers the fastest, most reliable, and scalable way to deploy dbt. Develop, test, schedule, and investigate data models using a single, fully managed service through a web-based user interface (UI).
 
 Exclusive features of dbt Cloud include:
 
