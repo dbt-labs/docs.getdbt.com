@@ -70,7 +70,7 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
 
 **Querying without headers or columns**
 
-If you would like to just query the data values without the headers, you can optionally check the box "Exclude Column Names".
+If you would like to just query the data values without the headers, you can optionally select the **Exclude Column Names** box.
 
 ## Creating and Accessing Saved selections
 Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection, run a query and choose the option to save selection.
