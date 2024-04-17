@@ -92,7 +92,7 @@ Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Goo
 To access the saved queries in Google Sheets:
 1. Open the hamburger menu in Google Sheets.
 2. Navigate to "Saved Queries" to access the ones available to you. 
-3. You can also select **Customize**, which allows you to explore from the existing query. This won't change the original query that's defined in the code. 
+3. You can also select **Build Selection**, which allows you to explore from the existing query. This won't change the original query that's defined in the code. 
   - For saved queries, if you use a `WHERE` filter in a query, Google Sheets displays the advanced syntax for this filter.
 
 Note: Saved selections are saved components in the Google Sheets application and only able to be created while using it. Saved Queries are code-defined slices of data that you can easily access. You can always create a saved selection from the output of a saved query.  
