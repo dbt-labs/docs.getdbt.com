@@ -74,8 +74,10 @@ If you would like to just query the data values without the headers, you can opt
 Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:
 
 1. Run a query in the Google Sheets **Query Builder**.
-2. Choose the option to save the selection.
+2. Save the selection by selecting the arrow next to the **Query** button and then select **Query & Save Selection**.
 3. The application saves these selections, allowing you to view and edit them from the hamburger menu under **Saved Selections**. 
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg" width="25%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
 
 You can also make these selections private or public:
 - **Public selections** mean your inputs are available in the menu to everyone on the sheet.
@@ -83,7 +85,7 @@ You can also make these selections private or public:
 
 ### Refreshing selections
 
-Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection. 
+Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection.
 
 Public saved selections will refresh for anyone who edits the sheet, while private selections will only update for the user who created it.
 
