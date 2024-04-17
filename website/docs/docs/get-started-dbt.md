@@ -59,7 +59,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 </div>
 
-### dbt Core
+## dbt Core
 [dbt Core](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data teams to transform data using analytics engineering best practices. It's suitable for ‘single players’ and small technical teams who prefer manual setup.
 
 Refer to the following quickstarts to get started with dbt Core:
