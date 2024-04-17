@@ -100,8 +100,8 @@ version: 2
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
-          - <test_name>: # Actual name of the test. For example, dbt_utils.equality
-              name: # Human friendly name for the test. For example, equality_fct_test_coverage
+          - <test_name>:
+              name: 
               <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [fail_calc](/reference/resource-configs/fail_calc): <string>
@@ -195,8 +195,8 @@ version: 2
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
-          - <test_name>: # Actual name of the test. For example, dbt_utils.equality
-              name: # Human friendly name for the test. For example, equality_fct_test_coverage
+          - <test_name>:
+              name: 
               <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [enabled](/reference/resource-configs/enabled): true | false
