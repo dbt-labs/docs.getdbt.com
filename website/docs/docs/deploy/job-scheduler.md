@@ -58,7 +58,7 @@ When compared to deployment jobs, the scheduler behaves differently when handlin
 - **Does this same job have a run already in progress?** &mdash; CI runs can execute concurrently (in parallel). CI runs build into unique temporary schemas, and CI checks execute in parallel to help increase team productivity. Teammates never have to wait to get a CI check review.
 
 ### Treatment of merge jobs
-The scheduler queues a [merge job](/docs/deploy/merge-jobs) to be processed when it's triggered to run by a _merged_ Git pull request.
+When triggered by a _merged_ Git pull request, the scheduler queues a [merge job](/docs/deploy/merge-jobs) to be processed.
 
 - **Will the merge job run consume a run slot?** &mdash; Yes, merge jobs do consume run slots.
 - **Does this same job have a run already in progress?** &mdash; A merge job can only have one run in progress at a time. If there are multiple runs queued up, the scheduler will enqueue the most recent run and cancel all the other runs. If there is a run in progress, it will wait until the run completes before queuing the next run.
