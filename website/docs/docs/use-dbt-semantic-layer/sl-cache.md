@@ -16,7 +16,7 @@ There are two layers of caching:
 
 ## Result caching
 
-Result caching leverages your data platform’s built-in caching layer and features. [MetricFlow](/docs/build/about-metricflow) generates the same SQL for multiple query requests, this means it can take advantage of your data platform’s cache.
+Result caching leverages your data platform’s built-in caching layer and features. [MetricFlow](/docs/build/about-metricflow) generates the same SQL for multiple query requests, this means it can take advantage of your data platform’s cache. Result caching is currently specific to a single user setup and is not shared across users.
 
 Here's how caching works, using Snowflake as an example, and should be similar across other data platforms:
 
@@ -74,3 +74,10 @@ When you run a saved query:
 dbt Cloud uses the metadata from your dbt model runs to intelligently manage cache invalidation. When you start a dbt job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
 
 If an upstream model has data in it that was created after the cache was created, dbt Cloud invalidates the cache. This means queries won't use outdated case and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and dbt Cloud will write a new cache the next time your saved query runs.
+
+## FAQs
+<detailsToggle alt_header="How is my data stored?" >
+
+Your data remains within your own data platform. This ensures privacy as dbt Cloud uses this existing infrastructure for caching
+
+</detailsToggle>
