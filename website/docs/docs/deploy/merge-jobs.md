@@ -6,7 +6,7 @@ description: "Learn how to trigger a dbt job run when a Git pull request merges.
 
 # Merge jobs in dbt Cloud <Lifecycle status="beta" />
 
-To implement a continuous development (CD) workflow in dbt Cloud, you can set up merge jobs that triggers a dbt job to run when Git pull requests are merged into production. This creates a seamless development experience where changes made in code will automatically update production data. 
+You can set up a merge job to implement a continuous development (CD) workflow in dbt Cloud. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This creates a seamless development experience where changes made in code will automatically update production data. 
 
 By using CD in dbt Cloud, you can take advantage of deferral to build only the edited model and any downstream changes. With merge jobs, state will be updated almost instantly, always giving the most up-to-date state information in [dbt Explorer](/docs/collaborate/explore-projects).
 
