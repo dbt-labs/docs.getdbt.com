@@ -9,6 +9,7 @@ pagination_prev: null
 Begin your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud or dbt Core with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections).
 
 ## dbt Cloud
+
 dbt Cloud is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. dbt Cloud enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
 
 - Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
@@ -59,8 +60,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 
 </div>
 
-## dbt Core
-[dbt Core](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data teams to transform data using analytics engineering best practices. It's suitable for ‘single players’ and small technical teams who prefer manual setup.
+[dbt Core](/docs/core/about-core-setup) is a command-line [open-source tool](https://github.com/dbt-labs/dbt-core) that enables data practitioners to transform data using analytics engineering best practices. It suits individuals and small technical teams who prefer manual setup and customization, supports community adapters, and open-source standards.
 
 Refer to the following quickstarts to get started with dbt Core:
 
@@ -71,8 +71,8 @@ Refer to the following quickstarts to get started with dbt Core:
 <!-- use as an op to link to other useful guides when the query params pr is merged -->
 Expand your dbt knowledge and expertise with these additional resources:
 
-- [Develop with dbt Cloud](/docs/cloud/about-develop-dbt) offers a fast and reliable way to work on your dbt project.
+- [Join the bi-weekly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see dbt Cloud in action and ask questions.
+- [dbt Cloud AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy dbt Cloud on AWS, user reviews, and more.
 - [Best practices](https://docs.getdbt.com/best-practices) contains information on how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
 - [dbt Learn](https://courses.getdbt.com/collections) offers free online courses that cover dbt fundamentals, advanced topics, and more.
 - [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners globally are using dbt, share your own experiences, and get help with your dbt projects.
-
