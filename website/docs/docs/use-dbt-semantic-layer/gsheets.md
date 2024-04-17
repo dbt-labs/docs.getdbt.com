@@ -68,7 +68,7 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
    - For categorical dimensions, type in the dimension value you want to filter by (no quotes needed) and press enter. 
    - Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar.
 
-**Querying without Headers/Column**
+**Querying without headers or columns**
 
 If you would like to just query the data values without the headers, you can optionally check the box "Exclude Column Names".
 
