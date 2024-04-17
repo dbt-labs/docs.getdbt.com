@@ -84,7 +84,7 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 -->
 
-<expandable alt_header="Check out this short video demo to run commands with the dbt Cloud CLI">
+<expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">
 
 Check out the following video for a short video demo of how to query or preview metrics with the dbt Cloud CLI:
 
