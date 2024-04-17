@@ -99,3 +99,5 @@ unit_tests:
         fixture: my_model_a_fixture
 
 ```
+
+Note: Jinja is not supported in SQL fixtures for unit tests.
