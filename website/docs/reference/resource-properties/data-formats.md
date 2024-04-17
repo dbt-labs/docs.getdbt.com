@@ -100,4 +100,4 @@ unit_tests:
 
 ```
 
-Note: Jinja is not supported in SQL fixtures for unit tests.
+**Note:** Jinja is unsupported in SQL fixtures for unit tests.
