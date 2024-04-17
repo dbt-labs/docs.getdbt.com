@@ -6,9 +6,9 @@ pagination_next: null
 pagination_prev: null
 ---
 
-Start your dbt journey by trying one of our quickstarts, which provide a step-by-step guide to help you set up dbt Cloud with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections). dbt Cloud is the scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service.
+Start your dbt journey by trying one of our quickstarts, which provides a step-by-step guide to help you set up dbt Cloud with a [variety of data platforms](/docs/cloud/connect-data-platform/about-connections). dbt Cloud is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service.
 
-dbt Cloud enables teams with varying skillsets build reliable data products, at any scale, with capabilities including:
+dbt Cloud enables teams with diverse skillsets build reliable data products, at any scale, with capabilities including:
 
 - Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
@@ -70,7 +70,8 @@ Refer to the following quickstarts to get started with dbt Core:
 <!-- use as an op to link to other useful guides when the query params pr is merged -->
 Expand your dbt knowledge and expertise with these additional resources:
 
+- [Develop with dbt Cloud](/docs/cloud/about-develop-dbt), which offers a fast and reliable way to work on your dbt project.
 - [Best practices](https://docs.getdbt.com/best-practices) to learn how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
 - [dbt Learn](https://courses.getdbt.com/collections) for free online courses that cover dbt fundamentals, advanced topics, and more.
-- [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners around the world are using dbt, share your own experiences, and get help with your dbt projects.
-- [Install the dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to learn how to install the dbt Cloud CLI and develop in your local environment.
+- [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners globally are using dbt, share your own experiences, and get help with your dbt projects.
+
