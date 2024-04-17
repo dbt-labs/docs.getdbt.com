@@ -81,7 +81,9 @@ The Google Sheets application saves these selections, allowing you to view and e
 
 ### Refreshing selections
 
-You can also refresh saved selections on load. When creating the saved selection option, choose the option to "Refresh on Load", which will refresh the data automatically when the addon is accessed after. For public saved selections, they will be refreshed for any editor of the sheet. For private selections, those will only be refreshed for the user who created it. 
+Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection. 
+
+Public saved selections will refresh for anyone who edits the sheet, while private selections will only update for the user who created it. 
 
 
 ## Using Saved queries
