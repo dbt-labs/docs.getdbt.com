@@ -4,7 +4,7 @@ description: "April 2024: Native support now available in dbt Cloud to trigger d
 sidebar_label: "New: Merge jobs"
 sidebar_position: 07
 tags: [Apr-2024]
-date: 2024-04-16
+date: 2024-04-17
 ---
 
 # New: Merge jobs <Lifecycle status="beta" />
