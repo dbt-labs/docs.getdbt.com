@@ -87,4 +87,5 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
 - A new subcategory of flags has been created for [legacy behaviors](/reference/global-configs/legacy-behaviors).
 - The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
+- When calculating `source freshness` via metadata, dbt now issues a single (batch) query, rather than executing a query per source, to improve performance.
 
