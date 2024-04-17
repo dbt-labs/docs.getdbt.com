@@ -88,6 +88,8 @@ We will begin deprecating support for for spaces in dbt model names in v1.8 (rai
 - Spaces in a model name makes in impossible to `--select` the model name because the argument gets split into pieces over spaces very early in the pipeline.
 - Most warehouses do not accept a table, or other object, with a space in its name.
 
+The recommended format is using underscores: `DBT_MODEL_NAME`. 
+
 
 ## Quick hits
 
