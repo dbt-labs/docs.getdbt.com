@@ -82,6 +82,13 @@ models:
 
 The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
+### Spaces in dbt model names
+
+We will begin deprecating support for for spaces in dbt model names in v1.8 (raise a warning) before removing support entirely in v1.9 (raise an error). Reasons for removing spaces in model names include:
+- Spaces in a model name makes in impossible to `--select` the model name because the argument gets split into pieces over spaces very early in the pipeline.
+- Most warehouses do not accept a table, or other object, with a space in its name.
+
+
 ## Quick hits
 
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
