@@ -12,7 +12,7 @@ dbt Cloud enables teams with diverse skillsets build reliable data products, at 
 
 - Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
-- The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any end-point
+- The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics that can be delivered to any endpoint
 - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
 - [dbt Explorer](/docs/collaborate/explore-projects) for collaborative data discovery and understanding
 
