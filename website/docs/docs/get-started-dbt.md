@@ -72,6 +72,6 @@ Expand your dbt knowledge and expertise with these additional resources:
 
 - [Develop with dbt Cloud](/docs/cloud/about-develop-dbt) offers a fast and reliable way to work on your dbt project.
 - [Best practices](https://docs.getdbt.com/best-practices) contains information on how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
-- [dbt Learn](https://courses.getdbt.com/collections) for free online courses that cover dbt fundamentals, advanced topics, and more.
+- [dbt Learn](https://courses.getdbt.com/collections) offers free online courses that cover dbt fundamentals, advanced topics, and more.
 - [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners globally are using dbt, share your own experiences, and get help with your dbt projects.
 
