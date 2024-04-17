@@ -13,7 +13,7 @@ These are the available job types in dbt Cloud:
 
 Below is a comparison table that describes the behaviors of the different job types:
 
-|  | Deploy jobs | CI jobs | Merge jobs |  
+|  | **Deploy jobs** | **CI jobs** | **Merge jobs** |  
 | --- | --- | --- | --- |
 | Purpose | Builds production data assets. | Builds and tests new code before merging changes into production. | Build merged changes into production. |
 | Trigger types | Triggered by a schedule or by API. | Triggered by a commit to a PR or by API. | Triggered by a merge request or by API. |
