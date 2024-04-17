@@ -85,7 +85,7 @@ The Google Sheets application saves these selections, allowing you to view and e
 You can also refresh saved selections on load. When creating the saved selection option, choose the option to "Refresh on Load", which will refresh the data automatically when the addon is accessed after. For public saved selections, they will be refreshed for any editor of the sheet. For private selections, those will only be refreshed for the user who created it. 
 
 
-## Using Saved Queries in Google Sheets
+## Using Saved queries
 Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Google Sheets to quickly get results from pre-defined sets of data. 
 
 To access the saved queries in Google Sheets:
