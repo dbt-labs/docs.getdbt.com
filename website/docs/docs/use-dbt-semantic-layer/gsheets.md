@@ -18,7 +18,7 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 - You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
 - You have a Google account with access to Google Sheets.
 - You can install Google add-ons.
-- You have a dbt Cloud Environment ID and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.
+- You have a [dbt Cloud Environment ID]((/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer)) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
   - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
@@ -31,14 +31,15 @@ import SLCourses from '/snippets/_sl-course.md';
 ## Installing the add-on
 
 1. Navigate to the [dbt Semantic Layer for Sheets App](https://gsuite.google.com/marketplace/app/foo/392263010968) to install the add-on. You can also find it in Google Sheets by going to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on) and searching for it there.
-2. After installing, open the Add-On menu and select the "dbt Semantic Layer for Sheets". This will open a custom menu on the right-hand side of your screen.
-3. Find your **Host** and **Environment ID** in dbt Cloud. Navigate to **Account Settings** and select **Projects** on the left sidebar. Select your project and then navigate to the **Semantic Layer** settings.  You'll need this to authenticate in Google Sheets in the following step.
+2. After installing, open the **Extension** menu and select **dbt Semantic Layer for Sheets**. This will open a custom menu on the right-hand side of your screen.
+3. [Find your](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) **Host** and **Environment ID** in dbt Cloud.
+   - Navigate to **Account Settings** and select **Projects** on the left sidebar.
+   - Select your project and then navigate to the **Semantic Layer** settings.  You'll need this to authenticate in Google Sheets in the following step.
    - You can [generate your service token](/docs/dbt-cloud-apis/service-tokens) by clicking **Generate Service Token** within the Semantic Layer configuration page or navigating to **API tokens** in dbt Cloud.
-
 4. In Google Sheets, authenticate with your host, dbt Cloud environment ID, and service token.
    <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
 
-5. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Custom menu functions](#custom-menu-functions).
+5. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions).
 
 When querying your data with Google Sheets:
 
@@ -46,7 +47,6 @@ When querying your data with Google Sheets:
 - The custom menu operation has a timeout limit of six (6) minutes.
 - If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues.
 
-  
 ## Query Builder functions
 
 The Google Sheets **Query Builder** custom menu has the following capabilities:
@@ -71,7 +71,7 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
 
 If you would like to just query the data values without the headers, you can optionally select the **Exclude Column Names** box.
 
-## Creating and accessing saved selections
+## Using saved selections
 Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:
 
 1. Run a query in the Google Sheets **Query Builder**.
@@ -96,12 +96,12 @@ Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Goo
 3. You can also select **Build Selection**, which allows you to explore the existing query. This won't change the original query defined in the code.
    - If you use a `WHERE` filter in a saved query, Google Sheets displays the advanced syntax for this filter.
 
-<expandable alt_header="What's the difference between saved queries and saved selections?">
+:::tip What's the difference between saved queries and saved selections?
 
 - Saved queries are code-defined sections of data that you can easily access. You can always create a saved selection using the results from a saved query.  
 - Saved selections are saved components that you can create only when using the Google Sheets application.
 
-</expandable>
+:::
 
 **Limited use policy disclosure**
 
