@@ -96,7 +96,6 @@ To set a production environment:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings.jpg" width="70%" title="Set your production environment as the default environment in your Environment Settings"/>
 
-Setting a production environment will enable you to leverage dbt Explorer in the [later steps](https://docs.getdbt.com/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.
 
 ## Set up a foundational project
 
