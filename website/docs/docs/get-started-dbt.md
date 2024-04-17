@@ -10,7 +10,7 @@ Begin your dbt journey by trying one of our quickstarts, which provides a step-b
 
 ## dbt Cloud
 
-dbt Cloud is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. dbt Cloud enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
+dbt Cloud is a scalable solution that enables you to develop, test, deploy, and explore data products using a single, fully managed software service. It enables teams with diverse skills to build reliable data products at any scale, with capabilities including:
 
 - Development experiences tailored to multiple personas (in-browser [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
 - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
