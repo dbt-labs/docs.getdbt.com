@@ -84,7 +84,7 @@ To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
     - One or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
 
 ### Create a production environment
-In dbt Cloud, each project can have one designated deployment environment, which serves as its production environment. You must set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) for each project you want to explore.
+In dbt Cloud, each project can have one designated deployment environment, which serves as its production environment. You must set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) for each project you want to explore. This enables you to leverage dbt Explorer in the [later steps](https://docs.getdbt.com/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.
 
 To set a production environment:
 1. Navigate to **Deploy** -> **Environments**, then click **Create New Environment**.
