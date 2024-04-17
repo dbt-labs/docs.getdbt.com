@@ -7,24 +7,28 @@ sidebar_label: "Cache common queries"
 ---
 
 
-The dbt Semantic Layer allows you to cache common queries in order to speed up performance and reduce compute on expensive queries. There are two layers of caching:
+The dbt Semantic Layer allows you to cache common queries in order to speed up performance and reduce compute on expensive queries. 
 
-- [**Result caching**](#result-caching), which leverages your data platform's built-in caching layer.
-- [**Declarative caching**](#declarative-caching), which allows you to pre-warm the cache using saved queries.
+There are two layers of caching:
+
+- [**Result caching**](#result-caching) leverages your data platform's built-in caching layer.
+- [**Declarative caching**](#declarative-caching) allows you to pre-warm the cache using saved queries.
 
 ## Result caching
 
-This caching layer leverages your data platform’s built in caching layer. The SQL MetricFlow generates is identical for multiple query requests which means we can take advantage of your data platform’s cache. The following query patterns are used to illustrate when a user will hit the cache on Snowflake. The flow should be similar across other data platforms.
+Result caching leverages your data platform’s built-in caching layer and features. [MetricFlow](/docs/build/about-metricflow) generates the same SQL for multiple query requests, this means it can take advantage of your data platform’s cache.
 
-1. **Run from cold cache:** A user runs a semantic layer query from their BI tool. This query has not been run in the past 24 hours. This query will scan the entire data set and will not hit the cache
-2. **Run from warm cache:** The user returns after 1 hour and re-runs the same query.  The SQL generated and executed on Snowflake will be the same. Since the result cache on snowflake is per user and retained for 24 hours, the query will hit the cache and should return much faster
+Here's how caching works, using Snowflake as an example, and should be similar across other data platforms:
 
-The exact layers of caching and cache invalidation logic for the result cache will be specific to each data platform. Below are a list of resources on how caching works on our most common data platforms: 
+1. **Run from cold cache** &mdash; When a user runs a semantic layer query from their BI tool that hasn't been executed in the past 24 hours, the query scans the entire dataset and doesn't use the cache.
+2. **Run from warm cache** &mdash; If a user reruns the same query after 1 hour, the SQL generated and executed on Snowflake remains the same. On Snowflake, the result cache is set per user for 24 hours, which allows the repeated query to use the cache and return results faster.
 
-- [Snowflake](https://community.snowflake.com/s/article/Caching-in-the-Snowflake-Cloud-Data-Platform)
-- [Redshift](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)
+Different data platforms might have different caching layer and cache invalidation rules. Here's a list of resources on how caching works on some common data platforms:
+
 - [BigQuery](https://cloud.google.com/bigquery/docs/cached-results)
 - [DataBricks](https://docs.databricks.com/en/optimizations/disk-cache.html)
+- [Redshift](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)
+- [Snowflake](https://community.snowflake.com/s/article/Caching-in-the-Snowflake-Cloud-Data-Platform)
 
 ## Declarative caching
 
