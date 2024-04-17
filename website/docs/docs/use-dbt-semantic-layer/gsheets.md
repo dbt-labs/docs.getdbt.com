@@ -80,7 +80,7 @@ The Google Sheets application saves these selections, allowing you to view and e
 - Public selections mean your inputs are available in the menu to everyone on the sheet.
 - Private selections mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu, or benefit from the automatic refresh.
 
-## Refreshing Selections
+## Refreshing selections
 
 You can also refresh saved selections on load. When creating the saved selection option, choose the option to "Refresh on Load", which will refresh the data automatically when the addon is accessed after. For public saved selections, they will be refreshed for any editor of the sheet. For private selections, those will only be refreshed for the user who created it. 
 
