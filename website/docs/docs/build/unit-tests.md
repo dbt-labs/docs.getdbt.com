@@ -119,7 +119,7 @@ unit_tests:
 
 The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. 
 
-When using the `dict` or `csv` format, you only have to define the mock data for the columns you care about. This enables you to write succinct and _specific_ unit tests.
+When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
 :::note
 
