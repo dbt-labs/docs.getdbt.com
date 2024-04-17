@@ -1,5 +1,5 @@
 ---
-title: "Caching in the dbt Semantic Layer"
+title: "Cache common queries"
 id: "sl-cache"
 description: "Cache common queries to speed up performance and reduce query computation."
 tags: [Semantic Layer]
@@ -32,35 +32,11 @@ Different data platforms might have different caching layer and cache invalidati
 
 ## Declarative caching
 
-Declarative caching enables users to pre-warm the cache using [saved queries](/docs/build/saved-queries) by configuring the cache config to `true` in your `saved_queries` settings. This is useful for optimizing performance for key dashboards or common ad-hoc query requests.
-
-```yaml
-saved_queries:
-  - name: test_saved_query
-    description: "{{ doc('saved_query_description') }}"
-    label: Test saved query
-    config:
-      cache:
-        enabled: true  # Or false if you want it disabled by default
-    query_params:
-        metrics:
-            - simple_metric
-        group_by:
-            - "Dimension('user__ds')"
-        where:
-            - "{{ Dimension('user__ds', 'DAY') }} <= now()"
-            - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
-    exports:
-        - name: my_export
-          config:
-            alias: my_export_alias
-            export_as: table
-            schema: my_export_schema_name
-```
+Declarative caching enables users to pre-warm the cache using [saved queries](/docs/build/saved-queries) by setting the cache config to `true` in your `saved_queries` settings. This customization is useful for optimizing performance for key dashboards or common ad-hoc query requests.
 
 When you run a saved query:
 - The dbt Semantic Layer builds a cached table from a saved query into the your data platform.
-- Any query requests that match the saved query's inputs will use the cache, returning results much more quickly.
+- Any query requests that match the saved query's inputs will use the cache, returning results more quickly.
 - The dbt Semantic Layer automatically invalidates the cache when it detects new, fresh data in any upstream models related to the metrics in your cached table.
 - The cache refreshes (or rebuilds) the next time you run the saved query.
 
@@ -68,9 +44,9 @@ Refer to the following diagram, which illustrates what happens when the dbt Sema
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Declarative cache query flow" />
 
-### Populate cache with exports
+### Cache with exports
 
-To populate the cache, you must setup an Export on your Saved Query **and** set the cache config on to true. 
+To populate the cache, configure an export in your saved query _and_ set the cache config on to `true`:
 
 ```yaml
 saved_queries:
@@ -85,10 +61,15 @@ saved_queries:
           export_as: table
 ```
 
-When this Saved Query is run, we'll build a cache table in the user's data warehouse in a dedicated `dbt_sl_cache` schema. You can set up a job to run an Saved Query in dbt cloud. For step-by-step instructions [refer to this guide](/docs/use-dbt-semantic-layer/exports). Your cache will be refreshed on the same schedule as the Saved Query job.
+When you run a saved query:
+- The dbt Semantic Layer builds a cache table in the your data platform in a dedicated `dbt_sl_cache` schema. 
+- Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query dbt Cloud.
+- The cache refreshes (or rebuilds) on the same schedule as the saved query job.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/cache-creation-flow.jpg" width="70%" title="Create cache flow" />
 
-### Manage cache invalidation, eviction, and writing
+## Cache management
 
-We use the metadata from your dbt model runs to smartly manage cache invalidation. When you kick off a dbt job, we’ll keep track of when the model last ran and check the freshness of the metrics upstream of your cache. When an upstream model has data in it that was created after the cache was created, we will invalidate the cache. This means queries will not use the cache, and will instead query directly from the source data. Stale cache tables will be periodically dropped. We’ll write a new cache the next time your Saved Query runs.
+dbt Cloud uses the metadata from your dbt model runs to intelligently manage cache invalidation. When you start a dbt job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
+
+If an upstream model has data in it that was created after the cache was created, dbt Cloud invalidates the cache. This means queries won't use outdated case and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and dbt Cloud will write a new cache the next time your saved query runs.
