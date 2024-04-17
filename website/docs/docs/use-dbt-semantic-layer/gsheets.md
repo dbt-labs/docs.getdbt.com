@@ -72,12 +72,12 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
 If you would like to just query the data values without the headers, you can optionally select the **Exclude Column Names** box.
 
 ## Creating and accessing Saved selections
-Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection, run a query and choose the option to save selection.
+Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection, run a query and choose the option to save the selection.
 
 The Google Sheets application saves these selections, allowing you to view and edit them from the hamburger menu under **Saved Selections**. You can also make these selections private or public:
 
 - Public selections mean your inputs are available in the menu to everyone on the sheet.
-- Private selections mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu, or benefit from the automatic refresh.
+- Private selections mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu or benefit from the automatic refresh.
 
 ### Refreshing selections
 
@@ -87,15 +87,19 @@ Public saved selections will refresh for anyone who edits the sheet, while priva
 
 
 ## Using Saved queries
-Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Google Sheets to quickly get results from pre-defined sets of data. 
+Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Google Sheets to quickly get results from pre-defined sets of data. To access the saved queries in Google Sheets:
 
-To access the saved queries in Google Sheets:
 1. Open the hamburger menu in Google Sheets.
 2. Navigate to **Saved Queries** to access the ones available to you. 
-3. You can also select **Build Selection**, which allows you to explore from the existing query. This won't change the original query that's defined in the code. 
-  - For saved queries, if you use a `WHERE` filter in a query, Google Sheets displays the advanced syntax for this filter.
+3. You can also select **Build Selection**, which allows you to explore the existing query. This won't change the original query defined in the code.
+   - If you use a `WHERE` filter in a saved query, Google Sheets displays the advanced syntax for this filter.
 
-Note: Saved selections are saved components in the Google Sheets application and only able to be created while using it. Saved Queries are code-defined slices of data that you can easily access. You can always create a saved selection from the output of a saved query.  
+<expandable alt_header="What's the difference between Saved queries and Saved selections?">
+
+- Saved queries are code-defined sections of data that you can easily access. You can always create a saved selection using the results from a saved query.  
+- Saved selections are saved components that you can create only when using the Google Sheets application.
+
+</expandable>
 
 **Limited use policy disclosure**
 
