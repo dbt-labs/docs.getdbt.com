@@ -82,6 +82,7 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 | [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None (current dir, then HOME dir) | ❌ | `DBT_PROFILES_DIR` | `--profiles-dir` | ❌ |
 | [project_dir](/reference/dbt_project.yml) | path |  | ❌ | `DBT_PROJECT_DIR` | `--project-dir` | ❌ |
 | [quiet](/reference/global-configs/logs#suppress-non-error-logs-in-output) | boolean | False | ❌ | `DBT_QUIET` | `--quiet` | ✅ |
+| [resource-type](/reference/global-configs/resource-type) (v1.8+) | string | None | ❌ | `DBT_RESOURCE_TYPES` <br></br> `DBT_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` | ✅ |
 | [send_anonymous_usage_stats](/reference/global-configs/usage-stats) | boolean | True | ✅ | `DBT_SEND_ANONYMOUS_USAGE_STATS` | `--send-anonymous-usage-stats`, `--no-send-anonymous-usage-stats` | ❌ |
 | [source_freshness_run_project_hooks](/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks) | boolean | False | ✅ | ❌ | ❌ | ❌ |
 | [state](/reference/node-selection/defer) | path | none | ❌ | `DBT_STATE`, `DBT_DEFER_STATE` | `--state`, `--defer-state` | ❌ |
