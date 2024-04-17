@@ -63,6 +63,7 @@ saved_queries:
 
 When you run a saved query:
 - The dbt Semantic Layer builds a cache table in the your data platform in a dedicated `dbt_sl_cache` schema. 
+- The cache schema and tables are created using your deployment credentials. You need to grant read access to this schema for your Semantic Layer user.
 - Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query dbt Cloud.
 - The cache refreshes (or rebuilds) on the same schedule as the saved query job.
 
