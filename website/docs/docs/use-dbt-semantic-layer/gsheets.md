@@ -69,9 +69,9 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
 
 **Querying without headers or columns**
 
-If you would like to just query the data values without the headers, you can optionally check the box "Exclude Column Names".
+If you would like to just query the data values without the headers, you can optionally select the **Exclude Column Names** box.
 
-## Creating and Accessing Saved selections
+## Creating and accessing Saved selections
 Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection, run a query and choose the option to save selection.
 
 The Google Sheets application saves these selections, allowing you to view and edit them from the hamburger menu under **Saved Selections**. You can also make these selections private or public:
@@ -79,12 +79,12 @@ The Google Sheets application saves these selections, allowing you to view and e
 - Public selections mean your inputs are available in the menu to everyone on the sheet.
 - Private selections mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu, or benefit from the automatic refresh.
 
-## Refreshing Selections
+### Refreshing selections
 
 You can also refresh saved selections on load. When creating the saved selection option, choose the option to "Refresh on Load", which will refresh the data automatically when the addon is accessed after. For public saved selections, they will be refreshed for any editor of the sheet. For private selections, those will only be refreshed for the user who created it. 
 
 
-## Using Saved Queries in Google Sheets
+## Using Saved queries
 Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Google Sheets to quickly get results from pre-defined sets of data. 
 
 To access the saved queries in Google Sheets:
