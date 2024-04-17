@@ -301,6 +301,8 @@ Yes, a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) plan is required t
 
 Refer to our developer guide on [How we structure our dbt Mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from Coalesce 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
 
+You can also learn how to implement dbt Mesh by following our [Quickstart dbt Mesh](/guides/mesh-qs) guide.
+
 </detailsToggle>
 
 <detailsToggle alt_header="Are there tools available to help me migrate to a dbt Mesh?">
