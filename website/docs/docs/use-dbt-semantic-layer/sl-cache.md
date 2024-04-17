@@ -20,8 +20,8 @@ Result caching leverages your data platform’s built-in caching layer and featu
 
 Here's how caching works, using Snowflake as an example, and should be similar across other data platforms:
 
-1. **Run from cold cache** &mdash; When a user runs a semantic layer query from their BI tool that hasn't been executed in the past 24 hours, the query scans the entire dataset and doesn't use the cache.
-2. **Run from warm cache** &mdash; If a user reruns the same query after 1 hour, the SQL generated and executed on Snowflake remains the same. On Snowflake, the result cache is set per user for 24 hours, which allows the repeated query to use the cache and return results faster.
+1. **Run from cold cache** &mdash; When you run a semantic layer query from your BI tool that hasn't been executed in the past 24 hours, the query scans the entire dataset and doesn't use the cache.
+2. **Run from warm cache** &mdash; If you rerun the same query after 1 hour, the SQL generated and executed on Snowflake remains the same. On Snowflake, the result cache is set per user for 24 hours, which allows the repeated query to use the cache and return results faster.
 
 Different data platforms might have different caching layer and cache invalidation rules. Here's a list of resources on how caching works on some common data platforms:
 
@@ -32,7 +32,39 @@ Different data platforms might have different caching layer and cache invalidati
 
 ## Declarative caching
 
-Declarative Caching allows users to pre-warm the cache using Saved Queries by setting the cache enabled config to `true.` This is useful for optimizing the performance of key dashboards or common ad-hoc query requests. When you run your Saved Query, the semantic layer will build a cached table from a Saved Query in the customer's data platform. Any query requests with the same inputs as the Saved Query will hit the cache and return much more quickly. We’ll automatically invalidate the cache when we detect fresh data in any of the models upstream of metrics in your cached table. We’ll rebuild the cache the next time your Saved Query is run. The following diagram illustrates what happens when we receive a query request:
+Declarative caching enables users to pre-warm the cache using [saved queries](/docs/build/saved-queries) by configuring the cache config to `true` in your `saved_queries` settings. This is useful for optimizing performance for key dashboards or common ad-hoc query requests.
+
+```yaml
+saved_queries:
+  - name: test_saved_query
+    description: "{{ doc('saved_query_description') }}"
+    label: Test saved query
+    config:
+      cache:
+        enabled: true  # Or false if you want it disabled by default
+    query_params:
+        metrics:
+            - simple_metric
+        group_by:
+            - "Dimension('user__ds')"
+        where:
+            - "{{ Dimension('user__ds', 'DAY') }} <= now()"
+            - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
+    exports:
+        - name: my_export
+          config:
+            alias: my_export_alias
+            export_as: table
+            schema: my_export_schema_name
+```
+
+When you run a saved query:
+- The dbt Semantic Layer builds a cached table from a saved query into the your data platform.
+- Any query requests that match the saved query's inputs will use the cache, returning results much more quickly.
+- The dbt Semantic Layer automatically invalidates the cache when it detects new, fresh data in any upstream models related to the metrics in your cached table.
+- The cache refreshes (or rebuilds) the next time you run the saved query.
+
+Refer to the following diagram, which illustrates what happens when the dbt Semantic Layer receives a query request:
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Declarative cache query flow" />
 
