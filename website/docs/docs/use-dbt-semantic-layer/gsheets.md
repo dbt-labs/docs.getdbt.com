@@ -49,7 +49,7 @@ When querying your data with Google Sheets:
   
 ## Query Builder functions
 
-The custom menu provides the following capabilities:
+The **Query Builder** custom menu has the following capabilities:
 
 | Menu items    | Description                                           |
 |---------------|-------------------------------------------------------|
