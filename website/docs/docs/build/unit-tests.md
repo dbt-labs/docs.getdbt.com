@@ -116,9 +116,9 @@ unit_tests:
 ```
 </file>
 
-The previous example defines the mock data using the inline `dict` format, but you can also use `csv` either inline or in a separate fixture file. 
+The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. 
 
-You only have to define the mock data for the columns you care about. This enables you to write succinct and _specific_ unit tests.
+When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
 :::note
 
@@ -278,6 +278,24 @@ unit_tests:
 ```
 
 There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+
+## Unit testing a model that depend on ephemeral model(s)
+
+If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
+
+```yml
+unit_tests:
+  - name: my_unit_test
+    model: dim_customers
+    given:
+      - input: ref('ephemeral_model')
+        format: sql
+        rows: |
+          select 1 as id, 'emily' as name
+    expect:
+      rows:
+        - {id: 1, first_name: emily}
+```
 
 ## Additional resources
 
