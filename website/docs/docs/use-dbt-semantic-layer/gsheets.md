@@ -16,9 +16,8 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 ## Prerequisites
 
 - You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
-- You have a Google account with access to Google Sheets.
-- You can install Google add-ons.
-- You have a [dbt Cloud Environment ID]((/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer)) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.
+- You need a Google account with access to Google Sheets and the ability to install Google add-ons.
+- You have a [dbt Cloud Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
   - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
@@ -31,7 +30,7 @@ import SLCourses from '/snippets/_sl-course.md';
 ## Installing the add-on
 
 1. Navigate to the [dbt Semantic Layer for Sheets App](https://gsuite.google.com/marketplace/app/foo/392263010968) to install the add-on. You can also find it in Google Sheets by going to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on) and searching for it there.
-2. After installing, open the **Extension** menu and select **dbt Semantic Layer for Sheets**. This will open a custom menu on the right-hand side of your screen.
+2. After installing, open the **Extensions** menu and select **dbt Semantic Layer for Sheets**. This will open a custom menu on the right-hand side of your screen.
 3. [Find your](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) **Host** and **Environment ID** in dbt Cloud.
    - Navigate to **Account Settings** and select **Projects** on the left sidebar.
    - Select your project and then navigate to the **Semantic Layer** settings.  You'll need this to authenticate in Google Sheets in the following step.
@@ -88,6 +87,12 @@ Set your saved selections to automatically refresh every time you load the addon
 
 Public saved selections will refresh for anyone who edits the sheet, while private selections will only update for the user who created it.
 
+:::tip What's the difference between saved queries and saved selections?
+
+- Saved selections are saved components that you can create only when using the Google Sheets application.
+- Saved queries, explained in the next section, are code-defined sections of data that you can easily access. You can use the results from a saved query to create a saved selection.
+:::
+
 ## Using saved queries
 Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Google Sheets to quickly get results from pre-defined sets of data. To access the saved queries in Google Sheets:
 
@@ -95,13 +100,6 @@ Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Goo
 2. Navigate to **Saved Queries** to access the ones available to you. 
 3. You can also select **Build Selection**, which allows you to explore the existing query. This won't change the original query defined in the code.
    - If you use a `WHERE` filter in a saved query, Google Sheets displays the advanced syntax for this filter.
-
-:::tip What's the difference between saved queries and saved selections?
-
-- Saved queries are code-defined sections of data that you can easily access. You can always create a saved selection using the results from a saved query.  
-- Saved selections are saved components that you can create only when using the Google Sheets application.
-
-:::
 
 **Limited use policy disclosure**
 
