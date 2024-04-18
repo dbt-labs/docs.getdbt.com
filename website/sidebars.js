@@ -2,10 +2,14 @@ const sidebarSettings = {
   docs: [
     "docs/introduction",
     {
-      type: "link",
-      label: "Guides",
-      href: `/guides`,
-    },
+      type: "category",
+      label: "Get started with dbt",
+      collapsed: true,
+      link: { type: "doc", id: "docs/get-started-dbt" },
+      items: [
+        "docs/get-started-dbt",
+      ],
+    }, // Get started quickstarts directory
     {
       type: "category",
       label: "Supported data platforms",
