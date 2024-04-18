@@ -94,4 +94,6 @@ We will begin deprecating support for spaces in dbt model names in v1.8 (raising
 - A new subcategory of flags has been created for [legacy behaviors](/reference/global-configs/legacy-behaviors).
 - The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
 - New CLI flag [`--resource-type`/`--exclude-resource-type`](/reference/global-configs/resource-type) for including/excluding resources from dbt `build`, `run`, and `clone`. 
+- To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
+
 
