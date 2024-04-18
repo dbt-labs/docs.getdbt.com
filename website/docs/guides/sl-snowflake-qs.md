@@ -86,7 +86,7 @@ This guide will cover the following topics:
 
 The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
 
-Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for `jaffle_shop` data, the other for stripe data).
+Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for `jaffle_shop` data, the other for `stripe` data).
 
 1. Run the following SQL commands one by one by typing them into the Editor of your new Snowflake SQL worksheet to set up your environment.
 
@@ -108,7 +108,7 @@ create schema raw.stripe;
 ## Load data into Snowflake
 Now that your environment is set up, you can start loading data into it. You will be working within the raw database, using the `jaffle_shop` and stripe schemas to organize your tables.
 
-1. Create customer table &mdash; First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the customer table in the `jaffle_shop` schema:
+1. Create customer table. First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the customer table in the `jaffle_shop` schema:
 
   ```sql
   create table raw.jaffle_shop.customers
@@ -120,7 +120,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   You should see a ‘Table `CUSTOMERS` successfully created.’ message.
 
-2. Load data &mdash; After creating the table, delete all contents in the Editor. Run this command to load data from the S3 bucket into the customer table:
+2. Load data. After creating the table, delete all contents in the Editor. Run this command to load data from the S3 bucket into the customer table:
 
   ```sql
   copy into raw.jaffle_shop.customers (id, first_name, last_name)
@@ -134,7 +134,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   You should see a confirmation message after running the command.
 
-3. Create `orders` table  &mdash; Delete all contents in the Editor. Run the following command to create…
+3. Create `orders` table. Delete all contents in the Editor. Run the following command to create…
 
   ```sql
   create table raw.jaffle_shop.orders
@@ -148,7 +148,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   You should see a confirmation message after running the command.
 
-4. Load data &mdash;  Delete all contents in the Editor, then run this command to load data into the orders table:
+4. Load data. Delete all contents in the Editor, then run this command to load data into the orders table:
 
   ```sql
   copy into raw.jaffle_shop.orders (id, user_id, order_date, status)
@@ -162,7 +162,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   You should see a confirmation message after running the command.
 
-5. Create `payment` table &mdash; Delete all contents in the Editor. Run the following command to create the payment table:
+5. Create `payment` table. Delete all contents in the Editor. Run the following command to create the payment table:
 
   ```sql
   create table raw.stripe.payment
@@ -178,7 +178,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   You should see a confirmation message after running the command.
 
-6. Load data &mdash; Delete all contents in the Editor. Run the following command to load data into the payment table:
+6. Load data. Delete all contents in the Editor. Run the following command to load data into the payment table:
 
   ```sql
   copy into raw.stripe.payment (id, orderid, paymentmethod, status, amount, created)
@@ -192,7 +192,7 @@ Now that your environment is set up, you can start loading data into it. You wil
 
   You should see a confirmation message after running the command.
 
-7. Verify data &mdash; Verify that the data is loaded by running these SQL queries. Confirm that you can see output for each one, like the following confirmation image.
+7. Verify data. Verify that the data is loaded by running these SQL queries. Confirm that you can see output for each one, like the following confirmation image.
 
   ```sql
   select * from raw.jaffle_shop.customers;
