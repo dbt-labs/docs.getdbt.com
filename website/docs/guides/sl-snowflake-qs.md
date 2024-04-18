@@ -303,16 +303,16 @@ The next step is to build your project. This involves adding sources, staging mo
 
 ### Add sources
 
-[Sources](/docs/build/sources) in dbt are the raw data tables you'll transform. By organizing your source definitions, you document the origin of your data. It also makes your project and transformation more reliable, structured, and understandable. Let’s add our sources now.
+[Sources](/docs/build/sources) in dbt are the raw data tables you'll transform. By organizing your source definitions, you document the origin of your data. It also makes your project and transformation more reliable, structured, and understandable.
 
 You have two options for working with files in the dbt Cloud IDE:
 
-- Create a new branch (recommended) — Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch — If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+- **Create a new branch (recommended)** &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
+- **Edit in the protected primary branch** &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch, use this option. The dbt Cloud IDE prevents commits to the protected branch so you'll be prompted to commit your changes to a new branch.
 
 Name the new branch `build-project`.
 
-1. Hover over the `models` directory and click the **...**, then select **Create file**.
+1. Hover over the `models` directory and click the three dot menu (**...**), then select **Create file**.
 2. Name the file `staging/jaffle_shop/src_jaffle_shop.yml` , then click **Create**.
 3. Copy the following text into the file and click **Save**.
 
@@ -329,10 +329,10 @@ sources:
 ```
 
 :::tip
-In your source file, you can also use the **Generate model** button to create a new model file for each source. This will create a new file in the models directory with the given source name and fill in the SQL code of the source definition.
+In your source file, you can also use the **Generate model** button to create a new model file for each source. This creates a new file in the `models` directory with the given source name and fill in the SQL code of the source definition.
 :::
 
-4. Hover over the `models` directory and click the **...**, then select **Create file**.
+4. Hover over the `models` directory and click the three dot menu (**...**), then select **Create file**.
 5. Name the file `staging/stripe/src_stripe.yml` , then click **Create**.
 6. Copy the following text into the file and click **Save**.
 
@@ -350,7 +350,7 @@ sources:
 ### Add staging models
 [Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in dbt. They clean and prepare your raw data, making it ready for more complex transformations and analyses. Follow these steps to add your staging models to your project.
 
-1. Create the file `models/staging/jaffle_shop/stg_customers.sql`. Or you can use the **Generate model** button to create a new model file for each source.
+1. Create the file `models/staging/jaffle_shop/stg_customers.sql`. Or, you can use the **Generate model** button to create a new model file for each source.
 2. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -512,7 +512,7 @@ select * from final
 
 ```
 
-9. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run popup and also see in the run details that dbt has successfully built five models.
+9. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run message and also see in the run details that dbt has successfully built five models.
 
 ## Create semantic models
 
