@@ -746,7 +746,7 @@ metrics:
 
 Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, measures, and metrics.
 
-Let’s expand your project's analytical capabilities by adding another semantic model in your other marts model: `dim_customers.yml`.
+Let’s expand your project's analytical capabilities by adding another semantic model in your other marts model, such as: `dim_customers.yml`.
 
 After setting up your orders model:
 
@@ -821,9 +821,11 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-ru
 <details>
 
 <summary>What’s happening internally?</summary>
+
 - Merging the code into your main branch allows dbt Cloud to pull those changes and builds the definition in the manifest produced by the run. <br />
 - Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.<br />
 - The Semantic Layer APIs pulls in the most recent manifest and allows your integration information to extract metadata from it.
+
 </details>
 
 ## Set up dbt Semantic Layer
