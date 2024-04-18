@@ -9,6 +9,28 @@ pagination_prev: null
 
 dbt Cloud release notes for 2024.
 
+# April 2024
+
+<expandable alt_header="New: Merge jobs" >
+
+<Lifecycle status="beta" />
+
+You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. You can now access a beta release of [Merge jobs](/docs/deploy/merge-jobs), which is a new [job type](/docs/deploy/jobs), that enables you to trigger dbt job runs as soon as changes (via Git pull requests) merge into production. 
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
+
+</expandable>
+
+# March 2024
+
+- **New:** The Semantic Layer services now support using Privatelink for customers who have it enabled.
+- **New:** You can now develop against and test your Semantic Layer in the Cloud CLI if your developer credential uses SSO.
+- **Enhancement:** You can select entities to Group By, Filter By, and Order By.
+- **Fix:** `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric.
+- **Fix:** `join_to_timespine` now properly gets applied to conversion metric input measures.
+- **Fix:** Fixed an issue where exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open.
+
+
 # February 2024
 
 - **New:** [Exports](/docs/use-dbt-semantic-layer/exports#define-exports) allow you to materialize a saved query as a table or view in your data platform. By using exports, you can unify metric definitions in your data platform and query them as you would any other table or view.
@@ -109,11 +131,45 @@ When you make a commit while on the primary branch, a modal window will open pro
 
 # January 2024
 
+<expandable alt_header="January docs updates">
+
+Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 10 new community contributors to docs.getdbt.com :pray: What a busy start to the year! We merged 110 PRs in January.
+
+Here's how we improved the [docs.getdbt.com](http://docs.getdbt.com/) experience:
+
+- Added new hover behavior for images
+- Added new expandables for FAQs
+- Pruned outdated notices and snippets as part of the docs site maintenance
+
+January saw some great new content:
+
+- New [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs) page
+- Beta launch of [Explorer’s column-level lineage](https://docs.getdbt.com/docs/collaborate/column-level-lineage) feature
+- Developer blog posts:
+  - [More time coding, less time waiting: Mastering defer in dbt](https://docs.getdbt.com/blog/defer-to-prod)
+  - [Deprecation of dbt Server](https://docs.getdbt.com/blog/deprecation-of-dbt-server)
+  - From the community: [Serverless, free-tier data stack with dlt + dbt core](https://docs.getdbt.com/blog/serverless-dlt-dbt-stack)
+- The Extrica team added docs for the [dbt-extrica community adapter](https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup)
+- Semantic Layer: New [conversion metrics docs](https://docs.getdbt.com/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types (launched the week of January 12, 2024)
+- New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the dbt Cloud CLI
+
+January also saw some refreshed content, either aligning with new product features or requests from the community:
+
+- Native support for [partial parsing in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud-environments#partial-parsing)
+- Updated guidance on using dots or underscores in the [Best practice guide for models](https://docs.getdbt.com/best-practices/how-we-style/1-how-we-style-our-dbt-models)
+- Updated [PrivateLink for VCS docs](https://docs.getdbt.com/docs/cloud/secure/vcs-privatelink)
+- Added a new `job_runner` role in our [Enterprise project role permissions docs](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions#project-role-permissions)
+- Added saved queries to [Metricflow commands](https://docs.getdbt.com/docs/build/metricflow-commands#list-saved-queries)
+- Removed [as_text docs](https://github.com/dbt-labs/docs.getdbt.com/pull/4726) that were wildly outdated
+
+</expandable>
+
 - **New:** New metric type that allows you to measure conversion events. For example, users who viewed a web page and then filled out a form. For more details, refer to [Conversion metrics](/docs/build/conversion). 
 - **New:** Instead of specifying the fully qualified dimension name (for example, `order__user__country`) in the group by or filter expression, you now only need to provide the primary entity and dimensions name, like `user__county`. 
 - **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/use-dbt-semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 
 <expandable alt_header="New: Native support for partial parsing" >
+
 By default, dbt parses all the files in your project at the beginning of every dbt invocation. Depending on the size of your project, this operation can take a long time to complete. With the new partial parsing feature in dbt Cloud, you can reduce the time it takes for dbt to parse your project. When enabled, dbt Cloud parses only the changed files in your project instead of parsing all the project files. As a result, your dbt invocations will take less time to run.
 
 To learn more, refer to [Partial parsing](/docs/deploy/deploy-environments#partial-parsing).
