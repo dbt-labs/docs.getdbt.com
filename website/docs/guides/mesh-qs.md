@@ -39,7 +39,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 To leverage dbt Mesh, you need the following:
 
 - You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="enterprise"/>
-- You have access to a cloud data platform, permissions to load the sample data tables, and dbt Cloud permissions to create new projects.
+- You have access to a cloud data platform, permissions to load the sample data tables, and dbt Cloud permissions to create new projects. 
 - Set your development and deployment [environments](/docs/dbt-cloud-environments) to use dbt [version](/docs/dbt-versions/core) 1.6 or later. You can also opt [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version of dbt.
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
