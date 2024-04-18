@@ -630,6 +630,30 @@ def model(dbt, session):
     )
 ```
 
+<VersionBlock firstVersion="1.8">
+
+**External access integrations and secrets**: To query external APIs within dbt Python models, use Snowflake’s [external access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) together with [secrets](https://docs.snowflake.com/en/developer-guide/external-network-access/secret-api-reference). Here are some additional configurations you can use:
+
+```
+import pandas
+import snowflake.snowpark as snowpark
+
+def model(dbt, session: snowpark.Session):
+    dbt.config(
+        materialized="table",
+        secrets={"secret_variable_name": "test_secret"},
+        external_access_integrations=["test_external_access_integration"],
+    )
+    import _snowflake
+    return session.create_dataframe(
+        pandas.DataFrame(
+            [{"secret_value": _snowflake.get_generic_secret_string('secret_variable_name')}]
+        )
+    )
+```
+
+</VersionBlock>
+
 **About "sprocs":** dbt submits Python models to run as _stored procedures_, which some people call _sprocs_ for short. By default, dbt will create a named sproc containing your model's compiled Python code, and then _call_ it to execute. Snowpark has an Open Preview feature for _temporary_ or _anonymous_ stored procedures ([docs](https://docs.snowflake.com/en/sql-reference/sql/call-with.html)), which are faster and leave a cleaner query history. You can switch this feature on for your models by configuring `use_anonymous_sproc: True`. We plan to switch this on for all dbt + Snowpark Python models starting with the release of dbt Core version 1.4.
 
 <File name='dbt_project.yml'>

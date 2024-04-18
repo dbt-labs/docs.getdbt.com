@@ -86,13 +86,21 @@ dbt Cloud uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordi
 
 To fully customize the scheduling of your job, choose the **Cron schedule** option and use cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
 
-Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and returns their plain English translations.
+**Cron frequency**
 
-Here are examples of cron job schedules. The dbt Cloud job scheduler supports using `L` to schedule jobs on the last day of the month:
+To enhance performance, job scheduling frequencies vary by dbt Cloud plan:
 
+- Developer plans: dbt Cloud sets a minimum interval of every 10 minutes for scheduling jobs. This means scheduling jobs to run more frequently, or at less than 10 minute intervals, is not supported.
+- Team and Enterprise plans: No restrictions on job execution frequency.
+
+**Examples**
+
+Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and return their plain English translations. The dbt Cloud job scheduler supports using `L` to schedule jobs on the last day of the month.
+
+Examples of cron job schedules:
 
 - `0 * * * *`: Every hour, at minute 0.
-- `*/5 * * * *`: Every 5 minutes.
+- `*/5 * * * *`: Every 5 minutes. (Not available on Developer plans)
 - `5 4 * * *`: At exactly 4:05 AM UTC.
 - `30 */4 * * *`: At minute 30 past every 4th hour (such as 4:30 AM, 8:30 AM, 12:30 PM, and so on, all UTC).
 - `0 0 */2 * *`: At 12:00 AM (midnight) UTC every other day.
@@ -112,7 +120,6 @@ To _chain_ deploy jobs together, enable the **Run when another job finishes** op
 You can set up a configuration where an upstream job triggers multiple downstream (child) jobs and jobs in other projects. You must have proper [permissions](/docs/cloud/manage-access/enterprise-permissions#project-role-permissions) to the project and job to configure the trigger. 
 
 For jobs that are triggered to run by another job, a link to the upstream job run is available from your [job's run details](/docs/deploy/run-visibility#job-run-details).
-
 
 ## Related docs
 

@@ -91,12 +91,14 @@ dbt run --select "some_model"
 
 ### The "fqn" method
 
-The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN.
+The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN. The default FQN format is composed of the project name, subdirectories within the path, and the file name (without extension) separated by periods.
 
 ```bash
 dbt run --select "fqn:some_model"
 dbt run --select "fqn:your_project.some_model"
 dbt run --select "fqn:some_package.some_other_model"
+dbt run --select "fqn:some_path.some_model"
+dbt run --select "fqn:your_project.some_path.some_model"
 ```
 
 ### The "package" method
@@ -256,7 +258,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
   ```bash
 dbt run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
 dbt test --select "+exposure:*"                         # test all resources upstream of all exposures
-dbt ls --select "+exposure:*" --resource-type source    # list all sources upstream of all exposures
+dbt ls --select "+exposure:*" --resource-type snowplow  # list all sources of type "snowplow" upstream of all exposures
 ```
 
 ### The "metric" method

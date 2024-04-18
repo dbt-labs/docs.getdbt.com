@@ -11,6 +11,7 @@ tags: ['dbt Cloud', 'Orchestration', 'CI']
 level: 'Intermediate'
 recently_updated: true
 ---
+<div style={{maxWidth: '900px'}}>
 
 ## Introduction
 
@@ -71,11 +72,12 @@ When running a CI/CD pipeline you’ll want to use a service token instead of an
 - Click the *+Add* button under *Access,* and grant this token the *Job Admin* permission
 - Click *Save* and you’ll see a grey box appear with your token. Copy that and save it somewhere safe (this is a password, and should be treated as such).
 
-![View of the dbt Cloud page where service tokens are created](/img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-service-token-page.png" title="View of the dbt Cloud page where service tokens are created" width="85%" />
 
 Here’s a video showing the steps as well:
 
 <WistiaVideo id="iub17te9ir" />
+
 
 ### 2. Put your dbt Cloud API key into your repo
 
@@ -107,6 +109,7 @@ This next part will happen in you code hosting platform. We need to save your AP
 Here’s a video showing these steps:
 
 <WistiaVideo id="u7mo30puql" />
+
 </TabItem>
 
 <TabItem value="gitlab">
@@ -120,11 +123,11 @@ Here’s a video showing these steps:
 - Make sure the check box next to *Protect variable* is unchecked, and the box next to *Mask variable* is selected (see below)
   - “Protected” means that the variable is only available in pipelines that run on protected branches or protected tags - that won’t work for us because we want to run this pipeline on multiple branches. “Masked” means that it will be available to your pipeline runner, but will be masked in the logs.
 
-    ![View of the GitLab window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-gitlab.png)
+  <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-gitlab.png" title="[View of the GitLab window for entering DBT_API_KEY" width="80%" />
 
     Here’s a video showing these steps:
-
     <WistiaVideo id="rgqs14f816" />
+
 
 </TabItem>
 <TabItem value="ado">
@@ -164,6 +167,8 @@ In Bitbucket:
 
     Here’s a video showing these steps:
     <WistiaVideo id="1fddpsqpfv" />
+
+  
 
 </TabItem>
 </Tabs>
@@ -472,30 +477,30 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 }>
 <TabItem value="github">
 
-![dbt run on merge job in GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-github.png" title="dbt run on merge job in GitHub" width="80%" />
 
-![dbt Cloud job showing it was triggered by GitHub](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-github-triggered.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-github-triggered.png" title="dbt Cloud job showing it was triggered by GitHub" width="80%" />
 
 </TabItem>
 <TabItem value="gitlab">
 
-![dbt run on merge job in GitLab](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png" title="dbt run on merge job in GitLab" width="80%" />
 
-![dbt Cloud job showing it was triggered by GitLab](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png" title="dbt Cloud job showing it was triggered by GitLab" width="80%" />
 
 </TabItem>
 <TabItem value="ado">
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png" width="85%" title="dbt run on merge job in ADO"/>
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="100%" title="ADO-triggered job in dbt Cloud"/>
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="80" title="ADO-triggered job in dbt Cloud"/>
 
 </TabItem>
 <TabItem value="bitbucket">
 
-![dbt run on merge job in Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-bitbucket.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-bitbucket.png)" title="dbt run on merge job in Bitbucket" width="80%" />
 
-![dbt Cloud job showing it was triggered by Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-bitbucket-triggered.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-bitbucket-triggered.png" title="dbt Cloud job showing it was triggered by Bitbucket" width="80%" />
 
 </TabItem>
 </Tabs>
@@ -636,3 +641,5 @@ This macro goes into a dbt Cloud job that is run on a schedule. The command will
 Running dbt Cloud jobs through a CI/CD pipeline is a form of job orchestration. If you also run jobs using dbt Cloud’s built in scheduler, you now have 2 orchestration tools running jobs. The risk with this is that you could run into conflicts - you can imagine a case where you are triggering a pipeline on certain actions and running scheduled jobs in dbt Cloud, you would probably run into job clashes. The more tools you have, the more you have to make sure everything talks to each other.
 
 That being said, if **the only reason you want to use pipelines is for adding a lint check or run on merge**, you might decide the pros outweigh the cons, and as such you want to go with a hybrid approach. Just keep in mind that if two processes try and run the same job at the same time, dbt Cloud will queue the jobs and run one after the other. It’s a balancing act but can be accomplished with diligence to ensure you’re orchestrating jobs in a manner that does not conflict.
+
+</div>
