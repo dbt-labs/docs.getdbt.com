@@ -7,10 +7,13 @@ pagination_next: "docs/dbt-cloud-environments"
 pagination_prev: null
 ---
 
-dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. It contains a myriad of settings that can be configured by admins, from the necessities (data platform integration) to security enhancements (SSO) and quality-of-life features (RBAC). This portion of our documentation will take you through the various settings found by clicking on the gear icon in the dbt Cloud UI, including:
+dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. It contains a myriad of settings that can be configured by admins, from the necessities (data platform integration) to security enhancements (SSO) and quality-of-life features (RBAC).
+
+This portion of our documentation will take you through the various settings in the dbt Cloud UI, including:
 
 - [Connecting to a data platform](/docs/cloud/connect-data-platform/about-connections)
 - Configuring access to [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or your own [git repo URL](/docs/cloud/git/import-a-project-by-git-url).
+- Installing the [dbt Cloud CLI](docs/cloud/cloud-cli-installation) or setting up the [dbt Cloud IDE (browser-based)](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop, build, test, run, and version control your dbt projects.
 - [Managing users and licenses](/docs/cloud/manage-access/seats-and-users)
 - [Configuring secure access](/docs/cloud/manage-access/about-user-access)
 
