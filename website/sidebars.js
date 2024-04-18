@@ -980,6 +980,7 @@ const sidebarSettings = {
                 "reference/global-configs/parsing",
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
+                "reference/global-configs/resource-type",
                 "reference/global-configs/usage-stats",
                 "reference/global-configs/version-compatibility",
                 "reference/global-configs/warnings",
