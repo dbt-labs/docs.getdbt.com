@@ -56,7 +56,7 @@ If you use GitLab, you can import your repo directly using [dbt Cloud's GitLab A
 
 ## BitBucket
 
-You can import your BitBucket repository into dbt Cloud using a deploy key. To preserve account security, we recommend you use a service account to add the BitBucket deploy key and maintain the connection between your BitBucket repository and dbt Cloud. BitBucket attributes each repository commit and other actions to the actor's Bitbucket email address.
+You can import your BitBucket repository into dbt Cloud using a deploy key. To preserve account security, we recommend you use a service account to add the BitBucket deploy key and maintain the connection between your BitBucket repository and dbt Cloud. BitBucket attributes each repository commit and other git actions to the actor's Bitbucket email address.
 
 To add a deploy key to a BitBucket account:
 
