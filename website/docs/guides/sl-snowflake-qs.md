@@ -32,7 +32,7 @@ import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
 ## Introduction
 
-The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies setting up key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics with ease, allowing you to define metrics in your dbt project and query them in dbt Cloud with [MetricFlow commands](/docs/build/metricflow-commands).
+The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your dbt project and query them in dbt Cloud with [MetricFlow commands](/docs/build/metricflow-commands).
 
 
 import SLCourses from '/snippets/_sl-course.md';
@@ -41,7 +41,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 This quickstart guide is designed for dbt Cloud users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the dbt Semantic Layer in a dbt Cloud project, and querying metrics in Google Sheets.
 
-If you're using a data platform other than Snowflake, this guide is also applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed on the following pages:
+If you're using a data platform other than Snowflake, this guide can also be applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed on the following pages:
 
 - [BigQuery](https://docs.getdbt.com/guides/bigquery?step=2) (Steps 2 - 5)
 - [Databricks](https://docs.getdbt.com/guides/databricks?step=2) (Steps 2 - 4)
@@ -57,8 +57,8 @@ The rest of this guide applies universally across all supported platforms, ensur
 - Your production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always remain on the latest version.
 - You have a [trial Snowflake account.](https://signup.snowflake.com/). When creating an account:
   - Select the Enterprise Snowflake edition to ensure you have ACCOUNTADMIN access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms) in the Snowflake documentation.
-  - Before proceeding, you will need to select a cloud provider and region. For this setup, all cloud providers and regions will work so choose whichever you’d like.
-- Basic understanding of SQL and dbt (meaning you either used dbt before or completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course).
+  - Before proceeding, you will need to select a cloud provider and region. For this setup, all cloud providers and regions will work so choose whichever you prefer.
+- Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course.
 
 ### What you'll learn
 
@@ -67,7 +67,7 @@ This guide will cover the following topics:
 - Create a new Snowflake worksheet and set up your environment
 - Load sample data into your Snowflake account
 - Connect dbt Cloud to Snowflake
-- Build out an example dbt Cloud project
+- Build an example dbt Cloud project
 - Create a semantic model in dbt Cloud
 - Define metrics in dbt Cloud
 - Test and query metrics in dbt Cloud
