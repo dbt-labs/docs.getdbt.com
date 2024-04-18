@@ -418,6 +418,7 @@ const sidebarSettings = {
             "docs/deploy/jobs",
             "docs/deploy/deploy-jobs",
             "docs/deploy/ci-jobs",
+            "docs/deploy/merge-jobs",
             "docs/deploy/job-commands",
           ],
         },
