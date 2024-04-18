@@ -7,3 +7,5 @@ To query your metrics using Google Sheets:
 1. Make sure you have a Gmail account. If you don’t already have one, make one at [gmail.com](http://gmail.com/).
 2. To set up Google Sheets and query your metrics, follow the detailed instructions on the [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) page.
 3. Start playing around with it! Query a metric, like `order_total`. Filter it with a dimension, like `order_date`. You can also use the `group_by` parameter to group your metrics by a specific dimension.
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-gsheets.jpg" width="70%" title="Use the dbt Semantic Layer's Google Sheet integration to query metrics with a Query Builder menu."  />
