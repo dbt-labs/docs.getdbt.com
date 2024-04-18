@@ -516,12 +516,12 @@ select * from final
 
 ## Create semantic models
 
-The following steps describe how to set up [semantic models](/docs/build/semantic-models). Semantic models contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
+[Semantic models](/docs/build/semantic-models) contain many object types (such as entities, measures, and dimensions) that allow MetricFlow to construct the queries for metric definitions.
 
-- Each semantic model will be 1:1 with a dbt SQL/Python model
-- Each semantic model will contain (at most) 1 primary or natural entity
-- Each semantic model will contain zero, one, or many foreign or unique entities used to connect to other entities
-- Each semantic model may also contain dimensions, measures, and metrics &mdash; this is what actually gets fed into and queried by your downstream BI tool.
+- Each semantic model will be 1:1 with a dbt SQL/Python model.
+- Each semantic model will contain (at most) 1 primary or natural entity.
+- Each semantic model will contain zero, one, or many foreign or unique entities used to connect to other entities.
+- Each semantic model may also contain dimensions, measures, and metrics. This is what actually gets fed into and queried by your downstream BI tool.
 
 In the following steps, semantic models help us define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
 
@@ -537,7 +537,7 @@ semantic_models:
 
 ```
 
-The following section will explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
+The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
 
 - [Entities](#entities) act as unique identifiers (like ID columns) that link data together from different tables.
 - [Dimensions](#dimensions) allow us to categorize and filter data, making it easier to organize.
@@ -545,9 +545,9 @@ The following section will explain [dimensions](/docs/build/dimensions), [entiti
 
 ### Entities
 
-[Entities](/docs/build/semantic-models#entities) are a real-world concept in a business, serving as the backbone of your semantic model. These are going to be id columns (like `order_id`) in our semantic models. These will serve as join keys to other semantic models.
+[Entities](/docs/build/semantic-models#entities) are a real-world concept in a business, serving as the backbone of your semantic model. These are going to be ID columns (like `order_id`) in our semantic models. These will serve as join keys to other semantic models.
 
-1. Add entities to your `fct_orders.yml` semantic model file:
+Add entities to your `fct_orders.yml` semantic model file:
 
 ```yaml
 semantic_models:
@@ -569,7 +569,7 @@ semantic_models:
 
 [Dimensions](/docs/build/semantic-models#entities) are a way to group or filter information based on categories or time. 
 
-1. Add dimensions to your `fct_orders.yml` semantic model file:
+Add dimensions to your `fct_orders.yml` semantic model file:
 
 ```yaml
 semantic_models:
@@ -596,7 +596,7 @@ semantic_models:
 
 [Measures](/docs/build/semantic-models#measures) are aggregations performed on columns in your model. Often, you’ll find yourself using them as final metrics themselves. Measures can also serve as building blocks for more complicated metrics.
 
-1. Add measures to your `fct_orders.yml` semantic model file:
+Add measures to your `fct_orders.yml` semantic model file:
 
 ```yaml
 semantic_models:
@@ -640,19 +640,19 @@ semantic_models:
 
 ## Define metrics
 
-[Metrics](/docs/build/metrics-overview) are the language your business users speak and measure business performance. To be technical about it, they are an aggregation over a column in your warehouse that you enrich with dimensional cuts.
+[Metrics](/docs/build/metrics-overview) are the language your business users speak and measure business performance. They are an aggregation over a column in your warehouse that you enrich with dimensional cuts.
 
 There are different types of metrics you can configure:
 
-- **[Conversion metrics](/docs/build/conversion)**: Track when a base event and a subsequent conversion event occur for an entity within a set time period.
-- **[Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics):** Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the time spine model before you add cumulative metrics.
-- **[Derived metrics](/docs/build/metrics-overview#derived-metrics)**: Allows you to do calculations on top of metrics.
-- **[Simple metrics](/docs/build/metrics-overview#simple-metrics)**: Directly reference a single measure, without any additional measures involved.
-- **[Ratio metrics](/docs/build/metrics-overview#ratio-metrics):** Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
+- **[Conversion metrics](/docs/build/conversion)** &mdash; Track when a base event and a subsequent conversion event occur for an entity within a set time period.
+- **[Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics)** &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Be aware that you must create the time spine model before you add cumulative metrics.
+- **[Derived metrics](/docs/build/metrics-overview#derived-metrics)** &mdash; Allows you to do calculations on top of metrics.
+- **[Simple metrics](/docs/build/metrics-overview#simple-metrics)** &mdash; Directly reference a single measure without any additional measures involved.
+- **[Ratio metrics](/docs/build/metrics-overview#ratio-metrics)** &mdash; Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
 Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics:
 
-1. Add metrics to your `fct_orders.yml` semantic model file:
+Add metrics to your `fct_orders.yml` semantic model file:
 
 ```yaml
 semantic_models:
