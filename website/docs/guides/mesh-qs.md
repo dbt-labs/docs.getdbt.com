@@ -91,7 +91,7 @@ To set a production environment:
 2. Select **Deployment** as the environment type.
 3. Under **Set deployment type**, select the **Production** button.
 4. Select the dbt version.
-5. Continue filling out the fields as necessary in the **Deployment connection** and **Deployment credentials**.
+5. Continue filling out the fields as necessary in the **Deployment connection** and **Deployment credentials** sections.
 6. Click **Test Connection** to confirm the deployment connection.
 6. Click **Save** to create a production environment.
 
