@@ -53,8 +53,8 @@ The rest of this guide applies universally across all supported platforms, ensur
 
 ## Prerequisites
 
-- You have a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account, which is suitable for both Multi-tenant and Single-tenant deployments. If you have a Single-tenant account, please contact your account representative for the necessary setup steps.
-- Your production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to alway remain on the latest version.
+- You need a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account for all deployments. Contact your representative for Single-tenant setup; otherwise, create an account using this guide.
+- Your production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always remain on the latest version.
 - You have a [trial Snowflake account.](https://signup.snowflake.com/). When creating an account:
   - Select the Enterprise Snowflake edition to ensure you have ACCOUNTADMIN access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms) in the Snowflake documentation.
   - Before proceeding, you will need to select a cloud provider and region. For this setup, all cloud providers and regions will work so choose whichever you’d like.
@@ -77,7 +77,7 @@ This guide will cover the following topics:
 
 ## Create new Snowflake worksheet and set up environment
 
-1. Log in to your trial Snowflake account.
+1. Log in to your [trial Snowflake account](https://signup.snowflake.com).
 2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
 3. Select **SQL Worksheet** to create a new worksheet.
 
@@ -267,7 +267,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 5. Enter your **Development Credentials** for Snowflake with: 
     * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
     * **Password** &mdash; The password you set when creating your Snowflake account.
-    * **Schema** &mdash; You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
+    * **Schema** &mdash; You’ll notice that the schema name has been auto-created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
     * **Target name** &mdash; Leave as the default.
     * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that dbt Cloud will make to build models concurrently.
 
@@ -291,6 +291,7 @@ Now that you have a repository configured, you can initialize your project and s
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
+    - Delete the models/examples folder in the **File Explorer**.
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:
       ```sql
       select * from raw.jaffle_shop.customers
@@ -332,7 +333,7 @@ In your source file, you can also use the **Generate model** button to create a 
 :::
 
 4. Hover over the `models` directory and click the **...**, then select **Create file**.
-5. Name the file `staging/stripe/stripe.yml` , then click **Create**.
+5. Name the file `staging/stripe/src_stripe.yml` , then click **Create**.
 6. Copy the following text into the file and click **Save**.
 
 ```yaml
@@ -789,12 +790,6 @@ semantic_models:
         agg: count_distinct
 
 metrics:
-  - name: "customers"
-    description: "Count of customers"
-    type: simple
-    label: "customers"
-    type_params:
-      measure: customers
   - name: "customers_with_orders"
     label: "customers_with_orders"
     description: "Unique count of customers placing orders"
