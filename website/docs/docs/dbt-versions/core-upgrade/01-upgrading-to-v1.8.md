@@ -93,4 +93,5 @@ We will begin deprecating support for spaces in dbt model names in v1.8 (raising
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
 - A new subcategory of flags has been created for [legacy behaviors](/reference/global-configs/legacy-behaviors).
 - The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
+- To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
 
