@@ -342,6 +342,7 @@ const sidebarSettings = {
                 "docs/build/derived",
                 "docs/build/ratio",
                 "docs/build/simple",
+                "docs/build/ref-metrics-in-filters",
               ],
             },
             {

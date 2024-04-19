@@ -1,30 +1,59 @@
-**Reference metrics in metric filters**
+---
+title: "Metrics as dimensions with metric filters"
+id: "ref-metrics-in-filters"
+description: "Add metrics as dimensions to your metric filters to create more complex metrics and gain more insights."
+sidebar_label: "Metrics as dimensions with metric filters"
+---
 
-Some metrics require the value of another metric as part of the metric definition. For example, say you work at a SAAS company that sells a data transformation product and want to count activated account, where the definition of an activated account is an account with more than five data model runs.  
+Metrics provide users with valuable insights into their data, such as the number of active users. They also are used to track performance, trend, and help businesses made important decisions. Dimensions, on the other hand, are attributes that help categorize data, such as user type or number of orders placed by a customer.
 
-To express this metric in SQL I would first write a query to calculate the number of data model runs per account, then count the number of accounts who have >5 data model runs. 
+To make informed business decisions, some metrics need the value of another metric as part of the metric definition.
+## Use cases
+Some use cases where using metrics as dimensions might be useful are:
+
+- User segments &mdash; Use the number of orders placed by a user in the last 7 days as a dimension when creating user segments.
+- Churn prediction &mdash; Use the number of support tickets an account submitted in the first 30 days to predict potential churn.
+- Activation tracking &mdash; Define account or user activation based on the specific actions within a set number of days after signing.
+
+## Example
+
+As an example, a Software as a service (SaaS) company that sells a data transformation product wants to count activated account. In this case, the definition of an activated account is an account with more than five data model runs.  
+
+To express this metric in SQL:
+- Write a query to calculate the number of data model runs per account
+- Then count the number of accounts who have more than five data model runs:
 
 ```sql
 with data_models_per_user as (
-select
-	 count(models_runs) as data_model_runs
-	 , account_is as account
-from 
-	fct_model_runs
-group by 
-	2
+    select
+        account_id as account,
+        count(model_runs) as data_model_runs
+    from 
+        {{ ref('fct_model_runs') }}
+    group by 
+        account_id
 ),
 
+activated_accounts as (
+    select
+        count(distinct account_id) as activated_accounts
+    from 
+        {{ ref('dim_accounts') }}
+    left join 
+        data_models_per_user 
+    on 
+        {{ ref('dim_accounts') }}.account_id = data_models_per_user.account
+    where 
+        data_models_per_user.data_model_runs > 5
+)
+
 select
-	count(distinct account_id) as activated_accounts
+    *
 from 
-	dim_accounts 
-	left join data_models_per_user on accounts.account_id = data_models_per_user.account
-where 
-	data_models_per_user.cnt_data_models >5
+    activated_accounts
 ```
 
-When calculating  activated_accounts, we are using the `data_model_runs` metric as a dimensions for the user entity, since we are filtering on the metric value scoped to the account entity. We can express this logic natively in the MetricFlow spec
+When calculating `activated_accounts`, we are using the `data_model_runs` metric as a dimensions for the user entity, since we are filtering on the metric value scoped to the account entity. We can express this logic natively in the MetricFlow spec
 
 **How to reference a metric in a metric filter**
 
