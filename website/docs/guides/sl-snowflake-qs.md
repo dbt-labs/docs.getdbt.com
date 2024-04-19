@@ -41,39 +41,102 @@ import SLCourses from '/snippets/_sl-course.md';
 
 This quickstart guide is designed for dbt Cloud users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the dbt Semantic Layer in a dbt Cloud project, and querying metrics in Google Sheets.
 
-If you're using a data platform other than Snowflake, this guide can also be applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed on the following pages:
+**For users on different data platform**
 
-- [BigQuery](https://docs.getdbt.com/guides/bigquery?step=2) (Steps 2 - 5)
-- [Databricks](https://docs.getdbt.com/guides/databricks?step=2) (Steps 2 - 4)
-- [Microsoft Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2) (Steps 2 - 3)
-- [Redshift](https://docs.getdbt.com/guides/redshift?step=2) (Steps 2 - 4)
-- [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2) (Steps 2 - 5)
+If you're using a data platform other than Snowflake, this guide is also be applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed in the following tabs for each respective platform.
 
 The rest of this guide applies universally across all supported platforms, ensuring you can fully leverage the dbt Semantic Layer.
+
+<Tabs>
+
+<TabItem value="bq" label="BigQuery">
+
+Open a new tab and follow these quick steps for account setup and data loading instructions:
+
+- [Step 2: Create a new GCP project](https://docs.getdbt.com/guides/bigquery?step=2)
+- [Step 3: Create BigQuery dataset](https://docs.getdbt.com/guides/bigquery?step=3)
+- [Step 4: Generate BigQuery credentials](https://docs.getdbt.com/guides/bigquery?step=4)
+- [Step 5: Connect dbt Cloud to BigQuery](https://docs.getdbt.com/guides/bigquery?step=5)
+
+</TabItem>
+
+<TabItem value="databricks" label="Databricks">
+
+Open a new tab and follow these quick steps for account setup and data loading instructions:
+
+- [Step 2: Create a Databricks workspace](https://docs.getdbt.com/guides/databricks?step=2)
+- [Step 3: Load data](https://docs.getdbt.com/guides/databricks?step=3)
+- [Step 4: Connect dbt Cloud to Databricks](https://docs.getdbt.com/guides/databricks?step=4)
+
+</TabItem>
+
+<TabItem value="msfabric" label="Microsoft Fabric">
+
+Open a new tab and follow these quick steps for account setup and data loading instructions:
+
+- [Step 2: Load data into your Microsoft Fabric warehouse](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
+- [Step 3: Connect dbt Cloud to Microsoft Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=3)
+
+</TabItem>
+
+<TabItem value="redshift" label="Redshift">
+
+Open a new tab and follow these quick steps for account setup and data loading instructions:
+
+- [Step 2: Create a Redshift cluster](https://docs.getdbt.com/guides/redshift?step=2)
+- [Step 3: Load data](https://docs.getdbt.com/guides/redshift?step=3)
+- [Step 4: Connect dbt Cloud to Redshift](https://docs.getdbt.com/guides/redshift?step=3)
+
+</TabItem>
+
+<TabItem value="starburst" label="Starburst Galaxy">
+
+Open a new tab and follow these quick steps for account setup and data loading instructions:
+
+- [Step 2: Load data to an Amazon S3 bucket](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
+- [Step 3: Connect Starburst Galaxy to Amazon S3 bucket data](https://docs.getdbt.com/guides/starburst-galaxy?step=3)
+- [Step 4: Create tables with Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=4)
+- [Step 5: Connect dbt Cloud to Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=5)
+
+</TabItem>
+
+</Tabs>
 
 ## Prerequisites
 
 - You need a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account for all deployments. Contact your representative for Single-tenant setup; otherwise, create an account using this guide.
-- Your production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always remain on the latest version.
-- You have a [trial Snowflake account.](https://signup.snowflake.com/). When creating an account:
-  - Select the Enterprise Snowflake edition to ensure you have ACCOUNTADMIN access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms) in the Snowflake documentation.
-  - Before proceeding, you will need to select a cloud provider and region. For this setup, all cloud providers and regions will work so choose whichever you prefer.
+- Have the correct [dbt Cloud license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/self-service-permissions) based on your plan:
+  <detailsToggle alt_header="More info on license and permissions">  
+  
+  - Enterprise &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
+  - Team &mdash; "Owner" access with a Developer license.
+  - Trial &mdash; Automatic "Owner" access under a trail of the Team plan.  
+  
+  </detailsToggle>
+
+- Production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always remain on the latest version.
+- Create a [trial Snowflake account](https://signup.snowflake.com/):
+  - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
+  - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
 - Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course.
 
 ### What you'll learn
 
 This guide will cover the following topics:
 
-- Create a new Snowflake worksheet and set up your environment
-- Load sample data into your Snowflake account
-- Connect dbt Cloud to Snowflake
-- Build an example dbt Cloud project
-- Create a semantic model in dbt Cloud
-- Define metrics in dbt Cloud
-- Test and query metrics in dbt Cloud
-- Run a production job in dbt Cloud
-- Set up dbt Semantic Layer in dbt Cloud
-- Connect and query metrics with Google Sheets
+- [Create a new Snowflake worksheet and set up your environment](/guides/sl-snowflake-qs?step=3)
+- [Load sample data into your Snowflake account](/guides/sl-snowflake-qs?step=4)
+- [Connect dbt Cloud to Snowflake](/guides/sl-snowflake-qs?step=5)
+- [Set up a dbt Cloud managed repository](/guides/sl-snowflake-qs?step=6)
+- [Initialized a dbt Cloud project and start developer](/guides/sl-snowflake-qs?step=7)
+- [Build your dbt Cloud project](/guides/sl-snowflake-qs?step=8)
+- [Create a semantic model in dbt Cloud](/guides/sl-snowflake-qs?step=9)
+- [Define metrics in dbt Cloud](/guides/sl-snowflake-qs?step=10)
+- [Add second semantic model](/guides/sl-snowflake-qs?step=11)
+- [Test and query metrics in dbt Cloud](/guides/sl-snowflake-qs?step=12)
+- [Run a production job in dbt Cloud](/guides/sl-snowflake-qs?step=13)
+- [Set up dbt Semantic Layer in dbt Cloud](/guides/sl-snowflake-qs?step=14)
+- [Connect and query metrics with Google Sheets](/guides/sl-snowflake-qs?step=15)
 
 ## Create new Snowflake worksheet and set up environment
 
@@ -523,7 +586,7 @@ select * from final
 - Each semantic model will contain zero, one, or many foreign or unique entities used to connect to other entities.
 - Each semantic model may also contain dimensions, measures, and metrics. This is what actually gets fed into and queried by your downstream BI tool.
 
-In the following steps, semantic models help us define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
+In the following steps, semantic models enable you to define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
 
 1. Create a new file `models/metrics/fct_orders.yml` 
 2. Add the following code to that newly created file:
@@ -540,8 +603,8 @@ semantic_models:
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
 
 - [Entities](#entities) act as unique identifiers (like ID columns) that link data together from different tables.
-- [Dimensions](#dimensions) allow us to categorize and filter data, making it easier to organize.
-- [Measures](#measures) help us calculate data, providing valuable insights through aggregation.
+- [Dimensions](#dimensions) categorize and filter data, making it easier to organize.
+- [Measures](#measures) calculates data, providing valuable insights through aggregation.
 
 ### Entities
 
@@ -644,11 +707,11 @@ semantic_models:
 
 There are different types of metrics you can configure:
 
-- **[Conversion metrics](/docs/build/conversion)** &mdash; Track when a base event and a subsequent conversion event occur for an entity within a set time period.
-- **[Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics)** &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Be aware that you must create the time spine model before you add cumulative metrics.
-- **[Derived metrics](/docs/build/metrics-overview#derived-metrics)** &mdash; Allows you to do calculations on top of metrics.
-- **[Simple metrics](/docs/build/metrics-overview#simple-metrics)** &mdash; Directly reference a single measure without any additional measures involved.
-- **[Ratio metrics](/docs/build/metrics-overview#ratio-metrics)** &mdash; Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
+- [Conversion metrics](/docs/build/conversion) &mdash; Track when a base event and a subsequent conversion event occur for an entity within a set time period.
+- [Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics) &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Be aware that you must create the time spine model before you add cumulative metrics.
+- [Derived metrics](/docs/build/metrics-overview#derived-metrics) &mdash; Allows you to do calculations on top of metrics.
+- [Simple metrics](/docs/build/metrics-overview#simple-metrics) &mdash; Directly reference a single measure without any additional measures involved.
+- [Ratio metrics](/docs/build/metrics-overview#ratio-metrics) &mdash; Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
 Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics:
 
