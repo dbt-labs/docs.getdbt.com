@@ -1,6 +1,6 @@
 **Reference metrics in metric filters**
 
-Some metrics require multiple aggregations or dependencies on other metrics. For example, say you work at a SAAS company that sells a data transformation product and want to count activated account, where the definition of an activated account is an account with more than five data model runs.  
+Some metrics require the value of another metric as part of the metric definition. For example, say you work at a SAAS company that sells a data transformation product and want to count activated account, where the definition of an activated account is an account with more than five data model runs.  
 
 To express this metric in SQL I would first write a query to calculate the number of data model runs per account, then count the number of accounts who have >5 data model runs. 
 
