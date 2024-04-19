@@ -913,23 +913,22 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-co
 
 <ConfettiTrigger>
 
-Great job on completing the dbt Semantic Layer guide 🎉! You've learned:
+Great job on completing the comprehensive dbt Semantic Layer guide 🎉! You should hopefully have gained a clear understanding of what the dbt Semantic Layer is, its purpose, and when to use it in your projects.
 
-- Create a new Snowflake worksheet and set up your environment
-- Load sample data into your Snowflake account
-- Connect dbt Cloud to Snowflake
-- Build out an example dbt Cloud project
-- How to build and define metrics
-- Test and query metrics in dbt Cloud
-- Run a production job in dbt Cloud
-- Set up dbt Semantic Layer in dbt Cloud
-- Connect and query metrics with Google Sheets
+You've learned how to:
+
+- Set up your Snowflake environment and dbt Cloud, including creating worksheets and loading data.
+- Connect and configure dbt Cloud with Snowflake.
+- Build, test, and manage dbt Cloud projects, focusing on metrics and semantic layers.
+- Run production jobs and query metrics with Google Sheets.
+
+For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), and more.
 
 Here are some additional resources to help you continue your journey:
 
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 - Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
-- [Billing](/docs/cloud/billing)
+- [Join our live demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts)
 
 </ConfettiTrigger>
