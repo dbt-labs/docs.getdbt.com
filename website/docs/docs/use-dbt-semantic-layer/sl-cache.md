@@ -16,7 +16,7 @@ There are two layers of caching:
 
 ## Result caching
 
-Result caching leverages your data platform’s built-in caching layer and features. [MetricFlow](/docs/build/about-metricflow) generates the same SQL for multiple query requests, this means it can take advantage of your data platform’s cache. Result caching is currently specific to a single user setup and is not shared across users.
+Result caching leverages your data platform’s built-in caching layer and features. [MetricFlow](/docs/build/about-metricflow) generates the same SQL for multiple query requests, this means it can take advantage of your data platform’s cache. Result caching is currently specific to a single-user setup and is not shared across users.
 
 Here's how caching works, using Snowflake as an example, and should be similar across other data platforms:
 
@@ -35,7 +35,7 @@ Different data platforms might have different caching layer and cache invalidati
 Declarative caching enables users to pre-warm the cache using [saved queries](/docs/build/saved-queries) by setting the cache config to `true` in your `saved_queries` settings. This customization is useful for optimizing performance for key dashboards or common ad-hoc query requests.
 
 When you run a saved query:
-- The dbt Semantic Layer builds a cached table from a saved query into the your data platform.
+- The dbt Semantic Layer builds a cached table from a saved query into your data platform.
 - Any query requests that match the saved query's inputs will use the cache, returning results more quickly.
 - The dbt Semantic Layer automatically invalidates the cache when it detects new, fresh data in any upstream models related to the metrics in your cached table.
 - The cache refreshes (or rebuilds) the next time you run the saved query.
@@ -46,7 +46,7 @@ Refer to the following diagram, which illustrates what happens when the dbt Sema
 
 ### Cache with exports
 
-To populate the cache, configure an export in your saved query _and_ set the cache config on to `true`:
+To populate the cache, configure an export in your saved query _and_ set the cache config to `true`:
 
 ```yaml
 saved_queries:
@@ -62,7 +62,7 @@ saved_queries:
 ```
 
 When you run a saved query:
-- The dbt Semantic Layer builds a cache table in the your data platform in a dedicated `dbt_sl_cache` schema. 
+- The dbt Semantic Layer builds a cache table in your data platform in a dedicated `dbt_sl_cache` schema. 
 - The cache schema and tables are created using your deployment credentials. You need to grant read access to this schema for your Semantic Layer user.
 - Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query dbt Cloud.
 - The cache refreshes (or rebuilds) on the same schedule as the saved query job.
@@ -73,7 +73,7 @@ When you run a saved query:
 
 dbt Cloud uses the metadata from your dbt model runs to intelligently manage cache invalidation. When you start a dbt job, it keeps track of the last model runtime and checks the freshness of the metrics upstream of your cache.
 
-If an upstream model has data in it that was created after the cache was created, dbt Cloud invalidates the cache. This means queries won't use outdated case and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and dbt Cloud will write a new cache the next time your saved query runs.
+If an upstream model has data in it that was created after the cache was created, dbt Cloud invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and dbt Cloud will write a new cache the next time your saved query runs.
 
 ## FAQs
 <detailsToggle alt_header="How is my data stored?" >
