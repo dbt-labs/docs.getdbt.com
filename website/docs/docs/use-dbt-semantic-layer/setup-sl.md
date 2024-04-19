@@ -18,7 +18,6 @@ With the dbt Semantic Layer, you can centrally define business metrics, reduce c
 
 ## Prerequisites
 
-
 import SetUp from '/snippets/_v2-sl-prerequisites.md';
 
 <SetUp/>
@@ -49,5 +48,5 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 - [Build your metrics](/docs/build/build-metrics-intro)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 - [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
-- [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
+- [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
