@@ -75,6 +75,8 @@ dbt Cloud uses the metadata from your dbt model runs to intelligently manage cac
 
 If an upstream model has data in it that was created after the cache was created, dbt Cloud invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and dbt Cloud will write a new cache the next time your saved query runs.
 
+You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using the `InvalidateCacheResult` field.
+
 ## FAQs
 <detailsToggle alt_header="How is my data stored?" >
 
