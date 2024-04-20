@@ -69,17 +69,6 @@ saved_queries:
 ```
 </File>
 
-You can use the following parameters to define an `export`:
-
-| Parameters | Type    | Required | Description    |
-| ------- | --------- | ---------- | ---------------- |
-| `name` | String    | Required     | Name of the `export` object.    |
-| `saved-query` | String    | Required     | Name of a saved query that could be used.    |
-| `select` | List or String   | Optional    | Specify the names of exports to select from the saved query. |
-| `exclude` | String  | Optional    | Specify the names of exports to exclude from the saved query. |
-| `export_as` | String  | Optional    | Type of export to create from the `export_as` types available in the config. Options available are `table` or `view`. |
-| `schema` | String  | Optional    | Schema to use for creating the table or view. |
-| `alias` | String  | Optional    | Table alias to use to write the table or view. |
 
 ## Run exports
 
@@ -90,11 +79,23 @@ Once you define exports in your dbt project, then you can run them. There are tw
 
 ### Exports in development
 
-You can run an export in your development environment using your development credentials if you want to test the output of the export before production. You can use the following command in the dbt Cloud CLI:
+You can run an export in your development environment using your development credentials if you want to test the output of the export before production. You can use the following command to run exports in the dbt Cloud CLI:
 
 ```bash
 dbt sl export
 ```
+
+The following table lists the options for `dbt sl export` command:  
+
+| Parameters | Type    | Required | Description    |
+| ------- | --------- | ---------- | ---------------- |
+| `name` | String    | Required     | Name of the `export` object.    |
+| `saved-query` | String    | Required     | Name of a saved query that could be used.    |
+| `select` | List or String   | Optional    | Specify the names of exports to select from the saved query. |
+| `exclude` | String  | Optional    | Specify the names of exports to exclude from the saved query. |
+| `export_as` | String  | Optional    | Type of export to create from the `export_as` types available in the config. Options available are `table` or `view`. |
+| `schema` | String  | Optional    | Schema to use for creating the table or view. |
+| `alias` | String  | Optional    | Table alias to use to write the table or view. |
 
 You can also run any export defined for the saved query and write the table or view in your development environment. Refer to the following command example and output:
 
