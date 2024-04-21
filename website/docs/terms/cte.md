@@ -187,6 +187,6 @@ If you’re interested in reading more about CTE best practices, check out some 
 
 Want to know why dbt Labs loves CTEs? Check out the following pieces: 
 
-- [Why we use so many CTEs](https://discourse.getdbt.com/t/why-the-fishtown-sql-style-guide-uses-so-many-ctes/1091)
+- [Why we use so many CTEs](https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects)
 - [CTEs are Passthroughs](https://discourse.getdbt.com/t/ctes-are-passthroughs-some-research/155)
 
