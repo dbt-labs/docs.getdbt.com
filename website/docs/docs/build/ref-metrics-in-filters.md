@@ -2,27 +2,29 @@
 title: "Metrics as dimensions with metric filters"
 id: "ref-metrics-in-filters"
 description: "Add metrics as dimensions to your metric filters to create more complex metrics and gain more insights."
-sidebar_label: "Metrics as dimensions with metric filters"
+sidebar_label: "Metrics as dimensions"
 ---
 
-Metrics provide users with valuable insights into their data, such as the number of active users. They also are used to track performance, trend, and help businesses made important decisions. Dimensions, on the other hand, are attributes that help categorize data, such as user type or number of orders placed by a customer.
+[Metrics](/docs/build/metrics-overview) provide users with valuable insights into their data, such as the number of active users. They also are used to track performance, trend, and help businesses make important decisions. [Dimensions](/docs/build/dimensions), on the other hand, are attributes that help categorize data, such as user type or number of orders placed by a customer.
 
-To make informed business decisions, some metrics need the value of another metric as part of the metric definition.
+To make informed business decisions, some metrics need the value of another metric as part of the metric definition, leading us to "metrics as dimensions".
+
+This document explains how you can use metrics as dimensions with metric filters, enabling you to create more complex metrics and gain more insights.
 
 ## Use cases
-Some use cases where using metrics as dimensions might be useful are:
+Some example use cases where using metrics as dimensions might be useful are:
 
-- User segments &mdash; Use the number of orders placed by a user in the last 7 days as a dimension when creating user segments.
-- Churn prediction &mdash; Use the number of support tickets an account submitted in the first 30 days to predict potential churn.
-- Activation tracking &mdash; Define account or user activation based on the specific actions within a set number of days after signing.
+- User segments: Segment users by using the number of orders placed by a user in the last 7 days as a dimension.
+- Churn prediction: Use the number of support tickets an account submitted in the first 30 days to predict potential churn.
+- Activation tracking: Define account or user activation based on the specific actions taken within certain number of days after signing up.
 
-## Example
+### Example
 
-As an example, a Software as a service (SaaS) company that sells a data transformation product wants to count activated account. In this case, the definition of an activated account is an account with more than five data model runs.  
+As an example, a Software as a service (SaaS) company wants to count activated accounts. In this case, the definition of an activated account is an account with more than five data model runs.  
 
-To express this metric in SQL:
-- Write a query to calculate the number of data model runs per account
-- Then count the number of accounts who have more than five data model runs:
+To express this metric in SQL, the company will:
+- Write a query to calculate the number of data model runs per account.
+- Then count the number of accounts who have more than five data model runs.
 
 ```sql
 with data_models_per_user as (
@@ -54,26 +56,30 @@ from
     activated_accounts
 ```
 
-This previous SQL query calculates the number of `activated_accounts` by using the `data_model_runs` metric as a dimension for the user entity. It filters based on the metric value scoped to the account entity. You can express this logic natively in the MetricFlow specification.
+The previous SQL query calculates the number of `activated_accounts` by using the `data_model_runs` metric as a dimension for the user entity. It filters based on the metric value scoped to the account entity. You can express this logic natively in the MetricFlow specification.
 
-### Reference a metric in a filter
+## Reference a metric in a filter
 
-You can recreate this pattern in MetricFlow by referencing a metric in the `where` filter for another metric using the `Metric()` object syntax. The function for referencing a metric takes a metric name and exactly one entity:
+Use the `Metric()` object syntax to reference a metric in the `where` filter for another metric. The function for referencing a metric accepts a metric name and exactly one entity:
 
 ```yaml
 {{ Metric('metric_name', group_by=['Entity']) }}
 ```
 
-Using the same `activated_accounts` metric as an example:
-- Create two semantic models, `model_runs` and `accounts`. 
-- Then create a `measure` and `metric` to count data model runs, and another measure to count users.
+**YAML configuration**
+
+Using the same `activated_accounts` example mentioned earlier, the following YAML example explains how a company can create [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview), and use the `Metric()` object to reference the `data_model_runs` metric in the `activated_accounts` metric filter:
+
+- Create two semantic models: `model_runs` and `accounts`.
+- Create a `measure` and `metric` to count data model runs, and another measure to count users.
 - Specify the foreign entity `account` in the `model_runs` semantic model.
+- Then create the `Activated Accounts` metric by filtering accounts that have more than five data model runs.
 
 ```yaml
 semantic_models:
   - name: model_runs
-    .... # Placeholder for other configurations
-	entities:
+    ... # Placeholder for other configurations
+    entities:
       - name: model_run
         type: primary
       - name: account
@@ -85,64 +91,57 @@ semantic_models:
         create_metric: true
 
   - name: accounts
-  	.... # Placeholder for other configurations
-	entities:
+    ... # Placeholder for other configurations
+    entities:
       - name: account
         type: primary
     measures:
       - name: accounts
         agg: sum
         expr: 1
-```
-
-- Then create the `Activated Accounts` metric by filtering accounts that have more than five data model runs:
-
-```yaml
 metrics:
- - name: activated_accounts
-	 label: Activated Accounts
-   type: simple
-   type_params:
-	   measure: accounts
-	 filter: |
-		 {{ Metric('data_model_runs', group_by=['account']) }} > 5
+  - name: activated_accounts
+    label: Activated Accounts
+    type: simple
+    type_params:
+      measure: accounts
+    filter: |
+      {{ Metric('data_model_runs', group_by=['account']) }} > 5
 ```
 
-Let’s break down the SQL that will be generated from this metric definition when I run the following query from the CLI `dbt sl query --metrics activated_accounts` 
+Let’s break down the SQL the system generates based on the metric definition when you run `dbt sl query --metrics activated_accounts` from the command line interface:
 
-First, the filter `{{ Metric('data_models', group_by=['account']) }}` will generate SQL similar to the `data_models_per_user` sub query shown above.
+- The filter `{{ Metric('data_model_runs', group_by=['account']) }}` generates SQL similar to the `data_models_per_user` sub-query shown earlier:
 
-```sql
-select
-  sum(1) as data_model_runs
-  , account
- from data_model_runs
- group by 
-	 account
-```
+	```sql
+	select
+		sum(1) as data_model_runs,
+		account
+	from 
+		data_model_runs
+	group by
+		account
+	```
 
-We will then join this query to the query generated by the `accounts` measure on the group by elements and apply the filter conditions.
+- MetricFlow joins this query to the query generated by the `accounts` measure on the group by elements and applies the filter conditions:
 
-```sql
-select
-	sum(1) as activated_accounts
-from accounts
-left join (
-select
-    sum(1) as data_model_runs
-  , account
- from data_model_runs
- group by 
-	 account
-) as subq
-on accounts.account = subq.account
-where data_model_runs > 5
-	
-```
+	```sql
+	select
+		sum(1) as activated_accounts
+	from accounts
+	left join (
+	select
+		sum(1) as data_model_runs, 
+		account
+	from data_model_runs
+	group by 
+		account
+	) as subq
+	on accounts.account = subq.account
+	where data_model_runs > 5
+	```
 
-The intermediate tables we would use to create this metric are:
-
-Accounts with the `data_model_runs` dimension
+The intermediate tables used to create this metric are: Accounts with the `data_model_runs` dimension
 
 | account | data_model runs |
 | --- | --- |
@@ -151,13 +150,15 @@ Accounts with the `data_model_runs` dimension
 | 3 | 9 |
 | 4 | 1 |
 
-We’ll filter the above table for  accounts with >5 data model runs, then count the number of accounts who meet this criteria.
+Then, filter this table to accounts with more than 5 data model runs and count the number of accounts that meet this criteria:
 
 | activated_accounts |
 | --- |
 | 2 |
 
-**Restrictions when using metrics in filter**
+## Considerations when using metrics in filter
 
-- We must be able to join the metric filter sub query to the outer query without fanning out the results. In our example filtering the accounts measure by `{{ Metric('data_model_runs', group_by=['account']) }}` is valid since we’re aggregating model runs to the account level, but filtering by `{{ Metric('data_model_runs', group_by=['model']) }}` is not since there is a one to many relationship between accounts and model runs
-- You can only group a metric by one entity. Support for grouping by multiple entities and dimensions is pending.
+- When using a metric filter, ensure the sub-query can join to the outer query without fanning out the result ( unexpectedly increasing the number of rows). 
+  - The example that filters the accounts measure using `{{ Metric('data_model_runs', group_by=['account']) }}` is valid because it aggregates the model runs to the account level.
+  - However, filtering by `{{ Metric('data_model_runs', group_by=['model']) }}` isn't valid due to a one-to-many relationship between accounts and model runs, leading to duplicate data.
+- You can only group a metric by one entity. The ability to support grouping by multiple entities and dimensions is pending.
