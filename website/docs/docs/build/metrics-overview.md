@@ -41,7 +41,7 @@ metrics:
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
-      null
+      null and {{ Metric('metric_name', group_by=['entity']) }} > 5
 ```
 </VersionBlock>
 
@@ -75,7 +75,7 @@ metrics:
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
-      null
+      null and {{ Metric('metric_name', group_by=['entity']) }} > 5
 ```
 </VersionBlock>
 
@@ -227,15 +227,21 @@ metrics:
 
 ## Filters
 
-A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, and time dimensions in filters:
+A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters:
+
 
 ```yaml
-filter: |
-  {{ Entity('entity_name') }} 
-filter: |
+filter: | 
+  {{ Entity('entity_name') }}
+
+filter: |  
   {{ Dimension('primary_entity__dimension_name') }}
-filter: |
+
+filter: |  
   {{ TimeDimension('time_dimension', 'granularity') }}
+
+filter: |  
+  {{ Metric('metric_name', group_by=['Entity']) }}
 ```
 
 ### Further configuration
