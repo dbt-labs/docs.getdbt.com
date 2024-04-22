@@ -27,7 +27,9 @@ dbt run --select "3+my_model+4"      # select my_model, its ancestors up to the 
 
 
 ### The "at" operator
-The `@` operator is similar to `+`, but will also include _the ancestors of the descendants of the selected model_. This is useful in continuous integration environments where you want to build a model and all of its descendants, but the _ancestors_ of those descendants might not exist in the database yet. The selector `@snowplow_web_page_context` will build all three models shown in the diagram below.
+The `@` operator is similar to `+`, but will also include _all ancestors of all descendants of the selected model_. This is useful in continuous integration environments where you want to build a model and all of its descendants, but the _ancestors_ of those descendants might not exist in the schema yet. The `@` operator (which can only be placed at the front of the model name) will select as many degrees of ancestors ("parents," "grandparents," and so on) as is needed to successfully build all descendants of the specified model. 
+
+The selector `@snowplow_web_page_context` will build all three models shown in the diagram below.
 
 <Lightbox src="/img/docs/running-a-dbt-project/command-line-interface/1643e30-Screen_Shot_2019-03-11_at_7.18.20_PM.png" title="@snowplow_web_page_context will select all of the models shown here"/>
 
