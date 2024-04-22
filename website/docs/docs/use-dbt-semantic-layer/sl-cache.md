@@ -14,7 +14,7 @@ There are two different types of caching:
 - [**Result caching**](#result-caching) leverages your data platform's built-in caching layer.
 - [**Declarative caching**](#declarative-caching) allows you to pre-warm the cache using saved queries.
 
-Use caching to speed up your queries and reduce compute time. The difference between the two is that result caching happens automatically by leveraging your data platform's cache. While declarative caching allows you to 'declare' the queries you specifically want to cache. With declarative caching, you need to anticipate which queries you want to cache.
+While you can use caching to speed up your queries and reduce compute time, knowing the difference between the two depends on your use case: result caching happens automatically by leveraging your data platform's cache, while declarative caching allows you to 'declare' the queries you specifically want to cache. With declarative caching, you need to anticipate which queries you want to cache.
 
 ## Prerequisites
 - dbt Cloud [Team or Enterprise](https://www.getdbt.com/) plan.
