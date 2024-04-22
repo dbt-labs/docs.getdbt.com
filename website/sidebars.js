@@ -2,10 +2,14 @@ const sidebarSettings = {
   docs: [
     "docs/introduction",
     {
-      type: "link",
-      label: "Guides",
-      href: `/guides`,
-    },
+      type: "category",
+      label: "Get started with dbt",
+      collapsed: true,
+      link: { type: "doc", id: "docs/get-started-dbt" },
+      items: [
+        "docs/get-started-dbt",
+      ],
+    }, // Get started quickstarts directory
     {
       type: "category",
       label: "Supported data platforms",
@@ -90,7 +94,7 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/set-up-sso-saml-2.0",
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
-                    "docs/cloud/manage-access/set-up-sso-azure-active-directory",
+                    "docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
                     "docs/cloud/manage-access/set-up-databricks-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
@@ -302,7 +306,11 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
-            "docs/build/sl-getting-started",
+            {
+              type: "link",
+              label: "Quickstart with the dbt Cloud Semantic Layer",
+              href: `/guides/sl-snowflake-qs`,
+            },
             {
               type: "category",
               label: "About MetricFlow",
@@ -418,6 +426,7 @@ const sidebarSettings = {
             "docs/deploy/jobs",
             "docs/deploy/deploy-jobs",
             "docs/deploy/ci-jobs",
+            "docs/deploy/merge-jobs",
             "docs/deploy/job-commands",
           ],
         },
@@ -455,6 +464,7 @@ const sidebarSettings = {
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
+            "docs/collaborate/dbt-explorer-faqs",
           ],
         },
         {
@@ -503,7 +513,11 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
         "docs/use-dbt-semantic-layer/dbt-sl",
-        "docs/use-dbt-semantic-layer/quickstart-sl",
+        {
+          type: "link",
+          label: "Quickstart with the dbt Cloud Semantic Layer",
+          href: `/guides/sl-snowflake-qs`,
+        },
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
@@ -974,6 +988,7 @@ const sidebarSettings = {
                 "reference/global-configs/parsing",
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
+                "reference/global-configs/resource-type",
                 "reference/global-configs/usage-stats",
                 "reference/global-configs/version-compatibility",
                 "reference/global-configs/warnings",

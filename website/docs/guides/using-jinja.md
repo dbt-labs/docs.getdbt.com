@@ -11,6 +11,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 In this guide, we're going to take a common pattern used in SQL, and then use Jinja to improve our code.
@@ -345,3 +347,5 @@ group by 1
 </File>
 
 You can then remove the macros that we built in previous steps. Whenever you're trying to solve a problem that you think others may have solved previously, it's worth checking the [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package to see if someone has shared their code!
+
+</div>

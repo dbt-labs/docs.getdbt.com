@@ -52,7 +52,7 @@ Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. 
 
 If you're a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right GQL connection parameters described in this document. 
 
-Refer to [Get started with the dbt Semantic Layer](docs/use-dbt-semantic-layer/quickstart-sl) for more info.
+Refer to [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs) for more info.
 
 
 ### Authentication 
@@ -405,7 +405,7 @@ gql_response.json() =>
 
 def to_arrow_table(byte_string: str) -> pa.Table:
   """Get a raw base64 string and convert to an Arrow Table."""
-  with pa.ipc.open_stream(base64.b64decode(res)) as reader:
+  with pa.ipc.open_stream(base64.b64decode(byte_string)) as reader:
     return pa.Table.from_batches(reader, reader.schema)
 
 
