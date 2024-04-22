@@ -91,12 +91,14 @@ dbt run --select "some_model"
 
 ### The "fqn" method
 
-The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN.
+The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN. The default FQN format is composed of the project name, subdirectories within the path, and the file name (without extension) separated by periods.
 
 ```bash
 dbt run --select "fqn:some_model"
 dbt run --select "fqn:your_project.some_model"
 dbt run --select "fqn:some_package.some_other_model"
+dbt run --select "fqn:some_path.some_model"
+dbt run --select "fqn:your_project.some_path.some_model"
 ```
 
 ### The "package" method
@@ -222,9 +224,9 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 
   ```bash
-dbt test --select "state:new "           # run all tests on new models + and new tests on old models
-dbt run --select "state:modified"        # run all models that have been modified
-dbt ls --select "state:modified"         # list all modified nodes (not just models)
+dbt test --select "state:new" --state path/to/artifacts      # run all tests on new models + and new tests on old models
+dbt run --select "state:modified" --state path/to/artifacts  # run all models that have been modified
+dbt ls --select "state:modified" --state path/to/artifacts   # list all modified nodes (not just models)
   ```
 
 
@@ -256,7 +258,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
   ```bash
 dbt run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
 dbt test --select "+exposure:*"                         # test all resources upstream of all exposures
-dbt ls --select "+exposure:*" --resource-type source    # list all sources upstream of all exposures
+dbt ls --select "+exposure:*" --resource-type snowplow  # list all sources of type "snowplow" upstream of all exposures
 ```
 
 ### The "metric" method
@@ -364,7 +366,7 @@ The `version` method selects [versioned models](/docs/collaborate/govern/model-v
 ```bash
 dbt list --select "version:latest"      # only 'latest' versions
 dbt list --select "version:prerelease"  # versions newer than the 'latest' version
-dbt list --select version:old         # versions older than the 'latest' version
+dbt list --select "version:old"         # versions older than the 'latest' version
 
 dbt list --select "version:none"        # models that are *not* versioned
 ```
@@ -380,8 +382,23 @@ Supported in v1.6 or newer.
 The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
 
 ```bash
-dbt list --select semantic_model:*        # list all semantic models 
-dbt list --select +semantic_model:orders  # list your semantic model named "orders" and all upstream resources
+dbt list --select "semantic_model:*"        # list all semantic models 
+dbt list --select "+semantic_model:orders"  # list your semantic model named "orders" and all upstream resources
+```
+
+</VersionBlock>
+
+### The "saved_query" method
+<VersionBlock lastVersion="1.6">
+Supported in v1.7 or newer.
+</VersionBlock>
+<VersionBlock firstVersion="1.7">
+
+The `saved_query` method selects [saved queries](/docs/build/saved-queries).
+
+```bash
+dbt list --select "saved_query:*"                    # list all saved queries 
+dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
 ```
 
 </VersionBlock>

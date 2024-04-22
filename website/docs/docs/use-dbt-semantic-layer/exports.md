@@ -44,18 +44,24 @@ An example of a saved query with an export:
 
 ```yaml
 saved_queries:
-  - name: YOUR_QUERY
-    description: YOUR_DESCRIPTION
+  - name: order_metrics
+    description: Relevant order metrics
     query_params:
       metrics:
-        - YOUR_METRIC_NAME
+        - orders
+        - large_order
+        - food_orders
+        - order_total
       group_by:
-        - TimeDimension()
+        - Entity('order_id')
+        - TimeDimension('metric_time', 'day')
+        - Dimension('customer__customer_name')
         - ... # Additional group_by
       where:
-        - ... # Additional where clauses
+        - "{{TimeDimension('metric_time')}} > current_timestamp - interval '1 week'"
+         - ... # Additional where clauses
     exports:
-      - name: YOUR_EXPORT
+      - name: order_metrics
         config:
           export_as: table # Options available: table, view
           schema: YOUR_SCHEMA # Optional - defaults to deployment schema
@@ -63,17 +69,6 @@ saved_queries:
 ```
 </File>
 
-You can use the following parameters to define an `export`:
-
-| Parameters | Type    | Required | Description    |
-| ------- | --------- | ---------- | ---------------- |
-| `name` | String    | Required     | Name of the `export` object.    |
-| `saved-query` | String    | Required     | Name of a saved query that could be used.    |
-| `select` | List or String   | Optional    | Specify the names of exports to select from the saved query. |
-| `exclude` | String  | Optional    | Specify the names of exports to exclude from the saved query. |
-| `export_as` | String  | Optional    | Type of export to create from the `export_as` types available in the config. Options available are `table` or `view`. |
-| `schema` | String  | Optional    | Schema to use for creating the table or view. |
-| `alias` | String  | Optional    | Table alias to use to write the table or view. |
 
 ## Run exports
 
@@ -84,11 +79,23 @@ Once you define exports in your dbt project, then you can run them. There are tw
 
 ### Exports in development
 
-You can run an export in your development environment using your development credentials if you want to test the output of the export before production. You can use the following command in the dbt Cloud CLI:
+You can run an export in your development environment using your development credentials if you want to test the output of the export before production. You can use the following command to run exports in the dbt Cloud CLI:
 
 ```bash
 dbt sl export
 ```
+
+The following table lists the options for `dbt sl export` command:  
+
+| Parameters | Type    | Required | Description    |
+| ------- | --------- | ---------- | ---------------- |
+| `name` | String    | Required     | Name of the `export` object.    |
+| `saved-query` | String    | Required     | Name of a saved query that could be used.    |
+| `select` | List or String   | Optional    | Specify the names of exports to select from the saved query. |
+| `exclude` | String  | Optional    | Specify the names of exports to exclude from the saved query. |
+| `export_as` | String  | Optional    | Type of export to create from the `export_as` types available in the config. Options available are `table` or `view`. |
+| `schema` | String  | Optional    | Schema to use for creating the table or view. |
+| `alias` | String  | Optional    | Table alias to use to write the table or view. |
 
 You can also run any export defined for the saved query and write the table or view in your development environment. Refer to the following command example and output:
 
@@ -186,7 +193,7 @@ When you run a build job, any saved queries downstream of the dbt models in that
 
 </VersionBlock>
 
-2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform.
+2. After dbt finishes building the models, the MetricFlow Server processes the exports, compiles the necessary SQL, and executes this SQL against your data platform. It directly executes a "create table" statement so the data stays within your data platform.
 3. Review the exports' execution details in the jobs logs and confirm the export was run successfully. This helps troubleshoot and to ensure accuracy. Since saved queries are integrated into the dbt DAG, all outputs related to exports are available in the job logs.
 4. Your data is now available in the data platform for querying.
 
@@ -234,7 +241,7 @@ You can use exports to create a custom integration with tools such as PowerBI, a
 
 <detailsToggle alt_header="How can I select saved_queries by their resource type?">
 
-To select `saved_queries` by resource type, run `dbt build --resource-type saved_queries`.
+To select `saved_queries` by resource type, run `dbt build --resource-type saved_query`.
 
 </detailsToggle>
 

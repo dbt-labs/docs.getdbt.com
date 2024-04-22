@@ -6,6 +6,9 @@ icon: 'snowflake'
 tags: ['dbt Cloud','Quickstart','Snowflake']
 hide_table_of_contents: true
 ---
+
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It will show you how to: 
@@ -474,7 +477,9 @@ Sources make it possible to name and describe the data loaded into your warehous
     models will still query from the same raw data source in Snowflake. By using `source`, you can
     test and document your raw data and also understand the lineage of your sources. 
 
+</div> 
 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
 <Snippet path="quickstarts/schedule-a-job" />
+

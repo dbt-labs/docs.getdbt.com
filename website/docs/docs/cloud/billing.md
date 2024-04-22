@@ -53,31 +53,31 @@ Examples of queried metrics include:
 - Querying one metric, grouping by one dimension → 1 queried metric 
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time
+  dbt sl query --metrics revenue --group-by metric_time
   ```
 
 - Querying one metric, grouping by two dimensions → 1 queried metric 
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time,user__country
+  dbt sl query --metrics revenue --group-by metric_time,user__country
   ```
 
 - Querying two metrics, grouping by two dimensions → 2 queried metrics 
 
   ```shell
-  dbt sl query --metrics revenue,gross_sales --group_by metric_time,user__country
+  dbt sl query --metrics revenue,gross_sales --group-by metric_time,user__country
   ```
 
 - Running an explain for one metric → 1 queried metric
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time --explain
+  dbt sl query --metrics revenue --group-by metric_time --explain
   ```
 
 - Running an explain for two metrics → 2 queried metrics
 
   ```shell
-  dbt sl query --metrics revenue,gross_sales --group_by metric_time --explain
+  dbt sl query --metrics revenue,gross_sales --group-by metric_time --explain
   ```
 
 ### Viewing usage in the product 
@@ -134,7 +134,7 @@ Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain o
 
 :::note Legacy Semantic Layer
 
-For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/docs/use-dbt-semantic-layer/quickstart-sl#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
+For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/guides/sl-snowflake-qs#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
 
 :::
 
