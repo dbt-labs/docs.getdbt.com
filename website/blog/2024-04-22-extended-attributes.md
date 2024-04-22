@@ -1,0 +1,103 @@
+---
+title: "Maximum override: Configuring unique connections in dbt Cloud"
+description: "An exploration of new dbt Cloud features that enable multiple unique connections to data platforms within a project."
+slug: configuring-unique-connections-in-dbt-cloud
+
+authors: [gwen_windflower]
+
+tags: [analytics_craft, dbt_tutorials]
+hide_table_of_contents: false
+
+date: 2024-04-22
+is_featured: true
+---
+
+dbt Cloud has a suite of new features that enable configuring precise and unique connections to data platforms at the Environment and User level. These enable more sophisticated setups, like connecting a project to multiple warehouse accounts, first class support for Staging environments, and User-level overrides for specific dbt versions. This gives dbt Cloud developers the features they need to tackle more complex tasks, like Write-Audit-Publish workflows and safely testing dbt version upgrades. While you still configure a default connection at the Project level and per-developer, you now have tools to get more advanced in a secure way. Soon, dbt Cloud will take this even further allowing multiple connections to be set globally and reused via Global Connections.
+
+<!--truncate-->
+
+The first new feature we’re going to look at is called Extended Attributes.
+
+## Profile pick
+
+Extended Attributes are a tool that brings the flexibility of dbt Core’s `profiles.yml` configuration to dbt Cloud. Before Extended Attributes, you configured a project-level connection, and were mostly stuck with it. You could develop and orchestrate into different schemas to keep development work away from production, or configure a staging layer with manual workarounds, but beyond that things got more challenging. By borrowing the flexibility of `profiles.yml`, which allows configuring as many unique connections as you need, you can now do the same with the security and orchestration tools in dbt Cloud.
+
+## How Extended Attributes Work
+
+Extended Attributes are a textbox on the Environment settings page, where you can input `profiles.yml` type configurations. When developing in the dbt Cloud IDE, dbt Cloud CLI, or orchestrating job runs, dbt Cloud will parse through the provided Extended Attributes YAML and merge it with your base project connection settings. If the attribute exists in another source (at present this would typically be your project connection settings or the Job's configurations), it will _replace_ its value, including overriding any custom environment variables. If the attribute doesn't exist, it will add the attribute to the connection config. You [can check out the documentation](https://docs.getdbt.com/docs/deploy/deploy-environments#extended-attributes) for more specific details, but now that you’ve got the basic idea, let’s dive into some examples to see why this is so cool.
+
+## Multiple accounts for Development and Production environments
+
+The most pressing use case for dbt Cloud users is the ability to use different account connections for different teams or development stages in their pipelines. Let’s consider a team that has a typical dev, staging, production setup (known as a Write-Audit-Publish [WAP] workflow): development for active work with small datasets, staging to promote and vet changes against cloned production data, and production for the final deployed code that feeds BI tools. For this team though, these are separate _accounts_ in their data platform with their own sets of RBAC and other settings. This is a perfect use case for extended attributes. Let’s take a look at how they might set this up for a company that uses multiple BigQuery accounts, projects, and datasets (projects and datasets are analogous to databases and schemas on other platforms like Snowflake) to separate Dev, Staging, and Prod:
+
+![Extended Attributes text box](/img/blog/2024-04-10-extended-attributes/ext_attr.png)
+
+_<small>At the bottom of an Environment's Settings you’ll find the Extended Attributes text box.</small>_
+
+### Development
+
+```yaml
+account: 123dev
+project: dev
+dataset: dbt_winnie
+method: oauth
+threads: 1
+```
+
+### Staging
+
+```yaml
+account: 123dev
+project: staging
+dataset: main
+method: service-account-json
+threads: 16
+```
+
+### Production
+
+```yaml
+account: 456prod
+project: analytics
+dataset: main
+method: service-account-json
+threads: 16
+```
+
+With this setup, we have a separate account for development work, using individual development datasets for each developer (with a single thread so that the development build logs are easier to read) connected via OAuth, and a shared `staging` project with a default `main` dataset for the Staging environment that is only built to via a GCP Service Account through dbt Cloud. In that project we can then configure IAM permissions to only allow building into the Staging schema from jobs that use the Staging environment as well.
+
+Production is then pointed to a _completely separate account_ that is only writable from Production environment builds and readable from the BI tool.
+
+It’s really that simple. This works with PrivateLink connections handling the authentication as well! Again, while we have 1 project connection that is the _default_, you can now configure unique connections securely _per Environment_.
+
+## All the world a Stage
+
+We touched on Staging Environments above in discussing Extended Attributes, but let's dig deeper into how dbt Cloud now supports those in a first class way. You now have the option when configuring an Environment to choose Development, Production, _or_ Staging. When you can configure an Environment as a Staging type, you’ll unlock new abilities, most importantly the ability to defer to _that_ Environment for Development work. This fully enables a proper Write-Audit-Publish flow, where Development work is built against and promoted to Staging before being merged into a Production branch when releases have been tested.
+
+All you need to do is configure an Environment as Staging, and toggle the control in the dbt Cloud IDE to “Defer to staging/production”. This will favor a Staging environment over Prod if you have one set up.
+
+![Configure environment as Staging](/img/blog/2024-04-10-extended-attributes/env_settings.png)
+_<small>You can now designate a Staging Environment in a first-class way.</small>_
+
+![Defer to staging/production](/img/blog/2024-04-10-extended-attributes/defer_to_stage.png)
+_<small>Make sure to toggle on 'Defer to staging/production' to save time and money!</small>_
+
+## Upgrading on a curve
+
+Lastly let’s consider a more specialized use case. Imagine we have a ‘tiger team’ (consisting of a lone analytics engineer named Dave) tasked with upgrading from dbt version 1.6 to the new ‘Keep on latest version’ setting, to take advantage of added stability and feature access. We want to keep the rest of the data team being productive in dbt 1.6 for the time being, while enabling Dave to upgrade and do his work in the new versionless mode.
+
+### The Development Environment
+
+![Development Environment configured to be 1.6 by default](/img/blog/2024-04-10-extended-attributes/dbt_version.png)
+
+The Development Environment is configured to be 1.6 by default.
+
+### Dave’s Development connection settings
+
+![Dave's development version override](/img/blog/2024-04-10-extended-attributes/dave_version.png)
+
+## Launch Special
+
+Each connection you make from every environment is now unique. You can deploy, develop, and test your data with a setup that molds to your organization, not to what’s available in dbt Cloud. Whether you’re looking to create advanced, layered environments to launch new models safely, or enable greater independence between developers, dbt Cloud extends to support what you need. The best part is, we're just getting started: the upcoming Global Connections feature set will take this even further, allowing you to set multiple connections globally and reuse them wherever needed.
+
+I encourage you to take these new features for a spin by creating a Staging environment, configuring the unique connections you need to enable it at your org, and seeing how it can make your data team more efficient and secure. As always, if you need help or have questions, the [dbt Community Forum](https://discourse.getdbt.com/) and [Slack](https://www.getdbt.com/community/join-the-community) are here to support you. Happy modeling!
