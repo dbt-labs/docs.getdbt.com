@@ -8,6 +8,7 @@ sidebar_label: "Metrics as dimensions with metric filters"
 Metrics provide users with valuable insights into their data, such as the number of active users. They also are used to track performance, trend, and help businesses made important decisions. Dimensions, on the other hand, are attributes that help categorize data, such as user type or number of orders placed by a customer.
 
 To make informed business decisions, some metrics need the value of another metric as part of the metric definition.
+
 ## Use cases
 Some use cases where using metrics as dimensions might be useful are:
 
@@ -53,44 +54,48 @@ from
     activated_accounts
 ```
 
-When calculating `activated_accounts`, we are using the `data_model_runs` metric as a dimensions for the user entity, since we are filtering on the metric value scoped to the account entity. We can express this logic natively in the MetricFlow spec
+This previous SQL query calculates the number of `activated_accounts` by using the `data_model_runs` metric as a dimension for the user entity. It filters based on the metric value scoped to the account entity. You can express this logic natively in the MetricFlow specification.
 
-**How to reference a metric in a metric filter**
+### Reference a metric in a filter
 
-We can recreate this pattern in MetricFlow by referencing a metric in the where filter for another metric using the `Metric()` object syntax. The function for referencing a metric takes a metric name and exactly one entity 
+You can recreate this pattern in MetricFlow by referencing a metric in the `where` filter for another metric using the `Metric()` object syntax. The function for referencing a metric takes a metric name and exactly one entity:
 
 ```yaml
-{{Metric(metric_name, group_by=['entity'])}}  
+{{ Metric('metric_name', group_by=['Entity']) }}
 ```
 
-Let’s use the same activated accounts metric as an example. First, I'll create two semantic models, `model_runs` and `accounts`. Next, I will create a measure and metric to count data model runs, and another measure to count users. I’ll also specify the foreign entity `account`  in the `model_runs` semantic model.
+Using the same `activated_accounts` metric as an example:
+- Create two semantic models, `model_runs` and `accounts`. 
+- Then create a `measure` and `metric` to count data model runs, and another measure to count users.
+- Specify the foreign entity `account` in the `model_runs` semantic model.
 
 ```yaml
 semantic_models:
-	- name: model_runs
-	  ...
-	  entities:
-	    - name: model_run
-	      type: primary
-	    - name: account
-	      type: foreign
-		measures:
-		 - name: data_model_runs
-			 agg: sum
-			 expr: 1
-			 create_metric: true
-	- name: accounts
-	  ...
-	  entities:
-	    - name: account
-	      type: primary
-		measures:
-		 - name: accounts
-			 agg: sum
-			 expr: 1
+  - name: model_runs
+    .... # Placeholder for other configurations
+	entities:
+      - name: model_run
+        type: primary
+      - name: account
+        type: foreign
+    measures:
+      - name: data_model_runs
+        agg: sum
+        expr: 1
+        create_metric: true
+
+  - name: accounts
+  	.... # Placeholder for other configurations
+	entities:
+      - name: account
+        type: primary
+    measures:
+      - name: accounts
+        agg: sum
+        expr: 1
 ```
 
-Now I can create the `Activated Accounts` metric by filtering accounts that have > 5 data model runs
+- Then create the `Activated Accounts` metric by filtering accounts that have more than five data model runs:
 
 ```yaml
 metrics:
