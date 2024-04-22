@@ -35,8 +35,10 @@ Different data platforms might have different caching layer and cache invalidati
 
 - [BigQuery](https://cloud.google.com/bigquery/docs/cached-results)
 - [DataBricks](https://docs.databricks.com/en/optimizations/disk-cache.html)
+- [Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/data-warehouse/caching)
 - [Redshift](https://docs.aws.amazon.com/redshift/latest/dg/c_challenges_achieving_high_performance_queries.html#result-caching)
 - [Snowflake](https://community.snowflake.com/s/article/Caching-in-the-Snowflake-Cloud-Data-Platform)
+- [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/data-engineering/optimization-performance-and-quality/workload-optimization/warp-speed-enabled.html)
 
 ## Declarative caching
 
