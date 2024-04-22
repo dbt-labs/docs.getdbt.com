@@ -4,7 +4,6 @@ sidebar_label: "Merge jobs"
 description: "Learn how to trigger a dbt job run when a Git pull request merges."
 ---
 
-# Merge jobs in dbt Cloud <Lifecycle status="beta" />
 
 You can set up a merge job to implement a continuous development (CD) workflow in dbt Cloud. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This creates a seamless development experience where changes made in code will automatically update production data. 
 
@@ -12,7 +11,9 @@ By using CD in dbt Cloud, you can take advantage of deferral to build only the e
 
 ## Prerequisites
 - You have a dbt Cloud account. 
-- You have access to the beta release for this functionality. 
+- You have set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
+   - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
+- You are set up to receive push notifications from your Git provider. For details, refer to [Job notifications](/docs/deploy/job-notifications). 
 
 ## Set up job trigger on Git merge {#set-up-merge-jobs}
 
