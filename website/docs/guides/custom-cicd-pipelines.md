@@ -58,6 +58,12 @@ Here’s a quick look at what this pipeline will accomplish:
 
 This job will take a bit more to setup, but is a good example of how to call the dbt Cloud API from a CI/CD pipeline. The concepts presented here can be generalized and used in whatever way best suits your use case.
 
+:::tip Run on merge
+
+If your Git provider has a native integration with dbt Cloud, you can take advantage of setting up [Merge jobs](/docs/deploy/merge-jobs) in the UI.
+
+:::
+
 The setup below shows how to call the dbt Cloud API to run a job every time there's a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
 
 ### 1. Get your dbt Cloud API key
@@ -509,7 +515,7 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 
 If your git provider is not one with a native integration with dbt Cloud, but you still want to take advantage of CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a dbt Cloud job when a pull request (PR) is created.
 
-:::info Run on PR
+:::tip Run on PR
 
 If your git provider has a native integration with dbt Cloud, you can take advantage of the setup instructions [here](/docs/deploy/ci-jobs).
 This section is only for those projects that connect to their git repository using an SSH key.
