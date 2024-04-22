@@ -7,15 +7,38 @@ Adapters are an essential component of dbt. At their most basic level, they are 
 
 This section provides more details on different ways you can connect dbt to an adapter, and explains what a maintainer is.
 
-### Set up in dbt Cloud
+## Set up in dbt Cloud
 
 Explore the fastest and most reliable way to deploy dbt using dbt Cloud, a hosted architecture that runs dbt Core across your organization. dbt Cloud lets you seamlessly [connect](/docs/cloud/about-cloud-setup) with a variety of [trusted](/docs/supported-data-platforms) data platform providers directly in the dbt Cloud UI.
 
-### Install with dbt Core
+## Install with dbt Core
 
 Install dbt Core, an open-source tool, locally using the command line. dbt communicates with a number of different data platforms by using a dedicated  adapter plugin for each. When you install dbt Core, you'll also need to install the specific adapter for your database, [connect to dbt Core](/docs/core/about-core-setup), and set up a `profiles.yml` file.
 
 With a few exceptions [^1], you can install all [adapters](/docs/supported-data-platforms) from PyPI using `python -m pip install adapter-name`. For example to install Snowflake, use the command `python -m pip install dbt-snowflake`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/core/installation-overview).
+
+<expandable alt_header="List of trusted adapters and their supported dbt versions" >
+
+|  <div style={{width:'300px'}}>Trusted adapter</div> | <div style={{width:'300px'}}>Supported dbt Core version</div> |
+|-----------------|----------------------------|
+| <img src="/img/icons/alloydb.svg" width="25" /> **AlloyDB** | v1.0.0 and newer |
+| <img src="/img/icons/apache-spark.svg" width="25" /> **Apache Spark** | v0.15.0 and newer |
+| <img src="/img/icons/athena.svg" width="25" /> **Athena** | v1.3.0 and newer |
+| <img src="/img/icons/rocket.svg" width="25" /> **Azure Synapse** | v0.18.0 and newer |
+| <img src="/img/icons/bigquery.svg" width="25" /> **BigQuery** | v0.10.0 and newer |
+| <img src="/img/icons/databricks.svg" width="25" /> **Databricks** | v0.18.0 and newer |
+| <img src="/img/icons/dremio.svg" width="25" /> **Dremio** | v1.2.0 and newer |
+| <img src="/img/icons/glue.svg" width="25" /> **Glue** | v0.24.0 and newer |
+| <img src="/img/icons/materialize.svg" width="25" /> **Materialize** | v0.18.1 and newer |
+| <img src="/img/icons/fabric.svg" width="25" /> **Microsoft Fabric** | v1.4.0 and newer |
+| <img src="/img/icons/oracle.svg" width="25" /> **Oracle Autonomous Database** | v1.2.1 and newer |
+| <img src="/img/icons/postgres.svg" width="25" /> **Postgres** | v0.4.0 and newer |
+| <img src="/img/icons/redshift.svg" width="25" /> **Redshift** | v0.10.0 and newer |
+| <img src="/img/icons/snowflake.svg" width="25" /> **Snowflake** | v0.8.0 and newer |
+| <img src="/img/icons/starburst.svg" width="25" /> **Starburst and Trino** | v0.20.0 and newer |
+| <img src="/img/icons/teradata.svg" width="25" /> **Teradata** | v0.21.0 and newer |
+
+</expandable>
 
 [^1]: Use the PyPI package name when installing with `pip`
 
