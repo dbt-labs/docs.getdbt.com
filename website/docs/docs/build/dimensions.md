@@ -79,8 +79,7 @@ semantic_model:
 ```
 
 ## Dimensions types
-
-Dimensions have 3 types. This section further explains the definitions and provides examples.
+This section further explains the dimension definitions, along with examples. Dimensions have the following types:
 
 - [Dimensions types](#dimensions-types)
   - [Categorical](#categorical)
