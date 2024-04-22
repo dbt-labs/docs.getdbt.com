@@ -11,8 +11,8 @@ The dbt Semantic Layer allows you to cache common queries in order to speed up p
 
 There are two different types of caching:
 
-- [**Result caching**](#result-caching) leverages your data platform's built-in caching layer.
-- [**Declarative caching**](#declarative-caching) allows you to pre-warm the cache using saved queries.
+- [Result caching](#result-caching) leverages your data platform's built-in caching layer.
+- [Declarative caching](#declarative-caching) allows you to pre-warm the cache using saved queries.
 
 While you can use caching to speed up your queries and reduce compute time, knowing the difference between the two depends on your use case: result caching happens automatically by leveraging your data platform's cache, while declarative caching allows you to 'declare' the queries you specifically want to cache. With declarative caching, you need to anticipate which queries you want to cache.
 
@@ -20,7 +20,7 @@ While you can use caching to speed up your queries and reduce compute time, know
 - dbt Cloud [Team or Enterprise](https://www.getdbt.com/) plan.
 - dbt Cloud environments on dbt version 1.6 or higher. Or  select [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
 - A successful job run and [production environment](/docs/deploy/deploy-environments#set-as-production-environment).
-- For declarative caching, you need to have [exports](/docs/use-dbt-semantic-layer/exports) defined in your [saved queries](/docs/build/saved-queries) YAML file configuration.
+- For declarative caching, you need to have [exports](/docs/use-dbt-semantic-layer/exports) defined in your [saved queries](/docs/build/saved-queries) YAML configuration file.
 
 ## Result caching
 
