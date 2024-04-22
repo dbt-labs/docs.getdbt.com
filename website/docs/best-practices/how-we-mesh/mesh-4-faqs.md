@@ -190,7 +190,7 @@ We also expose some of this information in dbt Cloud itself in [jobs](/docs/depl
 
 <detailsToggle alt_header="Can dbt Mesh reference models in other accounts within the same data platform?">
 
-You can reference models in other accounts within the same data platform, by leveraging the data-sharing capabilities of that platform as long as the database identifier of the public model is consistent across the producer and consumer. 
+You can reference models in other accounts within the same data platform by leveraging the data-sharing capabilities of that platform, as long as the database identifier of the public model is consistent across the producer and consumer. 
 
 For example, [Snowflake cross-account data shares](https://docs.snowflake.com/en/user-guide/data-sharing-intro), [Databricks Unity Catalog across workspaces](https://docs.databricks.com/en/data-governance/unity-catalog/index.html), or multiple BigQuery projects. 
 
