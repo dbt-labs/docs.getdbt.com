@@ -39,7 +39,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 To leverage dbt Mesh, you need the following:
 
 - You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="enterprise"/>
-- You have access to a cloud data platform, permissions to load the sample data tables, and dbt Cloud permissions to create new projects.
+- You have access to a cloud data platform, permissions to load the sample data tables, and dbt Cloud permissions to create new projects. 
 - Set your development and deployment [environments](/docs/dbt-cloud-environments) to use dbt [version](/docs/dbt-versions/core) 1.6 or later. You can also opt [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version of dbt.
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
@@ -82,6 +82,21 @@ To [create](/docs/cloud/about-cloud-setup) a new project in dbt Cloud:
     - A data platform connection
     - New git repo
     - One or more [environments](/docs/deploy/deploy-environments) (such as development, deployment)
+
+### Create a production environment
+In dbt Cloud, each project can have one deployment environment designated as "Production.". You must set up a ["Production" or "Staging" deployment environment](/docs/deploy/deploy-environments) for each project you want to "mesh" together. This enables you to leverage dbt Explorer in the [later steps](https://docs.getdbt.com/guides/mesh-qs?step=5#create-and-run-a-dbt-cloud-job) of this guide.
+
+To set a production environment:
+1. Navigate to **Deploy** -> **Environments**, then click **Create New Environment**.
+2. Select **Deployment** as the environment type.
+3. Under **Set deployment type**, select the **Production** button.
+4. Select the dbt version.
+5. Continue filling out the fields as necessary in the **Deployment connection** and **Deployment credentials** sections.
+6. Click **Test Connection** to confirm the deployment connection.
+6. Click **Save** to create a production environment.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings.jpg" width="70%" title="Set your production environment as the default environment in your Environment Settings"/>
+
 
 ## Set up a foundational project
 
@@ -204,7 +219,7 @@ Now that you've set up the foundational project, let's start building the data a
 Before a downstream team can leverage assets from this foundational project, you need to first:
 - [Create and define](/docs/collaborate/govern/model-access) at least one model as “public”
 - Run a [deployment job](/docs/deploy/deploy-jobs) successfully
-  - Note, Enable the **Generate docs on run** toggle for this job to update the dbt Explorer. Once run, you can link dbt Explorer to a deployment job on the **Project Settings** page (Refer to [artifacts](/docs/deploy/artifacts) for more information).
+  - Note, Enable the **Generate docs on run** toggle for this job to update the dbt Explorer. Once run, you can click Explore from the upper menu bar and see your lineage, tests, and documentation coming through successfully.
 
 ## Define a public model and run first job
 
@@ -270,6 +285,9 @@ Note: By default, model access is set to "protected", which means they can only 
 4. Merge your changes to the main or production branch.
 
 ### Create and run a dbt Cloud job
+
+Before a downstream team can leverage assets from this foundational project, you need to [create a production environment](https://docs.getdbt.com/guides/mesh-qs?step=3#create-a-production-environment) and run a [deployment job](/docs/deploy/deploy-jobs) successfully.
+
 To run your first deployment dbt Cloud job, you will need to create a new dbt Cloud job.  
 1. Click **Deploy** and then **Jobs**. 
 2. Click **Create job** and then **Deploy job**.
@@ -280,10 +298,7 @@ To run your first deployment dbt Cloud job, you will need to create a new dbt Cl
 4. Then, click **Run now** to trigger the job.
 <Lightbox src="/img/guides/dbt-mesh/job_run_now.png" width="80%" title="Trigger a job by clicking the 'Run now' button." />
 
-5. After the run is complete, navigate to **Project Setting** and go to the **Artifacts** section to link the documentation to the job.
-<Lightbox src="/img/guides/dbt-mesh/set_project_artifacts.png" width="80%" title="Configure project artifacts." />
-
-6. After configuring artifacts, click **Explore** from the upper menu bar. You should now see your lineage, tests, and documentation coming through successfully.
+5. After the run is complete, click **Explore** from the upper menu bar. You should now see your lineage, tests, and documentation coming through successfully.
 
 ## Reference a public model in your downstream project
 
@@ -362,7 +377,7 @@ Now that you've set up the foundational project, let's start building the data a
 
 ### Reference the public model
 
-You're now set to add a model that explores how payment types vary throughout a customer's journey. This helps determine whether coupon gift cards decrease with repeat purchases, as our marketing team anticipates, or remains consistent.
+You're now set to add a model that explores how payment types vary throughout a customer's journey. This helps determine whether coupon gift cards decrease with repeat purchases, as our marketing team anticipates, or remain consistent.
 
 1. To reference the model, use the following logic to ascertain this:
 
@@ -405,10 +420,10 @@ You're now set to add a model that explores how payment types vary throughout a 
 2. Notice the cross-project ref at work! When you add the `ref`, the dbt Cloud IDE's auto-complete feature recognizes the public model as available.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_autocomplete.png" title="Cross-project ref autocomplete in the dbt Cloud IDE" />
 
-1. This automatically resolves (or links) to the correct database, schema, and table/view set by the upstream project.
+3. This automatically resolves (or links) to the correct database, schema, and table/view set by the upstream project.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_compile.png" title="Cross-project ref compile" />
 
-1. You can also see this connection displayed in the live **Lineage** tab.
+4. You can also see this connection displayed in the live **Lineage** tab.
 <Lightbox src="/img/guides/dbt-mesh/cross_proj_ref_lineage.png" title="Cross-project ref lineage" />
 
 ## Add model versions and contracts
@@ -534,7 +549,7 @@ select * from {{ ref('fct_orders') }}
 ## Add a dbt Cloud job in the downstream project
 Before proceeding, make sure you commit and merge your changes in both the “Jaffle | Data Analytics” and “Jaffle | Finance” projects.
 
-A member of the Finance team would like to schedule a dbt Cloud job their customer payment journey analysis immediately after the data analytics team refreshes their pipelines.
+A member of the Finance team would like to schedule a dbt Cloud job for their customer payment journey analysis immediately after the data analytics team refreshes their pipelines.
 
 1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Deploy** and then **Jobs**. 
 2. Then click **Create job** and then **Deploy job**.
@@ -544,9 +559,9 @@ A member of the Finance team would like to schedule a dbt Cloud job their custom
 
 5. Click **Save** and verify the job is set up correctly.
 6. Go to the “Jaffle | Data Analytics” jobs page. Select the **Daily job** and click **Run now**. 
-7. Once this job completes successfully, go back the “Jaffle | Finance” jobs page. You should see that the Finance team’s job was triggered automatically.
+7. Once this job completes successfully, go back to the “Jaffle | Finance” jobs page. You should see that the Finance team’s job was triggered automatically.
 
-This simplifies the process of staying in sync with the upstream tables and removes the need for more sophisticated orchestration skills, such coordinating jobs across projects via an external orchestrator.
+This simplifies the process of staying in sync with the upstream tables and removes the need for more sophisticated orchestration skills, such as coordinating jobs across projects via an external orchestrator.
 
 ## View deprecation warning
 
