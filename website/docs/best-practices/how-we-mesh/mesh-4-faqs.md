@@ -188,13 +188,21 @@ We also expose some of this information in dbt Cloud itself in [jobs](/docs/depl
 
 </detailsToggle>
 
+<detailsToggle alt_header="Can dbt Mesh reference models in other accounts within the same data platform?">
+
+You can reference models in other accounts within the same data platform, by leveraging the data-sharing capabilities of that platform as long as the database identifier of the public model is consistent across the producer and consumer. 
+
+For example, [Snowflake cross-account data shares](https://docs.snowflake.com/en/user-guide/data-sharing-intro), [Databricks Unity Catalog across workspaces](https://docs.databricks.com/en/data-governance/unity-catalog/index.html), or multiple BigQuery projects. 
+
+</detailsToggle>
+
 ## Permissions and access
 
 <detailsToggle alt_header="How do user access permissions work in dbt Mesh? ">
 
 The existence of projects that have at least one public model will be visible to everyone in the organization with [read-only access](/docs/cloud/manage-access/seats-and-users). 
 
-Private or protected models require a user to have read-only access on the specific project in order to see its existence.
+Private or protected models require a user to have read-only access to the specific project to see its existence.
 
 </detailsToggle>
 
@@ -223,7 +231,7 @@ Because dbt does not implicitly coordinate data warehouse `grants` with model-le
 
 <detailsToggle alt_header="Is it possible to request access permissions from other teams within dbt Cloud?">
 
-Not currently! But this is something we may evaluate for the future.
+Not currently! But this is something we may evaluate in the future.
 
 </detailsToggle>
 
