@@ -23,7 +23,7 @@ To automatically rotate your API key:
 
 <TabItem value="Manual">
 
-1. Rotate your [User API token](/docs/dbt-cloud-apis/user-tokens) by replacing `YOUR_USER_ID`, `YOUR_CURRENT_PAT_TOKEN`, and `YOUR_ACCESS_URL `with your information in the following request.
+1. Rotate your [User API token](/docs/dbt-cloud-apis/user-tokens) by replacing `YOUR_USER_ID`, `YOUR_CURRENT_PAT_TOKEN`, and `YOUR_ACCESS_URL` with your information in the following request.
 
 ```
 curl --location --request POST 'https://cloud.getdbt.com/api/v3/accounts/YOUR_ACCOUNT_ID/users/YOUR_USER_ID/apikey/' \
