@@ -18,7 +18,7 @@ You can only have one of the three MFA methods configured per user. These are en
 
 <Lightbox src="/img/docs/dbt-cloud/mfa-enrollment.png" title="Select MFA enrollment method" />
 
-Choose the next steps based on your enrollment selection:
+Choose the next steps based on your preferred enrollment selection:
 
 <expandable alt_header="SMS verification code" >
 
