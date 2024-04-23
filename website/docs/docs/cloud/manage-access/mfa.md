@@ -12,7 +12,7 @@ dbt Cloud provides multiple options for multi-factor authentication (MFA). MFA p
 
 ## Configuration
 
-You may have one of the three MFA methods configured per user. These are enabled at the user level, not the account level.
+You can only have one of the three MFA methods configured per user. These are enabled at the user level, not the account level.
 
 1. Navigate to the **Account settings** and under **Your profile** click on **Password & Security**. Click **Enroll** next to the preferred method.
 
