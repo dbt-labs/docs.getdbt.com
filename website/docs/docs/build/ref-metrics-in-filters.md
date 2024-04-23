@@ -11,13 +11,6 @@ To make informed business decisions, some metrics need the value of another metr
 
 This document explains how you can use metrics as dimensions with metric filters, enabling you to create more complex metrics and gain more insights.
 
-## Use cases
-Some example use cases where using metrics as dimensions might be useful are:
-
-- User segments: Segment users by using the number of orders placed by a user in the last 7 days as a dimension.
-- Churn prediction: Use the number of support tickets an account submitted in the first 30 days to predict potential churn.
-- Activation tracking: Define account or user activation based on the specific actions taken within certain number of days after signing up.
-
 ### Example
 
 As an example, a Software as a service (SaaS) company wants to count activated accounts. In this case, the definition of an activated account is an account with more than five data model runs.  
@@ -63,7 +56,7 @@ The previous SQL query calculates the number of `activated_accounts` by using th
 Use the `Metric()` object syntax to reference a metric in the `where` filter for another metric. The function for referencing a metric accepts a metric name and exactly one entity:
 
 ```yaml
-{{ Metric('metric_name', group_by=['Entity']) }}
+{{ Metric('metric_name', group_by=['entity_name']) }}
 ```
 
 **YAML configuration**
@@ -88,7 +81,7 @@ semantic_models:
       - name: data_model_runs
         agg: sum
         expr: 1
-        create_metric: true
+        create_metric: true # The 'create_metric: true' attribute automatically creates the 'data_model_runs' metric.
 
   - name: accounts
     ... # Placeholder for other configurations
@@ -127,18 +120,17 @@ Let’s break down the SQL the system generates based on the metric definition w
 
 	```sql
 	select
-		sum(1) as activated_accounts
+      sum(1) as activated_accounts
 	from accounts
-	left join (
-	select
-		sum(1) as data_model_runs, 
-		account
-	from data_model_runs
-	group by 
-		account
-	) as subq
-	on accounts.account = subq.account
-	where data_model_runs > 5
+  left join (
+      select
+          sum(1) as data_model_runs, 
+		      account
+	    from data_model_runs
+	    group by 
+		      account
+  ) as subq on accounts.account = subq.account
+  where data_model_runs > 5
 	```
 
 The intermediate tables used to create this metric are: Accounts with the `data_model_runs` dimension
@@ -150,7 +142,7 @@ The intermediate tables used to create this metric are: Accounts with the `data_
 | 3 | 9 |
 | 4 | 1 |
 
-Then, filter this table to accounts with more than 5 data model runs and count the number of accounts that meet this criteria:
+MetricFlow then filters this table to accounts with more than 5 data model runs and counts the number of accounts that meet this criteria:
 
 | activated_accounts |
 | --- |
@@ -158,7 +150,11 @@ Then, filter this table to accounts with more than 5 data model runs and count t
 
 ## Considerations when using metrics in filter
 
-- When using a metric filter, ensure the sub-query can join to the outer query without fanning out the result ( unexpectedly increasing the number of rows). 
+- When using a metric filter, ensure the sub-query can join to the outer query without fanning out the result (unexpectedly increasing the number of rows).
   - The example that filters the accounts measure using `{{ Metric('data_model_runs', group_by=['account']) }}` is valid because it aggregates the model runs to the account level.
-  - However, filtering by `{{ Metric('data_model_runs', group_by=['model']) }}` isn't valid due to a one-to-many relationship between accounts and model runs, leading to duplicate data.
+  - However, filtering the 'accounts' measure by `{{ Metric('data_model_runs', group_by=['model']) }}` isn't valid due to a one-to-many relationship between accounts and model runs, leading to duplicate data.
 - You can only group a metric by one entity. The ability to support grouping by multiple entities and dimensions is pending.
+- In the future, you can use metrics as dimensions for some of the following example use cases:
+  - User segments: Segment users by using the number of orders placed by a user in the last 7 days as a dimension.
+  - Churn prediction: Use the number of support tickets an account submitted in the first 30 days to predict potential churn.
+  - Activation tracking: Define account or user activation based on the specific actions taken within certain number of days after signing up.

@@ -41,7 +41,7 @@ metrics:
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
-      null and {{ Metric('metric_name', group_by=['entity']) }} > 5
+      null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
 ```
 </VersionBlock>
 
@@ -75,8 +75,9 @@ metrics:
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
-      null and {{ Metric('metric_name', group_by=['entity']) }} > 5
+      null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
 ```
+
 </VersionBlock>
 
 This page explains the different supported metric types you can add to your dbt project.
@@ -113,7 +114,7 @@ metrics:
             conversion_property: DIMENSION or ENTITY 
 ```
 
-### Cumulative metrics 
+### Cumulative metrics
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
@@ -229,7 +230,6 @@ metrics:
 
 A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters:
 
-
 ```yaml
 filter: | 
   {{ Entity('entity_name') }}
@@ -241,7 +241,7 @@ filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 
 filter: |  
-  {{ Metric('metric_name', group_by=['Entity']) }}
+  {{ Metric('metric_name', group_by=['entity_name']) }}
 ```
 
 ### Further configuration
