@@ -76,7 +76,7 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 
 ```yaml
 semantic_models:
- - name: transactions
+  - name: transactions
     description: A record of every transaction that takes place. Carts are considered  multiple transactions for each SKU.
     model: ref('schema.transactions')
     defaults:
@@ -93,7 +93,7 @@ semantic_models:
     - name: product_id
       type: foreign
 
-  # --- measures ---
+# --- measures ---
   measures:
     - name: transaction_amount_usd
       description: Total USD value of transactions
