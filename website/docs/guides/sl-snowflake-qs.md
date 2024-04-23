@@ -144,7 +144,6 @@ This guide will cover the following topics:
 2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
 3. Select **SQL Worksheet** to create a new worksheet.
 
-
 ### Set up Snowflake environment
 
 The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
@@ -594,10 +593,11 @@ In the following steps, semantic models enable you to define how to interpret th
 ```yaml
 semantic_models:
   - name: orders
+    defaults:
+      agg_time_dimension: order_date
     description: |
       Order fact table. This table’s grain is one row per order.
     model: ref('fct_orders')
-
 ```
 
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
@@ -818,7 +818,7 @@ After setting up your orders model:
 
 ```yaml
 semantic_models:
-  - name: customers
+  - name: dim_customers
     defaults:
       agg_time_dimension: most_recent_order_date
     description: |
@@ -831,8 +831,7 @@ semantic_models:
     dimensions:
       - name: customer_name
         type: categorical
-      - name: customer_type
-        type: categorical
+        expr: first_name
       - name: first_order_date
         type: time
         type_params:
@@ -845,8 +844,10 @@ semantic_models:
       - name: count_lifetime_orders
         description: Total count of orders per customer.
         agg: sum
+        expr: number_of_orders
       - name: lifetime_spend
         agg: sum
+        expr: lifetime_value
         description: Gross customer lifetime spend inclusive of taxes.
       - name: customers
         expr: customer_id
