@@ -30,9 +30,7 @@ The **Extended attributes** option is available as a textbox on the **Environmen
 
 The most pressing use case for dbt Cloud users is the ability to use different account connections for different teams or development stages in their pipelines. Let’s consider a team that has a typical dev, staging, production setup (known as a WAP workflow): development for active work with small datasets, staging to promote and vet changes against cloned production data, and production for the final deployed code that feeds BI tools. For this hypothetical team though, these are separate _accounts_ in their data platform with their own sets of RBAC and other settings. This is a perfect use case for extended attributes. Let’s take a look at how this team might set this up for a company that uses multiple BigQuery accounts, projects, and datasets (projects and datasets are analogous to databases and schemas on other platforms like Snowflake) to separate dev, staging, and prod:
 
-<Lightbox src="/img/blog/2024-04-10-extended-attributes/ext_attr.png" title="Extended attributes text box" />
-
-_<small>At the bottom of an Environment's Settings you’ll find the Extended Attributes text box.</small>_
+<Lightbox src="/img/blog/2024-04-10-extended-attributes/ext_attr.png" title="The extended attributes textbox at the bottom of the environment settings." />
 
 ### Development
 
@@ -76,25 +74,25 @@ Earlier, we touched on staging environments in discussing extended attributes bu
 
 All you need to do is configure an environment as staging and enable the **Defer to staging/production** option in the dbt Cloud IDE. Doing this will favor a staging environment over prod if you have one set up.
 
-![Configure environment as Staging](/img/blog/2024-04-10-extended-attributes/env_settings.png)
-_<small>You can now designate a Staging Environment in a first-class way.</small>_
+<Lightbox src="/img/blog/2024-04-10-extended-attributes/env_settings.png" title="Setting an environment to staging type." />
 
-![Defer to staging/production](/img/blog/2024-04-10-extended-attributes/defer_to_stage.png)
-_<small>Make sure to enable **Defer to staging/production** to save time and money!</small>_
+<Lightbox src="/img/blog/2024-04-10-extended-attributes/defer_to_stage.png" title="Toggle to turn on deferral to staging or production environment." />
 
 ## Upgrading on a curve
 
 Lastly, let’s consider a more specialized use case. Imagine we have a "tiger team" (consisting of a lone analytics engineer named Dave) tasked with upgrading from dbt version 1.6 to the new **Keep on latest version** setting, to take advantage of added stability and feature access. We want to keep the rest of the data team being productive in dbt 1.6 for the time being, while enabling Dave to upgrade and do his work in the new versionless mode.
 
 ### Development environment
-By default, the development environment is configured to be version 1.6:
-![Development Environment configured to be 1.6 by default](/img/blog/2024-04-10-extended-attributes/dbt_version.png)
 
+By default, the development environment is configured to be version 1.6:
+
+<Lightbox src="/img/blog/2024-04-10-extended-attributes/dbt_version.png" title="Development environments configured to v1.6 by default." />
 
 ### Development connection settings
+
 Dave's development connection settings are:
 
-![Dave's development version override](/img/blog/2024-04-10-extended-attributes/dave_version.png)
+<Lightbox src="/img/blog/2024-04-10-extended-attributes/dave_version.png" title="Dave's development environment override." />
 
 ## Launch special
 
