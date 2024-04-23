@@ -73,7 +73,7 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 | [log_format](/reference/global-configs/logs#log-formatting) | enum | default (text) | ✅ | `DBT_LOG_FORMAT` | `--log-format` | ❌ |
 | [log_level_file](/reference/global-configs/logs#log-level) | enum | debug | ✅ | `DBT_LOG_LEVEL_FILE` | `--log-level-file` | ❌ |
 | [log_level](/reference/global-configs/logs#log-level) | enum | info | ✅ | `DBT_LOG_LEVEL` | `--log-level` | ❌ |
-| [log_path](/reference/global-configs/logs) | path | None (uses `logs/`) | ❌ | `DBT_PROFILES_DIR` | `--profiles-dir` | ❌ |
+| [log_path](/reference/global-configs/logs) | path | None (uses `logs/`) | ❌ | `DBT_LOG_PATH` | `--log-path` | ❌ |
 | [partial_parse](/reference/global-configs/parsing#partial-parsing) | boolean | True | ✅ | `DBT_PARTIAL_PARSE` | `--partial-parse`, `--no-partial-parse` | ✅ |
 | [populate_cache](/reference/global-configs/cache) | boolean | True | ✅ | `DBT_POPULATE_CACHE` | `--populate-cache`, `--no-populate-cache` | ✅ |
 | [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | boolean | True | ❌ | `DBT_PRINT` | `--print` | ❌ |
