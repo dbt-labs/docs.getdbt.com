@@ -76,83 +76,83 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 
 ```yaml
 semantic_models:
- - name: transactions
+  - name: transactions
     description: A record of every transaction that takes place. Carts are considered  multiple transactions for each SKU.
     model: ref('schema.transactions')
     defaults:
       agg_time_dimensions: metric_time
 
 # --- entities ---
-  entities:
-    - name: transaction_id
-      type: primary
-    - name: customer_id
-      type: foreign
-    - name: store_id
-      type: foreign
-    - name: product_id
-      type: foreign
+    entities:
+      - name: transaction_id
+        type: primary
+      - name: customer_id
+        type: foreign
+      - name: store_id
+        type: foreign
+      - name: product_id
+        type: foreign
 
-  # --- measures ---
-  measures:
-    - name: transaction_amount_usd
-      description: Total USD value of transactions
-      expr: transaction_amount_usd
-      agg: sum
-    - name: transaction_amount_usd_avg
-      description: Average USD value of transactions
-      expr: transaction_amount_usd
-      agg: average
-    - name: transaction_amount_usd_max
-      description: Maximum USD value of transactions
-      expr: transaction_amount_usd
-      agg: max
-    - name: transaction_amount_usd_min
-      description: Minimum USD value of transactions
-      expr: transaction_amount_usd
-      agg: min
-    - name: quick_buy_transactions 
-      description: The total transactions bought as quick buy
-      expr: quick_buy_flag 
-      agg: sum_boolean 
-    - name: distinct_transactions_count
-      description: Distinct count of transactions 
-      expr: transaction_id
-      agg: count_distinct
-    - name: transactions 
-      description: The average value of transactions 
-      expr: transaction_amount_usd
-      agg: average 
-    - name: transactions_amount_usd_valid #Notice here how we use expr to compute the aggregation based on a condition
-      description: The total USD value of valid transactions only
-      expr: CASE WHEN is_valid = True then 1 else 0 end 
-      agg: sum
-    - name: transactions
-      description: The average value of transactions.
-      expr: transaction_amount_usd
-      agg: average
-    - name: p99_transaction_value
-      description: The 99th percentile transaction value
-      expr: transaction_amount_usd
-      agg: percentile
-      agg_params:
-        percentile: .99
-        use_discrete_percentile: False #False will calculate the discrete percentile and True will calculate the continuous percentile
-    - name: median_transaction_value
-      description: The median transaction value
-      expr: transaction_amount_usd
-      agg: median
+# --- measures ---
+    measures:
+      - name: transaction_amount_usd
+        description: Total USD value of transactions
+        expr: transaction_amount_usd
+        agg: sum
+      - name: transaction_amount_usd_avg
+        description: Average USD value of transactions
+        expr: transaction_amount_usd
+        agg: average
+      - name: transaction_amount_usd_max
+        description: Maximum USD value of transactions
+        expr: transaction_amount_usd
+        agg: max
+      - name: transaction_amount_usd_min
+        description: Minimum USD value of transactions
+        expr: transaction_amount_usd
+        agg: min
+      - name: quick_buy_transactions 
+        description: The total transactions bought as quick buy
+        expr: quick_buy_flag 
+        agg: sum_boolean 
+      - name: distinct_transactions_count
+        description: Distinct count of transactions 
+        expr: transaction_id
+        agg: count_distinct
+      - name: transactions 
+        description: The average value of transactions 
+        expr: transaction_amount_usd
+        agg: average 
+      - name: transactions_amount_usd_valid #Notice here how we use expr to compute the aggregation based on a condition
+        description: The total USD value of valid transactions only
+        expr: CASE WHEN is_valid = True then 1 else 0 end 
+        agg: sum
+      - name: transactions
+        description: The average value of transactions.
+        expr: transaction_amount_usd
+        agg: average
+      - name: p99_transaction_value
+        description: The 99th percentile transaction value
+        expr: transaction_amount_usd
+        agg: percentile
+        agg_params:
+          percentile: .99
+          use_discrete_percentile: False #False will calculate the discrete percentile and True will calculate the continuous percentile
+      - name: median_transaction_value
+        description: The median transaction value
+        expr: transaction_amount_usd
+        agg: median
         
 # --- dimensions ---
-  dimensions:
-    - name: metric_time
-      type: time
-      expr: date_trunc('day', ts) #expr refers to underlying column ts
-      type_params:
-        time_granularity: day
-    - name: is_bulk_transaction
-      type: categorical
-      expr: case when quantity > 10 then true else false end
+    dimensions:
+      - name: metric_time
+        type: time
+        expr: date_trunc('day', ts) #expr refers to underlying column ts
+        type_params:
+          time_granularity: day
+      - name: is_bulk_transaction
+        type: categorical
+        expr: case when quantity > 10 then true else false end
 
 ```
 
