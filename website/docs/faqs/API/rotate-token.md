@@ -34,9 +34,8 @@ curl --location --request POST 'https://cloud.getdbt.com/api/v3/accounts/YOUR_AC
 * Find your `YOUR_CURRENT_TOKEN` by going to **Profile Settings** -> **API Access** and copying the API key.
 * Find [`YOUR_ACCESS_URL`](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
-For example:
 
-If `YOUR_ACCOUNT_ID` = `000`, `YOUR_USER_ID` = `123`, `YOUR_CURRENT_PAT_TOKEN` = `abcf9g`, and your `ACCESS_URL` = `cloud.getdbt.com`, then your curl request will be:
+For example, if `YOUR_ACCOUNT_ID` = `000`, `YOUR_USER_ID` = `123`, `YOUR_CURRENT_PAT_TOKEN` = `abcf9g`, and your `ACCESS_URL` = `cloud.getdbt.com`, then your curl request will be:
 
 ```
 curl --location --request POST 'https://cloud.getdbt.com/api/v3/accounts/000/users/123/apikey/' \
