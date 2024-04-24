@@ -439,7 +439,7 @@ from {{ source('jaffle_shop', 'customers') }}
   from {{ source('jaffle_shop', 'orders') }}
 ```
 
-5. In the `staging/stripe` sub-directory, create the file `stg_payments.sql`.
+5. In the `stripe` sub-directory, create the file `stg_payments.sql`.
 6. Copy the following query into the file and click **Save**.
 
 ```sql
