@@ -273,7 +273,7 @@ There are two ways to connect dbt Cloud to Snowflake. The first option is Partne
 
 Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
-1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Admin**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 
@@ -347,7 +347,11 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project and start developing
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+This guide assumes you use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project and define metrics. However, the dbt Cloud IDE doesn't support using [MetricFlow commands](/docs/build/metricflow-commands) to query or preview metrics (support coming soon).
+
+To query and preview metrics in your development tool, you can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to run the [MetricFlow commands](/docs/build/metricflow-commands).
+
+Now that you have a repository configured, you can initialize your project and start development in dbt Cloud using the IDE:
 
 1. Click **Start developing in the dbt Cloud IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
@@ -412,7 +416,7 @@ sources:
 ### Add staging models
 [Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in dbt. They clean and prepare your raw data, making it ready for more complex transformations and analyses. Follow these steps to add your staging models to your project.
 
-1. Create the file `models/staging/jaffle_shop/stg_customers.sql`. Or, you can use the **Generate model** button to create a new model file for each source.
+1. In the `staging/jaffle_shop` sub-directory, create the file `stg_customers.sql`. Or, you can use the **Generate model** button to create a new model file for each source.
 2. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -423,7 +427,7 @@ sources:
 from {{ source('jaffle_shop', 'customers') }}
 ```
 
-3. Create the file `models/staging/jaffle_shop/stg_orders.sql`
+3. In the same `jaffle_shop` sub-directory, create the file `stg_orders.sql`
 4. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -435,7 +439,7 @@ from {{ source('jaffle_shop', 'customers') }}
   from {{ source('jaffle_shop', 'orders') }}
 ```
 
-5. Create the file `models/staging/stripe/stg_payments.sql`.
+5. In the `staging/stripe` sub-directory, create the file `stg_payments.sql`.
 6. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -504,7 +508,7 @@ select * from final
 
 ```
 
-3. Create the file `models/marts/dim_customers.sql`.
+3. In the `models/marts` directory, create the file `dim_customers.sql`.
 4. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -539,7 +543,7 @@ final as (
 select * from final
 ```
 
-5. Create the file `packages.yml` in your main directory
+5. In your main directory, create the file `packages.yml`.
 6. Copy the following text into the file and click **Save**.
 
 ```sql
@@ -548,7 +552,7 @@ packages:
    version: 1.1.1
 ```
 
-7. Create the file `models/metrics/metricflow_time_spine.sql` in your main directory.
+7. In the `models` directory, create the file `metrics/metricflow_time_spine.sql` in your main directory.
 8. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -587,7 +591,7 @@ select * from final
 
 In the following steps, semantic models enable you to define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
 
-1. Create a new file `models/metrics/fct_orders.yml` 
+1. In the `metrics` sub-directory, create a new file `fct_orders.yml`.
 2. Add the following code to that newly created file:
 
 ```yaml
@@ -813,7 +817,7 @@ Let’s expand your project's analytical capabilities by adding another semantic
 
 After setting up your orders model:
 
-1. Create the file `models/metrics/dim_customers.yml`.
+1. In the `metrics` sub-directory, create the file `dim_customers.yml`.
 2. Copy the following query into the file and click **Save**.
 
 ```yaml
