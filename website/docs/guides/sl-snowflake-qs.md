@@ -402,9 +402,9 @@ sources:
 In your source file, you can also use the **Generate model** button to create a new model file for each source. This creates a new file in the `models` directory with the given source name and fill in the SQL code of the source definition.
 :::
 
-1. Hover over the `models` directory and click the three dot menu (**...**), then select **Create file**.
-2. Name the file `staging/stripe/src_stripe.yml` , then click **Create**.
-3. Copy the following text into the file and click **Save**.
+4. Hover over the `models` directory and click the three dot menu (**...**), then select **Create file**.
+5. Name the file `staging/stripe/src_stripe.yml` , then click **Create**.
+6. Copy the following text into the file and click **Save**.
 
 <File name='models/staging/stripe/src_stripe.yml'>
 
