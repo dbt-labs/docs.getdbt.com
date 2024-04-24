@@ -88,6 +88,8 @@ We will begin deprecating support for spaces in dbt model names in v1.8 (raising
 - Spaces in a model name make it impossible to `--select` the model name because the argument gets split into pieces over spaces very early in the pipeline.
 - Most warehouses do not accept a table, or other object, with a space in its name.
 
+To upgrade, replace any spaces in the model file name with an underscore and update any associated YAML that contains the model name to match. You can keep spaces in the database table name by configuring a (https://docs.getdbt.com/docs/build/custom-aliases#usage)[custom alias].
+
 ## Quick hits
 
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
