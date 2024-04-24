@@ -34,7 +34,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 <expandable alt_header="Authenticator app" >
 
-2. Open your preffered authentication app (like Google Authenticator) and scan the QR code.
+2. Open your preferred authentication app (like Google Authenticator) and scan the QR code.
 
 <Lightbox src="/img/docs/dbt-cloud/scan-qr.png" title="Scan the QR code" />
 
