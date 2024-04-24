@@ -18,12 +18,13 @@ A maintainer can be a dbt Labs employee, but does not have to be. *Slack channel
 
 ## Initial instructions
 
-1. Review the [Rules of the Road](community/resources/community-rules-of-the-road) and [Code of Conduct](community/resources/code-of-conduct) and please let the the folks who created the channel know that you read both documents and you agree to be mindful of them.
-2. If you are a vendor, review the [Vendor Expectations](community/resources/community-rules-of-the-road#vendor-expectations).
-3. Add the Topic and Description to the channel. @Mention your name in the channel Description, identifying yourself as the maintainer. Ex: *Maintainer: First Last (pronouns).* If you are a vendor, make sure your Handle contains your affiliation.
-4. Complete or update your Slack profile by making sure your Company (in the ‘What I do’ field), Pronouns, and Handle, if you’re a vendor, are up-to-date.
-5. Post initial conversation topics once a few folks get in the channel to help folks get to know each other. Check out this [example introductory post](https://getdbt.slack.com/archives/C02FXAZRRDW/p1632407767005000).
-6. Stir up conversation during the first few weeks of the channel's existence. As you get started, answer the questions you can or help find someone with answers, seed discussions about once a week, and making sure folks follow the Rules of the Road.
+1. Review the [Rules of the Road](community/resources/community-rules-of-the-road) and [Code of Conduct](community/resources/code-of-conduct) and please let the the folks who created the channel know that you read both documents and you agree to be mindful of them. <- Neither of the links work
+2. How to get an actual channel created???
+3. If you are a vendor, review the [Vendor Expectations](community/resources/community-rules-of-the-road#vendor-expectations).
+4. Add the Topic and Description to the channel. @Mention your name in the channel Description, identifying yourself as the maintainer. Ex: *Maintainer: First Last (pronouns).* If you are a vendor, make sure your Handle contains your affiliation.
+5. Complete or update your Slack profile by making sure your Company (in the ‘What I do’ field), Pronouns, and Handle, if you’re a vendor, are up-to-date.
+6. Post initial conversation topics once a few folks get in the channel to help folks get to know each other. Check out this [example introductory post](https://getdbt.slack.com/archives/C02FXAZRRDW/p1632407767005000).
+7. Stir up conversation during the first few weeks of the channel's existence. As you get started, answer the questions you can or help find someone with answers, seed discussions about once a week, and making sure folks follow the Rules of the Road.
 
 ## Long-term expectations
 
