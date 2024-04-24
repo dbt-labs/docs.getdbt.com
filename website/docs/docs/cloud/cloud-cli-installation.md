@@ -84,9 +84,9 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 :::info
 
-Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executable in the Program Files folder and [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
+Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executable file (`.exe`) in the "Program Files" folder, [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53), and saving it where needed. 
 
-Note that if you are using VS Code, you must restart it to pick up modified environment variables.
+Note that if you're using VS Code, you must restart it to pick up modified environment variables.
 :::
 
 3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct:
