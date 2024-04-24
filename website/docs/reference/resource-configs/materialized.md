@@ -42,7 +42,7 @@ version: 2
 models:
   - name: <model_name>
     config:
-      [materialized](/reference/resource-configs/materialized): [<materialization_name>](https://docs.getdbt.com/docs/build/materializations#materializations)
+      materialized: [<materialization_name>](https://docs.getdbt.com/docs/build/materializations#materializations)
 
 ```
 
