@@ -63,7 +63,7 @@ Unit tests are defined in YML files in your `models/` directory and are currentl
 
 #### New `data_tests:` syntax
 
-The `tests:` syntax is changing to reflect the addition of unit tests. Start migrating your [data test](/docs/build/data-tests#new-test-syntax) YML to use `data_tests:` after you upgrade to v1.8 to prevent issues in the future.
+The `tests:` syntax is changing to reflect the addition of unit tests. Start migrating your [data test](/docs/build/data-tests#new-data_tests-syntax) YML to use `data_tests:` after you upgrade to v1.8 to prevent issues in the future.
 
 ```yml
 
@@ -82,9 +82,18 @@ models:
 
 The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
+### Spaces in dbt model names
+
+We will begin deprecating support for spaces in dbt model names in v1.8 (raising a warning) before removing support entirely in v1.9 (raising an error). Reasons for removing spaces in model names include:
+- Spaces in a model name make it impossible to `--select` the model name because the argument gets split into pieces over spaces very early in the pipeline.
+- Most warehouses do not accept a table, or other object, with a space in its name.
+
 ## Quick hits
 
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
 - A new subcategory of flags has been created for [legacy behaviors](/reference/global-configs/legacy-behaviors).
 - The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
+- New CLI flag [`--resource-type`/`--exclude-resource-type`](/reference/global-configs/resource-type) for including/excluding resources from dbt `build`, `run`, and `clone`. 
+- To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
+
 
