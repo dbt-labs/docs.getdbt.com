@@ -21,7 +21,7 @@ to step through.
 
   ```bash
 dbt run --select "my_model+1"        # select my_model and its first-degree descendants
-dbt run --select "2+my_model"        # select my_model, its first-degree ancestors ("parents", and its second-degree ancestors ("grandparents")
+dbt run --select "2+my_model"        # select my_model, its first-degree ancestors ("parents"), and its second-degree ancestors ("grandparents")
 dbt run --select "3+my_model+4"      # select my_model, its ancestors up to the 3rd degree, and its descendants down to the 4th degree
   ```
 
