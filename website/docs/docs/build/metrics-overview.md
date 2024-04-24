@@ -23,7 +23,7 @@ The keys for metrics definitions are:
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `config` | Provide the specific configurations for your metric.   | Optional |
 | `config:meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
-| `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 
 Here's a complete example of the metrics spec configuration:
@@ -57,7 +57,7 @@ metrics:
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `config` | Provide the specific configurations for your metric.   | Optional |
 | `meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
-| `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 
 Here's a complete example of the metrics spec configuration:
@@ -124,7 +124,7 @@ metrics:
     owners:
       - support@getdbt.com
     type: cumulative
-    label: Weekly Active Users
+    label: Weekly active users
     type_params:
       measure:
         name: active_users
@@ -145,7 +145,7 @@ metrics:
   - name: order_gross_profit
     description: Gross profit from each order.
     type: derived
-    label: Order Gross Profit
+    label: Order gross profit
     type_params:
       expr: revenue - cost
       metrics:
@@ -207,9 +207,8 @@ metrics:
 
 - `name`&mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
 
-<!--create_metric not supported yet
-**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric. 
--->
+**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric.
+
 ```yaml
 metrics:
   - name: cancellations
