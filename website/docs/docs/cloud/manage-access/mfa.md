@@ -55,7 +55,7 @@ Choose the next steps based on your preferred enrollment selection:
 4. Store the backup passcode in a secure location. This key will be usefull if the MFA method fails (like a lost or broken phone).
 
 
-## Disclaimer
+## Terms of Use
 
 The terms below apply to dbt Cloud’s MFA via SMS program, that dbt Labs (“dbt Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for dbt Cloud log-in requests. 
 
