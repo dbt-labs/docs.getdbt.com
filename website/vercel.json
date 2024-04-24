@@ -4842,7 +4842,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' *.getdbt.com; img-src 'self' *.getdbt.com; script-src 'self' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; form-action 'self'; frame-ancestors 'none';"
+          "value": "img-src 'self' *.getdbt.com; connect-src *; font-src 'self' https:;"
         }
       ]
     }
