@@ -4827,5 +4827,24 @@
       "destination": "/guides/manual-install",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' *.getdbt.com; img-src 'self' *.getdbt.com; script-src 'self' https:; style-src 'self' 'unsafe-inline' https:; object-src 'none'; form-action 'self'; frame-ancestors 'none';"
+        }
+      ]
+    }
   ]
 }
