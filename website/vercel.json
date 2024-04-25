@@ -4842,7 +4842,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "img-src 'self' https:; font-src 'self' https:;"
+          "value": "img-src 'self' https:;"
         }
       ]
     }
