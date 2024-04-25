@@ -18,7 +18,7 @@ A maintainer can be a dbt Labs employee, but does not have to be. *Slack channel
 
 ## Initial instructions
 
-1. Review the [Rules of the Road](community/resources/community-rules-of-the-road) and [Code of Conduct](community/resources/code-of-conduct) and please let the the folks who created the channel know that you read both documents and you agree to be mindful of them. <- Neither of the links work
+1. Review the [Rules of the Road](/community/resources/community-rules-of-the-road) and [Code of Conduct](/community/resources/code-of-conduct) and please let the folks who created the channel know that you read both documents and you agree to be mindful of them. <- Neither of the links work
 2. How to get an actual channel created???
 3. If you are a vendor, review the [Vendor Expectations](community/resources/community-rules-of-the-road#vendor-expectations).
 4. Add the Topic and Description to the channel. @Mention your name in the channel Description, identifying yourself as the maintainer. Ex: *Maintainer: First Last (pronouns).* If you are a vendor, make sure your Handle contains your affiliation.
