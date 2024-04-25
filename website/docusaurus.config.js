@@ -71,7 +71,7 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Learn about the latest releases and what's coming next to dbt Cloud",
+      content: "Join us on May 14th for the dbt Cloud Launch Showcase event - Discover dbt Cloud's latest innovations and watch live demos! ✨ "
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
