@@ -94,7 +94,7 @@ Some package maintainers may wish to push prerelease versions of packages to the
 
 By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
 - Explicitly specifying a prerelease version in your `version` criteria
-- Setting `install-prerelease` to `true`, and providing a compatible version range
+- Setting `install_prerelease` to `true`, and providing a compatible version range
 
 Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
 
@@ -108,7 +108,7 @@ packages:
 packages:
   - package: brooklyn-data/dbt_artifacts
     version: [">=0.4.4", "<0.4.6"]
-    install-prerelease: true
+    install_prerelease: true
 ```
 
 ### Git packages
