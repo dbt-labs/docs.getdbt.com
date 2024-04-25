@@ -122,7 +122,7 @@ You can *build*, *compile*, *run*, and *test* dbt projects using the command bar
 
 If a model or test fails, dbt Cloud makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
 
-Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
+Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud. Leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the Git branch name (such as using the branch name as a prefix for a development schema).
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" width="85%" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
 
