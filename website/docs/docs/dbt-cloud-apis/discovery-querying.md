@@ -33,7 +33,7 @@ Once you've created a token, you can use it in the Authorization header of reque
 You can run queries by sending a `POST` request to the Discovery API, making sure to replace:
 * `YOUR_API_URL` with the appropriate [Discovery API endpoint](#discovery-api-endpoints) for your region and plan.
 * `YOUR_TOKEN` in the Authorization header with your actual API token. Be sure to include the Token prefix.
-* `QUERY_BODY` with a GraphQL query, for example `{ "query": "<query text>" }`
+* `QUERY_BODY` with a GraphQL query, for example `{ "query": "<query text>", "variables": "<variables in json>" }`
 * `VARIABLES` with a dictionary of your GraphQL query variables, such as a job ID or a filter.
 * `ENDPOINT` with the endpoint you're querying, such as environment.
 
