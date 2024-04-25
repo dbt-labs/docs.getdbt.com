@@ -68,7 +68,7 @@ The following are the endpoints for accessing the Discovery API. Use the one tha
 
 | Deployment type |	Discovery API URL |
 | --------------- | ------------------- |
-| North America multi-tenant	|	https://metadata.cloud.getdbt.com/api/graphql |
+| North America multi-tenant	|	https://metadata.cloud.getdbt.com/graphql |
 | EMEA multi-tenant	|	https://metadata.emea.dbt.com/api/graphql |
 | APAC multi-tenant	|	https://metatdata.au.dbt.com/api/graphql |
 | Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
