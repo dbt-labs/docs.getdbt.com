@@ -96,8 +96,8 @@ dbt Cloud has a number of pre-defined variables built in. These variables are se
 
 **dbt Cloud IDE details**
 
-- `DBT_CLOUD_GIT_BRANCH`: Access and return your current branch name in dbt Cloud IDE.
-- This is useful in cases where, for example, you want to use the `env_var` for the [`generate_schema_name`](/docs/build/custom-schemas) and [`generate_database_name`](/docs/build/custom-databases) macros to dynamically set the schema and database name based on the branch name.
+- `DBT_CLOUD_GIT_BRANCH`: The Git branch name in the connected version control system in the dbt Cloud IDE.
+- For example, thisis useful in cases where you want to dynamically set the [development schema](/docs/build/custom-schemas) prefix based on the branch name.
   - The variable changes when the branch is changed.
   - Changing branches does not require restarting the IDE.
 
