@@ -92,9 +92,19 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 ### Special environment variables
 
-dbt Cloud has a number of pre-defined variables built in. The following environment variables are set automatically for deployment runs, and their values cannot be changed.
+dbt Cloud has a number of pre-defined variables built in. These variables are set automatically for development and cannot be changed.
+
+**dbt Cloud IDE details**
+
+- `DBT_CLOUD_GIT_BRANCH`: Access and return your current branch name in dbt Cloud IDE.
+- This is useful in cases where, for example, you want to use the `env_var` for the [`generate_schema_name`](/docs/build/custom-schemas) and [`generate_database_name`](/docs/build/custom-databases) macros to dynamically set the schema and database name based on the branch name.
+  - The variable changes when the branch is changed.
+  - Changing branches does not require restarting the IDE.
 
 **dbt Cloud context**
+
+The following environment variables are set automatically for deployment runs, and their values cannot be changed.
+
 - `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod'
 
 **Run details**
@@ -108,8 +118,7 @@ dbt Cloud has a number of pre-defined variables built in. The following environm
 
 **Git details**
 
-_Note: These variables are currently only available for GitHub, GitLab, and Azure DevOps
-PR builds triggered via a webhook_
+_The following variables are currently only available for GitHub, GitLab, and Azure DevOps PR builds triggered via a webhook_
 
 - `DBT_CLOUD_PR_ID`: The Pull Request ID in the connected version control system
 - `DBT_CLOUD_GIT_SHA`: The git commit SHA which is being run for this Pull Request build
