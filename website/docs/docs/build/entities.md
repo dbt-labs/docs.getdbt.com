@@ -26,7 +26,7 @@ MetricFlow's join logic depends on the entity `type` you use, and it also determ
 * **Primary &mdash;** A primary key has **only one** record for each row in the table, and it includes every record in the data platform.
 * **Unique &mdash;** A unique key contains **only one** record per row in the table, but it may have a subset of records in the data warehouse. It can also include nulls.
 * **Foreign &mdash;** A foreign key can include zero, one, or multiple instances of the same record. Null values may also be present.
-* **Natural &mdash;** Natural keys are columns or combinations of columns in a table that uniquely identify a record based on real-world data. For instance, in a sales_person_department dimension table, the sales_person_id can serve as a natural key.
+* **Natural &mdash;** Natural keys are columns or combinations of columns in a table that uniquely identify a record based on real-world data. For instance, in a sales_person_department dimension table, the sales_person_id can serve as a natural key. You can only use natural keys for [SCD type II dimensions](/docs/build/dimensions#scd-type-ii).
 
 The following is the complete spec for entities:
 
@@ -55,14 +55,14 @@ entities:
     expr: substring(id_order from 2)
 ```
 
-**Natural type example**
+### Combine columns with a key
 
-If there's a scenario where a table doesn't have a primary key, use a `natural` to uniquely identify a record. For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a `surrogate key`. The following example creates a `surrogate key` by joining `date_key` and `brand_code` using a pipe (`|`) as a separator. 
+If there's a scenario where a table doesn't have a primary key, use the 'surrogate combination' to combine two columns as a key, helping you uniquely identify a record. This applies to any [entity type](/docs//build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a `surrogate key`. The following example creates a `surrogate key` by joining `date_key` and `brand_code` using a pipe (`|`) as a separator. 
 
 ```yaml
 entities:
   - name: brand_target_key # Entity name or identified.
-    type: natural # Specifies the type as 'natural', which is a column or combination of columns in a table that uniquely identifies a record based on real-world data.
+    type: foreign # This can be any entity type key. 
     expr: date_key || '|' || brand_code # Defines the expression for linking fields to form the surrogate key.
 ```
 
