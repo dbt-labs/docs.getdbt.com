@@ -99,7 +99,7 @@ dbt Cloud has a number of pre-defined variables built in. These variables are se
 - `DBT_CLOUD_GIT_BRANCH`: The Git branch name in the dbt Cloud IDE.
 - The variable changes when the branch is changed.
 - Changing branches does not require restarting the IDE.
-- This `env_var ` isn't available in the dbt Cloud CLI.
+- This `env_var` isn't available in the dbt Cloud CLI.
 
 - This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas).  ( `{{ env_var ('DBT_CLOUD_GIT_BRANCH') }}` ).
 
