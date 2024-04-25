@@ -72,7 +72,7 @@ The following are the endpoints for accessing the Discovery API. Use the one tha
 | EMEA multi-tenant	|	https://metadata.emea.dbt.com/graphql |
 | APAC multi-tenant	|	https://metadata.au.dbt.com/graphql |
 | Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
-| Single-tenant | `https://YOUR_ACCESS_URL.metadata/api/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.|
+| Single-tenant | `https://metadata.YOUR_ACCESS_URL/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.|
 
 ## Reasonable use
 
