@@ -92,6 +92,8 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 ### Special environment variables
 
+<VersionBlock firstVersion="1.6">
+ 
 dbt Cloud has a number of pre-defined variables built in. These variables are set automatically and cannot be changed.
 
 **dbt Cloud IDE details**
@@ -102,6 +104,8 @@ dbt Cloud has a number of pre-defined variables built in. These variables are se
 - This `env_var` isn't available in the dbt Cloud CLI.
 
 This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) ( `{{ env_var ('DBT_CLOUD_GIT_BRANCH') }}` ).
+
+</VersionBlock>
 
 **dbt Cloud context**
 
