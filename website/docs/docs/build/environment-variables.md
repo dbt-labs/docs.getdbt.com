@@ -93,7 +93,6 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 ### Special environment variables
 
 <VersionBlock firstVersion="1.6">
- 
 dbt Cloud has a number of pre-defined variables built in. These variables are set automatically and cannot be changed.
 
 **dbt Cloud IDE details**
