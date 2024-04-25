@@ -104,6 +104,12 @@ with monthly_revenue as (
 
 For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/best-practices/how-we-mesh/mesh-1-intro).
 
+### Protecting production
+
+When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. To protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) in your projects. When a staging environment is present in the project, when other projects reference it during development workflows, they resolve to the Staging environment. This adds a layer of security between your Deployment and Production environments by limiting access to production data.
+
+Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. 
+
 ### Comparison
 
 If you were to instead install the `jaffle_finance` project as a `package` dependency, you would instead be pulling down its full source code and adding it to your runtime environment. This means:
