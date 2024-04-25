@@ -100,6 +100,7 @@ dbt Cloud has a number of pre-defined variables built in. These variables are se
 - For example, thisis useful in cases where you want to dynamically set the [development schema](/docs/build/custom-schemas) prefix based on the branch name.
   - The variable changes when the branch is changed.
   - Changing branches does not require restarting the IDE.
+  - This `env_var ` isn't available in the dbt Cloud CLI.
 
 **dbt Cloud context**
 
