@@ -96,12 +96,12 @@ By default, `dbt deps` will not include prerelease versions when resolving packa
 - Explicitly specifying a prerelease version in your `version` criteria
 - Setting `install-prerelease` to `true`, and providing a compatible version range
 
-Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
+Both of the following configurations would successfully install `0.4.5-a2` of `dbt_artifacts`:
 
 ```yaml
 packages:
   - package: brooklyn-data/dbt_artifacts
-    version: 0.4.5a2
+    version: 0.4.5-a2
 ```
 
 ```yaml
