@@ -38,6 +38,7 @@ Here we describe the Semantic model components with examples:
 | [Dimensions](#dimensions) | Different ways to group or slice data for a metric, they can be `time` or `categorical` | Required |
 | [Measures](#measures) | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics | Optional |
 | Label | The display name for your semantic model `node`, `dimension`, `entity`, and/or `measures` | Optional |
+| `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configs.  | Optional |
 
 ## Semantic models components
 
@@ -119,28 +120,30 @@ semantic_models:
 
 <VersionBlock firstVersion="1.7">
 
-Semantic models support configs in either the schema file or at the project level. 
+Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) [`config`](/reference/resource-properties/config) property in either the schema file or at the project level:
 
-Semantic model config in `models/semantic.yml`:
-```yml
-semantic_models:
-  - name: orders
-    config:
-      enabled: true | false
-      group: some_group
-      meta:
+- Semantic model config in `models/semantic.yml`:
+
+  ```yml
+  semantic_models:
+    - name: orders
+      config:
+        enabled: true | false
+        group: some_group
+        meta:
+          some_key: some_value
+  ```
+
+- Semantic model config in `dbt_project.yml`:
+
+  ```yml
+  semantic-models:
+    my_project_name:
+      +enabled: true | false
+      +group: some_group
+      +meta:
         some_key: some_value
-```
-
-Semantic model config in `dbt_project.yml`:
-```yml
-semantic-models:
-  my_project_name:
-    +enabled: true | false
-    +group: some_group
-    +meta:
-      some_key: some_value
-```
+  ```
 
 </VersionBlock>
 
