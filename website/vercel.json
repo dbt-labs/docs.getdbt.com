@@ -1143,11 +1143,6 @@
       "permanent": true
     },
     {
-      "source": "/reference/warehouse-setups/fal-setup",
-      "destination": "/docs/core/connect-data-platform/fal-setup",
-      "permanent": true
-    },
-    {
       "source": "/reference/warehouse-setups/decodable-setup",
       "destination": "/docs/core/connect-data-platform/decodable-setup",
       "permanent": true

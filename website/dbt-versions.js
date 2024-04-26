@@ -163,10 +163,6 @@ exports.versionedPages = [
     "firstVersion": "1.4",
   },
   {
-    "page": "reference/warehouse-setups/fal-setup",
-    "firstVersion": "1.3",
-  },
-  {
     "page": "reference/dbt-jinja-functions/set",
     "firstVersion": "1.2",
   },
