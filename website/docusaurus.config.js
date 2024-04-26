@@ -71,7 +71,7 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Join us on May 14th and 15th for the dbt Labs Launch Showcase",
+      content: "Join us on May 14th and 15th for the dbt Labs Launch Showcase event.",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
