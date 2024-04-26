@@ -125,7 +125,7 @@ You can *build*, *compile*, *run*, and *test* dbt projects using the command bar
 
 <VersionBlock firstVersion="1.6">
 
-- Leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the Git branch name (such as using the branch name as a prefix for a development schema).
+- Leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the Git branch name. For example, using the branch name as a prefix for a development schema.
 
 </VersionBlock>
 
