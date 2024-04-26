@@ -9,7 +9,7 @@ pagination_prev: null
 
 dbt Cloud release notes for 2024.
 
-# April 2024
+## April 2024
 
 - <expandable alt_header="New: Merge jobs" > 
 
@@ -22,7 +22,7 @@ dbt Cloud release notes for 2024.
   </expandable>
 
 
-# March 2024
+## March 2024
 
 - **New:** The Semantic Layer services now support using Privatelink for customers who have it enabled.
 - **New:** You can now develop against and test your Semantic Layer in the Cloud CLI if your developer credential uses SSO.
@@ -32,7 +32,7 @@ dbt Cloud release notes for 2024.
 - **Fix:** Fixed an issue where exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open.
 
 
-# February 2024
+## February 2024
 
 - **New:** [Exports](/docs/use-dbt-semantic-layer/exports#define-exports) allow you to materialize a saved query as a table or view in your data platform. By using exports, you can unify metric definitions in your data platform and query them as you would any other table or view.
 - **New:** You can access a list of your [exports](/docs/use-dbt-semantic-layer/exports) with the new list saved-queries command by adding `--show-exports`
@@ -130,7 +130,7 @@ dbt Cloud release notes for 2024.
 
 
 
-# January 2024
+## January 2024
 
 - <expandable alt_header="January docs updates">
 
