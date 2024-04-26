@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 pagination_next: "docs/build/cumulative"
 ---
   
-Once you've created your semantic models, it's time to start adding metrics! Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo)
+Once you've created your semantic models, it's time to start adding metrics. Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
 
 The keys for metrics definitions are:
 
@@ -21,8 +21,7 @@ The keys for metrics definitions are:
 | `description` | Describe your metric.   | Optional |
 | `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
-| `config` | Provide the specific configurations for your metric.   | Optional |
-| `config:meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
+| `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional |
 | `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 

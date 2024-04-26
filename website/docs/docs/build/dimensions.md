@@ -79,8 +79,7 @@ semantic_model:
 ```
 
 ## Dimensions types
-
-Dimensions have 2 types. This section further explains the definitions and provides examples.
+This section further explains the dimension definitions, along with examples. Dimensions have the following types:
 
 - [Dimensions types](#dimensions-types)
   - [Categorical](#categorical)
@@ -112,10 +111,10 @@ You can use multiple time groups in separate metrics. For example, the `users_cr
 
 ```bash
 # dbt Cloud users
-dbt sl query --metrics users_created,users_deleted --dimensions metric_time --order metric_time  
+dbt sl query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 
 # dbt Core users
-mf query --metrics users_created,users_deleted --dimensions metric_time --order metric_time  
+mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
 
@@ -133,10 +132,10 @@ MetricFlow enables metric aggregation during query time. For example, you can ag
 
 ```bash
 # dbt Cloud users
-dbt sl query --metrics messages_per_month --dimensions metric_time --order metric_time --time-granularity year  
+dbt sl query --metrics messages_per_month --group-by metric_time__year --order-by metric_time__year
 
 # dbt Core users
-mf query --metrics messages_per_month --dimensions metric_time --order metric_time --time-granularity year  
+mf query --metrics messages_per_month --group-by metric_time__year --order metric_time__year  
 ```
 
 ```yaml
@@ -361,10 +360,10 @@ The following command or code represents how to return the count of transactions
 
 ```bash
 # dbt Cloud users
-dbt sl query --metrics transactions --dimensions metric_time__month,sales_person__tier --order metric_time__month --order sales_person__tier
+dbt sl query --metrics transactions --group-by metric_time__month,sales_person__tier --order-by metric_time__month,sales_person__tier
 
 # dbt Core users
-mf query --metrics transactions --dimensions metric_time__month,sales_person__tier --order metric_time__month --order sales_person__tier
+mf query --metrics transactions --group-by metric_time__month,sales_person__tier --order-by metric_time__month,sales_person__tier
 
 ```
 
