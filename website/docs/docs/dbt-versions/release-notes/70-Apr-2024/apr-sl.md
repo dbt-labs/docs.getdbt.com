@@ -12,7 +12,7 @@ The dbt Labs team continues to work on adding new features, fixing bugs, and inc
 ## New features
 
 **Google Sheets**
-- **Saved selections** &mdash; You can save your query selections within the Google Sheets application. They can be made private or public and refresh upon loading.
+- **Saved selections** &mdash; You can [save your query selections](/docs/use-dbt-semantic-layer/gsheets#using-saved-selections) within the Google Sheets application. They can be made private or public and refresh upon loading.
 - **Display metric label** &mdash; Metrics are now displayed by their labels as `metric_name`.
 
 ## Updates
@@ -21,7 +21,7 @@ The dbt Labs team continues to work on adding new features, fixing bugs, and inc
 
 **Google Sheets**
 
-- **Explore saved queries** &mdash; Added support for functionality allowing for jumping off from or exploring MetricFlow-defined saved queries directly.
+- **Explore saved queries** &mdash; Added [support](/docs/use-dbt-semantic-layer/gsheets#using-saved-queries) to allow jumping off from or exploring MetricFlow-defined saved queries directly.
 - **Query dimensions** &mdash; Added support to query dimensions without metrics. Previously, you needed a dimension.
 - Time filters &mdash; Added support for time presets and complex time range filters such as "between", "after", and "before".
 - **Dimension value population** &mdash; Added supported to automatically populate dimension values when you select a "where" filter, removing the need to manually type them.  Previously, you needed to manually type the dimension values.
