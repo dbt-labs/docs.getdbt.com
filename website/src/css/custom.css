@@ -1226,10 +1226,11 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
   /* keys wrapper */
   button .DocSearch-Button-Keys {
-    border: none;
+    border: 1px solid var(--docsearch-muted-color-for-keys);
     border-radius: 5px;
-    padding: 0.24em 0.5em;
+    padding: 0.355em 0.5em;
     gap: 0.1em;
+    margin-right: -8.79px;
   }
 
   /* single key */
