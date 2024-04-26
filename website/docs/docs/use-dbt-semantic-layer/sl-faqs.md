@@ -126,9 +126,7 @@ The dbt Semantic Layer does not store a physical copy of your data. It uses unde
 
 <expandable alt_header="How does the Semantic Layer handle data?">
 
-The dbt Semantic Layer is part of dbt Cloud. 
-
-The dbt Semantic Layer allows data teams to define metrics once, centrally, and access them from any integrated analytics tool, ensuring consistent answers across diverse datasets. In providing this service, dbt Labs permits clients to access Semantic Layer metrics. Client data passes through the Semantic Layer on the way back from the data warehouse. 
+The dbt Semantic Layer is part of dbt Cloud. It allows data teams to define metrics once, centrally, and access them from any integrated analytics tool, ensuring consistent answers across diverse datasets. In providing this service, dbt Labs permits clients to access Semantic Layer metrics. Client data passes through the Semantic Layer on the way back from the data warehouse. 
 
 dbt Labs handles this in a secure way using encryption and authentication from the client’s data warehouse. In certain cases, such data may be cached on dbt Labs system ephemerally (potentially for up to 10 minutes although usually much shorter time frame). 
 
@@ -137,6 +135,13 @@ dbt Labs employees cannot access cached data during normal business operations a
 In the coming months, we are releasing a longer-term caching solution to optimize query performance. This caching feature will make use of the client data warehouse, and such cached data will not be stored on dbt Labs’s systems. In addition, this feature will be activated only through an opt-in. Therefore caching is always in client hands and at client discretion.
 
 </expandable>
+
+<expandable alt_header="Does our agreement, the Terms of Service (ToS) for dbt Cloud, apply to the Semantic Layer?">
+
+Yes it does.
+
+</expandable>
+
 
 <expandable alt_header="Where is MetricFlow hosted? How do queries pass through MetricFlow and dbt Cloud and back to the end user?">
 
