@@ -93,4 +93,5 @@ More consistency and flexibility around packages. Resources defined in a package
 - [`dbt docs generate --empty-catalog`](/reference/commands/cmd-docs) to skip catalog population while generating docs
 - [`--defer-state`](/reference/node-selection/defer) enables more-granular control 
 - [`dbt ls`](/reference/commands/list) adds the Semantic model selection method to allow for `dbt ls -s "semantic_model:*"` and the ability to execute `dbt ls --resource-type semantic_model`.
+- Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.
 
