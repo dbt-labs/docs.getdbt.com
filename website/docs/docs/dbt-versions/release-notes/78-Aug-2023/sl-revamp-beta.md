@@ -60,6 +60,6 @@ To experience the universal dbt Semantic Layer and its enhanced beta capabilitie
 
 - [Introducing the new dbt Semantic Layer](https://www.getdbt.com/blog/introducing-new-look-dbt-semantic-layer)
 - [dbt Semantic Layer docs](/docs/use-dbt-semantic-layer/dbt-sl)
-- [dbt Semantic Layer get started guide](/docs/use-dbt-semantic-layer/quickstart-sl)
+- [dbt Semantic Layer get started guide](/guides/sl-snowflake-qs)
 - [Build your metrics with MetricFlow](/docs/build/build-metrics-intro)
 
