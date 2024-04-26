@@ -6,9 +6,9 @@ sidebar_label: "Dimensions"
 tags: [Metrics, Semantic Layer]
 ---
 
-Dimensions is a way to group or filter information based on categories or time. It's like a special label that helps organize and analyze data. 
+Dimensions are a way to group or filter information based on categories or time. It's like a special label that helps organize and analyze data. 
 
-In a data platform, dimensions is part of a larger structure called a semantic model. It's created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures), and used to add more details to your data that can't be easily added up or combined.  In SQL, dimensions is typically included in the `group by` clause of your SQL query.
+In a data platform, dimensions are part of a larger structure called a semantic model. It's created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures) and used to add more details to your data that can't be easily added up or combined.  In SQL, dimensions are typically included in the `group by` clause of your SQL query.
 
 
 <!--dimensions are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
@@ -24,7 +24,7 @@ All dimensions require a `name`, `type` and in some cases, an `expr` parameter. 
 | `type` | Specifies the type of group created in the semantic model. There are three types:<br /><br />- **Categorical**: Group rows in a table by categories like geography, color, and so on. <br />- **Time**: Point to a date field in the data platform. Must be of type TIMESTAMP or equivalent in the data platform engine. <br />- **Slowly-changing dimensions**: Analyze metrics over time and slice them by groups that change over time, like sales trends by a customer's country. | Required |
 | `type_params` | Specific type params such as if the time is primary or used as a partition | Required |
 | `description` | A clear description of the dimension | Optional |
-| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use column name itself to input a SQL expression. | Optional |
+| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use the column name itself to input a SQL expression. | Optional |
 
 Refer to the following for the complete specification for dimensions:
 
@@ -208,9 +208,15 @@ measures:
 Currently, there are limitations in supporting SCD's. 
 :::
 
-MetricFlow supports joins against dimensions values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country. 
+MetricFlow supports joins against dimensions values in a semantic model built on top of a slowly changing dimension (SCD) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country. 
 
-As their name suggests SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
+As their name suggests SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as a month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
+
+**SCD tables and keys**
+
+SCD Type II tables have a particular dimension with a start and end date.  To join tables, use the additional [entity `type`](/docs/build/entities#entity-types) parameter, `natural` key. Using a `natural` key as an [entity `type`](/docs/build/entities#entity-types) means you also don't usually need a `primary` key. In most instances, SCD tables don't have a logically usable `primary` key because `natural` keys map to multiple rows.
+
+**Structure of an SCD Type II table**
 
 The following basic structure of an SCD Type II data platform table is supported:
 
