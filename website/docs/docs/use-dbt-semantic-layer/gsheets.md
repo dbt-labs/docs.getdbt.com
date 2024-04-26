@@ -53,18 +53,22 @@ The Google Sheets **Query Builder** custom menu has the following capabilities:
 | Menu items    | Description                                           |
 |---------------|-------------------------------------------------------|
 | Metrics       | Search and select metrics.                             |
-| Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. |
-| Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time). You can still optionally use `where` to filter time ranges|
+| Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. You may choose dimensions on their own without metrics |
+| Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time), or do more advanced filter using the "Custom" selection|
 | Granularity   | Modify the granularity of the primary time dimension.      |
 | Where         | Filter your data. This includes categorical and time filters. |
 | Order By      | Return your data order.                              |
 | Limit         | Set a limit for the rows of your output.               |
 
+
+
 **Filtering data**
 
 To use the filter functionality, choose the [dimension](docs/build/dimensions) you want to filter by and select the operation you want to filter on.
-- For categorical dimensions, type in the dimension value you want to filter by (no quotes needed) and press enter. 
-- Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar.
+- For categorical dimensions,you can type a value in to search, or select from a populated list. 
+- Continue adding additional filters as needed with AND and OR.
+
+For time dimensions, you can filter on the primary time dimension using Time Range selector which offers presets or custom options. You can also use the "Where" option to filter on time dimensions that are not the primary time series for a metric.
 
 **Querying without headers or columns**
 
