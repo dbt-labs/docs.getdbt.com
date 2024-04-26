@@ -2,10 +2,14 @@ const sidebarSettings = {
   docs: [
     "docs/introduction",
     {
-      type: "link",
-      label: "Guides",
-      href: `/guides`,
-    },
+      type: "category",
+      label: "Get started with dbt",
+      collapsed: true,
+      link: { type: "doc", id: "docs/get-started-dbt" },
+      items: [
+        "docs/get-started-dbt",
+      ],
+    }, // Get started quickstarts directory
     {
       type: "category",
       label: "Supported data platforms",
@@ -302,7 +306,11 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/build/build-metrics-intro",
-            "docs/build/sl-getting-started",
+            {
+              type: "link",
+              label: "Quickstart with the dbt Cloud Semantic Layer",
+              href: `/guides/sl-snowflake-qs`,
+            },
             {
               type: "category",
               label: "About MetricFlow",
@@ -505,7 +513,11 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
         "docs/use-dbt-semantic-layer/dbt-sl",
-        "docs/use-dbt-semantic-layer/quickstart-sl",
+        {
+          type: "link",
+          label: "Quickstart with the dbt Cloud Semantic Layer",
+          href: `/guides/sl-snowflake-qs`,
+        },
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
@@ -977,6 +989,7 @@ const sidebarSettings = {
                 "reference/global-configs/parsing",
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
+                "reference/global-configs/resource-type",
                 "reference/global-configs/usage-stats",
                 "reference/global-configs/version-compatibility",
                 "reference/global-configs/warnings",
