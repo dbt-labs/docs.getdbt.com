@@ -11,15 +11,16 @@ dbt Cloud release notes for 2024.
 
 # April 2024
 
-<expandable alt_header="New: Merge jobs" >
+- <expandable alt_header="New: Merge jobs" > 
 
-<Lifecycle status="beta" />
+  <Lifecycle status="beta" />
 
-You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. You can now access a beta release of [Merge jobs](/docs/deploy/merge-jobs), which is a new [job type](/docs/deploy/jobs), that enables you to trigger dbt job runs as soon as changes (via Git pull requests) merge into production. 
+  You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. You can now access a beta release of [Merge jobs](/docs/deploy/merge-jobs), which is a new [job type](/docs/deploy/jobs), that enables you to trigger dbt job runs as soon as changes (via Git pull requests) merge into production. 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
+  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
 
-</expandable>
+  </expandable>
+
 
 # March 2024
 
@@ -37,80 +38,80 @@ You can now set up a continuous deployment (CD) workflow for your projects nativ
 - **New:** You can access a list of your [exports](/docs/use-dbt-semantic-layer/exports) with the new list saved-queries command by adding `--show-exports`
 - **New:** The dbt Semantic Layer and [Tableau Connector](/docs/use-dbt-semantic-layer/tableau) now supports relative date filters in Tableau.
 
-<expandable alt_header="New: Use exports to write saved queries">
+- <expandable alt_header="New: Use exports to write saved queries">
 
-You can now use the [exports](/docs/use-dbt-semantic-layer/exports) feature with [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), allowing you to query reliable metrics and fast data reporting. Exports enhance the saved queries feature, allowing you to write commonly used queries directly within your data platform using dbt Cloud's job scheduler.
+  You can now use the [exports](/docs/use-dbt-semantic-layer/exports) feature with [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), allowing you to query reliable metrics and fast data reporting. Exports enhance the saved queries feature, allowing you to write commonly used queries directly within your data platform using dbt Cloud's job scheduler.
 
-By exposing tables of metrics and dimensions, exports enable you to integrate with additional tools that don't natively connect with the dbt Semantic Layer, such as PowerBI.
+  By exposing tables of metrics and dimensions, exports enable you to integrate with additional tools that don't natively connect with the dbt Semantic Layer, such as PowerBI.
 
-Exports are available for dbt Cloud multi-tenant [Team or Enterprise](https://www.getdbt.com/pricing/) plans on dbt versions 1.7 or newer. Refer to the [exports blog](https://www.getdbt.com/blog/announcing-exports-for-the-dbt-semantic-layer) for more details.
+  Exports are available for dbt Cloud multi-tenant [Team or Enterprise](https://www.getdbt.com/pricing/) plans on dbt versions 1.7 or newer. Refer to the [exports blog](https://www.getdbt.com/blog/announcing-exports-for-the-dbt-semantic-layer) for more details.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Add an environment variable to run exports in your production run." />
+  <Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Add an environment variable to run exports in your production run." />
 
-</expandable>
+  </expandable>
 
-<expandable alt_header="New: Trigger on job completion ">
+- <expandable alt_header="New: Trigger on job completion ">
 
-<Lifecycle status="team,enterprise" />
+  <Lifecycle status="team,enterprise" />
 
-Now available for dbt Cloud Team and Enterprise plans is the ability to trigger deploy jobs when other deploy jobs are complete. You can enable this feature [in the UI](/docs/deploy/deploy-jobs) with the  **Run when another job finishes** option in the **Triggers** section of your job or with the [Create Job API endpoint](/dbt-cloud/api-v2#/operations/Create%20Job). 
+  Now available for dbt Cloud Team and Enterprise plans is the ability to trigger deploy jobs when other deploy jobs are complete. You can enable this feature [in the UI](/docs/deploy/deploy-jobs) with the  **Run when another job finishes** option in the **Triggers** section of your job or with the [Create Job API endpoint](/dbt-cloud/api-v2#/operations/Create%20Job). 
 
-When enabled, your job will run after the specified upstream job completes. You can configure which run status(es) will trigger your job. It can be just on `Success` or on all statuses. If you have dependencies between your dbt projects, this allows you to _natively_ orchestrate your jobs within dbt Cloud &mdash; no need to set up a third-party tool.
+  When enabled, your job will run after the specified upstream job completes. You can configure which run status(es) will trigger your job. It can be just on `Success` or on all statuses. If you have dependencies between your dbt projects, this allows you to _natively_ orchestrate your jobs within dbt Cloud &mdash; no need to set up a third-party tool.
 
-An example of the **Triggers** section when creating the job:  
+  An example of the **Triggers** section when creating the job:  
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
+  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
-</expandable>
+  </expandable>
 
-<expandable alt_header="New: Keep on latest version ">
+- <expandable alt_header="New: Keep on latest version ">
 
-<Lifecycle status='beta' />
+  <Lifecycle status='beta' />
 
-_Now available in the dbt version dropdown in dbt Cloud &mdash; starting with select customers, rolling out to wider availability through February and March._
+  _Now available in the dbt version dropdown in dbt Cloud &mdash; starting with select customers, rolling out to wider availability through February and March._
 
-When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
+  When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
 
-To learn more about the new setting, refer to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) for details. 
+  To learn more about the new setting, refer to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) for details. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Keep on latest version setting"/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Keep on latest version setting"/>
 
-</expandable>
+  </expandable>
 
 
-<expandable alt_header="New: Override dbt version with new User development settings" >
+- <expandable alt_header="New: Override dbt version with new User development settings" >
 
-You can now [override the dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version) that's configured for the development environment within your project and use a different version &mdash; affecting only your user account. This lets you test new dbt features without impacting other people working on the same project. And when you're satisfied with the test results, you can safely upgrade the dbt version for your project(s).  
+  You can now [override the dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version) that's configured for the development environment within your project and use a different version &mdash; affecting only your user account. This lets you test new dbt features without impacting other people working on the same project. And when you're satisfied with the test results, you can safely upgrade the dbt version for your project(s).  
 
-Use the **dbt version** dropdown to specify the version to override with. It's available on your project's credentials page in the **User development settings** section. For example:
+  Use the **dbt version** dropdown to specify the version to override with. It's available on your project's credentials page in the **User development settings** section. For example:
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
 
-</expandable>
+  </expandable>
 
-<expandable alt_header="Enhancement: Edit in primary git branch in IDE">
+- <expandable alt_header="Enhancement: Edit in primary git branch in IDE">
 
-You can now edit, format, or lint files and execute dbt commands directly in your primary git branch in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  This enhancement is available across various repositories, including native integrations, imported git URLs, and managed repos.
+  You can now edit, format, or lint files and execute dbt commands directly in your primary git branch in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  This enhancement is available across various repositories, including native integrations, imported git URLs, and managed repos.
 
-This enhancement is currently available to all dbt Cloud multi-tenant regions and will soon be available to single-tenant accounts.
+  This enhancement is currently available to all dbt Cloud multi-tenant regions and will soon be available to single-tenant accounts.
 
-The primary branch of the connected git repo has traditionally been _read-only_ in the IDE. This update changes the branch to _protected_ and allows direct edits. When a commit is made, dbt Cloud will prompt you to create a new branch. dbt Cloud will pre-populate the new branch name with the GIT_USERNAME-patch-#; however, you can edit the field with a custom branch name.
+  The primary branch of the connected git repo has traditionally been _read-only_ in the IDE. This update changes the branch to _protected_ and allows direct edits. When a commit is made, dbt Cloud will prompt you to create a new branch. dbt Cloud will pre-populate the new branch name with the GIT_USERNAME-patch-#; however, you can edit the field with a custom branch name.
 
-Previously, the primary branch was displayed as read-only, but now the branch is displayed with a lock icon to identify it as protected:
+  Previously, the primary branch was displayed as read-only, but now the branch is displayed with a lock icon to identify it as protected:
 
-<DocCarousel slidesPerView={1}>
+  <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/read-only.png" width="75%" title="Previous read-only experience"/>
+  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/read-only.png" width="75%" title="Previous read-only experience"/>
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/protected.png" width="75%" title="New protected experience"/>
+  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/protected.png" width="75%" title="New protected experience"/>
 
-</DocCarousel>
+  </DocCarousel>
 
-When you make a commit while on the primary branch, a modal window will open prompting you to create a new branch and enter a commit message:
+  When you make a commit while on the primary branch, a modal window will open prompting you to create a new branch and enter a commit message:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="75%" title="Create new branch window"/>
+  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="75%" title="Create new branch window"/>
 
-</expandable>
+  </expandable>
 
 - **Enhancement:**  The dbt Semantic Layer [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) now exposes a note on the cell where the data was requested, indicating clearer data requests. The integration also now exposes a new **Time Range** option, which allows you to quickly select date ranges.
 - **Enhancement:** The [GraphQL API](/docs/dbt-cloud-apis/sl-graphql) includes a `requiresMetricTime` parameter to better handle metrics that must be grouped by time. (Certain metrics defined in MetricFlow can't be looked at without a time dimension).
@@ -131,52 +132,52 @@ When you make a commit while on the primary branch, a modal window will open pro
 
 # January 2024
 
-<expandable alt_header="January docs updates">
+- <expandable alt_header="January docs updates">
 
-Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 10 new community contributors to docs.getdbt.com :pray: What a busy start to the year! We merged 110 PRs in January.
+  Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 10 new community contributors to docs.getdbt.com :pray: What a busy start to the year! We merged 110 PRs in January.
 
-Here's how we improved the [docs.getdbt.com](http://docs.getdbt.com/) experience:
+  Here's how we improved the [docs.getdbt.com](http://docs.getdbt.com/) experience:
 
-- Added new hover behavior for images
-- Added new expandables for FAQs
-- Pruned outdated notices and snippets as part of the docs site maintenance
+  - Added new hover behavior for images
+  - Added new expandables for FAQs
+  - Pruned outdated notices and snippets as part of the docs site maintenance
 
-January saw some great new content:
+  January saw some great new content:
 
-- New [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs) page
-- Beta launch of [Explorer’s column-level lineage](https://docs.getdbt.com/docs/collaborate/column-level-lineage) feature
-- Developer blog posts:
-  - [More time coding, less time waiting: Mastering defer in dbt](https://docs.getdbt.com/blog/defer-to-prod)
-  - [Deprecation of dbt Server](https://docs.getdbt.com/blog/deprecation-of-dbt-server)
-  - From the community: [Serverless, free-tier data stack with dlt + dbt core](https://docs.getdbt.com/blog/serverless-dlt-dbt-stack)
-- The Extrica team added docs for the [dbt-extrica community adapter](https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup)
-- Semantic Layer: New [conversion metrics docs](https://docs.getdbt.com/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types (launched the week of January 12, 2024)
-- New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the dbt Cloud CLI
+  - New [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs) page
+  - Beta launch of [Explorer’s column-level lineage](https://docs.getdbt.com/docs/collaborate/column-level-lineage) feature
+  - Developer blog posts:
+    - [More time coding, less time waiting: Mastering defer in dbt](https://docs.getdbt.com/blog/defer-to-prod)
+    - [Deprecation of dbt Server](https://docs.getdbt.com/blog/deprecation-of-dbt-server)
+    - From the community: [Serverless, free-tier data stack with dlt + dbt core](https://docs.getdbt.com/blog/serverless-dlt-dbt-stack)
+  - The Extrica team added docs for the [dbt-extrica community adapter](https://docs.getdbt.com/docs/core/connect-data-platform/extrica-setup)
+  - Semantic Layer: New [conversion metrics docs](https://docs.getdbt.com/docs/build/conversion) and added the parameter `fill_nulls_with` to all metric types (launched the week of January 12, 2024)
+  - New [dbt environment command](https://docs.getdbt.com/reference/commands/dbt-environment) and its flags for the dbt Cloud CLI
 
-January also saw some refreshed content, either aligning with new product features or requests from the community:
+  January also saw some refreshed content, either aligning with new product features or requests from the community:
 
-- Native support for [partial parsing in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud-environments#partial-parsing)
-- Updated guidance on using dots or underscores in the [Best practice guide for models](https://docs.getdbt.com/best-practices/how-we-style/1-how-we-style-our-dbt-models)
-- Updated [PrivateLink for VCS docs](https://docs.getdbt.com/docs/cloud/secure/vcs-privatelink)
-- Added a new `job_runner` role in our [Enterprise project role permissions docs](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions#project-role-permissions)
-- Added saved queries to [Metricflow commands](https://docs.getdbt.com/docs/build/metricflow-commands#list-saved-queries)
-- Removed [as_text docs](https://github.com/dbt-labs/docs.getdbt.com/pull/4726) that were wildly outdated
+  - Native support for [partial parsing in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud-environments#partial-parsing)
+  - Updated guidance on using dots or underscores in the [Best practice guide for models](https://docs.getdbt.com/best-practices/how-we-style/1-how-we-style-our-dbt-models)
+  - Updated [PrivateLink for VCS docs](https://docs.getdbt.com/docs/cloud/secure/vcs-privatelink)
+  - Added a new `job_runner` role in our [Enterprise project role permissions docs](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions#project-role-permissions)
+  - Added saved queries to [Metricflow commands](https://docs.getdbt.com/docs/build/metricflow-commands#list-saved-queries)
+  - Removed [as_text docs](https://github.com/dbt-labs/docs.getdbt.com/pull/4726) that were wildly outdated
 
-</expandable>
+  </expandable>
 
 - **New:** New metric type that allows you to measure conversion events. For example, users who viewed a web page and then filled out a form. For more details, refer to [Conversion metrics](/docs/build/conversion). 
 - **New:** Instead of specifying the fully qualified dimension name (for example, `order__user__country`) in the group by or filter expression, you now only need to provide the primary entity and dimensions name, like `user__county`. 
 - **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/use-dbt-semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 
-<expandable alt_header="New: Native support for partial parsing" >
+- <expandable alt_header="New: Native support for partial parsing" >
 
-By default, dbt parses all the files in your project at the beginning of every dbt invocation. Depending on the size of your project, this operation can take a long time to complete. With the new partial parsing feature in dbt Cloud, you can reduce the time it takes for dbt to parse your project. When enabled, dbt Cloud parses only the changed files in your project instead of parsing all the project files. As a result, your dbt invocations will take less time to run.
+  By default, dbt parses all the files in your project at the beginning of every dbt invocation. Depending on the size of your project, this operation can take a long time to complete. With the new partial parsing feature in dbt Cloud, you can reduce the time it takes for dbt to parse your project. When enabled, dbt Cloud parses only the changed files in your project instead of parsing all the project files. As a result, your dbt invocations will take less time to run.
 
-To learn more, refer to [Partial parsing](/docs/deploy/deploy-environments#partial-parsing).
+  To learn more, refer to [Partial parsing](/docs/deploy/deploy-environments#partial-parsing).
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
+  <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
 
-</expandable>
+  </expandable>
 
 - **Enhancement:** The YAML spec parameter `label` is now available for Semantic Layer metrics in [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview). This means you can conveniently use `label` as a display name for your metrics when exposing them.
 - **Enhancement:** Added support for `create_metric: true` for a measure, which is a shorthand to quickly create metrics. This is useful in cases when metrics are only used to build other metrics.
