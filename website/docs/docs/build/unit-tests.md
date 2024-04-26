@@ -297,6 +297,17 @@ unit_tests:
         - {id: 1, first_name: emily}
 ```
 
+
+## Unit test exit codes
+
+Unit test successes and failures are represented by two exit codes:
+- Pass (0)
+- Fail (1)
+
+This differs from data test success and failure outputs. Data tests are queries that return one row per failed test case (the number of values with duplicates for the unique test). dbt reports the number of failing records as failures. Each unit test represents one 'test case' so results are always 0 (pass) or 1 (fail).
+
+Learn about [exit codes](/reference/exit-codes) for more information.
+
 ## Additional resources
 
 - [Unit testing reference page](/reference/resource-properties/unit-tests)
