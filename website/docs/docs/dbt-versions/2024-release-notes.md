@@ -1,6 +1,6 @@
 ---
 title: "2024 dbt Cloud release notes"
-description: "Weekly release notes for dbt Cloud 2024"
+description: "dbt Cloud release notes for 2024"
 id: "2024-release-notes"
 sidebar: "2024 dbt Cloud release notes"
 pagination_next: null

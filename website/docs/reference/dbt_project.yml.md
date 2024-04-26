@@ -42,8 +42,6 @@ The following example is a list of all available configurations in the `dbt_proj
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](/reference/global-configs/json-artifacts): directorypath
-[log-path](/reference/global-configs/logs): directorypath
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
 [clean-targets](/reference/project-configs/clean-targets): [directorypath]
@@ -123,8 +121,6 @@ vars:
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](/reference/global-configs/json-artifacts): directorypath
-[log-path](/reference/global-configs/logs): directorypath
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
 [clean-targets](/reference/project-configs/clean-targets): [directorypath]
