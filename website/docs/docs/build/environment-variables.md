@@ -98,7 +98,7 @@ dbt Cloud has a number of pre-defined variables built in. Variables are set auto
 
 **dbt Cloud IDE details**
 
-You can use the `DBT_CLOUD_GIT_BRANCH` variable with these parameters:
+- `DBT_CLOUD_GIT_BRANCH`:
   - Provides the development Git branch name in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
   - Available in dbt v 1.6 and later.
   - The variable changes when the branch is changed.
