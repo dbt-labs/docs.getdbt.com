@@ -1226,7 +1226,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
   /* keys wrapper */
   button .DocSearch-Button-Keys {
-    border: 1px solid var(--docsearch-muted-color-for-keys);
+    border: none;
     border-radius: 5px;
     padding: 0.24em 0.5em;
     gap: 0.1em;
@@ -1234,7 +1234,7 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
   /* single key */
   button .DocSearch-Button-Key {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     margin-right: 0;
     padding: 4px 4px 2px;
   }
