@@ -23,38 +23,55 @@ Access modifiers may be applied to models one-by-one in YAML properties. In v1.5
 
 <VersionBlock firstVersion="1.7">
 
-You can apply access modifiers in config files, including `the dbt_project.yml`, or to models one-by-one in YAML properties. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
+You can apply access modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
 
 There are multiple approaches to configuring access:
 
 In the model configs of `dbt_project.yml`: 
 
-```yaml
+<File name='models/<schema>.yml'>
+
+```yml
+version: 2
+
 models:
   - name: my_public_model
     access: public # Older method, still supported
     
 ```
+</File>
+  
 Or (but not both)
 
-```yaml
+<File name='models/<schema>.yml'>
+
+```yml
+version: 2
+
 models:
   - name: my_public_model
     config:
       access: public # newly supported in v1.7
     
 ```
+</File>
 
-In a subfolder: 
-```yaml
+Or, in dbt_project.yml:
+
+<File name='dbt_project.yml'>
+
+```yml
 models:
   my_project_name:
     subfolder_name:
       +group: <my_group>
       +access: private  # sets default for all models in this subfolder
 ```
+</File>
 
 In the model.sql file:
+
+<File name='models/<my_public_model>.sql'>
 
 ```sql
 -- models/my_public_model.sql
@@ -63,6 +80,7 @@ In the model.sql file:
 
 select ...
 ```
+</File>
 
 </VersionBlock>
 
