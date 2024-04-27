@@ -27,9 +27,9 @@ You can apply access modifiers in config files, including the `dbt_project.yml`,
 
 There are multiple approaches to configuring access:
 
-In a property file: 
+In `properties.yml`: 
 
-<File name='models/<schema>.yml'>
+<File name='models/<properties_my_public_model>.yml'>
 
 ```yml
 version: 2
@@ -43,7 +43,7 @@ models:
   
 Or (but not both)
 
-<File name='models/<schema>.yml'>
+<File name='models/<properties_my_public_model>.yml'>
 
 ```yml
 version: 2
@@ -56,7 +56,7 @@ models:
 ```
 </File>
 
-Or, in `dbt_project.yml`:
+In `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
@@ -69,9 +69,9 @@ models:
 ```
 </File>
 
-In the model.sql file:
+In the `my_public_model.sql` file:
 
-<File name='models/<my_public_model>.sql'>
+<File name='models/my_public_model.sql'>
 
 ```sql
 -- models/my_public_model.sql
