@@ -22,7 +22,7 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 ## Before you begin
 
 - We currently only support unit testing SQL models.
--  We currently don't support unit testing models that use recursive SQL. 
+- We currently don't support unit testing models that use recursive SQL. 
 - We currently only support adding unit tests to models in your _current_ project.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
