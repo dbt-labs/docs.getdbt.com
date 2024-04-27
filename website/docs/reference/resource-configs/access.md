@@ -27,7 +27,7 @@ You can apply access modifiers in config files, including the `dbt_project.yml`,
 
 There are multiple approaches to configuring access:
 
-In the model configs of `dbt_project.yml`: 
+In a property file: 
 
 <File name='models/<schema>.yml'>
 
@@ -56,7 +56,7 @@ models:
 ```
 </File>
 
-Or, in dbt_project.yml:
+Or, in `dbt_project.yml`:
 
 <File name='dbt_project.yml'>
 
