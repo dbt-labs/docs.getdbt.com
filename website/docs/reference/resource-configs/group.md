@@ -16,7 +16,7 @@ id: "group"
   ]
 }>
 <TabItem value="models">
-
+ 
 <VersionBlock lastVersion="1.4">
 
 Support for grouping models was added in dbt Core v1.5
@@ -255,7 +255,8 @@ version: 2
 
 metrics:
   - name: [METRIC_NAME]
-    group: GROUP_NAME
+    config:
+      group: GROUP_NAME
 
 ```
 
@@ -294,7 +295,8 @@ semantic-models:
 
 semantic_models:
   - name: SEMANTIC_MODEL_NAME
-    group: GROUP_NAME
+    config:
+      group: GROUP_NAME
 
 
 ```

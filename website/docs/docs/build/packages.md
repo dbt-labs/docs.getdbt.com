@@ -96,12 +96,12 @@ By default, `dbt deps` will not include prerelease versions when resolving packa
 - Explicitly specifying a prerelease version in your `version` criteria
 - Setting `install-prerelease` to `true`, and providing a compatible version range
 
-Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
+For example, both of the following configurations would successfully install `0.4.5-a2` for the [`dbt_artifacts` package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/):
 
 ```yaml
 packages:
   - package: brooklyn-data/dbt_artifacts
-    version: 0.4.5a2
+    version: 0.4.5-a2
 ```
 
 ```yaml
@@ -187,7 +187,7 @@ This method allows the user to clone via HTTPS by passing in a git token via an 
 
 
 :::info dbt Cloud Usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or <VersionBlock lastVersion="1.5">`DBT_ENV_SECRET_`</VersionBlock><VersionBlock firstVersion="1.6">`DBT_ENV_SECRET`</VersionBlock>. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
 In GitHub:
