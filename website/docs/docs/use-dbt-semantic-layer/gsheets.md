@@ -1,8 +1,8 @@
 ---
-title: "Google Sheets (beta)"
+title: "Google Sheets"
 description: "Integrate with Google Sheets to query your metrics in a spreadsheet."
 tags: [Semantic Layer]
-sidebar_label: "Google Sheets (Preview)"
+sidebar_label: "Google Sheets"
 ---
 
 # Google Sheets <Lifecycle status='preview'/>
@@ -65,7 +65,7 @@ The Google Sheets **Query Builder** custom menu has the following capabilities:
 **Filtering data**
 
 To use the filter functionality, choose the [dimension](docs/build/dimensions) you want to filter by and select the operation you want to filter on.
-- For categorical dimensions,you can type a value in to search, or select from a populated list. 
+- For categorical dimensions,you can type a value in to search, or select from a populated list. For entities, you must type the value you are looking for as we do not load all of them given the large number of values.
 - Continue adding additional filters as needed with AND and OR.
 
 For time dimensions, you can filter on the primary time dimension using Time Range selector which offers presets or custom options. You can also use the "Where" option to filter on time dimensions that are not the primary time series for a metric.
