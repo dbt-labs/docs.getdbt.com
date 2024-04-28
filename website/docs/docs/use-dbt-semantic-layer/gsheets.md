@@ -89,14 +89,14 @@ You can also make these selections private or public:
 
 ### Refreshing selections
 
-Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection.
+Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing. 
 
-Public saved selections will refresh for anyone who edits the sheet, while private selections will only update for the user who created it.
+Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.
 
 :::tip What's the difference between saved queries and saved selections?
 
 - Saved selections are saved components that you can create only when using the Google Sheets application.
-- Saved queries, explained in the next section, are code-defined sections of data you create in your dbt project that you can easily access. You can use the results from a saved query to create a saved selection.
+- Saved queries, explained in the next section, are code-defined sections of data you create in your dbt project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
 :::
 
 ## Using saved queries
