@@ -53,7 +53,7 @@ The Google Sheets **Query Builder** custom menu has the following capabilities:
 | Menu items    | Description                                           |
 |---------------|-------------------------------------------------------|
 | Metrics       | Search and select metrics.                             |
-| Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. You may choose dimensions on their own without metrics |
+| Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. You may choose dimensions on their own without metrics. |
 | Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time), or do more advanced filter using the "Custom" selection|
 | Granularity   | Modify the granularity of the primary time dimension.      |
 | Where         | Filter your data. This includes categorical and time filters. |
