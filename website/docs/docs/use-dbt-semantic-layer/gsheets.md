@@ -5,7 +5,6 @@ tags: [Semantic Layer]
 sidebar_label: "Google Sheets"
 ---
 
-# Google Sheets <Lifecycle status='preview'/>
 
 :::info Preview functionality
 Google Sheets integration with the dbt Semantic Layer is a [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) feature.
