@@ -57,7 +57,7 @@ entities:
 
 ### Combine columns with a key
 
-If there's a scenario where a table doesn't have a primary key, use the 'surrogate combination' to combine two columns as a key, helping you uniquely identify a record. This applies to any [entity type](/docs//build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a `surrogate key`. The following example creates a `surrogate key` by joining `date_key` and `brand_code` using a pipe (`|`) as a separator. 
+If there's a scenario where a table doesn't have any key, such as a primary key, use the 'surrogate combination' to combine two columns as a key to help you identify a record. This applies to any [entity type](/docs//build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a `surrogate key`. The following example creates a `surrogate key` by joining `date_key` and `brand_code` using a pipe (`|`) as a separator. 
 
 ```yaml
 entities:
