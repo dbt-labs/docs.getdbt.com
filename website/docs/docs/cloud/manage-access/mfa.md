@@ -59,7 +59,7 @@ Choose the next steps based on your preferred enrollment selection:
 
 The terms below apply to dbt Cloud’s MFA via SMS program, that dbt Labs (“dbt Labs”, “we”, or “us”) uses to facilitate auto sending of authorization codes to users via SMS for dbt Cloud log-in requests. 
 
-Any clients of dbt Labs that use dbt Cloud Labs 2FA via SMS program (after password is input) are subject to the dbt Labs privacy policy, the client warranty in TOU Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms: 
+Any clients of dbt Labs that use dbt Cloud Labs 2FA via SMS program (after password is input) are subject to the [dbt Labs privacy policy](https://www.getdbt.com/cloud/privacy-policy), the client warranty in [Terms of Service](https://www.getdbt.com/terms-of-service) Section 5.1 second paragraph that Client's use will comply with the Documentation (or similar language in the negotiated service agreement between the parties) and these terms: 
 
 (1) The message frequency is a maximum of 1 message per user login; 
 
