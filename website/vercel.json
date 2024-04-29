@@ -4843,6 +4843,10 @@
         {
           "key": "Content-Security-Policy",
           "value": "img-src 'self' https:;"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
         }
       ]
     }
