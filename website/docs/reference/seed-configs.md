@@ -223,7 +223,8 @@ seeds:
         country_code: varchar(2)
         country_name: varchar(32)
     marketing:
-      +schema: marketing # this will take precedence
+      utm_parameters:
+        +schema: marketing # this will take precedence
 ```
 
 </File>
