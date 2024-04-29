@@ -68,7 +68,7 @@ To use the filter functionality, choose the [dimension](docs/build/dimensions) y
 - For categorical dimensions, you can type a value into search or select from a populated list. For entities, you must type the value you are looking for as we do not load all of them given the large number of values.
 - Continue adding additional filters as needed with AND and OR.
 
-For time dimensions, you can filter on the primary time dimension using time tange selector which offers presets, or use "custom" for additional options. You can also use the "Where" option to filter on time dimensions that are not the primary time series for the metrics.
+For time dimensions, you can filter on the primary time dimension using the time range selector which offers presets, or use "custom" for additional options. You can also use the "Where" option to filter on time dimensions that are not the primary time series for the metrics.
 
 **Querying without headers or columns**
 
