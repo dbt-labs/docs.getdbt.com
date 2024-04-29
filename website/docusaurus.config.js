@@ -71,14 +71,14 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Join us on May 14th for the dbt Cloud Launch Showcase event. Discover the latest innovations and watch live demos! ",
+      content: "Join us on May 14th and 15th for the dbt Labs Launch Showcase event.",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase",
+      "https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2025_dbt-cloud-launch-showcase_aw&utm_content=____&utm_term=all___",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "alison-stanton",
