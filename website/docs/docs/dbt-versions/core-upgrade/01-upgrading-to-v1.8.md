@@ -88,6 +88,8 @@ We will begin deprecating support for spaces in dbt model names in v1.8 (raising
 - Spaces in a model name make it impossible to `--select` the model name because the argument gets split into pieces over spaces very early in the pipeline.
 - Most warehouses do not accept a table, or other object, with a space in its name.
 
+To upgrade, replace any spaces in the model file name with an underscore and update any associated YAML that contains the model name to match. You can keep spaces in the database table name by configuring a [custom `alias`](/docs/build/custom-aliases#usage).
+
 ## Quick hits
 
 - [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
@@ -95,5 +97,5 @@ We will begin deprecating support for spaces in dbt model names in v1.8 (raising
 - The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
 - New CLI flag [`--resource-type`/`--exclude-resource-type`](/reference/global-configs/resource-type) for including/excluding resources from dbt `build`, `run`, and `clone`. 
 - To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
-
+- Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.
 
