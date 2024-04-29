@@ -31,9 +31,9 @@ Features and functionality new in dbt v1.8.
 
 ### New dbt Core adapter installation procedure
 
-Before v1.8, when you installed an adapter, you would automatically get `dbt-core` installed along with the adapter package (if you didn’t already have an existing, compatible version of dbt-core).
+Before dbt Core v1.8, whenever you would `pip install` a data warehouse adapter for dbt, `pip` would automatically install `dbt-core` alongside it. The dbt adapter directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independently of `dbt-core`.
 
-Beginning in v1.8, the [dbt adapters and dbt Core have been decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). As a result, you must install _both_ dbt-core and the desired adapter. A new `pip` installation needs to look like this:
+Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). Going forward, your installations should explicitly include _both_ dbt-core and the desired adapter. A new `pip` installation ought to look like this:
 
 ```shell
 pip install dbt-core dbt-ADAPTER_NAME
@@ -43,6 +43,8 @@ For example, you would use the following command if you use Snowflake:
 ```shell
 pip install dbt-core dbt-snowflake
 ```
+
+For the time being, we have maintained install-time dependencies to avoid breaking existing scripts in surprising ways; `pip install dbt-snowflake` will continue to install `dbt-core` implicitly. Given that we may remove this implicit dependency in future versions, we strongly encourage you to update install scripts **now**.
 
 ### Unit Tests
 
@@ -78,23 +80,23 @@ models:
 
 ```
 
-### The `--empty` flag
+#### The `--empty` flag
 
 The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
-### Spaces in dbt model names
+### Managing changes to legacy behaviors
 
-We will begin deprecating support for spaces in dbt model names in v1.8 (raising a warning) before removing support entirely in v1.9 (raising an error). Reasons for removing spaces in model names include:
-- Spaces in a model name make it impossible to `--select` the model name because the argument gets split into pieces over spaces very early in the pipeline.
-- Most warehouses do not accept a table, or other object, with a space in its name.
+dbt Core v1.8 has introduced a flags has been created for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
 
-To upgrade, replace any spaces in the model file name with an underscore and update any associated YAML that contains the model name to match. You can keep spaces in the database table name by configuring a [custom `alias`](/docs/build/custom-aliases#usage).
+You can read more about each of these behavior changes in the links below:
+
+- (Mature, enabled by default) [Require explicit package overrides for builtin materializations](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations)
+- (Introduced, disabled by default) [Require resource names without spaces](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces)
+- (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks)
 
 ## Quick hits
 
-- [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
-- A new subcategory of flags has been created for [legacy behaviors](/reference/global-configs/legacy-behaviors).
-- The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
+- Custom defaults of [global config flags](/reference/global-configs/about-global-configs) should be set in the `flags` dictionary in [`dbt_project.yml`](/reference/dbt_project.yml), instead of in [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml). Support for the latter has been deprecated.
 - New CLI flag [`--resource-type`/`--exclude-resource-type`](/reference/global-configs/resource-type) for including/excluding resources from dbt `build`, `run`, and `clone`. 
 - To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
 - Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.
