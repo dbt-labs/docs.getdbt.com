@@ -37,19 +37,7 @@ Let’s look at how we can use tables and views to get started with materializat
 ```
 
 </TabItem>
-<TabItem value="python" label="Python">
 
-```python
-def model(dbt, session):
-
-    dbt.config(materialized="view")
-
-    # model logic
-
-    return model_df
-```
-
-</TabItem>
 </Tabs>
 
 :::info
