@@ -57,9 +57,10 @@ To explore the lineage graphs of tests and macros, view [their resource details 
     - Refocus on the node and its downstream nodes only
     - Refocus on the node and it upstream nodes only
     - View the node's [resource details](#view-resource-details) page
-- Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph’s right-hand side that displays a high-level summary of the resource’s details. The side panel includes a **General** tab for information like description, materialized type, and other details.
-    - Click the Share icon in the side panel to copy the graph’s link to your clipboard.
-    - Click the View Resource icon in the side panel to [view the resource details](#view-resource-details). 
+- Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph’s right-hand side that displays a high-level summary of the resource’s details. The side panel includes a **General** tab for information like description, materialized type, and other details. In the side panel's upper right corner:
+    - Click the View Resource icon to [view the resource details](#view-resource-details). 
+    - Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+    - Click the Copy Link to Page icon to copy the page's link to your clipboard.
 - Use [selectors](/reference/node-selection/methods) (in the search bar) to select specific resources or a subset of the DAG. This can help narrow the focus on the resources that interest you. All selectors are available for use, except those requiring a state comparison (result, source status, and state). You can also use the `--exclude` and the `--select` flag (which is optional). Examples:
     - `resource_type:model [RESOURCE_NAME]` &mdash; Returns all models matching the name search
     - `resource_type:metric,tag:nightly` &mdash; Returns metrics with the tag `nightly`
@@ -70,11 +71,11 @@ To explore the lineage graphs of tests and macros, view [their resource details 
     - `+snowplow_sessions +fct_orders` &mdash; Use space-delineated arguments for a union operation. Returns resources that are upstream nodes of either `snowplow_sessions` or `fct_orders`.
 
 - [View resource details](#view-resource-details) by selecting a node (double-clicking) in the graph.
-- Click the List view icon in the graph's upper right corner to return to the main **Explore** page. 
+- Click **Lenses** (lower right corner of the graph) to use Explorer's [lenses](#lenses) feature. 
 
 </expandable>
 
-### Example of lineage graph
+### Example of full lineage graph
 
 Example of exploring the `order_items` model in the project's lineage graph:
 
@@ -147,7 +148,15 @@ From the sidebar, you can browse your project's resources, its file tree, and th
 - **File Tree** tab &mdash; All resources in the project organized by the file in which they are defined. This mirrors the file tree in your dbt project repository.
 - **Database** tab &mdash; All resources in the project organized by the database and schema in which they are built. This mirrors your data platform's structure that represents the [applied state](/docs/dbt-cloud-apis/project-state) of your project. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-search-sidebar.png" title="Example of tabs in sidebar" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-tabs-sidebar.png" title="Example of tabs in sidebar" />
+
+## Open in IDE
+
+If you have been assigned a [developer license](/docs/cloud/manage-access/about-user-access#license-based-access-control), you can open the resource in the [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) directly from Explorer. For example, the IDE opens all the corresponding files for the model. This includes the model's SQL or Python definition and any YAML files that include an entry for that model. The feature is available from the [full lineage graph](#example-of-full-lineage-graph) and the [resource's details view](#example-of-model-details). 
+
+Here's an example of the Open in IDE icon in the upper right corner of the resource details page. The icon is inactive (grayed out) if you haven't been assigned a developer license.  
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-open-in-ide-icon.png" title="Example of icon for Open in IDE" />
+
 
 ## View model versions
 
@@ -157,6 +166,10 @@ If models in the project are versioned, you can see which [version of the model]
 You can view the definition and latest run results of any resource in your project. To find a resource and view its details, you can interact with the lineage graph, use search, or browse the catalog. 
 
 The details (metadata) available to you depends on the resource’s type, its definition, and the [commands](/docs/deploy/job-commands) that run within jobs in the production environment. 
+
+In the upper right corner of the resource details page, you can:
+- Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- Click the Share icon to copy the page's link to your clipboard.
 
 <expandable alt_header="What details are available for a model?">
 

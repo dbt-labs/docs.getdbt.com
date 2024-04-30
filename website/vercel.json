@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/build/sl-getting-started",
+      "destination": "/guides/sl-snowflake-qs", 
+      "permanent": true
+    },
+    {
+      "source": "/docs/use-dbt-semantic-layer/quickstart-sl",
+      "destination": "/guides/sl-snowflake-qs", 
+      "permanent": true
+    },
+    {
       "source": "/docs/cloud/manage-access/set-up-sso-azure-active-directory",
       "destination": "/docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
       "permanent": true
@@ -4816,6 +4826,29 @@
       "source": "/quickstarts/manual-install",
       "destination": "/guides/manual-install",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "img-src 'self' https:;"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
     }
   ]
 }

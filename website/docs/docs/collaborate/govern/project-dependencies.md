@@ -135,3 +135,4 @@ If you're using private packages with the [git token method](/docs/build/package
 
 ## Related docs
 - Refer to the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use dbt Mesh.
+- [Quickstart with dbt Mesh](/guides/mesh-qs)
