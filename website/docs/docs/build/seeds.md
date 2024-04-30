@@ -81,7 +81,7 @@ You can document and test seeds in YAML by declaring properties — check out th
 
 ## FAQs
 <FAQ path="Seeds/load-raw-data-with-seed" />
-<FAQ path="Tests/configurable-data-path" />
+<FAQ path="Seeds/configurable-data-path" /> 
 <FAQ path="Seeds/full-refresh-seed" />
 <FAQ path="Tests/testing-seeds" />
 <FAQ path="Seeds/seed-datatypes" />
