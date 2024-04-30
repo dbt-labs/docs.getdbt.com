@@ -56,9 +56,9 @@ Supported aggregations include:
 | sum_boolean       | A sum for a boolean type |
 | count_distinct    | Distinct count of values |
 | median           | Median (p50) calculation across the values |
-| percentile        | Percentile calculation across the values. Add `agg_params` field to specify percentile details. |
+| percentile        | Percentile calculation across the values. |
 
-**Percentile aggregation example**
+**Percentile aggregation example**<br />
 If you're using the `percentile` aggregation, you must use the `agg_params` field under it to specify details for the percentile aggregation (such as what percentile to calculate and whether to use discrete or continuous calculations).
 
 ```yaml
@@ -71,18 +71,17 @@ agg_params:
   use_discrete_percentile: False  # False calculates the discrete percentile, True calculates the continuous percentile
 ```
 
-**Percentile across supported engine types**
-
+**Percentile across supported engine types**<br />
 The following table displays which SQL engine supports continuous, discrete, approximate, continuous, and approximate discrete percentiles.
 
 |  | Cont. | Disc. | Approx. cont | Approx. disc |
 | -- | -- | -- | -- | -- |
-|Snowflake | [Y](https://docs.snowflake.com/en/sql-reference/functions/percentile_cont.html) | [Y](https://docs.snowflake.com/en/sql-reference/functions/percentile_disc.html) | [Y](https://docs.snowflake.com/en/sql-reference/functions/approx_percentile.html) (t-digest) | N |
-| Bigquery | N (window) | N (window) | [Y](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#approx_quantiles) | N |
-| Databricks | [Y](https://docs.databricks.com/sql/language-manual/functions/percentile_cont.html) | [N](https://docs.databricks.com/sql/language-manual/functions/percentile_disc.html) | N | [Y](https://docs.databricks.com/sql/language-manual/functions/approx_percentile.html) |
-| Redshift | [Y](https://docs.aws.amazon.com/redshift/latest/dg/r_PERCENTILE_CONT.html) | N (window) | N | [Y](https://docs.aws.amazon.com/redshift/latest/dg/r_APPROXIMATE_PERCENTILE_DISC.html) |
-| [Postgres](https://www.postgresql.org/docs/9.4/functions-aggregate.html) | Y | Y | N | N |
-| [DuckDB](https://duckdb.org/docs/sql/aggregates.html) | Y | Y | Y (t-digest) | N |
+|Snowflake | [Yes](https://docs.snowflake.com/en/sql-reference/functions/percentile_cont.html) | [Yes](https://docs.snowflake.com/en/sql-reference/functions/percentile_disc.html) | [Yes](https://docs.snowflake.com/en/sql-reference/functions/approx_percentile.html) (t-digest) | No |
+| Bigquery | No (window) | No (window) | [Yes](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#approx_quantiles) | No |
+| Databricks | [Yes](https://docs.databricks.com/sql/language-manual/functions/percentile_cont.html) | [No](https://docs.databricks.com/sql/language-manual/functions/percentile_disc.html) | No | [Yes](https://docs.databricks.com/sql/language-manual/functions/approx_percentile.html) |
+| Redshift | [Yes](https://docs.aws.amazon.com/redshift/latest/dg/r_PERCENTILE_CONT.html) | No (window) | No | [Yes](https://docs.aws.amazon.com/redshift/latest/dg/r_APPROXIMATE_PERCENTILE_DISC.html) |
+| [Postgres](https://www.postgresql.org/docs/9.4/functions-aggregate.html) | Yes | Yes | No | No |
+| [DuckDB](https://duckdb.org/docs/sql/aggregates.html) | Yes | Yes | Yes (t-digest) | No |
 
 ### Expr
 
