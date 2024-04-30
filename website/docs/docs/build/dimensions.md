@@ -208,7 +208,6 @@ Currently, there are limitations in supporting SCD's.
 
 MetricFlow supports joins against dimensions values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric organized by a group that changes over time, such as the historical trends of sales by a customer's country.
 
-SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
 
 **Basic structure**
 
