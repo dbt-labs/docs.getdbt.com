@@ -185,8 +185,8 @@ metrics:
     type_params:
       numerator: cancellations
       denominator: transaction_amount
-      filter: |   
-        {{ Dimension('customer__country') }} = 'MX'
+    filter: |   
+      {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
     owners:
       - support@getdbt.com
@@ -194,10 +194,10 @@ metrics:
     type_params:
       numerator:
         name: cancellations
-        filter: {{ Dimension('company__tier' )}} = 'enterprise'  
+        filter: {{ Dimension('company__tier') }} = 'enterprise'  
       denominator: transaction_amount
-      filter: | 
-        {{ Dimension('customer__country') }} = 'MX'  
+    filter: | 
+      {{ Dimension('customer__country') }} = 'MX' 
 ```
 
 ### Simple metrics
@@ -206,9 +206,8 @@ metrics:
 
 - `name`&mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
 
-<!--create_metric not supported yet
-**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric. 
--->
+**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric.
+
 ```yaml
 metrics:
   - name: cancellations
@@ -219,9 +218,9 @@ metrics:
       measure:
         name: cancellations_usd  # Specify the measure you are creating a proxy for.
         fill_nulls_with: 0
-        filter: |
-        {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
-        join_to_timespine: true
+    filter: |
+      {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}} is not null
+    join_to_timespine: true
 ```
 
 ## Filters
