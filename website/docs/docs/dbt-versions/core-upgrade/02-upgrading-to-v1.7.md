@@ -83,3 +83,4 @@ With these quick hits, you can now:
 - Configure a [`delimiter`](/reference/resource-configs/delimiter) for a seed file.
 - Use packages with the same git repo and unique subdirectory.
 - Access the `date_spine` macro directly from dbt-core (moved over from dbt-utils).
+- Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.
