@@ -264,7 +264,9 @@ models:
 ```
 
 **For roles and groups:**
-For roles and groups, the `+grants` syntax is not supported. You need to provide the complete list of roles or groups that require access each time you make a change. Additionally, you must prefix each role or group with 'role' or 'group':
+Inheritance of grants are not supported for groups and roles in Redshift. Accordingly, for every model, you need to provide the complete list of roles or groups that require access each time you make a change to a model.
+
+Additionally, must prefix each role or group with 'role' or 'group':
 
 ```yaml
 models:
