@@ -20,7 +20,7 @@ These flags go through three phases of development:
 
 These flags can _only_ be set in the `flags` dictionary in `dbt_project.yml`. They configure behaviors closely tied to project code, and as such they should be defined in version control and modified via pull/merge request, with the same testing and peer review.
 
-The current flags are shown below, along with their current default values in the latest versions of dbt Cloud + dbt Core. To opt out of all upcoming behavior changes, set these values to `False`. You will continue to see deprecation warnings for each, which you may optionally silence via `warn_error_options.silence` [TODO: link].
+The current flags are shown below, along with their current default values in the latest versions of dbt Cloud + dbt Core. To opt out of a specific behavior change, you should set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors that you have opted out of explicitly, until you either resolve them (switch the flag to `True`) or choose to silence the warnings.
 
 <File name='dbt_project.yml'>
 
@@ -43,7 +43,7 @@ flags:
 
 ### `require_explicit_package_overrides_for_builtin_materializations`
 
-We have deprecated the behavior whereby installed packages could override built-in materializations without explicit opt-in from the end user. When this flag is set to `True`, a materialization defined in a package that matches the name of a built-in materialization will no longer be included in the search and resolution order.
+We have deprecated the behavior whereby installed packages could override built-in materializations without explicit opt-in from the end user. When this flag is set to `True`, a materialization defined in a package that matches the name of a built-in materialization will no longer be included in the search and resolution order. Unlike for macros, materializations do not use the `search_order` defined in the project `dispatch` config.
 
 The built-in materializations are `'view'`, `'table'`, `'incremental'`, `'materialized_view'` for models as well as `'test'`, `'unit'`, `'snapshot'`, `'seed'`, and `'clone'`.
 
@@ -61,9 +61,15 @@ Users can still explicitly override built-in materializations, in favor of a mat
 
 In the future, we may extend the project-level `dispatch` configuration [TODO: link] to support a list of authorized packages for overriding built-in materialization.
 
+<VersionBlock lastVersion="1.7">
+
+The flags below have been introduced in a future version of dbt Core. If you're still using an older version, then you have the legacy behavior (when each flag is `False`).
+
+</VersionBlock>
+
 ### `require_resource_names_without_spaces`
 
-The names of dbt resources (models, sources, etc) should contain letters, numbers, and underscores. We highly discourage the use of other characters. To that end, we have deprecated support for spaces in resource names. When this flag is set to the `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
+The names of dbt resources (models, sources, etc) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When this flag is set to the `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
 
 <File name='models/model name with spaces.sql'>
 
