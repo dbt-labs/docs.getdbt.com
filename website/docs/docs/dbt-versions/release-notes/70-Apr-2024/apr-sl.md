@@ -1,6 +1,6 @@
 ---
 title: "dbt Semantic Layer updates and fixes for April 2024"
-description: "Apr 2024: Enhanced Google Sheets integration include new features for metric labels, saved selections, and time filters. Tableau integration improvements include data source update and bug fixes."
+description: "Apr 2024: Enhanced Google Sheets integration include new features for metric labels, saved selections, and time filters. Tableau integration improvements include data source updates."
 sidebar_label: "Updates and fixes: dbt Semantic Layer"
 sidebar_position: 06
 tags: [Apr-2024]
