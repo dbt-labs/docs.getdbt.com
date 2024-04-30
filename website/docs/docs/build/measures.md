@@ -41,7 +41,7 @@ Measure names must be unique across all semantic models in a project and can not
 
 The description describes the calculated measure. It's strongly recommended you create verbose and human-readable descriptions in this field.
 
-### Aggregation 
+### Aggregation
 
 The aggregation determines how the field will be aggregated. For example, a `sum` aggregation type over a granularity of `day` would sum the values across a given day.
 
@@ -56,8 +56,33 @@ Supported aggregations include:
 | sum_boolean       | A sum for a boolean type |
 | count_distinct    | Distinct count of values |
 | median           | Median (p50) calculation across the values |
-| percentile        | Percentile calculation across the values  |
+| percentile        | Percentile calculation across the values. Add `agg_params` field to specify percentile details. |
 
+**Percentile aggregation example**
+If you're using the `percentile` aggregation, you must use the `agg_params` field under it to specify details for the percentile aggregation (such as what percentile to calculate and whether to use discrete or continuous calculations).
+
+```yaml
+name: p99_transaction_value
+description: The 99th percentile transaction value
+expr: transaction_amount_usd
+agg: percentile
+agg_params:
+  percentile: .99
+  use_discrete_percentile: False  # False calculates the discrete percentile, True calculates the continuous percentile
+```
+
+**Percentile across supported engine types**
+
+The following table displays which SQL engine supports continuous, discrete, approximate, continuous, and approximate discrete percentiles.
+
+|  | Cont. | Disc. | Approx. cont | Approx. disc |
+| -- | -- | -- | -- | -- |
+|Snowflake | [Y](https://docs.snowflake.com/en/sql-reference/functions/percentile_cont.html) | [Y](https://docs.snowflake.com/en/sql-reference/functions/percentile_disc.html) | [Y](https://docs.snowflake.com/en/sql-reference/functions/approx_percentile.html) (t-digest) | N |
+| Bigquery | N (window) | N (window) | [Y](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#approx_quantiles) | N |
+| Databricks | [Y](https://docs.databricks.com/sql/language-manual/functions/percentile_cont.html) | [N](https://docs.databricks.com/sql/language-manual/functions/percentile_disc.html) | N | [Y](https://docs.databricks.com/sql/language-manual/functions/approx_percentile.html) |
+| Redshift | [Y](https://docs.aws.amazon.com/redshift/latest/dg/r_PERCENTILE_CONT.html) | N (window) | N | [Y](https://docs.aws.amazon.com/redshift/latest/dg/r_APPROXIMATE_PERCENTILE_DISC.html) |
+| [Postgres](https://www.postgresql.org/docs/9.4/functions-aggregate.html) | Y | Y | N | N |
+| [DuckDB](https://duckdb.org/docs/sql/aggregates.html) | Y | Y | Y (t-digest) | N |
 
 ### Expr
 
@@ -123,7 +148,7 @@ semantic_models:
         description: The average value of transactions 
         expr: transaction_amount_usd
         agg: average 
-      - name: transactions_amount_usd_valid #Notice here how we use expr to compute the aggregation based on a condition
+      - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
         description: The total USD value of valid transactions only
         expr: CASE WHEN is_valid = True then 1 else 0 end 
         agg: sum
@@ -137,7 +162,7 @@ semantic_models:
         agg: percentile
         agg_params:
           percentile: .99
-          use_discrete_percentile: False #False will calculate the discrete percentile and True will calculate the continuous percentile
+          use_discrete_percentile: False # False calculates the discrete percentile and True calculates the continuous percentile
       - name: median_transaction_value
         description: The median transaction value
         expr: transaction_amount_usd
@@ -147,7 +172,7 @@ semantic_models:
     dimensions:
       - name: metric_time
         type: time
-        expr: date_trunc('day', ts) #expr refers to underlying column ts
+        expr: date_trunc('day', ts) # expr refers to underlying column ts
         type_params:
           time_granularity: day
       - name: is_bulk_transaction
