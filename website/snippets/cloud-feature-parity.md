@@ -6,7 +6,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | dbt Cloud IDE                 | ✅           | ✅                     | ✅                  |
 | dbt Cloud CLI                 | ✅           | ✅                     | ❌                  |
 | Audit logs                    | ✅           | ✅                     | ✅                  |  
-| Discovery API                 | ✅           | ✅                     | ❌                  | 
+| Discovery API                 | ✅           | ✅                     | ✅                  | 
 | dbt Explorer                  | ✅           | ✅                     | ❌                  | 
 | Webhooks (Outbound)           | ✅           | ✅                     | ❌                  |
 | Continuous Integration, including CI jobs    | ✅        |     ✅     | ✅                  | 
