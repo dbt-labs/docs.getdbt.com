@@ -7,15 +7,19 @@ tags: [Apr-2024]
 date: 2024-04-30
 ---
 
-The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow). This release note includes our work in April 2024:
+The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow). This release note includes fixes, updates, and deprecations for in April 2024.
 
-## New features
+:::info Updated release note layout
+We've updated the layout of our release notes to provide a single view of the changes. Check out the [updated layout](/docs/dbt-versions/2024-release-notes) and [let us know what you think!](https://getdbt.slack.com/archives/C0441GSRU04)
+:::
+
+### New features
 
 **Google Sheets**
-- **Saved selections** &mdash; You can [save your query selections](/docs/use-dbt-semantic-layer/gsheets#using-saved-selections) within the Google Sheets application. They can be made private or public and refresh upon loading.
+- **Saved selections** &mdash; You can [save your query selections](/docs/use-dbt-semantic-layer/gsheets#using-saved-selections) within the [Google Sheets application](/docs/use-dbt-semantic-layer/gsheets). They can be made private or public and refresh upon loading.
 - **Display metric label** &mdash; Metrics are now displayed by their labels as `metric_name`.
 
-## Updates
+### Updates
 
 - **Metadata in metrics** &mdash; [Metrics](/docs/build/metrics-overview) now supports the [`meta` option](/reference/resource-configs/meta) under the [config](/reference/resource-properties/config) property. Previously, we only supported the now deprecated `meta` tag.
 
@@ -28,12 +32,9 @@ The dbt Labs team continues to work on adding new features, fixing bugs, and inc
 - **Entity querying** &mdash; Added support to directly query entities, expanding the flexibility of data requests.
 - **Exclude column headers** &mdash; Added an option to exclude column headers, which is useful for populating templates with only the required data.
 
-## Deprecation
+### Deprecation
 
 **Tableau**
 
-- **`METRICS_AND_DIMENSIONS`** &mdash; This data source is deprecated for all accounts not actively using it. We encourage users to transition to the "ALL" data source for future integrations.
+- **`METRICS_AND_DIMENSIONS`** &mdash; The [`METRICS_AND_DIMENSIONS` data source](/docs/use-dbt-semantic-layer/tableau#using-the-integration) has been [deprecated](/docs/use-dbt-semantic-layer/tableau#using-the-integration) for all accounts not actively using it. We encourage users to transition to the "ALL" data source for future integrations.
 
-## Bugs
-**Tableau**
-- **Tableau errors** &mdash; NEED MORE INFO FROM DIEGO
