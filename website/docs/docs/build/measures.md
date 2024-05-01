@@ -66,7 +66,7 @@ expr: transaction_amount_usd
 agg: percentile
 agg_params:
   percentile: .99
-  use_discrete_percentile: False  # False calculates the discrete percentile, True calculates the continuous percentile
+  use_discrete_percentile: False  # False calculates the continuous percentile, True calculates the discrete percentile.
 ```
 
 #### Percentile across supported engine types
@@ -159,7 +159,7 @@ semantic_models:
         agg: percentile
         agg_params:
           percentile: .99
-          use_discrete_percentile: False # False calculates the discrete percentile and True calculates the continuous percentile
+          use_discrete_percentile: False # False calculates the continuous percentile, True calculates the discrete percentile.
       - name: median_transaction_value
         description: The median transaction value
         expr: transaction_amount_usd
@@ -185,7 +185,7 @@ Some measures cannot be aggregated over certain dimensions, like time, because i
 To demonstrate the configuration for non-additive measures, consider a subscription table that includes one row per date of the registered user, the user's active subscription plan(s), and the plan's subscription value (revenue) with the following columns:
 
 - `date_transaction`: The daily date-spine.
-- `user_id`: The ID pertaining to the registered user.
+- `user_id`: The ID of the registered user.
 - `subscription_plan`: A column to indicate the subscription plan ID.
 - `subscription_value`: A column to indicate the monthly subscription value (revenue) of a particular subscription plan ID.
 
