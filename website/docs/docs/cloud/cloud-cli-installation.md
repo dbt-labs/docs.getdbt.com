@@ -49,7 +49,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
 
 :::tip Run `pip uninstall dbt` to uninstall dbt Core
 
-If you have installed dbt Core globally in some other way, you'll need to uninstall it first before proceeding. To uninstall dbt Core and remove it from the system, run:
+If you've installed dbt Core globally in some other way, first uninstall it with:
 ```bash
 pip uninstall dbt
 ```
