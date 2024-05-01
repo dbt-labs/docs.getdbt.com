@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/faqs/Tests/configurable-data-path",
+      "destination": "/docs/faqs/Seeds/configurable-data-path",
+      "permanent": true
+    },
+    {
       "source": "/docs/build/sl-getting-started",
       "destination": "/guides/sl-snowflake-qs", 
       "permanent": true
