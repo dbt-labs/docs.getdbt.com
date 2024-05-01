@@ -20,7 +20,7 @@ These flags go through three phases of development:
 
 These flags _must_ be set in the `flags` dictionary in `dbt_project.yml`. They configure behaviors closely tied to project code, which means they should be defined in version control and modified through pull or merge requests, with the same testing and peer review.
 
-The current flags are shown below, along with their current default values in the latest versions of dbt Cloud + dbt Core. To opt out of a specific behavior change, you should set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors that you have opted out of explicitly, until you either resolve them (switch the flag to `True`) or choose to silence the warnings.
+The following example displays the current flags and their current default values in the latest dbt Cloud and dbt Core versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You'll continue to see warnings for legacy behaviors that you have opted out of explicitly until you either resolve them (switch the flag to `True`) or choose to silence the warnings.
 
 <File name='dbt_project.yml'>
 
