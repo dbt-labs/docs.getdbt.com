@@ -92,7 +92,7 @@ You can read more about each of these behavior changes in the links below:
 
 - (Mature, enabled by default) [Require explicit package overrides for builtin materializations](/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations)
 - (Introduced, disabled by default) [Require resource names without spaces](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces)
-- (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks)
+- (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks)
 
 ## Quick hits
 
