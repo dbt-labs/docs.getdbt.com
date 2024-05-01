@@ -148,7 +148,7 @@ When your adapter becomes more popular, and people start using it, you may quick
 
 #### Keeping the code compatible with dbt Core
 
-An adapter is compatible with dbt Core if it has correctly implemented the interface defined in `dbt-adapters` and the tests defined in `dbt-tests-adapters`. Prior to dbt Core version 1.8, this interface was contained in `dbt-core`. 
+An adapter is compatible with dbt Core if it has correctly implemented the interface defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters/) and is tested by [dbt-tests-adapters](https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-tests-adapter). Prior to dbt Core version 1.8, this interface was contained in `dbt-core`. 
 
 New minor version releases of `dbt-adapters` may include changes to the Python interface for adapter plugins, as well as new or updated test cases. The maintainers of `dbt-adapters` will clearly communicate these changes in documentation and release notes, and they will aim for backwards compatibility whenever possible.
 
