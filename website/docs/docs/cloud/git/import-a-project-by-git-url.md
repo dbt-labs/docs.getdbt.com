@@ -10,7 +10,6 @@ In dbt Cloud, you can import a git repository from any valid git URL that points
 ## Git protocols
 You must use the `git@...` or `ssh:..`. version of your git URL, not the `https://...` version. dbt Cloud uses the SSH protocol to clone repositories, so dbt Cloud will be unable to clone repos supplied with the HTTP protocol.
 
-
 ## Managing Deploy Keys
 
 After importing a project by Git URL, dbt Cloud will generate a Deploy Key for your repository. To find the deploy key in dbt Cloud:
@@ -102,15 +101,16 @@ CodeCommit uses `master` as its default branch, and to initialize your project, 
 - Select **Settings** -> **Edit** and under **General Settings**, check the **Default to a custom branch** checkbox.
 - Specify the custom branch as `master` and click **Save**.
 
-#### Step 5: Configure pull request (PR) template URLs (optional)
+#### Step 5: Configure pull request (PR) template URLs (Optional)
 
 To prevent having users merging code changes directly into the default branch, it is recommended to configure the PR Template URL in the Repository details page for your project. When configured, after users commit and sync code changes on the branch in the IDE, dbt Cloud will prompt them to open a new PR prior to merging any changes. 
 
 - Go to **Account Settings** -> **Projects** -> _Choose the project_ -> **Repository**
-- Under **Repository details** page, click Edit and insert the Pull request URL as per the suggested formatting [here](https://docs.getdbt.com/docs/collaborate/git/pr-template).
+- Under **Repository details** page, click Edit and insert the Pull request URL as per the suggested formatting [here](/docs/collaborate/git/pr-template).
+  <Lightbox src="/img/docs/collaborate/repo-details.jpg" title="Test"/>
 - Replace <repo> with the name of your repository (note that it is case sensitive). 
 
-![PR template](https://github.com/dbt-labs/docs.getdbt.com/assets/141895372/630ca92c-d804-4794-bbc7-9884825a9a37 "Configure PR Template URLs")
+<Lightbox src="/img/docs/collaborate/pr-template-example.jpg" title="Configure PR Template URLs" />
 
 🎉 **You're all set!** Once dbt Support handles your request and you've set your custom branch, your project is ready to execute dbt runs on dbt Cloud. 
 
