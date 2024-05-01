@@ -85,7 +85,7 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 -->
 
 :::tip Run dbt parse to reflect metric changes
-When you make changes to metrics, make sure you run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file is updated, reflecting your changes when you query metrics. Running `dbt parse` ensures you don't have to rebuild all the models.
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 ::: 
 
 <expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">
