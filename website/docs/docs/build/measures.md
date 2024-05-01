@@ -58,7 +58,7 @@ Supported aggregations include:
 | median           | Median (p50) calculation across the values |
 | percentile        | Percentile calculation across the values. |
 
-**Percentile aggregation example**<br />
+#### Percentile aggregation example
 If you're using the `percentile` aggregation, you must use the `agg_params` field under it to specify details for the percentile aggregation (such as what percentile to calculate and whether to use discrete or continuous calculations).
 
 ```yaml
