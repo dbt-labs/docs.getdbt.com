@@ -104,17 +104,16 @@ CodeCommit uses `master` as its default branch, and to initialize your project, 
 
 #### Step 5: Configure pull request (PR) template URLs (Optional)
 
-To prevent having users merging code changes directly into the default branch, it is recommended to configure the PR Template URL in the Repository details page for your project. When configured, after users commit and sync code changes on the branch in the IDE, dbt Cloud will prompt them to open a new PR prior to merging any changes.
+To prevent users directly merging code changes into the default branch, configure the PR Template URL in the **Repository details** page for your project. Once configured, dbt Cloud will prompt users to open a new PR after committing and synching code changes on the branch in the IDE, before merging any changes into the default branch.
 
 - Go to **Account Settings** -> **Projects** -> Select the project.
 - Click the repository link under **Repository**.
 - In the **Repository details** page, click **Edit** in the lower right.
   <Lightbox src="/img/docs/collaborate/repo-details.jpg" width="80%" title="Configure PR template in the 'Repository details' page." />
 - In the **Pull request URL** field, set the URL based on the suggested [PR template format](/docs/collaborate/git/pr-template#aws-codecommit).
-- Replace `<repo>` with the name of your repository (note that it is case sensitive).
-  <Lightbox src="/img/docs/collaborate/pr-template-example.jpg" width="60%" title="Configure PR Template URLs" />
-- Replace `<repo>` with the name of your repository (note that it is case sensitive).
-- Click **Save**.
+- Replace `<repo>` with the name of your repository (Note that it is case sensitive). In the following example, the repository name is `New_Repo`.
+  <Lightbox src="/img/docs/collaborate/pr-template-example.jpg" width="60%" title="In the Pull request URL field example, the repository name is 'New_Repo'." />
+- After filling the **Pull request URL** field, click **Save**.
 
 🎉 **You're all set!** Once dbt Support handles your request and you've set your custom branch, your project is ready to execute dbt runs on dbt Cloud.
 
