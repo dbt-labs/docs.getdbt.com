@@ -291,4 +291,4 @@ Building this application has been an absolute blast for multiple reasons.  Firs
 
 Finally, to see the entire code, from Snowflake to Streamlit, check out the repo [here](https://github.com/dpguthrie/dbt-sl-cortex-streamlit-blog/tree/main?tab=readme-ov-file).  And if you want to get a sneak peek of some of the questions you may be able to ask, check out the demo below.  Thanks for reading!
 
-**TODO LOOM**
+<LoomVideo id='3b5cc878ef53488583691c390159007d?t=0' />
