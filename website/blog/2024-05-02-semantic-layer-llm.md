@@ -1,5 +1,5 @@
 ---
-title: "Conversational Analytics: A Natural Language Application"
+title: "Conversational Analytics: A Natural Language Interface to your Snowflake Data"
 description: "A tutorial on building a natural language interface to your Snowflake data using dbt Cloud Semantic Layer with Snowflake Cortex and Streamlit"
 slug: semantic-layer-cortex
 
@@ -14,7 +14,7 @@ is_featured: true
 
 ## Introduction
 
-As a solutions architect at dbt Labs, my role is to help our customers and prospects understand how to best leverage the power of the dbt Cloud platform to solve their unique data challenges.  That uniqueness presents itself in different ways - organizational maturity, data stack, team size and composition, technical capability, use case, or some combination of those.  With all those differences though, there has been one common thread throughout most of my engagements:  Generative AI and Large Language Models (LLMs).  Data teams are either 1) proactively thinking about applications for it in the context of their work or 2) being pushed to think about it by their stakeholders.  It has become the elephant in every single (zoom) room I find myself in.
+As a solutions architect at dbt Labs, my role is to help our customers and prospects understand how to best utilize the dbt Cloud platform to solve their unique data challenges.  That uniqueness presents itself in different ways - organizational maturity, data stack, team size and composition, technical capability, use case, or some combination of those.  With all those differences though, there has been one common thread throughout most of my engagements:  Generative AI and Large Language Models (LLMs).  Data teams are either 1) proactively thinking about applications for it in the context of their work or 2) being pushed to think about it by their stakeholders.  It has become the elephant in every single (zoom) room I find myself in.
 
 <Lightbox src="/img/blog/2024-05-02-semantic-layer-llm/gen-ai-everywhere.png" width="85%" title="Gen AI Everywhere!" />
 
@@ -68,7 +68,7 @@ grant usage on warehouse <warehouse_name> to role public;
 -- change the role name in the above commands.
 ```
 
-Additionally, you’ll need to set up network rules, an external access integration, and a UDF that makes a request to the dbt Cloud Semantic Layer.  Be mindful of the values you have in your network rule and UDF - they'll need to correspond to the host or hosts where your dbt Cloud account is [deployed](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql#dbt-semantic-layer-graphql-api).
+Additionally, you’ll need to set up a network rule, an external access integration, and a UDF that makes a request to the dbt Cloud Semantic Layer.  Be mindful of the values you have in your network rule and UDF - they'll need to correspond to the host where your dbt Cloud account is [deployed](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql#dbt-semantic-layer-graphql-api).
 
 ```sql
 grant create network rule on schema <database_name>.<schema_name> to role public;
@@ -114,7 +114,7 @@ Within dbt Cloud, you’ll need the following (more detail can be found [here](h
 There are several components to the application that are worth calling out here individually: retrieving your project’s semantics (specifically metrics and dimensions) when the application loads, examples that guide the LLM to what valid and invalid output looks like, parsing the output to a structured object, and then using that output as an argument in the UDF we built earlier that makes a request to the Semantic Layer.
 
 ### Retrieving Semantics
-When we create our prompt for the LLM, we’ll need to pass in the relevant metrics and dimensions that have been defined in our dbt project.  Without this, the LLM wouldn’t have the relevant information to parse when a user asks their particular question.  Additionally, this is an external request to dbt Cloud’s Semantic Layer API, so we’ll need to use an existing UDF.  Again, make sure you update the url to match your deployment type.
+When we create our prompt for the LLM, we’ll need to pass in the relevant metrics and dimensions that have been defined in our dbt project.  Without this, the LLM wouldn’t have the relevant information to parse when a user asks their particular question.  Additionally, this is an external request to dbt Cloud’s Semantic Layer API, so we’ll need to use an existing UDF.  Again, make sure you update the url to match your deployment type.  Also, note that we're using the external access integration and secret that we created earlier.
 
 ```sql
 create or replace function retrieve_sl_metadata()
@@ -167,12 +167,12 @@ grant usage on function retrieve_sl_metadata() to role public;
 
 Couple of things to note about the code above:
 
-Make sure you update the code to include your environment ID and your URL that’s specific to your [deployment type](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql#dbt-semantic-layer-graphql-api).
+- Make sure you update the code to include your environment ID and your URL that’s specific to your [deployment type](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-graphql#dbt-semantic-layer-graphql-api).
 You could modify the function to accept arguments for payload, variables, query, etc. to make it more dynamic and satisfy other use cases outside of this one.
-
-Once the data has been returned, we’re going to use streamlit’s [session state](https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state) feature to store the dbt project’s defined metrics and dimensions.  This feature will allow us to make multiple calls without having to continually retrieve this metadata.
+- Once the data has been returned, we’re going to use streamlit’s [session state](https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state) feature to store the dbt project’s defined metrics and dimensions.  This feature will allow us to make multiple calls without having to continually retrieve this metadata.
 
 ### Creating Examples
+
 Aside from using the metrics and dimensions that we retrieved in the step above, we’re also going to use in the prompt, examples of questions a user would ask and what the corresponding output should look like.  This allows us to “train” the LLM and ensure we can accommodate the various ways people ask questions.  An example of this is guiding the LLM in how it can structure SQL used in a where clause when a question is time-based (e.g. “Give me year-to-date revenue by department”).  An example of this might look like:
 
 ```python
@@ -197,7 +197,7 @@ Aside from using the metrics and dimensions that we retrieved in the step above,
 }
 ```
 
-There is a tradeoff with this approach though that is worth mentioning - the examples we use to guide the LLM will be used in the prompt and thus increase the number of tokens processed, which is how Snowflake’s Cortex functions measure compute cost.  For some context, the LLM used in this application is mistral-8x7b, which charges .22 Credits / 1M Tokens.
+There is a tradeoff with this approach though that is worth mentioning - the examples we use to guide the LLM will be used in the prompt and thus increase the number of tokens processed, which is how Snowflake’s Cortex functions measure compute cost.  For some context, the LLM used in this application is mistral-8x7b, which charges .22 Credits / 1M Tokens and has a context window of 32,000 tokens.
 
 ### Structured Object Parsing
 Another important piece to this application is parsing the output from the LLM into a structured object, specifically a [Pydantic model](https://docs.pydantic.dev/latest/concepts/models/).  As I was building out this application, I continually ran into problems with the LLM.  The problem was not providing correct responses, which it did, but responses that had the same structure and continuity from question to question.  Even trying very explicit instructions in the prompt like “Only return relevant metrics and dimensions” or “Do not explain your output in any way”, I continued to receive output that made it hard to parse and then extract the relevant information to form an appropriate request to the semantic layer.  This led me to LangChain and the [PydanticOutputParser](https://python.langchain.com/docs/modules/model_io/output_parsers/types/pydantic/), which allowed me to specify an arbitrary Pydantic Model and make the output from the LLM conform to that schema.
@@ -287,8 +287,8 @@ grant usage on function submit_sl_request(string) to role public;
 
 ## Wrapping Up
 
-Building this application has been an absolute blast for multiple reasons.  First, we’ve been able to use it internally within the SA org to both demonstrate how the semantic layer works but also provide a space in which organizations can begin to think about what they can build on top of the Semantic Layer within their own organization.  Watching our customers have these Aha! moments live on calls is what makes this role rewarding.  And selfishly, I’ve been able to be heads down, hands on keyboard learning about all of these interesting technologies; stepping back into the role of builder is something I will never turn down!
+Building this application has been an absolute blast for multiple reasons.  First, we’ve been able to use it internally within the SA org to demonstrate how the semantic layer works.  It provides yet another [integration](https://docs.getdbt.com/docs/use-dbt-semantic-layer/avail-sl-integrations) point that further drives home the fundamental value prop of using the Semantic Layer.  Secondly, and more importantly, it has served as an example to those customers thinking about (or being pushed to think about) how they can best utilize these technologies to further their goals.  Finally, I’ve been able to be heads down, hands on keyboard learning about all of these interesting technologies and stepping back into the role of builder is something I will never turn down!
 
-Finally, to see the entire code, from Snowflake to Streamlit, check out the repo here (**TODO**).  And if you want to get a sneak peek of some of the questions you may be able to ask, check out the demo below.  Thanks for reading!
+Finally, to see the entire code, from Snowflake to Streamlit, check out the repo [here](https://github.com/dpguthrie/dbt-sl-cortex-streamlit-blog/tree/main?tab=readme-ov-file).  And if you want to get a sneak peek of some of the questions you may be able to ask, check out the demo below.  Thanks for reading!
 
 **TODO LOOM**
