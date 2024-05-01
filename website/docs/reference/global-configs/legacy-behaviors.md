@@ -63,7 +63,7 @@ In the future, we may extend the project-level [`dispatch` configuration](/refer
 
 <VersionBlock lastVersion="1.7">
 
-The flags below have been introduced in a future version of dbt Core. If you're still using an older version, then you have the legacy behavior (when each flag is `False`).
+The following flags were introduced in a future version of dbt Core. If you're still using an older version, then you have the legacy behavior by default (when each flag is `False`). 
 
 </VersionBlock>
 
