@@ -106,7 +106,7 @@ A set of *materializations* and their corresponding helper macros defined in dbt
 ### Adapter Architecture
 
 
-Below is a diagram of how the adapter architecture works.
+Below is a flow diagram illustrating how a `dbt run` command works with the `dbt-postgres` adapter. It shows the relationship between `dbt-core`, `dbt-adapters`, and individual adapters.
 
 <Lightbox src="/img/adapter-guide/adapter-architecture-diagram.png" title="Diagram of adapter architecture"/>
 
