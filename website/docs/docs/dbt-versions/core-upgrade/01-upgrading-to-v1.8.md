@@ -96,7 +96,7 @@ You can read more about each of these behavior changes in the following links:
 
 ## Quick hits
 
-- Custom defaults of [global config flags](/reference/global-configs/about-global-configs) should be set in the `flags` dictionary in [`dbt_project.yml`](/reference/dbt_project.yml), instead of in [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml). Support for the latter has been deprecated.
+- Custom defaults of [global config flags](/reference/global-configs/about-global-configs) should be set in the `flags` dictionary in [`dbt_project.yml`](/reference/dbt_project.yml), instead of in [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml). Support for `profiles.yml` has been deprecated.
 - New CLI flag [`--resource-type`/`--exclude-resource-type`](/reference/global-configs/resource-type) for including/excluding resources from dbt `build`, `run`, and `clone`. 
 - To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
 - Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.
