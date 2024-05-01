@@ -72,7 +72,7 @@ agg_params:
 ```
 
 #### Percentile across supported engine types
-The following table displays which SQL engine supports continuous, discrete, approximate, continuous, and approximate discrete percentiles.
+The following table lists which SQL engine supports continuous, discrete, approximate, continuous, and approximate discrete percentiles.
 
 |  | Cont. | Disc. | Approx. cont | Approx. disc |
 | -- | -- | -- | -- | -- |
