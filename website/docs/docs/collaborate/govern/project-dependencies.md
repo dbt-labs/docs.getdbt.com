@@ -104,7 +104,7 @@ with monthly_revenue as (
 
 For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/best-practices/how-we-mesh/mesh-1-intro).
 
-### Protecting production
+### Safeguarding production data with staging environments
 
 When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. To protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) in your projects. When a staging environment is present in the project, when other projects reference it during development workflows, they resolve to the Staging environment. This adds a layer of security between your Deployment and Production environments by limiting access to production data.
 
