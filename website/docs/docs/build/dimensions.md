@@ -216,7 +216,7 @@ As their name suggests SCD Type II are groups that change values at a coarser ti
 
 SCD Type II tables have a specific dimension with a start and end date. To join tables, set the additional [entity `type`](/docs/build/entities#entity-types) parameter to the `natural` key. Using a `natural` key as an [entity `type`](/docs/build/entities#entity-types) means you also don't usually need a `primary` key. In most instances, SCD tables don't have a logically usable `primary` key because `natural` keys map to multiple rows.
 
-**Structure of an SCD Type II table**
+#### Structure of an SCD Type II table
 
 The following basic structure of an SCD Type II data platform table is supported:
 
