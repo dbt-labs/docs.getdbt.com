@@ -17,7 +17,6 @@ Groups are defined within semantic models, alongside entities and measures, and 
 
 All dimensions require a `name`, `type` and in some cases, an `expr` parameter. The `name` for your dimension must be unique to the semantic model and can not be the same as an existing `entity` or `measure` within that same model.
 
-
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` |  Refers to the name of the group that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> Dimension names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
@@ -25,16 +24,18 @@ All dimensions require a `name`, `type` and in some cases, an `expr` parameter. 
 | `type_params` | Specific type params such as if the time is primary or used as a partition | Required |
 | `description` | A clear description of the dimension | Optional |
 | `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use column name itself to input a SQL expression. | Optional |
+| `label` | A recommended string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Optional |
 
 Refer to the following for the complete specification for dimensions:
 
 ```yaml
 dimensions:
-  - name: name of the group that will be visible to the user in downstream tools
-    type: Categorical or Time
-    type_params: specific type params such as if the time is primary or used as a partition
-    description: same as always
-    expr: the column name or expression. If not provided the default is the dimension name
+  - name: Name of the group that will be visible to the user in downstream tools # Required
+    type: Categorical or Time # Required
+    label: Recommended adding a string that defines the display value in downstream tools. # Optional
+    type_params: Specific type params such as if the time is primary or used as a partition # Required
+    description: Same as always # Optional
+    expr: The column name or expression. If not provided the default is the dimension name # Optional
 ```
 
 Refer to the following example to see how dimensions are used in a semantic model:
@@ -56,6 +57,7 @@ semantic_models:
   dimensions:
     - name: metric_time
       type: time
+      label: "Date of transaction" # Recommend adding a label to define the value displayed in downstream tools
       expr: date_trunc('day', ts)
     - name: is_bulk_transaction
       type: categorical
@@ -99,7 +101,6 @@ dimensions:
 
 ### Time
 
-
 :::tip use datetime data type if using BigQuery
 To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
 :::
@@ -142,12 +143,14 @@ mf query --metrics messages_per_month --group-by metric_time__year --order metri
 dimensions: 
   - name: created_at
     type: time
+    label: "Date of creation"
     expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
       time_granularity: day
   - name: deleted_at
     type: time
+    label: "Date of deletion"
     expr: date_trunc('day', ts_deleted) #ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
@@ -177,12 +180,14 @@ Aggregation between metrics with different granularities is possible, with the S
 dimensions: 
   - name: created_at
     type: time
+    label: "Date of creation"
     expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
       time_granularity: day
   - name: deleted_at
     type: time
+    label: "Date of deletion"
     expr: date_trunc('day', ts_deleted) #ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
@@ -265,6 +270,7 @@ semantic_models:
     dimensions:
       - name: tier_start
         type: time
+        label: "Start date of tier"
         expr: start_date
         type_params:
           time_granularity: day
@@ -272,6 +278,7 @@ semantic_models:
             is_start: True
       - name: tier_end 
         type: time
+        label: "End date of tier"
         expr: end_date
         type_params:
           time_granularity: day
@@ -329,6 +336,7 @@ semantic_models:
     dimensions:
       - name: metric_time
         type: time
+        label: "Date of transaction"
         is_partition: true
         type_params:
           time_granularity: day
