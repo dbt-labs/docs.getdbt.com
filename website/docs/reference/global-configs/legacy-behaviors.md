@@ -12,7 +12,7 @@ Another category of flags provides existing projects with a migration window for
 - Providing maintainability of dbt software. Every fork in behavior requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
 
 These flags go through three phases of development:
-1. **Introduction (Disabled by Default):** The logic is added within dbt to support both 'old' + 'new' behaviours. The 'new' behavior is gated by behind a flag, which is disabled by default, preserving the old behavior.
+1. **Introduction (disabled by default):** dbt adds logic to support both 'old' + 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior.
 2. **Maturity (Enabled by Default):** The default value of the flag is switched, from `false` to `true`, enabling the new behavior by default. Users may still opt out of the 'new' behavior, preserving the 'old' behavior, by setting the flag to `false` in their projects. They may see deprecation warnings when they do so.
 3. **Removal (Generally Enabled):** The flag, having been marked in advance for deprecation, is removed. The logic to support the 'old' behaviour is removed from dbt codebases. Our intent is to support most flags indefinitely, but we are not committed to supporting them forever. If we do choose to remove a flag, we will offer significant advance notice.
 
