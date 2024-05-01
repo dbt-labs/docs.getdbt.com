@@ -41,9 +41,11 @@ flags:
 
 <sup>1</sup>dbt Cloud - "Keep on latest version"
 
-### `require_explicit_package_overrides_for_builtin_materializations`
+###  Package override for built-in materialization 
 
-We have deprecated the behavior whereby installed packages could override built-in materializations without explicit opt-in from the end user. When this flag is set to `True`, a materialization defined in a package that matches the name of a built-in materialization will no longer be included in the search and resolution order. Unlike for macros, materializations do not use the `search_order` defined in the project `dispatch` config.
+Setting the `require_explicit_package_overrides_for_builtin_materializations` flag to `True` prevents this automatic override. 
+
+We have deprecated the behavior where installed packages could override built-in materializations without your explicit opt-in. When this flag is set to `True`, a materialization defined in a package that matches the name of a built-in materialization will no longer be included in the search and resolution order. Unlike macros, materializations don't use the `search_order` defined in the project `dispatch` config.
 
 The built-in materializations are `'view'`, `'table'`, `'incremental'`, `'materialized_view'` for models as well as `'test'`, `'unit'`, `'snapshot'`, `'seed'`, and `'clone'`.
 
@@ -67,9 +69,11 @@ The following flags were introduced in a future version of dbt Core. If you're s
 
 </VersionBlock>
 
-### `require_resource_names_without_spaces`
+### No spaces in resource names
 
-The names of dbt resources (models, sources, etc) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When this flag is set to the `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
+The `require_resource_names_without_spaces` flag enforces using resource names without spaces. 
+
+The names of dbt resources (models, sources, etc) should contain letters, numbers, and underscores. We highly discourage the use of other characters, especially spaces. To that end, we have deprecated support for spaces in resource names. When the `require_resource_names_without_spaces` flag is set to `True`, dbt will raise an exception (instead of a deprecation warning) if it detects a space in a resource name.
 
 <File name='models/model name with spaces.sql'>
 
@@ -79,9 +83,9 @@ The names of dbt resources (models, sources, etc) should contain letters, number
 
 </File>
 
-### `source_freshness_run_project_hooks`
+### Project hooks with source freshness 
 
-This configures the `dbt source freshness` command to include "project hooks" (`on-run-start` / `on-run-end`, TODO add link) as part of their execution.
+Set the `source_freshness_run_project_hooks` flag to `True` to include "project hooks" ([`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end)) in the `dbt source freshness` command execution.
 
 If you have specific project [`on-run-start` / `on-run-end`](/reference/project-configs/on-run-start-on-run-end) hooks that should not run before/after `source freshness` command, you can add a conditional check to those hooks:
 
