@@ -47,11 +47,13 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
   ```
   If the output is `dbt not found`, then that confirms you don't have it installed.
 
-:::Run `pip uninstall dbt` to uninstall dbt Core
+:::tip Run `pip uninstall dbt` to uninstall dbt Core
+
 If you have installed dbt Core globally in some other way, you'll need to uninstall it first before proceeding. To uninstall dbt Core and remove it from the system, run:
 ```bash
 `pip uninstall dbt`
 ```
+
 :::
 
 2. Install the dbt Cloud CLI with Homebrew:
