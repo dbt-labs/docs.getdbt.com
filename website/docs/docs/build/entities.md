@@ -36,7 +36,7 @@ entities:
     type: Primary or natural or foreign or unique ## Required
     description: A description of the field or role the entity takes in this table ## Optional
     expr: The field that denotes that entity (transaction_id).  ## Optional
-          If not specified, it will default to name 
+          Defaults to name if unspecified.
 
 ```
 
