@@ -24,7 +24,7 @@ All dimensions require a `name`, `type` and in some cases, an `expr` parameter. 
 | `type` | Specifies the type of group created in the semantic model. There are three types:<br /><br />- **Categorical**: Group rows in a table by categories like geography, color, and so on. <br />- **Time**: Point to a date field in the data platform. Must be of type TIMESTAMP or equivalent in the data platform engine. <br />- **Slowly-changing dimensions**: Analyze metrics over time and slice them by groups that change over time, like sales trends by a customer's country. | Required |
 | `type_params` | Specific type params such as if the time is primary or used as a partition | Required |
 | `description` | A clear description of the dimension | Optional |
-| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use the column name itself to input a SQL expression. | Optional |
+| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use the column name to input a SQL expression. | Optional |
 
 Refer to the following for the complete specification for dimensions:
 
