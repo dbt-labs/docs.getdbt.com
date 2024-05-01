@@ -59,7 +59,7 @@ You can still explicitly override built-in materializations, in favor of a mater
 
 </File>
 
-In the future, we may extend the project-level `dispatch` configuration [TODO: link] to support a list of authorized packages for overriding built-in materialization.
+In the future, we may extend the project-level [`dispatch` configuration](/reference/project-configs/dispatch-config) to support a list of authorized packages for overriding built-in materialization.
 
 <VersionBlock lastVersion="1.7">
 
