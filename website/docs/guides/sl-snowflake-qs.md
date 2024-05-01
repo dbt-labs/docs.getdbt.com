@@ -144,7 +144,6 @@ This guide will cover the following topics:
 2. In the Snowflake user interface (UI), click **+ Worksheet** in the upper right corner.
 3. Select **SQL Worksheet** to create a new worksheet.
 
-
 ### Set up Snowflake environment
 
 The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
@@ -274,7 +273,7 @@ There are two ways to connect dbt Cloud to Snowflake. The first option is Partne
 
 Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
-1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Admin**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 
@@ -348,7 +347,11 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project and start developing
-Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
+This guide assumes you use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project and define metrics. However, the dbt Cloud IDE doesn't support using [MetricFlow commands](/docs/build/metricflow-commands) to query or preview metrics (support coming soon).
+
+To query and preview metrics in your development tool, you can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to run the [MetricFlow commands](/docs/build/metricflow-commands).
+
+Now that you have a repository configured, you can initialize your project and start development in dbt Cloud using the IDE:
 
 1. Click **Start developing in the dbt Cloud IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
@@ -379,6 +382,8 @@ Name the new branch `build-project`.
 2. Name the file `staging/jaffle_shop/src_jaffle_shop.yml` , then click **Create**.
 3. Copy the following text into the file and click **Save**.
 
+<File name='models/staging/jaffle_shop/src_jaffle_shop.yml'>
+
 ```yaml
 version: 2
 
@@ -391,6 +396,8 @@ sources:
      - name: orders
 ```
 
+</File>
+
 :::tip
 In your source file, you can also use the **Generate model** button to create a new model file for each source. This creates a new file in the `models` directory with the given source name and fill in the SQL code of the source definition.
 :::
@@ -398,6 +405,8 @@ In your source file, you can also use the **Generate model** button to create a 
 4. Hover over the `models` directory and click the three dot menu (**...**), then select **Create file**.
 5. Name the file `staging/stripe/src_stripe.yml` , then click **Create**.
 6. Copy the following text into the file and click **Save**.
+
+<File name='models/staging/stripe/src_stripe.yml'>
 
 ```yaml
 version: 2
@@ -409,12 +418,15 @@ sources:
    tables:
      - name: payment
 ```
+</File>
 
 ### Add staging models
 [Staging models](/best-practices/how-we-structure/2-staging) are the first transformation step in dbt. They clean and prepare your raw data, making it ready for more complex transformations and analyses. Follow these steps to add your staging models to your project.
 
-1. Create the file `models/staging/jaffle_shop/stg_customers.sql`. Or, you can use the **Generate model** button to create a new model file for each source.
+1. In the `jaffle_shop` sub-directory, create the file `stg_customers.sql`. Or, you can use the **Generate model** button to create a new model file for each source.
 2. Copy the following query into the file and click **Save**.
+
+<File name='models/staging/jaffle_shop/stg_customers.sql'>
 
 ```sql
   select
@@ -424,8 +436,12 @@ sources:
 from {{ source('jaffle_shop', 'customers') }}
 ```
 
-3. Create the file `models/staging/jaffle_shop/stg_orders.sql`
+</File>
+
+3. In the same `jaffle_shop` sub-directory, create the file `stg_orders.sql`
 4. Copy the following query into the file and click **Save**.
+
+<File name='models/staging/jaffle_shop/stg_orders.sql'>
 
 ```sql
   select
@@ -436,8 +452,12 @@ from {{ source('jaffle_shop', 'customers') }}
   from {{ source('jaffle_shop', 'orders') }}
 ```
 
-5. Create the file `models/staging/stripe/stg_payments.sql`.
+</File>
+
+5. In the `stripe` sub-directory, create the file `stg_payments.sql`.
 6. Copy the following query into the file and click **Save**.
+
+<File name='models/staging/stripe/stg_payments.sql'>
 
 ```sql
 select
@@ -453,6 +473,8 @@ select
 from {{ source('stripe', 'payment') }}
 ```
 
+</File>
+
 7. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 ### Add business-defined entities
@@ -463,6 +485,8 @@ This phase is the [marts layer](/best-practices/how-we-structure/1-guide-overvie
 
 1. Create the file `models/marts/fct_orders.sql`.
 2. Copy the following query into the file and click **Save**.
+
+<File name='models/marts/fct_orders.sql'>
 
 ```sql
 with orders as  (
@@ -505,8 +529,12 @@ select * from final
 
 ```
 
-3. Create the file `models/marts/dim_customers.sql`.
+</File>
+
+3. In the `models/marts` directory, create the file `dim_customers.sql`.
 4. Copy the following query into the file and click **Save**.
+
+<File name='models/marts/dim_customers.sql'>
 
 ```sql
 with customers as (
@@ -540,8 +568,12 @@ final as (
 select * from final
 ```
 
-5. Create the file `packages.yml` in your main directory
+</File>
+
+5. In your main directory, create the file `packages.yml`.
 6. Copy the following text into the file and click **Save**.
+
+<File name='packages.yml'>
 
 ```sql
 packages:
@@ -549,8 +581,12 @@ packages:
    version: 1.1.1
 ```
 
-7. Create the file `models/metrics/metricflow_time_spine.sql` in your main directory.
+</File>
+
+7. In the `models` directory, create the file `metrics/metricflow_time_spine.sql` in your main directory.
 8. Copy the following query into the file and click **Save**.
+
+<File name='models/metrics/metricflow_time_spine.sql'>
 
 ```sql
 {{
@@ -575,6 +611,8 @@ select * from final
 
 ```
 
+</File>
+
 9. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run message and also see in the run details that dbt has successfully built five models.
 
 ## Create semantic models
@@ -588,17 +626,22 @@ select * from final
 
 In the following steps, semantic models enable you to define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
 
-1. Create a new file `models/metrics/fct_orders.yml` 
+1. In the `metrics` sub-directory, create a new file `fct_orders.yml`.
 2. Add the following code to that newly created file:
+
+<File name='models/metrics/fct_orders.yml'>
 
 ```yaml
 semantic_models:
   - name: orders
+    defaults:
+      agg_time_dimension: order_date
     description: |
       Order fact table. This table’s grain is one row per order.
     model: ref('fct_orders')
-
 ```
+
+</File>
 
 The following sections explain [dimensions](/docs/build/dimensions), [entities](/docs/build/entities), and [measures](/docs/build/measures) in more detail, showing how they each play a role in semantic models.
 
@@ -611,6 +654,8 @@ The following sections explain [dimensions](/docs/build/dimensions), [entities](
 [Entities](/docs/build/semantic-models#entities) are a real-world concept in a business, serving as the backbone of your semantic model. These are going to be ID columns (like `order_id`) in our semantic models. These will serve as join keys to other semantic models.
 
 Add entities to your `fct_orders.yml` semantic model file:
+
+<File name='models/metrics/fct_orders.yml'>
 
 ```yaml
 semantic_models:
@@ -628,11 +673,15 @@ semantic_models:
         type: foreign
 ```
 
+</File>
+
 ### Dimensions
 
 [Dimensions](/docs/build/semantic-models#entities) are a way to group or filter information based on categories or time. 
 
 Add dimensions to your `fct_orders.yml` semantic model file:
+
+<File name='models/metrics/fct_orders.yml'>
 
 ```yaml
 semantic_models:
@@ -655,11 +704,15 @@ semantic_models:
          time_granularity: day
 ```
 
+</File>
+
 ### Measures
 
 [Measures](/docs/build/semantic-models#measures) are aggregations performed on columns in your model. Often, you’ll find yourself using them as final metrics themselves. Measures can also serve as building blocks for more complicated metrics.
 
 Add measures to your `fct_orders.yml` semantic model file:
+
+<File name='models/metrics/fct_orders.yml'>
 
 ```yaml
 semantic_models:
@@ -701,6 +754,8 @@ semantic_models:
           use_approximate_percentile: False
 ```
 
+</File>
+
 ## Define metrics
 
 [Metrics](/docs/build/metrics-overview) are the language your business users speak and measure business performance. They are an aggregation over a column in your warehouse that you enrich with dimensional cuts.
@@ -716,6 +771,8 @@ There are different types of metrics you can configure:
 Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics:
 
 Add metrics to your `fct_orders.yml` semantic model file:
+
+<File name='models/metrics/fct_orders.yml'>
 
 ```yaml
 semantic_models:
@@ -805,6 +862,8 @@ metrics:
         - name: order_count
 ```
 
+</File>
+
 ## Add second semantic model to your project
 
 Great job, you've successfully built your first semantic model! It has all the required elements: entities, dimensions, measures, and metrics.
@@ -813,8 +872,10 @@ Let’s expand your project's analytical capabilities by adding another semantic
 
 After setting up your orders model:
 
-1. Create the file `models/metrics/dim_customers.yml`.
+1. In the `metrics` sub-directory, create the file `dim_customers.yml`.
 2. Copy the following query into the file and click **Save**.
+
+<File name='models/metrics/dim_customers.yml'>
 
 ```yaml
 semantic_models:
@@ -823,7 +884,7 @@ semantic_models:
       agg_time_dimension: most_recent_order_date
     description: |
       semantic model for dim_customers
-    model: ref('customers')
+    model: ref('dim_customers')
     entities:
       - name: customer
         expr: customer_id
@@ -831,8 +892,7 @@ semantic_models:
     dimensions:
       - name: customer_name
         type: categorical
-      - name: customer_type
-        type: categorical
+        expr: first_name
       - name: first_order_date
         type: time
         type_params:
@@ -845,8 +905,10 @@ semantic_models:
       - name: count_lifetime_orders
         description: Total count of orders per customer.
         agg: sum
+        expr: number_of_orders
       - name: lifetime_spend
         agg: sum
+        expr: lifetime_value
         description: Gross customer lifetime spend inclusive of taxes.
       - name: customers
         expr: customer_id
@@ -860,6 +922,9 @@ metrics:
     type_params:
       measure: customers
 ```
+
+</File>
+
 
 This semantic model uses simple metrics to focus on customer metrics and emphasizes customer dimensions like name, type, and order dates. It uniquely analyzes customer behavior, lifetime value, and order patterns.
 
