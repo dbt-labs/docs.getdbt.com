@@ -47,7 +47,7 @@ We have deprecated the behavior whereby installed packages could override built-
 
 The built-in materializations are `'view'`, `'table'`, `'incremental'`, `'materialized_view'` for models as well as `'test'`, `'unit'`, `'snapshot'`, `'seed'`, and `'clone'`.
 
-Users can still explicitly override built-in materializations, in favor of a materialization defined in a package, by reimplementing the built-in materialization in their root project and wrapping the package implementation.
+You can still explicitly override built-in materializations, in favor of a materialization defined in a package, by reimplementing the built-in materialization in your root project and wrapping the package implementation.
 
 <File name='macros/materialization_view.sql'>
 
