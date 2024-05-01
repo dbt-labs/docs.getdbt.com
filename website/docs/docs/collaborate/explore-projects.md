@@ -12,7 +12,7 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 ## Prerequisites
 
-- You have a [multi-tenant](/docs/cloud/about-cloud/tenancy#multi-tenant) or AWS single-tenant dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) for each project you want to explore.
     - There has been at least one successful job run in the production deployment environment.
 - You are on the dbt Explorer page. To do this, select **Explore** from the top navigation bar in dbt Cloud.
