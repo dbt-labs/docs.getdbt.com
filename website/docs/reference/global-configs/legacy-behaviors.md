@@ -36,7 +36,7 @@ flags:
 | Flag                                                            | dbt Cloud: Intro | dbt Cloud: Maturity | dbt Core: Intro | dbt Core: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
 | require_explicit_package_overrides_for_builtin_materializations | 2024.04.141      | 2024.05.xxx         | 1.6.14, 1.7.14    | 1.8.0             |
-| require_resource_names_without_spaces                           | 2024.04.xxx      | 2024.06.xxx         | 1.8.0           | 1.9.0             |
+| require_resource_names_without_spaces                           | 2024.05.xxx      | 2024.06.xxx         | 1.8.0           | 1.9.0             |
 | source_freshness_run_project_hooks                              | 2024.03.61       | 2024.06.xxx         | 1.8.0           | 1.9.0             |
 
 <sup>1</sup>dbt Cloud - "Keep on latest version"

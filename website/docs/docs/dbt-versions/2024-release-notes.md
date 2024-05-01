@@ -9,6 +9,10 @@ pagination_prev: null
 
 dbt Cloud release notes for 2024.
 
+## May 2024
+
+- **Behavior Change:** Introduced [`require_resource_names_without_spaces`](/docs/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces), opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt.
+
 ## April 2024
 
 - <expandable alt_header="New: Merge jobs" > 
@@ -20,6 +24,8 @@ dbt Cloud release notes for 2024.
   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
 
   </expandable>
+  
+- **Behavior Change:** Introduced [`require_explicit_package_overrides_for_builtin_materializations`](/docs/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations), opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and dbt Cloud "Keep on latest version").
 
 
 ## March 2024
@@ -30,6 +36,7 @@ dbt Cloud release notes for 2024.
 - **Fix:** `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric.
 - **Fix:** `join_to_timespine` now properly gets applied to conversion metric input measures.
 - **Fix:** Fixed an issue where exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open.
+- **Behavior Change:** Introduced [`source_freshness_run_project_hooks`](/docs/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks), opt-in and disabled by default. If set to `True`, dbt will include `on-run-*` project hooks in the `source freshness` command. This will become the default in a future version of dbt.
 
 
 ## February 2024
