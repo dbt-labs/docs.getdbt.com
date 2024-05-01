@@ -59,7 +59,7 @@ Supported aggregations include:
 | percentile        | Percentile calculation across the values. |
 
 #### Percentile aggregation example
-If you're using the `percentile` aggregation, you must use the `agg_params` field under it to specify details for the percentile aggregation (such as what percentile to calculate and whether to use discrete or continuous calculations).
+If you're using the `percentile` aggregation, you must use the `agg_params` field to specify details for the percentile aggregation (such as what percentile to calculate and whether to use discrete or continuous calculations).
 
 ```yaml
 name: p99_transaction_value
