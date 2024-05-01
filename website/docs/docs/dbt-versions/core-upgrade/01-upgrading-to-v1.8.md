@@ -33,7 +33,7 @@ Features and functionality new in dbt v1.8.
 
 Before dbt Core v1.8, whenever you would `pip install` a data warehouse adapter for dbt, `pip` would automatically install `dbt-core` alongside it. The dbt adapter directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independent of `dbt-core`.
 
-Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). Going forward, your installations should explicitly include _both_ `dbt-core` _and_ the desired adapter. A new `pip` installation ought to look like this:
+Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). Going forward, your installations should explicitly include _both_ `dbt-core` _and_ the desired adapter. The new `pip` installation command should look like this:
 
 ```shell
 pip install dbt-core dbt-ADAPTER_NAME
