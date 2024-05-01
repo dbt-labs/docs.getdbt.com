@@ -88,7 +88,7 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 
 dbt Core v1.8 has introduced a flags has been created for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
 
-You can read more about each of these behavior changes in the links below:
+You can read more about each of these behavior changes in the following links:
 
 - (Mature, enabled by default) [Require explicit package overrides for builtin materializations](/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations)
 - (Introduced, disabled by default) [Require resource names without spaces](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces)
