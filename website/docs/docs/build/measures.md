@@ -71,7 +71,7 @@ agg_params:
   use_discrete_percentile: False  # False calculates the discrete percentile, True calculates the continuous percentile
 ```
 
-**Percentile across supported engine types**<br />
+#### Percentile across supported engine types
 The following table displays which SQL engine supports continuous, discrete, approximate, continuous, and approximate discrete percentiles.
 
 |  | Cont. | Disc. | Approx. cont | Approx. disc |
