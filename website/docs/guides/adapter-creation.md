@@ -1285,7 +1285,7 @@ Proceed to the "Document a new adapter" step for more information.
 
 ### Release Cadence
 
-Keeping an adapter up-to-date with dbt Core is an integral part of being a trusted adapter. Therefore, we ask that adapter maintainers:
+Keeping an adapter up-to-date with the latest features of dbt Core, as defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. Therefore, we ask that adapter maintainers:
 
 - Release of new minor versions of the adapter with all tests passing within four weeks of dbt Core's release cut.
 - Release of new major versions of the adapter with all tests passing within eight weeks of dbt Core's release cut.
