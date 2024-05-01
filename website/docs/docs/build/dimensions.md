@@ -143,14 +143,14 @@ dimensions:
   - name: created_at
     type: time
     label: "Date of creation"
-    expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
+    expr: date_trunc('day', ts_created) # ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
       time_granularity: day
   - name: deleted_at
     type: time
     label: "Date of deletion"
-    expr: date_trunc('day', ts_deleted) #ts_deleted is the underlying column name from the table 
+    expr: date_trunc('day', ts_deleted) # ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
       time_granularity: day
@@ -180,14 +180,14 @@ dimensions:
   - name: created_at
     type: time
     label: "Date of creation"
-    expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
+    expr: date_trunc('day', ts_created) # ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
       time_granularity: day
   - name: deleted_at
     type: time
     label: "Date of deletion"
-    expr: date_trunc('day', ts_deleted) #ts_deleted is the underlying column name from the table 
+    expr: date_trunc('day', ts_deleted) # ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
       time_granularity: day
