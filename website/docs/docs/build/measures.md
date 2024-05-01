@@ -27,15 +27,13 @@ measures:
     agg_params: 'specific aggregation properties such as a percentile'  ## Optional
     agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. ##  Optional
     non_additive_dimension: 'Use these configs when you need non-additive dimensions.' ## Optional
-    label: How the metric appears in project docs and downstream integrations. ## Required
 ```
 
-### Name 
+### Name
 
 When you create a measure, you can either give it a custom name or use the `name` of the data platform column directly. If the `name` of the measure is different from the column name, you need to add an `expr` to specify the column name. The `name` of the measure is used when creating a metric. 
 
 Measure names must be unique across all semantic models in a project and can not be the same as an existing `entity` or `dimension` within that same model.
-
 
 ### Description
 
