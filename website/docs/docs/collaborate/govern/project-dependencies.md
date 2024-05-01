@@ -110,6 +110,13 @@ When working in a Development environment, cross-project `ref`s normally resolve
 
 Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. 
 
+#### Staging when downstream projects depend on your project
+dbt Cloud begins using the Staging environment to resolve cross-project references from downstream projects as soon as it exists in a project without "fail-over" to Production. To avoid causing downtime for downstream developers, you should define and trigger a job before marking the environment as Staging:
+1. Create a new environment, but do NOT mark it as **Staging**.
+2. Define a job in that environment.
+3. Trigger the job to run, and ensure it completes successfully.
+4. Update the environment to mark it as **Staging**.
+
 ### Comparison
 
 If you were to instead install the `jaffle_finance` project as a `package` dependency, you would instead be pulling down its full source code and adding it to your runtime environment. This means:
