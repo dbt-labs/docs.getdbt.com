@@ -226,7 +226,7 @@ The following basic structure of an SCD Type II data platform table is supported
 
 Here are some guidelines to follow when implementing SCD Type II tables:
 
-- The SCD dimensions table must have `valid_to` and `valid_from` columns, which are logical constructs.
+- The SCD semantic model must have `valid_to` and `valid_from` time dimensions, which are logical constructs.
 - The columns must be specified exactly once per dimension.
 - The columns shouldn't be used or specified on the same dimension.
 - The columns must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
