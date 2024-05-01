@@ -212,7 +212,7 @@ MetricFlow supports joins against dimensions values in a semantic model built on
 
 As their name suggests SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as a month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
 
-**SCD tables and keys**
+#### SCD tables and keys
 
 SCD Type II tables have a particular dimension with a start and end date.  To join tables, use the additional [entity `type`](/docs/build/entities#entity-types) parameter, `natural` key. Using a `natural` key as an [entity `type`](/docs/build/entities#entity-types) means you also don't usually need a `primary` key. In most instances, SCD tables don't have a logically usable `primary` key because `natural` keys map to multiple rows.
 
