@@ -27,6 +27,17 @@ dbt Cloud release notes for 2024.
   
 - **Behavior change:** Introduced the [`require_explicit_package_overrides_for_builtin_materializations`](/docs/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations) flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and dbt Cloud "Keep on latest version").
 
+**dbt Semantic Layer**
+- **New**: Use Saved selections to [save your query selections](/docs/use-dbt-semantic-layer/gsheets#using-saved-selections) within the [Google Sheets application](/docs/use-dbt-semantic-layer/gsheets). They can be made private or public and refresh upon loading.
+- **New**: Metrics are now displayed by their labels as `metric_name`.
+- **Enhancement**: [Metrics](/docs/build/metrics-overview) now supports the [`meta` option](/reference/resource-configs/meta) under the [config](/reference/resource-properties/config) property. Previously, we only supported the now deprecated `meta` tag.
+- **Enhancement**: In the Google Sheets application, we added [support](/docs/use-dbt-semantic-layer/gsheets#using-saved-queries) to allow jumping off from or exploring MetricFlow-defined saved queries directly.
+- **Enhancement**: In the Google Sheets application, we added support to query dimensions without metrics. Previously, you needed a dimension.
+- **Enhancement**: In the Google Sheets application, we added support for time presets and complex time range filters such as "between", "after", and "before".
+- **Enhancement**: In the Google Sheets application, we added supported to automatically populate dimension values when you select a "where" filter, removing the need to manually type them.  Previously, you needed to manually type the dimension values.
+- **Enhancement**: In the Google Sheets application, we added support to directly query entities, expanding the flexibility of data requests.
+- **Enhancement**: In the Google Sheets application, we added an option to exclude column headers, which is useful for populating templates with only the required data.
+- **Deprecation**: For the Tableau integration, the [`METRICS_AND_DIMENSIONS` data source](/docs/use-dbt-semantic-layer/tableau#using-the-integration) has been deprecated for all accounts not actively using it. We encourage users to transition to the "ALL" data source for future integrations.
 
 ## March 2024
 
