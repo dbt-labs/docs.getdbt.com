@@ -36,7 +36,7 @@ To set environment variables at the project and environment level, click **Deplo
 
 You'll notice there is a `Project Default` column. This is a great place to set a value that will persist across your whole project, independent of where the code is run. We recommend setting this value when you want to supply a catch-all default or add a project-wide token or secret.
 
-To the right of the `Project Default` column are all your environments. Values set at the environment level take priority over the project level default value. This is where you can tell dbt Cloud to interpret an environment value differently in your Staging vs. Production environment, as example.
+To the right of the `Project Default` column are all your environments. Values set at the environment level take priority over the project-level default value. This is where you can tell dbt Cloud to interpret an environment value differently in your Staging vs. Production environment, as an example.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
 
@@ -98,6 +98,8 @@ dbt Cloud has a number of pre-defined variables built in. Variables are set auto
 
 **dbt Cloud IDE details**
 
+The following environment variable is set automatically for the dbt Cloud IDE:
+
 - `DBT_CLOUD_GIT_BRANCH`: Provides the development Git branch name in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
   - Available in dbt v 1.6 and later.
   - The variable changes when the branch is changed.
@@ -110,7 +112,7 @@ Use case &mdash; This is useful in cases where you want to dynamically use the G
 
 **dbt Cloud context**
 
-The following environment variables are set automatically for deployment runs, and their values cannot be changed.
+The following environment variables are set automatically for deployment runs:
 
 - `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod'
 
