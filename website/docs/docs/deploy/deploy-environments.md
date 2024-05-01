@@ -47,9 +47,9 @@ For Semantic Layer-eligible customers, the next section of environment settings 
 Currently in limited availability beta. Contact support or your account team if you're interested in beta access.
 :::
 
-Use a Staging environment to grant developers access to deployment workflows and tools while controlling access to production data. Configure Staging with a long-living branch (for example, `staging`) similar to but separate from the primary branch (for example, `main`).
+Use a Staging environment to grant developers access to deployment workflows and tools while controlling access to production data. You can do this in a couple of ways, but the most straightforward is to configure Staging with a long-living branch (for example, `staging`) similar to but separate from the primary branch (for example, `main`). 
 
-Ideally, the workflows would move upstream from the Development environment -> Staging environment -> Production environment with developer branches feeding into the staging branch, then ultimately `main`. In many cases, the `main` and `staging` branches will be identical after a merge and remain until the next batch of changes from the `development` branches are ready to be elevated. We recommend setting branch protection rules on `staging` similar to `main`.
+In this scenario, the workflows would ideally move upstream from the Development environment -> Staging environment -> Production environment with developer branches feeding into the `staging` branch, then ultimately merging into `main`. In many cases, the `main` and `staging` branches will be identical after a merge and remain until the next batch of changes from the `development` branches are ready to be elevated. We recommend setting branch protection rules on `staging` similar to `main`.
 
 ### Why use a staging environment
 
