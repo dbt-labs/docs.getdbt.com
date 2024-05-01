@@ -31,9 +31,9 @@ Features and functionality new in dbt v1.8.
 
 ### New dbt Core adapter installation procedure
 
-Before dbt Core v1.8, whenever you would `pip install` a data warehouse adapter for dbt, `pip` would automatically install `dbt-core` alongside it. The dbt adapter directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independently of `dbt-core`.
+Before dbt Core v1.8, whenever you would `pip install` a data warehouse adapter for dbt, `pip` would automatically install `dbt-core` alongside it. The dbt adapter directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independent of `dbt-core`.
 
-Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). Going forward, your installations should explicitly include _both_ dbt-core and the desired adapter. A new `pip` installation ought to look like this:
+Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). Going forward, your installations should explicitly include _both_ `dbt-core` _and_ the desired adapter. The new `pip` installation command should look like this:
 
 ```shell
 pip install dbt-core dbt-ADAPTER_NAME
@@ -88,11 +88,11 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 
 dbt Core v1.8 has introduced a flags has been created for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
 
-You can read more about each of these behavior changes in the links below:
+You can read more about each of these behavior changes in the following links:
 
-- (Mature, enabled by default) [Require explicit package overrides for builtin materializations](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations)
+- (Mature, enabled by default) [Require explicit package overrides for builtin materializations](/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations)
 - (Introduced, disabled by default) [Require resource names without spaces](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces)
-- (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks)
+- (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks)
 
 ## Quick hits
 
