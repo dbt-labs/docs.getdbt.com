@@ -227,9 +227,9 @@ The following basic structure of an SCD Type II data platform table is supported
 Here are some guidelines to follow when implementing SCD Type II tables:
 
 - The SCD semantic model must have `valid_to` and `valid_from` time dimensions, which are logical constructs.
-- The columns must be specified exactly once per dimension.
-- The columns shouldn't be used or specified on the same dimension.
-- The columns must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
+- The `valid_from` and `valid_to` properties must be specified exactly once per SCD semantic model.
+- The `valid_from` and `valid_to` properties shouldn't be used or specified on the same time dimension.
+- The `valid_from` and 'valid_to` time dimensions must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
 - We recommend defining the underlying dbt model with [dbt snapshots](/docs/build/snapshots). This supports the SCD Type II table layout and ensures that the table is updated with the latest data.
 
 
