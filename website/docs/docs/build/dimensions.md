@@ -10,18 +10,16 @@ Dimensions is a way to group or filter information based on categories or time. 
 
 In a data platform, dimensions is part of a larger structure called a semantic model. It's created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures), and used to add more details to your data that can't be easily added up or combined.  In SQL, dimensions is typically included in the `group by` clause of your SQL query.
 
-
 <!--dimensions are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
 All dimensions require a `name`, `type` and in some cases, an `expr` parameter. The `name` for your dimension must be unique to the semantic model and can not be the same as an existing `entity` or `measure` within that same model.
 
-
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` |  Refers to the name of the group that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> Dimension names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
-| `type` | Specifies the type of group created in the semantic model. There are three types:<br /><br />- **Categorical**: Group rows in a table by categories like geography, color, and so on. <br />- **Time**: Point to a date field in the data platform. Must be of type TIMESTAMP or equivalent in the data platform engine. <br />- **Slowly-changing dimensions**: Analyze metrics over time and slice them by groups that change over time, like sales trends by a customer's country. | Required |
+| `type` | Specifies the type of group created in the semantic model. There are two types:<br /><br />- **Categorical**: Group rows in a table by categories like geography, color, and so on. <br />- **Time**: Point to a date field in the data platform. Must be of type TIMESTAMP or equivalent in the data platform engine. <br />      - You can also use time dimensions to specify time spans for [slowly changing dimensions](/docs/build/dimensions#scd-type-ii) tables. | Required |
 | `type_params` | Specific type params such as if the time is primary or used as a partition | Required |
 | `description` | A clear description of the dimension | Optional |
 | `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use column name itself to input a SQL expression. | Optional |
@@ -54,7 +52,7 @@ semantic_models:
       ... 
 # --- dimensions ---
   dimensions:
-    - name: metric_time
+    - name: order_date
       type: time
       expr: date_trunc('day', ts)
     - name: is_bulk_transaction
@@ -82,11 +80,11 @@ semantic_model:
 This section further explains the dimension definitions, along with examples. Dimensions have the following types:
 
 - [Dimensions types](#dimensions-types)
-  - [Categorical](#categorical)
-  - [Time](#time)
+- [Categorical](#categorical)
+- [Time](#time)
   - [SCD Type II](#scd-type-ii)
 
-### Categorical
+## Categorical
 
 Categorical is used to group metrics by different categories such as product type, color, or geographical area. They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a category dimension is `is_bulk_transaction`, which is a group created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
 
@@ -97,7 +95,7 @@ dimensions:
     expr: case when quantity > 10 then true else false end
 ```
 
-### Time
+## Time
 
 
 :::tip use datetime data type if using BigQuery
@@ -202,29 +200,40 @@ measures:
 
 </Tabs>
 
-### SCD Type II 
+### SCD Type II
 
-:::caution 
-Currently, there are limitations in supporting SCD's. 
+:::caution
+Currently, there are limitations in supporting SCD's.
 :::
 
-MetricFlow supports joins against dimensions values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country. 
+MetricFlow supports joins against dimensions values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric organized by a group that changes over time, such as the historical trends of sales by a customer's country.
 
-As their name suggests SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
+
+**Basic structure**
+
+SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
 
 The following basic structure of an SCD Type II data platform table is supported:
 
 | entity_key | dimensions_1 | dimensions_2 | ... | dimensions_x | valid_from | valid_to |
 |------------|-------------|-------------|-----|-------------|------------|----------|  
 
-* `entity_key` (required): An entity_key (or some sort of identifier) must be present 
+* `entity_key` (required): An entity_key (or some sort of identifier) must be present.
 * `valid_from` (required): A timestamp indicating the start of a changing dimensions value must be present
 * `valid_to` (required): A timestamp indicating the end of a changing dimensions value must be present
 
-**Note**: The SCD dimensions table must have `valid_to` and `valid_from` columns.
+**Implementation**
+
+Here are some guidelines to follow when implementing SCD Type II tables:
+
+- The SCD semantic model must have `valid_to` and `valid_from` time dimensions, which are logical constructs.
+- The `valid_from` and `valid_to` properties must be specified exactly once per SCD semantic model.
+- The `valid_from` and `valid_to` properties shouldn't be used or specified on the same time dimension.
+- The `valid_from` and 'valid_to` time dimensions must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
+- We recommend defining the underlying dbt model with [dbt snapshots](/docs/build/snapshots). This supports the SCD Type II table layout and ensures that the table is updated with the latest data.
+
 
 This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned dimensions data (stored in a table called `scd_dimensions`) using a primary key made up of the `entity_key` and `timestamp` columns. 
-
 
 ```sql
 select metric_time, dimensions_1, sum(1) as num_events
@@ -236,6 +245,8 @@ on
   and (a.metric_time < b. valid_to or b.valid_to is null)
 group by 1, 2
 ```
+
+**SCD example**
 
 <Tabs>
 
@@ -250,7 +261,6 @@ This example shows how to create slowly changing dimensions (SCD) using a semant
 | 222             | 2    | 2020-03-05 | 2048-01-01| 
 | 333             | 2    | 2020-08-19 | 2021-10-22| 
 | 333             | 3    | 2021-10-22 | 2048-01-01|  
-
 
 The `validity_params` include two important arguments &mdash; `is_start` and `is_end`. These specify the columns in the SCD table that mark the start and end dates (or timestamps) for each tier or dimension. Additionally, the entity is tagged as `natural` to differentiate it from a `primary` entity. In a `primary` entity, each entity value has one row. In contrast, a `natural` entity has one row for each combination of entity value and its validity period.
 
