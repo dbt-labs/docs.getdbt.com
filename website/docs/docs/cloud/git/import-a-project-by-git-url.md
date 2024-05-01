@@ -109,10 +109,12 @@ To prevent having users merging code changes directly into the default branch, i
 - Go to **Account Settings** -> **Projects** -> Select the project.
 - Click the repository link under **Repository**.
 - In the **Repository details** page, click **Edit** in the lower right.
-- In the **Pull request URL** field, set the URL based on the suggested [PR template format](/docs/collaborate/git/pr-template#aws-codecommit).
   <Lightbox src="/img/docs/collaborate/repo-details.jpg" width="80%" title="Configure PR template in the 'Repository details' page." />
+- In the **Pull request URL** field, set the URL based on the suggested [PR template format](/docs/collaborate/git/pr-template#aws-codecommit).
 - Replace `<repo>` with the name of your repository (note that it is case sensitive).
   <Lightbox src="/img/docs/collaborate/pr-template-example.jpg" width="60%" title="Configure PR Template URLs" />
+- Replace `<repo>` with the name of your repository (note that it is case sensitive).
+- Click **Save**.
 
 🎉 **You're all set!** Once dbt Support handles your request and you've set your custom branch, your project is ready to execute dbt runs on dbt Cloud.
 
