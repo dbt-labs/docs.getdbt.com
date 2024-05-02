@@ -97,7 +97,7 @@ To solve that, we've released a new set of interfaces that are entirely independ
 
 Note that adapters running in dbt Cloud **must** be [migrated to the new decoupled architecture](https://github.com/dbt-labs/dbt-adapters/discussions/87) as a baseline in order to support the new "Keep on latest version".
 
-### **Managing behaviour changes: stability as a feature**
+### **Managing behavior changes: stability as a feature**
 
 We all want the benefits of a stable, actively maintained product. Occasionally the dbt Labs team identifies a change to default behavior that we believe is more sensible, more secure, more helpful — just better in some way — but which would come as a change to users who have grown accustomed to the existing behavior.
 
