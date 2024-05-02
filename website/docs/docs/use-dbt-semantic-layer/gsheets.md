@@ -33,7 +33,7 @@ import SLCourses from '/snippets/_sl-course.md';
 4. In Google Sheets, authenticate with your host, dbt Cloud environment ID, and service token.
    <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
 
-5. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions).
+5. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions). To cancel a query while running, press the "Cancel" button.
 
 When querying your data with Google Sheets:
 
