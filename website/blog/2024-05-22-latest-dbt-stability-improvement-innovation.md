@@ -99,7 +99,7 @@ Note that adapters running in dbt Cloud **must** be [migrated to the new decoupl
 
 ### **Managing behaviour changes: stability as a feature**
 
-We all want the benefits of a stable, actively maintained product. Occasionally the dbt Labs team identifies a change to default behavior that we believe is more sensible, more secure, more helpful — just better in some way — but which would come as a change to users who have grown accustomed to the existing behaviour.
+We all want the benefits of a stable, actively maintained product. Occasionally the dbt Labs team identifies a change to default behavior that we believe is more sensible, more secure, more helpful — just better in some way — but which would come as a change to users who have grown accustomed to the existing behavior.
 
 To accommodate both groups in these scenarios, we've extended dbt to support project-level behaviour  flags. These can be used to *opt into* or *opt out of* changes to default behaviour. From now on, backward-incompatible changes to dbt functionality will be implemented behind a flag with a default value that preserves the legacy behaviour. After a few months, the new behaviour will become the default — but only after some proactive communication with customers and external package maintainers.
 
