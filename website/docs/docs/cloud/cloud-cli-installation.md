@@ -221,10 +221,7 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
 ## Update dbt Cloud CLI
 
-The following instructions explain how to update the dbt Cloud CLI to the latest version depending on your operating system. 
-
-During the public preview period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
-
+The following instructions explain how to update the dbt Cloud CLI to the latest version depending on your operating system.
 
 <Tabs>
 
