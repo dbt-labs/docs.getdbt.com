@@ -12,7 +12,7 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 ## Prerequisites
 
-- You have a [multi-tenant](/docs/cloud/about-cloud/tenancy#multi-tenant) or AWS single-tenant dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) for each project you want to explore.
     - There has been at least one successful job run in the production deployment environment.
 - You are on the dbt Explorer page. To do this, select **Explore** from the top navigation bar in dbt Cloud.
@@ -229,6 +229,12 @@ In the upper right corner of the resource details page, you can:
 Example of the details view for the model `supplies`: 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
+
+## Staging environment <Lifecycle status='beta' />
+
+dbt Explorer supports views for [Staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the Production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny. Once the Staging environment is configured and has a successful job run, it will be visible on the dbt Explorer landing page.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
 
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 

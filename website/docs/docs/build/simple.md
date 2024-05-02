@@ -16,7 +16,7 @@ Simple metrics are metrics that directly reference a single measure, without any
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | The value that will be displayed in downstream tools. | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
 | `measure` | A list of measure inputs | Required |
 | `measure:name` | The measure you're referencing. | Required |
@@ -64,7 +64,7 @@ If you've already defined the measure using the `create_metric: true` parameter,
     - name: large_orders
       description: "Order with order values over 20."
       type: SIMPLE
-      label: Large Orders
+      label: Large orders
       type_params:
         measure: 
           name: orders
