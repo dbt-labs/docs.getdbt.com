@@ -13,7 +13,7 @@ dbt Cloud release notes for 2024.
 
 - <expandable alt_header="Update: Keep on latest version" > 
 
-  The new **Keep on latest version** setting is now GA, no longer in Public Preview. It allows dbt Labs to handle version upgrades for you.
+The **Keep on latest version** setting is now Generally Available (previously Public Preview).
 
   When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
 
