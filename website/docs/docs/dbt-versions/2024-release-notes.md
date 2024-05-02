@@ -13,7 +13,7 @@ dbt Cloud release notes for 2024.
 
 - <expandable alt_header="Update: Keep on latest version" > 
 
-The **Keep on latest version** setting is now Generally Available (previously Public Preview).
+  The **Keep on latest version** setting is now Generally Available (previously Public Preview).
 
   When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
 
@@ -22,7 +22,7 @@ The **Keep on latest version** setting is now Generally Available (previously Pu
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Keep on latest version setting"/>
 
   </expandable>
-  
+
 - **Behavior change:** Introduced the `require_resource_names_without_spaces` flag, opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt. Read [No spaces in resource names](/reference/global-configs/legacy-behaviors#no-spaces-in-resource-names) for more information.
 
 ## April 2024
