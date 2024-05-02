@@ -11,7 +11,7 @@ dbt Cloud release notes for 2024.
 
 ## May 2024
 
-- **Behavior change:** Introduced the [`require_resource_names_without_spaces`](/docs/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces) flag, opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt.
+- **Behavior change:** Introduced the [`require_resource_names_without_spaces`](/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces) flag, opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt.
 
 ## April 2024
 
