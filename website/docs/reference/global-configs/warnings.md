@@ -75,6 +75,7 @@ DBT_WARN_ERROR_OPTIONS='{"include": ["NoNodesForSelectionCriteria"]}' dbt run
 <VersionBlock lastVersion="1.7">
 
 <File name='profiles.yml'>
+
 ```yaml
 config:
   warn_error_options:
