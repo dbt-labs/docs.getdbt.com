@@ -25,7 +25,7 @@ dbt Cloud release notes for 2024.
 
   </expandable>
   
-- **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and dbt Cloud "Keep on latest version"). Read [Package override for built-in materialization](/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations) for more information.
+- **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and dbt Cloud "Keep on latest version"). Read [Package override for built-in materialization](/reference/global-configs/legacy-behaviors#package-override-for-built-in-materialization) for more information.
 
 **dbt Semantic Layer**
 - **New**: Use Saved selections to [save your query selections](/docs/use-dbt-semantic-layer/gsheets#using-saved-selections) within the [Google Sheets application](/docs/use-dbt-semantic-layer/gsheets). They can be made private or public and refresh upon loading.

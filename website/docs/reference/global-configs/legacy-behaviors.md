@@ -20,7 +20,7 @@ These flags go through three phases of development:
 
 These flags _must_ be set in the `flags` dictionary in `dbt_project.yml`. They configure behaviors closely tied to project code, which means they should be defined in version control and modified through pull or merge requests, with the same testing and peer review.
 
-The following example displays the current flags and their current default values in the latest dbt Cloud and dbt Core versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You'll continue to see warnings for legacy behaviors that you have opted out of explicitly until you either resolve them (switch the flag to `True`) or choose to silence the warnings.
+The following example displays the current flags and their current default values in the latest dbt Cloud and dbt Core versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You'll continue to see warnings for legacy behaviors that you have opted out of explicitly until you either resolve them (switch the flag to `True`) or choose to silence the warnings using the `warn_error_options.silence` flag.
 
 <File name='dbt_project.yml'>
 
@@ -39,7 +39,7 @@ flags:
 | require_resource_names_without_spaces                           | 2024.05.xxx      | 2024.06.xxx         | 1.8.0           | 1.9.0             |
 | source_freshness_run_project_hooks                              | 2024.03.61       | 2024.06.xxx         | 1.8.0           | 1.9.0             |
 
-<sup>1</sup>dbt Cloud - "Keep on latest version"
+dbt Cloud - "Keep on latest version"
 
 ###  Package override for built-in materialization 
 
