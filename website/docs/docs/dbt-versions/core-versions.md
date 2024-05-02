@@ -99,7 +99,7 @@ We are committed to avoiding breaking changes in minor versions for end users of
 
 When you use dbt, you use a combination of `dbt-core` and an adapter plugin specific to your database. You can see the current list in [Supported Data Platforms](/docs/supported-data-platforms). Both `dbt-core` and dbt adapter plugins follow semantic versioning.
 
-`dbt-core` and adapter plugins coordinate new features and behind-the-scenes changes via the `dbt-adapters` interface. New features in adapters, and that `dbt-core` will leverage, are defined in `dbt-adapters`. These features are opt-in so they only impact adapters that explicitly implement them. This allows us to independently release adapters, `dbt-adapters`, and `dbt-core` without creating a broken experience for users.
+`dbt-core` and adapter plugins use the `dbt-adapters` interface to coordinate new features and behind-the-scenes changes. New adapter features are defined in `dbt-adapters` (which `dbt-core` will use). These features are opt-in, meaning they only impact adapters that explicitly implement them. This allows us to independently release adapters, `dbt-adapters`, and `dbt-core` without creating a broken experience for users.
 
 That means that (unlike core versions prior to 1.8) the minor and patch version numbers will likely differ between `dbt-core` and the adapter plugin(s) you have installed. 
 
