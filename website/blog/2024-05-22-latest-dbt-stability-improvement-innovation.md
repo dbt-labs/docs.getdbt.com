@@ -32,7 +32,7 @@ We're very confident in the robustness of this process**. We also know that we'l
 
 Any new change to dbt-core and adapters goes through the following steps before it's available to customers in dbt Cloud:
 
-<Lightbox src="/img/blog/2024-05-02-latest-dbt/testing-deploy-pipeline.png" title="Testing and deploy pipeline" />
+<Lightbox src="/img/blog/2024-05-22-latest-dbt/testing-deploy-pipeline.png" title="Testing and deploy pipeline" />
 
 ### **Step 1: Unit & Functional Tests in dbt Core + Adapters**
 
