@@ -37,7 +37,9 @@ No. dbt Explorer and all of its features are only available as a dbt Cloud user 
 
 <expandable alt_header="How does dbt Explorer support dbt Cloud environments?" >
 
-dbt Explorer defaults to the latest production state of a project. Support for staging and development (Cloud CLI and IDE) environments is coming soon. Users can only assign a single production and staging environment per dbt Cloud project. 
+dbt Explorer defaults to the latest production state of a project. Support for staging is now in <Lifecycle status='beta' />. 
+
+development (Cloud CLI and IDE) environments is coming soon. Users can only assign one production and one staging environment per dbt Cloud project. 
 
 </expandable>
 

@@ -9,6 +9,10 @@ hide_table_of_contents: false
 date: 2022-09-13
 is_featured: true
 ---
+ 
+:::note You can now use a Staging environment!
+This blog post was written before Staging environments. You can now use dbt Cloud can to support the patterns discussed here. Read more about [Staging environments](/docs/deploy/deploy-environments#staging-environment).
+:::
 
 ## Why do people cherry pick into upper branches?
 
