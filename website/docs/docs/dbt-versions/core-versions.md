@@ -101,7 +101,7 @@ When you use dbt, you use a combination of `dbt-core` and an adapter plugin spec
 
 `dbt-core` and adapter plugins use the `dbt-adapters` interface to coordinate new features and behind-the-scenes changes. New adapter features are defined in `dbt-adapters` (which `dbt-core` will use). These features are opt-in, meaning they only impact adapters that explicitly implement them. This allows us to independently release adapters, `dbt-adapters`, and `dbt-core` without creating a broken experience for users.
 
-That means that (unlike core versions prior to 1.8) the minor and patch version numbers will likely differ between `dbt-core` and the adapter plugin(s) you have installed. 
+Unlike `dbt-core` versions before 1.8, the minor and patch version numbers might not match between `dbt-core` and the adapter plugin(s) you've installed. 
 
 For example, you may find you're using `dbt-core==1.8.0` with `dbt-snowflake==1.9.0`. Even though these do not have the same minor version, they can still work together as they both work with `dbt-adapters==1.8.0`. Patch releases can contain important bug or security fixes so it’s critical to stay up to date. 
 
