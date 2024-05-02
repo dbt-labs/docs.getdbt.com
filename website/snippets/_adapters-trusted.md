@@ -20,7 +20,7 @@
 
 <Card
     title="Azure Synapse"
-    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-azure-synapse-analytics'>Set up in dbt Cloud</a> <br /></li><li><a href='/docs/core/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /> <br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-azure-synapse-analytics'>Set up in dbt Cloud</a> <br /></li><li><a href='/docs/core/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a>"
     pills='["dbt Cloud", "dbt Core"]'
     icon="azure-synapse-analytics"/>
 
