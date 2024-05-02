@@ -166,7 +166,7 @@ dbt Labs strongly recommends you to adopt the following approach when versioning
 
 :::note
 
-Prior to dbt Core version 1.8, we recommended that the minor version of your plugin should match the minor version in `dbt-core` (e.g. 1.1.x).
+Prior to dbt Core version 1.8, we recommended that the minor version of your plugin should match the minor version in `dbt-core` (for example, 1.1.x).
 
 :::
 
