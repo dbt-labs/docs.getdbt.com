@@ -12,6 +12,7 @@ dbt Core can connect with a variety of data platform providers including:
 
 - [Amazon Redshift](/docs/core/connect-data-platform/redshift-setup) 
 - [Apache Spark](/docs/core/connect-data-platform/spark-setup) 
+- [Azure Synapse](/docs/core/connect-data-platform/azuresynapse-setup)
 - [Databricks](/docs/core/connect-data-platform/databricks-setup) 
 - [Google BigQuery](/docs/core/connect-data-platform/bigquery-setup)
 - [Microsoft Fabric](/docs/core/connect-data-platform/fabric-setup)
