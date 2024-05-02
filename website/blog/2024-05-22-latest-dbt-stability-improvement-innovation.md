@@ -93,7 +93,7 @@ We've ******taken a longer release cycle for the upcoming 1.8 release of dbt Cor
 
 The adapter interface — i.e. how dbt Core actually connects to a third-party data platform — has historically been somewhat of a pain point. Adapter maintainers have often been *required to make* reactive changes when there's been an update to dbt Core.
 
-To solve that, we've released a new set of interfaces that are entirely independent of the `dbt-core` library: `[dbt-adapters==1.0.0](https://github.com/dbt-labs/dbt-adapters)`. From now on, any changes to `dbt-adapters` will be backward and forward-compatible. This also decouples adapter maintenance from the regular release cadence of `dbt-core`  — meaning maintainers get full control over when they ship implementations of new adapter-powered features.
+To solve that, we've released a new set of interfaces that are entirely independent of the `dbt-core` library: [`dbt-adapters==1.0.0`](https://github.com/dbt-labs/dbt-adapters). From now on, any changes to `dbt-adapters` will be backward and forward-compatible. This also decouples adapter maintenance from the regular release cadence of `dbt-core`  — meaning maintainers get full control over when they ship implementations of new adapter-powered features.
 
 Note that adapters running in dbt Cloud **must** be [migrated to the new decoupled architecture](https://github.com/dbt-labs/dbt-adapters/discussions/87) as a baseline in order to support the new "Keep on latest version".
 
