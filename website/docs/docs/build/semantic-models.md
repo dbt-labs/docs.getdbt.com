@@ -24,7 +24,6 @@ import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-
 Here we describe the Semantic model components with examples:
 
 | Component | Description | Type |
@@ -147,22 +146,23 @@ Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/r
 
 </VersionBlock>
 
-### Name 
+### Name
 
 Define the name of the semantic model. You must define a unique name for the semantic model. The semantic graph will use this name to identify the model, and you can update it at any time. Avoid using double underscores (__) in the name as they're not supported.
 
-### Description 
+### Description
 
 Includes important details in the description of the semantic model. This description will primarily be used by other configuration contributors. You can use the pipe operator `(|)` to include multiple lines in the description.
 
-### Model 
+### Model
 
 Specify the dbt model for the semantic model using the [`ref` function](/reference/dbt-jinja-functions/ref).
 
 ### Defaults
 
-Defaults for the semantic model. Currently only `agg_time_dimension`. `agg_time_dimension` represents the default time dimensions for measures. This can be overridden by adding the `agg_time_dimension` key directly to a measure - see [Dimensions](/docs/build/dimensions) for examples. 
-### Entities 
+Defaults for the semantic model. Currently only `agg_time_dimension`. `agg_time_dimension` represents the default time dimensions for measures. This can be overridden by adding the `agg_time_dimension` key directly to a measure - see [Dimensions](/docs/build/dimensions) for examples.
+
+### Entities
 
 To specify the [entities](/docs/build/entities) in your model, use their columns as join keys and indicate their `type` as primary, foreign, or unique keys with the type parameter.
 
