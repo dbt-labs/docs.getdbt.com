@@ -103,7 +103,7 @@ When you use dbt, you use a combination of `dbt-core` and an adapter plugin spec
 
 Unlike `dbt-core` versions before 1.8, the minor and patch version numbers might not match between `dbt-core` and the adapter plugin(s) you've installed. 
 
-For example, you may find you're using `dbt-core==1.8.0` with `dbt-snowflake==1.9.0`. Even though these do not have the same minor version, they can still work together as they both work with `dbt-adapters==1.8.0`. Patch releases can contain important bug or security fixes so it’s critical to stay up to date. 
+For example, you might find you're using `dbt-core==1.8.0` with `dbt-snowflake==1.9.0`. Even though these don't have the same minor version, they can still work together as they both work with `dbt-adapters==1.8.0`. Patch releases can contain important bug or security fixes so it’s critical to stay up to date. 
 
 You can use the `dbt --version` command to see which versions you have installed:
 
