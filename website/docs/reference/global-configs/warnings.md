@@ -12,6 +12,7 @@ Turning on the `WARN_ERROR` config will convert dbt warnings into errors. Any ti
 dbt --warn-error run
 ...
 ```
+
 </File>
 
 Converting any and all warnings to errors may suit your needs perfectly, but there may be some warnings you just don't care about, and some you care about a lot.
@@ -31,10 +32,8 @@ For example, to silence deprecation warnings or certain warnings you want to ign
   
 ```yaml
 name: "my_dbt_project"
-
 tests:
   +enabled: True
-
 flags:
   warn_error_options:
     error: # Previously called "include"
@@ -43,6 +42,7 @@ flags:
       - TestsConfigDeprecation
       - NoNodesForSelectionCriteria
 ```
+
 </File>
 
 </VersionBlock>
@@ -83,6 +83,7 @@ config:
     exclude: 
       - NoNodesForSelectionCriteria
 ```
+
 </File>
 
 </VersionBlock>
@@ -101,6 +102,7 @@ config:
       - TestsConfigDeprecation
       - NoNodesForSelectionCriteria
 ```
+
 </File>
 
 </VersionBlock>
