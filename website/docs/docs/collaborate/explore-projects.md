@@ -230,6 +230,12 @@ Example of the details view for the model `supplies`:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
+## Staging environment <Lifecycle status='beta' />
+
+dbt Explorer supports views for [Staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the Production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny. Once the Staging environment is configured and has a successful job run, it will be visible on the dbt Explorer landing page.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
+
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 
 - [About model governance](/docs/collaborate/govern/about-model-governance)
