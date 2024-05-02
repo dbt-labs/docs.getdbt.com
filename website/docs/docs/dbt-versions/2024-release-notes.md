@@ -47,7 +47,7 @@ dbt Cloud release notes for 2024.
 - **Fix:** `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric.
 - **Fix:** `join_to_timespine` now properly gets applied to conversion metric input measures.
 - **Fix:** Fixed an issue where exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open.
-- **Behavior change:** Introduced the [`source_freshness_run_project_hooks`](/docs/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks) flag, opt-in and disabled by default. If set to `True`, dbt will include `on-run-*` project hooks in the `source freshness` command. This will become the default in a future version of dbt.
+- **Behavior change:** Introduced the `source_freshness_run_project_hooks` flag, opt-in and disabled by default. If set to `True`, dbt will include `on-run-*` project hooks in the `source freshness` command. This will become the default in a future version of dbt. Read [Project hooks with source freshness](/reference/global-configs/legacy-behaviors#project-hooks-with-source-freshness) for more information.
 
 
 ## February 2024
