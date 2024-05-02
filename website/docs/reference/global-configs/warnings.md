@@ -77,7 +77,6 @@ DBT_WARN_ERROR_OPTIONS='{"include": ["NoNodesForSelectionCriteria"]}' dbt run
 <File name='profiles.yml'>
 
 ```yaml
-
 config:
   warn_error_options:
     include: all
@@ -93,7 +92,6 @@ config:
 <File name='profiles.yml'>
 
 ```yaml
-
 config:
   warn_error_options:
     error: # Previously called "include"
