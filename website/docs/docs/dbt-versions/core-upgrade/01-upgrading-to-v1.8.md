@@ -4,7 +4,7 @@ id: upgrading-to-v1.8
 description: New features and changes in dbt Core v1.8
 displayed_sidebar: "docs"
 ---
-
+ 
 ## Resources
 
 - Changelog (coming soon)
