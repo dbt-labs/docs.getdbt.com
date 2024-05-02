@@ -58,7 +58,7 @@ For each dbt Cloud service, we run a testing suite that consists of:
 - End-to-end headless browser testing for our UI-heavier applications
 - Compatibility for each adapter with that service
 
-This step provides further depth in testing the interplay between dbt Core and dbt Cloud application-specific functionality, covering cases such as linting SQL that has an ephemeral reference, or resolving cross-project refs across multi-project "dbt Mesh" deployments.
+This step provides further depth in testing the interplay between dbt Core and dbt Cloud application-specific functionality, covering cases such as linting SQL that has an ephemeral reference, or resolving [cross-project refs](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) across multi-project "dbt Mesh" deployments.
 
 ### Step 4: **Canary deployment**
 
