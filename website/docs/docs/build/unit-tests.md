@@ -7,13 +7,6 @@ id: "unit-tests"
 keywords:
   - unit test, unit tests, unit testing, dag
 ---
-:::note beta
-
-Support for unit testing dbt models is available to dbt Cloud customers who have chosen to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). This feature is currently available in beta, and supports all dbt-Labs-maintained adapters, with more adapter availability rolling out through March.
-
-For dbt Core, the v1.8.0-b1 release of `dbt-core` and dbt Labs-maintained adapters are available now.
-
-:::
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
@@ -27,6 +20,7 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 - You must specify all fields in a BigQuery STRUCT in a unit test. You cannot use only a subset of fields in a STRUCT.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
+- Available to dbt Cloud customers who have selected ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) and  dbt Core v1.8.0 or later.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
