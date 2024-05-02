@@ -17,12 +17,6 @@ By choosing to **Keep on latest version**, you always get the latest fixes and e
 
 You can upgrade to **Keep on latest version** no matter which version of dbt you currently have selected. As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
-:::note Availability  
-
-[Microsoft Fabric support](/docs/cloud/connect-data-platform/connect-microsoft-fabric) will be coming in late March. All other connections are supported.
-
-:::
-
 ### Override dbt version
 
 Configure your project to use a different dbt Core version than what's configured in your [development environment](/docs/dbt-cloud-environments#types-of-environments). This _override_ only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
