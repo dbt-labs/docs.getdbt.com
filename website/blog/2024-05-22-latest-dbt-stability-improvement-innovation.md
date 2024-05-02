@@ -114,7 +114,7 @@ Lastly, we've revisited our [artifact interfaces](https://docs.getdbt.com/refere
 In conclusion, we're putting new muscle behind our commitments to the community & ecosystem:
 
 - Compatibility for adapters, maintained by us and by others
-- Predictable behaviour changes for maintainers of project and package code
+- Predictable behavior changes for maintainers of project and package code
 - Rigorous tests in CI/CD against documented interfaces, first-party adapters, metadata artifacts, and popular third-party packages
 
 All of this stands behind our commitment to customers of dbt Cloud — we'll keep you on the latest version, ensuring quality and stability, so you can focus on what matters.
