@@ -103,7 +103,7 @@ We all want the benefits of a stable, actively maintained product. Occasionally 
 
 To accommodate both groups in these scenarios, we've extended dbt to support project-level behavior flags. These can be used to *opt into* or *opt out of* changes to default behavior. From now on, backward-incompatible changes to dbt functionality will be implemented behind a flag with a default value that preserves the legacy behavior. After a few months, the new behavior will become the default — but only after some proactive communication with customers and external package maintainers.
 
-The same behaviour change flags will naturally extend to dbt packages, which are fundamentally just dbt projects. This allows package maintainers to ensure that behaviour doesn't change unexpectedly as a result of changes to dbt Core. For more details, check out our user documentation on [legacy behaviours](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#behaviors), as well as our [contributor documentation](https://github.com/dbt-labs/dbt-core/blob/main/docs/eli64/behavior-change-flags.md) for introducing behaviour changes safely.
+The same behavior change flags will naturally extend to dbt packages, which are fundamentally just dbt projects. This allows package maintainers to ensure that behavior doesn't change unexpectedly as a result of changes to dbt Core. For more details, check out our user documentation on [legacy behaviors](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#behaviors), as well as our [contributor documentation](https://github.com/dbt-labs/dbt-core/blob/main/docs/eli64/behavior-change-flags.md) for introducing behavior changes safely.
 
 **Stability for metadata artifacts**
 
