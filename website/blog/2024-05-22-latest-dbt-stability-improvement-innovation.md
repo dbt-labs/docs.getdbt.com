@@ -52,7 +52,7 @@ This breadth of testing provides early detection of any regressions that might h
 
 Before the new image version goes live, we ensure that all dbt changes are cross-compatible with every dbt Cloud service that depends on Core functionality, including areas such as the Cloud IDE, the Cloud CLI, scheduled job runs, CI, and connection testing. 
 
-For each dbt Cloud service we run a testing suite that consists of:
+For each dbt Cloud service, we run a testing suite that consists of:
 
 - Unit and integration specific tests to behavior of each dbt Cloud service
 - End-to-end headless browser testing for our UI-heavier applications
