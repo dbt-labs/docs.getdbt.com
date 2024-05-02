@@ -19,7 +19,7 @@ dbt Labs plans to release dbt Core v1.8.0-b1 and dbt Labs-maintained adapters on
 
 ## Keep on latest version 
 
-With dbt Cloud, you can get early access to many new features and functionality before they're in the Generally Available (GA) release of dbt Core v1.8 without the need to manage version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) setting for more details.
+With dbt Cloud, you can get early access to many new features and functionality before they're in the Generally Available (GA) release of dbt Core v1.8 without the need to manage version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) setting for more details.
 
 ## New and changed features and functionality
 
