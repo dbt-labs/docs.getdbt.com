@@ -280,7 +280,7 @@ models:
 Some things to note:
 
 - Ensure that any roles or groups mentioned must already exist in Redshift.
-- Use the keyword `+grants` to add to or modify users for existing grants (rather than replace), however this syntax does not apply to roles and groups.
+- The merge strategy of grants (via the `+` prefix in front of `+grants`) is not supported for roles and groups.
 - Always use the appropriate prefix (role or group) when specifying roles and groups in the grants configuration.
 
 </div>
