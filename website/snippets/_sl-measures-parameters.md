@@ -8,4 +8,4 @@
 | `agg_params` | Specific aggregation properties, such as a percentile. | Optional | 
 | `agg_time_dimension` | The time field. Defaults to the default agg time dimension for the semantic model.  | Optional | 1.6 and higher |
 | `label` | String that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as orders_total or "orders_total"). Available in dbt version 1.7 or higher. | Optional 
-| `create_metric` | Create a `simple` metric from a measure by setting `create_metric: True`. The `label` and `description` attributes will be automatically propagated to the created metric. . | Optional |
+| `create_metric` | Create a `simple` metric from a measure by setting `create_metric: True`. The `label` and `description` attributes will be automatically propagated to the created metric. Available in dbt version 1.7 or higher. | Optional |
