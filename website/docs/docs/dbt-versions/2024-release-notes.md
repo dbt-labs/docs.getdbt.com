@@ -24,6 +24,7 @@ dbt Cloud release notes for 2024.
   </expandable>
 
 - **Behavior change:** Introduced the `require_resource_names_without_spaces` flag, opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt. Read [No spaces in resource names](/reference/global-configs/legacy-behaviors#no-spaces-in-resource-names) for more information.
+- **Deprecation**: In Core 1.6, we deprecated the ability to install dbt Core using Homebrew. Now that dbt Core 1.5 is in [EOL](/docs/dbt-versions/core), you will get an error if you try to install using Homebrew.
 
 ## April 2024
 
