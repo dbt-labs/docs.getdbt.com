@@ -11,6 +11,38 @@ dbt Cloud release notes for 2024.
 
 ## May 2024
 
+#### dbt Cloud Launch Showcase event
+The following features were announced at the [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
+
+- **New**: Microsoft Synapse
+
+- **New**: RBAC environment (maybe?)
+
+- **New**: dbt Assist (ADD LINK) is a powerful AI feature helping you generate documentation and tests, saving you time and helping you deliver data that works. Available in Beta for dbt Cloud Enterprise users in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) only.
+
+- **New**: [dbt Power User VS Code extension](https://docs.myaltimate.com/arch/beta/) is now available in Beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
+
+- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces caching, allowing you to cache common queries to speed up performance and reduce query computation. Available for dbt Cloud Team or Enterprise users. (ADD LINK)
+
+- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces adding metrics as dimensions to your metric filters to create more complex metrics and gain more insights Available for all users. (ADD LINK)
+
+- **Update** Databricks OAuth GA bit
+
+- **Update** Unit testing GA bit
+
+- **Update**: dbt Explorer GA bit
+
+- **Update**: Microsoft Fabric GA
+
+- **Update**: [dbt Mesh](ttps://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-) is now Generally Available to dbt Cloud Enterprise users. dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections. Get started with dbt Mesh by reading the [dbt Mesh quickstart guide](https://docs.getdbt.com/guides/mesh-qs?step=1).
+
+- **Update**: [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now Generally Available to all users. The dbt Cloud CLI is a command-line interface that allows you to interact with dbt Cloud, use automatic deferral, leverage dbt Mesh, and more!
+
+- **Update**: [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) is now Generally Available to dbt Cloud Team or Enterprise users. The Google Sheets integration allows you to query and save your dbt Semantic Layer metrics directly from Google Sheets.
+
+- **Enhancement**: As part of our ongoing commitment to improving the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), the filesystem now comes with improvements to speed up dbt development, such as discontinuing manifest caching and introducing a Git repository limit of 10GB. (ADD LINK) WHAT'S THE DIFF BTW UDPATE AND ENHANCEMENT?
+-----------------------------------------------------------------------------------------------------------------------------------
+
 - <expandable alt_header="Update: Keep on latest version" > 
 
   The **Keep on latest version** setting is now Generally Available (previously Public Preview).
