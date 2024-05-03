@@ -1,5 +1,5 @@
 ---
-title: "Latest dbt: a stable foundation for improvement & innovation"
+title: "How we're making sure you can confidently \"Keep on latest version\" in dbt Cloud"
 description: "Over the past 6 months, we've laid a stable foundation for continuously improving dbt."
 slug: latest-dbt-stability
 
