@@ -2,7 +2,7 @@
 title: "Behavior change: no spaces in resource names"
 description: "May 2024: New flag that raises an exception if it finds a resource name containing spaces. Disabled by default."
 sidebar_label: "Behavior change: no spaces in resource names"
-sidebar_position: 10
+sidebar_position: 09
 tags: [May-2024]
 date: 2024-05-02
 ---
