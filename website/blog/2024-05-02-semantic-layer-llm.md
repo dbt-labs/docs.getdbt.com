@@ -22,6 +22,8 @@ Clearly, this technology is not going away. There are already countless number o
 
 <LoomVideo id='3b5cc878ef53488583691c390159007d?t=0' />
 
+<!--truncate-->
+
 ## Why Build This
 
 So, why build this and what makes it different?
