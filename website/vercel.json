@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "docs/core/homebrew-install",
+      "source": "/docs/core/homebrew-install",
       "destination": "/docs/core/installation-overview",
       "permanent": true
     },
