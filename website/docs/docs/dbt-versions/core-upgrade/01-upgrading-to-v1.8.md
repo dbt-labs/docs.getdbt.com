@@ -82,7 +82,7 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 
 ### Managing changes to legacy behaviors
 
-dbt Core v1.8 has introduced a flags has been created for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
+dbt Core v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 

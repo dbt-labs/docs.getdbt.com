@@ -2,7 +2,6 @@
 
 |                      dbt Core                                 | Initial release |      Support level and end date      |
 |:-------------------------------------------------------------:|:---------------:|:-------------------------------------:|
-
 | [**v1.8**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8) | May 2024      | Release Candidate                              |
 | [**v1.7**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7) | Nov 2, 2023   | <b>Active &mdash; Nov 1, 2024</b> | 
 | [**v1.6**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.6) | Jul 31, 2023  | Critical &mdash; Jul 30, 2024 |  
