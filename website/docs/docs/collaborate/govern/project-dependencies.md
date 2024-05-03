@@ -35,8 +35,9 @@ In order to add project dependencies and resolve cross-project `ref`, you must:
 - Use dbt v1.6 or higher for **both** the upstream ("producer") project and the downstream ("consumer") project.
 - Define models in an upstream ("producer") project that are configured with [`access: public`](/reference/resource-configs/access). To apply the change, rerun a production job.
 - Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment)
-- Have a successful run of the upstream ("producer") project
-- Have a multi-tenant or single-tenant [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account (Azure ST is not supported but coming soon) 
+- Have a successful run of the upstream ("producer") project.
+- Define and trigger a job before marking the environment as Staging. Read more about [Staging environments with downstream dependencies](/docs/collaborate/govern/project-dependencies#staging-with-downstream-dependencies).
+- Have a multi-tenant or single-tenant [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account (Azure ST is not supported but coming soon.)
 
 ## Example
 
@@ -104,6 +105,20 @@ with monthly_revenue as (
 
 For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/best-practices/how-we-mesh/mesh-1-intro).
 
+### Safeguarding production data with staging environments
+
+When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. However, to protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects. With a staging environment integrated into the project, any references from external projects during development workflows resolve to the Staging environment. This adds a layer of security between your Deployment and Production environments by limiting access to production data.
+
+Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. 
+
+#### Staging with downstream dependencies
+
+dbt Cloud begins using the Staging environment to resolve cross-project references from downstream projects as soon as it exists in a project without "fail-over" to Production. To avoid causing downtime for downstream developers, you should define and trigger a job before marking the environment as Staging:
+1. Create a new environment, but do NOT mark it as **Staging**.
+2. Define a job in that environment.
+3. Trigger the job to run, and ensure it completes successfully.
+4. Update the environment to mark it as **Staging**.
+
 ### Comparison
 
 If you were to instead install the `jaffle_finance` project as a `package` dependency, you would instead be pulling down its full source code and adding it to your runtime environment. This means:
@@ -129,3 +144,4 @@ If you're using private packages with the [git token method](/docs/build/package
 
 ## Related docs
 - Refer to the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use dbt Mesh.
+- [Quickstart with dbt Mesh](/guides/mesh-qs)

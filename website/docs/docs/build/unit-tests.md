@@ -7,13 +7,6 @@ id: "unit-tests"
 keywords:
   - unit test, unit tests, unit testing, dag
 ---
-:::note beta
-
-Support for unit testing dbt models is available to dbt Cloud customers who have chosen to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). This feature is currently available in beta, and supports all dbt-Labs-maintained adapters, with more adapter availability rolling out through March.
-
-For dbt Core, the v1.8.0-b1 release of `dbt-core` and dbt Labs-maintained adapters are available now.
-
-:::
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
@@ -23,6 +16,8 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
+- We currently *don't* support unit testing models that use recursive SQL.
+- You must specify all fields in a BigQuery STRUCT in a unit test. You cannot use only a subset of fields in a STRUCT.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
 
@@ -37,7 +32,6 @@ You should unit test a model:
     - Window functions
     - `case when` statements when there are many `when`s
     - Truncation
-    - Recursion
 - When you're writing custom logic to process input data, similar to creating a function.
 - We don't recommend conducting unit testing for functions like `min()` since these functions are tested extensively by the warehouse. If an unexpected issue arises, it's more likely a result of issues in the underlying data rather than the function itself. Therefore, fixture data in the unit test won't provide valuable information.
 - Logic for which you had bugs reported before.
@@ -117,9 +111,9 @@ unit_tests:
 ```
 </file>
 
-The previous example defines the mock data using the inline `dict` format, but you can also use `csv` either inline or in a separate fixture file. 
+The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. 
 
-You only have to define the mock data for the columns you care about. This enables you to write succinct and _specific_ unit tests.
+When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
 :::note
 
@@ -279,6 +273,24 @@ unit_tests:
 ```
 
 There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+
+## Unit testing a model that depend on ephemeral model(s)
+
+If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
+
+```yml
+unit_tests:
+  - name: my_unit_test
+    model: dim_customers
+    given:
+      - input: ref('ephemeral_model')
+        format: sql
+        rows: |
+          select 1 as id, 'emily' as name
+    expect:
+      rows:
+        - {id: 1, first_name: emily}
+```
 
 ## Additional resources
 

@@ -20,7 +20,7 @@ When materializing a model as `table`, you may include several optional configs 
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.6">
+<VersionBlock firstVersion="1.6" lastVersion="1.6">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
@@ -459,9 +459,9 @@ To configure this inside of dbt Cloud, use the [extended attributes feature](/do
 
 compute:
   Compute1:
-    http_path:[`/some/other/path']
+    http_path: /SOME/OTHER/PATH
   Compute2:
-    http_path:[`/some/other/path']
+    http_path: /SOME/OTHER/PATH
 
 ```
 

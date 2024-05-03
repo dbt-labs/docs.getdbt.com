@@ -40,16 +40,25 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-1. Verify that you don't already have dbt Core installed:
-   
+1. Verify that you don't already have dbt Core installed by running the following command.    
+  
   ```bash
   which dbt
   ```
-   - If you see a `dbt not found`, you're good to go. If the dbt help text appears, use `pip uninstall dbt` to remove dbt Core from your system. <br />
-  
-2. Install the dbt Cloud CLI with Homebrew: 
+  If the output is `dbt not found`, then that confirms you don't have it installed.
 
-   - First, remove the dbt-labs tap, the separate repository for packages, from Homebrew. This prevents Homebrew from installing packages from that repository:
+:::tip Run `pip uninstall dbt` to uninstall dbt Core
+
+If you've installed dbt Core globally in some other way, uninstall it first before proceeding:
+```bash
+pip uninstall dbt
+```
+
+:::
+
+2. Install the dbt Cloud CLI with Homebrew:
+
+   - First, remove the `dbt-labs` tap, the separate repository for packages, from Homebrew. This prevents Homebrew from installing packages from that repository:
       ```bash
       brew untap dbt-labs/dbt
    -  Then, add and install the dbt Cloud CLI as a package:
@@ -84,9 +93,13 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 :::info
 
-Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executable in the Program Files folder and [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
+Advanced users can configure multiple projects to use the same dbt Cloud CLI by:
 
-Note that if you are using VS Code, you must restart it to pick up modified environment variables.
+ 1. Placing the executable file (`.exe`) in the "Program Files" folder
+ 2. [Adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53)
+ 3. Saving it where needed
+
+Note that if you're using VS Code, you must restart it to pick up modified environment variables.
 :::
 
 3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct:
