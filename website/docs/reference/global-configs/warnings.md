@@ -39,7 +39,7 @@ The `WARN_ERROR_OPTIONS` config gives you more granular control over _exactly wh
 
 
 <File name='dbt_project.yml'>
-  
+
 ```yaml
 name: "my_dbt_project"
 tests:
