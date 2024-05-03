@@ -30,6 +30,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [type\_numeric](#type_numeric)
     - [type\_string](#type_string)
     - [type\_timestamp](#type_timestamp)
+    - [current\_timestamp](#current_timestamp)
   - [Set functions](#set-functions)
     - [except](#except)
     - [intersect](#intersect)
@@ -53,6 +54,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [bool\_or](#bool_or)
     - [listagg](#listagg)
   - [Cast functions](#cast-functions)
+    - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
@@ -76,6 +78,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [type\_numeric](#type_numeric)
     - [type\_string](#type_string)
     - [type\_timestamp](#type_timestamp)
+    - [current\_timestamp](#current_timestamp)
   - [Set functions](#set-functions)
     - [except](#except)
     - [intersect](#intersect)
@@ -99,6 +102,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [bool\_or](#bool_or)
     - [listagg](#listagg)
   - [Cast functions](#cast-functions)
+    - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
@@ -167,6 +171,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [listagg](#listagg)
 
 [**Cast functions**](#cast-functions)
+- [cast](#cast)
 - [cast_bool_to_text](#cast_bool_to_text)
 - [safe_cast](#safe_cast)
 
@@ -314,6 +319,29 @@ This macro yields the database-specific data type for a `TIMESTAMP` (which may o
 
 ```sql
 TIMESTAMP
+```
+
+### current_timestamp
+
+This macro returns the current date and time for the system. Depending on the adapter:
+
+- The result may be an aware or naive timestamp.
+- The result may correspond to the start of the statement or the start of the transaction.
+
+
+**Args**
+- None
+
+**Usage**
+- You can use the `current_timestamp()` macro within your dbt SQL files like this:
+
+```sql
+{{ dbt.current_timestamp() }}
+```
+**Sample output (PostgreSQL)**
+
+```sql
+now()
 ```
 
 ## Set functions
@@ -751,6 +779,38 @@ array_to_string(
 ```
 
 ## Cast functions
+
+### cast
+
+**Availability**:
+dbt v1.8 or higher. For more information, select the version from the documentation navigation menu.
+
+<VersionBlock firstVersion="1.8">
+
+__Args__:
+
+ * `field`: [attribute name or expression](#sql-expressions).
+ * `type`: data type to convert to
+
+This macro casts a value to the specified data type. Unlike [safe\_cast](#safe_cast), this macro will raise an error when the cast fails.
+
+**Usage**:
+
+```sql
+{{ dbt.cast("column_1", api.Column.translate_type("string")) }}
+{{ dbt.cast("column_2", api.Column.translate_type("integer")) }}
+{{ dbt.cast("'2016-03-09'", api.Column.translate_type("date")) }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+    cast(column_1 as TEXT)
+    cast(column_2 as INT)
+    cast('2016-03-09' as date)
+```
+
+</VersionBlock>
 
 ### cast_bool_to_text
 __Args__:

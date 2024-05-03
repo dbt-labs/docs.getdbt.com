@@ -1,15 +1,19 @@
 ## Types of environments
 
 In dbt Cloud, there are two types of environments:
-- Deployment environment &mdash; Determines the settings used when jobs created within that environment are executed. 
-- Development environment &mdash; Determines the settings used in the dbt Cloud IDE or dbt Cloud CLI, for that particular project. 
+- **Deployment environment** &mdash; Determines the settings used when jobs created within that environment are executed.<br></br>
+    Types of deployment environments:
+    - General
+    - Staging <Lifecycle status='beta' />
+    - Production
+- **Development environment** &mdash; Determines the settings used in the dbt Cloud IDE or dbt Cloud CLI, for that particular project. 
 
 Each dbt Cloud project can only have a single development environment but can have any number of deployment environments.
 
-|  | Development Environments | Deployment Environments |
-| --- | --- | --- |
-| Determines settings for | dbt Cloud IDE or dbt Cloud CLI | dbt Cloud Job runs |
-| How many can I have in my project? | 1 | Any number |
+|| Development  | Staging <b></b> <Lifecycle status='beta' /> | Deployment |
+|------| --- | --- | --- |
+| **Determines settings for** | dbt Cloud IDE or dbt Cloud CLI | dbt Cloud Job runs | dbt Cloud Job runs |
+| **How many can I have in my project?** | 1 | Any number | Any number |
 
 :::note 
 For users familiar with development on dbt Core, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/core/dbt-core-environments).
@@ -29,8 +33,9 @@ Both development and deployment environments have a section called **General Set
 
 :::note About dbt version
 
-- dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
+- dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
+- In 2024 we are introducing **Keep on latest version**, which removes the need for manually upgrading environments in the future, while ensuring you get access to the latest fixes and features. This feature is currently in beta for select customers, rolling out to wider availability through February and March._
 :::
 
 ### Custom branch behavior

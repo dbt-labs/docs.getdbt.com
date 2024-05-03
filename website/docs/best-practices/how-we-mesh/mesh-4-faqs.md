@@ -188,13 +188,21 @@ We also expose some of this information in dbt Cloud itself in [jobs](/docs/depl
 
 </detailsToggle>
 
+<detailsToggle alt_header="Can dbt Mesh reference models in other accounts within the same data platform?">
+
+You can reference models in other accounts within the same data platform by leveraging the data-sharing capabilities of that platform, as long as the database identifier of the public model is consistent across the producer and consumer. 
+
+For example, [Snowflake cross-account data shares](https://docs.snowflake.com/en/user-guide/data-sharing-intro), [Databricks Unity Catalog across workspaces](https://docs.databricks.com/en/data-governance/unity-catalog/index.html), or multiple BigQuery projects. 
+
+</detailsToggle>
+
 ## Permissions and access
 
 <detailsToggle alt_header="How do user access permissions work in dbt Mesh? ">
 
 The existence of projects that have at least one public model will be visible to everyone in the organization with [read-only access](/docs/cloud/manage-access/seats-and-users). 
 
-Private or protected models require a user to have read-only access on the specific project in order to see its existence.
+Private or protected models require a user to have read-only access to the specific project to see its existence.
 
 </detailsToggle>
 
@@ -223,7 +231,7 @@ Because dbt does not implicitly coordinate data warehouse `grants` with model-le
 
 <detailsToggle alt_header="Is it possible to request access permissions from other teams within dbt Cloud?">
 
-Not currently! But this is something we may evaluate for the future.
+Not currently! But this is something we may evaluate in the future.
 
 </detailsToggle>
 
@@ -273,7 +281,7 @@ The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) allows users to develop 
 
 <detailsToggle alt_header="Does dbt Mesh require me to be on a specific version of dbt?">
 
-Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-core-in-cloud) to take advantage of [cross-project dependencies](/docs/collaborate/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
+Yes, your account must be on [at least dbt v1.6](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to take advantage of [cross-project dependencies](/docs/collaborate/govern/project-dependencies), one of the most crucial underlying capabilities required to implement a dbt Mesh.
 
 </detailsToggle>
 
@@ -300,6 +308,8 @@ Yes, a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) plan is required t
 <detailsToggle alt_header="Is there a recommended migration or implementation process?">
 
 Refer to our developer guide on [How we structure our dbt Mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro). You may also be interested in watching the recording of this talk from Coalesce 2023: [Unlocking model governance and multi-project deployments with dbt-meshify](https://www.youtube.com/watch?v=FAsY0Qx8EyU).
+
+You can also learn how to implement dbt Mesh by following our [Quickstart dbt Mesh](/guides/mesh-qs) guide.
 
 </detailsToggle>
 

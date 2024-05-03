@@ -5,26 +5,10 @@ sidebar_label: 'Python version'
 id: install-python-compatibility
 ---
 
-<VersionBlock firstVersion="1.6">
+import Pythonmatrix from '/snippets/_python-compatibility-matrix.md';
 
-The latest version of `dbt-core` is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
+Use this table to match dbt-core versions with their compatible Python versions. New [dbt minor versions](/docs/dbt-versions/core#minor-versions) will add support for new Python3 minor versions when all dependencies can support it. In addition, dbt minor versions will withdraw support for old Python3 minor versions before their [end of life](https://endoflife.date/python).
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.4" lastVersion="1.5">
-
-The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, 3.10 and 3.11.
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.3">
-
-The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, and 3.10
-
-</VersionBlock>
+<Pythonmatrix/>
 
 Adapter plugins and their dependencies are not always compatible with the latest version of Python. For example, dbt-snowflake v0.19 is not compatible with Python 3.9, but dbt-snowflake versions 0.20+ are.
-
-New dbt minor versions will add support for new Python3 minor versions as soon as all dependencies can support it. In turn, dbt minor versions will drop support for old Python3 minor versions right before they reach [end of life](https://endoflife.date/python).
-
-Since v0.15.0, dbt Core no longer supports Python2.

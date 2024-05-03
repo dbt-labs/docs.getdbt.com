@@ -8,7 +8,7 @@ sidebar_position: 7
 ---
 
 :::important
-If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/sl-migration) for more info.
+If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/sl-migration) for more info.
 :::
 
 dbt Labs are thrilled to announce the re-release of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), now available in [public beta](#public-beta). It aims to bring the best of modeling and semantics to downstream applications by introducing:
@@ -44,7 +44,7 @@ By bringing these enhancements to the dbt Semantic Layer, we enable organization
 
 The dbt Semantic Layer is currently available as a public beta, which means:
 
-- **Who** &mdash; To experience the new dbt Semantic Layer, you must be on a dbt Cloud [Team and Enterprise](https://www.getdbt.com/pricing/) multi-tenant dbt Cloud plan, [hosted](/docs/cloud/about-cloud/regions-ip-addresses) in North America and on dbt v1.6 and higher. Look out for announcements on removing the location requirement soon.
+- **Who** &mdash; To experience the new dbt Semantic Layer, you must be on a dbt Cloud [Team and Enterprise](https://www.getdbt.com/pricing/) multi-tenant dbt Cloud plan, [hosted](/docs/cloud/about-cloud/access-regions-ip-addresses) in North America and on dbt v1.6 and higher. Look out for announcements on removing the location requirement soon.
 
   - Developer plans or dbt Core users can use MetricFlow to define and test metrics using the dbt MetricFlow CLI only.
 
@@ -60,6 +60,6 @@ To experience the universal dbt Semantic Layer and its enhanced beta capabilitie
 
 - [Introducing the new dbt Semantic Layer](https://www.getdbt.com/blog/introducing-new-look-dbt-semantic-layer)
 - [dbt Semantic Layer docs](/docs/use-dbt-semantic-layer/dbt-sl)
-- [dbt Semantic Layer get started guide](/docs/use-dbt-semantic-layer/quickstart-sl)
+- [dbt Semantic Layer get started guide](/guides/sl-snowflake-qs)
 - [Build your metrics with MetricFlow](/docs/build/build-metrics-intro)
 

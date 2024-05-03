@@ -2,13 +2,15 @@ The following table outlines which dbt Cloud features are supported on the diffe
 
 | Feature                       | Multi-tenant | AWS single tenant     | Azure single tenant  | 
 |-------------------------------|--------------|-----------------------|----------------------|
-| Scheduler                     | ✅           | ✅                     | ✅                   |  
-| Cloud IDE                     | ✅           | ✅                     | ✅                   |  
-| Audit logs                    | ✅           | ✅                     | ✅                   |  
-| Discovery API                 | ✅           | ✅                     | ❌                   | 
-| Webhooks (Outbound)           | ✅           | ✅                     | ❌                   |
-| Continuous Integration, including CI jobs                      | ✅           | ✅                     | ✅                   | 
-| Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
-| IP Restrictions               | ✅           | ✅                     | ✅                   | 
-| PrivateLink egress            | ✅ (AWS only)| ✅                     | ✅                   | 
-| PrivateLink ingress           | ❌           | ✅                     | ✅                   | 
+| Job scheduler                 | ✅           | ✅                     | ✅                  |  
+| dbt Cloud IDE                 | ✅           | ✅                     | ✅                  |
+| dbt Cloud CLI                 | ✅           | ✅                     | ❌                  |
+| Audit logs                    | ✅           | ✅                     | ✅                  |  
+| Discovery API                 | ✅           | ✅                     | ✅                  | 
+| dbt Explorer                  | ✅           | ✅                     | ✅                   | 
+| Webhooks (Outbound)           | ✅           | ✅                     | ❌                  |
+| Continuous Integration, including CI jobs    | ✅        |     ✅     | ✅                  | 
+| dbt Semantic Layer            | ✅           | ✅ (Upon request)      | ❌                  | 
+| IP Restrictions               | ✅           | ✅                     | ✅                  | 
+| PrivateLink egress            | ✅ (AWS only)| ✅                     | ✅                  | 
+| PrivateLink ingress           | ❌           | ✅                     | ✅                  | 

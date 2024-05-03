@@ -1,0 +1,50 @@
+name: dbt Core - Request changes to docs
+description: "File a docs update or feature request related to dbt Core content."
+title: "[Core] <title>"
+labels: ["content","dbt Core"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for opening a dbt Core documentation issue! Here are a few things to consider:
+          * You can submit ideas or suggest changes to our content by opening an [Issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose).
+          * Before filing an issue, please [search our current issues](https://github.com/dbt-labs/docs.getdbt.com/issues) to avoid duplicates.
+          * Please read the [Contributing guide](https://github.com/dbt-labs/docs.getdbt.com#contributing) if you want to open a pull request. 
+          * If known, add the `priority: high/medium/low` label (Optional)
+
+  - type: textarea
+    attributes:
+      label: Link to the page(s) on docs.getdbt.com requiring updates
+      description: "Please link to the page or pages you'd like to see improved."
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Tell us more about this update
+      description: |
+        - Give as much detail as you can to help us understand the change you want to see. 
+        - What use cases does it support? Can you provide or link to an example?
+        - Why is this change important?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Reviewers/Stakeholders/SMEs
+      description: List the reviewers, stakeholders, and subject matter experts (SMEs) to collaborate with for the docs update.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Related GitHub issues
+      description: Add any other context or screenshots about the feature request here.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional information
+      description: Provide any additional information, configuration, or data that might be necessary to reproduce the issue.
+    validations:
+      required: false
