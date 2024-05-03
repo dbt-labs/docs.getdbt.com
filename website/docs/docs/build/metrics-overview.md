@@ -185,8 +185,8 @@ metrics:
     type_params:
       numerator: cancellations
       denominator: transaction_amount
-      filter: |   
-        {{ Dimension('customer__country') }} = 'MX'
+    filter: |   
+      {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
     owners:
       - support@getdbt.com
@@ -194,10 +194,10 @@ metrics:
     type_params:
       numerator:
         name: cancellations
-        filter: {{ Dimension('company__tier' )}} = 'enterprise'  
+        filter: {{ Dimension('company__tier') }} = 'enterprise'  
       denominator: transaction_amount
-      filter: | 
-        {{ Dimension('customer__country') }} = 'MX'  
+    filter: | 
+      {{ Dimension('customer__country') }} = 'MX' 
 ```
 
 ### Simple metrics
@@ -218,9 +218,9 @@ metrics:
       measure:
         name: cancellations_usd  # Specify the measure you are creating a proxy for.
         fill_nulls_with: 0
-        filter: |
-        {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
-        join_to_timespine: true
+    filter: |
+      {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}} is not null
+    join_to_timespine: true
 ```
 
 ## Filters
