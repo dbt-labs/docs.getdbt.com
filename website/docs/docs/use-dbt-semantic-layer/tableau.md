@@ -44,8 +44,8 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Using the integration
 
-1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page. 
-2. **Access all Semantic Layer Objects** &mdash; You can choose between all the metrics, dimensions, and entities configured in your dbt Semantic Layer under the data source called "ALL". (Note: "METRICS_AND_DIMENSIONS" was the original name of this data source, and it contains the same information as "ALL". In the future, we will deprecate "METRICS_AND_DIMENSIONS" in favor of "ALL") 
+1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page.
+2. **Access all Semantic Layer Objects** &mdash; Use the "ALL" data source to access all the metrics, dimensions, and entities configured in your dbt Semantic Layer. Note that the "METRICS_AND_DIMENSIONS" data source has been deprecated and replaced by "ALL".
 3. **Access saved queries** &mdash; You can optionally access individual [saved queries](/docs/build/saved-queries) that you've defined. These will also show up as unique data sources when you log in.
 4. **Access worksheet** &mdash; From your data source selection, go directly to a worksheet in the bottom left-hand corner.
 5. **Query metrics and dimensions** &mdash; Then, you'll find all the metrics, dimensions, and entities that are available to query on the left side of your window based on your selection.
