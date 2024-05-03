@@ -16,14 +16,20 @@ is_featured: true
 
 As a solutions architect at dbt Labs, my role is to help our customers and prospects understand how to best utilize the dbt Cloud platform to solve their unique data challenges.  That uniqueness presents itself in different ways - organizational maturity, data stack, team size and composition, technical capability, use case, or some combination of those.  With all those differences though, there has been one common thread throughout most of my engagements:  Generative AI and Large Language Models (LLMs).  Data teams are either 1) proactively thinking about applications for it in the context of their work or 2) being pushed to think about it by their stakeholders.  It has become the elephant in every single (zoom) room I find myself in.
 
+<!--truncate-->
+
 <Lightbox src="/img/blog/2024-05-02-semantic-layer-llm/gen-ai-everywhere.png" width="85%" title="Gen AI Everywhere!" />
+
+Clearly, this technology is not going away. There are already countless number of use cases and applications already showing very real improvements to efficiency, productivity, and creativity. Inspired by the common problem faced by data teams I'm talking to, I built a [Streamlit app](https://dbt-semantic-layer.streamlit.app/) which uses Snowflake Cortex and the dbt Semantic Layer to answer free-text questions accurately and consistently. You can preview examples of the questions it's able to answer below:
+
+<LoomVideo id='3b5cc878ef53488583691c390159007d?t=0' />
 
 ## Why Build This
 
-Clearly, this technology is not going away.  There are already countless number of  use cases and applications already showing very real improvements to efficiency, productivity, and creativity.  So, why build this and what makes it different?
+So, why build this and what makes it different?
 
 - The outcome of an application like this aligns incredibly well with the mandate of most data teams - empower stakeholders by providing them with the data they need, in a medium they can consume, all while considering aspects of trust, governance, and accuracy
-- The accuracy component is the very unique value proposition of an application like this relative to any other solution out there that purports to write SQL from a text prompt (check out some early benchmarks [here](https://www.getdbt.com/blog/semantic-layer-as-the-data-interface-for-llms)).  The reason for that is we’re not asking the LLM to write a SQL query, which is prone to hallucinating tables, columns, or just SQL that’s not valid, but simply a request to [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow).  MetricFlow is the underlying piece of technology in the semantic layer that will translate that request to SQL based on the semantics you’ve defined in your dbt project.
+- The accuracy component is the very unique value proposition of an application like this relative to any other solution out there that purports to write SQL from a text prompt (check out some early benchmarks [here](https://www.getdbt.com/blog/semantic-layer-as-the-data-interface-for-llms)).  The reason for that is we’re not asking the LLM to write a SQL query, which is prone to hallucinating tables, columns, or just SQL that’s not valid. Instead, it generates a highly structured [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) request. MetricFlow is the underlying piece of technology in the semantic layer that will translate that request to SQL based on the semantics you’ve defined in your dbt project.
 - If I’m being honest, it’s also an incredibly valuable tool to show our customers and prospects!
 
 ## The Tech
@@ -289,6 +295,4 @@ grant usage on function submit_sl_request(string) to role public;
 
 Building this application has been an absolute blast for multiple reasons.  First, we’ve been able to use it internally within the SA org to demonstrate how the semantic layer works.  It provides yet another [integration](https://docs.getdbt.com/docs/use-dbt-semantic-layer/avail-sl-integrations) point that further drives home the fundamental value prop of using the Semantic Layer.  Secondly, and more importantly, it has served as an example to those customers thinking about (or being pushed to think about) how they can best utilize these technologies to further their goals.  Finally, I’ve been able to be heads down, hands on keyboard learning about all of these interesting technologies and stepping back into the role of builder is something I will never turn down!
 
-Finally, to see the entire code, from Snowflake to Streamlit, check out the repo [here](https://github.com/dpguthrie/dbt-sl-cortex-streamlit-blog/tree/main?tab=readme-ov-file).  And if you want to get a sneak peek of some of the questions you may be able to ask, check out the demo below.  Thanks for reading!
-
-<LoomVideo id='3b5cc878ef53488583691c390159007d?t=0' />
+Finally, to see the entire code, from Snowflake to Streamlit, check out the repo [here](https://github.com/dpguthrie/dbt-sl-cortex-streamlit-blog/tree/main?tab=readme-ov-file).

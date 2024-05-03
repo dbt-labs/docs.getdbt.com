@@ -1,5 +1,5 @@
 ---
-title: "Latest dbt: a stable foundation for improvement & innovation"
+title: "How we're making sure you can confidently \"Keep on latest version\" in dbt Cloud"
 description: "Over the past 6 months, we've laid a stable foundation for continuously improving dbt."
 slug: latest-dbt-stability
 
@@ -18,9 +18,11 @@ However, this came at a cost. While bumping a project's dbt version *appeared* a
 
 But no more. Today, we're ready to announce the general availability of a new option in dbt Cloud: [**"Keep on latest version."**](https://docs.getdbt.com/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)
 
+<!--truncate-->
+
 For customers, this means less maintenance overhead, faster access to bug fixes and features, and more time to focus on what matters most: building trusted data products. This will be our stable foundation for improvement and innovation in dbt Cloud. 
 
-But we wanted to go a step beyond just making this option available to you. In this blog post, we aim to shed a little light on the extensive work we've done to ensure that using "Keep on latest version" is a stable, reliable experience for the thousands of customers who rely daily on dbt Cloud. 
+But we wanted to go a step beyond just making this option available to you. In this blog post, we aim to shed a little light on the extensive work we've done to ensure that using "Keep on latest version" is a stable, reliable experience for the thousands of customers who rely daily on dbt Cloud.
 
 ## How we safely deploy dbt upgrades to Cloud
 

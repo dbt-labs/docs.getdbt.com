@@ -15,8 +15,6 @@ displayed_sidebar: "docs"
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-dbt Labs plans to release dbt Core v1.8.0-b1 and dbt Labs-maintained adapters on February 28th, 2024.
-
 ## Keep on latest version 
 
 With dbt Cloud, you can get early access to many new features and functionality before they're in the Generally Available (GA) release of dbt Core v1.8 without the need to manage version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) setting for more details.
@@ -40,7 +38,7 @@ For example, you would use the following command if you use Snowflake:
 pip install dbt-core dbt-snowflake
 ```
 
-For the time being, we have maintained install-time dependencies to avoid breaking existing scripts in surprising ways; `pip install dbt-snowflake` will continue to install the latest versions of both `dbt-core` and 1dbt-snowflake`. Given that we may remove this implicit dependency in future versions, we strongly encourage you to update install scripts **now**.
+For the time being, we have maintained install-time dependencies to avoid breaking existing scripts in surprising ways; `pip install dbt-snowflake` will continue to install the latest versions of both `dbt-core` and `dbt-snowflake`. Given that we may remove this implicit dependency in future versions, we strongly encourage you to update install scripts **now**.
 
 ### Unit Tests
 
@@ -82,7 +80,7 @@ The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference
 
 ### Managing changes to legacy behaviors
 
-dbt Core v1.8 has introduced a flags has been created for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
+dbt Core v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
