@@ -24,9 +24,9 @@ Refer to the following steps to get started:
 2. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....".
 3. MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle Shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
 
-:::info Run dbt parse when you make changes to metrics
-Any time you make changes to metrics, you need to run `dbt parse` at a minimum. This ensures the `semantic_manifest.json` file is updated and you can have your changes reflected when querying metrics.
-:::
+:::tip Run dbt parse to reflect metric changes
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
+::
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
 5. Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, to query the `order_total` and `order_count` (both metrics), and then group them by the `order_date` (dimension), you would run:
