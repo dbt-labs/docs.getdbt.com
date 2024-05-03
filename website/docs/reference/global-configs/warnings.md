@@ -15,7 +15,7 @@ dbt --warn-error run
 
 </File>
 
-<VersionBlock lastVersion="1.7">
+<VersionBlock firstVersion="1.4" lastVersion="1.7">
 
 Converting any warnings to errors may suit your needs perfectly, but there may be some warnings you just don't care about, and some you care about a lot.
 
@@ -62,7 +62,7 @@ flags:
 `WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive. You can only specify one, even when you're specifying the config in multiple places (e.g. env var + CLI flag), otherwise, you'll see a usage error.
 :::
 
-<VersionBlock lastVersion="1.7">
+<VersionBlock firstVersion="1.4" lastVersion="1.7">
 
 ```text
 dbt --warn-error-options '{"include": "all"}' run
