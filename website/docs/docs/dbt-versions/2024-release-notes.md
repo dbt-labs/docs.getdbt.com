@@ -9,18 +9,47 @@ pagination_prev: null
 
 dbt Cloud release notes for 2024.
 
+## May 2024
+
+- <expandable alt_header="Update: Keep on latest version" > 
+
+  The **Keep on latest version** setting is now Generally Available (previously Public Preview).
+
+  When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
+
+  To learn more about the new setting, refer to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) for details. 
+
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Keep on latest version setting"/>
+
+  </expandable>
+
+- **Behavior change:** Introduced the `require_resource_names_without_spaces` flag, opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt. Read [No spaces in resource names](/reference/global-configs/legacy-behaviors#no-spaces-in-resource-names) for more information.
+
 ## April 2024
 
 - <expandable alt_header="New: Merge jobs" > 
 
   <Lifecycle status="beta" />
 
-  You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. You can now access a beta release of [Merge jobs](/docs/deploy/merge-jobs), which is a new [job type](/docs/deploy/jobs), that enables you to trigger dbt job runs as soon as changes (via Git pull requests) merge into production. 
+  You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. You can now access a beta release of [Merge jobs](/docs/deploy/merge-jobs), which is a new [job type](/docs/deploy/jobs), that enables you to trigger dbt job runs as soon as changes (via Git pull requests) merge into production.
 
   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
 
   </expandable>
+  
+- **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and dbt Cloud "Keep on latest version"). Read [Package override for built-in materialization](/reference/global-configs/legacy-behaviors#package-override-for-built-in-materialization) for more information.
 
+**dbt Semantic Layer**
+- **New**: Use Saved selections to [save your query selections](/docs/use-dbt-semantic-layer/gsheets#using-saved-selections) within the [Google Sheets application](/docs/use-dbt-semantic-layer/gsheets). They can be made private or public and refresh upon loading.
+- **New**: Metrics are now displayed by their labels as `metric_name`.
+- **Enhancement**: [Metrics](/docs/build/metrics-overview) now supports the [`meta` option](/reference/resource-configs/meta) under the [config](/reference/resource-properties/config) property. Previously, we only supported the now deprecated `meta` tag.
+- **Enhancement**: In the Google Sheets application, we added [support](/docs/use-dbt-semantic-layer/gsheets#using-saved-queries) to allow jumping off from or exploring MetricFlow-defined saved queries directly.
+- **Enhancement**: In the Google Sheets application, we added support to query dimensions without metrics. Previously, you needed a dimension.
+- **Enhancement**: In the Google Sheets application, we added support for time presets and complex time range filters such as "between", "after", and "before".
+- **Enhancement**: In the Google Sheets application, we added supported to automatically populate dimension values when you select a "where" filter, removing the need to manually type them.  Previously, you needed to manually type the dimension values.
+- **Enhancement**: In the Google Sheets application, we added support to directly query entities, expanding the flexibility of data requests.
+- **Enhancement**: In the Google Sheets application, we added an option to exclude column headers, which is useful for populating templates with only the required data.
+- **Deprecation**: For the Tableau integration, the [`METRICS_AND_DIMENSIONS` data source](/docs/use-dbt-semantic-layer/tableau#using-the-integration) has been deprecated for all accounts not actively using it. We encourage users to transition to the "ALL" data source for future integrations.
 
 ## March 2024
 
@@ -30,6 +59,7 @@ dbt Cloud release notes for 2024.
 - **Fix:** `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric.
 - **Fix:** `join_to_timespine` now properly gets applied to conversion metric input measures.
 - **Fix:** Fixed an issue where exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open.
+- **Behavior change:** Introduced the `source_freshness_run_project_hooks` flag, opt-in and disabled by default. If set to `True`, dbt will include `on-run-*` project hooks in the `source freshness` command. This will become the default in a future version of dbt. Read [Project hooks with source freshness](/reference/global-configs/legacy-behaviors#project-hooks-with-source-freshness) for more information.
 
 
 ## February 2024
