@@ -902,3 +902,25 @@ As with most data platforms, there are limitations associated with materialized 
 Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
 
 </VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+## Python models
+
+The BigQuery adapter supports python models with the following additional configuration parameters:
+
+| Parameter               | Type        | Required | Default   | Valid Values     |
+|-------------------------|-------------|----------|-----------|------------------|
+| `enable_list_inference` | `<boolean>` | no       | `True`    | `True`, `False`  |
+| `intermediate_format`   | `<string>`  | no       | `parquet` | `parquet`, `orc` |
+
+#### `enable_list_inference`
+This setting allows a pyspark data frame to read multiple records in the same operation.
+This is defaulted to `True` to support the default `intermediate_format` of `parquet`.
+
+#### `intermediate_format`
+This setting specifies the file format to use when writing records to a table. The default is `parquet`.
+This became configurable when the default write method changed from `direct` to `indirect` to support
+partitioning and clustering.
+
+</VersionBlock>
