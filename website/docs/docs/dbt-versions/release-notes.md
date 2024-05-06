@@ -10,9 +10,9 @@ pagination_prev: null
 dbt Cloud release notes for recent and historical changes. Release notes fall into one of the following categories:
 
 - **New:** New products and features
-- **Enhancement:** Performance and improvements and feature enhancements
+- **Enhancement:** Performance improvements and feature enhancements
 - **Fix:** Bug and security fixes
-- **Behavior change:** A change in existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
+- **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
 Release notes are grouped by month. For customers using dbt Virtual Private Cloud (VPC), there is a tag for changes available in your versioned release environment.
 
