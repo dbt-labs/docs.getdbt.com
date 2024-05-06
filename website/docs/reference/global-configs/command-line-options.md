@@ -4,7 +4,7 @@ id: "command-line-options"
 sidebar: "Command line options"
 ---
 
-For consistency, command-line interface (CLI) flags should come right after the `dbt` prefix and its subcommands. This includes "global" flags (supported for all commands). When set, CLI flags override environment variables and profile configs. 
+For consistency, command-line interface (CLI) flags should come right after the `dbt` prefix and its subcommands. This includes "global" flags (supported for all commands). Reference the [table of all flags](/reference/global-configs/about-global-configs#available-flags) to see which CLI flags are available for setting. When set, CLI flags override [environment variables](https://docs.getdbt.com/reference/global-configs/environment-variable-configs) and [project flags](/reference/global-configs/project-flags).
 
 For example, instead of using:
 
