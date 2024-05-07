@@ -3,6 +3,12 @@ title: "fal configurations"
 id: "fal-configs"
 ---
 
+:::info Adapter no longer maintained
+The [`dbt-fal` adapter](https://github.com/fal-ai/dbt-fal) is no longer actively maintained. This means although the adapter is still operational, there is no further development or bug fixes planned and it may not be compatible with future versions of dbt. `dbt-fal` was test until dbt v1.5.
+
+Documentation for `dbt-fal` are kept for reference purposes only and will eventually be removed from the site in the future.
+:::
+
 ## Setting the `db_profile`
 
 The fal profile configuration needs the `db_profile` property set to the profile configuring your database for SQL models.
