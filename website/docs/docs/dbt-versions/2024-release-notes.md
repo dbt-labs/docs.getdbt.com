@@ -47,7 +47,7 @@ The following features were announced at the [dbt Cloud Launch Showcase](https:/
 
 - **Update**: dbt Explorer GA bit
 
-- **Update**: The Microsoft Fabric connection is now Generally Available (GA) in dbt Cloud. This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started.
+- **Update**: Native support for Microsoft Fabric in dbt Cloud is now Generally Available (GA). This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started. 
 
 - **Update**: [dbt Mesh](ttps://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-) is now Generally Available to dbt Cloud Enterprise users. dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections. Get started with dbt Mesh by reading the [dbt Mesh quickstart guide](https://docs.getdbt.com/guides/mesh-qs?step=1).
 
