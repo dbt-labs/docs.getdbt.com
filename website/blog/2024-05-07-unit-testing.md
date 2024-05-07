@@ -8,7 +8,7 @@ authors: [doug_beatty]
 tags: [analytics craft]
 hide_table_of_contents: false
 
-date: 2024-05-06
+date: 2024-05-07
 is_featured: true
 ---
 
@@ -48,7 +48,7 @@ Let's dive into the details...
 
 ## Hello, unit testing world
 
-<Lightbox src="/img/blog/2024-05-06-unit-testing/hello-world.png" width="50%" title="Hello unit testing world" />
+<Lightbox src="/img/blog/2024-05-07-unit-testing/hello-world.png" width="50%" title="Hello unit testing world" />
 
 A key way that I build self-confidence is starting out with the [simplest example possible](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Once I've gotten the initial thing to work, then I can tweak it to take on more complicated use-cases (scroll down to the ["real world example"](#real-world-example) section below for something more realistic!). So here's a super simple example that you can use to get your feet wet. Afterwards, I'll explain more about each of the main components and how you can apply them to your own test cases.
 
@@ -87,7 +87,7 @@ Finally, run the model and all its tests in a single command like this:
 dbt build --select hello
 ```
 
-<Lightbox src="/img/blog/2024-05-06-unit-testing/unit-test-terminal-output.png" title="Terminal output of hello world unit test" />
+<Lightbox src="/img/blog/2024-05-07-unit-testing/unit-test-terminal-output.png" title="Terminal output of hello world unit test" />
 
 Voilà! We can see that a single unit test ran and it passed.
 
