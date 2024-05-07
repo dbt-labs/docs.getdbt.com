@@ -42,8 +42,6 @@ The following example is a list of all available configurations in the `dbt_proj
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](/reference/project-configs/target-path): directorypath
-[log-path](/reference/project-configs/log-path): directorypath
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
 [clean-targets](/reference/project-configs/clean-targets): [directorypath]
@@ -51,6 +49,9 @@ The following example is a list of all available configurations in the `dbt_proj
 [query-comment](/reference/project-configs/query-comment): string
 
 [require-dbt-version](/reference/project-configs/require-dbt-version): version-range | [version-range]
+
+[flags](/reference/global-configs/project-flags):
+  [<global-configs>](/reference/global-configs/project-flags)
 
 [dbt-cloud](/docs/cloud/cloud-cli-installation):
   [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
@@ -120,8 +121,6 @@ vars:
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](/reference/project-configs/target-path): directorypath
-[log-path](/reference/project-configs/log-path): directorypath
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
 [clean-targets](/reference/project-configs/clean-targets): [directorypath]
@@ -193,8 +192,8 @@ vars:
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](/reference/project-configs/target-path): directorypath
-[log-path](/reference/project-configs/log-path): directorypath
+[target-path](/reference/global-configs/json-artifacts): directorypath
+[log-path](/reference/global-configs/logs): directorypath
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
 [clean-targets](/reference/project-configs/clean-targets): [directorypath]

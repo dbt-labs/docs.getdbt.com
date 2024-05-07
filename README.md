@@ -9,6 +9,8 @@ _We use [docusaurus](https://v2.docusaurus.io/) to power [docs.getdbt.com](https
 
 # Code of conduct
 
+test
+
 Please review the dbt docs contributors [code of conduct](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/contributor-code-of-conduct.md).
 Creating an inclusive and equitable environment for our documents is more important than any other aspect.  Syntax errors can be corrected, but trust, once lost, is difficult to gain back.
 

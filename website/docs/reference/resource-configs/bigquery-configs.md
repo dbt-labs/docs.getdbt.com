@@ -423,7 +423,7 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -633,7 +633,7 @@ from {{ ref('events') }}
 
 ```
 ...
-[0m16:03:13.017641 [debug] [Thread-3 (]: BigQuery adapter: Copying table(s) "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" to "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" with disposition: "WRITE_TRUNCATE"
+[0m16:03:13.017641 [debug] [Thread-3 (]: BigQuery adapter: Copying table(s) "/projects/projectname/datasets/analytics/tables/bigquery_table__dbt_tmp$20230112" to "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" with disposition: "WRITE_TRUNCATE"
 ...
 ```
 
@@ -715,8 +715,7 @@ models:
 Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
 
 #### Limitations
-
-The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
+Starting in v1.4, `grant_access_to` config _is thread-safe_. In earlier versions, it wasn't safe to use multiple threads for authorizing several views at once with `grant_access_to` for the same dataset. Initially, after adding a new `grant_access_to` setting, you can execute `dbt run` in a single thread. Later runs with the same configuration won't repeat the existing access grants and can use multiple threads.
 
 <VersionBlock firstVersion="1.7">
 

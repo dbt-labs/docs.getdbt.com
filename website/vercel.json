@@ -3,6 +3,51 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/core/homebrew-install",
+      "destination": "/docs/core/installation-overview",
+      "permanent": true
+    },
+    {
+      "source": "/docs/faqs/Tests/configurable-data-path",
+      "destination": "/docs/faqs/Seeds/configurable-data-path",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/sl-getting-started",
+      "destination": "/guides/sl-snowflake-qs", 
+      "permanent": true
+    },
+    {
+      "source": "/docs/use-dbt-semantic-layer/quickstart-sl",
+      "destination": "/guides/sl-snowflake-qs", 
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/manage-access/set-up-sso-azure-active-directory",
+      "destination": "/docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
+      "permanent": true
+    },
+    {
+      "source": "/docs/building-a-dbt-project/dont-nest-your-curlies",
+      "destination": "/best-practices/dont-nest-your-curlies",
+      "permanent": true
+    },
+    {
+      "source": "/docs/build/incremental-models#about-incremental_strategy",
+      "destination": "/docs/build/incremental-strategy",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud/regions-ip-addresses",
+      "destination": "/docs/cloud/about-cloud/access-regions-ip-addresses",
+      "permanent": true
+    },
+    {
       "source": "/reference/profiles.yml",
       "destination": "/docs/core/connect-data-platform/profiles.yml",
       "permanent": true
@@ -559,12 +604,17 @@
     },
     {
         "source": "/guides/orchestration/webhooks/zapier-ms-teams",
-        "destination": "/guides/zapier-ms-team",
+        "destination": "/guides/zapier-ms-teams",
         "permanent": true
     },
     {
         "source": "/guides/orchestration/webhooks/zapier-new-cloud-job",
-        "destination": "/guides/zapier-new-cloud-job",
+        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
+        "permanent": true
+    },
+    {
+        "source": "/guides/zapier-new-cloud-job",
+        "destination": "/docs/deploy/deploy-jobs#trigger-on-job-completion--",
         "permanent": true
     },
     {
@@ -850,6 +900,21 @@
     {
       "source": "/reference/global-configs",
       "destination": "/reference/global-configs/about-global-configs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-cli-flags.yml",
+      "destination": "/reference/global-configs/about-global-configs.yml",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/command-line-flags",
+      "destination": "/reference/global-configs/command-line-options",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/yaml-configurations",
+      "destination": "/reference/global-configs/project-flags",
       "permanent": true
     },
     {
@@ -1434,7 +1499,7 @@
     },
     {
       "source": "/docs/collaborate/manage-access/set-up-sso-azure-active-directory",
-      "destination": "/docs/cloud/manage-access/set-up-sso-azure-active-directory",
+      "destination": "/docs/cloud/manage-access/set-up-sso-microsoft-entra-id",
       "permanent": true
     },
     {
@@ -1669,7 +1734,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {
@@ -2374,7 +2439,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {
@@ -2849,7 +2914,7 @@
     },
     {
       "source": "/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      "destination": "/docs/dbt-versions/upgrade-core-in-cloud",
+      "destination": "/docs/dbt-versions/upgrade-dbt-version-in-cloud",
       "permanent": true
     },
     {
@@ -3893,6 +3958,16 @@
       "permanent": true
     },
     {
+      "source": "/reference/project-configs/log-path",
+      "destination": "/reference/global-configs/logs",
+      "permanent": true
+    },
+    {
+      "source": "/reference/project-configs/target-path",
+      "destination": "/reference/global-configs/json-artifacts",
+      "permanent": true
+    },
+    {
       "source": "/reference/repositories",
       "destination": "/dbt-cloud/api",
       "permanent": true
@@ -4761,6 +4836,29 @@
       "source": "/quickstarts/manual-install",
       "destination": "/guides/manual-install",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "img-src 'self' data: https:;"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
     }
   ]
 }

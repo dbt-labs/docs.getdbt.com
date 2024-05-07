@@ -16,15 +16,18 @@ A dbt Cloud project can have multiple deployment environments, providing you the
 To learn different approaches to managing dbt Cloud environments and recommendations for your organization's unique needs, read [dbt Cloud environment best practices](/guides/set-up-ci).
 ::: 
  
-This page reviews the different types of environments and how to configure your deployment environment in dbt Cloud. 
+Learn more about development vs. deployment environments in [dbt Cloud Environments](/docs/dbt-cloud-environments).
 
-import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
+There are three types of deployment environments:
+- **Production**: Environment for transforming data and building pipelines for production use.
+- **Staging**<Lifecycle status='beta' />: Environment for working with production tools while limiting access to production data.
+- **General**: General use environment for deployment development. 
 
-<CloudEnvInfo setup={'/snippets/_cloud-environments-info.md'} />
+We highly recommend using the `Production` environment type for the final, source of truth deployment data. There can be only one environment marked for final production workflows and we don't recommend using a `General` environment for this purpose. 
 
 ## Create a deployment environment
 
-To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type.
+To create a new dbt Cloud deployment environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. The option will be greyed out if you already have a development environment.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="85%" title="Navigate to Deploy ->  Environments to create a deployment environment" />
 
@@ -38,7 +41,48 @@ In dbt Cloud, each project can have one designated deployment environment, which
 
 For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions!
 
-### Deployment connection
+## Staging environment <Lifecycle status='beta' />
+
+:::note
+Currently in limited availability beta. Contact support or your account team if you're interested in beta access.
+:::
+
+Use a Staging environment to grant developers access to deployment workflows and tools while controlling access to production data. You can do this in a couple of ways, but the most straightforward is to configure Staging with a long-living branch (for example, `staging`) similar to but separate from the primary branch (for example, `main`). 
+
+In this scenario, the workflows would ideally move upstream from the Development environment -> Staging environment -> Production environment with developer branches feeding into the `staging` branch, then ultimately merging into `main`. In many cases, the `main` and `staging` branches will be identical after a merge and remain until the next batch of changes from the `development` branches are ready to be elevated. We recommend setting branch protection rules on `staging` similar to `main`.
+
+### Why use a staging environment
+
+There are two primary motivations for using a Staging environment:
+1. An additional validation layer before changes are deployed into Production. You can deploy, test, and explore your dbt models in Staging.
+2. Clear isolation between development workflows and production data. It enables developers to work in metadata-powered ways, using features like deferral and cross-project references, without accessing data in production deployments.
+
+:::info Coming soon: environment-level permissions
+Provide developers with the ability to create, edit, and trigger ad hoc jobs in the Staging environment, while keeping the Production environment locked down.
+:::
+
+Let's say you have `Project B` downstream of `Project A` with cross-project refs configured in the models. When developers work in the IDE for `Project B`, cross-project refs will resolve to the Staging environment of `Project A`, rather than production. You'll get the same results with those refs when jobs are run in the Staging environment. Only the Production environment will reference the Production data, keeping the data and access isolated without needing separate projects.
+
+If `Project B` also has a Staging deployment, then references to unbuilt upstream models within `Project B` will resolve to that environment, using [deferral](/docs/cloud/about-cloud-develop-defer), rather than resolving to the models in Production. This saves developers time and warehouse spend, while preserving clear separation of environments.
+
+Finally, the Staging environment has its own view in [dbt Explorer](/docs/collaborate/explore-projects), giving you a full view of your prod and pre-prod data.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
+
+
+### Create a Staging environment
+
+In the dbt Cloud, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type. The option will be greyed out if you already have a development environment.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-staging-environment.png" width="85%" title="Create a staging environment" />
+
+
+Follow the steps outlined in [deployment credentials](#deployment-connection) to complete the remainder of the environment setup.
+
+We recommend that the data warehouse credentials be for a dedicated user or service principal.
+
+
+## Deployment connection
 
 :::info Warehouse Connections
 
@@ -48,18 +92,20 @@ For Semantic Layer-eligible customers, the next section of environment settings 
 
 This section determines the exact location in your warehouse dbt should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.
 
+For all warehouses, use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override missing or inactive (grayed-out) settings.
+
 <WHCode>
 
 
 <div warehouse="Postgres">
 
-This section will not appear if you are using Postgres, as all values are inferred from the project's connection.
+This section will not appear if you are using Postgres, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
 
 </div>
 
 <div warehouse="Redshift">
 
-This section will not appear if you are using Redshift, as all values are inferred from the project's connection.
+This section will not appear if you are using Redshift, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
 
 </div>
 
@@ -77,13 +123,13 @@ This section will not appear if you are using Redshift, as all values are inferr
 
 <div warehouse="Bigquery">
 
-This section will not appear if you are using Bigquery, as all values are inferred from the project's connection.
+This section will not appear if you are using Bigquery, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
 
 </div>
 
 <div warehouse="Spark">
 
-This section will not appear if you are using Spark, as all values are inferred from the project's connection.
+This section will not appear if you are using Spark, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
 
 </div>
 
@@ -182,7 +228,6 @@ This section allows you to determine the credentials that should be used when co
 </div>
 
 </WHCode>
-
 
 ## Related docs
 

@@ -16,7 +16,7 @@ We recommend that you change your API requests to https://<YOUR_ACCESS_URL>/api/
 
 :::info Access URLs
  
-dbt Cloud is hosted in multiple regions around the world, and each region has a different access URL. Users on Enterprise plans can choose to have their account hosted in any one of these regions. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).  
+dbt Cloud is hosted in multiple regions around the world, and each region has a different access URL. Users on Enterprise plans can choose to have their account hosted in any one of these regions. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/access-regions-ip-addresses).  
 
 :::
 

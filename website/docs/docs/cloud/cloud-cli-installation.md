@@ -1,32 +1,27 @@
 ---
 title: Install dbt Cloud CLI 
-sidebar_label: "Install dbt Cloud CLI"
+sidebar_label: "Installation"
 id: cloud-cli-installation
 description: "Instructions for installing and configuring dbt Cloud CLI"
 pagination_next: "docs/cloud/configure-cloud-cli"
 ---
 
-import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
-
-<CloudCLIFlag/>
-
-
 dbt Cloud natively supports developing using a command line (CLI), empowering team members to contribute with enhanced flexibility and collaboration. The dbt Cloud CLI allows you to run dbt commands against your dbt Cloud development environment from your local command line.
 
 dbt commands are run against dbt Cloud's infrastructure and benefit from:
 
-* Secure credential storage in the dbt Cloud platform.
-* [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment. 
-* Speedier, lower-cost builds.
-* Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies)),
-* Significant platform improvements, to be released over the coming months.
+* Secure credential storage in the dbt Cloud platform
+* [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment 
+* Speedier, lower-cost builds
+* Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies))
+* Significant platform improvements, to be released over the coming months
 
+<Lightbox src="/img/docs/dbt-cloud/cloud-cli-overview.jpg" title="Diagram of how the dbt Cloud CLI works with dbt Cloud's infrastructure to run dbt commands from your local command line." />
 
 ## Prerequisites 
-The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/regions-ip-addresses) and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
+The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
 
-- Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
-- Note that SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections doesn't support the dbt Cloud CLI yet.
+- Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
 
 ## Install dbt Cloud CLI
 
@@ -45,16 +40,26 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-1. Verify that you don't already have dbt Core installed:
-   
+1. Verify that you don't already have dbt Core installed by running the following command.    
+  
   ```bash
   which dbt
   ```
-   - If you see a `dbt not found`, you're good to go. If the dbt help text appears, use `pip uninstall dbt` to remove dbt Core from your system. <br />
-  
-2. Install the dbt Cloud CLI with Homebrew: 
+  If the output is `dbt not found`, then that confirms you don't have it installed.
 
-   - First, remove the dbt-labs tap, the separate repository for packages, from Homebrew. This prevents Homebrew from installing packages from that repository:
+:::tip Run `pip uninstall dbt` to uninstall dbt Core
+
+If you've installed dbt Core globally in some other way, uninstall it first before proceeding:
+
+```bash
+pip uninstall dbt
+```
+
+:::
+
+2. Install the dbt Cloud CLI with Homebrew:
+
+   - First, remove the `dbt-labs` tap, the separate repository for packages, from Homebrew. This prevents Homebrew from installing packages from that repository:
       ```bash
       brew untap dbt-labs/dbt
    -  Then, add and install the dbt Cloud CLI as a package:
@@ -75,8 +80,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
-
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -90,9 +94,13 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 :::info
 
-Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executable in the Program Files folder and [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
+Advanced users can configure multiple projects to use the same dbt Cloud CLI by:
 
-Note that if you are using VS Code, you must restart it to pick up modified environment variables.
+ 1. Placing the executable file (`.exe`) in the "Program Files" folder
+ 2. [Adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53)
+ 3. Saving it where needed
+
+Note that if you're using VS Code, you must restart it to pick up modified environment variables.
 :::
 
 3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct:
@@ -106,7 +114,7 @@ Note that if you are using VS Code, you must restart it to pick up modified envi
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -140,7 +148,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -205,7 +213,7 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
 
-5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
+5. After cloning your repo, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. This lets you run dbt commands like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration or `dbt compile` to compile your project and validate models and tests. You can also add, edit, and synchronize files with your repo.
 
 </TabItem>
 
@@ -253,12 +261,12 @@ To update:
 
 Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however, it doesn't support some dbt Core APIs required by certain tools, for example, VS Code extensions. 
 
-You can use extensions like [dbt-power-user](https://www.dbt-power-user.com/) with the dbt Cloud CLI by following these steps:
+You can use extensions like [dbt-power-user](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user) with the dbt Cloud CLI by following these steps:
 
 - [Install](/docs/cloud/cloud-cli-installation?install=brew) it using Homebrew along with dbt Core.
 - [Create an alias](#faqs) to run the dbt Cloud CLI as `dbt-cloud`.
 
-This setup allows dbt-power-user to continue to work with dbt Core in the background, alongside the dbt Cloud CLI.
+This setup allows dbt-power-user to continue to work with dbt Core in the background, alongside the dbt Cloud CLI.  For more, check the dbt Power User [documentation](https://docs.myaltimate.com/).
 
 ## FAQs
 

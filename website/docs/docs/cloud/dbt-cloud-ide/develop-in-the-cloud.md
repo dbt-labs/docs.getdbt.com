@@ -53,7 +53,7 @@ To understand how to navigate the IDE and its user interface elements, refer to 
 |---|---|
 | [**Keyboard shortcuts**](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) in the IDE by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
 | **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, D, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects added files<br/> - Deleted **(D)** &mdash; The IDE detects deleted files.
-| **IDE version control** | The IDE version control section and git button allow you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project directly into the IDE. <br /><br /> - Create or change branches<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/collaborate/git/merge-conflicts)<br /> - Execute git commands using the git button <br /> - Link to the repo directly by clicking the branch name |
+| **IDE version control** | The IDE version control section and git button allow you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project directly into the IDE. <br /><br /> - Create or change branches<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/collaborate/git/merge-conflicts)<br /> - Execute git commands using the git button <br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch. |
 | **Project documentation** | Generate and view your [project documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. |
 | **Preview and Compile button** | You can [compile or preview](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section) code, a snippet of dbt code, or one of your dbt models after editing and saving. |
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
@@ -68,7 +68,6 @@ To understand how to navigate the IDE and its user interface elements, refer to 
 | **<Term id="dag" /> in the IDE** | You can see how models are used as building blocks from left to right to transform your data from raw sources into cleaned-up modular derived pieces and final outputs on the far right of the DAG. The default view is 2+model+2 (defaults to display 2 nodes away), however, you can change it to +model+ (full  <Term id="dag" />). Note the `--exclude` flag isn't supported. |
 | **Status bar** | This area provides you with useful information about your IDE and project status. You also have additional options like enabling light or dark mode, restarting the IDE, or [recloning your repo](/docs/collaborate/git/version-control-basics).
 | **Dark mode**  | From the status bar in the Cloud IDE, enable dark mode for a great viewing experience in low-light environments. 
-
 
 ### Start-up process
 
@@ -102,7 +101,7 @@ The IDE uses developer credentials to connect to your data platform. These devel
 
 Set up your developer credentials:
 
-1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 2. Select the relevant project in the list.
 3. Click **Edit** on the bottom right of the page.
 4. Enter the details under **Development Credentials**.
@@ -118,18 +117,23 @@ Nice job, you're ready to start developing and building models 🎉!
 
 ## Build, compile, and run projects
 
-You can *build*, *compile*, *run*, and *test* dbt projects using the command bar or **Build** button. Use the **Build** button to quickly build, run, or test the model you're working on. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations. 
+You can *build*, *compile*, *run*, and *test* dbt projects using the command bar or **Build** button. Use the **Build** button to quickly build, run, or test the model you're working on. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations.
 
-If a model or test fails, dbt Cloud makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
+- If a model or test fails, dbt Cloud makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
 
-Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
+- Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
+
+<VersionBlock firstVersion="1.6">
+
+- Leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the Git branch name. For example, using the branch name as a prefix for a development schema.
+
+</VersionBlock>
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" width="85%" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
 
 ## Build and view your project's docs
 
 The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-and-view-your-docs#generating-documentation) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production. 
-
 
 ## Related docs
 
