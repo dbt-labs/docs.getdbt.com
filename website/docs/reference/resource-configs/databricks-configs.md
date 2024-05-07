@@ -598,10 +598,9 @@ snapshots:
 
 </File>
 
-<VersionBlock firstVersion="1.6">
+<VersionBlock firstVersion="1.6" lastVersion="1.7">
 
 ## Materialized views and streaming tables
-
 Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
 See [What are Delta Live Tables?](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) for more information and use cases.
 These features are still in preview, and the support in the dbt-databricks adapter should, for now, be considered _experimental_.
@@ -641,7 +640,107 @@ At this time the following configuration options are not available:
 
 Additionally, if you change the model definition of your materialized view or streaming table, you will need to drop the materialization in your warehouse directly before running dbt again; otherwise, you will get a refresh error.
 
-We plan to address these limitations during the 1.7.x timeframe.
+Please see the latest documentation for updates on these limitations.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+ ## Materialized views and streaming tables
+
+[Materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html) are alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
+See [What are Delta Live Tables?](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) for more information and use cases.
+
+In order to adopt these materialization strategies, you will need a workspace that is enabled for Unity Catalog and serverless SQL Warehouses.
+
+<File name='materialized_view.sql'>
+
+```sql
+{{ config(
+   materialized = 'materialized_view'
+ ) }}
+```
+
+</File>
+
+or
+
+<File name='streaming_table.sql'>
+
+```sql
+{{ config(
+   materialized = 'streaming_table'
+ ) }}
+```
+
+</File>
+
+Beginning in `dbt-databricks==2.0.0` we support [on_configuration_change](https://docs.getdbt.com/reference/resource-configs/on_configuration_change) for most available properties of these materializations.
+The following table summarizes our configuration support:
+
+| Databricks Concept | Config Name | MV/ST support |
+| ------------------ | ------------| ------------- |
+| [PARTITIONED BY](https://docs.databricks.com/en/sql/language-manual/sql-ref-partition.html#partitioned-by) | partition_by | MV/ST |
+| COMMENT | description | MV/ST |
+| [TBLPROPERTIES](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html#tblproperties) | tblproperties | MV/ST |
+| [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' } | MV/ST |
+| query | defined by your model sql | on_configuration_change for MV only |
+
+<File name='mv_example.sql'>
+
+```sql
+
+{{ config(
+    materialized='materialized_view',
+    description='this is a materialized view',
+    partition_by='id',
+    schedule = {
+        'cron': '0 0 * * * ? *',
+        'time_zone': 'Etc/UTC'
+    },
+    tblproperties={
+        'key': 'value'
+    },
+) }}
+select * from {{ ref('my_seed') }}
+
+```
+
+</File>
+
+### Configuration Details
+
+#### partition_by
+`partition_by` works the same as for views and tables, i.e. can be a single column, or an array of columns to partition by.
+
+#### description
+As with views and tables, adding a `description` to your configuration will lead to a table-level comment getting added to your materialization.
+
+#### tblproperties
+`tblproperties` works the same as for views and tables with an important exception: the adapter maintains a list of keys that are set by Databricks when making an materialized view or streaming table which are ignored for the purpose of determining configuration changes.
+
+#### schedule
+Use this to set the refresh schedule for the model.  If you use the `schedule` key, a `cron` key is required in the associated dictionary, but `time_zone_value` is optional (see the example above).  The `cron` value should be formatted as documented by Databricks.
+If a schedule is set on the materialization in Databricks and your dbt project does not specify a schedule for it (when `on_configuration_change` is set to `apply`), the refresh schedule will be set to manual when you next run the project.
+Even when schedules are set, dbt will request that the materialization be refreshed manually when run.
+
+#### query
+For materialized views, if the compiled query for the model differs from the query in the database, we will the take the configured `on_configuration_change` action.
+Changes to query are not currently detectable for streaming tables; see the next section for details.
+
+### on_configuration_change 
+`on_configuration_change` is supported for materialized views and streaming tables, though the two materializations handle it different ways.
+
+#### Materialized Views
+Currently, the only change that can be applied without recreating the materialized view in Databricks is to update the schedule.
+This is due to limitations in the Databricks SQL API.
+
+### Streaming Tables
+For streaming tables, only changes to the partitioning currently requires the table be dropped and recreated.
+For any other supported configuration change, we use `CREATE OR REFRESH` (+ an `ALTER` statement for changes to the schedule) to apply the changes.
+There is currently no mechanism for the adapter to detect if the streaming table query has changed, so in this case, regardless of the behavior requested by on_configuration_change, we will use a `create or refresh` statement (assuming `partitioned by` hasn't changed); this will cause the query to be applied to future rows without rerunning on any previously processed rows.
+If your source data is still available, running with '--full-refresh' will reprocess the available data with the updated current query.
+
 </VersionBlock>
 
 ## Setting table properties
@@ -667,3 +766,10 @@ These properties are sent directly to Databricks without validation in dbt, so b
 :::
 
 One application of this feature is making `delta` tables compatible with `iceberg` readers using the [Universal Format](https://docs.databricks.com/en/delta/uniform.html).
+
+<VersionBlock firstVersion="1.7">
+
+`tblproperties` can be specified for python models, but they will be applied via an `ALTER` statement after table creation.
+This is due to a limitation in PySpark.
+
+</VersionBlock>
