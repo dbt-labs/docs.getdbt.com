@@ -55,7 +55,7 @@ A key way that I build self-confidence is starting out with the [simplest exampl
 First, create this trivial model:
 
 ```sql
--- models/world.sql
+-- models/hello_world.sql
 
 select 'world' as hello
 ```
@@ -69,7 +69,7 @@ unit_tests:
   - name: test_hello_world
 
     # Always only one transformation to test
-    model: world
+    model: hello_world
 
     # No inputs needed this time!
     # Most unit tests will have inputs -- see the "real world example" section below
@@ -84,7 +84,7 @@ unit_tests:
 Finally, run the model and all its tests in a single command like this:
 
 ```shell
-dbt build --select world
+dbt build --select hello_world
 ```
 
 <Lightbox src="/img/blog/2024-05-07-unit-testing/unit-test-terminal-output.png" title="Terminal output of hello world unit test" />
