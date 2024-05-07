@@ -20,7 +20,7 @@ A maintainer can be a dbt Labs employee but does not have to be. *Slack channel 
 
 1. Review the [Rules of the Road](/community/resources/community-rules-of-the-road) and [Code of Conduct](/community/resources/code-of-conduct) and please let the folks who created the channel know that you read both documents and you agree to be mindful of them.
 
-2. To request a new channel, go to the [#moderation-and-administartion channel](https://getdbt.slack.com/archives/C02JJ8N822H), click **Workflows** on the top of the channel description. Click **Request a New Channel**.
+2. To request a new channel, go to the [#moderation-and-administration channel](https://getdbt.slack.com/archives/C02JJ8N822H), click **Workflows** on the top of the channel description. Click **Request a New Channel**.
   - Fill out the fields and click **Submit** to submit your request. Someone will get in touch from there.
 ![request-slack-chnl](https://github.com/siljamardla/docs.getdbt.com/assets/89008547/b14abc52-4164-40a8-b48a-e8061fb4b51a)
 
