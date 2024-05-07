@@ -35,7 +35,7 @@ When materializing a model as `table`, you may include several optional configs 
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.7">
+<VersionBlock firstVersion="1.7" lastVersion="1.7">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
@@ -50,6 +50,27 @@ When materializing a model as `table`, you may include several optional configs 
 
 \* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation.
 We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+ 
+| Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|--------------------------|
+| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                  | SQL, Python   | `delta`                  |
+| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                  | SQL, Python   | `/mnt/root`              |
+| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                  | SQL, Python   | `date_day`               |
+| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                  | SQL           | `date_day`               |
+| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python   | `country_code`           |
+| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified   | SQL, Python   | `8`                      |
+| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table                                                                           | Optional                                  | SQL, Python*  | `{'this.is.my.key': 12}` |
+| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table                                                                                                      | Optional                                  | SQL+, Python+ | `{'my_tag': 'my_value'}  | 
+
+\* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation.
+We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+\+ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
+
 </VersionBlock>
 
 ## Incremental models
@@ -735,7 +756,7 @@ Changes to query are not currently detectable for streaming tables; see the next
 Currently, the only change that can be applied without recreating the materialized view in Databricks is to update the schedule.
 This is due to limitations in the Databricks SQL API.
 
-### Streaming Tables
+#### Streaming Tables
 For streaming tables, only changes to the partitioning currently requires the table be dropped and recreated.
 For any other supported configuration change, we use `CREATE OR REFRESH` (+ an `ALTER` statement for changes to the schedule) to apply the changes.
 There is currently no mechanism for the adapter to detect if the streaming table query has changed, so in this case, regardless of the behavior requested by on_configuration_change, we will use a `create or refresh` statement (assuming `partitioned by` hasn't changed); this will cause the query to be applied to future rows without rerunning on any previously processed rows.
