@@ -66,7 +66,7 @@ Then, add a simple unit test for that model:
 # models/_properties.yml
 
 unit_tests:
-    - name: test_hello_world
+  - name: test_hello_world
 
     # Always only one transformation to test
     model: hello
@@ -77,7 +77,7 @@ unit_tests:
 
     # Expected output can have zero to many rows
     expect:
-    rows:
+      rows:
         - {hello: world}
 ```
 
