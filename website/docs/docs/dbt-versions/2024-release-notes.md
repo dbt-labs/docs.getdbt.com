@@ -14,7 +14,22 @@ dbt Cloud release notes for 2024.
 #### dbt Cloud Launch Showcase event
 The following features were announced at the [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
 
-- **New**: Microsoft Synapse
+- <expandable alt_header="New: Public Preview of Azure Synapse Analytics" > 
+
+  Native support in dbt Cloud for an Azure Synapse Analytics connection is now available as a [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)! 
+
+  To learn more, refer to [Connect Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics) and [Microsoft Azure Synapse DWH configurations](/reference/resource-configs/azuresynapse-configs).
+
+  Also, check out the [Quickstart for dbt Cloud and Azure Synapse Analytics](/guides/azure-synapse-analytics?step=1). The guide walks you through: 
+
+  - Loading the Jaffle Shop sample data (provided by dbt Labs) into Azure Synapse Analytics. 
+  - Connecting dbt Cloud to Azure Synapse Analytics.
+  - Turning a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
+  - Adding tests to your models.
+  - Documenting your models.
+  - Scheduling a job to run.
+
+  </expandable>
 
 - **New**: RBAC environment (maybe?)
 
@@ -32,7 +47,7 @@ The following features were announced at the [dbt Cloud Launch Showcase](https:/
 
 - **Update**: dbt Explorer GA bit
 
-- **Update**: Microsoft Fabric GA
+- **Update**: The Microsoft Fabric connection is now Generally Available (GA) in dbt Cloud. This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started.
 
 - **Update**: [dbt Mesh](ttps://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-) is now Generally Available to dbt Cloud Enterprise users. dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections. Get started with dbt Mesh by reading the [dbt Mesh quickstart guide](https://docs.getdbt.com/guides/mesh-qs?step=1).
 
