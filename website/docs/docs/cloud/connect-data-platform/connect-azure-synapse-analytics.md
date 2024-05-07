@@ -4,7 +4,7 @@ description: "Configure Azure Synapse Analytics connection."
 sidebar_label: "Connect Azure Synapse Analytics"
 ---
 
-# Connect Azure Synapse Analytics <Lifecycle status="beta" />
+# Connect Azure Synapse Analytics <Lifecycle status='public preview' />
 
 ## Supported authentication methods
 The supported authentication methods are: 
