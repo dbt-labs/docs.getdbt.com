@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/verified-adapters",
+      "destination": "/docs/trusted-adapters",
+      "permanent": true
+    },
+    {
       "source": "/docs/core/homebrew-install",
       "destination": "/docs/core/installation-overview",
       "permanent": true
