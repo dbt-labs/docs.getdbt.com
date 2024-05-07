@@ -16,7 +16,7 @@ The following features were announced at the [dbt Cloud Launch Showcase](https:/
 
 - <expandable alt_header="New: Public Preview of Azure Synapse Analytics" > 
 
-  Native support in dbt Cloud for an Azure Synapse Analytics connection is now available as a [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)! 
+  Native support in dbt Cloud for Azure Synapse Analytics is now available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)! 
 
   To learn more, refer to [Connect Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics) and [Microsoft Azure Synapse DWH configurations](/reference/resource-configs/azuresynapse-configs).
 
