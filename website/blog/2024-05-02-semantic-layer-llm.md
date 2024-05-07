@@ -16,6 +16,8 @@ is_featured: true
 
 As a solutions architect at dbt Labs, my role is to help our customers and prospects understand how to best utilize the dbt Cloud platform to solve their unique data challenges.  That uniqueness presents itself in different ways - organizational maturity, data stack, team size and composition, technical capability, use case, or some combination of those.  With all those differences though, there has been one common thread throughout most of my engagements:  Generative AI and Large Language Models (LLMs).  Data teams are either 1) proactively thinking about applications for it in the context of their work or 2) being pushed to think about it by their stakeholders.  It has become the elephant in every single (zoom) room I find myself in.
 
+<!--truncate-->
+
 <Lightbox src="/img/blog/2024-05-02-semantic-layer-llm/gen-ai-everywhere.png" width="85%" title="Gen AI Everywhere!" />
 
 Clearly, this technology is not going away. There are already countless number of use cases and applications already showing very real improvements to efficiency, productivity, and creativity. Inspired by the common problem faced by data teams I'm talking to, I built a [Streamlit app](https://dbt-semantic-layer.streamlit.app/) which uses Snowflake Cortex and the dbt Semantic Layer to answer free-text questions accurately and consistently. You can preview examples of the questions it's able to answer below:
