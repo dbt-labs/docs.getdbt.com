@@ -1,9 +1,9 @@
 ---
-id: #
+id: johann-de-wet
 title: Johann de Wet
 description: |
-  #
-image: /img/community/spotlight/name.jpg
+  I'm forever indebted to my manager, John Pienaar, who introduced me to both dbt and it's community when I joined his team as an Analytics Engineer at the start of 2022. I often joke about my career before dbt and after dbt. Our stack includes Fivetran, Segment, Airflow and BigQuery to name a few.
+image: /img/community/spotlight/johann-dewett.jpg
 pronouns: he/him
 location: Paarl, South Africa
 jobTitle: Staff Analytics Engineer
