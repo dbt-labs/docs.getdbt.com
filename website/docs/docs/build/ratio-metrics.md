@@ -113,8 +113,6 @@ Users can define constraints on input metrics for a ratio metric by applying a f
 metrics:
   - name: frequent_purchaser_ratio
     description: Fraction of active users who qualify as frequent purchasers
-    owners:
-      - support@getdbt.com
     type: ratio
     type_params:
       numerator:
