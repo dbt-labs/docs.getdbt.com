@@ -14,7 +14,7 @@ There are three things you should do to be a good channel maintainer in the [dbt
 
 ## Scope of the role
 
-A maintainer can be a dbt Labs employee, but does not have to be. *Slack channel maintainer* is philosophically similar to OSS maintainer. At the onset, the channel maintainer will help build up this new space in Slack and stir up conversation during the first few weeks of the channel's existence. They are someone who stays on top of feedback and encourages generative contributions. This is not necessarily someone who is the generator of content and contributions, or answers every question.
+A maintainer can be a dbt Labs employee but does not have to be. *Slack channel maintainer* is philosophically similar to OSS maintainer. At the onset, the channel maintainer will help build up this new space in Slack and stir up conversation during the first few weeks of the channel's existence. They are someone who stays on top of feedback and encourages generative contributions. This is not necessarily someone who is the generator of content and contributions, or answers every question.
 
 ## Initial instructions
 
@@ -22,6 +22,7 @@ A maintainer can be a dbt Labs employee, but does not have to be. *Slack channel
 
 2. To request a new channel, go to the [#moderation-and-administartion channel](https://getdbt.slack.com/archives/C02JJ8N822H), click **Workflows** on the top of the channel description. Click **Request a New Channel**.
   - Fill out the fields and click **Submit** to submit your request. Someone will get in touch from there.
+![request-slack-chnl](https://github.com/siljamardla/docs.getdbt.com/assets/89008547/b14abc52-4164-40a8-b48a-e8061fb4b51a)
 
 3. If you are a vendor, review the [Vendor Expectations](community/resources/community-rules-of-the-road#vendor-expectations).
 
