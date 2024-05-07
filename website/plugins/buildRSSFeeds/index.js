@@ -8,20 +8,24 @@ module.exports = function buildRSSFeedsPlugin() {
   return {
     name: 'docusaurus-build-rss-feeds-plugin',
     async loadContent() {
-      // Release Notes directory
-      const releaseNotesDirectory = 'docs/docs/dbt-versions/release-notes'
+      // Get the release notes file
+      const releaseNotesFile = `docs/docs/dbt-versions/release-notes.md`
 
-      // Get all files and file data within all release notes directories
-      const releaseNotesFiles = getDirectoryFiles(releaseNotesDirectory, [], true)
+      // Get the contents of the release note file
+      const fileContent = fs.readFileSync(releaseNotesFile, 'utf-8');
+      const previousFileContent = fileContent;
+      const currentLines = fileContent.split('\n');
+      const previousLines = previousFileContent.split('\n');
+      const newLines = currentLines.filter(line => !previousLines.includes(line));
 
-      if(!releaseNotesFiles || !releaseNotesFiles.length) 
+      if(!releaseNotesFile || !releaseNotesFile.length) 
         return null
       
       // Generate RSS feeds
       console.log('Generating RSS Feeds for dbt Cloud Release Notes')
 
       // Prepare data and sort by update date
-      const releaseNotesData = releaseNotesFiles.map(note => {
+      const releaseNotesData = releaseNotesFile.map(note => {
         const { data } = note
 
         // Set properties for feed
