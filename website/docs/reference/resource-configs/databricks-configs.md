@@ -702,10 +702,10 @@ The following table summarizes our configuration support:
 
 | Databricks Concept | Config Name | MV/ST support |
 | ------------------ | ------------| ------------- |
-| [PARTITIONED BY](https://docs.databricks.com/en/sql/language-manual/sql-ref-partition.html#partitioned-by) | partition_by | MV/ST |
-| COMMENT | description | MV/ST |
-| [TBLPROPERTIES](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html#tblproperties) | tblproperties | MV/ST |
-| [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' } | MV/ST |
+| [PARTITIONED BY](https://docs.databricks.com/en/sql/language-manual/sql-ref-partition.html#partitioned-by) | `partition_by` | MV/ST |
+| COMMENT | `description` | MV/ST |
+| [TBLPROPERTIES](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html#tblproperties) | `tblproperties` | MV/ST |
+| [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | `schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' }` | MV/ST |
 | query | defined by your model sql | on_configuration_change for MV only |
 
 <File name='mv_example.sql'>
