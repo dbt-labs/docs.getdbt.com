@@ -258,7 +258,7 @@ To update:
 
 </Tabs>
 
-## Using VS Code extensions <Lifecycle status="beat"/>
+## Install dbt-power-user<Lifecycle status="beta"/>
 
 Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however, it doesn't support some dbt Core APIs required by certain tools, for example, VS Code extensions. 
 
