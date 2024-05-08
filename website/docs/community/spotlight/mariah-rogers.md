@@ -15,7 +15,7 @@ organization: ""
 socialLinks:
   - name: LinkedIn
     link: https://linkedin.com/in/mariahjrogers
-dateCreated: 2023-07-18
+dateCreated: 2024-05-04
 hide_table_of_contents: true
 communityAward: true
 ---
