@@ -16,7 +16,7 @@ dbt --warn-error run
 </File>
 
 
-Converting any warnings to errors may suit your needs perfectly, but there may be some warnings you just don't care about, and some you care about a lot.The `WARN_ERROR_OPTIONS` config gives you more granular control over _exactly which types of warnings_ are treated as errors. 
+Converting any warnings to errors may suit your needs perfectly, but there may be some warnings you just don't care about, and some you care about a lot. The `WARN_ERROR_OPTIONS` config gives you more granular control over _exactly which types of warnings_ are treated as errors. 
 
 <VersionBlock lastVersion="1.7">
 
