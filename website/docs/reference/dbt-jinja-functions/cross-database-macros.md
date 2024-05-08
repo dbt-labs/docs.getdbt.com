@@ -900,7 +900,7 @@ __Args__:
  * `month`: an integer
  * `day`: an integer
 
-This macro converts an ISO 8601-formatted date string (`YYYY-MM-DD`) into an SQL `DATE` type.
+This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
  
 **Usage**:
 
@@ -910,6 +910,9 @@ This macro converts an ISO 8601-formatted date string (`YYYY-MM-DD`) into an SQL
 
 **Sample output**:
 
+```sql
+2023-10-04
+```
 
 </VersionBlock>
 
