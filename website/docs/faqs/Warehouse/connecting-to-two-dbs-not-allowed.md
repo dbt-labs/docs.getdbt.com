@@ -15,4 +15,4 @@ Sidestep the 'one database problem' by relying on <Term id="elt" /> thinking (i.
 
 Hence, instead of thinking "how do I connect my dbt project to two databases", ask "what loader services will best prepare our warehouse for dbt transformations."
 
-For more on the modern 'ELT-powered' data stack, see the "dbt and the modern BI stack" section of this [dbt blog post](https://blog.getdbt.com/what--exactly--is-dbt-/).
+For more on the modern 'ELT-powered' data stack, see the "dbt and the modern BI stack" section of this [dbt blog post](https://blog.getdbt.com/what-exactly-is-dbt).
