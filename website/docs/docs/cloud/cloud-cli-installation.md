@@ -35,16 +35,17 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 </details>
 
 <Tabs queryString="install">
-	
+
 <TabItem value="brew" label="macOS (brew)">
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-1. Verify that you don't already have dbt Core installed by running the following command.    
+1. Verify that you don't already have dbt Core installed by running the following command.
   
   ```bash
   which dbt
   ```
+  
   If the output is `dbt not found`, then that confirms you don't have it installed.
 
 :::tip Run `pip uninstall dbt` to uninstall dbt Core
@@ -109,7 +110,7 @@ Note that if you're using VS Code, you must restart it to pick up modified envir
       ```
 
      If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
-   
+
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
@@ -260,6 +261,8 @@ To update:
 ## Using VS Code extensions
 
 Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however, it doesn't support some dbt Core APIs required by certain tools, for example, VS Code extensions. 
+
+You can use extensions like dbt-power-user and [install it](https://docs.myaltimate.com/arch/beta/) in VS Code for the dbt Cloud CLI.
 
 You can use extensions like [dbt-power-user](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user) with the dbt Cloud CLI by following these steps:
 
