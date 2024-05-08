@@ -908,7 +908,7 @@ This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
 {{ dbt.to_date(2023, 10, 4) }}
 ```
 
-**Sample output**:
+**Sample output (PostgreSQL)**:
 
 ```sql
 2023-10-04
