@@ -74,8 +74,8 @@ To understand how to navigate the IDE and its user interface elements, refer to 
 There are three start-up states when using or launching the Cloud IDE:
 
 - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
-- **Hot start &mdash;** This is the state of resuming an existing or active develop session within three hours of the last activity.
+- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for one hour. The environment automatically turns off one hour after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+- **Hot start &mdash;** This is the state of resuming an existing or active develop session within one hour of the last activity.
 
 ### Work retention
 
@@ -108,7 +108,6 @@ Set up your developer credentials:
 5. Click **Save.**
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.jpg" width="85%" height="100" title="Configure developer credentials in your Profile"/>
-
 
 6. Access the Cloud IDE by clicking **Develop** at the top of the page.
 7. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
