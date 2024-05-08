@@ -169,7 +169,7 @@ saved_queries:
 
 ## Run exports
 
-Once you've configured exports, you can now take things a step further by running exports  automatically write saved queries within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). This feature is only available with the [dbt Cloud's Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
+Once you've configured exports, you can now take things a step further by running exports to automatically write saved queries within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). This feature is only available with the [dbt Cloud's Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
 
 For more information on how to run exports, refer to the [Exports](/docs/use-dbt-semantic-layer/exports)documentation.
 
