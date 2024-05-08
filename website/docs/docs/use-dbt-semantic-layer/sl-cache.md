@@ -31,7 +31,7 @@ Here's how caching works, using Snowflake as an example, and should be similar a
 1. **Run from cold cache** &mdash; When you run a semantic layer query from your BI tool that hasn't been executed in the past 24 hours, the query scans the entire dataset and doesn't use the cache.
 2. **Run from warm cache** &mdash; If you rerun the same query after 1 hour, the SQL generated and executed on Snowflake remains the same. On Snowflake, the result cache is set per user for 24 hours, which allows the repeated query to use the cache and return results faster.
 
-Different data platforms might have different caching layer and cache invalidation rules. Here's a list of resources on how caching works on some common data platforms:
+Different data platforms might have different caching layers and cache invalidation rules. Here's a list of resources on how caching works on some common data platforms:
 
 - [BigQuery](https://cloud.google.com/bigquery/docs/cached-results)
 - [DataBricks](https://docs.databricks.com/en/optimizations/disk-cache.html)
@@ -45,12 +45,12 @@ Different data platforms might have different caching layer and cache invalidati
 Declarative caching enables you to pre-warm the cache using [saved queries](/docs/build/saved-queries) by setting the cache config to `true` in your `saved_queries` settings. This is useful for optimizing performance for key dashboards or common ad-hoc query requests.
 
 How declarative caching works:
-- Configuration &mdash; Ensure your saved queries YAML configuration file has [exports](/docs/use-dbt-semantic-layer/exports) defined.
-- Execution &mdash; When you run a saved query:
-  - The dbt Semantic Layer builds a cached table from a saved query, with exports defined, into your data platform.
-  - Any query requests that match the saved query's inputs will use the cache, returning results more quickly.
-  - The dbt Semantic Layer automatically invalidates the cache when it detects new, fresh data in any upstream models related to the metrics in your cached table.
-  - The cache refreshes (or rebuilds) the next time you run the saved query.
+- Make sure your saved queries YAML configuration file has [exports](/docs/use-dbt-semantic-layer/exports) defined.
+- Running a saved query triggers the dbt Semantic Layer to:
+  - Build a cached table from a saved query, with exports defined, into your data platform.
+  - Make sure any query requests that match the saved query's inputs use the cache, returning data more quickly.
+  - Automatically invalidates the cache when it detects new and fresh data in any upstream models related to the metrics in your cached table.
+  - Refreshes (or rebuilds) the cache the next time you run the saved query.
 
 Refer to the following diagram, which illustrates what happens when the dbt Semantic Layer receives a query request:
 
@@ -66,7 +66,7 @@ saved_queries:
     ...
     config:
       cache:
-        enabled: true|false # Defaults to false
+        enabled: true  # Set to true to enable, defaults to false.
     exports:
       - name: order_data_key_metrics
         config:
