@@ -903,7 +903,7 @@ Find more information about materialized view limitations in Google's BigQuery [
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock firstVersion="1.7">
 
 ## Python models
 
@@ -920,6 +920,5 @@ By default, this is set to `True` to support the default `intermediate_format` o
 
 ### The `intermediate_format` parameter
 The `intermediate_format` parameter specifies which file format to use when writing records to a table. The default is `parquet`.
-This parameter became configurable when the default write method changed from `direct` to `indirect` to support partitioning and clustering.
 
 </VersionBlock>
