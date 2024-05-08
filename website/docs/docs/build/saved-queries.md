@@ -6,86 +6,17 @@ sidebar_label: "Saved queries"
 tags: [Metrics, Semantic Layer]
 ---
 
-Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. 
+Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. Saved queries is a node and visible in the dbt <Term id="dag" />.
 
-### Exports and saved queries comparison
-
-Saved queries are distinct from [exports](/docs/use-dbt-semantic-layer/exports), which schedule and execute saved queries using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). The following table compares the features and usage of exports and saved queries:
-
-| Feature |  Exports | <div style={{width:'250px, text-align: center'}}>Saved queries</div>  |
-| ----------- | ----------- | ---------------- |
-| **Availability**    | Available on dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plans on dbt versions 1.7 or newer.| Available in both dbt Core and dbt Cloud.     |
-| **Purpose**         | To write saved queries in your data platform and expose metrics and dimensions as a view or table. | To define and manage common Semantic Layer queries in YAML, which includes metrics and dimensions.   |
-| **Usage**           | Automatically runs saved queries and writes them within your data platform. Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. <br /><br />**Example**: Creating a weekly aggregated table for active user metrics, automatically updated and stored in the data platform.  | Used for organizing and reusing common MetricFlow queries within dbt projects.<br /><br /><br />**Example**: Group related metrics together for better organization, and include commonly used dimensions and filters. | For materializing query results in the data platform. |
-| **Integration**     | Must have the dbt Semantic Layer configured in your dbt project.<br /><br />Tightly integrated with the [MetricFlow Server](/docs/use-dbt-semantic-layer/sl-architecture#components) and dbt Cloud's job scheduler. | Integrated into the dbt <Term id="dag" /> and managed alongside other dbt nodes. |
-| **Configuration**   | Defined within the `saved_queries` configuration. Set up within the dbt Cloud environment and job scheduler settings. | Defined in YAML format within dbt project files.     |
-
-All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses. The following is an example of a saved query:
-
-<!-- For versions 1.8 and higher -->
-<VersionBlock firstVersion="1.8">
-
-<File name='semantic_model.yml'>
-
-```yaml
-saved_queries:
-  - name: test_saved_query
-    description: "{{ doc('saved_query_description') }}"
-    label: Test saved query
-    config:
-      cache:
-        enabled: true  # Or false if you want it disabled by default
-    query_params:
-        metrics:
-            - simple_metric
-        group_by:
-            - "Dimension('user__ds')"
-        where:
-            - "{{ Dimension('user__ds', 'DAY') }} <= now()"
-            - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
-    exports:
-        - name: my_export
-          config:
-            alias: my_export_alias
-            export_as: table
-            schema: my_export_schema_name
-```
-</File>
-
-</VersionBlock> 
-
-<!-- For versions 1.7 and lower-->
-<VersionBlock lastVersion="1.7">
-
-<File name='semantic_model.yml'>
-
-```yaml
-saved_queries:
-  - name: test_saved_query
-    description: "{{ doc('saved_query_description') }}"
-    label: Test saved query
-    query_params:
-        metrics:
-            - simple_metric
-        group_by:
-            - "Dimension('user__ds')"
-        where:
-            - "{{ Dimension('user__ds', 'DAY') }} <= now()"
-            - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
-    exports:
-        - name: my_export
-          config:
-            alias: my_export_alias
-            export_as: table
-            schema: my_export_schema_name
-```
-</File>
-</VersionBlock>
+Saved queries serve as the foundational building block, allowing you to [configure exports](#configure-exports) in your saved query configuration. Exports takes this functionality a step further by enabling you to [schedule and write saved queries](/docs/use-dbt-semantic-layer/exports) directly within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler).
 
 ## Parameters
 
-To define a saved query, refer to the following parameters:
+To create a saved query, refer to the following table parameters.
 
+:::tip
+Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
+:::
 <!-- For versions 1.8 and higher -->
 <VersionBlock firstVersion="1.8">
 
@@ -118,20 +49,129 @@ To define a saved query, refer to the following parameters:
 | `description`     | String      | Required     | A description of the saved query.     |
 | `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
 | `query_params`       | Structure   | Required     | Contains the query parameters. |
-| `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
-| `query_params::group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
-| `query_params::where`        | List or String | Optional  | A list of strings that may include the `Dimension` or `TimeDimension` objects. |
+| `query_params::metrics`   | List or String   | Optional    | Metrics nested with the `query_params`: a list of the metrics to be used in the query as specified in the command line interface. |
+| `query_params::group_by`    | List or String          | Optional    | Grouping nested with the `query_params`: a list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
+| `query_params::where`        | List or String | Optional  | Conditions nested with the `query_params`: a list of strings that may include the `Dimension` or `TimeDimension` objects. |
 | `exports`     | List or Structure | Optional    | A list of exports to be specified within the exports structure.     |
-| `exports::name`       | String               | Required     | Name of the export object.      |
-| `exports::config`     | List or Structure     | Required     | A config section for any parameters specifying the export.  |
-| `exports::config::export_as` | String    | Required     | The type of export to run. Options include table or view currently and cache in the near future.   |
-| `exports::config::schema`   | String   | Optional    | The schema for creating the table or view. This option cannot be used for caching.   |
-| `exports::config::alias`  | String     | Optional    | The table alias used to write to the table or view.  This option cannot be used for caching.  |
+| `exports::name`       | String               | Required     | Name of export object, nested within `exports`.   |
+| `exports::config`     | List or Structure     | Required     | A config section for any parameters specifying the export, nested within `exports`.  |
+| `exports::config::export_as` | String    | Required     |  Specifies the type of export: table, view, or upcoming cache options. Nested within `exports` and `config`.   |
+| `exports::config::schema`   | String   | Optional    | Schema for creating the table or view, not applicable for caching. Nested within `exports` and `config`.   |
+| `exports::config::alias`  | String     | Optional    | Table alias used to write to the table or view.  This option can't be used for caching. Nested within `exports` and `config`.  |
+
+</VersionBlock>
+
+All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
+Use the semantic model name prefix with the Dimension object, like `Dimension('user__ds')`.
+
+## Configure saved query
+
+Use saved queries to define and manage common Semantic Layer queries in YAML, including metrics and dimensions. Saved queries enable you to organize and reuse common MetricFlow queries within dbt projects. For example, you can group related metrics together for better organization, and include commonly used dimensions and filters.
+
+All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses. The following is an example of a saved query:
+
+<!-- For versions 1.8 and higher -->
+<VersionBlock firstVersion="1.8">
+
+<File name='semantic_model.yml'>
+
+```yaml
+saved_queries:
+  - name: test_saved_query
+    description: "{{ doc('saved_query_description') }}"
+    label: Test saved query
+    config:
+      cache:
+        enabled: true  # Or false if you want it disabled by default
+    query_params:
+      metrics:
+        - simple_metric
+      group_by:
+        - "Dimension('user__ds')"
+      where:
+        - "{{ Dimension('user__ds', 'DAY') }} <= now()"
+        - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
+    exports:
+      - name: my_export
+        config:
+          alias: my_export_alias
+          export_as: table
+          schema: my_export_schema_name
+```
+</File>
 
 </VersionBlock> 
 
-All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
-When using the `Dimension` object, prepend the semantic model name, for example `Dimension('user__ds')`
+<!-- For versions 1.7 and lower-->
+<VersionBlock lastVersion="1.7">
+
+<File name='semantic_model.yml'>
+
+```yaml
+saved_queries:
+  - name: test_saved_query
+    description: "{{ doc('saved_query_description') }}"
+    label: Test saved query
+    query_params:
+      metrics:
+        - simple_metric
+      group_by:
+        - "Dimension('user__ds')"
+      where:
+        - "{{ Dimension('user__ds', 'DAY') }} <= now()"
+        - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
+    exports:
+      - name: my_export
+        config:
+          alias: my_export_alias
+          export_as: table
+          schema: my_export_schema_name
+```
+</File>
+</VersionBlock>
+
+## Configure exports
+
+Once you've configured your saved query (building block), you can now configure exports in the `saved_queries` YAML configuration and in the same file as your metric definitions.
+
+Exports are an additional configuration added to a saved query. They define _how_ to write a saved query, along with the schema and table name.
+
+The following is an example of a saved query with an export:
+
+<File name='semantic_model.yml'>
+
+```yaml
+saved_queries:
+  - name: order_metrics
+    description: Relevant order metrics
+    query_params:
+      metrics:
+        - orders
+        - large_order
+        - food_orders
+        - order_total
+      group_by:
+        - Entity('order_id')
+        - TimeDimension('metric_time', 'day')
+        - Dimension('customer__customer_name')
+        - ... # Additional group_by
+      where:
+        - "{{TimeDimension('metric_time')}} > current_timestamp - interval '1 week'"
+         - ... # Additional where clauses
+    exports:
+      - name: order_metrics
+        config:
+          export_as: table # Options available: table, view
+          schema: YOUR_SCHEMA # Optional - defaults to deployment schema
+          alias: SOME_TABLE_NAME # Optional - defaults to Export name
+```
+</File>
+
+## Run exports
+
+Once you've configured exports, you can now take things a step further by running exports  automatically write saved queries within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). This feature is only available with the [dbt Cloud's Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
+
+For more information on how to run exports, refer to the [Exports](/docs/use-dbt-semantic-layer/exports)documentation.
 
 ## Related docs
 
