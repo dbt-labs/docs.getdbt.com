@@ -896,14 +896,17 @@ dbt v1.8 or later. For more information, select the version from the documentati
 
 __Args__:
 
- * `year`: an integer (`YYYY`)
- * `month`: an integer (`MM`)
- * `day`: an integer (`DD`)
+ * `year`: an integer
+ * `month`: an integer
+ * `day`: an integer
 
 This macro converts an ISO 8601-formatted date string (`YYYY-MM-DD`) into an SQL `DATE` type.
  
 **Usage**:
 
+```sql
+{{ dbt.to_date(2023, 10, 4) }}
+```
 
 **Sample output**:
 
