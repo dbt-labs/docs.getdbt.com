@@ -4,8 +4,7 @@ title: Johann de Wet
 description: |
   I'm forever indebted to my manager, John Pienaar, who introduced me to both dbt and it's community when I joined his team as an Analytics Engineer at the start of 2022. I often joke about my career before dbt and after dbt. Our stack includes Fivetran, Segment, Airflow and BigQuery to name a few.
   Prior to that I was a business intelligence consultant for 16 years working at big financial corporates. During this time I've had the opportunity to work in many different roles from front end development to data engineering and data warehouse platform development.
-
-The only two constants in my career have been SQL en Ralph Kimball's Dimension Modeling methodology...which probably makes me a bit partial to those.
+  The only two constants in my career have been SQL en Ralph Kimball's Dimension Modeling methodology...which probably makes me a bit partial to those.
 image: /img/community/spotlight/johann-dewett.jpg
 pronouns: he/him
 location: Paarl, South Africa
