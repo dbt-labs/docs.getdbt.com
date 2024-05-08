@@ -118,8 +118,8 @@ If your organization uses [Kestra](http://kestra.io/), you can leverage the [d
 
 For organisations using [Orchestra](https://getorchestra.io) as their unified Data Control Plane, you can easily trigger dbt Cloud by leveraging the dbt Cloud API. Simply head to your dbt Account, fetch the API Token and use this to authenticate Orchestra in the [Orchestra Portal](https://app.getorchestra.io). More information can be found [here](https://orchestra-1.gitbook.io/orchestra-portal/integrations/transformation/dbt-cloud).
 
-<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_orchestra_trigger.jpg" title="dbt Cloud job triggered by Orchestra"/>
-<Lightbox src="/img/docs/running-a-dbt-project/orchestra_lineage_dbt_cloud.jpg" title="Orchestra + dbt Cloud lineage"/>
+<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_orchestra_trigger.png" title="dbt Cloud job triggered by Orchestra"/>
+<Lightbox src="/img/docs/running-a-dbt-project/orchestra_lineage_dbt_cloud.png" title="Orchestra + dbt Cloud lineage"/>
 
 Orchestra will automatically collect and parse dbt artifacts like the run_results.json, and manifest.json. This means you can view end-to-end, asset-based lineage for dbt jobs in Orchestra alongside operations in the rest of your data stack. Orchestra also provides granular alerts at a model/test-level which saves you needing to configure these separately.
 
