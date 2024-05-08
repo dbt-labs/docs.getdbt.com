@@ -7,6 +7,9 @@ hide_table_of_contents: true
 tags: ['dbt Cloud','Quickstart']
 recently_updated: true
 ---
+
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics/). It will show you how to:
