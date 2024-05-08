@@ -4,33 +4,31 @@ description: "Use exports to write tables to the data platform on a schedule."
 sidebar_label: "Write queries with exports"
 ---
 
-The exports feature in the dbt Semantic Layer enhances the [saved queries](/docs/build/saved-queries) by automatically run saved queries and write them within your data platform
+Exports enhances the [saved queries](/docs/build/saved-queries) by automatically run saved queries and write them within your data platform. Saved queries are a way to save and reuse commonly used queries in MetricFlow, exports takes this functionality a step further by:
 
-While saved queries are a way to save and reuse commonly used queries in MetricFlow, exports take this functionality a step further by:
-
-- Enabling you to write these queries within your data platform using dbt Cloud.
+- Enabling you to write these queries within your data platform using the dbt Cloud job scheduler.
 - Proving an integration path for tools that don't natively support the dbt Semantic Layer by exposing tables of metrics and dimensions.
 
-Essentially, exports are like any other table in your data platform. They enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class Semantic Layer integration. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information. Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage.
+Essentially, exports are like any other table in your data platform &mdash; they enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class [Semantic Layer integration](/docs/use-dbt-semantic-layer/avail-sl-integrations). Exports count towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage.
 
 ## Prerequisites
 
-- You have a [multi-tenant](/docs/cloud/about-cloud/tenancy) dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan. Single-tenant is not supported at this time.
+- You have a [multi-tenant](/docs/cloud/about-cloud/tenancy) dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan. Single-tenant isn't supported at this time.
 - You use one of the following data platforms: Snowflake, BigQuery, Databricks, or Redshift.
 - You are on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.7 or newer.
 - You have the dbt Semantic Layer [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
-- You have a dbt Cloud environment with a [Job scheduler](/docs/deploy/job-scheduler) enabled.
+- You have a dbt Cloud environment with the [job scheduler](/docs/deploy/job-scheduler) enabled.
 - You have a [saved query and export configured](/docs/build/saved-queries#configure-exports) in your dbt project. 
 - You have the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) installed. Note, exports aren't supported in dbt Cloud IDE yet.
 
 ## Run exports
 
-Before you're able to run exports in development or production, you'll need to make sure you've configured saved queries and exports in your dbt project.
+Before you're able to run exports in development or production, you'll need to make sure you've [configured saved queries and exports](/docs/build/saved-queries#configure-exports) in your dbt project.
 
 There are two ways to run an export:
   
-- [Run exports in development](#exports-in-development) using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) (dbt Cloud IDE isn't supported yet).
-- [Run exports in production](#exports-in-production) using the [dbt Cloud job scheduler](/docs/deploy/job-scheduler).
+- [Run exports in development](#exports-in-development) using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to test the output before production (dbt Cloud IDE isn't supported yet).
+- [Run exports in production](#exports-in-production) using the [dbt Cloud job scheduler](/docs/deploy/job-scheduler) to write these queries within your data platform.
 
 ## Exports in development
 
@@ -40,7 +38,7 @@ You can run an export in your development environment using your development cre
 dbt sl export
 ```
 
-The following table lists the options for `dbt sl export` command:  
+The following table lists the options for `dbt sl export` command, using the `--` flag to specify the parameters:  
 
 | Parameters | Type    | Required | Description    |
 | ------- | --------- | ---------- | ---------------- |
