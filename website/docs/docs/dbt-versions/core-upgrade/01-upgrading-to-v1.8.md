@@ -86,7 +86,7 @@ The ability for installed packages to override built-in materializations without
 - Using a custom materialization from an installed package does not raise a deprecation warning.
 - Using a built-in materialization package override from the root project via a wrapping materialization is still supported. For example:
 
-  ```
+  ```sql
   {% materialization view, default %}
   {{ return(my_cool_package.materialization_view_default()) }}
   {% endmaterialization %}
