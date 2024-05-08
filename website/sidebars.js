@@ -254,6 +254,17 @@ const sidebarSettings = {
               "docs/cloud/dbt-cloud-ide/lint-format",
             ],
           },
+          {
+            type: "category",
+            label: "dbt Assist",
+            link: { type: "doc", id:"docs/cloud/dbt-assist" },
+            items: [
+              "docs/cloud/dbt-assist",
+              "docs/cloud/enable-dbt-assist",
+              "docs/cloud/use-dbt-assist",
+              "docs/cloud/dbt-assist-data",
+            ],
+          },
         ],
       },
     {
