@@ -685,14 +685,7 @@ const sidebarSettings = {
         },
       ],
     },
-    {
-      type: "category",
-      label: "dbt support",
-      items: [
-        "docs/dbt-support",
-        "docs/dbt-integration-support",
-      ],
-    },
+    "docs/dbt-support",
     {
       type: "category",
       label: "Frequently asked questions",
