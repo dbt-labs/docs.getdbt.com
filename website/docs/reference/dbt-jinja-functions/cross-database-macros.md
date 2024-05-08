@@ -58,6 +58,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
+    - [date](#date)
     - [dateadd](#dateadd)
     - [datediff](#datediff)
     - [date\_trunc](#date_trunc)
@@ -106,6 +107,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
+    - [date](#date)
     - [dateadd](#dateadd)
     - [datediff](#datediff)
     - [date\_trunc](#date_trunc)
@@ -176,6 +178,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [safe_cast](#safe_cast)
 
 [**Date and time functions**](#date-and-time-functions)
+- [date](#date)
 - [dateadd](#dateadd)
 - [datediff](#datediff)
 - [date_trunc](#date_trunc)
@@ -883,6 +886,29 @@ For databases that support it, this macro will return `NULL` when the cast fails
 ```
 
 ## Date and time functions
+
+### date
+
+**Availability**:
+dbt v1.8 or later. For more information, select the version from the documentation navigation menu.
+
+<VersionBlock firstVersion="1.8">
+
+__Args__:
+
+ * `year`: an integer
+ * `month`: an integer
+ * `day`: an integer
+
+This macro converts an ISO 8601-formatted date string into an SQL `DATE` type.
+ 
+**Usage**:
+
+
+**Sample output**:
+
+
+</VersionBlock>
 
 ### dateadd
 __Args__:
