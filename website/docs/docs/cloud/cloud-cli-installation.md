@@ -258,11 +258,11 @@ To update:
 
 </Tabs>
 
-## Using VS Code extensions
+## Using VS Code extensions <Lifecycle status="beat"/>
 
 Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however, it doesn't support some dbt Core APIs required by certain tools, for example, VS Code extensions. 
 
-You can use extensions like dbt-power-user and [install it](https://docs.myaltimate.com/arch/beta/) in VS Code for the dbt Cloud CLI.
+[Install dbt-power-user](https://docs.myaltimate.com/arch/beta/), a VS Code extension, now available in beta for the the dbt Cloud CLI.
 
 You can use extensions like [dbt-power-user](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user) with the dbt Cloud CLI by following these steps:
 
