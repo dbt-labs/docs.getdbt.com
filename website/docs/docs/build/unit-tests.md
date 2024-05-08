@@ -40,6 +40,12 @@ You should unit test a model:
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
 - Models with high "criticality" (public, contracted models or models directly upstream of an exposure).
 
+### When to run unit tests
+
+We highly recommend only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there is no need to use extra compute running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
+
+Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPE` environment variable to exclude unit tests from your production builds and save compute. 
+
 ## Unit testing a model
 
 This example creates a new `dim_customers` model with a field `is_valid_email_address` that calculates whether or not the customer’s email is valid: 
