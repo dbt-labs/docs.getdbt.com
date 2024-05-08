@@ -21,9 +21,8 @@ The keys for metrics definitions are:
 | `description` | Describe your metric.   | Optional |
 | `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
-| `config` | Provide the specific configurations for your metric.   | Optional |
-| `config:meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
-| `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required |
+| `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 
 Here's a complete example of the metrics spec configuration:
@@ -57,7 +56,7 @@ metrics:
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `config` | Provide the specific configurations for your metric.   | Optional |
 | `meta` | Use the [`meta` config](/reference/resource-configs/meta) to set metadata for a resource.  | Optional |
-| `label` | The display name for your metric. This value will be shown in downstream tools.   | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).   | Required |
 | `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
 
 Here's a complete example of the metrics spec configuration:
@@ -121,10 +120,8 @@ metrics:
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all of time)
 metrics:
   - name: wau_rolling_7
-    owners:
-      - support@getdbt.com
     type: cumulative
-    label: Weekly Active Users
+    label: Weekly active users
     type_params:
       measure:
         name: active_users
@@ -145,7 +142,7 @@ metrics:
   - name: order_gross_profit
     description: Gross profit from each order.
     type: derived
-    label: Order Gross Profit
+    label: Order gross profit
     type_params:
       expr: revenue - cost
       metrics:
@@ -179,26 +176,22 @@ metrics:
 ```yaml
 metrics:
   - name: cancellation_rate
-    owners:
-      - support@getdbt.com
     type: ratio
     label: Cancellation rate
     type_params:
       numerator: cancellations
       denominator: transaction_amount
-      filter: |   
-        {{ Dimension('customer__country') }} = 'MX'
+    filter: |   
+      {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
-    owners:
-      - support@getdbt.com
     type: ratio
     type_params:
       numerator:
         name: cancellations
-        filter: {{ Dimension('company__tier' )}} = 'enterprise'  
+        filter: {{ Dimension('company__tier') }} = 'enterprise'  
       denominator: transaction_amount
-      filter: | 
-        {{ Dimension('customer__country') }} = 'MX'  
+    filter: | 
+      {{ Dimension('customer__country') }} = 'MX' 
 ```
 
 ### Simple metrics
@@ -207,9 +200,8 @@ metrics:
 
 - `name`&mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
 
-<!--create_metric not supported yet
-**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric. 
--->
+**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric.
+
 ```yaml
 metrics:
   - name: cancellations
@@ -220,9 +212,9 @@ metrics:
       measure:
         name: cancellations_usd  # Specify the measure you are creating a proxy for.
         fill_nulls_with: 0
-        filter: |
-        {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
-        join_to_timespine: true
+    filter: |
+      {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}} is not null
+    join_to_timespine: true
 ```
 
 ## Filters
