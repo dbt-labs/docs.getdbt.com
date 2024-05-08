@@ -21,4 +21,12 @@ gcloud auth application-default login --disable-quota-project
 ```
 For more info see the [gcloud auth application-default documentation](https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login)
 
+If you've tried the steps above and are still experiencing this behavior try with this command which logs you into Google Cloud and enables access to Google Drive. It also updates the Application Default Credentials (ADC) file, which many Google Cloud libraries use to authenticate API calls.
+
+```
+gcloud auth login --enable-gdrive-access --update-adc
+```
+
+For more info see the [gcloud auth login documentation](https://cloud.google.com/sdk/gcloud/reference/auth/login#--enable-gdrive-access)
+
 If you've tried the steps above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help!
