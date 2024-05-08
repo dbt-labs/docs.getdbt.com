@@ -69,6 +69,7 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 \* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation.
 We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+
 \+ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
 
 </VersionBlock>
