@@ -132,7 +132,7 @@ saved_queries:
 
 ## Configure exports
 
-Once you've configured your saved query and set the foundation block, you can now configure exports in the `saved_queries` YAML configuration and in the same file as your metric definitions.
+Once you've configured your saved query and set the foundation block, you can now configure exports in the `saved_queries` YAML configuration file (the same file as your metric definitions).
 
 Exports are an additional configuration added to a saved query. They define _how_ to write a saved query, along with the schema and table name.
 
