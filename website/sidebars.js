@@ -157,7 +157,6 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/core/installation-overview", },
               items: [
                 "docs/core/installation-overview",
-                "docs/core/homebrew-install",
                 "docs/core/pip-install",
                 "docs/core/docker-install",
                 "docs/core/source-install",
@@ -519,8 +518,9 @@ const sidebarSettings = {
           href: `/guides/sl-snowflake-qs`,
         },
         "docs/use-dbt-semantic-layer/setup-sl",
-        "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        "docs/use-dbt-semantic-layer/exports",
+        "docs/use-dbt-semantic-layer/sl-cache",
         "docs/use-dbt-semantic-layer/sl-faqs",
         {
           type: "category",

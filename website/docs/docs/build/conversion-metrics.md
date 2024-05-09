@@ -21,7 +21,7 @@ The specification for conversion metrics is as follows:
 | `name` | The name of the metric. |  Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of metric (such as derived, ratio, and so on.). In this case, set as 'conversion' | Required |
-| `label` | Displayed value in downstream tools. | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | Specific configurations for each metric type. |  Required |
 | `conversion_type_params` | Additional configuration specific to conversion metrics. | Required |
 | `entity` | The entity for each conversion event. | Required |
