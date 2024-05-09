@@ -100,22 +100,20 @@ saved_queries:
 ```
 </File>
 
-To enable saved queries at the project level, you can set the `saved-queries` configuration in the `dbt_project.yml` file. This saved you time in configuring saved queries in each file:
+To enable saved queries at the project level, you can set the `saved-queries` configuration in the [`dbt_project.yml` file](/reference/dbt_project.yml). This saved you time in configuring saved queries in each file:
 
 <File name='dbt_project.yml'>
 
 ```yaml
 saved-queries:
-  test_saved_query:
-    models:
-      marts:
-        customer360:
-          +cache:
-            enabled: true
+  my_saved_query:
+    config:
+      +cache:
+        enabled: true
 ```
 </File>
 
-</VersionBlock> 
+</VersionBlock>
 
 <!-- For versions 1.7 and lower-->
 <VersionBlock lastVersion="1.7">
@@ -146,8 +144,6 @@ saved_queries:
 ```
 </File>
 </VersionBlock>
-
-To 
 
 ## Configure exports
 
