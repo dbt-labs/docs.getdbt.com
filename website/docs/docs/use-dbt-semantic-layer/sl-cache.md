@@ -101,7 +101,7 @@ saved-queries:
 
 ### Run your declarative cache
 
-After setting up declarative caching in your YAML configuration, you can now run [exports](/docs/use-dbt-semantic-layer/exports) with the dbt Cloud job scheduler to build a cached table from a saved query, into your data platform.
+After setting up declarative caching in your YAML configuration, you can now run [exports](/docs/use-dbt-semantic-layer/exports) with the dbt Cloud job scheduler to build a cached table from a saved query into your data platform.
 
 - Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query dbt Cloud.
 - The dbt Semantic Layer builds a cache table in your data platform in a dedicated `dbt_sl_cache` schema. 
