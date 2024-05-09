@@ -60,6 +60,8 @@ Refer to the following diagram, which illustrates what happens when the dbt Sema
 
 To populate the cache, you need to configure an export in your saved query YAML file configuration _and_ set the `cache config` to `true`. You can't cache a saved query without an export defined.
 
+<File name='semantic_model.yml'>
+
 ```yaml
 saved_queries:
   - name: my_saved_query
@@ -72,6 +74,20 @@ saved_queries:
         config:
           export_as: table
 ```
+</File>
+
+To enable saved queries at the project level, you can set the `saved-queries` configuration in the [`dbt_project.yml` file](/reference/dbt_project.yml). This saved you time in configuring saved queries in each file:
+
+<File name='dbt_project.yml'>
+
+```yaml
+saved-queries:
+  my_saved_query
+    config:
+      +cache:
+        enabled: true
+```
+</File>
 
 When you run a saved query:
 - The dbt Semantic Layer builds a cache table in your data platform in a dedicated `dbt_sl_cache` schema. 
