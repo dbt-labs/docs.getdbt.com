@@ -33,17 +33,19 @@ The following features were announced at the [dbt Cloud Launch Showcase](https:/
 
 - **New**: RBAC environment (maybe?)
 
-- **New**: dbt Assist (ADD LINK) is a powerful AI feature helping you generate documentation and tests, saving you time and helping you deliver data that works. Available in Beta for dbt Cloud Enterprise users in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) only.
+- **New**: [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature helping you generate documentation and tests, saving you time and helping you deliver data that works. Available in Beta for dbt Cloud Enterprise users in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) only.
 
-- **New**: [dbt Power User VS Code extension](https://docs.myaltimate.com/arch/beta/) is now available in Beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
+- **New**: The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in Beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
 
-- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces caching, allowing you to cache common queries to speed up performance and reduce query computation. Available for dbt Cloud Team or Enterprise users. (ADD LINK)
+- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces [caching](/docs/use-dbt-semantic-layer/sl-cache), allowing you to cache common queries to speed up performance and reduce query computation. Available for dbt Cloud Team or Enterprise users.
 
-- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces adding metrics as dimensions to your metric filters to create more complex metrics and gain more insights Available for all users. (ADD LINK)
+- **New**: You can now add [metrics as dimensions](/docs/build/ref-metrics-in-filters) to your metric filters to create more complex metrics and gain more insights Available for all users.
 
 - **Update** Databricks OAuth GA bit
 
 - **Update** Unit testing GA bit
+
+- **Update** Cell based arch GA bit
 
 - **Update**: dbt Explorer GA bit
 
@@ -53,9 +55,9 @@ The following features were announced at the [dbt Cloud Launch Showcase](https:/
 
 - **Update**: [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now Generally Available to all users. The dbt Cloud CLI is a command-line interface that allows you to interact with dbt Cloud, use automatic deferral, leverage dbt Mesh, and more!
 
-- **Update**: [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) is now Generally Available to dbt Cloud Team or Enterprise users. The Google Sheets integration allows you to query and save your dbt Semantic Layer metrics directly from Google Sheets.
+- **Update**: The dbt Semantic Layer [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) is now Generally Available to dbt Cloud Team or Enterprise users. The Google Sheets integration allows you to query and save your dbt Semantic Layer metrics directly from Google Sheets.
 
-- **Enhancement**: As part of our ongoing commitment to improving the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), the filesystem now comes with improvements to speed up dbt development, such as discontinuing manifest caching and introducing a Git repository limit of 10GB. (ADD LINK) WHAT'S THE DIFF BTW UDPATE AND ENHANCEMENT?
+- **Enhancement**: As part of our ongoing commitment to improving the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#considerations), the filesystem now comes with improvements to speed up dbt development, such as introducing a Git repository limit of 10GB.
 -----------------------------------------------------------------------------------------------------------------------------------
 
 - <expandable alt_header="Update: Keep on latest version" > 
