@@ -18,7 +18,7 @@ socialLinks:
     link: https://www.linkedin.com/in/jmperafan/
   - name: Amazon Profile
     link: https://www.amazon.com/author/jmperafan
-dateCreated: 2024-05-09
+dateCreated: 2024-05-05
 hide_table_of_contents: true
 communityAward: false
 ---
