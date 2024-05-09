@@ -246,6 +246,7 @@ group by
 limit 100;
 
 ```
+
 ## Limitations
 
 If you specify a `window` in your cumulative metric definition, you must include `metric_time` as a dimension in the SQL query. This is because the accumulation window is based on metric time. For example,
@@ -264,4 +265,3 @@ group by
 
 ## Related docs
 - [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
-
