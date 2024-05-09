@@ -3,6 +3,7 @@ title: "About config property"
 sidebar_label: "config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
+hide_table_of_contents: true
 ---
 
 
@@ -17,6 +18,7 @@ datatype: "{dictionary}"
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
+    { label: 'Saved queries', value: 'saved queries', },
   ]
 }>
 
@@ -133,7 +135,7 @@ sources:
 
 <VersionBlock lastVersion="1.2">
 
-We have added support for the `config` property on sources in dbt Core v1.3
+We have added support for the `config` property on metrics in dbt Core v1.3
 
 </VersionBlock>
 
@@ -147,7 +149,9 @@ version: 2
 metrics:
   - name: <metric_name>
     config:
-      enabled: true | false
+      [enabled](/reference/resource-configs/enabled): true | false
+      [group](/reference/resource-configs/group): <string>
+      [meta](/reference/resource-configs/meta): {dictionary}
 ```
 
 </File>
@@ -160,7 +164,7 @@ metrics:
 
 <VersionBlock lastVersion="1.2">
 
-Support for the `config` property on `metrics` was added in dbt Core v1.3
+Support for the `config` property on `exposures` was added in dbt Core v1.3
 
 </VersionBlock>
 
@@ -174,7 +178,8 @@ version: 2
 exposures:
   - name: <exposure_name>
     config:
-      enabled: true | false
+      [enabled](/reference/resource-configs/enabled): true | false
+      [meta](/reference/resource-configs/meta): {dictionary}
 ```
 
 </File>
@@ -201,9 +206,39 @@ version: 2
 semantic_models:
   - name: <semantic_model_name>
     config:
-      enabled: true | false
-      group: <string>
-      meta: {dictionary}
+      [enabled](/reference/resource-configs/enabled): true | false
+      [group](/reference/resource-configs/group): <string>
+      [meta](/reference/resource-configs/meta): {dictionary}
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="saved queries">
+
+<VersionBlock lastVersion="1.7">
+
+Support for the `config` property on `saved queries` was added in dbt Core v1.8.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+saved-queries:
+  - name: <saved-query-name>
+    config:
+      cache: true | false
+      [enabled](/reference/resource-configs/enabled): true | false
+      [group](/reference/resource-configs/group): <string>
+      [meta](/reference/resource-configs/meta): {dictionary}
 ```
 
 </File>

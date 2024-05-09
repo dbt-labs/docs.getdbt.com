@@ -67,7 +67,7 @@ Export completed.
 
 ### Use the select flag
 
-By default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development).
+You can have multiple exports for a saved query and by default, all exports are run for a saved query. You can use the `select` flag in [development](#exports-in-development) to select specific or multiple exports. Note, you can’t sub-select metrics or dimensions from the saved query, it’s just to change the export configuration i.e table format or schema
 
 For example, the following command runs `export_1` and `export_2` and doesn't work with the `--alias` or `--export_as` flags:
 

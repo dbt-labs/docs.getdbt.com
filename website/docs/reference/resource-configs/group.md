@@ -13,6 +13,7 @@ id: "group"
     { label: 'Analyses', value: 'analyses', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Semantic models', value: 'semantic models', },
+    { label: 'Saved queries', value: 'saved queries',} ,
   ]
 }>
 <TabItem value="models">
@@ -280,11 +281,9 @@ Support for grouping semantic models has been added in dbt Core v1.7.
 <File name='dbt_project.yml'>
 
 ```yaml
-
 semantic-models:
   [<resource-path>](resource-path):
     [+](plus-prefix)group: GROUP_NAME
-
 ```
 
 </File>
@@ -292,13 +291,45 @@ semantic-models:
 <File name='models/semantic_models.yml'>
 
 ```yaml
-
 semantic_models:
   - name: SEMANTIC_MODEL_NAME
     config:
       group: GROUP_NAME
+```
 
+</File>
 
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="saved queries">
+
+<VersionBlock lastVersion="1.7">
+
+Support for grouping saved queries has been added in dbt Core v1.8.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+<File name='dbt_project.yml'>
+
+```yaml
+saved-queries:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)group: GROUP_NAME
+```
+
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+saved_queries:
+  - name: SAVED_QUERY_NAME
+    config:
+      group: GROUP_NAME
 ```
 
 </File>
