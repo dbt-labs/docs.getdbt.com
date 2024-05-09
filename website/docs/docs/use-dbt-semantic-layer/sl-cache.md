@@ -64,7 +64,7 @@ How declarative caching works:
 
 Refer to the following diagram, which illustrates what happens when the dbt Semantic Layer receives a query request:
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Overview of the Declarative cache query flow" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Overview of the declarative cache query flow" />
 
 ### Declarative caching setup
 
