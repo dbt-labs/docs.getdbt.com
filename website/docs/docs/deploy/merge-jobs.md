@@ -34,6 +34,12 @@ By using CD in dbt Cloud, you can take advantage of deferral to build only the e
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
+## Utilizing your merge job
+
+1. To get your merge job to run as expected, you'll first need to generate a manifest for dbt to defer future runs to. In order to do this, you'll want to navigate into job settings and change the job command from `dbt run --select state:modified+` to `dbt compile`. Click "Save" and then trigger a run manually.
+2. Once the run has completed, go back into job settings and change the job command back to `dbt build --select state:modified+`. You can now trigger this job to run on a PR merge.
+
+
 ## Example 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
