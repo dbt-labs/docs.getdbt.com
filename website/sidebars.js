@@ -518,8 +518,9 @@ const sidebarSettings = {
           href: `/guides/sl-snowflake-qs`,
         },
         "docs/use-dbt-semantic-layer/setup-sl",
-        "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        "docs/use-dbt-semantic-layer/exports",
+        "docs/use-dbt-semantic-layer/sl-cache",
         "docs/use-dbt-semantic-layer/sl-faqs",
         {
           type: "category",
