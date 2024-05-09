@@ -50,7 +50,19 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** Oauth login support via [Databricks](/docs/cloud/manage-access/set-up-databricks-oauth) is now generally available to Enterprise customers.
 
-- **New:** dbt Explorer GA bit
+- <expandable alt_header="New: GA of dbt Explorer" > 
+
+  dbt Explorer is now generally available for dbt Cloud customers. You can view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. 
+
+  To learn more about its features, check out:
+  
+  - [Explore projects](/docs/collaborate/explore-projects)
+  - [Explore multiple projects](/docs/collaborate/explore-multiple-projects) 
+  - [Column-level lineage](/docs/collaborate/column-level-lineage) 
+  - [Model performance](/docs/collaborate/model-performance) 
+  - [Project recommendations](/docs/collaborate/project-recommendations) 
+
+  </expandable>
 
 - **New:**: Native support for Microsoft Fabric in dbt Cloud is now generally available. This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started. 
 
