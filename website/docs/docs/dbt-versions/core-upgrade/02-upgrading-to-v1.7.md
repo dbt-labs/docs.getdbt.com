@@ -30,6 +30,7 @@ This is a relatively small behavior change, but worth calling out in case you no
 
 Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) creates or updates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. The `package-lock.yml` file contains a record of all packages installed and, if subsequent `dbt deps` runs contain no updated packages in `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
 
+
 ## New and changed features and functionality
 
 - [`dbt docs generate`](/reference/commands/cmd-docs) now supports `--select` to generate [catalog metadata](/reference/artifacts/catalog-json) for a subset of your project. Currently available for Snowflake and Postgres only, but other adapters are coming soon. 
@@ -75,6 +76,20 @@ The run_results.json now includes three attributes related to the `applied` stat
 - `compiled`: Boolean entry of the node compilation status (`False` after parsing, but `True` after compiling).
 - `compiled_code`: Rendered string of the code that was compiled (empty after parsing, but full string after compiling).
 - `relation_name`: The fully-qualified name of the object that was (or will be) created/updated within the database.
+
+### Deprecated functionality
+
+The ability for installed packages to override built-in materializations without explicit opt-in from the user is being deprecated.
+
+- Overriding a built-in materialization from an installed package raises a deprecation warning.
+- Using a custom materialization from an installed package does not raise a deprecation warning.
+- Using a built-in materialization package override from the root project via a wrapping materialization is still supported. For example:
+
+  ```
+  {% materialization view, default %}
+  {{ return(my_cool_package.materialization_view_default()) }}
+  {% endmaterialization %}
+  ```
 
 
 ### Quick hits
