@@ -12,7 +12,7 @@ pronouns: he/him
 location: Amsterdam, Netherlands
 jobTitle: Analytics Engineer
 companyName: Xebia
-organization: Co-author: *Fundamentals of Analytics Engineering*
+organization: "Co-author: *Fundamentals of Analytics Engineering*"
 socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/jmperafan/
