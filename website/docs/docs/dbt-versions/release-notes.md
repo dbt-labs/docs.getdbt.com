@@ -24,7 +24,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** [Unit tests](/docs/build/unit-tests) are now generally available in dbt Cloud. Unit tests enable you to test your SQL model logic against a set of static inputs.
 
-- <expandable alt_header="New: Preview of Azure Synapse Analytics" > 
+- <expandable alt_header="New: Preview of native support for Azure Synapse Analytics" > 
 
   Native support in dbt Cloud for Azure Synapse Analytics is now available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)! 
 
