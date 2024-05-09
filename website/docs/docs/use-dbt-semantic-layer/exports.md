@@ -38,7 +38,7 @@ You can run an export in your development environment using your development cre
 dbt sl export
 ```
 
-The following table lists the options for `dbt sl export` command, using the `--` flag to specify the parameters:  
+The following table lists the options for `dbt sl export` command, using the `--` flag prefix to specify the parameters:  
 
 | Parameters | Type    | Required | Description    |
 | ------- | --------- | ---------- | ---------------- |
