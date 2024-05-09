@@ -19,6 +19,7 @@ Use dbt Assist to generate documentation and tests from scratch, giving you the 
 
 5. Click **Save** to save the code. You should see the file changes under the **Version control** section.
 
-[Your participation in the beta trial is subject to the services agreement entered into between client and dbt Labs when you purchased dbt Cloud as supplemented by the dbt beta terms [link] and the dbt AI terms[link]. Users will be sent banners and/or alerts if material features and/or functionality are added, altered or deleted.]
+<!-- waiting on Brenda/Greg to confirm if we need teh below:
+[Your participation in the beta trial is subject to the services agreement entered into between client and dbt Labs when you purchased dbt Cloud as supplemented by the dbt beta terms [link] and the dbt AI terms[link]. Users will be sent banners and/or alerts if material features and/or functionality are added, altered or deleted.] -->
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/dbt-assist-doc.gif" width="100%" title="Use dbt Assist, a powerful AI feature, to automatically generate tests and documentation in the dbt Cloud IDE." />
