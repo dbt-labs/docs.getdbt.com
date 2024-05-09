@@ -20,4 +20,4 @@ To use dbt Assist, you must have an active [dbt Cloud Enterprise account](https:
 
 Please note: Always review AI-generated code as it may produce incorrect results. dbt Assist features and/or functionality may be added or eliminated as part of the beta trial.
 
-How can users give feedback? WAITING FOR GREG
+To give feedback, please reach out to your dbt Labs account team. We appreciate your feedback and suggestions as we improve dbt Assist.
