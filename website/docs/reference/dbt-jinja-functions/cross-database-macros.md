@@ -905,13 +905,13 @@ This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
 **Usage**:
 
 ```sql
-{{ dbt.to_date(2023, 10, 4) }}
+{{ dbt.date(2023, 10, 4) }}
 ```
 
 **Sample output (PostgreSQL)**:
 
 ```sql
-2023-10-04
+to_date('2023-10-04', 'YYYY-MM-DD')
 ```
 
 </VersionBlock>
