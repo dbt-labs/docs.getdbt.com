@@ -249,13 +249,13 @@ metrics:
 
 <TabItem value="saved queries">
 
-<VersionBlock lastVersion="1.7">
+<VersionBlock lastVersion="1.6">
 
-Support for saved queries has been added in dbt Core v1.8.
+Support for saved queries has been added in dbt Core v1.7.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.8"> 
+<VersionBlock firstVersion="1.7"> 
 
 <File name='models/semantic_models.yml'>
 

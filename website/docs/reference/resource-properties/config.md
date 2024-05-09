@@ -219,13 +219,13 @@ semantic_models:
 
 <TabItem value="saved queries">
 
-<VersionBlock lastVersion="1.7">
+<VersionBlock lastVersion="1.6">
 
-Support for the `config` property on `saved queries` was added in dbt Core v1.8.
+Support for the `config` property on `saved queries` was added in dbt Core v1.7.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.8">
+<VersionBlock firstVersion="1.7">
 
 <File name='models/<filename>.yml'>
 
