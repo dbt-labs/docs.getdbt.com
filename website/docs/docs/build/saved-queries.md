@@ -61,8 +61,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 
 </VersionBlock>
 
-All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
-Use the semantic model name prefix with the Dimension object, like `Dimension('user__ds')`.
+If you use multiple metrics in a saved query, then you will only be able to reference the common dimensions these metrics share in the `group_by` or `where` clauses. Use the entity name prefix with the Dimension object, like `Dimension('user__ds')`.
 
 ## Configure saved query
 
