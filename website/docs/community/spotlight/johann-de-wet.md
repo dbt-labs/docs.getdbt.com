@@ -16,7 +16,7 @@ socialLinks:
     link: https://www.linkedin.com/in/johann-de-wet-21a6128/
 dateCreated: 2024-05-07
 hide_table_of_contents: true
-communityAward: true
+communityAward: false
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
