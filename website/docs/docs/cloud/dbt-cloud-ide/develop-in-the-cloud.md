@@ -75,12 +75,6 @@ Use dbt-jsonschema to validate dbt YAML files, helping you leverage the autocomp
 
 ## Get started with the Cloud IDE
 
-:::tip Disable ad blockers
-
-To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
-
-:::
-
 In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud development environment](/docs/dbt-cloud-environments). In the following steps, we outline how to set up developer credentials and access the IDE. If you're creating a new project, you will automatically configure this during the project setup. 
 
 The IDE uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
@@ -100,40 +94,27 @@ Set up your developer credentials:
 
 Nice job, you're ready to start developing and building models 🎉!  
 
-<expandable alt_header="About the start up process and work retention">
+### Considerations
+- To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
+- To preserve performance, there's a file size limitation for repositories over 10GB. If you have a repo over 10GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
+- <expandable alt_header="About the start up process and work retention">
+  ### Start-up process
+  There are three start-up states when using or launching the Cloud IDE:
+  - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
+  - **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+  - **Hot start &mdash;** This is the state of resuming an existing or active develop session within three hours of the last activity.
 
-### Start-up process
+  ### Work retention
+  The Cloud IDE needs explicit action to save your changes. There are three ways your work is stored:
 
-There are three start-up states when using or launching the Cloud IDE:
+  - **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
 
-- **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
-- **Hot start &mdash;** This is the state of resuming an existing or active develop session within three hours of the last activity.
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-unsaved-modal.jpg" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
 
-### Work retention
+  - **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
+  - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
 
-The Cloud IDE needs explicit action to save your changes. There are three ways your work is stored:
-
-- **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-unsaved-modal.jpg" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
-
-- **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
-- **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
-
-</expandable>
-
-<expandable alt_header="About the dbt Cloud IDE filesystem">
-
-NEED SOME INFO ON THE DBT CLOUD FILE SYSTEM? HOW DOES IT WORK?
-
-- Manifest caching &mdash; To streamline performance, caching between runs has been discontinued. This means that the Cloud IDE will always run a full manifest build on every run.?? IS THIS TRUE?
-
-- Filesystem size &mdash; To preserve performance, there's a file size limitation for repositories over 10GB. If you have a repo over 10GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
-
-These enhancements are part of our ongoing commitment to improving the functionality and performance of the dbt Cloud IDE.
-
-</expandable>
+  </expandable>
 
 ## Build and document your projects
 
