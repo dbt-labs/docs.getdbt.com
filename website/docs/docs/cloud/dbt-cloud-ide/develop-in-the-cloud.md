@@ -17,7 +17,7 @@ The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/
 - Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) &mdash; Help standardize and fix your SQL code effortlessly.
 - Navigation tools &mdash; Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
 - Version control &mdash; Manage code versions with a few clicks.
-- Project documentation &mdash; Generate and view your [project documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time.
+- Project documentation &mdash; Generate and view your [project documentation](#build-and-document-your-projects) for your dbt project in real-time.
 - Build, test, and run button &mdash; Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 
 These [features](#dbt-cloud-ide-features) create a powerful editing environment for efficient SQL coding, suitable for both experienced and beginner developers.
