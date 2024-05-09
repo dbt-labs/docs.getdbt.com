@@ -162,7 +162,7 @@ doug_beatty:
 
 doug_guthrie:
   image_url: /img/blog/authors/dguthrie.jpeg
-  job_title: Solutions Architect
+  job_title: Senior Solutions Architect
   links:
     - icon: fa-github
       url: https://github.com/dpguthrie
@@ -578,3 +578,30 @@ santiago_jauregui:
       url: https://www.linkedin.com/in/santiago-jauregui/
   name: Santiago Jauregui
   organization: MODO
+
+michelle_ark:
+  image_url: /img/blog/authors/michelle-ark.png
+  job_title: Staff Software Engineer
+  name: Michelle Ark
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/michelle-ark
+
+chenyu_li:
+  image_url: /img/blog/authors/chenyu-li.png
+  job_title: Staff Software Engineer
+  name: Chenyu Li
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/chenyu-li-450b06a8
+
+colin_rogers:
+  image_url: /img/blog/authors/colin-rogers.jpeg
+  job_title: Senior Software Engineer
+  name: Colin Rogers
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/ckrogers
