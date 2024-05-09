@@ -44,6 +44,16 @@ Different data platforms might have different caching layers and cache invalidat
 
 Declarative caching enables you to pre-warm the cache using [saved queries](/docs/build/saved-queries) by setting the cache config to `true` in your `saved_queries` settings. This is useful for optimizing performance for key dashboards or common ad-hoc query requests. For configuration details, refer to [Declarative caching setup](#declarative-caching-setup).
 
+<details>
+
+<summary> 📹 Check out this video demo to see how declarative caching works!</summary>
+
+This video demonstrates the concept of declarative caching, how to run it using the dbt Cloud scheduler, and how fast your dashboards load as a result.
+
+<LoomVideo id='aea82a4dee364dfdb536e7b8068684e7' />
+
+</details>
+
 How declarative caching works:
 - Make sure your saved queries YAML configuration file has [exports](/docs/use-dbt-semantic-layer/exports) defined.
 - Running a saved query triggers the dbt Semantic Layer to:
@@ -54,7 +64,7 @@ How declarative caching works:
 
 Refer to the following diagram, which illustrates what happens when the dbt Semantic Layer receives a query request:
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Declarative cache query flow" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/declarative-cache-query-flow.jpg" width="70%" title="Overview of the declarative cache query flow" />
 
 ### Declarative caching setup
 
@@ -89,13 +99,18 @@ saved-queries:
 ```
 </File>
 
-When you run a saved query:
+### Run your declarative cache
+
+After setting up declarative caching in your YAML configuration, you can now run [exports](/docs/use-dbt-semantic-layer/exports) with the dbt Cloud job scheduler to build a cached table from a saved query into your data platform.
+
+- Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query dbt Cloud.
 - The dbt Semantic Layer builds a cache table in your data platform in a dedicated `dbt_sl_cache` schema. 
 - The cache schema and tables are created using your deployment credentials. You need to grant read access to this schema for your Semantic Layer user.
-- Use [exports to set up a job](/docs/use-dbt-semantic-layer/exports) to run a saved query dbt Cloud.
 - The cache refreshes (or rebuilds) on the same schedule as the saved query job.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/cache-creation-flow.jpg" width="70%" title="Create cache flow" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/cache-creation-flow.jpg" width="70%" title="Overview of the cache creation flow." />
+
+After a successful job run, you can go back to your dashboard to experience the speed and benefits of declarative caching.
 
 ## Cache management
 
