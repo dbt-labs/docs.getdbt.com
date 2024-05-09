@@ -44,6 +44,14 @@ Different data platforms might have different caching layers and cache invalidat
 
 Declarative caching enables you to pre-warm the cache using [saved queries](/docs/build/saved-queries) by setting the cache config to `true` in your `saved_queries` settings. This is useful for optimizing performance for key dashboards or common ad-hoc query requests. For configuration details, refer to [Declarative caching setup](#declarative-caching-setup).
 
+<details>
+
+<summary>Check out this video demo to see how Declarative caching works</summary>
+
+  <Loom id="aea82a4dee364dfdb536e7b8068684e7" titl="This video demonstrates the concept of Declarative caching, how to run it using the dbt Cloud scheduler, and how fast your dashboards load as a result."/>
+
+</details>
+
 How declarative caching works:
 - Make sure your saved queries YAML configuration file has [exports](/docs/use-dbt-semantic-layer/exports) defined.
 - Running a saved query triggers the dbt Semantic Layer to:
