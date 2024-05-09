@@ -18,7 +18,7 @@ Release notes are grouped by month. For customers using dbt Virtual Private Clou
 
 ## May 2024
 
-- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces [caching](/docs/use-dbt-semantic-layer/sl-cache), allowing you to cache common queries to speed up performance and reduce query compute costs. Available for dbt Cloud Team or Enterprise accounts.
+- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces [declarative caching](/docs/use-dbt-semantic-layer/sl-cache), allowing you to cache common queries to speed up performance and reduce query compute costs. Available for dbt Cloud Team or Enterprise accounts.
 
 - <expandable alt_header="New: Keep on latest version" > 
 
