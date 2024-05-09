@@ -4,13 +4,13 @@ title: Tyler Rouze
 description: |
   My journey in data started all the way back in college where I studied Industrial Engineering. One of the core topics you learn in this program is mathematical optimization, where we often use data files as inputs to model constraints on these kinds of problems! Since then, I've been a data analyst on both small and large teams, and more recently a consultant shepherding our firm's dbt-based projects towards success.
 
-  Since joining the dbt Community, I've spoken at the <a href="https://www.meetup.com/chicago-dbt-meetup/" rel="noopener noreferrer" target="_blank">Chicago dbt Meetup</a>, <a href="https://coalesce.getdbt.com/speakers/tyler-rouze" rel="noopener noreferrer" target="_blank">Coalesce</a> (a milestone for my career!), dbt's Data Leaders Series, and even made open source contributions to `dbt-core`! It has been the joy of my career to be a part of this vibrant community.
+  Since joining the dbt Community, I've spoken at the [Chicago dbt Meetup](https://www.meetup.com/chicago-dbt-meetup/), [Coalesce](https://coalesce.getdbt.com/speakers/tyler-rouze)(a milestone for my career!), dbt's Data Leaders Series, and even made open source contributions to `dbt-core`! It has been the joy of my career to be a part of this vibrant community.
 image: /img/community/spotlight/tyler-rouze.jpg
 pronouns: he/him
 location: Austin, TX, USA
 jobTitle: Managing Consultant
 companyName: Analytics8
-organization: [Chicago dbt Meetup](https://www.meetup.com/chicago-dbt-meetup/)
+organization: "[Chicago dbt Meetup](https://www.meetup.com/chicago-dbt-meetup/)"
 socialLinks:
   - name: Website
     link: https://tylerrouze.com
