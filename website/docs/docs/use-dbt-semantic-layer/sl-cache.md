@@ -76,7 +76,7 @@ saved_queries:
 ```
 </File>
 
-To enable saved queries at the project level, you can set the `saved-queries` configuration in the [`dbt_project.yml` file](/reference/dbt_project.yml). This saved you time in configuring saved queries in each file:
+To enable saved queries at the project level, you can set the `saved-queries` configuration in the [`dbt_project.yml` file](/reference/dbt_project.yml). This saves you time in configuring saved queries in each file:
 
 <File name='dbt_project.yml'>
 
