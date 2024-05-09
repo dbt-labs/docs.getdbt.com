@@ -227,7 +227,6 @@ The following instructions explain how to update the dbt Cloud CLI to the latest
 
 During the public preview period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
 
-
 <Tabs>
 
 <TabItem value="mac" label="macOS (brew)">
