@@ -19,9 +19,12 @@ Release notes are grouped by month. For customers using dbt Virtual Private Clou
 ## May 2024
 
 #### dbt Cloud Launch Showcase event
-The following features were announced at the [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
 
-- <expandable alt_header="New: Public Preview of Azure Synapse Analytics" > 
+The following features are new or enhanced as part of our [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
+
+- **New:** [Unit tests](/docs/build/unit-tests) are now generally available in dbt Cloud. Unit tests enable you to test your SQL model logic against a set of static inputs.
+
+- <expandable alt_header="New: Preview of Azure Synapse Analytics" > 
 
   Native support in dbt Cloud for Azure Synapse Analytics is now available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)! 
 
@@ -38,31 +41,28 @@ The following features were announced at the [dbt Cloud Launch Showcase](https:/
 
   </expandable>
 
-- **New**: RBAC environment (maybe?)
 
-- **New**: [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature helping you generate documentation and tests, saving you time and helping you deliver data that works. Available in Beta for dbt Cloud Enterprise users in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) only.
+- **New:** [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature helping you generate documentation and tests, saving you time and helping you deliver data that works. Available in Beta for dbt Cloud Enterprise users in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) only.
 
-- **New**: The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in Beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
+- **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in Beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
 
-- **New**: You can now add [metrics as dimensions](/docs/build/ref-metrics-in-filters) to your metric filters to create more complex metrics and gain more insights Available for all users.
+- **New:** You can now add [metrics as dimensions](/docs/build/ref-metrics-in-filters) to your metric filters to create more complex metrics and gain more insights Available for all users.
 
-- **Update** Databricks OAuth GA bit
+- **New:** Oauth login support via [Databricks](/docs/cloud/manage-access/set-up-databricks-oauth) is now generally available to Enterprise customers.
 
-- **Update** Unit testing GA bit
+- **New:** dbt Cloud infrastructure has been migrated to AWS cell-based architecture for our [multi-tenant environments](/docs/cloud/about-cloud/access-regions-ip-addresses).
 
-- **Update** Cell based arch GA bit
+- **New:** dbt Explorer GA bit
 
-- **Update**: dbt Explorer GA bit
+- **New:**: Native support for Microsoft Fabric in dbt Cloud is now generally available. This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started. 
 
-- **Update**: Native support for Microsoft Fabric in dbt Cloud is now Generally Available (GA). This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started. 
+- **New:** [dbt Mesh](ttps://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-) is now generally available to dbt Cloud Enterprise users. dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections. Get started with dbt Mesh by reading the [dbt Mesh quickstart guide](https://docs.getdbt.com/guides/mesh-qs?step=1).
 
-- **Update**: [dbt Mesh](ttps://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-) is now Generally Available to dbt Cloud Enterprise users. dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections. Get started with dbt Mesh by reading the [dbt Mesh quickstart guide](https://docs.getdbt.com/guides/mesh-qs?step=1).
+- **New:** [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now generally available to all users. The dbt Cloud CLI is a command-line interface that allows you to interact with dbt Cloud, use automatic deferral, leverage dbt Mesh, and more!
 
-- **Update**: [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now Generally Available to all users. The dbt Cloud CLI is a command-line interface that allows you to interact with dbt Cloud, use automatic deferral, leverage dbt Mesh, and more!
+- **New:** The dbt Semantic Layer [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) is now generally available to dbt Cloud Team or Enterprise users. The Google Sheets integration allows you to query and save your dbt Semantic Layer metrics directly from Google Sheets.
 
-- **Update**: The dbt Semantic Layer [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) is now Generally Available to dbt Cloud Team or Enterprise users. The Google Sheets integration allows you to query and save your dbt Semantic Layer metrics directly from Google Sheets.
-
-- **Enhancement**: As part of our ongoing commitment to improving the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#considerations), the filesystem now comes with improvements to speed up dbt development, such as introducing a Git repository limit of 10GB.
+- **Enhancement:** As part of our ongoing commitment to improving the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#considerations), the filesystem now comes with improvements to speed up dbt development, such as introducing a Git repository limit of 10GB.
 -----------------------------------------------------------------------------------------------------------------------------------
 
 - <expandable alt_header="New: Keep on latest version" > 
