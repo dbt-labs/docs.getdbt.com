@@ -19,7 +19,7 @@ socialLinks:
     link: https://www.yasuhisay.info
 dateCreated: 2024-05-03
 hide_table_of_contents: true
-communityAward: true
+communityAward: false
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
