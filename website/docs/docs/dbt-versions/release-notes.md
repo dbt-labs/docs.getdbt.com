@@ -50,8 +50,6 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** Oauth login support via [Databricks](/docs/cloud/manage-access/set-up-databricks-oauth) is now generally available to Enterprise customers.
 
-- **New:** dbt Cloud infrastructure has been migrated to AWS cell-based architecture for our [multi-tenant environments](/docs/cloud/about-cloud/access-regions-ip-addresses).
-
 - **New:** dbt Explorer GA bit
 
 - **New:**: Native support for Microsoft Fabric in dbt Cloud is now generally available. This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started. 
