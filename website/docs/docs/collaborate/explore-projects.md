@@ -6,8 +6,6 @@ pagination_next: "docs/collaborate/model-performance"
 pagination_prev: null
 ---
 
-# Explore your dbt projects <Lifecycle status='public preview' />
-
 With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
 ## Prerequisites
@@ -230,7 +228,7 @@ Example of the details view for the model `supplies`:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
-## Staging environment <Lifecycle status='beta' />
+## Staging environment
 
 dbt Explorer supports views for [Staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the Production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny. Once the Staging environment is configured and has a successful job run, it will be visible on the dbt Explorer landing page.
 
