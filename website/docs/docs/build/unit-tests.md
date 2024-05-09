@@ -20,6 +20,7 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 - You must specify all fields in a BigQuery STRUCT in a unit test. You cannot use only a subset of fields in a STRUCT.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
+- Table names must be [aliased](/docs/build/custom-aliases) in order to unit test `join` logic.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
@@ -38,6 +39,12 @@ You should unit test a model:
 - Edge cases not yet seen in your actual data that you want to handle.
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
 - Models with high "criticality" (public, contracted models or models directly upstream of an exposure).
+
+### When to run unit tests
+
+dbt Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
+
+Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPE` environment variable to exclude unit tests from your production builds and save compute. 
 
 ## Unit testing a model
 
@@ -291,6 +298,9 @@ unit_tests:
       rows:
         - {id: 1, first_name: emily}
 ```
+
+## Known limitations 
+
 
 ## Additional resources
 

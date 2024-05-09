@@ -19,9 +19,9 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 <Lightbox src="/img/docs/dbt-cloud/cloud-cli-overview.jpg" title="Diagram of how the dbt Cloud CLI works with dbt Cloud's infrastructure to run dbt commands from your local command line." />
 
 ## Prerequisites 
-The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
+The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
 
-- Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
+- You are on dbt version 1.5 or higher. Alternatively, set it to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version.
 
 ## Install dbt Cloud CLI
 
@@ -50,6 +50,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
 :::tip Run `pip uninstall dbt` to uninstall dbt Core
 
 If you've installed dbt Core globally in some other way, uninstall it first before proceeding:
+
 ```bash
 pip uninstall dbt
 ```
