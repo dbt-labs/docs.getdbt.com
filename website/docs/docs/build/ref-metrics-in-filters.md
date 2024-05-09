@@ -148,7 +148,7 @@ MetricFlow then filters this table to accounts with more than 5 data model runs 
 | --- |
 | 2 |
 
-## Considerations when using metrics in filter
+## Considerations
 
 - When using a metric filter, ensure the sub-query can join to the outer query without fanning out the result (unexpectedly increasing the number of rows).
   - The example that filters the accounts measure using `{{ Metric('data_model_runs', group_by=['account']) }}` is valid because it aggregates the model runs to the account level.
