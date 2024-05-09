@@ -37,8 +37,6 @@ The following features were announced at the [dbt Cloud Launch Showcase](https:/
 
 - **New**: The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in Beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
 
-- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces [caching](/docs/use-dbt-semantic-layer/sl-cache), allowing you to cache common queries to speed up performance and reduce query computation. Available for dbt Cloud Team or Enterprise users.
-
 - **New**: You can now add [metrics as dimensions](/docs/build/ref-metrics-in-filters) to your metric filters to create more complex metrics and gain more insights Available for all users.
 
 - **Update** Databricks OAuth GA bit
