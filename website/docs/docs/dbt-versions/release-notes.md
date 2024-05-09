@@ -18,7 +18,7 @@ Release notes are grouped by month. For customers using dbt Virtual Private Clou
 
 ## May 2024
 
-- **Update**: The dbt Cloud CLI is now available for Azure Single tenant, and is accessible in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) for both multi-tenant and single-tenant accounts.
+- **Update**: The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now available for Azure Single tenant, and is accessible in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) for both multi-tenant and single-tenant accounts.
 
 - <expandable alt_header="New: Keep on latest version" > 
 
