@@ -48,7 +48,7 @@ Declarative caching enables you to pre-warm the cache using [saved queries](/doc
 
 <summary>Check out this video demo to see how Declarative caching works</summary>
 
-  <Loom id='aea82a4dee364dfdb536e7b8068684e7' titel="This video demonstrates the concept of Declarative caching, how to run it using the dbt Cloud scheduler, and how fast your dashboards load as a result." />
+<Loom id='aea82a4dee364dfdb536e7b8068684e7' title="This video demonstrates the concept of Declarative caching, how to run it using the dbt Cloud scheduler, and how fast your dashboards load as a result." />
 
 </details>
 
