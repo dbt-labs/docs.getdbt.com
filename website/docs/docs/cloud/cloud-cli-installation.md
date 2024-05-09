@@ -258,12 +258,11 @@ To update:
 
 </Tabs>
 
-## VS Code extensions <Lifecycle status="beta"/>
+## VS Code extension <Lifecycle status="beta"/>
 
 Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. 
 
 [Install Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/), a VS Code extension, now available in beta for the the dbt Cloud CLI.
-
 
 ## FAQs
 
