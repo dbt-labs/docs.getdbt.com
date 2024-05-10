@@ -130,9 +130,9 @@ The dbt Semantic Layer is part of dbt Cloud. It allows data teams to define metr
 
 dbt Labs handles this in a secure way using encryption and authentication from the client’s data warehouse. In certain cases, such data may be cached on dbt Labs system ephemerally (potentially for up to 10 minutes although usually much shorter time frame). 
 
-dbt Labs employees cannot access cached data during normal business operations and must have direct manager approval for access to the underlying infrastructure. Approval for such access would only be granted when necessary for providing a client services and never with the purpose of enriching dbt Labs. No client warehouse data is retained on dbt Labs's systems. 
+dbt Labs employees cannot access cached data during normal business operations and must have direct manager approval for access to the underlying infrastructure. Approval for such access would only be granted when necessary for providing a client services and never with the purpose of enriching dbt Labs. 
 
-In the coming months, we are releasing a longer-term caching solution to optimize query performance. This caching feature will make use of the client data warehouse, and such cached data will not be stored on dbt Labs’s systems. In addition, this feature will be activated only through an opt-in. Therefore caching is always in client hands and at client discretion.
+No client warehouse data is retained on dbt Labs's systems. We offer a caching solution to optimize query performance. This caching feature makes use of the client data warehouse, and such cached data is not stored on dbt Labs’s systems. In addition, this feature is activated only through a client opt-in. Therefore caching is always in client hands and at client discretion.
 
 </expandable>
 
@@ -231,7 +231,7 @@ Yes, while [entities](/docs/build/entities) must be defined under “entities,�
 
 <expandable alt_header="What integrations are supported today?">
 
-There are a number of data applications have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, and Mode, among others.
+There are a number of data applications that have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, and Mode, among others.
 
 Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
 
