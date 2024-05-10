@@ -23,7 +23,7 @@ Essentially, exports are like any other table in your data platform &mdash; they
 
 ## Run exports
 
-Before you're able to run exports in development or production, you'll need to make sure you've [configured saved queries and exports](/docs/build/saved-queries#configure-exports) in your dbt project.
+Before you're able to run exports in development or production, you'll need to make sure you've [configured saved queries and exports](/docs/build/saved-queries) in your dbt project. In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the dbt Cloud job scheduler to cache common queries, speed up performance, and reduce compute costs.
 
 There are two ways to run an export:
   
