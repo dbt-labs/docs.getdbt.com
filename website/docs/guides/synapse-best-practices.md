@@ -14,11 +14,13 @@ recently_updated: true
 
 <div style={{maxWidth: '900px'}}>
 
+## history & announcement
+
 :::note Glossary of Terms
 **ASADSP**: Azure Synapse Analytics Dedicated SQL Pools
-**Fabric SQLDW**: Microsoft Fabric Synapse SQL Data Warehouse
 
-## history & announcement
+**Fabric SQLDW**: Microsoft Fabric Synapse SQL Data Warehouse
+:::
 
 At dbt Labs, we’ve always believed in meeting analytics engineers where they are. That’s why we’re so excited to announce that today, analytics engineers within the Microsoft Ecosystem can use dbt Cloud with not only Microsoft Fabric but also Azure Synapse Analytics Dedicated SQL Pools.
 
@@ -109,8 +111,9 @@ However, if you must use ADF as the deployment pipeline, it is possible to use d
 
 #### permissions for analytics engineers
 
-:::caution
+:::caution 
 ⚠️ User-based Azure Active Directory authentication is not yet supported in dbt Cloud. As a workaround, consider having a [Service Principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser) made for each contributing Analytics Engineer for use in dbt Cloud
+:::
 
 In the development warehouse, each user should have the following privileges: `EXECUTE`, `SELECT`, `INSERT`, `UPDATE`, and `DELETE`.
 
