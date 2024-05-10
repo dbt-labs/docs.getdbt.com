@@ -41,7 +41,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </expandable>
 
-- **New:** [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature, available in beta, helping you generate documentation and tests, saving you time and helping you deliver data that works. Available for dbt Cloud Enterprise accounts in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
+- **New:** [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature, available in beta, helping you generate documentation, metrics, semantic models, and tests, saving you time and helping you deliver data that works. Available for dbt Cloud Enterprise accounts in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
 - **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
 
