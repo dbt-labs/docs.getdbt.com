@@ -13,6 +13,7 @@ To run only your unit tests, use the command:
 
 ## Before you begin
 
+- This functionality is only supported in dbt versions 1.8 and above
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
