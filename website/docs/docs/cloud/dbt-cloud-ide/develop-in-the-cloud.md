@@ -98,6 +98,7 @@ Nice job, you're ready to start developing and building models 🎉!
 - To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
 - To preserve performance, there's a file size limitation for repositories over 10GB. If you have a repo over 10GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
 - <expandable alt_header="About the start up process and work retention">
+  
   ### Start-up process
   There are three start-up states when using or launching the Cloud IDE:
   - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
