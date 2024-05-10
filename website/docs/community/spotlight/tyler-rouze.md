@@ -10,7 +10,7 @@ pronouns: he/him
 location: Austin, TX, USA
 jobTitle: Managing Consultant
 companyName: Analytics8
-organization: <a href="https://www.meetup.com/chicago-dbt-meetup/">Chicago dbt Meetup</a>
+organization: Chicago dbt Meetup
 socialLinks:
   - name: Website
     link: https://tylerrouze.com
