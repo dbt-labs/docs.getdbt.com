@@ -124,6 +124,25 @@ The dbt Semantic Layer dynamically computes the metric using the underlying data
 The dbt Semantic Layer does not store a physical copy of your data. It uses underlying tables to construct or compute the requested output.
 </expandable>
 
+<expandable alt_header="How does the Semantic Layer handle data?">
+
+The dbt Semantic Layer is part of dbt Cloud. It allows data teams to define metrics once, centrally, and access them from any integrated analytics tool, ensuring consistent answers across diverse datasets. In providing this service, dbt Labs permits clients to access Semantic Layer metrics. Client data passes through the Semantic Layer on the way back from the data warehouse. 
+
+dbt Labs handles this in a secure way using encryption and authentication from the client’s data warehouse. In certain cases, such data may be cached on dbt Labs system ephemerally (data is not persistently stored). 
+
+dbt Labs employees cannot access cached data during normal business operations and must have a business need and/or direct manager approval for access to the underlying infrastructure. Access would only be when necessary for providing a client services and never with the purpose of enriching dbt Labs. 
+
+No client warehouse data is retained on dbt Labs's systems. We offer a caching solution to optimize query performance. The caching feature uses client data warehouse storage rather than being stored on dbt Labs’s systems. In addition, this feature is activated only through a client opt-in. Therefore, caching is always in client hands and at client discretion
+
+</expandable>
+
+<expandable alt_header="Does our agreement, the Terms of Service (ToS) for dbt Cloud, apply to the Semantic Layer?">
+
+Yes it does.
+
+</expandable>
+
+
 <expandable alt_header="Where is MetricFlow hosted? How do queries pass through MetricFlow and dbt Cloud and back to the end user?">
 
 MetricFlow is hosted in dbt Cloud. Requests from the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) are routed from our API gateway to MetricFlow, which generates the SQL to compute what's requested by the user. MetricFlow hands the SQL back to our gateway, which then executes it against the data platform.
@@ -212,7 +231,7 @@ Yes, while [entities](/docs/build/entities) must be defined under “entities,�
 
 <expandable alt_header="What integrations are supported today?">
 
-There are a number of data applications have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, and Mode, among others.
+There are a number of data applications that have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, and Mode, among others.
 
 Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
 

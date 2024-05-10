@@ -21,6 +21,7 @@ With dbt Core v1.8 and dbt Cloud environments that opt to "Keep on latest versio
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
 - Available to dbt Cloud customers who have selected ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) and  dbt Core v1.8.0 or later.
+- Table names must be [aliased](/docs/build/custom-aliases) in order to unit test `join` logic.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
@@ -39,6 +40,12 @@ You should unit test a model:
 - Edge cases not yet seen in your actual data that you want to handle.
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
 - Models with high "criticality" (public, contracted models or models directly upstream of an exposure).
+
+### When to run unit tests
+
+dbt Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
+
+Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPE` environment variable to exclude unit tests from your production builds and save compute. 
 
 ## Unit testing a model
 
@@ -292,6 +299,18 @@ unit_tests:
       rows:
         - {id: 1, first_name: emily}
 ```
+
+
+## Unit test exit codes
+
+Unit test successes and failures are represented by two exit codes:
+- Pass (0)
+- Fail (1)
+
+Exit codes differ from data test success and failure outputs because they don't directly reflect failing data tests. Data tests are queries designed to check specific conditions in your data, and they return one row per failed test case (for example, the number of values with duplicates for the `unique` test). dbt reports the number of failing records as failures. Whereas, each unit test represents one 'test case', so results are always 0 (pass) or 1 (fail) regardless of how many records failed within that test case.
+
+Learn about [exit codes](/reference/exit-codes) for more information.
+
 
 ## Additional resources
 
