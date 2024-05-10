@@ -203,4 +203,5 @@ To select `saved_queries` by resource type, run `dbt build --resource-type saved
 </detailsToggle>
 
 ## Related docs
+- Configure [caching](/docs/use-dbt-semantic-layer/sl-cache)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
