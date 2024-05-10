@@ -36,23 +36,23 @@ saved_queries:
       cache:
         enabled: true  # Or false if you want it disabled by default
     query_params:
-        metrics:
-            - simple_metric
-        group_by:
-            - "Dimension('user__ds')"
-        where:
-            - "{{ Dimension('user__ds', 'DAY') }} <= now()"
-            - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
+      metrics:
+        - simple_metric
+      group_by:
+        - "Dimension('user__ds')"
+      where:
+        - "{{ Dimension('user__ds', 'DAY') }} <= now()"
+        - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
     exports:
-        - name: my_export
-          config:
-            alias: my_export_alias
-            export_as: table
-            schema: my_export_schema_name
+      - name: my_export
+        config:
+          alias: my_export_alias
+          export_as: table
+          schema: my_export_schema_name
 ```
 </File>
 
-</VersionBlock> 
+</VersionBlock>
 
 <!-- For versions 1.7 and lower-->
 <VersionBlock lastVersion="1.7">
@@ -65,20 +65,21 @@ saved_queries:
     description: "{{ doc('saved_query_description') }}"
     label: Test saved query
     query_params:
-        metrics:
-            - simple_metric
-        group_by:
-            - "Dimension('user__ds')"
-        where:
-            - "{{ Dimension('user__ds', 'DAY') }} <= now()"
-            - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
+      metrics:
+        - simple_metric
+      group_by:
+        - "Dimension('user__ds')"
+      where:
+        - "{{ Dimension('user__ds', 'DAY') }} <= now()"
+        - "{{ Dimension('user__ds', 'DAY') }} >= '2023-01-01'"
     exports:
-        - name: my_export
-          config:
-            alias: my_export_alias
-            export_as: table
-            schema: my_export_schema_name
+      - name: my_export
+        config:
+          alias: my_export_alias
+          export_as: table
+          schema: my_export_schema_name
 ```
+
 </File>
 </VersionBlock>
 
