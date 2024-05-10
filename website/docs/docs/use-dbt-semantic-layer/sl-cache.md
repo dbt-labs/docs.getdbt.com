@@ -120,9 +120,6 @@ If an upstream model has data in it that was created after the cache was created
 
 You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using the `InvalidateCacheResult` field.
 
-## FAQs
-<detailsToggle alt_header="How is my data stored?" >
-
-Your data remains within your own data platform. This ensures privacy as dbt Cloud uses this existing infrastructure for caching
-
-</detailsToggle>
+## Related docs
+- [Saved queries](/docs/build/saved-queries)
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
