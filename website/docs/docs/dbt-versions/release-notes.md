@@ -18,6 +18,10 @@ Release notes are grouped by month. For customers using dbt Virtual Private Clou
 
 ## May 2024
 
+
+- **Update**: The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now available for Azure single tenant and is accessible in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) for both multi-tenant and single-tenant accounts.
+- **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces [declarative caching](/docs/use-dbt-semantic-layer/sl-cache), allowing you to cache common queries to speed up performance and reduce query compute costs. Available for dbt Cloud Team or Enterprise accounts.
+
 - <expandable alt_header="New: Keep on latest version" > 
 
   The **Keep on latest version** setting is now Generally Available (previously Public Preview).
