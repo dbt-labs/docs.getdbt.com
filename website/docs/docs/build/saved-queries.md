@@ -191,4 +191,4 @@ For more information on how to run exports, refer to the [Exports](/docs/use-dbt
 ## Related docs
 
 - [Exports](/docs/use-dbt-semantic-layer/exports)
-- [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl)
+- Configure [caching](/docs/use-dbt-semantic-layer/sl-cache)
