@@ -16,7 +16,7 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 <expandable alt_header="Does dbt Labs share my personal data with third parties">
 
-  dbt Labs only shares client personal information as needed to perform the services, under client instructions, or for legal, tax or compliance reasons.
+  dbt Labs only shares client personal information as needed to perform the services, under client instructions, or for legal, tax, or compliance reasons.
 
 </expandable>
 
@@ -28,7 +28,7 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 <expandable alt_header="Does dbt Assist access my warehouse data?">
 
-  dbt Assist utilizes the user’s prompt to initiate a search via client’s API of the client’s model provided by its AI vendor and returns probable output. Such output must be double-checked by the user for completeness and accuracy. This does not involve the use of client’s warehouse data.
+  dbt Assist utilizes the user’s prompt to initiate a search via APIs of the client’s model provided by its AI vendor and returns probable output. Such output must be double-checked by the user for completeness and accuracy. This does not involve the use of the client’s warehouse data.
 
 </expandable>
 
