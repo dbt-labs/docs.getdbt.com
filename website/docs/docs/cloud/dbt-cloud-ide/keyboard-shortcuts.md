@@ -11,7 +11,7 @@ Use this dbt Cloud IDE  page to help you quickly reference some common operation
 
 | Shortcut description | macOS | Windows |
 |--------|----------------|------------------|
-| View a full list of editor shortcuts, such as add a line comment, change tab display size, build modified models, change editor font size, and more.  | Fn-F1 | Fn-F1 |
+| View a full list of editor shortcuts, such as adding a line comment, changing tab display size, building modified models, changing editor font size, and more.  | Fn-F1 | Fn-F1 |
 | Select a file to open. | Command-O | Control-O |
 | Close the currently active editor tab. | Option-W | Alt-W |
 | Preview code. | Command-Enter | Control-Enter |
