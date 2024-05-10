@@ -697,7 +697,7 @@ or
 
 </File>
 
-Beginning in `dbt-databricks==2.0.0` we support [on_configuration_change](https://docs.getdbt.com/reference/resource-configs/on_configuration_change) for most available properties of these materializations.
+We support [on_configuration_change](https://docs.getdbt.com/reference/resource-configs/on_configuration_change) for most available properties of these materializations.
 The following table summarizes our configuration support:
 
 | Databricks Concept | Config Name | MV/ST support |
