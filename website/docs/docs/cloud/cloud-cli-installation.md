@@ -50,6 +50,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
 :::tip Run `pip uninstall dbt` to uninstall dbt Core
 
 If you've installed dbt Core globally in some other way, uninstall it first before proceeding:
+
 ```bash
 pip uninstall dbt
 ```
@@ -222,6 +223,7 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 ## Update dbt Cloud CLI
 
 The following instructions explain how to update the dbt Cloud CLI to the latest version depending on your operating system.
+
 
 <Tabs>
 
