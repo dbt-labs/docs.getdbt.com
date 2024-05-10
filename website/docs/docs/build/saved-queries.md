@@ -26,7 +26,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `description`     | String      | Required     | A description of the saved query.     |
 | `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
 | `config`     | String      |  Optional     |  Use the [config](/reference/resource-properties/config) property to specify configurations for your saved query. Supports [meta](/reference/resource-configs/meta), [group](/reference/resource-configs/group), and [enabled](/reference/resource-configs/enabled) configurations.   |
-| `config::cache`     | String      | Optional     |  A boolean to specify if a saved query should be used to populate the cache. Accepts `true` or `false`. Defaults to `false` |
+| `config::cache`     | String      | Optional     |  A boolean to specify if a saved query should be used to populate the [cache](/docs/use-dbt-semantic-layer/sl-cache). Accepts `true` or `false`. Defaults to `false` |
 | `query_params`       | Structure   | Required     | Contains the query parameters. |
 | `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
 | `query_params::group_by`    | List or String          | Optional    | A list of the Entities and Dimensions to be used in the query, which include the `Dimension` or `TimeDimension`. |
@@ -66,6 +66,8 @@ If you use multiple metrics in a saved query, then you will only be able to refe
 ## Configure saved query
 
 Use saved queries to define and manage common Semantic Layer queries in YAML, including metrics and dimensions. Saved queries enable you to organize and reuse common MetricFlow queries within dbt projects. For example, you can group related metrics together for better organization, and include commonly used dimensions and filters.
+
+In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the dbt Cloud job scheduler to cache common queries, speed up performance, and reduce compute costs.
 
 <!-- For versions 1.8 and higher -->
 
