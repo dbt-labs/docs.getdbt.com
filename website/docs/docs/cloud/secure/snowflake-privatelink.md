@@ -9,15 +9,23 @@ import SetUpPages from '/snippets/_available-tiers-privatelink.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
-The following steps will walk you through the setup of a Snowflake AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
+## Requirements for OAuth
 
-:::note Snowflake SSO with PrivateLink
-Users connecting to Snowflake using SSO over a PrivateLink connection from dbt Cloud will also require access to a PrivateLink endpoint from their local workstation.
-
->Currently, for any given Snowflake account, SSO works with only one account URL at a time: either the public account URL or the URL associated with the private connectivity service.
-
-- [Snowflake SSO with Private Connectivity](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-overview#label-sso-private-connectivity)
+:::caution Snowflake OAuth with PrivateLink
+Using Snowflake OAuth over a PrivateLink connection from dbt Cloud will also require access to a PrivateLink endpoint from each user's local workstation.
 :::
+
+As the [Snowflake documentation states](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-overview#label-sso-private-connectivity) "for any given Snowflake account, SSO works with only one account URL at a time: either the public account URL or the URL associated with the private connectivity service". This means that all requests in the Snowflake OAuth flow either use the public Snowflake endpoint, or PrivateLink endpoints. Authenticating a user to Snowflake through dbt Cloud is a multi-step process that requires _both dbt Cloud and the user's browser_ to connect to a Snowflake endpoint. 
+
+In the case of private connectivity there are two PrivateLink endpoints required for OAuth to work, one in the dbt Labs private network that dbt Cloud connects to, and one in the customer private network that the user's browser connects to. See the diagram below for reference.
+
+<Lightbox src="/img/docs/dbt-cloud/snowflake-pl-oauth-arch.png" title="Snowflake OAuth PrivateLink Architecture"/>
+
+The following flow is an adaptation of the [Snowflake OAuth flow diagram](https://docs.snowflake.com/en/user-guide/oauth-snowflake-overview#snowflake-oauth-authorization-flow), enhanced to show which requests in the flow are sent to which Snowflake endpoint. If the customer doesn't have a PrivateLink endpoint configured or the user is not appropriately connected to access a configured endpoint the Snowflake OAuth flow will fail.  
+
+<Lightbox src="/img/docs/dbt-cloud/snowflake-pl-oauth-flow.png" title="Snowflake OAuth Flow"/>
+
+If requirements are met to support private connectivity to Snowflake from dbt Cloud, the following steps will walk you through the setup of a Snowflake AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
 
 ## Configure PrivateLink
 
