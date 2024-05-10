@@ -40,7 +40,7 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-1. Verify that you don't already have dbt Core installed by running the following command.
+1. Verify that you don't already have dbt Core installed by running the following command:
   
   ```bash
   which dbt
@@ -259,7 +259,7 @@ To update:
 
 ## VS Code extension <Lifecycle status="beta"/>
 
-Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. Power user for dbt Core and dbt Cloud is a common extension used to enhance your development with VS Code.
+Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. "Power user" for dbt Core and dbt Cloud is a common extension used to enhance your development with VS Code.
 
 You can use the dbt Cloud CLI with the [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) extension, now available in beta for the dbt Cloud CLI. 
 
