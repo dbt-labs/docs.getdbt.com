@@ -39,7 +39,7 @@ Measure names must be unique across all semantic models in a project and can not
 
 The description describes the calculated measure. It's strongly recommended you create verbose and human-readable descriptions in this field.
 
-### Aggregation 
+### Aggregation
 
 The aggregation determines how the field will be aggregated. For example, a `sum` aggregation type over a granularity of `day` would sum the values across a given day.
 
@@ -54,8 +54,32 @@ Supported aggregations include:
 | sum_boolean       | A sum for a boolean type |
 | count_distinct    | Distinct count of values |
 | median           | Median (p50) calculation across the values |
-| percentile        | Percentile calculation across the values  |
+| percentile        | Percentile calculation across the values. |
 
+#### Percentile aggregation example
+If you're using the `percentile` aggregation, you must use the `agg_params` field to specify details for the percentile aggregation (such as what percentile to calculate and whether to use discrete or continuous calculations).
+
+```yaml
+name: p99_transaction_value
+description: The 99th percentile transaction value
+expr: transaction_amount_usd
+agg: percentile
+agg_params:
+  percentile: .99
+  use_discrete_percentile: False  # False calculates the continuous percentile, True calculates the discrete percentile.
+```
+
+#### Percentile across supported engine types
+The following table lists which SQL engine supports continuous, discrete, approximate, continuous, and approximate discrete percentiles.
+
+|  | Cont. | Disc. | Approx. cont | Approx. disc |
+| -- | -- | -- | -- | -- |
+|Snowflake | [Yes](https://docs.snowflake.com/en/sql-reference/functions/percentile_cont.html) | [Yes](https://docs.snowflake.com/en/sql-reference/functions/percentile_disc.html) | [Yes](https://docs.snowflake.com/en/sql-reference/functions/approx_percentile.html) (t-digest) | No |
+| Bigquery | No (window) | No (window) | [Yes](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#approx_quantiles) | No |
+| Databricks | [Yes](https://docs.databricks.com/sql/language-manual/functions/percentile_cont.html) | [No](https://docs.databricks.com/sql/language-manual/functions/percentile_disc.html) | No | [Yes](https://docs.databricks.com/sql/language-manual/functions/approx_percentile.html) |
+| Redshift | [Yes](https://docs.aws.amazon.com/redshift/latest/dg/r_PERCENTILE_CONT.html) | No (window) | No | [Yes](https://docs.aws.amazon.com/redshift/latest/dg/r_APPROXIMATE_PERCENTILE_DISC.html) |
+| [Postgres](https://www.postgresql.org/docs/9.4/functions-aggregate.html) | Yes | Yes | No | No |
+| [DuckDB](https://duckdb.org/docs/sql/aggregates.html) | Yes | Yes | Yes (t-digest) | No |
 
 ### Expr
 
@@ -121,7 +145,7 @@ semantic_models:
         description: The average value of transactions 
         expr: transaction_amount_usd
         agg: average 
-      - name: transactions_amount_usd_valid #Notice here how we use expr to compute the aggregation based on a condition
+      - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
         description: The total USD value of valid transactions only
         expr: CASE WHEN is_valid = True then 1 else 0 end 
         agg: sum
@@ -135,7 +159,7 @@ semantic_models:
         agg: percentile
         agg_params:
           percentile: .99
-          use_discrete_percentile: False #False will calculate the discrete percentile and True will calculate the continuous percentile
+          use_discrete_percentile: False # False calculates the continuous percentile, True calculates the discrete percentile.
       - name: median_transaction_value
         description: The median transaction value
         expr: transaction_amount_usd
@@ -145,7 +169,7 @@ semantic_models:
     dimensions:
       - name: metric_time
         type: time
-        expr: date_trunc('day', ts) #expr refers to underlying column ts
+        expr: date_trunc('day', ts) # expr refers to underlying column ts
         type_params:
           time_granularity: day
       - name: is_bulk_transaction
@@ -161,7 +185,7 @@ Some measures cannot be aggregated over certain dimensions, like time, because i
 To demonstrate the configuration for non-additive measures, consider a subscription table that includes one row per date of the registered user, the user's active subscription plan(s), and the plan's subscription value (revenue) with the following columns:
 
 - `date_transaction`: The daily date-spine.
-- `user_id`: The ID pertaining to the registered user.
+- `user_id`: The ID of the registered user.
 - `subscription_plan`: A column to indicate the subscription plan ID.
 - `subscription_value`: A column to indicate the monthly subscription value (revenue) of a particular subscription plan ID.
 

@@ -1,10 +1,10 @@
 ---
-title: "Upgrading to v1.8 (beta)"
+title: "Upgrading to v1.8 (latest)"
 id: upgrading-to-v1.8
 description: New features and changes in dbt Core v1.8
 displayed_sidebar: "docs"
 ---
-
+ 
 ## Resources
 
 - Changelog (coming soon)
@@ -15,15 +15,9 @@ displayed_sidebar: "docs"
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-dbt Labs plans to release dbt Core v1.8.0-b1 and dbt Labs-maintained adapters on February 28th, 2024.
+## Keep on latest version 
 
-## Keep on latest version <Lifecycle status='public preview' />
-
-With dbt Cloud, you can get early access to many new features and functionality before they're in the Generally Available (GA) release of dbt Core v1.8 without the need to manage version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) setting for more details.
-
-:::note Availability  
-[Microsoft Fabric support](/docs/cloud/connect-data-platform/connect-microsoft-fabric) will be coming in late March. All other connections are supported.
-:::
+With dbt Cloud, you can get early access to many new features and functionality before they're in the Generally Available (GA) release of dbt Core v1.8 without the need to manage version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) setting for more details.
 
 ## New and changed features and functionality
 
@@ -31,9 +25,9 @@ Features and functionality new in dbt v1.8.
 
 ### New dbt Core adapter installation procedure
 
-Before v1.8, when you installed an adapter, you would automatically get `dbt-core` installed along with the adapter package (if you didn’t already have an existing, compatible version of dbt-core).
+Before dbt Core v1.8, whenever you would `pip install` a data warehouse adapter for dbt, `pip` would automatically install `dbt-core` alongside it. The dbt adapter directly depended on components of `dbt-core`, and `dbt-core` depended on the adapter for execution. This bidirectional dependency made it difficult to develop adapters independent of `dbt-core`.
 
-Beginning in v1.8, the [dbt adapters and dbt Core have been decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). As a result, you must install _both_ dbt-core and the desired adapter. A new `pip` installation needs to look like this:
+Beginning in v1.8, [`dbt-core` and adapters are decoupled](https://github.com/dbt-labs/dbt-adapters/discussions/87). Going forward, your installations should explicitly include _both_ `dbt-core` _and_ the desired adapter. The new `pip` installation command should look like this:
 
 ```shell
 pip install dbt-core dbt-ADAPTER_NAME
@@ -43,6 +37,8 @@ For example, you would use the following command if you use Snowflake:
 ```shell
 pip install dbt-core dbt-snowflake
 ```
+
+For the time being, we have maintained install-time dependencies to avoid breaking existing scripts in surprising ways; `pip install dbt-snowflake` will continue to install the latest versions of both `dbt-core` and `dbt-snowflake`. Given that we may remove this implicit dependency in future versions, we strongly encourage you to update install scripts **now**.
 
 ### Unit Tests
 
@@ -78,23 +74,37 @@ models:
 
 ```
 
-### The `--empty` flag
+#### The `--empty` flag
 
 The [`run`](/reference/commands/run#the-`--empty`-flag) and [`build`](/reference/commands/build#the---empty-flag) commands now support the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
-### Spaces in dbt model names
+### Deprecated functionality
 
-We will begin deprecating support for spaces in dbt model names in v1.8 (raising a warning) before removing support entirely in v1.9 (raising an error). Reasons for removing spaces in model names include:
-- Spaces in a model name make it impossible to `--select` the model name because the argument gets split into pieces over spaces very early in the pipeline.
-- Most warehouses do not accept a table, or other object, with a space in its name.
+The ability for installed packages to override built-in materializations without explicit opt-in from the user is being deprecated.
 
-To upgrade, replace any spaces in the model file name with an underscore and update any associated YAML that contains the model name to match. You can keep spaces in the database table name by configuring a [custom `alias`](/docs/build/custom-aliases#usage).
+- Overriding a built-in materialization from an installed package raises a deprecation warning.
+- Using a custom materialization from an installed package does not raise a deprecation warning.
+- Using a built-in materialization package override from the root project via a wrapping materialization is still supported. For example:
+
+  ```sql
+  {% materialization view, default %}
+  {{ return(my_cool_package.materialization_view_default()) }}
+  {% endmaterialization %}
+  ```
+
+### Managing changes to legacy behaviors
+
+dbt Core v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
+
+You can read more about each of these behavior changes in the following links:
+
+- (Mature, enabled by default) [Require explicit package overrides for builtin materializations](/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations)
+- (Introduced, disabled by default) [Require resource names without spaces](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces)
+- (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks)
 
 ## Quick hits
 
-- [Global config flags](/reference/global-configs/about-global-configs) are deprecated from the [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file and should be moved to the [`dbt_project.yml`](/reference/dbt_project.yml).
-- A new subcategory of flags has been created for [legacy behaviors](/reference/global-configs/legacy-behaviors).
-- The [`--indirect_selection`](/reference/global-configs/indirect-selection) flag used with `dbt test` or `dbt build` configures which tests to run for the nodes you specify.
+- Custom defaults of [global config flags](/reference/global-configs/about-global-configs) should be set in the `flags` dictionary in [`dbt_project.yml`](/reference/dbt_project.yml), instead of in [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml). Support for `profiles.yml` has been deprecated.
 - New CLI flag [`--resource-type`/`--exclude-resource-type`](/reference/global-configs/resource-type) for including/excluding resources from dbt `build`, `run`, and `clone`. 
 - To improve performance, dbt now issues a single (batch) query when calculating `source freshness` through metadata, instead of executing a query per source.
 - Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.

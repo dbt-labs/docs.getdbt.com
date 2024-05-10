@@ -19,9 +19,9 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 <Lightbox src="/img/docs/dbt-cloud/cloud-cli-overview.jpg" title="Diagram of how the dbt Cloud CLI works with dbt Cloud's infrastructure to run dbt commands from your local command line." />
 
 ## Prerequisites 
-The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
+The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
 
-- Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to upgrade.
+- You are on dbt version 1.5 or higher. Alternatively, set it to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version.
 
 ## Install dbt Cloud CLI
 
@@ -40,16 +40,26 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-1. Verify that you don't already have dbt Core installed:
-   
+1. Verify that you don't already have dbt Core installed by running the following command.    
+  
   ```bash
   which dbt
   ```
-   - If you see a `dbt not found`, you're good to go. If the dbt help text appears, use `pip uninstall dbt` to remove dbt Core from your system. <br />
-  
-2. Install the dbt Cloud CLI with Homebrew: 
+  If the output is `dbt not found`, then that confirms you don't have it installed.
 
-   - First, remove the dbt-labs tap, the separate repository for packages, from Homebrew. This prevents Homebrew from installing packages from that repository:
+:::tip Run `pip uninstall dbt` to uninstall dbt Core
+
+If you've installed dbt Core globally in some other way, uninstall it first before proceeding:
+
+```bash
+pip uninstall dbt
+```
+
+:::
+
+2. Install the dbt Cloud CLI with Homebrew:
+
+   - First, remove the `dbt-labs` tap, the separate repository for packages, from Homebrew. This prevents Homebrew from installing packages from that repository:
       ```bash
       brew untap dbt-labs/dbt
    -  Then, add and install the dbt Cloud CLI as a package:
