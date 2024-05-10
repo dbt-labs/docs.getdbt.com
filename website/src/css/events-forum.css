@@ -1,0 +1,5 @@
+/* Discourse Forum & Events Page */
+.events-page section,
+section.discourse-forum-page {
+  padding: 4rem 0;
+}

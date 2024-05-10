@@ -1,0 +1,23 @@
+.featherlight:before {
+  height: 5%;
+}
+
+.featherlight-content {
+  max-width: 75% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background: transparent !important;
+}
+
+.featherlight-close-icon {
+  background: transparent !important;
+  color: white !important;
+  font-size: 20px !important;
+}
+
+.docImage_src-components-lightbox-,
+.docImage_src-components-lightbox-styles-module,
+.docImage_2V3X,
+.docImage_917O {
+  max-width: 100%;
+}

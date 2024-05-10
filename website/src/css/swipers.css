@@ -1,0 +1,18 @@
+.docswiper .swiper-pagination-bullet {
+  height: 10px;
+  width: 10px;
+}
+
+.docswiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--ifm-color-info);
+}
+
+[data-theme="dark"] .docswiper .swiper-pagination-bullet {
+  background: var(--color-off-white);
+}
+
+[data-theme="dark"]
+  .docswiper
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--color-light-teal);
+}

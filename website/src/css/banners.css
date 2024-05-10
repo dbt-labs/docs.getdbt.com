@@ -1,0 +1,34 @@
+.banner-animation {
+  background-color: var(--color-off-white);
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.banner-animation svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  max-width: none;
+  max-height: 100vw;
+}
+
+@keyframes march {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.banner-animation svg #lines > * {
+  stroke-dasharray: 4px 6px;
+  stroke-dashoffset: 60;
+
+  -o-animation: march 8s linear infinite forwards;
+  -webkit-animation: march 8s linear infinite forwards;
+  animation: march 8s linear infinite forwards;
+}

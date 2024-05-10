@@ -1,0 +1,41 @@
+.docs-doc-page .theme-doc-toc-mobile .clean-btn:after {
+  transform: rotate(90deg);
+}
+
+.docs-doc-page .theme-doc-toc-mobile[class*="Expanded"] .clean-btn:after {
+  transform: rotate(180deg);
+}
+
+/* < icon */
+.menu__link--sublist::after,
+.menu__caret::before {
+  transform: rotate(90deg);
+  margin-left: 1em;
+  background: var(--ifm-breadcrumb-separator) center;
+  background-repeat: no-repeat;
+  height: 9px;
+  min-width: 6px;
+  width: calc(
+    var(--ifm-breadcrumb-separator-size) * var(--ifm-breadcrumb-size-multiplier) *
+      var(--ifm-breadcrumb-separator-size-multiplier)
+  );
+}
+
+/* Table of Contents */
+.table-of-contents__link:hover,
+.table-of-contents__link:hover code,
+.table-of-contents__link--active,
+.table-of-contents__link--active code,
+.tableOfContents_src-theme-TOC-styles-module a.theme-edit-this-page:hover {
+  color: var(--color-orange);
+}
+
+.tableOfContents_src-theme-TOC-styles-module a.theme-edit-this-page {
+  color: var(--ifm-toc-link-color);
+}
+
+.table-of-contents {
+  font-size: 0.9rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}

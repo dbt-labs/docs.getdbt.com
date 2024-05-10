@@ -1,0 +1,109 @@
+.footer {
+  font-weight: var(--ifm-font-weight-narrow);
+  font-size: 0.875rem;
+  padding-top: var(--ifm-footer-padding-vertical);
+  padding-bottom: var(--ifm-footer-padding-vertical);
+}
+
+.footer button {
+  font-size: 0.875rem !important;
+}
+
+.footer a {
+  color: var(--ifm-footer-color);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: var(--ifm-footer-color);
+}
+
+.footer__links {
+  margin-bottom: 0;
+}
+
+.footer__link-item {
+  color: var(--ifm-footer-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__items {
+  list-style: none;
+  margin-bottom: 1em;
+  padding-left: 0;
+  gap: 1.5em;
+  display: flex;
+}
+
+/* social media icons in footer */
+.footer__items--right {
+  display: flex;
+  gap: 1.5em;
+}
+
+/* fontawesome icons in footer */
+.footer .fa-brands {
+  color: var(--color-footer-accent);
+  fill: var(--color-footer-accent);
+  width: 25px;
+  font-size: 1.6rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer .fa-brands:hover {
+  filter: opacity(0.75);
+}
+
+/* copyright */
+.footer__bottom {
+  text-align: left;
+  color: white;
+  font-size: 0.875rem;
+}
+
+.footer__copyright {
+  margin-top: 0.5em;
+}
+
+/* OneTrust Cookies Settings Btn in Footer */
+footer #ot-sdk-btn,
+footer #ot-sdk-btn.optanon-show-settings {
+  background: none;
+  border: none;
+  color: var(--ifm-footer-color);
+  text-decoration: none;
+  font-weight: var(--ifm-font-weight-bold);
+  font-family: var(--ifm-font-family-base);
+  padding: 0;
+  line-height: inherit;
+  font-size: 1.125rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+footer #ot-sdk-btn:hover,
+footer #ot-sdk-btn.optanon-show-settings:hover {
+  background: none;
+  border: none;
+  color: var(--ifm-footer-color);
+  text-decoration: underline;
+}
+
+@media (max-width: 910px) {
+  .footer__items {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 996px) {
+  .footer__link-item {
+    flex-direction: column;
+  }
+
+  .footer__copyright {
+    margin-top: 1em;
+  }
+}

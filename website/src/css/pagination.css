@@ -1,0 +1,34 @@
+.pagination-nav {
+  gap: 1em;
+}
+
+html[data-theme="dark"] .pagination-nav a {
+  color: var(--darkmode-link-color);
+}
+
+html[data-theme="dark"] .pagination-nav a:hover {
+  filter: brightness(var(--filter-brightness-low));
+}
+
+.pagination-nav__link {
+  padding: 1rem 0;
+  transition: 100ms all ease-in-out;
+  border: none;
+}
+
+.pagination-nav__item--next .pagination-nav__label::after {
+  content: var(--pagination-icon-next);
+  font-weight: var(--ifm-font-weight-narrow);
+  margin-left: 0.5em;
+}
+
+.pagination-nav__item:first-child .pagination-nav__label::before {
+  content: var(--pagination-icon-prev);
+  font-weight: var(--ifm-font-weight-narrow);
+  margin-right: 0.5em;
+}
+
+.pagination-nav__sublabel {
+  font-weight: var(--ifm-font-weight-narrow);
+  margin-bottom: 1em;
+}

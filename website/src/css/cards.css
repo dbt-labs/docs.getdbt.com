@@ -1,0 +1,131 @@
+.card.large {
+  position: relative;
+  height: 100%;
+  padding: 20px;
+  border-radius: 5px !important;
+}
+
+.card.large .card__header,
+.card.large .card__body,
+.card.large .card__footer {
+  z-index: 9;
+}
+
+.card.large:before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  right: 155px;
+  background: var(--color-primary-blue);
+  content: "";
+}
+
+.card.large:after {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  right: 110px;
+  transform: rotate(45deg);
+  border-radius: 12.5%;
+  height: 465px;
+  width: 465px;
+  background: var(--color-primary-blue);
+  content: "";
+}
+
+.home .card {
+  background: var(--ifm-footer-background-color);
+  color: var(--color-white);
+}
+
+.card.large .button {
+  color: var(--color-white);
+  font-size: 1.25rem;
+  font-weight: var(--ifm-font-weight-semibold);
+  margin-top: 0.25rem;
+}
+
+.card.large .button,
+.button.help {
+  background: var(--color-green-blue);
+  border-color: var(--color-green-blue);
+}
+
+.card.large .button:hover {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-green-blue);
+}
+
+.card.large.dark .button:hover {
+  background: var(--color-light-teal);
+  border-color: var(--color-light-teal);
+  color: var(--color-white);
+}
+
+.card.large.light .button,
+.button.help:hover {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.card.large.light .button:hover {
+  background: #de5d43;
+  border-color: #de5d43;
+  color: var(--color-white);
+}
+
+.card.large.light-blue .button {
+  background: var(--color-light-blue);
+  border-color: var(--color-light-blue);
+  color: var(--color-primary-blue);
+}
+
+.card.large.light-blue .button:hover {
+  background: #d9f6f4;
+  border-color: #d9f6f4;
+  color: var(--color-primary-blue);
+}
+
+.card .card__body {
+  font-size: 1.125rem;
+  line-height: 26px;
+}
+
+.card.large.blog-hero-card:before {
+  right: 350px;
+}
+
+.card.large.blog-hero-card:after {
+  right: 250px;
+}
+
+.blog-hero-card {
+  background: var(--ifm-footer-background-color);
+  color: var(--color-white);
+}
+
+.blog-hero-card .button {
+  text-decoration: none;
+}
+
+.blog-hero-card-content {
+  z-index: 2;
+  max-width: 75%;
+  text-align: left;
+}
+
+.card-container {
+  position: relative;
+}
+
+@media screen and (max-width: 750px) {
+  .card.large {
+    height: auto;
+    text-align: center;
+  }
+}

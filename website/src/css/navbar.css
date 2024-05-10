@@ -1,0 +1,168 @@
+[data-theme="dark"] nav.navbar,
+[data-theme="dark"] div.navbar-sidebar__brand {
+  background-color: var(--ifm-navbar-background-color);
+}
+
+.navbar__logo {
+  margin-left: 1.25rem;
+}
+
+.navbar__search-input {
+  color: #505d73;
+  font-weight: var(--ifm-font-weight-semibold);
+  font-size: 1rem;
+}
+
+.navbar__link {
+  font-size: 1rem;
+  margin: 0 var(--ifm-navbar-item-padding-horizontal) 0;
+  padding: 0;
+  border-bottom: 1px solid transparent;
+}
+
+/* Fix for nav links that break (like dbt Cloud) */
+.navbar__item.navbar__link {
+  white-space: nowrap;
+  align-items: center;
+}
+
+.navbar__link--active {
+  border-bottom: 1px solid var(--color-orange);
+  color: var(--color-orange);
+}
+
+.navbar__link.nav-versioning {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.navbar-sidebar .menu__link.nav-create-account {
+  color: var(--color-white);
+  border: none;
+}
+
+.navbarHiddenOnLoad {
+  transform: translate3d(0, calc(-100% - 2px), 0);
+}
+
+@media (max-width: 996px) {
+  .navbar-sidebar .menu__link.nav-create-account {
+    width: fit-content;
+  }
+}
+
+.navbar-sidebar .menu__link.nav-create-account:hover {
+  color: var(--color-white);
+  background: var(--color-light-teal);
+}
+
+.navbar__items .navbar__link.nav-create-account {
+  color: var(--color-white);
+  height: 30px;
+  align-self: auto;
+  padding: 0 12px;
+  margin-top: 0;
+  margin-left: 0;
+  border: none;
+  order: 3;
+}
+
+.navbar__items .navbar__link.nav-create-account:hover {
+  background: var(--color-light-teal);
+}
+
+/* Reorder search and darkmode toggle */
+.navbar__items.navbar__items--right div[class^="searchBox"] {
+  order: 2;
+}
+
+.navbar__items.navbar__items--right div[class^="toggle"] {
+  order: 4;
+}
+
+.navbar-sidebar__close {
+  margin-right: 0.75em;
+}
+
+/* navbar buttons */
+a.navbar__item.navbar__link.btn {
+  border: none;
+  color: var(--color-white);
+  background-color: var(--ifm-tabs-color-active);
+  align-self: center;
+  padding: 0.5em 1em;
+  border-radius: var(--ifm-button-border-radius);
+}
+
+a.navbar__item.navbar__link.btn:hover {
+  filter: brightness(var(--filter-brightness-high));
+  transition: all 0.3s ease;
+}
+
+.dropdown--version--hide .dropdown__menu {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+@media (min-width: 997px) and (max-width: 1150px) {
+  nav.navbar a.navbar__link {
+    font-size: 0.875rem;
+  }
+
+  .navbar__search .navbar__search-input {
+    max-width: 160px;
+  }
+}
+
+@media (min-width: 997px) and (max-width: 1045px) {
+  .navbar__link.nav-versioning {
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 996px) {
+  .navbar-sidebar__brand
+    .navbarSidebarToggle_node_modules-\@docusaurus-theme-classic-lib-next-theme-Navbar-styles-module {
+    margin-right: 0;
+    margin-left: 0.25em;
+  }
+
+  .navbar-sidebar__brand > div:first-of-type {
+    order: 1;
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 997px) {
+  html.docs-version-current .navbar {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .navbar {
+    padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
+  }
+
+  html.docs-version-current
+    aside
+    html.docs-version-current
+    .sidebar_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebar-styles-module {
+    position: relative;
+  }
+
+  .navbar__item {
+    padding: var(--ifm-navbar-item-padding-vertical) 0;
+  }
+
+  .navbar__item.navbar__link {
+    display: flex;
+    align-self: stretch;
+  }
+
+  .navbar__items--right > :last-child {
+    padding: var(--ifm-navbar-item-padding-vertical) 1em
+      var(--ifm-navbar-item-padding-vertical) 0.5em;
+  }
+}

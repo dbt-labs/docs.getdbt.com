@@ -1,0 +1,46 @@
+.docs-cta {
+  padding: 20px 10px;
+  margin: 1rem;
+  border-radius: 1rem;
+  /*position: sticky;*/
+  text-align: center;
+  background: var(--color-off-white);
+  position: relative;
+  bottom: 0;
+  max-width: 400px;
+}
+
+.docs-cta h4 {
+  margin-bottom: 10px;
+}
+
+.docs-cta p {
+  font-size: 0.9rem;
+  line-height: 21px;
+}
+
+.docs-cta .docs-cta-btn {
+  background: var(--ifm-color-primary);
+  color: var(--color-white);
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: 100ms all ease-in-out;
+  white-space: nowrap;
+}
+
+.docs-cta .docs-cta-btn:hover {
+  background: var(--ifm-menu-color-active);
+}
+
+/* CTA dark-mode styles */
+[data-theme="dark"] .docs-cta {
+  background: var(--ifm-navbar-background-color);
+}
+
+@media (max-width: 996px) {
+  .docs-cta {
+    display: none;
+  }
+}

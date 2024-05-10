@@ -1,0 +1,98 @@
+.alert {
+  padding: 1.5rem 2rem;
+  margin-top: 2.125em;
+  margin-bottom: 1.8em;
+  border-radius: 5px;
+}
+
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.alert .alert-link {
+  font-weight: inherit;
+}
+
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+
+.alert > p + p {
+  margin-top: 5px;
+}
+
+.alert--info {
+  --ifm-alert-background-color: var(--ifm-color-info-light);
+  --ifm-alert-border-color: var(--ifm-color-info);
+  color: var(--ifm-color-gray-900);
+}
+
+.alert--success {
+  --ifm-alert-background-color: var(--ifm-color-success-light);
+  --ifm-alert-border-color: var(--ifm-color-success);
+  color: var(--ifm-color-gray-900);
+}
+
+.alert--danger {
+  --ifm-alert-background-color: var(--ifm-color-danger-light);
+  --ifm-alert-border-color: var(--ifm-color-danger);
+  color: var(--ifm-color-gray-900);
+}
+
+.alert--warning {
+  --ifm-alert-background-color: var(--ifm-color-warning-light);
+  --ifm-alert-border-color: var(--ifm-color-warning);
+  color: var(--ifm-color-gray-900);
+}
+
+.alert--secondary,
+.alert--secondary a,
+.alert--secondary svg {
+  --ifm-alert-background-color: #474748;
+  color: white !important;
+  fill: white !important;
+}
+
+.admonition {
+  border-left-width: 0.625rem;
+  border-radius: 0.625rem;
+}
+
+.admonition h5 {
+  text-transform: none;
+  font-size: 1.5rem;
+}
+
+.admonition-icon svg {
+  fill: var(--ifm-color-gray-900);
+}
+
+.admonition:not(.admonition-note) h5,
+.admonition:not(.admonition-note) .admonition-content,
+.admonition:not(.admonition-note) .admonition-content a {
+  color: var(--ifm-color-gray-900);
+}
+
+.markdown .admonition-content p {
+  font-size: 1rem;
+}
+
+html[data-theme="dark"] .alert * {
+  --ifm-alert-foreground-color: var(--ifm-color-gray-900);
+}
+
+html[data-theme="dark"] .alert table {
+  background-color: black;
+  color: white;
+  border-radius: var(--ifm-code-border-radius);
+}
+
+/* for dark mode */
+.alert--info a,
+.alert--success a,
+.alert--danger a,
+.alert--warning a {
+  color: var(--ifm-color-gray-900) !important;
+}

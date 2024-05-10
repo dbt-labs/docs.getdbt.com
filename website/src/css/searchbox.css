@@ -1,0 +1,112 @@
+.search {
+  width: 100%;
+  padding: 10px 0px;
+  font-size: 20px;
+  border: 0px;
+  outline-width: 0px;
+  transition: all 0.3s ease;
+}
+
+/* search popup */
+.DocSearch-Container {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.DocSearch-Form {
+  border: 1px solid var(--docsearch-muted-color);
+}
+
+.DocSearch-Footer {
+  background: var(--docsearch-footer-background);
+  padding: 0 var(--docsearch-spacing);
+  border-radius: 0 0 5px 5px !important;
+}
+
+@media screen and (min-width: 1200px) {
+  /* search bar styles */
+  button.DocSearch-Button {
+    border: 1px solid #95a0b1;
+    border-radius: 5px;
+    height: 30px;
+  }
+
+  button.DocSearch-Button:active,
+  button.DocSearch-Button:focus,
+  button.DocSearch-Button:hover {
+    color: var(--docsearch-muted-color);
+    background: white;
+    box-shadow: var(--docsearch-searchbox-shadow);
+    border: 1px solid var(--ifm-link-color);
+  }
+
+  button .DocSearch-Button-Placeholder {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0 12px 0 8px;
+  }
+
+  /* magnifying glass icon */
+  button.DocSearch-Button .DocSearch-Search-Icon {
+    color: var(--docsearch-muted-color);
+    stroke-width: 2px;
+    width: 1em;
+    height: 1em;
+  }
+
+  /* keys wrapper */
+  button .DocSearch-Button-Keys {
+    border: none;
+    padding: 0.24em 0.5em;
+    gap: 0;
+    margin-right: -13px;
+  }
+
+  /* single key */
+  button .DocSearch-Button-Key {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1em;
+    vertical-align: middle;
+    margin-right: 0;
+    padding: 0.24em 0.4em 2px;
+    width: 0;
+    height: 1em;
+    gap: 0;
+    &:last-child {
+      font-size: 0.875rem;
+    }
+  }
+
+  /* Add dark background on hover for searchbox */
+  [data-theme="dark"] button.DocSearch-Button:active,
+  [data-theme="dark"] button.DocSearch-Button:focus,
+  [data-theme="dark"] button.DocSearch-Button:hover {
+    background: #ffffff10;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  button.DocSearch-Button {
+    background: var(--ifm-color-gray-100);
+  }
+
+  [data-theme="dark"] button.DocSearch-Button {
+    background-color: #ffffff20;
+  }
+
+  .DocSearch-Button .DocSearch-Search-Icon {
+    color: var(--docsearch-muted-color);
+  }
+
+  /* hide search text and keys until 1201px */
+  button .DocSearch-Button-Placeholder,
+  button .DocSearch-Button-Keys {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  button.DocSearch-Button {
+    min-width: 175px;
+  }
+}
