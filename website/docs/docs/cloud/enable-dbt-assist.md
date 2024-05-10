@@ -18,7 +18,7 @@ This page explains how to enable dbt Assist in dbt Cloud to leverage AI to speed
 
 ## Enable dbt Assist
 
-dbt Assist is available at an account level and disabled by default. After signing the legal requirements, your dbt Cloud Admin(s) can enable it by following these steps:
+dbt Assist will only be available at an account level after your organization has signed the legal requirements. It will be disabled by default. Your dbt Cloud Admin(s) will enable it by following these steps:
 
 1. Navigate to **Account Settings** in the navigation menu.
 
