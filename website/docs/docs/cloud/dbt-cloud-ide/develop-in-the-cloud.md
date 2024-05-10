@@ -67,7 +67,7 @@ To understand how to navigate the IDE and its user interface elements, refer to 
 
 ### Code generation
 
-The dbt Cloud IDE comes with **CodeGenCodeLens**, a powerful feature that simplifies creating model from your sources, with a click of a button. To use this feature, click on the  **Generate model** action next to each table in the source YAML file(s). It automatically creates a basic starting staging model for you to expand on. This feature helps streamline your workflow by automating the first steps of model generation.
+The dbt Cloud IDE comes with **CodeGenCodeLens**, a powerful feature that simplifies creating models from your sources with a click of a button. To use this feature, click on the  **Generate model** action next to each table in the source YAML file(s). It automatically creates a basic starting staging model for you to expand on. This feature helps streamline your workflow by automating the first steps of model generation.
 
 ### dbt YAML validation
 
