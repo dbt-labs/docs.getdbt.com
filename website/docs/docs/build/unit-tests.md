@@ -14,7 +14,7 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 
 ## Before you begin
 
-- This functionality is only supported in dbt versions 1.8 and above
+- This functionality is only supported in dbt Core v1.8+ or dbt Cloud accounts that have opted to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
 - We currently *don't* support unit testing models that use recursive SQL.
