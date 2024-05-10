@@ -7,12 +7,6 @@ pagination_next: null
 keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
 ---
 
-:::info Available in Public Preview for dbt Cloud Enterprise accounts
-
-Project dependencies and cross-project `ref` are features available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing), currently in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
-
-If you have an [Enterprise account](https://www.getdbt.com/pricing), you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref).
-:::
 
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
 
@@ -21,6 +15,10 @@ While this is a great way to reuse code, share utility macros, and establish a s
 This year, dbt Labs is introducing an expanded notion of `dependencies` across multiple dbt projects:
 - **Packages** &mdash; Familiar and pre-existing type of dependency. You take this dependency by installing the package's full source code (like a software library).
 - **Projects** &mdash; A _new_ way to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
+
+## Prerequisites
+- Available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing). If you have an Enterprise account, you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref).
+- Set your development and deployment [environments](/docs/dbt-cloud-environments) to use [dbt version](/docs/dbt-versions/core) 1.6 or later. You can also opt [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) of to always use the latest version of dbt.
 
 import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
