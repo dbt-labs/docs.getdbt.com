@@ -14,7 +14,7 @@ The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/
 
 - Syntax highlighting for SQL &mdash; Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
 - Auto-completion &mdash; Suggests table names, arguments, and column names as you type, saving time and reducing typos.
-- Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) &mdash; Help standardize and fix your SQL code effortlessly.
+- Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) &mdash; Helps standardize and fix your SQL code effortlessly.
 - Navigation tools &mdash; Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
 - Version control &mdash; Manage code versions with a few clicks.
 - Project documentation &mdash; Generate and view your [project documentation](#build-and-document-your-projects) for your dbt project in real-time.
