@@ -34,6 +34,6 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 <expandable alt_header="Can dbt Assist data be deleted upon client written request?">
 
-  dbt Assist data, aside from usage data, does not persist on dbt Labs systems. Therefore, dbt Labs should not have possession of any data requiring deletion. Usage data is retained by dbt Labs, but users are advised to not include personal or sensitive information in the prompts. To the extent data is used to train AI models, that would be governed by the agreement between client and its AI Vendor, and dbt Labs is not a party to that agreement.
+  dbt Assist data, aside from usage data, does not persist on dbt Labs systems. Therefore, dbt Labs does not have possession of any data requiring deletion. Usage data is retained by dbt Labs, but users are advised not to include personal or sensitive information in the prompts. To the extent data is used to train AI models, that would be governed by the agreement between the client and its AI Vendor, and dbt Labs is not a party to that agreement.
 
 </expandable>
