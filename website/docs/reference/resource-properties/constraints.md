@@ -37,7 +37,7 @@ models:
     # model-level constraints
     constraints:
       - type: primary_key
-        columns: FIRST_COLUMN, SECOND_COLUMN, ...
+        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
       - type: FOREIGN_KEY # multi_column
         columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
         expression: "OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_FIRST_COLUMN, OTHER_MODEL_SECOND_COLUMN, ...)"
