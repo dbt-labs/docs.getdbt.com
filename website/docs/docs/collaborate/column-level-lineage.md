@@ -24,9 +24,9 @@ You can use the column evolution lineage lens to determine when a column is tran
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-cel.png" width="40%" title="Example of the Column evolution lens"/>
 
-### Propagate and inherit column descriptions
+### Inherited column descriptions
 
-When a column is reused, its description is inherited. In other words, source and upstream model columns propagate their descriptions downstream whenever they are not transformed, meaning you don’t need to manually define the description. 
+A reused column, labeled as *passthrough* or *rename*, inherits its description from source and upstream model columns. In other words, source and upstream model columns propagate their descriptions downstream whenever they are not transformed, meaning you don’t need to manually define the description.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.png" width="40%" title="Example of propagate and inherit column descriptiions"/>
 
