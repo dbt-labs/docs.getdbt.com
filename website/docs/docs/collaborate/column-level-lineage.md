@@ -18,6 +18,19 @@ dbt Cloud updates the lineage in Explorer after each run that's executed in the 
 
 <LoomVideo id='3040bf2a2ade45eca7942a7aed6b730c' />
 
+## Column evolution lens {#column-lens}
+
+You can use the column evolution lineage lens to determine when a column is transformed vs. reused (passthrough or rename). The lens helps you distinguish when and how a column is actually changed as it flows through your dbt lineage, informing debugging workflows in particular. 
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-cel.png" width="40%" title="Example of the Column evolution lens"/>
+
+### Propagate and inherit column descriptions
+
+When a column is reused, its description is inherited. In other words, source and upstream model columns propagate their descriptions downstream whenever they are not transformed, meaning you don’t need to manually define the description. 
+
+<Lightbox src="/img/docs/collaborate/dbt-explorerexample-prop-inherit.png" width="40%" title="Example of propagate and inherit column descriptiions"/>
+
+
 ## Column-level lineage use cases {#use-cases}
 
 Learn more about why and how you can use CLL in the following sections. 
@@ -53,17 +66,3 @@ Possible error cases are:
 - **Parsing error** &mdash; Error occurs when the SQL is ambiguous or too complex for parsing. An example of ambiguous parsing scenarios are _complex_ lateral joins.
 - **Python error** &mdash; Error occurs when a Python model is used within the lineage. Due to the nature of Python models, it's not possible to parse and determine the lineage.
 - **Unknown error** &mdash; Error occurs when the lineage can't be determined for an unknown reason. An example of this would be if a dbt best practice is not being followed, like using hardcoded table names instead of `ref` statements.
-
-### Data platform support
-
-CLL in dbt Cloud works with the following data platforms: 
-- Snowflake
-- BigQuery
-- Redshift
-- Databricks (Unity Catalog) 
-
-The following adapters aren't currently supported by CLL in dbt Cloud. More of these platforms will be supported in the future. 
-- Hive metastore version of Databricks
-- Apache Spark
-- Starburst/Trino
-- Microsoft Fabric 
