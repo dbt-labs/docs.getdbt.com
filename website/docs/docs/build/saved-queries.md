@@ -143,7 +143,7 @@ Yes, this is possible. However, the difference would be the name, schema, and ma
 
 <detailsToggle alt_header="How can I select saved_queries by their resource type?">
 
-To build or run `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
+To build `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
 
 </detailsToggle>
 
