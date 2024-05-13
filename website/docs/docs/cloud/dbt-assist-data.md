@@ -8,32 +8,23 @@ description: "dbt Assist’s powerful AI feature helps you deliver data that wor
 
 dbt Labs is committed to protecting your privacy and data. This page provides information about how dbt Labs handles your data when you use dbt Assist.
 
-<expandable alt_header="Is my data used by dbt Labs to train AI models?">
+### Is my data used by dbt Labs to train AI models?
   
-  No, dbt Labs does not use your prompts to train any internal dbt Labs AI models. It uses API calls to the AI vendor you provide, or, if you choose to use our AI provider, to our AI provider. dbt Labs is not a party to the agreement between you and your AI vendor, and cannot advise as to what rights and obligations it provides.
+No, dbt Labs does not use your prompts to train any internal dbt Labs AI model. It uses API calls to an AI provider. dbt Labs is not a party to the agreement between you and your AI vendor, and cannot advise as to what rights and obligations it provides.
 
-</expandable>
+#### Does dbt Labs share my personal data with third parties
 
-<expandable alt_header="Does dbt Labs share my personal data with third parties">
+dbt Labs only shares client personal information as needed to perform the services, under client instructions, or for legal, tax, or compliance reasons.
 
-  dbt Labs only shares client personal information as needed to perform the services, under client instructions, or for legal, tax, or compliance reasons.
+#### Does dbt Assist store or use personal data?
 
-</expandable>
+dbt Assist only stores ephemerally any data input by the user. The user clicks the AI assist button, and the user does not otherwise enter data. Ephemeral storage cannot be accessed or used by dbt Labs employees, and ephemeral storage does not persist on dbt Labs systems.
 
-<expandable alt_header="Does dbt Assist store or use personal data?">
+#### Does dbt Assist access my warehouse data?
 
-  dbt Assist only stores ephemerally any data input by the user. The user clicks the AI assist button. Ephemeral storage cannot be accessed or used by dbt Labs employees, and ephemeral storage does not persist on dbt Labs systems.
+dbt Assist utilizes the button click to initiate a search via API of AI vendor. Such output must be double-checked by the user for completeness and accuracy. This does not involve the use of client’s warehouse data.
 
-</expandable>
+### Can dbt Assist data be deleted upon client written request?
 
-<expandable alt_header="Does dbt Assist access my warehouse data?">
+dbt Assist data, aside from usage data, does not persist on dbt Labs systems. Usage data is retained by dbt Labs. Users are advised to not include personal or sensitive information in the prompts. Therefore, dbt Labs does not have possession of any data requiring deletion. To the extent client identifies personal or sensitive information in the prompts (again, not recommended), such data can be deleted within 30 days of written request.
 
-  dbt Assist utilizes the user’s prompt to initiate a search via APIs of the client’s model provided by its AI vendor and returns probable output. Such output must be double-checked by the user for completeness and accuracy. This does not involve the use of the client’s warehouse data.
-
-</expandable>
-
-<expandable alt_header="Can dbt Assist data be deleted upon client written request?">
-
-  dbt Assist data, aside from usage data, does not persist on dbt Labs systems. Therefore, dbt Labs does not have possession of any data requiring deletion. Usage data is retained by dbt Labs, but users are advised not to include personal or sensitive information in the prompts. To the extent data is used to train AI models, that would be governed by the agreement between the client and its AI Vendor, and dbt Labs is not a party to that agreement.
-
-</expandable>
