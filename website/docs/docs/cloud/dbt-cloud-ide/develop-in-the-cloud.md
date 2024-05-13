@@ -126,7 +126,7 @@ Nice job, you're ready to start developing and building models 🎉!
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" width="85%" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
 
-- **Generate your YAML configurations with dbt Assist** &mdash; [dbt Assist](/docs/cloud/dbt-assist) is a powerful artificial intelligence (AI) co-pilot feature that helps automate development in dbt Cloud. It generates documentation, metrics, semantic models, and tests for your dbt SQL and Python models directly in the dbt Cloud IDE, with a click of a button, and helps you accomplish more in less time.
+- **Generate your YAML configurations with dbt Assist** <Lifecycle status='enterprise'/> &mdash; [dbt Assist](/docs/cloud/dbt-assist) is a powerful artificial intelligence (AI) co-pilot feature that helps automate development in dbt Cloud. It generates documentation, metrics, semantic models, and tests for your dbt SQL and Python models directly in the dbt Cloud IDE, with a click of a button, and helps you accomplish more in less time. 
 
 - **Build and view your project's docs** &mdash; The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-and-view-your-docs#generating-documentation) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
