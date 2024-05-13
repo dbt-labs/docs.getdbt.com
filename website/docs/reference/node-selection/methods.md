@@ -402,3 +402,19 @@ dbt list --select "+saved_query:orders_saved_query"  # list your saved query nam
 ```
 
 </VersionBlock>
+
+### The "unit_test" method
+
+<VersionBlock lastVersion="1.7">
+Supported in v1.8 or newer.
+</VersionBlock>
+<VersionBlock firstVersion="1.8">
+
+The `unit_test` method selects [unit tests](/docs/build/unit-tests).
+
+```bash
+dbt list --select "unit_test:*"                        # list all unit tests 
+dbt list --select "+unit_test:orders_with_zero_items"  # list your unit test named "orders_with_zero_items" and all upstream resources
+```
+
+</VersionBlock>
