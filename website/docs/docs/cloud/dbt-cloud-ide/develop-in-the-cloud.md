@@ -48,7 +48,6 @@ The dbt Cloud IDE comes with features that make it easier for you to develop, bu
 
 To understand how to navigate the IDE and its user interface elements, refer to the [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface) page.
 
-
 | Feature  |  Info |
 |---|---|
 | [**Keyboard shortcuts**](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) in the IDE by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
@@ -56,7 +55,7 @@ To understand how to navigate the IDE and its user interface elements, refer to 
 | **IDE version control** | The IDE version control section and git button allow you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project directly into the IDE. <br /><br /> - Create or change branches<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/collaborate/git/merge-conflicts)<br /> - Execute git commands using the git button <br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch. |
 | **Project documentation** | Generate and view your [project documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. |
 | **Preview and Compile button** | You can [compile or preview](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section) code, a snippet of dbt code, or one of your dbt models after editing and saving. |
-| [**dbt Assist**](/docs/cloud/dbt-assist) | A powerful AI co-pilot feature that generates documentation, metrics, semantic models, and tests for your dbt SQL and Python models. |
+| [**dbt Assist**](/docs/cloud/dbt-assist) | A powerful AI co-pilot feature that generates documentation, metrics, semantic models, and tests for your dbt SQL and Python models. Available for dbt Cloud Enterprise plans. |
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
 | **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the IDE for quick, linear navigation. Access adjacent files in the same file by right-clicking on the breadcrumb file.  
