@@ -45,7 +45,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
 
-- **New:** MetricFlow enables you to now add [metrics as dimensions](/docs/build/ref-metrics-in-filters) to your metric filters to create more complex metrics and gain more insights. Available for all users.
+- **New:** MetricFlow enables you to now add metrics as dimensions to your metric filters to create more complex metrics and gain more insights. Available for all users.
 
 - **New:** Oauth login support via [Databricks](/docs/cloud/manage-access/set-up-databricks-oauth) is now GA to Enterprise customers.
 
@@ -65,7 +65,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** Native support for Microsoft Fabric in dbt Cloud is now GA. This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started. 
 
-- **New:** [dbt Mesh](ttps://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-) is now GA to dbt Cloud Enterprise users. dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections. Get started with dbt Mesh by reading the [dbt Mesh quickstart guide](https://docs.getdbt.com/guides/mesh-qs?step=1).
+- **New:** [dbt Mesh](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-) is now GA to dbt Cloud Enterprise users. dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections. Get started with dbt Mesh by reading the [dbt Mesh quickstart guide](https://docs.getdbt.com/guides/mesh-qs?step=1).
 
 - **New:** [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now GA to all users. The dbt Cloud CLI is a command-line interface that allows you to interact with dbt Cloud, use automatic deferral, leverage dbt Mesh, and more!
 
