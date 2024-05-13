@@ -1,8 +1,8 @@
 ---
-title: "Quickstart for dbt Cloud and Microsoft Fabric"
-id: "microsoft-fabric"
+title: "Quickstart for dbt Cloud and Azure Synapse Analytics (Preview)"
+id: "azure-synapse-analytics"
 level: 'Beginner'
-icon: 'fabric'
+icon: 'azure-synapse-analytics'
 hide_table_of_contents: true
 tags: ['dbt Cloud','Quickstart']
 recently_updated: true
@@ -12,45 +12,41 @@ recently_updated: true
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric). It will show you how to:
+In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse Analytics](https://azure.microsoft.com/en-us/products/synapse-analytics/). It will show you how to:
 
-- Load the Jaffle Shop sample data (provided by dbt Labs) into your Microsoft Fabric warehouse. 
-- Connect dbt Cloud to Microsoft Fabric.
+- Load the Jaffle Shop sample data (provided by dbt Labs) into your Azure Synapse Analytics warehouse. 
+- Connect dbt Cloud to Azure Synapse Analytics.
 - Turn a sample query into a model in your dbt project. A model in dbt is a SELECT statement.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
+
 ### Prerequisites
 - You have a [dbt Cloud](https://www.getdbt.com/signup/) account.
-- You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.
-- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Microsoft Fabric.
+- You have an Azure Synapse Analytics account. For a free trial, refer to [Synapse Analytics](https://azure.microsoft.com/en-us/free/synapse-analytics/) in the Microsoft docs.
+- As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Synapse workspace with either a Member (recommended) or Admin permission set. For details, refer to [Create a service principal using the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Azure Synapse Analytics.
 
 ### Related content
-- [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Courses](https://courses.getdbt.com/collections/beginner)
 - [About continuous integration jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 
-## Load data into your Microsoft Fabric warehouse
+## Load data into your Azure Synapse Analytics
 
-1. Log in to your [Microsoft Fabric](http://app.fabric.microsoft.com) account.  
-2. On the home page, select the **Synapse Data Warehouse** tile.
-
-    <Lightbox src="/img/quickstarts/dbt-cloud/example-start-fabric.png" width="80%" title="Example of the Synapse Data Warehouse tile" />
-
-3. From **Workspaces** on the left sidebar, navigate to your organization’s workspace. Or, you can create a new workspace; refer to [Create a workspace](https://learn.microsoft.com/en-us/fabric/get-started/create-workspaces) in the Microsoft docs for more details.
-4. Choose your warehouse from the table. Or, you can create a new warehouse; refer to [Create a warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/tutorial-create-warehouse) in the Microsoft docs for more details.
-5. Open the SQL editor by selecting **New SQL query** from the top bar. 
-6. Copy these statements into the SQL editor to load the Jaffle Shop example data:
+1. Log in to your [Azure portal account](https://portal.azure.com/#home).  
+1. On the home page, select the **SQL databases** tile.
+1. From the **SQL databases** page, navigate to your organization’s workspace or create a new workspace; refer to [Create a Synapse workspace](https://learn.microsoft.com/en-us/azure/synapse-analytics/quickstart-create-workspace) in the Microsoft docs for more details.
+1. From the workspace's sidebar, select **Data**. Click the three dot menu on your database and select **New SQL script** to open the SQL editor. 
+1. Copy these statements into the SQL editor to load the Jaffle Shop example data:
 
     ```sql
-    DROP TABLE dbo.customers;
 
     CREATE TABLE dbo.customers
     (
-        [ID] [int],
+        [ID] [bigint],
         \[FIRST_NAME] [varchar](8000),
         \[LAST_NAME] [varchar](8000)
     );
@@ -61,13 +57,10 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabr
         FILE_TYPE = 'PARQUET'
     );
 
-    DROP TABLE dbo.orders;
-
     CREATE TABLE dbo.orders
     (
-        [ID] [int],
-        [USER_ID] [int],
-        -- [ORDER_DATE] [int],
+        [ID] [bigint],
+        [USER_ID] [bigint],
         [ORDER_DATE] [date],
         \[STATUS] [varchar](8000)
     );
@@ -78,15 +71,13 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabr
         FILE_TYPE = 'PARQUET'
     );
 
-    DROP TABLE dbo.payments;
-
     CREATE TABLE dbo.payments
     (
-        [ID] [int],
-        [ORDERID] [int],
+        [ID] [bigint],
+        [ORDERID] [bigint],
         \[PAYMENTMETHOD] [varchar](8000),
         \[STATUS] [varchar](8000),
-        [AMOUNT] [int],
+        [AMOUNT] [bigint],
         [CREATED] [date]
     );
 
@@ -97,23 +88,23 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabr
     );
     ```
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-ms-fabric.png" width="80%" title="Example of loading data" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/example-load-data-azure-syn-analytics.png" width="80%" title="Example of loading data" />
 
-## Connect dbt Cloud to Microsoft Fabric
+## Connect dbt Cloud to Azure Synapse Analytics
 
-1. Create a new project in dbt Cloud. From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
+1. Create a new project in dbt Cloud. Open the gear menu in the top right corner, select **Account settings** and click **+ New Project**.
 2. Enter a project name and click **Continue**.
-3. Choose **Fabric** as your connection and click **Next**.
+3. Choose **Synapse** as your connection and click **Next**.
 4. In the **Configure your environment** section, enter the **Settings** for your new project:
-    - **Server** &mdash; Use the service principal's **host** value for the Fabric test endpoint. 
+    - **Server** &mdash; Use the service principal's **Synapse host name** value (without the trailing `, 1433` string) for the Synapse test endpoint. 
     - **Port** &mdash; 1433 (which is the default).
-    - **Database** &mdash; Use the service principal's **database** value for the Fabric test endpoint. 
+    - **Database** &mdash; Use the service principal's **database** value for the Synapse test endpoint. 
 5. Enter the **Development credentials** for your new project:
     - **Authentication** &mdash; Choose **Service Principal** from the dropdown.
     - **Tenant ID** &mdash; Use the service principal’s **Directory (tenant) id** as the value.
     - **Client ID** &mdash; Use the service principal’s **application (client) ID id** as the value.
     - **Client secret** &mdash; Use the service principal’s **client secret** (not the  **client secret id**) as the value.
-6. Click **Test connection**. This verifies that dbt Cloud can access your Microsoft Fabric account.
+6. Click **Test connection**. This verifies that dbt Cloud can access your Azure Synapse Analytics account.
 7. Click **Next** when the test succeeds. If it failed, you might need to check your Microsoft service principal.
 
 ## Set up a dbt Cloud managed repository 
@@ -124,22 +115,15 @@ Now that you have a repository configured, you can initialize your project and s
 
 1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit Changes**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-
-You have two options for working with files in the dbt Cloud IDE:
-
-- Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
-- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
-
-Name the new branch `add-customers-model`.
-
-1. Click the **...** next to the `models` directory, then select **Create file**.  
-2. Name the file `customers.sql`, then click **Create**.
-3. Copy the following query into the file and click **Save**.
+1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
+1. Click the three dot menu (**...**) next to the `models` directory, then select **Create file**.  
+1. Name the file `customers.sql`, then click **Create**.
+1. Copy the following query into the file and click **Save**.
 
     <File name='customers.sql'>
 
@@ -198,7 +182,7 @@ Name the new branch `add-customers-model`.
     ```
     </File>
 
-4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
+1. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 
@@ -309,7 +293,6 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 4. Execute `dbt run`.
 
     This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
-
 
 #### FAQs {#faq-2}
 
