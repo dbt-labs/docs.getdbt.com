@@ -22,8 +22,8 @@ The user clicks the AI assist button, and the user does not otherwise enter data
 
 #### Does dbt Assist access my warehouse data?
 
-dbt Assist utilizes the button click to initiate a search via API of AI vendor. Such output must be double-checked by the user for completeness and accuracy. This does not involve the use of client’s warehouse data.
+dbt Assist utilizes the button click to initiate a search via API of the AI vendor. Such output must be double-checked by the user for completeness and accuracy. This does not involve the use of client’s warehouse data.
 
 #### Can dbt Assist data be deleted upon client written request?
 
-dbt Assist data, aside from usage data, does not persist on dbt Labs systems. Usage data is retained by dbt Labs. Users are advised to not include personal or sensitive information in the prompts. Therefore, dbt Labs does not have possession of any data requiring deletion. To the extent client identifies personal or sensitive information in the prompts (again, not recommended), such data can be deleted within 30 days of written request.
+dbt Assist data, aside from usage data, does not persist on dbt Labs systems. Usage data is retained by dbt Labs. dbt Labs does not have possession of any personal or sensitive data. To the extent client identifies personal or sensitive information uploaded by or on behalf of client to dbt Labs systems, such data can be deleted within 30 days of written request.
