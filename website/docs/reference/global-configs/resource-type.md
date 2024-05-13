@@ -10,7 +10,7 @@ The available resource types are:
 
 <VersionBlock lastVersion="1.7" >
 
-</VersionBLock>
+</VersionBlock>
 
 
 <VersionBlock firsttVersion="1.8" >
@@ -18,15 +18,30 @@ The available resource types are:
 - [saved queries](/docs/build/saved-queries)  
 - [unit tests](/docs/build/unit-tests)
 
-</VersionBLock>
+</VersionBlock>
+
+## Example
+
+For example, use the following command to exclude certain resources, such as unit tests, from your dbt build process: 
 
 <File name='Usage'>
 
 ```text
 $ dbt build --exclude-resource-type UNIT_TEST_NAME
-
 ```
 
 </File>
 
-For example, to build `saved_queries`, use the `--resource-type` flag and run the command `dbt build --resource-type saved_query_name`.
+<VersionBlock firsttVersion="1.8" >
+
+In this example, run the following command to build `saved_queries` with the `--resource-type` flag:
+
+<File name='Usage'>
+
+```text
+dbt build --resource-type saved_query_name
+```
+
+</File>
+
+</VersionBlock>
