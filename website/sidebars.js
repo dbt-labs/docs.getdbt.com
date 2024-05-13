@@ -57,6 +57,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/cloud/connect-data-platform/about-connections" },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
                 "docs/cloud/connect-data-platform/connect-microsoft-fabric",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
                 "docs/cloud/connect-data-platform/connect-snowflake",
@@ -518,8 +519,9 @@ const sidebarSettings = {
           href: `/guides/sl-snowflake-qs`,
         },
         "docs/use-dbt-semantic-layer/setup-sl",
-        "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        "docs/use-dbt-semantic-layer/exports",
+        "docs/use-dbt-semantic-layer/sl-cache",
         "docs/use-dbt-semantic-layer/sl-faqs",
         {
           type: "category",
