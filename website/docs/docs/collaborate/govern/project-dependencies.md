@@ -33,7 +33,7 @@ Refer to the [FAQs](#faqs) for more info.
 
 In order to add project dependencies and resolve cross-project `ref`, you must:
 - Use a supported version of dbt (v1.6, v1.7, or "Keep on latest version") for both the upstream ("producer") project and the downstream ("consumer") project.
-- Define models in an upstream ("producer") project that are configured with [`access: public`](/reference/resource-configs/access). (You need at least one successful job run after defining their `access`.)
+- Define models in an upstream ("producer") project that are configured with [`access: public`](/reference/resource-configs/access). You need at least one successful job run after defining their `access`.
 - Define a deployment environment in the upstream ("producer") project [that is set to be your Production environment](/docs/deploy/deploy-environments#set-as-production-environment), and ensure it has at least one successful job run in that environment.
 - Each project `name` must be unique in your dbt Cloud account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, you should not create separate projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`. That isolation should instead be handled at the environment level. To that end, we are working on adding support for environment-level permissions and data warehouse connections; reach out to your dbt Labs account team for beta access in May/June 2024.
 
