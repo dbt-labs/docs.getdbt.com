@@ -18,7 +18,7 @@ dbt Labs only shares client personal information as needed to perform the servic
 
 #### Does dbt Assist store or use personal data?
 
-The user clicks the AI assist button, and the user does not otherwise enter data. Ephemeral storage cannot be accessed or used by dbt Labs employees, and ephemeral storage does not persist on dbt Labs systems.
+The user clicks the AI assist button, and the user does not otherwise enter data. 
 
 #### Does dbt Assist access my warehouse data?
 
