@@ -49,9 +49,9 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** Oauth login support via [Databricks](/docs/cloud/manage-access/set-up-databricks-oauth) is now GA to Enterprise customers.
 
-- <expandable alt_header="New: GA of dbt Explorer" > 
+- <expandable alt_header="New: GA of dbt Explorer's features" > 
 
-  dbt Explorer is now generally available for dbt Cloud customers. You can view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state.
+  dbt Explorer's current capabilities are now Generally Available for dbt Cloud customers. With Explorer, you can more easily navigate your dbt Cloud project – including models, sources, and their columns – to gain a better understanding of its latest production or staging state.
 
   To learn more about its features, check out:
   
