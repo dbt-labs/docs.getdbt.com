@@ -56,19 +56,19 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 
 | name | name format | value | description |
 | ---- | ----------- | ----- | ----------- |
-| email | Unspecified | ${user.email} | The user's email address |
+| email | Unspecified | user.email | The user's email address |
 | first_name | Unspecified | user:first_name | The user's first name |
 | last_name | Unspecified | user:last_name | The user's last name |
-| NameID (if applicable) | Unspecified | ${user.email} | The user's email address |
+| NameID (if applicable) | Unspecified | user.email | The user's email address |
 
 Please note that formatting of attribute values is important here, and will vary based on identity provider. **If you're using AWS**, please format like so:
 
 | name | name format | value | description |
 | ---- | ----------- | ----- | ----------- |
-| email | Unspecified | '${user.email}' | The user's email address |
+| email | Unspecified | ${user.email} | The user's email address |
 | first_name | Unspecified | user.first_name | The user's first name |
 | last_name | Unspecified | user.last_name | The user's last name |
-| NameID (if applicable) | Unspecified | '${user.email}' | The user's email address |
+| NameID (if applicable) | Unspecified | ${user.email} | The user's email address |
 
 dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
