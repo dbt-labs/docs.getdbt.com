@@ -235,7 +235,7 @@ version: 2
 saved-queries:
   - name: <saved-query-name>
     config:
-      cache: 
+      [cache](/docs/build/saved-queries#parameters): 
         enabled: true | false
       [enabled](/reference/resource-configs/enabled): true | false
       [export_as](/docs/build/saved-queries#parameters): view | table 

@@ -25,7 +25,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `name`       | String    | Required     | Name of the saved query object.          |
 | `description`     | String      | Required     | A description of the saved query.     |
 | `label`     | String      | Required     | The display name for your saved query. This value will be shown in downstream tools.    |
-| `config`     | String      |  Optional     |  Use the [config](/reference/resource-properties/config) property to specify configurations for your saved query. Supports [meta](/reference/resource-configs/meta), [group](/reference/resource-configs/group), and [enabled](/reference/resource-configs/enabled) configurations.   |
+| `config`     | String      |  Optional     |  Use the [config](/reference/resource-properties/config) property to specify configurations for your saved query. Supports `cache`, [enabled](/reference/resource-configs/enabled), `export_as`, [group](/reference/resource-configs/group), [meta](/reference/resource-configs/meta), and [`schema](/reference/resource-configs/schema)  configurations.   |
 | `config::cache::enabled`     | Object      | Optional     |  An object with a sub-key used to specify if a saved query should populate the [cache](/docs/use-dbt-semantic-layer/sl-cache). Accepts sub-key `true` or `false`. Defaults to `false` |
 | `query_params`       | Structure   | Required     | Contains the query parameters. |
 | `query_params::metrics`   | List or String   | Optional    | A list of the metrics to be used in the query as specified in the command line interface. |
