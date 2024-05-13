@@ -14,6 +14,7 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 
 ## Before you begin
 
+- This functionality is only supported in dbt Core v1.8+ or dbt Cloud accounts that have opted to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
 - We currently *don't* support unit testing models that use recursive SQL.
@@ -299,7 +300,16 @@ unit_tests:
         - {id: 1, first_name: emily}
 ```
 
-## Known limitations 
+
+## Unit test exit codes
+
+Unit test successes and failures are represented by two exit codes:
+- Pass (0)
+- Fail (1)
+
+Exit codes differ from data test success and failure outputs because they don't directly reflect failing data tests. Data tests are queries designed to check specific conditions in your data, and they return one row per failed test case (for example, the number of values with duplicates for the `unique` test). dbt reports the number of failing records as failures. Whereas, each unit test represents one 'test case', so results are always 0 (pass) or 1 (fail) regardless of how many records failed within that test case.
+
+Learn about [exit codes](/reference/exit-codes) for more information.
 
 
 ## Additional resources
