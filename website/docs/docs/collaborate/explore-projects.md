@@ -206,7 +206,10 @@ In the upper right corner of the resource details page, you can:
 
 <expandable alt_header="What details are available for a test?">
 
-- **Status bar** (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. 
+- **Status bar** (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. Defaults to all if not specified.
+- **Test Type** (next to the Status bar) &mdash; Information on the different test types available: Unit test or Data test. Defaults to all if not specified.
+
+When you select a test, the following details are available:
 - **General** tab includes:
     - **Lineage** graph &mdash; The test’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the test resource. Click the Expand icon in the graph's upper right corner to view the test in full lineage graph mode.
     - **Description** section &mdash; A description of the test.
@@ -214,6 +217,10 @@ In the upper right corner of the resource details page, you can:
     - **Details** section &mdash; Details like schema, severity, package, and more.
     - **Relationships** section &mdash; The nodes the test **Depends On**.
 - **Code** tab &mdash; The source code and compiled code for the test.
+
+Example of the Tests view:
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-type.jpg" width="100%" title="Example of Test Type details" />
 
 </expandable>
 
