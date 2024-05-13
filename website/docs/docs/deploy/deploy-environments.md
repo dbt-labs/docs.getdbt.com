@@ -85,7 +85,7 @@ There is exactly one source (`sensitive_source`), and all downstream dbt models 
 
 **Cross-project references in dbt Mesh:** Let's say you have `Project B` downstream of `Project A` with cross-project refs configured in the models. When developers work in the IDE for `Project B`, cross-project refs will resolve to the Staging environment of `Project A`, rather than production. You'll get the same results with those refs when jobs are run in the Staging environment. Only the Production environment will reference the Production data, keeping the data and access isolated without needing separate projects.
 
-**Faster development, enabled by deferral:** If `Project B` also has a Staging deployment, then references to unbuilt upstream models within `Project B` will resolve to that environment, using [deferral](/docs/cloud/about-cloud-develop-defer), rather than resolving to the models in Production. This saves developers time and warehouse spend, while preserving clear separation of environments.
+**Faster development enabled by deferral:** If `Project B` also has a Staging deployment, then references to unbuilt upstream models within `Project B` will resolve to that environment, using [deferral](/docs/cloud/about-cloud-develop-defer), rather than resolving to the models in Production. This saves developers time and warehouse spend, while preserving clear separation of environments.
 
 Finally, the Staging environment has its own view in [dbt Explorer](/docs/collaborate/explore-projects), giving you a full view of your prod and pre-prod data.
 
