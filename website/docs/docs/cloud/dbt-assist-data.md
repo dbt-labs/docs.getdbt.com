@@ -8,7 +8,7 @@ description: "dbt Assist’s powerful AI feature helps you deliver data that wor
 
 dbt Labs is committed to protecting your privacy and data. This page provides information about how dbt Labs handles your data when you use dbt Assist.
 
-### Is my data used by dbt Labs to train AI models?
+#### Is my data used by dbt Labs to train AI models?
   
 No, dbt Labs does not use your prompts to train any internal dbt Labs AI model. It uses API calls to an AI provider. dbt Labs is not a party to the agreement between you and your AI vendor, and cannot advise as to what rights and obligations it provides.
 
@@ -27,4 +27,3 @@ dbt Assist utilizes the button click to initiate a search via API of AI vendor. 
 ### Can dbt Assist data be deleted upon client written request?
 
 dbt Assist data, aside from usage data, does not persist on dbt Labs systems. Usage data is retained by dbt Labs. Users are advised to not include personal or sensitive information in the prompts. Therefore, dbt Labs does not have possession of any data requiring deletion. To the extent client identifies personal or sensitive information in the prompts (again, not recommended), such data can be deleted within 30 days of written request.
-
