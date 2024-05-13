@@ -35,16 +35,17 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 </details>
 
 <Tabs queryString="install">
-	
+
 <TabItem value="brew" label="macOS (brew)">
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-1. Verify that you don't already have dbt Core installed by running the following command.    
+1. Verify that you don't already have dbt Core installed by running the following command:
   
   ```bash
   which dbt
   ```
+  
   If the output is `dbt not found`, then that confirms you don't have it installed.
 
 :::tip Run `pip uninstall dbt` to uninstall dbt Core
@@ -109,7 +110,7 @@ Note that if you're using VS Code, you must restart it to pick up modified envir
       ```
 
      If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
-   
+
    * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
 4. Clone your repository to your local computer using `git clone`. For example, to clone a GitHub repo using HTTPS format, run `git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY`.
@@ -222,9 +223,8 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
 ## Update dbt Cloud CLI
 
-The following instructions explain how to update the dbt Cloud CLI to the latest version depending on your operating system. 
+The following instructions explain how to update the dbt Cloud CLI to the latest version depending on your operating system.
 
-During the public preview period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
 
 <Tabs>
 
@@ -256,16 +256,13 @@ To update:
 
 </Tabs>
 
-## Using VS Code extensions
+## VS Code extension <Lifecycle status="beta"/>
 
-Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however, it doesn't support some dbt Core APIs required by certain tools, for example, VS Code extensions. 
+Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. "Power user" for dbt Core and dbt Cloud is a common extension used to enhance your development with VS Code.
 
-You can use extensions like [dbt-power-user](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user) with the dbt Cloud CLI by following these steps:
+You can use the dbt Cloud CLI with the [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) extension, now available in beta for the dbt Cloud CLI. 
 
-- [Install](/docs/cloud/cloud-cli-installation?install=brew) it using Homebrew along with dbt Core.
-- [Create an alias](#faqs) to run the dbt Cloud CLI as `dbt-cloud`.
-
-This setup allows dbt-power-user to continue to work with dbt Core in the background, alongside the dbt Cloud CLI.  For more, check the dbt Power User [documentation](https://docs.myaltimate.com/).
+To use the extension, you must first [install the dbt Cloud CLI](#install-dbt-cloud-cli).
 
 ## FAQs
 
