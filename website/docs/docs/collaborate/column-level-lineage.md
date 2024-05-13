@@ -7,6 +7,7 @@ dbt Explorer now offers column-level lineage (CLL) for the resources in your dbt
 
 CLL is available to dbt Cloud Enterprise accounts that can use Explorer. 
 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-overview-cll.png" width="40%" title="Overview of column level lineage"/>
 
 ## Access the column-level lineage
 
@@ -21,7 +22,7 @@ dbt Cloud updates the lineage in Explorer after each run that's executed in the 
 
 You can use the column evolution lineage lens to determine when a column is transformed vs. reused (passthrough or rename). The lens helps you distinguish when and how a column is actually changed as it flows through your dbt lineage, informing debugging workflows in particular. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-cel.png" width="40%" title="Example of the Column evolution lens"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="40%" title="Example of the Column evolution lens"/>
 
 ### Inherited column descriptions
 
