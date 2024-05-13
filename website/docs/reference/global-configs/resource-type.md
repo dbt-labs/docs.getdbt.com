@@ -24,7 +24,7 @@ The available resource types are:
 
 <VersionBlock lastVersion="1.7">
 
-For example, use the following command to exclude certain resources, such as unit tests, from your dbt build process: 
+For example, use the following command to exclude certain resources from your dbt build process: 
 
 <File name='Usage'>
 
