@@ -15,4 +15,4 @@ $ dbt build --exclude-resource-type UNIT_TEST_NAME
 
 </File>
 
-For example, to build `saved_queries`, use the `--resource-type` flag and run the command `dbt build --resource-type saved_query`.
+For example, to build `saved_queries`, use the `--resource-type` flag and run the command `dbt build --resource-type saved_query_name`.

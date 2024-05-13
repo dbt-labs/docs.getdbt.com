@@ -241,7 +241,7 @@ You can use exports to create a custom integration with tools such as PowerBI, a
 
 <detailsToggle alt_header="How can I select saved_queries by their resource type?">
 
-To build `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
+To build `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query_name`.
 
 </detailsToggle>
 
