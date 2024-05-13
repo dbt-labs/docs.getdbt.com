@@ -10,7 +10,7 @@ dbt Labs is committed to protecting your privacy and data. This page provides in
 
 #### Is my data used by dbt Labs to train AI models?
   
-No, dbt Labs does not use your prompts to train any internal dbt Labs AI model. It uses API calls to an AI provider. dbt Labs is not a party to the agreement between you and your AI vendor, and cannot advise as to what rights and obligations it provides.
+No, dbt Labs does not use your prompts to train any internal dbt Labs AI model. It uses API calls to an AI provider.
 
 #### Does dbt Labs share my personal data with third parties
 
