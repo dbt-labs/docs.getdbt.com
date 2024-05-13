@@ -43,7 +43,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature, available in beta, helping you generate documentation, metrics, semantic models, and tests, saving you time and helping you deliver data that works. Available for dbt Cloud Enterprise accounts in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
-- **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
+- **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, and [more](https://docs.myaltimate.com/)!
 
 - **New:** MetricFlow enables you to now add metrics as dimensions to your metric filters to create more complex metrics and gain more insights. Available for all users.
 
