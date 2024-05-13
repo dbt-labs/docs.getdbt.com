@@ -69,7 +69,7 @@ Provide developers with the ability to create, edit, and trigger ad hoc jobs in 
 
 **Conditional configuration of sources** enables you to point to "prod" or "non-prod" source data, depending on the environment you're running in. For example, this source will point to `<DATABASE>.sensitive_source.table_with_pii`, where `<DATABASE>` is dynamically resolved based on an environment variable.
 
-<File "models/sources.yml">
+<File name="models/sources.yml">
 
 ```yaml
 sources:
