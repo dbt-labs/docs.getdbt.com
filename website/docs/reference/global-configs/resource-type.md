@@ -4,7 +4,7 @@ id: "resource-type"
 sidebar: "resource type"
 ---
 
-The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types (such as saved queries and unit tests) from the `dbt build` and `dbt clone` commands.
+The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types (such as [saved queries](/docs/build/saved-queries) and [unit tests](/docs/build/unit-tests)) from the `dbt build` and `dbt clone` commands.
 
 <File name='Usage'>
 
