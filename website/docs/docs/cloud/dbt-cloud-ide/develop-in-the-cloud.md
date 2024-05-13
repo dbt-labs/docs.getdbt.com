@@ -10,14 +10,16 @@ pagination_prev: null
 
 The dbt Cloud integrated development environment (IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 
 
-The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) and [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and more efficient data platform development and governance:
+The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) and [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
 
-- Syntax highlighting for SQL: Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
+- Syntax highlighting for SQL &mdash; Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
 - AI co-pilot &mdash; Use [dbt Assist](/docs/cloud/dbt-assist), a powerful AI co-pilot feature, to generate documentation, metrics, semantic models, and tests for your dbt SQL and Python models.
-- Auto-completion: Suggests table names, arguments, and column names as you type, saving time and reducing typos.
-- Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format): Help standardize and fix your SQL code effortlessly.
-- Navigation tools: Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
-- Version control: Manage code versions with a few clicks.
+- Auto-completion &mdash; Suggests table names, arguments, and column names as you type, saving time and reducing typos.
+- Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) &mdash; Helps standardize and fix your SQL code effortlessly.
+- Navigation tools &mdash; Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
+- Version control &mdash; Manage code versions with a few clicks.
+- Project documentation &mdash; Generate and view your [project documentation](#build-and-document-your-projects) for your dbt project in real-time.
+- Build, test, and run button &mdash; Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 
 These [features](#dbt-cloud-ide-features) create a powerful editing environment for efficient SQL coding, suitable for both experienced and beginner developers.
 
@@ -39,7 +41,7 @@ To improve your experience using dbt Cloud, we suggest that you turn off ad bloc
 - A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) or [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
-- A [development environment and development credentials](#access-the-cloud-ide) set up
+- A [development environment and development credentials](#get-started) set up
 - The environment must be on dbt version 1.0 or higher
 
 ## dbt Cloud IDE features
@@ -48,7 +50,7 @@ The dbt Cloud IDE comes with features that make it easier for you to develop, bu
 
 To understand how to navigate the IDE and its user interface elements, refer to the [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface) page.
 
-| Feature  |  Info |
+| Feature  |  Description |
 |---|---|
 | [**Keyboard shortcuts**](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) in the IDE by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
 | **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, D, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects added files<br/> - Deleted **(D)** &mdash; The IDE detects deleted files.
@@ -69,31 +71,15 @@ To understand how to navigate the IDE and its user interface elements, refer to 
 | **Status bar** | This area provides you with useful information about your IDE and project status. You also have additional options like enabling light or dark mode, restarting the IDE, or [recloning your repo](/docs/collaborate/git/version-control-basics).
 | **Dark mode**  | From the status bar in the Cloud IDE, enable dark mode for a great viewing experience in low-light environments. 
 
-### Start-up process
+### Code generation
 
-There are three start-up states when using or launching the Cloud IDE:
+The dbt Cloud IDE comes with **CodeGenCodeLens**, a powerful feature that simplifies creating models from your sources with a click of a button. To use this feature, click on the  **Generate model** action next to each table in the source YAML file(s). It automatically creates a basic starting staging model for you to expand on. This feature helps streamline your workflow by automating the first steps of model generation.
 
-- **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for one hour. The environment automatically turns off one hour after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
-- **Hot start &mdash;** This is the state of resuming an existing or active develop session within one hour of the last activity.
+### dbt YAML validation
 
-### Work retention
+Use dbt-jsonschema to validate dbt YAML files, helping you leverage the autocomplete and assistance capabilities of the dbt Cloud IDE. This also provides immediate feedback on YAML file structure and syntax, helping you make sure your project configurations meet the required standards.
 
-The Cloud IDE needs explicit action to save your changes. There are three ways your work is stored:
-
-- **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-unsaved-modal.jpg" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
-
-- **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
-- **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
-
-## Access the Cloud IDE
-
-:::tip Disable ad blockers
-
-To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
-
-:::
+## Get started with the Cloud IDE
 
 In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud development environment](/docs/dbt-cloud-environments). In the following steps, we outline how to set up developer credentials and access the IDE. If you're creating a new project, you will automatically configure this during the project setup. 
 
@@ -112,27 +98,43 @@ Set up your developer credentials:
 6. Access the Cloud IDE by clicking **Develop** at the top of the page.
 7. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
 
-Nice job, you're ready to start developing and building models 🎉! 
+Nice job, you're ready to start developing and building models 🎉!  
 
-## Build, compile, and run projects
+### Considerations
+- To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
+- To preserve performance, there's a file size limitation for repositories over 10GB. If you have a repo over 10GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
+- <expandable alt_header="About the start up process and work retention">
+  
+  ### Start-up process
+  There are three start-up states when using or launching the Cloud IDE:
+  - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
+  - **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+  - **Hot start &mdash;** This is the state of resuming an existing or active develop session within three hours of the last activity.
 
-You can *build*, *compile*, *run*, and *test* dbt projects using the command bar or **Build** button. Use the **Build** button to quickly build, run, or test the model you're working on. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations.
+  ### Work retention
+  The Cloud IDE needs explicit action to save your changes. There are three ways your work is stored:
 
-- If a model or test fails, dbt Cloud makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
+  - **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
 
-- Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
+  <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-unsaved-modal.jpg" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
 
-<VersionBlock firstVersion="1.6">
+  - **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
+  - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
 
-- Leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the Git branch name. For example, using the branch name as a prefix for a development schema.
+  </expandable>
 
-</VersionBlock>
+## Build and document your projects
+
+- **Build, compile, and run projects** &mdash; You can *build*, *compile*, *run*, and *test* dbt projects using the command bar or **Build** button. Use the **Build** button to quickly build, run, or test the model you're working on. The Cloud IDE will update in real time when you run models, tests, seeds, and operations.
+  - If a model or test fails, dbt Cloud makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
+  - Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
+  - Starting from dbt v1.6, leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the Git branch name. For example, using the branch name as a prefix for a development schema.
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" width="85%" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
 
-## Build and view your project's docs
+- **Generate your YAML configurations with dbt Assist** <Lifecycle status='enterprise'/> &mdash; [dbt Assist](/docs/cloud/dbt-assist) is a powerful artificial intelligence (AI) co-pilot feature that helps automate development in dbt Cloud. It generates documentation, metrics, semantic models, and tests for your dbt SQL and Python models directly in the dbt Cloud IDE, with a click of a button, and helps you accomplish more in less time. 
 
-The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-and-view-your-docs#generating-documentation) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production. 
+- **Build and view your project's docs** &mdash; The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-and-view-your-docs#generating-documentation) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
 ## Related docs
 
