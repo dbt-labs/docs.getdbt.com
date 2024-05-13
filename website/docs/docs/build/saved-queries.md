@@ -147,7 +147,7 @@ saved_queries:
 </File>
 </VersionBlock>
 
-To build or run `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
+To build `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
 
 ## Configure exports
 
