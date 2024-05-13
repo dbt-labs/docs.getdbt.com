@@ -4,7 +4,21 @@ id: "resource-type"
 sidebar: "resource type"
 ---
 
-The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types (such as [saved queries](/docs/build/saved-queries) and [unit tests](/docs/build/unit-tests)) from the `dbt build` and `dbt clone` commands.
+The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types (such as unit tests) from the `dbt build` and `dbt clone` commands.
+
+The available resource types are:
+
+<VersionBlock lastVersion="1.7" >
+
+</VersionBLock>
+
+
+<VersionBlock firsttVersion="1.8" >
+
+- [saved queries](/docs/build/saved-queries)  
+- [unit tests](/docs/build/unit-tests)
+
+</VersionBLock>
 
 <File name='Usage'>
 
