@@ -55,7 +55,8 @@ We do not yet have a PySpark API to set tblproperties at table creation, so this
 
 <VersionBlock firstVersion="1.8">
 
- 
+1.8 introduces support for [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) at the table level, in addition to all table configuration supported in 1.7.
+
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|--------------------------|
 | file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                  | SQL, Python   | `delta`                  |
