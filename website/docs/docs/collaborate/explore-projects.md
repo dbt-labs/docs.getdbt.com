@@ -109,7 +109,7 @@ Example of applying the **Materialization Type** _lens_ with the lineage graph z
 
 Example of applying the **Tests Status** _lens_, where each model name displays the tests status according to the legend at the bottom, which specifies the test status.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.jpg" width="100%" title="Example of the Materialization type lens" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.jpg" width="100%" title="Example of the Test Status lens" />
 
 ## Keyword search {#search-resources}
 
