@@ -39,7 +39,7 @@ In this example, run the following command to build `saved_queries` with the `--
 <File name='Usage'>
 
 ```text
-dbt build --resource-type saved_query_name
+dbt build --resource-type SAVED_QUERY_NAME
 ```
 
 </File>
