@@ -45,7 +45,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, updating dbt model using natural language, and [more](https://docs.myaltimate.com/)!
 
-- **New:** MetricFlow enables you to now add [metrics as dimensions](/docs/build/ref-metrics-in-filters) to your metric filters to create more complex metrics and gain more insights. Available for all users.
+- **New:** MetricFlow enables you to now add metrics as dimensions to your metric filters to create more complex metrics and gain more insights. Available for all users.
 
 - **New:** Oauth login support via [Databricks](/docs/cloud/manage-access/set-up-databricks-oauth) is now GA to Enterprise customers.
 
