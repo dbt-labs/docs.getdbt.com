@@ -49,7 +49,7 @@ dbt build --resource-type SAVED_QUERY_NAME
 </File>
 
 
-- Use the following command to exclude certain resources, such as unit tests, from your dbt build process: 
+-  In this second example, use the following command to exclude certain resources, such as unit tests, from your dbt build process: 
 
 <File name='Usage'>
 
