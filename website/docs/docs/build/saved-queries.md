@@ -134,6 +134,19 @@ To define a saved query, refer to the following parameters:
 All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
 When using the `Dimension` object, prepend the semantic model name, for example `Dimension('user__ds')`
 
+## FAQs
+
+<detailsToggle alt_header="Can I have multiple exports in a single saved query?">
+
+Yes, this is possible. However, the difference would be the name, schema, and materialization strategy of the export.
+</detailsToggle>
+
+<detailsToggle alt_header="How can I select saved_queries by their resource type?">
+
+To build or run `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
+
+</detailsToggle>
+
 ## Related docs
 
 - [Exports](/docs/use-dbt-semantic-layer/exports)
