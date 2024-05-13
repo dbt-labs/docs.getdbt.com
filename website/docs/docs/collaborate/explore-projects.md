@@ -103,10 +103,13 @@ A resource in your project is characterized by resource type, materialization ty
 
 ### Example of lenses
 
-Example of applying the **Materialization Type** _lens_ with the lineage graph significantly zoomed out: 
+Example of applying the **Materialization Type** _lens_ with the lineage graph zoomed out. In this view, each model name has a color according to the materialization type legend at the bottom, which specifies the materialization type. This color-coding helps to quickly identify the materialization types of different models.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type-lense.png" width="100%" title="Example of the Materialization type lens" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.jpg" width="100%" title="Example of the Materialization type lens" />
 
+Example of applying the **Tests Status** _lens_, where each model name displays the tests status according to the legend at the bottom, which specifies the test status.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.jpg" width="100%" title="Example of the Materialization type lens" />
 
 ## Keyword search {#search-resources}
 
