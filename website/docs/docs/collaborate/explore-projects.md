@@ -99,6 +99,7 @@ A resource in your project is characterized by resource type, materialization ty
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
 - **Test Status**: The status from the latest execution of the tests that ran again this resource.
+
 </expandable>
 
 ### Example of lenses
