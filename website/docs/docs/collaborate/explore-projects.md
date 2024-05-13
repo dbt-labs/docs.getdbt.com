@@ -81,20 +81,24 @@ Example of exploring the `order_items` model in the project's lineage graph:
 
 ## Lenses
 
-The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models. 
+The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
 
 When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value. If you're significantly zoomed out, only the tags and their colors are visible in the graph.
 
+Lenses are helpful to analyze a subset of the DAG if you're zoomed in, or to find models/issues from a larger vantage point.
+
 <expandable alt_header="List of available lenses">
 
-- **Default** (resource type)
-- **Materialization Type** (for example, identifying incremental model dependencies)
-- **Latest Status** (for example, diagnosing a failed DAG region)
-- **Model Layer** (for example, discovering marts models to analyze)
+A resource in your project is characterized by resource type, materialization type, or model layer, as well as its latest run or latest test status. Lenses are available for the following metadata:
+
+- **Relationship**: Organizes resources by resource type, such as models, tests, seeds, and [more](/reference/node-selection/syntax). Resource type uses the `resource_type` selector.
+- **Materialization Type**: Identifies the strategy for building the dbt models in your data platform.
+- **Latest Status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
+- **Model Layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
     - **Marts** &mdash; A model with the prefix `fct_` or `dim_` or a model that lives in the `/marts/` subdirectory.
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
-
+- **Test Status**: The status from the latest execution of the tests that ran again this resource.
 </expandable>
 
 ### Example of lenses
