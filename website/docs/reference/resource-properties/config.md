@@ -235,10 +235,13 @@ version: 2
 saved-queries:
   - name: <saved-query-name>
     config:
-      cache: true | false
+      cache: 
+        enabled: true | false
       [enabled](/reference/resource-configs/enabled): true | false
+      [export_as]: view | table 
       [group](/reference/resource-configs/group): <string>
       [meta](/reference/resource-configs/meta): {dictionary}
+      [schema](/reference/resource-configs/schema): <string>
 ```
 
 </File>

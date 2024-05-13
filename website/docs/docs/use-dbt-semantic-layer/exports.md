@@ -18,7 +18,7 @@ Essentially, exports are like any other table in your data platform &mdash; they
 - You are on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.7 or newer.
 - You have the dbt Semantic Layer [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
 - You have a dbt Cloud environment with the [job scheduler](/docs/deploy/job-scheduler) enabled.
-- You have a [saved query and export configured](/docs/build/saved-queries#configure-exports) in your dbt project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
+- You have a [saved query](/docs/build/saved-queries) and [export configured](/docs/build/saved-queries#configure-exports) in your dbt project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
 - You have the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) installed. Note, exports aren't supported in dbt Cloud IDE yet.
 
 ## Run exports
