@@ -147,6 +147,8 @@ saved_queries:
 </File>
 </VersionBlock>
 
+To build or run `saved_queries`, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
+
 ## Configure exports
 
 Exports are an additional configuration added to a saved query. They define _how_ to write a saved query, along with the schema and table name.
