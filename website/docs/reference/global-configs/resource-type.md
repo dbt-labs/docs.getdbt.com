@@ -4,18 +4,23 @@ id: "resource-type"
 sidebar: "resource type"
 ---
 
-The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types (such as unit tests) from the `dbt build` and `dbt clone` commands.
+The `--resource-type` and `--exclude-resource-type` flags include or exclude resource types from the `dbt build` and `dbt clone` commands.
 
 The available resource types are:
 
-<VersionBlock lastVersion="1.7">
+<VersionBlock lastVersion="1.6">
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+- [saved queries](/docs/build/saved-queries)  
 
 </VersionBlock>
 
 
-<VersionBlock firsttVersion="1.8">
+<VersionBlock firstVersion="1.8">
 
-- [saved queries](/docs/build/saved-queries)  
 - [unit tests](/docs/build/unit-tests)
 
 </VersionBlock>
@@ -36,11 +41,11 @@ $ dbt build --exclude-resource-type RESOURCE_TYPE
 
 </VersionBlock>
 
-<VersionBlock firsttVersion="1.8">
+<VersionBlock firstVersion="1.7">
 
 - In this example, run the following command to build `saved_queries` with the `--resource-type` flag:
 
-  <File name='Usage'>
+<File name='Usage'>
 
 ```text
 dbt build --resource-type SAVED_QUERY_NAME
@@ -48,8 +53,11 @@ dbt build --resource-type SAVED_QUERY_NAME
 
 </File>
 
+</VersionBlock>
 
--  In this second example, use the following command to exclude certain resources, such as unit tests, from your dbt build process: 
+<VersionBlock firstVersion="1.8">
+
+-  In this example, use the following command to exclude certain resources, such as unit tests, from your dbt build process: 
 
 <File name='Usage'>
 
