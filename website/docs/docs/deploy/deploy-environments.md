@@ -20,7 +20,7 @@ Learn more about development vs. deployment environments in [dbt Cloud Environme
 
 There are three types of deployment environments:
 - **Production**: Environment for transforming data and building pipelines for production use.
-- **Staging**<Lifecycle status='beta' />: Environment for working with production tools while limiting access to production data.
+- **Staging**: Environment for working with production tools while limiting access to production data.
 - **General**: General use environment for deployment development. 
 
 We highly recommend using the `Production` environment type for the final, source of truth deployment data. There can be only one environment marked for final production workflows and we don't recommend using a `General` environment for this purpose. 
@@ -41,11 +41,7 @@ In dbt Cloud, each project can have one designated deployment environment, which
 
 For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions!
 
-## Staging environment <Lifecycle status='beta' />
-
-:::note
-Currently in limited availability beta. Contact support or your account team if you're interested in beta access.
-:::
+## Staging environment
 
 Use a Staging environment to grant developers access to deployment workflows and tools while controlling access to production data. Staging environments enable you to achieve more granular control over permissions, data warehouse connections, and data isolation — within the purview of a single project in dbt Cloud.
 
