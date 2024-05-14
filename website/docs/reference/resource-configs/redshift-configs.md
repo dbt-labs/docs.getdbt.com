@@ -336,7 +336,7 @@ select * from agg;
 
 ```
 
-If all given rows are created as a temporary table first, then running the test by referring to it will result in a successful run.
+When all given rows are created as a temporary table first, then running the test by referring to the temporary tables results in a successful run.
 
 In short, separate the unit tests into two steps:
 1. Prepare test fixtures by creating temporary tables.
