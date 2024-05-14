@@ -365,6 +365,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/advanced-topics" },
               items: [
                 "docs/build/fill-nulls-advanced",
+                "docs/build/ref-metrics-in-filters",
               ],
             },
           ],
