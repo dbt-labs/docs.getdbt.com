@@ -8,7 +8,7 @@ description: "Use dbt Assist to generate documentation and tests from scratch, g
 
 Use dbt Assist to generate documentation and tests from scratch, giving you the flexibility to modify or fix generated code. To access and use dbt Assist:
 
-1. Navigate to the dbt Cloud IDE and select a SQL or Python model file under the **File Explorer**.
+1. Navigate to the dbt Cloud IDE and select a SQL model file under the **File Explorer**.
 
 2. In the **Console** section (under the **File Editor**), select the **dbt Assist** to view the available AI options.
 
