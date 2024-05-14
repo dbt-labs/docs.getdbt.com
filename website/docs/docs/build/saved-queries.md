@@ -115,6 +115,24 @@ saved-queries:
 ```
 </File>
 
+#### Where clause
+
+Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters and refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
+
+```yaml
+filter: | 
+  {{ Entity('entity_name') }}
+
+filter: |  
+  {{ Dimension('primary_entity__dimension_name') }}
+
+filter: |  
+  {{ TimeDimension('time_dimension', 'granularity') }}
+
+filter: |  
+  {{ Metric('metric_name', group_by=['entity_name']) }}
+```
+
 </VersionBlock>
 
 <!-- For versions 1.7 and lower-->
