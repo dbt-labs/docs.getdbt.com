@@ -60,7 +60,7 @@ from
 ```
 </File>
 
-This SQL query calculates the number of `activated_accounts` by using the `data_model_runs` metric as a dimension for the user entity. It filters based on the metric value scoped to the account entity. You can express this logic natively in the MetricFlow specification.
+  This SQL query calculates the number of `activated_accounts` by using the `data_model_runs` metric as a dimension for the user entity. It filters based on the metric value scoped to the account entity. You can express this logic natively in the MetricFlow specification.
 
 #### YAML configuration
 
@@ -71,44 +71,44 @@ Using the same `activated_accounts` example mentioned in [the usage example](#us
 - Specify the foreign entity `account` in the `model_runs` semantic model.
 - Then create the `Activated Accounts` metric by filtering accounts that have more than five data model runs.
 
-<File name="models/metrics/semantic_model.yml">
+  <File name="models/metrics/semantic_model.yml">
 
-```yaml
-semantic_models:
-  - name: model_runs
-    ... # Placeholder for other configurations
-    entities:
-      - name: model_run
-        type: primary
-      - name: account
-        type: foreign
-    measures:
-      - name: data_model_runs
-        agg: sum
-        expr: 1
-        create_metric: true # The 'create_metric: true' attribute automatically creates the 'data_model_runs' metric.
+  ```yaml
+  semantic_models:
+    - name: model_runs
+      ... # Placeholder for other configurations
+      entities:
+        - name: model_run
+          type: primary
+        - name: account
+          type: foreign
+      measures:
+        - name: data_model_runs
+          agg: sum
+          expr: 1
+          create_metric: true # The 'create_metric: true' attribute automatically creates the 'data_model_runs' metric.
 
-  - name: accounts
-    ... # Placeholder for other configurations
-    entities:
-      - name: account
-        type: primary
-    measures:
-      - name: accounts
-        agg: sum
-        expr: 1
-metrics:
-  - name: activated_accounts
-    label: Activated Accounts
-    type: simple
-    type_params:
-      measure: accounts
-    filter: |
-      {{ Metric('data_model_runs', group_by=['account']) }} > 5
-```
-</File>
+    - name: accounts
+      ... # Placeholder for other configurations
+      entities:
+        - name: account
+          type: primary
+      measures:
+        - name: accounts
+          agg: sum
+          expr: 1
+  metrics:
+    - name: activated_accounts
+      label: Activated Accounts
+      type: simple
+      type_params:
+        measure: accounts
+      filter: |
+        {{ Metric('data_model_runs', group_by=['account']) }} > 5
+  ```
+  </File>
 
-Let’s break down the SQL the system generates based on the metric definition when you run `dbt sl query --metrics activated_accounts` from the command line interface:
+  Let’s break down the SQL the system generates based on the metric definition when you run `dbt sl query --metrics activated_accounts` from the command line interface:
 
 - The filter `{{ Metric('data_model_runs', group_by=['account']) }}` generates SQL similar to the `data_models_per_user` sub-query shown earlier:
 
@@ -139,20 +139,20 @@ Let’s break down the SQL the system generates based on the metric definition w
   where data_model_runs > 5
 	```
 
-The intermediate tables used to create this metric are: Accounts with the `data_model_runs` dimension
+  The intermediate tables used to create this metric are: Accounts with the `data_model_runs` dimension
 
-| account | data_model runs |
-| --- | --- |
-| 1 | 4 |
-| 2 | 7 |
-| 3 | 9 |
-| 4 | 1 |
+  | account | data_model runs |
+  | --- | --- |
+  | 1 | 4 |
+  | 2 | 7 |
+  | 3 | 9 |
+  | 4 | 1 |
 
-MetricFlow then filters this table to accounts with more than 5 data model runs and counts the number of accounts that meet this criteria:
+  MetricFlow then filters this table to accounts with more than 5 data model runs and counts the number of accounts that meet this criteria:
 
-| activated_accounts |
-| --- |
-| 2 |
+  | activated_accounts |
+  | --- |
+  | 2 |
 
 ## Considerations
 
