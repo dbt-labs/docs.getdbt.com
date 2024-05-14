@@ -35,11 +35,9 @@ To create a new dbt Cloud development environment:
 
 ### Set developer credentials
 
-To use the dbt Cloud IDE or dbt Cloud CLI, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
-
+To use the dbt Cloud IDE or dbt Cloud CLI, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="85%" height="100" title="Creating a development environment"/>
-
 
 ## Deployment environment
 
