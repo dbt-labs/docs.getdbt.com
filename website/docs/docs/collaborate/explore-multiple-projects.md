@@ -4,8 +4,6 @@ sidebar_label: "Explore multiple projects"
 description: "Learn about project-level lineage in dbt Explorer and its uses."
 ---
 
-# Explore multiple projects <Lifecycle status='public preview' />
-
 You can also view all the different projects and public models in the account, where the public models are defined, and how they are used to gain a better understanding about your cross-project resources.
 
 The resource-level lineage graph for a given project displays the cross-project relationships in the DAG. The different icons indicate whether you’re looking at an upstream producer project (parent) or a downstream consumer project (child).

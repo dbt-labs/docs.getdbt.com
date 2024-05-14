@@ -14,8 +14,8 @@ A dbt Cloud project can have multiple deployment environments, providing you the
 
 :::tip Learn how to manage dbt Cloud environments
 To learn different approaches to managing dbt Cloud environments and recommendations for your organization's unique needs, read [dbt Cloud environment best practices](/guides/set-up-ci).
-::: 
- 
+:::
+
 Learn more about development vs. deployment environments in [dbt Cloud Environments](/docs/dbt-cloud-environments).
 
 There are three types of deployment environments:

@@ -6,23 +6,21 @@ pagination_next: "docs/collaborate/model-performance"
 pagination_prev: null
 ---
 
-# Explore your dbt projects <Lifecycle status='public preview' />
-
 With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
 ## Prerequisites
 
 - You have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-- You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) for each project you want to explore.
-    - There has been at least one successful job run in the production deployment environment.
+- You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
+    - There has been at least one successful job run in the deployment environment.
 - You are on the dbt Explorer page. To do this, select **Explore** from the top navigation bar in dbt Cloud.
 
 
 ## Generate metadata 
 
-dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ in your dbt Cloud project. dbt Explorer automatically retrieves the metadata updates after each job run in the production deployment environment so it always has the latest results for your project. 
+dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your dbt Cloud project. dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. 
 
-To view a resource and its metadata, you must define the resource in your project and run a job in the production environment. The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs.
+To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs.
 
 | To view in Explorer | You must successfully run |
 |---------------------|---------------------------|
@@ -83,28 +81,36 @@ Example of exploring the `order_items` model in the project's lineage graph:
 
 ## Lenses
 
-The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models. 
+The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
 
 When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value. If you're significantly zoomed out, only the tags and their colors are visible in the graph.
 
+Lenses are helpful to analyze a subset of the DAG if you're zoomed in, or to find models/issues from a larger vantage point.
+
 <expandable alt_header="List of available lenses">
 
-- **Default** (resource type)
-- **Materialization Type** (for example, identifying incremental model dependencies)
-- **Lastest Status** (for example, diagnosing a failed DAG region)
-- **Model Layer** (for example, discovering marts models to analyze)
+A resource in your project is characterized by resource type, materialization type, or model layer, as well as its latest run or latest test status. Lenses are available for the following metadata:
+
+- **Relationship**: Organizes resources by resource type, such as models, tests, seeds, and [more](/reference/node-selection/syntax). Resource type uses the `resource_type` selector.
+- **Materialization Type**: Identifies the strategy for building the dbt models in your data platform.
+- **Latest Status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
+- **Model Layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
     - **Marts** &mdash; A model with the prefix `fct_` or `dim_` or a model that lives in the `/marts/` subdirectory.
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
+- **Test Status**: The status from the latest execution of the tests that ran again this resource. In the case that a model has multiple tests with different results, the lens reflects the 'worst case' status. 
 
 </expandable>
 
 ### Example of lenses
 
-Example of applying the **Materialization Type** _lens_ with the lineage graph significantly zoomed out: 
+Example of applying the **Materialization Type** _lens_ with the lineage graph zoomed out. In this view, each model name has a color according to the materialization type legend at the bottom, which specifies the materialization type. This color-coding helps to quickly identify the materialization types of different models.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type-lense.png" width="100%" title="Example of the Materialization type lens" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.jpg" width="100%" title="Example of the Materialization type lens" />
 
+Example of applying the **Tests Status** _lens_, where each model name displays the tests status according to the legend at the bottom, which specifies the test status.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.jpg" width="100%" title="Example of the Test Status lens" />
 
 ## Keyword search {#search-resources}
 
@@ -200,7 +206,10 @@ In the upper right corner of the resource details page, you can:
 
 <expandable alt_header="What details are available for a test?">
 
-- **Status bar** (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. 
+- **Status bar** (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. Defaults to all if not specified.
+- **Test Type** (next to the Status bar) &mdash; Information on the different test types available: Unit test or Data test. Defaults to all if not specified.
+
+When you select a test, the following details are available:
 - **General** tab includes:
     - **Lineage** graph &mdash; The test’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the test resource. Click the Expand icon in the graph's upper right corner to view the test in full lineage graph mode.
     - **Description** section &mdash; A description of the test.
@@ -208,6 +217,10 @@ In the upper right corner of the resource details page, you can:
     - **Details** section &mdash; Details like schema, severity, package, and more.
     - **Relationships** section &mdash; The nodes the test **Depends On**.
 - **Code** tab &mdash; The source code and compiled code for the test.
+
+Example of the Tests view:
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-type.jpg" width="100%" title="Example of Test Type details" />
 
 </expandable>
 
@@ -230,9 +243,11 @@ Example of the details view for the model `supplies`:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
-## Staging environment <Lifecycle status='beta' />
+## Staging environment
 
-dbt Explorer supports views for [Staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the Production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny. Once the Staging environment is configured and has a successful job run, it will be visible on the dbt Explorer landing page.
+dbt Explorer supports views for [staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny. 
+
+You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per dbt Cloud project as “production” or “staging," and ensure the proper metadata has been generated then you’ll be able to view it in Explorer. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
 
