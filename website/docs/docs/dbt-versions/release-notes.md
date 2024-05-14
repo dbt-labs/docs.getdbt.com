@@ -34,11 +34,11 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - <expandable alt_header="New: Preview of native support for Azure Synapse Analytics" > 
 
-  Native support in dbt Cloud for Azure Synapse Analytics is now available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)! 
+  Native support in dbt Cloud for Azure Synapse Analytics is now available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)!
 
   To learn more, refer to [Connect Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics) and [Microsoft Azure Synapse DWH configurations](/reference/resource-configs/azuresynapse-configs).
 
-  Also, check out the [Quickstart for dbt Cloud and Azure Synapse Analytics](/guides/azure-synapse-analytics?step=1). The guide walks you through: 
+  Also, check out the [Quickstart for dbt Cloud and Azure Synapse Analytics](/guides/azure-synapse-analytics?step=1). The guide walks you through:
 
   - Loading the Jaffle Shop sample data (provided by dbt Labs) into Azure Synapse Analytics. 
   - Connecting dbt Cloud to Azure Synapse Analytics.
