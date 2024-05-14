@@ -23,7 +23,7 @@ The keys for metrics definitions are:
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required |
 | `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional |
-| `filter` | You can optionally add a [filter](/docs/build/ref-metrics-in-filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional |
+| `filter` | You can optionally add a [filter](#filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional |
 
 Here's a complete example of the metrics spec configuration:
 
@@ -220,7 +220,7 @@ metrics:
 
 ## Filters
 
-A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters:
+A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters and refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
 
 ```yaml
 filter: | 
@@ -245,6 +245,5 @@ You can set more metadata for your metrics, which can be used by other tools lat
 ## Related docs
 
 - [Semantic models](/docs/build/semantic-models)
-- [Cumulative](/docs/build/cumulative)
-- [Derived](/docs/build/derived)
 - [Fill null values for metrics](/docs/build/fill-nulls-advanced)
+- [Metrics as dimensions with metric filters](/docs/build/ref-metrics-in-filters)
