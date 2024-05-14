@@ -22,6 +22,10 @@ Release notes are grouped by month. For customers using dbt Virtual Private Clou
 
 The following features are new or enhanced as part of our [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
 
+- **New:** [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature helping you generate documentation, metrics, semantic models, and tests, saving you time as you deliver high quality data. Available in private beta for a subset of dbt Cloud Enterprise users and in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). [Register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) to join the private beta.
+
+- **New:** Low-code editor for dbt Cloud is now in private beta. With the new low-code editor, less SQL-savvy analysts will be able to create or edit dbt models through a visual, drag-and-drop experience inside of dbt Cloud. These models compile directly to SQL and are indistinguishable from other dbt models in your projects: they are version controlled, can be accessed across projects in a dbt Mesh, and integrate with dbt Explorer and the Cloud IDE. [Register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) to join the private beta.
+
 - **New:** [Unit tests](/docs/build/unit-tests) are now Generally Available (GA) in dbt Cloud. Unit tests enable you to test your SQL model logic against a set of static inputs.
 
 - <expandable alt_header="New: Preview of native support for Azure Synapse Analytics" > 
@@ -41,7 +45,6 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </expandable>
 
-- **New:** [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature, available in beta, helping you generate documentation, metrics, semantic models, and tests, saving you time and helping you deliver data that works. Available for dbt Cloud Enterprise accounts in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
 - **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, and [more](https://docs.myaltimate.com/)!
 
