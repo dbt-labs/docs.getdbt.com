@@ -14,7 +14,9 @@ dbt Cloud release notes for recent and historical changes. Release notes fall in
 - **Fix:** Bug and security fixes
 - **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
-Release notes are grouped by month. For customers using dbt Virtual Private Cloud (VPC), there is a tag for changes available in your versioned release environment.
+Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC)[^*] environments
+
+[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
 
 ## May 2024
 
