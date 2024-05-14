@@ -139,7 +139,7 @@ Using the same `activated_accounts` example mentioned in [the usage example](#us
   where data_model_runs > 5
 	```
 
-  The intermediate tables used to create this metric are: Accounts with the `data_model_runs` dimension
+  The intermediate tables used to create this metric is: Accounts with the `data_model_runs` dimension
 
   | account | data_model runs |
   | --- | --- |
