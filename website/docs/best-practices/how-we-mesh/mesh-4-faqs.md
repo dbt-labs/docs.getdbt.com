@@ -251,6 +251,14 @@ If you’re interested in beta access to “Staging” environments, let your db
 
 </detailsToggle>
 
+<detailsToggle alt_header="Does dbt Mesh work if projects are 'duplicated' (dev project <> prod project)?">
+
+The short answer is "no." Cross-project references require that each project `name` be unique in your dbt Cloud account.
+
+Historical limitations required customers to "duplicate" projects so that one actual dbt project (codebase) would map to more than one dbt Cloud project. To that end, we are working to remove the historical limitations that required customers to "duplicate" projects in dbt Cloud — Staging environments for data isolation (beta), environment-level permissions, and environment-level data warehouse connections (coming soon). Once those pieces are in place, it should no longer be necessary to define separate dbt Cloud projects to isolate data environments or permissions.
+
+</detailsToggle>
+
 ## Compatibility with other features
 
 <detailsToggle alt_header="How does the dbt Semantic Layer relate to and work with dbt Mesh?">
