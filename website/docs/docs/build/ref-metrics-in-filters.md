@@ -5,7 +5,7 @@ description: "Add metrics as dimensions to your metric filters to create more co
 sidebar_label: "Metrics as dimensions"
 ---
 
-[Metrics](/docs/build/metrics-overview) provider users with valuable insights into their data, like number of active users and overall performance trends to inform business decisions. [Dimensions](/docs/build/dimensions), on the other hand, help categorize data through attributes, like user type or number of orders placed by a customer.
+[Metrics](/docs/build/metrics-overview) provide users with valuable insights into their data, like number of active users and overall performance trends to inform business decisions. [Dimensions](/docs/build/dimensions), on the other hand, help categorize data through attributes, like user type or number of orders placed by a customer.
 
 To make informed business decisions, some metrics need the value of another metric as part of the metric definition, leading us to "metrics as dimensions".
 
