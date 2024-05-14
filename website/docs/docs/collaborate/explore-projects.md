@@ -239,7 +239,7 @@ Example of the Tests view:
 
 ### Example of model details
 
-Example of the details view for the model `supplies`: 
+Example of the details view for the model `customers`: 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
