@@ -23,18 +23,18 @@ The keys for metrics definitions are:
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required |
 | `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional |
-| `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
+| `filter` | You can optionally add a [filter](/docs/build/ref-metrics-in-filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional |
 
 Here's a complete example of the metrics spec configuration:
 
 ```yaml
 metrics:
   - name: metric name                     ## Required
-    description: same as always           ## Optional
+    description: description               ## Optional
     type: the type of the metric          ## Required
     type_params:                          ## Required
       - specific properties for the metric type
-    config: here for `enabled`            ## Optional
+    config:                               ## Optional
       meta:
         my_meta_config:  'config'         ## Optional
     label: The display name for your metric. This value will be shown in downstream tools. ## Required

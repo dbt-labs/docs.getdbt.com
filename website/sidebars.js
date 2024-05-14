@@ -346,7 +346,6 @@ const sidebarSettings = {
                 "docs/build/derived",
                 "docs/build/ratio",
                 "docs/build/simple",
-                "docs/build/ref-metrics-in-filters",
               ],
             },
             {
@@ -355,6 +354,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/advanced-topics" },
               items: [
                 "docs/build/fill-nulls-advanced",
+                "docs/build/ref-metrics-in-filters",
               ],
             },
           ],

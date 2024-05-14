@@ -5,11 +5,11 @@ description: "Add metrics as dimensions to your metric filters to create more co
 sidebar_label: "Metrics as dimensions"
 ---
 
+This document explains how you can use metrics as dimensions with metric filters, enabling you to create more complex metrics and gain more insights.
+
 [Metrics](/docs/build/metrics-overview) provide users with valuable insights into their data, such as the number of active users. They also are used to track performance, trend, and help businesses make important decisions. [Dimensions](/docs/build/dimensions), on the other hand, are attributes that help categorize data, such as user type or number of orders placed by a customer.
 
 To make informed business decisions, some metrics need the value of another metric as part of the metric definition, leading us to "metrics as dimensions".
-
-This document explains how you can use metrics as dimensions with metric filters, enabling you to create more complex metrics and gain more insights.
 
 ### Example
 
