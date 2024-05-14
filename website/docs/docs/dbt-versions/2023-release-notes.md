@@ -24,7 +24,7 @@ Archived release notes for dbt Cloud from 2023
 
     ## Improvements
 
-    - Deprecation &mdash; We deprecated [dbt Metrics and the legacy dbt Semantic Layer](/docs/dbt-versions/release-notes/Dec-2023/legacy-sl), both supported on dbt version 1.5 or lower. This change came into effect on December 15th, 2023.
+    - Deprecation &mdash; We deprecated dbt Metrics and the legacy dbt Semantic Layer, both supported on dbt version 1.5 or lower. This change came into effect on December 15th, 2023.
     - Improved dbt converter tool &mdash; The [dbt converter tool](https://github.com/dbt-labs/dbt-converter) can now help automate some of the work in converting from LookML (Looker's modeling language) for those who are migrating. Previously this wasn’t available. 
 
   </expandable>
