@@ -164,3 +164,4 @@ Using the same `activated_accounts` example mentioned in [the usage example](#us
   - User segments: Segment users by using the number of orders placed by a user in the last 7 days as a dimension.
   - Churn prediction: Use the number of support tickets an account submitted in the first 30 days to predict potential churn.
   - Activation tracking: Define account or user activation based on the specific actions taken within a certain number of days after signing up.
+  - Support for metric filters requiring multi-hop joins is pending.
