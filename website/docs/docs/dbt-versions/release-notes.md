@@ -51,6 +51,8 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** MetricFlow enables you to now add metrics as dimensions to your metric filters to create more complex metrics and gain more insights. Available for all dbt Semantic Layer users.
 
+- **New:** [Staging environments](/docs/deploy/deploy-environments#staging-environment) are now GA. Use staging environments to grant developers access to deployment workflows and tools while controlling access to production data. Available to dbt Cloud users.
+
 - **New:** Oauth login support via [Databricks](/docs/cloud/manage-access/set-up-databricks-oauth) is now GA to Enterprise customers.
 
 - <expandable alt_header="New: GA of dbt Explorer's features" > 
