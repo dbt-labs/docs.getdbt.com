@@ -23,24 +23,24 @@ The keys for metrics definitions are:
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`).  | Required |
 | `config` | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configurations.  | Optional |
-| `filter` | You can optionally add a filter string to any metric type, applying filters to dimensions, entities, or time dimensions during metric computation. Consider it as your WHERE clause.   | Optional |
+| `filter` | You can optionally add a [filter](#filters) string to any metric type, applying filters to dimensions, entities, time dimensions, or other metrics during metric computation. Consider it as your WHERE clause.   | Optional |
 
 Here's a complete example of the metrics spec configuration:
 
 ```yaml
 metrics:
   - name: metric name                     ## Required
-    description: same as always           ## Optional
+    description: description               ## Optional
     type: the type of the metric          ## Required
     type_params:                          ## Required
       - specific properties for the metric type
-    config: here for `enabled`            ## Optional
+    config:                               ## Optional
       meta:
         my_meta_config:  'config'         ## Optional
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
-      null
+      null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
 ```
 </VersionBlock>
 
@@ -74,8 +74,9 @@ metrics:
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
-      null
+      null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
 ```
+
 </VersionBlock>
 
 This page explains the different supported metric types you can add to your dbt project.
@@ -112,7 +113,7 @@ metrics:
             conversion_property: DIMENSION or ENTITY 
 ```
 
-### Cumulative metrics 
+### Cumulative metrics
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
@@ -120,8 +121,6 @@ metrics:
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all of time)
 metrics:
   - name: wau_rolling_7
-    owners:
-      - support@getdbt.com
     type: cumulative
     label: Weekly active users
     type_params:
@@ -178,8 +177,6 @@ metrics:
 ```yaml
 metrics:
   - name: cancellation_rate
-    owners:
-      - support@getdbt.com
     type: ratio
     label: Cancellation rate
     type_params:
@@ -188,8 +185,6 @@ metrics:
     filter: |   
       {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
-    owners:
-      - support@getdbt.com
     type: ratio
     type_params:
       numerator:
@@ -225,15 +220,20 @@ metrics:
 
 ## Filters
 
-A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, and time dimensions in filters:
+A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters and refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
 
 ```yaml
-filter: |
-  {{ Entity('entity_name') }} 
-filter: |
+filter: | 
+  {{ Entity('entity_name') }}
+
+filter: |  
   {{ Dimension('primary_entity__dimension_name') }}
-filter: |
+
+filter: |  
   {{ TimeDimension('time_dimension', 'granularity') }}
+
+filter: |  
+  {{ Metric('metric_name', group_by=['entity_name']) }}
 ```
 
 ### Further configuration
@@ -245,6 +245,5 @@ You can set more metadata for your metrics, which can be used by other tools lat
 ## Related docs
 
 - [Semantic models](/docs/build/semantic-models)
-- [Cumulative](/docs/build/cumulative)
-- [Derived](/docs/build/derived)
 - [Fill null values for metrics](/docs/build/fill-nulls-advanced)
+- [Metrics as dimensions with metric filters](/docs/build/ref-metrics-in-filters)
