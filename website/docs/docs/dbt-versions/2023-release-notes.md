@@ -946,6 +946,14 @@ Temporary schemas are now being automatically deleted (dropped) for all adapters
 
 ## Feb 2023
 
+-<expandable alt_header='Disable partial parsing in job commands'>
+
+    You can now use the `--no-partial-parse` flag to disable partial parsing in your dbt Cloud job commands. 
+
+    Previously, the [`--no-partial-parse` global config](/reference/global-configs/parsing) was only available in dbt Core. For more information, refer to [partial parsing](/reference/parsing#partial-parsing).
+
+  </expandable>
+
 - <expandable alt_header='dbt Cloud IDE'>
 
     To continue improving our [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
