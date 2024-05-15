@@ -66,7 +66,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 <VersionBlock firstVersion="1.6">
     
-   - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note to use this button,  make sure you're not a delete branch.
+   - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note, you won't be able to prune your current branch.
 
 </VersionBlock>
 
