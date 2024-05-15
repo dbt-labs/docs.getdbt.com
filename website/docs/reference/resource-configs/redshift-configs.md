@@ -296,7 +296,7 @@ create temporary table "test_tmpxxxxx" as (
 );
 
 ```
-This results in the error: 
+This query results in the error: 
 
 ```bash
 
