@@ -275,7 +275,7 @@ Archived release notes for dbt Cloud from 2023
 
     - If you had set up a CI job before October 2, 2023, the job might've been misclassified as a deploy job with this update. Below describes how to fix the job type:
 
-        If you used the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint but didn't set `"triggers":triggers.git_provider_webhook`, the job was misclassified as a deploy job and you must re-create it as described in [Trigger a CI job with the API](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api).
+    If you used the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint but didn't set `"triggers":triggers.git_provider_webhook`, the job was misclassified as a deploy job and you must re-create it as described in [Trigger a CI job with the API](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api).
 
         If you used the dbt Cloud UI but didn't enable the **Run on Pull Requests** option that was in the **Continuous Integration** (CI) tab, the job was misclassified as a deploy job and you must re-create it as described in [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs).
 
