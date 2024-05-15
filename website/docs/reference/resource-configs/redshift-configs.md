@@ -264,7 +264,7 @@ The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data 
 
 Redshift doesn't support Unit tests when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, etc. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. For unit tests to function properly in this scenario, creating temporary tables for the unit tests to reference is a good workaround. 
 
-The following query illustrates this limitation:
+The following query illustrates the limitation:
 
 ```sql
 
