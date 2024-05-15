@@ -710,6 +710,8 @@ Archived release notes for dbt Cloud from 2023
     - Cleaner look and feel with iconography
     - Helpful tool tips
 
+    <Lightbox src="/img/docs/release-notes/run-details-and-logs-improvements.gif" title="Improvements to run details and logs in dbt Cloud" />
+
   </expandable>
 
 - <expandable alt_header='Product docs updates'>
