@@ -56,7 +56,7 @@ The Google Sheets **Query Builder** custom menu has the following capabilities:
 | Order By      | Return your data order.                              |
 | Limit         | Set a limit for the rows of your output.               |
 
-Note: All metrics and dimensions have an info button which you can click into to get the description of the object as defined in your dbt project.
+Note: Click the info button next to any metric or dimension to see its defined description from your dbt project.
 
 #### Modifying time granularity
 
