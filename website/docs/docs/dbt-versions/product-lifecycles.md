@@ -14,15 +14,15 @@ Any dbt feature will fall into one of the following lifecycle states:
 
 ### dbt Cloud
 
-- **Beta:** Beta features may be made available for the purpose of customer testing and evaluation. These might not be feature-complete or fully stable. There might still be some planned additions and modifications to product behaviors while in beta. Breaking changes could occur &mdash; although we will do our best to communicate them in advance, we might not always be able to do so. Beta features might not be fully documented, technical support might be limited, and service level objectives (SLOs) might not be provided. Download the [Beta Features Terms and Conditions](/assets/beta-tc.pdf) for more details.
+- **Beta:** Beta features are still in development and are only available to select customers. To join a beta, there might be a signup form, or dbt Labs may contact specific customers about testing. Some can be activated by enabling [experimental features](/docs/dbt-versions/experimental-features) in your environment. Beta features are incomplete and might not be entirely stable; they should be used at the customer’s risk, as breaking changes could occur. Beta features might not be fully documented, technical support is limited, and service level objectives (SLOs) might not be provided. Download the [Beta Features Terms and Conditions](/assets/beta-tc.pdf) for more details.
 
-- **Preview (Private or Public):**  Preview features are stable and can be considered for production deployments. There may still be some planned additions and modifications to product behaviors before moving to General Availability. We may also introduce new functionality to Preview features that is not backward compatible. Preview features include documentation, technical support, and include service level objectives (SLOs). Features in Preview are generally provided at no extra cost, although they may become paid features in their Generally Available state.
+- **Preview:**  Preview features are stable and considered functionally ready for production deployments. Some planned additions and modifications to feature behaviors could occur before they become generally available. New functionality that is not backward compatible could also be introduced. Preview features include documentation, technical support, and service level objectives (SLOs). Features in preview are provided at no extra cost, although they might become paid features when they become generally available.
 
-- **Generally Available (GA):** Generally Available features provide stable features that can be considered for production deployments. Service level agreements (SLAs) apply to GA features, and these features include documentation and technical support.
+- **Generally Available (GA):** Generally available features provide stable features introduced to all qualified production environments. Service level agreements (SLAs) apply to GA features, including documentation and technical support.
 
-- **Deprecated:** Features in this state are not actively worked on or enhanced by dbt Labs and will continue to function as-is until their removal date. 
+- **Deprecated:** Features in this state are no longer being developed or enhanced by dbt Labs and will continue to function as-is until their removal date.
 
-- **Removed:** Removed features no longer have any level of product functionality or platform support.
+- **Removed:** Removed features are no longer available on the platform in any capacity.
 
 ### dbt Core
 
