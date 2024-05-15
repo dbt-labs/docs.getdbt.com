@@ -78,7 +78,7 @@ Archived release notes for dbt Cloud from 2023
 
 ## November 2023
 
-- <expandable alt_header='dbt Explorer updates'>
+- <expandable alt_header='New features and UI changes to dbt Explorer'>
 
     There are new quality-of-life improvements in dbt Cloud for email and Slack notifications about your jobs: 
 
