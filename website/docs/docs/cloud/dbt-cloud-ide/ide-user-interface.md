@@ -57,13 +57,15 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 3. **Version Control &mdash;** This menu contains all git-related elements, including the Git actions button. The button updates relevant actions based on your editor's state, such as prompting to pull remote changes, commit and sync when reverted commit changes are present, creating a merge/pull request when appropriate, or pruning branches deleted from the remote repository.
    - The dropdown menu on the Git actions button allows users to revert changes, refresh Git state, create merge/pull requests, prune branches, and change branches.
-<VersionBlock lastVersion="1.5">
-         - Keep in mind that although you can't delete local branches in the IDE using this menu, you can [reclone your repository](/docs/cloud/dbt-cloud-ide/ide-user-interface#modals-and-menus), which deletes your local branches and refreshes with the current remote branches, effectively removing the deleted ones.
+
+<VersionBlock lastVersion="1.5"> 
+   - Keep in mind that although you can't delete local branches in the IDE using this menu, you can [reclone your repository](/docs/cloud/dbt-cloud-ide/ide-user-interface#modals-and-menus), which deletes your local branches and refreshes with the current remote branches, effectively removing the deleted ones.
 </VersionBlock>
 
 <VersionBlock firstVersion="1.6">
-          - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note to use this button,  make sure you're not a delete branch.
+   - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note to use this button,  make sure you're not a delete branch.
 </VersionBlock>
+
    - You can also [resolve merge conflicts](/docs/collaborate/git/merge-conflicts) and for more info on git, refer to [Version control basics](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide).
    - **Version Control Options menu &mdash;** The **Changes** section, under the Git actions button, lists all file changes since the last commit. You can click on a change to open the Git Diff View to see the inline changes. You can also right-click any file and use the file-specific options in the Version Control Options menu.
 
