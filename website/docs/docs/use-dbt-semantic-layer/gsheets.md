@@ -60,7 +60,7 @@ Note: All metrics and dimensions have an info button which you can click into to
 
 #### Modifying time granularity
 
-When selecting time dimensions in the group by menu, you will see a list of available time granularities below the selection. By default, the lowest granularity is selected. Metric time is the default time dimension that you can group all your metrics by.
+When you select time dimensions in the **Group By** menu, you'll see a list of available time granularities. The lowest granularity is selected by default. Metric time is the default time dimension for grouping your metrics.
 
 **Filtering data**
 
