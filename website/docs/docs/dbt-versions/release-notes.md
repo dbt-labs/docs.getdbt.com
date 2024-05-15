@@ -20,6 +20,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## May 2024
 
+- **Enhancement:** We've now introduced a new **Prune branches** [Git button](/docs/cloud/dbt-cloud-ide/ide-user-interface#prune-branches-modal) in the dbt Cloud IDE. This button allows you to delete local branches that have been deleted from the remote repository, keeping your branch management tidy.
+
 #### dbt Cloud Launch Showcase event
 
 The following features are new or enhanced as part of our [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
