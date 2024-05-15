@@ -737,9 +737,9 @@ Archived release notes for dbt Cloud from 2023
     - Launched a sparkling new [dbt Cloud Scheduler page](/docs/deploy/job-scheduler) ✨! We went from previously having little content around the scheduler to a subsection that breaks down the awesome scheduler features and how it works.
     - Updated the [dbt Cloud user license page](/docs/cloud/manage-access/seats-and-users#licenses) to clarify how to add or remove cloud users.
     - Shipped these Discovery API docs to coincide with the launch of the Discovery API:
-        - [About the Discovery API](/docs/dbt-cloud-apis/discovery-api)
-        - [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples)
-        - [Query the Discovery API](/docs/dbt-cloud-apis/discovery-querying)
+      - [About the Discovery API](/docs/dbt-cloud-apis/discovery-api)
+      - [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples)
+      - [Query the Discovery API](/docs/dbt-cloud-apis/discovery-querying)
 
     ## 🎯 Core projects
 
@@ -834,7 +834,7 @@ Archived release notes for dbt Cloud from 2023
 
   </expandable>
 
-- <expandable alt_header='Docs updates'>
+- <expandable alt_header='Product docs updates'>
 
     Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! We want to share some highlights introduced to docs.getdbt.com in the last month:
 
