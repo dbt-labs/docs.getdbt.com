@@ -257,3 +257,90 @@ The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data 
 </VersionBlock>
 
 </VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+## Unit test limitations
+
+Redshift doesn't support Unit tests when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, etc. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. For unit tests to function properly in this scenario, creating temporary tables for the unit tests to reference is a good workaround. 
+
+The following query illustrates the limitation:
+
+```sql
+
+create temporary table "test_tmpxxxxx" as (
+   with test_fixture as (
+       select
+         cast(1000 as integer) as id,
+         cast('menu1' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+      union all
+      select
+         cast(1001 as integer) as id,
+         cast('menu2' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+      union all
+      select
+         cast(1003 as integer) as id,
+         cast('menu1' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+   ),
+   agg as (
+      SELECT
+         LISTAGG(name || ' x ' || quantity, ',') AS option_name_list,
+         id
+      FROM test_fixture
+      GROUP BY id
+   )
+   select * from agg
+);
+
+```
+This query results in the error: 
+
+```bash
+
+[XX000] ERROR: One or more of the used functions must be applied on at least one user created tables. Examples of user table only functions are LISTAGG, MEDIAN, PERCENTILE_CONT, etc
+
+```
+
+However, the following query works as expected:
+
+```sql
+
+create temporary table "test_tmp1234" as (
+   SELECT
+      cast(1000 as integer) as id,
+      cast('menu1' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+   union all
+   select
+      cast(1001 as integer) as id,
+      cast('menu2' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+   union all
+   select
+      cast(1000 as integer) as id,
+      cast('menu1' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+);
+
+with agg as (
+   SELECT
+      LISTAGG(name || ' x ' || quantity, ',') AS option_name_list,
+      id
+   FROM test_tmp1234
+   GROUP BY id
+)
+select * from agg;
+
+```
+
+When all given rows are created as a temporary table first, then running the test by referring to the temporary tables results in a successful run.
+
+In short, separate the unit tests into two steps:
+1. Prepare test fixtures by creating temporary tables.
+2. Run unit test query by referring to the temporary tables.
+
+</VersionBlock>
+
