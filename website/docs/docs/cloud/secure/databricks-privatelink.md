@@ -14,7 +14,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
 
 ## Configure PrivateLink
 
-1. Locate your [Databricks Instance Name](https://docs.databricks.com/en/workspace/workspace-details.html#workspace-instance-names-urls-and-ids)
+1. Locate your [Databricks instance name](https://docs.databricks.com/en/workspace/workspace-details.html#workspace-instance-names-urls-and-ids)
   -  Example: `cust-success.cloud.databricks.com`
 2. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support): 
 ```
