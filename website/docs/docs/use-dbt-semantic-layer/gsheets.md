@@ -41,21 +41,26 @@ When querying your data with Google Sheets:
 - The custom menu operation has a timeout limit of six (6) minutes.
 - If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues.
 
+
 ## Query Builder functions
 
 The Google Sheets **Query Builder** custom menu has the following capabilities:
+
 
 | Menu items    | Description                                           |
 |---------------|-------------------------------------------------------|
 | Metrics       | Search and select metrics.                             |
 | Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. You may choose dimensions on their own without metrics. |
 | Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time), or do more advanced filter using the "Custom" selection|
-| Granularity   | Modify the granularity of the primary time dimension.      |
 | Where         | Filter your data. This includes categorical and time filters. |
 | Order By      | Return your data order.                              |
 | Limit         | Set a limit for the rows of your output.               |
 
+Note: Click the info button next to any metric or dimension to see its defined description from your dbt project.
 
+#### Modifying time granularity
+
+When you select time dimensions in the **Group By** menu, you'll see a list of available time granularities. The lowest granularity is selected by default. Metric time is the default time dimension for grouping your metrics.
 
 **Filtering data**
 
