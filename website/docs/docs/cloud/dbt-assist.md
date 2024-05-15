@@ -2,6 +2,8 @@
 title: "About dbt Assist" 
 sidebar_label: "About dbt Assist" 
 description: "dbt Assist’s powerful AI co-pilot feature helps you deliver data that works." 
+pagination_next: "docs/cloud/enable-dbt-assist"
+pagination_prev: null
 ---
 
 # About dbt Assist <Lifecycle status='beta'/> 
