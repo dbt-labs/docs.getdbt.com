@@ -59,11 +59,15 @@ The IDE features some delightful tools and layouts to make it easier for you to 
    - The dropdown menu on the Git actions button allows users to revert changes, refresh Git state, create merge/pull requests, prune branches, and change branches.
 
 <VersionBlock lastVersion="1.5"> 
+    
    - Keep in mind that although you can't delete local branches in the IDE using this menu, you can [reclone your repository](/docs/cloud/dbt-cloud-ide/ide-user-interface#modals-and-menus), which deletes your local branches and refreshes with the current remote branches, effectively removing the deleted ones.
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.6">
+    
    - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note to use this button,  make sure you're not a delete branch.
+
 </VersionBlock>
 
    - You can also [resolve merge conflicts](/docs/collaborate/git/merge-conflicts) and for more info on git, refer to [Version control basics](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide).
