@@ -18,7 +18,7 @@ This year, dbt Labs is introducing an expanded notion of `dependencies` across m
 
 ## Prerequisites
 - Available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing). If you have an Enterprise account, you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref).
-- Set your development and deployment [environments](/docs/dbt-cloud-environments) to use [dbt version](/docs/dbt-versions/core) 1.6 or later. You can also opt [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) of to always use the latest version of dbt.
+- Set your development and deployment [environments](/docs/dbt-cloud-environments) to use [dbt version](/docs/dbt-versions/core) 1.6 or later. You can also opt [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version of dbt.
 
 import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
