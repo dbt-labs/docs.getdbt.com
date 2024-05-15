@@ -14,7 +14,9 @@ dbt Cloud release notes for recent and historical changes. Release notes fall in
 - **Fix:** Bug and security fixes
 - **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
-Release notes are grouped by month. For customers using dbt Virtual Private Cloud (VPC), there is a tag for changes available in your versioned release environment.
+Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC)[^*] environments
+
+[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
 
 ## May 2024
 
@@ -22,7 +24,7 @@ Release notes are grouped by month. For customers using dbt Virtual Private Clou
 
 The following features are new or enhanced as part of our [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
 
-- **New:** [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature helping you generate documentation, metrics, semantic models, and tests, saving you time as you deliver high quality data. Available in private beta for a subset of dbt Cloud Enterprise users and in the dbt Cloud IDE. [Register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) to join the private beta.
+- **New:** [dbt Assist](/docs/cloud/dbt-assist) is a powerful AI feature helping you generate documentation and tests, saving you time as you deliver high quality data. Available in private beta for a subset of dbt Cloud Enterprise users and in the dbt Cloud IDE. [Register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) to join the private beta.
 
 - **New:** The new low-code editor, now in private beta, enables less SQL-savvy analysts to create or edit dbt models through a visual, drag-and-drop experience inside of dbt Cloud. These models compile directly to SQL and are indistinguishable from other dbt models in your projects: they are version controlled, can be accessed across projects in a dbt Mesh, and integrate with dbt Explorer and the Cloud IDE. [Register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) to join the private beta.
 
