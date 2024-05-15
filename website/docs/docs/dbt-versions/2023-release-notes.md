@@ -965,7 +965,7 @@ Archived release notes for dbt Cloud from 2023
     - Rename files by double-clicking on files in the file tree and the editor tabs
     - Right-clicking on file tabs has new options and will now open at your cursor instead of in the middle of the tab
     - The git branch name above **Version Control** links to the repo for specific git providers
-        - Currently available for all [multi-tenant](/docs/cloud/about-cloud/access-regions-ip-addresses) instances using GitHub or GitLab providers 
+      - Currently available for all [multi-tenant](/docs/cloud/about-cloud/access-regions-ip-addresses) instances using GitHub or GitLab providers 
 
     ## Product refinements 
 
