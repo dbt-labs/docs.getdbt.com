@@ -168,47 +168,12 @@
       "permanent": true
     },
     {
-      "source": "/docs/dbt-versions/release-notes/April-2023/apr-ide-updates",
+      "source": "/docs/dbt-versions/release-notes/April-2023/:path*",
       "destination": "/docs/dbt-versions/2023-release-notes",
       "permanent": true
     },
     {
-      "source": "/docs/dbt-versions/release-notes/April-2023/april-product-docs",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/April-2023/starburst-trino-ga",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/April-2023/scheduler-optimized",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/April-2023/api-endpoint-restriction",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Mar-2023/1.0-deprecation",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Mar-2023/apiv2-limit",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Mar-2023/mar-ide-updates",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Mar-2023/public-preview-trino-in-dbt-cloud",
+      "source": "/docs/dbt-versions/release-notes/Mar-2023/:path*",
       "destination": "/docs/dbt-versions/2023-release-notes",
       "permanent": true
     },
