@@ -316,7 +316,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
-            "docs/build/build-metrics-intro",
+            "docs/build/build-metrics-intro", 
             {
               type: "link",
               label: "Quickstart with the dbt Cloud Semantic Layer",
@@ -330,7 +330,6 @@ const sidebarSettings = {
                 "docs/build/about-metricflow",
                 "docs/build/join-logic",
                 "docs/build/validation",
-                "docs/build/saved-queries",
                 "docs/build/metricflow-time-spine",
                 "docs/build/metricflow-commands",
               ],
@@ -359,6 +358,7 @@ const sidebarSettings = {
                 "docs/build/simple",
               ],
             },
+            "docs/build/saved-queries",
             {
               type: "category",
               label: "Advanced data modeling",
