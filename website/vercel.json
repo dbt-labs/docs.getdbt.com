@@ -213,16 +213,6 @@
       "permanent": true
     },
     {
-      "source": "/docs/dbt-versions/release-notes/Feb-2023/feb-ide-updates",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Feb-2023/no-partial-parse-config",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
       "source": "/docs/dbt-versions/release-notes/May-2024/no-spaces-in",
       "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
       "permanent": true
