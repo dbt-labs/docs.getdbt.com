@@ -9,17 +9,14 @@ pagination_prev: null
 dbt Cloud can connect with a variety of data platform providers including: 
 - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
-- [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
+- [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark)
+- [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics) <Lifecycle status='public preview' /> 
 - [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
 - [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery)
 - [Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric)
 - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
 - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
 - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
-
-import MSCallout from '/snippets/_microsoft-adapters-soon.md';
-
-<MSCallout />
 
 You can connect to your database in dbt Cloud by clicking the gear in the top right and selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
 

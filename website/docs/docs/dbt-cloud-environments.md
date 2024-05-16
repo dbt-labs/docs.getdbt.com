@@ -35,14 +35,15 @@ To create a new dbt Cloud development environment:
 
 ### Set developer credentials
 
-To use the dbt Cloud IDE or dbt Cloud CLI, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
-
+To use the dbt Cloud IDE or dbt Cloud CLI, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#get-started-with-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="85%" height="100" title="Creating a development environment"/>
 
-
 ## Deployment environment
 
-Deployment environments in dbt Cloud are necessary to execute scheduled jobs and use other features. A dbt Cloud project can have multiple deployment environments, allowing for flexibility and customization. However, a dbt Cloud project can only have one deployment environment that represents the production source of truth. 
+Deployment environments in dbt Cloud are necessary to execute scheduled jobs and use other features (like different workspaces for different tasks). You can have many environments in a single dbt Cloud project, enabling you to set up each space in a way that suits different needs (such as experimenting or testing).
+
+Even though you can have many environments, only one of them can be the "main" deployment environment. This would be considered your "production" environment and represents your project's "source of truth", meaning it's where your most reliable and final data transformations live.
+
 
 To learn more about dbt Cloud deployment environments and how to configure them, refer to the [Deployment environments](/docs/deploy/deploy-environments) page. For our best practices guide, read [dbt Cloud environment best practices](/guides/set-up-ci) for more info.

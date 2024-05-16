@@ -8,14 +8,14 @@ tags: [Metrics, Semantic Layer]
 
 Ratio allows you to create a ratio between two metrics. You simply specify a numerator and a denominator metric. Additionally, you can apply a dimensional filter to both the numerator and denominator using a constraint string when computing the metric. 
 
- The parameters, description, and type for ratio metrics are: 
+ The parameters, description, and type for ratio metrics are:
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | The value that will be displayed in downstream tools. | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
 | `numerator` | The name of the metric used for the numerator, or structure of properties. | Required |
 | `denominator` |  The name of the metric used for the denominator, or structure of properties. | Required  |
@@ -29,7 +29,7 @@ metrics:
   - name: The metric name # Required
     description: the metric description # Optional
     type: ratio # Required
-    label: The value that will be displayed in downstream tools #Required
+    label: String that defines the display value in downstream tools. (such as orders_total or "orders_total") #Required
     type_params: # Required
       numerator: The name of the metric used for the numerator, or structure of properties # Required
         name: Name of metric used for the numerator # Required
@@ -49,7 +49,7 @@ For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine
 metrics:
   - name: food_order_pct
     description: "The food order count as a ratio of the total order count"
-    label: Food Order Ratio
+    label: Food order ratio
     type: ratio
     type_params: 
       numerator: food_orders
@@ -113,8 +113,6 @@ Users can define constraints on input metrics for a ratio metric by applying a f
 metrics:
   - name: frequent_purchaser_ratio
     description: Fraction of active users who qualify as frequent purchasers
-    owners:
-      - support@getdbt.com
     type: ratio
     type_params:
       numerator:

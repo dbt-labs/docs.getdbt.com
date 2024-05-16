@@ -8,7 +8,7 @@ pagination_next: "docs/build/join-logic"
 pagination_prev: null
 ---
 
-This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently. 
+This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
 MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in dbt Cloud or dbt Core.
 
@@ -37,7 +37,7 @@ MetricFlow abides by these principles:
 - **Simplicity with gradual complexity:** Approach MetricFlow using familiar data modeling concepts.
 - **Performance and efficiency**: Optimize performance while supporting centralized data engineering and distributed logic ownership.
 
-### Semantic graph 
+### Semantic graph
 
 We're introducing a new concept: a "semantic graph". It's the relationship between semantic models and YAML configurations that creates a data landscape for building metrics. You can think of it like a map, where tables are like locations, and the connections between them (edges) are like roads. Although it's under the hood, the semantic graph is a subset of the <Term id="dag" />, and you can see the semantic models as nodes on the DAG.
 
@@ -284,5 +284,4 @@ Yes, but because a dimension is considered an attribute of the primary or unique
 
 ## Related docs
 - [Joins](/docs/build/join-logic)
-- [Validations](/docs/build/validation) 
-
+- [Validations](/docs/build/validation)

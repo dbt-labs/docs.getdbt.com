@@ -5,7 +5,7 @@ description: "Learn about MetricFlow and build your metrics with semantic models
 sidebar_label: Build your metrics
 tags: [Metrics, Semantic Layer, Governance]
 hide_table_of_contents: true
-pagination_next: "docs/build/sl-getting-started"
+pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
 ---
 
@@ -20,9 +20,9 @@ MetricFlow allows you to:
 <div className="grid--3-col">
 
  <Card
-    title="Get started with the dbt Semantic Layer and MetricFlow"
-    body="Use this guide to build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using downstream tools."
-    link="/docs/build/sl-getting-started"
+    title="Quickstart for the dbt Cloud Semantic Layer"
+    body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using downstream tools."
+    link="/guides/sl-snowflake-qs"
     icon="dbt-bit"/>
 
 <Card
@@ -65,7 +65,7 @@ MetricFlow allows you to:
 
 ## Related docs
 
+- [Quickstart guide with the dbt Semantic Layer](/guides/sl-snowflake-qs)
 - [The dbt Semantic Layer: what's next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog
-- [Get started with MetricFlow](/docs/build/sl-getting-started)
 - [dbt Semantic Layer on-demand courses](https://courses.getdbt.com/courses/semantic-layer)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

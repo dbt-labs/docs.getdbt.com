@@ -54,9 +54,11 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [bool\_or](#bool_or)
     - [listagg](#listagg)
   - [Cast functions](#cast-functions)
+    - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
+    - [date](#date)
     - [dateadd](#dateadd)
     - [datediff](#datediff)
     - [date\_trunc](#date_trunc)
@@ -101,9 +103,11 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [bool\_or](#bool_or)
     - [listagg](#listagg)
   - [Cast functions](#cast-functions)
+    - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
+    - [date](#date)
     - [dateadd](#dateadd)
     - [datediff](#datediff)
     - [date\_trunc](#date_trunc)
@@ -169,10 +173,12 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [listagg](#listagg)
 
 [**Cast functions**](#cast-functions)
+- [cast](#cast)
 - [cast_bool_to_text](#cast_bool_to_text)
 - [safe_cast](#safe_cast)
 
 [**Date and time functions**](#date-and-time-functions)
+- [date](#date)
 - [dateadd](#dateadd)
 - [datediff](#datediff)
 - [date_trunc](#date_trunc)
@@ -777,6 +783,38 @@ array_to_string(
 
 ## Cast functions
 
+### cast
+
+**Availability**:
+dbt v1.8 or higher. For more information, select the version from the documentation navigation menu.
+
+<VersionBlock firstVersion="1.8">
+
+__Args__:
+
+ * `field`: [attribute name or expression](#sql-expressions).
+ * `type`: data type to convert to
+
+This macro casts a value to the specified data type. Unlike [safe\_cast](#safe_cast), this macro will raise an error when the cast fails.
+
+**Usage**:
+
+```sql
+{{ dbt.cast("column_1", api.Column.translate_type("string")) }}
+{{ dbt.cast("column_2", api.Column.translate_type("integer")) }}
+{{ dbt.cast("'2016-03-09'", api.Column.translate_type("date")) }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+    cast(column_1 as TEXT)
+    cast(column_2 as INT)
+    cast('2016-03-09' as date)
+```
+
+</VersionBlock>
+
 ### cast_bool_to_text
 __Args__:
 
@@ -848,6 +886,35 @@ For databases that support it, this macro will return `NULL` when the cast fails
 ```
 
 ## Date and time functions
+
+### date
+
+**Availability**:
+dbt v1.8 or later. For more information, select the version from the documentation navigation menu.
+
+<VersionBlock firstVersion="1.8">
+
+__Args__:
+
+ * `year`: an integer
+ * `month`: an integer
+ * `day`: an integer
+
+This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
+ 
+**Usage**:
+
+```sql
+{{ dbt.date(2023, 10, 4) }}
+```
+
+**Sample output (PostgreSQL)**:
+
+```sql
+to_date('2023-10-04', 'YYYY-MM-DD')
+```
+
+</VersionBlock>
 
 ### dateadd
 __Args__:

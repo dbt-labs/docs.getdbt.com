@@ -29,7 +29,7 @@ To follow [POSIX standards](https://pubs.opengroup.org/onlinepubs/9699919799/bas
 
 ### How does selection work?
 
-1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators ([unions](/reference/node-selection/set-operators#unions), [intersections](/reference/node-selection/set-operators#intersections), [exclusions](/reference/node-selection/exclude)).
+1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of [selection methods](/reference/node-selection/methods) (e.g. `tag:`), then [graph operators](/reference/node-selection/graph-operators) (e.g. `+`), then finally set operators ([unions](/reference/node-selection/set-operators#unions), [intersections](/reference/node-selection/set-operators#intersections), [exclusions](/reference/node-selection/exclude)).
 
 2. The selected resources may be models, sources, seeds, snapshots, tests. (Tests can also be selected "indirectly" via their parents; see [test selection examples](/reference/node-selection/test-selection-examples) for details.)
 
@@ -111,7 +111,7 @@ Constructing and debugging your selection syntax can be challenging.  To get a "
 dbt ls --select "path/to/my/models" # Lists all models in a specific directory.
 dbt ls --select "source_status:fresher+" # Shows sources updated since the last dbt source freshness run.
 dbt ls --select state:modified+ # Displays nodes modified in comparison to a previous state.
-dbt ls --select "result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>" # Lists nodes that match certain [result statuses](/reference/node-selection/syntax#the-result-status) and are modified.
+dbt ls --select "result:<status>+" state:modified+ --state ./<dbt-artifact-path> # Lists nodes that match certain [result statuses](/reference/node-selection/syntax#the-result-status) and are modified.
 ```
 
 <Snippet path="discourse-help-feed-header" />
@@ -186,7 +186,7 @@ After issuing one of the above commands, you can reference the results by adding
 
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
-dbt run --select "result:<status> --defer --state path/to/prod/artifacts"
+dbt run --select "result:<status>" --defer --state path/to/prod/artifacts
 ```
 
 The available options depend on the resource (node) type: 
@@ -205,7 +205,7 @@ The available options depend on the resource (node) type:
 The state and result selectors can also be combined in a single invocation of dbt to capture errors from a previous run OR any new or modified models.
 
 ```bash
-dbt run --select "result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>"
+dbt run --select "result:<status>+" state:modified+ --defer --state ./<dbt-artifact-path>
 ```
 
 ### Fresh rebuilds

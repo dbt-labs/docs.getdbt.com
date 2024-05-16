@@ -5,7 +5,7 @@ description: "Learn how the dbt Semantic Layer enables data teams to centrally d
 sidebar_label: "About the dbt Semantic Layer"
 tags: [Semantic Layer]
 hide_table_of_contents: true
-pagination_next: "docs/use-dbt-semantic-layer/quickstart-sl"
+pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
 ---
 
@@ -36,9 +36,9 @@ plan="dbt Cloud Team or Enterprise"
 <div className="grid--3-col">
 
 <Card
-    title="Get started with the dbt Semantic Layer and MetricFlow"
-    body="Build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using the Semantic Layer API."
-    link="/docs/use-dbt-semantic-layer/quickstart-sl"
+    title="Quickstart with the dbt Cloud Semantic Layer"
+    body="Build and define metrics, set up the dbt Semantic Layer, and query them using our first-class integrations."
+    link="/guides/sl-snowflake-qs"
     icon="dbt-bit"/>
 
 <Card
@@ -48,15 +48,27 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
+    title="Architecture"
+    body="Learn about the powerful components that make up the dbt Semantic Layer."
+    link="/docs/use-dbt-semantic-layer/sl-architecture"
+    icon="dbt-bit"/>
+
+<Card
     title="Write queries with exports"
     body="Use exports to write commonly used queries directly within your data platform, on a schedule."
     link="/docs/use-dbt-semantic-layer/exports"
     icon="dbt-bit"/>
 
 <Card
-    title="Architecture"
-    body="Learn about the powerful components that make up the dbt Semantic Layer."
-    link="/docs/use-dbt-semantic-layer/sl-architecture"
+    title="Cache common queries"
+    body="Leverage result caching and declarative caching for common queries to speed up performance and reduce query computation."
+    link="/docs/use-dbt-semantic-layer/sl-cache"
+    icon="dbt-bit"/>
+
+<Card
+    title="dbt Semantic Layer FAQs"
+    body="Discover answers to frequently asked questions about the dbt Semantic Layer, such as availability, integrations, and more."
+    link="/docs/use-dbt-semantic-layer/sl-faqs"
     icon="dbt-bit"/>
 
 <Card
