@@ -507,7 +507,7 @@ Archived release notes for dbt Cloud from 2023
 
 ## July 2023
 
-- <expandable alt_header='Faster runs'>
+- <expandable alt_header='Faster runs and unlimited job concurrency for Enterprise account'>
 
     We’ve introduced significant improvements to the dbt Cloud Scheduler, offering improved performance, durability, and scalability. 
 
