@@ -223,11 +223,6 @@
       "permanent": true
     },
     {
-      "source": "/docs/dbt-versions/release-notes/Jan-2023/ide-updates",
-      "destination": "/docs/dbt-versions/2023-release-notes",
-      "permanent": true
-    },
-    {
       "source": "/docs/dbt-versions/release-notes/May-2024/no-spaces-in",
       "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
       "permanent": true
