@@ -1,18 +1,16 @@
 ---
 title: Up and Running with Azure Synapse on dbt Cloud
-id: synapse-best-practices
 description: "How to get started with Azure Synapse on dbt Cloud"
-displayText: How to get started with Azure Synapse on dbt Cloud
-hoverSnippet: How to get started with Azure Synapse on dbt Cloud"
-# time_to_complete: '30 minutes' commenting out until we test
-icon: 'databricks'
-hide_table_of_contents: true
-tags: ['Databricks', 'dbt Core','dbt Cloud']
-level: 'Intermediate'
-recently_updated: true
----
+slug: synapse-best-practices
 
-<div style={{maxWidth: '900px'}}>
+authors: [anders_swanson]
+
+tags: ['Synapse', 'Azure','Microsoft', 'dbt Core','dbt Cloud']
+hide_table_of_contents: false
+
+date: 2024-05-02
+is_featured: true
+---
 
 ## history & announcement
 
@@ -111,7 +109,7 @@ However, if you must use ADF as the deployment pipeline, it is possible to use d
 
 #### permissions for analytics engineers
 
-:::caution 
+:::caution
 ⚠️ User-based Azure Active Directory authentication is not yet supported in dbt Cloud. As a workaround, consider having a [Service Principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser) made for each contributing Analytics Engineer for use in dbt Cloud
 :::
 
@@ -201,5 +199,3 @@ There should be a continuous effort to take and Power Query code written in PBI 
 There’s great opportunity in dbt Cloud today for data teams using Azure Synapse. While Fabric is the future, there’s meaningful considerations when it comes to resource provisioning, model design, and deployments within the larger ecosystem.
 
 As we look ahead, we're excited about the possibilities that Microsoft Fabric holds for the future of data analytics. With dbt Cloud and Azure Synapse, analytics engineers can be disseminate knowledge with confidence to the rest of their organization.
-
-</div>
