@@ -4,8 +4,6 @@ sidebar_label: "Model performance"
 description: "Learn about the performance of your models so you can make improvements to save time and money."
 ---
 
-# Model performance <Lifecycle status='public preview' />
-
 dbt Explorer provides metadata on dbt Cloud runs for in-depth model performance and quality analysis. This feature assists in reducing infrastructure costs and saving time for data teams by highlighting where to fine-tune projects and deployments &mdash; such as model refactoring or job configuration adjustments.
 
 <LoomVideo id='98f33b3b7a374df0b7c04747eae6ef44' />

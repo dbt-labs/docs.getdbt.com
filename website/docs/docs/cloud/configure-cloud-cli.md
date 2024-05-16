@@ -22,7 +22,7 @@ Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt c
 
 ## Configure the dbt Cloud CLI
 
-Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project. 
+Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project.
 
 1. In dbt Cloud, navigate to **Develop** and click **Configure dbt Cloud CLI** to download your `dbt_cloud.yml` credentials file.
 
