@@ -71,7 +71,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 <VersionBlock firstVersion="1.6">
 
-  - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note, you won't be able to prune your current branch.
+  - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note, prune will not delete the branch you've currently checked out.
 
 </VersionBlock>
 
@@ -192,7 +192,7 @@ Use menus and modals to interact with IDE and access useful options to help your
 <VersionBlock firstVersion="1.6">
 
 - #### Prune branches modal
-  The Prune branches modal allows users to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. This is accessible through the **Git actions** button under the [**Version control** menu](#editing-features). Note, you won't be able to prune your current branch.
+  The Prune branches modal allows users to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. This is accessible through the **Git actions** button under the [**Version control** menu](#editing-features). Note, prune will not delete the branch you've currently checked out.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/prune-branch-modal.jpg" width="60%" title="The Prune branches modal allows users to delete local branches that have already been deleted from the remote repository."/>
 
 </VersionBlock>
