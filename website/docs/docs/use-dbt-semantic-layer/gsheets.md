@@ -1,15 +1,10 @@
 ---
-title: "Google Sheets (beta)"
+title: "Google Sheets"
 description: "Integrate with Google Sheets to query your metrics in a spreadsheet."
 tags: [Semantic Layer]
-sidebar_label: "Google Sheets (Preview)"
+sidebar_label: "Google Sheets"
 ---
 
-# Google Sheets <Lifecycle status='preview'/>
-
-:::info Preview functionality
-Google Sheets integration with the dbt Semantic Layer is a [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) feature.
-:::
 
 The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheets.
 
@@ -38,7 +33,7 @@ import SLCourses from '/snippets/_sl-course.md';
 4. In Google Sheets, authenticate with your host, dbt Cloud environment ID, and service token.
    <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
 
-5. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions).
+5. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions). To cancel a query while running, press the "Cancel" button.
 
 When querying your data with Google Sheets:
 
@@ -46,25 +41,34 @@ When querying your data with Google Sheets:
 - The custom menu operation has a timeout limit of six (6) minutes.
 - If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues.
 
+
 ## Query Builder functions
 
 The Google Sheets **Query Builder** custom menu has the following capabilities:
 
+
 | Menu items    | Description                                           |
 |---------------|-------------------------------------------------------|
 | Metrics       | Search and select metrics.                             |
-| Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. |
-| Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time). You can still optionally use `where` to filter time ranges|
-| Granularity   | Modify the granularity of the primary time dimension.      |
+| Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. You may choose dimensions on their own without metrics. |
+| Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time), or do more advanced filter using the "Custom" selection|
 | Where         | Filter your data. This includes categorical and time filters. |
 | Order By      | Return your data order.                              |
 | Limit         | Set a limit for the rows of your output.               |
 
+Note: Click the info button next to any metric or dimension to see its defined description from your dbt project.
+
+#### Modifying time granularity
+
+When you select time dimensions in the **Group By** menu, you'll see a list of available time granularities. The lowest granularity is selected by default. Metric time is the default time dimension for grouping your metrics.
+
 **Filtering data**
 
 To use the filter functionality, choose the [dimension](docs/build/dimensions) you want to filter by and select the operation you want to filter on.
-- For categorical dimensions, type in the dimension value you want to filter by (no quotes needed) and press enter. 
-- Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar.
+- For categorical dimensions, you can type a value into search or select from a populated list. For entities, you must type the value you are looking for as we do not load all of them given the large number of values.
+- Continue adding additional filters as needed with AND and OR.
+
+For time dimensions, you can use the time range selector to filter on presets or custom options. The time range selector applies only to the primary time dimension (`metric_time`). For all other time dimensions that aren't `metric_time`, you can use the "Where" option to apply filters.
 
 **Querying without headers or columns**
 
@@ -85,14 +89,14 @@ You can also make these selections private or public:
 
 ### Refreshing selections
 
-Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection.
+Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing. 
 
-Public saved selections will refresh for anyone who edits the sheet, while private selections will only update for the user who created it.
+Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.
 
 :::tip What's the difference between saved queries and saved selections?
 
 - Saved selections are saved components that you can create only when using the Google Sheets application.
-- Saved queries, explained in the next section, are code-defined sections of data that you can easily access. You can use the results from a saved query to create a saved selection.
+- Saved queries, explained in the next section, are code-defined sections of data you create in your dbt project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
 :::
 
 ## Using saved queries

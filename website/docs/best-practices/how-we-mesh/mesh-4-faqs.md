@@ -188,13 +188,21 @@ We also expose some of this information in dbt Cloud itself in [jobs](/docs/depl
 
 </detailsToggle>
 
+<detailsToggle alt_header="Can dbt Mesh reference models in other accounts within the same data platform?">
+
+You can reference models in other accounts within the same data platform by leveraging the data-sharing capabilities of that platform, as long as the database identifier of the public model is consistent across the producer and consumer. 
+
+For example, [Snowflake cross-account data shares](https://docs.snowflake.com/en/user-guide/data-sharing-intro), [Databricks Unity Catalog across workspaces](https://docs.databricks.com/en/data-governance/unity-catalog/index.html), or multiple BigQuery projects. 
+
+</detailsToggle>
+
 ## Permissions and access
 
 <detailsToggle alt_header="How do user access permissions work in dbt Mesh? ">
 
 The existence of projects that have at least one public model will be visible to everyone in the organization with [read-only access](/docs/cloud/manage-access/seats-and-users). 
 
-Private or protected models require a user to have read-only access on the specific project in order to see its existence.
+Private or protected models require a user to have read-only access to the specific project to see its existence.
 
 </detailsToggle>
 
@@ -223,7 +231,7 @@ Because dbt does not implicitly coordinate data warehouse `grants` with model-le
 
 <detailsToggle alt_header="Is it possible to request access permissions from other teams within dbt Cloud?">
 
-Not currently! But this is something we may evaluate for the future.
+Not currently! But this is something we may evaluate in the future.
 
 </detailsToggle>
 
@@ -237,9 +245,23 @@ Yes! As long as a user has permissions (at least read-only access) on all projec
 
 By default, cross-project references resolve to the “Production” deployment environment of the upstream project. If your organization has genuinely different data in production versus non-production environments, this poses an issue.
 
-For this reason, we will soon roll out a new canonical type of deployment environment: “Staging.” If a project defines both a “Production” environment and a “Staging” environment, then cross-project references from development and “Staging” environments will resolve to “Staging,” whereas only references coming from “Production” environments will resolve to “Production.” In this way, you are guaranteed separation of data environments, without needing to duplicate project configurations.
+For this reason, we rolled out canonical type of deployment environment: “[Staging](/docs/deploy/deploy-environments#staging-environment).” If a project defines both a “Production” environment and a “Staging” environment, then cross-project references from development and “Staging” environments will resolve to “Staging,” whereas only references coming from “Production” environments will resolve to “Production.” In this way, you are guaranteed separation of data environments, without needing to duplicate project configurations.
 
-If you’re interested in beta access to “Staging” environments, let your dbt Labs account representative know!
+</detailsToggle>
+
+<detailsToggle alt_header="Does dbt Mesh work if projects are 'duplicated' (dev project <> prod project)?">
+
+The short answer is "no." Cross-project references require that each project `name` be unique in your dbt Cloud account.
+
+Historical limitations required customers to "duplicate" projects so that one actual dbt project (codebase) would map to more than one dbt Cloud project. To that end, we are working to remove the historical limitations that required customers to "duplicate" projects in dbt Cloud — Staging environments for data isolation, environment-level permissions, and environment-level data warehouse connections (coming soon). Once those pieces are in place, it should no longer be necessary to define separate dbt Cloud projects to isolate data environments or permissions.
+
+</detailsToggle>
+
+<detailsToggle alt_header="Does dbt Mesh work if projects are 'duplicated' (dev project <> prod project)?">
+
+The short answer is "no." Cross-project references require that each project `name` be unique in your dbt Cloud account.
+
+Historical limitations required customers to "duplicate" projects so that one actual dbt project (codebase) would map to more than one dbt Cloud project. To that end, we are working to remove the historical limitations that required customers to "duplicate" projects in dbt Cloud — Staging environments for data isolation (beta), environment-level permissions, and environment-level data warehouse connections (coming soon). Once those pieces are in place, it should no longer be necessary to define separate dbt Cloud projects to isolate data environments or permissions.
 
 </detailsToggle>
 

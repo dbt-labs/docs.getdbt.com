@@ -58,6 +58,12 @@ Here’s a quick look at what this pipeline will accomplish:
 
 This job will take a bit more to setup, but is a good example of how to call the dbt Cloud API from a CI/CD pipeline. The concepts presented here can be generalized and used in whatever way best suits your use case.
 
+:::tip Run on merge
+
+If your Git provider has a native integration with dbt Cloud, you can take advantage of setting up [Merge jobs](/docs/deploy/merge-jobs) in the UI.
+
+:::
+
 The setup below shows how to call the dbt Cloud API to run a job every time there's a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
 
 ### 1. Get your dbt Cloud API key
@@ -96,12 +102,12 @@ This next part will happen in you code hosting platform. We need to save your AP
 
 - Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
 - Click *Settings* to open up the repository options
-- On the left click the *Security* dropdown
+- On the left click the *Secrets and variables* dropdown in the *Security* section
 - From that list, click on *Actions*
 - Towards the middle of the screen, click the *New repository secret* button
 - It will ask you for a name, so let’s call ours `DBT_API_KEY`
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from dbt Cloud
+- In the *Secret* section, paste in the key you copied from dbt Cloud
 - Click *Add secret* and you’re all set!
 
 ** A quick note on security: while using a repository secret is the most straightforward way to setup this secret, there are other options available to you in GitHub. They’re beyond the scope of this guide, but could be helpful if you need to create a more secure environment for running actions. Checkout GitHub’s documentation on secrets [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets).*
@@ -236,7 +242,7 @@ my_awesome_project
 
 The YAML file will look pretty similar to our earlier job, but there is a new section called `env` that we’ll use to pass in the required variables. Update the variables below to match your setup based on the comments in the file.
 
-It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merge). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
+It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merged). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
 
 ```yaml
 name: run dbt Cloud job on push
@@ -509,7 +515,7 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 
 If your git provider is not one with a native integration with dbt Cloud, but you still want to take advantage of CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a dbt Cloud job when a pull request (PR) is created.
 
-:::info Run on PR
+:::tip Run on PR
 
 If your git provider has a native integration with dbt Cloud, you can take advantage of the setup instructions [here](/docs/deploy/ci-jobs).
 This section is only for those projects that connect to their git repository using an SSH key.
