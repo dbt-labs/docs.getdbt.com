@@ -16,6 +16,7 @@ default_value: true
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
+    { label: 'Saved queries', value: 'saved queries', },
   ]
 }>
 <TabItem value="models">
@@ -189,7 +190,6 @@ Support for disabling metrics was added in dbt Core v1.3
 metrics:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)enabled: true | false
-
 ```
 
 </File>
@@ -203,7 +203,6 @@ metrics:
   - name: [<metric-name>]
     [config](/reference/resource-properties/config):
       enabled: true | false
-
 ```
 
 </File>
@@ -228,7 +227,6 @@ Support for disabling exposures was added in dbt Core v1.3
 exposures:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)enabled: true | false
-
 ```
 
 </File>
@@ -242,7 +240,6 @@ exposures:
   - name: [<exposure-name>]
     [config](/reference/resource-properties/config):
       enabled: true | false
-
 ```
 
 </File>
@@ -286,9 +283,45 @@ semantic_models:
 
 </TabItem>
 
+<TabItem value="saved queries">
+
+<VersionBlock lastVersion="1.6">
+
+Support for disabling saved queries has been added in dbt Core v1.7.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='dbt_project.yml'>
+
+```yaml
+saved-queries:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
+```
+
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+saved_queries:
+  - name: [<saved_query_name>]
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
+
 An optional configuration for enabling or disabling a resource.
 
 * Default: true
