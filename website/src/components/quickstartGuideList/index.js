@@ -8,6 +8,7 @@ import QuickstartGuideCard from '../quickstartGuideCard'
 import styles from './styles.module.css';
 import { SelectDropdown } from '../selectDropdown';
 import SearchInput from '../searchInput';
+import { useHistory, useLocation } from '@docusaurus/router';
 
 const quickstartTitle = 'Guides'
 const quickstartDescription = 'dbt Cloud is the fastest and most reliable way to deploy your dbt jobs and dbt Core is a powerful open-source tool for data transformations. With the help of a sample project, learn how to quickly start using dbt and one of the most common data platforms.'
@@ -19,6 +20,9 @@ function QuickstartList({ quickstartData }) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedLevel, setSelectedLevel] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const history = useHistory();
+  const location = useLocation();
+
 
   // Build meta title from quickstartTitle and docusaurus config site title
   const metaTitle = `${quickstartTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`;
@@ -47,13 +51,9 @@ function QuickstartList({ quickstartData }) {
 
   const updateUrlParams = (selectedTags, selectedLevel) => {
     const params = new URLSearchParams();
-  
     selectedTags.forEach(tag => params.append('tags', tag.value));
     selectedLevel.forEach(level => params.append('level', level.value));
-
-    // Use history.pushState to update URL without reloading
-  const newUrl = `${window.location.pathname}?${params.toString()}`;
-  window.history.pushState({ path: newUrl }, '', newUrl);
+    history.replace({ search: params.toString() });
 };
 
   // Handle all filters
@@ -71,21 +71,25 @@ function QuickstartList({ quickstartData }) {
     setFilteredData(filteredGuides);
   };
 
+  // Reads the current URL params applied and sets the selected tags and levels
+  // This allows the filters to be sharable via URL
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(location.search);
     const tagsFromUrl = params.getAll('tags').map(tag => ({ value: tag, label: tag }));
     const levelsFromUrl = params.getAll('level').map(level => ({ value: level, label: level }));
     setSelectedTags(tagsFromUrl);
     setSelectedLevel(levelsFromUrl)
-
-  // Ensure data is filtered based on URL parameters on initial load
-  handleDataFilter();
-}, []); // Empty dependency array means this effect runs once on mount
+  }, []); // Empty dependency array ensures this runs only once on component mount
 
   useEffect(() => {
+    updateUrlParams(selectedTags, selectedLevel);
+  }, [selectedTags, selectedLevel]);
+
+  // Separating out useEffects because we want to run handleDataFilter after the URL params are set
+  // Also just good practice to separate out side effects with different functions
+  useEffect(() => {
     handleDataFilter();
-    updateUrlParams(selectedTags, selectedLevel); // Call this after filters are applied
-  }, [selectedTags, selectedLevel, searchInput]);
+  }, [selectedTags, selectedLevel]);
 
   return (
     <Layout>
