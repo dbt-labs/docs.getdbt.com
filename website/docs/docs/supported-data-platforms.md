@@ -14,10 +14,6 @@ You can [connect](/docs/connect-adapters) to adapters and data platforms nativel
 
 You can also further customize how dbt works with your specific data platform via configuration: see [Configuring Postgres](/reference/resource-configs/postgres-configs) for an example.
 
-import MSCallout from '/snippets/_microsoft-adapters-soon.md';
-
-<MSCallout />
-
 ## Types of Adapters
 
 There are two types of adapters available today:

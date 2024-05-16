@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.7 (latest)"
+title: "Upgrading to v1.7"
 id: upgrading-to-v1.7
 description: New features and changes in dbt Core v1.7
 displayed_sidebar: "docs"
@@ -29,6 +29,7 @@ This is a relatively small behavior change, but worth calling out in case you no
 - Explicitly set `freshness: null`
 
 Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) creates or updates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. The `package-lock.yml` file contains a record of all packages installed and, if subsequent `dbt deps` runs contain no updated packages in `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
+
 
 ## New and changed features and functionality
 
@@ -76,6 +77,20 @@ The run_results.json now includes three attributes related to the `applied` stat
 - `compiled_code`: Rendered string of the code that was compiled (empty after parsing, but full string after compiling).
 - `relation_name`: The fully-qualified name of the object that was (or will be) created/updated within the database.
 
+### Deprecated functionality
+
+The ability for installed packages to override built-in materializations without explicit opt-in from the user is being deprecated.
+
+- Overriding a built-in materialization from an installed package raises a deprecation warning.
+- Using a custom materialization from an installed package does not raise a deprecation warning.
+- Using a built-in materialization package override from the root project via a wrapping materialization is still supported. For example:
+
+  ```
+  {% materialization view, default %}
+  {{ return(my_cool_package.materialization_view_default()) }}
+  {% endmaterialization %}
+  ```
+
 
 ### Quick hits
 
@@ -83,3 +98,4 @@ With these quick hits, you can now:
 - Configure a [`delimiter`](/reference/resource-configs/delimiter) for a seed file.
 - Use packages with the same git repo and unique subdirectory.
 - Access the `date_spine` macro directly from dbt-core (moved over from dbt-utils).
+- Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.

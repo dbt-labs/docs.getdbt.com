@@ -85,6 +85,20 @@ More consistency and flexibility around packages. Resources defined in a package
 [**Project dependencies**](/docs/collaborate/govern/project-dependencies): Introduces `dependencies.yml` and dependent `projects` as a feature of dbt Cloud Enterprise. Allows enforcing model access (public vs. protected/private) across project/package boundaries. Enables cross-project `ref` of public models, without requiring the installation of upstream source code.
 :::
 
+### Deprecated functionality
+
+The ability for installed packages to override built-in materializations without explicit opt-in from the user is being deprecated.
+
+- Overriding a built-in materialization from an installed package raises a deprecation warning.
+- Using a custom materialization from an installed package does not raise a deprecation warning.
+- Using a built-in materialization package override from the root project via a wrapping materialization is still supported. For example:
+
+  ```
+  {% materialization view, default %}
+  {{ return(my_cool_package.materialization_view_default()) }}
+  {% endmaterialization %}
+  ```
+
 ### Quick hits
 
 - [`state:unmodified` and `state:old`](/reference/node-selection/methods#the-state-method) for [MECE](https://en.wikipedia.org/wiki/MECE_principle) stateful selection
@@ -93,4 +107,5 @@ More consistency and flexibility around packages. Resources defined in a package
 - [`dbt docs generate --empty-catalog`](/reference/commands/cmd-docs) to skip catalog population while generating docs
 - [`--defer-state`](/reference/node-selection/defer) enables more-granular control 
 - [`dbt ls`](/reference/commands/list) adds the Semantic model selection method to allow for `dbt ls -s "semantic_model:*"` and the ability to execute `dbt ls --resource-type semantic_model`.
+- Syntax for `DBT_ENV_SECRET_` has changed to `DBT_ENV_SECRET` and no longer requires the closing underscore.
 

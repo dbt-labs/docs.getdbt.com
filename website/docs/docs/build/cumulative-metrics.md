@@ -15,7 +15,7 @@ This metric is common for calculating things like weekly active users, or month-
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | The value that will be displayed in downstream tools. | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
@@ -246,6 +246,7 @@ group by
 limit 100;
 
 ```
+
 ## Limitations
 
 If you specify a `window` in your cumulative metric definition, you must include `metric_time` as a dimension in the SQL query. This is because the accumulation window is based on metric time. For example,
@@ -264,4 +265,3 @@ group by
 
 ## Related docs
 - [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
-
