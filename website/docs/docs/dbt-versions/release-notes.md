@@ -32,7 +32,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now Generally Available (GA) to all users. The dbt Cloud CLI is a command-line interface that allows you to interact with dbt Cloud, use automatic deferral, leverage dbt Mesh, and more!
 
-- **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, and [more](https://docs.myaltimate.com/)!
+- **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](https://docs.myaltimate.com/setup/reqdConfigCloud/) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, and [more](https://docs.myaltimate.com/)!
 
 - **New:** [Unit tests](/docs/build/unit-tests) are now GA in dbt Cloud. Unit tests enable you to test your SQL model logic against a set of static inputs.
 
