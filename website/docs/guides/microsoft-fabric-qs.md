@@ -21,12 +21,6 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabr
 - Document your models.
 - Schedule a job to run.
 
-:::tip Public preview
-
-A public preview of Microsoft Fabric in dbt Cloud is now available! 
-
-:::
-
 ### Prerequisites
 - You have a [dbt Cloud](https://www.getdbt.com/signup/) account.
 - You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.
