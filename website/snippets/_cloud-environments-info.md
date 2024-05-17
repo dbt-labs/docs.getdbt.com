@@ -4,13 +4,13 @@ In dbt Cloud, there are two types of environments:
 - **Deployment environment** &mdash; Determines the settings used when jobs created within that environment are executed.<br></br>
     Types of deployment environments:
     - General
-    - Staging <Lifecycle status='beta' />
+    - Staging
     - Production
 - **Development environment** &mdash; Determines the settings used in the dbt Cloud IDE or dbt Cloud CLI, for that particular project. 
 
 Each dbt Cloud project can only have a single development environment but can have any number of deployment environments.
 
-|| Development  | Staging <b></b> <Lifecycle status='beta' /> | Deployment |
+|| Development  | Staging | Deployment |
 |------| --- | --- | --- |
 | **Determines settings for** | dbt Cloud IDE or dbt Cloud CLI | dbt Cloud Job runs | dbt Cloud Job runs |
 | **How many can I have in my project?** | 1 | Any number | Any number |
