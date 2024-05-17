@@ -3,8 +3,6 @@ title: "Project recommendations"
 sidebar_label: "Project recommendations"
 description: "dbt Explorer provides recommendations that you can take to improve the quality of your dbt project."
 ---
-
-# Project recommendations <Lifecycle status='public preview' />
  
 dbt Explorer provides recommendations about your project from the `dbt_project_evaluator` [package](https://hub.getdbt.com/dbt-labs/dbt_project_evaluator/latest/) using metadata from the Discovery API.
 
