@@ -1,6 +1,6 @@
 ---
 title: Up and Running with Azure Synapse on dbt Cloud
-description: "How to get started with Azure Synapse on dbt Cloud"
+description: "Some tips for getting started with Azure Synapse on dbt Cloud"
 slug: synapse-best-practices
 
 authors: [anders_swanson]
@@ -8,23 +8,17 @@ authors: [anders_swanson]
 tags: ['Synapse', 'Azure','Microsoft', 'dbt Core','dbt Cloud']
 hide_table_of_contents: false
 
-date: 2024-05-02
+date: 2024-05-17
 is_featured: true
 ---
 
-## history & announcement
-
-:::note Glossary of Terms
-**ASADSP**: Azure Synapse Analytics Dedicated SQL Pools
-
-**Fabric SQLDW**: Microsoft Fabric Synapse SQL Data Warehouse
-:::
-
-At dbt Labs, we’ve always believed in meeting analytics engineers where they are. That’s why we’re so excited to announce that today, analytics engineers within the Microsoft Ecosystem can use dbt Cloud with not only Microsoft Fabric but also Azure Synapse Analytics Dedicated SQL Pools.
+At dbt Labs, we’ve always believed in meeting analytics engineers where they are. That’s why we’re so excited to announce that today, analytics engineers within the Microsoft Ecosystem can use dbt Cloud with not only Microsoft Fabric but also Azure Synapse Analytics Dedicated SQL Pools (ASADSP).
 
 Since the early days of dbt, folks have been interested having MSFT data platforms. Huge shoutout to [Mikael Ene](https://github.com/mikaelene) and [Jacob Mastel](https://github.com/jacobm001) for their efforts back in 2019 on the original SQL Server adapters ([dbt-sqlserver](https://github.com/dbt-msft/dbt-sqlserver) and [dbt-mssql](https://github.com/jacobm001/dbt-mssql), respectively)
 
 The journey for the Azure Synapse dbt adapter, dbt-synapse, is closely tied to my journey with dbt. I was the one who forked dbt-sqlserver into dbt-synapse in April of 2020. I had first learned of dbt only a month earlier and knew immediately that my team needed the tool. With a great deal of assistance from Jeremy and experts at Microsoft, my team and I got it off the ground and started using it. When I left my team at Avanade in early 2022 to join dbt Labs, I joked that I wasn’t actually leaving the team; I was just temporarily embedding at dbt Labs to expedite dbt Labs getting into Cloud. Two years later, I can tell my team that the mission has been accomplished! Kudos to all the folks who have contributed to the TSQL adapters either directly in GitHub or in the community Slack channels. The integration would not exist if not for you!
+
+<!--truncate-->
 
 ## Fabric Best Practices
 
@@ -60,7 +54,7 @@ Bottom line, Fabric is the future of data warehousing for Microsoft customers, a
 - fully-separated storage and compute, and
 - pay-per-second compute.
 
-These two things alone greatly simplify the below section on Resource Provisioning
+These two things alone greatly simplify the below section on Resource Provisioning.
 
 For more information, see:
 
@@ -119,7 +113,7 @@ In the development warehouse, each user should have the following privileges: `E
 
 In addition, a service principal is required for dbt Cloud to directly interact with both the warehouse and your Git service provider (e.g. GitHub or Azure DevOps).
 
-Only the Service Principal in charge of deployment has the above permissions in production. End users have only `SELECT` access to this environment
+Only the Service Principal in charge of deployment has the above permissions in production. End users have only `SELECT` access to this environment.
 
 ## Model Considerations
 
@@ -135,12 +129,12 @@ While there are already platform-agnostic best practice guides that still apply 
 
 Working in ASADSP, it is important to remember that you’re working in a [Massively-Parallel Processing (MPP) architecture](https://www.indicative.com/resource/what-is-massively-parallel-processing-mpp/).
 
-What this means for an analytics engineer working using dedicated SQL pools is that for every table model, it must have an `index` and `distribution` configured. In `dbt-synapse` the defaults are
+What this means for an analytics engineer working using dedicated SQL pools is that for every table model, it must have an `index` and `distribution` configured. In `dbt-synapse` the defaults are:
 
 - index: `CLUSTERED COLUMNSTORE INDEX`
 - distribution `ROUND_ROBIN`
 
-If you want something different, you can define it like below. For more information, see [dbt docs: configurations for Azure Synapse DWH: Indices and distributions](https://docs.getdbt.com/reference/resource-configs/azuresynapse-configs#indices-and-distributions)
+If you want something different, you can define it like below. For more information, see [dbt docs: configurations for Azure Synapse DWH: Indices and distributions](https://docs.getdbt.com/reference/resource-configs/azuresynapse-configs#indices-and-distributions).
 
 ```sql
 {{
@@ -154,31 +148,23 @@ SELECT * FROM {{ ref('some_model') }}
 
 A distribution specifies how the table rows should be stored across the 60 nodes of the cluster. The goal is to provide a configuration that both:
 
-1. ensures data is split evenly across the nodes of the cluster and
-2. minimizes inter-node movement of data
+1. ensures data is split evenly across the nodes of the cluster, and
+2. minimizes inter-node movement of data.
 
 For example, imagine querying a 100-row seed table in a downstream model. Using `distribution=ROUND_ROBIN` instructs the pool to evenly distribute the rows between the 60 node, which equates to  having only one or two rows in each node. This `SELECT`-ing all these an operation that touches all 60 nodes. The end result is that the query will run much slower than you might expect.
 
 The optimal distribution is `REPLICATE` which will load a full copy of the table to every node. In this scenario, any node can return the 100 rows without coordination from the others. This is ideal for a lookup table which could limit the result set within each node before aggregating each nodes results.
 
-### limitations
-
-<aside>
-⚠️ today in dbt-synapse, you cannot
-- use ephemeral models
-- define custom data tests that contain CTEs
-- use `dbt show` with a `--limit` flag
-
-</aside>
 
 #### more information
 
 - [Guidance for designing distributed tables using dedicated SQL pool in Azure Synapse Analytics](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)
 - [source code for `synapse__create_table_as()` macro](https://github.com/microsoft/dbt-synapse/blob/master/dbt/include/synapse/macros/materializations/models/table/create_table_as.sql)
 
+
 ## Deployments & Ecosystem
 
-With the infrastructure in place and the analytics engineers enabled with best practices, the final piece is to think through how a dbt project sits in the larger data stack of your organization both upstream and downstream
+With the infrastructure in place and the analytics engineers enabled with best practices, the final piece is to think through how a dbt project sits in the larger data stack of your organization both upstream and downstream.
 
 ### Upstream
 
@@ -192,7 +178,7 @@ It is extremely common in MSFT data ecosystem to have significant amounts of dat
 
 The correct approach is not to mandate that all data modeling should be done in dbt with `SQL`. Instead seek out the most business critical Power BI datasets and reports. Any modeling done in those reports should be upstreamed into the dbt project where it can be properly tested and documented.
 
-There should be a continuous effort to take and Power Query code written in PBI as transformation code and to upstream it into the data warehouse where the modeling can be tested, documented, reused by others and deployed with confidence
+There should be a continuous effort to take and Power Query code written in PBI as transformation code and to upstream it into the data warehouse where the modeling can be tested, documented, reused by others and deployed with confidence.
 
 ## Conclusion
 
