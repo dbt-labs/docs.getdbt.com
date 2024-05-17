@@ -17,7 +17,7 @@ The keys for metrics definitions are:
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
-| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics and can include lowercase letters, numbers, and underscores.  | Required |
+| `name` | Provide the reference name for the metric. This name must be a unique metric name and can consist of lowercase letters, numbers, and underscores.  | Required |
 | `description` | Describe your metric.   | Optional |
 | `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
