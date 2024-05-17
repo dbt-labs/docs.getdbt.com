@@ -17,7 +17,7 @@ The keys for metrics definitions are:
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
-| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
+| `name` | Provide the reference name for the metric. This name must be a unique metric name and can consist of lowercase letters, numbers, and underscores.  | Required |
 | `description` | Describe your metric.   | Optional |
 | `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
@@ -199,7 +199,7 @@ metrics:
 
 [Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
 
-- `name`&mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
+- `name` &mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
 
 **Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric.
 
