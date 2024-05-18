@@ -605,3 +605,12 @@ colin_rogers:
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/ckrogers
+
+anders_swanson:
+  image_url: /img/blog/authors/anders-rain.jpg
+  job_title: Senior Developer Experience Advocate
+  name: Anders Swanson
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/andersswanson
