@@ -56,6 +56,7 @@ dbt Cloud accounts with cell-based account prefixes have unique access URLs for 
 
 These URLs are unique to each account and begin with the same prefix as the URL used to [access your account](#accessing-your-account). The URLs cover the following APIs:
 
+- Admin API (via access URL)
 - Semantic Layer JDBC API
 - Semantic Layer GraphQL API
 - Discovery API 
