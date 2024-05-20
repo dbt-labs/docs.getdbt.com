@@ -47,3 +47,18 @@ dbt Cloud, like many cloud services, relies on underlying AWS cloud infrastructu
 * Using hostnames for consistent access &mdash; To ensure uninterrupted access, we recommend that you dbt Cloud services using hostnames. Hostnames provide a consistent reference point, regardless of any changes in underlying IP addresses. We are aligning with an industry-standard practice employed by organizations such as Snowflake.
 
 * Optimizing VPN connections &mdash; You should integrate a proxy alongside VPN for users who leverage VPN connections. This strategy enables steady IP addresses for your connections, facilitating smooth traffic flow through the VPN and onward to dbt Cloud. By employing a proxy and a VPN, you can direct traffic through the VPN and then to dbt Cloud. It's crucial to set up the proxy if you need to integrate with additional services.
+
+## API Access URLs
+
+dbt Cloud accounts with cell-based account prefixes have unique access URLs for account APIs. These URLs can be found in your **Account settings** below the **Account information** pane.
+
+<Lightbox src="/img/docs/dbt-cloud/access-urls.png" title="Access URLs in the account settings" />
+
+These URLs are unique to each account and begin with the same prefix as the URL used to [access your account](#accessing-your-account). The URLs cover the following APIs:
+
+- Admin API (via access URL)
+- Semantic Layer JDBC API
+- Semantic Layer GraphQL API
+- Discovery API 
+
+Learn more about these features in our [API documentation](/docs/dbt-cloud-apis/overview).
