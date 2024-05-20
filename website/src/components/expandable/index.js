@@ -1,23 +1,22 @@
 /* eslint-disable */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 
 function slugify(text) {
   return text.toString().toLowerCase()
-    .normalize('NFD') // Normalize to NFD Unicode form
-    .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start
-    .replace(/-+$/, ''); // Trim - from end
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
 }
 
 function expandable({ children, alt_header = null }) {
-  if(!alt_header) { return null; }
+  if (!alt_header) { return null; }
   const [isOn, setOn] = useState(false);
-  // generate a slug from the alt_header
   const anchorId = slugify(alt_header);
 
   const handleToggleClick = (event) => {
@@ -25,23 +24,61 @@ function expandable({ children, alt_header = null }) {
     setOn(current => !current);
   };
 
+  const handleCopyClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const url = `${window.location.href.split('#')[0]}#${anchorId}`;
+    navigator.clipboard.writeText(url).then(() => {
+      showCopyPopup();
+    });
+  };
+
+  const showCopyPopup = () => {
+    const popup = document.createElement('div');
+    popup.classList.add('copy-popup');
+    popup.innerText = 'Link copied!';
+
+  // Add close button ('x')
+  const closeButton = document.createElement('span');
+  closeButton.classList.add('close-button');
+  closeButton.innerHTML = ' &times;'; // '×' symbol for 'x'
+  closeButton.addEventListener('click', () => {
+    if (document.body.contains(popup)) {
+      document.body.removeChild(popup);
+    }
+  });
+  popup.appendChild(closeButton);
+
+  document.body.appendChild(popup);
+
+  setTimeout(() => {
+    if (document.body.contains(popup)) {
+      document.body.removeChild(popup);
+    }
+  }, 3000);
+};
+
+useEffect(() => {
+  if (window.location.hash === `#${anchorId}`) {
+    setOn(true);
+    const element = document.getElementById(anchorId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}, [anchorId]);
+
   return (
-    <div id={anchorId} className={`${styles.expandableContainer} ${styles.local} expandable-anchor anchor`}>
-      <a 
-        href={`#${anchorId}`}
-        className={styles.link}
-        onClick={handleToggleClick}
-        role="button"
-        tabIndex="0"
-      >
+    <div id={anchorId} className={`${styles.expandableContainer} `}>
+      <div className={styles.header} onClick={handleToggleClick}>
         <span className={`${styles.toggle} ${isOn ? styles.toggleDown : styles.toggleRight}`}></span>
         &nbsp;
-        <span className={styles.headerText}>{alt_header}</span>
-      </a>
-      <div 
-        style={{ display: isOn ? 'block' : 'none' }} 
-        className={styles.body}
-      >
+        <span className={styles.headerText}>
+          {alt_header}
+        </span>
+        <span onClick={handleCopyClick} className={styles.copyIcon}></span>
+      </div>
+      <div style={{ display: isOn ? 'block' : 'none' }} className={styles.body}>
         {children}
       </div>
     </div>
