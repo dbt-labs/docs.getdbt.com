@@ -22,7 +22,7 @@ dbt Cloud updates the lineage in Explorer after each run that's executed in the 
 
 You can use the column evolution lineage lens to determine when a column is transformed vs. reused (passthrough or rename). The lens helps you distinguish when and how a column is actually changed as it flows through your dbt lineage, informing debugging workflows in particular. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="70%" title="Example of the Column evolution lens"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="80%" title="Example of the Column evolution lens"/>
 
 ### Inherited column descriptions
 
