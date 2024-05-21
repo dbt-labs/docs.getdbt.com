@@ -2,7 +2,7 @@ name: Generate a PR summary for dbt Core issues
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
 
 jobs:
   generate_summary:
