@@ -132,7 +132,7 @@ While the target schema represents the default schema that dbt will use, it may 
 
 ## Understanding threads
 
-When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.  The default value for threads in user profiles is [4 threads](/docs/dbt-versions/release-notes/Dec-2022/default-thread-value).
+When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.  The default value for threads in user profiles is 4 threads.
 
 For more information, check out [using threads](/docs/running-a-dbt-project/using-threads).
 
