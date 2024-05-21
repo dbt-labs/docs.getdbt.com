@@ -1,0 +1,29 @@
+name: Generate a PR summary for dbt Core issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  generate_summary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run summary script
+        env:
+          GITHUB_TOKEN: ${{ secrets.PR_SUMMARY_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python generate_pr_summary.py
