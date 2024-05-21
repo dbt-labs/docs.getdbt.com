@@ -1,7 +1,7 @@
 exports.versions = [
   {
     version: "1.8",
-    isPrerelease: "true",
+    EOLDate: "2025-04-15",
   },
   {
     version: "1.7",
@@ -30,6 +30,10 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
+  {
+    "page": "reference/global-configs/indirect-selection",
+    "firstVersion": "1.8",
+  },
   {
     "page": "reference/resource-configs/store_failures_as",
     "firstVersion": "1.7",

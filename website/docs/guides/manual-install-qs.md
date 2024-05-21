@@ -8,9 +8,14 @@ icon: 'fa-light fa-square-terminal'
 tags: ['dbt Core','Quickstart']
 hide_table_of_contents: true
 ---
+
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
-When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/guides). You can also develop and run dbt commands using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; a dbt Cloud powered command line.
+When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). 
+
+If you want to edit files and run projects using the web-based dbt Integrated Development Environment (IDE), refer to the [dbt Cloud quickstarts](/guides). You can also develop and run dbt commands using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; a dbt Cloud powered command line.
 
 ### Prerequisites
 
@@ -466,3 +471,5 @@ For more info on how to get started, refer to [create and schedule jobs](/docs/d
 <Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.jpg" width="90%" title="Overview of a dbt Cloud job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
 
 For more information about using dbt Core to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
+
+</div>

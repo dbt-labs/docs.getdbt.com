@@ -71,17 +71,17 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Join our bi-weekly demos and see dbt Cloud in action!",
+      content: "Join our biweekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts?utm_source=docs&utm_medium=event&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
+      "https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2025_biweekly-demos_aw&utm_content=biweekly-demos____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "alison-stanton",
+    communitySpotlightMember: "tyler-rouze",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -267,7 +267,8 @@ var siteSettings = {
     "https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js",
     "/js/headerLinkCopy.js",
     "/js/gtm.js",
-    "/js/onetrust.js"
+    "/js/onetrust.js",
+    "/js/mutiny.js",
   ],
   stylesheets: [
     "/css/fonts.css",
