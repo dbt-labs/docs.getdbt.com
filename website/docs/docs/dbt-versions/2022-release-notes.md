@@ -53,7 +53,7 @@ packages:
 
 ## Novemver 2022
 
-### The dbt Cloud + Databricks experience is getting even better"
+### The dbt Cloud + Databricks experience is getting even better
 
 dbt Cloud is the easiest and most reliable way to develop and deploy a dbt project. It helps remove complexity while also giving you more features and better performance. A simpler Databricks connection experience with support for Databricks’ Unity Catalog and better modeling defaults is now available for your use.
 
@@ -166,7 +166,7 @@ This additional security layer in the IDE is available only to the dbt Cloud ent
 
 ## April 2022
 
-## Audit log
+### Audit log
 
 To review actions performed by people in your organization, dbt provides logs of audited user and system events. The dbt Cloud audit log lists events triggered in your organization within the last 90 days. 
 
