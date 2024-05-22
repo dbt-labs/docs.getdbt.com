@@ -24,7 +24,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with BigQuery. It wi
 - Schedule a job to run.
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
 ### Prerequisites​

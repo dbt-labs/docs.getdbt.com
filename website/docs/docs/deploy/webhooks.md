@@ -23,7 +23,7 @@ A webhook in dbt Cloud has a timeout of 10 seconds. This means that if the endpo
 :::tip Videos 
 If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
 
-You can also check out the free [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals). 
+You can also check out the free [dbt Fundamentals course](https://learn.getdbt.com/courses/dbt-fundamentals). 
 :::
 
 ## Prerequisites
