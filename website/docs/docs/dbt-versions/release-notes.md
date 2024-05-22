@@ -20,6 +20,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## May 2024
 
+- **Enhancement:** We've now introduced a new **Prune branches** [Git button](/docs/cloud/dbt-cloud-ide/ide-user-interface#prune-branches-modal) in the dbt Cloud IDE. This button allows you to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. Available in all regions now and will be released to single tenant accounts during the next release cycle.
+
 #### dbt Cloud Launch Showcase event
 
 The following features are new or enhanced as part of our [dbt Cloud Launch Showcase](https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase) event on May 14th, 2024:
@@ -30,7 +32,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is now Generally Available (GA) to all users. The dbt Cloud CLI is a command-line interface that allows you to interact with dbt Cloud, use automatic deferral, leverage dbt Mesh, and more!
 
-- **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](/docs/cloud/cloud-cli-installation#vs-code-extension) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, and [more](https://docs.myaltimate.com/)!
+- **New:** The VS Code extension [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) is now available in beta for [dbt Cloud CLI](https://docs.myaltimate.com/setup/reqdConfigCloud/) users. The extension accelerates dbt and SQL development and includes features such as generating models from your source definitions or SQL, and [more](https://docs.myaltimate.com/)!
 
 - **New:** [Unit tests](/docs/build/unit-tests) are now GA in dbt Cloud. Unit tests enable you to test your SQL model logic against a set of static inputs.
 

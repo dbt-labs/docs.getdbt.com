@@ -4,7 +4,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 |-------------------------------|--------------|-----------------------|----------------------|
 | Job scheduler                 | ✅           | ✅                     | ✅                  |  
 | dbt Cloud IDE                 | ✅           | ✅                     | ✅                  |
-| dbt Cloud CLI                 | ✅           | ✅                     | ❌                  |
+| dbt Cloud CLI                 | ✅           | ✅                     | ✅                 |
 | Audit logs                    | ✅           | ✅                     | ✅                  |  
 | Discovery API                 | ✅           | ✅                     | ✅                  | 
 | dbt Explorer                  | ✅           | ✅                     | ✅                   | 
