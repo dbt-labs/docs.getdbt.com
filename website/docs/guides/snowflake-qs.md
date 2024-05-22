@@ -37,7 +37,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 ### Related content
 
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- Learn more with [dbt Courses](https://learn.getdbt.com)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)

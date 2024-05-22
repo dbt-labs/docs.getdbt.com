@@ -118,7 +118,7 @@ The more you can answer Yes to the below questions, the easier your adapter deve
 
 ### Training
 
-- the developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) and [Advanced Materializations](https://courses.getdbt.com/courses/advanced-materializations) course.
+- the developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) and [Advanced Materializations](https://learn.getdbt.com/courses/advanced-materializations) course.
 
 ### Database
 

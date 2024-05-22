@@ -41,7 +41,7 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 
 ### Related content
 
-- [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Courses](https://learn.getdbt.com)
 - [dbt Cloud CI job](/docs/deploy/continuous-integration)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
