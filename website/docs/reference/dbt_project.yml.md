@@ -19,29 +19,6 @@ Starting from dbt v1.5 and higher, you can specify your dbt Cloud project ID in 
 
 Note, you can't set up a "property" in the `dbt_project.yml` file if it's not a config (an example is [macros](/reference/macro-properties)). This applies to all types of resources. Refer to [Configs and properties](/reference/configs-and-properties) for more detail.
 
-## Naming convention
-
-It's important to follow the correct naming conventions for the YAML configs in your `dbt_project.yml` file to make sure dbt can understand them properly: 
-
-- Use dashes (`-`) for resource types in your `dbt_project.yml` file. As an example, if you're defining `saved-queries`, use dashes to separate words:
-
-  ```yaml
-  saved-queries:
-    my_saved_query:
-      config:
-        +cache:
-          enabled: true
-  ```
-
-- If you're configuring options outside the `dbt_project.yml` file, use underscore (`_`):
-
-  ```yaml
-  saved_queries:
-    - name: SAVED_QUERY_NAME
-      config:
-        group: GROUP_NAME
-  ```
-
 ## Example
 
 The following example is a list of all available configurations in the `dbt_project.yml` file:
@@ -267,3 +244,27 @@ vars:
 </File>
 
 </VersionBlock>
+
+
+## Naming convention
+
+It's important to follow the correct naming conventions for the YAML configs in your `dbt_project.yml` file to make sure dbt can understand them properly: 
+
+- Use dashes (`-`) for resource types in your `dbt_project.yml` file. As an example, if you're defining `saved-queries`, use dashes to separate words:
+
+  ```yaml
+  saved-queries:
+    my_saved_query:
+      config:
+        +cache:
+          enabled: true
+  ```
+
+- If you're configuring options outside the `dbt_project.yml` file, use underscore (`_`):
+
+  ```yaml
+  saved_queries:
+    - name: SAVED_QUERY_NAME
+      config:
+        group: GROUP_NAME
+  ```
