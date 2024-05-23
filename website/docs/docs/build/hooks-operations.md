@@ -42,7 +42,6 @@ Hooks are a more-advanced capability that enable you to run custom SQL, and leve
 
 <Snippet path="hooks-to-grants" />
 
-<VersionBlock firstVersion="1.2">
 
 If (and only if) you can't leverage the [`grants` resource-config](/reference/resource-configs/grants), you can use `post-hook` to perform more advanced workflows:
 
@@ -69,8 +68,6 @@ You can use hooks to provide database-specific functionality not available out-o
 
 </File>
 
-
-</VersionBlock>
 
 ### Calling a macro in a hook
 
