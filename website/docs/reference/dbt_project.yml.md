@@ -254,7 +254,7 @@ Use dashes (`-`) when configuring resource types with multiple words in your `db
 <File name="dbt_project.yml" >
   
 ```yaml
-[saved-queries](/docs/build/saved-queries#project-level-saved-queries): ## Use dashes in the dbt_project.yml file.
+[saved-queries](/docs/build/saved-queries#project-level-saved-queries): # Use dashes in the dbt_project.yml file.
       my_saved_query:
         config:
           +cache:
@@ -268,7 +268,7 @@ Use underscore (`_`) when configuring resource types with multiple words outside
 <File name="models/semantic_models.yml" >
 
 ```yaml
-[saved_queries](/docs/build/saved-queries#configure-saved-query): ## Use underscores everywhere outside the dbt_project.yml file.
+[saved_queries](/docs/build/saved-queries#configure-saved-query): # Use underscores everywhere outside the dbt_project.yml file.
       - name: SAVED_QUERY_NAME
         config:
           group: GROUP_NAME
