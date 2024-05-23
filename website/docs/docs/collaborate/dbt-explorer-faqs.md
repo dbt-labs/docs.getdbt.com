@@ -17,7 +17,9 @@ dbt Explorer makes it easy and intuitive to understand your entire lineage &mdas
 
 <expandable alt_header="How is dbt Explorer priced?" >
 
-With the current Preview, dbt Explorer is available to everyone on the dbt Cloud Enterprise and Team plans. Certain features within dbt Explorer, such as multi-project lineage and column-level lineage, are only available on the Enterprise plan. dbt Explorer can be accessed by users with developer and read-only seats during the Preview period.
+dbt Explorer is generally available to all regions and deployment types on the dbt Cloud [Enterprise and Team plans](https://www.getdbt.com/). Certain features within dbt Explorer, such as multi-project lineage and column-level lineage, are only available on the Enterprise plan.
+
+dbt Explorer can be accessed by users with developer and read-only seats.
 
 </expandable>
 
@@ -29,7 +31,7 @@ dbt Explorer is the default documentation experience for dbt Cloud customers. db
 
 ## How dbt Explorer works
 
-<expandable alt_header="Can I use dbt Explorer on-premise or with my self-hosted dbt Core deployment?" >
+<expandable alt_header="Can I use dbt Explorer on-premises or with my self-hosted dbt Core deployment?" >
 
 No. dbt Explorer and all of its features are only available as a dbt Cloud user experience. dbt Explorer reflects the metadata from your dbt Cloud project(s) and their runs. 
 
@@ -37,9 +39,9 @@ No. dbt Explorer and all of its features are only available as a dbt Cloud user 
 
 <expandable alt_header="How does dbt Explorer support dbt Cloud environments?" >
 
-dbt Explorer defaults to the latest production state of a project. Support for staging is now in <Lifecycle status='beta' />. 
+dbt Explorer supports a production or staging [deployment environment](/docs/deploy/deploy-environments) for each project you want to explore. It defaults to the latest production or staging state of a project. Users can only assign one production and one staging environment per dbt Cloud project.
 
-development (Cloud CLI and IDE) environments is coming soon. Users can only assign one production and one staging environment per dbt Cloud project. 
+Support for development (Cloud CLI and IDE) environments is coming soon.
 
 </expandable>
 
@@ -115,7 +117,7 @@ Column-level lineage in dbt Explorer can be used to improve many data developmen
 
 <expandable alt_header="Does the column-level lineage remain functional even if column names vary between models?" >
 
-Yes. Column-level lineage can handle name changes across instances of the column in the dbt project. 
+Yes. Column-level lineage can handle name changes across instances of the column in the dbt project.
 
 </expandable>
 
@@ -125,15 +127,10 @@ No. Cross-project column lineage is supported in the sense of viewing how a publ
 
 </expandable>
 
-<expandable alt_header="Is column-level lineage data available through the API?" >
-
-Yes. Column-level lineage is available through a beta endpoint using the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to dbt Cloud Enterprise plan customers. 
-
-</expandable>
 
 <expandable alt_header="Can column descriptions be propagated down in downstream lineage automatically?" >
 
-Not currently, but this type of functionality is planned for future releases.
+Yes, a reused column, labeled as passthrough or rename, inherits its description from source and upstream model columns. In other words, source and upstream model columns propagate their descriptions downstream whenever they are not transformed, meaning you don’t need to manually define the description. Refer to [Inherited column descriptions](/docs/collaborate/column-level-lineage#inherited-column-descriptions) for more info.
 
 </expandable>
 
@@ -142,8 +139,6 @@ Not currently, but this type of functionality is planned for future releases.
 Not currently, but we plan to incorporate column-level awareness across features in dbt Cloud in the future.
 
 </expandable>
-
-
 
 ## Availability, access, and permissions
 
@@ -161,13 +156,13 @@ dbt Explorer is available on the dbt Cloud Team and Enterprise plans. Certain fe
 
 <expandable alt_header="Will dbt Core users be able to leverage any of these new dbt Explorer features?" >
 
-No. dbt Explorer is a dbt Cloud-only product experience. 
+No. dbt Explorer is a dbt Cloud-only product experience.
 
 </expandable>
 
 <expandable alt_header="Is it possible to access dbt Explorer using a read-only license?" >
 
-Yes, during the current Preview period. 
+Yes, users with read-only access can use the dbt Explorer. Specific feature availability within dbt Explorer will depend on your dbt Cloud plan. 
 
 </expandable>
 
