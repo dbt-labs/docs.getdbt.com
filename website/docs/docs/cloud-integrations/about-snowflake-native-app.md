@@ -20,7 +20,7 @@ These experiences enable you to extend what you have built with dbt Cloud to new
 
 ## Architecure
 
-There are three tools connected to operate the Snowflake Native App for dbt:
+There are three tools connected to operate the dbt for Snowflake Native App:
 
 | Tool                               | Description |
 |------------------------------------|-------------|
