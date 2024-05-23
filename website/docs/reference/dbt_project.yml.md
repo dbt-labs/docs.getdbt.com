@@ -254,7 +254,7 @@ It's important to follow the correct naming conventions for the YAML configs in 
   <File name="dbt_project.yml" >
   
     ```yaml
-    [saved-queries](/docs/build/saved-queries#project-level-saved-queries): # This resource type in the dbt_project.yml uses dashes 
+    [saved-queries](/docs/build/saved-queries#project-level-saved-queries): ## This resource type in the dbt_project.yml uses dashes 
       my_saved_query:
         config:
           +cache:
@@ -267,7 +267,7 @@ It's important to follow the correct naming conventions for the YAML configs in 
   <File name="models/semantic_models.yml" >
   
     ```yaml
-    [saved_queries](/docs/build/saved-queries#configure-saved-query): # This example uses underscores 
+    [saved_queries](/docs/build/saved-queries#configure-saved-query): ## This example uses underscores 
       - name: SAVED_QUERY_NAME
         config:
           group: GROUP_NAME
