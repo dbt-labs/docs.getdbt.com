@@ -5,16 +5,16 @@ import styles from './styles.module.css';
 
 function slugify(text) {
   return text.toString().toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
+    .normalize('NFD') // normalize to nfd unicode form
+    .replace(/[\u0300-\u036f]/g, '') // remove diacritics
+    .replace(/\s+/g, '-') // replace spaces with -
+    .replace(/[^\w\-]+/g, '') // remove all non-word chars
+    .replace(/\-\-+/g, '-') // replace multipl - with a single -
+    .replace(/^-+/, '') // trim - from the start
+    .replace(/-+$/, ''); // trim - from the end
 }
 
-function expandable({ children, alt_header = null }) {
+function Expandable({ children, alt_header = null }) {
   if (!alt_header) { return null; }
   const [isOn, setOn] = useState(false);
   const anchorId = slugify(alt_header);
@@ -85,4 +85,4 @@ useEffect(() => {
   );
 }
 
-export default expandable;
+export default Expandable;
