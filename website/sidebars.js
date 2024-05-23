@@ -1,3 +1,5 @@
+const howWeStructure = require('./sidebars/how-we-structure')
+
 const sidebarSettings = {
   docs: [
     "docs/introduction",
@@ -6,9 +8,7 @@ const sidebarSettings = {
       label: "Get started with dbt",
       collapsed: true,
       link: { type: "doc", id: "docs/get-started-dbt" },
-      items: [
-        "docs/get-started-dbt",
-      ],
+      items: ["docs/get-started-dbt"],
     }, // Get started quickstarts directory
     {
       type: "category",
@@ -35,7 +35,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
-      {
+    {
       type: "category",
       label: "Set up dbt",
       collapsed: true,
@@ -54,7 +54,10 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Connect data platform",
-              link: { type: "doc", id: "docs/cloud/connect-data-platform/about-connections" },
+              link: {
+                type: "doc",
+                id: "docs/cloud/connect-data-platform/about-connections",
+              },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
                 "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
@@ -70,14 +73,20 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Manage access",
-              link: { type: "doc", id: "docs/cloud/manage-access/about-user-access" },
+              link: {
+                type: "doc",
+                id: "docs/cloud/manage-access/about-user-access",
+              },
               items: [
                 "docs/cloud/manage-access/about-user-access",
                 "docs/cloud/manage-access/invite-users",
                 {
                   type: "category",
                   label: "User permissions and licenses",
-                  link: { type: "doc", id: "docs/cloud/manage-access/seats-and-users" },
+                  link: {
+                    type: "doc",
+                    id: "docs/cloud/manage-access/seats-and-users",
+                  },
                   items: [
                     "docs/cloud/manage-access/seats-and-users",
                     "docs/cloud/manage-access/self-service-permissions",
@@ -88,7 +97,10 @@ const sidebarSettings = {
                 {
                   type: "category",
                   label: "Single sign-on and Oauth",
-                  link: { type: "doc", id: "docs/cloud/manage-access/sso-overview" },
+                  link: {
+                    type: "doc",
+                    id: "docs/cloud/manage-access/sso-overview",
+                  },
                   items: [
                     "docs/cloud/manage-access/sso-overview",
                     "docs/cloud/manage-access/auth0-migration",
@@ -108,7 +120,10 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Configure Git",
-              link: { type: "doc", id: "docs/cloud/git/git-configuration-in-dbt-cloud" },
+              link: {
+                type: "doc",
+                id: "docs/cloud/git/git-configuration-in-dbt-cloud",
+              },
               items: [
                 "docs/cloud/git/git-configuration-in-dbt-cloud",
                 "docs/cloud/git/import-a-project-by-git-url",
@@ -117,7 +132,10 @@ const sidebarSettings = {
                 {
                   type: "category",
                   label: "Azure DevOps",
-                  link: { type: "doc", id: "docs/cloud/git/connect-azure-devops" },
+                  link: {
+                    type: "doc",
+                    id: "docs/cloud/git/connect-azure-devops",
+                  },
                   items: [
                     "docs/cloud/git/connect-azure-devops",
                     "docs/cloud/git/setup-azure",
@@ -155,7 +173,7 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Install dbt Core",
-              link: { type: "doc", id: "docs/core/installation-overview", },
+              link: { type: "doc", id: "docs/core/installation-overview" },
               items: [
                 "docs/core/installation-overview",
                 "docs/core/pip-install",
@@ -197,7 +215,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/extrica-setup",
                 "docs/core/connect-data-platform/fal-setup",
                 "docs/core/connect-data-platform/firebolt-setup",
-                "docs/core/connect-data-platform/greenplum-setup",  
+                "docs/core/connect-data-platform/greenplum-setup",
                 "docs/core/connect-data-platform/ibmdb2-setup",
                 "docs/core/connect-data-platform/infer-setup",
                 "docs/core/connect-data-platform/iomete-setup",
@@ -241,33 +259,36 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
           items: [
             "docs/cloud/cloud-cli-installation",
-             "docs/cloud/configure-cloud-cli",
-            ],
+            "docs/cloud/configure-cloud-cli",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Cloud IDE",
+          link: {
+            type: "doc",
+            id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
           },
-          {
-            type: "category",
-            label: "dbt Cloud IDE",
-            link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
-            items: [
-              "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-              "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
-              "docs/cloud/dbt-cloud-ide/ide-user-interface",
-              "docs/cloud/dbt-cloud-ide/lint-format",
-              {
-                type: "category",
-                label: "dbt Assist",
-                link: { type: "doc", id:"docs/cloud/dbt-assist" },
-                items: [
-                  "docs/cloud/dbt-assist",
-                  "docs/cloud/enable-dbt-assist",
-                  "docs/cloud/use-dbt-assist",
-                  "docs/cloud/dbt-assist-data",
-                ],
-              },
-            ],
-          },
-        ],
-      },
+          items: [
+            "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+            "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
+            "docs/cloud/dbt-cloud-ide/ide-user-interface",
+            "docs/cloud/dbt-cloud-ide/lint-format",
+            {
+              type: "category",
+              label: "dbt Assist",
+              link: { type: "doc", id: "docs/cloud/dbt-assist" },
+              items: [
+                "docs/cloud/dbt-assist",
+                "docs/cloud/enable-dbt-assist",
+                "docs/cloud/use-dbt-assist",
+                "docs/cloud/dbt-assist-data",
+              ],
+            },
+          ],
+        },
+      ],
+    },
     {
       type: "category",
       label: "Build dbt projects",
@@ -296,10 +317,7 @@ const sidebarSettings = {
               type: "category",
               label: "Tests",
               link: { type: "doc", id: "docs/build/data-tests" },
-              items: [
-                "docs/build/data-tests",
-                "docs/build/unit-tests",
-              ],
+              items: ["docs/build/data-tests", "docs/build/unit-tests"],
             },
             "docs/build/snapshots",
             "docs/build/seeds",
@@ -316,7 +334,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
-            "docs/build/build-metrics-intro", 
+            "docs/build/build-metrics-intro",
             {
               type: "link",
               label: "Quickstart with the dbt Cloud Semantic Layer",
@@ -381,8 +399,11 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Incremental models",
-              link: { type: "doc", id: "docs/build/incremental-models-overview",},
-              items: [           
+              link: {
+                type: "doc",
+                id: "docs/build/incremental-models-overview",
+              },
+              items: [
                 "docs/build/incremental-models-overview",
                 "docs/build/incremental-models",
                 "docs/build/incremental-strategy",
@@ -538,10 +559,13 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Available integrations",
-          link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
+          link: {
+            type: "doc",
+            id: "docs/use-dbt-semantic-layer/avail-sl-integrations",
+          },
           items: [
             "docs/use-dbt-semantic-layer/avail-sl-integrations",
-						"docs/use-dbt-semantic-layer/gsheets",
+            "docs/use-dbt-semantic-layer/gsheets",
             "docs/use-dbt-semantic-layer/tableau",
           ],
         },
@@ -599,7 +623,10 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Schema",
-              link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-environment" },
+              link: {
+                type: "doc",
+                id: "docs/dbt-cloud-apis/discovery-schema-environment",
+              },
               items: [
                 "docs/dbt-cloud-apis/discovery-schema-environment",
                 {
@@ -628,20 +655,20 @@ const sidebarSettings = {
                   ],
                 },
                 {
-                      type: "category",
-                      label: "Applied",
-                      items: [
-                        "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
-                      ],
-                    },
-                    // Uncomment to add Definition subpage, but need to make items non-empty
-                    // {
-                    //   type: "category",
-                    //   label: "Definition",
-                    //   items: [
-                    //     // insert pages here
-                    //   ],
-                    // }, 
+                  type: "category",
+                  label: "Applied",
+                  items: [
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                  ],
+                },
+                // Uncomment to add Definition subpage, but need to make items non-empty
+                // {
+                //   type: "category",
+                //   label: "Definition",
+                //   items: [
+                //     // insert pages here
+                //   ],
+                // },
               ],
             },
           ],
@@ -674,8 +701,7 @@ const sidebarSettings = {
           link: {
             type: "generated-index",
             title: "Version upgrade guides",
-            description:
-              "Learn what's new in the latest version of dbt Core.",
+            description: "Learn what's new in the latest version of dbt Core.",
             slug: "/docs/dbt-versions/core-upgrade",
           },
           items: [
@@ -688,7 +714,10 @@ const sidebarSettings = {
         {
           type: "category",
           label: "dbt Cloud Release Notes",
-          link: { type: "doc", id: "docs/dbt-versions/dbt-cloud-release-notes" },
+          link: {
+            type: "doc",
+            id: "docs/dbt-versions/dbt-cloud-release-notes",
+          },
           items: [
             "docs/dbt-versions/dbt-cloud-release-notes",
             "docs/dbt-versions/2023-release-notes",
@@ -988,7 +1017,7 @@ const sidebarSettings = {
                 "reference/global-configs/command-line-options",
                 "reference/global-configs/environment-variable-configs",
                 "reference/global-configs/project-flags",
-              ]
+              ],
             },
             {
               type: "category",
@@ -1007,7 +1036,7 @@ const sidebarSettings = {
                 "reference/global-configs/usage-stats",
                 "reference/global-configs/version-compatibility",
                 "reference/global-configs/warnings",
-              ]
+              ],
             },
           ],
         },
@@ -1069,6 +1098,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Best practices",
+      collapsible: false,
       link: {
         type: "generated-index",
         title: "Best practice guides",
@@ -1077,21 +1107,7 @@ const sidebarSettings = {
         slug: "best-practices",
       },
       items: [
-        {
-          type: "category",
-          label: "How we structure our dbt projects",
-          link: {
-            type: "doc",
-            id: "best-practices/how-we-structure/1-guide-overview",
-          },
-          items: [
-            "best-practices/how-we-structure/2-staging",
-            "best-practices/how-we-structure/3-intermediate",
-            "best-practices/how-we-structure/4-marts",
-            "best-practices/how-we-structure/5-semantic-layer-marts",
-            "best-practices/how-we-structure/6-the-rest-of-the-project",
-          ],
-        },
+        howWeStructure,
         {
           type: "category",
           label: "How we style our dbt projects",
@@ -1350,6 +1366,7 @@ const sidebarSettings = {
       ],
     },
   ],
+  howWeStructure: [howWeStructure],
 };
 
 module.exports = sidebarSettings;
