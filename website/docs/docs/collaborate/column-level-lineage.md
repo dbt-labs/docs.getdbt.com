@@ -49,7 +49,8 @@ When exploring your data products, navigating column lineage allows analytics en
 
 ## Caveats
 
-Following are the CLL caveats/limitations. 
+### Column usage
+Column-level lineage reflects the lineage from `select` statements in your models' SQL code. It won't reflect other usage like joins and filters. 
 
 ### SQL parsing
 
