@@ -247,29 +247,29 @@ vars:
 
 ## Naming convention
 
-It's important to follow the correct naming conventions for the YAML configs in your `dbt_project.yml` file to make sure dbt can understand them properly: 
+It's important to follow the correct naming conventions for the YAML configs in your `dbt_project.yml` file to make sure dbt can understand them properly. This is especially true for resource types with more than one word:
 
-- Use dashes (`-`) for resource types in your `dbt_project.yml` file:
+- Use dashes (`-`) when configuring resource types with multiple words in your `dbt_project.yml` file:
 
-<File name="dbt_project.yml" >
+  <File name="dbt_project.yml" >
+  
+    ```yaml
+    [saved-queries](/docs/build/saved-queries#project-level-saved-queries): # This resource type in the dbt_project.yml uses dashes 
+      my_saved_query:
+        config:
+          +cache:
+            enabled: true
+    ```
+  </File>
 
-  ```yaml
-  [saved-queries](/docs/build/saved-queries#project-level-saved-queries):
-    my_saved_query:
-      config:
-        +cache:
-          enabled: true
-  ```
-</File>
+- Use underscore (`_`) when configuring resource types with multiple words outside the `dbt_project.yml` file:
 
-- Use underscore (`_`) if you're configuring options outside the `dbt_project.yml` file:
-
-<File name="models/semantic_models.yml" >
-
-  ```yaml
-  [saved_queries]/docs/build/saved-queries#configure-saved-query):
-    - name: SAVED_QUERY_NAME
-      config:
-        group: GROUP_NAME
-  ```
-</File>
+  <File name="models/semantic_models.yml" >
+  
+    ```yaml
+    [saved_queries](/docs/build/saved-queries#configure-saved-query): # This example uses underscores 
+      - name: SAVED_QUERY_NAME
+        config:
+          group: GROUP_NAME
+    ```
+  </File>
