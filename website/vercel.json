@@ -3,72 +3,7 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/docs/dbt-versions/release-notes/May-2024/no-spaces-in",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/May-2024/keep-on-latest-version",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Apr-2024/apr-sl",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Apr-2024/merge-jobs",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Mar-2024/mar-sl-updates",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Mar-2024/product-docs-jan24",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Feb-2024/feb-sl-updates",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Feb-2024/ide-git-edit",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Feb-2024/job-completion-trigger",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Feb-2024/keep-on-latest-version",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Feb-2024/exports-rn",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Feb-2024/override-dbt-version",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Jan-2024/jan-sl-updates",
-      "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
-      "permanent": true
-    },
-    {
-      "source": "/docs/dbt-versions/release-notes/Jan-2024/partial-parsing",
+      "source": "/docs/dbt-versions/release-notes/:path((?!dbt-cloud-changelog-2021|dbt-cloud-changelog-2019-2020).*)",
       "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
       "permanent": true
     },
