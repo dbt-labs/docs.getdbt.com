@@ -245,7 +245,6 @@ vars:
 
 </VersionBlock>
 
-
 ## Naming convention
 
 It's important to follow the correct naming conventions for the YAML configs in your `dbt_project.yml` file to make sure dbt can understand them properly: 
