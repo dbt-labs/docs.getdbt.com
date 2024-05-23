@@ -28,7 +28,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 The dbt Semantic Layer Tableau connector is available to download directly on [Tableau Exchange](https://exchange.tableau.com/products/1020).
 
-Alternatively you can follow these steps to install the Connector:
+Alternatively, you can follow these steps to install the Connector:
 
 1. Download the GitHub [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/latest/download/dbt_semantic_layer.taco) locally and add it to your default folder:
 
