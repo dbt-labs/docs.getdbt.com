@@ -267,7 +267,7 @@ It's important to follow the correct naming conventions for the YAML configs in 
   <File name="models/semantic_models.yml" >
   
     ```yaml
-    [saved_queries](/docs/build/saved-queries#configure-saved-query): ## This example uses underscores 
+    [saved_queries](/docs/build/saved-queries#configure-saved-query): ## Use underscores everywhere outside the dbt_project.yml file.
       - name: SAVED_QUERY_NAME
         config:
           group: GROUP_NAME
