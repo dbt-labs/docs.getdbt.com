@@ -42,7 +42,7 @@ seeds:
 
 <TabItem value="property-yaml">
 
-<File name='seeds/properties.yml'>
+<File name='data/properties.yml'>
 
 ```yaml
 version: 2
@@ -103,7 +103,7 @@ seeds:
 
 <TabItem value="property-yaml">
 
-<File name='seeds/properties.yml'>
+<File name='data/properties.yml'>
 
 ```yaml
 version: 2
@@ -172,7 +172,7 @@ Similarly, you can use the name of an installed package to configure seeds in th
 #### Apply the `schema` configuration to one seed only
 To apply a configuration to one seed only, provide the full resource path (including the project name, and subdirectories).
 
-<File name='seeds/marketing/properties.yml'>
+<File name='data/marketing/properties.yml'>
 
 ```yml
 version: 2
@@ -185,7 +185,7 @@ seeds:
 
 </File>
 
-In older versions of dbt, you must define configurations in `dbt_project.yml` and include the full resource path (including the project name, and subdirectories). For a project named `jaffle_shop`, with a seed file at `seeds/marketing/utm_parameters.csv`, this would look like:
+In older versions of dbt, you must define configurations in `dbt_project.yml` and include the full resource path (including the project name, and subdirectories). For a project named `jaffle_shop`, with a seed file at `data/marketing/utm_parameters.csv`, this would look like:
 
 <File name='dbt_project.yml'>
 
@@ -203,8 +203,8 @@ seeds:
 ## Example seed configuration
 The following is a valid seed configuration for a project with:
 * `name: jaffle_shop`
-* A seed file at `seeds/country_codes.csv`, and
-* A seed file at `seeds/marketing/utm_parameters.csv`
+* A seed file at `data/country_codes.csv`, and
+* A seed file at `data/marketing/utm_parameters.csv`
 
 
 <File name='dbt_project.yml'>
@@ -216,7 +216,7 @@ seeds:
   jaffle_shop:
     +enabled: true
     +schema: seed_data
-    # This configures seeds/country_codes.csv
+    # This configures data/country_codes.csv
     country_codes:
       # Override column types
       +column_types:
