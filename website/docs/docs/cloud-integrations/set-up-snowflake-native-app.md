@@ -85,6 +85,6 @@ To verify the app installed successfully, you can perform any or all of the foll
 
 - Ask dbt is failing with `Unable to access schema `dbt_sl_llm`. 
     - Please check that the SL user is granted access to the schema. Double check that it has all the permissions it needs to read and write from the schema.
-- You need to update the app configurations including the dbt Cloud inputs.
+- If you need to update the app configurations in terms of the dbt Cloud inputs including account id, account url, etc
     - Go into the app configurations page and delete the existing configurations. Input the new ones and then run `CALL app_public.restart_app();` in the application database in Snowsight.
 
