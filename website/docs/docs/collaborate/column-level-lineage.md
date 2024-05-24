@@ -52,7 +52,7 @@ When exploring your data products, navigating column lineage allows analytics en
 Refer to the following CLL caveats or limitations as you navigate dbt Explorer.
 
 ### Column usage
-Column-level lineage reflects the lineage from `select` statements in your models' SQL code. It won't reflect other usage like joins and filters. 
+Column-level lineage reflects the lineage from `select` statements in your models' SQL code. It doesn't reflect other usage like joins and filters. 
 
 ### SQL parsing
 
