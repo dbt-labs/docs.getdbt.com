@@ -126,9 +126,9 @@ Now, if you combine the metrics in a `derived` metric, there will be a zero valu
 
 ## FAQs
 
-<expandable alt_header="How to handle null values in derived metrics defined on top of multiple tables">
+<Expandable alt_header="How to handle null values in derived metrics defined on top of multiple tables">
 
 For additional examples and discussion on how to handle null values in derived metrics that use data from multiple tables, check out [MetricFlow issue #1031](https://github.com/dbt-labs/metricflow/issues/1031).
 
-</expandable>
+</Expandable>
 
