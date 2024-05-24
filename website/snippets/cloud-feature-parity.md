@@ -10,7 +10,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | dbt Mesh                      | ✅           | ✅                     | ✅                  |
 | dbt Semantic Layer            | ✅           | ✅ (Upon request)      | ❌                  |
 | Discovery API                 | ✅           | ✅                     | ✅                  |  
-| IP Restrictions               | ✅           | ✅                     | ✅                  |
+| IP restrictions               | ✅           | ✅                     | ✅                  |
 | Job scheduler                 | ✅           | ✅                     | ✅                  |
 | PrivateLink egress            | ✅ (AWS only)| ✅                     | ✅                  |
 | PrivateLink ingress           | ❌           | ✅                     | ✅                  |
