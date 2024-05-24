@@ -76,9 +76,9 @@ To verify the app installed successfully, you can perform any or all of the foll
 - Pose a question for Ask dbt.
 
 ## Onboard new users
-1. In the application, click **Manage access** to onboard new users to the application. Grant the `app_user` role to the appropriate roles. 
+1. In the application, click **Manage access**  to onboard new users to the application. Grant the `app_user` role to the appropriate roles that should have access to the application but not adjust the configurations. Grant `app_admin` to roles that have access to edit/remove the configurations.
 
-2. Share the Snowflake app URL to the new users or they can access the application from the **Launch app** button on the app configuration page. 
+2. Share the Snowflake app URL to the new users or they can access the application from the **Launch app** button on the app configuration page.
 
 
 ## Troubleshooting
