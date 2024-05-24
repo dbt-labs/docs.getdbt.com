@@ -88,13 +88,13 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 ::: 
 
-<expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">
+<Expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">
 
 Check out the following video for a short video demo of how to query or preview metrics with the dbt Cloud CLI:
 
 <LoomVideo id='09e2b287f063497d888f4bed91469d79' />
 
-</expandable>
+</Expandable>
 
 </TabItem>
 
