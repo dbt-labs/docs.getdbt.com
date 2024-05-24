@@ -460,6 +460,11 @@
       "permanent": true
     },
     {
+      "source": "/quickstarts",
+      "destination": "/docs/get-started-dbt",
+      "permanent": true
+    },
+    {
       "source": "/docs/quickstarts/dbt-cloud/:path*",
       "destination": "/guides/:path*",
       "permanent": true
