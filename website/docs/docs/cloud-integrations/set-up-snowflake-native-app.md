@@ -33,7 +33,7 @@ The following are the prerequisites for dbt Cloud and Snowflake.
 - The Snowflake account must be in an AWS Region or Azure region. 
 
 ## Configure the Semantic Layer 
-In this step, you will set up your Semantic Layer to power `Ask dbt`. Before getting started, double-check that you have gone through the setup flow to [configure your Semantic Layer]((/docs/use-dbt-semantic-layer/setup-sl)). 
+In this step, you will set up your Semantic Layer to power `Ask dbt`. Before getting started, double-check that you have gone through the setup flow to [configure your Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl). 
 
 1. Go to your Semantic Layer configurations. You can access this by entering your Account Settings > Projects > project_name > `edit Semantic Layer Configurations.` The Snowflake credentials shown here are those you will use to access Cortex. Remember the username and role. 
 2. Identify the default database in your environment. Looking down on the page, identify the environment against which the Semantic Layer is run. You will need to know what the environment is connecting to. 
