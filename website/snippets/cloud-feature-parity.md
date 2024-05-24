@@ -3,7 +3,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Feature                       | Multi-tenant | AWS single tenant     | Azure single tenant  |
 |-------------------------------|--------------|-----------------------|----------------------|
 | Audit logs                    | ✅           | ✅                     | ✅                  |  
-| Continuous Integration jobs   | ✅           | ✅                     | ✅                  |
+| Continuous integration jobs   | ✅           | ✅                     | ✅                  |
 | dbt Cloud CLI                 | ✅           | ✅                     | ✅                  |
 | dbt Cloud IDE                 | ✅           | ✅                     | ✅                  |
 | dbt Explorer                  | ✅           | ✅                     | ✅                  |
