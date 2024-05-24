@@ -11,7 +11,7 @@ Archived release notes for dbt Cloud from 2023
 
 ## December 2023
 
-- <expandable alt_header='Semantic Layer updates'>
+- <Expandable alt_header='Semantic Layer updates'>
 
     The dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability for the dbt Semantic Layer. The following list explains the updates and fixes for December 2023 in more detail. 
 
@@ -27,9 +27,9 @@ Archived release notes for dbt Cloud from 2023
     - Deprecation &mdash; We deprecated dbt Metrics and the legacy dbt Semantic Layer, both supported on dbt version 1.5 or lower. This change came into effect on December 15th, 2023.
     - Improved dbt converter tool &mdash; The [dbt converter tool](https://github.com/dbt-labs/dbt-converter) can now help automate some of the work in converting from LookML (Looker's modeling language) for those who are migrating. Previously this wasn’t available. 
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='External attributes'>
+- <Expandable alt_header='External attributes'>
 
     The extended attributes feature in dbt Cloud is now GA! It allows for an environment level override on any YAML attribute that a dbt adapter accepts in its `profiles.yml`. You can provide a YAML snippet to add or replace any [profile](/docs/core/connect-data-platform/profiles.yml) value.
 
@@ -39,9 +39,9 @@ Archived release notes for dbt Cloud from 2023
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="85%" title="Example of the Extended Attributes text box" />
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Legacy semantic layer'>
+- <Expandable alt_header='Legacy semantic layer'>
 
     dbt Labs has deprecated dbt Metrics and the legacy dbt Semantic Layer, both supported on dbt version 1.5 or lower. This change starts on December 15th, 2023.
 
@@ -74,11 +74,11 @@ Archived release notes for dbt Cloud from 2023
     - [Upgrade version in dbt Cloud](/docs/dbt-versions/upgrade-dbt-version-in-cloud)
     - [Version migration guides](/docs/dbt-versions/core-upgrade)
 
-  </expandable>
+  </Expandable>
 
 ## November 2023
 
-- <expandable alt_header='New features and UI changes to dbt Explorer'>
+- <Expandable alt_header='New features and UI changes to dbt Explorer'>
 
     There are new quality-of-life improvements in dbt Cloud for email and Slack notifications about your jobs: 
 
@@ -90,9 +90,9 @@ Archived release notes for dbt Cloud from 2023
 
     To learn more, check out [Job notifications](/docs/deploy/job-notifications).
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Job notifications'>
+- <Expandable alt_header='Job notifications'>
 
     There are new quality-of-life improvements in dbt Cloud for email and Slack notifications about your jobs: 
 
@@ -104,9 +104,9 @@ Archived release notes for dbt Cloud from 2023
 
     To learn more, check out [Job notifications](/docs/deploy/job-notifications).
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Repo caching'>
+- <Expandable alt_header='Repo caching'>
 
     Now available for dbt Cloud Enterprise plans is a new option to enable Git repository caching for your job runs. When enabled, dbt Cloud caches your dbt project's Git repository and uses the cached copy instead if there's an outage with the Git provider. This feature improves the reliability and stability of your job runs. 
 
@@ -114,11 +114,11 @@ Archived release notes for dbt Cloud from 2023
 
     <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Repository caching option" />
 
-  </expandable>
+  </Expandable>
 
 ## October 2023
 
-- <expandable alt_header='dbt Cloud APIs'>
+- <Expandable alt_header='dbt Cloud APIs'>
 
     Beginning December 1, 2023, the [Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) v2 and v3 will expect you to limit all "list" or `GET` API methods to 100 results per API request. This limit enhances the efficiency and stability of our services. If you need to handle more than 100 results, then use the `limit` and `offset` query parameters to paginate those results; otherwise, you will receive an error. 
 
@@ -126,9 +126,9 @@ Archived release notes for dbt Cloud from 2023
 
     Refer to the [API v3 Pagination](https://docs.getdbt.com/dbt-cloud/api-v3#/) or [API v2 Pagination](https://docs.getdbt.com/dbt-cloud/api-v2#/) sections for more information on how to paginate your API responses. 
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='dbt Cloud CLI'>
+- <Expandable alt_header='dbt Cloud CLI'>
 
     We are excited to announce the dbt Cloud CLI, **unified command line for dbt**, is available in public preview. It’s a local development experience, powered by dbt Cloud.  It’s easy to get started:  `pip3 install dbt` or `brew install dbt` and you’re ready to go.
 
@@ -153,9 +153,9 @@ Archived release notes for dbt Cloud from 2023
 
     Refer to [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to learn more.
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Custom branch fix'>
+- <Expandable alt_header='Custom branch fix'>
 
     If you don't set a [custom branch](/docs/dbt-cloud-environments#custom-branch-behavior) for your dbt Cloud environment, it now defaults to the default branch of your Git repository (for example, `main`). Previously, [CI jobs](/docs/deploy/ci-jobs) would run for pull requests (PRs) that were opened against _any branch_ or updated with new commits if the **Custom Branch** option wasn't set. 
 
@@ -163,9 +163,9 @@ Archived release notes for dbt Cloud from 2023
 
     Your Git pull requests (PRs) might not trigger against your default branch if you're using Azure DevOps and the default branch isn't `main` or `master`. To resolve this, [set up a custom branch](/faqs/Environments/custom-branch-settings) with the branch you want to target.  
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='dbt deps auto install'>
+- <Expandable alt_header='dbt deps auto install'>
 
     The dbt Cloud IDE and dbt Cloud CLI now automatically installs `dbt deps` when your environment starts or when necessary. Previously, it would prompt you to run `dbt deps` during initialization. 
 
@@ -177,9 +177,9 @@ Archived release notes for dbt Cloud from 2023
     - When you update the package version in the `packages.yml` or `dependencies.yml` file. 
     - If you edit the `dependencies.yml` file and the number of packages remains the same, run `dbt deps`. (Note that this is a known bug dbt Labs will fix in the future.)
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Native retry support'>
+- <Expandable alt_header='Native retry support'>
 
     Previously in dbt Cloud, you could only rerun an errored job from start but now you can also rerun it from its point of failure. 
 
@@ -187,9 +187,9 @@ Archived release notes for dbt Cloud from 2023
 
     <Lightbox src="/img/docs/deploy/native-retry.gif" width="70%" title="Example of the Rerun options in dbt Cloud"/>
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Product docs updates'>
+- <Expandable alt_header='Product docs updates'>
 
     Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 15 new community contributors to docs.getdbt.com. We merged [107 PRs](https://github.com/dbt-labs/docs.getdbt.com/pulls?q=is%3Apr+merged%3A2023-09-01..2023-09-31) in September.
 
@@ -219,9 +219,9 @@ Archived release notes for dbt Cloud from 2023
 
     Stay tuned for a flurry of releases in October and a filterable guides section that will make guides easier to find!
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Semantic layer GA'>
+- <Expandable alt_header='Semantic layer GA'>
   
     If you're using the legacy Semantic Layer, we _highly_ recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) to dbt v1.6 or higher and [migrate](/guides/sl-migration) to the latest Semantic Layer.
 
@@ -240,11 +240,11 @@ Archived release notes for dbt Cloud from 2023
     - Team and Enterprise customers can use 1,000 Queried Metrics per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/cloud/billing#what-counts-as-a-queried-metric) for more information.
     - dbt Cloud Developer plans and dbt Core users can define metrics but won't be able to query them with integrated tools.
 
-  </expandable>
+  </Expandable>
 
 ## September 2023
 
-- <expandable alt_header='CI updates'>
+- <Expandable alt_header='CI updates'>
 
     dbt Cloud now has two distinct job types: [deploy jobs](/docs/deploy/deploy-jobs) for building production data assets, and [continuous integration (CI) jobs](/docs/deploy/ci-jobs) for checking code changes. These jobs perform fundamentally different tasks so dbt Labs improved the setup experience with better defaults for each. 
 
@@ -290,9 +290,9 @@ Archived release notes for dbt Cloud from 2023
     - Your project overrides the [generate_schema_name macro](/docs/build/custom-schemas) but it doesn't contain the required prefix `dbt_cloud_pr_`. For details, refer to [Troubleshooting](/docs/deploy/ci-jobs#troubleshooting).
     - You're using a [non-native Git integration](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api). This is because automatic deletion relies on incoming webhooks from Git providers, which is only available through the native integrations.
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Product docs updates'>
+- <Expandable alt_header='Product docs updates'>
 
     Hello from dbt's Product Documentation team (the stewards of the docs.getdbt.com site): @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun. What a busy summer! We merged 256 PRs between July 1st and August 31. 
 
@@ -329,9 +329,9 @@ Archived release notes for dbt Cloud from 2023
     * Blog posts published this summer include [Optimizing Materialized Views with dbt](/blog/announcing-materialized-views),  [Data Vault 2.0 with dbt Cloud](/blog/data-vault-with-dbt-cloud), and [Create dbt Documentation and Tests 10x faster with ChatGPT](/blog/create-dbt-documentation-10x-faster-with-chatgpt) 
     - We now have two new best practice guides: [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) and [Set up Continuous Integration](/guides/set-up-ci).
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Removing prerelease versions'>
+- <Expandable alt_header='Removing prerelease versions'>
 
     Previously, when dbt Labs released a new [version](/docs/dbt-versions/core#how-dbt-core-uses-semantic-versioning) in dbt Cloud, the older patch _prerelease_ version and the _latest_ version remained as options in the dropdown menu available in the **Environment settings**. Now, when the _latest_ version is released, the _prerelease_ version will be removed and all customers remaining on it will be migrated seamlessly. There will be no interruptions to service when this migration occurs. 
 
@@ -339,11 +339,11 @@ Archived release notes for dbt Cloud from 2023
 
     <Lightbox src="/img/docs/release-notes/dbt-cloud-versions.png" title="dbt Cloud versions dropdown"/>
 
-  </expandable>
+  </Expandable>
 
 ## August 2023
 
-- <expandable alt_header='Deprecation of endpoints in the Discovery API'>
+- <Expandable alt_header='Deprecation of endpoints in the Discovery API'>
 
     dbt Labs has deprecated and will be deprecating certain query patterns and replacing them with new conventions to enhance the performance of the dbt Cloud [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
 
@@ -469,9 +469,9 @@ Archived release notes for dbt Cloud from 2023
 
     ```
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='dbt Cloud IDE v1.2'>
+- <Expandable alt_header='dbt Cloud IDE v1.2'>
 
     We're excited to announce that we replaced the backend service that powers the Cloud IDE with a more reliable server -- dbt-server. Because this release contains foundational changes, IDE v1.2 requires dbt v1.6 or higher. This significant update follows the rebuild of the IDE frontend last year. We're committed to improving the IDE to provide you with a better experience.
 
@@ -503,11 +503,11 @@ Archived release notes for dbt Cloud from 2023
 
     - `{{this}}` function does not display properly in preview/compile with dbt-server
 
-  </expandable>
+  </Expandable>
 
 ## July 2023
 
-- <expandable alt_header='Faster runs and unlimited job concurrency for Enterprise account'>
+- <Expandable alt_header='Faster runs and unlimited job concurrency for Enterprise account'>
 
     We’ve introduced significant improvements to the dbt Cloud Scheduler, offering improved performance, durability, and scalability. 
 
@@ -539,11 +539,11 @@ Archived release notes for dbt Cloud from 2023
     - Legacy Team accounts have a fixed number of run slots.
     - Both Team and Developer plans are limited to one project each. For larger-scale needs, our [Enterprise plan](https://www.getdbt.com/pricing/) offers features such as audit logging, unlimited job concurrency and projects, and more.
 
-  </expandable>
+  </Expandable>
 
 ## June 2023
 
-- <expandable alt_header='Lint format'>
+- <Expandable alt_header='Lint format'>
 
     dbt Labs is excited to announce you can now lint and format your dbt code in the dbt Cloud IDE. This is an enhanced development workflow which empowers you to effortlessly prioritize code quality. 
 
@@ -563,9 +563,9 @@ Archived release notes for dbt Cloud from 2023
 
     </DocCarousel>
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='CI updates'>
+- <Expandable alt_header='CI updates'>
 
     dbt Cloud CI is a critical part of the analytics engineering workflow. Large teams rely on process to ensure code quality is high, and they look to dbt Cloud CI to automate testing code changes in an efficient way, enabling speed while keep the bar high. With status checks directly posted to their dbt PRs, developers gain the confidence that their code changes will work as expected in production, and once you’ve grown accustomed to seeing that green status check in your PR, you won’t be able to work any other way.
 
@@ -583,9 +583,9 @@ Archived release notes for dbt Cloud from 2023
 
     To learn more, refer to [Continuous integration](/docs/deploy/continuous-integration) and [CI jobs](/docs/deploy/ci-jobs).
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Admin API'>
+- <Expandable alt_header='Admin API'>
 
     dbt Labs updated the docs for the [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and they are now available for both [v2](/dbt-cloud/api-v2#/) and [v3](/dbt-cloud/api-v3#/). 
 
@@ -595,9 +595,9 @@ Archived release notes for dbt Cloud from 2023
     - You can now test endpoints directly from within the API docs. And, you can choose which [regional server](/docs/cloud/about-cloud/access-regions-ip-addresses) to use (North America, APAC, or EMEA).
     - With the new UI, you can more easily generate code for any endpoint.
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Product docs updates'>
+- <Expandable alt_header='Product docs updates'>
     
     Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 17 new community contributors to docs.getdbt.com &mdash; ✨ @aaronbini, @sjaureguimodo, @aranke, @eiof, @tlochner95, @mani-dbt, @iamtodor, @monilondo, @vrfn, @raginjason, @AndrewRTsao, @MitchellBarker, @ajaythomas, @smitsrr, @leoguyaux, @GideonShils, @michaelmherrera!
 
@@ -624,11 +624,11 @@ Archived release notes for dbt Cloud from 2023
 
     - Add an Azure DevOps example in the [Customizing CI/CD with custom pipelines](/guides/custom-cicd-pipelines) guide.
 
-  </expandable>
+  </Expandable>
 
 ## May 2023
 
-- <expandable alt_header='dbt Cloud IDE'>
+- <Expandable alt_header='dbt Cloud IDE'>
 
     To continue improving your [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) development experience, the dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability ✨.
 
@@ -669,9 +669,9 @@ Archived release notes for dbt Cloud from 2023
     - Tooltip for tab name with a long file name is no longer cut off
     - Lint button should no longer available in main branch
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Run history improvements'>
+- <Expandable alt_header='Run history improvements'>
 
     New usability and design improvements to the **Run History** dashboard in dbt Cloud are now available. These updates allow people to discover the information they need more easily by reducing the number of clicks, surfacing more relevant information, keeping people in flow state, and designing the look and feel to be more intuitive to use.   
 
@@ -697,9 +697,9 @@ Archived release notes for dbt Cloud from 2023
 
     We will retain older run history in cold storage and can make it available to customers who reach out to our Support team. To request older run history info, contact the Support team at [support@getdbt.com](mailto:support@getdbt.com) or use the dbt Cloud application chat by clicking the `?` icon in the dbt Cloud UI. 
 
-  </expandable>
+  </Expandable>
  
-- <expandable alt_header='Run details and log improvements'>
+- <Expandable alt_header='Run details and log improvements'>
 
     New usability and design improvements to the run details and logs in dbt Cloud are now available. The ability to triage errors in logs is a big benefit of using dbt Cloud's job and scheduler functionality. The updates help make the process of finding the root cause much easier.
         
@@ -713,9 +713,9 @@ Archived release notes for dbt Cloud from 2023
 
     <Lightbox src="/img/docs/release-notes/run-details-and-logs-improvements.gif" title="Improvements to run details and logs in dbt Cloud" />
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Product docs updates'>
+- <Expandable alt_header='Product docs updates'>
 
     Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 13 new community contributors to docs.getdbt.com!
 
@@ -751,11 +751,11 @@ Archived release notes for dbt Cloud from 2023
     - Added an [FAQ](/faqs/Warehouse/db-connection-dbt-compile) to clarify the common question users have on *Why does dbt compile needs to connect to the database?*
     - Published a [discourse article](https://discourse.getdbt.com/t/how-to-configure-external-user-email-notifications-in-dbt-cloud/8393) about configuring job notifications for non-dbt Cloud users
 
-  </expandable>
+  </Expandable>
 
 ## April 2023
 
-- <expandable alt_header='dbt Cloud IDE'>
+- <Expandable alt_header='dbt Cloud IDE'>
 
     ## New features 
 
@@ -790,9 +790,9 @@ Archived release notes for dbt Cloud from 2023
     * Radio buttons for **Summary** and **Details** in the logs section now consistently update to show the accurate tab selection
     * IDE no longer throws the console error `Error: Illegal argument` and redirects to the `Something went wrong` page
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='API updates'>
+- <Expandable alt_header='API updates'>
 
     Starting May 15, 2023, we will support only the following `order_by` functionality for the List Runs endpoint:
 
@@ -810,9 +810,9 @@ Archived release notes for dbt Cloud from 2023
 
     For more info, refer to our [documentation](/dbt-cloud/api-v2-legacy#tag/Runs/operation/listRunsForAccount).
 
- </expandable>
+ </Expandable>
 
-- <expandable alt_header='Scheduler optmization'>
+- <Expandable alt_header='Scheduler optmization'>
 
     The dbt Cloud Scheduler now prevents queue clog by canceling unnecessary runs of over-scheduled jobs. 
 
@@ -822,15 +822,15 @@ Archived release notes for dbt Cloud from 2023
 
     Now, the dbt Cloud scheduler detects when a scheduled job is set to run too frequently and appropriately cancels runs that don’t need to be processed. Specifically, scheduled jobs can only ever have one run of the job in the queue, and if a more recent run gets queued, the early queued run will get canceled with a helpful error message. Users will still need to either refactor the job so it runs faster or change the job schedule to run less often if the job often gets into an over-scheduled state.
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Starburst adapter GA'>
+- <Expandable alt_header='Starburst adapter GA'>
 
     The Starburst (Trino compatible) connection is now generally available in dbt Cloud. This means you can now use dbt Cloud to connect with Starburst Galaxy, Starburst Enterprise, and self-hosted Trino. This feature is powered by the [`dbt-trino`](https://github.com/starburstdata/dbt-trino) adapter. To learn more, check out our Quickstart guide for [dbt Cloud and Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy).
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='Product docs updates'>
+- <Expandable alt_header='Product docs updates'>
 
     Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! We want to share some highlights introduced to docs.getdbt.com in the last month:
 
@@ -864,11 +864,11 @@ Archived release notes for dbt Cloud from 2023
     - [dbt Squared: Leveraging dbt Core and dbt Cloud together at scale](/blog/dbt-squared)
     - [Audit_helper in dbt: Bringing data auditing to a higher level](/blog/audit-helper-for-migration)
 
-  </expandable>
+  </Expandable>
 
 ## March 2023
 
-- <expandable alt_header='dbt v1.0 deprecation'>
+- <Expandable alt_header='dbt v1.0 deprecation'>
 
     dbt Cloud now requires dbt version 1.0 or later. As of March 1, 2023, we removed all instances of older dbt versions from dbt Cloud. 
     
@@ -882,9 +882,9 @@ Archived release notes for dbt Cloud from 2023
     - [Upgrade Q&A on breaking changes](/docs/dbt-versions/upgrade-dbt-version-in-cloud#upgrading-legacy-versions-under-10)
     - [Version migration guides](/docs/dbt-versions/core-upgrade)
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='dbt Cloud IDE'>
+- <Expandable alt_header='dbt Cloud IDE'>
 
     To continue improving your [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) development experience, the dbt Labs team continue to work on adding new features, fixing bugs, and increasing reliability ✨.
 
@@ -928,9 +928,9 @@ Archived release notes for dbt Cloud from 2023
     - Reverting single files now reloads the file contents in the tab. Previously, it didn't reload.
     - The file tree no longer collapses on the first click when there is a project subdirectory defined.
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='API updates'>
+- <Expandable alt_header='API updates'>
 
     To make the API more scalable and reliable, we've implemented a maximum limit of `100` for all API requests to our `list` endpoints. If API requests exceed the maximum limit parameter of `100`, a user will receive an API error message.
 
@@ -938,19 +938,19 @@ Archived release notes for dbt Cloud from 2023
 
     Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#section/Pagination) section for more information on this change. 
 
-    </expandable>
+    </Expandable>
 
 ## Feb 2023
 
-- <expandable alt_header='Disable partial parsing in job commands'>
+- <Expandable alt_header='Disable partial parsing in job commands'>
 
     You can now use the `--no-partial-parse` flag to disable partial parsing in your dbt Cloud job commands. 
 
     Previously, the [`--no-partial-parse` global config](/reference/global-configs/parsing) was only available in dbt Core. For more information, refer to [partial parsing](/reference/parsing#partial-parsing).
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header='dbt Cloud IDE'>
+- <Expandable alt_header='dbt Cloud IDE'>
 
     To continue improving our [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
 
@@ -986,11 +986,11 @@ Archived release notes for dbt Cloud from 2023
     - You can now use the `--no-partial-parse` flag to disable partial parsing in your dbt Cloud job commands. 
     - Previously, the [`--no-partial-parse` global config](/reference/global-configs/parsing) was only available in dbt Core. For more information, refer to [partial parsing](/reference/parsing#partial-parsing).
 
-  </expandable>
+  </Expandable>
 
 ## January 2023
 
-- <expandable alt_header='dbt Cloud IDE'>
+- <Expandable alt_header='dbt Cloud IDE'>
 
     In the spirit of continuing to improve our [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
 
@@ -1022,4 +1022,4 @@ Archived release notes for dbt Cloud from 2023
     - You can now see repository status in the IDE, and the IDE finds the SSH folder
     - Scroll bars and download CSV no longer flicker within the preview pane
 
-  </expandable>
+  </Expandable>
