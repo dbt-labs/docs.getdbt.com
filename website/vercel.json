@@ -4874,7 +4874,7 @@
     },
     {
       "source": "/quickstarts",
-      "destination": "/guides",
+      "destination": "/docs/get-started-dbt",
       "permanent": true
     },
     {
