@@ -75,8 +75,6 @@ selectors unambiguous.
   ```
 
 
-<VersionBlock firstVersion="1.2">
-
 ### The "file" method
 The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
 
@@ -86,8 +84,6 @@ dbt run --select "file:some_model.sql"
 dbt run --select "some_model.sql"
 dbt run --select "some_model"
 ```
-
-</VersionBlock>
 
 ### The "fqn" method
 

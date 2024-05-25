@@ -406,7 +406,6 @@ export DBT_ORACLE_HOST=adb.example.oraclecloud.com
 export DBT_ORACLE_SERVICE=example_high.adb.oraclecloud.com
 ```
 
-<VersionBlock firstVersion="1.2">
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -428,7 +427,6 @@ dbt_test:
          threads: 4
 ```
 </File>
-</VersionBlock>
 
 </TabItem>
 
