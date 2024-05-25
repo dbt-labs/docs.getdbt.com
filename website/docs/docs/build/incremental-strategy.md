@@ -269,8 +269,6 @@ select * from {{ ref("some_model") }}
 
 ### Custom strategies
 
-<VersionBlock firstVersion="1.2">
-
 Starting from dbt version 1.2 and onwards, users have an easier alternative to [creating an entirely new materialization](/guides/create-new-materializations). They define and use their own "custom" incremental strategies by:
 
 1. Defining a macro named `get_incremental_STRATEGY_sql`. Note that `STRATEGY` is a placeholder and you should replace it with the name of your custom incremental strategy.
@@ -334,7 +332,6 @@ To use the `merge_null_safe` custom incremental strategy from the `example` pack
 ```
 
 </File>
-</VersionBlock>
 
 <Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="incremental"/>
