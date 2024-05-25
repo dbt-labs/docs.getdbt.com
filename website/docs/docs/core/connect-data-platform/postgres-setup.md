@@ -88,10 +88,8 @@ If the database closes its connection while dbt is waiting for data, you may see
 
 [dbt's default setting](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/adapters/postgres/connections.py#L28) is 0 (the server's default value), but can be configured lower (perhaps 120 or 60 seconds), at the cost of a chattier network connection.
 
-<VersionBlock firstVersion="1.2">
 
 #### retries
 
 If `dbt-postgres` encounters an operational error or timeout when opening a new connection, it will retry up to the number of times configured by `retries`. The default value is 1 retry. If set to 2+ retries, dbt will wait 1 second before retrying. If set to 0, dbt will not retry at all.
 
-</VersionBlock>

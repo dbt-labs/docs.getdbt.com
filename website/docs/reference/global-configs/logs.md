@@ -79,7 +79,6 @@ dbt --debug run
 
 </File>  
 
-<VersionBlock firstVersion="1.2">
 
 ### Log and target paths
 
@@ -87,7 +86,6 @@ By default, dbt will write logs to a directory named `logs/`, and all other arti
 
 Just like other global configs, it is possible to override these values for your environment or invocation by using CLI options (`--target-path`, `--log-path`) or environment variables (`DBT_TARGET_PATH`, `DBT_LOG_PATH`).
 
-</VersionBlock>
 
 ### Suppress non-error logs in output
 

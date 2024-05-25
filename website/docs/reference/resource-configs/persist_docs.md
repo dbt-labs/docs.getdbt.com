@@ -137,11 +137,7 @@ Some known issues and limitations:
 
 <div warehouse="Snowflake">
 
-<VersionBlock firstVersion="1.2">
-
 - No known issues
-
-</VersionBlock>
 
 </div>
 
