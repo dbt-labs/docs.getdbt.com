@@ -176,12 +176,6 @@ sources:
 
 <TabItem value="metrics">
 
-<VersionBlock lastVersion="1.2">
-
-Support for disabling metrics was added in dbt Core v1.3
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.3">
 
 <File name='dbt_project.yml'>
@@ -212,12 +206,6 @@ metrics:
 </TabItem>
 
 <TabItem value="exposures">
-
-<VersionBlock lastVersion="1.2">
-
-Support for disabling exposures was added in dbt Core v1.3
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.3">
 
