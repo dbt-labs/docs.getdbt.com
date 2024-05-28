@@ -6,7 +6,7 @@
       "source": "/docs/deploy/deploy-environments#partial-parsing",
       "destination": "/docs/dbt-cloud-environments#partial-parsing",
       "permanent": true
-    
+    },
     {
       "source": "/docs/dbt-versions/release-notes/May-2024/no-spaces-in",
       "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
