@@ -254,7 +254,7 @@ It's important to follow the correct YAML naming conventions for the configs in 
     <File name="dbt_project.yml">
 
     ```yml
-    saved-queries:  # Use dashes in the dbt_project.yml file.
+    saved-queries:  # Use dashes for resource types in the dbt_project.yml file.
       my_saved_query:
         config:
           +cache:
