@@ -13,7 +13,7 @@ Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — thi
 
 - By default, dbt looks for the `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the `DBT_PROJECT_DIR` environment variable.
 
-- Specify your dbt Cloud project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. Find your project ID in your dbt Cloud project URL: In example `https://cloud.getdbt.com/11/projects/123456`, the project ID is `123456`.
+- Specify your dbt Cloud project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. Find your project ID in your dbt Cloud project URL: For example, in `https://cloud.getdbt.com/11/projects/123456`, the project ID is `123456`.
 
 </VersionBlock>
 
@@ -247,7 +247,7 @@ vars:
 
 ## Naming convention
 
-It's important to follow the correct naming conventions for the YAML configs in your `dbt_project.yml` file to make sure dbt can understand them properly. This is especially true for resource types with more than one word.
+It's important to follow the correct YAML naming conventions for the configs in your `dbt_project.yml` file to ensure dbt can process them properly. This is especially true for resource types with more than one word.
 
 - Use dashes (`-`) when configuring resource types with multiple words in your `dbt_project.yml` file. Here's an example for [saved queries](/docs/build/saved-queries#configure-saved-query):
 
