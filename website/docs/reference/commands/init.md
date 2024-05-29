@@ -19,7 +19,7 @@ Then, it will:
 
 <VersionBlock firstVersion="1.7">
 
-When using `dbt init` to initialize your project, include the `--profile` flag to specify an existing `profiles.yml` as the `profile:` key to use instead of creating a new one. For example, `dbt init --profile`.
+When using `dbt init` to initialize your project, include the `--profile` flag to specify an existing `profiles.yml` as the `profile:` key to use instead of creating a new one. For example, `dbt init --profile profile_name`.
 
 
 
@@ -39,8 +39,6 @@ If you've just cloned or downloaded an existing dbt project, `dbt init` can stil
 - **Adapter plugin:** What's the bare minumum Postgres profile? What's the type of each field, what are its defaults? This information is stored in a file called [`dbt/include/postgres/profile_template.yml`](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml). If you're the maintainer of an adapter plugin, we highly recommend that you add a `profile_template.yml` to your plugin, too. Refer to the [Build, test, document, and promote adapters](/guides/adapter-creation) guide for more information.
 
 - **Existing project:** If you're the maintainer of an existing project, and you want to help new users get connected to your database quickly and easily, you can include your own custom `profile_template.yml` in the root of your project, alongside `dbt_project.yml`. For common connection attributes, set the values in `fixed`; leave user-specific attributes in `prompts`, but with custom hints and defaults as you'd like.
-
-<VersionBlock firstVersion="1.2">
 
 <File name='profile_template.yml'>
 
@@ -70,7 +68,6 @@ prompts:
 
 </File>
 
-</VersionBlock>
 
 ```
 $ dbt init

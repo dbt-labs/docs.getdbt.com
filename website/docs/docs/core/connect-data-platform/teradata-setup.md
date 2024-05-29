@@ -16,7 +16,7 @@ meta:
   config_page: '/reference/resource-configs/teradata-configs'
 ---
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for the repository listed below.
+Some core functionality may be limited. If you're interested in contributing, check out the source code in the repository listed in the next section.
 
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
@@ -38,6 +38,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 |1.4.x.x            | ❌           | ✅          | ✅          | ✅          | ✅          | ✅
 |1.5.x              | ❌           | ✅          | ✅          | ✅          | ✅          | ✅
 |1.6.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
+|1.7.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
 
 ## dbt dependent packages version compatibility
 
@@ -45,6 +46,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 |--------------|------------|-------------------|----------------|
 | 1.2.x        | 1.2.x      | 0.1.0             | 0.9.x or below |
 | 1.6.7        | 1.6.7      | 1.1.1             | 1.1.1          |
+| 1.7.1        | 1.7.3      | 1.1.1             | 1.1.1          |
 
 
 ### Connecting to Teradata
@@ -140,22 +142,33 @@ The following incremental materialization strategies are supported:
 * `delete+insert`
 * `merge`
 
-To learn more about dbt incremental strategies please check [the dbt incremental strategy documentation](https://docs.getdbt.com/docs/build/incremental-models#about-incremental_strategy).
+To learn more about dbt incremental strategies please check [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
 
 ### Commands
 
 All dbt commands are supported.
 
 ## Support for model contracts
-Model contracts are not yet supported with dbt-teradata.
+Model contracts are supported with dbt-teradata v1.7.1 and onwards.
+Constraint support and enforcement in dbt-teradata:
+
+| Constraint type |	Support	Platform | enforcement |
+|-----------------|------------------|-------------|
+| not_null	      | ✅ Supported	 | ✅ Enforced |
+| primary_key	  | ✅ Supported	 | ✅ Enforced |
+| foreign_key	  | ✅ Supported	 | ✅ Enforced |
+| unique	      | ✅ Supported	 | ✅ Enforced |
+| check	          | ✅ Supported	 | ✅ Enforced |
+
+Refer to [Model contracts](/docs/collaborate/govern/model-contracts) for more info.
 
 ## Support for `dbt-utils` package
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
 
 ### Cross DB macros
-Starting with release 1.3, some macros were migrated from [teradata-dbt-utils](https://github.com/Teradata/dbt-teradata-utils) dbt package to the connector. See the table below for the macros supported from the connector.
+Starting with release 1.3, some macros were migrated from [teradata-dbt-utils](https://github.com/Teradata/dbt-teradata-utils) dbt package to the connector. Refer the following table for the macros supported by the connector.
 
-For using cross DB macros, teradata-utils as a macro namespace will not be used, as cross DB macros have been migrated from teradata-utils to Dbt-Teradata.
+For using cross-DB macros, teradata-utils as a macro namespace will not be used, as cross-DB macros have been migrated from teradata-utils to Dbt-Teradata.
 
 
 #### Compatibility
@@ -172,6 +185,8 @@ For using cross DB macros, teradata-utils as a macro namespace will not be used,
 | Cross-database macros | type_string                   | :white_check_mark:    | custom macro provided                                                  |
 | Cross-database macros | last_day                      | :white_check_mark:    | no customization needed, see [compatibility note](#last_day)           |
 | Cross-database macros | width_bucket                  | :white_check_mark:    | no customization
+| Cross-database macros | generate_series               | :white_check_mark:    | custom macro provided
+| Cross-database macros | date_spine                    | :white_check_mark:    | no customization
 
 
 #### examples for cross DB macros
@@ -213,7 +228,11 @@ For using cross DB macros, teradata-utils as a macro namespace will not be used,
 ## Limitations
 
 ### Transaction mode
-Only ANSI transaction mode is supported.
+Both ANSI and TERA modes are now supported in dbt-teradata. TERA mode's support is introduced with dbt-teradata 1.7.1, it is an initial implementation.
+
+:::info TERA transaction mode
+This is an initial implementation of the TERA transaction mode and may not support some use cases. We highly recommend validating all records or transformations using this mode to avoid unexpected issues or errors.
+:::
 
 ## Credits
 

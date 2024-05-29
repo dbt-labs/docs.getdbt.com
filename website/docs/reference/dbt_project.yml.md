@@ -1,6 +1,8 @@
 
 Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate your project.
 
+dbt uses [YAML](https://yaml.org/) in a few different places. If you're new to YAML, it would be worth learning how arrays, dictionaries, and strings are represented.
+
 <VersionBlock lastVersion="1.4">
 
 By default, dbt will look for `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag.
@@ -14,11 +16,6 @@ By default, dbt will look for `dbt_project.yml` in your current working director
 Starting from dbt v1.5 and higher, you can specify your dbt Cloud project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. To find your project ID, check your dbt Cloud project URL, such as `https://YOUR_ACCESS_URL/11/projects/123456`, where the project ID is `123456`.
 
 </VersionBlock>
-
-:::info YAML syntax
-dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries, and strings are represented.
-:::
-
 
 Something to note, you can't set up a "property" in the `dbt_project.yml` file if it's not a config (an example is [macros](/reference/macro-properties)). This applies to all types of resources. Refer to [Configs and properties](/reference/configs-and-properties) for more detail.
 
@@ -45,8 +42,6 @@ The following example is a list of all available configurations in the `dbt_proj
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](/reference/project-configs/target-path): directorypath
-[log-path](/reference/project-configs/log-path): directorypath
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
 [clean-targets](/reference/project-configs/clean-targets): [directorypath]
@@ -54,6 +49,9 @@ The following example is a list of all available configurations in the `dbt_proj
 [query-comment](/reference/project-configs/query-comment): string
 
 [require-dbt-version](/reference/project-configs/require-dbt-version): version-range | [version-range]
+
+[flags](/reference/global-configs/project-flags):
+  [<global-configs>](/reference/global-configs/project-flags)
 
 [dbt-cloud](/docs/cloud/cloud-cli-installation):
   [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
@@ -65,7 +63,7 @@ The following example is a list of all available configurations in the `dbt_proj
   identifier: true | false
 
 metrics:
-  <metric-configs>
+  [<metric-configs>](/docs/build/metrics-overview)
 
 models:
   [<model-configs>](/reference/model-configs)
@@ -74,7 +72,10 @@ seeds:
   [<seed-configs>](/reference/seed-configs)
 
 semantic-models:
-  <semantic-model-configs>
+  [<semantic-model-configs>](/docs/build/semantic-models)
+
+saved-queries:
+  [<saved-queries-configs>](/docs/build/saved-queries)
 
 snapshots:
   [<snapshot-configs>](/reference/snapshot-configs)
@@ -123,8 +124,6 @@ vars:
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](/reference/project-configs/target-path): directorypath
-[log-path](/reference/project-configs/log-path): directorypath
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
 [clean-targets](/reference/project-configs/clean-targets): [directorypath]
@@ -196,8 +195,8 @@ vars:
 [docs-paths](/reference/project-configs/docs-paths): [directorypath]
 [asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](/reference/project-configs/target-path): directorypath
-[log-path](/reference/project-configs/log-path): directorypath
+[target-path](/reference/global-configs/json-artifacts): directorypath
+[log-path](/reference/global-configs/logs): directorypath
 [packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
 [clean-targets](/reference/project-configs/clean-targets): [directorypath]

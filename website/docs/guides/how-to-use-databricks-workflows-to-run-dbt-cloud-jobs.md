@@ -12,6 +12,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 Using Databricks workflows to call the dbt Cloud job API can be useful for several reasons:
@@ -126,17 +128,17 @@ if __name__ == '__main__':
 
 3. Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with the values you used [previously](#set-up-a-databricks-secret-scope)
 
-4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
 :::tip
  To find these values, navigate to **dbt Cloud**, select **Deploy -> Jobs**.  Select the Job you want to run and copy the URL. For example: `https://YOUR_ACCESS_URL/deploy/000000/projects/111111/jobs/222222`
 and therefore valid code would be:
 
-    # Your URL is structured https://<YOUR_BASE_URL>/deploy/<YOUR_ACCOUNT_ID>/projects/<YOUR_PROJECT_ID>/jobs/<YOUR_JOB_ID>
+Your URL is structured `https://<YOUR_BASE_URL>/deploy/<YOUR_ACCOUNT_ID>/projects/<YOUR_PROJECT_ID>/jobs/<YOUR_JOB_ID>`
     account_id = 000000
     job_id = 222222
     base_url =  "cloud.getdbt.com"
-:::
+
 
 5. Run the Notebook.  It will fail, but you should see **a `job_id` widget** at the top of your notebook.
 
@@ -161,9 +163,7 @@ DbtJobRunStatus.RUNNING
 DbtJobRunStatus.SUCCESS
 ```
 
-:::note
 You can cancel the job from dbt Cloud if necessary.
-:::
 
 ## Configure the workflows to run the dbt Cloud jobs
 
@@ -207,3 +207,5 @@ You can set up workflows directly from the notebook OR by adding this notebook t
 Multiple Workflow tasks can be set up using the same notebook by configuring the `job_id` parameter to point to different dbt Cloud jobs. 
 
 Using Databricks workflows to access the dbt Cloud job API can improve integration of your data pipeline processes and enable scheduling of more complex workflows.
+
+</div>

@@ -3,10 +3,6 @@ resource_types: [models]
 datatype: "{dictionary}"
 ---
 
-:::info New functionality
-This functionality is new in v1.5.
-:::
-
 Constraints are a feature of many data platforms. When specified, the platform will perform additional validation on data as it is being populated in a new table or inserted into a preexisting table. If the validation fails, the table creation or update fails, the operation is rolled back, and you will see a clear error message.
 
 When enforced, a constraint guarantees that you will never see invalid data in the table materialized by your model. Enforcement varies significantly by data platform.
@@ -18,6 +14,8 @@ Constraints require the declaration and enforcement of a model [contract](/refer
 ## Defining constraints
 
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
+
+If you are defining multiple `primary_key` constraints for a single model, those _must_ be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported. 
 
 The structure of a constraint is:
 - `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`
@@ -39,23 +37,26 @@ models:
     # model-level constraints
     constraints:
       - type: primary_key
-        columns: [<first_column>, <second_column>, ...]
+        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
+      - type: FOREIGN_KEY # multi_column
+        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
+        expression: "OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_FIRST_COLUMN, OTHER_MODEL_SECOND_COLUMN, ...)"
       - type: check
-        columns: [<first_column>, <second_column>, ...]
-        expression: "<first_column> != <second_column>"
-        name: human_friendly_name
+        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
+        expression: "FIRST_COLUMN != SECOND_COLUMN"
+        name: HUMAN_FRIENDLY_NAME
       - type: ...
     
     columns:
-      - name: <first_column>
-        data_type: <data_type>
+      - name: FIRST_COLUMN
+        data_type: DATA_TYPE
         
         # column-level constraints
         constraints:
           - type: not_null
           - type: unique
           - type: foreign_key
-            expression: <other_model_schema>.<other_model_name> (<other_model_column>)
+            expression: OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_COLUMN)
           - type: ...
 ```
 
@@ -192,6 +193,8 @@ models:
         data_type: date
 ```
 
+Note that Redshift limits the maximum length of the `varchar` values to 256 characters by default (or when specified without a length). This means that any string data exceeding 256 characters might get truncated _or_ return a "value too long for character type" error. To allow the maximum length, use `varchar(max)`. For example, `data_type: varchar(max)`.  
+
 </File>
 
 Expected DDL to enforce constraints:
@@ -228,9 +231,9 @@ select
 - Snowflake constraints documentation: [here](https://docs.snowflake.com/en/sql-reference/constraints-overview.html)
 - Snowflake data types: [here](https://docs.snowflake.com/en/sql-reference/intro-summary-data-types.html)
 
-Snowflake suppports four types of constraints: `unique`, `not null`, `primary key` and `foreign key`.
+Snowflake suppports four types of constraints: `unique`, `not null`, `primary key`, and `foreign key`.
 
-It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked today.
+It is important to note that only the `not null` (and the `not null` property of `primary key`) are actually checked at present.
 The rest of the constraints are purely metadata, not verified when inserting data.
 
 Currently, Snowflake doesn't support the `check` syntax and dbt will skip the `check` config and raise a warning message if it is set on some models in the dbt project.
@@ -270,7 +273,7 @@ models:
           - type: check       # not supported -- will warn & skip
             expression: "id > 0"
         tests:
-          - unique            # primary_key constraint is not enforced
+          - unique            # need this test because primary_key constraint is not enforced
       - name: customer_name
         data_type: text
       - name: first_transaction_date
@@ -304,7 +307,7 @@ select
 
 <div warehouse="BigQuery">
 
-BigQuery allows defining `not null` constraints. However, it does _not_ support or enforce the definition of unenforced constraints, such as `primary key`.
+BigQuery allows defining and enforcing `not null` constraints, and defining (but _not_ enforcing) `primary key` and `foreign key` constraints (which can be used for query optimization). BigQuery does not support defining or enforcing other constraints. For more information, refer to [Platform constraint support](/docs/collaborate/govern/model-contracts#platform-constraint-support)
 
 Documentation: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language
 
@@ -438,7 +441,7 @@ Databricks allows you to define:
 - a `not null` constraint
 - and/or additional `check` constraints, with conditional expressions including one or more columns
 
-As Databricks does not support transactions nor allows using `create or replace table` with a column schema, the table is first created without a schema and `alter` statements are then executed to add the different constraints. 
+As Databricks does not support transactions nor allows using `create or replace table` with a column schema, the table is first created without a schema, and `alter` statements are then executed to add the different constraints. 
 
 This means that:
 

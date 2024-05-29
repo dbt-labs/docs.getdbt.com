@@ -25,13 +25,6 @@ Jinja is not supported within the `vars` config, and all values will be interpre
 
 :::
 
-:::info New in v0.17.0
-
-The syntax for specifying vars in the `dbt_project.yml` file has changed in
-dbt v0.17.0. See the [migration guide](/docs/dbt-versions/core-upgrade)
-for more information on these changes.
-
-:::
 
 To define variables in a dbt project, add a `vars` config to your `dbt_project.yml` file.
 These `vars` can be scoped globally, or to a specific package imported in your
@@ -117,7 +110,7 @@ The order of precedence for variable declaration is as follows (highest priority
 
 </VersionBlock>
 
-If dbt is unable to find a definition for a variable after checking these four places, then a compilation error will be raised.
+If dbt is unable to find a definition for a variable after checking all possible variable declaration places, then a compilation error will be raised.
 
 **Note:** Variable scope is based on the node ultimately using that variable. Imagine the case where a model defined in the root project is calling a macro defined in an installed package. That macro, in turn, uses the value of a variable. The variable will be resolved based on the _root project's_ scope, rather than the package's scope.
 

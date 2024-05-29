@@ -114,14 +114,14 @@ models:
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
 with the following configuration parameters:
 
-| Parameter                                 | Type         | Required | Default                                        | Change Monitoring Support |
-|-------------------------------------------|--------------|----------|------------------------------------------------|---------------------------|
-| `on_configuration_change`                 | `<string>`   | no       | `apply`                                        | n/a                       |
-| [`dist`](#using-sortkey-and-distkey)      | `<string>`   | no       | `even`                                         | drop/create               |
-| [`sort`](#using-sortkey-and-distkey)      | `[<string>]` | no       | `none`                                         | drop/create               |
-| [`sort_type`](#using-sortkey-and-distkey) | `<string>`   | no       | `auto` if no `sort` <br />`compound` if `sort` | drop/create               |
-| [`auto_refresh`](#auto-refresh)           | `<boolean>`  | no       | `false`                                        | alter                     |
-| [`backup`](#backup)                       | `<string>`   | no       | `true`                                         | n/a                       |
+| Parameter                                                                        | Type         | Required | Default                                        | Change Monitoring Support |
+|----------------------------------------------------------------------------------|--------------|----------|------------------------------------------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>`   | no       | `apply`                                        | n/a                       |
+| [`dist`](#using-sortkey-and-distkey)                                             | `<string>`   | no       | `even`                                         | drop/create               |
+| [`sort`](#using-sortkey-and-distkey)                                             | `[<string>]` | no       | `none`                                         | drop/create               |
+| [`sort_type`](#using-sortkey-and-distkey)                                        | `<string>`   | no       | `auto` if no `sort` <br />`compound` if `sort` | drop/create               |
+| [`auto_refresh`](#auto-refresh)                                                  | `<boolean>`  | no       | `false`                                        | alter                     |
+| [`backup`](#backup)                                                              | `<string>`   | no       | `true`                                         | n/a                       |
 
 <Tabs
   groupId="config-languages"
@@ -142,7 +142,7 @@ with the following configuration parameters:
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
-    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
     [+](/reference/resource-configs/plus-prefix)[sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
     [+](/reference/resource-configs/plus-prefix)[sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
@@ -166,7 +166,7 @@ models:
   - name: [<model-name>]
     config:
       [materialized](/reference/resource-configs/materialized): materialized_view
-      on_configuration_change: apply | continue | fail
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
       [sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
       [sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
@@ -186,7 +186,7 @@ models:
 ```jinja
 {{ config(
     [materialized](/reference/resource-configs/materialized)="materialized_view",
-    on_configuration_change="apply" | "continue" | "fail",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [dist](#using-sortkey-and-distkey)="all" | "auto" | "even" | "<field-name>",
     [sort](#using-sortkey-and-distkey)=["<field-name>"],
     [sort_type](#using-sortkey-and-distkey)="auto" | "compound" | "interleaved",
@@ -204,7 +204,7 @@ models:
 Many of these parameters correspond to their table counterparts and have been linked above.
 The parameters unique to materialized views are the [auto-refresh](#auto-refresh) and [backup](#backup) functionality, which are covered below.
 
-Find more information about the [CREATE MATERIALIZED VIEW](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html) parameters in the Redshift docs.
+Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html).
 
 #### Auto-refresh
 
@@ -230,7 +230,7 @@ By default, a materialized view will be backed up during a cluster snapshot.
 dbt cannot monitor this parameter as it is not queryable within Redshift.
 If the value is changed, the materialized view will need to go through a `--full-refresh` in order to set it.
 
-Learn more about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
+Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters).
 
 ### Limitations
 
@@ -257,3 +257,90 @@ The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data 
 </VersionBlock>
 
 </VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+## Unit test limitations
+
+Redshift doesn't support Unit tests when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, etc. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. For unit tests to function properly in this scenario, creating temporary tables for the unit tests to reference is a good workaround. 
+
+The following query illustrates the limitation:
+
+```sql
+
+create temporary table "test_tmpxxxxx" as (
+   with test_fixture as (
+       select
+         cast(1000 as integer) as id,
+         cast('menu1' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+      union all
+      select
+         cast(1001 as integer) as id,
+         cast('menu2' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+      union all
+      select
+         cast(1003 as integer) as id,
+         cast('menu1' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+   ),
+   agg as (
+      SELECT
+         LISTAGG(name || ' x ' || quantity, ',') AS option_name_list,
+         id
+      FROM test_fixture
+      GROUP BY id
+   )
+   select * from agg
+);
+
+```
+This query results in the error: 
+
+```bash
+
+[XX000] ERROR: One or more of the used functions must be applied on at least one user created tables. Examples of user table only functions are LISTAGG, MEDIAN, PERCENTILE_CONT, etc
+
+```
+
+However, the following query works as expected:
+
+```sql
+
+create temporary table "test_tmp1234" as (
+   SELECT
+      cast(1000 as integer) as id,
+      cast('menu1' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+   union all
+   select
+      cast(1001 as integer) as id,
+      cast('menu2' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+   union all
+   select
+      cast(1000 as integer) as id,
+      cast('menu1' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+);
+
+with agg as (
+   SELECT
+      LISTAGG(name || ' x ' || quantity, ',') AS option_name_list,
+      id
+   FROM test_tmp1234
+   GROUP BY id
+)
+select * from agg;
+
+```
+
+When all given rows are created as a temporary table first, then running the test by referring to the temporary tables results in a successful run.
+
+In short, separate the unit tests into two steps:
+1. Prepare test fixtures by creating temporary tables.
+2. Run unit test query by referring to the temporary tables.
+
+</VersionBlock>
+

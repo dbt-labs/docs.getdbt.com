@@ -11,14 +11,17 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly.
 
-:::note
 This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
-:::
 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
 
 ### Prerequisites
 
@@ -39,12 +42,13 @@ We recommend you provide users with separate input fields with these components 
 
 ### Exposing metadata to dbt Labs 
 
-When building an integration, we recommend you expose certain metadata in the request for analytics purposes. Among other items, it is helpful to have the following: 
+When building an integration, we recommend you expose certain metadata in the request for analytics and troubleshooting purpose.
 
-- Your application's name (such as 'Tableau')
-- The email of the person querying your application
-- The version of dbt they are on.
+Please send us the following header with every query:
 
+`'X-dbt-partner-source': 'Your-Application-Name'`
+
+Additionally, it would be helpful if you also included the email and username of the person generating the query from your application.
 
 ## Use best practices when exposing metrics
 
@@ -52,7 +56,7 @@ Best practices for exposing metrics are summarized into five themes:
 
 - [Governance](#governance-and-traceability) &mdash; Recommendations on how to establish guardrails for governed data work.
 - [Discoverability](#discoverability) &mdash; Recommendations on how to make user-friendly data interactions.
-- [Organization](#organization) &mdash; Organize metrics and dimensions for all audiences.
+- [Organization](#organization) &mdash; Organize metrics and dimensions for all audiences, use [saved queries](/docs/build/saved-queries).
 - [Query flexibility](#query-flexibility) &mdash; Allow users to query either one metric alone without dimensions or multiple metrics with dimensions.
 - [Context and interpretation](#context-and-interpretation) &mdash; Contextualize metrics for better analysis; expose definitions, metadata, lineage, and freshness.
 
@@ -73,13 +77,13 @@ When working with more governed data, it's essential to establish clear guardrai
 
 - Consider treating [metrics](/docs/build/metrics-overview) as first-class objects rather than measures. Metrics offer a higher-level and more contextual way to interact with data, reducing the burden on end-users to manually aggregate data.
 
-- Easy metric interactions: Provide users with an intuitive approach to:
+- **Easy metric interactions** &mdash; Provide users with an intuitive approach to:
     * Search for Metrics &mdash; Users should be able to easily search and find relevant metrics. Metrics can serve as the starting point to lead users into exploring dimensions.
     * Search for Dimensions &mdash; Users should be able to query metrics with associated dimensions, allowing them to gain deeper insights into the data.
     * Filter by Dimension Values &mdash; Expose and enable users to filter metrics based on dimension values, encouraging data analysis and exploration.
     * Filter additional metadata &mdash; Allow users to filter metrics based on other available metadata, such as metric type and default time granularity.
 
-- Suggested Metrics: Ideally, the system should intelligently suggest relevant metrics to users based on their team's activities. This approach encourages user exposure, facilitates learning, and supports collaboration among team members.
+- **Suggested metrics** &mdash; Ideally, the system should intelligently suggest relevant metrics to users based on their team's activities. This approach encourages user exposure, facilitates learning, and supports collaboration among team members.
 
 By implementing these recommendations, the data interaction process becomes more user-friendly, empowering users to gain valuable insights without the need for extensive data manipulation.
 
@@ -87,9 +91,11 @@ By implementing these recommendations, the data interaction process becomes more
 
 We recommend organizing metrics and dimensions in ways that a non-technical user can understand the data model, without needing much context:
 
-- **Organizing Dimensions** &mdash; To help non-technical users understand the data model better, we recommend organizing dimensions based on the entity they originated from. For example, consider dimensions like `user__country` and `product__category`.<br /><br />  You can create groups by extracting `user` and `product` and then nest the respective dimensions under each group. This way, dimensions align with the entity or semantic model they belong to and make them more user-friendly and accessible.
+- **Organizing dimensions** &mdash; To help non-technical users understand the data model better, we recommend organizing dimensions based on the entity they originated from. For example, consider dimensions like `user__country` and `product__category`.<br /><br />  You can create groups by extracting `user` and `product` and then nest the respective dimensions under each group. This way, dimensions align with the entity or semantic model they belong to and make them more user-friendly and accessible. Additionally, we recommending adding a `label` parameter to dimensions in order to define the value displayed in downstream tools.
 
-- **Organizing Metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
+- **Organizing metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
+
+- **Using saved queries** &mdash; The dbt Semantic Layer has a concept of [saved queries](/docs/build/saved-queries) which allows users to pre-build slices of metrics, dimensions, filters to be easily accessed. You should surface these as first class objects in your integration. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 ### Query flexibility
 
@@ -102,7 +108,11 @@ Allow users to query either one metric alone without dimensions or multiple metr
 - Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
   * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
 
-- We recommend that time granularity is treated as a general time dimension-specific concept and that it can be applied to more than just the primary aggregation (or `metric_time`). Consider a situation where a user wants to look at `sales` over time by `customer signup month`; in this situation, having the ability to apply granularities to both time dimensions is crucial. Our APIs include information to fetch the granularities for the primary (metric_time) dimensions, as well as all time dimensions. You can treat each time dimension and granularity selection independently in your application. Note: Initially, as a starting point, it makes sense to only support `metric_time` or the primary time dimension, but we recommend expanding that as your solution evolves. 
+- We recommend that time granularity is treated as a general time dimension-specific concept and that it can be applied to more than just the primary aggregation (or `metric_time`). 
+  
+  Consider a situation where a user wants to look at `sales` over time by `customer signup month`; in this situation, having the ability to apply granularities to both time dimensions is crucial. Our APIs include information to fetch the granularities for the primary (metric_time) dimensions, as well as all time dimensions. 
+  
+  You can treat each time dimension and granularity selection independently in your application. Note: Initially, as a starting point, it makes sense to only support `metric_time` or the primary time dimension, but we recommend expanding that as your solution evolves. 
 
 - You should allow users to filter on date ranges and expose a calendar and nice presets for filtering these. 
   * For example, last 30 days, last week, and so on.
@@ -142,6 +152,7 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Listing available dimensions based on one or many metrics
 * Querying defined metric values on their own or grouping by available dimensions
 * Display metadata from [Discovery API](/docs/dbt-cloud-apis/discovery-api) and other context
+* Expose [saved queries](/docs/build/saved-queries), which are pre-built metrics, dimensions, and filters that Semantic Layer developers create for easier analysis. You can expose them in your application. Refer to the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs for syntax.
 
 **Stage 3 - More querying flexibility and better user experience (UX)**
 * More advanced filtering
@@ -157,9 +168,11 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Querying dimensions without metrics and other more advanced querying functionality
 * Suggest metrics to users based on teams/identity, and so on.
 
-
 ### Related docs
-
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
 - [Build your metrics](/docs/build/build-metrics-intro) for more info about MetricFlow and its components. 
 - [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
+
+
+</div>

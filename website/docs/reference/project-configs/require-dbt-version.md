@@ -3,6 +3,9 @@ datatype: version-range | [version-range]
 description: "Read this guide to understand the require-dbt-version configuration in dbt."
 default_value: None
 ---
+
+
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -19,7 +22,13 @@ When you set this configuration, dbt sends a helpful error message for any user 
 
 If this configuration is not specified, no version check will occur.
 
-:::info YAML Quoting
+:::info Keep on latest version 
+
+<Snippet path="_config-dbt-version-check" />
+
+:::
+
+### YAML quoting
 
 This configuration needs to be interpolated by the YAML parser as a string. As such, you should quote the value of the configuration, taking care to avoid whitespace. For example:
 ```yml
@@ -31,8 +40,6 @@ require-dbt-version: '>=1.0.0' # So are single quotes
 require-dbt-version: >=1.0.0 # No quotes? No good
 require-dbt-version: ">= 1.0.0" # Don't put whitespace after the equality signs
 ```
-
-:::
 
 
 ## Examples
@@ -73,18 +80,20 @@ require-dbt-version: ">=1.0.0,<2.0.0"
 
   
 ### Require a specific dbt version
-:::caution Not recommended
-With the release of major version 1.0 of dbt Core, pinning to a specific patch is discouraged.
-:::
+
+:::info Not recommended
+Pinning to a specific dbt version is discouraged because it limits project flexibility and can cause compatibility issues, especially with dbt packages. It's recommended to [pin to a major release](#pin-to-a-range), using a version range (for example, `">=1.0.0", "<2.0.0"`) for broader compatibility and to benefit from updates.
 
 While you can restrict your project to run only with an exact version of dbt Core, we do not recommend this for dbt Core v1.0.0 and higher. 
 
-In the following example, the project will only run with dbt v0.21.1. 
+:::
+
+In the following example, the project will only run with dbt v1.5: 
 
 <File name='dbt_project.yml'>
 
 ```yml
-require-dbt-version: 0.21.1
+require-dbt-version: 1.5
 ```
 
 </File>

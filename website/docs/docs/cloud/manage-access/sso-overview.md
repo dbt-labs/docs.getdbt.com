@@ -8,10 +8,6 @@ pagination_prev: null
 This overview explains how users are provisioned in dbt Cloud via Single Sign-On (SSO).
 dbt Cloud supports JIT (Just-in-Time) provisioning and IdP-initiated login. You can learn more about our supported options [here](https://www.getdbt.com/pricing/).
 
-:::tip Configuring SSO 
-Once you configure SSO, even partially, you cannot disable or revert it. When you configure it, you will want to make sure you do so completely.
-:::
-
 ## Prerequisites
 
 - You have a dbt Cloud account enrolled in the Enterprise plan. [Contact us](mailto:sales@getdbt.com) to learn more and enroll.
@@ -52,12 +48,12 @@ Then, assign all of these (and only these) to the user license. This step will a
 
 ### How should non-admin users log in?
 
-Non-admin users that currently login with a password will no longer be able to do so. They must login using the dbt Enterprise Login URL or an identity provider (IdP). For example, Okta, Azure AD, etc.
+Non-admin users that currently login with a password will no longer be able to do so. They must login using the dbt Enterprise Login URL or an identity provider (IdP). For example, Okta, Microsoft Entra ID (formerly Azure AD), etc.
 
 ### Security best practices
 
 There are a few scenarios that might require you to login with a password. We recommend these security best-practices for the two most common scenarios:
-* **Onboarding partners and contractors** &mdash; We highly recommend that you add partners and contractors to your Identity Provider. IdPs like Okta and Azure Active Directory (AAD) offer capabilities explicitly for temporary employees. We highly recommend that you reach out to your IT team to provision an SSO license for these situations. Using an IdP highly secure, reduces any breach risk, and significantly increases the security posture of your dbt Cloud environment.
+* **Onboarding partners and contractors** &mdash; We highly recommend that you add partners and contractors to your Identity Provider. IdPs like Okta and Microsoft Entra ID offer capabilities explicitly for temporary employees. We highly recommend that you reach out to your IT team to provision an SSO license for these situations. Using an IdP highly secure, reduces any breach risk, and significantly increases the security posture of your dbt Cloud environment.
 * **Identity Provider is down** &mdash; Account admins will continue to be able to log in with a password which would allow them to work with your Identity Provider to troubleshoot the problem.
 * **Offboarding admins** &mdash; When offboarding admins, revoke access to dbt Cloud by deleting the user from your environment; otherwise, they can continue to use username/password credentials to log in. 
 
