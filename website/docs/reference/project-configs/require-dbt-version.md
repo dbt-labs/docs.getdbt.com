@@ -3,6 +3,9 @@ datatype: version-range | [version-range]
 description: "Read this guide to understand the require-dbt-version configuration in dbt."
 default_value: None
 ---
+
+
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -18,6 +21,12 @@ You can use `require-dbt-version` to restrict your project to only work with a r
 When you set this configuration, dbt sends a helpful error message for any user who attempts to run the project with an unsupported version of dbt. This can be useful for package maintainers (such as [dbt-utils](https://github.com/dbt-labs/dbt-utils)) to ensure that users' dbt version is compatible with the package. Setting this configuration might also help your whole team remain synchronized on the same version of dbt for local development, to avoid compatibility issues from changed behaviour.
 
 If this configuration is not specified, no version check will occur.
+
+:::info Keep on latest version 
+
+<Snippet path="_config-dbt-version-check" />
+
+:::
 
 ### YAML quoting
 
@@ -76,6 +85,8 @@ require-dbt-version: ">=1.0.0,<2.0.0"
 Pinning to a specific dbt version is discouraged because it limits project flexibility and can cause compatibility issues, especially with dbt packages. It's recommended to [pin to a major release](#pin-to-a-range), using a version range (for example, `">=1.0.0", "<2.0.0"`) for broader compatibility and to benefit from updates.
 
 While you can restrict your project to run only with an exact version of dbt Core, we do not recommend this for dbt Core v1.0.0 and higher. 
+
+:::
 
 In the following example, the project will only run with dbt v1.5: 
 

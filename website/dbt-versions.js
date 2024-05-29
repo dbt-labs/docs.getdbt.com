@@ -1,5 +1,9 @@
 exports.versions = [
   {
+    version: "1.8",
+    EOLDate: "2025-04-15",
+  },
+  {
     version: "1.7",
     EOLDate: "2024-10-30",
   },
@@ -19,13 +23,13 @@ exports.versions = [
     version: "1.3",
     EOLDate: "2023-10-12",
   },
-  {
-    version: "1.2",
-    EOLDate: "2023-07-26",
-  },
 ]
 
 exports.versionedPages = [
+  {
+    "page": "reference/global-configs/indirect-selection",
+    "firstVersion": "1.8",
+  },
   {
     "page": "reference/resource-configs/store_failures_as",
     "firstVersion": "1.7",
@@ -157,26 +161,6 @@ exports.versionedPages = [
   {
     "page": "reference/warehouse-setups/fal-setup",
     "firstVersion": "1.3",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/set",
-    "firstVersion": "1.2",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/zip",
-    "firstVersion": "1.2",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/cross-database-macros",
-    "firstVersion": "1.2",
-  },
-  {
-    "page": "reference/resource-configs/grants",
-    "firstVersion": "1.2",
-  },
-  {
-    "page": "docs/build/saved-queries",
-    "firstVersion": "1.7",
   },
   {
     "page": "reference/resource-configs/on_configuration_change",

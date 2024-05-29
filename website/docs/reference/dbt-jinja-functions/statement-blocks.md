@@ -16,6 +16,8 @@ We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_qu
 <File name='get_states_statement.sql'>
 
 ```sql
+-- depends_on: {{ ref('users') }}
+
 {%- call statement('states', fetch_result=True) -%}
 
     select distinct state from {{ ref('users') }}
@@ -30,6 +32,42 @@ The signature of the `statement` block looks like this:
 ```
 statement(name=None, fetch_result=False, auto_begin=True)
 ```
+
+When executing a `statement`, dbt needs to understand how to resolve references to other dbt models or resources. If you are already `ref`ing the model outside of the statement block, the dependency will be automatically inferred, but otherwise you will need to [force the dependency](/reference/dbt-jinja-functions/ref#forcing-dependencies) with `-- depends_on`.
+
+<Expandable alt_header="Example using -- depends_on">
+
+```sql
+-- depends_on: {{ ref('users') }}
+
+{% call statement('states', fetch_result=True) -%}
+
+    select distinct state from {{ ref('users') }}
+
+    /*
+    The unique states are: {{ load_result('states')['data'] }}
+    */
+{%- endcall %}
+```
+</Expandable>
+
+<Expandable alt_header="Example using ref() function">
+
+```sql
+
+{% call statement('states', fetch_result=True) -%}
+
+    select distinct state from {{ ref('users') }}
+
+    /*
+    The unique states are: {{ load_result('states')['data'] }}
+    */
+
+{%- endcall %}
+
+select id * 2 from {{ ref('users') }}
+```
+</Expandable>
 
 __Args__:
  - `name` (string): The name for the result set returned by this statement

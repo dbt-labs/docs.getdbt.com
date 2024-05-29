@@ -79,26 +79,13 @@ dbt --debug run
 
 </File>  
 
-<VersionBlock firstVersion="1.2">
 
 ### Log and target paths
 
-By default, dbt will write logs to a directory named `logs/`, and all other artifacts to a directory named `target/`. Both of those directories are located relative to `dbt_project.yml` of the active project—that is, the root directory from which dbt is run.
+By default, dbt will write logs to a directory named `logs/`, and all other artifacts to a directory named `target/`. Both of those directories are located relative to `dbt_project.yml` of the active project.
 
-Just like other global configs, it is possible to override these values for your environment or invocation by using CLI flags (`--target-path`, `--log-path`) or environment variables (`DBT_TARGET_PATH`, `DBT_LOG_PATH`).
+Just like other global configs, it is possible to override these values for your environment or invocation by using CLI options (`--target-path`, `--log-path`) or environment variables (`DBT_TARGET_PATH`, `DBT_LOG_PATH`).
 
-Unlike the other global configs documented on this page, which can be set in `profiles.yml`, the project paths are configured in `dbt_project.yml`. This is because `profiles.yml` and `dbt_project.yml` are most often located in separate file systems on your machine, and the log and artifact paths are always defined relative to the location of `dbt_project.yml`.
-
-<File name='dbt_project.yml'>
-
-```yaml
-[target-path](target-path): "other-target"
-[log-path](log-path): "other-logs"
-```
-
-</File>
-
-</VersionBlock>
 
 ### Suppress non-error logs in output
 
