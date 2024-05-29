@@ -101,8 +101,8 @@ Nice job, you're ready to start developing and building models 🎉!
 
 ### Considerations
 - To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
-- To preserve performance, there's a file size limitation for repositories over 10GB. If you have a repo over 10GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
-- <expandable alt_header="About the start up process and work retention">
+- To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
+- <Expandable alt_header="About the start up process and work retention">
   
   ### Start-up process
   There are three start-up states when using or launching the Cloud IDE:
@@ -120,7 +120,7 @@ Nice job, you're ready to start developing and building models 🎉!
   - **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
   - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
 
-  </expandable>
+  </Expandable>
 
 ## Build and document your projects
 

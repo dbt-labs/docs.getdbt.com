@@ -62,7 +62,9 @@ Update your versions in packages.yml, then run dbt deps
 
 ## Predictable package installs
 
-Starting in dbt Core v1.7, dbt generates a `package-lock.yml` file in the root of your project. This contains the complete set of resolved packages based on the `packages` configuration in `dependencies.yml` or `packages.yml`. Each subsequent invocation of `dbt deps` will install from the _locked_ set of packages specified in this file. Storing the complete set of required packages (with pinned versions) in version-controlled code ensures predictable installs in production and consistency across all developers and environments.
+Starting in dbt Core v1.7, dbt generates a `package-lock.yml` file in the root of your project. This contains the complete set of resolved packages based on the `packages` configuration in `dependencies.yml` or `packages.yml`. Each subsequent invocation of `dbt deps` will install from the _locked_ set of packages specified in this file. Storing the complete set of required packages (with pinned versions) in version-controlled code ensures predictable installs in production and consistency across all developers and environments. 
+
+The `package-lock.yml` file should be committed in Git initially, and then updated and committed only when you want to change versions or uninstall a package (for example  `dbt deps --upgrade` or `dbt deps --lock`).
 
 The `package-lock.yml` file includes a `sha1_hash` of the `packages` config. This enables dbt to detect if the `packages` config has been updated, and to rerun dependency resolution. To only check for changes to the `packages` config and update the lock file accordingly without installing those packages, provide the `--lock` flag (that is, `dbt deps --lock`).
 

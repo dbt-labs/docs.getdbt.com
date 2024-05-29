@@ -36,7 +36,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** [Unit tests](/docs/build/unit-tests) are now GA in dbt Cloud. Unit tests enable you to test your SQL model logic against a set of static inputs.
 
-- <expandable alt_header="New: Preview of native support for Azure Synapse Analytics" > 
+- <Expandable alt_header="New: Preview of native support for Azure Synapse Analytics" > 
 
   Native support in dbt Cloud for Azure Synapse Analytics is now available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)!
 
@@ -51,7 +51,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
   - Documenting your models.
   - Scheduling a job to run.
 
-  </expandable>
+  </Expandable>
 
 - **New:** MetricFlow enables you to now add metrics as dimensions to your metric filters to create more complex metrics and gain more insights. Available for all dbt Cloud Semantic Layer users.
 
@@ -59,7 +59,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** Oauth login support via [Databricks](/docs/cloud/manage-access/set-up-databricks-oauth) is now GA to Enterprise customers.
 
-- <expandable alt_header="New: GA of dbt Explorer's features" > 
+- <Expandable alt_header="New: GA of dbt Explorer's features" > 
 
   dbt Explorer's current capabilities &mdash; including column-level lineage, model performance analysis, and project recommendations &mdash; are now Generally Available for dbt Cloud Enterprise and Teams plans. With Explorer, you can more easily navigate your dbt Cloud project – including models, sources, and their columns – to gain a better understanding of its latest production or staging state.
 
@@ -71,7 +71,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
   - [Model performance](/docs/collaborate/model-performance) 
   - [Project recommendations](/docs/collaborate/project-recommendations) 
 
-  </expandable>
+  </Expandable>
 
 - **New:** Native support for Microsoft Fabric in dbt Cloud is now GA. This feature is powered by the [dbt-fabric](https://github.com/Microsoft/dbt-fabric) adapter. To learn more, refer to [Connect Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric) and [Microsoft Fabric DWH configurations](/reference/resource-configs/fabric-configs). There's also a [quickstart guide](https://docs.getdbt.com/guides/microsoft-fabric?step=1) to help you get started. 
 
@@ -87,7 +87,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces [declarative caching](/docs/use-dbt-semantic-layer/sl-cache), allowing you to cache common queries to speed up performance and reduce query compute costs. Available for dbt Cloud Team or Enterprise accounts.
 
-- <expandable alt_header="New: Keep on latest version" > 
+- <Expandable alt_header="New: Keep on latest version" > 
 
   The **Keep on latest version** setting is now Generally Available (previously Public Preview).
 
@@ -97,13 +97,13 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Keep on latest version setting"/>
 
-  </expandable>
+  </Expandable>
 
 - **Behavior change:** Introduced the `require_resource_names_without_spaces` flag, opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt. Read [No spaces in resource names](/reference/global-configs/legacy-behaviors#no-spaces-in-resource-names) for more information.
 
 ## April 2024
 
-- <expandable alt_header="New: Merge jobs" > 
+- <Expandable alt_header="New: Merge jobs" > 
 
   <Lifecycle status="beta" />
 
@@ -111,7 +111,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" width="90%" title="Example of creating a merge job"/>
 
-  </expandable>
+  </Expandable>
   
 - **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and dbt Cloud "Keep on latest version"). Read [Package override for built-in materialization](/reference/global-configs/legacy-behaviors#package-override-for-built-in-materialization) for more information.
 
@@ -144,7 +144,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 - **New:** You can access a list of your [exports](/docs/use-dbt-semantic-layer/exports) with the new list saved-queries command by adding `--show-exports`
 - **New:** The dbt Semantic Layer and [Tableau Connector](/docs/use-dbt-semantic-layer/tableau) now supports relative date filters in Tableau.
 
-- <expandable alt_header="New: Use exports to write saved queries">
+- <Expandable alt_header="New: Use exports to write saved queries">
 
   You can now use the [exports](/docs/use-dbt-semantic-layer/exports) feature with [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), allowing you to query reliable metrics and fast data reporting. Exports enhance the saved queries feature, allowing you to write commonly used queries directly within your data platform using dbt Cloud's job scheduler.
 
@@ -154,9 +154,9 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   <Lightbox src="/img/docs/dbt-cloud/semantic-layer/deploy_exports.jpg" width="90%" title="Add an environment variable to run exports in your production run." />
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header="New: Trigger on job completion ">
+- <Expandable alt_header="New: Trigger on job completion ">
 
   <Lifecycle status="team,enterprise" />
 
@@ -168,9 +168,9 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-triggers-section.png" width="90%" title="Example of Triggers on the Deploy Job page"/>
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header="New: Keep on latest version ">
+- <Expandable alt_header="New: Keep on latest version ">
 
   <Lifecycle status='beta' />
 
@@ -182,10 +182,10 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Keep on latest version setting"/>
 
-  </expandable>
+  </Expandable>
 
 
-- <expandable alt_header="New: Override dbt version with new User development settings" >
+- <Expandable alt_header="New: Override dbt version with new User development settings" >
 
   You can now [override the dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version) that's configured for the development environment within your project and use a different version &mdash; affecting only your user account. This lets you test new dbt features without impacting other people working on the same project. And when you're satisfied with the test results, you can safely upgrade the dbt version for your project(s).  
 
@@ -193,9 +193,9 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-override-version.png" width="60%" title="Example of overriding the dbt version on your user account"/>
 
-  </expandable>
+  </Expandable>
 
-- <expandable alt_header="Enhancement: Edit in primary git branch in IDE">
+- <Expandable alt_header="Enhancement: Edit in primary git branch in IDE">
 
   You can now edit, format, or lint files and execute dbt commands directly in your primary git branch in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  This enhancement is available across various repositories, including native integrations, imported git URLs, and managed repos.
 
@@ -217,7 +217,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-new-branch.png" width="75%" title="Create new branch window"/>
 
-  </expandable>
+  </Expandable>
 
 - **Enhancement:**  The dbt Semantic Layer [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) now exposes a note on the cell where the data was requested, indicating clearer data requests. The integration also now exposes a new **Time Range** option, which allows you to quickly select date ranges.
 - **Enhancement:** The [GraphQL API](/docs/dbt-cloud-apis/sl-graphql) includes a `requiresMetricTime` parameter to better handle metrics that must be grouped by time. (Certain metrics defined in MetricFlow can't be looked at without a time dimension).
@@ -238,7 +238,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 ## January 2024
 
-- <expandable alt_header="January docs updates">
+- <Expandable alt_header="January docs updates">
 
   Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 10 new community contributors to docs.getdbt.com :pray: What a busy start to the year! We merged 110 PRs in January.
 
@@ -269,21 +269,21 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
   - Added saved queries to [Metricflow commands](https://docs.getdbt.com/docs/build/metricflow-commands#list-saved-queries)
   - Removed [as_text docs](https://github.com/dbt-labs/docs.getdbt.com/pull/4726) that were wildly outdated
 
-  </expandable>
+  </Expandable>
 
 - **New:** New metric type that allows you to measure conversion events. For example, users who viewed a web page and then filled out a form. For more details, refer to [Conversion metrics](/docs/build/conversion). 
 - **New:** Instead of specifying the fully qualified dimension name (for example, `order__user__country`) in the group by or filter expression, you now only need to provide the primary entity and dimensions name, like `user__county`. 
 - **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/use-dbt-semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 
-- <expandable alt_header="New: Native support for partial parsing" >
+- <Expandable alt_header="New: Native support for partial parsing" >
 
   By default, dbt parses all the files in your project at the beginning of every dbt invocation. Depending on the size of your project, this operation can take a long time to complete. With the new partial parsing feature in dbt Cloud, you can reduce the time it takes for dbt to parse your project. When enabled, dbt Cloud parses only the changed files in your project instead of parsing all the project files. As a result, your dbt invocations will take less time to run.
 
-  To learn more, refer to [Partial parsing](/docs/deploy/deploy-environments#partial-parsing).
+  To learn more, refer to [Partial parsing](/docs/dbt-cloud-environments#partial-parsing).
 
   <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
 
-  </expandable>
+  </Expandable>
 
 - **Enhancement:** The YAML spec parameter `label` is now available for Semantic Layer metrics in [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview). This means you can conveniently use `label` as a display name for your metrics when exposing them.
 - **Enhancement:** Added support for `create_metric: true` for a measure, which is a shorthand to quickly create metrics. This is useful in cases when metrics are only used to build other metrics.
