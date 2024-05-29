@@ -144,6 +144,8 @@ Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/r
         some_key: some_value
   ```
 
+For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
+
 </VersionBlock>
 
 ### Name
