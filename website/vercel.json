@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/deploy/deploy-environments#partial-parsing",
+      "destination": "/docs/dbt-cloud-environments#partial-parsing",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-versions/release-notes/:path((?!dbt-cloud-changelog-2021|dbt-cloud-changelog-2019-2020).*)",
       "destination": "/docs/dbt-versions/dbt-cloud-release-notes",
       "permanent": true
