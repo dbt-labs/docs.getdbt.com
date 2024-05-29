@@ -262,7 +262,7 @@ It's important to follow the correct YAML naming conventions for the configs in 
     ```
     </File>
 
-- Use underscore (`_`) when configuring resource types with multiple words outside the `dbt_project.yml` file:
+- Use underscore (`_`) when configuring resource types with multiple words for YAML files other than the `dbt_project.yml` file. For example, here's the same saved queries resource in the `semantic_models.yml` file:
 
     <File name="models/semantic_models.yml">
 
