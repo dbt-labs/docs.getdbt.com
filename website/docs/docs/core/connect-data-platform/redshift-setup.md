@@ -243,11 +243,8 @@ To run certain macros with autocommit, load the profile with autocommit using th
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
 
 
-
-<VersionBlock firstVersion="1.2">
-
 #### retries
 
 If `dbt-redshift` encounters an operational error or timeout when opening a new connection, it will retry up to the number of times configured by `retries`. If set to 2+ retries, dbt will wait 1 second before retrying. The default value is 1 retry. If set to 0, dbt will not retry at all.
 
-</VersionBlock>
+
