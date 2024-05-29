@@ -119,7 +119,7 @@ saved-queries:
 ```
 </File>
 
-For more info on `dbt_project.yml` and config naming conventions, check out [naming convention](/reference/dbt_project.yml).
+For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml).
 
 #### Where clause
 
