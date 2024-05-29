@@ -6,7 +6,7 @@ sidebar: "logs"
 
 ### Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`. The available options for the log format are `text`, `debug`, `json`, and `default`. The default is `default`. 
 
 <File name='Usage'>
 
@@ -19,7 +19,7 @@ dbt --log-format json run
 
 <VersionBlock firstVersion="1.5">
 
-To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag.
+To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag. The default option is `debug`.
 
 
 ```text
