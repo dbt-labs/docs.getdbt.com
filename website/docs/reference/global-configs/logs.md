@@ -6,7 +6,7 @@ sidebar: "logs"
 
 ### Log Formatting
 
-dbt outputs logs to two different locations: CLI console and the log file (whose default location is `logs/dbt.log`). When the `LOG_FORMAT` is set explicitly, it will take affect in both the console and log files.
+dbt outputs logs to two different locations: CLI console and the log file (whose default location is `logs/dbt.log`).
 
 <VersionBlock lastVersion="1.4">
 
