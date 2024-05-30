@@ -20,6 +20,14 @@ The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be 
 
 </VersionBlock>
 
+<File name='Usage'>
+
+```text
+dbt --log-format json run
+```
+
+</File>
+
 The `text` format is the default for console logs and has plain text messages prefixed with a simple timestamp:
 
 ```
@@ -54,22 +62,17 @@ When the `LOG_FORMAT` is set explicitly, it will take affect in both the console
 
 </VersionBlock>
 
-<File name='Usage'>
-
-```text
-dbt --log-format json run
-```
-
-</File>
-
 <VersionBlock firstVersion="1.5">
 
 To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag.
 
+<File name='Usage'>
 
 ```text
 dbt --log-format-file json run
 ```
+
+</File>
 
 </VersionBlock>
 
