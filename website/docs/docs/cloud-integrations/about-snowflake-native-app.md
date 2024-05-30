@@ -1,32 +1,32 @@
 ---
-title: "About Snowflake Native App for dbt"
+title: "About the dbt Snowflake Native App"
 id: "snowflake-native-app"
-sidebar_label: "About Snowflake Native App"
-description: "An overview of the Snowflake Native App for dbt Cloud"
+description: "An overview of the dbt Snowflake Native App"
 pagination_prev: null
 pagination_next: "docs/cloud-integrations/set-up-snowflake-native-app"
 ---
 
-# About Snowflake Native App for dbt <Lifecycle status='public preview' />
+# About the dbt Snowflake Native App <Lifecycle status='public preview' />
 
-The Snowflake Native App for dbt, powered by the Snowflake Native App Framework and Snowpark Container Services, extends your dbt Cloud experience into the Snowflake user interface. With their Snowflake login, users will be able to access these three experiences: 
+The dbt Snowflake Native App &mdash; powered by the Snowflake Native App Framework and Snowpark Container Services &mdash; extends your dbt Cloud experience into the Snowflake user interface. You'll be able to access these three experiences with your Snowflake login: 
 
 - **dbt Explorer** &mdash; An embedded version of [dbt Explorer](/docs/collaborate/explore-projects) 
-- **Ask dbt** &mdash; A [dbt-assisted](/docs/cloud/dbt-assist) chatbot powered by the dbt Semantic Layer and Snowflake Cortex
-- **Orchestration observability** &mdash; A [view into the job run history](/docs/deploy/run-visibility)
+- **Ask dbt** &mdash; A dbt-assisted chatbot, powered by [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and Snowflake Cortex
+- **Orchestration observability** &mdash; A view into the [job run history](/docs/deploy/run-visibility)
 
-These experiences enable you to extend what you have built with dbt Cloud to new users who have traditionally been dependencies downstream from the dbt project. This includes BI analysts and technical stakeholders. 
+These experiences enable you to extend what's been built with dbt Cloud to users who have traditionally been dependencies downstream from the dbt project and are new to dbt Cloud. For example, BI analysts and technical stakeholders. 
 
+For installation instructions, refer to [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
 ## Architecure
 
-There are three tools connected to operate the dbt for Snowflake Native App:
+There are three tools connected to operate the dbt Snowflake Native App:
 
 | Tool                               | Description |
 |------------------------------------|-------------|
-| Consumer’s Snowflake account       | This is where the Native app is installed, powered by Snowpark Container Services. <br /><br /> The Native app can make calls to the dbt Cloud APIs and Datadog (for logging) via [Snowflake External Access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview). <br /><br />To power **Ask dbt**, the dbt Semantic Layer accesses the Cortex LLM to execute queries and generate text based on the prompt. This is configured when the user sets up the Semantic Layer environment. | 
-| dbt Labs Product Snowflake account | This is where the Native app application package is hosted and then installed into the consumer account. <br /><br />This is where the Consumer’s event table is shared to for application monitoring and logging. |
-| Consumer’s dbt Cloud account       | The Native app interacts with the dbt Cloud APIs for metadata and processing Semantic Layer queries to power the Native app experiences. <br /> <br /> The dbt Cloud account also calls the Consumer Snowflake account to utilize the warehouse to execute dbt queries for orchestration and the Cortex LLM to power Ask dbt. |
+| Consumer’s Snowflake account       | The location of where the Native App is installed, powered by Snowpark Container Services. <br /><br /> The Native App makes calls to the dbt Cloud APIs and Datadog APIs (for logging) using [Snowflake's external access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview). <br /><br />To power the **Ask dbt** chatbot, the dbt Semantic Layer accesses the Cortex LLM to execute queries and generate text based on the prompt. This is configured when the user sets up the Semantic Layer environment. | 
+| dbt product Snowflake account | The location of where the Native App application package is hosted and then installed into the consumer account. <br /><br />The consumer's event table is shared to this account for application monitoring and logging. |
+| Consumer’s dbt Cloud account       | The Native App interacts with the dbt Cloud APIs for metadata and processing Semantic Layer queries to power the Native App experiences. <br /> <br /> The dbt Cloud account also calls the consumer Snowflake account to utilize the warehouse to execute dbt queries for orchestration and the Cortex LLM to power the **Ask dbt** chatbot. |
 
 The following diagram provides an illustration of the architecure:
 
@@ -34,12 +34,12 @@ The following diagram provides an illustration of the architecure:
 
 
 ## Access
-Users can log in to the Native App using their normal Snowflake login authentication method. During this [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud), users will not need a dbt Cloud seat to access the application but this is subject to change. This means users will not need to provide their dbt Cloud credentials to access the application. 
+You can log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. During this [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud), you will not need a dbt Cloud seat to access the application but this is subject to change. This means you will not need to provide dbt Cloud credentials to access the application. 
 
-App users are able to access all information that's available to the service token.
+App users are able to access all information that's available to the API service token.
 
 ## Procurement
-The Native App is available from the Snowflake Marketplace with a dbt Cloud Enterprise contract. If you're interested, please [contact us](matilto:sales_snowflake_marketplace@dbtlabs.com) for more information. 
+The dbt Snowflake Native App is available from the Snowflake Marketplace with a dbt Cloud Enterprise contract. If you're interested, please [contact us](matilto:sales_snowflake_marketplace@dbtlabs.com) for more information. 
 
 ## Support
-If you have any questions about your Snowflake Native App for dbt, you may [contact our Support team](mailto:dbt-snowflake-marketplace@dbtlabs.com) for help. Please provide information about your installation of the Native App, including your dbt Cloud account ID and Snowflake account identifier. 
+If you have any questions about the dbt Snowflake Native App, you may [contact our Support team](mailto:dbt-snowflake-marketplace@dbtlabs.com) for help. Please provide information about your installation of the Native App, including your dbt Cloud account ID and Snowflake account identifier. 
