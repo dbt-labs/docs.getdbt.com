@@ -53,12 +53,12 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     By default, all users should have access to Snowflake Cortex. If this is disabled for you, open a Snowflake SQL worksheet and run these statements:
 
     ```sql
-    CREATE ROLE cortex_user_role;
-    GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE cortex_user_role;
-    GRANT ROLE cortex_user_role TO USER SL_USER;
+    create role cortex_user_role;
+    grant database role SNOWFLAKE.CORTEX_USER to role cortex_user_role;
+    grant role cortex_user_role to user SL_USER;
     ```
 
-    Make sure to replace `SNOWFLAKE.CORTEX_USER` and `SL_USER` with the appropriate strings.
+    Make sure to replace `SNOWFLAKE.CORTEX_USER` and `SL_USER` with the appropriate strings for your environment.
 
 1. Create a schema `dbt_sl_llm` in the deployment database. Open a Snowflake SQL worksheet and run these statements: 
 
@@ -67,7 +67,7 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     grant ownership on schema dbt_sl_llm to role SL_ROLE;
     ```
 
-    Make sure to replace `YOUR_DEPLOYMENT_DATABASE` and `SL_USER` with the appropriate strings.
+    Make sure to replace `YOUR_DEPLOYMENT_DATABASE` and `SL_USER` with the appropriate strings for your environment.
 
 ## Configure dbt Cloud 
 Collect three pieces of information from dbt Cloud to set up the application. 
