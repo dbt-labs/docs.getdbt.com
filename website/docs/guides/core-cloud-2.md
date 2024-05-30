@@ -64,31 +64,31 @@ If you have rolled out your own dbt Core deployment, you have probably come up w
 
 As you plan your move, consider your workflow and team layout to ensure a smooth transition. Here are some key considerations to keep in mind:
 
-<expandable alt_header="Start small to minimize risk and maximize learning">
+<Expandable alt_header="Start small to minimize risk and maximize learning">
 
 You don’t need to move every team and every developer’s workflow all at once. Many customers with large dbt deployments start by moving one team and one project.
 
 Once the benefits of a consolidated platform are clear, move the rest of your teams and workflows. While long-term ‘hybrid’ deployments can be challenging, it may make sense as a temporary on-ramp.
-</expandable>
+</Expandable>
 
-<expandable alt_header="User roles and responsibilities"> 
+<Expandable alt_header="User roles and responsibilities"> 
 
 Assess the users or personas involved in the pre-move, during the move, and post-move.
 - **Administrators**: Plan for new [access controls](/docs/cloud/manage-access/about-user-access) in dbt Cloud, such as deciding what teams can manage themselves and what should be standardized. Determine who will be responsible for setting up and maintaining projects, data platform connections, and environments.
 - **Data developers** (data analysts, data engineers, analytics engineers, business analysts): Determine onboarding order, workflow adaptation in dbt Cloud, training on [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) usage, and role changes.
 - **Data consumers:** Discover data insights by using [dbt Explorer](/docs/collaborate/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. <Lifecycle status="team,enterprise" />
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="Onboarding order"> 
+<Expandable alt_header="Onboarding order"> 
 
 If you have multiple teams of dbt developers, think about how to start your onboarding sequence for dbt Cloud:
 - Start with downstream (like business-embedded teams) who may benefit from the dbt Cloud IDE as dev experience (less technical users) and sharing features (like auto-deferral and dbt Explorer) to share with their stakeholders, moving to more technical teams later.
 - Consider setting up a [CI job](/docs/deploy/ci-jobs) in dbt Cloud (even before development or production jobs) to streamline development workflows. This is especially beneficial if there's no existing CI process.
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="Analyze current workflows, review processes, and team structures">
+<Expandable alt_header="Analyze current workflows, review processes, and team structures">
 
 Discover how dbt Cloud can help simplify development, orchestration, and testing:
 - **Development**: Develop dbt models, allowing you to build, test, run, and version control your dbt projects using the dbt Cloud CLI (command line interface or code editor) or dbt Cloud IDE (browser-based).
@@ -100,23 +100,23 @@ Discover how dbt Cloud can help simplify development, orchestration, and testing
   - For many teams, dbt Cloud CI represents a major improvement compared to their previous development workflows.
 - **How are you defining tests today?**: While testing production data is important, it’s not the most efficient way to catch logical errors introduced by developers You can use [unit testing](/docs/build/unit-tests) to allow you to validate your SQL modeling logic on a small set of static inputs *before* you materialize your full model in production.
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="Understand access control">
+<Expandable alt_header="Understand access control">
 
 Transition to dbt Cloud's [access control](/docs/cloud/manage-access/about-user-access) mechanisms to ensure security and proper access management. dbt Cloud administrators can use dbt Cloud's permission model to control user-level access in a dbt Cloud account:
 - **License-based access controls:** Users are configured with account-wide license types. These licenses control the things a user can do within the application: view project metadata, develop changes within those projects, or administer access to those projects.
 - **Role-based Access Control (RBAC):** Users are assigned to *groups* with specific permissions on specific projects or all projects in the account. A user may be a member of multiple groups, and those groups may have permissions on multiple projects. <Lifecycle status="enterprise" />
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="Manage environments"> 
+<Expandable alt_header="Manage environments"> 
 
 If you require isolation between production and pre-production data environments due to sensitive data, dbt Cloud can support Development, Staging, and Production data [environments](/docs/dbt-cloud-environments).
 
 This provides developers with the benefits of an enhanced workflow while ensuring isolation between Staging and Production data, and locking down permissions on Prod.
 
-</expandable>
+</Expandable>
 
 ## Move to dbt Cloud
 

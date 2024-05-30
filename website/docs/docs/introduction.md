@@ -54,7 +54,7 @@ For more information on dbt Cloud and dbt Core, refer to [How dbt Cloud compares
 
 ## The power of dbt
 
-As a dbt user, your main focus will be on writing models (i.e. select queries) that reflect core business logic – there’s no need to write boilerplate code to create tables and views, or to define the order of execution of your models. Instead, dbt handles turning these models into objects in your warehouse for you.
+As a dbt user, your main focus will be on writing models (select queries) that reflect core business logic – there’s no need to write boilerplate code to create tables and views, or to define the order of execution of your models. Instead, dbt handles turning these models into objects in your warehouse for you.
 
 | Feature               | Description |
 |-----------------------|-------------|
