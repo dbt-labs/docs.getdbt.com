@@ -6,7 +6,53 @@ sidebar: "logs"
 
 ### Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`. The available options for the log format are `text`, `debug`, `json`, and `default`. The default is `default`. 
+dbt outputs logs to two different locations: CLI console and the log file (whose default location is `logs/dbt.log`). When the `LOG_FORMAT` is set explicitly, it will take affect in both the console and log files.
+
+<VersionBlock lastVersion="1.4">
+
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted and has three options: `json`, `text`, and `debug`.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted, and they each have the same options: `json`, `text`, and `debug`.
+
+</VersionBlock>
+
+The `text` format is the default for console logs and has plain text messages prefixed with a simple timestamp:
+
+```
+23:30:16  Running with dbt=1.8.0
+23:30:17  Registered adapter: postgres=1.8.0
+```
+
+The `debug` format is the default for the log file and is the same as the `text` format but with a more detailed timestamp and also includes the invocation id, thread id, and log level of each message:
+
+```
+============================== 16:12:08.555032 | 9089bafa-4010-4f38-9b42-564ec9106e07 ==============================
+16:12:08.555032 [info ] [MainThread]: Running with dbt=1.8.0
+16:12:08.751069 [info ] [MainThread]: Registered adapter: postgres=1.8.0
+```
+
+The `json` format outputs fully structured logs in <Term id="json" /> format:
+
+```json
+{"data": {"log_version": 3, "version": "=1.8.0"}, "info": {"category": "", "code": "A001", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Running with dbt=1.8.0", "name": "MainReportVersion", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:54.993336Z"}}
+{"data": {"adapter_name": "postgres", "adapter_version": "=1.8.0"}, "info": {"category": "", "code": "E034", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Registered adapter: postgres=1.8.0", "name": "AdapterRegistered", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:56.437986Z"}}
+```
+
+<VersionBlock lastVersion="1.4">
+
+When the `LOG_FORMAT` is set explicitly, it will take affect in both the console and log files.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+When the `LOG_FORMAT` is set explicitly, it will take affect in both the console and log files whereas the `LOG_FORMAT_FILE` only affects the log file.
+
+</VersionBlock>
 
 <File name='Usage'>
 
@@ -19,7 +65,9 @@ dbt --log-format json run
 
 <VersionBlock firstVersion="1.5">
 
-To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag. The default option is `debug`.
+To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag.
+
+</VersionBlock>
 
 
 ```text
