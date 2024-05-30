@@ -35,7 +35,7 @@ The `text` format is the default for console logs and has plain text messages pr
 23:30:17  Registered adapter: postgres=1.8.0
 ```
 
-The `debug` format is the default for the log file and is the same as the `text` format but with a more detailed timestamp and also includes the invocation id, thread id, and log level of each message:
+The `debug` format is the default for the log file and is the same as the `text` format but with a more detailed timestamp and also includes the [`invocation_id`](/reference/dbt-jinja-functions/invocation_id), [`thread_id`](/reference/dbt-jinja-functions/thread_id), and [log level](/reference/global-configs/logs#log-level) of each message:
 
 ```
 ============================== 16:12:08.555032 | 9089bafa-4010-4f38-9b42-564ec9106e07 ==============================
