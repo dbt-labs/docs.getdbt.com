@@ -6,7 +6,7 @@ pagination_next: "docs/dbt-cloud-apis/service-tokens"
 
 :::note Announcement
 
-[User API keys](#user-tokens) are being replaced by [account-scoped Personal Access Tokens(PATs)](#account-scoped-personal-access-tokens). 
+[User API keys](#user-tokens) are being replaced by [account-scoped personal access tokens(PATs)](#account-scoped-personal-access-tokens). 
 
 We recommend rotating your existing user API keys with PATs. There are no deprecation plans for user API keys at this time; we will give ample notice when that timeline has been determined. 
 
@@ -18,30 +18,30 @@ Please [contact support](/docs/dbt-support#dbt-cloud-support) with any questions
 
 :::
 
-## Account-scoped Personal Access Tokens
+## Account-scoped personal access tokens
 
 :::info New 
 
 On Feb 7, 2024, we introduced a new type of token for individual users called Personal Access Tokens. Note that these differ from [Service Tokens or user API Keys](/docs/dbt-cloud-apis/authentication#types-of-api-access-tokens). 
 
-Before this release, User API keys were the only way to access dbt Cloud API on behalf of the user. 
+Before this release, user API keys were the only way to access dbt Cloud API on behalf of the user. 
 
 These API Keys were user-specific and were not scoped to an account. To enhance the security of dbt Cloud, we are moving away from this model to account-specific tokens. 
 
 :::
 
-Each dbt Cloud user with a [Developer license](https://docs.getdbt.com/docs/cloud/manage-access/seats-and-users) can create a new personal access token (PAT) to access the dbt Cloud API and dbt Cloud CLI. This token can execute queries against the dbt Cloud API on the user's behalf. To access dbt Cloud APIs and resources on behalf of the _account_, we recommend using Service Tokens instead. Learn more about [which token type you should use](/docs/dbt-cloud-apis/authentication#which-token-type-should-you-use) to understand the token differences.
+Each dbt Cloud user with a [Developer license](https://docs.getdbt.com/docs/cloud/manage-access/seats-and-users) can create a new personal access token (PAT) to access the dbt Cloud API and dbt Cloud CLI. This token can execute queries against the dbt Cloud API on the user's behalf. To access dbt Cloud APIs and resources on behalf of the _account_, we recommend using service tokens instead. Learn more about [which token type you should use](/docs/dbt-cloud-apis/authentication#which-token-type-should-you-use) to understand the token differences.
 
 PATs inherit the permissions of the user that created them. For example, if a developer-licensed user with Project Admin role access to specific projects creates a PAT, the token will get the Project Admin role with access to the same projects as the user. These tokens are also account-specific, so if a user has access to more than one dbt Cloud account with the same email address, they need to create a unique PAT for each one of these accounts. 
 
-### Migrate from user API keys to Personal Access Tokens
+### Migrate from user API keys to personal access tokens
 
 The migration to PATs is critical if you are using user API keys today. The current API key is located under **Personal Settings → API Key**.
 
  There are a few things to understand if you are using a user API key today: 
 
-* Personal Access Tokens are more secure. 
-    * To promote the least privilege and high-security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped Personal Access Tokens.
+* Personal access tokens are more secure. 
+    * To promote the least privilege and high-security assurance for your dbt Cloud accounts, we highly recommend moving to the new account-scoped personal access tokens.
 * You must create and use unique tokens in each one of your dbt Cloud accounts that share the same email address.
     * For example, if paul.atreides@example.com belongs to two dbt Cloud accounts: Spice Harvesting Account and Guild Navigator Account. Before this release, the same user API key was used to access both of these accounts. 
     * After this release, Paul has to individually go into these accounts and create a unique PAT for each account he wants to access the API for. These PATs are account-specific and not user specific. 
