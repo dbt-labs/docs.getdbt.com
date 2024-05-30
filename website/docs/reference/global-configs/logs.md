@@ -43,7 +43,7 @@ The `debug` format is the default for the log file and is the same as the `text`
 16:12:08.751069 [info ] [MainThread]: Registered adapter: postgres=1.8.0
 ```
 
-The `json` format outputs fully structured logs in <Term id="json" /> format:
+The `json` format outputs fully structured logs in the <Term id="json" /> format:
 
 ```json
 {"data": {"log_version": 3, "version": "=1.8.0"}, "info": {"category": "", "code": "A001", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Running with dbt=1.8.0", "name": "MainReportVersion", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:54.993336Z"}}
