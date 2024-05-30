@@ -58,7 +58,6 @@ When the `LOG_FORMAT` is set explicitly, it will take affect in both the console
 
 ```text
 dbt --log-format json run
-{"code": "A001", "data": {"v": "=1.0.0"}, "invocation_id": "1193e449-4b7a-4eb1-8e8e-047a8b3b7973", "level": "info", "log_version": 1, "msg": "Running with dbt=1.0.0", "node_info": {}, "pid": 35098, "thread_name": "MainThread", "ts": "2021-12-03T10:46:59.928217Z", "type": "log_line"}
 ```
 
 </File>
