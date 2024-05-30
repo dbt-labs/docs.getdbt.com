@@ -1452,11 +1452,6 @@
       "permanent": true
     },
     {
-      "source": "/docs/building-a-dbt-project/building-models/:path*",
-      "destination": "/reference/resource-configs/:path*",
-      "permanent": true
-    },
-    {
       "source": "/docs/dbt-cloud/dbt-cloud-api/metadata/metadata-querying",
       "destination": "/docs/dbt-cloud-apis/metadata-querying",
       "permanent": true
@@ -3403,6 +3398,11 @@
     {
       "source": "/reference/resource-properties/access",
       "destination": "/reference/resource-configs/access",
+      "permanent": true
+    },
+    {
+      "source": "/docs/building-a-dbt-project/building-models/:path*",
+      "destination": "/reference/resource-configs/:path*",
       "permanent": true
     }
   ],
