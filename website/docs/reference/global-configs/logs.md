@@ -131,7 +131,7 @@ Just like other global configs, it is possible to override these values for your
 
 ### Suppress non-error logs in output
 
-By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. Logs will still include the output of anything passed to the `print()` macro.  For example, you might suppress all but error logs to more easily find and debug a jinja error.
+By default, dbt shows all logs in standard out (stdout). You can use the `QUIET` config to show only error logs in stdout. Logs will still include the output of anything passed to the [`print()`](/reference/dbt-jinja-functions/print) macro.  For example, you might suppress all but error logs to more easily find and debug a jinja error.
 
 <File name='profiles.yml'>
 
@@ -157,7 +157,7 @@ In [dbt version 1.5](/docs/dbt-versions/core-upgrade/upgrading-to-v1.5#behavior-
 You can use either of these parameters to ensure clean output that's compatible with downstream processes, such as piping results to [`jq`](https://jqlang.github.io/jq/manual/), a file, or another process:
 
 - `dbt --log-level warn list` (recommended; equivalent to previous default)
-- `dbt --quiet list` (suppresses all logging less than ERROR level, except for "printed" messages and list output)
+- `dbt --quiet list` (suppresses all logging less than `ERROR` level, except for "printed" messages and list output)
 
 
 ### Logging relational cache events
