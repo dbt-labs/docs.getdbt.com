@@ -58,7 +58,7 @@ MetricFlow allows you to:
   <Card
     title="Available integrations"
     body="Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
-    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
+    link="/docs/cloud-integrations/avail-sl-integrations"
     icon="dbt-bit"/>
 
 </div> <br />

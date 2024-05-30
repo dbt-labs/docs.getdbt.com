@@ -668,11 +668,11 @@ const sidebarSettings = {
         {
           type: "category",
          label: "Semantic Layer integrations",
-          link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
+          link: { type: "doc", id: "docs/cloud-integrations/avail-sl-integrations" },
           items: [
-            "docs/use-dbt-semantic-layer/avail-sl-integrations",
-           "docs/use-dbt-semantic-layer/gsheets",
-           "docs/use-dbt-semantic-layer/tableau",
+            "docs/cloud-integrations/avail-sl-integrations",
+            "docs/cloud-integrations/semantic-layer/gsheets",
+            "docs/cloud-integrations/semantic-layer/tableau",
          ],
         },
       ],
