@@ -60,12 +60,6 @@ When the `LOG_FORMAT` is set explicitly, it will take affect in both the console
 
 When the `LOG_FORMAT` is set explicitly, it will take affect in both the console and log files whereas the `LOG_FORMAT_FILE` only affects the log file.
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
-To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag.
-
 <File name='Usage'>
 
 ```text
