@@ -25,7 +25,6 @@ Please [contact support](/docs/dbt-support#dbt-cloud-support) with any questions
 On Feb 7, 2024, we introduced a new type of token for individual users called Personal Access Tokens. Note that these differ from [Service Tokens or user API Keys](/docs/dbt-cloud-apis/authentication#types-of-api-access-tokens). 
 
 Before this release, user API keys were the only way to access dbt Cloud API on behalf of the user. 
-
 These API Keys were user-specific and were not scoped to an account. To enhance the security of dbt Cloud, we are moving away from this model to account-specific tokens. 
 
 :::
