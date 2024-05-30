@@ -12,7 +12,7 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 - You have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
-    - There has been at least one successful job run in the deployment environment.
+    - There has been at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update dbt Explorer. 
 - You are on the dbt Explorer page. To do this, select **Explore** from the top navigation bar in dbt Cloud.
 
 
@@ -20,7 +20,9 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your dbt Cloud project. dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. 
 
-To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs.
+Note that CI jobs do not update dbt Explorer. This is because they don't reflect the production state and don't provide the necessary metadata updates.
+
+To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs. 
 
 | To view in Explorer | You must successfully run |
 |---------------------|---------------------------|
@@ -31,7 +33,7 @@ To view a resource and its metadata, you must define the resource in your projec
 | Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
 | Seed details | [dbt seed](/reference/commands/seed) or [dbt build](/reference/commands/build) within a job in the environment |
 
-Richer and more timely metadata will become available as dbt Core, the Discovery API, and the underlying dbt Cloud platform evolves.
+Richer and more timely metadata will become available as dbt Cloud evolves.
 
 ## Explore your project's lineage graph {#project-lineage}
 
@@ -45,7 +47,7 @@ By default, dbt Explorer shows the project's [applied state](/docs/dbt-cloud-api
 
 To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, dbt Explorer excludes these resources from the full lineage graph unless a search query returns them as results.
 
-<expandable alt_header="How can I interact with the full lineage graph?">
+<Expandable alt_header="How can I interact with the full lineage graph?">
 
 - Hover over any item in the graph to display the resource’s name and type.
 - Zoom in and out on the graph by mouse-scrolling.
@@ -71,7 +73,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 - [View resource details](#view-resource-details) by selecting a node (double-clicking) in the graph.
 - Click **Lenses** (lower right corner of the graph) to use Explorer's [lenses](#lenses) feature. 
 
-</expandable>
+</Expandable>
 
 ### Example of full lineage graph
 
@@ -87,7 +89,7 @@ When you apply a lens, tags become visible on the nodes in the lineage graph, in
 
 Lenses are helpful to analyze a subset of the DAG if you're zoomed in, or to find models/issues from a larger vantage point.
 
-<expandable alt_header="List of available lenses">
+<Expandable alt_header="List of available lenses">
 
 A resource in your project is characterized by resource type, materialization type, or model layer, as well as its latest run or latest test status. Lenses are available for the following metadata:
 
@@ -100,7 +102,7 @@ A resource in your project is characterized by resource type, materialization ty
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
 - **Test Status**: The status from the latest execution of the tests that ran again this resource. In the case that a model has multiple tests with different results, the lens reflects the 'worst case' status. 
 
-</expandable>
+</Expandable>
 
 ### Example of lenses
 
@@ -116,7 +118,7 @@ Example of applying the **Tests Status** _lens_, where each model name displays 
 
 You can locate resources in your project by performing a keyword search in the search bar. All resource names, column names, resource descriptions, warehouse relations, and code matching your search criteria will be displayed as a list on the main (center) section of the page. When searching for an exact column name, the results show all relational nodes containing that column in their schemas. If there's a match, a notice in the search result indicates the resource contains the specified column. Also, you can apply filters to further refine your search results.
 
-<expandable alt_header="Search features">
+<Expandable alt_header="Search features">
 
 - **Partial keyword search** &mdash; This is also referred to as fuzzy search.
 - **Exclude keywords** &mdash; Prepend a minus sign (-) to the keyword you want to exclude from search results. For example, `-user` will exclude all matches of that keyword from search results.
@@ -124,9 +126,9 @@ You can locate resources in your project by performing a keyword search in the s
 - **Phrase search** &mdash; Surround a string of keywords with double quotation marks to search for that exact phrase (for example, `"stg users"`). To learn more, refer to [Phrase search](https://en.wikipedia.org/wiki/Phrase_search) on Wikipedia.
 - **SQL keyword search** &mdash; Use SQL keywords in your search. For example, the search results `int github users joined` will include matches that contain that specific string of keywords (similar to phrase searching).
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="Filters side panel">
+<Expandable alt_header="Filters side panel">
 
 The **Filters** side panel becomes available after you perform a keyword search. Use this panel to further refine the results from your keyword search. By default, Explorer searches across all resources in the project. You can filter on:
 
@@ -138,7 +140,7 @@ The **Filters** side panel becomes available after you perform a keyword search.
 
 Under the the **Models** option, you can filter on model properties (access or materialization type). Also available are **Advanced** options, where you can limit the search results to column name, model code, and more.  
 
-</expandable>
+</Expandable>
 
 ### Example of keyword search
 Example of results from searching on the keyword `item` and applying the filters models, description, and code:
@@ -177,7 +179,7 @@ In the upper right corner of the resource details page, you can:
 - Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 - Click the Share icon to copy the page's link to your clipboard.
 
-<expandable alt_header="What details are available for a model?">
+<Expandable alt_header="What details are available for a model?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
 - **General** tab includes:
@@ -190,9 +192,9 @@ In the upper right corner of the resource details page, you can:
 - **Code** tab &mdash; The source code and compiled code for the model.
 - **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource, you can use the search bar that's located at the top of the columns view. 
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="What details are available for an exposure?">
+<Expandable alt_header="What details are available for an exposure?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the exposure was updated. 
 - **General** tab includes:
@@ -202,9 +204,9 @@ In the upper right corner of the resource details page, you can:
     - **Details** section &mdash; Details like exposure type, maturity, owner information, and more.
     - **Relationships** section &mdash; The nodes the exposure **Depends On**.
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="What details are available for a test?">
+<Expandable alt_header="What details are available for a test?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. Defaults to all if not specified.
 - **Test Type** (next to the Status bar) &mdash; Information on the different test types available: Unit test or Data test. Defaults to all if not specified.
@@ -222,9 +224,9 @@ Example of the Tests view:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-type.jpg" width="100%" title="Example of Test Type details" />
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="What details are available for each source table within a source collection?">
+<Expandable alt_header="What details are available for each source table within a source collection?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the source was updated and the number of tables the source uses. 
 - **General** tab includes:
@@ -235,7 +237,7 @@ Example of the Tests view:
     - **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
 - **Columns** tab &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
 
-</expandable>
+</Expandable>
 
 ### Example of model details
 
