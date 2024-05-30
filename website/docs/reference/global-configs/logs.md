@@ -67,8 +67,6 @@ dbt --log-format json run
 
 To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag.
 
-</VersionBlock>
-
 
 ```text
 dbt --log-format-file json run
