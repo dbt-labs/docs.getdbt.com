@@ -11,7 +11,7 @@ pagination_next: "docs/cloud-integrations/set-up-snowflake-native-app"
 The dbt Snowflake Native App &mdash; powered by the Snowflake Native App Framework and Snowpark Container Services &mdash; extends your dbt Cloud experience into the Snowflake user interface. You'll be able to access these three experiences with your Snowflake login: 
 
 - **dbt Explorer** &mdash; An embedded version of [dbt Explorer](/docs/collaborate/explore-projects) 
-- **Ask dbt** &mdash; A dbt-assisted chatbot, powered by [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and Snowflake Cortex
+- **Ask dbt** &mdash; A dbt-assisted chatbot, powered by [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), OpenAI, and Snowflake Cortex
 - **Orchestration observability** &mdash; A view into the [job run history](/docs/deploy/run-visibility)
 
 These experiences enable you to extend what's been built with dbt Cloud to users who have traditionally been dependencies downstream from the dbt project and are new to dbt Cloud. For example, BI analysts and technical stakeholders. 
