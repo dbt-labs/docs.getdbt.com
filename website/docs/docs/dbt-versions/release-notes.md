@@ -18,6 +18,10 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
 
+## June 2024
+
+- **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
+
 ## May 2024
 
 - **Enhancement:** We've now introduced a new **Prune branches** [Git button](/docs/cloud/dbt-cloud-ide/ide-user-interface#prune-branches-modal) in the dbt Cloud IDE. This button allows you to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. Available in all regions now and will be released to single tenant accounts during the next release cycle.
