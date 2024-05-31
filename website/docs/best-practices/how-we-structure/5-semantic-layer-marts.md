@@ -40,7 +40,7 @@ models
 
 - 📂 Directory structure: Add your semantic models in `models/semantic_models` with directories corresponding to the models/marts files. This organization makes it easier to search and find what you can join. It also supports better maintenance and reduces repeated code.
 
-## Naming conventions
+## Naming convention
 
 - 🏷️ Semantic model names: Use the `sem_` prefix for semantic model names, such as `sem_cloud_user_account_activity`. This follows the same pattern as other naming conventions like `fct_` for fact tables and `dim_` for dimension tables.
 - 🧩 Entity names: Do not use prefixes for entity names within the semantic model. This keeps the names clear and focused on their specific purpose without unnecessary prefixes.
