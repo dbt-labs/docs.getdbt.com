@@ -36,6 +36,17 @@ models
     └── stg_supplies.yml
 ```
 
+## Semantic Layer: Where and why?
+
+- 📂 Directory structure: Add your semantic models in `models/semantic_models` with directories corresponding to the models/marts files. This organization makes it easier to search and find what you can join. It also supports better maintenance and reduces repeated code.
+
+## Naming conventions
+
+- 🏷️ Semantic model names: Use the `sem_` prefix for semantic model names, such as `sem_cloud_user_account_activity`. This follows the same pattern as other naming conventions like `fct_` for fact tables and `dim_` for dimension tables.
+- 🧩 Entity names: Do not use prefixes for entity names within the semantic model. This keeps the names clear and focused on their specific purpose without unnecessary prefixes.
+
+This guidance helps you make sure your dbt project is organized, maintainable, and scalable, allowing you to take full advantage of the capabilities offered by the dbt Semantic Layer.
+
 ## When to make a mart
 
 - ❓ If we can go directly to staging models and it's better to serve normalized models to the Semantic Layer, then when, where, and why would we make a mart?
