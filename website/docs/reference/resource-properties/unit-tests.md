@@ -20,7 +20,7 @@ To run only your unit tests, use the command:
 
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
-- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
+- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
 - If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
 
