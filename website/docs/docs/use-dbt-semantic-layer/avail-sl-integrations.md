@@ -39,5 +39,5 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 - [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
 - [Hex dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
 - [Resolve 'Failed APN'](/faqs/Troubleshooting/sl-alpn-error) error when connecting to the dbt Semantic Layer.
-- [dbt Semantic Layer on-demand courses](https://learn.getdbt.com/courses/semantic-layer)
+- [dbt Semantic Layer on-demand course](https://learn.getdbt.com/courses/semantic-layer)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
