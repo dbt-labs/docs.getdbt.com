@@ -67,7 +67,7 @@ In our most critical repositories (such as `dbt-core`), **our goal is to respond
 
 **What if I’m opening an issue in a different repository?** We have engineering teams dedicated to active maintainence of `dbt-core` and its component libraries (`dbt-common` + `dbt-adapters`), as well as several platform-specific adapters (`dbt-snowflake`, `dbt-bigquery`, `dbt-redshift`, `dbt-postgres`). We’ve open sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
-**If my issue is lingering...** Sorry for the delay! If your issue is in an actively maintained repo and has a `triage` label attached, we’re aware of it as something that needs a response.
+**If my issue is lingering...** Sorry for the delay! If your issue is in an actively maintained repo and has a `triage` label attached, we’re aware it's something that needs a response.
 
 **Automation that can help us:** In many repositories, we use a bot that marks issues as stale if they haven’t had any activity for 180 days. This helps us keep our backlog organized and up-to-date. We encourage you to comment on older open issues that you’re interested in, to keep them from being marked stale. You’re also always welcome to comment on closed issues to say that you’re still interested in the proposal.
 
