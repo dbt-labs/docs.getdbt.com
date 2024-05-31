@@ -14,7 +14,7 @@ The dbt Snowflake Native App &mdash; powered by the Snowflake Native App Framewo
 - **Ask dbt** &mdash; A dbt-assisted chatbot, powered by [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), OpenAI, and Snowflake Cortex
 - **Orchestration observability** &mdash; A view into the [job run history](/docs/deploy/run-visibility)
 
-These experiences enable you to extend what's been built with dbt Cloud to users who have traditionally been dependencies downstream from the dbt project and are new to dbt Cloud. For example, BI analysts and technical stakeholders. 
+These experiences enable you to extend what's been built with dbt Cloud to users who have traditionally been dependencies downstream from the dbt project. For example, BI analysts and technical stakeholders. 
 
 For installation instructions, refer to [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
