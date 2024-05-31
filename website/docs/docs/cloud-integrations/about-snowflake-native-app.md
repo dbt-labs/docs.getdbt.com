@@ -24,9 +24,9 @@ There are three tools connected to operate the dbt Snowflake Native App:
 
 | Tool                               | Description |
 |------------------------------------|-------------|
-| Consumer’s Snowflake account       | The location of where the Native App is installed, powered by Snowpark Container Services. <br /><br /> The Native App makes calls to the dbt Cloud APIs and Datadog APIs (for logging) using [Snowflake's external access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview). <br /><br />To power the **Ask dbt** chatbot, the dbt Semantic Layer accesses the Cortex LLM to execute queries and generate text based on the prompt. This is configured when the user sets up the Semantic Layer environment. | 
-| dbt product Snowflake account | The location of where the Native App application package is hosted and then installed into the consumer account. <br /><br />The consumer's event table is shared to this account for application monitoring and logging. |
-| Consumer’s dbt Cloud account       | The Native App interacts with the dbt Cloud APIs for metadata and processing Semantic Layer queries to power the Native App experiences. <br /> <br /> The dbt Cloud account also calls the consumer Snowflake account to utilize the warehouse to execute dbt queries for orchestration and the Cortex LLM to power the **Ask dbt** chatbot. |
+| Consumer’s Snowflake account       | The location of where the Native App is installed, powered by Snowpark Container Services. <br /><br /> The Native App makes calls to the dbt Cloud APIs and Datadog APIs (for logging) using [Snowflake's external network access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview). <br /><br />To power the **Ask dbt** chatbot, the dbt Semantic Layer accesses the Cortex LLM to execute queries and generate text based on the prompt. This is configured when the user sets up the Semantic Layer environment. | 
+| dbt product Snowflake account | The location of where the Native App application package is hosted and then distributed into the consumer account. <br /><br />The consumer's event table is shared to this account for application monitoring and logging. |
+| Consumer’s dbt Cloud account       | The Native App interacts with the dbt Cloud APIs for metadata and processing Semantic Layer queries to power the Native App experiences. <br /> <br /> The dbt Cloud account also calls the consumer Snowflake account to utilize the warehouse to execute dbt queries for orchestration and the Cortex LLM Arctic to power the **Ask dbt** chatbot. |
 
 The following diagram provides an illustration of the architecure:
 
@@ -39,7 +39,9 @@ You can log in to the dbt Snowflake Native App using your regular Snowflake logi
 App users are able to access all information that's available to the API service token.
 
 ## Procurement
-The dbt Snowflake Native App is available from the Snowflake Marketplace with a dbt Cloud Enterprise contract. If you're interested, please [contact us](matilto:sales_snowflake_marketplace@dbtlabs.com) for more information. 
+The dbt Snowflake Native App is available on the [Snowflake Marketplace](https://app.snowflake.com/marketplace/listing/GZTYZSRT2R3). With the purchase of the listing, users will have access to the Native App and a dbt Cloud account that's on the Enterprise plan. 
+
+If you're interested, please [contact us](matilto:sales_snowflake_marketplace@dbtlabs.com) for more information. 
 
 ## Support
 If you have any questions about the dbt Snowflake Native App, you may [contact our Support team](mailto:dbt-snowflake-marketplace@dbtlabs.com) for help. Please provide information about your installation of the Native App, including your dbt Cloud account ID and Snowflake account identifier. 

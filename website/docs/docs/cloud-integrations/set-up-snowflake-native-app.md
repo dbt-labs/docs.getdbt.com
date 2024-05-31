@@ -7,7 +7,7 @@ pagination_next: null
 
 # Set up the dbt Snowflake Native App <Lifecycle status='public preview' />
 
-The [dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: dbt Explorer, **Ask dbt** (a dbt-assisted chatbot powered by the dbt Semantic Layer and Snowflake Cortex), and dbt Cloud's orchestration observability features. 
+The [dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: dbt Explorer, **Ask dbt**, and dbt Cloud's orchestration observability features. 
 
 Configure both dbt Cloud and Snowflake to set up this integration. Below is an illustration of the setup process. The steps are slightly different if you purchased the public listing of the Native App; you will start with Step 2, satisfy the prerequisites, and then complete Steps 1 and 3. 
 
@@ -39,13 +39,12 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
 1. In dbt Cloud, browse to your Semantic Layer configurations. 
     1. From the gear menu, select **Account settings**. In the left sidebar, select **Projects** and choose your dbt project from the project list. 
     1. In the **Project details** panel, click the link **Edit Semantic Layer Configuration** (which is below the **GraphQL URL** option). 
-    1. In the **Symantic Layer Configuration details** panel, the Snowflake credentials shown are those you will use to access Snowflake Cortex. Remember the username and role. 
-1. In the **Symantic Layer Configuration Details** panel, identify the Snowflake credentials and the environment against which the Semantic Layer is run. Remember the username, role, and the environment. 
+1. In the **Semantic Layer Configuration Details** panel, identify the Snowflake credentials (which you'll use to access Snowflake Cortex) and the environment against which the Semantic Layer is run. Remember the username, role, and the environment. 
 
     <Lightbox src="/img/docs/cloud-integrations/semantic_layer_configuration.png" width="100%" title="Semantic Layer credentials"/>
 
 1. Identify the default database the environment is connecting to. 
-    1. Select **Deploy > Environments** from the top navigation bar. From the environments list, select the one that was identified in the **Symantic Layer Configuration Details** panel. 
+    1. Select **Deploy > Environments** from the top navigation bar. From the environments list, select the one that was identified in the **Semantic Layer Configuration Details** panel. 
     1. On the environment's page, click **Settings**. Scroll to the section **Deployment connection**. Remember the database. This is the default database your environment is connecting to and also where to create the schema in. 
 
 1. In Snowflake, verify that your SL user has been granted permission to use Snowflake Cortex. This user must have the ability to read and write into this schema to create the Retrieval Augmented Generation (RAG). For more information, refer to [Required Privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#required-privileges) in the Snowflake docs. 
@@ -106,7 +105,7 @@ Collect three pieces of information from dbt Cloud to set up the application.
 1. When activation is complete, select the **Telemetry** tab and enable the option to share your `INFO` logs. The option might take some time to display. This is because Snowflake needs to create the events table so it can be shared.
 1. When the option is successfully enabled, click **Launch app**. Then, log in to the app with your Snowflake credentials. 
     
-    If it redirects you to a Snowsight worksheet (instead of the login page), that means the app has not finished installing. You can resolve this issue, typically, by leaving the application and returning back to it.   
+    If it redirects you to a Snowsight worksheet (instead of the login page), that means the app hasn't finished installing. You can resolve this issue, typically, by refreshing the page.   
 
 The following is an example of the dbt Snowflake Native App after configuration:
 
@@ -118,7 +117,7 @@ To verify the app installed successfully, select any of the following from the s
 
 - **Explore** &mdash; Launch dbt Explorer and make sure you can access your dbt project information.
 - **Jobs** &mdash; Review the run history of the dbt jobs. 
-- **Ask dbt** &mdash; Click on any of the suggested prompts to ask the chatbot a question. Depending on the number of metrics that's defined for the dbt project, it can take several minutes to load **Ask dbt** the first time because Snowflake is building the RAG. Subsequent launches will load faster.
+- **Ask dbt** &mdash; Click on any of the suggested prompts to ask the chatbot a question. Depending on the number of metrics that's defined for the dbt project, it can take several minutes to load **Ask dbt** the first time because dbt is building the RAG. Subsequent launches will load faster.
 
 
 The following is an example of the **Ask dbt** chatbot with the suggested prompts near the top: 
