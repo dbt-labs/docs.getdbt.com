@@ -125,7 +125,7 @@ unit_tests:
 ```
 </file>
 
-The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. 
+The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. Store your fixture files in a `fixtures` subdirectory in any of your [test paths](/reference/project-configs/test-paths). For example, `tests/fixtures/my_unit_test_fixture.sql`. 
 
 When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
