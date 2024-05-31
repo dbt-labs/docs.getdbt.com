@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/reference/resource-properties/unit-tests#unit-testing-versioned-models",
+      "destination": "/reference/resource-properties/unit-testing-versions",
+      "permanent": true
+    },
+    {
       "source": "/docs/deploy/deploy-environments#partial-parsing",
       "destination": "/docs/dbt-cloud-environments#partial-parsing",
       "permanent": true
