@@ -27,10 +27,10 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `type` | redshift | The type of data warehouse you are connecting to|
-| `host` | hostname.region.redshift.amazonaws.com| Host of cluster |
+| `host` | hostname.region.redshift.amazonaws.com or workgroup.account.region.redshift-serverless.amazonaws.com | Host of cluster |
 | `port`  | 5439 |  |
 | `dbname`  | my_db | Database name|
-| `schema`  | my_schema | Schema name| 
+| `schema`  | my_schema | Schema name|
 | `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
 | `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below| 
 | `role`  | None | Optional, user identifier of the current session| 
