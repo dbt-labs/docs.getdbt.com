@@ -41,16 +41,16 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
     for file in files:
         if file['filename'].endswith('.md'):
             patch = file['patch']
-            # Extract YAML code snippets from the markdown file
+            # Extract YAML code snippets from the markdown file, including versioned blocks
             yaml_snippets = re.findall(r'```yaml(.*?)```', patch, re.DOTALL)
             snippets.extend((file['filename'], snippet) for snippet in yaml_snippets)
     return snippets
 
 # Identify the type of YAML snippet and select the corresponding schema
 def identify_schema(snippet):
-    if "dbt_project" in snippet:
+    if "dbt_project.yml" in snippet:
         return "dbt_project"
-    elif "cloud" in snippet:
+    elif "dbt_cloud" in snippet:
         return "dbt_cloud"
     elif "dependencies" in snippet:
         return "dependencies"
@@ -72,7 +72,7 @@ def validate_snippets(snippets, schemas):
                 validate(instance=data, schema=schema)
                 results.append((filename, snippet, "Valid"))
             else:
-                results.append((filename, snippet, f"Unknown schema type"))
+                results.append((filename, snippet, "Unknown schema type"))
         except ValidationError as e:
             results.append((filename, snippet, f"Invalid: {e.message}"))
         except yaml.YAMLError as e:
