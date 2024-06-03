@@ -47,7 +47,6 @@ The complete spec for semantic models is below:
 semantic_models:
   - name: the_name_of_the_semantic_model      ## Required
     owner: the_owner_of_the_semantic_model    ## Optional
-    owner: test name
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
     defaults:                                 ## Required
