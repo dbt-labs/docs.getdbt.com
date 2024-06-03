@@ -1875,7 +1875,7 @@ To start, let’s look back at our `intermediate.md` file. We can see that we pr
 3. View the mini-lineage that looks at the model we are currently selected on (`int_results` in this case).
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/3-mini-lineage-docs.png" title="Mini lineage view on docs site"/>
 
-4. In our `dbt_project.yml`, we configured `node_colors` depending on the file directory. Starting in dbt v1.3, we can see how our lineage in our docs looks. By color coding your project, it can help you cluster together similar models or steps and more easily troubleshoot.
+4. In our `dbt_project.yml`, we configured `node_colors` depending on the file directory. By color coding your project, it can help you cluster together similar models or steps and more easily troubleshoot when viewing lineage in your docs.
 
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/4-full-dag-docs.png" title="Full project DAG on docs site"/>
 

@@ -299,8 +299,6 @@ models:
 
 </File>
 
-<VersionBlock firstVersion="1.3">
-
 ## Temporary tables
 
 Beginning in dbt version 1.3, incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
@@ -339,8 +337,6 @@ In the configuration format for the model SQL file:
 ```
 
 </File>
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.6">
 

@@ -44,36 +44,6 @@ exposures:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.3">
-
-<File name='models/<filename>.yml'>
-
-```yaml
-version: 2
-
-exposures:
-  
-  - name: weekly_jaffle_report
-    type: dashboard
-    maturity: high
-    url: https://bi.tool/dashboards/1
-    description: >
-      Did someone say "exponential growth"?
-
-    depends_on:
-      - ref('fct_orders')
-      - ref('dim_customers')
-      - source('gsheets', 'goals')
-
-    owner:
-      name: Callum McData
-      email: data@jaffleshop.com
-```
-
-</File>
-
-</VersionBlock>
-
 ### Available properties
 
 _Required:_
@@ -85,13 +55,6 @@ _Required:_
 
 _Expected:_
 - **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.3">
-
-_Expected:_
-- **depends_on**: list of refable nodes, including `ref` and `source` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
 
 </VersionBlock>
 

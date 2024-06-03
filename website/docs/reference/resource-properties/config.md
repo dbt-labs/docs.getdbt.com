@@ -133,8 +133,6 @@ sources:
 
 <TabItem value="metrics">
 
-<VersionBlock firstVersion="1.3">
-
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -150,13 +148,9 @@ metrics:
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="exposures">
-
-<VersionBlock firstVersion="1.3">
 
 <File name='models/<filename>.yml'>
 
@@ -171,8 +165,6 @@ exposures:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 

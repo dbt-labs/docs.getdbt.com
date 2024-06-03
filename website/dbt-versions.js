@@ -19,10 +19,6 @@ exports.versions = [
     version: "1.4",
     EOLDate: "2024-01-25",
   },
-  {
-    version: "1.3",
-    EOLDate: "2023-10-12",
-  },
 ]
 
 exports.versionedPages = [
@@ -157,10 +153,6 @@ exports.versionedPages = [
   {
     "page": "reference/dbt-jinja-functions/local-md5",
     "firstVersion": "1.4",
-  },
-  {
-    "page": "reference/warehouse-setups/fal-setup",
-    "firstVersion": "1.3",
   },
   {
     "page": "reference/resource-configs/on_configuration_change",

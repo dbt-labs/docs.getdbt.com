@@ -47,15 +47,11 @@ The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in 
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.3">
-
 :::note Snowflake Configurations
 
-dbt v1.3 changed the default materialization for incremental table merges from `temporary table` to `view`. For more information about this change and instructions for setting the configuration to a temp table, please read about [Snowflake temporary tables](/reference/resource-configs/snowflake-configs#temporary-tables).
+dbt has changed the default materialization for incremental table merges from `temporary table` to `view`. For more information about this change and instructions for setting the configuration to a temp table, please read about [Snowflake temporary tables](/reference/resource-configs/snowflake-configs#temporary-tables).
 
 :::
-
-</VersionBlock>
 
 ### Configuring incremental strategy
 
@@ -89,8 +85,6 @@ select ...
 ```
 
 </File>
-
-<VersionBlock firstVersion="1.3">
 
 ### Strategy-specific configs
 
@@ -133,8 +127,6 @@ select ...
 ```
 
 </File>
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.4">
 
