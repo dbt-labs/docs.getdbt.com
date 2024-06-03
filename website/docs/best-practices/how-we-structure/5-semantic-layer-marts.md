@@ -38,12 +38,35 @@ models
 
 ## Semantic Layer: Where and why?
 
-- 📂 Directory structure: Add your semantic models in `models/semantic_models` with directories corresponding to the models/marts files. This organization makes it easier to search and find what you can join. It also supports better maintenance and reduces repeated code.
+- 📂 **Directory structure**: Add your semantic models in the `models/semantic_models` with directories corresponding to the models/marts files. This type of organization makes it easier to search and find what you can join. It also supports better maintenance and reduces repeated code.
+
+    <File name='models/marts/sem_orders.yml'>
+
+    ```yaml
+    semantic_models:
+      - name: orders
+        defaults:
+          agg_time_dimension: order_date
+        description: |
+          Order fact table. This table’s grain is one row per order.
+        model: ref('fct_orders')
+        entities:
+          - name: order_id
+            type: primary
+          - name: customer_id
+            type: foreign
+        dimensions:
+          - name: order_date
+            type: time
+            type_params:
+              time_granularity: day
+    ```
+    </File>
 
 ## Naming convention
 
-- 🏷️ Semantic model names: Use the `sem_` prefix for semantic model names, such as `sem_cloud_user_account_activity`. This follows the same pattern as other naming conventions like `fct_` for fact tables and `dim_` for dimension tables.
-- 🧩 Entity names: Do not use prefixes for entity names within the semantic model. This keeps the names clear and focused on their specific purpose without unnecessary prefixes.
+- 🏷️ **Semantic model names**: Use the `sem_` prefix for semantic model names, such as `sem_cloud_user_account_activity`. This follows the same pattern as other naming conventions like `fct_` for fact tables and `dim_` for dimension tables.
+- 🧩 **Entity names**: Entity names don't use prefixes within the semantic model. This keeps the names clear and focused on their specific purpose without unnecessary prefixes.
 
 This guidance helps you make sure your dbt project is organized, maintainable, and scalable, allowing you to take full advantage of the capabilities offered by the dbt Semantic Layer.
 

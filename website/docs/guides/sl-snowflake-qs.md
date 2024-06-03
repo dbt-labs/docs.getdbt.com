@@ -698,10 +698,10 @@ semantic_models:
         type: foreign  
     # Newly added
     dimensions:   
-     - name: order_date
-       type: time
-       type_params:
-         time_granularity: day
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
 ```
 
 </File>
