@@ -224,7 +224,7 @@ Now that you have a repository configured, you can initialize your project and s
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
+    - Click **+ Create new file**, add the following query to the new file, and click **Save as** to save the new file: 
         ```sql
         select * from raw.jaffle_shop.customers
         ```
