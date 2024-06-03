@@ -42,10 +42,13 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
         if file['filename'].endswith('.md'):
             patch = file['patch']
             print(f"Processing file: {file['filename']}")  # Debugging line
-            print(f"Patch content:\n{patch}\n")  # Print patch content for debugging
+            print(f"Patch content:\n{patch}")  # Debugging line
             # Extract both `yml` and `yaml` code snippets from the markdown file, including versioned blocks
-            yaml_snippet = "\n".join(line[1:] for line in patch.split('\n') if line.startswith('+') and not line.startswith('+++'))
-            snippets.extend((file['filename'], snippet) for snippet in yaml_snippets)
+            yaml_snippets = re.findall(r'```ya?ml(.*?)```', patch, re.DOTALL)
+            for snippet in yaml_snippets:
+                # Remove the diff prefixes (e.g., "+ ", "- ")
+                cleaned_snippet = "\n".join(line[1:] if line.startswith(('+', '-')) else line for line in snippet.split('\n'))
+                snippets.append((file['filename'], cleaned_snippet))
     print(f"Total snippets found: {len(snippets)}")  # Debugging line
     return snippets
 
