@@ -6,7 +6,7 @@ pagination_prev: null
 pagination_next: "docs/cloud-integrations/set-up-snowflake-native-app"
 ---
 
-# About the dbt Snowflake Native App <Lifecycle status='public preview' />
+# About the dbt Snowflake Native App <Lifecycle status='preview' />
 
 The dbt Snowflake Native App &mdash; powered by the Snowflake Native App Framework and Snowpark Container Services &mdash; extends your dbt Cloud experience into the Snowflake user interface. You'll be able to access these three experiences with your Snowflake login: 
 
