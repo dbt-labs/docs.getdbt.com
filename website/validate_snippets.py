@@ -3,7 +3,6 @@ import json
 import requests
 import yaml
 from jsonschema import validate, ValidationError
-import re
 
 # Define the URLs of the schemas
 SCHEMA_URLS = {
@@ -36,29 +35,17 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
     response = requests.get(url, headers=headers)
     response.raise_for_status()
     files = response.json()
-
+    
     snippets = []
     for file in files:
-        if file['filename'].endswith('.md'):
+        if file['filename'].endswith('.yml') or file['filename'].endswith('.yaml'):
+            if file['filename'].startswith('.github/workflows'):
+                continue
             patch = file['patch']
-            # Extract YAML code snippets from the markdown file
-            yaml_snippets = re.findall(r'```yaml(.*?)```', patch, re.DOTALL)
-            snippets.extend((file['filename'], snippet) for snippet in yaml_snippets)
+            # Extract the actual YAML code from the patch
+            yaml_snippet = "\n".join(line[1:] for line in patch.split('\n') if line.startswith('+') and not line.startswith('+++'))
+            snippets.append((file['filename'], yaml_snippet))
     return snippets
-
-# Identify the type of YAML snippet and select the corresponding schema
-def identify_schema(snippet):
-    if "project" in snippet:
-        return "dbt_project"
-    elif "cloud" in snippet:
-        return "dbt_cloud"
-    elif "dependencies" in snippet:
-        return "dependencies"
-    elif "packages" in snippet:
-        return "packages"
-    elif "selectors" in snippet:
-        return "selectors"
-    return "dbt_yml"
 
 # Validate each snippet against the schemas
 def validate_snippets(snippets, schemas):
@@ -66,13 +53,22 @@ def validate_snippets(snippets, schemas):
     for filename, snippet in snippets:
         try:
             data = yaml.safe_load(snippet)
-            schema_name = identify_schema(snippet)
-            schema = schemas.get(schema_name)
-            if schema:
-                validate(instance=data, schema=schema)
-                results.append((filename, snippet, "Valid"))
+            if "dbt_project.yml" in filename:
+                schema = schemas["dbt_project"]
+            elif "dbt_cloud" in filename:
+                schema = schemas["dbt_cloud"]
+            elif "dbt_yml" in filename:
+                schema = schemas["dbt_yml"]
+            elif "dependencies" in filename:
+                schema = schemas["dependencies"]
+            elif "packages" in filename:
+                schema = schemas["packages"]
+            elif "selectors" in filename:
+                schema = schemas["selectors"]
             else:
-                results.append((filename, snippet, f"Unknown schema type"))
+                continue  # Skip if no matching schema found
+            validate(instance=data, schema=schema)
+            results.append((filename, snippet, "Valid"))
         except ValidationError as e:
             results.append((filename, snippet, f"Invalid: {e.message}"))
         except yaml.YAMLError as e:
