@@ -28,10 +28,7 @@ The following example is a list of all available configurations in the `dbt_proj
 <File name='dbt_project.yml'>
 
 ```yml
-[name](/reference/project-configs/name): string
 
-[config-version](/reference/project-configs/config-version): 2
-[version](/reference/project-configs/version): version
 
 [profile](/reference/project-configs/profile): profilename
 
