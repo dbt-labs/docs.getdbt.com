@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import yaml
 from jsonschema import validate, ValidationError
 
 # Define the URL of the latest schema
@@ -23,28 +24,36 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
     snippets = []
     for file in files:
         if file['filename'].endswith('.yml') or file['filename'].endswith('.yaml'):
-            snippets.append(file['patch'])  # Simplified: In reality, you may need to extract the actual YAML code
+            patch = file['patch']
+            # Extract the actual YAML code from the patch
+            yaml_snippet = "\n".join(line[1:] for line in patch.split('\n') if line.startswith('+') and not line.startswith('+++'))
+            snippets.append((file['filename'], yaml_snippet))
     return snippets
 
 # Validate each snippet against the schema
 def validate_snippets(snippets, schema):
     results = []
-    for snippet in snippets:
+    for filename, snippet in snippets:
         try:
-            data = json.loads(snippet)
+            data = yaml.safe_load(snippet)
             validate(instance=data, schema=schema)
-            results.append((snippet, "Valid"))
+            results.append((filename, snippet, "Valid"))
         except ValidationError as e:
-            results.append((snippet, f"Invalid: {e.message}"))
-        except json.JSONDecodeError as e:
-            results.append((snippet, f"Invalid JSON: {e.msg}"))
+            results.append((filename, snippet, f"Invalid: {e.message}"))
+        except yaml.YAMLError as e:
+            results.append((filename, snippet, f"Invalid YAML: {str(e)}"))
     return results
 
 # Main function
 def main():
     repo_owner = "dbt-labs"
     repo_name = "docs.getdbt.com"
-    pr_number = os.getenv('GITHUB_EVENT_PULL_REQUEST_NUMBER')
+
+    # Load event data
+    with open(os.getenv('GITHUB_EVENT_PATH'), 'r') as f:
+        event = json.load(f)
+    
+    pr_number = event['pull_request']['number']
 
     # Fetch schema and code snippets
     schema = fetch_schema()
@@ -53,9 +62,15 @@ def main():
     # Validate snippets
     results = validate_snippets(snippets, schema)
     
-    # Print results
-    for snippet, result in results:
-        print(f"Snippet: {snippet}\nResult: {result}\n")
+    # Write results to a file and print them
+    with open('website/validation_results.txt', 'w') as f:
+        for filename, snippet, result in results:
+            f.write(f"File: {filename}\nSnippet:\n{snippet}\nResult: {result}\n\n")
+            print(f"File: {filename}\nSnippet:\n{snippet}\nResult: {result}\n\n")
+
+    # Check if there are any invalid snippets
+    if any("Invalid" in result for _, _, result in results):
+        exit(1)
 
 if __name__ == "__main__":
     main()
