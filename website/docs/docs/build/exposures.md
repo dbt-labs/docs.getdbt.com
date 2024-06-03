@@ -84,7 +84,7 @@ _Required:_
 <VersionBlock firstVersion="1.4">
 
 _Expected:_
-- **depends_on**: list of refable nodes, including `ref`, `source`, and `metric` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
+- **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
 
 </VersionBlock>
 
