@@ -46,7 +46,6 @@ The complete spec for semantic models is below:
 ```yaml
 semantic_models:
   - name: the_name_of_the_semantic_model      ## Required
-    owner: the_owner_of_the_semantic_model    ## Optional
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
     defaults:                                 ## Required
