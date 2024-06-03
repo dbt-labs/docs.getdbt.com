@@ -18,7 +18,7 @@ These experiences enable you to extend what's been built with dbt Cloud to users
 
 For installation instructions, refer to [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
-## Architecure
+## Architecture
 
 There are three tools connected to operate the dbt Snowflake Native App:
 
