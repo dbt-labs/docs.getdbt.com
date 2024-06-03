@@ -18,7 +18,7 @@ If you're new to dbt, we recommend that you read a [quickstart guide](/guides) t
 
 :::
 
-dbt's Python capabilities are an extension of its capabilities with SQL models. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](/docs/building-a-dbt-project/building-models/python-models)
+dbt's Python capabilities are an extension of its capabilities with SQL models. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](/docs/build/python-models)
 
 
 A SQL model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
