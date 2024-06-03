@@ -65,6 +65,7 @@ def validate_snippets(snippets, schemas):
     results = []
     for filename, snippet in snippets:
         try:
+            print(f"Validating snippet from {filename}:\n{snippet}\n")  # Debug output
             data = yaml.safe_load(snippet)
             schema_name = identify_schema(snippet)
             schema = schemas.get(schema_name)
