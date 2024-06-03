@@ -119,10 +119,6 @@ Many events are fired while compiling or running a specific DAG node (model, see
 
 ## Python interface
 
-:::warning
-The `EVENT_HISTORY` object has been deprecated.
-:::
-
 Older versions of `dbt-core` made available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object.
 
 <VersionBlock firstVersion="1.5">
