@@ -75,8 +75,6 @@ selectors unambiguous.
   ```
 
 
-<VersionBlock firstVersion="1.2">
-
 ### The "file" method
 The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
 
@@ -86,8 +84,6 @@ dbt run --select "file:some_model.sql"
 dbt run --select "some_model.sql"
 dbt run --select "some_model"
 ```
-
-</VersionBlock>
 
 ### The "fqn" method
 
@@ -258,7 +254,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
   ```bash
 dbt run --select "+exposure:weekly_kpis"                # run all models that feed into the weekly_kpis exposure
 dbt test --select "+exposure:*"                         # test all resources upstream of all exposures
-dbt ls --select "+exposure:*" --resource-type snowplow  # list all sources of type "snowplow" upstream of all exposures
+dbt ls --select "+exposure:*" --resource-type source    # list all source tables upstream of all exposures
 ```
 
 ### The "metric" method
@@ -399,6 +395,22 @@ The `saved_query` method selects [saved queries](/docs/build/saved-queries).
 ```bash
 dbt list --select "saved_query:*"                    # list all saved queries 
 dbt list --select "+saved_query:orders_saved_query"  # list your saved query named "orders_saved_query" and all upstream resources
+```
+
+</VersionBlock>
+
+### The "unit_test" method
+
+<VersionBlock lastVersion="1.7">
+Supported in v1.8 or newer.
+</VersionBlock>
+<VersionBlock firstVersion="1.8">
+
+The `unit_test` method selects [unit tests](/docs/build/unit-tests).
+
+```bash
+dbt list --select "unit_test:*"                        # list all unit tests 
+dbt list --select "+unit_test:orders_with_zero_items"  # list your unit test named "orders_with_zero_items" and all upstream resources
 ```
 
 </VersionBlock>

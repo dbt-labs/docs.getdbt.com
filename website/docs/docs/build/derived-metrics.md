@@ -151,7 +151,7 @@ When you run the query  `dbt sl query --metrics d7_booking_change --group-by met
 | Total  | 7252 | 2017-07-01 |
 
 4. Lastly, calculate the derived metric and return the final result set:
-   
+
 ```bash
 bookings - bookings_7_days_ago would be compile as 7438 - 7252 = 186. 
 ```

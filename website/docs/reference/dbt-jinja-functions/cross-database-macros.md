@@ -18,54 +18,6 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 ## All functions (alphabetical)
 
-<VersionBlock firstVersion="1.2" lastVersion="1.2">
-
-- [Cross-database macros](#cross-database-macros)
-  - [All functions (alphabetical)](#all-functions-alphabetical)
-  - [Data type functions](#data-type-functions)
-    - [type\_bigint](#type_bigint)
-    - [type\_boolean](#type_boolean)
-    - [type\_float](#type_float)
-    - [type\_int](#type_int)
-    - [type\_numeric](#type_numeric)
-    - [type\_string](#type_string)
-    - [type\_timestamp](#type_timestamp)
-    - [current\_timestamp](#current_timestamp)
-  - [Set functions](#set-functions)
-    - [except](#except)
-    - [intersect](#intersect)
-  - [Array functions](#array-functions)
-    - [array\_append](#array_append)
-    - [array\_concat](#array_concat)
-    - [array\_construct](#array_construct)
-  - [String functions](#string-functions)
-    - [concat](#concat)
-    - [hash](#hash)
-    - [length](#length)
-    - [position](#position)
-    - [replace](#replace)
-    - [right](#right)
-    - [split\_part](#split_part)
-  - [String literal functions](#string-literal-functions)
-    - [escape\_single\_quotes](#escape_single_quotes)
-    - [string\_literal](#string_literal)
-  - [Aggregate and window functions](#aggregate-and-window-functions)
-    - [any\_value](#any_value)
-    - [bool\_or](#bool_or)
-    - [listagg](#listagg)
-  - [Cast functions](#cast-functions)
-    - [cast](#cast)
-    - [cast\_bool\_to\_text](#cast_bool_to_text)
-    - [safe\_cast](#safe_cast)
-  - [Date and time functions](#date-and-time-functions)
-    - [dateadd](#dateadd)
-    - [datediff](#datediff)
-    - [date\_trunc](#date_trunc)
-    - [last\_day](#last_day)
-  - [Date and time parts](#date-and-time-parts)
-  - [SQL expressions](#sql-expressions)
-
-</VersionBlock>
 <VersionBlock firstVersion="1.3">
 
 - [Cross-database macros](#cross-database-macros)
@@ -106,6 +58,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
+    - [date](#date)
     - [dateadd](#dateadd)
     - [datediff](#datediff)
     - [date\_trunc](#date_trunc)
@@ -115,17 +68,6 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.2" lastVersion="1.2">
-
-[**Data type functions**](#data-type-functions)
-- [type_bigint](#type_bigint)
-- [type_float](#type_float)
-- [type_int](#type_int)
-- [type_numeric](#type_numeric)
-- [type_string](#type_string)
-- [type_timestamp](#type_timestamp)
-
-</VersionBlock>
 <VersionBlock firstVersion="1.3">
 
 [**Data type functions**](#data-type-functions)
@@ -176,6 +118,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [safe_cast](#safe_cast)
 
 [**Date and time functions**](#date-and-time-functions)
+- [date](#date)
 - [dateadd](#dateadd)
 - [datediff](#datediff)
 - [date_trunc](#date_trunc)
@@ -883,6 +826,35 @@ For databases that support it, this macro will return `NULL` when the cast fails
 ```
 
 ## Date and time functions
+
+### date
+
+**Availability**:
+dbt v1.8 or later. For more information, select the version from the documentation navigation menu.
+
+<VersionBlock firstVersion="1.8">
+
+__Args__:
+
+ * `year`: an integer
+ * `month`: an integer
+ * `day`: an integer
+
+This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
+ 
+**Usage**:
+
+```sql
+{{ dbt.date(2023, 10, 4) }}
+```
+
+**Sample output (PostgreSQL)**:
+
+```sql
+to_date('2023-10-04', 'YYYY-MM-DD')
+```
+
+</VersionBlock>
 
 ### dateadd
 __Args__:
