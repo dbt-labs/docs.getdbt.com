@@ -26,8 +26,8 @@ jobs:
         env:
           SNIPPET_VALIDATION: ${{ secrets.SNIPPET_VALIDATION }}
         run: |
-          python validate_snippets.py
+          python website/validate_snippets.py
 
       - name: Display validation results
         if: failure()
-        run: cat validation_results.txt
+        run: cat website/validation_results.txt

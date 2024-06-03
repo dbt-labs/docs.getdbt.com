@@ -27,21 +27,21 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
             patch = file['patch']
             # Extract the actual YAML code from the patch
             yaml_snippet = "\n".join(line[1:] for line in patch.split('\n') if line.startswith('+') and not line.startswith('+++'))
-            snippets.append(yaml_snippet)
+            snippets.append((file['filename'], yaml_snippet))
     return snippets
 
 # Validate each snippet against the schema
 def validate_snippets(snippets, schema):
     results = []
-    for snippet in snippets:
+    for filename, snippet in snippets:
         try:
             data = yaml.safe_load(snippet)
             validate(instance=data, schema=schema)
-            results.append((snippet, "Valid"))
+            results.append((filename, snippet, "Valid"))
         except ValidationError as e:
-            results.append((snippet, f"Invalid: {e.message}"))
+            results.append((filename, snippet, f"Invalid: {e.message}"))
         except yaml.YAMLError as e:
-            results.append((snippet, f"Invalid YAML: {str(e)}"))
+            results.append((filename, snippet, f"Invalid YAML: {str(e)}"))
     return results
 
 # Main function
@@ -62,13 +62,14 @@ def main():
     # Validate snippets
     results = validate_snippets(snippets, schema)
     
-    # Write results to a file
-    with open('validation_results.txt', 'w') as f:
-        for snippet, result in results:
-            f.write(f"Snippet:\n{snippet}\nResult: {result}\n\n")
+    # Write results to a file and print them
+    with open('website/validation_results.txt', 'w') as f:
+        for filename, snippet, result in results:
+            f.write(f"File: {filename}\nSnippet:\n{snippet}\nResult: {result}\n\n")
+            print(f"File: {filename}\nSnippet:\n{snippet}\nResult: {result}\n\n")
 
     # Check if there are any invalid snippets
-    if any("Invalid" in result for _, result in results):
+    if any("Invalid" in result for _, _, result in results):
         exit(1)
 
 if __name__ == "__main__":
