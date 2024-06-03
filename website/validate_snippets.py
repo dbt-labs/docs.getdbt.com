@@ -29,6 +29,8 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
     snippets = []
     for file in files:
         if file['filename'].endswith('.yml') or file['filename'].endswith('.yaml'):
+            if file['filename'].startswith('.github/workflows'):
+                continue
             patch = file['patch']
             # Extract the actual YAML code from the patch
             yaml_snippet = "\n".join(line[1:] for line in patch.split('\n') if line.startswith('+') and not line.startswith('+++'))
