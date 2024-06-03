@@ -25,8 +25,7 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
     for file in files:
         if file['filename'].endswith('.yml') or file['filename'].endswith('.yaml'):
             patch = file['patch']
-            # Simplified: Extract the actual YAML code from the patch (this example assumes the whole file is replaced)
-            # In reality, you'd need a more robust parsing of the diff
+            # Extract the actual YAML code from the patch
             yaml_snippet = "\n".join(line[1:] for line in patch.split('\n') if line.startswith('+') and not line.startswith('+++'))
             snippets.append(yaml_snippet)
     return snippets
@@ -54,7 +53,7 @@ def main():
     with open(os.getenv('GITHUB_EVENT_PATH'), 'r') as f:
         event = json.load(f)
     
-    pr_number = event['number']
+    pr_number = event['pull_request']['number']
 
     # Fetch schema and code snippets
     schema = fetch_schema()
@@ -63,9 +62,14 @@ def main():
     # Validate snippets
     results = validate_snippets(snippets, schema)
     
-    # Print results
-    for snippet, result in results:
-        print(f"Snippet:\n{snippet}\nResult: {result}\n")
+    # Write results to a file
+    with open('validation_results.txt', 'w') as f:
+        for snippet, result in results:
+            f.write(f"Snippet:\n{snippet}\nResult: {result}\n\n")
+
+    # Check if there are any invalid snippets
+    if any("Invalid" in result for _, result in results):
+        exit(1)
 
 if __name__ == "__main__":
     main()
