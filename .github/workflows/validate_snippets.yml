@@ -24,7 +24,7 @@ jobs:
 
       - name: Run validation script
         env:
-          SNIPPET_VALIDATION: ${{ secrets.SNIPPET_VALIDATION }}
+            SNIPPET_VALIDATION: ${{ secrets.SNIPPET_VALIDATION }}
         run: |
           python website/validate_snippets.py
 
