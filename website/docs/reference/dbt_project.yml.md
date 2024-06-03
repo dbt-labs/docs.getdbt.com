@@ -65,21 +65,6 @@ The following example is a list of all available configurations in the `dbt_proj
 metrics:
   [<metric-configs>](/docs/build/metrics-overview)
 
-models:
-  [<model-configs>](/reference/model-configs)
-
-seeds:
-  [<seed-configs>](/reference/seed-configs)
-
-semantic-models:
-  [<semantic-model-configs>](/docs/build/semantic-models)
-
-saved-queries:
-  [<saved-queries-configs>](/docs/build/saved-queries)
-
-snapshots:
-  [<snapshot-configs>](/reference/snapshot-configs)
-
 sources:
   [<source-configs>](source-configs)
   
