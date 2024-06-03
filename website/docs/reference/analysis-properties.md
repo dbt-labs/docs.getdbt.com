@@ -14,7 +14,6 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 version: 2
 
 analyses:
-  - name: <analysis_name> # required
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
