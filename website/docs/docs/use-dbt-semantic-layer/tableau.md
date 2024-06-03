@@ -1,17 +1,14 @@
 ---
-title: "Tableau (beta)"
+title: "Tableau"
 description: "Use Tableau worksheets to query the dbt Semantic Layer and produce dashboards with trusted date."
 tags: [Semantic Layer]
-sidebar_label: "Tableau (beta)"
+sidebar_label: "Tableau"
 ---
 
-:::info Beta functionality
-The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/dbt-versions/product-lifecycles#dbt-cloud).
-:::
 
 The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  
 
-This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop or Tableau Server. 
+This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop or Tableau Server.
 
 ## Prerequisites
 
@@ -23,9 +20,17 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment. 
   - Single-tenant accounts should contact their account representative for necessary setup and enablement.
 
+import SLCourses from '/snippets/_sl-course.md';
+
+<SLCourses/>
+
 ## Installing the Connector
 
-1. Download the GitHub [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/download/v1.0.2/dbt_semantic_layer.taco) locally and add it to your default folder:
+The dbt Semantic Layer Tableau connector is available to download directly on [Tableau Exchange](https://exchange.tableau.com/products/1020).
+
+Alternatively, you can follow these steps to install the Connector:
+
+1. Download the GitHub [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/latest/download/dbt_semantic_layer.taco) locally and add it to your default folder:
 
 | Operating system |Tableau Desktop | Tableau Server |
 | ---------------- | -------------- | -------------- |
@@ -43,9 +48,9 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 
 ## Using the integration
 
-1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page. 
-2. **Access all Semantic Layer Objects** &mdash; You can choose between all the metrics, dimensions, and entities configured in your dbt Semantic Layer under the data source called "ALL". (Note: "METRICS_AND_DIMENSIONS" was the original name of this data source, and it contains the same information as "ALL". In the future, we will deprecate "METRICS_AND_DIMENSIONS" in favor of "ALL") 
-3. **Access Saved Queries** &mdash; You can optionally access individual [saved queries](/docs/build/saved-queries) that you've defined. These will also show up as unique data sources when you log in.
+1. **Authentication** &mdash; Once you authenticate, the system will direct you to the data source page.
+2. **Access all Semantic Layer Objects** &mdash; Use the "ALL" data source to access all the metrics, dimensions, and entities configured in your dbt Semantic Layer. Note that the "METRICS_AND_DIMENSIONS" data source has been deprecated and replaced by "ALL".
+3. **Access saved queries** &mdash; You can optionally access individual [saved queries](/docs/build/saved-queries) that you've defined. These will also show up as unique data sources when you log in.
 4. **Access worksheet** &mdash; From your data source selection, go directly to a worksheet in the bottom left-hand corner.
 5. **Query metrics and dimensions** &mdash; Then, you'll find all the metrics, dimensions, and entities that are available to query on the left side of your window based on your selection.
 
@@ -69,8 +74,8 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 - In any of our Semantic Layer interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
 - We can support calculated fields for creating parameter filters or dynamically selecting metrics and dimensions. However, other uses of calculated fields are not supported. 
-  - _Note: For calculated fields use cases that are not currently covered, please reach out to <a href="mailto:support@getdbt.com?subject=dbt Semantic Layer feedback">dbt Support</a> and share them so we can further understand._
-- When using Saved Queries that include filters, we will automatically apply any filters that the query has.
+  - _Note: For calculated field use cases that are not currently covered, please reach out to <a href="mailto:support@getdbt.com?subject=dbt Semantic Layer feedback">dbt Support</a> and share them so we can further understand._
+- When using saved queries that include filters, we will automatically apply any filters that the query has.
 
 ## Unsupported functionality
 
@@ -85,6 +90,7 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - Some functions in Analysis --> Create Calculated Field
 - Filtering on a Date Part time dimension for a Cumulative metric type
 - Changing your date dimension to use "Week Number"
+- Performing joins between tables that the dbt Semantic Layer creates. It handles joins for you, so there's no need to join components in the dbt Semantic Layer. Note, that you _can_ join tables from the dbt Semantic Layer to ones outside your data platform.
   
 ## FAQs
 <FAQ path="Troubleshooting/sl-alpn-error" />

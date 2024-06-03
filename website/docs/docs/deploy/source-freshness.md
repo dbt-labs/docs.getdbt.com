@@ -41,4 +41,5 @@ It's important that your freshness jobs run frequently enough to snapshot data l
 
 ## Further reading
 
-For more on exposing links to the latest documentation and sharing source freshness reports to your team, see [Building and configuring artifacts](/docs/deploy/artifacts).
+- Refer to [Artifacts](/docs/deploy/artifacts) for more info on how to create dbt Cloud artifacts, share links to the latest documentation, and share source freshness reports with your team.
+- Source freshness for Snowflake is calculated using the `LAST_ALTERED` column. Read about the limitations in [Snowflake configs](/reference/resource-configs/snowflake-configs#source-freshness-known-limitation).

@@ -100,7 +100,7 @@ In this example, you can set up a query tag to be applied to every query with th
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
 
 Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`.
 
@@ -479,3 +479,15 @@ The workaround is to execute `DROP TABLE my_model` on the data warehouse before 
 </VersionBlock>
 
 </VersionBlock>
+
+
+## Source freshness known limitation
+
+Snowflake calculates source freshness using information from the `LAST_ALTERED` column, meaning it relies on a field updated whenever any object undergoes modification, not only data updates. No action must be taken, but analytics teams should note this caveat. 
+
+Per the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/info-schema/tables#usage-notes): 
+
+  >The `LAST_ALTERED` column is updated when the following operations are performed on an object:
+  >- DDL operations.
+  >- DML operations (for tables only).
+  >- Background maintenance operations on metadata performed by Snowflake.

@@ -45,7 +45,7 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 - Works with Jinja and SQL, 
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the IDE).
-- Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management.
+- Displays a **Code Quality** tab to view code errors, provides code quality visibility and management, and displays the SQLFluff version used.
 
 :::info Ephemeral models not supported
 Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
@@ -53,12 +53,13 @@ Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FA
 
 ### Enable linting
 
-1. To enable linting, make sure you're on a development branch. Linting isn't available on main or read-only branches.
-2. Open a `.sql` file and click the **Code Quality** tab.
-3. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section), below the **File editor**. 
-4. In the code quality tool config pop-up, you have the option to select **sqlfluff** or **sqlfmt**. 
-5. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
-6. Once you've selected the **sqlfluff** radio button, go back to the console section (below the **File editor**) to select the **Lint** or **Fix** dropdown button:
+Linting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
+
+1. To enable linting, open a `.sql` file and click the **Code Quality** tab.
+2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section), below the **File editor**. 
+3. In the code quality tool config pop-up, you have the option to select **sqlfluff** or **sqlfmt**. 
+4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
+5. Once you've selected the **sqlfluff** radio button, go back to the console section (below the **File editor**) to select the **Lint** or **Fix** dropdown button:
     - **Lint** button &mdash; Displays linting issues in the IDE as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving. Click **Lint** again to rerun linting.
     - **Fix** button &mdash; Automatically fixes linting errors in the **File editor**. When fixing is complete, you'll see a message confirming the outcome. 
     - Use the **Code Quality** tab to view and debug any code errors.
@@ -144,33 +145,30 @@ The Cloud IDE formatting integrations take care of manual tasks like code format
 
 ### Format SQL
 
-To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja. 
+To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja.
 
 By default, the IDE uses sqlfmt rules to format your code, making the **Format** button available and convenient to use immediately. However, if you have a file named .sqlfluff in the root directory of your dbt project, the IDE will default to SQLFluff rules instead.
 
-To enable sqlfmt:
+Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
-1. Make sure you're on a development branch. Formatting isn't available on main or read-only branches.
-2. Open a `.sql` file and click on the **Code Quality** tab.
-3. Click on the **`</> Config`** button on the right side of the console.
-4. In the code quality tool config pop-up, you have the option to select sqlfluff or sqlfmt.
-5. To format your code, select the **sqlfmt** radio button. (Use sqlfluff to [lint](#linting) your code).
-6. Once you've selected the **sqlfmt** radio button, go to the console section (located below the **File editor**) to select the **Format** button.
-7. The **Format** button auto-formats your code in the **File editor**. Once you've auto-formatted, you'll see a message confirming the outcome. 
+1. Open a `.sql` file and click on the **Code Quality** tab.
+2. Click on the **`</> Config`** button on the right side of the console.
+3. In the code quality tool config pop-up, you have the option to select sqlfluff or sqlfmt.
+4. To format your code, select the **sqlfmt** radio button. (Use sqlfluff to [lint](#linting) your code).
+5. Once you've selected the **sqlfmt** radio button, go to the console section (located below the **File editor**) to select the **Format** button.
+6. The **Format** button auto-formats your code in the **File editor**. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfmt.gif" width="90%" title="Use sqlfmt to format your SQL code."/>
 
 ### Format YAML, Markdown, JSON
 
-To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter.
+To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter. Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
-1. To enable formatting, make sure you're on a development branch. Formatting isn't available on main or read-only branches.
-2. Open a `.yml`, `.md`, or `.json` file.
-3. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. Use the **Code Quality** tab to view code errors. 
-4. Once you've auto-formatted, you'll see a message confirming the outcome. 
+1. Open a `.yml`, `.md`, or `.json` file.
+2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. Use the **Code Quality** tab to view code errors. 
+3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/prettier.gif" width="90%" title="Format YAML, Markdown, and JSON files using Prettier."/>
-
 
 You can add a configuration file to customize formatting rules for YAML, Markdown, or JSON files using Prettier. The IDE looks for the configuration file based on an order of precedence. For example, it first checks for a "prettier" key in your `package.json` file.
 
@@ -178,18 +176,18 @@ For more info on the order of precedence and how to configure files, refer to [P
 
 ### Format Python
 
-To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter.
+To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter. Formatting is available on all branches, including your protected primary git branch. Since the dbt Cloud IDE prevents commits to the protected branch, it prompts you to commit those changes to a new branch.
 
-1. To enable formatting, make sure you're on a development branch. Formatting isn't available on main or read-only branches.
-2. Open a `.py` file.
-3. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
-4. Once you've auto-formatted, you'll see a message confirming the outcome. 
+1. Open a `.py` file.
+2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
+3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/python-black.gif" width="80%" title="Format Python files using Black."/>
 
 ## FAQs
 
 <detailsToggle alt_header="When should I use SQLFluff and when should I use sqlfmt?">
+
 SQLFluff and sqlfmt are both tools used for formatting SQL code, but some differences may make one preferable to the other depending on your use case. <br />
 
 SQLFluff is a SQL code linter and formatter. This means that it analyzes your code to identify potential issues and bugs, and follows coding standards. It also formats your code according to a set of rules, which are [customizable](#customize-linting), to ensure consistent coding practices. You can also use SQLFluff to keep your SQL code well-formatted and follow styling best practices. <br />
@@ -215,11 +213,6 @@ However, you can customize and include an additional child `.sqlfluff` configura
 <detailsToggle alt_header="Can I run SQLFluff commands from the terminal?">
 
 Currently, running SQLFluff commands from the terminal isn't supported. 
-</detailsToggle>
-
-<detailsToggle alt_header="Why am I unable to see the Lint or Format button?">
-
-Make sure you're on a development branch. Formatting or Linting isn't available on "main" or "read-only" branches. 
 </detailsToggle>
 
 <detailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE?">

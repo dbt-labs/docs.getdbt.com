@@ -12,6 +12,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 Using Databricks workflows to call the dbt Cloud job API can be useful for several reasons:
@@ -126,7 +128,7 @@ if __name__ == '__main__':
 
 3. Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with the values you used [previously](#set-up-a-databricks-secret-scope)
 
-4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+4. Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment and [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
     * To find these values, navigate to **dbt Cloud**, select **Deploy -> Jobs**.  Select the Job you want to run and copy the URL. For example: `https://cloud.getdbt.com/deploy/000000/projects/111111/jobs/222222`
     and therefore valid code would be:
@@ -204,3 +206,5 @@ You can set up workflows directly from the notebook OR by adding this notebook t
 Multiple Workflow tasks can be set up using the same notebook by configuring the `job_id` parameter to point to different dbt Cloud jobs. 
 
 Using Databricks workflows to access the dbt Cloud job API can improve integration of your data pipeline processes and enable scheduling of more complex workflows.
+
+</div>

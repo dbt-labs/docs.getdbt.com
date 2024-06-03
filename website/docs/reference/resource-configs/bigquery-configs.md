@@ -423,7 +423,7 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -633,7 +633,7 @@ from {{ ref('events') }}
 
 ```
 ...
-[0m16:03:13.017641 [debug] [Thread-3 (]: BigQuery adapter: Copying table(s) "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" to "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" with disposition: "WRITE_TRUNCATE"
+[0m16:03:13.017641 [debug] [Thread-3 (]: BigQuery adapter: Copying table(s) "/projects/projectname/datasets/analytics/tables/bigquery_table__dbt_tmp$20230112" to "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" with disposition: "WRITE_TRUNCATE"
 ...
 ```
 
@@ -900,5 +900,25 @@ As with most data platforms, there are limitations associated with materialized 
 - Recreating/dropping the base table requires recreating/dropping the materialized view.
 
 Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+## Python models
+
+The BigQuery adapter supports Python models with the following additional configuration parameters:
+
+| Parameter               | Type        | Required | Default   | Valid values     |
+|-------------------------|-------------|----------|-----------|------------------|
+| `enable_list_inference` | `<boolean>` | no       | `True`    | `True`, `False`  |
+| `intermediate_format`   | `<string>`  | no       | `parquet` | `parquet`, `orc` |
+
+### The `enable_list_inference` parameter
+The `enable_list_inference` parameter enables a PySpark data frame to read multiple records in the same operation.
+By default, this is set to `True` to support the default `intermediate_format` of `parquet`.
+
+### The `intermediate_format` parameter
+The `intermediate_format` parameter specifies which file format to use when writing records to a table. The default is `parquet`.
 
 </VersionBlock>

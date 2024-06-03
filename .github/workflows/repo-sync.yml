@@ -1,0 +1,111 @@
+name: Repo Sync
+
+# **What it does**: Syncs docs.getdbt.com public repo into the docs private repo
+# This GitHub Actions workflow keeps the `current` branch of those two repos in sync.
+# **Why we have it**: To keep the open-source repository up-to-date
+# while still having an internal repository for sensitive work.
+# For more details, see https://github.com/repo-sync/repo-sync#how-it-works
+
+on:
+  schedule:
+    - cron: '0 6,12,18 * * *' # Run at 6:00 AM, 12:00 PM, and 6:00 PM
+
+jobs:
+  repo-sync:
+    permissions:
+      contents: write
+      pull-requests: write
+    name: Repo Sync
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        # Use the INTERMEDIATE_BRANCH as the checkout reference
+        ref: ${{ secrets.INTERMEDIATE_BRANCH }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        # Fetch all history for all branches and tags
+        fetch-depth: 0  
+
+    # Sync the source repo to the destination branch using repo-sync/github-sync
+    - uses: repo-sync/github-sync@v2
+      name: Sync repo to branch
+      with:
+        # Source repository to sync from
+        source_repo: ${{ secrets.SOURCE_REPO }}
+        # Source branch to sync from
+        source_branch: current
+        # Destination branch to sync to
+        destination_branch: ${{ secrets.INTERMEDIATE_BRANCH }}
+        github_token: ${{ secrets.WORKFLOW_TOKEN }}
+
+    - name: Ship pull request
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.WORKFLOW_TOKEN }}
+        result-encoding: string
+        script: |
+            const {owner, repo} = context.repo;
+            const head = '${{ secrets.INTERMEDIATE_BRANCH }}';
+            const base = 'current'
+
+            async function closePullRequest(prNumber) {
+              console.log('closing PR', prNumber)
+              await github.rest.pulls.update({
+                owner,
+                repo,
+                pull_number: prNumber,
+                state: 'closed'
+              });
+              console.log('closed PR', prNumber)
+            }
+          
+            console.log('Creating new PR')
+            let pull, pull_number
+            try {
+              const response = await github.rest.pulls.create({
+                owner,
+                repo,
+                head,
+                base,
+                title: 'REPO SYNC - Public to Private',
+                body: 'This is an automated pull request to sync changes between the public and private repos.',
+              });
+              pull = response.data
+              pull_number = pull.number
+              console.log('Created pull request successfully', pull.html_url)
+          
+              } catch (err) {
+                // Don't error/alert if there's no commits to sync
+                if (err.message?.includes('No commits')) {
+                  console.log(err.message)
+                  return
+                }
+                throw err
+              }
+
+              const { data: prFiles } = await github.rest.pulls.listFiles({ owner, repo, pull_number })
+              if (prFiles.length) {
+                console.log(prFiles.length, 'files have changed')
+              } else {
+                console.log('No files changed, closing')
+                await closePullRequest(pull_number)
+                return
+              }
+  
+              console.log('Checking for merge conflicts')
+              if (pull.mergeable_state === 'dirty') {
+                console.log('Pull request has a conflict', pull.html_url)
+                await closePullRequest(pull_number)
+                throw new Error('PR has a conflict, please resolve manually')
+              }
+              console.log('No detected merge conflicts')
+  
+              
+              console.log('Merging the PR')
+              await github.rest.pulls.merge({
+                owner,
+                repo,
+                pull_number,
+                merge_method: 'merge',
+              })
+              console.log('Merged the PR successfully')
