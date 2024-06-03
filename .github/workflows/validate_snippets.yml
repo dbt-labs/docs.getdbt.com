@@ -21,11 +21,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install requests jsonschema pyyaml
+
       - name: Run validation script
         env:
           SNIPPET_VALIDATION: ${{ secrets.SNIPPET_VALIDATION }}
         run: |
           python website/validate_snippets.py
+
       - name: Display validation results
         if: failure()
         run: cat website/validation_results.txt
