@@ -46,6 +46,8 @@ The following code example displays the complete specification for conversion me
 ```yaml
 metrics:
   - name: The metric name # Required
+    owner: test name
+    alias: test 
     description: The metric description # Optional
     type: conversion # Required
     label: YOUR_LABEL # Required
