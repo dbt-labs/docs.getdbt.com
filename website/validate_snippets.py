@@ -48,7 +48,7 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
 
 # Identify the type of YAML snippet and select the corresponding schema
 def identify_schema(snippet):
-    if "dbt_project" in snippet:
+    if "project.yml" in snippet:
         return "dbt_project"
     elif "dbt_cloud" in snippet:
         return "dbt_cloud"
