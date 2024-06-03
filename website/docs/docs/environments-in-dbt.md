@@ -7,7 +7,9 @@ pagination_next: null
 
 In software engineering, environments are used to enable engineers to develop and test code without impacting the users of their software. Typically, there are two types of environments in dbt:
 
-Test mockup PR
+Test mockup PR.
+
+Second edit for mockup.
 
 - **Deployment or Production** (or _prod_) &mdash; Refers to the environment that end users interact with. 
 
