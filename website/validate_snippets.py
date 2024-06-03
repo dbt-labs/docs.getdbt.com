@@ -5,12 +5,17 @@ import yaml
 from jsonschema import validate, ValidationError
 
 # Define the URL of the latest schema
-SCHEMA_URL = "https://raw.githubusercontent.com/dbt-labs/dbt-jsonschema/main/schemas/latest/schema.json"
+SCHEMA_URL = "https://schemas.getdbt.com/dbt/manifest/v12.json"
 
 # Fetch the latest schema
 def fetch_schema():
     response = requests.get(SCHEMA_URL)
-    response.raise_for_status()
+    try:
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        print(f"Failed to fetch schema: {e}")
+        print(f"Response: {response.text}")
+        raise
     return response.json()
 
 # Fetch code snippets from the PR
