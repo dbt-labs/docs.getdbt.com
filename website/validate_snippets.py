@@ -114,6 +114,8 @@ def main():
     # Check if there are any invalid snippets
     if any("Invalid" in result for _, _, result in results):
         exit(1)
+    else:
+        print("All snippets are valid.")
 
 if __name__ == "__main__":
     main()
