@@ -33,7 +33,7 @@ to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowfl
 
 **Available in:** Development environments,  Deployment environments
 
-The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication) to authenticate Development or Deployment credentials for a dbt Cloud project.
+The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a dbt Cloud project.
 
 1. After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in dbt Cloud:
 
