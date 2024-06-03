@@ -23,8 +23,11 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 This approach is distinct from and does not require you to implement VPC peering between your AWS account(s) and dbt Cloud.
 
-You need these resource to create a PrivateLink connection, which allows the dbt Cloud application to connect to your self-hosted cloud VCS. These resources can be created via the AWS Console, AWS CLI, or Infrastructure-as-Code such as [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) or [AWS CloudFormation](https://aws.amazon.com/cloudformation/).
+### 1. Provision AWS resources
 
+Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing, or connected to, your self-hosted cloud VCS. These resources can be created via the AWS Console, AWS CLI, or Infrastructure-as-Code such as [Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) or [AWS CloudFormation](https://aws.amazon.com/cloudformation/).
+
+- **Security Group (AWS hosted only)** &mdash; If you are connecting to an existing VCS install, this likely already exists, however, you may need to add or modify Security Group rules to accept traffic from the Network Load Balancer (NLB) created for this Endpoint Service.
 - **Target Group(s)** - A [Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html) is attached to a [Listener](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html) on the NLB and is responsible for routing incoming requests to healthy targets in the group. If connecting to the VCS system over both SSH and HTTPS, two **Target Groups** will need to be created.
     - **Target Type (choose most applicable):**
         - **Instance/ASG:** Select existing EC2 instance(s) where the VCS system is running, or [an autoscaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html) (ASG) to automatically attach any instances launched from that ASG.
@@ -46,23 +49,45 @@ You need these resource to create a PrivateLink connection, which allows the dbt
     - **Load balancer:** Attach the NLB created in the previous step.
     - **Acceptance required (recommended)**:  When enabled, requires a new connection request to the VPC Endpoint Service to be accepted by the customer before connectivity is allowed ([details](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#accept-reject-connection-requests)).
 
-    Once these resources have been provisioned, access needs to be granted for the dbt Labs AWS account to create a VPC Endpoint in our VPC. On the newly created VPC Endpoint Service, add a new [Allowed Principal](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#add-remove-permissions) for the appropriate dbt Labs principal: 
+### 2. Grant dbt AWS account access to the VPC Endpoint Service
 
-   -  **AWS Account ID:**	`arn:aws:iam::<account id>:root` (contact your dbt Labs account representative for appropriate account ID).
+Once these resources have been provisioned, access needs to be granted for the dbt Labs AWS account to create a VPC Endpoint in our VPC. On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the following IAM role in the appropriate production AWS account and save your changes ([details](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#add-remove-permissions)).
 
-### Completing the connection
+ - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
-To complete the connection, dbt Labs must now provision a VPC Endpoint to connect to your VPC Endpoint Service. This requires you send the following information:
+ <Lightbox src="/img/docs/dbt-cloud/privatelink-allow-principals.png" width="70%" title="Enter ARN"/>
+
+### 3. Obtain VPC Endpoint Service Name
+
+Once the VPC Endpoint Service is provisioned and configured find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. Copy the service name field value and include it in your communication to dbt Cloud support.
+
+ <Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" width="70%" title="Get service name field value"/>
+
+:::note Custom DNS configuration
  
- - VPC Endpoint Service name:
+If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the dbt Labs Infrastructure team in the dbt Cloud private network. For example:
+    - Private hosted zone: examplecorp.com
+    - DNS record: github.examplecorp.com
+    
+:::
 
- <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/vpc-endpoint-service-name.png" width="80%" title="Location of the VPC Endpoint Service name in the AWS console" />
+### 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
+```
+Subject: New Multi-Tenant PrivateLink Request
+- Type: VCS Interface-type
+- VPC Endpoint Service Name:
+- Custom DNS (optional)
+    - Private hosted zone:
+    - DNS record:
+- VCS install AWS Region (e.g., us-east-1, eu-west-2):
+- dbt Cloud multi-tenant environment (US, EMEA, AU):
+```
 
- - **DNS configuration:** If the connection to the VCS service requires a custom domain and/or URL for TLS, a private hosted zone can be configured by the dbt Labs Infrastructure team in the dbt Cloud private network. For example:
-    - **Private hosted zone:** `examplecorp.com`
-    - **DNS record:** `github.examplecorp.com`
+import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
 
-### Accepting the connection request
+<PrivateLinkSLA />
+
+### 5. Accepting the connection request
 
 When you have been notified that the resources are provisioned within the dbt Cloud environment, you must accept the endpoint connection (unless the VPC Endpoint Service is set to auto-accept connection requests). Requests can be accepted through the AWS console, as seen below, or through the AWS CLI.
 
@@ -73,6 +98,7 @@ Once you accept the endpoint connection request, you can use the PrivateLink end
 ## Configure in dbt Cloud
 
 Once dbt confirms that the PrivateLink integration is complete, you can use it in a new or existing git configuration. 
+
 1. Select **PrivateLink Endpoint** as the connection type, and your configured integrations will appear in the dropdown menu. 
 2. Select the configured endpoint from the drop down list.
 3. Click **Save**.

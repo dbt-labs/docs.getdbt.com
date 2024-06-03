@@ -18,52 +18,6 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 ## All functions (alphabetical)
 
-<VersionBlock firstVersion="1.2" lastVersion="1.2">
-
-- [Cross-database macros](#cross-database-macros)
-  - [All functions (alphabetical)](#all-functions-alphabetical)
-  - [Data type functions](#data-type-functions)
-    - [type\_bigint](#type_bigint)
-    - [type\_boolean](#type_boolean)
-    - [type\_float](#type_float)
-    - [type\_int](#type_int)
-    - [type\_numeric](#type_numeric)
-    - [type\_string](#type_string)
-    - [type\_timestamp](#type_timestamp)
-  - [Set functions](#set-functions)
-    - [except](#except)
-    - [intersect](#intersect)
-  - [Array functions](#array-functions)
-    - [array\_append](#array_append)
-    - [array\_concat](#array_concat)
-    - [array\_construct](#array_construct)
-  - [String functions](#string-functions)
-    - [concat](#concat)
-    - [hash](#hash)
-    - [length](#length)
-    - [position](#position)
-    - [replace](#replace)
-    - [right](#right)
-    - [split\_part](#split_part)
-  - [String literal functions](#string-literal-functions)
-    - [escape\_single\_quotes](#escape_single_quotes)
-    - [string\_literal](#string_literal)
-  - [Aggregate and window functions](#aggregate-and-window-functions)
-    - [any\_value](#any_value)
-    - [bool\_or](#bool_or)
-    - [listagg](#listagg)
-  - [Cast functions](#cast-functions)
-    - [cast\_bool\_to\_text](#cast_bool_to_text)
-    - [safe\_cast](#safe_cast)
-  - [Date and time functions](#date-and-time-functions)
-    - [dateadd](#dateadd)
-    - [datediff](#datediff)
-    - [date\_trunc](#date_trunc)
-    - [last\_day](#last_day)
-  - [Date and time parts](#date-and-time-parts)
-  - [SQL expressions](#sql-expressions)
-
-</VersionBlock>
 <VersionBlock firstVersion="1.3">
 
 - [Cross-database macros](#cross-database-macros)
@@ -76,6 +30,7 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [type\_numeric](#type_numeric)
     - [type\_string](#type_string)
     - [type\_timestamp](#type_timestamp)
+    - [current\_timestamp](#current_timestamp)
   - [Set functions](#set-functions)
     - [except](#except)
     - [intersect](#intersect)
@@ -99,9 +54,11 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
     - [bool\_or](#bool_or)
     - [listagg](#listagg)
   - [Cast functions](#cast-functions)
+    - [cast](#cast)
     - [cast\_bool\_to\_text](#cast_bool_to_text)
     - [safe\_cast](#safe_cast)
   - [Date and time functions](#date-and-time-functions)
+    - [date](#date)
     - [dateadd](#dateadd)
     - [datediff](#datediff)
     - [date\_trunc](#date_trunc)
@@ -111,17 +68,6 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.2" lastVersion="1.2">
-
-[**Data type functions**](#data-type-functions)
-- [type_bigint](#type_bigint)
-- [type_float](#type_float)
-- [type_int](#type_int)
-- [type_numeric](#type_numeric)
-- [type_string](#type_string)
-- [type_timestamp](#type_timestamp)
-
-</VersionBlock>
 <VersionBlock firstVersion="1.3">
 
 [**Data type functions**](#data-type-functions)
@@ -167,10 +113,12 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [listagg](#listagg)
 
 [**Cast functions**](#cast-functions)
+- [cast](#cast)
 - [cast_bool_to_text](#cast_bool_to_text)
 - [safe_cast](#safe_cast)
 
 [**Date and time functions**](#date-and-time-functions)
+- [date](#date)
 - [dateadd](#dateadd)
 - [datediff](#datediff)
 - [date_trunc](#date_trunc)
@@ -314,6 +262,29 @@ This macro yields the database-specific data type for a `TIMESTAMP` (which may o
 
 ```sql
 TIMESTAMP
+```
+
+### current_timestamp
+
+This macro returns the current date and time for the system. Depending on the adapter:
+
+- The result may be an aware or naive timestamp.
+- The result may correspond to the start of the statement or the start of the transaction.
+
+
+**Args**
+- None
+
+**Usage**
+- You can use the `current_timestamp()` macro within your dbt SQL files like this:
+
+```sql
+{{ dbt.current_timestamp() }}
+```
+**Sample output (PostgreSQL)**
+
+```sql
+now()
 ```
 
 ## Set functions
@@ -752,6 +723,38 @@ array_to_string(
 
 ## Cast functions
 
+### cast
+
+**Availability**:
+dbt v1.8 or higher. For more information, select the version from the documentation navigation menu.
+
+<VersionBlock firstVersion="1.8">
+
+__Args__:
+
+ * `field`: [attribute name or expression](#sql-expressions).
+ * `type`: data type to convert to
+
+This macro casts a value to the specified data type. Unlike [safe\_cast](#safe_cast), this macro will raise an error when the cast fails.
+
+**Usage**:
+
+```sql
+{{ dbt.cast("column_1", api.Column.translate_type("string")) }}
+{{ dbt.cast("column_2", api.Column.translate_type("integer")) }}
+{{ dbt.cast("'2016-03-09'", api.Column.translate_type("date")) }}
+```
+
+**Sample Output (PostgreSQL)**:
+
+```sql
+    cast(column_1 as TEXT)
+    cast(column_2 as INT)
+    cast('2016-03-09' as date)
+```
+
+</VersionBlock>
+
 ### cast_bool_to_text
 __Args__:
 
@@ -823,6 +826,35 @@ For databases that support it, this macro will return `NULL` when the cast fails
 ```
 
 ## Date and time functions
+
+### date
+
+**Availability**:
+dbt v1.8 or later. For more information, select the version from the documentation navigation menu.
+
+<VersionBlock firstVersion="1.8">
+
+__Args__:
+
+ * `year`: an integer
+ * `month`: an integer
+ * `day`: an integer
+
+This macro converts the `year`, `month`, and `day` into an SQL `DATE` type.
+ 
+**Usage**:
+
+```sql
+{{ dbt.date(2023, 10, 4) }}
+```
+
+**Sample output (PostgreSQL)**:
+
+```sql
+to_date('2023-10-04', 'YYYY-MM-DD')
+```
+
+</VersionBlock>
 
 ### dateadd
 __Args__:

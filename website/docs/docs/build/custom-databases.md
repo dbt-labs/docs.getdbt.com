@@ -85,6 +85,10 @@ The default implementation of `generate_database_name` simply uses the supplied 
 
 </File>
 
+import WhitespaceControl from '/snippets/_whitespace-control.md';
+
+<WhitespaceControl/>
+
 <VersionBlock firstVersion="1.6">
 
 ### Managing different behaviors across packages

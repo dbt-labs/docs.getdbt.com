@@ -8,18 +8,21 @@ tags: [Metrics, Semantic Layer]
 
 Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
-This metric is common for calculating things like weekly active users, or month-to-date revenue.  The parameters, description, and type for cumulative metrics are: 
+This metric is common for calculating things like weekly active users, or month-to-date revenue. You can use `fill_nulls_with` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row. The parameters, description, and type for cumulative metrics are: 
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | The value that will be displayed in downstream tools. | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
-| `measure` | The measure you are referencing. | Required |
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
+| `measure` | A list of measure inputs | Required |
+| `measure:name` | TThe measure you are referencing. | Optional  |
+| `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
+| `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for cumulative metrics, along with an example:
 
@@ -30,24 +33,16 @@ metrics:
     type: cumulative # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
-      measure: The measure you are referencing # Required
-      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Cannot be used with grain_to_date
-      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with window
+      measure: 
+        name: The measure you are referencing. # Required
+        fill_nulls_with: Set the value in your metric definition instead of null (such as zero). # Optional
+        join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. It cannot be used with grain_to_date.
+      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. It cannot be used with window.
 
 ```
 
-## Limitations
-Cumulative metrics are currently under active development and have the following limitations:
-- You are required to use [`metric_time` dimension](/docs/build/dimensions#time) when querying cumulative metrics. If you don't use `metric_time` in the query, the cumulative metric will return incorrect results because it won't perform the time spine join. This means you cannot reference time dimensions other than the `metric_time` in the query.
-
 ## Cumulative metrics example
-
-
-:::tip MetricFlow time spine required
-
-You will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
-
-:::
 
 Cumulative metrics measure data over a given window and consider the window infinite when no window parameter is passed, accumulating the data over all time.
 
@@ -55,24 +50,30 @@ Cumulative metrics measure data over a given window and consider the window infi
 
 metrics:
   - name: cumulative_order_total
-    label: Cumulative Order total (All Time)    
+    label: Cumulative Order total (All-Time)    
     description: The cumulative value of all orders
     type: cumulative
     type_params:
-      measure: order_total
+      measure: 
+        name: order_total
+        fill_nulls_with: 0
   - name: cumulative_order_total_l1m
     label: Cumulative Order total (L1M)   
-    description: Trailing 1 month cumulative order amount
+    description: Trailing 1-month cumulative order amount
     type: cumulative
     type_params:
-      measure: order_total
+      measure: 
+        name: order_total
+        fill_nulls_with: 0
       window: 1 month
   - name: cumulative_order_total_mtd
     label: Cumulative Order total (MTD)
-    description: The month to date value of all orders
+    description: The month-to-date value of all orders
     type: cumulative
     type_params:
-      measure: order_total
+      measure: 
+        name: order_total
+        fill_nulls_with: 0
       grain_to_date: month
 ```
 
@@ -181,14 +182,14 @@ We can compare the difference between a 1-month window and a monthly grain to da
 metrics:
   - name: cumulative_order_total_l1m  #For this metric, we use a window of 1 month 
     label: Cumulative Order total (L1M)
-    description: Trailing 1 month cumulative order amount
+    description: Trailing 1-month cumulative order amount
     type: cumulative
     type_params:
       measure: order_total
       window: 1 month
-  - name: cumulative_order_total_mtd   #For this metric, we use a monthly grain to date 
+  - name: cumulative_order_total_mtd   #For this metric, we use a monthly grain-to-date 
     label: Cumulative Order total (MTD)
-    description: The month to date value of all orders
+    description: The month-to-date value of all orders
     type: cumulative
     type_params:
       measure: order_total
@@ -197,20 +198,20 @@ metrics:
 
 ### Implementation
 
-The current method connects the metric table to a timespine table using the primary time dimension as the join key. We use the accumulation window in the join to decide whether a record should be included on a particular day. The following SQL code produced from an example cumulative metric is provided for reference:
+To calculate the cumulative value of the metric over a given window we do a time range join to a timespine table using the primary time dimension as the join key. We use the accumulation window in the join to decide whether a record should be included on a particular day. The following SQL code produced from an example cumulative metric is provided for reference:
 
 ``` sql
 select
-  count(distinct distinct_users) as weekly_active_users
-  , metric_time
+  count(distinct distinct_users) as weekly_active_users,
+  metric_time
 from (
   select
-    subq_3.distinct_users as distinct_users
-    , subq_3.metric_time as metric_time
+    subq_3.distinct_users as distinct_users,
+    subq_3.metric_time as metric_time
   from (
     select
-      subq_2.distinct_users as distinct_users
-      , subq_1.metric_time as metric_time
+      subq_2.distinct_users as distinct_users,
+      subq_1.metric_time as metric_time
     from (
       select
         metric_time
@@ -223,8 +224,8 @@ from (
     ) subq_1
     inner join (
       select
-        distinct_users as distinct_users
-        , date_trunc('day', ds) as metric_time
+        distinct_users as distinct_users,
+        date_trunc('day', ds) as metric_time
       from demo_schema.transactions transactions_src_426
       where (
         (date_trunc('day', ds)) >= cast('1999-12-26' as timestamp)
@@ -241,6 +242,26 @@ from (
   ) subq_3
 )
 group by
-  metric_time
-limit 100
+  metric_time,
+limit 100;
+
 ```
+
+## Limitations
+
+If you specify a `window` in your cumulative metric definition, you must include `metric_time` as a dimension in the SQL query. This is because the accumulation window is based on metric time. For example,
+
+```sql
+select
+  count(distinct subq_3.distinct_users) as weekly_active_users,
+  subq_3.metric_time
+from (
+  select
+    subq_2.distinct_users as distinct_users,
+    subq_1.metric_time as metric_time
+group by
+  subq_3.metric_time
+```
+
+## Related docs
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)

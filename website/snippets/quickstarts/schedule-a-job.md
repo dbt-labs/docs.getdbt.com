@@ -2,8 +2,19 @@
 
 Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
 
-1. Under **Version Control** on the left, click **Commit and sync** and add a message. For example, "Add customers model, tests, docs."
-2. Click **Merge this branch to main** to add these changes to the main branch on your repo.
+**If you edited directly in the protected primary branch:**<br />
+1. Click the **Commit and sync git** button. This action prepares your changes for commit.
+2. A modal titled **Commit to a new branch** will appear.
+3. In the modal window, name your new branch `add-customers-model`. This branches off from your primary branch with your new changes.
+4. Add a commit message, such as "Add customers model, tests, docs" and and commit your changes.
+5. Click **Merge this branch to main** to add these changes to the main branch on your repo.
+
+
+**If you created a new branch before editing:**<br />
+1. Since you already branched out of the primary protected branch, go to  **Version Control** on the left.
+2. Click **Commit and sync** to add a message.
+3. Add a commit message, such as "Add customers model, tests, docs."
+4. Click **Merge this branch to main** to add these changes to the main branch on your repo.
 
 ## Deploy dbt
 
@@ -15,7 +26,7 @@ Use dbt Cloud's Scheduler to deploy your production jobs confidently and build o
 2. Click **Create Environment**.
 3. In the **Name** field, write the name of your deployment environment. For example, "Production."
 4. In the **dbt Version** field, select the latest version from the dropdown.
-5. Under **Deployment Credentials**, enter the name of the dataset you want to use as the target, such as "Analytics". This will allow dbt to build and work with that dataset. For some data warehouses, the target dataset may be referred to as a "schema".
+5. Under **Deployment connection**, enter the name of the dataset you want to use as the target, such as "Analytics". This will allow dbt to build and work with that dataset. For some data warehouses, the target dataset may be referred to as a "schema".
 6. Click **Save**.
 
 ### Create and run a job

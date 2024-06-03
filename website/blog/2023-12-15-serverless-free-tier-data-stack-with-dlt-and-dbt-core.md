@@ -7,7 +7,7 @@ authors: [euan_johnston]
 
 hide_table_of_contents: false
 
-date: 2023-01-15
+date: 2024-01-15
 is_featured: false
 ---
 
@@ -23,6 +23,7 @@ Unfortunately, there are significantly fewer properties than ads - it seems many
 
 **The tools:** I want to be able to run my project on [Google Cloud Functions](https://cloud.google.com/functions) due to the generous free tier. [dlt](https://dlthub.com/) is a new Python library for declarative data ingestion which I have wanted to test for some time. Finally, I will use dbt Core for transformation.
 
+<!-- truncate -->
 ## The starting point
 
 If I want to have reliable information on the state of the market I will need to:

@@ -103,7 +103,7 @@ models:
 <File name='models/marketing_model.sql'>
 
 ```sql
-select * from {{ ref('finance_model') }}
+select * from {{ ref('finance_private_model') }}
 ```
 </File>
 
@@ -111,7 +111,7 @@ select * from {{ ref('finance_model') }}
 $ dbt run -s marketing_model
 ...
 dbt.exceptions.DbtReferenceError: Parsing Error
-  Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
+  Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_private_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```
 

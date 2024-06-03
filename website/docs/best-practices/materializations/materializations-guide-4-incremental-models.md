@@ -111,11 +111,11 @@ So we’re going to use an **if statement** to apply our cutoff filter **only wh
 - ➕  we’ve set the materialization **config** to incremental,
 - 🛠️  there is an **existing table** for this model in the warehouse to build on,
 - 🙅‍♀️  and the `--full-refresh` **flag was _not_ passed.**
-  - [full refresh](reference/resource-configs/full_refresh) is a configuration and flag that is specifically designed to let us override the incremental materialization and build a table from scratch again.
+  - [full refresh](/reference/resource-configs/full_refresh) is a configuration and flag that is specifically designed to let us override the incremental materialization and build a table from scratch again.
 
 Thankfully, we don’t have to dig into the guts of dbt to sort out each of these conditions individually.
 
-- ⚙️  dbt provides us with a **macro [`is_incremental`](/docs/build/incremental-models#understanding-the-is_incremental-macro)** that checks all of these conditions for this exact use case.
+- ⚙️  dbt provides us with a **macro [`is_incremental`](/docs/build/incremental-models#understand-the-is_incremental-macro)** that checks all of these conditions for this exact use case.
 - 🔀  By **wrapping our cutoff logic** in this macro, it will only get applied when the macro returns true for all of the above conditions.
 
 Let’s take a look at all these pieces together:

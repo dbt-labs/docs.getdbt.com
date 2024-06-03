@@ -27,6 +27,7 @@ import {ThemeClassNames} from '@docusaurus/theme-common';
 import VersionContext from '../../../stores/VersionContext'
 import getElements from '../../../utils/get-html-elements';
 import useHashLink from '../../../utils/use-hash-link';
+import removeTrailingDashes from '../../../utils/remove-trailing-slashes';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -45,18 +46,31 @@ function useDocTOC() {
 
   async function fetchElements() {
     // get html elements
-    const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
+    const headings = await getElements(
+      ".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6"
+    );
+
+    // Headings to remove from TOC
+    const headingsToFilter = document.querySelectorAll(
+      ".tabs-container h2, .tabs-container h3, .expandable-anchor h2, .expandable-anchor h3"
+    );
     
     // if headings exist on page
     // compare against toc
     if(toc && headings && headings.length) {
       // make new TOC object 
       let updated = Array.from(headings).reduce((acc, item) => {
+        // Filter out TOC items from tabs
+        const shouldFilter = Array?.from(headingsToFilter)?.find(
+          (thisHeading) => thisHeading?.id === item?.id
+        );
+        if (shouldFilter) {
+          return acc;
+        }
+
         // If heading id and toc item id match found
         // include in updated toc
-        let found = toc.find(heading =>
-          heading.id.includes(item.id)
-        )
+        let found = toc.find((heading) => heading.id.includes(item.id));
         // If toc item is not in headings
         // do not include in toc
         // This means heading is versioned
@@ -64,29 +78,35 @@ function useDocTOC() {
         let makeToc = (heading) => {
           let level;
           if (heading.nodeName === "H2") {
-            level = 2
+            level = 2;
           } else if (heading.nodeName === "H3") {
-            level = 3
+            level = 3;
           } else {
-            level = null
+            level = null;
           }
+
+          // Remove trailing slashes from TOC item
+          // Trailing slashes come from the LifeCycle pill use on headers
+          const updatedHeading = removeTrailingDashes(heading)
 
           return {
-            value: heading.innerHTML,
-            id: heading.id,
-            level: level && level
-          }
-        }
+            value: updatedHeading.innerHTML,
+            id: updatedHeading.id,
+            level: level && level,
+          };
+        };
 
+        // If heading is in current version
+        // include in updated toc
         if (found) {
-          acc.push(makeToc(item))
+          acc.push(makeToc(item));
         } else if (!found) {
-          acc.push(makeToc(item))
+          acc.push(makeToc(item));
         } else {
-          null
+          null;
         }
 
-        return acc
+        return acc;
       }, [])
 
       // If updated toc different than current
