@@ -56,7 +56,10 @@ The default [`packages-install-path`](/reference/project-configs/packages-instal
 You can specify a package using one of the following methods, depending on where your package is stored.
 
 ### Hub packages (recommended)
-[dbt Hub](https://hub.getdbt.com) is a registry for dbt packages. Packages that are listed on dbt Hub can be installed like so:
+
+dbt Labs hosts the [Package hub](https://hub.getdbt.com), registry for dbt packages, as a courtesy to the dbt Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [dbt Labs Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
+
+You can install available hub packages in the following way:
 
 <File name='packages.yml'>
 
@@ -81,7 +84,9 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 * Your project uses both the dbt-utils and Snowplow packages; and the Snowplow package _also_ uses the dbt-utils package.
 * Your project uses both the Snowplow and Stripe packages, both of which use the dbt-utils package.
 
-In comparison, other package installation methods are unable to handle the duplicate dbt-utils package.
+In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
+
+Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the `DBT_PACKAGE_HUB_URL` environment variable.
 
 #### Prerelease versions
 
@@ -89,21 +94,21 @@ Some package maintainers may wish to push prerelease versions of packages to the
 
 By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
 - Explicitly specifying a prerelease version in your `version` criteria
-- Setting `install-prerelease` to `true`, and providing a compatible version range
+- Setting `install_prerelease` to `true`, and providing a compatible version range
 
-Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
+For example, both of the following configurations would successfully install `0.4.5-a2` for the [`dbt_artifacts` package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/):
 
 ```yaml
 packages:
   - package: brooklyn-data/dbt_artifacts
-    version: 0.4.5a2
+    version: 0.4.5-a2
 ```
 
 ```yaml
 packages:
   - package: brooklyn-data/dbt_artifacts
     version: [">=0.4.4", "<0.4.6"]
-    install-prerelease: true
+    install_prerelease: true
 ```
 
 ### Git packages
@@ -182,7 +187,7 @@ This method allows the user to clone via HTTPS by passing in a git token via an 
 
 
 :::info dbt Cloud Usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or <VersionBlock lastVersion="1.5">`DBT_ENV_SECRET_`</VersionBlock><VersionBlock firstVersion="1.6">`DBT_ENV_SECRET`</VersionBlock>. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
 In GitHub:

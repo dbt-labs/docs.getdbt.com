@@ -29,21 +29,22 @@ This will log the compiled SQL to the terminal, in addition to writing to the `t
 For example:
 
 ```bash
-dbt compile --select "stg_payments"
+dbt compile --select "stg_orders"                           
 dbt compile --inline "select * from {{ ref('raw_orders') }}"
 ```
 
 returns the following:
 
-
 ```bash
-dbt compile --select "stg_orders"
-21:17:09 Running with dbt=1.5.0-b5
-21:17:09 Found 5 models, 20 tests, 0 snapshots, 0 analyses, 425 macros, 0 operations, 3 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
-21:17:09
+dbt compile --select "stg_orders"                           
+
+21:17:09  Running with dbt=1.7.5
+21:17:09  Registered adapter: postgres=1.7.5
+21:17:09  Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 401 macros, 0 groups, 0 semantic models
+21:17:09  
 21:17:09 Concurrency: 24 threads (target='dev')
-21:17:09
-21:17:09 Compiled node 'stg_orders' is:
+21:17:09  
+21:17:09  Compiled node 'stg_orders' is:
 with source as (
     select * from "jaffle_shop"."main"."raw_orders"
 
@@ -52,9 +53,9 @@ with source as (
 renamed as (
 
     select
-        id as order_id
-        user_id as customer_id
-        order_date
+        id as order_id,
+        user_id as customer_id,
+        order_date,
         status
 
     from source
@@ -62,6 +63,19 @@ renamed as (
 )
 
 select * from renamed
+```
+
+```bash
+dbt compile --inline "select * from {{ ref('raw_orders') }}"
+
+18:15:49  Running with dbt=1.7.5
+18:15:50  Registered adapter: postgres=1.7.5
+18:15:50  Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 401 macros, 0 groups, 0 semantic models
+18:15:50  
+18:15:50  Concurrency: 5 threads (target='postgres')
+18:15:50  
+18:15:50  Compiled inline node is:
+select * from "jaffle_shop"."main"."raw_orders"
 ```
 
 </VersionBlock>

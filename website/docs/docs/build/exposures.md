@@ -84,7 +84,7 @@ _Required:_
 <VersionBlock firstVersion="1.4">
 
 _Expected:_
-- **depends_on**: list of refable nodes, including `ref`, `source`, and `metric` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
+- **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
 
 </VersionBlock>
 
@@ -96,16 +96,14 @@ _Expected:_
 </VersionBlock>
 
 _Optional:_
-- **label**:  may contain spaces, capital letters, or special characters.
-- **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
-- **maturity**: one of `high`, `medium`, `low`
+- **label**:  May contain spaces, capital letters, or special characters.
+- **url**:  Activates and populates the link to **View this exposure** in the upper right corner of the generated documentation site
+- **maturity**: Indicates the level of confidence or stability in the exposure. One of `high`, `medium`, or `low`. For example, you could use `high` maturity for a well-established dashboard, widely used and trusted within your organization. Use `low` maturity for a new or experimental analysis.
 
 _General properties (optional)_
 - **description**
 - **tags**
 - **meta**
-
-We plan to add more subtypes and optional properties in future releases.
 
 ### Referencing exposures
 

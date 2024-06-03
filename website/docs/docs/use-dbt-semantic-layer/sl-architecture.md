@@ -2,7 +2,7 @@
 title: "dbt Semantic Layer architecture"
 id: sl-architecture
 description: "dbt Semantic Layer product architecture and related questions."
-sidebar_label: "Architecture"
+sidebar_label: "Semantic Layer architecture"
 tags: [Semantic Layer]
 pagination_next: null
 ---
@@ -44,10 +44,7 @@ The following table compares the features available in dbt Cloud and source avai
 | Query dimension, entity, and metric metadata  through the CLI | ✅ | ✅ |
 | Query metrics and dimensions through semantic APIs (ADBC, GQL)  | ❌ | ✅ |
 | Connect to downstream integrations (Tableau, Hex, Mode, Google Sheets, and so on.) | ❌ | ✅ |
-| Create and run Exports to save metrics queries as tables in your data platform. | ❌ | Coming soon |
+| Create and run Exports to save metrics queries as tables in your data platform. | ❌ | ✅ |
 
-## FAQs
-
-import SlFaqs from '/snippets/_sl-faqs.md';
-
-<SlFaqs/>
+## Related docs
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
