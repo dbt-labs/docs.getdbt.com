@@ -28,7 +28,7 @@ There are three tools connected to operate the dbt Snowflake Native App:
 | dbt product Snowflake account | The location of where the Native App application package is hosted and then distributed into the consumer account. <br /><br />The consumer's event table is shared to this account for application monitoring and logging. |
 | Consumer’s dbt Cloud account       | The Native App interacts with the dbt Cloud APIs for metadata and processing Semantic Layer queries to power the Native App experiences. <br /> <br /> The dbt Cloud account also calls the consumer Snowflake account to utilize the warehouse to execute dbt queries for orchestration and the Cortex LLM Arctic to power the **Ask dbt** chatbot. |
 
-The following diagram provides an illustration of the architecure:
+The following diagram provides an illustration of the architecture:
 
 <Lightbox src="/img/docs/cloud-integrations/architecture-dbt-snowflake-native-app.png" title="Architecture of dbt Cloud and Snowflake integration"/>
 
