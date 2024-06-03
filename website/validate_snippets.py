@@ -29,7 +29,7 @@ def fetch_schemas():
 
 def fetch_code_snippets(pr_number, repo_owner, repo_name):
     url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/pulls/{pr_number}/files'
-    headers = {'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}
+    headers = {'Authorization': f'token {os.getenv("SNIPPET_VALIDATION")}'}
     response = requests.get(url, headers=headers)
     response.raise_for_status()
     files = response.json()
