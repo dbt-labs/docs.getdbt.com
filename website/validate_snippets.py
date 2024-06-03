@@ -41,14 +41,14 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
     for file in files:
         if file['filename'].endswith('.md'):
             patch = file['patch']
-            # Extract YAML code snippets from the markdown file, including versioned blocks
+            # Extract both `yml` and `yaml` code snippets from the markdown file, including versioned blocks
             yaml_snippets = re.findall(r'```ya?ml(.*?)```', patch, re.DOTALL)
             snippets.extend((file['filename'], snippet) for snippet in yaml_snippets)
     return snippets
 
 # Identify the type of YAML snippet and select the corresponding schema
 def identify_schema(snippet):
-    if "project.yml" in snippet:
+    if "dbt_project" in snippet:
         return "dbt_project"
     elif "dbt_cloud" in snippet:
         return "dbt_cloud"
