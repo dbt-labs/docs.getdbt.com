@@ -46,6 +46,7 @@ The complete spec for semantic models is below:
 ```yaml
 semantic_models:
   - name: the_name_of_the_semantic_model      ## Required
+    owner: the_owner_of_the_semantic_model    ## Optional
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
     defaults:                                 ## Required
@@ -65,6 +66,7 @@ The following example displays a complete configuration and detailed description
 ```yaml
 semantic_models:
   - name: transaction # A semantic model with the name Transactions
+    owner: test # The owner of the semantic model
     model: ref('fact_transactions') # References the dbt model named `fact_transactions`
     description: "Transaction fact table at the transaction level. This table contains one row per transaction and includes the transaction timestamp."
     defaults:
