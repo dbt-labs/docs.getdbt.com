@@ -18,8 +18,6 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 
 Exposure names must contain only letters, numbers, and underscores (no spaces or special characters). For a short human-friendly name with title casing, spaces, and special characters, use the `label` property.
 
-<VersionBlock firstVersion="1.4">
-
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -50,8 +48,6 @@ exposures:
   - name: ... # declare properties of additional exposures
 ```
 </File>
-
-</VersionBlock>
 
 ## Example
 

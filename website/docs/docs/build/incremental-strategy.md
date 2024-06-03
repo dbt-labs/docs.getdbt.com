@@ -128,8 +128,6 @@ select ...
 
 </File>
 
-<VersionBlock firstVersion="1.4">
-
 ### About incremental_predicates
 
 `incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts a list of any valid SQL expression(s). dbt does not check the syntax of the SQL statements. 
@@ -207,8 +205,6 @@ The syntax depends on how you configure your `incremental_strategy`:
 - If using the `merge` strategy, you may need to explicitly alias any columns with either `DBT_INTERNAL_DEST` ("old" data) or `DBT_INTERNAL_SOURCE` ("new" data). 
 - There's a decent amount of conceptual overlap with the `insert_overwrite` incremental strategy.
 :::
-
-</VersionBlock>
 
 ### Built-in strategies
 

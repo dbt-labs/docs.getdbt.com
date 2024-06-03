@@ -12,8 +12,6 @@ Exposures make it possible to define and describe a downstream use of your dbt p
 
 Exposures are defined in `.yml` files nested under an `exposures:` key.
 
-<VersionBlock firstVersion="1.4">
-
 <File name='models/<filename>.yml'>
 
 ```yaml
@@ -42,8 +40,6 @@ exposures:
 
 </File>
 
-</VersionBlock>
-
 ### Available properties
 
 _Required:_
@@ -51,12 +47,8 @@ _Required:_
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
 - **owner**: `name` or `email` required; additional properties allowed
 
-<VersionBlock firstVersion="1.4">
-
 _Expected:_
 - **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
-
-</VersionBlock>
 
 _Optional:_
 - **label**:  May contain spaces, capital letters, or special characters.
