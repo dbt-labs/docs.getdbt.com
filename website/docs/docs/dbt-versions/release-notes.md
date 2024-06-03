@@ -40,9 +40,9 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** [Unit tests](/docs/build/unit-tests) are now GA in dbt Cloud. Unit tests enable you to test your SQL model logic against a set of static inputs.
 
-- <Expandable alt_header="New: Preview of native support for Azure Synapse Analytics" > 
+- <Expandable alt_header="New: Native support for Azure Synapse Analytics" lifecycle="preview"> 
 
-  Native support in dbt Cloud for Azure Synapse Analytics is now available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)!
+  Native support in dbt Cloud for Azure Synapse Analytics is now available as a [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)!
 
   To learn more, refer to [Connect Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics) and [Microsoft Azure Synapse DWH configurations](/reference/resource-configs/azuresynapse-configs).
 
@@ -107,9 +107,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 ## April 2024
 
-- <Expandable alt_header="New: Merge jobs" > 
-
-  <Lifecycle status="beta" />
+- <Expandable alt_header="New: Merge jobs" lifecycle="beta" > 
 
   You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. You can now access a beta release of [Merge jobs](/docs/deploy/merge-jobs), which is a new [job type](/docs/deploy/jobs), that enables you to trigger dbt job runs as soon as changes (via Git pull requests) merge into production.
 
@@ -160,9 +158,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
 
-- <Expandable alt_header="New: Trigger on job completion ">
-
-  <Lifecycle status="team,enterprise" />
+- <Expandable alt_header="New: Trigger on job completion " lifecycle="team,enterprise" >
 
   Now available for dbt Cloud Team and Enterprise plans is the ability to trigger deploy jobs when other deploy jobs are complete. You can enable this feature [in the UI](/docs/deploy/deploy-jobs) with the  **Run when another job finishes** option in the **Triggers** section of your job or with the [Create Job API endpoint](/dbt-cloud/api-v2#/operations/Create%20Job). 
 
@@ -174,9 +170,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
 
-- <Expandable alt_header="New: Keep on latest version ">
-
-  <Lifecycle status='beta' />
+- <Expandable alt_header="New: Keep on latest version " lifecycle="beta">
 
   _Now available in the dbt version dropdown in dbt Cloud &mdash; starting with select customers, rolling out to wider availability through February and March._
 
