@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import yaml
 from jsonschema import validate, ValidationError
 
 # Define the URL of the latest schema
@@ -23,7 +24,11 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
     snippets = []
     for file in files:
         if file['filename'].endswith('.yml') or file['filename'].endswith('.yaml'):
-            snippets.append(file['patch'])  # Simplified: In reality, you may need to extract the actual YAML code
+            patch = file['patch']
+            # Simplified: Extract the actual YAML code from the patch (this example assumes the whole file is replaced)
+            # In reality, you'd need a more robust parsing of the diff
+            yaml_snippet = "\n".join(line[1:] for line in patch.split('\n') if line.startswith('+') and not line.startswith('+++'))
+            snippets.append(yaml_snippet)
     return snippets
 
 # Validate each snippet against the schema
@@ -31,20 +36,25 @@ def validate_snippets(snippets, schema):
     results = []
     for snippet in snippets:
         try:
-            data = json.loads(snippet)
+            data = yaml.safe_load(snippet)
             validate(instance=data, schema=schema)
             results.append((snippet, "Valid"))
         except ValidationError as e:
             results.append((snippet, f"Invalid: {e.message}"))
-        except json.JSONDecodeError as e:
-            results.append((snippet, f"Invalid JSON: {e.msg}"))
+        except yaml.YAMLError as e:
+            results.append((snippet, f"Invalid YAML: {str(e)}"))
     return results
 
 # Main function
 def main():
     repo_owner = "dbt-labs"
     repo_name = "docs.getdbt.com"
-    pr_number = os.getenv('GITHUB_EVENT_PULL_REQUEST_NUMBER')
+
+    # Load event data
+    with open(os.getenv('GITHUB_EVENT_PATH'), 'r') as f:
+        event = json.load(f)
+    
+    pr_number = event['number']
 
     # Fetch schema and code snippets
     schema = fetch_schema()
@@ -55,7 +65,7 @@ def main():
     
     # Print results
     for snippet, result in results:
-        print(f"Snippet: {snippet}\nResult: {result}\n")
+        print(f"Snippet:\n{snippet}\nResult: {result}\n")
 
 if __name__ == "__main__":
     main()
