@@ -48,7 +48,7 @@ def fetch_code_snippets(pr_number, repo_owner, repo_name):
             for snippet in yaml_snippets:
                 # Remove the diff prefixes (e.g., "+ ", "- ")
                 cleaned_snippet = "\n".join(line[1:] if line.startswith(('+', '-')) else line for line in snippet[1].split('\n'))
-                print(f"Extracted snippet:\n{cleaned_snippet}")  # Debugging line
+                print(f"Extracted snippet from {file['filename']}:\n{cleaned_snippet}")  # Debugging line
                 snippets.append((file['filename'], cleaned_snippet))
     print(f"Total snippets found: {len(snippets)}")  # Debugging line
     return snippets
