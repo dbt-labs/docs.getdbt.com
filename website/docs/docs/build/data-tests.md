@@ -2,6 +2,8 @@
 title: "Add data tests to your DAG"
 sidebar_label: "Data tests"
 description: "Read this tutorial to learn how to use data tests when building in dbt."
+pagination_next: "docs/build/unit-tests"
+pagination_prev: null
 search_weight: "heavy"
 id: "data-tests"
 keywords:
