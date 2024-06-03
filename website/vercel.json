@@ -3,6 +3,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/use-dbt-semantic-layer/tableau",
+      "destination": "/docs/cloud-integrations/semantic-layer/tableau",
+      "permanent": true
+    },
+    {
+      "source": "/docs/use-dbt-semantic-layer/gsheets",
+      "destination": "/docs/cloud-integrations/semantic-layer/gsheets",
+      "permanent": true
+    },
+    {
+      "source": "/docs/use-dbt-semantic-layer/avail-sl-integrations",
+      "destination": "/docs/cloud-integrations/avail-sl-integrations",
+      "permanent": true
+    },
+    {
       "source": "/reference/resource-properties/unit-tests#unit-testing-versioned-models",
       "destination": "/reference/resource-properties/unit-testing-versions",
       "permanent": true
