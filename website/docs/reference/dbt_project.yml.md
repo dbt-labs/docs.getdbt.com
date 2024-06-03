@@ -128,15 +128,6 @@ vars:
   schema: true | false
   identifier: true | false
 
-models:
-  [<model-configs>](/reference/model-configs)
-
-seeds:
-  [<seed-configs>](/reference/seed-configs)
-
-snapshots:
-  [<snapshot-configs>](/reference/snapshot-configs)
-
 sources:
   [<source-configs>](source-configs)
   
@@ -197,14 +188,6 @@ vars:
   schema: true | false
   identifier: true | false
 
-models:
-  [<model-configs>](/reference/model-configs)
-
-seeds:
-  [<seed-configs>](/reference/seed-configs)
-
-snapshots:
-  [<snapshot-configs>](/reference/snapshot-configs)
 
 sources:
   [<source-configs>](source-configs)
