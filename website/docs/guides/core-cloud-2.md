@@ -159,7 +159,7 @@ Now that you’ve chosen dbt Cloud as your platform, you’ve unlocked the power
 
 ### Additional help
 
-- **dbt Learn courses**: Access our free [Learn dbt Cloud](https://courses.getdbt.com/collections) video courses for on-demand training.
+- **dbt Learn courses**: Access our free [Learn dbt Cloud](https://learn.getdbt.com) video courses for on-demand training.
 - **dbt Community:** Join the [dbt Community](https://community.getdbt.com/) to connect with other dbt users, ask questions, and share best practices.
 - **dbt Support team:** Our [dbt Support team](/docs/dbt-support) is always available to help you troubleshoot your dbt Cloud issues. Create a support ticket in dbt Cloud and we’ll be happy to help!
 - **Account management** Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. [Book a demo](https://www.getdbt.com/contact) to learn more. <Lifecycle status="enterprise"/>
@@ -189,7 +189,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 <CoretoCloudTable/>
 
 ### Related content
-- [Learn dbt Cloud](https://courses.getdbt.com/collections) courses
+- [Learn dbt Cloud](https://learn.getdbt.com) courses
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 - [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.

@@ -23,7 +23,7 @@ This guide will teach you how to set up a multi-project design using foundationa
 For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
@@ -49,7 +49,7 @@ To leverage dbt Mesh, you need the following:
   - [Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
   - [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
 
-This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course first if you are brand new to dbt.
+This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course first if you are brand new to dbt.
 
 ## Create and configure two projects
 
