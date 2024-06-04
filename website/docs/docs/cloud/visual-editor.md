@@ -3,7 +3,8 @@ title: "About the visual editor"
 id: visual-editor       
 sidebar_label: "About the visual editor" 
 description: "The visual editor enables analysts to quickly create and visualize dbt models through a visual, drag-and-drop experience inside of dbt Cloud." 
-
+pagination_next: "docs/cloud/visual-editor-interface"
+pagination_prev: null
 ---
 
 # About the visual editor <Lifecycle status='beta'/> 
