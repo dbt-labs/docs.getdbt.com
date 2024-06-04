@@ -5,7 +5,7 @@ pagination_prev: null
 pagination_next: "docs/cloud-integrations/snowflake-native-app"
 ---
 
-There are many data applications that integrate with dbt Cloud. These integrations enable you to leverage the power of dbt in a number of different use cases and workflows.
+Many data applications integrate with dbt Cloud, enabling you to leverage the power of dbt for a variety of use cases and workflows.
 
 
 ## Integrations with dbt
