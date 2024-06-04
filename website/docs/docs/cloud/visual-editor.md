@@ -31,3 +31,6 @@ These models compile directly to SQL and are indistinguishable from other dbt mo
 Please note, always review AI-generated code and content as it may produce incorrect results. The visual editor features and/or functionality may be added or eliminated as part of the beta trial.
 
 To give feedback, please reach out to your dbt Labs account team. We appreciate your feedback and suggestions as we improve the visual editor.
+
+## Limitations
+Are there limitations here?
