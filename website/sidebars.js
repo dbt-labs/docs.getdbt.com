@@ -264,8 +264,19 @@ const sidebarSettings = {
                   "docs/cloud/dbt-assist-data",
                 ],
               },
-            ],
-          },
+              {
+                type: "category",
+                label: "Visual editor",
+                collapsed: true,
+                link: { type: "doc", id: "docs/cloud/visual-editor" },
+                items: [
+                  "docs/cloud/visual-editor",
+                  "docs/cloud/use-visual-editor",
+                  "docs/cloud/visual-editor-interface",
+                  ],
+                },
+              ],
+            },
         ],
       },
     {

@@ -24,10 +24,10 @@ These models compile directly to SQL and are indistinguishable from other dbt mo
 - Models can be materialized into production via dbt Cloud orchestration, or be built directly into a user's dev schema. 
 - Integrate with dbt Explorer and the dbt Cloud IDE.
 
-<Lightbox src="w/img/docs/dbt-cloud/visual-editor/visual-editor.jpg" width="100%" title="Create or edit dbt models with the Visual editor, enabling everyone to develop with dbt through a drag-and-drop experience inside of dbt Cloud." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.jpg" width="90%" title="Create or edit dbt models with the Visual editor, enabling everyone to develop with dbt through a drag-and-drop experience inside of dbt Cloud." />
 
 ## Feedback
 
-Please note: Always review AI-generated code and content as it may produce incorrect results. The low-code visual editor features and/or functionality may be added or eliminated as part of the beta trial.
+Please note, always review AI-generated code and content as it may produce incorrect results. The low-code visual editor features and/or functionality may be added or eliminated as part of the beta trial.
 
 To give feedback, please reach out to your dbt Labs account team. We appreciate your feedback and suggestions as we improve the visual editor.

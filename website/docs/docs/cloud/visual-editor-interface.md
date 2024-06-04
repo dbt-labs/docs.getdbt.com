@@ -38,7 +38,7 @@ Here the following operators are available:
 
 When you click on each operator, it opens a configuration panel. The configuration panel allows you to configure the operator, review the current table, preview changes to the table, view the SQL code for the node, and delete the operator.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.jpg" width="100%" title="Visual editor interface that contains a node toolbar and canvas." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/visual-editor.jpg" width="90%" title="Visual editor interface that contains a node toolbar and canvas." />
 
 If you have any feedback on additional operators that you might need, we'd love to hear it! Please contact your dbt Labs account team and share your thoughts.
 
@@ -52,7 +52,7 @@ The visual editor has a sleek drag-and-drop canvas interface that allows you to 
 - Version-control your dbt models
 - [Coming soon] Test and document your created models
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/operator.jpg" width="100%" title="The operator toolbar allows you to select different nodes to configure or perform specific tasks, like adding filters or joining tables." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/operator.jpg" width="90%" title="The operator toolbar allows you to select different nodes to configure or perform specific tasks, like adding filters or joining tables." />
 
 ### Connector
 
@@ -72,4 +72,4 @@ The configuration side panel has the following:
 - Output tab &mdash; This section allows you to preview the data for the modified source table.
 - Code &mdash; This section allows you to view the underlying SQL code for the data transformation.
 
-<Lightbox src="/img/docs/dbt-cloud/visual-editor/config-panel.jpg" width="100%" title="A sleek drag-and-drop canvas interface that allows you to create or modify dbt SQL models." />
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/config-panel.jpg" width="90%" title="A sleek drag-and-drop canvas interface that allows you to create or modify dbt SQL models." />
