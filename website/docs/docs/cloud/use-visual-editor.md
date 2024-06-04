@@ -3,6 +3,8 @@ title: "Use the visual editor"
 id: use-visual-editor      
 sidebar_label: "Use the visual editor" 
 description: "Access and use the visual editor to create or edit dbt models through a visual, drag-and-drop experience inside of dbt Cloud." 
+pagination_next: "docs/cloud/use-visual-editor"
+pagination_prev: null
 ---
 
 # Use the visual editor <Lifecycle status='beta'/> 
@@ -13,7 +15,7 @@ The visual editor provides users with a seamless and drag-and-drop experience in
 
 ## Prerequisites
 - You have an active [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account.
-- You have a [developer license](/docs/cloud/manage-access/seats-and-users) Who can access editor? dev license? read only?
+- You have a [developer license](/docs/cloud/manage-access/seats-and-users) ??? WHO can access editor? dev license? read-only?
 - You have a dbt Cloud project created already with dev credentials set up.
 - Successful job run on Production or Staging [environment](/docs/dbt-cloud-environments)
 - Have AI-powered features toggle enabled
