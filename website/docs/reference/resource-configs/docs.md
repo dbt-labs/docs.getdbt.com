@@ -178,8 +178,6 @@ models:
       show: false
 ```
 
-<VersionBlock firstVersion="1.3">
-
 ### Mark a subfolder of models as hidden
 
 **Note:** This can also hide dbt packages.
@@ -202,10 +200,6 @@ models:
 ```
 
 </File>
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
 
 ## Custom node colors
 
@@ -342,5 +336,3 @@ models:
 ```
 
 </File>
-
-</VersionBlock>
