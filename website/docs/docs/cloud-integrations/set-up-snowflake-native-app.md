@@ -1,18 +1,25 @@
 ---
 title: "Set up the dbt Snowflake Native App"
-description: "Learn how to set up the dbt Snowflake Native App for dbt Cloud"
+description: "Learn how to set up the dbt Snowflake Native App"
 pagination_prev: "docs/cloud-integrations/snowflake-native-app"
 pagination_next: null
 ---
 
-# Set up the dbt Snowflake Native App <Lifecycle status='public preview' />
+# Set up the dbt Snowflake Native App <Lifecycle status='preview' />
 
 The [dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: dbt Explorer, the **Ask dbt** chatbot, and dbt Cloud's orchestration observability features. 
 
-Configure both dbt Cloud and Snowflake to set up this integration. Below is an illustration of the setup process. The steps are slightly different if you purchased the public listing of the Native App; you will start with Step 2, satisfy the prerequisites, and then complete Steps 1 and 3. 
+Configure both dbt Cloud and Snowflake to set up this integration. The high-level steps are described as follows: 
 
-<Lightbox src="/img/docs/cloud-integrations/overview-snowflake-native-app.png" width="100%" title="Overview of the Snowflake Native App for dbt Cloud"/>
+1. Set up the **Ask dbt** configuration. 
+1. Configure Snowflake. 
+1. Configure dbt Cloud.
+1. Purchase and install the dbt Snowflake Native App.
+1. Configure the app.
+1. Verify successful installation of the app.
+1. Onboard new users to the app.
 
+The order of the steps is slightly different if you purchased the public listing of the Native App; you'll start by purchasing the Native App, satisfying the prerequisites, and then completing the remaining steps in order.  
 
 ## Prerequisites
 The following are the prerequisites for dbt Cloud and Snowflake. 
@@ -38,8 +45,8 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
 
 1. In dbt Cloud, browse to your Semantic Layer configurations. 
     1. From the gear menu, select **Account settings**. In the left sidebar, select **Projects** and choose your dbt project from the project list. 
-    1. In the **Project details** panel, click the link **Edit Semantic Layer Configuration** (which is below the **GraphQL URL** option). 
-1. In the **Semantic Layer Configuration Details** panel, identify the Snowflake credentials (which you'll use to access Snowflake Cortex) and the environment against which the Semantic Layer is run. Remember the username, role, and the environment. 
+    1. In the **Project details** panel, click the **Edit Semantic Layer Configuration** link (which is below the **GraphQL URL** option). 
+1. In the **Semantic Layer Configuration Details** panel, identify the Snowflake credentials (which you'll use to access Snowflake Cortex) and the environment against which the Semantic Layer is run. Save the username, role, and the environment in a temporary location to use later on. 
 
     <Lightbox src="/img/docs/cloud-integrations/semantic_layer_configuration.png" width="100%" title="Semantic Layer credentials"/>
 
@@ -89,7 +96,7 @@ Collect three pieces of information from dbt Cloud to set up the application.
 ## Install the dbt Snowflake Native App
 1. Browse to the listing for the dbt Snowflake Native App: 
     - **Private listing** (recommended) &mdash; Use the link from the email sent to you. 
-    - **Public listing** &mdash; Navigate to the [Snowflake Marketplace and search for dbt](https://app.snowflake.com/marketplace/data-products/search?search=dbt). 
+    - **Public listing** &mdash; Navigate to the [Snowflake Marketplace](https://app.snowflake.com/marketplace/listing/GZTYZSRT2R3). 
 1. Click **Get** on the listing to install the dbt Snowflake Native App. This can take several minutes. When installation is complete, an email is sent to you. 
     
     A message will appear asking if you want to change the application and grant access to the warehouse for installation. dbt Labs strongly recommends not changing the application name unless necessary.
@@ -107,9 +114,9 @@ Collect three pieces of information from dbt Cloud to set up the application.
     
     If it redirects you to a Snowsight worksheet (instead of the login page), that means the app hasn't finished installing. You can resolve this issue, typically, by refreshing the page.   
 
-The following is an example of the dbt Snowflake Native App after configuration:
+    The following is an example of the dbt Snowflake Native App after configuration:
 
-<Lightbox src="/img/docs/cloud-integrations/example-dbt-snowflake-native-app.png" title="Example of the dbt Snowflake Native App"/>
+    <Lightbox src="/img/docs/cloud-integrations/example-dbt-snowflake-native-app.png" title="Example of the dbt Snowflake Native App"/>
 
 ## Verify the app installed successfully
 
