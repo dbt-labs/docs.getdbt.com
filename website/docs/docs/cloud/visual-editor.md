@@ -32,5 +32,3 @@ Please note, always review AI-generated code and content as it may produce incor
 
 To give feedback, please reach out to your dbt Labs account team. We appreciate your feedback and suggestions as we improve the visual editor.
 
-## Limitations
-Are there limitations here?
