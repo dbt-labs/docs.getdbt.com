@@ -69,3 +69,6 @@ To edit an existing model, navigate to the visual editor and click on the **Edit
 Testing and documenting your models is an important part of the development process.  
 
 Stay tuned—coming soon, the visual editor will allow you to version-control your dbt models, ensuring that you can track changes and revert to previous versions if needed.
+
+## Limitations
+Are there limitations here?
