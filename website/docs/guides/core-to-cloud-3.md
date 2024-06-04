@@ -144,7 +144,7 @@ Leverage the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered 
 ### Tips
 - Define semantic models and metrics once in dbt Cloud with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) (powered by MetricFlow). Reuse them across various analytics platforms, reducing redundancy and errors.
 - Use the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics in downstream tools for consistent, reliable data metrics.
-- Connect to several data applications, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more, to query your metrics. [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) include Tableau, Google Sheets, Hex, and more.
+- Connect to several data applications, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more, to query your metrics. [Available integrations](/docs/cloud-integrations/avail-sl-integrations) include Tableau, Google Sheets, Hex, and more.
 - Use [exports](/docs/use-dbt-semantic-layer/exports) to write commonly used queries directly within your data platform, on a schedule.
 
 ### Caveats
@@ -189,7 +189,7 @@ For the next steps, continue exploring our 3-part-guide series on moving from db
 
 If you need any additional help or have some questions, use the following resources:
 
-- [dbt Cloud learn courses](https://courses.getdbt.com/collections) for on-demand video learning.
+- [dbt Learn courses](https://learn.getdbt.com) for on-demand video learning.
 - Our [Support team](https://docs.getdbt.com/docs/dbt-support) is always available to help you troubleshoot your dbt Cloud issues.
 - Join the [dbt Community](https://community.getdbt.com/) to connect with other dbt users, ask questions, and share best practices.
 - Subscribe to the [dbt Cloud RSS alerts](https://status.getdbt.com/)
