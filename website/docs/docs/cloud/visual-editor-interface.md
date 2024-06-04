@@ -18,23 +18,23 @@ This page offers comprehensive definitions and terminology of user interface ele
 
 The visual editor interface is composed of:
 
-- Operator toolbar &mdash; Located at the top of the interface, the toolbar displays all the nodes available. Use the toggle on the left of the toolbar to display or hide it.
-- Operators &mdash; perform specific transformations or configurations (such as table, join, aggregate, filter, and so on). Use connectors to link the operators and build a complete data transformation pipeline. 
-- Canvas &mdash; The main whiteboard space below the node toolbar. The canvas allows you to create or modify models through a sleek drag-and-drop experience.
+- **Operator toolbar** &mdash; Located at the top of the interface, the toolbar displays all the nodes available. Use the toggle on the left of the toolbar to display or hide it.
+- **Operators** &mdash; perform specific transformations or configurations (such as table, join, aggregate, filter, and so on). Use connectors to link the operators and build a complete data transformation pipeline. 
+- **Canvas** &mdash; The main whiteboard space below the node toolbar. The canvas allows you to create or modify models through a sleek drag-and-drop experience.
 
 ## Operators
 
 The operator toolbar above the canvas contains the different transformation operators available to use. Use each operator to configure or perform specific tasks, like adding filters or joining tables by dragging an operator onto the canvas. You can connect operators using the [connector] line, which allows you to form a complete dbt model for your data transformation. 
 
 Here the following operators are available:
-- Table: This represents a data table. Use this to select the source table and the columns you want to include. There are no limits to the number of tables you're allowed to have in a session.
-- Join: Join two tables and configure the join conditions by selecting which columns to include from each table. Requires two inputs. For example, you might want to join both tables using the 'ID' column found in both tables.
-- Select: Use this to 'select' specific columns from a table.
-- Aggregate: Allows you to perform aggregations like GROUP, SUM, AVG, COUNT, and so on.
-- Formula: Create new columns using custom SQL formulas. Use a built-in AI code generator to generate SQL by clicking the ? icon. For example, you can use the formula node to only extract the email domain and ask the AI code generator to help you write the SQL for that code extraction.
-- Filter: Filter data based on conditions you set.
-- Order: Sort data by specific columns.
-- Limit: Limits the number of rows returned back.
+- **Table**: This represents a data table. Use this to select the source table and the columns you want to include. There are no limits to the number of tables you're allowed to have in a session.
+- **Join**: Join two tables and configure the join conditions by selecting which columns to include from each table. Requires two inputs. For example, you might want to join both tables using the 'ID' column found in both tables.
+- **Select**: Use this to 'select' specific columns from a table.
+- **Aggregate**: Allows you to perform aggregations like GROUP, SUM, AVG, COUNT, and so on.
+- **Formula**: Create new columns using custom SQL formulas. Use a built-in AI code generator to generate SQL by clicking the ? icon. For example, you can use the formula node to only extract the email domain and ask the AI code generator to help you write the SQL for that code extraction.
+- **Filter**: Filter data based on conditions you set.
+- **Order**: Sort data by specific columns.
+- **Limit**: Limits the number of rows returned back.
 
 When you click on each operator, it opens a configuration panel. The configuration panel allows you to configure the operator, review the current table, preview changes to the table, view the SQL code for the node, and delete the operator.
 
