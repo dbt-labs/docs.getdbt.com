@@ -50,7 +50,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 - [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
 
 ### Related docs
-- [Learn dbt Cloud](https://courses.getdbt.com/collections) on-demand video learning.
+- [Learn dbt Cloud](https://learn.getdbt.com) on-demand video learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
@@ -267,7 +267,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 <CoretoCloudTable/>
 
 ### Related docs
-- [Learn dbt Cloud](https://courses.getdbt.com/collections) video courses for on-demand learning.
+- [Learn dbt Cloud](https://learn.getdbt.com) video courses for on-demand learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights.
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 - [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.

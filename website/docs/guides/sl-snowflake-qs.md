@@ -118,7 +118,7 @@ Open a new tab and follow these quick steps for account setup and data loading i
 - Create a [trial Snowflake account](https://signup.snowflake.com/):
   - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
   - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
-- Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course.
+- Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
 
 ### What you'll learn
 
