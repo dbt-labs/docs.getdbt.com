@@ -18,12 +18,6 @@ id: "group"
 }>
 <TabItem value="models">
  
-<VersionBlock lastVersion="1.4">
-
-Support for grouping models was added in dbt Core v1.5
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 <File name='dbt_project.yml'>
@@ -72,12 +66,6 @@ select ...
 
 <TabItem value="seeds">
 
-<VersionBlock lastVersion="1.4">
-
-Support for grouping seeds was added in dbt Core v1.5
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 <File name='dbt_project.yml'>
@@ -106,12 +94,6 @@ seeds:
 </TabItem>
 
 <TabItem value="snapshots">
-
-<VersionBlock lastVersion="1.4">
-
-Support for grouping snapshots was added in dbt Core v1.5
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
@@ -147,12 +129,6 @@ select ...
 </TabItem>
 
 <TabItem value="tests">
-
-<VersionBlock lastVersion="1.4">
-
-Support for grouping tests was added in dbt Core v1.5
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
@@ -230,12 +206,6 @@ analyses:
 
 
 <TabItem value="metrics">
-
-<VersionBlock lastVersion="1.4">
-
-Support for grouping metrics was added in dbt Core v1.5
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 

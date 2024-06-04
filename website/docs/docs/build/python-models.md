@@ -256,7 +256,7 @@ def model(dbt, session):
 ### Materializations
 
 Python models support these materializations:
-- `table` <VersionBlock firstVersion="1.4">(default)</VersionBlock>
+- `table` (default)
 - `incremental`
 
 Incremental Python models support all the same [incremental strategies](/docs/build/incremental-strategy) as their SQL counterparts. The specific strategies supported depend on your adapter. As an example, incremental models are supported on BigQuery with Dataproc for the `merge` incremental strategy; the `insert_overwrite` strategy is not yet supported.

@@ -197,12 +197,6 @@ dbt test --select "test_name:range_min_max"     # run all instances of a custom 
 
 **N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
-<VersionBlock lastVersion="1.4">
-
-The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
@@ -283,16 +277,6 @@ The following dbt commands produce `sources.json` artifacts whose results can be
 
 After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
 
-<VersionBlock lastVersion="1.4">
-
-```bash
-# You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
-dbt source freshness # must be run again to compare current to previous state
-dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
-```
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 ```bash
@@ -305,11 +289,6 @@ dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 
 
 ### The "group" method
-<VersionBlock lastVersion="1.4">
-
-Supported in v1.5 or newer.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
@@ -324,12 +303,6 @@ dbt run --select "group:finance" # run all models that belong to the finance gro
 
 ### The "access" method
 
-<VersionBlock lastVersion="1.4">
-
-Supported in v1.5 or newer.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 The `access` method selects models based on their [access](/reference/resource-configs/access) property.
@@ -343,12 +316,6 @@ dbt list --select "access:protected"       # list all protected models
 </VersionBlock>
 
 ### The "version" method
-
-<VersionBlock lastVersion="1.4">
-
-Supported in v1.5 or newer.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
