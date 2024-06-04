@@ -24,7 +24,7 @@ The visual editor interface is composed of:
 
 ## Operators
 
-The operator toolbar above the canvas contains the different transformation operators available to use. Use each operator to configure or perform specific tasks, like adding filters or joining tables by dragging an operator onto the canvas. You can connect operators using the [connector] line, which allows you to form a complete dbt model for your data transformation. 
+The operator toolbar above the canvas contains the different transformation operators available to use. Use each operator to configure or perform specific tasks, like adding filters or joining tables by dragging an operator onto the canvas. You can connect operators using the connector line, which allows you to form a complete dbt model for your data transformation. 
 
 Here the following operators are available:
 - **Table**: This represents a data table. Use this to select the source table and the columns you want to include. There are no limits to the number of tables you're allowed to have in a session.
