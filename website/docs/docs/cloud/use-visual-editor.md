@@ -3,8 +3,6 @@ title: "Use the visual editor"
 id: use-visual-editor      
 sidebar_label: "Use the visual editor" 
 description: "Access and use the visual editor to create or edit dbt models through a visual, drag-and-drop experience inside of dbt Cloud." 
-pagination_next: "docs/cloud/visual-editor-interface"
-pagination_prev: null
 ---
 
 # Use the visual editor <Lifecycle status='beta'/> 
