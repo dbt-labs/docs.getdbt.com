@@ -4,7 +4,7 @@ id: sl-faqs
 description: "Read the FAQs to learn more about the dbt Semantic Layer, how it works, how to build metrics, integrations, and more."
 sidebar_label: "Semantic Layer FAQs"
 tags: [Semantic Layer]
-pagination_next: "docs/use-dbt-semantic-layer/avail-sl-integrations"
+pagination_next: null
 ---
 
 The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) is a dbt Cloud offering that allows users to centrally define their metrics within their dbt project using [MetricFlow](/docs/build/about-metricflow).
@@ -13,7 +13,7 @@ The dbt Semantic Layer offers:
 
 - Dynamic SQL generation to compute metrics
 - APIs to query metrics and dimensions
-- First-class [integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) to query those centralized metrics in downstream tools
+- First-class [integrations](/docs/cloud-integrations/avail-sl-integrations) to query those centralized metrics in downstream tools
 
 The dbt Semantic Layer is powered by MetricFlow, which is a source-available component.
 
@@ -92,7 +92,7 @@ Yes, dbt Cloud [Enterprise or Team](https://www.getdbt.com/pricing) plan custome
 
 The dbt Semantic Layer is proprietary to dbt Cloud, however some components of it are open-source. dbt Core users can use MetricFlow features, like defining metrics in their projects, without a dbt Cloud plan.
 
-dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-cloud-apis/sl-api-overview) or [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) to access metrics dynamically.
+dbt Core users can also query their semantic layer locally using the command line. However, they won't be able to use the [APIs](/docs/dbt-cloud-apis/sl-api-overview) or [available integrations](/docs/cloud-integrations/avail-sl-integrations) to access metrics dynamically.
 
 </Expandable>
 
@@ -233,7 +233,7 @@ Yes, while [entities](/docs/build/entities) must be defined under â€œentities,â€
 
 There are a number of data applications that have integrations with the dbt Semantic Layer, including Tableau, Google Sheets, Hex, and Mode, among others.
 
-Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more information.
+Refer to [Available integrations](/docs/cloud-integrations/avail-sl-integrations) for more information.
 
 </Expandable>
 
