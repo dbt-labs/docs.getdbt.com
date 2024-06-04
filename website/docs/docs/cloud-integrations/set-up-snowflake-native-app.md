@@ -7,7 +7,7 @@ pagination_next: null
 
 # Set up the dbt Snowflake Native App <Lifecycle status='public preview' />
 
-The [dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: dbt Explorer, **Ask dbt**, and dbt Cloud's orchestration observability features. 
+The [dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) enables these features within the Snowflake user interface: dbt Explorer, the **Ask dbt** chatbot, and dbt Cloud's orchestration observability features. 
 
 Configure both dbt Cloud and Snowflake to set up this integration. Below is an illustration of the setup process. The steps are slightly different if you purchased the public listing of the Native App; you will start with Step 2, satisfy the prerequisites, and then complete Steps 1 and 3. 
 
@@ -20,7 +20,7 @@ The following are the prerequisites for dbt Cloud and Snowflake.
 ### dbt Cloud
 
 - You must have a dbt Cloud account on the Enterprise plan that's in an AWS Region or Azure region. If you don't already have one, please [contact us](mailto:sales_snowflake_marketplace@dbtlabs.com) to get started.
-    - Currently, Semantic Layer is unavailable for Azure ST instances and the **Ask dbt** chatbot will not work in the dbt Snowflake Native App without it. 
+    - Currently, Semantic Layer is unavailable for Azure ST instances and the **Ask dbt** chatbot will not function in the dbt Snowflake Native App without it. 
 - Your dbt Cloud account must have permission to create a [service token](/docs/dbt-cloud-apis/service-tokens). For details, refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
 - There's a dbt Cloud project with [Semantic Layer configured](/docs/use-dbt-semantic-layer/setup-sl) and metrics declared. 
 - You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment).
@@ -45,7 +45,7 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
 
 1. Identify the default database the environment is connecting to. 
     1. Select **Deploy > Environments** from the top navigation bar. From the environments list, select the one that was identified in the **Semantic Layer Configuration Details** panel. 
-    1. On the environment's page, click **Settings**. Scroll to the section **Deployment connection**. Remember the database. This is the default database your environment is connecting to and also where to create the schema in. 
+    1. On the environment's page, click **Settings**. Scroll to the section **Deployment connection**. The listed database is the default for your environment and is also where you will create the schema. Save this information in a temporary location to use later on. 
 
 1. In Snowflake, verify that your SL user has been granted permission to use Snowflake Cortex. This user must have the ability to read and write into this schema to create the Retrieval Augmented Generation (RAG). For more information, refer to [Required Privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#required-privileges) in the Snowflake docs. 
     
@@ -93,14 +93,14 @@ Collect three pieces of information from dbt Cloud to set up the application.
 1. Click **Get** on the listing to install the dbt Snowflake Native App. This can take several minutes. When installation is complete, an email is sent to you. 
     
     A message will appear asking if you want to change the application and grant access to the warehouse for installation. dbt Labs strongly recommends not changing the application name unless necessary.
-1. When the dbt Snowflake Native App is successfully installed, click **Configure**. 
+1. When the dbt Snowflake Native App is successfully installed, click **Configure** in the modal window. 
 
 ## Configure the dbt Snowflake Native App
 
 1. On the **Activate dbt** page, click **Grant** in **Step 1: Grant Account Privileges**.
 1. When privileges have been successfully granted, click **Review** in **Step 2: Allow Connections**. 
 
-    Walk through the **Connect to dbt Cloud External Access Integration** steps. You will need your dbt Cloud account information that you collected earlier. That is, use your account ID, access URL, and API service token as the **Secret value** when prompted. 
+    Walk through the **Connect to dbt Cloud External Access Integration** steps. You will need your dbt Cloud account information that you collected earlier. Enter your account ID, access URL, and API service token as the **Secret value** when prompted. 
 1. On the **Activate dbt** page, click **Activate** when you've established a successful connection to the dbt Cloud External Access Integration. It can take a few minutes to spin up the required Snowflake services and compute resources. 
 1. When activation is complete, select the **Telemetry** tab and enable the option to share your `INFO` logs. The option might take some time to display. This is because Snowflake needs to create the events table so it can be shared.
 1. When the option is successfully enabled, click **Launch app**. Then, log in to the app with your Snowflake credentials. 
