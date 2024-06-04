@@ -9,7 +9,9 @@ description: "The visual editor interface contains a node toolbar, nodes, and ca
 # Visual editor interface <Lifecycle status='beta'/> 
 
 :::tip Beta feature
-The visual editor provides users with a seamless and visual, drag-and-drop experience inside dbt Cloud. It's available in private beta for [dbt Cloud Enterprise accounts](https://www.getdbt.com/pricing). To join the private beta, [register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to your account team to begin this process.
+The visual editor provides users with a seamless and visual, drag-and-drop experience inside dbt Cloud. It's available in private beta for [dbt Cloud Enterprise accounts](https://www.getdbt.com/pricing). 
+
+To join the private beta, [register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to your account team to begin this process.
 :::
 
 The visual editor enables analysts to create or edit dbt SQL models through a visual, drag-and-drop experience in dbt Cloud. This lets organizations benefit from code-driven development &mdash; including better precision, easier debugging, and testing &mdash; while allowing contributors in a comfortable environment. The editor also includes built-in AI for custom code generation, allowing analysts to focus on building data models.
