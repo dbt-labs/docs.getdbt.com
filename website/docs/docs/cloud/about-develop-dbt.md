@@ -25,6 +25,12 @@ You can develop in your browser using an integrated development environment (IDE
     link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     icon="dbt-bit"/>
 
+   <Card
+    title="Visual editor (beta)"
+    body="Develop with the visual editor, a seamless drag-and-drop experience that helps analysts quickly create and visualize dbt models in dbt Cloud."
+    link="/docs/cloud/visual-editor"
+    icon="dbt-bit"/>
+
 </div><br />
 
 To get started, you'll need a [dbt Cloud](https://www.getdbt.com/signup) account and a developer seat. For a more comprehensive guide about developing in dbt, refer to the [quickstart guides](/docs/get-started-dbt).
