@@ -1,7 +1,7 @@
 ---
 title: "About the dbt Snowflake Native App"
 id: "snowflake-native-app"
-description: "An overview of the dbt Snowflake Native App"
+description: "An overview of the dbt Snowflake Native App for dbt Cloud accounts"
 pagination_prev: null
 pagination_next: "docs/cloud-integrations/set-up-snowflake-native-app"
 ---
@@ -14,13 +14,13 @@ The dbt Snowflake Native App &mdash; powered by the Snowflake Native App Framewo
 - **Ask dbt** &mdash; A dbt-assisted chatbot, powered by [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), OpenAI, and Snowflake Cortex
 - **Orchestration observability** &mdash; A view into the [job run history](/docs/deploy/run-visibility) and the ability to trigger Snowflake tasks with [deploy jobs](/docs/deploy/deploy-jobs). 
 
-These experiences enable you to extend what's been built with dbt Cloud to users who have traditionally been dependencies downstream from the dbt project. For example, BI analysts and technical stakeholders. 
+These experiences enable you to extend what's been built with dbt Cloud to users who have traditionally worked downstream from the dbt project, such as BI analysts and technical stakeholders. 
 
 For installation instructions, refer to [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
 ## Architecture
 
-There are three tools connected to operate the dbt Snowflake Native App:
+There are three tools connected to the operation of the dbt Snowflake Native App:
 
 | Tool                               | Description |
 |------------------------------------|-------------|
@@ -34,7 +34,7 @@ The following diagram provides an illustration of the architecture:
 
 
 ## Access
-You can log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. During this [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud), you will not need a dbt Cloud seat to access the application but this is subject to change. This means you will not need to provide dbt Cloud credentials to access the application. 
+You can log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. During this [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud), you do not need dbt Cloud credentials (a dbt Cloud seat) to access the application but this is subject to change. 
 
 App users are able to access all information that's available to the API service token.
 
