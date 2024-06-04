@@ -4,17 +4,34 @@ description: Getting started with dbt Mesh patterns
 hoverSnippet: Learn how to get started with dbt Mesh
 ---
 
-As mentioned before, the key decision in migrating to a multi-project architecture is understanding how your project is already being grouped, built, and deployed. We can use this information to inform our decision to split our project apart.
+### Where should your mesh journey start?
 
-- **Examine your jobs** - which sets of models are most often built together?
-- **Look at your lineage graph** - how are models connected?
-- **Look at your selectors** defined in `selectors.yml` - how do people already define resource groups?
+Moving from to a dbt Mesh represents an meaningful change in development and deployment architecture. We’ve seen migrations fail for two reasons: 
+
+1. lacking buy-in that a dbt Mesh is the right long-term architecture
+2. lack of alignment on a well-scoped starting point
+
+Provided you have both of these, you’re ready to start your migration.
+
+This migration should be organized and planned according to how your project(s) are already being grouped, built, and deployed. The goal is to define and formalize your organizational interfaces, and can use this information to inform our decision to split our project apart.
+
+This change is **primarily organizational**. The most important component is alignment of your teammates. 
+
 - **Talk to teams** about what sort of separation naturally exists right now.
   - Are there various domains people are focused on?
   - Are there various sizes, shapes, and sources of data that get handled separately (such as click event data)?
   - Are there people focused on separate levels of transformation, such as landing and staging data or building marts?
+  - Is there a single team that is *downstream* of your current dbt project, who could more easily migrate onto dbt Mesh as a consumer? 
 
-## Add groups and access
+When attempting to define your project interfaces, you should consider investigating:
+
+- **Your jobs** - which sets of models are most often built together?
+- **Your lineage graph** - how are models connected?
+- **Your selectors** defined in `selectors.yml` - how do people already define resource groups?
+
+Let's go through an example process of taking a monolithing project, using groups and access to define the interfaces, and then splitting it into multiple projects.
+
+## Defining project interfaces with groups and access
 
 Once you have a sense of some initial groupings, you can first implement **group and access permissions** within a single project.
 
