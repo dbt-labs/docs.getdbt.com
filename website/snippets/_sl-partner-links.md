@@ -6,13 +6,13 @@ The following tools integrate with the dbt Semantic Layer:
 
  <Card
     title="Tableau"
-    link="/docs/use-dbt-semantic-layer/tableau"
+    link="/docs/cloud-integrations/semantic-layer/tableau"
     body="Learn how to connect to Tableau for querying metrics and collaborating with your team."
     icon="tableau-software"/>
 
   <Card
     title="Google Sheets"
-    link="/docs/use-dbt-semantic-layer/gsheets"
+    link="/docs/cloud-integrations/semantic-layer/gsheets"
     body="Discover how to connect to Google Sheets for querying metrics and collaborating with your team."
     icon="google-sheets-logo-icon"/>
 
