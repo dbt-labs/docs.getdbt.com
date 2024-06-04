@@ -56,7 +56,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false (available v1.4+)
+      reuse_connections: False # default: false
   ```
 
 </File>
@@ -91,7 +91,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false (available v1.4+)
+      reuse_connections: False # default: false
 ```
 
 Along with adding the `authenticator` parameter, be sure to run `alter account set allow_client_mfa_caching = true;` in your Snowflake warehouse. Together, these will allow you to easily verify authentication with the DUO Mobile app (skipping this results in push notifications for every model built on every `dbt run`).
@@ -263,13 +263,9 @@ The `client_session_keep_alive` feature is intended to keep Snowflake sessions a
 [Query tags](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) are a Snowflake
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
-<VersionBlock firstVersion="1.4">
-
 ### reuse_connections
 
 During node execution (such as model and test), dbt opens connections against a Snowflake warehouse. Setting this configuration to `True` reduces execution time by verifying credentials only once for each thread.
-
-</VersionBlock>
 
 ### retry_on_database_errors
 

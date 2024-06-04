@@ -3,12 +3,6 @@ Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — thi
 
 - dbt uses [YAML](https://yaml.org/) in a few different places. If you're new to YAML, it would be worth learning how arrays, dictionaries, and strings are represented.
 
-<VersionBlock lastVersion="1.4">
-
-- By default, dbt looks for the `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 - By default, dbt looks for the `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the `DBT_PROJECT_DIR` environment variable.

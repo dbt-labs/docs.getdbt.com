@@ -32,7 +32,7 @@ All code in today’s workshop can be found on [GitHub](https://github.com/dbt-l
 ### What you need to know
 
 - Basic to intermediate SQL and python.
-- Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://courses.getdbt.com/collections) if you're interested.
+- Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://learn.getdbt.com) if you're interested.
 - High level machine learning process (encoding, training, testing)
 - Simple ML algorithms &mdash; we will use logistic regression to keep the focus on the *workflow*, not algorithms!
 
@@ -436,7 +436,7 @@ Sources allow us to create a dependency between our source database object and o
 
 Staging models are the base of our project, where we bring all the individual components we're going to use to build our more complex and useful models into the project.
 
-Since we want to focus on dbt and Python in this workshop, check out our [sources](/docs/build/sources) and [staging](/best-practices/how-we-structure/2-staging) docs if you want to learn more (or take our [dbt Fundamentals](https://courses.getdbt.com/collections) course which covers all of our core functionality).
+Since we want to focus on dbt and Python in this workshop, check out our [sources](/docs/build/sources) and [staging](/best-practices/how-we-structure/2-staging) docs if you want to learn more (or take our [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course which covers all of our core functionality).
 
 ### 1. Create sources
 
@@ -1875,7 +1875,7 @@ To start, let’s look back at our `intermediate.md` file. We can see that we pr
 3. View the mini-lineage that looks at the model we are currently selected on (`int_results` in this case).
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/3-mini-lineage-docs.png" title="Mini lineage view on docs site"/>
 
-4. In our `dbt_project.yml`, we configured `node_colors` depending on the file directory. Starting in dbt v1.3, we can see how our lineage in our docs looks. By color coding your project, it can help you cluster together similar models or steps and more easily troubleshoot.
+4. In our `dbt_project.yml`, we configured `node_colors` depending on the file directory. By color coding your project, it can help you cluster together similar models or steps and more easily troubleshoot when viewing lineage in your docs.
 
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/4-full-dag-docs.png" title="Full project DAG on docs site"/>
 
