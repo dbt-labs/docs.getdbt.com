@@ -62,6 +62,10 @@ To create a new dbt SQL model, click on **Create a new model** and perform the f
 ## Edit an existing model
 To edit an existing model, navigate to the visual editor and click on the **Edit a model** button on the upper right. This will allow you to select the model you'd like to edit.
 
+<Lightbox src="/img/docs/dbt-cloud/visual-editor/edit-model.jpg" width="90%" title="Edit a model iin the visual editor using the 'Edit a model' button." />
+
 ## Version control
 
-Testing and documenting your models is an important part of the development process.  Stay tuned—coming soon, the visual editor will allow you to version-control your dbt models, ensuring that you can track changes and revert to previous versions if needed.
+Testing and documenting your models is an important part of the development process.  
+
+Stay tuned—coming soon, the visual editor will allow you to version-control your dbt models, ensuring that you can track changes and revert to previous versions if needed.
