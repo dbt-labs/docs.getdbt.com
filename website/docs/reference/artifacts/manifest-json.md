@@ -36,7 +36,7 @@ All resources nested within `nodes`, `sources`, `metrics`, `exposures`, `macros`
 - `name`: Resource name.
 - `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key
 - `package_name`: Name of package that defines this resource.
-- `root_path`: Absolute file path of this resource's package. (**Note:** This is removed for most node types in dbt Core v1.4 / manifest v8 to reduce duplicative information across nodes, but it is still present for seeds.)
+- `root_path`: Absolute file path of this resource's package. (**Note:** This was removed for most node types in dbt Core v1.4 / manifest v8 to reduce duplicative information across nodes, but it is still present for seeds.)
 - `path`: Relative file path of this resource's definition within its "resource path" (`model-paths`, `seed-paths`, etc.).
 - `original_file_path`: Relative file path of this resource's definition, including its resource path.
 

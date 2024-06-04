@@ -3,7 +3,7 @@ title: "Python models"
 id: "python-models"
 ---
 
-dbt Core v1.3 adds support for Python models. Note that only [specific data platforms](#specific-data-platforms) support dbt-py models.
+Note that only [specific data platforms](#specific-data-platforms) support dbt-py models.
 
 We encourage you to:
 - Read [the original discussion](https://github.com/dbt-labs/dbt-core/discussions/5261) that proposed this feature.
@@ -16,7 +16,6 @@ We encourage you to:
 
 dbt Python (`dbt-py`) models can help you solve use cases that can't be solved with SQL. You can perform analyses using tools available in the open-source Python ecosystem, including state-of-the-art packages for data science and statistics. Before, you would have needed separate infrastructure and orchestration to run Python transformations in production. Python transformations defined in dbt are models in your project with all the same capabilities around testing, documentation, and lineage.
 
-<VersionBlock firstVersion="1.3">
 
 <File name='models/my_python_model.py'>
 
@@ -257,7 +256,7 @@ def model(dbt, session):
 ### Materializations
 
 Python models support these materializations:
-- `table` <VersionBlock firstVersion="1.4">(default)</VersionBlock>
+- `table` (default)
 - `incremental`
 
 Incremental Python models support all the same [incremental strategies](/docs/build/incremental-strategy) as their SQL counterparts. The specific strategies supported depend on your adapter. As an example, incremental models are supported on BigQuery with Dataproc for the `merge` incremental strategy; the `insert_overwrite` strategy is not yet supported.
@@ -782,4 +781,3 @@ You can also install packages at cluster creation time by [defining cluster prop
 
 </WHCode>
 
-</VersionBlock>

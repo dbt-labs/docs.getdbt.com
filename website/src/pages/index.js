@@ -164,7 +164,7 @@ function Home() {
                 <Card
                   title="Online courses"
                   body="Structured video courses to give you a deep dive into analytics engineering topics."
-                  link="https://courses.getdbt.com/collections"
+                  link="https://learn.getdbt.com/"
                   icon="computer"
                 />
               </div>

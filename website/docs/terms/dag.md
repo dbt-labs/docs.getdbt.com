@@ -55,7 +55,7 @@ You can additionally use your DAG to help identify bottlenecks, long-running dat
 - Complex logic stored in <Term id="view">views</Term>
 - Good old large volumes of data
 
-...to name just a few. Understanding the factors impacting model performance can help you decide on [refactoring approaches](https://courses.getdbt.com/courses/refactoring-sql-for-modularity), [changing model materialization](https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model#attempt-2-moving-to-an-incremental-model)s, replacing multiple joins with <Term id="surrogate-key">surrogate keys</Term>, or other methods.
+...to name just a few. Understanding the factors impacting model performance can help you decide on [refactoring approaches](https://learn.getdbt.com/courses/refactoring-sql-for-modularity), [changing model materialization](https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model#attempt-2-moving-to-an-incremental-model)s, replacing multiple joins with <Term id="surrogate-key">surrogate keys</Term>, or other methods.
 
 <Lightbox src="/img/docs/terms/dag/bad_dag.png" title="A bad DAG, one that follows non-modular data modeling techniques" />
 
