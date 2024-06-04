@@ -229,7 +229,7 @@ This is where the power of dbt modeling really comes in! dbt allows you to break
 The following are some methods I’ve used in order to properly optimize run times, leveraging dbt’s ability to modularize models.
 
 :::note Note
-I won’t get into our modeling methodology at dbt Labs in this article, but there are [plenty of resources](https://courses.getdbt.com/) to understand what might be happening in the following DAGs!
+I won’t get into our modeling methodology at dbt Labs in this article, but there are [plenty of resources](https://learn.getdbt.com/) to understand what might be happening in the following DAGs!
 :::
 
 ### Staggered joins
