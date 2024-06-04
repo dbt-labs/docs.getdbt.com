@@ -59,22 +59,6 @@ It includes logic to extract user-provided arguments, including <code>version</c
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.4">
-
-From dbt v1.4 and lower, use the following macro to override the `ref` method available in the model compilation context to return a [Relation](/reference/dbt-classes#relation) with the database name overriden to `dev`:
-
-```
-
-{% macro ref(model_name) %}
-
-  {% set rel = builtins.ref(model_name) %}
-  {% set newrel = rel.replace_path(database="dev") %}
-  {% do return(newrel) %}
-
-{% endmacro %}
-```
-</VersionBlock>
-
 Logic within the ref macro can also be used to control which elements of the model path are rendered when run, for example the following logic renders only the schema and object identifier, but not the database reference i.e. `my_schema.my_model` rather than `my_database.my_schema.my_model`. This is especially useful when using snowflake as a warehouse, if you intend to change the name of the database post-build and wish the references to remain accurate.
 
 ```
