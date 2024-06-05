@@ -39,7 +39,7 @@ Automation servers (such as CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-
 
 ## Azure Data Factory
 
-Integrate dbt Cloud and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process from data ingestion to data transformation. You can seamlessly trigger dbt Cloud jobs upon completion of ingestion jobs by using the [dbt API](/docs/dbt-cloud-apis/overview) in ADF. Need help building this out? [Contact us](https://www.getdbt.com/contact/) today!
+Integrate dbt Cloud and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process from data ingestion to data transformation. You can seamlessly trigger dbt Cloud jobs upon completion of ingestion jobs by using the [dbt API](/docs/dbt-cloud-apis/overview) in ADF.
 
 
 The following video provides you with a detailed overview of how to trigger a dbt Cloud job via the API in Azure Data Factory.
