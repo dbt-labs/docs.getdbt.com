@@ -671,6 +671,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud-integrations/avail-sl-integrations" },
           items: [
             "docs/cloud-integrations/avail-sl-integrations",
+            "docs/cloud-integrations/semantic-layer/excel",
             "docs/cloud-integrations/semantic-layer/gsheets",
             "docs/cloud-integrations/semantic-layer/tableau",
          ],
