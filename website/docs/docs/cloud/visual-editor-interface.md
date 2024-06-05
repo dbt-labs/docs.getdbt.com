@@ -1,12 +1,12 @@
 --- 
-title: "Visual editor interface" 
+title: "Navigate the interface" 
 id: visual-editor-interface      
-sidebar_label: "Visual editor interface" 
+sidebar_label: "Navigate the interface" 
 description: "The visual editor interface contains an operator toolbar, operators, and a canvas to help you create dbt models through a seamless drag-and-drop experience in dbt Cloud." 
 
 ---
 
-# Visual editor interface <Lifecycle status='beta'/> 
+# Navigate the interface <Lifecycle status='beta'/> 
 
 <p style={{ color: '#717d7d', fontSize: '1.1em' }}>
 The visual editor interface contains an operator toolbar, operators, canvas, built-in AI, and more to help you create dbt models through a seamless drag-and-drop experience in dbt Cloud.
