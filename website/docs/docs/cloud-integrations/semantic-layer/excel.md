@@ -1,11 +1,11 @@
 ---
-title: "Excel 365"
+title: "Microsoft Excel 365"
 id: excel
 description: "Integrate with Excel 365 to query your metrics in a spreadsheet."
 tags: [Semantic Layer]
-sidebar_label: "Excel 365"
+sidebar_label: "Microsoft Excel 365"
 ---
-# Excel 365 <Lifecyclcle status='beta'/>
+# Microsoft Excel 365 <Lifecyclcle status='beta'/>
 
 <p style={{ color: '#808080', fontSize: '1.1em' }}>
 The dbt Semantic Layer offers a seamless integration with Microsoft Excel 365 through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Excel 365.
@@ -14,7 +14,7 @@ The dbt Semantic Layer offers a seamless integration with Microsoft Excel 365 th
 ## Prerequisites
 
 - You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
-- You need an Excel account with access to install add-ons.
+- You need a Microsoft Excel account with access to install add-ons.
 - You have a [dbt Cloud Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and a [service token](/docs/dbt-cloud-apis/service-tokens) to authenticate with from a dbt Cloud account.
 - You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing). Suitable for both Multi-tenant and Single-tenant deployment.
   - Single-tenant accounts should contact their account representative for necessary setup and enablement.
