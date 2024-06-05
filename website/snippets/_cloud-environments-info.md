@@ -35,7 +35,7 @@ Both development and deployment environments have a section called **General Set
 
 - dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
-- In 2024 we are introducing **Keep on latest version**, which removes the need for manually upgrading environments in the future, while ensuring you get access to the latest fixes and features. This feature is currently in beta for select customers, rolling out to wider availability through February and March._
+- Go versionless by opting to **Keep on latest version**, which removes the need for manually upgrading environment, while ensuring you are always up to date with the latest fixes and features.
 :::
 
 ### Custom branch behavior
