@@ -32,7 +32,7 @@ Depending on the resource type, configurations can be defined in the dbt project
 
 ### Config inheritance
 
-dbt prioritizes configurations in order of specificity, from most specific to least specific. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
+The most specific config always takes precedence. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
 
 Note - Generic data tests work a little differently when it comes to specificity. See [test configs](/reference/data-test-configs).
 
