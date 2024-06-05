@@ -235,7 +235,7 @@ metrics:
       numerator: food_order
       denominator: order_total
     filter: |
-      {{ Dimension('customer__is_new_customer')}} = false
+      {{ Dimension('customer__is_new_customer') }} = false
 ```
 </TabItem>
 </Tabs>
