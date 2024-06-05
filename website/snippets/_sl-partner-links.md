@@ -30,20 +30,6 @@ The following tools integrate with the dbt Semantic Layer:
     </a>
   </div>
 
-  <div className="card-container">
-  <Card
-    title="Delphi"
-    body="Learn how to connect Delphi to the dbt Semantic Layer and access metrics from any integrated tool."
-    link="https://docs.delphihq.com/getting-started"
-    icon="delphi"/>
-    <a href="https://docs.delphihq.com/getting-started"
-    className="external-link"
-      target="_blank"
-      rel="noopener noreferrer">
-      <Icon name='fa-external-link' />
-    </a>
-</div>
-
 <div className="card-container">
   <Card
     title="Klipfolio PowerMetrics"
