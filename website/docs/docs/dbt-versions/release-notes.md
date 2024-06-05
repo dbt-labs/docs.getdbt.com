@@ -20,6 +20,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2024
 
+- **Enhancement:** Updates to the UI when [creating merge jobs](/docs/deploy/merge-jobs) are now available. The updates include improvements to helper text, new deferral settings, and more.  
+
 - **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
 ## May 2024
