@@ -241,9 +241,8 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
           items: [
             "docs/cloud/cloud-cli-installation",
-             "docs/cloud/configure-cloud-cli",
-            ], 
-        },
+            "docs/cloud/configure-cloud-cli",
+          ],
         },
         {
           type: "category",
@@ -276,11 +275,11 @@ const sidebarSettings = {
               "docs/cloud/visual-editor",
               "docs/cloud/visual-editor-interface",
               "docs/cloud/use-visual-editor",
-              ],
-            },
-      ],
-    },
-    {
+            ],
+          },
+        ],
+      },
+      {
       type: "category",
       label: "Build dbt projects",
       collapsed: true,
