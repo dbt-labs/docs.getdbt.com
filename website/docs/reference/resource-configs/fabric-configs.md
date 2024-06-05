@@ -87,7 +87,9 @@ Grants with auto provisioning is not supported by Microsoft Fabric Synapse Data 
 
 ## Incremental
 
-Fabric supports the `delete+insert` strategy. If a unique key is not provided, it will default to the `append` strategy
+Fabric supports both `delete+insert` and `append` strategy.
+
+If a unique key is not provided, it will default to the `append` strategy
 
 ## Permissions
 
