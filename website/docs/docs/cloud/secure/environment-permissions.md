@@ -30,28 +30,28 @@ Environment-level permissions give dbt Cloud admins more flexibility to protect 
 
 dbt Cloud has four different environment types per project: 
 
-- Production &mdash; Primary deployment environment. Only one unique Production env per project.
-- Development &mdash; Developer testing environment. Only one unique Development env per project.
-- Staging &mdash; Pre-prod environment that sits between development and staging. Only one unique Staging env per project.
-- General &mdash; Mixed use environments. No limit on the number per project. 
+- **Production** &mdash; Primary deployment environment. Only one unique Production env per project.
+- **Development** &mdash; Developer testing environment. Only one unique Development env per project.
+- **Staging** &mdash; Pre-prod environment that sits between development and staging. Only one unique Staging env per project.
+- **General** &mdash; Mixed use environments. No limit on the number per project. 
 
 Environment write permissions can be specified for the following roles:
 
 - Analyst
-- Database Admin
-- Developer &mdash; Previous default write access for all environments. The new default is read access for environments unless access is specified.
-- Git Admin
-- Team Admin
+- Database admin
+- Developer (Previous default write access for all environments. The new default is read access for environments unless access is specified)
+- Git admin
+- Team admin
 
 Depending on your current group mappings, you may have to update roles to ensure users have the correct access level to environments. 
 
 Determine what personas need updated environment access and the roles they should be mapped to. The personas below highlight a few scenarios for environment permissions: 
 
-- Developer &mdash; Write access to create/run jobs in development environment
-- Testing/QA &mdash; Write access to staging and development environments to test
-- Production deployment &mdash; Write access to all environments, including production, for deploying
-- Analyst &mdash; Doesn't need environmental write access but read-only access for discovery and troubleshooting
-- Other admins &mdash; These admins may need write access to create/run jobs or configure integrations for any number of environments
+- **Developer** &mdash; Write access to create/run jobs in development environment
+- **Testing/QA** &mdash; Write access to staging and development environments to test
+- **Production deployment** &mdash; Write access to all environments, including production, for deploying
+- **Analyst** &mdash; Doesn't need environmental write access but read-only access for discovery and troubleshooting
+- **Other admins** &mdash; These admins may need write access to create/run jobs or configure integrations for any number of environments
 
 ## Projects and environments
 
