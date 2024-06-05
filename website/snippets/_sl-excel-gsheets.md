@@ -86,7 +86,8 @@
   <li><strong>Private selections</strong> mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu or benefit from the automatic refresh.</li>
 </ul>
 
-### Refreshing selections<
+### Refreshing selections
+
 <p>Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting <strong>Refresh on Load</strong> when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing.</p>
 
 <p>Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.</p>
