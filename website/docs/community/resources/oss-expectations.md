@@ -51,7 +51,7 @@ An issue could be a bug you’ve identified while using the product or reading t
 
 ### Best practices for issues
 
-- Issues are **not** for support / troubleshooting / debugging help. Please see [dbt support](https://docs.getdbt.com/docs/dbt-support) for more details and suggestions on how to get help.
+- Issues are **not** for support / troubleshooting / debugging help. Please see [dbt support](/docs/dbt-support) for more details and suggestions on how to get help.
 - Always search existing issues first, to see if someone else had the same idea / found the same bug you did.
 - Many repositories offer templates for creating issues, such as when reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This will help other people understand your issue and respond.
 
@@ -65,7 +65,7 @@ In our most critical repositories (such as `dbt-core`), **our goal is to respond
 
 **What does “triage” mean?** In some repositories, we use a `triage` label to keep track of issues that need an initial response from a maintainer.
 
-**What if I’m opening an issue in a different repository?** We have engineering teams dedicated to active maintainence of `dbt-core` and its component libraries (`dbt-common` + `dbt-adapters`), as well as several platform-specific adapters (`dbt-snowflake`, `dbt-bigquery`, `dbt-redshift`, `dbt-postgres`). We’ve open sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
+**What if I’m opening an issue in a different repository?** **What if I’m opening an issue in a different repository?** We have engineering teams dedicated to active maintainence of [`dbt-core`](https://github.com/dbt-labs/dbt-core) and its component libraries ([`dbt-common`](https://github.com/dbt-labs/dbt-common) + [`dbt-adapters`](https://github.com/dbt-labs/dbt-adapters)), as well as several platform-specific adapters ([`dbt-snowflake`](https://github.com/dbt-labs/dbt-snowflake), [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery), [`dbt-redshift`](https://github.com/dbt-labs/dbt-redshift), [`dbt-postgres`](https://github.com/dbt-labs/dbt-postgres)). We’ve open sourced a number of other software projects over the years, and the majority of them do not have the same activity or maintenance guarantees. Check to see if other recent issues have responses, or when the last commit was added to the `main` branch.
 
 **If my issue is lingering...** Sorry for the delay! If your issue is in an actively maintained repo and has a `triage` label attached, we’re aware it's something that needs a response.
 
@@ -98,7 +98,9 @@ PRs are your surest way to make the change you want to see in dbt / packages / d
 
 **PRs go through two review steps.** First, we aim to respond with feedback on whether we think the implementation is appropriate from a product & usability standpoint. At this point, we will close PRs that we believe fall outside the scope of dbt Core, or which might lead to an inconsistent user experience. This is an important part of our role as maintainers; we're always open to hearing disagreement. If a PR passes this first review, we will queue it up for code review, at which point we aim to test it ourselves and provide thorough feedback within the next month.
 
-**We receive more PRs than we can thoroughly review, test, and merge.** Our teams have finite capacity, and our top priority is maintaining a well-scoped, high-quality framework for the tens of thousands of people who use it every week. To that end, we must prioritize overall stability and planned improvements over a long tail of niche potential features. For best results, say what in particular you’d like feedback on, and explain what would it mean to you, your team, and other community members to have the proposed change merged.
+**We receive more PRs than we can thoroughly review, test, and merge.** Our teams have finite capacity, and our top priority is maintaining a well-scoped, high-quality framework for the tens of thousands of people who use it every week. To that end, we must prioritize overall stability and planned improvements over a long tail of niche potential features. For best results, say what in particular you’d like feedback on, and explain what would it mean to you, your team, and other community members to have the proposed change merged. Smaller PRs tackling well-scoped issues tend to be easier and faster for review. Two recent examples of community-contributed PRs:
+- [(dbt-core#9347) Fix configuration of turning test warnings into failures](https://github.com/dbt-labs/dbt-core/pull/9347)
+- [(dbt-core#9863) Better error message when trying to select a disabled model](https://github.com/dbt-labs/dbt-core/pull/9863)
 
 **Automation that can help us:** Many repositories have a template for pull request descriptions, which will include a checklist that must be completed before the PR can be merged. You don’t have to do all of these things to get an initial PR, but they definitely help. Those many include things like:
 
