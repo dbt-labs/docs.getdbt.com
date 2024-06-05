@@ -7,6 +7,10 @@ description: "Access and use the visual editor to create or edit dbt models thro
 
 # Use the visual editor <Lifecycle status='beta'/> 
 
+<p style={{ color: '#717d7d', fontSize: '1.1em' }}>
+Access and use the dbt Cloud visual editor to create or edit dbt models through a visual, drag-and-drop experience. Access the built-in AI for custom code generation in your development experience.
+</p>
+
 :::tip Beta feature
 The visual editor provides users with a seamless and drag-and-drop experience inside of dbt Cloud. It's available in private beta for [dbt Cloud Enterprise accounts](https://www.getdbt.com/pricing). 
 

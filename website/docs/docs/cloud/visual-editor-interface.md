@@ -2,11 +2,15 @@
 title: "Visual editor interface" 
 id: visual-editor-interface      
 sidebar_label: "Visual editor interface" 
-description: "The visual editor interface contains a node toolbar, nodes, and canvas to help you create dbt models through a seamless drag-and-drop experience in dbt Cloud." 
+description: "The visual editor interface contains an operator toolbar, operators, and a canvas to help you create dbt models through a seamless drag-and-drop experience in dbt Cloud." 
 
 ---
 
 # Visual editor interface <Lifecycle status='beta'/> 
+
+<p style={{ color: '#717d7d', fontSize: '1.1em' }}>
+The visual editor interface contains an operator toolbar, operators, canvas, built-in AI, and more to help you create dbt models through a seamless drag-and-drop experience in dbt Cloud.
+</p>
 
 :::tip Beta feature
 The visual editor provides users with a seamless and visual, drag-and-drop experience inside dbt Cloud. It's available in private beta for [dbt Cloud Enterprise accounts](https://www.getdbt.com/pricing). 
@@ -14,15 +18,14 @@ The visual editor provides users with a seamless and visual, drag-and-drop exper
 To join the private beta, [register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to your account team to begin this process.
 :::
 
-The visual editor enables analysts to create or edit dbt SQL models through a visual, drag-and-drop experience in dbt Cloud. This lets organizations benefit from code-driven development &mdash; including better precision, easier debugging, and testing &mdash; while allowing contributors in a comfortable environment. The editor also includes built-in AI for custom code generation, allowing analysts to focus on building data models.
-
-This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the visual editor landscape with ease.
+This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the dbt Cloud visual editor landscape with ease.
 
 The visual editor interface is composed of:
 
 - **Operator toolbar** &mdash; Located at the top of the interface, the toolbar displays all the nodes available. Use the toggle on the left of the toolbar to display or hide it.
 - **Operators** &mdash; perform specific transformations or configurations (such as table, join, aggregate, filter, and so on). Use connectors to link the operators and build a complete data transformation pipeline. 
 - **Canvas** &mdash; The main whiteboard space below the node toolbar. The canvas allows you to create or modify models through a sleek drag-and-drop experience.
+- **Configuration panel** &mdash; Each operator has a configuration panel that opens when you click on it. The configuration panel allows you to configure the operator, review the current table, preview changes to the table, view the SQL code for the node, and delete the operator.
 
 ## Operators
 
@@ -71,7 +74,7 @@ Connectors allow you to connect your operators to create dbt models. Once you've
 Each operator has a configuration side panel that opens when you click on it. The configuration panel allows you to configure the operator, review the current table, preview changes to the table, view the SQL code for the operator, and delete the operator.
 
 The configuration side panel has the following:
-- Configure tab &mdash; This section allows you to configure the operator to your specified requirements.
+- Configure tab &mdash; This section allows you to configure the operator to your specified requirements, such as using the built-in AI code generator to generate SQL.
 - Input tab &mdash; This section allows you to view the data for the current source table. Not available for table operators.
 - Output tab &mdash; This section allows you to preview the data for the modified source table.
 - Code &mdash; This section allows you to view the underlying SQL code for the data transformation.

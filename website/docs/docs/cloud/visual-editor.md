@@ -9,15 +9,17 @@ pagination_prev: null
 
 # About the visual editor <Lifecycle status='beta'/> 
 
+<p style={{ color: '#717d7d', fontSize: '1.1em' }}>
+The dbt Cloud visual editor helps analysts quickly create, edit, and visualize dbt models through a visual, drag-and-drop experience and with a built-in AI for custom code generation.
+</p>
+
 :::tip Beta feature
-The visual editor provides users with a seamless and visual, drag-and-drop experience inside dbt Cloud. It's available in private beta for [dbt Cloud Enterprise accounts](https://www.getdbt.com/pricing). 
+The visual editor in dbt Cloud provides users with a seamless and visual, drag-and-drop experience inside dbt Cloud. It's available in private beta for [dbt Cloud Enterprise accounts](https://www.getdbt.com/pricing). 
 
 To join the private beta, [register your interest](https://docs.google.com/forms/d/e/1FAIpQLScPjRGyrtgfmdY919Pf3kgqI5E95xxPXz-8JoVruw-L9jVtxg/viewform) or reach out to your account team to begin this process.
 :::
 
-The visual editor helps analysts quickly create and visualize dbt models through a visual, drag-and-drop experience inside of dbt Cloud. It allows organizations to enjoy the many benefits of code-driven development—such as increased precision, ease of debugging, and ease of validation—while retaining the flexibility to have different contributors develop wherever they are most comfortable.
-
-The visual editor development experience allows users to also take advantage of built-in AI for custom code generation, making it a frictionless experience.
+The visual editor allows organizations to enjoy the many benefits of code-driven development—such as increased precision, ease of debugging, and ease of validation &mdash; while retaining the flexibility to have different contributors develop wherever they are most comfortable. Users can also take advantage of built-in AI for custom code generation, making it an end-to-end frictionless experience.
 
 These models compile directly to SQL and are indistinguishable from other dbt models in your projects:
 - Visual models are version-controlled in your backing Git provider.
