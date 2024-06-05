@@ -36,7 +36,7 @@ dbt prioritizes configurations in order of specificity, from most specific to le
 
 Note - Generic data tests work a little differently when it comes to specificity. See [test configs](/reference/data-test-configs).
 
-Within the project file, configurations are also applied hierarchically. The most specific config always takes precedence. In the project file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
+Within the project file, configurations are also applied hierarchically. The most specific config always takes precedence. In the project file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the [resource path](reference/resource-configs/resource-path) as nested dictionary keys.
 
 Configurations in your dbt project have _higher_ precedence than configurations in installed packages. This enables you to override the configurations of installed packages, providing more control at a higher level of granularity. 
 
