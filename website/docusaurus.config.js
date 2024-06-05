@@ -128,7 +128,7 @@ var siteSettings = {
           items: [
             {
               label: "Courses",
-              href: "https://courses.getdbt.com",
+              href: "https://learn.getdbt.com",
             },
             {
               label: "Best Practices",

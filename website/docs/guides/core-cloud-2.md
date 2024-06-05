@@ -154,12 +154,12 @@ Now that you’ve chosen dbt Cloud as your platform, you’ve unlocked the power
 - **Audit logs:** Use [audit logs](/docs/cloud/manage-access/audit-log) to review actions performed by people in your organization. Audit logs contain audited user and system events in real time. You can even [export](/docs/cloud/manage-access/audit-log#exporting-logs) *all* the activity (beyond the 90 days you can view in dbt Cloud). <Lifecycle status="enterprise"/>
 - **dbt Cloud APIs:** Use dbt Cloud's robust [APIs](/docs/dbt-cloud-apis/overview) to create, read, update, and delete (CRUD) projects/jobs/environments project. The [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and [Terraform provider](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest/docs/resources/job) facilitate programmatic access and configuration storage. While the [Discovery API](/docs/dbt-cloud-apis/discovery-api) offers extensive metadata querying capabilities, such as job data, model configurations, usage, and overall project health. <Lifecycle status="team,enterprise"/>
 - **dbt Explorer**: Use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their [lineage](https://docs.getdbt.com/terms/data-lineage) to gain a better understanding of its latest production state. (Once you have a successful job in a Production environment). <Lifecycle status="team,enterprise"/>
-- **dbt Semantic Layer:** The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define universal metrics on top of your models that can then be queried in your [business intelligence (BI) tool](/docs/use-dbt-semantic-layer/avail-sl-integrations). This means no more inconsistent metrics — there’s now a centralized way to define these metrics and create visibility in every component of the data flow. <Lifecycle status="team,enterprise"/>
+- **dbt Semantic Layer:** The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define universal metrics on top of your models that can then be queried in your [business intelligence (BI) tool](/docs/cloud-integrations/avail-sl-integrations). This means no more inconsistent metrics — there’s now a centralized way to define these metrics and create visibility in every component of the data flow. <Lifecycle status="team,enterprise"/>
 - **dbt Mesh:** Use [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) to share data models across organizations, enabling data teams to collaborate on shared data models and leverage the work of other teams. <Lifecycle status="enterprise"/>
 
 ### Additional help
 
-- **dbt Learn courses**: Access our free [Learn dbt Cloud](https://courses.getdbt.com/collections) video courses for on-demand training.
+- **dbt Learn courses**: Access our free [Learn dbt Cloud](https://learn.getdbt.com) video courses for on-demand training.
 - **dbt Community:** Join the [dbt Community](https://community.getdbt.com/) to connect with other dbt users, ask questions, and share best practices.
 - **dbt Support team:** Our [dbt Support team](/docs/dbt-support) is always available to help you troubleshoot your dbt Cloud issues. Create a support ticket in dbt Cloud and we’ll be happy to help!
 - **Account management** Enterprise accounts have an account management team available to help troubleshoot solutions and account management assistance. [Book a demo](https://www.getdbt.com/contact) to learn more. <Lifecycle status="enterprise"/>
@@ -189,7 +189,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 <CoretoCloudTable/>
 
 ### Related content
-- [Learn dbt Cloud](https://courses.getdbt.com/collections) courses
+- [Learn dbt Cloud](https://learn.getdbt.com) courses
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 - [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.

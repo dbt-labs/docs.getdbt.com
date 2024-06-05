@@ -8,12 +8,6 @@ sidebar: "logs"
 
 dbt outputs logs to two different locations: CLI console and the log file.
 
-<VersionBlock lastVersion="1.4">
-
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted and has three options: `json`, `text`, and `debug`.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted, and they each have the same options: `json`, `text`, and `debug`.
@@ -49,12 +43,6 @@ The `json` format outputs fully structured logs in the <Term id="json" /> format
 {"data": {"log_version": 3, "version": "=1.8.0"}, "info": {"category": "", "code": "A001", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Running with dbt=1.8.0", "name": "MainReportVersion", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:54.993336Z"}}
 {"data": {"adapter_name": "postgres", "adapter_version": "=1.8.0"}, "info": {"category": "", "code": "E034", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Registered adapter: postgres=1.8.0", "name": "AdapterRegistered", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:56.437986Z"}}
 ```
-
-<VersionBlock lastVersion="1.4">
-
-When the `LOG_FORMAT` is set explicitly, it will take affect in both the console and log files.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 

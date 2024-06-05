@@ -176,8 +176,6 @@ sources:
 
 <TabItem value="metrics">
 
-<VersionBlock firstVersion="1.3">
-
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -201,13 +199,9 @@ metrics:
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="exposures">
-
-<VersionBlock firstVersion="1.3">
 
 <File name='dbt_project.yml'>
 
@@ -231,8 +225,6 @@ exposures:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
