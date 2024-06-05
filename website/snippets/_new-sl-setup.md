@@ -52,4 +52,6 @@ For more granular control, you can authenticate to the dbt Semantic Layer in dow
 
 1. (Optional) Edit the configuration and select **Delete credential** to remove a credential. When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
 
+Once you have configured the credentials, you can continue following the set up steps to connect to the dbt Semantic Layer using the credentials you've set up.
+
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="55%" title="Enter the credentials you want the Semantic Layer to use specific to your data platform, and select the deployment environment."/>
