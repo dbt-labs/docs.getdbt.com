@@ -70,6 +70,10 @@ The name of this test is the name of the file: `assert_total_payment_amount_is_p
 
 Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
 
+As with every dbt asset, we should also document the data tests by adding their YAML configuration.
+
+EXAMPLE OF HOW THIS WOULD LOOK LIKE FOR THE ABOVE SQL TEST!
+
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
 
