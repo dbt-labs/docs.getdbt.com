@@ -7,7 +7,7 @@
   <li>{props.bullet_2}</li>
 </ul>
 
-<h2 id="query-builder-functions">Query Builder functions</h2>
+## Query Builder functions
 
 <p><span>The {props.type} <strong>Query Builder</strong> custom menu has the following capabilities:</span></p>
 
@@ -48,11 +48,11 @@
 
 <p>Note: Click the info button next to any metric or dimension to see its defined description from your dbt project.</p>
 
-<h4>Modifying time granularity</h4>
+#### Modifying time granularity
 
 <p>When you select time dimensions in the <strong>Group By</strong> menu, you'll see a list of available time granularities. The lowest granularity is selected by default. Metric time is the default time dimension for grouping your metrics.</p>
 
-<h4>Filtering data</h4>
+#### Filtering data
 
 <p>To use the filter functionality, choose the <a href="/docs/build/dimensions">dimension</a> you want to filter by and select the operation you want to filter on.</p>
 
@@ -63,11 +63,12 @@
   <li>For time dimensions, you can use the time range selector to filter on presets or custom options. The time range selector applies only to the primary time dimension (<code>metric_time</code>). For all other time dimensions that aren't <code>metric_time</code>, you can use the "Where" option to apply filters.</li>
 </ul>
 
-<h4>Querying without headers or columns</h4>
+#### Querying without headers or columns
 
 <p>If you would like to just query the data values without the headers, you can optionally select the <strong>Exclude Column Names</strong> box.</p>
 
-<h2>Using saved selections</h2>
+## Using saved selections
+
 <p><span>Saved selections allow you to save the inputs you've created in the {props.type} <strong>Query Builder</strong> and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:</span></p>
 
 <ol>
@@ -85,7 +86,7 @@
   <li><strong>Private selections</strong> mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu or benefit from the automatic refresh.</li>
 </ul>
 
-<h3>Refreshing selections</h3>
+### Refreshing selections<
 <p>Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting <strong>Refresh on Load</strong> when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing.</p>
 
 <p>Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.</p>
@@ -96,7 +97,8 @@
 - Saved queries, explained in the next section, are code-defined sections of data you create in your dbt project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
 :::
 
-<h2>Using saved queries</h2>
+## Using saved queries
+
 <p>Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricFlow, in {props.type} to quickly get results from pre-defined sets of data. To access the saved queries in {props.type}:</p>
 
 <ol>
