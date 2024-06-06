@@ -35,7 +35,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
-      {
+    {
       type: "category",
       label: "Set up dbt",
       collapsed: true,
@@ -197,7 +197,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/extrica-setup",
                 "docs/core/connect-data-platform/fal-setup",
                 "docs/core/connect-data-platform/firebolt-setup",
-                "docs/core/connect-data-platform/greenplum-setup",  
+                "docs/core/connect-data-platform/greenplum-setup",
                 "docs/core/connect-data-platform/ibmdb2-setup",
                 "docs/core/connect-data-platform/infer-setup",
                 "docs/core/connect-data-platform/iomete-setup",
@@ -241,33 +241,33 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
           items: [
             "docs/cloud/cloud-cli-installation",
-             "docs/cloud/configure-cloud-cli",
-            ],
-          },
-          {
-            type: "category",
-            label: "dbt Cloud IDE",
-            link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
-            items: [
-              "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-              "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
-              "docs/cloud/dbt-cloud-ide/ide-user-interface",
-              "docs/cloud/dbt-cloud-ide/lint-format",
-              {
-                type: "category",
-                label: "dbt Assist",
-                link: { type: "doc", id:"docs/cloud/dbt-assist" },
-                items: [
-                  "docs/cloud/dbt-assist",
-                  "docs/cloud/enable-dbt-assist",
-                  "docs/cloud/use-dbt-assist",
-                  "docs/cloud/dbt-assist-data",
-                ],
-              },
-            ],
-          },
-        ],
-      },
+            "docs/cloud/configure-cloud-cli",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Cloud IDE",
+          link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+          items: [
+            "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+            "docs/cloud/dbt-cloud-ide/keyboard-shortcuts",
+            "docs/cloud/dbt-cloud-ide/ide-user-interface",
+            "docs/cloud/dbt-cloud-ide/lint-format",
+            {
+              type: "category",
+              label: "dbt Assist",
+              link: { type: "doc", id: "docs/cloud/dbt-assist" },
+              items: [
+                "docs/cloud/dbt-assist",
+                "docs/cloud/enable-dbt-assist",
+                "docs/cloud/use-dbt-assist",
+                "docs/cloud/dbt-assist-data",
+              ],
+            },
+          ],
+        },
+      ],
+    },
     {
       type: "category",
       label: "Build dbt projects",
@@ -316,7 +316,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
-            "docs/build/build-metrics-intro", 
+            "docs/build/build-metrics-intro",
             {
               type: "link",
               label: "Quickstart with the dbt Cloud Semantic Layer",
@@ -381,8 +381,8 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Incremental models",
-              link: { type: "doc", id: "docs/build/incremental-models-overview",},
-              items: [           
+              link: { type: "doc", id: "docs/build/incremental-models-overview", },
+              items: [
                 "docs/build/incremental-models-overview",
                 "docs/build/incremental-models",
                 "docs/build/incremental-strategy",
@@ -535,16 +535,6 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/exports",
         "docs/use-dbt-semantic-layer/sl-cache",
         "docs/use-dbt-semantic-layer/sl-faqs",
-        {
-          type: "category",
-          label: "Available integrations",
-          link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
-          items: [
-            "docs/use-dbt-semantic-layer/avail-sl-integrations",
-						"docs/use-dbt-semantic-layer/gsheets",
-            "docs/use-dbt-semantic-layer/tableau",
-          ],
-        },
       ],
     },
     {
@@ -628,20 +618,20 @@ const sidebarSettings = {
                   ],
                 },
                 {
-                      type: "category",
-                      label: "Applied",
-                      items: [
-                        "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
-                      ],
-                    },
-                    // Uncomment to add Definition subpage, but need to make items non-empty
-                    // {
-                    //   type: "category",
-                    //   label: "Definition",
-                    //   items: [
-                    //     // insert pages here
-                    //   ],
-                    // }, 
+                  type: "category",
+                  label: "Applied",
+                  items: [
+                    "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                  ],
+                },
+                // Uncomment to add Definition subpage, but need to make items non-empty
+                // {
+                //   type: "category",
+                //   label: "Definition",
+                //   items: [
+                //     // insert pages here
+                //   ],
+                // }, 
               ],
             },
           ],
@@ -659,6 +649,35 @@ const sidebarSettings = {
         },
       ],
     },
+
+    {
+      type: "category",
+      label: "dbt Cloud integrations",
+      link: { type: "doc", id: "docs/cloud-integrations/overview" },
+      items: [
+        "docs/cloud-integrations/overview",
+        {
+          type: "category",
+          label: "Snowflake Native App",
+          link: { type: "doc", id: "docs/cloud-integrations/snowflake-native-app" },
+          items: [
+            "docs/cloud-integrations/snowflake-native-app",
+            "docs/cloud-integrations/set-up-snowflake-native-app",
+          ],
+        },
+        {
+          type: "category",
+         label: "Semantic Layer integrations",
+          link: { type: "doc", id: "docs/cloud-integrations/avail-sl-integrations" },
+          items: [
+            "docs/cloud-integrations/avail-sl-integrations",
+            "docs/cloud-integrations/semantic-layer/gsheets",
+            "docs/cloud-integrations/semantic-layer/tableau",
+         ],
+        },
+      ],
+    },
+
     {
       type: "category",
       label: "Available dbt versions",

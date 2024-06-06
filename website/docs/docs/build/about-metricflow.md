@@ -17,7 +17,7 @@ Before you start, consider the following guidelines:
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
 - You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (dbt Core only), or Redshift. 
-- Discover insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations). 
+- Discover insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
 
 ## MetricFlow
 
@@ -227,15 +227,15 @@ MetricFlow simplifies the SQL process via metric YAML configurations as seen bel
 
 ```yaml
 metrics:
-  - name: food_order_pct_of_order_total
-    description: Revenue from food orders in each store
+  - name: food_order_pct_of_order_total_returning
+    description: Revenue from food orders from returning customers
     label: "Food % of Order Total"
     type: ratio
     type_params:
       numerator: food_order
-      denominator: active_customers
+      denominator: order_total
     filter: |
-      {{ Dimension('customer__is_new_customer')}} = true
+      {{ Dimension('customer__is_new_customer') }} = false
 ```
 </TabItem>
 </Tabs>
