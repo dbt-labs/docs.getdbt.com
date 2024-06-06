@@ -7,58 +7,24 @@ on:
 
 jobs:
   vale:
-    name: runner / vale
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: Install Vale and Reviewdog
+      uses: errata-ai/vale-action@reviewdog
       with:
-        fetch-depth: 2
+        reporter: github-pr-review
+        level: warning
 
-    - name: Install jq
-      run: sudo apt-get install -y jq
-
-    - name: Get changed files
-      id: changed-files
+    - name: Run Vale on Changed Files
       run: |
-        git fetch origin +refs/heads/${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
-        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
-        echo "BASE_SHA=$BASE_SHA" >> $GITHUB_ENV
-        git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md' | jq -R -s -c 'split("\n") | map(select(length > 0))' > changed_files.json
-        echo "::set-output name=files::$(cat changed_files.json)"
-
-    - name: Print SHAs
-      run: |
-        echo "BASE_SHA: $BASE_SHA"
-        echo "HEAD_SHA: ${{ github.sha }}"
-
-    - name: Print Changed Files
-      run: cat changed_files.json
-
-    - name: Run Vale and Process Output
-      run: |
-        CHANGED_FILES=$(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]')
+        # Get the list of changed markdown files in the pull request
+        CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- '*.md')
+        
+        # Run Vale on each changed file and report via Reviewdog
         for file in $CHANGED_FILES; do
-          vale --output=JSON $file > vale-output.json
-          cat vale-output.json | jq -r '.[] | @base64' > vale-results.txt
-          while IFS= read -r line; do
-            _jq() {
-              echo ${line} | base64 --decode | jq -r ${1}
-            }
-            reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=$(_jq '.Severity | ascii_downcase') <<EOF
-            {
-              "source": {
-                "path": "$file",
-                "position": {
-                  "line": $(_jq '.Line'),
-                  "column": $(_jq '.Span[0]')
-                }
-              },
-              "message": "$(_jq '.Check'): $(_jq '.Message')",
-              "severity": "$(_jq '.Severity')"
-            }
-EOF
-          done < vale-results.txt
+          vale --output=JSON $file | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
-      shell: bash
