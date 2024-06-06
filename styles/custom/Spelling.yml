@@ -1,6 +1,6 @@
 extends: spelling
 
-message: "Detected non-American spelling. Please use American spelling."
+message: "Detected non-American spelling. Consider using American spelling: '%s' instead of '%s."
 level: warning
 ignore:
   - dbt
