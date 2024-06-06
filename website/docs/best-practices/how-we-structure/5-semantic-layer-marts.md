@@ -38,7 +38,7 @@ models
 
 ## Semantic Layer: Where and why?
 
-- 📂 **Directory structure**: Add your semantic models in the `models/semantic_models` with directories corresponding to the models/marts files. This type of organization makes it easier to search and find what you can join. It also supports better maintenance and reduces repeated code.
+- 📂 **Directory structure**: Add your semantic models to `models/semantic_models` with directories corresponding to the models/marts files. This type of organization makes it easier to search and find what you can join. It also supports better maintenance and reduces repeated code.
 
     <File name='models/marts/sem_orders.yml'>
 
