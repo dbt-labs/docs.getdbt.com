@@ -15,15 +15,8 @@ jobs:
       with:
         fetch-depth: 2  # Ensure sufficient depth to get the necessary commit history
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
     - name: Install Vale
-      run: |
-        curl -sSfL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
-        sudo mv vale /usr/local/bin/
+      uses: errata-ai/vale-action@v2
 
     - name: Install jq
       run: sudo apt-get install -y jq
