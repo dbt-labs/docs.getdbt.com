@@ -17,7 +17,7 @@ The tech writer writes teh documentation. It is organized by the writer too.
 test
 
 ## The header is this
-test
+test test 
 
 <Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
 
