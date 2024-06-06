@@ -16,7 +16,6 @@ ignore:
 
 path: styles/custom/your-dictionary.dic
 
-# Additional spelling rules for common typos
 ---
 
 extends: existence

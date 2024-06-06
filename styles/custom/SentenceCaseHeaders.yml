@@ -1,6 +1,6 @@
 extends: existence
 
-message: "Header '$0' should be in sentence case: 'Sentence case header'."
+message: "Header '$0' should be in sentence case: 'Sentence case header'. Context: '$1'."
 level: warning
 scope: heading
 ignorecase: false
