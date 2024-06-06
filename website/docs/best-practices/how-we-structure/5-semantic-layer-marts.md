@@ -66,7 +66,7 @@ models
 ## Naming convention
 
 - 🏷️ **Semantic model names**: Use the `sem_` prefix for semantic model names, such as `sem_cloud_user_account_activity`. This follows the same pattern as other naming conventions like `fct_` for fact tables and `dim_` for dimension tables.
-- 🧩 **Entity names**: Entity names don't use prefixes within the semantic model. This keeps the names clear and focused on their specific purpose without unnecessary prefixes.
+- 🧩 **Entity names**: Don't use prefixes in Entity within the semantic model. This keeps the names clear and focused on their specific purpose without unnecessary prefixes.
 
 This guidance helps you make sure your dbt project is organized, maintainable, and scalable, allowing you to take full advantage of the capabilities offered by the dbt Semantic Layer.
 
