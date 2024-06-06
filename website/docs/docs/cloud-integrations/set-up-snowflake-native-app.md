@@ -140,6 +140,12 @@ The following is an example of the **Ask dbt** chatbot with the suggested prompt
 
 ## FAQs
 
+<Expandable alt_header="Unable to install the dbt Cloud Snowflake Native app from the Snowflake Marketplace" >
+
+* If you are on a Snowflake Free Trial, you will not be able to install or use the dbt Cloud Snowflake Native App.
+
+</Expandable>
+
 <Expandable alt_header="Received the error message `Unable to access schema dbt_sl_llm` from Ask dbt" >
 
 Check that the SL user has been granted access to the `dbt_sl_llm` schema and make sure they have all the necessary permissions to read and write from the schema.
