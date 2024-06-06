@@ -1,6 +1,6 @@
 extends: substitution
 
-message: "Avoid passive voice: '$1'. Instead, use active voice by making sure the subject of the sentence performs the action. For example: 'The contributor writes the documentation.'"
+message: "Avoid passive voice: '$1'. Use active voice instead."
 level: warning
 swap:
   - is being: is

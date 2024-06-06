@@ -5,4 +5,4 @@ level: error
 scope: heading
 ignorecase: false
 tokens: |
-  (?i)^[#]{1,4}\s+[A-Z][a-z]*(\s+[a-z]+)*$
+  ^[#]{1,4}\s+[a-z][^\n]*$
