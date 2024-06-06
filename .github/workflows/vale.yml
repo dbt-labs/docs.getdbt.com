@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        fetch-depth: 0
+        fetch-depth: 2  # Ensure sufficient depth to get the necessary commit history
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -31,7 +31,11 @@ jobs:
     - name: Get changed files
       id: changed-files
       run: |
-        echo "::set-output name=files::$(jq -R -s -c 'split("\n") | map(select(length > 0))' <(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- '*.md'))"
+        git fetch origin +refs/heads/${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
+        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
+        echo "BASE_SHA=$BASE_SHA" >> $GITHUB_ENV
+        git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md' | jq -R -s -c 'split("\n") | map(select(length > 0))' > changed_files.json
+        echo "::set-output name=files::$(cat changed_files.json)"
 
     - name: Run Vale
       run: |
