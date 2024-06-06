@@ -36,9 +36,29 @@ jobs:
     - name: Print Changed Files
       run: cat changed_files.json
 
-    - name: Run Vale and Reviewdog
-      uses: errata-ai/vale-action@reviewdog
-      with:
-        list-files: changed_files.json
-        reporter: github-pr-review
-        level: warning
+    - name: Run Vale and Process Output
+      run: |
+        CHANGED_FILES=$(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]')
+        for file in $CHANGED_FILES; do
+          vale --output=JSON $file > vale-output.json
+          cat vale-output.json | jq -r '.[] | @base64' > vale-results.txt
+          while IFS= read -r line; do
+            _jq() {
+              echo ${line} | base64 --decode | jq -r ${1}
+            }
+            reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=$(_jq '.Severity | ascii_downcase') <<EOF
+            {
+              "source": {
+                "path": "$file",
+                "position": {
+                  "line": $(_jq '.Line'),
+                  "column": $(_jq '.Span[0]')
+                }
+              },
+              "message": "$(_jq '.Check'): $(_jq '.Message')",
+              "severity": "$(_jq '.Severity')"
+            }
+EOF
+          done < vale-results.txt
+        done
+      shell: bash
