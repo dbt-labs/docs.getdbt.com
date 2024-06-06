@@ -142,7 +142,7 @@ The following is an example of the **Ask dbt** chatbot with the suggested prompt
 
 <Expandable alt_header="Unable to install the dbt Cloud Snowflake Native app from the Snowflake Marketplace" >
 
-* The dbt Cloud Snowflake Native App is not available for Snowflake Free Trial accounts.
+The dbt Cloud Snowflake Native App is not available to Snowflake Free Trial accounts.
 
 </Expandable>
 
