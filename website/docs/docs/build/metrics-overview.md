@@ -235,7 +235,7 @@ filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 
 filter: |  
-  {{ Metric('metric_name', group_by=['entity_name']) }}  ## Available in dbt Core v1.8 or higher or go versionless with [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)
+  {{ Metric('metric_name', group_by=['entity_name']) }}  # Available in v1.8 or go versionless with [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)
 ```
 
 ### Further configuration
