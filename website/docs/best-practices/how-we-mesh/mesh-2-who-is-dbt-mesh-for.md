@@ -6,7 +6,7 @@ hoverSnippet: Learn how to get started with dbt Mesh
 
 Before embarking on a dbt Mesh implementation, it's important to understand if dbt Mesh is the right fit for your team. Here, we outline three common organizational structures to help teams identify whether dbt Mesh might fit your organization's needs. 
 
-## The Enterprise Data Mesh
+## The enterprise data mesh
 
 Some data teams operate on a global scale. By definition, the team needs to manage, deploy, and distribute data products across a large number of teams. Central IT may own some data products or simply own the platform upon which data products are built. Often, these organizations have “architects” who can advise line-of-business teams on their work while keeping track of what’s happening globally (regarding tooling and the substance of work). This is a lot like how software organizations work beyond a certain scale.
 
@@ -25,23 +25,23 @@ Is dbt Mesh a good fit in this scenario? Absolutely! There is no other way to sh
 
 If this sounds like your organization, dbt Mesh is the architecture you should pursue. ✅
 
-### 2. Hub and Spoke
+## Hub and spoke
 
-Some slightly smaller organizations still operate with a central data team serving several business-aligned analytics teams, in a ~5:1 headcount ratio. These central teams look less like a central IT function, and more like a modern data platform team of analytics engineers. This team provides the majority of the data products to the rest of the org, as well as the infrastructure for downstream analytics teams to spin up their own spoke projects to ensure quality + maintenance of the core platform.
+Some slightly smaller organizations still operate with a central data team serving several business-aligned analytics teams in a ~5:1 headcount ratio. These central teams look less like an IT function and more like a modern data platform team of analytics engineers. This team provides the majority of the data products to the rest of the org, as well as the infrastructure for downstream analytics teams to spin up their own spoke projects to ensure quality and maintenance of the core platform.
 
-**Is dbt Mesh a good fit? If so, why?**  Almost certainly! If your central data team starts to bottleneck analsyts’ work, you need a way for those teams to operate relatively independently while still ensuring the quality of the most used data products. dbt Mesh is designed to solve this exact problem.
+Is dbt Mesh a good fit in this scenario? Almost certainly! If your central data team starts to bottleneck analysts’ work, you need a way for those teams to operate relatively independently while still ensuring the quality of the most used data products. dbt Mesh is designed to solve this exact problem.
 
-**Tips and tricks**
+### Tips and tricks
 
-- **Data products by some, for all.** The Spoke teams shouldn’t produce public models. By contrast, development in the Hub project should be slower and more careful, and should focus on producing foundational public models that are shared across domains. We’d recommend giving Hub team members access (at least read-only) to downstream projects, which will help with more granular impact analysis within dbt Explorer. If a public model isn’t being used in any downstream project, or a specific column in that model, the Hub team can feel better about removing it, but they should still utilize the dbt governance features like `deprecation_date` and `version` as appropriate — to set expectations.
-- **Sources:** Spokes should be allowed/encouraged to define and use ***domain-specific*** data sources. The platform team should not need to worry about, say, `Thinkific` data when building out core data marts, but the Training project may need to! **No two sources anywhere in a dbt mesh should point to the same relation object.** If a spoke feels like they need to use a source that the hub already uses, the interfaces should change so that the spoke can get what they need from the platform project.
-- **Project quality.** More analyst-focused teams will have different skill levels & quality bars. Owning their data means they own the consequences as well. Rather than being accountable for the end-to-end delivery of data assets, the Hub team is an enablement team: their role is to provide guardrails and quality checks, but not to fix all the issues exactly to their liking (and thereby remain a bottleneck).
+- **Data products by some, for all:** The spoke teams shouldn’t produce public models. By contrast, development in the hub team project should be slower, more careful, and focus on producing foundational public models shared across domains. We’d recommend giving hub team members access (at least read-only) to downstream projects, which will help with more granular impact analysis within dbt Explorer. If a public model isn’t used in any downstream project or a specific column in that model, the hub team can feel better about removing it. However, they should still utilize the dbt governance features like `deprecation_date` and `version` as appropriate to set expectations.
+- **Sources:** Spokes should be allowed/encouraged to define and use _domain-specific_ data sources. The platform team should not need to worry about, say, `Thinkific` data when building core data marts, but the Training project may need to. _No two sources anywhere in a dbt mesh should point to the same relation object._ If a spoke feels like they need to use a source the hub already uses, the interfaces should change so that the spoke can get what they need from the platform project.
+- **Project quality:** More analyst-focused teams will have different skill levels & quality bars. Owning their data means they own the consequences as well. Rather than being accountable for the end-to-end delivery of data assets, the Hub team is an enablement team: their role is to provide guardrails and quality checks, but not to fix all the issues exactly to their liking (and thereby remain a bottleneck).
 
-**What are the adoption challenges?**
+### Adoption challenges
 
-There are trade-offs to using this architecture, especially for the Hub team managing and maintaining public models. There is intentional friction in this workflow to reduce the chances of unintentional model changes that break unspoken data contracts. These assurances may come with some sacrifices, such as faster onboarding or more flexible development workflows.
+There are trade-offs to using this architecture, especially for the hub team managing and maintaining public models. This workflow has intentional friction to reduce the chances of unintentional model changes that break unspoken data contracts. These assurances may come with some sacrifices, such as faster onboarding or more flexible development workflows.
 
-If your organization sounds like this, it's very likely that dbt Mesh is a good fit for you. ✅
+If this sounds like your organization, it's very likely that dbt Mesh is a good fit for you. ✅
 
 ### 3. Single Team Monolith
 
