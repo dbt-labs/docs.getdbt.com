@@ -12,19 +12,30 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Install Vale and Reviewdog
-      uses: errata-ai/vale-action@reviewdog
       with:
-        reporter: github-pr-review
-        level: warning
+        fetch-depth: 0  # Fetch all history so we can access all commits
+
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
+    - name: Get changed files
+      id: changed-files
+      run: |
+        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
+        CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
+        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+        echo "::set-output name=files::$(cat changed_files.json)"
+
+    - name: Print Changed Files
+      run: echo $CHANGED_FILES
+
+    - name: Install Vale
+      uses: errata-ai/vale-action@v2
 
     - name: Run Vale on Changed Files
       run: |
-        # Get the list of changed markdown files in the pull request
-        CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- '*.md')
-        
-        # Run Vale on each changed file and report via Reviewdog
         for file in $CHANGED_FILES; do
           vale --output=JSON $file | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
+      env:
+        CHANGED_FILES: ${{ steps.changed-files.outputs.files }}
