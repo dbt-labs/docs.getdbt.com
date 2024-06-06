@@ -1,10 +1,10 @@
 extends: existence
 
-message: "Repetitive word found: '$0'."
+message: "Repetitive word found: '$0'. Consider revising."
 level: warning
 # Regex to match repetitive words (e.g., "the the", "and and")
-
 ignorecase: true
 nonword: true
 tokens:
   - '\b(\w+)\s+\1\b'
+---

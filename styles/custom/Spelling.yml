@@ -20,32 +20,6 @@ path: styles/custom/your-dictionary.dic
 
 extends: existence
 
-message: "Possible typo detected: '$0'. Did you mean 'the', 'receive', etc.?"
-level: warning
-
-# Custom rules for catching obvious typos
-tokens:
-  - 'teh'
-  - 'recieve'
-  - 'definately'
-  - 'seperate'
-  - 'occured'
-  - 'untill'
----
-
-extends: existence
-
-message: "Repetitive word found: '$0'. Consider revising."
-level: warning
-# Regex to match repetitive words (e.g., "the the", "and and")
-ignorecase: true
-nonword: true
-tokens:
-  - '\b(\w+)\s+\1\b'
----
-
-extends: existence
-
 message: "Ignore specific patterns"
 level: skip
 tokens:
