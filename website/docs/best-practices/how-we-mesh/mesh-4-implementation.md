@@ -6,16 +6,16 @@ hoverSnippet: Learn how to get started with dbt Mesh
 
 ### Where should your mesh journey start?
 
-Moving from to a dbt Mesh represents an meaningful change in development and deployment architecture. We’ve seen migrations fail for two reasons: 
+Moving to a dbt Mesh represents a meaningful change in development and deployment architecture. We’ve seen migrations fail for two reasons: 
 
-1. lacking buy-in that a dbt Mesh is the right long-term architecture
-2. lack of alignment on a well-scoped starting point
+1. Lack of buy-in that a dbt Mesh is the right long-term architecture
+2. Lack of alignment on a well-scoped starting point
 
-Provided you have both of these, you’re ready to start your migration.
+Provided you're not experiencing those blockers, you’re ready to start your migration.
 
-This migration should be organized and planned according to how your project(s) are already being grouped, built, and deployed. The goal is to define and formalize your organizational interfaces, and can use this information to inform our decision to split our project apart.
+The migration should be organized and planned according to how your project(s) are being grouped, built, and deployed. The goal is to define and formalize your organizational interfaces and use the information to make your decision to split your project apart.
 
-This change is **primarily organizational**. The most important component is alignment of your teammates. 
+This change is _primarily_ organizational. The most important component is the alignment of your teammates. 
 
 - **Talk to teams** about what sort of separation naturally exists right now.
   - Are there various domains people are focused on?
@@ -25,9 +25,9 @@ This change is **primarily organizational**. The most important component is ali
 
 When attempting to define your project interfaces, you should consider investigating:
 
-- **Your jobs** - which sets of models are most often built together?
+- **Your jobs:** Which sets of models are most often built together?
 - **Your lineage graph** - how are models connected?
-- **Your selectors** defined in `selectors.yml` - how do people already define resource groups?
+- **Your selectors(defined in `selectors.yml`):** How do people already define resource groups?
 
 Let's go through an example process of taking a monolithing project, using groups and access to define the interfaces, and then splitting it into multiple projects.
 
