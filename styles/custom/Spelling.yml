@@ -20,7 +20,7 @@ path: styles/custom/your-dictionary.dic
 
 extends: existence
 
-message: "Possible typo: '$0'."
+message: "Possible typo: '$0'. Did you mean one of these common corrections?"
 level: warning
 
 # Custom rules for catching obvious typos
@@ -35,10 +35,9 @@ tokens:
 
 extends: existence
 
-message: "Repetitive word found: '$0'."
+message: "Repetitive word found: '$0'. Consider revising."
 level: warning
 # Regex to match repetitive words (e.g., "the the", "and and")
-# This example is simplified; you may need a more complex regex for your needs
 ignorecase: true
 nonword: true
 tokens:
