@@ -77,9 +77,18 @@ If your organization uses [Kestra](http://kestra.io/), you can leverage the [d
 
 ## Orchestra
 
-If your organization uses [Orchestra](https://getorchestra.io), you can trigger dbt jobs using the dbt Cloud API. Create an API token from your dbt Cloud account and use this to authenticate Orchestra in the [Orchestra Portal](https://app.getorchestra.io). For details, refer to the Orchestra docs on [dbt Cloud](https://orchestra-1.gitbook.io/orchestra-portal/integrations/transformation/dbt-cloud).
+If your organization uses [Orchestra](https://getorchestra.io), you can trigger dbt jobs using the dbt Cloud API. Create an API token from your dbt Cloud account and use this to authenticate Orchestra in the [Orchestra Portal](https://app.getorchestra.io). For details, refer to the [Orchestra docs on dbt Cloud](https://orchestra-1.gitbook.io/orchestra-portal/integrations/transformation/dbt-cloud).
 
-The following are examples of 
+Orchestra automatically collects metadata from your runs so you can view your dbt jobs in the context of the rest of your data stack.
+
+The following is an example of the run details in dbt Cloud for a job triggered by Orchestra:
+
+<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_orchestra_trigger.png" title="Example of Orchestra triggering a dbt job"/>
+
+The following is an example of viewing lineage in Orchestra for dbt jobs:
+
+<Lightbox src="/img/docs/running-a-dbt-project/orchestra_lineage_dbt_cloud.png" title="Example of a lineage view for dbt jobs in Orchestra"/>
+
 
 ## Prefect
 
