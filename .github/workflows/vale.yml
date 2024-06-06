@@ -6,17 +6,15 @@ on:
       - '**/*.md'
 
 jobs:
-  lint:
+  vale:
+    name: runner / vale
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 2  # Ensure sufficient depth to get the necessary commit history
-
-    - name: Install Vale
-      uses: errata-ai/vale-action@v2
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -30,10 +28,17 @@ jobs:
         git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md' | jq -R -s -c 'split("\n") | map(select(length > 0))' > changed_files.json
         echo "::set-output name=files::$(cat changed_files.json)"
 
-    - name: Run Vale
+    - name: Print SHAs
       run: |
-        CHANGED_FILES=$(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]')
-        for file in $CHANGED_FILES; do
-          vale $file
-        done
-      shell: bash
+        echo "BASE_SHA: $BASE_SHA"
+        echo "HEAD_SHA: ${{ github.sha }}"
+
+    - name: Print Changed Files
+      run: cat changed_files.json
+
+    - name: Run Vale and Reviewdog
+      uses: errata-ai/vale-action@reviewdog
+      with:
+        list-files: changed_files.json
+        reporter: github-pr-review
+        level: warning
