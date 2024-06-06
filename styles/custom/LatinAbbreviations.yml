@@ -1,0 +1,10 @@
+extends: substitution
+
+message: "Avoid Latin abbreviations: '$1'. Consider using 'for example', 'that is', 'and so forth', or 'such as'."
+level: warning
+swap:
+  - e.g.: for example
+  - i.e.: for example
+  - i.e.: that is
+  - etc.: and so on
+  - N.B.: Note

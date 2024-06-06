@@ -1,0 +1,8 @@
+extends: existence
+
+message: "Header '$0' should be in sentence case: 'Sentence case header'."
+level: warning
+scope: heading
+ignorecase: false
+tokens: |
+  (?i)^[#]{1,4}\s+[A-Z][a-z]*\b(?:\s+[a-z]+)*$

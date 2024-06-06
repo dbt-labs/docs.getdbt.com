@@ -1,0 +1,55 @@
+extends: spelling
+
+message: "Use American English spelling for '$0'."
+level: warning
+ignore:
+  - dbt
+  - dbt Cloud
+  - ETL
+  - ELT
+  - DAG
+  - CTE
+  - DDL
+  - DML
+  - JSON
+  - CI/CD
+
+path: styles/custom/your-dictionary.dic
+
+# Additional spelling rules for common typos
+---
+
+extends: existence
+
+message: "Possible typo: '$0'."
+level: warning
+
+# Custom rules for catching obvious typos
+tokens:
+  - 'teh'
+  - 'recieve'
+  - 'definately'
+  - 'seperate'
+  - 'occured'
+  - 'untill'
+---
+
+extends: existence
+
+message: "Repetitive word found: '$0'."
+level: warning
+# Regex to match repetitive words (e.g., "the the", "and and")
+# This example is simplified; you may need a more complex regex for your needs
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(\w+)\s+\1\b'
+---
+
+extends: existence
+
+message: "Ignore specific patterns"
+level: skip
+tokens:
+  - '\bdbt\s+Cloud\b'
+  - '\bdbt\s+.*?\b'

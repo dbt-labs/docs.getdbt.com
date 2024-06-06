@@ -1,0 +1,13 @@
+extends: existence
+
+message: "UI elements should be bold: '$1'."
+level: warning
+tokens:
+  - '\Save\b'
+  - '\bCancel\b'
+  - '\bSubmit\b'
+  - '\bEdit\b'
+  - '\bAccount settings\b'
+  - '\bProject details\b'
+  - '\bProfile settings\b'
+  - '\bPersonal profile\b'

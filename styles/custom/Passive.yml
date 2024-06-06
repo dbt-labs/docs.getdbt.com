@@ -1,0 +1,19 @@
+extends: substitution
+
+message: "Avoid passive voice: '$1'. Instead, use active voice by making sure the subject of the sentence performs the action. For example: 'The contributor writes the documentation.' "
+level: warning
+# Provide the correct solution for passive constructions
+swap:
+  - is being: is
+  - are being: are
+  - was being: was
+  - were being: were
+  - has been: has
+  - had been: had
+  - have been: have
+  - is used: uses
+  - shall be: shall
+  - \bis\s+(?:\w+ed)\b: \1  # Matches 'is' followed by a word ending in 'ed'
+  - \bare\s+(?:\w+ed)\b: \1  # Matches 'are' followed by a word ending in 'ed'
+  - \bwas\s+(?:\w+ed)\b: \1  # Matches 'was' followed by a word ending in 'ed'
+  - \bwere\s+(?:\w+ed)\b: \1  # Matches 'were' followed by a word ending in 'ed'
