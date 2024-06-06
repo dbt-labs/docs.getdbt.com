@@ -1,6 +1,6 @@
 extends: spelling
 
-message: "Use American English spelling for '$0'."
+message: "Detected a spelling error: '$0'."
 level: warning
 ignore:
   - dbt
@@ -20,7 +20,7 @@ path: styles/custom/your-dictionary.dic
 
 extends: existence
 
-message: "Possible typo: '$0'. Did you mean one of these common corrections?"
+message: "Possible typo detected: '$0'. Did you mean 'the', 'receive', etc.?"
 level: warning
 
 # Custom rules for catching obvious typos
