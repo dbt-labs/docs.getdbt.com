@@ -26,7 +26,7 @@ This change is _primarily_ organizational. The most important component is the a
 When attempting to define your project interfaces, you should consider investigating:
 
 - **Your jobs:** Which sets of models are most often built together?
-- **Your lineage graph** - how are models connected?
+- **Your lineage graph:** How are models connected?
 - **Your selectors(defined in `selectors.yml`):** How do people already define resource groups?
 
 Let's go through an example process of taking a monolithing project, using groups and access to define the interfaces, and then splitting it into multiple projects.
