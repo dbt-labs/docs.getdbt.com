@@ -57,3 +57,39 @@ Installing calogica/dbt_date@0.4.0
 Updates available for packages: ['tailsdotcom/dbt_artifacts', 'dbt-labs/snowplow']
 Update your versions in packages.yml, then run dbt deps
 ```
+
+<VersionBlock firstVersion="1.7">
+
+## Predictable package installs
+
+Starting in dbt Core v1.7, dbt generates a `package-lock.yml` file in the root of your project. This contains the complete set of resolved packages based on the `packages` configuration in `dependencies.yml` or `packages.yml`. Each subsequent invocation of `dbt deps` will install from the _locked_ set of packages specified in this file. Storing the complete set of required packages (with pinned versions) in version-controlled code ensures predictable installs in production and consistency across all developers and environments. 
+
+The `package-lock.yml` file should be committed in Git initially, and then updated and committed only when you want to change versions or uninstall a package (for example  `dbt deps --upgrade` or `dbt deps --lock`).
+
+The `package-lock.yml` file includes a `sha1_hash` of the `packages` config. This enables dbt to detect if the `packages` config has been updated, and to rerun dependency resolution. To only check for changes to the `packages` config and update the lock file accordingly without installing those packages, provide the `--lock` flag (that is, `dbt deps --lock`).
+
+It's possible to force package resolution to rerun, even if the `packages` config hasn't changed, by running `dbt deps --upgrade`. This enables you to get the latest commits from the `main` branch of an internally maintained `git` package while accepting the risk of unpredictable builds. An alternative to running `dbt deps --upgrade` in production is to "ignore" the lock file by adding `package-lock.yml` to your project's `.gitignore` file. If you pursue either approach, dbt Labs strongly recommends adding version pins for third-party packages within your `packages` config.
+
+## Add specific packages
+
+The `dbt deps` command can add or update an existing package configuration &mdash; no need to remember the exact syntax for package configurations. 
+
+For Hub packages (default), which are the easiest to install:
+
+```shell
+dbt deps --add-package dbt-labs/dbt_utils@1.0.0
+
+# with semantic version range
+dbt deps --add-package dbt-labs/snowplow@">=0.7.0,<0.8.0"
+```
+
+For other package types, use the `--source` flag:
+```shell
+# add package from git
+dbt deps --add-package https://github.com/fivetran/dbt_amplitude@v0.3.0 --source git
+
+# add package from local
+dbt deps --add-package /opt/dbt/redshift --source local
+```
+
+</VersionBlock>

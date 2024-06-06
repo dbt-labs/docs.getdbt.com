@@ -33,11 +33,8 @@ module.exports = function buildRSSFeedsPlugin() {
         feedItemObj.link = getLink(data)
 
         // Set post date
-        // If date not set within `date` or `tags` properties
-        // Set default date to today
         feedItemObj.date = data?.date || data?.tags 
-          ? getDate(data?.date ? data.date : data.tags) 
-          : new Date()
+          && getDate(data?.date ? data.date : data.tags) 
 
         return feedItemObj
       }).sort((a, b) => (a.date > b.date) ? -1 : 1)
@@ -65,7 +62,7 @@ module.exports = function buildRSSFeedsPlugin() {
       
       feedObj.updated = latestUpdate?.date
         ? latestUpdate.date
-        : new Date(2023, 1, 18)
+        : new Date()
 
       // Initialize feed
       const feed = new Feed(feedObj);
@@ -105,11 +102,16 @@ function getLink(data) {
 }
 
 function getDate(tags) {
+  if(!tags) return new Date('2020-01-01')
+
   // Find tag with the format 'day-year'
-  const expr = /(-.*\d-\d{4})/g
+  const expr = /(-\d{4})/g
   const dateTag = tags.find(str => expr.test(str))
-  
+
+  // If date not found, default to oldest release note date.
+  // This prevents the RSS feed from showing older release notes
+  // as recently published.
   return dateTag
     ? new Date(dateTag)
-    : new Date()
+    : new Date('2020-01-01')
 }

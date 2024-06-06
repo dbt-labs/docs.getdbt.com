@@ -1,7 +1,8 @@
 ---
 title: "Set up BigQuery OAuth"
-description: "Learn how dbt Cloud administrators can use licenses and seats to control access in a dbt Cloud account."
+description: "Learn how dbt Cloud administrators can use BigQuery OAuth to control access in a dbt Cloud account"
 id: "set-up-bigquery-oauth"
+pagination_next: null
 ---
 
 :::info Enterprise Feature
@@ -9,7 +10,6 @@ id: "set-up-bigquery-oauth"
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
 :::
-### Overview
 
 
 dbt Cloud supports developer [OAuth](https://cloud.google.com/bigquery/docs/authentication) with BigQuery, providing an additional layer of security for dbt enterprise users. When BigQuery OAuth is enabled for a dbt Cloud project, all dbt Cloud developers must authenticate with BigQuery in order to use the dbt Cloud IDE. The project's deployment environments will still leverage the BigQuery service account key set in the project credentials.
@@ -34,7 +34,7 @@ On the **Credentials** page, you can see your existing keys, client IDs, and ser
 
 Set up an [OAuth consent screen](https://support.google.com/cloud/answer/6158849) if you haven't already. Then, click **+ Create Credentials** at the top of the page and select **OAuth client ID**.
 
-Fill in the application, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan:
+Fill in the application, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
 
 | Config | Value |
 | ------ | ----- |
@@ -74,3 +74,8 @@ You will then be redirected to BigQuery and asked to approve the drive, cloud pl
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" title="BigQuery access request" />
 
 Select **Allow**. This redirects you back to dbt Cloud. You should now be an authenticated BigQuery user, ready to use the dbt Cloud IDE.
+
+## FAQs
+
+<FAQ path="Warehouse/bq-oauth-drive-scope" />
+

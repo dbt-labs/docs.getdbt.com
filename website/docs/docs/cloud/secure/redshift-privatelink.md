@@ -5,11 +5,19 @@ description: "Configuring PrivateLink for Redshift"
 sidebar_label: "PrivateLink for Redshift"
 ---
 
+import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+
+<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
+
 AWS provides two different ways to create a PrivateLink VPC endpoint for a Redshift cluster that is running in another VPC: 
 - [Redshift-managed PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html)
 - [Redshift Interface-type PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/security-private-link.html)
 
 dbt Cloud supports both types of endpoints, but there are a number of [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a far simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, you will need to determine which is the right type for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
+
+:::note Redshift Serverless
+While Redshift Serverless does support Redshift-managed type VPC endpoints, this functionality is not currently available across AWS accounts. Due to this limitation, an Interface-type VPC endpoint service must be used for Redshift Serverless cluster PrivateLink connectivity from dbt Cloud. 
+:::
 
 ## Configuring Redshift-managed PrivateLink
 
@@ -21,13 +29,13 @@ dbt Cloud supports both types of endpoints, but there are a number of [considera
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink2.png" title="Redshift granted accounts"/>
 
-3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to dbt Cloud Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support)._
+3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to dbt Cloud Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support)._
 
-4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
+4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink3.png" title="Redshift grant access"/>
 
-5. Add the required information to the following template, and submit your request to [dbt Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support):
+5. Add the required information to the following template, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
 
 ```
 Subject: New Multi-Tenant PrivateLink Request
@@ -38,7 +46,9 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the service is available.
+import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
+
+<PrivateLinkSLA />
 
 ## Configuring Redshift Interface-type PrivateLink
 
@@ -51,11 +61,19 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     
     - Target Type: **IP**
 
-        Notes:
-        - Use IP addresses from the Redshift cluster’s **Network Interfaces**, _not_ IPs listed in the **Node IP addresses** section as those can change.
-        <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
+        - **Standard Redshift**
 
-        - There is likely only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ should still work, but the new NI IP can also be added to the Target Group if desired. If adding additional IPs, note that the NLB will need to add the corresponding AZ as well. Once created, the NI(s) shouldn't change (NOTE: this is our observation from testing, but is not officially documented by AWS).
+            - Use IP addresses from the Redshift cluster’s **Network Interfaces** whenever possible. While IPs listed in the **Node IP addresses** section will work, they are also more likely to change.
+            <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
+
+            - There will likely be only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will also be created for that AZ. The NI IP from the original AZ will still work, but the new NI IP can also be added to the Target Group. If adding additional IPs, note that the NLB will also need to add the corresponding AZ. Once created, the NI(s) should stay the same (This is our observation from testing, but AWS does not officially document it).
+
+        - **Redshift Serverless**
+
+            - To find the IP addresses for Redshift Serverless instance locate and copy the endpoint (only the URL listed before the port) in the Workgroup configuration section of the AWS console for the instance.
+            <Lightbox src="/img/docs/dbt-cloud/redshiftserverless.png" title="Redshift Serverless endpoint"/>
+
+            - From a command line run the command `nslookup <endpoint>` using the endpoint found in the previous step and use the associated IP(s) for the Target Group.
 
     - Target Group protocol: **TCP** 
 
@@ -67,17 +85,17 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the root user in the appropriate production AWS account and save your changes.
 
- - Principal: `arn:aws:iam::346425330055:root`
+ - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" title="Enter ARN"/>
+<Lightbox src="/img/docs/dbt-cloud/privatelink-allow-principals.png" title="Enter ARN"/>
 
 ### 3. Obtain VPC Endpoint Service Name
 
 Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" title="Get service name field value"/>
+<Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" title="Get service name field value"/>
 
-### 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support):
+### 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
 ```
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Redshift Interface-type
@@ -86,7 +104,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the endpoint is available.
+<PrivateLinkSLA />
 
 ## Create Connection in dbt Cloud
 

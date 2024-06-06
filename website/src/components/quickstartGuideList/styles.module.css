@@ -1,0 +1,40 @@
+.quickstartHero h1 {
+    font-size: clamp(var(--ifm-h1-font-size) * 0.9375, 1vw, var(--ifm-h1-font-size));
+    --ifm-h1-font-size: 3rem;
+
+}
+
+@media (max-width: 576px) {
+    .quickstartHero h1 {
+        --ifm-h1-font-size: 2rem;
+    }
+}
+
+.quickstartHero p {
+    font-size: 1.25rem;
+    margin: 0 auto;
+}
+
+.quickstartCardContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    padding: 2rem 1rem 5rem;
+}
+
+.quickstartFilterContainer  {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    padding-top: 4rem;
+}
+
+.quickstartFilterContainer > div:first-child {
+    padding: 0;
+}
+
+@media (max-width: 996px) {
+    .quickstartCardContainer, .quickstartFilterContainer {
+        grid-template-columns: 1fr;
+    }
+}

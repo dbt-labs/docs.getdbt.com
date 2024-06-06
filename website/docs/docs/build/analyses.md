@@ -2,11 +2,12 @@
 title: "Analyses"
 description: "Read this tutorial to learn how to use custom analyses when building in dbt."
 id: "analyses"
+pagination_next: null
 ---
 
 ## Overview
 
-dbt's notion of `models` makes it easy for data teams to version control and collaborate on data transformations. Sometimes though, a certain sql statement doesn't quite fit into the mold of a dbt model. These more "analytical" sql files can be versioned inside of your dbt project using the `analysis` functionality of dbt.
+dbt's notion of `models` makes it easy for data teams to version control and collaborate on data transformations. Sometimes though, a certain SQL statement doesn't quite fit into the mold of a dbt model. These more "analytical" SQL files can be versioned inside of your dbt project using the `analysis` functionality of dbt.
 
 Any `.sql` files found in the `analyses/` directory of a dbt project will be compiled, but not executed. This means that analysts can use dbt functionality like `{{ ref(...) }}` to select from models in an environment-agnostic way.
 

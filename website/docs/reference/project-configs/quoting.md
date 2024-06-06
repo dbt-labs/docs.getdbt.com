@@ -28,13 +28,6 @@ Note that for BigQuery quoting configuration, `database` and `schema` should be 
 
 :::
 
-<Changelog>
-
-* `v0.10.1`: This configuration was introduced with a default value of `true` for each adapter.
-* `v0.11.0`: The default quoting config on Snowflake changed from `true` to `false`
-
-</Changelog>
-
 ## Default
 
 The default values vary by database.

@@ -6,8 +6,6 @@ id: testing-seeds
 
 ---
 
-<Changelog>The `seeds:` key is new in 0.16.0. Prior to this, use a `models:` key instead.</Changelog>
-
 To test and document seeds, use a [schema file](/reference/configs-and-properties) and nest the configurations under a `seeds:` key
 
 ## Example

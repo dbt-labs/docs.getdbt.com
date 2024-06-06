@@ -35,7 +35,7 @@ On **BigQuery**, this is analogous to a `dataset`.
 This is a **required** parameter, no default is provided.
 
 ## FAQs
-<FAQ src="Snapshots/snapshot-target-schema" />
+<FAQ path="Snapshots/snapshot-target-schema" />
 
 ## Examples
 ### Build all snapshots in a schema named `snapshots`
@@ -74,7 +74,7 @@ Notes:
 * Consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots (see above [FAQ](#faqs))
 
 
-<File name='snapshots/orders_snaphot.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {{

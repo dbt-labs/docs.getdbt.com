@@ -29,18 +29,61 @@ This will log the compiled SQL to the terminal, in addition to writing to the `t
 For example:
 
 ```bash
-dbt compile --select stg_payments
+dbt compile --select "stg_orders"                           
 dbt compile --inline "select * from {{ ref('raw_orders') }}"
 ```
 
-<Lightbox src="/img/docs/reference/dbt-compile.png" title="dbt compile --select stg_payments"/>
+returns the following:
+
+```bash
+dbt compile --select "stg_orders"                           
+
+21:17:09  Running with dbt=1.7.5
+21:17:09  Registered adapter: postgres=1.7.5
+21:17:09  Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 401 macros, 0 groups, 0 semantic models
+21:17:09  
+21:17:09 Concurrency: 24 threads (target='dev')
+21:17:09  
+21:17:09  Compiled node 'stg_orders' is:
+with source as (
+    select * from "jaffle_shop"."main"."raw_orders"
+
+),
+
+renamed as (
+
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from source
+
+)
+
+select * from renamed
+```
+
+```bash
+dbt compile --inline "select * from {{ ref('raw_orders') }}"
+
+18:15:49  Running with dbt=1.7.5
+18:15:50  Registered adapter: postgres=1.7.5
+18:15:50  Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 401 macros, 0 groups, 0 semantic models
+18:15:50  
+18:15:50  Concurrency: 5 threads (target='postgres')
+18:15:50  
+18:15:50  Compiled inline node is:
+select * from "jaffle_shop"."main"."raw_orders"
+```
 
 </VersionBlock>
 
-The command accesses the data platform to cache related metadata, and to run introspective queries. Use the flags:
-- `--no-populate-cache` to disable initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query.
-- `--no-introspect` to disable instrospective queries. dbt will raise an error if a model's definition requires running one.
+The command accesses the data platform to cache-related metadata, and to run introspective queries. Use the flags:
+- `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query. This is a `dbt` flag, which means you need to add `dbt` as a prefix. For example: `dbt --no-populate-cache`.
+- `--no-introspect` to disable [introspective queries](/faqs/warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a model's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix. For example:`dbt compile --no-introspect`.
 
 
 ### FAQs
-<FAQ src="Warehouse/db-connection-dbt-compile" />
+<FAQ path="Warehouse/db-connection-dbt-compile" />

@@ -10,11 +10,32 @@ To-do:
 - think about whether some of these should be outside of models
 --->
 
-## Performance Optimizations
+## Incremental materialization strategies
+
+In dbt-redshift, the following incremental materialization strategies are supported:
+
+<VersionBlock lastVersion="1.5">
+
+- `append` (default when `unique_key` is not defined)
+- `delete+insert` (default when `unique_key` is defined)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+- `append` (default when `unique_key` is not defined)
+- `merge`
+- `delete+insert` (default when `unique_key` is defined)
+
+</VersionBlock>
+
+All of these strategies are inherited from dbt-postgres.
+
+## Performance optimizations
 
 ### Using sortkey and distkey
 
-Tables in Amazon Redshift have two powerful optimizations to improve query performance: distkeys and sortkeys. Supplying these values as model-level configurations apply the corresponding settings in the generated `CREATE TABLE` <Term id="ddl" />. Note that these settings will have no effect for models set to `view` or `ephemeral` models.
+Tables in Amazon Redshift have two powerful optimizations to improve query performance: distkeys and sortkeys. Supplying these values as model-level configurations apply the corresponding settings in the generated `CREATE TABLE` <Term id="ddl" />. Note that these settings will have no effect on models set to `view` or `ephemeral` models.
 
 - `dist` can have a setting of `all`, `even`, `auto`, or the name of a key.
 - `sort` accepts a list of sort keys, for example: `['timestamp', 'userid']`. dbt will build the sort key in the same order the fields are supplied.
@@ -54,7 +75,7 @@ For more information on distkeys and sortkeys, view Amazon's docs:
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing a Data Distribution Style](https://docs.aws.amazon.com/redshift/latest/dg/t_Distributing_data.html)
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing Sort Keys](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html)
 
-## Late Binding Views
+## Late binding views
 
 Redshift supports <Term id="view">views</Term> unbound from their dependencies, or [late binding views](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html#late-binding-views). This DDL option "unbinds" a view from the data it selects from. In practice, this means that if upstream views or tables are dropped with a cascade qualifier, the late-binding view does not get dropped as well.
 
@@ -85,3 +106,241 @@ models:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.6">
+
+## Materialized views
+
+The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html)
+with the following configuration parameters:
+
+| Parameter                                                                        | Type         | Required | Default                                        | Change Monitoring Support |
+|----------------------------------------------------------------------------------|--------------|----------|------------------------------------------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>`   | no       | `apply`                                        | n/a                       |
+| [`dist`](#using-sortkey-and-distkey)                                             | `<string>`   | no       | `even`                                         | drop/create               |
+| [`sort`](#using-sortkey-and-distkey)                                             | `[<string>]` | no       | `none`                                         | drop/create               |
+| [`sort_type`](#using-sortkey-and-distkey)                                        | `<string>`   | no       | `auto` if no `sort` <br />`compound` if `sort` | drop/create               |
+| [`auto_refresh`](#auto-refresh)                                                  | `<boolean>`  | no       | `false`                                        | alter                     |
+| [`backup`](#backup)                                                              | `<string>`   | no       | `true`                                         | n/a                       |
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
+    [+](/reference/resource-configs/plus-prefix)[sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
+    [+](/reference/resource-configs/plus-prefix)[sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
+    [+](/reference/resource-configs/plus-prefix)[auto_refresh](#auto-refresh): true | false
+    [+](/reference/resource-configs/plus-prefix)[backup](#backup): true | false
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): materialized_view
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [dist](#using-sortkey-and-distkey): all | auto | even | <field-name>
+      [sort](#using-sortkey-and-distkey): <field-name> | [<field-name>]
+      [sort_type](#using-sortkey-and-distkey): auto | compound | interleaved
+      [auto_refresh](#auto-refresh): true | false
+      [backup](#backup): true | false
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="materialized_view",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [dist](#using-sortkey-and-distkey)="all" | "auto" | "even" | "<field-name>",
+    [sort](#using-sortkey-and-distkey)=["<field-name>"],
+    [sort_type](#using-sortkey-and-distkey)="auto" | "compound" | "interleaved",
+    [auto_refresh](#auto-refresh)=true | false,
+    [backup](#backup)=true | false,
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+Many of these parameters correspond to their table counterparts and have been linked above.
+The parameters unique to materialized views are the [auto-refresh](#auto-refresh) and [backup](#backup) functionality, which are covered below.
+
+Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html).
+
+#### Auto-refresh
+
+| Parameter      | Type        | Required | Default | Change Monitoring Support |
+|----------------|-------------|----------|---------|---------------------------|
+| `auto_refresh` | `<boolean>` | no       | `false` | alter                     |
+
+Redshift supports [automatic refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html#materialized-view-auto-refresh) configuration for materialized views.
+By default, a materialized view does not automatically refresh.
+dbt monitors this parameter for changes and applies them using an `ALTER` statement.
+
+Learn more information about the [parameters](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters) in the Redshift docs.
+
+#### Backup
+
+| Parameter | Type        | Required | Default | Change Monitoring Support |
+|-----------|-------------|----------|---------|---------------------------|
+| `backup`  | `<boolean>` | no       | `true`  | n/a                       |
+
+Redshift supports [backup](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html) configuration of clusters at the object level.
+This parameter identifies if the materialized view should be backed up as part of the cluster snapshot.
+By default, a materialized view will be backed up during a cluster snapshot.
+dbt cannot monitor this parameter as it is not queryable within Redshift.
+If the value is changed, the materialized view will need to go through a `--full-refresh` in order to set it.
+
+Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters).
+
+### Limitations
+
+As with most data platforms, there are limitations associated with materialized views. Some worth noting include:
+
+- Materialized views cannot reference views, temporary tables, user-defined functions, or late-binding tables.
+- Auto-refresh cannot be used if the materialized view references mutable functions, external schemas, or another materialized view.
+
+Find more information about materialized view limitations in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-limitations).
+
+<VersionBlock firstVersion="1.6" lastVersion="1.6">
+
+#### Changing materialization from "materialized_view" to "table" or "view"
+
+Swapping a materialized view to a table or view is not supported.
+You must manually drop the existing materialized view in the data warehouse prior to calling `dbt run`.
+Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
+This would only need to be done once as the existing object would then be a materialized view.
+
+For example, assume that a materialized view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`.
+If the user changes the model's config to `materialized="table"`, they will get an error.
+The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data warehouse before trying the model again.
+
+</VersionBlock>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+## Unit test limitations
+
+Redshift doesn't support Unit tests when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, etc. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. For unit tests to function properly in this scenario, creating temporary tables for the unit tests to reference is a good workaround. 
+
+The following query illustrates the limitation:
+
+```sql
+
+create temporary table "test_tmpxxxxx" as (
+   with test_fixture as (
+       select
+         cast(1000 as integer) as id,
+         cast('menu1' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+      union all
+      select
+         cast(1001 as integer) as id,
+         cast('menu2' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+      union all
+      select
+         cast(1003 as integer) as id,
+         cast('menu1' as character varying(500)) as name,
+         cast( 1 as integer) as quantity
+   ),
+   agg as (
+      SELECT
+         LISTAGG(name || ' x ' || quantity, ',') AS option_name_list,
+         id
+      FROM test_fixture
+      GROUP BY id
+   )
+   select * from agg
+);
+
+```
+This query results in the error: 
+
+```bash
+
+[XX000] ERROR: One or more of the used functions must be applied on at least one user created tables. Examples of user table only functions are LISTAGG, MEDIAN, PERCENTILE_CONT, etc
+
+```
+
+However, the following query works as expected:
+
+```sql
+
+create temporary table "test_tmp1234" as (
+   SELECT
+      cast(1000 as integer) as id,
+      cast('menu1' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+   union all
+   select
+      cast(1001 as integer) as id,
+      cast('menu2' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+   union all
+   select
+      cast(1000 as integer) as id,
+      cast('menu1' as character varying(500)) as name,
+      cast( 1 as integer) as quantity
+);
+
+with agg as (
+   SELECT
+      LISTAGG(name || ' x ' || quantity, ',') AS option_name_list,
+      id
+   FROM test_tmp1234
+   GROUP BY id
+)
+select * from agg;
+
+```
+
+When all given rows are created as a temporary table first, then running the test by referring to the temporary tables results in a successful run.
+
+In short, separate the unit tests into two steps:
+1. Prepare test fixtures by creating temporary tables.
+2. Run unit test query by referring to the temporary tables.
+
+</VersionBlock>
+

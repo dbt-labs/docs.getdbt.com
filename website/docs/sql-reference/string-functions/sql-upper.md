@@ -46,7 +46,7 @@ After running this query, the `customers` table will look a little something lik
 
 Now, all characters in the `first_name` are uppercase (and `last_name` are unchanged).
 
-> Changing string columns to uppercase to create uniformity across data sources typically happens in our [dbt project’s staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging). There are a few reasons for that: data cleanup and standardization, such as aliasing, casting, and lower or upper casing, should ideally happen in staging models to create downstream uniformity and improve downstream performance.
+> Changing string columns to uppercase to create uniformity across data sources typically happens in our [dbt project’s staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging). There are a few reasons for that: data cleanup and standardization, such as aliasing, casting, and lower or upper casing, should ideally happen in staging models to create downstream uniformity and improve downstream performance.
 
 ## SQL UPPER function syntax in Snowflake, Databricks, BigQuery, and Redshift
 

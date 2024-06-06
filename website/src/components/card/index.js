@@ -2,24 +2,32 @@ import React from 'react';
 import styles from './styles.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
-import { useColorMode } from '@docusaurus/theme-common';
+import getIconType from "../../utils/get-icon-type";
 
 
-function Card({ title, body, link, icon }) {
-  const { colorMode } = useColorMode();
+function Card({ title, body, link, icon, pills }) {
 
   // Set styles for icon if available in styles.module.css
   let imgClass = styles[icon] || ''
+
+  // Parse pills prop if it is a string
+  // Prevents syntax highlighting error in the markdown file
+  let parsedPills = pills;
+  try {
+    if (typeof pills === 'string') {
+      parsedPills = JSON.parse(pills);
+    }
+  } catch (error) {
+    console.error("Failed to parse pills prop", error);
+    parsedPills = []; 
+  }
 
   return (
     <div className={styles.cardWrapper}>
       {link ? <Link
         to={useBaseUrl(link)}>
         <article className={styles.card}>
-          {icon && <img
-            src={colorMode === 'dark' ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
-            alt=""
-            className={`${styles.icon} ${imgClass}`} />}
+            {icon && getIconType(icon, styles.icon , imgClass)}
           <h3>{title}</h3>
           <div
             className={styles.cardBody}
@@ -27,15 +35,21 @@ function Card({ title, body, link, icon }) {
           ></div>
         </article>
       </Link> : <article className={styles.card}>
-        {icon && <img
-          src={colorMode === 'dark' ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
-          alt=""
-          className={`${styles.icon} ${imgClass}`} />}
+        {icon && getIconType(icon, styles.icon , imgClass)}
         <h3>{title}</h3>
         <div
           className={styles.cardBody}
           dangerouslySetInnerHTML={{ __html: body }}
         ></div>
+        {parsedPills && parsedPills.length > 0 && (
+          <div className={styles.pillsContainer}>
+            {parsedPills.map((pill, index) => (
+              <span key={index} className={styles.pill}>
+                {pill}
+              </span>
+            ))}
+          </div>
+        )}
       </article>}
     </div>
   );

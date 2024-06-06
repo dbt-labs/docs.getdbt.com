@@ -12,8 +12,8 @@ schema¹
 * read system <Term id="view">views</Term> to generate documentation (i.e. views in
 `information_schema`)
 
-On Postgres, Redshift, and Snowflake, use a series of `grants` to ensure that
-your user has the correct privileges.
+On Postgres, Redshift, Databricks, and Snowflake, use a series of `grants` to ensure that
+your user has the correct privileges. Check out [example permissions](/reference/database-permissions/about-database-permissions) for these warehouses.
 
 On BigQuery, use the "BigQuery User" role to assign these privileges.
 

@@ -6,7 +6,7 @@ id: "custom-aliases"
 
 ## Overview
 
-When dbt runs a model, it will generally create a relation (either a `table` or a `view`) in the database. By default, dbt uses the filename of the model as the identifier for this relation in the database. This identifier can optionally be overridden using the `alias` model configuration.
+When dbt runs a model, it will generally create a relation (either a `table` or a `view`) in the database. By default, dbt uses the filename of the model as the identifier for this relation in the database. This identifier can optionally be overridden using the [`alias`](/reference/resource-configs/alias) model configuration.
 
 ### Why alias model names?
 The names of schemas and tables are effectively the "user interface" of your <Term id="data-warehouse" />. Well-named schemas and tables can help provide clarity and direction for consumers of this data. In combination with [custom schemas](/docs/build/custom-schemas), model aliasing is a powerful mechanism for designing your warehouse.
@@ -30,6 +30,19 @@ To configure an alias for a model, supply a value for the model's `alias` config
 {{ config(alias='sessions', schema='google_analytics') }}
 
 select * from ...
+```
+
+</File>
+
+Or in a `schema.yml` file.
+
+<File name='models/google_analytics/schema.yml'>
+
+```yaml
+models:
+  - name: ga_sessions
+    config:
+      alias: sessions
 ```
 
 </File>
@@ -60,31 +73,6 @@ To override dbt's alias name generation, create a macro named `generate_alias_na
 
 The default implementation of `generate_alias_name` simply uses the supplied `alias` config (if present) as the model alias, otherwise falling back to the model name. This implementation looks like this:
 
-<VersionBlock lastVersion="1.4">
-
-<File name='get_custom_alias.sql'>
-
-```jinja2
-{% macro generate_alias_name(custom_alias_name=none, node=none) -%}
-
-    {%- if custom_alias_name is none -%}
-
-        {{ node.name }}
-
-    {%- else -%}
-
-        {{ custom_alias_name | trim }}
-
-    {%- endif -%}
-
-{%- endmacro %}
-
-```
-
-</File>
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 <File name='get_custom_alias.sql'>
@@ -114,25 +102,37 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 
 </VersionBlock>
 
+import WhitespaceControl from '/snippets/_whitespace-control.md';
+
+<WhitespaceControl/>
+
+### Dispatch macro - SQL alias management for databases and dbt packages
+
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch#managing-different-global-overrides-across-packages)
+
+
 ### Caveats
 
 #### Ambiguous database identifiers
 
 Using aliases, it's possible to accidentally create models with ambiguous identifiers. Given the following two models, dbt would attempt to create two <Term id="view">views</Term> with _exactly_ the same names in the database (ie. `sessions`):
 
-```sql
--- models/snowplow_sessions.sql
+<File name='models/snowplow_sessions.sql'>
 
+```sql
 {{ config(alias='sessions') }}
 
 select * from ...
 ```
+</File>
+
+<File name='models/sessions.sql'>
 
 ```sql
--- models/sessions.sql
-
 select * from ...
 ```
+
+</File>
 
 Whichever one of these models runs second would "win", and generally, the output of dbt would not be what you would expect. To avoid this failure mode, dbt will check if your model names and aliases are ambiguous in nature. If they are, you will be presented with an error message like this:
 
@@ -151,18 +151,9 @@ If these models should indeed have the same database identifier, you can work ar
 
 #### Model versions
 
-<VersionBlock lastVersion="1.4">
-
-New in v1.5
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
 **Related documentation:**
-- [Model versions](govern/model-versions)
-- [`versions`](resource-properties/versions#alias)
+- [Model versions](/docs/collaborate/govern/model-versions)
+- [`versions`](/reference/resource-properties/versions#alias)
 
 By default, dbt will create versioned models with the alias `<model_name>_v<v>`, where `<v>` is that version's unique identifier. You can customize this behavior just like for non-versioned models by configuring a custom `alias` or re-implementing the `generate_alias_name` macro.
 
-</VersionBlock>

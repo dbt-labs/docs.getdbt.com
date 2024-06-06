@@ -5,7 +5,7 @@ title: Using the + prefix
 
 The `+` prefix is a dbt syntax feature, introduced in dbt v0.17.0, which helps disambiguate between [resource paths](/reference/resource-configs/resource-path) and configs in `dbt_project.yml` files.
 
-It is only compatible with `dbt_project.yml` files that use [`config-version](/reference/project-configs/config-version): 2`
+It is not compatible with `dbt_project.yml` files that use [`config-version`](/reference/project-configs/config-version) 1.
 
 For example:
 
@@ -63,8 +63,5 @@ models:
 
 When adding configs in `dbt_project.yml`, it doesn't hurt to use the `+` prefix, so we recommend you use it always.
 
-<VersionBlock firstVersion="1.2">
-
 **Note:** This use of the `+` prefix, in `dbt_project.yml`, is distinct from the use of `+` to control config merge behavior (clobber vs. add) in other config settings (specific resource `.yml` and `.sql` files). Currently, the only config which supports `+` for controlling config merge behavior is [`grants`](/reference/resource-configs/grants#grant-config-inheritance).
 
-</VersionBlock>

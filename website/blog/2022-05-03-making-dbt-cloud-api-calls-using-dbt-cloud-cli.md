@@ -12,6 +12,10 @@ date: 2022-05-03
 is_featured: true
 ---
 
+:::info Different from dbt Cloud CLI
+This blog explains how to use the `dbt-cloud-cli` Python library to create a data catalog app with dbt Cloud artifacts. This is different from the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), a tool that allows you to run dbt commands against your dbt Cloud development environment from your local command line.
+:::
+
 dbt Cloud is a hosted service that many organizations use for their dbt deployments. Among other things, it provides an interface for creating and managing deployment jobs. When triggered (e.g., cron schedule, API trigger), the jobs generate various artifacts that contain valuable metadata related to the dbt project and the run results.
 
 dbt Cloud provides a REST API for managing jobs, run artifacts and other dbt Cloud resources. Data/analytics engineers would often write custom scripts for issuing automated calls to the API using tools [cURL](https://curl.se/) or [Python Requests](https://requests.readthedocs.io/en/latest/).  In some cases, the engineers would go on and copy/rewrite them between projects that need to interact with the API. Now, they have a bunch of scripts on their hands that they need to maintain and develop further if business requirements change. If only there was a dedicated tool for interacting with the dbt Cloud API that abstracts away the complexities of the API calls behind an easy-to-use interface… Oh wait, there is: [the dbt-cloud-cli](https://github.com/data-mie/dbt-cloud-cli)!
@@ -55,7 +59,7 @@ You probably agree that the latter example is definitely more elegant and easier
 
 In addition to CLI commands that interact with a single dbt Cloud API endpoint there are composite helper commands that call one or more API endpoints and perform more complex operations. One example of composite commands are `dbt-cloud job export` and `dbt-cloud job import` where, under the hood, the export command performs a `dbt-cloud job get` and writes the job metadata to a <Term id="json" /> file and the import command reads job parameters from a JSON file and calls `dbt-cloud job create`. The export and import commands can be used in tandem to move dbt Cloud jobs between projects. Another example is the `dbt-cloud job delete-all` which fetches a list of all jobs using `dbt-cloud job list` and then iterates over the list prompting the user if they want to delete the job. For each job that the user agrees to delete  a `dbt-cloud job delete` is performed.
 
-To install the CLI in your Python environment run `pip install dbt-cloud-cli` and you’re all set. You can use it locally in your development environment or e.g. in a GitHub actions workflow.
+To install the CLI in your Python environment run `python -m pip install dbt-cloud-cli` and you’re all set. You can use it locally in your development environment or e.g. in a GitHub actions workflow.
 
 ## How the project came to be
 
@@ -109,7 +113,7 @@ After the initial release I started to expand to cover the rest of the dbt Cloud
 
 In this example we’ll download a `catalog.json` artifact from the latest run of a dbt Cloud job using `dbt-cloud run list` and `dbt-cloud get-artifact` and then write a simple Data Catalog CLI application using the same tools that are used in `dbt-cloud-cli` (i.e., `click` and `pydantic`). Let’s dive right in!
 
-The first command we need is the `dbt-cloud run list` which uses an [API V4 endpoint](https://docs.getdbt.com/dbt-cloud/api-v4#operation/list-account-runs) that returns runs sorted by creation date, with the most recent run appearing first. The command returns a JSON response that has one top-level attribute `data` that contains a list of runs. We’ll need to extract the `id` attribute of the first one and to do that we use [jq](https://stedolan.github.io/jq/):
+The first command we need is the `dbt-cloud run list` which uses an [API endpoint](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#/operations/List%20Runs) that returns runs sorted by creation date, with the most recent run appearing first. The command returns a JSON response that has one top-level attribute `data` that contains a list of runs. We’ll need to extract the `id` attribute of the first one and to do that we use [jq](https://stedolan.github.io/jq/):
 
 ```
 latest_run_id=$(dbt-cloud run list --job-id $DBT_CLOUD_JOB_ID | jq .data[0].id -r)
@@ -306,7 +310,7 @@ The `CatalogExploreCommand.execute` method implements the interactive exploratio
 I’ve included the app in the latest version of dbt-cloud-cli so you can test it out yourself! To use the app you need install dbt-cloud-cli with extra dependencies:
 
 ```bash
-pip install dbt-cloud-cli[demo]
+python -m pip install dbt-cloud-cli[demo]
 ```
 
 Now you can the run app:

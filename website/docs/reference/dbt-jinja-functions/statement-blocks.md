@@ -16,6 +16,8 @@ We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_qu
 <File name='get_states_statement.sql'>
 
 ```sql
+-- depends_on: {{ ref('users') }}
+
 {%- call statement('states', fetch_result=True) -%}
 
     select distinct state from {{ ref('users') }}
@@ -31,6 +33,42 @@ The signature of the `statement` block looks like this:
 statement(name=None, fetch_result=False, auto_begin=True)
 ```
 
+When executing a `statement`, dbt needs to understand how to resolve references to other dbt models or resources. If you are already `ref`ing the model outside of the statement block, the dependency will be automatically inferred, but otherwise you will need to [force the dependency](/reference/dbt-jinja-functions/ref#forcing-dependencies) with `-- depends_on`.
+
+<Expandable alt_header="Example using -- depends_on">
+
+```sql
+-- depends_on: {{ ref('users') }}
+
+{% call statement('states', fetch_result=True) -%}
+
+    select distinct state from {{ ref('users') }}
+
+    /*
+    The unique states are: {{ load_result('states')['data'] }}
+    */
+{%- endcall %}
+```
+</Expandable>
+
+<Expandable alt_header="Example using ref() function">
+
+```sql
+
+{% call statement('states', fetch_result=True) -%}
+
+    select distinct state from {{ ref('users') }}
+
+    /*
+    The unique states are: {{ load_result('states')['data'] }}
+    */
+
+{%- endcall %}
+
+select id * 2 from {{ ref('users') }}
+```
+</Expandable>
+
 __Args__:
  - `name` (string): The name for the result set returned by this statement
  - `fetch_result` (bool): If True, load the results of the statement into the Jinja context
@@ -40,12 +78,6 @@ Once the statement block has executed, the result set is accessible via the `loa
 - `response`: Structured object containing metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Comparable to `adapter_response` in the [Result object](/reference/dbt-classes#result-objects).
 - `data`: Pythonic representation of data returned by query (arrays, tuples, dictionaries).
 - `table`: [Agate](https://agate.readthedocs.io/page/api/table.html) table representation of data returned by query.
-
-<Changelog>
-
-* `v0.19.0`: The `response` structured object replaced a `status` string that contained similar information.
-
-</Changelog>
 
 For the above statement, that could look like:
 

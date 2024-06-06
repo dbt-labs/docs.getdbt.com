@@ -16,15 +16,17 @@ models:
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
+      node_color: <color_id> # Use name (such as node_color: purple) or hex code with quotes (such as node_color: "#cd7f32")
     [latest_version](/reference/resource-properties/latest_version): <version_identifier>
-    [access](/reference/resource-properties/access): private | protected | public
+    [deprecation_date](/reference/resource-properties/deprecation_date): <YAML_DateTime>
+    [access](/reference/resource-configs/access): private | protected | public
     [config](/reference/resource-properties/config):
       [<model_config>](/reference/model-configs): <config_value>
     [constraints](/reference/resource-properties/constraints):
       - <constraint>
-    [tests](/reference/resource-properties/tests):
+    [tests](/reference/resource-properties/data-tests):
       - <test>
-      - ... # declare additional tests
+      - ... # declare additional data tests
     [columns](/reference/resource-properties/columns):
       - name: <column_name> # required
         [description](/reference/resource-properties/description): <markdown_string>
@@ -32,9 +34,9 @@ models:
         [quote](/reference/resource-properties/quote): true | false
         [constraints](/reference/resource-properties/constraints):
           - <constraint>
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
-          - ... # declare additional tests
+          - ... # declare additional data tests
         [tags](/reference/resource-configs/tags): [<string>]
 
       - name: ... # declare properties of additional columns
@@ -45,14 +47,14 @@ models:
         [description](/reference/resource-properties/description): <markdown_string>
         [docs](/reference/resource-configs/docs):
           show: true | false
-        [access](/reference/resource-properties/access): private | protected | public
+        [access](/reference/resource-configs/access): private | protected | public
         [constraints](/reference/resource-properties/constraints):
           - <constraint>
         [config](/reference/resource-properties/config):
           [<model_config>](/reference/model-configs): <config_value>
-        [tests](/reference/resource-properties/tests):
+        [tests](/reference/resource-properties/data-tests):
           - <test>
-          - ... # declare additional tests
+          - ... # declare additional data tests
         columns:
           # include/exclude columns from the top-level model properties
           - [include](/reference/resource-properties/include-exclude): <include_value>
@@ -62,9 +64,9 @@ models:
             [quote](/reference/resource-properties/quote): true | false
             [constraints](/reference/resource-properties/constraints):
               - <constraint>
-            [tests](/reference/resource-properties/tests):
+            [tests](/reference/resource-properties/data-tests):
               - <test>
-              - ... # declare additional tests
+              - ... # declare additional data tests
             [tags](/reference/resource-configs/tags): [<string>]
         - v: ... # declare additional versions
 

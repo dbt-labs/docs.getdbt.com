@@ -30,6 +30,8 @@ For a given run it will look like:
 ["model.my_project.model1", "model.my_project.model2", "snapshot.my_project.my_snapshot"]
 ```
 
+Each value corresponds to a key in the `nodes` object within the [graph](/reference/dbt-jinja-functions/graph) context variable.
+
 It can be used in macros in a `pre-hook`, `post-hook`, `on-run-start` or `on-run-end` 
 to evaluate what nodes are selected and trigger different logic whether a particular node
 is selected or not.

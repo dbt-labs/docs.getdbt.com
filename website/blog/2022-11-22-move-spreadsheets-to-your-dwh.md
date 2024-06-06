@@ -102,7 +102,7 @@ Instead of syncing all cells in a sheet, you create a [named range](https://five
 
 <Lightbox src="/img/blog/2022-11-22-move-spreadsheets-to-your-dwh/google-sheets-uploader.png" title="Creating a named range in Google Sheets to sync via the Fivetran Google Sheets Connector" />
 
-Beware of inconsistent data types though—if someone types text into a column that was originally numeric, Fivetran will automatically convert the column to a string type which might cause issues in your downstream transformations. [The recommended workaround](https://fivetran.com/docs/files/google-sheets#typetransformationsandmapping) is to explicitly cast your types in [staging models](https://docs.getdbt.com/guides/best-practices/how-we-structure/2-staging) to ensure that any undesirable records are converted to null.
+Beware of inconsistent data types though—if someone types text into a column that was originally numeric, Fivetran will automatically convert the column to a string type which might cause issues in your downstream transformations. [The recommended workaround](https://fivetran.com/docs/files/google-sheets#typetransformationsandmapping) is to explicitly cast your types in [staging models](https://docs.getdbt.com/best-practices/how-we-structure/2-staging) to ensure that any undesirable records are converted to null.
 
 #### Good fit for:
 

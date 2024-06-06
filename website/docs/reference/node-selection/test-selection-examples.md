@@ -2,6 +2,8 @@
 title: "Test selection examples"
 ---
 
+import IndirSelect from '/snippets/_indirect-selection-definitions.md';
+
 Test selection works a little differently from other resource selection. This makes it very easy to:
 * run tests on a particular model
 * run tests on all models in a subdirectory
@@ -11,146 +13,102 @@ Like all resource types, tests can be selected **directly**, by methods and oper
 
 Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected. [See below](#indirect-selection) for more details.
 
-<Changelog>
-
- `v1.0.0`: Renamed the `--greedy` flag/property to `indirect_selection`, and set its default back to "eager" (pre-v0.20). You can achieve the "cautious" behavior introduced in v0.20 by setting the flag/property to `cautious`.
-
-</Changelog>
-
 Test selection is powerful, and we know it can be tricky. To that end, we've included lots of examples below:
 
 ### Direct selection
-
-<Changelog>
-
-`v1.0.0`: Renamed test types: "generic" (formerly "schema") and "singular" (formerly "data"). Removed support for the `--schema` and `--data` flags.
-
-</Changelog>
 
 Run generic tests only:
 
 
   ```bash
-  $ dbt test --select test_type:generic
+    dbt test --select "test_type:generic"
   ```
 
 Run singular tests only:
 
 
   ```bash
-  $ dbt test --select test_type:singular
+    dbt test --select "test_type:singular"
   ```
 
 In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
 
 ### Indirect selection
 
-<VersionBlock lastVersion="1.3">
+<VersionBlock firstVersion="1.5" >
 
-There are two modes to configure the behavior when performing indirect selection (with `eager` as the default):
-
-1. `eager` (default) - include ANY test that references the selected nodes
-1. `cautious` - restrict to tests that ONLY refer to selected nodes
-
-Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
-
-The "cautious" mode can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](/reference/node-selection/defer)).
+<IndirSelect features={'/snippets/indirect-selection-definitions.md'}/>
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.4">
+<!--tabs for eager mode, cautious mode, empty, and buildable mode -->
+<!--Tabs for 1.5+ -->
 
-There are three modes to configure the behavior when performing indirect selection (with `eager` as the default):
+### Indirect selection examples
 
-1. `eager` (default) - include ANY test that references the selected nodes
-1. `cautious` - restrict to tests that ONLY refer to selected nodes
-1. `buildable` -  restrict to tests that ONLY refer to selected nodes (or their ancestors)
+<VersionBlock firstVersion="1.5">
 
-Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
+To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c` and associated data tests. The following illustrates which tests will be run when you execute `dbt build` with the various indirect selection modes:
 
-The "buildable" and "cautious" modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](/reference/node-selection/defer)).
+<DocCarousel slidesPerView={1}>
 
-</VersionBlock>
+<Lightbox src src="/img/docs/reference/indirect-selection-dbt-build.png" width="85%" title="dbt build" />
 
-<!--tabs for eager mode, cautious mode, and buildable mode -->
+<Lightbox src src="/img/docs/reference/indirect-selection-eager.png" width="85%" title="Eager (default)"/>
 
-<VersionBlock lastVersion="1.3">
+<Lightbox src src="/img/docs/reference/indirect-selection-buildable.png" width="85%" title="Buildable"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-cautious.png" width="85%" title="Cautious"/>
+
+<Lightbox src src="/img/docs/reference/indirect-selection-empty.png" width="85%" title="Empty"/>
+
+</DocCarousel>
 
 <Tabs queryString="indirect-selection-mode">
 <TabItem value="eager" label="Eager mode (default)">
 
-By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include any test that references orders, even if it references other models as well.
-
-In this mode, any test that depends on unbuilt resources will raise an error.
-
+In this example, during the build process, any test that depends on the selected "orders" model or its dependent models will be executed, even if it depends other models as well.
+ 
 ```shell
-$ dbt test --select orders
-$ dbt build --select orders
-```
-
-</TabItem>
-
-<TabItem value="cautious" label="Cautious mode">
-
-It is possible to prevent tests from running if one or more of its parents is unselected (and therefore unbuilt); we call this "cautious" indirect selection.
-
-It will only include tests whose references are each within the selected nodes.
-
-Put another way, it will prevent tests from running if one or more of its parents is unselected.
-
-```shell
-$ dbt test --select orders --indirect-selection=cautious
-$ dbt build --select orders --indirect-selection=cautious
-```
-
-</TabItem>
-
-</Tabs>
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.4">
-
-<Tabs queryString="indirect-selection-mode">
-<TabItem value="eager" label="Eager mode (default)">
-
-By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include any test that references orders, even if it references other models as well.
-
-In this mode, any test that depends on unbuilt resources will raise an error.
-
-```shell
-$ dbt test --select orders
-$ dbt build --select orders
-```
-
-</TabItem>
-
-<TabItem value="cautious" label="Cautious mode">
-
-It is possible to prevent tests from running if one or more of its parents is unselected (and therefore unbuilt); we call this "cautious" indirect selection.
-
-It will only include tests whose references are each within the selected nodes.
-
-Put another way, it will prevent tests from running if one or more of its parents is unselected.
-
-```shell
-$ dbt test --select orders --indirect-selection=cautious
-$ dbt build --select orders --indirect-selection=cautious
+dbt test --select "orders"
+dbt build --select "orders"
 ```
 
 </TabItem>
 
 <TabItem value="buildable" label="Buildable mode">
 
-This mode is similarly conservative like "cautious", but is slightly more inclusive.
+In this example, dbt executes tests that reference "orders" within the selected nodes (or their ancestors).
 
-It will only include tests whose references are each within the selected nodes (or their ancestors).
-
-This is useful in the same scenarios as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
 
 ```shell
-$ dbt test --select orders --indirect-selection=buildable
-$ dbt build --select orders --indirect-selection=buildable
+dbt test --select "orders" --indirect-selection=buildable
+dbt build --select "orders" --indirect-selection=buildable
+```
+
+</TabItem>
+
+<TabItem value="cautious" label="Cautious mode">
+
+In this example, only tests that depend _exclusively_ on the "orders" model will be executed:
+
+```shell
+dbt test --select "orders" --indirect-selection=cautious
+dbt build --select "orders" --indirect-selection=cautious
+
+```
+
+</TabItem>
+
+<TabItem value="empty" label="Empty mode">
+
+This mode does not execute any tests, whether they are directly attached to the selected node or not.
+
+```shell
+
+dbt test --select "orders" --indirect-selection=empty
+dbt build --select "orders" --indirect-selection=empty
+
 ```
 
 </TabItem>
@@ -159,9 +117,9 @@ $ dbt build --select orders --indirect-selection=buildable
 
 </VersionBlock>
 
-<!--End of tabs for eager mode, cautious mode, and buildable mode -->
+<!--End of tabs for eager mode, cautious mode, buildable mode, and empty mode -->
 
-### Syntax examples
+### Test selection syntax examples
 
 Setting `indirect_selection` can also be specified in a [yaml selector](/reference/node-selection/yaml-selectors#indirect-selection).
 
@@ -170,22 +128,25 @@ The following examples should feel somewhat familiar if you're used to executing
 
   ```bash
   # Run tests on a model (indirect selection)
-  $ dbt test --select customers
+  dbt test --select "customers"
+  
+  # Run tests on two or more specific models (indirect selection)
+  dbt test --select "customers orders"
 
   # Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
-  $ dbt test --select staging.jaffle_shop
+  dbt test --select "staging.jaffle_shop"
 
   # Run tests downstream of a model (note this will select those tests directly!)
-  $ dbt test --select stg_customers+
+  dbt test --select "stg_customers+"
 
   # Run tests upstream of a model (indirect selection)
-  $ dbt test --select +stg_customers
+  dbt test --select "+stg_customers"
 
   # Run tests on all models with a particular tag (direct + indirect)
-  $ dbt test --select tag:my_model_tag
+  dbt test --select "tag:my_model_tag"
 
   # Run tests on all models with a particular materialization (indirect selection)
-  $ dbt test --select config.materialized:table
+  dbt test --select "config.materialized:table"
 
   ```
 
@@ -194,16 +155,20 @@ The following examples should feel somewhat familiar if you're used to executing
 
   ```bash
   # tests on all sources
-  $ dbt test --select source:*
+
+  dbt test --select "source:*"
 
   # tests on one source
-  $ dbt test --select source:jaffle_shop
+  dbt test --select "source:jaffle_shop"
+  
+  # tests on two or more specific sources
+   dbt test --select "source:jaffle_shop source:raffle_bakery"
 
   # tests on one source table
-  $ dbt test --select source:jaffle_shop.customers
+  dbt test --select "source:jaffle_shop.customers"
 
   # tests on everything _except_ sources
-  $ dbt test --exclude source:*
+  dbt test --exclude "source:*"
   ```
 
  ### More complex selection
@@ -212,9 +177,12 @@ Through the combination of direct and indirect selection, there are many ways to
 
 
   ```bash
-  $ dbt test --select assert_total_payment_amount_is_positive # directly select the test by name
-  $ dbt test --select payments,test_type:data # indirect selection, v0.18.0
-  $ dbt test --select payments --data  # indirect selection, earlier versions
+
+  dbt test --select "assert_total_payment_amount_is_positive" # directly select the test by name
+  dbt test --select "payments,test_type:singular" # indirect selection, v1.2
+  dbt test --select "payments,test_type:data" # indirect selection, v0.18.0
+  dbt test --select "payments" --data  # indirect selection, earlier versions
+
   ```
 
 
@@ -223,13 +191,14 @@ Through the combination of direct and indirect selection, there are many ways to
 
   ```bash
   # Run tests on all models with a particular materialization
-  $ dbt test --select config.materialized:table
+  dbt test --select "config.materialized:table"
 
   # Run tests on all seeds, which use the 'seed' materialization
-  $ dbt test --select config.materialized:seed
+  dbt test --select "config.materialized:seed"
 
   # Run tests on all snapshots, which use the 'snapshot' materialization
-  $ dbt test --select config.materialized:snapshot
+  dbt test --select "config.materialized:snapshot"
+
   ```
 
  Note that this functionality may change in future versions of dbt.
@@ -247,8 +216,8 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tests:
         tags: [my_column_tag]
+        tests:
           - unique
 
 ```
@@ -257,7 +226,8 @@ models:
 
 
   ```bash
-  $ dbt test --select tag:my_column_tag
+  dbt test --select "tag:my_column_tag"
+
   ```
 
 Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of dbt.
@@ -285,5 +255,6 @@ models:
 
 
   ```bash
-  $ dbt test --select tag:my_test_tag
+  dbt test --select "tag:my_test_tag"
+
   ```

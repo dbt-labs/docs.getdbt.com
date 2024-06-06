@@ -1,0 +1,54 @@
+###
+### Display
+###
+
+# Verbose program output
+# Accepts log level: "error", "warn", "info", "debug", "trace"
+verbose = "info"
+
+# Don't show interactive progress bar while checking links.
+no_progress = true
+
+###
+### Cache
+###
+
+# Enable link caching. This can be helpful to avoid checking the same links on
+# multiple runs.
+cache = false
+
+###
+### Requests
+###
+
+# Website timeout from connect to response finished.
+timeout = 30
+
+# Comma-separated list of accepted status codes for valid links.
+accept = [200, 403, 429]
+
+# Base URL or website root directory to check relative URLs.
+base = "https://docs.getdbt.com"
+
+###
+### Exclusions
+###
+
+# Exclude URLs from checking (supports regex)
+exclude = [
+  'frontMatter.',
+  'https://badge.fury.io',
+  'https://img.shields.io',
+  'https://gitlab.com',
+  'https://dbtlabs.postman.co',
+  'https://mobile.twitter.com',
+  'https://twitter.com',
+  'https://www.twitter.com',
+]
+
+# Exclude all mail addresses from checking
+exclude_mail = true
+
+# Check links inside `<code>` and `<pre>` blocks as well as Markdown code
+# blocks.
+include_verbatim = false

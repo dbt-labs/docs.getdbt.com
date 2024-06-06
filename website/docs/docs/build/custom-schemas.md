@@ -1,29 +1,32 @@
 ---
 title: "Custom schemas"
 id: "custom-schemas"
+pagination_next: "docs/build/custom-databases"
 ---
 
-## What is a custom schema?
-By default, all dbt models are built in the schema specified in your target. In dbt projects with lots of models, it may be useful to instead build some models in schemas other than your target schema – this can help logically group models together.
+By default, all dbt models are built in the schema specified in your [environment](/docs/dbt-cloud-environments) (dbt Cloud) or [profile's target](/docs/core/dbt-core-environments) (dbt Core). This default schema is called your _target schema_.
 
-For example, you may wish to:
-* Group models based on the business unit using the model, creating schemas such as `core`, `marketing`, `finance` and `support`; or,
+For dbt projects with lots of models, it's common to build models across multiple schemas and group similar models together. For example, you might want to:
+
+* Group models based on the business unit using the model, creating schemas such as `core`, `marketing`, `finance` and `support`.
 * Hide intermediate models in a `staging` schema, and only present models that should be queried by an end user in an `analytics` schema.
 
-You can use **custom schemas** in dbt to build models in a schema other than your target schema. It's important to note that by default, dbt will generate the schema name for a model by **concatenating the custom schema to the target schema**, as in: `<target_schema>_<custom_schema>;`.
+To do this, specify a custom schema. dbt generates the schema name for a model by appending the custom schema to the target schema. For example, `<target_schema>_<custom_schema>`.
 
 | Target schema | Custom schema | Resulting schema |
 | ------------- | ------------- | ---------------- |
-| &lt;target_schema&gt; | None | &lt;target_schema&gt; |
-| analytics | None | analytics |
-| dbt_alice | None | dbt_alice |
-| &lt;target_schema&gt; | &lt;custom_schema&gt; | &lt;target_schema&gt;\_&lt;custom_schema&gt; |
-| analytics | marketing | analytics_marketing |
-| dbt_alice | marketing | dbt_alice_marketing |
+| analytics_prod | None | analytics_prod |
+| alice_dev | None | alice_dev |
+| dbt_cloud_pr_123_456 | None | dbt_cloud_pr_123_456 |
+| analytics_prod | marketing | analytics_prod_marketing |
+| alice_dev | marketing | alice_dev_marketing |
+| dbt_cloud_pr_123_456 | marketing | dbt_cloud_pr_123_456_marketing |
 
 ## How do I use custom schemas?
-Use the `schema` configuration key to specify a custom schema for a model. As with any configuration, you can either:
-* apply this configuration to a specific model by using a config block within a model, or
+
+To specify a custom schema for a model, use the `schema` configuration key. As with any configuration, you can do one of the following:
+
+* apply this configuration to a specific model by using a config block within a model
 * apply it to a subdirectory of models by specifying it in your `dbt_project.yml` file
 
 <File name='orders.sql'>
@@ -36,12 +39,10 @@ select ...
 
 </File>
 
-
-
 <File name='dbt_project.yml'>
 
 ```yaml
-# models in `models/marketing/ will be rendered to the "*_marketing" schema
+# models in `models/marketing/ will be built in the "*_marketing" schema
 models:
   my_project:
     marketing:
@@ -52,17 +53,19 @@ models:
 
 ## Understanding custom schemas
 
-### Why does dbt concatenate the custom schema to the target schema?
-When first using custom schemas, it's common to assume that a model will be built in a schema that matches the `schema` configuration exactly, for example, a model that has the configuration `schema: marketing`, would be built in the `marketing` schema. However, dbt instead creates it in a schema like `<target_schema>_marketing` by default – there's a good reason for this!
+When first using custom schemas, it's a common misunderstanding to assume that a model _only_ uses the new `schema` configuration; for example, a model that has the configuration `schema: marketing` would be built in the `marketing` schema. However, dbt puts it in a schema like `<target_schema>_marketing`.
 
-In a typical setup of dbt, each dbt user will use a separate target schema (see [Managing Environments](/docs/build/custom-schemas#managing-environments)). If dbt created models in a schema that matches a model's custom schema exactly, every dbt user would create models in the same schema.
+There's a good reason for this deviation. Each dbt user has their own target schema for development (refer to [Managing Environments](#managing-environments)). If dbt ignored the target schema and only used the model's custom schema, every dbt user would create models in the same schema and would overwrite each other's work.
 
-Further, the schema that your development models are built in would be the same schema that your production models are built in! Instead, concatenating the custom schema to the target schema helps create distinct schema names, reducing naming conflicts.
+By combining the target schema and the custom schema, dbt ensures that objects it creates in your data warehouse don't collide with one another.
 
 If you prefer to use different logic for generating a schema name, you can change the way dbt generates a schema name (see below).
 
 ### How does dbt generate a model's schema name?
-Under the hood, dbt uses a macro called `generate_schema_name` to determine the name of the schema that a model should be built in. The code for the macro that expresses the current logic follows:
+
+dbt uses a default macro called `generate_schema_name` to determine the name of the schema that a model should be built in.
+
+The following code represents the default macro's logic:
 
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
@@ -80,43 +83,48 @@ Under the hood, dbt uses a macro called `generate_schema_name` to determine the 
 
 {%- endmacro %}
 ```
+<br />
 
-## Advanced custom schema configuration
+import WhitespaceControl from '/snippets/_whitespace-control.md';
 
-### Changing the way dbt generates a schema name
-If your dbt project includes a macro that is also named `generate_schema_name`, dbt will _always use the macro in your dbt project_ instead of the default macro.
+<WhitespaceControl/>
 
-Therefore, to change the way dbt generates a schema name, you should add a macro named `generate_schema_name` to your project, where you can then define your own logic.
 
-Note: dbt ignores any custom `generate_schema_name` macros that are part of a package installed in your project.
+## Changing the way dbt generates a schema name
 
-### An alternative pattern for generating schema names
-A frequently used pattern for generating schema names is to change the behavior based on dbt's environment, such that:
+If your dbt project has a custom macro called `generate_schema_name`, dbt will use it instead of the default macro. This allows you to customize the name generation according to your needs.
 
-- In prod:
-  - If a custom schema is provided, a model's schema name should match the custom schema, rather than being concatenated to the target schema.
-  - If no custom schema is provided, a model's schema name should match the target schema.
+To customize this macro, copy the example code in the section [How does dbt generate a model's schema name](#how-does-dbt-generate-a-models-schema-name) into a file named `macros/generate_schema_name.sql` and make changes as necessary.
 
-- In other environments (e.g. `dev` or `qa`):
-  - Build _all_ models in the target schema, as in, ignore custom schema configurations.
+Be careful. dbt will ignore any custom `generate_schema_name` macros included in installed packages.
 
-dbt ships with a global macro that contains this logic – `generate_schema_name_for_env`.
+<Expandable alt_header="Warning: Don't replace `default_schema` in the macro">
 
-If you want to use this pattern, you'll need a `generate_schema_name` macro in your project that points to this logic. You can do this by creating a file in your `macros` directory (we normally call it `get_custom_schema.sql`), and pasting in the following:
+If you're modifying how dbt generates schema names, don't just replace ```{{ default_schema }}_{{ custom_schema_name | trim }}``` with ```{{ custom_schema_name | trim }}``` in the ```generate_schema_name``` macro.
 
-<File name='macros/get_custom_schema.sql'>
+If you remove ```{{ default_schema }}```, it causes developers to override each other's models if they create their own custom schemas. This can also cause issues during development and continuous integration (CI).
+
+❌ The following code block is an example of what your code _should not_ look like:
 
 ```sql
--- put this in macros/get_custom_schema.sql
-
 {% macro generate_schema_name(custom_schema_name, node) -%}
-    {{ generate_schema_name_for_env(custom_schema_name, node) }}
+
+    {%- set default_schema = target.schema -%}
+    {%- if custom_schema_name is none -%}
+
+        {{ default_schema }}
+
+    {%- else -%}
+    # The following is incorrect as it omits {{ default_schema }} before {{ custom_schema_name | trim }}. 
+        {{ custom_schema_name | trim }} 
+
+    {%- endif -%}
+
 {%- endmacro %}
+
 ```
 
-</File>
-
-**Note:** When using this macro, you'll need to set the target name in your job specifically to "prod" if you want custom schemas to be applied.
+</Expandable>
 
 ### generate_schema_name arguments
 
@@ -126,6 +134,7 @@ If you want to use this pattern, you'll need a `generate_schema_name` macro in y
 | node | The `node` that is currently being processed by dbt | `{"name": "my_model", "resource_type": "model",...}` |
 
 ### Jinja context available in generate_schema_name
+
 If you choose to write custom logic to generate a schema name, it's worth noting that not all variables and methods are available to you when defining this logic. In other words: the `generate_schema_name` macro is compiled with a limited Jinja context.
 
 The following context methods _are_ available in the `generate_schema_name` macro:
@@ -140,25 +149,65 @@ The following context methods _are_ available in the `generate_schema_name` macr
 | Other macros in your project | Macro | ✅ |
 | Other macros in your packages | Macro | ✅ |
 
-#### Which vars are available in generate_schema_name?
-
-<Changelog>
-
-Variable semantics have changed in dbt v0.17.0. See the [migration guide](/guides/migration/versions)
-for more information on these changes.
-
-</Changelog>
+### Which vars are available in generate_schema_name?
 
 Globally-scoped variables and variables defined on the command line with
 [--vars](/docs/build/project-variables) are accessible in the `generate_schema_name` context.
 
+<VersionBlock firstVersion="1.6">
+
+### Managing different behaviors across packages
+
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
+
+</VersionBlock>
+
+## A built-in alternative pattern for generating schema names
+
+A common customization is to ignore the target schema in production environments, and ignore the custom schema configurations in other environments (such as development and CI).
+
+Production Environment (`target.name == 'prod'`)
+
+| Target schema | Custom schema | Resulting schema |
+| ------------- | ------------- | ---------------- |
+| analytics_prod | None | analytics_prod |
+| analytics_prod | marketing | marketing |
+
+Development/CI Environment (`target.name != 'prod'`)
+
+| Target schema | Custom schema | Resulting schema |
+| ------------- | ------------- | ---------------- |
+| alice_dev | None | alice_dev |
+| alice_dev | marketing | alice_dev |
+| dbt_cloud_pr_123_456 | None | dbt_cloud_pr_123_456 |
+| dbt_cloud_pr_123_456 | marketing | dbt_cloud_pr_123_456 |
+
+Similar to the regular macro, this approach guarantees that schemas from different environments will not collide.
+
+dbt ships with a macro for this use case &mdash; called `generate_schema_name_for_env` &mdash; which is disabled by default. To enable it, add a custom `generate_schema_name` macro to your project that contains the following code:
+
+<File name='macros/get_custom_schema.sql'>
+
+```sql
+-- put this in macros/get_custom_schema.sql
+
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {{ generate_schema_name_for_env(custom_schema_name, node) }}
+{%- endmacro %}
+```
+
+</File>
+
+When using this macro, you'll need to set the target name in your production job to `prod`.
+
 ## Managing environments
 
-In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
- - **dev**: Your local development environment; configured in a `profiles.yml` file on your computer.
-* **ci**:  A [continuous integration](/docs/cloud/git/connect-github) environment running on Pull Requests in GitHub, GitLab, etc.
- - **prod**: The production deployment of your dbt project, like in dbt Cloud, Airflow, or [similar](/docs/deploy/deployments).
+In the `generate_schema_name` macro examples shown in the [built-in alternative pattern](#a-built-in-alternative-pattern-for-generating-schema-names) section, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must ensure that your different dbt environments are configured accordingly. While you can use any naming scheme you'd like, we typically recommend:
 
-If your schema names are being generated incorrectly, double check your target name in the relevant environment.
+* **dev** &mdash; Your local development environment; configured in a `profiles.yml` file on your computer.
+* **ci** &mdash; A [continuous integration](/docs/cloud/git/connect-github) environment running on pull requests in GitHub, GitLab, and so on.
+* **prod** &mdash; The production deployment of your dbt project, like in dbt Cloud, Airflow, or [similar](/docs/deploy/deployments).
 
-For more information, consult the [managing environments in dbt Core](/docs/collaborate/environments/dbt-core-environments) guide.
+If your schema names are being generated incorrectly, double-check your target name in the relevant environment.
+
+For more information, consult the [managing environments in dbt Core](/docs/core/dbt-core-environments) guide.

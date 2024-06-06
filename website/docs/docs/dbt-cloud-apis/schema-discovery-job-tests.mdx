@@ -1,0 +1,43 @@
+---
+title: "Tests object schema"
+sidebar_label: "Tests"
+id: "discovery-schema-job-tests"
+---
+
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+The tests object allows you to query information about all tests in a given job.
+
+### Arguments
+
+When querying for `tests`, the following arguments are available.
+
+<NodeArgsTable parent="JobNode" name="tests" />
+
+Below we show some illustrative example queries and outline the schema (all possible fields you can query) of the tests object.
+
+### Example query
+
+The example query below finds all tests in this job and includes information about those tests.
+
+```graphql
+{
+  job(id: 123) {
+    tests {
+      runId
+      accountId
+      projectId
+      uniqueId
+      name
+      columnName
+      state
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `tests`, the following fields are available:
+
+<SchemaTable nodeName="TestNode" />

@@ -3,10 +3,6 @@ resource_types: [models, seeds, snapshots, tests, analyses, metrics]
 id: "group"
 ---
 
-:::info New functionality
-This functionality is new in v1.5.
-:::
-
 <Tabs
   defaultValue="models"
   values={[
@@ -16,19 +12,26 @@ This functionality is new in v1.5.
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Metrics', value: 'metrics', },
+    { label: 'Semantic models', value: 'semantic models', },
+    { label: 'Saved queries', value: 'saved queries',} ,
   ]
 }>
 <TabItem value="models">
-
-<VersionBlock lastVersion="1.4">
-
-Support for grouping models was added in dbt Core v1.5
-
-</VersionBlock>
-
+ 
 <VersionBlock firstVersion="1.5">
 
-</VersionBlock>
+<File name='dbt_project.yml'>
+
+```yml
+models:
+
+  [<resource-path>](resource-path):
+    +group: GROUP_NAME
+
+```
+
+
+</File>
 
 <File name='models/schema.yml'>
 
@@ -36,20 +39,10 @@ Support for grouping models was added in dbt Core v1.5
 version: 2
 
 models:
-  - name: model_name
-    group: finance
+  - name: MODEL_NAME
+    group: GROUP
+
 ```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-```yml
-models:
-  [<resource-path>](resource-path):
-    +group: finance
-```
-
 
 </File>
 
@@ -58,7 +51,7 @@ models:
 ```sql
 
 {{ config(
-  group='finance'
+  group='GROUP_NAME'
 ) }}
 
 select ...
@@ -67,26 +60,20 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="seeds">
 
-<VersionBlock lastVersion="1.4">
-
-Support for grouping seeds was added in dbt Core v1.5
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
 ```yml
 models:
   [<resource-path>](resource-path):
-    +group: finance
+    +group: GROUP_NAME
 ```
 
 </File>
@@ -95,33 +82,27 @@ models:
 
 ```yml
 seeds:
-  - name: [<seed-name>]
-    group: finance
+  - name: [SEED_NAME]
+    group: GROUP_NAME
 ```
 
 </File>
+
+</VersionBlock>
 
 
 </TabItem>
 
 <TabItem value="snapshots">
 
-<VersionBlock lastVersion="1.4">
-
-Support for grouping snapshots was added in dbt Core v1.5
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
 ```yml
 snapshots:
   [<resource-path>](resource-path):
-    +group: finance
+    +group: GROUP_NAME
 ```
 
 </File>
@@ -132,7 +113,7 @@ snapshots:
 {% snapshot [snapshot_name](snapshot_name) %}
 
 {{ config(
-  group='finance'
+  group='GROUP_NAME'
 ) }}
 
 select ...
@@ -142,27 +123,21 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 
 </TabItem>
 
 <TabItem value="tests">
 
-<VersionBlock lastVersion="1.4">
-
-Support for grouping tests was added in dbt Core v1.5
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
 ```yml
 tests:
   [<resource-path>](resource-path):
-    +group: finance
+    +group: GROUP_NAME
 ```
 
 </File>
@@ -177,7 +152,7 @@ version: 2
     tests:
       - <test_name>:
           config:
-            group: finance
+            group: GROUP_NAME
 ```
 
 </File>
@@ -188,7 +163,7 @@ version: 2
 {% test <testname>() %}
 
 {{ config(
-  group='finance'
+  group='GROUP_NAME'
 ) }}
 
 select ...
@@ -203,11 +178,13 @@ select ...
 
 ```sql
 {{ config(
-  group='finance'
+  group='GROUP_NAME'
 ) }}
 ```
 
 </File>
+
+</VersionBlock>
 
 </TabItem>
 
@@ -219,8 +196,8 @@ select ...
 version: 2
 
 analyses:
-  - name: <analysis_name>
-    group: finance
+  - name: ANALYSIS_NAME
+    group: GROUP_NAME
 ```
 
 </File>
@@ -230,22 +207,14 @@ analyses:
 
 <TabItem value="metrics">
 
-<VersionBlock lastVersion="1.4">
-
-Support for grouping metrics was added in dbt Core v1.5
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
 ```yaml
 metrics:
   [<resource-path>](resource-path):
-    [+](plus-prefix)group: finance
+    [+](plus-prefix)group: GROUP_NAME
 ```
 
 </File>
@@ -256,19 +225,93 @@ metrics:
 version: 2
 
 metrics:
-  - name: [<metric-name>]
-    group: finance
+  - name: [METRIC_NAME]
+    config:
+      group: GROUP_NAME
 
 ```
 
 </File>
+
+</VersionBlock>
+
+</TabItem>
+
+
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for grouping semantic models has been added in dbt Core v1.7.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='dbt_project.yml'>
+
+```yaml
+semantic-models:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)group: GROUP_NAME
+```
+
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+semantic_models:
+  - name: SEMANTIC_MODEL_NAME
+    config:
+      group: GROUP_NAME
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="saved queries">
+
+<VersionBlock lastVersion="1.6">
+
+Support for grouping saved queries has been added in dbt Core v1.7.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='dbt_project.yml'>
+
+```yaml
+saved-queries:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)group: GROUP_NAME
+```
+
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+saved_queries:
+  - name: SAVED_QUERY_NAME
+    config:
+      group: GROUP_NAME
+```
+
+</File>
+
+</VersionBlock>
 
 </TabItem>
 
 </Tabs>
 
 ## Definition
-An optional configuration for grouping models, analysis, snapshots, tests, and metrics. When a resource is grouped, dbt will allow it to reference private models within the same group.
+An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
 For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
 

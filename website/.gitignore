@@ -27,3 +27,6 @@ yarn-error.log*
 /static/feeds/atom.xml
 /static/feeds/rss.json
 /static/feeds/rss.xml
+
+# Local Vercel folder
+.vercel

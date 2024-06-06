@@ -3,7 +3,7 @@ title: "Packages"
 id: "packages"
 ---
 
-## What is a package?
+
 Software engineers frequently modularize code into libraries. These libraries help programmers operate with leverage: they can spend more time focusing on their unique business logic, and less time implementing code that someone else has already spent the time perfecting.
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
@@ -22,18 +22,18 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
+* It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
 
-:::note Using Python packages
 
-Defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages).
+import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
-:::
+<UseCaseInfo/>
 
 ## How do I add a package to my project?
-1. Add a `packages.yml` file to your dbt project. This should be at the same level as your `dbt_project.yml` file.
+1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
 
-<File name='packages.yml'>
+<File>
 
 ```yaml
 packages:
@@ -48,11 +48,7 @@ packages:
 
 </File>
 
-<Changelog>
-
-- **v1.0.0:** The default [`packages-install-path`](/reference/project-configs/packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
-
-</Changelog>
+The default [`packages-install-path`](/reference/project-configs/packages-install-path) is `dbt_packages`.
 
 3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_packages` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
 
@@ -60,7 +56,10 @@ packages:
 You can specify a package using one of the following methods, depending on where your package is stored.
 
 ### Hub packages (recommended)
-[dbt Hub](https://hub.getdbt.com) is a registry for dbt packages. Packages that are listed on dbt Hub can be installed like so:
+
+dbt Labs hosts the [Package hub](https://hub.getdbt.com), registry for dbt packages, as a courtesy to the dbt Community, but does not certify or confirm the integrity, operability, effectiveness, or security of any Packages. Please read the [dbt Labs Package Disclaimer](https://hub.getdbt.com/disclaimer/) before installing Hub packages.
+
+You can install available hub packages in the following way:
 
 <File name='packages.yml'>
 
@@ -85,36 +84,31 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 * Your project uses both the dbt-utils and Snowplow packages; and the Snowplow package _also_ uses the dbt-utils package.
 * Your project uses both the Snowplow and Stripe packages, both of which use the dbt-utils package.
 
-In comparison, other package installation methods are unable to handle the duplicate dbt-utils package.
+In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
+
+Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and setting the `DBT_PACKAGE_HUB_URL` environment variable.
 
 #### Prerelease versions
-
-<Changelog>
-
-* `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
-* `v1.0.0`: When you provide an explicit prerelease version, dbt will install that version.
-
-</Changelog>
 
 Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
 
 By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
 - Explicitly specifying a prerelease version in your `version` criteria
-- Setting `install-prerelease` to `true`, and providing a compatible version range
+- Setting `install_prerelease` to `true`, and providing a compatible version range
 
-Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
+For example, both of the following configurations would successfully install `0.4.5-a2` for the [`dbt_artifacts` package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/):
 
 ```yaml
 packages:
   - package: brooklyn-data/dbt_artifacts
-    version: 0.4.5a2
+    version: 0.4.5-a2
 ```
 
 ```yaml
 packages:
   - package: brooklyn-data/dbt_artifacts
     version: [">=0.4.4", "<0.4.6"]
-    install-prerelease: true
+    install_prerelease: true
 ```
 
 ### Git packages
@@ -129,12 +123,6 @@ packages:
 ```
 
 </File>
-
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to specify commit hashes as package revisions
-
-</Changelog>
 
 Add the Git URL for the package, and optionally specify a revision. The revision can be:
 - a branch name
@@ -157,8 +145,6 @@ To find the latest release for a package, navigate to the `Releases` tab in the 
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
 
-<VersionBlock firstVersion="1.4">
-
 ### Internally hosted tarball URL
 
 Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, dbt Core enables you to install packages from internally-hosted tarball URLs. 
@@ -171,8 +157,6 @@ packages:
 ```
 
 Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's created for the package source code to be installed within.
-
-</VersionBlock>
 
 ### Private packages
 
@@ -199,7 +183,7 @@ This method allows the user to clone via HTTPS by passing in a git token via an 
 
 
 :::info dbt Cloud Usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or <VersionBlock lastVersion="1.5">`DBT_ENV_SECRET_`</VersionBlock><VersionBlock firstVersion="1.6">`DBT_ENV_SECRET`</VersionBlock>. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
 In GitHub:
@@ -265,12 +249,6 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 #### Configure subdirectory for packaged projects
 
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to specify `subdirectory`
-
-</Changelog>
-
 In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the packaged project is instead nested in a subdirectory—perhaps within a much larger mono repo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
 
 <File name='packages.yml'>
@@ -284,18 +262,35 @@ packages:
 </File>
 
 ### Local packages
-Packages that you have stored locally can be installed by specifying the path to the project, like so:
+A "local" package is a dbt project accessible from your local file system. You can install it by specifying the project's path. It works best when you nest the project within a subdirectory relative to your current project's directory.
 
 <File name='packages.yml'>
 
 ```yaml
 packages:
-  - local: /opt/dbt/redshift # use a local path
+  - local: relative/path/to/subdirectory
 ```
 
 </File>
 
-Local packages should only be used for specific situations, for example, when testing local changes to a package.
+Other patterns may work in some cases, but not always. For example, if you install this project as a package elsewhere, or try running it on a different system, the relative and absolute paths will yield the same results.
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  # not recommended - support for these patterns vary
+  - local: /../../redshift   # relative path to a parent directory
+  - local: /opt/dbt/redshift # absolute path on the system
+```
+
+</File>
+
+There are a few specific use cases where we recommend using a "local" package:
+1. **Monorepo** &mdash; When you have multiple projects, each nested in a subdirectory, within a monorepo. "Local" packages allow you to combine projects for coordinated development and deployment.
+2. **Testing changes** &mdash; To test changes in one project or package within the context of a downstream project or package that uses it. By temporarily switching the installation to a "local" package, you can make changes to the former and immediately test them in the latter for quicker iteration. This is similar to [editable installs](https://pip.pypa.io/en/stable/topics/local-project-installs/) in Python.
+3. **Nested project** &mdash; When you have a nested project that defines fixtures and tests for a project of utility macros, like [the integration tests within the `dbt-utils` package](https://github.com/dbt-labs/dbt-utils/tree/main/integration_tests).
+
 
 ## What packages are available?
 Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt packages!
@@ -372,3 +367,4 @@ packages:
 ```
 
 </File>
+

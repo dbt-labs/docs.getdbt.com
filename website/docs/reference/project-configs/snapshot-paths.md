@@ -14,12 +14,6 @@ snapshot-paths: [directorypath]
 ## Definition
 Optionally specify a custom list of directories where [snapshots](/docs/build/snapshots) are located. Note that you cannot co-locate models and snapshots.
 
-<Changelog>
-
-* `v0.14.0`: Snapshots were introduced
-
-</Changelog>
-
 ## Default
 By default, dbt will search for snapshots in the `snapshots` directory, i.e. `snapshot-paths: ["snapshots"]`
 

@@ -28,9 +28,19 @@ While this is ideal for quick and iterative development, for some models, consta
 ## Where are contracts supported?
 
 At present, model contracts are supported for:
-- SQL models. Contracts are not yet supported for Python models.
-- Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`). Views offer limited support for column names and data types, but not `constraints`. Contracts are not supported for `ephemeral`-materialized models.
+- SQL models. 
+- Models materialized as one of the following:
+    - `table`
+    - `view` &mdash; Views offer limited support for column names and data types, but not `constraints`.
+    - `incremental` &mdash; with `on_schema_change: append_new_columns` or `on_schema_change: fail`.  
 - Certain data platforms, but the supported and enforced `constraints` vary by platform.
+
+Model contracts are _not_ supported for:
+- Python models.
+- `ephemeral`-materialized SQL models.
+- Models with recursive <Term id="cte" />'s in BigQuery.
+- Other resource types, such as `sources`, `seeds`, `snapshots`, and so on.
+
 
 ## How to define a contract
 
@@ -86,6 +96,91 @@ When building a model with a defined contract, dbt will do two things differentl
 1. dbt will run a "preflight" check to ensure that the model's query will return a set of columns with names and data types matching the ones you have defined. This check is agnostic to the order of columns specified in your model (SQL) or YAML spec.
 2. dbt will include the column names, data types, and constraints in the DDL statements it submits to the data platform, which will be enforced while building or updating the model's table.
 
+## Platform constraint support
+
+Select the adapter-specific tab for more information on [constraint](/reference/resource-properties/constraints) support across platforms. Constraints fall into three categories based on definability and platform enforcement:
+
+- **Definable and enforced** &mdash; The model won't build if it violates the constraint.
+- **Definable and not enforced** &mdash; The platform supports specifying the type of constraint, but a model can still build even if building the model violates the constraint. This constraint exists for metadata purposes only. This approach is more typical in cloud data warehouses than in transactional databases, where strict rule enforcement is more common.
+- **Not definable and not enforced** &mdash; You can't specify the type of constraint for the platform.
+
+
+
+<Tabs>
+
+<TabItem value="Redshift" label="Redshift">
+
+| Constraint type | Definable       | Enforced         |
+|:----------------|:-------------:|:------------------:|
+| not_null        | ✅ | ✅ |
+| primary_key     | ✅ | ❌ |
+| foreign_key     | ✅ | ❌ |
+| unique          | ✅ | ❌ |
+| check           | ❌ | ❌ |
+
+</TabItem>
+<TabItem value="Snowflake" label="Snowflake">
+
+| Constraint type | Definable     | Enforced |
+|:----------------|:-------------:|:---------------------:|
+| not_null        | ✅  | ✅ |
+| primary_key     | ✅  | ❌ |
+| foreign_key     | ✅  | ❌ |
+| unique          | ✅  | ❌ |
+| check           | ❌  | ❌ |
+
+</TabItem>
+<TabItem value="BigQuery" label="BigQuery">
+
+| Constraint type | Definable     | Enforced |
+|:-----------------|:-------------:|:---------------------:|
+| not_null        | ✅ | ✅  |
+| primary_key     | ✅ | ❌  |
+| foreign_key     | ✅ | ❌  |
+| unique          | ❌ | ❌  |
+| check           | ❌ | ❌  |
+
+</TabItem>
+<TabItem value="Postgres" label="Postgres">
+
+| Constraint type | Definable     | Enforced |
+|:----------------|:-------------:|:--------------------:|
+| not_null        | ✅  |	✅  |
+| primary_key     | ✅  |	✅  |
+| foreign_key     | ✅  |	✅  |
+| unique          | ✅  |	✅  |
+| check           | ✅  |	✅  |
+
+</TabItem>
+<TabItem value="Spark" label="Spark">
+
+Currently, `not_null` and `check` constraints are enforced only after a model is built. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the _model contract_ since they can't be enforced at build time. This table will change as the features evolve.
+
+| Constraint type | Definable    | Enforced |
+|:----------------|:------------:|:---------------------:|
+| not_null        |	✅  | ❌ |
+| primary_key     |	✅  | ❌ |
+| foreign_key     |	✅  | ❌ |
+| unique          |	✅  | ❌ |
+| check           |	✅  | ❌ |
+
+</TabItem>
+<TabItem value="Databricks" label="Databricks">
+
+Currently, `not_null` and `check` constraints are enforced only after a model is built. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the _model contract_ since they can't be enforced at build time. This table will change as the features evolve.
+
+| Constraint type | Definable     | Enforced |
+|:----------------|:-------------:|:---------------------:|
+| not_null        |	✅  | ❌ |
+| primary_key     | ✅  | ❌ |
+| foreign_key     |	✅  | ❌ |
+| unique          |	✅  | ❌ |
+| check           |	✅  | ❌ |
+
+</TabItem>
+</Tabs>
+
+
 ## FAQs
 
 ### Which models should have contracts?
@@ -98,17 +193,30 @@ Any model meeting the criteria described above _can_ define a contract. We recom
 
 A model's contract defines the **shape** of the returned dataset. If the model's logic or input data doesn't conform to that shape, the model does not build.
 
-[Tests](docs/build/tests) are a more flexible mechanism for validating the content of your model _after_ it's built. So long as you can write the query, you can run the test. Tests are more configurable, such as with [custom severity thresholds](/reference/resource-configs/severity). They are easier to debug after finding failures, because you can query the already-built model, or [store the failing records in the data warehouse](/reference/resource-configs/store_failures).
+[Data Tests](/docs/build/data-tests) are a more flexible mechanism for validating the content of your model _after_ it's built. So long as you can write the query, you can run the data test. Data tests are more configurable, such as with [custom severity thresholds](/reference/resource-configs/severity). They are easier to debug after finding failures, because you can query the already-built model, or [store the failing records in the data warehouse](/reference/resource-configs/store_failures).
 
-In some cases, you can replace a test with its equivalent constraint. This has the advantage of guaranteeing the validation at build time, and it probably requires less compute (cost) in your data platform. The prerequisites for replacing a test with a constraint are:
+In some cases, you can replace a data test with its equivalent constraint. This has the advantage of guaranteeing the validation at build time, and it probably requires less compute (cost) in your data platform. The prerequisites for replacing a data test with a constraint are:
 - Making sure that your data platform can support and enforce the constraint that you need. Most platforms only enforce `not_null`.
 - Materializing your model as `table` or `incremental` (**not** `view` or `ephemeral`).
 - Defining a full contract for this model by specifying the `name` and `data_type` of each column.
 
 **Why aren't tests part of the contract?** In a parallel for software APIs, the structure of the API response is the contract. Quality and reliability ("uptime") are also very important attributes of an API's quality, but they are not part of the contract per se. When the contract changes in a backwards-incompatible way, it is a breaking change that requires a bump in major version.
 
-### Can I define a "partial" contract?
+### Do I need to define every column for a contract?
 
 Currently, dbt contracts apply to **all** columns defined in a model, and they require declaring explicit expectations about **all** of those columns. The explicit declaration of a contract is not an accident—it's very much the intent of this feature.
 
-We are investigating the feasibility of supporting "inferred" or "partial" contracts in the future. This would enable you to define constraints and strict data typing for a subset of columns, while still detecting breaking changes on other columns by comparing against the same model in production. If you're interested, please upvote or comment on [dbt-core#7432](https://github.com/dbt-labs/dbt-core/issues/7432).
+At the same time, for models with many columns, we understand that this can mean a _lot_ of yaml. We are investigating the feasibility of supporting "inferred" contracts. This would enable you to define constraints and strict data typing for a subset of columns, while still detecting breaking changes on other columns by comparing against the same model in production. This isn't the same as a "partial" contract, because all columns in the model are still checked at runtime, and matched up with what's defined _explicitly_ in your yaml contract or _implicitly_ with the comparison state. If you're interested in "inferred" contract, please upvote or comment on [dbt-core#7432](https://github.com/dbt-labs/dbt-core/issues/7432).
+
+
+### How are breaking changes handled?
+
+When comparing to a previous project state, dbt will look for breaking changes that could impact downstream consumers. If breaking changes are detected, dbt will present a contract error. 
+
+Breaking changes include:
+- Removing an existing column
+- Changing the `data_type` of an existing column
+- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher)
+
+More details are available in the [contract reference](/reference/resource-configs/contract#detecting-breaking-changes).
+

@@ -36,11 +36,7 @@ dbt run --full-refresh
 
 </File>
 
-<VersionBlock firstVersion="1.3">
-
 You can also supply the flag by its short name: `dbt run -f`.
-
-</VersionBlock>
 
 In the dbt compilation context, this flag will be available as [flags.FULL_REFRESH](/reference/dbt-jinja-functions/flags). Further, the `is_incremental()` macro will return `false` for *all* models in response when the `--full-refresh` flag is specified.
 
@@ -71,32 +67,20 @@ For more information on running parents or children of specific models, see the 
 
 ## Treat warnings as errors
 
-<Changelog>
-
-- Moved to [global configs](/reference/global-configs) in v1.0
-
-</Changelog>
-
-See [global configs](/reference/global-configs#failing-fast)
+See [global configs](/reference/global-configs/warnings)
 
 ## Failing fast
 
-<Changelog>
-
-- The `--fail-fast` flag is new in dbt v0.17.0
-- Moved to [global configs](/reference/global-configs) in v1.0
-
-</Changelog>
-
-See [global configs](/reference/global-configs#failing-fast)
+See [global configs](/reference/global-configs/failing-fast)
 
 ## Enable or Disable Colorized Logs
 
-<Changelog>
+See [global configs](/reference/global-configs/print-output#print-color)
 
-- The `--use-colors` and `--no-use-colors` flags are new in dbt v0.18.0
-- Moved to [global configs](/reference/global-configs) in v1.0
+<VersionBlock firstVersion="1.8">
 
-</Changelog>
+## The `--empty` flag
 
-See [global configs](/reference/global-configs#use-colors)
+The `run` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+
+</VersionBlock>

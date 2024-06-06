@@ -7,7 +7,7 @@ id: "seeds"
 ## Related reference docs
 * [Seed configurations](/reference/seed-configs)
 * [Seed properties](/reference/seed-properties)
-* [`seed` command](/docs/build/seeds)
+* [`seed` command](/reference/commands/seed)
 
 ## Overview
 Seeds are CSV files in your dbt project (typically in your `seeds` directory), that dbt can load into your <Term id="data-warehouse" /> using the `dbt seed` command.
@@ -80,12 +80,12 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 You can document and test seeds in YAML by declaring properties — check out the docs on [seed properties](/reference/seed-properties) for more information.
 
 ## FAQs
-<FAQ src="Seeds/load-raw-data-with-seed" />
-<FAQ src="Tests/configurable-data-path" />
-<FAQ src="Seeds/full-refresh-seed" />
-<FAQ src="Tests/testing-seeds" />
-<FAQ src="Seeds/seed-datatypes" />
-<FAQ src="Runs/run-downstream-of-seed" />
-<FAQ src="Seeds/leading-zeros-in-seed" />
-<FAQ src="Seeds/build-one-seed" />
-<FAQ src="Seeds/seed-hooks" />
+<FAQ path="Seeds/load-raw-data-with-seed" />
+<FAQ path="Seeds/configurable-data-path" /> 
+<FAQ path="Seeds/full-refresh-seed" />
+<FAQ path="Tests/testing-seeds" />
+<FAQ path="Seeds/seed-datatypes" />
+<FAQ path="Runs/run-downstream-of-seed" />
+<FAQ path="Seeds/leading-zeros-in-seed" />
+<FAQ path="Seeds/build-one-seed" />
+<FAQ path="Seeds/seed-hooks" />

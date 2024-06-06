@@ -51,7 +51,7 @@ In the days before testing your data was commonplace, you often found out that y
 
 ## How to test primary keys with dbt
 
-Today, you can add two simple [dbt tests](/docs/build/tests) onto your primary keys and feel secure that you are going to catch the vast majority of problems in your data.
+Today, you can add two simple [dbt tests](/docs/build/data-tests) onto your primary keys and feel secure that you are going to catch the vast majority of problems in your data.
 
 Not surprisingly, these two tests correspond to the two most common errors found on your primary keys, and are usually the first tests that teams testing data with dbt implement:
 
@@ -140,4 +140,4 @@ You can query out primary key columns from the `pg_index` and `pg_attribute` adm
 
 ## Have you started testing primary keys yet?
 
-If you’re looking for a deeper dive on testing primary keys, definitely check out the [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals), which includes a full section with examples + practice on data testing in dbt.
+If you’re looking for a deeper dive on testing primary keys, definitely check out the [dbt Fundamentals course](https://learn.getdbt.com/courses/dbt-fundamentals), which includes a full section with examples + practice on data testing in dbt.

@@ -5,7 +5,6 @@ slug: deprecating-dbt-metrics
 
 authors: [callum_mccann]
 
-tags: [dbt product updates]
 hide_table_of_contents: false
 
 date: 2023-04-26

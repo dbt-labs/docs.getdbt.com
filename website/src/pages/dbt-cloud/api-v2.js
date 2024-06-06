@@ -1,32 +1,22 @@
-import React from 'react';
-import Layout from '@theme/Layout';
+import React, { Suspense } from "react";
+import Layout from "@theme/Layout";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
-import { RedocStandalone } from 'redoc';
+const LazyStoplight = React.lazy(() => import("../../components/stoplight"));
+const Fallback = (
+  <div style={{ minHeight: "calc(100vh - var(--ifm-navbar-height))" }} />
+);
 
 function dbtCloudAPI() {
-
   return (
     <Layout permalink="/">
-        <RedocStandalone
-            specUrl='https://raw.githubusercontent.com/fishtown-analytics/dbt-cloud-openapi-spec/master/openapi-v3.yaml'
-            options={{
-                requiredPropsFirst: true,
-                noAutoAuth: true,
-                hideDownloadButton: true,
-                onlyRequiredInSamples: true,
-                scrollYOffset: 60,
-                expandResponses: "200",
-                hideHostname: false,
-                pathInMiddlePanel: true,
-                theme: {
-                    colors: {
-                        primary: {
-                            main: "#033744"
-                        },
-                    },
-                },
-            }}
-        />
+      <BrowserOnly>
+        {() => (
+          <Suspense fallback={Fallback}>
+            <LazyStoplight version="v2" />
+          </Suspense>
+        )}
+      </BrowserOnly>
     </Layout>
   );
 }

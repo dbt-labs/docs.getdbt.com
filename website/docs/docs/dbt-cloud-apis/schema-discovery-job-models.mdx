@@ -1,0 +1,59 @@
+---
+title: "Models object schema"
+sidebar_label: "Models"
+id: "discovery-schema-job-models"
+---
+
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+
+The models object allows you to query information about all models in a given job.
+
+### Arguments
+
+When querying for `models`, the following arguments are available.
+
+<NodeArgsTable parent="JobNode" name="models" />
+
+Below we show some illustrative example queries and outline the schema of the models object.
+
+### Example queries
+The database, schema, and identifier arguments are all optional. This means that with this endpoint you can:
+
+- Find a specific model by providing `<database>.<schema>.<identifier>`
+- Find all of the models in a database and/or schema by providing `<database>` and/or `<schema>`
+
+#### Find models by their database, schema, and identifier
+The example query below finds a model by its unique database, schema, and identifier.
+
+```graphql
+{
+  job(id: 123) {
+    models(database:"analytics", schema: "analytics", identifier:"dim_customers") {
+      uniqueId
+    }
+  }
+}
+```
+
+#### Find models by their schema
+The example query below finds all models in this schema and their respective execution times.
+
+```graphql
+{
+  job(id: 123) {
+    models(schema: "analytics") {
+      uniqueId
+      executionTime
+    }
+  }
+}
+```
+
+
+### Fields
+The models object can access the _same fields_ as the [Model node](/docs/dbt-cloud-apis/discovery-schema-job-model). The difference is that the models object can output a list so instead of querying for fields for one specific model, you can query for those parameters for all models within a jobID, database, and so on.
+
+When querying for `models`, the following fields are available:
+
+<SchemaTable nodeName="ModelNode" />

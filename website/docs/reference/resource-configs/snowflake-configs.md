@@ -52,7 +52,7 @@ select * from ...
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
 dbt supports setting a default query tag for the duration of its Snowflake connections in
-[your profile](/reference/warehouse-setups/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
+[your profile](/docs/core/connect-data-platform/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
 a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
 <File name='dbt_project.yml'>
@@ -77,7 +77,7 @@ select ...
 
 ```
   
-In this example, you can set up a query tag to be applied to every query with the model's name. 
+In this example, you can set up a query tag to be applied to every query with the model's name.
   
 ```sql 
 
@@ -100,7 +100,7 @@ In this example, you can set up a query tag to be applied to every query with th
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
 
 Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`.
 
@@ -183,7 +183,7 @@ models:
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times. 
+The default warehouse that dbt uses can be configured in your [Profile](/docs/core/connect-data-platform/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times. 
 
 <Tabs
   defaultValue="dbt_project.yml"
@@ -299,13 +299,13 @@ models:
 
 </File>
 
-<VersionBlock firstVersion="1.3">
+## Temporary tables
 
-## Temporary Tables
+Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time. 
 
-Beginning in dbt version 1.3, incremental table merges for Snowflake utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
+However, some situations remain where a temporary table would achieve results faster or more safely. The `tmp_relation_type` configuration enables you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
 
-However, many situations remain where a temporary table would achieve results faster. dbt v1.4 adds the `tmp_relation_type` configuration to leverage temporary tables for incremental builds. This is defined as part of the model configuration.
+To guarantee accuracy, an incremental model using the `delete+insert` strategy with a `unique_key` defined requires a temporary table; trying to change this to a view will result in an error.
 
 Defined in the project YAML:
 
@@ -338,4 +338,152 @@ In the configuration format for the model SQL file:
 
 </File>
 
+<VersionBlock firstVersion="1.6">
+
+## Dynamic tables
+
+The Snowflake adapter supports [dynamic tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about).
+This materialization is specific to Snowflake, which means that any model configuration that
+would normally come along for the ride from `dbt-core` (e.g. as with a `view`) may not be available
+for dynamic tables. This gap will decrease in future patches and versions.
+While this materialization is specific to Snowflake, it very much follows the implementation
+of [materialized views](/docs/build/materializations#Materialized-View).
+In particular, dynamic tables have access to the `on_configuration_change` setting.
+Dynamic tables are supported with the following configuration parameters:
+
+| Parameter                                                                        | Type       | Required | Default | Change Monitoring Support |
+|----------------------------------------------------------------------------------|------------|----------|---------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply` | n/a                       |
+| [`target_lag`](#target-lag)                                                      | `<string>` | yes      |         | alter                     |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)                         | `<string>` | yes      |         | alter                     |
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): dynamic_table
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [target_lag](#target-lag): downstream | <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="dynamic_table",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+) }}
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
+
+### Target lag
+
+Snowflake allows two configuration scenarios for scheduling automatic refreshes: 
+- **Time-based** &mdash; Provide a value of the form `<int> { seconds | minutes | hours | days }`. For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
+- **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
+
+Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
+
+### Limitations
+
+As with materialized views on most data platforms, there are limitations associated with dynamic tables. Some worth noting include:
+
+- Dynamic table SQL has a [limited feature set](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#query-constructs-not-currently-supported-in-dynamic-tables).
+- Dynamic table SQL cannot be updated; the dynamic table must go through a `--full-refresh` (DROP/CREATE).
+- Dynamic tables cannot be downstream from: materialized views, external tables, streams.
+- Dynamic tables cannot reference a view that is downstream from another dynamic table.
+
+Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
+
+<VersionBlock firstVersion="1.6" lastVersion="1.6">
+
+#### Changing materialization to and from "dynamic_table"
+
+Version `1.6.x` does not support altering the materialization from a non-dynamic table be a dynamic table and vice versa.
+Re-running with the `--full-refresh` does not resolve this either.
+The workaround is manually dropping the existing model in the warehouse prior to calling `dbt run`.
+This only needs to be done once for the conversion.
+
+For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
+If the model config is updated to `materialized="dynamic_table"`, dbt will return an error.
+The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+
+<File name='my_model.sql'>
+
+```yaml
+
+{{ config(
+    materialized="table" # or any model type (e.g. view, incremental)
+) }}
+
+```
+
+</File>
+
 </VersionBlock>
+
+</VersionBlock>
+
+
+## Source freshness known limitation
+
+Snowflake calculates source freshness using information from the `LAST_ALTERED` column, meaning it relies on a field updated whenever any object undergoes modification, not only data updates. No action must be taken, but analytics teams should note this caveat. 
+
+Per the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/info-schema/tables#usage-notes): 
+
+  >The `LAST_ALTERED` column is updated when the following operations are performed on an object:
+  >- DDL operations.
+  >- DML operations (for tables only).
+  >- Background maintenance operations on metadata performed by Snowflake.

@@ -11,7 +11,7 @@ The grant resource configs enable you to apply permissions at build time to a sp
 
 dbt aims to use the most efficient approach when updating grants, which varies based on the adapter you're using, and whether dbt is replacing or updating an object that already exists. You can always check the debug logs for the full set of grant and revoke statements that dbt runs.
 
-dbt encourages you to use grants as resource configs whenever possible in Core v1.2 and higher. In versions prior to Core v1.2, you were limited to using hooks for grants. Occasionally, you still might need to write grants statements manually and run them using hooks. For example, hooks may be appropriate if you want to:
+dbt encourages you to use grants as resource configs whenever possible. In versions prior to Core v1.2, you were limited to using hooks for grants. Occasionally, you still might need to write grants statements manually and run them using hooks. For example, hooks may be appropriate if you want to:
 
 * Apply grants in a more complex or custom manner, beyond what the built-in grants capability can provide.
 * Apply grants on other database objects besides views and tables.
@@ -22,7 +22,7 @@ For more information on hooks, see [Hooks & operations](/docs/build/hooks-operat
 
 ## Definition
 
-You can use the `grants` field to set permissions or grants for a resource. When you run a model, seed or seed, or snapshot a snapshot, dbt will run `grant` and/or `revoke` statements to ensure that the permissions on the database object match the `grants` you have configured on the resource.
+You can use the `grants` field to set permissions or grants for a resource. When you `run` a model, `seed` data, or `snapshot` a dataset, dbt will run `grant` and/or `revoke` statements to ensure that the permissions on the database object match the `grants` you have configured on the resource.
 
 Like all configurations, `grants` will be included in dbt project metadata, including [the manifest artifact](/reference/artifacts/manifest-json).
 
@@ -121,7 +121,7 @@ For example:
 
 ```yml
 models:
-  +grants:
+  +grants:  # In this case the + is not optional, you must include it for your project to parse.
     select: ['user_a', 'user_b']
 ```
 
@@ -211,7 +211,7 @@ We encourage you to read Google's documentation for more context:
 - [Understanding GCP roles](https://cloud.google.com/iam/docs/understanding-roles)
 - [How to format grantees](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#user_list)
 
-<Snippet src="grants-vs-access-to" />
+<Snippet path="grants-vs-access-to" />
 
 ### BigQuery examples
 
@@ -243,6 +243,7 @@ models:
 - Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in the Databricks documentation:
   - [Enable table access control for your workspace](https://docs.databricks.com/administration-guide/access-control/table-acl.html)
   - [Enable table access control for a cluster](https://docs.databricks.com/security/access-control/table-acls/table-acl.html)
+- In order to grant `READ_METADATA` or `USAGE`, use [post-hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook)
 
 </div>
 

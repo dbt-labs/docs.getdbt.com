@@ -4,7 +4,6 @@ description: "Stay up-to-date with the latest features in dbt. Read about our Oc
 slug: dbt-product-update-2021-october
 authors: [lauren_craigie]
 
-tags: [dbt updates]
 hide_table_of_contents: false
 
 date: 2021-10-15

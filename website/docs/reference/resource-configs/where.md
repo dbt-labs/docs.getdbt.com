@@ -3,13 +3,6 @@ resource_types: [tests]
 datatype: string
 ---
 
-<Changelog>
-
-* `v0.20.0`: Introduced `where` config
-* `v0.21.0`: Introduced `config` property for tests. Reimplemented `where` config with `get_where_subquery` macro
-
-</Changelog>
-
 ### Definition
 
 Filter the resource being tested (model, source, seed, or snapshot).
@@ -129,7 +122,7 @@ tests:
 
 The rendering context for the `where` config is the same as for all configurations defined in `.yml` files. You have access to `{{ var() }}` and `{{ env_var() }}`, but you **do not** have access to custom macros for setting this config. If you do want to use custom macros to template out the `where` filter for certain tests, there is a workaround.
 
-As of v0.21, dbt defines a [`get_where_subquery` macro](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/materializations/tests/where_subquery.sql).
+As of v0.21, dbt defines a [`get_where_subquery` macro](https://github.com/dbt-labs/dbt-adapters/blob/main/dbt/include/global_project/macros/materializations/tests/where_subquery.sql).
 
 dbt replaces `{{ model }}` in generic test definitions with `{{ get_where_subquery(relation) }}`, where `relation` is a `ref()` or `source()` for the resource being tested. The default implementation of this macro returns:
 - `{{ relation }}` when the `where` config is not defined (`ref()` or `source()`)
@@ -154,7 +147,7 @@ models:
         tests:
           - unique:
               config:
-                where: "date_column > __last_three_days__"  # placeholder string for static config
+                where: "date_column > __three_days_ago__"  # placeholder string for static config
 ```
 
 </File>
@@ -163,13 +156,13 @@ models:
 
 ```sql
 {% macro get_where_subquery(relation) -%}
-    {% set where = config.get('where', '') %}
-    {% if "__three_days_ago__" in where %}
-        {# replace placeholder string with result of custom macro #}
-        {% set three_days_ago = dbt.dateadd('day', -3, current_timestamp()) %}
-        {% set where = where | replace("__three_days_ago__", three_days_ago) %}
-    {% endif %}
+    {% set where = config.get('where') %}
     {% if where %}
+        {% if "__three_days_ago__" in where %}
+            {# replace placeholder string with result of custom macro #}
+            {% set three_days_ago = dbt.dateadd('day', -3, current_timestamp()) %}
+            {% set where = where | replace("__three_days_ago__", three_days_ago) %}
+        {% endif %}
         {%- set filtered -%}
             (select * from {{ relation }} where {{ where }}) dbt_subquery
         {%- endset -%}

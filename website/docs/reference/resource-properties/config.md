@@ -3,6 +3,7 @@ title: "About config property"
 sidebar_label: "config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
+hide_table_of_contents: true
 ---
 
 
@@ -16,6 +17,8 @@ datatype: "{dictionary}"
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic models', value: 'semantic models', },
+    { label: 'Saved queries', value: 'saved queries', },
   ]
 }>
 
@@ -97,7 +100,7 @@ version: 2
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               config:
-                [<test_config>](/reference/test-configs): <config-value>
+                [<test_config>](/reference/data-test-configs): <config-value>
                 ...
 
 ```
@@ -108,13 +111,6 @@ version: 2
 
 <TabItem value="sources">
 
-<VersionBlock lastVersion="1.0">
-
-We have added support for the `config` property on sources in dbt Core v1.1
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
 
 <File name='models/<filename>.yml'>
 
@@ -124,28 +120,18 @@ version: 2
 sources:
   - name: <source_name>
     config:
-      [<source_config>](source-configs): <config_value>
+      [<source_config>](/reference/source-configs): <config_value>
     tables:
       - name: <table_name>
         config:
-          [<source_config>](source-configs): <config_value>
+          [<source_config>](/reference/source-configs): <config_value>
 ```
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="metrics">
-
-<VersionBlock lastVersion="1.2">
-
-We have added support for the `config` property on sources in dbt Core v1.3
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
 
 <File name='models/<filename>.yml'>
 
@@ -155,24 +141,16 @@ version: 2
 metrics:
   - name: <metric_name>
     config:
-      enabled: true | false
+      [enabled](/reference/resource-configs/enabled): true | false
+      [group](/reference/resource-configs/group): <string>
+      [meta](/reference/resource-configs/meta): {dictionary}
 ```
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="exposures">
-
-<VersionBlock lastVersion="1.2">
-
-Support for the `config` property on `metrics` was added in dbt Core v1.3
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
 
 <File name='models/<filename>.yml'>
 
@@ -182,7 +160,68 @@ version: 2
 exposures:
   - name: <exposure_name>
     config:
-      enabled: true | false
+      [enabled](/reference/resource-configs/enabled): true | false
+      [meta](/reference/resource-configs/meta): {dictionary}
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for the `config` property on `semantic_models` was added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+semantic_models:
+  - name: <semantic_model_name>
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [group](/reference/resource-configs/group): <string>
+      [meta](/reference/resource-configs/meta): {dictionary}
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="saved queries">
+
+<VersionBlock lastVersion="1.6">
+
+Support for the `config` property on `saved queries` was added in dbt Core v1.7.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+saved-queries:
+  - name: <saved-query-name>
+    config:
+      [cache](/docs/build/saved-queries#parameters): 
+        enabled: true | false
+      [enabled](/reference/resource-configs/enabled): true | false
+      [export_as](/docs/build/saved-queries#parameters): view | table 
+      [group](/reference/resource-configs/group): <string>
+      [meta](/reference/resource-configs/meta): {dictionary}
+      [schema](/reference/resource-configs/schema): <string>
 ```
 
 </File>
@@ -193,4 +232,5 @@ exposures:
 
 </Tabs>
 
+## Definition
 The `config` property allows you to configure resources at the same time you're defining properties in YAML files.

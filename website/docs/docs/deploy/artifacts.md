@@ -20,7 +20,10 @@ When you add a production job to a project, dbt Cloud updates the content and pr
 
 ### Documentation
 
-When set up, dbt Cloud updates the **Documentation** link in the upper left so it links to documentation for this job. This link always points to the latest version of the documentation for your account!
+When set up, dbt Cloud updates the **Documentation** link in the header tab so it links to documentation for this job. This link always directs you to the latest version of the documentation for your project. 
+
+Note that both the job's commands and the docs generate step (triggered by the **Generate docs on run** checkbox) must succeed during the job invocation for the project-level documentation to be populated or updated.
+
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/doc-menu.png" title="A link to the latest documentation for the selected job"/>
 

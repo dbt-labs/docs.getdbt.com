@@ -2,37 +2,45 @@ name: Add/Remove Labels
 
 on:
   pull_request_target:
-    types: [ opened, closed ]
+    types: [opened]
     
 jobs:
   add_new_contributor_label:
     if: github.event.action == 'opened'
-    permissions:
-      contents: read
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            const creator = context.payload.sender.login
+    - name: Add new contributor label
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.DOCS_SECRET }}
+        script: |
+            const creator = context.payload.sender.login;
             const opts = github.rest.issues.listForRepo.endpoint.merge({
               ...context.issue,
               creator,
-              state: 'all'
-            })
-            const issues = await github.paginate(opts)
+              state: 'all',
+            });
+            
+            const issues = await github.paginate(opts);
+            
+            let isAlreadyContributor = false;
+            
             for (const issue of issues) {
               if (issue.number === context.issue.number) {
-                continue
+                continue;
               }
-              if (issue.pull_request) {
-                return // creator is already a contributor
+              if (issue.pull_request && issue.user.login === creator) {
+                isAlreadyContributor = true;
+                break;
               }
             }
-            await github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['new contributor']
-            })
+            
+            if (!isAlreadyContributor) {
+              console.log('Adding label: new contributor');
+              await github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: ['new contributor'],
+              });
+            } 
