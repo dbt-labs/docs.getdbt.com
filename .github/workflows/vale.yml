@@ -1,0 +1,42 @@
+name: Vale Lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install Vale
+      run: |
+        curl -sSfL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
+        sudo mv vale /usr/local/bin/
+
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
+    - name: Get changed files
+      id: changed-files
+      run: |
+        echo "::set-output name=files::$(jq -R -s -c 'split("\n") | map(select(length > 0))' <(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- '*.md'))"
+
+    - name: Run Vale
+      run: |
+        CHANGED_FILES=$(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]')
+        for file in $CHANGED_FILES; do
+          vale $file
+        done
+      shell: bash
