@@ -43,10 +43,10 @@ There are trade-offs to using this architecture, especially for the hub team man
 
 If this sounds like your organization, it's very likely that dbt Mesh is a good fit for you. ✅
 
-### 3. Single Team Monolith
+## Single team monolith
 
-Other organizations operate on an even smaller scale. If your data org is a single small team that controls the end to end process of building and maintaining all data products at the organization, dbt Mesh may not be required. The complexity in projects comes from having a wide ariety of data sources and stakeholders, but given the team's size, operating on a single codebase may be the most efficient way to manage data products. Generally, if a team of this size and scope is looking to implement dbt Mesh, it's likely that they are looking for better interface design and/or performance improvements for certain parts of their dbt DAG, and not because they necessarily have an organizational pain point to solve.
+Some organizations operate on an even smaller scale. If your data org is a single small team that controls the end-to-end process of building and maintaining all data products at the organization, dbt Mesh may not be required. The complexity in projects comes from having a wide ariety of data sources and stakeholders. However, given the team's size, operating on a single codebase may be the most efficient way to manage data products. Generally, if a team of this size and scope is looking to implement dbt Mesh, it's likely that they are looking for better interface design and/or performance improvements for certain parts of their dbt DAG, and not because they necessarily have an organizational pain point to solve.
 
-**Is dbt Mesh a good fit? If so, why?**  Maybe! There may be reason to separate out parts of a large monolithic project into several to better orchestrate and manage the models. However, if the same people are managing each project, they may find that the overhead of managing multiple projects is not worth the benefits.
+_Is dbt Mesh a good fit?_  Maybe! There are reasons to separate out parts of a large monolithic project into several to better orchestrate and manage the models. However, if the same people are managing each project, they may find that the overhead of managing multiple projects is not worth the benefits.
 
 If this sounds like your organization, it's worth considering whether dbt Mesh is a good fit for you.
