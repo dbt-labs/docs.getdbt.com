@@ -28,7 +28,7 @@ The multi-project architecture helps organizations with mature, complex transfor
 
 - The **number of models** in your project is degrading performance and slowing down development.
 - Teams have developed **separate workflows** and need to decouple development from each other.
-- Teams are experiencing **communication challenges** and the  reliability of some of your data products has started to deteriorate.
+- Teams are experiencing **communication challenges**, and the reliability of some of your data products has started to deteriorate.
 - **Security and governance** requirements are increasing and would benefit from increased isolation.
 
 dbt Cloud is designed to coordinate the features above and simplify the complexity to solve for these problems.

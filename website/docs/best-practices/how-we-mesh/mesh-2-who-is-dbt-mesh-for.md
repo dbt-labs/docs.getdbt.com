@@ -4,26 +4,26 @@ description: Understanding if dbt Mesh is the right fit for your team
 hoverSnippet: Learn how to get started with dbt Mesh
 ---
 
-Before embarking on a dbt Mesh implementation, it's important to understand if dbt Mesh is the right fit for your team. Below, we outline three common organizational structures to help teams identify whether dbt Mesh might fit your organization's needs. 
+Before embarking on a dbt Mesh implementation, it's important to understand if dbt Mesh is the right fit for your team. Here, we outline three common organizational structures to help teams identify whether dbt Mesh might fit your organization's needs. 
 
-### 1. The Enterprise Data Mesh
+## The Enterprise Data Mesh
 
-Some data teams operation on a global scale -- the team by definition needs to manage, deploy and distribute data products across an incredibly large number of teams. Central IT may own some data products, or simply own the platform upon which data products are built. Often, these organziations have “Architects” who can advise line-of-business teams on their work, while keeping track of what’s happening globally (in terms both of tooling and the substance of work). This is a lot like how software organizations work, beyond a certain scale.
+Some data teams operate on a global scale. By definition, the team needs to manage, deploy, and distribute data products across a large number of teams. Central IT may own some data products or simply own the platform upon which data products are built. Often, these organizations have “architects” who can advise line-of-business teams on their work while keeping track of what’s happening globally (regarding tooling and the substance of work). This is a lot like how software organizations work beyond a certain scale.
 
-This is a true data mesh -- many teams publish many models for each others' consumption. The headcount ratio here is roughly ≥10:1 — for each member of the central platform team, there might be dozens of members of domain-aligned data teams.
+This is a true data mesh where many teams publish models for each others' consumption. The headcount ratio here is roughly ≥10:1. For each member of the central platform team, there might be dozens of members of domain-aligned data teams.
 
-**Is dbt Mesh a good fit? If so, why?** Absolutely! There simply is no other way to share data products at scale! One dbt project would not keep up with the global demands of an organization like this.
+Is dbt Mesh a good fit in this scenario? Absolutely! There is no other way to share data products at scale. One dbt project would not keep up with the global demands of an organization like this.
 
-**Tips and tricks**
+### Tips and tricks
 
 - **Managing shared macros**: Teams operating at this scale will benefit from a separate repository containing a dbt package of reusable utility macros that all other projects will install. This is different from public models, which provide data-as-a-service (a set of “API endpoints”) — this is distributed as a **library**. This package can also standardize imports of other third-party packages, as well as providing wrappers / shims for those macros. This package should have a dedicated team of maintainers — probably the central platform team, or a set of “superusers” from domain-aligned data modeling teams.
 
 **Adoption challenges**
 
-- Onboarding hundreds of people and dozens of projects is full of friction! The challenges of a scaled, global organization are not to be underestimated.
-- Bi-directional project dependencies. If projects are aligned to domain teams, they need the ability to have “chatty” APIs ; otherwise they need to split projects beyond the 1:1 mapping with team boundaries. *Stay tuned for more on this in the future.*
+- **Adoption challenge:** Onboarding hundreds of people and dozens of projects is full of friction! The challenges of a scaled, global organization are not to be underestimated.
+- **Adoption challenge:** Bi-directional project dependencies. If projects are aligned to domain teams, they need the ability to have “chatty” APIs; otherwise, they need to split projects beyond the 1:1 mapping with team boundaries. More information about this will be provided in the near future. 
 
-If your organization sounds like this, it's almost certain that dbt Mesh is the architecture you should pursue. ✅
+If this sounds like your organization, dbt Mesh is the architecture you should pursue. ✅
 
 ### 2. Hub and Spoke
 
