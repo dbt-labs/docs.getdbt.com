@@ -1,11 +1,11 @@
-extends: existence
+extends: substitution
 
-message: "Possible typo detected: '$0'. Did you mean '$1'?"
+message: "Possible typo detected: Consider using '%s' instead of '%s'"
 level: warning
-tokens:
-  - 'teh': 'the'
-  - 'recieve': 'receive'
-  - 'definately': 'definitely'
-  - 'seperate': 'separate'
-  - 'occured': 'occurred'
-  - 'untill': 'until'
+swap:
+  - teh: the
+  - recieve: receive
+  - definately: definitely
+  - seperate: separate
+  - occured: occurred
+  - untill: until
