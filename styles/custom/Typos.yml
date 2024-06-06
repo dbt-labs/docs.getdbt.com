@@ -1,11 +1,11 @@
 extends: existence
 
-message: "Possible typo detected: '$0'. Did you mean 'the', 'receive', etc.?"
+message: "Possible typo detected: '$0'. Did you mean '$1'?"
 level: warning
 tokens:
-  - 'teh'
-  - 'recieve'
-  - 'definately'
-  - 'seperate'
-  - 'occured'
-  - 'untill'
+  - 'teh': 'the'
+  - 'recieve': 'receive'
+  - 'definately': 'definitely'
+  - 'seperate': 'separate'
+  - 'occured': 'occurred'
+  - 'untill': 'until'
