@@ -145,8 +145,6 @@ To find the latest release for a package, navigate to the `Releases` tab in the 
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
 
-<VersionBlock firstVersion="1.4">
-
 ### Internally hosted tarball URL
 
 Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, dbt Core enables you to install packages from internally-hosted tarball URLs. 
@@ -159,8 +157,6 @@ packages:
 ```
 
 Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's created for the package source code to be installed within.
-
-</VersionBlock>
 
 ### Private packages
 
