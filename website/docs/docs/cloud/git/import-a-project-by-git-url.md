@@ -104,7 +104,7 @@ CodeCommit uses `master` as its default branch, and to initialize your project, 
 
 #### Step 5: Configure pull request (PR) template URLs (Optional)
 
-To prevent users directly merging code changes into the default branch, configure the PR Template URL in the **Repository details** page for your project. Once configured, dbt Cloud will prompt users to open a new PR after committing and synching code changes on the branch in the IDE, before merging any changes into the default branch.
+To prevent users from directly merging code changes into the default branch, configure the [PR Template URL](/docs/collaborate/git/pr-template) in the **Repository details** page for your project. Once configured, dbt Cloud will prompt users to open a new PR after committing and synching code changes on the branch in the IDE, before merging any changes into the default branch.
 
 - Go to **Account Settings** -> **Projects** -> Select the project.
 - Click the repository link under **Repository**.
