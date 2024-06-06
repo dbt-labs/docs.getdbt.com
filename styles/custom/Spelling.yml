@@ -1,6 +1,6 @@
 extends: spelling
 
-message: "Detected a spelling error: '$0'."
+message: "Detected non-American spelling. Please use American spelling."
 level: warning
 ignore:
   - dbt
