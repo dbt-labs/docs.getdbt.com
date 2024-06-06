@@ -125,10 +125,10 @@ Depending on the invocation context (`DBT_CLOUD_INVOCATION_CONTEXT`, see above),
   - `DBT_EXCLUDE_RESOURCE_TYPE` receives `unit_test`
   - `DBT_EXPORT_SAVED_QUERIES` receives `true`
 - When `ci` :
-  -`DBT_FAIL_FAST` receives `true`
-  -`DBT_FAVOR_STATE` receives `true`
-  -`DBT_WARN_ERROR_OPTIONS` receives `{"include": ["NoNodesForSelectionCriteria"]}`
-  
+  - `DBT_FAIL_FAST` receives `true`
+  - `DBT_FAVOR_STATE` receives `true`
+  - `DBT_WARN_ERROR_OPTIONS` receives `{"include": ["NoNodesForSelectionCriteria"]}`
+
 
 **Run details**
 
