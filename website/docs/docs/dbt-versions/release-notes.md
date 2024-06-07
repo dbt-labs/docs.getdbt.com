@@ -97,7 +97,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   The **Keep on latest version** setting is now Generally Available (previously Public Preview).
 
-  When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
+  When the new **Keep on latest version** setting is enabled, you get a versionless experience and always get the latest features and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
 
   To learn more about the new setting, refer to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) for details. 
 
