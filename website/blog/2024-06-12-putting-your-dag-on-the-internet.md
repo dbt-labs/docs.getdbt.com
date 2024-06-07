@@ -101,18 +101,7 @@ from raw,
 
 The result is a model that will keep track of dbt invocations, and the current UK carbon intensity levels.
 
-
-<!-- add image in https://github.com/dbt-labs/docs-internal/tree/external-access-snowpark-blog-with-eqt/website/static/img/blog file. then delete the two lines below and replace with this code to fetch the saved image: 
-
-<Lightbox src="img/blog/img_file-name.jpg" title="Add a caption here" />
-
-
-delete:
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-delete:
-![alt_text](images/image1.png "image_tooltip")
--->
+<Lightbox src="mg/blog/2024-06-12-putting-your-dag-on-the-internet/image1.png" title="Preview in dbt Cloud IDE of output" />
 
 ## Best practices
 
