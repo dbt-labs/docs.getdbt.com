@@ -101,7 +101,7 @@ from raw,
 
 The result is a model that will keep track of dbt invocations, and the current UK carbon intensity levels.
 
-<Lightbox src="mg/blog/2024-06-12-putting-your-dag-on-the-internet/image1.png" title="Preview in dbt Cloud IDE of output" />
+<Lightbox src="/img/blog/2024-06-12-putting-your-dag-on-the-internet/image1.png" title="Preview in dbt Cloud IDE of output" />
 
 ## Best practices
 
