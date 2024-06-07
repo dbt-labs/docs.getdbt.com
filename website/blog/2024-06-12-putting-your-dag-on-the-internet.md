@@ -1,20 +1,22 @@
-# **Putting Your DAG on the Internet!**
+---
+title: "Putting Your DAG on the internet!"
+description: "With dbt 1.8, dbt released support for Snowflake’s external access integrations ([link](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, a functionality that was required for dbt Cloud customer, EQT ([link](https://eqtgroup.com/)). Learn about why they needed it and how they helped build the feature and get it shipped!"
+slug: putting-your-dag-on-the-internet.md
 
+authors: [ernesto_ongaro, sebastian_stan, filip_bryén
+
+tags: [dbt]
+hide_table_of_contents: false
+
+date: 2024-06-07
+is_featured: true
+
+---
 
 ## New in dbt: allow Snowflake Python models to access the internet.
 
-**_Summary: With dbt 1.8, dbt released support for Snowflake’s external access integrations ([link](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, functionality that was required for dbt Cloud customer, EQT ([link](https://eqtgroup.com/)). Learn about why they needed it and how they helped build the feature and get it shipped!_**
 
-Authors: 
-
-Ernesto Ongaro, Senior Solutions Architect (dbt Labs)
-
-Sebastian Stan, Data Engineer (EQT)
-
-Filip Bryén, VP and Software Architect (EQT)
-
-**Why did EQT require this functionality?**
-
+## Why did EQT require this functionality?
 by Filip Bryén, VP and Software Architect (EQT) and Sebastian Stan, Data Engineer (EQT)
 
 _EQT AB is a global investment organization and as a long term customer of dbt Cloud, presented at dbt’s Coalesce 2020 ([link](https://www.getdbt.com/coalesce-2020/seven-use-cases-for-dbt)) and 2023 ([link](https://www.youtube.com/watch?v=-9hIUziITtU))._
@@ -29,7 +31,7 @@ These valuable datasets often come from third-party vendors who operate on a pay
 
 In response to this recurring need, we have partnered with Snowflake and dbt to introduce new functionality that facilitates communication with external endpoints and manages secrets within dbt. This new integration enables us to incorporate enrichment processes directly into our DAGs, similar to how current Python models are utilized within dbt environments. We’ve found that this augmented approach allows us to reduce complexity and enable external communications before materialization.
 
-**An Example with Carbon Intensity: How does it work?**
+## An example with Carbon Intensity: How does it work?
 
 In this section, we will demonstrate how to integrate an external API to retrieve the current Carbon Intensity of the UK power grid. The goal is to illustrate how the feature works, and perhaps explore how the scheduling of data transformations at different times can potentially reduce their carbon footprint, making them a greener choice. We will be leveraging the API from the [UK National Grid ESO](https://www.nationalgrideso.com/) to achieve this.
 
@@ -37,7 +39,7 @@ To start, we need to set up a network rule (Snowflake instructions [here](https:
 
 Next, in order to access network locations external to Snowflake an external access integration has to be defined first and then referenced within a dbt Python model (Snowflake overview [here](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)). This API is open, if it required an API key, you’d do something similar for secrets (Snowflake overview [here](https://docs.snowflake.com/en/user-guide/api-authentication)).
 
-For simplicity’s sake we will show how to create them using pre-hooks in a model configuration yml file (dbt pre-hooks overview [here](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook)):
+For simplicity’s sake, we will show how to create them using pre-hooks in a model configuration yml file (dbt pre-hooks overview [here](/reference/resource-configs/pre-hook-post-hook)):
 
 
 ```
@@ -106,7 +108,7 @@ The result is a model that will keep track of dbt invocations, and the current U
 ![alt_text](images/image1.png "image_tooltip")
 
 
-**Best Practices**
+## Best practices
 
 This is a very new area to Snowflake and dbt, something special about SQL and dbt is that it’s very resistant to external entropy, the second we rely on API calls, Python packages and other external dependencies, we open up to a lot more external entropy. APIs will change, break, and your models could fail.
 
@@ -116,4 +118,4 @@ Traditionally dbt is the T in ELT (dbt overview [here](https://docs.getdbt.com/t
 
 In order to get this functionality shipped quickly, EQT opened a pull request, Snowflake helped with some problems we had with CI and a member of dbt Labs helped write the tests and merge the code in!  
 
-Dbt now features this functionality in dbt 1.8+ or on “keep on latest version” option of dbt Cloud (dbt overview [here](https://docs.getdbt.com/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)). dbt staff and community members would love to chat more about it in #db-snowflake
+Dbt now features this functionality in dbt 1.8+ or on “keep on latest version” option of dbt Cloud (dbt overview [here](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)). dbt staff and community members would love to chat more about it in #db-snowflake
