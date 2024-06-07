@@ -1,7 +1,7 @@
 ---
 title: "Putting Your DAG on the internet!"
 description: "Use dbt and Snowflake's external access integrations to allow Snowflake Python models access the internet"
-slug: putting-your-dag-on-the-internet.md
+slug: putting-your-dag-on-the-internet
 
 authors: [ernesto_ongaro, sebastian_stan, filip_bryén
 
