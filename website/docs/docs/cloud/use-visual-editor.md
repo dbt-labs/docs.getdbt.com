@@ -1,8 +1,9 @@
 ---
-title: "Edit and create dbt modelsr" 
+title: "Edit and create dbt models" 
 id: use-visual-editor      
 sidebar_label: "Edit and create dbt models" 
 description: "Access and use the visual editor to create or edit dbt models through a visual, drag-and-drop experience inside of dbt Cloud." 
+pagination_prev: "docs/cloud/visual-editor-interface"
 ---
 
 # Edit and create dbt models <Lifecycle status='beta'/> 

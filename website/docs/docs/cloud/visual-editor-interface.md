@@ -3,6 +3,8 @@ title: "Navigate the interface"
 id: visual-editor-interface      
 sidebar_label: "Navigate the interface" 
 description: "The visual editor interface contains an operator toolbar, operators, and a canvas to help you create dbt models through a seamless drag-and-drop experience in dbt Cloud." 
+pagination_next: "docs/cloud/use-visual-editor"
+pagination_prev: "docs/cloud/visual-editor"
 
 ---
 
