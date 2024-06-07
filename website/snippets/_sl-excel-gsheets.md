@@ -1,4 +1,6 @@
 
+<!-- using html in this doc so that the props work/render correctly as it's not working/rendering correctly with plain markdown :( -->
+
 <p><span>When querying your data with {props.type}:</span></p>
 
 <ul>
