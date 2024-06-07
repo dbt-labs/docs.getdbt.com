@@ -9,13 +9,21 @@ meta:
 ---
 
 <p style={{ color: '#808080', fontSize: '1.1em' }}>
-dbt Cloud enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance. R
+dbt Cloud enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance.
 </p>
 
 Use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. Refer to [Documentation](/docs/collaborate/documentation) for more configuration details.
 
 - dbt Explorer is only available on [Team or Enterprise plans](https://www.getdbt.com/pricing/)
 - dbt Cloud developer plans can view project documentation using the legacy dbt Docs.
+
+<Expandable alt_header="What is dbt Docs and why is it legacy?">
+
+dbt Docs generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and metrics, and lineage  &mdash; and helps you understand the data in your warehouse. dbt Docs is currently available on developer plans.
+
+The default documentation experience in dbt Cloud is dbt Explorer, which provides a richer and more interactive experience for understanding your project's resources and lineage. This shift makes dbt Docs a legacy documentation feature in dbt Cloud, and it's accessible through dbt Explorer.
+
+</Expandable>
 
 ## Set up a documentation job
 
@@ -57,15 +65,15 @@ You configure project documentation to generate documentation when the job you s
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" width="55%" title="Configuring project documentation"/>
 6. Click **Save**.
 
-## Generate documentation
+## Documentation in development
 
-To generate documentation in the dbt Cloud IDE, run the `dbt docs generate` command in the Command Bar in the dbt Cloud IDE. This command will generate the documentation for your dbt project as it exists in development in your IDE session.
+To generate documentation in the dbt Cloud IDE, run the `dbt docs generate` command in the **Command Bar** in the dbt Cloud IDE. This command will generate the documentation for your dbt project as it exists in development in your IDE session.
 
-After generating your documentation, you can click **Explore** on the navigation. This will take you to dbt Explorer, where you can view your project's resources and their lineage.
+<span>After generating your documentation, you can click <b>{frontMatter.meta.customer}</b> on the navigation.</span> This will take you to <a href="https://docs.getdbt.com/docs/collaborate/explore-projects">dbt Explorer</a>, where you can view your project's resources and their lineage.
 
-<Lightbox src="/img/docs/dbt-cloud/access-explorer.gif" width="90%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navgiation." />
+<Lightbox src="/img/docs/dbt-cloud/explore-nav.jpg" width="90%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
 
-#### dbt Cloud developer plans
+**dbt Cloud developer plans**
 
 After running `dbt docs generate` in the dbt Cloud IDE, click the **Book** icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
 
@@ -78,6 +86,14 @@ The [generated metadata](/docs/collaborate/explore-projects#generate-metadata) a
 The dbt Cloud IDE makes it possible to view [documentation](/docs/collaborate/documentation)
 for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
-### View documentation for dbt Cloud developer plans
+<Lightbox src="/img/docs/dbt-cloud/access-explorer.gif" width="90%" title="Access dbt Explorer from dbt Cloud and view your project's resource." />
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/98c05c5-Screen_Shot_2019-02-08_at_9.18.22_PM.png" width="65%" title="Project documentation"/>
+### dbt Docs for developer plans
+
+<span>If you're on a dbt Cloud developer plan, you can view your project's documentation using the legacy dbt Docs. You can view documentation through the dbt Cloud IDE or using the <b>{frontMatter.meta.dev}</b> link:</span>
+
+- In the dbt Cloud IDE, click the **Book** icon above the file tree in the editor to see the latest version of your documentation rendered in a new browser window.
+- <span>In the dbt Cloud user interface, click <b>{frontMatter.meta.dev}</b> in the navigation to view your project's documentation.</span>
+- <span>If you've ran a successful job run, you can view the latest version of your project's documentation by clicking <b>{frontMatter.meta.dev}</b> in the navigation.</span>
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/98c05c5-Screen_Shot_2019-02-08_at_9.18.22_PM.png" width="55%" title="Project documentation"/>
