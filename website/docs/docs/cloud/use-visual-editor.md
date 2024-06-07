@@ -18,7 +18,7 @@ To join the private beta, [register your interest](https://docs.google.com/forms
 :::
 
 ## Prerequisites
-- You have an active [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account.
+- You have a [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account.
 - You have a [developer license](/docs/cloud/manage-access/seats-and-users) ??? WHO can access editor? dev license? read-only?
 - You have a dbt Cloud project created already with dev credentials set up.
 - Successful job run on Production or Staging [environment](/docs/dbt-cloud-environments)
