@@ -1,6 +1,6 @@
 ---
 title: "Putting Your DAG on the internet!"
-description: "With dbt 1.8, dbt released support for Snowflake’s external access integrations ([link](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, a functionality that was required for dbt Cloud customer, EQT ([link](https://eqtgroup.com/)). Learn about why they needed it and how they helped build the feature and get it shipped!"
+description: "Use dbt and Snowflake's external access integrations to allow Snowflake Python models access the internet"
 slug: putting-your-dag-on-the-internet.md
 
 authors: [ernesto_ongaro, sebastian_stan, filip_bryén
@@ -13,8 +13,9 @@ is_featured: true
 
 ---
 
-## New in dbt: allow Snowflake Python models to access the internet.
+## New in dbt: allow Snowflake Python models to access the internet
 
+With dbt 1.8, dbt released support for Snowflake’s external access integrations ([link](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, a functionality that was required for dbt Cloud customer, EQT ([link](https://eqtgroup.com/)). Learn about why they needed it and how they helped build the feature and get it shipped!
 
 ## Why did EQT require this functionality?
 by Filip Bryén, VP and Software Architect (EQT) and Sebastian Stan, Data Engineer (EQT)
@@ -52,7 +53,7 @@ models:
 ```
 
 
-Then we can simply use the new external_access_integrations configuration parameter to sue our network rule within a Python model (called external_access_sample.py):
+Then we can simply use the new external_access_integrations configuration parameter to use our network rule within a Python model (called external_access_sample.py):
 
 
 ```
