@@ -227,15 +227,15 @@ MetricFlow simplifies the SQL process via metric YAML configurations as seen bel
 
 ```yaml
 metrics:
-  - name: food_order_pct_of_order_total
-    description: Revenue from food orders in each store
+  - name: food_order_pct_of_order_total_returning
+    description: Revenue from food orders from returning customers
     label: "Food % of Order Total"
     type: ratio
     type_params:
       numerator: food_order
-      denominator: active_customers
+      denominator: order_total
     filter: |
-      {{ Dimension('customer__is_new_customer')}} = true
+      {{ Dimension('customer__is_new_customer') }} = false
 ```
 </TabItem>
 </Tabs>
