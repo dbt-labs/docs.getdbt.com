@@ -8,11 +8,14 @@ meta:
   customer: Explore 
 ---
 
-dbt Cloud enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance. Refer to [Documentation](/docs/collaborate/documentation) for more details.
+<p style={{ color: '#808080', fontSize: '1.1em' }}>
+dbt Cloud enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance. R
+</p>
 
-Use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. dbt Explorer is available to [Team or Enterprise plans](https://www.getdbt.com/pricing/).
+Use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state. Refer to [Documentation](/docs/collaborate/documentation) for more configuration details.
 
-dbt Cloud developer plans can view project documentation using the legacy dbt Docs.
+- dbt Explorer is only available on [Team or Enterprise plans](https://www.getdbt.com/pricing/)
+- dbt Cloud developer plans can view project documentation using the legacy dbt Docs.
 
 ## Set up a documentation job
 
