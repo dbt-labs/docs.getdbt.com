@@ -33,22 +33,22 @@ For more granular control, you can authenticate to the dbt Semantic Layer in dow
 - When you send a request through our APIs with a service token, it will resolve to the underlying credential that the token is mapped to and respect all physical access policies of the data used to build your semantic objects.
 - Note, [Environment variables](/docs/build/environment-variables) such as `{{env_var('DBT_WAREHOUSE')}`, aren't supported the dbt Semantic Layer yet. You must use the actual credentials
 
-#### Creating a credential
+### Create a credential
 
 1. Choose **Add credentials** in the **Project details** page.
 2. Fill in the credentials to your data platform. We recommend using “read-only” credentials. You can also use your deployment credentials, but only for testing purposes.
 3. Create and map a service token to the credential. Make sure to copy the service token before you exit.
 
-#### Mapping service tokens to existing credentials
+### Map service tokens to existing credentials
 
 1. Create a service token by going to **Account settings** and then select **Service tokens** page under **API tokens**.
 2. Map it to an existing credential. You’ll always be able to see which credentials tie to a service token on the **Detail** page.
 
-#### Adding credentials
+### Add credentials
 
 1. Return to the **Project details** configuration page and select **Add credential** to add a new credential.
 
-#### Deleting credentials
+### Delete credentials
 
 1. (Optional) Edit the configuration and select **Delete credential** to remove a credential. When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
 
