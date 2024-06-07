@@ -206,7 +206,7 @@ To use the [dbt Cloud's job scheduler](/docs/deploy/job-scheduler), set up one e
 
 ### Initial setup steps
 1. **dbt Core version** &mdash; In your environment settings, configure dbt Cloud with the same dbt Core version.
-   - Once your full migration is complete, we recommend upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the latest features and more. You only need to do this once.
+   - Once your full migration is complete, we recommend upgrading your environments to a versionless experience by opting to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the latest features and more. You only need to do this once.
 
 2. **Configure your jobs** &mdash; [Create jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs) for scheduled or event-driven dbt jobs. You can use cron execution, manual, pull requests, or trigger on the completion of another job.
    - Note that alongside [jobs in dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
