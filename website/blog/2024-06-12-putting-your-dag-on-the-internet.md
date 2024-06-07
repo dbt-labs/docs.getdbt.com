@@ -16,7 +16,6 @@ is_featured: true
 With dbt 1.8, dbt released support for Snowflake’s external access integrations ([link](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, a functionality that was required for dbt Cloud customer, EQT ([link](https://eqtgroup.com/)). Learn about why they needed it and how they helped build the feature and get it shipped!
 
 
-<!--truncate-->
 ## Why did EQT require this functionality?
 by Filip Bryén, VP and Software Architect (EQT) and Sebastian Stan, Data Engineer (EQT)
 
