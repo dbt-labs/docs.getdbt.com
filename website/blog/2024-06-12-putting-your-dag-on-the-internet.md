@@ -5,7 +5,7 @@ slug: putting-your-dag-on-the-internet.md
 
 authors: [ernesto_ongaro, sebastian_stan, filip_bryén
 
-tags: [dbt]
+tags: [dbt, llm, analytics craft, data ecosystem]
 hide_table_of_contents: false
 
 date: 2024-06-07
