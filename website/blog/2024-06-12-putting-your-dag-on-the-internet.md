@@ -113,7 +113,7 @@ The result is a model that will keep track of dbt invocations, and the current U
 
 This is a very new area to Snowflake and dbt, something special about SQL and dbt is that it’s very resistant to external entropy, the second we rely on API calls, Python packages and other external dependencies, we open up to a lot more external entropy. APIs will change, break, and your models could fail.
 
-Traditionally dbt is the T in ELT (dbt overview [here](https://docs.getdbt.com/terms/elt)), and this functionality unlocks brand new EL capabilities for which best practices do not yet exist. What’s clear is that EL workloads should be separated from T workloads, perhaps in a different modeling layer. Note also that unless using incremental models, your historical data can easily be deleted. Dbt has seen a lot of use cases for this, including this AI example as outlined in this external [engineering blog post](https://klimmy.hashnode.dev/enhancing-your-dbt-project-with-large-language-models). 
+Traditionally dbt is the T in ELT (dbt overview [here](https://docs.getdbt.com/terms/elt)), and this functionality unlocks brand new EL capabilities for which best practices do not yet exist. What’s clear is that EL workloads should be separated from T workloads, perhaps in a different modeling layer. Note also that unless using incremental models, your historical data can easily be deleted. dbt has seen a lot of use cases for this, including this AI example as outlined in this external [engineering blog post](https://klimmy.hashnode.dev/enhancing-your-dbt-project-with-large-language-models). 
 
 **A few words about the power of Commercial Open Source Software**
 
