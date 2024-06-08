@@ -17,6 +17,9 @@ The following fields are required when creating a Snowflake connection
 
 **Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of some [example permissions to configure Snowflake access](/reference/database-permissions/snowflake-permissions).
 
+
+## Authentication methods
+
 ### Username / Password
 
 **Available in:** Development environments, Deployment environments
@@ -70,6 +73,16 @@ more information on configuring a Snowflake OAuth connection in dbt Cloud, pleas
 ## Configuration
 
 To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
+
+### Vanity URL support
+
+To connect to Snowflake via a vanity URL (custom domain) different from the account locator, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) with the `host` parameter:
+
+```yaml
+host: https://vanity_url_to_snowflake.com
+```
+
+This configuration may conflict with Snowflake OAuth in conjunction with PrivateLink, when the clients can't reach Snowflake authentication servers from a networking standpoint. There are no workarounds at this point.
 
 ## Troubleshooting
 <!--might need to turn this into details toggle if more troubleshooting items arise -->
