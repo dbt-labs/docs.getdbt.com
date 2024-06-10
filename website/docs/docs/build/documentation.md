@@ -59,7 +59,7 @@ models:
 </File>
 
 ## Generating project documentation
-You can use [dbt Explorer](/docs/collaborate/explore-projectsh#generate-metadata) to view the latest metadata about your project (after a successful job run in the deployment environment), or generate a static docs site.
+You can use [dbt Explorer](/docs/collaborate/explore-projects#generate-metadata) to view the latest metadata about your project (after a successful job run in the deployment environment), or generate a static docs site.
 
 First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. To see the documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
 
