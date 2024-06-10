@@ -8,7 +8,7 @@ When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use th
 
 ## Create dbt Cloud Artifacts
 
-dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as production or staging in your dbt Cloud project.
+[dbt Explorer](/docs/collaborate/explore-projects) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as production or staging in your dbt Cloud project.
 
 dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project.
 
@@ -20,13 +20,13 @@ While running any job can produce artifacts, you should only associate one produ
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifact-updated.png" width="70%" title="Configuring Artifacts"/>
 
 If you don't see your job listed, you might need to edit the job and select **Run source freshness** and **Generate docs on run**.
-</Expandable>
-
-
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/edit-job-generate-artifacts.png" title="Editing the job to generate artifacts"/>
 
 When you add a production job to a project, dbt Cloud updates the content and provides links to the production documentation and source freshness artifacts it generated for that project. You can see these links by clicking **Deploy** in the upper left, selecting **Jobs**, and then selecting the production job. From the job page, you can select a specific run to see how artifacts were updated for that run only.
+
+
+</Expandable>
 
 ### Documentation
 
