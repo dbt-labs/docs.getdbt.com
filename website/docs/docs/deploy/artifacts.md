@@ -30,7 +30,7 @@ When you add a production job to a project, dbt Cloud updates the content and pr
 
 ### Documentation
 
-When set up, dbt Cloud updates the **Explore** link in the navigation so it links to documentation for this job. This link always directs you to [dbt Explorer](/docs/collaborate/explore-projects), where you can view your project's resources and lineage to gain a better understanding of its latest production state.
+Navigate to [dbt Explorer](/docs/collaborate/explore-projects) through the **Explore** link to view your project's resources and lineage to gain a better understanding of its latest production state. 
 
 Note that both the job's commands and the docs generate step ([triggered](/docs/collaborate/set-up-doc-job) by the **Generate docs on run** checkbox) must succeed during the job invocation for the project-level documentation to be populated or updated.
 
