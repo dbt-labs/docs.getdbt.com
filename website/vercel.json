@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/collaborate/build-and-view-your-docs",
+      "destination":"/docs/collaborate/explore-projects",
+      "permanent": true      
+    },
+    {
       "source": "/docs/use-dbt-semantic-layer/tableau",
       "destination": "/docs/cloud-integrations/semantic-layer/tableau",
       "permanent": true

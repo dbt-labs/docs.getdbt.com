@@ -468,10 +468,11 @@ const sidebarSettings = {
         "docs/collaborate/collaborate-with-others",
         {
           type: "category",
-          label: "Explore dbt projects",
+          label: "Navigate dbt Explorer",
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
+            "docs/collaborate/set-up-doc-job",
             "docs/collaborate/column-level-lineage",
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
@@ -493,11 +494,11 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Document your dbt projects",
+          label: "Document dbt projects",
           link: { type: "doc", id: "docs/collaborate/documentation" },
           items: [
             "docs/collaborate/documentation",
-            "docs/collaborate/build-and-view-your-docs",
+            "docs/collaborate/legacy-dbt-docs",
           ],
         },
         {
