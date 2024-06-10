@@ -126,7 +126,7 @@ To verify the app installed successfully, select any of the following from the s
 
 - **Explore** &mdash; Launch dbt Explorer and make sure you can access your dbt project information.
 - **Jobs** &mdash; Review the run history of the dbt jobs. 
-- **Ask dbt** &mdash; Click on any of the suggested prompts to ask the chatbot a question. Depending on the number of metrics that's defined for the dbt project, it can take several minutes to load **Ask dbt** the first time because dbt is building the RAG. Subsequent launches will load faster.
+- **Ask dbt** &mdash; Click on any of the suggested prompts to ask the chatbot a question. Depending on the number of metrics that's defined for the dbt project, it can take several minutes to load **Ask dbt** the first time because dbt is building the Retrieval Augmented Generation (RAG). Subsequent launches will load faster.
 
 
 The following is an example of the **Ask dbt** chatbot with the suggested prompts near the top: 
