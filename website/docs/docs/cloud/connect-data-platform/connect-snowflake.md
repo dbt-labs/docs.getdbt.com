@@ -82,7 +82,7 @@ To connect to Snowflake via a vanity URL (custom domain) different from the acco
 host: https://vanity_url_to_snowflake.com
 ```
 
-This configuration may conflict with Snowflake OAuth in conjunction with PrivateLink, when the clients can't reach Snowflake authentication servers from a networking standpoint. There are no workarounds at this point.
+This configuration may conflict with Snowflake OAuth in conjunction with PrivateLink, when the clients can't reach Snowflake authentication servers from a networking standpoint. Reach support to find a workaround with this architecture.
 
 ## Troubleshooting
 <!--might need to turn this into details toggle if more troubleshooting items arise -->
