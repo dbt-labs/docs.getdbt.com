@@ -6,16 +6,14 @@ hoverSnippet: Learn how to get started with dbt Mesh
 
 ### Where should your mesh journey start?
 
-Moving to a dbt Mesh represents a meaningful change in development and deployment architecture. We’ve seen migrations fail for two reasons: 
+Moving to a dbt Mesh represents a meaningful change in development and deployment architecture. Before any sufficiently complex software refactor or migration, it's important to ask, 'Why might this not work?' The two most common reasons we've seen stem from
 
 1. Lack of buy-in that a dbt Mesh is the right long-term architecture
 2. Lack of alignment on a well-scoped starting point
 
-Provided you're not experiencing those blockers, you’re ready to start your migration.
+Creating alignment on your architecture and starting point are major steps in ensuring a successful migration. Deciding on the right starting point will look different for every organization, but there are some heuristics that can help you decide where to start. In all likelihood, your organization already has logical components, and you may already be grouping, building, and deploying your project according to these interfaces.The goal is to define and formalize these organizational interfaces and use these boundaries to split your project apart by domain.
 
-The migration should be organized and planned according to how your project(s) are being grouped, built, and deployed. The goal is to define and formalize your organizational interfaces and use the information to make your decision to split your project apart.
-
-This change is _primarily_ organizational. The most important component is the alignment of your teammates. 
+How do you find these organizational interfaces? Here are some steps to get you started:
 
 - **Talk to teams** about what sort of separation naturally exists right now.
   - Are there various domains people are focused on?

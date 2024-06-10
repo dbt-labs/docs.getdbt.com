@@ -10,7 +10,7 @@ Before embarking on a dbt Mesh implementation, it's important to understand if d
 
 Some data teams operate on a global scale. By definition, the team needs to manage, deploy, and distribute data products across a large number of teams. Central IT may own some data products or simply own the platform upon which data products are built. Often, these organizations have “architects” who can advise line-of-business teams on their work while keeping track of what’s happening globally (regarding tooling and the substance of work). This is a lot like how software organizations work beyond a certain scale.
 
-This is a true data mesh where many teams publish models for each others' consumption. The headcount ratio here is roughly ≥10:1. For each member of the central platform team, there might be dozens of members of domain-aligned data teams.
+The headcount ratio of platform team to domain teams in this scenario is roughly ≥10:1. For each member of the central platform team, there might be dozens of members of domain-aligned data teams.
 
 Is dbt Mesh a good fit in this scenario? Absolutely! There is no other way to share data products at scale. One dbt project would not keep up with the global demands of an organization like this.
 
@@ -20,8 +20,8 @@ Is dbt Mesh a good fit in this scenario? Absolutely! There is no other way to sh
 
 ### Adoption challenges
 
-- Onboarding hundreds of people and dozens of projects is full of friction! The challenges of a scaled, global organization are not to be underestimated.
-- Bi-directional project dependencies. If projects are aligned to domain teams, they need the ability to have “chatty” APIs; otherwise, they need to split projects beyond the 1:1 mapping with team boundaries. More information about this will be provided in the near future. 
+- Onboarding hundreds of people and dozens of projects is full of friction! The challenges of a scaled, global organization are not to be underestimated. To start the migration, prioritize teams that have strong dbt familiarity and fundamentals. dbt Mesh is an advancement of core dbt deployments, so these teams are likely to have a smoother transition. Additionally, prioritize teams that manage strategic data assets that need to be shared widely. This ensures that dbt Mesh will help your teams deliver concrete value quickly.
+- Bi-directional project dependencies -- currently, projects in dbt Mesh are treated like dbt resources in that they cannot depend on each other. In reality, domain teams likely need the ability to have “chatty” APIs; otherwise, they need to split projects beyond the 1:1 mapping with team boundaries. While this constraint exists today, we're working to remove this point of friction. More information about this will be provided in the near future!
 
 If this sounds like your organization, dbt Mesh is the architecture you should pursue. ✅
 
@@ -33,13 +33,13 @@ Is dbt Mesh a good fit in this scenario? Almost certainly! If your central data 
 
 ### Tips and tricks
 
-- **Data products by some, for all:** The spoke teams shouldn’t produce public models. By contrast, development in the hub team project should be slower, more careful, and focus on producing foundational public models shared across domains. We’d recommend giving hub team members access (at least read-only) to downstream projects, which will help with more granular impact analysis within dbt Explorer. If a public model isn’t used in any downstream project or a specific column in that model, the hub team can feel better about removing it. However, they should still utilize the dbt governance features like `deprecation_date` and `version` as appropriate to set expectations.
+- **Data products by some, for all:** The spoke teams shouldn’t produce public models. By contrast, development in the hub team project should be slower, more careful, and focus on producing foundational public models shared across domains. We’d recommend giving hub team members access (at least read-only) to downstream projects, which will help with more granular impact analysis within dbt Explorer. If a public model isn’t used in any downstream project or a specific column in that model, the hub team can feel better about removing it. However, they should still utilize the dbt governance features like `deprecation_date` and `version` as appropriate to set expectations. If there is a need for a public model in a spoke project to be shared across multiple projects, consider first whether it could or should be moved to the hub project.
 - **Sources:** Spokes should be allowed/encouraged to define and use _domain-specific_ data sources. The platform team should not need to worry about, say, `Thinkific` data when building core data marts, but the Training project may need to. _No two sources anywhere in a dbt mesh should point to the same relation object._ If a spoke feels like they need to use a source the hub already uses, the interfaces should change so that the spoke can get what they need from the platform project.
 - **Project quality:** More analyst-focused teams will have different skill levels & quality bars. Owning their data means they own the consequences as well. Rather than being accountable for the end-to-end delivery of data assets, the Hub team is an enablement team: their role is to provide guardrails and quality checks, but not to fix all the issues exactly to their liking (and thereby remain a bottleneck).
 
 ### Adoption challenges
 
-There are trade-offs to using this architecture, especially for the hub team managing and maintaining public models. This workflow has intentional friction to reduce the chances of unintentional model changes that break unspoken data contracts. These assurances may come with some sacrifices, such as faster onboarding or more flexible development workflows.
+There are trade-offs to using this architecture, especially for the hub team managing and maintaining public models. This workflow has intentional friction to reduce the chances of unintentional model changes that break unspoken data contracts. These assurances may come with some sacrifices, such as faster onboarding or more flexible development workflows. Compared to having a single project, where a select few are doing all the development work, this archiecture optimizes for slower development from a wider group of people.
 
 If this sounds like your organization, it's very likely that dbt Mesh is a good fit for you. ✅
 
