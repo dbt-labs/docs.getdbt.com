@@ -3,7 +3,7 @@ title: "Marts for the Semantic Layer"
 id: "5-semantic-layer-marts"
 ---
 
-The Semantic Layer alters some fundamental principles of how you organize your project. Using dbt without the Semantic Layer necessitates creating the most useful combinations of your building block components into wide, denormalized marts. On the other hand, the Semantic Layer leverages MetricFlow to denormalize every possible combination of components we've encoded dynamically. As such we're better served to bring more normalized models through from the logical layer into the Semantic Layer to maximize flexibility. This section will assume familiarity with the best practices laid out in the [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) guide, so check that out first for a more hands-on introduction to the Semantic Layer.
+The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) alters some fundamental principles of how you organize your project. Using dbt without the Semantic Layer necessitates creating the most useful combinations of your building block components into wide, denormalized marts. On the other hand, the Semantic Layer leverages MetricFlow to denormalize every possible combination of components we've encoded dynamically. As such we're better served to bring more normalized models through from the logical layer into the Semantic Layer to maximize flexibility. This section will assume familiarity with the best practices laid out in the [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) guide, so check that out first for a more hands-on introduction to the Semantic Layer.
 
 ## Semantic Layer: Files and folders
 
@@ -35,6 +35,40 @@ models
     ├── stg_supplies.sql
     └── stg_supplies.yml
 ```
+
+## Semantic Layer: Where and why?
+
+- 📂 **Directory structure**: Add your semantic models to `models/semantic_models` with directories corresponding to the models/marts files. This type of organization makes it easier to search and find what you can join. It also supports better maintenance and reduces repeated code.
+
+    <File name='models/marts/sem_orders.yml'>
+
+    ```yaml
+    semantic_models:
+      - name: orders
+        defaults:
+          agg_time_dimension: order_date
+        description: |
+          Order fact table. This table’s grain is one row per order.
+        model: ref('fct_orders')
+        entities:
+          - name: order_id
+            type: primary
+          - name: customer_id
+            type: foreign
+        dimensions:
+          - name: order_date
+            type: time
+            type_params:
+              time_granularity: day
+    ```
+    </File>
+
+## Naming convention
+
+- 🏷️ **Semantic model names**: Use the `sem_` prefix for semantic model names, such as `sem_cloud_user_account_activity`. This follows the same pattern as other naming conventions like `fct_` for fact tables and `dim_` for dimension tables.
+- 🧩 **Entity names**: Don't use prefixes in Entity within the semantic model. This keeps the names clear and focused on their specific purpose without unnecessary prefixes.
+
+This guidance helps you make sure your dbt project is organized, maintainable, and scalable, allowing you to take full advantage of the capabilities offered by the dbt Semantic Layer.
 
 ## When to make a mart
 
