@@ -65,7 +65,7 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     grant role cortex_user_role to user DEPLOYMENT_USER;
     ```
 
-    Make sure to replace `SNOWFLAKE.CORTEX_USER` and `SL_USER` with the appropriate strings for your environment.
+    Make sure to replace `SNOWFLAKE.CORTEX_USER`, `DEPLOYMENT_USER`, and `SL_USER` with the appropriate strings for your environment.
 
 1. Create a schema `dbt_sl_llm` in the deployment database. The deployment user must have the ability to read and write into this schema, whereas the SL user only needs read access. Open a Snowflake SQL worksheet and run these statements: 
 
@@ -75,7 +75,7 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     grant SELECT on schema dbt_sl_llm to role SL_USER;
     ```
 
-    Make sure to replace `YOUR_DEPLOYMENT_DATABASE` and `SL_USER` with the appropriate strings for your environment.
+    Make sure to replace `YOUR_DEPLOYMENT_DATABASE`, `DEPLOYMENT_USER`, and `SL_USER` with the appropriate strings for your environment.
 
 ## Configure dbt Cloud 
 Collect three pieces of information from dbt Cloud to set up the application. 
