@@ -59,18 +59,18 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
  
 ## Affected states by node type
 
-| Node      | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
-|-----------|------------------|----------------------|--------------------|-----------------------|----------------------|
-| Model     | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
-| Source    | Yes              | No                   | Yes                | Downstream            | Applied & definition |
-| Seed      | Yes              | Yes                  | Yes                | Downstream            | Applied & definition |
-| Snapshot  | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
-| Test      | Yes              | Yes                  | No                 | Upstream              | Applied & definition |
-| Exposure  | No               | No                   | No                 | Upstream              | Definition 	  |
-| Metric    | No               | No                   | No                 | Upstream & downstream | Definition           |
-| Semantic model | No          | No                   | No                 | Upstream & downstream | Definition           |
-| Group     | No               | No                   | No                 | Downstream            | Definition           |
-| Macro     | Yes              | No                   | No                 | N/A                   | Definition           |
+| Node                                          | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
+|-----------------------------------------------|------------------|----------------------|--------------------|-----------------------|----------------------|
+| [Model](/docs/build/models)                   | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
+| [Source](/docs/build/sources)                 | Yes              | No                   | Yes                | Downstream            | Applied & definition |
+| [Seed](/docs/build/seeds)                     | Yes              | Yes                  | Yes                | Downstream            | Applied & definition |
+| [Snapshot](/docs/build/snapshots)             | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
+| [Test](/docs/build/data-tests)                | Yes              | Yes                  | No                 | Upstream              | Applied & definition |
+| [Exposure](/docs/build/exposures)             | No               | No                   | No                 | Upstream              | Definition           |
+| [Metric](/docs/build/build-metrics-intro)     | No               | No                   | No                 | Upstream & downstream | Definition           |
+| [Semantic model](/docs/build/semantic-models) | No               | No                   | No                 | Upstream & downstream | Definition           |
+| [Group](/docs/build/groups)                   | No               | No                   | No                 | Downstream            | Definition           |
+| [Macro](/docs/build/jinja-macros)             | Yes              | No                   | No                 | N/A                   | Definition           |
 
 ## Caveats about state/metadata updates 
 
