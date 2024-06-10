@@ -52,7 +52,6 @@ models:
         - "create or replace external access integration test_external_access_integration allowed_network_rules = (test_network_rule) enabled = true;"
 ```
 
-
 Then we can simply use the new external_access_integrations configuration parameter to use our network rule within a Python model (called external_access_sample.py):
 
 
