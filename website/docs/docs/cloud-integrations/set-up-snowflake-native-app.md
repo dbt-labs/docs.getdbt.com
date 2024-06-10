@@ -71,7 +71,7 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
 
     ```sql
     create schema YOUR_DEPLOYMENT_DATABASE.dbt_sl_llm;
-    grant SELECT on schema dbt_sl_llm to role SL_USER;
+    grant select on schema dbt_sl_llm to role SL_USER;
     ```
 
     Make sure to replace `YOUR_DEPLOYMENT_DATABASE` and `SL_USER` with the appropriate strings for your environment.
