@@ -10,7 +10,7 @@ dbt Docs is a legacy feature that enables you to generate documentation for your
 
 The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/), which provides a richer and more interactive experience for understanding your project's resources and lineage. This shift makes dbt Docs a legacy documentation feature in dbt Cloud, and is accessible through dbt Explorer.
 
-This document guides you on how to use dbt Docs to generate a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and metrics, and lineage  &mdash; and helps you understand the data in your warehouse. dbt Docs is currently available on developer plans or dbt Core users.
+This document guides you on how to use dbt Docs to generate a static website from your dbt project using the `dbt docs generate` command. It provides a point-in-time view of your project's resources, such as models, tests, and metrics, and lineage  &mdash; and helps you understand the data in your warehouse. dbt Docs is currently available on developer plans or dbt Core users.
 
 Refer to [Documentation](/docs/build/documentation) for more configuration details.
 
