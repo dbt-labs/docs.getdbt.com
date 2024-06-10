@@ -65,7 +65,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
 | [Source](/docs/build/sources)                 | Yes              | No                   | Yes                | Downstream            | Applied & definition |
 | [Seed](/docs/build/seeds)                     | Yes              | Yes                  | Yes                | Downstream            | Applied & definition |
 | [Snapshot](/docs/build/snapshots)             | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
-| [Test](/docs/build/data-tests)                | Yes              | Yes                  | No                 | Upstream              | Applied & definition |
+| [Data test](/docs/build/data-tests)           | Yes              | Yes                  | No                 | Upstream              | Applied & definition |
 | [Exposure](/docs/build/exposures)             | No               | No                   | No                 | Upstream              | Definition           |
 | [Metric](/docs/build/build-metrics-intro)     | No               | No                   | No                 | Upstream & downstream | Definition           |
 | [Semantic model](/docs/build/semantic-models) | No               | No                   | No                 | Upstream & downstream | Definition           |
