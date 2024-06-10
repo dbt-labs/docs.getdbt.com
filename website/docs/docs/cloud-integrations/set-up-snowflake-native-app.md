@@ -54,7 +54,7 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     1. Select **Deploy > Environments** from the top navigation bar. From the environments list, select the one that was identified in the **Semantic Layer Configuration Details** panel. 
     1. On the environment's page, click **Settings**. Scroll to the section **Deployment connection**. The listed database is the default for your environment and is also where you will create the schema. Save this information in a temporary location to use later on. 
 
-1. In Snowflake, verify that your SL user has been granted permission to use Snowflake Cortex. This user must have the ability to read and write into this schema to create the Retrieval Augmented Generation (RAG). For more information, refer to [Required Privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#required-privileges) in the Snowflake docs. 
+1. In Snowflake, verify that your SL and deployment user has been granted permission to use Snowflake Cortex. For more information, refer to [Required Privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#required-privileges) in the Snowflake docs. 
     
     By default, all users should have access to Snowflake Cortex. If this is disabled for you, open a Snowflake SQL worksheet and run these statements:
 
@@ -62,15 +62,17 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     create role cortex_user_role;
     grant database role SNOWFLAKE.CORTEX_USER to role cortex_user_role;
     grant role cortex_user_role to user SL_USER;
+    grant role cortex_user_role to user DEPLOYMENT_USER;
     ```
 
     Make sure to replace `SNOWFLAKE.CORTEX_USER` and `SL_USER` with the appropriate strings for your environment.
 
-1. Create a schema `dbt_sl_llm` in the deployment database. Open a Snowflake SQL worksheet and run these statements: 
+1. Create a schema `dbt_sl_llm` in the deployment database. The deployment user must have the ability to read and write into this schema, whereas the SL user only needs read access. Open a Snowflake SQL worksheet and run these statements: 
 
     ```sql
     create schema YOUR_DEPLOYMENT_DATABASE.dbt_sl_llm;
-    grant ownership on schema dbt_sl_llm to role SL_ROLE;
+    grant ownership on schema dbt_sl_llm to role DEPLOYMENT_USER;
+    grant SELECT on schema dbt_sl_llm to role SL_USER;
     ```
 
     Make sure to replace `YOUR_DEPLOYMENT_DATABASE` and `SL_USER` with the appropriate strings for your environment.
