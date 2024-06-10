@@ -59,13 +59,11 @@ models:
 </File>
 
 ## Generating project documentation
-You can generate a documentation site for your project (with or without descriptions) in development using your editor or with [dbt Explorer](/docs/collaborate/explore-projects) in dbt Cloud after a successful job run in the deployment environment.
+You can use [dbt Explorer](/docs/collaborate/explore-projectsh#generate-metadata) to view the latest metadata about your project (after a successful job run in the deployment environment), or generate a static docs site.
 
 First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. To see the documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
 
 If you're developing locally, run `dbt docs serve` to use these `.json` files to populate a local website.
-
-To set up a documentation job for dbt Explorer, refer to [Set up a documentation job](/docs/collaborate/set-up-doc-job).
 
 ## FAQs
 <FAQ path="Project/example-projects" alt_header="Are there any example dbt documentation sites?"/>

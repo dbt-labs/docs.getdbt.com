@@ -26,7 +26,7 @@ dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-a
 
 - dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
 - Note that CI jobs do not update dbt Explorer. This is because they don't reflect the production state and don't provide the necessary metadata updates.
-- To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. For details on how to set up a job, refer to [set up a documentation job](/docs/collaborate/set-up-doc-job).
+- To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. 
 - The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs. 
 
 | To view in Explorer | You must successfully run |
