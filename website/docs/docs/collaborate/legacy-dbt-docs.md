@@ -53,7 +53,6 @@ It includes map layers of your DAG, keyword search, interacts with the IDE, mode
 Once you set up a job to generate [documentation](/docs/build/documentation) for your project, you can view documentation in the following ways:
 
 - In the dbt Cloud IDE, click the icon above the file tree in the editor to see the latest version of your documentation rendered in a new browser window. View your documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
-- In the dbt Cloud user interface, click **Documentation** in the navigation to view your project's documentation. This link will always help you find the most recent version of your project's documentation in dbt Cloud.
 - If you've ran a successful job run, you can view the latest version of your project's documentation by clicking **Documentation** in the navigation.
   
   These generated docs always show the last fully successful run, which means that if you have any failed tasks, including tests, then you will not see changes to the docs by this run. If you don't see a fully successful run, then you won't see any changes to the documentation.
