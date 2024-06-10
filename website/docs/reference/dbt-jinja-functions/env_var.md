@@ -80,8 +80,6 @@ Any env var named with the prefix `DBT_ENV_CUSTOM_ENV_` will be included in two 
 - [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata): `metadata` -> `env`
 - [events and structured logs](/reference/events-logging#info-fields): `info` -> `extra`
 
-<VersionBlock firstVersion="1.3">
-
 A dictionary of these prefixed env vars will also be available in a `dbt_metadata_envs` context variable:
 ```sql
 -- {{ dbt_metadata_envs }}
@@ -97,8 +95,6 @@ Compiles to:
 
 select 1 as id
 ```
-
-</VersionBlock>
 
 ### dbt Cloud usage
 
