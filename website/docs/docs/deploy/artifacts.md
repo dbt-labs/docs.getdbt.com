@@ -10,9 +10,9 @@ When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use th
 
 [dbt Explorer](/docs/collaborate/explore-projects) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). dbt Explorer uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon).
 
-dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project.
+dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
 
-To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. For details on how to set up a job, refer to [set up a documentation job](/docs/collaborate/set-up-doc-job).
+To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. For details on how to set up a job, refer to [add a documentation step to a job](/docs/collaborate/set-up-doc-job).
 
 <Expandable alt_header="For legacy dbt Docs">
 
