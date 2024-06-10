@@ -22,9 +22,9 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 ## Generate metadata
 
-dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your dbt Cloud project. 
+dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your dbt Cloud project.
 
-- dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. 
+- dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
 - Note that CI jobs do not update dbt Explorer. This is because they don't reflect the production state and don't provide the necessary metadata updates.
 - To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. For details on how to set up a job, refer to [set up a documentation job](/docs/collaborate/set-up-doc-job).
 - The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs. 
