@@ -4,7 +4,7 @@ id: "artifacts"
 description: "Use artifacts to power your automated docs site and source freshness data." 
 ---
 
-When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of dbt Cloud, namely: [dbt Docs](/docs/collaborate/documentation) and [source freshness reporting](/docs/build/sources#snapshotting-source-data-freshness).
+When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of dbt Cloud, namely: [dbt Explorer](/docs/collaborate/explore-projects), [legacy dbt Docs](/docs/collaborate/legacy-dbt-docs), and [source freshness reporting](/docs/build/sources#snapshotting-source-data-freshness).
 
 ## Create dbt Cloud Artifacts
 
@@ -20,12 +20,9 @@ When you add a production job to a project, dbt Cloud updates the content and pr
 
 ### Documentation
 
-When set up, dbt Cloud updates the **Documentation** link in the header tab so it links to documentation for this job. This link always directs you to the latest version of the documentation for your project. 
+When set up, dbt Cloud updates the **Explore** link in the navigation so it links to documentation for this job. This link always directs you to [dbt Explorer](/docs/collaborate/explore-projects), where you can view your project's resources and lineage to gain a better understanding of its latest production state.
 
-Note that both the job's commands and the docs generate step (triggered by the **Generate docs on run** checkbox) must succeed during the job invocation for the project-level documentation to be populated or updated.
-
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/doc-menu.png" title="A link to the latest documentation for the selected job"/>
+Note that both the job's commands and the docs generate step ([triggered](/docs/collaborate/set-up-doc-job) by the **Generate docs on run** checkbox) must succeed during the job invocation for the project-level documentation to be populated or updated.
 
 ### Source Freshness
 

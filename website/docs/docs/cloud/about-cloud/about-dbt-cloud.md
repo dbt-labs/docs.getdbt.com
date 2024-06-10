@@ -55,7 +55,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
    <Card
     title="Host & share documentation"
     body="dbt Cloud hosts and authorizes access to dbt project documentation, allowing you to generate data documentation on a schedule for your project. Invite teammates to dbt Cloud to collaborate and share your project's documentation."
-    link="/docs/collaborate/build-and-view-your-docs"
+    link="/docs/build/documentation"
     icon="dbt-bit"/>
 
    <Card

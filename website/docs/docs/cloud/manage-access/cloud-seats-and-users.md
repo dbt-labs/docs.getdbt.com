@@ -24,7 +24,7 @@ The user's assigned license determines the specific capabilities they can access
 | API Access | ✅ | ❌ | ❌ |
 | Use [dbt Explorer](/docs/collaborate/explore-projects) | ✅  | ✅ | ✅  |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
-| Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
+| Use [Docs](/docs/build/documentation) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
 
 *Available on Enterprise and Team plans only and doesn't count toward seat usage. Please note, that IT seats are limited to 1 seat per Team or Enterprise account.

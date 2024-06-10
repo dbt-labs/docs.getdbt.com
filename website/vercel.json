@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/collaborate/documentation",
+      "destination":"/docs/build/documentation",
+      "permanent": true      
+    },
+    {
       "source": "/docs/collaborate/build-and-view-your-docs",
       "destination":"/docs/collaborate/explore-projects",
       "permanent": true      
@@ -1323,7 +1328,7 @@
     },
     {
       "source": "/docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation",
-      "destination": "/docs/collaborate/build-and-view-your-docs",
+      "destination": "/docs/collaborate/explore-projects",
       "permanent": true
     },
     {

@@ -301,6 +301,7 @@ const sidebarSettings = {
                 "docs/build/unit-tests",
               ],
             },
+            "docs/build/documentation",
             "docs/build/snapshots",
             "docs/build/seeds",
             "docs/build/jinja-macros",
@@ -494,15 +495,6 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Document dbt projects",
-          link: { type: "doc", id: "docs/collaborate/documentation" },
-          items: [
-            "docs/collaborate/documentation",
-            "docs/collaborate/legacy-dbt-docs",
-          ],
-        },
-        {
-          type: "category",
           label: "Model governance",
           collapsed: true,
           link: {
@@ -517,6 +509,7 @@ const sidebarSettings = {
             "docs/collaborate/govern/project-dependencies",
           ],
         },
+        "docs/collaborate/legacy-dbt-docs",
       ],
     },
     {

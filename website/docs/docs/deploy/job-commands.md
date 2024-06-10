@@ -33,9 +33,9 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 ### Checkbox commands
 
-For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
+For every job, you have the option to select the [Generate docs on run](/docs/collaborate/set-up-doc-job) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
-**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
+**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Build and view your docs](/docs/collaborate/set-up-doc-job) for more info.
 
 **Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
@@ -78,4 +78,4 @@ Job command failures can mean different things for different commands. Some comm
 - [dbt Command reference](/reference/dbt-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
-- [Build and view your docs](/docs/collaborate/build-and-view-your-docs)
+- [Build and view your docs](/docs/build/documentation)
