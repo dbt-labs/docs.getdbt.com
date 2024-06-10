@@ -70,7 +70,7 @@ username: alice
 password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'
 ```
 
-**Extended Attributes don't mask secret values**. We recommend avoiding setting secret values to prevent visibility in the text box and logs. A common workaround is to wrap extended attributes in [environment variables](/docs/build/environment_variables), like showed above for `password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`, that will get a value from the `DBT_ENV_SECRET_PASSWORD` environment variable at runtime.
+**Extended Attributes don't mask secret values**. We recommend avoiding setting secret values to prevent visibility in the text box and logs. A common workaround is to wrap extended attributes in [environment variables](/docs/build/environment-variables), like showed above for `password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`, that will get a value from the `DBT_ENV_SECRET_PASSWORD` environment variable at runtime.
 
 If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
 
