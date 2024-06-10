@@ -8,7 +8,19 @@ When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use th
 
 ## Create dbt Cloud Artifacts
 
-While running any job can produce artifacts, you should only associate one production job with a given project to produce the project's artifacts. You can designate this connection in the **Project details** page. To access this page, click the gear icon in the upper right, select **Account Settings**, select your project, and click **Edit** in the lower right. Under **Artifacts**, select the jobs you want to produce documentation and source freshness artifacts for.
+dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as production or staging in your dbt Cloud project.
+
+dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project.
+
+To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. For details on how to set up a job, refer to [set up a documentation job](/docs/collaborate/set-up-doc-job).
+
+<Expandable alt_header="For legacy dbt Docs">
+While running any job can produce artifacts, you should only associate one production job with a given project to produce the project's artifacts. You can designate this connection on the **Project details** page. To access this page, click the gear icon in the upper right, select **Account Settings**, select your project, and click **Edit** in the lower right. Under **Artifacts**, select the jobs you want to produce documentation and source freshness artifacts for.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/project-level-artifact-updated.png" width="70%" title="Configuring Artifacts"/>
+
+If you don't see your job listed, you might need to edit the job and select **Run source freshness** and **Generate docs on run**.
+</Expandable>
 
 
 
