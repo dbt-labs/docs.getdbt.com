@@ -11,7 +11,6 @@ When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use th
 While running any job can produce artifacts, you should only associate one production job with a given project to produce the project's artifacts. You can designate this connection in the **Project details** page. To access this page, click the gear icon in the upper right, select **Account Settings**, select your project, and click **Edit** in the lower right. Under **Artifacts**, select the jobs you want to produce documentation and source freshness artifacts for.
 
 
-If you don't see your job listed, you might need to edit the job and select **Run source freshness** and **Generate docs on run**.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/edit-job-generate-artifacts.png" title="Editing the job to generate artifacts"/>
 
