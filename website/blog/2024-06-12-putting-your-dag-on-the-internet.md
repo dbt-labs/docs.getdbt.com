@@ -14,13 +14,13 @@ is_featured: true
 
 **New in dbt: allow Snowflake Python models to access the internet**
 
-With dbt 1.8, dbt released support for Snowflake’s external access integrations ([link](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, a functionality that was required for dbt Cloud customer, EQT ([link](https://eqtgroup.com/)). Learn about why they needed it and how they helped build the feature and get it shipped!
+With dbt 1.8, dbt released support for Snowflake’s [external access integrations](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) further enabling the use of dbt + AI to enrich your data. This allows querying of external APIs within dbt Python models, a functionality that was required for dbt Cloud customer, [EQT AB](https://eqtgroup.com/). Learn about why they needed it and how they helped build the feature and get it shipped!
 
 <!--truncate-->
 ## Why did EQT require this functionality?
 by Filip Bryén, VP and Software Architect (EQT) and Sebastian Stan, Data Engineer (EQT)
 
-_EQT AB is a global investment organization and as a long term customer of dbt Cloud, presented at dbt’s Coalesce 2020 ([link](https://www.getdbt.com/coalesce-2020/seven-use-cases-for-dbt)) and 2023 ([link](https://www.youtube.com/watch?v=-9hIUziITtU))._
+_EQT AB is a global investment organization and as a long term customer of dbt Cloud, presented at dbt’s Coalesce [2020](https://www.getdbt.com/coalesce-2020/seven-use-cases-for-dbt) and [2023](https://www.youtube.com/watch?v=-9hIUziITtU)._
 
 _Motherbrain Labs is EQT’s bespoke AI team, primarily focused on accelerating our portfolio companies' roadmaps through hands-on data and AI work. Due to the high demand for our time, we are constantly exploring mechanisms for simplifying our processes and increasing our own throughput. Integration of workflow components directly in dbt has been a major efficiency gain and helped us rapidly deliver across a global portfolio._
 
