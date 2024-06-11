@@ -58,7 +58,7 @@ models:
 
 ## Generating project documentation
 
-The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). Use dbt Explorer to view your project's resources (such as models, tests, and metrics), its [metadata](/docs/collaborate/explore-projectss#generate-metadata), and their lineage to gain a better understanding of its latest production state.
+The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). Use dbt Explorer to view your project's resources (such as models, tests, and metrics), its [metadata](/docs/collaborate/explore-projects#generate-metadata), and their lineage to gain a better understanding of its latest production state.
 
 dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), a legacy feature that generates basic documentation, but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. dbt Docs is available to dbt Cloud developer plans or dbt Core users.
 
