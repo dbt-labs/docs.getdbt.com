@@ -476,7 +476,7 @@ const sidebarSettings = {
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
-            "docs/collaborate/interact-with-dbt-cloud",
+            "docs/collaborate/access-from-dbt-cloud",
             "docs/collaborate/dbt-explorer-faqs",
           ],
         },
