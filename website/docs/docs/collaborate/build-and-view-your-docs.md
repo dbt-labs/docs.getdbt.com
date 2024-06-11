@@ -28,7 +28,7 @@ To set up a job to generate docs:
 3. Under **Execution Settings**, select **Generate docs on run** and click **Save**.
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-job-execution-settings.png" width="65%" title="Setting up a job to generate documentation"/>
 
-*Note, for dbt Docs users you need to configure the job to generate docs when it runs, then link that job to your project. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.*
+*Note, for dbt Docs users you need to configure the job to generate docs when it runs, then manually link that job to your project. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.*
 
 You can also add the [`dbt docs generate` command](/reference/commands/cmd-docs) to the list of commands in the job run steps. However, you can expect different outcomes when adding the command to the run steps compared to configuring a job selecting the **Generate docs on run** checkbox. 
 
@@ -49,10 +49,6 @@ To create and schedule documentation-only jobs at the end of your production job
 
 dbt Docs, available on developer plans or dbt Core users, is a legacy feature that generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and metrics, and lineage  &mdash; and helps you understand the data in your warehouse.
 
-:::tip Use dbt Explorer for a richer documentation experience
-For a  richer and more interactive experience, try out [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). It includes map layers of your DAG, keyword search, interacts with the IDE, model performance, project recommendations, and more.
-:::
-
 ### Configure project documentation
 
 You configure project documentation to generate documentation when the job you set up in the previous section runs. In the project settings, specify the job that generates documentation artifacts for that project. Once you configure this setting, subsequent runs of the job will automatically include a step to generate documentation.
@@ -63,6 +59,10 @@ You configure project documentation to generate documentation when the job you s
 4. Click **Edit**.
 5. Under **Artifacts**, select the job that should generate docs when it runs and click **Save**.
    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/documentation-project-details.png" width="55%" title="Configuring project documentation"/>
+
+:::tip Use dbt Explorer for a richer documentation experience
+For a  richer and more interactive experience, try out [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). It includes map layers of your DAG, keyword search, interacts with the IDE, model performance, project recommendations, and more.
+:::
 
 ### Generating documentation
 
