@@ -15,7 +15,7 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 - You have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
-- You have at least one successful job run in the deployment environment. Refer to [set up a documentation job](/docs/collaborate/set-up-doc-job) for details on how set up a job run. Note that [CI jobs](/docs/deploy/ci-jobs) do not update dbt Explorer.
+- You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update dbt Explorer.
 - You are on the dbt Explorer page. To do this, select **Explore** from the navigation in dbt Cloud.
 
 <Lightbox src="/img/docs/dbt-cloud/explore-nav.jpg" width="95%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>

@@ -4,17 +4,17 @@ id: "artifacts"
 description: "Use artifacts to power your automated docs site and source freshness data." 
 ---
 
-When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of dbt Cloud, namely: [dbt Explorer](/docs/collaborate/explore-projects), [legacy dbt Docs](/docs/collaborate/legacy-dbt-docs), and [source freshness reporting](/docs/build/sources#snapshotting-source-data-freshness).
+When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use these artifacts, like `manifest.json`, `catalog.json`, and `sources.json` to power different aspects of dbt Cloud, namely: [dbt Explorer](/docs/collaborate/explore-projects), [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), and [source freshness reporting](/docs/build/sources#snapshotting-source-data-freshness).
 
 ## Create dbt Cloud Artifacts
 
-[dbt Explorer](/docs/collaborate/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon).
+[dbt Explorer](/docs/collaborate/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon). 
 
 dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
 
-To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment.
+To view a resource, its metadata, and what commands are needed, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
-<Expandable alt_header="For legacy dbt Docs only">
+<Expandable alt_header="For dbt Docs">
 
 The following steps are for legacy dbt Docs only. For the current documentation experience, see [dbt Explorer](/docs/collaborate/explore-projects).
 
@@ -32,13 +32,15 @@ When you add a production job to a project, dbt Cloud updates the content and pr
 
 ### Documentation
 
-Navigate to [dbt Explorer](/docs/collaborate/explore-projects) through the **Explore** link to view your project's resources and lineage to gain a better understanding of its latest production state. 
+Navigate to [dbt Explorer](/docs/collaborate/explore-projects) through the **Explore** link to view your project's resources and lineage to gain a better understanding of its latest production state.
 
 To view a resource, its metadata, and what commands are needed, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
-<Expandable alt_header="For legacy dbt Docs">
+Both the job's commands and the docs generate step (triggered by the **Generate docs on run** checkbox) must succeed during the job invocation to update the documentation.
 
-Both the job's commands and the docs generate step ([triggered](/docs/collaborate/set-up-doc-job) by the **Generate docs on run** checkbox) must succeed during the job invocation for the project-level documentation to be populated or updated.
+<Expandable alt_header="For dbt Docs">
+
+When set up, dbt Cloud updates the Documentation link in the header tab so it links to documentation for this job. This link always directs you to the latest version of the documentation for your project.
 
 </Expandable>
 
@@ -46,9 +48,9 @@ Both the job's commands and the docs generate step ([triggered](/docs/collaborat
 
 To view the latest source freshness result, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more detail. Then navigate to dbt Explorer through the **Explore** link.
 
-<Expandable alt_header="For legacy dbt Docs">
+<Expandable alt_header="For dbt Docs">
 
-As with Documentation, configuring a job for the Source Freshness artifact setting also updates the Data Sources link under **Deploy**. The new link points to the latest Source Freshness report for the selected job.
+Configuring a job for the Source Freshness artifact setting also updates the data source link under **Deploy**. The new link points to the latest Source Freshness report for the selected job.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/data-sources.png" title="A link to the latest source freshness snapshot for the selected job"/>
 

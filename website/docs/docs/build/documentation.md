@@ -21,7 +21,7 @@ dbt provides a way to generate documentation for your dbt project and render it 
 
 ## Overview
 
-The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/), which provides a richer and more interactive experience for understanding your project's resources and lineage. dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/legacy-dbt-docs), a legacy feature to generate documentation, and is accessible through dbt Explorer or the **Documentation** link.
+The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/), which provides a richer and more interactive experience for understanding your project's resources and lineage. dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), a legacy feature to generate documentation, and is accessible through dbt Explorer or the **Documentation** link.
 
  The documentation for your project includes:
 * **Information about your project**: including model code, a DAG of your project, any tests you've added to a column, and more.
@@ -126,7 +126,7 @@ In the resulting documentation, `'{{ doc("table_events") }}'` will be expanded t
 
 ## dbt Docs
 
-The following additional configurations apply to [dbt Docs](/docs/collaborate/legacy-dbt-docs), a legacy feature that enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance.
+The following additional configurations apply to [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), a legacy feature that enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance.
 
 ### Setting a custom overview
 

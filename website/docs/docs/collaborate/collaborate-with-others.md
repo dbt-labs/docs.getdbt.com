@@ -8,7 +8,7 @@ pagination_prev: null
 <div className="grid--2-col">
 
 <Card
-    title="Navigate with dbt Explorer"
+    title="Explore dbt projects"
     body="Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your dbt projects."
     link="/docs/collaborate/explore-projects"
     icon="dbt-bit"/>
@@ -24,15 +24,15 @@ pagination_prev: null
 <div className="grid--2-col">
 
 <Card
-    title="Model governance"
-    body="Learn about the dbt Cloud features related to model governance (like model access)."
-    link="/docs/collaborate/govern/about-model-governance"
+    title="Document your dbt projects"
+    body="Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
+    link="/docs/collaborate/build-and-view-your-docs"
     icon="dbt-bit"/>
 
 <Card
-    title="Legacy dbt Docs"
-    body="Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
-    link="/docs/collaborate/legacy-dbt-docs"
+    title="Model governance"
+    body="Learn about the dbt Cloud features related to model governance (like model access)."
+    link="/docs/collaborate/govern/about-model-governance"
     icon="dbt-bit"/>
 
 </div>

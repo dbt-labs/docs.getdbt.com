@@ -494,7 +494,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Document your dbt projects",
+          label: "Document your projects",
           link: { type: "doc", id: "docs/collaborate/build-and-view-your-docs" },
           items: [
             "docs/collaborate/build-and-view-your-docs",
