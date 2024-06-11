@@ -45,8 +45,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 The authentication methods that dbt Core supports are: 
 
-- `database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
-- `IAM` &mdash; IAM
+- `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
+- `IAM User` &mdash; IAM User authentication, via AWS Profile
 
 For dbt Cloud users, log in using the default **Database username** and **password**. This is necessary because dbt Cloud does not support `IAM` authentication.
 
@@ -55,8 +55,8 @@ Click on one of these authentication methods for further details on how to confi
 <Tabs
   defaultValue="database"
   values={[
-    {label: 'database', value: 'database'},
-    {label: 'IAM', value: 'IAM'},
+    {label: 'Database', value: 'database'},
+    {label: 'IAM User via AWS Profile', value: 'iam-user-profile'},
   ]}
 >
 
@@ -105,7 +105,7 @@ company-name:
 
 </TabItem>
 
-<TabItem value="IAM">
+<TabItem value="iam-user-profile">
 
 The following table lists the authentication parameters to use IAM authentication. 
   
@@ -125,9 +125,9 @@ please refer to the official AWS documentation on [Configuration and credential 
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate |
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
-| `cluster_id` | CLUSTER_ID| Required for IAM |
+| `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
 | `user`   | username | Account user to log into your cluster |
-| `region`  | us-east-1 | Required for IAM authentication | 
+| `region`  | us-east-1 | Region of your Redshift instance | 
 
 
 <br/>
