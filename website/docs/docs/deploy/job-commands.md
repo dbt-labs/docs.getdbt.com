@@ -78,4 +78,4 @@ Job command failures can mean different things for different commands. Some comm
 - [dbt Command reference](/reference/dbt-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
-- [Build and view your docs](/docs/build/documentation)
+- [Build and view your docs](/docs/collaborate/build-and-view-your-docs)

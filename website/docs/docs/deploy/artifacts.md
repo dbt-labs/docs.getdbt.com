@@ -8,7 +8,7 @@ When running dbt jobs, dbt Cloud generates and saves *artifacts*. You can use th
 
 ## Create dbt Cloud Artifacts
 
-[dbt Explorer](/docs/collaborate/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon). 
+[dbt Explorer](/docs/collaborate/explore-projects#generate-metadata) uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). It uses metadata from your staging and production [deployment environments](/docs/deploy/deploy-environments) (development environment metadata is coming soon).
 
 dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
 
