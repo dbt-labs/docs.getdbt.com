@@ -1,5 +1,5 @@
 ---
-title: "Access dbt Explorer from dbt Cloud"
+title: "Access dbt Explorer from dbt Cloud features"
 sidebar_label: "Interact from dbt Cloud"
 description: "Learn where and how to directly access and interact with dbt Explorer from dbt Cloud features and products."
 ---
