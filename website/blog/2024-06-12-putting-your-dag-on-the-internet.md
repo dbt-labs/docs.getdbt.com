@@ -20,7 +20,7 @@ With dbt 1.8, dbt released support for Snowflake’s [external access integratio
 ## Why did EQT require this functionality?
 by Filip Bryén, VP and Software Architect (EQT) and Sebastian Stan, Data Engineer (EQT)
 
-_EQT AB is a global investment organization and as a long term customer of dbt Cloud, presented at dbt’s Coalesce [2020](https://www.getdbt.com/coalesce-2020/seven-use-cases-for-dbt) and [2023](https://www.youtube.com/watch?v=-9hIUziITtU)._
+_EQT AB is a global investment organization and as a long-term customer of dbt Cloud, presented at dbt’s Coalesce [2020](https://www.getdbt.com/coalesce-2020/seven-use-cases-for-dbt) and [2023](https://www.youtube.com/watch?v=-9hIUziITtU)._
 
 _Motherbrain Labs is EQT’s bespoke AI team, primarily focused on accelerating our portfolio companies' roadmaps through hands-on data and AI work. Due to the high demand for our time, we are constantly exploring mechanisms for simplifying our processes and increasing our own throughput. Integration of workflow components directly in dbt has been a major efficiency gain and helped us rapidly deliver across a global portfolio._
 
