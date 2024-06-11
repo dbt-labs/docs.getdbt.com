@@ -5,7 +5,7 @@ description: "Learn where and how to directly access and interact with dbt Explo
 ---
 
 <p style={{ color: '#808080', fontSize: '1.1em' }}>
-Interact with dbt Explorer from other features and products inside dbt Cloud, ensuring you have a seamless experience navigating between resources and lineage in your project. This document guides you on how to access dbt Explorer from the dbt Cloud IDE, jobs, and other product areas.
+Access dbt Explorer from other features and products inside dbt Cloud, ensuring you have a seamless experience navigating between resources and lineage in your project. This document guides you on how to access dbt Explorer from the dbt Cloud IDE, jobs, and other product areas.
 </p>
 
 ### dbt Cloud IDE 
