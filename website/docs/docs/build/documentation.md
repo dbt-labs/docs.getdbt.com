@@ -130,7 +130,7 @@ models:
 In the resulting documentation, `'{{ doc("table_events") }}'` will be expanded to the markdown defined in the `table_events` docs block.
 
 
-### Setting a custom overview
+## Setting a custom overview
 *Currently available for the legacy dbt Docs only.*
 
 The "overview" shown in the legacy dbt Docs website can be overridden by supplying your own docs block called `__overview__`. By default, dbt supplies an overview with helpful information about the docs site itself. Depending on your needs, it may be a good idea to override this docs block with specific information about your company style guide, links to reports, or information about who to contact for help. To override the default overview, create a docs block that looks like this:
@@ -177,7 +177,7 @@ up to page views and sessions.
 
 </File>
 
-### Navigating the documentation site
+## Navigating the documentation site
 
 Use [dbt Explorer](/docs/collaborate/explore-projects) for a richer documentation experience and more interactive experience for understanding your project's resources and lineage. Available on [Team or Enterprise plans](https://www.getdbt.com/pricing/).
 
@@ -202,7 +202,7 @@ In this example, the `fct_subscription_transactions` model only has one direct p
 
 </Expandable>
 
-### Deploying the documentation site
+## Deploying the documentation site
 
 With dbt Cloud, use [dbt Explorer](/docs/collaborate/explore-projects) automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project &mdash; meaning it's always automatically updated after each job run.
 
