@@ -52,7 +52,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 - Hover over any item in the graph to display the resource’s name and type.
 - Zoom in and out on the graph by mouse-scrolling.
 - Grab and move the graph and the nodes.
-- Right click on a node (context menu) to:
+- Right-click on a node (context menu) to:
     - Refocus on the node, including its upstream and downstream nodes
     - Refocus on the node and its downstream nodes only
     - Refocus on the node and it upstream nodes only
@@ -252,6 +252,29 @@ dbt Explorer supports views for [staging deployment environments](/docs/deploy/d
 You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per dbt Cloud project as “production” or “staging," and ensure the proper metadata has been generated then you’ll be able to view it in Explorer. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
+
+## Interact with dbt Cloud features
+Interact with dbt Explorer from other features and products inside dbt Cloud, ensuring you 
+
+### dbt Cloud IDE 
+You can enhance your project navigation and editing experience by directly accessing resources from the dbt Cloud IDE to dbt Explorer for model, seed, or snapshot files. This workflow offers a seamless transition between the IDE and the Explorer, allowing you to quickly view and interact with your project's metadata and lineage.
+
+- **Access dbt Explorer from the IDE** &mdash; In your model, seed, or snapshot file, click the **View in Explorer** icon to the right of your file breadcrumb (under the file name tab). This opens the model, seed, or snapshot file in a new tab, allowing you to view resources/lineage directly in Explorer. 
+- **Use cases** &mdash; Navigate between viewing project metadata and making updates to your models or other resources without switching contexts.
+
+  ADD IMAGE 
+
+### Lineage tab in jobs
+The lineage tab in dbt Cloud jobs displays the lineage associated with the job run. Access dbt Explorer directly from this tab, allowing you to navigate between both product areas with ease.
+
+- **Access dbt Explorer from the lineage tab** &mdash; From a job, select the lineage tab. Double-click the node in the lineage to open a new tab and view its metadata directly in dbt Explorer.
+- **Use cases** &mdash; Understand dependencies/relationships of resources in your project.
+
+### Model timing tab in jobs
+The model timing tab in dbt Cloud jobs displays the composition, order, and time taken by each model in a job run. Access dbt Explorer directly from the modeling timing tab, helping you investigate resources and potentially make changes to improve their performance.
+
+- **Access dbt Explorer from the model timing tab** &mdash; From a job, select the model timing tab. Hover over a resource and click on **View on Explorer** to view the resource metadata directly in dbt Explorer. 
+- **Use cases** &mdash; Diagnose performance bottlenecks and understand dependencies/relationships of slow-running models in your project.
 
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 
