@@ -473,7 +473,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
-            "docs/collaborate/set-up-doc-job",
             "docs/collaborate/column-level-lineage",
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
@@ -495,6 +494,14 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "Document your dbt projects",
+          link: { type: "doc", id: "docs/collaborate/build-and-view-your-docs" },
+          items: [
+            "docs/collaborate/build-and-view-your-docs",
+          ],
+        },
+        {
+          type: "category",
           label: "Model governance",
           collapsed: true,
           link: {
@@ -509,7 +516,6 @@ const sidebarSettings = {
             "docs/collaborate/govern/project-dependencies",
           ],
         },
-        "docs/collaborate/legacy-dbt-docs",
       ],
     },
     {

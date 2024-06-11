@@ -124,7 +124,7 @@ models:
 
 In the resulting documentation, `'{{ doc("table_events") }}'` will be expanded to the markdown defined in the `table_events` docs block.
 
-## Legacy dbt Docs
+## dbt Docs
 
 The following additional configurations apply to [dbt Docs](/docs/collaborate/legacy-dbt-docs), a legacy feature that enables you to generate documentation for your project and data platform, rendering it as a website. The documentation is only updated with new information after a fully successful job run, ensuring accuracy and relevance.
 
