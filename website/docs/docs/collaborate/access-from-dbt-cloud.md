@@ -5,8 +5,10 @@ description: "Learn where and how to directly access and interact with dbt Explo
 ---
 
 <p style={{ color: '#808080', fontSize: '1.1em' }}>
-Access dbt Explorer from other features and products inside dbt Cloud, ensuring you have a seamless experience navigating between resources and lineage in your project. This document guides you on how to access dbt Explorer from the dbt Cloud IDE, jobs, and other product areas.
+Access dbt Explorer from other features and products inside dbt Cloud, ensuring you have a seamless experience navigating between resources and lineage in your project. 
 </p>
+
+This guide explains how to access dbt Explorer from various dbt Cloud features, including the dbt Cloud IDE, jobs, and other areas. While the primary way to access dbt Explorer is through the **Explore** link in the navigation, you can also access it from other dbt Cloud features.
 
 ### dbt Cloud IDE 
 You can enhance your project navigation and editing experience by directly accessing resources from the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to dbt Explorer for model, seed, or snapshot files. This workflow offers a seamless transition between the IDE and the Explorer, allowing you to quickly view and interact with your project's metadata and lineage.
