@@ -50,7 +50,8 @@ Use the API to find and understand dbt assets in integrated tools using informat
 
 Data producers must manage and organize data for stakeholders, while data consumers need to quickly and confidently analyze data on a large scale to make informed decisions that improve business outcomes and reduce organizational overhead. The API is useful for discovery data experiences in catalogs, analytics, apps, and machine learning (ML) tools. It can help you understand the origin and meaning of datasets for your analysis.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/dbt-dag.jpg" width="175%" title="Data lineage produced by dbt"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="75%" title="Data lineage produced by dbt" />
+
 </TabItem>
 
 <TabItem value="governance" label="Governance">
