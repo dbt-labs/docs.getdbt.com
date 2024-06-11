@@ -1,6 +1,6 @@
 ---
-title: "Discovery your projects with dbt Explorer"
-sidebar_label: "Discovery your projects with dbt Explorer"
+title: "Discover projects with dbt Explorer"
+sidebar_label: "Discover projects with dbt Explorer"
 description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
 pagination_next: "docs/collaborate/column-level-lineage"
 pagination_prev: null
