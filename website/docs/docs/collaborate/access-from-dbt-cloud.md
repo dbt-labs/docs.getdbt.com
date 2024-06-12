@@ -27,7 +27,7 @@ The **lineage tab** in dbt Cloud jobs displays the lineage associated with the [
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-lineage.gif" title="Access dbt Explorer from the lineage tab by double-clicking on the lineage node." />
 
 ### Model timing tab in jobs
-The [model timing tab](/docs/deploy/run-visibility#model-timing) in dbt Cloud jobs displays the composition, order, and time taken by each model in a job run. Access dbt Explorer directly from the modeling timing tab, helping you investigate resources and potentially make changes to improve their performance.
+The [model timing tab](/docs/deploy/run-visibility#model-timing) in dbt Cloud jobs displays the composition, order, and time taken by each model in a job run. Access dbt Explorer directly from the modeling timing tab, which helps you investigate resources and potentially make changes to improve their performance.
 
 - **Access dbt Explorer from the model timing tab** &mdash; From a job, select the model timing tab. Hover over a resource and click on **View on Explorer** to view the resource metadata directly in dbt Explorer. 
 - **Use cases** &mdash; Diagnose performance bottlenecks and understand dependencies/relationships of slow-running models in your project.
