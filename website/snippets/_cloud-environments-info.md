@@ -50,7 +50,7 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 ### Extended attributes
 
 :::note 
-Extended attributes are currently _not_ taken into consideration for SSH Tunneling.
+Extended attributes are are currently _not_ supported for SSH tunneling
 :::
 
 Extended attributes allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
