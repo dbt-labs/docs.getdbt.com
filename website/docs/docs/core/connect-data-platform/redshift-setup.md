@@ -67,7 +67,6 @@ The following table contains the parameters for the database (password-based) co
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `method` | database| Leave this parameter unconfigured, or set this to database |
-| `host` | hostname.region.redshift.amazonaws.com| Host of cluster |
 | `user`   | username | Account username to log into your cluster |
 | `password`  | password1 | Password for authentication  |
 
@@ -131,7 +130,6 @@ please refer to the official AWS documentation on [Configuration and credential 
 
 <br/>
 
-
 #### Example profiles.yml for IAM
 
 <File name='~/.dbt/profiles.yml'>
@@ -167,6 +165,10 @@ please refer to the official AWS documentation on [Configuration and credential 
 
 </File>
 
+#### Specifying an IAM Profile
+
+When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
+
 </TabItem>
 
 <TabItem value="iam-user-inline">
@@ -179,7 +181,7 @@ and [boto3
 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials)
 on generating user credentials with IAM Auth.
 
-On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below:
+On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below not supported via textbox:
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
@@ -214,10 +216,6 @@ secret_access_key: '{{ env_var(''DBT_ENV_SECRET_ACCESS_KEY'') }}'
 
 </Tabs>
 
-
-### Specifying an IAM Profile
-
-When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
 
 ## Redshift notes
 
