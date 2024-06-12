@@ -54,7 +54,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 - Hover over any item in the graph to display the resource’s name and type.
 - Zoom in and out on the graph by mouse-scrolling.
 - Grab and move the graph and the nodes.
-- Right click on a node (context menu) to:
+- Right-click on a node (context menu) to:
     - Refocus on the node, including its upstream and downstream nodes
     - Refocus on the node and its downstream nodes only
     - Refocus on the node and it upstream nodes only
@@ -254,6 +254,7 @@ dbt Explorer supports views for [staging deployment environments](/docs/deploy/d
 You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per dbt Cloud project as “production” or “staging," and ensure the proper metadata has been generated then you’ll be able to view it in Explorer. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
+
 
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 
