@@ -170,7 +170,6 @@ This section allows you to determine the credentials that should be used when co
 
 For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
 
-
 <WHCode>
 
 <div warehouse="Postgres">
