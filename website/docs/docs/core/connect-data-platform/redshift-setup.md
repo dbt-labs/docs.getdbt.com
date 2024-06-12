@@ -175,11 +175,9 @@ When the `iam_profile` configuration is set, dbt will use the specified profile 
 
 The following table lists the authentication parameters to use IAM authentication **on dbt Cloud**.
   
-To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication,
-consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
-and [boto3
-docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials)
-on generating user credentials with IAM Auth.
+To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication, consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html). 
+
+You will need to create an IAM User, generate an [access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey), and map that user to a database role in Redshift [Serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-iam.html#serverless-iam-credentials-use-case).
 
 On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below not supported via textbox:
 
@@ -189,8 +187,8 @@ On Cloud, the IAM user authentication is currently only supported via [extended 
 | `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
 | `user`   | username | Account user to log into your cluster |
 | `region`  | us-east-1 | Region of your Redshift instance | 
-| `access_key_id` | ACCESS_KEY_ID | dbt will use the specified profile from your ~/.aws/config file |
-| `secret_access_key` | SECRET_ACCESS_KEY | dbt will use the specified profile from your ~/.aws/config file |
+| `access_key_id` | ACCESS_KEY_ID | IAM user [access key id](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) |
+| `secret_access_key` | SECRET_ACCESS_KEY | IAM user secret access key |
 
 
 <br/>
