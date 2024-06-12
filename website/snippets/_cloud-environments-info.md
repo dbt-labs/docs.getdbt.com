@@ -47,16 +47,15 @@ By default, all environments will use the default branch in your repository (usu
 
 For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
 
-
 ### Extended attributes
 
 :::note 
 Extended attributes are currently _not_ taken into consideration for SSH Tunneling.
 :::
 
-Extended Attributes allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
+Extended attributes allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
 
-Extended Attributes are set at the environment level, and can partially override connection or environment credentials, including any custom environment variables. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`.
+Extended attributes are set at the environment level, and can partially override connection or environment credentials, including any custom environment variables. You can set any YAML attributes that a dbt adapter accepts in its `profiles.yml`.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Cloud Environment settings using a free form text box." /> <br />
 
@@ -70,17 +69,20 @@ username: alice
 password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'
 ```
 
-**Extended Attributes don't mask secret values**. We recommend avoiding setting secret values to prevent visibility in the text box and logs. A common workaround is to wrap extended attributes in [environment variables](/docs/build/environment-variables), like showed above for `password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`, that will get a value from the `DBT_ENV_SECRET_PASSWORD` environment variable at runtime.
+#### Extended Attributes don't mask secret values
+We recommend avoiding setting secret values to prevent visibility in the text box and logs. A common workaround is to wrap extended attributes in [environment variables](/docs/build/environment-variables). In the earlier example, `password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'` will get a value from the `DBT_ENV_SECRET_PASSWORD` environment variable at runtime.
 
-If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
+#### How extended attributes work
+If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), or [orchestrating job runs](/docs/deploy/deployments), extended attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
 
 - If the attribute exists in another source (such as your project settings), it will replace its value (like environment-level values) in the profile. It also overrides any custom environment variables (if not itself wired using the syntax described for secrets above)
 
-- If the attribute doesn't exist, it will add the attribute or value pair to the profile. 
+- If the attribute doesn't exist, it will add the attribute or value pair to the profile.
 
-Only the **top-level keys** are accepted in extended attributes. This means that if you want to change a specific sub-key value, you must provide the entire top-level key as a JSON block in your resulting YAML. For example, if you want to customize a particular field within a [service account JSON](/docs/core/connect-data-platform/bigquery-setup#service-account-json) for your BigQuery connection (like 'project_id' or 'client_email'), you need to provide an override for the entire top-level `keyfile_json` main key/attribute using extended attributes. Include the sub-fields as a nested JSON block.
+#### Only the **top-level keys** are accepted in extended attributes
+This means that if you want to change a specific sub-key value, you must provide the entire top-level key as a JSON block in your resulting YAML. For example, if you want to customize a particular field within a [service account JSON](/docs/core/connect-data-platform/bigquery-setup#service-account-json) for your BigQuery connection (like 'project_id' or 'client_email'), you need to provide an override for the entire top-level `keyfile_json` main key/attribute using extended attributes. Include the sub-fields as a nested JSON block.
 
-### Git repository caching 
+### Git repository caching
 
 At the start of every job run, dbt Cloud clones the project's Git repository so it has the latest versions of your project's code and runs `dbt deps` to install your dependencies. 
 
