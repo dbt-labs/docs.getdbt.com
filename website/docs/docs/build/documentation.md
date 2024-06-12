@@ -3,10 +3,9 @@ title: "Documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
 ---
-<p style={{ color: '#808080', fontSize: '1.1em' }}>
-Good documentation for your dbt models will help downstream consumers discover and understand the datasets which you curate for them.
+
+Good documentation for your dbt models will help downstream consumers discover and understand the datasets you curate for them.
 dbt provides a way to generate documentation for your dbt project and render it as a website.
-</p>
 
 ## Related documentation
 
@@ -60,13 +59,13 @@ models:
 
 The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). Use dbt Explorer to view your project's resources (such as models, tests, and metrics), its [metadata](/docs/collaborate/explore-projects#generate-metadata), and their lineage to gain a better understanding of its latest production state.
 
-dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), a legacy feature that generates basic documentation, but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. 
+dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), which generates basic documentation, but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. 
 
 Generate documentation for you project by following these steps:
 
-- First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. 
-- To view the documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
-- If you're developing locally, run `dbt docs serve` to use these `.json` files to populate a local website.
+1. Run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively. 
+2. Ensure that you have created the models with `dbt run` to view the documentation for all columns, not just those described in your project.
+3. Run `dbt docs serve` if you're developing locally to use these `.json` files to populate a local website.
 
 To view a resource, its metadata, and what commands are needed in dbt Explorer, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
@@ -131,9 +130,9 @@ In the resulting documentation, `'{{ doc("table_events") }}'` will be expanded t
 
 
 ## Setting a custom overview
-*Currently available for the legacy dbt Docs only.*
+*Currently available for dbt Docs only.*
 
-The "overview" shown in the legacy dbt Docs website can be overridden by supplying your own docs block called `__overview__`. By default, dbt supplies an overview with helpful information about the docs site itself. Depending on your needs, it may be a good idea to override this docs block with specific information about your company style guide, links to reports, or information about who to contact for help. To override the default overview, create a docs block that looks like this:
+The "overview" shown in the dbt Docs website can be overridden by supplying your own docs block called `__overview__`. By default, dbt supplies an overview with helpful information about the docs site itself. Depending on your needs, it may be a good idea to override this docs block with specific information about your company style guide, links to reports, or information about who to contact for help. To override the default overview, create a docs block that looks like this:
 
 <File name='models/overview.md'>
 
@@ -151,7 +150,7 @@ as well as the repo for this project \[here](https://github.com/dbt-labs/mrr-pla
 </File>
 
 ### Custom project-level overviews
-*Currently available for the legacy dbt Docs only.*
+*Currently available for dbt Docs only.*
 
 You can set different overviews for each dbt project/package included in your documentation site
 by creating a docs block named `__[project_name]__`. For example, in order to define
@@ -186,13 +185,13 @@ For additional details on how to explore your lineage and navigate your resource
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
 <Expandable alt_header="For dbt Docs">
-If you're using the legacy dbt Docs interface, you can navigate to the documentation for a specific model. That might look something like this:
+If you're using the dbt Docs interface, you can navigate to the documentation for a specific model. That might look something like this:
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/f2221dc-Screen_Shot_2018-08-14_at_6.29.55_PM.png" title="Auto-generated documentation for a dbt model"/>
 
 Here, you can see a representation of the project structure, a markdown description for a model, and a list of all of the columns (with documentation) in the model.
 
-From a legacy dbt Docs page, you can click the green button in the bottom-right corner of the webpage to expand a "mini-map" of your DAG. This pane (shown below) will display the immediate parents and children of the model that you're exploring.
+From the dbt Docs page, you can click the green button in the bottom-right corner of the webpage to expand a "mini-map" of your DAG. This pane (shown below) will display the immediate parents and children of the model that you're exploring.
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ec77c45-Screen_Shot_2018-08-14_at_6.31.56_PM.png" title="Opening the DAG mini-map"/>
 
@@ -216,7 +215,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 dbt's documentation website was built to make it easy to host on the web. The site is "static,” meaning you don't need any "dynamic" servers to serve the docs. You can host your documentation in several ways:
 
-* Use [dbt Cloud](/docs/collaborate/build-and-view-your-docs)'s default documentation experience with [dbt Explorer](/docs/collaborate/explore-projects).
+* Use [dbt Cloud's](/docs/collaborate/build-and-view-your-docs) default documentation experience with [dbt Explorer](/docs/collaborate/explore-projects).
 * Host on [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))
 * Publish with [Netlify](https://discourse.getdbt.com/t/publishing-dbt-docs-to-netlify/121)
 * Use your own web server like Apache/Nginx

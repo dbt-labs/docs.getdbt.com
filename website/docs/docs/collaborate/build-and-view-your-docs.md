@@ -5,9 +5,7 @@ description: "Automatically generate project documentation as you run jobs."
 pagination_next: null
 ---
 
-<p style={{ color: '#808080', fontSize: '1.1em' }}>
 dbt Cloud enables you to generate documentation for your project and data platform. The documentation is automatically updated with new information after a fully successful job run, ensuring accuracy and relevance.
-</p>
 
 The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). Use [dbt Explorer](/docs/collaborate/explore-projects) to view your project's resources (such as models, tests, and metrics) and their lineage to gain a better understanding of its latest production state.
 
@@ -47,7 +45,7 @@ To create and schedule documentation-only jobs at the end of your production job
 
 ## dbt Docs
 
-dbt Docs, available on developer plans or dbt Core users, is a legacy feature that generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and metrics, and lineage  &mdash; and helps you understand the data in your warehouse.
+dbt Docs, available on developer plans or dbt Core users, generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and lineage  &mdash; and helps you understand the data in your warehouse.
 
 ### Configure project documentation
 
