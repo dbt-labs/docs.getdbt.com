@@ -45,7 +45,7 @@ To create and schedule documentation-only jobs at the end of your production job
 
 ## dbt Docs
 
-dbt Docs, available on developer plans or dbt Core users, is a legacy feature that generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and metrics, and lineage  &mdash; and helps you understand the data in your warehouse.
+dbt Docs, available on developer plans or dbt Core users, is a legacy feature that generates a website from your dbt project using the `dbt docs generate` command. It provides a central location to view your project's resources, such as models, tests, and lineage  &mdash; and helps you understand the data in your warehouse.
 
 ### Configure project documentation
 
