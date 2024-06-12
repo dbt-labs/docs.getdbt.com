@@ -121,7 +121,7 @@ please refer to the official AWS documentation on [Configuration and credential 
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
-| `method` |IAM| use IAM to authenticate |
+| `method` |IAM| use IAM to authenticate via IAM User authentication |
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
 | `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
 | `user`   | username | Account user to log into your cluster |
@@ -185,7 +185,7 @@ On Cloud, the IAM user authentication is currently only supported via [extended 
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
-| `method` |IAM| use IAM to authenticate |
+| `method` |IAM| use IAM to authenticate via IAM User authentication |
 | `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
 | `user`   | username | Account user to log into your cluster |
 | `region`  | us-east-1 | Region of your Redshift instance | 
