@@ -3,10 +3,9 @@ title: "Documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
 ---
-<p style={{ color: '#808080', fontSize: '1.1em' }}>
+
 Good documentation for your dbt models will help downstream consumers discover and understand the datasets which you curate for them.
 dbt provides a way to generate documentation for your dbt project and render it as a website.
-</p>
 
 ## Related documentation
 
