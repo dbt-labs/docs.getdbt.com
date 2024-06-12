@@ -91,7 +91,7 @@ Register `callbacks` on dbt's `EventManager`, to access structured events and en
 
 ```python
 from dbt.cli.main import dbtRunner
-from dbt.events.base_types import EventMsg
+from dbt_common.events.base_types import EventMsg
 
 def print_version_callback(event: EventMsg):
     if event.info.name == "MainReportVersion":
