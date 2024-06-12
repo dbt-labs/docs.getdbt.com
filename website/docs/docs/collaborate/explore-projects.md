@@ -6,10 +6,7 @@ pagination_next: "docs/collaborate/column-level-lineage"
 pagination_prev: null
 ---
 
-<p style={{ color: '#808080', fontSize: '1.1em' }}>
-
 With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
-</p>
 
 ## Prerequisites
 
