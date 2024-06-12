@@ -179,7 +179,7 @@ To set up a Redshift profile using IAM Authentication, set the `method` paramete
 
 You will need to create an IAM User, generate an [access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey), and map that user to a database role in Redshift [Serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-iam.html#serverless-iam-credentials-use-case).
 
-On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below not supported via textbox:
+On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox:
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
@@ -196,7 +196,7 @@ On Cloud, the IAM user authentication is currently only supported via [extended 
 
 #### Example Extended Attributes for IAM User on Redshift Serverless
 
-To avoid pasting secrets in extended attributes, leverate [environment variables](/docs/build/environment-variables#handling-secrets) instead:
+To avoid pasting secrets in extended attributes, leverage [environment variables](/docs/build/environment-variables#handling-secrets):
 
 <File name='~/.dbt/profiles.yml'>
 
