@@ -11,7 +11,7 @@ The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collab
 
 Refer to [documentation](/docs/build/documentation) for more configuration details.
 
-This shift makes [dbt Docs](#dbt-docs) a feature that's still accessible and offers basic documentation, but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. dbt Docs is available to dbt Cloud developer plans or dbt Core users.
+This shift makes [dbt Docs](#dbt-docs) a legacy documentation feature in dbt Cloud. dbt Docs is still accessible and offers basic documentation, but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. dbt Docs is available to dbt Cloud developer plans or dbt Core users.
 
 ## Set up a documentation job
 
