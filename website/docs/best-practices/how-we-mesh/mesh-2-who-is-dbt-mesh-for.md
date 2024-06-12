@@ -39,7 +39,7 @@ Is dbt Mesh a good fit in this scenario? Almost certainly! If your central data 
 
 ### Adoption challenges
 
-There are trade-offs to using this architecture, especially for the hub team managing and maintaining public models. This workflow has intentional friction to reduce the chances of unintentional model changes that break unspoken data contracts. These assurances may come with some sacrifices, such as faster onboarding or more flexible development workflows. Compared to having a single project, where a select few are doing all the development work, this archtecture optimizes for slower development from a wider group of people.
+There are trade-offs to using this architecture, especially for the hub team managing and maintaining public models. This workflow has intentional friction to reduce the chances of unintentional model changes that break unspoken data contracts. These assurances may come with some sacrifices, such as faster onboarding or more flexible development workflows. Compared to having a single project, where a select few are doing all the development work, this architecture optimizes for slower development from a wider group of people.
 
 If this sounds like your organization, it's very likely that dbt Mesh is a good fit for you. ✅
 
