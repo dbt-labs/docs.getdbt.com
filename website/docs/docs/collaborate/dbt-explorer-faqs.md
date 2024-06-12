@@ -171,3 +171,11 @@ Yes, users with read-only access can use the dbt Explorer. Specific feature avai
 The ability to embed and share views is being evaluated as a potential future capability. 
 
 </Expandable>
+
+<Expandable alt_header=" Is dbt Explorer accessible from other areas inside dbt Cloud?" >
+
+Yes, you can [access dbt Explorer from various dbt Cloud features](/docs/collaborate/access-from-dbt-cloud), ensuring you have a seamless experience navigating between resources and lineage in your project.
+
+While the primary way to access dbt Explorer is through the **Explore** link in the navigation, you can also access it from the [dbt Cloud IDE](/docs/collaborate/access-from-dbt-cloud#dbt-cloud-ide), [the lineage tab in jobs](/docs/collaborate/access-from-dbt-cloud#lineage-tab-in-jobs), and the [model timing tab in jobs](/docs/collaborate/access-from-dbt-cloud#model-timing-tab-in-jobs).
+
+</Expandable>
