@@ -94,6 +94,8 @@
 
 <p>Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.</p>
 
+<!-- hide this content for initial launch
+
 :::tip What's the difference between saved selections and saved queries?
 
 - Saved selections are saved components that you can create only when using the application.
@@ -113,3 +115,4 @@
     </ul>
   </li>
 </ol>
+-->

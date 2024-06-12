@@ -9,7 +9,6 @@ sidebar_label: "Google Sheets"
 The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheets
 </p>
 
-
 ## Prerequisites
 
 - You have [configured the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and are using dbt v1.6 or higher.
@@ -45,6 +44,31 @@ bullet_1="The custom menu operation has a timeout limit of six (6) minutes."
 bullet_2="If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues."
 queryBuilder="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg"
 />
+
+<!-- adding this section here temporarily (not incl limited policy) until saved queries is available for excel. when saved queries becomes available for excel365 integration:
+1. remove the below content (tip and using saved queries header
+2. then go to the website/snippets/_sl-excel-gsheets.md snippet
+3. And uncomment line 97 - 118 to make saved queries content available to gsheets AND excel -->
+
+:::tip What's the difference between saved selections and saved queries?
+
+- Saved selections are saved components that you can create only when using the application.
+- Saved queries, explained in the next section, are code-defined sections of data you create in your dbt project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
+:::
+
+## Using saved queries
+
+<p>Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricFlow, in {props.type} to quickly get results from pre-defined sets of data. To access the saved queries in {props.type}:</p>
+
+<ol>
+  <li>Open the hamburger menu in {props.type}.</li>
+  <li>Navigate to <strong>Saved Queries</strong> to access the ones available to you.</li>
+  <li>You can also select <strong>Build Selection</strong>, which allows you to explore the existing query. This won't change the original query defined in the code.
+    <ul>
+      <li>If you use a <code>WHERE</code> filter in a saved query, {props.type} displays the advanced syntax for this filter.</li>
+    </ul>
+  </li>
+</ol>
 
 **Limited use policy disclosure**
 
