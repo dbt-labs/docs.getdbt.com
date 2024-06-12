@@ -38,7 +38,9 @@ In this section, we will demonstrate how to integrate an external API to retriev
 
 To start, we need to set up a network rule (Snowflake instructions [here](https://docs.snowflake.com/en/user-guide/network-rules)) to allow access to the external API. Specifically, we'll create an egress rule to permit Snowflake to communicate with api.carbonintensity.org.
 
-Next, in order to access network locations external to Snowflake an external access integration has to be defined first and then referenced within a dbt Python model (Snowflake overview [here](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)). This API is open, if it required an API key, you’d do something similar for secrets (Snowflake overview [here](https://docs.snowflake.com/en/user-guide/api-authentication)).
+Next, to access network locations outside of Snowflake, you need to define an external access integration first and reference it within a dbt Python model. You can find an overview of Snowflake's external network access [here](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview).
+
+This API is open and if it requires an API key, handle it similarly to managing secrets. More information on API authentication in Snowflake is available [here](https://docs.snowflake.com/en/user-guide/api-authentication).
 
 For simplicity’s sake, we will show how to create them using pre-hooks in a model configuration yml file (dbt pre-hooks overview [here](/reference/resource-configs/pre-hook-post-hook)):
 
