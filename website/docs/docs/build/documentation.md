@@ -63,9 +63,9 @@ dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/buil
 
 Generate documentation for you project by following these steps:
 
-- First, run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files respectively. 
-- To view the documentation for all columns and not just columns described in your project, ensure that you have created the models with `dbt run` beforehand.
-- If you're developing locally, run `dbt docs serve` to use these `.json` files to populate a local website.
+1. Run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively. 
+2. Ensure that you have created the models with `dbt run` to view the documentation for all columns, not just those described in your project.
+3. Run `dbt docs serve` if you're developing locally to use these `.json` files to populate a local website.
 
 To view a resource, its metadata, and what commands are needed in dbt Explorer, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
