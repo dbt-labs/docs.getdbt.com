@@ -172,7 +172,7 @@ The ability to embed and share views is being evaluated as a potential future ca
 
 </Expandable>
 
-<Expandable alt_header="Can you access dbt Explorer from other features and products inside dbt Cloud?" >
+<Expandable alt_header=" Is dbt Explorer accessible from other areas inside dbt Cloud?" >
 
 Yes, you can [access dbt Explorer from various dbt Cloud features](/docs/collaborate/access-from-dbt-cloud), ensuring you have a seamless experience navigating between resources and lineage in your project.
 
