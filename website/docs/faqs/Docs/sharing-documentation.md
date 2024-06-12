@@ -9,4 +9,4 @@ If you're using dbt Cloud to deploy your project and have the [Team or Enterpris
 
 Access dbt Explorer in dbt Cloud by clicking the **Explore** link in the navigation. You can have up to 5 read-only users access the documentation for your project.
 
-dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), which generates basic documentation but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. 
+dbt Cloud developer plan and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), which generates basic documentation but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. 
