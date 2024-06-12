@@ -19,7 +19,7 @@ You can enhance your project navigation and editing experience by directly acces
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-ide.jpg" title="Access dbt Explorer from the IDE by clicking on the 'View in Explorer' icon next to the file breadcrumbs. " />
 
 ### Lineage tab in jobs
-The lineage tab in dbt Cloud jobs displays the lineage associated with the [job run](/docs/deploy/jobs). Access dbt Explorer directly from this tab, allowing you to navigate between both product areas with ease.
+The **lineage tab** in dbt Cloud jobs displays the lineage associated with the [job run](/docs/deploy/jobs). Access dbt Explorer directly from this tab, allowing you to navigate between both product areas with ease.
 
 - **Access dbt Explorer from the lineage tab** &mdash; From a job, select the lineage tab. Double-click the node in the lineage to open a new tab and view its metadata directly in dbt Explorer.
 - **Use cases** &mdash; Understand dependencies/relationships of resources in your project.
