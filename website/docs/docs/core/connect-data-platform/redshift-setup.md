@@ -210,6 +210,8 @@ secret_access_key: '{{ env_var(''DBT_ENV_SECRET_ACCESS_KEY'') }}'
 
 </File>
 
+Both `DBT_ENV_ACCESS_KEY_ID` and `DBT_ENV_SECRET_ACCESS_KEY` will need [to be created]((/docs/build/environment-variables) for every environment leveraging extended attributes as such.
+
 </TabItem>
 
 </Tabs>
