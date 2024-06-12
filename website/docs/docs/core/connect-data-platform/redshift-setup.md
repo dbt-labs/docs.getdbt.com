@@ -43,10 +43,10 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Authentication Parameters
 
-The authentication methods that dbt Core supports are: 
+The authentication methods that dbt supports on Redshift are: 
 
 - `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
-- `IAM User` &mdash; IAM User authentication, via AWS Profile
+- `IAM User` &mdash; IAM User authentication, via AWS Profile on **Core only** and inline on **Cloud only**
 
 For dbt Cloud users, log in using the default **Database username** and **password**. This is necessary because dbt Cloud does not support `IAM` authentication.
 
@@ -56,7 +56,8 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile', value: 'iam-user-profile'},
+    {label: 'IAM User via AWS Profile (core)', value: 'iam-user-profile'},
+    {label: 'IAM User via inline fields (Cloud)', value: 'iam-user-inline'}
   ]}
 >
 
@@ -164,6 +165,49 @@ please refer to the official AWS documentation on [Configuration and credential 
       autocreate: true  
       db_groups: ['ANALYSTS']
 
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="iam-user-inline">
+
+The following table lists the authentication parameters to use IAM authentication **on dbt Cloud**.
+  
+To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication,
+consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
+and [boto3
+docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials)
+on generating user credentials with IAM Auth.
+
+On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below:
+
+| Profile field | Example | Description |
+| ------------- | ------- | ------------ |
+| `method` |IAM| use IAM to authenticate |
+| `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
+| `user`   | username | Account user to log into your cluster |
+| `region`  | us-east-1 | Region of your Redshift instance | 
+| `access_key_id` | ACCESS_KEY_ID | dbt will use the specified profile from your ~/.aws/config file |
+| `secret_access_key` | SECRET_ACCESS_KEY | dbt will use the specified profile from your ~/.aws/config file |
+
+
+<br/>
+
+
+#### Example Extended Attributes for IAM User on Redshift Serverless
+
+To avoid pasting secrets in extended attributes, leverate [environment variables](/docs/build/environment-variables#handling-secrets) instead:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+host: my-production-instance.myregion.redshift-serverless.amazonaws.com
+method: iam
+region: us-east-2
+access_key_id: '{{ env_var(''DBT_ENV_ACCESS_KEY_ID'') }}'
+secret_access_key: '{{ env_var(''DBT_ENV_SECRET_ACCESS_KEY'') }}'
 ```
 
 </File>
