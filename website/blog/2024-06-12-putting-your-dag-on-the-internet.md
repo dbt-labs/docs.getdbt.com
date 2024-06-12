@@ -42,7 +42,7 @@ Next, to access network locations outside of Snowflake, you need to define an ex
 
 This API is open and if it requires an API key, handle it similarly to managing secrets. More information on API authentication in Snowflake is available [here](https://docs.snowflake.com/en/user-guide/api-authentication).
 
-For simplicity’s sake, we will show how to create them using pre-hooks in a model configuration yml file (dbt pre-hooks overview [here](/reference/resource-configs/pre-hook-post-hook)):
+For simplicity’s sake, we will show how to create them using [pre-hooks](/reference/resource-configs/pre-hook-post-hook) in a model configuration yml file:
 
 
 ```
