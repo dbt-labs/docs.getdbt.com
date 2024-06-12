@@ -4,7 +4,7 @@ description: "Learn how good documentation for your dbt models helps stakeholder
 id: "documentation"
 ---
 
-Good documentation for your dbt models will help downstream consumers discover and understand the datasets which you curate for them.
+Good documentation for your dbt models will help downstream consumers discover and understand the datasets you curate for them.
 dbt provides a way to generate documentation for your dbt project and render it as a website.
 
 ## Related documentation
