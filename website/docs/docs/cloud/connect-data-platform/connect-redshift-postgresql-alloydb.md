@@ -17,7 +17,9 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
 
-For dbt Cloud users, please log in using the default Database username and password. Note this is because [`IAM` authentication](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html) is not compatible with dbt Cloud.
+<details>
+For authentication, dbt Cloud users can pick Database username and password. In addition, it is now possible to use [IAM User authentication to Redshift, via extended attributes](docs/core/connect-data-platform/redshift-setup#authentication-parameters).
+</details>
 
 ### Connecting via an SSH Tunnel
 
