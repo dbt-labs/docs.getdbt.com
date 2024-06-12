@@ -104,7 +104,7 @@ The result is a model that will keep track of dbt invocations, and the current U
 
 <Lightbox src="/img/blog/2024-06-12-putting-your-dag-on-the-internet/image1.png" title="Preview in dbt Cloud IDE of output" />
 
-## dbt Best Practices
+## dbt best practices
 
 This is a very new area to Snowflake and dbt -- something special about SQL and dbt is that it’s very resistant to external entropy. The second we rely on API calls, Python packages and other external dependencies, we open up to a lot more external entropy. APIs will change, break, and your models could fail.
 
