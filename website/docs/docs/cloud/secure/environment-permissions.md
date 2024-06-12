@@ -17,6 +17,8 @@ This is a beta feature available to select dbt Cloud Enterprise customers. If yo
 
 Environment-level permissions give dbt Cloud admins the ability to grant write permission to groups and service tokens for specific [environment types](/docs/dbt-cloud-environments) within a project. Granting access to an environment give users access to all environment-level write actions and resources associated with their assigned roles. For example, users with a Developer role can create and run jobs within the environment(s) they have access to. For all other environments, those same users will have read-only access. 
 
+For configuration instructions, check out the [setup page](/docs/cloud/secure/environment-permissions-setup).
+
 ## Current limitations
 
 Environment-level permissions give dbt Cloud admins more flexibility to protect their environments, but it's important to understand that there are some limitations to this feature, so those admins can make informed decisions about granting access.
@@ -80,3 +82,7 @@ With mixed access across projects:
 - **Other Admins:** A user (non-Admin) can have access to multiple projects depending on the requirements.
 
 If the user has the same roles across projects, you can apply environment access across all projects.
+
+
+## Related docs
+-[Environment-level permissions setup](/docs/cloud/secure/environment-permissions-setup)
