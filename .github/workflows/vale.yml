@@ -1,38 +1,40 @@
-name: CI
+name: Vale Lint
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, edited]
+    paths:
+      - '**/*.md'
 
 jobs:
-  lint:
-    name: Lint Documentation
+  vale:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
-      - name: Install Vale
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          version: 2.17.0
+    - name: Install jq
+      run: sudo apt-get install -y jq
 
-      - name: Run Vale and Reviewdog for Linting
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
-        run: |
-          vale --output=JSON . | reviewdog -f=vale -name="Vale" -reporter=github-pr-check -fail-on-error=true -filter-mode=diff_context
+    - name: Get changed files
+      id: changed-files
+      run: |
+        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
+        CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
+        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+        echo "::set-output name=files::$(cat changed_files.json)"
+    - name: Print Changed Files
+      run: echo $CHANGED_FILES
 
-      - name: Run Vale for Suggestions
-        run: vale --output=line . > vale_suggestions.diff
+    - name: Install Vale
+      uses: errata-ai/vale-action@v2
 
-      - name: Apply Suggestions and Run Reviewdog Suggester
-        uses: reviewdog/action-suggester@v1
-        with:
-          github_token: ${{ secrets.SNIPPET_VALIDATION }}
-          tool_name: "Vale Suggestions"
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
-          run: |
-            cat vale_suggestions.diff | reviewdog -f=diff -name="Vale Suggestions" -reporter=github-pr-review -filter-mode=diff_context -fail-on-error=false
+    - name: Run Vale on Changed Files
+      run: |
+        for file in $CHANGED_FILES; do
+          vale --output=JSON $file | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
+        done
+      env:
+        CHANGED_FILES: ${{ steps.changed-files.outputs.files }}
