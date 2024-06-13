@@ -49,6 +49,7 @@ jobs:
       run: |
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           vale --output=JSON $file > vale_output.json
+          cat vale_output.json
           cat vale_output.json | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: .Suggestions[0]}' > rdjson_output.jsonl
           cat rdjson_output.jsonl
         done
