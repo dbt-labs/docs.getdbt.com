@@ -27,13 +27,13 @@ jobs:
         echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split("\n")[:-1]')"
 
     - name: Print Changed Files
-      run: echo $CHANGED_FILES
+      run: echo ${{ steps.changed-files.outputs.files }}
 
     - name: Install Vale
-      run: |
-        curl -L -o vale.tar.gz https://github.com/errata-ai/vale/releases/latest/download/vale-linux-amd64.tar.gz
-        tar -xzf vale.tar.gz
-        sudo mv vale /usr/local/bin/vale
+      uses: errata-ai/vale-action@reviewdog
+      with:
+        files: styles/custom
+        reporter: github-pr-check
 
     - name: Run Vale and Reviewdog on Changed Files
       run: |
