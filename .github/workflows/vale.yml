@@ -35,19 +35,13 @@ jobs:
         files: styles/custom
         reporter: github-pr-check
 
-    - name: Run Vale and Reviewdog on Changed Files
+    - name: Run Vale on Changed Files
       run: |
-        for file in ${{ steps.changed-files.outputs.files }}; do
-          vale --output=JSON $file > vale_output.json
-          echo "Vale output for $file:"
-          cat vale_output.json
-          jq '.[] | .file = "'$file'"' vale_output.json | jq -s . > rdjson_output.json
-          echo "RDJSON output for $file:"
-          cat rdjson_output.json
-          reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.json
-        done
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        for file in $CHANGED_FILES; do
+          vale --output=JSON $file | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
+          done
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.files }}
 
     - name: Install Reviewdog Suggestion Action
       uses: reviewdog/action-suggester@v1
