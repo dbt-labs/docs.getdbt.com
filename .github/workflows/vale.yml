@@ -24,7 +24,7 @@ jobs:
         BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
         CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
         echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "::set-output name=files::$(cat changed_files.json)"
+        echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split("\n")[:-1]')"
 
     - name: Print Changed Files
       run: echo $CHANGED_FILES
@@ -32,10 +32,26 @@ jobs:
     - name: Install Vale
       uses: errata-ai/vale-action@v2
 
-    - name: Run Vale on Changed Files
+    - name: Install Reviewdog
+      uses: reviewdog/action-setup@v1
+      with:
+        reviewdog_version: latest
+
+    - name: Run Vale on changed files with reviewdog
       run: |
-        for file in $CHANGED_FILES; do
+        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           vale --output=JSON $file | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
       env:
-        CHANGED_FILES: ${{ steps.changed-files.outputs.files }}
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
+
+    - name: Run Vale with code suggester
+      uses: reviewdog/action-suggester@v1
+      with:
+        github_token: ${{ secrets.SNIPPET_VALIDATION }}
+        tool_name: Vale
+        level: "warning"
+        filter_mode: "diff_context"
+        fail_on_error: "false"
+        reviewdog_flags: ""
+        cleanup: "true"
