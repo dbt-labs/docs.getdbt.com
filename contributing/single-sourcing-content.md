@@ -118,7 +118,7 @@ $ dbt test --select [...] --defer --state path/to/artifacts
 
 ```
 </VersionBlock>
-You see this version block when the selected version is <= 0.20
+You see this version block when the selected version is <code><= 0.20</code>
 
 ```markdown
 <VersionBlock lastVersion="0.20">

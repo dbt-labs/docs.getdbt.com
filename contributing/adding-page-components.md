@@ -4,7 +4,7 @@ You can use the following components to provide code snippets for each supported
 
 Identify code by labeling with the warehouse names:
 
-```js
+```mdx
         <WHCode>
 
         <div warehouse="warehouse#1">
