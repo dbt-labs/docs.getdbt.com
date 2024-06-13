@@ -15,15 +15,6 @@ jobs:
       with:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
-    - name: Setup Cache for Dependencies
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/.cache
-          /usr/local/bin/vale
-          /usr/local/bin/reviewdog
-        key: ${{ runner.os }}-vale-reviewdog-${{ hashFiles('**/*.md') }}
-
     - name: Install jq
       run: sudo apt-get install -y jq
 
