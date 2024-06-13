@@ -37,10 +37,11 @@ jobs:
       with:
         reviewdog_version: latest
 
-    - name: Run Vale on changed files with reviewdog
+    - name: Run Vale on changed files with Reviewdog
       run: |
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
-          vale --output=JSON $file . > vale_output.json | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
+          vale --output=JSON $file > vale_output.json
+          cat vale_output.json | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
@@ -50,7 +51,7 @@ jobs:
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           vale --output=JSON $file > vale_output.json
           jq '.[] | .file = "'$file'"' vale_output.json | jq -s . > rdjson_output.json
-          reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.json
+          cat rdjson_output.json | reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
@@ -65,10 +66,3 @@ jobs:
         fail_on_error: "false"
         reviewdog_flags: ""
         cleanup: "true"
-
-    - name: Run Reviewdog Suggestion
-      run: |
-        git diff > diff_output.txt
-        reviewdog -f=diff -f.diff.strip=1 -reporter=github-pr-review < diff_output.txt
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
