@@ -36,11 +36,7 @@ jobs:
       run: echo $CHANGED_FILES
 
     - name: Install Vale
-      run: |
-        VALE_VERSION=$(curl --silent "https://api.github.com/repos/errata-ai/vale/releases/latest" | jq -r .tag_name)
-        curl -sSfL "https://github.com/errata-ai/vale/releases/download/${VALE_VERSION}/vale_${VALE_VERSION}_Linux_64-bit.tar.gz" -o vale.tar.gz
-        tar -xzf vale.tar.gz
-        sudo mv vale /usr/local/bin/
+      uses: errata-ai/vale-action@v2
 
     - name: Install Reviewdog
       uses: reviewdog/action-setup@v1
