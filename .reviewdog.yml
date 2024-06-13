@@ -1,0 +1,8 @@
+runner:
+  vale:
+    cmd: vale --output=JSON .
+    format: JSON
+    name: Vale
+    level: warning
+    errorformat:
+      - '%f:%l:%c: %m'

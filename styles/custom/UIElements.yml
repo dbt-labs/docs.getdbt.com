@@ -1,6 +1,6 @@
 extends: existence
 
-message: "UI elements should be bold: '$1'."
+message: "UI elements should be bold: '%s'."
 level: warning
 tokens:
   - '\Save\b'

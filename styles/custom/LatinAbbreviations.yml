@@ -1,6 +1,6 @@
 extends: substitution
 
-message: "Avoid Latin abbreviations: '$1'. Consider using 'for example', 'that is', 'and so forth', or 'such as'."
+message: "Avoid Latin abbreviations: '%s'. Consider using 'for example', 'that is', 'and so forth', or 'such as'."
 level: warning
 swap:
   - e.g.: for example
