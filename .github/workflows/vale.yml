@@ -30,11 +30,7 @@ jobs:
       run: echo $CHANGED_FILES
 
     - name: Install Vale
-      run: curl -fsSL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
-
-    - name: Install Reviewdog
-      run: |
-        curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin
+      uses: errata-ai/vale-action@v2
 
     - name: Run Vale and Reviewdog on Changed Files
       run: |
