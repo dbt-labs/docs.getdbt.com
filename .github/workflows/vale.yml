@@ -30,13 +30,17 @@ jobs:
       run: echo $CHANGED_FILES
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      run: curl -fsSL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
+
+    - name: Install Reviewdog
+      run: |
+        curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin
 
     - name: Run Vale and Reviewdog on Changed Files
       run: |
         for file in $CHANGED_FILES; do
           /home/runner/vale --output=JSON $file > vale_output.json
-          jq --arg file "$file" '.[$file] | map(.file = $file)' vale_output.json | jq -s '.' > rdjson_output.json
+          jq --arg file "$file" '[.[$file][] | .file = $file]' vale_output.json | jq -c '.' > rdjson_output.json
           cat rdjson_output.json
           /home/runner/reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.json
         done
