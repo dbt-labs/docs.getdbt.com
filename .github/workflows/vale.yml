@@ -27,7 +27,10 @@ jobs:
         echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split("\n")[:-1]')"
 
     - name: Print Changed Files
-      run: echo $CHANGED_FILES
+      run: echo ${{ steps.changed-files.outputs.files }}
+
+    - name: Install Vale
+      uses: errata-ai/vale-action@reviewdog
 
     - name: Run Vale and Reviewdog on Changed Files
       run: |
