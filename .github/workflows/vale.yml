@@ -5,9 +5,6 @@ on:
     paths:
       - '**/*.md'
 
-permissions:
-  contents: read  # Allows the workflow to read repository contents.
-
 jobs:
   vale:
     runs-on: ubuntu-latest
@@ -33,18 +30,12 @@ jobs:
         run: echo $CHANGED_FILES
 
       - name: Install Vale
-        run: |
-          curl -sSfL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
-          sudo mv vale /usr/local/bin/vale  # Move Vale to a directory in the PATH
+        uses: errata-ai/vale-action@v2
 
       - name: Install Reviewdog
-        run: |
-          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh
-          sudo mv reviewdog /usr/local/bin/reviewdog  # Move Reviewdog to a directory in the PATH
+        uses: reviewdog/action-setup@v1
 
       - name: Run Vale and Reviewdog for Linting and Suggestions
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
         run: |
           for file in $CHANGED_FILES; do
             vale --output=JSON $file | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
