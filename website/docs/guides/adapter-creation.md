@@ -585,7 +585,7 @@ This document has two sections:
 ### Testing prerequisites
 
 - Your adapter must be compatible with dbt-core **v1.1** or newer
-- You should be familiar with **pytest**: <https://docs.pytest.org/>
+- You should be familiar with **pytest**: [https://docs.pytest.org](https://docs.pytest.org)
 
 ### About the testing framework
 

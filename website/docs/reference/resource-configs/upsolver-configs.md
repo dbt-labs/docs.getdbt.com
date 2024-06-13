@@ -21,7 +21,7 @@ description: "Upsolver Configurations - Read this in-depth guide to learn about 
 | Config | Required | Materialization | Description | Example |
 | ------ | --------- | --------------- | ---------- | ------- |
 | connection_type | Yes | connection | Connection identifier: S3/GLUE_CATALOG/KINESIS | connection_type='S3' |
-| connection_options | Yes | connection | Dictionary of options supported by selected connection |           connection_options={ 'aws_role': 'aws_role', 'external_id': 'SAMPLES', 'read_only': True } |
+| connection_options | Yes | connection | Dictionary of options supported by selected connection |           connection_options=\{ 'aws_role': 'aws_role', 'external_id': 'SAMPLES', 'read_only': True \} |
 | incremental_strategy | No | incremental | Define one of incremental strategies: merge/copy/insert. Default: copy | incremental_strategy='merge' |
 | source | No | incremental | Define source to copy from: S3/KAFKA/KINESIS | source = 'S3' |
 | target_type | No | incremental | Define target type REDSHIFT/ELASTICSEARCH/S3/SNOWFLAKE/POSTGRES. Default None for Data lake | target_type='Snowflake' |

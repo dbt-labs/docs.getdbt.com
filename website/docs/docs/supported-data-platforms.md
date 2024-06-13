@@ -21,13 +21,14 @@ There are two types of adapters available today:
 - **Trusted** &mdash; [Trusted adapters](trusted-adapters) are those where the adapter maintainers have decided to participate in the Trusted Adapter Program and have made a commitment to meeting those requirements. For adapters supported in dbt Cloud, maintainers have undergone an additional rigorous process that covers contractual requirements for development, documentation, user experience, and maintenance.
 - **Community** &mdash; [Community adapters](community-adapters) are open-source and maintained by community members. These adapters are not part of the Trusted Adapter Program and could have usage inconsistencies.
 
-<details><summary>Considerations for depending on an open-source project</summary>
+<details>
+  <summary>Considerations for depending on an open-source project</summary>
 
-1. Does it work?
-2. Does anyone "own" the code, or is anyone liable for ensuring it works?
-3. Do bugs get fixed quickly?
-4. Does it stay up-to-date with new dbt Core features?
-5. Is the usage substantial enough to self-sustain?
-6. Do other known projects depend on this library?
+  1. Does it work?
+  2. Does anyone "own" the code, or is anyone liable for ensuring it works?
+  3. Do bugs get fixed quickly?
+  4. Does it stay up-to-date with new dbt Core features?
+  5. Is the usage substantial enough to self-sustain?
+  6. Do other known projects depend on this library?
 
 </details>

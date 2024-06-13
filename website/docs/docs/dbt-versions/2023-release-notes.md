@@ -810,7 +810,7 @@ Archived release notes for dbt Cloud from 2023
 
     For more info, refer to our [documentation](/dbt-cloud/api-v2-legacy#tag/Runs/operation/listRunsForAccount).
 
- </Expandable>
+  </Expandable>
 
 - <Expandable alt_header='Scheduler optmization'>
 

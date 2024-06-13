@@ -62,7 +62,7 @@ Identify code and code files by labeling with the component they are describing:
 
         ```
         models:
-        [<resource-path>](/reference/resource-configs/resource-path):
+        [resource-path](/reference/resource-configs/resource-path):
 
 
         ```
@@ -77,7 +77,7 @@ Identify code and code files by labeling with the component they are describing:
 
         ```
         sources:
-        [<resource-path>](/reference/resource-configs/resource-path):
+        [resource-path](/reference/resource-configs/resource-path):
 
 
         ```

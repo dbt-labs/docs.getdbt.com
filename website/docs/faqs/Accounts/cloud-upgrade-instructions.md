@@ -60,11 +60,9 @@ For commonly asked billings questions, refer to the dbt Cloud [pricing page](htt
 
 <details>
   <summary>How does billing work?</summary>
-  <div>
-    <div>Team plans are billed monthly on the credit card used to sign up, based on [developer seat count and usage](/docs/cloud/billing). You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> > <b>Billing page</b>. <br></br><br></br>
+    Team plans are billed monthly on the credit card used to sign up, based on <a href="/docs/cloud/billing">developer seat count and usage</a>. You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> > <b>Billing page</b>. <br></br><br></br>
     
-    Enterprise plan customers are billed annually based on the number of developer seats, as well as any additional services + features in your chosen plan. </div>
-    </div>
+    Enterprise plan customers are billed annually based on the number of developer seats, as well as any additional services + features in your chosen plan. 
 </details>
 <details>
   <summary>Can I upgrade or downgrade my plan?</summary>
