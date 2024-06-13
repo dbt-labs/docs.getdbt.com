@@ -39,7 +39,7 @@ import SLCourses from '/snippets/_sl-course.md';
 import Tools from '/snippets/_sl-excel-gsheets.md';
 
 <Tools 
-type="Excel 365"
+type="Google Sheets"
 bullet_1="The custom menu operation has a timeout limit of six (6) minutes."
 bullet_2="If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues."
 queryBuilder="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg"
@@ -49,6 +49,31 @@ queryBuilder="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg"
 1. remove the below content (tip and using saved queries header
 2. then go to the website/snippets/_sl-excel-gsheets.md snippet
 3. And uncomment line 97 - 118 to make saved queries content available to gsheets AND excel -->
+
+## Using saved selections
+
+<p><span>Saved selections allow you to save the inputs you've created in the {props.type} <strong>Query Builder</strong> and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:</span></p>
+
+<ol>
+  <li>Run a <span>query in the {props.type} <strong>Query Builder</strong>.</span></li>
+  <li>Save the selection by selecting the arrow next to the <strong>Query</strong> button and then select <strong>Query & Save Selection</strong>.</li>
+  <li>The application saves these selections, allowing you to view and edit them from the hamburger menu under <strong>Saved Selections</strong>.</li>
+</ol>
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg" width="25%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
+
+<p>You can also make these selections private or public:</p>
+
+<ul>
+  <li><strong>Public selections</strong> mean your inputs are available in the menu to everyone on the sheet.</li>
+  <li><strong>Private selections</strong> mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu or benefit from the automatic refresh.</li>
+</ul>
+
+### Refreshing selections
+
+<p>Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting <strong>Refresh on Load</strong> when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing.</p>
+
+<p>Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.</p>
 
 :::tip What's the difference between saved selections and saved queries?
 

@@ -41,9 +41,5 @@ bullet_2="If you're using this extension, make sure you're signed into 365 with 
 queryBuilder="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg"
 />
 
-**Limited use policy disclosure**
-
-The dbt Semantic Layer for Excel's use and transfer to any other app of information received from Microsoft's APIs will adhere to Microsoft API Services User Data Policy including the Limited Use requirements.
-
 ## FAQs
 <FAQ path="Troubleshooting/sl-alpn-error" />

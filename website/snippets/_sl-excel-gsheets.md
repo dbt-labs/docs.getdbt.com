@@ -69,6 +69,10 @@
 
 <p>If you would like to just query the data values without the headers, you can optionally select the <strong>Exclude Column Names</strong> box.</p>
 
+
+
+<!-- hide this content for initial launch
+
 ## Using saved selections
 
 <p><span>Saved selections allow you to save the inputs you've created in the {props.type} <strong>Query Builder</strong> and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:</span></p>
@@ -93,8 +97,6 @@
 <p>Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting <strong>Refresh on Load</strong> when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing.</p>
 
 <p>Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.</p>
-
-<!-- hide this content for initial launch
 
 :::tip What's the difference between saved selections and saved queries?
 
