@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Fetch all history so we can access all commits}
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -32,21 +32,13 @@ jobs:
     - name: Install Vale
       uses: errata-ai/vale-action@v2
 
-    - name: Run Vale and Print JSON Output
-      run: |
-        for file in $CHANGED_FILES; do
-          /home/runner/vale --output=JSON $file > vale_output.json
-          echo "Vale output for $file:"
-          cat vale_output.json
-        done
-
     - name: Create RDJSON Conversion Script
       run: |
         cat << 'EOF' > convert-to-rdjson.jq
-        to_entries[] | .value[] | {
+        . as \$input | to_entries[] | .value[] | {
           message: .Message,
           location: {
-            path: $file,
+            path: .file,
             range: {
               start: { line: .Line, column: (.Span[0] + 1) },
               end: { line: .Line, column: (.Span[1] + 1) }
@@ -54,7 +46,7 @@ jobs:
           },
           severity: .Severity,
           code: { value: .Check, url: .Link }
-        }
+        } | .file = \$input.key
         EOF
 
     - name: Run Vale and Reviewdog on Changed Files
@@ -63,7 +55,7 @@ jobs:
           /home/runner/vale --output=JSON $file > vale_output.json
           echo "Vale output for $file:"
           cat vale_output.json
-          jq -s --arg file "$file" -f convert-to-rdjson.jq vale_output.json > rdjson_output.json
+          jq --arg file "$file" -f convert-to-rdjson.jq vale_output.json > rdjson_output.json
           echo "RDJSON output for $file:"
           cat rdjson_output.json
           /home/runner/reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.json
