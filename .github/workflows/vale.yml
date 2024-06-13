@@ -41,7 +41,7 @@ jobs:
       run: |
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           vale --output=JSON $file > vale_output.json
-          cat vale_output.json | jq -r '.[] | .file = "'$file'" | @json' > rdjson_output.jsonl
+          jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: .Suggestions[0]}' vale_output.json > rdjson_output.jsonl
           cat rdjson_output.jsonl | reviewdog -f=rdjsonl -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
       env:
