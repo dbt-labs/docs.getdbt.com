@@ -15,52 +15,20 @@ jobs:
       with:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
-    - name: Install jq
-      run: sudo apt-get install -y jq
-
-    - name: Get changed files
-      id: changed-files
-      run: |
-        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
-        CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
-        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split("\n")[:-1]')"
-
-    - name: Print Changed Files
-      run: echo $CHANGED_FILES
-
     - name: Install Vale
       uses: errata-ai/vale-action@v2
 
-    - name: Create RDJSON Conversion Script
+    - name: Install Reviewdog
       run: |
-        cat << 'EOF' > convert-to-rdjson.jq
-        to_entries[] | {
-          file: .key,
-          diagnostics: .value
-        } | .diagnostics[] | {
-          location: {
-            path: .file,
-            range: {
-              start: { line: .Line, column: (.Span[0] + 1) },
-              end: { line: .Line, column: (.Span[1] + 1) }
-            }
-          },
-          severity: .Severity,
-          code: { value: .Check, url: .Link }
-        }
-        EOF
+        curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin
 
     - name: Run Vale and Reviewdog on Changed Files
       run: |
-        for file in $CHANGED_FILES; do
-          /home/runner/vale --output=JSON $file > vale_output.json
+        for file in ${{ steps.changed-files.outputs.files }}; do
+          vale --output=JSON $file > vale_output.json
           echo "Vale output for $file:"
           cat vale_output.json
-          jq --arg file "$file" -s -f convert-to-rdjson.jq vale_output.json > rdjson_output.json
-          echo "RDJSON output for $file:"
-          cat rdjson_output.json
-          /home/runner/reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.json
+          reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < vale_output.json
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
