@@ -17,6 +17,10 @@ The following fields are required when creating a Snowflake connection
 
 **Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of some [example permissions to configure Snowflake access](/reference/database-permissions/snowflake-permissions).
 
+## Authentication methods
+
+This section describes the different authentication methods available for connecting dbt Cloud to Snowflake.
+
 ### Username / Password
 
 **Available in:** Development environments, Deployment environments
@@ -27,7 +31,7 @@ username (specifically, the `login_name`) and the corresponding user's Snowflake
 to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowflake user.
 
 **Note**: The schema field in the **Developer Credentials** section is a required field.
-<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" title="Snowflake username/password authentication"/>
+<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
 
 ### Key pair
 
@@ -65,11 +69,21 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in dbt Cloud. For
 more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth connection"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="70%" title="Configuring Snowflake OAuth connection"/>
 
 ## Configuration
 
 To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
+
+### Custom domain URL support
+
+To connect to Snowflake through a custom domain (vanity URL) instead of the account locator, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to configure the `host` parameter with the custom domain:
+
+```yaml
+host: https://custom_domain_to_snowflake.com
+```
+
+This configuration may conflict with Snowflake OAuth when used with PrivateLink. IF users can't reach Snowflake authentication servers from a networking standpoint, please [contact dbt Support](mailto:support@getdbt.com) to find a workaround with this architecture.
 
 ## Troubleshooting
 <!--might need to turn this into details toggle if more troubleshooting items arise -->
