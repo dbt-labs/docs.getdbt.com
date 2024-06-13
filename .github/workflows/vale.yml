@@ -35,7 +35,7 @@ jobs:
     - name: Run Vale and Reviewdog on Changed Files
       run: |
         for file in $CHANGED_FILES; do
-          vale --output=JSON $file > vale_output.json
+          /path/to/vale --output=JSON $file > vale_output.json
           reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < vale_output.json
         done
       env:
