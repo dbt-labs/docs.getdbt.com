@@ -31,6 +31,9 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
+      with:
+        files: styles/custom
+        reporter: github-pr-check
 
     - name: Run Vale and Reviewdog on Changed Files
       run: |
