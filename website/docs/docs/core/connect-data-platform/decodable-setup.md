@@ -94,14 +94,16 @@ dbt run-operation delete_streams --args '{streams: [stream1, stream2], skip_erro
 ```
 
 <b>stop_pipelines(pipelines)</b>
-<ul><li>pipelines: An optional list of pipeline names to deactivate. Defaults to none.</li>
+<ul>
+  <li>pipelines: An optional list of pipeline names to deactivate. Defaults to none.</li>
 </ul>
 Deactivate all pipelines for resources defined within the project. If the pipelines argument is provided, then only the specified pipelines are deactivated.
 <br/><br/>
 
 
 <b>delete_pipelines(pipelines)</b>
-<ul><li>pipelines: An optional list of pipeline names to delete. Defaults to none.</li>
+<ul>
+  <li>pipelines: An optional list of pipeline names to delete. Defaults to none.</li>
 </ul>
 Delete all pipelines for resources defined within the project. If the pipelines argument is provided, then only the specified pipelines are deleted.
 <br/><br/>
@@ -109,8 +111,8 @@ Delete all pipelines for resources defined within the project. If the pipelines 
 
 <b>delete_streams(streams, skip_errors)</b>
 <ul>
-<li>streams: An optional list of stream names to delete. Defaults to none.</li>
-<li>skip_errors: Specify whether to treat errors as warnings. When set to true, any stream deletion failures are reported as warnings. When set to false, the operation stops when a stream cannot be deleted. Defaults to true.</li>
+  <li>streams: An optional list of stream names to delete. Defaults to none.</li>
+  <li>skip_errors: Specify whether to treat errors as warnings. When set to true, any stream deletion failures are reported as warnings. When set to false, the operation stops when a stream cannot be deleted. Defaults to true.</li>
 </ul>
 Delete all streams for resources defined within the project. If a pipeline is associated with a stream, then neither the pipeline nor stream are deleted. See the cleanup operation for a complete removal of stream/pipeline pairs. <br/><br/>
 

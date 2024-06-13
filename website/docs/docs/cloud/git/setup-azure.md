@@ -200,7 +200,7 @@ To re-enable MFA for the user, select them again and click **Enable**. Note, you
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
