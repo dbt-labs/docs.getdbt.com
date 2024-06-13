@@ -36,7 +36,11 @@ jobs:
       run: echo $CHANGED_FILES
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      run: |
+        VALE_VERSION=$(curl --silent "https://api.github.com/repos/errata-ai/vale/releases/latest" | jq -r .tag_name)
+        curl -sSfL "https://github.com/errata-ai/vale/releases/download/${VALE_VERSION}/vale_${VALE_VERSION}_Linux_64-bit.tar.gz" -o vale.tar.gz
+        tar -xzf vale.tar.gz
+        sudo mv vale /usr/local/bin/
 
     - name: Install Reviewdog
       uses: reviewdog/action-setup@v1
@@ -46,7 +50,7 @@ jobs:
     - name: Run Vale and Generate Suggestions
       run: |
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
-          vale --output=line $file > vale_output.patch
+          ./vale --output=line $file > vale_output.patch
           if [ -s vale_output.patch ]; then
             cat vale_output.patch
             reviewdog -f=diff -name="Vale Suggestions" -reporter=github-pr-review -level=warning -filter-mode=diff_context < vale_output.patch
