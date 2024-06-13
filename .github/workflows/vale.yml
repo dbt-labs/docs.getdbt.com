@@ -36,7 +36,9 @@ jobs:
       run: echo $CHANGED_FILES
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      run: |
+        curl -sSfL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
+        sudo mv vale /usr/local/bin/
 
     - name: Install Reviewdog
       uses: reviewdog/action-setup@v1
