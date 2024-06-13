@@ -12,8 +12,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+
+    - name: Install Vale
+      uses: errata-ai/vale-action@v2
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -29,46 +30,15 @@ jobs:
     - name: Print Changed Files
       run: echo $CHANGED_FILES
 
-    - name: Install Vale
-      uses: errata-ai/vale-action@v2
-
-    - name: Install Reviewdog
-      uses: reviewdog/action-setup@v1
-      with:
-        reviewdog_version: latest
-
     - name: Run Vale on changed files
       run: |
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           echo "Running Vale on $file"
           vale --output=JSON $file > vale_output.json
           cat vale_output.json
-        done
-
-    - name: Process Vale output
-      run: |
-        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
-          vale --output=JSON $file > vale_output.json
-          cat vale_output.json
           cat vale_output.json | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: .Suggestions[0]}' > rdjson_output.jsonl
           cat rdjson_output.jsonl
-        done
-
-    - name: Run Reviewdog with processed output
-      run: |
-        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           cat rdjson_output.jsonl | reviewdog -f=rdjsonl -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-
-    - name: Run Reviewdog Suggestion Action
-      uses: reviewdog/action-suggester@v1
-      with:
-        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-        tool_name: Vale
-        level: "warning"
-        filter_mode: "diff_context"
-        fail_on_error: "false"
-        reviewdog_flags: ""
-        cleanup: "true"
