@@ -11,7 +11,7 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 The documentation is written by the tech writer. It is is organised by the writer too.
 
-The tech writer writes teh documentation. It is organized by the writer too.
+The tech writer writes teh documentation. It is organized by the writer too recieve this program.
 
 ## The Header Is This
 test
