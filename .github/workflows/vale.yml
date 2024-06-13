@@ -35,21 +35,21 @@ jobs:
     - name: Create RDJSON Conversion Script
       run: |
         cat << 'EOF' > convert-to-rdjson.jq
-        map(
-          # Construct the Reviewdog-compatible object
-          {
-            message: .Message,
-            location: {
-              path: .File,
-              range: {
-                start: { line: .Line, column: (.Span[0] + 1) },
-                end: { line: .Line, column: (.Span[1] + 1) }
-              }
-            },
-            severity: .Severity,
-            code: { value: .Check, url: .Link }
-          }
-        )
+        to_entries[] | {
+          file: .key,
+          diagnostics: .value
+        } | .diagnostics[] | {
+          message: .Message,
+          location: {
+            path: .file,
+            range: {
+              start: { line: .Line, column: (.Span[0] + 1) },
+              end: { line: .Line, column: (.Span[1] + 1) }
+            }
+          },
+          severity: .Severity,
+          code: { value: .Check, url: .Link }
+        }
         EOF
 
     - name: Run Vale and Reviewdog on Changed Files
