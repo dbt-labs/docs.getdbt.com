@@ -31,7 +31,8 @@ jobs:
 
     - name: Install Vale
       run: |
-        curl -L https://github.com/errata-ai/vale/releases/latest/download/vale-linux-amd64.tar.gz | tar -xz
+        curl -L -o vale.tar.gz https://github.com/errata-ai/vale/releases/latest/download/vale-linux-amd64.tar.gz
+        tar -xzf vale.tar.gz
         sudo mv vale /usr/local/bin/vale
 
     - name: Run Vale and Reviewdog on Changed Files
