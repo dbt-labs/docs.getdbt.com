@@ -63,7 +63,7 @@ When I'm happy with the results, I use the [ready-made dlt Sheets source connect
 
 For transforming I use my favorite solution, dbt Core. For running and orchestrating dbt on Cloud Functions, I am using dlt’s dbt Core runner. The benefit of the runner in this context is that I can re-use the same credential setup, instead of creating a separate profiles.yml file.
 
-This is the package I created: <https://github.com/euanjohnston-dev/idealista_dbt_pipeline>
+This is the package I created: [https://github.com/euanjohnston-dev/idealista_dbt_pipeline](https://github.com/euanjohnston-dev/idealista_dbt_pipeline)
 
 ### Production-readying the pipeline
 
