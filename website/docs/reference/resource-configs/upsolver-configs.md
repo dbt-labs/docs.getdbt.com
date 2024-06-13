@@ -31,11 +31,11 @@ description: "Upsolver Configurations - Read this in-depth guide to learn about 
 | database | Yes/No | incremental | Define target connection. Required if target_type, no table created in a metastore connection | database = 'target_connection' |
 | alias | Yes/No | incremental | Define target table. Required if target_type, no table created in a metastore connection | alias = 'target_table' |
 | delete_condition | No | incremental | Records that match the ON condition and a delete condition can be deleted | delete_condition='nettotal > 1000' |
-| partition_by | No | incremental | List of dictionaries to define partition_by for target metastore table | partition_by=[{'field':'$field_name'}] |
-| primary_key | No | incremental | List of dictionaries to define partition_by for target metastore table  | primary_key=[{'field':'customer_email', 'type':'string'}] |
+| partition_by | No | incremental | List of dictionaries to define partition_by for target metastore table | partition_by=[\{'field':'$field_name'\}] |
+| primary_key | No | incremental | List of dictionaries to define partition_by for target metastore table  | primary_key=[\{'field':'customer_email', 'type':'string'\}] |
 | map_columns_by_name | No | incremental | Maps columns from the SELECT statement to the table. Boolean. Default: False | map_columns_by_name=True |
 | sync | No | incremental/materializedview | Boolean option to define if job is synchronized or non-msynchronized. Default: False | sync=True |
-| options | No | incremental/materializedview | Dictionary of job options | options={ 'START_FROM': 'BEGINNING', 'ADD_MISSING_COLUMNS': True } |
+| options | No | incremental/materializedview | Dictionary of job options | options=\{ 'START_FROM': 'BEGINNING', 'ADD_MISSING_COLUMNS': True \} |
 
 ## SQL connection
 

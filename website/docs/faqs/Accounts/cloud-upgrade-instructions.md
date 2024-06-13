@@ -67,10 +67,12 @@ For commonly asked billings questions, refer to the dbt Cloud [pricing page](htt
 <details>
   <summary>Can I upgrade or downgrade my plan?</summary>
   <div>
-    <div>Yes, you can upgrade or downgrade at any time. Account Owners can access their dedicated billing section via the account settings page.<br></br><br></br>
+
+      Yes, you can upgrade or downgrade at any time. Account Owners can access their dedicated billing section via the account settings page.
     
-    If you’re not sure which plan is right for you, get in touch and we’ll be happy to help you find one that fits your needs.</div>
-    </div>
+      If you’re not sure which plan is right for you, get in touch and we’ll be happy to help you find one that fits your needs.
+
+  </div>
 </details>
 <details>
   <summary>Can I pay by invoice?</summary>
