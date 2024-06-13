@@ -30,7 +30,7 @@ jobs:
         BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
         CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
         echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split("\n")[:-1]')"
+        echo "::set-output name=files::$(echo \"$CHANGED_FILES\" | jq -R -s -c 'split("\n")[:-1]')"
 
     - name: Print Changed Files
       run: echo $CHANGED_FILES
@@ -48,6 +48,7 @@ jobs:
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           vale --output=line $file > vale_output.patch
           if [ -s vale_output.patch ]; then
+            cat vale_output.patch
             reviewdog -f=diff -name="Vale Suggestions" -reporter=github-pr-review -level=warning -filter-mode=diff_context < vale_output.patch
           fi
         done
@@ -64,3 +65,5 @@ jobs:
         fail_on_error: "false"
         reviewdog_flags: ""
         cleanup: "true"
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
