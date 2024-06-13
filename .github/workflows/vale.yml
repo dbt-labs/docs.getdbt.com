@@ -39,7 +39,6 @@ jobs:
           file: .key,
           diagnostics: .value
         } | .diagnostics[] | {
-          message: .Message,
           location: {
             path: .file,
             range: {
