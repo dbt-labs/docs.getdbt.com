@@ -20,7 +20,7 @@ jobs:
 
       - name: Run Vale and Reviewdog for Linting
         env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
         run: |
           vale --output=JSON . | reviewdog -f=vale -name="Vale" -reporter=github-pr-check -fail-on-error=true -filter-mode=diff_context
 
@@ -30,9 +30,9 @@ jobs:
       - name: Apply Suggestions and Run Reviewdog Suggester
         uses: reviewdog/action-suggester@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.SNIPPET_VALIDATION }}
           tool_name: "Vale Suggestions"
         env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
           run: |
             cat vale_suggestions.diff | reviewdog -f=diff -name="Vale Suggestions" -reporter=github-pr-review -filter-mode=diff_context -fail-on-error=false
