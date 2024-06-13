@@ -61,7 +61,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
 
 | Node                                          | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
 |-----------------------------------------------|------------------|----------------------|--------------------|-----------------------|----------------------|
-| [Analysis](/docs/build/analyses)   	        | No               | No                   | No                 | N/A 	               | Definition 	      |
+| [Analysis](/docs/build/analyses)   	        | No               | No                   | No                 | Upstream            | Definition 	      |
 | [Data test](/docs/build/data-tests)           | Yes              | Yes                  | No                 | Upstream              | Applied & definition |
 | [Exposure](/docs/build/exposures)             | No               | No                   | No                 | Upstream              | Definition           |
 | [Group](/docs/build/groups)                   | No               | No                   | No                 | Downstream            | Definition           |
