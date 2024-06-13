@@ -1,6 +1,6 @@
 extends: existence
 
-message: "Repetitive word found: '$0'. Consider revising."
+message: "Repetitive word found: '%s'. Consider revising."
 level: warning
 # Regex to match repetitive words (e.g., "the the", "and and")
 ignorecase: true

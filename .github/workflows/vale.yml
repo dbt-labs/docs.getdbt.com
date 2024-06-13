@@ -62,9 +62,11 @@ jobs:
         tool_name: Vale
         level: "warning"
         filter_mode: "diff_context"
+        reporter: github-pr-review
         fail_on_error: "false"
         reviewdog_flags: ""
         cleanup: "true"
+        reviewdog_flags: "--diff='git diff HEAD^'"
 
     - name: Run Reviewdog Suggestion
       run: |
