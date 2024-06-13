@@ -13,8 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
-
+        fetch-depth: 0  # Fetch all history so we can access all commits}
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -32,6 +31,14 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
+
+    - name: Run Vale and Print JSON Output
+      run: |
+        for file in $CHANGED_FILES; do
+          /home/runner/vale --output=JSON $file > vale_output.json
+          echo "Vale output for $file:"
+          cat vale_output.json
+        done
 
     - name: Create RDJSON Conversion Script
       run: |
