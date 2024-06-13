@@ -32,7 +32,7 @@ jobs:
     - name: Install Vale
       uses: errata-ai/vale-action@v2
 
-      - name: Run Vale and Reviewdog on Changed Files
+    - name: Run Vale and Reviewdog on Changed Files
       run: |
         for file in $CHANGED_FILES; do
           /home/runner/vale --output=JSON $file > vale_output.json
