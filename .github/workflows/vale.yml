@@ -15,12 +15,22 @@ jobs:
       with:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
+    - name: Get changed files
+      id: changed-files
+      run: |
+        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
+        CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
+        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+        echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split("\n")[:-1]')"
+
+    - name: Print Changed Files
+      run: echo $CHANGED_FILES
+
     - name: Install Vale
       uses: errata-ai/vale-action@v2
-
-    - name: Install Reviewdog
-      run: |
-        curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin
 
     - name: Run Vale and Reviewdog on Changed Files
       run: |
