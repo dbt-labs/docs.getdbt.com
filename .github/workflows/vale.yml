@@ -36,7 +36,7 @@ jobs:
       run: |
         for file in $CHANGED_FILES; do
           /home/runner/vale --output=JSON $file > vale_output.json
-          jq --arg file "$file" -c '[.[] | .file = $file | .]' vale_output.json | jq -s '.' > rdjson_output.json
+          jq --arg file "$file" -c 'map(. + {file: $file})' vale_output.json > rdjson_output.json
           cat rdjson_output.json
           /home/runner/reviewdog -f=rdjson -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.json
         done
