@@ -5,6 +5,14 @@ sidebar: "SSO Auth0 Migration"
 description: "Required actions for migrating to Auth0 for SSO services on dbt Cloud."
 ---
 
+:::note
+
+This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at [sales@getdbt.com](mailto::sales@getdbt.com).
+
+The SSO migration instructions apply to multi-tenant Enterprise deployments only. Single-tenant Virtual Private users should [email dbt Cloud Support](mailto::support@getdbt.com) to set up or update their SSO configuration.
+
+:::
+
 dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by dbt Cloud. These changes will require some action from customers with SSO configured in dbt Cloud today, and this guide will outline the necessary changes for each environment. 
 
 If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Microsoft Entra ID (formerly Azure AD)](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) single sign-on services.
