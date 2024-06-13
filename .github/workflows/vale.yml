@@ -34,7 +34,20 @@ jobs:
 
     - name: Create RDJSON Conversion Script
       run: |
-        echo 'jq -r '"'"'to_entries[] | .value[] | {message: .Message, location: {path: .file, range: {start: {line: .Line, column: (.Span[0] + 1)}, end: {line: .Line, column: (.Span[1] + 1)}}}, severity: .Severity, code: {value: .Check, url: .Link}}'"'"'' > convert-to-rdjson.jq
+        cat << 'EOF' > convert-to-rdjson.jq
+        to_entries[] | .value[] | {
+          message: .Message,
+          location: {
+            path: .file,
+            range: {
+              start: { line: .Line, column: (.Span[0] + 1) },
+              end: { line: .Line, column: (.Span[1] + 1) }
+            }
+          },
+          severity: .Severity,
+          code: { value: .Check, url: .Link }
+        }
+        EOF
 
     - name: Run Vale and Reviewdog on Changed Files
       run: |
