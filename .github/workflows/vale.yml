@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
+        fetch-depth: 0
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -37,11 +37,25 @@ jobs:
       with:
         reviewdog_version: latest
 
-    - name: Run Vale and Create Suggestions
+    - name: Run Vale on changed files
+      run: |
+        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
+          echo "Running Vale on $file"
+          vale --output=JSON $file > vale_output.json
+          cat vale_output.json
+        done
+
+    - name: Process Vale output
       run: |
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           vale --output=JSON $file > vale_output.json
-          jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: .Suggestions[0]}' vale_output.json > rdjson_output.jsonl
+          cat vale_output.json | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: .Suggestions[0]}' > rdjson_output.jsonl
+          cat rdjson_output.jsonl
+        done
+
+    - name: Run Reviewdog with processed output
+      run: |
+        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           cat rdjson_output.jsonl | reviewdog -f=rdjsonl -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
       env:
