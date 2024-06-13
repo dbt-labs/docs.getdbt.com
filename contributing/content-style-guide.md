@@ -533,7 +533,7 @@ terminal | shell
 username | login
 dbt Cloud CLI | CLI, dbt CLI
 dbt Core | CLI, dbt CLI
-</div></b>
+</b>
 
 Note, let's make sure we're talking to our readers and keep them close to the content and documentation (second person). 
 

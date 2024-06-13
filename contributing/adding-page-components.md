@@ -4,12 +4,12 @@ You can use the following components to provide code snippets for each supported
 
 Identify code by labeling with the warehouse names:
 
-```mdx
+```code
         <WHCode>
 
         <div warehouse="warehouse#1">
 
-        ```sql
+        ```
         select * from `dbt-tutorial.jaffle_shop.customers`
         ```
 
