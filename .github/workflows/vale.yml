@@ -9,6 +9,12 @@ jobs:
   vale:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      checks: write
+      issues: write
+      pull-requests: write
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -37,15 +43,18 @@ jobs:
       with:
         reviewdog_version: latest
 
-    - name: Run Vale on changed files with reviewdog
+    - name: Run Vale and Generate Suggestions
       run: |
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
-          vale --output=JSON $file | reviewdog -f=vale -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
+          vale --output=line $file > vale_output.patch
+          if [ -s vale_output.patch ]; then
+            reviewdog -f=diff -name="Vale Suggestions" -reporter=github-pr-review -level=warning -filter-mode=diff_context < vale_output.patch
+          fi
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.SNIPPET_VALIDATION }}
 
-    - name: Run Vale with code suggester
+    - name: Run Vale with Code Suggester
       uses: reviewdog/action-suggester@v1
       with:
         github_token: ${{ secrets.SNIPPET_VALIDATION }}
