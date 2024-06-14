@@ -6,7 +6,7 @@ import Card from '@site/src/components/card';
 import BlogPostCard from '@site/src/components/blogPostCard';
 import Hero from '@site/src/components/hero';
 import PostCarousel from '@site/src/components/postCarousel';
-import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
+import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/p/blog-archive-f05.json'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { getSpotlightMember } from '../utils/get-spotlight-member';
 
@@ -19,17 +19,19 @@ function getBanner() {
 
 function Home() {
   
-  const recentBlogData = allBlogData.blogPosts.slice(0, 6).reduce((accumulator, currentValue) => {
-    let postMetaData = {
-      title: currentValue.metadata.title,
-      date: currentValue.metadata.formattedDate,
-      readingTime: Math.round(currentValue.metadata.readingTime),
-      description: currentValue.metadata.description,
-      link: currentValue.metadata.permalink,
-    }
-    accumulator.push(postMetaData)
-    return accumulator
-  }, [])
+  const recentBlogData = allBlogData?.archive?.blogPosts
+    ?.slice(0, 6)
+    .reduce((accumulator, currentValue) => {
+      let postMetaData = {
+        title: currentValue.metadata.title,
+        date: currentValue.metadata.formattedDate,
+        readingTime: Math.round(currentValue.metadata.readingTime),
+        description: currentValue.metadata.description,
+        link: currentValue.metadata.permalink,
+      };
+      accumulator.push(postMetaData);
+      return accumulator;
+    }, []);
 
   const featuredResource = {
     title: "How we structure our dbt projects",

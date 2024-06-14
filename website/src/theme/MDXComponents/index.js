@@ -1,5 +1,5 @@
 import React from 'react';
-import MDXHead from '@theme/MDXComponents/Head';
+import Head from "@docusaurus/Head";
 import MDXCode from '@theme/MDXComponents/Code';
 import MDXPre from '@theme/MDXComponents/Pre';
 import MDXDetails from '@theme/MDXComponents/Details';
@@ -48,7 +48,7 @@ import Expandable from '@site/src/components/expandable';
 import ConfettiTrigger from '@site/src/components/confetti/';
 
 const MDXComponents = {
-  head: MDXHead,
+  Head,
   code: MDXCode,
   a: MDXA,
   pre: MDXPre,
