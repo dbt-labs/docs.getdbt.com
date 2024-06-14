@@ -145,7 +145,7 @@ packages:
 
 <VersionBlock lastVersion="1.6">
 
-We **strongly recommend** ["pinning" your packages](#pinning-packages)
+We **strongly recommend** ["pinning" your packages](#pinning-packages) to a specific release by specifying a release name.
 
 </VersionBlock>
 
