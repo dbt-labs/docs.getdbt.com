@@ -42,20 +42,28 @@ jobs:
         echo "Vale outputs:"
         ls -l
 
-    - name: Apply Vale edits
+    - name: Apply Vale edits and save originals
       run: |
+        mkdir -p original_files
+        mkdir -p corrected_files
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
-          mv $file "${file}.original"
-          mv "vale_output_${file//\//_}_edit.md" $file
+          cp $file "original_files/${file//\//_}.original"
+          cp "vale_output_${file//\//_}_edit.md" "corrected_files/${file//\//_}"
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+
+    - name: Upload original files
+      uses: actions/upload-artifact@v3
+      with:
+        name: original-files
+        path: original_files/
 
     - name: Upload corrected files
       uses: actions/upload-artifact@v3
       with:
         name: corrected-files
-        path: '*.md'
+        path: corrected_files/
 
   suggest: # Reviewdog suggestion job
     runs-on: ubuntu-latest
@@ -64,6 +72,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: Download original files
+      uses: actions/download-artifact@v3
+      with:
+        name: original-files
 
     - name: Download corrected files
       uses: actions/download-artifact@v3
@@ -86,9 +99,9 @@ jobs:
 
     - name: Run Reviewdog with corrected files
       run: |
-        for file in $(ls *.md.original); do
-          original="${file}"
-          corrected="${file%.original}"
+        for file in original_files/*.original; do
+          original="$file"
+          corrected="corrected_files/$(basename "$file" .original)"
           diff_output=$(diff -u "$original" "$corrected")
           if [[ -n "$diff_output" ]]; then
             echo "$diff_output" | reviewdog -f=diff -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
