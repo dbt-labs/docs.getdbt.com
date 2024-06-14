@@ -4,7 +4,7 @@ description: "GitHub and dbt Cloud permissions error"
 sidebar_label: "GitHub and dbt Cloud permissions error"
 ---
 
-If you're seeing a `This account needs to accept the latest permissions for the dbt Cloud GitHub App` error in the dbt Cloud IDE &mdash; this usually occurs when the permissions for the dbt Cloud GitHub App are out of date.
+If you see the error `This account needs to accept the latest permissions for the dbt Cloud GitHub App` in the dbt Cloud IDE &mdash; this usually occurs when the permissions for the dbt Cloud GitHub App are out of date.
 
 To solve this issue, you'll need to update the permissions for the dbt Cloud GitHub App in your GitHub account. Here's a couple of ways you can do it:
 
