@@ -182,7 +182,7 @@ Each cookbook recipe should include objectives, a clear use case, prerequisites,
 
 ### Titles for cookbook recipe content
 
-Cookbook recipe headers should always start with a “How to create [topic]”.
+Cookbook recipe headers should always start with a “How to create [topic]” or "How to [verb] [topic]".
 
 ### Examples of cookbook recipe content
 
