@@ -10,7 +10,7 @@ To solve this issue, you'll need to update the permissions for the dbt Cloud Git
 
 #### First workaround
 
-You'll need to reach out to your Github organization admin to update the permissions for the dbt Cloud GitHub App.
+A Github organization admin will need to update the permissions for the dbt Cloud GitHub App.
 
 1. Go directly to GitHub to determine if any updated permissions are required.
 2. In GitHub, go to your organization **Settings** (or personal if using a non-organization account).
