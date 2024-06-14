@@ -168,7 +168,7 @@ Examples
 TBD
 
 ## Cookbook recipes
-The dbt cookbook recipe is a collection of scenario-based, real-world examples for building with the dbt. Cookbook recipes offer practical, scenario-based examples for using specific features. 
+The dbt Cookbook recipes are a collection of scenario-based, real-world examples for building with the dbt. Cookbook recipes offer practical, scenario-based examples for using specific features. 
 
 Most code examples are written in SQL, though you can apply the concepts in [Python](/docs/build/python-models) as well.
 
