@@ -13,6 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Download Vale results
+      uses: actions/download-artifact@v3
+      with:
+        name: vale-results
+
     - name: Run Reviewdog Suggestion Action
       uses: reviewdog/action-suggester@v1
       with:
@@ -23,3 +28,9 @@ jobs:
         fail_on_error: "false"
         reviewdog_flags: ""
         cleanup: "true"
+
+    - name: Run Reviewdog with Vale results
+      run: |
+        reviewdog -f=rdjsonl -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.jsonl
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
