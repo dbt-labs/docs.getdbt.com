@@ -60,33 +60,33 @@ For commonly asked billings questions, refer to the dbt Cloud [pricing page](htt
 
 <details>
   <summary>How does billing work?</summary>
-  <div>
-    <div>Team plans are billed monthly on the credit card used to sign up, based on [developer seat count and usage](/docs/cloud/billing). You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> > <b>Billing page</b>. <br></br><br></br>
-    
-    Enterprise plan customers are billed annually based on the number of developer seats, as well as any additional services + features in your chosen plan. </div>
-    </div>
+
+  Team plans are billed monthly on the credit card used to sign up, based on <a href="/docs/cloud/billing">developer seat count and usage</a>. You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> &gt; <b>Billing page</b>.
+
+  Enterprise plan customers are billed annually based on the number of developer seats, as well as any additional services + features in your chosen plan.
+
 </details>
 <details>
   <summary>Can I upgrade or downgrade my plan?</summary>
-  <div>
-    <div>Yes, you can upgrade or downgrade at any time. Account Owners can access their dedicated billing section via the account settings page.<br></br><br></br>
+  
+  Yes, you can upgrade or downgrade at any time. Account Owners can access their dedicated billing section via the account settings page.
     
-    If you’re not sure which plan is right for you, get in touch and we’ll be happy to help you find one that fits your needs.</div>
-    </div>
+  If you’re not sure which plan is right for you, get in touch and we’ll be happy to help you find one that fits your needs.
+
 </details>
 <details>
   <summary>Can I pay by invoice?</summary>
-    <div>
-      <div>Currently, dbt Cloud Team plan payments must be made with a credit card, and by default they will be billed monthly based on the number of [developer seats and usage](/docs/cloud/billing). <br></br><br></br>
-      
-      We don’t have any plans to do invoicing for Team plan accounts in the near future, but we do currently support invoices for companies on the dbt Cloud Enterprise plan. Feel free to <a href="https://www.getdbt.com/contact/">contact</a> us to build your Enterprise pricing plan.</div> 
-    </div> 
+  
+  Currently, dbt Cloud Team plan payments must be made with a credit card, and by default they will be billed monthly based on the number of <a href="/docs/cloud/billing">developer seats and usage</a>.
+  
+  We don’t have any plans to do invoicing for Team plan accounts in the near future, but we do currently support invoices for companies on the dbt Cloud Enterprise plan. Feel free to <a href="https://www.getdbt.com/contact/">contact</a> us to build your Enterprise pricing plan.
+
 </details>
 <details>
   <summary>Why did I receive a <b>Failed payment</b> error email?</summary>
-  <div>
-    <div>This means we were unable to charge the credit card you have on file, or you have not provided an updated card for payment. If you're a current account owner with a card on file, contact your credit card issuer to inquire as to why your card was declined or update the credit card on your account.<br></br><br></br>
-    
-    Your Account Owner can update payment details in the <b>Account Settings</b> -> <b>Billing</b> page.  Click <b>Edit</b> next to your card details, double check your information is up-to-date, and we'll give it another go at the next billing run.</div>
-    </div>
+  
+  This means we were unable to charge the credit card you have on file, or you have not provided an updated card for payment. If you're a current account owner with a card on file, contact your credit card issuer to inquire as to why your card was declined or update the credit card on your account.
+
+  Your Account Owner can update payment details in the <b>Account Settings</b> -> <b>Billing</b> page. Click <b>Edit</b> next to your card details, double check your information is up-to-date, and we'll give it another go at the next billing run.
+
 </details>

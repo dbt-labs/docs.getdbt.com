@@ -91,7 +91,7 @@ Let’s generate a [Databricks personal access token (PAT)](https://docs.databri
 For your development credentials/profiles.yml:
 
 1. Set your default catalog to dev.
-2. Your developer schema should be named after yourself. We recommend dbt_<first_name_initial><last_name>.
+2. Your developer schema should be named after yourself. We recommend dbt_&lt;first_name_initial&gt;&lt;last_name&gt;.
 
 During your first invocation of `dbt run`, dbt will create the developer schema if it doesn't already exist in the dev catalog.
 

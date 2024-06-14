@@ -800,7 +800,7 @@ Archived release notes for dbt Cloud from 2023
     - `created_at` and `-created_at`
     - `finished_at` and `-finished_at`
 
-    We recommend that you change your API requests to https://<YOUR_ACCESS_URL>/api/v2/accounts/{accountId}/runs/ to use a supported `order_by` before this date. 
+    We recommend that you change your API requests to https://&lt;YOUR_ACCESS_URL&gt;/api/v2/accounts/\{accountId\}/runs/ to use a supported `order_by` before this date. 
 
     :::info Access URLs
  
@@ -810,7 +810,7 @@ Archived release notes for dbt Cloud from 2023
 
     For more info, refer to our [documentation](/dbt-cloud/api-v2-legacy#tag/Runs/operation/listRunsForAccount).
 
- </Expandable>
+  </Expandable>
 
 - <Expandable alt_header='Scheduler optmization'>
 

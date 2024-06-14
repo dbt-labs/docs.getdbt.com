@@ -57,7 +57,7 @@ date_trunc(<date/time field>, <date part>)
 ```
 
 > **A note on BigQuery:**
-> BigQuery’s DATE_TRUNC function supports the truncation of date types, whereas Snowflake, Redshift, and Databricks’ <date/time field> can be a date or timestamp data type. BigQuery also supports DATETIME_TRUNC and TIMESTAMP_TRUNC functions to support truncation of more granular date/time types.
+> BigQuery’s DATE_TRUNC function supports the truncation of date types, whereas Snowflake, Redshift, and Databricks’ `date/time field` can be a date or timestamp data type. BigQuery also supports DATETIME_TRUNC and TIMESTAMP_TRUNC functions to support truncation of more granular date/time types.
 
 ## A dbt macro to remember
 

@@ -41,40 +41,28 @@ One solution I proposed back in 2019 is hiring a [data product manager](https://
 
 <table>
   <tr>
-   <td>Don’t
-   </td>
-   <td>Do
-   </td>
+   <td>Don’t</td>
+   <td>Do</td>
   </tr>
   <tr>
-   <td>Think only within the constraints of your current tooling.
-   </td>
-   <td>First define the ideal user experience, irrespective of tooling.  
-   </td>
+   <td>Think only within the constraints of your current tooling.</td>
+   <td>First define the ideal user experience, irrespective of tooling.</td>
   </tr>
   <tr>
-   <td>Think users can simply build their own solution given a self-service interface.
-   </td>
-   <td>Recognize that hard ongoing problems require a design-focused analyst.
-   </td>
+   <td>Think users can simply build their own solution given a self-service interface.</td>
+   <td>Recognize that hard ongoing problems require a design-focused analyst.</td>
   </tr>
   <tr>
-   <td>Stop at the data visualization.
-   </td>
-   <td>Think about how to group visualizations, the interactions, and purpose-built exploratory flows.
-   </td>
+   <td>Stop at the data visualization.</td>
+   <td>Think about how to group visualizations, the interactions, and purpose-built exploratory flows.</td>
   </tr>
   <tr>
-   <td>Ignore look and feel.
-   </td>
-   <td>Think about the overall aesthetics of your output.
-   </td>
+   <td>Ignore look and feel.</td>
+   <td>Think about the overall aesthetics of your output.</td>
   </tr>
   <tr>
-   <td>Just respond to tickets and user requests.
-   </td>
-   <td>Truly try to understand the problem and design the appropriate solution.
-   </td>
+   <td>Just respond to tickets and user requests.</td>
+   <td>Truly try to understand the problem and design the appropriate solution.</td>
   </tr>
 </table>
 
@@ -104,58 +92,40 @@ Here are a few examples:
 
 <table>
   <tr>
-   <td><strong>Traditional Dashboards</strong>
-   </td>
-   <td><strong>Analytical Applications</strong>
-   </td>
+   <td><strong>Traditional Dashboards</strong></td>
+   <td><strong>Analytical Applications</strong></td>
   </tr>
   <tr>
-   <td>Built for generic use cases
-   </td>
-   <td>Purpose-built for specific use cases
-   </td>
+   <td>Built for generic use cases</td>
+   <td>Purpose-built for specific use cases</td>
   </tr>
   <tr>
-   <td>Standard dashboard interactions
-   </td>
-   <td>Interactive based on the desired workflow
-   </td>
+   <td>Standard dashboard interactions</td>
+   <td>Interactive based on the desired workflow</td>
   </tr>
   <tr>
-   <td>Fixed, static layout
-   </td>
-   <td>Dynamic layout determined by logic
-   </td>
+   <td>Fixed, static layout</td>
+   <td>Dynamic layout determined by logic</td>
   </tr>
   <tr>
-   <td>Each element is a tile
-   </td>
-   <td>Elements can be grouped and purposefully-arranged
-   </td>
+   <td>Each element is a tile</td>
+   <td>Elements can be grouped and purposefully-arranged</td>
   </tr>
   <tr>
-   <td>Filters are global
-   </td>
-   <td>Users have preferences and their own defaults
-   </td>
+   <td>Filters are global</td>
+   <td>Users have preferences and their own defaults</td>
   </tr>
   <tr>
-   <td>Minimal software development lifecycle
-   </td>
-   <td>Strong SDLC to promote user trust
-   </td>
+   <td>Minimal software development lifecycle</td>
+   <td>Strong SDLC to promote user trust</td>
   </tr>
   <tr>
-   <td>Look and feel are ignored
-   </td>
-   <td>Custom look and feel to match company products
-   </td>
+   <td>Look and feel are ignored</td>
+   <td>Custom look and feel to match company products</td>
   </tr>
   <tr>
-   <td>Low bar for performance
-   </td>
-   <td>High bar for performance
-   </td>
+   <td>Low bar for performance</td>
+   <td>High bar for performance</td>
   </tr>
 </table>
 

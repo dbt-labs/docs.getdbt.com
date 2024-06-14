@@ -292,7 +292,7 @@ You can always uninstall the dbt Cloud CLI to return to using dbt Core.
 
 To create an alias for the dbt Cloud CLI: <br />
 
-1. Open your shell's profile configuration file. Depending on your shell and system, this could be <code>~/.bashrc</code>, <code>~/.bash_profile</code>, <code>~/.zshrc</code>, or another file.<br />
+1. Open your shell's profile configuration file. Depending on your shell and system, this could be `~/.bashrc`, `~/.bash_profile`, `~/.zshrc`, or another file.<br />
 
 2. Add an alias that points to the dbt Cloud CLI binary. For example:<code>alias dbt-cloud="path_to_dbt_cloud_cli_binary</code>
    

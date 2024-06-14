@@ -4,12 +4,12 @@ You can use the following components to provide code snippets for each supported
 
 Identify code by labeling with the warehouse names:
 
-```js
+```code
         <WHCode>
 
         <div warehouse="warehouse#1">
 
-        ```sql
+        ```
         select * from `dbt-tutorial.jaffle_shop.customers`
         ```
 
@@ -17,7 +17,7 @@ Identify code by labeling with the warehouse names:
 
         <div warehouse="warehouse#2">
 
-        ```sql
+        ```
         select * from default.jaffle_shop_customers
         ```
 
@@ -45,11 +45,11 @@ Identify code and code files by labeling with the component they are describing:
 
         <File name='models/<modelname>.sql'>
 
-        ```sql
+        ```
 
-        {{ config(
+        \{\{ config(
 
-        ) }}
+        ) \}\}
 
         select ...
 
@@ -60,9 +60,9 @@ Identify code and code files by labeling with the component they are describing:
 
         <File name='dbt_project.yml'>
 
-        ```yml
+        ```
         models:
-        [<resource-path>](/reference/resource-configs/resource-path):
+        [resource-path](/reference/resource-configs/resource-path):
 
 
         ```
@@ -75,9 +75,9 @@ Identify code and code files by labeling with the component they are describing:
 
         <File name='dbt_project.yml'>
 
-        ```yml
+        ```
         sources:
-        [<resource-path>](/reference/resource-configs/resource-path):
+        [resource-path](/reference/resource-configs/resource-path):
 
 
         ```

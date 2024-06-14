@@ -17,7 +17,7 @@ The `alias` config can be used to change the name of a model's identifier in the
 | Model | Config | Database Identifier |
 | ----- | ------ | ------------------- |
 | ga_sessions.sql | &lt;None&gt; | "analytics"."ga_sessions" |
-| ga_sessions.sql | {{ config(alias='sessions') }} | "analytics"."sessions" |
+| ga_sessions.sql | \{\{ config(alias='sessions') \}\} | "analytics"."sessions" |
 
 To configure an alias for a model, supply a value for the model's `alias` configuration parameter. For example:
 

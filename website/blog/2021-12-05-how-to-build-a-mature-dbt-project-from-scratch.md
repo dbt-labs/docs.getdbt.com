@@ -85,7 +85,7 @@ The most important thing we’re introducing when your project is an infant is t
 
 * Configure your first [sources](/docs/build/sources)
 
-* Introduce modularity with [{{ ref() }}](/reference/dbt-jinja-functions/ref) and [{{ source() }}](/reference/dbt-jinja-functions/source)
+* Introduce modularity with [\{\{ ref() \}\}](/reference/dbt-jinja-functions/ref) and [\{\{ source() \}\}](/reference/dbt-jinja-functions/source)
 
 * [Document](/docs/build/documentation) and [test](/docs/build/data-tests) your first models
 
@@ -99,9 +99,9 @@ Specifically, now is when it's useful to introduce **_modularity_** to our proje
 
 We’re going to:
 
-* Break out reused code into separate models and use [{{ ](/reference/dbt-jinja-functions/ref)[ref](/reference/dbt-jinja-functions/ref)[() }}](/reference/dbt-jinja-functions/ref) to build dependencies
+* Break out reused code into separate models and use [\{\{ ref() }}](/reference/dbt-jinja-functions/ref) to build dependencies
 
-* Use the[ {{ source() }}](/reference/commands/source) macro to declare our raw data dependencies
+* Use the[ \{\{ source() \}\}](/reference/commands/source) macro to declare our raw data dependencies
 
 * Dip our toes into testing and documenting our models
 

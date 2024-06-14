@@ -35,60 +35,36 @@ Let’s take this to an example. Below, there is a table you pull from an ad pla
 
 <table>
   <tr>
-   <td><b>calendar_date</b>
-   </td>
-   <td><b>ad_id</b>
-   </td>
-   <td><b>impressions</b>
-   </td>
-   <td><b>spend</b>
-   </td>
-   <td><b>clicks</b>
-   </td>
-   <td><b>conversions</b>
-   </td>
+   <td><b>calendar_date</b></td>
+   <td><b>ad_id</b></td>
+   <td><b>impressions</b></td>
+   <td><b>spend</b></td>
+   <td><b>clicks</b></td>
+   <td><b>conversions</b></td>
   </tr>
   <tr>
-   <td>2022-05-16
-   </td>
-   <td>212
-   </td>
-   <td>88744
-   </td>
-   <td>4523.00
-   </td>
-   <td>9432
-   </td>
-   <td>166
-   </td>
+   <td>2022-05-16</td>
+   <td>212</td>
+   <td>88744</td>
+   <td>4523.00</td>
+   <td>9432</td>
+   <td>166</td>
   </tr>
   <tr>
-   <td>2022-05-16
-   </td>
-   <td>214
-   </td>
-   <td>323
-   </td>
-   <td>6.49
-   </td>
-   <td>4
-   </td>
-   <td>0
-   </td>
+   <td>2022-05-16</td>
+   <td>214</td>
+   <td>323</td>
+   <td>6.49</td>
+   <td>4</td>
+   <td>0</td>
   </tr>
   <tr>
-   <td>2022-05-05
-   </td>
-   <td>212
-   </td>
-   <td>125600
-   </td>
-   <td>117244.56
-   </td>
-   <td>17318
-   </td>
-   <td>56
-   </td>
+   <td>2022-05-05</td>
+   <td>212</td>
+   <td>125600</td>
+   <td>117244.56</td>
+   <td>17318</td>
+   <td>56</td>
   </tr>
 </table>
 
@@ -108,68 +84,40 @@ After executing this, the table would now have the `unique_id` field now uniquel
 
 <table>
   <tr>
-   <td><b>unique_id</b>
-   </td>
-   <td><b>calendar_date</b>
-   </td>
-   <td><b>ad_id</b>
-   </td>
-   <td><b>impressions</b>
-   </td>
-   <td><b>spend</b>
-   </td>
-   <td><b>clicks</b>
-   </td>
-   <td><b>conversions</b>
-   </td>
+   <td><b>unique_id</b></td>
+   <td><b>calendar_date</b></td>
+   <td><b>ad_id</b></td>
+   <td><b>impressions</b></td>
+   <td><b>spend</b></td>
+   <td><b>clicks</b></td>
+   <td><b>conversions</b></td>
   </tr>
   <tr>
-   <td>62aef884fbe3470ce7d9a92140b09b17
-   </td>
-   <td>2022-05-16
-   </td>
-   <td>212
-   </td>
-   <td>88744
-   </td>
-   <td>4523.00
-   </td>
-   <td>9432
-   </td>
-   <td>166
-   </td>
+   <td>62aef884fbe3470ce7d9a92140b09b17</td>
+   <td>2022-05-16</td>
+   <td>212</td>
+   <td>88744</td>
+   <td>4523.00</td>
+   <td>9432</td>
+   <td>166</td>
   </tr>
   <tr>
-   <td>ea385f7a5e560ef4d8a78f7d913927e4
-   </td>
-   <td>2022-05-16
-   </td>
-   <td>214
-   </td>
-   <td>323
-   </td>
-   <td>6.49
-   </td>
-   <td>4
-   </td>
-   <td>0
-   </td>
+   <td>ea385f7a5e560ef4d8a78f7d913927e4</td>
+   <td>2022-05-16</td>
+   <td>214</td>
+   <td>323</td>
+   <td>6.49</td>
+   <td>4</td>
+   <td>0</td>
   </tr>
   <tr>
-   <td>53a33f257d1d4f2446469ac5adad1c0c
-   </td>
-   <td>2022-05-05
-   </td>
-   <td>212
-   </td>
-   <td>125600
-   </td>
-   <td>117244.56
-   </td>
-   <td>17318
-   </td>
-   <td>56
-   </td>
+   <td>53a33f257d1d4f2446469ac5adad1c0c</td>
+   <td>2022-05-05</td>
+   <td>212</td>
+   <td>125600</td>
+   <td>117244.56</td>
+   <td>17318</td>
+   <td>56</td>
   </tr>
 </table>
 
@@ -185,36 +133,24 @@ Depending on your data warehouse, there’s several cryptographic hashing option
 
 <table>
   <tr>
-   <td><strong>Hashing algorithm</strong>
-   </td>
-   <td><strong>Bit length</strong>
-   </td>
-   <td><strong>Known collisions?</strong>
-   </td>
+   <td><strong>Hashing algorithm</strong></td>
+   <td><strong>Bit length</strong></td>
+   <td><strong>Known collisions?</strong></td>
   </tr>
   <tr>
-   <td>HASH
-   </td>
-   <td>64 bits
-   </td>
-   <td>Yes, past ~4 billion elements
-   </td>
+   <td>HASH</td>
+   <td>64 bits</td>
+   <td>Yes, past ~4 billion elements</td>
   </tr>
   <tr>
-   <td>MD5
-   </td>
-   <td>128 bits
-   </td>
-   <td>Yes, but <a href="https://stackoverflow.com/questions/201705/how-many-random-elements-before-md5-produces-collisions">incredibly unlikely</a>
-   </td>
+   <td>MD5</td>
+   <td>128 bits</td>
+   <td>Yes, but <a href="https://stackoverflow.com/questions/201705/how-many-random-elements-before-md5-produces-collisions">incredibly unlikely</a></td>
   </tr>
   <tr>
-   <td>SHA256
-   </td>
-   <td>256 bits
-   </td>
-   <td>No
-   </td>
+   <td>SHA256</td>
+   <td>256 bits</td>
+   <td>No</td>
   </tr>
 </table>
 
