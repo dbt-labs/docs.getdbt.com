@@ -24,7 +24,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 :::info Why changes to previous behavior?
 
-This release includes significant new features, and rework to `dbt-core`'s CLI and initialization flow. As part of refactoring its internals, we made a handful of changes to runtime configuration. The net result of these changes is more consistent & practical configuration options, and a more legible codebase.
+This release includes significant new features, and rework to `dbt-core`'s CLI and initialization flow. As part of refactoring its internals from `argparse` to `click`, we made a handful of changes to runtime configuration. The net result of these changes is more consistent & practical configuration options, and a more legible codebase.
 
 **_Wherever possible, we will provide backward compatibility and deprecation warnings for at least one minor version before actually removing the old functionality._** In those cases, we still reserve the right to fully remove backwards compatibility for deprecated functionality in a future v1.x minor version of `dbt-core`.
 
