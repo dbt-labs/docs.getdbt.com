@@ -34,30 +34,34 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
-        echo "[]" > rdjson_output.jsonl
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           echo "Running Vale on $file"
-          vale --output=JSON $file | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: (.Suggestions[0] // "")}' >> rdjson_output.jsonl || echo "Error processing $file"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.json"
         done
-        echo "Vale output:"
-        cat rdjson_output.jsonl
+        echo "Vale outputs:"
+        ls -l
+
+    - name: Apply Vale edits
+      run: |
+        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
+          mv $file "${file}.original"
+          vale --output=edit $file > $file
+        done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-
-    - name: Check if rdjson_output.jsonl exists
-      run: |
-        if [ -f rdjson_output.jsonl ]; then
-          echo "rdjson_output.jsonl exists."
-        else
-          echo "rdjson_output.jsonl does not exist."
-          exit 1
-        fi
 
     - name: Upload Vale results
       uses: actions/upload-artifact@v3
       with:
         name: vale-results
-        path: rdjson_output.jsonl
+        path: '*.json'
+
+    - name: Upload corrected files
+      uses: actions/upload-artifact@v3
+      with:
+        name: corrected-files
+        path: '*.md'
 
   suggest: # Reviewdog suggestion job
     runs-on: ubuntu-latest
@@ -72,17 +76,13 @@ jobs:
       with:
         name: vale-results
 
+    - name: Download corrected files
+      uses: actions/download-artifact@v3
+      with:
+        name: corrected-files
+
     - name: List downloaded files
       run: ls -l
-
-    - name: Check if rdjson_output.jsonl exists
-      run: |
-        if [ -f rdjson_output.jsonl ]; then
-          echo "rdjson_output.jsonl exists."
-        else
-          echo "rdjson_output.jsonl does not exist."
-          exit 1
-        fi
 
     - name: Run Reviewdog Suggestion Action
       uses: reviewdog/action-suggester@v1
@@ -97,7 +97,13 @@ jobs:
 
     - name: Run Reviewdog with Vale results
       run: |
-        cat rdjson_output.jsonl
-        reviewdog -f=rdjsonl -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.jsonl
+        for file in $(ls *.md.original); do
+          original="${file}"
+          corrected="${file%.original}"
+          diff_output=$(diff -u "$original" "$corrected")
+          if [[ -n "$diff_output" ]]; then
+            echo "$diff_output" | reviewdog -f=diff -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
+          fi
+        done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
