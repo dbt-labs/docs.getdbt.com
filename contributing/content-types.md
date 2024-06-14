@@ -9,7 +9,7 @@ These content types can all form articles. Some content types can form sections 
 * [Procedural](#procedural)
 * [Guide](#guide)
 * [Quickstart](#quickstart-guide)
-* [Cookbook recipes]
+* [Cookbook recipes](#cookbook-recipes)
 
 
 ## Conceptual
