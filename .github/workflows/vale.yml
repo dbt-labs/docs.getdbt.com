@@ -1,4 +1,4 @@
-name: Vale Lint
+name: Lint and Suggest
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - '**/*.md'
 
 jobs:
-  vale:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
@@ -49,3 +49,33 @@ jobs:
       with:
         name: vale-results
         path: rdjson_output.jsonl
+
+  suggest: # Reviewdog suggestion job
+    runs-on: ubuntu-latest
+    needs: vale # This ensures the suggest job runs after the vale job
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Download Vale results
+      uses: actions/download-artifact@v3
+      with:
+        name: vale-results
+
+    - name: Run Reviewdog Suggestion Action
+      uses: reviewdog/action-suggester@v1
+      with:
+        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        tool_name: Vale
+        level: "warning"
+        filter_mode: "diff_context"
+        fail_on_error: "false"
+        reviewdog_flags: ""
+        cleanup: "true"
+
+    - name: Run Reviewdog with Vale results
+      run: |
+        reviewdog -f=rdjsonl -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter < rdjson_output.jsonl
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
