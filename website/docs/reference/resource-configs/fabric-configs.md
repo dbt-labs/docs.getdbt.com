@@ -101,4 +101,5 @@ Not supported at this time.
 
 ## dbt-utils
 
-Not supported at this time
+Not supported at this time. However, dbt-fabric offers some utils macros. Please check out [utils macros](https://github.com/microsoft/dbt-fabric/tree/main/dbt/include/fabric/macros/utils).
+
