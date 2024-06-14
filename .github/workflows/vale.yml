@@ -47,7 +47,9 @@ jobs:
         mkdir -p original_files
         mkdir -p corrected_files
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
+          echo "Copying $file to original_files/${file//\//_}.original"
           cp "$file" "original_files/${file//\//_}.original"
+          echo "Copying vale_output_${file//\//_}_edit.md to corrected_files/${file//\//_}"
           cp "vale_output_${file//\//_}_edit.md" "corrected_files/${file//\//_}"
         done
         echo "Original files:"
@@ -62,12 +64,14 @@ jobs:
       with:
         name: original-files
         path: original_files/
+      continue-on-error: true
 
     - name: Upload corrected files
       uses: actions/upload-artifact@v3
       with:
         name: corrected-files
         path: corrected_files/
+      continue-on-error: true
 
   suggest: # Reviewdog suggestion job
     runs-on: ubuntu-latest
@@ -88,7 +92,11 @@ jobs:
         name: corrected-files
 
     - name: List downloaded files
-      run: ls -l
+      run: |
+        echo "Original files:"
+        ls -l original_files
+        echo "Corrected files:"
+        ls -l corrected_files
 
     - name: Run Reviewdog Suggestion Action
       uses: reviewdog/action-suggester@v1
