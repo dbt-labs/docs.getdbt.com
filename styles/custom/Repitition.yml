@@ -8,3 +8,5 @@ nonword: true
 tokens:
   - '\b(\w+)\s+\1\b'
 
+edit:
+  - 's/\b(\w+)\s+\1\b/\1/'

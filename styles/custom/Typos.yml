@@ -9,3 +9,11 @@ swap:
   - seperate: separate
   - occured: occurred
   - untill: until
+
+edit:
+  - 's/teh/the/g'
+  - 's/recieve/receive/g'
+  - 's/definately/definitely/g'
+  - 's/seperate/separate/g'
+  - 's/occured/occurred/g'
+  - 's/untill/until/g'
