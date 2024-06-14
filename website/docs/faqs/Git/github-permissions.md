@@ -17,7 +17,7 @@ A Github organization admin will need to update the permissions for the dbt Clou
 3. Then navigate to **Applications** to identify any necessary permission changes.
 For more info on GitHub permissions, refer to [access permissions](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
 
-#### Second workaround
+#### Disconnect GitHub
 
 Disconnect the GitHub and dbt Cloud integration in dbt Cloud.
 
