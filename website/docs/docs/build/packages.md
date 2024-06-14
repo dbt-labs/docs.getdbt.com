@@ -140,15 +140,19 @@ packages:
 ### Pinning packages
 
 <VersionBlock lastVersion="1.6">
+
 We **strongly recommend** "pinning" your package to a specific release by specifying a tagged release name or a specific commit hash.
 
 If you do not provide a revision, or if you use the main branch, then any updates to the package will be incorporated into your project the next time you run `dbt deps`. While we generally try to avoid making breaking changes to these packages, they are sometimes unavoidable. Pinning a package revision helps prevent your code from changing without your explicit approval.
 
 To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/dbt-labs/dbt-utils/releases).
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.7">
+
 Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. The `package-lock.yml` file contains a record of all packages installed and, if subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. For example, if you are using a branch name for the revision, the `package-lock.yml` file will pin to the head commit. If you use a version range, it will pin to the most recent released version. In either case, subsequent commits or versions will **not** be installed. To override this behavior, use `dbt deps --upgrade` or add `package-lock.yml` to your `.gitignore` file.
+
 </VersionBlock>
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a revision (see below).
@@ -311,8 +315,6 @@ When you update a version or revision in your `packages.yml` file, it isn't auto
 When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_packages/` directory. If you want to completely uninstall a package, you should either:
 * delete the package directory in `dbt_packages/`;  or
 * run `dbt clean` to delete _all_ packages (and any compiled models), followed by `dbt deps`.
-
-### Forcing upgrades
 
 ### Configuring packages
 You can configure the models and seeds in a package from the `dbt_project.yml` file, like so:
