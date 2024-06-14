@@ -39,7 +39,7 @@ branch configured in the environment) in your Git repo, this job will get trigge
 
 ## Verify push events in Git
 
-Merge jobs require push events so make sure they've been enabled in your Git provider, especially if you have an already-existing Git integration. However, for a new integration setup, you can skip this check since push events are typically enabled by default. Earlier integrations with Git might have been using different default settings.
+Merge jobs require push events so make sure they've been enabled in your Git provider, especially if you have an already-existing Git integration. However, for a new integration setup, you can skip this check since push events are typically enabled by default. 
 
 <Expandable alt_header="GitHub example" >
 
