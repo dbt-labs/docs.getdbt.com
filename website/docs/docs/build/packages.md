@@ -80,7 +80,11 @@ packages:
     version: [">=0.7.0", "<0.8.0"]
 ```
 
-<VersionBlock firstVersion="1.7">Beginning in v1.7, `dbt deps` "pins" each package by default. See ["Pinning packages"](#pinning-packages) for details.</VersionBlock>
+<VersionBlock firstVersion="1.7">
+
+Beginning in v1.7, `dbt deps` "pins" each package by default. See ["Pinning packages"](#pinning-packages) for details.
+
+</VersionBlock>
 
 Where possible, we recommend installing packages via dbt Hub, since this allows dbt to handle duplicate dependencies. This is helpful in situations such as:
 * Your project uses both the dbt-utils and Snowplow packages; and the Snowplow package _also_ uses the dbt-utils package.
@@ -139,7 +143,17 @@ packages:
     revision: 4e28d6da126e2940d17f697de783a717f2503188
 ```
 
-<VersionBlock lastVersion="1.6">We **strongly recommend** ["pinning" your packages](#pinning-packages)</VersionBlock><VersionBlock firstVersion="1.7">By default, `dbt deps` "pins" each package. See ["Pinning packages"](#pinning-packages) for details.</VersionBlock>
+<VersionBlock lastVersion="1.6">
+
+We **strongly recommend** ["pinning" your packages](#pinning-packages)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+By default, `dbt deps` "pins" each package. See ["Pinning packages"](#pinning-packages) for details.
+
+</VersionBlock>
 
 ### Internally hosted tarball URL
 
