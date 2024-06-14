@@ -40,7 +40,12 @@ jobs:
           cat vale_output.json
           cat vale_output.json | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: .Suggestions[0]}' > rdjson_output.jsonl
           cat rdjson_output.jsonl
-          cat rdjson_output.jsonl | reviewdog -f=rdjsonl -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+
+    - name: Upload Vale results
+      uses: actions/upload-artifact@v3
+      with:
+        name: vale-results
+        path: rdjson_output.jsonl
