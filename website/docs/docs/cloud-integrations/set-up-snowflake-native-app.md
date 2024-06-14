@@ -51,10 +51,6 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
 
     <Lightbox src="/img/docs/cloud-integrations/semantic_layer_configuration.png" width="100%" title="Semantic Layer credentials"/>
 
-1. Identify the default database the environment is connecting to. 
-    1. Select **Deploy > Environments** from the top navigation bar. From the environments list, select the one that was identified in the **Semantic Layer Configuration Details** panel. 
-    1. On the environment's page, click **Settings**. Scroll to the section **Deployment connection**. The listed database is the default for your environment and is also where you will create the schema. Save this information in a temporary location to use later on. 
-
 1. In Snowflake, verify that your SL and deployment user has been granted permission to use Snowflake Cortex. For more information, refer to [Required Privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#required-privileges) in the Snowflake docs. 
     
     By default, all users should have access to Snowflake Cortex. If this is disabled for you, open a Snowflake SQL worksheet and run these statements:
@@ -67,15 +63,6 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     ```
 
     Make sure to replace `SNOWFLAKE.CORTEX_USER`, `DEPLOYMENT_USER`, and `SL_USER` with the appropriate strings for your environment.
-
-1. Create a schema `dbt_sl_llm` in the deployment database. The deployment user needs write access to create the necessary tables in this schema and the SL user needs only read access to it. Open a Snowflake SQL worksheet and run these statements: 
-
-    ```sql
-    create schema YOUR_DEPLOYMENT_DATABASE.dbt_sl_llm;
-    grant select on schema dbt_sl_llm to role SL_USER;
-    ```
-
-    Make sure to replace `YOUR_DEPLOYMENT_DATABASE` and `SL_USER` with the appropriate strings for your environment.
 
 ## Configure dbt Cloud 
 Collect three pieces of information from dbt Cloud to set up the application. 
