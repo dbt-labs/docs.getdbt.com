@@ -1,4 +1,4 @@
-name: Vale Lint
+name: Lint and suggest
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - '**/*.md'
 
 jobs:
-  vale:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
@@ -34,14 +34,10 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
+        echo "[]" > rdjson_output.jsonl
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           echo "Running Vale on $file"
-          vale --output=JSON $file > vale_output.json
-          echo "Vale output for $file:"
-          cat vale_output.json
-          cat vale_output.json | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: (if .Suggestions != null and .Suggestions | length > 0 then .Suggestions[0] else null end)}' > rdjson_output.jsonl
-          echo "Reviewdog JSONL output for $file:"
-          cat rdjson_output.jsonl
+          vale --output=JSON $file | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: (.Suggestions[0] // "")}' >> rdjson_output.jsonl
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
@@ -51,7 +47,6 @@ jobs:
       with:
         name: vale-results
         path: rdjson_output.jsonl
-
 
   suggest: # Reviewdog suggestion job
     runs-on: ubuntu-latest
