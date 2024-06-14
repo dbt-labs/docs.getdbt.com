@@ -1,4 +1,4 @@
-name: Lint and Suggest
+name: Lint and suggest
 
 on:
   pull_request:
@@ -34,12 +34,10 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
+        echo "[]" > rdjson_output.jsonl
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           echo "Running Vale on $file"
-          vale --output=JSON $file > vale_output.json
-          cat vale_output.json
-          cat vale_output.json | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: .Suggestions[0]}' > rdjson_output.jsonl
-          cat rdjson_output.jsonl
+          vale --output=JSON $file | jq -c '.[] | {file: "'$file'", line: .Line, column: .Span[0], message: .Message, suggestion: (.Suggestions[0] // "")}' >> rdjson_output.jsonl
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
