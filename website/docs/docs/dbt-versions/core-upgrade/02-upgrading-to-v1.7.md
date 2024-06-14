@@ -28,8 +28,11 @@ This is a relatively small behavior change, but worth calling out in case you no
 - Don't add a `freshness:` block.
 - Explicitly set `freshness: null`
 
-Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) creates or updates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. The `package-lock.yml` file contains a record of all packages installed and, if subsequent `dbt deps` runs contain no updated packages in `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
+Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) creates or updates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. The `package-lock.yml` file contains a record of all packages installed and, if subsequent `dbt deps` runs contain no updated packages in `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`.
 
+To retain the behavior prior to v1.7, there are two main options:
+1. Use `dbt deps --upgrade` everywhere `dbt deps` was used previously.
+2. Add `package-lock.yml` to your `.gitignore` file.
 
 ## New and changed features and functionality
 
