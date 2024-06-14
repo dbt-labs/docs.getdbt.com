@@ -9,9 +9,5 @@ swap:
   - etc.: and so on
   - N.B.: Note
 
-edit:
-  - 's/e.g./for example/g'
-  - 's/i.e./for example/g'
-  - 's/i.e./that is/g'
-  - 's/etc./and so on/g'
-  - 's/N.B./Note/g'
+action:
+  name: replace
