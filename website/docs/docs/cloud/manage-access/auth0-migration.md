@@ -7,7 +7,7 @@ description: "Required actions for migrating to Auth0 for SSO services on dbt Cl
 
 :::note
 
-This guide describes a feature of the dbt Cloud Enterprise plan. If you want to learn more about an Enterprise plan, contact us at [sales@getdbt.com](mailto::sales@getdbt.com).
+This migration is a feature of the dbt Cloud Enterprise plan. To learn more about an Enterprise plan, contact us at [sales@getdbt.com](mailto::sales@getdbt.com).
 
 For single-tenant Virtual Private Cloud, you should [email dbt Cloud Support](mailto::support@getdbt.com) to set up or update your SSO configuration.
 
