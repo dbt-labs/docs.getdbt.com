@@ -15,7 +15,7 @@ A Github organization admin will need to update the permissions for the dbt Clou
 1. Go directly to GitHub to determine if any updated permissions are required.
 2. In GitHub, go to your organization **Settings** (or personal if using a non-organization account).
 3. Then navigate to **Applications** to identify any necessary permission changes.
-4. For more info on GitHub permissions, refer to [access permissions](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
+For more info on GitHub permissions, refer to [access permissions](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
 
 #### Second workaround
 
