@@ -37,7 +37,8 @@ The following are the prerequisites for dbt Cloud and Snowflake.
 
 - You have **ACCOUNTADMIN** access in Snowflake.
 - Your Snowflake account must have access to the Native App/SPCS integration (PrPr until Summit) and NA/SPCS configurations (PuPr at end of June). If you're unsure, please check with your Snowflake account manager.
-- The Snowflake account must be in an AWS Region or Azure region. 
+- The Snowflake account must be in an AWS Region or Azure region.
+- You have access to Snowflake Cortex via your Snowflake permissions as well as the [region](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability). If you do not, dbt Ask will be broken. 
 
 ## Set up the configuration for Ask dbt
 
