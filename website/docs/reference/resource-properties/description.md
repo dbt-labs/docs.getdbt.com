@@ -157,7 +157,7 @@ A user-defined description. Can be used to document:
 - analyses, and analysis columns
 - macros, and macro arguments
 
-These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/collaborate/documentation) or [dbt Explorer](/docs/collaborate/explore-projects)). 
+These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [dbt Explorer](/docs/collaborate/explore-projects)). 
 
 Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
 
