@@ -8,7 +8,7 @@ If you see the error `This account needs to accept the latest permissions for th
 
 To solve this issue, you'll need to update the permissions for the dbt Cloud GitHub App in your GitHub account. Here's a couple of ways you can do it:
 
-#### First workaround
+#### Update permissions
 
 A Github organization admin will need to update the permissions for the dbt Cloud GitHub App.
 
