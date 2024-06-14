@@ -8,7 +8,7 @@ authors: [ernesto_ongaro, sebastian_stan, filip_byrén]
 tags: [analytics craft, APIs, data ecosystem]
 hide_table_of_contents: false
 
-date: 2024-06-13
+date: 2024-06-14
 is_featured: true
 ---
 
