@@ -37,7 +37,7 @@ jobs:
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
@@ -46,16 +46,10 @@ jobs:
       run: |
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           mv $file "${file}.original"
-          vale --output=edit $file > $file
+          mv "vale_output_${file//\//_}_edit.md" $file
         done
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-
-    - name: Upload Vale results
-      uses: actions/upload-artifact@v3
-      with:
-        name: vale-results
-        path: '*.json'
 
     - name: Upload corrected files
       uses: actions/upload-artifact@v3
@@ -70,11 +64,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Download Vale results
-      uses: actions/download-artifact@v3
-      with:
-        name: vale-results
 
     - name: Download corrected files
       uses: actions/download-artifact@v3
@@ -95,7 +84,7 @@ jobs:
         reviewdog_flags: ""
         cleanup: "true"
 
-    - name: Run Reviewdog with Vale results
+    - name: Run Reviewdog with corrected files
       run: |
         for file in $(ls *.md.original); do
           original="${file}"
