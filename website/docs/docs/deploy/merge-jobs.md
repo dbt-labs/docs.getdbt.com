@@ -14,6 +14,7 @@ By using CD in dbt Cloud, you can take advantage of deferral to build only the e
 - You have set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 - You are set up to receive push notifications from your Git provider. For details, refer to [Job notifications](/docs/deploy/job-notifications). 
+- Make sure that [push events are enabled](#verify-push-events-in-git) in your Git provider.
 
 ## Set up job trigger on Git merge {#set-up-merge-jobs}
 
@@ -34,6 +35,32 @@ branch configured in the environment) in your Git repo, this job will get trigge
     - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
 
-## Example 
-
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-create-merge-job.png" title="Example of creating a merge job"/>
+
+## Verify push events in Git
+
+Merge jobs require push events so make sure they've been enabled in your Git provider, especially if you have an already-existing Git integration. However, for a new integration setup, you can skip this check since push events are typically enabled by default. Earlier integrations with Git might have been using different default settings.
+
+<Expandable alt_header="GitHub example" >
+
+The following is a GitHub example of when the push events are already set: 
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-push-events.png" title="Example of push events in GitHub "/>
+
+</Expandable>
+
+<Expandable alt_header="GitLab example" >
+
+The following is a GitLab example of when the push events are already set:
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-gitlab-push-events.png" title="Example of push events in GitLab"/>
+
+</Expandable>
+
+<Expandable alt_header="Azure DevOps example" >
+
+The following is an example of creating a new **Code pushed** trigger in Azure DevOps. Create a new service hooks subscription when code pushed events haven't been set: 
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-azuredevops-new-event.png" title="Example of creating a new trigger in Azure DevOps"/>
+
+</Expandable>
