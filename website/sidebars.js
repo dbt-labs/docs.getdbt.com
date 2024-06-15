@@ -301,6 +301,7 @@ const sidebarSettings = {
                 "docs/build/unit-tests",
               ],
             },
+            "docs/build/documentation",
             "docs/build/snapshots",
             "docs/build/seeds",
             "docs/build/jinja-macros",
@@ -468,7 +469,7 @@ const sidebarSettings = {
         "docs/collaborate/collaborate-with-others",
         {
           type: "category",
-          label: "Explore dbt projects",
+          label: "Discover data with dbt Explorer",
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
@@ -476,6 +477,7 @@ const sidebarSettings = {
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
+            "docs/collaborate/access-from-dbt-cloud",
             "docs/collaborate/dbt-explorer-faqs",
           ],
         },
@@ -493,10 +495,9 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Document your dbt projects",
-          link: { type: "doc", id: "docs/collaborate/documentation" },
+          label: "Document your projects",
+          link: { type: "doc", id: "docs/collaborate/build-and-view-your-docs" },
           items: [
-            "docs/collaborate/documentation",
             "docs/collaborate/build-and-view-your-docs",
           ],
         },
