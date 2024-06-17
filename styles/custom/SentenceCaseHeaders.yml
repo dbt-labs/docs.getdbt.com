@@ -1,6 +1,7 @@
 extends: existence
 
 message: "Header '%s' should be in sentence case: 'Sentence case header'."
+
 level: warning
 scope:
     - heading.h1
@@ -8,4 +9,4 @@ scope:
     - heading.h3
     - heading.h4
 tokens: |
-  ^[#]{1,4}\s+[a-z][^\n]*$
+    ^[#]{1,4}\s+[A-Z][^\n]*$
