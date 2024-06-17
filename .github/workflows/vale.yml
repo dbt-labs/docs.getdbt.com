@@ -41,4 +41,5 @@ jobs:
       uses: reviewdog/action-suggester@v1
       with:
         tool_name: vale  # Name of the tool for reviewdog reporting
-        message: 'Please review and consider the suggested changes from Vale.'  # Optional commen
+        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        filter_mode: diff_context
