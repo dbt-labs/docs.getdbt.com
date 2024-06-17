@@ -53,8 +53,19 @@ jobs:
         done
         echo "Vale outputs:"
         ls -l
+  
+    - name: Process Vale outputs with Reviewdog
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      run: |
+        for file in vale_output_*_edit.md; do
+          cat "$file" | reviewdog -f=diff -name=vale -reporter=github-pr-review
+        done
 
     - name: Suggest changes from Vale
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
       uses: reviewdog/action-suggester@v1
       with:
-       tool_name: vale 
+        tool_name: vale
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+
