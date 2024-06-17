@@ -53,14 +53,6 @@ jobs:
         done
         echo "Vale outputs:"
         ls -l
-
-    - name: Concatenate Vale edits
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      run: |
-        echo "" > suggestions.md
-        for file in vale_output_${file//\//_}_edit.md; do
-          cat "$file" >> suggestions.md
-        done
   
     - name: Suggest changes
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
