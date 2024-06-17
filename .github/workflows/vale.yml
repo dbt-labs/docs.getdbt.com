@@ -20,7 +20,7 @@ jobs:
     - name: Install Vale
       uses: errata-ai/vale-action@v2
       with:
-        reporter: github-pr-review
+        reporter: github-pr-check
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -40,4 +40,4 @@ jobs:
       with:
         tool_name: vale  # Name of the tool for reviewdog reporting
         github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-        filter_mode: diff_context
+        filter_mode: added
