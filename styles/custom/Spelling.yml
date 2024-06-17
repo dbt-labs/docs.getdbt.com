@@ -1,0 +1,16 @@
+extends: spelling
+
+message: "Detected non-American spelling. Consider using American spelling: '%s' instead of '%s."
+level: warning
+
+path: styles/custom/your-dictionary.dic
+
+---
+
+extends: existence
+
+message: "Ignore specific patterns"
+level: skip
+tokens:
+  - '\bdbt\s+Cloud\b'
+  - '\bdbt\s+.*?\b'
