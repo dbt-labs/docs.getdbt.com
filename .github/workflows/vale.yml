@@ -1,118 +1,93 @@
-name: Lint and Suggest
+name: Lint and suggest
 
 on:
   pull_request:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
-  lint:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Fetch all history so we can access all commits
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
-      - name: Install Vale
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          version: 2.17.0
-          files: all
-          reporter: github-pr-check
-          filter_mode: nofilter
+    - name: Install Vale
+      uses: errata-ai/vale-action@v2g  
+      with:
+        version: 2.17.0
+        files: all
+        reporter: github-pr-check
+        filter_mode: nofilter
 
+    - name: Install jq
+      run: sudo apt-get install -y jq
 
-      - name: Install jq
-        run: sudo apt-get install -y jq
+    - name: Get changed files
+      id: changed-files
+      run: |
+        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
+        CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
+        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+        echo "CHANGED_FILES=$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
 
-      - name: Get changed files
-        id: changed-files
-        run: |
-          BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
-          CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
-          echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-          echo "CHANGED_FILES=$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
+    - name: Print Changed Files
+      run: echo $CHANGED_FILES
 
-      - name: Print Changed Files
-        run: echo $CHANGED_FILES
+    - name: Run Vale on changed files
+      run: |
+        for file in ${{ env.CHANGED_FILES }}; do
+          echo "Running Vale on $file"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+        done
+        echo "Vale outputs:"
+        ls -l
 
-      - name: Run Vale on changed files
-        run: |
-          for file in ${{ env.CHANGED_FILES }}; do
-            echo "Running Vale on $file"
-            vale --config=vale.ini --output=JSON "$file" > "vale_output_${file//\//_}.json"
-            vale --config=vale.ini --output=edit "$file" > "vale_output_${file//\//_}_edit.md"
-          done
-        shell: bash
+    - name: Simulate Vale changes
+      run: |
+        mkdir -p simulated_changes
+        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
+          cp "$file" "simulated_changes/$(basename "$file")"
+          vale --output=edit "simulated_changes/$(basename "$file")"
+        done
 
-      - name: Apply Vale edits and save originals
-        run: |
-          mkdir -p original_files
-          mkdir -p corrected_files
-          for file in ${{ env.CHANGED_FILES }}; do
-            echo "Copying $file to original_files/${file//\//_}.original"
-            cp "$file" "original_files/${file//\//_}.original"
-            echo "Copying vale_output_${file//\//_}_edit.md to corrected_files/${file//\//_}"
-            cp "vale_output_${file//\//_}_edit.md" "corrected_files/${file//\//_}"
-          done
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+    - name: Upload Vale results
+      uses: actions/upload-artifact@v3
+      with:
+        name: vale-results
+        path: '*.json'
 
-      - name: Upload original files
-        uses: actions/upload-artifact@v3
-        with:
-          name: original-files
-          path: original_files/
-
-      - name: Upload corrected files
-        uses: actions/upload-artifact@v3
-        with:
-          name: corrected-files
-          path: corrected_files/
+    - name: Upload simulated changes
+      uses: actions/upload-artifact@v3
+      with:
+        name: simulated-changes
+        path: simulated_changes
 
   suggest:
     runs-on: ubuntu-latest
-    needs: lint
+    needs: vale  # This ensures the suggest job runs after the vale job
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Download original files
-        uses: actions/download-artifact@v3
-        with:
-          name: original-files
+    - name: Download simulated changes
+      uses: actions/download-artifact@v3
+      with:
+        name: simulated-changes
 
-      - name: Download corrected files
-        uses: actions/download-artifact@v3
-        with:
-          name: corrected-files
+    - name: List downloaded files
+      run: ls -l simulated_changes
 
-      - name: List downloaded files
-        run: |
-          echo "Original files:"
-          ls -l original_files
-          echo "Corrected files:"
-          ls -l corrected_files
-
-      - name: Run Reviewdog Suggestion Action
-        uses: reviewdog/action-suggester@v1
-        with:
-          github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-          tool_name: Vale
-          level: "warning"
-          filter_mode: "diff_context"
-          fail_on_error: "false"
-          reviewdog_flags: ""
-          cleanup: "true"
-
-      - name: Run Reviewdog with corrected files
-        run: |
-          for file in original_files/*.original; do
-            original="$file"
-            corrected="corrected_files/$(basename "$file" .original)"
-            diff_output=$(diff -u "$original" "$corrected")
-            if [[ -n "$diff_output" ]]; then
-              echo "$diff_output" | reviewdog -f=diff -name="Vale" -reporter=github-pr-review -level=war
+    - name: Suggest changes
+      uses: parkerbxyz/suggest-changes@v1
+      with:
+        comment: 'Please commit the suggested changes from Vale.'
