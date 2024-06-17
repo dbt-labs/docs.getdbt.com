@@ -1,17 +1,6 @@
-extends: existence
-
-message: "Repetitive word found: '%s'. Consider changing '%s' to '%s'."
-level: warning
-
-# Regex to match repetitive words (e.g., "the the", "and and")
-ignorecase: true
-nonword: true
+extends: repetition
+message: "'%s' is repeated!"
+level: error
+alpha: true
 tokens:
-  - '\b(\w+)\s+\1\b'
-
-action:
-  name: edit
-  params:
-    - regex
-    - '\b(\w+)\s+\1\b'
-    - '\1'
+  - '[^\s]+'
