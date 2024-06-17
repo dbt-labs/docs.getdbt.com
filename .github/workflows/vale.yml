@@ -1,95 +1,44 @@
-name: Lint and suggest
+name: Lint Markdown with Vale and Suggest Changes
 
 on:
   pull_request:
-    paths:
-      - '**/*.md'
-
-permissions:
-  contents: read
-  pull-requests: write
+    types: [opened, edited, synchronize, reopened]
 
 jobs:
-  vale: 
+  lint:
+    name: Lint Markdown Files
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v34
 
-    - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - name: Check Vale installation
-      run: |
-        vale --version
-      continue-on-error: true  # Continue even if Vale is not found
+      - name: Install Vale
+        uses: errata-ai/vale-action@v2
 
-    - name: Install jq
-      run: sudo apt-get install -y jq
-
-    - name: Get Changed Files
-      id: get_changed_files
-      uses: tj-actions/changed-files@v44
-      with:
-        files: |
-          **/*.md
-        separator: ","
-
-    - name: Print Changed Markdown Files
-      run: |
-        echo "Changed markdown files: ${{ steps.get_changed_files.outputs.all_changed_files }}"
-
-    - name: Run Vale on changed files
-      run: |
-          for file in ${{ steps.get_changed_files.outputs.all_changed_files }}; do
-            echo "Running Vale on $file"
-            vale --output=JSON $file > "vale_output_${file//\//_}.json"
-            vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+      - name: Lint changed markdown files
+        id: vale-lint
+        run: |
+          changed_files=$(jq -r '.[]' <<< "${{ steps.changed-files.outputs.all_changed_and_modified_files }}")
+          for file in $changed_files; do
+            if [[ $file == *.md ]]; then
+              vale $file || true
+            fi
           done
-          echo "Vale outputs:"
-          ls -l
 
-    - name: Apply Vale edits and save originals
-      run: |
-        mkdir -p original_files
-        mkdir -p corrected_files
-        IFS="," read -r -a files <<< "${{ steps.get_changed_files.outputs.all_changed_files }}"
-        for file in "${files[@]}"; do
-          echo "Copying $file to original_files/${file//\//_}.original"
-          cp "$file" "original_files/${file//\//_}.original"
-          echo "Copying vale_output_${file//\//_}_edit.md to corrected_files/${file//\//_}"
-          cp "vale_output_${file//\//_}_edit.md" "corrected_files/${file//\//_}"
-        done
-        echo "Original files:"
-        ls -l original_files
-        echo "Corrected files:"
-        ls -l corrected_files
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+      - name: Setup reviewdog
+        uses: reviewdog/action-suggester@v1
+        with:
+          tool_name: vale
+          github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+          filter_mode: 'added'
 
-    - name: Run Reviewdog Suggestion Action
-      uses: reviewdog/action-suggester@v1
-      with:
-        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-        tool_name: Vale
-        level: "warning"
-        filter_mode: "diff_context"
-        fail_on_error: "false"
-        reviewdog_flags: ""
-        cleanup: "true"
-
-    - name: Run Reviewdog with corrected files
-      run: |
-        for file in original_files/*.original; do
-          original="$file"
-          corrected="corrected_files/$(basename "$file" .original)"
-          diff_output=$(diff -u "$original" "$corrected")
-          if [[ -n "$diff_output" ]]; then
-            echo "$diff_output" | reviewdog -f=diff -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
-          fi
-        done
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
