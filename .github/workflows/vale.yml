@@ -21,8 +21,9 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
-      with:
-        version: latest
+
+    - name: Install jq
+      run: sudo apt-get install -y jq
 
     - name: Get changed files
       id: changed-files
@@ -30,28 +31,55 @@ jobs:
         BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
         CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
         echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "Changed files: $CHANGED_FILES"
+        echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\\n\")[:-1]')"
 
     - name: Print Changed Files
       run: echo $CHANGED_FILES
 
     - name: Run Vale on changed files
       run: |
-        for file in ${{ env.CHANGED_FILES }}; do
+        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
           echo "Running Vale on $file"
-          vale --output=line "$file"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
 
-    - name: Commit and push changes
+    - name: Apply Vale edits
       run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add .
-        git commit -m "Apply Vale fixes"
-        git push
-      continue-on-error: true
+        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
+          mv $file "${file}.original"
+          vale --output=edit $file > $file
+        done
+
+    - name: Upload Vale results
+      uses: actions/upload-artifact@v3
+      with:
+        name: vale-results
+        path: '*.json'
+
+    - name: Upload corrected files
+      uses: actions/upload-artifact@v3
+      with:
+        name: corrected-files
+        path: '*.md'
+
+  suggest:
+    runs-on: ubuntu-latest
+    needs: vale  # This ensures the suggest job runs after the vale job
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Download corrected files
+      uses: actions/download-artifact@v3
+      with:
+        name: corrected-files
+
+    - name: List downloaded files
+      run: ls -l
 
     - name: Suggest changes
       uses: parkerbxyz/suggest-changes@v1
