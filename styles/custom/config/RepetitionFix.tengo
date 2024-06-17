@@ -3,12 +3,8 @@ text := import("text")
 // The regex pattern for detecting repetitive words.
 pattern := `\b(\w+)\s+\1\b`
 
-// Capture the matched text.
-incorrect := match
-
 // Replace repetitive words with a single instance of the word.
 correct := text.re_replace(pattern, match, `$1`)
 
 // `suggestions` is required by Vale and represents the script's output.
-// We need to include the incorrect and correct values as a part of the suggestion.
-suggestions := [incorrect, correct]
+suggestions := [correct]
