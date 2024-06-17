@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale: # Combined Vale linting and suggestion job
+  vale: 
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +21,11 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
+
+    - name: Check Vale installation
+      run: |
+        vale --version
+      continue-on-error: true  # Continue even if Vale is not found
 
     - name: Install jq
       run: sudo apt-get install -y jq
