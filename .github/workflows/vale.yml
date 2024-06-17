@@ -56,7 +56,7 @@ jobs:
   
     - name: Suggest changes
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      uses: parkerbxyz/suggest-changes@v1
+      uses: reviewdog/action-suggester@v1
       with:
-        comment: 'Please commit the suggested changes from Vale.'
+        tool_name: vale
 
