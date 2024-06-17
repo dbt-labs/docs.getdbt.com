@@ -1,6 +1,6 @@
 extends: substitution
 
-message: "Possible typo detected: Consider using '%s' instead of '%s'"
+message: "Oops there's a typo! Consider changing '{{.Match}}' to '{{.Suggestions}}.'"
 level: warning
 swap:
   - teh: the
@@ -10,5 +10,17 @@ swap:
   - occured: occurred
   - untill: until
 
+ignore:
+  - dbt
+  - dbt Cloud
+  - ETL
+  - ELT
+  - DAG
+  - CTE
+  - DDL
+  - DML
+  - JSON
+  - CI/CD
+  
 action:
   name: replace
