@@ -27,7 +27,9 @@ jobs:
         BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
         CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
         echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "CHANGED_FILES=$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
+        echo "CHANGED_FILES=$(echo \"$CHANGED_FILES\" | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
+        echo "CHANGED_FILES=$(echo \"$CHANGED_FILES\" | jq -R -s -c 'split(\"\n\")[:-1]')"
+        echo "CHANGED_FILES in GITHUB_ENV: ${{ env.CHANGED_FILES }}"
 
     - name: Print Changed Files
       run: echo $CHANGED_FILES
@@ -56,18 +58,22 @@ jobs:
         ls -l original_files
         echo "Corrected files:"
         ls -l corrected_files
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
 
     - name: Upload original files
       uses: actions/upload-artifact@v3
       with:
         name: original-files
         path: original_files/
+      continue-on-error: true
 
     - name: Upload corrected files
       uses: actions/upload-artifact@v3
       with:
         name: corrected-files
         path: corrected_files/
+      continue-on-error: true
 
   suggest: # Reviewdog suggestion job
     runs-on: ubuntu-latest
