@@ -5,6 +5,10 @@ on:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   vale: # Combined Vale linting and suggestion job
     runs-on: ubuntu-latest
@@ -18,6 +22,11 @@ jobs:
     - name: Install Vale
       uses: errata-ai/vale-action@v2
 
+    - name: Verify Vale Installation
+      run: |
+        echo "Checking Vale version..."
+        vale --version
+
     - name: Install jq
       run: sudo apt-get install -y jq
 
@@ -26,21 +35,20 @@ jobs:
       uses: tj-actions/changed-files@v44
       with:
         files: |
-          **.md
+          **/*.md
         separator: ","
+
     - name: Print Changed Markdown Files
       run: |
         echo "Changed markdown files: ${{ steps.get_changed_files.outputs.all_changed_files }}"
 
-    - name: Print Changed Files
-      run: echo $CHANGED_FILES
-
     - name: Run Vale on changed files
       run: |
-        for file in ${{ steps.get_changed_files.outputs.all_changed_files}}; do
+        IFS="," read -r -a files <<< "${{ steps.get_changed_files.outputs.all_changed_files }}"
+        for file in "${files[@]}"; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
+          vale --output=edit "$file" > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
@@ -49,7 +57,8 @@ jobs:
       run: |
         mkdir -p original_files
         mkdir -p corrected_files
-        for file in ${{ steps.get_changed_files.outputs.all_changed_files }}; do
+        IFS="," read -r -a files <<< "${{ steps.get_changed_files.outputs.all_changed_files }}"
+        for file in "${files[@]}"; do
           echo "Copying $file to original_files/${file//\//_}.original"
           cp "$file" "original_files/${file//\//_}.original"
           echo "Copying vale_output_${file//\//_}_edit.md to corrected_files/${file//\//_}"
