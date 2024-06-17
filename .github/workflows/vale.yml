@@ -16,8 +16,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
