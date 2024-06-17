@@ -61,6 +61,10 @@ jobs:
           cat "$file" | reviewdog -f=diff -name=vale -reporter=github-pr-review
         done
 
+    - name: Install reviewdog
+      run: |
+        curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin
+
     - name: Suggest changes from Vale
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       uses: reviewdog/action-suggester@v1
