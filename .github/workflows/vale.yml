@@ -25,6 +25,23 @@ jobs:
     - name: Install jq
       run: sudo apt-get install -y jq
 
+    - name: Get all changed markdown files
+      id: changed-markdown-files
+      uses: tj-actions/changed-files@v44
+      with:
+        # Avoid using single or double quotes for multiline patterns
+        files: |
+           **.md
+
+    - name: List all changed files markdown files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
+      run: |
+        for file in ${ALL_CHANGED_FILES}; do
+          echo "$file was changed"
+        done
+
     - name: Run Vale on changed files
       run: |
         for file in $(git diff --name-only --cached); do
@@ -36,6 +53,8 @@ jobs:
         ls -l
 
     - name: Suggest changes from Vale
-      uses: parkerbxyz/suggest-changes@v1
+      uses: reviewdog/action-suggester@v1
       with:
-        comment: 'Please review and consider the suggested changes from Vale.'
+        tool_name: vale  # Name of the tool for reviewdog reporting
+        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        filter_mode: diff_context
