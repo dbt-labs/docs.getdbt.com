@@ -20,13 +20,7 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      run: |
-        curl -sfL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-        echo 'export PATH=$HOME/.local/bin:$PATH' >> $GITHUB_ENV
-
-    - name: Verify Vale Installation
-      run: echo "PATH=$PATH" && $HOME/.local/bin/vale --version
+      uses: errata-ai/vale-action@v2
 
     - name: Get changed files
       id: changed-files
@@ -43,8 +37,8 @@ jobs:
       run: |
         for file in ${{ env.CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          $HOME/.local/bin/vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
-          $HOME/.local/bin/vale --output=edit "$file"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
