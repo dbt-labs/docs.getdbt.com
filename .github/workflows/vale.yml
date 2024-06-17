@@ -10,14 +10,14 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
@@ -31,48 +31,30 @@ jobs:
       id: changed-markdown-files
       uses: tj-actions/changed-files@v44
       with:
+        # Avoid using single or double quotes for multiline patterns
         files: |
-           **/*.md
+           **.md
 
-    - name: List all changed markdown files
+    - name: List all changed files markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
         ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
-        echo "Changed markdown files:"
-        echo "${{ env.ALL_CHANGED_FILES }}"
+        for file in ${ALL_CHANGED_FILES}; do
+          echo "$file was changed"
+        done
 
     - name: Run Vale on changed files
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      env:
-        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
 
-    - name: Generate diffs from Vale outputs
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      run: |
-        for file in vale_output_*.json; do
-          cat "$file" | jq -r '.[] | .diff' > "diff_output_${file//\//_}.txt"
-        done
-
     - name: Suggest changes from Vale
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        for diff in diff_output_*.txt; do
-          reviewdog -f=diff -name=vale -reporter=github-pr-review -level=error < "$diff"
-        done
-
-    - name: Upload Vale outputs as artifacts
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      uses: actions/upload-artifact@v3
+      uses: reviewdog/action-suggester@v1
       with:
-        name: vale-outputs
-        path: vale_output_*.json
+       tool_name: vale 
