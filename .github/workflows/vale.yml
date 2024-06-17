@@ -23,6 +23,7 @@ jobs:
       uses: errata-ai/vale-action@reviewdog
       with:
         reporter: github-pr-review
+        filter_mode: added
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -59,4 +60,5 @@ jobs:
       uses: reviewdog/action-suggester@v1
       with:
         tool_name: vale
+        filter_mode: added
 
