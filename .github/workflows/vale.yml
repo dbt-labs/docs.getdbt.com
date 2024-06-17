@@ -20,16 +20,34 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@reviewdog
+      uses: errata-ai/vale-action@v2
       with:
-        reporter: github-pr-check
+        version: latest
+        reporter: github-pr-reviewer
 
     - name: Install jq
       run: sudo apt-get install -y jq
 
+    - name: Get all changed markdown files
+      id: changed-markdown-files
+      uses: tj-actions/changed-files@v44
+      with:
+        # Avoid using single or double quotes for multiline patterns
+        files: |
+           **.md
+
+    - name: List all changed files markdown files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
+      run: |
+        for file in ${ALL_CHANGED_FILES}; do
+          echo "$file was changed"
+        done
+
     - name: Run Vale on changed files
       run: |
-        for file in $(git diff --name-only --cached); do
+        for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output_${file//\//_}.json"
           vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
@@ -37,4 +55,7 @@ jobs:
         echo "Vale outputs:"
         ls -l
 
-
+    - name: Suggest changes from Vale
+      uses: parkerbxyz/suggest-changes@v1
+      with:
+        comment: 'Please review and consider the suggested changes from Vale.'  # Optional comment
