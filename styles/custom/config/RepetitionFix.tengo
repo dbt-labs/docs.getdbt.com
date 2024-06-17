@@ -10,4 +10,5 @@ incorrect := match
 correct := text.re_replace(pattern, match, `$1`)
 
 // `suggestions` is required by Vale and represents the script's output.
-suggestions := [correct]
+// We need to include the incorrect and correct values as a part of the suggestion.
+suggestions := [incorrect, correct]
