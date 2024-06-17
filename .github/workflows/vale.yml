@@ -22,11 +22,6 @@ jobs:
     - name: Install Vale
       uses: errata-ai/vale-action@v2
 
-    - name: Verify Vale Installation
-      run: |
-        echo "Checking Vale version..."
-        vale --version
-
     - name: Install jq
       run: sudo apt-get install -y jq
 
