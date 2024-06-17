@@ -38,14 +38,13 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
-        IFS="," read -r -a files <<< "${{ steps.get_changed_files.outputs.all_changed_files }}"
-        for file in "${files[@]}"; do
-          echo "Running Vale on $file"
-          vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
-          vale --output=edit "$file" > "vale_output_${file//\//_}_edit.md"
-        done
-        echo "Vale outputs:"
-        ls -l
+          for file in ${{ steps.get_changed_files.outputs.all_changed_files }}; do
+            echo "Running Vale on $file"
+            vale --output=JSON $file > "vale_output_${file//\//_}.json"
+            vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          done
+          echo "Vale outputs:"
+          ls -l
 
     - name: Apply Vale edits and save originals
       run: |
