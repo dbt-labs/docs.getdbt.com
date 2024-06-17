@@ -52,11 +52,7 @@ jobs:
         echo "Vale outputs:"
         ls -l
 
-    - name: Post Vale suggestions with reviewdog
-      uses: reviewdog/action-suggester@v1
+    - name: Suggest changes from Vale
+      uses: parkerbxyz/suggest-changes@v1
       with:
-          github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}  # Replace with your secret name
-          tool_name: vale  # Name of the tool (Vale) for reporting
-          level: warning  # Set the severity level for suggestions (optional)
-          filter_mode: diff_context  # Set the filter mode for suggestions (optional)
-
+        comment: 'Please review and consider the suggested changes from Vale.'  # Optional comment
