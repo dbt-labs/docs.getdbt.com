@@ -10,8 +10,6 @@ tokens:
   - '\b(\w+)\s+\1\b'
 
 action:
-  name: edit
+  name: suggest
   params:
-    - regex
-    - '\b(\w+)\s+\1\b'
-    - '\1'
+    - RepetitionFix.tengo
