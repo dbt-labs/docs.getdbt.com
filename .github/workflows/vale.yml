@@ -59,5 +59,4 @@ jobs:
       uses: parkerbxyz/suggest-changes@v1
       with:
         comment: 'Please commit the suggested changes from Vale.'
-      env:
-        GITHUB_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+
