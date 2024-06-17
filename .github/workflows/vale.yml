@@ -5,6 +5,10 @@ on:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   vale: # Combined Vale linting and suggestion job
     runs-on: ubuntu-latest
@@ -21,23 +25,24 @@ jobs:
     - name: Install jq
       run: sudo apt-get install -y jq
 
-    - name: Get changed files
-      id: changed-files
-      run: |
-        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
-        CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
-        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "CHANGED_FILES=$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
+    - name: Get Changed Files
+      id: get_changed_files
+      uses: tj-actions/changed-files@v44
+      with:
+        files: |
+          **/*.md
+        separator: ","
 
-    - name: Print Changed Files
-      run: echo $CHANGED_FILES
+    - name: Print Changed Markdown Files
+      run: echo "Changed markdown files: ${{ steps.get_changed_files.outputs.all_changed_files }}"
 
     - name: Run Vale on changed files
       run: |
-        for file in ${{ env.CHANGED_FILES }}; do
+        IFS="," read -r -a files <<< "${{ steps.get_changed_files.outputs.all_changed_files }}"
+        for file in "${files[@]}"; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
+          vale --output=edit "$file" > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
@@ -46,7 +51,8 @@ jobs:
       run: |
         mkdir -p original_files
         mkdir -p corrected_files
-        for file in ${{ env.CHANGED_FILES }}; do
+        IFS="," read -r -a files <<< "${{ steps.get_changed_files.outputs.all_changed_files }}"
+        for file in "${files[@]}"; do
           echo "Copying $file to original_files/${file//\//_}.original"
           cp "$file" "original_files/${file//\//_}.original"
           echo "Copying vale_output_${file//\//_}_edit.md to corrected_files/${file//\//_}"
