@@ -43,37 +43,36 @@ jobs:
         echo "${{ env.ALL_CHANGED_FILES }}"
 
     - name: Run Vale on changed files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
         done
         echo "Vale outputs:"
         ls -l
 
-    - name: Combine Vale JSON outputs
+    - name: Generate diffs from Vale outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: |
-        echo "[]" > combined_vale_output.json
         for file in vale_output_*.json; do
-          jq -s '.[0] + .[1]' combined_vale_output.json "$file" > tmp.json && mv tmp.json combined_vale_output.json
+          cat "$file" | jq -r '.[] | .diff' > "diff_output_${file//\//_}.txt"
         done
 
     - name: Suggest changes from Vale
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      uses: reviewdog/action-suggester@v1
-      with:
-        tool_name: vale
-        level: error
-        reviewdog_flags: '-f=jq -name=vale -reporter=github-pr-review'
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SUGGESTION_FILE: combined_vale_output.json
+      run: |
+        for diff in diff_output_*.txt; do
+          reviewdog -f=diff -name=vale -reporter=github-pr-review -level=error < "$diff"
+        done
 
     - name: Upload Vale outputs as artifacts
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: vale-outputs
         path: vale_output_*.json
