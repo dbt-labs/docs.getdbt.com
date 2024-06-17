@@ -16,7 +16,9 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      uses: errata-ai/vale-action@reviewdog
+      with:
+        version: latest
 
     - name: Get changed files
       id: changed-files
@@ -37,7 +39,8 @@ jobs:
           cp "vale_output_${file//\//_}_edit.md" "corrected_files/${file//\//_}"
         done
         echo "Vale outputs:"
-        ls -l
+        ls -l original_files
+        ls -l corrected_files
 
     - name: Upload original files
       uses: actions/upload-artifact@v3
