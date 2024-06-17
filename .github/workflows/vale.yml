@@ -30,11 +30,11 @@ jobs:
       uses: tj-actions/changed-files@v44
       with:
         files: |
-          **/*.md
+          **.md
         separator: ","
-
     - name: Print Changed Markdown Files
-      run: echo "Changed markdown files: ${{ steps.get_changed_files.outputs.all_changed_files }}"
+      run: |
+        echo "Changed markdown files: ${{ steps.get_changed_files.outputs.all_changed_files }}"
 
     - name: Run Vale on changed files
       run: |
