@@ -26,8 +26,7 @@ jobs:
         echo 'export PATH=$HOME/.local/bin:$PATH' >> $GITHUB_ENV
 
     - name: Verify Vale Installation
-      run: |
-        vale --version
+      run: echo "PATH=$PATH" && $HOME/.local/bin/vale --version
 
     - name: Get changed files
       id: changed-files
