@@ -1,19 +1,49 @@
-name: Vale Lint
+name: Lint and suggest
 
-on: [push, pull_request]
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
-  lint:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v1.2.3
-      with:
-        styles: styles/custom
+      uses: errata-ai/vale-action@v2
 
-    - name: Run Vale
-      run: vale --output=JSON website/docs/
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
+    - name: Get changed files
+      id: changed-files
+      run: |
+        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
+        CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
+        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+        echo "CHANGED_FILES=$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
+
+    - name: Print Changed Files
+      run: echo $CHANGED_FILES
+
+    - name: Run Vale on changed files
+      run: |
+        for file in ${{ env.CHANGED_FILES }}; do
+          echo "Running Vale on $file"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+        done
+        echo "Vale outputs:"
+        ls -l
+
+   
