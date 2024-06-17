@@ -20,7 +20,10 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      run: |
+        curl -L -o vale.tar.gz https://github.com/errata-ai/vale/releases/latest/download/vale_2.11.1_Linux_64-bit.tar.gz
+        tar -xzf vale.tar.gz -C /usr/local/bin/
+        vale --version
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -30,21 +33,22 @@ jobs:
       uses: tj-actions/changed-files@v44
       with:
         files: |
-          **.md
+          **/*.md
         separator: ","
+
     - name: Print Changed Markdown Files
-      run: |
-        echo "Changed markdown files: ${{ steps.get_changed_files.outputs.all_changed_files }}"
+      run: echo "Changed markdown files: ${{ steps.get_changed_files.outputs.all_changed_files }}"
 
     - name: Run Vale on changed files
       run: |
-          for file in ${{ steps.get_changed_files.outputs.all_changed_files }}; do
-            echo "Running Vale on $file"
-            vale --output=JSON $file > "vale_output_${file//\//_}.json"
-            vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
-          done
-          echo "Vale outputs:"
-          ls -l
+        IFS="," read -r -a files <<< "${{ steps.get_changed_files.outputs.all_changed_files }}"
+        for file in "${files[@]}"; do
+          echo "Running Vale on $file"
+          vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
+          vale --output=edit "$file" > "vale_output_${file//\//_}_edit.md"
+        done
+        echo "Vale outputs:"
+        ls -l
 
     - name: Apply Vale edits and save originals
       run: |
