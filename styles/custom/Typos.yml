@@ -1,6 +1,6 @@
 extends: substitution
 
-message: "Oops there's a typo! Consider changing '{{.Match}}' to '{{.Suggestions}}.'"
+message: "Oops there's a typo! Consider changing '%s' instead of '%s'"
 level: warning
 swap:
   - teh: the
