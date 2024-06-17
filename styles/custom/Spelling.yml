@@ -2,17 +2,6 @@ extends: spelling
 
 message: "Detected non-American spelling. Consider using American spelling: '%s' instead of '%s."
 level: warning
-ignore:
-  - dbt
-  - dbt Cloud
-  - ETL
-  - ELT
-  - DAG
-  - CTE
-  - DDL
-  - DML
-  - JSON
-  - CI/CD
 
 path: styles/custom/your-dictionary.dic
 
