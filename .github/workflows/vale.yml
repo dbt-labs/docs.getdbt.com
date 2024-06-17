@@ -21,6 +21,8 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
+      with:
+        version: latest
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -46,11 +48,12 @@ jobs:
         echo "Vale outputs:"
         ls -l
 
-    - name: Apply Vale edits
+    - name: Simulate Vale changes
       run: |
+        mkdir -p simulated_changes
         for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
-          mv $file "${file}.original"
-          vale --output=edit $file > $file
+          cp "$file" "simulated_changes/$(basename "$file")"
+          vale --output=edit "simulated_changes/$(basename "$file")"
         done
 
     - name: Upload Vale results
@@ -59,11 +62,11 @@ jobs:
         name: vale-results
         path: '*.json'
 
-    - name: Upload corrected files
+    - name: Upload simulated changes
       uses: actions/upload-artifact@v3
       with:
-        name: corrected-files
-        path: '*.md'
+        name: simulated-changes
+        path: simulated_changes
 
   suggest:
     runs-on: ubuntu-latest
@@ -73,13 +76,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Download corrected files
+    - name: Download simulated changes
       uses: actions/download-artifact@v3
       with:
-        name: corrected-files
+        name: simulated-changes
 
     - name: List downloaded files
-      run: ls -l
+      run: ls -l simulated_changes
 
     - name: Suggest changes
       uses: parkerbxyz/suggest-changes@v1
