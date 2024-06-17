@@ -1,31 +1,7 @@
-extends: substitution
+extends: spelling
 
-message: "Oops there's a typo! Consider changing '%s' instead of '%s'"
+message: "Did you really mean '%s'?"
 level: warning
-swap:
-  - teh: the
-  - recieve: receive
-  - definately: definitely
-  - seperate: separate
-  - occured: occurred
-  - untill: until
-  - occurence: occurrence
-  - colour: color
-  - favour: favor
-  - organisation: organization
-  - licence: license
-  - defence: defense
-  - neighbour: neighbor
-  - organise: organize
-  - recognise: recognize
-  - analyse: analyze
-  - analogue: analog
-  - centre: centre
-  - grey: gray
-  - labour: labor
-  - pretence: pretence
-  - standardise: standardize
-
 
 action:
   name: replace

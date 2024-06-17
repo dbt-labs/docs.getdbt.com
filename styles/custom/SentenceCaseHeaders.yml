@@ -1,6 +1,6 @@
 extends: capitalization
 message: "'%s' should use sentence-style capitalization."
-level: error
+level: warning
 scope: heading
 match: $sentence
 indicators:
