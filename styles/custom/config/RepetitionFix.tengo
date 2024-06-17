@@ -1,11 +1,13 @@
 text := import("text")
 
-// `match` is provided by Vale and represents the rule's matched text.
 // The regex pattern for detecting repetitive words.
-pattern := `(\b\w+\s+\1\b)`
+pattern := `\b(\w+)\s+\1\b`
+
+// Capture the matched text.
+incorrect := match
 
 // Replace repetitive words with a single instance of the word.
-replaced := text.re_replace(pattern, match, `$1`)
+correct := text.re_replace(pattern, match, `$1`)
 
 // `suggestions` is required by Vale and represents the script's output.
-suggestions := [replaced]
+suggestions := [correct]
