@@ -38,6 +38,7 @@ jobs:
         ls -l
 
     - name: Suggest changes from Vale
-      uses: parkerbxyz/suggest-changes@v1
+      uses: reviewdog/action-suggester@v1
       with:
-        comment: 'Please review and consider the suggested changes from Vale.'  # Optional comment
+        tool_name: vale  # Name of the tool for reviewdog reporting
+        message: 'Please review and consider the suggested changes from Vale.'  # Optional commen
