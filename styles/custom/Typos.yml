@@ -9,18 +9,7 @@ swap:
   - seperate: separate
   - occured: occurred
   - untill: until
+  - occurence: occurrence
 
-ignore:
-  - dbt
-  - dbt Cloud
-  - ETL
-  - ELT
-  - DAG
-  - CTE
-  - DDL
-  - DML
-  - JSON
-  - CI/CD
-  
 action:
   name: replace
