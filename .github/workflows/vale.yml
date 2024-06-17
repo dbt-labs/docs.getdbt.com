@@ -58,7 +58,7 @@ jobs:
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: |
         echo "" > suggestions.md
-        for file in vale_output_*_edit.md; do
+        for file in vale_output_${file//\//_}_edit.md; do
           cat "$file" >> suggestions.md
         done
   
