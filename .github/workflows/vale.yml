@@ -5,12 +5,8 @@ on:
     paths:
       - '**/*.md'
 
-permissions:
-  contents: read
-  pull-requests: write
-
 jobs:
-  vale: # Vale linting and suggesting job
+  vale: # Combined Vale linting and suggestion job
     runs-on: ubuntu-latest
 
     steps:
@@ -30,28 +26,27 @@ jobs:
       run: |
         BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
         CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
-        echo "CHANGED_FILES=$(echo \"$CHANGED_FILES\" | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
+        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+        echo "CHANGED_FILES=$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
 
     - name: Print Changed Files
-      run: echo "CHANGED_FILES is: ${{ env.CHANGED_FILES }}"
+      run: echo $CHANGED_FILES
 
     - name: Run Vale on changed files
       run: |
-        for file in $(echo $CHANGED_FILES | jq -r '.[]'); do
+        for file in ${{ env.CHANGED_FILES }}; do
           echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output_${file//\//_}.json"
           vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
-        echo "Vale output files:"
-        ls -l vale_output_*
 
     - name: Apply Vale edits and save originals
       run: |
         mkdir -p original_files
         mkdir -p corrected_files
-        for file in $(echo $CHANGED_FILES | jq -r '.[]'); do
+        for file in ${{ env.CHANGED_FILES }}; do
           echo "Copying $file to original_files/${file//\//_}.original"
           cp "$file" "original_files/${file//\//_}.original"
           echo "Copying vale_output_${file//\//_}_edit.md to corrected_files/${file//\//_}"
@@ -61,8 +56,6 @@ jobs:
         ls -l original_files
         echo "Corrected files:"
         ls -l corrected_files
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
 
     - name: Run Reviewdog Suggestion Action
       uses: reviewdog/action-suggester@v1
