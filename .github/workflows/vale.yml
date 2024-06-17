@@ -5,8 +5,12 @@ on:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
-  vale: # Vale linting job
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,77 +34,24 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
-        mkdir -p original_files corrected_files
         for file in ${{ env.CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
-          vale --output=edit "$file" > "vale_output_${file//\//_}_edit.md"
-          cp "$file" "original_files/${file//\//_}.original"
-          cp "vale_output_${file//\//_}_edit.md" "corrected_files/${file//\//_}"
+          $HOME/.local/bin/vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
+          $HOME/.local/bin/vale --output=edit "$file"
         done
         echo "Vale outputs:"
-        ls -l original_files
-        ls -l corrected_files
+        ls -l
 
-    - name: Upload original files
-      uses: actions/upload-artifact@v3
-      with:
-        name: original-files
-        path: original_files/
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Apply Vale fixes"
+        git push
       continue-on-error: true
 
-    - name: Upload corrected files
-      uses: actions/upload-artifact@v3
+    - name: Suggest changes
+      uses: parkerbxyz/suggest-changes@v1
       with:
-        name: corrected-files
-        path: corrected_files/
-      continue-on-error: true
-
-  suggest: # Reviewdog suggestion job
-    runs-on: ubuntu-latest
-    needs: vale # This ensures the suggest job runs after the vale job
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Download original files
-      uses: actions/download-artifact@v3
-      with:
-        name: original-files
-
-    - name: Download corrected files
-      uses: actions/download-artifact@v3
-      with:
-        name: corrected-files
-
-    - name: List downloaded files
-      run: |
-        echo "Original files:"
-        ls -l original_files
-        echo "Corrected files:"
-        ls -l corrected_files
-
-    - name: Run Reviewdog Suggestion Action
-      uses: reviewdog/action-suggester@v1
-      with:
-        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-        tool_name: Vale
-        level: "warning"
-        filter_mode: "diff_context"
-        fail_on_error: "false"
-        reviewdog_flags: ""
-        cleanup: "true"
-
-    - name: Run Reviewdog with corrected files
-      run: |
-        for file in original_files/*.original; do
-          original="$file"
-          corrected="corrected_files/$(basename "$file" .original)"
-          diff_output=$(diff -u "$original" "$corrected")
-          if [[ -n "$diff_output" ]]; then
-            echo "$diff_output" | reviewdog -f=diff -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
-          fi
-        done
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        comment: 'Please commit the suggested changes from Vale.'
