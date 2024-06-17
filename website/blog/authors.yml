@@ -614,3 +614,30 @@ anders_swanson:
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/andersswanson
+
+ernesto_ongaro:
+  image_url: /img/blog/authors/ernesto-ongaro.png
+  job_title: Senior Solutions Architect 
+  name: Ernesto Ongaro
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/eongaro
+
+sebastian_stan:
+  image_url: /img/blog/authors/sebastian-eqt.png
+  job_title: Data Engineer
+  name: Sebastian Stan
+  organization: EQT Group
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/sebastian-lindblom/
+
+filip_byrén:
+  image_url: /img/blog/authors/filip-eqt.png
+  job_title: VP and Software Architect
+  name: Filip Byrén
+  organization: EQT Group
+  links:
+    - icon: fa-linked
+      url: https://www.linkedin.com/in/filip-byr%C3%A9n/

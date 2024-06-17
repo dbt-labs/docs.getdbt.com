@@ -11,7 +11,7 @@ dbt provides a way to generate documentation for your dbt project and render it 
 
 * [Declaring properties](/reference/configs-and-properties)
 * [`dbt docs` command](/reference/commands/cmd-docs)
-* [`doc` Jinja function](/reference/dbt-jinja-functions)
+* [`doc` Jinja function](/reference/dbt-jinja-functions/doc)
 * If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project, complete with documentation.
 
 ## Assumed knowledge
