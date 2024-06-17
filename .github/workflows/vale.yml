@@ -5,6 +5,10 @@ on:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   vale: # Vale linting job
     runs-on: ubuntu-latest
@@ -42,43 +46,4 @@ jobs:
         echo "Vale outputs:"
         ls -l
 
-    - name: Apply Vale edits and save originals
-      run: |
-        mkdir -p original_files
-        mkdir -p corrected_files
-        for file in ${{ env.CHANGED_FILES }}; do
-          echo "Copying $file to original_files/${file//\//_}.original"
-          cp "$file" "original_files/${file//\//_}.original"
-          echo "Copying vale_output_${file//\//_}_edit.md to corrected_files/${file//\//_}"
-          cp "vale_output_${file//\//_}_edit.md" "corrected_files/${file//\//_}"
-        done
-        echo "Original files:"
-        ls -l original_files
-        echo "Corrected files:"
-        ls -l corrected_files
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-
-    - name: Run Reviewdog Suggestion Action
-      uses: reviewdog/action-suggester@v1
-      with:
-        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-        tool_name: Vale
-        level: "warning"
-        filter_mode: "diff_context"
-        fail_on_error: "false"
-        reviewdog_flags: ""
-        cleanup: "true"
-
-    - name: Run Reviewdog with corrected files
-      run: |
-        for file in original_files/*.original; do
-          original="$file"
-          corrected="corrected_files/$(basename "$file" .original)"
-          diff_output=$(diff -u "$original" "$corrected")
-          if [[ -n "$diff_output" ]]; then
-            echo "$diff_output" | reviewdog -f=diff -name="Vale" -reporter=github-pr-review -level=warning -filter-mode=nofilter
-          fi
-        done
-      env:
-        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+   

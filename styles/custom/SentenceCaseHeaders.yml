@@ -1,12 +1,8 @@
-extends: existence
+extends: capitalization
+message: "'%s' should use sentence-style capitalization."
+level: error
+scope: heading
+match: $sentence
+indicators:
+  - ":"
 
-message: "Header '%s' should be in sentence case: 'Sentence case header'."
-
-level: suggestion
-scope:
-    - heading.h1
-    - heading.h2
-    - heading.h3
-    - heading.h4
-tokens: |
-    ^[#]{1,4}\s+[a-z][^\n]*$
