@@ -20,9 +20,9 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      uses: errata-ai/vale-action@reviewdog
       with:
-        reporter: github-pr-review
+        reporter: github-pr-check
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -37,7 +37,4 @@ jobs:
         echo "Vale outputs:"
         ls -l
 
-    - name: Suggest changes from Vale
-      uses: parkerbxyz/suggest-changes@v1
-      with:
-        comment: 'Please review and consider the suggested changes from Vale.'  # Optional comment
+
