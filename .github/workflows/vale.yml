@@ -1,44 +1,54 @@
-name: Lint Markdown with Vale and Suggest Changes
+name: Lint and suggest
 
 on:
   pull_request:
-    types: [opened, edited, synchronize, reopened]
+    paths:
+      - '**/*.md'
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
-  lint:
-    name: Lint Markdown Files
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v34
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          fetch-depth: 0  # Fetch all history so we can access all commits
 
       - name: Install Vale
         uses: errata-ai/vale-action@v2
 
-      - name: Lint changed markdown files
-        id: vale-lint
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v34
+        with:
+          files: '**/*.md'
+          separator: ","
+
+      - name: Print Changed Markdown Files
         run: |
-          changed_files=$(jq -r '.[]' <<< "${{ steps.changed-files.outputs.all_changed_and_modified_files }}")
-          for file in $changed_files; do
-            if [[ $file == *.md ]]; then
-              vale $file || true
-            fi
+          echo "Changed markdown files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
+
+      - name: Run Vale on changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+            echo "Running Vale on $file"
+            vale --output=JSON $file > "vale_output_${file//\//_}.json"
+            vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
           done
+          echo "Vale outputs:"
+          ls -l
 
       - name: Setup reviewdog
         uses: reviewdog/action-suggester@v1
         with:
           tool_name: vale
           github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-          filter_mode: 'added'
 
