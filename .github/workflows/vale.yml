@@ -10,18 +10,15 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale: # Vale linting job
+  vale: 
+    name: runner / vale
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Fetch all history so we can access all commits
-
-      - name: Install Vale
-        uses: errata-ai/vale-action@v2
-
+      - uses: errata-ai/vale-action@v2
+    
       - name: Install jq
         run: sudo apt-get install -y jq
 
