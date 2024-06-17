@@ -5,15 +5,21 @@ on:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+  checks: write
+  issues: write
+  pull-requests: write
+
 jobs:
-  vale:
+  vale: 
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
@@ -27,7 +33,7 @@ jobs:
         BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
         CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
         echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')"
+        echo "::set-output name=files::$(echo $CHANGED_FILES | jq -R -s -c 'split("\n")[:-1]')"
 
     - name: Print Changed Files
       run: echo $CHANGED_FILES
@@ -59,29 +65,17 @@ jobs:
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
 
-    - name: Verify original files
-      run: |
-        echo "Verifying original files:"
-        ls -l original_files
-
-    - name: Verify corrected files
-      run: |
-        echo "Verifying corrected files:"
-        ls -l corrected_files
-
     - name: Upload original files
       uses: actions/upload-artifact@v3
       with:
         name: original-files
         path: original_files/
-      continue-on-error: true
 
     - name: Upload corrected files
       uses: actions/upload-artifact@v3
       with:
         name: corrected-files
         path: corrected_files/
-      continue-on-error: true
 
   suggest:
     runs-on: ubuntu-latest
