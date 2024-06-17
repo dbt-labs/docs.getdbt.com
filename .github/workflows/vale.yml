@@ -46,43 +46,4 @@ jobs:
         echo "Vale outputs:"
         ls -l
 
-    - name: Simulate Vale changes
-      run: |
-        mkdir -p simulated_changes
-        for file in $(echo ${{ steps.changed-files.outputs.files }} | jq -r '.[]'); do
-          cp "$file" "simulated_changes/$(basename "$file")"
-          vale --output=edit "simulated_changes/$(basename "$file")"
-        done
-
-    - name: Upload Vale results
-      uses: actions/upload-artifact@v3
-      with:
-        name: vale-results
-        path: '*.json'
-
-    - name: Upload simulated changes
-      uses: actions/upload-artifact@v3
-      with:
-        name: simulated-changes
-        path: simulated_changes
-
-  suggest:
-    runs-on: ubuntu-latest
-    needs: vale  # This ensures the suggest job runs after the vale job
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Download simulated changes
-      uses: actions/download-artifact@v3
-      with:
-        name: simulated-changes
-
-    - name: List downloaded files
-      run: ls -l simulated_changes
-
-    - name: Suggest changes
-      uses: parkerbxyz/suggest-changes@v1
-      with:
-        comment: 'Please commit the suggested changes from Vale.'
+   
