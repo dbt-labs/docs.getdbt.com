@@ -16,31 +16,16 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
       with:
-        reporter: github-pr-reviewer
+        reporter: github-pr-review
 
     - name: Install jq
       run: sudo apt-get install -y jq
-
-    - name: Get all changed markdown files
-      id: changed-markdown-files
-      uses: tj-actions/changed-files@v44
-      with:
-        # Avoid using single or double quotes for multiline patterns
-        files: |
-           **.md
-
-    - name: List all changed files markdown files
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      env:
-        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
-      run: |
-        for file in ${ALL_CHANGED_FILES}; do
-          echo "$file was changed"
-        done
 
     - name: Run Vale on changed files
       run: |
@@ -53,8 +38,6 @@ jobs:
         ls -l
 
     - name: Suggest changes from Vale
-      uses: reviewdog/action-suggester@v1
+      uses: parkerbxyz/suggest-changes@v1
       with:
-        tool_name: vale  # Name of the tool for reviewdog reporting
-        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
-        filter_mode: diff_context
+        comment: 'Please review and consider the suggested changes from Vale.'  # Optional comment
