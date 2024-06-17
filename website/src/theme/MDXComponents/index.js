@@ -20,7 +20,6 @@ import CloudCore from '@site/src/components/cloudcore';
 import WHCode from '@site/src/components/whcode';
 import Collapsible from '@site/src/components/collapsible';
 import FAQ from '@site/src/components/faqs';
-import FAQList from '@site/src/components/faqList';
 import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
 import LoomVideo from '@site/src/components/loom';
@@ -72,7 +71,6 @@ const MDXComponents = {
   Collapsible: Collapsible,
   DocCarousel: DocCarousel,
   FAQ: FAQ,
-  FAQList: FAQList,
   File: File,
   Hero: Hero,
   Lightbox: Lightbox,
