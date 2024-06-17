@@ -10,6 +10,22 @@ swap:
   - occured: occurred
   - untill: until
   - occurence: occurrence
+  - colour: color
+  - favour: favor
+  - organisation: organization
+  - licence: license
+  - defence: defense
+  - neighbour: neighbor
+  - organise: organize
+  - recognise: recognize
+  - analyse: analyze
+  - analogue: analog
+  - centre: centre
+  - grey: gray
+  - labour: labor
+  - pretence: pretence
+  - standardise: standardize
+
 
 action:
   name: replace
