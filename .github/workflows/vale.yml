@@ -1,52 +1,44 @@
-name: Lint and suggest
+name: Lint Markdown Files
 
 on:
   pull_request:
     paths:
       - '**/*.md'
 
-permissions:
-  contents: read
-  pull-requests: write
-
 jobs:
-  vale: # Vale linting job
+  vale:
+    name: Vale Markdown Lint
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Install Vale
-      uses: errata-ai/vale-action@v2
-      with:
-        version: 2.17.0
-        files: all
-        reporter: github-pr-check
+      - name: Install Vale
+        uses: errata-ai/vale-action@v2
+        with:
+          version: 2.17.0
+          files: all
+          reporter: github-pr-check
+          fail_on_error: true
 
-    - name: Install jq
-      run: sudo apt-get install -y jq
+      - name: Run Vale on changed files
+        run: |
+          BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
+          CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
+          for file in $CHANGED_FILES; do
+            echo "Running Vale on $file"
+            vale --output=JSON $file > "vale_output_${file//\//_}.json"
+            vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          done
 
-    - name: Get changed files
-      id: changed-files
-      run: |
-        BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
-        CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
-        echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "CHANGED_FILES=$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
+      - name: Upload Vale results
+        uses: actions/upload-artifact@v3
+        with:
+          name: vale-results
+          path: . # Uploads current directory by default
 
-    - name: Print Changed Files
-      run: echo $CHANGED_FILES
+      - name: Vale Check Summary
+        run: echo "Vale check completed successfully."
 
-    - name: Run Vale on changed files
-      run: |
-        for file in ${{ env.CHANGED_FILES }}; do
-          echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
-        done
-        echo "Vale outputs:"
-        ls -l
-
+    env:
+      GITHUB_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
