@@ -1,6 +1,6 @@
 extends: existence
 
-message: "Repetitive word found: '%s'. Consider revising."
+message: "Repetitive word found: '%s'. Consider changing '%s' instead of '%s."
 level: warning
 
 # Regex to match repetitive words (e.g., "the the", "and and")
@@ -10,6 +10,8 @@ tokens:
   - '\b(\w+)\s+\1\b'
 
 action:
-  name: suggest
+  name: edit
   params:
-    - RepetitionFix.tengo
+    - regex
+    - '\b(\w+)\s+\1\b'
+    - '\1'
