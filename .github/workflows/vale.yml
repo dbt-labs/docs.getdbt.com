@@ -1,4 +1,4 @@
-name: Lint and suggest
+name: Lint and Suggest
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  lint:
+  vale:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,9 +20,10 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@reviewdog
-      with:
-        version: latest
+      uses: errata-ai/vale-action@v2
+
+    - name: Install jq
+      run: sudo apt-get install -y jq
 
     - name: Get changed files
       id: changed-files
@@ -30,17 +31,35 @@ jobs:
         BASE_SHA=$(git merge-base origin/${{ github.event.pull_request.base.ref }} ${{ github.sha }})
         CHANGED_FILES=$(git diff --name-only $BASE_SHA ${{ github.sha }} -- '*.md')
         echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
-        echo "Changed files: $CHANGED_FILES"
+        echo "CHANGED_FILES=$(echo $CHANGED_FILES | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_ENV
+
+    - name: Print Changed Files
+      run: echo $CHANGED_FILES
 
     - name: Run Vale on changed files
       run: |
         for file in ${{ env.CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          $HOME/.local/bin/vale --output=JSON "$file" > "vale_output_${file//\//_}.json"
-          $HOME/.local/bin/vale --output=edit "$file"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
+
+    - name: Apply Vale edits and save originals
+      run: |
+        mkdir -p original_files
+        mkdir -p corrected_files
+        for file in ${{ env.CHANGED_FILES }}; do
+          echo "Copying $file to original_files/${file//\//_}.original"
+          cp "$file" "original_files/${file//\//_}.original"
+          echo "Copying vale_output_${file//\//_}_edit.md to corrected_files/${file//\//_}"
+          cp "vale_output_${file//\//_}_edit.md" "corrected_files/${file//\//_}"
+        done
+        echo "Original files:"
+        ls -l original_files
+        echo "Corrected files:"
+        ls -l corrected_files
 
     - name: Commit and push changes
       run: |
