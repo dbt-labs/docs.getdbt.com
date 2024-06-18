@@ -153,3 +153,9 @@ move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
 This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
 
 </Expandable>
+
+<Expandable alt_header="How to download artifacts">
+
+For improved performance, artifacts are not downloaded by default when you're using the dbt Cloud CLI to execute dbt commands. Use the `--download-artifacts` flag with the dbt command to download them.  
+
+</Expandable>
