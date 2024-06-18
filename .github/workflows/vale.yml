@@ -58,11 +58,3 @@ jobs:
           echo "Vale outputs:"
           ls -l
 
-      - name: Suggest changes using Reviewdog
-        if: steps.changed-markdown-files.outputs.any_changed == 'true'
-        run: |
-          for file in ${ALL_CHANGED_FILES}; do
-            TMPFILE=$(mktemp)
-            vale --output=diff $file > "${TMPFILE}"
-            reviewdog -f=diff -f.diff.strip=1 -name=vale -reporter=github-pr-review < "${TMPFILE}"
-          done
