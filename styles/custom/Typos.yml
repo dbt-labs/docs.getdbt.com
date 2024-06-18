@@ -1,7 +1,7 @@
 extends: spelling
 
 message: "Did you really mean '%s'?"
-level: warning
+level: suggestion
 
 action:
   name: replace
