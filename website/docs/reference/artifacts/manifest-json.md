@@ -11,7 +11,7 @@ import ManifestVersions from '/snippets/_manifest-versions.md';
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
-Today, dbt uses this file to populate the [docs site](/docs/collaborate/documentation), and to perform [state comparison](/reference/node-selection/syntax#about-node-selection). Members of the community have used this file to run checks on how many models have descriptions and tests.
+Today, dbt uses this file to populate the [docs site](/docs/collaborate/build-and-view-your-docs), and to perform [state comparison](/reference/node-selection/syntax#about-node-selection). Members of the community have used this file to run checks on how many models have descriptions and tests.
 
 ### Top-level keys
 
@@ -36,7 +36,7 @@ All resources nested within `nodes`, `sources`, `metrics`, `exposures`, `macros`
 - `name`: Resource name.
 - `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key
 - `package_name`: Name of package that defines this resource.
-- `root_path`: Absolute file path of this resource's package. (**Note:** This is removed for most node types in dbt Core v1.4 / manifest v8 to reduce duplicative information across nodes, but it is still present for seeds.)
+- `root_path`: Absolute file path of this resource's package. (**Note:** This was removed for most node types in dbt Core v1.4 / manifest v8 to reduce duplicative information across nodes, but it is still present for seeds.)
 - `path`: Relative file path of this resource's definition within its "resource path" (`model-paths`, `seed-paths`, etc.).
 - `original_file_path`: Relative file path of this resource's definition, including its resource path.
 
