@@ -9,9 +9,7 @@ slug: /sql-reference/dateadd
     <title>What is the SQL DATEADD Function?</title>
 </head>
 
-If you’ve used the DATEADD SQL function any number of times, you’ve googled the syntax of the function all of those times except one, when I decided to hit the “are you feeling lucky” button and go for it.
-
-In switching between SQL dialects (BigQuery, Postgres and Snowflake are my primaries), it's almost impossible to remember the argument order (or exact function name) of dateadd.
+If you’ve ever used the DATEADD SQL function across dialects (such as BigQuery, Postgres and Snowflake), you’ve probably had to google the syntax of the function every time. It's almost impossible to remember the argument order (or exact function name) of dateadd.
 
 This article will go over how the DATEADD function works, the nuances of using it across the major cloud warehouses, and how to standardize the syntax variances using dbt macro.
 
@@ -30,14 +28,6 @@ All of them accept the same rough parameters, in slightly different syntax and o
 - Interval (integer to increment by)
 
 The *functions themselves* are named slightly differently, which is common across SQL dialects.
-
-### For example, the DATEADD function in Snowflake…
-
-```
-dateadd( {{ datepart }}, {{ interval }}, {{ from_date }} )
-```
-
-*Hour, minute and second are supported!*
 
 ### For example, the DATEADD function in Snowflake…
 
@@ -76,7 +66,7 @@ Switching back and forth between those SQL syntaxes usually requires a quick sca
 
 But couldn’t we be doing something better with those keystrokes, like typing out and then deleting a tweet?
 
-dbt v1.2 helps us smooth out these wrinkles of writing [SQL across data warehouses](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros).
+dbt helps smooth out these wrinkles of writing [SQL across data warehouses](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros).
 
 Instead of looking up the syntax each time you use it, you can just write it the same way each time, and the macro compiles it to run on your chosen warehouse:
 

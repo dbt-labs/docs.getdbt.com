@@ -19,7 +19,7 @@ By default, dbt follows these rules:
 
 For a clean slate, it's a good practice to drop the development schema at the start and end of your development cycle.
 
-If you require additional controls over production data, create a [Staging evironment](/docs/deploy/deploy-environments#staging-environment) <Lifecycle status='beta' /> and dbt will use that, rather than the Production environment, to resolve `{{ ref() }}` functions.
+If you require additional controls over production data, create a [Staging environment](/docs/deploy/deploy-environments#staging-environment) and dbt will use that, rather than the Production environment, to resolve `{{ ref() }}` functions.
 
 ## Required setup
 
