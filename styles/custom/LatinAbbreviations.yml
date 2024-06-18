@@ -4,6 +4,7 @@ message: "Avoid Latin abbreviations: '%s'. Consider using 'for example', 'that i
 level: suggestion
 swap:
   - e.g.: for example
+  - eg: for example
   - i.e.: for example
   - i.e.: that is
   - etc.: and so on
@@ -11,3 +12,8 @@ swap:
 
 action:
   name: replace
+  params:
+    - for example
+    - that is
+    - and so on
+    - Note
