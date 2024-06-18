@@ -414,7 +414,7 @@ To run a model with multiple versions, you can use the [`--select` flag](/refere
 - Run the latest version of `dim_customers` using the `--select` flag shorthand:
 
   ```bash
-  dbt run -s dim_customers version:latest # Run the latest version of the model
+  dbt run -s dim_customers,version:latest # Run the latest version of the model
   ```
 
 These commands provide flexibility in managing and executing different versions of a dbt model.
