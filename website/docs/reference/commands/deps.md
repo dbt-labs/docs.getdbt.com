@@ -70,7 +70,11 @@ The `package-lock.yml` file includes a `sha1_hash` of the `packages` config. Thi
 
 ### Forcing upgrades
 
-It's possible to force package resolution to rerun, even if the `packages` config hasn't changed, by running `dbt deps --upgrade`. This enables you to get the latest commits from the `main` branch of an internally maintained `git` package while accepting the risk of unpredictable builds. An alternative to running `dbt deps --upgrade` in production is to "ignore" the lock file by adding `package-lock.yml` to your project's `.gitignore` file. If you pursue either approach, dbt Labs strongly recommends adding version pins for third-party packages within your `packages` config.
+It's possible to force package resolution to rerun, even if the `packages` config hasn't changed, by running `dbt deps --upgrade`. This enables you to get the latest commits from the `main` branch of an internally maintained `git` package while accepting the risk of unpredictable builds. 
+
+An alternative to running `dbt deps --upgrade` in production is to "ignore" the lock file by adding `package-lock.yml` to your project's `.gitignore` file. 
+
+If you pursue either approach, dbt Labs strongly recommends adding version pins for third-party packages within your `packages` config.
 
 ## Add specific packages
 
