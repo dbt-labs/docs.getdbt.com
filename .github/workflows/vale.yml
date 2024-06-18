@@ -21,8 +21,7 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
-      with:
-        reporter: github-pr-check
+
 
     - name: Install jq
       run: sudo apt-get install -y jq
