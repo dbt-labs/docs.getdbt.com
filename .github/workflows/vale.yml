@@ -53,8 +53,4 @@ jobs:
         done
         echo "Vale outputs:"
         ls -l
-
-    - name: Suggest changes from Vale
-      uses: reviewdog/action-suggester@v1
-      with:
-       tool_name: vale 
+a
