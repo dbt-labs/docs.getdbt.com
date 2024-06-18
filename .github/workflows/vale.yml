@@ -23,6 +23,7 @@ jobs:
       uses: errata-ai/vale-action@reviewdog
       with:
         reporter: github-pr-check
+        filter_mode: added
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -53,4 +54,10 @@ jobs:
         done
         echo "Vale outputs:"
         ls -l
-a
+  
+    - name: Suggest changes
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      uses: reviewdog/action-suggester@v1
+      with:
+        tool_name: vale
+        filter_mode: added
