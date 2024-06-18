@@ -20,10 +20,10 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      run: |
-        curl -fsSL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
-        sudo mv vale /usr/local/bin/
-        vale --version  # Check if Vale is correctly installed
+      uses: errata-ai/vale-action@reviewdog
+      with:
+        reporter: github-pr-check
+        files: .vale.ini  # Assuming the config file is in the root of the repository
 
     - name: Install jq
       run: sudo apt-get install -y jq
