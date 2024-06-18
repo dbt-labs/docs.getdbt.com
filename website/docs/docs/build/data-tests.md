@@ -70,7 +70,6 @@ The name of this test is the name of the file: `assert_total_payment_amount_is_p
 
 Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
 
-As with every dbt asset, we should also document the data tests by adding their YAML configuration.
 
 
 ## Generic data tests
