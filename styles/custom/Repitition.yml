@@ -4,3 +4,4 @@ level: suggestion
 alpha: true
 tokens:
   - '[^\s]+'
+

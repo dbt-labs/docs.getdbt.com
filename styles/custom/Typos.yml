@@ -1,7 +1,9 @@
 extends: spelling
 
-message: "Did you really mean '%s'?"
+message: "Did you really mean '%s'? Try '%s' instead."
 level: suggestion
 
 action:
   name: replace
+  params:
+    suggestions: true  # Automatically suggest correct spelling
