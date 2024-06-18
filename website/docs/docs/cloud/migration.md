@@ -17,7 +17,7 @@ This document outlines the steps that you must take to prevent service disruptio
 
 ## Pre-migration checklist
 
-Prior to your migration date, your dbt Cloud account admin will need to make some changes to your account. Most of your configurations will be migrated automatically, but a few of them will require manual intervention. 
+Prior to your migration date, your dbt Cloud account admin will need to make some changes to your account. Most of your configurations will be migrated automatically, but a few will require manual intervention. 
 
 If your account is scheduled for migration, you will see a banner indicating your migration date when you log in. If you don't see a banner, you don't need to take any action.
 
@@ -25,7 +25,7 @@ If your account is scheduled for migration, you will see a banner indicating you
     * Old IPs: `52.45.144.63`, `54.81.134.249`, `52.22.161.231`
     * New IPs: `52.3.77.232`, `3.214.191.130`, `34.233.79.135`
 2. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can resend the invitations once the migration is complete.
-3. **SSO integrations** &mdash; If you've completed the Auth0 migration, your account SSO configurations will be automatically transferred. If you have not completed the Auth0 migration, we recommend completing that prior to the mult-cell migration to avoid service disruptions.
+3. **SSO integrations** &mdash; If you've completed the Auth0 migration, your account SSO configurations will be automatically transferred. If you have not completed the Auth0 migration, we recommend completing that before the mult-cell migration to avoid service disruptions.
 
 ## Post-migration
 
