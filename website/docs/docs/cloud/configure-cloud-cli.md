@@ -154,7 +154,7 @@ This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt`
 
 </Expandable>
 
-<Expandable alt_header="How to download artifacts">
+<Expandable alt_header="How to download artifacts" >
 
 For improved performance, artifacts are not downloaded by default when you're using the dbt Cloud CLI to execute dbt commands. Use the `--download-artifacts` flag with the dbt command to download them.  
 
