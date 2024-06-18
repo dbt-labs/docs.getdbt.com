@@ -328,7 +328,12 @@ To find the latest release for a package, navigate to the `Releases` tab in the 
 
 <VersionBlock firstVersion="1.7">
 
-Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. The `package-lock.yml` file contains a record of all packages installed and, if subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. For example, if you are using a branch name for the revision, the `package-lock.yml` file will pin to the head commit. If you use a version range, it will pin to the most recent released version. In either case, subsequent commits or versions will **not** be installed. To override this behavior, use `dbt deps --upgrade` or add `package-lock.yml` to your `.gitignore` file.
+Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. 
+
+- The `package-lock.yml` file contains a record of all packages installed.
+- If subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
+
+For example, if you use a branch name, the `package-lock.yml` file pins to the head commit. If you use a version range, it pins to the latest release. In either case, subsequent commits or versions will **not** be installed. To get new commits or versions, run `dbt deps --upgrade` or add `package-lock.yml` to your .gitignore file.
 
 </VersionBlock>
 
