@@ -15,7 +15,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - MetricFlow uses YAML configuration files to create this graph for querying metrics.
 - Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
 - You can create multiple semantic models from a single dbt model (SQL or Python), as long as you give each semantic model a unique name.
-- Configure semantic models in a YAML file within your dbt project directory.
+- Configure semantic models in a YAML file within your dbt project directory. Refer to the [best practices guide](/best-practices/how-we-structure/5-semantic-layer-marts) for more info on project structuring.
 - Organize them under a `metrics:` folder or within project sources as needed.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
@@ -59,6 +59,8 @@ semantic_models:
     primary_entity: >-
       if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
 ```
+
+You can refer to the [best practices guide](/best-practices/how-we-structure/5-semantic-layer-marts) for more info on project structuring.
 
 The following example displays a complete configuration and detailed descriptions of each field:
 
@@ -143,6 +145,8 @@ Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/r
       +meta:
         some_key: some_value
   ```
+
+For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
 
 </VersionBlock>
 
@@ -250,8 +254,6 @@ import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
 
 <MeasuresParameters />
 
-
-
 import SetUpPages from '/snippets/_metrics-dependencies.md';
 
 <SetUpPages />
@@ -262,3 +264,4 @@ import SetUpPages from '/snippets/_metrics-dependencies.md';
 - [Dimensions](/docs/build/dimensions)
 - [Entities](/docs/build/entities)
 - [Measures](/docs/build/measures)
+- [Project structure best practices guide](/best-practices/how-we-structure/5-semantic-layer-marts)

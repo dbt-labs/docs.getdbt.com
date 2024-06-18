@@ -11,6 +11,7 @@ This guide includes standards we want to emphasize, likely because we've made de
 * [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
 * [UI elements](#UI-elements)
+* [Capitalization](#Capitalization)
 * [Titles](#Titles)
 * [Placeholder text](#Placeholder-text)
 * [Oxford comma](#Oxford-comma)
@@ -224,6 +225,10 @@ When referring to different sections of the IDE, use the name of the section and
 :white_check_mark: In the **Settings** section, choose the default address for your account.
 
 :x: You can review all your past orders from the **History** pane.
+
+## Capitalization
+
+We should only capitalize products (dbt Explorer, dbt Cloud), but not features like column-level lineage. We also capitalize acronyms and proper nouns. Refer to [MS Style guide on capitalization](https://learn.microsoft.com/en-us/style-guide/capitalization) for more information.
 
 ## Titles
 

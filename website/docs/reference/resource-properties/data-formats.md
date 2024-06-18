@@ -7,7 +7,7 @@ Currently, mock data for unit testing in dbt supports three formats:
 
 - `dict` (default): Inline dictionary values.
 - `csv`: Inline CSV values or a CSV file.
-- `sql`: Incine SQL query or a SQL file. Note: For this format you must supply mock data for _all rows_. 
+- `sql`: Inline SQL query or a SQL file. Note: For this format you must supply mock data for _all rows_. 
 
 ## dict
 
@@ -79,7 +79,7 @@ unit_tests:
     model: my_model
     given:
       - input: ref('my_model_a')
-        format: csv
+        format: sql
         rows: |
           select 1 as id, 'gerda' as name, null as loaded_at union all
           select 2 as id, 'michelle', null as loaded_at as name

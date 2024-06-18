@@ -6,13 +6,11 @@ id: "exposures"
 
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
-- populate a dedicated page in the auto-generated [documentation](/docs/collaborate/documentation) site with context relevant to data consumers
+- populate a dedicated page in the auto-generated [documentation](/docs/build/documentation) site with context relevant to data consumers
 
 ### Declaring an exposure
 
 Exposures are defined in `.yml` files nested under an `exposures:` key.
-
-<VersionBlock firstVersion="1.4">
 
 <File name='models/<filename>.yml'>
 
@@ -42,38 +40,6 @@ exposures:
 
 </File>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.3">
-
-<File name='models/<filename>.yml'>
-
-```yaml
-version: 2
-
-exposures:
-  
-  - name: weekly_jaffle_report
-    type: dashboard
-    maturity: high
-    url: https://bi.tool/dashboards/1
-    description: >
-      Did someone say "exponential growth"?
-
-    depends_on:
-      - ref('fct_orders')
-      - ref('dim_customers')
-      - source('gsheets', 'goals')
-
-    owner:
-      name: Callum McData
-      email: data@jaffleshop.com
-```
-
-</File>
-
-</VersionBlock>
-
 ### Available properties
 
 _Required:_
@@ -81,19 +47,8 @@ _Required:_
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
 - **owner**: `name` or `email` required; additional properties allowed
 
-<VersionBlock firstVersion="1.4">
-
 _Expected:_
-- **depends_on**: list of refable nodes, including `ref`, `source`, and `metric` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.3">
-
-_Expected:_
-- **depends_on**: list of refable nodes, including `ref` and `source` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
-
-</VersionBlock>
+- **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
 
 _Optional:_
 - **label**:  May contain spaces, capital letters, or special characters.
