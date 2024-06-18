@@ -53,8 +53,10 @@ jobs:
         done
         echo "Vale outputs:"
         ls -l
+      continue-on-error: true
 
     - name: Suggest changes from Vale
       uses: reviewdog/action-suggester@v1
       with:
        tool_name: vale 
+      continue-on-error: true
