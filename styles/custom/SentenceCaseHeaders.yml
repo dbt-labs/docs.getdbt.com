@@ -5,9 +5,4 @@ scope: heading
 match: $sentence
 indicators:
   - ":"
-action:
-  name: replace
-  params:
-    # Use a transformation to convert the header to sentence case
-    replace: '((?<!\w)\w|\.\s*\w)'
-    with: '${1:\l}'
+
