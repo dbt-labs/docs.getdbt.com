@@ -17,7 +17,11 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## Keep on latest version 
 
-With dbt Cloud, you can get early access to many new features and functionality before they're in the Generally Available (GA) release of dbt Core v1.8 without the need to manage version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) setting for more details.
+dbt Cloud is going "versionless." This means you'll automatically get early access to new features and functionality before they're available in final releases of dbt Core. 
+
+Select ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access to everything in dbt Core v1.8 and more.
+
+For example, if the latest dbt version is 1.8, selecting "Keep on latest version" in dbt Cloud automatically updates your environment to 1.8.
 
 ## New and changed features and functionality
 
