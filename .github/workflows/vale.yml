@@ -44,24 +44,21 @@ jobs:
           echo "$file was changed"
         done
 
-    - name: Run Vale and generate diff
+    - name: Run Vale and generate JSON output
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
         ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
-        TMPFILE=$(mktemp)
         for file in ${ALL_CHANGED_FILES}; do
           echo "Running Vale on $file"
-          vale --output=diff $file >> "${TMPFILE}"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
         done
-        echo "Generated diff:"
-        cat "${TMPFILE}"
 
-    - name: Suggest changes
+    - name: Suggest changes using Reviewdog
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: |
-        TMPFILE=$(mktemp)
         for file in ${ALL_CHANGED_FILES}; do
-          vale --output=diff $file >> "${TMPFILE}"
+          TMPFILE=$(mktemp)
+          vale --output=diff $file > "${TMPFILE}"
+          reviewdog -f=diff -f.diff.strip=1 -name=vale -reporter=github-pr-review < "${TMPFILE}"
         done
-        reviewdog -f=diff -f.diff.strip=1 -name=vale -reporter=github-pr-review < "${TMPFILE}"
