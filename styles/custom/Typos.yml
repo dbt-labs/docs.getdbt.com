@@ -1,4 +1,4 @@
 extends: spelling
 
-message: "Did you really mean '%s'? Try '%s' instead."
+message: "Oops there's a typo -- did you really mean '%s'? "
 level: suggestion
