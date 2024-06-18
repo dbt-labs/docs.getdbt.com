@@ -20,7 +20,7 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@reviewdog
+      uses: errata-ai/vale-action@v2
       with:
         reporter: github-pr-check
 
@@ -53,10 +53,5 @@ jobs:
         done
         echo "Vale outputs:"
         ls -l
-      continue-on-error: true
 
-    - name: Suggest changes from Vale
-      uses: reviewdog/action-suggester@v1
-      with:
-       tool_name: vale 
-      continue-on-error: true
+   
