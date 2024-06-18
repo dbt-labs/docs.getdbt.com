@@ -72,7 +72,6 @@ Singular data tests are easy to write—so easy that you may find yourself writi
 
 As with every dbt asset, we should also document the data tests by adding their YAML configuration.
 
-EXAMPLE OF HOW THIS WOULD LOOK LIKE FOR THE ABOVE SQL TEST!
 
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
