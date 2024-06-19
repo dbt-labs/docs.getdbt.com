@@ -8,9 +8,7 @@ sidebar_label: "Microsoft Excel 365"
 
 # Microsoft Excel 365 <Lifecycle status='beta'/>
 
-<p style={{ color: '#808080', fontSize: '1.1em' }}>
 The dbt Semantic Layer offers a seamless integration with Microsoft Excel 365 through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Excel 365.
-</p>
 
 ## Prerequisites
 
@@ -26,7 +24,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Installing the add-on
 
-1. In Excel,authenticate with your host, dbt Cloud environment ID, and service token.
+1. In Excel, authenticate with your host, dbt Cloud environment ID, and service token.
    - Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings
    <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg" width="70%" title="Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings" />
 
