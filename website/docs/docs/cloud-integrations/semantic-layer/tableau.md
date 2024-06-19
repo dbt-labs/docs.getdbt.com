@@ -6,7 +6,6 @@ sidebar_label: "Tableau"
 ---
 
 The Tableau integration allows you to use worksheets to query the dbt Semantic Layer directly and produce your dashboards with trusted data. It provides a live connection to the dbt Semantic Layer through Tableau Desktop or Tableau Server.
-</p>
 
 ## Prerequisites
 
