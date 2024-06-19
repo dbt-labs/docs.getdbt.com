@@ -38,10 +38,12 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 | Flag                                                            | dbt Cloud: Intro | dbt Cloud: Maturity | dbt Core: Intro | dbt Core: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
 | require_explicit_package_overrides_for_builtin_materializations | 2024.04.141      | 2024.06.191         | 1.6.14, 1.7.14  | 1.8.0             |
-| require_resource_names_without_spaces                           | 2024.05.146      | TBD                 | 1.8.0           | 1.9.0             |
-| source_freshness_run_project_hooks                              | 2024.03.61       | TBD                 | 1.8.0           | 1.9.0             |
+| require_resource_names_without_spaces                           | 2024.05.146      | TBD*                | 1.8.0           | 1.9.0             |
+| source_freshness_run_project_hooks                              | 2024.03.61       | TBD*                | 1.8.0           | 1.9.0             |
 
-
+*Note that TBD means the exact date/release for these flags in dbt Cloud hasn't been determined yet. Affected users will receive emails ahead of the maturity date. In the meantime, if you see deprecation warnings, you can either:
+- Migrate your project and enable the new behavior by setting the flag to `True` to stop seeing the warnings.
+- Or, set the flag to `False` to keep seeing warnings without changing behavior until the default changes later this year.
 
 ###  Package override for built-in materialization 
 
