@@ -4,17 +4,32 @@ description: Getting started with dbt Mesh patterns
 hoverSnippet: Learn how to get started with dbt Mesh
 ---
 
-As mentioned before, the key decision in migrating to a multi-project architecture is understanding how your project is already being grouped, built, and deployed. We can use this information to inform our decision to split our project apart.
+### Where should your mesh journey start?
 
-- **Examine your jobs** - which sets of models are most often built together?
-- **Look at your lineage graph** - how are models connected?
-- **Look at your selectors** defined in `selectors.yml` - how do people already define resource groups?
+Moving to a dbt Mesh represents a meaningful change in development and deployment architecture. Before any sufficiently complex software refactor or migration, it's important to ask, 'Why might this not work?' The two most common reasons we've seen stem from
+
+1. Lack of buy-in that a dbt Mesh is the right long-term architecture
+2. Lack of alignment on a well-scoped starting point
+
+Creating alignment on your architecture and starting point are major steps in ensuring a successful migration. Deciding on the right starting point will look different for every organization, but there are some heuristics that can help you decide where to start. In all likelihood, your organization already has logical components, and you may already be grouping, building, and deploying your project according to these interfaces.The goal is to define and formalize these organizational interfaces and use these boundaries to split your project apart by domain.
+
+How do you find these organizational interfaces? Here are some steps to get you started:
+
 - **Talk to teams** about what sort of separation naturally exists right now.
   - Are there various domains people are focused on?
   - Are there various sizes, shapes, and sources of data that get handled separately (such as click event data)?
   - Are there people focused on separate levels of transformation, such as landing and staging data or building marts?
+  - Is there a single team that is *downstream* of your current dbt project, who could more easily migrate onto dbt Mesh as a consumer? 
 
-## Add groups and access
+When attempting to define your project interfaces, you should consider investigating:
+
+- **Your jobs:** Which sets of models are most often built together?
+- **Your lineage graph:** How are models connected?
+- **Your selectors(defined in `selectors.yml`):** How do people already define resource groups?
+
+Let's go through an example process of taking a monolithing project, using groups and access to define the interfaces, and then splitting it into multiple projects.
+
+## Defining project interfaces with groups and access
 
 Once you have a sense of some initial groupings, you can first implement **group and access permissions** within a single project.
 
