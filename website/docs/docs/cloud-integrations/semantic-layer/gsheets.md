@@ -5,7 +5,6 @@ tags: [Semantic Layer]
 sidebar_label: "Google Sheets"
 ---
 
-<p style={{ color: '#808080', fontSize: '1.1em' }}>
 The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheets
 </p>
 
