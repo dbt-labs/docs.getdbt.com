@@ -6,7 +6,7 @@ sidebar_label: "Saved queries"
 tags: [Metrics, Semantic Layer]
 ---
 
-Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. Saved queries is a node and visible in the dbt <Term id="dag" />.
+Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. Saved queries are nodes and visible in the dbt <Term id="dag" />.
 
 Saved queries serve as the foundational building block, allowing you to [configure exports](#configure-exports) in your saved query configuration. Exports takes this functionality a step further by enabling you to [schedule and write saved queries](/docs/use-dbt-semantic-layer/exports) directly within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler).
 
@@ -119,6 +119,8 @@ saved-queries:
 ```
 </File>
 
+For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
+
 #### Where clause
 
 Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters and refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
@@ -213,6 +215,19 @@ saved_queries:
 Once you've configured exports, you can now take things a step further by running exports to automatically write saved queries within your data platform using [dbt Cloud's job scheduler](/docs/deploy/job-scheduler). This feature is only available with the [dbt Cloud's Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
 
 For more information on how to run exports, refer to the [Exports](/docs/use-dbt-semantic-layer/exports) documentation.
+
+## FAQs
+
+<detailsToggle alt_header="Can I have multiple exports in a single saved query?">
+
+Yes, this is possible. However, the difference would be the name, schema, and materialization strategy of the export.
+</detailsToggle>
+
+<detailsToggle alt_header="How can I select saved_queries by their resource type?">
+
+To include all saved queries in the dbt build run, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
+
+</detailsToggle>
 
 ## Related docs
 

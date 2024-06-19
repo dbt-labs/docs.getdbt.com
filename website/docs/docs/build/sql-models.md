@@ -18,13 +18,8 @@ If you're new to dbt, we recommend that you read a [quickstart guide](/guides) t
 
 :::
 
-<VersionBlock firstVersion="1.3">
+dbt's Python capabilities are an extension of its capabilities with SQL models. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](/docs/build/python-models)
 
-Starting in v1.3, dbt Core adds support for **Python models**.
-
-dbt's Python capabilities are an extension of its capabilities with SQL models. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](/docs/building-a-dbt-project/building-models/python-models)
-
-</VersionBlock>
 
 A SQL model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
@@ -265,7 +260,7 @@ Additionally, the `ref` function encourages you to write modular transformations
 
 ## Testing and documenting models
 
-You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/data-tests) and [documentation](/docs/collaborate/documentation) for more information.
+You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/data-tests) and [documentation](/docs/build/documentation) for more information.
 
 ## Additional FAQs
 <FAQ path="Project/example-projects" alt_header="Are there any example dbt models?" />

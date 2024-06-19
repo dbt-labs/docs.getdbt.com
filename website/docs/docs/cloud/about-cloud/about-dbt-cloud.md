@@ -59,7 +59,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
     icon="dbt-bit"/>
 
    <Card
-    title="Supports GitHub, GitLab, AzureDevOPs"
+    title="Supports GitHub, GitLab, AzureDevOps"
     body="Seamlessly connect your git account to dbt Cloud and provide another layer of security to dbt Cloud. Import new repositories, trigger continuous integration, clone repos using HTTPS, and more!"
     link="/docs/cloud/git/connect-github"
     icon="dbt-bit"/>

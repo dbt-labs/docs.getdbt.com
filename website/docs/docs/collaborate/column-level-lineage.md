@@ -7,7 +7,7 @@ dbt Explorer now offers column-level lineage (CLL) for the resources in your dbt
 
 CLL is available to dbt Cloud Enterprise accounts that can use Explorer. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-overview-cll.png" width="40%" title="Overview of column level lineage"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-overview-cll.png" width="70%" title="Overview of column level lineage"/>
 
 ## Access the column-level lineage
 
@@ -22,13 +22,13 @@ dbt Cloud updates the lineage in Explorer after each run that's executed in the 
 
 You can use the column evolution lineage lens to determine when a column is transformed vs. reused (passthrough or rename). The lens helps you distinguish when and how a column is actually changed as it flows through your dbt lineage, informing debugging workflows in particular. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="40%" title="Example of the Column evolution lens"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-evolution-lens.png" width="80%" title="Example of the Column evolution lens"/>
 
 ### Inherited column descriptions
 
-A reused column, labeled as *passthrough* or *rename*, inherits its description from source and upstream model columns. In other words, source and upstream model columns propagate their descriptions downstream whenever they are not transformed, meaning you don’t need to manually define the description. Passthrough and rename columns are clearly labeled and color coded.
+A reused column, labeled as *passthrough* or *rename*, inherits its description from source and upstream model columns. In other words, source and upstream model columns propagate their descriptions downstream whenever they are not transformed, meaning you don’t need to manually define the description. Passthrough and rename columns are clearly labeled and color-coded.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.png" width="40%" title="Example of propagate and inherit column descriptiions"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-prop-inherit.png" width="70%" title="Example of propagate and inherit column descriptiions"/>
 
 
 ## Column-level lineage use cases {#use-cases}
@@ -41,7 +41,7 @@ When there is an unexpected breakage in a data pipeline, column-level lineage ca
 
 ### Impact analysis
 
-During development, analytics engineers can use column-level lineage to understand the full scope of the impact of their proposed changes. This knowledge empowers them to create higher quality pull requests that require fewer edits, as they can anticipate and preempt issues that would've been unchecked without column-level insights. 
+During development, analytics engineers can use column-level lineage to understand the full scope of the impact of their proposed changes. This knowledge empowers them to create higher-quality pull requests that require fewer edits, as they can anticipate and preempt issues that would've been unchecked without column-level insights. 
 
 ### Collaboration and efficiency
 
@@ -49,7 +49,10 @@ When exploring your data products, navigating column lineage allows analytics en
 
 ## Caveats
 
-Following are the CLL caveats/limitations. 
+Refer to the following CLL caveats or limitations as you navigate dbt Explorer.
+
+### Column usage
+Column-level lineage reflects the lineage from `select` statements in your models' SQL code. It doesn't reflect other usage like joins and filters. 
 
 ### SQL parsing
 

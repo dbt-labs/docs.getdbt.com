@@ -74,7 +74,7 @@ plan="dbt Cloud Team or Enterprise"
 <Card
     title="Available integrations"
     body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
-    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
+    link="/docs/cloud-integrations/avail-sl-integrations"
     icon="dbt-bit"/>
 
 <Card

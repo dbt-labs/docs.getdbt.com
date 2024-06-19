@@ -17,7 +17,7 @@ The keys for metrics definitions are:
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
-| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
+| `name` | Provide the reference name for the metric. This name must be a unique metric name and can consist of lowercase letters, numbers, and underscores.  | Required |
 | `description` | Describe your metric.   | Optional |
 | `type` | Define the type of metric, which can be `conversion`, `cumulative`, `derived`, `ratio`, or `simple`. | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
@@ -199,7 +199,7 @@ metrics:
 
 [Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
 
-- `name`&mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
+- `name` &mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
 
 **Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric.
 
@@ -220,7 +220,9 @@ metrics:
 
 ## Filters
 
-A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters and refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
+A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters. 
+
+Refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
 
 ```yaml
 filter: | 
@@ -233,7 +235,7 @@ filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 
 filter: |  
-  {{ Metric('metric_name', group_by=['entity_name']) }}
+  {{ Metric('metric_name', group_by=['entity_name']) }}  # Available in v1.8 or go versionless with [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)
 ```
 
 ### Further configuration

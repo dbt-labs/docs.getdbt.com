@@ -114,11 +114,11 @@ Open a new tab and follow these quick steps for account setup and data loading i
   
   </detailsToggle>
 
-- Production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always remain on the latest version.
+- Production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to "versionless" by selecting [ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the latest updates.
 - Create a [trial Snowflake account](https://signup.snowflake.com/):
   - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
   - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
-- Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://courses.getdbt.com/collections) course.
+- Basic understanding of SQL and dbt. For example, you've used dbt before or have completed the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course.
 
 ### What you'll learn
 
@@ -698,10 +698,10 @@ semantic_models:
         type: foreign  
     # Newly added
     dimensions:   
-     - name: order_date
-       type: time
-       type_params:
-         time_granularity: day
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
 ```
 
 </File>
@@ -992,7 +992,7 @@ For next steps, you can start defining your own metrics and learn additional con
 Here are some additional resources to help you continue your journey:
 
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
-- [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
+- [Available integrations](/docs/cloud-integrations/avail-sl-integrations)
 - Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
 - [Join our live demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts)
 
