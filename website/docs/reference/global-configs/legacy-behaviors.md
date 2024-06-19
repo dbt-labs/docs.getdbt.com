@@ -41,9 +41,9 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 | require_resource_names_without_spaces                           | 2024.05.146      | TBD*                | 1.8.0           | 1.9.0             |
 | source_freshness_run_project_hooks                              | 2024.03.61       | TBD*                | 1.8.0           | 1.9.0             |
 
-*Note that TBD means the exact date/release for these flags in dbt Cloud hasn't been determined yet. Affected users will receive emails ahead of the maturity date. In the meantime, if you see deprecation warnings, you can either:
-- Migrate your project and enable the new behavior by setting the flag to `True` to stop seeing the warnings.
-- Or, set the flag to `False` to keep seeing warnings without changing behavior until the default changes later this year.
+When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
+- Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
+- Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
 
 ###  Package override for built-in materialization 
 
