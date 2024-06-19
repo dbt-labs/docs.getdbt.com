@@ -220,3 +220,6 @@ Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/spark-configs#the-merge-strategy))
 2. [Snapshots](/docs/build/snapshots)
 3. [Persisting](/reference/resource-configs/persist_docs) column-level descriptions as database comments
+
+### Default Namespace Using Thrift Connection Method
+There are metadata queries that run pre-executing any dbt workflow, these queries run on the default namespace. So if your Spark cluster for some reason doesn't have a default namespace created these queries will results in a failed workflow during run or debug even though the configutations are set correctly. 
