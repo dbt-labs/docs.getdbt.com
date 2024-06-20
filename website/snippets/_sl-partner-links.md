@@ -17,7 +17,7 @@ The following tools integrate with the dbt Semantic Layer:
     icon="google-sheets-logo-icon"/>
 
   <Card
-    title="Microsoft Excel 365 (beta)"
+    title="Microsoft Excel 365 (preview)"
     link="/docs/cloud-integrations/semantic-layer/excel"
     body="Unlock how to connect to Microsoft Excel 365 to query metrics and collaborate with your team."
     icon="excel"/>
