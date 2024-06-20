@@ -1,5 +1,5 @@
 ---
-title: About configs and properties
+title: Configs, properties, what are they?
 ---
 
 Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. Resources can also define **configurations**, which are a special kind of property that bring extra abilities. What's the distinction?
