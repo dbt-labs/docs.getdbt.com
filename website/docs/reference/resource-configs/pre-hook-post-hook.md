@@ -119,8 +119,6 @@ dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out
 
 <Snippet path="hooks-to-grants" />
 
-<VersionBlock firstVersion="1.2">
-
 ### [Redshift] Unload one model to S3
 
 <File name='model.sql'>
@@ -157,8 +155,6 @@ models:
 See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest/sql-ref-syntax-aux-analyze-table.html)
 
 </File>
-
-</VersionBlock>
 
 ### Additional examples
 We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).

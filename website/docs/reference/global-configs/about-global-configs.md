@@ -73,13 +73,13 @@ Because the values of `flags` can differ across invocations, we strongly advise 
 | [log_format](/reference/global-configs/logs#log-formatting) | enum | default (text) | ✅ | `DBT_LOG_FORMAT` | `--log-format` | ❌ |
 | [log_level_file](/reference/global-configs/logs#log-level) | enum | debug | ✅ | `DBT_LOG_LEVEL_FILE` | `--log-level-file` | ❌ |
 | [log_level](/reference/global-configs/logs#log-level) | enum | info | ✅ | `DBT_LOG_LEVEL` | `--log-level` | ❌ |
-| [log_path](/reference/global-configs/logs) | path | None (uses `logs/`) | ❌ | `DBT_PROFILES_DIR` | `--profiles-dir` | ❌ |
+| [log_path](/reference/global-configs/logs) | path | None (uses `logs/`) | ❌ | `DBT_LOG_PATH` | `--log-path` | ❌ |
 | [partial_parse](/reference/global-configs/parsing#partial-parsing) | boolean | True | ✅ | `DBT_PARTIAL_PARSE` | `--partial-parse`, `--no-partial-parse` | ✅ |
 | [populate_cache](/reference/global-configs/cache) | boolean | True | ✅ | `DBT_POPULATE_CACHE` | `--populate-cache`, `--no-populate-cache` | ✅ |
 | [print](/reference/global-configs/print-output#suppress-print-messages-in-stdout) | boolean | True | ❌ | `DBT_PRINT` | `--print` | ❌ |
 | [printer_width](/reference/global-configs/print-output#printer-width) | int | 80 | ✅ | `DBT_PRINTER_WIDTH` | `--printer-width` | ❌ |
 | [profile](/docs/core/connect-data-platform/connection-profiles#about-profiles) | string | None | ✅ (as top-level key) | `DBT_PROFILE`  | `--profile` | ❌ |
-| [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None (current dir, then HOME dir) | ❌ | `DBT_PROFILES_DIR` | `--profiles-dir` | ❌ |
+| [profiles_dir](/docs/core/connect-data-platform/connection-profiles#about-profiles) | path | None (current dir, then HOME dir) | ❌ | `DBT_PROFILES_DIR` | `--log-path` | ❌ |
 | [project_dir](/reference/dbt_project.yml) | path |  | ❌ | `DBT_PROJECT_DIR` | `--project-dir` | ❌ |
 | [quiet](/reference/global-configs/logs#suppress-non-error-logs-in-output) | boolean | False | ❌ | `DBT_QUIET` | `--quiet` | ✅ |
 | [resource-type](/reference/global-configs/resource-type) (v1.8+) | string | None | ❌ | `DBT_RESOURCE_TYPES` <br></br> `DBT_EXCLUDE_RESOURCE_TYPES` | `--resource-type` <br></br> `--exclude-resource-type` | ✅ |

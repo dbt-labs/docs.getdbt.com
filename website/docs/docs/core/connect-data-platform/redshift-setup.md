@@ -27,23 +27,22 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `type` | redshift | The type of data warehouse you are connecting to|
-| `host` | hostname.region.redshift.amazonaws.com| Host of cluster |
+| `host` | hostname.region.redshift.amazonaws.com or workgroup.account.region.redshift-serverless.amazonaws.com | Host of cluster |
 | `port`  | 5439 |  |
 | `dbname`  | my_db | Database name|
-| `schema`  | my_schema | Schema name| 
-| `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
-| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below| 
-| `role`  | None | Optional, user identifier of the current session| 
-| `autocreate`  | false | Optional, default false. Creates user if they do not exist | 
-| `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session | 
-| `ra3_node`  | true | Optional, default False. Enables cross-database sources| 
-| `autocommit`  | true | Optional, default True. Enables autocommit after each statement| 
-| `retries`  | 1 | Number of retries | 
-
+| `schema`  | my_schema | Schema name|
+| `connect_timeout`  | `None` or 30 | Number of seconds before connection times out|
+| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below|
+| `role`  | None | Optional, user identifier of the current session|
+| `autocreate`  | false | Optional, default false. Creates user if they do not exist |
+| `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session |
+| `ra3_node`  | true | Optional, default False. Enables cross-database sources|
+| `autocommit`  | true | Optional, default True. Enables autocommit after each statement|
+| `retries`  | 1 | Number of retries |
 
 ## Authentication Parameters
 
-The authentication methods that dbt Core supports are: 
+The authentication methods that dbt Core supports are:
 
 - `database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
 - `IAM` &mdash; IAM
@@ -63,7 +62,6 @@ Click on one of these authentication methods for further details on how to confi
 <TabItem value="database">
 
 The following table contains the parameters for the database (password-based) connection method.
-
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
@@ -107,7 +105,7 @@ company-name:
 
 <TabItem value="IAM">
 
-The following table lists the authentication parameters to use IAM authentication. 
+The following table lists the authentication parameters to use IAM authentication.
   
 To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication,
 consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
@@ -120,18 +118,15 @@ Authentication, then your aws credentials are likely misconfigured. Try running
 `aws configure` to set up AWS access keys, and pick a default region. If you have any questions,
 please refer to the official AWS documentation on [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
-
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate |
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
 | `cluster_id` | CLUSTER_ID| Required for IAM |
 | `user`   | username | Account user to log into your cluster |
-| `region`  | us-east-1 | Required for IAM authentication | 
-
+| `region`  | us-east-1 | Required for IAM authentication |
 
 <br/>
-
 
 #### Example profiles.yml for IAM
 
@@ -172,7 +167,6 @@ please refer to the official AWS documentation on [Configuration and credential 
 
 </Tabs>
 
-
 ### Specifying an IAM Profile
 
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
@@ -180,9 +174,10 @@ When the `iam_profile` configuration is set, dbt will use the specified profile 
 ## Redshift notes
 
 ### `sslmode` change
-Before to dbt-redshift 1.5, `psycopg2` was used as the driver. `psycopg2` accepts `disable`, `prefer`, `allow`, `require`, `verify-ca`, `verify-full` as valid inputs of `sslmode`, and does not have an `ssl` parameter, as indicated in PostgreSQL [doc](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING:~:text=%2Dencrypted%20connection.-,sslmode,-This%20option%20determines). 
 
-In dbt-redshift 1.5, we switched to using `redshift_connector`, which accepts `verify-ca`, and `verify-full` as valid `sslmode` inputs, and has a `ssl` parameter of `True` or `False`, according to redshift [doc](https://docs.aws.amazon.com/redshift/latest/mgmt/python-configuration-options.html#:~:text=parameter%20is%20optional.-,sslmode,-Default%20value%20%E2%80%93%20verify). 
+Before dbt-redshift 1.5, `psycopg2` was used as the driver. `psycopg2` accepts `disable`, `prefer`, `allow`, `require`, `verify-ca`, `verify-full` as valid inputs of `sslmode`, and does not have an `ssl` parameter, as indicated in PostgreSQL [doc](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING:~:text=%2Dencrypted%20connection.-,sslmode,-This%20option%20determines).
+
+In dbt-redshift 1.5, we switched to using `redshift_connector`, which accepts `verify-ca`, and `verify-full` as valid `sslmode` inputs, and has a `ssl` parameter of `True` or `False`, according to redshift [doc](https://docs.aws.amazon.com/redshift/latest/mgmt/python-configuration-options.html#:~:text=parameter%20is%20optional.-,sslmode,-Default%20value%20%E2%80%93%20verify).
 
 For backward compatibility, dbt-redshift now supports valid inputs for `sslmode` in `psycopg2`. We've added conversion logic mapping each of `psycopg2`'s accepted `sslmode` values to the corresponding `ssl` and `sslmode` parameters in `redshift_connector`.
 
@@ -203,7 +198,7 @@ For more details on sslmode changes, our design choices, and reasoning &mdash; p
 
 ### `autocommit` parameter
 
-The[ autocommit mode](https://www.psycopg.org/docs/connection.html#connection.autocommit) is useful to execute commands that run outside a transaction. Connection objects used in Python must have `autocommit = True` to run operations such as `CREATE DATABASE`, and `VACUUM`. `autocommit` is off by default in `redshift_connector`, but we've changed this default to `True` to ensure certain macros run successfully in your dbt project.
+The [autocommit mode](https://www.psycopg.org/docs/connection.html#connection.autocommit) is useful to execute commands that run outside a transaction. Connection objects used in Python must have `autocommit = True` to run operations such as `CREATE DATABASE`, and `VACUUM`. `autocommit` is off by default in `redshift_connector`, but we've changed this default to `True` to ensure certain macros run successfully in your dbt project.
 
 If desired, you can define a separate target with `autocommit=True` as such:
 
@@ -227,10 +222,10 @@ profile-to-my-RS-target:
       ...
       autocommit: True
   ```
+
 </File>
 
 To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
-
 
 ### Deprecated `profile` parameters in 1.5
 
@@ -242,12 +237,6 @@ To run certain macros with autocommit, load the profile with autocommit using th
 
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
 
-
-
-<VersionBlock firstVersion="1.2">
-
 #### retries
 
 If `dbt-redshift` encounters an operational error or timeout when opening a new connection, it will retry up to the number of times configured by `retries`. If set to 2+ retries, dbt will wait 1 second before retrying. The default value is 1 retry. If set to 0, dbt will not retry at all.
-
-</VersionBlock>
