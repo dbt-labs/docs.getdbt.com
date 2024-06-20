@@ -20,7 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2024
 
-- **New**: The dbt Semantic Layer now offers a seamless integration with Microsoft Excel 365, available in [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud). Build semantic layer queries and return data on metrics directly within Excel 365, through a custom menu. To learn more and install the add-on, check out [Microsoft Excel 365](/docs/cloud-integrations/semantic-layer/excel).
+- **New**: The dbt Semantic Layer now offers a seamless integration with Microsoft Excel 365, available in [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Build semantic layer queries and return data on metrics directly within Excel 365, through a custom menu. To learn more and install the add-on, check out [Microsoft Excel 365](/docs/cloud-integrations/semantic-layer/excel).
 
 - **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
