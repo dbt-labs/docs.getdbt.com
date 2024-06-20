@@ -7,7 +7,8 @@ sidebar_label: "About resource types"
 
 dbt supports different types of resource types. Each one has a set of supported [properties and configurations](/reference/configs-and-properties) within a dbt project, which are key to how they function and integrate within your data project. 
 
-## Resource types table
+
+
 
 The following tables describes each resource type, its identifier, and a brief description of its purpose. 
 
