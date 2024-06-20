@@ -276,11 +276,11 @@ tests:
 
 </File>
 
-#### Specify custom adapter configurations to use 
+#### Specify custom configurations for generic data tests
 
-_Currently available only in dbt Cloud. This will be rolling out to dbt Core later this year._
+_Currently available in dbt Cloud only. The `custom_config` key will become available in dbt Core later this year._
 
-The following is an example of using `custom_config` to specify the adapter configurations that dbt should use when executing the test:
+Use the `custom_config` key to specify custom configurations for data tests. For example, the following specifies custom adapter configurations that dbt should use when executing the test:
 
 
 ```yml
