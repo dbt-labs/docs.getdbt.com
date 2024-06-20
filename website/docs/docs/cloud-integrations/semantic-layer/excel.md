@@ -6,7 +6,7 @@ tags: [Semantic Layer]
 sidebar_label: "Microsoft Excel 365"
 ---
 
-# Microsoft Excel 365 <Lifecycle status='beta'/>
+# Microsoft Excel 365 <Lifecycle status='preview'/>
 
 The dbt Semantic Layer offers a seamless integration with Microsoft Excel 365 through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Excel 365.
 
