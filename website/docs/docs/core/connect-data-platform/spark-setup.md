@@ -221,7 +221,7 @@ Delta-only features:
 2. [Snapshots](/docs/build/snapshots)
 3. [Persisting](/reference/resource-configs/persist_docs) column-level descriptions as database comments
 
-### Default namespace using Thrift connection method
+### Default namespace with Thrift connection method
 
 If your Spark cluster doesn't have a default namespace, metadata queries that run before any dbt workflow will fail, causing the entire workflow to fail, even if your configurations are correct. The metadata queries fail there's no default namespace in which to run it.
 
