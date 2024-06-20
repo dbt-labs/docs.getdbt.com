@@ -170,7 +170,7 @@ TBD
 ## Cookbook recipes
 The dbt Cookbook recipes are a collection of scenario-based, real-world examples for building with the dbt. Cookbook recipes offer practical, scenario-based examples for using specific features. 
 
-Most code examples are written in SQL, though you can apply the concepts in [Python](/docs/build/python-models) as well.
+Code examples could be written in SQL or [Python](/docs/build/python-models), though most will be in SQL.
 
 If there are examples or guides you'd like to see, feel free to suggest them on the [documentation issues page](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose). We're also happy to accept high-quality pull requests, as long as they fit the scope of the cookbook.
 
