@@ -11,7 +11,6 @@ You can use deploy jobs to build production data assets. Deploy jobs make it eas
 - Environment name
 - Sources and documentation info, if applicable
 
-  [comment]: You should take a look at this: [model timing data](#model-timing), because there is no such bulletpoint in this particular website: https://docs.getdbt.com/docs/deploy/deploy-jobs. The most alike links in your docs are these: https://docs.getdbt.com/docs/deploy/run-visibility#model-timing, https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model#your-new-best-friend-the-model-timing-tab
 - Job run details, including run timing, [model timing data](#model-timing), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their run step statuses
 
