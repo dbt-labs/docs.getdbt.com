@@ -188,4 +188,4 @@ Cookbook recipe headers should always start with a “How to create [topic]” o
 
 - How to calculate annual recurring revenue (ARR) using metrics in dbt
 - How to calculate customer acquisition cost (CAC) using metrics in dbt
-- How to track the total number of sale transactions in dbt
+- How to track the total number of sale transactions using metrics in dbt
