@@ -42,7 +42,7 @@ dbt docs generate --no-compile
 
 Use the `--empty-catalog` argument to skip running the database queries to populate `catalog.json`. When this flag is provided, `dbt docs generate` will skip step (3) described above.
 
-This is not recommended for production environments, as it means that your documentation will be missing information gleaned from database metadata (the full set of columns in each table, and statistics about those tables). It can speed up `docs generate` in development, when you just want to visualize lineage and other information defined within your project.
+This is not recommended for production environments, as it means that your documentation will be missing information gleaned from database metadata (the full set of columns in each table, and statistics about those tables). It can speed up `docs generate` in development, when you just want to visualize lineage and other information defined within your project. To learn how to build your documentation in dbt Cloud, refer to [build your docs in dbt Cloud](/docs/collaborate/build-and-view-your-docs).
 
 **Example**:
 ```
@@ -53,6 +53,8 @@ dbt docs generate --empty-catalog
 
 ### dbt docs serve
 This command starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser. The webserver is rooted in your `target/` directory. Be sure to run `dbt docs generate` before `dbt docs serve` because the  `generate` command produces a [catalog metadata artifact](/reference/artifacts/catalog-json) that the `serve` command depends upon. You will see an error message if the catalog is missing.  
+
+Use the `dbt docs serve` command if you're developing locally with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Core](/docs/core/installation-overview). The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) doesn't support this command.
 
 **Usage:**
 ```

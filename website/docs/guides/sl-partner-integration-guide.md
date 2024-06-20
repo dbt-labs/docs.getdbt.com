@@ -50,8 +50,6 @@ Please send us the following header with every query:
 
 Additionally, it would be helpful if you also included the email and username of the person generating the query from your application.
 
-
-
 ## Use best practices when exposing metrics
 
 Best practices for exposing metrics are summarized into five themes:
@@ -93,7 +91,7 @@ By implementing these recommendations, the data interaction process becomes more
 
 We recommend organizing metrics and dimensions in ways that a non-technical user can understand the data model, without needing much context:
 
-- **Organizing dimensions** &mdash; To help non-technical users understand the data model better, we recommend organizing dimensions based on the entity they originated from. For example, consider dimensions like `user__country` and `product__category`.<br /><br />  You can create groups by extracting `user` and `product` and then nest the respective dimensions under each group. This way, dimensions align with the entity or semantic model they belong to and make them more user-friendly and accessible.
+- **Organizing dimensions** &mdash; To help non-technical users understand the data model better, we recommend organizing dimensions based on the entity they originated from. For example, consider dimensions like `user__country` and `product__category`.<br /><br />  You can create groups by extracting `user` and `product` and then nest the respective dimensions under each group. This way, dimensions align with the entity or semantic model they belong to and make them more user-friendly and accessible. Additionally, we recommending adding a `label` parameter to dimensions in order to define the value displayed in downstream tools.
 
 - **Organizing metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
 
@@ -169,7 +167,6 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Use and expose more metadata 
 * Querying dimensions without metrics and other more advanced querying functionality
 * Suggest metrics to users based on teams/identity, and so on.
-
 
 ### Related docs
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

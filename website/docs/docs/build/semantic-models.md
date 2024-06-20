@@ -15,7 +15,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - MetricFlow uses YAML configuration files to create this graph for querying metrics.
 - Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
 - You can create multiple semantic models from a single dbt model (SQL or Python), as long as you give each semantic model a unique name.
-- Configure semantic models in a YAML file within your dbt project directory.
+- Configure semantic models in a YAML file within your dbt project directory. Refer to the [best practices guide](/best-practices/how-we-structure/5-semantic-layer-marts) for more info on project structuring.
 - Organize them under a `metrics:` folder or within project sources as needed.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
@@ -23,7 +23,6 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
-
 
 Here we describe the Semantic model components with examples:
 
@@ -60,6 +59,8 @@ semantic_models:
     primary_entity: >-
       if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
 ```
+
+You can refer to the [best practices guide](/best-practices/how-we-structure/5-semantic-layer-marts) for more info on project structuring.
 
 The following example displays a complete configuration and detailed descriptions of each field:
 
@@ -145,24 +146,27 @@ Semantic models support [`meta`](/reference/resource-configs/meta), [`group`](/r
         some_key: some_value
   ```
 
+For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
+
 </VersionBlock>
 
-### Name 
+### Name
 
 Define the name of the semantic model. You must define a unique name for the semantic model. The semantic graph will use this name to identify the model, and you can update it at any time. Avoid using double underscores (__) in the name as they're not supported.
 
-### Description 
+### Description
 
 Includes important details in the description of the semantic model. This description will primarily be used by other configuration contributors. You can use the pipe operator `(|)` to include multiple lines in the description.
 
-### Model 
+### Model
 
 Specify the dbt model for the semantic model using the [`ref` function](/reference/dbt-jinja-functions/ref).
 
 ### Defaults
 
-Defaults for the semantic model. Currently only `agg_time_dimension`. `agg_time_dimension` represents the default time dimensions for measures. This can be overridden by adding the `agg_time_dimension` key directly to a measure - see [Dimensions](/docs/build/dimensions) for examples. 
-### Entities 
+Defaults for the semantic model. Currently only `agg_time_dimension`. `agg_time_dimension` represents the default time dimensions for measures. This can be overridden by adding the `agg_time_dimension` key directly to a measure - see [Dimensions](/docs/build/dimensions) for examples.
+
+### Entities
 
 To specify the [entities](/docs/build/entities) in your model, use their columns as join keys and indicate their `type` as primary, foreign, or unique keys with the type parameter.
 
@@ -250,8 +254,6 @@ import MeasuresParameters from '/snippets/_sl-measures-parameters.md';
 
 <MeasuresParameters />
 
-
-
 import SetUpPages from '/snippets/_metrics-dependencies.md';
 
 <SetUpPages />
@@ -262,3 +264,4 @@ import SetUpPages from '/snippets/_metrics-dependencies.md';
 - [Dimensions](/docs/build/dimensions)
 - [Entities](/docs/build/entities)
 - [Measures](/docs/build/measures)
+- [Project structure best practices guide](/best-practices/how-we-structure/5-semantic-layer-marts)

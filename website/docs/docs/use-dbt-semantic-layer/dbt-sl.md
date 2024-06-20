@@ -48,21 +48,33 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Write queries with exports"
-    body="Use exports to write commonly used queries directly within your data platform, on a schedule."
-    link="/docs/use-dbt-semantic-layer/exports"
-    icon="dbt-bit"/>
-
-<Card
     title="Architecture"
     body="Learn about the powerful components that make up the dbt Semantic Layer."
     link="/docs/use-dbt-semantic-layer/sl-architecture"
     icon="dbt-bit"/>
 
 <Card
+    title="Write queries with exports"
+    body="Use exports to write commonly used queries directly within your data platform, on a schedule."
+    link="/docs/use-dbt-semantic-layer/exports"
+    icon="dbt-bit"/>
+
+<Card
+    title="Cache common queries"
+    body="Leverage result caching and declarative caching for common queries to speed up performance and reduce query computation."
+    link="/docs/use-dbt-semantic-layer/sl-cache"
+    icon="dbt-bit"/>
+
+<Card
+    title="dbt Semantic Layer FAQs"
+    body="Discover answers to frequently asked questions about the dbt Semantic Layer, such as availability, integrations, and more."
+    link="/docs/use-dbt-semantic-layer/sl-faqs"
+    icon="dbt-bit"/>
+
+<Card
     title="Available integrations"
     body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
-    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
+    link="/docs/cloud-integrations/avail-sl-integrations"
     icon="dbt-bit"/>
 
 <Card

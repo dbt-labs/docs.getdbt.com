@@ -16,13 +16,7 @@ Exposures are defined in `properties.yml` files nested under an `exposures:` key
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
-<VersionBlock firstVersion="1.3">
-
 Exposure names must contain only letters, numbers, and underscores (no spaces or special characters). For a short human-friendly name with title casing, spaces, and special characters, use the `label` property.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.4">
 
 <File name='models/<filename>.yml'>
 
@@ -55,43 +49,6 @@ exposures:
 ```
 </File>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.3">
-
-<File name='models/<filename>.yml'>
-
-```yml
-version: 2
-
-exposures:
-  - name: <string_with_underscores>
-    [description](/reference/resource-properties/description): <markdown_string>
-    type: {dashboard, notebook, analysis, ml, application}
-    url: <string>
-    maturity: {high, medium, low} # Indicates level of confidence or stability in the exposure
-    [tags](/reference/resource-configs/tags): [<string>]
-    [meta](/reference/resource-configs/meta): {<dictionary>}
-    owner:
-      name: <string>
-      email: <string>
-    
-    depends_on:
-      - ref('model')
-      - ref('seed')
-      - source('name', 'table')
-      
-    # added in dbt Core v1.3
-    label: "Human-Friendly Name for this Exposure!"
-    [config](/reference/resource-properties/config):
-      enabled: true | false
-
-  - name: ... # declare properties of additional exposures
-```
-</File>
-
-</VersionBlock>
-
 ## Example
 
 <File name='models/jaffle/exposures.yml'>
@@ -102,7 +59,7 @@ version: 2
 exposures:
 
   - name: weekly_jaffle_metrics
-    label: Jaffles by the Week              # optional, new in dbt Core v1.3
+    label: Jaffles by the Week              # optional
     type: dashboard                         # required
     maturity: high                          # optional
     url: https://bi.tool/dashboards/1       # optional

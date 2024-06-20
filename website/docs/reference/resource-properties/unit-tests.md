@@ -5,6 +5,11 @@ resource_types: [models]
 datatype: test
 ---
 
+:::note 
+
+This functionality is only supported in dbt Core v1.8+ or dbt Cloud accounts that have gone versionless by opting to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+
+:::
 
 Unit tests validate your SQL modeling logic on a small set of static inputs before you materialize your full model in production. They support a test-driven development approach, improving both the efficiency of developers and reliability of code.
 
@@ -15,7 +20,7 @@ To run only your unit tests, use the command:
 
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
-- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
+- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
 - If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
 

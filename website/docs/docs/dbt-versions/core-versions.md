@@ -8,9 +8,9 @@ pagination_prev: null
 
 dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning). 
 
-:::tip Keep on latest version, always
+:::tip Go versionless and stay up to date, always
 
-_Did you know that you can always be working on the latest version?_ 
+_Did you know that you can always be working with the latest features and functionality?_ 
 
 With dbt Cloud, you can get early access to new functionality before it becomes available in dbt Core and without the need of managing your own version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) setting for details.
 
@@ -99,24 +99,27 @@ We are committed to avoiding breaking changes in minor versions for end users of
 
 When you use dbt, you use a combination of `dbt-core` and an adapter plugin specific to your database. You can see the current list in [Supported Data Platforms](/docs/supported-data-platforms). Both `dbt-core` and dbt adapter plugins follow semantic versioning.
 
-`dbt-core` and adapter plugins coordinate new features and behind-the-scenes changes in minor releases. When fixing bugs, sooner is better, so patch versions are released independently for `dbt-core` and plugins.
+`dbt-core` and adapter plugins use the `dbt-adapters` interface to coordinate new features and behind-the-scenes changes. New adapter features are defined in `dbt-adapters` (which `dbt-core` will use). These features are opt-in, meaning they only impact adapters that explicitly implement them. This allows us to independently release adapters, `dbt-adapters`, and `dbt-core` without creating a broken experience for users.
 
-That means that patch version numbers will likely differ between `dbt-core` and the adapter plugin(s) you have installed. However, major and minor version numbers should always match.
+Unlike `dbt-core` versions before 1.8, the minor and patch version numbers might not match between `dbt-core` and the adapter plugin(s) you've installed. 
 
-For example, you may find you're using `dbt-core==1.6.0` with `dbt-snowflake==1.6.0`. It is critical that you're using the latest patch available for both core and the adapter. Use the `dbt --version` command to see which versions you have installed:
+For example, you might find you're using `dbt-core==1.8.0` with `dbt-snowflake==1.9.0`. Even though these don't have the same minor version, they can still work together as they both work with `dbt-adapters==1.8.0`. Patch releases can contain important bug or security fixes so it’s critical to stay up to date. 
+
+You can use the `dbt --version` command to see which versions you have installed:
+
 ```
 $ dbt --version
 Core:
-  - installed: 1.6.0
-  - latest:    1.6.0 - Up to date!
+  - installed: 1.8.0
+  - latest:    1.8.0 - Up to date!
 
 Plugins:
-  - snowflake: 1.6.0 - Up to date!
+  - snowflake: 1.9.0 - Up to date!
 ```
 
 You can see which version of the registered adapter that's being invoked in the [logs](/reference/global-configs/logs). Below is an example of the message in the `logs/dbt.log` file: 
 ```
-[0m13:13:48.572182 [info ] [MainThread]: Registered adapter: snowflake=1.6.0
+[0m13:13:48.572182 [info ] [MainThread]: Registered adapter: snowflake=1.9.0
 ```
 
 It's likely that newer patches have become available since then, so it's always important to check and make sure you're up to date!
