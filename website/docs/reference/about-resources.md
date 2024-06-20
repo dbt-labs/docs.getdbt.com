@@ -7,7 +7,7 @@ sidebar_label: "About resource types"
 
 dbt supports different types of resource types. Each one has a set of supported [properties and configurations](/reference/configs-and-properties) within a dbt project, which are key to how they function and integrate within your data project. 
 
-
+## Resource types
 
 
 The following tables describes each resource type, its identifier, and a brief description of its purpose. 
@@ -61,8 +61,7 @@ Properties or configurations support different resource types and are applied in
 |    |     |           |     |            |
 | Special Properties  | description, tests, docs, columns, quote, source properties, exposure properties, macro properties |  | `properties.yml`                                           |
 
-
-
 ## Related docs
 - [About resource paths](/reference/resource-configs/resource-path)
 - [About configs and properties](/reference/configs-and-properties)
+
