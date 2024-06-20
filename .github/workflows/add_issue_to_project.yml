@@ -12,4 +12,4 @@ jobs:
       - uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/orgs/dbt-labs/projects/14 
-          github-token: ${{ secrets.DOCS_SECRET }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
