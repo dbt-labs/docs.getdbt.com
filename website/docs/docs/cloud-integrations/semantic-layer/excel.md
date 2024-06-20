@@ -22,7 +22,10 @@ import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
+
 ## Installing the add-on
+
+The dbt Semantic Layer Microsoft Excel integration will soon be available to download directly on [Microsoft AppSource](https://appsource.microsoft.com/en-us/marketplace/apps?product=office).
 
 1. In Excel, authenticate with your host, dbt Cloud environment ID, and service token.
    - Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings
