@@ -275,3 +275,23 @@ tests:
 ```
 
 </File>
+
+#### Specify custom adapter configurations to use 
+
+_Currently available only in dbt Cloud. This will be rolling out to dbt Core later this year._
+
+The following is an example of using `custom_config` to specify the adapter configurations that dbt should use when executing the test:
+
+
+```yml
+
+models:
+  - name: my_model
+    columns:
+      - name: id
+        tests:
+          - unique:
+          - config:
+             custom_config: snowflake_warehouse
+
+```
