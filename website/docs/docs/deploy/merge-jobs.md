@@ -13,8 +13,9 @@ By using CD in dbt Cloud, you can take advantage of deferral to build only the e
 - You have a dbt Cloud account. 
 - You have set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
-- You are set up to receive push notifications from your Git provider. For details, refer to [Job notifications](/docs/deploy/job-notifications). 
+- Make sure you're set up to receive push notifications from your Git provider.
 - Make sure that [push events are enabled](#verify-push-events-in-git) in your Git provider.
+- For deferral (which is the default), make sure there has been at least one successful job run in the deferred environment.
 
 ## Set up job trigger on Git merge {#set-up-merge-jobs}
 
