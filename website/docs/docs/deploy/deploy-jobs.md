@@ -39,7 +39,6 @@ You can create a deploy job and configure it to run on [scheduled days and times
     - **Run on schedule** &mdash; Run the deploy job on a set schedule.
         - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Intervals** that run the job every specified number of hours, **Specific hours** that run the job at specific times of day, or **Cron schedule** that run the job specified using [cron syntax](#cron-schedule).
         - **Days of the week** &mdash; By default, it’s set to every day when **Intervals** or **Specific hours** is chosen for **Timing**.
-   [comment]: You should either modify this [job completes](#trigger-on-job-completion) to this [job completes](#trigger-on-job-completion--), to send the reader to this local link: https://docs.getdbt.com/docs/deploy/deploy-jobs#trigger-on-job-completion--, or you modify the local link to that particular bulletpoint to be this: https://docs.getdbt.com/docs/deploy/deploy-jobs#trigger-on-job-completion
     - **Run when another job finishes** &mdash; Run the deploy job when another _upstream_ deploy [job completes](#trigger-on-job-completion).  
         - **Project** &mdash; Specify the parent project that has that upstream deploy job. 
         - **Job** &mdash; Specify the upstream deploy job. 
