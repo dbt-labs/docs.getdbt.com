@@ -53,12 +53,12 @@ your_profile_name:
   outputs:
     dev:
       type: databricks
-      catalog: [optional catalog name if you are using Unity Catalog]
-      schema: [schema name] # Required
-      host: [yourorg.databrickshost.com] # Required
-      http_path: [/sql/your/http/path] # Required
-      token: [dapiXXXXXXXXXXXXXXXXXXXXXXX] # Required Personal Access Token (PAT) if using token-based authentication
-      threads: [1 or more]  # Optional, default 1
+      catalog: CATALOG_NAME #optional catalog name if you are using Unity Catalog]
+      schema: SCHEMA_NAME # Required
+      host: YOURORG.databrickshost.com # Required
+      http_path: /SQL/YOUR/HTTP/PATH # Required
+      token: dapiXXXXXXXXXXXXXXXXXXXXXXX # Required Personal Access Token (PAT) if using token-based authentication
+      threads: 1_OR_MORE  # Optional, default 1
 ```
 
 </File>
@@ -76,14 +76,14 @@ your_profile_name:
   outputs:
     dev:
       type: databricks
-      catalog: [optional catalog name if you are using Unity Catalog]
-      schema: [schema name] # Required
-      host: [yourorg.databrickshost.com] # Required
-      http_path: [/sql/your/http/path] # Required
+      catalog: CATALOG_NAME #optional catalog name if you are using Unity Catalog
+      schema: SCHEMA_NAME # Required
+      host: YOUR_ORG.databrickshost.com # Required
+      http_path: /SQL/YOUR/HTTP/PATH # Required
       auth_type: oauth # Required if using OAuth-based authentication
-      client_id: [OAuth-Client-ID] # The ID of your OAuth application. Required if using OAuth-based authentication
-      client_secret: [XXXXXXXXXXXXXXXXXXXXXXXXXXX] # OAuth client secret. # Required if using OAuth-based authentication
-      threads: [1 or more]  # Optional, default 1
+      client_id: OAUTH_CLIENT_ID # The ID of your OAuth application. Required if using OAuth-based authentication
+      client_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXX # OAuth client secret. # Required if using OAuth-based authentication
+      threads: 1_OR_MORE  # Optional, default 1
 ```
 </File>
 
@@ -97,9 +97,9 @@ The following profile fields are always required.
 
 | Field     | Description | Example |
 | --------- | ------- | ----------- |
-|   `host`  | The hostname of your cluster.<br/><br/>Don't include the `http://` or `https://` prefix. |  `yourorg.databrickshost.com` | 
-|   `http_path`   | The http path to your SQL Warehouse or all-purpose cluster. | `/sql/your/http/path`  | 
-|  `schema`  |  The name of a schema within your cluster's catalog. <br/><br/>It's _not recommended_ to use schema names that have upper case or mixed case letters.  | `my_schema`  |
+|   `host`  | The hostname of your cluster.<br/><br/>Don't include the `http://` or `https://` prefix. |  `YOURORG.databrickshost.com` | 
+|   `http_path`   | The http path to your SQL Warehouse or all-purpose cluster. | `/SQL/YOUR/HTTP/PATH`  | 
+|  `schema`  |  The name of a schema within your cluster's catalog. <br/><br/>It's _not recommended_ to use schema names that have upper case or mixed case letters.  | `MY_SCHEMA`  |
 
 ## Authentication parameters
 
@@ -107,10 +107,10 @@ The `dbt-databricks` adapter supports both [token-based authentication](/docs/co
 
 Refer to the following **required** parameters to configure your profile for each type of authentication:
 
-| Field     | Authentication type | Description | Example | Authentication type |
+| Field     | Authentication type | Description | Example | 
 | --------- | ------- | ----------- | ---- | 
 |  `token`  |  Token-based  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |
-|  `client_id`  | OAuth-based |  The client ID for your Databricks OAuth application.<br />  | `<oauth-client-id>`  | 
+|  `client_id`  | OAuth-based |  The client ID for your Databricks OAuth application.<br />  | `OAUTH_CLIENT_ID`  | 
 |  `client_secret`  | OAuth-based |  The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  
 |  `auth_type`  |  OAuth-based |  The type of authorization needed to connect to Databricks. <br /> | `oauth`  |
 

@@ -7,21 +7,15 @@ In dbt Cloud, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-
 
 ## Environments
 
-Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a previous release of dbt Core or [Keep on latest version](#keep-on-latest-version). Be sure to save your changes before navigating away.
+Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a previous release of dbt Core or go versionless by selecting [**Keep on latest version**](#keep-on-latest-version)(recommended). Be sure to save your changes before navigating away.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
-### Keep on latest version <Lifecycle status='public preview' />
+### Keep on latest version
 
-By choosing to **Keep on latest version**, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades for you, as part of testing and redeploying the dbt Cloud SaaS application.
+By choosing to **Keep on latest version**, you opt for a versionless experience that provides the latest features and early access to new functionality for your dbt project. dbt Labs will handle upgrades for you, as part of testing and redeploying the dbt Cloud SaaS application. Keep on latest version always includes the most recent version of dbt Core, and more.
 
-You can upgrade to **Keep on latest version** no matter which version of dbt you currently have selected. As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
-
-:::note Availability  
-
-[Microsoft Fabric support](/docs/cloud/connect-data-platform/connect-microsoft-fabric) will be coming in late March. All other connections are supported.
-
-:::
+You can upgrade to **Keep on latest version** and the versionless experience no matter which version of dbt you currently have selected. As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
 ### Override dbt version
 
