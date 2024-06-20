@@ -23,24 +23,21 @@ Once you've created a token, you can use it in the Authorization header of reque
 
 1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API to authorize requests.
 
-2. Find your API URL using the endpoint `https://metadata.{YOUR_ACCESS_URL}/graphql`.
-
-    * Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan. For example, if your multi-tenant region is North America, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. If your multi-tenant region is EMEA, your endpoint is `https://metadata.emea.dbt.com/graphql`.
+2. Find the API URL to use from the [Discovery API endpoints](#discovery-api-endpoints) table.
 
 3. For specific query points, refer to the [schema documentation](/docs/dbt-cloud-apis/discovery-schema-job).
 
-
 ## Run queries using HTTP requests
 
-You can run queries by sending a `POST` request to the `https://metadata.YOUR_ACCESS_URL/graphql` endpoint, making sure to replace:
-* `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+You can run queries by sending a `POST` request to the Discovery API, making sure to replace:
+* `YOUR_API_URL` with the appropriate [Discovery API endpoint](#discovery-api-endpoints) for your region and plan.
 * `YOUR_TOKEN` in the Authorization header with your actual API token. Be sure to include the Token prefix.
-* `QUERY_BODY` with a GraphQL query, for example `{ "query": "<query text>" }`
+* `QUERY_BODY` with a GraphQL query, for example `{ "query": "<query text>", "variables": "<variables in json>" }`
 * `VARIABLES` with a dictionary of your GraphQL query variables, such as a job ID or a filter.
 * `ENDPOINT` with the endpoint you're querying, such as environment.
 
   ```shell
-  curl 'https://metadata.YOUR_ACCESS_URL/graphql' \
+  curl 'YOUR_API_URL' \
     -H 'authorization: Bearer YOUR_TOKEN' \
     -H 'content-type: application/json'
     -X POST
@@ -51,7 +48,7 @@ Python example:
 
 ```python
 response = requests.post(
-    'YOUR_ACCESS_URL',
+    'YOUR_API_URL',
     headers={"authorization": "Bearer "+YOUR_TOKEN, "content-type": "application/json"},
     json={"query": QUERY_BODY, "variables": VARIABLES}
 )
@@ -63,6 +60,18 @@ Every query will require an environment ID or job ID. You can get the ID from a 
 
 There are several illustrative example queries on this page. For more examples, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
 
+
+## Discovery API endpoints
+
+The following are the endpoints for accessing the Discovery API. Use the one that's appropriate for your region and plan.
+
+| Deployment type |	Discovery API URL |
+| --------------- | ------------------- |
+| North America multi-tenant	|	https://metadata.cloud.getdbt.com/graphql |
+| EMEA multi-tenant	|	https://metadata.emea.dbt.com/graphql |
+| APAC multi-tenant	|	https://metadata.au.dbt.com/graphql |
+| Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.metadata.REGION.dbt.com/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
+| Single-tenant | `https://metadata.YOUR_ACCESS_URL/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.|
 
 ## Reasonable use
 

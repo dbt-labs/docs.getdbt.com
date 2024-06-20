@@ -133,12 +133,11 @@ If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in
 
 ### Related docs 
 
+- [Quickstart guide with the dbt Semantic Layer](/guides/sl-snowflake-qs)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
-- [MetricFlow quickstart guide](/docs/build/sl-getting-started)
-- [Example dbt project](https://github.com/dbt-labs/jaffle-sl-template)
 - [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
 - [Why we're deprecating the dbt_metrics package](/blog/deprecating-dbt-metrics) blog post
 - [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
-- [dbt Semantic Layer on-demand courses](https://courses.getdbt.com/courses/semantic-layer)
+- [dbt Semantic Layer on-demand course](https://learn.getdbt.com/courses/semantic-layer)
 
 </div>

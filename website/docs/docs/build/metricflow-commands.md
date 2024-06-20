@@ -84,6 +84,18 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 -->
 
+:::tip Run dbt parse to reflect metric changes
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
+::: 
+
+<Expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">
+
+Check out the following video for a short video demo of how to query or preview metrics with the dbt Cloud CLI:
+
+<LoomVideo id='09e2b287f063497d888f4bed91469d79' />
+
+</Expandable>
+
 </TabItem>
 
 <TabItem value="core" label="Commands for dbt Core">
@@ -564,12 +576,13 @@ mf query --metrics revenue --group-by metric_time__month # In dbt Core
 
 ## FAQs
 
-<details>
-<summary>How can I add a dimension filter to a where filter?</summary> 
+<detailsToggle alt_header="How can I add a dimension filter to a where filter?">
 
-To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: <code>{{Dimension('primary_entity__dimension_name')}}</code>. 
+To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: `{{Dimension('primary_entity__dimension_name')}}`.
 
-Here's an example query: <code>dbt sl query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"</code>.<br /><br /> Before using the template wrapper, however, set up your terminal to escape curly braces for the filter template to work. 
+Here's an example query: `dbt sl query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"`.
+
+Before using the template wrapper, however, set up your terminal to escape curly braces for the filter template to work. 
 
 <details> 
 <summary>How to set up your terminal to escape curly braces? </summary>
@@ -598,13 +611,14 @@ source ~/.zshrc
 
 Keep in mind that modifying your shell configuration files can have an impact on how your shell behaves. If you're not familiar with shell configuration, it's a good idea to make a backup of your <code>.zshrc</code> file before making any changes. If you encounter any issues or unexpected behavior, you can revert to the backup.
 
-
 </details>
 
-</details>
+</detailsToggle>
 
-<details>
-<summary>Why is my query limited to 100 rows in the dbt Cloud CLI?</summary> 
-The default <code>limit</code> for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.<br /><br />
-However, you can change this limit if needed by setting the <code>--limit</code> option in your query. For example, to return 1000 rows, you can run <code>dbt sl list metrics --limit 1000</code>.
-</details>
+<detailsToggle alt_header="Why is my query limited to 100 rows in the dbt Cloud CLI?">
+
+The default `limit` for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
+
+However, you can change this limit if needed by setting the `--limit` option in your query. For example, to return 1000 rows, you can run `dbt sl list metrics --limit 1000`.
+
+</detailsToggle>

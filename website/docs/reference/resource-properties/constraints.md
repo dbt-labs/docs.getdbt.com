@@ -15,6 +15,8 @@ Constraints require the declaration and enforcement of a model [contract](/refer
 
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
 
+If you are defining multiple `primary_key` constraints for a single model, those _must_ be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported. 
+
 The structure of a constraint is:
 - `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`
 - `expression`: Free text input to qualify the constraint. Required for certain constraint types, and optional for others.
@@ -35,26 +37,26 @@ models:
     # model-level constraints
     constraints:
       - type: primary_key
-        columns: [<first_column>, <second_column>, ...]
-      - type: foreign_key # multi_column
-        columns: [<first_column>, <second_column>, ...]
-        expression: "<other_model_schema>.<other_model_name> (<other_model_first_column>, <other_model_second_column>, ...)"
+        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
+      - type: FOREIGN_KEY # multi_column
+        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
+        expression: "OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_FIRST_COLUMN, OTHER_MODEL_SECOND_COLUMN, ...)"
       - type: check
-        columns: [<first_column>, <second_column>, ...]
-        expression: "<first_column> != <second_column>"
-        name: human_friendly_name
+        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
+        expression: "FIRST_COLUMN != SECOND_COLUMN"
+        name: HUMAN_FRIENDLY_NAME
       - type: ...
     
     columns:
-      - name: <first_column>
-        data_type: <data_type>
+      - name: FIRST_COLUMN
+        data_type: DATA_TYPE
         
         # column-level constraints
         constraints:
           - type: not_null
           - type: unique
           - type: foreign_key
-            expression: <other_model_schema>.<other_model_name> (<other_model_column>)
+            expression: OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_COLUMN)
           - type: ...
 ```
 

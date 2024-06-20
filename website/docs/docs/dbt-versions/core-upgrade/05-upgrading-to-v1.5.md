@@ -24,7 +24,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 :::info Why changes to previous behavior?
 
-This release includes significant new features, and rework to `dbt-core`'s CLI and initialization flow. As part of refactoring its internals, we made a handful of changes to runtime configuration. The net result of these changes is more consistent & practical configuration options, and a more legible codebase.
+This release includes significant new features, and rework to `dbt-core`'s CLI and initialization flow. As part of refactoring its internals from [`argparse`](https://docs.python.org/3/library/argparse.html) to [`click`](https://click.palletsprojects.com), we made a handful of changes to runtime configuration. The net result of these changes is more consistent and practical configuration options, and a more legible codebase.
 
 **_Wherever possible, we will provide backward compatibility and deprecation warnings for at least one minor version before actually removing the old functionality._** In those cases, we still reserve the right to fully remove backwards compatibility for deprecated functionality in a future v1.x minor version of `dbt-core`.
 
@@ -111,6 +111,8 @@ The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.l
 ```
 
 Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/collaborate/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
+
+Likewise, if your project has reimplemented the `ref` macro with custom logic, you will need to update the logic in your macro as described [here](https://docs.getdbt.com/reference/dbt-jinja-functions/builtins).
 
 ### For consumers of dbt artifacts (metadata)
 

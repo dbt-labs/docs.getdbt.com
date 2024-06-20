@@ -19,4 +19,10 @@ This section covers advanced topics for the dbt Semantic Layer and MetricFlow, s
     link="/docs/build/fill-nulls-advanced"
     icon="dbt-bit"/>
 
+<Card
+    title="Metrics as dimensions with metric filters"
+    body="Add metrics as dimensions to your metric filters to create more complex metrics and gain more insights."
+    link="/docs/build/ref-metrics-in-filters"
+    icon="dbt-bit"/>
+
 </div>
