@@ -10,6 +10,15 @@ import isInternalUrl from '@docusaurus/isInternalUrl';
 import {translate} from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+
+/* dbt Customizations:
+ * Add styles.glossaryCard to CardContainer
+ * Add hoverSnippet prop to CardLayout
+ * Prevent truncate if card links to /terms/ page
+ * Show hoverSnippet text instead of description if set 
+ * Get hoverSnippet from frontmatter and pass to CardLayout
+*/
+
 function useCategoryItemsPlural() {
   const {selectMessage} = usePluralForm();
   return (count) =>
@@ -30,25 +39,38 @@ function CardContainer({href, children}) {
   return (
     <Link
       href={href}
-      className={clsx('card padding--lg', styles.cardContainer)}>
+      className={clsx(
+        "card padding--lg",
+        styles.cardContainer,
+        href.includes("/terms/") && styles.glossaryCard
+      )}
+    >
       {children}
     </Link>
   );
 }
-function CardLayout({href, icon, title, description}) {
+function CardLayout({href, icon, title, description, hoverSnippet}) {
   return (
     <CardContainer href={href}>
       <Heading
         as="h2"
-        className={clsx('text--truncate', styles.cardTitle)}
-        title={title}>
+        className={clsx(
+          !href.includes("/terms/") && "text--truncate",
+          styles.cardTitle
+        )}
+        title={title}
+      >
         {icon} {title}
       </Heading>
       {description && (
         <p
-          className={clsx('text--truncate', styles.cardDescription)}
-          title={description}>
-          {description}
+          className={clsx(
+            !href.includes("/terms/") && "text--truncate",
+            styles.cardDescription
+          )}
+          title={hoverSnippet ? hoverSnippet : description}
+        >
+          {hoverSnippet ? hoverSnippet : description}
         </p>
       )}
     </CardContainer>
@@ -71,14 +93,25 @@ function CardCategory({item}) {
   );
 }
 function CardLink({item}) {
-  const icon = isInternalUrl(item.href) ? '📄️' : '🔗';
+  const icon = isInternalUrl(item.href) ? "📄️" : "🔗";
   const doc = useDocById(item.docId ?? undefined);
+
+  // dbt custom
+  let hoverSnippet;
+  if (item.docId && item.href && item.href.includes("/terms/")) {
+    const file = require(`../../../docs/${item.docId}.md`);
+    if (file) {
+      hoverSnippet = file.frontMatter.hoverSnippet;
+    }
+  }
+
   return (
     <CardLayout
       href={item.href}
       icon={icon}
       title={item.label}
       description={item.description ?? doc?.description}
+      hoverSnippet={hoverSnippet}
     />
   );
 }
