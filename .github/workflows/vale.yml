@@ -49,9 +49,10 @@ jobs:
         ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         mkdir -p vale_output
+        echo "Running Vale on changed files:"
         for file in $ALL_CHANGED_FILES; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
+          ./vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
         done
         echo "Vale outputs:"
         ls -l vale_output
@@ -66,5 +67,5 @@ jobs:
       with:
         tool_name: vale
         level: warning
-        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         reviewdog_flags: "--jsonc < vale_report.json"
