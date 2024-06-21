@@ -23,7 +23,7 @@ This guide will teach you how to set up a multi-project design using foundationa
 For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
@@ -40,7 +40,7 @@ To leverage dbt Mesh, you need the following:
 
 - You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="enterprise"/>
 - You have access to a cloud data platform, permissions to load the sample data tables, and dbt Cloud permissions to create new projects. 
-- Set your development and deployment [environments](/docs/dbt-cloud-environments) to use dbt [version](/docs/dbt-versions/core) 1.6 or later. You can also opt [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version of dbt.
+- Set your development and deployment [environments](/docs/dbt-cloud-environments) to use dbt [version](/docs/dbt-versions/core) 1.6 or later. You can also opt to go versionless and select [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the most recent features and functionality.
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
   - [Databricks](https://docs.getdbt.com/guides/databricks?step=3)
@@ -49,7 +49,7 @@ To leverage dbt Mesh, you need the following:
   - [Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
   - [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
 
-This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course first if you are brand new to dbt.
+This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course first if you are brand new to dbt.
 
 ## Create and configure two projects
 

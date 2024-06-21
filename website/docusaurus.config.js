@@ -111,10 +111,27 @@ var siteSettings = {
       },
       items: [
         {
-          to: "/docs/introduction",
           label: "Docs",
           position: "left",
-          activeBaseRegex: "docs/(?!(dbt-cloud))",
+          items: [
+            {
+              label: "Product Docs",
+              to: "/docs/introduction",
+              activeBaseRegex: "docs/(?!(dbt-cloud))",
+            },
+            {
+              label: "API Docs",
+              to: "/docs/dbt-cloud-apis/overview",
+            },
+            {
+              label: "Best Practices",
+              to: "/best-practices",
+            },
+            {
+              label: "Release Notes",
+              to: "/docs/dbt-versions/dbt-cloud-release-notes",
+            },
+          ],
         },
         {
           to: "reference/references-overview",
@@ -128,7 +145,7 @@ var siteSettings = {
           items: [
             {
               label: "Courses",
-              href: "https://courses.getdbt.com",
+              href: "https://learn.getdbt.com",
             },
             {
               label: "Best Practices",
