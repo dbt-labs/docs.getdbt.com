@@ -21,6 +21,8 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
+      with:
+        reporter: github-pr-review
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -30,7 +32,7 @@ jobs:
       uses: tj-actions/changed-files@v44
       with:
         files: |
-           **.md
+           **/*.md
 
     - name: List all changed markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
@@ -43,13 +45,17 @@ jobs:
 
     - name: Run Vale on changed files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         mkdir -p vale_output
-        for file in ${{ env.ALL_CHANGED_FILES }}; do
+        for file in $ALL_CHANGED_FILES; do
           echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
         done
-
+        echo "Vale outputs:"
+        ls -l vale_output
+  
     - name: Merge JSON outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: jq -s '.' vale_output/vale_output_*.json > vale_report.json
@@ -60,4 +66,5 @@ jobs:
       with:
         tool_name: vale
         level: warning
-        json_path: vale_report.json
+        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        reviewdog_flags: "--jsonc < vale_report.json"
