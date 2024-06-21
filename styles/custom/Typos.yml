@@ -3,6 +3,11 @@ extends: spelling
 message: "Oops there's a typo -- did you really mean '%s'? "
 level: suggestion
 
+action:
+  name: suggest
+  params:
+    - spellings
+
 ---
 
 extends: existence
