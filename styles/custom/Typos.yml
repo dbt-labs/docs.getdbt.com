@@ -2,3 +2,16 @@ extends: spelling
 
 message: "Oops there's a typo -- did you really mean '%s'? "
 level: suggestion
+
+---
+
+extends: existence
+
+message: "Ignore specific patterns"
+level: skip
+tokens:
+  - '\bdbt\b'
+  - '\bdbt\s+Cloud\b'
+  - '\bdbt\s+Core\b'
+  - '\bdbt\s+Cloud\s+CLI\b'
+  - '\bdbt\s+.*?\b'
