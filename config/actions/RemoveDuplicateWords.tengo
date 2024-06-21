@@ -1,0 +1,7 @@
+text := import("text")
+
+// Match is provided by Vale and represents the rule's matched text.
+deduped := text.re_replace(`\b(\w+)\s+\1\b`, match, `$1`)
+
+// Suggestions is required by Vale and represents the script's output.
+suggestions := [deduped]
