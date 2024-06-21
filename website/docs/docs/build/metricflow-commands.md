@@ -274,12 +274,16 @@ mf query --metrics <metric_name> --group-by <dimension_name> # In dbt Core
 
 Options:
 
-  --metrics SEQUENCE       Metrics to query for: syntax is --metrics bookings
-                           or for multiple metrics --metrics bookings, messages.
+  --metrics SEQUENCE       Syntax to query single metrics: --metrics metric_name
+                           For example, --metrics bookings
+                           To query multiple metrics, use --metrics followed by the metric names, separated by commas without spaces.
+                           For example,  --metrics bookings,messages
 
-  --group-by SEQUENCE      Dimensions and/or entities to group by: syntax is
-                           --group-by ds or for multiple group bys --group-by
-                           ds, org.
+  --group-by SEQUENCE      Syntax to group by single dimension or entity: --group-by dimension_name
+                           For example, --group-by ds
+                           For multiple dimensions or entities, use --group-by followed by the dimension/entity names, separated by commas without spaces.
+                           For example, --group-by ds,org
+                           
 
   --end-time TEXT          Optional iso8601 timestamp to constraint the end
                            time of the data (inclusive).
@@ -289,15 +293,16 @@ Options:
                            time of the data (inclusive)
                            *Not available in dbt Cloud yet
 
-  --where TEXT             SQL-like where statement provided as a string. For
-                           example: --where "revenue > 100". To add a dimension filter to 
-                           a where filter, you have to indicate that the filter item is part of your model. 
+  --where TEXT             SQL-like where statement provided as a string and wrapped in quotes: --where "condition_statement"
+                           For example, to query a single statement: --where "revenue > 100"
+                           To query multiple statements: --where "revenue > 100 and user_count < 1000"
+                           To add a dimension filter to a where filter, ensure the filter item is part of your model. 
                            Refer to the [FAQ](#faqs) for more info on how to do this using a template wrapper.
 
   --limit TEXT             Limit the number of rows out using an int or leave
                            blank for no limit. For example: --limit 100
 
-  --order-by SEQUENCE         Metrics or group bys to order by ("-" prefix for
+  --order-by SEQUENCE      Metrics or group bys to order by ("-" prefix for
                            DESC). For example: --order-by -ds or --order-by
                            ds,-revenue
 
@@ -328,13 +333,13 @@ The following tabs present various types of query examples that you can use to q
 
 <TabItem value="eg1" label="Metrics">
 
-Use the example to query metrics by dimension and return the `order_total` metric by `metric_time.` 
+Use the example to query multiple metrics by dimension and return the `order_total` and `users_active` metrics by `metric_time.` 
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by metric_time # In dbt Cloud
+dbt sl query --metrics order_total,users_active --group-by metric_time # In dbt Cloud
 
-mf query --metrics order_total --group-by metric_time # In dbt Core
+mf query --metrics order_total,users_active --group-by metric_time # In dbt Core
 ```
 
 **Result**
@@ -357,9 +362,9 @@ You can include multiple dimensions in a query. For example, you can group by th
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by metric_time, is_food_order # In dbt Cloud
+dbt sl query --metrics order_total --group-by metric_time,is_food_order # In dbt Cloud
 
-mf query --metrics order_total --group-by metric_time, is_food_order # In dbt Core
+mf query --metrics order_total --group-by metric_time,is_food_order # In dbt Core
 ```
 
 **Result**
@@ -410,15 +415,15 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
 
 <TabItem value="eg4" label="where clause">
 
-You can further filter the data set by adding a `where` clause to your query.
+You can further filter the data set by adding a `where` clause to your query. The following example shows you how to query the `order_total` metric, grouped by `metric_time` with multiple where statements (orders that are food orders and orders from the week starting on or after Feb 1st, 2024):
 
 **Query**
 ```bash
 # In dbt Cloud 
-dbt sl query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True" 
+dbt sl query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'"
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True" 
+mf query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'" 
 ```
 
 **Result**
@@ -485,7 +490,7 @@ mf query --saved-query <name> # In dbt Core
 For example, if you use dbt Cloud and have a saved query named `new_customer_orders`, you would run `dbt sl query --saved-query new_customer_orders`.
 
 :::info A note on querying saved queries
-When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
+When querying [saved queries](/docs/build/saved-queries), you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
 :::
 
 </TabItem>
@@ -620,5 +625,18 @@ Keep in mind that modifying your shell configuration files can have an impact on
 The default `limit` for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
 
 However, you can change this limit if needed by setting the `--limit` option in your query. For example, to return 1000 rows, you can run `dbt sl list metrics --limit 1000`.
+
+</detailsToggle>
+
+<detailsToggle alt_header="How can I query multiple metrics, group bys, or where statements?">
+
+To query multiple metrics, group bys, or where statements in your command, follow this guidance:
+
+- To query multiple metrics and group bys, use the `--metric` or `--group-by` syntax followed by the metric or dimension/entity names, separated by commas without spaces:
+  - Multiple metrics example: dbt sl query --metrics accounts_active,users_active
+  - Multiple dimension/entity example: dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier
+ 
+- To query multiple where statements, use the `--where` syntax and wrap the statement in quotes:
+  - Multiple where statement example: dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier --where "metric_time__week >= '2024-02-01' and accounts__plan_tier = 'coco'"
 
 </detailsToggle>
