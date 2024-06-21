@@ -1,112 +1,85 @@
 import requests
-import ast
+import re
 
-# URLs of the Python files in the dbt core repository
-resources_url = "https://raw.githubusercontent.com/dbt-labs/dbt-core/main/core/dbt/artifacts/resources/types.py"
+# URLs of the source files
 node_types_url = "https://raw.githubusercontent.com/dbt-labs/dbt-core/main/core/dbt/node_types.py"
+resource_types_url = "https://raw.githubusercontent.com/dbt-labs/dbt-core/main/core/dbt/artifacts/resources/types.py"
 
-# Fetch the content of the files
-resources_response = requests.get(resources_url)
-node_types_response = requests.get(node_types_url)
+# Function to fetch and parse the Python files
+def fetch_and_parse(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text
 
-# Parse the content of the files
-resources_tree = ast.parse(resources_response.text)
-node_types_tree = ast.parse(node_types_response.text)
+# Fetch the content of the Python files
+node_types_content = fetch_and_parse(node_types_url)
+resource_types_content = fetch_and_parse(resource_types_url)
 
-def extract_resource_types(tree):
-    resource_types = {}
-    for node in tree.body:
-        if isinstance(node, ast.ClassDef) and node.name == "NodeType":
-            for item in node.body:
-                if isinstance(item, ast.Assign):
-                    for target in item.targets:
-                        if isinstance(target, ast.Name) and isinstance(item.value, ast.Constant):
-                            resource_types[target.id.lower()] = item.value.value.lower()
-    return resource_types
-
-def extract_node_type_lists(tree):
-    executable_nodes = []
-    refable_nodes = []
-    versioned_nodes = []
-    for node in tree.body:
-        if isinstance(node, ast.Assign):
-            for target in node.targets:
-                if isinstance(target, ast.Name):
-                    if target.id == "EXECUTABLE_NODE_TYPES":
-                        executable_nodes = [elt.attr for elt in node.value.elts if isinstance(elt, ast.Attribute)]
-                    elif target.id == "REFABLE_NODE_TYPES":
-                        refable_nodes = [elt.attr for elt in node.value.elts if isinstance(elt, ast.Attribute)]
-                    elif target.id == "VERSIONED_NODE_TYPES":
-                        versioned_nodes = [elt.attr for elt in node.value.elts if isinstance(elt, ast.Attribute)]
-    # Print debug information
-    print("Raw Executable Nodes:", executable_nodes)
-    print("Raw Refable Nodes:", refable_nodes)
-    print("Raw Versioned Nodes:", versioned_nodes)
-    
-    return executable_nodes, refable_nodes, versioned_nodes
-
-# Extract resource types and node types
-resource_types = extract_resource_types(resources_tree)
-executable_nodes, refable_nodes, versioned_nodes = extract_node_type_lists(node_types_tree)
-
-# Create a dictionary for node types
+# Extract resource types from the node_types.py file
+node_types_lines = node_types_content.split('\n')
 node_types = {}
-for node_type in resource_types.values():
-    node_types[node_type] = {
-        "executable": node_type in executable_nodes,
-        "ref": node_type in refable_nodes,
-        "versioned": node_type in versioned_nodes
-    }
+for line in node_types_lines:
+    match = re.search(r'(\w+)\s*=\s*"(\w+)"', line)
+    if match:
+        node_types[match.group(2)] = {'executable': False, 'refable': False, 'versioned': False}
 
-# Debugging output
-print("Resource Types:", resource_types)
-print("Executable Nodes:", executable_nodes)
-print("Refable Nodes:", refable_nodes)
-print("Versioned Nodes:", versioned_nodes)
-print("Node Types:", node_types)
+# Extract resource types from the resource_types.py file
+resource_types_lines = resource_types_content.split('\n')
+resource_types = {}
+for line in resource_types_lines:
+    match = re.search(r'(\w+)\s*=\s*"(\w+)"', line)
+    if match:
+        resource_type = match.group(2)
+        resource_types[resource_type] = {'executable': False, 'refable': False, 'versioned': False}
 
-# Generate the markdown content
-def generate_markdown(resource_types, node_types):
-    markdown_content = "## Resource types\n\n"
-    markdown_content += "| Node | Executed in DAG | Exists in database | Created by execution | Upstream lineage | Downstream lineage | Versioned/Refable/Executable |\n"
-    markdown_content += "|:----:|:---------------:|:------------------:|:--------------------:|:----------------:|:------------------:|:-----------------------------:|\n"
+# Define the properties for each resource type
+resource_properties = {
+    "model": {"executable": True, "refable": True, "versioned": True},
+    "analysis": {"executable": True, "refable": False, "versioned": False},
+    "test": {"executable": True, "refable": False, "versioned": False},
+    "snapshot": {"executable": True, "refable": True, "versioned": False},
+    "operation": {"executable": True, "refable": False, "versioned": False},
+    "seed": {"executable": True, "refable": True, "versioned": False},
+    "rpc": {"executable": True, "refable": False, "versioned": False},
+    "sql_operation": {"executable": True, "refable": False, "versioned": False},
+    "doc": {"executable": True, "refable": False, "versioned": False},
+    "source": {"executable": False, "refable": False, "versioned": False},
+    "macro": {"executable": True, "refable": False, "versioned": False},
+    "exposure": {"executable": False, "refable": False, "versioned": False},
+    "metric": {"executable": False, "refable": False, "versioned": False},
+    "group": {"executable": False, "refable": False, "versioned": False},
+    "saved_query": {"executable": False, "refable": False, "versioned": False},
+    "semantic_model": {"executable": False, "refable": False, "versioned": False},
+    "unit_test": {"executable": False, "refable": False, "versioned": False},
+    "fixture": {"executable": False, "refable": False, "versioned": False},
+}
 
-    for resource, value in resource_types.items():
-        executed = "✅" if node_types.get(value, {}).get('executable', False) else ""
-        exists = "✅" if value in ["source", "snapshot", "model", "seed", "export"] else ""
-        created = "✅" if value in ["snapshot", "model", "seed"] else ""
-        upstream = "←" if value in ["snapshot", "model", "seed", "analysis", "semantic_model", "metric", "saved_query", "exposure", "test", "unit", "fixture"] else ""
-        downstream = "→" if value in ["source", "snapshot", "model", "seed", "semantic_model", "metric", "fixture", "group"] else ""
-        versioned_ref_exec = []
-        if node_types.get(value, {}).get('versioned', False):
-            versioned_ref_exec.append("Versioned")
-        if node_types.get(value, {}).get('ref', False):
-            versioned_ref_exec.append("Refable")
-        if node_types.get(value, {}).get('executable', False):
-            versioned_ref_exec.append("Executable")
-        versioned_ref_exec_str = ", ".join(versioned_ref_exec)
-        markdown_content += f"| {value} | {executed} | {exists} | {created} | {upstream} | {downstream} | {versioned_ref_exec_str} |\n"
+# Update the properties of resource types based on the definitions
+for resource_type in resource_types.keys():
+    if resource_type in resource_properties:
+        resource_types[resource_type] = resource_properties[resource_type]
 
-    return markdown_content
+# Sort the resource types alphabetically
+sorted_resource_types = dict(sorted(resource_types.items()))
 
-# Generate the markdown table content
-markdown_table_content = generate_markdown(resource_types, node_types)
+# Generate the Markdown table
+markdown_table = "| Resource type | Executable | Refable | Versioned |\n"
+markdown_table += "|---------------|------------|---------|-----------|\n"
+for resource_type, properties in sorted_resource_types.items():
+    markdown_table += f"| {resource_type} | {'✅' if properties['executable'] else '❌'} | {'✅' if properties['refable'] else '❌'} | {'✅' if properties['versioned'] else '❌'} |\n"
 
-# Read the existing content of the markdown file
+# Define the file path
 file_path = "../docs/reference/about-resources.md"
+
+# Read the existing content of the file
 with open(file_path, "r") as file:
     content = file.read()
 
-# Insert the markdown table content under the specified header
-header = "## Resource types"
-if header in content:
-    header_index = content.index(header) + len(header)
-    content = content[:header_index] + f"\n\n{markdown_table_content}" + content[header_index:]
-else:
-    content += f"\n{header}\n\n{markdown_table_content}"
+# Replace the content under the "## Resource types" header
+new_content = re.sub(r'(## Resource types\s*\n)(.*?)(\n## )', rf'\1\n{markdown_table}\3', content, flags=re.DOTALL)
 
-# Write the updated content back to the markdown file
+# Write the updated content back to the file
 with open(file_path, "w") as file:
-    file.write(content)
+    file.write(new_content)
 
-print(f"Updated {file_path} with the new resource types table.")
+print(f"The Markdown table has been added to {file_path} under the '## Resource types' header.")

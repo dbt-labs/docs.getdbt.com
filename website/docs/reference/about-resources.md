@@ -9,28 +9,26 @@ dbt supports different types of resource types. Each one has a set of supported 
 
 ## Resource types
 
-
-The following tables describes each resource type, its identifier, and a brief description of its purpose. 
-
-
-| Resource type     | Identifier         | Description |
-|-------------------|--------------------|-------------|
-| Analysis          | `analysis`         | Similar to models, but usually used for exploratory data analysis and not directly integrated into the dbt DAG (Directed Acyclic Graph). |
-| Documentation     | `doc`              | Used for documenting the project, including descriptions of models, columns, and more. |
-| Exposure          | `exposure`         | Document downstream use of dbt models in dashboards, reports, or analysis. |
-| Group             | `group`            | Used for grouping and organizing other dbt resources, potentially for managing permissions or categorization. |
-| Macro             | `macro`            | Reusable code snippets in Jinja, allowing for custom logic and SQL reuse. |
-| Metric            | `metric`           | Define business metrics using a standardized syntax, which can be used across models and analyses. |
-| Model             | `model`            | Central to dbt projects, models are SQL files that define transformations and datasets. These are typically the primary analytical outputs. |
-| Operation         | `operation`        | Custom operations that can be run from the dbt command line, often for administrative or maintenance tasks. |
-| RPC Call   | `rpc`    | Deprecated in dbt v1.6. Run a`rpc` to execute dbt commands over a network. Deprecated in dbt v1.6. |
-| Saved Query       | `saved_query`      | Represent saved SQL queries, potentially for reuse or tracking purposes. |
-| Seed              | `seed`             | CSV files that are loaded into the database as static tables, useful for small reference data. |
-| Semantic model    | `semantic_model`   | A higher-level abstraction of data models, focusing on the semantic layer or business logic representation. |
-| Snapshot          | `snapshot`         | Capture data at a specific point in time to track changes, useful for historical reporting and auditing. |
-| Source            | `source`           | Represents raw data sources, helping to define and document the initial state of data that dbt interacts with. |
-| SQL operation     | `sql_operation`    | Custom SQL operations that can be executed within dbt workflows. |
-| Test              | `test`             | Define tests to ensure data quality and integrity, such as uniqueness, not-null constraints, and custom data validation. |
+| Resource type | Executable | Refable | Versioned | Description |
+|---------------|------------|---------|-----------| ----------- |
+| `analysis` | ✅ | ❌ | ❌ |  Similar to models, but usually used for exploratory data analysis and not directly integrated into the dbt DAG (Directed Acyclic Graph). |
+| `doc` | ✅ | ❌ | ❌ | Used for documenting the project, including descriptions of models, columns, and more. |
+| `exposure` | ❌ | ❌ | ❌ | Document downstream use of dbt models in dashboards, reports, or analysis. |
+| `fixture` | ❌ | ❌ | ❌ |
+| `group` | ❌ | ❌ | ❌ | Used for grouping and organizing other dbt resources, potentially for managing permissions or categorization. |
+| `macro` | ✅ | ❌ | ❌ | Reusable code snippets in Jinja, allowing for custom logic and SQL reuse. |
+| `metric` | ❌ | ❌ | ❌ | Define business metrics using a standardized syntax, which can be used across models and analyses. |
+| `model` | ✅ | ✅ | ✅ |  Central to dbt projects, models are SQL files that define transformations and datasets. These are typically the primary analytical outputs. |
+| `operation` | ✅ | ❌ | ❌ | Custom operations that can be run from the dbt command line, often for administrative or maintenance tasks. |
+| `rpc` | ✅ | ❌ | ❌ | Deprecated in dbt v1.6. Run a`rpc` to execute dbt commands over a network. Deprecated in dbt v1.6. |
+| `saved_query` | ❌ | ❌ | ❌ | Represent saved SQL queries, potentially for reuse or tracking purposes. |
+| `seed` | ✅ | ✅ | ❌ |  CSV files that are loaded into the database as static tables, useful for small reference data. |
+| `semantic_model` | ❌ | ❌ | ❌ |  A higher-level abstraction of data models, focusing on the semantic layer or business logic representation. |
+| `snapshot` | ✅ | ✅ | ❌ | Capture data at a specific point in time to track changes, useful for historical reporting and auditing. |
+| `source` | ❌ | ❌ | ❌ | Represents raw data sources, helping to define and document the initial state of data that dbt interacts with. |
+| `sql_operation` | ✅ | ❌ | ❌ | Custom SQL operations that can be executed within dbt workflows. |
+| `test` | ✅ | ❌ | ❌ | Define tests to ensure data quality and integrity, such as uniqueness, not-null constraints, and custom data validation. |
+| `unit_test` | ❌ | ❌ | ❌ | Define unit tests to test your projects during development, before pushing to production. |
 
 ## Supported properties and configs table
 
@@ -64,4 +62,3 @@ Properties or configurations support different resource types and are applied in
 ## Related docs
 - [About resource paths](/reference/resource-configs/resource-path)
 - [About configs and properties](/reference/configs-and-properties)
-
