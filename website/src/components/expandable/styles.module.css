@@ -142,3 +142,6 @@
     margin-bottom: 5px; /* Adjust this value as needed to create space */
   }
   
+  .headerText {
+    background: red;
+  }
