@@ -21,6 +21,8 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
+      with:
+        reporter: github-pr-review
 
     - name: Print PATH and Vale Location
       run: |
@@ -71,5 +73,5 @@ jobs:
       with:
         tool_name: vale
         level: warning
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
         reviewdog_flags: "--jsonc < vale_report.json"
