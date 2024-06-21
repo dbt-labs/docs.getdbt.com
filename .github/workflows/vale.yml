@@ -20,7 +20,7 @@ jobs:
         fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      uses: errata-ai/vale-action@reviewdog
       with:
         reporter: github-pr-review
 
