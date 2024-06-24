@@ -75,7 +75,7 @@ If you're already logged in to Slack, the handshake only requires allowing the a
 If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
 1. Complete the field defining the Slack workspace you want to integrate with dbt Cloud.
-    <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="65%" title="Define the workspace"/>
+    <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="60%" title="Define the workspace"/>
 2. Sign in with an existing identity or use email address and password. 
 3. Once you have authenticated successfully, accept the permissions.
     <Lightbox src="/img/docs/dbt-cloud/accept-permissions.png" width="65%" title="Allow dbt access to Slack"/>
@@ -85,7 +85,7 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 1. From the gear menu, choose **Notification settings**. 
 1. Select **Slack notifications** in the left sidebar. 
 1. Select the **Notification channel** you want to receive the job run notifications from the dropdown. 
-    <Lightbox src="/img/docs/deploy/example-notification-slack-channels.png" width="75%" title="Example of the Notification channel dropdown"/>
+    <Lightbox src="/img/docs/deploy/example-notification-slack-channels.png" width="100%" title="Example of the Notification channel dropdown"/>
 1. Select the **Environment** for the jobs you want to receive notifications about from the dropdown. 
 1. Click **Edit** to configure the Slack notification settings. Choose one or more of the run statuses for each job you want to receive notifications about.
 1. When you're done with the settings, click **Save**.
