@@ -24,8 +24,8 @@ If your account is scheduled for migration, you will see a banner indicating you
 1. **IP addresses** &mdash; dbt Cloud will be using new IPs to access your warehouse after the migration. Make sure to allow inbound traffic from these IPs in your firewall and include it in any database grants. All six of the IPs below should be added to allowlists.
     * Old IPs: `52.45.144.63`, `54.81.134.249`, `52.22.161.231`
     * New IPs: `52.3.77.232`, `3.214.191.130`, `34.233.79.135`
-2. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can resend the invitations once the migration is complete.
-3. **SSO integrations** &mdash; If you've completed the Auth0 migration, your account SSO configurations will be automatically transferred. If you have not completed the Auth0 migration, we recommend completing that before the mult-cell migration to avoid service disruptions.
+2. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can resend the invitations after the migration is complete.
+3. **SSO integrations** &mdash; If you've completed the Auth0 migration, your account SSO configurations will be automatically transferred. If you haven't completed the Auth0 migration, dbt Labs recommends doing that before starting the mult-cell migration to avoid service disruptions.
 
 ## Post-migration
 
