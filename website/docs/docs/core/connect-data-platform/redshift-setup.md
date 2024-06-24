@@ -178,7 +178,7 @@ The following table lists the authentication parameters to use IAM authenticatio
 To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication, consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html). 
 
 You will need to create an IAM User, generate an [access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey), and either:
-- on a cluster, leverage a database user in the `user` field
+- on a cluster, a database user is expected in the `user` field. The IAM user is only leveraged for authentication, the database user for authorization
 - on Serverless, grant permission to the IAM user in Redshift. The `user` field is ignored
 
 On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox:
