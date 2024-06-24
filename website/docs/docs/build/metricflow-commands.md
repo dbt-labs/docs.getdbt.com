@@ -278,9 +278,9 @@ Options:
                            To query multiple metrics, use --metrics followed by the metric names, separated by commas without spaces.
                            For example,  --metrics bookings,messages
 
-  --group-by SEQUENCE      Syntax to group by single dimension or entity: --group-by dimension_name
+  --group-by SEQUENCE      Syntax to group by single dimension/entity: --group-by dimension_name
                            For example, --group-by ds
-                           For multiple dimensions or entities, use --group-by followed by the dimension/entity names, separated by commas without spaces.
+                           For multiple dimensions/entities, use --group-by followed by the dimension/entity names, separated by commas without spaces.
                            For example, --group-by ds,org
                            
 
@@ -301,10 +301,11 @@ Options:
   --limit TEXT             Limit the number of rows out using an int or leave
                            blank for no limit. For example: --limit 100
 
-  --order-by SEQUENCE     Specify metrics or groupings to order by.
-                          Add the `-` prefix to sort query in descending (DESC) order. Leave blank for ascending (ASC) order.
+  --order-by SEQUENCE     Specify metrics, dimension, or group bys to order by.
+                          Add the `-` prefix to sort query in descending (DESC) order. 
+                          Leave blank for ascending (ASC) order.
                           For example, to sort metric_time in DESC order: --order-by -metric_time 
-                          For example, to sort metric_time in ASC order and revenue in DESC order:  --order-by metric_time,-revenue
+                          To sort metric_time in ASC order and revenue in DESC order:  --order-by metric_time,-revenue
 
   --csv FILENAME           Provide filepath for data frame output to csv
 
@@ -632,21 +633,22 @@ However, you can change this limit if needed by setting the `--limit` option in 
 
 To query multiple metrics, group bys, or where statements in your command, follow this guidance:
 
-- To query multiple metrics and group bys, use the `--metric` or `--group-by` syntax followed by the metric or dimension/entity names, separated by commas without spaces:
-  - Multiple metrics example: dbt sl query --metrics accounts_active,users_active
-  - Multiple dimension/entity example: dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier
+- To query multiple metrics and group bys, use the `--metrics` or `--group-by` syntax followed by the metric or dimension/entity names, separated by commas without spaces:
+  - Multiple metrics example: `dbt sl query --metrics accounts_active,users_active`
+  - Multiple dimension/entity example: `dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier`
  
 - To query multiple where statements, use the `--where` syntax and wrap the statement in quotes:
-  - Multiple where statement example: dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier --where "metric_time__week >= '2024-02-01' and accounts__plan_tier = 'coco'"
+  - Multiple where statement example: `dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier --where "metric_time__week >= '2024-02-01' and accounts__plan_tier = 'coco'"`
 
 </detailsToggle>
 
 <detailsToggle alt_header="How can I sort my query in ascending or descending order?">
 
-When you query metrics, use `--order-by` to specify metrics or groupings to order by. Add the `-` prefix to sort query in descending (DESC) order. Leave blank for ascending (ASC) order.
+When you query metrics, use `--order-by` to specify metrics or groupings to order by. The `order_by` option applies to metrics, dimensions, and group bys. 
 
-For example, to query a metric and sort `metric_time` in descending order, you would run `dbt sl query --metrics order_total --group-by metric_time --order-by -metric_time`.
+Add the `-` prefix to sort query in descending (DESC) order. Leave blank for ascending (ASC) order:
 
-Tp query a metric and sort `metric_time` in ascending order and `revenue` in descending order, run `dbt sl query --metrics order_total --order-by metric_time,-revenue`.
+- For example, to query a metric and sort `metric_time` in descending order, you would run `dbt sl query --metrics order_total --group-by metric_time --order-by -metric_time`.
+- To query a metric and sort `metric_time` in ascending order and `revenue` in descending order, run `dbt sl query --metrics order_total --order-by metric_time,-revenue`.
 
 </detailsToggle>
