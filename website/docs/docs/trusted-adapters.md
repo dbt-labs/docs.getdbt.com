@@ -19,7 +19,3 @@ Refer to the [Build, test, document, and promote adapters](/guides/adapter-creat
 import AdaptersTrusted from '/snippets/_adapters-trusted.md';
 
 <AdaptersTrusted />
-
-<MSCallout />
-
-
