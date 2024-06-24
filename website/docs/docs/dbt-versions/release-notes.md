@@ -20,7 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2024
 
-- **New:** GA of job warnings is now available. Previously, you could receive email or Slack alerts about your jobs when they succeeded, failed, or were cancelled. Now, you can also receive alerts when jobs have encountered warnings during their run. This provides more flexibility on when to be notified. 
+- **New:** GA of [job warnings](/docs/deploy/job-notifications) is now available. Previously, you could receive email or Slack alerts about your jobs when they succeeded, failed, or were cancelled. Now, you can also receive alerts when jobs have encountered warnings during their run. This provides more flexibility on when to be notified. 
 
 - **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
