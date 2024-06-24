@@ -4,7 +4,7 @@ id: "job-notifications"
 description: "Set up notifications in dbt Cloud to receive email or Slack alerts about job run status."
 ---
 
-Set up notifications in dbt Cloud to receive email or Slack alerts when a job run succeeds, fails, or is cancelled.
+Set up notifications in dbt Cloud so you can receive email or Slack alerts when a job run succeeds, encountered warnings, fails, or is canceled. 
 
 ## Email notifications
 
@@ -27,7 +27,7 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 
 1. Select the **Environment** for the jobs you want to receive notifications about from the dropdown. 
 
-1. Click **Edit** to configure the email notification settings. Choose one or more of the run statuses (**Succeeds**, **Fails**, **Is Canceled**) for each job you want to receive notifications about.
+1. Click **Edit** to configure the email notification settings. Choose one or more of the run statuses (**Succeeds**, **Warns**, **Fails**, **Is canceled**) for each job you want to receive notifications about.
 
 1. When you're done with the settings, click **Save**.
 
@@ -81,7 +81,7 @@ If you're logged out or the Slack app/website is closed, you must authenticate b
 1. Select the **Notification channel** you want to receive the job run notifications from the dropdown. 
     <Lightbox src="/img/docs/deploy/example-notification-slack-channels.png" width="75%" title="Example of the Notification channel dropdown"/>
 1. Select the **Environment** for the jobs you want to receive notifications about from the dropdown. 
-1. Click **Edit** to configure the Slack notification settings. Choose one or more of the run statuses (**Succeeds**, **Fails**, **Is Canceled**) for each job you want to receive notifications about.
+1. Click **Edit** to configure the Slack notification settings. Choose one or more of the run statuses (**Succeeds**, **Warns**, **Fails**, **Is canceled**) for each job you want to receive notifications about.
 1. When you're done with the settings, click **Save**.
     
     To send alerts to another Slack channel, select another **Notification channel** from the dropdown, **Edit** those job notification settings, and **Save** the changes.
