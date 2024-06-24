@@ -51,7 +51,8 @@ const MDXComponents = {
   code: MDXCode,
   a: MDXA,
   pre: MDXPre,
-  details: MDXDetails,
+  details: MDXDetails, // For MD mode support, see https://github.com/facebook/docusaurus/issues/9092#issuecomment-1602902274
+  Details: MDXDetails,
   ul: MDXUl,
   img: MDXImg,
   h1: (props) => <MDXHeading as="h1" {...props} />,
