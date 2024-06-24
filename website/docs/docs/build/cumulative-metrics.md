@@ -58,15 +58,16 @@ Cumulative metrics measure data over a given window and consider the window infi
 
 metrics:
   - name: cumulative_order_total
-    label: Cumulative Order total (All-Time)    
+    label: Cumulative order total (All-Time)    
     description: The cumulative value of all orders
     type: cumulative
     type_params:
       measure: 
         name: order_total
         fill_nulls_with: 0
+  
   - name: cumulative_order_total_l1m
-    label: Cumulative Order total (L1M)   
+    label: Cumulative order total (L1M)   
     description: Trailing 1-month cumulative order amount
     type: cumulative
     type_params:
@@ -74,8 +75,9 @@ metrics:
         name: order_total
         fill_nulls_with: 0
       window: 1 month
+  
   - name: cumulative_order_total_mtd
-    label: Cumulative Order total (MTD)
+    label: Cumulative order total (MTD)
     description: The month-to-date value of all orders
     type: cumulative
     type_params:
@@ -84,6 +86,14 @@ metrics:
         fill_nulls_with: 0
       grain_to_date: month
 ```
+
+## Granularity options
+Ensure you can request cumulative metrics at different granularities, reducing redundancy and configuration efforts:
+- Window options
+- Grain to date
+- Window choice
+- Period aggregation
+
 
 ### Window options
 
@@ -210,6 +220,183 @@ metrics:
       period_agg: first # ADD CONTEXT
 ```
 
+### Window choice
+Window choice specifies whether to take the cumulative metric value from the beginning (min) or end (max) of the window. Defaults to `min`.
+
+For example, `dbt sl query --metrics orders_last_7_days --group-by metric_time__week`, will show cumulative metrics by week. 
+
+#### Example configurations
+
+Cumulative metric with a specified window and choice.
+```yaml
+- name: orders_last_7_days
+  description: Count of orders.
+  label: orders last 7 days
+  type: cumulative
+  type_params:
+    measure: order_count
+    window: 7 days
+    window_choice: min # or max
+```
+
+This compiles the following SQL code:
+
+```sql
+--dbt sl query --metrics orders_last_7_days --group-by metric_time__week
+with staging as (
+    select
+        subq_3.date_day as metric_time__day,
+        date_trunc('week', subq_3.date_day) as metric_time__week,
+        sum(subq_1.order_count) as orders_last_7_days
+    from dbt_sl_test.metricflow_time_spine subq_3
+    inner join (
+        select
+            date_trunc('day', ordered_at) as metric_time__day,
+            1 as order_count
+        from analytics.dbt_jstein.orders orders_src_10000
+    ) subq_1
+    on (
+        subq_1.metric_time__day <= subq_3.date_day
+    ) and (
+        subq_1.metric_time__day > dateadd(day, -7, subq_3.date_day)
+    )
+    where
+        subq_3.date_day between '2016-01-01' and '2017-12-31'
+    group by
+        subq_3.date_day
+)
+
+select
+    *
+from (
+    select
+        metric_time__week,
+        first_value(orders_last_7_days) over (partition by date_trunc('week', metric_time__day) order by metric_time__day) as cumulative_revenue
+    from
+        staging
+)
+group by
+    metric_time__week,
+    cumulative_revenue
+order by
+    metric_time__week
+    1
+```
+
+Cumulative metric with grain to date:
+
+```yaml
+- name: orders_last_month_to_date
+  label: Orders month to date
+  type: cumulative
+  type_params:
+    measure: order_count
+    grain_to_date: month
+    window_choice: min # or max
+```
+
+This compiles the following SQL code:
+
+```sql
+with staging as (
+    select
+        subq_3.date_day as metric_time__day,
+        date_trunc('week', subq_3.date_day) as metric_time__week,
+        sum(subq_1.order_count) as orders_last_month_to_date
+    from dbt_jstein.metricflow_time_spine subq_3
+    inner join (
+        select
+            date_trunc('day', ordered_at) as metric_time__day,
+            1 as order_count
+        from analytics.dbt_jstein.orders orders_src_10000
+    ) subq_1
+    on (
+        subq_1.metric_time__day <= subq_3.date_day
+    ) and (
+        subq_1.metric_time__day >= date_trunc('month', subq_3.date_day)
+    )
+    group by
+        subq_3.date_day,
+        date_trunc('week', subq_3.date_day)
+)
+
+select
+    *
+from (
+    select
+        metric_time__week,
+        first_value(orders_last_month_to_date) over (partition by date_trunc('week', metric_time__day) order by metric_time__day) as cumulative_revenue
+    from
+        staging
+)
+group by
+    metric_time__week,
+    cumulative_revenue
+order by
+    metric_time__week
+    1
+```
+
+### Period aggregation
+
+You can specify how to roll up the cumulative metric to another granularity. Options are `start`, `end`, `average`. Defaults to `start` if no `window` is specified.
+
+Cumulative metric with no window, default to min:
+
+```yaml
+- name: cumulative_revenue
+  description: The cumulative revenue for all orders.
+  label: Cumulative Revenue (All Time)
+  type: cumulative
+  type_params:
+    measure: revenue
+    period_agg: first # Optional. Defaults to first. Accepted values: first|end|avg
+```
+
+This compiles the following SQL code:
+
+```sql
+--mf query --metrics cumulative_revenue --group-by metric_time__week
+with staging as (
+    select
+        subq_3.date_day as metric_time__day,
+        date_trunc('week', subq_3.date_day) as metric_time__week,
+        sum(subq_1.revenue) as cumulative_revenue
+    from
+        dbt_sl_test.metricflow_time_spine subq_3
+    inner join (
+        select
+            date_trunc('day', cast(ordered_at as datetime)) as metric_time__day,
+            product_price as revenue
+        from
+            analytics.dbt_jstein.order_items order_item_src_10000
+    ) subq_1 on (subq_1.metric_time__day <= subq_3.date_day)
+    where
+        subq_3.date_day between '2016-01-01' and '2017-12-31'
+    group by
+        subq_3.date_day,
+        date_trunc('week', subq_3.date_day)
+    order by
+        1
+)
+
+select
+    *
+from (
+    select
+        metric_time__week,
+        first_value(cumulative_revenue) over (partition by date_trunc('week', metric_time__day) order by metric_time__day) as cumulative_revenue
+    from
+        staging
+)
+group by
+    metric_time__week,
+    cumulative_revenue
+order by
+    metric_time__week
+    1
+```
+
 ### Implementation
 
 To calculate the cumulative value of the metric over a given window, use a time range join to a timespine table using the primary time dimension as the join key. Use the accumulation window in the join to decide whether to include on a particular day. Refer to the following example cumulative metric SQL code:
@@ -259,49 +446,6 @@ group by
   metric_time,
 limit 100;
 
-```
-
-## Granularity options
-Ensure you can request cumulative metrics at different granularities, reducing redundancy and configuration efforts.
-
-For example, `dbt sl query --metrics orders_last_7_days --group-by metric_time__week`, will show cumulative metrics by week. Cumulative metrics are not additive over time and you can use either the minimum or maximum value within the requested granularity window. You can configure this choice, with `min` being the default.
-
-#### Example configurations
-
-Cumulative metric with no window, default to min:
-
-```yaml
-- name: cumulative_revenue
-  description: The cumulative revenue for all orders.
-  label: Cumulative Revenue (All Time)
-  type: cumulative
-  type_params:
-    measure: revenue
-    period_agg: first # Optional. Defaults to first. Accepted values: first|end|avg
-```
-
-Cumulative metric with a specified window and choice:
-```yaml
-- name: orders_last_7_days
-  description: Count of orders.
-  label: orders last 7 days
-  type: cumulative
-  type_params:
-    measure: order_count
-    window: 7 days
-    window_choice: min # or max
-```
-
-Cumulative metric with grain to date:
-
-```yaml
-- name: orders_last_month_to_date
-  label: Orders month to date
-  type: cumulative
-  type_params:
-    measure: order_count
-    grain_to_date: month
-    window_choice: min # or max
 ```
 
 ## Limitations
