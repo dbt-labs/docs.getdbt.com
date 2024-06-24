@@ -155,7 +155,7 @@ sources:
           warn_after: {count: 6, period: hour}
           error_after: {count: 12, period: hour}
 
-      - name: customers # this will use the freshness defined above
+      - name: customers # this will use the default freshness defined in the source block above
 
 
       - name: product_skus
