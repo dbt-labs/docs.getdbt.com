@@ -5,7 +5,7 @@ description: "Learn how to trigger a dbt job run when a Git pull request merges.
 ---
 
 
-You can set up a merge job to implement a continuous development (CD) workflow in dbt Cloud. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This creates a seamless development experience where changes made in code will automatically update production data. 
+You can set up a merge job to implement a continuous development (CD) workflow in dbt Cloud. The merge job triggers a dbt job to run when someone merges Git pull requests into production. This workflow creates a seamless development experience where changes made in code will automatically update production data. Also, you can use this workflow for running `dbt compile` to update your environment's manifest so subsequent CI job runs are more performant.
 
 By using CD in dbt Cloud, you can take advantage of deferral to build only the edited model and any downstream changes. With merge jobs, state will be updated almost instantly, always giving the most up-to-date state information in [dbt Explorer](/docs/collaborate/explore-projects).
 
@@ -13,8 +13,6 @@ By using CD in dbt Cloud, you can take advantage of deferral to build only the e
 - You have a dbt Cloud account. 
 - You have set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
-- Make sure you're set up to receive push notifications from your Git provider. For details, refer to [Job notifications](/docs/deploy/job-notifications).
-- Make sure that [push events are enabled](#verify-push-events-in-git) in your Git provider.
 - For deferral (which is the default), make sure there has been at least one successful job run in the deferred environment.
 
 ## Set up job trigger on Git merge {#set-up-merge-jobs}
