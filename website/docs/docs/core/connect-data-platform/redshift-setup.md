@@ -177,7 +177,9 @@ The following table lists the authentication parameters to use IAM authenticatio
   
 To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication, consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html). 
 
-You will need to create an IAM User, generate an [access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey), and map that user to a database role in Redshift [Serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-iam.html#serverless-iam-credentials-use-case).
+You will need to create an IAM User, generate an [access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey), and either:
+- on a cluster, leverage a database user in the `user` field
+- on Serverless, grant permission to the IAM user in Redshift. The `user` field is ignored
 
 On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox:
 
@@ -185,7 +187,7 @@ On Cloud, the IAM user authentication is currently only supported via [extended 
 | ------------- | ------- | ------------ |
 | `method` |IAM| use IAM to authenticate via IAM User authentication |
 | `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
-| `user`   | username | Account user to log into your cluster |
+| `user`   | username | User querying the database, ignored for Serverless |
 | `region`  | us-east-1 | Region of your Redshift instance | 
 | `access_key_id` | ACCESS_KEY_ID | IAM user [access key id](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) |
 | `secret_access_key` | SECRET_ACCESS_KEY | IAM user secret access key |
