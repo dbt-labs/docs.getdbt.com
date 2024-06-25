@@ -20,6 +20,22 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2024
 
+#### dbt Semantic Layer
+- **New:** Introducing a new granularity option for cumulative metrics, `period_agg`. `period_agg` is nested under the `type_params` parameter and specifies how to roll up the cumulative metric to another granularity. Options are `start`, `end`, `average`. Defaults to `start` if no `window` is specified. 
+- **New:** Add validation that derived metrics always have expr
+- **New:** Enable cache to pickup where filters that are included in saved queries
+- **Enhancement:** Cumulative metrics now supports `type_params` under a nested key: `cumulative_type_params`. MetricFlow supports the old `type_params` parameter but will throw a warning if found there.
+- **Enhancement:** Update MetricFlow to use new `cumulative_type_params` fields for cumulative metrics.
+- **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. You can hover over the information icon to see a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
+- **Enhancement:** Allow for granularity for all time dimensions. You can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension. 
+- **Enhancement:** Improved querying error message when no semantic layer credentials were set.
+- **Fix:** Remove errors preventing querying cumulative metrics with other granularities
+- **Fix:** Fixed various Tableau errors when querying certain metrics or when using calculated fields.
+- **Fix:** Relaxed naming field expectations to better identify calculated fields.
+- **Fix:** Fixed an error when refreshing database metadata for columns that we can't convert to Arrow. These columns will now be skipped. This mainly affected Hex users while refreshing the entire database metadata.
+- **Fix:** We added the `host_info` field overrides to the pod's `/etc/hosts` file for Databricks Private Link connections.
+
+#### Also available this month:
 - **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
 ## May 2024
