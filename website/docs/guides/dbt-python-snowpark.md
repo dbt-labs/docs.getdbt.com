@@ -1858,7 +1858,7 @@ We are going to revisit 2 areas of our project to understand our documentation:
 - `intermediate.md` file
 - `dbt_project.yml` file
 
-To start, let’s look back at our `intermediate.md` file. We can see that we provided multi-line descriptions for the models in our intermediate models using [docs blocks](/docs/collaborate/documentation#using-docs-blocks). Then we reference these docs blocks in our `.yml` file. Building descriptions with doc blocks in Markdown files gives you the ability to format your descriptions with Markdown and are particularly helpful when building long descriptions, either at the column or model level. In our `dbt_project.yml`, we added `node_colors` at folder levels.
+To start, let’s look back at our `intermediate.md` file. We can see that we provided multi-line descriptions for the models in our intermediate models using [docs blocks](/docs/build/documentation#using-docs-blocks). Then we reference these docs blocks in our `.yml` file. Building descriptions with doc blocks in Markdown files gives you the ability to format your descriptions with Markdown and are particularly helpful when building long descriptions, either at the column or model level. In our `dbt_project.yml`, we added `node_colors` at folder levels.
 
 1. To see all these pieces come together, execute this in the command bar:
 

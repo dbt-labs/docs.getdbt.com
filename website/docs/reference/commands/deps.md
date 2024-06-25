@@ -68,7 +68,13 @@ The `package-lock.yml` file should be committed in Git initially, and then updat
 
 The `package-lock.yml` file includes a `sha1_hash` of the `packages` config. This enables dbt to detect if the `packages` config has been updated, and to rerun dependency resolution. To only check for changes to the `packages` config and update the lock file accordingly without installing those packages, provide the `--lock` flag (that is, `dbt deps --lock`).
 
-It's possible to force package resolution to rerun, even if the `packages` config hasn't changed, by running `dbt deps --upgrade`. This enables you to get the latest commits from the `main` branch of an internally maintained `git` package while accepting the risk of unpredictable builds. An alternative to running `dbt deps --upgrade` in production is to "ignore" the lock file by adding `package-lock.yml` to your project's `.gitignore` file. If you pursue either approach, dbt Labs strongly recommends adding version pins for third-party packages within your `packages` config.
+### Forcing upgrades
+
+It's possible to force package resolution to rerun, even if the `packages` config hasn't changed, by running `dbt deps --upgrade`. This enables you to get the latest commits from the `main` branch of an internally maintained `git` package while accepting the risk of unpredictable builds. 
+
+An alternative to running `dbt deps --upgrade` in production is to "ignore" the lock file by adding `package-lock.yml` to your project's `.gitignore` file. 
+
+If you pursue either approach, dbt Labs strongly recommends adding version pins for third-party packages within your `packages` config.
 
 ## Add specific packages
 

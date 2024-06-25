@@ -6,7 +6,7 @@ id: "exposures"
 
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
-- populate a dedicated page in the auto-generated [documentation](/docs/collaborate/documentation) site with context relevant to data consumers
+- populate a dedicated page in the auto-generated [documentation](/docs/build/documentation) site with context relevant to data consumers
 
 ### Declaring an exposure
 
