@@ -64,7 +64,7 @@ When you select time dimensions in the **Group By** menu, you'll see a list of a
 
 **Filtering data**
 
-To use the filter functionality, choose the [dimension](docs/build/dimensions) you want to filter by and select the operation you want to filter on.
+To use the filter functionality, choose the [dimension](/docs/build/dimensions) you want to filter by and select the operation you want to filter on.
 - For categorical dimensions, you can type a value into search or select from a populated list. For entities, you must type the value you are looking for as we do not load all of them given the large number of values.
 - Continue adding additional filters as needed with AND and OR.
 
