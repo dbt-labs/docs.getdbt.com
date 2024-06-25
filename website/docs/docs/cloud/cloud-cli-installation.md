@@ -167,10 +167,6 @@ If you already have dbt Core installed, the dbt Cloud CLI may conflict. Here are
     python -m pip install dbt-adapter_name --force-reinstall
     ```
     For example, if I used Snowflake as an adapter, I would run: `python -m pip install dbt-snowflake --force-reinstall`
-- **Problems with installing dbt Cloud CLI** <br /> You can try running the following command instead: 
-   ```shell
-   pip install dbt --no-cache-dir --force-reinstall
-   ```
 
 --------
 
@@ -208,6 +204,11 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
   ```bash
   pip install dbt --no-cache-dir
   ```
+
+  If there are installation issues, try running the command with the `--force-reinstall` argument: 
+   ```bash
+   pip install dbt --no-cache-dir --force-reinstall
+   ``` 
 
 3. (Optional) To revert to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
 
