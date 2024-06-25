@@ -25,7 +25,7 @@ For authentication, dbt Cloud users can use either a **Database username and pas
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User', value: 'iam-user-inline'}
+    {label: 'IAM User', value: 'iam-user-inline'},
   ]}
 >
 
