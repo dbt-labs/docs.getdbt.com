@@ -54,9 +54,8 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database', value: 'database'},
-    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'},
-  ]}
->
+    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'}]
+}>
 
 <TabItem value="database">
 
@@ -162,6 +161,8 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
 
 </TabItem>
+
+</Tabs>
 
 ## Redshift notes
 
