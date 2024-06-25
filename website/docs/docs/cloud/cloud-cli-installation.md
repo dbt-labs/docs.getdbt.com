@@ -21,7 +21,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 ## Prerequisites 
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
 
-- You are on dbt version 1.5 or higher. Alternatively, set it to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version.
+- You are on dbt version 1.5 or higher. Alternatively, set it to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to get a versionless experience and automatically stay up to date.
 
 ## Install dbt Cloud CLI
 
@@ -258,11 +258,11 @@ To update:
 
 ## VS Code extension <Lifecycle status="beta"/>
 
-Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. Power user for dbt Core and dbt Cloud is a common extension used to enhance your development with VS Code.
+Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. [Power user for dbt Core and dbt Cloud](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user) is a common extension used to enhance your dbt development with VS Code.
 
-You can use the dbt Cloud CLI with the [Power user for dbt Core and dbt Cloud](https://docs.myaltimate.com/arch/beta/) extension, now available in beta for the dbt Cloud CLI. 
+You can use the dbt Cloud CLI with Power User for dbt Core and dbt Cloud by following the instructions [here](https://docs.myaltimate.com/setup/reqdConfigCloud/). 
 
-To use the extension, you must first [install the dbt Cloud CLI](#install-dbt-cloud-cli).
+The Power User extension will handle installing the Cloud CLI on your behalf.
 
 ## FAQs
 

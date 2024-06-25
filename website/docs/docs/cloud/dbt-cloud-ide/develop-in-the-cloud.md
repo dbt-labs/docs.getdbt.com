@@ -54,7 +54,7 @@ To understand how to navigate the IDE and its user interface elements, refer to 
 | Feature  |  Description |
 |---|---|
 | [**Keyboard shortcuts**](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) | You can access a variety of [commands and actions](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) in the IDE by choosing the appropriate keyboard shortcut. Use the shortcuts for common tasks like building modified models or resuming builds from the last failure. |
-| **IDE version control** | The IDE version control section and git button allow you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project directly into the IDE. <br /><br /> - Create or change branches<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/collaborate/git/merge-conflicts)<br /> - Execute git commands using the git button <br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch.<br /> - Use Git diff view to view what has been changed in a file before you make a pull request.  |
+| **IDE version control** | The IDE version control section and git button allow you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project directly into the IDE. <br /><br /> - Create or change branches, execute git commands using the git button.<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/collaborate/git/merge-conflicts)<br /> - Link to the repo directly by clicking the branch name <br /> - Edit, format, or lint files and execute dbt commands in your primary protected branch, and commit to a new branch.<br /> - Use Git diff view to view what has been changed in a file before you make a pull request.<br /> - From dbt version 1.6 and higher, use the **Prune branches** [button](/docs/cloud/dbt-cloud-ide/ide-user-interface#prune-branches-modal) to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. |
 | **Preview and Compile button** | You can [compile or preview](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section) code, a snippet of dbt code, or one of your dbt models after editing and saving. |
 | [**dbt Assist**](/docs/cloud/dbt-assist) <Lifecycle status='beta' />| A powerful AI co-pilot feature that generates documentation and tests for your dbt SQL models. Available for dbt Cloud Enterprise plans. |
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
@@ -101,8 +101,8 @@ Nice job, you're ready to start developing and building models 🎉!
 
 ### Considerations
 - To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
-- To preserve performance, there's a file size limitation for repositories over 10GB. If you have a repo over 10GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
-- <expandable alt_header="About the start up process and work retention">
+- To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
+- <Expandable alt_header="About the start up process and work retention">
   
   ### Start-up process
   There are three start-up states when using or launching the Cloud IDE:
@@ -120,7 +120,7 @@ Nice job, you're ready to start developing and building models 🎉!
   - **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
   - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
 
-  </expandable>
+  </Expandable>
 
 ## Build and document your projects
 
@@ -131,7 +131,7 @@ Nice job, you're ready to start developing and building models 🎉!
 
 - **Generate your YAML configurations with dbt Assist** <Lifecycle status="beta"/>  &mdash; [dbt Assist](/docs/cloud/dbt-assist) is a powerful artificial intelligence (AI) co-pilot feature that helps automate development in dbt Cloud. It generates documentation and tests for your dbt SQL models directly in the dbt Cloud IDE, with a click of a button, and helps you accomplish more in less time. Available for dbt Cloud Enterprise plans.
 
-- **Build and view your project's docs** &mdash; The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-and-view-your-docs#generating-documentation) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
+- **Build and view your project's docs** &mdash; The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-and-view-your-docs) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
 
 
 ## Related docs

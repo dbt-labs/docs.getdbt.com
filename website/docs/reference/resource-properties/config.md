@@ -133,14 +133,6 @@ sources:
 
 <TabItem value="metrics">
 
-<VersionBlock lastVersion="1.2">
-
-We have added support for the `config` property on metrics in dbt Core v1.3
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
-
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -156,19 +148,9 @@ metrics:
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="exposures">
-
-<VersionBlock lastVersion="1.2">
-
-Support for the `config` property on `exposures` was added in dbt Core v1.3
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
 
 <File name='models/<filename>.yml'>
 
@@ -183,8 +165,6 @@ exposures:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 

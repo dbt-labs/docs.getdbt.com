@@ -42,11 +42,9 @@ Hooks are a more-advanced capability that enable you to run custom SQL, and leve
 
 <Snippet path="hooks-to-grants" />
 
-<VersionBlock firstVersion="1.2">
-
 If (and only if) you can't leverage the [`grants` resource-config](/reference/resource-configs/grants), you can use `post-hook` to perform more advanced workflows:
 
-* Need to apply `grants` in a more complex way, which the dbt Core v1.2 `grants` config does not (yet) support.
+* Need to apply `grants` in a more complex way, which the dbt Core `grants` config doesn't (yet) support.
 * Need to perform post-processing that dbt does not support out-of-the-box. For example, `analyze table`, `alter table set property`, `alter table ... add row access policy`, etc.
 
 ### Examples using hooks
@@ -69,8 +67,6 @@ You can use hooks to provide database-specific functionality not available out-o
 
 </File>
 
-
-</VersionBlock>
 
 ### Calling a macro in a hook
 

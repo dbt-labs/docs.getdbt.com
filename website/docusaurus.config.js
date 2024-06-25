@@ -71,14 +71,14 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Join us on May 14th and 15th for the dbt Labs Launch Showcase event.",
+      content: "Join our biweekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2025_dbt-cloud-launch-showcase_aw&utm_content=____&utm_term=all___",
+      "https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2025_biweekly-demos_aw&utm_content=biweekly-demos____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "tyler-rouze",
@@ -111,10 +111,32 @@ var siteSettings = {
       },
       items: [
         {
-          to: "/docs/introduction",
           label: "Docs",
           position: "left",
-          activeBaseRegex: "docs/(?!(dbt-cloud))",
+          items: [
+            {
+              label: "Product Docs",
+              to: "/docs/introduction",
+              activeBaseRegex: "docs/(?!(dbt-cloud))",
+            },
+            {
+              label: "API Docs",
+              to: "/docs/dbt-cloud-apis/overview",
+            },
+            {
+              label: "Best Practices",
+              to: "/best-practices",
+            },
+            {
+              label: "Release Notes",
+              to: "/docs/dbt-versions/dbt-cloud-release-notes",
+            },
+          ],
+        },
+        {
+          to: "/guides",
+          label: "Guides",
+          position: "left",
         },
         {
           to: "reference/references-overview",
@@ -128,15 +150,11 @@ var siteSettings = {
           items: [
             {
               label: "Courses",
-              href: "https://courses.getdbt.com",
+              href: "https://learn.getdbt.com",
             },
             {
               label: "Best Practices",
               to: "/best-practices",
-            },
-            {
-              label: "Guides",
-              to: "/guides",
             },
             {
               label: "Developer Blog",
