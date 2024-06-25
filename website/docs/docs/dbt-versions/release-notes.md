@@ -271,7 +271,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** New metric type that allows you to measure conversion events. For example, users who viewed a web page and then filled out a form. For more details, refer to [Conversion metrics](/docs/build/conversion). 
 - **New:** Instead of specifying the fully qualified dimension name (for example, `order__user__country`) in the group by or filter expression, you now only need to provide the primary entity and dimensions name, like `user__county`. 
-- **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/cloud-integrations/semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
+- **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/cloud-integrations/semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](/docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 
 - <Expandable alt_header="New: Native support for partial parsing" >
 
@@ -285,7 +285,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **Enhancement:** The YAML spec parameter `label` is now available for Semantic Layer metrics in [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview). This means you can conveniently use `label` as a display name for your metrics when exposing them.
 - **Enhancement:** Added support for `create_metric: true` for a measure, which is a shorthand to quickly create metrics. This is useful in cases when metrics are only used to build other metrics.
-- **Enhancement:** Added support for Tableau parameter filters. You can use the [Tableau connector](docs/cloud-integrations/semantic-layer/tableau) to create and use parameters with your dbt Semantic Layer data.
+- **Enhancement:** Added support for Tableau parameter filters. You can use the [Tableau connector](/docs/cloud-integrations/semantic-layer/tableau) to create and use parameters with your dbt Semantic Layer data.
 - **Enhancement:** Added support to expose `expr` and `agg` for [Measures](/docs/build/measures) in the [GraphQL API](/docs/dbt-cloud-apis/sl-graphql).
 - **Enhancement:** You have improved error messages in the command line interface when querying a dimension that is not reachable for a given metric.
 - **Enhancement:** You can now query entities using our Tableau integration (similar to querying dimensions). 

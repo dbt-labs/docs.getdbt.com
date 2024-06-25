@@ -618,7 +618,7 @@ Archived release notes for dbt Cloud from 2023
     ## 🎯 Core projects
 
     - We launched the new [MetricFlow docs](/docs/build/build-metrics-intro) on dbt Core v1.6 beta.
-    - Split [Global configs](reference/global-configs/about-global-configs) into individual pages, making it easier to find, especially using search. 
+    - Split [Global configs](/reference/global-configs/about-global-configs) into individual pages, making it easier to find, especially using search. 
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
