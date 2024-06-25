@@ -27,60 +27,61 @@ You can apply access modifiers in config files, including the `dbt_project.yml`,
 
 There are multiple approaches to configuring access:
 
-In `properties.yml`: 
+- In `properties.yml` using the older method: 
 
-<File name='models/properties_my_public_model.yml'>
-
-```yml
-version: 2
-
-models:
-  - name: my_public_model
-    access: public # Older method, still supported
-    
-```
-</File>
+  <File name='models/properties_my_public_model.yml'>
   
-Or (but not both)
+  ```yml
+  version: 2
+  
+  models:
+    - name: my_public_model
+      access: public # Older method, still supported
+      
+  ```
+  </File>
+  
+- Newer method (v1.7 or older). Use either the older method or the new method, but not both for the same model:
 
-<File name='models/properties_my_public_model.yml'>
+  <File name='models/properties_my_public_model.yml'>
+  
+  ```yml
+  version: 2
+  
+  models:
+    - name: my_public_model
+      config:
+        access: public # newly supported in v1.7
+      
+  ```
+  </File>
 
-```yml
-version: 2
 
-models:
-  - name: my_public_model
-    config:
-      access: public # newly supported in v1.7
-    
-```
-</File>
+- In `dbt_project.yml`:
 
-In `dbt_project.yml`:
+  <File name='dbt_project.yml'>
+  
+  ```yml
+  models:
+    my_project_name:
+      subfolder_name:
+        +group: my_group
+        +access: private  # sets default for all models in this subfolder
+  ```
+  </File>
 
-<File name='dbt_project.yml'>
+- In the `my_public_model.sql` file:
 
-```yml
-models:
-  my_project_name:
-    subfolder_name:
-      +group: <my_group>
-      +access: private  # sets default for all models in this subfolder
-```
-</File>
-
-In the `my_public_model.sql` file:
-
-<File name='models/my_public_model.sql'>
-
-```sql
--- models/my_public_model.sql
-
-{{ config(access = "public") }}
-
-select ...
-```
-</File>
+  <File name='models/my_public_model.sql'>
+  
+  ```sql
+  -- models/my_public_model.sql
+  
+  {{ config(access = "public") }}
+  
+  select ...
+  ```
+  </File>
 
 </VersionBlock>
 
