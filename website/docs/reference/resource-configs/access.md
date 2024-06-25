@@ -41,7 +41,7 @@ There are multiple approaches to configuring access:
   ```
   </File>
   
-- Newer method (v1.7 or older). Use either the older method or the new method, but not both for the same model:
+- In `properties.yml` using the new method (for v1.7 or higher). Use either the older method or the new method, but not both for the same model:
 
   <File name='models/properties_my_public_model.yml'>
   
