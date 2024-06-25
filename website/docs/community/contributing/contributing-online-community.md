@@ -21,7 +21,7 @@ For new channels that you'd like to create and maintain, post a message in the #
 
 #### Get started
 
-- Read the guide to [Maintaining a Slack Channel](community/resources/maintaining-a-channel)
+- Read the guide to [Maintaining a Slack Channel](/community/resources/maintaining-a-channel)
 
 ### Participating on the Community Forum
 

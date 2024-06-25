@@ -79,7 +79,7 @@ So we’ve found a way to isolate the new rows we need to process. How then do w
 ![Diagram visualizing how incremental models work](/img/best-practices/materializations/incremental-diagram.png)
 
 :::info
-😌 Incremental models can be confusing at first, **take your time reviewing** this visual and the previous steps until you have a **clear mental model.** Be patient with yourself. This materialization will become second nature soon, but it’s tough at first. If you’re feeling confused the [dbt Community is here for you on the Forum and Slack](community/join).
+😌 Incremental models can be confusing at first, **take your time reviewing** this visual and the previous steps until you have a **clear mental model.** Be patient with yourself. This materialization will become second nature soon, but it’s tough at first. If you’re feeling confused the [dbt Community is here for you on the Forum and Slack](https://www.getdbt.com/community/join-the-community).
 :::
 
 Thankfully dbt has some additional configuration and special syntax just for incremental models.
