@@ -51,6 +51,7 @@ const sidebarSettings = {
           items: [
             "docs/cloud/about-cloud-setup",
             "docs/dbt-cloud-environments",
+            "docs/cloud/migration",
             {
               type: "category",
               label: "Connect data platform",
@@ -1153,9 +1154,10 @@ const sidebarSettings = {
             id: "best-practices/how-we-mesh/mesh-1-intro",
           },
           items: [
-            "best-practices/how-we-mesh/mesh-2-structures",
-            "best-practices/how-we-mesh/mesh-3-implementation",
-            "best-practices/how-we-mesh/mesh-4-faqs",
+            "best-practices/how-we-mesh/mesh-2-who-is-dbt-mesh-for",
+            "best-practices/how-we-mesh/mesh-3-structures",
+            "best-practices/how-we-mesh/mesh-4-implementation",
+            "best-practices/how-we-mesh/mesh-5-faqs",
           ],
         },
         {
