@@ -22,7 +22,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 #### dbt Semantic Layer
 - **New:** Introducing a new granularity option for cumulative metrics, `period_agg`. `period_agg` is nested under the `type_params` parameter and specifies how to roll up the cumulative metric to another granularity. Options are `start`, `end`, `average`. Defaults to `start` if no `window` is specified. 
-- **New:** Add validation that derived metrics always have expr
+- **New:** Add validation that derived metrics must always have an `expr` key.
 - **New:** Enable cache to pickup where filters that are included in saved queries
 - **Enhancement:** Cumulative metrics now support the `cumulative_type_params` key. The `cumulative_type_params` parameter replaces `type_params`. MetricFlow supports the old `type_params` key but will issue a warning if used.
 - **Enhancement:** Update MetricFlow to use new `cumulative_type_params` fields for cumulative metrics.
