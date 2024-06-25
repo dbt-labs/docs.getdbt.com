@@ -43,7 +43,7 @@ models:
   
 Or (but not both)
 
-<File name='models/<properties_my_public_model>.yml'>
+<File name='models/properties_my_public_model.yml'>
 
 ```yml
 version: 2
