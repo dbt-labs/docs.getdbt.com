@@ -27,13 +27,13 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Enhancement:** [Cumulative metrics](/docs/build/cumulative) now support the `cumulative_type_params` key. The `cumulative_type_params` parameter replaces `type_params`. MetricFlow supports the old `type_params` key but will issue a warning if used.
 - **Enhancement:** Updated MetricFlow to use the new `cumulative_type_params` fields for cumulative metrics.
 - **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. You can hover over the information icon to see a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
-- **Enhancement:** You can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension. 
+- **Enhancement:** You can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension.
 - **Enhancement:** Improved querying error message when no semantic layer credentials were set.
 - **Fix:** Removed errors preventing querying cumulative metrics with other granularities.
 - **Fix:** Fixed various Tableau errors when querying certain metrics or when using calculated fields.
 - **Fix:** Relaxed naming field expectations to better identify calculated fields.
 - **Fix:** Fixed an error when refreshing database metadata for columns that we can't convert to Arrow. These columns will now be skipped. This mainly affected Hex users while refreshing the entire database metadata.
-- **Fix:** We added the `host_info` field overrides to the pod's `/etc/hosts` file for Databricks Private Link connections.
+- **Fix:** Fixed Private Link connections for Databricks.
 
 #### Also available this month:
 - **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
