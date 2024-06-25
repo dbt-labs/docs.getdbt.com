@@ -134,6 +134,11 @@ var siteSettings = {
           ],
         },
         {
+          to: "/guides",
+          label: "Guides",
+          position: "left",
+        },
+        {
           to: "reference/references-overview",
           label: "Reference",
           position: "left",
@@ -150,10 +155,6 @@ var siteSettings = {
             {
               label: "Best Practices",
               to: "/best-practices",
-            },
-            {
-              label: "Guides",
-              to: "/guides",
             },
             {
               label: "Developer Blog",
