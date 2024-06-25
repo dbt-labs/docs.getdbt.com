@@ -24,7 +24,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New:** Introduced a new granularity option for cumulative metrics, `period_agg`, nested under the `type_params` parameter. It specifies how to roll up the cumulative metric to another granularity. Options are `start`, `end`, `average`. Defaults to `start` if no `window` is specified.
 - **New:** Added validation that derived metrics must always have an `expr` key.
 - **New:** Enabled cache to pickup where filters that are included in saved queries.
-- **Enhancement:** Cumulative metrics now support the `cumulative_type_params` key. The `cumulative_type_params` parameter replaces `type_params`. MetricFlow supports the old `type_params` key but will issue a warning if used.
+- **Enhancement:** [Cumulative metrics](/docs/build/cumulative) now support the `cumulative_type_params` key. The `cumulative_type_params` parameter replaces `type_params`. MetricFlow supports the old `type_params` key but will issue a warning if used.
 - **Enhancement:** Updated MetricFlow to use the new `cumulative_type_params` fields for cumulative metrics.
 - **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. You can hover over the information icon to see a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
 - **Enhancement:** You can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension. 
