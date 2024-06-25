@@ -46,7 +46,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 The authentication methods that dbt supports on Redshift are: 
 
 - `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
-- `IAM User` &mdash; IAM User authentication, via AWS Profile on **Core only** and inline on **Cloud only**
+- `IAM User` &mdash; IAM User authentication via AWS Profile on _Core only_ and inline on _Cloud only_
 
 Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
 
@@ -54,7 +54,7 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'Database (both)', value: 'database'},
-    {label: 'IAM User via AWS Profile (core)', value: 'iam-user-profile'},
+    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'},
     {label: 'IAM User via inline fields (Cloud)', value: 'iam-user-inline'}
   ]}
 >
