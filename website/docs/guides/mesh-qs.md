@@ -30,9 +30,9 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 ### Related content:
 - [Data mesh concepts: What it is and how to get started](https://www.getdbt.com/blog/data-mesh-concepts-what-it-is-and-how-to-get-started)
-- [Deciding how to structure your dbt Mesh](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-2-structures)
-- [dbt Mesh best practices guide](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-3-implementation)
-- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs)
+- [Deciding how to structure your dbt Mesh](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-3-structures)
+- [dbt Mesh best practices guide](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-implementation)
+- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
 
 ## Prerequisites​
 
