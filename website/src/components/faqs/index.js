@@ -12,28 +12,34 @@ function FAQ({ path, alt_header = null }) {
 
   useEffect(() => {
     // Search for faq where frontmatter ID matches path prop
-    const faqFile = faqFiles.find(file => file.id === path)
+    const faqFile = faqFiles.find(file => path?.includes(file?.id))
 
     // If faqFile found with ID, set filePath for this file
     if (faqFile?.id) {
-      const data = faqFile.filePath.match(/(docs\/docs\/faqs\/(.*)\.md$)/g)
-      if (data?.length) {
-        setFilePath(data[1])
+      let thisPath = faqFile?.filePath?.replace('docs/faqs/', '')
+      thisPath = thisPath?.replace('.md', '')
+      if (thisPath) {
+        setFilePath(thisPath);
       }
     }
   }, [])
 
   useEffect(() => {
-    try {
-      const file = require(`../../../docs/faqs/${filePath}.md`)
-      if (file) {
-        const meta = file.metadata;
-        const contents = file.default({});
-        setFileContent({ meta, contents })
+    const fetchData = async () => {
+      try {
+        const file = await import(`../../../docs/faqs/${filePath}.md`)
+        if (file) {
+          const meta = file.metadata;
+          console.log('meta', meta)
+          const contents = file.default;
+          console.log('contents', contents)
+          setFileContent({ meta, contents })
+        }
+      } catch (err) {
+        return null
       }
-    } catch (err) {
-      return null
     }
+    fetchData()
   }, [filePath])
 
   const toggleOn = function () {
