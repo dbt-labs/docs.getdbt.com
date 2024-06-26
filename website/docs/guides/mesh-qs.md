@@ -553,7 +553,7 @@ A member of the Finance team would like to schedule a dbt Cloud job for their cu
 
 1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Deploy** and then **Jobs**. 
 2. Then click **Create job** and then **Deploy job**.
-3. Add a name for the job, then scroll to the bottom to the **Job completion** section.  
+3. Add a name for the job, then scroll to the bottom of the **Job completion** section.  
 4. In **Job completion** section, configure the job to **Run when another job finishes** and select the upstream job from the “Jaffle | Data Analytics” project.
 <Lightbox src="/img/guides/dbt-mesh/trigger_on_completion.png" title="Trigger job on completion" />
 
@@ -626,12 +626,12 @@ Congratulations 🎉! You're ready to bring the benefits of dbt Mesh to your org
 - How to establish a foundational project "Jaffle | Data Analytics."
 - Create a downstream project "Jaffle | Finance."
 - Implement model access, versions, and contracts.
-- Set up up dbt Cloud jobs triggered by upstream job completions.
+- Set up dbt Cloud jobs triggered by upstream job completions.
 
 Here are some additional resources to help you continue your journey:
 
 - [How we build our dbt mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro)
-- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs)
+- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
 - [Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)
 - [dbt Explorer](/docs/collaborate/explore-projects)
 
