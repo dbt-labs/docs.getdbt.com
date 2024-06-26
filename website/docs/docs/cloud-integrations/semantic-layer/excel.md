@@ -1,14 +1,14 @@
 ---
-title: "Microsoft Excel 365"
+title: "Microsoft Excel"
 id: excel
-description: "Integrate with Excel 365 to query your metrics in a spreadsheet."
+description: "Integrate with Excel to query your metrics in a spreadsheet."
 tags: [Semantic Layer]
-sidebar_label: "Microsoft Excel 365"
+sidebar_label: "Microsoft Excel"
 ---
 
-# Microsoft Excel 365 <Lifecycle status='preview'/>
+# Microsoft Excel <Lifecycle status='preview'/>
 
-The dbt Semantic Layer offers a seamless integration with Microsoft Excel 365 through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Excel 365.
+The dbt Semantic Layer offers a seamless integration with Excel Online and Desktop through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Excel.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ import Tools from '/snippets/_sl-excel-gsheets.md';
 <Tools 
 type="Excel 365"
 bullet_1="There's no timeout limit."
-bullet_2="If you're using this extension, make sure you're signed into 365 with the same Excel profile you used to set up the Add-In. Log in with one profile at a time as using multiple  profiles at once might cause issues."
+bullet_2="If you're using this extension, make sure you're signed into Microsoft with the same Excel profile you used to set up the Add-In. Log in with one profile at a time as using multiple  profiles at once might cause issues."
 queryBuilder="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg"
 />
 
