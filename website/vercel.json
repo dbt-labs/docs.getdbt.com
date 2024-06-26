@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/best-practices/how-we-mesh/mesh-4-faqs",
+      "destination": "/best-practices/how-we-mesh/mesh-5-faqs",
+      "permanent": true
+    },
+    {
       "source": "/docs/collaborate/cloud-build-and-view-your-docs",
       "destination": "/docs/collaborate/build-and-view-your-docs",
       "permanent": true
