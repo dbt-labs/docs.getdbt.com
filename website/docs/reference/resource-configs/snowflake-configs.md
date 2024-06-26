@@ -351,11 +351,15 @@ of [materialized views](/docs/build/materializations#Materialized-View).
 In particular, dynamic tables have access to the `on_configuration_change` setting.
 Dynamic tables are supported with the following configuration parameters:
 
-| Parameter                                                                        | Type       | Required | Default | Change Monitoring Support |
-|----------------------------------------------------------------------------------|------------|----------|---------|---------------------------|
-| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply` | n/a                       |
-| [`target_lag`](#target-lag)                                                      | `<string>` | yes      |         | alter                     |
-| [`snowflake_warehouse`](#configuring-virtual-warehouses)                         | `<string>` | yes      |         | alter                     |
+| Parameter                                                                        | Type       | Required | Default     | Change Monitoring Support |
+|----------------------------------------------------------------------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`target_lag`](#target-lag)                                                      | `<string>` | yes      |             | alter                     |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)                         | `<string>` | yes      |             | alter                     |
+<VersionBlock firstVersion="1.9">
+| [`refresh_mode`](#refresh-mode)                                                  | `<string>` | no       | `AUTO`      | refresh                   |
+| [`initialize`](#initialize)                                                      | `<string>` | no       | `ON_CREATE` | n/a                       |
+</VersionBlock>
 
 <Tabs
   groupId="config-languages"
@@ -379,6 +383,10 @@ models:
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+<VersionBlock firstVersion="1.9">
+    [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
+    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE
+</VersionBlock>
 ```
 
 </File>
@@ -400,6 +408,10 @@ models:
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [target_lag](#target-lag): downstream | <time-delta>
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+<VersionBlock firstVersion="1.9">
+      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
+      [initialize](#initialize): ON_CREATE | ON_SCHEDULE
+</VersionBlock>
 ```
 
 </File>
@@ -417,6 +429,10 @@ models:
     [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+<VersionBlock firstVersion="1.9">
+    [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
+    [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE",
+</VersionBlock>
 ) }}
 ```
 
@@ -435,6 +451,27 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 - **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
 
 Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
+
+<VersionBlock firstVersion="1.9">
+
+### Refresh mode
+
+Snowflake allows three options for refresh mode:
+- **AUTO** &mdash; Enforces an incremental refresh of the dynamic table by default. If the CREATE DYNAMIC TABLE statement does not support the incremental refresh mode, the dynamic table is automatically created with the full refresh mode.
+- **FULL** &mdash; Enforces a full refresh of the dynamic table, even if the dynamic table can be incrementally refreshed.
+- **INCREMENTAL** &mdash; Enforces an incremental refresh of the dynamic table. If the query that underlies the dynamic table can’t perform an incremental refresh, dynamic table creation fails and displays an error message.
+
+Learn more about `refresh_mode` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
+
+### Initialize
+
+Snowflake allows two options for initialize:
+- **ON_CREATE** &mdash; Refreshes the dynamic table synchronously at creation. If this refresh fails, dynamic table creation fails and displays an error message.
+- **ON_SCHEDULE** &mdash;     Refreshes the dynamic table at the next scheduled refresh.
+
+Learn more about `initialize` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
+
+</VersionBlock>
 
 ### Limitations
 
