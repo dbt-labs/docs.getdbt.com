@@ -23,7 +23,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type_params` | The type parameters of the metric. | Required |
 | `type_param:window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `type_param:grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `type_param:period_agg` | Specifies how to roll up the cumulative metric to another granularity.  Options are `start`, `end`, `average`. Defaults to `start` if no `window` is specified. | Optional |
+| `type_param:period_agg` | Specifies how to roll up the cumulative metric to another granularity.  Options are `first`, `last`, `avg`. Defaults to `start` if no `window` is specified. | Optional |
 | `type_param:window_choice` | Specifies whether to take the cumulative metric value from the beginning (min) or end (max) of the window. Defaults to `min`. | Optional |
 | `measure` | A list of measure inputs | Required |
 | `measure:name` | TThe measure you are referencing. | Optional  |
