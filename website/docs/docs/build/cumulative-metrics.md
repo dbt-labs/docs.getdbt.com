@@ -21,11 +21,10 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
-| `type_param:window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
-| `type_param:grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `type_param:period_agg` | Specifies how to roll up the cumulative metric to another granularity.  Options are `first`, `last`, and `avg`. Defaults to `first` if no `window` is specified. | Optional |
-| `type_param:window_choice` | Specifies whether to take the cumulative metric value from the beginning (min) or end (max) of the window. Defaults to `min`. | Optional |
-| `measure` | A list of measure inputs | Required |
+| `type_param:cumulative_type_params:window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
+| `type_param:cumulative_type_params:grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
+| `type_param:cumulative_type_params:period_agg` | Specifies how to roll up the cumulative metric to another granularity.  Options are `first`, `last`, `avg`. Defaults to `first` if no `window` is specified. | Optional |
+| `type_param:measure` | A list of measure inputs | Required |
 | `measure:name` | TThe measure you are referencing. | Optional  |
 | `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
 | `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
@@ -39,14 +38,14 @@ metrics:
     type: cumulative # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
-      period_agg: first # Optional. Defaults to first. Accepted values: first|last|avg
-      window_choice: max # Optional. Defaults to min. Choose between min|max
       measure: 
         name: The measure you are referencing. # Required
         fill_nulls_with: Set the value in your metric definition instead of null (such as zero). # Optional
         join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
-      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. It cannot be used with grain_to_date.
-      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. It cannot be used with window.
+      cumulative_type_params:
+        period_agg: first # Optional. Defaults to first. Accepted values: first|last|avg
+        window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. It cannot be used with grain_to_date.
+        grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. It cannot be used with window.
 
 ```
 
@@ -64,17 +63,16 @@ metrics:
     type_params:
       measure: 
         name: order_total
-        fill_nulls_with: 0
   
   - name: cumulative_order_total_l1m
     label: Cumulative order total (L1M)   
-    description: Trailing 1-month cumulative order amount
+    description: Trailing 1-month cumulative order total
     type: cumulative
     type_params:
       measure: 
         name: order_total
-        fill_nulls_with: 0
-      window: 1 month
+      cumulative_type_params
+        window: 1 month
   
   - name: cumulative_order_total_mtd
     label: Cumulative order total (MTD)
@@ -83,17 +81,92 @@ metrics:
     type_params:
       measure: 
         name: order_total
-        fill_nulls_with: 0
-      grain_to_date: month
+      cumulative_type_params
+        grain_to_date: month
 ```
 
-## Granularity options
-Ensure you can request cumulative metrics at different granularities, reducing redundancy and configuration efforts:
-- Window options
-- Grain to date
-- Window choice
-- Period aggregation
+### Granularity options
+Granularity options for cumulative metrics are slightly diffrent that granulairty for other metric types. Granularity for other metrics is implemented by using the `date_trunc` function, however cumulative values are not additive so we can't simply use the `date_trunc` function to aggregate cumulative metrics.
 
+Instead we the first_value(), last_value(), and avg() aggregation functions to aggregate cumulative metrics over the requested period. By default we take the first value of the period. You can change this behaviour using the `period_agg` parameter. 
+
+Let's walk through an example using the following configs:
+
+
+```yaml
+- name: cumulative_revenue
+  description: The cumulative revenue for all orders.
+  label: Cumulative Revenue (All Time)
+  type: cumulative
+  type_params:
+    measure: revenue
+    cumulative_type_params:
+      period_agg: first # Optional. Defaults to first. Accepted values: first|end|avg
+```
+
+`period_agg` is set to first so we will choose the first value for the select granularity window. Let's say we cumulative_revenue by week using the following query: `dbt sl query --metrics cumulative_revenue --group-by metric_time__week`.
+
+This compiles the following SQl, Note the use of the window function to select the first value:
+
+```sql
+-- Re-aggregate Metric via Group By
+SELECT
+  metric_time__week
+  , metric_time__quarter
+  , revenue_all_time
+FROM (
+  -- Window Function for Metric Re-aggregation
+  SELECT
+    metric_time__week
+    , metric_time__quarter
+    , FIRST_VALUE(revenue_all_time) OVER (
+      PARTITION BY
+        metric_time__week
+        , metric_time__quarter
+      ORDER BY metric_time__day
+      ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+    ) AS revenue_all_time
+  FROM (
+    -- Join Self Over Time Range
+    -- Pass Only Elements: ['txn_revenue', 'metric_time__week', 'metric_time__quarter', 'metric_time__day']
+    -- Aggregate Measures
+    -- Compute Metrics via Expressions
+    SELECT
+      subq_11.metric_time__day AS metric_time__day
+      , subq_11.metric_time__week AS metric_time__week
+      , subq_11.metric_time__quarter AS metric_time__quarter
+      , SUM(revenue_src_28000.revenue) AS revenue_all_time
+    FROM (
+      -- Time Spine
+      SELECT
+        ds AS metric_time__day
+        , DATE_TRUNC('week', ds) AS metric_time__week
+        , DATE_TRUNC('quarter', ds) AS metric_time__quarter
+      FROM mf_time_spine subq_12
+      GROUP BY
+        ds
+        , DATE_TRUNC('week', ds)
+        , DATE_TRUNC('quarter', ds)
+    ) subq_11
+    INNER JOIN
+      fct_revenue revenue_src_28000
+    ON
+      (
+        DATE_TRUNC('day', revenue_src_28000.created_at) <= subq_11.metric_time__day
+      )
+    GROUP BY
+      subq_11.metric_time__day
+      , subq_11.metric_time__week
+      , subq_11.metric_time__quarter
+  ) subq_16
+) subq_17
+GROUP BY
+  metric_time__week
+  , metric_time__quarter
+  , revenue_all_time
+```
+
+For last and avg, we would replace the frist_value() function with last_value() and average respectively. 
 
 ### Window options
 
@@ -123,20 +196,19 @@ metrics:
   type: cumulative
   type_params:
     measure: customers
-    window: 7 days # Setting the window to 7 days since we want to track weekly active
-    window_choice: min # Value at the beginning of the window
-    period_agg: first # ADD CONTEXT
+    cumulative_type_params:
+      window: 7 days # Setting the window to 7 days since we want to track weekly active
+      period_agg: first # This will choose the first value of the ganularity window when changing the granularity.
 ```
 
 From the sample YAML above, note the following:
 
 * `type`: Specify cumulative to indicate the type of metric. 
-* `type_params`: Specify the measure you want to aggregate as a cumulative metric. You have the option of specifying a `window`, `grain to date`, `period_agg`, `window_choice`.  
+* `type_params`: Configure the cumulative metric by providing the a `measure` and optionally a `window`, `period_agg` and `grain_to_date` configuration.
 
 For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
 
-If you remove `window`, `window_choice`, `period_agg`, the measure will accumulate over all time. Otherwise, you can choose from granularities like day, week, quarter, or month, and describe the window using phrases like "7 days" or "1 month."
-
+If you remove `window`, the measure will accumulate over all time.
 </TabItem>
 
 <TabItem value="notspecified" label="Example of window not specified">
@@ -208,80 +280,19 @@ metrics:
     type: cumulative
     type_params:
       measure: order_total
-      window: 1 month # Applies a sliding window of 1 month
+      cumulative_type_params:
+        window: 1 month # Applies a sliding window of 1 month
   - name: cumulative_order_total_mtd   # For this metric, we use a monthly grain-to-date 
     label: Cumulative Order total (MTD)
     description: The month-to-date value of all orders
     type: cumulative
     type_params:
       measure: order_total
-      grain_to_date: month # Resets at the beginning of each month
-      window_choice: min # Value at the beginning of the window
-      period_agg: first # ADD CONTEXT
+      cumulative_type_params
+        grain_to_date: month # Resets at the beginning of each month
+        period_agg: first # Optional. Defaults to first. Accepted values: first|last|avg
 ```
 
-### Window choice
-Window choice specifies whether to take the cumulative metric value from the beginning (min) or end (max) of the window. Defaults to `min`.
-
-For example, `dbt sl query --metrics orders_last_7_days --group-by metric_time__week`, will show cumulative metrics by week. 
-
-#### Example configurations
-
-Cumulative metric with a specified window and choice.
-```yaml
-- name: orders_last_7_days
-  description: Count of orders.
-  label: orders last 7 days
-  type: cumulative
-  type_params:
-    measure: order_count
-    window: 7 days
-    window_choice: min # or max
-```
-
-This compiles the following SQL code:
-
-```sql
---dbt sl query --metrics orders_last_7_days --group-by metric_time__week
-with staging as (
-    select
-        subq_3.date_day as metric_time__day,
-        date_trunc('week', subq_3.date_day) as metric_time__week,
-        sum(subq_1.order_count) as orders_last_7_days
-    from dbt_sl_test.metricflow_time_spine subq_3
-    inner join (
-        select
-            date_trunc('day', ordered_at) as metric_time__day,
-            1 as order_count
-        from analytics.dbt_jstein.orders orders_src_10000
-    ) subq_1
-    on (
-        subq_1.metric_time__day <= subq_3.date_day
-    ) and (
-        subq_1.metric_time__day > dateadd(day, -7, subq_3.date_day)
-    )
-    where
-        subq_3.date_day between '2016-01-01' and '2017-12-31'
-    group by
-        subq_3.date_day
-)
-
-select
-    *
-from (
-    select
-        metric_time__week,
-        first_value(orders_last_7_days) over (partition by date_trunc('week', metric_time__day) order by metric_time__day) as cumulative_revenue
-    from
-        staging
-)
-group by
-    metric_time__week,
-    cumulative_revenue
-order by
-    metric_time__week
-    1
-```
 
 Cumulative metric with grain to date:
 
@@ -291,8 +302,8 @@ Cumulative metric with grain to date:
   type: cumulative
   type_params:
     measure: order_count
-    grain_to_date: month
-    window_choice: min # or max
+    cumulative_type_params:
+      grain_to_date: month
 ```
 
 This compiles the following SQL code:
@@ -337,65 +348,6 @@ order by
     1
 ```
 
-### Period aggregation
-
-You can specify how to roll up the cumulative metric to another granularity. Options are `start`, `end`, `average`. Defaults to `start` if no `window` is specified.
-
-Cumulative metric with no window, default to min:
-
-```yaml
-- name: cumulative_revenue
-  description: The cumulative revenue for all orders.
-  label: Cumulative Revenue (All Time)
-  type: cumulative
-  type_params:
-    measure: revenue
-    period_agg: first # Optional. Defaults to first. Accepted values: first|end|avg
-```
-
-This compiles the following SQL code:
-
-```sql
---mf query --metrics cumulative_revenue --group-by metric_time__week
-with staging as (
-    select
-        subq_3.date_day as metric_time__day,
-        date_trunc('week', subq_3.date_day) as metric_time__week,
-        sum(subq_1.revenue) as cumulative_revenue
-    from
-        dbt_sl_test.metricflow_time_spine subq_3
-    inner join (
-        select
-            date_trunc('day', cast(ordered_at as datetime)) as metric_time__day,
-            product_price as revenue
-        from
-            analytics.dbt_jstein.order_items order_item_src_10000
-    ) subq_1 on (subq_1.metric_time__day <= subq_3.date_day)
-    where
-        subq_3.date_day between '2016-01-01' and '2017-12-31'
-    group by
-        subq_3.date_day,
-        date_trunc('week', subq_3.date_day)
-    order by
-        1
-)
-
-select
-    *
-from (
-    select
-        metric_time__week,
-        first_value(cumulative_revenue) over (partition by date_trunc('week', metric_time__day) order by metric_time__day) as cumulative_revenue
-    from
-        staging
-)
-group by
-    metric_time__week,
-    cumulative_revenue
-order by
-    metric_time__week
-    1
-```
 
 ### Implementation
 
