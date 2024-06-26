@@ -12,7 +12,7 @@ This portion of our documentation will go over dbt Cloud's various capabilities 
 
 - [Run visibility](/docs/deploy/run-visibility) &mdash; View your run history to help identify where improvements can be made to scheduled jobs.
 - [Retry jobs](/docs/deploy/retry-jobs) &mdash; Rerun your errored jobs from start or the failure point.
-- [Job notifications](/docs/deploy/job-notifications) &mdash; Receive email or slack notifications when a job run succeeds, fails, or is canceled.
+- [Job notifications](/docs/deploy/job-notifications) &mdash; Receive email or Slack notifications when a job run succeeds, encounters warnings, fails, or is canceled. 
 - [Webhooks](/docs/deploy/webhooks) &mdash; Use webhooks to send events about your dbt jobs' statuses to other systems.
 - [Leverage artifacts](/docs/deploy/artifacts) &mdash; dbt Cloud generates and saves artifacts for your project, which it uses to power features like creating docs for your project and reporting freshness of your sources.
 - [Source freshness](/docs/deploy/source-freshness) &mdash; Monitor data governance by enabling snapshots to capture the freshness of your data sources. 
