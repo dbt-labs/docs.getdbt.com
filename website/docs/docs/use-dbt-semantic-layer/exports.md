@@ -95,9 +95,9 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 ## Exports in production
 
-Enabling and executing exports in dbt Cloud optimizes data workflows and ensures real-time data access. It enhances efficiency and governance for smarter decisions.
+Enabling and executing exports in dbt Cloud optimizes data workflows and ensures real-time data access. It enhances efficiency and governance for smarter decisions.  
 
-To enable exports in production to run saved queries and write them within your data platform, you'll need to set up dbt Cloud job scheduler and perform the following steps:
+Exports use the default credentials of the production environment. To enable exports to run saved queries and write them within your data platform, perform the following steps:
 
 1. [Set an environment variable](#set-environment-variable) in dbt Cloud.
 2. [Create and execute export](#create-and-execute-exports) job run.
