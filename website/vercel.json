@@ -3181,6 +3181,11 @@
       "permanent": true
     },
     {
+      "source": "/best-practices/how-we-mesh/mesh-2-structures",
+      "destination": "/best-practices/how-we-mesh/mesh-3-structures",
+      "permanent": true
+    },
+    {
       "source": "/guides/advanced/adapter-development/:path*",
       "destination": "/guides/adapter-creation",
       "permanent": true
