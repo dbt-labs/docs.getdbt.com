@@ -6,9 +6,9 @@ sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
 ---
 
-Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
+Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create a [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
-This metric is common for calculating things like weekly active users, or month-to-date revenue. You can use `fill_nulls_with` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row. The parameters, description, and type for cumulative metrics are: 
+Cumulative metrics are useful for calculating things like weekly active users, or month-to-date revenue. The parameters, description, and type for cumulative metrics are: 
 
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
@@ -21,13 +21,13 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
-| `type_param:cumulative_type_params:window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
-| `type_param:cumulative_type_params:grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `type_param:cumulative_type_params:period_agg` | Specifies how to roll up the cumulative metric to another granularity.  Options are `first`, `last`, `avg`. Defaults to `first` if no `window` is specified. | Optional |
-| `type_param:measure` | A list of measure inputs | Required |
-| `measure:name` | TThe measure you are referencing. | Optional  |
-| `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
-| `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+| `type_param::cumulative_type_params::window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
+| `type_param::cumulative_type_params::grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
+| `type_param::cumulative_type_params::period_agg` | Specifies how to roll up the cumulative metric to another granularity.  Options are `first`, `last`, `avg`. Defaults to `first` if no `window` is specified. | Optional |
+| `type_param::measure` | A list of measure inputs | Required |
+| `measure::name` | TThe measure you are referencing. | Optional  |
+| `measure::fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
+| `measure::join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 The following displays the complete specification for cumulative metrics, along with an example:
 
@@ -86,7 +86,7 @@ metrics:
 ```
 
 ### Granularity options
-Granularity options for cumulative metrics are slightly diffrent that granulairty for other metric types. Granularity for other metrics is implemented by using the `date_trunc` function, however cumulative values are not additive so we can't simply use the `date_trunc` function to aggregate cumulative metrics.
+Granularity options for cumulative metrics are slightly diffrent that granulairty for other metric types. Granularity for other metrics is implemented using the `date_trunc` function, however cumulative values are not additive so we can't simply use the `date_trunc` function to aggregate cumulative metrics.
 
 Instead we the first_value(), last_value(), and avg() aggregation functions to aggregate cumulative metrics over the requested period. By default we take the first value of the period. You can change this behaviour using the `period_agg` parameter. 
 
@@ -166,7 +166,7 @@ GROUP BY
   , revenue_all_time
 ```
 
-For last and avg, we would replace the frist_value() function with last_value() and average respectively. 
+For `last` and `avg`, we would replace the `frist_value()` function with `last_value()` and `average` respectively. 
 
 ### Window options
 
@@ -176,7 +176,7 @@ This section details examples of when you specify and don't specify window optio
 
 <TabItem value="specified" label="Example of window specified">
 
-If a window option is specified, the MetricFlow framework applies a sliding window to the underlying measure.
+If a window option is specified, MetricFlow applies a sliding window to the underlying measure.
 
 Suppose the underlying measure `customers` is configured to count the unique customers making orders at the Jaffle shop.
 
@@ -204,7 +204,8 @@ metrics:
 From the sample YAML above, note the following:
 
 * `type`: Specify cumulative to indicate the type of metric. 
-* `type_params`: Configure the cumulative metric by providing the a `measure` and optionally a `window`, `period_agg` and `grain_to_date` configuration.
+* `type_params`: Configure the cumulative metric by providing the a `measure`
+* `cumulative_type_params` optionally add a `window`, `period_agg` and `grain_to_date` configuration.
 
 For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
 
@@ -212,8 +213,6 @@ If you remove `window`, the measure will accumulate over all time.
 </TabItem>
 
 <TabItem value="notspecified" label="Example of window not specified">
-
-You can use cumulative metrics without a window specified to obtain a running total. Suppose you have a log table with columns like:
 
 Suppose you (a subscription-based company for the sake of this example) have an event-based log table with the following columns: 
 
@@ -224,7 +223,7 @@ Suppose you (a subscription-based company for the sake of this example) have an 
 * `event_type`: (integer) a column that populates with +1 to indicate an added subscription, or -1 to indicate a deleted subscription. 
 * `revenue`: (integer) a column that multiplies `event_type` and `subscription_revenue` to depict the amount of revenue added or lost for a specific date. 
 
-Using cumulative metrics without specifying a window, you can calculate running totals for metrics like the count of active subscriptions and revenue at any point in time. The following configuration YAML displays creating such cumulative metrics to obtain current revenue or the total number of active subscriptions as a cumulative sum:
+Using cumulative metrics without specifying a window, you can calculate running totals for metrics like the count of active subscriptions and revenue at any point in time. The following YAML file shows creating a cumulative metrics to obtain current revenue and the total number of active subscriptions as a cumulative sum:
 
 ```yaml
 measures:
