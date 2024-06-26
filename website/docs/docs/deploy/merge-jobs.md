@@ -13,7 +13,7 @@ By using CD in dbt Cloud, you can take advantage of deferral to build only the e
 - You have a dbt Cloud account. 
 - You have set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
-- For deferral (which is the default), make sure there has been at least one successful job run in the deferred environment.
+- For deferral (which is the default), make sure there has been at least one successful job run in the environment you defer to.
 
 ## Set up job trigger on Git merge {#set-up-merge-jobs}
 
@@ -26,7 +26,7 @@ By using CD in dbt Cloud, you can take advantage of deferral to build only the e
 branch configured in the environment) in your Git repo, this job will get triggered to run. 
 1. Options in the **Execution settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when this job runs.
-    - **Compare changes against** &mdash; By default, it's set to compare changes against the environment you created the job from. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG. To change the default settings, you can select **No deferral** or choose a different environment. 
+    - **Compare changes against** &mdash; By default, it's set to compare changes against the environment you created the job from. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG. To change the default settings, you can select **No deferral**, **This job** for self-deferral, or choose a different environment. 
 1. (optional) Options in the **Advanced settings** section: 
     - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this job runs.
     - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to environment variables, this option lets you customize the behavior of the project. 
