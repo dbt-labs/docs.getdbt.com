@@ -1,10 +1,13 @@
 ---
 id: predicate-pushdown
 title: predicate pushdown
-description: A predicate pushdown is an expression used to determine what rows in a database apply to a particular query
-displayText: Predicate pushdown
-hoverSnippet: A predicate pushdown is an expression used to determine what rows in a database apply to a particular query
+description: Predicate pushdown is an expression used to make database queries faster.
+displayText: predicate pushdown
+hoverSnippet: Predicate pushdown is an expression used make database queries faster by applying filters as early as possible in the query process. 
 ---
 
-A predicate pushdown is an expression used to determine what rows in a database apply to a particular query. For example, if you filter in a `WHERE` clause based on a specific dimension value, the database searches to determine what values in the database apply to the query. The optimization known as "predicate pushdown" involves applying this filtering process to the database, leading to enhanced and faster query performance.
+Predicate pushdown is a technique used to make database queries faster. Here's how it works:
 
+When you run a query with a filter (for example, using a `where` clause), the database has to find which rows match that filter.
+
+Predicate pushdown means that instead of checking each row one by one, the database applies the filter as early as possible in the query process. This way, it reduces the amount of data it needs to process, making the query run faster.
