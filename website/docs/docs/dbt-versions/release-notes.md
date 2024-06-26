@@ -26,8 +26,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New:** Enabled cache to pickup where filters that are included in saved queries.
 - **Enhancement:** [Cumulative metrics](/docs/build/cumulative) now support the `cumulative_type_params` key. The `cumulative_type_params` parameter replaces `type_params`. MetricFlow supports the old `type_params` key but will issue a warning if used.
 - **Enhancement:** Updated MetricFlow to use the new `cumulative_type_params` fields for cumulative metrics.
-- **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. You can hover over the information icon to see a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
-- **Enhancement:** You can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension.
+- **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. Click on the **Info icon** button to view a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
+- **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), you can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension.
 - **Enhancement:** Improved querying error message when no semantic layer credentials were set.
 - **Fix:** Removed errors preventing querying cumulative metrics with other granularities.
 - **Fix:** Fixed various Tableau errors when querying certain metrics or when using calculated fields.
@@ -248,9 +248,6 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
   - If you query a time offset metric with one instance of `metric_time`/`agg_time_dimension` but filter by a different one, the query will fail.
 - **Fix:** MetricFlow prioritizes a candidate join type over the default type when evaluating nodes to join. For example, the default join type for distinct values queries is `FULL OUTER JOIN`, however, time spine joins require `CROSS JOIN`, which is more appropriate.
 - **Fix:** Fixed a bug that previously caused errors when entities were referenced in `where` filters.
-
-
-
 
 ## January 2024
 
