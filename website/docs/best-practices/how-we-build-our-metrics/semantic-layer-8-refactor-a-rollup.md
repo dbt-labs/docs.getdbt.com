@@ -214,7 +214,7 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 
 ## Checking our work
 
-- 🔍 We always will start our **auditing** with a `dbt parse` to **ensure our code works** before we examine its output.
+- 🔍 We always start our **auditing** with a `dbt parse` to **ensure our code works** before we examine its output.
 - 👯 If we're working there, we'll move to trying out an `dbt sl query` that **replicates the logic of the output** we're trying to refactor.
 - 💸 For our example we want to **audit monthly revenue**, to do that we'd run the query below.
 
