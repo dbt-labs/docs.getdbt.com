@@ -196,6 +196,9 @@ group by
 
 This section details examples of when you specify and don't specify window options.
 
+- When a window is specified, MetricFlow applies a sliding window to the underlying measure, such as tracking weekly active users with a 7-day window.
+- Without specifying a window, cumulative metrics accumulate values over all time, useful for running totals like current revenue and active subscriptions.
+
 <Expandable alt_header="Example of window specified">
 
 If a window option is specified, MetricFlow applies a sliding window to the underlying measure.
