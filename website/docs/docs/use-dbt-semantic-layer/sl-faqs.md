@@ -269,7 +269,7 @@ We are currently working on introducing more fine-grained access controls, inclu
 
 <Expandable alt_header="Which ‘staging layer’ should the dbt Semantic Layer talk to? Raw, staging, or marts?">
 
-We recommend to build your semantic layer on top of the [marts layer](/website/docs/best-practices/how-we-structure/4-marts), which represents the clean and transformed data from your dbt models.
+We recommend to build your semantic layer on top of the [marts layer](/best-practices/how-we-structure/4-marts), which represents the clean and transformed data from your dbt models.
 </Expandable>
 
 <Expandable alt_header="Should semantic layer credentials mirror those for production environments? Or should they be different?">
