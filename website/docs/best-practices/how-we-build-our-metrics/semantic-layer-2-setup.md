@@ -11,7 +11,7 @@ There are two options for developing a dbt project, including the Semantic Layer
 
 - [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; MetricFlow commands are embedded in the dbt Cloud CLI under the `dbt sl` subcommand. This is the easiest, most full-featured way to develop dbt Semantic Layer code for the time being. You can use the editor of your choice and run commands from the terminal.
 
-- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) &mdash; You can create semantic models and metrics in the dbt Cloud IDE. However, support for running `dbt sl` commands is not yet supported, but is in active development. This means you won't be able to validate your code, so we'd recommend going working with the Cloud CLI and a local editor for now.
+- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) &mdash; You can create semantic models and metrics in the dbt Cloud IDE. However, support for running `dbt sl` commands isn't available just yet, but is in active development. This means you won't be able to validate your code, so we'd recommend working with the Cloud CLI and a local editor for now.
 
 ## Basic commands
 
