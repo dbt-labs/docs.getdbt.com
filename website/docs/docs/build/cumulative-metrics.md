@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create a [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
-Cumulative metrics are useful for calculating things like weekly active users, or month-to-date revenue. The parameters, description, and type for cumulative metrics are: 
+Cumulative metrics are useful for calculating things like weekly active users, or month-to-date revenue. The parameters, description, and types for cumulative metrics are: 
 
 :::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `measure::name` means the `name` parameter is nested under `measure`.
@@ -194,7 +194,7 @@ group by
 
 ### Window options
 
-This section details examples of when you specify and don't specify window options.
+This section details examples of when to specify and not to specify window options.
 
 - When a window is specified, MetricFlow applies a sliding window to the underlying measure, such as tracking weekly active users with a 7-day window.
 - Without specifying a window, cumulative metrics accumulate values over all time, useful for running totals like current revenue and active subscriptions.
@@ -235,7 +235,7 @@ metrics:
 From the sample YAML example, note the following:
 
 * `type`: Specify cumulative to indicate the type of metric. 
-* `type_params`: Configure the cumulative metric by providing the a `measure`
+* `type_params`: Configure the cumulative metric by providing a `measure`.
 * `cumulative_type_params`: Optionally add a `window`, `period_agg` and `grain_to_date` configuration.
 
 For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
