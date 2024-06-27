@@ -15,7 +15,7 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - MetricFlow uses YAML configuration files to create this graph for querying metrics.
 - Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
 - You can create multiple semantic models from a single dbt model (SQL or Python), as long as you give each semantic model a unique name.
-- Configure semantic models in a YAML file within your dbt project directory. Refer to the [best practices guide](/website/docs/best-practices/how-we-build-our-metrics/semantic-layer-1-intro.md) for more info on project structuring.
+- Configure semantic models in a YAML file within your dbt project directory. Refer to the [best practices guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro.md) for more info on project structuring.
 - Organize them under a `metrics:` folder or within project sources as needed.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
