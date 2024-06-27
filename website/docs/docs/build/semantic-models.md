@@ -60,7 +60,7 @@ semantic_models:
       if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
 ```
 
-You can refer to the [best practices guide](/website/docs/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) for more info on project structuring.
+You can refer to the [best practices guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) for more info on project structuring.
 
 The following example displays a complete configuration and detailed descriptions of each field:
 
