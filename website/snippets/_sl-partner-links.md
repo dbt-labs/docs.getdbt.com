@@ -19,7 +19,7 @@ The following tools integrate with the dbt Semantic Layer:
   <Card
     title="Microsoft Excel (preview)"
     link="/docs/cloud-integrations/semantic-layer/excel"
-    body="Connect to Microsoft Excel 365 to query metrics and collaborate with your team."
+    body="Connect to Microsoft Excel to query metrics and collaborate with your team. Available for Excel Desktop or Excel Online."
     icon="excel"/>
 
   <div className="card-container">
