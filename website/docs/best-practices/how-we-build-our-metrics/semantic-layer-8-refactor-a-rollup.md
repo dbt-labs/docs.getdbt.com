@@ -7,7 +7,7 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-9-concl
 
 ## A new approach
 
-We've covered the basics, now it's time to dig in to the fun and messy part: how do we refactor an existing mart in dbt into semantic models and metrics?
+Now that we've set the stage, it's time to dig in to the fun and messy part: how do we refactor an existing rollup in dbt into semantic models and metrics?
 
 Let's look at the differences we can observe in how we might approach this with MetricFlow supercharging dbt versus how we work without a Semantic Layer. These differences can then inform our structure.
 
@@ -22,13 +22,13 @@ Let's look at the differences we can observe in how we might approach this with 
 We recommend an incremental implementation process that looks something like this:
 
 1. 👉 Identify **an important output** (a revenue chart on a dashboard for example, and the mart model(s) that supplies this output.
-2. 🔍 Examine all the **entities that are components** of this mart (for instance, an orders mart may include customers, shipping, and product data).
-3. 🛠️ **Build semantic models and metrics** for all the required components.
-4. 👯 Create a **clone of the output** on top of the Semantic Layer.
-5. 💻 Audit to **ensure you get accurate outputs**.
-6. 💎 Use `mf list dimensions --metrics [metric_name]` to check that your refactoring is increasing dimensionality (flexibility).
-7. 👉 Identify **any other outputs** that point to the mart and **move them to the Semantic Layer**.
-8. ✌️ Put a **deprecation plan** in place for the mart.
+2. 🔍 Examine all the **entities that are components** of this rollup (for instance, an `active_customers_per_week` rollup may include customers, shipping, and product data).
+3. 🛠️ **Build semantic models** for all the underlying component marts.
+4. 📏 **Build metrics** for the required aggregations in the rollup.
+5. 👯 Create a **clone of the output** on top of the Semantic Layer.
+6. 💻 Audit to **ensure you get accurate outputs**.
+7. 👉 Identify **any other outputs** that point to the rollup and **move them to the Semantic Layer**.
+8. ✌️ Put a **deprecation plan** in place for the now extraneous frozen rollup.
 
 You would then **continue this process** on other outputs and marts moving down a list of **priorities**. Each model as you go along will be faster and easier as you'll **reuse many of the same components** that will already have been semantically modeled.
 
@@ -36,7 +36,7 @@ You would then **continue this process** on other outputs and marts moving down 
 
 So far we've been working in new pointing at a staging model to simplify things as we build new mental models for MetricFlow. In reality, unless you're implementing MetricFlow in a green-field dbt project, you probably are going to have some refactoring to do. So let's get into that in detail.
 
-1. 📚 Per the above steps, we've identified our target, now we need to identify all the components we need, these will be all the 'import' CTEs at the top our mart. Let's look at `orders` and `order_items`, the likely models to generate revenue, we see we'll need: `orders`, `order_items`, `products`, `locations`, and `supplies`.
+1. 📚 Per the above steps, lets say we've identified our target as a revenue rollup that is built on top of `orders` and `order_items`. Now we need to identify all the underlying components we need, these will be all the 'import' CTEs at the top of these marts. So in the Jaffle Shop project we'd need: `orders`, `order_items`, `products`, `locations`, and `supplies`.
 2. 🗺️ We'll next make semantic models for all of these. Let's walk through a straightforward conversion first with `locations`.
 3. ⛓️ We'll want to first decide if we need to do any joining to get this into the shape we want for our semantic model. The biggest determinants of this are two factors:
    - 📏 Does this semantic model **contain measures**?
@@ -81,7 +81,7 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 **dbt 🧡 MetricFlow.** This is where integrating your semantic definitions into your dbt project really starts to pay dividends. The interaction between the logical and semantic layers is so dynamic, you either need to house them in one codebase or facilitate a lot of cross-project communication and dependency.
 :::
 
-1. 🎯 Let's aim at, to start, building a table at the `order_items` grain. We can aggregate supply costs up, map over the fields we want from products, such as price, and bring the `ordered_at` timestamp we need over from the orders table. We'll write the following code in `models/marts/order_items.sql`.
+1. 🎯 Let's aim at, to start, building a table at the `order_items` grain. We can aggregate supply costs up, map over the fields we want from products, such as price, and bring the `ordered_at` timestamp we need over from the orders table. You can see example code, copied below, in `models/marts/order_items.sql`.
 
    ```sql
    {{
@@ -150,7 +150,7 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
    select * from joined
    ```
 
-2. 🏗️ Now we've got a table that looks more like what we want to feed into MetricFlow. Next, we'll **build a semantic model on top of this new mart** in `models/marts/order_items.yml`. Again, we'll identify our **entities, then dimensions, then measures**.
+2. 🏗️ Now we've got a table that looks more like what we want to feed into the Semantic Layer. Next, we'll **build a semantic model on top of this new mart** in `models/marts/order_items.yml`. Again, we'll identify our **entities, then dimensions, then measures**.
 
    ```yaml
    semantic_models:
@@ -216,7 +216,7 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 
 - 🔍 We always will start our **auditing** with a `dbt parse` to **ensure our code works** before we examine its output.
 - 👯 If we're working there, we'll move to trying out an `dbt sl query` that **replicates the logic of the output** we're trying to refactor.
-- 💸 For our example we want to **audit monthly revenue**, to do that we'd run the query below. You can [read more about the MetricFlow CLI](https://docs.getdbt.com/docs/build/metricflow-cli).
+- 💸 For our example we want to **audit monthly revenue**, to do that we'd run the query below.
 
 ### Example query
 
@@ -237,7 +237,3 @@ dbt sl query --metrics revenue --group-by metric_time__month
 ```
 
 - Try introducing some other dimensions from the semantic models into the `group-by` arguments to get a feel for this command.
-
-## An alternate approach
-
-If you **don't have capacity to refactor** some of your marts, they can **still benefit from the Semantic Layer**. The above process is about **maximizing dimensionality** for the long term. In the short term, making your **marts as-is available to MetricFlow** unlocks greatly increased functionality. For an example of this quicker approach check out the `customers` SQL and YAML files on the `main` branch. This displays a **typical denormalized dbt mart** being hooked into MetricFlow.
