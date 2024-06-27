@@ -36,11 +36,12 @@ The dbt Semantic Layer Microsoft Excel integration is available to download dire
 import Tools from '/snippets/_sl-excel-gsheets.md';
 
 <Tools 
-type="Excel 365"
+type="Microsoft Excel"
 bullet_1="There's no timeout limit."
 bullet_2="If you're using this extension, make sure you're signed into Microsoft with the same Excel profile you used to set up the Add-In. Log in with one profile at a time as using multiple  profiles at once might cause issues."
-queryBuilder="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg"
 />
+
+<!-- placeholder for excel image URL prop: queryBuilder="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg"-->
 
 ## FAQs
 <FAQ path="Troubleshooting/sl-alpn-error" />
