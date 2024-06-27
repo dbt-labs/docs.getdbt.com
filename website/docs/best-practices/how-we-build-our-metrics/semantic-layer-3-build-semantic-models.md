@@ -1,28 +1,25 @@
 ---
 title: "Building semantic models"
-description: Getting started with the dbt and MetricFlow
-hoverSnippet: Learn how to get started with the dbt and MetricFlow
+description: Getting started with the dbt Semantic Layer
+hoverSnippet: Learn how to get started with the dbt Semantic Layer
 pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics"
 ---
 
 ## How to build a semantic model
 
-A semantic model is the MetricFlow equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships** that let your end users select and refine their own datasets reliably.
+A semantic model is the Semantic Layer equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships and expressions** that let your end users select and refine their own datasets dynamically and reliably.
 
 - ⚙️ Semantic models are **comprised of three components**:
   - 🫂 **entities**: these describe the **relationships** between various semantic models (think ids)
-  - 🪣 **dimensions**: these are the columns you want to **slice, dice, group, and filter by** (think timestamps, categories, booleans).
+  - 🔪 **dimensions**: these are the columns you want to **slice, dice, group, and filter by** (think timestamps, categories, booleans).
   - 📏 **measures**: these are the **quantitative values you want to aggregate**
-- 📚 We define **columns as being an entity, dimension, or measure**.
-
-:::tip
-**File per model**. Given the interdependence of logical and semantic models, and semantic models and metrics, we've updated our best practice recommendation to a one YAML file per model approach if you're using the Semantic Layer. This houses everything related to a model in one place and preserves unique file names for quickly getting to the code you want.
-:::
+- 🪣 We define **columns as being an entity, dimension, or measure**. Columns will typically fit into one of these 3 buckets, or if they're a complex aggregation expression, they might constitute a metric.
 
 ## Defining orders
 
-- 🥪 The semantic model we're going to define is _orders_.
-- 📗 We define it as a **YAML dictionary in the semantic models list**.
+Let's zoom in on how we might define an _orders_ semantic model.
+
+- 📗 We define it as a **YAML dictionary in the `semantic_models` list**.
 - 📑 It will have a **name, entities list, dimensions list, and measures list**.
 - ⏬ We recommend defining them **in this order consistently** as a style best practice.
 
@@ -30,11 +27,11 @@ A semantic model is the MetricFlow equivalent to a logical layer model (what his
 semantic_models:
   - name: orders
     entities:
-      ...
+      ... # we'll define these later
     dimensions:
-      ...
+      ... # we'll define these later
     measures:
-      ...
+      ... # we'll define these later
 ```
 
 - Next we'll point to the corresponding logical model by supplying a [`ref`](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) in the `model:` property, and a `description` for documentation.
@@ -64,7 +61,7 @@ semantic_models:
 
 ### Entities in action
 
-If we look at the staging model for orders, we see that it has 3 id columns, so we'll need three entities.
+If we look at an example staging model for orders, we see that it has 3 id columns, so we'll need three entities.
 
 ```SQL
 renamed as (
@@ -88,7 +85,7 @@ renamed as (
 
 - 👉 We add them with a **`name`, `type`, and optional `expr`** (expression). The expression can be any valid SQL expression on your platform.
 - 📛 If you **don't add an expression**, MetricFlow will **assume the name is equal to the column name** in the underlying logical model.
-- 👍 Our best practices pattern is to, whenever possible, provide a `name` that is the singular form of the subject or grain of the table, and use `expr` to specify the precise column name (with `_id` etc). This will let us write **more readable metrics** on top of these semantic models.
+- 👍 Our best practices pattern is to, whenever possible, provide a `name` that is the singular form of the subject or grain of the table, and use `expr` to specify the precise column name (with `_id` etc). This will let us write **more readable metrics** on top of these semantic models. For example, we'll use `location` instead of `location_id`.
 
 ```YAML
 semantic_models:
@@ -143,15 +140,14 @@ select
 from source
 ```
 
-- ⏰ For now the only dimension to add is a **time dimension**.
+- ⏰ For now the only dimension to add is a **time dimension**: `ordered_at`.
 - 🕰️ At least one **primary time dimension** is **required** for any semantic models that **have measures**.
-- 1️⃣ We denote this with the `is_primary` property, or if there is only a one-time dimension supplied it is primary by default. Below we only have `ordered_at` as a timestamp so we don't need to specify anything except the maximum granularity we're bucketing to (in this case, day).
+- 1️⃣ We denote this with the `is_primary` property, or if there is only a one-time dimension supplied it is primary by default. Below we only have `ordered_at` as a timestamp so we don't need to specify anything except the _minimum granularity_ we're bucketing to (in this case, day). By this we mean that we're not going to be looking at orders at a finer granularity than a day.
 
 ```YAML
 dimensions:
       - name: ordered_at
         expr: date_trunc('day', ordered_at)
-        # use date_trunc(ordered_at, DAY) if using [BigQuery](/docs/build/dimensions#time)
         type: time
         type_params:
           time_granularity: day
@@ -171,7 +167,6 @@ We'll discuss an alternate situation, dimensional tables that have static numeri
 dimensions:
   - name: ordered_at
     expr: date_trunc('day', ordered_at)
-    # use date_trunc(ordered_at, DAY) if using BigQuery
     type: time
     type_params:
       time_granularity: day
@@ -233,9 +228,9 @@ measures:
     agg: sum
 ```
 
-## Validating configs
+## Reviewing our work
 
-Our completed code should look like this, our first semantic model!
+Our completed code would look like this, our first semantic model!
 
 ```orders
 semantic_models:
@@ -281,12 +276,7 @@ semantic_models:
         agg: sum
 ```
 
-- 🦺 We can check that it's a valid configuration and works with the real data our dbt project is generating by using the `mf validate-configs` command. This will:
-  1. **Parse the semantic manifest** our configuration describes out of the dbt project.
-  2. Validate the **internal semantics** of the manifest as described by our code.
-  3. Validate the **external semantics** of the manifest against your data warehouse (e.g. making sure that a column specified as a dimension exists on the proper table)
-
-## Review and next steps
+## Next steps
 
 Let's review the basics of semantic models:
 

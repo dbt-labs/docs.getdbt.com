@@ -1,8 +1,8 @@
 ---
-title: "Refactor an existing mart"
-description: Getting started with the dbt and MetricFlow
-hoverSnippet: Learn how to get started with the dbt and MetricFlow
-pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics"
+title: "Refactor an existing rollup"
+description: Getting started with the dbt Semantic Layer
+hoverSnippet: Learn how to get started with the dbt Semantic Layer
+pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-9-conclusion"
 ---
 
 ## A new approach
@@ -45,7 +45,7 @@ So far we've been working in new pointing at a staging model to simplify things 
 4. 🔄 If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations does have a `tax_rate` measure, but it also has an `ordered_at` timestamp, so we can go **straight to the staging model** here.
 5. 🥇 We specify our **primary entity** (based on `location_id`), dimensions (one categorical, `location_name`, and one **primary time dimension** `opened_at`), and lastly our measures, in this case just `average_tax_rate`.
 
-   ```YAML
+   ```yaml
    semantic_models:
    - name: locations
       description: |
@@ -83,7 +83,7 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 
 1. 🎯 Let's aim at, to start, building a table at the `order_items` grain. We can aggregate supply costs up, map over the fields we want from products, such as price, and bring the `ordered_at` timestamp we need over from the orders table. We'll write the following code in `models/marts/order_items.sql`.
 
-   ```SQL
+   ```sql
    {{
       config(
          materialized = 'table',
@@ -152,7 +152,7 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 
 2. 🏗️ Now we've got a table that looks more like what we want to feed into MetricFlow. Next, we'll **build a semantic model on top of this new mart** in `models/marts/order_items.yml`. Again, we'll identify our **entities, then dimensions, then measures**.
 
-   ```YAML
+   ```yaml
    semantic_models:
       #The name of the semantic model.
       - name: order_items
@@ -202,26 +202,26 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 
 3. 📏 Finally, Let's **build a simple revenue metric** on top of our semantic model now.
 
-   ```YAML
+   ```yaml
    metrics:
-      - name: revenue
-        description: Sum of the product revenue for each order item. Excludes tax.
-        type: simple
-        label: Revenue
-        type_params:
-          measure: revenue
+     - name: revenue
+       description: Sum of the product revenue for each order item. Excludes tax.
+       type: simple
+       label: Revenue
+       type_params:
+         measure: revenue
    ```
 
 ## Checking our work
 
-- 🔍 We always will start our **auditing** with a `dbt parse && mf validate-configs` to **ensure our code works** before we examine its output.
-- 👯 If we're working there, we'll move to trying out an `mf query` that **replicates the logic of the output** we're trying to refactor.
+- 🔍 We always will start our **auditing** with a `dbt parse` to **ensure our code works** before we examine its output.
+- 👯 If we're working there, we'll move to trying out an `dbt sl query` that **replicates the logic of the output** we're trying to refactor.
 - 💸 For our example we want to **audit monthly revenue**, to do that we'd run the query below. You can [read more about the MetricFlow CLI](https://docs.getdbt.com/docs/build/metricflow-cli).
 
 ### Example query
 
 ```shell
-mf query --metrics revenue --group-by metric_time__month
+dbt sl query --metrics revenue --group-by metric_time__month
 ```
 
 ### Example query results
