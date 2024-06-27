@@ -22,7 +22,9 @@ pagination_next: "best-practices/how-we-build-our-metrics/semantic-layer-5-advan
 - 📏 Simple metrics are built on a **single measure defined as a type parameter**.
 - 🔜 Defining **measures as their own distinct component** on semantic models is critical to allowing the **flexibility of more advanced metrics**, though simple metrics act mainly as **pass-through that provide filtering** and labeling options.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yml
 metrics:
   - name: revenue
     description: Sum of the order total.

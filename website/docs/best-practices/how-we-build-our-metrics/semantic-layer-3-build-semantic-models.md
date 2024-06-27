@@ -23,31 +23,29 @@ Let's zoom in on how we might define an _orders_ semantic model.
 - 📑 It will have a **name, entities list, dimensions list, and measures list**.
 - ⏬ We recommend defining them **in this order consistently** as a style best practice.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yaml
 semantic_models:
   - name: orders
-    entities:
-      ... # we'll define these later
-    dimensions:
-      ... # we'll define these later
-    measures:
-      ... # we'll define these later
+    entities: ... # we'll define these later
+    dimensions: ... # we'll define these later
+    measures: ... # we'll define these later
 ```
 
 - Next we'll point to the corresponding logical model by supplying a [`ref`](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) in the `model:` property, and a `description` for documentation.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yml
 semantic_models:
   - name: orders
     description: |
       Model containing order data. The grain of the table is the order id.
     model: ref('stg_orders')
-    entities:
-      ...
-    dimensions:
-      ...
-    measures:
-      ...
+    entities: ...
+    dimensions: ...
+    measures: ...
 ```
 
 ## Establishing our entities
@@ -63,7 +61,9 @@ semantic_models:
 
 If we look at an example staging model for orders, we see that it has 3 id columns, so we'll need three entities.
 
-```SQL
+<File name="models/staging/stg_orders.sql" />
+
+```sql
 renamed as (
 
     select
@@ -87,7 +87,9 @@ renamed as (
 - 📛 If you **don't add an expression**, MetricFlow will **assume the name is equal to the column name** in the underlying logical model.
 - 👍 Our best practices pattern is to, whenever possible, provide a `name` that is the singular form of the subject or grain of the table, and use `expr` to specify the precise column name (with `_id` etc). This will let us write **more readable metrics** on top of these semantic models. For example, we'll use `location` instead of `location_id`.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yml
 semantic_models:
   - name: orders
     ...
@@ -106,7 +108,6 @@ semantic_models:
       ...
     measures:
       ...
-
 ```
 
 ## Defining our dimensions
@@ -122,7 +123,9 @@ semantic_models:
 
 - 👀 Let's look at our staging model again and see what fields we have available.
 
-```SQL
+<File name="models/staging/stg_orders.sql" />
+
+```sql
 select
 
     ----------  ids -> entities
@@ -144,13 +147,15 @@ from source
 - 🕰️ At least one **primary time dimension** is **required** for any semantic models that **have measures**.
 - 1️⃣ We denote this with the `is_primary` property, or if there is only a one-time dimension supplied it is primary by default. Below we only have `ordered_at` as a timestamp so we don't need to specify anything except the _minimum granularity_ we're bucketing to (in this case, day). By this we mean that we're not going to be looking at orders at a finer granularity than a day.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yml
 dimensions:
-      - name: ordered_at
-        expr: date_trunc('day', ordered_at)
-        type: time
-        type_params:
-          time_granularity: day
+  - name: ordered_at
+    expr: date_trunc('day', ordered_at)
+    type: time
+    type_params:
+      time_granularity: day
 ```
 
 :::tip
@@ -162,8 +167,9 @@ We'll discuss an alternate situation, dimensional tables that have static numeri
 - 🔢 We can also **make a dimension out of a numeric column** that would typically be a measure.
 - 🪣 Using `expr` we can **create buckets of values that we label** for our dimension. We'll add one of these in for labeling 'large orders' as any order totals over $50.
 
-```YAML
-...
+<File name="models/marts/orders.yml" />
+
+```yml
 dimensions:
   - name: ordered_at
     expr: date_trunc('day', ordered_at)
@@ -173,7 +179,6 @@ dimensions:
   - name: is_large_order
     type: categorical
     expr: case when order_total > 50 then true else false end
-...
 ```
 
 ## Making our measures
@@ -186,7 +191,9 @@ dimensions:
 
 - 👀 Let's look at **our staging model** one last time and see what **fields we want to measure**.
 
-```SQL
+<File name="models/staging/stg_orders.sql" />
+
+```sql
 select
 
     ----------  ids -> entities
@@ -206,10 +213,12 @@ from source
 
 - ➕ Here `order_total` and `tax paid` are the **columns we want as measures**.
 - 📝 We can describe them via the code below, specifying a **name, description, aggregation, and expression**.
-- 👍 As before MetricFlow we default to the **name being the name of a column when no expression is supplied**.
+- 👍 As before MetricFlow will default to the **name being the name of a column when no expression is supplied**.
 - 🧮 [Many different aggregations](https://docs.getdbt.com/docs/build/measures#aggregation) are available to us. Here we just want sums.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yml
 measures:
   - name: order_total
     description: The total amount for each order including taxes.
@@ -221,18 +230,22 @@ measures:
 
 - 🆕 We can also **create new measures using expressions**, for instance adding a count of individual orders as below.
 
-```YAML
-  - name: order_count
-    description: The count of individual orders.
-    expr: 1
-    agg: sum
+<File name="models/marts/orders.yml" />
+
+```yml
+- name: order_count
+  description: The count of individual orders.
+  expr: 1
+  agg: sum
 ```
 
 ## Reviewing our work
 
 Our completed code would look like this, our first semantic model!
 
-```orders
+<File name="models/marts/orders.yml" />
+
+```yml
 semantic_models:
   - name: orders
     defaults:

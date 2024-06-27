@@ -45,29 +45,31 @@ So far we've been working in new pointing at a staging model to simplify things 
 4. 🔄 If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations does have a `tax_rate` measure, but it also has an `ordered_at` timestamp, so we can go **straight to the staging model** here.
 5. 🥇 We specify our **primary entity** (based on `location_id`), dimensions (one categorical, `location_name`, and one **primary time dimension** `opened_at`), and lastly our measures, in this case just `average_tax_rate`.
 
-   ```yaml
-   semantic_models:
-   - name: locations
-      description: |
-      Location dimension table. The grain of the table is one row per location.
-      model: ref('stg_locations')
-      entities:
-      - name: location
-         type: primary
-         expr: location_id
-      dimensions:
-      - name: location_name
-         type: categorical
-      - name: date_trunc('day', opened_at)
-         type: time
-         type_params:
-            time_granularity: day
-      measures:
-      - name: average_tax_rate
-         description: Average tax rate.
-         expr: tax_rate
-         agg: avg
-   ```
+<File name="models/marts/locations.yml" />
+
+```yaml
+semantic_models:
+- name: locations
+   description: |
+   Location dimension table. The grain of the table is one row per location.
+   model: ref('stg_locations')
+   entities:
+   - name: location
+      type: primary
+      expr: location_id
+   dimensions:
+   - name: location_name
+      type: categorical
+   - name: date_trunc('day', opened_at)
+      type: time
+      type_params:
+         time_granularity: day
+   measures:
+   - name: average_tax_rate
+      description: Average tax rate.
+      expr: tax_rate
+      agg: avg
+```
 
 ## Semantic and logical interaction
 
@@ -83,134 +85,140 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 
 1. 🎯 Let's aim at, to start, building a table at the `order_items` grain. We can aggregate supply costs up, map over the fields we want from products, such as price, and bring the `ordered_at` timestamp we need over from the orders table. You can see example code, copied below, in `models/marts/order_items.sql`.
 
-   ```sql
-   {{
-      config(
-         materialized = 'table',
-      )
-   }}
+<File name="models/marts/order_items.sql" />
 
-   with
-
-   order_items as (
-
-      select * from {{ ref('stg_order_items') }}
-
-   ),
-
-   orders as (
-
-      select * from {{ ref('stg_orders')}}
-
-   ),
-
-   products as (
-
-      select * from {{ ref('stg_products') }}
-
-   ),
-
-   supplies as (
-
-      select * from {{ ref('stg_supplies') }}
-
-   ),
-
-   order_supplies_summary as (
-
-      select
-         product_id,
-         sum(supply_cost) as supply_cost
-
-      from supplies
-
-      group by 1
-   ),
-
-   joined as (
-
-      select
-         order_items.*,
-         products.product_price,
-         order_supplies_summary.supply_cost,
-         products.is_food_item,
-         products.is_drink_item,
-         orders.ordered_at
-
-      from order_items
-
-      left join orders on order_items.order_id  = orders.order_id
-
-      left join products on order_items.product_id = products.product_id
-
-      left join order_supplies_summary on order_items.product_id = order_supplies_summary.product_id
-
+```sql
+{{
+   config(
+      materialized = 'table',
    )
+}}
 
-   select * from joined
-   ```
+with
+
+order_items as (
+
+   select * from {{ ref('stg_order_items') }}
+
+),
+
+orders as (
+
+   select * from {{ ref('stg_orders')}}
+
+),
+
+products as (
+
+   select * from {{ ref('stg_products') }}
+
+),
+
+supplies as (
+
+   select * from {{ ref('stg_supplies') }}
+
+),
+
+order_supplies_summary as (
+
+   select
+      product_id,
+      sum(supply_cost) as supply_cost
+
+   from supplies
+
+   group by 1
+),
+
+joined as (
+
+   select
+      order_items.*,
+      products.product_price,
+      order_supplies_summary.supply_cost,
+      products.is_food_item,
+      products.is_drink_item,
+      orders.ordered_at
+
+   from order_items
+
+   left join orders on order_items.order_id  = orders.order_id
+
+   left join products on order_items.product_id = products.product_id
+
+   left join order_supplies_summary on order_items.product_id = order_supplies_summary.product_id
+
+)
+
+select * from joined
+```
 
 2. 🏗️ Now we've got a table that looks more like what we want to feed into the Semantic Layer. Next, we'll **build a semantic model on top of this new mart** in `models/marts/order_items.yml`. Again, we'll identify our **entities, then dimensions, then measures**.
 
-   ```yaml
-   semantic_models:
-      #The name of the semantic model.
-      - name: order_items
-         defaults:
-            agg_time_dimension: ordered_at
-         description: |
-            Items contatined in each order. The grain of the table is one row per order item.
-         model: ref('order_items')
-         entities:
-            - name: order_item
-              type: primary
-              expr: order_item_id
-            - name: order_id
-              type: foreign
-              expr: order_id
-            - name: product
-              type: foreign
-              expr: product_id
-         dimensions:
-            - name: ordered_at
-              expr: date_trunc('day', ordered_at)
-              type: time
-              type_params:
-                time_granularity: day
-            - name: is_food_item
-              type: categorical
-            - name: is_drink_item
-              type: categorical
-         measures:
-            - name: revenue
-              description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
-              agg: sum
-              expr: product_price
-            - name: food_revenue
-              description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
-              agg: sum
-              expr: case when is_food_item = 1 then product_price else 0 end
-            - name: drink_revenue
-              description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
-              agg: sum
-              expr: case when is_drink_item = 1 then product_price else 0 end
-            - name: median_revenue
-              description: The median revenue generated for each order item.
-              agg: median
-              expr: product_price
-   ```
+<File name="models/marts/order_items.yml" />
+
+```yml
+semantic_models:
+   #The name of the semantic model.
+   - name: order_items
+      defaults:
+         agg_time_dimension: ordered_at
+      description: |
+         Items contatined in each order. The grain of the table is one row per order item.
+      model: ref('order_items')
+      entities:
+         - name: order_item
+           type: primary
+           expr: order_item_id
+         - name: order_id
+           type: foreign
+           expr: order_id
+         - name: product
+           type: foreign
+           expr: product_id
+      dimensions:
+         - name: ordered_at
+           expr: date_trunc('day', ordered_at)
+           type: time
+           type_params:
+             time_granularity: day
+         - name: is_food_item
+           type: categorical
+         - name: is_drink_item
+           type: categorical
+      measures:
+         - name: revenue
+           description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
+           agg: sum
+           expr: product_price
+         - name: food_revenue
+           description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
+           agg: sum
+           expr: case when is_food_item = 1 then product_price else 0 end
+         - name: drink_revenue
+           description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
+           agg: sum
+           expr: case when is_drink_item = 1 then product_price else 0 end
+         - name: median_revenue
+           description: The median revenue generated for each order item.
+           agg: median
+           expr: product_price
+```
 
 3. 📏 Finally, Let's **build a simple revenue metric** on top of our semantic model now.
 
-   ```yaml
-   metrics:
-     - name: revenue
-       description: Sum of the product revenue for each order item. Excludes tax.
-       type: simple
-       label: Revenue
-       type_params:
-         measure: revenue
-   ```
+<File name="models/marts/order_items.yml" />
+
+```yaml
+metrics:
+  - name: revenue
+    description: Sum of the product revenue for each order item. Excludes tax.
+    type: simple
+    label: Revenue
+    type_params:
+      measure: revenue
+```
 
 ## Checking our work
 

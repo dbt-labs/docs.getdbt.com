@@ -19,18 +19,22 @@ We're not limited to just passing measures through to our metrics, we can also _
 - 🥪 Let's calculate the **percentage** of our Jaffle Shop revenue that **comes from food items**.
 - 💰 We already have our denominator, revenue, but we'll want to **make a new metric for our numerator** called `food_revenue`.
 
-```YAML
- - name: food_revenue
-   description: The revenue from food in each order.
-   label: Food Revenue
-   type: simple
-   type_params:
-     measure: food_revenue
+<File name="models/marts/orders.yml" />
+
+```yml
+- name: food_revenue
+  description: The revenue from food in each order.
+  label: Food Revenue
+  type: simple
+  type_params:
+    measure: food_revenue
 ```
 
 - 📝 Now we can set up our ratio metric.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yml
 - name: food_revenue_pct
   description: The % of order revenue from food.
   label: Food Revenue %
@@ -48,7 +52,9 @@ We're not limited to just passing measures through to our metrics, we can also _
   - 🧮 An expression that performs a calculation with these metrics.
 - With these parts we can assemble complex logic that would otherwise need to be 'frozen' in logical models.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yml
 - name: revenue_growth_mom
   description: "Percentage growth of revenue compared to 1 month ago. Excluded tax"
   type: derived
@@ -68,7 +74,9 @@ We're not limited to just passing measures through to our metrics, we can also _
 - ➕ Lastly, lets build a **cumulative metric**. In keeping with our theme of business priorities, let's continue with revenue and build an **all-time revenue metric** for any given time window.
 - 🪟 All we need to do is indicate the type is `cumulative` and not supply a `window` in the `type_params`, which indicates we want cumulative for the entire time period our end users select.
 
-```YAML
+<File name="models/marts/orders.yml" />
+
+```yml
 - name: cumulative_revenue
   description: The cumulative revenue for all orders.
   label: Cumulative Revenue (All Time)
