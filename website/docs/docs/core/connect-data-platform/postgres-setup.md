@@ -93,3 +93,57 @@ If the database closes its connection while dbt is waiting for data, you may see
 
 If `dbt-postgres` encounters an operational error or timeout when opening a new connection, it will retry up to the number of times configured by `retries`. The default value is 1 retry. If set to 2+ retries, dbt will wait 1 second before retrying. If set to 0, dbt will not retry at all.
 
+
+### `psycopg2` vs `psycopg2-binary`
+
+`psycopg2-binary` is installed by default when installing `dbt-postgres`.
+This is ideal for development and testing workflows where performance is less of a concern.
+However, production environments will benefit from `psycopg2`, which is built from source for that particular operating system and archtecture.
+
+<VersionBlock firstVersion="1.8">
+
+To use `psycopg2`, simply uninstall `psycopg2-binary` and install the equivalent version of `psycopg2` after installing `dbt-postgres`:
+```bash
+pip install dbt-postgres
+if [[ $(pip show psycopg2-binary) ]]; then
+    PSYCOPG2_VERSION=$(pip show psycopg2-binary | grep Version | cut -d " " -f 2)
+    pip uninstall -y psycopg2-binary
+    pip install psycopg2==$PSYCOPG2_VERSION
+fi
+```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.7">
+
+To use `psycopg2`, ensure that `DBT_PSYCOPG2_NAME=psycopg2` when installing `dbt-postgres`.
+The easiest way to do this is to set it inline while installing:
+```bash
+DBT_PSYCOPG2_NAME=psycopg2 pip install dbt-postgres
+```
+
+</VersionBlock>
+
+Installing `psycopg2` requires OS level dependencies, which is one of the reasons users opt for `psycopg2-binary` (the other reason being a much longer installation time).
+These dependencies vary across operating systems and architectures.
+For example, on Ubuntu, you need to install `libpq-dev` and `python-dev`:
+```bash
+sudo apt-get update
+sudo apt-get install libpq-dev python-dev
+```
+whereas on Mac, you need to install `postgresql`:
+```bash
+brew install postgresql
+pip install psycopg2
+```
+You should research which OS dependencies are needed for your particular scenario.
+
+<VersionBlock firstVersion="1.8">
+
+#### Limitations
+
+In versions 1.8.0 and 1.8.1, `psycopg2-binary` is installed on MacOS and Windows operating systems and `psycopg2` is installed on Linux operating systems.
+This has the side effect of requiring the OS dependencies identified above to install `dbt-postgres` on Linux.
+Users will either need to update their workflows to install these dependencies, or upgrade to 1.8.2.
+
+</VersionBlock>
