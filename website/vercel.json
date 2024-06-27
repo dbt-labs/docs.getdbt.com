@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/best-practices/how-we-mesh/mesh-4-faqs",
+      "destination": "/best-practices/how-we-mesh/mesh-5-faqs",
+      "permanent": true
+    },
+    {
       "source": "/docs/collaborate/cloud-build-and-view-your-docs",
       "destination": "/docs/collaborate/build-and-view-your-docs",
       "permanent": true
@@ -3173,6 +3178,11 @@
     {
       "source": "/guides/best-practices/environment-setup/3-many-deployment-environments",
       "destination": "/guides/orchestration/set-up-ci/multiple-environments",
+      "permanent": true
+    },
+    {
+      "source": "/best-practices/how-we-mesh/mesh-2-structures",
+      "destination": "/best-practices/how-we-mesh/mesh-3-structures",
       "permanent": true
     },
     {
