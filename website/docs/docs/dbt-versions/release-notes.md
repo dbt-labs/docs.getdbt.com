@@ -30,7 +30,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), you can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension.
 - **Enhancement:** Improved querying error message when no semantic layer credentials were set.
 - **Enhancement:** Querying grains for cumulative metrics now returns multiple granularity options (day, week, month, quarter, year) like all other metric types. Previously, you could only query one grain option for cumulative metrics.
-- **Enhancement:** Implemented caching logic in the Semantic Layer Gateway authentication management for the arrow/flight package.
+- **Enhancement:** Improved the Semantic Layer Gateway (SLG) authentication to improve its functionality for various use cases such as querying metrics in deployment, development, access controls, and query logs.
 - **Fix:** Removed errors that prevented querying cumulative metrics with other granularities.
 - **Fix:** Fixed various Tableau errors when querying certain metrics or when using calculated fields.
 - **Fix:** Relaxed naming field expectations to better identify calculated fields.
