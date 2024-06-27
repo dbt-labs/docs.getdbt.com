@@ -24,7 +24,7 @@ It’s not terribly difficult to shift between these (it can be done with some r
 
 Next, establish your system for consistent file naming:
 
-- 1️⃣I f you’re doing **one-YAML-file-per-mart** then you’d have and `orders.sql` and an `orders.yml`.
+- 1️⃣ If you’re doing **one-YAML-file-per-mart** then you’d have an `orders.sql` and an `orders.yml`.
 - 📛 If you’re using a **parallel subfolder approach**, for the sake of unique file names it’s recommended to use the **prefix `sem_` e.g. `sem_orders.yml`** for the dedicated semantic model and metrics that build on `orders.sql` and `orders.yml`.
 
 ## Can't decide?

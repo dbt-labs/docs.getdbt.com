@@ -241,7 +241,7 @@ measures:
 
 ## Reviewing our work
 
-Our completed code would look like this, our first semantic model!
+Our completed code will look like this, our first semantic model!
 
 <File name="models/marts/orders.yml" />
 

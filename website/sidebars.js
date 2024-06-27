@@ -703,6 +703,7 @@ const sidebarSettings = {
           items: [
             "docs/cloud-integrations/avail-sl-integrations",
             "docs/cloud-integrations/semantic-layer/gsheets",
+            "docs/cloud-integrations/semantic-layer/excel",
             "docs/cloud-integrations/semantic-layer/tableau",
           ],
         },
