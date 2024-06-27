@@ -36,7 +36,7 @@ You would then **continue this process** on other outputs and marts moving down 
 
 So far we've been working in new pointing at a staging model to simplify things as we build new mental models for MetricFlow. In reality, unless you're implementing MetricFlow in a green-field dbt project, you probably are going to have some refactoring to do. So let's get into that in detail.
 
-1. 📚 Per the above steps, lets say we've identified our target as a revenue rollup that is built on top of `orders` and `order_items`. Now we need to identify all the underlying components we need, these will be all the 'import' CTEs at the top of these marts. So in the Jaffle Shop project we'd need: `orders`, `order_items`, `products`, `locations`, and `supplies`.
+1. 📚 Per the above steps, let's say we've identified our target as a revenue rollup that is built on top of `orders` and `order_items`. Now we need to identify all the underlying components, these will be all the 'import' CTEs at the top of these marts. So in the Jaffle Shop project we'd need: `orders`, `order_items`, `products`, `locations`, and `supplies`.
 2. 🗺️ We'll next make semantic models for all of these. Let's walk through a straightforward conversion first with `locations`.
 3. ⛓️ We'll want to first decide if we need to do any joining to get this into the shape we want for our semantic model. The biggest determinants of this are two factors:
    - 📏 Does this semantic model **contain measures**?
