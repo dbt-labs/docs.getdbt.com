@@ -21,18 +21,21 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## June 2024
 
 #### dbt Semantic Layer
-- **New:** Introduced a new granularity option for cumulative metrics, `period_agg`, nested under the `type_params` parameter. It specifies how to roll up the cumulative metric to another granularity. Options are `start`, `end`, `average`. Defaults to `start` if no `window` is specified.
-- **New:** Added validation that derived metrics must always have an `expr` key.
+- **New:** Introduced new granularity support for cumulative metrics in MetricFlow. Granularity options for cumulative metrics are slightly different than granularity for other metric types. For other metrics, we use the date_trunc function to implement granularity. However, because cumulative metrics are non-additive (values can't be added up), we can't use the date_trunc function to change their time grain granularity. 
+  
+  Instead, we use the `first()`, `last()`, and `avg()` aggregation functions to aggregate cumulative metrics over the requested period. By default, we take the first value of the period. You can change this behavior by using the `period_agg` parameter. For more information, refer to [Granularity options for cumulative metrics](/docs/build/cumulative#granularity-options).
+- **New:** Added support for <Term id="predicate-pushdown"/> SQL optimization in MetricFlow. We will now push down categorical dimensions filters to the metric source table. Previously filters we're applied after we selected from the metric source table. This change helps reduce full table scans on certain query engines.
 - **New:** Enabled cache to pickup where filters that are included in saved queries.
-- **Enhancement:** [Cumulative metrics](/docs/build/cumulative) now support the `cumulative_type_params` key. The `cumulative_type_params` parameter replaces `type_params`. MetricFlow supports the old `type_params` key but will issue a warning if used.
 - **Enhancement:** Updated MetricFlow to use the new `cumulative_type_params` fields for cumulative metrics.
 - **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. Click on the **Info icon** button to view a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
 - **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), you can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension.
 - **Enhancement:** Improved querying error message when no semantic layer credentials were set.
-- **Fix:** Removed errors preventing querying cumulative metrics with other granularities.
+- **Enhancement:** Querying grains for cumulative metrics now returns multiple granularity options (day, week, month, quarter, year) like all other metric types. Previously, you could only query one grain option for cumulative metrics.
+- **Enhancement:** Implemented caching logic in the Semantic Layer Gateway authentication management for the arrow/flight package.
+- **Fix:** Removed errors that prevented querying cumulative metrics with other granularities.
 - **Fix:** Fixed various Tableau errors when querying certain metrics or when using calculated fields.
 - **Fix:** Relaxed naming field expectations to better identify calculated fields.
-- **Fix:** Fixed an error when refreshing database metadata for columns that we can't convert to Arrow. These columns will now be skipped. This mainly affected Hex users while refreshing the entire database metadata.
+- **Fix:** Fixed an error when refreshing database metadata for columns that we can't convert to Arrow. These columns will now be skipped. This mainly affected Redshift users with custom types.
 - **Fix:** Fixed Private Link connections for Databricks.
 
 #### Also available this month:
