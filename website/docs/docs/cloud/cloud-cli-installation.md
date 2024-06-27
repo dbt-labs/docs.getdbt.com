@@ -205,7 +205,7 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
   pip install dbt --no-cache-dir
   ```
 
-  If there are installation issues, try running the command with the `--force-reinstall` argument: 
+  If there are installation issues, running the command with the `--force-reinstall` argument might help:
    ```bash
    pip install dbt --no-cache-dir --force-reinstall
    ``` 
