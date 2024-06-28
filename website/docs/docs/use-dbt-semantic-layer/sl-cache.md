@@ -17,7 +17,7 @@ There are two different types of caching:
 While you can use caching to speed up your queries and reduce compute time, knowing the difference between the two depends on your use case: result caching happens automatically by leveraging your data platform's cache, while declarative caching allows you to 'declare' the queries you specifically want to cache. With declarative caching, you need to anticipate which queries you want to cache.
 
 :::tip
-With the dbt Semantic Layer, you can dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already defined in a saved query) will use the cache.
+With the dbt Semantic Layer, you can dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already in a saved query config) will use the cache.
 
 For example, let's say you filter a metric by geographical region on a dashboard, the query will hit the cache, ensuring faster results and efficient resource usage. This also removes the need to create separate saved queries with static filters.
 :::
