@@ -12,19 +12,21 @@ This metric is common for calculating things like weekly active users, or month-
 
 <div className="custom-table">
 
-| Parameter | Description | Type |
+| Parameter | <div style={{width:'350px'}}>Description</div> | Type |
 | --------- | ----------- | ---- |
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
-| `type_params` | The type parameters of the metric. | Required |
-| `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
-| `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `measure` | A list of measure inputs | Required |
-| `measure:name` | TThe measure you are referencing. | Optional  |
-| `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
-| `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+| `type_params` | The type parameters of the metric. Supports nested parameters indicated by the double colon, such as `type_params::measure`. | Required |
+| `type_params::cumulative_type_params` | Allows you to add a `window`, `period_agg`, and `grain_to_date` configuration. Nested under `type_params`. | Optional |
+| `cumulative_type_params::window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional |
+| `cumulative_type_params::grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
+| `cumulative_type_params::period_agg` | Specifies how to roll up the cumulative metric to another granularity. Options are `first`, `last`, `avg`. Defaults to `first` if no `window` is specified. | Optional |
+| `type_params::measure` | A list of measure inputs. | Required |
+| `measure::name` | The measure you are referencing. | Optional |
+| `measure::fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
+| `measure::join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
 </div>
 

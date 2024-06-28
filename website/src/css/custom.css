@@ -2107,9 +2107,9 @@ h2.anchor.clicked a.hash-link:before {
 [data-theme="dark"] {
   --custom-table-header-bg: #262a38; /* Dark mode header background */
   --custom-table-header-color: #fff; /* Dark mode header text color */
-  --custom-table-row-bg: #262a38; /* Dark mode row background */
+  --custom-table-row-bg: #2a2b2f,0; /* Dark mode row background */
   --custom-table-row-hover-bg: #4B5563; /* Dark mode row hover background */
-  --custom-table-stripe-bg: #262a38; /* Dark mode striped row background */
+  --custom-table-stripe-bg: #2c2e40,0; /* Dark mode striped row background */
   --custom-table-border-color: #555; /* Dark mode border color */
 }
 
@@ -2123,6 +2123,7 @@ h2.anchor.clicked a.hash-link:before {
   border: none;
   padding: 8px;
   text-align: left;
+  font-size: 1em;
 }
 
 .custom-table th {
