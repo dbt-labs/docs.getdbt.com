@@ -12,15 +12,13 @@ The dbt Semantic Layer allows you to cache common queries in order to speed up p
 There are two different types of caching:
 
 - [Result caching](#result-caching) leverages your data platform's built-in caching layer.
-- [Declarative caching](#declarative-caching) allows you to pre-warm the cache using saved queries.
+- [Declarative caching](#declarative-caching) allows you to pre-warm the cache using saved queries configuration.
 
-While you can use caching to speed up your queries and reduce compute time, knowing the difference between the two depends on your use case: result caching happens automatically by leveraging your data platform's cache, while declarative caching allows you to 'declare' the queries you specifically want to cache. With declarative caching, you need to anticipate which queries you want to cache.
+While you can use caching to speed up your queries and reduce compute time, knowing the difference between the two depends on your use case: 
 
-:::tip
-With the dbt Semantic Layer, you can dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already in a saved query config) will use the cache.
-
-For example, let's say you filter a metric by geographical region on a dashboard, the query will hit the cache, ensuring faster results and efficient resource usage. This also removes the need to create separate saved queries with static filters.
-:::
+- Result caching happens automatically by leveraging your data platform's cache.
+- Declarative caching allows you to 'declare' the queries you specifically want to cache. With declarative caching, you need to anticipate which queries you want to cache. Declarative caching also allows you to dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already in a saved query config) will use the cache.
+  - For example, if you filter a metric by geographical region on a dashboard, the query will hit the cache, ensuring faster results. This also removes the need to create separate saved queries with static filters.
 
 ## Prerequisites
 - dbt Cloud [Team or Enterprise](https://www.getdbt.com/) plan.
