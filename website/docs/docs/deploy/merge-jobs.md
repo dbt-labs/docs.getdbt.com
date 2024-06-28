@@ -60,6 +60,6 @@ The following is a GitLab example of when the push events are already set:
 
 The following is an example of creating a new **Code pushed** trigger in Azure DevOps. Create a new service hooks subscription when code pushed events haven't been set: 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-azuredevops-new-event.png" title="Example of creating a new trigger in Azure DevOps"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-azuredevops-new-event.png" title="Example of creating a new trigger to push events in Azure Devops"/>
 
 </Expandable>
