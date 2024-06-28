@@ -52,7 +52,7 @@ The following is a GitHub example of when the push events are already set:
 
 The following is a GitLab example of when the push events are already set:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-gitlab-push-events.png" title="Example of push events in GitLab"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-gitlab-push-events.png" title="Example of the Push events option enabled in the GitLab settings"/>
 
 </Expandable>
 
