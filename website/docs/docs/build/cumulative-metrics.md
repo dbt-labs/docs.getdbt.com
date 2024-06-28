@@ -103,7 +103,7 @@ metrics:
 ```
 </File>
 
-### Period agg
+### Granularity options
 
 Use the `period_agg` parameter with `first()`, `last()`, and `avg()` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
 - For other metrics, we use the `date_trunc` function to implement granularity. 
