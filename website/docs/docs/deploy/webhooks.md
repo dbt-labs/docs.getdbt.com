@@ -549,5 +549,5 @@ DELETE https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscript
 
 ## Related docs 
 - [dbt Cloud CI](/docs/deploy/continuous-integration)
-- [Use dbt Cloud's webhooks with other SaaS apps](/guides)
+- [Use dbt Cloud's webhooks with other SaaS apps](https://docs.getdbt.com/guides?tags=Webhooks)
 
