@@ -21,7 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## June 2024
 
 #### dbt Semantic Layer
-**New:** Introduced new granularity support for cumulative metrics in MetricFlow. Granularity options for cumulative metrics are slightly different than granularity for other metric types. For other metrics, we use the `date_trunc` function to implement granularity. However, because cumulative metrics are non-additive (values can't be added up), we can't use the `date_trunc` function to change their time grain granularity. 
+- **New:** Introduced new granularity support for cumulative metrics in MetricFlow. Granularity options for cumulative metrics are slightly different than granularity for other metric types. For other metrics, we use the `date_trunc` function to implement granularity. However, because cumulative metrics are non-additive (values can't be added up), we can't use the `date_trunc` function to change their time grain granularity. 
   
   Instead, we use the `first()`, `last()`, and `avg()` aggregation functions to aggregate cumulative metrics over the requested period. By default, we take the first value of the period. You can change this behavior by using the `period_agg` parameter. For more information, refer to [Granularity options for cumulative metrics](/docs/build/cumulative#granularity-options).
 - **New:** Added support for <Term id="predicate-pushdown"/> SQL optimization in MetricFlow. We will now push down categorical dimensions filters to the metric source table. Previously filters we're applied after we selected from the metric source table. This change helps reduce full table scans on certain query engines.
