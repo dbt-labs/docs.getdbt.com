@@ -29,7 +29,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Enhancement:** Querying grains for cumulative metrics now returns multiple granularity options (day, week, month, quarter, year) like all other metric types. Previously, you could only query one grain option for cumulative metrics.
 - **Fix:** Removed errors that prevented querying cumulative metrics with other granularities.
 - **Fix:** Fixed various Tableau errors when querying certain metrics or when using calculated fields.
-- **Fix:** Relaxed naming field expectations to better identify calculated fields.
+- **Fix:** In Tableau, we relaxed naming field expectations to better identify calculated fields.
 - **Fix:** Fixed an error when refreshing database metadata for columns that we can't convert to Arrow. These columns will now be skipped. This mainly affected Redshift users with custom types.
 - **Fix:** Fixed Private Link connections for Databricks.
 
