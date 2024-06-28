@@ -131,7 +131,7 @@ In this example, `period_agg` is set to `first`, which chooses the first value f
 
 <Expandable alt_header="Expand toggle to view how the SQL compiles">
 
-Note the use of the `window` function to select the `first` value. For `last` and `avg`, we would replace the `first_value()` function with `last_value()` and `average` respectively.
+Note the use of the `window` function to select the `first` value. For `last` and `avg`, we would replace the `first_value()` function in the generated SQL with `last_value()` and `average` respectively.
 
 ```sql
 -- re-aggregate metric via the group by
