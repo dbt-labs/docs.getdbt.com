@@ -10,6 +10,8 @@ Cumulative metrics aggregate a measure over a given accumulation window. If no w
 
 This metric is common for calculating things like weekly active users, or month-to-date revenue. You can use `fill_nulls_with` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row. The parameters, description, and type for cumulative metrics are: 
 
+<div className="custom-table">
+
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | The name of the metric. | Required |
@@ -23,6 +25,8 @@ This metric is common for calculating things like weekly active users, or month-
 | `measure:name` | TThe measure you are referencing. | Optional  |
 | `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
 | `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+
+</div>
 
 The following displays the complete specification for cumulative metrics, along with an example:
 
