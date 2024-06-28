@@ -26,7 +26,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type_params::cumulative_type_params` | Allows you to add a `window`, `period_agg`, and `grain_to_date` configuration. Nested under `type_params`. | Optional |
 | `cumulative_type_params::window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional |
 | `cumulative_type_params::grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `cumulative_type_params::period_agg` | Specifies how to roll up the cumulative metric to another granularity. Options are `first`, `last`, `avg`. Defaults to `first` if no `window` is specified. | Optional |
+| `cumulative_type_params::period_agg` | Specifies how to aggregate the cumulative metric when summarizing data to a different granularity. Options are <br /> - `first` (Takes the first value within the period) <br /> - `last` (Takes the last value within the period <br /> - `avg` (Calculates the average value within the period). <br /> Defaults to `first` if no `window` is specified. | Optional |
 | `type_params::measure` | A list of measure inputs. | Required |
 | `measure::name` | The measure you are referencing. | Optional |
 | `measure::fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
@@ -103,11 +103,11 @@ metrics:
 ```
 </File>
 
-### Granularity options
-Granularity options for cumulative metrics are slightly different than granularity for other metric types. 
+### Period agg
+
+Use the `period_agg` parameter with `first()`, `last()`, and `avg()` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
 - For other metrics, we use the `date_trunc` function to implement granularity. 
 - However, cumulative metrics are non-additive (values can't be added up), so we can't use the `date_trunc` function to change their time grain granularity.
-- Instead, we use the `period_agg` parameter with `first()`, `last()`, and `avg()` functions to aggregate cumulative metrics over the requested period. 
 - By default, we take the first value of the period. You can change this by specifying a different function using the `period_agg` parameter.
 
 In the following example, we define a cumulative metric, `cumulative_revenue`, that calculates the cumulative revenue for all orders:
@@ -117,7 +117,7 @@ In the following example, we define a cumulative metric, `cumulative_revenue`, t
 ```yaml
 - name: cumulative_revenue
   description: The cumulative revenue for all orders.
-  label: Cumulative revenue (All Time)
+  label: Cumulative revenue (all-time)
   type: cumulative
   type_params:
     measure: revenue
