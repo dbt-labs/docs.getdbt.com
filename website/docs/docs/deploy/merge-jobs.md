@@ -44,7 +44,7 @@ Merge jobs require push events so make sure they've been enabled in your Git pro
 
 The following is a GitHub example of when the push events are already set: 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-push-events.png" title="Example of push events in GitHub "/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-push-events.png" title="Example of Pushes option enabled in the GitHub settings"/>
 
 </Expandable>
 
