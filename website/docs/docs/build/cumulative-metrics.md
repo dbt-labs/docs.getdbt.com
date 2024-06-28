@@ -26,7 +26,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type_params::cumulative_type_params` | Allows you to add a `window`, `period_agg`, and `grain_to_date` configuration. Nested under `type_params`. | Optional |
 | `cumulative_type_params::window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional |
 | `cumulative_type_params::grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `cumulative_type_params::period_agg` | Specifies how to aggregate the cumulative metric when summarizing data to a different granularity. Options are <br /> - `first` (Takes the first value within the period) <br /> - `last` (Takes the last value within the period <br /> - `avg` (Calculates the average value within the period). <br /> Defaults to `first` if no `window` is specified. | Optional |
+| `cumulative_type_params::period_agg` | Specifies how to aggregate the cumulative metric when summarizing data to a different granularity. Options are <br /> - `first` (Takes the first value within the period) <br /> - `last` (Takes the last value within the period <br /> - `avg` (Calculates the average value within the period). <br /> <br /> Defaults to `first` if no `window` is specified. | Optional |
 | `type_params::measure` | A list of measure inputs. | Required |
 | `measure::name` | The measure you are referencing. | Optional |
 | `measure::fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
@@ -44,14 +44,14 @@ metrics:
     type: cumulative # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
-      measure: 
-        name: The measure you are referencing. # Required
-        fill_nulls_with: Set the value in your metric definition instead of null (such as zero). # Optional
-        join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
       cumulative_type_params:
         period_agg: first # Optional. Defaults to first. Accepted values: first|last|avg
         window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. It cannot be used with grain_to_date.
         grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. It cannot be used with window.
+      measure: 
+        name: The measure you are referencing. # Required
+        fill_nulls_with: Set the value in your metric definition instead of null (such as zero). # Optional
+        join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
 
 ```
 </File>
