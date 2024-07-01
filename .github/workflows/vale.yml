@@ -24,12 +24,6 @@ jobs:
       with:
         version: latest
 
-    - name: Print PATH and Vale Location
-      run: |
-        echo "PATH: $PATH"
-        which vale
-        vale --version
-
     - name: Install jq
       run: sudo apt-get install -y jq
 
@@ -67,14 +61,20 @@ jobs:
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: jq -s '.' vale_output/vale_output_*.json > vale_report.json
 
-    - name: Create suggestions script
+    - name: Create suggestions using OpenAI
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        GITHUB_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
+        pip install openai PyGithub
         echo '
         import json
-        import sys
+        import openai
         from github import Github
 
-        def suggest_changes(report_path, token, repo_name, pr_number):
+        def suggest_changes(report_path, token, openai_api_key, repo_name, pr_number):
+            openai.api_key = openai_api_key
             with open(report_path) as f:
                 report = json.load(f)
 
@@ -88,21 +88,22 @@ jobs:
                 for suggestion in suggestions:
                     start_line = suggestion["line"]
                     end_line = suggestion["line"]
-                    suggestion_text = suggestion["message"]
-                    patch = f"```suggestion\n{suggestion_text}\n```"
+                    original_text = suggestion["match"]
+                    correction = openai.Completion.create(
+                        engine="text-davinci-003",
+                        prompt=f"Suggest a correction for this text: {original_text}",
+                        max_tokens=50
+                    ).choices[0].text.strip()
+
+                    patch = f"```suggestion\n{correction}\n```"
                     pr.create_review_comment(patch, pr.head.sha, file_path, start_line, end_line)
 
         if __name__ == "__main__":
-            report_path = sys.argv[1]
-            token = sys.argv[2]
-            repo_name = sys.argv[3]
-            pr_number = int(sys.argv[4])
-            suggest_changes(report_path, token, repo_name, pr_number)
+            report_path = "vale_report.json"
+            token = os.environ["REVIEWDOG_GITHUB_API_TOKEN"]
+            openai_api_key = os.environ["OPENAI_API_KEY"]
+            repo_name = os.environ["GITHUB_REPOSITORY"]
+            pr_number = os.environ["GITHUB_EVENT_NUMBER"]
+            suggest_changes(report_path, token, openai_api_key, repo_name, pr_number)
         ' > suggest_changes.py
-
-    - name: Install GitHub Python library
-      run: pip install PyGithub
-
-    - name: Suggest changes
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      run: python suggest_changes.py vale_report.json ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }} ${{ github.repository }} ${{ github.event.pull_request.number }}
+        python suggest_changes.py
