@@ -52,7 +52,7 @@ jobs:
         echo "Running Vale on changed files:"
         for file in $ALL_CHANGED_FILES; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
+          ./vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
         done
         echo "Vale outputs:"
         ls -l vale_output
