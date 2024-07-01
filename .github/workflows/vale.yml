@@ -36,13 +36,14 @@ jobs:
   
     - name: Run Vale on changed files
       run: |
+        mkdir -p vale_output
         for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output/vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
-        ls -l
+        ls -l vale_output
 
     - name: Install Python and dependencies
       uses: actions/setup-python@v2
@@ -52,7 +53,7 @@ jobs:
 
     - name: Run Auto-suggestion Script
       env:
-        GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         python3 << 'EOF'
         import os
@@ -90,13 +91,14 @@ jobs:
         }
 
         for suggestion in suggestions:
+            diff_hunk = f"@@ -1 +1 @@\n-{suggestion['suggestion']}"
             comment = {
                 "body": f"Suggestion: Change `{suggestion['suggestion']}` on line {suggestion['line_number']} in `{suggestion['file_path']}`",
                 "path": suggestion['file_path'],
-                "position": suggestion['line_number'],
-                "side": "RIGHT",
                 "commit_id": commit_id,
-                "line": suggestion['line_number']
+                "side": "RIGHT",
+                "line": suggestion['line_number'],
+                "diff_hunk": diff_hunk
             }
 
             response = requests.post(
