@@ -65,7 +65,7 @@ jobs:
     - name: Create suggestions using OpenAI
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
-        GITHUB_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         pip install openai PyGithub
@@ -102,7 +102,7 @@ jobs:
 
         if __name__ == "__main__":
             report_path = "vale_report.json"
-            token = os.environ["REVIEWDOG_GITHUB_API_TOKEN"]
+            token = os.environ["VALE_GITHUB_TOKEN"]
             openai_api_key = os.environ["OPENAI_API_KEY"]
             repo_name = os.environ["GITHUB_REPOSITORY"]
             pr_number = os.environ["GITHUB_EVENT_PULL_REQUEST_NUMBER"]
