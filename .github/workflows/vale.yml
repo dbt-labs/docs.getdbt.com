@@ -44,14 +44,18 @@ jobs:
         done
 
     - name: Run Vale on changed files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
-        for file in ${{ env.ALL_CHANGED_FILES }}; do
+        mkdir -p vale_output
+        echo "Running Vale on changed files:"
+        for file in $ALL_CHANGED_FILES; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
         done
         echo "Vale outputs:"
-        ls -l
+        ls -l vale_output
   
     - name: Merge JSON outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
@@ -66,6 +70,7 @@ jobs:
         pip install openai PyGithub
         echo '
         import json
+        import os
         import openai
         from github import Github
 
@@ -79,17 +84,18 @@ jobs:
             pr = repo.get_pull(pr_number)
 
             for file in report:
-                file_path = file["filename"]
-                suggestions = file["results"]
+                file_path = file["path"]
+                suggestions = file["matches"]
                 for suggestion in suggestions:
                     start_line = suggestion["line"]
                     end_line = suggestion["line"]
                     original_text = suggestion["match"]
-                    correction = openai.Completion.create(
+                    response = openai.Completion.create(
                         engine="text-davinci-003",
                         prompt=f"Suggest a correction for this text: {original_text}",
                         max_tokens=50
-                    ).choices[0].text.strip()
+                    )
+                    correction = response.choices[0].text.strip()
 
                     patch = f"```suggestion\n{correction}\n```"
                     pr.create_review_comment(patch, pr.head.sha, file_path, start_line, end_line)
@@ -99,7 +105,7 @@ jobs:
             token = os.environ["REVIEWDOG_GITHUB_API_TOKEN"]
             openai_api_key = os.environ["OPENAI_API_KEY"]
             repo_name = os.environ["GITHUB_REPOSITORY"]
-            pr_number = os.environ["GITHUB_EVENT_NUMBER"]
+            pr_number = os.environ["GITHUB_EVENT_PULL_REQUEST_NUMBER"]
             suggest_changes(report_path, token, openai_api_key, repo_name, pr_number)
         ' > suggest_changes.py
         python suggest_changes.py
