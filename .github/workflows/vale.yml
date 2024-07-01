@@ -20,9 +20,9 @@ jobs:
         fetch-depth: 0
 
     - name: Install Vale
-      run: |
-        curl -sfL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
-        echo "::add-path::$HOME/.local/bin"
+      uses: errata-ai/vale-action@reviewdog
+      with:
+        reporter: github-pr-review
 
     - name: Print Vale version
       run: vale --version
