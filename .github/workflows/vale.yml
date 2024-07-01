@@ -35,9 +35,12 @@ jobs:
         done
   
     - name: Run Vale on changed files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         mkdir -p vale_output
-        for file in ${{ env.ALL_CHANGED_FILES }}; do
+        for file in $ALL_CHANGED_FILES; do
           echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
           vale --output=edit $file > "vale_output/vale_output_${file//\//_}_edit.md"
@@ -60,21 +63,25 @@ jobs:
         import requests
         import json
 
+        def parse_vale_output(output):
+            suggestions = []
+            for line in output.splitlines():
+                parts = line.split(':', 2)
+                if len(parts) == 3 and "=>" in parts[2]:
+                    file_path, line_number, suggestion = parts
+                    suggestions.append({
+                        "file_path": file_path.strip(),
+                        "line_number": int(line_number.strip()),
+                        "suggestion": suggestion.strip().split('=>')[1].strip().strip('`')
+                    })
+            return suggestions
+
         # Example output from Vale (this should be captured dynamically)
         vale_output = '''
-        ./docs/example.md
-         12: `teh` => `the`
+        ./docs/example.md: 12: `teh` => `the`
         '''
 
-        suggestions = []
-        for line in vale_output.splitlines():
-            if "=>" in line:
-                file_path, line_number, suggestion = line.split(':', 2)
-                suggestions.append({
-                    "file_path": file_path.strip(),
-                    "line_number": int(line_number.strip()),
-                    "suggestion": suggestion.strip().split('=>')[1].strip().strip('`')
-                })
+        suggestions = parse_vale_output(vale_output)
 
         repo = os.getenv('GITHUB_REPOSITORY')
         pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
