@@ -1,4 +1,4 @@
-name: Lint and Suggest
+name: Lint and suggest
 
 on:
   pull_request:
@@ -10,22 +10,25 @@ permissions:
   pull-requests: write
 
 jobs:
-  lint:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      uses: errata-ai/vale-action@reviewdog
+      uses: errata-ai/vale-action@v2
       with:
-        reporter: github-pr-review
+        version: latest
 
-    - name: Print Vale version
-      run: vale --version
+    - name: Print PATH and Vale Location
+      run: |
+        echo "PATH: $PATH"
+        which vale
+        vale --version
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -35,7 +38,7 @@ jobs:
       uses: tj-actions/changed-files@v44
       with:
         files: |
-          **/*.md
+           **/*.md
 
     - name: List all changed markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
@@ -52,26 +55,54 @@ jobs:
         ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         mkdir -p vale_output
+        echo "Running Vale on changed files:"
         for file in $ALL_CHANGED_FILES; do
+          echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
         done
-
+        echo "Vale outputs:"
+        ls -l vale_output
+  
     - name: Merge JSON outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: jq -s '.' vale_output/vale_output_*.json > vale_report.json
 
-    - name: Upload Vale report for Hyperlint
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      uses: actions/upload-artifact@v3
-      with:
-        name: vale-report
-        path: vale_report.json
-
-    - name: Comment to trigger Hyperlint
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+    - name: Create suggestions script
       run: |
-        PR_NUMBER=$(echo ${{ github.event.pull_request.number }})
-        curl -H "Authorization: token ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}" \
-             -X POST \
-             -d '{"body":"hyperlint review"}' \
-             "https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
+        echo '
+        import json
+        import sys
+        from github import Github
+
+        def suggest_changes(report_path, token, repo_name, pr_number):
+            with open(report_path) as f:
+                report = json.load(f)
+
+            g = Github(token)
+            repo = g.get_repo(repo_name)
+            pr = repo.get_pull(pr_number)
+
+            for file in report:
+                file_path = file["filename"]
+                suggestions = file["results"]
+                for suggestion in suggestions:
+                    start_line = suggestion["line"]
+                    end_line = suggestion["line"]
+                    suggestion_text = suggestion["message"]
+                    patch = f"```suggestion\n{suggestion_text}\n```"
+                    pr.create_review_comment(patch, pr.head.sha, file_path, start_line, end_line)
+
+        if __name__ == "__main__":
+            report_path = sys.argv[1]
+            token = sys.argv[2]
+            repo_name = sys.argv[3]
+            pr_number = int(sys.argv[4])
+            suggest_changes(report_path, token, repo_name, pr_number)
+        ' > suggest_changes.py
+
+    - name: Install GitHub Python library
+      run: pip install PyGithub
+
+    - name: Suggest changes
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      run: python suggest_changes.py vale_report.json ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }} ${{ github.repository }} ${{ github.event.pull_request.number }}
