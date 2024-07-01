@@ -16,7 +16,7 @@ jobs:
     - name: Install Vale
       uses: errata-ai/vale-action@v2
       with:
-        reporter: github-pr-review
+        reporter: github-pr-check
 
     - name: Get all changed markdown files
       id: changed-markdown-files
@@ -24,7 +24,7 @@ jobs:
       with:
         files: |
            **/*.md
-  
+
     - name: List all changed markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
@@ -33,17 +33,29 @@ jobs:
         for file in ${ALL_CHANGED_FILES}; do
           echo "$file was changed"
         done
-  
+
     - name: Run Vale on changed files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         mkdir -p vale_output
-        for file in ${{ env.ALL_CHANGED_FILES }}; do
+        echo "Running Vale on changed files:"
+        for file in $ALL_CHANGED_FILES; do
           echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output/vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l vale_output
+
+    - name: Merge JSON outputs
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      run: |
+        if ls vale_output/vale_output_*.json 1> /dev/null 2>&1; then
+          jq -s '.' vale_output/vale_output_*.json > vale_report.json
+        else
+          echo '[]' > vale_report.json
+        fi
 
     - name: Install Python and dependencies
       uses: actions/setup-python@v2
@@ -60,25 +72,26 @@ jobs:
         import requests
         import json
 
-        def parse_vale_output(output):
+        def parse_vale_output(vale_report_path):
+            with open(vale_report_path, 'r') as file:
+                data = json.load(file)
             suggestions = []
-            for line in output.splitlines():
-                parts = line.split(':', 2)
-                if len(parts) == 3 and "=>" in parts[2]:
-                    file_path, line_number, suggestion = parts
-                    suggestions.append({
-                        "file_path": file_path.strip(),
-                        "line_number": int(line_number.strip()),
-                        "suggestion": suggestion.strip().split('=>')[1].strip().strip('`')
-                    })
+            for item in data:
+                file_path = item['Path']
+                for match in item['Matches']:
+                    line_number = match['Line']
+                    message = match['Message']
+                    suggestion = message.split('=>')[1].strip('`') if '=>' in message else None
+                    if suggestion:
+                        suggestions.append({
+                            "file_path": file_path,
+                            "line_number": line_number,
+                            "suggestion": suggestion
+                        })
             return suggestions
 
-        # Example output from Vale (this should be captured dynamically)
-        vale_output = '''
-        ./docs/example.md: 12: `teh` => `the`
-        '''
-
-        suggestions = parse_vale_output(vale_output)
+        vale_report_path = 'vale_report.json'
+        suggestions = parse_vale_output(vale_report_path)
 
         repo = os.getenv('GITHUB_REPOSITORY')
         pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
@@ -91,14 +104,12 @@ jobs:
         }
 
         for suggestion in suggestions:
-            diff_hunk = f"@@ -1 +1 @@\n-{suggestion['suggestion']}"
             comment = {
                 "body": f"Suggestion: Change `{suggestion['suggestion']}` on line {suggestion['line_number']} in `{suggestion['file_path']}`",
-                "path": suggestion['file_path'],
                 "commit_id": commit_id,
-                "side": "RIGHT",
-                "line": suggestion['line_number'],
-                "diff_hunk": diff_hunk
+                "path": suggestion['file_path'],
+                "position": suggestion['line_number'],
+                "side": "RIGHT"
             }
 
             response = requests.post(
