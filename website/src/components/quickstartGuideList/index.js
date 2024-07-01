@@ -48,11 +48,20 @@ function QuickstartList({ quickstartData }) {
   }, [quickstartData]);
 
   const updateUrlParams = (selectedTags, selectedLevel) => {
-    const params = new URLSearchParams();
+    // Create a new URLSearchParams object from the current URL search string
+    const params = new URLSearchParams(location.search);
+
+    // Remove existing 'tags' and 'level' parameters to avoid duplicates
+    params.delete('tags');
+    params.delete('level');
+
+    // Append new 'tags' and 'level' values from the current state
     selectedTags.forEach(tag => params.append('tags', tag.value));
     selectedLevel.forEach(level => params.append('level', level.value));
+
+    // Update the URL with the new search parameters
     history.replace({ search: params.toString() });
-  };
+};
 
   // Handle all filters
   const handleDataFilter = () => {
