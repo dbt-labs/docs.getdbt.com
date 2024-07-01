@@ -1,82 +1,111 @@
-name: Vale Lint and Suggest
+name: Lint and suggest
 
 on:
   pull_request:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
-  lint-and-suggest:
+  vale:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
       with:
         version: latest
 
-    - name: Run Vale Linter
-      run: vale .
+    - name: Install jq
+      run: sudo apt-get install -y jq
 
-    - name: Install Python and dependencies
-      uses: actions/setup-python@v2
+    - name: Get all changed markdown files
+      id: changed-markdown-files
+      uses: tj-actions/changed-files@v44
       with:
-        python-version: '3.x'
-    - run: pip install requests
+        files: |
+           **/*.md
 
-    - name: Run Auto-suggestion Script
+    - name: List all changed markdown files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
-        python3 << 'EOF'
-        import os
-        import requests
+        for file in ${ALL_CHANGED_FILES}; do
+          echo "$file was changed"
+        done
+
+    - name: Run Vale on changed files
+      run: |
+        for file in ${{ env.ALL_CHANGED_FILES }}; do
+          echo "Running Vale on $file"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+        done
+        echo "Vale outputs:"
+        ls -l
+
+    - name: Merge JSON outputs
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      run: |
+        if ls vale_output/vale_output_*.json 1> /dev/null 2>&1; then
+          jq -s '.' vale_output/vale_output_*.json > vale_report.json
+        else
+          echo '[]' > vale_report.json
+        fi
+
+    - name: Create suggestions using OpenAI
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        pip install openai PyGithub
+        echo '
         import json
+        import os
+        import openai
+        from github import Github
 
-        # Example output from Vale (this should be captured dynamically)
-        vale_output = '''
-        ./docs/example.md
-         12: `teh` => `the`
-        '''
+        def suggest_changes(report_path, token, openai_api_key, repo_name, pr_number):
+            openai.api_key = openai_api_key
+            with open(report_path) as f:
+                report = json.load(f)
 
-        suggestions = []
-        for line in vale_output.splitlines():
-            if "=>" in line:
-                file_path, line_number, suggestion = line.split(':', 2)
-                suggestions.append({
-                    "file_path": file_path.strip(),
-                    "line_number": int(line_number.strip()),
-                    "suggestion": suggestion.strip().split('=>')[1].strip().strip('`')
-                })
+            g = Github(token)
+            repo = g.get_repo(repo_name)
+            pr = repo.get_pull(pr_number)
 
-        repo = os.getenv('GITHUB_REPOSITORY')
-        pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
-        token = os.getenv('GITHUB_TOKEN')
+            for file in report:
+                file_path = file["Path"]
+                suggestions = file["Matches"]
+                for suggestion in suggestions:
+                    start_line = suggestion["Line"]
+                    original_text = suggestion["Match"]
+                    response = openai.Completion.create(
+                        engine="text-davinci-003",
+                        prompt=f"Suggest a correction for this text: {original_text}",
+                        max_tokens=50
+                    )
+                    correction = response.choices[0].text.strip()
 
-        headers = {
-            'Authorization': f'token {token}',
-            'Accept': 'application/vnd.github.v3+json'
-        }
+                    patch = f"```suggestion\n{correction}\n```"
+                    pr.create_review_comment(patch, pr.head.sha, file_path, start_line, start_line)
 
-        for suggestion in suggestions:
-            comment = {
-                "body": f"Suggestion: Change `{suggestion['suggestion']}` on line {suggestion['line_number']} in `{suggestion['file_path']}`",
-                "path": suggestion['file_path'],
-                "position": suggestion['line_number'],
-                "side": "RIGHT",
-                "line": suggestion['line_number']
-            }
-
-            response = requests.post(
-                f"https://api.github.com/repos/{repo}/pulls/{pull_request_number}/comments",
-                headers=headers,
-                data=json.dumps(comment)
-            )
-
-            if response.status_code != 201:
-                print(f"Failed to create comment: {response.json()}")
-
-        EOF
+        if __name__ == "__main__":
+            report_path = "vale_report.json"
+            token = os.environ["VALE_GITHUB_TOKEN"]
+            openai_api_key = os.environ["OPENAI_API_KEY"]
+            repo_name = os.environ["GITHUB_REPOSITORY"]
+            pr_number = os.environ["GITHUB_EVENT_PULL_REQUEST_NUMBER"]
+            suggest_changes(report_path, token, openai_api_key, repo_name, pr_number)
+        ' > suggest_changes.py
+        python suggest_changes.py
