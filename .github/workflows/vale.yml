@@ -52,7 +52,7 @@ jobs:
 
     - name: Run Auto-suggestion Script
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
       run: |
         python3 << 'EOF'
         import os
@@ -82,6 +82,7 @@ jobs:
         repo = os.getenv('GITHUB_REPOSITORY')
         pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
         token = os.getenv('GITHUB_TOKEN')
+        commit_id = os.getenv('GITHUB_SHA'
 
         headers = {
             'Authorization': f'token {token}',
@@ -94,6 +95,7 @@ jobs:
                 "path": suggestion['file_path'],
                 "position": suggestion['line_number'],
                 "side": "RIGHT",
+                "commit_id": commit_id,
                 "line": suggestion['line_number']
             }
 
