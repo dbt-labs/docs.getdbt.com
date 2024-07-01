@@ -15,7 +15,13 @@ recently_updated: true
 
 ## How to calculate active users and active users WoW growth
 
-Use this cookbook recipe to understand how to calculate “Active users” and “Active users (Week-over-Week growth (WoW) growth), as well as other time-related attributes in a database with dbt using YAML configurations. 
+Use this cookbook recipe to understand how to calculate “Active users” and “Active users (Week-over-Week growth (WoW) growth), as well as other time-related attributes in a database with dbt using YAML configurations.
+
+- [Objectives](#objectives)
+- [Use cases](#use-case)
+- [Step 1: Define semantic models](#step-1-define-semantic-models)
+- [Step 2: Create metrics](#step-2-create-metrics)
+- [Step 3: Test your metrics](#step-3-test-your-metrics)
 
 ### Objectives
 
@@ -211,7 +217,13 @@ dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_ti
 
 ## How to calculate ARR using metrics in dbt
 
-Use this cookbook recipe to understand how to calculate annual recurring revenue (ARR) using derived metrics in dbt, specifically leveraging the monthly recurring revenue (MRR) metric.
+Use this cookbook recipe to understand how to calculate [annual recurring revenue (ARR)](https://en.wikipedia.org/wiki/Revenue_stream) using derived metrics in dbt, specifically leveraging the monthly recurring revenue (MRR) metric.
+
+- [Objectives](#objectives-1)
+- [Use cases](#use-case-1)
+- [Step 1: Define semantic models](#step-1-define-semantic-models-1)
+- [Step 2: Define ARR metrics](#step-2-define-the-arr-metric)
+- [Step 3: Validate and query your metrics](#step-3-validate-and-query-metric)
 
 ### Objectives
 
@@ -220,6 +232,12 @@ Use this cookbook recipe to understand how to calculate annual recurring revenue
 
 ### Use case
 Calculate and analyze ARR to monitor the financial health and growth of subscription-based businesses.
+
+:::tip
+💡 Note that we’re using the [parallel subfolder approach](/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure#files-and-folders) for better organization in large projects, which means you’re creating a semantic model folder containing all your semantic layer code. 
+
+Alternatively, you can use the [one-YAML-per-marts-model approach](/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure#files-and-folders) which puts documentation, data tests, unit tests, semantic models, and metrics into a unified file corresponding to a dbt-modeled mart.
+:::
 
 ### Step 1: Define semantic models
 Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_revenue_models.yml`) to define a semantic model for revenue data.
@@ -260,7 +278,7 @@ semantic_models:
 </File>
 
 ### Step 2: Define the ARR metric
-Create a YAML file under the metrics folder: (models/metrics/sem_revenue_metrics.yml) to define the ARR metric.
+Create a YAML file under the metrics folder: (`models/metrics/sem_revenue_metrics.yml`) to define the ARR metric.
 
 <File name="models/metrics/sem_revenue_metrics.yml">
 
@@ -291,6 +309,98 @@ metrics:
    
    ```bash
    dbt sl query --metrics arr --group-by metric_time__year --where "metric_time__year >= '2023'" --order-by metric_time__year
+   ```
+
+## How to calculate CAC using metrics in dbt
+
+Use this cookbook recipe to understand how to [calculate customer acquisition cost (CAC)](https://en.wikipedia.org/wiki/Customer_acquisition_cost) using ratio metrics in dbt.
+
+- [Objectives](#objectives-2)
+- [Use cases](#use-case-2)
+- [Step 1: Define semantic models](#step-1-define-semantic-models-2)
+- [Step 2: Define the CAC metric](#step-2-define-the-cac-metric)
+- [Step 3: Validate and query your metrics](#step-3-validate-and-query-metric-1)
+
+### Objectives
+
+- Understand how to configure and use semantic models in dbt to track and report customer acquisition costs.
+- Learn how to define and calculate CAC by dividing the total acquisition cost by the number of new customers.
+
+### Use case
+Track and analyze the cost of acquiring new customers to optimize marketing and sales strategies.
+
+:::tip
+💡 Note that we’re using the [parallel subfolder approach](/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure#files-and-folders) for better organization in large projects, which means you’re creating a semantic model folder containing all your semantic layer code. 
+
+Alternatively, you can use the [one-YAML-per-marts-model approach](/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure#files-and-folders) which puts documentation, data tests, unit tests, semantic models, and metrics into a unified file corresponding to a dbt-modeled mart.
+:::
+
+### Step 1: Define semantic models
+Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_customer_acquisition.yml`) to define a semantic model for customer acquisition data.
+
+<File name="models/semantic_models/sem_customer_acquisition.yml">
+
+```yaml
+semantic_models:
+  - name: sem_customer_acquisition
+    description: >
+      This model aggregates customer acquisition data, providing metrics for business to analyze the cost of acquiring new customers.
+    model: ref('fct_customer_acquisition')
+    defaults:
+      agg_time_dimension: date_month
+    entities:
+      - name: date
+        type: primary
+        expr: date_month
+    measures:
+      - name: total_acquisition_cost
+        agg: sum
+        expr: acquisition_cost
+        agg_time_dimension: date_month
+      - name: new_customers
+        agg: sum
+        expr: customer_count
+        agg_time_dimension: date_month
+    dimensions:
+      - name: date_month
+        type: time
+        type_params:
+          time_granularity: month
+      - name: acquisition_channel
+        type: categorical
+```
+
+</File>
+
+### Step 2: Define the CAC metric
+Create a YAML file under the metrics folder: (`models/metrics/sem_customer_acquisition_metrics.yml`) to define the CAC metric.
+
+<File name="models/metrics/sem_customer_acquisition_metrics.yml">
+
+```yaml
+metrics:
+  - name: cac
+    description: "Customer acquisition cost"
+    label: 'CAC'        
+    type: ratio
+    type_params:
+      numerator: total_acquisition_cost
+      denominator: new_customers
+```
+</File>
+
+### Step 3: Validate and query metric
+
+1. Confirm and validate the new metric definition in your development by running the following command:
+   
+   ```bash
+   dbt parse
+   ```  
+
+2. Query your metrics to confirm they are working as expected:
+   
+   ```bash
+   dbt sl query --metrics cac --group-by metric_time__year --where "metric_time__year >= '2023'" --order-by metric_time__year
    ```
 
 </div>
