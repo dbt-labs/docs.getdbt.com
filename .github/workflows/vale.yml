@@ -82,7 +82,7 @@ jobs:
         repo = os.getenv('GITHUB_REPOSITORY')
         pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
         token = os.getenv('GITHUB_TOKEN')
-        commit_id = os.getenv('GITHUB_SHA'
+        commit_id = os.getenv('GITHUB_SHA')
 
         headers = {
             'Authorization': f'token {token}',
