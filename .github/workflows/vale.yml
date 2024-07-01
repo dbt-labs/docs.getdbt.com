@@ -18,8 +18,32 @@ jobs:
       with:
         version: latest
 
-    - name: Run Vale Linter
-      run: vale .
+    - name: Get all changed markdown files
+      id: changed-markdown-files
+      uses: tj-actions/changed-files@v44
+      with:
+        files: |
+           **/*.md
+  
+    - name: List all changed markdown files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
+      run: |
+        for file in ${ALL_CHANGED_FILES}; do
+          echo "$file was changed"
+        done
+  
+    - name: Run Vale on changed files
+      run: |
+        mkdir -p vale_output
+        for file in ${{ env.ALL_CHANGED_FILES }}; do
+          echo "Running Vale on $file"
+          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output/vale_output_${file//\//_}_edit.md"
+        done
+        echo "Vale outputs:"
+        ls -l vale_output
 
     - name: Install Python and dependencies
       uses: actions/setup-python@v2
