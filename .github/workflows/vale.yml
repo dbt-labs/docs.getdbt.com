@@ -1,4 +1,4 @@
-name: Lint and suggest
+name: Lint and Suggest
 
 on:
   pull_request:
@@ -10,19 +10,22 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale: # Vale linting job
+  lint:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
+        fetch-depth: 0
 
     - name: Install Vale
-      uses: errata-ai/vale-action@reviewdog
-      with:
-        reporter: github-pr-review
+      run: |
+        curl -sfL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
+        echo "::add-path::$HOME/.local/bin"
+
+    - name: Print Vale version
+      run: vale --version
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -32,7 +35,7 @@ jobs:
       uses: tj-actions/changed-files@v44
       with:
         files: |
-           **/*.md
+          **/*.md
 
     - name: List all changed markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
@@ -49,23 +52,26 @@ jobs:
         ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         mkdir -p vale_output
-        echo "Running Vale on changed files:"
         for file in $ALL_CHANGED_FILES; do
-          echo "Running Vale on $file"
-          ./vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
+          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
         done
-        echo "Vale outputs:"
-        ls -l vale_output
-  
+
     - name: Merge JSON outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: jq -s '.' vale_output/vale_output_*.json > vale_report.json
 
-    - name: Suggest changes
+    - name: Upload Vale report for Hyperlint
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      uses: reviewdog/action-suggester@v1
+      uses: actions/upload-artifact@v3
       with:
-        tool_name: vale
-        level: warning
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        reviewdog_flags: "--jsonc < vale_report.json"
+        name: vale-report
+        path: vale_report.json
+
+    - name: Comment to trigger Hyperlint
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      run: |
+        PR_NUMBER=$(echo ${{ github.event.pull_request.number }})
+        curl -H "Authorization: token ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}" \
+             -X POST \
+             -d '{"body":"hyperlint review"}' \
+             "https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
