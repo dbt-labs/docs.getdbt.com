@@ -11,7 +11,9 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
-### Intro
+<div style={{maxWidth: '900px'}}>
+
+## How to calculate active users and active users WoW growth
 
 Use this cookbook recipe to understand how to calculate “Active users” and “Active users (Week-over-Week growth (WoW) growth), as well as other time-related attributes in a database with dbt using YAML configurations. 
 
@@ -32,7 +34,9 @@ Alternatively, you can use the [one-YAML-per-marts-model approach](/best-practic
 
 ### Step 1: **Define semantic models**
 
-1. Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_user_activity_daily.yml`) to create a semantic model that tracks daily user activity. This semantic model ref’s model `fct_user_activity_daily`. Note that if you’re using the one-YAML-file-per-mart, then save this as `user_activity_daily.yml` under the models folder.
+1. Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_user_activity_daily.yml`) to create a semantic model that tracks daily user activity. This semantic model ref’s model `fct_user_activity_daily`. 
+
+Note that if you’re using the one-YAML-file-per-mart, then save this as `user_activity_daily.yml` under the models folder.
 
 <File name="models/semantic_models/sem_user_activity_daily.yml">
 
@@ -49,7 +53,7 @@ semantic_models:
 ```
 </File>
 
-2. In that same semantic model file, add entities to define user-related entities (such as user or `user_daily`), dimensions to specify time dimensions (such as `date_day`), and measures for a distinct count of active users (`count_activity_users`) aggregated by day.
+1. In that same semantic model file, add entities to define user-related entities (such as user or `user_daily`), dimensions to specify time dimensions (such as `date_day`), and measures for a distinct count of active users (`count_activity_users`) aggregated by day.
 
 <File name="models/semantic_models/sem_user_activity_daily.yml">
 
@@ -149,9 +153,8 @@ semantic_models:
 metrics:
   - name: users_active
     label: 'Users: active'
-    description: |
-	    **Definition:**
-		* Users are considered active when they reach:
+    description: >
+      Users are considered active when they reach:
 		* at least 3+ actions in the week
 		* in a given reporting period (weekly or monthly)
       
@@ -184,14 +187,14 @@ metrics:
 
 ### Step 3: Test your metrics
 
-After saving your new or updated metric, let’s follow the following process in your development tool:
+After saving your new or updated metric, check out the following process in your development tool:
 
 - Rebuild your semantic_manifest.json file
 ```bash
 dbt parse
 ```
 
-- If you see an error where the metric doesn't exist it could be because you were developing on a separate branch and then switched back to this one so the manifest is different. If so, then use the `--no-defer` flag
+- If you see an error where the metric doesn't exist, it could be because you were developing on a separate branch and then switched back to this one so the manifest is different. If so, then use the `--no-defer` flag
 ```bash
 dbt parse --no-defer
 ```
@@ -205,3 +208,89 @@ dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_ti
 ```bash
 dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_time__week --where "metric_time__week >= '2023-01-01'" --order-by metric_time__week --compile
 ```
+
+## How to calculate ARR using metrics in dbt
+
+Use this cookbook recipe to understand how to calculate annual recurring revenue (ARR) using derived metrics in dbt, specifically leveraging the monthly recurring revenue (MRR) metric.
+
+### Objectives
+
+- Understand how to configure derived metrics in dbt.
+- Learn how to calculate ARR based on MRR.
+
+### Use case
+Calculate and analyze ARR to monitor the financial health and growth of subscription-based businesses.
+
+### Step 1: Define semantic models
+Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_revenue_models.yml`) to define a semantic model for revenue data.
+
+<File name="models/semantic_models/sem_revenue_models.yml">
+
+```yaml
+semantic_models:
+  - name: sem_revenue
+    description: >
+      This model aggregates revenue data, providing metrics for business to analyze the financial 
+      health of the fictional Santiago's snacks org.
+    model: ref('fct_revenue')
+    defaults:
+      agg_time_dimension: date_month
+    entities:
+      - name: date
+        type: primary
+        expr: date_month
+    measures:
+      - name: mrr
+        agg: sum
+        expr: monthly_recurring_revenue
+        agg_time_dimension: date_month
+    dimensions:
+      - name: date_day
+        type: time
+        type_params:
+          time_granularity: day
+      - name: date_month
+        type: time
+        type_params:
+          time_granularity: month
+      - name: is_last_day_of_month
+        type: categorical
+
+```
+</File>
+
+### Step 2: Define the ARR metric
+Create a YAML file under the metrics folder: (models/metrics/sem_revenue_metrics.yml) to define the ARR metric.
+
+<File name="models/metrics/sem_revenue_metrics.yml">
+
+```yaml
+metrics:
+  - name: arr
+    label: 'ARR'
+    description: >
+      annual recurring revenue calculated based on MRR.
+    type: derived
+    type_params:
+      expr: mrr * 12
+      metrics:
+        - name: mrr
+
+```
+</File>
+
+### Step 3: Validate and query metric
+
+1. Confirm and validate the new metric definition in your development by running the following command:
+   
+   ```bash
+   dbt parse
+   ```  
+
+2. Query your metrics to verify they are working as expected:
+   
+   ```bash
+   dbt sl query --metrics arr --group-by metric_time__year --where "metric_time__year >= '2023'" --order-by metric_time__year
+   ```
+
+</div>
