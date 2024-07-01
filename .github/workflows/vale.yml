@@ -10,14 +10,14 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale: # Vale linting job
+  vale:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
+        fetch-depth: 0
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
@@ -44,18 +44,28 @@ jobs:
         done
 
     - name: Run Vale on changed files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
-        for file in ${{ env.ALL_CHANGED_FILES }}; do
+        mkdir -p vale_output
+        echo "Running Vale on changed files:"
+        for file in $ALL_CHANGED_FILES; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output/vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
-        ls -l
-  
+        ls -l vale_output
+
     - name: Merge JSON outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      run: jq -s '.' vale_output/vale_output_*.json > vale_report.json
+      run: |
+        if ls vale_output/vale_output_*.json 1> /dev/null 2>&1; then
+          jq -s '.' vale_output/vale_output_*.json > vale_report.json
+        else
+          echo '[]' > vale_report.json
+        fi
 
     - name: Create suggestions using OpenAI
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
@@ -80,12 +90,11 @@ jobs:
             pr = repo.get_pull(pr_number)
 
             for file in report:
-                file_path = file["path"]
-                suggestions = file["matches"]
+                file_path = file["Path"]
+                suggestions = file["Matches"]
                 for suggestion in suggestions:
-                    start_line = suggestion["line"]
-                    end_line = suggestion["line"]
-                    original_text = suggestion["match"]
+                    start_line = suggestion["Line"]
+                    original_text = suggestion["Match"]
                     response = openai.Completion.create(
                         engine="text-davinci-003",
                         prompt=f"Suggest a correction for this text: {original_text}",
@@ -94,7 +103,7 @@ jobs:
                     correction = response.choices[0].text.strip()
 
                     patch = f"```suggestion\n{correction}\n```"
-                    pr.create_review_comment(patch, pr.head.sha, file_path, start_line, end_line)
+                    pr.create_review_comment(patch, pr.head.sha, file_path, start_line, start_line)
 
         if __name__ == "__main__":
             report_path = "vale_report.json"
