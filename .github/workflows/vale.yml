@@ -61,7 +61,7 @@ jobs:
 
     - name: Run Auto-suggestion Script
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
       run: |
         python3 << 'EOF'
         import os
@@ -91,7 +91,7 @@ jobs:
 
         repo = os.getenv('GITHUB_REPOSITORY')
         pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
-        token = os.getenv('GITHUB_TOKEN')
+        token = os.getenv('VALE_GITHUB_TOKEN')
         commit_id = os.getenv('GITHUB_SHA')
 
         headers = {
