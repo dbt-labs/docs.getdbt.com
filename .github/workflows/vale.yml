@@ -14,7 +14,8 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Vale
-      uses: errata-ai/vale-action@reviewdog
+      run: |
+        curl -fsSL https://install.vale.sh | sh
 
     - name: Get all changed markdown files
       id: changed-markdown-files
@@ -26,7 +27,7 @@ jobs:
     - name: List all changed markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
-        ALL_CHANGED_FILES: ${{ steps.changed-markown-files.outputs.all_changed_files }}
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
         for file in ${ALL_CHANGED_FILES}; do
           echo "$file was changed"
@@ -34,16 +35,16 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
+        mkdir -p vale_output
         for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
         done
         echo "Vale outputs:"
-        ls -l
+        ls -l vale_output
 
     - name: Upload Vale output for processing
-      if: steps.changed-markown-files.outputs.any_changed == 'true'
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
       uses: actions/upload-artifact@v2
       with:
         name: vale-output
@@ -57,7 +58,7 @@ jobs:
 
     - name: Run Auto-suggestion Script
       env:
-        GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         python3 << 'EOF'
@@ -66,22 +67,25 @@ jobs:
         import json
         import openai
 
-        def parse_vale_output(vale_report_path):
-            with open(vale_report_path, 'r') as file:
-                data = json.load(file)
+        def parse_vale_output(vale_output_dir):
             suggestions = []
-            for item in data:
-                file_path = item['Path']
-                for match in item['Matches']:
-                    line_number = match['Line']
-                    message = match['Message']
-                    context = match['Context']
-                    suggestions.append({
-                        "file_path": file_path,
-                        "line_number": line_number,
-                        "message": message,
-                        "context": context
-                    })
+            for file_name in os.listdir(vale_output_dir):
+                if file_name.endswith(".json"):
+                    file_path = os.path.join(vale_output_dir, file_name)
+                    with open(file_path, 'r') as file:
+                        data = json.load(file)
+                        for item in data:
+                            file_path = item['Path']
+                            for match in item['Matches']:
+                                line_number = match['Line']
+                                message = match['Message']
+                                context = match['Context']
+                                suggestions.append({
+                                    "file_path": file_path,
+                                    "line_number": line_number,
+                                    "message": message,
+                                    "context": context
+                                })
             return suggestions
 
         def get_openai_suggestions(context, message, api_key):
@@ -99,12 +103,12 @@ jobs:
             suggestion = response.choices[0].text.strip()
             return suggestion
 
-        vale_report_path = 'vale_output/vale_report.json'
-        suggestions = parse_vale_output(vale_report_path)
+        vale_output_dir = 'vale_output'
+        suggestions = parse_vale_output(vale_output_dir)
 
         repo = os.getenv('GITHUB_REPOSITORY')
         pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
-        token = os.getenv('VALE_GITHUB_TOKEN')
+        token = os.getenv('GITHUB_TOKEN')
         commit_id = os.getenv('GITHUB_SHA')
         openai_api_key = os.getenv('OPENAI_API_KEY')
 
