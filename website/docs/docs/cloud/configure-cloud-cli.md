@@ -104,6 +104,12 @@ The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) a
 - Supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
  
+:::tip Use the <code>--help</code> flag
+As a tip, most command-line tools have a `--help` flag to show available commands and arguments. Use the `--help` flag with dbt in two ways:
+- `dbt --help`: Lists the commands available for dbt<br />
+- `dbt run --help`: Lists the flags available for the `run` command
+:::
+ 
 ### SQLFluff integration
 The dbt Cloud CLI supports [SQLFluff](https://sqlfluff.com/), a modular and configuration SQL linter, which warns you of complex functions, syntax, formatting, and compilation errors.
 
@@ -114,12 +120,6 @@ To get started, run `dbt sqlfluff -h` to see the list of supported commands and 
 - To use SQLFluff in continuous integration/continuous development, you need to have a `dbt_cloud.yml` file in your project and run commands from a valid dbt project.
 - SQLFluff commands in the dbt Cloud CLI do not return exit codes yet.
 
-
-:::tip Use the <code>--help</code> flag
-As a tip, most command-line tools have a `--help` flag to show available commands and arguments. Use the `--help` flag with dbt in two ways:
-- `dbt --help`: Lists the commands available for dbt<br />
-- `dbt run --help`: Lists the flags available for the `run` command
-:::
 
 ## FAQs
 <Expandable alt_header="How to create a .dbt directory and move your file">
