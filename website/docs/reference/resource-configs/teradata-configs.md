@@ -348,7 +348,8 @@ If a user sets some key-value pair with value as `'{model}'`, internally this `'
 - For example, if the model the user is running is `stg_orders`, `{model}` will be replaced with `stg_orders` in runtime.
 - If no `query_band` is set by the user, the default query_band used will be: ```org=teradata-internal-telem;appname=dbt;```
 
-## valid_history incremental materialization strategy (early access) {#valid-history-incremental-materialization-strategy}
+## valid_history incremental materialization strategy
+_This is available in early access_
     
 This strategy is designed to manage historical data efficiently within a Teradata environment, leveraging dbt features to ensure data quality and optimal resource usage.
 In temporal databases, valid time is crucial for applications like historical reporting, ML training datasets, and forensic analysis.
