@@ -9,11 +9,11 @@ Exports enhance [saved queries](/docs/build/saved-queries) by running your saved
 - Enabling you to write these queries within your data platform using the dbt Cloud job scheduler.
 - Proving an integration path for tools that don't natively support the dbt Semantic Layer by exposing tables of metrics and dimensions.
 
-Essentially, exports are like any other table in your data platform &mdash; they enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class [Semantic Layer integration](/docs/use-dbt-semantic-layer/avail-sl-integrations). Running an export counts towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. Querying the resulting table or view from the export does not count toward queried metric usage.
+Essentially, exports are like any other table in your data platform &mdash; they enable you to query metric definitions through any SQL interface or connect to downstream tools without a first-class [Semantic Layer integration](/docs/cloud-integrations/avail-sl-integrations). Running an export counts towards [queried metrics](/docs/cloud/billing#what-counts-as-a-queried-metric) usage. Querying the resulting table or view from the export does not count toward queried metric usage.
 
 ## Prerequisites
 
-- You have a [multi-tenant](/docs/cloud/about-cloud/tenancy) dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan. Single-tenant isn't supported at this time.
+- You have a dbt Cloud account on a [Team or Enterprise](https://www.getdbt.com/pricing/) plan. 
 - You use one of the following data platforms: Snowflake, BigQuery, Databricks, or Redshift.
 - You are on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.7 or newer.
 - You have the dbt Semantic Layer [configured](/docs/use-dbt-semantic-layer/setup-sl) in your dbt project.
@@ -95,9 +95,9 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 ## Exports in production
 
-Enabling and executing exports in dbt Cloud optimizes data workflows and ensures real-time data access. It enhances efficiency and governance for smarter decisions.
+Enabling and executing exports in dbt Cloud optimizes data workflows and ensures real-time data access. It enhances efficiency and governance for smarter decisions.  
 
-To enable exports in production to run saved queries and write them within your data platform, you'll need to set up dbt Cloud job scheduler and perform the following steps:
+Exports use the default credentials of the production environment. To enable exports to run saved queries and write them within your data platform, perform the following steps:
 
 1. [Set an environment variable](#set-environment-variable) in dbt Cloud.
 2. [Create and execute export](#create-and-execute-exports) job run.

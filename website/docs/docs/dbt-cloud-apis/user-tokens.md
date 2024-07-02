@@ -4,6 +4,8 @@ id: "user-tokens"
 pagination_next: "docs/dbt-cloud-apis/service-tokens"
 ---
 
+# User tokens <Lifecycle status="team,enterprise"/>
+
 :::note Announcement
 
 [User API keys](#user-tokens) are being replaced by [account-scoped personal access tokens(PATs)](#account-scoped-personal-access-tokens). 

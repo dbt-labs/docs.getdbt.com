@@ -4,15 +4,14 @@ import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Hero from '@site/src/components/hero';
-import QuickstartGuideCard from '../quickstartGuideCard'
+import QuickstartGuideCard from '../quickstartGuideCard';
 import styles from './styles.module.css';
 import { SelectDropdown } from '../selectDropdown';
 import SearchInput from '../searchInput';
 import { useHistory, useLocation } from '@docusaurus/router';
 
-const quickstartTitle = 'Guides'
-const quickstartDescription = 'dbt Cloud is the fastest and most reliable way to deploy your dbt jobs and dbt Core is a powerful open-source tool for data transformations. With the help of a sample project, learn how to quickly start using dbt and one of the most common data platforms.'
-
+const quickstartTitle = 'Guides';
+const quickstartDescription = 'dbt Cloud is the fastest and most reliable way to deploy your dbt jobs and dbt Core is a powerful open-source tool for data transformations. With the help of a sample project, learn how to quickly start using dbt and one of the most common data platforms.';
 
 function QuickstartList({ quickstartData }) {
   const { siteConfig } = useDocusaurusContext();
@@ -22,7 +21,6 @@ function QuickstartList({ quickstartData }) {
   const [searchInput, setSearchInput] = useState('');
   const history = useHistory();
   const location = useLocation();
-
 
   // Build meta title from quickstartTitle and docusaurus config site title
   const metaTitle = `${quickstartTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`;
@@ -50,9 +48,18 @@ function QuickstartList({ quickstartData }) {
   }, [quickstartData]);
 
   const updateUrlParams = (selectedTags, selectedLevel) => {
-    const params = new URLSearchParams();
+    // Create a new URLSearchParams object from the current URL search string
+    const params = new URLSearchParams(location.search);
+
+    // Remove existing 'tags' and 'level' parameters to avoid duplicates
+    params.delete('tags');
+    params.delete('level');
+
+    // Append new 'tags' and 'level' values from the current state
     selectedTags.forEach(tag => params.append('tags', tag.value));
     selectedLevel.forEach(level => params.append('level', level.value));
+
+    // Update the URL with the new search parameters
     history.replace({ search: params.toString() });
 };
 
@@ -78,8 +85,8 @@ function QuickstartList({ quickstartData }) {
     const tagsFromUrl = params.getAll('tags').map(tag => ({ value: tag, label: tag }));
     const levelsFromUrl = params.getAll('level').map(level => ({ value: level, label: level }));
     setSelectedTags(tagsFromUrl);
-    setSelectedLevel(levelsFromUrl)
-  }, []); // Empty dependency array ensures this runs only once on component mount
+    setSelectedLevel(levelsFromUrl);
+  }, [location.search]); // Added location.search to dependency array
 
   useEffect(() => {
     updateUrlParams(selectedTags, selectedLevel);
@@ -89,7 +96,7 @@ function QuickstartList({ quickstartData }) {
   // Also just good practice to separate out side effects with different functions
   useEffect(() => {
     handleDataFilter();
-  }, [selectedTags, selectedLevel]);
+  }, [selectedTags, selectedLevel, searchInput]); // Added searchInput to dependency array
 
   return (
     <Layout>

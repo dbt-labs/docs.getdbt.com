@@ -23,16 +23,16 @@ This guide will teach you how to set up a multi-project design using foundationa
 For more information on why data mesh is important, read this post: [What is data mesh? The definition and importance of data mesh](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh).
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
 
 ### Related content:
 - [Data mesh concepts: What it is and how to get started](https://www.getdbt.com/blog/data-mesh-concepts-what-it-is-and-how-to-get-started)
-- [Deciding how to structure your dbt Mesh](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-2-structures)
-- [dbt Mesh best practices guide](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-3-implementation)
-- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs)
+- [Deciding how to structure your dbt Mesh](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-3-structures)
+- [dbt Mesh best practices guide](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-implementation)
+- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
 
 ## Prerequisites​
 
@@ -40,7 +40,7 @@ To leverage dbt Mesh, you need the following:
 
 - You must have a [dbt Cloud Enterprise account](https://www.getdbt.com/get-started/enterprise-contact-pricing) <Lifecycle status="enterprise"/>
 - You have access to a cloud data platform, permissions to load the sample data tables, and dbt Cloud permissions to create new projects. 
-- Set your development and deployment [environments](/docs/dbt-cloud-environments) to use dbt [version](/docs/dbt-versions/core) 1.6 or later. You can also opt [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version of dbt.
+- Set your development and deployment [environments](/docs/dbt-cloud-environments) to use dbt [version](/docs/dbt-versions/core) 1.6 or later. You can also opt to go versionless and select [Keep on latest version of](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the most recent features and functionality.
 - This guide uses the Jaffle Shop sample data, including `customers`, `orders`, and `payments` tables. Follow the provided instructions to load this data into your respective data platform:
   - [Snowflake](https://docs.getdbt.com/guides/snowflake?step=3)
   - [Databricks](https://docs.getdbt.com/guides/databricks?step=3)
@@ -49,7 +49,7 @@ To leverage dbt Mesh, you need the following:
   - [Fabric](https://docs.getdbt.com/guides/microsoft-fabric?step=2)
   - [Starburst Galaxy](https://docs.getdbt.com/guides/starburst-galaxy?step=2)
 
-This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course first if you are brand new to dbt.
+This guide assumes you have experience with or fundamental knowledge of dbt. Take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course first if you are brand new to dbt.
 
 ## Create and configure two projects
 
@@ -553,7 +553,7 @@ A member of the Finance team would like to schedule a dbt Cloud job for their cu
 
 1. In the “Jaffle | Finance” project, go to the **Jobs** page by navigating to **Deploy** and then **Jobs**. 
 2. Then click **Create job** and then **Deploy job**.
-3. Add a name for the job, then scroll to the bottom to the **Job completion** section.  
+3. Add a name for the job, then scroll to the bottom of the **Job completion** section.  
 4. In **Job completion** section, configure the job to **Run when another job finishes** and select the upstream job from the “Jaffle | Data Analytics” project.
 <Lightbox src="/img/guides/dbt-mesh/trigger_on_completion.png" title="Trigger job on completion" />
 
@@ -626,12 +626,12 @@ Congratulations 🎉! You're ready to bring the benefits of dbt Mesh to your org
 - How to establish a foundational project "Jaffle | Data Analytics."
 - Create a downstream project "Jaffle | Finance."
 - Implement model access, versions, and contracts.
-- Set up up dbt Cloud jobs triggered by upstream job completions.
+- Set up dbt Cloud jobs triggered by upstream job completions.
 
 Here are some additional resources to help you continue your journey:
 
 - [How we build our dbt mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro)
-- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-4-faqs)
+- [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
 - [Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)
 - [dbt Explorer](/docs/collaborate/explore-projects)
 
