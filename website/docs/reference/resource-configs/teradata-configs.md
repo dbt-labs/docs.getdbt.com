@@ -268,7 +268,8 @@ Snapshots use the [HASHROW function](https://docs.teradata.com/r/Enterprise_Inte
 
 To use your own hash UDF, there is a configuration option in the snapshot model called `snapshot_hash_udf`, which defaults to HASHROW. You can provide a value like `<database_name.hash_udf_name>`. If you only provide `hash_udf_name`, it uses the same schema as the model runs.
 
-for e.g. :
+For example, in the `snapshots/snapshot_example.sql` file:
+
   snapshots/snapshot_example.sql
   ```sql
   {% snapshot snapshot_example %}
