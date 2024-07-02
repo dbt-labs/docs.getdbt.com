@@ -19,8 +19,8 @@ This metric is common for calculating things like weekly active users, or month-
 | `type_params` | The type parameters of the metric. | Required |
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
 | `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `measure` | A list of measure inputs | Required |
-| `measure:name` | TThe measure you are referencing. | Optional  |
+| `measure` | A dictionary describing the measure to be used | Required |
+| `measure:name` | The measure you are referencing. | Optional  |
 | `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
 | `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
