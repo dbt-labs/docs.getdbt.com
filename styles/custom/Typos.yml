@@ -1,12 +1,10 @@
 extends: spelling
 
-message: "Oops there's a typo -- did you really mean '%s'? "
-level: suggest
+message: "Oops there's a typo -- did you really mean '%s'?"
+level: warning
 
 action:
-  name: suggest
-  params:
-    - spellings
+  name: replace
 
 ---
 

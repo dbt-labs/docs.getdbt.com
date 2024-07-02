@@ -1,11 +1,6 @@
 extends: repetition
 message: "'%s' is repeated!"
-level: suggest
-action:
-  name: suggest
-  params:
-    - RemoveDuplicateWords.tengo
+level: warning
 alpha: true
 tokens:
   - '[^\s]+'
-
