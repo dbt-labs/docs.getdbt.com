@@ -34,15 +34,13 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
-        for file in ${{ steps.changed-markdown-files.outputs.all_changed_files }}; do
-          dir=$(dirname "$file")
-          filename=$(basename "$file")
+        for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          (cd "$dir" && vale --output=JSON "$filename" > "../vale_output_${file//\//_}.json")
-          (cd "$dir" && vale --output=edit "$filename" > "../vale_output_${file//\//_}_edit.md")
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
-        ls -l vale_output
+        ls -l
 
     - name: Merge JSON outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
