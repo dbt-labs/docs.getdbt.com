@@ -316,36 +316,39 @@ Refer to [grants](/reference/resource-configs/grants) for more information on Gr
 
 ## Query Band
 Query Band in dbt-teradata can be set on three levels:
-1. Profiles Level: In profiles.yml file, user can provide query_band as below example
+1. Profiles level: In the `profiles.yml` file, the user can provide `query_band` using the following example:
+
     ```yaml 
     query_band: 'application=dbt;'
    ```
 
-2. Project Level: In dbt_project.yml file, user can provide query_band as below
-    ```yaml
+2. Project level: In the `dbt_project.yml` file, the user can provide `query_band` using the following example:
+
+   ```yaml
      models:
      Project_name:
         +query_band: "app=dbt;model={model};"
    ```
-3. Model Level: It can be set on model sql file or model level configuration on yaml files
-    ```sql
+4. Model level: It can be set on the model SQL file or model level configuration on YAML files:
+
+   ```sql
    {{ config( query_band='sql={model};' ) }}
    ```
-User can set query_band at any level or on all levels.
-With profiles level query_band, dbt-teradata will set the query_band for first time for the session and subsequently for model and project level query band will be updated with respective configuration.
-If a user set some key-value pair with value as '{model}' than internally this '{model}' will be replaced with model name, and it can be useful for telemetry tracking of sql/ dbql logging. 
-Let model that user is running be stg_orders
-```yaml
-     models:
-     Project_name:
-        +query_band: "app=dbt;model={model};"
-   ```
-{model} will be replaced with 'stg_orders' in runtime.
 
-If no query_band is set by user, default query_band will come in play that is :
-```org=teradata-internal-telem;appname=dbt;```
+Users can set `query_band` at any level or on all levels. With profiles-level `query_band`, dbt-teradata will set the `query_band` for the first time for the session, and subsequently for model and project level query band will be updated with respective configuration.
 
-## 'valid_history' incremental materialization strategy (early access)
+If a user sets some key-value pair with value as `'{model}'`, internally this `'{model}'` will be replaced with model name, which can be useful for telemetry tracking of sql/ dbql logging. 
+
+  ```yaml
+  models:
+  Project_name:
+    +query_band: "app=dbt;model={model};"
+  ````
+
+- For example, if the model the user is running is `stg_orders`, `{model}` will be replaced with `stg_orders` in runtime.
+- If no `query_band` is set by the user, the default query_band used will be: ```org=teradata-internal-telem;appname=dbt;```
+
+## valid_history incremental materialization strategy (early access) {valid_history-incremental-materialization-strategy}
     
 This strategy is designed to manage historical data efficiently within a Teradata environment, leveraging dbt features to ensure data quality and optimal resource usage.
 In temporal databases, valid time is crucial for applications like historical reporting, ML training datasets, and forensic analysis.
@@ -362,27 +365,28 @@ In temporal databases, valid time is crucial for applications like historical re
   )
   }}
   ```
- `valid_history` incremental strategy requires the following parameters:
-* `valid_from` - Column in the source table of **timestamp** datatype indicating when each record became valid.
-* `history_column_in_target` - Column in the target table of **period** datatype that tracks history.
 
->   The valid_history strategy in dbt-teradata involves several critical steps to ensure the integrity and accuracy of historical data management:
->   * Remove duplicates and conflicting values from the source data:
->     * This step ensures that the data is clean and ready for further processing by eliminating any redundant or conflicting records.
->     * The process of removing duplicates and conflicting values from the source data involves using a ranking mechanism to ensure that only the highest-priority records are retained. This is accomplished using the SQL RANK() function.
->   * Identify and adjust overlapping time slices:
->     * Overlapping time periods in the data are detected and corrected to maintain a consistent and non-overlapping timeline.
->   * Manage records needing to be overwritten or split based on the source and target data:
->     * This involves handling scenarios where records in the source data overlap with or need to replace records in the target data, ensuring that the historical timeline remains accurate.
->   * Utilize the TD_NORMALIZE_MEET function to compact history:
->     * This function helps to normalize and compact the history by merging adjacent time periods, improving the efficiency and performance of the database.
->   * Delete existing overlapping records from the target table:
->     * Before inserting new or updated records, any existing records in the target table that overlap with the new data are removed to prevent conflicts.
->   * Insert the processed data into the target table:
->     * Finally, the cleaned and adjusted data is inserted into the target table, ensuring that the historical data is up-to-date and accurately reflects the intended timeline.
->     
->     
-> These steps collectively ensure that the valid_history strategy effectively manages historical data, maintaining its integrity and accuracy while optimizing performance.
+The `valid_history` incremental strategy requires the following parameters:
+* `valid_from` &mdash; Column in the source table of **timestamp** datatype indicating when each record became valid.
+* `history_column_in_target` &mdash; Column in the target table of **period** datatype that tracks history.
+
+The valid_history strategy in dbt-teradata involves several critical steps to ensure the integrity and accuracy of historical data management:
+* Remove duplicates and conflicting values from the source data:
+  * This step ensures that the data is clean and ready for further processing by eliminating any redundant or conflicting records.
+  * The process of removing duplicates and conflicting values from the source data involves using a ranking mechanism to ensure that only the highest-priority records are retained. This is accomplished using the SQL RANK() function.
+* Identify and adjust overlapping time slices:
+  * Overlapping time periods in the data are detected and corrected to maintain a consistent and non-overlapping timeline.
+* Manage records needing to be overwritten or split based on the source and target data:
+  * This involves handling scenarios where records in the source data overlap with or need to replace records in the target data, ensuring that the historical timeline remains accurate.
+* Utilize the TD_NORMALIZE_MEET function to compact history:
+  * This function helps to normalize and compact the history by merging adjacent time periods, improving the efficiency and performance of the database.
+* Delete existing overlapping records from the target table:
+  * Before inserting new or updated records, any existing records in the target table that overlap with the new data are removed to prevent conflicts.
+* Insert the processed data into the target table:
+  * Finally, the cleaned and adjusted data is inserted into the target table, ensuring that the historical data is up-to-date and accurately reflects the intended timeline.
+
+ 
+These steps collectively ensure that the valid_history strategy effectively manages historical data, maintaining its integrity and accuracy while optimizing performance.
 
   ```sql
     An illustration demonstrating the source sample data and its corresponding target data:  
@@ -411,8 +415,9 @@ In temporal databases, valid time is crucial for applications like historical re
   ```
   
 
->   **Important Note**: The target table must already exist before running the model. Ensure that the target table is created and properly structured with the necessary columns, including a column that tracks the history with period datatype, before running a dbt model.
-
+:::info
+The target table must already exist before running the model. Ensure the target table is created and properly structured with the necessary columns, including a column that tracks the history with period datatype, before running a dbt model.
+:::
 
 ## Common Teradata-specific tasks
 * *collect statistics* - when a table is created or modified significantly, there might be a need to tell Teradata to collect statistics for the optimizer. It can be done using `COLLECT STATISTICS` command. You can perform this step using dbt's `post-hooks`, e.g.:
