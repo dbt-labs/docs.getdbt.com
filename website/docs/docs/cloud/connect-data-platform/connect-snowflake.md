@@ -75,7 +75,24 @@ more information on configuring a Snowflake OAuth connection in dbt Cloud, pleas
 
 To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
 
-### Custom domain URL support
+### Multi-factor authentication (MFA)
+
+In order to help reduce the number of user prompts when [connecting to Snowflake with MFA](https://docs.snowflake.com/en/user-guide/security-mfa), it is recommended to [enable token caching](https://docs.snowflake.com/en/user-guide/security-mfa#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in Snowflake.
+
+Once this is done, the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) needs to be set for the **development** environment:
+
+```yaml
+authenticator: username_password_mfa
+```
+
+Optionally, if the prompts are missed too often by users, resulting in their Snowflake accounts being locked, automatic retries can be prevented by adding:
+
+```yaml
+connect_retries: 0
+```
+
+
+### Custom domain URL
 
 To connect to Snowflake through a custom domain (vanity URL) instead of the account locator, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to configure the `host` parameter with the custom domain:
 
