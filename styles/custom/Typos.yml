@@ -1,20 +1,10 @@
 extends: spelling
 
-message: "Oops there's a typo -- did you really mean '%s'? "
-level: suggestion
+message: "Oops there's a typo -- did you really mean '%s'?"
+level: suggest
 
-action:
-  name: suggest
-  params:
-    - spellings
-
----
-
-extends: existence
-
-message: "Ignore specific patterns"
-level: skip
-tokens:
+custom: true
+filters:
   - '\bdbt\b'
   - '\bdbt\s+Cloud\b'
   - '\bdbt\s+Core\b'
