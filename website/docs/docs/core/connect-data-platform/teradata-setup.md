@@ -148,7 +148,8 @@ The following incremental materialization strategies are supported:
 
 :::info
 - To learn more about dbt incremental strategies, refer to [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
-> * To learn more about `valid_history` incremental strategy please check [Teradata configs](/reference/resource-configs/teradata-configs).
+- To learn more about `valid_history` incremental strategy, refer to [Teradata configs](/reference/resource-configs/teradata-configs).
+:::
 
 ### Commands
 
