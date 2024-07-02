@@ -128,7 +128,7 @@ Parameter               | Default     | Type           | Description
 `teradata_values`       | `"true"`    | quoted boolean | Controls whether `str` or a more specific Python data type is used for certain result set column value types.
 `query_band`            | `"org=teradata-internal-telem;appname=dbt;"`    | string | Specifies the Query Band string to be set for each SQL request.
 
-For the full description of the connection parameters see https://github.com/Teradata/python-driver#connection-parameters.
+Refer to [connection parameters](https://github.com/Teradata/python-driver#connection-parameters) for the full description of the connection parameters.
 
 ## Supported Features
 
