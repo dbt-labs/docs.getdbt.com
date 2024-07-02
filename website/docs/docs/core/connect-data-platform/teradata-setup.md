@@ -146,7 +146,8 @@ The following incremental materialization strategies are supported:
 * `merge`
 * `valid_history` (early access)
 
-> * To learn more about dbt incremental strategies please check [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
+:::info
+- To learn more about dbt incremental strategies, refer to [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
 > * To learn more about `valid_history` incremental strategy please check [Teradata configs](/reference/resource-configs/teradata-configs).
 
 ### Commands
