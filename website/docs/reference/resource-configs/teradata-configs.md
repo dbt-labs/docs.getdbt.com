@@ -270,7 +270,6 @@ To use your own hash UDF, there is a configuration option in the snapshot model 
 
 For example, in the `snapshots/snapshot_example.sql` file:
 
-  snapshots/snapshot_example.sql
   ```sql
   {% snapshot snapshot_example %}
   {{
