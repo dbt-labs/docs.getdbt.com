@@ -3455,6 +3455,16 @@
       "source": "best-practices/how-we-build-our-metrics/6-the-rest-of-the-project",
       "destination": "/best-practices/how-we-structure/5-the-rest-of-the-project",
       "permanent": true
+    },
+    {
+      "source": "best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion",
+      "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-9-conclusion",
+      "permanent": true
+    },
+    {
+      "source": "best-practices/how-we-structure/5-semantic-layer-marts",
+      "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure",
+      "permanent": true
     }
   ],
   "headers": [
