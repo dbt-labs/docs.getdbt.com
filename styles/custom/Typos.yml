@@ -3,9 +3,6 @@ extends: spelling
 message: "Oops there's a typo -- did you really mean '%s'?"
 level: warning
 
-action:
-  name: replace
-
 ---
 
 extends: existence
