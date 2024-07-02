@@ -102,3 +102,13 @@ In normal usage, dbt knows the proper order to run all models based on the usage
 ```
 
 dbt will see the `ref` and build this model after the specified reference.
+
+Another example is when a reference appears within an [`is_incremental()`](/docs/build/incremental-models#understand-the-is_incremental-macro) conditional block. This is because the `is_incremental()` macro will always return `false` at parse time, so any references within it can't be inferred. To handle this, you can use a SQL comment outside of the `is_incremental()` conditional:
+
+```sql
+-- depends_on: {{ source('raw', 'orders') }}
+
+{% if is_incremental() %}
+select * from {{ source('raw', 'orders') }}
+{% endif %}
+```

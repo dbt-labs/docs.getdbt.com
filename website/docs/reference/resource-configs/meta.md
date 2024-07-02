@@ -2,6 +2,7 @@
 resource_types: all
 datatype: "{<dictionary>}"
 default_value: {}
+hide_table_of_contents: true
 ---
 
 <Tabs
@@ -17,6 +18,7 @@ default_value: {}
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic Models', value: 'semantic models', },
     { label: 'Metrics', value: 'metrics', },
+    { label: 'Saved queries', value: 'saved queries', },
   ]
 }>
 <TabItem value="models">
@@ -245,6 +247,31 @@ metrics:
 
 </TabItem>
 
+<TabItem value="saved queries">
+
+<VersionBlock lastVersion="1.6">
+
+Support for saved queries has been added in dbt Core v1.7.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7"> 
+
+<File name='models/semantic_models.yml'>
+
+```yml
+saved_queries:
+  - name: saved_query_name
+    config:
+      meta: {<dictionary>}
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -322,17 +349,16 @@ select 1 as id
 
 </File><br />
 
-### Assign owner in the dbt_project.yml as a config property
+### Assign owner and favorite_color in the dbt_project.yml as a config property
 
 <File name='dbt_project.yml'>
 
 ```yml
 models:
   jaffle_shop:
-      materialized: table
-      config:
-        meta:
-          owner: "@alice"
+    +meta:
+      owner: "@alice"
+      favorite_color: red
 ```
 
 </File>

@@ -8,7 +8,7 @@ pagination_next: "docs/build/join-logic"
 pagination_prev: null
 ---
 
-This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently. 
+This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
 MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in dbt Cloud or dbt Core.
 
@@ -17,7 +17,7 @@ Before you start, consider the following guidelines:
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
 - You must be on [dbt version](/docs/dbt-versions/upgrade-dbt-version-in-cloud) 1.6 or higher to use MetricFlow. 
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (dbt Core only), or Redshift. 
-- Discover insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations). 
+- Discover insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/cloud-integrations/avail-sl-integrations). 
 
 ## MetricFlow
 
@@ -37,7 +37,7 @@ MetricFlow abides by these principles:
 - **Simplicity with gradual complexity:** Approach MetricFlow using familiar data modeling concepts.
 - **Performance and efficiency**: Optimize performance while supporting centralized data engineering and distributed logic ownership.
 
-### Semantic graph 
+### Semantic graph
 
 We're introducing a new concept: a "semantic graph". It's the relationship between semantic models and YAML configurations that creates a data landscape for building metrics. You can think of it like a map, where tables are like locations, and the connections between them (edges) are like roads. Although it's under the hood, the semantic graph is a subset of the <Term id="dag" />, and you can see the semantic models as nodes on the DAG.
 
@@ -227,15 +227,15 @@ MetricFlow simplifies the SQL process via metric YAML configurations as seen bel
 
 ```yaml
 metrics:
-  - name: food_order_pct_of_order_total
-    description: Revenue from food orders in each store
+  - name: food_order_pct_of_order_total_returning
+    description: Revenue from food orders from returning customers
     label: "Food % of Order Total"
     type: ratio
     type_params:
       numerator: food_order
-      denominator: active_customers
+      denominator: order_total
     filter: |
-      {{ Dimension('customer__is_new_customer')}} = true
+      {{ Dimension('customer__is_new_customer') }} = false
 ```
 </TabItem>
 </Tabs>
@@ -284,5 +284,4 @@ Yes, but because a dimension is considered an attribute of the primary or unique
 
 ## Related docs
 - [Joins](/docs/build/join-logic)
-- [Validations](/docs/build/validation) 
-
+- [Validations](/docs/build/validation)

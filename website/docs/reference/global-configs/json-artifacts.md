@@ -11,12 +11,11 @@ The `WRITE_JSON` config determines whether dbt writes [JSON artifacts](/referenc
 <File name='Usage'>
 
 ```text
-dbt --no-write-json run
+dbt run --no-write-json 
 ```
 
 </File>
 
-<VersionBlock firstVersion="1.2">
 
 ### Target path
 
@@ -24,4 +23,3 @@ By default, dbt will write JSON artifacts and compiled SQL files to a directory 
 
 Just like other global configs, it is possible to override these values for your environment or invocation by using the CLI option (`--target-path`) or environment variables (`DBT_TARGET_PATH`).
 
-</VersionBlock>

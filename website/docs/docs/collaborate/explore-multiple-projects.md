@@ -2,7 +2,6 @@
 title: "Explore multiple projects"
 sidebar_label: "Explore multiple projects"
 description: "Learn about project-level lineage in dbt Explorer and its uses."
-pagination_next: null
 ---
 
 You can also view all the different projects and public models in the account, where the public models are defined, and how they are used to gain a better understanding about your cross-project resources.

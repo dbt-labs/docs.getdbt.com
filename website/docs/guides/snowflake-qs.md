@@ -6,6 +6,9 @@ icon: 'snowflake'
 tags: ['dbt Cloud','Quickstart','Snowflake']
 hide_table_of_contents: true
 ---
+
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It will show you how to: 
@@ -22,7 +25,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It w
 Snowflake also provides a quickstart for you to learn how to use dbt Cloud. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with dbt Cloud & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
@@ -34,7 +37,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 ### Related content
 
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
@@ -141,7 +144,7 @@ There are two ways to connect dbt Cloud to Snowflake. The first option is Partne
 
 Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
-1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Admin**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 
@@ -229,9 +232,78 @@ Now that you have a repository configured, you can initialize your project and s
 
 ## Build your first model
 
-import BuildFirstModel from '/snippets/quickstarts/_build-your-first-model.md';
+You have two options for working with files in the dbt Cloud IDE:
 
-<BuildFirstModel/>
+- Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+
+Name the new branch `add-customers-model`.
+
+1. Click the **...** next to the `models` directory, then select **Create file**.  
+2. Name the file `customers.sql`, then click **Create**.
+3. Copy the following query into the file and click **Save**.
+
+```sql
+with customers as (
+
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from raw.jaffle_shop.customers
+
+),
+
+orders as (
+
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from raw.jaffle_shop.orders
+
+),
+
+customer_orders as (
+
+    select
+        customer_id,
+
+        min(order_date) as first_order_date,
+        max(order_date) as most_recent_order_date,
+        count(order_id) as number_of_orders
+
+    from orders
+
+    group by 1
+
+),
+
+final as (
+
+    select
+        customers.customer_id,
+        customers.first_name,
+        customers.last_name,
+        customer_orders.first_order_date,
+        customer_orders.most_recent_order_date,
+        coalesce(customer_orders.number_of_orders, 0) as number_of_orders
+
+    from customers
+
+    left join customer_orders using (customer_id)
+
+)
+
+select * from final
+```
+
+4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
+
+Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 
 ## Change the way your model is materialized
 
@@ -405,7 +477,9 @@ Sources make it possible to name and describe the data loaded into your warehous
     models will still query from the same raw data source in Snowflake. By using `source`, you can
     test and document your raw data and also understand the lineage of your sources. 
 
+</div> 
 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
 <Snippet path="quickstarts/schedule-a-job" />
+

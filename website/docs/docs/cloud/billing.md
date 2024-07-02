@@ -53,31 +53,31 @@ Examples of queried metrics include:
 - Querying one metric, grouping by one dimension → 1 queried metric 
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time
+  dbt sl query --metrics revenue --group-by metric_time
   ```
 
 - Querying one metric, grouping by two dimensions → 1 queried metric 
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time,user__country
+  dbt sl query --metrics revenue --group-by metric_time,user__country
   ```
 
 - Querying two metrics, grouping by two dimensions → 2 queried metrics 
 
   ```shell
-  dbt sl query --metrics revenue,gross_sales --group_by metric_time,user__country
+  dbt sl query --metrics revenue,gross_sales --group-by metric_time,user__country
   ```
 
 - Running an explain for one metric → 1 queried metric
 
   ```shell
-  dbt sl query --metrics revenue --group_by metric_time --explain
+  dbt sl query --metrics revenue --group-by metric_time --explain
   ```
 
 - Running an explain for two metrics → 2 queried metrics
 
   ```shell
-  dbt sl query --metrics revenue,gross_sales --group_by metric_time --explain
+  dbt sl query --metrics revenue,gross_sales --group-by metric_time --explain
   ```
 
 ### Viewing usage in the product 
@@ -87,7 +87,9 @@ Viewing usage in the product is restricted to specific roles:
 * Team plan &mdash; Owner group
 * Enterprise plan &mdash; Account and billing admin roles
 
-For an account-level view of usage, if you have access to the **Billing** and **Usage** pages, you can see an estimate of the usage for the month. In the Billing page of the **Account Settings**, you can see how your account tracks against its usage. You can also see which projects are building the most models. 
+For an account-level view of usage, if you have access to the **Billing** and **Usage** pages, you can see an estimate of the usage for the month. In the Billing page of the **Account Settings**, you can see how your account tracks against its usage. You can also see which projects are building the most models.
+
+<Lightbox src="/img/docs/building-a-dbt-project/billing.jpg" width="80%" title="To view account-level estimated usage, go to 'Account settings' and then select 'Billing'."/>
 
 As a Team and Developer plan user, you can see how the account is tracking against the included models built. As an Enterprise plan user, you can see how much you have drawn down from your annual commit and how much remains. 
 
@@ -134,7 +136,7 @@ Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain o
 
 :::note Legacy Semantic Layer
 
-For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/docs/use-dbt-semantic-layer/quickstart-sl#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
+For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/guides/sl-snowflake-qs#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
 
 :::
 
