@@ -14,19 +14,19 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Vale
-      uses: errata-ai/vale-action@v2
+      uses: errata-ai/vale-action@reviewdog
 
     - name: Get all changed markdown files
       id: changed-markdown-files
       uses: tj-actions/changed-files@v44
       with:
         files: |
-           **/*.md
+          **/*.md
 
     - name: List all changed markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
-        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
+        ALL_CHANGED_FILES: ${{ steps.changed-markown-files.outputs.all_changed_files }}
       run: |
         for file in ${ALL_CHANGED_FILES}; do
           echo "$file was changed"
@@ -42,14 +42,12 @@ jobs:
         echo "Vale outputs:"
         ls -l
 
-    - name: Merge JSON outputs
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      run: |
-        if ls vale_output_*.json 1> /dev/null 2>&1; then
-          jq -s '.' vale_output_*.json > vale_report.json
-        else
-          echo '[]' > vale_report.json
-        fi
+    - name: Upload Vale output for processing
+      if: steps.changed-markown-files.outputs.any_changed == 'true'
+      uses: actions/upload-artifact@v2
+      with:
+        name: vale-output
+        path: vale_output
 
     - name: Install Python and dependencies
       uses: actions/setup-python@v2
@@ -59,7 +57,7 @@ jobs:
 
     - name: Run Auto-suggestion Script
       env:
-        VALE_GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         python3 << 'EOF'
@@ -77,26 +75,31 @@ jobs:
                 for match in item['Matches']:
                     line_number = match['Line']
                     message = match['Message']
-                    suggestion = message.split('=>')[1].strip('`') if '=>' in message else None
-                    if suggestion:
-                        suggestions.append({
-                            "file_path": file_path,
-                            "line_number": line_number,
-                            "suggestion": suggestion
-                        })
+                    context = match['Context']
+                    suggestions.append({
+                        "file_path": file_path,
+                        "line_number": line_number,
+                        "message": message,
+                        "context": context
+                    })
             return suggestions
 
-        def get_openai_suggestions(text, api_key):
+        def get_openai_suggestions(context, message, api_key):
             openai.api_key = api_key
+            prompt = (
+                f"Here is a piece of text: \"{context}\"\n"
+                f"There is an issue: \"{message}\"\n"
+                f"Please provide a suggestion to fix this issue."
+            )
             response = openai.Completion.create(
                 engine="text-davinci-002",
-                prompt=f"Provide suggestions for the following text: {text}",
+                prompt=prompt,
                 max_tokens=100
             )
-            suggestions = response.choices[0].text.strip()
-            return suggestions
+            suggestion = response.choices[0].text.strip()
+            return suggestion
 
-        vale_report_path = 'vale_report.json'
+        vale_report_path = 'vale_output/vale_report.json'
         suggestions = parse_vale_output(vale_report_path)
 
         repo = os.getenv('GITHUB_REPOSITORY')
@@ -111,11 +114,12 @@ jobs:
         }
 
         for suggestion in suggestions:
-            text_to_correct = suggestion['suggestion']
-            openai_suggestion = get_openai_suggestions(text_to_correct, openai_api_key)
+            context = suggestion['context']
+            message = suggestion['message']
+            openai_suggestion = get_openai_suggestions(context, message, openai_api_key)
 
             comment = {
-                "body": f"Suggestion: Change `{text_to_correct}` to `{openai_suggestion}` on line {suggestion['line_number']} in `{suggestion['file_path']}`",
+                "body": f"Suggestion: {openai_suggestion}\n\nContext:\n{context}\n\nMessage:\n{message}",
                 "commit_id": commit_id,
                 "path": suggestion['file_path'],
                 "position": suggestion['line_number'],
