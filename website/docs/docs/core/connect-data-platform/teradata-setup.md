@@ -130,7 +130,7 @@ Parameter               | Default     | Type           | Description
 
 Refer to [connection parameters](https://github.com/Teradata/python-driver#connection-parameters) for the full description of the connection parameters.
 
-## Supported Features
+## Supported features
 
 ### Materializations
 
