@@ -22,7 +22,7 @@ jobs:
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
       with:
-        reporter: github-pr-check
+        reporter: github-pr-review
 
 
     - name: Install jq
