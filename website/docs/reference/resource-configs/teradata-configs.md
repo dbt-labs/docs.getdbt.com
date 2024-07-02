@@ -312,7 +312,7 @@ Another e.g. for adding multiple grants:
   ```
 > :information_source: `copy_grants` is not supported in Teradata.
 
-More on Grants can be found at https://docs.getdbt.com/reference/resource-configs/grants
+Refer to [grants](/reference/resource-configs/grants) for more information on Grants.
 
 ## Query Band
 Query Band in dbt-teradata can be set on three levels:
