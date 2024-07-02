@@ -234,7 +234,8 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
 
 <VersionBlock firstVersion="1.8">
 
-dbt-teradata 1.8.0 and above versions support unit tests, allowing validation of SQL modeling logic on a small set of static inputs before production. This enhancement facilitates test-driven development, improving developer efficiency and code reliability. More information on dbt unit tests feature can be found [here](/docs/build/unit-tests).
+dbt-teradata 1.8.0 and later versions support unit tests, enabling you to validate SQL models and logic with a small set of static inputs before going to production. This feature enhances test-driven development and boosts developer efficiency and code reliability. Learn more about dbt unit tests [here](/docs/build/unit-tests).
+
 
 </VersionBlock>
 
