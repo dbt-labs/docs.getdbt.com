@@ -1,6 +1,8 @@
 ---
 title: "Packages"
 id: "packages"
+description:  "Discover how dbt packages help modularize code and transform data efficiently. Learn about git packages, hub packages, private packages, and advanced package configurations."
+keywords: [dbt packages, dbt package, dbt private package, dbt data transformation, dbt libraries, how to add a package dbt project]
 ---
 
 
@@ -87,7 +89,7 @@ Beginning in v1.7, `dbt deps` "pins" each package by default. See ["Pinning pack
 </VersionBlock>
 
 Where possible, we recommend installing packages via dbt Hub, since this allows dbt to handle duplicate dependencies. This is helpful in situations such as:
-* Your project uses both the dbt-utils and Snowplow packages; and the Snowplow package _also_ uses the dbt-utils package.
+* Your project uses both the dbt-utils and Snowplow packages, and the Snowplow package _also_ uses the dbt-utils package.
 * Your project uses both the Snowplow and Stripe packages, both of which use the dbt-utils package.
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
