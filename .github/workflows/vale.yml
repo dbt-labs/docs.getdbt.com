@@ -34,13 +34,15 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
-        for file in ${{ env.ALL_CHANGED_FILES }}; do
+        for file in ${{ steps.changed-markdown-files.outputs.all_changed_files }}; do
+          dir=$(dirname "$file")
+          filename=$(basename "$file")
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          (cd "$dir" && vale --output=JSON "$filename" > "../vale_output_${file//\//_}.json")
+          (cd "$dir" && vale --output=edit "$filename" > "../vale_output_${file//\//_}_edit.md")
         done
         echo "Vale outputs:"
-        ls -l
+        ls -l vale_output
 
     - name: Merge JSON outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
@@ -55,16 +57,18 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-    - run: pip install requests
+    - run: pip install requests openai
 
     - name: Run Auto-suggestion Script
       env:
-        GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
+        VALE_GITHUB_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         python3 << 'EOF'
         import os
         import requests
         import json
+        import openai
 
         def parse_vale_output(vale_report_path):
             with open(vale_report_path, 'r') as file:
@@ -84,13 +88,24 @@ jobs:
                         })
             return suggestions
 
+        def get_openai_suggestions(text, api_key):
+            openai.api_key = api_key
+            response = openai.Completion.create(
+                engine="text-davinci-002",
+                prompt=f"Provide suggestions for the following text: {text}",
+                max_tokens=100
+            )
+            suggestions = response.choices[0].text.strip()
+            return suggestions
+
         vale_report_path = 'vale_report.json'
         suggestions = parse_vale_output(vale_report_path)
 
         repo = os.getenv('GITHUB_REPOSITORY')
-        pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]  # Correct extraction of PR number
-        token = os.getenv('VALE_GITHUB_TOKEN')  # Correct token environment variable
+        pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
+        token = os.getenv('VALE_GITHUB_TOKEN')
         commit_id = os.getenv('GITHUB_SHA')
+        openai_api_key = os.getenv('OPENAI_API_KEY')
 
         headers = {
             'Authorization': f'token {token}',
@@ -98,8 +113,11 @@ jobs:
         }
 
         for suggestion in suggestions:
+            text_to_correct = suggestion['suggestion']
+            openai_suggestion = get_openai_suggestions(text_to_correct, openai_api_key)
+
             comment = {
-                "body": f"Suggestion: Change `{suggestion['suggestion']}` on line {suggestion['line_number']} in `{suggestion['file_path']}`",
+                "body": f"Suggestion: Change `{text_to_correct}` to `{openai_suggestion}` on line {suggestion['line_number']} in `{suggestion['file_path']}`",
                 "commit_id": commit_id,
                 "path": suggestion['file_path'],
                 "position": suggestion['line_number'],
