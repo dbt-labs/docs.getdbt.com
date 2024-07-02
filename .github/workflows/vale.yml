@@ -1,30 +1,42 @@
-name: Vale Lint and Suggest
+name: Lint and suggest
 
 on:
   pull_request:
     paths:
       - '**/*.md'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
-  lint-and-suggest:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
-      run: |
-        curl -fsSL https://install.vale.sh | sh
+      uses: errata-ai/vale-action@reviewdog
+      with:
+        reporter: github-pr-review
+
+
+    - name: Install jq
+      run: sudo apt-get install -y jq
 
     - name: Get all changed markdown files
       id: changed-markdown-files
       uses: tj-actions/changed-files@v44
       with:
+        # Avoid using single or double quotes for multiline patterns
         files: |
-          **/*.md
+           **.md
 
-    - name: List all changed markdown files
+    - name: List all changed files markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
         ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
@@ -35,108 +47,12 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
-        mkdir -p vale_output
         for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output/vale_output_${file//\//_}.json"
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
-        ls -l vale_output
+        ls -l
 
-    - name: Upload Vale output for processing
-      if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      uses: actions/upload-artifact@v2
-      with:
-        name: vale-output
-        path: vale_output
-
-    - name: Install Python and dependencies
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-    - run: pip install requests openai
-
-    - name: Run Auto-suggestion Script
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      run: |
-        python3 << 'EOF'
-        import os
-        import requests
-        import json
-        import openai
-
-        def parse_vale_output(vale_output_dir):
-            suggestions = []
-            for file_name in os.listdir(vale_output_dir):
-                if file_name.endswith(".json"):
-                    file_path = os.path.join(vale_output_dir, file_name)
-                    with open(file_path, 'r') as file:
-                        data = json.load(file)
-                        for item in data:
-                            file_path = item['Path']
-                            for match in item['Matches']:
-                                line_number = match['Line']
-                                message = match['Message']
-                                context = match['Context']
-                                suggestions.append({
-                                    "file_path": file_path,
-                                    "line_number": line_number,
-                                    "message": message,
-                                    "context": context
-                                })
-            return suggestions
-
-        def get_openai_suggestions(context, message, api_key):
-            openai.api_key = api_key
-            prompt = (
-                f"Here is a piece of text: \"{context}\"\n"
-                f"There is an issue: \"{message}\"\n"
-                f"Please provide a suggestion to fix this issue."
-            )
-            response = openai.Completion.create(
-                engine="text-davinci-002",
-                prompt=prompt,
-                max_tokens=100
-            )
-            suggestion = response.choices[0].text.strip()
-            return suggestion
-
-        vale_output_dir = 'vale_output'
-        suggestions = parse_vale_output(vale_output_dir)
-
-        repo = os.getenv('GITHUB_REPOSITORY')
-        pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
-        token = os.getenv('GITHUB_TOKEN')
-        commit_id = os.getenv('GITHUB_SHA')
-        openai_api_key = os.getenv('OPENAI_API_KEY')
-
-        headers = {
-            'Authorization': f'token {token}',
-            'Accept': 'application/vnd.github.v3+json'
-        }
-
-        for suggestion in suggestions:
-            context = suggestion['context']
-            message = suggestion['message']
-            openai_suggestion = get_openai_suggestions(context, message, openai_api_key)
-
-            comment = {
-                "body": f"Suggestion: {openai_suggestion}\n\nContext:\n{context}\n\nMessage:\n{message}",
-                "commit_id": commit_id,
-                "path": suggestion['file_path'],
-                "position": suggestion['line_number'],
-                "side": "RIGHT"
-            }
-
-            response = requests.post(
-                f"https://api.github.com/repos/{repo}/pulls/{pull_request_number}/comments",
-                headers=headers,
-                data=json.dumps(comment)
-            )
-
-            if response.status_code != 201:
-                print(f"Failed to create comment: {response.json()}")
-
-        EOF
+   
