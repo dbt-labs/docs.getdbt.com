@@ -15,8 +15,6 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@v2
-      with:
-        reporter: github-pr-check
 
     - name: Get all changed markdown files
       id: changed-markdown-files
@@ -36,19 +34,19 @@ jobs:
 
     - name: Run Vale on changed files
       run: |
-        for file in ${{ env.ALL_CHANGED_FILES }}; do
+        mkdir -p vale_output
+        for file in ${{ steps.changed-markdown-files.outputs.all_changed_files }}; do
           echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+          vale --output=JSON $file > "vale_output/${file//\//_}.json"
         done
         echo "Vale outputs:"
-        ls -l
+        ls -l vale_output
 
     - name: Merge JSON outputs
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: |
-        if ls vale_output/vale_output_*.json 1> /dev/null 2>&1; then
-          jq -s '.' vale_output/vale_output_*.json > vale_report.json
+        if ls vale_output/*.json 1> /dev/null 2>&1; then
+          jq -s '.' vale_output/*.json > vale_report.json
         else
           echo '[]' > vale_report.json
         fi
@@ -90,7 +88,7 @@ jobs:
         suggestions = parse_vale_output(vale_report_path)
 
         repo = os.getenv('GITHUB_REPOSITORY')
-        pull_request_number = os.getenv('GITHUB_REF').split('/')[-2]
+        pull_request_number = os.getenv('GITHUB_REF').split('/')[-1]
         token = os.getenv('VALE_GITHUB_TOKEN')
         commit_id = os.getenv('GITHUB_SHA')
 
