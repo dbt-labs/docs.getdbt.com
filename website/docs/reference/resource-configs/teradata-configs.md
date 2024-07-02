@@ -263,7 +263,10 @@ Loading CSVs using dbt's seed functionality is not performant for large files. C
     ```
 
 ## Snapshots
-Snapshots uses the HASHROW function of the Teradata database to generate a unique hash value for the 'dbt_scd_id' column. If you want to use your own hash UDF, there is a configuration option in the snapshot model called 'snapshot_hash_udf', which defaults to HASHROW. You can provide a value like <database_name.hash_udf_name>. If only hash_udf_name is provided, it uses the same schema as the model runs.
+
+Snapshots use the [HASHROW function](https://docs.teradata.com/r/Enterprise_IntelliFlex_VMware/SQL-Functions-Expressions-and-Predicates/Hash-Related-Functions/HASHROW/HASHROW-Function-Syntax) of the Teradata database to generate a unique hash value for the `dbt_scd_id` column. 
+
+To use your own hash UDF, there is a configuration option in the snapshot model called `snapshot_hash_udf`, which defaults to HASHROW. You can provide a value like `<database_name.hash_udf_name>`. If you only provide `hash_udf_name`, it uses the same schema as the model runs.
 
 for e.g. :
   snapshots/snapshot_example.sql
