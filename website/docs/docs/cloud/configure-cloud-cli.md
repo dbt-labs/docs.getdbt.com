@@ -115,7 +115,7 @@ The dbt Cloud CLI supports [SQLFluff](https://sqlfluff.com/), a modular and conf
 
 To get started, run `dbt sqlfluff -h` to see the list of supported commands and flags, such as `dbt sqlfluff lint` to lint SQL files.
 
-#### Considerations:
+#### Considerations
 - When you run `dbt sqlfluff`, it picks up changes to your local .sqlfluff config.
 - To use SQLFluff in continuous integration/continuous development, you need to have a `dbt_cloud.yml` file in your project and run commands from a valid dbt project.
 - SQLFluff commands in the dbt Cloud CLI do not return exit codes yet.
