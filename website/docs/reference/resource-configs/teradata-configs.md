@@ -262,6 +262,29 @@ Loading CSVs using dbt's seed functionality is not performant for large files. C
         +use_fastload: true
     ```
 
+## Snapshots
+
+Snapshots use the [HASHROW function](https://docs.teradata.com/r/Enterprise_IntelliFlex_VMware/SQL-Functions-Expressions-and-Predicates/Hash-Related-Functions/HASHROW/HASHROW-Function-Syntax) of the Teradata database to generate a unique hash value for the `dbt_scd_id` column. 
+
+To use your own hash UDF, there is a configuration option in the snapshot model called `snapshot_hash_udf`, which defaults to HASHROW. You can provide a value like `<database_name.hash_udf_name>`. If you only provide `hash_udf_name`, it uses the same schema as the model runs.
+
+For example, in the `snapshots/snapshot_example.sql` file:
+
+  ```sql
+  {% snapshot snapshot_example %}
+  {{
+    config(
+      target_schema='snapshots',
+      unique_key='id',
+      strategy='check',
+      check_cols=["c2"],
+      snapshot_hash_udf='GLOBAL_FUNCTIONS.hash_md5'
+    )
+  }}
+  select * from {{ ref('order_payments') }}
+  {% endsnapshot %}
+  ```
+
 #### Grants
 
 Grants are supported in dbt-teradata adapter with release version 1.2.0 and above. You can use grants to manage access to the datasets you're producing with dbt. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
@@ -289,7 +312,113 @@ Another e.g. for adding multiple grants:
   ```
 > :information_source: `copy_grants` is not supported in Teradata.
 
-More on Grants can be found at https://docs.getdbt.com/reference/resource-configs/grants
+Refer to [grants](/reference/resource-configs/grants) for more information on Grants.
+
+## Query Band
+Query Band in dbt-teradata can be set on three levels:
+1. Profiles level: In the `profiles.yml` file, the user can provide `query_band` using the following example:
+
+    ```yaml 
+    query_band: 'application=dbt;'
+   ```
+
+2. Project level: In the `dbt_project.yml` file, the user can provide `query_band` using the following example:
+
+   ```yaml
+     models:
+     Project_name:
+        +query_band: "app=dbt;model={model};"
+   ```
+4. Model level: It can be set on the model SQL file or model level configuration on YAML files:
+
+   ```sql
+   {{ config( query_band='sql={model};' ) }}
+   ```
+
+Users can set `query_band` at any level or on all levels. With profiles-level `query_band`, dbt-teradata will set the `query_band` for the first time for the session, and subsequently for model and project level query band will be updated with respective configuration.
+
+If a user sets some key-value pair with value as `'{model}'`, internally this `'{model}'` will be replaced with model name, which can be useful for telemetry tracking of sql/ dbql logging. 
+
+  ```yaml
+  models:
+  Project_name:
+    +query_band: "app=dbt;model={model};"
+  ````
+
+- For example, if the model the user is running is `stg_orders`, `{model}` will be replaced with `stg_orders` in runtime.
+- If no `query_band` is set by the user, the default query_band used will be: ```org=teradata-internal-telem;appname=dbt;```
+
+## valid_history incremental materialization strategy
+_This is available in early access_
+    
+This strategy is designed to manage historical data efficiently within a Teradata environment, leveraging dbt features to ensure data quality and optimal resource usage.
+In temporal databases, valid time is crucial for applications like historical reporting, ML training datasets, and forensic analysis.
+
+```yaml
+  {{
+      config(
+          materialized='incremental',
+          unique_key='id',
+          on_schema_change='fail',
+          incremental_strategy='valid_history',
+          valid_from='valid_from_column',
+          history_column_in_target='history_period_column'
+  )
+  }}
+  ```
+
+The `valid_history` incremental strategy requires the following parameters:
+* `valid_from` &mdash; Column in the source table of **timestamp** datatype indicating when each record became valid.
+* `history_column_in_target` &mdash; Column in the target table of **period** datatype that tracks history.
+
+The valid_history strategy in dbt-teradata involves several critical steps to ensure the integrity and accuracy of historical data management:
+* Remove duplicates and conflicting values from the source data:
+  * This step ensures that the data is clean and ready for further processing by eliminating any redundant or conflicting records.
+  * The process of removing duplicates and conflicting values from the source data involves using a ranking mechanism to ensure that only the highest-priority records are retained. This is accomplished using the SQL RANK() function.
+* Identify and adjust overlapping time slices:
+  * Overlapping time periods in the data are detected and corrected to maintain a consistent and non-overlapping timeline.
+* Manage records needing to be overwritten or split based on the source and target data:
+  * This involves handling scenarios where records in the source data overlap with or need to replace records in the target data, ensuring that the historical timeline remains accurate.
+* Utilize the TD_NORMALIZE_MEET function to compact history:
+  * This function helps to normalize and compact the history by merging adjacent time periods, improving the efficiency and performance of the database.
+* Delete existing overlapping records from the target table:
+  * Before inserting new or updated records, any existing records in the target table that overlap with the new data are removed to prevent conflicts.
+* Insert the processed data into the target table:
+  * Finally, the cleaned and adjusted data is inserted into the target table, ensuring that the historical data is up-to-date and accurately reflects the intended timeline.
+
+ 
+These steps collectively ensure that the valid_history strategy effectively manages historical data, maintaining its integrity and accuracy while optimizing performance.
+
+  ```sql
+    An illustration demonstrating the source sample data and its corresponding target data:  
+  
+    -- Source data
+        pk |       valid_from          | value_txt1 | value_txt2
+        ======================================================================
+        1  | 2024-03-01 00:00:00.0000  | A          | x1
+        1  | 2024-03-12 00:00:00.0000  | B          | x1
+        1  | 2024-03-12 00:00:00.0000  | B          | x2
+        1  | 2024-03-25 00:00:00.0000  | A          | x2
+        2  | 2024-03-01 00:00:00.0000  | A          | x1
+        2  | 2024-03-12 00:00:00.0000  | C          | x1
+        2  | 2024-03-12 00:00:00.0000  | D          | x1
+        2  | 2024-03-13 00:00:00.0000  | C          | x1
+        2  | 2024-03-14 00:00:00.0000  | C          | x1
+    
+    -- Target data
+        pk | valid_period                                                       | value_txt1 | value_txt2
+        ===================================================================================================
+        1  | PERIOD(TIMESTAMP)[2024-03-01 00:00:00.0, 2024-03-12 00:00:00.0]    | A          | x1
+        1  | PERIOD(TIMESTAMP)[2024-03-12 00:00:00.0, 2024-03-25 00:00:00.0]    | B          | x1
+        1  | PERIOD(TIMESTAMP)[2024-03-25 00:00:00.0, 9999-12-31 23:59:59.9999] | A          | x2
+        2  | PERIOD(TIMESTAMP)[2024-03-01 00:00:00.0, 2024-03-12 00:00:00.0]    | A          | x1
+        2  | PERIOD(TIMESTAMP)[2024-03-12 00:00:00.0, 9999-12-31 23:59:59.9999] | C          | x1
+  ```
+  
+
+:::info
+The target table must already exist before running the model. Ensure the target table is created and properly structured with the necessary columns, including a column that tracks the history with period datatype, before running a dbt model.
+:::
 
 ## Common Teradata-specific tasks
 * *collect statistics* - when a table is created or modified significantly, there might be a need to tell Teradata to collect statistics for the optimizer. It can be done using `COLLECT STATISTICS` command. You can perform this step using dbt's `post-hooks`, e.g.:
