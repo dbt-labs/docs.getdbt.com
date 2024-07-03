@@ -97,7 +97,7 @@ Using the same `activated_accounts` example mentioned in [the usage example](#us
         - name: accounts
           agg: sum
           expr: 1
-      create_metric: true
+           create_metric: true
   metrics:
     - name: activated_accounts
       label: Activated Accounts
