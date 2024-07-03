@@ -1243,7 +1243,7 @@ const sidebarSettings = {
     },
     {
       type: "link",
-      label: "Community Forum",
+      label: "Community forum",
       href: "/community/forum",
     },
     {
