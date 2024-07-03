@@ -33,6 +33,27 @@ to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowfl
 **Note**: The schema field in the **Developer Credentials** section is a required field.
 <Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
 
+### Snowflake MFA
+
+**Available in:** Development environments,  Deployment environments
+
+dbt Cloud supports Snowflake's [multi-factor authentication (MFA)](https://docs.snowflake.com/en/user-guide/security-mfa) as another username and password option for increased login security. Snowflake's MFA support is powered by the Duo Security service.
+
+- In dbt Cloud, set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
+
+   ```yaml
+  authenticator: username_password_mfa
+   ```
+
+- To reduce the number of user prompts when connecting to Snowflake with MFA, [enable token caching](https://docs.snowflake.com/en/user-guide/security-mfa#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in Snowflake.
+- Optionally, if users miss prompts and their Snowflake accounts get locked, you can prevent automatic retries by adding the following in the same **Extended attributes** section:
+
+  ```yaml
+  connect_retries: 0
+  ```
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/extended-attributes-mfa.jpg" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
+
 ### Key pair
 
 **Available in:** Development environments,  Deployment environments
@@ -75,23 +96,6 @@ For more information on configuring a Snowflake OAuth connection in dbt Cloud, p
 ## Configuration
 
 To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
-
-### Multi-factor authentication
-
-dbt Cloud supports Snowflake's [multi-factor authentication (MFA)](https://docs.snowflake.com/en/user-guide/security-mfa) for increased login security. Snowflake's MFA support is powered by the Duo Security service.
-
-- To reduce the number of user prompts when connecting to Snowflake with MFA, [enable token caching](https://docs.snowflake.com/en/user-guide/security-mfa#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in Snowflake.
-- Then navigate to dbt Cloud to set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
-
-  ```yaml
-  authenticator: username_password_mfa
-  ```
-- Optionally, if users miss prompts and their Snowflake accounts get locked, you can prevent automatic retries by adding the following in the same **Extended attributes** section:
-  ```yaml
-  connect_retries: 0
-  ```
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/extended-attributes-mfa.jpg" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
 
 ### Custom domain URL
 
