@@ -18,6 +18,9 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
 
+## July 2024
+- **Enhancement:** Users will now see validation warnings if their derived metric doesn't have an expr or if the expr doesn't use all the input metrics to help keep YAML clean. Previously, users would see a query-time error. 
+
 ## June 2024
 
 #### dbt Semantic Layer
