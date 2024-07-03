@@ -66,10 +66,5 @@ When those macros are customized, we often leverage some of the following logic:
     - Or as an alternative to environment variables, you can use `target.name` ([documentation here](https://docs.getdbt.com/reference/dbt-jinja-functions/target)). In dbt Cloud, we recommend environment variables as they can be set at the environment and all jobs will automatically inherit those values.
 
 
-<Lightbox src="img/docs/dbt-cloud/using-dbt-cloud/Environment-Variables/custom-schema-env-var.png" title="Environment-Variables." />
-
-    
-
-
 
 </div>
