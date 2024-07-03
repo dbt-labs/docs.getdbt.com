@@ -66,11 +66,11 @@ If there has been a change in user roles or Slack permissions where you no longe
 1. Locate the **OAuth** section with the Slack application and click **Link**.
    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
 
-### Logged in to Slack
+#### Logged in to Slack
 If you're already logged in to Slack, the handshake only requires allowing the app access. If you're a member of multiple workspaces, you can select the appropriate workspace from the dropdown menu in the upper right corner.
    <Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" width="75%" title="Allow dbt access to Slack"/>
 
-## Logged out
+#### Logged out
 
 If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
