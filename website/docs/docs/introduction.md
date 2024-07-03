@@ -7,7 +7,7 @@ pagination_prev: null
 
 <Snippet path="what-is-dbt-intro" />
 
-The documentation is written by the tech writer. It is is organised by the writer too.
+The documentation is written and organized by the tech writer.
 
 The tech writer writes teh documentation. It is organized by the writer too recieve this program.
 
