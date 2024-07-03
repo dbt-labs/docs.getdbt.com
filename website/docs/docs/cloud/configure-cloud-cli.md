@@ -116,10 +116,11 @@ The dbt Cloud CLI supports [SQLFluff](https://sqlfluff.com/), a modular and conf
 To get started, run `dbt sqlfluff -h` to see the list of supported commands and flags, such as `dbt sqlfluff lint` to lint SQL files.
 
 #### Considerations
+Keep the following points in mind when using SQLFluff with the dbt Cloud:
+
 - When you run `dbt sqlfluff`, it picks up changes to your local .sqlfluff config.
 - To use SQLFluff in continuous integration/continuous development, you need to have a `dbt_cloud.yml` file in your project and run commands from a valid dbt project.
 - SQLFluff commands in the dbt Cloud CLI do not return exit codes yet.
-
 
 ## FAQs
 <Expandable alt_header="How to create a .dbt directory and move your file">
@@ -130,7 +131,7 @@ If you've never had a `.dbt` directory, you should perform the following recomme
 <TabItem value="Create a .dbt directory">
 
   1. Clone your dbt project repository locally.
-  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to to create a `.dbt` folder in the root of your filesystem:
+  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to create a `.dbt` folder in the root of your filesystem:
 
      ```bash
      mkdir ~/.dbt
