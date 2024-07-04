@@ -249,7 +249,22 @@ models:
 
 <div warehouse="Redshift">
 
-* Granting to / revoking from is only fully supported for Redshift users (not groups or roles).
+By default granting to / revoking from is only applicable for Redshift users (not groups or roles).
+
+To configure grants for roles or groups, they need to be clearly demarcated as such with a prefix:
+- To grant access on a model to `role_analyst`, you need to specify them as `ROLE role_analyst`.
+- To grant access on a model to `group_finance`, you need to specify them as `GROUP group_finance`.
+
+General example:
+
+```sql
+{{ config(grants = {'select': ['ROLE role_analyst']}) }}
+```
+
+Redshift requires the USAGE permission to be granted on schemas for object permissions to be effective.  Please refer to AWS's documentation for more context:
+- [AWS Redshift SQL Reference - GRANT command](https://docs.aws.amazon.com/redshift/latest/dg/r_GRANT.html)
+
+In order to grant `USAGE`, use [post-hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook).
 
 </div>
 
