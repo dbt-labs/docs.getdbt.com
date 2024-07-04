@@ -21,8 +21,6 @@ jobs:
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
-      with:
-        files: docs/
 
     - name: Install jq
       run: sudo apt-get install -y jq
