@@ -21,6 +21,8 @@ dbt Cloud is going "versionless." This means you'll automatically get early acce
 
 Select ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access to everything in dbt Core v1.8 and more.
 
+For the dbt Cloud Admin API and Terraform, use the value `versionless` to configure your environment. 
+
 ## New and changed features and functionality
 
 Features and functionality new in dbt v1.8.
