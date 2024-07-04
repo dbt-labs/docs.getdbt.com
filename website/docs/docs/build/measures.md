@@ -220,11 +220,11 @@ semantic_models:
     measures: 
       - name: count_users_end_of_month 
         description: Count of users at the end of the month 
-        expr: 1
-        agg: sum 
+        expr: user_id
+        agg: count_distinct
         non_additive_dimension: 
           name: metric_time
-          window_choice: min 
+          window_choice: max 
       - name: mrr_end_of_month
         description: Aggregate by summing all users' active subscription plans at the end of month 
         expr: subscription_value
