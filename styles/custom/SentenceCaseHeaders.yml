@@ -6,3 +6,10 @@ match: $sentence
 indicators:
   - ":"
 
+custom: true
+filters:
+  - '\bdbt\b'
+  - '\bdbt\s+Cloud\b'
+  - '\bdbt\s+Core\b'
+  - '\bdbt\s+Cloud\s+CLI\b'
+  - '\bdbt\s+.*?\b'
