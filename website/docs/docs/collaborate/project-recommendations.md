@@ -8,7 +8,7 @@ dbt Explorer provides recommendations about your project from the `dbt_project_e
 
 - Explorer also offers a global view, showing all the recommendations across the project for easy sorting and summarizing.
 - These recommendations provide insight into how you can create a better-documented, better-tested, and better-built dbt project, leading to less confusion and more trust.
-- For seamless and consistent experience, recommendations are pre-defined and don't import customizations applied to your package or project.
+- For a seamless and consistent experience, recommendations uses ` dbt_project_evaluator`'s pre-defined settings and don't import customizations applied to your package or project.
 
 ## Recommendations page
 The Recommendations overview page includes two top-level metrics measuring the test and documentation coverage of the models in your project. 
