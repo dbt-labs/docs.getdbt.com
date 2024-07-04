@@ -125,13 +125,12 @@ metrics:
     label: Weekly active users
     type_params:
       measure:
-        - name: active_users
-          fill_nulls_with: 0
-          join_to_timespine: true
-        - name: distinct_users
-          window: 7 days
-
-      
+        name: active_users
+        fill_nulls_with: 0
+        join_to_timespine: true
+      measure:
+        name: distinct_users
+        window: 7 days
 ```
 
 ### Derived metrics
