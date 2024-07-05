@@ -21,28 +21,28 @@ In the rest of the article, for consistency, when we refer to database, we'll be
 
 The default behavior of what object is created is the following:
 
-- The database where the object is created will be the database configured at the [environment level in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud-environments), or in the `profiles.yml` in dbt Core.
+- The database where the object is created will be the database configured at the [environment level in dbt Cloud](/docs/dbt-cloud-environments), or in the `profiles.yml` in dbt Core.
 
-- The schema depends on whether a [custom schema](https://docs.getdbt.com/docs/build/custom-schemas) has been defined for the model:
+- The schema depends on whether a [custom schema](/docs/build/custom-schemas) has been defined for the model:
     - If no custom schema is defined, the schema where the object is created will be the schema that has been configured in dbt Cloud (`dbt_username` for Dev and the configured default schema for any deployment environment); or the schema in the `profiles.yml` in dbt Core.
         - Note: Automated CI jobs are a specific case, where the schema name is derived from the job number and PR number: `dbt_cloud_pr_<job_id>_<pr_id>`
     - If a custom schema has been defined, it will concatenate the schema from above with the custom one.
         - For example, if the configured schema is `dbt_myschema` and the custom one is `marketing`, the objects will be created under `dbt_myschema_marketing`.
 
-- The object name depends on whether an [alias](https://docs.getdbt.com/reference/resource-configs/alias) has been defined on the model:
+- The object name depends on whether an [alias](/reference/resource-configs/alias) has been defined on the model:
     - If no alias is defined, the object will be created with the same name as the model, without the `.sql` or `.py` at the end.
     - If an alias is defined, the object will be created with the configured alias.
 
 Those default rules are a great starting point, and many people stick with those without customizing them.
 
-It allows developers to work in their own sandboxed schemas and makes it possible to have different feature requests updating the same models without conflicting with one another.
+It allows developers to work in their own test schemas and makes it possible to have different feature requests updating the same models without conflicting with one another.
 
 
 ## How to customize this behavior
 
 While the default behavior would fit the needs of most dbt users, there are occasions where the approach doesn’t fit with the existing data qarehouse governance and design.
 
-For example, dbt expects that it has the rights to create a schema on the fly **quickly** (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
+For example, dbt expects that it has the rights to create a schema on the fly _quickly_ (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
 
 Or, you might have many custom schemas and want to avoid having your Dev database showing the combination of all developer schemas and custom schemas.
 
@@ -50,9 +50,9 @@ Alternatively, you may even want to create models in schemas based on the featur
 
 For this reason, dbt offers three macros to customize what objects are created in the Data Warehouse:
 
-- [`generate_database_name()`](https://docs.getdbt.com/docs/build/custom-databases#generate_database_name)
-- [`generate_schema_name()`](https://docs.getdbt.com/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name)
-- [`generate_alias_name()`](https://docs.getdbt.com/docs/build/custom-aliases#generate_alias_name)
+- [`generate_database_name()`](/docs/build/custom-databases#generate_database_name)
+- [`generate_schema_name()`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name)
+- [`generate_alias_name()`](/docs/build/custom-aliases#generate_alias_name)
 
 By overwriting one or multiple of those macros, we can tailor where dbt objects are created in the data warehouse and align with any existing requirement.
 
@@ -65,13 +65,13 @@ The key concept is that models run from two different contexts (For example runn
 
 When those macros are customized, we often leverage some of the following logic:
 
-- Set up some [environment variables](https://docs.getdbt.com/docs/build/environment-variables) and having some Jinja (`if/else/endif`) logic to identify if the run happens in Dev, Prod, CI and so fourth.
-    - Or, as an alternative to environment variables, you can use `target.name` ([documentation here](https://docs.getdbt.com/reference/dbt-jinja-functions/target)). In dbt Cloud, we recommend environment variables, as they can be set at the environment and all jobs will automatically inherit those values.
+- Set up some [environment variables](/docs/build/environment-variables) and having some Jinja (`if/else/endif`) logic to identify if the run happens in Dev, Prod, CI etc and more so.
+    - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](reference/dbt-jinja-functions/target). In dbt Cloud, we recommend environment variables as they can be set at the environment and all jobs will automatically inherit those values.
 
 
 INSERT IMAGE HERE
 
-Use the out of the box ('DBT_CLOUD_GIT_BRANCH') environment variable in dbt Cloud, available in the IDE (documentation here), to allow the database/schema/object name to depend on the current branch.
+Use the out of the box `DBT_CLOUD_GIT_BRANCH` environment variable in dbt Cloud, available in the IDE [special environment variables](/docs/build/environment-variables#special-environment-variables), to allow the database/schema/object name to depend on the current branch.
 
 
 ## Example use cases
@@ -85,14 +85,15 @@ Note that the below examples do not comprehensively cover all the available opti
 :::
 
 
+
 ### 1. Using the custom schema without the concatenation with the target schema in production
 
 
-The most common use case is wanting to use the custom schema without concatenating it with the default schema name when in Production.
+The most common use case is using the custom schema without concatenating it with the default schema name when in Production.
 
 To do so, you can create a new file called `generate_schema_name.sql` under your macros folder with the following code:
 
-```Java
+```Jinja
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
@@ -129,7 +130,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 
 :::note
 
-We added logic to check if the current dbt run is happening in Production or not. This is important, and we explain why in the section on **What NOT to do**.
+We added logic to check if the current dbt run is happening in Production or not. This is important, and we explain why in the section on [What not to do](/guides/customize-schema-alias?step=3#what-not-to-do).
 
 :::
 
@@ -144,7 +145,7 @@ In this case, we can:
 - Update `generate_alias_name()` to append the developer alias and the custom schema to the front of the table name in the dev environment.
     - This method is not ideal, as it can cause long table names, but it will let developers see in which schema the model will be created in Production.
 
-```Java
+```Jina
 
 {% macro generate_alias_name(custom_alias_name=none, node=none) -%}
 
@@ -186,7 +187,7 @@ In this case, we can:
 
 ```
 
-```Java
+```Jina
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
@@ -233,10 +234,10 @@ The `DBT_CLOUD_GIT_BRANCH` variable is only available within the dbt Cloud IDE a
 :::
 
 
-We’ve also seen some organizations prefer to organize their dev databases by branch name. This requires implementing similar logic in `generate_database_name()` instead of the `generate_schema_name()` macro. By default, dbt will not automatically create the databases. You can refer to the **More tips and tricks** section on the next page to learn more.    
+We’ve also seen some organizations prefer to organize their dev databases by branch name. This requires implementing similar logic in `generate_database_name()` instead of the `generate_schema_name()` macro. By default, dbt will not automatically create the databases. You can refer to the [More tips and tricks](/guides/customize-schema-alias?step=4#more-tips-and-tricks) section on the next page to learn more.    
 
 
-```Java
+```Jinja
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
@@ -289,7 +290,7 @@ When Developer 1 and Developer 2 are checked out on the same branch, they will g
 Some organizations prefer to write their CI jobs to a single schema with the PR identifier prefixed to the front of the table name. It's important to note that this will result in long table names. 
 
 
-```Java
+```Jinja
 
 {% macro generate_schema_name(custom_schema_name=none, node=none) -%}
 
@@ -316,7 +317,7 @@ Some organizations prefer to write their CI jobs to a single schema with the PR 
 
 ```
 
-```Java
+```Jinja
 
 {% macro generate_alias_name(custom_alias_name=none, node=none) -%}
 
@@ -373,7 +374,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 | Production  | prod          | analytics     |prod.marketing.my_model                    |
 
 
-### What NOT to do
+### What not to do
 
 
 ### Update generate_schema_name() to always use the custom schema if it is set
@@ -386,7 +387,7 @@ Some people prefer to only use the custom schema when it is set instead of conca
 
 When modifying the default macro for `generate_schema_name()`, this might result iney might creatinge this new version.
 
-```Java
+```Jina
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
@@ -433,6 +434,8 @@ As described above in the first example, the macro should be updated to check if
 
 ## More tips and tricks
 
+This section will provide some useful tips on how to properly adjust your `generate_database_name()` and `generate_alias_name()` macros. 
+
 
 ### Creating non existing databases from dbt
 
@@ -440,15 +443,15 @@ dbt will automatically try to create a schema if it doesn’t exist and if an ob
 
 So, if your `generate_database_name()` configuration points to different databases, which might not exist, dbt will fail if you do a simple `dbt build`. 
 
-It is still possible to get it working in dbt by creating some macros that will check if a database exists and if not, dbt will create it. You can then call those macros either in [a `dbt run-operation ...` step](https://docs.getdbt.com/reference/commands/run-operation) in your jobs or as a [`on-run-start` hook](https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end).
+It is still possible to get it working in dbt by creating some macros that will check if a database exists and if not, dbt will create it. You can then call those macros either in [a `dbt run-operation ...` step](/reference/commands/run-operation) in your jobs or as a [`on-run-start` hook](/reference/project-configs/on-run-start-on-run-end).
 
 
-### Assuming context using Environment Variables rather than `target.name`
+### Assuming context using environment variables rather than `target.name`
 
 
-We prefer to use [environment variables](https://docs.getdbt.com/docs/build/environment-variables) over `target.name` ([documentation here](https://docs.getdbt.com/reference/dbt-jinja-functions/target)) to decipher the context of the dbt invocation. 
+We prefer to use [environment variables](/docs/build/environment-variables) over `target.name` For a further read, have a look at ([About target variables](/reference/dbt-jinja-functions/target)) to decipher the context of the dbt invocation. 
 
-- [`target.name`](http://target.name) cannot be set at the environment-level. Therefore, every job within the environment must explicitly specify the `target.name` override. If the job does not have the appropriate `target.name` value set, the database/schema/alias may not resolve properly. Alternatively, environment variable values are inherited by the jobs within their corresponding environment. The environment variable values can also be overwritten within the jobs if needed.
+- `target.name` cannot be set at the environment-level. Therefore, every job within the environment must explicitly specify the `target.name` override. If the job does not have the appropriate `target.name` value set, the database/schema/alias may not resolve properly. Alternatively, environment variable values are inherited by the jobs within their corresponding environment. The environment variable values can also be overwritten within the jobs if needed.
 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment-Variables/custom-schema-env-var-targetname.png."/>
@@ -462,10 +465,10 @@ We prefer to use [environment variables](https://docs.getdbt.com/docs/build/envi
 
 ### Always enforce custom schemas
 
-Some users prefer to enforce custom schemas on all objects within their projects. This avoids writing to unintended “default” locations. You can add this logic to your `generate_schema_name()` macro to [raise a compilation error](https://docs.getdbt.com/reference/dbt-jinja-functions/exceptions) if a custom schema is not defined for an object.
+Some users prefer to enforce custom schemas on all objects within their projects. This avoids writing to unintended “default” locations. You can add this logic to your `generate_schema_name()` macro to [raise a compilation error](/reference/dbt-jinja-functions/exceptions) if a custom schema is not defined for an object.
 
 
-```Java
+```Jinja
 
  {% macro generate_schema_name(custom_schema_name, node) -%}
 
