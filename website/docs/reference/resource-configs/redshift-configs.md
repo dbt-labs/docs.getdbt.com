@@ -266,3 +266,4 @@ Redshift doesn't support [unit tests](/docs/build/unit-tests) when the SQL in th
 
 Please contribute by upvoting [this dbt-redshift issue](https://github.com/dbt-labs/dbt-core/issues/8499) for unit tests to work properly in this scenario.
 
+</VersionBlock>
