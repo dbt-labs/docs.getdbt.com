@@ -68,7 +68,7 @@ A Microsoft Entra ID admin needs to add another redirect URI to your Entra ID ap
 
 2. Select the link next to **Redirect URIs**
 3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan:
-`https://YOUR_ACCESS_URL/complete/microsoft_entra_id_service_user`
+`https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
 4. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/redirect-uri.gif" title="Adding the Service User redirect URI"/>
