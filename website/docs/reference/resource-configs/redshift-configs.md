@@ -228,7 +228,7 @@ Redshift supports [backup](https://docs.aws.amazon.com/redshift/latest/mgmt/work
 This parameter identifies if the materialized view should be backed up as part of the cluster snapshot.
 By default, a materialized view will be backed up during a cluster snapshot.
 dbt cannot monitor this parameter as it is not queryable within Redshift.
-If the value is changed, the materialized view will need to go through a `--full-refresh` in order to set it.
+If the value changes, the materialized view will need to go through a `--full-refresh` to set it.
 
 Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters).
 
@@ -246,7 +246,7 @@ Find more information about materialized view limitations in Redshift's [docs](h
 #### Changing materialization from "materialized_view" to "table" or "view"
 
 Swapping a materialized view to a table or view is not supported.
-You must manually drop the existing materialized view in the data warehouse prior to calling `dbt run`.
+You must manually drop the existing materialized view in the data warehouse before calling `dbt run`.
 Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
 This would only need to be done once as the existing object would then be a materialized view.
 
