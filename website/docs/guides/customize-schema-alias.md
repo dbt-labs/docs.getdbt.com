@@ -69,7 +69,7 @@ When those macros are customized, we often leverage some of the following logic:
     - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](reference/dbt-jinja-functions/target). In dbt Cloud, we recommend environment variables as they can be set at the environment and all jobs will automatically inherit those values.
 
 
-INSERT IMAGE HERE
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/custom-schema-env-var-targetname.png" title="Custom schema environmental variables target name." />
 
 Use the out of the box `DBT_CLOUD_GIT_BRANCH` environment variable in dbt Cloud, available in the IDE [special environment variables](/docs/build/environment-variables#special-environment-variables), to allow the database/schema/object name to depend on the current branch.
 
@@ -454,13 +454,13 @@ We prefer to use [environment variables](/docs/build/environment-variables) over
 - `target.name` cannot be set at the environment-level. Therefore, every job within the environment must explicitly specify the `target.name` override. If the job does not have the appropriate `target.name` value set, the database/schema/alias may not resolve properly. Alternatively, environment variable values are inherited by the jobs within their corresponding environment. The environment variable values can also be overwritten within the jobs if needed.
 
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment-Variables/custom-schema-env-var-targetname.png."/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/custom-schema-env-var-targetname.png" title="Customize schema alias env var."/>
 
 
-- [`target.name`] requires every developer to input the same value (often ‘dev’) into the target name section of their project development credentials. If a developer doesn’t have the appropriate target name value set, their database/schema/alias may not resolve properly. 
+- `target.name` requires every developer to input the same value (often ‘dev’) into the target name section of their project development credentials. If a developer doesn’t have the appropriate target name value set, their database/schema/alias may not resolve properly. 
 
 
-<Lightbox src="website/static/img/docs/dbt-cloud/using-dbt-cloud/development-credentials.png."/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/development-credentials.png" title="Development credentials." width="60%" />
 
 
 ### Always enforce custom schemas
