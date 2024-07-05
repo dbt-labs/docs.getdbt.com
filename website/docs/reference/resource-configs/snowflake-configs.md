@@ -115,7 +115,7 @@ By using the specified `cluster_by` fields to order the table, dbt minimizes the
 
 ### Using cluster_by
 
-The `cluster_by` config accepts either a string, or a list of strings to use as clustering keys. The following example will create a sessions table that is clustered by the `session_start` column.
+The `cluster_by` config accepts either a string or a list of strings to use as clustering keys. The following example will create a sessions table that is clustered by the `session_start` column.
 
 <File name='models/events/sessions.sql'>
 
@@ -357,6 +357,9 @@ Dynamic tables are supported with the following configuration parameters:
 | [`target_lag`](#target-lag)                                                      | `<string>` | yes      |         | alter                     |
 | [`snowflake_warehouse`](#configuring-virtual-warehouses)                         | `<string>` | yes      |         | alter                     |
 
+There are additional parameters available, such as `REFRESH_MODE` (specifies the refresh type) and `INITIALIZE` (specifies the behavior of the initial refresh). To learn more about them, `refer to Snowflake's [Create dynamic table doc](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
+
+
 <Tabs
   groupId="config-languages"
   defaultValue="project-yaml"
@@ -425,8 +428,6 @@ models:
 </TabItem>
 
 </Tabs>
-
-Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
 
 ### Target lag
 
