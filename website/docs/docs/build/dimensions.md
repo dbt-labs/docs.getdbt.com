@@ -169,7 +169,7 @@ measures:
 
 <TabItem value="time_gran" label="time_granularity">
 
-`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric that is specified with weekly granularity couldn't be aggregated to a daily grain. 
+`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric specified with weekly granularity couldn't be aggregated to a daily grain. 
 
 The current options for time granularity are day, week, month, quarter, and year. 
 
@@ -209,14 +209,14 @@ measures:
 ### SCD Type II
 
 :::caution
-Currently, there are limitations in supporting SCD's.
+Currently, there are limitations in supporting SCDs.
 :::
 
 MetricFlow supports joins against dimensions values in a semantic model built on top of a slowly changing dimension (SCD) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country. 
 
 #### Basic structure
 
-SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
+SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimension value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
 
 The following basic structure of an SCD Type II data platform table is supported:
 
@@ -238,7 +238,7 @@ Here are some guidelines to follow when implementing SCD Type II tables:
 - The SCD semantic model must have `valid_to` and `valid_from` time dimensions, which are logical constructs.
 - The `valid_from` and `valid_to` properties must be specified exactly once per SCD semantic model.
 - The `valid_from` and `valid_to` properties shouldn't be used or specified on the same time dimension.
-- The `valid_from` and 'valid_to` time dimensions must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
+- The `valid_from` and `valid_to` time dimensions must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
 - We recommend defining the underlying dbt model with [dbt snapshots](/docs/build/snapshots). This supports the SCD Type II table layout and ensures that the table is updated with the latest data.
 
 This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned dimensions data (stored in a table called `scd_dimensions`) using a primary key made up of the `entity_key` and `timestamp` columns. 
@@ -260,7 +260,7 @@ group by 1, 2
 
 <TabItem value="example" label="SCD table example 1">
 
-This example shows how to create slowly changing dimensions (SCD) using a semantic model. The SCD table contains information about sales persons' tier and the time length of that tier. Suppose you have the underlying SCD table:
+This example shows how to create slowly changing dimensions (SCD) using a semantic model. The SCD table contains information about salespersons' tier and the time length of that tier. Suppose you have the underlying SCD table:
 
 | sales_person_id | tier | start_date | end_date | 
 |-----------------|------|------------|----------|
