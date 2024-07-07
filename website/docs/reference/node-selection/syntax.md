@@ -201,23 +201,6 @@ The state and result selectors can also be combined in a single invocation of db
 dbt run --select "result:<status>+" state:modified+ --defer --state ./<dbt-artifact-path>
 ```
 
-### Fresh rebuilds
-
-Only supported by v1.1 or newer.
-
-When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal to dbt to run and test only on these fresher sources and their children by including the `source_status:fresher+` argument. This requires both previous and current state to have the `sources.json` artifact be available. Or plainly said, both job states need to run `dbt source freshness`.
-
-As example:
-
-```bash
-# Command step order
-dbt source freshness
-dbt build --select "source_status:fresher+"
-```
-
-
-For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).
-
 ### The "source_status" status
 
 Only supported by v1.1 or newer.
@@ -234,3 +217,5 @@ After issuing one of the above commands, you can reference the source freshness 
 dbt source freshness # must be run again to compare current to previous state
 dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
+
+For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).
