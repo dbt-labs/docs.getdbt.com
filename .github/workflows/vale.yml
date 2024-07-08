@@ -30,4 +30,10 @@ jobs:
 
     - name: Run Vale on all markdown files
       run: |
-        vale --output=JSON '**/*.md' > vale_output.json
+        files=$(git diff --name-only --diff-filter=AM origin/main | grep -E '\.md$')
+        for file in $files; do
+          vale --output=JSON $file > "vale_output_${file//\//_}.json"
+          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
+        done
+        echo "Vale outputs:"
+        ls -l
