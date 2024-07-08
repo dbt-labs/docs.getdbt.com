@@ -265,8 +265,6 @@ We’ve also seen some organizations prefer to organize their dev databases by b
     {%- endif -%}
 
 {%- endmacro %}
-
-
 ```
 
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
@@ -359,7 +357,6 @@ Some organizations prefer to write their CI jobs to a single schema with the PR 
 
 {%- endmacro %}
 
-
 ```
 
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
@@ -403,8 +400,6 @@ When modifying the default macro for `generate_schema_name()`, this might result
     {%- endif -%}
 
 {%- endmacro %}
-
-
 ```
 
 While it may provide the expected output for Production, where a dedicated database is used, it will generate conflicts anywhere people share a database. 
@@ -480,4 +475,5 @@ Some users prefer to enforce custom schemas on all objects within their projects
     {%- endif -%}
 
 ```
+
 </div>
