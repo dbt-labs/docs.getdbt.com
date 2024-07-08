@@ -8,7 +8,7 @@ pagination_prev: null
 
 # About dbt Assist <Lifecycle status='beta'/> 
 
-dbt Assist is a powerful artificial intelligence (AI) co-pilot feature that helps automate development in dbt Cloud, allowing you to focus on delivering data that works. dbt Assist’s AI co-pilot generates documentation and tests for your dbt SQL models directly in the dbt Cloud IDE, with a click of a button, and helps you accomplish more in less time.
+dbt Assist is a powerful artificial intelligence (AI) co-pilot feature that helps automate development in dbt Cloud, allowing you to focus on delivering data that works. dbt Assist’s AI co-pilot generates [documentation](/docs/build/documentation) and [tests](/docs/build/data-tests) for your dbt SQL models directly in the dbt Cloud IDE, with a click of a button, and helps you accomplish more in less time.
 
 :::tip Beta feature
 dbt Assist is an AI tool meant to _help_ developers generate documentation and tests in dbt Cloud. It's available in beta, in the dbt Cloud IDE only.
