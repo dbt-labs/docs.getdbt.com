@@ -1,7 +1,8 @@
 extends: substitution
+message: "Avoid latin abbreviations: '%s'. Consider using '%s' instead."
+level: warning
+ignorecase: false
 
-message: "Avoid Latin abbreviations: '%s'. Consider using 'for example', 'that is', 'and so forth', or 'such as'."
-level: suggestion
 swap:
   - e.g.: for example
   - eg: for example
