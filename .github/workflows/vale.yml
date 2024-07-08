@@ -33,6 +33,7 @@ jobs:
       run: |
         cd website
         for file in ${{ steps.changed-markdown-files.outputs.all_changed_files }}; do
-          echo "Running Vale on $file"
-          vale $file
+          basefile=$(basename $file)
+          echo "Running Vale on $basefile"
+          vale $basefile
         done
