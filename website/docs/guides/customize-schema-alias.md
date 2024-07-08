@@ -376,7 +376,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 ### What not to do
 
 
-### Update generate_schema_name() to always use the custom schema if it is set
+### Update generate_schema_name() to always use the custom schema
 
 
 Some people prefer to only use the custom schema when it is set instead of concatenating the default schema with the custom one, as it happens in the out of the box behavior.
