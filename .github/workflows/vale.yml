@@ -1,4 +1,4 @@
-name: Vale Lint
+name: Vale linting check
 
 on:
   pull_request:
