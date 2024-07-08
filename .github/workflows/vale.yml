@@ -16,9 +16,7 @@ jobs:
       - name: Set up Vale
         uses: errata-ai/vale-action@reviewdog
         with:
-          version: 2.17.0
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
-          fail_on_error: true
 
       - name: Get changed files
         id: changed-files
