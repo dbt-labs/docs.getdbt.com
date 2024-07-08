@@ -10,45 +10,20 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
-
-    - name: Set HOME environment variable
-      run: echo "HOME=/home/runner" >> $GITHUB_ENV
-
-    - name: Verify Vale Configuration
-      run: |
-        echo "HOME is set to $HOME"
-        if [ -z "$HOME" ]; then
-          echo "HOME is not set. Setting it manually."
-          export HOME=/home/runner
-          echo "HOME is now set to $HOME"
-        fi
-        ls -la
-        if [ -f "./.vale.ini" ]; then
-          echo ".vale.ini found in the root directory."
-        else
-          echo ".vale.ini not found in the root directory."
-          exit 1
-        fi
-        if [ -d "./styles/custom" ]; then
-          echo "Custom styles directory found."
-        else
-          echo "Custom styles directory not found."
-          exit 1
-        fi
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
       with:
-        version: 2.17.0
         reporter: github-pr-check
+
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -57,10 +32,11 @@ jobs:
       id: changed-markdown-files
       uses: tj-actions/changed-files@v44
       with:
+        # Avoid using single or double quotes for multiline patterns
         files: |
            **.md
 
-    - name: List all changed markdown files
+    - name: List all changed files markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
         ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
@@ -71,14 +47,13 @@ jobs:
 
     - name: Run Vale on changed files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
-      env:
-        HOME: /home/runner
       run: |
-        echo "Running Vale with HOME set to $HOME"
-        for file in ${{ steps.changed-markdown-files.outputs.all_changed_files }}; do
+        for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output_${file//\//_}.json"
           vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
+
+   
