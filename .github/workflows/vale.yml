@@ -10,36 +10,49 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale:
+  vale: # Vale linting job
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
-
-    - name: Fetch all branches
-      run: git fetch --all
+        fetch-depth: 0  # Fetch all history so we can access all commits
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
       with:
-        version: 2.17.0
         reporter: github-pr-check
+
 
     - name: Install jq
       run: sudo apt-get install -y jq
 
-    - name: Add Vale to PATH
-      run: echo "/home/runner/vale" >> $GITHUB_PATH
+    - name: Get all changed markdown files
+      id: changed-markdown-files
+      uses: tj-actions/changed-files@v44
+      with:
+        # Avoid using single or double quotes for multiline patterns
+        files: |
+           **.md
 
-    - name: Run Vale on all markdown files
+    - name: List all changed files markdown files
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
-        files=$(git diff --name-only --diff-filter=AM origin/main | grep -E '\.md$')
-        for file in $files; do
+        for file in ${ALL_CHANGED_FILES}; do
+          echo "$file was changed"
+        done
+
+    - name: Run Vale on changed files
+      run: |
+        for file in ${{ env.ALL_CHANGED_FILES }}; do
+          echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output_${file//\//_}.json"
           vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
         done
         echo "Vale outputs:"
         ls -l
+
+   
