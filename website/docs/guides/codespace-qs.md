@@ -1,6 +1,8 @@
 ---
-title: Quickstart for dbt Core using GitHub Codespaces
-id: codespace
+title: Quickstart for dbt Core using DuckDB
+id: DuckDB
+description: "Learn to use dbt Core using DuckDB."
+hoverSnippet: "Learn to use dbt Core using DuckDB."
 platform: 'dbt-core'
 icon: 'fa-github'
 level: 'Beginner'
@@ -12,9 +14,33 @@ tags: ['dbt Core','Quickstart']
 
 ## Introduction
 
-In this quickstart guide, you’ll learn how to create a codespace and be able to execute the `dbt build` command from it in _less than 5 minutes_. 
+In this quickstart guide, you’ll learn how to install dbt Core for the use of DuckDB. 
 
-dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that you (and anyone else) can reuse to create a complete dbt environment with a working and runnable project. When you create the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) creates a fully functioning dbt environment, connects to a DuckDB database, and loads a year of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Jaffle Shop template also provides instructions on how to do this, along with animated GIFs. 
+We'll also touch on creating a codespace executing the `dbt build` command from it in _less than 5 minutes_. 
+
+
+### Installation
+
+Further down is a step-by-step explanation of the steps to install DuckDB
+
+On a Mac, copy & paste the following to your terminal (standalone or with an IDE like VS Code).
+STEPS HERE
+
+
+On Windows, use either Powershell or the command line prompt:
+
+Windows cmd.exe
+STEPS HERE
+
+
+Windows PowerShell
+STEPS HERE
+
+
+
+
+
+
 
 ### Prerequisites
 
@@ -28,6 +54,8 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 - [Test and document your project](/guides/manual-install?step=4)
 - [Schedule a job](/guides/manual-install?step=5)
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
+
+dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that you (and anyone else) can reuse to create a complete dbt environment with a working and runnable project. When you create the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) creates a fully functioning dbt environment, connects to a DuckDB database, and loads a year of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Jaffle Shop template also provides instructions on how to do this, along with animated GIFs. 
 
 ## Create a codespace
 
