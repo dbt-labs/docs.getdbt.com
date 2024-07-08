@@ -6,7 +6,7 @@ sidebar_label: "Measures"
 tags: [Metrics, Semantic Layer]
 ---
 
-Measures are aggregations performed on columns in your model. They can be used as final metrics or serve as building blocks for more complex metrics. 
+Measures are aggregations performed on columns in your model. They can be used as final metrics or as building blocks for more complex metrics. 
 
 Measures have several inputs, which are described in the following table along with their field types.
 
@@ -31,7 +31,7 @@ measures:
 
 ### Name
 
-When you create a measure, you can either give it a custom name or use the `name` of the data platform column directly. If the `name` of the measure is different from the column name, you need to add an `expr` to specify the column name. The `name` of the measure is used when creating a metric. 
+When you create a measure, you can either give it a custom name or use the `name` of the data platform column directly. If the measure's `name` differs from the column name, you need to add an `expr` to specify the column name. The `name` of the measure is used when creating a metric. 
 
 Measure names must be unique across all semantic models in a project and can not be the same as an existing `entity` or `dimension` within that same model.
 
@@ -88,7 +88,7 @@ If the `name` you specified for a measure doesn't match a column name in your mo
 **Notes**: When using SQL functions in the `expr` parameter, **always use data platform-specific SQL**. This is because outputs may differ depending on your specific data platform.
 
 :::tip For Snowflake users
-For Snowflake users, if you use a week-level function in the `expr` parameter, it'll now return Monday as the default week start day based on ISO standards. If you have any account or session level overrides for the `WEEK_START` parameter that fix it to a value other than 0 or 1, you will still see Monday as the week start. 
+For Snowflake users, if you use a week-level function in the `expr` parameter, it'll now return Monday as the default week start day based on ISO standards. If you have any account or session level overrides for the `WEEK_START` parameter that fixes it to a value other than 0 or 1, you will still see Monday as the week starts. 
 
 If you use the `dayofweek` function in the `expr` parameter with the legacy Snowflake default of `WEEK_START = 0`, it will now return ISO-standard values of 1 (Monday) through 7 (Sunday) instead of Snowflake's legacy default values of 0 (Monday) through 6 (Sunday).
 :::
@@ -254,15 +254,15 @@ We can query the semi-additive metrics using the following syntax:
 For dbt Cloud:
 
 ```bash
-dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
-dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
+dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
+dbt sl query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
 ```
 
 For dbt Core:
 
 ```bash
-mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
-mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
+mf query --metrics mrr_by_end_of_month --group-by metric_time__month --order metric_time__month 
+mf query --metrics mrr_by_end_of_month --group-by metric_time__week --order metric_time__week 
 ```
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';
