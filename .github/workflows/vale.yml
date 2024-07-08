@@ -26,7 +26,8 @@ jobs:
       id: changed-markdown-files
       uses: tj-actions/changed-files@v44
       with:
-        files: '**/*.md'
+        files: |
+           **.md
 
     - name: Run Vale on changed files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
