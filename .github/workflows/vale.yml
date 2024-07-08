@@ -21,7 +21,6 @@ jobs:
           reporter: github-pr-review
           level: warning
           fail_on_error: true
-          filter_mode: added
 
       - name: Get changed files
         id: changed-files
