@@ -16,7 +16,7 @@ jobs:
       - name: Set up Vale
         uses: errata-ai/vale-action@v2
         with:
-          files: '["website/docs/docs","website/docs/reference","website/docs/guides"]'
+          files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
 
       - name: Get changed files
         id: changed-files
