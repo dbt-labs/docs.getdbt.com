@@ -135,7 +135,7 @@ Here are some tips and caveats to consider when using dbt Mesh:
 - Project dependencies are uni-directional, meaning they go in one direction. This means dbt checks for cycles across projects (circular dependencies) and raise errors if any are detected. However, we are considering support to allow projects to depend on each other in both directions in the future, with dbt still checking for node-level cycles while allowing cycles at the project level.
 - Everyone in the account can view public model metadata, which helps users find data products more easily. This is separate from who can access the actual data, which is controlled by permissions in the data warehouse. For use cases where even metadata about a reusable data asset is sensitive, we are [considering](https://github.com/dbt-labs/dbt-core/issues/9340) an optional extension of protected models.
 
-Refer to the [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-4-faqs) for more questions.
+Refer to the [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-5-faqs) for more questions.
 
 ## dbt Semantic Layer
 

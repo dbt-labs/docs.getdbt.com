@@ -22,7 +22,7 @@ The user's assigned license determines the specific capabilities they can access
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API Access | ✅ | ❌ | ❌ |
-| Use [dbt Explorer](/docs/collaborate/explore-projects) | ✅  | ✅ | ✅  |
+| Use [dbt Explorer](/docs/collaborate/explore-projects) | ✅  | ✅ | ❌  |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
