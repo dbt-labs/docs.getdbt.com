@@ -10,21 +10,23 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale: # Vale linting job
+  vale:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
+        fetch-depth: 0
+
+    - name: Set HOME environment variable
+      run: echo "HOME=/home/runner" >> $GITHUB_ENV
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
       with:
         version: 2.17.0
         reporter: github-pr-check
-
 
     - name: Install jq
       run: sudo apt-get install -y jq
@@ -33,11 +35,10 @@ jobs:
       id: changed-markdown-files
       uses: tj-actions/changed-files@v44
       with:
-        # Avoid using single or double quotes for multiline patterns
         files: |
            **.md
 
-    - name: List all changed files markdown files
+    - name: List all changed markdown files
       if: steps.changed-markdown-files.outputs.any_changed == 'true'
       env:
         ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
@@ -55,5 +56,3 @@ jobs:
         done
         echo "Vale outputs:"
         ls -l
-
-   
