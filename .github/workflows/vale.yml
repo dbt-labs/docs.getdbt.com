@@ -48,6 +48,8 @@ jobs:
         done
 
     - name: Run Vale on changed files
+      env:
+        HOME: /home/runner
       run: |
         for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
