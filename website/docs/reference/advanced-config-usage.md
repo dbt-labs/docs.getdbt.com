@@ -2,9 +2,10 @@
 title: Advanced configuration usage
 sidebar_label: Advanced usage
 ---
-## Alternative config block syntax
 
-Some configurations may contain characters (e.g. dashes) that cannot be parsed as a jinja argument. For example, the following would return an error:
+### Alternative Config Block Syntax
+
+Some configurations may containe characters (e.g. dashes and commas) that cannot be parsed as a jinja argument. For example, the following would return an eror:
 
 ```sql
 {{ config(
