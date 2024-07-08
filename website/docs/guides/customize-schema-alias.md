@@ -68,7 +68,7 @@ The key concept is that models run from two different contexts (For example runn
 When those macros are customized, we often leverage some of the following logic:
 
 - Set up some [environment variables](/docs/build/environment-variables) and having some Jinja (`if/else/endif`) logic to identify if the run happens in Dev, Prod, CI etc and more so.
-    - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](reference/dbt-jinja-functions/target). In dbt Cloud, we recommend environment variables as they can be set at the environment and all jobs will automatically inherit those values.
+    - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](/reference/dbt-jinja-functions/target). In dbt Cloud, we recommend environment variables as they can be set at the environment and all jobs will automatically inherit those values.
 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/custom-schema-env-var-targetname.png" title="Custom schema environmental variables target name." />
