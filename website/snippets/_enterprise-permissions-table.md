@@ -7,13 +7,13 @@ Key:
 Permissions: 
 
 * Account-level permissions &mdash; Permissions related to the management of the dbt Cloud account. For example, billing and account settings.
-* Project-level permissions &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the IDE or dbt Cloud CLI. 
+* Project-level permissions &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the dbt Cloud IDE or dbt Cloud CLI. 
 
 ### Account roles
 Account roles enable you to manage the dbt Cloud account and manage the account settings (for example, generating service tokens, inviting users, and configuring SSO). They also provide project-level permissions. The **Account Admin** role is the highest level of access you can assign.  
 
 #### Account permissions for account roles
-
+ 
 | Account-level permission| Account Admin | Billing admin | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
 | Account settings        |     W         |               |        R        |       R        |   R    |
@@ -31,7 +31,7 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 | Webhooks                |     W         |               |                 |                |        |
 
 #### Project permissions for account roles
-
+ 
 |Project-level permission | Account Admin | Billing admin | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
 | Connections             |       W       |               |       W         |                |   R    |
@@ -51,11 +51,11 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 
 
 ### Project role permissions
-
+ 
 The project roles enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the IDE or dbt Cloud CLI, but may also provide some account-level permissions.
 
 #### Account permissions for project roles
-
+ 
 | Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br>(Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
 | Account settings         |   R   |         |      R         |           |     R     |           |             |             |          |                |             |     R      |         |
@@ -71,7 +71,7 @@ The project roles enable you to work within the projects in various capacities. 
 | Webhooks                 |   W   |         |                |     W     |           |           |             |             |          |                |             |            |    W    |
 
 #### Project permissions for project roles
-
+ 
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br> (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
 | Connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |                |     R       |     R      |         |
@@ -87,4 +87,4 @@ The project roles enable you to work within the projects in various capacities. 
 | Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |             |      R      |          |                |     R       |     W      |         |
 | Repositories             |   W   |         |       R        |     R     |     W     |           |             |             |          |                |     R       |     R      |         |
 | Runs                     |   W   |    R    |       R        |     W     |     R     |     W     |      W      |      R      |          |                |     R       |     R      |         |
-| Semantic Layer Config    |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |        W       |     R       |     R      |         |
+| Semantic Layer config    |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |        W       |     R       |     R      |         |
