@@ -22,6 +22,28 @@ jobs:
     - name: Set HOME environment variable
       run: echo "HOME=/home/runner" >> $GITHUB_ENV
 
+    - name: Verify Vale Configuration
+      run: |
+        echo "HOME is set to $HOME"
+        if [ -z "$HOME" ]; then
+          echo "HOME is not set. Setting it manually."
+          export HOME=/home/runner
+          echo "HOME is now set to $HOME"
+        fi
+        ls -la
+        if [ -f "./vale.ini" ]; then
+          echo "vale.ini found in the root directory."
+        else
+          echo "vale.ini not found in the root directory."
+          exit 1
+        fi
+        if [ -d "./styles/custom" ]; then
+          echo "Custom styles directory found."
+        else
+          echo "Custom styles directory not found."
+          exit 1
+        fi
+
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
       with:
@@ -51,6 +73,7 @@ jobs:
       env:
         HOME: /home/runner
       run: |
+        echo "Running Vale with HOME set to $HOME"
         for file in ${{ env.ALL_CHANGED_FILES }}; do
           echo "Running Vale on $file"
           vale --output=JSON $file > "vale_output_${file//\//_}.json"
