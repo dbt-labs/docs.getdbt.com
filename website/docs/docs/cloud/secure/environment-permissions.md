@@ -25,7 +25,7 @@ Environment-level permissions give dbt Cloud admins more flexibility to protect 
 
 - Environment-level permissions do not allow you to create custom roles and permissions for each resource type in dbt Cloud.
 - You can only select environment types, and can’t specify a particular environment within a project.
-- You can't select specific resources withing environments. dbt Cloud jobs, runs, and environment variables are all environment resources.
+- You can't select specific resources within environments. dbt Cloud jobs, runs, and environment variables are all environment resources.
     - For example, you can't specify that a user only has access to jobs but not environment variables. Access to a given environment gives the user access to everything within that environment.
 
 ## Environments and roles
@@ -34,7 +34,7 @@ dbt Cloud has four different environment types per project:
 
 - **Production** &mdash; Primary deployment environment. Only one unique Production env per project.
 - **Development** &mdash; Developer testing environment. Only one unique Development env per project.
-- **Staging** &mdash; Pre-prod environment that sits between development and staging. Only one unique Staging env per project.
+- **Staging** &mdash; Pre-prod environment that sits between development and production. Only one unique Staging env per project.
 - **General** &mdash; Mixed use environments. No limit on the number per project. 
 
 Environment write permissions can be specified for the following roles:
@@ -75,7 +75,7 @@ Let's say Acme corp has 12 projects and 3 of them belong to Finance, 3 belong to
 
 With mixed access across projects:
 
-- **Developer:** If the user has the Developer role has access to Projects A, B, C, then they only need access to Dev and General environments.
+- **Developer:** If the user has the Developer role and has access to Projects A, B, C, then they only need access to Dev and General environments.
 - **Testing/QA:** If they have the Developer role and they have access to Projects A, B, C, then they only need access to Development, Staging, and General environments.
 - **Production Deployment:** If the user has the Admin _or_ Developer role _and_ they have access to Projects A, B, C, then they need access to all Environments.
 - **Analyst:** If the user has the Analyst role, then the need _no_ write access to _any environment_.

@@ -3,6 +3,9 @@ title: "Service account tokens"
 id: "service-tokens"
 description: "Service account tokens help you define permissions for securing access to your dbt Cloud account and its projects."
 ---
+
+# Service account tokens <Lifecycle status="team,enterprise"/>
+
 :::info Important service account token update
 
 If you have service tokens created on or before July 18, 2023, please read [this important update](/docs/dbt-cloud-apis/service-tokens#service-token-update).
