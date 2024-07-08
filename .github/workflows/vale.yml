@@ -21,8 +21,9 @@ jobs:
       - name: Get changed files
         id: changed-files
         run: |
-          echo "::set-output name=files::$(git diff --name-only ${{ github.base_ref }} ${{ github.head_ref }} | grep '\.md\|\.txt\|\.rst' | tr '\n' ' ')"
-  
+          CHANGED_FILES=$(git diff --name-only ${{ github.base_ref }} ${{ github.head_ref }} | grep -E '^website/docs/(docs|reference|guides)/.*\.(md|txt|rst)$' | tr '\n' ' ')
+          echo "files=$CHANGED_FILES" >> $GITHUB_ENV
+
       - name: Run Vale
         run: |
           for file in ${{ steps.changed-files.outputs.files }}; do
