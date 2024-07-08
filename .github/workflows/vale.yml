@@ -10,14 +10,17 @@ permissions:
   pull-requests: write
 
 jobs:
-  vale: # Vale linting job
+  vale:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Fetch all history so we can access all commits
+        fetch-depth: 0
+
+    - name: Fetch all branches
+      run: git fetch --all
 
     - name: Install Vale
       uses: errata-ai/vale-action@reviewdog
@@ -27,6 +30,9 @@ jobs:
 
     - name: Install jq
       run: sudo apt-get install -y jq
+
+    - name: Add Vale to PATH
+      run: echo "/home/runner/vale" >> $GITHUB_PATH
 
     - name: Run Vale on all markdown files
       run: |
