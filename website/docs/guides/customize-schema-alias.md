@@ -1,7 +1,7 @@
 ---
 title: Customize schema and alias
 id: customize-schema-alias
-description: "How to properly adjust your generate_schema_name() and generate_alias_name() macros.."
+description: "Learn how to properly adjust your generate_schema_name() and generate_alias_name() macros."
 displayText: Learn how to adjust your generate schema name and generate alias name.
 hoverSnippet: Learn how to adjust your generate schema name and generate alias name.
 # time_to_complete: '30 minutes' commenting out until we test
