@@ -27,7 +27,7 @@ The default behavior of what object is created is the following:
     - If no custom schema is defined, the object will be created in the schema configured in dbt Cloud (`dbt_username` for Dev and the default schema for deployment environments) or the schema in the `profiles.yml` in dbt Core.
  
 
-        - Note: Automated CI jobs are a specific case, where the schema name is derived from the job number and PR number: `dbt_cloud_pr_<job_id>_<pr_id>`
+        - Note that for automated CI jobs, the schema name is derived from the job number and PR number: `dbt_cloud_pr_<job_id>_<pr_id>`
     - If a custom schema has been defined, it will concatenate the schema from above with the custom one.
         - For example, if the configured schema is `dbt_myschema` and the custom one is `marketing`, the objects will be created under `dbt_myschema_marketing`.
 
