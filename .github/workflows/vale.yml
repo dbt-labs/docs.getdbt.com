@@ -26,6 +26,6 @@ jobs:
 
       - name: Run Vale
         run: |
-          for file in ${{ env.files }}; do
+          for file in ${{ steps.changed-files.outputs.files }}; do
             vale "$file"
           done
