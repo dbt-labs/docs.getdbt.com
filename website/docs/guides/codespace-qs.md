@@ -24,18 +24,53 @@ We'll also touch on creating a codespace executing the `dbt build` command from 
 Further down is a step-by-step explanation of the steps to install DuckDB
 
 On a Mac, copy & paste the following to your terminal (standalone or with an IDE like VS Code).
-STEPS HERE
 
+```shell
+git clone https://github.com/dbt-labs/jaffle_shop_duckdb.git
+cd jaffle_shop_duckdb
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
+source venv/bin/activate
+dbt build
+dbt docs generate
+dbt docs serve
+```
 
 On Windows, use either Powershell or the command line prompt:
 
 Windows cmd.exe
-STEPS HERE
 
+```shell
+git clone https://github.com/dbt-labs/docs-duckdb.git
+cd docs-duckdb
+python -m venv venv
+venv\Scripts\activate.bat
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+venv\Scripts\activate.bat
+dbt deps
+dbt build
+dbt docs generate
+dbt docs serve
+```
 
 Windows PowerShell
-STEPS HERE
 
+```shell
+git clone https://github.com/dbt-labs/docs-duckdb.git — Clones the repo locally
+cd docs-duckdb — Changes directory to the repo
+python3 -m venv venv — Creates a Python virtual environment called "venv"
+source venv/bin/activate — Activates the Pythong virtual environment
+python3 -m pip install --upgrade pip — Ensures Pip is up to date
+python3 -m pip install -r requirements.txt — Installs the programs and dependencies defined in the file
+source venv/bin/activate — Ensures the virtual environment is activated
+dbt deps — Installs dbt packages
+dbt build — Seeds data to the Duckdb database and builds models and dependecies
+dbt docs generate — Compiles the projects docs
+dbt docs serve — Displays the docs in your open or default browser.
+```
 
 
 
