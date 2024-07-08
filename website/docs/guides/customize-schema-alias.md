@@ -296,7 +296,7 @@ Some organizations prefer to write their CI jobs to a single schema with the PR 
 
     {%- set default_schema = target.schema -%}
     
-    {# If the CI Job does not exist in it's own environment, use the target.name variable inside the job instead #}
+    {# If the CI Job does not exist in its own environment, use the target.name variable inside the job instead #}
     {# {%- if target.name == 'CI' -%} #} 
     
     {%- if env_var('DBT_ENV_TYPE','DEV') == 'CI' -%}
