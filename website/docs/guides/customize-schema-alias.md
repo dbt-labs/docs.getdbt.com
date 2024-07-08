@@ -14,7 +14,7 @@ recently_updated: true
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
-
+This guide explains how to customize the [schema](/docs/build/custom-schemas) and [alias](/docs/build/custom-aliases) naming conventions in dbt to fit your data warehouse governance and design needs.
 When we develop dbt models and run or build them, objects get created in the data warehouse.
 
 In the rest of the article, for consistency, when we refer to database, we'll be referring to a Google Cloud Platform  project or to a Databricks catalog.
