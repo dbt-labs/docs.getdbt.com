@@ -1,43 +1,30 @@
-name: Lint and suggest
+name: Vale Lint
 
 on:
   pull_request:
-    paths:
-      - '**/*.md'
-
-permissions:
-  contents: read
-  pull-requests: write
+    branches:
+      - '**'
 
 jobs:
-  vale: # Vale linting job
+  lint:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install Vale
-      uses: errata-ai/vale-action@v2
-      with:
-        reporter: github-pr-check
+      - name: Set up Vale
+        uses: errata-ai/vale-action@v2
+        with:
+          files: website/docs/docs
 
-    - name: Install jq
-      run: sudo apt-get install -y jq
-
-    - name: Run Vale on changed files
-      run: |
-        changed_files=$(git diff --name-only --diff-filter=ACMRT HEAD^ HEAD -- '*.md')
-        if [ -z "$changed_files" ]; then
-          echo "No changed markdown files."
-          exit 0
-        fi
-
-        for file in $changed_files; do
-          echo "Running Vale on $file"
-          vale --output=JSON $file > "vale_output_${file//\//_}.json"
-          vale --output=edit $file > "vale_output_${file//\//_}_edit.md"
-        done
-        echo "Vale outputs:"
-        ls -l
-
+      - name: Get changed files
+        id: changed-files
+        run: |
+          echo "::set-output name=files::$(git diff --name-only ${{ github.base_ref }} ${{ github.head_ref }} | grep '\.md\|\.txt\|\.rst' | tr '\n' ' ')"
+  
+      - name: Run Vale
+        run: |
+          for file in ${{ steps.changed-files.outputs.files }}; do
+            vale "$file"
+          done
