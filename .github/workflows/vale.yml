@@ -1,4 +1,4 @@
-name: Vale linting check
+name: Vale Lint
 
 on:
   pull_request:
@@ -8,24 +8,27 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    
 
     steps:
-      
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Vale
-        uses: errata-ai/vale-action@reviewdog
+        uses: errata-ai/vale-action@v2
+        with:
+          files: |
+            website/docs/docs
+            website/docs/reference
+            website/docs/guides
 
       - name: Get changed files
         id: changed-files
         run: |
           CHANGED_FILES=$(git diff --name-only ${{ github.base_ref }} ${{ github.head_ref }} | grep -E '^website/docs/(docs|reference|guides)/.*\.(md|txt|rst)$' | tr '\n' ' ')
-          echo "files=$CHANGED_FILES" >> $GITHUB_ENV
+          echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
 
       - name: Run Vale
         run: |
-          for file in ${{ steps.changed-files.outputs.files }}; do
+          for file in ${{ env.CHANGED_FILES }}; do
             vale "$file"
           done
