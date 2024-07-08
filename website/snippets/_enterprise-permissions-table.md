@@ -41,7 +41,7 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 | Develop (IDE or dbt Cloud CLI)           |       W       |               |       W         |                |        |
 | Environments            |       W       |               |       W         |                |   R    |
 | Jobs                    |       W       |               |       W         |                |   R    |
-| Metadata                |       R       |               |       R         |                |   R    |
+| Metadata                 |       R       |               |       R         |                |   R    |
 | Permissions             |       W       |               |       W         |       W        |   R    |
 | Profile                 |       W       |               |       W         |                |   R    |
 | Projects                |       W       |               |       W         |       R        |   R    |
@@ -81,7 +81,7 @@ The project roles enable you to work within the projects in various capacities. 
 | Develop <br />(IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |             |          |                |             |            |         |
 | Environments             |   W   |    R    |       R        |     R     |     R     |     W     |             |      R      |          |                |     R       |     R      |         |
 | Jobs                     |   W   |    R    |       R        |     W     |     R     |     W     |      R      |      R      |          |                |     R       |     R      |         |
-| Metadata                 |   R   |    R    |       R        |     R     |     R     |     R     |             |      R      |     R    |                |     R       |     R      |         |
+| Metadata                  |   R   |    R    |       R        |     R     |     R     |     R     |             |      R      |     R    |                |     R       |     R      |         |
 | Permissions (Groups & Licenses)              |   W   |         |       R        |     R     |     R     |           |             |             |          |                |             |     R      |         |
 | Profile (Credentials)                 |   W   |    R    |                |     R     |     R     |     R     |             |             |          |                |     R       |             |         |
 | Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |             |      R      |          |                |     R       |     W      |         |
