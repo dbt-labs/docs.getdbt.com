@@ -8,15 +8,17 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    
 
     steps:
+      
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Vale
-        uses: errata-ai/vale-action@v2
+        uses: errata-ai/vale-action@reviewdog
         with:
-          files: all
+          files: website/docs
 
       - name: Get changed files
         id: changed-files
