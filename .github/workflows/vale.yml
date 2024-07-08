@@ -18,8 +18,6 @@ jobs:
         with:
           version: 2.17.0
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
-          reporter: github-pr-review
-          level: warning
           fail_on_error: true
 
       - name: Get changed files
