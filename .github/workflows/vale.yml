@@ -17,6 +17,10 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
+          reporter: github-pr-review
+          level: warning
+          fail_on_error: true
+          filter_mode: added
 
       - name: Get changed files
         id: changed-files
@@ -29,3 +33,5 @@ jobs:
           for file in ${{ env.CHANGED_FILES }}; do
             vale "$file"
           done
+    
+               
