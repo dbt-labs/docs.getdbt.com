@@ -31,10 +31,10 @@ jobs:
           echo "HOME is now set to $HOME"
         fi
         ls -la
-        if [ -f "./vale.ini" ]; then
-          echo "vale.ini found in the root directory."
+        if [ -f "./.vale.ini" ]; then
+          echo ".vale.ini found in the root directory."
         else
-          echo "vale.ini not found in the root directory."
+          echo ".vale.ini not found in the root directory."
           exit 1
         fi
         if [ -d "./styles/custom" ]; then
