@@ -72,6 +72,7 @@ dbt docs generate — Compiles the projects docs
 dbt docs serve — Displays the docs in your open or default browser.
 ```
 
+Fore more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
 
 
 
@@ -79,18 +80,23 @@ dbt docs serve — Displays the docs in your open or default browser.
 
 ### Prerequisites
 
-- To use the dbt command-line interface (CLI), it's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
+When using DuckDB with dbt Core, you'll need to use the dbt command-line interface (CLI).
+
+- It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
 ## Related content
 
+- [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup)
 - [Create a GitHub repository](/guides/manual-install?step=2)
 - [Build your first models](/guides/manual-install?step=3)
 - [Test and document your project](/guides/manual-install?step=4)
 - [Schedule a job](/guides/manual-install?step=5)
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
 
+
 dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that you (and anyone else) can reuse to create a complete dbt environment with a working and runnable project. When you create the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) creates a fully functioning dbt environment, connects to a DuckDB database, and loads a year of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Jaffle Shop template also provides instructions on how to do this, along with animated GIFs. 
+
 
 ## Create a codespace
 
