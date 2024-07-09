@@ -458,13 +458,13 @@ In this section, you will set up model versions by the Data Analytics team as th
 
 1. Rename the existing model file from` models/core/fct_orders.sql` to `models/core/fct_orders_v1.sql`.
 2. Create a new file `models/core/fct_orders_v2.sql` and adjust the schema:
-   - Comment out `orders.status`  
-   - Add a new field, `is_return` to indicate if an order was returned.
+   - Comment out `o.status` in the `final` CTE.
+   - Add a new field, `case when o.status = 'returned' then true else false end as is_return` to indicate if an order was returned.
 3. Then, add the following to your `models/core/core.yml` file:
    - The `is_return` column
    - The two model `versions`
    - A `latest_version` to indicate which model is the latest (and should be used by default, unless specified otherwise)
-   - A `deprecation_date` to version 1 as well to indicate 
+   - A `deprecation_date` to version 1 as well to indicate
 
 4. It should now read as follows:
 
