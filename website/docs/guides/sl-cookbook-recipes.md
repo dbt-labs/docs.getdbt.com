@@ -193,24 +193,24 @@ metrics:
 
 ### Step 3: Test your metrics
 
-After saving your new or updated metric, check out the following process in your development tool:
+After saving your new or updated metric, try the following process in your development tool to test your metrics:
 
-- Rebuild your semantic_manifest.json file
+1. Rebuild your `semantic_manifest.json` file to ensure that your new metrics are included in the manifest. Run the following command:
 ```bash
 dbt parse
 ```
 
-- If you see an error where the metric doesn't exist, it could be because you were developing on a separate branch and then switched back to this one so the manifest is different. If so, then use the `--no-defer` flag
-```bash
-dbt parse --no-defer
-```
+  - If you see an error where the metric doesn't exist, it could be because you were developing on a separate branch and then switched back to this one so the manifest is different. If so, then use the `--no-defer` flag
+  ```bash
+  dbt parse --no-defer
+  ```
 
-- Query your metrics to see if they are working as expected
+2. Query your metrics to confirm the results are as expected. Run the following command:
 ```bash
 dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_time__week --where "metric_time__week >= '2023-01-01'" --order-by metric_time__week
 ```
 
-- If the output looks different than your "source of truth", then look at the compiled code:
+3. If the results looks different than your "source of truth", then look at the compiled code. Run the following command:
 ```bash
 dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_time__week --where "metric_time__week >= '2023-01-01'" --order-by metric_time__week --compile
 ```
@@ -305,7 +305,7 @@ metrics:
    dbt parse
    ```  
 
-2. Query your metrics to verify they are working as expected:
+2. Query your metrics to confirm the results are as expected. Run the following command:
    
    ```bash
    dbt sl query --metrics arr --group-by metric_time__year --where "metric_time__year >= '2023'" --order-by metric_time__year
@@ -397,7 +397,7 @@ metrics:
    dbt parse
    ```  
 
-2. Query your metrics to confirm they are working as expected:
+2. Query your metrics to confirm the results are as expected. Run the following command:
    
    ```bash
    dbt sl query --metrics cac --group-by metric_time__year --where "metric_time__year >= '2023'" --order-by metric_time__year
