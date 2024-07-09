@@ -340,11 +340,11 @@ Now that you've set up the foundational project, let's start building the data a
     version: 2
 
     sources:
-    - name: stripe
+      - name: stripe
         database: raw
         schema: stripe 
         tables:
-        - name: payment
+          - name: payment
     ```
 
     </File>
