@@ -465,7 +465,7 @@ In this section, you will set up model versions by the Data Analytics team as th
    - The `is_return` column
    - The two model `versions`
    - A `latest_version` to indicate which model is the latest (and should be used by default, unless specified otherwise)
-   - A `deprecation_date` to version 1 as well to indicate 
+   - A `deprecation_date` to version 1 as well to indicate when the model will be deprecated.
 
 4. It should now read as follows:
 
