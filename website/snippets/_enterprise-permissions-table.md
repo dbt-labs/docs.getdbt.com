@@ -35,13 +35,13 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 |Project-level permission | Account Admin | Billing admin | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
 | Data platform connections             |       W       |               |       W         |                |   R    |
-| Environment credentials             |       W       |               |       W         |                |   R    |
+| Environment credentials (deployment)      |       W       |               |       W         |                |   R    |
 | Custom env. variables   |       W       |               |       W         |                |   R    |
-| Data platform config            |       W       |               |       W         |                |   R    |
+| Data platform configurations            |       W       |               |       W         |                |   R    |
 | Develop (IDE or dbt Cloud CLI)           |       W       |               |       W         |                |        |
 | Environments            |       W       |               |       W         |                |   R    |
 | Jobs                    |       W       |               |       W         |                |   R    |
-| Metadata                 |       R       |               |       R         |                |   R    |
+| Metadata GraphQL API access    |       R       |               |       R         |                |   R    |
 | Permissions             |       W       |               |       W         |       W        |   R    |
 | Profile                 |       W       |               |       W         |                |   R    |
 | Projects                |       W       |               |       W         |       R        |   R    |
@@ -75,13 +75,13 @@ The project roles enable you to work within the projects in various capacities. 
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br> (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
 | Data platform connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |                |     R       |     R      |         |
-| Environment credentials              |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
+| Environment credentials (deployment)        |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
 | Custom env. variables    |   W   |    W    |       W        |     W     |     W     |     W     |             |      R      |          |                |     R       |     W      |         |
-| Data platform config             |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
+| Data platform configurations            |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
 | Develop <br />(IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |             |          |                |             |            |         |
 | Environments             |   W   |    R    |       R        |     R     |     R     |     W     |             |      R      |          |                |     R       |     R      |         |
 | Jobs                     |   W   |    R    |       R        |     W     |     R     |     W     |      R      |      R      |          |                |     R       |     R      |         |
-| Metadata                  |   R   |    R    |       R        |     R     |     R     |     R     |             |      R      |     R    |                |     R       |     R      |         |
+| Metadata GraphQL API access    |   R   |    R    |       R        |     R     |     R     |     R     |             |      R      |     R    |                |     R       |     R      |         |
 | Permissions (Groups & Licenses)              |   W   |         |       R        |     R     |     R     |           |             |             |          |                |             |     R      |         |
 | Profile (Credentials)                 |   W   |    R    |                |     R     |     R     |     R     |             |             |          |                |     R       |             |         |
 | Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |             |      R      |          |                |     R       |     W      |         |
