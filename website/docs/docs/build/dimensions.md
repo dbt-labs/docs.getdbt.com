@@ -45,8 +45,8 @@ semantic_models:
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
     model: {{ ref("fact_transactions") }}
     defaults:
-      agg_time_dimension: metric_time
-# --- entities ---
+      agg_time_dimension: metric_time 
+# --- entities --- 
   entities: 
       ...
 # --- measures --- 
