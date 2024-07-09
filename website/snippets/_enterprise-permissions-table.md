@@ -34,7 +34,7 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
  
 |Project-level permission | Account Admin | Billing admin | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
-| Connections             |       W       |               |       W         |                |   R    |
+| Data platform connections             |       W       |               |       W         |                |   R    |
 | Environment credentials             |       W       |               |       W         |                |   R    |
 | Custom env. variables   |       W       |               |       W         |                |   R    |
 | Data platform config            |       W       |               |       W         |                |   R    |
@@ -74,7 +74,7 @@ The project roles enable you to work within the projects in various capacities. 
  
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br> (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
-| Connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |                |     R       |     R      |         |
+| Data platform connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |                |     R       |     R      |         |
 | Environment credentials              |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
 | Custom env. variables    |   W   |    W    |       W        |     W     |     W     |     W     |             |      R      |          |                |     R       |     W      |         |
 | Data platform config             |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
