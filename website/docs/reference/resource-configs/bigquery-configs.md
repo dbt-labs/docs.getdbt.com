@@ -378,7 +378,7 @@ models:
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" title="Viewing labels in the BigQuery console"/>
 
 ### Specifying tags
-BigQuery table and view *tags* can be created by supplying an empty string for the label value.
+This isn't the tag you're looking for (it's just a label with no value).
 
 <File name='model.sql'>
 
@@ -394,6 +394,11 @@ select * from {{ ref('another_model') }}
 ```
 
 </File>
+
+Sometimes a label with key with an empty value is referred to a tag. However, this should not be confused with a [tag resource](/bigquery/docs/tags). You can find out more in [labels and tags](/resource-manager/docs/tags/tags-overview). You can create a new label with no value, or you can remove a value from an existing label key.
+
+In cases where you are labeling a resource, using labels without values can be beneficial, and as a note, you won't need the key-value format. For example, if a table contains test data that is used by multiple groups, such as support or development, you can add a `test_data` label to the table to identify it.
+
 
 ### Policy tags
 BigQuery enables [column-level security](https://cloud.google.com/bigquery/docs/column-level-security-intro) by setting [policy tags](https://cloud.google.com/bigquery/docs/best-practices-policy-tags) on specific columns.
