@@ -77,7 +77,6 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 ## Unsupported functionality
 
 The following Tableau features aren't supported at this time, however, the dbt Semantic Layer may support some of this functionality in a future release:
-
 - Updating the data source page
 - Using "Extract" mode to view your data
 - Unioning Tables
@@ -88,6 +87,7 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - Filtering on a Date Part time dimension for a Cumulative metric type
 - Changing your date dimension to use "Week Number"
 - Performing joins between tables that the dbt Semantic Layer creates. It handles joins for you, so there's no need to join components in the dbt Semantic Layer. Note, that you _can_ join tables from the dbt Semantic Layer to ones outside your data platform.
+- The Tableau integration doesn't currently display descriptive labels defined in your `metrics` configuration, meaning custom labels won't be visible when those metrics are imported/queried into Tableau. 
   
 ## FAQs
 <FAQ path="Troubleshooting/sl-alpn-error" />
