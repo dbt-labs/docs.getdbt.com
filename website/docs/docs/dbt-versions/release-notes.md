@@ -18,6 +18,11 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
 
+## July 2024
+- **Enhancement:** Custom configurations are now supported by generic data tests. Use this to configure how dbt should run the data test (for example, defining specific charactistics of the virtual warehouse). To learn more, refer to [Specify custom configurations for generic data tests](/reference/data-test-configs#specify-custom-configurations-for-generic-data-tests).
+
+  Support for this is currently available in dbt Cloud only. Specifying custom configurations for data tests will become available in dbt Core later this year.
+
 ## June 2024
 - **New:** Introduced new granularity support for cumulative metrics in MetricFlow. Granularity options for cumulative metrics are slightly different than granularity for other metric types. For other metrics, we use the `date_trunc` function to implement granularity. However, because cumulative metrics are non-additive (values can't be added up), we can't use the `date_trunc` function to change their time grain granularity. 
   
