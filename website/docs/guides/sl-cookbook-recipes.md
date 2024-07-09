@@ -40,9 +40,11 @@ Alternatively, you can use the [one-YAML-per-marts-model approach](/best-practic
 
 ### Step 1: **Define semantic models**
 
-1. Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_user_activity_daily.yml`) to create a semantic model that tracks daily user activity. This semantic model ref’s model `fct_user_activity_daily`. 
+1. Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_user_activity_daily.yml`) to create a semantic model that tracks daily user activity. 
 
-Note that if you’re using the one-YAML-file-per-mart, then save this as `user_activity_daily.yml` under the models folder.
+  This semantic model ref’s the `fct_user_activity_daily` model.
+
+  Note that if you’re using the one-YAML-file-per-mart, then save this as `user_activity_daily.yml` under the models folder.
 
 <File name="models/semantic_models/sem_user_activity_daily.yml">
 
@@ -59,7 +61,10 @@ semantic_models:
 ```
 </File>
 
-1. In that same semantic model file, add entities to define user-related entities (such as user or `user_daily`), dimensions to specify time dimensions (such as `date_day`), and measures for a distinct count of active users (`count_activity_users`) aggregated by day.
+2. Add the following YAML configurations in that same semantic model file:
+   - entities to define user-related entities (such as user or `user_daily`)
+   - dimensions to specify time dimensions (such as `date_day`)
+   - measures for a distinct count of active users (`count_activity_users`) aggregated by day.
 
 <File name="models/semantic_models/sem_user_activity_daily.yml">
 
@@ -109,7 +114,9 @@ semantic_models:
 ```
 </File>
 
-3. Create another semantic model YAML file (`models/semantic_models/sem_all_days.yml`). This semantic model captures company-specific fiscal periods and date flags (like `fiscal_quarter`). It helps in managing fiscal dates and other time-related dimensions.
+3. Create another semantic model YAML file (`models/semantic_models/sem_all_days.yml`). This semantic model captures company-specific fiscal periods and date flags (like `fiscal_quarter`). 
+  
+  It helps in managing fiscal dates and other time-related dimensions.
 
 <File name="models/semantic_models/sem_all_days.yml">
 
@@ -151,7 +158,9 @@ semantic_models:
 
 ### Step 2: Create metrics
 
-1. Create a YAML file under the `metrics` folder: (`models/metrics/sem_user_activity_daily.yml`) to create a metric that tracks active users. Note that if you’re using the one-YAML-file-per-mart, then save this as `active_users.yml` under the models folder.
+1. Create a YAML file under the `metrics` folder: (`models/metrics/sem_user_activity_daily.yml`) to create a metric that tracks active users. 
+   
+  Note that if you’re using the one-YAML-file-per-mart, then save this as `active_users.yml` under the models folder.
 
 <File name="models/metrics/sem_user_activity_daily.yml">
 
@@ -196,24 +205,25 @@ metrics:
 After saving your new or updated metric, try the following process in your development tool to test your metrics:
 
 1. Rebuild your `semantic_manifest.json` file to ensure that your new metrics are included in the manifest. Run the following command:
-```bash
-dbt parse
-```
 
-  - If you see an error where the metric doesn't exist, it could be because you were developing on a separate branch and then switched back to this one so the manifest is different. If so, then use the `--no-defer` flag
   ```bash
-  dbt parse --no-defer
+  dbt parse
+  ```
+  
+     - If you see an error where the metric doesn't exist, it could be because you were developing on a separate branch and then switched back to this one so the manifest is different. If so, then use the `--no-defer` flag
+    ```bash
+     dbt parse --no-defer
+    ```
+
+1. Query your metrics to confirm the results are as expected. Run the following command:
+  ```bash
+  dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_time__week --where "metric_time__week >= '2023-01-01'" --order-by metric_time__week
   ```
 
-2. Query your metrics to confirm the results are as expected. Run the following command:
-```bash
-dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_time__week --where "metric_time__week >= '2023-01-01'" --order-by metric_time__week
-```
-
-3. If the results looks different than your "source of truth", then look at the compiled code. Run the following command:
-```bash
-dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_time__week --where "metric_time__week >= '2023-01-01'" --order-by metric_time__week --compile
-```
+1. If the results looks different than your "source of truth", then look at the compiled code. Run the following command:
+  ```bash
+  dbt sl query --metrics users_active,users_active_wow_growth --group-by metric_time__week --where "metric_time__week >= '2023-01-01'" --order-by metric_time__week --compile
+  ```
 
 ## How to calculate ARR using metrics in dbt
 
@@ -375,7 +385,7 @@ semantic_models:
 </File>
 
 ### Step 2: Define the CAC metric
-Create a YAML file under the metrics folder: (`models/metrics/sem_customer_acquisition_metrics.yml`) to define the CAC metric.
+Create another YAML file under the metrics folder: (`models/metrics/sem_customer_acquisition_metrics.yml`) to define the CAC metric.
 
 <File name="models/metrics/sem_customer_acquisition_metrics.yml">
 
