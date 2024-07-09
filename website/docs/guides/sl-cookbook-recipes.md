@@ -278,7 +278,7 @@ semantic_models:
 </File>
 
 ### Step 2: Define the ARR metric
-Create a YAML file under the metrics folder: (`models/metrics/sem_revenue_metrics.yml`) to define the ARR metric.
+Create another YAML file under the metrics folder: (`models/metrics/sem_revenue_metrics.yml`) to define the ARR metric.
 
 <File name="models/metrics/sem_revenue_metrics.yml">
 
@@ -296,6 +296,8 @@ metrics:
 
 ```
 </File>
+
+This model calculates ARR by multiplying the MRR (defined in the `sem_revenue_models.yml` file) by 12 to get the annual recurring revenue.
 
 ### Step 3: Validate and query metric
 
