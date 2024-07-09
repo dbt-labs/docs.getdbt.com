@@ -4,7 +4,7 @@ id: DuckDB
 description: "Learn to use dbt Core using DuckDB."
 hoverSnippet: "Learn to use dbt Core using DuckDB."
 platform: 'dbt-core'
-icon: 'fa-github'
+icon: 'duckdb-seeklogo'
 level: 'Beginner'
 hide_table_of_contents: true
 tags: ['dbt Core','Quickstart']
