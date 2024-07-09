@@ -378,7 +378,7 @@ models:
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/73eaa8a-Screen_Shot_2020-01-20_at_12.12.54_PM.png" title="Viewing labels in the BigQuery console"/>
 
 ### Specifying tags
-This isn't the tag you're looking for (it's just a label with no value).
+BigQuery table and view *tags* can be created by supplying an empty string for the label value..
 
 <File name='model.sql'>
 
