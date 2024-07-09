@@ -278,7 +278,7 @@ tests:
 
 #### Specify custom configurations for generic data tests
 
-_Currently available in dbt Cloud only. The `custom_config` key will become available in dbt Core later this year._
+_Currently available in dbt Cloud only. Specifying custom configurations for data tests will become available in dbt Core later this year._
 
 Use the `custom_config` key to specify custom configurations for data tests. For example, the following specifies custom Snowflake configurations that dbt should use when executing the `unique` data test:
 
