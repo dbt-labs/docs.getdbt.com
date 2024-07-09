@@ -397,7 +397,7 @@ select * from {{ ref('another_model') }}
 
 Sometimes a label with key with an empty value is referred to a tag. However, this should not be confused with a [tag resource](https://cloud.google.com/bigquery/docs/tags). You can find out more in [labels and tags](/resource-manager/docs/tags/tags-overview). You can create a new label with no value, or you can remove a value from an existing label key.
 
-In cases where you are labeling a resource, using labels without values can be beneficial, and as a note, you won't need the key-value format. For example, if a table contains test data that is used by multiple groups, such as support or development, you can add a `test_data` label to the table to identify it.
+For more information, you can also look at [Tags overview](https://cloud.google.com/resource-manager/docs/tags/tags-overview)
 
 
 ### Policy tags
