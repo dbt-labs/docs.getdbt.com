@@ -204,7 +204,7 @@ Now that you've set up the foundational project, let's start building the data a
           c.last_name,
           co.first_order_date,
           -- Note that we've used a macro for this so that the appropriate DATEDIFF syntax is used for each respective data platform
-          {{ dbt_utils.datediff('first_order_date', 'order_date', 'day') }} as days_as_customer_at_purchase
+          {{ datediff('first_order_date', 'order_date', 'day') }} as days_as_customer_at_purchase
       from orders o
       left join customers c using (customer_id)
       left join customer_orders co using (customer_id)
