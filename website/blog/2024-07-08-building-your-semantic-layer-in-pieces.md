@@ -69,7 +69,7 @@ This is the most **technical, detailed, and specific section of this article**, 
 ### 3. Write Semantic Layer code
 
 1. **Start with the semantic model** going through column by column and putting all identified columns from Step 2 into the 3 semantic buckets:
-   1. [**Entities**](https://docs.getdbt.com/docs/build/entities) — these are the spine of your semantic concepts or objects, you can think of them as roughly correlating to ids or keys that form the grain.
+   1. [**Entities**](/docs/build/entities) — these are the spine of your semantic concepts or objects, you can think of them as roughly correlating to ids or keys that form the grain.
    2. [**Dimensions**](https://docs.getdbt.com/docs/build/dimensions) — these are ways of grouping and bucketing these objects or concepts, such as time and categories.
    3. [**Measures**](https://docs.getdbt.com/docs/build/measures) — these are numeric values that you want to aggregate such as an order total or number of times a user clicked an ad.
 2. **Create metrics for the aggregation columns** we didn’t encode into the semantic model.
