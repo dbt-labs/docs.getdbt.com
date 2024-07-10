@@ -395,7 +395,7 @@ select * from {{ ref('another_model') }}
 
 </File>
 
-Sometimes a label with key with an empty value is referred to a tag. However, this should not be confused with a [tag resource](https://cloud.google.com/bigquery/docs/tags). You can find out more in [labels and tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview). You can create a new label with no value, or you can remove a value from an existing label key.
+Sometimes a label with a key that has an empty value is referred to as a tag. However, this should not be confused with a [tag resource](https://cloud.google.com/bigquery/docs/tags). You can find out more in [labels and tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview). You can create a new label with no value, or you can remove a value from an existing label key.
 
 For more information, you can also look at [Tags overview](https://cloud.google.com/resource-manager/docs/tags/tags-overview)
 It's not currently possible to apply IAM tags in Big Query. However, we have an open [feature request](https://github.com/dbt-labs/dbt-bigquery/issues/1134) which you can view and upvote in GitHub.
