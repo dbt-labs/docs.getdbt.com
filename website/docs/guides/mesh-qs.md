@@ -204,7 +204,7 @@ Now that you've set up the foundational project, let's start building the data a
           c.last_name,
           co.first_order_date,
           -- Note that we've used a macro for this so that the appropriate DATEDIFF syntax is used for each respective data platform
-          {{ dbt_utils.datediff('first_order_date', 'order_date', 'day') }} as days_as_customer_at_purchase
+          {{ datediff('first_order_date', 'order_date', 'day') }} as days_as_customer_at_purchase
       from orders o
       left join customers c using (customer_id)
       left join customer_orders co using (customer_id)
@@ -306,9 +306,10 @@ In this section, you will set up the downstream project, "Jaffle | Finance", and
 
 1. If you’ve also started with a new git repo, click **Initialize dbt project** under the **Version control** section.
 2. Delete the `models/example` folder
-3. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
-4. In the **File Explorer**, hover over the project directory, click the **...** and Select **Create file**.
-5. Name the file `dependencies.yml`.
+3. Navigate to the dbt_project.yml file and rename the project (line 5) from `my_new_project` to `finance`
+4. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
+5. In the **File Explorer**, hover over the project directory, click the **...** and Select **Create file**.
+6. Name the file `dependencies.yml`.
 
 <Lightbox src="/img/guides/dbt-mesh/finance_create_file.png" width="70%" title="Create file in the dbt Cloud IDE." />
 
@@ -340,11 +341,11 @@ Now that you've set up the foundational project, let's start building the data a
     version: 2
 
     sources:
-    - name: stripe
+      - name: stripe
         database: raw
         schema: stripe 
         tables:
-        - name: payment
+          - name: payment
     ```
 
     </File>
@@ -362,8 +363,8 @@ Now that you've set up the foundational project, let's start building the data a
     final as (
         select 
             id as payment_id,
-            "orderID" as order_id,
-            "paymentMethod" as payment_method,
+            orderID as order_id,
+            paymentMethod as payment_method,
             amount,
             created as payment_date 
         from payments
@@ -436,16 +437,19 @@ How can you enhance resilience and add guardrails to this type of multi-project 
 ### Set up model contracts
 As part of the Data Analytics team, you may want to ensure the `fct_orders` model is reliable for downstream users, like the Finance team.
 
-1. Navigate to `models/core/core.yml` and under the `fct_orders` model, add a data contract to enforce reliability:
+1. Navigate to `models/core/core.yml` and under the `fct_orders` model before the `columns:` section, add a data contract to enforce reliability:
 
 ```yaml
 models:
   - name: fct_orders
     access: public
-    description: "Customer and order details"
+    description: “Customer and order details”
     config:
       contract:
         enforced: true
+    columns:
+      - name: order_id
+        .....
 ```
 
 2. Test what would happen if this contract were violated. In `models/core/fct_orders.sql`, comment out the `orders.status` column and click **Build** to try building the model.
@@ -464,7 +468,7 @@ In this section, you will set up model versions by the Data Analytics team as th
    - The `is_return` column
    - The two model `versions`
    - A `latest_version` to indicate which model is the latest (and should be used by default, unless specified otherwise)
-   - A `deprecation_date` to version 1 as well to indicate 
+   - A `deprecation_date` to version 1 as well to indicate when the model will be deprecated.
 
 4. It should now read as follows:
 
