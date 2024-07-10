@@ -19,6 +19,9 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
 
 ## June 2024
+- **New:** Introduced new granularity support for cumulative metrics in MetricFlow. Granularity options for cumulative metrics are slightly different than granularity for other metric types. For other metrics, we use the `date_trunc` function to implement granularity. However, because cumulative metrics are non-additive (values can't be added up), we can't use the `date_trunc` function to change their time grain granularity. 
+  
+  Instead, we use the `first()`, `last()`, and `avg()` aggregation functions to aggregate cumulative metrics over the requested period. By default, we take the first value of the period. You can change this behavior by using the `period_agg` parameter. For more information, refer to [Granularity options for cumulative metrics](/docs/build/cumulative#granularity-options).
 
 #### dbt Semantic Layer
 - **New:** Added support for <Term id="predicate-pushdown"/> SQL optimization in MetricFlow. We will now push down categorical dimension filters to the metric source table. Previously filters were applied after we selected from the metric source table. This change helps reduce full table scans on certain query engines.

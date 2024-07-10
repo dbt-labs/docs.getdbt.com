@@ -737,7 +737,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt Cloud Release Notes",
+          label: "dbt Cloud release notes",
           link: {
             type: "doc",
             id: "docs/dbt-versions/dbt-cloud-release-notes",
@@ -1243,7 +1243,7 @@ const sidebarSettings = {
     },
     {
       type: "link",
-      label: "Community Forum",
+      label: "Community forum",
       href: "/community/forum",
     },
     {
