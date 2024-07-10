@@ -17,7 +17,7 @@ Because of this, we’ve noticed when talking to dbt users that they _want_ to a
 
 We’re here to discuss another way, building a Semantic Layer in pieces, and our goal is to make sure you derive increased leverage and velocity from each step on your journey. If you’re eager to start building, but like most busy analytics engineers have limited bandwidth, this one is especially for you.
 
-## System of a Noun: deciding what happens where
+## System of a noun: deciding what happens where
 
 When you’re using the dbt Semantic Layer, you want to _minimize_ _the modeling that exists outside of dbt_. Eliminate it completely if you can. Why?
 
@@ -89,7 +89,7 @@ This is the most **technical, detailed, and specific section of this article**, 
 💁🏻‍♀️ If your BI tool allows it, make sure to do the BI-related steps above **in a development environment**. If it doesn’t have these capabilities, stick with duplicating the data product you’re re-building and perform this there so you can swap it later after you’ve tested it thoroughly.
 :::
 
-## Deep Impact
+## Deep impact
 
 The first time you turn around a newly sliced, diced, filtered, and rolled up metric table for a stakeholder in under an hour instead of a week, not only you, but the stakeholder will immediately feel the value and power of the Semantic Layer.
 
