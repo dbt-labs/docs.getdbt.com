@@ -89,6 +89,24 @@ res = dbt.invoke(cli_args)
 
 Register `callbacks` on dbt's `EventManager`, to access structured events and enable custom logging. The current behavior of callbacks is to block subsequent steps from proceeding; this functionality is not guaranteed in future versions.
 
+<VersionBlock firstVersion="1.8">
+
+```python
+from dbt.cli.main import dbtRunner
+from dbt_common.events.base_types import EventMsg
+
+def print_version_callback(event: EventMsg):
+    if event.info.name == "MainReportVersion":
+        print(f"We are thrilled to be running dbt{event.data.version}")
+
+dbt = dbtRunner(callbacks=[print_version_callback])
+dbt.invoke(["list"])
+```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.7">
+
 ```python
 from dbt.cli.main import dbtRunner
 from dbt.events.base_types import EventMsg
@@ -100,6 +118,8 @@ def print_version_callback(event: EventMsg):
 dbt = dbtRunner(callbacks=[print_version_callback])
 dbt.invoke(["list"])
 ```
+
+</VersionBlock>
 
 ### Overriding parameters
 
