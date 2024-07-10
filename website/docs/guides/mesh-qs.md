@@ -306,9 +306,10 @@ In this section, you will set up the downstream project, "Jaffle | Finance", and
 
 1. If you’ve also started with a new git repo, click **Initialize dbt project** under the **Version control** section.
 2. Delete the `models/example` folder
-3. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
-4. In the **File Explorer**, hover over the project directory, click the **...** and Select **Create file**.
-5. Name the file `dependencies.yml`.
+3. Navigate to the dbt_project.yml file and rename the project (line 5) from `my_new_project` to `finance`
+4. Navigate to the `dbt_project.yml` file and remove lines 39-42 (the `my_new_project` model reference).
+5. In the **File Explorer**, hover over the project directory, click the **...** and Select **Create file**.
+6. Name the file `dependencies.yml`.
 
 <Lightbox src="/img/guides/dbt-mesh/finance_create_file.png" width="70%" title="Create file in the dbt Cloud IDE." />
 
@@ -340,11 +341,11 @@ Now that you've set up the foundational project, let's start building the data a
     version: 2
 
     sources:
-    - name: stripe
+      - name: stripe
         database: raw
         schema: stripe 
         tables:
-        - name: payment
+          - name: payment
     ```
 
     </File>
@@ -362,8 +363,8 @@ Now that you've set up the foundational project, let's start building the data a
     final as (
         select 
             id as payment_id,
-            "orderID" as order_id,
-            "paymentMethod" as payment_method,
+            orderID as order_id,
+            paymentMethod as payment_method,
             amount,
             created as payment_date 
         from payments
@@ -464,7 +465,7 @@ In this section, you will set up model versions by the Data Analytics team as th
    - The `is_return` column
    - The two model `versions`
    - A `latest_version` to indicate which model is the latest (and should be used by default, unless specified otherwise)
-   - A `deprecation_date` to version 1 as well to indicate 
+   - A `deprecation_date` to version 1 as well to indicate when the model will be deprecated.
 
 4. It should now read as follows:
 
