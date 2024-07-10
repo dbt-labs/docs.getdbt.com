@@ -228,7 +228,7 @@ Redshift supports [backup](https://docs.aws.amazon.com/redshift/latest/mgmt/work
 This parameter identifies if the materialized view should be backed up as part of the cluster snapshot.
 By default, a materialized view will be backed up during a cluster snapshot.
 dbt cannot monitor this parameter as it is not queryable within Redshift.
-If the value is changed, the materialized view will need to go through a `--full-refresh` in order to set it.
+If the value changes, the materialized view will need to go through a `--full-refresh` to set it.
 
 Learn more about these parameters in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-parameters).
 
@@ -246,7 +246,7 @@ Find more information about materialized view limitations in Redshift's [docs](h
 #### Changing materialization from "materialized_view" to "table" or "view"
 
 Swapping a materialized view to a table or view is not supported.
-You must manually drop the existing materialized view in the data warehouse prior to calling `dbt run`.
+You must manually drop the existing materialized view in the data warehouse before calling `dbt run`.
 Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
 This would only need to be done once as the existing object would then be a materialized view.
 
@@ -262,85 +262,8 @@ The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data 
 
 ## Unit test limitations
 
-Redshift doesn't support Unit tests when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, etc. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. For unit tests to function properly in this scenario, creating temporary tables for the unit tests to reference is a good workaround. 
+Redshift doesn't support [unit tests](/docs/build/unit-tests) when the SQL in the common table expression (CTE) contains functions such as `LISTAGG`, `MEDIAN`, `PERCENTILE_CONT`, and so on. These functions must be executed against a user-created table. dbt combines given rows to be part of the CTE, which Redshift does not support. 
 
-The following query illustrates the limitation:
-
-```sql
-
-create temporary table "test_tmpxxxxx" as (
-   with test_fixture as (
-       select
-         cast(1000 as integer) as id,
-         cast('menu1' as character varying(500)) as name,
-         cast( 1 as integer) as quantity
-      union all
-      select
-         cast(1001 as integer) as id,
-         cast('menu2' as character varying(500)) as name,
-         cast( 1 as integer) as quantity
-      union all
-      select
-         cast(1003 as integer) as id,
-         cast('menu1' as character varying(500)) as name,
-         cast( 1 as integer) as quantity
-   ),
-   agg as (
-      SELECT
-         LISTAGG(name || ' x ' || quantity, ',') AS option_name_list,
-         id
-      FROM test_fixture
-      GROUP BY id
-   )
-   select * from agg
-);
-
-```
-This query results in the error: 
-
-```bash
-
-[XX000] ERROR: One or more of the used functions must be applied on at least one user created tables. Examples of user table only functions are LISTAGG, MEDIAN, PERCENTILE_CONT, etc
-
-```
-
-However, the following query works as expected:
-
-```sql
-
-create temporary table "test_tmp1234" as (
-   SELECT
-      cast(1000 as integer) as id,
-      cast('menu1' as character varying(500)) as name,
-      cast( 1 as integer) as quantity
-   union all
-   select
-      cast(1001 as integer) as id,
-      cast('menu2' as character varying(500)) as name,
-      cast( 1 as integer) as quantity
-   union all
-   select
-      cast(1000 as integer) as id,
-      cast('menu1' as character varying(500)) as name,
-      cast( 1 as integer) as quantity
-);
-
-with agg as (
-   SELECT
-      LISTAGG(name || ' x ' || quantity, ',') AS option_name_list,
-      id
-   FROM test_tmp1234
-   GROUP BY id
-)
-select * from agg;
-
-```
-
-When all given rows are created as a temporary table first, then running the test by referring to the temporary tables results in a successful run.
-
-In short, separate the unit tests into two steps:
-1. Prepare test fixtures by creating temporary tables.
-2. Run unit test query by referring to the temporary tables.
+In order to support this pattern in the future, dbt would need to "materialize" the input fixtures as tables, rather than interpolating them as CTEs. If you are interested in this functionality, we'd encourage you to participate in this issue in GitHub: [dbt-labs/dbt-core#8499](https://github.com/dbt-labs/dbt-core/issues/8499)
 
 </VersionBlock>
-

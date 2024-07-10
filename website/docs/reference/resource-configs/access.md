@@ -23,46 +23,65 @@ Access modifiers may be applied to models one-by-one in YAML properties. In v1.5
 
 <VersionBlock firstVersion="1.7">
 
-You can apply access modifiers in config files, including `the dbt_project.yml`, or to models one-by-one in YAML properties. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
+You can apply access modifiers in config files, including the `dbt_project.yml`, or to models one-by-one in `properties.yml`. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
 
 There are multiple approaches to configuring access:
 
-In the model configs of `dbt_project.yml`: 
+- In `properties.yml` using the older method: 
 
-```yaml
-models:
-  - name: my_public_model
-    access: public # Older method, still supported
-    
-```
-Or (but not both)
+  <File name='models/properties_my_public_model.yml'>
+  
+  ```yml
+  version: 2
+  
+  models:
+    - name: my_public_model
+      access: public # Older method, still supported
+      
+  ```
+  </File>
+  
+- In `properties.yml` using the new method (for v1.7 or higher). Use either the older method or the new method, but not both for the same model:
 
-```yaml
-models:
-  - name: my_public_model
-    config:
-      access: public # newly supported in v1.7
-    
-```
+  <File name='models/properties_my_public_model.yml'>
+  
+  ```yml
+  version: 2
+  
+  models:
+    - name: my_public_model
+      config:
+        access: public # newly supported in v1.7
+      
+  ```
+  </File>
 
-In a subfolder: 
-```yaml
-models:
-  my_project_name:
-    subfolder_name:
-      +group: <my_group>
-      +access: private  # sets default for all models in this subfolder
-```
 
-In the model.sql file:
+- In `dbt_project.yml`:
 
-```sql
--- models/my_public_model.sql
+  <File name='dbt_project.yml'>
+  
+  ```yml
+  models:
+    my_project_name:
+      subfolder_name:
+        +group: my_group
+        +access: private  # sets default for all models in this subfolder
+  ```
+  </File>
 
-{{ config(access = "public") }}
+- In the `my_public_model.sql` file:
 
-select ...
-```
+  <File name='models/my_public_model.sql'>
+  
+  ```sql
+  -- models/my_public_model.sql
+  
+  {{ config(access = "public") }}
+  
+  select ...
+  ```
+  </File>
 
 </VersionBlock>
 
