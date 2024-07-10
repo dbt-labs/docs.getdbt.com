@@ -456,7 +456,7 @@ models:
 ### Set up model versions
 In this section, you will set up model versions by the Data Analytics team as they upgrade the `fct_orders` model while offering backward compatibility and a migration notice to the downstream Finance team.
 
-1. Rename the existing model file from` models/core/fct_orders.sql` to `models/core/fct_orders_v1.sql`.
+1. Rename the existing model file from `models/core/fct_orders.sql` to `models/core/fct_orders_v1.sql`.
 2. Create a new file `models/core/fct_orders_v2.sql` and adjust the schema:
    - Comment out `o.status` in the `final` CTE.
    - Add a new field, `case when o.status = 'returned' then true else false end as is_return` to indicate if an order was returned.
