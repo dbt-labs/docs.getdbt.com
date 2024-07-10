@@ -20,7 +20,6 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## June 2024
 
-- **Enhancement**: The dbt Semantic Layer now offers more granular control by supporting multiple data platform credentials, which can represent different roles or service accounts. Map credentials to service tokens for secure authentication. Refer to [Configure credentials](/docs/use-dbt-semantic-layer/setup-sl#configure-credentials) for more details.
 
 - **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
