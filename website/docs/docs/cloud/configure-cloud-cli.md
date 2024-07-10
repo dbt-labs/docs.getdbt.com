@@ -103,12 +103,24 @@ The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) a
 - Automatically defers build artifacts to your Cloud project's production environment.
 - Supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
-
+ 
 :::tip Use the <code>--help</code> flag
 As a tip, most command-line tools have a `--help` flag to show available commands and arguments. Use the `--help` flag with dbt in two ways:
 - `dbt --help`: Lists the commands available for dbt<br />
 - `dbt run --help`: Lists the flags available for the `run` command
 :::
+ 
+### SQLFluff integration
+The dbt Cloud CLI supports [SQLFluff](https://sqlfluff.com/), a modular and configuration SQL linter, which warns you of complex functions, syntax, formatting, and compilation errors.
+
+To get started, run `dbt sqlfluff -h` to see the list of supported commands and flags, such as `dbt sqlfluff lint` to lint SQL files.
+
+#### Considerations
+Keep the following points in mind when using SQLFluff with the dbt Cloud:
+
+- When you run `dbt sqlfluff`, it picks up changes to your local .sqlfluff config.
+- To use SQLFluff in continuous integration/continuous development, you need to have a `dbt_cloud.yml` file in your project and run commands from a valid dbt project.
+- SQLFluff commands in the dbt Cloud CLI do not return exit codes yet.
 
 ## FAQs
 <Expandable alt_header="How to create a .dbt directory and move your file">
@@ -119,7 +131,7 @@ If you've never had a `.dbt` directory, you should perform the following recomme
 <TabItem value="Create a .dbt directory">
 
   1. Clone your dbt project repository locally.
-  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to to create a `.dbt` folder in the root of your filesystem:
+  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to create a `.dbt` folder in the root of your filesystem:
 
      ```bash
      mkdir ~/.dbt
