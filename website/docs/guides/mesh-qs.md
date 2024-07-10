@@ -363,8 +363,8 @@ Now that you've set up the foundational project, let's start building the data a
     final as (
         select 
             id as payment_id,
-            "orderID" as order_id,
-            "paymentMethod" as payment_method,
+            orderID as order_id,
+            paymentMethod as payment_method,
             amount,
             created as payment_date 
         from payments
