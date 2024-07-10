@@ -200,7 +200,7 @@ Parameters under the `non_additive_dimension` will specify dimensions that the m
 
 ```yaml
 semantic_models:
-  - name: subscription_table
+  - name: subscription_id
     description: A subscription table with one row per date for each active user and their subscription plans. 
     model: ref('your_schema.subscription_table')
     defaults:
@@ -209,6 +209,7 @@ semantic_models:
     entities:
       - name: user_id
         type: foreign
+        primary_entity: subscription_table
 
     dimensions:
       - name: metric_time
@@ -218,22 +219,22 @@ semantic_models:
           time_granularity: day
 
     measures: 
-      - name: count_users_end_of_month 
+      - name: count_users
         description: Count of users at the end of the month 
         expr: user_id
         agg: count_distinct
         non_additive_dimension: 
           name: metric_time
           window_choice: max 
-      - name: mrr_end_of_month
-        description: Aggregate by summing all users' active subscription plans at the end of month 
+      - name: mrr
+        description: Aggregate by summing all users' active subscription plans
         expr: subscription_value
         agg: sum 
         non_additive_dimension: 
           name: metric_time
           window_choice: max
-      - name: mrr_by_user_end_of_month
-        description: Group by user_id to achieve each user's MRR at the end of the month 
+      - name: mrr
+        description: Group by user_id to achieve each user's MRR
         expr: subscription_value
         agg: sum  
         non_additive_dimension: 
@@ -243,10 +244,10 @@ semantic_models:
             - user_id 
 
 metrics:
-  - name: mrr_end_of_month
+  - name: mrr
     type: simple
     type_params:
-        measure: mrr_end_of_month
+        measure: mrr
 ```
 
 We can query the semi-additive metrics using the following syntax:
