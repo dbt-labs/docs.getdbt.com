@@ -69,14 +69,14 @@ This is the most **technical, detailed, and specific section of this article**, 
 ### 3. Write Semantic Layer code
 
 1. **Start with the semantic model** going through column by column and putting all identified columns from Step 2 into the 3 semantic buckets:
-   1. [**Entities**](/docs/build/entities) — these are the spine of your semantic concepts or objects, you can think of them as roughly correlating to ids or keys that form the grain.
-   2. [**Dimensions**](https://docs.getdbt.com/docs/build/dimensions) — these are ways of grouping and bucketing these objects or concepts, such as time and categories.
-   3. [**Measures**](https://docs.getdbt.com/docs/build/measures) — these are numeric values that you want to aggregate such as an order total or number of times a user clicked an ad.
+   1. [**Entities**](/docs/build/entities) — these are the spine of your semantic concepts or objects, you can think of them as roughly correlating to IDs or keys that form the grain.
+   2. [**Dimensions**](/docs/build/dimensions) — these are ways of grouping and bucketing these objects or concepts, such as time and categories.
+   3. [**Measures**](/docs/build/measures) — these are numeric values that you want to aggregate such as an order total or number of times a user clicked an ad.
 2. **Create metrics for the aggregation columns** we didn’t encode into the semantic model.
 3. Now, **identify a rollup you want to melt**. Refer to the example above to help distinguish these types of models.
 4. **Repeat these steps for any** **other concepts** that you need to create that rollup e.g. `active_accounts_per_week` may need **both `customers` and `orders`.**
 5. **Create metrics for the aggregation columns present in the rollup**. If your rollup references multiple models, put metrics in the YAML file that is most closely related to the grain or key aggregation of the table. For example, `active_accounts_per_week` is aggregated at a weekly time grain, but the key metric counts customer accounts, so we’d want to put that metric in the `customers.yml` or `sem_customers.yml` file (depending on which naming system we chose TODO: link to relevant guide update). If it also contained a metric aggregating total orders in a given week, we’d put that metric into `orders.yml` or `sem_orders.yml`.
-6. **Create [saved queries with exports](https://docs.getdbt.com/docs/build/saved-queries)** configured to materialize your new Semantic Layer-based artifacts into the warehouse in parallel with the frozen rollup. This will allow us to shift consumption tools and audit results.
+6. **Create [saved queries with exports](/docs/build/saved-queries)** configured to materialize your new Semantic Layer-based artifacts into the warehouse in parallel with the frozen rollup. This will allow us to shift consumption tools and audit results.
 
 ### 4. Connect external tools in parallel
 
