@@ -244,7 +244,7 @@ semantic_models:
             - user_id 
 
 metrics:
-  - name: mrr
+  - name: mrr_metrics
     type: simple
     type_params:
         measure: mrr
