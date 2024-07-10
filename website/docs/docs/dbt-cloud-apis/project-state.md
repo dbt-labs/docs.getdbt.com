@@ -59,6 +59,8 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
  
 ## Affected states by node type
 
+The following table shows the states of dbt nodes and how they are affected by the Discovery API. 
+
 | Node                                          | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
 |-----------------------------------------------|------------------|----------------------|--------------------|-----------------------|----------------------|
 | [Analysis](/docs/build/analyses)   	        | No               | No                   | No                 | Upstream            | Definition 	      |
@@ -68,6 +70,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
 | [Macro](/docs/build/jinja-macros)             | Yes              | No                   | No                 | N/A                   | Definition           |
 | [Metric](/docs/build/metrics-overview)     	| No               | No                   | No                 | Upstream & downstream | Definition           |
 | [Model](/docs/build/models)                   | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
+| [Saved queries](/docs/build/saved-queries) <br /> (not in API)  | N/A               | N/A                  |   N/A         | N/A | N/A           |
 | [Seed](/docs/build/seeds)                     | Yes              | Yes                  | Yes                | Downstream            | Applied & definition |
 | [Semantic model](/docs/build/semantic-models) | No               | No                   | No                 | Upstream & downstream | Definition           |
 | [Snapshot](/docs/build/snapshots)             | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
