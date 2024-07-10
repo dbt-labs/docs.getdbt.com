@@ -442,12 +442,13 @@ As part of the Data Analytics team, you may want to ensure the `fct_orders` mode
 models:
   - name: fct_orders
     access: public
-    description: "Customer and order details"
+    description: “Customer and order details”
     config:
       contract:
         enforced: true
     columns:
-    ...
+      - name: order_id
+        .....
 ```
 
 2. Test what would happen if this contract were violated. In `models/core/fct_orders.sql`, comment out the `orders.status` column and click **Build** to try building the model.
