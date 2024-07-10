@@ -38,7 +38,7 @@ So now we’ve established the system, let’s dig into the _plan_ for how we ca
 
 ## The plan: towards iterative velocity
 
-**Identify a Data Product that is impactful** Find something that is in heavy use and high value, but fairly narrow scope. **Don’t start with a broad executive dashboard** that shows metrics from across the company because you’re looking to optimize for migrating the **smallest amount of modeling for the highest amount of impact** that you can.
+1. **Identify a Data Product that is impactful** Find something that is in heavy use and high value, but fairly narrow scope. **Don’t start with a broad executive dashboard** that shows metrics from across the company because you’re looking to optimize for migrating the **smallest amount of modeling for the highest amount of impact** that you can.
 
    For example, a good starting place would be a dashboard focused on Customer Acquisition Cost (CAC) that relies on a narrow set of metrics and underlying tables that are nonetheless critical for your company.
 2. **Catalog the models and their columns that service the Data Product**, both **in dbt _and_ the BI tool**, including rollups, metrics tables, and marts that support those. Pay special attention to aggregations as these will constitute _metrics_. You can reference [this example Google Sheet](https://docs.google.com/spreadsheets/d/1BR62C5jY6L5f5NvieMcA7OVldSFxu03Y07TG3waq0As/edit?usp=sharing) for one-way you might track this.
