@@ -80,9 +80,9 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
 Automatically test your metric definition models (metrics, semantic models, and saved queries) during code reviews by running warehouse validation checks in your CI job.
 - Testing metric definitions in a CI job guarantees that any code changes made to dbt models don't break these metrics. 
 - It allows you to catch issues early in the development process and deliver high-quality data to your end users.
-- To enable metrics in CI, add the `dbt sl validate` command in the **Execution settings** section on the **Job settings** page (explained in [Step 2](/docs/deploy/ci-jobs#prerequisites) earlier):
+- To enable metrics in CI, add the `dbt sl validate` command in the **Execution settings** section on the **Job settings** page (explained in [Step 2](/docs/deploy/ci-jobs#prerequisites) earlier). Make sure you've set up (or are setting up) your CI job first before adding this command.
 
-For more details and use cases, refer to [Test metrics in CI](/docs/deploy/job-commands#test-metrics-in-ci).
+For more commands and use cases, refer to [Test metrics in CI](/docs/deploy/job-commands#test-metrics-in-ci).
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-all.jpg" width="90%" title="Validate all semantic nodes in your CI job by adding the command: 'dbt sl validate' in your job execution settings." />
 

@@ -43,10 +43,16 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 8. You’re done 🎉! The semantic layer should is now enabled for your project. 
 -->
 
+## Next steps
+
+- Now that you've set up the dbt Semantic Layer, start querying your metrics with the [available integrations](/docs/cloud-integrations/avail-sl-integrations).
+- [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
+- [Test your metrics in CI](/docs/deploy/ci-jobs#test-metrics-in-ci) to ensure code changes made to dbt models don't break these metrics.
+- If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.
+
 ## Related docs
 
 - [Build your metrics](/docs/build/build-metrics-intro)
-- [Available integrations](/docs/cloud-integrations/avail-sl-integrations)
 - [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
 - [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
