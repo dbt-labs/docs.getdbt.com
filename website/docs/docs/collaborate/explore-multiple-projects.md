@@ -14,7 +14,7 @@ To view the project-level lineage graph, click the **View lineage** icon in the 
 - Selecting a model reveals its dependent projects in the lineage.
 - Click on an upstream (parent) project to view the other projects that reference it in the **Relationships** tab, showing the number of downstream (child) projects that depend on them. 
   - This includes all projects listing the upstream one as a dependency in its `dependencies.yml` file, even without a direct `{{ ref() }}`.
-  - Selecting a project node from a public model opens its detailed lineage graph, subject to your [permission](/docs/cloud/manage-access/enterprise-permissions).
+  - Selecting a project node from a public model opens its detailed lineage graph if you have the [permissions](/docs/cloud/manage-access/enterprise-permissions) to do so.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-parent.png" width="100%" height="100" title="View your cross-project lineage in a parent project and the other projects that reference it by clicking the 'Relationships' tab."/>
 
