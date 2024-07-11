@@ -341,11 +341,11 @@ Now that you've set up the foundational project, let's start building the data a
     version: 2
 
     sources:
-    - name: stripe
+      - name: stripe
         database: raw
         schema: stripe 
         tables:
-        - name: payment
+          - name: payment
     ```
 
     </File>
@@ -363,8 +363,8 @@ Now that you've set up the foundational project, let's start building the data a
     final as (
         select 
             id as payment_id,
-            "orderID" as order_id,
-            "paymentMethod" as payment_method,
+            orderID as order_id,
+            paymentMethod as payment_method,
             amount,
             created as payment_date 
         from payments
@@ -437,16 +437,19 @@ How can you enhance resilience and add guardrails to this type of multi-project 
 ### Set up model contracts
 As part of the Data Analytics team, you may want to ensure the `fct_orders` model is reliable for downstream users, like the Finance team.
 
-1. Navigate to `models/core/core.yml` and under the `fct_orders` model, add a data contract to enforce reliability:
+1. Navigate to `models/core/core.yml` and under the `fct_orders` model before the `columns:` section, add a data contract to enforce reliability:
 
 ```yaml
 models:
   - name: fct_orders
     access: public
-    description: "Customer and order details"
+    description: “Customer and order details”
     config:
       contract:
         enforced: true
+    columns:
+      - name: order_id
+        .....
 ```
 
 2. Test what would happen if this contract were violated. In `models/core/fct_orders.sql`, comment out the `orders.status` column and click **Build** to try building the model.
