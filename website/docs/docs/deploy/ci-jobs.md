@@ -10,7 +10,6 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 
 dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
-
 ### Prerequisites
 - You have a dbt Cloud account. 
 - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
@@ -77,6 +76,19 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
       - `non_native_pull_request_id` (for example, BitBucket)
    - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
+## Test metrics in CI <Lifecycle status="team,enterprise" />
+Automatically test your metric definition models (metrics, semantic models, and saved queries) during code reviews by running warehouse validation checks in your CI job.
+- Testing metric definitions in a CI job guarantees that any code changes made to dbt models don't break these metrics. 
+- It allows you to catch issues early in the development process and deliver high-quality data to your end users.
+- To enable metrics in CI, add the following command in the **Execution settings** section in the **Job settings** page (explained in [Step 2](/docs/deploy/ci-jobs#prerequisites) earlier):
+
+   ```bash
+   dbt sl validate
+   ```
+
+For more details and use cases, refer to [Test metrics in CI](/docs/deploy/job-commands#test-metrics-in-ci).
+
+ADD IMAGE HERE
 
 ## Troubleshooting
 
