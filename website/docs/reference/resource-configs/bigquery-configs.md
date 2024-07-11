@@ -401,7 +401,12 @@ Currently, it's not possible to apply IAM tags in BigQuery, however, you can con
 You can create a new label with no value or remove a value from an existing label key.
 You can create a new label with no value or remove a value from an existing label key.
 
+You can create a new label with no value or remove a value from an existing label key.
+
 Sometimes a label with a key that has an empty value is referred to as a tag. However, this should not be confused with a [tag resource](https://cloud.google.com/bigquery/docs/tags), which conditionally applies IAM policies to BigQuery tables and datasets. Find out more in [labels and tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview). 
+
+Currently, it's not possible to apply IAM tags in BigQuery, however, you can contribute by upvoting [this issue](https://github.com/dbt-labs/dbt-bigquery/issues/1134) on GitHub.
+
 
 Currently, it's not possible to apply IAM tags in BigQuery, however, you can contribute by upvoting [this issue](https://github.com/dbt-labs/dbt-bigquery/issues/1134) on GitHub.
 
