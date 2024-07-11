@@ -31,8 +31,8 @@ For cross-project collaboration, you can interact with the DAG in all the same w
 
 To get a list view of all the projects in your account:
 - Navigate to the top left section of the **Explore** page, near the navigation bar.
-- Hover over the project name and select the account name.
-- This will return a project view page, allowing you to see all the projects in the account. It returns a public model list, project list, and a search bar for project searches.
+- Hover over the project name and select the account name to return a project view page, allowing you to see all the projects in the account.
+- It returns a public model list, project list, and a search bar for project searches.
 - Click the **Lineage view** icon in the page's upper right corner to view the project-level lineage graph.
 
 :::info
