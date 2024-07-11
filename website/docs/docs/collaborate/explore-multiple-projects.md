@@ -33,7 +33,7 @@ To get a list view of all the projects in your account:
 - Navigate to the top left section of the **Explore** page, near the navigation bar.
 - Hover over the project name and select the account name.
 - This will return a project view page, allowing you to see all the projects in the account. It returns a public model list, project list, and a search bar for project searches.
-- You can also view the project-level lineage graph by clicking the **Lineage view** icon in the page's upper right corner.
+- Click the **Lineage view** icon in the page's upper right corner to view the project-level lineage graph.
 
 :::info
 If you have permissions for a project in the account, you can view all public models used across the entire account. However, you can only view full public model details and private models if you have permissions for a project where the models are defined.
