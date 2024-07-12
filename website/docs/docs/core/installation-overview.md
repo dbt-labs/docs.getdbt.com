@@ -32,7 +32,7 @@ You can install dbt Core on the command line by using one of these methods:
 
 ## Upgrading dbt Core
 
-dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade/upgrading-to-v1.4) highlighting the changes required for each minor and major release, and [core versions](/docs/dbt-versions/core)
+dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/docs/dbt-versions/core-upgrade) highlighting the changes required for each [minor and major release](/docs/dbt-versions/core).
 
 - [Upgrade `pip`](/docs/core/pip-install#change-dbt-core-versions)
 
