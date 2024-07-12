@@ -30,6 +30,6 @@ jobs:
         if: env.CHANGED_FILES != ''
         uses: errata-ai/vale-action@reviewdog
         with:
-          files: ${{ env.CHANGED_FILES }}
+          files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
           token: ${{ secrets.VALE_GITHUB_TOKEN }}
           reporter: github-pr-check
