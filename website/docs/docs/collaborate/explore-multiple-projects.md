@@ -27,20 +27,16 @@ When viewing a downstream (child) project that imports and refs public models fr
 
 ## Explore the project-level lineage graph
 
-For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore your project's lineage](/docs/collaborate/explore-projects#project-lineage) but you can also interact with it at the project level and view the details. 
+For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore your project's lineage](/docs/collaborate/explore-projects#project-lineage) but you can also interact with it at the project level and view the details.
 
-To get a list view of all the projects in your account:
+If you have permissions for a project in the account, you can view all public models used across the entire account. However, you can only view full public model details and private models if you have permissions for the specific project where those models are defined.
+
+To view all the projects in your account, displayed as a lineage graph or list view:
 - Navigate to the top left section of the **Explore** page, near the navigation bar.
-- Hover over the project name and select the account name. This takes you to a project view page, where you can view all the projects in the account.
+- Hover over the project name and select the account name. This takes you to a project-level lineage graph page, where you can view all the projects in the account, including dependencies and relationships between different projects.
 - Click the **List view** icon in the page's upper right corner to see a list view of all the projects in the account.
 - The list view page displays a public model list, project list, and a search bar for project searches.
 - Click the **Lineage view** icon in the page's upper right corner to view the project-level lineage graph.
-
-<Lightbox src="/img/docs/collaborate/dbt-explorer/project-view-list.gif" width="100%" title="View all the projects in your account, which are displayed as a lineage or list view."/>
-
-:::info
-If you have permissions for a project in the account, you can view all public models used across the entire account. However, you can only view full public model details and private models if you have permissions for a project where the models are defined.
-:::
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/account-level-lineage.gif" width="100%" title="View a downstream (child) project, which imports and refs public models from upstream (parent) projects."/>
 
