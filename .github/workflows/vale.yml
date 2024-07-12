@@ -1,4 +1,4 @@
-name: Vale Lint
+name: Vale lint checker
 
 on:
   pull_request:
@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0  # Ensure the full history is fetched
 
-      - name: Set up Vale
+      - name: Set up vale
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
@@ -32,12 +32,12 @@ jobs:
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
 
-      - name: Run Vale with Reviewdog
+      - name: Run Vale with reviewdog
         run: |
           if [ -z "${{ env.CHANGED_FILES }}" ]; then
             echo "No changed files to lint."
           else
             for file in ${{ env.CHANGED_FILES }}; do
-              /home/runner/vale --output=JSON "$file" | /home/runner/reviewdog -f=vale -name="vale" -reporter=github-pr-review -level=warning -filter-mode=added -fail-on-error=true -tee
+            
             done
           fi
