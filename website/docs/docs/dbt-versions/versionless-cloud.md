@@ -26,7 +26,7 @@ To learn more about how dbt Labs deploys stable dbt upgrades in a safe manner to
 
 <Expandable alt_header="I'm using an old version of dbt. What should I do?" >
 
-If you're running dbt version 1.5 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer unsupported. We strongly recommend that you update to a newer version as soon as reasonably possible. In the coming months, we're planning to automatically migrate jobs and environments on these older, unsupported versions.
+If you're running dbt version 1.5 or older, please know that your version of dbt Core has reached [end-of-life (EOL)](/docs/dbt-versions/core#eol-version-support) and is no longer supported. We strongly recommend that you update to a newer version as soon as reasonably possible. In the coming months, we're planning to automatically migrate jobs and environments on these older, unsupported versions.
 
 </Expandable>
 
