@@ -20,16 +20,19 @@ jobs:
         run: |
           git fetch origin ${{ github.base_ref }} ${{ github.head_ref }}
           CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.md' '*.txt' '*.rst' | tr '\n' ' ')
+          CHANGED_FILES_JSON=$(echo $CHANGED_FILES | jq -R -s -c 'split(" ")')
           echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+          echo "CHANGED_FILES_JSON=$CHANGED_FILES_JSON" >> $GITHUB_ENV
 
       - name: Debug CHANGED_FILES
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
+          echo "Changed files JSON: ${{ env.CHANGED_FILES_JSON }}"
 
       - name: Run Vale with Reviewdog
         if: env.CHANGED_FILES != ''
         uses: errata-ai/vale-action@reviewdog
         with:
-          files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
+          files: ${{ env.CHANGED_FILES }}
           token: ${{ secrets.VALE_GITHUB_TOKEN }}
           reporter: github-pr-check
