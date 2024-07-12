@@ -9,7 +9,11 @@ pagination_prev: null
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. This single source of truth, combined with the ability to define tests for your data, reduces errors when logic changes, and alerts you when issues arise.
 
+## Title Case Header
 
+The tech writer writes teh documentation. It is organized by the writer too recieve this program.
+
+I can't can't seem to understand teh main points e.g. etc. 
 
 
 <Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
