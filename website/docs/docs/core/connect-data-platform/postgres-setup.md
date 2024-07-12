@@ -128,8 +128,9 @@ DBT_PSYCOPG2_NAME=psycopg2 pip install dbt-postgres
 
 </VersionBlock>
 
-Installing `psycopg2` requires OS level dependencies, which is one of the reasons users opt for `psycopg2-binary` (the other reason being a much longer installation time).
-These dependencies vary across operating systems and architectures.
+Installing `psycopg2` often requires OS level dependencies.
+These dependencies may vary across operating systems and architectures.
+
 For example, on Ubuntu, you need to install `libpq-dev` and `python-dev`:
 ```bash
 sudo apt-get update
