@@ -71,7 +71,7 @@ semantic_models:
 ```
 
 - MetricFlow uses `user_id` as the join key to link two semantic models, `transactions` and `user_signup`. This allows you to query the `average_purchase_price` metric in the `transactions` semantic model, grouped by the `type` dimension in the `user_signup` semantic model.
-  - Note that the `average_purchase_price` measure is defined in the `transactions` semantic model, where `user_id` is a foreign entity. However, the `user_signup` semantic model has `user_id` as a primary entity. 
+  - Note that the `average_purchase_price` measure is defined in `transactions`, where `user_id` is a foreign entity. However, `user_signup` has `user_id` as a primary entity. 
 - Since this is a foreign-to-primary relationship, a left join is performed where the `transactions` semantic model joins the `user_signup` semantic model since the `average_purchase_price` measure is defined in the `transactions` semantic model.
 - To query dimensions from different semantic models, add a double underscore (or dunder) to the dimension name after joining the entity in your editing tool. The following query, `user_id__type` is included as a dimension using the `--group-by` flag (`type` is the dimension).
 
