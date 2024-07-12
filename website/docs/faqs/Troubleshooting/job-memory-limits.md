@@ -7,8 +7,8 @@ sidebar_label: 'Job failures due to exceeded memory limits'
 If you're receiving a `This run exceeded your account's run memory limits` error in your failed job, it means that the job exceeded the memory limits set for your account. Memory limits are on a per run basis and are typically influenced by the amount of result data that dbt has to ingest and process, which typically is quite small but can be bloated unexpectedly by project design choices.
 
 Some common reasons for higher memory usage are:
-- dbt run/build command:  Macros that capture large result sets from run query. These may not all be necessary and may be memory inefficient.
-- dbt docs generate command: Source or model schemas with large numbers of tables (even if those tables aren't all used by dbt) cause the ingest of very large results for catalog queries.
+- dbt run/build:  Macros that capture large result sets from run query. These may not all be necessary and may be memory inefficient.
+- dbt docs generate: Source or model schemas with large numbers of tables (even if those tables aren't all used by dbt) cause the ingest of very large results for catalog queries.
 
 To resolve this, you can try the following:
 
