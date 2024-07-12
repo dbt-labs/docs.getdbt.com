@@ -17,7 +17,7 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 | Account-level permission| Account Admin | Billing admin | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
 | Account settings        |     W         |               |        R        |       R        |   R    |
-| Audit logs              |     R         |               |                 |       R        |        |
+| Audit logs              |     R         |               |                 |       R        |   R    |
 | Auth provider           |     W         |               |                 |       W        |   R    |
 | Billing                 |     W         |       W       |                 |                |   R    |
 | Groups                  |     W         |               |        R        |       W        |   R    |
@@ -27,7 +27,7 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 | Members                 |     W         |               |        W        |       W        |   R    |
 | Project (create)        |     W         |               |        W        |                |        |
 | Public models           |     R         |       R       |        R        |       R        |   R    |
-| Service tokens          |     W         |               |                 |       R        |        |
+| Service tokens          |     W         |               |                 |       R        |   R    |
 | Webhooks                |     W         |               |                 |                |        |
 
 #### Project permissions for account roles
