@@ -19,6 +19,8 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
+          reporter: github-pr-check
+          token: ${{ secrets.VALE_GITHUB_TOKEN }}
 
       - name: Get changed files
         id: changed-files
