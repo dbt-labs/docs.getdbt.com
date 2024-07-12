@@ -56,7 +56,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
   ```
 
 </File>
@@ -91,7 +91,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
 ```
 
 Along with adding the `authenticator` parameter, be sure to run `alter account set allow_client_mfa_caching = true;` in your Snowflake warehouse. Together, these will allow you to easily verify authentication with the DUO Mobile app (skipping this results in push notifications for every model built on every `dbt run`).
@@ -131,7 +131,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
 ```
 
 </File>
@@ -173,7 +173,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
 ```
 
 </File>
@@ -211,7 +211,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
 ```
 
 </File>
