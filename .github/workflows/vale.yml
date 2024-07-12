@@ -20,7 +20,6 @@ jobs:
         with:
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
           token: ${{ secrets.VALE_GITHUB_TOKEN }}
-          version: 2.17.0
           reporter: github-pr-check
 
       - name: Get changed files
