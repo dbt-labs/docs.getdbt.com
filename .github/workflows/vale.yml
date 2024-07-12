@@ -1,4 +1,4 @@
-name: Vale Lint
+name: Vale lint checker
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Vale
+      - name: Set up vale
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
@@ -24,10 +24,11 @@ jobs:
           CHANGED_FILES=$(git diff --name-only ${{ github.base_ref }} ${{ github.head_ref }} | grep '\.md\|\.txt\|\.rst' | tr '\n' ' ')
           echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
 
-      - name: Set up Reviewdog
+      - name: Set up reviewdog
         uses: reviewdog/action-setup@v1
 
-      - name: Run Vale with Reviewdog
+      - name: Run vale with reviewdog
         run: |
           for file in ${{ env.CHANGED_FILES }}; do
+            vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-review -level=warning -filter-mode=added -fail-on-error=true -tee
           done
