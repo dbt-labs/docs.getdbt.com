@@ -31,9 +31,12 @@ For cross-project collaboration, you can interact with the DAG in all the same w
 
 To get a list view of all the projects in your account:
 - Navigate to the top left section of the **Explore** page, near the navigation bar.
-- Hover over the project name and select the account name to return a project view page, allowing you to see all the projects in the account.
-- It returns a public model list, project list, and a search bar for project searches.
+- Hover over the project name and select the account name. This takes you to a project view page, where you can view all the projects in the account.
+- Click the **List view** icon in the page's upper right corner to see a list view of all the projects in the account.
+- The list view page displays a public model list, project list, and a search bar for project searches.
 - Click the **Lineage view** icon in the page's upper right corner to view the project-level lineage graph.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/project-view-list.gif" width="100%" title="View all the projects in your account, which are displayed as a lineage or list view."/>
 
 :::info
 If you have permissions for a project in the account, you can view all public models used across the entire account. However, you can only view full public model details and private models if you have permissions for a project where the models are defined.
