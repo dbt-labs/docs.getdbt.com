@@ -97,21 +97,22 @@ If `dbt-postgres` encounters an operational error or timeout when opening a new 
 ### `psycopg2` vs `psycopg2-binary`
 
 `psycopg2-binary` is installed by default when installing `dbt-postgres`.
-This is ideal for development and testing workflows where performance is less of a concern.
-However, production environments will benefit from `psycopg2`, which is built from source for that particular operating system and archtecture.
+Installing `psycopg2-binary` uses a pre-built version of `psycopg2` which may not be optimized for your particular machine.
+This is ideal for development and testing workflows where performance is less of a concern and speed and ease of install is more important.
+However, production environments will benefit from a version of `psycopg2` which is built from source for your particular operating system and archtecture. In this scenario, speed and ease of install is less important as the on-going usage is the focus.
 
 <VersionBlock firstVersion="1.8">
 
 To use `psycopg2`:
-1. install `dbt-postgres`
-2. uninstall `psycopg2-binary`
-3. install the equivalent version of `psycopg2`
+1. Install `dbt-postgres`
+2. Uninstall `psycopg2-binary`
+3. Install the equivalent version of `psycopg2`
+
 ```bash
 pip install dbt-postgres
 if [[ $(pip show psycopg2-binary) ]]; then
     PSYCOPG2_VERSION=$(pip show psycopg2-binary | grep Version | cut -d " " -f 2)
-    pip uninstall -y psycopg2-binary
-    pip install psycopg2==$PSYCOPG2_VERSION
+    pip uninstall -y psycopg2-binary && pip install psycopg2==$PSYCOPG2_VERSION
 fi
 ```
 
@@ -139,7 +140,7 @@ whereas on Mac, you need to install `postgresql`:
 brew install postgresql
 pip install psycopg2
 ```
-You should research which OS dependencies are needed for your particular scenario.
+Your OS may have its own dependencies based on your particular scenario.
 
 <VersionBlock firstVersion="1.8">
 
