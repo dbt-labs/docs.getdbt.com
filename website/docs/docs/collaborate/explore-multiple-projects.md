@@ -31,16 +31,16 @@ For cross-project collaboration, you can interact with the DAG in all the same w
 
 If you have permissions for a project in the account, you can view all public models used across the entire account. However, you can only view full public model details and private models if you have permissions for the specific project where those models are defined.
 
-To view all the projects in your account, displayed as a lineage graph or list view:
+To view all the projects in your account (displayed as a lineage graph or list view):
 - Navigate to the top left section of the **Explore** page, near the navigation bar.
-- Hover over the project name and select the account name. This takes you to a project-level lineage graph page, where you can view all the projects in the account, including dependencies and relationships between different projects.
+- Hover over the project name and select the account name. This takes you to a account-level lineage graph page, where you can view all the projects in the account, including dependencies and relationships between different projects.
 - Click the **List view** icon in the page's upper right corner to see a list view of all the projects in the account.
 - The list view page displays a public model list, project list, and a search bar for project searches.
-- Click the **Lineage view** icon in the page's upper right corner to view the project-level lineage graph.
+- Click the **Lineage view** icon in the page's upper right corner to view the account-level lineage graph.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/account-level-lineage.gif" width="100%" title="View a downstream (child) project, which imports and refs public models from upstream (parent) projects."/>
 
-From the project-level lineage graph, you can:
+From the account-level lineage graph, you can:
 
 - Click the **Lineage view** icon (in the graph’s upper right corner) to view the cross-project lineage graph.
 - Click the **List view** icon (in the graph’s upper right corner) to view the project list.
