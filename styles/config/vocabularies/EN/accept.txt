@@ -20,4 +20,11 @@ sql
 bash
 shell
 MetricFlow
+jinja
+jinja2
+sqlmesh
+Snowflake
+dbt Mesh
+dbt mesh
+mesh
 
