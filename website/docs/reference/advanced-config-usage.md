@@ -3,7 +3,7 @@ title: Advanced configuration usage
 sidebar_label: Advanced usage
 ---
 
-### Alternative Config Block Syntax
+### Alternative Config block syntax
 
 
 ```sql
