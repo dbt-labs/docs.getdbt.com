@@ -351,14 +351,25 @@ of [materialized views](/docs/build/materializations#Materialized-View).
 In particular, dynamic tables have access to the `on_configuration_change` setting.
 Dynamic tables are supported with the following configuration parameters:
 
-| Parameter                                                                        | Type       | Required | Default     | Change Monitoring Support |
-|----------------------------------------------------------------------------------|------------|----------|-------------|---------------------------|
+<VersionBlock lastVersion="1.8">
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
 | [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
-| [`target_lag`](#target-lag)                                                      | `<string>` | yes      |             | alter                     |
-| [`snowflake_warehouse`](#configuring-virtual-warehouses)                         | `<string>` | yes      |             | alter                     |
+| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+</VersionBlock>
+
 <VersionBlock firstVersion="1.9">
-| [`refresh_mode`](#refresh-mode)                                                  | `<string>` | no       | `AUTO`      | refresh                   |
-| [`initialize`](#initialize)                                                      | `<string>` | no       | `ON_CREATE` | n/a                       |
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+| [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
+| [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
+
 </VersionBlock>
 
 <Tabs
