@@ -4,7 +4,7 @@ description: "Use incremental models or optimize queries for job failures due to
 sidebar_label: 'Job failures due to exceeded memory limits'
 ---
 
-If you're receiving a `This run exceeded your account's run memory limits` error in your failed job, it means that the job exceeded the memory limits set for your account. Memory limits are on a per run basis and are typically influenced by the amount of result data that dbt has to ingest and process, which typically is quite small but can be bloated unexpectedly by project design choices.
+If you're receiving a `This run exceeded your account's run memory limits` error in your failed job, it means that the job exceeded the memory limits set for your account. All dbt Cloud accounts have a pod memory of 600Mib set. Memory limits are on a per run basis and are typically influenced by the amount of result data that dbt has to ingest and process, which typically is quite small but can be bloated unexpectedly by project design choices.
 
 ## Reasons
 
@@ -21,3 +21,8 @@ To resolve this, you can try the following:
 2. **Refactor your data model**: Review your data models to see if there are any opportunities to optimize or refactor them. For example, you can try to reduce the number of columns being selected, use `where` clauses to filter data early in the query or use `limit` clauses to reduce the amount of data being processed.
 
 If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com) and we can try increasing your account's memory. We're happy to help!
+
+## Additional resources
+Check out the following resources for more information on optimizing your dbt project:
+- [Job memory details](https://docs.getdbt.com/docs/deploy/job-scheduler#job-memory)
+- [Blog post on how we shaved 90 mins off](https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model)
