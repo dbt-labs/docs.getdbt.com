@@ -24,11 +24,8 @@ jobs:
           CHANGED_FILES=$(git diff --name-only ${{ github.base_ref }} ${{ github.head_ref }} | grep '\.md\|\.txt\|\.rst' | tr '\n' ' ')
           echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
 
-      - name: Set up Reviewdog
-        uses: reviewdog/action-setup@v1
-
       - name: Run Vale with Reviewdog
         run: |
           for file in ${{ env.CHANGED_FILES }}; do
-            vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-review -level=warning -filter-mode=added -fail-on-error=true -tee
+            /home/runner/vale --output=JSON "$file" | /home/runner/reviewdog -f=vale -name="vale" -reporter=github-pr-review -level=warning -filter-mode=added -fail-on-error=true -tee
           done
