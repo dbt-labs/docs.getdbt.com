@@ -7,4 +7,17 @@ dbt-tonic
 dbtonic
 IDE
 CLI
+Config
+config
+configs
+info
+docs
+doc
+yaml
+YAML
+SQL
+sql
+bash
+shell
+MetricFlow
 
