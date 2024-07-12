@@ -15,13 +15,6 @@ jobs:
         with:
           fetch-depth: 0  # Ensure the full history is fetched
 
-      - name: Set up vale
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
-          token: ${{ secrets.VALE_GITHUB_TOKEN }}
-          reporter: github-pr-check
-
       - name: Get changed files
         id: changed-files
         run: |
@@ -33,15 +26,10 @@ jobs:
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
 
-      - name: Set up Reviewdog
-        uses: reviewdog/action-setup@v1
-
-      - name: Run vale with reviewdog
-        run: |
-          if [ -z "${{ env.CHANGED_FILES }}" ]; then
-            echo "No changed files to lint."
-          else
-            for file in ${{ env.CHANGED_FILES }}; do
-              vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
-            done
-          fi
+      - name: Run Vale with Reviewdog
+        if: env.CHANGED_FILES != ''
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          files: ${{ env.CHANGED_FILES }}
+          token: ${{ secrets.VALE_GITHUB_TOKEN }}
+          reporter: github-pr-check
