@@ -120,7 +120,7 @@ fi
 
 <VersionBlock lastVersion="1.7">
 
-To use `psycopg2`, ensure that `DBT_PSYCOPG2_NAME=psycopg2` when installing `dbt-postgres`.
+To ensure your dbt installation uses `psycopg2`, prefix all `dbt-postgres` installation commands with `DBT_PSYCOPG2_NAME=psycopg2`.
 The easiest way to do this is to set it inline while installing:
 ```bash
 DBT_PSYCOPG2_NAME=psycopg2 pip install dbt-postgres
