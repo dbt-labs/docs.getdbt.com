@@ -102,7 +102,10 @@ However, production environments will benefit from `psycopg2`, which is built fr
 
 <VersionBlock firstVersion="1.8">
 
-To use `psycopg2`, simply uninstall `psycopg2-binary` and install the equivalent version of `psycopg2` after installing `dbt-postgres`:
+To use `psycopg2`:
+1. install `dbt-postgres`
+2. uninstall `psycopg2-binary`
+3. install the equivalent version of `psycopg2`
 ```bash
 pip install dbt-postgres
 if [[ $(pip show psycopg2-binary) ]]; then
