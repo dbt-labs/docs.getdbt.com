@@ -11,11 +11,8 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 
 ## Sentence Case Header
-The tech writer writes teh documentation. It is organized by the writer too recieve this program.
 
 I can't can't seem to understand teh main points e.g.; etc. 
-
-tahnks you 
 
 <Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
 
