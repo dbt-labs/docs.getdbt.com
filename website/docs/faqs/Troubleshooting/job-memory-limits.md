@@ -6,7 +6,7 @@ sidebar_label: 'Job failures due to exceeded memory limits'
 
 If you're receiving a `This run exceeded your account's run memory limits` error in your failed job, it means that the job exceeded the [memory limits](/docs/deploy/job-scheduler#job-memory) set for your account. All dbt Cloud accounts have a pod memory of 600Mib and memory limits are on a per run basis. They're typically influenced by the amount of result data that dbt has to ingest and process, which is small but can become bloated unexpectedly by project design choices.
 
-## Reasons
+## Common reasons
 
 Some common reasons for higher memory usage are:
 
