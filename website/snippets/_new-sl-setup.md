@@ -34,8 +34,7 @@ For example, let's say you have a fictional Finance team. You can set up Semanti
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.jpg" width="55%" title="Add credentials to link to a service token. This example image links a credetnial to the fiction finance team, who only have access to finance-related schemas."/> <br />
 
-
-### 3. Collect connection detail
+### 3. View connection detail
 - Go back to the **Project details** page for connection details to connect to downstream tools.
 - Copy and share the environment ID, service token, host, as well as the service token name to the relevant teams for BI connection set up. If your tool uses the GraphQL API, save the GraphQL API host information instead of the JDBC URL. 
 
