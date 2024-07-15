@@ -3,7 +3,5 @@
 - Use Snowflake, BigQuery, Databricks, or Redshift.
 -  Create a successful run in the environment where you configure the Semantic Layer. 
    - **Note:** Semantic Layer supports querying in Deployment environments; development querying is coming soon.
-- Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
-  - dbt Core or Developer accounts can define but not dynamically query metrics.<br />
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts powering the dbt Semantic Layer.  
 - Note that the dbt Semantic Layer doesn't support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections.  It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), though SSO is supported for development user accounts.
