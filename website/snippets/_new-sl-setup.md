@@ -1,7 +1,9 @@
 
-Here's how to set up the Semantic Layer in dbt Cloud. For example, you can set up Semantic Layer credentials if you'd like to provide a Semantic Layer credential to the Fiction Finance team, who only have access to finance-related schemas.
+Here's how to set up the Semantic Layer in dbt Cloud:
 
 ### 1. Account settings and configuration
+
+For example, let's say you have a fictional Finance team. You can set up Semantic Layer credentials if you'd like to provide a Semantic Layer credential to the trusty Finance team, who only have access to finance-related schemas.
 
 - Navigate to **Account Settings** in the navigation menu.
 - On the **Settings** sidebar, select the specific project you want to enable the Semantic Layer for.
