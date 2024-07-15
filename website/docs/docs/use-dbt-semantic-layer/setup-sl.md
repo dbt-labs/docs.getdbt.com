@@ -6,9 +6,7 @@ sidebar_label: "Set up your Semantic Layer"
 tags: [Semantic Layer]
 ---
 
-<p style={{ color: '#808080', fontSize: '1.1em' }}>
 With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool.
-</p>
 
 <VersionBlock lastVersion="1.5">
 
@@ -23,6 +21,14 @@ import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 import SetUp from '/snippets/_v2-sl-prerequisites.md';
 
 <SetUp/>
+
+#### Group permissions
+- You must be part of the Owner group, and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/self-service-permissions) to set up the Semantic Layer at the environment and project level.
+  - Enterprise plan:
+    - Developer license with Account Admin permissions, or
+    - Owner with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
+  - Team plan: Owner with a Developer license.
+  - Free trial: You are on a free trial of the Team plan as an Owner, which means you have access to the dbt Semantic Layer.
 
 import SLCourses from '/snippets/_sl-course.md';
 

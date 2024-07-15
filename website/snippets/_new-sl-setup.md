@@ -1,57 +1,54 @@
-You can set up the dbt Semantic Layer in dbt Cloud at the environment and project level. Before you begin:
 
-- You must be part of the Owner group, and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/self-service-permissions) to configure the Semantic Layer:
-    * Enterprise plan &mdash; Developer license with Account Admin permissions. Or Owner with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
-    * Team plan &mdash; Owner with a Developer license.
-    * If you are using a free trial dbt Cloud account, you are on a trial of the Team plan as an Owner, so you're good to go.
-- You must have a successful run in your new environment.
+Here's how to set up the Semantic Layer in dbt Cloud:
 
-Now that we've created and successfully run a job in your environment, you're ready to configure the semantic layer.
+### 1. Account settings and configuration
 
-1. Navigate to **Account Settings** in the navigation menu.
-2. Use the sidebar to select your project settings. Select the specific project you want to enable the Semantic Layer for.
-3. In the **Project Details** page, navigate to the **Semantic Layer** section, and select **Configure Semantic Layer**.
-
+- Navigate to **Account Settings** in the navigation menu.
+- On the **Settings** sidebar, select the specific project you want to enable the Semantic Layer for.
+- In the **Project details** page, navigate to the **Semantic Layer** section. Select **Configure Semantic Layer**  
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/new-sl-configure.jpg" width="60%" title="Semantic Layer section in the Project Details page"/>
 
-4. In the **Credentials** page, configure the credentials you want the Semantic Layer to use specific to your data platform. For more granular control, you can configure the dbt Semantic Layer to use multiple data platform credentials. Refer to [configure credentials](#configure-credentials) for more granular configuration details.
+- In the **Semantic Layer & Credentials** page, select the deployment environment you want for the Semantic Layer and click **Save**. This provides administrators with the flexibility to choose the environment where the Semantic Layer will be enabled. <br />
 
-5. Select the deployment environment you want for the Semantic Layer and click **Save**.
-6. After saving it, you'll be provided with the connection information that allows you to connect to downstream tools. If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). If it uses the GraphQL API, save the GraphQL API host information instead.
+### 2. Add Semantic Layer credential and service token
+- <Expandable alt_header="Learn more about granular access control">
+
+    You can authenticate to the dbt Semantic Layer in downstream interfaces using a [service token](/docs/dbt-cloud-apis/service-tokens) for more granular control. The credential configuration allows admins to map service tokens to the appropriate credentials, which can then be distributed to the relevant teams for BI connection setup.
+
+    - Admins can link multiple service tokens to a one single credential within a project.  However, each service token can only be linked to one credential per project.
+    - When you send a request through our APIs, the service token you provide will be linked to the corresponding credential and will follow access policies of the data used to build your semantic objects.
+    - [Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE')}` aren't supported the dbt Semantic Layer yet. You must use the actual credentials instead.
+
+ </Expandable>
+
+- On the **Credentials & service tokens** page, click the **Add Semantic Layer credential** button to configure the credentials you want the Semantic Layer to use specific to your data platform. You can configure as many credentials as you need for more granular control.
+- In the **Add credentials** section, fill in the data platform's credentials, which will link to a [service tokens](/docs/dbt-cloud-apis/service-tokens). 
+    We recommend using “read-only” credentials. You can also use your deployment credentials, but only for testing purposes.
+- In the **Map new service token** section,  map a service token to the credential you configured in the previous step. 
+- dbt Cloud automatically selects the service token permission set you need (Semantic Layer Only and Metadata Only).
+
+- Click **Save** to link the service token to the credential. 
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.jpg" width="55%" title="Add credentials to link to a service token. This example image links a credetnial to the fiction finance team, who only have access to finance-related schemas."/> <br />
+
+### 3. Collect connection detail
+- Go back to the **Project details** page for connection details to connect to downstream tools.
+- Copy and share the environment ID, service token, host, as well as the service token name to the relevant teams for BI connection set up. If your tool uses the GraphQL API, save the GraphQL API host information instead of the JDBC URL. 
+
+    For info on how to connect to other integrations, refer to [Available integrations](/docs/cloud-integrations/avail-sl-integrations).
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-example.jpg" width="50%" title="After configuring, you'll be provided with the connection details to connect to you downstream tools." />
 
-7. Save and copy your environment ID, service token, and host, which you'll need to use in the downstream tools. For more info on how to integrate with partner integrations, refer to [Available integrations](/docs/cloud-integrations/avail-sl-integrations).
+- <Expandable alt_header="Add more service tokens or unlink existing ones">
 
-8. Return to the **Project Details** page and click the **[Generate a Service Token](/docs/dbt-cloud-apis/service-tokens)** button. Make sure it has Semantic Layer Only and Metadata Only permissions. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.  
+    To provide admins more control and granularity:
+    - Optionally add more service tokens to the credential by clicking **Add service token** under the **Linked service tokens** section.
+    - Unlink a service token from the credential by clicking **Unlink** under the **Linked service tokens** section.
+    
+  </Expandable>
 
-## Configure credentials
+### 4. Delete credentials (optional)
 
-For more granular control, you can authenticate to the dbt Semantic Layer in downstream interfaces using a [service token](/docs/dbt-cloud-apis/service-tokens). The credential configuration allows admins to map service tokens to the appropriate credentials, which can then be distributed to the relevant teams for BI connection setup. 
-
-- Admins can map multiple service tokens to a single credential in a project. However, in a single project, only a given service token can map to one credential.
-- When you send a request through our APIs with a service token, it will resolve to the underlying credential that the token is mapped to and respect all physical access policies of the data used to build your semantic objects.
-- Note, [Environment variables](/docs/build/environment-variables) such as `{{env_var('DBT_WAREHOUSE')}`, aren't supported the dbt Semantic Layer yet. You must use the actual credentials
-
-### Create a credential
-
-1. Choose **Add credentials** in the **Project details** page.
-2. Fill in the credentials to your data platform. We recommend using “read-only” credentials. You can also use your deployment credentials, but only for testing purposes.
-3. Create and map a service token to the credential. Make sure to copy the service token before you exit.
-
-### Map service tokens to existing credentials
-
-1. Create a service token by going to **Account settings** and then select **Service tokens** page under **API tokens**.
-2. Map it to an existing credential. You’ll always be able to see which credentials tie to a service token on the **Detail** page.
-
-### Add credentials
-
-1. Return to the **Project details** configuration page and select **Add credential** to add a new credential.
-
-### Delete credentials
-
-1. (Optional) Edit the configuration and select **Delete credential** to remove a credential. When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
-
-Once you have configured the credentials, you can continue following the set up steps to connect to the dbt Semantic Layer using the credentials you've set up.
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="55%" title="Enter the credentials you want the Semantic Layer to use specific to your data platform, and select the deployment environment."/>
+- To remove a credential, go back to the **Semantic Layer & Credentials** page. 
+- Select **Delete credential** to remove a credential.
+- When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
