@@ -60,9 +60,19 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 </Tabs>
 
 
+## Related content
+
+- [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup)
+- [Create a GitHub repository](/guides/manual-install?step=2)
+- [Build your first models](/guides/manual-install?step=3)
+- [Test and document your project](/guides/manual-install?step=4)
+- [Schedule a job](/guides/manual-install?step=5)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
+
+
 ## Install DuckDB
 
-Further down is a step-by-step explanation of the steps to install DuckDB
+Further down is a step-by-step explanation of the steps to install DuckDB.
 
 
 ### Prerequisites
@@ -131,17 +141,6 @@ Fore more information on the setup of DuckDB, you can refer to [DuckDBsetup](/do
 Currently, DuckDB is not supported in dbt Cloud.
 
 :::
-
-
-## Related content
-
-- [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup)
-- [Create a GitHub repository](/guides/manual-install?step=2)
-- [Build your first models](/guides/manual-install?step=3)
-- [Test and document your project](/guides/manual-install?step=4)
-- [Schedule a job](/guides/manual-install?step=5)
-- Learn more with [dbt Learn courses](https://learn.getdbt.com)
- 
 
 
 ## Setting up DuckDB for dbt Core
@@ -269,9 +268,9 @@ IO Error: Could not set lock on file "jaffle_shop.duckdb": Resource temporarily 
 
 ```
 
-This is a known issue in DuckDB. If you are using DBeaver, this means shutting down DBeaver (merely disconnecting didn't work for me).
+This is a known issue in DuckDB. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
 
-As a last esort, deleting the database file will get you back in action (BUT you will lose all your data).
+As a last resort, deleting the database file will get you back in action (_BUT_ you will lose all your data).
 
 
  </TabItem>
