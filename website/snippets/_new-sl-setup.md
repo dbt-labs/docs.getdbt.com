@@ -1,5 +1,5 @@
 
-Here's how to set up the Semantic Layer in dbt Cloud:
+Here's how to set up the Semantic Layer in dbt Cloud. For example, you can set up Semantic Layer credentials if you'd like to provide a Semantic Layer credential to the Fiction Finance team, who only have access to finance-related schemas.
 
 ### 1. Account settings and configuration
 
@@ -24,12 +24,14 @@ Here's how to set up the Semantic Layer in dbt Cloud:
 - On the **Credentials & service tokens** page, click the **Add Semantic Layer credential** button to configure the credentials you want the Semantic Layer to use specific to your data platform. You can configure as many credentials as you need for more granular control.
 - In the **Add credentials** section, fill in the data platform's credentials, which will link to a [service tokens](/docs/dbt-cloud-apis/service-tokens). 
     We recommend using “read-only” credentials. You can also use your deployment credentials, but only for testing purposes.
-- In the **Map new service token** section,  map a service token to the credential you configured in the previous step. 
-- dbt Cloud automatically selects the service token permission set you need (Semantic Layer Only and Metadata Only).
+- In the **Map new service token** section,  map a service token to the credential you configured in the previous step.
+  - dbt Cloud automatically selects the service token permission set you need (Semantic Layer Only and Metadata Only).
+  - You can also view your Semantic Layer credential in the separate **Service token details** page by going to **API tokens** and then **Service tokens**.
 
 - Click **Save** to link the service token to the credential. 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.jpg" width="55%" title="Add credentials to link to a service token. This example image links a credetnial to the fiction finance team, who only have access to finance-related schemas."/> <br />
+
 
 ### 3. Collect connection detail
 - Go back to the **Project details** page for connection details to connect to downstream tools.
