@@ -3,6 +3,26 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/guides/codespace?step=4",
+      "destination": "/guides/DuckDB?step=5",
+      "permanent": true
+      },
+    {
+      "source": "/guides/codespace?step=3",
+      "destination": "/guides/DuckDB?step=3",
+      "permanent": true
+      },
+    {
+      "source": "/guides/codespace?step=2",
+      "destination": "/guides/DuckDB?step=2",
+      "permanent": true
+      },
+    {
+      "source": "/guides/codespace?step=1",
+      "destination": "/guides/DuckDB?step=1",
+      "permanent": true
+      },
+    {
       "source": "/best-practices/how-we-mesh/mesh-4-faqs",
       "destination": "/best-practices/how-we-mesh/mesh-5-faqs",
       "permanent": true
