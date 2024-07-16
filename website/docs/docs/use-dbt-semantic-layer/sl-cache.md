@@ -134,6 +134,6 @@ You can manually invalidate the cache through the [dbt Semantic Layer APIs](/doc
 
 
 ## Related docs
-- [Test your metrics in CI](/docs/deploy/ci-jobs#test-metrics-in-ci) 
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - [Saved queries](/docs/build/saved-queries)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
