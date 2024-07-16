@@ -44,7 +44,7 @@ It allows developers to work in their own test schemas (sandboxes) and makes it 
 
 While the default behavior would fit the needs of most dbt users, there are occasions where the approach doesn’t fit with the existing data warehouse governance and design.
 
-For example, dbt expects that it has the rights to create a schema on the fly _quickly_ (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
+For example, dbt expects that it has the rights to create a schema on the fly (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
 
 Or, you might have many custom schemas and want to avoid having your dev database showing the combination of all developer schemas and custom schemas.
 
