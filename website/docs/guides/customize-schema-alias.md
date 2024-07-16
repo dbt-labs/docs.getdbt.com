@@ -85,7 +85,7 @@ Here are some typical examples we've encountered with dbt users leveraging those
 
 :::note
 
-Note that the below examples do not comprehensively cover all the available options. These examples are meant to be templates for you to develop your own behaviors. 
+Note that the following examples do not comprehensively cover all the available options. These examples are meant to be templates for you to develop your own behaviors. 
 
 :::
 
