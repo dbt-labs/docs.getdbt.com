@@ -62,6 +62,6 @@ In 2024, we've changed the way that new dbt functionality is made available for 
 
 We will absolutely continue to release new minor versions of dbt Core (OSS), including v1.9 which will be available later this year. When we do, it will be a subset of the functionality that's already available to dbt Cloud customers and always after the functionality has been available in dbt Cloud.
 
-If you have comments or concerns, we’re happy to help. If you’re an existing dbt Cloud customer, you may reach out to your account team or [contact support](/docs/dbt-support#dbt-cloud-support).
-
 </Expandable>
+
+If you have comments or concerns, we’re happy to help. If you’re an existing dbt Cloud customer, you may reach out to your account team or [contact support](/docs/dbt-support#dbt-cloud-support).
