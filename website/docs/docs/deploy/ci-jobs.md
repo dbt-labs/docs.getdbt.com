@@ -90,7 +90,10 @@ To do this, add the command `dbt sl validate --select state:modified+` in the CI
 To learn how to set this up, refer to the following steps:
 
 1. Navigate to the **Job setting** page and click **Edit**.
-2. Add the `dbt sl validate --select state:modified+` command under **Commands** in the **Execution settings** section. The command uses state selection and deferral to run validation on any semantic nodes downstream of model changes. To reduce job times, we recommend only running CI on modified semantic models. There are additional commands and use cases described in the [next section](#use-cases).
+2. Add the `dbt sl validate --select state:modified+` command under **Commands** in the **Execution settings** section. The command uses state selection and deferral to run validation on any semantic nodes downstream of model changes. To reduce job times, we recommend only running CI on modified semantic models.
+3. Click **Save** to save your changes.
+
+There are additional commands and use cases described in the [next section](#use-cases).
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.jpg" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
 
