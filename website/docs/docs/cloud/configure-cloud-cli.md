@@ -112,52 +112,32 @@ As a tip, most command-line tools have a `--help` flag to show available command
  
 ### Lint SQL files 
 
-From the dbt Cloud CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. The available SQLFluff commands are: `fix`, `format`, and `lint`. To show detailed information about these commands and the available flags, run the `dbt sqlfluff -h` command. 
+From the dbt Cloud CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the dbt Cloud CLI, except those that might pose a security risk.
 
-The `lint` command in dbt supports many of the same flags that you can pass to SQLFluff, except for those that might pose a security risk. To lint SQL files, run the command as follows:  
+The available SQLFluff commands are: 
+
+- `lint` &mdash; Lint SQL files by passing a list of files or from standard input (stdin).
+- `fix` &mdash; Fix SQL files.
+- `format` &mdash; Autoformat SQL files.
+
+
+To lint SQL files, run the command as follows:  
 
 ```shell
 dbt sqlfluff lint [PATHS]... [flags]
 ```
 
-When no path is set, dbt lints all SQL files in the project. To lint a specific SQL file or a directory of SQL files, set `PATHS` to the path of the SQL file or the directory path, respectively. 
+When no path is set, dbt lints all SQL files in the current project. To lint a specific SQL file or a directory, set `PATHS` to the path of the SQL file(s) or directory of files. To lint multiple files or directories, pass multiple `PATHS` flags.  
 
-To show a list of all the dbt supported flags, run the `dbt sqlfluff lint -h` command. For example:  
-
-```shell
-dbt sqlfluff lint -h
-Lint SQL files via passing a list of files or using stdin.
-
-PATH is the path to a sql file or directory to lint. This can be either a file ('path/to/file.sql'), a path ('directory/of/sql/files'), a single ('-') character to indicate reading from *stdin* or a dot/blank ('.'/' ') which will be interpreted like passing the current working directory as a path argument.
-
-Usage:
-  dbt sqlfluff lint [PATHS]... [flags]
-
-Flags:
-  -d, --dialect string                The dialect of SQL to lint.
-      --encoding string               Specify encoding to use when reading and writing files. Defaults to autodetect.
-  -e, --exclude-rules string          Exclude specific rules. For example specifying -–exclude-rules LT01 will remove rule LT01 (Unnecessary trailing whitespace) from the set of considered rules. This could either be the allowlist, or the general set if there is no specific allowlist. Multiple rules can be specified with commas e.g. –-exclude-rules LT01,LT02 will exclude violations of rule LT01 and rule LT02.
-  -f, --format SqlfluffOutputFormat   What format to return the lint result in, one of "human", "json", "yaml", "github-annotation", "github-annotation-native", "none". (default human)
-  -h, --help                          help for lint
-  -i, --ignore string                 Ignore particular families of errors so that they don't cause a failed run. For example –-ignore parsing would mean that any parsing errors are ignored and don't influence the success or fail of a run. –-ignore behaves somewhat like noqa comments, except it applies globally. Multiple options are possible if comma separated: e.g. –ignore parsing,templating.
-      --ignore-local-config           Ignore config files in default search path locations. This option allows the user to lint with the default config or can be used in conjunction with –config to only reference the custom config file.
-      --rules string                  Narrow the search to only specific rules. For example specifying –-rules LT01 will only search for rule LT01 (Unnecessary trailing whitespace). Multiple rules can be specified with commas e.g. –-rules LT01,LT02 will specify only looking for violations of rule LT01 and rule LT02.
-  -t, --templater SqlfluffTemplater   The templater to use, one of "raw", "jinja", "python", "placeholder", "dbt". (default jinja)
-  -v, --verbose count                 Verbosity, how detailed should the output be. This is stackable, so -vv is more verbose than -v. For the most verbose option try -vvvv or -vvvvv.
-
-Global Flags:
-      --log-format LogFormat   The log format, either json or plain. (default plain)
-      --log-level LogLevel     The log level, one of debug, info, warning, error or fatal. (default info)
-      --no-color               Disables colorization of the output.
-  -q, --quiet                  Suppress all non-error logging to stdout.
-```
+To show detailed information on all the dbt supported commands and flags, run the `dbt sqlfluff -h` command. 
 
 #### Considerations
-Keep the following points in mind when using SQLFluff with dbt Cloud:
 
-- When you run `dbt sqlfluff`, it picks up changes to your local .sqlfluff config.
-- To use SQLFluff in continuous integration/continuous development, you need to have a `dbt_cloud.yml` file in your project and run commands from a valid dbt project.
-- SQLFluff commands in the dbt Cloud CLI do not return exit codes yet.
+When running `dbt sqlfluff` from the dbt Cloud CLI, the following are important behaviors to consider:
+
+- dbt will read the `.sqlfluff` file if it exists for any custom configurations you might have.
+- For continuous integration/continuous development (CI/CD) workflows, your project must have a `dbt_cloud.yml` file and you have successfully run commands from within this dbt project.
+- An SQLFluff command will return an exit code of 0 if it ran without any file violations. This dbt behavior differs from SQLFluff behavior, where a linting violation returns a non-zero exit code. dbt Labs plans on addressing this in a later release.
 
 ## FAQs
 <Expandable alt_header="How to create a .dbt directory and move your file">
