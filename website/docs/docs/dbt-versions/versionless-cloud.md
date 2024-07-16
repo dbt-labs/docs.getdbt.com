@@ -58,7 +58,7 @@ No. Going forward, “Keep on latest version” will be how all customers are go
 
 In 2023 (and earlier), customers were expected to manage their own upgrades by selecting dbt Core versions, up to and including dbt Core v1.7, which was released in October 2023. (Way back in 2021, dbt Cloud customers would pick specific _patch releases_ of dbt Core, such as upgrading from `v0.21.0` to `v0.21.1`. We’ve come a long way since then!)
 
-In 2024, we've changed the way that new dbt functionality is made available for dbt Cloud customers: continuously. Behavior or breaking changes are gated behind opt-in flags. Users don't need to spend valuable time managing their own upgrades. This is called "Keep on latest version" and it's required for accessing any new functionality that we've put out in 2024+
+In 2024, we've changed the way that new dbt functionality is made available for dbt Cloud customers: continuously. Behavior or breaking changes are gated behind opt-in flags. Users don't need to spend valuable time managing their own upgrades. This is called "Keep on latest version" and it's required for accessing any new functionality that we've put out in 2024+.
 
 We will absolutely continue to release new minor versions of dbt Core (OSS), including v1.9 which will be available later this year. When we do, it will be a subset of the functionality that's already available to dbt Cloud customers and always after the functionality has been available in dbt Cloud.
 
