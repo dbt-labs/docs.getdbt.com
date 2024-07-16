@@ -6,7 +6,7 @@ description: "Learn how to go versionless in dbt Cloud. You never have to perfor
 
 dbt Cloud is going versionless. Soon, your environments and jobs will always run on the latest version of dbt.
 
-This will require you to make one final update to your current jobs and environments. When that's done, you never have to think about managing, coordinating, or upgrading dbt versions again.
+This will require you to make one final update to your current jobs and environments. When that's done, you'll never have to think about managing, coordinating, or upgrading dbt versions again.
 
 Move your environments and jobs to "Keep on latest version" to get all the functionality in the latest versions of dbt Core &mdash; and more! &mdash; along with access to the new features and fixes as soon as they’re released.
 
