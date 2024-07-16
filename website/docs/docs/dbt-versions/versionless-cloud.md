@@ -54,7 +54,7 @@ If the package you’ve installed relies on _undocumented_ functionality of db
 
 <Expandable alt_header="I see that dbt Core version 1.8 was released in April 2024. Will a version 1.8 become available in dbt Cloud?" >
 
-No. Going forward, “Keep on latest version” will be how all customers are going to access new functionality and ongoing support for dbt in dbt Cloud. We believe this is the best way for us to offer a reliable, stable, and secure runtime for dbt with continuous and consistent updates.
+No. Going forward, “Keep on latest version” will be how all customers are going to access new functionality and ongoing support in dbt Cloud. We believe this is the best way for us to offer a reliable, stable, and secure runtime for dbt with continuous and consistent updates.
 
 In 2023 (and earlier), customers were expected to manage their own upgrades by selecting dbt Core versions, up to and including dbt Core v1.7, which was released in October 2023. (Way back in 2021, dbt Cloud customers would pick specific _patch releases_ of dbt Core, such as upgrading from `v0.21.0` to `v0.21.1`. We’ve come a long way since then!)
 
