@@ -135,7 +135,7 @@ To show detailed information on all the dbt supported commands and flags, run th
 
 When running `dbt sqlfluff` from the dbt Cloud CLI, the following are important behaviors to consider:
 
-- dbt will read the `.sqlfluff` file if it exists for any custom configurations you might have.
+- dbt reads the `.sqlfluff` file, if it exists, for any custom configurations you might have.
 - For continuous integration/continuous development (CI/CD) workflows, your project must have a `dbt_cloud.yml` file and you have successfully run commands from within this dbt project.
 - An SQLFluff command will return an exit code of 0 if it ran without any file violations. This dbt behavior differs from SQLFluff behavior, where a linting violation returns a non-zero exit code. dbt Labs plans on addressing this in a later release.
 
