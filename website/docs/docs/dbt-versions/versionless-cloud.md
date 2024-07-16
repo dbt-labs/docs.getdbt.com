@@ -18,7 +18,7 @@ If you do see something unexpected or surprising, revert back to the previous ve
 
 Next, we recommend that you try upgrading your project’s [deployment environment](/docs/dbt-versions/upgrade-dbt-version-in-cloud#environments). If your project has a [staging deployment environment](/docs/deploy/deploy-environments#staging-environment), upgrade and try working with it for a few days before you proceed with upgrading the production environment. 
 
-If your organization has multiple dbt projects, we recommend upgrading projects that are smaller, newer, or more familiar for your team to upgrade first. So, if you do encounter any issues, it'll be easier and faster to troubleshoot those before proceeding to upgrade larger or more complex projects.
+If your organization has multiple dbt projects, we recommend starting your upgrade with projects that are smaller, newer, or more familiar for your team. That way, if you do encounter any issues, it'll be easier and faster to troubleshoot those before proceeding to upgrade larger or more complex projects.
 
 ## Considerations
 
