@@ -80,7 +80,7 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
 
 Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job, guaranteeing that any code changes made to dbt models don't break these metrics. 
 
-To do this, add the command `dbt sl validate --select state:modified+` in the CI job. This ensures validation of modified semantic nodes and their downstream dependencies.
+To do this, add the command `dbt sl validate --select state:modified+` in the CI job. This ensures the validation of modified semantic nodes and their downstream dependencies.
 
 - Testing semantic nodes in a CI job supports deferral and selection of semantic nodes.
 - It allows you to catch issues early in the development process and deliver high-quality data to your end users.
@@ -89,10 +89,8 @@ To do this, add the command `dbt sl validate --select state:modified+` in the CI
 
 To learn how to set this up, refer to the following steps:
 
-1. Navigate to the **Job setting** page, add the `dbt sl validate` command under **Commands** in the **Execution settings** section to run validation checks on al your semantic nodes in your CI job.
-2. Add a second command, `dbt sl validate --select state:modified+` using state selection and deferral to run validation on any semantic nodes that are downstream of model changes. To reduce job times, we recommend only running CI on modified semantic models.
-
-There are additional commands and use cases described in the [next section](#use-cases).
+1. Navigate to the **Job setting** page and click **Edit**.
+2. Add the `dbt sl validate --select state:modified+` command under **Commands** in the **Execution settings** section. The command uses state selection and deferral to run validation on any semantic nodes downstream of model changes. To reduce job times, we recommend only running CI on modified semantic models. There are additional commands and use cases described in the [next section](#use-cases).
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.jpg" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
 
