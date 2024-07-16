@@ -54,6 +54,10 @@ In the Execution Settings, your command will be preset to `dbt build --select st
 
 To be able to find modified nodes, dbt needs to have something to compare against. dbt Cloud uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
 
+:::info Use CI to test your metrics
+If you've [built semantic nodes](/docs/build/build-metrics-intro) in your dbt project, you can [validate them in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
+:::
+
 ### 3. Test your process
 
 That's it! There are other steps you can take to be even more confident in your work, such as validating your structure follows best practices and linting your code. For more information, refer to [Get started with Continuous Integration tests](/guides/set-up-ci).
