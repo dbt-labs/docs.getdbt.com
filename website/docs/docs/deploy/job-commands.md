@@ -49,77 +49,7 @@ Use [selectors](/reference/node-selection/syntax) as a powerful way to select an
 
 :::
 
-#### Test metrics in CI <Lifecycle status="team,enterprise" />
-
-Run semantic validation on metric definition models (semantic models, metrics and saved queries) as part of your CI jobs. It supports deferral and selection of semantic nodes, ensuring code changes don’t break metrics.
-
-Semantic validation executes an explain query in the data warehouse for semantic nodes to ensure the generated SQL will execute.
-
-To test metrics in CI, navigate to your **Job setting** page:
-- Add the `dbt sl validate` command under **Commands** in the **Execution settings** section to run validation checks for all your semantic models in your CI job. There are more command use cases described in the next section. 
-- You can combine this command with state selection and deferral to run validation on any metric definitions that are downstream of model changes: `dbt sl validate --select state:modified+`.
-
-Testing metrics in CI supports the following use cases:
-
-<Expandable alt_header="Validate all semantic nodes">
-
-To validate _all_ metric definition models in your project, add the following command to defer to your production schema when generating the warehouse validation queries:
-
-   ```bash
-   dbt sl validate
-   ```
-
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-all.jpg" width="90%" title="Validate all semantic nodes in your CI job by adding the command: 'dbt sl validate' in your job execution settings." />
-
-</Expandable>
-
-<Expandable alt_header="Validate semantic nodes downstream of model changes">
-
-To validate metric definition models that are downstream of a model change, add the two commands in your job **Execution settings** section. The first command builds the modified models and the second command validates the semantic nodes downstream of the modified models.
-
-```bash
-dbt build --select state:modified+
-dbt sl validate --select state:modified+
-```
-
-Before running metric validation, dbt Cloud requires building the modified models. This process ensures that downstream metrics and semantic models are validated using the CI schema using the dbt Semantic Layer API. For metrics and models that aren't downstream of modified models, dbt Cloud defers to the production models.
-
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.jpg" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
-
-</Expandable>
-
-<Expandable alt_header="Validate semantic nodes that are modified or are downstream of modified nodes">
-
-To only validate modified metric definition models, use the following command (with state selection):
-
-```bash
-dbt sl validate --select state:modified+
-```
-
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-modified.jpg" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
-
-This will only validate semantic nodes using the defer state set configured on your orchestration job. It defers to your production models that aren't downstream of modified models. <--IS THIS MEANT TO BE FOR THOSE THAT DON'T HAVE DEFER STATE CONFIGURED?
-
-</Expandable>
-
-<Expandable alt_header="Validate specific semantic nodes">
-
-Use the selector syntax to select the _specific_ node(s) you want to validate:
-
-```bash
-dbt sl validate --select metric:revenue
-```
-
-<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-select.jpg" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
-
-In this example, the CI job will validate the selected `metric:revenue` semantic node. To select multiple metric definition models, use the selector syntax: `dbt sl validate --select metric:revenue metric:customers`. <-- IS THIS RIGHT?
-
-If you don't specify a selector, the job will..?
-
-</Expandable>
-
-#### Job outcome
-During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
+**Job outcome** &mdash; During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
 
 In the following example image, the first four run steps are successful. However, if the fifth run step (`dbt run --select state:modified+ --full-refresh --fail-fast`) fails, then the next run steps aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
 
