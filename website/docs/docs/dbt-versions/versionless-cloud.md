@@ -12,7 +12,9 @@ Move your environments and jobs to "Keep on latest version" to get all the funct
 
 ## Tips for upgrading {#upgrade-tips}
 
-If you regularly develop in dbt Cloud and this is your first time trying “Keep on latest version,” dbt Labs recommends that you start by [overriding your dbt version in development](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version). Then, launch the IDE or Cloud CLI and do your development work as usual. Everything should work as you expect. If you experience anything working differently than from how you’d expect, run a few models in development to ensure everything is looking as you’d expect.
+If you regularly develop your dbt project in dbt Cloud and this is your first time trying “Keep on latest version,” dbt Labs recommends that you start in development because it will be the fastest for investigation and iteration. [Override your dbt version in development](/docs/dbt-versions/upgrade-dbt-version-in-cloud#override-dbt-version). Then, launch the IDE or Cloud CLI and do your development work as usual. Everything should work as you expect.
+
+If you do see something unexpected or surprising, revert back to the previous version and record the differences you observed. [Contact dbt Cloud support](/docs/dbt-support#dbt-cloud-support) with your findings for a more detailed investigation.
 
 Next, we recommend that you try upgrading your project’s [deployment environment](/docs/dbt-versions/upgrade-dbt-version-in-cloud#environments). If your project has a [staging deployment environment](/docs/deploy/deploy-environments#staging-environment), upgrade and try working with it for a few days before you proceed with upgrading the production environment. 
 
