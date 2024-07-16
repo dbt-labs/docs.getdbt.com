@@ -112,7 +112,7 @@ As a tip, most command-line tools have a `--help` flag to show available command
  
 ### Lint SQL files 
 
-From the dbt Cloud CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the dbt Cloud CLI, except those that might pose a security risk.
+From the dbt Cloud CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the dbt Cloud CLI.
 
 The available SQLFluff commands are: 
 
