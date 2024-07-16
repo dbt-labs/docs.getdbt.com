@@ -376,7 +376,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 | Production  | prod          | analytics     |prod.marketing.my_model                    |
 
 
-### What not to do
+## What not to do
 
 This section will provide an outline of what users should avoid doing when customizing their schema and alias due to the issues that may arise.
 
