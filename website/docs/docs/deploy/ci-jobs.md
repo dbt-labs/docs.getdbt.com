@@ -80,7 +80,7 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
 
 Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job, guaranteeing that any code changes made to dbt models don't break these metrics. 
 
-To do this, add the command `dbt sl validate --select state:modified+` in dbt Cloud. This ensures validation of modified semantic nodes and their downstream dependencies.
+To do this, add the command `dbt sl validate --select state:modified+` in the CI job. This ensures validation of modified semantic nodes and their downstream dependencies.
 
 - Testing semantic nodes in a CI job supports deferral and selection of semantic nodes.
 - It allows you to catch issues early in the development process and deliver high-quality data to your end users.
