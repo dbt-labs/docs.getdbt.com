@@ -228,7 +228,7 @@ Yes, while [entities](/docs/build/entities) must be defined under â€œentities,â€
 
 <Expandable alt_header="Can I test my semantic models and metrics?">
 
-Yes! You can test your metrics in a few ways:
+Yes! You can validate your semantic nodes (semantic models, metrics, saved queries) in a few ways:
 
 - [Query and validate you metrics](/docs/build/metricflow-commands) in your development tool before submitting your code changes.
 - [Test and validate your metrics in CI](/docs/deploy/ci-jobs#test-metrics-in-ci) to ensure code changes made to dbt models don't break these metrics.
