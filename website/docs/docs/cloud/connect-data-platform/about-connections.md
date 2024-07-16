@@ -10,7 +10,7 @@ dbt Cloud can connect with a variety of data platform providers including:
 - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark)
-- [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics) <Lifecycle status="preview" /> 
+- [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics)
 - [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
 - [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery)
 - [Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric)
