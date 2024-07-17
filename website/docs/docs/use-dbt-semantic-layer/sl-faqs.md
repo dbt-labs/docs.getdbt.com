@@ -235,6 +235,16 @@ Yes! You can validate your semantic nodes (semantic models, metrics, saved queri
 
 </Expandable>
 
+<Expandable alt_header="Why is my query limited to 100 rows in the dbt Cloud CLI?">
+
+The default limit for query issues from the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) is 100 rows, We set this default to prevent returning unnecessarily large datasets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large datasets. For most workflows, you only need to return a subset of the data.
+
+However, you can change this limit if needed by setting the `--limit` option in your SQL query. 
+
+
+</Expandable>
+
+
 ## Available integrations
 
 <Expandable alt_header="What integrations are supported today?">
