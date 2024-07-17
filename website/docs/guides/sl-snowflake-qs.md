@@ -984,12 +984,39 @@ sup
 
 </TabItem>
 <TabItem value="manual-connect" label="If you are in the “Getting started with the Semantic Layer” workshop:">
+1. Click the link provided to you in the workshop’s chat. (Look at the ‘pinned messages’ section of the chat if you don’t see it right away.)
 
 
-1.Click the link provided to you in the workshop’s chat. (Look at the ‘pinned messages’ section of the chat if you don’t see it right away.)
- <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
+2. Enter your email address into the text box provided. Then, select “SQL and Python” to be taken to Hex’s home screen. 
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/welcome_to_hex.png" title="Welcome to Hex!." />
 
-2.Enter your email address into the text box provided. Then, select “SQL and Python” to be taken to Hex’s home screen. 
+3. Then, click the purple Hex button in the top left corner.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/Hex_label.png" />
+
+4. Click the collections button on the menu on the left. There is one collection titled Semantic Layer Workshop. Click on it.  You should see a project in this collection titled Getting started with the dbt Semantic Layer. Click on it.
+
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_collections.png" />
+
+5. In order to edit this Hex notebook, you need to click the duplicate button from the project dropdown menu, as shown below. This will create a new copy of the Hex notebook that you are the owner of .
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_duplicate.png" />
+
+6. Rename your copy of the Hex project to include your name. This way you’ll be able to find it later!
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_rename.png" />
+
+7. Now, you should be able to query metrics using Hex! Try it yourself: 
+In the first cell, filter the order_total and order_amount metrics by the customer_name dimension. Which customer has made the most orders?
+
+* The second cell shows a line graph of the order_total and order_amount metrics over time. Play around with the graph! Try changing the time grain using the “time unit” drop down menu.
+
+* The next table in the notebook, labeled “Example_query_2”, shows the number of customers who have made their first order on a given day. Create a new chart cell. Make a line graph of first_ordered_at vs customers to see how the number of new customers each day changes over time.
+
+* Create a new semantic layer cell and pick one or more metrics. Filter your metric(s) by one or more dimensions.
+
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" />
+
 
 
 </TabItem>
