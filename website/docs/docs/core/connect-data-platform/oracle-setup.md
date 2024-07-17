@@ -196,7 +196,7 @@ Unzip the wallet zip file.
 defaultValue="thin"
   values={[
     { label: 'Thin', value: 'thin'},
-    { label: 'Thick', value: 'thick_or_cx'}]
+    { label: 'Thick', value: 'thick'}]
 }>
 
 <TabItem value="thin">
@@ -217,7 +217,7 @@ Optionally, if `ewallet.pem` file is encrypted using a wallet password, specify 
 
 </TabItem>
 
-<TabItem value="thick_or_cx">
+<TabItem value="thick">
 In Thick mode, the following files from the zip are needed:
 
 - `tnsnames.ora` - Maps net service names used for application connection strings to your database services
