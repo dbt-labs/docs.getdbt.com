@@ -294,6 +294,5 @@ models:
               config:
                 severity: warn
                 snowflake_warehouse: my_warehouse
-                post-hook: "ANALYZE TABLE my_model"
 
 ```
