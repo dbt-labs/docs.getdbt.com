@@ -11,20 +11,16 @@ You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/d
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/discovery-api-figure.png" width="80%" title="A rich ecosystem for integration "/>
 
-
 You can query the dbt Cloud metadata:
 
 - At the [environment](/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelByEnvironment`) of a dbt Cloud project in production.
 - At the job level for results on a specific dbt Cloud job run for a given resource type, like `models` or `test`.
 
-:::tip Public Preview
-The Discovery API is currently available in Public Preview for dbt Cloud accounts on a Team or Enterprise plan. It’s available to all multi-tenant and to only select single-tenant accounts (please ask your account team to confirm). Preview features are stable and can be considered for production deployments, but there might still be some planned additions and modifications to product behavior before moving to General Availability. For details, refer to [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles).
-
-:::
+<Snippet path="metadata-api-prerequisites" />
 
 ## What you can use the Discovery API for
 
-Click the tabs below to learn more about the API's use cases, the analysis you can do, and the results you can achieve by integrating with it.
+Click the following tabs to learn more about the API's use cases, the analysis you can do, and the results you can achieve by integrating with it.
 
 To use the API directly or integrate your tool with it, refer to [Uses case and examples](/docs/dbt-cloud-apis/discovery-use-cases-and-examples) for detailed information.
 
@@ -54,7 +50,8 @@ Use the API to find and understand dbt assets in integrated tools using informat
 
 Data producers must manage and organize data for stakeholders, while data consumers need to quickly and confidently analyze data on a large scale to make informed decisions that improve business outcomes and reduce organizational overhead. The API is useful for discovery data experiences in catalogs, analytics, apps, and machine learning (ML) tools. It can help you understand the origin and meaning of datasets for your analysis.
 
-<Lightbox src="/img/docs/dbt-cloud/discovery-api/dbt-dag.jpg" width="175%" title="Data lineage produced by dbt"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="75%" title="Data lineage produced by dbt" />
+
 </TabItem>
 
 <TabItem value="governance" label="Governance">

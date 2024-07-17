@@ -4,14 +4,14 @@ import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Hero from '@site/src/components/hero';
-import QuickstartGuideCard from '../quickstartGuideCard'
+import QuickstartGuideCard from '../quickstartGuideCard';
 import styles from './styles.module.css';
 import { SelectDropdown } from '../selectDropdown';
 import SearchInput from '../searchInput';
+import { useHistory, useLocation } from '@docusaurus/router';
 
-const quickstartTitle = 'Guides'
-const quickstartDescription = 'dbt Core is a powerful open-source tool for data transformations and dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. With the help of a sample project, learn how to quickly start using dbt and one of the most common data platforms.'
-
+const quickstartTitle = 'Guides';
+const quickstartDescription = 'dbt Cloud is the fastest and most reliable way to deploy your dbt jobs and dbt Core is a powerful open-source tool for data transformations. With the help of a sample project, learn how to quickly start using dbt and one of the most common data platforms.';
 
 function QuickstartList({ quickstartData }) {
   const { siteConfig } = useDocusaurusContext();
@@ -19,6 +19,8 @@ function QuickstartList({ quickstartData }) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedLevel, setSelectedLevel] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const history = useHistory();
+  const location = useLocation();
 
   // Build meta title from quickstartTitle and docusaurus config site title
   const metaTitle = `${quickstartTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`;
@@ -45,6 +47,22 @@ function QuickstartList({ quickstartData }) {
     return Array.from(levels).map(level => ({ value: level, label: level }));
   }, [quickstartData]);
 
+  const updateUrlParams = (selectedTags, selectedLevel) => {
+    // Create a new URLSearchParams object from the current URL search string
+    const params = new URLSearchParams(location.search);
+
+    // Remove existing 'tags' and 'level' parameters to avoid duplicates
+    params.delete('tags');
+    params.delete('level');
+
+    // Append new 'tags' and 'level' values from the current state
+    selectedTags.forEach(tag => params.append('tags', tag.value));
+    selectedLevel.forEach(level => params.append('level', level.value));
+
+    // Update the URL with the new search parameters
+    history.replace({ search: params.toString() });
+};
+
   // Handle all filters
   const handleDataFilter = () => {
     const filteredGuides = quickstartData.filter((guide) => {
@@ -60,9 +78,25 @@ function QuickstartList({ quickstartData }) {
     setFilteredData(filteredGuides);
   };
 
+  // Reads the current URL params applied and sets the selected tags and levels
+  // This allows the filters to be sharable via URL
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tagsFromUrl = params.getAll('tags').map(tag => ({ value: tag, label: tag }));
+    const levelsFromUrl = params.getAll('level').map(level => ({ value: level, label: level }));
+    setSelectedTags(tagsFromUrl);
+    setSelectedLevel(levelsFromUrl);
+  }, [location.search]); // Added location.search to dependency array
+
+  useEffect(() => {
+    updateUrlParams(selectedTags, selectedLevel);
+  }, [selectedTags, selectedLevel]);
+
+  // Separating out useEffects because we want to run handleDataFilter after the URL params are set
+  // Also just good practice to separate out side effects with different functions
   useEffect(() => {
     handleDataFilter();
-  }, [selectedTags, selectedLevel, searchInput]);
+  }, [selectedTags, selectedLevel, searchInput]); // Added searchInput to dependency array
 
   return (
     <Layout>
@@ -81,10 +115,10 @@ function QuickstartList({ quickstartData }) {
       <section id='quickstart-card-section'>
         <div className={`container ${styles.quickstartFilterContainer} `}>
           {tagOptions && tagOptions.length > 0 && (
-            <SelectDropdown options={tagOptions} onChange={setSelectedTags} isMulti placeHolder={'Filter by topic'} />
+            <SelectDropdown options={tagOptions} onChange={setSelectedTags} value={selectedTags} isMulti placeHolder={'Filter by topic'} />
           )}
           {levelOptions && levelOptions.length > 0 && (
-            <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
+            <SelectDropdown options={levelOptions} onChange={setSelectedLevel} value={selectedLevel} isMulti placeHolder={'Filter by level'} />
           )}
           <SearchInput onChange={(value) => setSearchInput(value)} placeholder='Search Guides' />
         </div>

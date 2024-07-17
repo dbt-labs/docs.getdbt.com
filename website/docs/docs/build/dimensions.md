@@ -45,8 +45,8 @@ semantic_models:
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
     model: {{ ref("fact_transactions") }}
     defaults:
-      agg_time_dimension: metric_time
-# --- entities ---
+      agg_time_dimension: order_date
+# --- entities --- 
   entities: 
       ...
 # --- measures --- 
@@ -86,6 +86,10 @@ This section further explains the dimension definitions, along with examples. Di
 - [Categorical](#categorical)
 - [Time](#time)
   - [SCD Type II](#scd-type-ii)
+    - [Basic structure](#basic-structure)
+    - [Semantic model parameters and keys](#semantic-model-parameters-and-keys)
+    - [Implementation](#implementation)
+    - [SCD examples](#scd-examples)
 
 ## Categorical
 
@@ -169,7 +173,7 @@ measures:
 
 <TabItem value="time_gran" label="time_granularity">
 
-`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric that is specified with weekly granularity couldn't be aggregated to a daily grain. 
+`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric specified with weekly granularity couldn't be aggregated to a daily grain. 
 
 The current options for time granularity are day, week, month, quarter, and year. 
 
@@ -209,36 +213,67 @@ measures:
 ### SCD Type II
 
 :::caution
-Currently, there are limitations in supporting SCD's.
+Currently, there are limitations in supporting SCDs.
 :::
 
-MetricFlow supports joins against dimensions values in a semantic model built on top of a slowly changing dimension (SCD) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country. 
+MetricFlow supports joins against dimensions values in a semantic model built on top of a slowly changing dimension (SCD) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country.
 
 #### Basic structure
 
-SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
+SCD Type II are groups that change values at a coarser time granularity. SCD Type II tables typically have two time columns that indicate the validity period of a dimension: `valid_from` (or `tier_start`) and `valid_to` (or `tier_end`). This creates a range of valid rows with different dimension values for a metric or measure.
 
-The following basic structure of an SCD Type II data platform table is supported:
+MetricFlow associates the metric with the earliest available dimension value within a coarser time window, such as a month. By default, it uses the group valid at the start of this time granularity.
+
+MetricFlow supports the following basic structure of an SCD Type II data platform table:
 
 | entity_key | dimensions_1 | dimensions_2 | ... | dimensions_x | valid_from | valid_to |
 |------------|-------------|-------------|-----|-------------|------------|----------|  
 
-* `entity_key` (required): An entity_key (or some sort of identifier) must be present.
-* `valid_from` (required): A timestamp indicating the start of a changing dimensions value must be present
-* `valid_to` (required): A timestamp indicating the end of a changing dimensions value must be present
+* `entity_key` (required): A unique identifier for each row in the table, such as a primary key or another unique identifier specific to the entity.
+* `valid_from`  (required): Start date timestamp for when the dimension is valid. Use `validity_params: is_start: True` in the semantic model to specify this.
+* `valid_to`  (required): End date timestamp for when the dimension is valid. Use `validity_params: is_end: True` in the semantic model to specify this.
 
-#### SCD tables and keys
+#### Semantic model parameters and keys
+When configuring an SCD Type II table in a semantic model, use `validity_params` to specify the start (`valid_from`) and end (`valid_to`) of the validity window for each dimension. 
 
-SCD Type II tables have a specific dimension with a start and end date. To join tables, set the additional [entity `type`](/docs/build/entities#entity-types) parameter to the `natural` key. Using a `natural` key as an [entity `type`](/docs/build/entities#entity-types) means you also don't usually need a `primary` key. In most instances, SCD tables don't have a logically usable `primary` key because `natural` keys map to multiple rows.
+- `validity_params`: Parameters that define the validity window.
+  - `is_start: True`: Indicates the start of the validity period. Displayed as `valid_from` in the SCD table.
+  - `is_end: True`: Indicates the end of the validity period. Displayed as `valid_to` in the SCD table.
+
+Here’s an example configuration:
+
+```yaml
+- name: tier_start #  The name of the dimension.
+  type: time # The type of dimension (such as time)
+  label: "Start date of tier" # A readable label for the dimension
+  expr: start_date # Expression or column name the the dimension represents
+  type_params: # Additional parameters for the dimension type
+    time_granularity: day # Specifies the granularity of the time dimension (such as day)
+    validity_params: # Defines the validity window
+      is_start: True # Indicates the start of the validity period. 
+- name: tier_end 
+  type: time
+  label: "End date of tier"
+  expr: end_date
+  type_params:
+    time_granularity: day
+    validity_params:
+      is_end: True # Indicates the end of the validity period.
+```
+
+SCD Type II tables have a specific dimension with a start and end date. To join tables:
+- Set the additional [entity `type`](/docs/build/entities#entity-types) parameter to the `natural` key. 
+- Use a `natural` key as an [entity `type`](/docs/build/entities#entity-types), which means you don't need a `primary` key.
+- In most instances, SCD tables don't have a logically usable `primary` key because `natural` keys map to multiple rows.
 
 #### Implementation
 
 Here are some guidelines to follow when implementing SCD Type II tables:
 
-- The SCD semantic model must have `valid_to` and `valid_from` time dimensions, which are logical constructs.
-- The `valid_from` and `valid_to` properties must be specified exactly once per SCD semantic model.
+- The SCD table must have `valid_to` and `valid_from` time dimensions, which are logical constructs.
+- The `valid_from` and `valid_to` properties must be specified exactly once per SCD table configuration.
 - The `valid_from` and `valid_to` properties shouldn't be used or specified on the same time dimension.
-- The `valid_from` and 'valid_to` time dimensions must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
+- The `valid_from` and `valid_to` time dimensions must cover a non-overlapping period where one row matches each natural key value (meaning they must not overlap and should be distinct).
 - We recommend defining the underlying dbt model with [dbt snapshots](/docs/build/snapshots). This supports the SCD Type II table layout and ensures that the table is updated with the latest data.
 
 This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned dimensions data (stored in a table called `scd_dimensions`) using a primary key made up of the `entity_key` and `timestamp` columns. 
@@ -254,13 +289,13 @@ on
 group by 1, 2
 ```
 
-#### SCD example
+#### SCD examples
 
-<Tabs>
+The following are examples of how to use SCD Type II tables in a semantic model:
 
-<TabItem value="example" label="SCD table example 1">
+<Expandable alt_header="SCD dimensions for sales tiers and the time length of that tier.">
 
-This example shows how to create slowly changing dimensions (SCD) using a semantic model. The SCD table contains information about sales persons' tier and the time length of that tier. Suppose you have the underlying SCD table:
+This example shows how to create slowly changing dimensions (SCD) using a semantic model. The SCD table contains information about salespersons' tier and the time length of that tier. Suppose you have the underlying SCD table:
 
 | sales_person_id | tier | start_date | end_date | 
 |-----------------|------|------------|----------|
@@ -270,7 +305,11 @@ This example shows how to create slowly changing dimensions (SCD) using a semant
 | 333             | 2    | 2020-08-19 | 2021-10-22| 
 | 333             | 3    | 2021-10-22 | 2048-01-01|  
 
-The `validity_params` include two important arguments &mdash; `is_start` and `is_end`. These specify the columns in the SCD table that mark the start and end dates (or timestamps) for each tier or dimension. Additionally, the entity is tagged as `natural` to differentiate it from a `primary` entity. In a `primary` entity, each entity value has one row. In contrast, a `natural` entity has one row for each combination of entity value and its validity period.
+As mentioned earlier, the `validity_params` include two important arguments that specify the columns in the SCD table that mark the start and end dates (or timestamps) for each tier or dimension:
+- `is_start`
+- `is_end`
+
+Additionally, the entity is tagged as `natural` to differentiate it from a `primary` entity. In a `primary` entity, each entity value has one row. In contrast, a `natural` entity has one row for each combination of entity value and its validity period.
 
 ```yaml 
 semantic_models:
@@ -361,9 +400,9 @@ You can now access the metrics in the `transactions` semantic model organized by
 
 In the sales tier example,  For instance, if a salesperson was Tier 1 from 2022-03-01 to 2022-03-12, and gets promoted to Tier 2 from 2022-03-12 onwards, all transactions from March would be categorized under Tier 1 since the dimensions value of Tier 1 comes earlier (and is the default starting point), even though the salesperson was promoted to Tier 2 on 2022-03-12.
 
-</TabItem>
+</Expandable>
 
-<TabItem value="example2" label="SCD table example 2">
+<Expandable alt_header="SCD dimensions with sales tiers and group transactions by month when tiers are missing">
 
 This example shows how to create slowly changing dimensions (SCD) using a semantic model. The SCD table contains information about salespersons' tier and the time length of that tier. Suppose you have the underlying SCD table:
 
@@ -388,5 +427,4 @@ mf query --metrics transactions --group-by metric_time__month,sales_person__tier
 
 ```
 
-</TabItem>
-</Tabs>
+</Expandable>

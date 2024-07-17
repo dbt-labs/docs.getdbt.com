@@ -136,13 +136,6 @@ Together, the `state:` selector and deferral enable ["slim CI"](/best-practices/
 
 State and defer can be set by environment variables as well as CLI flags:
 
-<VersionBlock lastVersion="1.4">
-
-- `--state` or `DBT_ARTIFACT_STATE_PATH`: file path
-- `--defer` or `DBT_DEFER_TO_STATE`: boolean
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5" lastVersion="1.6">
 
 - `--state` or `DBT_STATE`: file path
