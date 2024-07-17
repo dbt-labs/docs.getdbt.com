@@ -15,10 +15,10 @@ Some common reasons for higher memory usage are:
 
 ## Resolution
 
-There are various reasons why you're seeing this error and we recommend you review your data models to see if there are any opportunities to optimize or refactor them. For example, you can try to reduce the number of columns being selected, use `group` or `where` clauses to filter data early in the query, or use `limit` clauses to reduce the amount of data being processed.
+There are various reasons why you could be experiencing this error. We recommend you review your data models to see if there are any opportunities to optimize or refactor them. For example, you can try to reduce the number of columns being selected, use `group` or `where` clauses to filter data early in the query, or use `limit` clauses to reduce the amount of data being processed.
 
-:::tip
-Check out [this example video](https://youtu.be/kji6KFj4b0c?si=IhhrkveUckAEDnB3), which demonstrates and refactors the sample code.
+:::tip Check out video example
+As an additional resource, check out [this example video](https://youtu.be/kji6KFj4b0c?si=IhhrkveUckAEDnB3), which demonstrates how to refactor the sample code by reducing the number of columns returned. 
 :::
 
 If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com) and we can try increasing your account's memory. We're happy to help!
