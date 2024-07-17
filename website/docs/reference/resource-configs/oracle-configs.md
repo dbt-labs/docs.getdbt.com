@@ -70,5 +70,48 @@ SELECT c.cust_id, c.cust_first_name, c.cust_last_name
 from {{ source('sh_database', 'customers') }} c
 ```
 
+## Partitioning
+
+Table and Incremental materialization configuration supports adding a partitioning clause
+
+```sql
+{
+    config(
+        materialized='incremental',
+        unique_key='group_id',
+        parallel=4,
+        partition_config={"clause": "PARTITION BY HASH(PROD_NAME) PARTITIONS 4"},
+        table_compression_clause='COLUMN STORE COMPRESS FOR QUERY LOW')
+}}
+SELECT *
+FROM {{ source('sh_database', 'sales') }}
+```
+
+## Session info in `v$session`
+
+Custom session information can be supplied under `session_info` in `profile.yml`
+
+
+```yaml
+dbt_test:
+   target: dev
+   outputs:
+      dev:
+         type: oracle
+         user: "{{ env_var('DBT_ORACLE_USER') }}"
+         pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
+         database: "{{ env_var('DBT_ORACLE_DATABASE') }}"
+         tns_name: "{{ env_var('DBT_ORACLE_TNS_NAME') }}"
+         schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
+         threads: 4
+         session_info:
+            action: "dbt run"
+            client_identifier: "dbt-unique-client-uuid"
+            client_info: "dbt Python3.9 thin driver"
+            module: "dbt-oracle-1.8.x"
+```
+
+This helps to track dbt sessions in the Database view [V$SESSION](https://docs.oracle.com/en/database/oracle/oracle-database/19/refrn/V-SESSION.html)
+
 
 </VersionBlock>
