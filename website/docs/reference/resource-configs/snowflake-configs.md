@@ -468,19 +468,19 @@ Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/e
 ### Refresh mode
 
 Snowflake allows three options for refresh mode:
-- **AUTO** &mdash; Enforces an incremental refresh of the dynamic table by default. If the CREATE DYNAMIC TABLE statement does not support the incremental refresh mode, the dynamic table is automatically created with the full refresh mode.
+- **AUTO** &mdash; Enforces an incremental refresh of the dynamic table by default. If the `CREATE DYNAMIC TABLE` statement does not support the incremental refresh mode, the dynamic table is automatically created with the full refresh mode.
 - **FULL** &mdash; Enforces a full refresh of the dynamic table, even if the dynamic table can be incrementally refreshed.
 - **INCREMENTAL** &mdash; Enforces an incremental refresh of the dynamic table. If the query that underlies the dynamic table can’t perform an incremental refresh, dynamic table creation fails and displays an error message.
 
-Learn more about `refresh_mode` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
+Learn more about `refresh_mode` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
 
 ### Initialize
 
 Snowflake allows two options for initialize:
 - **ON_CREATE** &mdash; Refreshes the dynamic table synchronously at creation. If this refresh fails, dynamic table creation fails and displays an error message.
-- **ON_SCHEDULE** &mdash;     Refreshes the dynamic table at the next scheduled refresh.
+- **ON_SCHEDULE** &mdash; Refreshes the dynamic table at the next scheduled refresh.
 
-Learn more about `initialize` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
+Learn more about `initialize` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
 
 </VersionBlock>
 
