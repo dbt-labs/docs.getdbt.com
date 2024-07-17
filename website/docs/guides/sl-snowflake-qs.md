@@ -980,7 +980,32 @@ This section will guide you on how to use the Hex integration to query your metr
 
 <Tabs>
 <TabItem value="partner-connect" label="Querying the Semantic Layer with Hex:" default>
-sup
+1.Go to https://app.hex.tech/login. Either sign in or make an account if you don’t already have one. Hex free trial accounts can only be made with your work email or a .edu email.
+2. In the top left corner of your page, you should see the word ‘HEX’ written in bold letters. Click it to take yourself to the home page.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/Hex_label.png" />
+
+3. Then, click the green ‘+ New project’ button on the top right.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new.png" />
+
+4. Go to the menu on the left side and select Data browser. Then select ‘Add a data connection’, and click Snowflake. Give your data connection a name and description. Don’t worry about needing your data warehouse credentials - we won’t need them to use the semantic layer.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new_data_connection.png" />
+
+5. Under ‘Integrations’, toggle on the dbt toggle.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_dbt_toggle.png" />
+
+6. Now, enter the following information:
+* Select your version of dbt as 1.6+
+* Enter your environment id 
+* Enter your service token 
+* Make sure to toggle on ‘Use Semantic Layer.’ This way, all queries are routed through dbt.
+* Click ‘Create connection’ in the bottom right corner.
+7. Hover over More on the menu shown below. Select dbt Semantic Layer.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" />
+
+8. Now, you should be able to query metrics using Hex! Try it yourself: 
+* Create a new cell and pick a metric. Filter it by one or more dimensions.
+* Make a visualization
+
 
 </TabItem>
 <TabItem value="manual-connect" label="If you are in the “Getting started with the Semantic Layer” workshop:">
@@ -1005,8 +1030,9 @@ sup
 6. Rename your copy of the Hex project to include your name. This way you’ll be able to find it later!
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_rename.png" />
 
-7. Now, you should be able to query metrics using Hex! Try it yourself: 
-In the first cell, filter the order_total and order_amount metrics by the customer_name dimension. Which customer has made the most orders?
+7. Now, you should be able to query metrics using Hex! Try it yourself:
+   
+* In the first cell, filter the order_total and order_amount metrics by the customer_name dimension. Which customer has made the most orders?
 
 * The second cell shows a line graph of the order_total and order_amount metrics over time. Play around with the graph! Try changing the time grain using the “time unit” drop down menu.
 
