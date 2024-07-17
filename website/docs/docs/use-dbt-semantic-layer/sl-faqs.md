@@ -226,6 +226,15 @@ Yes, we approach this by specifying a [dimension](/docs/build/dimensions) that a
 Yes, while [entities](/docs/build/entities) must be defined under “entities,” they can be queried like dimensions in downstream tools. Additionally, if the entity isn't used to perform joins across your semantic models, you may optionally define it as a dimension.
 </Expandable>
 
+<Expandable alt_header="Can I test my semantic models and metrics?">
+
+Yes! You can validate your semantic nodes (semantic models, metrics, saved queries) in a few ways:
+
+- [Query and validate you metrics](/docs/build/metricflow-commands) in your development tool before submitting your code changes.
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
+
+</Expandable>
+
 ## Available integrations
 
 <Expandable alt_header="What integrations are supported today?">
