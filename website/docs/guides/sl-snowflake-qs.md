@@ -974,6 +974,28 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-co
 
 <ConnectQueryAPI/>
 
+## Connect and query with Hex
+
+This section will guide you on how to use the Hex integration to query your metrics using Hex:
+
+<Tabs>
+<TabItem value="partner-connect" label="Querying the Semantic Layer with Hex:" default>
+sup
+
+</TabItem>
+<TabItem value="manual-connect" label="If you are in the “Getting started with the Semantic Layer” workshop:">
+
+
+1.Click the link provided to you in the workshop’s chat. (Look at the ‘pinned messages’ section of the chat if you don’t see it right away.)
+ <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
+
+2.Enter your email address into the text box provided. Then, select “SQL and Python” to be taken to Hex’s home screen. 
+
+
+</TabItem>
+</Tabs>
+
+
 ## What's next
 
 <ConfettiTrigger>
