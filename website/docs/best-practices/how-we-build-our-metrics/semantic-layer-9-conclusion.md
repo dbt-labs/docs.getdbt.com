@@ -28,6 +28,7 @@ pagination_next: null
 
 - 🗺️ Use these best practices to map out your team's plan to **incrementally adopt the Semantic Layer**.
 - 🤗 Get involved in the community and ask questions, **help craft best practices**, and share your progress in building a dbt Semantic Layer.
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 
 The dbt Semantic Layer is the biggest paradigm shift thus far in the young practice of analytics engineering. It's ready to provide value right away, but is most impactful if you move your project towards increasing normalization, and allow MetricFlow to do the denormalization for you with maximum dimensionality.
 
