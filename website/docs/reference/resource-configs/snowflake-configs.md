@@ -395,8 +395,10 @@ models:
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
 <VersionBlock firstVersion="1.9">
+
     [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
     [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE
+
 </VersionBlock>
 ```
 
@@ -420,8 +422,10 @@ models:
       [target_lag](#target-lag): downstream | <time-delta>
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
 <VersionBlock firstVersion="1.9">
+
       [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
       [initialize](#initialize): ON_CREATE | ON_SCHEDULE
+
 </VersionBlock>
 ```
 
@@ -441,8 +445,10 @@ models:
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
 <VersionBlock firstVersion="1.9">
+
     [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
     [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE",
+
 </VersionBlock>
 ) }}
 ```
