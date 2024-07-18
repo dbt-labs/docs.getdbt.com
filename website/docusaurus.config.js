@@ -116,20 +116,20 @@ var siteSettings = {
           position: "left",
           items: [
             {
-              label: "Product Docs",
+              label: "Product docs",
               to: "/docs/introduction",
               activeBaseRegex: "docs/(?!(dbt-cloud))",
             },
             {
-              label: "API Docs",
+              label: "API docs",
               to: "/docs/dbt-cloud-apis/overview",
             },
             {
-              label: "Best Practices",
+              label: "Best practices",
               to: "/best-practices",
             },
             {
-              label: "Release Notes",
+              label: "Release notes",
               to: "/docs/dbt-versions/dbt-cloud-release-notes",
             },
           ],
@@ -154,11 +154,11 @@ var siteSettings = {
               href: "https://learn.getdbt.com",
             },
             {
-              label: "Best Practices",
+              label: "Best practices",
               to: "/best-practices",
             },
             {
-              label: "Developer Blog",
+              label: "Developer blog",
               to: "/blog",
             },
             {
@@ -172,7 +172,7 @@ var siteSettings = {
           position: "right",
           items: [
             {
-              label: "Join the Community",
+              label: "Join the dbt Community",
               to: "/community/join",
             },
             {
@@ -180,7 +180,7 @@ var siteSettings = {
               to: "/community/contribute",
             },
             {
-              label: "Community Forum",
+              label: "Community forum",
               to: "/community/forum",
             },
             {
@@ -251,7 +251,7 @@ var siteSettings = {
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
           blogDescription:
-            "Find tutorials, product updates, and developer insights in the dbt Developer Blog.",
+            "Find tutorials, product updates, and developer insights in the dbt Developer blog.",
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,

@@ -205,6 +205,11 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
   pip install dbt --no-cache-dir
   ```
 
+  If there are installation issues, running the command with the `--force-reinstall` argument might help:
+   ```bash
+   pip install dbt --no-cache-dir --force-reinstall
+   ``` 
+
 3. (Optional) To revert to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
 
   ```bash
