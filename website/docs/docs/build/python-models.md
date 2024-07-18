@@ -610,7 +610,7 @@ In their initial launch, Python models are supported on three of the most popula
 
 **Additional setup:** You will need to [acknowledge and accept Snowflake Third Party Terms](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#getting-started) to use Anaconda packages.
 
-**Installing packages:** Snowpark supports several popular packages via Anaconda. You can refer to the [complete](https://repo.anaconda.com/pkgs/snowflake/) list for more details. Packages are installed at the time your model is being run. Different models can have different package dependencies. If you are using third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
+**Installing packages:** Snowpark supports several popular packages via Anaconda. Refer to the [complete list](https://repo.anaconda.com/pkgs/snowflake/) for more details. Packages are installed when your model is run. Different models can have different package dependencies. If you use third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
 
 **Python version:** To specify a different python version, use the following configuration:
 ```
