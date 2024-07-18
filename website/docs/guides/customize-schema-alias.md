@@ -44,7 +44,7 @@ The defaults allow developers to work in their own isolated schemas (sandboxes) 
 
 While the default behavior would fit the needs of most dbt users, there are occasions where the approach doesn’t fit with the existing data warehouse governance and design.
 
-For example, dbt expects that it has the rights to create a schema on the fly (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
+For example, dbt expects that it has permission to create schemas on the fly (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
 
 Or, based on how you've designed your warehouse, you may wish to minimize the number of schemas in your dev environment (and avoid schema sprawl by not creating the combination of all developer schemas and custom schemas).
 
