@@ -1041,8 +1041,8 @@ This section will guide you on how to use the Hex integration to query your metr
 
 9. Now, you should be able to query metrics using Hex! Try it yourself with the following example queries:
 
-   - In the first cell, filter the `order_total` and `order_amount` metrics by the customer_name dimension. Which customer has made the most orders?
-   - The second cell shows a line graph of the `order_total` and `order_amount` metrics over time. Play around with the graph! Try changing the time grain using the **Time unit** drop down menu.
+   - In the first cell, you can see a table of the `order_total` metric over time. Add the 'order_count' metric to this table.
+   - The second cell shows a line graph of the `order_total` metric over time. Play around with the graph! Try changing the time grain using the **Time unit** drop down menu.
    - The next table in the notebook, labeled “Example_query_2”, shows the number of customers who have made their first order on a given day. Create a new chart cell. Make a line graph of `first_ordered_at` vs `customers` to see how the number of new customers each day changes over time.
    - Create a new semantic layer cell and pick one or more metrics. Filter your metric(s) by one or more dimensions.
 
