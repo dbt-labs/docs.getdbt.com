@@ -125,7 +125,7 @@ For additional usage examples, check out our [usage examples](https://github.com
 - [List saved queries async](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/list_saved_queries_async.py)
 
 ## Disable telemetry
-By default, the SDK sends some [platform-related information](https://arc.net/l/quote/chejsupc) to dbt Labs. To opt out, set the `PLATFORM.anonymous` attribute to `True`:
+By default, the SDK sends some [platform-related information](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/dbtsl/env.py) to dbt Labs. To opt out, set the `PLATFORM.anonymous` attribute to `True`:
 
 ```python
 from dbtsl.env import PLATFORM
