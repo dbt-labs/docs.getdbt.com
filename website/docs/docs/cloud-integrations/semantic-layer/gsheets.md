@@ -50,10 +50,10 @@ queryBuilder="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg"
 
 ## Using saved selections
 
-<p><span>Saved selections allow you to save the inputs you've created in the {props.type} <strong>Query Builder</strong> and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:</span></p>
+<p><span>Saved selections allow you to save the inputs you've created in the <strong>Query Builder</strong> and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:</span></p>
 
 <ol>
-  <li>Run a <span>query in the {props.type} <strong>Query Builder</strong>.</span></li>
+  <li>Run a <span>query in the <strong>Query Builder</strong>.</span></li>
   <li>Save the selection by selecting the arrow next to the <strong>Query</strong> button and then select <strong>Query & Save Selection</strong>.</li>
   <li>The application saves these selections, allowing you to view and edit them from the hamburger menu under <strong>Saved Selections</strong>.</li>
 </ol>
@@ -81,14 +81,15 @@ queryBuilder="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg"
 
 ## Using saved queries
 
-<p>Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricFlow, in {props.type} to quickly get results from pre-defined sets of data. To access the saved queries in {props.type}:</p>
+<p>Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricFlow, in to quickly get results from pre-defined sets of data. To access the saved queries in:</p>
 
 <ol>
-  <li>Open the hamburger menu in {props.type}.</li>
+  <li>Open the hamburger menu in.</li>
   <li>Navigate to <strong>Saved Queries</strong> to access the ones available to you.</li>
-  <li>You can also select <strong>Build Selection</strong>, which allows you to explore the existing query. This won't change the original query defined in the code.
+  <li>
+    You can also select <strong>Build Selection</strong>, which allows you to explore the existing query. This won't change the original query defined in the code.
     <ul>
-      <li>If you use a <code>WHERE</code> filter in a saved query, {props.type} displays the advanced syntax for this filter.</li>
+      <li>If you use a <code>WHERE</code> filter in a saved query, displays the advanced syntax for this filter.</li>
     </ul>
   </li>
 </ol>
