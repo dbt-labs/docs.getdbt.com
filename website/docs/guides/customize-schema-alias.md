@@ -19,7 +19,7 @@ When we develop dbt models and perform a `dbt run` or `dbt build` command, objec
 
 In the rest of the article, for consistency, when we refer to database, we'll be referring to a Google Cloud Platform  project or to a Databricks catalog.
 
-The default behavior of what object is created is the following:
+Out-of-the-box, the default behavior of dbt is the following:
 
 - The database where the object is created will be the database configured at the [environment level in dbt Cloud](/docs/dbt-cloud-environments), or in the `profiles.yml` in dbt Core.
 
