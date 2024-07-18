@@ -34,7 +34,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features
 
 ### dbt Core
 
-[dbt Core](/docs/core/about-core-setup) is an open-source tool that enables data practitioners to transform data and is suitable for users who prefer to manually set up dbt and locally maintain it. You can [install dbt Core](/docs/core/installation-overview) through the command line. Learn more with the quickstart for dbt Core.
+[dbt Core](/docs/core/about-core-setup) is an open-source tool that enables data practitioners to transform data and is suitable for users who prefer to manually set up dbt and locally maintain it. You can [install dbt Core](/docs/core/installation-overview) through the command line. Learn more with the [quickstart for dbt Core](https://docs.getdbt.com/guides/codespace?step=1).
 
 For more information on dbt Cloud and dbt Core, refer to [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud).
 
