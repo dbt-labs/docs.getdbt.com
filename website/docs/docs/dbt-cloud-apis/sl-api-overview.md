@@ -51,7 +51,7 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Python SDK"
+    title="Python SDK (beta)"
     body="Use the Python SDK to interact with the dbt Semantic Layer using Python."
     link="/docs/dbt-cloud-apis/sl-python"
     icon="dbt-bit"/>
