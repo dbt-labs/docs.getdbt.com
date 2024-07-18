@@ -37,7 +37,7 @@ Out-of-the-box, the default behavior of dbt is the following:
 
 Those default rules are a great starting point, and many people stick with those without customizing them.
 
-It allows developers to work in their own test schemas (sandboxes) and makes it possible to have different feature requests updating the same models without conflicting with one another.
+The defaults allow developers to work in their own isolated schemas (sandboxes) without overwriting each other's work - even if they're working on the same tables.
 
 
 ## How to customize this behavior
