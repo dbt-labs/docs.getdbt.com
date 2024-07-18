@@ -21,7 +21,7 @@ There are various reasons why you could be experiencing this error. We recommend
 As an additional resource, check out [this example video](https://youtu.be/kji6KFj4b0c?si=IhhrkveUckAEDnB3), which demonstrates how to refactor the sample code by reducing the number of columns returned. 
 :::
 
-If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com) and we can try increasing your account's memory. We're happy to help!
+If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com). We're happy to help!
 
 ## Additional resources
 - [Blog post on how we shaved 90 mins off](https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model)
