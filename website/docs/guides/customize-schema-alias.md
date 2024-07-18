@@ -46,7 +46,7 @@ While the default behavior would fit the needs of most dbt users, there are occa
 
 For example, dbt expects that it has the rights to create a schema on the fly (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
 
-Or, you might have many custom schemas and want to avoid having your dev database showing the combination of all developer schemas and custom schemas.
+Or, based on how you've designed your warehouse, you may wish to minimize the number of schemas in your dev environment (and avoid schema sprawl by not creating the combination of all developer schemas and custom schemas).
 
 Alternatively, you may even want your dev schemas to be named after feature branches instead of the developer name.
 
