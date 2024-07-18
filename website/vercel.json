@@ -5,49 +5,6 @@
     {
       "source": "/guides/codespace",
       "destination": "/guides/DuckDB",
-      "has": [
-        {
-          "type": "query",
-          "key": "step",
-          "value": "4"
-        }
-      ],
-      "permanent": true
-    },
-    {
-      "source": "/guides/codespace",
-      "destination": "/guides/DuckDB",
-      "has": [
-        {
-          "type": "query",
-          "key": "step",
-          "value": "3"
-        }
-      ],
-      "permanent": true
-    },
-    {
-      "source": "/guides/codespace",
-      "destination": "/guides/DuckDB",
-      "has": [
-        {
-          "type": "query",
-          "key": "step",
-          "value": "2"
-        }
-      ],
-      "permanent": true
-    },
-    {
-      "source": "/guides/codespace",
-      "destination": "/guides/DuckDB",
-      "has": [
-        {
-          "type": "query",
-          "key": "step",
-          "value": "1"
-        }
-      ],
       "permanent": true
     },
     {
