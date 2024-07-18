@@ -18,7 +18,7 @@ Select the environment where you want to enable the Semantic Layer:
 4. In the **Set Up Semantic Layer Configuration** page, select the deployment environment you want for the Semantic Layer and click **Save**. This provides administrators with the flexibility to choose the environment where the Semantic Layer will be enabled.
 
 ### 2. Add a credential
-The dbt Semantic Layer uses [service tokens](/docs/dbt-cloud-apis/service-tokens) for authentication, mapped to an underlying data platform credential. This credential controls physical access to the raw data. 
+The dbt Semantic Layer uses [service tokens](/docs/dbt-cloud-apis/service-tokens) for authentication, mapped to an underlying data platform credential. This credential has physical access to the raw data, meaning it controls the data accessed by the Semantic Layer.
 
 1. In the **Set Up Semantic Layer Configuration** page, enter the credentials you want the Semantic Layer to use specific to your data platform.
    - Use credentials with minimal privileges. This is because the Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
@@ -45,7 +45,7 @@ Teams plans can manage a single credential and map to a service token, however a
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-example.jpg" width="50%" title="After configuring, you'll be provided with the connection details to connect to you downstream tools." />
 
 ### 4. Add more credentials <Lifecycle status="enterprise"/>
-dbt Cloud Enterprise plans can optionally add multiple credentials and map them to service tokens, offering more granular control and tailored access for different teams and projects. This can then be shared to relevant teams for BI connection setup.
+dbt Cloud Enterprise plans can optionally add multiple credentials and map them to service tokens, offering more granular control and tailored access for different teams and projects. This can then be shared to relevant teams for BI connection setup. These credentials have physical access to the raw data, meaning they control the data accessed by the Semantic Layer.
 
 We recommend configuring credentials and service tokens to reflect your teams and their roles. For example, create tokens or credentials that align with your team's needs, such as providing finance-related schemas to the Finance team.
 
