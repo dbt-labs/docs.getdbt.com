@@ -965,7 +965,18 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_new-s
 
 <SlSetUp/>
 
-## Connect and query with Google Sheets
+## Query the Semantic Layer
+
+This page will guide you on how to connect and use the following integrations to query your metrics:
+
+- [Connect and query with Google Sheets](#connect-and-query-with-google-sheets)
+- [Connect and query with Hex](#connect-and-query-with-hex)
+
+The dbt Semantic Layer enables you to connect and query your metric wih the various available tools like Google Sheets, Hex, and more. 
+
+Query metrics using other tools such as [first-class integrations](/docs/cloud-integrations/avail-sl-integrations), [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview), and [exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integration with tools like PowerBI.
+
+ ### Connect and query with Google Sheets
 
 <!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) 
 
@@ -974,80 +985,71 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-co
 
 <ConnectQueryAPI/>
 
-## Connect and query with Hex
-
-This section will guide you on how to use the Hex integration to query your metrics using Hex:
+### Connect and query with Hex
+This section will guide you on how to use the Hex integration to query your metrics using Hex. Select the appropriate tab based on your connection method:
 
 <Tabs>
-<TabItem value="partner-connect" label="Querying the Semantic Layer with Hex:" default>
-1.Go to https://app.hex.tech/login. Either sign in or make an account if you don’t already have one. Hex free trial accounts can only be made with your work email or a .edu email.
-2. In the top left corner of your page, you should see the word ‘HEX’ written in bold letters. Click it to take yourself to the home page.
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/Hex_label.png" />
+<TabItem value="partner-connect" label="Query Semantic Layer with Hex" default>
 
-3. Then, click the green ‘+ New project’ button on the top right.
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new.png" />
+1. Navigate to the [Hex login page](https://app.hex.tech/login). 
+2. Sign in or make an account (if you don’t already have one). 
+  - You can make Hex free trial accounts with your work email or an .edu email.
+3. In the top left corner of your page, click on the **HEX** icon to go to the home page.
+4. Then, click the **+ New project** button on the top right.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new.png" width="50%" title="Click the '+ New project' button on the top right"/>
+5. Go to the menu on the left side and select **Data browser**. Then select **Add a data connection**. 
+6. Click **Snowflake**. Provide your data connection a name and description. You don't need to your data warehouse credentials to use the Semantic Layer.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new_data_connection.png" width="50%" title="Select 'Data browser' and then 'Add a data connection' to connect to Snowflake."/>
+7. Under **Integrations**, toggle the dbt switch to the right to enable the dbt integration.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_dbt_toggle.png" width="50%" title="Click on the dbt toggle to enable the integration. "/>
 
-4. Go to the menu on the left side and select Data browser. Then select ‘Add a data connection’, and click Snowflake. Give your data connection a name and description. Don’t worry about needing your data warehouse credentials - we won’t need them to use the semantic layer.
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new_data_connection.png" />
+8. Enter the following information:
+   * Select your version of dbt as 1.6 or higher
+   * Enter your environment id 
+   * Enter your service token 
+   * Make sure to click on the **Use Semantic Layer** toggle. This way, all queries are routed through dbt.
+   * Click **Create connection** in the bottom right corner.
+9. Hover over **More** on the menu shown in the following image and select **dbt Semantic Layer**.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" width="90%" title="Hover over 'More' on the menu and select 'dbt Semantic Layer'."/>
 
-5. Under ‘Integrations’, toggle on the dbt toggle.
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_dbt_toggle.png" />
-
-6. Now, enter the following information:
-* Select your version of dbt as 1.6+
-* Enter your environment id 
-* Enter your service token 
-* Make sure to toggle on ‘Use Semantic Layer.’ This way, all queries are routed through dbt.
-* Click ‘Create connection’ in the bottom right corner.
-7. Hover over More on the menu shown below. Select dbt Semantic Layer.
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" />
-
-8. Now, you should be able to query metrics using Hex! Try it yourself: 
-* Create a new cell and pick a metric. Filter it by one or more dimensions.
-* Make a visualization
-
+10. Now, you should be able to query metrics using Hex! Try it yourself: 
+    - Create a new cell and pick a metric. 
+    - Filter it by one or more dimensions.
+    - Create a visualization.
 
 </TabItem>
-<TabItem value="manual-connect" label="If you are in the “Getting started with the Semantic Layer” workshop:">
-1. Click the link provided to you in the workshop’s chat. (Look at the ‘pinned messages’ section of the chat if you don’t see it right away.)
+<TabItem value="manual-connect" label="Getting started with the Semantic Layer workshop">
 
+1. Click on the link provided to you in the workshop’s chat. 
+   - Look at the **Pinned message** section of the chat if you don’t see it right away.
+2. Enter your email address in the textbox provided. Then, select **SQL and Python** to be taken to Hex’s home screen.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/welcome_to_hex.png" width="70%" title="The 'Welcome to Hex' homepage."/>
 
-2. Enter your email address into the text box provided. Then, select “SQL and Python” to be taken to Hex’s home screen. 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/welcome_to_hex.png" title="Welcome to Hex!." />
+1. Then, click the purple Hex button in the top left corner.
+2. Click the **Collections** button on the menu on the left.
+3. Select the **Semantic Layer Workshop** collection. 
+4. Click the **Getting started with the dbt Semantic Layer** project collection.
 
-3. Then, click the purple Hex button in the top left corner.
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/Hex_label.png" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_collections.png" width="80%" title="Click 'Collections' to select the 'Semantic Layer Workshop' collection."/>
 
-4. Click the collections button on the menu on the left. There is one collection titled Semantic Layer Workshop. Click on it.  You should see a project in this collection titled Getting started with the dbt Semantic Layer. Click on it.
+7. To edit this Hex notebook, click the **Duplicate** button from the project dropdown menu (as displayed in the following image). This creates a new copy of the Hex notebook that you own.
 
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_duplicate.png" width="80%" title="Click the 'Duplicate' button from the project dropdown menu to create a Hex notebook copy."/>
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_collections.png" />
+8. To make it easier to find, rename your copy of the Hex project to include your name.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_rename.png" width="60%" title="Rename your Hex project to include your name."/>
 
-5. In order to edit this Hex notebook, you need to click the duplicate button from the project dropdown menu, as shown below. This will create a new copy of the Hex notebook that you are the owner of .
+9. Now, you should be able to query metrics using Hex! Try it yourself with the following example queries:
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_duplicate.png" />
+   - In the first cell, filter the `order_total` and `order_amount` metrics by the customer_name dimension. Which customer has made the most orders?
+   - The second cell shows a line graph of the `order_total` and `order_amount` metrics over time. Play around with the graph! Try changing the time grain using the **Time unit** drop down menu.
+   - The next table in the notebook, labeled “Example_query_2”, shows the number of customers who have made their first order on a given day. Create a new chart cell. Make a line graph of `first_ordered_at` vs `customers` to see how the number of new customers each day changes over time.
+   - Create a new semantic layer cell and pick one or more metrics. Filter your metric(s) by one or more dimensions.
 
-6. Rename your copy of the Hex project to include your name. This way you’ll be able to find it later!
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_rename.png" />
-
-7. Now, you should be able to query metrics using Hex! Try it yourself:
-   
-* In the first cell, filter the order_total and order_amount metrics by the customer_name dimension. Which customer has made the most orders?
-
-* The second cell shows a line graph of the order_total and order_amount metrics over time. Play around with the graph! Try changing the time grain using the “time unit” drop down menu.
-
-* The next table in the notebook, labeled “Example_query_2”, shows the number of customers who have made their first order on a given day. Create a new chart cell. Make a line graph of first_ordered_at vs customers to see how the number of new customers each day changes over time.
-
-* Create a new semantic layer cell and pick one or more metrics. Filter your metric(s) by one or more dimensions.
-
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" />
-
-
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" width="90%" title="Query metrics using Hex "/>
 
 </TabItem>
 </Tabs>
-
 
 ## What's next
 
@@ -1060,7 +1062,7 @@ You've learned how to:
 - Set up your Snowflake environment and dbt Cloud, including creating worksheets and loading data.
 - Connect and configure dbt Cloud with Snowflake.
 - Build, test, and manage dbt Cloud projects, focusing on metrics and semantic layers.
-- Run production jobs and query metrics with Google Sheets.
+- Run production jobs and query metrics with our available integrations.
 
 For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), and more.
 
