@@ -48,7 +48,7 @@ For example, dbt expects that it has the rights to create a schema on the fly (a
 
 Or, you might have many custom schemas and want to avoid having your dev database showing the combination of all developer schemas and custom schemas.
 
-Alternatively, you may even want to create models in schemas based on the feature branch name in development rather than the developer name.
+Alternatively, you may even want your dev schemas to be named after feature branches instead of the developer name.
 
 For this reason, dbt offers three macros to customize what objects are created in the Data Warehouse:
 
