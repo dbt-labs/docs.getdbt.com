@@ -45,9 +45,9 @@ If you select a permission set that is not supported, the environment permission
 
 <Lightbox src="/img/docs/dbt-cloud/no-option.png" width="80%" title="The view of the permissions box if there is no option for environment permissions."/>
 
-4. Select the **Environment** for group access. The default is **All environments**, but you can select multiple. If none are selected, the group will have read-only access. Note that `Other` maps to the `General` environment type. 
+4. Select the **Environment** for group access. The default is **All environments**, but you can select multiple. If none are selected, the group will have read-only access.
 
-<Lightbox src="/img/docs/dbt-cloud/environment-options.png" width="80%" title="A list of available environments with the Staging and Other boxes checked."/>
+<Lightbox src="/img/docs/dbt-cloud/environment-options.png" width="80%" title="A list of available environments with the Staging and General boxes selected."/>
 
 5. Save the Group settings. You're now setup and ready to assign users!
 
