@@ -21,7 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## July 2024
 - **Enhancement:** Custom configurations are now supported by generic data tests. Use this to configure how dbt should run the data test (for example, specifying a Snowflake virtual warehouse different from the one in your connection). To learn more, refer to [Specify custom configurations for generic data tests](/reference/data-test-configs#specify-custom-configurations-for-generic-data-tests).
 
-Support for this configuration is available in dbt Cloud when selecting "Keep on latest version." Specifying custom configurations for data tests will become available in dbt Core later this year.
+  Support for this configuration is available in dbt Cloud when selecting "Keep on latest version." Specifying custom configurations for data tests will become available in dbt Core later this year.
 - **New**: The ability to lint your SQL files from the dbt Cloud CLI is now available. To learn more, refer to [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files).
 - **New**: Introduced Semantic validations in CI pipelines. Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job using the `dbt sl validate` command. You can also validate modified semantic nodes to guarantee code changes made to dbt models don't break these metrics. Refer to [Semantic validations in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to learn about the additional commands and use cases.
 
