@@ -35,7 +35,7 @@ Out-of-the-box, the default behavior of dbt is the following:
     - If no alias is defined, the object will be created with the same name as the model, without the `.sql` or `.py` at the end.
     - If an alias is defined, the object will be created with the configured alias.
 
-Those default rules are a great starting point, and many people stick with those without customizing them.
+Those default rules are a great starting point, and many organizations choose to stick with those without any customization required.
 
 The defaults allow developers to work in their own isolated schemas (sandboxes) without overwriting each other's work - even if they're working on the same tables.
 
