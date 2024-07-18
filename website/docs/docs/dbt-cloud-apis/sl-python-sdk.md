@@ -7,7 +7,7 @@ keywords: [dbt Cloud, API, dbt Semantic Layer, python]
 sidebar_label: "Python SDK"
 ---
 
-The [`dbt-sl-sk` Python software development kit](https://github.com/dbt-labs/semantic-layer-sdk-python) (SDK) is a Python library that provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the Semantic Layer APIs and query metrics and dimensions in downstream tools.
+The [`dbt-sl-sdk` Python software development kit](https://github.com/dbt-labs/semantic-layer-sdk-python) (SDK) is a Python library that provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the Semantic Layer APIs and query metrics and dimensions in downstream tools.
 
 ## Installation
 
@@ -27,13 +27,18 @@ pip install dbt-sl-sdk[sync]
 
 <TabItem value="async" label="Async installation">
 
-Async installation means your program can start a task and then move on to other tasks while waiting for the first one to finish.
+Async installation means your program can start a task and then move on to other tasks while waiting for the first one to finish. This can handle many tasks at once without waiting, making it faster and more efficient for larger tasks or when you need to manage multiple tasks at the same time. 
 
-It can handle many tasks at once without waiting, making it faster and more efficient for larger tasks or when you need to manage multiple tasks at the same time.
+For more details, refer to [asyncio](https://docs.python.org/3/library/asyncio.html).
 
 ```bash
 pip install dbt-sl-sdk[async]
 ```
+
+Since the [Python ADBC driver](https://github.com/apache/arrow-adbc/tree/main/python/adbc_driver_manager) doesn't yet support asyncio natively, `dbt-sl-sdk` uses a [`ThreadPoolExecutor`](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/5e52e1ca840d20a143b226ae33d194a4a9bc008f/dbtsl/api/adbc/client/asyncio.py#L62) to run `query` and `list dimension-values` (all operations that are done with ADBC).  This is why you might see multiple Python threads spawning.
+
+If you're using async frameworks like [FastAPI](https://fastapi.tiangolo.com/) or [Strawberry](https://github.com/strawberry-graphql/strawberry), installing the sync version of the SDK will block your event loop and can significantly slow down your program. In this case, we strongly recommend using async installation.
+
 </TabItem>
 </Tabs>
 
@@ -62,7 +67,9 @@ def main():
 main()
 ```
 
-**Note**: All method calls that reach out to the APIs need to be within a `client.session()` context manager. This allows the client to establish a connection to the APIs only once and reuse the same connection between API calls.
+**Note**: All method calls that reach out to the APIs need to be within a `client.session()` context manager. This allows the client to establish a connection to the APIs only once and reuse the same connection between API calls. 
+
+We recommend creating an application-wide session and reuse the same session throughout the application for optimal performance. Creating a session per request is discouraged and inefficient.
 
 ### asyncio usage
 If you're using asyncio, import `AsyncSemanticLayerClient` from `dbtsl.asyncio`. The APIs of `SemanticLayerClient` and `AsyncSemanticLayerClient` are identical, but the async version has async methods that you need to `await`.
@@ -94,7 +101,9 @@ asyncio.run(main())
 
 The SDK returns all query data as [pyarrow](https://arrow.apache.org/docs/python/index.html) tables. 
 
-To use the data with libraries like [pandas](https://pandas.pydata.org/) or [polars](https://pola.rs/), manually convert the data into the desired format:
+The SDK library doesn't come bundled with [Polars](https://pola.rs/) or [Pandas](https://pandas.pydata.org/). If you use these libraries, add them as dependencies in your project.
+
+To use the data with libraries like Polars or Pandas, manually convert the data into the desired format. For example:
 
 #### If you're using pandas
 
