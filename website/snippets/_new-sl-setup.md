@@ -20,6 +20,8 @@ Select the environment where you want to enable the Semantic Layer:
 ### 2. Add a credential
 The dbt Semantic Layer uses [service tokens](/docs/dbt-cloud-apis/service-tokens) for authentication, mapped to an underlying data platform credential. This credential has physical access to the raw data, meaning it controls the data accessed by the Semantic Layer.
 
+dbt Cloud Enterprise plans can add multiple credentials and map those to service tokens. Refer to [Add more credentials](#4-add-more-credentials) for more information.
+
 1. In the **Set Up Semantic Layer Configuration** page, enter the credentials specific to your data platform that you want the Semantic Layer to use.
    - Use credentials with minimal privileges. This is because the Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
    - Note, environment variables such as `{{env_var('DBT_WAREHOUSE')}`, aren't supported in the dbt Semantic Layer yet. You must use the actual credentials.
@@ -27,8 +29,6 @@ The dbt Semantic Layer uses [service tokens](/docs/dbt-cloud-apis/service-tokens
 
 2. Return to the **Project Details** page and click the **Generate a Service Token** button. Make sure it has Semantic Layer Only and Metadata Only permissions. 
 3. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
-
-dbt Cloud Enterprise plans can add multiple credentials and map those to service tokens. Refer to [Add more credentials](#4-add-more-credentials) for more information.
 
 :::info
 Teams plans can manage a single credential and map to a service token, however adding [multiple credentials](#4-add-more-credentials) for tailored access is available for Enterprise plans.  
@@ -60,13 +60,13 @@ To add multiple credentials and map them to service tokens:
 2. On the **Create New Semantic Layer Credential** page, you can create multiple credentials and map them to a service token.
 3. In the **Add credentials** section, fill in the data platform's credential fields. We recommend using “read-only” credentials.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.jpg" width="55%" title="Add credentials and map them to a service token. " />
-1. In the **Map new service token** section, map a service token to the credential you configured in the previous step. dbt Cloud automatically selects the service token permission set you need (Semantic Layer Only and Metadata Only).
+4. In the **Map new service token** section, map a service token to the credential you configured in the previous step. dbt Cloud automatically selects the service token permission set you need (Semantic Layer Only and Metadata Only).
    - To add another service token, click **Add service token** under the **Linked service tokens** section.
 
-2. Click **Save** to link the service token to the credential. Remember to copy and save the service token securely, as it won't be viewable again after generation.
+5. Click **Save** to link the service token to the credential. Remember to copy and save the service token securely, as it won't be viewable again after generation.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-credential-created.jpg" width="100%" title="Manage multiple credentials and link them to service tokens for more granular control."/>
 
-1. To delete a credential, go back to the **Semantic Layer & Credential**s page. Select **Delete credential** to remove a credential and click **Save**. 
+6. To delete a credential, go back to the **Semantic Layer & Credential**s page. Select **Delete credential** to remove a credential and click **Save**. 
    
    When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
 
