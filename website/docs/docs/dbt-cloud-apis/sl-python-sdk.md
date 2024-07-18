@@ -24,6 +24,8 @@ It's simpler and easier to understand. Suitable for smaller tasks or when your p
 ```bash
 pip install dbt-sl-sdk[sync]
 ```
+If you're using async frameworks like [FastAPI](https://fastapi.tiangolo.com/) or [Strawberry](https://github.com/strawberry-graphql/strawberry), installing the sync version of the SDK will block your event loop and can significantly slow down your program. In this case, we strongly recommend using async installation.
+
 </TabItem>
 
 <TabItem value="async" label="Async installation">
