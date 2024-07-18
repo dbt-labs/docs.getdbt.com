@@ -65,7 +65,7 @@ Models run from two different contexts must result in unique objects in the data
 :::
 
 
-When those macros are customized, we often leverage some of the following logic:
+We often leverage the following when customizing these macros:
 
 In dbt Cloud, we recommend environment variables as they can be set at the environment and all jobs will automatically inherit those values.
 
