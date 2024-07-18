@@ -3,26 +3,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/guides/codespace?step=4",
-      "destination": "/guides/DuckDB?step=5",
-      "permanent": true
-    },
-    {
-      "source": "/guides/codespace?step=3",
-      "destination": "/guides/DuckDB?step=3",
-      "permanent": true
-    },
-    {
-      "source": "/guides/codespace?step=2",
-      "destination": "/guides/DuckDB?step=2",
-      "permanent": true
-    },
-    {
-      "source": "/guides/codespace?step=1",
-      "destination": "/guides/DuckDB?step=1",
-      "permanent": true
-    },
-    {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-dbt-utils-v1.0.md",
       "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0.md",
       "permanent": true
