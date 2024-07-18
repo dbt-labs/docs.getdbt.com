@@ -11,18 +11,31 @@ The `dbt-sl-sk` Python software development kit (SDK) is a Python library that p
 
 ## Installation
 
-To install the SDK, you'll need to specify optional dependencies depending on whether you want to use it synchronously (backed by [requests](https://github.com/psf/requests/)) or with [asyncio](https://docs.python.org/3/library/asyncio.html) (backed by [aiohttp](https://github.com/aio-libs/aiohttp/)).
+To install the SDK, you'll need to specify optional dependencies depending on whether you want to use it synchronously (backed by [requests](https://github.com/psf/requests/)) or with asynchronous ([asyncio](https://docs.python.org/3/library/asyncio.html) backed by [aiohttp](https://github.com/aio-libs/aiohttp/)).
 
-#### Sync installation
+<Tabs>
+<TabItem value="sync" label="Sync installation">
+
+Sync installation means your program waits for each task to finish before moving on to the next one. 
+
+It's simpler and easier to understand. Suitable for smaller tasks or when your program doesn't need to handle many tasks at the same time.
 
 ```bash
 pip install dbt-sl-sdk[sync]
 ```
-#### Async installation
+</TabItem>
+
+<TabItem value="async" label="Async installation">
+
+Async installation means your program can start a task and then move on to other tasks while waiting for the first one to finish.
+
+It can handle many tasks at once without waiting, making it faster and more efficient for larger tasks or when you need to manage multiple tasks at the same time.
 
 ```bash
 pip install dbt-sl-sdk[async]
 ```
+</TabItem>
+</Tabs>
 
 ## Usage
 To run operations against the Semantic Layer APIs, instantiate (create an instance of) a `SemanticLayerClient` with your specific [API connection parameters](/docs/dbt-cloud-apis/sl-api-overview):
@@ -51,7 +64,7 @@ main()
 
 **Note**: All method calls that reach out to the APIs need to be within a `client.session()` context manager. This allows the client to establish a connection to the APIs only once and reuse the same connection between API calls.
 
-## asyncio usage
+### asyncio usage
 If you're using asyncio, import `AsyncSemanticLayerClient` from `dbtsl.asyncio`. The APIs of `SemanticLayerClient` and `AsyncSemanticLayerClient` are identical, but the async version has async methods that you need to `await`.
 
 ```python
@@ -77,7 +90,7 @@ asyncio.run(main())
 
 ```
 
-## Integrating with dataframe libraries
+## Integrate with dataframe libraries
 
 The SDK returns all query data as [pyarrow](https://arrow.apache.org/docs/python/index.html) tables. 
 
@@ -105,14 +118,13 @@ polars_df = pl.from_arrow(arrow_table)
 ```
 
 ## Usage examples
-For additional usage examples, check out our [usage examples](https://github.com/dbt-labs/semantic-layer-sdk-python/tree/main/examples), which include:
+For additional usage examples, check out our [usage examples](https://github.com/dbt-labs/semantic-layer-sdk-python/tree/main/examples), some which include:
 
-- Fetching dimension values
-- Fetching metrics async and async
-- List saved queries async
-- and more.
+- [Fetching dimension values sync](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/fetch_dimension_values_sync.py)
+- Fetching metrics [async](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/fetch_metric_async.py) and [sync](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/fetch_metric_sync.py)
+- [List saved queries async](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/list_saved_queries_async.py)
 
-## Disabling telemetry
+## Disable telemetry
 By default, the SDK sends some [platform-related information](https://arc.net/l/quote/chejsupc) to dbt Labs. To opt out, set the `PLATFORM.anonymous` attribute to `True`:
 
 ```python
@@ -122,5 +134,5 @@ PLATFORM.anonymous = True
 # ... initialize client
 ```
 
-## Contributing
+## Contribute
 To contribute to this project, check out our [contribution guidelines](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/CONTRIBUTING.md) and open a GitHub [issue](https://github.com/dbt-labs/semantic-layer-sdk-python/issues) or [pull request](https://github.com/dbt-labs/semantic-layer-sdk-python/pulls). 
