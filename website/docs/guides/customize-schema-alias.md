@@ -69,7 +69,7 @@ We often leverage the following when customizing these macros:
 
 In dbt Cloud, we recommend utilizing [environment variables](/docs/build/environment-variables) to define where the dbt invocation is occurring (dev/stg/prod).
 
-- Set up some [environment variables](/docs/build/environment-variables) and having some Jinja (`if/else/endif`) logic to identify if the run happens in dev, prod, CI and more so.
+They can be set at the environment level, and all jobs will automatically inherit the default values. We'll add jinja logic (`if/else/endif`) to identify whether the run happens in dev, prod, Ci and more so.
     
 - Or as an alternative to environment variables, you can use `target.name`. For more information, you can refer to [About target variables](/reference/dbt-jinja-functions/target). 
 
