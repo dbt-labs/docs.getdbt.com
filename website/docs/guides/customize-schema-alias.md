@@ -220,7 +220,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 
 | Context     |Target database| Target schema | Resulting object               |
 |-------------|:-------------:|:-------------:|:------------------------------:|
-| Developer 1 | dev           | dbt_dev1      |dev.dbt_dev1_marketingmy_model  |
+| Developer 1 | dev           | dbt_dev1      |dev.marketing.dbt_dev1_my_model |
 | Developer 2 | dev           | dbt_dev2      |dev.dbt_dev2_marketingmy_model  |
 | CI PR 123   | ci            | dbt_pr_123    |ci.dbt_pr_123_marketing.my_model|
 | CI PR 234   | ci            | dbt_pr_234    |ci.dbt_pr_234_marketing.my_model|
