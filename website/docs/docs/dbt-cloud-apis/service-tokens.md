@@ -70,7 +70,7 @@ Security Admin service tokens have certain account-level permissions.  For more 
 Billing Admin service tokens have certain account-level permissions.  For more on these permissions, see [Billing Admin](/docs/cloud/manage-access/enterprise-permissions#billing-admin).
 
 **Manage marketplace apps** <br/>
-Used only for apps on the marketplace (for example, the [Snowflake Native app](/docs/cloud-integrations/snowflake-native-app)). 
+Used only for service tokens assigned to marketplace apps (for example, the [Snowflake Native app](/docs/cloud-integrations/snowflake-native-app)). 
 
 **Metadata Only**<br/>
 Metadata-only service tokens authorize requests to the Discovery API.
