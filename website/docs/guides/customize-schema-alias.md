@@ -1,5 +1,5 @@
 ---
-title: Customize dbt models database, schema and alias
+title: Customize dbt models database, schema, and alias
 id: customize-schema-alias
 description: "Learn how to properly adjust your generate_schema_name() and generate_alias_name() macros."
 displayText: Learn how to adjust your generate schema name and generate alias name.
