@@ -19,7 +19,7 @@ To install the SDK, you'll need to specify optional dependencies depending on wh
 
 Sync installation means your program waits for each task to finish before moving on to the next one. 
 
-It's simpler and easier to understand. Suitable for smaller tasks or when your program doesn't need to handle many tasks at the same time.
+It's simpler, easier to understand, and suitable for smaller tasks or when your program doesn't need to handle many tasks at the same time.
 
 ```bash
 pip install dbt-sl-sdk[sync]
