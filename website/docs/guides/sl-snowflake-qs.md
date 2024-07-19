@@ -972,7 +972,7 @@ This page will guide you on how to connect and use the following integrations to
 - [Connect and query with Google Sheets](#connect-and-query-with-google-sheets)
 - [Connect and query with Hex](#connect-and-query-with-hex)
 
-The dbt Semantic Layer enables you to connect and query your metric with various available tools like Google Sheets, Hex, and more. 
+The dbt Semantic Layer enables you to connect and query your metric with various available tools like Google Sheets, Hex, Tableau, and more. 
 
 Query metrics using other tools such as [first-class integrations](/docs/cloud-integrations/avail-sl-integrations), [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview), and [exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integration with tools like PowerBI.
 
