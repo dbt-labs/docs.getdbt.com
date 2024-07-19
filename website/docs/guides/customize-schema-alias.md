@@ -231,7 +231,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 | Production  | prod          | analytics     |prod.marketing.my_model         |
 
 
-### 3. Using the branch name for the schema prefix, instead of the developer identity
+### 3. Using branch name as schema prefix
 
 For teams who prefer to isolate work based on the feature branch, you may want to take advantage of the `DBT_CLOUD_GIT_BRANCH` special environment variable. Please note that developers will write to the exact same schema when they are on the same feature branch.
 
