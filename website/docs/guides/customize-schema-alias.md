@@ -15,7 +15,7 @@ recently_updated: true
 
 ## Introduction
 This guide explains how to customize the [schema](/docs/build/custom-schemas), [database](/docs/build/custom-databases), and [alias](/docs/build/custom-aliases) naming conventions in dbt to fit your data warehouse governance and design needs.
-When we develop dbt models and perform a `dbt run` or `dbt build` command, objects get created in the data warehouse.
+When we develop dbt models and perform a `dbt run` or `dbt build` command, objects (like tables and views) get created in the data warehouse based on these naming conventions.
 
 In the rest of the article, for consistency, when we refer to database, we'll be referring to a Google Cloud Platform  project or to a Databricks catalog.
 :::info A word on naming
