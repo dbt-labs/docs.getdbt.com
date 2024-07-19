@@ -139,7 +139,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 
 :::note
 
-We added logic to check if the current dbt run is happening in production or not. This is important, and we explain why in the section on [What not to do](/guides/customize-schema-alias?step=3#what-not-to-do).
+We added logic to check if the current dbt run is happening in production or not. This is important, and we explain why in the [What not to do](/guides/customize-schema-alias?step=3#what-not-to-do) section.
 
 :::
 
