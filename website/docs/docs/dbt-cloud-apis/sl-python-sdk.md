@@ -72,7 +72,7 @@ main()
 
 **Note**: All method calls that reach out to the APIs need to be within a `client.session()` context manager. This allows the client to establish a connection to the APIs only once and reuse the same connection between API calls. 
 
-We recommend creating an application-wide session and reuse the same session throughout the application for optimal performance. Creating a session per request is discouraged and inefficient.
+We recommend creating an application-wide session and reusing the same session throughout the application for optimal performance. Creating a session per request is discouraged and inefficient.
 
 ### asyncio usage
 If you're using asyncio, import `AsyncSemanticLayerClient` from `dbtsl.asyncio`. The APIs of `SemanticLayerClient` and `AsyncSemanticLayerClient` are identical, but the async version has async methods that you need to `await`.
