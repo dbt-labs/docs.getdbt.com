@@ -29,7 +29,7 @@ The user's [license](/docs/cloud/manage-access/seats-and-users) type always over
 
 ## How to set up RBAC Groups in dbt Cloud
 
-Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations.
+Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations. RBAC does not apply to [model groups](/docs/collaborate/govern/model-access#groups).
 
 1. Click the gear icon to the top right and select **Account Settings**. Click **Groups & Licenses**
 
