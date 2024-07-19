@@ -6,7 +6,7 @@ canonical_url: https://docs.getdbt.com/sql-reference/dateadd
 
 authors: david_krevitt
 
-tags: [SQL magic]
+tags: [sql magic]
 hide_table_of_contents: false
 
 date: 2021-11-15
