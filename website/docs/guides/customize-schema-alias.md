@@ -54,7 +54,7 @@ Or, based on how you've designed your warehouse, you may wish to minimize the nu
 
 Alternatively, you may even want your dev schemas to be named after feature branches instead of the developer name.
 
-For this reason, dbt offers three macros to customize what objects are created in the Data Warehouse:
+For this reason, dbt offers three macros to customize what objects are created in the data warehouse:
 
 - [`generate_database_name()`](/docs/build/custom-databases#generate_database_name)
 - [`generate_schema_name()`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name)
