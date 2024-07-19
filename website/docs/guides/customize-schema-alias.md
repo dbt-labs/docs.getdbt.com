@@ -393,7 +393,7 @@ This section will provide an outline of what users should avoid doing when custo
 Some people prefer to only use the custom schema when it is set instead of concatenating the default schema with the custom one, as it happens in the out of the box behavior.
 
 
-#### Problem
+### Problem
 
 When modifying the default macro for `generate_schema_name()`, this might result in creating this new version.
 
