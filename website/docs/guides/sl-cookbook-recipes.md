@@ -297,7 +297,7 @@ metrics:
   - name: arr
     label: 'ARR'
     description: >
-      annual recurring revenue calculated based on MRR.
+      Annual recurring revenue calculated based on MRR.
     type: derived
     type_params:
       expr: mrr * 12
