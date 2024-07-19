@@ -21,18 +21,18 @@
 .sl-font-ui {
     /* Bump font size to make up for slightly smaller font family (above) */
     font-size: 14px !important;
+}
 
-    & a {
-        /* Ensure link colors aren't overriden by docusaurus css */
-        color: var(--color-text) !important;
-    }
+.sl-font-ui a {
+    /* Ensure link colors aren't overriden by docusaurus css */
+    color: var(--color-text) !important;
 }
 
 /* Ensure codeblocks are legible when using darkmode */
 .sl-panel__content pre {
     background-color: var(--stoplight-pre-background) !important;
-
-    & .plain, .sl-code-highlight__ln {
-        color: var(--stoplight-pre-color) !important;
-    }
+}
+  
+.sl-panel__content pre .plain, .sl-panel__content pre .sl-code-highlight__ln {
+    color: var(--stoplight-pre-color) !important;
 }
