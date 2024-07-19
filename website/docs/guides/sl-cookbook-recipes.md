@@ -42,7 +42,7 @@ Alternatively, you can use the [one-YAML-per-marts-model approach](/best-practic
 
 1. Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_user_activity_daily.yml`) to create a semantic model that tracks daily user activity. 
 
-  This semantic model ref’s the `fct_user_activity_daily` model.
+  This semantic model refs the `fct_user_activity_daily` model.
 
   Note that if you’re using the one-YAML-file-per-mart, then save this as `user_activity_daily.yml` under the models folder.
 
