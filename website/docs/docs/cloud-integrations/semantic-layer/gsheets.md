@@ -82,7 +82,7 @@ Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricF
 - Open the hamburger menu in Google Sheets.
 - Navigate to **Saved Queries** to access the ones available to you.
 - You can also select **Build Selection**, which allows you to explore the existing query. This won't change the original query defined in the code.
-  - If you use a `where` filter in a saved query, Google Sheets displays the advanced syntax for this filter.
+  - If you use a [`where` filter](/docs/build/saved-queries#where-clause) in a saved query, Google Sheets displays the advanced syntax for this filter.
 
 **Limited use policy disclosure**
 
