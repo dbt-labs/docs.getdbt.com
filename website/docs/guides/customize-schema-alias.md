@@ -95,7 +95,7 @@ Note that the following examples do not comprehensively cover all the available 
 
 
 
-### 1. Using the custom schema without the concatenation with the target schema in production
+### 1. Custom schemas without target schema concatenation in production
 
 
 The most common use case is using the custom schema without concatenating it with the default schema name when in production.
