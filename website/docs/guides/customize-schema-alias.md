@@ -64,7 +64,11 @@ By overwriting one or multiple of those macros, we can tailor where dbt objects 
 
 :::note Key concept
 
-Models run from two different contexts must result in unique objects in the data warehouse. For example, a developer named Suzie is working on enhancements to `fct_player_stats`, but Darren is developing against the exact same object. In order to prevent overwriting each other's work, both Suzie and Darren should each have their unique versions of `fct_player_stats` in the development environment. Further, the staging version of `fct_player_stats` should exist in a unique location apart from the development versions, and the production version.
+Models run from two different contexts must result in unique objects in the data warehouse. For example, a developer named Suzie is working on enhancements to `fct_player_stats`, but Darren is developing against the exact same object. 
+
+In order to prevent overwriting each other's work, both Suzie and Darren should each have their unique versions of `fct_player_stats` in the development environment. 
+
+Further, the staging version of `fct_player_stats` should exist in a unique location apart from the development versions, and the production version.
 
 :::
 
