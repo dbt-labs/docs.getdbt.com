@@ -18,7 +18,11 @@ This guide explains how to customize the [schema](/docs/build/custom-schemas), [
 When we develop dbt models and perform a `dbt run` or `dbt build` command, objects get created in the data warehouse
 
 In the rest of the article, for consistency, when we refer to database, we'll be referring to a Google Cloud Platform  project or to a Databricks catalog.
+:::info A word on naming
 
+Different warehouses have different names for _logical databases_. The information in this document covers "databases" on Snowflake, Redshift, and Postgres; "projects" on BigQuery; and "catalogs" on Databricks Unity Catalog.
+
+:::
 Out-of-the-box, the default behavior of dbt is the following:
 
 - The database where the object is created will be the database configured at the [environment level in dbt Cloud](/docs/dbt-cloud-environments), or in the `profiles.yml` in dbt Core.
