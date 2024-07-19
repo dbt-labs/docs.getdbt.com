@@ -75,7 +75,7 @@ main()
 We recommend creating an application-wide session and reusing the same session throughout the application for optimal performance. Creating a session per request is discouraged and inefficient.
 
 ### asyncio usage
-If you're using asyncio, import `AsyncSemanticLayerClient` from `dbtsl.asyncio`. The APIs of `SemanticLayerClient` and `AsyncSemanticLayerClient` are identical, but the async version has async methods that you need to `await`.
+If you're using asyncio, import `AsyncSemanticLayerClient` from `dbtsl.asyncio`. The `SemanticLayerClient` and `AsyncSemanticLayerClient` APIs are identical, but the async version has async methods that you need to `await`.
 
 ```python
 import asyncio
