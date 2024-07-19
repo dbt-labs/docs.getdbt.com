@@ -75,7 +75,7 @@ Additional steps are necessary to save on build-related compute and storage cost
 
 Deprecated models can continue to be built by producers and be selected by consumers until they are [disabled](/reference/resource-configs/enabled) or removed.
 
-Just like it does not automatically [drop relations when models are deleted](/faqs/models/removing-deleted-models), dbt does not drop relations for deprecated models.
+Just like it does not automatically [drop relations when models are deleted](/faqs/Models/removing-deleted-models), dbt does not drop relations for deprecated models.
 
 Strategies similar to [here](https://discourse.getdbt.com/t/faq-cleaning-up-removed-models-from-your-production-schema/113) or [here](https://discourse.getdbt.com/t/clean-your-warehouse-of-old-and-deprecated-models/1547) can be used to drop relations that have been deprecated and are no longer in use.
 
