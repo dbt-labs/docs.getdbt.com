@@ -4,11 +4,6 @@
   "redirects": [
     {
       "source": "/guides/codespace",
-      "destination": "/guides/DuckDB",
-      "permanent": true
-    },
-    {
-      "source": "/guides/codespace",
       "has": [
         {
           "type": "query",
@@ -17,6 +12,11 @@
         }
       ],
       "destination": "/guides/DuckDB?step=5",
+      "permanent": true
+    },
+    {
+      "source": "/guides/codespace",
+      "destination": "/guides/DuckDB",
       "permanent": true
     },
     {
