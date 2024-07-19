@@ -18,7 +18,7 @@ recently_updated: true
 Use this cookbook recipe to understand how to calculate “Active users” and “Active users (Week-over-Week growth (WoW) growth), as well as other time-related attributes in a database with dbt using YAML configurations.
 
 - [Objectives](#objectives)
-- [Use cases](#use-case)
+- [Use case](#use-case)
 - [Step 1: Define semantic models](#step-1-define-semantic-models)
 - [Step 2: Create metrics](#step-2-create-metrics)
 - [Step 3: Test your metrics](#step-3-test-your-metrics)
