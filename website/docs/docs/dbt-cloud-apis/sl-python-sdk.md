@@ -8,11 +8,13 @@ sidebar_label: "Python SDK"
 ---
 
 # dbt Semantic Layer Python SDK <Lifecycle status="Preview"/>
-The [`dbt-sl-sdk` Python software development kit](https://github.com/dbt-labs/semantic-layer-sdk-python) (SDK) is a Python library that provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools.
+The [`dbt-sl-sdk` Python software development kit](https://github.com/dbt-labs/semantic-layer-sdk-python) (SDK) is a Python library that provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools. 
 
 ## Installation
 
 To install the Python SDK, you'll need to specify optional dependencies depending on whether you want to use it synchronously, backed by [requests](https://github.com/psf/requests/), or with asynchronous ([asyncio](https://docs.python.org/3/library/asyncio.html) backed by [aiohttp](https://github.com/aio-libs/aiohttp/)).
+
+The Python SDK supports the Long-Term Support (LTS) versions of Python, such as 3.9, 3.10, 3.11, and 3.12. When Python discontinues support for a version, the Python SDK will also discontinue support for that version. If you’re using a non-supported version, you may experience compatibility issues and won’t receive updates or security patches from the SDK.
 
 <Tabs>
 <TabItem value="sync" label="Sync installation">
