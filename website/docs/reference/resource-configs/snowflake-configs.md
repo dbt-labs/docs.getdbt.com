@@ -372,6 +372,8 @@ Dynamic tables are supported with the following configuration parameters:
 
 </VersionBlock>
 
+<VersionBlock lastVersion="1.8">
+
 <Tabs
   groupId="config-languages"
   defaultValue="project-yaml"
@@ -381,7 +383,6 @@ Dynamic tables are supported with the following configuration parameters:
     { label: 'Config block', value: 'config', },
   ]
 }>
-
 
 <TabItem value="project-yaml">
 
@@ -394,12 +395,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
-<VersionBlock firstVersion="1.9">
 
-    [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
-    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE
-
-</VersionBlock>
 ```
 
 </File>
@@ -421,12 +417,7 @@ models:
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [target_lag](#target-lag): downstream | <time-delta>
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
-<VersionBlock firstVersion="1.9">
 
-      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
-      [initialize](#initialize): ON_CREATE | ON_SCHEDULE
-
-</VersionBlock>
 ```
 
 </File>
@@ -439,18 +430,15 @@ models:
 <File name='models/<model_name>.sql'>
 
 ```jinja
+
 {{ config(
     [materialized](/reference/resource-configs/materialized)="dynamic_table",
     [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
-<VersionBlock firstVersion="1.9">
 
-    [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
-    [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE",
-
-</VersionBlock>
 ) }}
+
 ```
 
 </File>
@@ -458,6 +446,91 @@ models:
 </TabItem>
 
 </Tabs>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
+    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): dynamic_table
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [target_lag](#target-lag): downstream | <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL 
+      [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="dynamic_table",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
+    [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
+
+) }}
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+</VersionBlock>
 
 Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
 
