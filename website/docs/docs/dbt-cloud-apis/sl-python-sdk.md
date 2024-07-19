@@ -12,7 +12,7 @@ The [`dbt-sl-sdk` Python software development kit](https://github.com/dbt-labs/s
 
 ## Installation
 
-To install the SDK, you'll need to specify optional dependencies depending on whether you want to use it synchronously (backed by [requests](https://github.com/psf/requests/)) or with asynchronous ([asyncio](https://docs.python.org/3/library/asyncio.html) backed by [aiohttp](https://github.com/aio-libs/aiohttp/)).
+To install the SDK, you'll need to specify optional dependencies depending on whether you want to use it synchronously, backed by [requests](https://github.com/psf/requests/), or with asynchronous ([asyncio](https://docs.python.org/3/library/asyncio.html) backed by [aiohttp](https://github.com/aio-libs/aiohttp/)).
 
 <Tabs>
 <TabItem value="sync" label="Sync installation">
