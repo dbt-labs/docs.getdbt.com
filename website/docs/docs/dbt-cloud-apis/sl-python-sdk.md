@@ -130,7 +130,7 @@ polars_df = pl.from_arrow(arrow_table)
 ```
 
 ## Usage examples
-For additional usage examples, check out our [usage examples](https://github.com/dbt-labs/semantic-layer-sdk-python/tree/main/examples), some which include:
+For additional usage examples, check out the [usage examples](https://github.com/dbt-labs/semantic-layer-sdk-python/tree/main/examples), some of which include:
 
 - [Fetching dimension values sync](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/fetch_dimension_values_sync.py)
 - Fetching metrics [async](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/fetch_metric_async.py) and [sync](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/fetch_metric_sync.py)
