@@ -122,7 +122,7 @@ semantic_models:
       - name: user_id
         type: primary
       - name: country_id
-        type: Unique
+        type: unique
     dimensions:
       - name: signup_date
         type: time
