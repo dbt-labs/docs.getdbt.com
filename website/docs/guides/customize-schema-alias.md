@@ -295,7 +295,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 | Production  |            |prod           | analytics     |prod.marketing.my_model\           |
 
 
-When developer 1 and developer 2 are checked out on the same branch, they will generate the same object in the data warehouse, but this should not be a problem as being on the same branch means that the code of the model will be the same for the two developers.
+When developer 1 and developer 2 are checked out on the same branch, they will generate the same object in the data warehouse. This shouldn't be a problem as being on the same branch means the model's code will be the same for both developers.
 
 
 ### 4. Using a static schema for CI 
