@@ -25,27 +25,6 @@ function Styles() {
                 </p>
             </div>
             <div className='section' style={{marginTop: '40px'}}>
-                <h1>Linked Markdown Code Blocks</h1>
-<pre>{`
-\`\`\`
-[view the intro](docs/introduction)
-\`\`\`
-`}</pre>
-            <CodeBlock>
-[view the intro](docs/introduction)
-            </CodeBlock>
-            <br/>
-            <p>Use a backslash to escape linking:</p>
-<pre>{`
-\`\`\`yml
-description: "this is \\[an escaped link](docs.getdbt.com)"
-\`\`\`
-`}</pre>
-            <CodeBlock>
-description: "this is \[an escaped link](docs.getdbt.com)"
-            </CodeBlock>
-            </div>
-            <div className='section' style={{marginTop: '40px'}}>
                 <h1>Changelog</h1>
 <pre>{`<Changelog>
     <p>This functionality has changed in dbt v0.16.0</p>
