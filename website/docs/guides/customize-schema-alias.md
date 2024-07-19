@@ -23,7 +23,7 @@ In the rest of the article, for consistency, when we refer to database, we'll be
 Different warehouses have different names for _logical databases_. The information in this document covers "databases" on Snowflake, Redshift, and Postgres; "projects" on BigQuery; and "catalogs" on Databricks Unity Catalog.
 
 :::
-Out-of-the-box, the default behavior of dbt is the following:
+The following is dbt's out-of-the-box default behavior:
 
 - The database where the object is created will be the database configured at the [environment level in dbt Cloud](/docs/dbt-cloud-environments), or in the `profiles.yml` in dbt Core.
 
