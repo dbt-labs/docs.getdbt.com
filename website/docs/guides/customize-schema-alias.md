@@ -46,7 +46,7 @@ The defaults allow developers to work in their own isolated schemas (sandboxes) 
 
 ## How to customize this behavior
 
-While the default behavior will fit the needs of most organizations, there are occasions where this approach won't jive.
+While the default behavior will fit the needs of most organizations, there are occasions where this approach won't work.
 
 For example, dbt expects that it has permission to create schemas on the fly (and we recommend that the users running dbt have this ability), but it might not be allowed at your company.
 
