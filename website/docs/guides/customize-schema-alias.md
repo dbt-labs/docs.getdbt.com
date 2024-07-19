@@ -294,7 +294,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 When developer 1 and developer 2 are checked out on the same branch, they will generate the same object in the data warehouse, but this should not be a problem as being on the same branch means that the code of the model will be the same for the two developers.
 
 
-### 4. Use a static schema for CI 
+### 4. Using a static schema for CI 
 
 Some organizations prefer to write their CI jobs to a single schema with the PR identifier prefixed to the front of the table name. It's important to note that this will result in long table names. 
 
