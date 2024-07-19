@@ -144,7 +144,7 @@ We added logic to check if the current dbt run is happening in production or not
 :::
 
 
-### 2. Static schemas - Adding developer identities to the front of tables instead of the schema
+### 2. Static schemas: Adding developer identities to tables
 
 Occasionally, we run into instances where the security posture of the organization prevents developers from creating schemas and all developers have to develop in a single schema.
 
