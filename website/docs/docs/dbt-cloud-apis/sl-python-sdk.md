@@ -1,18 +1,18 @@
 ---
-title: "Python SDK"
+title: "dbt Semantic Layer Python SDK"
 id: sl-python
-description: "Learn how to use the dbt Semantic Layer SDK for Python library to interact with the dbt Semantic Layer."
+description: "Learn how to use the dbt Semantic Layer Python SDK library to interact with the dbt Semantic Layer."
 tags: [Semantic Layer, APIs]
 keywords: [dbt Cloud, API, dbt Semantic Layer, python]
 sidebar_label: "Python SDK"
 ---
 
-# Python SDK <Lifecycle status="Preview"/>
-The [`dbt-sl-sdk` Python software development kit](https://github.com/dbt-labs/semantic-layer-sdk-python) (SDK) is a Python library that provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the Semantic Layer APIs and query metrics and dimensions in downstream tools.
+# dbt Semantic Layer Python SDK <Lifecycle status="Preview"/>
+The [`dbt-sl-sdk` Python software development kit](https://github.com/dbt-labs/semantic-layer-sdk-python) (SDK) is a Python library that provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools.
 
 ## Installation
 
-To install the SDK, you'll need to specify optional dependencies depending on whether you want to use it synchronously, backed by [requests](https://github.com/psf/requests/), or with asynchronous ([asyncio](https://docs.python.org/3/library/asyncio.html) backed by [aiohttp](https://github.com/aio-libs/aiohttp/)).
+To install the Python SDK, you'll need to specify optional dependencies depending on whether you want to use it synchronously, backed by [requests](https://github.com/psf/requests/), or with asynchronous ([asyncio](https://docs.python.org/3/library/asyncio.html) backed by [aiohttp](https://github.com/aio-libs/aiohttp/)).
 
 <Tabs>
 <TabItem value="sync" label="Sync installation">
@@ -40,7 +40,7 @@ pip install dbt-sl-sdk[async]
 
 Since the [Python ADBC driver](https://github.com/apache/arrow-adbc/tree/main/python/adbc_driver_manager) doesn't yet support asyncio natively, `dbt-sl-sdk` uses a [`ThreadPoolExecutor`](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/5e52e1ca840d20a143b226ae33d194a4a9bc008f/dbtsl/api/adbc/client/asyncio.py#L62) to run `query` and `list dimension-values` (all operations that are done with ADBC).  This is why you might see multiple Python threads spawning.
 
-If you're using async frameworks like [FastAPI](https://fastapi.tiangolo.com/) or [Strawberry](https://github.com/strawberry-graphql/strawberry), installing the sync version of the SDK will block your event loop and can significantly slow down your program. In this case, we strongly recommend using async installation.
+If you're using async frameworks like [FastAPI](https://fastapi.tiangolo.com/) or [Strawberry](https://github.com/strawberry-graphql/strawberry), installing the sync version of the Python SDK will block your event loop and can significantly slow down your program. In this case, we strongly recommend using async installation.
 
 </TabItem>
 </Tabs>
@@ -102,9 +102,9 @@ asyncio.run(main())
 
 ## Integrate with dataframe libraries
 
-The SDK returns all query data as [pyarrow](https://arrow.apache.org/docs/python/index.html) tables. 
+The Python SDK returns all query data as [pyarrow](https://arrow.apache.org/docs/python/index.html) tables. 
 
-The SDK library doesn't come bundled with [Polars](https://pola.rs/) or [Pandas](https://pandas.pydata.org/). If you use these libraries, add them as dependencies in your project.
+The Python SDK library doesn't come bundled with [Polars](https://pola.rs/) or [Pandas](https://pandas.pydata.org/). If you use these libraries, add them as dependencies in your project.
 
 To use the data with libraries like Polars or Pandas, manually convert the data into the desired format. For example:
 
@@ -137,7 +137,7 @@ For additional usage examples, check out the [usage examples](https://github.com
 - [List saved queries async](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/examples/list_saved_queries_async.py)
 
 ## Disable telemetry
-By default, the SDK sends some [platform-related information](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/dbtsl/env.py) to dbt Labs. To opt out, set the `PLATFORM.anonymous` attribute to `True`:
+By default, the Python SDK sends some [platform-related information](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/main/dbtsl/env.py) to dbt Labs. To opt-out, set the `PLATFORM.anonymous` attribute to `True`:
 
 ```python
 from dbtsl.env import PLATFORM
