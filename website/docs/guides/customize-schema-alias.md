@@ -437,7 +437,7 @@ Similarly, different PRs will result in the exact same object in the data wareho
 
 ### Solution
 
-As described above in the first example, the macro should be updated to check if we are currently running dbt in production or not. It is only when in production that we want to remove the concatenation and only use the custom schema.
+As described in the previous example, update the macro to check if dbt is running in production. Only in production should we remove the concatenation and use the custom schema alone.
 
 
 ## Tips and tricks
