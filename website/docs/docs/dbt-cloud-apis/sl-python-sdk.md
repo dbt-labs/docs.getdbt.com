@@ -3,7 +3,7 @@ title: "Python SDK"
 id: sl-python
 description: "Learn how to use the dbt Semantic Layer Python SDK library to interact with the dbt Semantic Layer."
 tags: [Semantic Layer, APIs]
-keywords: [dbt Cloud, API, dbt Semantic Layer, python]
+keywords: [dbt Cloud, API, dbt Semantic Layer, python, sdk]
 sidebar_label: "Python SDK"
 ---
 
