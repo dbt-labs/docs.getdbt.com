@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Markdown from "markdown-to-jsx";
 import styles from './styles.module.css';
 import { usePluginData } from '@docusaurus/useGlobalData';
 
@@ -27,11 +28,21 @@ function FAQ({ path, alt_header = null }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log("filePath", filePath);
         const file = await import(`../../../docs/faqs/${filePath}.md`)
+        // console.log("mdFile", mdFile);
+        // const res = await fetch(mdFile?.default);
+        // console.log('res', res)
+        // const file = await res?.text()
+        console.log("file", file)
         if (file) {
           const meta = file.metadata;
           console.log('meta', meta)
-          const contents = file.default;
+
+          const res = await fetch(file.default);
+          console.log("res", res);
+          const contents = await fetch(res.text())
+          // const contents = file.default;
           console.log('contents', contents)
           setFileContent({ meta, contents })
         }
@@ -53,7 +64,9 @@ function FAQ({ path, alt_header = null }) {
         <span className={styles.headerText}>{alt_header || (fileContent?.meta && fileContent.meta.title)}</span>
       </span>
       <div style={{ display: isOn ? 'block' : 'none' }} className={styles.body}>
-        {fileContent?.contents}
+        <Markdown>
+          {fileContent.contents}
+        </Markdown>
       </div>
     </div>
   );
