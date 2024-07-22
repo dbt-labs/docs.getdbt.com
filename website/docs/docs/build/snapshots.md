@@ -174,10 +174,8 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 {{
     config(
-      database='analytics',
       schema='snapshots',
       unique_key='id',
-
       strategy='timestamp',
       updated_at='updated_at',
     )
