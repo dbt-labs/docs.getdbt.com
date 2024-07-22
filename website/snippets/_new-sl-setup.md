@@ -17,7 +17,12 @@ Select the environment where you want to enable the Semantic Layer:
 
 4. In the **Set Up Semantic Layer Configuration** page, select the deployment environment you want for the Semantic Layer and click **Save**. This provides administrators with the flexibility to choose the environment where the Semantic Layer will be enabled.
 
+:::tip dbt Cloud Enterprise can skip to [Add more credentials](#4-add-more-credentials)
+dbt Cloud Enterprise plans can add multiple credentials and have a different set up. Skip to [Add more credentials](#4-add-more-credentials) for more configuration details.
+:::
+
 ### 2. Add a credential and create service tokens
+
 The dbt Semantic Layer uses [service tokens](/docs/dbt-cloud-apis/service-tokens) for authentication which are tied to an underlying data platform credential that you configure. The credential configured is used to execute queries that the Semantic Layer issues against your data platform. This credential controls the physical access to underlying data accessed by the Semantic Layer, and all access policies set in the data platform for this credential will be respected.
 
 dbt Cloud Enterprise plans can add multiple credentials and map those to service tokens. Refer to [Add more credentials](#4-add-more-credentials) for more information.
@@ -27,8 +32,10 @@ dbt Cloud Enterprise plans can add multiple credentials and map those to service
    - Note, environment variables such as `{{env_var('DBT_WAREHOUSE')}`, aren't supported in the dbt Semantic Layer yet. You must use the actual credentials.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="45%" title="Enter the credentials specific to your data platform that you want the Semantic Layer to use and select the deployment environment."/>
 
-2. Create a **Service Token** after you add the credential. You can return to the **Project Details** page and click the **Generate a Service Token** button. 
-2. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
+2. Create a **Service Token** after you add the credential.
+   * Enterprise plans: Name and generate a service token on the credential page directly.
+   * Team plans: You can return to the **Project Details** page and click the **Generate a Service Token** button. 
+3. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
 
 :::info
 Teams plans can create multiple service tokens that map to one underlying credential. Adding [multiple credentials](#4-add-more-credentials) for tailored access is available for Enterprise plans.  
