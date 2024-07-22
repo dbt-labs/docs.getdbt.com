@@ -4,6 +4,16 @@ description: "Target_schema - Read this in-depth guide to learn about configurat
 datatype: string
 ---
 
+<VersionBlock firstVersion="1.9">
+
+:::warning Legacy configuration
+
+For environments on versionless dbt Cloud or dbt Core v1.9+, the `target_schema` configuration is now optional. Best practices dictate that the `target_schema` config should be removed from snapshots in the environment, in which case the snapshots will instead utilize the `generate_schema_name` macro by default. Project snapshots configured with `target_schema` will continue to work as expected. 
+
+:::
+
+</VersionBlock>
+
 <File name='dbt_project.yml'>
 
 ```yml

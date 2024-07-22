@@ -6,6 +6,16 @@ id: snapshot-target-schema
 
 ---
 
+<VersionBlock firstVersion="1.9">
+
+:::warning Legacy configuration
+
+For environments on versionless dbt Cloud or dbt Core v1.9+, the `target_schema` configuration is now optional. Best practices dictate that the `target_schema` config should be removed from snapshots in the environment, in which case the snapshots will instead utilize the `generate_schema_name` macro by default. Project snapshots configured with `target_schema` will continue to work as expected. 
+
+:::
+
+</VersionBlock>
+
 Snapshots build into the same `target_schema`, no matter who is running them.
 
 In comparison, models build into a separate schema for each user — this helps maintain separate development and production environments.
