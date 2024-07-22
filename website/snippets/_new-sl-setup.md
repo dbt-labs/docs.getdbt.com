@@ -17,21 +17,21 @@ Select the environment where you want to enable the Semantic Layer:
 
 4. In the **Set Up Semantic Layer Configuration** page, select the deployment environment you want for the Semantic Layer and click **Save**. This provides administrators with the flexibility to choose the environment where the Semantic Layer will be enabled.
 
-### 2. Add a credential
-The dbt Semantic Layer uses [service tokens](/docs/dbt-cloud-apis/service-tokens) with the right credential permissions for authentication. The credential you configure is used to execute queries that the Semantic Layer issues against your data platform. It controls the physical access to underlying data accessed by the Semantic Layer. All access policies set in the platform will be respected, and it should have read only access to the underlying data.
+### 2. Add a credential and create service tokens
+The dbt Semantic Layer uses [service tokens](/docs/dbt-cloud-apis/service-tokens) for authentication which are tied to an underlying data platform credential that you configure. The credential configured is used to execute queries that the Semantic Layer issues against your data platform. This credential controls the physical access to underlying data accessed by the Semantic Layer, and all access policies set in the data platform for this credential will be respected.
 
 dbt Cloud Enterprise plans can add multiple credentials and map those to service tokens. Refer to [Add more credentials](#4-add-more-credentials) for more information.
 
 1. In the **Set Up Semantic Layer Configuration** page, enter the credentials specific to your data platform that you want the Semantic Layer to use.
-   - Use credentials with minimal privileges. This is because the Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
+   - Use credentials with minimal privileges. The Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
    - Note, environment variables such as `{{env_var('DBT_WAREHOUSE')}`, aren't supported in the dbt Semantic Layer yet. You must use the actual credentials.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="45%" title="Enter the credentials specific to your data platform that you want the Semantic Layer to use and select the deployment environment."/>
 
-1. Return to the **Project Details** page and click the **Generate a Service Token** button. Make sure it has Semantic Layer Only and Metadata Only permissions. 
+2. Create a **Service Token** after you add the credential. You can return to the **Project Details** page and click the **Generate a Service Token** button. 
 2. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
 
 :::info
-Teams plans can user service tokens with the right credential permission, however adding [multiple credentials](#4-add-more-credentials) for tailored access is available for Enterprise plans.  
+Teams plans can create multiple service tokens that map to one underlying credential. Adding [multiple credentials](#4-add-more-credentials) for tailored access is available for Enterprise plans.  
 
 <a href="https://www.getdbt.com/contact" style={{ color: 'white', backgroundColor: '#66c2c2', padding: '4px 8px', borderRadius: '4px', textDecoration: 'none', display: 'inline-block' }}>Book a free live demo</a> to discover the full potential of dbt Cloud Enterprise.
 :::
@@ -45,13 +45,13 @@ Teams plans can user service tokens with the right credential permission, howeve
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-example.jpg" width="50%" title="After configuring, you'll be provided with the connection details to connect to you downstream tools." />
 
 ### 4. Add more credentials <Lifecycle status="enterprise"/>
-dbt Cloud Enterprise plans can optionally add multiple credentials and map them to service tokens, offering more granular control and tailored access for different teams and projects. This can then be shared to relevant teams for BI connection setup. These credentials control the physical access to underlying data accessed by the Semantic Layer.
+dbt Cloud Enterprise plans can optionally add multiple credentials and map them to service tokens, offering more granular control and tailored access for different teams, which can then be shared to relevant teams for BI connection setup. These credentials control the physical access to underlying data accessed by the Semantic Layer.
 
-We recommend configuring credentials and service tokens to reflect your teams and their roles. For example, create tokens or credentials that align with your team's needs, such as providing finance-related schemas to the Finance team.
+We recommend configuring credentials and service tokens to reflect your teams and their roles. For example, create tokens or credentials that align with your team's needs, such as providing access to finance-related schemas to the Finance team.
 
 Note that: 
 - Admins can link multiple service tokens to a single credential within a project, but each service token can only be linked to one credential per project.
-- When you send a request through the APIs, the service token of the linked credential will follow access policies of the data used to build your semantic objects.
+- When you send a request through the APIs, the service token of the linked credential will follow access policies of the underlying view and tables used to build your semantic layer requests.
 - [Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE')}` aren't supported the dbt Semantic Layer yet. You must use the actual credentials instead.
 
 To add multiple credentials and map them to service tokens:
