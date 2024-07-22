@@ -8,7 +8,7 @@ datatype: string
 
 :::warning Legacy configuration
 
-For environments on versionless dbt Cloud or dbt Core v1.9+, the `target_database` configuration is no longer used or required. The field can be removed and the `snapshot` will default to the `generate_schema_name` macro or customized with the [`schema` configuration](/reference/resource-configs/database)
+For environments on versionless dbt Cloud or dbt Core v1.9+, the `target_schema` configuration is no longer used or required. The field can be removed and the `snapshot` will default to the `generate_schema_name` macro or customized with the [`schema` configuration](/reference/resource-configs/schema)
 
 :::
 
