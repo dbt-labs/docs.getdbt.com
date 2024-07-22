@@ -203,7 +203,9 @@ In this case, we can:
 
 ```
 
-```Jina
+`<File name='macros/custom_schema_name.sql'>`
+
+````jinja`
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
