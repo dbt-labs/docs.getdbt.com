@@ -3,10 +3,6 @@
 # Anything unmatched by selectors below
 *      @dbt-labs/product-docs
 
-# The blog
-/website/blog @KiraFuruichi
-
-
 # Adapter & Package Development Docs
 /website/docs/docs/supported-data-platforms.md                @dbt-labs/product-docs @dataders
 /website/docs/reference/warehouse-setups                      @dbt-labs/product-docs @dataders
