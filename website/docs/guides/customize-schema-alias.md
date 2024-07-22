@@ -97,7 +97,10 @@ Note that the following examples do not comprehensively cover all the available 
 
 :::
 
-
+- [Use custom schema without concatenating target schema in production](/guides/customize-schema-alias?step=3#1-custom-schemas-without-target-schema-concatenation-in-production)
+- [Adding developer identities to tables](/guides/customize-schema-alias?step=3#2-static-schemas-adding-developer-identities-to-tables)
+- [Using branch name as schema prefix](/guides/customize-schema-alias?step=3#3-using-branch-name-as-schema-prefix)
+- [Using a static schema for CI](/guides/customize-schema-alias?step=3#4-using-a-static-schema-for-ci)
 
 ### 1. Custom schemas without target schema concatenation in production
 
