@@ -8,7 +8,7 @@ datatype: string
 
 :::warning Legacy configuration
 
-For environments on versionless dbt Cloud or dbt Core v1.9+, the `target_database` configuration is now optional. Best practices dictate that the `target_database` config should be removed from snapshots in the environment, in which case the snapshots will instead utilize the `generate_database_name` macro by default. Project snapshots configured with `target_schema` will continue to work as expected. 
+For environments on versionless dbt Cloud or dbt Core v1.9+, the `target_database` configuration is no longer used. The field can be removed and the `snapshot` will default to the `generate_database_name` macro or customized with the [`database` configuration](/reference/resource-configs/database)
 
 :::
 

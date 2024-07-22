@@ -448,13 +448,16 @@ Note: BigQuery users can use `target_project` and `target_dataset` as aliases fo
 | ------ | ----------- | --------- | ------- |
 | Config | Description | Required? | Example |
 | ------ | ----------- | --------- | ------- |
-| [database] | The database that dbt should render the snapshot table into | No | analytics |
-| [schema] | The schema that dbt should render the snapshot table into | No | snapshots |
+| [database](/reference/resource-configs/database) | The database that dbt should render the snapshot table into | No | analytics |
+| [schema](/reference/resource-configs/schema) | Specify a custom schema for the snapshots | No | snapshots |
+| [alias](/reference/resource-configs/alias)   | Specify an alias for the snapshot |       | No | your_custom_snapshot |
 | [strategy](/reference/resource-configs/strategy) | The snapshot strategy to use. One of `timestamp` or `check` | Yes | timestamp |
 | [unique_key](/reference/resource-configs/unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
 | [check_cols](/reference/resource-configs/check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
 | [updated_at](/reference/resource-configs/updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 | [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) | Find hard deleted records in source, and set `dbt_valid_to` current time if no longer exists | No | True |
+
+In versions prior to v1.9, the `target_schema` (required) and `target_database` (optional) configurations used the same schema or database across users and environments. In v1.9 enhancements were made and both were made optional fields. Snapshots, by default with no config defined, now resolve the schema or database using the `generate_schema_name` or `generate_database_name` macros. Developers can optionally define them with the [`schema`](/reference/resource-configs/schema) and [`database`](/reference/resource-configs/database) configs. Development and deployment environments can now use different schemas and databases to store snapshots. 
 
 A number of other configurations are also supported (e.g. `tags` and `post-hook`), check out the full list [here](/reference/snapshot-configs).
 
@@ -478,7 +481,7 @@ Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a sep
 
 <VersionBlock firstVersion="1.9">
 
-#### Use a schema that is separate to your analytics schema
+#### Use a schema that is separate to your models schema
 Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a separate schema so end users know they are special. From there, you may want to set different privileges on your snapshots compared to your models, and even run them as a different user (or role, depending on your warehouse) to make it very difficult to drop a snapshot unless you really want to.
 
 </VersionBlock>
