@@ -72,9 +72,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 {{
     config(
       unique_key='id',
-      schema='snapshots', // optional config. If not defined, the snapshot will use the `generate_schema_name` macro.
-      database='analytics', // optional config. If not defined, the snapshot will use the `generate_database_name` macro.
-      
+      schema='snapshots', 
       strategy='timestamp',
       updated_at='updated_at',
     )
