@@ -132,7 +132,6 @@ recommend adding file name for the jinja code (and all codes) so users know the 
     {%- endif -%}
 
 {%- endmacro %}
-
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
