@@ -26,7 +26,7 @@ If your account is scheduled for migration, you will see a banner indicating you
     * New IPs: `52.3.77.232`, `3.214.191.130`, `34.233.79.135`
 2. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can resend the invitations after the migration is complete.
 3. **SSO integrations** &mdash; If you've completed the Auth0 migration, your account SSO configurations will be automatically transferred. If you haven't completed the Auth0 migration, dbt Labs recommends doing that before starting the mult-cell migration to avoid service disruptions.
-4. **IDE sessions** &mdash; Any unsaved changes in the IDE might be lost during the migration process. dbt Labs _strongly_ encourages you to commit all changes in the IDE before your scheduled migration time.
+4. **IDE sessions** &mdash; Any unsaved changes in the IDE might be lost during migration. dbt Labs _strongly_ recommends committing all changes in the IDE before your scheduled migration time.
 
 ## Post-migration
 
