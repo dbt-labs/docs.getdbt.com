@@ -109,7 +109,29 @@ The most common use case is using the custom schema without concatenating it wit
 
 To do so, you can create a new file called `generate_schema_name.sql` under your macros folder with the following code:
 
-```Jinja
+recommend adding file name for the jinja code (and all codes) so users know the file path:
+
+<File name='macros/generate_schema_name.sql'>
+```jinja
+
+{% macro generate_schema_name(custom_schema_name, node) -%}
+
+    {%- set default_schema = target.schema -%}
+    {%- if custom_schema_name is none -%}
+
+        {{ default_schema }}
+
+    {%- elif  env_var('DBT_ENV_TYPE','DEV') == 'PROD' -%}
+        
+        {{ custom_schema_name | trim }}
+
+    {%- else -%}
+
+        {{ default_schema }}_{{ custom_schema_name | trim }}
+
+    {%- endif -%}
+
+{%- endmacro %}
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
