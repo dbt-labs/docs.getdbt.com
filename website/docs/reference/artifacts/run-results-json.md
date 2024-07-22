@@ -38,7 +38,6 @@ Each entry in `results` is a [`Result` object](/reference/dbt-classes#result-obj
 - `execution_time`: Total time spent executing this node
 - `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
 - `message`: How dbt will report this result on the CLI, based on information returned from the database
-
 <RowsAffected/>
 
 <!-- this partial comes from https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/snippets/_run-result-->
