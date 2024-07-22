@@ -28,7 +28,7 @@ The following are the prerequisites for dbt Cloud and Snowflake.
 
 - You must have a dbt Cloud account on the Enterprise plan that's in an AWS Region or Azure region. If you don't already have one, please [contact us](mailto:sales_snowflake_marketplace@dbtlabs.com) to get started.
     - Currently, Semantic Layer is unavailable for Azure ST instances and the **Ask dbt** chatbot will not function in the dbt Snowflake Native App without it. 
-- Your dbt Cloud account must have permission to create a [service token](/docs/dbt-cloud-apis/service-tokens) assigned the `Manage marketplace apps` role. For details, refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
+- Your dbt Cloud account must have permission to create a [service token](/docs/dbt-cloud-apis/service-tokens). For details, refer to [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions).
 - There's a dbt Cloud project with [Semantic Layer configured](/docs/use-dbt-semantic-layer/setup-sl) and metrics declared. 
 - You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment).
     - There has been at least one successful job run that includes a `docs generate` step in the deployment environment.
