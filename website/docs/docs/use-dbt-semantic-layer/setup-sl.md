@@ -49,10 +49,12 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 - [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 - If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.
+- Learn about commonly asked [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs).
 
-## Related docs
+## FAQs
 
-- [Build your metrics](/docs/build/build-metrics-intro)
-- [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
-- [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs)
-- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+<detailsToggle alt_header="Does caching interact with access controls?">
+
+No, caching and access controls don't currently interact. Cached data is stored separately, so security context isn't applied at query time. In the future, we plan to clone credentials or identify the minimum access level needed and apply those permissions to cached tables.
+
+</detailsToggle>

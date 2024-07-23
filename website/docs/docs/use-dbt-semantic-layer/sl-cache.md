@@ -132,6 +132,13 @@ If an upstream model has data in it that was created after the cache was created
 
 You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using the `InvalidateCacheResult` field.
 
+## FAQs
+
+<detailsToggle alt_header="Does caching interact with access controls?">
+
+No, caching and access controls don't currently interact. Cached data is stored separately, so security context isn't applied at query time. In the future, we plan to clone credentials or identify the minimum access level needed and apply those permissions to cached tables.
+
+</detailsToggle>
 
 ## Related docs
 - [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci)
