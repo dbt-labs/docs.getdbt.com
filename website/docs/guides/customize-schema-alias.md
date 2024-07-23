@@ -299,6 +299,9 @@ Refer to the [Tips and tricks](p/guides/customize-schema-alias?step=5) section o
 
 {%- endmacro %}
 
+
+</File>
+
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
 
 
