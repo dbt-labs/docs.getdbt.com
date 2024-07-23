@@ -342,6 +342,7 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
     {{
         config(
+          schema='snapshots',
           strategy='check',
           unique_key='id',
           check_cols=['status', 'is_cancelled'],
