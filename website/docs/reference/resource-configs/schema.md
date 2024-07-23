@@ -64,11 +64,11 @@ For example, if you have a snapshot that you want to load into a schema other th
 snapshots:
   your_project:
     your_snapshot:
-      +schema: marketing
+      +schema: snapshots
 ```
 </File>
 
-This would result in the generated relation being located in the `marketing` schema, so the full relation name would be `analytics.marketing.your_snapshot` instead of the default target schema.
+This would result in the generated relation being located in the `snapshots` schema, so the full relation name would be `analytics.snapshots.your_snapshot` instead of the default target schema.
 
 </VersionBlock>
 
