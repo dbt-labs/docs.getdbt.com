@@ -133,7 +133,6 @@ recommend adding file name for the jinja code (and all codes) so users know the 
 
 {%- endmacro %}
 
-    {%- set default_schema = target.schema -%}
     {%- if custom_schema_name is none -%}
 
         {{ default_schema }}
