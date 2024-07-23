@@ -7,14 +7,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# Set up environment-level permissions <Lifecycle status='beta' />
-
-:::note
-
-This is a beta feature available to select dbt Cloud Enterprise customers. If you are interested in beta testing this feature, please contact your account manager.
-
-:::
-
 To set up and configure environment-level permissions, you must have write permissions to the **Groups & Licenses** settings of your dbt Cloud account. For more information about roles and permissions, check out [User permissions and licenses](/docs/cloud/manage-access/seats-and-users).
 
 Environment-level permissions are not the same as account-level [role-based access control (RBAC)](/docs/cloud/manage-access/about-user-access#role-based-access-control) and are configured separately from those workflows.

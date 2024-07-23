@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source":  "docs/cloud/secure/environment-permissions",
+      "destination":  "docs/cloud/manage-access/environment-permissions",
+      "permanent": true
+    },
+    {
+      "source":  "docs/cloud/secure/environment-permissions-setup",
+      "destination": "docs/cloud/manage-access/environment-permissions-setup",
+      "permanent": true
+    },
+    {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-dbt-utils-v1.0.md",
       "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0.md",
       "permanent": true
