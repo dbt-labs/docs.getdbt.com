@@ -6,7 +6,7 @@ datatype: string
 
 :::note
 
-For [versionless](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#keep-on-latest-version) dbt Cloud accounts and dbt Core v1.9+ this functionality is no longer utilized. See the [schema](/reference/resource-configs/schema) config reference page for information on configuring snapshots moving forward. 
+For [versionless](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#keep-on-latest-version) dbt Cloud accounts and dbt Core v1.9+, this functionality is no longer required. Use the [schema](/reference/resource-configs/schema) config as an alternative to define a custom schema while still respecting the `generate_schema_name` macro. 
 
 :::
 
