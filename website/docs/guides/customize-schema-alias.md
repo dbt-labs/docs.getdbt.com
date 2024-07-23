@@ -444,7 +444,7 @@ When modifying the default macro for `generate_schema_name()`, this might result
     {%- endif -%}
 
 {%- endmacro %}
-
+</File>
 While it may provide the expected output for production, where a dedicated database is used, it will generate conflicts anywhere people share a database. 
 
 
