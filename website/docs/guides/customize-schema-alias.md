@@ -502,7 +502,9 @@ We prefer to use [environment variables](/docs/build/environment-variables) over
 Some users prefer to enforce custom schemas on all objects within their projects. This avoids writing to unintended “default” locations. You can add this logic to your `generate_schema_name()` macro to [raise a compilation error](/reference/dbt-jinja-functions/exceptions) if a custom schema is not defined for an object.
 
 
-```Jinja
+`<File name='macros/generate_schema_name.sql'>`
+
+```jinja
 
  {% macro generate_schema_name(custom_schema_name, node) -%}
 
