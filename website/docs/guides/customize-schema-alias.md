@@ -138,7 +138,6 @@ recommend adding file name for the jinja code (and all codes) so users know the 
         
         {{ custom_schema_name | trim }}
 
-    {%- else -%}
 
         {{ default_schema }}_{{ custom_schema_name | trim }}
 
