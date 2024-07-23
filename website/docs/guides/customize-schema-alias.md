@@ -215,7 +215,7 @@ In this case, we can:
 {%- endmacro %}
 
 ```
-
+</File>
 `<File name='macros/custom_schema_name.sql'>`
 
 ```jinja
