@@ -134,7 +134,6 @@ recommend adding file name for the jinja code (and all codes) so users know the 
 {%- endmacro %}
 
 
-        {{ default_schema }}
 
     {%- elif  env_var('DBT_ENV_TYPE','DEV') == 'PROD' -%}
         
