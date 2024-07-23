@@ -65,7 +65,7 @@ For example, if you have a snapshot that you want to load into a database other 
 snapshots:
   your_project:
     your_snapshot:
-      +database: staging
+      +database: snapshots
 ```
 </File>
 
