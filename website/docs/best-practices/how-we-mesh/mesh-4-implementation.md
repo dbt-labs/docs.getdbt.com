@@ -29,6 +29,9 @@ When attempting to define your project interfaces, you should consider investiga
 
 Let's go through an example process of taking a monolithing project, using groups and access to define the interfaces, and then splitting it into multiple projects.
 
+To learn more, you can also refer to our freely available [dbt Mesh learning course](https://learn.getdbt.com/courses/dbt-mesh). 
+
+
 ## Defining project interfaces with groups and access
 
 Once you have a sense of some initial groupings, you can first implement **group and access permissions** within a single project.
