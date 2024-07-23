@@ -32,7 +32,9 @@ Up until July 2024, connections were nested under projects. One dbt Cloud projec
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" title="Previous connection model"/>
 
-We are rolling-out an important change that moves connections to be managed at the account level. This is what is described below.
+We are rolling out an important change that moves connection management to the account level. The following connection management section describes these changes. 
+
+This feature is being rolled out in phases over the coming weeks. 
 
 :::
 
