@@ -8,7 +8,7 @@ This page contains the collective wisdom of experienced users of dbt on how to b
 ## Best practice workflows
 
 ### Version control your dbt project
-All dbt projects should be managed in version control. Git branches should be created to manage development of new features and bug fixes. All code changes should be reviewed by a colleague (or yourself) in a Pull Request prior to merging into `master`. 
+All dbt projects should be managed in version control. Git branches should be created to manage development of new features and bug fixes. All code changes should be reviewed by a colleague (or yourself) in a Pull Request prior to merging into your production branch, such as `main`. 
 
 :::info Git guide
 
