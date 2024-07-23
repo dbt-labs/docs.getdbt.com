@@ -92,7 +92,18 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/enterprise-permissions",
                   ],
                 },
-
+                {
+                  type: "category",
+                  label: "Environment permissions",
+                  link: {
+                    type: "doc",
+                    id: "docs/cloud/manage-access/environment-permissions",
+                  },
+                  items: [
+                    "docs/cloud/manage-access/environment-permissions",
+                    "docs/cloud/manage-access/environment-permissions-setup",
+                  ],
+                },
                 {
                   type: "category",
                   label: "Single sign-on and Oauth",
