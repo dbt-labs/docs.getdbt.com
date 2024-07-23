@@ -391,7 +391,6 @@ Some organizations prefer to write their CI jobs to a single schema with the PR 
 
 {%- endmacro %}
 
-```
 
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
 
