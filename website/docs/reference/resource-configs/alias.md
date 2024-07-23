@@ -106,10 +106,10 @@ snapshots:
       unique_key: id
       strategy: timestamp
       updated_at: updated_at
-      alias: your_snapshot
+      alias: the_best_snapshot
 ```
 
-This would return the name `analytics.finance.your_snapshot` in the database.
+This would build your snapshot to `analytics.finance.the_best_snapshot` in the database.
 
 </File>
 
