@@ -403,6 +403,7 @@ For this configuration to work with the `timestamp` strategy, the configured `up
 
     {{
         config(
+          schema='snapshots',
           strategy='timestamp',
           unique_key='id',
           updated_at='updated_at',
