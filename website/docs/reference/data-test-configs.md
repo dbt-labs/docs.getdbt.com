@@ -280,15 +280,7 @@ tests:
 
 _Currently available in dbt Cloud only. Specifying custom configurations for data tests will become available in dbt Core later this year._
 
-Use any custom config key to specify custom configurations for data tests. For example, the following specifies the `snowflake_warehouse` custom config that dbt should use when executing the `accepted_values` data test. 
-
-The config defines the size of the virtual warehouse that you want used to help improve performance and reduce costs during runs: 
-
-You can specify a Snowflake virtual warehouse (than the one in your default connection) 
-
-
-This way, the data test will run on a different virtual warehouse from the connection default — enabling better price-performance with a different warehouse size, or more-granular cost allocation and visiblity.
-
+Use any custom config key to specify custom configurations for data tests. For example, the following specifies the `snowflake_warehouse` custom config that dbt should use when executing the `accepted_values` data test. Given the config, the data test runs on a different Snowflake virtual warehouse than the one in your default connection to enable better price-performance with a different warehouse size, or more granular cost allocation and visibility.
 
 ```yml
 
