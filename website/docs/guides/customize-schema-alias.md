@@ -395,7 +395,7 @@ To do so, you can create a new file called `generate_schema_name.sql` under your
     {%- endif -%}
 
 {%- endmacro %}
-
+</File>
 
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
 
