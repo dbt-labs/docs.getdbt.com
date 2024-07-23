@@ -4,6 +4,12 @@ description: "Target_schema - Read this in-depth guide to learn about configurat
 datatype: string
 ---
 
+:::note
+
+For [versionless](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#keep-on-latest-version) dbt Cloud accounts and dbt Core v1.9+ this functionality is no longer utilized. See the [schema](/reference/resource-configs/schema) config reference page for information on configuring snapshots moving forward. 
+
+:::
+
 <File name='dbt_project.yml'>
 
 ```yml
