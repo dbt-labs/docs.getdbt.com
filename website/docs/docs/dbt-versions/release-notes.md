@@ -19,6 +19,8 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## July 2024
+- **Behavior change:** To prevent slow and expensive queries from accidentally running, SQL queries have a default `limit` of `500`. To disable this, select the **Limit** option in the dbt Cloud IDE.
+
 - **Enhancement:** Custom configurations are now supported by generic data tests. Use this to configure how dbt should run the data test (for example, specifying a Snowflake virtual warehouse different from the one in your connection). To learn more, refer to [Specify custom configurations for generic data tests](/reference/data-test-configs#specify-custom-configurations-for-generic-data-tests).
 
   Support for this configuration is available in dbt Cloud when selecting "Keep on latest version." Specifying custom configurations for data tests will become available in dbt Core later this year.
