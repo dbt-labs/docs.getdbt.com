@@ -39,7 +39,9 @@ In dbt Cloud, each project can have one designated deployment environment, which
 
 ### Semantic Layer
 
-For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions!
+For customers using the dbt Semantic Layer, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions.
+
+You can also leverage the dbt Job scheduler to [validate your semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 
 ## Staging environment
 

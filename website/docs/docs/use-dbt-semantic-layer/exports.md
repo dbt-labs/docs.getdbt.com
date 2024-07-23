@@ -203,5 +203,6 @@ To include all saved queries in the dbt build run, use the [`--resource-type` fl
 </detailsToggle>
 
 ## Related docs
+- [Validate semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - Configure [caching](/docs/use-dbt-semantic-layer/sl-cache)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

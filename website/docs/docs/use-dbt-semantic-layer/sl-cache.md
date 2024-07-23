@@ -132,6 +132,8 @@ If an upstream model has data in it that was created after the cache was created
 
 You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using the `InvalidateCacheResult` field.
 
+
 ## Related docs
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - [Saved queries](/docs/build/saved-queries)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

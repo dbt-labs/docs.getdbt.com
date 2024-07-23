@@ -669,6 +669,7 @@ const sidebarSettings = {
             "docs/dbt-cloud-apis/sl-api-overview",
             "docs/dbt-cloud-apis/sl-jdbc",
             "docs/dbt-cloud-apis/sl-graphql",
+            "docs/dbt-cloud-apis/sl-python",
             "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
@@ -716,6 +717,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/core" },
       items: [
         "docs/dbt-versions/core",
+        "docs/dbt-versions/versionless-cloud",
         "docs/dbt-versions/upgrade-dbt-version-in-cloud",
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",

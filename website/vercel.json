@@ -3,6 +3,36 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-dbt-utils-v1.0.md",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0.md",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.1",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.1",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.2",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.2",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.3",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.3",
+      "permanent": true
+    },
+    {
+      "source": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.4",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.4",
+      "permanent": true
+    },
+    {
       "source": "/best-practices/how-we-mesh/mesh-4-faqs",
       "destination": "/best-practices/how-we-mesh/mesh-5-faqs",
       "permanent": true
