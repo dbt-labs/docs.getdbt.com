@@ -28,7 +28,7 @@ These connection instructions provide the basic fields required for configuring 
 
 :::info Connections are moving!
 
-Up until July 2024, connections were nested under projects. One dbt Cloud project could only have one single connection, which was re-used across all of its environments. Extended attributes were leveraged to switch warehouse instances depending on the environment for a given project. 
+Up until July 2024, connections were nested under projects. One dbt Cloud project could only have one connection, which was re-used across all its environments. Extended attributes were leveraged to switch warehouse instances depending on the environment for a given project. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" title="Previous connection model"/>
 
