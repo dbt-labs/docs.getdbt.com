@@ -22,7 +22,7 @@ Navigate the dbt Explorer overview page to access your project's resources and m
 - **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
 - **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/collaborate/model-performance), [project recommendations](/docs/collaborate/project-recommendations) in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
-- **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, issues, and more.
+- **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
 - **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/collaborate/govern/model-access#access-modifiers) in your project. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="100%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
