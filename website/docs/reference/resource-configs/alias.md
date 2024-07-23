@@ -99,14 +99,9 @@ For example, if you have a snapshot that is named `your_snapshot` and want to al
 
 ```yml
 snapshots:
-  - name: your_snapshot
-    config:
-      database: analytics
-      schema: finance
-      unique_key: id
-      strategy: timestamp
-      updated_at: updated_at
-      alias: the_best_snapshot
+  your_project:
+    your_snapshot:
+      +alias: the_best_snapshot
 ```
 
 This would build your snapshot to `analytics.finance.the_best_snapshot` in the database.
