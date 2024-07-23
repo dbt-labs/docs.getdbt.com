@@ -321,6 +321,9 @@ When developer 1 and developer 2 are checked out on the same branch, they will g
 Some organizations prefer to write their CI jobs to a single schema with the PR identifier prefixed to the front of the table name. It's important to note that this will result in long table names. 
 
 
+`<File name='macros/generate_schema_name.sql'>`
+
+
 ```Jinja
 
 {% macro generate_schema_name(custom_schema_name=none, node=none) -%}
