@@ -135,7 +135,6 @@ recommend adding file name for the jinja code (and all codes) so users know the 
 
 
 
-    {%- elif  env_var('DBT_ENV_TYPE','DEV') == 'PROD' -%}
         
         {{ custom_schema_name | trim }}
 
