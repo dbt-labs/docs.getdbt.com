@@ -352,7 +352,7 @@ To do so, you can create a new file called `generate_schema_name.sql` under your
     {%- endif -%}    
 
 {%- endmacro %}
-
+</File>
 
 `<File name='macros/generate_schema_name.sql'>`
 
