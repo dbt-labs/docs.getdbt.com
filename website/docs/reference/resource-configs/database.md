@@ -69,7 +69,7 @@ snapshots:
 ```
 </File>
 
-This would result in the generated relation being located in the `staging` database, so the full relation name would be `staging.finance.your_snapshot` instead of the default target database.
+This would result in the generated relation being located in the `snapshots` database, so the full relation name would be `snapshots.finance.your_snapshot` instead of the default target database.
 
 </VersionBlock>
 
