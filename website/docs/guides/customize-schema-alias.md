@@ -350,7 +350,9 @@ Some organizations prefer to write their CI jobs to a single schema with the PR 
 {%- endmacro %}
 
 
-```Jinja
+`<File name='macros/generate_schema_name.sql'>`
+
+````jinja`
 
 {% macro generate_alias_name(custom_alias_name=none, node=none) -%}
 
