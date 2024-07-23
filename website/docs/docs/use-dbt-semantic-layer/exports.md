@@ -26,7 +26,6 @@ Essentially, exports are like any other table in your data platform &mdash; they
 The following section explains the main benefits of using exports, including:
 - [DRY representation](#dry-representation)
 - [Easier changes](#easier-changes)
-- [Cost efficiency](#cost-efficiency)
 - [Caching](#caching)
 
 #### DRY representation
@@ -37,11 +36,8 @@ Currently, creating tables often involves generating tens, hundreds, or even tho
 
 Exports ensure that changes to metrics and dimensions are made in one place and then cascade to those various destinations seamlessly. This prevents the problem of needing to update a metric across every model that references that same concept.
 
-#### Cost efficiency
-MetricFlow is efficient in computing to reach the final destination. It can complete joins once and then reuse that compute as a building block to create various denormalized tables.  Although we don't do this today, we plan to make further optimizations to build a "self-organizing DAG." Think of this like declarative programming, where you specify the outcome, and the system optimizes the denormalization step to get you there.
-
 #### Caching 
-Use exports to pre-populate the cache, so that when MetricFlow aggregates awareness, you're pre-computing what you need to serve users through the dynamic Semantic Layer APIs.
+Use exports to pre-populate the cache, so that you're pre-computing what you need to serve users through the dynamic Semantic Layer APIs.
 
 #### Considerations
 
