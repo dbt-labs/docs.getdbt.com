@@ -63,7 +63,9 @@ seeds:
 
 <TabItem value="snapshot" label="Snapshots">
 
-Configure a seed's alias in your `dbt_project.yml` file or config block. 
+<VersionBlock lastVersion="1.8">
+
+Configure a snapshots's alias in your `dbt_project.yml` file or config block. 
 
 For example, if you have a snapshot that represents `your_snapshot` and want to alias it as `updated_at_id`, you would alias like this:
 
@@ -84,6 +86,35 @@ snapshots:
 This would return the name `analytics.finance.your_snapshot` in the database.
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+Configure a snapshots's alias in your `dbt_project.yml` file or config block. 
+
+For example, if you have a snapshot that represents `your_snapshot` and want to alias it as `updated_at_id`, you would alias like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  - name: your_snapshot
+    config:
+      database: analytics
+      schema: finance
+      unique_key: id
+      strategy: timestamp
+      updated_at: updated_at
+      alias: your_snapshot
+```
+
+This would return the name `analytics.finance.your_snapshot` in the database.
+
+</File>
+
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="test" label="Tests">

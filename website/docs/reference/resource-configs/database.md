@@ -45,6 +45,38 @@ This would result in the generated relation being located in the `staging` datab
 </File>
 </TabItem>
 
+<TabItem value="snapshots" label="Snapshots">
+
+<VersionBlock lastVersion="1.8">
+
+Select v1.9 or newer from the version dropdown to view the configs.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+Specify a custom database for a snapshot in your `dbt_project.yml` or config file. 
+
+For example, if you have a snapshot that you want to load into a database other than the target database, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  your_project:
+    your_snapshot:
+      +database: staging
+```
+</File>
+
+This would result in the generated relation being located in the `staging` database, so the full relation name would be `staging.finance.your_snapshot` instead of the default target database.
+
+</VersionBlock>
+
+</TabItem>
+
+
+
 <TabItem value="test" label="Tests">
 
 Configure a database in your `dbt_project.yml` file. 

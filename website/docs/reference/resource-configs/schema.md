@@ -44,6 +44,36 @@ This would result in the generated relation being located in the `mappings` sche
 </File>
 </TabItem>
 
+<TabItem value="snapshots" label="Snapshots">
+
+<VersionBlock lastVersion="1.8">
+
+Select v1.9 or newer from the version dropdown to view the configs.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+Specify a custom schema for a snapshot in your `dbt_project.yml` or config file. 
+
+For example, if you have a snapshot that you want to load into a schema other than the target schema, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  your_project:
+    your_snapshot:
+      +schema: marketing
+```
+</File>
+
+This would result in the generated relation being located in the `marketing` schema, so the full relation name would be `analytics.marketing.your_snapshot` instead of the default target schema.
+
+</VersionBlock>
+
+</TabItem>
+
 <TabItem value="tests" label="Test">
 
 Customize the schema for storing test results in your `dbt_project.yml` file. 

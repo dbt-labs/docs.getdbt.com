@@ -4,16 +4,6 @@ description: "Target_database - Read this in-depth guide to learn about configur
 datatype: string
 ---
 
-<VersionBlock firstVersion="1.9">
-
-:::warning Legacy configuration
-
-For environments on versionless dbt Cloud or dbt Core v1.9+, the `target_database` configuration is no longer used. The field can be removed and the `snapshot` will default to the `generate_database_name` macro or customized with the [`database` configuration](/reference/resource-configs/database)
-
-:::
-
-</VersionBlock>
-
 <File name='dbt_project.yml'>
 
 ```yml
