@@ -65,7 +65,7 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     Make sure to replace `SNOWFLAKE.CORTEX_USER`, `DEPLOYMENT_USER`, and `SL_USER` with the appropriate strings for your environment.
 
 ## Configure dbt Cloud 
-Collect three pieces of information from dbt Cloud to set up the application. 
+Collect the following pieces of information from dbt Cloud to set up the application. 
 
 1. From the gear menu in dbt Cloud, select **Account settings**. In the left sidebar, select **API tokens > Service tokens**. Create a service token with access to all the projects you want to access in the dbt Snowflake Native App. Grant these permission sets: 
     - **Manage marketplace apps**
