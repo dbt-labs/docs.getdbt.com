@@ -49,6 +49,8 @@ Exports offer many benefits and it's important to note some use cases that fall 
 - Business users may still struggle to consume from tens, hundreds, or thousands of tables, and choosing the right one can be a challenge.
 - Business users may also make mistakes when aggregating and filtering from the pre-built tables.
 
+For these use cases, use the dynamic [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) instead of exports.
+
 ## Run exports
 
 Before you're able to run exports in development or production, you'll need to make sure you've [configured saved queries and exports](/docs/build/saved-queries) in your dbt project. In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the dbt Cloud job scheduler to cache common queries, speed up performance, and reduce compute costs.
