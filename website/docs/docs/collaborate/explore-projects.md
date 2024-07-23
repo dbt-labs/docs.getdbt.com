@@ -17,7 +17,7 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 ## Overview page <Lifecycle status="beta" />
 
-Navigate the dbt Explorer overview page to access your project's resources and metadata. The page includes the following sections:
+Navigate the dbt Explorer overview page to access your project's resources and metadata, available in beta. The page includes the following sections:
 
 - **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
 - **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/collaborate/model-performance), [project recommendations](/docs/collaborate/project-recommendations) in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
