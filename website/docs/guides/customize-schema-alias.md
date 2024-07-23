@@ -143,6 +143,8 @@ recommend adding file name for the jinja code (and all codes) so users know the 
 
 ```
 </File>
+
+
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
 
 
