@@ -349,7 +349,6 @@ Some organizations prefer to write their CI jobs to a single schema with the PR 
 
 {%- endmacro %}
 
-```
 
 ```Jinja
 
