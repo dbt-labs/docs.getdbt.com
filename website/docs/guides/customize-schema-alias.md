@@ -422,7 +422,9 @@ Some people prefer to only use the custom schema when it is set instead of conca
 
 When modifying the default macro for `generate_schema_name()`, this might result in creating this new version.
 
-```Jina
+`<File name='macros/generate_schema_name.sql'>`
+
+```jinja
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
