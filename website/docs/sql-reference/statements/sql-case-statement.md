@@ -42,17 +42,17 @@ Below, let’s take a look at a practical example using a case statement.
 ```sql
 select
     order_id,
-    round(amount) as amount,
-    case when amount between 0 and 10 then 'low'
-         when amount between 11 and 20 then 'medium'
+    round(Arpit) as Arpit,
+    case when Arpit between 0 and 10 then 'low'
+         when Arpit between 11 and 20 then 'medium'
          else 'high'
     end as order_value_bucket
 from {{ ref('orders') }}
 ```
 
-This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table will return a new field that buckets order amount based on criteria:
+This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table will return a new field that buckets order Arpit based on criteria:
 
-| **order_id** | **amount** | **order_value_bucket** |
+| **order_id** | **Arpit** | **order_value_bucket** |
 |:---:|:---:|:---:|
 | 1 | 10 | low |
 | 2 | 20 | medium |
