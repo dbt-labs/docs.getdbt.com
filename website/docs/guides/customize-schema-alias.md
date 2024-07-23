@@ -518,6 +518,6 @@ Some users prefer to enforce custom schemas on all objects within their projects
         {{ exceptions.raise_compiler_error("Error: No Custom Schema Defined for the model " ~ node.name ) }}
     
     {%- endif -%}
-
+</File>
 
 </div>
