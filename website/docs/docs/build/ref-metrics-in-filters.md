@@ -60,7 +60,7 @@ from
 ```
 </File>
 
-  This SQL query calculates the number of `activated_accounts` by using the `data_model_runs` metric as a dimension for the user entity. It filters based on the metric value scoped to the account entity. You can express this logic natively in the MetricFlow specification.
+  This SQL query calculates the number of `activated_accounts` by using the `data_model_runs` metric as a dimension for the user entity. It filters based on the metric value scoped to the account entity. You can express this logic at the query level or in the metric's YAML configuration.
 
 #### YAML configuration
 
@@ -97,6 +97,7 @@ Using the same `activated_accounts` example mentioned in [the usage example](#us
         - name: accounts
           agg: sum
           expr: 1
+          create_metric: true
   metrics:
     - name: activated_accounts
       label: Activated Accounts
@@ -153,6 +154,14 @@ Using the same `activated_accounts` example mentioned in [the usage example](#us
   | activated_accounts |
   | --- |
   | 2 |
+
+#### Query filter
+
+You can also use metrics in filters at the query level. Run this command in the command line interface (CLI) to generate the same SQL query referenced earlier:
+
+```dbt sl query --metrics accounts --where "{{ Metric('data_model_runs', group_by=['account']) }} > 5"```
+
+The resulting SQL and data will be the same, except with the `accounts` metric name instead of `activated_accounts`.
 
 ## Considerations
 

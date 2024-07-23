@@ -21,6 +21,34 @@ Essentially, exports are like any other table in your data platform &mdash; they
 - You have a [saved query](/docs/build/saved-queries) and [export configured](/docs/build/saved-queries#configure-exports) in your dbt project. In your configuration, leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) to cache common queries, speed up performance, and reduce compute costs.
 - You have the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) installed. Note, that exports aren't supported in dbt Cloud IDE yet.
 
+## Benefits of exports
+
+The following section explains the main benefits of using exports, including:
+- [DRY representation](#dry-representation)
+- [Easier changes](#easier-changes)
+- [Cost efficiency](#cost-efficiency)
+- [Caching](#caching)
+
+#### DRY representation
+
+Currently, creating tables often involves generating tens, hundreds, or even thousands of tables that denormalize data into summary or metric mart tables. The main benefit of exports is creating a "Don't Repeat Yourself (DRY)" representation of the logic to construct each metric, dimension, join, filter, and so on. This allows you to reuse those components for long-term scalability, even if you're replacing manually written SQL models with references to the metrics or dimensions in saved queries.
+
+#### Easier changes
+
+Exports ensure that changes to metrics and dimensions are made in one place and then cascade to those various destinations seamlessly. This prevents the problem of needing to update a metric across every model that references that same concept.
+
+#### Cost efficiency
+MetricFlow is efficient in computing to reach the final destination. It can complete joins once and then reuse that compute as a building block to create various denormalized tables.  Although we don't do this today, we plan to make further optimizations to build a "self-organizing DAG." Think of this like declarative programming, where you specify the outcome, and the system optimizes the denormalization step to get you there.
+
+#### Caching 
+Use exports to pre-populate the cache, so that when MetricFlow aggregates awareness, you're pre-computing what you need to serve users through the dynamic Semantic Layer APIs.
+
+#### Considerations
+
+Exports offer many benefits and it's important to note some use cases that fall outside the advantages:
+- Business users may still struggle to consume from tens, hundreds, or thousands of tables, and choosing the right one can be a challenge.
+- Business users may also make mistakes when aggregating and filtering from the pre-built tables.
+
 ## Run exports
 
 Before you're able to run exports in development or production, you'll need to make sure you've [configured saved queries and exports](/docs/build/saved-queries) in your dbt project. In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the dbt Cloud job scheduler to cache common queries, speed up performance, and reduce compute costs.
@@ -95,9 +123,9 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 ## Exports in production
 
-Enabling and executing exports in dbt Cloud optimizes data workflows and ensures real-time data access. It enhances efficiency and governance for smarter decisions.
+Enabling and executing exports in dbt Cloud optimizes data workflows and ensures real-time data access. It enhances efficiency and governance for smarter decisions.  
 
-To enable exports in production to run saved queries and write them within your data platform, you'll need to set up dbt Cloud job scheduler and perform the following steps:
+Exports use the default credentials of the production environment. To enable exports to run saved queries and write them within your data platform, perform the following steps:
 
 1. [Set an environment variable](#set-environment-variable) in dbt Cloud.
 2. [Create and execute export](#create-and-execute-exports) job run.
@@ -203,5 +231,6 @@ To include all saved queries in the dbt build run, use the [`--resource-type` fl
 </detailsToggle>
 
 ## Related docs
+- [Validate semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - Configure [caching](/docs/use-dbt-semantic-layer/sl-cache)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

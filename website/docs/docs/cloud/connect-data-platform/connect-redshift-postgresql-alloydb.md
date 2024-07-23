@@ -17,7 +17,75 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" width="70%" title="Configuring a Redshift connection"/>
 
-For dbt Cloud users, please log in using the default Database username and password. Note this is because [`IAM` authentication](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html) is not compatible with dbt Cloud.
+### Authentication Parameters
+
+For authentication, dbt Cloud users can use either a **Database username and password**, or they can now use **IAM User authentication** to Redshift via [extended attributes](/docs/dbt-cloud-environments#extended-attributes).
+
+<Tabs
+  defaultValue="database"
+  values={[
+    {label: 'Database', value: 'database'},
+    {label: 'IAM User', value: 'iam-user-inline'},
+  ]}
+>
+
+<TabItem value="database">
+
+The following table contains the parameters for the database (password-based) connection method.
+
+
+| Field | Description | Examples |
+| ------------- | ------- | ------------ |
+| `user`   | Account username to log into your cluster | myuser |
+| `password`  | Password for authentication  | _password1! |
+
+<br/>
+
+</TabItem>
+
+<TabItem value="iam-user-inline">
+
+On Cloud, the IAM user authentication is currently only supported via [extended attributes](/docs/dbt-cloud-environments#extended-attributes). Once the project is created, development and deployment environments can be updated to use extended attributes to pass the fields described below, as some are not supported via textbox.
+
+You will need to create an IAM User, generate an [access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey), and either:
+- on a cluster, a database user is expected in the `user` field. The IAM user is only leveraged for authentication, the database user for authorization
+- on Serverless, grant permission to the IAM user in Redshift. The `user` field is ignored (but still required)
+- For both, the `password` field will be ignored.
+
+
+| Profile field | Example | Description |
+| ------------- | ------- | ------------ |
+| `method` |IAM| use IAM to authenticate via IAM User authentication |
+| `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
+| `user`   | username | User querying the database, ignored for Serverless (but still required) |
+| `region`  | us-east-1 | Region of your Redshift instance | 
+| `access_key_id` | ACCESS_KEY_ID | IAM user [access key id](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) |
+| `secret_access_key` | SECRET_ACCESS_KEY | IAM user secret access key |
+
+<br/>
+
+#### Example Extended Attributes for IAM User on Redshift Serverless
+
+To avoid pasting secrets in extended attributes, leverage [environment variables](/docs/build/environment-variables#handling-secrets):
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+host: my-production-instance.myregion.redshift-serverless.amazonaws.com
+method: iam
+region: us-east-2
+access_key_id: '{{ env_var(''DBT_ENV_ACCESS_KEY_ID'') }}'
+secret_access_key: '{{ env_var(''DBT_ENV_SECRET_ACCESS_KEY'') }}'
+```
+
+</File>
+
+Both `DBT_ENV_ACCESS_KEY_ID` and `DBT_ENV_SECRET_ACCESS_KEY` will need [to be assigned](/docs/build/environment-variables) for every environment leveraging extended attributes as such.
+
+</TabItem>
+
+</Tabs>
+
 
 ### Connecting via an SSH Tunnel
 
