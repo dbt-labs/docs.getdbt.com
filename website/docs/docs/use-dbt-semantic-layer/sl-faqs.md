@@ -269,9 +269,12 @@ Yes, all of our interfaces or APIs expose metric descriptions, which you can sur
 
 <Expandable alt_header="How do fine-grained access controls work with the dbt Semantic Layer?">
 
+The dbt Semantic Layer uses service tokens for authentication, mapped to underlying data platform credentials. These credentials control physical access to the raw data. The credential configuration allows admins to create a credential and map it to service tokens, which can then be shared to relevant teams for BI connection setup. You can configure credentials and service tokens to reflect your teams and their roles. 
+
 Currently, the credentials you configure when setting up the dbt Semantic Layer are used for every request. Any physical access policies you have tied to your credentials will be respected.
 
 We are currently working on introducing more fine-grained access controls, including user-level access and group credentials, that enable flexible granular permissions.
+
 </Expandable>
 
 ## Implementation
