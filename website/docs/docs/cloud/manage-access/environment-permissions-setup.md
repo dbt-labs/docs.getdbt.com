@@ -45,7 +45,7 @@ If you select a permission set that is not supported, the environment permission
 
 ## User experience
 
-Users with permissions to the environment will see all capabilities assigned to their role. The environment-level permissions are `write` or `read-only` access. This feature does not currently support determining which features in the environment are accessible. For more details on what can and can not be done with environment-level permissions, refer to [About environment-permissions](/docs/cloud/secure/environment-permissions).
+Users with permissions to the environment will see all capabilities assigned to their role. The environment-level permissions are `write` or `read-only` access. This feature does not currently support determining which features in the environment are accessible. For more details on what can and can not be done with environment-level permissions, refer to [About environment-permissions](/docs/cloud/manage-access/environment-permissions).
 
 For example, here is an overview of the **Jobs** section of the environment page if a user has been granted access:
 
