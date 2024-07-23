@@ -239,7 +239,7 @@ In this case, we can:
 {%- endmacro %}
 
 ```
-
+</File>
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
 
 
