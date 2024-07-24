@@ -30,7 +30,7 @@ These connection instructions provide the basic fields required for configuring 
 
 Up until July 2024, connections were nested under projects. One dbt Cloud project could only have one connection, which was re-used across all its environments. Extended attributes were leveraged to switch warehouse instances depending on the environment for a given project. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" title="Previous connection model"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" width="60%" title="Previous connection model"/>
 
 We are rolling out an important change that moves connection management to the account level. The following connection management section describes these changes. 
 
