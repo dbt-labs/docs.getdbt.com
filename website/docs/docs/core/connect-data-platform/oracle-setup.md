@@ -259,7 +259,7 @@ export DBT_ORACLE_SCHEMA=<username>
 export DBT_ORACLE_DATABASE=example_db2022adb
 ```
 
-database name can be retrieved using the following query
+Use the following query to retrieve the database name:
 ```sql
 SELECT SYS_CONTEXT('userenv', 'DB_NAME') FROM DUAL
 ```
