@@ -119,7 +119,7 @@ tests:
 
 ## FAQs
 
-<detailsToggle alt_header="Receiving a 'permissions denied for schema' error"
+<detailsToggle alt_header="Receiving a 'permissions denied for schema' error">
 
 If you're receiving a `Adapter name adapter: Adapter_name error: permission denied for schema dev_usernamea_dbt_test__audit`, this is most likely due to your user not having permission to create new schemas, despite having owner access to your own development schema.
 
@@ -130,6 +130,6 @@ create schema if not exists dev_username_dbt_test__audit authorization username;
 ```
 _Replace `dev_username` with your specific development schema name and `username` with the appropriate user who should have the permissions._
 
-This command grants the appropriate permissions to create and access the dbt_test__audit schema, which is often used with the store_failures configuration.
+This command grants the appropriate permissions to create and access the `dbt_test__audit` schema, which is often used with the `store_failures` configuration.
 
 </detailsToggle>
