@@ -188,7 +188,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 </File>
 
-6. Run the `dbt snapshot` [command](/reference/commands/snapshot)  &mdash; for our example, a new table will be created at `analytics.snapshots.orders_snapshot`. The `schema` config will utilize the `generate_schema_name` macro.
+6. Run the `dbt snapshot` [command](/reference/commands/snapshot)  &mdash; for our example, a new table will be created at `analytics.snapshots.orders_snapshot`. The [`schema`](/reference/resource-configs/schema) config will utilize the `generate_schema_name` macro.
 
 </VersionBlock>
 
