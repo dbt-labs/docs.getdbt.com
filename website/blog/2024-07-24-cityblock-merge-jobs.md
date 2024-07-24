@@ -14,7 +14,7 @@ We recently added support for a new type of job in dbt Cloud, called a **[Merge 
 Triggering a run when code is merged enables your team to practice Continuous Deployment, getting changed models deployed as quickly as possible and reducing resource consumption from unnecessary overbuilding. Alternatively, just kick off a `dbt compile` to update your project’s state for Slim CI comparisons. Check out the [Trigger on Merge docs](/docs/deploy/merge-jobs) for full details on enabling this in your project.
 
 The Cityblock Health team were one of the first companies to use Merge Jobs during the beta period, and I caught up with Analytics Engineer Nathaniel Burren to hear how they did it and what benefits they’ve seen.
-
+<!-- truncate -->
 ## How long have you been using dbt at Cityblock?
 
 Cityblock chose dbt in 2019 as the tool to make all of our SQL based analysis version controlled, composable, and reusable. However, over the years our monolithic project turned into over 2,200 models and a chaotic jungle of discrepant data.
