@@ -38,36 +38,36 @@ This feature is being rolled out in phases over the coming weeks.
 
 :::
 
-Warehouse connections are an account level resource. As such you can find them under **Accounts Settings** > **Connections**:
+Warehouse connections are an account-level resource. As such you can find them under **Accounts Settings** > **Connections**:
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-list.png" title="Connection list"/>
 
-Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection in order to streamline your management operations. Connections are assigned to a project via an environment. 
+Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection in order to streamline your management operations. Connections are assigned to a project via an [environment](/docs/dbt-cloud-environments). 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-new-model.png" title="Connection model"/>
 
-As shown above, a project with 2 environments can target between 1 and 2 different connections. If you want to separate your production environment from your non-production environment, use multiple connections for a single project.
+As shown in the image, a project with 2 environments can target between 1 and 2 different connections. If you want to separate your production environment from your non-production environment, assign multiple connections to a single project.
 
 ### Migration from project level connections to account level connections
 
-As we roll-out account level connections, you should not expect any interruption of service in your current usage (IDE, CLI, jobs...).
+Rolling out account-level connections will not require any interruption of service in your current usage (IDE, CLI, jobs, etc.).
 
-But to fully utilize the value of account level connections, you may have to re-thing how you assign and use connections across projects and environments.
+However, to fully utilize the value of account-level connections, you may have to rethink how you assign and use connections across projects and environments.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout.png" title="Typical connection setup post rollout"/>
 
-Please read all of the potential actions below before beginning to work on your connections, as depending on the final outcome you wish to attain you may want to take different first steps.
+Please consider all of the following actions, as the steps you take will depend on the desired outcome.
 
-- Initial clean-up (connection list)
-  - Delete un-used connections (with 0 environment)
-  - Re-name connections to a temporary naming scheme, to better understand where each is used
+- The initial clean-up of your connection list
+  - Delete unused connections with 0 environments. 
+  - Rename connections with a temporary, descriptive naming scheme to better understand where each is used
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-2.png" title="Post initial clean-up"/>
 
-- Decide on a granularity 
-  - Define an intent for each connection, usually a combination of warehouse/database instance, intended use (dev/prod…), and administrative surface (which teams/projects will want to change that connection together)
-  - Try to aim for a minimization of the need for local overrides (like extended attributes)
-  - Settle on a naming convention - we recommand you name connections after the server hostname and distinct intent/domain/configuration - it will be easier to re-use connections across projects this way
+- Get granular with your connections
+  - Define an intent for each connection, usually a combination of warehouse/database instance, intended use (dev, prod, etc), and administrative surface (which teams/projects will need to collaborate on the connection)
+  - Aim to minimize the need for local overrides (like extended attributes)
+  - Come to a consensus on a naming convention.  We recommend you name connections after the server hostname and distinct intent/domain/configuration. It will be easier to reuse connections across projects this way
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-3.png" title="Granularity determined"/>
 
