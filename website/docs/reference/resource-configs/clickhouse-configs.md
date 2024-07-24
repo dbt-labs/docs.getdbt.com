@@ -197,10 +197,10 @@ dbt snapshots allow a record to be made of changes to a mutable model over time.
 ```jinja
 {{
    config(
-     schema = "<schema_name>",
+     schema = "<schema-name>",
      unique_key = "<column-name>",
      strategy = "<strategy>",
-     updated_at = "<unpdated_at_column-name>",
+     updated_at = "<updated-at-column-name>",
    )
 }}
 ```
