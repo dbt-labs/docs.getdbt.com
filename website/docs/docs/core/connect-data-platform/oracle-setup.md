@@ -20,15 +20,13 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
-
-
 ### Configure the Python driver mode
 
 [python-oracledb](https://oracle.github.io/python-oracledb/) makes it optional to install the Oracle Client libraries.
 This driver supports 2 modes
 
-1. **Thin mode (preferred) ** : Python process directly connects to the Oracle database. This mode does not need the Oracle Client libraries
-2. **Thick mode** : Python process links with the Oracle Client libraries. Some advanced Oracle database functionalities (for e.g. Advanced Queuing, LDAP connections, Scrollable cursors) are currently available via Oracle Client libraries
+1. **Thin mode (preferred)**: Python process directly connects to the Oracle database. This mode does not need the Oracle Client libraries
+2. **Thick mode**: Python process links with the Oracle Client libraries. Some advanced Oracle database functionalities (for example: Advanced Queuing, LDAP connections, Scrollable cursors) are currently available via Oracle Client libraries
 
 You can configure the driver mode using the environment variable `ORA_PYTHON_DRIVER_TYPE`. Use the **thin** mode as it vastly simplifies installation.
 
@@ -97,7 +95,7 @@ Oracle Client versions 23, 21, 19, 18, 12 and 11.2 are supported. It is recommen
 
 
 
-4. if there is no other Oracle software on the machine that will be impacted, permanently add Instant Client to the runtime link path. For example, with sudo or as the root user:
+4. If there is no other Oracle software on the machine that will be impacted, permanently add Instant Client to the runtime link path. For example, with sudo or as the root user:
 
  ```bash
 sudo sh -c "echo /opt/oracle/instantclient_21_6 > /etc/ld.so.conf.d/oracle-instantclient.conf"
@@ -110,7 +108,7 @@ sudo ldconfig
   export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_6:$LD_LIBRARY_PATH
   ```
 
-5. if you use optional Oracle configuration files such as tnsnames.ora, sqlnet.ora, or oraaccess.xml with Instant Client, then put the files in an accessible directory and set the environment variable TNS_ADMIN to that directory name.
+5. If you use optional Oracle configuration files such as tnsnames.ora, sqlnet.ora, or oraaccess.xml with Instant Client, then put the files in an accessible directory and set the environment variable TNS_ADMIN to that directory name.
 
   ```bash
   export TNS_ADMIN=/opt/oracle/your_config_dir
@@ -126,7 +124,7 @@ sudo ldconfig
 Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
 :::
 
-2. Unzip the package into a directory that is accessible to your application. For example unzip `instantclient-basic-windows.x64-19.11.0.0.0dbru.zip` to `C:\oracle\instantclient_19_11`.
+2. Unzip the package into a directory that is accessible to your application. For example, unzip `instantclient-basic-windows.x64-19.11.0.0.0dbru.zip` to `C:\oracle\instantclient_19_11`.
 
 3. Oracle Instant Client libraries require a Visual Studio redistributable with a 64-bit or 32-bit architecture to match Instant Client’s architecture.
    1. For Instant Client 21 install [VS 2019](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170) or later
@@ -135,7 +133,7 @@ Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
    4. For Instant Client 12.1 install [VS 2010](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2010-vc-100-sp1-no-longer-supported)
    5. For Instant Client 11.2 install [VS 2005 64-bit](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2005-vc-80-sp1-no-longer-supported)
 
-4. Add the Oracle Instant Client directory to the `PATH` environment variable.The directory must occur in `PATH` before any other Oracle directories. Restart any open command prompt windows.
+4. Add the Oracle Instant Client directory to the `PATH` environment variable. The directory must occur in `PATH` before any other Oracle directories. Restart any open command prompt windows.
 
    ```bash
    SET PATH=C:\oracle\instantclient_19_9;%PATH%
@@ -180,7 +178,7 @@ Refer to Oracle documentation to [connect to an ADB instance using TLS authentic
 
 <TabItem value="m-tls">
 
-For mutual TLS connections, a wallet needs be downloaded from the OCI console and the python driver needs to be configured to use it.
+For mutual TLS connections, a wallet needs to be downloaded from the OCI console and the Python driver needs to be configured to use it.
 
 #### Install the Wallet and Network Configuration Files
 
@@ -294,7 +292,7 @@ db2022adb_high = (description =
 
 </File>
 
-The TNS alias `db2022adb_high` can be defined as environment variable and referred in `profiles.yml`
+The TNS alias `db2022adb_high` can be defined as an environment variable and referred to in `profiles.yml`
 
 ```bash
 export DBT_ORACLE_TNS_NAME=db2022adb_high
@@ -437,7 +435,7 @@ This is reported in multiple channels:
 
 - [Github Issue #144](https://github.com/oracle/dbt-oracle/issues/144)
 
-In all cases, the solution was to enable quoting only for database.
+In all cases, the solution was to enable quoting only for the database.
 
 To solve this issue of `approximate match` use the following quoting configuration
 
@@ -451,9 +449,9 @@ quoting:
 
 
 
-<VersionBlock firstVersion="1.5.1">
+<VersionBlock firstVersion="1.5.1"> 
 
-## Python Models using Oracle Autonomous Database (ADB-S)
+## Python models using Oracle Autonomous Database (ADB-S)
 
 Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models using Oracle Machine Learning (OML4PY) which is available without any extra setup required.
 
@@ -462,7 +460,7 @@ Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models usin
 - Access to external Python packages available in the Python runtime. For e.g. `numpy`, `pandas`, `scikit_learn` etc
 - Integration with Conda 24.x to create environments with custom Python packages
 - Access to Database session in the Python function
-- DataFrame read API to read `TABLES`, `VIEWS` and ad-hoc `SELECT` queries as DataFrames
+- DataFrame read API to read `TABLES`, `VIEWS`, and ad-hoc `SELECT` queries as DataFrames
 - DataFrame write API to write DataFrames as `TABLES`
 - Supports both table and incremental materialization
 
@@ -515,7 +513,7 @@ dbt_test:
 | Timeout in seconds only to be used with **_async_** mode (`min: 1800` and `max: 43200`) | Integer    | `dbt.config(timeout=1800)`  |
 | Conda environment | String | `dbt.config(conda_env_name="dbt_py_env")` |
 
-In async mode, dbt-oracle will schedule a Python job, poll the job's status and wait for it to complete.
+In async mode, dbt-oracle will schedule a Python job, poll the job's status, and wait for it to complete.
 Without async mode, dbt-oracle will immediately invoke the Python job in a blocking manner.
 
 :::warning Note
@@ -526,7 +524,7 @@ Use `dbt.config(async_flag=True)` for long-running Python jobs.
 
 #### Refer other model
 
-Use `dbt.ref(model_name)` to refer either SQL or Python model
+Use `dbt.ref(model_name)` to refer to either SQL or Python model
 
 ```python
 def model(dbt, session):
@@ -610,19 +608,19 @@ def model(dbt, session):
 
 ### Use Custom Conda environment
 
-1. As ADMIN user, create a conda environment using [OML4PY Conda Notebook](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/administrative-task-create-and-conda-environments.html)
+1. As ADMIN user, create a conda environment using [OML4PY Conda Notebook](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/administrative-task-create-and-conda-environments.html):
 
 ```bash
 conda create -n dbt_py_env -c conda-forge --override-channels --strict-channel-priority python=3.12.1 nltk gensim
 ```
 
-2. Save this environment using the following command from the OML4PY Conda Notebook
+2. Save this environment using the following command from the OML4PY Conda Notebook:
 
 ```bash
 conda upload --overwrite dbt_py_env -t application OML4PY
 ```
 
-3. Use the environment in dbt Python Models
+3. Use the environment in dbt Python models:
 
 ```python
 # Import custom packages from Conda environments
