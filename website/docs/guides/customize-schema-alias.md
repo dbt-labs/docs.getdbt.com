@@ -242,8 +242,8 @@ In this case, we can:
 
 ```
 </File>
-This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
 
+This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
 
 | Context     |Target database| Target schema | Resulting object               |
 |-------------|:-------------:|:-------------:|:------------------------------:|
@@ -301,11 +301,11 @@ Refer to the [Tips and tricks](p/guides/customize-schema-alias?step=5) section o
     {%- endif -%}
 
 {%- endmacro %}
+```
 
 </File>
 
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
-
 
 | Context     |Branch      |Target database| Target schema | Resulting object                  |
 |-------------|:----------:|:-------------:|:-------------:|:---------------------------------:|
@@ -325,8 +325,8 @@ When developer 1 and developer 2 are checked out on the same branch, they will g
 Some organizations prefer to write their CI jobs to a single schema with the PR identifier prefixed to the front of the table name. It's important to note that this will result in long table names. 
 
 To do so, you can create a new file called `generate_schema_name.sql` under your macros folder with the following code:
-`<File name='macros/generate_schema_name.sql'>`
 
+<File name='macros/generate_schema_name.sql'>
 
 ```Jinja
 
@@ -352,11 +352,13 @@ To do so, you can create a new file called `generate_schema_name.sql` under your
     {%- endif -%}    
 
 {%- endmacro %}
+```
+
 </File>
 
-`<File name='macros/generate_schema_name.sql'>`
+<File name='macros/generate_schema_name.sql'>
 
-````jinja`
+```jinja
 
 {% macro generate_alias_name(custom_alias_name=none, node=none) -%}
 
@@ -397,6 +399,8 @@ To do so, you can create a new file called `generate_schema_name.sql` under your
     {%- endif -%}
 
 {%- endmacro %}
+```
+
 </File>
 
 This will generate the following outputs for a model called `my_model` with a custom schema of `marketing`, preventing any overlap of objects between dbt runs from different contexts.
@@ -409,7 +413,6 @@ This will generate the following outputs for a model called `my_model` with a cu
 | CI PR 123   | ci            | dbt_pr_123    |ci.ci_schema.dbt_pr_123_marketing_my_model |
 | CI PR 234   | ci            | dbt_pr_234    |ci.ci_schema.dbt_pr_234_marketing_my_model |
 | Production  | prod          | analytics     |prod.marketing.my_model                    |
-
 
 ## What not to do
 
