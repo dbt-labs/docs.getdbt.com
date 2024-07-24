@@ -271,7 +271,7 @@ We’ve also seen some organizations prefer to organize their dev databases by b
 Refer to the [Tips and tricks](p/guides/customize-schema-alias?step=5) section on the next page to learn more.    
 
 
-`<File name='macros/generate_schema_name.sql'>`
+<File name='macros/generate_schema_name.sql'>
 
 ```jinja
 
