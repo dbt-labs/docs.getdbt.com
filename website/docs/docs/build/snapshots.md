@@ -273,6 +273,7 @@ The `timestamp` strategy requires the following configurations:
 
     {{
         config(
+          schema='snapshots',
           strategy='timestamp',
           unique_key='id',
           updated_at='updated_at',
@@ -450,9 +451,9 @@ Note: BigQuery users can use `target_project` and `target_dataset` as aliases fo
 | ------ | ----------- | --------- | ------- |
 | Config | Description | Required? | Example |
 | ------ | ----------- | --------- | ------- |
-| [database](/reference/resource-configs/database) | The database that dbt should render the snapshot table into | No | analytics |
-| [schema](/reference/resource-configs/schema) | Specify a custom schema for the snapshots | No | snapshots |
-| [alias](/reference/resource-configs/alias)   | Specify an alias for the snapshot |       | No | your_custom_snapshot |
+| [database](/reference/resource-configs/database) | Specify a custom database for the snapshot | No | analytics |
+| [schema](/reference/resource-configs/schema) | Specify a custom schema for the snapshot | No | snapshots |
+| [alias](/reference/resource-configs/alias)   | Specify an alias for the snapshot | No | your_custom_snapshot |
 | [strategy](/reference/resource-configs/strategy) | The snapshot strategy to use. Valid values: `timestamp` or `check` | Yes | timestamp |
 | [unique_key](/reference/resource-configs/unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
 | [check_cols](/reference/resource-configs/check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
@@ -483,7 +484,7 @@ Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a sep
 
 <VersionBlock firstVersion="1.9">
 
-#### Use a schema that is separate to your models schema
+#### Use a schema that is separate to your models' schema
 Snapshots can't be rebuilt. Because of this, it's a good idea to put snapshots in a separate schema so end users know they're special. From there, you may want to set different privileges on your snapshots compared to your models, and even run them as a different user (or role, depending on your warehouse) to make it very difficult to drop a snapshot unless you really want to.
 
 </VersionBlock>
