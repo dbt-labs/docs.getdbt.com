@@ -72,7 +72,7 @@ from {{ source('sh_database', 'customers') }} c
 
 ## Partitioning
 
-Table and Incremental materialization configuration supports adding a partitioning clause
+Table and Incremental materialization configuration supports adding a partitioning clause:
 
 ```sql
 {
