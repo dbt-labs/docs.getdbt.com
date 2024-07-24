@@ -6,6 +6,8 @@ sidebar_label: "Set up your Semantic Layer"
 tags: [Semantic Layer]
 ---
 
+With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. 
+
 <VersionBlock lastVersion="1.5">
 
 import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
@@ -13,8 +15,6 @@ import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 <DeprecationNotice />
  
  </VersionBlock>
-
-With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
 
 ## Prerequisites
 
