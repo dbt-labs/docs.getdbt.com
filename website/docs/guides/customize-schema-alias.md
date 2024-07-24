@@ -216,7 +216,8 @@ In this case, we can:
 
 ```
 </File>
-`<File name='macros/custom_schema_name.sql'>`
+
+<File name='macros/custom_schema_name.sql'>
 
 ```jinja
 
