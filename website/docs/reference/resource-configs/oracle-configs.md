@@ -36,7 +36,7 @@ from {{ source('sh_database', 'customers') }} c
 
 #### Querying
 
-`COLUMN STORE COMPRESS FOR QUERY` is useful in data ware house environments. Valid values are `HIGH` or `LOW`, with `HIGH` providing a higher compression ratio. The default is `HIGH`
+`COLUMN STORE COMPRESS FOR QUERY` is useful in data warehouse environments. Valid values are `HIGH` or `LOW`, with `HIGH` providing a higher compression ratio. The default is `HIGH`
 
 ```sql
 {{config(materialized='table', table_compression_clause='COLUMN STORE COMPRESS FOR QUERY LOW')}}
@@ -54,7 +54,7 @@ from {{ source('sh_database', 'customers') }} c
 
 #### Archival
 
-`COLUMN STORE COMPRESS FOR ARCHIVE` supports higher compression ratio than `COLUMN STORE COMPRESS FOR QUERY` and is useful for archival. Valid values are `HIGH` or `LOW` with `HIGH` providing the highest compression ratio. The default is `LOW`
+`COLUMN STORE COMPRESS FOR ARCHIVE` supports a higher compression ratio than `COLUMN STORE COMPRESS FOR QUERY` and is useful for archival. Valid values are `HIGH` or `LOW` with `HIGH` providing the highest compression ratio. The default is `LOW`
 
 ```sql
 {{config(materialized='table', table_compression_clause='COLUMN STORE COMPRESS FOR ARCHIVE LOW')}}
