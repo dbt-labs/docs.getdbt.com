@@ -40,11 +40,11 @@ This feature is being rolled out in phases over the coming weeks.
 
 Warehouse connections are an account-level resource. As such you can find them under **Accounts Settings** > **Connections**:
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-list.png" title="Connection list"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-list.png" width="60%" title="Connection list"/>
 
 Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection in order to streamline your management operations. Connections are assigned to a project via an [environment](/docs/dbt-cloud-environments). 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-new-model.png" title="Connection model"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-new-model.png" width="60%" title="Connection model"/>
 
 As shown in the image, a project with 2 environments can target between 1 and 2 different connections. If you want to separate your production environment from your non-production environment, assign multiple connections to a single project.
 
@@ -54,7 +54,7 @@ Rolling out account-level connections will not require any interruption of servi
 
 However, to fully utilize the value of account-level connections, you may have to rethink how you assign and use connections across projects and environments.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout.png" title="Typical connection setup post rollout"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout.png" width="60%" title="Typical connection setup post rollout"/>
 
 Please consider all of the following actions, as the steps you take will depend on the desired outcome.
 
@@ -62,14 +62,14 @@ Please consider all of the following actions, as the steps you take will depend 
   - Delete unused connections with 0 environments. 
   - Rename connections with a temporary, descriptive naming scheme to better understand where each is used
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-2.png" title="Post initial clean-up"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-2.png" width="60%" title="Post initial clean-up"/>
 
 - Get granular with your connections
   - Define an intent for each connection, usually a combination of warehouse/database instance, intended use (dev, prod, etc), and administrative surface (which teams/projects will need to collaborate on the connection)
   - Aim to minimize the need for local overrides (like extended attributes)
   - Come to a consensus on a naming convention.  We recommend you name connections after the server hostname and distinct intent/domain/configuration. It will be easier to reuse connections across projects this way
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-3.png" title="Granularity determined"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-3.png" width="60%" title="Granularity determined"/>
 
 - Deduplication (connection list + environment details &mdash; not touching extended attributes for now)
   - Based of the granularity of your connection details, determine which connections should remain among groups of duplicates, and update every relevant environment to leverage that connection
@@ -77,14 +77,14 @@ Please consider all of the following actions, as the steps you take will depend 
   - Deduplicate thoughtfully. If you want connections to be maintained by two different groups of users, you may want to preserve two identical connections to the same warehouse so each can evolve as each group sees fit without impacting the other group
   - Do not update extended attributes at this stage
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-4.png" title="Connections de-duplicated"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-4.png" width="60%"title="Connections de-duplicated"/>
 
 - Normalization
   - Undertsand how new connections should be created to avoid local overrides. If you currently use extended attributes to override the warehouse instance in your production environment - you should instead create a new connection for that instance, and wire your production environment to it, removing the need for the local overrides
   - Create new connections, update relevant environments to target these connections, removing now unecessary local overrides (which may not be all of them!)
   - Test the new wiring by triggering jobs or starting IDE sessions
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-5.png" title="Connections normalized"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-5.png" width="60%" title="Connections normalized"/>
 
 ## IP Restrictions
 
