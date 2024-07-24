@@ -417,6 +417,14 @@ nate_sooter:
       url: https://www.linkedin.com/in/nathansooter
   name: Nate Sooter
   organization: Smartsheet
+nathaniel_burren:
+  image_url: /img/blog/authors/nathaniel_burren.jpeg
+  job_title: Senior Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/nathaniel-burren-6037783b/
+  name: Nathaniel Burren
+  organization: Cityblock Health
 noah_kennedy:
   description: >-
     Noah Kennedy is a Software Developer at Tempus Labs, helping manage the worlds largest repository of clinical and molecular patient data. Noah picked up dbt at Tempus 2 years ago, and has worked extensively on internal dbt development for Tempus — creating macros, custom materializations, and testing frameworks that allow scientists to experiment more and data engineer less. Outside of Tempus, Noah spends his time running, biking, playing music, and exploring coffee shops. You can find more
