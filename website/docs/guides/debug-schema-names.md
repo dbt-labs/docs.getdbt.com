@@ -93,7 +93,11 @@ Now, re-read through the logic of your `generate_schema_name` macro, and mentall
 
 You should find that the schema dbt is constructing for your model matches the output of your `generate_schema_name` macro.
 
-Be careful. Snapshots do not follow this behavior, check out the docs on [target_schema](/reference/resource-configs/target_schema) instead.
+<VersionBlock lastVersion="1.8">
+
+Be careful. Snapshots do not follow this behavior, check out the docs on [target_schema](/reference/resource-configs/target_schema) instead. 
+
+</VersionBlock>
 
 ## Adjust as necessary
 

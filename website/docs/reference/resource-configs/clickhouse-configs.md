@@ -171,6 +171,8 @@ models:
 
 dbt snapshots allow a record to be made of changes to a mutable model over time. This in turn allows point-in-time queries on models, where analysts can “look back in time” at the previous state of a model. This functionality is supported by the ClickHouse connector and is configured using the following syntax:
 
+<VersionBlock lastVersion="1.8">
+
 <File name='snapshots/<model_name>.sql'>
 
 ```jinja
@@ -186,11 +188,32 @@ dbt snapshots allow a record to be made of changes to a mutable model over time.
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/<model_name>.sql'>
+
+```jinja
+{{
+   config(
+     schema = "<schema_name>",
+     unique_key = "<column-name>",
+     strategy = "<strategy>",
+     updated_at = "<unpdated_at_column-name>",
+   )
+}}
+```
+
+</File>
+
+</VersionBlock>
+
 #### Snapshot Configuration
 
 | Option          | Description                                                                                                               | Required?                                                                            |
 |-----------------|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| `target_schema` | A ClickHouse's database name where the snapshot table will be created.                                                    | Required                                                                             |
+| <VersionBlock lastVersion="1.8"> `target_schema` </VersionBlock> <VersionBlock firstVersion="1.9"> `schema` </VersionBlock>| A ClickHouse's database name where the snapshot table will be created.       | <VersionBlock lastVersion="1.8"> Required </VersionBlock>  <VersionBlock firstVersion="1.9"> Optional </VersionBlock>          |
 | `unique_key`    | A tuple of column names that uniquely identify rows.                                                                      | Required. If not provided altered rows will be added twice to the incremental table. |
 | `strategy`      | Defines how dbt knows if a row has changed. More about dbt startegies [here](/docs/build/snapshots#detecting-row-changes) | Required                                                                             |
 | `updated_at`    | If using the timestamp strategy, the timestamp column to compare.                                                         | Only if using the timestamp strategy                                                 |
