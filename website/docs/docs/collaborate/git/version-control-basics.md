@@ -43,7 +43,7 @@ You can perform git tasks with the git button in the [Cloud IDE](/docs/cloud/dbt
 | Open pull request | This allows you to open a pull request in Git for peers to review changes before merging into the base branch. |
 | Pull changes from main | This option is available if you are on any local branch that is behind the remote version of the base branch or the remote version of the branch that you're currently on. |
 | Pull from remote | This option is available if you’re on the local base branch and changes have recently been pushed to the remote version of the branch. Pulling in changes from the remote repo allows you to pull in the most recent version of the base branch. |
-| Rollback to remote | Reset changes your repository directly from the Cloud IDE. You can reset your repository back to a fresh clone from your remote. To do this, click on the three dot ellipsis in the bottom right-hand side of the IDE and select **Rollback to remote**.  |
+| Rollback to remote | Reset changes to your repository directly from the Cloud IDE. You can rollback your repository back to an earlier clone from your remote. To do this, click on the three dot ellipsis in the bottom right-hand side of the IDE and select **Rollback to remote**. |
 | Refresh git state | This enables you to pull new branches from a different remote branch to your local branch with just one command. |
 
 ## Merge conflicts

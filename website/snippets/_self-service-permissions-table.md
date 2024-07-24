@@ -27,10 +27,8 @@ Permissions:
 | Billing                 |   W   |        |           |
 | Groups                  |   W   |   R    |    R      |
 | Invitations             |   W   |   W    |    R      |
-| IP restrictions         |   W   |        |           |
 | Licenses                |   W   |   R    |           |
 | Members                 |   W   |   R    |    R      |
-| Private Link            |   W   |   R    |    R      |
 | Project (create)        |   W   |   W    |           |
 | Public models           |   R   |   R    |    R      |
 | Service tokens          |   W   |        |           |
