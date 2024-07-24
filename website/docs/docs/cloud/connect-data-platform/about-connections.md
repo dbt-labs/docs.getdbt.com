@@ -71,9 +71,9 @@ Please consider all of the following actions, as the steps you take will depend 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout-3.png" title="Granularity determined"/>
 
-- De-duplication (connection list + environment details - not touching extended attributes for now)
-  - Based of the granularity decided above, decide which connection should remain among groups of duplicates, and update every relevant environment to leverage that connection
-  - Delete un-used connections (with 0 environment) as you go
+- Deduplication (connection list + environment details &mdash; not touching extended attributes for now)
+  - Based of the granularity of your connection details, determine which connections should remain among groups of duplicates, and update every relevant environment to leverage that connection
+  - Delete unused connections with 0 environments as you go
   - Deduplicate thoughtfully. If you want connections to be maintained by two different groups of users, you may want to preserve two identical connections to the same warehouse so each can evolve as each group sees fit without impacting the other group
   - Do not update extended attributes at this stage
 
