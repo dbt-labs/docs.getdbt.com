@@ -53,8 +53,10 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## FAQs
 
-<detailsToggle alt_header="Does caching interact with access controls?">
+<detailsToggle alt_header="How does caching interact with access controls?">
 
-No, caching and access controls don't currently interact. Cached data is stored separately, so security context isn't applied at query time. In the future, we plan to clone credentials or identify the minimum access level needed and apply those permissions to cached tables.
+Cached data is stored separately from the underlying models. If metrics are pulled from the cache, we don’t have the security context applied to those tables at query time.
+
+In the future, we plan to clone credentials, identify the minimum access level needed, and apply those permissions to cached tables.
 
 </detailsToggle>
