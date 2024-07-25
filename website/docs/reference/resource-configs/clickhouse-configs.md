@@ -209,14 +209,7 @@ dbt snapshots allow a record to be made of changes to a mutable model over time.
 
 </VersionBlock>
 
-#### Snapshot Configuration
-
-| Option          | Description                                                                                                               | Required?                                                                            |
-|-----------------|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| <VersionBlock lastVersion="1.8"> `target_schema` </VersionBlock> <VersionBlock firstVersion="1.9"> `schema` </VersionBlock>| A ClickHouse's database name where the snapshot table will be created.       | <VersionBlock lastVersion="1.8"> Required </VersionBlock>  <VersionBlock firstVersion="1.9"> Optional </VersionBlock>          |
-| `unique_key`    | A tuple of column names that uniquely identify rows.                                                                      | Required. If not provided altered rows will be added twice to the snapshot |
-| `strategy`      | Defines how dbt knows if a row has changed. More about dbt startegies [here](/docs/build/snapshots#detecting-row-changes) | Required                                                                             |
-| `updated_at`    | If using the timestamp strategy, the timestamp column to compare.                                                         | Only if using the timestamp strategy                                                 |
+For more information on configuration, check out the [snapshot configs](/reference/snapshot-configs) reference page.
 
 ## Supported Table Engines
 
