@@ -16,9 +16,18 @@ dbt Cloud release notes for recent and historical changes. Release notes fall in
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC)[^*] environments
 
-[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
+[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## July 2024
+- **Behavior change:** dbt Cloud IDE automatically adds a `--limit 100` to preview queries to avoid slow and expensive queries during development. Recently, dbt Core changed how the `limit` is applied to ensure that `order by` clauses are consistently respected. Because of this, queries that already contain a limit clause might now cause errors in the IDE previews. To address this, dbt Labs plans to provide an option soon to disable the limit from being applied. Until then, dbt Labs recommends removing the (duplicate) limit clause from your queries during previews to avoid these IDE errors.
+
+- **Enhancement:** Custom configurations are now supported by generic data tests. Use this to configure how dbt should run the data test (for example, specifying a Snowflake virtual warehouse different from the one in your connection). To learn more, refer to [Specify custom configurations for generic data tests](/reference/data-test-configs#specify-custom-configurations-for-generic-data-tests).
+
+  Support for this configuration is available in dbt Cloud when selecting "Keep on latest version." Specifying custom configurations for data tests will become available in dbt Core later this year.
+
+- **Enhancement**: Introducing a revamped overview page for dbt Explorer, available in beta. It includes a new design and layout for the Explorer homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/collaborate/explore-projects#overview-page).
+- **Enhancement**: The dbt Semantic Layer now offers more granular control by supporting multiple data platform credentials, which can represent different roles or service accounts. Available for dbt Cloud Enterprise plans, you can map credentials to service tokens for secure authentication. Refer to [Set up dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) for more details.
+- **New**: Introduced the [`dbt-sl-sdk` Python software development kit (SDK)](https://github.com/dbt-labs/semantic-layer-sdk-python) Python library, which provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools. Refer to the [dbt Semantic Layer Python SDK](/docs/dbt-cloud-apis/sl-python) for more information.
 - **New**: The ability to lint your SQL files from the dbt Cloud CLI is now available. To learn more, refer to [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files).
 - **New**: Introduced Semantic validations in CI pipelines. Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job using the `dbt sl validate` command. You can also validate modified semantic nodes to guarantee code changes made to dbt models don't break these metrics. Refer to [Semantic validations in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to learn about the additional commands and use cases.
 

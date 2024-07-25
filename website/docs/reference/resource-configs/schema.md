@@ -68,7 +68,7 @@ snapshots:
 ```
 </File>
 
-This would result in the generated relation being located in the `snapshots` schema, so the full relation name would be `analytics.snapshots.your_snapshot` instead of the default target schema.
+This results in the generated relation being located in the `snapshots` schema so the full relation name would be `analytics.snapshots.your_snapshot` instead of the default target schema.
 
 </VersionBlock>
 
