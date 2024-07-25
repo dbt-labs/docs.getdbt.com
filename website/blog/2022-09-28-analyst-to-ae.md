@@ -133,7 +133,7 @@ It’s much easier to keep to a naming guide when the writer has a deep understa
 
 If we want to know how certain logic was built technically, then we can reference the SQL code in dbt docs. If we want to know *why* a certain logic was built into that specific model, then that’s where we’d turn to the documentation.
 
-- Example of not-so-helpful documentation ([dbt docs can](https://docs.getdbt.com/docs/collaborate/documentation) build this dynamically):
+- Example of not-so-helpful documentation ([dbt docs can](https://docs.getdbt.com/docs/build/documentation) build this dynamically):
     - `Case when Zone = 1 and Level like 'A%' then 'True' else 'False' end as GroupB`
 - Example of better, more descriptive documentation (add to your dbt markdown file or column descriptions):
     - Group B is defined as Users in Zone 1 with a Level beginning with the letter 'A'. These users are accessing our new add-on product that began in Beta in August 2022. It's recommended to filter them out of the main Active Users metric.

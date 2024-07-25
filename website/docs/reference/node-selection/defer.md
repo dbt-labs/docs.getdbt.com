@@ -43,25 +43,15 @@ When using defer, you may be selecting from production datasets, development dat
 - if you apply env-specific limits in dev but not prod, as you may end up selecting more data than you expect
 - when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
 
-<VersionBlock lastVersion="1.4">
-
-Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER_TO_STATE` and `DBT_ARTIFACT_STATE_PATH`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/continuous-integration).
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
 Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/continuous-integration).
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.4">
-
 #### Favor state
 
 You can optionally skip the second criterion by passing the `--favor-state` flag. If passed, dbt will favor using the node defined in your `--state` namespace, even if the node exists in the current target.
-
-</VersionBlock>
 
 ### Example
 

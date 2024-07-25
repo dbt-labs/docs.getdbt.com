@@ -14,6 +14,10 @@ is_featured: false
 
 ---
 
+:::note You can now use a Staging environment!
+This blog post was written before Staging environments. You can now use dbt Cloud can to support the patterns discussed here. Read more about [Staging environments](/docs/deploy/deploy-environments#staging-environment).
+:::
+
 :::tip The Bottom Line:
 You should [split your Jobs](#how) across Environments in dbt Cloud based on their purposes (e.g. Production and Staging/CI) and set one environment as Production. This will improve your CI experience and enable you to use dbt Explorer.
 :::

@@ -2,9 +2,20 @@
 title: "About ref function"
 sidebar_label: "ref"
 id: "ref"
-description: "Read this guide to understand the builtins Jinja function in dbt."
-keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
+description: "Read this guide to understand the ref Jinja function in dbt."
+keyword: dbt mesh, project dependencies, ref, cross project ref
 ---
+
+```sql
+select * from {{ ref("node_name") }}
+```
+
+## Definition
+
+This function:
+- Returns a [Relation](/reference/dbt-classes#relation) for a [model](/docs/build/models), [seed](/docs/build/seeds), or [snapshot](/docs/build/snapshots)
+- Creates dependencies between the referenced node and the current model, which is useful for documentation and [node selection](/reference/node-selection/syntax)
+- Compiles to the full object name in the database
 
 The most important function in dbt is `ref()`; it's impossible to build even moderately complex models without it. `ref()` is how you reference one model within another. This is a very common behavior, as typically models are built to be "stacked" on top of one another. Here is how this looks in practice:
 
@@ -102,3 +113,13 @@ In normal usage, dbt knows the proper order to run all models based on the usage
 ```
 
 dbt will see the `ref` and build this model after the specified reference.
+
+Another example is when a reference appears within an [`is_incremental()`](/docs/build/incremental-models#understand-the-is_incremental-macro) conditional block. This is because the `is_incremental()` macro will always return `false` at parse time, so any references within it can't be inferred. To handle this, you can use a SQL comment outside of the `is_incremental()` conditional:
+
+```sql
+-- depends_on: {{ source('raw', 'orders') }}
+
+{% if is_incremental() %}
+select * from {{ source('raw', 'orders') }}
+{% endif %}
+```

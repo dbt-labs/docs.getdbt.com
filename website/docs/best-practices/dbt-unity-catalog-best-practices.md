@@ -61,7 +61,7 @@ Ready to start transforming your Unity Catalog datasets with dbt?
 Check out the resources below for guides, tips, and best practices:
 
 - [How we structure our dbt projects](/best-practices/how-we-structure/1-guide-overview)
-- [Self-paced dbt fundamentals training videos](https://courses.getdbt.com/courses/fundamentals)
+- [Self-paced dbt fundamentals training course](https://learn.getdbt.com/courses/dbt-fundamentals)
 - [Customizing CI/CD](/guides/custom-cicd-pipelines)
 - [Debugging errors](/guides/debug-errors)
 - [Writing custom generic tests](/best-practices/writing-custom-generic-tests)

@@ -23,7 +23,7 @@ Similar to the [`manifest.json` file](/reference/artifacts/manifest-json), the `
 
 ## How it's produced 
 
-The `semantic_manifest.json` is produced whenever your dbt project is parsed. The easiest way to generate the file yourself is to run `dbt parse`. Since `dbt run`, `dbt build`, and `dbt compile` all parse your dbt project, these commands will generate a semantic manifest as well. 
+Just like `manifest.json`, the `semantic_manifest.json` is produced whenever your dbt project is parsed. All dbt commands will parse your project and create a `semantic_manifest.json` file, _except_ [`deps`](/reference/commands/deps), [`clean`](/reference/commands/clean), [`debug`](/reference/commands/debug), and [`init`](/reference/commands/init).
 
 
 ## Top level keys

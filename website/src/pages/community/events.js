@@ -9,12 +9,12 @@ function Events() {
   return (
     <Layout>
         <Head>
-          <title>dbt Community Events</title>
+          <title>dbt Community events</title>
           <meta name="description" content="Join us for upcoming meetups, conferences, or office hours with the dbt Labs team." />
         </Head>
         <div className="container events-page">
            <section>
-            <h1>Upcoming dbt Community Events</h1>
+            <h1>Upcoming dbt Community events</h1>
             <p>Join us for upcoming meetups, conferences, or office hours with the dbt Labs team. Events are online unless explicitly listed as in-person.</p>
 
             <EventsFeed />

@@ -173,8 +173,8 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 Useful Links
 
-*   [FAQs for documentation](/docs/collaborate/documentation#faqs)
-*   [Doc blocks](/docs/collaborate/documentation#using-docs-blocks)
+*   [FAQs for documentation](/docs/build/documentation#faqs)
+*   [Doc blocks](/docs/build/documentation#using-docs-blocks)
 
 ## ✅ dbt Cloud specifics
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
