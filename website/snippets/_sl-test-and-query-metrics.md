@@ -1,16 +1,16 @@
 To work with metrics in dbt, you have several tools to validate or run commands. Here's how you can test and query metrics depending on your setup:
 
-- [**dbt Cloud IDE users**](#dbt-cloud-ide-users) &mdash; Currently, running MetricFlow commands directly in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) isn't supported, but is coming soon. You can still validate metrics using the **Preview** or **Compile** options, or visually through the DAG for semantic checks. This ensures your metrics are correctly defined without directly running commands.
-- [**dbt Cloud CLI users**](#dbt-cloud-cli-users) &mdash; The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) enables you to run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) for direct interaction with metrics.
-- **dbt Core users** &mdash; Use the MetricFlow CLI for command execution. While this guide focuses on dbt Cloud users, dbt Core users can find detailed MetricFlow CLI setup instructions in the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page. Note that to use the dbt Semantic Layer, you need to have a Team or Enterprise account.
+- [**dbt Cloud IDE users**](#dbt-cloud-ide-users) &mdash; Currently, running MetricFlow commands directly in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) isn't supported, but is coming soon. You can view metrics visually through the DAG in the **Lineage** tab without directly running commands.
+- [**dbt Cloud CLI users**](#dbt-cloud-cli-users) &mdash; The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) enables you to run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) to query and preview metrics directly in your command line interface.
+- **dbt Core users** &mdash; Use the MetricFlow CLI for command execution. While this guide focuses on dbt Cloud users, dbt Core users can find detailed MetricFlow CLI setup instructions in the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page. Note that to use the dbt Semantic Layer, you need to have a [Team or Enterprise account](https://www.getdbt.com/).
 
 Alternatively, you can run commands with SQL client tools like DataGrip, DBeaver, or RazorSQL.
 
 ### dbt Cloud IDE users
 
-You can validate your metrics in the dbt Cloud IDE by selecting the metric you want to validate and viewing it in the **Lineage** tab.
+You can view your metrics in the dbt Cloud IDE by viewing them in the **Lineage** tab. The dbt Cloud IDE **Status button** (located in the bottom right of the editor) displays an **Error** status if there's an error in your metric or semantic model definition. You can click the button to see the specific issue and resolve it.
 
-Once validated, make sure you commit and merge your changes in your project. 
+Once viewed, make sure you commit and merge your changes in your project.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-ide-dag.jpg" title="Validate your metrics using the Lineage tab in the IDE." />
 
@@ -24,8 +24,8 @@ Refer to the following steps to get started:
 2. Run a dbt command, such as `dbt parse`, `dbt run`, `dbt compile`, or `dbt build`. If you don't, you'll receive an error message that begins with: "ensure that you've ran an artifacts....".
 3. MetricFlow builds a semantic graph and generates a `semantic_manifest.json` file in dbt Cloud, which is stored in the `/target` directory. If using the Jaffle Shop example, run `dbt seed && dbt run` to ensure the required data is in your data platform before proceeding.
 
-:::info Run dbt parse when you make changes to metrics
-Any time you make changes to metrics, you need to run `dbt parse` at a minimum. This ensures the `semantic_manifest.json` file is updated and you can have your changes reflected when querying metrics.
+:::tip Run dbt parse to reflect metric changes
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
 :::
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.

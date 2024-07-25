@@ -26,7 +26,7 @@ WET, which stands for “Write Everything Twice,” is the opposite of DRY. It's
 
 Well, how would you know if your code isn't DRY enough? That’s kind of subjective and will vary by the norms set within your organization. That said, a good rule of thumb is [the Rule of Three](https://en.wikipedia.org/wiki/Rule_of_three_(writing)#:~:text=The%20rule%20of%20three%20is,or%20effective%20than%20other%20numbers.). This rule states that the _third_ time you encounter a certain pattern, you should probably abstract it into some reusable unit.
 
-There is, of course, a tradeoff between simplicity and conciseness in code. The more abstractions you create, the harder it can be for others to understand and maintain your code without proper documentation. So, the moral of the story is: DRY code is great as long as you [write great documentation.](https://docs.getdbt.com/docs/collaborate/documentation)
+There is, of course, a tradeoff between simplicity and conciseness in code. The more abstractions you create, the harder it can be for others to understand and maintain your code without proper documentation. So, the moral of the story is: DRY code is great as long as you [write great documentation.](https://docs.getdbt.com/docs/build/documentation)
 
 ### Save time & energy
 

@@ -32,7 +32,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 | Deactivated job | A situation where a job has reached 100 consecutive failing runs. |
 | Prep time | The time dbt Cloud takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the dbt Cloud Scheduler experiences a lot of run traffic. |
 | Run | A single, unique execution of a dbt job. |
-| Run slot | Run slots control the number of jobs that can run concurrently. Developer plans have a fixed number of run slots, while Enterprise and Team plans have [unlimited run slots](/docs/dbt-versions/release-notes/July-2023/faster-run#unlimited-job-concurrency-for-enterprise-accounts). Each running job occupies a run slot for the duration of the run. <br /><br />Team and Developer plans are limited to one project each. For additional projects, consider upgrading to the [Enterprise plan](https://www.getdbt.com/pricing/).| 
+| Run slot | Run slots control the number of jobs that can run concurrently. Developer plans have a fixed number of run slots, while Enterprise and Team plans have unlimited run slots. Each running job occupies a run slot for the duration of the run. <br /><br />Team and Developer plans are limited to one project each. For additional projects, consider upgrading to the [Enterprise plan](https://www.getdbt.com/pricing/).| 
 | Threads | When dbt builds a project's DAG, it tries to parallelize the execution by using threads. The [thread](/docs/running-a-dbt-project/using-threads) count is the maximum number of paths through the DAG that dbt can work on simultaneously. The default thread count in a job is 4. |
 | Wait time | Amount of time that dbt Cloud waits before running a job, either because there are no available slots or because a previous run of the same job is still in progress. |
 
@@ -101,6 +101,10 @@ To reactivate a deactivated job, you can either:
 Example of deactivation banner on job's page: 
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/example-deactivated-deploy-job.png" title="Example of deactivation banner on job's page"/>
+
+## FAQs
+
+<FAQ path="Troubleshooting/job-memory-limits" />
 
 ## Related docs
 - [dbt Cloud architecture](/docs/cloud/about-cloud/architecture#dbt-cloud-features-architecture)

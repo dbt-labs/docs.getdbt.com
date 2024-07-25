@@ -1,39 +1,51 @@
 ---
-title: "Explore your dbt projects"
-sidebar_label: "Explore dbt projects"
-description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
-pagination_next: "docs/collaborate/model-performance"
+title: "Discover data with dbt Explorer"
+sidebar_label: "Discover data with dbt Explorer"
+description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your dbt projects."
+pagination_next: "docs/collaborate/column-level-lineage"
 pagination_prev: null
 ---
-
-# Explore your dbt projects <Lifecycle status='public preview' />
 
 With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
 ## Prerequisites
 
-- You have a [multi-tenant](/docs/cloud/about-cloud/tenancy#multi-tenant) or AWS single-tenant dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-- You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment) for each project you want to explore.
-    - There has been at least one successful job run in the production deployment environment.
-- You are on the dbt Explorer page. To do this, select **Explore** from the top navigation bar in dbt Cloud.
+- You have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
+- You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update dbt Explorer.
+- You are on the dbt Explorer page. To do this, select **Explore** from the navigation in dbt Cloud.
 
+## Overview page <Lifecycle status="beta" />
 
-## Generate metadata 
+Navigate the dbt Explorer overview page to access your project's resources and metadata, available in beta. The page includes the following sections:
 
-dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ in your dbt Cloud project. dbt Explorer automatically retrieves the metadata updates after each job run in the production deployment environment so it always has the latest results for your project. 
+- **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
+- **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/collaborate/model-performance), [project recommendations](/docs/collaborate/project-recommendations) in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
+- **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
+- **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
+- **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/collaborate/govern/model-access#access-modifiers) in your project. 
 
-To view a resource and its metadata, you must define the resource in your project and run a job in the production environment. The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs.
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="100%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
+
+## Generate metadata
+
+dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your dbt Cloud project.
+
+- dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
+- Note that CI jobs do not update dbt Explorer. This is because they don't reflect the production state and don't provide the necessary metadata updates.
+- To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. 
+- The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs. 
 
 | To view in Explorer | You must successfully run |
 |---------------------|---------------------------|
 | Model lineage, details, or results | [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment |
-| Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within a job in the environment |
+| Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within [a job](/docs/collaborate/build-and-view-your-docs) in the environment |
 | Test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment | 
 | Source freshness results | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
 | Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
 | Seed details | [dbt seed](/reference/commands/seed) or [dbt build](/reference/commands/build) within a job in the environment |
 
-Richer and more timely metadata will become available as dbt Core, the Discovery API, and the underlying dbt Cloud platform evolves.
+Richer and more timely metadata will become available as dbt Cloud evolves. 
 
 ## Explore your project's lineage graph {#project-lineage}
 
@@ -47,12 +59,12 @@ By default, dbt Explorer shows the project's [applied state](/docs/dbt-cloud-api
 
 To explore the lineage graphs of tests and macros, view [their resource details pages](#view-resource-details). By default, dbt Explorer excludes these resources from the full lineage graph unless a search query returns them as results.
 
-<expandable alt_header="How can I interact with the full lineage graph?">
+<Expandable alt_header="How can I interact with the full lineage graph?">
 
 - Hover over any item in the graph to display the resource’s name and type.
 - Zoom in and out on the graph by mouse-scrolling.
 - Grab and move the graph and the nodes.
-- Right click on a node (context menu) to:
+- Right-click on a node (context menu) to:
     - Refocus on the node, including its upstream and downstream nodes
     - Refocus on the node and its downstream nodes only
     - Refocus on the node and it upstream nodes only
@@ -73,7 +85,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 - [View resource details](#view-resource-details) by selecting a node (double-clicking) in the graph.
 - Click **Lenses** (lower right corner of the graph) to use Explorer's [lenses](#lenses) feature. 
 
-</expandable>
+</Expandable>
 
 ### Example of full lineage graph
 
@@ -83,34 +95,42 @@ Example of exploring the `order_items` model in the project's lineage graph:
 
 ## Lenses
 
-The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models. 
+The **Lenses** feature is available from your [project's lineage graph](#project-lineage) (lower right corner). Lenses are like map layers for your DAG. Lenses make it easier to understand your project’s contextual metadata at scale, especially to distinguish a particular model or a subset of models.
 
 When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value. If you're significantly zoomed out, only the tags and their colors are visible in the graph.
 
-<expandable alt_header="List of available lenses">
+Lenses are helpful to analyze a subset of the DAG if you're zoomed in, or to find models/issues from a larger vantage point.
 
-- **Default** (resource type)
-- **Materialization Type** (for example, identifying incremental model dependencies)
-- **Lastest Status** (for example, diagnosing a failed DAG region)
-- **Model Layer** (for example, discovering marts models to analyze)
+<Expandable alt_header="List of available lenses">
+
+A resource in your project is characterized by resource type, materialization type, or model layer, as well as its latest run or latest test status. Lenses are available for the following metadata:
+
+- **Relationship**: Organizes resources by resource type, such as models, tests, seeds, and [more](/reference/node-selection/syntax). Resource type uses the `resource_type` selector.
+- **Materialization Type**: Identifies the strategy for building the dbt models in your data platform.
+- **Latest Status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
+- **Model Layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
     - **Marts** &mdash; A model with the prefix `fct_` or `dim_` or a model that lives in the `/marts/` subdirectory.
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
+- **Test Status**: The status from the latest execution of the tests that ran again this resource. In the case that a model has multiple tests with different results, the lens reflects the 'worst case' status. 
 
-</expandable>
+</Expandable>
 
 ### Example of lenses
 
-Example of applying the **Materialization Type** _lens_ with the lineage graph significantly zoomed out: 
+Example of applying the **Materialization Type** _lens_ with the lineage graph zoomed out. In this view, each model name has a color according to the materialization type legend at the bottom, which specifies the materialization type. This color-coding helps to quickly identify the materialization types of different models.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type-lense.png" width="100%" title="Example of the Materialization type lens" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-materialization-type.jpg" width="100%" title="Example of the Materialization type lens" />
 
+Example of applying the **Tests Status** _lens_, where each model name displays the tests status according to the legend at the bottom, which specifies the test status.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-status.jpg" width="100%" title="Example of the Test Status lens" />
 
 ## Keyword search {#search-resources}
 
 You can locate resources in your project by performing a keyword search in the search bar. All resource names, column names, resource descriptions, warehouse relations, and code matching your search criteria will be displayed as a list on the main (center) section of the page. When searching for an exact column name, the results show all relational nodes containing that column in their schemas. If there's a match, a notice in the search result indicates the resource contains the specified column. Also, you can apply filters to further refine your search results.
 
-<expandable alt_header="Search features">
+<Expandable alt_header="Search features">
 
 - **Partial keyword search** &mdash; This is also referred to as fuzzy search.
 - **Exclude keywords** &mdash; Prepend a minus sign (-) to the keyword you want to exclude from search results. For example, `-user` will exclude all matches of that keyword from search results.
@@ -118,9 +138,9 @@ You can locate resources in your project by performing a keyword search in the s
 - **Phrase search** &mdash; Surround a string of keywords with double quotation marks to search for that exact phrase (for example, `"stg users"`). To learn more, refer to [Phrase search](https://en.wikipedia.org/wiki/Phrase_search) on Wikipedia.
 - **SQL keyword search** &mdash; Use SQL keywords in your search. For example, the search results `int github users joined` will include matches that contain that specific string of keywords (similar to phrase searching).
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="Filters side panel">
+<Expandable alt_header="Filters side panel">
 
 The **Filters** side panel becomes available after you perform a keyword search. Use this panel to further refine the results from your keyword search. By default, Explorer searches across all resources in the project. You can filter on:
 
@@ -132,7 +152,7 @@ The **Filters** side panel becomes available after you perform a keyword search.
 
 Under the the **Models** option, you can filter on model properties (access or materialization type). Also available are **Advanced** options, where you can limit the search results to column name, model code, and more.  
 
-</expandable>
+</Expandable>
 
 ### Example of keyword search
 Example of results from searching on the keyword `item` and applying the filters models, description, and code:
@@ -171,12 +191,12 @@ In the upper right corner of the resource details page, you can:
 - Click the [Open in IDE](#open-in-ide) icon to examine the resource using the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 - Click the Share icon to copy the page's link to your clipboard.
 
-<expandable alt_header="What details are available for a model?">
+<Expandable alt_header="What details are available for a model?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
 - **General** tab includes:
     - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
-    - **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
+    - **Description** section &mdash; A [description of the model](/docs/build/documentation#adding-descriptions-to-your-project).
     - **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
     - **Tests** section &mdash; [Tests](/docs/build/data-tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test. 
     - **Details** section &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
@@ -184,9 +204,9 @@ In the upper right corner of the resource details page, you can:
 - **Code** tab &mdash; The source code and compiled code for the model.
 - **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. To filter the columns in the resource, you can use the search bar that's located at the top of the columns view. 
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="What details are available for an exposure?">
+<Expandable alt_header="What details are available for an exposure?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the exposure was updated. 
 - **General** tab includes:
@@ -196,11 +216,14 @@ In the upper right corner of the resource details page, you can:
     - **Details** section &mdash; Details like exposure type, maturity, owner information, and more.
     - **Relationships** section &mdash; The nodes the exposure **Depends On**.
 
-</expandable>
+</Expandable>
 
-<expandable alt_header="What details are available for a test?">
+<Expandable alt_header="What details are available for a test?">
 
-- **Status bar** (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. 
+- **Status bar** (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. Defaults to all if not specified.
+- **Test Type** (next to the Status bar) &mdash; Information on the different test types available: Unit test or Data test. Defaults to all if not specified.
+
+When you select a test, the following details are available:
 - **General** tab includes:
     - **Lineage** graph &mdash; The test’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the test resource. Click the Expand icon in the graph's upper right corner to view the test in full lineage graph mode.
     - **Description** section &mdash; A description of the test.
@@ -209,9 +232,13 @@ In the upper right corner of the resource details page, you can:
     - **Relationships** section &mdash; The nodes the test **Depends On**.
 - **Code** tab &mdash; The source code and compiled code for the test.
 
-</expandable>
+Example of the Tests view:
 
-<expandable alt_header="What details are available for each source table within a source collection?">
+<Lightbox src="/img/docs/collaborate/dbt-explorer/example-test-type.jpg" width="100%" title="Example of Test Type details" />
+
+</Expandable>
+
+<Expandable alt_header="What details are available for each source table within a source collection?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the source was updated and the number of tables the source uses. 
 - **General** tab includes:
@@ -222,13 +249,22 @@ In the upper right corner of the resource details page, you can:
     - **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
 - **Columns** tab &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
 
-</expandable>
+</Expandable>
 
 ### Example of model details
 
-Example of the details view for the model `supplies`: 
+Example of the details view for the model `customers`: 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
+
+## Staging environment
+
+dbt Explorer supports views for [staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny. 
+
+You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per dbt Cloud project as “production” or “staging," and ensure the proper metadata has been generated then you’ll be able to view it in Explorer. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="100%" title="Explore in a staging environment" />
+
 
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 

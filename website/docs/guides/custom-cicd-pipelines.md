@@ -102,12 +102,12 @@ This next part will happen in you code hosting platform. We need to save your AP
 
 - Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
 - Click *Settings* to open up the repository options
-- On the left click the *Security* dropdown
+- On the left click the *Secrets and variables* dropdown in the *Security* section
 - From that list, click on *Actions*
 - Towards the middle of the screen, click the *New repository secret* button
 - It will ask you for a name, so let’s call ours `DBT_API_KEY`
   - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from dbt Cloud
+- In the *Secret* section, paste in the key you copied from dbt Cloud
 - Click *Add secret* and you’re all set!
 
 ** A quick note on security: while using a repository secret is the most straightforward way to setup this secret, there are other options available to you in GitHub. They’re beyond the scope of this guide, but could be helpful if you need to create a more secure environment for running actions. Checkout GitHub’s documentation on secrets [here](https://docs.github.com/en/actions/security-guides/encrypted-secrets).*
@@ -242,7 +242,7 @@ my_awesome_project
 
 The YAML file will look pretty similar to our earlier job, but there is a new section called `env` that we’ll use to pass in the required variables. Update the variables below to match your setup based on the comments in the file.
 
-It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merge). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
+It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merged). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
 
 ```yaml
 name: run dbt Cloud job on push

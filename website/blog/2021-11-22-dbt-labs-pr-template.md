@@ -252,4 +252,4 @@ Once the file is added, name it whatever you want to make it clear that it’s y
 
 With that, you now have a pull request template in your GitHub repository that can help your team follow analytics engineering best practices.
 
-To dive deeper into how we use it as part of the analytics engineering workflow, check out the free [dbt Fundamentals on-demand course](https://courses.getdbt.com/courses/fundamentals).
+To dive deeper into how we use it as part of the analytics engineering workflow, check out the free [dbt Fundamentals on-demand course](https://learn.getdbt.com/courses/dbt-fundamentals).

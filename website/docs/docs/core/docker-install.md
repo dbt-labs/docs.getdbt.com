@@ -7,9 +7,10 @@ dbt Core and all adapter plugins maintained by dbt Labs are available as [Docker
 
 Using a prebuilt Docker image to install dbt Core in production has a few benefits: it already includes dbt-core, one or more database adapters, and pinned versions of all their dependencies. By contrast, `python -m pip install dbt-core dbt-<adapter>` takes longer to run, and will always install the latest compatible versions of every dependency.
 
-You might also be able to use Docker to install and develop locally if you don't have a Python environment set up. Note that running dbt in this manner can be significantly slower if your operating system differs from the system that built the Docker image. If you're a frequent local developer, we recommend that you install dbt Core via [Homebrew](/docs/core/homebrew-install) or [pip](/docs/core/pip-install) instead.
+You might also be able to use Docker to install and develop locally if you don't have a Python environment set up. Note that running dbt in this manner can be significantly slower if your operating system differs from the system that built the Docker image. If you're a frequent local developer, we recommend that you install dbt Core using [pip](/docs/core/pip-install) instead.
 
 ### Prerequisites
+
 * You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site.
 * You understand which database adapter(s) you need. For more information, see [About dbt adapters](/docs/core/installation-overview#about-dbt-data-platforms-and-adapters).
 * You understand how dbt Core is versioned. For more information, see [About dbt Core versions](/docs/dbt-versions/core).
@@ -17,7 +18,7 @@ You might also be able to use Docker to install and develop locally if you don't
 
 ### Install a dbt Docker image from Github Packages
 
-Offical dbt docker images are hosted as [packages in the `dbt-labs` GitHub organization](https://github.com/orgs/dbt-labs/packages?visibility=public). We maintain images and tags for every version of every database adapter, as well as two tags that update as new versions as released:
+Official dbt docker images are hosted as [packages in the `dbt-labs` GitHub organization](https://github.com/orgs/dbt-labs/packages?visibility=public). We maintain images and tags for every version of every database adapter, as well as two tags that update as new versions as released:
 - `latest`: Latest overall version of dbt-core + this adapter
 - `<Major>.<Minor>.latest`: Latest patch of dbt-core + this adapter for `<Major>.<Minor>` version family. For example, `1.1.latest` includes the latest patches for dbt Core v1.1.
 

@@ -27,4 +27,4 @@ You can develop in your browser using an integrated development environment (IDE
 
 </div><br />
 
-To get started with dbt development, you'll need a [dbt Cloud](https://www.getdbt.com/signup) account and developer seat. For a more comprehensive guide about developing in dbt, refer to our [quickstart guides](/guides).
+To get started, you'll need a [dbt Cloud](https://www.getdbt.com/signup) account and a developer seat. For a more comprehensive guide about developing in dbt, refer to the [quickstart guides](/docs/get-started-dbt).

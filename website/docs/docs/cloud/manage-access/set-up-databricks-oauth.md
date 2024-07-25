@@ -4,23 +4,14 @@ description: "Learn how dbt Cloud administrators can use Databricks OAuth to con
 id: "set-up-databricks-oauth"
 ---
 
-:::info Enterprise Feature
-
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
-
-:::
+# Set up Databricks OAuth <Lifecycle status="enterprise" />
 
 dbt Cloud supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks, providing an additional layer of security for dbt enterprise users. When you enable Databricks OAuth for a dbt Cloud project, all dbt Cloud developers must authenticate with Databricks in order to use the dbt Cloud IDE. The project's deployment environments will still leverage the Databricks authentication method set at the environment level.
 
-:::tip Beta Feature
 
-Databricks OAuth support in dbt Cloud is a [beta feature](/docs/dbt-versions/product-lifecycles#dbt-cloud) and subject to change without notification. More updates to this feature coming soon.
-
-Current limitations:
-- Databrick's OAuth applications are in public preview
+Current limitation:
 - The current experience requires the IDE to be restarted every hour (access tokens expire after 1 hour - [workaround](https://docs.databricks.com/en/integrations/manage-oauth.html#override-the-default-token-lifetime-policy-for-dbt-core-power-bi-or-tableau-desktop))
  
-:::
 
 ### Configure Databricks OAuth (Databricks admin)
 

@@ -77,7 +77,7 @@ Let’s just say it: there’s a lot of things you can do in Python that could d
 In practice, this could look like applying an [IP parser](https://pypi.org/project/ipparser/) to an IP address column, using a package to determine whether a [date falls on a holiday](/docs/build/python-models#using-pypi-packages), or leveraging [numpy](https://numpy.org/) for performant and complex mathematical computations.
 
 :::tip dbt x Python DataFrames
-With v1.3, dbt now supports the use of beta [Python models in dbt](/docs/build/python-models). What does this mean exactly? This means that Python-defined data transformations can be created and used in a dbt project in the same vein as a classic dbt SQL model. These Python models are incredibly new and the team is eagerly looking for feedback in how folks want to use and ritualize them.
+dbt supports the use of beta [Python models in dbt](/docs/build/python-models). What does this mean exactly? This means that Python-defined data transformations can be created and used in a dbt project in the same vein as a classic dbt SQL model. These Python models are incredibly new and the team is eagerly looking for feedback in how folks want to use and ritualize them.
 :::
 
 ### Manipulation of data during extraction and loading scripts

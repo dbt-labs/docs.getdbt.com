@@ -35,7 +35,7 @@ statement(name=None, fetch_result=False, auto_begin=True)
 
 When executing a `statement`, dbt needs to understand how to resolve references to other dbt models or resources. If you are already `ref`ing the model outside of the statement block, the dependency will be automatically inferred, but otherwise you will need to [force the dependency](/reference/dbt-jinja-functions/ref#forcing-dependencies) with `-- depends_on`.
 
-<expandable alt_header="Example using -- depends_on">
+<Expandable alt_header="Example using -- depends_on">
 
 ```sql
 -- depends_on: {{ ref('users') }}
@@ -49,9 +49,9 @@ When executing a `statement`, dbt needs to understand how to resolve references 
     */
 {%- endcall %}
 ```
-</expandable>
+</Expandable>
 
-<expandable alt_header="Example using ref() function">
+<Expandable alt_header="Example using ref() function">
 
 ```sql
 
@@ -67,7 +67,7 @@ When executing a `statement`, dbt needs to understand how to resolve references 
 
 select id * 2 from {{ ref('users') }}
 ```
-</expandable>
+</Expandable>
 
 __Args__:
  - `name` (string): The name for the result set returned by this statement

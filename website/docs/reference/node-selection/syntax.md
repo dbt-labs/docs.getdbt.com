@@ -29,7 +29,7 @@ To follow [POSIX standards](https://pubs.opengroup.org/onlinepubs/9699919799/bas
 
 ### How does selection work?
 
-1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators ([unions](/reference/node-selection/set-operators#unions), [intersections](/reference/node-selection/set-operators#intersections), [exclusions](/reference/node-selection/exclude)).
+1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of [selection methods](/reference/node-selection/methods) (e.g. `tag:`), then [graph operators](/reference/node-selection/graph-operators) (e.g. `+`), then finally set operators ([unions](/reference/node-selection/set-operators#unions), [intersections](/reference/node-selection/set-operators#intersections), [exclusions](/reference/node-selection/exclude)).
 
 2. The selected resources may be models, sources, seeds, snapshots, tests. (Tests can also be selected "indirectly" via their parents; see [test selection examples](/reference/node-selection/test-selection-examples) for details.)
 
@@ -135,13 +135,6 @@ Together, the `state:` selector and deferral enable ["slim CI"](/best-practices/
 ### Establishing state
 
 State and defer can be set by environment variables as well as CLI flags:
-
-<VersionBlock lastVersion="1.4">
-
-- `--state` or `DBT_ARTIFACT_STATE_PATH`: file path
-- `--defer` or `DBT_DEFER_TO_STATE`: boolean
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.5" lastVersion="1.6">
 
