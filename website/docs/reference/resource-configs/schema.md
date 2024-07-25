@@ -10,7 +10,7 @@ datatype: string
 
 Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
  
-For example, if you have a group of marketing-related models and want to place them in a separate custom schema called `marketing`, you can configure it like this:
+For example, if you have a group of marketing-related models and want to place them in a separate schema called `marketing`, you can configure it like this:
 
 <File name='dbt_project.yml'>
 
