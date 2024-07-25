@@ -102,6 +102,15 @@ Participants asked to stop any harassing behavior are expected to comply immedia
 
 If a participant engages in harassing behavior, the dbt Community Admin team may take any action they deem appropriate, up to and including expulsion from all dbt Community spaces and identification of the participant as a harasser to other dbt Community members or the general public.
 
+## Coalesce and other events
+We reserve the right to prohibit certain directly competitive companies from attending and / or sponsoring Coalesce and other dbt Labs-hosted events. 
+
+While we actively support the broader ecosystem around dbt, it is not the right business decision for us to allow directly competitive companies to market to or sell to our users and customers at events that we invest very significant company resources into hosting. 
+
+Any event declines will be handled directly with the individuals / companies in question, and full refunds will be issued.
+
+Events that are hosted by other members of the dbt community, such as most dbt Community Meetups, are free to make their own guidelines about attendance.
+
 ## Credits
 
 Credit to [01.org](https://01.org/community/participation-guidelines), [Tizen.org](https://www.tizen.org/community/guidelines), and [Geek Feminism](https://geekfeminism.wikia.org/wiki/Community_anti-harassment/Policy) for some of the wording used in this Code of Conduct.
