@@ -398,7 +398,7 @@ if `database` is missing in `profile.yml` the generated catalog used for project
 From `dbt-oracle==1.8`, we detect that `database` key is missing from `profile.yml` and issue a warning to add it for catalog generation. The warning message also shows the database name that dbt-oracle expects. That way users don't have to worry about "what" the database name is and "how" to get it.
 :::
 
-### Quoting Configuration
+### Quoting configuration
 
 The default quoting configuration used by dbt-oracle is shown below:
 
