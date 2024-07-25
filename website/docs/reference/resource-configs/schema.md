@@ -130,5 +130,14 @@ tests:
 
 </File>
 
+Ensure you have the authorization to create or access schemas for your work. To ensure that the required schemas have the correct permissions, run a sql statement in your respective data platform environment. For example, run the following command if using Redshift (exact authorization query may differ from one data platform to another):
+
+```sql
+create schema if not exists dev_username_dbt_test__audit authorization username;
+```
+_Replace `dev_username` with your specific development schema name and `username` with the appropriate user who should have the permissions._
+
+This command grants the appropriate permissions to create and access the `dbt_test__audit` schema, which is often used with the `store_failures` configuration.
+
 ## Warehouse specific information
 * BigQuery: `dataset` and `schema` are interchangeable
