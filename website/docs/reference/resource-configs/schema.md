@@ -8,9 +8,9 @@ datatype: string
 <Tabs>
 <TabItem value="model" label="Model">
 
-Specify a custom schema for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
-
-For example, if you have a group of marketing-related models and you want to place them in a separate schema called `marketing`, you can configure it like this:
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
+ 
+For example, if you have a group of marketing-related models and want to place them in a separate custom schema called `marketing`, you can configure it like this:
 
 <File name='dbt_project.yml'>
 
@@ -22,7 +22,7 @@ models:
 ```
 </File>
 
-This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.marketing.model_name`. 
+This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.marketing.model_name`.  
 
 [comment]: But this: `analytics.marketing.model_name` isn't true according to this: https://docs.getdbt.com/docs/build/custom-schemas#understanding-custom-schemas, because in fact, we're providing a custom schema, aren't we?
 [comment]: That is, if what is explained at the previous link is true, the text should be:  `analytics.<target_schema>_marketing.model_name`. Otherwise, I really don't understand the explanation provided at the previous link.
