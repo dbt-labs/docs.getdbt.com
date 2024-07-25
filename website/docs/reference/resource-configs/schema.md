@@ -22,11 +22,7 @@ models:
 ```
 </File>
 
-This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.marketing.model_name`.  
-
-[comment]: But this: `analytics.marketing.model_name` isn't true according to this: https://docs.getdbt.com/docs/build/custom-schemas#understanding-custom-schemas, because in fact, we're providing a custom schema, aren't we?
-[comment]: That is, if what is explained at the previous link is true, the text should be:  `analytics.<target_schema>_marketing.model_name`. Otherwise, I really don't understand the explanation provided at the previous link.
-
+This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.<target_schema>_marketing.model_name`.  
 
 </TabItem>
 
