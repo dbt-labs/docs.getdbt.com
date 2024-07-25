@@ -1,25 +1,27 @@
 ---
-title: "How Cityblock Health adopted dbt Cloud's Merge Jobs to deploy new code faster"
+title: "Practitioner Q&A: How Cityblock Health adopted dbt Cloud's Merge Jobs to deploy new code faster"
 description: "Cityblock Health swapped their GitHub Actions for native dbt Cloud functionality to streamline their project deployments and avoid redundant resouce consumption."
 slug: cityblock-merge-jobs
-authors: [joel_labes, nathaniel_burren]
+authors: [nathaniel_burren, joel_labes]
 tags: [dbt Cloud]
 hide_table_of_contents: false
-date: 2024-07-24
+date: 2024-07-30
 is_featured: true
 ---
 
-We recently added support for a new type of job in dbt Cloud, called a **[Merge Job](/docs/deploy/merge-jobs)**. Just like a Continuous Integration job is triggered based on a new Pull Request being opened in your git repository, the Merge Job triggers once code is merged into your environment’s configured branch (e.g. `main` for the Production environment, or `uat` for the Staging environment).
+dbt Labs recently added support for a new type of job in dbt Cloud, called a **[Merge Job](/docs/deploy/merge-jobs)**. Just like a Continuous Integration job is triggered based on a new Pull Request being opened in your git repository, the Merge Job triggers once code is merged into your environment’s configured branch (e.g. `main` for the Production environment, or `uat` for the Staging environment).
 
 Triggering a run when code is merged enables your team to practice Continuous Deployment, getting changed models deployed as quickly as possible and reducing resource consumption from unnecessary overbuilding. Alternatively, just kick off a `dbt compile` to update your project’s state for Slim CI comparisons. Check out the [Trigger on Merge docs](/docs/deploy/merge-jobs) for full details on enabling this in your project.
 
-The Cityblock Health team were one of the first companies to use Merge Jobs during the beta period, and I caught up with Analytics Engineer Nathaniel Burren to hear how they did it and what benefits they’ve seen.
+The Cityblock Health team were one of the first companies to use Merge Jobs during the beta period, and I (Joel) caught up with Analytics Engineer Nathaniel Burren to hear how they did it and what benefits they’ve seen.
+
 <!-- truncate -->
+
 ## How long have you been using dbt at Cityblock?
 
-Cityblock chose dbt in 2019 as the tool to make all of our SQL based analysis version controlled, composable, and reusable. However, over the years our monolithic project turned into over 2,200 models and a chaotic jungle of discrepant data.
+Cityblock chose dbt in 2019 as the tool to make all of our SQL based analysis version controlled, composable, and reusable. However, over the years our monolithic project turned into a jungle of over 2,200 models. This made us rethink our approach and move to dbt Cloud while also adapting a [multi-project methodology](/best-practices/how-we-mesh/mesh-1-intro). We presented [our migration story at Coalesce last year](https://www.youtube.com/watch?v=oO7whNtd9Jg) and go into more details there.
 
-This made us rethink our approach and move to dbt Cloud while also adapting a [multi-project methodology](/best-practices/how-we-mesh/mesh-1-intro). Our hope is to create core assets maintained by our Analytics Engineers that our downstream teams can use in their own projects. This also allows us to retain control of these core assets as our single sources of truth while the downstream projects can create their own assets based on their subject matter expertise (that in turn other projects can use, instead of having a mess of duplicate models).
+Our hope is to create core assets maintained by our Analytics Engineers that our downstream teams can use in their own projects. This also allows us to retain control of these core assets as our single sources of truth while the downstream projects can create their own assets based on their subject matter expertise (that in turn other projects can use, instead of having a mess of duplicate models).
 
 ## What made you excited enough about Merge Jobs to sign up for the beta?
 
