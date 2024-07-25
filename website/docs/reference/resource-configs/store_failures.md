@@ -113,9 +113,9 @@ tests:
 
 <detailsToggle alt_header="Receiving a 'permissions denied for schema' error">
 
-If you're receiving a `Adapter name adapter: Adapter_name error: permission denied for schema dev_usernamea_dbt_test__audit`, this is most likely due to your user not having permission to create new schemas, despite having owner access to your own development schema.
+If you're receiving a `Adapter name adapter: Adapter_name error: permission denied for schema dev_username_dbt_test__audit`, this is most likely due to your user not having permission to create new schemas, despite having owner access to your own development schema.
 
-To resolve this, you need proper authorization to create or access custom schemas. Run the following SQL command in the data platform environment:
+To resolve this, you need proper authorization to create or access custom schemas. Run the following SQL command in your respective data platform environment. Note that the exact authorization query may differ from one data platform to another:
 
 ```sql
 create schema if not exists dev_username_dbt_test__audit authorization username;
