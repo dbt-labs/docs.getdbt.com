@@ -8,9 +8,9 @@ datatype: string
 <Tabs>
 <TabItem value="model" label="Model">
 
-Specify a custom schema for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
-
-For example, if you have a group of marketing-related models and you want to place them in a separate schema called `marketing`, you can configure it like this:
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
+ 
+For example, if you have a group of marketing-related models and want to place them in a separate schema called `marketing`, you can configure it like this:
 
 <File name='dbt_project.yml'>
 
@@ -22,7 +22,8 @@ models:
 ```
 </File>
 
-This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.marketing.model_name`. 
+This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.target_schema_marketing.model_name`. This is because the schema of the relation is `{{ target.schema }}_{{ schema }}`. The [definition](#definition) section explains this in more detail.
+
 </TabItem>
 
 <TabItem value="seeds" label="Seeds">
@@ -40,7 +41,7 @@ seeds:
       +schema: mappings
 ```
 
-This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.mappings.product_mappings`. 
+This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.target_schema_mappings.product_mappings`. 
 </File>
 </TabItem>
 
