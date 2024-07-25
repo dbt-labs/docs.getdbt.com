@@ -17,6 +17,8 @@ By choosing to **Keep on latest version**, you opt for a versionless experience 
 
 You can upgrade to **Keep on latest version** and the versionless experience no matter which version of dbt you currently have selected. As a best practice, dbt Labs recommends that you test the upgrade in development first; use the [Override dbt version](#override-dbt-version) setting to test _your_ project on the latest dbt version before upgrading your deployment environments and the default development environment for all your colleagues.
 
+To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `versionless`.
+
 ### Override dbt version
 
 Configure your project to use a different dbt Core version than what's configured in your [development environment](/docs/dbt-cloud-environments#types-of-environments). This _override_ only affects your user account, no one else's. Use this to safely test new dbt features before upgrading the dbt version for your projects. 
@@ -118,7 +120,7 @@ clean-targets:
 - Do you have custom scripts that parse dbt <Term id="json" /> artifacts?
 - (BigQuery only) Do you use dbt's legacy capabilities around ingestion-time-partitioned tables?
 
-If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade/older%20versions/upgrading-to-v1.0).
 
 </details>
 

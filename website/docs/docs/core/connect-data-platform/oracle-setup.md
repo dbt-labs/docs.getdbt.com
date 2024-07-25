@@ -20,19 +20,13 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
 
-
-
 ### Configure the Python driver mode
-
-:::info
-[python-oracledb](https://oracle.github.io/python-oracledb/) is the renamed, major release of Oracle's popular cx_Oracle interface
-:::
 
 [python-oracledb](https://oracle.github.io/python-oracledb/) makes it optional to install the Oracle Client libraries.
 This driver supports 2 modes
 
-1. **Thin mode (preferred) ** : Python process directly connects to the Oracle database. This mode does not need the Oracle Client libraries
-2. **Thick mode** : Python process links with the Oracle Client libraries. Some advanced Oracle database functionalities (for e.g. Advanced Queuing and Scrollable cursors) are currently available via Oracle Client libraries
+1. **Thin mode (preferred)**: Python process directly connects to the Oracle database. This mode does not need the Oracle Client libraries
+2. **Thick mode**: Python process links with the Oracle Client libraries. Some advanced Oracle database functionalities (for example: Advanced Queuing, LDAP connections, Scrollable cursors) are currently available via Oracle Client libraries
 
 You can configure the driver mode using the environment variable `ORA_PYTHON_DRIVER_TYPE`. Use the **thin** mode as it vastly simplifies installation.
 
@@ -40,42 +34,36 @@ You can configure the driver mode using the environment variable `ORA_PYTHON_DRI
 |------------------------|-----------------------------------| ------------- |
 | Thin                   | No                                | `ORA_PYTHON_DRIVER_TYPE=thin`|
 | Thick                  | Yes                               | `ORA_PYTHON_DRIVER_TYPE=thick` |
-| cx_oracle (old driver) | Yes                               | `ORA_PYTHON_DRIVER_TYPE=cx` |
 
-The default value of `ORA_PYTHON_DRIVER_TYPE` is `cx`
+The default value of `ORA_PYTHON_DRIVER_TYPE` is `thin`
 
-:::warning Deprecation Warning
-Default value of `ORA_PYTHON_DRIVER_TYPE` will change to `thin` in future release of dbt-oracle because `cx_oracle` is deprecated
-:::
 
 <Tabs
 defaultValue="thin"
   values={[
     { label: 'Thin', value: 'thin'},
-    { label: 'Thick', value: 'thick_or_cx'}]
+    { label: 'Thick', value: 'thick'}]
 }>
 
 <TabItem value="thin">
 
   ```bash
-  export ORA_PYTHON_DRIVER_TYPE=thin
+  export ORA_PYTHON_DRIVER_TYPE=thin # default
   ```
 
 </TabItem>
 
-<TabItem value="thick_or_cx">
+<TabItem value="thick">
 
   ```bash
   export ORA_PYTHON_DRIVER_TYPE=thick
-  # or
-  export ORA_PYTHON_DRIVER_TYPE=cx # default
   ```
 
 ### Install Oracle Instant Client libraries
 
-In thick mode or the old cx_oracle mode, you will need the [Oracle Instant Client libraries](https://www.oracle.com/database/technologies/instant-client.html) installed. These provide the necessary network connectivity allowing dbt-oracle to access an Oracle Database instance.
+In thick mode, you will need the [Oracle Instant Client libraries](https://www.oracle.com/database/technologies/instant-client.html) installed. These provide the necessary network connectivity allowing dbt-oracle to access an Oracle Database instance.
 
-Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where available on Linux, Windows and macOS (Intel x86). It is recommended to use the latest client possible: Oracle’s standard client-server version interoperability allows connection to both older and newer databases.
+Oracle Client versions 23, 21, 19, 18, 12 and 11.2 are supported. It is recommended to use the latest client possible: Oracle’s standard client-server version interoperability allows connection to both older and newer databases.
 
 <Tabs
   defaultValue="linux"
@@ -87,7 +75,7 @@ Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where av
 
 <TabItem value="linux">
 
-1. Download an Oracle 21, 19, 18, 12, or 11.2 “Basic” or “Basic Light” zip file matching your Python 64-bit or 32-bit architecture:
+1. Download an Oracle 23, 21, 19, 18, 12, or 11.2 “Basic” or “Basic Light” zip file matching your Python 64-bit or 32-bit architecture:
    1. [x86-64 64-bit](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html)
    2. [x86 32-bit](https://www.oracle.com/database/technologies/instant-client/linux-x86-32-downloads.html)
    3. [ARM (aarch64) 64-bit](https://www.oracle.com/database/technologies/instant-client/linux-arm-aarch64-downloads.html)
@@ -96,7 +84,7 @@ Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where av
   ```bash
   mkdir -p /opt/oracle
   cd /opt/oracle
-  unzip instantclient-basic-linux.x64-21.1.0.0.0.zip
+  unzip instantclient-basic-linux.x64-21.6.0.0.0.zip
   ```
 
 3. Install the libaio package with sudo or as the root user. For example:
@@ -107,17 +95,23 @@ Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where av
 
 
 
-4. if there is no other Oracle software on the machine that will be impacted, permanently add Instant Client to the runtime link path. For example, with sudo or as the root user:
+4. If there is no other Oracle software on the machine that will be impacted, permanently add Instant Client to the runtime link path. For example, with sudo or as the root user:
 
  ```bash
-  sudo sh -c "echo /opt/oracle/instantclient_21_1 > /etc/ld.so.conf.d/oracle-instantclient.conf"
-  sudo ldconfig
+sudo sh -c "echo /opt/oracle/instantclient_21_6 > /etc/ld.so.conf.d/oracle-instantclient.conf"
+sudo ldconfig
  ```
 
   Alternatively, set the environment variable `LD_LIBRARY_PATH`
 
   ```bash
-  export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_1:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_6:$LD_LIBRARY_PATH
+  ```
+
+5. If you use optional Oracle configuration files such as tnsnames.ora, sqlnet.ora, or oraaccess.xml with Instant Client, then put the files in an accessible directory and set the environment variable TNS_ADMIN to that directory name.
+
+  ```bash
+  export TNS_ADMIN=/opt/oracle/your_config_dir
   ```
 
 </TabItem>
@@ -130,7 +124,7 @@ Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where av
 Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
 :::
 
-2. Unzip the package into a directory that is accessible to your application. For example unzip `instantclient-basic-windows.x64-19.11.0.0.0dbru.zip` to `C:\oracle\instantclient_19_11`.
+2. Unzip the package into a directory that is accessible to your application. For example, unzip `instantclient-basic-windows.x64-19.11.0.0.0dbru.zip` to `C:\oracle\instantclient_19_11`.
 
 3. Oracle Instant Client libraries require a Visual Studio redistributable with a 64-bit or 32-bit architecture to match Instant Client’s architecture.
    1. For Instant Client 21 install [VS 2019](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170) or later
@@ -139,7 +133,7 @@ Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
    4. For Instant Client 12.1 install [VS 2010](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2010-vc-100-sp1-no-longer-supported)
    5. For Instant Client 11.2 install [VS 2005 64-bit](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2005-vc-80-sp1-no-longer-supported)
 
-4. Add the Oracle Instant Client directory to the `PATH` environment variable.The directory must occur in `PATH` before any other Oracle directories. Restart any open command prompt windows.
+4. Add the Oracle Instant Client directory to the `PATH` environment variable. The directory must occur in `PATH` before any other Oracle directories. Restart any open command prompt windows.
 
    ```bash
    SET PATH=C:\oracle\instantclient_19_9;%PATH%
@@ -149,40 +143,8 @@ Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
 
 <TabItem value="macos">
 
-1. Download the instant client DMG package
+Check the python-oracledb documentation for installation instructions on [MacOS ARM64](https://python-oracledb.readthedocs.io/en/latest/user_guide/installation.html#instant-client-scripted-installation-on-macos-arm64) or [MacOS Intel x84-64](https://python-oracledb.readthedocs.io/en/latest/user_guide/installation.html#instant-client-scripted-installation-on-macos-intel-x86-64)
 
-  ```bash
-  cd $HOME/Downloads
-  curl -O https://download.oracle.com/otn_software/mac/instantclient/198000/instantclient-basic-macos.x64-19.8.0.0.0dbru.dmg
-  ```
-
-2. Mount the instant client DMG package
-
-   ```bash
-   hdiutil mount instantclient-basic-macos.x64-19.8.0.0.0dbru.dmg
-
-   ```
-
-3. Run the install script in the mounted package
-
-  ```bash
-  /Volumes/instantclient-basic-macos.x64-19.8.0.0.0dbru/install_ic.sh
-  ```
-
-4. Unmount the package
-
-   ```bash
-   hdiutil unmount /Volumes/instantclient-basic-macos.x64-19.8.0.0.0dbru
-   ```
-
-5. The Instant Client directory will be `$HOME/Downloads/instantclient_19_8`. You could move it to some place convenient.
-
-6. Add links to `~/lib` or `/usr/local/lib` to enable dbt to find the libraries.
-
-   ```bash
-   mkdir ~/lib
-   ln -s ~/instantclient_19_8/libclntsh.dylib ~/lib/
-   ```
 
 </TabItem>
 
@@ -216,7 +178,7 @@ Refer to Oracle documentation to [connect to an ADB instance using TLS authentic
 
 <TabItem value="m-tls">
 
-For mutual TLS connections, a wallet needs be downloaded from the OCI console and the python driver needs to be configured to use it.
+For mutual TLS connections, a wallet needs to be downloaded from the OCI console and the Python driver needs to be configured to use it.
 
 #### Install the Wallet and Network Configuration Files
 
@@ -232,7 +194,7 @@ Unzip the wallet zip file.
 defaultValue="thin"
   values={[
     { label: 'Thin', value: 'thin'},
-    { label: 'Thick', value: 'thick_or_cx'}]
+    { label: 'Thick', value: 'thick'}]
 }>
 
 <TabItem value="thin">
@@ -253,7 +215,7 @@ Optionally, if `ewallet.pem` file is encrypted using a wallet password, specify 
 
 </TabItem>
 
-<TabItem value="thick_or_cx">
+<TabItem value="thick">
 In Thick mode, the following files from the zip are needed:
 
 - `tnsnames.ora` - Maps net service names used for application connection strings to your database services
@@ -292,16 +254,10 @@ Define the following mandatory parameters as environment variables and refer the
 export DBT_ORACLE_USER=<username>
 export DBT_ORACLE_PASSWORD=***
 export DBT_ORACLE_SCHEMA=<username>
-```
-
-Starting with `dbt-oracle==1.0.2`, it is **optional** to set the database name
-
-```bash
 export DBT_ORACLE_DATABASE=example_db2022adb
 ```
 
-If database name is not set, adapter will retrieve it using the following query.
-
+Use the following query to retrieve the database name:
 ```sql
 SELECT SYS_CONTEXT('userenv', 'DB_NAME') FROM DUAL
 ```
@@ -336,7 +292,7 @@ db2022adb_high = (description =
 
 </File>
 
-The TNS alias `db2022adb_high` can be defined as environment variable and referred in `profiles.yml`
+The TNS alias `db2022adb_high` can be defined as an environment variable and referred to in `profiles.yml`
 
 ```bash
 export DBT_ORACLE_TNS_NAME=db2022adb_high
@@ -433,20 +389,77 @@ dbt_test:
 
 </Tabs>
 
-<VersionBlock firstVersion="1.5.1">
+:::info Note
+Starting with `dbt-oracle==1.0.2`, it is **optional** to set the `database` name in `profile.yml`
 
-## Python Models using Oracle Autonomous Database (ADB-S)
+Starting with `dbt-oracle==1.8.0` database key in `profile.yml` is **still optional for all but one** of the dbt-oracle workflows.
+if `database` is missing in `profile.yml` the generated catalog used for project documentation will be empty.
+
+From `dbt-oracle==1.8`, we detect that `database` key is missing from `profile.yml` and issue a warning to add it for catalog generation. The warning message also shows the database name that dbt-oracle expects. That way users don't have to worry about "what" the database name is and "how" to get it.
+:::
+
+### Quoting configuration
+
+The default quoting configuration used by dbt-oracle is shown below:
+
+<File name='dbt_project.yaml'>
+
+```yaml
+quoting:
+  database: false
+  identifier: false
+  schema: false
+```
+</File>
+
+This is recommended and works for most cases.
+
+### Approximate relation match error
+
+Often users have complained about an approximate relation match as shown below:
+
+```
+Compilation Error in model <model>
+19:09:40    When searching for a relation, dbt found an approximate match. Instead of guessing
+19:09:40    which relation to use, dbt will move on. Please delete <model>, or rename it to be less ambiguous.
+  Searched for: <model>
+```
+
+This is reported in multiple channels:
+
+- [StackOverFlow Approximate relation Match Error](https://stackoverflow.com/questions/75892325/approximate-relation-match-with-dbt-on-oracle)
+
+- [Github Issue #51](https://github.com/oracle/dbt-oracle/issues/51)
+
+- [Github Issue #143](https://github.com/oracle/dbt-oracle/issues/143)
+
+- [Github Issue #144](https://github.com/oracle/dbt-oracle/issues/144)
+
+In all cases, the solution was to enable quoting only for the database.
+
+To solve this issue of `approximate match` use the following quoting configuration
+
+<File name='dbt_project.yaml'>
+
+```yaml
+quoting:
+  database: true
+```
+</File>
+
+## Python models using Oracle Autonomous Database (ADB-S)
 
 Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models using Oracle Machine Learning (OML4PY) which is available without any extra setup required.
 
 ### Features
-- User Defined Python function is run in an ADB-S spawned Python 3.10 runtime
-- Import [3rd party Python packages](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/oml4py-notebook.html#GUID-78225241-CD6B-4588-AD4B-799079FA1784) installed in the default Python runtime
+- User Defined Python function is run in an ADB-S spawned Python 3.12.1 runtime
+- Access to external Python packages available in the Python runtime. For e.g. `numpy`, `pandas`, `scikit_learn` etc
+- Integration with Conda 24.x to create environments with custom Python packages
 - Access to Database session in the Python function
-- DataFrame read API to read `TABLES`, `VIEWS` and ad-hoc `SELECT` queries as DataFrames
+- DataFrame read API to read `TABLES`, `VIEWS`, and ad-hoc `SELECT` queries as DataFrames
 - DataFrame write API to write DataFrames as `TABLES`
 - Supports both table and incremental materialization
-- Integration with conda (Coming Soon)
+
 
 ### Setup
 
@@ -457,14 +470,16 @@ Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models usin
 
 #### OML Cloud Service URL
 
-OML Cloud Service URL is of the following format
+OML Cloud Service URL is of the following format:
+
 ```text
 https://tenant1-dbt.adb.us-sanjose-1.oraclecloudapps.com
 ```
-In this example, 
-  - `tenant1` is the tenancy ID 
-  - `dbt` is the database name 
-  - `us-sanjose-1` is the datacenter region 
+
+In this example:
+  - `tenant1` is the tenancy ID
+  - `dbt` is the database name
+  - `us-sanjose-1` is the datacenter region
   - `oraclecloudapps.com` is the root domain
 
 Add `oml_cloud_service_url` to your existing `~/.dbt/profiles.yml`
@@ -479,6 +494,7 @@ dbt_test:
          type: oracle
          user: "{{ env_var('DBT_ORACLE_USER') }}"
          pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
+         database: "{{ env_var('DBT_ORACLE_DATABASE') }}"
          tns_name: "{{ env_var('DBT_ORACLE_TNS_NAME') }}"
          schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
          oml_cloud_service_url: "https://tenant1-dbt.adb.us-sanjose-1.oraclecloudapps.com"
@@ -493,15 +509,20 @@ dbt_test:
 | Service | String | `dbt.config(service="HIGH")` or `dbt.config(service="MEDIUM")` or `dbt.config(service="LOW")` |
 | Async Mode | Boolean    | `dbt.config(async_flag=True)`  
 | Timeout in seconds only to be used with **_async_** mode (`min: 1800` and `max: 43200`) | Integer    | `dbt.config(timeout=1800)`  |
+| Conda environment | String | `dbt.config(conda_env_name="dbt_py_env")` |
 
-In async mode, dbt-oracle will schedule a Python job, poll the job's status and wait for it to complete.
-Without async mode, dbt-oracle will immediately invoke the Python job in a blocking manner. Use async mode for long-running Python jobs.
+In async mode, dbt-oracle will schedule a Python job, poll the job's status, and wait for it to complete.
+Without async mode, dbt-oracle will immediately invoke the Python job in a blocking manner.
+
+:::warning Note
+Use `dbt.config(async_flag=True)` for long-running Python jobs.
+:::
 
 ### Python model examples
 
 #### Refer other model
 
-Use `dbt.ref(model_name)` to refer either SQL or Python model
+Use `dbt.ref(model_name)` to refer to either SQL or Python model
 
 ```python
 def model(dbt, session):
@@ -582,13 +603,42 @@ def model(dbt, session):
 
 ```
 
-</VersionBlock>
+### Use Custom Conda environment
 
+1. As ADMIN user, create a conda environment using [OML4PY Conda Notebook](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/administrative-task-create-and-conda-environments.html):
 
-## Supported Features
+```bash
+conda create -n dbt_py_env -c conda-forge --override-channels --strict-channel-priority python=3.12.1 nltk gensim
+```
+
+2. Save this environment using the following command from the OML4PY Conda Notebook:
+
+```bash
+conda upload --overwrite dbt_py_env -t application OML4PY
+```
+
+3. Use the environment in dbt Python models:
+
+```python
+# Import custom packages from Conda environments
+import nltk
+import gensim
+
+def model(dbt, session):
+    dbt.config(materialized="table")
+    dbt.config(conda_env_name="dbt_py_env")  # Refer the conda environment
+    dbt.config(async_flag=True) # Use async mode for long running Python jobs
+    dbt.config(timeout=900)
+    # oml.core.DataFrame referencing a dbt-sql model
+    promotion_cost = dbt.ref("direct_sales_channel_promo_cost")
+    return promotion_cost
+```
+
+## Supported features
 
 - Table materialization
 - View materialization
+- Materialized View
 - Incremental materialization
 - Seeds
 - Data sources
@@ -600,7 +650,8 @@ def model(dbt, session):
 - Document generation
 - Serve project documentation as a website
 - Python Models (from dbt-oracle version 1.5.1)
+- Integration with Conda to use any Python packages from Anaconda's repository
 - All dbt commands are supported
 
-## Not Supported features
+## Not supported features
 - Ephemeral materialization

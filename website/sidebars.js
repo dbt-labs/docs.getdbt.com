@@ -92,7 +92,18 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/enterprise-permissions",
                   ],
                 },
-
+                {
+                  type: "category",
+                  label: "Environment permissions",
+                  link: {
+                    type: "doc",
+                    id: "docs/cloud/manage-access/environment-permissions",
+                  },
+                  items: [
+                    "docs/cloud/manage-access/environment-permissions",
+                    "docs/cloud/manage-access/environment-permissions-setup",
+                  ],
+                },
                 {
                   type: "category",
                   label: "Single sign-on and Oauth",
@@ -669,6 +680,7 @@ const sidebarSettings = {
             "docs/dbt-cloud-apis/sl-api-overview",
             "docs/dbt-cloud-apis/sl-jdbc",
             "docs/dbt-cloud-apis/sl-graphql",
+            "docs/dbt-cloud-apis/sl-python",
             "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
@@ -716,6 +728,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/dbt-versions/core" },
       items: [
         "docs/dbt-versions/core",
+        "docs/dbt-versions/versionless-cloud",
         "docs/dbt-versions/upgrade-dbt-version-in-cloud",
         "docs/dbt-versions/product-lifecycles",
         "docs/dbt-versions/experimental-features",
@@ -737,7 +750,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt Cloud Release Notes",
+          label: "dbt Cloud release notes",
           link: {
             type: "doc",
             id: "docs/dbt-versions/dbt-cloud-release-notes",
@@ -1243,7 +1256,7 @@ const sidebarSettings = {
     },
     {
       type: "link",
-      label: "Community Forum",
+      label: "Community forum",
       href: "/community/forum",
     },
     {

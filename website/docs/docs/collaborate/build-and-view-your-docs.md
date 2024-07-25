@@ -68,8 +68,6 @@ To generate documentation in the dbt Cloud IDE, run the `dbt docs generate` comm
 
 After generating your documentation, you can click **Explore** in the navigation. This will take you to <a href="https://docs.getdbt.com/docs/collaborate/explore-projects">dbt Explorer</a>, where you can view your project's resources and their lineage.
 
-<Lightbox src="/img/docs/dbt-cloud/explore-nav.jpg" width="90%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
-
 After running `dbt docs generate` in the dbt Cloud IDE, click the icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
 
 ### View documentation
