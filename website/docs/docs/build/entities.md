@@ -93,6 +93,7 @@ The following is the complete spec for entities:
 <File name="models/marts/sem_semantic_model_name.yml">
   
 ```yaml
+
 entities:
   - name: transaction     ## Required
     type: Primary or natural or foreign or unique ## Required
@@ -107,6 +108,7 @@ Here's an example of how to define entities in a semantic model:
 <File name="models/marts/sem_semantic_model_name.yml">
   
 ```yaml
+
 entities:
   - name: transaction
     type: primary
@@ -129,11 +131,13 @@ If a table doesn't have any key (like a primary key), use _surrogate combination
 <File name="models/marts/sem_semantic_model_name.yml">
   
 ```yaml
+
 entities:
   - name: brand_target_key # Entity name or identified.
     type: foreign # This can be any entity type key. 
     expr: date_key || '|' || brand_code # Defines the expression for linking fields to form the surrogate key.
 ```
+
 </File>
 
 
