@@ -15,22 +15,84 @@ Entities can be specified with a single column or multiple columns. Entities (jo
 There are four entity types: primary, foreign, unique, or natural.
 
 :::tip Use entities as a dimensions
-You can also use entities as a dimensions, which allows you to aggregate a metric to the granularity of that entity.
+You can also use entities as a dimension, which allows you to aggregate a metric to the granularity of that entity.
 :::
 
 
 ## Entity types
 
-MetricFlow's join logic depends on the entity `type` you use, and it also determines how to join semantic models. Refer to [Joins](/docs/build/join-logic) for more info on how to construct joins.
+MetricFlow's join logic depends on the entity `type` you use and determines how to join semantic models. Refer to [Joins](/docs/build/join-logic) for more info on how to construct joins.
 
-* **Primary &mdash;** A primary key has **only one** record for each row in the table, and it includes every record in the data platform.
+#### Primary
+A primary key has _only one_ record for each row in the table and includes every record in the data platform. It must contain unique values and can't contain null values. Use the primary key to ensure that each record in the table is distinct and identifiable.
 
-[comment]: It'd be a good idea to provide some examples to differentiate between Primary and Unique because, for instance, what does it mean that Unique may have a subset of records? Regards.
-* **Unique &mdash;** A unique key contains **only one** record per row in the table, but it may have a subset of records in the data warehouse. It can also include nulls.
-* **Foreign &mdash;** A foreign key can include zero, one, or multiple instances of the same record. Null values may also be present.
-* **Natural &mdash;** Natural keys are column or combination of columns in a table that uniquely identify a record based on real-world data. For instance, in a sales_person_department dimension table, the sales_person_id can serve as a natural key.
+For example, consider a table of employees with the following columns:
 
-The complete spec for entities is below:
+```sql
+employee_id (primary key)
+first_name
+last_name
+```
+In this case, `employee_id` is the primary key. Each `employee_id` is unique and represents one specific employee. There can be no duplicate `employee_id` and can't be null.
+
+#### Unique
+A unique key contains _only one_ record per row in the table but may have a subset of records in the data warehouse. However, unlike the primary key, a unique key allows for null values. The unique key ensures that the column's values are distinct, except for null values.
+
+For example, consider a table of students with the following columns:
+
+```sql
+student_id (primary key)
+email (unique key)
+first_name
+last_name
+```
+
+In this example, `email` is defined as a unique key. Each email address must be unique; however, multiple students can have null email addresses. This is because the unique key constraint allows for one or more null values, but non-null values must be unique. This then creates a set of records with unique emails (non-null) that could be a subset of the entire table, which includes all students.
+
+#### Foreign
+A foreign key is a field (or a set of fields) in one table that uniquely identifies a row in another table. The foreign key establishes a link between the data in two tables.
+It can include zero, one, or multiple instances of the same record. It can also contain null values.
+
+For example, consider you have two tables, `customers` and `orders`:
+
+customers table:
+
+```sql
+customer_id (primary key)
+customer_name
+```
+
+orders table:
+
+```sql
+order_id (primary key)
+order_date
+customer_id (foreign key)
+```
+
+In this example, the `customer_id` in the `orders` table is a foreign key that references the `customer_id` in the `customers` table. This link means each order is associated with a specific customer. However, not every order must have a customer; the `customer_id` in the orders table can be null or have the same `customer_id` for multiple orders.
+
+#### Natural
+
+Natural keys are columns or combinations of columns in a table that uniquely identify a record based on real-world data. For instance, in a `sales_person_department` dimension table, the `sales_person_id` can serve as a natural key. You can only use natural keys for [SCD type II dimensions](/docs/build/dimensions#scd-type-ii).
+
+For example, consider a table of `products` in an inventory system:
+
+```sql
+product_code (natural key)
+product_name
+manufacturer
+category
+```
+
+In this example, `product_code` serves as a natural key because it uniquely identifies each product in a real-world context, such as the stock-keeping unit (SKU) used by the company. It's based on the product's properties and has real-world meaning beyond the database system.
+
+### Entities configuration
+
+The complete spec for entities is as follows:
+
+<File name="models/marts/sem_semantic_model_name.yml">
+  
 ```yaml
 entities:
   - name: transaction     ## Required
@@ -38,11 +100,13 @@ entities:
     description: a description of the field or role the entity takes in this table ## Optional
     expr: the field that denotes that entity (transaction_id).  ## Optional
           If not specified will default to name 
-
 ```
+
+</File>
 
 Here's an example of how to define entities in a semantic model:
 
+<File name="models/marts/sem_semantic_model_name.yml">
 ``` yaml
 entities:
   - name: transaction
@@ -55,4 +119,4 @@ entities:
     type: foreign
     expr: substring(id_order from 2)
 ```
-
+</File>
