@@ -108,7 +108,7 @@ The major exception to this is when working with data sources that benefit from 
 ### Test and document your package
 It's critical that you [test](/docs/build/data-tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
 
-Further, adding [documentation](/docs/collaborate/documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
+Further, adding [documentation](/docs/build/documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
 ### Include useful GitHub artifacts
 Over time, we've developed a set of useful GitHub artifacts that make administering our packages easier for us. In particular, we ensure that we include:
 - A useful README, that has:

@@ -12,7 +12,7 @@ dbt Cloud provides a helpful interface around dbt's [source data freshness](/doc
 
 [`dbt build`](reference/commands/build) does _not_ include source freshness checks when building and testing resources in your DAG. Instead, you can use one of these common patterns for defining jobs:
 - Add `dbt build` to the run step to run models, tests, and so on. 
-- Select the **Generate docs on run** checkbox to automatically [generate project docs](/docs/collaborate/build-and-view-your-docs#set-up-a-documentation-job).
+- Select the **Generate docs on run** checkbox to automatically [generate project docs](/docs/collaborate/build-and-view-your-docs).
 - Select the **Run source freshness** checkbox to enable [source freshness](#checkbox) as the first step of the job. 
 
 <Lightbox src="/img/docs/dbt-cloud/select-source-freshness.png" title="Selecting source freshness"/>
@@ -41,4 +41,5 @@ It's important that your freshness jobs run frequently enough to snapshot data l
 
 ## Further reading
 
-Refer to [Artifacts](/docs/deploy/artifacts) for more info on how to create dbt Cloud artifacts, share links to the latest documentation, and share source freshness reports with your team.
+- Refer to [Artifacts](/docs/deploy/artifacts) for more info on how to create dbt Cloud artifacts, share links to the latest documentation, and share source freshness reports with your team.
+- Source freshness for Snowflake is calculated using the `LAST_ALTERED` column. Read about the limitations in [Snowflake configs](/reference/resource-configs/snowflake-configs#source-freshness-known-limitation).

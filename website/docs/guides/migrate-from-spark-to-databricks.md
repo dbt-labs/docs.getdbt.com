@@ -20,7 +20,7 @@ You can migrate your projects from using the `dbt-spark` adapter to using the [d
 
 ### Prerequisites
 
-- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7).
+- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/older%20versions/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7).
 - For dbt Cloud, you need administrative (admin) privileges to migrate dbt projects.
 
 ### Simpler authentication
@@ -60,7 +60,7 @@ To update your Databricks connection in dbt Cloud:
 3. Click the hyperlinked Connection for the project.
 4. Click **Edit** in the top right corner.
 5. Select **Databricks** for the warehouse
-6. Select **Databricks (dbt-databricks)** for the adapter and enter the:
+6. Enter the:
     1. `hostname`
     2. `http_path`
     3. (optional) catalog name

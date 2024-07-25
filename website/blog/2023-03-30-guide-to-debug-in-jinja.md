@@ -9,7 +9,7 @@ date: 2023-03-29
 is_featured: true
 ---
 
-*Editor's note—this post assumes intermediate knowledge of Jinja and macros development in dbt. For an introduction to Jinja in dbt check out [the documentation](https://docs.getdbt.com/docs/build/jinja-macros) and the free self-serve course on [Jinja, Macros, Pacakages](https://courses.getdbt.com/courses/jinja-macros-packages).*
+*Editor's note—this post assumes intermediate knowledge of Jinja and macros development in dbt. For an introduction to Jinja in dbt check out [the documentation](https://docs.getdbt.com/docs/build/jinja-macros) and the free self-serve course on [Jinja, Macros, Packages](https://learn.getdbt.com/courses/jinja-macros-and-packages).*
 
 Jinja brings a lot of power to dbt, allowing us to use `ref()`, `source()` , conditional code, and [macros](https://docs.getdbt.com/docs/build/jinja-macros). But, while Jinja brings flexibility, it also brings complexity, and like many times with code, things can run in expected ways.
 

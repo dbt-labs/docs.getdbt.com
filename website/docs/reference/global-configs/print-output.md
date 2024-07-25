@@ -6,15 +6,9 @@ sidebar: "Print output"
 
 ### Suppress `print()` messages in stdout
 
-<VersionBlock lastVersion="1.4">
-
-By default, dbt includes `print()` messages in standard out (stdout). You can use the `DBT_NO_PRINT` environment variable to prevent these messages from showing up in stdout.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
-By default, dbt includes `print()` messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
+By default, dbt includes [`print()`](/reference/dbt-jinja-functions/print) messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
 
 :::warning Syntax deprecation
 

@@ -25,7 +25,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It w
 Snowflake also provides a quickstart for you to learn how to use dbt Cloud. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with dbt Cloud & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
@@ -37,7 +37,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 ### Related content
 
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
@@ -144,7 +144,7 @@ There are two ways to connect dbt Cloud to Snowflake. The first option is Partne
 
 Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
-1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Admin**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 

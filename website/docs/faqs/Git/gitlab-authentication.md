@@ -9,7 +9,7 @@ If you're seeing a 'GitLab Authentication is out of date' 500 server error page 
 
 No worries - this is a current issue the dbt Labs team is working on and we have a few workarounds for you to try:
 
-### 1st Workaround
+#### First workaround
 
 1. Disconnect repo from project in dbt Cloud.
 2. Go to Gitlab and click on Settings > Repository.
@@ -18,7 +18,7 @@ No worries - this is a current issue the dbt Labs team is working on and we have
 5. You would then need to check Gitlab to make sure that the new deploy key is added.
 6. Once confirmed that it's added, refresh dbt Cloud and try developing once again.
 
-### 2nd Workaround
+#### Second workaround
 
 1. Keep repo in project as is -- don't disconnect.
 2. Copy the deploy key generated in dbt Cloud.
