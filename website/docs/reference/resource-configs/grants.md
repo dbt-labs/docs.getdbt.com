@@ -11,7 +11,7 @@ The grant resource configs enable you to apply permissions at build time to a sp
 
 dbt aims to use the most efficient approach when updating grants, which varies based on the adapter you're using, and whether dbt is replacing or updating an object that already exists. You can always check the debug logs for the full set of grant and revoke statements that dbt runs.
 
-dbt encourages you to use grants as resource configs whenever possible in Core v1.2 and higher. In versions prior to Core v1.2, you were limited to using hooks for grants. Occasionally, you still might need to write grants statements manually and run them using hooks. For example, hooks may be appropriate if you want to:
+dbt encourages you to use grants as resource configs whenever possible. In versions prior to Core v1.2, you were limited to using hooks for grants. Occasionally, you still might need to write grants statements manually and run them using hooks. For example, hooks may be appropriate if you want to:
 
 * Apply grants in a more complex or custom manner, beyond what the built-in grants capability can provide.
 * Apply grants on other database objects besides views and tables.

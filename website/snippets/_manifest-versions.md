@@ -1,6 +1,7 @@
 
 | dbt Core version | Manifest version                                              |
 |------------------|---------------------------------------------------------------|
+| v1.8             | [v12](https://schemas.getdbt.com/dbt/manifest/v12/index.html)  |
 | v1.7             | [v11](https://schemas.getdbt.com/dbt/manifest/v11/index.html)  |
 | v1.6             | [v10](https://schemas.getdbt.com/dbt/manifest/v10/index.html) |
 | v1.5             | [v9](https://schemas.getdbt.com/dbt/manifest/v9/index.html)   |

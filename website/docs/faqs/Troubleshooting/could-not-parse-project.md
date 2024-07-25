@@ -12,6 +12,6 @@ The error message `Could not parse dbt_project.yml: while scanning for...` in yo
 
 To resolve this issue, consider the following:
 - Use an online YAML parser or validator to check for any parsing errors in your YAML file. Some known parsing errors include missing fields, incorrect formatting, or tab indentation.
-- Or ensure your `dbt_project.yml` file.
+- Or ensure your `dbt_project.yml` file exists.
 
 Once you've identified the issue, you can fix the error and rerun your dbt Cloud job.

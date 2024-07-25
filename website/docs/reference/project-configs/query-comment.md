@@ -19,7 +19,7 @@ The `query-comment` configuration also accepts a dictionary input, like so:
 ```yml
 models:
   my_dbt_project:
-    +materliazed: table
+    +materialized: table
 
 query-comment:
   comment: string
@@ -264,7 +264,7 @@ The following context variables are available when generating a query comment:
 
 | Context Variable | Description |
 | ---------------- | ----------- |
-| dbt_version      | The version of dbt being used |
+| dbt_version      | The version of dbt being used. For details about release versioning, refer to [Versioning](/reference/commands/version#versioning). |
 | env_var          | See [env_var](/reference/dbt-jinja-functions/env_var) |
 | modules          | See [modules](/reference/dbt-jinja-functions/modules) |
 | run_started_at   | When the dbt invocation began |

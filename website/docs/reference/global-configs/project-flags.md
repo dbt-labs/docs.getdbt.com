@@ -40,7 +40,7 @@ config:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.2" lastVersion="1.7">
+<VersionBlock lastVersion="1.7">
 
 The exception: Some global configurations are actually set in `dbt_project.yml`, instead of `profiles.yml`, because they control where dbt places logs and artifacts. Those file paths are always relative to the location of `dbt_project.yml`. For more details, refer to [Log and target paths](/reference/global-configs/logs#log-and-target-paths).
 

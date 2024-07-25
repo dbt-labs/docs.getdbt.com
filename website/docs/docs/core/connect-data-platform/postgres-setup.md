@@ -88,10 +88,67 @@ If the database closes its connection while dbt is waiting for data, you may see
 
 [dbt's default setting](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/adapters/postgres/connections.py#L28) is 0 (the server's default value), but can be configured lower (perhaps 120 or 60 seconds), at the cost of a chattier network connection.
 
-<VersionBlock firstVersion="1.2">
 
 #### retries
 
 If `dbt-postgres` encounters an operational error or timeout when opening a new connection, it will retry up to the number of times configured by `retries`. The default value is 1 retry. If set to 2+ retries, dbt will wait 1 second before retrying. If set to 0, dbt will not retry at all.
+
+
+### `psycopg2` vs `psycopg2-binary`
+
+`psycopg2-binary` is installed by default when installing `dbt-postgres`.
+Installing `psycopg2-binary` uses a pre-built version of `psycopg2` which may not be optimized for your particular machine.
+This is ideal for development and testing workflows where performance is less of a concern and speed and ease of install is more important.
+However, production environments will benefit from a version of `psycopg2` which is built from source for your particular operating system and archtecture. In this scenario, speed and ease of install is less important as the on-going usage is the focus.
+
+<VersionBlock firstVersion="1.8">
+
+To use `psycopg2`:
+1. Install `dbt-postgres`
+2. Uninstall `psycopg2-binary`
+3. Install the equivalent version of `psycopg2`
+
+```bash
+pip install dbt-postgres
+if [[ $(pip show psycopg2-binary) ]]; then
+    PSYCOPG2_VERSION=$(pip show psycopg2-binary | grep Version | cut -d " " -f 2)
+    pip uninstall -y psycopg2-binary && pip install psycopg2==$PSYCOPG2_VERSION
+fi
+```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.7">
+
+To ensure your dbt installation uses `psycopg2`, prefix all `dbt-postgres` installation commands with `DBT_PSYCOPG2_NAME=psycopg2`.
+For example:
+```bash
+DBT_PSYCOPG2_NAME=psycopg2 pip install dbt-postgres
+```
+
+</VersionBlock>
+
+Installing `psycopg2` often requires OS level dependencies.
+These dependencies may vary across operating systems and architectures.
+
+For example, on Ubuntu, you need to install `libpq-dev` and `python-dev`:
+```bash
+sudo apt-get update
+sudo apt-get install libpq-dev python-dev
+```
+whereas on Mac, you need to install `postgresql`:
+```bash
+brew install postgresql
+pip install psycopg2
+```
+Your OS may have its own dependencies based on your particular scenario.
+
+<VersionBlock firstVersion="1.8">
+
+#### Limitations
+
+In versions 1.8.0 and 1.8.1, `psycopg2-binary` is installed on MacOS and Windows operating systems and `psycopg2` is installed on Linux operating systems.
+This has the side effect of requiring the OS dependencies identified above to install `dbt-postgres` on Linux.
+Users will either need to update their workflows to install these dependencies, or upgrade to 1.8.2.
 
 </VersionBlock>

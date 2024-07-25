@@ -14,10 +14,9 @@ Entities can be specified with a single column or multiple columns. Entities (jo
 
 There are four entity types: primary, foreign, unique, or natural.
 
-:::tip Use entities as a dimensions
-You can also use entities as a dimension, which allows you to aggregate a metric to the granularity of that entity.
+:::tip Use entities as dimensions
+You can also use entities as dimensions, which allows you to aggregate a metric to the granularity of that entity.
 :::
-
 
 ## Entity types
 
@@ -89,17 +88,17 @@ In this example, `product_code` serves as a natural key because it uniquely iden
 
 ### Entities configuration
 
-The complete spec for entities is as follows:
+The following is the complete spec for entities:
 
 <File name="models/marts/sem_semantic_model_name.yml">
   
 ```yaml
 entities:
   - name: transaction     ## Required
-    type: primary or natural or foreign or unique ## Required
-    description: a description of the field or role the entity takes in this table ## Optional
-    expr: the field that denotes that entity (transaction_id).  ## Optional
-          If not specified will default to name 
+    type: Primary or natural or foreign or unique ## Required
+    description: A description of the field or role the entity takes in this table ## Optional
+    expr: The field that denotes that entity (transaction_id).  ## Optional
+          Defaults to name if unspecified.
 ```
 
 </File>
@@ -107,6 +106,7 @@ entities:
 Here's an example of how to define entities in a semantic model:
 
 <File name="models/marts/sem_semantic_model_name.yml">
+  
 ``` yaml
 entities:
   - name: transaction
@@ -119,4 +119,22 @@ entities:
     type: foreign
     expr: substring(id_order from 2)
 ```
+
 </File>
+
+
+### Combine columns with a key
+
+If a table doesn't have any key (like a primary key), use _surrogate combination_ to form a key that will help you identify a record by combining two columns. This applies to any [entity type](/docs//build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a _surrogate key_. The following example creates a surrogate key by joining `date_key` and `brand_code` using a pipe (`|`) as a separator. 
+
+
+<File name="models/marts/sem_semantic_model_name.yml">
+```yaml
+entities:
+  - name: brand_target_key # Entity name or identified.
+    type: foreign # This can be any entity type key. 
+    expr: date_key || '|' || brand_code # Defines the expression for linking fields to form the surrogate key.
+```
+</File>
+
+

@@ -51,8 +51,6 @@ This variable is a pointer to the Python [re](https://docs.python.org/3/library/
 {% endif %}
 ```
 
-<VersionBlock firstVersion="1.2">
-
 ## itertools
 This variable is a pointer to the Python [itertools](https://docs.python.org/3/library/itertools.html) module, which includes useful functions for working with iterators (loops, lists, and the like).
 
@@ -92,4 +90,3 @@ The supported functions are:
   (2, 'z')
 ```
 
-</VersionBlock>

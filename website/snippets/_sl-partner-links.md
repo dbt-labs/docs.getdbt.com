@@ -6,15 +6,21 @@ The following tools integrate with the dbt Semantic Layer:
 
  <Card
     title="Tableau"
-    link="/docs/use-dbt-semantic-layer/tableau"
+    link="/docs/cloud-integrations/semantic-layer/tableau"
     body="Learn how to connect to Tableau for querying metrics and collaborating with your team."
     icon="tableau-software"/>
-
+  
   <Card
-    title="Google Sheets (Preview)"
-    link="/docs/use-dbt-semantic-layer/gsheets"
+    title="Google Sheets"
+    link="/docs/cloud-integrations/semantic-layer/gsheets"
     body="Discover how to connect to Google Sheets for querying metrics and collaborating with your team."
     icon="google-sheets-logo-icon"/>
+
+  <Card
+    title="Microsoft Excel (preview)"
+    link="/docs/cloud-integrations/semantic-layer/excel"
+    body="Connect to Microsoft Excel to query metrics and collaborate with your team. Available for Excel Desktop or Excel Online."
+    icon="excel"/>
 
   <div className="card-container">
     <Card
@@ -29,20 +35,6 @@ The following tools integrate with the dbt Semantic Layer:
       <Icon name='fa-external-link' />
     </a>
   </div>
-
-  <div className="card-container">
-  <Card
-    title="Delphi"
-    body="Learn how to connect Delphi to the dbt Semantic Layer and access metrics from any integrated tool."
-    link="https://docs.delphihq.com/getting-started"
-    icon="delphi"/>
-    <a href="https://docs.delphihq.com/getting-started"
-    className="external-link"
-      target="_blank"
-      rel="noopener noreferrer">
-      <Icon name='fa-external-link' />
-    </a>
-</div>
 
 <div className="card-container">
   <Card

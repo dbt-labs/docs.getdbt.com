@@ -22,7 +22,7 @@ Learn how to configure the dbt Cloud CLI for your dbt Cloud project to run dbt c
 
 ## Configure the dbt Cloud CLI
 
-Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project. 
+Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project.
 
 1. In dbt Cloud, navigate to **Develop** and click **Configure dbt Cloud CLI** to download your `dbt_cloud.yml` credentials file.
 
@@ -103,15 +103,44 @@ The dbt Cloud CLI uses the same set of [dbt commands](/reference/dbt-commands) a
 - Automatically defers build artifacts to your Cloud project's production environment.
 - Supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
   - Project dependencies instantly connect to and reference (or  `ref`) public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
-
+ 
 :::tip Use the <code>--help</code> flag
 As a tip, most command-line tools have a `--help` flag to show available commands and arguments. Use the `--help` flag with dbt in two ways:
 - `dbt --help`: Lists the commands available for dbt<br />
 - `dbt run --help`: Lists the flags available for the `run` command
 :::
+ 
+### Lint SQL files 
+
+From the dbt Cloud CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the dbt Cloud CLI.
+
+The available SQLFluff commands are: 
+
+- `lint` &mdash; Lint SQL files by passing a list of files or from standard input (stdin).
+- `fix` &mdash; Fix SQL files.
+- `format` &mdash; Autoformat SQL files.
+
+
+To lint SQL files, run the command as follows:  
+
+```shell
+dbt sqlfluff lint [PATHS]... [flags]
+```
+
+When no path is set, dbt lints all SQL files in the current project. To lint a specific SQL file or a directory, set `PATHS` to the path of the SQL file(s) or directory of files. To lint multiple files or directories, pass multiple `PATHS` flags.  
+
+To show detailed information on all the dbt supported commands and flags, run the `dbt sqlfluff -h` command. 
+
+#### Considerations
+
+When running `dbt sqlfluff` from the dbt Cloud CLI, the following are important behaviors to consider:
+
+- dbt reads the `.sqlfluff` file, if it exists, for any custom configurations you might have.
+- For continuous integration/continuous development (CI/CD) workflows, your project must have a `dbt_cloud.yml` file and you have successfully run commands from within this dbt project.
+- An SQLFluff command will return an exit code of 0 if it ran with any file violations. This dbt behavior differs from SQLFluff behavior, where a linting violation returns a non-zero exit code. dbt Labs plans on addressing this in a later release.
 
 ## FAQs
-<expandable alt_header="How to create a .dbt directory and move your file">
+<Expandable alt_header="How to create a .dbt directory and move your file">
 
 If you've never had a `.dbt` directory, you should perform the following recommended steps to create one. If you already have a `.dbt` directory, move the `dbt_cloud.yml` file into it.
 
@@ -119,7 +148,7 @@ If you've never had a `.dbt` directory, you should perform the following recomme
 <TabItem value="Create a .dbt directory">
 
   1. Clone your dbt project repository locally.
-  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to to create a `.dbt` folder in the root of your filesystem:
+  2. Use the `mkdir` command followed by the name of the folder you want to create. Add the `~` prefix to create a `.dbt` folder in the root of your filesystem:
 
      ```bash
      mkdir ~/.dbt
@@ -152,4 +181,4 @@ move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
 
 This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
 
-</expandable>
+</Expandable>
