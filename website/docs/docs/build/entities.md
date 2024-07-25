@@ -100,7 +100,6 @@ entities:
     expr: The field that denotes that entity (transaction_id).  ## Optional
           Defaults to name if unspecified.
 ```
-
 </File>
 
 Here's an example of how to define entities in a semantic model:
@@ -119,7 +118,6 @@ entities:
     type: foreign
     expr: substring(id_order from 2)
 ```
-
 </File>
 
 
@@ -131,12 +129,10 @@ If a table doesn't have any key (like a primary key), use _surrogate combination
 <File name='models/marts/sem_semantic_model_name.yml'>
   
 ```yaml
+
 entities:
   - name: brand_target_key # Entity name or identified.
     type: foreign # This can be any entity type key. 
     expr: date_key || '|' || brand_code # Defines the expression for linking fields to form the surrogate key.
 ```
-
 </File>
-
-
