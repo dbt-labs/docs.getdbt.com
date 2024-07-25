@@ -20,11 +20,11 @@ Environment variable values can be set in multiple places within dbt Cloud. As a
  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/env-var-precdence.png" title="Environment variables order of precedence"/>
 
 There are four levels of environment variables:
- 1. the optional default argument supplied to the `env_var` Jinja function in code, which can be overridden at
- 2. the project-wide level by its default value, which can be overridden at
- 3. the environment level, which can in turn be overridden again at
- 4. the job level (job override) or in the IDE for an individual dev (personal override).
 
+ 1. The optional default argument supplied to the `env_var` Jinja function in code, which can be overridden at (_lowest precedence_)
+ 2. The project-wide level by its default value, which can be overridden at
+ 3. The environment level, which can in turn be overridden again at
+ 4. The job level (job override) or in the IDE for an individual dev (personal override). (_highest precedence_)
 
 **Setting environment variables at the project and environment level**
 
@@ -36,7 +36,7 @@ To set environment variables at the project and environment level, click **Deplo
 
 You'll notice there is a `Project Default` column. This is a great place to set a value that will persist across your whole project, independent of where the code is run. We recommend setting this value when you want to supply a catch-all default or add a project-wide token or secret.
 
-To the right of the `Project Default` column are all your environments. Values set at the environment level take priority over the project level default value. This is where you can tell dbt Cloud to interpret an environment value differently in your Staging vs. Production environment, as example.
+To the right of the `Project Default` column are all your environments. Values set at the environmental level take priority over the project-level default value. This is where you can tell dbt Cloud to interpret an environment value differently in your Staging vs. Production environment, as an example.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/project-environment-view.png" title="Setting project level and environment level values"/>
 
@@ -59,7 +59,7 @@ Every job runs in a specific, deployment environment, and by default, a job will
 **Overriding environment variables at the personal level**
 
 
-You can also set a personal value override for an environment variable when you develop in the dbt integrated developer environment (IDE). By default, dbt Cloud uses environment variable values set in the project's development environment. To see and override these values, click the gear icon in the top right. Under "Your Profile," click **Credentials** and select your project. Click **Edit** and make any changes in "Environment Variables."
+You can also set a personal value override for an environment variable when you develop in the dbt-integrated developer environment (IDE). By default, dbt Cloud uses environment variable values set in the project's development environment. To see and override these values, click the gear icon in the top right. Under "Your Profile," click **Credentials** and select your project. Click **Edit** and make any changes in "Environment Variables."
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/personal-override.gif" title="Navigating to environment variables personal override settings"/>
 
