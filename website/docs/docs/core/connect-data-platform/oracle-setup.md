@@ -447,10 +447,6 @@ quoting:
 ```
 </File>
 
-
-
-<VersionBlock firstVersion="1.5.1"> 
-
 ## Python models using Oracle Autonomous Database (ADB-S)
 
 Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models using Oracle Machine Learning (OML4PY) which is available without any extra setup required.
@@ -474,11 +470,13 @@ Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models usin
 
 #### OML Cloud Service URL
 
-OML Cloud Service URL is of the following format
+OML Cloud Service URL is of the following format:
+
 ```text
 https://tenant1-dbt.adb.us-sanjose-1.oraclecloudapps.com
 ```
-In this example,
+
+In this example:
   - `tenant1` is the tenancy ID
   - `dbt` is the database name
   - `us-sanjose-1` is the datacenter region
@@ -605,7 +603,6 @@ def model(dbt, session):
 
 ```
 
-
 ### Use Custom Conda environment
 
 1. As ADMIN user, create a conda environment using [OML4PY Conda Notebook](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/administrative-task-create-and-conda-environments.html):
@@ -637,10 +634,7 @@ def model(dbt, session):
     return promotion_cost
 ```
 
-</VersionBlock>
-
-
-## Supported Features
+## Supported features
 
 - Table materialization
 - View materialization
@@ -659,5 +653,5 @@ def model(dbt, session):
 - Integration with Conda to use any Python packages from Anaconda's repository
 - All dbt commands are supported
 
-## Not Supported features
+## Not supported features
 - Ephemeral materialization
