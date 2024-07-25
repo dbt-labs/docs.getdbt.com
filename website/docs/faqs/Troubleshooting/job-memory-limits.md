@@ -15,12 +15,15 @@ Some common reasons for higher memory usage are:
 
 ## Resolution
 
-Try the following to resolve this:
+There are various reasons why you could be experiencing this error. We recommend you review your data models to see if there are any opportunities to optimize or refactor them. For example, you can try to reduce the number of columns being selected, use `group` or `where` clauses to filter data early in the query, or use `limit` clauses to reduce the amount of data being processed.
 
-1. **Use incremental models**: Try using [incremental models](/docs/build/incremental-models-overview) to reduce the amount of data being processed in each run. Incremental models only process new or updated data, which can help reduce the memory usage of your jobs.
-2. **Refactor your data model**: Review your data models to see if there are any opportunities to optimize or refactor them. For example, you can try to reduce the number of columns being selected, use `where` clauses to filter data early in the query or use `limit` clauses to reduce the amount of data being processed.
+<!-- add url link when available
+:::tip Check out video example
+As an additional resource, check out this example video add URL here, which demonstrates how to refactor the sample code by reducing the number of columns returned. 
+:::
+-->
 
-If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com) and we can try increasing your account's memory. We're happy to help!
+If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com). We're happy to help!
 
 ## Additional resources
 - [Blog post on how we shaved 90 mins off](https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model)
