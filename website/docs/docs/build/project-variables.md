@@ -110,7 +110,7 @@ The order of precedence for variable declaration is as follows (highest priority
 
 </VersionBlock>
 
-If dbt is unable to find a definition for a variable after checking these four places, then a compilation error will be raised.
+If dbt is unable to find a definition for a variable after checking all possible variable declaration places, then a compilation error will be raised.
 
 **Note:** Variable scope is based on the node ultimately using that variable. Imagine the case where a model defined in the root project is calling a macro defined in an installed package. That macro, in turn, uses the value of a variable. The variable will be resolved based on the _root project's_ scope, rather than the package's scope.
 

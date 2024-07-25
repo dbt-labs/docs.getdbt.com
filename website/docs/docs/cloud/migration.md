@@ -1,6 +1,7 @@
 --- 
 title: "Multi-cell migration checklist"
 id: migration 
+sidebar_label: "Multi-cell migration checklist"
 description: "Prepare for account migration to AWS cell-based architecture." 
 pagination_next: null
 pagination_prev: null
@@ -16,17 +17,16 @@ This document outlines the steps that you must take to prevent service disruptio
 
 ## Pre-migration checklist
 
-Prior to your migration date, your dbt Cloud account admin will need to make some changes to your account.
+Prior to your migration date, your dbt Cloud account admin will need to make some changes to your account. Most of your configurations will be migrated automatically, but a few will require manual intervention. 
 
 If your account is scheduled for migration, you will see a banner indicating your migration date when you log in. If you don't see a banner, you don't need to take any action.
 
 1. **IP addresses** &mdash; dbt Cloud will be using new IPs to access your warehouse after the migration. Make sure to allow inbound traffic from these IPs in your firewall and include it in any database grants. All six of the IPs below should be added to allowlists.
     * Old IPs: `52.45.144.63`, `54.81.134.249`, `52.22.161.231`
     * New IPs: `52.3.77.232`, `3.214.191.130`, `34.233.79.135`
-2. **IDE sessions** &mdash; Any uncommitted changes in the IDE might be lost during the migration process. dbt Labs _strongly_ encourages you to commit all changes in the IDE before your scheduled migration time.
-3. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can resend the invitations once the migration is complete.
-4. **Git integrations** &mdash; For customers on a dbt Cloud Enterprise plan, native integrations with [GitLab](/docs/cloud/git/connect-gitlab#for-the-dbt-cloud-enterprise-tier) and [Azure DevOps](/docs/cloud/git/connect-azure-devops) will need to be manually updated. dbt Labs will not be migrating any accounts using these integrations at this time. If you're using one of these integrations and your account is scheduled for migration, please contact support and we will delay your migration.
-5. **SSO integrations** &mdash; Integrations with SSO identity providers (IdPs) will need to be manually updated. dbt Labs will not be migrating any accounts using SSO at this time. If you're using one of these integrations and your account is scheduled for migration, please contact support and we will delay your migration.
+2. **User invitations** &mdash; Any pending user invitations will be invalidated during the migration. You can resend the invitations after the migration is complete.
+3. **SSO integrations** &mdash; If you've completed the Auth0 migration, your account SSO configurations will be automatically transferred. If you haven't completed the Auth0 migration, dbt Labs recommends doing that before starting the mult-cell migration to avoid service disruptions.
+4. **IDE sessions** &mdash; Any unsaved changes in the IDE might be lost during migration. dbt Labs _strongly_ recommends committing all changes in the IDE before your scheduled migration time.
 
 ## Post-migration
 

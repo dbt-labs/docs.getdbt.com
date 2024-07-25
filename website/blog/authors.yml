@@ -162,7 +162,7 @@ doug_beatty:
 
 doug_guthrie:
   image_url: /img/blog/authors/dguthrie.jpeg
-  job_title: Solutions Architect
+  job_title: Senior Solutions Architect
   links:
     - icon: fa-github
       url: https://github.com/dpguthrie
@@ -187,7 +187,7 @@ emily_riederer:
     - icon: fa-readme
       url: https://emilyriederer.com
 
-euan_johnston:  
+euan_johnston:
   image_url: /img/blog/authors/ejohnston.png
   job_title: Freelance Business Intelligence manager
   name: Euan Johnston
@@ -205,6 +205,16 @@ grace_goheen:
       url: https://www.linkedin.com/in/gracegoheen/
   name: Grace Goheen
   organization: dbt Labs
+
+gwen_windflower:
+  name: Gwen Windflower
+  image_url: /img/blog/authors/gwen-windflower.jpeg
+  job_title: Senior Developer Experience Advocate
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/gwenwindflower
+    - icon: fa-github
+      url: https://github.com/gwenwindflower
 
 ian_fahey:
   image_url: /img/blog/authors/ian-fahey.png
@@ -304,7 +314,7 @@ jordan_stein:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/jstein5/
   name: Jordan Stein
-  organization: dbt Labs  
+  organization: dbt Labs
 
 josh_fell:
   image_url: /img/blog/authors/josh-fell.jpeg
@@ -409,7 +419,6 @@ pedro_brito_de_sa:
   name: Pedro Brito de Sa
   organization: Sage
 
-
 rastislav_zdechovan:
   image_url: /img/blog/authors/rastislav-zdechovan.png
   job_title: Analytics Engineer
@@ -436,8 +445,8 @@ roxi_dahlke:
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/roxanna-dahlke-pourzand-445a3035
-  name: Roxi Dahlke 
-  organization: dbt Labs  
+  name: Roxi Dahlke
+  organization: dbt Labs
 
 sam_harting:
   description: Sam is a graduate of the inaugural Foundry Program. When Sam isn't helping clients build out their project, he is usually playing video games or making bad jokes to his friends, family, and coworkers.
@@ -559,7 +568,7 @@ jonathan_neo:
       url: https://www.linkedin.com/in/jonneo/
   name: Jonathan Neo
   organization: Canva & Data Engineer Camp
-  description: Jonathan is a Data Engineer at Canva where he is building and maintaining petabyte-scale data platforms. Jonathan founded Data Engineer Camp, a bootcamp that empowers professionals to become proficient data engineers. He has since trained data and software professionals from around that are working at companies like Microsoft, Atlassian, and Apple. 
+  description: Jonathan is a Data Engineer at Canva where he is building and maintaining petabyte-scale data platforms. Jonathan founded Data Engineer Camp, a bootcamp that empowers professionals to become proficient data engineers. He has since trained data and software professionals from around that are working at companies like Microsoft, Atlassian, and Apple.
 
 santiago_jauregui:
   image_url: /img/blog/authors/santiago-jauregui.jpeg
@@ -569,3 +578,66 @@ santiago_jauregui:
       url: https://www.linkedin.com/in/santiago-jauregui/
   name: Santiago Jauregui
   organization: MODO
+
+michelle_ark:
+  image_url: /img/blog/authors/michelle-ark.png
+  job_title: Staff Software Engineer
+  name: Michelle Ark
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/michelle-ark
+
+chenyu_li:
+  image_url: /img/blog/authors/chenyu-li.png
+  job_title: Staff Software Engineer
+  name: Chenyu Li
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/chenyu-li-450b06a8
+
+colin_rogers:
+  image_url: /img/blog/authors/colin-rogers.jpeg
+  job_title: Senior Software Engineer
+  name: Colin Rogers
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/ckrogers
+
+anders_swanson:
+  image_url: /img/blog/authors/anders-rain.jpg
+  job_title: Senior Developer Experience Advocate
+  name: Anders Swanson
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/andersswanson
+
+ernesto_ongaro:
+  image_url: /img/blog/authors/ernesto-ongaro.png
+  job_title: Senior Solutions Architect 
+  name: Ernesto Ongaro
+  organization: dbt Labs
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/eongaro
+
+sebastian_stan:
+  image_url: /img/blog/authors/sebastian-eqt.png
+  job_title: Data Engineer
+  name: Sebastian Stan
+  organization: EQT Group
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/sebastian-lindblom/
+
+filip_byrén:
+  image_url: /img/blog/authors/filip-eqt.png
+  job_title: VP and Software Architect
+  name: Filip Byrén
+  organization: EQT Group
+  links:
+    - icon: fa-linked
+      url: https://www.linkedin.com/in/filip-byr%C3%A9n/

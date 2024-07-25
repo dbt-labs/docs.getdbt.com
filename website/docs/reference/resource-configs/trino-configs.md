@@ -93,7 +93,7 @@ Another way to avoid the header line length limit is to set `prepared_statements
 ## Materializations
 ### Table
 
-The `dbt-trino` adapter supports these modes in `table` materialization, which you can configure with `on_table_exists`:
+The `dbt-trino` adapter supports these modes in `table` materialization (and [full-refresh runs](/reference/commands/run#refresh-incremental-models) in `incremental` materialization), which you can configure with `on_table_exists`:
 
 - `rename` &mdash; Creates an intermediate table, renames the target table to the backup one, and renames the intermediate table to the target one.
 - `drop` &mdash; Drops and re-creates a table. This overcomes the table rename limitation in AWS Glue.
@@ -193,6 +193,8 @@ select * from {{ ref('events') }}
 Use the `+on_schema_change` property to define how dbt-trino should handle column changes. For more details about this property, see [column changes](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change). 
 
 If your connector doesn't support views, set the `+views_enabled` property to `false`.
+
+You can decide how model should be rebuilt in a `full-refresh` run by specifying `on_table_exists` config. Options are the same as described in [table materialization section](/reference/resource-configs/trino-configs#table)
 
 #### append strategy
 

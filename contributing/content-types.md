@@ -9,6 +9,7 @@ These content types can all form articles. Some content types can form sections 
 * [Procedural](#procedural)
 * [Guide](#guide)
 * [Quickstart](#quickstart-guide)
+* [Cookbook recipes](#cookbook-recipes)
 
 
 ## Conceptual
@@ -165,3 +166,26 @@ Quickstart guides are generally more conversational in tone than our other docum
 
 Examples
 TBD
+
+## Cookbook recipes
+The dbt Cookbook recipes are a collection of scenario-based, real-world examples for building with the dbt. Cookbook recipes offer practical, scenario-based examples for using specific features. 
+
+Code examples could be written in SQL or [Python](/docs/build/python-models), though most will be in SQL.
+
+If there are examples or guides you'd like to see, feel free to suggest them on the [documentation issues page](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose). We're also happy to accept high-quality pull requests, as long as they fit the scope of the cookbook.
+
+### Contents of a cookbook recipe article or header
+
+Cookbook recipes should contain real-life scenarios with objectives, prerequisites, detailed steps, code snippets, and outcomes &mdash; providing users with a dedicated section to implement solutions based on their needs. Cookbook recipes complement the existing guides by giving users hands-on, actionable instructions and code.
+
+Each cookbook recipe should include objectives, a clear use case, prerequisites, step-by-step instructions, code snippets, expected output, and troubleshooting tips.
+
+### Titles for cookbook recipe content
+
+Cookbook recipe headers should always start with a “How to create [topic]” or "How to [verb] [topic]".
+
+### Examples of cookbook recipe content
+
+- How to calculate annual recurring revenue (ARR) using metrics in dbt
+- How to calculate customer acquisition cost (CAC) using metrics in dbt
+- How to track the total number of sale transactions using metrics in dbt

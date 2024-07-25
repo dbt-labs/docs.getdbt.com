@@ -28,14 +28,13 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 **Job outcome** &mdash; During a job run, the built-in commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
 
-
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fail-dbtdeps.jpg" width="85%" title="A failed job that had an error during the dbt deps run step."/>
 
 ### Checkbox commands
 
 For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
-**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
+**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Set up documentation job](/docs/collaborate/build-and-view-your-docs) for more info.
 
 **Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
@@ -49,9 +48,8 @@ You can add or remove as many dbt commands as necessary for every job. However, 
 Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`. The job will still run if a selector doesn't match any models. 
 
 :::
-   
-    
-**Job outcome**  &mdash;  During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
+
+**Job outcome** &mdash; During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
 
 In the following example image, the first four run steps are successful. However, if the fifth run step (`dbt run --select state:modified+ --full-refresh --fail-fast`) fails, then the next run steps aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
 
