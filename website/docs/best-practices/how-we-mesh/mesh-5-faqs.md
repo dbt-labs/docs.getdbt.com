@@ -98,7 +98,7 @@ In the future, we plan for dbt Cloud to also be able to proactively flag this sc
 
 <detailsToggle alt_header="If I run `dbt build --select +model`, will this trigger a run of upstream models in other projects?">
 
-No, unless downstream projects are installed as [packages](/docs/build/packages) (source code). In that case, the models in project installed as a project become “your” models, and you can select or run them. There are cases in which this can be desirable; see docs on [project dependencies](/docs/collaborate/govern/project-dependencies).
+No, unless upstream projects are installed as [packages](/docs/build/packages) (source code). In that case, the models in project installed as a project become “your” models, and you can select or run them. There are cases in which this can be desirable; see docs on [project dependencies](/docs/collaborate/govern/project-dependencies).
 
 </detailsToggle>
 
