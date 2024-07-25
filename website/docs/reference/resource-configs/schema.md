@@ -22,7 +22,7 @@ models:
 ```
 </File>
 
-This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.<target_schema>_marketing.model_name`.
+This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.target_schema_marketing.model_name`. This is because the schema of the relation is `{{ target.schema }}_{{ schema }}`. The [definition](#definition) section explains this in more detail.
 
 </TabItem>
 
@@ -41,7 +41,7 @@ seeds:
       +schema: mappings
 ```
 
-This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.<target_schema>_mappings.product_mappings`. 
+This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.target_schema_mappings.product_mappings`. 
 </File>
 </TabItem>
 
