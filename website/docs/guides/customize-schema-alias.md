@@ -541,4 +541,7 @@ Some users prefer to enforce custom schemas on all objects within their projects
     
     {%- endif -%}
 
+```
+</File>
+
 </div>
