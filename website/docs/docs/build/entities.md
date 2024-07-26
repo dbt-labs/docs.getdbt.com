@@ -25,6 +25,8 @@ MetricFlow's join logic depends on the entity `type` you use and determines how 
 ### Primary
 A primary key has _only one_ record for each row in the table and includes every record in the data platform. It must contain unique values and can't contain null values. Use the primary key to ensure that each record in the table is distinct and identifiable.
 
+<Expandable alt_header="Primary key example">
+
 For example, consider a table of employees with the following columns:
 
 ```sql
@@ -34,8 +36,12 @@ last_name
 ```
 In this case, `employee_id` is the primary key. Each `employee_id` is unique and represents one specific employee. There can be no duplicate `employee_id` and can't be null.
 
+</Expandable>
+
 ### Unique
 A unique key contains _only one_ record per row in the table but may have a subset of records in the data warehouse. However, unlike the primary key, a unique key allows for null values. The unique key ensures that the column's values are distinct, except for null values.
+
+<Expandable alt_header="Unique key example">
 
 For example, consider a table of students with the following columns:
 
@@ -48,9 +54,13 @@ last_name
 
 In this example, `email` is defined as a unique key. Each email address must be unique; however, multiple students can have null email addresses. This is because the unique key constraint allows for one or more null values, but non-null values must be unique. This then creates a set of records with unique emails (non-null) that could be a subset of the entire table, which includes all students.
 
+</Expandable>
+
 ### Foreign
 A foreign key is a field (or a set of fields) in one table that uniquely identifies a row in another table. The foreign key establishes a link between the data in two tables.
 It can include zero, one, or multiple instances of the same record. It can also contain null values.
+
+<Expandable alt_header="Foreign key example">
 
 For example, consider you have two tables, `customers` and `orders`:
 
@@ -71,10 +81,14 @@ customer_id (foreign key)
 
 In this example, the `customer_id` in the `orders` table is a foreign key that references the `customer_id` in the `customers` table. This link means each order is associated with a specific customer. However, not every order must have a customer; the `customer_id` in the orders table can be null or have the same `customer_id` for multiple orders.
 
+</Expandable>
+
 ### Natural
 
 Natural keys are columns or combinations of columns in a table that uniquely identify a record based on real-world data. For instance, in a `sales_person_department` dimension table, the `sales_person_id` can serve as a natural key. You can only use natural keys for [SCD type II dimensions](/docs/build/dimensions#scd-type-ii).
 
+<Expandable alt_header="Natural key example">
+  
 For example, consider a table of `products` in an inventory system:
 
 ```sql
@@ -85,6 +99,8 @@ category
 ```
 
 In this example, `product_code` serves as a natural key because it uniquely identifies each product in a real-world context, such as the stock-keeping unit (SKU) used by the company. It's based on the product's properties and has real-world meaning beyond the database system.
+
+</Expandable>
 
 ## Entities configuration
 
