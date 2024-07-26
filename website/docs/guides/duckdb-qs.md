@@ -1,6 +1,6 @@
 ---
 title: Quickstart for dbt Core using DuckDB
-id: DuckDB
+id: duckDB
 description: "Learn to use dbt Core using DuckDB."
 hoverSnippet: "Learn to use dbt Core using DuckDB."
 platform: 'dbt-core'
@@ -18,6 +18,11 @@ In this quickstart guide, you’ll learn how to install dbt Core for the use of 
 
 We'll also touch on creating a codespace executing the `dbt build` command from it in _less than 5 minutes_. 
 
+It will show you how to:
+
+- Provide a summary of DuckDB
+- Install DuckDB
+
 
 ### What is DuckDB?
 
@@ -25,7 +30,7 @@ We'll also touch on creating a codespace executing the `dbt build` command from 
 
 <Tabs>
 
-<TabItem value="duckdb" label="DuckDB">
+<TabItem value="local" label="Local">
 
 DuckDB is an open-source database management system which is designed for analytical workloads.  It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
 
@@ -50,7 +55,7 @@ Here's a list of some of the main features of DuckDB:
 
  </TabItem>
  
- <TabItem value="codespaces" label="Codespaces">
+ <TabItem value="web" label="Web">
 
 dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that you (and anyone else) can reuse to create a complete dbt environment with a working and runnable project. When you create the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) creates a fully functioning dbt environment, connects to a DuckDB database, and loads a year of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Jaffle Shop template also provides instructions on how to do this, along with animated GIFs. 
 
@@ -60,8 +65,6 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 </Tabs>
 
 
-## Related content
-
 - [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup)
 - [Create a GitHub repository](/guides/manual-install?step=2)
 - [Build your first models](/guides/manual-install?step=3)
@@ -70,18 +73,16 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
 
 
-## Install DuckDB
-
-Further down is a step-by-step explanation of the steps to install DuckDB.
-
-
 ### Prerequisites
 
-When using DuckDB with dbt Core, you'll need to use the dbt command-line interface (CLI).
-
+- When using DuckDB with dbt Core, you'll need to use the dbt command-line interface (CLI).
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
+
+## Install DuckDB
+
+Further down is a step-by-step explanation of the steps to install DuckDB.
 
 
 On a Mac, copy & paste the following to your terminal (standalone or with an IDE like VS Code).
@@ -143,7 +144,7 @@ Currently, DuckDB is not supported in dbt Cloud.
 :::
 
 
-## Setting up DuckDB for dbt Core
+## Set up DuckDB for dbt Core
 
 
 Below you'll find a step by step guide on getting up and running with this project.
@@ -227,7 +228,7 @@ dbt docs serve
 
 ```
 
-### Running build steps independently
+### Run build steps independently
 
 1. Load the CSVs with the demo data set. This materializes the CSVs as tables in your target schema. Note that a typical dbt project does not require this step since dbt assumes your raw data is already in your warehouse.
 
@@ -258,7 +259,7 @@ dbt test
 
 ```
 
-### Troubleshooting
+### Troubleshoot
 
 You may get an error like the one in the example below, in which case you will need to disconnect from any sessions that are locking the database:
 
