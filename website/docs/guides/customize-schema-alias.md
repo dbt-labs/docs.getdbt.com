@@ -176,6 +176,32 @@ In this case, we can:
 - Update `generate_alias_name()` to append the developer alias and the custom schema to the front of the table name in the dev environment.
     - This method is not ideal, as it can cause long table names, but it will let developers see in which schema the model will be created in production.
 
+<File name='macros/custom_schema_name.sql'>
+
+```jinja
+
+{% macro generate_schema_name(custom_schema_name, node) -%}
+
+    {%- set default_schema = target.schema -%}
+    {%- if custom_schema_name is none -%}
+
+        {{ default_schema }}
+
+    {%- elif  env_var('DBT_ENV_TYPE','DEV') != 'CI' -%}
+        
+        {{ custom_schema_name | trim }}
+
+    {%- else -%}
+
+        {{ default_schema }}_{{ custom_schema_name | trim }}
+
+    {%- endif -%}
+
+{%- endmacro %}
+
+```
+</File>
+
 
 <File name='macros/generate_schema_name.sql'>
 
@@ -214,33 +240,6 @@ In this case, we can:
             {{ node.name }}
 
         {%- endif -%}
-
-    {%- endif -%}
-
-{%- endmacro %}
-
-```
-</File>
-
-
-<File name='macros/custom_schema_name.sql'>
-
-```jinja
-
-{% macro generate_schema_name(custom_schema_name, node) -%}
-
-    {%- set default_schema = target.schema -%}
-    {%- if custom_schema_name is none -%}
-
-        {{ default_schema }}
-
-    {%- elif  env_var('DBT_ENV_TYPE','DEV') != 'CI' -%}
-        
-        {{ custom_schema_name | trim }}
-
-    {%- else -%}
-
-        {{ default_schema }}_{{ custom_schema_name | trim }}
 
     {%- endif -%}
 
