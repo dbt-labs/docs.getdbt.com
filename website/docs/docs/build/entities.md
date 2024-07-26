@@ -106,8 +106,6 @@ In this example, `product_code` serves as a natural key because it uniquely iden
 
 The following is the complete spec for entities:
 
-<File name='models/marts/sem_semantic_model_name.yml'>
-  
 ```yaml
 entities:
   - name: transaction     ## Required
@@ -117,11 +115,7 @@ entities:
           Defaults to name if unspecified.
 ```
 
-</File>
-
 Here's an example of how to define entities in a semantic model:
-
-<File name='models/marts/sem_semantic_model_name.yml'>
   
 ```yaml
 entities:
@@ -135,15 +129,11 @@ entities:
     type: foreign
     expr: substring(id_order from 2)
 ```
-</File>
-
 
 ## Combine columns with a key
 
 If a table doesn't have any key (like a primary key), use _surrogate combination_ to form a key that will help you identify a record by combining two columns. This applies to any [entity type](/docs//build/entities#entity-types). For example, you can combine `date_key` and `brand_code` from the `raw_brand_target_weekly` table to form a _surrogate key_. The following example creates a surrogate key by joining `date_key` and `brand_code` using a pipe (`|`) as a separator. 
 
-<File name='models/marts/sem_semantic_model_name.yml'>
-  
 ```yaml
 
 entities:
@@ -151,4 +141,3 @@ entities:
     type: foreign # This can be any entity type key. 
     expr: date_key || '|' || brand_code # Defines the expression for linking fields to form the surrogate key.
 ```
-</File>
