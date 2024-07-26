@@ -20,8 +20,10 @@ We'll also touch on creating a codespace executing the `dbt build` command from 
 
 It will show you how to:
 
-- Provide a summary of DuckDB
 - Install DuckDB
+- Create a larger dataset
+- How to use DuckDB
+
 
 
 ### What is DuckDB?
