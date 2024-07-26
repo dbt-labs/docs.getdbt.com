@@ -127,7 +127,6 @@ Depending on the invocation context (`DBT_CLOUD_INVOCATION_CONTEXT`, see above),
 - When `ci` :
   - `DBT_FAIL_FAST` receives `true`
   - `DBT_FAVOR_STATE` receives `true`
-  - `DBT_WARN_ERROR_OPTIONS` receives `{"include": ["NoNodesForSelectionCriteria"]}`
 
 
 **Run details**
