@@ -96,8 +96,8 @@ models:
     columns:
       - name: order_id
         tests:
-          - unique
-            alias: unique_order_id_test
+          - unique:
+              alias: unique_order_id_test
 ```
 
 When using `--store-failures`, this would return the name `analytics.finance.orders_order_id_unique_order_id_test` in the database.
