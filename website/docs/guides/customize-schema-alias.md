@@ -121,8 +121,8 @@ To do so, you can create a new file called `generate_schema_name.sql` under your
 
 <File name='macros/generate_schema_name.sql'>
 
-```jinja
 
+```jinja
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
@@ -541,8 +541,4 @@ Some users prefer to enforce custom schemas on all objects within their projects
     
     {%- endif -%}
 
- ```
- </File>
-
- </div>
-
+</div>

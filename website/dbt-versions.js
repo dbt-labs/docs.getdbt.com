@@ -23,6 +23,14 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "/reference/resource-configs/target_database",
+    "lastVersion": "1.8",
+  },
+  {
+    "page": "/reference/resource-configs/target_schema",
+    "lastVersion": "1.8",
+  },
+  {
     "page": "reference/global-configs/indirect-selection",
     "firstVersion": "1.8",
   },
