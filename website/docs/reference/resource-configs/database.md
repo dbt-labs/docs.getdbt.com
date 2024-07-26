@@ -45,6 +45,38 @@ This would result in the generated relation being located in the `staging` datab
 </File>
 </TabItem>
 
+<TabItem value="snapshots" label="Snapshots">
+
+<VersionBlock lastVersion="1.8">
+
+Available for versionless dbt Cloud or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+Specify a custom database for a snapshot in your `dbt_project.yml` or config file. 
+
+For example, if you have a snapshot that you want to load into a database other than the target database, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  your_project:
+    your_snapshot:
+      +database: snapshots
+```
+</File>
+
+This results in the generated relation being located in the `snapshots` database so the full relation name would be `snapshots.finance.your_snapshot` instead of the default target database.
+
+</VersionBlock>
+
+</TabItem>
+
+
+
 <TabItem value="test" label="Tests">
 
 Configure a database in your `dbt_project.yml` file. 
