@@ -88,7 +88,7 @@ In this example, the `customer_id` in the `orders` table is a foreign key that r
 Natural keys are columns or combinations of columns in a table that uniquely identify a record based on real-world data. For instance, in a `sales_person_department` dimension table, the `sales_person_id` can serve as a natural key. You can only use natural keys for [SCD type II dimensions](/docs/build/dimensions#scd-type-ii).
 
 <Expandable alt_header="Natural key example">
-  
+
 For example, consider a table of `products` in an inventory system:
 
 ```sql
