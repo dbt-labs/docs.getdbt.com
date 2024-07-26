@@ -112,8 +112,8 @@ To do so, you can create a new file called `generate_schema_name.sql` under your
 recommend adding file name for the jinja code (and all codes) so users know the file path:
 
 <File name='macros/generate_schema_name.sql'>
-```jinja
 
+```jinja
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
@@ -132,15 +132,6 @@ recommend adding file name for the jinja code (and all codes) so users know the 
     {%- endif -%}
 
 {%- endmacro %}
-
-
-
-        
-
-
-
-
-
 ```
 </File>
 
