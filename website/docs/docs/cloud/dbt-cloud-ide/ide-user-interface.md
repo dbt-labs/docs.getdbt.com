@@ -71,7 +71,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 <VersionBlock firstVersion="1.6">
 
-  - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note that Prune won't delete the branch you've currently checked out. Pruning branches in the IDE isn't available for [managed repositories](/docs/collaborate/git/managed-repository) because they don't have a typical remote setup, which prevents deleting branches from a remote repo.
+  - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note that this won't delete the branch you're currently on. Pruning branches isn't available for [managed repositories](/docs/collaborate/git/managed-repository) because they don't have a typical remote setup, preventing remote branch deletion. 
 
 </VersionBlock>
 
