@@ -172,6 +172,8 @@ Occasionally, we run into instances where the security posture of the organizati
 
 In this case, we can: 
 
+- Create a new file called generate_schema_name.sql under your macros folder with the following code:
+
 - Change `generate_schema_name()` to use a single schema for all developers, even if a custom schema is set.
 - Update `generate_alias_name()` to append the developer alias and the custom schema to the front of the table name in the dev environment.
     - This method is not ideal, as it can cause long table names, but it will let developers see in which schema the model will be created in production.
