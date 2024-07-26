@@ -190,6 +190,8 @@ select ...
 
 <TabItem value="analyses">
 
+<VersionBlock firstVersion="1.5">
+
 <File name='analyses/<filename>.yml'>
 
 ```yml
@@ -201,6 +203,8 @@ analyses:
 ```
 
 </File>
+
+</VersionBlock>
 
 </TabItem>
 
