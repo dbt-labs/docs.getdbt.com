@@ -44,7 +44,7 @@ exposures:
 
 _Required:_
 - **name**: a unique exposure name written in [snake case](https://en.wikipedia.org/wiki/Snake_case)
-- **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
+- **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application`, `report` (used to organize in docs site)
 - **owner**: `name` or `email` required; additional properties allowed
 
 _Expected:_
