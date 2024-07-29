@@ -1290,7 +1290,7 @@ The adapter should have the required documentation for connecting and configurin
 
 Proceed to the "Document a new adapter" step for more information.
 
-### Release Cadence
+### Release cadence
 
 Keeping an adapter up-to-date with the latest features of dbt, as defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. Therefore, we ask that the adapter maintainer keep track of new dbt-adapter releases and support new features as they pertain to their platform to provide the best version of dbt to their users. Prior to dbt Core v1.8, adapter versions needed to align to the semantic versioning of dbt Core. Post 1.8, this is no longer the case, and users can use a 1.8+ adapter on a different version of the 1.8+ core. For example, a user could use dbt-core 1.9 with dbt-postgres 1.8. 
 
