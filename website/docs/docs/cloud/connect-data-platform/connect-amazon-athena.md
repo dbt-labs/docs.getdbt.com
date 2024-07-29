@@ -1,6 +1,6 @@
 ---
 title: "Connect Amazon Athena"
-id: connect-athena
+id: connect-amazon-athena
 description: "Configure Amazon Athena connection."
 sidebar_label: "Connect Athena"
 ---
