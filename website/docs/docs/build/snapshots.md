@@ -449,8 +449,6 @@ Note: BigQuery users can use `target_project` and `target_dataset` as aliases fo
 
 | Config | Description | Required? | Example |
 | ------ | ----------- | --------- | ------- |
-| Config | Description | Required? | Example |
-| ------ | ----------- | --------- | ------- |
 | [database](/reference/resource-configs/database) | Specify a custom database for the snapshot | No | analytics |
 | [schema](/reference/resource-configs/schema) | Specify a custom schema for the snapshot | No | snapshots |
 | [alias](/reference/resource-configs/alias)   | Specify an alias for the snapshot | No | your_custom_snapshot |
