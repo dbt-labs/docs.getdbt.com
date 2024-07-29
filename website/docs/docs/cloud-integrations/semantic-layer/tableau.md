@@ -90,4 +90,6 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - The Tableau integration doesn't currently display descriptive labels defined in your `metrics` configuration, meaning custom labels won't be visible when those metrics are imported/queried into Tableau. 
   
 ## FAQs
+
+
 <FAQ path="Troubleshooting/sl-alpn-error" />

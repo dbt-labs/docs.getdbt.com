@@ -89,4 +89,9 @@ Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricF
 The dbt Semantic Layer for Sheet's use and transfer to any other app of information received from Google APIs will adhere to [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 ## FAQs
+
+import ExcelGsheetsFAQ from '/snippets/_sl-faq-excel-gsheets-diff.md';
+
+<ExcelGsheetsFAQ />
+
 <FAQ path="Troubleshooting/sl-alpn-error" />

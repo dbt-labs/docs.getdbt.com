@@ -44,4 +44,9 @@ bullet_2="If you're using this extension, make sure you're signed into Microsoft
 <!-- placeholder for excel image URL prop: queryBuilder="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg"-->
 
 ## FAQs
+
+import ExcelGsheetsFAQ from '/snippets/_sl-faq-excel-gsheets-diff.md';
+
+<ExcelGsheetsFAQ />
+
 <FAQ path="Troubleshooting/sl-alpn-error" />
