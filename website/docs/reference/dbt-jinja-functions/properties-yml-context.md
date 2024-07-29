@@ -26,7 +26,7 @@ resources in a `properties.yml` file.
 # in development and a table in production/CI contexts
 
 models:
-- name: dim_customers
+  - name: dim_customers
     config:
       materialized: "{{ 'view' if target.name == 'dev' else 'table' }}"
 ```
