@@ -21,6 +21,7 @@ We'll also touch on creating a codespace executing the `dbt build` command from 
 The guide will show you how to:
 
 - Install DuckDB
+- Troubleshoot errors
 - Create a larger dataset
 
 
