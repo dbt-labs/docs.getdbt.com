@@ -68,7 +68,7 @@ This section explains the different commands and options available to run export
 
 ### Exports for single saved query
 
-You can use the following command to run exports in the dbt Cloud CLI:
+Use the following command to run exports in the dbt Cloud CLI:
 
 ```bash
 dbt sl export
