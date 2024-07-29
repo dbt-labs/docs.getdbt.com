@@ -584,23 +584,24 @@ mf query --metrics revenue --group-by metric_time__month # In dbt Core
 
 ### Exports
 
-Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#exports-for-single-saved-query). Use this command to test and generate exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info.
+Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#exports-for-single-saved-query). Use this command to test and generate exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info. 
+
+Exports is available in dbt Cloud.
 
 ```bash
-dbt sl export # In dbt Cloud
-
-mf export # In dbt Core
+dbt sl export 
 ```
 
 ### Export-all
 
-Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#exports-for-multiple-saved-queries) at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info.
+Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#exports-for-multiple-saved-queries) at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info. 
+
+Exports is available in dbt Cloud.
 
 ```bash
-dbt sl export-all # In dbt Cloud
-
-mf export-all # In dbt Core
+dbt sl export-all 
 ```
+
 
 ## FAQs
 
