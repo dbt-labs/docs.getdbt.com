@@ -131,7 +131,7 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 ### Exports for multiple saved queries
 
-Use the command, `dbt sl export-all`, to run exports for multiple saved queries at once. This is different to the `dbt sl export` command, which only runs exports for a singular saved query.  For example, to run exports for multiple saved queries, you can use:
+Use the command, `dbt sl export-all`, to run exports for multiple saved queries at once. This is different from the `dbt sl export` command, which only runs exports for a singular saved query.  For example, to run exports for multiple saved queries, you can use:
 
 #### Example
 
