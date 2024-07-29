@@ -1,6 +1,6 @@
 ---
 title: Quickstart for dbt Core using DuckDB
-id: duckDB
+id: duckdb
 description: "Learn to use dbt Core using DuckDB."
 hoverSnippet: "Learn to use dbt Core using DuckDB."
 platform: 'dbt-core'
@@ -18,11 +18,10 @@ In this quickstart guide, you’ll learn how to install dbt Core for the use of 
 
 We'll also touch on creating a codespace executing the `dbt build` command from it in _less than 5 minutes_. 
 
-It will show you how to:
+The guide will show you how to:
 
 - Install DuckDB
 - Create a larger dataset
-- How to use DuckDB
 
 
 
@@ -57,7 +56,7 @@ Here's a list of some of the main features of DuckDB:
 
  </TabItem>
  
- <TabItem value="web" label="Web">
+ <TabItem value="web" label="Web browser">
 
 dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that you (and anyone else) can reuse to create a complete dbt environment with a working and runnable project. When you create the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) creates a fully functioning dbt environment, connects to a DuckDB database, and loads a year of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Jaffle Shop template also provides instructions on how to do this, along with animated GIFs. 
 
@@ -65,6 +64,9 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 </TabItem>
 
 </Tabs>
+
+
+### Related content
 
 
 - [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup)
@@ -82,69 +84,6 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 - You have a [GitHub account](https://github.com/join).
 
 
-## Install DuckDB
-
-Further down is a step-by-step explanation of the steps to install DuckDB.
-
-
-On a Mac, copy & paste the following to your terminal (standalone or with an IDE like VS Code).
-
-```shell
-git clone https://github.com/dbt-labs/jaffle_shop_duckdb.git
-cd jaffle_shop_duckdb
-python3 -m venv venv
-source venv/bin/activate
-python3 -m pip install --upgrade pip
-python3 -m pip install -r requirements.txt
-source venv/bin/activate
-dbt build
-dbt docs generate
-dbt docs serve
-```
-
-On Windows, use either Powershell or the command line prompt:
-
-Windows cmd.exe
-
-```shell
-git clone https://github.com/dbt-labs/docs-duckdb.git
-cd docs-duckdb
-python -m venv venv
-venv\Scripts\activate.bat
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-venv\Scripts\activate.bat
-dbt deps
-dbt build
-dbt docs generate
-dbt docs serve
-```
-
-Windows PowerShell
-
-```shell
-git clone https://github.com/dbt-labs/docs-duckdb.git — Clones the repo locally
-cd docs-duckdb — Changes directory to the repo
-python3 -m venv venv — Creates a Python virtual environment called "venv"
-source venv/bin/activate — Activates the Pythong virtual environment
-python3 -m pip install --upgrade pip — Ensures Pip is up to date
-python3 -m pip install -r requirements.txt — Installs the programs and dependencies defined in the file
-source venv/bin/activate — Ensures the virtual environment is activated
-dbt deps — Installs dbt packages
-dbt build — Seeds data to the Duckdb database and builds models and dependecies
-dbt docs generate — Compiles the projects docs
-dbt docs serve — Displays the docs in your open or default browser.
-```
-
-Fore more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
-
-
-:::info DuckDB Support
-
-Currently, DuckDB is not supported in dbt Cloud.
-
-:::
-
 
 ## Set up DuckDB for dbt Core
 
@@ -154,7 +93,7 @@ Below you'll find a step by step guide on getting up and running with this proje
 
 <Tabs>
 
-<TabItem value="duckdb" label="DuckDB">
+<TabItem value="local" label="Local">
 
 1. First, you'll need to clone this repository.
 
@@ -204,48 +143,39 @@ venv\Scripts\Activate.ps1
 
 ```
 
-4. Ensure your profile is setup correctly from the command line:
+4. Ensure your profile is setup correctly from the command line by running the following:
 
-```Jinja
 
-dbt --version
-dbt debug
+- [dbt --version](/reference/project-configs/require-dbt-version) - to restrict your project to only work with a range of dbt versions.
+- [dbt debug](/reference/commands/debug) - to test the database connection and display information for debugging purposes.
 
-```
 
 5. Load the CSVs with the demo data set, run the models, and test the output of the models using the dbt build command:
 
-```Jinja
 
-dbt build
+- [dbt build](/reference/commands/run) — compiles and runs your project.
 
-```
 
 6. Generate and view the documentation for the project:
 
-```Jinja
 
-dbt docs generate
-dbt docs serve
+- [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - to generate your project's documentation.
+- [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) - starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
-```
 
 ### Run build steps independently
 
 1. Load the CSVs with the demo data set. This materializes the CSVs as tables in your target schema. Note that a typical dbt project does not require this step since dbt assumes your raw data is already in your warehouse.
 
-```Jinja
 
-dbt seed
+- [dbt seed](/reference/commands/seed) - loads `csv` files located in the `seed-paths` directory of your dbt project into your data warehouse.
 
-```
+
 2. Run the models:
 
-```Jinja
 
-dbt run
+- [dbt run](/reference/commands/run) - compiles and runs your project.
 
-```
 
 :::note Note.
 
@@ -255,11 +185,9 @@ NOTE: If you decide to run this project in your own data warehouse (outside of t
 
 3. Test the output of the models using the test command:
 
-```Jinja
 
-dbt test
+- [dbt test](/reference/commands/test) - compiles and tests your project.
 
-```
 
 ### Troubleshoot
 
@@ -278,7 +206,7 @@ As a last resort, deleting the database file will get you back in action (_BUT_ 
 
  </TabItem>
  
- <TabItem value="codespaces" label="Codespaces">
+ <TabItem value="web" label="Web browser">
 
 1. Go to the `jaffle-shop-template` [repository](https://github.com/dbt-labs/jaffle-shop-template) after you log in to your GitHub account. 
 1. Click **Use this template** at the top of the page and choose **Create new repository**.
@@ -309,6 +237,17 @@ As a last resort, deleting the database file will get you back in action (_BUT_ 
   </TabItem>
 
 </Tabs>
+
+
+Fore more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
+
+
+:::info DuckDB Support
+
+Currently, DuckDB is not supported in dbt Cloud.
+
+:::
+
 
 ## Generate a larger data set
 
