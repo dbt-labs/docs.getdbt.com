@@ -155,7 +155,7 @@ Options:
   --help              Show this message and exit.
 ```
 
-## List dimension-values
+### List dimension-values
 
 This command lists all dimension values with the corresponding metric:
 
@@ -387,7 +387,6 @@ mf query --metrics order_total --group-by metric_time,is_food_order # In dbt Cor
 ```
 
 </TabItem>
-
 
 <TabItem value="eg3" label="Order/limit">
 
