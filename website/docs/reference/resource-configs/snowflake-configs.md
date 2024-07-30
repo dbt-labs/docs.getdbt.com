@@ -576,7 +576,7 @@ Find more information about dynamic table limitations in Snowflake's [docs](http
 
 For dbt limitations, these dbt features are not supported:
 - [Model contracts](/docs/collaborate/govern/model-contracts)
-- [Copy Grants configuration](/snowflake-configs#copying-grants)
+- [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
 
 <VersionBlock firstVersion="1.6" lastVersion="1.6">
 
