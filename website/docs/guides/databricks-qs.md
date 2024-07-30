@@ -220,6 +220,10 @@ To connect dbt Cloud to Databricks using Partner Connect, do the following:
 
 10. Complete the on-screen instructions on the getdbt.com website to create your trial dbt Cloud account.
 
+## Set up a dbt Cloud managed repository
+
+<Snippet path="tutorial-managed-repo" />
+
 ## Initialize your dbt project​ and start developing
 
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
@@ -233,10 +237,6 @@ Now that you have a repository configured, you can initialize your project and s
         select * from default.jaffle_shop_customers
         ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
-
-## Set up a dbt Cloud managed repository
-
-<Snippet path="tutorial-managed-repo" />
 
 ## Build your first model
 
