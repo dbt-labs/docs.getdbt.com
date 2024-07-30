@@ -133,6 +133,7 @@ For example, given a model with the following configurations:
   materialized = 'incremental',
   unique_key = ['column_a', 'column_b'],
   grants = {'select': ['reporter', 'analysts']},
+  meta = {"contains_pii": true},
   transient = true
 ) }}
 
@@ -144,6 +145,7 @@ select ...
 dbt ls -s config.materialized:incremental
 dbt ls -s config.unique_key:column_a
 dbt ls -s config.grants.select:reporter
+dbt ls -s config.meta.contains_pii:true
 dbt ls -s config.transient:true
 ```
 
