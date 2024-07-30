@@ -154,7 +154,7 @@ function Home() {
               </div>
               <div>
                 <Card
-                  title="Community Forum"
+                  title="Community forum"
                   body="Get help and swap knowledge in the async forum."
                   link="/community/forum"
                   icon="discussions"

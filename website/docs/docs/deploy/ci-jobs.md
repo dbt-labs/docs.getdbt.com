@@ -10,7 +10,6 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 
 dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
-
 ### Prerequisites
 - You have a dbt Cloud account. 
 - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
@@ -77,6 +76,92 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
       - `non_native_pull_request_id` (for example, BitBucket)
    - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
+## Semantic validations in CI  <Lifecycle status="team,enterprise" />
+
+Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job, guaranteeing that any code changes made to dbt models don't break these metrics. 
+
+To do this, add the command `dbt sl validate --select state:modified+` in the CI job. This ensures the validation of modified semantic nodes and their downstream dependencies.
+
+- Testing semantic nodes in a CI job supports deferral and selection of semantic nodes.
+- It allows you to catch issues early in the development process and deliver high-quality data to your end users.
+- Semantic validation executes an explain query in the data warehouse for semantic nodes to ensure the generated SQL will execute.
+- For semantic nodes and models that aren't downstream of modified models, dbt Cloud defers to the production models
+
+To learn how to set this up, refer to the following steps:
+
+1. Navigate to the **Job setting** page and click **Edit**.
+2. Add the `dbt sl validate --select state:modified+` command under **Commands** in the **Execution settings** section. The command uses state selection and deferral to run validation on any semantic nodes downstream of model changes. To reduce job times, we recommend only running CI on modified semantic models.
+3. Click **Save** to save your changes.
+
+There are additional commands and use cases described in the [next section](#use-cases), such as validating all semantic nodes, validating specific semantic nodes, and so on.
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.jpg" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
+
+### Use cases
+
+Use or combine different selectors or commands to validate semantic nodes in your CI job. Semantic validations in CI supports the following use cases:
+
+<Expandable alt_header="Semantic nodes downstream of model changes (recommended)" > 
+
+To validate semantic nodes that are downstream of a model change, add the two commands in your job **Execution settings** section:
+
+```bash
+dbt build --select state:modified+
+dbt sl validate --select state:modified+
+```
+
+- The first command builds the modified models.
+- The second command validates the semantic nodes downstream of the modified models.
+
+Before running semantic validations, dbt Cloud must build the modified models. This process ensures that downstream semantic nodes are validated using the CI schema through the dbt Semantic Layer API. 
+
+For semantic nodes and models that aren't downstream of modified models, dbt Cloud defers to the production models.
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.jpg" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
+
+</Expandable>
+
+<Expandable alt_header="Semantic nodes that are modified or affected by downstream modified nodes.">
+
+To only validate modified semantic nodes, use the following command (with [state selection](/reference/node-selection/syntax#stateful-selection)):
+
+```bash
+dbt sl validate --select state:modified+
+```
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-modified.jpg" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
+
+This will only validate semantic nodes. It will use the defer state set configured in your orchestration job, deferring to your production models.
+
+</Expandable>
+
+<Expandable alt_header="Select specific semantic nodes">
+
+Use the selector syntax to select the _specific_ semantic node(s) you want to validate:
+
+```bash
+dbt sl validate --select metric:revenue
+```
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-select.jpg" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
+
+In this example, the CI job will validate the selected `metric:revenue` semantic node. To select multiple semantic nodes, use the selector syntax: `dbt sl validate --select metric:revenue metric:customers`.
+
+If you don't specify a selector, dbt Cloud will validate all semantic nodes in your project.
+
+</Expandable>
+
+<Expandable alt_header="Select all semantic nodes">
+
+To validate _all_ semantic nodes in your project, add the following command to defer to your production schema when generating the warehouse validation queries:
+
+   ```bash
+   dbt sl validate
+   ```
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-all.jpg" width="90%" title="Validate all semantic nodes in your CI job by adding the command: 'dbt sl validate' in your job execution settings." />
+
+</Expandable>
 
 ## Troubleshooting
 
