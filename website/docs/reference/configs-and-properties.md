@@ -24,7 +24,7 @@ Whereas you can use **configurations** to:
 
 ## Where can I define configs?
 
-Depending on the resource type, configurations can be defined:
+Depending on the resource type, configurations can be defined in the dbt project and also in an installed package by:
 
 1. Using a [`config()` Jinja macro](/reference/dbt-jinja-functions/config) within a `model`, `snapshot`, or `test` SQL file
 2. Using a [`config` property](/reference/resource-properties/config) in a `.yml` file
@@ -32,11 +32,14 @@ Depending on the resource type, configurations can be defined:
 
 ### Config inheritance
 
-dbt prioritizes configurations in order of specificity, from most specificity to least specificity. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
+The most specific config always takes precedence. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
 
 Note - Generic data tests work a little differently when it comes to specificity. See [test configs](/reference/data-test-configs).
 
-Within the project file, configurations are also applied hierarchically. The most specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
+Within the project file, configurations are also applied hierarchically. The most specific config always takes precedence. In the project file, for example, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model or directory of models, define the [resource path](reference/resource-configs/resource-path) as nested dictionary keys.
+
+Configurations in your root dbt project have _higher_ precedence than configurations in installed packages. This enables you to override the configurations of installed packages, providing more control over your dbt runs. 
+
 
 ### Combining configs
 

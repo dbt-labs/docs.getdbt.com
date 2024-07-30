@@ -8,9 +8,9 @@ pagination_prev: null
 
 dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning). 
 
-:::tip Keep on latest version, always
+:::tip Go versionless and stay up to date, always
 
-_Did you know that you can always be working on the latest version?_ 
+_Did you know that you can always be working with the latest features and functionality?_ 
 
 With dbt Cloud, you can get early access to new functionality before it becomes available in dbt Core and without the need of managing your own version upgrades. Refer to the [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) setting for details.
 

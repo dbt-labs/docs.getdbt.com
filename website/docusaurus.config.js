@@ -111,10 +111,32 @@ var siteSettings = {
       },
       items: [
         {
-          to: "/docs/introduction",
           label: "Docs",
           position: "left",
-          activeBaseRegex: "docs/(?!(dbt-cloud))",
+          items: [
+            {
+              label: "Product docs",
+              to: "/docs/introduction",
+              activeBaseRegex: "docs/(?!(dbt-cloud))",
+            },
+            {
+              label: "API docs",
+              to: "/docs/dbt-cloud-apis/overview",
+            },
+            {
+              label: "Best practices",
+              to: "/best-practices",
+            },
+            {
+              label: "Release notes",
+              to: "/docs/dbt-versions/dbt-cloud-release-notes",
+            },
+          ],
+        },
+        {
+          to: "/guides",
+          label: "Guides",
+          position: "left",
         },
         {
           to: "reference/references-overview",
@@ -128,18 +150,14 @@ var siteSettings = {
           items: [
             {
               label: "Courses",
-              href: "https://courses.getdbt.com",
+              href: "https://learn.getdbt.com",
             },
             {
-              label: "Best Practices",
+              label: "Best practices",
               to: "/best-practices",
             },
             {
-              label: "Guides",
-              to: "/guides",
-            },
-            {
-              label: "Developer Blog",
+              label: "Developer blog",
               to: "/blog",
             },
             {
@@ -153,7 +171,7 @@ var siteSettings = {
           position: "right",
           items: [
             {
-              label: "Join the Community",
+              label: "Join the dbt Community",
               to: "/community/join",
             },
             {
@@ -161,7 +179,7 @@ var siteSettings = {
               to: "/community/contribute",
             },
             {
-              label: "Community Forum",
+              label: "Community forum",
               to: "/community/forum",
             },
             {
@@ -232,7 +250,7 @@ var siteSettings = {
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
           blogDescription:
-            "Find tutorials, product updates, and developer insights in the dbt Developer Blog.",
+            "Find tutorials, product updates, and developer insights in the dbt Developer blog.",
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,

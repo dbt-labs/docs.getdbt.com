@@ -23,7 +23,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-feature
 <div className="grid--3-col">
 
 <Card
-    title="Quickstart for dbt Cloud and Azure Synapse Analytics (Preview)"
+    title="Quickstart for dbt Cloud and Azure Synapse Analytics"
     body="Discover how to integrate dbt Cloud with Azure Synapse Analytics for your data transformations."
     link="https://docs.getdbt.com/guides/azure-synapse-analytics"
     icon="azure-synapse-analytics"/>
@@ -82,5 +82,5 @@ Expand your dbt knowledge and expertise with these additional resources:
 - [Join the bi-weekly demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts) to see dbt Cloud in action and ask questions.
 - [dbt Cloud AWS marketplace](https://aws.amazon.com/marketplace/pp/prodview-tjpcf42nbnhko) contains information on how to deploy dbt Cloud on AWS, user reviews, and more.
 - [Best practices](https://docs.getdbt.com/best-practices) contains information on how dbt Labs approaches building projects through our current viewpoints on structure, style, and setup.
-- [dbt Learn](https://courses.getdbt.com/collections) offers free online courses that cover dbt fundamentals, advanced topics, and more.
+- [dbt Learn](https://learn.getdbt.com) offers free online courses that cover dbt fundamentals, advanced topics, and more.
 - [Join the dbt Community](https://www.getdbt.com/community/join-the-community) to learn how other data practitioners globally are using dbt, share your own experiences, and get help with your dbt projects.

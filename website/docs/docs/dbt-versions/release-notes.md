@@ -16,7 +16,45 @@ dbt Cloud release notes for recent and historical changes. Release notes fall in
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC)[^*] environments
 
-[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
+[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
+
+## July 2024
+- **Behavior change:** dbt Cloud IDE automatically adds a `--limit 100` to preview queries to avoid slow and expensive queries during development. Recently, dbt Core changed how the `limit` is applied to ensure that `order by` clauses are consistently respected. Because of this, queries that already contain a limit clause might now cause errors in the IDE previews. To address this, dbt Labs plans to provide an option soon to disable the limit from being applied. Until then, dbt Labs recommends removing the (duplicate) limit clause from your queries during previews to avoid these IDE errors.
+
+- **Enhancement:** Custom configurations are now supported by generic data tests. Use this to configure how dbt should run the data test (for example, specifying a Snowflake virtual warehouse different from the one in your connection). To learn more, refer to [Specify custom configurations for generic data tests](/reference/data-test-configs#specify-custom-configurations-for-generic-data-tests).
+
+  Support for this configuration is available in dbt Cloud when selecting "Keep on latest version." Specifying custom configurations for data tests will become available in dbt Core later this year.
+
+- **Enhancement**: Introducing a revamped overview page for dbt Explorer, available in beta. It includes a new design and layout for the Explorer homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/collaborate/explore-projects#overview-page).
+- **Enhancement**: The dbt Semantic Layer now offers more granular control by supporting multiple data platform credentials, which can represent different roles or service accounts. Available for dbt Cloud Enterprise plans, you can map credentials to service tokens for secure authentication. Refer to [Set up dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) for more details.
+- **New**: Introduced the [`dbt-sl-sdk` Python software development kit (SDK)](https://github.com/dbt-labs/semantic-layer-sdk-python) Python library, which provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools. Refer to the [dbt Semantic Layer Python SDK](/docs/dbt-cloud-apis/sl-python) for more information.
+- **New**: The ability to lint your SQL files from the dbt Cloud CLI is now available. To learn more, refer to [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files).
+- **New**: Introduced Semantic validations in CI pipelines. Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job using the `dbt sl validate` command. You can also validate modified semantic nodes to guarantee code changes made to dbt models don't break these metrics. Refer to [Semantic validations in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to learn about the additional commands and use cases.
+
+## June 2024
+- **New:** Introduced new granularity support for cumulative metrics in MetricFlow. Granularity options for cumulative metrics are slightly different than granularity for other metric types. For other metrics, we use the `date_trunc` function to implement granularity. However, because cumulative metrics are non-additive (values can't be added up), we can't use the `date_trunc` function to change their time grain granularity. 
+  
+  Instead, we use the `first()`, `last()`, and `avg()` aggregation functions to aggregate cumulative metrics over the requested period. By default, we take the first value of the period. You can change this behavior by using the `period_agg` parameter. For more information, refer to [Granularity options for cumulative metrics](/docs/build/cumulative#granularity-options).
+
+#### dbt Semantic Layer
+- **New:** Added support for <Term id="predicate-pushdown"/> SQL optimization in MetricFlow. We will now push down categorical dimension filters to the metric source table. Previously filters were applied after we selected from the metric source table. This change helps reduce full table scans on certain query engines.
+- **New:** Enabled `where` filters  on dimensions (included in saved queries) to use the cache during query time. This means you can now dynamically filter your dashboards without losing the performance benefits of caching. Refer to [caching](/docs/use-dbt-semantic-layer/sl-cache#result-caching) for more information.
+- **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. Click on the **Info** icon button to view a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
+- **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), you can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension.
+- **Enhancement:** Improved querying error message when no semantic layer credentials were set.
+- **Enhancement:** Querying grains for cumulative metrics now returns multiple granularity options (day, week, month, quarter, year) like all other metric types. Previously, you could only query one grain option for cumulative metrics.
+- **Fix:** Removed errors that prevented querying cumulative metrics with other granularities.
+- **Fix:** Fixed various Tableau errors when querying certain metrics or when using calculated fields.
+- **Fix:** In Tableau, we relaxed naming field expectations to better identify calculated fields.
+- **Fix:** Fixed an error when refreshing database metadata for columns that we can't convert to Arrow. These columns will now be skipped. This mainly affected Redshift users with custom types.
+- **Fix:** Fixed Private Link connections for Databricks.
+
+#### Also available this month:
+
+- **Enhancement:** Updates to the UI when [creating merge jobs](/docs/deploy/merge-jobs) are now available. The updates include improvements to helper text, new deferral settings, and performance improvements.
+- **New**: The dbt Semantic Layer now offers a seamless integration with Microsoft Excel, available in [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Build semantic layer queries and return data on metrics directly within Excel, through a custom menu. To learn more and install the add-on, check out [Microsoft Excel](/docs/cloud-integrations/semantic-layer/excel).
+- **New:** [Job warnings](/docs/deploy/job-notifications) are now GA. Previously, you could receive email or Slack alerts about your jobs when they succeeded, failed, or were canceled. Now with the new **Warns** option, you can also receive alerts when jobs have encountered warnings from tests or source freshness checks during their run. This gives you more flexibility on _when_ to be notified. 
+- **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
 ## May 2024
 
@@ -36,9 +74,9 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** [Unit tests](/docs/build/unit-tests) are now GA in dbt Cloud. Unit tests enable you to test your SQL model logic against a set of static inputs.
 
-- <Expandable alt_header="New: Preview of native support for Azure Synapse Analytics" > 
+- <Expandable alt_header="New: Native support for Azure Synapse Analytics" lifecycle="preview"> 
 
-  Native support in dbt Cloud for Azure Synapse Analytics is now available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)!
+  Native support in dbt Cloud for Azure Synapse Analytics is now available as a [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)!
 
   To learn more, refer to [Connect Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics) and [Microsoft Azure Synapse DWH configurations](/reference/resource-configs/azuresynapse-configs).
 
@@ -77,7 +115,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** dbt Mesh is now GA to dbt Cloud Enterprise users. dbt Mesh is a framework that helps organizations scale their teams and data assets effectively. It promotes governance best practices and breaks large projects into manageable sections. Get started with dbt Mesh by reading the [dbt Mesh quickstart guide](https://docs.getdbt.com/guides/mesh-qs?step=1).
 
-- **New:** The dbt Semantic Layer [Tableau Desktop, Tableau Server](/docs/use-dbt-semantic-layer/tableau), and [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) is now GA to dbt Cloud Team or Enterprise accounts. These first-class integrations allow you to query and unlock valuable insights from your data ecosystem.
+- **New:** The dbt Semantic Layer [Tableau Desktop, Tableau Server](/docs/cloud-integrations/semantic-layer/tableau), and [Google Sheets integration](/docs/cloud-integrations/semantic-layer/gsheets) is now GA to dbt Cloud Team or Enterprise accounts. These first-class integrations allow you to query and unlock valuable insights from your data ecosystem.
 
 - **Enhancement:** As part of our ongoing commitment to improving the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#considerations), the filesystem now comes with improvements to speed up dbt development, such as introducing a Git repository limit of 10GB.
 
@@ -91,7 +129,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   The **Keep on latest version** setting is now Generally Available (previously Public Preview).
 
-  When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
+  When the new **Keep on latest version** setting is enabled, you get a versionless experience and always get the latest features and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
 
   To learn more about the new setting, refer to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) for details. 
 
@@ -103,9 +141,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 ## April 2024
 
-- <Expandable alt_header="New: Merge jobs" > 
-
-  <Lifecycle status="beta" />
+- <Expandable alt_header="New: Merge jobs" lifecycle="beta" > 
 
   You can now set up a continuous deployment (CD) workflow for your projects natively in dbt Cloud. You can now access a beta release of [Merge jobs](/docs/deploy/merge-jobs), which is a new [job type](/docs/deploy/jobs), that enables you to trigger dbt job runs as soon as changes (via Git pull requests) merge into production.
 
@@ -116,16 +152,16 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 - **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and dbt Cloud "Keep on latest version"). Read [Package override for built-in materialization](/reference/global-configs/legacy-behaviors#package-override-for-built-in-materialization) for more information.
 
 **dbt Semantic Layer**
-- **New**: Use Saved selections to [save your query selections](/docs/use-dbt-semantic-layer/gsheets#using-saved-selections) within the [Google Sheets application](/docs/use-dbt-semantic-layer/gsheets). They can be made private or public and refresh upon loading.
+- **New**: Use Saved selections to [save your query selections](/docs/cloud-integrations/semantic-layer/gsheets#using-saved-selections) within the [Google Sheets application](/docs/cloud-integrations/semantic-layer/gsheets). They can be made private or public and refresh upon loading.
 - **New**: Metrics are now displayed by their labels as `metric_name`.
 - **Enhancement**: [Metrics](/docs/build/metrics-overview) now supports the [`meta` option](/reference/resource-configs/meta) under the [config](/reference/resource-properties/config) property. Previously, we only supported the now deprecated `meta` tag.
-- **Enhancement**: In the Google Sheets application, we added [support](/docs/use-dbt-semantic-layer/gsheets#using-saved-queries) to allow jumping off from or exploring MetricFlow-defined saved queries directly.
+- **Enhancement**: In the Google Sheets application, we added [support](/docs/cloud-integrations/semantic-layer/gsheets#using-saved-queries) to allow jumping off from or exploring MetricFlow-defined saved queries directly.
 - **Enhancement**: In the Google Sheets application, we added support to query dimensions without metrics. Previously, you needed a dimension.
 - **Enhancement**: In the Google Sheets application, we added support for time presets and complex time range filters such as "between", "after", and "before".
 - **Enhancement**: In the Google Sheets application, we added supported to automatically populate dimension values when you select a "where" filter, removing the need to manually type them.  Previously, you needed to manually type the dimension values.
 - **Enhancement**: In the Google Sheets application, we added support to directly query entities, expanding the flexibility of data requests.
 - **Enhancement**: In the Google Sheets application, we added an option to exclude column headers, which is useful for populating templates with only the required data.
-- **Deprecation**: For the Tableau integration, the [`METRICS_AND_DIMENSIONS` data source](/docs/use-dbt-semantic-layer/tableau#using-the-integration) has been deprecated for all accounts not actively using it. We encourage users to transition to the "ALL" data source for future integrations.
+- **Deprecation**: For the Tableau integration, the [`METRICS_AND_DIMENSIONS` data source](/docs/cloud-integrations/semantic-layer/tableau#using-the-integration) has been deprecated for all accounts not actively using it. We encourage users to transition to the "ALL" data source for future integrations.
 
 ## March 2024
 
@@ -142,7 +178,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** [Exports](/docs/use-dbt-semantic-layer/exports#define-exports) allow you to materialize a saved query as a table or view in your data platform. By using exports, you can unify metric definitions in your data platform and query them as you would any other table or view.
 - **New:** You can access a list of your [exports](/docs/use-dbt-semantic-layer/exports) with the new list saved-queries command by adding `--show-exports`
-- **New:** The dbt Semantic Layer and [Tableau Connector](/docs/use-dbt-semantic-layer/tableau) now supports relative date filters in Tableau.
+- **New:** The dbt Semantic Layer and [Tableau Connector](/docs/cloud-integrations/semantic-layer/tableau) now supports relative date filters in Tableau.
 
 - <Expandable alt_header="New: Use exports to write saved queries">
 
@@ -156,9 +192,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
 
-- <Expandable alt_header="New: Trigger on job completion ">
-
-  <Lifecycle status="team,enterprise" />
+- <Expandable alt_header="New: Trigger on job completion " lifecycle="team,enterprise" >
 
   Now available for dbt Cloud Team and Enterprise plans is the ability to trigger deploy jobs when other deploy jobs are complete. You can enable this feature [in the UI](/docs/deploy/deploy-jobs) with the  **Run when another job finishes** option in the **Triggers** section of your job or with the [Create Job API endpoint](/dbt-cloud/api-v2#/operations/Create%20Job). 
 
@@ -170,9 +204,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
 
-- <Expandable alt_header="New: Keep on latest version ">
-
-  <Lifecycle status='beta' />
+- <Expandable alt_header="New: Keep on latest version " lifecycle="beta">
 
   _Now available in the dbt version dropdown in dbt Cloud &mdash; starting with select customers, rolling out to wider availability through February and March._
 
@@ -219,7 +251,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
 
-- **Enhancement:**  The dbt Semantic Layer [Google Sheets integration](/docs/use-dbt-semantic-layer/gsheets) now exposes a note on the cell where the data was requested, indicating clearer data requests. The integration also now exposes a new **Time Range** option, which allows you to quickly select date ranges.
+- **Enhancement:**  The dbt Semantic Layer [Google Sheets integration](/docs/cloud-integrations/semantic-layer/gsheets) now exposes a note on the cell where the data was requested, indicating clearer data requests. The integration also now exposes a new **Time Range** option, which allows you to quickly select date ranges.
 - **Enhancement:** The [GraphQL API](/docs/dbt-cloud-apis/sl-graphql) includes a `requiresMetricTime` parameter to better handle metrics that must be grouped by time. (Certain metrics defined in MetricFlow can't be looked at without a time dimension).
 - **Enhancement:** Enable querying metrics with offset and cumulative metrics with the time dimension name, instead of `metric_time`. [Issue #1000](https://github.com/dbt-labs/metricflow/issues/1000)
   - Enable querying `metric_time` without metrics. [Issue #928](https://github.com/dbt-labs/metricflow/issues/928)
@@ -232,9 +264,6 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
   - If you query a time offset metric with one instance of `metric_time`/`agg_time_dimension` but filter by a different one, the query will fail.
 - **Fix:** MetricFlow prioritizes a candidate join type over the default type when evaluating nodes to join. For example, the default join type for distinct values queries is `FULL OUTER JOIN`, however, time spine joins require `CROSS JOIN`, which is more appropriate.
 - **Fix:** Fixed a bug that previously caused errors when entities were referenced in `where` filters.
-
-
-
 
 ## January 2024
 
@@ -273,7 +302,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** New metric type that allows you to measure conversion events. For example, users who viewed a web page and then filled out a form. For more details, refer to [Conversion metrics](/docs/build/conversion). 
 - **New:** Instead of specifying the fully qualified dimension name (for example, `order__user__country`) in the group by or filter expression, you now only need to provide the primary entity and dimensions name, like `user__county`. 
-- **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/use-dbt-semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
+- **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/cloud-integrations/semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 
 - <Expandable alt_header="New: Native support for partial parsing" >
 
@@ -287,7 +316,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **Enhancement:** The YAML spec parameter `label` is now available for Semantic Layer metrics in [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview). This means you can conveniently use `label` as a display name for your metrics when exposing them.
 - **Enhancement:** Added support for `create_metric: true` for a measure, which is a shorthand to quickly create metrics. This is useful in cases when metrics are only used to build other metrics.
-- **Enhancement:** Added support for Tableau parameter filters. You can use the [Tableau connector](docs/use-dbt-semantic-layer/tableau) to create and use parameters with your dbt Semantic Layer data.
+- **Enhancement:** Added support for Tableau parameter filters. You can use the [Tableau connector](docs/cloud-integrations/semantic-layer/tableau) to create and use parameters with your dbt Semantic Layer data.
 - **Enhancement:** Added support to expose `expr` and `agg` for [Measures](/docs/build/measures) in the [GraphQL API](/docs/dbt-cloud-apis/sl-graphql).
 - **Enhancement:** You have improved error messages in the command line interface when querying a dimension that is not reachable for a given metric.
 - **Enhancement:** You can now query entities using our Tableau integration (similar to querying dimensions). 

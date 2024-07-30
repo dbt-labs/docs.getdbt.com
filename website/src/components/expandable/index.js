@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
+import Lifecycle from '../lifeCycle';
 
 function slugify(text) {
   return text.toString().toLowerCase()
@@ -14,7 +15,7 @@ function slugify(text) {
     .replace(/-+$/, ''); // trim - from the end
 }
 
-function Expandable({ children, alt_header = null }) {
+function Expandable({ children, alt_header = null, lifecycle }) {
   if (!alt_header) { return null; }
   const [isOn, setOn] = useState(false);
   const anchorId = slugify(alt_header);
@@ -74,7 +75,7 @@ useEffect(() => {
         <span className={`${styles.toggle} ${isOn ? styles.toggleDown : styles.toggleRight}`}></span>
         &nbsp;
         <span className={styles.headerText}>
-          {alt_header}
+          {alt_header}<Lifecycle status={lifecycle} />
         </span>
         <span onClick={handleCopyClick} className={styles.copyIcon}></span>
       </div>

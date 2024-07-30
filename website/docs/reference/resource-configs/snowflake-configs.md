@@ -299,13 +299,11 @@ models:
 
 </File>
 
-<VersionBlock firstVersion="1.3">
-
 ## Temporary tables
 
-Beginning in dbt version 1.3, incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
+Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time. 
 
-However, some situations remain where a temporary table would achieve results faster or more safely. dbt v1.4 adds the `tmp_relation_type` configuration to allow you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
+However, some situations remain where a temporary table would achieve results faster or more safely. The `tmp_relation_type` configuration enables you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
 
 To guarantee accuracy, an incremental model using the `delete+insert` strategy with a `unique_key` defined requires a temporary table; trying to change this to a view will result in an error.
 
@@ -340,8 +338,6 @@ In the configuration format for the model SQL file:
 
 </File>
 
-</VersionBlock>
-
 <VersionBlock firstVersion="1.6">
 
 ## Dynamic tables
@@ -355,11 +351,28 @@ of [materialized views](/docs/build/materializations#Materialized-View).
 In particular, dynamic tables have access to the `on_configuration_change` setting.
 Dynamic tables are supported with the following configuration parameters:
 
-| Parameter                                                                        | Type       | Required | Default | Change Monitoring Support |
-|----------------------------------------------------------------------------------|------------|----------|---------|---------------------------|
-| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply` | n/a                       |
-| [`target_lag`](#target-lag)                                                      | `<string>` | yes      |         | alter                     |
-| [`snowflake_warehouse`](#configuring-virtual-warehouses)                         | `<string>` | yes      |         | alter                     |
+<VersionBlock lastVersion="1.8">
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+| [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
+| [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 
 <Tabs
   groupId="config-languages"
@@ -370,7 +383,6 @@ Dynamic tables are supported with the following configuration parameters:
     { label: 'Config block', value: 'config', },
   ]
 }>
-
 
 <TabItem value="project-yaml">
 
@@ -383,6 +395,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
     [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+
 ```
 
 </File>
@@ -404,6 +417,7 @@ models:
       [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [target_lag](#target-lag): downstream | <time-delta>
       [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+
 ```
 
 </File>
@@ -416,12 +430,15 @@ models:
 <File name='models/<model_name>.sql'>
 
 ```jinja
+
 {{ config(
     [materialized](/reference/resource-configs/materialized)="dynamic_table",
     [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+
 ) }}
+
 ```
 
 </File>
@@ -429,6 +446,91 @@ models:
 </TabItem>
 
 </Tabs>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
+    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): dynamic_table
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [target_lag](#target-lag): downstream | <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL 
+      [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="dynamic_table",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
+    [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
+
+) }}
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+</VersionBlock>
 
 Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
 
@@ -440,6 +542,27 @@ Snowflake allows two configuration scenarios for scheduling automatic refreshes:
 
 Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
 
+<VersionBlock firstVersion="1.9">
+
+### Refresh mode
+
+Snowflake allows three options for refresh mode:
+- **AUTO** &mdash; Enforces an incremental refresh of the dynamic table by default. If the `CREATE DYNAMIC TABLE` statement does not support the incremental refresh mode, the dynamic table is automatically created with the full refresh mode.
+- **FULL** &mdash; Enforces a full refresh of the dynamic table, even if the dynamic table can be incrementally refreshed.
+- **INCREMENTAL** &mdash; Enforces an incremental refresh of the dynamic table. If the query that underlies the dynamic table can’t perform an incremental refresh, dynamic table creation fails and displays an error message.
+
+Learn more about `refresh_mode` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
+
+### Initialize
+
+Snowflake allows two options for initialize:
+- **ON_CREATE** &mdash; Refreshes the dynamic table synchronously at creation. If this refresh fails, dynamic table creation fails and displays an error message.
+- **ON_SCHEDULE** &mdash; Refreshes the dynamic table at the next scheduled refresh.
+
+Learn more about `initialize` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
+
+</VersionBlock>
+
 ### Limitations
 
 As with materialized views on most data platforms, there are limitations associated with dynamic tables. Some worth noting include:
@@ -450,6 +573,10 @@ As with materialized views on most data platforms, there are limitations associa
 - Dynamic tables cannot reference a view that is downstream from another dynamic table.
 
 Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
+
+For dbt limitations, these dbt features are not supported:
+- [Model contracts](/docs/collaborate/govern/model-contracts)
+- [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
 
 <VersionBlock firstVersion="1.6" lastVersion="1.6">
 

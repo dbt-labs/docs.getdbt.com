@@ -19,7 +19,7 @@ The `query-comment` configuration also accepts a dictionary input, like so:
 ```yml
 models:
   my_dbt_project:
-    +materliazed: table
+    +materialized: table
 
 query-comment:
   comment: string

@@ -30,7 +30,7 @@ for r in res.result:
 - Running simultaneous commands can unexpectedly interact with the data platform. For example, running `dbt run` and `dbt build` for the same models simultaneously could lead to unpredictable results.
 - Each `dbt-core` command interacts with global Python variables. To ensure safe operation, commands need to be executed in separate processes, which can be achieved using methods like spawning processes or using tools like Celery.
 
-To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), both of which does that additional work to manage concurrency (multiple processes) on the your behalf.
+To run [safe parallel execution](/reference/dbt-commands#available-commands), you can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), both of which does that additional work to manage concurrency (multiple processes) on your behalf.
 
 ## `dbtRunnerResult`
 
@@ -89,6 +89,24 @@ res = dbt.invoke(cli_args)
 
 Register `callbacks` on dbt's `EventManager`, to access structured events and enable custom logging. The current behavior of callbacks is to block subsequent steps from proceeding; this functionality is not guaranteed in future versions.
 
+<VersionBlock firstVersion="1.8">
+
+```python
+from dbt.cli.main import dbtRunner
+from dbt_common.events.base_types import EventMsg
+
+def print_version_callback(event: EventMsg):
+    if event.info.name == "MainReportVersion":
+        print(f"We are thrilled to be running dbt{event.data.version}")
+
+dbt = dbtRunner(callbacks=[print_version_callback])
+dbt.invoke(["list"])
+```
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.7">
+
 ```python
 from dbt.cli.main import dbtRunner
 from dbt.events.base_types import EventMsg
@@ -100,6 +118,8 @@ def print_version_callback(event: EventMsg):
 dbt = dbtRunner(callbacks=[print_version_callback])
 dbt.invoke(["list"])
 ```
+
+</VersionBlock>
 
 ### Overriding parameters
 

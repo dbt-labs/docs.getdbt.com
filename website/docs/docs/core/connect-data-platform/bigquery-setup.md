@@ -388,8 +388,6 @@ my-profile:
       execution_project: buck-stops-here-456
 ```
 
-<VersionBlock firstVersion="1.3">
-
 ### Running Python models on Dataproc
 
 To run dbt Python models on GCP, dbt uses companion services, Dataproc and Cloud Storage, that offer tight integrations with BigQuery. You may use an existing Dataproc cluster and Cloud Storage bucket, or create new ones:
@@ -447,7 +445,6 @@ my-profile:
 
 For a full list of possible configuration fields that can be passed in `dataproc_batch`, refer to the [Dataproc Serverless Batch](https://cloud.google.com/dataproc-serverless/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.Batch) documentation.
 
-</VersionBlock>
 
 ## Required permissions
 

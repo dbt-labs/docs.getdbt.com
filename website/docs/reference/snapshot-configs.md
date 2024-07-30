@@ -35,6 +35,8 @@ Parts of a snapshot:
 }>
 <TabItem value="project-yaml">
 
+<VersionBlock lastVersion="1.8">
+
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -51,37 +53,40 @@ snapshots:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='dbt_project.yml'>
+
+```yaml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-configs/schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+    [+](/reference/resource-configs/plus-prefix)[strategy](/reference/resource-configs/strategy): timestamp | check
+    [+](/reference/resource-configs/plus-prefix)[updated_at](/reference/resource-configs/updated_at): <column_name>
+    [+](/reference/resource-configs/plus-prefix)[check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
+
+```
+
+</File>
+
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="property-yaml">
 
 **Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
 
-
-<!--  
-<File name='snapshots/properties.yml'>
-  
-```yaml
-version: 2
-
-snapshots:
-  - name: [<snapshot-name>]
-    config:
-      [target_schema](/reference/resource-configs/target_schema): <string>
-      [target_database](/reference/resource-configs/target_database): <string>
-      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
-      [strategy](/reference/resource-configs/strategy): timestamp | check
-      [updated_at](/reference/resource-configs/updated_at): <column_name>
-      [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
-
-```
-</File>
--->
-
 </TabItem>
 
 <TabItem value="config">
 
+<VersionBlock lastVersion="1.8">
 
 ```jinja
 
@@ -96,6 +101,25 @@ snapshots:
 
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+```jinja
+
+{{ config(
+    [schema](/reference/resource-configs/schema)="<string>",
+    [database](/reference/resource-configs/database)="<string>",
+    [alias](/reference/resource-configs/alias)="<string>",
+    [unique_key](/reference/resource-configs/unique_key)="<column_name_or_expression>",
+    [strategy](/reference/resource-configs/strategy)="timestamp" | "check",
+    [updated_at](/reference/resource-configs/updated_at)="<column_name>",
+    [check_cols](/reference/resource-configs/check_cols)=["<column_name>"] | "all"
+) }}
+
+```
+
+</VersionBlock>
 
 </TabItem>
 
@@ -189,7 +213,7 @@ Snapshots can be configured in one of three ways:
 Snapshot configurations are applied hierarchically in the order above.
 
 ### Examples
-#### Apply the `target_schema` configuration to all snapshots
+#### Apply configurations to all snapshots
 To apply a configuration to all snapshots, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `snapshots` key:
 
 <File name='dbt_project.yml'>
@@ -197,14 +221,14 @@ To apply a configuration to all snapshots, including those in any installed [pac
 ```yml
 
 snapshots:
-  +target_schema: snapshots
+  +unique_key: id
 ```
 
 </File>
 
 
-#### Apply the `target_schema` configuration to all snapshots in your project
-To apply a configuration to all snapshots in your project only (i.e. _excluding_ any snapshots in installed packages), provide your project name as part of the resource path.
+#### Apply configurations to all snapshots in your project
+To apply a configuration to all snapshots in your project only (for example, _excluding_ any snapshots in installed packages), provide your project name as part of the resource path.
 
 For a project named `jaffle_shop`:
 
@@ -214,7 +238,7 @@ For a project named `jaffle_shop`:
 
 snapshots:
   jaffle_shop:
-    +target_schema: snapshot_data
+    +unique_key: id
 ```
 
 </File>

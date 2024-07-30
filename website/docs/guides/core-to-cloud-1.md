@@ -50,7 +50,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 - [What's next?](https://docs.getdbt.com/guides/core-to-cloud-1?step=11): Summarizes key takeaways and introduces what to expect in the following guides.
 
 ### Related docs
-- [Learn dbt Cloud](https://courses.getdbt.com/collections) on-demand video learning.
+- [Learn dbt Cloud](https://learn.getdbt.com) on-demand video learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 
@@ -206,7 +206,7 @@ To use the [dbt Cloud's job scheduler](/docs/deploy/job-scheduler), set up one e
 
 ### Initial setup steps
 1. **dbt Core version** &mdash; In your environment settings, configure dbt Cloud with the same dbt Core version.
-   - Once your full migration is complete, we recommend upgrading your environments to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the latest features and more. You only need to do this once.
+   - Once your full migration is complete, we recommend upgrading your environments to a versionless experience by opting to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the latest features and more. You only need to do this once.
 
 2. **Configure your jobs** &mdash; [Create jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs) for scheduled or event-driven dbt jobs. You can use cron execution, manual, pull requests, or trigger on the completion of another job.
    - Note that alongside [jobs in dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of other tools. Refer to [Integrate with other tools](/docs/deploy/deployment-tools) for more information.
@@ -267,7 +267,7 @@ For the next steps, you can continue exploring our 3-part-guide series on moving
 <CoretoCloudTable/>
 
 ### Related docs
-- [Learn dbt Cloud](https://courses.getdbt.com/collections) video courses for on-demand learning.
+- [Learn dbt Cloud](https://learn.getdbt.com) video courses for on-demand learning.
 - Book [expert-led demos](https://www.getdbt.com/resources/dbt-cloud-demos-with-experts) and insights.
 - Work with the [dbt Labs’ Professional Services](https://www.getdbt.com/dbt-labs/services) team to support your data organization and migration.
 - [How dbt Cloud compares with dbt Core](https://www.getdbt.com/product/dbt-core-vs-dbt-cloud) for a detailed comparison of dbt Core and dbt Cloud.

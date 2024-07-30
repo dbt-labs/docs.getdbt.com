@@ -27,7 +27,9 @@ From dbt v1.5 and higher, use the following macro to override the `ref` method a
 
 It includes logic to extract user-provided arguments, including <code>version</code>, and call the <code>builtins.ref()</code> function with either a single <code>modelname</code> argument or both <code>packagename</code> and <code>modelname</code> arguments, based on the number of positional arguments in <code>varargs</code>.
 
-<br /><br />
+Note that the `ref`, `source`, and `config` functions can't be overridden with a package. This is because `ref`, `source`, and `config` are context properties within dbt and are not dispatched as global macros. Refer to [this GitHub discussion](https://github.com/dbt-labs/dbt-core/issues/4491#issuecomment-994709916) for more context.
+
+<br />
 
   
 ```
@@ -54,22 +56,6 @@ It includes logic to extract user-provided arguments, including <code>version</c
 -- finally, override the database name with "dev"
 {% set newrel = rel.replace_path(database="dev") %}
 {% do return(newrel) %}
-
-{% endmacro %}
-```
-</VersionBlock>
-
-<VersionBlock lastVersion="1.4">
-
-From dbt v1.4 and lower, use the following macro to override the `ref` method available in the model compilation context to return a [Relation](/reference/dbt-classes#relation) with the database name overriden to `dev`:
-
-```
-
-{% macro ref(model_name) %}
-
-  {% set rel = builtins.ref(model_name) %}
-  {% set newrel = rel.replace_path(database="dev") %}
-  {% do return(newrel) %}
 
 {% endmacro %}
 ```
