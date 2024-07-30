@@ -234,6 +234,10 @@ Now that you have a repository configured, you can initialize your project and s
         ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
+## Set up a dbt Cloud managed repository
+
+<Snippet path="tutorial-managed-repo" />
+
 ## Build your first model
 
 You have two options for working with files in the dbt Cloud IDE:
