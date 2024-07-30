@@ -138,7 +138,7 @@ Use the command, `dbt sl export-all`, to run exports for multiple saved queries 
 dbt sl export-all
 ```
 
-#### Output
+The output would look something like this: 
 ```bash
 Exports completed:
 - Created TABLE at `DBT_SL_TEST.new_customer_orders`
