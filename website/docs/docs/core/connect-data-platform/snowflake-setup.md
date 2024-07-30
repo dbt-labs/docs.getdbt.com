@@ -29,6 +29,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 Snowflake can be configured using basic user/password authentication as shown below.
 
+<VersionBlock lastVersion="1.8">
+
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -56,7 +58,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false (available v1.4+)
+      reuse_connections: False
   ```
 
 </File>
@@ -91,8 +93,79 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false (available v1.4+)
+      reuse_connections: False
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: [account id]
+
+      # User/password auth
+      user: [username]
+      password: [password]
+
+      role: [user role]
+      database: [database name]
+      warehouse: [warehouse name]
+      schema: [dbt schema]
+      threads: [1 or more]
+      client_session_keep_alive: False
+      query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false
+      retry_all: False  # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
+  ```
+
+</File>
+
+### User / Password + DUO MFA authentication
+
+Snowflake integrates the DUO Mobile app to add 2-Factor authentication to basic user/password as seen below.
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: [account id]
+
+      # User/password auth
+      user: [username]
+      password: [password]
+      authenticator: username_password_mfa
+
+      role: [user role]
+      database: [database name]
+      warehouse: [warehouse name]
+      schema: [dbt schema]
+      threads: [1 or more]
+      client_session_keep_alive: False
+      query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false
+      retry_all: False  # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
+```
+
+</VersionBlock>
 
 Along with adding the `authenticator` parameter, be sure to run `alter account set allow_client_mfa_caching = true;` in your Snowflake warehouse. Together, these will allow you to easily verify authentication with the DUO Mobile app (skipping this results in push notifications for every model built on every `dbt run`).
 
@@ -101,6 +174,8 @@ Along with adding the `authenticator` parameter, be sure to run `alter account s
 To use key pair authentication, specify the `private_key_path` in your configuration, avoiding the use of a `password`. If needed, you can add a `private_key_passphrase`. **Note**: Unencrypted private keys are accepted, so add a passphrase only if necessary. However, for dbt Core versions 1.5 and 1.6, configurations using a private key in PEM format (for example, keys enclosed with BEGIN and END tags) are not supported. In these versions, you must use the `private_key_path` to reference the location of your private key file.
 
 Starting from [dbt version 1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7), dbt introduced the ability to specify a `private_key` directly as a string instead of a `private_key_path`. This `private_key` string can be in either Base64-encoded DER format, representing the key bytes, or in plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more info on how they generate the key.
+
+<VersionBlock lastVersion="1.8">
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -131,7 +206,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: False
 ```
 
 </File>
@@ -173,7 +248,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: False
 ```
 
 </File>
@@ -211,13 +286,136 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: False
 ```
 
 </File>
 
 </TabItem>
 </Tabs>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: [account id]
+      user: [username]
+      role: [user role]
+
+      # Keypair config
+      private_key_path: [path/to/private.key]
+      # or private_key instead of private_key_path
+      private_key_passphrase: [passphrase for the private key, if key is encrypted]
+
+      database: [database name]
+      warehouse: [warehouse name]
+      schema: [dbt schema]
+      threads: [1 or more]
+      client_session_keep_alive: False
+      query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false
+      retry_all: False  # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
+```
+
+</File>
+
+### SSO Authentication
+
+To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. 
+`authenticator` can be one of 'externalbrowser' or a valid Okta URL. 
+
+Refer to the following tabs for more info and examples:
+
+<Tabs>
+<TabItem value="externalbrowser" label="externalbrowser">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: [account id] # Snowflake <account_name>
+      user: [username] # Snowflake username
+      role: [user role] # Snowflake user role
+
+      # SSO config
+      authenticator: externalbrowser
+
+      database: [database name] # Snowflake database name
+      warehouse: [warehouse name] # Snowflake warehouse name
+      schema: [dbt schema]
+      threads: [between 1 and 8]
+      client_session_keep_alive: False
+      query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false
+      retry_all: False  # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="oktaurl" label="Okta URL">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: [account id] # Snowflake <account_name>
+      user: [username] # Snowflake username
+      role: [user role] # Snowflake user role
+
+      # SSO config -- The three following fields are REQUIRED
+      authenticator: [Okta account URL]
+      username: [Okta username]
+      password: [Okta password]
+
+      database: [database name] # Snowflake database name
+      warehouse: [warehouse name] # Snowflake warehouse name
+      schema: [dbt schema]
+      threads: [between 1 and 8]
+      client_session_keep_alive: False
+      query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false
+      retry_all: False  # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
+</VersionBlock>
 
 **Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication).
 
@@ -263,13 +461,9 @@ The `client_session_keep_alive` feature is intended to keep Snowflake sessions a
 [Query tags](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) are a Snowflake
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
-<VersionBlock firstVersion="1.4">
-
 ### reuse_connections
 
 During node execution (such as model and test), dbt opens connections against a Snowflake warehouse. Setting this configuration to `True` reduces execution time by verifying credentials only once for each thread.
-
-</VersionBlock>
 
 ### retry_on_database_errors
 

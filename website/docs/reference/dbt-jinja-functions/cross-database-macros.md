@@ -18,8 +18,6 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 
 ## All functions (alphabetical)
 
-<VersionBlock firstVersion="1.3">
-
 - [Cross-database macros](#cross-database-macros)
   - [All functions (alphabetical)](#all-functions-alphabetical)
   - [Data type functions](#data-type-functions)
@@ -66,10 +64,6 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
   - [Date and time parts](#date-and-time-parts)
   - [SQL expressions](#sql-expressions)
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
-
 [**Data type functions**](#data-type-functions)
 - [type_bigint](#type_bigint)
 - [type_boolean](#type_boolean)
@@ -79,20 +73,15 @@ Please make sure to take a look at the [SQL expressions section](#sql-expression
 - [type_string](#type_string)
 - [type_timestamp](#type_timestamp)
 
-</VersionBlock>
 
 [**Set functions**](#set-functions)
 - [except](#except)
 - [intersect](#intersect)
 
-<VersionBlock firstVersion="1.3">
-
 [**Array functions**](#array-functions)
 - [array_append](#array_append)
 - [array_concat](#array_concat)
 - [array_construct](#array_construct)
-
-</VersionBlock>
 
 [**String functions**](#string-functions)
 - [concat](#concat)
@@ -145,9 +134,8 @@ This macro yields the database-specific data type for a `BIGINT`.
 bigint
 ```
 
-<VersionBlock firstVersion="1.3">
-
 ### type_boolean
+
 __Args__:
 
  * None
@@ -166,9 +154,8 @@ This macro yields the database-specific data type for a `BOOLEAN`.
 BOOLEAN
 ```
 
-</VersionBlock>
-
 ### type_float
+
 __Args__:
 
  * None
@@ -327,8 +314,6 @@ __Args__:
 intersect
 ```
 
-<VersionBlock firstVersion="1.3">
-
 ## Array functions
 
 ### array_append
@@ -400,8 +385,6 @@ array[]::integer[]
 array[ 1 , 2 , 3 , 4 ]
 array[ 'blue' , 'green' ]
 ```
-
-</VersionBlock>
 
 ## String functions
 

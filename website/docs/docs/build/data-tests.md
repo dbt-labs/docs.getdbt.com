@@ -2,6 +2,8 @@
 title: "Add data tests to your DAG"
 sidebar_label: "Data tests"
 description: "Read this tutorial to learn how to use data tests when building in dbt."
+pagination_next: "docs/build/unit-tests"
+pagination_prev: null
 search_weight: "heavy"
 id: "data-tests"
 keywords:
@@ -67,6 +69,8 @@ having total_amount < 0
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
 
 Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
+
+
 
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
@@ -306,6 +310,7 @@ data_tests:
 
 ## FAQs
 
+<FAQ path="/Tests/available-tests" />
 <FAQ path="Tests/test-one-model" />
 <FAQ path="Runs/failed-tests" />
 <FAQ path="Tests/recommended-tests" />

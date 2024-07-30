@@ -201,7 +201,7 @@ Archived release notes for dbt Cloud from 2023
     - Continuous integration jobs are now generally available and no longer in beta!
     - Added [Postgres PrivateLink set up page](/docs/cloud/secure/postgres-privatelink)
     - Published beta docs for [dbt Explorer](/docs/collaborate/explore-projects).
-    - Added a new Semantic Layer [GraphQL API doc](/docs/dbt-cloud-apis/sl-graphql) and updated the [integration docs](/docs/use-dbt-semantic-layer/avail-sl-integrations) to include Hex. Responded to dbt community feedback and clarified Metricflow use cases for dbt Core and dbt Cloud.
+    - Added a new Semantic Layer [GraphQL API doc](/docs/dbt-cloud-apis/sl-graphql) and updated the [integration docs](/docs/cloud-integrations/avail-sl-integrations) to include Hex. Responded to dbt community feedback and clarified Metricflow use cases for dbt Core and dbt Cloud.
     - Added an [FAQ](/faqs/Git/git-migration) describing how to migrate from one git provider to another in dbt Cloud.
     - Clarified an example and added a [troubleshooting section](/docs/cloud/connect-data-platform/connect-snowflake#troubleshooting) to Snowflake connection docs to address common errors and provide solutions.
 
@@ -229,7 +229,7 @@ Archived release notes for dbt Cloud from 2023
 
     It aims to bring the best of modeling and semantics to downstream applications by introducing:
 
-    - Brand new [integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) such as Tableau, Google Sheets, Hex, Mode, and Lightdash.
+    - Brand new [integrations](/docs/cloud-integrations/avail-sl-integrations) such as Tableau, Google Sheets, Hex, Mode, and Lightdash.
     - New [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using GraphQL and JDBC to query metrics and build integrations.
     - dbt Cloud [multi-tenant regional](/docs/cloud/about-cloud/access-regions-ip-addresses) support for North America, EMEA, and APAC. Single-tenant support coming soon.
     - Coming soon &mdash; Schedule exports (a way to build tables in your data platform) as part of your dbt Cloud job. Use the APIs to call an export, then access them in your preferred BI tool.  

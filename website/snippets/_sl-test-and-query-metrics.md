@@ -26,7 +26,7 @@ Refer to the following steps to get started:
 
 :::tip Run dbt parse to reflect metric changes
 When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
-::
+:::
 
 4. Run `dbt sl --help` to confirm you have MetricFlow installed and that you can view the available commands.
 5. Run `dbt sl query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, to query the `order_total` and `order_count` (both metrics), and then group them by the `order_date` (dimension), you would run:

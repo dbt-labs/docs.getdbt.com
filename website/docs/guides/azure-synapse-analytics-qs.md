@@ -1,5 +1,5 @@
 ---
-title: "Quickstart for dbt Cloud and Azure Synapse Analytics (Preview)"
+title: "Quickstart for dbt Cloud and Azure Synapse Analytics"
 id: "azure-synapse-analytics"
 level: 'Beginner'
 icon: 'azure-synapse-analytics'
@@ -28,7 +28,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Azure Synapse 
 - As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Synapse workspace with either a Member (recommended) or Admin permission set. For details, refer to [Create a service principal using the Azure portal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Azure Synapse Analytics.
 
 ### Related content
-- [dbt Courses](https://courses.getdbt.com/collections/beginner)
+- [dbt Learn courses](https://learn.getdbt.com)
 - [About continuous integration jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)

@@ -16,6 +16,10 @@ Conversion metrics are different from [ratio metrics](/docs/build/ratio) because
 
 The specification for conversion metrics is as follows:
 
+:::tip
+Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
+:::
+
 | Parameter | Description | Type |
 | --- | --- | --- | 
 | `name` | The name of the metric. |  Required |

@@ -44,18 +44,15 @@ The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in 
 | [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |                 |          ✅        |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   |        ✅       |                    |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   |        ✅       |                    |
+| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |         |        ✅       |                    |
 
 </VersionBlock>
-
-<VersionBlock firstVersion="1.3">
 
 :::note Snowflake Configurations
 
-dbt v1.3 changed the default materialization for incremental table merges from `temporary table` to `view`. For more information about this change and instructions for setting the configuration to a temp table, please read about [Snowflake temporary tables](/reference/resource-configs/snowflake-configs#temporary-tables).
+dbt has changed the default materialization for incremental table merges from `temporary table` to `view`. For more information about this change and instructions for setting the configuration to a temp table, please read about [Snowflake temporary tables](/reference/resource-configs/snowflake-configs#temporary-tables).
 
 :::
-
-</VersionBlock>
 
 ### Configuring incremental strategy
 
@@ -89,8 +86,6 @@ select ...
 ```
 
 </File>
-
-<VersionBlock firstVersion="1.3">
 
 ### Strategy-specific configs
 
@@ -133,10 +128,6 @@ select ...
 ```
 
 </File>
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.4">
 
 ### About incremental_predicates
 
@@ -215,8 +206,6 @@ The syntax depends on how you configure your `incremental_strategy`:
 - If using the `merge` strategy, you may need to explicitly alias any columns with either `DBT_INTERNAL_DEST` ("old" data) or `DBT_INTERNAL_SOURCE` ("new" data). 
 - There's a decent amount of conceptual overlap with the `insert_overwrite` incremental strategy.
 :::
-
-</VersionBlock>
 
 ### Built-in strategies
 
