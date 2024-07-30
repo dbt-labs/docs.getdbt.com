@@ -76,7 +76,7 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
 - [`list saved queries`](#list-saved-queries) &mdash; Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query.
 - [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
-- [`export`](#exports) &mdash;  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query.
+- [`export`](#export) &mdash;  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query.
 - [`export-all`](#export-all) &mdash; Runs exports for multiple saved queries at once, saving time and effort.
 
 
