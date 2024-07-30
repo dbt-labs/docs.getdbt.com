@@ -39,7 +39,7 @@ To improve your experience using dbt Cloud, we suggest that you turn off ad bloc
 
 ## Prerequisites
 
-- A [dbt Cloud account]() and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
+- A [dbt Cloud account](https://www.getdbt.com/signup) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) or [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
 - A [development environment and development credentials](#get-started-with-the-cloud-ide) set up
