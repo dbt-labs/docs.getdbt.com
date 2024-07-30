@@ -14,7 +14,7 @@ A GitHub organization admin will need to update the permissions in GitHub for th
 
 1. Navigate to your GitHub account. Click on the top right profile icon and then **Settings** (or personal if using a non-organization account).
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-settings.jpg" width="60%" title="Navigate to your GitHub account to configure your settings." />
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-settings.jpg" width="50%" title="Navigate to your GitHub account to configure your settings." />
 
 2. Then go to **Integrations** and then select **Applications** to identify any necessary permission changes. Note that a GitHub repository admin may not see the same permission request.
 
@@ -40,7 +40,7 @@ Disconnect the GitHub and dbt Cloud integration in dbt Cloud.
 6. Return to your **Project details** page and reconnect your repository by clicking the **Configure Repository** link.
 7. Configure your repository and click **Save**
 
-<Lightbox src="/img/repository-details-faq.jpg" title="Disconnect your GitHub connection in the 'Repository details' page."/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/repository-details-faq.jpg" title="Disconnect your GitHub connection in the 'Repository details' page."/>
 
 ## Support
 If you've tried these workarounds and are still experiencing this behavior &mdash; reach out to the [dbt Support](mailto:support@getdbt.com) team and we'll be happy to help!
