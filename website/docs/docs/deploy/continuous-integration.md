@@ -52,4 +52,4 @@ When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the late
 
 ### Run slot treatment <Lifecycle status="team,enterprise" />
 
-CI runs do not consume run slots. This guarantees a CI check will never block a production run.
+CI runs don't consume run slots. This guarantees a CI check will never block a production run.
