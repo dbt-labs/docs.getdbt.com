@@ -51,9 +51,9 @@ Alternatively, you can use the [one-YAML-per-marts-model approach](/best-practic
 ```yaml
 semantic_models:
   - name: sem_user_activity_daily
-    description: >
+    description: |
       This model reports on daily user activity. Activity is broken down into
-      pageview + time-on-site metrics for each use-case that is addressed in
+      pageview + time-on-site metrics for each use case that is addressed in
       dbt Cloud (ie. Deployment and Development)
     model: ref('fct_user_activity_daily')
     defaults:
@@ -71,9 +71,9 @@ semantic_models:
 ```yaml
 semantic_models:
   - name: sem_user_activity_daily
-    description: >
+    description: |
       This model reports on daily user activity. Activity is broken down into
-      pageview + time-on-site metrics for each use-case that is addressed in
+      pageview + time-on-site metrics for each use case that is addressed in
       dbt Cloud (ie. Deployment and Development)
     model: ref('fct_user_activity_daily')
     defaults:
@@ -104,7 +104,7 @@ semantic_models:
 
     measures:
       - name: count_activity_users
-        description: >
+        description: |
           Distinct count of users via `fct_user_activity_daily`.
           To be used in metrics related to User-level activities
           (e.g. Active Users)
@@ -122,7 +122,7 @@ semantic_models:
 
 ```yaml
 - name: sem_all_days
-    description: >
+    description: |
       Utility semantic model to bring in company-specific fiscal quarter and fiscal year, or date flags such as `is_end_of_week` or `is_end_of_fiscal_quarter`.
     model: ref('all_days')
     defaults:
@@ -257,7 +257,7 @@ Create a YAML file under the `semantic_models` folder: (`models/semantic_models/
 ```yaml
 semantic_models:
   - name: sem_revenue
-    description: >
+    description: |
       This model aggregates revenue data, providing metrics for business to analyze the financial 
       health of the fictional Santiago's snacks org.
     model: ref('fct_revenue')
@@ -296,7 +296,7 @@ Create another YAML file under the metrics folder: (`models/metrics/sem_revenue_
 metrics:
   - name: arr
     label: 'ARR'
-    description: >
+    description: |
       Annual recurring revenue calculated based on MRR.
     type: derived
     type_params:
@@ -355,7 +355,7 @@ Create a YAML file under the `semantic_models` folder: (`models/semantic_models/
 ```yaml
 semantic_models:
   - name: sem_customer_acquisition
-    description: >
+    description: |
       This model aggregates customer acquisition data, providing metrics for business to analyze the cost of acquiring new customers.
     model: ref('fct_customer_acquisition')
     defaults:
