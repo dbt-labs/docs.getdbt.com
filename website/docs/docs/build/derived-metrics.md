@@ -15,13 +15,14 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | The value that will be displayed in downstream tools. | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
-| `expr` | The derived expression. | Required |
+| `expr` | The derived expression. You see validation warnings when the derived metric is missing an `expr` or  the `expr` does not use all the input metrics. | Required |
 | `metrics` |  The list of metrics used in the derived metrics. | Required  |
 | `alias` | Optional alias for the metric that you can use in the expr. | Optional |
 | `filter` | Optional filter to apply to the metric. | Optional |
 | `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Optional |
+
 
 The following displays the complete specification for derived metrics, along with an example.
 
@@ -49,7 +50,7 @@ metrics:
   - name: order_gross_profit
     description: Gross profit from each order.
     type: derived
-    label: Order Gross Profit
+    label: Order gross profit
     type_params:
       expr: revenue - cost
       metrics:
@@ -58,7 +59,7 @@ metrics:
         - name: order_cost
           alias: cost
   - name: food_order_gross_profit
-    label: Food Order Gross Profit  
+    label: Food order gross profit
     description: "The gross profit for each food order."
     type: derived
     type_params:
@@ -75,7 +76,7 @@ metrics:
   - name: order_total_growth_mom
     description: "Percentage growth of orders total completed to 1 month ago"
     type: derived
-    label: Order Total Growth % M/M
+    label: Order total growth % M/M
     type_params:
       expr: (order_total - order_total_prev_month)*100/order_total_prev_month
       metrics: 
@@ -115,7 +116,7 @@ You can query any granularity and offset window combination. The following examp
 - name: d7_booking_change
   description: Difference between bookings now and 7 days ago
   type: derived
-  label: d7 Bookings Change
+  label: d7 bookings change
   type_params:
     expr: bookings - bookings_7_days_ago
     metrics:
@@ -151,7 +152,7 @@ When you run the query  `dbt sl query --metrics d7_booking_change --group-by met
 | Total  | 7252 | 2017-07-01 |
 
 4. Lastly, calculate the derived metric and return the final result set:
-   
+
 ```bash
 bookings - bookings_7_days_ago would be compile as 7438 - 7252 = 186. 
 ```

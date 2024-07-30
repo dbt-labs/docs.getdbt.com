@@ -35,35 +35,6 @@ In both cases, `test_type` checks a property of the test itself. These are forms
 
 ### Indirect selection
 
-<VersionBlock lastVersion="1.3">
-
-There are two modes to configure the behavior when performing indirect selection (with `eager` as the default):
-
-1. `eager` (default) - include ANY test that references the selected nodes
-1. `cautious` - restrict to tests that ONLY refer to selected nodes
-
-Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
-
-The "cautious" mode can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](/reference/node-selection/defer)).
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.4" lastVersion="1.4">
-
-There are three modes to configure the behavior when performing indirect selection (with `eager` as the default):
-
-1. `eager` (default) - include ANY test that references the selected nodes
-1. `cautious` - restrict to tests that ONLY refer to selected nodes
-1. `buildable` -  restrict to tests that ONLY refer to selected nodes (or their ancestors)
-
-Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
-
-:::tip Building subsets of a DAG
-The `buildable` and `cautious` modes can be useful when you're only building a subset of your DAG, and you want to avoid test failures in `eager` mode caused by unbuilt resources. You can also achieve this with [deferral](/reference/node-selection/defer).
-:::
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5" >
 
 <IndirSelect features={'/snippets/indirect-selection-definitions.md'}/>
@@ -137,99 +108,6 @@ This mode does not execute any tests, whether they are directly attached to the 
 
 dbt test --select "orders" --indirect-selection=empty
 dbt build --select "orders" --indirect-selection=empty
-
-```
-
-</TabItem>
-
-</Tabs>
-
-</VersionBlock>
-
-<!--Tabs for 1.4 only -->
-
-<VersionBlock firstVersion="1.4" lastVersion="1.4">
-
-<Tabs queryString="indirect-selection-mode">
-<TabItem value="eager" label="Eager mode (default)">
-
-By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include any test that references orders, even if it references other models as well.
-
-In this mode, any test that depends on unbuilt resources will raise an error.
-
-```shell
-dbt test --select "orders"
-dbt build --select "orders"
-```
-
-</TabItem>
-
-<TabItem value="cautious" label="Cautious mode">
-
-It is possible to prevent tests from running if one or more of its parents is unselected (and therefore unbuilt); we call this "cautious" indirect selection.
-
-It will only include tests whose references are each within the selected nodes.
-
-Put another way, it will prevent tests from running if one or more of its parents is unselected.
-
-```shell
-
-dbt test --select "orders" --indirect-selection=cautious
-dbt build --select "orders" --indirect-selection=cautious
-
-```
-
-</TabItem>
-
-<TabItem value="buildable" label="Buildable mode">
-
-This mode is similarly conservative like "cautious", but is slightly more inclusive.
-
-It will only include tests whose references are each within the selected nodes (or their ancestors).
-
-This is useful in the same scenarios as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
-
-```shell
-dbt test --select "orders" --indirect-selection=buildable
-dbt build --select "orders" --indirect-selection=buildable
-
-```
-
-</TabItem>
-
-</Tabs>
-
-</VersionBlock>
-
-<!--Tabs for 1.3 and lower only -->
-<VersionBlock lastVersion="1.3">
-
-<Tabs queryString="indirect-selection-mode">
-<TabItem value="eager" label="Eager mode (default)">
-
-By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include any test that references orders, even if it references other models as well.
-
-In this mode, any test that depends on unbuilt resources will raise an error.
-
-```shell
-dbt test --select "orders"
-dbt build --select "orders"
-```
-
-</TabItem>
-
-<TabItem value="cautious" label="Cautious mode">
-
-It is possible to prevent tests from running if one or more of its parents is unselected (and therefore unbuilt); we call this "cautious" indirect selection.
-
-It will only include tests whose references are each within the selected nodes.
-
-Put another way, it will prevent tests from running if one or more of its parents is unselected.
-
-```shell
-
-dbt test --select "orders" --indirect-selection=cautious
-dbt build --select "orders" --indirect-selection=cautious
 
 ```
 

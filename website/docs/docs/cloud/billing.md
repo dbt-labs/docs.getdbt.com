@@ -87,13 +87,19 @@ Viewing usage in the product is restricted to specific roles:
 * Team plan &mdash; Owner group
 * Enterprise plan &mdash; Account and billing admin roles
 
-For an account-level view of usage, if you have access to the **Billing** and **Usage** pages, you can see an estimate of the usage for the month. In the Billing page of the **Account Settings**, you can see how your account tracks against its usage. You can also see which projects are building the most models. 
+For an account-level view of usage, if you have access to the **Billing** and **Usage** pages, you can see an estimate of the usage for the month. In the Billing page of the **Account Settings**, you can see how your account tracks against its usage. You can also see which projects are building the most models.
 
-As a Team and Developer plan user, you can see how the account is tracking against the included models built. As an Enterprise plan user, you can see how much you have drawn down from your annual commit and how much remains. 
+<Lightbox src="/img/docs/building-a-dbt-project/billing-usage-page.jpg" width="80%" title="To view account-level estimated usage, go to 'Account settings' and then select 'Billing'."/>
 
-On each Project Home page, any user with access to that project can see how many models are built each month. From there, additional details on top jobs by models built can be found on each Environment page. 
+As a Team and Developer plan user, you can see how the account is tracking against the included models built. As an Enterprise plan user, you can see how much you have drawn down from your annual commit and how much remains.
 
-In addition, you can look at the Job Details page's Insights tab to show how many models are being built per month for that particular job and which models are taking the longest to build. 
+On each **Project Home** page, any user with access to that project can see how many models are built each month. From there, additional details on top jobs by models built can be found on each **Environment** page.
+
+<Lightbox src="/img/docs/building-a-dbt-project/billing-project-page.jpg" width="80%" title="Your Project home page displays how many models are built each month."/>
+
+In addition, you can look at the **Job Details** page's **Insights** tab to show how many models are being built per month for that particular job and which models are taking the longest to build. 
+
+<Lightbox src="/img/docs/building-a-dbt-project/billing-job-page.jpg" width="80%" title="View how many models are being built per month for a particular job by going to the 'Insights' tab in the 'Job details' page."/>
 
 Usage information is available to customers on consumption-based plans, and some usage visualizations might not be visible to customers on legacy plans. Any usage data shown in dbt Cloud is only an estimate of your usage, and there could be a delay in showing usage data in the product. Your final usage for the month will be visible on your monthly statements (statements applicable to Team and Enterprise plans).
 
@@ -134,7 +140,7 @@ Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain o
 
 :::note Legacy Semantic Layer
 
-For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/docs/use-dbt-semantic-layer/quickstart-sl#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
+For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/guides/sl-snowflake-qs#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
 
 :::
 

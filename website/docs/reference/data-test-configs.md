@@ -85,7 +85,8 @@ version: 2
 <resource_type>:
   - name: <resource_name>
     tests:
-      - [<test_name>](#test_name):
+      - <test_name>: # # Actual name of the test. For example, dbt_utils.equality
+          name: # Human friendly name for the test. For example, equality_fct_test_coverage
           <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [fail_calc](/reference/resource-configs/fail_calc): <string>
@@ -99,7 +100,8 @@ version: 2
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
-          - [<test_name>](#test_name):
+          - <test_name>:
+              name: 
               <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [fail_calc](/reference/resource-configs/fail_calc): <string>
@@ -178,7 +180,8 @@ version: 2
 <resource_type>:
   - name: <resource_name>
     tests:
-      - [<test_name>](#test_name):
+      - <test_name>: # Actual name of the test. For example, dbt_utils.equality
+          name: # Human friendly name for the test. For example, equality_fct_test_coverage
           <argument_name>: <argument_value>
           [config](/reference/resource-properties/config):
             [enabled](/reference/resource-configs/enabled): true | false
@@ -192,7 +195,8 @@ version: 2
     [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
-          - [<test_name>](#test_name):
+          - <test_name>:
+              name: 
               <argument_name>: <argument_value>
               [config](/reference/resource-properties/config):
                 [enabled](/reference/resource-configs/enabled): true | false
@@ -271,3 +275,26 @@ tests:
 ```
 
 </File>
+
+#### Specify custom configurations for generic data tests
+
+_Currently available in dbt Cloud only. Specifying custom configurations for data tests will become available in dbt Core later this year._
+
+Use any custom config key to specify custom configurations for data tests. For example, the following specifies the `snowflake_warehouse` custom config that dbt should use when executing the `accepted_values` data test:
+
+```yml
+
+models:
+  - name: my_model
+    columns:
+      - name: color
+        tests:
+          - accepted_values:
+              values: ['blue', 'red']
+              config:
+                severity: warn
+                snowflake_warehouse: my_warehouse
+
+```
+
+Given the config, the data test runs on a different Snowflake virtual warehouse than the one in your default connection to enable better price-performance with a different warehouse size or more granular cost allocation and visibility.

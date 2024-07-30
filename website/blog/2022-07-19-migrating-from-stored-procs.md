@@ -221,5 +221,5 @@ dbt Labs has developed a number of related resources you can use to learn more a
 
 - [Refactoring legacy SQL to dbt](https://docs.getdbt.com/tutorial/refactoring-legacy-sql)
 - [The case for the ELT workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
-- [Refactoring SQL for modularity](https://courses.getdbt.com/courses/refactoring-sql-for-modularity)
+- [Refactoring SQL for modularity](https://learn.getdbt.com/courses/refactoring-sql-for-modularity)
 - [Data modeling techniques for modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)

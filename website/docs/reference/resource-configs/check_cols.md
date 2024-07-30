@@ -8,7 +8,7 @@ datatype: "[column_name] | all"
 ```jinja2
 {{ config(
   strategy="check",
-  updated_at=["column_name"]
+  check_cols=["column_name"]
 ) }}
 
 ```

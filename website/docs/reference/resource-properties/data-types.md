@@ -64,6 +64,9 @@ unit_tests:
            struct_field: 'struct("Isha" as name, 22 as age)'
            struct_of_struct_field: 'struct(struct(1 as id, "blue" as color) as my_struct)'
            struct_array_field: ['struct(st_geogpoint(75, 45) as my_point)', 'struct(st_geogpoint(75, 35) as my_point)']
+           # Make sure to include all the fields in a BigQuery `struct` within the unit test.
+           # It's not currently possible to use only a subset of columns in a 'struct'
+
 
 ```
 

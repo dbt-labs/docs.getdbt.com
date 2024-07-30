@@ -1,6 +1,8 @@
 ---
 title: "Packages"
 id: "packages"
+description:  "Discover how dbt packages help modularize code and transform data efficiently. Learn about git packages, hub packages, private packages, and advanced package configurations."
+keywords: [dbt package, private package, dbt private package, dbt data transformation, dbt clone, add dbt package]
 ---
 
 
@@ -80,8 +82,14 @@ packages:
     version: [">=0.7.0", "<0.8.0"]
 ```
 
+<VersionBlock firstVersion="1.7">
+
+Beginning in v1.7, `dbt deps` "pins" each package by default. See ["Pinning packages"](#pinning-packages) for details.
+
+</VersionBlock>
+
 Where possible, we recommend installing packages via dbt Hub, since this allows dbt to handle duplicate dependencies. This is helpful in situations such as:
-* Your project uses both the dbt-utils and Snowplow packages; and the Snowplow package _also_ uses the dbt-utils package.
+* Your project uses both the dbt-utils and Snowplow packages, and the Snowplow package _also_ uses the dbt-utils package.
 * Your project uses both the Snowplow and Stripe packages, both of which use the dbt-utils package.
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
@@ -94,21 +102,21 @@ Some package maintainers may wish to push prerelease versions of packages to the
 
 By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
 - Explicitly specifying a prerelease version in your `version` criteria
-- Setting `install-prerelease` to `true`, and providing a compatible version range
+- Setting `install_prerelease` to `true`, and providing a compatible version range
 
-Both of the following configurations would successfully install `0.4.5a2` of `dbt_artifacts`:
+For example, both of the following configurations would successfully install `0.4.5-a2` for the [`dbt_artifacts` package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/):
 
 ```yaml
 packages:
   - package: brooklyn-data/dbt_artifacts
-    version: 0.4.5a2
+    version: 0.4.5-a2
 ```
 
 ```yaml
 packages:
   - package: brooklyn-data/dbt_artifacts
     version: [">=0.4.4", "<0.4.6"]
-    install-prerelease: true
+    install_prerelease: true
 ```
 
 ### Git packages
@@ -137,15 +145,17 @@ packages:
     revision: 4e28d6da126e2940d17f697de783a717f2503188
 ```
 
-We **strongly recommend** "pinning" your package to a specific release by specifying a release name.
+<VersionBlock lastVersion="1.6">
 
-If you do not provide a revision, or if you use `master`, then any updates to the package will be incorporated into your project the next time you run `dbt deps`. While we generally try to avoid making breaking changes to these packages, they are sometimes unavoidable. Pinning a package revision helps prevent your code from changing without your explicit approval.
+We **strongly recommend** ["pinning" your packages](#pinning-packages) to a specific release by specifying a release name.
 
-To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/dbt-labs/dbt-utils/releases).
+</VersionBlock>
 
-As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
+<VersionBlock firstVersion="1.7">
 
-<VersionBlock firstVersion="1.4">
+By default, `dbt deps` "pins" each package. See ["Pinning packages"](#pinning-packages) for details.
+
+</VersionBlock>
 
 ### Internally hosted tarball URL
 
@@ -159,8 +169,6 @@ packages:
 ```
 
 Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's created for the package source code to be installed within.
-
-</VersionBlock>
 
 ### Private packages
 
@@ -182,12 +190,12 @@ packages:
 If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
 
 
-#### Git Token Method
+#### Git token method
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
 
-:::info dbt Cloud Usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET_`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+:::info dbt Cloud usage
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or <VersionBlock lastVersion="1.5">`DBT_ENV_SECRET_`</VersionBlock><VersionBlock firstVersion="1.6">`DBT_ENV_SECRET`</VersionBlock>. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
 In GitHub:
@@ -307,6 +315,31 @@ When you update a version or revision in your `packages.yml` file, it isn't auto
 When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_packages/` directory. If you want to completely uninstall a package, you should either:
 * delete the package directory in `dbt_packages/`;  or
 * run `dbt clean` to delete _all_ packages (and any compiled models), followed by `dbt deps`.
+
+### Pinning packages
+
+<VersionBlock lastVersion="1.6">
+
+We **strongly recommend** "pinning" your package to a specific release by specifying a tagged release name or a specific commit hash.
+
+If you do not provide a revision, or if you use the main branch, then any updates to the package will be incorporated into your project the next time you run `dbt deps`. While we generally try to avoid making breaking changes to these packages, they are sometimes unavoidable. Pinning a package revision helps prevent your code from changing without your explicit approval.
+
+To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/dbt-labs/dbt-utils/releases).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+Beginning with v1.7, running [`dbt deps`](/reference/commands/deps) "pins" each package by creating or updating the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded. 
+
+- The `package-lock.yml` file contains a record of all packages installed.
+- If subsequent `dbt deps` runs contain no changes to `dependencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
+
+For example, if you use a branch name, the `package-lock.yml` file pins to the head commit. If you use a version range, it pins to the latest release. In either case, subsequent commits or versions will **not** be installed. To get new commits or versions, run `dbt deps --upgrade` or add `package-lock.yml` to your .gitignore file.
+
+</VersionBlock>
+
+As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a revision (see below).
 
 ### Configuring packages
 You can configure the models and seeds in a package from the `dbt_project.yml` file, like so:

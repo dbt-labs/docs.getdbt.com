@@ -27,6 +27,7 @@ import {ThemeClassNames} from '@docusaurus/theme-common';
 import VersionContext from '../../../stores/VersionContext'
 import getElements from '../../../utils/get-html-elements';
 import useHashLink from '../../../utils/use-hash-link';
+import removeTrailingDashes from '../../../utils/remove-trailing-slashes';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -50,7 +51,7 @@ function useDocTOC() {
     );
 
     // Headings to remove from TOC
-    const headingsToFilter = await getElements(
+    const headingsToFilter = document.querySelectorAll(
       ".tabs-container h2, .tabs-container h3, .expandable-anchor h2, .expandable-anchor h3"
     );
     
@@ -84,9 +85,13 @@ function useDocTOC() {
             level = null;
           }
 
+          // Remove trailing slashes from TOC item
+          // Trailing slashes come from the LifeCycle pill use on headers
+          const updatedHeading = removeTrailingDashes(heading)
+
           return {
-            value: heading.innerHTML,
-            id: heading.id,
+            value: updatedHeading.innerHTML,
+            id: updatedHeading.id,
             level: level && level,
           };
         };

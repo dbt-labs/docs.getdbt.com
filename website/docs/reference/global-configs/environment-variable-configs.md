@@ -4,7 +4,7 @@ id: "environment-variable-configs"
 sidebar: "Environment variable configs"
 ---
 
-Environment variables contain a `DBT_` prefix
+Environment variables contain a `DBT_` prefix. For a list of all dbt environment variables you can set, refer to [Available flags](/reference/global-configs/about-global-configs#available-flags).
 
 <File name='Env var'>
 
@@ -17,4 +17,4 @@ dbt run
 
 </File>
 
-For more detailed information, read our [environment variables page](/docs/build/environment-variables)
+For more detailed information, read our [environment variables page](/docs/build/environment-variables).
