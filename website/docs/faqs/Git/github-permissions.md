@@ -10,32 +10,34 @@ To solve this issue, you'll need to update the permissions for the dbt Cloud Git
 
 #### Update permissions
 
-A Github organization admin will need to update the permissions in GitHub for the dbt Cloud GitHub App. If you're not the admin, reach out to your organization admin to request this. 
+A GitHub organization admin will need to update the permissions in GitHub for the dbt Cloud GitHub App. If you're not the admin, reach out to your organization admin to request this. 
 
-1. Head over to your Github account > Click on the top right profile icon > **Settings** (or personal if using a non-organization account).
-<img width="386" alt="github settings" src="https://github.com/user-attachments/assets/bc8810d4-9711-4b0c-930b-c82be57f6c39">
+1. Navigate to your GitHub account. Click on the top right profile icon and then **Settings** (or personal if using a non-organization account).
 
-2. Then navigate to Integrations > **Applications** to identify any necessary permission changes. Note: A Github repository admin may not see the same permission request.
-<img alt="update_github_permission" src="https://github.com/user-attachments/assets/9bd3cc39-1e1f-4a24-a17a-5dd9c128deaa">
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-settings.jpg" title="Navigate to your GitHub account to configure your settings." />
 
-3. Click on 'Review request' and 'Accept new permissions' on the next page.
-<img alt="update_github_permission2" src="https://github.com/user-attachments/assets/178220bc-b368-4e1d-b8ec-bc66a9c57985">
+2. Then go to **Integrations** and then select **Applications** to identify any necessary permission changes. Note that a GitHub repository admin may not see the same permission request.
 
-For more info on GitHub permissions,refer to [access permissions](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-applications.jpg" title="Navigate to Application settings to identify permission changes." />
 
+3. Click on **Review request** and then click on the **Accept new permissions** button on the next page.
 
-Alternatively, try [disconecting your GitHub account](#disconect-github) in dbt Cloud.
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/github-review-request.jpg" title="Grant access to the dbt Cloud app by accepting the new permissions." />
+
+For more info on GitHub permissions, refer to [access permissions](https://docs.github.com/en/get-started/learning-about-github/access-permissions-on-github).
+
+Alternatively, try [disconecting your GitHub account](#disconect-github) in dbt Cloud, detailed in the following section.
 
 #### Disconnect GitHub
 
 Disconnect the GitHub and dbt Cloud integration in dbt Cloud.
 
 1. In dbt Cloud, go to **Account Settings**.
-2. In **Projects**, select the project that's experiencing the issue.
+2. In **Projects**, select the project experiencing the issue.
 3. Click the repository link under **Repository**.
 4. In the **Repository details** page, click **Edit**.
 5. Click **Disconnect** to remove the GitHub integration.
-6. Go back to your **Project details** page and reconnect your repository by clicking the **Configure Repository** link.
+6. Return to your **Project details** page and reconnect your repository by clicking the **Configure Repository** link.
 7. Configure your repository and click **Save**
 
 <Lightbox src="/img/repository-details-faq.jpg" title="Disconnect your GitHub connection in the 'Repository details' page."/>
