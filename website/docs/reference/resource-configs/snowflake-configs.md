@@ -425,7 +425,7 @@ models:
     [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
     [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
-    [refresh_mode]
+    [refresh_mode](#refresh-mode)="auto",
 ) }}
 ```
 
