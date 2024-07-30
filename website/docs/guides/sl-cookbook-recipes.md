@@ -168,7 +168,7 @@ semantic_models:
 metrics:
   - name: users_active
     label: 'Users: active'
-    description: >
+    description: |
       Users are considered active when they reach:
 		* at least 3+ actions in the week
 		* in a given reporting period (weekly or monthly)
