@@ -3,23 +3,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/guides/codespace",
-      "has": [
-        {
-          "type": "query",
-          "key": "step",
-          "value": "4"
-        }
-      ],
-      "destination": "/guides/DuckDB?step=5",
-      "permanent": true
-    },
-    {
-      "source": "/guides/codespace",
-      "destination": "/guides/DuckDB",
-      "permanent": true
-    },
-    {
       "source": "/docs/dbt-versions/core-upgrade/upgrading-to-dbt-utils-v1.0.md",
       "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-dbt-utils-v1.0.md",
       "permanent": true
