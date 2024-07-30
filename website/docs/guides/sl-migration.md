@@ -11,6 +11,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 The legacy Semantic Layer will be deprecated in H2 2023. Additionally, the `dbt_metrics` package will not be supported in dbt v1.6 and later. If you are using `dbt_metrics`, you'll need to upgrade your configurations before upgrading to v1.6. This guide is for people who have the legacy dbt Semantic Layer setup and would like to migrate to the new dbt Semantic Layer. The estimated migration time is two weeks. 
@@ -25,21 +27,26 @@ dbt Labs recommends completing these steps in a local dev environment (such as t
 1. Create new Semantic Model configs as YAML files in your dbt project.*
 1. Upgrade the metrics configs in your project to the new spec.* 
 1. Delete your old metrics file or remove the `.yml` file extension so they're ignored at parse time. Remove the `dbt-metrics` package from your project. Remove any macros that reference `dbt-metrics`, like `metrics.calculate()`. Make sure that any packages you’re using don't have references to the old metrics spec. 
-1. Install the CLI with `python -m pip install "dbt-metricflow[your_adapter_name]"`. For example: 
+1. Install the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to run MetricFlow commands and define your semantic model configurations.
+   - If you're using dbt Core, install the [MetricFlow CLI](/docs/build/metricflow-commands) with `python -m pip install "dbt-metricflow[your_adapter_name]"`. For example: 
 
     ```bash
     python -m pip install "dbt-metricflow[snowflake]"
     ```
-    **Note** - The MetricFlow CLI is not available in the IDE at this time. Support is coming soon. 
+    **Note** - MetricFlow commands aren't yet supported in the dbt CLoud IDE at this time.
 
-1. Run `dbt parse`. This parses your project and creates a `semantic_manifest.json` file in your target directory. MetricFlow needs this file to query metrics. If you make changes to your configs, you will need to parse your project again. 
-1. Run `mf list metrics` to view the metrics in your project.
-1. Test querying a metric by running `mf query --metrics <metric_name> --group-by <dimensions_name>`. For example:
+2. Run `dbt parse`. This parses your project and creates a `semantic_manifest.json` file in your target directory. MetricFlow needs this file to query metrics. If you make changes to your configs, you will need to parse your project again. 
+3. Run `mf list metrics` to view the metrics in your project.
+4. Test querying a metric by running `mf query --metrics <metric_name> --group-by <dimensions_name>`. For example:
     ```bash
     mf query --metrics revenue --group-by metric_time
     ```
-1. Run `mf validate-configs` to run semantic and warehouse validations. This ensures your configs are valid and the underlying objects exist in your warehouse. 
-1. Push these changes to a new branch in your repo. 
+5. Run `mf validate-configs` to run semantic and warehouse validations. This ensures your configs are valid and the underlying objects exist in your warehouse. 
+6. Push these changes to a new branch in your repo.
+
+:::info `ref` not supported
+The dbt Semantic Layer API doesn't support `ref` to call dbt objects. This is currently due to differences in architecture between the legacy Semantic Layer and the re-released Semantic Layer. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
+:::
 
 **To make this process easier, dbt Labs provides a [custom migration tool](https://github.com/dbt-labs/dbt-converter) that automates these steps for you. You can find installation instructions in the [README](https://github.com/dbt-labs/dbt-converter/blob/master/README.md). Derived metrics aren’t supported in the migration tool, and will have to be migrated manually.*
 
@@ -126,8 +133,11 @@ If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in
 
 ### Related docs 
 
-- [MetricFlow quickstart guide](/docs/build/sl-getting-started)
-- [Example dbt project](https://github.com/dbt-labs/jaffle-sl-template)
+- [Quickstart guide with the dbt Semantic Layer](/guides/sl-snowflake-qs)
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
 - [Why we're deprecating the dbt_metrics package](/blog/deprecating-dbt-metrics) blog post
 - [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
+- [dbt Semantic Layer on-demand course](https://learn.getdbt.com/courses/semantic-layer)
+
+</div>

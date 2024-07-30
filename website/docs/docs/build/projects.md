@@ -14,12 +14,12 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [models](/docs/build/models) | Each model lives in a single file and contains logic that either transforms raw data into a dataset that is ready for analytics or, more often, is an intermediate step in such a transformation. |
 | [snapshots](/docs/build/snapshots) | A way to capture the state of your mutable tables so you can refer to it later. |
 | [seeds](/docs/build/seeds) | CSV files with static data that you can load into your data platform with dbt. |
-| [tests](/docs/build/tests) | SQL queries that you can write to test the models and resources in your project. |
+| [data tests](/docs/build/data-tests) | SQL queries that you can write to test the models and resources in your project. |
 | [macros](/docs/build/jinja-macros) | Blocks of code that you can reuse multiple times. |
-| [docs](/docs/collaborate/documentation) | Docs for your project that you can build. |
+| [docs](/docs/build/documentation) | Docs for your project that you can build. |
 | [sources](/docs/build/sources) | A way to name and describe the data loaded into your warehouse by your Extract and Load tools. |
 | [exposures](/docs/build/exposures) | A way to define and describe a downstream use of your project. |
-| [metrics](/docs/build/metrics) | A way for you to define metrics for your project. |
+| [metrics](/docs/build/build-metrics-intro) | A way for you to define metrics for your project. |
 | [groups](/docs/build/groups) | Groups enable collaborative node organization in restricted collections. |
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 

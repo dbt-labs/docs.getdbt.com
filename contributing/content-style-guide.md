@@ -11,6 +11,7 @@ This guide includes standards we want to emphasize, likely because we've made de
 * [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
 * [UI elements](#UI-elements)
+* [Capitalization](#Capitalization)
 * [Titles](#Titles)
 * [Placeholder text](#Placeholder-text)
 * [Oxford comma](#Oxford-comma)
@@ -224,6 +225,10 @@ When referring to different sections of the IDE, use the name of the section and
 :white_check_mark: In the **Settings** section, choose the default address for your account.
 
 :x: You can review all your past orders from the **History** pane.
+
+## Capitalization
+
+We should only capitalize products (dbt Explorer, dbt Cloud), but not features like column-level lineage. We also capitalize acronyms and proper nouns. Refer to [MS Style guide on capitalization](https://learn.microsoft.com/en-us/style-guide/capitalization) for more information.
 
 ## Titles
 
@@ -479,6 +484,9 @@ Some common Latin abbreviations and other words to use instead:
 | i.e.               |  that is    | Use incremental models when your dbt runs are becoming too slow (that is, don't start with incremental models) |
 | e.g.               | <ul><li>for example</li><li>like</li></ul> | <ul><li>Join both the dedicated #adapter-ecosystem channel in dbt Slack and the channel for your adapter's data store (for example, #db-sqlserver and #db-athena)</li><li>Using Jinja in SQL provides a way to use control structures (like `if` statements and `for` loops) in your queries </li></ul> |
 | etc.               | <ul><li>and more</li><li>and so forth</li></ul> | <ul><li>A continuous integration environment running pull requests in GitHub, GitLab, and more</li><li>While reasonable defaults are provided for many such operations (like `create_schema`, `drop_schema`, `create_table`, and so forth), you might need to override one or more macros when building a new adapter</li></ul> |
+| N.B.               |  note    | Note: State-based selection is a powerful, complex feature. |
+
+https://www.thoughtco.com/n-b-latin-abbreviations-in-english-3972787
 
 ### Prepositions
 
@@ -516,6 +524,7 @@ enter (in the command line) | type (in the command line)
 email | e-mail
 on dbt | on a remote server
 person, human | client, customer
+plan(s), account | organization, customer
 press (a key) | hit, tap
 recommended limit | soft limit
 sign in | log in, login
@@ -525,6 +534,15 @@ username | login
 dbt Cloud CLI | CLI, dbt CLI
 dbt Core | CLI, dbt CLI
 </div></b>
+
+Note, let's make sure we're talking to our readers and keep them close to the content and documentation (second person). 
+
+For example, to explain that a feature is available on a particular dbt Cloud plan, you can use:
+- “XYZ is available on Enterprise plans”
+- “If you're on an Enterprise plan, you can access XYZ..” 
+- "Enterprise plans can access XYZ..." to keep users closer to the documentation. 
+
+This will signal users to check their plan or account status independently.
 
 ## Links
 
@@ -544,22 +562,22 @@ The file or URL paths begin with:
 - /reference/
 - /community/
 
-Let's use the Regions & IP Addresses URL as an example: https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses
+Let's use the Regions & IP Addresses URL as an example: https://docs.getdbt.com/docs/cloud/about-cloud/access-regions-ip-addresses
 If we need to reference this on another page, we can remove the domain entirely:
 
-`For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)`
+`For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/access-regions-ip-addresses)`
 
 The reader will see:
 
-For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)
+For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/access-regions-ip-addresses)
 
 You can link to a specific section of the doc with a `#` at the end of the path. Enter the section’s title after the `#`, with individual words separated by hyphens. Let's use the incremental models page, https://docs.getdbt.com/docs/build/incremental-models, as an example:
 
-`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).`
+`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understand-incremental-models).`
 
 This will appear to the reader as follows:
 
-To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).
+To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understand-incremental-models).
 
 When you click on the link, it automatically takes you to the section defined at the end of the path. If the path syntax is incorrect(or does not exist), the link will take the reader to the top of the page specified in the path. 
 

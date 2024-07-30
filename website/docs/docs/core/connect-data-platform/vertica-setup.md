@@ -6,7 +6,7 @@ meta:
   authors: 'Vertica (Former authors: Matthew Carter, Andy Regan, Andrew Hedengren)'
   github_repo: 'vertica/dbt-vertica'
   pypi_package: 'dbt-vertica'
-  min_core_version: 'v1.6.0 and newer'
+  min_core_version: 'v1.7.0'
   cloud_support: 'Not Supported'
   min_supported_version: 'Vertica 23.4.0'
   slack_channel_name: 'n/a'
@@ -46,10 +46,12 @@ your-profile:
       username: [your username]
       password: [your password]
       database: [database name]
+      oauth_access_token: [access token]
       schema: [dbt schema]
       connection_load_balance: True
       backup_server_node: [list of backup hostnames or IPs]
       retries: [1 or more]  
+      
       threads: [1 or more]
   target: dev
 ```
@@ -70,6 +72,7 @@ your-profile:
 | username                         | The username to use to connect to the server.                                                              | Yes                                                           | None            | dbadmin|
 password   |The password to use for authenticating to the server. |Yes|None|my_password|
 database |The name of the database running on the server. |Yes | None | my_db |
+| oauth_access_token | To authenticate via OAuth, provide an OAuth Access Token that authorizes a user to the database. | No | "" | Default: "" |
 schema|	The schema to build models into.|	No|	None	|VMart|
 connection_load_balance|	A Boolean value that indicates whether the connection can be redirected to a host in the database other than host.|	No|	True	|True|
 backup_server_node|	List of hosts to connect to if the primary host specified in the connection (host, port) is unreachable. Each item in the list should be either a host string (using default port 5433) or a (host, port) tuple. A host can be a host name or an IP address.|	No|	None	|['123.123.123.123','www.abc.com',('123.123.123.124',5433)]|

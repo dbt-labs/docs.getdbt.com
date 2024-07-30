@@ -7,7 +7,7 @@ hoverSnippet: Learn how to clone incremental models for CI jobs.
 ---
 
 Before you begin, you must be aware of a few conditions:
-- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud) for help enabling newer versions in dbt Cloud
+- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud) for help enabling newer versions in dbt Cloud
 - This strategy only works for warehouse that support zero copy cloning (otherwise `dbt clone` will just create pointer views).
 - Some teams may want to test that their incremental models run in both incremental mode and full-refresh mode.
 
@@ -29,17 +29,23 @@ This build mimics the behavior of what will happen once the PR is merged into th
 
 ## What happens when one of the modified models (or one of their downstream dependencies) is an incremental model?
 
-Because your CI job is building modified models into a PR-specific schema, on the first execution of `dbt build --select state:modified+`, the modified incremental model will be built in its entirety _because it does not yet exist in the PR-specific schema_ and [is_incremental will be false](/docs/build/incremental-models#understanding-the-is_incremental-macro). You're running in `full-refresh` mode.
+Because your CI job is building modified models into a PR-specific schema, on the first execution of `dbt build --select state:modified+`, the modified incremental model will be built in its entirety _because it does not yet exist in the PR-specific schema_ and [is_incremental will be false](/docs/build/incremental-models#understand-the-is_incremental-macro). You're running in `full-refresh` mode.
 
 This can be suboptimal because:
 - Typically incremental models are your largest datasets, so they take a long time to build in their entirety which can slow down development time and incur high warehouse costs.
 - There are situations where a `full-refresh` of the incremental model passes successfully in your CI job but an _incremental_ build of that same table in prod would fail when the PR is merged into main (think schema drift where [on_schema_change](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) config is set to `fail`)
 
-You can alleviate these problems by zero copy cloning the relevant, pre-exisitng incremental models into your PR-specific schema as the first step of the CI job using the `dbt clone` command. This way, the incremental models already exist in the PR-specific schema when you first execute the command `dbt build --select state:modified+` so the `is_incremental` flag will be `true`. 
+You can alleviate these problems by zero copy cloning the relevant, pre-existing incremental models into your PR-specific schema as the first step of the CI job using the `dbt clone` command. This way, the incremental models already exist in the PR-specific schema when you first execute the command `dbt build --select state:modified+` so the `is_incremental` flag will be `true`. 
 
 You'll have two commands for your dbt Cloud CI check to execute:
-1. Clone all of the pre-existing incremental models that have been modified or are downstream of another model that has been modified: `dbt clone --select state:modified+,config.materialized:incremental,state:old`
-2. Build all of the models that have been modified and their downstream dependencies: `dbt build --select state:modified+`
+1. Clone all of the pre-existing incremental models that have been modified or are downstream of another model that has been modified:
+  ```shell
+  dbt clone --select state:modified+,config.materialized:incremental,state:old
+  ```
+1. Build all of the models that have been modified and their downstream dependencies:
+  ```shell
+  dbt build --select state:modified+
+  ```
 
 Because of your first clone step, the incremental models selected in your `dbt build` on the second step will run in incremental mode.
 

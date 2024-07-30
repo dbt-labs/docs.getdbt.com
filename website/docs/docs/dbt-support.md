@@ -17,7 +17,7 @@ If you're developing on the command line (CLI) and have questions or need some h
 
 ## dbt Cloud support
 
-The global dbt Support team is available to dbt Cloud customers by [email](mailto:support@getdbt.com) or using the in-product live chat (💬). 
+The global dbt Support team is available to dbt Cloud customers by [email](mailto:support@getdbt.com) or by clicking **Create a support ticket** through the dbt Cloud navigation.
 
 We want to help you work through implementing and utilizing dbt Cloud at your organization. Have a question you can't find an answer to in [our docs](https://docs.getdbt.com/) or [the Community Forum](https://discourse.getdbt.com/)? Our Support team is here to `dbt help` you!
 
@@ -95,5 +95,5 @@ Support tickets are assigned a severity level based on the impact of the issue o
 
 For SQL writing, project performance review, or project building, refer to dbt Preferred Consulting Providers and dbt Labs' Services.
 For help writing SQL, reviewing the overall performance of your project, or want someone to actually help build your dbt project, refer to the following pages:
-- List of [dbt Preferred Consulting Providers](https://www.getdbt.com/ecosystem/).
+- List of [dbt Consulting Partners](https://partners.getdbt.com/english/directory/).
 - dbt Labs' [Services](https://www.getdbt.com/dbt-labs/services/).

@@ -15,13 +15,14 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
-| `label` | The value that will be displayed in downstream tools. | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
-| `expr` | The derived expression. | Required |
+| `expr` | The derived expression. You see validation warnings when the derived metric is missing an `expr` or  the `expr` does not use all the input metrics. | Required |
 | `metrics` |  The list of metrics used in the derived metrics. | Required  |
 | `alias` | Optional alias for the metric that you can use in the expr. | Optional |
 | `filter` | Optional filter to apply to the metric. | Optional |
-| `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Required |
+| `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Optional |
+
 
 The following displays the complete specification for derived metrics, along with an example.
 
@@ -37,8 +38,10 @@ metrics:
         - name: the name of the metrics. must reference a metric you have already defined # Required
           alias: optional alias for the metric that you can use in the expr # Optional
           filter: optional filter to apply to the metric # Optional
-          offset_window: set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time. # Required
+          offset_window: set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time. # Optional
 ```
+
+For advanced data modeling, you can use `fill_nulls_with` and `join_to_timespine` to [set null metric values to zero](/docs/build/fill-nulls-advanced), ensuring numeric values for every data row.
 
 ## Derived metrics example
 
@@ -47,7 +50,7 @@ metrics:
   - name: order_gross_profit
     description: Gross profit from each order.
     type: derived
-    label: Order Gross Profit
+    label: Order gross profit
     type_params:
       expr: revenue - cost
       metrics:
@@ -56,7 +59,7 @@ metrics:
         - name: order_cost
           alias: cost
   - name: food_order_gross_profit
-    label: Food Order Gross Profit  
+    label: Food order gross profit
     description: "The gross profit for each food order."
     type: derived
     type_params:
@@ -73,7 +76,7 @@ metrics:
   - name: order_total_growth_mom
     description: "Percentage growth of orders total completed to 1 month ago"
     type: derived
-    label: Order Total Growth % M/M
+    label: Order total growth % M/M
     type_params:
       expr: (order_total - order_total_prev_month)*100/order_total_prev_month
       metrics: 
@@ -113,7 +116,7 @@ You can query any granularity and offset window combination. The following examp
 - name: d7_booking_change
   description: Difference between bookings now and 7 days ago
   type: derived
-  label: d7 Bookings Change
+  label: d7 bookings change
   type_params:
     expr: bookings - bookings_7_days_ago
     metrics:
@@ -126,10 +129,10 @@ You can query any granularity and offset window combination. The following examp
 
 When you run the query  `dbt sl query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated. For dbt Core, you can use the `mf query` prefix. 
 
-1. We retrieve the raw, unaggregated dataset with the specified measures and dimensions at the smallest level of detail, which is currently 'day'.
-2. Then, we perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.
+1. Retrieve the raw, unaggregated dataset with the specified measures and dimensions at the smallest level of detail, which is currently 'day'.
+2. Then, perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.
    For example, to calculate `d7_booking_change` for July 2017: 
-   - First, we sum up all the booking values for each day in July to calculate the bookings metric.
+   - First, sum up all the booking values for each day in July to calculate the bookings metric.
    - The following table displays the range of days that make up this monthly aggregation.
 
 |   | Orders | Metric_time |
@@ -139,7 +142,7 @@ When you run the query  `dbt sl query --metrics d7_booking_change --group-by met
 |   | 78 | 2017-07-01 |
 | Total  | 7438 | 2017-07-01 |
 
-3. Next, we calculate July's bookings with a 7-day offset. The following table displays the range of days that make up this monthly aggregation. Note that the month begins 7 days later (offset by 7 days) on 2017-07-24.
+3. Calculate July's bookings with a 7-day offset. The following table displays the range of days that make up this monthly aggregation. Note that the month begins 7 days later (offset by 7 days) on 2017-07-24.
 
 |   | Orders | Metric_time |
 | - | ---- | -------- |
@@ -148,8 +151,8 @@ When you run the query  `dbt sl query --metrics d7_booking_change --group-by met
 |   | 83 | 2017-06-24 |
 | Total  | 7252 | 2017-07-01 |
 
-4. Lastly, we calculate the derived metric and return the final result set:
-   
+4. Lastly, calculate the derived metric and return the final result set:
+
 ```bash
 bookings - bookings_7_days_ago would be compile as 7438 - 7252 = 186. 
 ```
@@ -157,3 +160,7 @@ bookings - bookings_7_days_ago would be compile as 7438 - 7252 = 186.
 | d7_booking_change | metric_time__month |
 | ----------------- | ------------------ |
 | 186 | 2017-07-01 |
+
+## Related docs
+- [Fill null values for simple, derived, or ratio metrics](/docs/build/fill-nulls-advanced)
+

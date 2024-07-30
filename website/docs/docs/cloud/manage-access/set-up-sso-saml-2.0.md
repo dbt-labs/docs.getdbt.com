@@ -164,7 +164,6 @@ dbt Cloud expects by using the Attribute Statements and Group Attribute Statemen
    | -------- | ----------- | ------------- | ----- | ------------------------------------- |
    | `groups` | Unspecified | Matches regex | `.*`  | _The groups that the user belongs to_ |
 
-
 You can instead use a more restrictive Group Attribute Statement than the
 example shown in the previous steps. For example, if all of your dbt Cloud groups start with
 `DBT_CLOUD_`, you may use a filter like `Starts With: DBT_CLOUD_`. **Okta
@@ -282,11 +281,11 @@ Expected **Attributes**:
 
 After creating the Google application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup)
 
-## Azure integration
+## Microsoft Entra ID (formerly Azure AD) integration
 
-If you're using Azure Active Directory (Azure AD), the instructions below will help you configure it as your identity provider.
+If you're using Microsoft Entra ID (formerly Azure AD), the instructions below will help you configure it as your identity provider.
 
-### Create Azure AD Enterprise application
+### Create a Microsoft Entra ID Enterprise application
 
 <Snippet path="access_url" />
 
@@ -297,7 +296,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 
 1. Log into your Azure account.
-2. In the Azure AD portal, select **Enterprise applications** and click **+ New application**.
+2. In the Entra ID portal, select **Enterprise applications** and click **+ New application**.
 3. Select **Create your own application**.
 4. Name the application "dbt Cloud" or another descriptive name.
 5. Select **Integrate any other application you don't find in the gallery (Non-gallery)** as the application type.
@@ -306,8 +305,15 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 8. Click the application you just created.
 9. Select **Single sign-on** under Manage in the left navigation.
 10. Click **Set up single sign on** under Getting Started.
-11. Click **SAML** in "Select a single sign-on method" section.
-12. Click **Edit** in the Basic SAML Configuration section.
+<Lightbox src="/img/docs/dbt-cloud/access-control/single-sign-on-overview.jpg" width="75%" title="In your Overview page, select 'Set up single sign on" />
+
+11.  Click **SAML** in "Select a single sign-on method" section.
+<Lightbox src="/img/docs/dbt-cloud/access-control/saml.jpg" width="75%" title="Select the 'SAML' card in the 'Seelct a single sign-on method' section. " />
+
+12.   Click **Edit** in the Basic SAML Configuration section.
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/basic-saml.jpg" width="75%" title="In the 'Set up Single Sign-On with SAML' page, click 'Edit' in the the 'Basic SAML Configuration' card"  />
+
 13. Use the following table to complete the required fields and connect to dbt:
 
    | Field | Value |
@@ -315,7 +321,8 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
    | **Identifier (Entity ID)** | Use `urn:auth0:<YOUR_AUTH0_ENTITYID>:<login slug>`. |
    | **Reply URL (Assertion Consumer Service URL)** | Use `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`. |
    | **Relay State** | `<login slug>` |
-14. Click **Save** at the top of the form.
+
+14.   Click **Save** at the top of the form.
 
 ### Creating SAML settings
 
@@ -337,12 +344,11 @@ From the Set up Single Sign-On with SAML page:
 7. Set **Source attribute** to **Group ID**.
 8. Under **Advanced options**, check **Customize the name of the group claim** and specify **Name** to **groups**.
 
-**Note:** Keep in mind that the Group ID in Azure AD maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
+**Note:** Keep in mind that the Group ID in Entra ID maps to that group's GUID. It should be specified in lowercase for the mappings to work as expected. The Source Attribute field alternatively can be set to a different value of your preference.
 
 ### Finish setup
 
 9. After creating the Azure application, follow the instructions in the [dbt Cloud Setup](#dbt-cloud-setup) section to complete the integration.
-
 
 ## OneLogin integration
 

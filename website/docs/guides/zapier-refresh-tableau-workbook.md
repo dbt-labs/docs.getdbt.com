@@ -11,6 +11,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 This guide will teach you how to refresh a Tableau workbook that leverages [extracts](https://help.tableau.com/current/pro/desktop/en-us/extracting_data.htm) when a dbt Cloud job has completed successfully and there is fresh data available. The integration will:
@@ -170,3 +172,5 @@ return {"message": "Workbook refresh has been queued"}
 
 ## Test and deploy
 To make changes to your code, you can modify it and test it again. When you're happy with it, you can publish your Zap.
+
+</div>

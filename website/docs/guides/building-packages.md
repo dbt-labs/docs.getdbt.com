@@ -12,6 +12,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 Creating packages is an **advanced use of dbt**. If you're new to the tool, we recommend that you first use the product for your own analytics before attempting to create a package for others.
@@ -104,9 +106,9 @@ dbt makes it possible for users of your package to override your model <Term id=
 
 The major exception to this is when working with data sources that benefit from incremental modeling (for example, web page views). Implementing incremental logic on behalf of your end users is likely to be helpful in this case.
 ### Test and document your package
-It's critical that you [test](/docs/build/tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
+It's critical that you [test](/docs/build/data-tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
 
-Further, adding [documentation](/docs/collaborate/documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
+Further, adding [documentation](/docs/build/documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
 ### Include useful GitHub artifacts
 Over time, we've developed a set of useful GitHub artifacts that make administering our packages easier for us. In particular, we ensure that we include:
 - A useful README, that has:
@@ -169,3 +171,5 @@ The release notes should contain an overview of the changes introduced in the ne
 ## Add the package to hub.getdbt.com
 
 Our package registry, [hub.getdbt.com](https://hub.getdbt.com/), gets updated by the [hubcap script](https://github.com/dbt-labs/hubcap). To add your package to hub.getdbt.com, create a PR on the [hubcap repository](https://github.com/dbt-labs/hubcap) to include it in the `hub.json` file.
+
+</div>

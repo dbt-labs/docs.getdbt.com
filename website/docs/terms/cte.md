@@ -175,14 +175,14 @@ CTEs are likely to be supported across most, if not all, [modern data warehouses
 
 ## Conclusion
 
-CTEs are essentially temporary views that can be used throughout a query. They are a great way to give your SQL more structure and readability, and offer simplified ways to debug your code. You can leverage appropriately-named CTEs to easily identify upstream dependencies and code functionality. CTEs also support recursiveness and reusability in the same query. Overall, CTEs can be an effective way to level-up your SQL to be more organized and understandable.
+CTEs are essentially temporary views that can be used throughout a query. They are a great way to give your SQL more structure and readability, and offer simplified ways to debug your code. You can leverage appropriately named CTEs to easily identify upstream dependencies and code functionality. CTEs also support recursiveness and reusability in the same query. Overall, CTEs can be an effective way to level-up your SQL to be more organized and understandable.
 
 ## Further Reading
 
 If you’re interested in reading more about CTE best practices, check out some of our favorite content around model refactoring and style:
 
 - [Refactoring Legacy SQL to dbt](/guides/refactoring-legacy-sql?step=5#implement-cte-groupings)
-- [dbt Labs Style Guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md#ctes)
+- [dbt Labs Style Guide](https://docs.getdbt.com/best-practices/how-we-style/0-how-we-style-our-dbt-projects)
 - [Modular Data Modeling Technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 
 Want to know why dbt Labs loves CTEs? Check out the following pieces: 

@@ -5,7 +5,7 @@ id: "starrocks-setup"
 meta:
   maintained_by: Starrocks
   authors: Astralidea
-  github_repo: 'StarRocks/starrocks/tree/main/contrib/dbt-connector'
+  github_repo: 'StarRocks/dbt-starrocks'
   pypi_package: 'dbt-starrocks'
   min_core_version: 'v1.6.2'
   min_supported_version: 'Starrocks 2.5'

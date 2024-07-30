@@ -9,13 +9,13 @@ pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
  
-The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.
+The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.<br /><br />
 
 The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define metrics in code (with [MetricFlow](/docs/build/about-metricflow)) and dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics and models. Integrating with the dbt Semantic Layer will help organizations that use your product make more efficient and trustworthy decisions with their data. It also helps you to avoid duplicative coding, optimize development workflow, ensure data governance, and guarantee consistency for data consumers.  
 
@@ -51,11 +51,15 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
+    title="Python SDK (Preview)"
+    body="Use the Python SDK to interact with the dbt Semantic Layer using Python."
+    link="/docs/dbt-cloud-apis/sl-python"
+    icon="dbt-bit"/>
+
+<Card
     title="Semantic manifest"
     body="Learn about the semantic manifest.json file and how you can use artifacts to gain insights about your Semantic Layer."
     link="/docs/dbt-cloud-apis/sl-manifest"
     icon="dbt-bit"/>
 
 </div>
-
-

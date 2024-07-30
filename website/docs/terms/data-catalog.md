@@ -14,7 +14,7 @@ A data catalog is an inventory of data assets from different parts of the data s
 
 ## Features of a data catalog
 
-Data catalogs are known for 6 features that make them so powerful for both data teams and busines users: 
+Data catalogs are known for 6 features that make them so powerful for both data teams and business users: 
 
 - Access to metadata 
 - Business glossary functionality

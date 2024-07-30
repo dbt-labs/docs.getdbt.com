@@ -7,7 +7,6 @@ sidebar_label: About dbt Cloud IDE
 
 The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly.
 
-
 With the Cloud IDE, you can:
 
 - Write modular SQL models with select statements and the ref() function,
@@ -28,4 +27,4 @@ For more information, read the complete [Cloud IDE guide](/docs/cloud/dbt-cloud-
 ## Related docs
 
 - [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
-- [Tips and tricks](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips)
+- [Keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts)

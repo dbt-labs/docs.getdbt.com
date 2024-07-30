@@ -16,6 +16,8 @@ This article covers an approach to handling time-varying ragged hierarchies in a
 
 To help visualize this data, we're going to pretend we are a company that manufactures and rents out eBikes in a ride share application.  When we build a bike, we keep track of the serial numbers of the components that make up the bike.  Any time something breaks and needs to be replaced, we track the old parts that were removed and the new parts that were installed.  We also precisely track the mileage accumulated on each of our bikes.  Our primary analytical goal is to be able to report on the expected lifetime of each component, so we can prioritize improving that component and reduce costly maintenance.
 
+<!--truncate-->
+
 ## Data model
 
 Obviously, a real bike could have a hundred or more separate components.  To keep things simple for this article, let's just consider the bike, the frame, a wheel, the wheel rim, tire, and tube.  Our component hierarchy looks like:

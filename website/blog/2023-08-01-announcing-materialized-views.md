@@ -11,12 +11,17 @@ hide_table_of_contents: false
 date: 2023-08-03
 is_featured: true
 ---
+:::note 
+This blog post was updated on December 18, 2023 to cover the support of MVs on dbt-bigquery 
+and updates on how to test MVs. 
+:::
+
 
 ## Introduction
 
 The year was 2020. I was a kitten-only household, and dbt Labs was still Fishtown Analytics. A enterprise customer I was working with, Jetblue, asked me for help running their dbt models every 2 minutes to meet a 5 minute SLA.
 
-After getting over the initial terror, we talked through the use case and soon realized there was a better option. Together with my team, I created [lambda views](https://discourse.getdbt.com/t/how-to-create-near-real-time-models-with-just-dbt-sql/1457%20?) to meet the need.
+After getting over the initial terror, we talked through the use case and soon realized there was a better option. Together with my team, I created [lambda views](https://discourse.getdbt.com/t/how-to-create-near-real-time-models-with-just-dbt-sql/1457) to meet the need.
 
 Flash forward to 2023. I’m writing this as my giant dog snores next to me (don’t worry the cats have multiplied as well). Jetblue has outgrown lambda views due to performance constraints (a view can only be so performant) and we are at another milestone in dbt’s journey to support streaming. What. a. time.
 
@@ -26,22 +31,21 @@ Today we are announcing that we now support Materialized Views in dbt. So, what 
 
 Materialized views are now an out of the box materialization in your dbt project once you upgrade to the latest version of dbt v1.6 on these following adapters:
 
-- dbt-postgres
-- dbt-redshift
-- dbt-snowflake
-- dbt-databricks
-- dbt-materialize*
-- dbt-trino*
-- dbt-bigquery**
+- [dbt-postgres](/reference/resource-configs/postgres-configs#materialized-views)
+- [dbt-redshift](/reference/resource-configs/redshift-configs#materialized-views)
+- [dbt-snowflake](/reference/resource-configs/snowflake-configs#dynamic-tables)
+- [dbt-databricks](/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables)
+- [dbt-materialize*](/reference/resource-configs/materialize-configs#incremental-models-materialized-views)
+- [dbt-trino*](/reference/resource-configs/trino-configs#materialized-view)
+- [dbt-bigquery (available on 1.7)](/reference/resource-configs/bigquery-configs#materialized-views)
 
 *These adapters have supported materialized views in their adapter prior 1.6.
-**dbt-bigquery support will be coming in 1.7.
 
 Just like you would materialize your sql model as  `table` or `view`  today, you can use `materialized_view` in your model configuration, dbt_project.yml, and resources.yml files. At release, python models will not be supported.
 
 
 
-For Postgres/Redshift/Databricks
+For Postgres/Redshift/Databricks/Bigquery
 
 ```sql
 {{
@@ -60,6 +64,7 @@ config(
 )
 }}
 ```
+
 
 :::note
 We are only supporting dynamic tables on Snowflake, not Snowflake’s materialized views (for a comparison between Snowflake Dynamic Tables and Materialized Views, refer [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-comparison#dynamic-tables-compared-to-materialized-views). Dynamic tables are better suited for continuous transformations due to functionality like the ability to join, union, and aggregate on base tables, views , and other dynamic tables. Due to those features, they are also more aligned with what other data platforms are calling Materialized Views. For the sake of simplicity, when I refer to materialized views in this blog, I mean dynamic tables in Snowflake.
@@ -137,6 +142,18 @@ config(
 )
 }}
 ```
+For Bigquery
+```sql 
+{{
+config(
+    materialized = 'materialized_view',
+    on_configuration_change = 'apply',
+    enable_refresh = True,
+    refresh_interval_minutes = 30
+    max_staleness = 'INTERVAL 60 MINUTE'
+)
+}}
+```
 
 For Databricks:
 
@@ -171,12 +188,12 @@ Now if you do need to more fully build out your development pipeline (making sur
 
 ### Testing
 
-Now let’s dive into the second question: how do you test? In development and QA, this will look the same as any batch run tests. You can run `dbt build` or  `dbt test` and then have the tests run after execution as validation. But in production, what can you do to continually test? Your options are:
+Now let’s dive into the second question: how do you test? In development and QA, this will look the same as any tests you might have while developing your batch pipelines. You can run `dbt build` or  `dbt test` and then have the tests run after execution as validation. But in production, what changes? 
 
-- Continue to do batch testing as we wait for [materialized tests](https://github.com/dbt-labs/dbt-core/issues/6914)
-- Or overriding the –store-failures macro like what Materialize has created [here](https://materialize.com/blog/real-time-data-quality-tests-using-dbt-and-materialize/) for their adapter to materialize failed rows as a materialized view. This is not a great solution for the long term but if you have urgency to put this into production, it is an option.
+I recommend that you update any tests applied to a materialized view/dynamic table with the
+[store_failures_as](/reference/resource-configs/store_failures_as) configuration set to true and materialized as a view. This allows you to create a view that will provide all the rows that failed your test at time of query. Please note that this does not provide a historical look. You can also create alerting onto the view if it fails your expectations. 
 
-In order to promote materialized views into production, the process will look very much like it did with your incremental models. Using SlimCI, for new MVs, you can build them into your QA environment. For existing MVs without changes, we can skip and defer to the production objects.
+In order to promote materialized views into production, the process will look very much like it did with your incremental models. Use [CI jobs](https://docs.getdbt.com/docs/deploy/ci-jobs) with defer so you can build them into your QA environment. For existing MVs without changes, we can skip and defer to the production objects.
 
 ### Production
 

@@ -36,11 +36,7 @@ dbt run --full-refresh
 
 </File>
 
-<VersionBlock firstVersion="1.3">
-
 You can also supply the flag by its short name: `dbt run -f`.
-
-</VersionBlock>
 
 In the dbt compilation context, this flag will be available as [flags.FULL_REFRESH](/reference/dbt-jinja-functions/flags). Further, the `is_incremental()` macro will return `false` for *all* models in response when the `--full-refresh` flag is specified.
 
@@ -80,3 +76,11 @@ See [global configs](/reference/global-configs/failing-fast)
 ## Enable or Disable Colorized Logs
 
 See [global configs](/reference/global-configs/print-output#print-color)
+
+<VersionBlock firstVersion="1.8">
+
+## The `--empty` flag
+
+The `run` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
+
+</VersionBlock>

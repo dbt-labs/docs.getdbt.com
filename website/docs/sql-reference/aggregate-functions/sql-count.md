@@ -25,6 +25,8 @@ Let’s take a look at a practical example using COUNT, DISTINCT, and GROUP BY b
 
 ### COUNT example
 
+The following example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
+
 ```sql
 select
 	date_part('month', order_date) as order_month,
@@ -34,9 +36,6 @@ from {{ ref('orders') }}
 group by 1
 ```
 
-:::note What dataset is this?
-This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop).
-:::
 
 This simple query is something you may do while doing initial exploration of your data; it will return the count of `order_ids` and count of distinct `customer_ids` per order month that appear in the Jaffle Shop’s `orders` table:
 
@@ -60,6 +59,6 @@ Some data warehouses, such as Snowflake and Google BigQuery, additionally suppor
 We most commonly see queries using COUNT to:
 - Perform initial data exploration on a dataset to understand dataset volume, primary key uniqueness, distribution of column values, and more.
 - Calculate the counts of key business metrics (daily orders, customers created, etc.) in your data models or BI tool.
-- Define [dbt metrics](/docs/build/metrics) to aggregate key metrics.
+- Define [metrics](/docs/build/build-metrics-intro) to aggregate key metrics.
 
 This isn’t an extensive list of where your team may be using COUNT throughout your development work, dbt models, and BI tool logic, but it contains some common scenarios analytics engineers face day-to-day.

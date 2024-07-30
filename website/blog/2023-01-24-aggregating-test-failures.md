@@ -16,9 +16,9 @@ Testing the quality of data in your warehouse is an important aspect in any matu
 
 <!--truncate-->
 
-At [Tempus](https://www.tempus.com/), a precision medicine company specializing in oncology, high quality data is a necessary component for high quality clinical models. With roughly 1,000 dbt models, nearly a hundred data sources, and a dozen different data quality stakeholders, producing a framework that allows stakeholders to take action on test failures is challenging. Without an actionable framework, data quality tests can backfire — in early 2022, we had nearly a thousand tests, hundreds of which failed on a daily basis yet were wholly ignored. 
+Producing a data quality framework that allows stakeholders to take action on test failures is challenging. Without an actionable framework, data quality tests can backfire — one failing test becomes two becomes ten and suddenly you have too many test failures to act on any of them.
 
-Recently, we overhauled our testing framework. We cut the number of tests down to 200, creating a more mature framework that includes metadata and emphasizes actionability. Our system for managing data quality is a three step process, described below:
+Recently, we overhauled our testing framework. We cut the number of tests down by 80% to create a more mature framework that includes metadata and emphasizes actionability. Our system for managing data quality is a three step process, described below:
 
 1. Leveraging the contextual knowledge of stakeholders, writing specific, high quality data tests, perpetuating test failure results into aliased models for easy access. 
 1. Aggregating test failure results using Jinja macros and pre-configured metadata to pull together high level summary tables. 
@@ -30,22 +30,22 @@ _It should be noted that this framework is for dbt v1.0+ on BigQuery. Small adap
 
 When we talk about high quality data tests, we aren’t just referencing high quality code, but rather the informational quality of our testing framework and their corresponding error messages. Originally, we theorized that any test that cannot be acted upon is a test that should not be implemented. Later, we realized there is a time and place for tests that should receive attention at a critical mass of failures. All we needed was a higher specificity system: tests should have an explicit severity ranking associated with them, equipped to filter out the noise of common, but low concern, failures. Each test should also mesh into established [RACI](https://project-management.com/understanding-responsibility-assignment-matrix-raci-matrix/) guidelines that state which groups tackle what failures, and what constitutes a critical mass.
 
-To ensure that tests are always acted upon, we implement tests differently depending on the user groups that must act when a test fails. This led us to have two main classes of tests — Data Integrity Tests (called [Generic Tests](https://docs.getdbt.com/docs/build/tests) in dbt docs) and Context Driven Tests (called [Singular Tests](https://docs.getdbt.com/docs/build/tests#singular-tests) in dbt docs), with varying levels of severity across both test classes.
+To ensure that tests are always acted upon, we implement tests differently depending on the user groups that must act when a test fails. This led us to have two main classes of tests — Data Integrity Tests (called [Generic Tests](https://docs.getdbt.com/docs/build/tests) in dbt docs) and Context Driven Tests (called [Singular Tests](https://docs.getdbt.com/docs/build/tests#singular-data-tests) in dbt docs), with varying levels of severity across both test classes.
 
 Data Integrity tests (Generic Tests)  are simple — they’re tests akin to a uniqueness check or not null constraint. These tests are usually actionable by the data platform team rather than subject matter experts. We define Data Integrity tests in our YAML files, similar to how they are [outlined by dbt’s documentation on generic tests](https://docs.getdbt.com/docs/build/tests). They look something like this —
 
 ```yaml
 version: 2
 models:
-  - name: patient
+  - name: customer
     columns:
       - name: id
         description: Unique ID associated with the record
         tests:
           - unique:
-              alias: patient__id__unique
+              alias: id__unique
           - not_null:
-              alias: patient__id__not_null
+              alias: id__not_null
 ```
 <center><i>Example Data Integrity Tests in a YAML file — the alias argument is an important piece that will be touched on later.</i></center><br />
 
@@ -53,19 +53,19 @@ Context Driven Tests are more complex and look a lot more like models. Essential
 
 ```sql
 {{ config(
-        tags=['check_birth_date_in_range', 'patient'],
-        alias='ad_hoc__check_birth-date_in_range'
+        tags=['check_purchase_date_in_range', 'customer'],
+        alias='ad_hoc__check_purchase_date_in_range
     )
 }}
 
 SELECT
     id,
-    birth_date
+    purchase_date
 FROM
-    {{ ref('patient') }}
-WHERE birth_date < '1900-01-01'
+    {{ ref('customer') }}
+WHERE purchase_date < '1900-01-01'
 ```
-<center><i>The above test selects all patients with a birth date before 1900, due to data rules we have about maximum patient age.</i></center><br />
+<center><i>The above test selects all customers who have made a purchase before 1900. The idea is that any customer that exists before 1900 probably isn't real.</i></center><br />
 
 Importantly, we leverage [Test Aliasing](https://docs.getdbt.com/reference/resource-configs/alias) to ensure that our tests all follow a standard and predictable naming convention; our naming convention for Data Integrity tests is *table_name_ _column_name__test_name*, and our naming convention for Context Driven Tests is *ad_hoc__test_name*. Finally, to ensure all of our tests can then be aggregated, we modify the `dbt_project.yml` file  and [set the `store_failures` tag to ‘TRUE’](https://docs.getdbt.com/reference/resource-configs/store_failures), thus persisting test failures into SQL tables.
 
@@ -86,7 +86,7 @@ After defining our metadata Seed file, we begin the process of aggregating our d
        incremental_strategy = 'merge',
        unique_key='row_key',
        full_refresh=false,
-       tags=['dq_test_warning_failures','clinical_mart', 'data_health']
+       tags=['dq_test_warning_failures','customer_mart', 'data_health']
    )
 }}
 
@@ -94,7 +94,7 @@ WITH failures as (
    SELECT
        count(*) as test_failures,
        _TABLE_SUFFIX as table_suffix,
-   FROM {{ var('clinical_mart_schema') }}_dbt_test__audit.`*`
+   FROM {{ var('customer_mart_schema') }}_dbt_test__audit.`*`
    GROUP BY _TABLE_SUFFIX
 ),
 

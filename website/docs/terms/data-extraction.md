@@ -37,7 +37,7 @@ Obviously, the type of business you work for and the systems your team uses will
 The data that is typically extracted and loaded in your data warehouse is data that business users will need for baseline reporting, OKR measurement, or other analytics.
 
 :::tip Don’t fix what’s not broken
-As we just said, there are usually common data sources that data teams will extract from, regardless of business. Instead of writing transformations for these tables and data sources, leverage [dbt packages](https://hub.getdbt.com/) to save yourself some carpal tunnel and use the work someone else has already done for you :)
+As we just said, there are usually common data sources that data teams will extract from, regardless of business. Instead of writing transformations for these tables and data sources, leverage [dbt packages](https://hub.getdbt.com/) to save yourself some carpal tunnel and use the work someone else has already done for you.
 :::
 
 ## Data extraction tools

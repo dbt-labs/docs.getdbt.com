@@ -6,7 +6,7 @@ id: "custom-databases"
 
 :::info A word on naming
 
-Different warehouses have different names for "logical databases". The information in this document covers "databases" on Snowflake, Redshift, and Postgres, as well as "projects" on BigQuery.
+Different warehouses have different names for _logical databases_. The information in this document covers "databases" on Snowflake, Redshift, and Postgres; "projects" on BigQuery; and "catalogs" on Databricks Unity Catalog.
 
 The values `project` and `database` are interchangeable in BigQuery project configurations.
 
@@ -84,6 +84,10 @@ The default implementation of `generate_database_name` simply uses the supplied 
 ```
 
 </File>
+
+import WhitespaceControl from '/snippets/_whitespace-control.md';
+
+<WhitespaceControl/>
 
 <VersionBlock firstVersion="1.6">
 

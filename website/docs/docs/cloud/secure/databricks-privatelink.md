@@ -14,16 +14,32 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
 
 ## Configure PrivateLink
 
-1. Locate your [Databricks Workspace ID](https://kb.databricks.com/en_US/administration/find-your-workspace-id#:~:text=When%20viewing%20a%20Databricks%20workspace,make%20up%20the%20workspace%20ID)
+1. Locate your [Databricks instance name](https://docs.databricks.com/en/workspace/workspace-details.html#workspace-instance-names-urls-and-ids)
+  -  Example: `cust-success.cloud.databricks.com`
 2. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support): 
 ```
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Databricks
-- Databricks workspace name:
+- Databricks instance name:
 - Databricks cluster AWS Region (e.g., us-east-1, eu-west-2):
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
-3. Once dbt Cloud support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace
+
+import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
+
+<PrivateLinkSLA />
+
+3. Once dbt Cloud support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace:
+  - [Register your VPC endpoint](https://docs.databricks.com/en/security/network/classic/vpc-endpoints.html) &mdash; Register the VPC endpoint using the VPC endpoint ID provided by dbt Support.
+  - [Create a Private Access Settings object](https://docs.databricks.com/en/security/network/classic/private-access-settings.html) &mdash; Create a Private Access Settings (PAS) object with your desired public access settings, and setting Private Access Level to **Endpoint**. Choose the registered endpoint created in the previous step.
+  - [Create or update your workspace](https://docs.databricks.com/en/security/network/classic/privatelink.html#step-3d-create-or-update-the-workspace-front-end-back-end-or-both) &mdash; Create a workspace, or update your an existing workspace. Under **Advanced configurations → Private Link** choose the private access settings object created in the previous step.
+
+:::note Warning
+If using an existing Databricks workspace, all workloads running in the workspace will need to be stopped to enable Private Link! Workloads also cannot be started for another 20 minutes after making changes. From the [Databricks documentation](https://docs.databricks.com/en/security/network/classic/privatelink.html#step-3d-create-or-update-the-workspace-front-end-back-end-or-both):
+
+>After creating (or updating) a workspace, wait until it’s available for using or creating clusters. The workspace status stays at status RUNNING and the VPC change happens immediately. However, you cannot use or create clusters for another 20 minutes. If you create or use clusters before this time interval elapses, clusters do not launch successfully, fail, or could cause other unexpected behavior.
+
+:::
 
 ## Create Connection in dbt Cloud
 

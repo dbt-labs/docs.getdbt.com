@@ -4,10 +4,6 @@ id: "upgrading-to-0-12-0"
 displayed_sidebar: "docs"
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 ## End of support
 
 Support for the `repositories:` block in `dbt_project.yml` (deprecated in 0.10.0) was removed.

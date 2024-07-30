@@ -33,14 +33,7 @@ dbt test -s "state:modified"
 
 This can get complicated, however. If you add a new test without modifying its underlying model, or add a test that selects from a new model and an old unmodified one, you may need to test a model without having first run it.
 
-In v0.18.0, you needed to handle this by building the unmodified models needed for modified tests:
-
-```shell
-dbt run -s "state:modified @state:modified,1+test_type:data"
-dbt test -s "state:modified"
-```
-
-In v0.19.0, dbt added support for deferring upstream references when testing. If a test selects from a model that doesn't exist as a database object in your current environment, dbt will look to the other environment instead—the one defined in your state manifest. This enables you to use "simple" state selection without risk of query failure, but it may have some surprising consequences for tests with multiple parents. For instance, if you have a `relationships` test that depends on one modified model and one unmodified model, the test query will select from data "across" two different environments. If you limit or sample your data in development and CI, it may not make much sense to test for referential integrity, knowing there's a good chance of mismatch.
+You can defer upstream references when testing. For example, if a test selects from a model that doesn't exist as a database object in your current environment, dbt will look to the other environment instead—the one defined in your state manifest. This enables you to use "simple" state selection without risk of query failure, but it may have some surprising consequences for tests with multiple parents. For instance, if you have a `relationships` test that depends on one modified model and one unmodified model, the test query will select from data "across" two different environments. If you limit or sample your data in development and CI, it may not make much sense to test for referential integrity, knowing there's a good chance of mismatch.
 
 If you're a frequent user of `relationships` tests or data tests, or frequently find yourself adding tests without modifying their underlying models, consider tweaking the selection criteria of your CI job. For instance:
 
@@ -56,11 +49,7 @@ State comparison works by identifying discrepancies between two manifests.  Thos
 1. Changes made to a project in development
 2. Env-aware logic that causes different behavior based on the `target`, env vars, etc.
 
-dbt will do its best to capture *only* changes that are the result of modifications made in development. In projects with intricate env-aware logic, dbt will err on the side of running too many models (i.e. false positives). Over the next several versions of dbt, we're working on:
-- iterative improvements to dbt's built-in detective abilities
-- better options for more complex projects, in the form of more-specific sub-selectors (see [this issue](https://github.com/dbt-labs/dbt-core/issues/2704))
-
-State comparison is now able to detect env-aware config in `dbt_project.yml`. For instance, this target-based config would register as a modification in v0.18.0, but in v0.19.0 it no longer will:
+State comparison detects env-aware config in `dbt_project.yml`. This target-based config registers as a modification:
 
 <File name='dbt_project.yml'>
 

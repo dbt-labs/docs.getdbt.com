@@ -66,17 +66,13 @@ of a group inherit any permissions applied to the group itself.
 Users can be added to a dbt Cloud group based on their group memberships in the
 configured [Identity Provider](sso-overview) for the account. In this way, dbt
 Cloud administrators can manage access to dbt Cloud resources via identity
-management software like Azure AD, Okta, or GSuite. See _SSO Mappings_ below for
+management software like Microsoft Entra ID (formerly Azure AD), Okta, or GSuite. See _SSO Mappings_ below for
 more information.
 
-You can view the groups in your account or create new groups from the **Team > Groups**
-page in your Account Settings.
+You can view the groups in your account or create new groups from the **Groups & Licenses**
+page in your Account Settings. <br />
 
-<Lightbox
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-list.png"
-    title="Viewing a list of groups in the Account Settings page."
-/>
-
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-list-2.png" title="Viewing a list of groups in the Account Settings page." />
 
 ### SSO mappings
 
@@ -115,10 +111,7 @@ In the following example, the _dbt Cloud Owners_ group is configured with the
 **Account Admin** permission set on _All Projects_ and the **Job Admin** permission
 set on the _Internal Analytics_ project.
 
-<Lightbox
-    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-permissions.png"
-    title="Configuring permissions for the Admins group"
-/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-permissions.png" width="65%" title="Configuring permissions for the Admins group"/>
 
 
 ### Manual assignment

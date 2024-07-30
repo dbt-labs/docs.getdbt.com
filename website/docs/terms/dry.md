@@ -26,7 +26,7 @@ WET, which stands for “Write Everything Twice,” is the opposite of DRY. It's
 
 Well, how would you know if your code isn't DRY enough? That’s kind of subjective and will vary by the norms set within your organization. That said, a good rule of thumb is [the Rule of Three](https://en.wikipedia.org/wiki/Rule_of_three_(writing)#:~:text=The%20rule%20of%20three%20is,or%20effective%20than%20other%20numbers.). This rule states that the _third_ time you encounter a certain pattern, you should probably abstract it into some reusable unit.
 
-There is, of course, a tradeoff between simplicity and conciseness in code. The more abstractions you create, the harder it can be for others to understand and maintain your code without proper documentation. So, the moral of the story is: DRY code is great as long as you [write great documentation.](https://docs.getdbt.com/docs/collaborate/documentation)
+There is, of course, a tradeoff between simplicity and conciseness in code. The more abstractions you create, the harder it can be for others to understand and maintain your code without proper documentation. So, the moral of the story is: DRY code is great as long as you [write great documentation.](https://docs.getdbt.com/docs/build/documentation)
 
 ### Save time & energy
 
@@ -42,8 +42,10 @@ Most teams have essential business logic that defines the successes and failures
 
 By writing DRY definitions for key business logic and metrics that are referenced throughout a dbt project and/or BI (business intelligence) tool, data teams can create those single, unambiguous, and authoritative representations for their essential transformations. Gone are the days of 15 different definitions and values for churn, and in are the days of standardization and DRYness.
 
-:::note Experimental dbt Metrics!
-dbt v1.0 currently supports the use of experimental metrics, time series aggregations over a table that support zero or one dimensions. Using [dbt Metrics](/docs/build/metrics), data teams can define metric calculations, ownerships, and definitions in a YAML file that lives within their dbt project. dbt Metrics are in their experimental stage; if you’re interesting in learning more about dbt Metrics, please make sure to join the #dbt-metrics-and-server channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
+:::important dbt Semantic Layer, powered by MetricFlow
+
+The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like revenue in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handles data joins.
+
 :::
 
 ## Tools to help you write DRY code

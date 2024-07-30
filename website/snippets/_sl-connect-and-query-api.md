@@ -1,8 +1,10 @@
-You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer. 
+The Google Sheets integration allows you to query your metrics using Google Sheets. This section will guide you on how to connect and use the Google Sheets integration. 
 
-- You must have a dbt Cloud Team or Enterprise account. Suitable for both Multi-tenant and Single-tenant deployment.
-  - Single-tenant accounts should contact their account representative for necessary setup and enablement.
-- To learn how to use the JDBC or GraphQL API and what tools you can query it with, refer to [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview).
-    * To authenticate, you need to [generate a service token](/docs/dbt-cloud-apis/service-tokens) with Semantic Layer Only and Metadata Only permissions.
-    * Refer to the [SQL query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.  
-- To learn more about the sophisticated integrations that connect to the dbt Semantic Layer, refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+To query your metrics using Google Sheets:
+1. Make sure you have a [Gmail](http://gmail.com/) account.
+2. To set up Google Sheets and query your metrics, follow the detailed instructions on [Google Sheets integration](/docs/cloud-integrations/semantic-layer/gsheets).
+3. Start exploring and querying metrics!
+   - Query a metric, like `order_total`, and filter it with a dimension, like `order_date`. 
+   - You can also use the `group_by` parameter to group your metrics by a specific dimension.
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-gsheets.jpg" width="90%" title="Use the dbt Semantic Layer's Google Sheet integration to query metrics with a Query Builder menu."  />

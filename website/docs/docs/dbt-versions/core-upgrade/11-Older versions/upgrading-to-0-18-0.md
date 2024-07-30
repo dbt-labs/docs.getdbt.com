@@ -4,10 +4,6 @@ displayed_sidebar: "docs"
 
 ---
 
-import UpgradeMove from '/snippets/_upgrade-move.md';
-
-<UpgradeMove />
-
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/dev/marian-anderson/CHANGELOG.md)
@@ -73,7 +69,7 @@ can override schema test definitions
 - [`full_refresh` config](/reference/resource-configs/full_refresh)
 
 **Docs**
-- [project-level overviews](/docs/collaborate/documentation#custom-project-level-overviews)
+- [project-level overviews](/docs/build/documentation#custom-project-level-overviews)
 
 **Redshift**
 - [`iam_profile`](/docs/core/connect-data-platform/redshift-setup#specifying-an-iam-profile)

@@ -1,0 +1,43 @@
+name: "Propose new content"
+description: "For proposing new content, such as a new guide or a new page."
+title: "[idea] <title>"
+labels: ["content","idea"]
+body:
+- type: markdown
+  attributes:
+    value: |
+      Thank you for sharing your idea for the dbt product documentation! Here are a few things to consider:
+        * You can submit ideas or suggest changes to our content by opening an [Issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose).
+        * Before filing an issue, please [search our current issues](https://github.com/dbt-labs/docs.getdbt.com/issues) to avoid duplicates.
+        * Please read the [Contributing guide](https://github.com/dbt-labs/docs.getdbt.com#contributing) if you want to open a pull request. 
+          
+- type: checkboxes
+  id: author_type
+  attributes:
+    label: "Which of these best describes you?"
+    options:
+      - label: "dbt Community member"
+      - label: "Partner"
+      - label: "dbt Labs employee"
+      - label: "Other"
+  validations:
+    required: false
+
+- type: textarea
+  id: content_idea
+  attributes:
+    label: "What's your idea for new content?"
+    description: |
+      - Give as much detail as you can to help us understand your idea. 
+      - Why do you think this content is important?  
+      - Who will this new content help?
+  validations:
+    required: true
+
+- type: textarea
+  id: location
+  attributes:
+    label: Where would you recommend this content live on the docs.getdbt.com?
+    description: "Please link to the page or pages you think best fit."
+  validations:
+    required: false

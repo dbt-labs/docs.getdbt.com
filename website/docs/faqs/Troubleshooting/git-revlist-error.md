@@ -1,7 +1,7 @@
 ---
 title: I'm receiving a git rev-list master error in the IDE?
 description: "Primary branch not recognized"
-sidebar_label: 'git rev-list master error in the IDE'
+sidebar_label: 'Receiving git rev-list master error in the IDE'
 id: git-revlist-error
 ---
 

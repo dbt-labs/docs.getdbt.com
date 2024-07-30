@@ -9,20 +9,17 @@ dbt Labs is directly involved with the maintenance of two products:
 - dbt Core: The [open-source](https://github.com/dbt-labs/dbt-core) software that’s freely available 
 - dbt Cloud: The managed [SaaS solution](https://www.getdbt.com/signup) built on top of dbt Core
 
-Any dbt feature will fall into one of the following lifecycle states:
-
+All dbt features fall into a lifecycle category determined by their availablibilty in the following products:
 
 ### dbt Cloud
 
-- **Beta:** Beta features may be made available for the purpose of customer testing and evaluation. These might not be feature-complete or fully stable. There might still be some planned additions and modifications to product behaviors while in beta. Breaking changes could occur &mdash; although we will do our best to communicate them in advance, we might not always be able to do so. Beta features might not be fully documented, technical support might be limited, and service level objectives (SLOs) might not be provided. Download the [Beta Features Terms and Conditions](/assets/beta-tc.pdf) for more details.
+dbt Cloud features all fall into one of the following categories:
 
-- **Preview (Private or Public):**  Preview features are stable and can be considered for production deployments. There may still be some planned additions and modifications to product behaviors before moving to General Availability. We may also introduce new functionality to Preview features that is not backward compatible. Preview features include documentation, technical support, and include service level objectives (SLOs). Features in Preview are generally provided at no extra cost, although they may become paid features in their Generally Available state.
-
-- **Generally Available(GA):** Generally Available features provide stable features that can be considered for production deployments. Service level agreements (SLAs) apply to GA features, and these features include documentation and technical support.
-
-- **Deprecated:** Features in this state are not actively worked on or enhanced by dbt Labs and will continue to function as-is until their removal date. 
-
-- **Removed:** Removed features no longer have any level of product functionality or platform support.
+- **Beta:** Beta features are still in development and are only available to select customers. To join a beta, there might be a signup form or dbt Labs may contact specific customers about testing. Some features can be activated by enabling [experimental features](/docs/dbt-versions/experimental-features) in your account. Beta features are incomplete and might not be entirely stable; they should be used at the customer’s risk, as breaking changes could occur. Beta features might not be fully documented, technical support is limited, and service level objectives (SLOs) might not be provided. Download the [Beta Features Terms and Conditions](/assets/beta-tc.pdf) for more details.
+- **Preview:**  Preview features are stable and considered functionally ready for production deployments. Some planned additions and modifications to feature behaviors could occur before they become generally available. New functionality that is not backward compatible could also be introduced. Preview features include documentation, technical support, and service level objectives (SLOs). Features in preview are provided at no extra cost, although they might become paid features when they become generally available.
+- **Generally available (GA):** Generally available features provide stable features introduced to all qualified dbt Cloud accounts. Service level agreements (SLAs) apply to GA features, including documentation and technical support. Certain GA feature availability is determined by the dbt version of the environment. To always receive the latest GA features, go versionless and ensure your dbt Cloud [environments](/docs/dbt-cloud-environments) are set to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+- **Deprecated:** Features in this state are no longer being developed or enhanced by dbt Labs. They will continue functioning as-is, and their documentation will persist until their removal date. However, they are no longer subject to technical support. 
+- **Removed:** Removed features are no longer available on the platform in any capacity.
 
 ### dbt Core
 

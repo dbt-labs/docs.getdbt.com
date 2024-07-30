@@ -5,10 +5,22 @@ import Link from '@docusaurus/Link';
 import getIconType from "../../utils/get-icon-type";
 
 
-function Card({ title, body, link, icon }) {
+function Card({ title, body, link, icon, pills }) {
 
   // Set styles for icon if available in styles.module.css
   let imgClass = styles[icon] || ''
+
+  // Parse pills prop if it is a string
+  // Prevents syntax highlighting error in the markdown file
+  let parsedPills = pills;
+  try {
+    if (typeof pills === 'string') {
+      parsedPills = JSON.parse(pills);
+    }
+  } catch (error) {
+    console.error("Failed to parse pills prop", error);
+    parsedPills = []; 
+  }
 
   return (
     <div className={styles.cardWrapper}>
@@ -29,6 +41,15 @@ function Card({ title, body, link, icon }) {
           className={styles.cardBody}
           dangerouslySetInnerHTML={{ __html: body }}
         ></div>
+        {parsedPills && parsedPills.length > 0 && (
+          <div className={styles.pillsContainer}>
+            {parsedPills.map((pill, index) => (
+              <span key={index} className={styles.pill}>
+                {pill}
+              </span>
+            ))}
+          </div>
+        )}
       </article>}
     </div>
   );

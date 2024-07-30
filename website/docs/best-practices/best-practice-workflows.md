@@ -8,7 +8,7 @@ This page contains the collective wisdom of experienced users of dbt on how to b
 ## Best practice workflows
 
 ### Version control your dbt project
-All dbt projects should be managed in version control. Git branches should be created to manage development of new features and bug fixes. All code changes should be reviewed by a colleague (or yourself) in a Pull Request prior to merging into `master`. 
+All dbt projects should be managed in version control. Git branches should be created to manage development of new features and bug fixes. All code changes should be reviewed by a colleague (or yourself) in a Pull Request prior to merging into your production branch, such as `main`. 
 
 :::info Git guide
 
@@ -39,7 +39,7 @@ Your dbt project will depend on raw data stored in your database. Since this dat
 
 :::info Using sources for raw data references
 
-As of v0.13.0, we recommend defining your raw data as [sources](/docs/build/sources), and selecting from the source rather than using the direct relation reference. Our dbt projects no longer contain any direct relation references in any models.
+We recommend defining your raw data as [sources](/docs/build/sources), and selecting from the source rather than using the direct relation reference. Our dbt projects don't contain any direct relation references in any models.
 
 :::
 

@@ -46,7 +46,9 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the service is available.
+import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
+
+<PrivateLinkSLA />
 
 ## Configuring Redshift Interface-type PrivateLink
 
@@ -85,13 +87,13 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
  - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" title="Enter ARN"/>
+<Lightbox src="/img/docs/dbt-cloud/privatelink-allow-principals.png" title="Enter ARN"/>
 
 ### 3. Obtain VPC Endpoint Service Name
 
 Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" title="Get service name field value"/>
+<Lightbox src="/img/docs/dbt-cloud/privatelink-endpoint-service-name.png" title="Get service name field value"/>
 
 ### 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
 ```
@@ -102,7 +104,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
-dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the endpoint is available.
+<PrivateLinkSLA />
 
 ## Create Connection in dbt Cloud
 

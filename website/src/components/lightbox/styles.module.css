@@ -8,9 +8,12 @@
 :local(.docImage) {
   filter: drop-shadow(4px 4px 6px #aaaaaa33);
   margin: 10px auto;
-  padding-right: 10px;
   display: block;
-  max-width: 400px;
+}
+
+.docImage img {
+  margin: 10px auto; 
+  display: block;
 }
 
 :local(.collapsed) {
@@ -18,9 +21,15 @@
   padding: 0 5px;
 }
 
-.leftAlignLightbox {
+.docImage.leftAlignLightbox img {
   margin: 10px 0;
 }
-.rightAlignLightbox {
+.docImage.rightAlignLightbox img {
   margin: 10px 0 10px auto;
+}
+
+:local(.hovered) {
+  filter: drop-shadow(4px 4px 6px #aaaaaae1);
+  transition: transform 0.3s ease;
+  z-index: 9999;
 }

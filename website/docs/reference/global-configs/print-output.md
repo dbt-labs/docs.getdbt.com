@@ -6,37 +6,13 @@ sidebar: "Print output"
 
 ### Suppress `print()` messages in stdout
 
-<VersionBlock lastVersion="1.4">
-
-By default, dbt includes `print()` messages in standard out (stdout). You can use the `NO_PRINT` config to prevent these messages from showing up in stdout.
-
-<File name='profiles.yml'>
-
-```yaml
-config:
-  no_print: true
-```
-
-</File>
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.5">
 
-By default, dbt includes `print()` messages in standard out (stdout). You can use the `PRINT` config to prevent these messages from showing up in stdout.
-
-<File name='profiles.yml'>
-
-```yaml
-config:
-  print: false
-```
-
-</File>
+By default, dbt includes [`print()`](/reference/dbt-jinja-functions/print) messages in standard out (stdout). You can use the `DBT_PRINT` environment variable to prevent these messages from showing up in stdout.
 
 :::warning Syntax deprecation
 
-The original `NO_PRINT` syntax has been deprecated, starting with dbt v1.5. Backward compatibility is supported but will be removed in an as-of-yet-undetermined future release.
+The original `DBT_NO_PRINT` environment variable has been deprecated, starting with dbt v1.5. Backward compatibility is supported but will be removed in an as-of-yet-undetermined future release.
 
 :::
 
@@ -46,8 +22,6 @@ Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showin
 
 ```text
 dbt --no-print run
-...
-
 ```
 
 ### Printer width

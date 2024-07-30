@@ -11,6 +11,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 This guide will teach you how to refresh a Mode dashboard when a dbt Cloud job has completed successfully and there is fresh data available. The integration will:
@@ -131,3 +133,5 @@ return
 
 ## Test and deploy
 You can iterate on the Code step by modifying the code and then running the test again. When you're happy with it, you can publish your Zap.
+
+</div>

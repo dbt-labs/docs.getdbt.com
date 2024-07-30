@@ -157,7 +157,7 @@ A user-defined description. Can be used to document:
 - analyses, and analysis columns
 - macros, and macro arguments
 
-These descriptions are used in the documentation website rendered by dbt (see [the documentation guide](/docs/collaborate/documentation)).
+These descriptions are used in the documentation website rendered by dbt (refer to [the documentation guide](/docs/build/documentation) or [dbt Explorer](/docs/collaborate/explore-projects)). 
 
 Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
 
@@ -265,7 +265,7 @@ Orders can be one of the following statuses:
 | status         | description                                                               |
 |----------------|---------------------------------------------------------------------------|
 | placed         | The order has been placed but has not yet left the warehouse              |
-| shipped        | The order has ben shipped to the customer and is currently in transit     |
+| shipped        | The order has been shipped to the customer and is currently in transit     |
 | completed      | The order has been received by the customer                               |
 | returned       | The order has been returned by the customer and received at the warehouse |
 
@@ -305,7 +305,13 @@ models:
 
 
 ### Include an image from your repo in your descriptions
-To include an image from your repository in your descriptions:
+
+This section applies to dbt Core users only. Including an image from your repository ensures your images are version-controlled. 
+
+Both dbt Cloud and dbt Core users can [include an image from the web](#include-an-image-from-the-web-in-your-descriptions), which offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+
+To include an image in your model's `description` field:
+
 1. Add the file in a subdirectory, e.g. `assets/dbt-logo.svg`
 2. Set the [`asset-paths` config](/reference/project-configs/asset-paths) in your `dbt_project.yml` file so that this directory gets copied to the `target/` directory as part of `dbt docs generate`
 
@@ -336,19 +342,17 @@ models:
 
 </File>
 
-_[CLI users only]_
-
 3. Run `dbt docs generate` — the `assets` directory will be copied to the `target` directory
 
 4. Run `dbt docs serve` — the image will be rendered as part of your project documentation:
 
-<Lightbox src="/img/reference/image-in-docs.png" title="The image at assets/dbt-logo.svg is rendered correctly"/>
-
-If mixing images and text together, also consider using a docs block.
+If mixing images and text, also consider using a docs block.
 
 ### Include an image from the web in your descriptions
 
-Use the image URL to render the image.
+This section applies to dbt Cloud and dbt Core users. Including an image from the web offers dynamic content, reduced repository size, accessibility, and ease of collaboration.
+
+To include images from the web, specify the image URL in your model's `description` field:
 
 <File name='models/schema.yml'>
 
@@ -367,5 +371,5 @@ models:
 
 </File>
 
-If mixing images and text together, also consider using a docs block.
+If mixing images and text, also consider using a docs block.
 

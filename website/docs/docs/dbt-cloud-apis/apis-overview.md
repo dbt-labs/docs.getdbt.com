@@ -6,7 +6,7 @@ pagination_next: "docs/dbt-cloud-apis/user-tokens"
 pagination_prev: null
 ---
 
-## Overview
+# APIs overview <Lifecycle status="team,enterprise"/>
 
 Accounts on the _Team_ and _Enterprise_ plans can query the dbt Cloud APIs.
 

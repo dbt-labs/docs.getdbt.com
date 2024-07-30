@@ -12,13 +12,15 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 You can migrate your projects from using the `dbt-spark` adapter to using the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks). In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
 
 ### Prerequisites
 
-- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7).
+- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/older%20versions/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.7](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7).
 - For dbt Cloud, you need administrative (admin) privileges to migrate dbt projects.
 
 ### Simpler authentication
@@ -36,7 +38,7 @@ The `dbt-databricks` adapter provides better defaults than `dbt-spark` does. The
 - Accelerate your expensive queries with the [Photon engine](https://docs.databricks.com/runtime/photon.html).
 - The `incremental_strategy` config is set to `merge`.
 
-With dbt-spark, however, the default for `incremental_strategy` is `append`. If you want to continue using `incremental_strategy=append`, you must set this config specifically on your incremental models. If you already specified `incremental_strategy=merge` on your incremental models, you don't need to change anything when moving to dbt-databricks; but, you can keep your models clean (tidy) by removing the config since it's redundant. Read [About incremental_strategy](/docs/build/incremental-models#about-incremental_strategy) to learn more.
+With dbt-spark, however, the default for `incremental_strategy` is `append`. If you want to continue using `incremental_strategy=append`, you must set this config specifically on your incremental models. If you already specified `incremental_strategy=merge` on your incremental models, you don't need to change anything when moving to dbt-databricks; but, you can keep your models clean (tidy) by removing the config since it's redundant. Read [About incremental_strategy](/docs/build/incremental-strategy) to learn more.
 
 For more information on defaults, see [Caveats](/docs/core/connect-data-platform/databricks-setup#caveats).
 
@@ -58,7 +60,7 @@ To update your Databricks connection in dbt Cloud:
 3. Click the hyperlinked Connection for the project.
 4. Click **Edit** in the top right corner.
 5. Select **Databricks** for the warehouse
-6. Select **Databricks (dbt-databricks)** for the adapter and enter the:
+6. Enter the:
     1. `hostname`
     2. `http_path`
     3. (optional) catalog name
@@ -128,3 +130,5 @@ your_profile_name:
 ```
 
 </File>
+
+</div>

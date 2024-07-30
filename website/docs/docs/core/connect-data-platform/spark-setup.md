@@ -20,10 +20,6 @@ meta:
 <Snippet path="warehouse-setups-cloud-callout" />
 <Snippet path="dbt-databricks-for-databricks" />
 
-:::note
-See [Databricks setup](#databricks-setup) for the Databricks version of this page.
-:::
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
@@ -52,7 +48,7 @@ $ python -m pip install "dbt-spark[session]"
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
-## Connection Methods
+## Connection methods
 
 dbt-spark can connect to Spark clusters by four different methods:
 
@@ -204,6 +200,7 @@ connect_retries: 3
 
 
 <VersionBlock firstVersion="1.7">
+
 ### Server side configuration
 
 Spark can be customized using [Application Properties](https://spark.apache.org/docs/latest/configuration.html). Using these properties the execution can be customized, for example, to allocate more memory to the driver process. Also, the Spark SQL runtime can be set through these properties. For example, this allows the user to [set a Spark catalogs](https://spark.apache.org/docs/latest/configuration.html#spark-sql).
@@ -214,7 +211,7 @@ Spark can be customized using [Application Properties](https://spark.apache.org/
 ### Usage with EMR
 To connect to Apache Spark running on an Amazon EMR cluster, you will need to run `sudo /usr/lib/spark/sbin/start-thriftserver.sh` on the master node of the cluster to start the Thrift server (see [the docs](https://aws.amazon.com/premiumsupport/knowledge-center/jdbc-connection-emr/) for more information). You will also need to connect to port 10001, which will connect to the Spark backend Thrift server; port 10000 will instead connect to a Hive backend, which will not work correctly with dbt.
 
-### Supported Functionality
+### Supported functionality
 
 Most dbt Core functionality is supported, but some features are only available
 on Delta Lake (Databricks).
@@ -223,3 +220,9 @@ Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/spark-configs#the-merge-strategy))
 2. [Snapshots](/docs/build/snapshots)
 3. [Persisting](/reference/resource-configs/persist_docs) column-level descriptions as database comments
+
+### Default namespace with Thrift connection method
+
+If your Spark cluster doesn't have a default namespace, metadata queries that run before any dbt workflow will fail, causing the entire workflow to fail, even if your configurations are correct. The metadata queries fail there's no default namespace in which to run it.
+
+To debug, review the debug-level logs to confirm the query dbt is running when it encounters the error: `dbt run --debug` or `logs/dbt.log`.

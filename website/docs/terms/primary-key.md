@@ -108,7 +108,7 @@ In general for Redshift, it’s still good practice to define your primary keys 
 
 ### Google BigQuery
 
-BigQuery is pretty unique here in that it doesn’t support or enforce primary keys. If your team is on BigQuery, you’ll need to have some [pretty solid testing](/docs/build/tests) in place to ensure your primary key fields are unique and non-null.
+BigQuery is pretty unique here in that it doesn’t support or enforce primary keys. If your team is on BigQuery, you’ll need to have some [pretty solid data testing](/docs/build/data-tests) in place to ensure your primary key fields are unique and non-null.
 
 ### Databricks
 
@@ -141,7 +141,7 @@ If you don't have a field in your table that would act as a natural primary key,
 If your data warehouse doesn’t provide out-of-the box support and enforcement for primary keys, it’s important to clearly label and put your own constraints on primary key fields. This could look like:
 
 * **Creating a consistent naming convention for your primary keys**: You may see an `id` field or fields prefixed with `pk_` (ex. `pk_order_id`) to identify primary keys. You may also see the primary key be named as the obvious table grain (ex. In the jaffle shop’s `orders` table, the primary key is called `order_id`).
-* **Adding automated [tests](/docs/build/tests) to your data models**: Use a data tool, such as dbt, to create not null and unique tests for your primary key fields.
+* **Adding automated [data tests](/docs/build/data-tests) to your data models**: Use a data tool, such as dbt, to create not null and unique tests for your primary key fields.
 
 ## Testing primary keys
 
@@ -151,7 +151,7 @@ When we talk about testing our primary keys, we really mean testing their unique
 2.  For databases that don’t offer support and enforcement of primary keys, you’re going to need to regularly test that primary keys aren’t violating their golden rule of uniqueness and non-nullness. To do this, we recommend implementing a tool like dbt that allows you to define version-controlled and code-based tests on your data models. Using these tests, you should create <code>[not null](https://docs.getdbt.com/reference/resource-properties/tests#not_null)</code> and <code>[unique](https://docs.getdbt.com/reference/resource-properties/tests#unique)</code> tests for every primary key field throughout your dbt project. Other methods for primary key testing may look like writing custom tests or ad hoc queries that check for uniqueness and non-nullness.
 
 :::tip Tip
-You can use dbt’s [documentation](https://docs.getdbt.com/docs/collaborate/documentation) and [testing](https://docs.getdbt.com/reference/resource-properties/tests) capabilities to clearly identify and QA primary keys in your data models. For your primary key column, you should mention that the field is the unique identifier for that table and test for uniqueness and non-nullness.
+You can use dbt’s [documentation](https://docs.getdbt.com/docs/build/documentation) and [testing](https://docs.getdbt.com/reference/resource-properties/tests) capabilities to clearly identify and QA primary keys in your data models. For your primary key column, you should mention that the field is the unique identifier for that table and test for uniqueness and non-nullness.
 :::
 
 ## Conclusion

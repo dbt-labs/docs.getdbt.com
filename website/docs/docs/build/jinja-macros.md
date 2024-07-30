@@ -12,18 +12,20 @@ id: "jinja-macros"
 ## Overview
 In dbt, you can combine SQL with [Jinja](https://jinja.palletsprojects.com), a templating language.
 
-Using Jinja turns your dbt project into a programming environment for SQL, giving you the ability to do things that aren't normally possible in SQL. For example, with Jinja you can:
+Using Jinja turns your dbt project into a programming environment for SQL, giving you the ability to do things that aren't normally possible in SQL. It's important to note that Jinja itself isn't a programming language; instead, it acts as a tool to enhance and extend the capabilities of SQL within your dbt projects.
+
+For example, with Jinja, you can:
 * Use control structures (e.g. `if` statements and `for` loops) in SQL
 * Use [environment variables](/reference/dbt-jinja-functions/env_var) in your dbt project for production deployments
 * Change the way your project builds based on the current target.
 * Operate on the results of one query to generate another query, for example:
-  * Return a list of payment methods, in order to create a subtotal column per payment method (pivot)
+  * Return a list of payment methods, to create a subtotal column per payment method (pivot)
   * Return a list of columns in two relations, and select them in the same order to make it easier to union them together
 * Abstract snippets of SQL into reusable [**macros**](#macros) — these are analogous to functions in most programming languages.
 
-In fact, if you've used the [`{{ ref() }}` function](/reference/dbt-jinja-functions/ref), you're already using Jinja!
+If you've used the [`{{ ref() }}` function](/reference/dbt-jinja-functions/ref), you're already using Jinja!
 
-Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](/docs/build/analyses), [tests](/docs/build/tests), and even [hooks](/docs/build/hooks-operations).
+Jinja can be used in any SQL in a dbt project, including [models](/docs/build/sql-models), [analyses](/docs/build/analyses), [tests](/docs/build/data-tests), and even [hooks](/docs/build/hooks-operations).
 
 :::info Ready to get started with Jinja and macros?
 
@@ -71,8 +73,8 @@ group by 1
 
 You can recognize Jinja based on the delimiters the language uses, which we refer to as "curlies":
 - **Expressions `{{ ... }}`**: Expressions are used when you want to output a string. You can use expressions to reference [variables](/reference/dbt-jinja-functions/var) and call [macros](/docs/build/jinja-macros#macros).
-- **Statements `{% ... %}`**: Statements are used for control flow, for example, to set up `for` loops and `if` statements, or to define macros.
--  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from compiling.
+- **Statements `{% ... %}`**: Statements don't output a string. They are used for control flow, for example, to set up `for` loops and `if` statements, to [set](https://jinja.palletsprojects.com/en/3.1.x/templates/#assignments) or [modify](https://jinja.palletsprojects.com/en/3.1.x/templates/#expression-statement) variables, or to define macros.
+-  **Comments `{# ... #}`**: Jinja comments are used to prevent the text within the comment from executing or outputing a string.
 
 When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
 * **Using dbt Cloud:** Click the compile button to see the compiled SQL in the Compiled SQL pane
@@ -124,6 +126,9 @@ from app_data.payments
 
 </File>
 
+import WhitespaceControl from '/snippets/_whitespace-control.md';
+
+<WhitespaceControl/>
 
 ### Using a macro from a package
 A number of useful macros have also been grouped together into [packages](/docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
@@ -160,7 +165,8 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 Just like well-written python is pythonic, well-written dbt code is dbtonic.
 
-### Favor readability over <Term id="dry" />-ness
+### Favor readability over <Term id="dry" />-ness {#favor-readability-over-dry-ness}
+
 Once you learn the power of Jinja, it's common to want to abstract every repeated line into a macro! Remember that using Jinja can make your models harder for other users to interpret — we recommend favoring readability when mixing Jinja with SQL, even if it means repeating some lines of SQL in a few places. If all your models are macros, it might be worth re-assessing.
 
 ### Leverage package macros

@@ -43,9 +43,9 @@ MetricFlow primarily uses left joins for joins, and restricts the use of fan-out
 
 ### Example
 
-The following example uses two semantic models with a common entity and shows a MetricFlow query that requires a join between the two semantic models. 
-
-Let's say you have two semantic models, `transactions` and `user_signup` as seen in the following example: 
+The following example uses two semantic models with a common entity and shows a MetricFlow query that requires a join between the two semantic models. The two semantic models are:
+- `transactions`
+- `user_signup`
 
 ```yaml
 semantic_models:
@@ -70,27 +70,34 @@ semantic_models:
         type: categorical
 ```
 
-MetricFlow will use `user_id` as the join key to join two semantic models, `transactions` and `user_signup`. This enables you to query the `average_purchase_price` metric in `transactions`, sliced by the `type` dimension in the `user_signup` semantic model.
-
-Note that the `average_purchase_price` measure is defined in the `transactions` semantic model, where `user_id` is a foreign entity. However, the `user_signup` semantic model has `user_id` as a primary entity. 
-
-Since this is a foreign-to-primary relationship, a left join is implemented where the `transactions` semantic model joins the `user_signup` semantic model, since the `average_purchase_price` measure is defined in the `transactions` semantic model.
-
-When querying dimensions from different semantic models using the CLI, a double underscore (or dunder) is added to the dimension name after the joining entity. In the CLI query shown below, `user_id__type` is included as a `dimension`.
+- MetricFlow uses `user_id` as the join key to link two semantic models, `transactions` and `user_signup`. This allows you to query the `average_purchase_price` metric in the `transactions` semantic model, grouped by the `type` dimension in the `user_signup` semantic model.
+  - Note that the `average_purchase_price` measure is defined in `transactions`, where `user_id` is a foreign entity. However, `user_signup` has `user_id` as a primary entity. 
+- Since `user_id` is a foreign key in `transactions` and a primary key in `user_signup`, MetricFlow performs a left join where `transactions` joins `user_signup` to access the `average_purchase_price` measure defined in `transactions`.
+- To query dimensions from different semantic models, add a double underscore (or dunder) to the dimension name after joining the entity in your editing tool. The following query, `user_id__type` is included as a dimension using the `--group-by` flag (`type` is the dimension).
 
 ```yaml 
-mf query --metrics average_purchase_price --dimensions metric_time,user_id__type 
+dbt sl query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt Cloud
+```
+
+```yaml 
+mf query --metrics average_purchase_price --group-by metric_time,user_id__type # In dbt Core
 ```
 
 ## Multi-hop joins
 
-MetricFlow allows users to join measures and dimensions across a graph of entities, which we refer to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
+MetricFlow allows users to join measures and dimensions across a graph of entities by moving from one table to another within a graph. This is referred to as "multi-hop join". 
 
-Here's an example schema for reference:
+MetricFlow can join up to three tables, supporting multi-hop joins with a limit of two hops. This does the following:
+- Enables complex data analysis without ambiguous paths.
+- Supports navigating through data models, like moving from `orders` to `customers` to `country` tables.
 
-![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png)
+While direct three-hop paths are limited to prevent confusion from multiple routes to the same data, MetricFlow does allow joining more than three tables if the joins don’t exceed two hops to reach a dimension. 
 
-Notice how this schema can be translated into the three MetricFlow semantic models below to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
+For example, if you have two models, `country` and `region`, where customers are linked to countries, which in turn are linked to regions, you can join all of them in a single SQL query and can dissect `orders` by `customer__country_country_name` but not by `customer__country__region_name`.
+
+![Multi-Hop-Join](/img/docs/building-a-dbt-project/multihop-diagram.png "Example schema for reference")
+
+Notice how the schema can be translated into the following three MetricFlow semantic models to create the metric 'Average purchase price by country' using the `purchase_price` measure from the sales table and the `country_name` dimension from the `country_dim` table.
 
 ```yaml
 semantic_models:
@@ -115,11 +122,13 @@ semantic_models:
       - name: user_id
         type: primary
       - name: country_id
-        type: Unique
+        type: unique
     dimensions:
       - name: signup_date
         type: time
       - name: country_dim
+
+  - name: country
     entities:
       - name: country_id
         type: primary

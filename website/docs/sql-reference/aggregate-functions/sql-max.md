@@ -25,6 +25,8 @@ Let’s take a look at a practical example using MAX and GROUP BY below.
 
 ### MAX example
 
+The following example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop):
+
 ```sql
 select
 	date_part('month', order_date) as order_month,
@@ -32,10 +34,6 @@ select
 from {{ ref('orders') }}
 group by 1
 ```
-
-:::note What dataset is this?
-This example is querying from a sample dataset created by dbt Labs called [jaffle_shop](https://github.com/dbt-labs/jaffle_shop).
-:::
 
 This simple query is something you may do while doing initial exploration of your data; it will return the maximum order `amount` per order month that appear in the Jaffle Shop’s `orders` table:
 

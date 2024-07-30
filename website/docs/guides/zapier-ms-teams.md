@@ -10,6 +10,9 @@ tags: ['Webhooks']
 level: 'Advanced'
 recently_updated: true
 ---
+
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction 
 
 This guide will show you how to set up an integration between dbt Cloud jobs and Microsoft Teams using [dbt Cloud Webhooks](/docs/deploy/webhooks) and Zapier, similar to the [native Slack integration](/docs/deploy/job-notifications#slack-notifications). 
@@ -169,3 +172,5 @@ When you're happy with it, remember to ensure that your `run_id` and `account_id
 - If you post to a chat instead of a team channel, you don't need to add the Zapier app to Microsoft Teams.
 - If you post to a chat instead of a team channel, note that markdown is not supported and you will need to remove the markdown formatting. 
 - If you chose the **Catch Hook** trigger instead of **Catch Raw Hook**, you will need to pass each required property from the webhook as an input instead of running `json.loads()` against the raw body. You will also need to remove the validation code. 
+
+</div>

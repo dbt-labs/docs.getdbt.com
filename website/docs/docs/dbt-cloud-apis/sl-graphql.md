@@ -7,10 +7,10 @@ tags: [Semantic Layer, APIs]
 
 <VersionBlock lastVersion="1.5">
 
-import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
 
-<LegacyInfo />
-
+<DeprecationNotice />
+ 
 </VersionBlock>
 
 
@@ -22,9 +22,24 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 ## dbt Semantic Layer GraphQL API
 
-The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through the [schema explorer](https://semantic-layer.cloud.getdbt.com/api/graphql).
+The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through a schema explorer. 
+
+The schema explorer URLs vary depending on your [deployment region](/docs/cloud/about-cloud/access-regions-ip-addresses). Use the following table to find the right link for your region:
+
+| Deployment type |	Schema explorer URL |
+| --------------- | ------------------- |
+| North America multi-tenant	|	https://semantic-layer.cloud.getdbt.com/api/graphql |
+| EMEA multi-tenant	|	https://semantic-layer.emea.dbt.com/api/graphql |
+| APAC multi-tenant	|	https://semantic-layer.au.dbt.com/api/graphql |
+| Single tenant | `https://semantic-layer.YOUR_ACCESS_URL/api/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix followed by the appropriate Access URL for your region and plan.|
+| Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.semantic-layer.REGION.dbt.com/api/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
+
+**Example**
+- If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://semantic-layer.ABC123.getdbt.com/api/graphql`.
 
 dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
+
+Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. Instead, use the complete qualified table name. If you're using dbt macros at query time to calculate your metrics, you should move those calculations into your Semantic Layer metric definitions as code.
 
 ## Requirements to use the GraphQL API
 - A dbt Cloud project on dbt v1.6 or higher
@@ -37,7 +52,7 @@ dbt Partners can use the Semantic Layer GraphQL API to build an integration with
 
 If you're a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right GQL connection parameters described in this document. 
 
-Refer to [Get started with the dbt Semantic Layer](docs/use-dbt-semantic-layer/quickstart-sl) for more info.
+Refer to [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs) for more info.
 
 
 ### Authentication 
@@ -202,7 +217,34 @@ Dimension {
 DimensionType = [CATEGORICAL, TIME]
 ```
 
+**List saved queries**
+  
+  ```graphql
+  {
+  savedQueries(environmentId: 200532) {
+    name
+    description
+    label
+    queryParams {
+      metrics {
+        name
+      }
+      groupBy {
+        name
+        grain
+        datePart
+      }
+      where {
+        whereSqlTemplate
+      }
+    }
+  }
+}
+```
+
 ### Querying
+
+When querying for data, _either_ a `groupBy` _or_ a `metrics` selection is required. 
 
 **Create Dimension Values query**
 
@@ -363,7 +405,7 @@ gql_response.json() =>
 
 def to_arrow_table(byte_string: str) -> pa.Table:
   """Get a raw base64 string and convert to an Arrow Table."""
-  with pa.ipc.open_stream(base64.b64decode(res)) as reader:
+  with pa.ipc.open_stream(base64.b64decode(byte_string)) as reader:
     return pa.Table.from_batches(reader, reader.schema)
 
 
@@ -391,7 +433,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name: "food_order_amount"}]
-    groupBy: [{name: "metric_time}, {name: "customer__customer_type"}]
+    groupBy: [{name: "metric_time"}, {name: "customer__customer_type"}]
   ) {
     queryId
   }
@@ -421,7 +463,20 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name: "metric_time, grain: MONTH}, {name: "customer__customer_type"}]
+    groupBy: [{name: "metric_time", grain: MONTH}, {name: "customer__customer_type"}]
+  ) {
+    queryId
+  }
+}
+```
+
+**Query a categorical dimension on its own**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: 123456
+    groupBy: [{name: "customer__customer_type"}]
   ) {
     queryId
   }
@@ -432,24 +487,73 @@ mutation {
 
 The `where` filter takes a list argument (or a string for a single input). Depending on the object you are filtering, there are a couple of parameters:
  
- - `Dimension()` &mdash; Used for any categorical or time dimensions. If used for a time dimension, granularity is required. For example, `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
+ - `Dimension()` &mdash; Used for any categorical or time dimensions. For example, `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
   
 - `Entity()` &mdash; Used for entities like primary and foreign keys, such as `Entity('order_id')`.
 
-Note: If you prefer a more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity. For example, `TimeDimension('metric_time', 'MONTH')`.
+Note: If you prefer a `where` clause with a more explicit path, you can optionally use `TimeDimension()` to separate categorical dimensions from time ones. The `TimeDimension` input takes the time dimension and optionally the granularity level. `TimeDimension('metric_time', 'month')`.
 
 ```graphql
 mutation {
   createQuery(
     environmentId: BigInt!
     metrics:[{name: "order_total"}]
-    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: MONTH}]
+    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: month}]
     where:[{sql: "{{ Dimension('customer__customer_type') }} = 'new'"}, {sql:"{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"}]
     ) {
      queryId
     }
 }
 ```
+
+For both `TimeDimension()`, the grain is only required in the WHERE filter if the aggregation time dimensions for the measures and metrics associated with the where filter have different grains. 
+
+For example, consider this Semantic model and Metric configuration, which contains two metrics that are aggregated across different time grains. This example shows a single semantic model, but the same goes for metrics across more than one semantic model.
+
+```yaml
+semantic_model:
+  name: my_model_source
+
+defaults:
+  agg_time_dimension: created_month
+  measures:
+    - name: measure_0
+      agg: sum
+    - name: measure_1
+      agg: sum
+      agg_time_dimension: order_year
+  dimensions:
+    - name: created_month
+      type: time
+      type_params:
+        time_granularity: month
+    - name: order_year
+      type: time
+      type_params:
+        time_granularity: year
+
+metrics:
+  - name: metric_0
+    description: A metric with a month grain.
+    type: simple
+    type_params:
+      measure: measure_0
+  - name: metric_1
+    description: A metric with a year grain.
+    type: simple
+    type_params:
+      measure: measure_1
+```
+
+Assuming the user is querying `metric_0` and `metric_1` together, a valid filter would be:
+
+  * `"{{ TimeDimension('metric_time', 'year') }} > '2020-01-01'"`
+
+Invalid filters would be:
+ 
+  * ` "{{ TimeDimension('metric_time') }} > '2020-01-01'"` &mdash; metrics in the query are defined based on measures with different grains.
+
+  * `"{{ TimeDimension('metric_time', 'month') }} > '2020-01-01'"` &mdash; `metric_1` is not available at a month grain.
 
 **Query with Order**
 
@@ -474,7 +578,7 @@ mutation {
   createQuery(
     environmentId: BigInt!
     metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain: MONTH}, {name: "customer__customer_type"}]
+    groupBy: [{name:"metric_time", grain: MONTH}, {name: "customer__customer_type"}]
     limit: 10 
   ) {
     queryId
@@ -491,9 +595,44 @@ mutation {
   compileSql(
     environmentId: BigInt!
     metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain: MONTH}, {name:"customer__customer_type"}]
+    groupBy: [{name:"metric_time", grain: MONTH}, {name:"customer__customer_type"}]
   ) {
     sql
+  }
+}
+```
+
+**Querying compile SQL with saved queries** 
+
+This query includes the field `savedQuery` and generates the SQL based on a predefined [saved query](/docs/build/saved-queries),rather than dynamically building it from a list of metrics and groupings. You can use this for frequently used queries.
+
+```graphql
+mutation {
+  compileSql(
+    environmentId: 200532
+    savedQuery: "new_customer_orders" # new field
+  ) {
+    queryId
+    sql
+  }
+}
+```
+
+:::info A note on querying saved queries
+When querying [saved queries](/docs/build/saved-queries),you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
+:::
+
+**Create query with saved queries** 
+
+This takes the same inputs as the `createQuery` mutation, but includes the field `savedQuery`. You can use this for frequently used queries.
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: 200532
+    savedQuery: "new_customer_orders"  # new field
+  ) {
+    queryId
   }
 }
 ```

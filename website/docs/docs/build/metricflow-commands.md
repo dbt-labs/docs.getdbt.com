@@ -12,20 +12,20 @@ MetricFlow allows you to define and query metrics in your dbt project in the [db
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
-
 ## MetricFlow
 
 MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the dbt Cloud CLI, dbt Cloud IDE, or dbt Core.
 
-**Note** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
+Using MetricFlow with dbt Cloud means you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
+
+**dbt Cloud jobs** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 
 <Tabs>
 
 <TabItem value="cloudcli" label="dbt Cloud CLI">
 
-MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them once you install the dbt Cloud CLI. 
-
-A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
+- MetricFlow [commands](#metricflow-commands) are embedded in the dbt Cloud CLI. This means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately.
+- You don't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
 
 </TabItem>
 
@@ -35,20 +35,16 @@ A benefit to using the dbt Cloud is that you won't need to manage versioning &md
 You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
 :::
 
-A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
-
 </TabItem>
 
 <TabItem value="core" label="dbt Core">
 
+:::tip Use dbt Cloud CLI for semantic layer development
 
-:::info Use dbt Cloud CLI for semantic layer development
-
-Use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project on dbt Cloud or dbt Core with MetricFlow. 
+You can use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project.
 
 A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
 :::
-
 
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
@@ -69,22 +65,38 @@ Something to note, MetricFlow `mf` commands return an error if you have a Metafo
 MetricFlow provides the following commands to retrieve metadata and query metrics. 
 
 <Tabs>
-<TabItem value="cloud" label="Commands for dbt Cloud">
+<TabItem value="cloud" label="Commands for dbt Cloud CLI">
 
-Use the `dbt sl` prefix before the command name to execute them in dbt Cloud. For example, to list all metrics, run `dbt sl list metrics`. 
+You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands and flags, run the `dbt sl --help` command in your terminal.
 
 - [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
 - [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
-- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
+- [`list saved queries`](#list-saved-queries) &mdash; Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query.
+- [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
+- [`export`](#export) &mdash;  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query.
+- [`export-all`](#export-all) &mdash; Runs exports for multiple saved queries at once, saving time and effort.
+
 
 <!--below commands aren't supported in dbt cloud yet
 - [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 -->
+
+:::tip Run dbt parse to reflect metric changes
+When you make changes to metrics, make sure to run `dbt parse` at a minimum to update the dbt Semantic Layer. This updates the `semantic_manifest.json` file, reflecting your changes when querying metrics. By running `dbt parse`, you won't need to rebuild all the models.
+::: 
+
+<Expandable alt_header="How can I query or preview metrics with the dbt Cloud CLI?">
+
+Check out the following video for a short video demo of how to query or preview metrics with the dbt Cloud CLI:
+
+<LoomVideo id='09e2b287f063497d888f4bed91469d79' />
+
+</Expandable>
 
 </TabItem>
 
@@ -143,7 +155,7 @@ Options:
   --help              Show this message and exit.
 ```
 
-## List dimension-values
+### List dimension-values
 
 This command lists all dimension values with the corresponding metric:
 
@@ -158,8 +170,10 @@ Options:
                       [required]
   --end-time TEXT     Optional iso8601 timestamp to constraint the end time of
                       the data (inclusive)
+                      *Not available in dbt Cloud yet
   --start-time TEXT   Optional iso8601 timestamp to constraint the start time
                       of the data (inclusive)
+                      *Not available in dbt Cloud yet
   --help              Show this message and exit.
 ```
 
@@ -175,6 +189,33 @@ mf list entities --metrics <metric_name> # In dbt Core
 Options:
   --metrics SEQUENCE  List entities by given metrics (intersection). Ex. --metrics bookings,messages
   --help              Show this message and exit.
+```
+
+### List saved queries
+
+This command lists all available saved queries:
+
+```bash
+dbt sl list saved-queries
+```
+
+You can also add the `--show-exports` flag (or option) to show each export listed under a saved query:
+
+```bash
+dbt sl list saved-queries --show-exports
+```
+
+**Output**
+
+```bash
+dbt sl list saved-queries --show-exports
+
+The list of available saved queries:
+- new_customer_orders
+  exports:
+       - Export(new_customer_orders_table, exportAs=TABLE)
+       - Export(new_customer_orders_view, exportAs=VIEW)
+       - Export(new_customer_orders, alias=orders, schemas=customer_schema, exportAs=TABLE)
 ```
 
 ### Validate-configs
@@ -225,39 +266,49 @@ mf tutorial # In dbt Core
 
 ### Query
 
-Create a new query with MetricFlow, execute that query against the user's data platform, and return the result:
+Create a new query with MetricFlow and execute it against your data platform. The query returns the following result:
 
 ```bash
 dbt sl query --metrics <metric_name> --group-by <dimension_name> # In dbt Cloud 
+dbt sl query --saved-query <name> # In dbt Cloud CLI
 
 mf query --metrics <metric_name> --group-by <dimension_name> # In dbt Core
 
 Options:
 
-  --metrics SEQUENCE       Metrics to query for: syntax is --metrics bookings
-                           or for multiple metrics --metrics bookings, messages.
+  --metrics SEQUENCE       Syntax to query single metrics: --metrics metric_name
+                           For example, --metrics bookings
+                           To query multiple metrics, use --metrics followed by the metric names, separated by commas without spaces.
+                           For example,  --metrics bookings,messages
 
-  --group-by SEQUENCE      Dimensions and/or entities to group by: syntax is
-                           --group-by ds or for multiple group bys --group-by
-                           ds, org.
+  --group-by SEQUENCE      Syntax to group by single dimension/entity: --group-by dimension_name
+                           For example, --group-by ds
+                           For multiple dimensions/entities, use --group-by followed by the dimension/entity names, separated by commas without spaces.
+                           For example, --group-by ds,org
+                           
 
   --end-time TEXT          Optional iso8601 timestamp to constraint the end
-                           time of the data (inclusive)
+                           time of the data (inclusive).
+                           *Not available in dbt Cloud yet 
 
   --start-time TEXT        Optional iso8601 timestamp to constraint the start
                            time of the data (inclusive)
+                           *Not available in dbt Cloud yet
 
-  --where TEXT             SQL-like where statement provided as a string. For
-                           example: --where "revenue > 100". To add a dimension filter to 
-                           a where filter, you have to indicate that the filter item is part of your model. 
+  --where TEXT             SQL-like where statement provided as a string and wrapped in quotes: --where "condition_statement"
+                           For example, to query a single statement: --where "revenue > 100"
+                           To query multiple statements: --where "revenue > 100 and user_count < 1000"
+                           To add a dimension filter to a where filter, ensure the filter item is part of your model. 
                            Refer to the [FAQ](#faqs) for more info on how to do this using a template wrapper.
 
   --limit TEXT             Limit the number of rows out using an int or leave
                            blank for no limit. For example: --limit 100
 
-  --order SEQUENCE         Metrics or group bys to order by ("-" prefix for
-                           DESC). For example: --order -ds or --order
-                           ds,-revenue
+  --order-by SEQUENCE     Specify metrics, dimension, or group bys to order by.
+                          Add the `-` prefix to sort query in descending (DESC) order. 
+                          Leave blank for ascending (ASC) order.
+                          For example, to sort metric_time in DESC order: --order-by -metric_time 
+                          To sort metric_time in ASC order and revenue in DESC order:  --order-by metric_time,-revenue
 
   --csv FILENAME           Provide filepath for data frame output to csv
 
@@ -280,19 +331,19 @@ Options:
 
 ### Query examples
 
-The following tabs present various different types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
+The following tabs present various types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
 
 <Tabs>
 
 <TabItem value="eg1" label="Metrics">
 
-Use the example to query metrics by dimension and return the `order_total` metric by `metric_time.` 
+Use the example to query multiple metrics by dimension and return the `order_total` and `users_active` metrics by `metric_time.` 
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by metric_time # In dbt Cloud
+dbt sl query --metrics order_total,users_active --group-by metric_time # In dbt Cloud
 
-mf query --metrics order_total --group-by metric_time # In dbt Core
+mf query --metrics order_total,users_active --group-by metric_time # In dbt Core
 ```
 
 **Result**
@@ -315,9 +366,9 @@ You can include multiple dimensions in a query. For example, you can group by th
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by metric_time, is_food_order # In dbt Cloud
+dbt sl query --metrics order_total --group-by metric_time,is_food_order # In dbt Cloud
 
-mf query --metrics order_total --group-by metric_time, is_food_order # In dbt Core
+mf query --metrics order_total --group-by metric_time,is_food_order # In dbt Core
 ```
 
 **Result**
@@ -337,18 +388,17 @@ mf query --metrics order_total --group-by metric_time, is_food_order # In dbt Co
 
 </TabItem>
 
-
 <TabItem value="eg3" label="Order/limit">
 
-You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records and orders them by `metric_time`, descending.
+You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records and orders them by `metric_time`, descending. Note that using the `-` prefix will sort the query in descending order. Without the `-` prefix sorts the query in ascending order.
 
 **Query**
 ```bash
 # In dbt Cloud 
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time 
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time 
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time 
 ```
 
 **Result**
@@ -368,16 +418,15 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
 
 <TabItem value="eg4" label="where clause">
 
-You can further filter the data set by adding a `where` clause to your query.
+You can further filter the data set by adding a `where` clause to your query. The following example shows you how to query the `order_total` metric, grouped by `metric_time` with multiple where statements (orders that are food orders and orders from the week starting on or after Feb 1st, 2024):
 
 **Query**
-
 ```bash
 # In dbt Cloud 
-dbt sl query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True" 
+dbt sl query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'"
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True" 
+mf query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'" 
 ```
 
 **Result**
@@ -403,14 +452,16 @@ mf query --metrics order_total --group-by metric_time --where "{{ Dimension('ord
 
 To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
 
+
+<!--
+bash not support in cloud yet
+# In dbt Cloud
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+-->
 **Query**
 ```bash
-
-# In dbt Cloud
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
-
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 ```
 
  **Result**
@@ -428,9 +479,25 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
 
 </TabItem>
 
+<TabItem value="eg6" label=" Saved queries">
 
+You can use this for frequently used queries. Replace `<name>` with the name of your [saved query](/docs/build/saved-queries). 
+
+**Query**
+```bash
+dbt sl query --saved-query <name> # In dbt Cloud
+
+mf query --saved-query <name> # In dbt Core
+```
+
+For example, if you use dbt Cloud and have a saved query named `new_customer_orders`, you would run `dbt sl query --saved-query new_customer_orders`.
+
+:::info A note on querying saved queries
+When querying [saved queries](/docs/build/saved-queries), you can use parameters such as `where`, `limit`, `order`, `compile`, and so on. However, keep in mind that you can't access `metric` or `group_by` parameters in this context. This is because they are predetermined and fixed parameters for saved queries, and you can't change them at query time. If you would like to query more metrics or dimensions, you can build the query using the standard format.
+:::
+
+</TabItem>
 </Tabs>
-
 
 ### Additional query examples
 
@@ -448,10 +515,10 @@ Add `--compile` (or `--explain` for dbt Core users) to your query to view the SQ
 
 ```bash
 # In dbt Cloud
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --compile
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --compile
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
 ```
 
  **Result**
@@ -488,10 +555,10 @@ Add the `--csv file_name.csv` flag to export the results of your query to a csv.
 
 ```bash
 # In dbt Cloud
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
 ```
 
 **Result**
@@ -515,14 +582,36 @@ dbt sl query --metrics revenue --group-by metric_time__month # In dbt Cloud
 mf query --metrics revenue --group-by metric_time__month # In dbt Core
 ```
 
+### Export
+
+Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#exports-for-single-saved-query). Use this command to test and generate exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info. 
+
+Export is available in dbt Cloud.
+
+```bash
+dbt sl export 
+```
+
+### Export-all
+
+Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#exports-for-multiple-saved-queries) at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info. 
+
+Export is available in dbt Cloud.
+
+```bash
+dbt sl export-all 
+```
+
+
 ## FAQs
 
-<details>
-<summary>How can I add a dimension filter to a where filter?</summary> 
+<detailsToggle alt_header="How can I add a dimension filter to a where filter?">
 
-To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: <code>{{Dimension('primary_entity__dimension_name')}}</code>. 
+To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: `{{Dimension('primary_entity__dimension_name')}}`.
 
-Here's an example query: <code>dbt sl query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"</code>.<br /><br /> Before using the template wrapper, however, set up your terminal to escape curly braces for the filter template to work. 
+Here's an example query: `dbt sl query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"`.
+
+Before using the template wrapper, however, set up your terminal to escape curly braces for the filter template to work. 
 
 <details> 
 <summary>How to set up your terminal to escape curly braces? </summary>
@@ -551,13 +640,38 @@ source ~/.zshrc
 
 Keep in mind that modifying your shell configuration files can have an impact on how your shell behaves. If you're not familiar with shell configuration, it's a good idea to make a backup of your <code>.zshrc</code> file before making any changes. If you encounter any issues or unexpected behavior, you can revert to the backup.
 
-
 </details>
 
-</details>
+</detailsToggle>
 
-<details>
-<summary>Why is my query limited to 100 rows in the dbt Cloud CLI?</summary> 
-The default <code>limit</code> for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.<br /><br />
-However, you can change this limit if needed by setting the <code>--limit</code> option in your query. For example, to return 1000 rows, you can run <code>dbt sl list metrics --limit 1000</code>.
-</details>
+<detailsToggle alt_header="Why is my query limited to 100 rows in the dbt Cloud CLI?">
+
+The default `limit` for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
+
+However, you can change this limit if needed by setting the `--limit` option in your query. For example, to return 1000 rows, you can run `dbt sl list metrics --limit 1000`.
+
+</detailsToggle>
+
+<detailsToggle alt_header="How can I query multiple metrics, group bys, or where statements?">
+
+To query multiple metrics, group bys, or where statements in your command, follow this guidance:
+
+- To query multiple metrics and group bys, use the `--metrics` or `--group-by` syntax followed by the metric or dimension/entity names, separated by commas without spaces:
+  - Multiple metrics example: `dbt sl query --metrics accounts_active,users_active`
+  - Multiple dimension/entity example: `dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier`
+ 
+- To query multiple where statements, use the `--where` syntax and wrap the statement in quotes:
+  - Multiple where statement example: `dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier --where "metric_time__week >= '2024-02-01' and accounts__plan_tier = 'coco'"`
+
+</detailsToggle>
+
+<detailsToggle alt_header="How can I sort my query in ascending or descending order?">
+
+When you query metrics, use `--order-by` to specify metrics or groupings to order by. The `order_by` option applies to metrics, dimensions, and group bys. 
+
+Add the `-` prefix to sort your query in descending (DESC) order. Leave blank for ascending (ASC) order:
+
+- For example, to query a metric and sort `metric_time` in descending order, run `dbt sl query --metrics order_total --group-by metric_time --order-by -metric_time`. Note that the `-` prefix in `-metric_time` sorts the query in descending order.
+- To query a metric and sort `metric_time` in ascending order and `revenue` in descending order, run `dbt sl query --metrics order_total --order-by metric_time,-revenue`. Note that `metric_time` without a prefix is sorted in ascending order and `-revenue` with a `-` prefix sorts the query in descending order.
+
+</detailsToggle>

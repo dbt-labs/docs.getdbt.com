@@ -103,8 +103,6 @@ as (
 </TabItem>
 </Tabs>
 
-<VersionBlock firstVersion="1.4">
-
 #### Partitioning by an "ingestion" date or timestamp
 
 BigQuery supports an [older mechanism of partitioning](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time) based on the time when each row was ingested. While we recommend using the newer and more ergonomic approach to partitioning whenever possible, for very large datasets, there can be some performance improvements to using this older, more mechanistic approach. [Read more about the `insert_overwrite` incremental strategy below](#copying-ingestion-time-partitions).
@@ -171,8 +169,6 @@ select created_date as _partitiontime, * EXCEPT(created_date) from (
 
 </TabItem>
 </Tabs>
-
-</VersionBlock>
 
 #### Partitioning with integer buckets
 
@@ -423,7 +419,7 @@ Please note that in order for policy tags to take effect, [column-level `persist
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -594,11 +590,9 @@ with events as (
 ... rest of model ...
 ```
 
-<VersionBlock firstVersion="1.4">
+#### Copying partitions
 
-#### Copying ingestion-time partitions
-
-If you have configured your incremental model to use "ingestion"-based partitioning (`partition_by.time_ingestion_partitioning: True`), you can opt to use a legacy mechanism for inserting and overwriting partitions. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets. Behind the scenes, dbt will add or replace each partition via the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators.
+If you are replacing entire partitions in your incremental runs, you can opt to do so with the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators rather than a `merge` statement. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets because the copy table API does not incur any costs for inserting the data - it's equivalent to the `bq cp` gcloud command line interface (CLI) command.
 
 You can enable this by switching on `copy_partitions: True` in the `partition_by` configuration. This approach works only in combination with "dynamic" partition replacement.
 
@@ -633,13 +627,11 @@ from {{ ref('events') }}
 
 ```
 ...
-[0m16:03:13.017641 [debug] [Thread-3 (]: BigQuery adapter: Copying table(s) "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" to "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" with disposition: "WRITE_TRUNCATE"
+[0m16:03:13.017641 [debug] [Thread-3 (]: BigQuery adapter: Copying table(s) "/projects/projectname/datasets/analytics/tables/bigquery_table__dbt_tmp$20230112" to "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" with disposition: "WRITE_TRUNCATE"
 ...
 ```
 
 </File>
-
-</VersionBlock>
 
 ## Controlling table expiration
 
@@ -714,10 +706,6 @@ models:
 
 Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
 
-#### Limitations
-
-The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
-
 <VersionBlock firstVersion="1.7">
 
 ## Materialized views
@@ -725,18 +713,18 @@ The `grant_access_to` config is not thread-safe when multiple views need to be a
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
 with the following configuration parameters:
 
-| Parameter                                                   | Type                   | Required | Default | Change Monitoring Support |
-|-------------------------------------------------------------|------------------------|----------|---------|---------------------------|
-| `on_configuration_change`                                   | `<string>`             | no       | `apply` | n/a                       |
-| [`cluster_by`](#clustering-clause)                          | `[<string>]`           | no       | `none`  | drop/create               |
-| [`partition_by`](#partition-clause)                         | `{<dictionary>}`       | no       | `none`  | drop/create               |
-| [`enable_refresh`](#auto-refresh)                           | `<boolean>`            | no       | `true`  | alter                     |
-| [`refresh_interval_minutes`](#auto-refresh)                 | `<float>`              | no       | `30`    | alter                     |
-| [`max_staleness`](#auto-refresh) (in Preview)               | `<interval>`           | no       | `none`  | alter                     |
-| [`description`](/reference/resource-properties/description) | `<string>`             | no       | `none`  | alter                     |
-| [`labels`](#specifying-labels)                              | `{<string>: <string>}` | no       | `none`  | alter                     |
-| [`hours_to_expiration`](#controlling-table-expiration)      | `<integer>`            | no       | `none`  | alter                     |
-| [`kms_key_name`](#using-kms-encryption)                     | `<string>`             | no       | `none`  | alter                     |
+| Parameter                                                                        | Type                   | Required | Default | Change Monitoring Support |
+|----------------------------------------------------------------------------------|------------------------|----------|---------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>`             | no       | `apply` | n/a                       |
+| [`cluster_by`](#clustering-clause)                                               | `[<string>]`           | no       | `none`  | drop/create               |
+| [`partition_by`](#partition-clause)                                              | `{<dictionary>}`       | no       | `none`  | drop/create               |
+| [`enable_refresh`](#auto-refresh)                                                | `<boolean>`            | no       | `true`  | alter                     |
+| [`refresh_interval_minutes`](#auto-refresh)                                      | `<float>`              | no       | `30`    | alter                     |
+| [`max_staleness`](#auto-refresh) (in Preview)                                    | `<interval>`           | no       | `none`  | alter                     |
+| [`description`](/reference/resource-properties/description)                      | `<string>`             | no       | `none`  | alter                     |
+| [`labels`](#specifying-labels)                                                   | `{<string>: <string>}` | no       | `none`  | alter                     |
+| [`hours_to_expiration`](#controlling-table-expiration)                           | `<integer>`            | no       | `none`  | alter                     |
+| [`kms_key_name`](#using-kms-encryption)                                          | `<string>`             | no       | `none`  | alter                     |
 
 <Tabs
   groupId="config-languages"
@@ -757,7 +745,7 @@ with the following configuration parameters:
 models:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): materialized_view
-    [+](/reference/resource-configs/plus-prefix)on_configuration_change: apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
     [+](/reference/resource-configs/plus-prefix)[cluster_by](#clustering-clause): <field-name> | [<field-name>]
     [+](/reference/resource-configs/plus-prefix)[partition_by](#partition-clause):
       - field: <field-name>
@@ -794,7 +782,7 @@ models:
   - name: [<model-name>]
     config:
       [materialized](/reference/resource-configs/materialized): materialized_view
-      on_configuration_change: apply | continue | fail
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
       [cluster_by](#clustering-clause): <field-name> | [<field-name>]
       [partition_by](#partition-clause):
         - field: <field-name>
@@ -827,7 +815,7 @@ models:
 ```jinja
 {{ config(
     [materialized](/reference/resource-configs/materialized)='materialized_view',
-    on_configuration_change="apply" | "continue" | "fail",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
     [cluster_by](#clustering-clause)="<field-name>" | ["<field-name>"],
     [partition_by](#partition-clause)={
         "field": "<field-name>",
@@ -868,7 +856,7 @@ models:
 Many of these parameters correspond to their table counterparts and have been linked above.
 The set of parameters unique to materialized views covers [auto-refresh functionality](#auto-refresh).
 
-Find more information about these parameters in the BigQuery docs:
+Learn more about these parameters in BigQuery's docs:
 - [CREATE MATERIALIZED VIEW statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
 - [materialized_view_option_list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#materialized_view_option_list)
 
@@ -886,7 +874,7 @@ BigQuery only officially supports the configuration of the frequency (the "once 
 however, there is a feature in preview that allows for the configuration of the staleness (the "5 minutes" refresh).
 dbt will monitor these parameters for changes and apply them using an `ALTER` statement.
 
-Find more information about these parameters in the BigQuery docs:
+Learn more about these parameters in BigQuery's docs:
 - [materialized_view_option_list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#materialized_view_option_list)
 - [max_staleness](https://cloud.google.com/bigquery/docs/materialized-views-create#max_staleness)
 
@@ -901,5 +889,25 @@ As with most data platforms, there are limitations associated with materialized 
 - Recreating/dropping the base table requires recreating/dropping the materialized view.
 
 Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+## Python models
+
+The BigQuery adapter supports Python models with the following additional configuration parameters:
+
+| Parameter               | Type        | Required | Default   | Valid values     |
+|-------------------------|-------------|----------|-----------|------------------|
+| `enable_list_inference` | `<boolean>` | no       | `True`    | `True`, `False`  |
+| `intermediate_format`   | `<string>`  | no       | `parquet` | `parquet`, `orc` |
+
+### The `enable_list_inference` parameter
+The `enable_list_inference` parameter enables a PySpark data frame to read multiple records in the same operation.
+By default, this is set to `True` to support the default `intermediate_format` of `parquet`.
+
+### The `intermediate_format` parameter
+The `intermediate_format` parameter specifies which file format to use when writing records to a table. The default is `parquet`.
 
 </VersionBlock>
