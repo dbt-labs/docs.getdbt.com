@@ -18,10 +18,6 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
-## August 2024
-
-- **New:** The [Amazon Athena connection](/docs/cloud/connect-data-platform/connect-amazon-athena) for dbt Cloud is now available in [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
-
 ## July 2024
 - **Behavior change:** dbt Cloud IDE automatically adds a `--limit 100` to preview queries to avoid slow and expensive queries during development. Recently, dbt Core changed how the `limit` is applied to ensure that `order by` clauses are consistently respected. Because of this, queries that already contain a limit clause might now cause errors in the IDE previews. To address this, dbt Labs plans to provide an option soon to disable the limit from being applied. Until then, dbt Labs recommends removing the (duplicate) limit clause from your queries during previews to avoid these IDE errors.
 
