@@ -33,8 +33,9 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **New**: We now expose the `meta` field within the [config property](/reference/resource-configs/meta) for dbt Semantic Layer metrics in the [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview) under the `meta` field.
 - **New**: Added a command in the dbt Cloud CLI called `export-all`, which allows you to Export multiple or all of your saved queries. Previously, you had to explicitly specify the [list of saved queries](/docs/build/metricflow-commands#list-saved-queries).
 - **Fix**: Addressed a bug where unicode query filters (such as Chinese characters) were not working correctly in the dbt Semantic Layer Tableau integration.
-- **Fix**: Addressed a bug with parsing certain private keys for BigQuery when running an Export.
+- **Fix**: Resolved a bug with parsing certain private keys for BigQuery when running an export.
 - **Fix**: Addressed a bug that caused a "closed connection" error to be returned when querying or running an Export.
+- **Fix**: Resolved an issue in dbt Core where, during partial parsing, all generated metrics in a file were incorrectly deleted instead of just those related to the changed semantic model. Now, only the metrics associated with the modified model are affected.
 
 ## June 2024
 - **New:** Introduced new granularity support for cumulative metrics in MetricFlow. Granularity options for cumulative metrics are slightly different than granularity for other metric types. For other metrics, we use the `date_trunc` function to implement granularity. However, because cumulative metrics are non-additive (values can't be added up), we can't use the `date_trunc` function to change their time grain granularity. 
