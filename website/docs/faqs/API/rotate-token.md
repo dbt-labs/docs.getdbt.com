@@ -48,7 +48,7 @@ curl --location --request POST 'https://YOUR_ACCESS_URL/api/v2/users/123/apikey/
 
 ### dbt Cloud deployments
 
-If your [dbt Cloud deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different access URL, replace `YOUR_ACCESS_URL` with the URL of your instance.
+If your [dbt Cloud deployment](/docs/cloud/about-cloud/access-regions-ip-addresses) uses a different access URL, replace `YOUR_ACCESS_URL` with the URL of your instance.
 
 For example, if your deployment is Virtual Private dbt: 
 
