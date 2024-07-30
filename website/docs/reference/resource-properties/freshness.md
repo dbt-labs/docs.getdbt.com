@@ -45,16 +45,15 @@ If a source has a `freshness:` block, dbt will attempt to calculate freshness fo
 - If a `loaded_at_field` is provided, dbt will calculate freshness via a select query (behavior prior to v1.7).
 - If a `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new in v1.7 on supported adapters).
 
-Currently, calculating freshness from warehouse metadata tables is supported on:
+Currently, calculating freshness from warehouse metadata tables is supported on the following adapters:
 - [Snowflake](/reference/resource-configs/snowflake-configs)
-
-Support is coming soon to the following adapters:
 - [Redshift](/reference/resource-configs/redshift-configs)
-- [BigQuery](/reference/resource-configs/bigquery-configs)
-- [Spark](/reference/resource-configs/spark-configs)
+- [BigQuery](/reference/resource-configs/bigquery-configs) (Supported in [`dbt-bigquery`](https://github.com/dbt-labs/dbt-bigquery) version 1.7.3 or higher)
+
+Support is coming soon to the [Spark](/reference/resource-configs/spark-configs) adapter.
 
 Freshness blocks are applied hierarchically:
-- a `freshness` and `loaded_at_field` property added to a source will be applied to all all tables defined in that source
+- a `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source
 - a `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
 
 This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
@@ -63,8 +62,6 @@ To exclude a source from freshness calculations, you have two options:
 - Don't add a `freshness:` block.
 - Explicitly set `freshness: null`.
 
-## loaded_at_field
-(Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.)
 </VersionBlock>
 
 <VersionBlock lastVersion="1.6">
@@ -72,15 +69,23 @@ To exclude a source from freshness calculations, you have two options:
 Additionally, the `loaded_at_field` is required to calculate freshness for a table. If a `loaded_at_field` is not provided, then dbt will not calculate freshness for the table.
 
 Freshness blocks are applied hierarchically:
-- a `freshness` and `loaded_at_field` property added to a source will be applied to all all tables defined in that source
-- a `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
+- A `freshness` and `loaded_at_field` property added to a source will be applied to all tables defined in that source
+- A `freshness` and `loaded_at_field` property added to a source _table_ will override any properties applied to the source.
 
 This is useful when all of the tables in a source have the same `loaded_at_field`, as is often the case.
+</VersionBlock>
 
 ## loaded_at_field
+
+<VersionBlock firstVersion="1.7">
+(Optional on adapters that support pulling freshness from warehouse metadata tables, required otherwise.)
+</VersionBlock>
+
+<VersionBlock lastVersion="1.6">
 (Required)
 </VersionBlock>
-A column name (or expression) that returns a timestamp indicating freshness.
+
+<br/><br/>A column name (or expression) that returns a timestamp indicating freshness.
 
 If using a date field, you may have to cast it to a timestamp:
 ```yml
@@ -95,7 +100,7 @@ loaded_at_field: "CAST(completed_date AS TIMESTAMP)"
 If using a non-UTC timestamp, cast it to UTC first:
 
 ```yml
-loaded_at_field: "convert_timezone('UTC', 'Australia/Sydney', created_at_local)"
+loaded_at_field: "convert_timezone('Australia/Sydney', 'UTC', created_at_local)"
 ```
 
 ## count
@@ -117,7 +122,7 @@ This filter *only* applies to dbt's source freshness queries - it will not impac
 
 This is particularly useful if:
 - You are using BigQuery and your source tables are [partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
-- You are using Snowflake, Databricks or Spark with large tables, and this results in a performance benefit
+- You are using Snowflake, Databricks, or Spark with large tables, and this results in a performance benefit
 
 
 ## Examples

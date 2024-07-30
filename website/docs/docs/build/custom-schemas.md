@@ -83,6 +83,12 @@ The following code represents the default macro's logic:
 
 {%- endmacro %}
 ```
+<br />
+
+import WhitespaceControl from '/snippets/_whitespace-control.md';
+
+<WhitespaceControl/>
+
 
 ## Changing the way dbt generates a schema name
 
@@ -92,8 +98,7 @@ To customize this macro, copy the example code in the section [How does dbt gene
 
 Be careful. dbt will ignore any custom `generate_schema_name` macros included in installed packages.
 
-<details>
-<summary>❗️ Warning: Don't replace <code>default_schema</code> in the macro.</summary>
+<Expandable alt_header="Warning: Don't replace `default_schema` in the macro">
 
 If you're modifying how dbt generates schema names, don't just replace ```{{ default_schema }}_{{ custom_schema_name | trim }}``` with ```{{ custom_schema_name | trim }}``` in the ```generate_schema_name``` macro.
 
@@ -119,7 +124,7 @@ If you remove ```{{ default_schema }}```, it causes developers to override each 
 
 ```
 
-</details>
+</Expandable>
 
 ### generate_schema_name arguments
 
@@ -200,7 +205,7 @@ When using this macro, you'll need to set the target name in your production job
 In the `generate_schema_name` macro examples shown in the [built-in alternative pattern](#a-built-in-alternative-pattern-for-generating-schema-names) section, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must ensure that your different dbt environments are configured accordingly. While you can use any naming scheme you'd like, we typically recommend:
 
 * **dev** &mdash; Your local development environment; configured in a `profiles.yml` file on your computer.
-* **ci** &mdash; A [continuous integration](/docs/cloud/git/connect-github) environment running on pull pequests in GitHub, GitLab, and so on.
+* **ci** &mdash; A [continuous integration](/docs/cloud/git/connect-github) environment running on pull requests in GitHub, GitLab, and so on.
 * **prod** &mdash; The production deployment of your dbt project, like in dbt Cloud, Airflow, or [similar](/docs/deploy/deployments).
 
 If your schema names are being generated incorrectly, double-check your target name in the relevant environment.

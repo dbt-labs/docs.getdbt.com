@@ -12,6 +12,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 If a model uses the [`schema` config](/reference/resource-properties/schema) but builds under an unexpected schema, here are some steps for debugging the issue. The full explanation of custom schemas can be found [here](/docs/build/custom-schemas).
@@ -91,7 +93,7 @@ Now, re-read through the logic of your `generate_schema_name` macro, and mentall
 
 You should find that the schema dbt is constructing for your model matches the output of your `generate_schema_name` macro.
 
-Be careful. Snapshots do not follow this behavior, check out the docs on [target_schema](/reference/resource-configs/target_schema) instead.
+Be careful. Snapshots do not follow this behavior if target_schema is set. To have environment-aware snapshots in v1.9+ or dbt Cloud, remove the [target_schema config](/reference/resource-configs/target_schema) from your snapshots. If you still want a custom schema for your snapshots, use the [`schema`](/reference/resource-configs/schema) config instead.
 
 ## Adjust as necessary
 
@@ -100,3 +102,5 @@ Now that you understand how a model's schema is being generated, you can adjust 
 - You can also adjust your `target` details (for example, changing the name of a target)
 
 If you change the logic in `generate_schema_name`, it's important that you consider whether two users will end up writing to the same schema when developing dbt models. This consideration is the reason why the default implementation of the macro concatenates your target schema and custom schema together — we promise we were trying to be helpful by implementing this behavior, but acknowledge that the resulting schema name is unintuitive.
+
+</div>

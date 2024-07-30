@@ -16,6 +16,7 @@ default_value: true
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic models', value: 'semantic models', },
+    { label: 'Saved queries', value: 'saved queries', },
   ]
 }>
 <TabItem value="models">
@@ -175,21 +176,12 @@ sources:
 
 <TabItem value="metrics">
 
-<VersionBlock lastVersion="1.2">
-
-Support for disabling metrics was added in dbt Core v1.3
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
-
 <File name='dbt_project.yml'>
 
 ```yaml
 metrics:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)enabled: true | false
-
 ```
 
 </File>
@@ -203,24 +195,13 @@ metrics:
   - name: [<metric-name>]
     [config](/reference/resource-properties/config):
       enabled: true | false
-
 ```
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="exposures">
-
-<VersionBlock lastVersion="1.2">
-
-Support for disabling exposures was added in dbt Core v1.3
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
 
 <File name='dbt_project.yml'>
 
@@ -228,7 +209,6 @@ Support for disabling exposures was added in dbt Core v1.3
 exposures:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)enabled: true | false
-
 ```
 
 </File>
@@ -242,12 +222,9 @@ exposures:
   - name: [<exposure-name>]
     [config](/reference/resource-properties/config):
       enabled: true | false
-
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
@@ -286,9 +263,45 @@ semantic_models:
 
 </TabItem>
 
+<TabItem value="saved queries">
+
+<VersionBlock lastVersion="1.6">
+
+Support for disabling saved queries has been added in dbt Core v1.7.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='dbt_project.yml'>
+
+```yaml
+saved-queries:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
+```
+
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+saved_queries:
+  - name: [<saved_query_name>]
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
+
 An optional configuration for enabling or disabling a resource.
 
 * Default: true
@@ -301,8 +314,8 @@ If you are disabling models because they are no longer being used, but you want 
 
 ## Examples
 ### Disable a model in a package in order to use your own version of the model.
-This could be useful if you want to change the logic of a model in a package. For example, if you need to change the logic in the `segment_web_page_views` from the `segment` package ([original model](https://github.com/dbt-labs/segment/blob/main/models/base/segment_web_page_views.sql)):
-1. Add a model named `segment_web_page_views` the same name to your own project.
+This could be useful if you want to change the logic of a model in a package. For example, if you need to change the logic in the `segment_web_page_views` from the `segment` package ([original model](https://github.com/dbt-labs/segment/blob/a8ff2f892b009a69ec36c3061a87e437f0b0ea93/models/base/segment_web_page_views.sql)):
+1. Add a model named `segment_web_page_views` (the same name) to your own project.
 2. To avoid a compilation error due to duplicate models, disable the segment package's version of the model like so:
 
 <File name='dbt_project.yml'>

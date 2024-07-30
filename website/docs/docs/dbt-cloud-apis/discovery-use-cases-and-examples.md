@@ -212,10 +212,6 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 You can query the metadata at the job level to review results for specific runs. This is helpful for historical analysis of deployment performance or optimizing particular jobs.
 
-import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
-
-<DiscoveryApiJobDeprecationNotice />
-
 <details>
 <summary>Example query</summary>
 

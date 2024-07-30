@@ -7,6 +7,9 @@ hide_table_of_contents: true
 recently_updated: true
 tags: ['dbt Cloud', 'Quickstart','Databricks']
 ---
+
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 In this quickstart guide, you'll learn how to use dbt Cloud with Databricks. It will show you how to: 
@@ -20,7 +23,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Databricks. It 
 - Schedule a job to run.
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
 ### Prerequisites​
@@ -30,7 +33,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ### Related content
 
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
@@ -38,7 +41,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ## Create a Databricks workspace
 
-1. Use your existing account or sign up for a Databricks account at [Try Databricks](https://databricks.com/). Complete the form with your user information.
+1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
@@ -189,10 +192,17 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
-3. Click the **...** next to the `models` directory, then select **Create file**.  
-4. Name the file `customers.sql`, then click **Create**.
-5. Copy the following query into the file and click **Save**.
+
+You have two options for working with files in the dbt Cloud IDE:
+
+- Create a new branch (recommended) &mdash; Create a new branch to edit and commit your changes. Navigate to **Version Control** on the left sidebar and click **Create branch**.
+- Edit in the protected primary branch &mdash; If you prefer to edit, format, or lint files and execute dbt commands directly in your primary git branch. The dbt Cloud IDE prevents commits to the protected branch, so you will be prompted to commit your changes to a new branch.
+
+Name the new branch `add-customers-model`.
+
+1. Click the **...** next to the `models` directory, then select **Create file**.  
+2. Name the file `customers.sql`, then click **Create**.
+3. Copy the following query into the file and click **Save**.
 
 ```sql
 with customers as (
@@ -252,7 +262,7 @@ final as (
 select * from final
 ```
 
-6. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
+4. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 
@@ -364,12 +374,14 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
     This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
 
+
 #### FAQs {#faq-2}
 
 <FAQ path="Runs/run-one-model" />
 <FAQ path="Models/unique-model-names" />
 <FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
+</div>
 
 <Snippet path="quickstarts/test-and-document-your-project" />
 

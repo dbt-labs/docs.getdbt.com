@@ -11,6 +11,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 The legacy Semantic Layer will be deprecated in H2 2023. Additionally, the `dbt_metrics` package will not be supported in dbt v1.6 and later. If you are using `dbt_metrics`, you'll need to upgrade your configurations before upgrading to v1.6. This guide is for people who have the legacy dbt Semantic Layer setup and would like to migrate to the new dbt Semantic Layer. The estimated migration time is two weeks. 
@@ -131,8 +133,11 @@ If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in
 
 ### Related docs 
 
-- [MetricFlow quickstart guide](/docs/build/sl-getting-started)
-- [Example dbt project](https://github.com/dbt-labs/jaffle-sl-template)
+- [Quickstart guide with the dbt Semantic Layer](/guides/sl-snowflake-qs)
+- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
 - [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
 - [Why we're deprecating the dbt_metrics package](/blog/deprecating-dbt-metrics) blog post
 - [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
+- [dbt Semantic Layer on-demand course](https://learn.getdbt.com/courses/semantic-layer)
+
+</div>

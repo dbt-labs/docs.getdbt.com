@@ -6,13 +6,11 @@ id: "exposures"
 
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
-- populate a dedicated page in the auto-generated [documentation](/docs/collaborate/documentation) site with context relevant to data consumers
+- populate a dedicated page in the auto-generated [documentation](/docs/build/documentation) site with context relevant to data consumers
 
 ### Declaring an exposure
 
 Exposures are defined in `.yml` files nested under an `exposures:` key.
-
-<VersionBlock firstVersion="1.4">
 
 <File name='models/<filename>.yml'>
 
@@ -42,38 +40,6 @@ exposures:
 
 </File>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.3">
-
-<File name='models/<filename>.yml'>
-
-```yaml
-version: 2
-
-exposures:
-  
-  - name: weekly_jaffle_report
-    type: dashboard
-    maturity: high
-    url: https://bi.tool/dashboards/1
-    description: >
-      Did someone say "exponential growth"?
-
-    depends_on:
-      - ref('fct_orders')
-      - ref('dim_customers')
-      - source('gsheets', 'goals')
-
-    owner:
-      name: Callum McData
-      email: data@jaffleshop.com
-```
-
-</File>
-
-</VersionBlock>
-
 ### Available properties
 
 _Required:_
@@ -81,31 +47,18 @@ _Required:_
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
 - **owner**: `name` or `email` required; additional properties allowed
 
-<VersionBlock firstVersion="1.4">
-
 _Expected:_
-- **depends_on**: list of refable nodes, including `ref`, `source`, and `metric` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.3">
-
-_Expected:_
-- **depends_on**: list of refable nodes, including `ref` and `source` (While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly)
-
-</VersionBlock>
+- **depends_on**: list of refable nodes, including `metric`, `ref`, and `source`. While possible, it is highly unlikely you will ever need an `exposure` to depend on a `source` directly.
 
 _Optional:_
-- **label**:  may contain spaces, capital letters, or special characters.
-- **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
-- **maturity**: one of `high`, `medium`, `low`
+- **label**:  May contain spaces, capital letters, or special characters.
+- **url**:  Activates and populates the link to **View this exposure** in the upper right corner of the generated documentation site
+- **maturity**: Indicates the level of confidence or stability in the exposure. One of `high`, `medium`, or `low`. For example, you could use `high` maturity for a well-established dashboard, widely used and trusted within your organization. Use `low` maturity for a new or experimental analysis.
 
 _General properties (optional)_
 - **description**
 - **tags**
 - **meta**
-
-We plan to add more subtypes and optional properties in future releases.
 
 ### Referencing exposures
 
@@ -116,10 +69,10 @@ dbt test -s +exposure:weekly_jaffle_report
 
 ```
 
-When we generate our documentation site, you'll see the exposure appear:
+When we generate the dbt Explorer site, you'll see the exposure appear:
 
-<Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-exposures.png" title="Dedicated page in dbt-docs for each exposure"/>
-<Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as orange-y nodes in the DAG"/>
+<Lightbox src="/img/docs/building-a-dbt-project/dbt-explorer-exposures.jpg" title="Exposures has a dedicated section, under the 'Resources' tab in dbt Explorer,  which lists each exposure in your project."/>
+<Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as nodes in the dbt Explorer DAG. It displays an orange 'EXP' indicator within the node. "/>
 
 ## Related docs
 

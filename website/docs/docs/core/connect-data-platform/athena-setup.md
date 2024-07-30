@@ -33,12 +33,14 @@ default:
     dev:
       type: athena
       s3_staging_dir: [s3_staging_dir]
+      s3_data_dir: [s3_data_dir]
+      s3_data_naming: [table_unique] # the type of naming convention used when writing to S3
       region_name: [region_name]
       database: [database name]
       schema: [dev_schema]
-      aws_profile_name:
-        [optional, profile to use from your AWS shared credentials file.]
-
+      aws_profile_name: [optional profile to use from your AWS shared credentials file.]
+      threads: [1 or more]
+      num_retries: [0 or more] # number of retries performed by the adapter. Defaults to 5
   target: dev
 ```
 

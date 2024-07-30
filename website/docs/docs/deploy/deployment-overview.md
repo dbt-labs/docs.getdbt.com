@@ -16,7 +16,7 @@ dbt Cloud offers the easiest and most reliable way to run your dbt project in pr
 - Identify the root cause of failures in deployment environments
 - Maintain high-quality code and data in production
 - Gain visibility into the health of deployment jobs, models, and tests
-- Uses [exports](/docs/use-dbt-semantic-layer/exports) to materialize [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
+- Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
 
@@ -41,6 +41,12 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     title="Continuous integration"
     body="Set up CI checks so you can build and test any modified code in a staging environment when you open PRs and push new commits to your dbt repository."
     link="/docs/deploy/continuous-integration"
+    icon="dbt-bit"/>
+
+<Card
+    title="Merge jobs"
+    body="Set up jobs to run when pull requests are merged in your Git repository."
+    link="/docs/deploy/merge-jobs"
     icon="dbt-bit"/>
 
 <Card

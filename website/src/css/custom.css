@@ -1226,17 +1226,22 @@ html[data-theme="dark"] .main-wrapper nav a:active {
 
   /* keys wrapper */
   button .DocSearch-Button-Keys {
-    border: 1px solid var(--docsearch-muted-color-for-keys);
-    border-radius: 5px;
+    border: none;
     padding: 0.24em 0.5em;
-    gap: 0.1em;
+    gap: 0;
+    margin-right: -13px;
   }
 
   /* single key */
   button .DocSearch-Button-Key {
-    font-size: 1.25rem;
+    font-size: 1.12rem;
+    line-height: 1em;  
+    vertical-align: middle; 
     margin-right: 0;
-    padding: 4px 4px 2px;
+    padding: 0.24em 0.4em 2px;
+    width: 0;
+    height: 1em;
+    gap: 0;
   }
 
   /* Add dark background on hover for searchbox */
@@ -2089,6 +2094,7 @@ h2.anchor.clicked a.hash-link:before {
 .table-of-contents .lifecycle-badge {
   display: none;
 }
+
 
 @media (max-width: 996px) {
   .quickstart-container {

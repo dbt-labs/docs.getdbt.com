@@ -1,10 +1,7 @@
-- Have a dbt Cloud Team or Enterprise account. Suitable for both Multi-tenant and Single-tenant deployment. 
-    - Note: Single-tenant accounts should contact their account representative for necessary setup and enablement.
-- Have both your production and development environments running [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-core-in-cloud).
+- Have a dbt Cloud Team or Enterprise account. Single-tenant accounts should contact their account representative setup.
+- Ensure your production and development environments use [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud).
 - Use Snowflake, BigQuery, Databricks, or Redshift.
 -  Create a successful run in the environment where you configure the Semantic Layer. 
-   - **Note:** Semantic Layer currently supports the Deployment environment for querying. (_development querying experience coming soon_) 
-- Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
-  - dbt Core or Developer accounts can define metrics but won't be able to dynamically query them.<br />
-- Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the latest dbt Semantic Layer.  
-- Note that SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections, [PrivateLink](/docs/cloud/secure/about-privatelink), and [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) doesn't support the dbt Semantic Layer yet.
+   - **Note:** Semantic Layer supports querying in Deployment environments; development querying is coming soon.
+- Understand [MetricFlow's](/docs/build/about-metricflow) key concepts powering the dbt Semantic Layer.  
+- Note that the dbt Semantic Layer doesn't support SSH tunneling for [Postgres or Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections.  It also doesn't support using [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) for [production credentials](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens), though SSO is supported for development user accounts.

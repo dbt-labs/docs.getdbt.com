@@ -7,7 +7,7 @@ hoverSnippet: Learn how to clone incremental models for CI jobs.
 ---
 
 Before you begin, you must be aware of a few conditions:
-- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud) for help enabling newer versions in dbt Cloud
+- `dbt clone` is only available with dbt version 1.6 and newer. Refer to our [upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud) for help enabling newer versions in dbt Cloud
 - This strategy only works for warehouse that support zero copy cloning (otherwise `dbt clone` will just create pointer views).
 - Some teams may want to test that their incremental models run in both incremental mode and full-refresh mode.
 
@@ -29,7 +29,7 @@ This build mimics the behavior of what will happen once the PR is merged into th
 
 ## What happens when one of the modified models (or one of their downstream dependencies) is an incremental model?
 
-Because your CI job is building modified models into a PR-specific schema, on the first execution of `dbt build --select state:modified+`, the modified incremental model will be built in its entirety _because it does not yet exist in the PR-specific schema_ and [is_incremental will be false](/docs/build/incremental-models#understanding-the-is_incremental-macro). You're running in `full-refresh` mode.
+Because your CI job is building modified models into a PR-specific schema, on the first execution of `dbt build --select state:modified+`, the modified incremental model will be built in its entirety _because it does not yet exist in the PR-specific schema_ and [is_incremental will be false](/docs/build/incremental-models#understand-the-is_incremental-macro). You're running in `full-refresh` mode.
 
 This can be suboptimal because:
 - Typically incremental models are your largest datasets, so they take a long time to build in their entirety which can slow down development time and incur high warehouse costs.
@@ -42,7 +42,7 @@ You'll have two commands for your dbt Cloud CI check to execute:
   ```shell
   dbt clone --select state:modified+,config.materialized:incremental,state:old
   ```
-2. Build all of the models that have been modified and their downstream dependencies:
+1. Build all of the models that have been modified and their downstream dependencies:
   ```shell
   dbt build --select state:modified+
   ```

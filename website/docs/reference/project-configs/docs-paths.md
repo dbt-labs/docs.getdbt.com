@@ -13,7 +13,7 @@ docs-paths: [directorypath]
 </File>
 
 ## Definition
-Optionally specify a custom list of directories where [docs blocks](/docs/collaborate/documentation#docs-blocks) are located.
+Optionally specify a custom list of directories where [docs blocks](/docs/build/documentation#docs-blocks) are located.
 
 
 ## Default

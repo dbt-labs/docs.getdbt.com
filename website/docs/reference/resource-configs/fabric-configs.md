@@ -85,9 +85,15 @@ Indexes are not supported by Microsoft Fabric Synapse Data Warehouse. Any Indexe
 
 Grants with auto provisioning is not supported by Microsoft Fabric Synapse Data Warehouse at this time.
 
+## Incremental
+
+Fabric supports both `delete+insert` and `append` strategy.
+
+If a unique key is not provided, it will default to the `append` strategy.
+
 ## Permissions
 
-The AAD identity (user or service principal) must be a Fabric Workspace admin to work on the database level at this time. Fine grain access control will be incorporated in the future.
+The Microsoft Entra identity (user or service principal) must be a Fabric Workspace admin to work on the database level at this time. Fine grain access control will be incorporated in the future.
 
 ## cross-database macros
 
@@ -95,4 +101,5 @@ Not supported at this time.
 
 ## dbt-utils
 
-Not supported at this time
+Not supported at this time. However, dbt-fabric offers some utils macros. Please check out [utils macros](https://github.com/microsoft/dbt-fabric/tree/main/dbt/include/fabric/macros/utils).
+

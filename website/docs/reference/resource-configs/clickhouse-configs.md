@@ -159,7 +159,7 @@ models:
 | Option                   | Description                                                                                                                                                                                                                    | Required?                                                                            |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | `materialized`           | How the model will be materialized into ClickHouse. Must be `table` to create a table model.                                                                                                                                   | Required                                                                             |
-| `unique_key`             | A tuple of column names that uniquely identify rows. For more details on uniqueness constraints, see [here](https://docs.getdbt.com/docs/build/incremental-models#defining-a-uniqueness-constraint-optional).                  | Required. If not provided altered rows will be added twice to the incremental table. |
+| `unique_key`             | A tuple of column names that uniquely identify rows. For more details on uniqueness constraints, see [here](/docs/build/incremental-models#defining-a-unique-key-optional).                  | Required. If not provided altered rows will be added twice to the incremental table. |
 | `engine`                 | The table engine to use when creating tables. See list of supported engines below.                                                                                                                                             | Optional (default: `MergeTree()`)                                                    |
 | `order_by`               | A tuple of column names or arbitrary expressions. This allows you to create a small sparse index that helps find data faster.                                                                                                  | Optional (default: `tuple()`)                                                        |
 | `partition_by`           | A partition is a logical combination of records in a table by a specified criterion. The partition key can be any expression from the table columns.                                                                           | Optional                                                                             |
@@ -170,6 +170,8 @@ models:
 ## Snapshot
 
 dbt snapshots allow a record to be made of changes to a mutable model over time. This in turn allows point-in-time queries on models, where analysts can “look back in time” at the previous state of a model. This functionality is supported by the ClickHouse connector and is configured using the following syntax:
+
+<VersionBlock lastVersion="1.8">
 
 <File name='snapshots/<model_name>.sql'>
 
@@ -186,14 +188,28 @@ dbt snapshots allow a record to be made of changes to a mutable model over time.
 
 </File>
 
-#### Snapshot Configuration
+</VersionBlock>
 
-| Option          | Description                                                                                                               | Required?                                                                            |
-|-----------------|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| `target_schema` | A ClickHouse's database name where the snapshot table will be created.                                                    | Required                                                                             |
-| `unique_key`    | A tuple of column names that uniquely identify rows.                                                                      | Required. If not provided altered rows will be added twice to the incremental table. |
-| `strategy`      | Defines how dbt knows if a row has changed. More about dbt startegies [here](/docs/build/snapshots#detecting-row-changes) | Required                                                                             |
-| `updated_at`    | If using the timestamp strategy, the timestamp column to compare.                                                         | Only if using the timestamp strategy                                                 |
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/<model_name>.sql'>
+
+```jinja
+{{
+   config(
+     schema = "<schema-name>",
+     unique_key = "<column-name>",
+     strategy = "<strategy>",
+     updated_at = "<updated-at-column-name>",
+   )
+}}
+```
+
+</File>
+
+</VersionBlock>
+
+For more information on configuration, check out the [snapshot configs](/reference/snapshot-configs) reference page.
 
 ## Supported Table Engines
 

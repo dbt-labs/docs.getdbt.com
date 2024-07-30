@@ -1,7 +1,8 @@
 ---
-title: "Incremental models"
-description: "Read this tutorial to learn how to use incremental models when building in dbt."
+title: "Configure incremental models"
+description: "Learn how to configure incremental models when building in dbt."
 id: "incremental-models"
+keywords: ["incremental models", "incremental materialization","incremental", "materialization", "incremental model", "incremental strategy", "incremental model configuration"]
 ---
 
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
@@ -10,7 +11,7 @@ Often, the rows you filter for on an incremental run will be the rows in your so
 
 Using an incremental model limits the amount of data that needs to be transformed, vastly reducing the runtime of your transformations. This improves warehouse performance and reduces compute costs.
 
-## Using incremental materializations
+## Configure incremental materializations
 
 Like the other <Term id="materialization">materializations</Term> built into dbt, incremental models are defined with `select` statements, with the materialization defined in a config block.
 ```sql
@@ -28,6 +29,17 @@ To use incremental models, you also need to tell dbt:
 
 * How to filter the rows on an incremental run
 * The unique key of the model (if any)
+
+### Understand the is_incremental() macro
+
+The `is_incremental()` macro powers incremental materializations. It will return `True` if _all_ of the following conditions are met:
+
+- The model must already exist in the database
+- The destination table already exists in the database
+- The `full-refresh` flag _is not_ passed
+- The running model is configured with `materialized='incremental'`
+
+Note that the SQL in your model needs to be valid whether `is_incremental()` evaluates to `True` or `False`.
 
 ### Filtering rows on an incremental run
 
@@ -52,13 +64,14 @@ select
     *,
     my_slow_function(my_column)
 
-from raw_app_data.events
+from {{ ref('app_data_events') }}
 
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
-  -- (uses > to include records whose timestamp occurred since the last run of this model)
-  where event_time > (select max(event_time) from {{ this }})
+  -- (uses >= to include records whose timestamp occurred since the last run of this model)
+  -- (If event_time is NULL or the table is truncated, the condition will always be true and load all records)
+where event_time >= (select coalesce(max(event_time),'1900-01-01') from {{ this }} )
 
 {% endif %}
 ```
@@ -75,11 +88,11 @@ For more complex incremental models that make use of Common Table Expressions (C
 
 ### Defining a unique key (optional)
 
-A `unique_key` enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
+A `unique_key` enables updating existing rows instead of just appending new rows. If new information arrives for an existing `unique_key`, that new information can replace the current information instead of being appended to the table. If a duplicate row arrives, it can be ignored. Refer to [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs) for more options on managing this update behavior, like choosing only specific columns to update.
 
 Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
-The optional `unique_key` parameter specifies a field (or combination of fields) that define the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
+The optional `unique_key` parameter specifies a field (or combination of fields) that defines the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
 
 The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental model run may fail. Either ensure that each column has no nulls (for example with `coalesce(COLUMN_NAME, 'VALUE_IF_NULL')`), or define a single-column [surrogate key](/terms/surrogate-key) (for example with [`dbt_utils.generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source)).
 
@@ -95,13 +108,13 @@ Alternatively, you can define a single-column [surrogate key](/terms/surrogate-k
 
 When you define a `unique_key`, you'll see this behavior for each row of "new" data returned by your dbt model:
 
-* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](#about-incremental_strategy), and [strategy specific configs](#strategy-specific-configs).
+* If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](/docs/build/incremental-strategy), and [strategy specific configs](/docs/build/incremental-strategy#strategy-specific-configs).
 * If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
-Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](#about-incremental_strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
+Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](/docs/build/incremental-strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
 
 :::info
-While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
+While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](/docs/build/incremental-strategy).
 :::
 
 #### `unique_key` example
@@ -122,14 +135,14 @@ select
     date_trunc('day', event_at) as date_day,
     count(distinct user_id) as daily_active_users
 
-from raw_app_data.events
+from {{ ref('app_data_events') }}
 
 
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
   -- (uses >= to include records arriving later on the same day as the last run of this model)
-  where date_day >= (select max(date_day) from {{ this }})
+  where date_day >= (select coalesce(max(event_time), '1900-01-01') from {{ this }})
 
 {% endif %}
 
@@ -152,33 +165,6 @@ It's also advisable to rebuild any downstream models, as indicated by the traili
 
 For detailed usage instructions, check out the [dbt run](/reference/commands/run) documentation.
 
-# Understanding incremental models
-## When should I use an incremental model?
-
-Building models as tables in your data warehouse is often preferred for better query performance. However, using `table` materialization can be computationally intensive, especially when:
-
-- Source data has millions or billions of rows.
-- Data transformations on the source data are computationally expensive (take a long time to execute) and complex, like using Regex or UDFs.
-
-Incremental models offer a balance between complexity and improved performance compared to `view` and `table` materializations and offer better performance of your dbt runs. 
-
-In addition to these considerations for incremental models, it's important to understand their limitations and challenges, particularly with large datasets. For more insights into efficient strategies, performance considerations, and the handling of late-arriving data in incremental models, refer to the [On the Limits of Incrementality](https://discourse.getdbt.com/t/on-the-limits-of-incrementality/303) discourse discussion. 
-
-## Understanding the is_incremental() macro
-The `is_incremental()` macro will return `True` if _all_ of the following conditions are met:
-* the destination table already exists in the database
-* dbt is _not_ running in full-refresh mode
-* The running model is configured with `materialized='incremental'`
-
-Note that the SQL in your model needs to be valid whether `is_incremental()` evaluates to `True` or `False`.
-
-## How do incremental models work behind the scenes?
-
-dbt's incremental materialization works differently on different databases. Where supported, a `merge` statement is used to insert new records and update existing records.
-
-On warehouses that do not support `merge` statements, a merge is implemented by first using a `delete` statement to delete records in the target table that are to be updated, and then an `insert` statement.
-
-Transaction management, a process used in certain data platforms, ensures that a set of actions is treated as a single unit of work (or task). If any part of the unit of work fails, dbt will roll back open transactions and restore the database to a good state.
 
 ## What if the columns of my incremental model change?
 
@@ -233,346 +219,6 @@ If you add a column to your incremental model, and execute a `dbt run`, this col
 Similarly, if you remove a column from your incremental model, and execute a `dbt run`, this column will _not_ be removed from your target table.
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
-
-## About `incremental_strategy`
-
-There are various ways (strategies) to implement the concept of incremental materializations. The value of each strategy depends on:
-
-* the volume of data,
-* the reliability of your `unique_key`, and
-* the support of certain features in your data platform
-
-An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses
-to build incremental models.
-
-### Supported incremental strategies by adapter
-
-Click the name of the adapter in the below table for more information about supported incremental strategies.
-
-The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in dbt v1.6.
-
-<VersionBlock lastVersion="1.5">
-
-| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |
-|-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|
-| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅   |         |        ✅       |                    |
-| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅   |         |        ✅       |                    |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |          |    ✅   |                 |          ✅        |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅   |    ✅   |                 |          ✅        |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅   |    ✅   |                 |          ✅        |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅   |    ✅   |        ✅       |                    |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅   |    ✅   |        ✅       |                    |
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
-| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |
-|-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|
-| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅        |                    |
-| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅        |                    |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |          |     ✅  |                 |          ✅         |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅    |    ✅  |                  |          ✅        |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |                 |          ✅        |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   |        ✅       |                    |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   |        ✅       |                    |
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
-
-:::note Snowflake Configurations
-
-dbt v1.3 changed the default materialization for incremental table merges from `temporary table` to `view`. For more information about this change and instructions for setting the configuration to a temp table, please read about [Snowflake temporary tables](/reference/resource-configs/snowflake-configs#temporary-tables).
-
-:::
-
-</VersionBlock>
-
-### Configuring incremental strategy
-
-The `incremental_strategy` config can either be specified in specific models, or
-for all models in your `dbt_project.yml` file:
-
-<File name='dbt_project.yml'>
-
-```yaml
-models:
-  +incremental_strategy: "insert_overwrite"
-```
-
-</File>
-
-or:
-
-<File name='models/my_model.sql'>
-
-```sql
-{{
-  config(
-    materialized='incremental',
-    unique_key='date_day',
-    incremental_strategy='delete+insert',
-    ...
-  )
-}}
-
-select ...
-```
-
-</File>
-
-<VersionBlock firstVersion="1.3">
-
-### Strategy-specific configs
-
-If you are using the `merge` strategy and have specified a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
-
-On adapters which support the `merge` strategy (including Snowflake, BigQuery, Apache Spark, and Databricks), you may optionally pass a list of column names to a `merge_update_columns` config. In that case, dbt will update _only_ the columns specified by the config, and keep the previous values of other columns.
-
-<File name='models/my_model.sql'>
-
-```sql
-{{
-  config(
-    materialized = 'incremental',
-    unique_key = 'id',
-    merge_update_columns = ['email', 'ip_address'],
-    ...
-  )
-}}
-
-select ...
-```
-
-</File>
-
-Alternatively, you can specify a list of columns to exclude from being updated by passing a list of column names to a `merge_exclude_columns` config.
-
-<File name='models/my_model.sql'>
-
-```sql
-{{
-  config(
-    materialized = 'incremental',
-    unique_key = 'id',
-    merge_exclude_columns = ['created_at'],
-    ...
-  )
-}}
-
-select ...
-```
-
-</File>
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.4">
-
-### About incremental_predicates
-
-`incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts a list of any valid SQL expression(s). dbt does not check the syntax of the SQL statements. 
-
-This an example of a model configuration in a `yml` file we might expect to see on Snowflake:
-
-```yml
-
-models:
-  - name: my_incremental_model
-    config:
-      materialized: incremental
-      unique_key: id
-      # this will affect how the data is stored on disk, and indexed to limit scans
-      cluster_by: ['session_start']  
-      incremental_strategy: merge
-      # this limits the scan of the existing table to the last 7 days of data
-      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"]
-      # `incremental_predicates` accepts a list of SQL statements. 
-      # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
-```
-
-Alternatively, here are the same configurations configured within a model file:
-
-```sql
--- in models/my_incremental_model.sql
-
-{{
-  config(
-    materialized = 'incremental',
-    unique_key = 'id',
-    cluster_by = ['session_start'],  
-    incremental_strategy = 'merge',
-    incremental_predicates = [
-      "DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"
-    ]
-  )
-}}
-
-...
-
-```
-
-This will template (in the `dbt.log` file) a `merge` statement like:
-```sql
-merge into <existing_table> DBT_INTERNAL_DEST
-    from <temp_table_with_new_records> DBT_INTERNAL_SOURCE
-    on
-        -- unique key
-        DBT_INTERNAL_DEST.id = DBT_INTERNAL_SOURCE.id
-        and
-        -- custom predicate: limits data scan in the "old" data / existing table
-        DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)
-    when matched then update ...
-    when not matched then insert ...
-```
-
-Limit the data scan of _upstream_ tables within the body of their incremental model SQL, which will limit the amount of "new" data processed/transformed.
-
-```sql
-with large_source_table as (
-
-    select * from {{ ref('large_source_table') }}
-    {% if is_incremental() %}
-        where session_start > dateadd(day, -3, current_date)
-    {% endif %}
-
-),
-
-...
-```
-
-:::info
-The syntax depends on how you configure your `incremental_strategy`:
-- If using the `merge` strategy, you may need to explicitly alias any columns with either `DBT_INTERNAL_DEST` ("old" data) or `DBT_INTERNAL_SOURCE` ("new" data). 
-- There's a decent amount of conceptual overlap with the `insert_overwrite` incremental strategy.
-:::
-
-</VersionBlock>
-
-### Built-in strategies
-
-Before diving into [custom strategies](#custom-strategies), it's important to understand the built-in incremental strategies in dbt and their corresponding macros:
-
-| `incremental_strategy` | Corresponding macro                    |
-|------------------------|----------------------------------------|
-| `append`               | `get_incremental_append_sql`           |
-| `delete+insert`        | `get_incremental_delete_insert_sql`    |
-| `merge`                | `get_incremental_merge_sql`            |
-| `insert_overwrite`     | `get_incremental_insert_overwrite_sql` |
-
-
-For example, a built-in strategy for the `append` can be defined and used with the following files:
-
-<File name='macros/append.sql'>
-
-```sql
-{% macro get_incremental_append_sql(arg_dict) %}
-
-  {% do return(some_custom_macro_with_sql(arg_dict["target_relation"], arg_dict["temp_relation"], arg_dict["unique_key"], arg_dict["dest_columns"], arg_dict["incremental_predicates"])) %}
-
-{% endmacro %}
-
-
-{% macro some_custom_macro_with_sql(target_relation, temp_relation, unique_key, dest_columns, incremental_predicates) %}
-
-    {%- set dest_cols_csv = get_quoted_csv(dest_columns | map(attribute="name")) -%}
-
-    insert into {{ target_relation }} ({{ dest_cols_csv }})
-    (
-        select {{ dest_cols_csv }}
-        from {{ temp_relation }}
-    )
-
-{% endmacro %}
-```
-</File>
-
-Define a model models/my_model.sql:
-
-```sql
-{{ config(
-    materialized="incremental",
-    incremental_strategy="append",
-) }}
-
-select * from {{ ref("some_model") }}
-```
-
-### Custom strategies
-
-<VersionBlock lastVersion="1.1">
-
-Custom incremental strategies can be defined beginning in dbt v1.2.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.2">
-
-As an easier alternative to [creating an entirely new materialization](/guides/create-new-materializations), users can define and use their own "custom" user-defined incremental strategies by:
-
-1. defining a macro named `get_incremental_STRATEGY_sql`. Note that `STRATEGY` is a placeholder and you should replace it with the name of your custom incremental strategy.
-2. configuring `incremental_strategy: STRATEGY` within an incremental model
-
-dbt won't validate user-defined strategies, it will just look for the macro by that name, and raise an error if it can't find one.
-
-For example, a user-defined strategy named `insert_only` can be defined and used with the following files:
-
-<File name='macros/my_custom_strategies.sql'>
-
-```sql
-{% macro get_incremental_insert_only_sql(arg_dict) %}
-
-  {% do return(some_custom_macro_with_sql(arg_dict["target_relation"], arg_dict["temp_relation"], arg_dict["unique_key"], arg_dict["dest_columns"], arg_dict["incremental_predicates"])) %}
-
-{% endmacro %}
-
-
-{% macro some_custom_macro_with_sql(target_relation, temp_relation, unique_key, dest_columns, incremental_predicates) %}
-
-    {%- set dest_cols_csv = get_quoted_csv(dest_columns | map(attribute="name")) -%}
-
-    insert into {{ target_relation }} ({{ dest_cols_csv }})
-    (
-        select {{ dest_cols_csv }}
-        from {{ temp_relation }}
-    )
-
-{% endmacro %}
-```
-
-</File>
-
-<File name='models/my_model.sql'>
-
-```sql
-{{ config(
-    materialized="incremental",
-    incremental_strategy="insert_only",
-    ...
-) }}
-
-...
-```
-
-</File>
-
-### Custom strategies from a package
-
-To use the `merge_null_safe` custom incremental strategy from the `example` package:
-- [Install the package](/docs/build/packages#how-do-i-add-a-package-to-my-project)
-- Then add the following macro to your project:
-
-<File name='macros/my_custom_strategies.sql'>
-
-```sql
-{% macro get_incremental_merge_null_safe_sql(arg_dict) %}
-    {% do return(example.get_incremental_merge_null_safe_sql(arg_dict)) %}
-{% endmacro %}
-```
-
-</File>
-</VersionBlock>
 
 <Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="incremental"/>

@@ -8,7 +8,7 @@ const statusColors = {
   new: '#047377',
   beta: '#047377',
   ga: '#047377',
-  'public preview': '#047377',
+  preview: '#047377',
 };
 
 const fontColors = {
@@ -19,11 +19,10 @@ const fontColors = {
   };
 
 export default function Lifecycle(props) {
-  if (!props.status || (Array.isArray(props.status) && props.status.length === 0)) {
+  const statuses = props.status?.split(',')
+  if (!props.status || !statuses?.length) {
     return null;
   }
-  // Check if props.status is an array or a single value
-  const statuses = Array.isArray(props.status) ? props.status : [props.status];
 
   return (
     <>

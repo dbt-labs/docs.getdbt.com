@@ -11,6 +11,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 The focus of this workshop will be to demonstrate how we can use both *SQL and python together* in the same workflow to run *both analytics and machine learning models* on dbt Cloud.
@@ -30,7 +32,7 @@ All code in today’s workshop can be found on [GitHub](https://github.com/dbt-l
 ### What you need to know
 
 - Basic to intermediate SQL and python.
-- Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://courses.getdbt.com/collections) if you're interested.
+- Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://learn.getdbt.com) if you're interested.
 - High level machine learning process (encoding, training, testing)
 - Simple ML algorithms &mdash; we will use logistic regression to keep the focus on the *workflow*, not algorithms!
 
@@ -263,7 +265,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
 1. We are going to be using [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to set up a dbt Cloud account. Using this method will allow you to spin up a fully fledged dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [managed repository](/docs/collaborate/git/managed-repository), environments, and credentials already established.
 2. Navigate out of your worksheet back by selecting **home**.
 3. In Snowsight, confirm that you are using the **ACCOUNTADMIN** role.
-4. Navigate to the **Admin** **> Partner Connect**. Find **dbt** either by using the search bar or navigating the **Data Integration**. Select the **dbt** tile.
+4. Navigate to the **Data Products** **> Partner Connect**. Find **dbt** either by using the search bar or navigating the **Data Integration**. Select the **dbt** tile.
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/1-open-partner-connect.png" title="Open Partner Connect"/>
 5. You should now see a new window that says **Connect to dbt**. Select **Optional Grant** and add the `FORMULA1` database. This will grant access for your new dbt user role to the FORMULA1 database.
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt/2-partner-connect-optional-grant.png" title="Partner Connect Optional Grant"/>
@@ -365,9 +367,9 @@ In this step, we’ll need to create a development branch and set up project lev
     
      +docs:
        node_color: "CadetBlue"
-   marts:
-     +materialized: table
-     aggregates:
+     marts:
+      +materialized: table
+      aggregates:
        +docs:
          node_color: "Maroon"
        +tags: "bi"
@@ -393,7 +395,7 @@ In this step, we’ll need to create a development branch and set up project lev
     - `materialized` &mdash; Tells dbt how to materialize models when compiling the code before it pushes it down to Snowflake. All models in the `marts` folder will be built as tables.
     - `tags` &mdash; Applies tags at a directory level to all models. All models in the `aggregates` folder will be tagged as `bi` (abbreviation for business intelligence).
     - `docs` &mdash; Specifies the `node_color` either by the plain color name or a hex value.
-5. [Materializations](/docs/build/materializations) are strategies for persisting dbt models in a warehouse, with `tables` and `views` being the most commonly utilized types. By default, all dbt models are materialized as views and other materialization types can be configured in the `dbt_project.yml` file or in a model itself. It’s very important to note *Python models can only be materialized as tables or incremental models.* Since all our Python models exist under `marts`, the following portion of our `dbt_project.yml` ensures no errors will occur when we run our Python models. Starting with [dbt version 1.4](/docs/dbt-versions/core-upgrade/upgrading-to-v1.4#updates-to-python-models), Python files will automatically get materialized as tables even if not explicitly specified.
+5. [Materializations](/docs/build/materializations) are strategies for persisting dbt models in a warehouse, with `tables` and `views` being the most commonly utilized types. By default, all dbt models are materialized as views and other materialization types can be configured in the `dbt_project.yml` file or in a model itself. It’s very important to note *Python models can only be materialized as tables or incremental models.* Since all our Python models exist under `marts`, the following portion of our `dbt_project.yml` ensures no errors will occur when we run our Python models. Starting with [dbt version 1.4](/docs/dbt-versions/core-upgrade/older%20versions/upgrading-to-v1.4#updates-to-python-models), Python files will automatically get materialized as tables even if not explicitly specified.
 
     ```yaml
     marts:     
@@ -434,7 +436,7 @@ Sources allow us to create a dependency between our source database object and o
 
 Staging models are the base of our project, where we bring all the individual components we're going to use to build our more complex and useful models into the project.
 
-Since we want to focus on dbt and Python in this workshop, check out our [sources](/docs/build/sources) and [staging](/best-practices/how-we-structure/2-staging) docs if you want to learn more (or take our [dbt Fundamentals](https://courses.getdbt.com/collections) course which covers all of our core functionality).
+Since we want to focus on dbt and Python in this workshop, check out our [sources](/docs/build/sources) and [staging](/best-practices/how-we-structure/2-staging) docs if you want to learn more (or take our [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) course which covers all of our core functionality).
 
 ### 1. Create sources
 
@@ -1207,7 +1209,7 @@ Let’s take a step back before starting machine learning to both review and go 
   - Within the model's `.py` file, using the `dbt.config()` method
   - Calling the `dbt.config()` method will set configurations for your model within your `.py` file, similar to the `{{ config() }} macro` in `.sql` model files:
 
-        ```python
+    ```python
         def model(dbt, session):
 
             # setting configuration
@@ -1230,7 +1232,7 @@ At a high level we’ll be:
 ### ML data prep
 
 1. To keep our project organized, we’ll need to create two new subfolders in our `ml` directory. Under the `ml` folder, make the subfolders `prep` and `train_predict`.
-2. Create a new file under `ml/prep` called `ml_data_prep`. Copy the following code into the file and **Save**.
+2. Create a new file under `ml/prep` called `ml_data_prep.py`. Copy the following code into the file and **Save**.
 
     ```python
     import pandas as pd
@@ -1260,13 +1262,13 @@ At a high level we’ll be:
         data['CONSTRUCTOR_NAME'].replace(mapping, inplace=True)
 
         # create confidence metrics for drivers and constructors
-        dnf_by_driver = data.groupby('DRIVER').sum()['DNF_FLAG']
+        dnf_by_driver = data.groupby('DRIVER').sum(numeric_only=True)['DNF_FLAG']
         driver_race_entered = data.groupby('DRIVER').count()['DNF_FLAG']
         driver_dnf_ratio = (dnf_by_driver/driver_race_entered)
         driver_confidence = 1-driver_dnf_ratio
         driver_confidence_dict = dict(zip(driver_confidence.index,driver_confidence))
 
-        dnf_by_constructor = data.groupby('CONSTRUCTOR_NAME').sum()['DNF_FLAG']
+        dnf_by_constructor = data.groupby('CONSTRUCTOR_NAME').sum(numeric_only=True)['DNF_FLAG']
         constructor_race_entered = data.groupby('CONSTRUCTOR_NAME').count()['DNF_FLAG']
         constructor_dnf_ratio = (dnf_by_constructor/constructor_race_entered)
         constructor_relaiblity = 1-constructor_dnf_ratio
@@ -1363,9 +1365,9 @@ In this next part, we’ll be performing covariate encoding. Breaking down this 
                 return 2
 
         # we are dropping the columns that we filtered on in addition to our training variable
-        encoded_data = fil_cov.drop(['ACTIVE_DRIVER','ACTIVE_CONSTRUCTOR'],1)
+        encoded_data = fil_cov.drop(['ACTIVE_DRIVER','ACTIVE_CONSTRUCTOR'],axis=1))
         encoded_data['POSITION_LABEL']= encoded_data['POSITION'].apply(lambda x: position_index(x))
-        encoded_data_grouped_target = encoded_data.drop(['POSITION'],1)
+        encoded_data_grouped_target = encoded_data.drop(['POSITION'],axis=1))
 
         return encoded_data_grouped_target
     ```
@@ -1396,7 +1398,7 @@ In this next part, we’ll be performing covariate encoding. Breaking down this 
 
 Now that we’ve cleaned and encoded our data, we are going to further split in by time. In this step, we will create dataframes to use for training and prediction. We’ll be creating two dataframes 1) using data from 2010-2019 for training, and 2) data from 2020 for new prediction inferences. We’ll create variables called `start_year` and `end_year` so we aren’t filtering on hardcasted values (and can more easily swap them out in the future if we want to retrain our model on different timeframes).
 
-1. Create a file called `train_test_dataset` copy and save the following code:
+1. Create a file called `train_test_dataset.py` copy and save the following code:
 
     ```python
     import pandas as pd
@@ -1419,7 +1421,7 @@ Now that we’ve cleaned and encoded our data, we are going to further split in 
         return train_test_dataset
     ```
 
-2. Create a file called `hold_out_dataset_for_prediction` copy and save the following code below. Now we’ll have a dataset with only the year 2020 that we’ll keep as a hold out set that we are going to use similar to a deployment use case.
+2. Create a file called `hold_out_dataset_for_prediction.py` copy and save the following code below. Now we’ll have a dataset with only the year 2020 that we’ll keep as a hold out set that we are going to use similar to a deployment use case.
 
     ```python
     import pandas as pd
@@ -1467,7 +1469,7 @@ If you haven’t seen code like this before or use joblib files to save machine 
 ### Training and saving a machine learning model
 
 1. Project organization remains key, so let’s make a new subfolder called `train_predict` under the `ml` folder.
-2. Now create a new file called `train_test_position` and copy and save the following code:
+2. Now create a new file called `train_test_position.py` and copy and save the following code:
 
     ```python
     import snowflake.snowpark.functions as F
@@ -1580,7 +1582,7 @@ If you haven’t seen code like this before or use joblib files to save machine 
 
 ### Predicting on new data
 
-1. Create a new file called `predict_position` and copy and save the following code:
+1. Create a new file called `predict_position.py` and copy and save the following code:
 
     ```python
     import logging
@@ -1737,23 +1739,23 @@ Since the output of our Python models are tables, we can test SQL and Python mod
     version: 2
 
     models:
-    - name: fastest_pit_stops_by_constructor
-        description: Use the python .describe() method to retrieve summary statistics table about pit stops by constructor. Sort by average stop time ascending so the first row returns the fastest constructor.
-        columns:
-        - name: constructor_name
-            description: team that makes the car
-            tests:
-            - unique
+        - name: fastest_pit_stops_by_constructor
+          description: Use the python .describe() method to retrieve summary statistics table about pit stops by constructor. Sort by average stop time ascending so the first row returns the fastest constructor.
+          columns:
+            - name: constructor_name
+              description: team that makes the car
+              tests:
+                - unique
 
-    - name: lap_times_moving_avg
-        description: Use the python .rolling() method to calculate the 5 year rolling average of pit stop times alongside the average for each year. 
-        columns:
-        - name: race_year
-            description: year of the race
-            tests:
-            - relationships:
-                to: ref('int_lap_times_years')
-                field: race_year
+        - name: lap_times_moving_avg
+          description: Use the python .rolling() method to calculate the 5 year rolling average of pit stop times alongside the average for each year. 
+          columns:
+            - name: race_year
+              description: year of the race
+              tests:
+                - relationships:
+                  to: ref('int_lap_times_years')
+                  field: race_year
     ```
 
 2. Let’s unpack the code we have here. We have both our aggregates models with the model name to know the object we are referencing and the description of the model that we’ll populate in our documentation. At the column level (a level below our model), we are providing the column name followed by our tests. We want to ensure our `constructor_name` is unique since we used a pandas `groupby` on `constructor_name` in the model `fastest_pit_stops_by_constructor`. Next, we want to ensure our `race_year` has referential integrity from the model we selected from `int_lap_times_years` into our subsequent `lap_times_moving_avg` model.
@@ -1856,7 +1858,7 @@ We are going to revisit 2 areas of our project to understand our documentation:
 - `intermediate.md` file
 - `dbt_project.yml` file
 
-To start, let’s look back at our `intermediate.md` file. We can see that we provided multi-line descriptions for the models in our intermediate models using [docs blocks](/docs/collaborate/documentation#using-docs-blocks). Then we reference these docs blocks in our `.yml` file. Building descriptions with doc blocks in Markdown files gives you the ability to format your descriptions with Markdown and are particularly helpful when building long descriptions, either at the column or model level. In our `dbt_project.yml`, we added `node_colors` at folder levels.
+To start, let’s look back at our `intermediate.md` file. We can see that we provided multi-line descriptions for the models in our intermediate models using [docs blocks](/docs/build/documentation#using-docs-blocks). Then we reference these docs blocks in our `.yml` file. Building descriptions with doc blocks in Markdown files gives you the ability to format your descriptions with Markdown and are particularly helpful when building long descriptions, either at the column or model level. In our `dbt_project.yml`, we added `node_colors` at folder levels.
 
 1. To see all these pieces come together, execute this in the command bar:
 
@@ -1873,7 +1875,7 @@ To start, let’s look back at our `intermediate.md` file. We can see that we pr
 3. View the mini-lineage that looks at the model we are currently selected on (`int_results` in this case).
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/3-mini-lineage-docs.png" title="Mini lineage view on docs site"/>
 
-4. In our `dbt_project.yml`, we configured `node_colors` depending on the file directory. Starting in dbt v1.3, we can see how our lineage in our docs looks. By color coding your project, it can help you cluster together similar models or steps and more easily troubleshoot.
+4. In our `dbt_project.yml`, we configured `node_colors` depending on the file directory. By color coding your project, it can help you cluster together similar models or steps and more easily troubleshoot when viewing lineage in your docs.
 
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/14-documentation/4-full-dag-docs.png" title="Full project DAG on docs site"/>
 
@@ -1923,3 +1925,5 @@ Now that we've completed testing and documenting our work, we're ready to deploy
 Fantastic! You’ve finished the workshop! We hope you feel empowered in using both SQL and Python in your dbt Cloud workflows with Snowflake. Having a reliable pipeline to surface both analytics and machine learning is crucial to creating tangible business value from your data.
 
 For more help and information join our [dbt community Slack](https://www.getdbt.com/community/) which contains more than 50,000 data practitioners today. We have a dedicated slack channel #db-snowflake to Snowflake related content. Happy dbt'ing!
+
+</div>

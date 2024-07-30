@@ -10,7 +10,6 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 
 dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
-
 ### Prerequisites
 - You have a dbt Cloud account. 
 - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
@@ -20,15 +19,16 @@ dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deploy
 
 To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.
 
-1. On your deployment environment page, click **Create Job** > **Continuous Integration Job** to create a new CI job. 
+1. On your deployment environment page, click **Create job** > **Continuous integration job** to create a new CI job. 
 
-2. Options in the **Job Description** section:
-    - **Job Name** &mdash; Specify the name for this CI job.
+2. Options in the **Job settings** section:
+    - **Job name** &mdash; Specify the name for this CI job.
+    - **Description** &mdash; Provide a description about the CI job.
     - **Environment** &mdash; By default, it’s set to the environment you created the CI job from.
     - **Triggered by pull requests** &mdash; By default, it’s enabled. Every time a developer opens up a pull request or pushes a commit to an existing pull request, this job will get triggered to run.
       - **Run on Draft Pull Request** &mdash; Enable this option if you want to also trigger the job to run every time a developer opens up a draft pull request or pushes a commit to that draft pull request. 
 
-3. Options in the **Execution Settings** section:
+3. Options in the **Execution settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
     - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
 
@@ -38,17 +38,23 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 
     - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this job runs. This option is disabled by default since most teams do not want to test doc generation on every CI check.
 
-  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in dbt Cloud UI"/>
-
-4. (optional) Options in the **Advanced Settings** section: 
-    - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context. It's common for teams to process only a subset of data for CI runs, using environment variables to branch logic in their dbt project code.
-    - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
-    - **Run Timeout** &mdash; Cancel this CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources.
-    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
+4. (optional) Options in the **Advanced settings** section: 
+    - **Environment variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context. It's common for teams to process only a subset of data for CI runs, using environment variables to branch logic in their dbt project code.
+    - **Target name** &mdash; Define the [target name](/docs/build/custom-target-names). Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
+    - **Run timeout** &mdash; Cancel this CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources.
+    - **dbt version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the CI Job page"/>
+### Examples
+
+- Example of creating a CI job:
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" title="Example of CI Job page in dbt Cloud UI"/>
+
+- Example of GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" title="GitHub pull request example"/>
+
 
 ## Trigger a CI job with the API
 
@@ -70,25 +76,94 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
       - `non_native_pull_request_id` (for example, BitBucket)
    - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
-## Example pull requests
+## Semantic validations in CI  <Lifecycle status="team,enterprise" />
 
-The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job, guaranteeing that any code changes made to dbt models don't break these metrics. 
 
-### GitHub pull request example
+To do this, add the command `dbt sl validate --select state:modified+` in the CI job. This ensures the validation of modified semantic nodes and their downstream dependencies.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="70%" title="GitHub pull request example"/>
+- Testing semantic nodes in a CI job supports deferral and selection of semantic nodes.
+- It allows you to catch issues early in the development process and deliver high-quality data to your end users.
+- Semantic validation executes an explain query in the data warehouse for semantic nodes to ensure the generated SQL will execute.
+- For semantic nodes and models that aren't downstream of modified models, dbt Cloud defers to the production models
 
-### GitLab pull request example
+To learn how to set this up, refer to the following steps:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" width="70%" title="GitLab pull request"/>
+1. Navigate to the **Job setting** page and click **Edit**.
+2. Add the `dbt sl validate --select state:modified+` command under **Commands** in the **Execution settings** section. The command uses state selection and deferral to run validation on any semantic nodes downstream of model changes. To reduce job times, we recommend only running CI on modified semantic models.
+3. Click **Save** to save your changes.
 
-### Azure DevOps pull request example
+There are additional commands and use cases described in the [next section](#use-cases), such as validating all semantic nodes, validating specific semantic nodes, and so on.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" width="70%" title="Azure DevOps pull request"/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.jpg" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
+
+### Use cases
+
+Use or combine different selectors or commands to validate semantic nodes in your CI job. Semantic validations in CI supports the following use cases:
+
+<Expandable alt_header="Semantic nodes downstream of model changes (recommended)" > 
+
+To validate semantic nodes that are downstream of a model change, add the two commands in your job **Execution settings** section:
+
+```bash
+dbt build --select state:modified+
+dbt sl validate --select state:modified+
+```
+
+- The first command builds the modified models.
+- The second command validates the semantic nodes downstream of the modified models.
+
+Before running semantic validations, dbt Cloud must build the modified models. This process ensures that downstream semantic nodes are validated using the CI schema through the dbt Semantic Layer API. 
+
+For semantic nodes and models that aren't downstream of modified models, dbt Cloud defers to the production models.
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-downstream.jpg" width="90%" title="Validate semantic nodes downstream of model changes in your CI job." />
+
+</Expandable>
+
+<Expandable alt_header="Semantic nodes that are modified or affected by downstream modified nodes.">
+
+To only validate modified semantic nodes, use the following command (with [state selection](/reference/node-selection/syntax#stateful-selection)):
+
+```bash
+dbt sl validate --select state:modified+
+```
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-modified.jpg" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
+
+This will only validate semantic nodes. It will use the defer state set configured in your orchestration job, deferring to your production models.
+
+</Expandable>
+
+<Expandable alt_header="Select specific semantic nodes">
+
+Use the selector syntax to select the _specific_ semantic node(s) you want to validate:
+
+```bash
+dbt sl validate --select metric:revenue
+```
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-select.jpg" width="90%" title="Use state selection to validate modified metric definition models in your CI job." />
+
+In this example, the CI job will validate the selected `metric:revenue` semantic node. To select multiple semantic nodes, use the selector syntax: `dbt sl validate --select metric:revenue metric:customers`.
+
+If you don't specify a selector, dbt Cloud will validate all semantic nodes in your project.
+
+</Expandable>
+
+<Expandable alt_header="Select all semantic nodes">
+
+To validate _all_ semantic nodes in your project, add the following command to defer to your production schema when generating the warehouse validation queries:
+
+   ```bash
+   dbt sl validate
+   ```
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/ci-dbt-sl-validate-all.jpg" width="90%" title="Validate all semantic nodes in your CI job by adding the command: 'dbt sl validate' in your job execution settings." />
+
+</Expandable>
 
 ## Troubleshooting
-
-If you're experiencing any issues, review some of the common questions and answers.
 
 <detailsToggle alt_header="Temporary schemas aren't dropping">
 If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates one of these issues:

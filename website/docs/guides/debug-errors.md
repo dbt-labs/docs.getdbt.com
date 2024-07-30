@@ -11,6 +11,8 @@ level: 'Beginner'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## General process of debugging
 
 Learning how to debug is a skill, and one that will make you great at your role!
@@ -387,3 +389,5 @@ We’ve all been there. dbt uses the last-saved version of a file when you execu
 _(More likely for dbt Core users)_
 
 If you just opened a SQL file in the `target/` directory to help debug an issue, it's not uncommon to accidentally edit that file! To avoid this, try changing your code editor settings to grey out any files in the `target/` directory — the visual cue will help avoid the issue.
+
+</div>

@@ -36,7 +36,7 @@ Leverage these dbt packages to streamline your workflow:
 - Use the [where config](/reference/resource-configs/where) for tests to test an assertion on a subset of records.
 - [store_failures](/reference/resource-configs/store_failures) lets you examine records that cause tests to fail, so you can either repair the data or change the test as needed.
 - Use [severity](/reference/resource-configs/severity) thresholds to set an acceptable number of failures for a test.
-- Use [incremental_strategy](/docs/build/incremental-models#about-incremental_strategy) in your incremental model config to implement the most effective behavior depending on the volume of your data and reliability of your unique keys.
+- Use [incremental_strategy](/docs/build/incremental-strategy) in your incremental model config to implement the most effective behavior depending on the volume of your data and reliability of your unique keys.
 - Set `vars` in your `dbt_project.yml` to define global defaults for certain conditions, which you can then override using the `--vars` flag in your commands.
 - Use [for loops](/guides/using-jinja?step=3) in Jinja to <Term id="dry">DRY</Term> up repetitive logic, such as selecting a series of columns that all require the same transformations and naming patterns to be applied.
 - Instead of relying on post-hooks, use the [grants config](/reference/resource-configs/grants) to apply permission grants in the warehouse resiliently.

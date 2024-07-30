@@ -12,6 +12,9 @@ tags: ['Dremio', 'dbt Core']
 level: 'Intermediate'
 recently_updated: true
 ---
+
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 This guide will demonstrate how to build a data lakehouse with dbt Core 1.5 or newer and Dremio Cloud. You can simplify and optimize your data infrastructure with dbt's robust transformation framework and Dremio’s open and easy data lakehouse. The integrated solution empowers companies to establish a strong data and analytics foundation, fostering self-service analytics and enhancing business insights while simplifying operations by eliminating the necessity to write complex Extract, Transform, and Load (ETL) pipelines. 
@@ -194,3 +197,5 @@ GROUP BY vendor_id
 <Lightbox src="/img/guides/dremio/dremio-test-results.png" width="70%"  title="Sample output from SQL query"/>
 
 This completes the integration setup and data is ready for business consumption.
+
+</div>

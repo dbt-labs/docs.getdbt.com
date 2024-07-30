@@ -16,7 +16,7 @@ meta:
   config_page: '/reference/resource-configs/teradata-configs'
 ---
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for the repository listed below.
+Some core functionality may be limited. If you're interested in contributing, check out the source code in the repository listed in the next section.
 
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
@@ -39,6 +39,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 |1.5.x              | ❌           | ✅          | ✅          | ✅          | ✅          | ✅
 |1.6.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
 |1.7.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
+|1.8.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
 
 ## dbt dependent packages version compatibility
 
@@ -46,7 +47,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 |--------------|------------|-------------------|----------------|
 | 1.2.x        | 1.2.x      | 0.1.0             | 0.9.x or below |
 | 1.6.7        | 1.6.7      | 1.1.1             | 1.1.1          |
-| 1.7.0        | 1.7.3      | 1.1.1             | 1.1.1          |
+| 1.7.x        | 1.7.x      | 1.1.1             | 1.1.1          |
+| 1.8.x        | 1.8.x      | 1.1.1             | 1.1.1          |
 
 
 ### Connecting to Teradata
@@ -124,10 +126,11 @@ Parameter               | Default     | Type           | Description
 `sslmode`               | `"PREFER"`  | string         | Specifies the mode for connections to the database. Equivalent to the Teradata JDBC Driver `SSLMODE` connection parameter.<br/>&bull; `DISABLE` disables HTTPS/TLS connections and uses only non-TLS connections.<br/>&bull; `ALLOW` uses non-TLS connections unless the database requires HTTPS/TLS connections.<br/>&bull; `PREFER` uses HTTPS/TLS connections unless the database does not offer HTTPS/TLS connections.<br/>&bull; `REQUIRE` uses only HTTPS/TLS connections.<br/>&bull; `VERIFY-CA` uses only HTTPS/TLS connections and verifies that the server certificate is valid and trusted.<br/>&bull; `VERIFY-FULL` uses only HTTPS/TLS connections, verifies that the server certificate is valid and trusted, and verifies that the server certificate matches the database hostname.
 `sslprotocol`           | `"TLSv1.2"` | string         | Specifies the TLS protocol for HTTPS/TLS connections. Equivalent to the Teradata JDBC Driver `SSLPROTOCOL` connection parameter.
 `teradata_values`       | `"true"`    | quoted boolean | Controls whether `str` or a more specific Python data type is used for certain result set column value types.
+`query_band`            | `"org=teradata-internal-telem;appname=dbt;"`    | string | Specifies the Query Band string to be set for each SQL request.
 
-For the full description of the connection parameters see https://github.com/Teradata/python-driver#connection-parameters.
+Refer to [connection parameters](https://github.com/Teradata/python-driver#connection-parameters) for the full description of the connection parameters.
 
-## Supported Features
+## Supported features
 
 ### Materializations
 
@@ -141,23 +144,38 @@ The following incremental materialization strategies are supported:
 * `append` (default)
 * `delete+insert`
 * `merge`
+* `valid_history` (early access)
 
-To learn more about dbt incremental strategies please check [the dbt incremental strategy documentation](https://docs.getdbt.com/docs/build/incremental-models#about-incremental_strategy).
+:::info
+- To learn more about dbt incremental strategies, refer to [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
+- To learn more about `valid_history` incremental strategy, refer to [Teradata configs](/reference/resource-configs/teradata-configs).
+:::
 
 ### Commands
 
 All dbt commands are supported.
 
 ## Support for model contracts
-Model contracts are not yet supported with dbt-teradata.
+Model contracts are supported with dbt-teradata v1.7.1 and onwards.
+Constraint support and enforcement in dbt-teradata:
+
+| Constraint type |	Support	Platform | enforcement |
+|-----------------|------------------|-------------|
+| not_null	      | ✅ Supported	 | ✅ Enforced |
+| primary_key	  | ✅ Supported	 | ✅ Enforced |
+| foreign_key	  | ✅ Supported	 | ✅ Enforced |
+| unique	      | ✅ Supported	 | ✅ Enforced |
+| check	          | ✅ Supported	 | ✅ Enforced |
+
+Refer to [Model contracts](/docs/collaborate/govern/model-contracts) for more info.
 
 ## Support for `dbt-utils` package
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
 
 ### Cross DB macros
-Starting with release 1.3, some macros were migrated from [teradata-dbt-utils](https://github.com/Teradata/dbt-teradata-utils) dbt package to the connector. See the table below for the macros supported from the connector.
+Starting with release 1.3, some macros were migrated from [teradata-dbt-utils](https://github.com/Teradata/dbt-teradata-utils) dbt package to the connector. Refer the following table for the macros supported by the connector.
 
-For using cross DB macros, teradata-utils as a macro namespace will not be used, as cross DB macros have been migrated from teradata-utils to Dbt-Teradata.
+For using cross-DB macros, teradata-utils as a macro namespace will not be used, as cross-DB macros have been migrated from teradata-utils to Dbt-Teradata.
 
 
 #### Compatibility
@@ -214,10 +232,21 @@ For using cross DB macros, teradata-utils as a macro namespace will not be used,
 
   `last_day` in `teradata_utils`, unlike the corresponding macro in `dbt_utils`, doesn't support `quarter` datepart.
 
+<VersionBlock firstVersion="1.8">
+
+dbt-teradata 1.8.0 and later versions support unit tests, enabling you to validate SQL models and logic with a small set of static inputs before going to production. This feature enhances test-driven development and boosts developer efficiency and code reliability. Learn more about dbt unit tests [here](/docs/build/unit-tests).
+
+
+</VersionBlock>
+
 ## Limitations
 
 ### Transaction mode
-Only ANSI transaction mode is supported.
+Both ANSI and TERA modes are now supported in dbt-teradata. TERA mode's support is introduced with dbt-teradata 1.7.1, it is an initial implementation.
+
+:::info TERA transaction mode
+This is an initial implementation of the TERA transaction mode and may not support some use cases. We highly recommend validating all records or transformations using this mode to avoid unexpected issues or errors.
+:::
 
 ## Credits
 

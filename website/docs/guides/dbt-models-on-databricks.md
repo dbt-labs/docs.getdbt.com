@@ -12,6 +12,8 @@ level: 'Intermediate'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 Building on the [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project) guide, we'd like to discuss performance optimization. In this follow-up post, we outline simple strategies to optimize for cost, performance, and simplicity when you architect data pipelines. We’ve encapsulated these strategies in this acronym-framework:
@@ -180,3 +182,5 @@ With the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api), you can 
 This builds on the content in [Set up your dbt project with Databricks](/guides/set-up-your-databricks-dbt-project).
 
 We welcome you to try these strategies on our example open source TPC-H implementation and to provide us with thoughts/feedback as you start to incorporate these features into production. Looking forward to your feedback on [#db-databricks-and-spark](https://getdbt.slack.com/archives/CNGCW8HKL) Slack channel!
+
+</div>

@@ -109,7 +109,7 @@ select ...
 ## Definition
 A SQL statement (or list of SQL statements) to be run before or after a model, seed, or snapshot is built.
 
-Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](/docs/building-a-dbt-project/dont-nest-your-curlies#an-exception).
+Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](/best-practices/dont-nest-your-curlies#an-exception).
 
 ### Why would I use hooks?
 
@@ -118,8 +118,6 @@ dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out
 ## Examples
 
 <Snippet path="hooks-to-grants" />
-
-<VersionBlock firstVersion="1.2">
 
 ### [Redshift] Unload one model to S3
 
@@ -157,8 +155,6 @@ models:
 See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest/sql-ref-syntax-aux-analyze-table.html)
 
 </File>
-
-</VersionBlock>
 
 ### Additional examples
 We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).

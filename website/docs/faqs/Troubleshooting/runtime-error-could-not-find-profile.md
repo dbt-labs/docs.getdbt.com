@@ -1,7 +1,7 @@
 ---
 title: I'm receiving a Runtime Error Could not find profile named 'user' error?
 description: "Re-authorize your credentials on Profile Settings"
-sidebar_label: '"Could not find profile named user" error in the IDE'
+sidebar_label: 'Could not find profile named user"error in the IDE'
 id: runtime-error-could-not-find-profile
 
 ---

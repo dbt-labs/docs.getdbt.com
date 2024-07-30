@@ -11,6 +11,8 @@ level: 'Advanced'
 recently_updated: true
 ---
 
+<div style={{maxWidth: '900px'}}>
+
 ## Introduction
 
 The model <Term id="materialization">materializations</Term> you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the [source code for these materializations](https://github.com/dbt-labs/dbt-adapters/tree/60005a0a2bd33b61cb65a591bc1604b1b3fd25d5/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
@@ -123,7 +125,7 @@ Materializations should [return](/reference/dbt-jinja-functions/return) the list
 {%- materialization my_view, default -%}
 
   {%- set target_relation = api.Relation.create(
-        identifier=identifier, schema=schema, database=database,
+        identifier=this.identifier, schema=this.schema, database=this.database,
         type='view') -%}
 
   -- ... setup database ...
@@ -184,3 +186,5 @@ In each of the stated search spaces, a materialization can only be defined once.
 Specific materializations can be selected by using the dot-notation when selecting a materialization from the context.
 
 We recommend _not_ overriding materialization names directly, and instead using a prefix or suffix to denote that the materialization changes the behavior of the default implementation (eg. my_project_incremental).
+
+</div>

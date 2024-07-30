@@ -44,6 +44,8 @@ import dbtEditor from '@site/src/components/dbt-editor';
 import Icon from '@site/src/components/icon';
 import Lifecycle from '@site/src/components/lifeCycle';
 import detailsToggle from '@site/src/components/detailsToggle';
+import Expandable from '@site/src/components/expandable';
+import ConfettiTrigger from '@site/src/components/confetti/';
 
 const MDXComponents = {
   head: MDXHead,
@@ -94,5 +96,7 @@ const MDXComponents = {
   Icon: Icon,
   Lifecycle: Lifecycle,
   detailsToggle: detailsToggle,
+  Expandable: Expandable,
+  ConfettiTrigger: ConfettiTrigger,
 };
 export default MDXComponents;

@@ -11,6 +11,7 @@ This guide includes standards we want to emphasize, likely because we've made de
 * [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
 * [UI elements](#UI-elements)
+* [Capitalization](#Capitalization)
 * [Titles](#Titles)
 * [Placeholder text](#Placeholder-text)
 * [Oxford comma](#Oxford-comma)
@@ -224,6 +225,10 @@ When referring to different sections of the IDE, use the name of the section and
 :white_check_mark: In the **Settings** section, choose the default address for your account.
 
 :x: You can review all your past orders from the **History** pane.
+
+## Capitalization
+
+We should only capitalize products (dbt Explorer, dbt Cloud), but not features like column-level lineage. We also capitalize acronyms and proper nouns. Refer to [MS Style guide on capitalization](https://learn.microsoft.com/en-us/style-guide/capitalization) for more information.
 
 ## Titles
 
@@ -568,11 +573,11 @@ For more information about server availability, please refer to our [Regions & I
 
 You can link to a specific section of the doc with a `#` at the end of the path. Enter the section’s title after the `#`, with individual words separated by hyphens. Let's use the incremental models page, https://docs.getdbt.com/docs/build/incremental-models, as an example:
 
-`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).`
+`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understand-incremental-models).`
 
 This will appear to the reader as follows:
 
-To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).
+To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understand-incremental-models).
 
 When you click on the link, it automatically takes you to the section defined at the end of the path. If the path syntax is incorrect(or does not exist), the link will take the reader to the top of the page specified in the path. 
 
