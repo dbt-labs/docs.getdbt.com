@@ -88,13 +88,11 @@ The following table lists the options for `dbt sl export` command, using the `--
 
 You can also run any export defined for the saved query and write the table or view in your development environment. Refer to the following command example and output:
 
-#### Example
-
 ```bash
 dbt sl export --saved-query sq_name
 ```
 
-#### Output
+The output would look something like this: 
 
 ```bash
 Polling for export status - query_id: 2c1W6M6qGklo1LR4QqzsH7ASGFs..
@@ -133,12 +131,12 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 
 Use the command, `dbt sl export-all`, to run exports for multiple saved queries at once. This is different from the `dbt sl export` command, which only runs exports for a singular saved query.  For example, to run exports for multiple saved queries, you can use:
 
-
 ```bash
 dbt sl export-all
 ```
 
 The output would look something like this: 
+
 ```bash
 Exports completed:
 - Created TABLE at `DBT_SL_TEST.new_customer_orders`
