@@ -18,7 +18,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
-## Auguus 2024
+## August 2024
 
 - **New:** The [Amazon Athena connection](/docs/cloud/connect-data-platform/connect-amazon-athena) for dbt Cloud is now available in [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
 
