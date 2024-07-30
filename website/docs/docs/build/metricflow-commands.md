@@ -596,7 +596,7 @@ dbt sl export
 
 Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#exports-for-multiple-saved-queries) at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info. 
 
-Exports is available in dbt Cloud.
+Export is available in dbt Cloud.
 
 ```bash
 dbt sl export-all 
