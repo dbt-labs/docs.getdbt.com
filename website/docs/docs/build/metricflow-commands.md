@@ -586,7 +586,7 @@ mf query --metrics revenue --group-by metric_time__month # In dbt Core
 
 Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#exports-for-single-saved-query). Use this command to test and generate exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info. 
 
-Exports is available in dbt Cloud.
+Export is available in dbt Cloud.
 
 ```bash
 dbt sl export 
