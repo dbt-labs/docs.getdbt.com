@@ -130,7 +130,6 @@ And the model contract is defined:
 
 ```yaml
 
-[comment]: Sorry, but the following configuration doesn't specify any type of contract. However, this link: https://docs.getdbt.com/docs/collaborate/govern/model-contracts#how-to-define-a-contract, does , so I think it might be better to modify the redaction to something like "And the model access is defined:", or to modify the my_project.yml setting to add an actual contract configuration. Regards.
 
 models:
   - name: my_model
