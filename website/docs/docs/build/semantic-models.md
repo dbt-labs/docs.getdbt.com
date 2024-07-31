@@ -270,17 +270,34 @@ import SetUpPages from '/snippets/\_metrics-dependencies.md';
 
 TEST TABLE AREA
 <!-- start generated content -->
-No parameters available.
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| name | string | No description |
+| description | string | No description |
+| defaults | object | No description |
+| defaults.agg_time_dimension | string | No description |
+| dimensions | array | No description |
+| entities | array | No description |
+| measures | array | No description |
+| model | string | No description |
+| primary_entity | string | No description |
+
 
 ### Example
 ```json
-{}
+{
+  "name": "Example name",
+  "description": "Example description",
+  "defaults": {
+    "agg_time_dimension": "Example agg_time_dimension"
+  },
+  "dimensions": "Example dimensions",
+  "entities": "Example entities",
+  "measures": "Example measures",
+  "model": "ref('')",
+  "primary_entity": "Example primary_entity"
+}
 ```
 <!-- end generated content -->
 
-TEST CODE AREA
-<!-- start generated content -->
 
-
-
-<!-- end generated content -->

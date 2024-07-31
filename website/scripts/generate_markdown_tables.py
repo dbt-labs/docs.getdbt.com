@@ -1,30 +1,66 @@
 import json
-import requests
 import os
 
-# Load the JSON schema from the provided URL
-schema_url = "https://schemas.getdbt.com/dbt/manifest/v12.json"
-response = requests.get(schema_url)
-schema = response.json()
+# Define the schema section for semantic_models
+semantic_models_schema = json.loads ("""
+{
+    "semantic_models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "model"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "(?!.*__).*^[a-z][a-z0-9_]*[a-z0-9]$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "defaults": {
+            "type": "object",
+            "properties": {
+              "agg_time_dimension": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/dimension"
+            }
+          },
+          "entities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/entity"
+            }
+          },
+          "measures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/measure"
+            }
+          },
+          "model": {
+            "type": "string",
+            "default": "ref('')"
+          },
+          "primary_entity": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+}
 
-def extract_section(schema, section):
-    print(f"Searching for section: {section}")
-    if isinstance(schema, dict):
-        if section in schema:
-            print(f"Found section {section} directly in schema")
-            return schema[section]
-        if 'properties' in schema:
-            for key, value in schema['properties'].items():
-                if key == section:
-                    print(f"Found section {section} in properties")
-                    return value
-                if isinstance(value, dict):
-                    result = extract_section(value, section)
-                    if result:
-                        print(f"Found section {section} nested under {key}")
-                        return result
-    print(f"Section {section} not found")
-    return None
+""")
 
 def generate_markdown_table(schema_section, parent_key=''):
     rows = []
@@ -82,22 +118,19 @@ def update_markdown_file(file_path, table, example):
     with open(file_path, 'w') as file:
         file.write(updated_content)
 
-# Update these paths as per your directory structure
-base_path = "/Users/mirnawong/Documents/docs.getdbt.com/website/docs/docs/build/"
-sections = {
-    'semantic_models': os.path.join(base_path, 'semantic-models.md'),
-}
+# Define the file path for the markdown file
+file_path = "/Users/mirnawong/Documents/docs.getdbt.com/website/docs/docs/build/semantic-models.md"
 
-for section, file_path in sections.items():
-    section_schema = extract_section(schema['additionalProperties'], section)
-    if section_schema:
-        print(f"Generating content for section: {section}")
-        table_rows = generate_markdown_table(section_schema)
-        markdown_table = rows_to_markdown_table(table_rows)
-        example_entry = generate_example(section_schema)
-        example_json = json.dumps(example_entry, indent=2)
-        update_markdown_file(file_path, markdown_table, example_json)
-    else:
-        print(f"Section '{section}' not found in schema.")
+# Use the directly provided schema section
+section_schema = semantic_models_schema.get('semantic_models').get('items')
+if section_schema:
+    print("Generating content for semantic_models")
+    table_rows = generate_markdown_table(section_schema)
+    markdown_table = rows_to_markdown_table(table_rows)
+    example_entry = generate_example(section_schema)
+    example_json = json.dumps(example_entry, indent=2)
+    update_markdown_file(file_path, markdown_table, example_json)
+else:
+    print("Section 'semantic_models' not found in schema.")
 
 print("Markdown files updated successfully.")
