@@ -47,7 +47,7 @@ The following is dbt's out-of-the-box default behavior:
 
 These default rules are a great starting point, and many organizations choose to stick with those without any customization required.
 
-The defaults allow developers to work in their own isolated schemas (sandboxes) without overwriting each other's work &mdash; even if they're working on the same tables.
+The defaults allow developers to work in their isolated schemas (sandboxes) without overwriting each other's work &mdash; even if they're working on the same tables.
 
 
 ## How to customize this behavior
