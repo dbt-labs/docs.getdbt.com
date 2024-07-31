@@ -35,7 +35,7 @@ The guide outlines the following steps:
 
 ## Considerations
 
-If your team has is using dbt Core today, you could be reading this guide because:
+If your team is using dbt Core today, you could be reading this guide because:
 - You’ve realized the burden of maintaining that deployment.
 - The person who set it up has since left.
 - You’re interested in what dbt Cloud could do to better manage the complexity of your dbt deployment, democratize access to more contributors, or improve security and governance practices.
@@ -46,13 +46,13 @@ The most important things you need to think about when moving from dbt Core to d
 
 - How is your team structured? Are there natural divisions of domain?
 - Should you have one project or multiple? Which dbt resources do you want to standardize & keep central?
-- Who should have permissions to view, develop, administer?
+- Who should have permission to view, develop, and administer?
 - How are you scheduling your dbt models to run in production?
 - How are you currently managing Continuous integration/Continuous deployment (CI/CD) of logical changes (if at all)?
 - How do your data developers prefer to work?
 - How do you manage different data environments and the different behaviors in those environments?
 
-dbt Cloud provides standard mechanisms for tackling these considerations, all of which delivers long-term benefits to your organization:
+dbt Cloud provides standard mechanisms for tackling these considerations, all of which deliver long-term benefits to your organization:
 - Cross-team collaboration
 - Access control
 - Orchestration

@@ -44,9 +44,9 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     icon="dbt-bit"/>
 
 <Card
-    title="Merge jobs"
-    body="Set up jobs to run when pull requests are merged in your Git repository."
-    link="/docs/deploy/merge-jobs"
+    title="Continuous deployment"
+    body="Set up merge jobs to ensure the latest code changes are always in production when pull requests are merged to your Git repository."
+    link="/docs/deploy/continuous-deployment"
     icon="dbt-bit"/>
 
 <Card

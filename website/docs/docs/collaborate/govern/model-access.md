@@ -124,7 +124,7 @@ For example, if you have a model config set as:
 
 </File>
 
-And the model contract is defined:
+And the model access is defined:
 
 <File name="models/my_project.yml">
 
