@@ -3,7 +3,7 @@ id: mikko-sulonen
 title: Mikko Sulonen
 description: |
   I've been working with data since 2016. I first started with the on-prem SQL Server S-stack of SSIS, SSAS, SSRS. I did some QlikView and Qlik Sense, and some Power BI. Nowadays, I work mostly with Snowflake, Databricks, Azure, and dbt, of course. While tools and languages have come and gone, SQL has stayed. I've been a consultant for all of my professional life.
-image: /img/community/spotlight/mikko-sulonen.jpg
+image: /img/community/spotlight/Mikko-Sulonen.png
 pronouns: he/him
 location: Tampere, Finland
 jobTitle: Data Architect, Partner
