@@ -7,7 +7,7 @@ id: "databricks-configs"
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-<VersionBlock lastVersion="1.5">
+<VersionBlock >
 
 | Option              | Description                                                                                                                              | Required?                               | Example                  |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|--------------------------|
@@ -20,7 +20,7 @@ When materializing a model as `table`, you may include several optional configs 
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.6" lastVersion="1.6">
+<VersionBlock lastVersion="1.6">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
@@ -621,7 +621,7 @@ snapshots:
 
 </File>
 
-<VersionBlock firstVersion="1.6" lastVersion="1.7">
+<VersionBlock lastVersion="1.7">
 
 ## Materialized views and streaming tables
 Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
