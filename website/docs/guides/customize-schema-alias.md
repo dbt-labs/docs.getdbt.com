@@ -367,7 +367,7 @@ To do so, you can create a new file called `generate_schema_name.sql` under your
 </File>
 
 
-<File name='macros/generate_schema_name.sql'>
+<File name='macros/generate_alias_name'>
 
 ```jinja
 
