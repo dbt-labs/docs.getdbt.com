@@ -45,3 +45,6 @@ If you're interested, please [contact us](matilto:sales_snowflake_marketplace@db
 
 ## Support
 If you have any questions about the dbt Snowflake Native App, you may [contact our Support team](mailto:dbt-snowflake-marketplace@dbtlabs.com) for help. Please provide information about your installation of the Native App, including your dbt Cloud account ID and Snowflake account identifier. 
+
+## Limitations
+- The Native app does not support dbt Cloud accounts that have [IP Restrictions](/docs/cloud/secure/ip-restrictions} enabled. 
