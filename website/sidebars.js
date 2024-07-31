@@ -462,6 +462,7 @@ const sidebarSettings = {
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
         "docs/deploy/continuous-integration",
+        "docs/deploy/continuous-deployment",
         {
           type: "category",
           label: "Jobs",
