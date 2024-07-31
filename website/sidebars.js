@@ -505,12 +505,24 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
+            "docs/collaborate/access-from-dbt-cloud",
             "docs/collaborate/column-level-lineage",
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
-            "docs/collaborate/access-from-dbt-cloud",
             "docs/collaborate/dbt-explorer-faqs",
+            {
+              type: "category",
+              label: "Model consumption",
+              link: {
+                type: "doc",
+                id: "docs/collaborate/auto-exposures",
+              },
+              items: [
+                "docs/collaborate/auto-exposures",
+                "docs/collaborate/model-query-history",
+              ],
+            },
           ],
         },
         {
@@ -694,6 +706,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/cloud-integrations/overview" },
       items: [
         "docs/cloud-integrations/overview",
+        "docs/cloud-integrations/configure-auto-exposures",
         {
           type: "category",
           label: "Snowflake Native App",
