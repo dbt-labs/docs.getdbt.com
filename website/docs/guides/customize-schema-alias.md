@@ -177,7 +177,7 @@ In this case, we can:
 - Update `generate_alias_name()` to append the developer alias and the custom schema to the front of the table name in the dev environment.
     - This method is not ideal, as it can cause long table names, but it will let developers see in which schema the model will be created in production.
 
-<File name='macros/custom_schema_name.sql'>
+<File name='macros/generate_schema_name.sql'>
 
 ```jinja
 
