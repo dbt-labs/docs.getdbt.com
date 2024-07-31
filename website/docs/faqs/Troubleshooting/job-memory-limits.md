@@ -18,7 +18,7 @@ Some common reasons for higher memory usage are:
 There are various reasons why you could be experiencing this error. We recommend you review your data models to see if there are any opportunities to optimize or refactor them. For example, you can try to reduce the number of columns being selected, use `group` or `where` clauses to filter data early in the query, or use `limit` clauses to reduce the amount of data being processed.
 
 :::tip Video example
-As an additional resource, check out [this example video](https://www.youtube.com/watch?v=sTqzNaFXiZ8), which demonstrates how to refactor the sample code by reducing the number of columns returned. 
+As an additional resource, check out [this example video](https://www.youtube.com/watch?v=sTqzNaFXiZ8), which demonstrates how to refactor the sample code by reducing the number of rows returned. 
 :::
 
 
