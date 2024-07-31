@@ -67,7 +67,7 @@ MetricFlow provides the following commands to retrieve metadata and query metric
 <Tabs>
 <TabItem value="cloud" label="Commands for dbt Cloud CLI">
 
-You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`.
+You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands and flags, run the `dbt sl --help` command in your terminal.
 
 - [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
@@ -76,6 +76,9 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
 - [`list saved queries`](#list-saved-queries) &mdash; Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query.
 - [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
+- [`export`](#export) &mdash;  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query.
+- [`export-all`](#export-all) &mdash; Runs exports for multiple saved queries at once, saving time and effort.
+
 
 <!--below commands aren't supported in dbt cloud yet
 - [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
@@ -152,7 +155,7 @@ Options:
   --help              Show this message and exit.
 ```
 
-## List dimension-values
+### List dimension-values
 
 This command lists all dimension values with the corresponding metric:
 
@@ -385,7 +388,6 @@ mf query --metrics order_total --group-by metric_time,is_food_order # In dbt Cor
 
 </TabItem>
 
-
 <TabItem value="eg3" label="Order/limit">
 
 You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records and orders them by `metric_time`, descending. Note that using the `-` prefix will sort the query in descending order. Without the `-` prefix sorts the query in ascending order.
@@ -579,6 +581,27 @@ dbt sl query --metrics revenue --group-by metric_time__month # In dbt Cloud
 
 mf query --metrics revenue --group-by metric_time__month # In dbt Core
 ```
+
+### Export
+
+Run [exports for a specific saved query](/docs/use-dbt-semantic-layer/exports#exports-for-single-saved-query). Use this command to test and generate exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info. 
+
+Export is available in dbt Cloud.
+
+```bash
+dbt sl export 
+```
+
+### Export-all
+
+Run [exports for multiple saved queries](/docs/use-dbt-semantic-layer/exports#exports-for-multiple-saved-queries) at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. Refer to [exports in development](/docs/use-dbt-semantic-layer/exports#exports-in-development) for more info. 
+
+Export is available in dbt Cloud.
+
+```bash
+dbt sl export-all 
+```
+
 
 ## FAQs
 

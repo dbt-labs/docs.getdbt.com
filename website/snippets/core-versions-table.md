@@ -4,7 +4,7 @@
 |:-------------------------------------------------------------:|:---------------:|:-------------------------------------:|
 | [**v1.8**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8) | May 9 2024    | <b>Active &mdash; May 8, 2025</b>                    |
 | [**v1.7**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.7) | Nov 2, 2023   | Critical &mdash; Nov 1, 2024 | 
-| [**v1.6**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.6) | Jul 31, 2023  | Critical &mdash; Jul 30, 2024 |  
+| [**v1.6**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.6) | Jul 31, 2023  | End of Life* ⚠️ |  
 | [**v1.5**](/docs/dbt-versions/core-upgrade/upgrading-to-v1.5) | Apr 27, 2023  | End of Life* ⚠️ |
 | [**v1.4**](/docs/dbt-versions/core-upgrade/older%20versions/upgrading-to-v1.4) | Jan 25, 2023  | End of Life* ⚠️ | 
 | [**v1.3**](/docs/dbt-versions/core-upgrade/older%20versions/upgrading-to-v1.3) | Oct 12, 2022  | End of Life* ⚠️ |
