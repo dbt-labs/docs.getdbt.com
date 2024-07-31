@@ -375,7 +375,7 @@ To do so, you can create a new file called `generate_schema_name.sql` under your
 
 {% macro generate_alias_name(custom_alias_name=none, node=none) -%}
 
-    {# If the CI Job does not exist in it's own environment, use the target.name variable inside the job instead #}
+    {# If the CI Job does not exist in its own environment, use the target.name variable inside the job instead #}
     {# {%- if target.name == 'CI' -%} #}   
     {%- if  env_var('DBT_ENV_TYPE','DEV') == 'CI' -%}
 
