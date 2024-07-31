@@ -13,7 +13,7 @@ jobTitle: Principal Consultant
 companyName: Altis Consulting
 socialLinks:
   - name: LinkedIn
-    link: www.linkedin.com/in/meaganpalmer
+    link: https://www.linkedin.com/in/meaganpalmer/
 dateCreated: 2024-07-29
 hide_table_of_contents: true
 communityAward: false
@@ -23,7 +23,7 @@ communityAward: false
 
 I was fortunate that Jon Bradley at Nearmap had the vision to engage the then Fishtown Analytics team (as the dbt Labs team was formerly called) as consultants and begin using dbt in our stack. I can't thank him enough. It was a turning point for my career, where I could combine my interests and experiences in delivering business value, data, product management, and software engineering practices.
 
-## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
+## Which dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
 Being in Australia, I often see replies from <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jeremyyeo/">Jeremy Yeo</a> to people in the dbt Slack. His clarity of communication is impressive. 
 
