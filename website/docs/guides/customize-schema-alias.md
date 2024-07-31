@@ -325,7 +325,7 @@ This will generate the following outputs for a model called `my_model` with a cu
 | Developer 1 |`feature123`|dev            | dbt_dev1      |dev.feature123_marketing.my_model  |
 | CI PR 123   |            |ci             | dbt_pr_123    |ci.dbt_pr_123_marketing.my_model   |
 | CI PR 234   |            |ci             | dbt_pr_234    |ci.dbt_pr_234_marketing.my_model   |
-| Production  |            |prod           | analytics     |prod.marketing.my_model\           |
+| Production  |            |prod           | analytics     |prod.marketing.my_model           |
 
 
 When developer 1 and developer 2 are checked out on the same branch, they will generate the same object in the data warehouse. This shouldn't be a problem as being on the same branch means the model's code will be the same for both developers.
