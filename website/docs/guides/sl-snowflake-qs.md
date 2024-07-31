@@ -1064,7 +1064,7 @@ You've learned how to:
 - Build, test, and manage dbt Cloud projects, focusing on metrics and semantic layers.
 - Run production jobs and query metrics with our available integrations.
 
-For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), and more.
+For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), [implementing dbt Mesh with the Semantic Layer](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer), and more.
 
 Here are some additional resources to help you continue your journey:
 

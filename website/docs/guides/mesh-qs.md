@@ -636,6 +636,7 @@ Here are some additional resources to help you continue your journey:
 
 - [How we build our dbt mesh projects](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-1-intro)
 - [dbt Mesh FAQs](https://docs.getdbt.com/best-practices/how-we-mesh/mesh-5-faqs)
+- [Implement dbt Mesh with the Semantic Layer](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer)
 - [Cross-project references](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)
 - [dbt Explorer](/docs/collaborate/explore-projects)
 
