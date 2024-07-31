@@ -278,7 +278,7 @@ The `DBT_CLOUD_GIT_BRANCH` variable is only available within the dbt Cloud IDE a
 
 We’ve also seen some organizations prefer to organize their dev databases by branch name. This requires implementing similar logic in `generate_database_name()` instead of the `generate_schema_name()` macro. By default, dbt will not automatically create the databases. 
 
-Refer to the [Tips and tricks](/guides/customize-schema-alias?step=5) section to learn more.    
+Refer to the [Tips and tricks](https://docs.getdbt.com/guides/customize-schema-alias?step=5) section to learn more.    
 
 
 <File name='macros/generate_schema_name.sql'>
