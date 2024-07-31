@@ -15,7 +15,9 @@ Some common reasons for higher memory usage are:
 
 ## Resolution
 
-There are various reasons why you could be experiencing this error. We recommend you review your data models to see if there are any opportunities to optimize or refactor them. For example, you can try to reduce the number of columns being selected, use `group` or `where` clauses to filter data early in the query, or use `limit` clauses to reduce the amount of data being processed.
+There are various reasons why you could be experiencing this error but they are mostly the outcome of retrieving too much data back into dbt. For example, using the `run_query()` operations or similar macros, or even using database/schemas that have a lot of other non-dbt related tables/views. Try to reduce the amount of data / number of rows retrieved back into dbt by refactoring the SQL in your `run_query()` operation using `group`, `where`, or `limit` clauses. Additionally, you can also use a database/schema with fewer non-dbt related tables/views.
+
+
 
 :::tip Video example
 As an additional resource, check out [this example video](https://www.youtube.com/watch?v=sTqzNaFXiZ8), which demonstrates how to refactor the sample code by reducing the number of rows returned. 
