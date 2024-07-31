@@ -204,7 +204,7 @@ In this case, we can:
 </File>
 
 
-<File name='macros/generate_schema_name.sql'>
+<File name='macros/generate_alias_name'>
 
 ```jinja
 
