@@ -9,7 +9,7 @@ pagination_next: "docs/build/cumulative"
   
 Once you've created your semantic models, it's time to start adding metrics. Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
 
-The keys for metrics definitions are:
+This page explains the different supported metric types you can add to your dbt project. The keys for metrics definitions are:
 
 <!-- for v1.8 and higher -->
 
@@ -27,6 +27,8 @@ The keys for metrics definitions are:
 
 Here's a complete example of the metrics spec configuration:
 
+<File name="models/metrics/file_name.yml" >
+
 ```yaml
 metrics:
   - name: metric name                     ## Required
@@ -42,6 +44,8 @@ metrics:
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
       null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
 ```
+
+</File>
 </VersionBlock>
 
 <!-- for v1.7 and lower -->
@@ -61,6 +65,8 @@ metrics:
 
 Here's a complete example of the metrics spec configuration:
 
+<File name="models/metrics/file_name.yml" >
+
 ```yaml
 metrics:
   - name: metric name                     ## Required
@@ -76,10 +82,9 @@ metrics:
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
       null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
 ```
+<File>
 
 </VersionBlock>
-
-This page explains the different supported metric types you can add to your dbt project.
 
 import SLCourses from '/snippets/_sl-course.md';
 
@@ -88,6 +93,8 @@ import SLCourses from '/snippets/_sl-course.md';
 ### Conversion metrics
 
 [Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occur for an entity within a set time period.
+
+<File name="models/metrics/file_name.yml" >
 
 ```yaml
 metrics:
@@ -112,10 +119,13 @@ metrics:
           - base_property: DIMENSION or ENTITY 
             conversion_property: DIMENSION or ENTITY 
 ```
+</File>
 
 ### Cumulative metrics
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
+
+<File name="models/metrics/file_name.yml" >
 
 ```yaml
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all of time)
@@ -130,10 +140,13 @@ metrics:
         join_to_timespine: true
         window: 7 days
 ```
+</File>
 
 ### Derived metrics
 
 [Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
+
+<File name="models/metrics/file_name.yml" >
 
 ```yaml
 metrics:
@@ -149,6 +162,8 @@ metrics:
         - name: order_cost
           alias: cost
 ```
+</File>
+
 <!-- not supported
 ### Expression metrics
 Use [expression metrics](/docs/build/expr) when you're building a metric that involves a SQL expression of multiple measures.
@@ -171,6 +186,8 @@ metrics:
 
 [Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `filter` string  can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
+<File name="models/metrics/file_name.yml" >
+
 ```yaml
 metrics:
   - name: cancellation_rate
@@ -191,6 +208,7 @@ metrics:
     filter: | 
       {{ Dimension('customer__country') }} = 'MX' 
 ```
+</File>
 
 ### Simple metrics
 
@@ -199,6 +217,8 @@ metrics:
 - `name` &mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
 
 **Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric.
+
+<File name="models/metrics/file_name.yml" >
 
 ```yaml
 metrics:
@@ -214,12 +234,15 @@ metrics:
       {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}} is not null
     join_to_timespine: true
 ```
+</File>
 
 ## Filters
 
 A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, time dimensions, or metrics in filters. 
 
 Refer to [Metrics as dimensions](/docs/build/ref-metrics-in-filters) for details on how to use metrics as dimensions with metric filters:
+
+<File name="models/metrics/file_name.yml" >
 
 ```yaml
 filter: | 
@@ -232,14 +255,48 @@ filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 
 filter: |  
-  {{ Metric('metric_name', group_by=['entity_name']) }}  # Available in v1.8 or go versionless with [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)
+  {{ Metric('metric_name', group_by=['entity_name']) }}  # Available in v1.8 or go [versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
 ```
+</File>
 
-### Further configuration
+## Further configuration
 
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner
 
 - **Description** &mdash;  Write a detailed description of the metric.
+
+## Sub-daily granularity
+
+Sub-daily granularity enables querying metrics at granularities at finer time grains below a day, such as hourly, minute, or even by the second. It support anything that `date_trunc` supports. Use sub-daily granularity for cumulative metrics, time spine models at sub-daily grains, and default grain settings for metrics.
+
+This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. 
+
+### Usage
+There are two ways to specify sub-daily granularity: `default_grain` and `time_granularity`. This section explains how to use both methods, how they also interact, and which one takes precedence. 
+
+#### `default_grain`
+Use the `default_grain` parameter in the metric config to specify the default granularity for querying the metric when no specific granularity is defined. I. This parameter is optional and defaults to `day`.
+
+When querying metrics by `metric_time`, MetricFlow currently defaults to the grain of the `agg_time_dimension`. If you want to query metrics at a different grain, you can use the `time_granularity` type parameter in time dimensions.
+
+Add to time dimension
+
+Add to metric config
+
+<File name="models/metrics/file_name.yml" >
+
+```yaml
+metrics:
+  - name: my_metrics
+    ...
+    default_grain: day # Optional: defaults to day
+```
+</File>
+
+
+
+Implementation using the `time_granularity` type parameter in time dimensions.
+Examples of using DATE_TRUNC with sub-daily granularities in SQL.
 
 ## Related docs
 
