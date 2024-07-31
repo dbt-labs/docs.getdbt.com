@@ -16,7 +16,7 @@ socialLinks:
     link: https://x.com/svenmurtinson
   - name: LinkedIn
     link: https://www.linkedin.com/in/radovan-ba%C4%87ovi%C4%87-6498603/
-  - name: Gitlab Profile
+  - name: GitLab Profile
     link: https://gitlab.com/rbacovic
 dateCreated: 2024-07-28
 hide_table_of_contents: true
