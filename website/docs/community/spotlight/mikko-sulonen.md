@@ -11,7 +11,7 @@ companyName: Recordly Oy
 socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/mikkosulonen/
-dateCreated: 2024-07-30
+dateCreated: 2024-07-28
 hide_table_of_contents: true
 communityAward: false
 ---
@@ -20,7 +20,7 @@ communityAward: false
 
 I started using dbt around 2019-2020, I think. Snapshots (no longer "archives") were a new thing along with the RPC server! I asked around my then-company: pretty much nobody had used dbt, though some commented that it did look promising. That left me looking elsewhere for experiences and best practices around the tool, and I found different blog writers and eventually the [dbt Slack](https://www.getdbt.com/community/join-the-community). I quickly noticed I could learn much more from the experiences of others than by trying everything myself. After just lurking for a while, I started to answer people's questions and give my own thoughts. This was completely new to me: voicing my input and opinions to people I had never met or who were not my colleagues.
 
-## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
+## Which dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
 There are quite many. I started to write some names here, but felt the list was getting a bit long and I'd still forget somebody! What the community leaders have in common is that they are approachable, knowledgeable, and passionate. They want to help others, they want to drive the community forward, and they are down to earth. I've had the pleasure of meeting many of them in person at the past two [Coalesces](https://coalesce.getdbt.com/), and I hope to meet many more!
 
