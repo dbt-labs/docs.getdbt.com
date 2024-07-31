@@ -39,6 +39,7 @@ Here we describe the Semantic model components with examples:
 | Label                             | The display name for your semantic model `node`, `dimension`, `entity`, and/or `measures`                                                                                                                                                                                      | Optional |
 | `config`                          | Use the [`config`](/reference/resource-properties/config) property to specify configurations for your metric. Supports [`meta`](/reference/resource-configs/meta), [`group`](/reference/resource-configs/group), and [`enabled`](/reference/resource-configs/enabled) configs. | Optional |
 
+
 ## Semantic models components
 
 The complete spec for semantic models is below:
@@ -264,3 +265,22 @@ import SetUpPages from '/snippets/\_metrics-dependencies.md';
 - [Entities](/docs/build/entities)
 - [Measures](/docs/build/measures)
 - [Semantic Layer best practices guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro)
+
+## Test
+
+TEST TABLE AREA
+<!-- start generated content -->
+No parameters available.
+
+### Example
+```json
+{}
+```
+<!-- end generated content -->
+
+TEST CODE AREA
+<!-- start generated content -->
+
+
+
+<!-- end generated content -->

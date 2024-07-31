@@ -428,3 +428,16 @@ mf query --metrics transactions --group-by metric_time__month,sales_person__tier
 ```
 
 </Expandable>
+
+
+<!-- start generated content -->
+| Parameter | Type | Description |
+|-----------|------|-------------|
+
+
+### Example
+```json
+{}
+```
+<!-- end generated content -->
+

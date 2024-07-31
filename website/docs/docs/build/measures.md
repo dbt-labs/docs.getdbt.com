@@ -269,3 +269,16 @@ mf query --metrics mrr_by_end_of_month --group-by metric_time__week --order metr
 import SetUpPages from '/snippets/_metrics-dependencies.md';
 
 <SetUpPages /> 
+
+
+<!-- start generated content -->
+| Parameter | Type | Description |
+|-----------|------|-------------|
+
+
+### Example
+```json
+{}
+```
+<!-- end generated content -->
+
