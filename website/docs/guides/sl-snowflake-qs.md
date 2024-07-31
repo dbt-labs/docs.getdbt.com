@@ -41,9 +41,9 @@ import SLCourses from '/snippets/_sl-course.md';
 
 This quickstart guide is designed for dbt Cloud users using Snowflake as their data platform. It focuses on building and defining metrics, setting up the dbt Semantic Layer in a dbt Cloud project, and querying metrics in Google Sheets.
 
-**For users on different data platform**
+**For users on different data platforms**
 
-If you're using a data platform other than Snowflake, this guide is also be applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed in the following tabs for each respective platform.
+If you're using a data platform other than Snowflake, this guide is also applicable to you. You can adapt the setup for your specific platform by following the account setup and data loading instructions detailed in the following tabs for each respective platform.
 
 The rest of this guide applies universally across all supported platforms, ensuring you can fully leverage the dbt Semantic Layer.
 
@@ -110,11 +110,11 @@ Open a new tab and follow these quick steps for account setup and data loading i
   
   - Enterprise &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
   - Team &mdash; "Owner" access with a Developer license.
-  - Trial &mdash; Automatic "Owner" access under a trail of the Team plan.  
+  - Trial &mdash; Automatic "Owner" access under a Team plan trial.
   
   </detailsToggle>
 
-- Production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to[ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always remain on the latest version.
+- Production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to "versionless" by selecting [ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the latest updates.
 - Create a [trial Snowflake account](https://signup.snowflake.com/):
   - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
   - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
@@ -128,7 +128,7 @@ This guide will cover the following topics:
 - [Load sample data into your Snowflake account](/guides/sl-snowflake-qs?step=4)
 - [Connect dbt Cloud to Snowflake](/guides/sl-snowflake-qs?step=5)
 - [Set up a dbt Cloud managed repository](/guides/sl-snowflake-qs?step=6)
-- [Initialized a dbt Cloud project and start developer](/guides/sl-snowflake-qs?step=7)
+- [Initialize a dbt Cloud project and start developing](/guides/sl-snowflake-qs?step=7)
 - [Build your dbt Cloud project](/guides/sl-snowflake-qs?step=8)
 - [Create a semantic model in dbt Cloud](/guides/sl-snowflake-qs?step=9)
 - [Define metrics in dbt Cloud](/guides/sl-snowflake-qs?step=10)
@@ -281,7 +281,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 
-2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each database. Then, click **Connect**.
+2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each selected database. Then, click **Connect**.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
 
@@ -293,13 +293,13 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" title="Snowflake New UI - Activation Window" />
 
-4. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password.
+4. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created an account, you will be asked to provide an account name and password.
 
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt Cloud - Account Info" />
 
 5. After you have filled out the form and clicked **Complete Registration**, you will be logged into dbt Cloud automatically.
 
-6. From your **Account Settings** in dbt Cloud (using the gear menu in the upper right corner), choose the "Partner Connect Trial" project and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
+6. From your **Account Settings** in dbt Cloud (using the gear menu in the upper right corner), choose the "Partner Connect Trial" project and select **snowflake** in the overview table. Select **Edit** and update the **Database** field to `analytics` and the **Warehouse** field to `transforming`.
 
 <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
 
@@ -342,7 +342,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 </Tabs>
 
 ## Set up a dbt Cloud managed repository 
-If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
+If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as Partner Connect provides you with a [managed repository](/docs/collaborate/git/managed-repository). Otherwise, you will need to create your repository connection. 
 
 <Snippet path="tutorial-managed-repo" />
 
@@ -355,7 +355,7 @@ Now that you have a repository configured, you can initialize your project and s
 
 1. Click **Start developing in the dbt Cloud IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add a new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - Delete the models/examples folder in the **File Explorer**.
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:
@@ -378,7 +378,7 @@ You have two options for working with files in the dbt Cloud IDE:
 
 Name the new branch `build-project`.
 
-1. Hover over the `models` directory and click the three dot menu (**...**), then select **Create file**.
+1. Hover over the `models` directory and click the three-dot menu (**...**), then select **Create file**.
 2. Name the file `staging/jaffle_shop/src_jaffle_shop.yml` , then click **Create**.
 3. Copy the following text into the file and click **Save**.
 
@@ -763,7 +763,7 @@ semantic_models:
 There are different types of metrics you can configure:
 
 - [Conversion metrics](/docs/build/conversion) &mdash; Track when a base event and a subsequent conversion event occur for an entity within a set time period.
-- [Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics) &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note, that you must create the time spine model before you add cumulative metrics.
+- [Cumulative metrics](/docs/build/metrics-overview#cumulative-metrics) &mdash; Aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you must create the time spine model before you add cumulative metrics.
 - [Derived metrics](/docs/build/metrics-overview#derived-metrics) &mdash; Allows you to do calculations on top of metrics.
 - [Simple metrics](/docs/build/metrics-overview#simple-metrics) &mdash; Directly reference a single measure without any additional measures involved.
 - [Ratio metrics](/docs/build/metrics-overview#ratio-metrics) &mdash; Involve a numerator metric and a denominator metric. A constraint string can be applied to both the numerator and denominator or separately to the numerator or denominator.
@@ -950,9 +950,9 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-ru
 
 <summary>What’s happening internally?</summary>
 
-- Merging the code into your main branch allows dbt Cloud to pull those changes and builds the definition in the manifest produced by the run. <br />
+- Merging the code into your main branch allows dbt Cloud to pull those changes and build the definition in the manifest produced by the run. <br />
 - Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.<br />
-- The Semantic Layer APIs pulls in the most recent manifest and allows your integration information to extract metadata from it.
+- The Semantic Layer APIs pull in the most recent manifest and enables your integration to extract metadata from it.
 
 </details>
 
@@ -965,7 +965,18 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_new-s
 
 <SlSetUp/>
 
-## Connect and query with Google Sheets
+## Query the Semantic Layer
+
+This page will guide you on how to connect and use the following integrations to query your metrics:
+
+- [Connect and query with Google Sheets](#connect-and-query-with-google-sheets)
+- [Connect and query with Hex](#connect-and-query-with-hex)
+
+The dbt Semantic Layer enables you to connect and query your metric with various available tools like Google Sheets, Hex, Tableau, and more. 
+
+Query metrics using other tools such as [first-class integrations](/docs/cloud-integrations/avail-sl-integrations), [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview), and [exports](/docs/use-dbt-semantic-layer/exports) to expose tables of metrics and dimensions in your data platform and create a custom integration with tools like PowerBI.
+
+ ### Connect and query with Google Sheets
 
 <!-- The below snippets (or reusables) can be found in the following file locations in the docs code repository) 
 
@@ -973,6 +984,72 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-co
 -->
 
 <ConnectQueryAPI/>
+
+### Connect and query with Hex
+This section will guide you on how to use the Hex integration to query your metrics using Hex. Select the appropriate tab based on your connection method:
+
+<Tabs>
+<TabItem value="partner-connect" label="Query Semantic Layer with Hex" default>
+
+1. Navigate to the [Hex login page](https://app.hex.tech/login). 
+2. Sign in or make an account (if you don’t already have one). 
+  - You can make Hex free trial accounts with your work email or a .edu email.
+3. In the top left corner of your page, click on the **HEX** icon to go to the home page.
+4. Then, click the **+ New project** button on the top right.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new.png" width="50%" title="Click the '+ New project' button on the top right"/>
+5. Go to the menu on the left side and select **Data browser**. Then select **Add a data connection**. 
+6. Click **Snowflake**. Provide your data connection a name and description. You don't need to your data warehouse credentials to use the Semantic Layer.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_new_data_connection.png" width="50%" title="Select 'Data browser' and then 'Add a data connection' to connect to Snowflake."/>
+7. Under **Integrations**, toggle the dbt switch to the right to enable the dbt integration.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_dbt_toggle.png" width="50%" title="Click on the dbt toggle to enable the integration. "/>
+
+8. Enter the following information:
+   * Select your version of dbt as 1.6 or higher
+   * Enter your environment id 
+   * Enter your service token 
+   * Make sure to click on the **Use Semantic Layer** toggle. This way, all queries are routed through dbt.
+   * Click **Create connection** in the bottom right corner.
+9. Hover over **More** on the menu shown in the following image and select **dbt Semantic Layer**.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" width="90%" title="Hover over 'More' on the menu and select 'dbt Semantic Layer'."/>
+
+10. Now, you should be able to query metrics using Hex! Try it yourself: 
+    - Create a new cell and pick a metric. 
+    - Filter it by one or more dimensions.
+    - Create a visualization.
+
+</TabItem>
+<TabItem value="manual-connect" label="Getting started with the Semantic Layer workshop">
+
+1. Click on the link provided to you in the workshop’s chat. 
+   - Look at the **Pinned message** section of the chat if you don’t see it right away.
+2. Enter your email address in the textbox provided. Then, select **SQL and Python** to be taken to Hex’s home screen.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/welcome_to_hex.png" width="70%" title="The 'Welcome to Hex' homepage."/>
+
+3. Then click the purple Hex button in the top left corner.
+4. Click the **Collections** button on the menu on the left.
+5. Select the **Semantic Layer Workshop** collection. 
+6. Click the **Getting started with the dbt Semantic Layer** project collection.
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_collections.png" width="80%" title="Click 'Collections' to select the 'Semantic Layer Workshop' collection."/>
+
+7. To edit this Hex notebook, click the **Duplicate** button from the project dropdown menu (as displayed in the following image). This creates a new copy of the Hex notebook that you own.
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_duplicate.png" width="80%" title="Click the 'Duplicate' button from the project dropdown menu to create a Hex notebook copy."/>
+
+8. To make it easier to find, rename your copy of the Hex project to include your name.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_rename.png" width="60%" title="Rename your Hex project to include your name."/>
+
+9. Now, you should be able to query metrics using Hex! Try it yourself with the following example queries:
+
+   - In the first cell, you can see a table of the `order_total` metric over time. Add the `order_count` metric to this table.
+   - The second cell shows a line graph of the `order_total` metric over time. Play around with the graph! Try changing the time grain using the **Time unit** drop-down menu.
+   - The next table in the notebook, labeled “Example_query_2”, shows the number of customers who have made their first order on a given day. Create a new chart cell. Make a line graph of `first_ordered_at` vs `customers` to see how the number of new customers each day changes over time.
+   - Create a new semantic layer cell and pick one or more metrics. Filter your metric(s) by one or more dimensions.
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/hex_make_sl_cell.png" width="90%" title="Query metrics using Hex "/>
+
+</TabItem>
+</Tabs>
 
 ## What's next
 
@@ -985,7 +1062,7 @@ You've learned how to:
 - Set up your Snowflake environment and dbt Cloud, including creating worksheets and loading data.
 - Connect and configure dbt Cloud with Snowflake.
 - Build, test, and manage dbt Cloud projects, focusing on metrics and semantic layers.
-- Run production jobs and query metrics with Google Sheets.
+- Run production jobs and query metrics with our available integrations.
 
 For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), and more.
 

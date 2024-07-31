@@ -36,8 +36,9 @@ The following are the prerequisites for dbt Cloud and Snowflake.
 ### Snowflake
 
 - You have **ACCOUNTADMIN** access in Snowflake.
-- Your Snowflake account must have access to the Native App/SPCS integration (PrPr until Summit) and NA/SPCS configurations (PuPr at end of June). If you're unsure, please check with your Snowflake account manager.
-- The Snowflake account must be in an AWS Region or Azure region. 
+- Your Snowflake account must have access to the Native App/SPCS integration and NA/SPCS configurations (Public Preview planned at end of June). If you're unsure, please check with your Snowflake account manager.
+- The Snowflake account must be in an AWS Region. Azure is not currently supported for Native App/SPCS integration. 
+- You have access to Snowflake Cortex through your Snowflake permissions and [Snowflake Cortex is available in your region](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#availability). Without this, Ask dbt will not work.
 
 ## Set up the configuration for Ask dbt
 
@@ -50,11 +51,7 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
 
     <Lightbox src="/img/docs/cloud-integrations/semantic_layer_configuration.png" width="100%" title="Semantic Layer credentials"/>
 
-1. Identify the default database the environment is connecting to. 
-    1. Select **Deploy > Environments** from the top navigation bar. From the environments list, select the one that was identified in the **Semantic Layer Configuration Details** panel. 
-    1. On the environment's page, click **Settings**. Scroll to the section **Deployment connection**. The listed database is the default for your environment and is also where you will create the schema. Save this information in a temporary location to use later on. 
-
-1. In Snowflake, verify that your SL user has been granted permission to use Snowflake Cortex. This user must have the ability to read and write into this schema to create the Retrieval Augmented Generation (RAG). For more information, refer to [Required Privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#required-privileges) in the Snowflake docs. 
+1. In Snowflake, verify that your SL and deployment user has been granted permission to use Snowflake Cortex. For more information, refer to [Required Privileges](https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions#required-privileges) in the Snowflake docs. 
     
     By default, all users should have access to Snowflake Cortex. If this is disabled for you, open a Snowflake SQL worksheet and run these statements:
 
@@ -62,23 +59,16 @@ Configure dbt Cloud and Snowflake Cortex to power the **Ask dbt** chatbot.
     create role cortex_user_role;
     grant database role SNOWFLAKE.CORTEX_USER to role cortex_user_role;
     grant role cortex_user_role to user SL_USER;
+    grant role cortex_user_role to user DEPLOYMENT_USER;
     ```
 
-    Make sure to replace `SNOWFLAKE.CORTEX_USER` and `SL_USER` with the appropriate strings for your environment.
-
-1. Create a schema `dbt_sl_llm` in the deployment database. Open a Snowflake SQL worksheet and run these statements: 
-
-    ```sql
-    create schema YOUR_DEPLOYMENT_DATABASE.dbt_sl_llm;
-    grant ownership on schema dbt_sl_llm to role SL_ROLE;
-    ```
-
-    Make sure to replace `YOUR_DEPLOYMENT_DATABASE` and `SL_USER` with the appropriate strings for your environment.
+    Make sure to replace `SNOWFLAKE.CORTEX_USER`, `DEPLOYMENT_USER`, and `SL_USER` with the appropriate strings for your environment.
 
 ## Configure dbt Cloud 
-Collect three pieces of information from dbt Cloud to set up the application. 
+Collect the following pieces of information from dbt Cloud to set up the application. 
 
 1. From the gear menu in dbt Cloud, select **Account settings**. In the left sidebar, select **API tokens > Service tokens**. Create a service token with access to all the projects you want to access in the dbt Snowflake Native App. Grant these permission sets: 
+    - **Manage marketplace apps**
     - **Job Admin**
     - **Metadata Only**
     - **Semantic Layer Only**
@@ -124,7 +114,7 @@ To verify the app installed successfully, select any of the following from the s
 
 - **Explore** &mdash; Launch dbt Explorer and make sure you can access your dbt project information.
 - **Jobs** &mdash; Review the run history of the dbt jobs. 
-- **Ask dbt** &mdash; Click on any of the suggested prompts to ask the chatbot a question. Depending on the number of metrics that's defined for the dbt project, it can take several minutes to load **Ask dbt** the first time because dbt is building the RAG. Subsequent launches will load faster.
+- **Ask dbt** &mdash; Click on any of the suggested prompts to ask the chatbot a question. Depending on the number of metrics that's defined for the dbt project, it can take several minutes to load **Ask dbt** the first time because dbt is building the Retrieval Augmented Generation (RAG). Subsequent launches will load faster.
 
 
 The following is an example of the **Ask dbt** chatbot with the suggested prompts near the top: 

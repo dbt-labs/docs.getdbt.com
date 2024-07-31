@@ -4,7 +4,13 @@ id: "job-notifications"
 description: "Set up notifications in dbt Cloud to receive email or Slack alerts about job run status."
 ---
 
-Set up notifications in dbt Cloud to receive email or Slack alerts when a job run succeeds, fails, or is cancelled.
+
+Set up notifications in dbt Cloud to receive email or Slack alerts about the status of a job run. You can choose to be notified by one or more of the following job run statuses: 
+
+- **Succeeds** option &mdash; A job run completed successfully.
+- **Warns** option &mdash; A job run encountered warnings from [tests](/docs/build/data-tests) or [source freshness](/docs/deploy/source-freshness) checks (if applicable).
+- **Fails** option &mdash; A job run failed to complete. 
+- **Is canceled** option &mdash; A job run is canceled.
 
 ## Email notifications
 
@@ -27,7 +33,7 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 
 1. Select the **Environment** for the jobs you want to receive notifications about from the dropdown. 
 
-1. Click **Edit** to configure the email notification settings. Choose one or more of the run statuses (**Succeeds**, **Fails**, **Is Canceled**) for each job you want to receive notifications about.
+1. Click **Edit** to configure the email notification settings. Choose one or more of the run statuses for each job you want to receive notifications about.
 
 1. When you're done with the settings, click **Save**.
 
@@ -60,28 +66,28 @@ If there has been a change in user roles or Slack permissions where you no longe
 1. Locate the **OAuth** section with the Slack application and click **Link**.
    <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link for the Slack app"/>
 
-### Logged in to Slack
+#### Logged in to Slack
 If you're already logged in to Slack, the handshake only requires allowing the app access. If you're a member of multiple workspaces, you can select the appropriate workspace from the dropdown menu in the upper right corner.
    <Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" width="75%" title="Allow dbt access to Slack"/>
 
-## Logged out
+#### Logged out
 
 If you're logged out or the Slack app/website is closed, you must authenticate before completing the integration.
 
 1. Complete the field defining the Slack workspace you want to integrate with dbt Cloud.
-    <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="75%" title="Define the workspace"/>
+    <Lightbox src="/img/docs/dbt-cloud/define-workspace.png" width="60%" title="Define the workspace"/>
 2. Sign in with an existing identity or use email address and password. 
 3. Once you have authenticated successfully, accept the permissions.
-    <Lightbox src="/img/docs/dbt-cloud/accept-permissions.png" width="75%" title="Allow dbt access to Slack"/>
+    <Lightbox src="/img/docs/dbt-cloud/accept-permissions.png" width="65%" title="Allow dbt access to Slack"/>
 
 ### Configure Slack notifications
 
 1. From the gear menu, choose **Notification settings**. 
 1. Select **Slack notifications** in the left sidebar. 
 1. Select the **Notification channel** you want to receive the job run notifications from the dropdown. 
-    <Lightbox src="/img/docs/deploy/example-notification-slack-channels.png" width="75%" title="Example of the Notification channel dropdown"/>
+    <Lightbox src="/img/docs/deploy/example-notification-slack-channels.png" width="100%" title="Example of the Notification channel dropdown"/>
 1. Select the **Environment** for the jobs you want to receive notifications about from the dropdown. 
-1. Click **Edit** to configure the Slack notification settings. Choose one or more of the run statuses (**Succeeds**, **Fails**, **Is Canceled**) for each job you want to receive notifications about.
+1. Click **Edit** to configure the Slack notification settings. Choose one or more of the run statuses for each job you want to receive notifications about.
 1. When you're done with the settings, click **Save**.
     
     To send alerts to another Slack channel, select another **Notification channel** from the dropdown, **Edit** those job notification settings, and **Save** the changes.

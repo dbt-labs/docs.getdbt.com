@@ -39,7 +39,9 @@ In dbt Cloud, each project can have one designated deployment environment, which
 
 ### Semantic Layer
 
-For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions!
+For customers using the dbt Semantic Layer, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions.
+
+You can also leverage the dbt Job scheduler to [validate your semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
 
 ## Staging environment
 
@@ -110,20 +112,20 @@ We recommend that the data warehouse credentials be for a dedicated user or serv
 
 This section determines the exact location in your warehouse dbt should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.
 
-For all warehouses, use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override missing or inactive (grayed-out) settings.
+For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override missing or inactive (grayed-out) settings.
 
 <WHCode>
 
 
 <div warehouse="Postgres">
 
-This section will not appear if you are using Postgres, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
+This section will not appear if you are using Postgres, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override these values.
 
 </div>
 
 <div warehouse="Redshift">
 
-This section will not appear if you are using Redshift, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
+This section will not appear if you are using Redshift, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override these values.
 
 </div>
 
@@ -141,13 +143,13 @@ This section will not appear if you are using Redshift, as all values are inferr
 
 <div warehouse="Bigquery">
 
-This section will not appear if you are using Bigquery, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
+This section will not appear if you are using Bigquery, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override these values.
 
 </div>
 
 <div warehouse="Spark">
 
-This section will not appear if you are using Spark, as all values are inferred from the project's connection. Use [extended attributes](/docs/deploy/deploy-environments#extended-attributes) to override these values.
+This section will not appear if you are using Spark, as all values are inferred from the project's connection. Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override these values.
 
 </div>
 
@@ -167,6 +169,8 @@ This section will not appear if you are using Spark, as all values are inferred 
 ### Deployment credentials
 
 This section allows you to determine the credentials that should be used when connecting to your warehouse. The authentication methods may differ depending on the warehouse and dbt Cloud tier you are on.
+
+For all warehouses, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
 
 <WHCode>
 
@@ -220,6 +224,8 @@ This section allows you to determine the credentials that should be used when co
 #### Editable fields
 
 - **Dataset**: Target dataset
+
+Use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to override missing or inactive (grayed-out) settings. For credentials, we recommend wrapping extended attributes in [environment variables](/docs/build/environment-variables) (`password: '{{ env_var(''DBT_ENV_SECRET_PASSWORD'') }}'`) to avoid displaying the secret value in the text box and the logs.
 
 </div>
 

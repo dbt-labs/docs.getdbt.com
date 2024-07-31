@@ -36,7 +36,7 @@ You may have already started your move to dbt Cloud and are looking for tips to 
 In dbt Cloud, you can natively connect to your data platform and test its [connection](/docs/connect-adapters) with a click of a button. This is especially useful for users who are new to dbt Cloud or are looking to streamline their connection setup. Here are some tips and caveats to consider:
 
 ### Tips
-- Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with dbt Cloud's one-click feature, eliminating the need for manual updates and version discrepancies.  You can **[Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)** to always get the latest fixes and early access to new functionality for your dbt project.
+- Manage [dbt versions](/docs/dbt-versions/upgrade-dbt-version-in-cloud) and ensure team collaboration with dbt Cloud's one-click feature, eliminating the need for manual updates and version discrepancies.  You can go versionless and **[Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)** to always get the latest features and early access to new functionality for your dbt project.
 - dbt Cloud supports a whole host of [cloud providers](/docs/cloud/connect-data-platform/about-connections), including Snowflake, Databricks, BigQuery, Fabric, and Redshift (to name a few).
 - Use [Extended Attributes](/docs/deploy/deploy-environments#extended-attributes) to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in your dbt Cloud environment settings. It gives you more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
   - For example, if you have a field in your `profiles.yml` that you’d like to add to the dbt Cloud adapter user interface, you can use Extended Attributes to set it.
@@ -135,7 +135,7 @@ Here are some tips and caveats to consider when using dbt Mesh:
 - Project dependencies are uni-directional, meaning they go in one direction. This means dbt checks for cycles across projects (circular dependencies) and raise errors if any are detected. However, we are considering support to allow projects to depend on each other in both directions in the future, with dbt still checking for node-level cycles while allowing cycles at the project level.
 - Everyone in the account can view public model metadata, which helps users find data products more easily. This is separate from who can access the actual data, which is controlled by permissions in the data warehouse. For use cases where even metadata about a reusable data asset is sensitive, we are [considering](https://github.com/dbt-labs/dbt-core/issues/9340) an optional extension of protected models.
 
-Refer to the [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-4-faqs) for more questions.
+Refer to the [dbt Mesh FAQs](/best-practices/how-we-mesh/mesh-5-faqs) for more questions.
 
 ## dbt Semantic Layer
 

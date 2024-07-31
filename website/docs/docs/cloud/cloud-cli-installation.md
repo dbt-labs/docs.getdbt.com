@@ -21,7 +21,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 ## Prerequisites 
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/access-regions-ip-addresses) and for both multi-tenant and single-tenant accounts.
 
-- You are on dbt version 1.5 or higher. Alternatively, set it to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always use the latest version.
+- You are on dbt version 1.5 or higher. Alternatively, set it to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to get a versionless experience and automatically stay up to date.
 
 ## Install dbt Cloud CLI
 
@@ -204,6 +204,11 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
   ```bash
   pip install dbt --no-cache-dir
   ```
+
+  If there are installation issues, running the command with the `--force-reinstall` argument might help:
+   ```bash
+   pip install dbt --no-cache-dir --force-reinstall
+   ``` 
 
 3. (Optional) To revert to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
 

@@ -215,7 +215,7 @@ Which in turn can be copy-pasted into a new `.yml` file. In our example, we writ
 
 ## Create docs blocks for the new columns
 
-[Docs blocks](https://docs.getdbt.com/docs/collaborate/documentation#using-docs-blocks) can be utilized to write more DRY and robust documentation. To use docs blocks, update your folder structure to contain a `.md` file. Your file structure should now look like this:
+[Docs blocks](https://docs.getdbt.com/docs/build/documentation#using-docs-blocks) can be utilized to write more DRY and robust documentation. To use docs blocks, update your folder structure to contain a `.md` file. Your file structure should now look like this:
 
 ```
 models/core/activity_based_interest

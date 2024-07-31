@@ -395,7 +395,7 @@ In this step, we’ll need to create a development branch and set up project lev
     - `materialized` &mdash; Tells dbt how to materialize models when compiling the code before it pushes it down to Snowflake. All models in the `marts` folder will be built as tables.
     - `tags` &mdash; Applies tags at a directory level to all models. All models in the `aggregates` folder will be tagged as `bi` (abbreviation for business intelligence).
     - `docs` &mdash; Specifies the `node_color` either by the plain color name or a hex value.
-5. [Materializations](/docs/build/materializations) are strategies for persisting dbt models in a warehouse, with `tables` and `views` being the most commonly utilized types. By default, all dbt models are materialized as views and other materialization types can be configured in the `dbt_project.yml` file or in a model itself. It’s very important to note *Python models can only be materialized as tables or incremental models.* Since all our Python models exist under `marts`, the following portion of our `dbt_project.yml` ensures no errors will occur when we run our Python models. Starting with [dbt version 1.4](/docs/dbt-versions/core-upgrade/upgrading-to-v1.4#updates-to-python-models), Python files will automatically get materialized as tables even if not explicitly specified.
+5. [Materializations](/docs/build/materializations) are strategies for persisting dbt models in a warehouse, with `tables` and `views` being the most commonly utilized types. By default, all dbt models are materialized as views and other materialization types can be configured in the `dbt_project.yml` file or in a model itself. It’s very important to note *Python models can only be materialized as tables or incremental models.* Since all our Python models exist under `marts`, the following portion of our `dbt_project.yml` ensures no errors will occur when we run our Python models. Starting with [dbt version 1.4](/docs/dbt-versions/core-upgrade/older%20versions/upgrading-to-v1.4#updates-to-python-models), Python files will automatically get materialized as tables even if not explicitly specified.
 
     ```yaml
     marts:     
@@ -1858,7 +1858,7 @@ We are going to revisit 2 areas of our project to understand our documentation:
 - `intermediate.md` file
 - `dbt_project.yml` file
 
-To start, let’s look back at our `intermediate.md` file. We can see that we provided multi-line descriptions for the models in our intermediate models using [docs blocks](/docs/collaborate/documentation#using-docs-blocks). Then we reference these docs blocks in our `.yml` file. Building descriptions with doc blocks in Markdown files gives you the ability to format your descriptions with Markdown and are particularly helpful when building long descriptions, either at the column or model level. In our `dbt_project.yml`, we added `node_colors` at folder levels.
+To start, let’s look back at our `intermediate.md` file. We can see that we provided multi-line descriptions for the models in our intermediate models using [docs blocks](/docs/build/documentation#using-docs-blocks). Then we reference these docs blocks in our `.yml` file. Building descriptions with doc blocks in Markdown files gives you the ability to format your descriptions with Markdown and are particularly helpful when building long descriptions, either at the column or model level. In our `dbt_project.yml`, we added `node_colors` at folder levels.
 
 1. To see all these pieces come together, execute this in the command bar:
 

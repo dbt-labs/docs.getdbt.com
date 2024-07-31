@@ -16,10 +16,52 @@ dbt Cloud release notes for recent and historical changes. Release notes fall in
 
 Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC)[^*] environments
 
-[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability. 
+[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
+
+## July 2024
+- **New:** [Merge jobs](/docs/deploy/merge-jobs) for implementing [continuous deployment (CD)](/docs/deploy/continuous-deployment) workflows are now GA in dbt Cloud. Previously, you had to either set up a custom GitHub action or manually build the changes every time a pull request is merged.
+- **New**: The ability to lint your SQL files from the dbt Cloud CLI is now available. To learn more, refer to [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files).
+- **Behavior change:** dbt Cloud IDE automatically adds a `--limit 100` to preview queries to avoid slow and expensive queries during development. Recently, dbt Core changed how the `limit` is applied to ensure that `order by` clauses are consistently respected. Because of this, queries that already contain a limit clause might now cause errors in the IDE previews. To address this, dbt Labs plans to provide an option soon to disable the limit from being applied. Until then, dbt Labs recommends removing the (duplicate) limit clause from your queries during previews to avoid these IDE errors.
+- **Enhancement:** Custom configurations are now supported by generic data tests. Use this to configure how dbt should run the data test (for example, specifying a Snowflake virtual warehouse different from the one in your connection). To learn more, refer to [Specify custom configurations for generic data tests](/reference/data-test-configs#specify-custom-configurations-for-generic-data-tests).
+
+  Support for this configuration is available in dbt Cloud when selecting "Keep on latest version." Specifying custom configurations for data tests will become available in dbt Core later this year.
+
+- **Enhancement**: Introducing a revamped overview page for dbt Explorer, available in beta. It includes a new design and layout for the Explorer homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/collaborate/explore-projects#overview-page).
+
+#### dbt Semantic Layer
+- **New**: Introduced the [`dbt-sl-sdk` Python software development kit (SDK)](https://github.com/dbt-labs/semantic-layer-sdk-python) Python library, which provides you with easy access to the dbt Semantic Layer with Python. It allows developers to interact with the dbt Semantic Layer APIs and query metrics and dimensions in downstream tools. Refer to the [dbt Semantic Layer Python SDK](/docs/dbt-cloud-apis/sl-python) for more information.
+- **New**: Introduced Semantic validations in CI pipelines. Automatically test your semantic nodes (metrics, semantic models, and saved queries) during code reviews by adding warehouse validation checks in your CI job using the `dbt sl validate` command. You can also validate modified semantic nodes to guarantee code changes made to dbt models don't break these metrics. Refer to [Semantic validations in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to learn about the additional commands and use cases.
+- **New**: We now expose the `meta` field within the [config property](/reference/resource-configs/meta) for dbt Semantic Layer metrics in the [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview) under the `meta` field.
+- **New**: Added a new command in the dbt Cloud CLI called `export-all`, which allows you to export multiple or all of your saved queries. Previously, you had to explicitly specify the [list of saved queries](/docs/build/metricflow-commands#list-saved-queries).
+- **Enhancement**: The dbt Semantic Layer now offers more granular control by supporting multiple data platform credentials, which can represent different roles or service accounts. Available for dbt Cloud Enterprise plans, you can map credentials to service tokens for secure authentication. Refer to [Set up dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) for more details.
+- **Fix**: Addressed a bug where unicode query filters (such as Chinese characters) were not working correctly in the dbt Semantic Layer Tableau integration.
+- **Fix**: Resolved a bug with parsing certain private keys for BigQuery when running an export.
+- **Fix**: Addressed a bug that caused a "closed connection" error to be returned when querying or running an Export.
+- **Fix**: Resolved an issue in dbt Core where, during partial parsing, all generated metrics in a file were incorrectly deleted instead of just those related to the changed semantic model. Now, only the metrics associated with the modified model are affected.
 
 ## June 2024
+- **New:** Introduced new granularity support for cumulative metrics in MetricFlow. Granularity options for cumulative metrics are slightly different than granularity for other metric types. For other metrics, we use the `date_trunc` function to implement granularity. However, because cumulative metrics are non-additive (values can't be added up), we can't use the `date_trunc` function to change their time grain granularity. 
+  
+  Instead, we use the `first()`, `last()`, and `avg()` aggregation functions to aggregate cumulative metrics over the requested period. By default, we take the first value of the period. You can change this behavior by using the `period_agg` parameter. For more information, refer to [Granularity options for cumulative metrics](/docs/build/cumulative#granularity-options).
 
+#### dbt Semantic Layer
+- **New:** Added support for <Term id="predicate-pushdown"/> SQL optimization in MetricFlow. We will now push down categorical dimension filters to the metric source table. Previously filters were applied after we selected from the metric source table. This change helps reduce full table scans on certain query engines.
+- **New:** Enabled `where` filters  on dimensions (included in saved queries) to use the cache during query time. This means you can now dynamically filter your dashboards without losing the performance benefits of caching. Refer to [caching](/docs/use-dbt-semantic-layer/sl-cache#result-caching) for more information.
+- **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), we added information icons and descriptions to metrics and dimensions options in the Query Builder menu. Click on the **Info** icon button to view a description of the metric or dimension. Available in the following Query Builder menu sections: metric, group by, where, saved selections, and saved queries.
+- **Enhancement:** In [Google Sheets](/docs/cloud-integrations/semantic-layer/gsheets), you can now apply granularity to all time dimensions, not just metric time. This update uses our [APIs](/docs/dbt-cloud-apis/sl-api-overview) to support granularity selection on any chosen time dimension.
+- **Enhancement:** Improved querying error message when no semantic layer credentials were set.
+- **Enhancement:** Querying grains for cumulative metrics now returns multiple granularity options (day, week, month, quarter, year) like all other metric types. Previously, you could only query one grain option for cumulative metrics.
+- **Fix:** Removed errors that prevented querying cumulative metrics with other granularities.
+- **Fix:** Fixed various Tableau errors when querying certain metrics or when using calculated fields.
+- **Fix:** In Tableau, we relaxed naming field expectations to better identify calculated fields.
+- **Fix:** Fixed an error when refreshing database metadata for columns that we can't convert to Arrow. These columns will now be skipped. This mainly affected Redshift users with custom types.
+- **Fix:** Fixed Private Link connections for Databricks.
+
+#### Also available this month:
+
+- **Enhancement:** Updates to the UI when [creating merge jobs](/docs/deploy/merge-jobs) are now available. The updates include improvements to helper text, new deferral settings, and performance improvements.
+- **New**: The dbt Semantic Layer now offers a seamless integration with Microsoft Excel, available in [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Build semantic layer queries and return data on metrics directly within Excel, through a custom menu. To learn more and install the add-on, check out [Microsoft Excel](/docs/cloud-integrations/semantic-layer/excel).
+- **New:** [Job warnings](/docs/deploy/job-notifications) are now GA. Previously, you could receive email or Slack alerts about your jobs when they succeeded, failed, or were canceled. Now with the new **Warns** option, you can also receive alerts when jobs have encountered warnings from tests or source freshness checks during their run. This gives you more flexibility on _when_ to be notified. 
 - **New:** A [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) of the dbt Snowflake Native App is now available. With this app, you can access dbt Explorer, the **Ask dbt** chatbot, and orchestration observability features, extending your dbt Cloud experience into the Snowflake UI. To learn more, check out [About the dbt Snowflake Native App](/docs/cloud-integrations/snowflake-native-app) and [Set up the dbt Snowflake Native App](/docs/cloud-integrations/set-up-snowflake-native-app).
 
 ## May 2024
@@ -95,7 +137,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   The **Keep on latest version** setting is now Generally Available (previously Public Preview).
 
-  When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
+  When the new **Keep on latest version** setting is enabled, you get a versionless experience and always get the latest features and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
 
   To learn more about the new setting, refer to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) for details. 
 
@@ -230,9 +272,6 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
   - If you query a time offset metric with one instance of `metric_time`/`agg_time_dimension` but filter by a different one, the query will fail.
 - **Fix:** MetricFlow prioritizes a candidate join type over the default type when evaluating nodes to join. For example, the default join type for distinct values queries is `FULL OUTER JOIN`, however, time spine joins require `CROSS JOIN`, which is more appropriate.
 - **Fix:** Fixed a bug that previously caused errors when entities were referenced in `where` filters.
-
-
-
 
 ## January 2024
 

@@ -5,8 +5,7 @@ tags: [Semantic Layer]
 sidebar_label: "Google Sheets"
 ---
 
-
-The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheets.
+The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheets
 
 ## Prerequisites
 
@@ -35,77 +34,55 @@ import SLCourses from '/snippets/_sl-course.md';
 
 5. Start querying your metrics using the **Query Builder**. For more info on the menu functions, refer to [Query Builder functions](#query-builder-functions). To cancel a query while running, press the "Cancel" button.
 
-When querying your data with Google Sheets:
+import Tools from '/snippets/_sl-excel-gsheets.md';
 
-- It returns the data to the cell you have clicked on, and each cell where data is requested will have a note attached to it, indicating what has been queried and the timestamp.
-- The custom menu operation has a timeout limit of six (6) minutes.
-- If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues.
+<Tools 
+type="Google Sheets"
+bullet_1="The custom menu operation has a timeout limit of six (6) minutes."
+bullet_2="If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues."
+queryBuilder="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg"
+/>
 
-
-## Query Builder functions
-
-The Google Sheets **Query Builder** custom menu has the following capabilities:
-
-
-| Menu items    | Description                                           |
-|---------------|-------------------------------------------------------|
-| Metrics       | Search and select metrics.                             |
-| Group By      | Search and select dimensions or entities to group by. Dimensions are grouped by the entity of the semantic model they come from. You may choose dimensions on their own without metrics. |
-| Time Range    | Quickly select time ranges to look at the data, which applies to the main time series for the metrics (metric time), or do more advanced filter using the "Custom" selection|
-| Where         | Filter your data. This includes categorical and time filters. |
-| Order By      | Return your data order.                              |
-| Limit         | Set a limit for the rows of your output.               |
-
-Note: Click the info button next to any metric or dimension to see its defined description from your dbt project.
-
-#### Modifying time granularity
-
-When you select time dimensions in the **Group By** menu, you'll see a list of available time granularities. The lowest granularity is selected by default. Metric time is the default time dimension for grouping your metrics.
-
-**Filtering data**
-
-To use the filter functionality, choose the [dimension](docs/build/dimensions) you want to filter by and select the operation you want to filter on.
-- For categorical dimensions, you can type a value into search or select from a populated list. For entities, you must type the value you are looking for as we do not load all of them given the large number of values.
-- Continue adding additional filters as needed with AND and OR.
-
-For time dimensions, you can use the time range selector to filter on presets or custom options. The time range selector applies only to the primary time dimension (`metric_time`). For all other time dimensions that aren't `metric_time`, you can use the "Where" option to apply filters.
-
-**Querying without headers or columns**
-
-If you would like to just query the data values without the headers, you can optionally select the **Exclude Column Names** box.
+<!-- adding this section here temporarily (not incl limited policy) until saved queries is available for excel. when saved queries becomes available for excel365 integration:
+1. remove the below content (tip and using saved queries header
+2. then go to the website/snippets/_sl-excel-gsheets.md snippet
+3. And uncomment line 97 - 118 to make saved queries content available to gsheets AND excel -->
 
 ## Using saved selections
-Saved selections allow you to save the inputs you've created in the Google Sheets **Query Builder** and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:
 
-1. Run a query in the Google Sheets **Query Builder**.
-2. Save the selection by selecting the arrow next to the **Query** button and then select **Query & Save Selection**.
-3. The application saves these selections, allowing you to view and edit them from the hamburger menu under **Saved Selections**. 
+Saved selections allow you to save inputs in the **Query Builder** to easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:
+
+- Run a query in the **Query Builder**.
+- Save the selection by selecting the arrow next to the **Query** button and then select **Query & Save Selection**.
+- The application saves these selections, allowing you to view and edit them from the hamburger menu under **Saved Selections**.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg" width="25%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
 
 You can also make these selections private or public:
+
 - **Public selections** mean your inputs are available in the menu to everyone on the sheet.
 - **Private selections** mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu or benefit from the automatic refresh.
 
 ### Refreshing selections
 
-Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing. 
+Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting **Refresh on Load** when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing.
 
 Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.
 
-:::tip What's the difference between saved queries and saved selections?
+:::tip What's the difference between saved selections and saved queries?
 
-- Saved selections are saved components that you can create only when using the Google Sheets application.
+- Saved selections are saved components that you can create only when using the application.
 - Saved queries, explained in the next section, are code-defined sections of data you create in your dbt project that you can easily access and use for building selections. You can also use the results from a saved query to create a saved selection.
 :::
 
 ## Using saved queries
-Access [saved queries](/docs/build/saved-queries), powered by MetricFlow, in Google Sheets to quickly get results from pre-defined sets of data. To access the saved queries in Google Sheets:
 
-1. Open the hamburger menu in Google Sheets.
-2. Navigate to **Saved Queries** to access the ones available to you. 
-3. You can also select **Build Selection**, which allows you to explore the existing query. This won't change the original query defined in the code.
-   - If you use a `WHERE` filter in a saved query, Google Sheets displays the advanced syntax for this filter.
+Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricFlow, to quickly get results from pre-defined sets of data. To access the saved queries in your integration:
+
+- Open the hamburger menu in Google Sheets.
+- Navigate to **Saved Queries** to access the ones available to you.
+- You can also select **Build Selection**, which allows you to explore the existing query. This won't change the original query defined in the code.
+  - If you use a [`where` filter](/docs/build/saved-queries#where-clause) in a saved query, Google Sheets displays the advanced syntax for this filter.
 
 **Limited use policy disclosure**
 

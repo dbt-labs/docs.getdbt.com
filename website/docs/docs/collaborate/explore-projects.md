@@ -1,8 +1,8 @@
 ---
-title: "Explore your dbt projects"
-sidebar_label: "Explore dbt projects"
-description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
-pagination_next: "docs/collaborate/model-performance"
+title: "Discover data with dbt Explorer"
+sidebar_label: "Discover data with dbt Explorer"
+description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your dbt projects."
+pagination_next: "docs/collaborate/column-level-lineage"
 pagination_prev: null
 ---
 
@@ -12,28 +12,40 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 - You have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) or [staging](/docs/deploy/deploy-environments#create-a-staging-environment) deployment environment for each project you want to explore.
-    - There has been at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update dbt Explorer. 
-- You are on the dbt Explorer page. To do this, select **Explore** from the top navigation bar in dbt Cloud.
+- You have at least one successful job run in the deployment environment. Note that [CI jobs](/docs/deploy/ci-jobs) do not update dbt Explorer.
+- You are on the dbt Explorer page. To do this, select **Explore** from the navigation in dbt Cloud.
 
+## Overview page <Lifecycle status="beta" />
 
-## Generate metadata 
+Navigate the dbt Explorer overview page to access your project's resources and metadata, available in beta. The page includes the following sections:
 
-dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your dbt Cloud project. dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. 
+- **Search bar** &mdash; [Search](#search-resources) for resources in your project by keyword. You can also use filters to refine your search results.
+- **Sidebar** &mdash; Use the left sidebar to access model [performance](/docs/collaborate/model-performance), [project recommendations](/docs/collaborate/project-recommendations) in the **Project details** section. Browse your project's [resources, file tree, and database](#browse-with-the-sidebar) in the lower section of the sidebar.
+- **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
+- **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
+- **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/collaborate/govern/model-access#access-modifiers) in your project. 
 
-Note that CI jobs do not update dbt Explorer. This is because they don't reflect the production state and don't provide the necessary metadata updates.
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="100%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
 
-To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs. 
+## Generate metadata
+
+dbt Explorer uses the metadata provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to display the details about [the state of your project](/docs/dbt-cloud-apis/project-state). The metadata that's available depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ or _staging_ in your dbt Cloud project.
+
+- dbt Explorer automatically retrieves the metadata updates after each job run in the production or staging deployment environment so it always has the latest results for your project. This includes deploy and merge jobs.
+- Note that CI jobs do not update dbt Explorer. This is because they don't reflect the production state and don't provide the necessary metadata updates.
+- To view a resource and its metadata, you must define the resource in your project and run a job in the production or staging environment. 
+- The resulting metadata depends on the [commands](/docs/deploy/job-commands) executed by the jobs. 
 
 | To view in Explorer | You must successfully run |
 |---------------------|---------------------------|
 | Model lineage, details, or results | [dbt run](/reference/commands/run) or [dbt build](/reference/commands/build) on a given model within a job in the environment |
-| Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within a job in the environment |
+| Columns and statistics for models, sources, and snapshots| [dbt docs generate](/reference/commands/cmd-docs) within [a job](/docs/collaborate/build-and-view-your-docs) in the environment |
 | Test results | [dbt test](/reference/commands/test) or [dbt build](/reference/commands/build) within a job in the environment | 
 | Source freshness results | [dbt source freshness](/reference/commands/source#dbt-source-freshness) within a job in the environment |
 | Snapshot details | [dbt snapshot](/reference/commands/snapshot) or [dbt build](/reference/commands/build) within a job in the environment |
 | Seed details | [dbt seed](/reference/commands/seed) or [dbt build](/reference/commands/build) within a job in the environment |
 
-Richer and more timely metadata will become available as dbt Cloud evolves.
+Richer and more timely metadata will become available as dbt Cloud evolves. 
 
 ## Explore your project's lineage graph {#project-lineage}
 
@@ -52,7 +64,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 - Hover over any item in the graph to display the resource’s name and type.
 - Zoom in and out on the graph by mouse-scrolling.
 - Grab and move the graph and the nodes.
-- Right click on a node (context menu) to:
+- Right-click on a node (context menu) to:
     - Refocus on the node, including its upstream and downstream nodes
     - Refocus on the node and its downstream nodes only
     - Refocus on the node and it upstream nodes only
@@ -184,7 +196,7 @@ In the upper right corner of the resource details page, you can:
 - **Status bar** (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
 - **General** tab includes:
     - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
-    - **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
+    - **Description** section &mdash; A [description of the model](/docs/build/documentation#adding-descriptions-to-your-project).
     - **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
     - **Tests** section &mdash; [Tests](/docs/build/data-tests) for the model, including a status indicator for the latest test status. A :white_check_mark: denotes a passing test. 
     - **Details** section &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
@@ -251,7 +263,8 @@ dbt Explorer supports views for [staging deployment environments](/docs/deploy/d
 
 You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per dbt Cloud project as “production” or “staging," and ensure the proper metadata has been generated then you’ll be able to view it in Explorer. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="85%" title="Explore in a staging environment" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="100%" title="Explore in a staging environment" />
+
 
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 

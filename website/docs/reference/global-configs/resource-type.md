@@ -18,7 +18,7 @@ The available resource types are:
 
 - [`analysis`](/docs/build/analyses)
 - [`exposure`](/docs/build/exposures)
-- [`metric`](/docs/build/build-metrics-intro)
+- [`metric`](/docs/build/metrics-overview)
 - [`model`](/docs/build/models)
 - [`seed`](/docs/build/seeds)
 - [`snapshot`](/docs/build/snapshots)
