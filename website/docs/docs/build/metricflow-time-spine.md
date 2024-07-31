@@ -129,3 +129,72 @@ from final
 </VersionBlock>
 
 You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but it doesn't currently support finer grains.
+
+## Daily time spine
+This example uses `dbt.date_spine` with a `day` granularity to generate a table with one row per day. This is useful for metrics that need a daily aggregation.
+
+<File name='metricflow_time_spine_day.sql'>
+
+```sql
+-- filename: metricflow_time_spine_day.sql
+{{
+    config(
+        materialized = 'table',
+    )
+}}
+
+with days as (
+
+    {{
+        dbt.date_spine(
+            'day',
+            "to_date('01/01/2000','mm/dd/yyyy')",
+            "to_date('01/01/2030','mm/dd/yyyy')"
+        )
+    }}
+
+),
+
+final as (
+    select cast(date_day as date) as date_day
+    from days
+)
+
+select * from final
+```
+</File>
+
+## Hourly time spine
+
+<File name='metricflow_time_spine_hour.sql'>
+
+This example uses `dbt.date_spine` with an `hour` granularity to generate a table with one row per hour. This is needed for hourly data aggregation and other sub-daily analyses.
+
+```sql
+-- filename: metricflow_time_spine_hour.sql
+{{
+    config(
+        materialized = 'table',
+    )
+}}
+
+with hours as (
+
+    {{
+        dbt.date_spine(
+            'hour',
+            "to_date('01/01/2000','mm/dd/yyyy')",
+            "to_date('01/01/2030','mm/dd/yyyy')"
+        )
+    }}
+
+),
+
+final as (
+    select cast(date_hour as timestamp) as date_hour
+    from hours
+)
+
+select * from final
+```
+</File>
