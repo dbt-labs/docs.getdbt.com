@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Markdown from "markdown-to-jsx";
 import styles from './styles.module.css';
 import { usePluginData } from '@docusaurus/useGlobalData';
-import test from "../../../docs/faqs/Project/source-has-bad-name.md";
-console.log('test', test)
 
 function FAQ({ path, alt_header = null }) {
   const [isOn, setOn] = useState(false);
