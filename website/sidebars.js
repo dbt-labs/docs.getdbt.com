@@ -79,6 +79,7 @@ const sidebarSettings = {
               items: [
                 "docs/cloud/manage-access/about-user-access",
                 "docs/cloud/manage-access/invite-users",
+                "doc/cloud/manage-access/mfa",
                 {
                   type: "category",
                   label: "User permissions and licenses",
