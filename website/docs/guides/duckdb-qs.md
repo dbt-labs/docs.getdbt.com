@@ -14,15 +14,14 @@ tags: ['dbt Core','Quickstart']
 
 ## Introduction
 
-In this quickstart guide, you’ll learn how to install dbt Core for the use of DuckDB. 
+In this quickstart guide, you will discover how to use dbt Core with DuckDB. This guide will demonstrate how to: 
 
-We'll also touch on creating a codespace executing the `dbt build` command from it in _less than 5 minutes_. 
+- Create a GitHub Codespace using a template provided by dbt Labs.
+   - This sets up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
+- Run any dbt command from the environment’s terminal. 
+- Generate a larger dataset for the Jaffle Shop café (for example, 5 years of data instead of just one).
 
-The guide will show you how to:
-
-- Install DuckDB
-- Troubleshoot errors
-- Create a larger dataset
+For additional information, refer to the [README](https://github.com/gwenwindflower/octocatalog) for the Jaffle Shop template. It includes instructions on how to do this, along with animated GIFs.
 
 
 
