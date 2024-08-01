@@ -280,7 +280,7 @@ tests:
 
 :::note 
 
-This functionality is supported on versionless dbt Cloud accounts that have opted to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+This functionality is supported on versionless dbt Cloud accounts that have opted to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). Specifying custom configurations for data tests will become available in dbt Core later this year.
 
 :::
 
