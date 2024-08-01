@@ -141,7 +141,7 @@ semantic_models:
         description: Distinct count of transactions 
         expr: transaction_id
         agg: count_distinct
-      - name: transactions 
+      - name: transaction_amount_avg 
         description: The average value of transactions 
         expr: transaction_amount_usd
         agg: average 
