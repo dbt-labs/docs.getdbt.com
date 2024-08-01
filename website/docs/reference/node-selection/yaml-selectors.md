@@ -57,8 +57,6 @@ This is the most thorough syntax, which can include the operator-equivalent keyw
 
 Review [methods](/reference/node-selection/methods) for the available list.
 
-<VersionBlock firstVersion="1.5">
-
 ```yml
 definition:
   method: tag
@@ -76,9 +74,6 @@ definition:
 
   indirect_selection: eager | cautious | buildable | empty # include all tests selected indirectly? eager by default
 ```
-
-</VersionBlock>
-
 
 The `*` operator to select all nodes can be written as:
 ```yml
@@ -113,15 +108,10 @@ Note: The `exclude` argument in YAML selectors is subtly different from
 the `--exclude` CLI argument. Here, `exclude` _always_ returns a [set difference](https://en.wikipedia.org/wiki/Complement_(set_theory)),
 and it is always applied _last_ within its scope.
 
-<VersionBlock firstVersion="1.5">
-
 When more than one "yeslist" (`--select`) is passed, they are treated as a [union](/reference/node-selection/set-operators#unions) rather than an [intersection](/reference/node-selection/set-operators#intersections). Same thing when there is more than one "nolist" (`--exclude`).
 
-</VersionBlock>
 
 #### Indirect selection
-
-<VersionBlock firstVersion="1.5">
 
 As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious", "buildable", or "empty" by setting `indirect_selection` for a specific criterion:
 
@@ -144,8 +134,6 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
 ```
 
 If provided, a YAML selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious/buildable/empty modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
-
-</VersionBlock>
 
 See [test selection examples](/reference/node-selection/test-selection-examples) for more details about indirect selection.
 

@@ -6,8 +6,6 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
-<VersionBlock firstVersion="1.5">
-
 
 Many of the methods below support Unix-style wildcards:
 
@@ -23,8 +21,6 @@ For example:
 dbt list --select "*.folder_name.*"
 dbt list --select "package:*_source"
 ```
-
-</VersionBlock>
 
 ### The "tag" method
 The `tag:` method is used to select models that match a specified [tag](/reference/resource-configs/tags).
@@ -199,11 +195,7 @@ dbt test --select "test_name:range_min_max"     # run all instances of a custom 
 
 **N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
-<VersionBlock firstVersion="1.5">
-
 The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
-
-</VersionBlock>
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
@@ -227,15 +219,11 @@ Because state comparison is complex, and everyone's project is different, dbt su
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
-<VersionBlock firstVersion="1.6">
-
 There are two additional `state` selectors that complement `state:new` and `state:modified` by representing the inverse of those functions:
 - `state:old` &mdash; A node with the same `unique_id` exists in the comparison manifest
 - `state:unmodified` &mdash; All existing nodes with no changes 
 
 These selectors can help you shorten run times by excluding unchanged nodes. Currently, no subselectors are available at this time, but that might change as use cases evolve. 
-
-</VersionBlock>
 
 ### The "exposure" method
 
@@ -279,7 +267,6 @@ The following dbt commands produce `sources.json` artifacts whose results can be
 
 After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
 
-<VersionBlock firstVersion="1.5">
 
 ```bash
 # You can also set the DBT_STATE environment variable instead of the --state flag.
@@ -287,12 +274,7 @@ dbt source freshness # must be run again to compare current to previous state
 dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
 
-</VersionBlock>
-
-
 ### The "group" method
-
-<VersionBlock firstVersion="1.5">
 
 The `group` method is used to select models defined within a [group](/reference/resource-configs/group).
 
@@ -301,11 +283,7 @@ The `group` method is used to select models defined within a [group](/reference/
 dbt run --select "group:finance" # run all models that belong to the finance group.
 ```
 
-</VersionBlock>
-
 ### The "access" method
-
-<VersionBlock firstVersion="1.5">
 
 The `access` method selects models based on their [access](/reference/resource-configs/access) property.
 
@@ -315,11 +293,7 @@ dbt list --select "access:private"       # list all private models
 dbt list --select "access:protected"       # list all protected models
 ```
 
-</VersionBlock>
-
 ### The "version" method
-
-<VersionBlock firstVersion="1.5">
 
 The `version` method selects [versioned models](/docs/collaborate/govern/model-versions) based on their [version identifier](/reference/resource-properties/versions) and [latest version](/reference/resource-properties/latest_version).
 
@@ -331,13 +305,7 @@ dbt list --select "version:old"         # versions older than the 'latest' versi
 dbt list --select "version:none"        # models that are *not* versioned
 ```
 
-</VersionBlock>
-
 ### The "semantic_model" method
-<VersionBlock lastVersion="1.5">
-Supported in v1.6 or newer.
-</VersionBlock>
-<VersionBlock firstVersion="1.6">
 
 The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
 
@@ -345,8 +313,6 @@ The `semantic_model` method selects [semantic models](/docs/build/semantic-model
 dbt list --select "semantic_model:*"        # list all semantic models 
 dbt list --select "+semantic_model:orders"  # list your semantic model named "orders" and all upstream resources
 ```
-
-</VersionBlock>
 
 ### The "saved_query" method
 <VersionBlock lastVersion="1.6">

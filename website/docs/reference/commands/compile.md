@@ -16,8 +16,6 @@ Some common misconceptions:
 - `dbt compile` is _not_ a pre-requisite of `dbt run`, or other building commands. Those commands will handle compilation themselves.
 - If you just want dbt to read and validate your project code, without connecting to the data warehouse, use `dbt parse` instead.
 
-<VersionBlock firstVersion="1.5">
-
 ### Interactive compile
 
 Starting in dbt v1.5, `compile` can be "interactive" in the CLI, by displaying the compiled code of a node or arbitrary dbt-SQL query:
@@ -77,8 +75,6 @@ dbt compile --inline "select * from {{ ref('raw_orders') }}"
 18:15:50  Compiled inline node is:
 select * from "jaffle_shop"."main"."raw_orders"
 ```
-
-</VersionBlock>
 
 The command accesses the data platform to cache-related metadata, and to run introspective queries. Use the flags:
 - `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query. This is a `dbt` flag, which means you need to add `dbt` as a prefix. For example: `dbt --no-populate-cache`.
