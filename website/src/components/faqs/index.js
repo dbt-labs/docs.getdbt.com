@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Markdown from "markdown-to-jsx";
 import styles from './styles.module.css';
 import { usePluginData } from '@docusaurus/useGlobalData';
+import test from "../../../docs/faqs/Project/source-has-bad-name.md";
+console.log('test', test)
 
 function FAQ({ path, alt_header = null }) {
   const [isOn, setOn] = useState(false);
@@ -30,21 +32,19 @@ function FAQ({ path, alt_header = null }) {
       try {
         console.log("filePath", filePath);
         const file = await import(`../../../docs/faqs/${filePath}.md`)
-        // console.log("mdFile", mdFile);
-        // const res = await fetch(mdFile?.default);
-        // console.log('res', res)
-        // const file = await res?.text()
         console.log("file", file)
+
         if (file) {
           const meta = file.metadata;
           console.log('meta', meta)
 
-          const res = await fetch(file.default);
-          console.log("res", res);
-          const contents = await fetch(res.text())
-          // const contents = file.default;
-          console.log('contents', contents)
-          setFileContent({ meta, contents })
+          // const markdown = await fetch(file.default);
+          const markdown = file.default;
+          console.log("markdown", markdown);
+          // const contents = await fetch(markdown?.text())
+          // console.log('contents', contents)
+
+          setFileContent({ meta, contents: markdown })
         }
       } catch (err) {
         return null
@@ -57,17 +57,28 @@ function FAQ({ path, alt_header = null }) {
     setOn(!isOn);
   }
 
+  console.log("fileContent", fileContent);
+
   return (
     <div className={styles.faqs}>
       <span className={styles.link} onClick={toggleOn}>
-        <span className={styles.toggle} style={{ transform: isOn ? 'rotateX(0deg)' : 'rotateX(180deg)' }}></span>
-        <span className={styles.headerText}>{alt_header || (fileContent?.meta && fileContent.meta.title)}</span>
+        <span
+          className={styles.toggle}
+          style={{ transform: isOn ? "rotateX(0deg)" : "rotateX(180deg)" }}
+        ></span>
+        <span className={styles.headerText}>
+          {alt_header || (fileContent?.meta && fileContent.meta.title)}
+        </span>
       </span>
-      <div style={{ display: isOn ? 'block' : 'none' }} className={styles.body}>
-        <Markdown>
+      {fileContent.contents ? (
+        <div
+          style={{ display: isOn ? "block" : "none" }}
+          className={styles.body}
+        >
+          {/* <Markdown children={fileContent.contents} /> */}
           {fileContent.contents}
-        </Markdown>
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 }
