@@ -32,7 +32,7 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 <UseCaseInfo/>
 
 ## How do I add a package to my project?
-1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
+1. Add a file named `dependencies.yml` or `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
 
 <File>
@@ -195,7 +195,7 @@ This method allows the user to clone via HTTPS by passing in a git token via an 
 
 
 :::info dbt Cloud usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or <VersionBlock lastVersion="1.5">`DBT_ENV_SECRET_`</VersionBlock><VersionBlock firstVersion="1.6">`DBT_ENV_SECRET`</VersionBlock>. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
 In GitHub:
