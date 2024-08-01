@@ -310,7 +310,7 @@ data_tests:
 
 ## FAQs
 
-<FAQ path="/Tests/available-tests" />
+<FAQ path="Tests/available-tests" />
 <FAQ path="Tests/test-one-model" />
 <FAQ path="Runs/failed-tests" />
 <FAQ path="Tests/recommended-tests" />
