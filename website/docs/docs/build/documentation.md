@@ -59,12 +59,12 @@ models:
 
 The default documentation experience in dbt Cloud is [dbt Explorer](/docs/collaborate/explore-projects), available on [Team or Enterprise plans](https://www.getdbt.com/pricing/). Use dbt Explorer to view your project's resources (such as models, tests, and metrics), its [metadata](/docs/collaborate/explore-projects#generate-metadata), and their lineage to gain a better understanding of its latest production state.
 
-dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), which generates basic documentation, but it doesn't offer the same speed, metadata, or visibility as dbt Explorer. 
+dbt Cloud developer and dbt Core users can use [dbt Docs](/docs/collaborate/build-and-view-your-docs#dbt-docs), which generates basic documentation, but doesn't offer the same speed, metadata, or visibility as dbt Explorer. 
 
-Generate documentation for you project by following these steps:
+Generate documentation for your project by following these steps:
 
 1. Run `dbt docs generate` — this command tells dbt to compile relevant information about your dbt project and warehouse into `manifest.json` and `catalog.json` files, respectively. 
-2. Ensure that you have created the models with `dbt run` to view the documentation for all columns, not just those described in your project.
+2. Ensure you've created the models with `dbt run` to view the documentation for all columns, not just those described in your project.
 3. Run `dbt docs serve` if you're developing locally to use these `.json` files to populate a local website.
 
 To view a resource, its metadata, and what commands are needed in dbt Explorer, refer to [generate metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
