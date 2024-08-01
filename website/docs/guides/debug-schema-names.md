@@ -93,7 +93,7 @@ Now, re-read through the logic of your `generate_schema_name` macro, and mentall
 
 You should find that the schema dbt is constructing for your model matches the output of your `generate_schema_name` macro.
 
-Be careful. Snapshots do not follow this behavior, check out the docs on [target_schema](/reference/resource-configs/target_schema) instead.
+Be careful. Snapshots do not follow this behavior if target_schema is set. To have environment-aware snapshots in v1.9+ or dbt Cloud, remove the [target_schema config](/reference/resource-configs/target_schema) from your snapshots. If you still want a custom schema for your snapshots, use the [`schema`](/reference/resource-configs/schema) config instead.
 
 ## Adjust as necessary
 
