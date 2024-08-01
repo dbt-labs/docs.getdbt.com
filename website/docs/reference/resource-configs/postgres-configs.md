@@ -8,21 +8,9 @@ id: "postgres-configs"
 
 In dbt-postgres, the following incremental materialization strategies are supported:
 
-<VersionBlock lastVersion="1.5">
-
-- `append` (default when `unique_key` is not defined)
-- `delete+insert` (default when `unique_key` is defined)
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
 - `append` (default when `unique_key` is not defined)
 - `merge`
 - `delete+insert` (default when `unique_key` is defined)
-
-</VersionBlock>
-
 
 ## Performance optimizations
 
@@ -103,8 +91,6 @@ models:
 ```
 
 </File>
-
-<VersionBlock firstVersion="1.6">
 
 ## Materialized views
 
@@ -200,7 +186,7 @@ This happens via a `DROP/CREATE` of the indexes, which can be thought of as an `
 
 Learn more about these parameters in Postgres's [docs](https://www.postgresql.org/docs/current/sql-creatematerializedview.html).
 
-<VersionBlock firstVersion="1.6" lastVersion="1.6">
+<VersionBlock lastVersion="1.6">
 
 ### Limitations
 
@@ -214,7 +200,5 @@ This would only need to be done once as the existing object would then be a mate
 For example,`my_model`, has already been materialized as a table in the underlying data platform via `dbt run`.
 If the user changes the model's config to `materialized="materialized_view"`, they will get an error.
 The solution is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
-
-</VersionBlock>
 
 </VersionBlock>
