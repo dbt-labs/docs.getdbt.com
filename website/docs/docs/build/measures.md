@@ -147,7 +147,7 @@ semantic_models:
         agg: average 
       - name: transactions_amount_usd_valid # Notice here how we use expr to compute the aggregation based on a condition
         description: The total USD value of valid transactions only
-        expr: CASE WHEN is_valid = True then 1 else 0 end 
+        expr: CASE WHEN is_valid = True then transaction_amount_usd else 0 end 
         agg: sum
       - name: transactions
         description: The average value of transactions.
