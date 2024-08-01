@@ -279,7 +279,7 @@ In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For de
   
 Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, the key was renamed from `tests:` to `data_tests:`. 
 
-`tests:` is still supported in your YML configuration files for backwards-compatibility purposes, and you might see it in use in some of our documentation. You can't have a `tests` and a `data_tests` key associated with the same resource (e.g. a single model) at the same time.
+dbt still supports `tests:` in your YML configuration files for backwards-compatibility purposes, and you might see it used throughout our documentation. However, you can't have a `tests` and a `data_tests` key associated with the same resource (e.g. a single model) at the same time.
 
 <File name='models/schema.yml'>
 
