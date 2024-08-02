@@ -35,23 +35,7 @@ For additional information, refer to the [README](https://github.com/gwenwindflo
 
 DuckDB is an open-source database management system which is designed for analytical workloads.  It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
 
-Here's a list of some of the main features of DuckDB:
-
-- In-Process Database: Unlike traditional databases that run as a separate server process, DuckDB runs within the host application process. This allows for tight integration and low-latency data access.
-
-- SQL Support: DuckDB supports standard SQL, making it accessible to users familiar with SQL syntax and enabling the use of complex queries for data analysis.
-
-- Columnar Storage: DuckDB uses a columnar storage format, which is efficient for analytical queries that often need to scan large amounts of data but only a few columns. This design improves performance for read-heavy operations.
-
-- OLAP (Online Analytical Processing) Focused: While traditional relational databases are optimized for OLTP (Online Transaction Processing) workloads, DuckDB is optimized for OLAP workloads, which involve complex queries and data analysis.
-
-- Embeddable: Being embeddable means DuckDB can be included as a library in applications, making it a good choice for scenarios where a lightweight, high-performance database is needed without the overhead of a separate database server.
-
-- Cross-Platform: DuckDB works on multiple operating systems, including Windows, macOS, and Linux.
-
-- Easy Integration: It can be easily integrated with other data processing tools and environments, such as Python, R, and various data science and machine learning frameworks.
-
-- No External Dependencies: DuckDB does not rely on external services or infrastructure, making it easy to deploy and use in a wide range of environments.
+For more information, please refer to the [Duck DB](https://duckdb.org/) website.
 
 
  </TabItem>
@@ -83,12 +67,14 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
+Currently, DuckDB is not supported in dbt Cloud.
+
 
 
 ## Set up DuckDB for dbt Core
 
 
-Below you'll find a step by step guide on getting up and running with this project.
+The following will provide a step by step guide on setting up DuckDB for both local and web browser.
 
 
 <Tabs>
@@ -107,7 +93,7 @@ cd docs-duckdb
 
 3. Install dbt and DuckDB in a virtual environment.
 
-If you're using MAC, you can copy and paste the below:
+<detailsToggle alt_header="If you're using MAC, you can copy and paste the below:">
 
 ```Jinja
 
@@ -119,7 +105,10 @@ source venv/bin/activate
 
 ```
 
-Windows cmd.exe
+</detailsToggle>
+
+
+<detailsToggle alt_header="For Windows cmd.exe, you can copy and paste the below:">
 
 ```Jinja
 
@@ -131,7 +120,10 @@ venv\Scripts\activate.bat
 
 ```
 
-Windows PowerShell
+</detailsToggle>
+
+
+<detailsToggle alt_header="For Windows PowerShell, you can copy and paste the below:">
 
 ```Jinja
 
@@ -142,24 +134,20 @@ python -m pip install -r requirements.txt
 venv\Scripts\Activate.ps1
 
 ```
+
+</detailsToggle>
+
+
+
+For detailed information, refer to the dbt command reference. Frequently used commands include:
 
 4. Ensure your profile is setup correctly from the command line by running the following:
 
-
-- [dbt --version](/reference/project-configs/require-dbt-version) - to restrict your project to only work with a range of dbt versions.
-- [dbt debug](/reference/commands/debug) - to test the database connection and display information for debugging purposes.
-
-
-5. Load the CSVs with the demo data set, run the models, and test the output of the models using the dbt build command:
-
-
-- [dbt build](/reference/commands/run) — compiles and runs your project.
-
-
-6. Generate and view the documentation for the project:
-
-
-- [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - to generate your project's documentation.
+- [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
+- [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
+- [dbt test](https://docs.getdbt.com/reference/commands/test) — compiles and tests your project
+- [dbt build](https://docs.getdbt.com/reference/commands/build) — compiles, runs, and tests your project
+- [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - generates your project's documentation.
 - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) - starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
 
@@ -201,7 +189,7 @@ IO Error: Could not set lock on file "jaffle_shop.duckdb": Resource temporarily 
 
 This is a known issue in DuckDB. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
 
-As a last resort, deleting the database file will get you back in action (_BUT_ you will lose all your data).
+As a last resort, deleting the database file will get you back in action (_but_ you will lose all your data).
 
 
  </TabItem>
@@ -241,12 +229,6 @@ As a last resort, deleting the database file will get you back in action (_BUT_ 
 
 Fore more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
 
-
-:::info DuckDB Support
-
-Currently, DuckDB is not supported in dbt Cloud.
-
-:::
 
 
 ## Generate a larger data set
