@@ -2,7 +2,7 @@
 title: "Connect Amazon Athena"
 id: connect-amazon-athena
 description: "Configure Amazon Athena connection."
-sidebar_label: "Connect Athena"
+sidebar_label: "Connect Amazon Athena"
 ---
 
 # Connect Amazon Athena <Lifecycle status="beta" />
