@@ -19,7 +19,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## July 2024
-- **New:** [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management) are now a global account setting. This is being rolled out in phases over the coming weeks.
+- **New:** [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management) are now available under **Account settings** as a global setting. Previously, they were found under **Project settings**.  This is being rolled out in phases over the coming weeks.
 - **New:** Admins can now assign [environment-level permissions](/docs/cloud/manage-access/environment-permissions) to groups for specific roles.
 - **New:** [Merge jobs](/docs/deploy/merge-jobs) for implementing [continuous deployment (CD)](/docs/deploy/continuous-deployment) workflows are now GA in dbt Cloud. Previously, you had to either set up a custom GitHub action or manually build the changes every time a pull request is merged.
 - **New**: The ability to lint your SQL files from the dbt Cloud CLI is now available. To learn more, refer to [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files).
