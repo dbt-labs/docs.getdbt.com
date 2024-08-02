@@ -593,6 +593,5 @@ Snapshot results:
 <FAQ path="Runs/snapshot-frequency" />
 <FAQ path="Snapshots/snapshot-schema-changes" />
 <FAQ path="Snapshots/snapshot-hooks" />
-<FAQ path="Snapshots/snapshot-target-schema" />
 <FAQ path="Accounts/configurable-snapshot-path" />
 <FAQ path="Snapshots/snapshot-target-is-not-a-snapshot-table" />
