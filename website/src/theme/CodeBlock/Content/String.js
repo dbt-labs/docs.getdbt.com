@@ -17,6 +17,13 @@ import styles from './styles.module.css';
 // Prism languages are always lowercase
 // We want to fail-safe and allow both "php" and "PHP"
 // See https://github.com/facebook/docusaurus/issues/9012
+
+/* dbt Customizations:
+ * Adds custom squashLinks method to 
+ * allow links in markdown.
+ */
+import squashLinks from './inline-link';
+
 function normalizeLanguage(language) {
   return language?.toLowerCase();
 }
@@ -70,16 +77,20 @@ export default function CodeBlockString({
                   styles.codeBlockLines,
                   showLineNumbers && styles.codeBlockLinesWithNumbering,
                 )}>
-                {tokens.map((line, i) => (
-                  <Line
-                    key={i}
-                    line={line}
-                    getLineProps={getLineProps}
-                    getTokenProps={getTokenProps}
-                    classNames={lineClassNames[i]}
-                    showLineNumbers={showLineNumbers}
-                  />
-                ))}
+                {tokens.map((line, i) => {
+                  const squashedLine = squashLinks(line);
+                  return (
+                    <Line
+                      key={i}
+                      line={squashedLine}
+                      getLineProps={getLineProps}
+                      getTokenProps={getTokenProps}
+                      classNames={lineClassNames[i]}
+                      showLineNumbers={showLineNumbers}
+                    />
+                  );
+                } 
+                )}
               </code>
             </pre>
           )}
