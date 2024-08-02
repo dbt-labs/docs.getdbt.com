@@ -271,15 +271,15 @@ The Power User extension will handle installing the Cloud CLI on your behalf.
 
 ## FAQs
 
-<detailsToggle alt_header="What's the difference between the dbt Cloud CLI and dbt Core?">
+<DetailsToggle alt_header="What's the difference between the dbt Cloud CLI and dbt Core?">
 
 The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. 
 
 The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">features</a>.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How do I run both the dbt Cloud CLI and dbt Core?">
+<DetailsToggle alt_header="How do I run both the dbt Cloud CLI and dbt Core?">
 
 For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 
@@ -291,9 +291,9 @@ If you have dbt Core installed locally, either:
 
 You can always uninstall the dbt Cloud CLI to return to using dbt Core.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How to create an alias?">
+<DetailsToggle alt_header="How to create an alias?">
 
 To create an alias for the dbt Cloud CLI: <br />
 
@@ -313,11 +313,11 @@ As an example, in bash you would run: <code>source ~/.bashrc</code><br />
 
 This alias will allow you to use the <code>dbt-cloud</code> command to invoke the dbt Cloud CLI while having dbt Core installed natively.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Why am I receiving a `Session occupied` error?">
+<DetailsToggle alt_header="Why am I receiving a `Session occupied` error?">
 
 
 If you've ran a dbt command and receive a <code>Session occupied</code> error, you can reattach to your existing session with <code>dbt reattach</code> and then press <code>Control-C</code> and choose to cancel the invocation.
 
-</detailsToggle>
+</DetailsToggle>

@@ -143,7 +143,7 @@ To grant users or roles database permissions (access rights and privileges), ref
 
 ## FAQs
 
-<detailsToggle alt_header="Database Error - could not connect to server: Connection timed out">
+<DetailsToggle alt_header="Database Error - could not connect to server: Connection timed out">
 When setting up a database connection using an SSH tunnel, you need the following components:
 
 - A load balancer (like ELB or NLB) to manage traffic.
@@ -166,4 +166,4 @@ To prevent premature disconnections, you can adjust the settings on the bastion 
 - `ClientAliveInterval` &mdash; Configures when to check for client activity. For example, `ClientAliveInterval 30` checks every 30 seconds.
 The example adjustments ensure that inactive SSH clients are disconnected after about 300 seconds, reducing the chance of tunnel failures.
 
-</detailsToggle>
+</DetailsToggle>
