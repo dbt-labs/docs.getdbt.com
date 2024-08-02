@@ -5,7 +5,7 @@ When using the dbt Semantic Layer in a [dbt Mesh](/best-practices/how-we-mesh/me
 - Your dbt Semantic Layer project serves as a global source of truth across the rest of your projects.
 
 #### Usage example 
-For example, to let's say you have a public model (`fct_orders`) that lives in the `jaffle_finance` project. As you build your semantic model, use the following syntax to ref the model:
+For example, let's say you have a public model (`fct_orders`) that lives in the `jaffle_finance` project. As you build your semantic model, use the following syntax to ref the model:
 
 <File name="models/metrics/semantic_model_name.yml">
 
