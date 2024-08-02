@@ -59,6 +59,7 @@ const sidebarSettings = {
               },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-amazon-athena",
                 "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
                 "docs/cloud/connect-data-platform/connect-microsoft-fabric",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
