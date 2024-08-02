@@ -35,10 +35,18 @@ link="/dbt-cloud/api-v2"
 link="/dbt-cloud/api-v3"
     icon="pencil-paper"/>
 
-<Card
+<div className="card-container">
+ <Card
     title="dbt Cloud Terraform provider"
+    link=="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
     body="The Terraform provider maintained by dbt Labs which can be used to manage a dbt Cloud account."
-link="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
     icon="pencil-paper"/>
-
+    <a href="https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest"
+    className="external-link"      
+    target="_blank"
+    rel="noopener noreferrer">
+    <Icon name='fa-external-link' />
+  <a/>
+</div>
+    
 </div>
