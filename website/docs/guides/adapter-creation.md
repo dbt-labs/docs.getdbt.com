@@ -76,7 +76,7 @@ Differences between databases are encoded into discrete areas:
 
 | Components       | Code Path                                         | Function                                                                      |
 |------------------|---------------------------------------------------|-------------------------------------------------------------------------------|
-| Python Classes   | `adapters/<adapter_name>`                         | Configuration (See above [Python classes](##python classes)                   |
+| Python Classes   | `adapters/<adapter_name>`                         | Configuration (See above [Python classes](#python classes)                   |
 | Macros           | `include/<adapter_name>/macros/adapters/`         | SQL API & statement syntax (for example, how to create schema or how to get table info) |
 | Materializations | `include/<adapter_name>/macros/materializations/` | Table/view/snapshot/ workflow definitions                                     |
 
