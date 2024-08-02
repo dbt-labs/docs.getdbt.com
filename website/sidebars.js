@@ -79,6 +79,7 @@ const sidebarSettings = {
               items: [
                 "docs/cloud/manage-access/about-user-access",
                 "docs/cloud/manage-access/invite-users",
+                "docs/cloud/manage-access/mfa",
                 {
                   type: "category",
                   label: "User permissions and licenses",
@@ -462,6 +463,7 @@ const sidebarSettings = {
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
         "docs/deploy/continuous-integration",
+        "docs/deploy/continuous-deployment",
         {
           type: "category",
           label: "Jobs",

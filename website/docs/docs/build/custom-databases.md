@@ -89,13 +89,9 @@ import WhitespaceControl from '/snippets/_whitespace-control.md';
 
 <WhitespaceControl/>
 
-<VersionBlock firstVersion="1.6">
-
 ### Managing different behaviors across packages
 
 See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
-
-</VersionBlock>
 
 ## Considerations
 
