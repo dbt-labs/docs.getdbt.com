@@ -26,7 +26,7 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `type_params::cumulative_type_params` | Allows you to add a `window`, `period_agg`, and `grain_to_date` configuration. Nested under `type_params`. | Optional |
 | `cumulative_type_params::window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional |
 | `cumulative_type_params::grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
-| `cumulative_type_params::period_agg` | Specifies how to aggregate the cumulative metric when summarizing data to a different granularity. Can be used with grain_to_date. Options are <br /> - `first` (Takes the first value within the period) <br /> - `last` (Takes the last value within the period <br /> - `avg` (Calculates the average value within the period). <br /> <br /> Defaults to `first` if no `window` is specified. | Optional |
+| `cumulative_type_params::period_agg` | Specifies how to aggregate the cumulative metric when summarizing data to a different granularity. Can be used with grain_to_date. Options are <br /> - `first` (Takes the first value within the period) <br /> - `last` (Takes the last value within the period <br /> - `average` (Calculates the average value within the period). <br /> <br /> Defaults to `first` if no `window` is specified. | Optional |
 | `type_params::measure` | A dictionary describing the measure you will use. | Required |
 | `measure::name` | The measure you are referencing. | Optional |
 | `measure::fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
@@ -45,7 +45,7 @@ metrics:
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
       cumulative_type_params:
-        period_agg: first # Optional. Defaults to first. Accepted values: first|last|avg
+        period_agg: first # Optional. Defaults to first. Accepted values: first|last|average
         window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. It cannot be used with grain_to_date.
         grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. It cannot be used with window.
       measure: 
@@ -105,7 +105,7 @@ metrics:
 
 ### Granularity options
 
-Use the `period_agg` parameter with `first()`, `last()`, and `avg()` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
+Use the `period_agg` parameter with `first()`, `last()`, and `average()` functions to aggregate cumulative metrics over the requested period. This is because granularity options for cumulative metrics are different than the options for other metric types. 
 - For other metrics, we use the `date_trunc` function to implement granularity. 
 - However, cumulative metrics are non-additive (values can't be added up), so we can't use the `date_trunc` function to change their time grain granularity.
 - By default, we take the first value of the period. You can change this by specifying a different function using the `period_agg` parameter.
@@ -122,7 +122,7 @@ In the following example, we define a cumulative metric, `cumulative_revenue`, t
   type_params:
     measure: revenue
     cumulative_type_params:
-      period_agg: first # Optional. Defaults to first. Accepted values: first|end|avg
+      period_agg: first # Optional. Defaults to first. Accepted values: first|end|average
 ```
 </File>
 
@@ -131,7 +131,7 @@ In this example, `period_agg` is set to `first`, which chooses the first value f
 
 <Expandable alt_header="Expand toggle to view how the SQL compiles">
 
-Note the use of the `window` function to select the `first` value. For `last` and `avg`, we would replace the `first_value()` function in the generated SQL with `last_value()` and `average` respectively.
+Note the use of the `window` function to select the `first` value. For `last` and `average`, we would replace the `first_value()` function in the generated SQL with `last_value()` and `average` respectively.
 
 ```sql
 -- re-aggregate metric via the group by
@@ -328,7 +328,7 @@ metrics:
       measure: order_total
       cumulative_type_params:
         grain_to_date: month # Resets at the beginning of each month
-        period_agg: first # Optional. Defaults to first. Accepted values: first|last|avg
+        period_agg: first # Optional. Defaults to first. Accepted values: first|last|average
 ```
 </File>
 

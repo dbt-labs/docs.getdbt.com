@@ -40,6 +40,13 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
    
+    - North America: https://YOUR_ACCESS_URL/cloud-cli
+    - EMEA: https://emea.dbt.com/cloud-cli
+    - APAC: https://au.dbt.com/cloud-cli
+    - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
+    - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
+  
+3. Follow the banner instructions and download the config file to:
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
    - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
 
@@ -79,7 +86,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
         project-id: PROJECT_ID
     ```
 
-   - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://cloud.getdbt.com/develop/26228/projects/123456`, the project ID is `123456`.
+   - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://YOUR_ACCESS_URL/develop/26228/projects/123456`, the project ID is `123456`.
 
 5. You should now be able to [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration details or `dbt compile` to compile models in your dbt project.
 
@@ -110,17 +117,34 @@ As a tip, most command-line tools have a `--help` flag to show available command
 - `dbt run --help`: Lists the flags available for the `run` command
 :::
  
-### SQLFluff integration
-The dbt Cloud CLI supports [SQLFluff](https://sqlfluff.com/), a modular and configuration SQL linter, which warns you of complex functions, syntax, formatting, and compilation errors.
+### Lint SQL files 
 
-To get started, run `dbt sqlfluff -h` to see the list of supported commands and flags, such as `dbt sqlfluff lint` to lint SQL files.
+From the dbt Cloud CLI, you can invoke [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. Many of the same flags that you can pass to SQLFluff are available from the dbt Cloud CLI.
+
+The available SQLFluff commands are: 
+
+- `lint` &mdash; Lint SQL files by passing a list of files or from standard input (stdin).
+- `fix` &mdash; Fix SQL files.
+- `format` &mdash; Autoformat SQL files.
+
+
+To lint SQL files, run the command as follows:  
+
+```shell
+dbt sqlfluff lint [PATHS]... [flags]
+```
+
+When no path is set, dbt lints all SQL files in the current project. To lint a specific SQL file or a directory, set `PATHS` to the path of the SQL file(s) or directory of files. To lint multiple files or directories, pass multiple `PATHS` flags.  
+
+To show detailed information on all the dbt supported commands and flags, run the `dbt sqlfluff -h` command. 
 
 #### Considerations
-Keep the following points in mind when using SQLFluff with the dbt Cloud:
 
-- When you run `dbt sqlfluff`, it picks up changes to your local .sqlfluff config.
-- To use SQLFluff in continuous integration/continuous development, you need to have a `dbt_cloud.yml` file in your project and run commands from a valid dbt project.
-- SQLFluff commands in the dbt Cloud CLI do not return exit codes yet.
+When running `dbt sqlfluff` from the dbt Cloud CLI, the following are important behaviors to consider:
+
+- dbt reads the `.sqlfluff` file, if it exists, for any custom configurations you might have.
+- For continuous integration/continuous development (CI/CD) workflows, your project must have a `dbt_cloud.yml` file and you have successfully run commands from within this dbt project.
+- An SQLFluff command will return an exit code of 0 if it ran with any file violations. This dbt behavior differs from SQLFluff behavior, where a linting violation returns a non-zero exit code. dbt Labs plans on addressing this in a later release.
 
 ## FAQs
 <Expandable alt_header="How to create a .dbt directory and move your file">

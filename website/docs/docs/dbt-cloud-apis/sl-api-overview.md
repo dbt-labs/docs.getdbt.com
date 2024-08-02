@@ -6,14 +6,6 @@ tags: [Semantic Layer, API]
 hide_table_of_contents: true
 pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
 ---
-
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
-</VersionBlock>
  
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.<br /><br />
 
@@ -48,6 +40,12 @@ plan="dbt Cloud Team or Enterprise"
     title="GraphQL API"
     body="Use GraphQL to query metrics and dimensions in downstream tools."
     link="/docs/dbt-cloud-apis/sl-graphql"
+    icon="dbt-bit"/>
+
+<Card
+    title="Python SDK (Preview)"
+    body="Use the Python SDK to interact with the dbt Semantic Layer using Python."
+    link="/docs/dbt-cloud-apis/sl-python"
     icon="dbt-bit"/>
 
 <Card

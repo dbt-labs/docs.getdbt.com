@@ -2,7 +2,7 @@
 title: "Packages"
 id: "packages"
 description:  "Discover how dbt packages help modularize code and transform data efficiently. Learn about git packages, hub packages, private packages, and advanced package configurations."
-keywords: [dbt packages, dbt package, dbt private package, dbt data transformation, dbt libraries, how to add a package dbt project]
+keywords: [dbt package, private package, dbt private package, dbt data transformation, dbt clone, add dbt package]
 ---
 
 
@@ -32,7 +32,7 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 <UseCaseInfo/>
 
 ## How do I add a package to my project?
-1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
+1. Add a file named `dependencies.yml` or `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
 
 <File>
@@ -190,12 +190,12 @@ packages:
 If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
 
 
-#### Git Token Method
+#### Git token method
 This method allows the user to clone via HTTPS by passing in a git token via an environment variable. Be careful of the expiration date of any token you use, as an expired token could cause a scheduled run to fail. Additionally, user tokens can create a challenge if the user ever loses access to a specific repo.
 
 
-:::info dbt Cloud Usage
-If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or <VersionBlock lastVersion="1.5">`DBT_ENV_SECRET_`</VersionBlock><VersionBlock firstVersion="1.6">`DBT_ENV_SECRET`</VersionBlock>. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
+:::info dbt Cloud usage
+If you are using dbt Cloud, you must adhere to the naming conventions for environment variables. Environment variables in dbt Cloud must be prefixed with either `DBT_` or `DBT_ENV_SECRET`. Environment variables keys are uppercased and case sensitive. When referencing `{{env_var('DBT_KEY')}}` in your project's code, the key must match exactly the variable defined in dbt Cloud's UI.
 :::
 
 In GitHub:

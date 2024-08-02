@@ -63,17 +63,8 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/version-control-options-menu.png" width="30%" title="Right-click edited files to access Version Control Options menu"/>
 
-<VersionBlock lastVersion="1.5">
 
-   - Keep in mind that although you can't delete unmerged local branches in the IDE using this menu, you can [reclone your repository](/docs/cloud/dbt-cloud-ide/ide-user-interface#modals-and-menus), which deletes your local branches and refreshes with the current remote branches, effectively removing the deleted ones.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
-  - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note, prune will not delete the branch you've currently checked out.
-
-</VersionBlock>
+  - Use the **Prune branches** option to remove local branches that have already been deleted from the remote repository. Selecting this triggers a [pop-up modal](#prune-branches-modal), where you can confirm the deletion of the specific local branches, keeping your branch management tidy. Note that this won't delete the branch you're currently on. Pruning branches isn't available for [managed repositories](/docs/collaborate/git/managed-repository) because they don't have a typical remote setup, which prevents remote branch deletion. 
 
 ## Additional editing features
 
@@ -189,13 +180,9 @@ Use menus and modals to interact with IDE and access useful options to help your
   The Change Branch modal allows users to switch git branches in the IDE. It can be accessed through the **Change Branch** link or the **Git actions** button under the **Version control** menu.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/change-branch-modal.png" width="90%" title="The Commit Changes modal is how users change their branch."/>
 
-<VersionBlock firstVersion="1.6">
-
 - #### Prune branches modal
-  The Prune branches modal allows users to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. This is accessible through the **Git actions** button under the [**Version control** menu](#editing-features). Note, prune will not delete the branch you've currently checked out.
+  The Prune branches modal allows users to delete local branches that have been deleted from the remote repository, keeping your branch management tidy. This is accessible through the **Git actions** button under the [**Version control** menu](#editing-features). Note that this won't delete the branch you're currently on. Pruning branches isn't available for managed repositories because they don't have a typical remote setup, which prevents remote branch deletion.
   <Lightbox src="/img/docs/dbt-cloud/cloud-ide/prune-branch-modal.jpg" width="60%" title="The Prune branches modal allows users to delete local branches that have already been deleted from the remote repository."/>
-
-</VersionBlock>
 
 - #### Revert Uncommitted Changes modal
   The Revert Uncommitted Changes modal is how users revert changes in the IDE. This is accessible via the `Revert File` option above the Version Control Options menu, or via the Git Actions button when there are saved, uncommitted changes in the IDE.
