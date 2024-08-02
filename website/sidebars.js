@@ -380,7 +380,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
                 "docs/build/metrics-overview",
-                "docs/build/sub-daily",
+                "docs/build/granularity",
                 "docs/build/conversion",
                 "docs/build/cumulative",
                 "docs/build/derived",

@@ -94,7 +94,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 Sub-daily granularity enables you to query metrics at granularities at finer time grains below a day, such as hourly, minute, or even by the second. It support anything that `date_trunc` supports. This can be useful if you want more detailed analysis and for datasets where you need more granular time data, such as minute-by-minute event tracking.
 
-For more configuration details, refer to [sub-daily granularity](/docs/build/sub-daily).
+For more configuration details, refer to [sub-daily granularity](/docs/build/granularity).
 
 ## Conversion metrics
 
@@ -261,9 +261,17 @@ filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 
 filter: |  
-  {{ Metric('metric_name', group_by=['entity_name']) }}  # Available in v1.8 or go [versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+  {{ Metric('metric_name', group_by=['entity_name']) }}  {# Available in v1.8 or go [versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). }
 ```
+
 </File>
+
+For example, if I wanted to filter for the order date dimension, grouped by month, I'd use the following syntax:
+
+```yaml
+filter: |  
+  {{ TimeDimension('order_date', 'month') }}
+```
 
 ## Further configuration
 

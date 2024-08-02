@@ -1,6 +1,6 @@
 ---
 title: Sub-daily granularity
-id: "sub-daily"
+id: "granularity"
 description: "Sub-daily granularity enables you to query metrics at granularities at finer time grains below a day, such as hourly, minute, or even by the second. "
 sidebar_label: "Sub-daily granularity"
 tags: [Metrics, Semantic Layer]
@@ -8,7 +8,9 @@ pagination_next: "docs/build/conversion"
 ---
 
 
-Sub-daily granularity enables you to query metrics at granularities at finer time grains below a day, such as hourly, minute, or even by the second. It support anything that `date_trunc` supports. Use sub-daily granularity for cumulative metrics, time spine models at sub-daily grains, and default grain settings for metrics.
+Sub-daily granularity enables you to query metrics at granularities at finer time grains such as hourly, minute, or even by the second. It support anything that `date_trunc` supports. You can sub-daily granularity for cumulative metrics, time spine models at sub-daily grains, or default grain settings for metrics. 
+
+MetricFlow defaults to the `day` grain, while allowing you the ability to default granularity as a metric-level property.
 
 This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. 
 

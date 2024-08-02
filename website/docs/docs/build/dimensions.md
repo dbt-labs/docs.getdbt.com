@@ -120,7 +120,7 @@ dbt sl query --metrics users_created,users_deleted --group-by metric_time__year 
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
-You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (like sub-daily (hourly), daily, weekly, and so on). For more sub-daily configuration details, refer to [sub-daily granularity](/docs/build/sub-daily).
+You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (like sub-daily (hourly), daily, weekly, and so on). For more sub-daily configuration details, refer to [sub-daily granularity](/docs/build/granularity).
 
 <Tabs>
 
@@ -171,7 +171,7 @@ measures:
 
 <TabItem value="time_gran" label="time_granularity">
 
-`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as [sub-daily](/docs/build/metrics-overview#sub-daily-granularity), daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric specified with weekly granularity couldn't be aggregated to a daily grain. 
+`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as [sub-daily](/docs/build/granularity), daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric specified with weekly granularity couldn't be aggregated to a daily grain. 
 
 The current options for time granularity are day, week, month, quarter, and year. 
 
