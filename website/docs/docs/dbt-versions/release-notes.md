@@ -19,7 +19,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 [^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## August 2024
-- **New**: You can configure metrics at granularities at finer time grains, such as hourly, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [sub-daily granularity](/docs/build/sub-daily-granularity) for more info.
+- **New**: You can configure metrics at granularities at finer time grains, such as hourly, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [sub-daily granularity](/docs/build/granularity) for more info.
 
 ## July 2024
 - **New:** [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management) are now available under **Account settings** as a global setting. Previously, they were found under **Project settings**.  This is being rolled out in phases over the coming weeks.
