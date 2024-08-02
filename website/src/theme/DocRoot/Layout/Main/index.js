@@ -19,6 +19,7 @@ import Admonition from "@theme/Admonition";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import VersionContext from "../../../../stores/VersionContext";
 import pageVersionCheck from "../../../../utils/page-version-check";
+import sanitizeHtml from "sanitize-html";
 
 export default function DocRootLayoutMain({
   hiddenSidebarContainer,
@@ -135,7 +136,7 @@ export default function DocRootLayoutMain({
             <Admonition type="caution" title="Warning">
               <div
                 dangerouslySetInnerHTML={{
-                  __html: PreData.isPrereleaseBannerText,
+                  __html: sanitizeHtml(PreData.isPrereleaseBannerText),
                 }}
               />
             </Admonition>
@@ -145,7 +146,9 @@ export default function DocRootLayoutMain({
           <div className={styles.versionBanner}>
             <Admonition type="caution" title="Warning">
               <div
-                dangerouslySetInnerHTML={{ __html: EOLData.EOLBannerText }}
+                dangerouslySetInnerHTML={{
+                  __html: sanitizeHtml(EOLData.EOLBannerText),
+                }}
               />
             </Admonition>
           </div>
