@@ -336,7 +336,7 @@ dbt supports the specification of BigQuery labels for the tables and <Term id="v
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
   
- <VersionBlock firstVersion="1.5"> BigQuery key-value pair entries for labels larger than 63 characters are truncated. </VersionBlock>
+  BigQuery key-value pair entries for labels larger than 63 characters are truncated.
 
 **Configuring labels in a model file**
 
