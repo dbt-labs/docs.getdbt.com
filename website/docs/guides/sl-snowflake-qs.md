@@ -22,14 +22,6 @@ import ConnectQueryAPI from '/snippets/_sl-connect-and-query-api.md';
 import RunProdJob from '/snippets/_sl-run-prod-job.md';
 import SlSetUp from '/snippets/_new-sl-setup.md'; 
 
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
- </VersionBlock>
-
 ## Introduction
 
 The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), powered by [MetricFlow](/docs/build/about-metricflow), simplifies the setup of key business metrics. It centralizes definitions, avoids duplicate code, and ensures easy access to metrics in downstream tools. MetricFlow helps manage company metrics easier, allowing you to define metrics in your dbt project and query them in dbt Cloud with [MetricFlow commands](/docs/build/metricflow-commands).
