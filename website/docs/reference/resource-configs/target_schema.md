@@ -40,9 +40,6 @@ On **BigQuery**, this is analogous to a `dataset`.
 ## Default
 This is a **required** parameter, no default is provided.
 
-## FAQs
-<FAQ path="Snapshots/snapshot-target-schema" />
-
 ## Examples
 ### Build all snapshots in a schema named `snapshots`
 
