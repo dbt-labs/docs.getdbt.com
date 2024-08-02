@@ -60,7 +60,7 @@ Some customers prefer to connect Development and Staging to their `main` branch 
 There are three primary motivations for using a Staging environment:
 1. An additional validation layer before changes are deployed into Production. You can deploy, test, and explore your dbt models in Staging.
 2. Clear isolation between development workflows and production data. It enables developers to work in metadata-powered ways, using features like deferral and cross-project references, without accessing data in production deployments.
-3. Manage user access to production using [environment-level permissions](/docs/cloud/manage-access/environment-permissions). 
+3. Provide developers with the ability to create, edit, and trigger ad hoc jobs in the Staging environment, while keeping the Production environment locked down using [environment-level permissions](/docs/cloud/manage-access/environment-permissions). 
 
 **Conditional configuration of sources** enables you to point to "prod" or "non-prod" source data, depending on the environment you're running in. For example, this source will point to `<DATABASE>.sensitive_source.table_with_pii`, where `<DATABASE>` is dynamically resolved based on an environment variable.
 
