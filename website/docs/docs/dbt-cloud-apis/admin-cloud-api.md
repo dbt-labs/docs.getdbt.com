@@ -46,7 +46,7 @@ link="/dbt-cloud/api-v3"
     target="_blank"
     rel="noopener noreferrer">
     <Icon name='fa-external-link' />
-  <a/>
+  </a>
 </div>
     
 </div>
