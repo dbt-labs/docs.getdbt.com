@@ -82,7 +82,7 @@ metrics:
       {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
       null and {{ Metric('metric_name', group_by=['entity_name']) }} > 5
 ```
-<File>
+</File>
 
 </VersionBlock>
 
@@ -90,7 +90,13 @@ import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-### Conversion metrics
+## Sub-daily granularity
+
+Sub-daily granularity enables you to query metrics at granularities at finer time grains below a day, such as hourly, minute, or even by the second. It support anything that `date_trunc` supports. This can be useful if you want more detailed analysis and for datasets where you need more granular time data, such as minute-by-minute event tracking.
+
+For more configuration details, refer to [sub-daily granularity](/docs/build/sub-daily).
+
+## Conversion metrics
 
 [Conversion metrics](/docs/build/conversion) help you track when a base event and a subsequent conversion event occur for an entity within a set time period.
 
@@ -121,7 +127,7 @@ metrics:
 ```
 </File>
 
-### Cumulative metrics
+## Cumulative metrics
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window will accumulate the measure over all of the recorded time period. Note that you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
@@ -142,7 +148,7 @@ metrics:
 ```
 </File>
 
-### Derived metrics
+## Derived metrics
 
 [Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
 
@@ -182,7 +188,7 @@ metrics:
 ```
 -->
 
-### Ratio metrics 
+## Ratio metrics 
 
 [Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `filter` string  can be applied to both the numerator and denominator or separately to the numerator or denominator.
 
@@ -210,7 +216,7 @@ metrics:
 ```
 </File>
 
-### Simple metrics
+## Simple metrics
 
 [Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
 
@@ -264,63 +270,6 @@ filter: |
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner
 
 - **Description** &mdash;  Write a detailed description of the metric.
-
-## Sub-daily granularity
-
-Sub-daily granularity enables you to query metrics at granularities at finer time grains below a day, such as hourly, minute, or even by the second. It support anything that `date_trunc` supports. Use sub-daily granularity for cumulative metrics, time spine models at sub-daily grains, and default grain settings for metrics.
-
-This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. 
-
-### Usage
-There are two ways to specify sub-daily granularity: `default_grain` and `time_granularity`. This section explains how to use both methods, how they also interact, and which one takes precedence. 
-
-#### `default_grain`
-
-Use the `default_grain` parameter in the metric-level metric config to specify the default granularity for querying the metric when no specific granularity is defined. It allows specifying the most common or sensible default, like day, hour, and so on. 
-
-This parameter is optional and defaults to `day`.
-
-<File name="models/metrics/file_name.yml" >
-
-```yaml
-metrics:
-  - name: my_metrics
-    ...
-    default_grain: day # Optional: defaults to day
-```
-</File>
-
-#### time_granularity
-
-Use the `time_granularity` parameter at the dimension-level with the time dimension `type_params` to specify the level of granularity directly on the data, like hour, minute, second, and so on. It affects how the data is truncated or aggregated in queries.
-
-<File name="models/metrics/file_name.yml" >
-
-```yaml
-dimensions:
-  - name: ordered_at
-    type: time
-    type_params:
-      time_granularity: hour
-
-```
-</File>
-
-### Precedence
-When querying metrics by `metric_time`, MetricFlow currently defaults to the grain of the `agg_time_dimension`. If you want to query metrics at a different grain, you can use the `time_granularity` type parameter in time dimensions.
-
-The following table explains how `default_grain` and `time_granularity` interact and the resulting query granularity:
-
-| Context | `default_grain` | `time_granularity` | Result |
-| Only `default_grain` specified | `day` | `hour` | Query at `hour` granularity |
-| Only `time_granularity` specified | - | `hour` | Query at `hour` granularity |
-| Both specified, same value | `hour` | `hour` | Query at `hour` granularity |
-| Both specified, different value | `day` | `minute` | Query at `minute` granularity |
-| Both not specified | - | - | Defaults to `day` |
-
-
-Implementation using the `time_granularity` type parameter in time dimensions.
-Examples of using DATE_TRUNC with sub-daily granularities in SQL.
 
 ## Related docs
 

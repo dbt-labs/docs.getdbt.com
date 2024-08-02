@@ -105,13 +105,12 @@ dimensions:
 ## Time
 
 :::tip use datetime data type if using BigQuery
-To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
+To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as sub-daily like hour, or week, month, quarter, year, and so on. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
 :::
 
 Time has additional parameters specified under the `type_params` section. When you query one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the aggregation time dimension, which you can refer to as `metric_time` or use the dimensions' name. 
 
 You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
-
 
 ```bash
 # dbt Cloud users
@@ -121,8 +120,7 @@ dbt sl query --metrics users_created,users_deleted --group-by metric_time__year 
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
-
-You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (like daily, weekly, and so on):
+You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (like sub-daily (hourly), daily, weekly, and so on). For more sub-daily configuration details, refer to [sub-daily granularity](/docs/build/sub-daily).
 
 <Tabs>
 
@@ -173,7 +171,7 @@ measures:
 
 <TabItem value="time_gran" label="time_granularity">
 
-`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric specified with weekly granularity couldn't be aggregated to a daily grain. 
+`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as [sub-daily](/docs/build/metrics-overview#sub-daily-granularity), daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric specified with weekly granularity couldn't be aggregated to a daily grain. 
 
 The current options for time granularity are day, week, month, quarter, and year. 
 
@@ -187,14 +185,14 @@ dimensions:
     expr: date_trunc('day', ts_created) # ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
-      time_granularity: day
+      time_granularity: hour # or second, or millisecond etc
   - name: deleted_at
     type: time
     label: "Date of deletion"
     expr: date_trunc('day', ts_deleted) # ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
-      time_granularity: day
+      time_granularity: hour # or second, or millisecond etc
 
 measures:
   - name: users_deleted
