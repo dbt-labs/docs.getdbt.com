@@ -11,6 +11,6 @@
 | [**v1.2**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.2) | Jul 26, 2022  | End of Life* ⚠️ | 
 | [**v1.1**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.1) | Apr 28, 2022  | End of Life* ⚠️ |
 | [**v1.0**](/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-v1.0) | Dec 3, 2021   | End of Life* ⚠️ | 
-|  **v0.X** ⛔️                                               | (Various dates) | Deprecated ⛔️  | Deprecated ⛔️            | 
-_*All versions of dbt Core since v1.0 are available in dbt Cloud until further notice. Versions that are EOL do not receive any fixes. For the best support, we recommend upgrading to a version released within the past 12 months._
+|  **v0.X** ⛔️                                               | (Various dates) | Deprecated ⛔️  | Deprecated ⛔️     | 
 
+_*All versions of dbt Core since v1.0 are available in dbt Cloud until further notice. Versions that are EOL do not receive any fixes. For the best support, we recommend upgrading to a version released within the past 12 months._
