@@ -13,7 +13,7 @@ This is a beta feature with limited availability. A public preview will follow s
 
 :::
 
-Your environment(s) must be on ["Keep on latest version"](/docs/dbt-versions/versionless-cloud) to use the Amazon Athena connection.
+Your environment(s) must be on ["Versionless"](/docs/dbt-versions/versionless-cloud) to use the Amazon Athena connection.
 
 Connect dbt Cloud to Amazon's Athena interactive query service to build your dbt project. The following are the required and optional fields for configuring the Athena connection:
 
