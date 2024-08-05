@@ -16,17 +16,15 @@ meta:
   config_page: '/reference/resource-configs/fal-configs'
 ---
 
-:::info Community plugin
+:::info Adapter no longer maintained
+The [`dbt-fal` adapter](https://github.com/fal-ai/dbt-fal) is no longer actively maintained. This means although the adapter is still operational, there is no further development or bug fixes planned and it may not be compatible with future versions of dbt. `dbt-fal` was test until dbt v1.5.
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
-
+Documentation for `dbt-fal` are kept for reference purposes only and will eventually be removed from the site in the future.
 :::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
-
-
 
 ## Setting up fal with other adapter
 

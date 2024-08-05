@@ -7,24 +7,27 @@ id: "unit-tests"
 keywords:
   - unit test, unit tests, unit testing, dag
 ---
-:::note beta
 
-Support for unit testing dbt models is available to dbt Cloud customers who have chosen to ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). This feature is currently available in beta, and supports all dbt-Labs-maintained adapters, with more adapter availability rolling out through March.
+:::note 
 
-For dbt Core, the v1.8.0-b1 release of `dbt-core` and dbt Labs-maintained adapters are available now.
+This functionality is only supported in dbt Core v1.8+ or accounts that have opted for a ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) dbt Cloud experience.
 
 :::
 
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
-Now, we are introducing a new type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
+With dbt Core v1.8 and dbt Cloud environments that have gone versionless by selecting the **Versionless** option, we have introduced an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
 ## Before you begin
 
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
-- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
+- We currently *don't* support unit testing models that use recursive SQL.
+- You must specify all fields in a BigQuery STRUCT in a unit test. You cannot use only a subset of fields in a STRUCT.
+- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
+- Table names must be [aliased](/docs/build/custom-aliases) in order to unit test `join` logic.
+- Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround. 
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
@@ -37,13 +40,18 @@ You should unit test a model:
     - Window functions
     - `case when` statements when there are many `when`s
     - Truncation
-    - Recursion
 - When you're writing custom logic to process input data, similar to creating a function.
 - We don't recommend conducting unit testing for functions like `min()` since these functions are tested extensively by the warehouse. If an unexpected issue arises, it's more likely a result of issues in the underlying data rather than the function itself. Therefore, fixture data in the unit test won't provide valuable information.
 - Logic for which you had bugs reported before.
 - Edge cases not yet seen in your actual data that you want to handle.
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
 - Models with high "criticality" (public, contracted models or models directly upstream of an exposure).
+
+### When to run unit tests
+
+dbt Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
+
+Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPES` environment variable to exclude unit tests from your production builds and save compute. 
 
 ## Unit testing a model
 
@@ -117,9 +125,9 @@ unit_tests:
 ```
 </file>
 
-The previous example defines the mock data using the inline `dict` format, but you can also use `csv` either inline or in a separate fixture file. 
+The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. Store your fixture files in a `fixtures` subdirectory in any of your [test paths](/reference/project-configs/test-paths). For example, `tests/fixtures/my_unit_test_fixture.sql`. 
 
-You only have to define the mock data for the columns you care about. This enables you to write succinct and _specific_ unit tests.
+When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
 :::note
 
@@ -279,6 +287,36 @@ unit_tests:
 ```
 
 There is currently no way to unit test whether the dbt framework inserted/merged the records into your existing model correctly, but [we're investigating support for this in the future](https://github.com/dbt-labs/dbt-core/issues/8664).
+
+## Unit testing a model that depend on ephemeral model(s)
+
+If you want to unit test a model that depends on an ephemeral model, you must use `format: sql` for that input.
+
+```yml
+unit_tests:
+  - name: my_unit_test
+    model: dim_customers
+    given:
+      - input: ref('ephemeral_model')
+        format: sql
+        rows: |
+          select 1 as id, 'emily' as name
+    expect:
+      rows:
+        - {id: 1, first_name: emily}
+```
+
+
+## Unit test exit codes
+
+Unit test successes and failures are represented by two exit codes:
+- Pass (0)
+- Fail (1)
+
+Exit codes differ from data test success and failure outputs because they don't directly reflect failing data tests. Data tests are queries designed to check specific conditions in your data, and they return one row per failed test case (for example, the number of values with duplicates for the `unique` test). dbt reports the number of failing records as failures. Whereas, each unit test represents one 'test case', so results are always 0 (pass) or 1 (fail) regardless of how many records failed within that test case.
+
+Learn about [exit codes](/reference/exit-codes) for more information.
+
 
 ## Additional resources
 

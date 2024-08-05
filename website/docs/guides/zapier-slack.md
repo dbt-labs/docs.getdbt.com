@@ -100,7 +100,7 @@ run_id = hook_data['runId']
 account_id = full_body['accountId']
 
 # Fetch run info from the dbt Cloud Admin API
-url = f'https://cloud.getdbt.com/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
+url = f'https://YOUR_ACCESS_URL/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
 headers = {'Authorization': f'Token {api_token}'}
 run_data_response = requests.get(url, headers=headers)
 run_data_response.raise_for_status()
@@ -108,7 +108,7 @@ run_data_results = run_data_response.json()['data']
 
 # Overall run summary
 step_summary_post = f"""
-*\[{hook_data['runStatus']} for Run #{run_id} on Job \"{hook_data['jobName']}\"]({run_data_results['href']})*
+*<{run_data_results['href']}|{hook_data['runStatus']} for Run #{run_id} on Job \"{hook_data['jobName']}\">*
 
 *Environment:* {hook_data['environmentName']} | *Trigger:* {hook_data['runReason']} | *Duration:* {run_data_results['duration_humanized']}
 
@@ -260,7 +260,7 @@ api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
 commands_to_skip_logs = ['dbt source', 'dbt docs']
 run_id = input_data['run_id']
 account_id = input_data['account_id']
-url = f'https://cloud.getdbt.com/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
+url = f'https://YOUR_ACCESS_URL/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
 headers = {'Authorization': f'Token {api_token}'}
 
 response = requests.get(url, headers=headers)

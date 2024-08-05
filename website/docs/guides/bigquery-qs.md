@@ -24,7 +24,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with BigQuery. It wi
 - Schedule a job to run.
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
 ### Prerequisites​
@@ -35,7 +35,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ### Related content
 
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
@@ -85,7 +85,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 3. Create a service account key for your new project from the [Service accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts?walkthrough_id=iam--create-service-account-keys&start_index=1#step_index=1). For more information, refer to [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) in the Google Cloud docs. When downloading the JSON file, make sure to use a filename you can easily remember. For example, `dbt-user-creds.json`. For security reasons, dbt Labs recommends that you protect this JSON file like you would your identity credentials; for example, don't check the JSON file into your version control software.
 
 ## Connect dbt Cloud to BigQuery​
-1. Create a new project in [dbt Cloud](https://cloud.getdbt.com/). From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
+1. Create a new project in [dbt Cloud](/docs/cloud/about-cloud/access-regions-ip-addresses). From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. For the warehouse, click **BigQuery** then **Next** to set up your connection.
 4. Click **Upload a Service Account JSON File** in settings.

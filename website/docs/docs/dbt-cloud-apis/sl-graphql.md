@@ -5,15 +5,6 @@ description: "Integrate and use the GraphQL API to query your metrics."
 tags: [Semantic Layer, APIs]
 ---
 
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
-</VersionBlock>
-
-
 [GraphQL](https://graphql.org/) (GQL) is an open-source query language for APIs. It offers a more efficient and flexible approach compared to traditional RESTful APIs. 
 
 With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
@@ -31,11 +22,11 @@ The schema explorer URLs vary depending on your [deployment region](/docs/cloud/
 | North America multi-tenant	|	https://semantic-layer.cloud.getdbt.com/api/graphql |
 | EMEA multi-tenant	|	https://semantic-layer.emea.dbt.com/api/graphql |
 | APAC multi-tenant	|	https://semantic-layer.au.dbt.com/api/graphql |
-| Single tenant | `https://YOUR_ACCESS_URL.semantic-layer/api/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix with the appropriate Access URL for your region and plan.|
+| Single tenant | `https://semantic-layer.YOUR_ACCESS_URL/api/graphql`<br /><br />  Replace `YOUR_ACCESS_URL` with your specific account prefix followed by the appropriate Access URL for your region and plan.|
 | Multi-cell	| `https://YOUR_ACCOUNT_PREFIX.semantic-layer.REGION.dbt.com/api/graphql`<br /><br />  Replace `YOUR_ACCOUNT_PREFIX` with your specific account identifier and `REGION` with your location, which could be `us1.dbt.com`. |<br />
 
 **Example**
-- If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://ABC123.getdbt.com.semantic-layer/api/graphql`.
+- If your Single tenant access URL is `ABC123.getdbt.com`, your schema explorer URL will be `https://semantic-layer.ABC123.getdbt.com/api/graphql`.
 
 dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
 
@@ -52,7 +43,7 @@ Note that the dbt Semantic Layer API doesn't support `ref` to call dbt objects. 
 
 If you're a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right GQL connection parameters described in this document. 
 
-Refer to [Get started with the dbt Semantic Layer](docs/use-dbt-semantic-layer/quickstart-sl) for more info.
+Refer to [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs) for more info.
 
 
 ### Authentication 
@@ -405,7 +396,7 @@ gql_response.json() =>
 
 def to_arrow_table(byte_string: str) -> pa.Table:
   """Get a raw base64 string and convert to an Arrow Table."""
-  with pa.ipc.open_stream(base64.b64decode(res)) as reader:
+  with pa.ipc.open_stream(base64.b64decode(byte_string)) as reader:
     return pa.Table.from_batches(reader, reader.schema)
 
 

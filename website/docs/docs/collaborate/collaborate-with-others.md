@@ -8,7 +8,7 @@ pagination_prev: null
 <div className="grid--2-col">
 
 <Card
-    title="Explore dbt projects"
+    title="Discover data with dbt Explorer"
     body="Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your dbt projects."
     link="/docs/collaborate/explore-projects"
     icon="dbt-bit"/>
@@ -26,7 +26,7 @@ pagination_prev: null
 <Card
     title="Document your dbt projects"
     body="Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
-    link="/docs/collaborate/documentation"
+    link="/docs/collaborate/build-and-view-your-docs"
     icon="dbt-bit"/>
 
 <Card

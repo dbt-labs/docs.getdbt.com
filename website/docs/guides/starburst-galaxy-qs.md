@@ -24,7 +24,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Connect to multiple data sources in addition to your S3 bucket. 
 
 :::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 
 You can also watch the [Build Better Data Pipelines with dbt and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc.
 :::
@@ -41,7 +41,7 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 
 ### Related content
 
-- [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Learn courses](https://learn.getdbt.com)
 - [dbt Cloud CI job](/docs/deploy/continuous-integration)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
@@ -202,7 +202,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     If this role is not listed for you, choose the role you selected in [Connect Starburst Galaxy to the Amazon S3 bucket](#connect-to-s3-bucket) when you added location privilege for your S3 bucket.
 3. Click **Clusters** on the left sidebar.
 4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **dbt** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that modal in dbt Cloud.
-5. In another browser tab, log in to [dbt Cloud](https://cloud.getdbt.com/).
+5. In another browser tab, log in to [dbt Cloud](/docs/cloud/about-cloud/access-regions-ip-addresses).
 6. Create a new project in dbt Cloud. From Account settings (using the gear menu in the top right corner), click **+ New Project**.
 7. Enter a project name and click **Continue**.
 8. Choose **Starburst** as your connection and click **Next**.

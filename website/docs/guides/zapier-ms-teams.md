@@ -105,7 +105,7 @@ run_id = hook_data['runId']
 account_id = full_body['accountId']
 
 # Fetch run info from the dbt Cloud Admin API
-url = f'https://cloud.getdbt.com/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
+url = f'https://YOUR_ACCESS_URL/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
 headers = {'Authorization': f'Token {api_token}'}
 run_data_response = requests.get(url, headers=headers)
 run_data_response.raise_for_status()

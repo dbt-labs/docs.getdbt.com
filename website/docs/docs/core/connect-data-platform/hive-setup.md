@@ -30,7 +30,7 @@ dbt-hive supports two transport mechanisms:
 - binary
 - HTTP(S)
 
-The default mechanism is `binary`. To use HTTP transport, use the boolean option `use_http_transport: [true / false]`.
+The default mechanism is `binary`. To use HTTP transport, use the boolean option. For example, `use_http_transport: true`.
 
 ## Authentication Methods
 
@@ -51,8 +51,8 @@ your_profile_name:
     dev:
       type: hive
       host: localhost
-      port: [port] # default value: 10000
-      schema: [schema name]
+      port: PORT # default value: 10000
+      schema: SCHEMA_NAME
       
 ```
 
@@ -72,15 +72,15 @@ your_profile_name:
   outputs:
     dev:
      type: hive
-     host: [host name]
-     http_path: [optional, http path to Hive] # default value: None
-     port: [port] # default value: 10000
+     host: HOST_NAME
+     http_path: YOUR/HTTP/PATH # optional, http path to Hive default value: None
+     port: PORT # default value: 10000
      auth_type: ldap
-     use_http_transport: [true / false] # default value: true
-     use_ssl: [true / false] # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
-     username: [username]
-     password: [password]
-     schema: [schema name]
+     use_http_transport: BOOLEAN # default value: true
+     use_ssl: BOOLEAN # TLS should always be used with LDAP to ensure secure transmission of credentials, default value: true
+     username: USERNAME
+     password: PASSWORD
+     schema: SCHEMA_NAME
 ```
 
 </File>
@@ -99,13 +99,13 @@ your_profile_name:
   outputs:
     dev:
       type: hive
-      host: [hostname]
-      port: [port] # default value: 10000
-      auth_type: [GSSAPI]
-      kerberos_service_name: [kerberos service name] # default value: None
-      use_http_transport: true # default value: true
-      use_ssl: true # TLS should always be used to ensure secure transmission of credentials, default value: true
-      schema: [schema name] 
+      host: HOSTNAME
+      port: PORT # default value: 10000
+      auth_type: GSSAPI
+      kerberos_service_name: KERBEROS_SERVICE_NAME # default value: None
+      use_http_transport: BOOLEAN # default value: true
+      use_ssl: BOOLEAN # TLS should always be used to ensure secure transmission of credentials, default value: true
+      schema: SCHEMA_NAME
 
 ```
 

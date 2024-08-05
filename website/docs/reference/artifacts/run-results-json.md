@@ -12,7 +12,8 @@ sidebar_label: "Run results"
  [`run`](/reference/commands/run)
  [`seed`](/reference/commands/seed)
  [`snapshot`](/reference/commands/snapshot)
- [`test`](/reference/commands/test) <VersionBlock firstVersion="1.6">[`run-operation`](/reference/commands/run-operation) </VersionBlock>
+ [`test`](/reference/commands/test) 
+ [`run-operation`](/reference/commands/run-operation)
  
 
 This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
@@ -24,7 +25,7 @@ Note: `dbt source freshness` produces a different artifact, [`sources.json`](/re
 ### Top-level keys
 
 - [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
-- `args`: Dictionary of arguments passed to the CLI command or RPC method that produced this artifact. Most useful is `which` (command) or `rpc_method`. This dict excludes null values, and includes default values if they are not null. <VersionBlock firstVersion="1.3">Equivalent to [`invocation_args_dict`](/reference/dbt-jinja-functions/flags#invocation_args_dict) in the dbt-Jinja context.</VersionBlock>
+- `args`: Dictionary of arguments passed to the CLI command or RPC method that produced this artifact. Most useful is `which` (command) or `rpc_method`. This dict excludes null values, and includes default values if they are not null. Equivalent to [`invocation_args_dict`](/reference/dbt-jinja-functions/flags#invocation_args_dict) in the dbt-Jinja context.
 - `elapsed_time`: Total invocation time in seconds.
 - `results`: Array of node execution details.
 
@@ -36,7 +37,8 @@ Each entry in `results` is a [`Result` object](/reference/dbt-classes#result-obj
 - `execution_time`: Total time spent executing this node
 - `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
 - `message`: How dbt will report this result on the CLI, based on information returned from the database
-import RowsAffected from '/snippets/_run-result.md'; 
+
+import RowsAffected from '/snippets/_run-result.md';
 
 <RowsAffected/>
 

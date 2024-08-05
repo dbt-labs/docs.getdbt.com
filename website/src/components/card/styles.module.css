@@ -41,3 +41,22 @@
 .dbt-core {
   max-width: 165px;
 }
+
+.pillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+.pill {
+  border-radius: 1.5rem;
+  background: #E5E7EB;
+  color:#262A38;
+  padding: 0rem 0.75rem;
+  font-size: 16px;
+}
+
+html[data-theme="dark"] .pill {
+  background: #374151;
+  color: #fff;
+}

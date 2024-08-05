@@ -4,14 +4,49 @@
     text-decoration: none;
     transition: text-decoration 0.3s; /* Smooth transition */
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-:local(.link:hover) :local(.headerText),
-:local(.link:focus) :local(.headerText) {
-    text-decoration: underline;
+:local(.header) {
+    display: flex;
+    align-items: center;
     cursor: pointer;
-}
+    color: rgba(18, 12, 12, 0.862);
+    font-weight: 550;
+    margin-bottom: 10px;
+    text-decoration: none;
+  }
+
+
+  :local(.copyIcon) {
+    width: 12px;
+    height: 12px;
+    background-image: url('/img/copy.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    margin-left: 4px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  :local(.header:hover) :local(.copyIcon) {
+    opacity: 1;
+  }
+
+  .copy-popup {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #047377;
+    color: rgb(236, 236, 236);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+  }
+  
 
 :local(.toggle)::before {
     content: '';
@@ -46,10 +81,29 @@
     border-color: rgb(253, 153, 83);
 }
 
-.expandableContainer :local(.body) {
-    margin-top: 10px;
-    margin-left: .5em;
+:local(.copyPopup) {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
     padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  :local(.copyPopup.show) {
+    opacity: 1;
+  }
+
+.expandableContainer :local(.body) {
+    margin-top: 2px;
+    margin-left: .5em;
+    padding: 5px;
     background-color: transparent;
 }
 
@@ -57,6 +111,10 @@
 :local(html[data-theme='dark'] .headerText) {
     color: rgba(255, 255, 255, 0.801); /* White text in dark mode */
 }
+
+:local(html[data-theme='dark'] details .headerText) {
+    color: rgba(18, 12, 12, 0.862); /* this adds black text inside details in dark mode */
+  }
 
 :local(.body > p:last-child) {
     margin-bottom: 0px;
@@ -81,6 +139,10 @@
     }
 
 .expandableContainer {
-    margin-bottom: 10px; /* Adjust this value as needed to create space */
-  }
-  
+    margin-bottom: 5px; /* Adjust this value as needed to create space */
+}
+
+.headerText {
+  display: flex;
+  align-items: center;
+}

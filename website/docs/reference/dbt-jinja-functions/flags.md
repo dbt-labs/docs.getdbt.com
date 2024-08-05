@@ -30,8 +30,6 @@ Recommended use cases include:
 **Note:** It is _not_ recommended to use flags as an input to parse-time configurations, properties, or dependencies (`ref` + `source`). Flags are likely to change in every invocation of dbt, and their parsed values will become stale (and yield incorrect results) in subsequent invocations that have partial parsing enabled. For more details, see [the docs on parsing](/reference/parsing).
 
 
-<VersionBlock firstVersion="1.3">
-
 ### invocation_args_dict
 
 For the full set of information passed from the CLI—subcommand, flags, arguments—you can use `invocation_args_dict`. This is equivalent to the `args` dictionary in [`run_results.json`](/reference/artifacts/run-results-json).
@@ -49,31 +47,6 @@ select 1 as id
 ```
 
 </File>
-
-<VersionBlock firstVersion="1.3" lastVersion="1.5">
-
-```shell
-$ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
-```
-
-<File name='target/compiled/my_project/models/my_model.sql'>
-
-```sql
--- invocation_args_dict:
--- {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/Users/.../.dbt', 'send_anonymous_usage_stats': False, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'parse_only': False, 'which': 'compile', 'rpc_method': 'compile', 'indirect_selection': 'eager'}
-
--- dbt_metadata_envs:
--- {'MYVAR': 'myvalue'}
-
-select 1 as id
-```
-
-</File>
-
-</VersionBlock>
-
-
-<VersionBlock firstVersion="1.6">
 
 The `invocation_command` key within `invocation_args_dict` includes the entire subcommand when it compiles:
 
@@ -95,7 +68,3 @@ $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
 
 select 1 as id
 ```
-
-</VersionBlock>
-
-</VersionBlock>

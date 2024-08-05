@@ -6,14 +6,14 @@ description: "Read this guide to understand the source Jinja function in dbt."
 ---
 
 ```sql
-select * from {{ source(source_name, table_name) }}
+select * from {{ source("source_name", "table_name") }}
 ```
 
 ## Definition
 
 This function:
 - Returns a [Relation](/reference/dbt-classes#relation) for a [source](/docs/build/sources)
-- Creates dependencies between a source and the current model, which is useful for documentation and model selection
+- Creates dependencies between a source and the current model, which is useful for documentation and [node selection](/reference/node-selection/syntax)
 - Compiles to the full object name in the database
 
 

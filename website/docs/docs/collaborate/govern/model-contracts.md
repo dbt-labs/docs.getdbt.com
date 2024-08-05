@@ -5,15 +5,6 @@ sidebar_label: "Model contracts"
 description: "Model contracts define a set of parameters validated during transformation"
 ---
 
-<VersionBlock lastVersion="1.5">
-
-:::info New functionality
-This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6726)!
-:::
-
-</VersionBlock>
-
-
 ## Related documentation
 * [`contract`](/reference/resource-configs/contract)
 * [`columns`](/reference/resource-properties/columns)
@@ -98,11 +89,11 @@ When building a model with a defined contract, dbt will do two things differentl
 
 ## Platform constraint support
 
-Select the adapter-specific tab for more information on [constraint](/reference/resource-properties/constraints) support across platforms. Constraints fall into three categories based on support and platform enforcement:
+Select the adapter-specific tab for more information on [constraint](/reference/resource-properties/constraints) support across platforms. Constraints fall into three categories based on definability and platform enforcement:
 
-- **Supported and enforced** &mdash; The model won't build if it violates the constraint.
-- **Supported and not enforced** &mdash; The platform supports specifying the type of constraint, but a model can still build even if building the model violates the constraint. This constraint exists for metadata purposes only. This approach is more typical in cloud data warehouses than in transactional databases, where strict rule enforcement is more common.
-- **Not supported and not enforced** &mdash; You can't specify the type of constraint for the platform.
+- **Definable and enforced** &mdash; The model won't build if it violates the constraint.
+- **Definable and not enforced** &mdash; The platform supports specifying the type of constraint, but a model can still build even if building the model violates the constraint. This constraint exists for metadata purposes only. This approach is more typical in cloud data warehouses than in transactional databases, where strict rule enforcement is more common.
+- **Not definable and not enforced** &mdash; You can't specify the type of constraint for the platform.
 
 
 
@@ -110,72 +101,72 @@ Select the adapter-specific tab for more information on [constraint](/reference/
 
 <TabItem value="Redshift" label="Redshift">
 
-| Constraint type | Support       | Platform enforcement |
-|:----------------|:-------------|:------------------|
-| not_null        | ✅  Supported | ✅ Enforced     |
-| primary_key     | ✅  Supported | ❌ Not enforced  |
-| foreign_key     | ✅  Supported | ❌ Not enforced  |
-| unique          | ✅  Supported | ❌ Not enforced  |
-| check           | ❌ Not supported | ❌  Not enforced |
+| Constraint type | Definable       | Enforced         |
+|:----------------|:-------------:|:------------------:|
+| not_null        | ✅ | ✅ |
+| primary_key     | ✅ | ❌ |
+| foreign_key     | ✅ | ❌ |
+| unique          | ✅ | ❌ |
+| check           | ❌ | ❌ |
 
 </TabItem>
 <TabItem value="Snowflake" label="Snowflake">
 
-| Constraint type | Support      | Platform enforcement |
-|:----------------|:-------------|:---------------------|
-| not_null        | ✅  Supported | ✅ Enforced     |
-| primary_key     | ✅  Supported | ❌ Not enforced  |
-| foreign_key     | ✅  Supported | ❌ Not enforced  |
-| unique          | ✅  Supported | ❌ Not enforced  |
-| check           | ❌ Not supported | ❌ Not enforced |
+| Constraint type | Definable     | Enforced |
+|:----------------|:-------------:|:---------------------:|
+| not_null        | ✅  | ✅ |
+| primary_key     | ✅  | ❌ |
+| foreign_key     | ✅  | ❌ |
+| unique          | ✅  | ❌ |
+| check           | ❌  | ❌ |
 
 </TabItem>
 <TabItem value="BigQuery" label="BigQuery">
 
-| Constraint type | Support       | Platform enforcement |
-|:-----------------|:-------------|:---------------------|
-| not_null        | ✅ Supported  | ✅ Enforced     |
-| primary_key     | ✅ Supported  | ❌ Not enforced     |
-| foreign_key     | ✅ Supported  | ❌ Not enforced     |
-| unique          | ❌ Not supported | ❌ Not enforced |
-| check           | ❌ Not supported | ❌ Not enforced |
+| Constraint type | Definable     | Enforced |
+|:-----------------|:-------------:|:---------------------:|
+| not_null        | ✅ | ✅  |
+| primary_key     | ✅ | ❌  |
+| foreign_key     | ✅ | ❌  |
+| unique          | ❌ | ❌  |
+| check           | ❌ | ❌  |
 
 </TabItem>
 <TabItem value="Postgres" label="Postgres">
 
-| Constraint type | Support      | Platform enforcement |
-|:----------------|:-------------|:--------------------|
-| not_null        | ✅  Supported |	✅  Enforced |
-| primary_key     | ✅  Supported |	✅  Enforced |
-| foreign_key     | ✅  Supported |	✅  Enforced |
-| unique          | ✅  Supported |	✅  Enforced |
-| check           | ✅  Supported |	✅  Enforced |
+| Constraint type | Definable     | Enforced |
+|:----------------|:-------------:|:--------------------:|
+| not_null        | ✅  |	✅  |
+| primary_key     | ✅  |	✅  |
+| foreign_key     | ✅  |	✅  |
+| unique          | ✅  |	✅  |
+| check           | ✅  |	✅  |
 
 </TabItem>
 <TabItem value="Spark" label="Spark">
 
-Currently, `not_null` and `check` constraints are supported and enforced only after a model builds. Because of this platform limitation, dbt considers these constraints `supported` but `not enforced`, which means they're not part of the "model contract" since these constraints can't be enforced at build time. This table will change as the features evolve.
+Currently, `not_null` and `check` constraints are enforced only after a model is built. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the _model contract_ since they can't be enforced at build time. This table will change as the features evolve.
 
-| Constraint type | Support     | Platform enforcement |
-|:----------------|:------------|:---------------------|
-| not_null        |	✅  Supported | ❌ Not enforced |
-| primary_key     |	✅  Supported | ❌ Not enforced |
-| foreign_key     |	✅  Supported | ❌ Not enforced |
-| unique          |	✅  Supported | ❌ Not enforced |
-| check           |	✅  Supported | ❌ Not enforced |
+| Constraint type | Definable    | Enforced |
+|:----------------|:------------:|:---------------------:|
+| not_null        |	✅  | ❌ |
+| primary_key     |	✅  | ❌ |
+| foreign_key     |	✅  | ❌ |
+| unique          |	✅  | ❌ |
+| check           |	✅  | ❌ |
 
 </TabItem>
 <TabItem value="Databricks" label="Databricks">
 
-Currently, `not_null` and `check` constraints are supported and enforced only after a model builds. Because of this platform limitation, dbt considers these constraints `supported` but `not enforced`, which means they're not part of the "model contract" since these constraints can't be enforced at build time. This table will change as the features evolve.
+Currently, `not_null` and `check` constraints are enforced only after a model is built. Because of this platform limitation, dbt considers these constraints definable but not enforced, which means they're not part of the _model contract_ since they can't be enforced at build time. This table will change as the features evolve.
 
-| Constraint type | Support      | Platform enforcement |
-|:----------------|:-------------|:---------------------|
-| not_null        |	✅  Supported | ❌ Not enforced |
-| primary_key     | ✅  Supported | ❌ Not enforced |
-| foreign_key     |	✅  Supported | ❌ Not enforced |
-| unique          |	✅  Supported | ❌ Not enforced |
-| check           |	✅  Supported | ❌ Not enforced |
+| Constraint type | Definable     | Enforced |
+|:----------------|:-------------:|:---------------------:|
+| not_null        |	✅  | ❌ |
+| primary_key     | ✅  | ❌ |
+| foreign_key     |	✅  | ❌ |
+| unique          |	✅  | ❌ |
+| check           |	✅  | ❌ |
 
 </TabItem>
 </Tabs>

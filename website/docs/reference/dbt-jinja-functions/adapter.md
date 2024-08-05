@@ -57,7 +57,7 @@ Useful for detecting new columns in a source <Term id="table" />.
 
 
 {% for col in adapter.get_missing_columns(target_relation, this) %}
-  alter <Term id="table" /> {{this}} add column "{{col.name}}" {{col.data_type}};
+  alter table {{this}} add column "{{col.name}}" {{col.data_type}};
 {% endfor %}
 ```
 
@@ -304,9 +304,9 @@ This method is deprecated and will be removed in a future release. Please use [g
 __Args__:
 
  * `schema`: The schema to test
- * `<Term id="table" />`: The relation to look for
+ * `table`: The relation to look for
 
-Returns true if a relation named like `<Term id="table" />` exists in schema `schema`, false otherwise.
+Returns true if a relation named like `table` exists in schema `schema`, false otherwise.
 
 <File name='models/example.sql'>
 

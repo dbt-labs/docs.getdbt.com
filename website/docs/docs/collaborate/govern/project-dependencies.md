@@ -7,20 +7,24 @@ pagination_next: null
 keyword: dbt mesh, project dependencies, ref, cross project ref, project dependencies
 ---
 
-:::info Available in Public Preview for dbt Cloud Enterprise accounts
-
-Project dependencies and cross-project `ref` are features available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing), currently in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
-
-If you have an [Enterprise account](https://www.getdbt.com/pricing), you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref).
-:::
 
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
 
-While this is a great way to reuse code, share utility macros, and establish a starting point for common transformations, it's not a great way to enable collaboration across teams and at scale, especially at larger organizations.
+While this is a great way to reuse code, share utility macros, and establish a starting point for common transformations, it's not a great way to enable collaboration across teams and at scale, especially in larger organizations.
 
 This year, dbt Labs is introducing an expanded notion of `dependencies` across multiple dbt projects:
 - **Packages** &mdash; Familiar and pre-existing type of dependency. You take this dependency by installing the package's full source code (like a software library).
 - **Projects** &mdash; A _new_ way to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
+
+## Prerequisites
+- Available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing). If you have an Enterprise account, you can unlock these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-write-cross-project-ref). <Lifecycle status="enterprise"/>
+- Use a supported version of dbt (v1.6, v1.7, or go versionless with "[Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)") for both the upstream ("producer") project and the downstream ("consumer") project.
+- Define models in an upstream ("producer") project that are configured with [`access: public`](/reference/resource-configs/access). You need at least one successful job run after defining their `access`.
+- Define a deployment environment in the upstream ("producer") project [that is set to be your Production environment](/docs/deploy/deploy-environments#set-as-production-environment), and ensure it has at least one successful job run in that environment.
+- Each project `name` must be unique in your dbt Cloud account. For example, if you have a dbt project (codebase) for the `jaffle_marketing` team, you should not create separate projects for `Jaffle Marketing - Dev` and `Jaffle Marketing - Prod`. That isolation should instead be handled at the environment level.
+  - We are adding support for environment-level permissions and data warehouse connections; please contact your dbt Labs account team for beta access.
+- The `dbt_project.yml` file is case-sensitive, which means the project name must exactly match the name in your `dependencies.yml`.  For example, if your project name is `jaffle_marketing`, you should use `jaffle_marketing` (not `JAFFLE_MARKETING`) in all related files.
+
 
 import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
@@ -28,15 +32,6 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
 Refer to the [FAQs](#faqs) for more info.
 
-
-## Prerequisites
-
-In order to add project dependencies and resolve cross-project `ref`, you must:
-- Use dbt v1.6 or higher for **both** the upstream ("producer") project and the downstream ("consumer") project.
-- Define models in an upstream ("producer") project that are configured with [`access: public`](/reference/resource-configs/access). To apply the change, rerun a production job.
-- Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment)
-- Have a successful run of the upstream ("producer") project
-- Have a multi-tenant or single-tenant [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account (Azure ST is not supported but coming soon) 
 
 ## Example
 
@@ -51,7 +46,7 @@ name: jaffle_marketing
 </File>
 
 As part of your modeling of marketing data, you need to take a dependency on two other projects:
-- `dbt_utils` as a [package](#packages-use-case): A collection of utility macros that you can use while writing the SQL for your own models. This package is, open-source public, and maintained by dbt Labs.
+- `dbt_utils` as a [package](#packages-use-case): A collection of utility macros you can use while writing the SQL for your own models. This package is open-source public and maintained by dbt Labs.
 - `jaffle_finance` as a [project use-case](#projects-use-case): Data models about the Jaffle Shop's revenue. This project is private and maintained by your colleagues on the Finance team. You want to select from some of this project's final models, as a starting point for your own work.
 
 <File name="dependencies.yml">
@@ -62,7 +57,7 @@ packages:
     version: 1.1.1
 
 projects:
-  - name: jaffle_finance  # matches the 'name' in their 'dbt_project.yml'
+  - name: jaffle_finance  # case sensitive and matches the 'name' in the 'dbt_project.yml'
 ```
 
 </File>
@@ -102,7 +97,21 @@ with monthly_revenue as (
 
 **Cycle detection:** Currently, "project" dependencies can only go in one direction, meaning that the `jaffle_finance` project could not add a new model that depends, in turn, on `jaffle_marketing.roi_by_channel`. dbt will check for cycles across projects and raise errors if any are detected. We are considering support for this pattern in the future, whereby dbt would still check for node-level cycles while allowing cycles at the project level.
 
-For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/best-practices/how-we-mesh/mesh-1-intro).
+For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/best-practices/how-we-mesh/mesh-1-intro) and also our freely available [dbt Mesh learning course](https://learn.getdbt.com/courses/dbt-mesh). 
+
+### Safeguarding production data with staging environments
+
+When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. However, to protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects. With a staging environment integrated into the project, any references from external projects during development workflows resolve to the Staging environment. This adds a layer of security between your Deployment and Production environments by limiting access to production data.
+
+Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. 
+
+#### Staging with downstream dependencies
+
+dbt Cloud begins using the Staging environment to resolve cross-project references from downstream projects as soon as it exists in a project without "fail-over" to Production. To avoid causing downtime for downstream developers, you should define and trigger a job before marking the environment as Staging:
+1. Create a new environment, but do NOT mark it as **Staging**.
+2. Define a job in that environment.
+3. Trigger the job to run, and ensure it completes successfully.
+4. Update the environment to mark it as **Staging**.
 
 ### Comparison
 
@@ -129,3 +138,4 @@ If you're using private packages with the [git token method](/docs/build/package
 
 ## Related docs
 - Refer to the [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use dbt Mesh.
+- [Quickstart with dbt Mesh](/guides/mesh-qs)

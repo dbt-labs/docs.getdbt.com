@@ -17,9 +17,8 @@ Install dbt Core, an open-source tool, locally using the command line. dbt commu
 
 With a few exceptions [^1], you can install all [adapters](/docs/supported-data-platforms) from PyPI using `python -m pip install adapter-name`. For example to install Snowflake, use the command `python -m pip install dbt-snowflake`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/core/installation-overview).
 
-[^1]: Here are the two different adapters. Use the PyPI package name when installing with `pip`
+[^1]: Use the PyPI package name when installing with `pip`
 
     | Adapter repo name | PyPI package name    |
     | ----------------- | -------------------- |
-    | `dbt-athena`      | `dbt-athena-adapter` |
     | `dbt-layer`       | `dbt-layer-bigquery` |

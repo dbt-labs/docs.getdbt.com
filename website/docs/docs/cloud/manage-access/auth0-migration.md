@@ -5,9 +5,17 @@ sidebar: "SSO Auth0 Migration"
 description: "Required actions for migrating to Auth0 for SSO services on dbt Cloud."
 ---
 
+:::note
+
+This migration is a feature of the dbt Cloud Enterprise plan. To learn more about an Enterprise plan, contact us at [sales@getdbt.com](mailto::sales@getdbt.com).
+
+For single-tenant Virtual Private Cloud, you should [email dbt Cloud Support](mailto::support@getdbt.com) to set up or update your SSO configuration.
+
+:::
+
 dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by dbt Cloud. These changes will require some action from customers with SSO configured in dbt Cloud today, and this guide will outline the necessary changes for each environment. 
 
-If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](/docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
+If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Microsoft Entra ID (formerly Azure AD)](/docs/cloud/manage-access/set-up-sso-microsoft-entra-id) single sign-on services.
 
 ## Auth0 Multi-tenant URIs
 
@@ -90,9 +98,9 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/google-enable.png" title="Enable new SSO for Google Workspace"/>
 
-## Azure Active Directory
+## Microsoft Entra ID
 
-Azure Active Directory admins will need to make a slight adjustment to the existing authentication app in the Azure AD portal. This migration does not require that the entire app be deleted or recreated; you can edit the existing app. Start by opening the Azure portal and navigating to the Active Directory overview.
+Microsoft Entra ID admins will need to make a slight adjustment to the existing authentication app in the Azure portal. This migration does not require that the entire app be deleted or recreated; you can edit the existing app. Start by opening the Azure portal and navigating to the Microsoft Entra ID overview.
 
 Below are steps to update. You must complete all of them to ensure uninterrupted access to dbt Cloud and you should coordinate with your identity provider admin when making these changes.
 
@@ -108,7 +116,7 @@ Below are steps to update. You must complete all of them to ensure uninterrupted
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
-4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Azure AD. Toggle the **Enable New SSO Authentication** option and **Save**. _Once this option is enabled, it cannot be undone._
+4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Microsoft Entra ID. Toggle the **Enable New SSO Authentication** option and **Save**. _Once this option is enabled, it cannot be undone._
 
 :::warning Domain authorization
 
@@ -116,4 +124,4 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable new SSO for Azure AD"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable new SSO"/>

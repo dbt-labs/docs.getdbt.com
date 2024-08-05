@@ -98,7 +98,7 @@ To customize this macro, copy the example code in the section [How does dbt gene
 
 Be careful. dbt will ignore any custom `generate_schema_name` macros included in installed packages.
 
-<expandable alt_header="Warning: Don't replace `default_schema` in the macro">
+<Expandable alt_header="Warning: Don't replace `default_schema` in the macro">
 
 If you're modifying how dbt generates schema names, don't just replace ```{{ default_schema }}_{{ custom_schema_name | trim }}``` with ```{{ custom_schema_name | trim }}``` in the ```generate_schema_name``` macro.
 
@@ -124,7 +124,7 @@ If you remove ```{{ default_schema }}```, it causes developers to override each 
 
 ```
 
-</expandable>
+</Expandable>
 
 ### generate_schema_name arguments
 
@@ -154,13 +154,9 @@ The following context methods _are_ available in the `generate_schema_name` macr
 Globally-scoped variables and variables defined on the command line with
 [--vars](/docs/build/project-variables) are accessible in the `generate_schema_name` context.
 
-<VersionBlock firstVersion="1.6">
-
 ### Managing different behaviors across packages
 
 See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
-
-</VersionBlock>
 
 ## A built-in alternative pattern for generating schema names
 

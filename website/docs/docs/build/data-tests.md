@@ -2,6 +2,8 @@
 title: "Add data tests to your DAG"
 sidebar_label: "Data tests"
 description: "Read this tutorial to learn how to use data tests when building in dbt."
+pagination_next: "docs/build/unit-tests"
+pagination_prev: null
 search_weight: "heavy"
 id: "data-tests"
 keywords:
@@ -17,7 +19,7 @@ keywords:
 
 :::important
 
-In dbt v1.8, what was previously known as "tests" are now called "data tests" with the addition of [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for data tests but will be deprecated in the future in favor of `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
+From dbt v1.8, "tests" are now called "data tests" to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
 
 :::
 
@@ -67,6 +69,8 @@ having total_amount < 0
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
 
 Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
+
+
 
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
@@ -125,7 +129,7 @@ You can find more information about these data tests, and additional configurati
 Those four tests are enough to get you started. You'll quickly find you want to use a wider variety of tests—a good thing! You can also install generic data tests from a package, or write your own, to use (and reuse) across your dbt project. Check out the [guide on custom generic tests](/best-practices/writing-custom-generic-tests) for more information.
 
 :::info
-There are generic tests defined in some open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — skip ahead to the docs on [packages](/docs/build/packages) to learn more!
+There are generic tests defined in some open-source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) &mdash; skip ahead to the docs on [packages](/docs/build/packages) to learn more!
 :::
 
 ### Example
@@ -261,13 +265,21 @@ Note that, if you select to store test failures:
 * Test result tables are created in a schema suffixed or named `dbt_test__audit`, by default. It is possible to change this value by setting a `schema` config. (For more details on schema naming, see [using custom schemas](/docs/build/custom-schemas).)
 - A test's results will always **replace** previous failures for the same test.
 
-<VersionBlock firstVersion="1.8" lastVersion="1.8">
+
 
 ## New `data_tests:` syntax
 
-Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. As of v1.8,  `tests:` is still supported in your YML configuration files as an alias but will be deprecated in the future in favor of `data_tests:`. 
+<VersionBlock lastVersion="1.7">
 
-As we progress towards this deprecation, the examples in our docs pages will be updated to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
+In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For detailed information, select version v1.8 from the documentation navigation menu.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+  
+Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, the key was renamed from `tests:` to `data_tests:`. 
+
+dbt still supports `tests:` in your YML configuration files for backwards-compatibility purposes, and you might see it used throughout our documentation. However, you can't have a `tests` and a `data_tests` key associated with the same resource (e.g. a single model) at the same time.
 
 <File name='models/schema.yml'>
 
@@ -292,10 +304,13 @@ data_tests:
 
 </File>
 
+To suppress warnings about the rename, add `TestsConfigDeprecation` to the `silence` block of the `warn_error_options` flag in `dbt_project.yml`, [as described in the Warnings documentation](https://docs.getdbt.com/reference/global-configs/warnings).
+
 </VersionBlock>
 
 ## FAQs
 
+<FAQ path="/Tests/available-tests" />
 <FAQ path="Tests/test-one-model" />
 <FAQ path="Runs/failed-tests" />
 <FAQ path="Tests/recommended-tests" />

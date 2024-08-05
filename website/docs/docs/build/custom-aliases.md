@@ -6,7 +6,7 @@ id: "custom-aliases"
 
 ## Overview
 
-When dbt runs a model, it will generally create a relation (either a `table` or a `view`) in the database. By default, dbt uses the filename of the model as the identifier for this relation in the database. This identifier can optionally be overridden using the `alias` model configuration.
+When dbt runs a model, it will generally create a relation (either a `table` or a `view`) in the database. By default, dbt uses the filename of the model as the identifier for this relation in the database. This identifier can optionally be overridden using the [`alias`](/reference/resource-configs/alias) model configuration.
 
 ### Why alias model names?
 The names of schemas and tables are effectively the "user interface" of your <Term id="data-warehouse" />. Well-named schemas and tables can help provide clarity and direction for consumers of this data. In combination with [custom schemas](/docs/build/custom-schemas), model aliasing is a powerful mechanism for designing your warehouse.
@@ -73,33 +73,6 @@ To override dbt's alias name generation, create a macro named `generate_alias_na
 
 The default implementation of `generate_alias_name` simply uses the supplied `alias` config (if present) as the model alias, otherwise falling back to the model name. This implementation looks like this:
 
-<VersionBlock lastVersion="1.4">
-
-<File name='get_custom_alias.sql'>
-
-```jinja2
-{% macro generate_alias_name(custom_alias_name=none, node=none) -%}
-
-    {%- if custom_alias_name is none -%}
-
-        {{ node.name }}
-
-    {%- else -%}
-
-        {{ custom_alias_name | trim }}
-
-    {%- endif -%}
-
-{%- endmacro %}
-
-```
-
-</File>
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
 <File name='get_custom_alias.sql'>
 
 ```jinja2
@@ -124,8 +97,6 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 ```
 
 </File>
-
-</VersionBlock>
 
 import WhitespaceControl from '/snippets/_whitespace-control.md';
 
@@ -176,18 +147,9 @@ If these models should indeed have the same database identifier, you can work ar
 
 #### Model versions
 
-<VersionBlock lastVersion="1.4">
-
-New in v1.5
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
 **Related documentation:**
 - [Model versions](/docs/collaborate/govern/model-versions)
 - [`versions`](/reference/resource-properties/versions#alias)
 
 By default, dbt will create versioned models with the alias `<model_name>_v<v>`, where `<v>` is that version's unique identifier. You can customize this behavior just like for non-versioned models by configuring a custom `alias` or re-implementing the `generate_alias_name` macro.
 
-</VersionBlock>

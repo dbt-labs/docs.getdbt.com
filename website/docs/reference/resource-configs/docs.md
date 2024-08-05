@@ -161,7 +161,7 @@ macros:
 </Tabs>
 
 ## Definition
-The docs field can be used to provide documentation-specific configuration to models. It supports the doc attribute `show`, which controls whether or not models are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.
+The `docs` property can be used to provide documentation-specific configuration to models. It supports the attribute `show`, which controls whether or not nodes are shown in the auto-generated documentation website. It also supports `node_color` for models, seeds, snapshots, and analyses. Other node types are not supported.
 
 **Note:** Hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
@@ -177,8 +177,6 @@ models:
     docs:
       show: false
 ```
-
-<VersionBlock firstVersion="1.3">
 
 ### Mark a subfolder of models as hidden
 
@@ -202,10 +200,6 @@ models:
 ```
 
 </File>
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3">
 
 ## Custom node colors
 
@@ -342,5 +336,3 @@ models:
 ```
 
 </File>
-
-</VersionBlock>
