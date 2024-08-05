@@ -6,7 +6,7 @@ pagination_next: "docs/collaborate/column-level-lineage"
 pagination_prev: null
 ---
 
-With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
+With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. 
 
 ## Prerequisites
 
@@ -24,6 +24,8 @@ Navigate the dbt Explorer overview page to access your project's resources and m
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
 - **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/collaborate/govern/model-access#access-modifiers) in your project. 
+- **Model query history** &mdash; Use [model query history](/docs/collaborate/model-query-history) to track the history of queries on your models for deeper insights.
+- **Auto-exposures** &mdash; [Set up auto-exposures](/docs/collaborate/auto-exposures) to automatically expose relevant data models from your BI tool to enhance visibility.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="100%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
 
