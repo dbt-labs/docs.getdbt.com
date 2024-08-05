@@ -18,14 +18,6 @@ At a high level, you’ll need to decide:
 - Where to draw the lines between your dbt Projects -- i.e. how do you determine where to split your DAG and which models go in which project?
 - How to manage your code -- do you want multiple dbt Projects living in the same repository (mono-repo) or do you want to have multiple repos with one repo per project?
 
-### Cycle detection
-
-Like resource dependencies, project dependencies are acyclic, meaning they only move in one direction. This prevents `ref` cycles (or loops), which lead to issues with your data workflows. For example, if project B depends on project A, a new model in project A could not import and use a public model from project B. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) for more information.
-
-:::note 
-This requirement is likely to change in the future, so stay tuned for updates!
-:::
-
 ## Define your project interfaces by splitting your DAG
 
 The first (and perhaps most difficult!) decision when migrating to a multi-project architecture is deciding where to draw the line in your DAG to define the interfaces between your projects. Let's explore some language for discussing the design of these patterns.
@@ -73,6 +65,21 @@ A multi-project architecture can exist in a single repo (monorepo) or as multipl
 Since the launch of dbt Mesh, the most common pattern we've seen is one where projects are 1:1 aligned to teams, and each project has its own codebase in its own repository. This isn’t a hard-and-fast rule: Some organizations want multiple teams working out of a single repo, and some teams own multiple domains that feel awkward to keep combined.
 
 Users may need to contribute models across multiple projects and this is fine. There will be some friction doing this, versus a single repo, but this is _useful_ friction, especially if upstreaming a change from a “spoke” to a “hub.” This should be treated like making an API change, one that the other team will be living with for some time to come. You should be concerned if your teammates find they need to make a coordinated change across multiple projects very frequently (every week), or as a key prerequisite for ~20%+ of their work.
+
+### Cycle detection
+
+Currently, the default behavior for "project" dependencies enforces that these relationships only go in one direction, meaning that the `jaffle_finance` project could not add a new model that depends, on any public models produced by the `jaffle_marketing` project. dbt will check for cycles across projects and raise errors if any are detected.
+
+However, many teams may want to be able to share data assets back and forth between teams. **We've added support for enabling bidirectional dependencies across projects, currently in beta**. To enable this in your account, simply set the environment variable `DBT_CLOUD_PROJECT_CYCLES_ALLOWED` to `TRUE` in all yur dbt Cloud environments. This will allow you to create bidirectional dependencies between projects, so long as there are not any node-level cycles introduced by the new dependency.
+
+When setting up projects that depend on each other, it's important to do so in a stepwise fashion. Each project must run and produce public models before the original producer project can take a dependency on the original consumer project. For example, the order of operations would be as follows for a simple two-project setup:
+
+1. The `project_a` project runs in a deployment environment and produce public models.
+2. The `project_b` project adds `project_a` as a dependency.
+3. The `project_b` project runs in a deployment environment and produces public models.
+4. The `project_a` project adds `project_b` as a dependency.
+
+If you enable this feature and experience any issues, please be sure to each out to dbt Cloud support.
 
 ### Tips and tricks
 
