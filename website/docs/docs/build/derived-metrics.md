@@ -17,11 +17,12 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. | Required |
-| `expr` | The derived expression. | Required |
+| `expr` | The derived expression. You see validation warnings when the derived metric is missing an `expr` or  the `expr` does not use all the input metrics. | Required |
 | `metrics` |  The list of metrics used in the derived metrics. | Required  |
 | `alias` | Optional alias for the metric that you can use in the expr. | Optional |
 | `filter` | Optional filter to apply to the metric. | Optional |
 | `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time.  | Optional |
+
 
 The following displays the complete specification for derived metrics, along with an example.
 

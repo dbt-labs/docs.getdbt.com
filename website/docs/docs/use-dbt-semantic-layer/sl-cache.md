@@ -12,13 +12,17 @@ The dbt Semantic Layer allows you to cache common queries in order to speed up p
 There are two different types of caching:
 
 - [Result caching](#result-caching) leverages your data platform's built-in caching layer.
-- [Declarative caching](#declarative-caching) allows you to pre-warm the cache using saved queries.
+- [Declarative caching](#declarative-caching) allows you to pre-warm the cache using saved queries configuration.
 
-While you can use caching to speed up your queries and reduce compute time, knowing the difference between the two depends on your use case: result caching happens automatically by leveraging your data platform's cache, while declarative caching allows you to 'declare' the queries you specifically want to cache. With declarative caching, you need to anticipate which queries you want to cache.
+While you can use caching to speed up your queries and reduce compute time, knowing the difference between the two depends on your use case: 
+
+- Result caching happens automatically by leveraging your data platform's cache.
+- Declarative caching allows you to 'declare' the queries you specifically want to cache. With declarative caching, you need to anticipate which queries you want to cache.
+- Declarative caching also allows you to dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already in a saved query config) will use the cache.
 
 ## Prerequisites
 - dbt Cloud [Team or Enterprise](https://www.getdbt.com/) plan.
-- dbt Cloud environments that are versionless by opting to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+- dbt Cloud environments that are ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless).
 - A successful job run and [production environment](/docs/deploy/deploy-environments#set-as-production-environment).
 - For declarative caching, you need to have [exports](/docs/use-dbt-semantic-layer/exports) defined in your [saved queries](/docs/build/saved-queries) YAML configuration file.
 
@@ -42,8 +46,24 @@ Different data platforms might have different caching layers and cache invalidat
 
 ## Declarative caching
 
-Declarative caching enables you to pre-warm the cache using [saved queries](/docs/build/saved-queries) by setting the cache config to `true` in your `saved_queries` settings. This is useful for optimizing performance for key dashboards or common ad-hoc query requests. For configuration details, refer to [Declarative caching setup](#declarative-caching-setup).
+Declarative caching enables you to pre-warm the cache using [saved queries](/docs/build/saved-queries) by setting the cache config to `true` in your `saved_queries` settings. This is useful for optimizing performance for key dashboards or common ad-hoc query requests. 
 
+:::tip
+Declarative caching also allows you to dynamically filter your dashboards without losing the performance benefits of caching. This works because filters on dimensions (that are already in a saved query config) will use the cache.
+
+For example, if you filter a metric by geographical region on a dashboard, the query will hit the cache, ensuring faster results. This also removes the need to create separate saved queries with static filters.
+:::
+
+For configuration details, refer to [Declarative caching setup](#declarative-caching-setup).
+
+How declarative caching works:
+- Make sure your saved queries YAML configuration file has [exports](/docs/use-dbt-semantic-layer/exports) defined.
+- Running a saved query triggers the dbt Semantic Layer to:
+  - Build a cached table from a saved query, with exports defined, into your data platform.
+  - Make sure any query requests that match the saved query's inputs use the cache, returning data more quickly.
+  - Automatically invalidates the cache when it detects new and fresh data in any upstream models related to the metrics in your cached table.
+  - Refreshes (or rebuilds) the cache the next time you run the saved query.
+ 
 <details>
 
 <summary> 📹 Check out this video demo to see how declarative caching works!</summary>
@@ -53,14 +73,6 @@ This video demonstrates the concept of declarative caching, how to run it using 
 <LoomVideo id='aea82a4dee364dfdb536e7b8068684e7' />
 
 </details>
-
-How declarative caching works:
-- Make sure your saved queries YAML configuration file has [exports](/docs/use-dbt-semantic-layer/exports) defined.
-- Running a saved query triggers the dbt Semantic Layer to:
-  - Build a cached table from a saved query, with exports defined, into your data platform.
-  - Make sure any query requests that match the saved query's inputs use the cache, returning data more quickly.
-  - Automatically invalidates the cache when it detects new and fresh data in any upstream models related to the metrics in your cached table.
-  - Refreshes (or rebuilds) the cache the next time you run the saved query.
 
 Refer to the following diagram, which illustrates what happens when the dbt Semantic Layer receives a query request:
 
@@ -120,6 +132,18 @@ If an upstream model has data in it that was created after the cache was created
 
 You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using the `InvalidateCacheResult` field.
 
+## FAQs
+
+<detailsToggle alt_header="How does caching interact with access controls?">
+
+Cached data is stored separately from the underlying models. If metrics are pulled from the cache, we don’t have the security context applied to those tables at query time.
+
+In the future, we plan to clone credentials, identify the minimum access level needed, and apply those permissions to cached tables.
+
+</detailsToggle>
+
+
 ## Related docs
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - [Saved queries](/docs/build/saved-queries)
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)

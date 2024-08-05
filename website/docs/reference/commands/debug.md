@@ -11,15 +11,11 @@ id: "debug"
 
 ## Example usage
 
-<VersionBlock firstVersion="1.6">
-
 Only test the connection to the data platform and skip the other checks `dbt debug` looks for:
 
 ```shell
 $ dbt debug --connection
 ```
-
-</VersionBlock>
 
 Show the configured location for the `profiles.yml` file and exit:
 

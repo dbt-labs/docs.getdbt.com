@@ -136,8 +136,6 @@ Together, the `state:` selector and deferral enable ["slim CI"](/best-practices/
 
 State and defer can be set by environment variables as well as CLI flags:
 
-<VersionBlock firstVersion="1.5" lastVersion="1.6">
-
 - `--state` or `DBT_STATE`: file path
 - `--defer` or `DBT_DEFER`: boolean
 
@@ -147,17 +145,11 @@ In dbt v1.5, we deprecated the original syntax for state (`DBT_ARTIFACT_STATE_PA
 
 :::
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
 - `--state` or `DBT_STATE`: file path
 - `--defer` or `DBT_DEFER`: boolean
 - `--defer-state` or `DBT_DEFER_STATE`: file path to use for deferral only (optional)
 
 If `--defer-state` is not specified, deferral will use the artifacts supplied by `--state`. This enables more granular control in cases where you want to compare against logical state from one environment or past point in time, and defer to applied state from a different environment or point in time.
-
-</VersionBlock>
 
 If both the flag and env var are provided, the flag takes precedence.
 
