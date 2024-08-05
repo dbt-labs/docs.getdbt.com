@@ -31,7 +31,7 @@ To get started, you will need to [add dbt as an OAuth application](https://docs.
    - The refresh token time-to-live (TTL) in minutes. Default: 10080.
 4. Select **Generate a client secret**. Copy and securely store the client secret. The client secret will not be available later.
 
-You can use the following table to set up the redirect URLs for your application to help you get set up with Databricks OAuth with dbt Cloud:
+You can use the following table to set up the redirect URLs for your application with dbt Cloud:
 
 | Region | Redirect URLs |
 | ------ | ----- |
