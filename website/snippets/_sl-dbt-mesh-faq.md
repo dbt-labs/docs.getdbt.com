@@ -16,7 +16,7 @@ semantic_models:
       agg_time_dimension: first_ordered_at
     description: |
       Customer grain mart that aggregates customer orders.
-    model: ref('analytics', 'fct_orders') # ref('project_name', 'model_name')
+    model: ref('jaffle_finance', 'fct_orders') # ref('project_name', 'model_name')
     entities:
       ...rest of configuration...
     dimensions:
