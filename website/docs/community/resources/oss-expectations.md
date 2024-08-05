@@ -107,3 +107,7 @@ PRs are your surest way to make the change you want to see in dbt / packages / d
 - **Tests!** When you open a PR, some tests and code checks will run. (For security reasons, some may need to be approved by a maintainer.) We will not merge any PRs with failing tests. If you’re not sure why a test is failing, please say so, and we’ll do our best to get to the bottom of it together.
 - **Contributor License Agreement** (CLA): This ensures that we can merge your code, without worrying about unexpected implications for the copyright or license of open source dbt software. For more details, read: ["Contributor License Agreements"](../resources/contributor-license-agreements.md)
 - **Changelog:** In projects that include a number of changes in each release, we need a reliable way to signal what's been included. The mechanism for this will vary by repository, so keep an eye out for notes about how to update the changelog.
+
+**Inclusion in release versions**
+
+Both bug fixes and backwards-compatible new features will be included in the [next minor release](/docs/dbt-versions/core#how-dbt-core-uses-semantic-versioning). Fixes for regressions and net-new bugs that were present in the minor version's original release will be backported to versions with [active support](/docs/dbt-versions/core). Other bug fixes may be backported when we have high confidence that they're narrowly scoped and won't cause unintended side effects.
