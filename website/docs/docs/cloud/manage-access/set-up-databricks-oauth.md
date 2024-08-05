@@ -36,7 +36,7 @@ You can use the following table to set up the redirect URLs for your application
 | Region | Redirect URLs |
 | ------ | ----- |
 | **US multi-tenant** | https://cloud.getdbt.com/callback <br /> https://cloud.getdbt.com/complete/databricks |
-| **US cell 1** | https://ACCOUNT_PREFIX.us1.dbt.com/callback <br /> https://ACCOUNT_PREFIX.us1.dbt.com/complete/databricks |
+| **US cell 1** | https://us1.dbt.com/callback <br /> https://us1.dbt.com/complete/databricks |
 | **EMEA** | https://emea.dbt.com/callback <br /> https://emea.dbt.com/complete/databricks |
 | **APAC** | https://au.dbt.com/callback <br /> https://au.dbt.com/complete/databricks |
 | **Single tenant** | https://INSTANCE_NAME.getdbt.com/callback <br /> https://INSTANCE_NAME.getdbt.com/complete/databricks
