@@ -59,6 +59,7 @@ const sidebarSettings = {
               },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-amazon-athena",
                 "docs/cloud/connect-data-platform/connect-azure-synapse-analytics",
                 "docs/cloud/connect-data-platform/connect-microsoft-fabric",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
@@ -79,6 +80,7 @@ const sidebarSettings = {
               items: [
                 "docs/cloud/manage-access/about-user-access",
                 "docs/cloud/manage-access/invite-users",
+                "docs/cloud/manage-access/mfa",
                 {
                   type: "category",
                   label: "User permissions and licenses",
@@ -92,7 +94,18 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/enterprise-permissions",
                   ],
                 },
-
+                {
+                  type: "category",
+                  label: "Environment permissions",
+                  link: {
+                    type: "doc",
+                    id: "docs/cloud/manage-access/environment-permissions",
+                  },
+                  items: [
+                    "docs/cloud/manage-access/environment-permissions",
+                    "docs/cloud/manage-access/environment-permissions-setup",
+                  ],
+                },
                 {
                   type: "category",
                   label: "Single sign-on and Oauth",
@@ -451,6 +464,7 @@ const sidebarSettings = {
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
         "docs/deploy/continuous-integration",
+        "docs/deploy/continuous-deployment",
         {
           type: "category",
           label: "Jobs",
@@ -669,6 +683,7 @@ const sidebarSettings = {
             "docs/dbt-cloud-apis/sl-api-overview",
             "docs/dbt-cloud-apis/sl-jdbc",
             "docs/dbt-cloud-apis/sl-graphql",
+            "docs/dbt-cloud-apis/sl-python",
             "docs/dbt-cloud-apis/sl-manifest",
           ],
         },

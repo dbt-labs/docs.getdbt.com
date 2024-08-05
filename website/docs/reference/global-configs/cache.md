@@ -4,8 +4,6 @@ id: "cache"
 sidebar: "Cache"
 ---
 
-<VersionBlock firstVersion="1.5">
-
 ### Cache population
 
 At the start of runs, dbt caches metadata about all the objects in all the schemas where it might materialize resources (such as models). By default, dbt populates the cache with information on all schemas related to the project.
@@ -28,6 +26,3 @@ Or, to improve speed and performance while focused on developing Salesforce mode
 dbt --cache-selected-only run --select salesforce
 
 ```
-
-</VersionBlock>
-
