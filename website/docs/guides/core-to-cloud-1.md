@@ -57,7 +57,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 ## Prerequisites
 
 - You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
-- A [supported version](/docs/dbt-versions/core) of dbt or select [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#Versionless) of dbt. <Lifecycle status="Preview"/>
+- A [supported version](/docs/dbt-versions/core) of dbt or select [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) of dbt. <Lifecycle status="Preview"/>
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ## Account setup
