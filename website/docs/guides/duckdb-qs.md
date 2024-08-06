@@ -14,41 +14,18 @@ tags: ['dbt Core','Quickstart']
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Core with DuckDB, enabling you to get set up quickly and efficiently. This guide will demonstrate how to: 
+In this quickstart guide, you'll learn how to use dbt Core with DuckDB, enabling you to get set up quickly and efficiently. [DuckDB](https://duckdb.org/) is an open-source database management system which is designed for analytical workloads. It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
+
+
+This guide will demonstrate how to: 
 
 - Create a GitHub Codespace using a template provided by dbt Labs.
    - This sets up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
+   - For additional information, refer to the [README](https://github.com/gwenwindflower/octocatalog) for the Jaffle Shop template. It includes instructions on how to do this, along with animated GIFs.
 - Run any dbt command from the environment’s terminal. 
 - Generate a larger dataset for the Jaffle Shop café (for example, 5 years of data instead of just one).
 
-For additional information, refer to the [README](https://github.com/gwenwindflower/octocatalog) for the Jaffle Shop template. It includes instructions on how to do this, along with animated GIFs.
-
-
-
-### What is DuckDB?
-
-
-
-<Tabs>
-
-<TabItem value="local" label="Local">
-
-DuckDB is an open-source database management system which is designed for analytical workloads.  It is designed to provide fast and easy access to large datasets, making it well-suited for data analytics tasks. 
-
-For more information, please refer to the [Duck DB](https://duckdb.org/) website.
-
-
- </TabItem>
- 
- <TabItem value="web" label="Web browser">
-
-dbt Labs offers a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that allows you and others to set up a comprehensive dbt environment with a functional and executable project. Upon creating the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) establishes a fully operational dbt environment, connects to a DuckDB database, and imports a year's worth of data from our fictional Jaffle Shop café, which operates in various US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) file for the Jaffle Shop template includes detailed instructions and animated GIFs to guide you through the process.
-
-
-</TabItem>
-
-</Tabs>
-
+[Placeholder: Check if Core (vs Codespace) walks users through the same workflow as above ^. If not, consider adding a second bullet list for it below. ]
 
 ### Related content
 
@@ -63,16 +40,11 @@ dbt Labs offers a [GitHub Codespace](https://docs.github.com/en/codespaces/overv
 
 ### Prerequisites
 
-- When using DuckDB with dbt Core, you'll need to use the dbt command-line interface (CLI).
+- When using DuckDB with dbt Core, you'll need to use the dbt command-line interface (CLI). Currently, DuckDB is not supported in dbt Cloud.
 - It's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
-Currently, DuckDB is not supported in dbt Cloud.
-
-
-
 ## Set up DuckDB for dbt Core
-
 
 The following will provide a step by step guide on setting up DuckDB for both local and web browser.
 
@@ -82,6 +54,8 @@ The following will provide a step by step guide on setting up DuckDB for both lo
 <TabItem value="local" label="Local">
 
 1. First, you'll need to clone this repository.
+
+[review: consider adding `git clone` command as an example for step 1]
 
 2. Change into the docs-duckdb directory from the command line:
 
@@ -93,22 +67,22 @@ cd docs-duckdb
 
 3. Install dbt and DuckDB in a virtual environment.
 
-<Expandable alt_header="If you're using MAC, you can copy and paste the below:" >
+    <Expandable alt_header="Example for MAC" >
 
-```Jinja
+    ```Jinja
 
-python3 -m venv venv
-source venv/bin/activate
-python3 -m pip install --upgrade pip
-python3 -m pip install -r requirements.txt
-source venv/bin/activate
+    python3 -m venv venv
+    source venv/bin/activate
+    python3 -m pip install --upgrade pip
+    python3 -m pip install -r requirements.txt
+    source venv/bin/activate
 
-```
+    ```
 
-</Expandable>
+    </Expandable>
 
 
-<Expandable alt_header="For Windows cmd.exe, you can copy and paste the below:" >
+<Expandable alt_header="Example for Windows" >
 
 ```Jinja
 
@@ -123,7 +97,7 @@ venv\Scripts\activate.bat
 </Expandable>
 
 
-<Expandable alt_header="For Windows PowerShell, you can copy and paste the below:" >
+<Expandable alt_header="Example for Windows PowerShell" >
 
 ```Jinja
 
@@ -142,6 +116,7 @@ venv\Scripts\Activate.ps1
 
 For detailed information, refer to the [dbt command reference](/reference/dbt-commands). Frequently used commands include:
 
+[review comment: consider reconstructing above two sentences so there's only one colon]
 
 - [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
 - [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
@@ -150,8 +125,11 @@ For detailed information, refer to the [dbt command reference](/reference/dbt-co
 - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - generates your project's documentation.
 - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) - starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
+[review comment: per nat's callout during meeting, indent list above for better alignment with step 4 when page is rendered]
 
 ### Run build steps independently
+
+[review comment: consider if this whole section is necessary. some of the commands listed within it is mentioned in step 4. compare how the Codespace content is organized (primary) and other Cloud qs guides (secondary).]
 
 1. Load the CSVs with the demo data set. This materializes the CSVs as tables in your target schema. Note that a typical dbt project does not require this step since dbt assumes your raw data is already in your warehouse.
 
@@ -178,6 +156,8 @@ NOTE: If you decide to run this project in your own data warehouse (outside of t
 
 
 ### Troubleshoot
+
+[review comment: love this section. consider using expandable/detail for issue below. this is a bit of "future proofing" so if another item needs to be added later, it'll be easy to just add another list-like item to section]
 
 You may get an error like the one in the example below, in which case you will need to disconnect from any sessions that are locking the database:
 
@@ -229,7 +209,7 @@ As a last resort, deleting the database file will get you back in action (_but_ 
 
 Fore more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
 
-
+[review comment: as part of how to organize content, consider moving this sentence to the introduction part of the "Set up DuckDB for dbt Core" section.]
 
 ## Generate a larger data set
 
