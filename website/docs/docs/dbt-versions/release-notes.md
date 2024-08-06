@@ -26,7 +26,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 - **Behavior change:** dbt Cloud IDE automatically adds a `--limit 100` to preview queries to avoid slow and expensive queries during development. Recently, dbt Core changed how the `limit` is applied to ensure that `order by` clauses are consistently respected. Because of this, queries that already contain a limit clause might now cause errors in the IDE previews. To address this, dbt Labs plans to provide an option soon to disable the limit from being applied. Until then, dbt Labs recommends removing the (duplicate) limit clause from your queries during previews to avoid these IDE errors.
 - **Enhancement:** Custom configurations are now supported by generic data tests. Use this to configure how dbt should run the data test (for example, specifying a Snowflake virtual warehouse different from the one in your connection). To learn more, refer to [Specify custom configurations for generic data tests](/reference/data-test-configs#specify-custom-configurations-for-generic-data-tests).
 
-  Support for this configuration is available in dbt Cloud when selecting "Keep on latest version." Specifying custom configurations for data tests will become available in dbt Core later this year.
+  Support for this configuration is available in dbt Cloud when selecting **Versionless**. Specifying custom configurations for data tests will become available in dbt Core later this year.
 
 - **Enhancement**: Introducing a revamped overview page for dbt Explorer, available in beta. It includes a new design and layout for the Explorer homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/collaborate/explore-projects#overview-page).
 
@@ -135,15 +135,15 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New**: The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) introduces [declarative caching](/docs/use-dbt-semantic-layer/sl-cache), allowing you to cache common queries to speed up performance and reduce query compute costs. Available for dbt Cloud Team or Enterprise accounts.
 
-- <Expandable alt_header="New: Keep on latest version" > 
+- <Expandable alt_header="New: Versionless" > 
 
-  The **Keep on latest version** setting is now Generally Available (previously Public Preview).
+  The **Versionless** setting is now Generally Available (previously Public Preview).
 
-  When the new **Keep on latest version** setting is enabled, you get a versionless experience and always get the latest features and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
+  When the new **Versionless** setting is enabled, you get a versionless experience and always get the latest features and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
 
-  To learn more about the new setting, refer to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) for details. 
+  To learn more about the new setting, refer to [Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) for details. 
 
-  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Keep on latest version setting"/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Versionless setting"/>
 
   </Expandable>
 
@@ -159,7 +159,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
   
-- **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and dbt Cloud "Keep on latest version"). Read [Package override for built-in materialization](/reference/global-configs/legacy-behaviors#package-override-for-built-in-materialization) for more information.
+- **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and "Versionless" dbt Cloud). Read [Package override for built-in materialization](/reference/global-configs/legacy-behaviors#package-override-for-built-in-materialization) for more information.
 
 **dbt Semantic Layer**
 - **New**: Use Saved selections to [save your query selections](/docs/cloud-integrations/semantic-layer/gsheets#using-saved-selections) within the [Google Sheets application](/docs/cloud-integrations/semantic-layer/gsheets). They can be made private or public and refresh upon loading.
@@ -214,15 +214,15 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
 
-- <Expandable alt_header="New: Keep on latest version " lifecycle="beta">
+- <Expandable alt_header="New: Versionless " lifecycle="beta">
 
   _Now available in the dbt version dropdown in dbt Cloud &mdash; starting with select customers, rolling out to wider availability through February and March._
 
-  When the new **Keep on latest version** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
+  When the new **Versionless** setting is enabled, you always get the latest fixes and early access to new functionality for your dbt project. dbt Labs will handle upgrades behind-the-scenes, as part of testing and redeploying the dbt Cloud application &mdash; just like other dbt Cloud capabilities and other SaaS tools that you're using. No more manual upgrades and no more need for _a second sandbox project_ just to try out new features in development.
 
-  To learn more about the new setting, refer to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) for details. 
+  To learn more about the new setting, refer to [Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) for details. 
 
-  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Keep on latest version setting"/>
+  <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example of the Versionless setting"/>
 
   </Expandable>
 
