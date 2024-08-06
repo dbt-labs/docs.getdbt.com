@@ -1,5 +1,9 @@
 exports.versions = [
   {
+    version: "1.9",
+    isPrerelease: true, 
+  },
+  {
     version: "1.8",
     EOLDate: "2025-04-15",
   },
@@ -11,13 +15,17 @@ exports.versions = [
     version: "1.6",
     EOLDate: "2024-07-31",
   },
-  {
-    version: "1.5",
-    EOLDate: "2024-04-27",
-  },
 ]
 
 exports.versionedPages = [
+  {
+    "page": "/reference/resource-configs/target_database",
+    "lastVersion": "1.8",
+  },
+  {
+    "page": "/reference/resource-configs/target_schema",
+    "lastVersion": "1.8",
+  },
   {
     "page": "reference/global-configs/indirect-selection",
     "firstVersion": "1.8",

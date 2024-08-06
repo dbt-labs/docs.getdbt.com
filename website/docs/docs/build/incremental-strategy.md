@@ -19,22 +19,6 @@ Click the name of the adapter in the below table for more information about supp
 
 The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in dbt v1.6.
 
-<VersionBlock lastVersion="1.5">
-
-| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |
-|-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|
-| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅   |         |        ✅       |                    |
-| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅   |         |        ✅       |                    |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |          |    ✅   |                 |          ✅        |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅   |    ✅   |                 |          ✅        |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅   |    ✅   |                 |          ✅        |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅   |    ✅   |        ✅       |                    |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅   |    ✅   |        ✅       |                    |
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
 | data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |
 |-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|
 | [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅        |                    |
@@ -46,7 +30,6 @@ The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in 
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   |        ✅       |                    |
 | [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |         |        ✅       |                    |
 
-</VersionBlock>
 
 :::note Snowflake Configurations
 

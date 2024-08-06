@@ -102,6 +102,10 @@ Example of deactivation banner on job's page:
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/example-deactivated-deploy-job.png" title="Example of deactivation banner on job's page"/>
 
+## FAQs
+
+<FAQ path="Troubleshooting/job-memory-limits" />
+
 ## Related docs
 - [dbt Cloud architecture](/docs/cloud/about-cloud/architecture#dbt-cloud-features-architecture)
 - [Job commands](/docs/deploy/job-commands)

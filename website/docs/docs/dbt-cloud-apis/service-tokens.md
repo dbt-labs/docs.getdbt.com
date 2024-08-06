@@ -17,7 +17,7 @@ Service account tokens enable you to securely authenticate with the dbt Cloud AP
 You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permission sets available in dbt Cloud to your service account token, which can vary slightly depending on your plan:
 
 * Enterprise plans can apply any permission sets available to service tokens.
-* Team plans can apply Account Admin, Member, Job Admin, Read-Only, and Metadata permissions set to service tokens.
+* Team plans can apply Account Admin, Member, Job Admin, Read-Only, Metadata, and Semantic Layer permissions set to service tokens.
 
 You can assign as many permission sets as needed to one token. For more on permissions sets, see "[Enterprise Permissions](/docs/cloud/manage-access/enterprise-permissions)."
 
@@ -68,6 +68,9 @@ Security Admin service tokens have certain account-level permissions.  For more 
 
 **Billing Admin** <br/>
 Billing Admin service tokens have certain account-level permissions.  For more on these permissions, see [Billing Admin](/docs/cloud/manage-access/enterprise-permissions#billing-admin).
+
+**Manage marketplace apps** <br/>
+Used only for service tokens assigned to marketplace apps (for example, the [Snowflake Native app](/docs/cloud-integrations/snowflake-native-app)). 
 
 **Metadata Only**<br/>
 Metadata-only service tokens authorize requests to the Discovery API.

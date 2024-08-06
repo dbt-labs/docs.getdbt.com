@@ -8,9 +8,9 @@ datatype: string
 <Tabs>
 <TabItem value="model" label="Model">
 
-Specify a custom schema for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
-
-For example, if you have a group of marketing-related models and you want to place them in a separate schema called `marketing`, you can configure it like this:
+Specify a [custom schema](/docs/build/custom-schemas#understanding-custom-schemas) for a group of models in your `dbt_project.yml` file or a [config block](/reference/resource-configs/schema#models). 
+ 
+For example, if you have a group of marketing-related models and want to place them in a separate schema called `marketing`, you can configure it like this:
 
 <File name='dbt_project.yml'>
 
@@ -22,7 +22,8 @@ models:
 ```
 </File>
 
-This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.marketing.model_name`. 
+This would result in the generated relations for these models being located in the  `marketing` schema, so the full relation names would be `analytics.target_schema_marketing.model_name`. This is because the schema of the relation is `{{ target.schema }}_{{ schema }}`. The [definition](#definition) section explains this in more detail.
+
 </TabItem>
 
 <TabItem value="seeds" label="Seeds">
@@ -41,7 +42,38 @@ seeds:
 ```
 
 This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.mappings.seed_name`. 
+
 </File>
+</TabItem>
+
+<TabItem value="snapshots" label="Snapshots">
+
+<VersionBlock lastVersion="1.8">
+
+Available for versionless dbt Cloud or dbt Core v1.9+. Select v1.9 or newer from the version dropdown to view the configs.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+Specify a custom schema for a snapshot in your `dbt_project.yml` or config file. 
+
+For example, if you have a snapshot that you want to load into a schema other than the target schema, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  your_project:
+    your_snapshot:
+      +schema: snapshots
+```
+</File>
+
+This results in the generated relation being located in the `snapshots` schema so the full relation name would be `analytics.snapshots.your_snapshot` instead of the default target schema.
+
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="tests" label="Test">
@@ -118,17 +150,28 @@ seeds:
 
 ### Tests
 
-Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results:
+Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results.
+The resulting schema is `{{ profile.schema }}_{{ tests.schema }}`, with a default suffix of `dbt_test__audit`.
+To use the same profile schema, set `+schema: null`.
 
 <File name='dbt_project.yml'>
 
 ```yml
 tests:
   +store_failures: true
-  +schema: the_island_of_misfit_tests
+  +schema: _sad_test_failures  # Will write tables to my_database.my_schema__sad_test_failures
 ```
 
 </File>
+
+Ensure you have the authorization to create or access schemas for your work. To ensure that the required schemas have the correct permissions, run a sql statement in your respective data platform environment. For example, run the following command if using Redshift (exact authorization query may differ from one data platform to another):
+
+```sql
+create schema if not exists dev_username_dbt_test__audit authorization username;
+```
+_Replace `dev_username` with your specific development schema name and `username` with the appropriate user who should have the permissions._
+
+This command grants the appropriate permissions to create and access the `dbt_test__audit` schema, which is often used with the `store_failures` configuration.
 
 ## Warehouse specific information
 * BigQuery: `dataset` and `schema` are interchangeable
