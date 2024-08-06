@@ -338,8 +338,6 @@ In the configuration format for the model SQL file:
 
 </File>
 
-<VersionBlock firstVersion="1.6">
-
 ## Dynamic tables
 
 The Snowflake adapter supports [dynamic tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about).
@@ -578,7 +576,7 @@ For dbt limitations, these dbt features are not supported:
 - [Model contracts](/docs/collaborate/govern/model-contracts)
 - [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
 
-<VersionBlock firstVersion="1.6" lastVersion="1.6">
+<VersionBlock lastVersion="1.6">
 
 #### Changing materialization to and from "dynamic_table"
 
@@ -604,9 +602,6 @@ The workaround is to execute `DROP TABLE my_model` on the data warehouse before 
 </File>
 
 </VersionBlock>
-
-</VersionBlock>
-
 
 ## Source freshness known limitation
 

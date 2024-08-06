@@ -91,24 +91,11 @@ Variables defined with the `--vars` command line argument override variables def
 
 The order of precedence for variable declaration is as follows (highest priority first):
 
-<VersionBlock firstVersion="1.6">
-
 1. The variables defined on the command line with `--vars`.
 2. The package-scoped variable declaration in the root `dbt_project.yml` file
 3. The global variable declaration in the root `dbt_project.yml` file
 4. If this node is defined in a package: variable declarations in that package's `dbt_project.yml` file
 5. The variable's default argument (if one is provided)
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.5">
-
-1. The variables defined on the command line with `--vars`
-2. The package-scoped variable declaration in the root `dbt_project.yml` file
-3. The global variable declaration in the root `dbt_project.yml` file
-4. The variable's default argument (if one is provided).
-
-</VersionBlock>
 
 If dbt is unable to find a definition for a variable after checking all possible variable declaration places, then a compilation error will be raised.
 
