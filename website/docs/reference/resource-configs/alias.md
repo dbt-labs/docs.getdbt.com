@@ -116,7 +116,7 @@ The standard behavior of dbt is:
 * If a custom alias is _not_ specified, the identifier of the relation is the resource name (i.e. the filename).
 * If a custom alias is specified, the identifier of the relation is the `{{ alias }}` value.
 
-In the special case of an [ephemeral model](/materializations), dbt will always apply the prefix `__dbt__cte__` to the <Term id="cte" /> identifier. This means that if an alias is set on an ephemeral model, then its CTE identifier will be `__dbt__cte__{{ alias }}`, but if no alias is set then its identifier will be `__dbt__cte__{{ filename }}`.
+In the special case of an [ephemeral model](/docs/build/materializations), dbt will always apply the prefix `__dbt__cte__` to the <Term id="cte" /> identifier. This means that if an alias is set on an ephemeral model, then its CTE identifier will be `__dbt__cte__{{ alias }}`, but if no alias is set then its identifier will be `__dbt__cte__{{ filename }}`.
 
 To learn more about changing the way that dbt generates a relation's `identifier`, read [Using Aliases](/docs/build/custom-aliases).
 
