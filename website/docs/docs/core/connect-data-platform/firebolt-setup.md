@@ -54,7 +54,7 @@ To connect to Firebolt from dbt, you'll need to add a [profile](https://docs.get
 </File>
 
 
-#### Description of Firebolt Profile Fields
+#### Description of Firebolt profile fields
 
 To specify values as environment variables, use the format `{{ env_var('<variable_name>' }}`. For example, `{{ env_var('DATABASE_NAME' }}`.
 
@@ -71,7 +71,7 @@ To specify values as environment variables, use the format `{{ env_var('<variabl
 | `host`                   | Optional. The host name of the connection. For all customers it is `api.app.firebolt.io`, which will be used if omitted. |
 
 
-#### Troubleshooting Connections
+#### Troubleshooting connections
 
 If you encounter issues connecting to Firebolt from dbt, make sure the following criteria are met:
 - You must have adequate permissions to access the engine and the database.
@@ -79,7 +79,7 @@ If you encounter issues connecting to Firebolt from dbt, make sure the following
 - The engine must be running.
 
 
-## Supporting Concurrent Development
+## Supporting concurrent development
 
 In dbt, database schemas are used to compartmentalize developer environments so that concurrent development does not cause <Term id="table" /> name collisions. Firebolt, however, does not currently support database schemas (it is on the roadmap). To work around this, we recommend that you add the following macro to your project. This macro will take the `schema` field of your `profiles.yml` file and use it as a table name prefix.
 
