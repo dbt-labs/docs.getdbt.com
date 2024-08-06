@@ -15,11 +15,11 @@ displayed_sidebar: "docs"
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-## Keep on latest version 
+## Versionless 
 
 dbt Cloud is going "versionless." This means you'll automatically get early access to new features and functionality before they're available in final releases of dbt Core. 
 
-Select ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access to everything in dbt Core v1.8 and more.
+Select [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access to everything in dbt Core v1.8+ and more.
 
 To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `versionless`.
 
