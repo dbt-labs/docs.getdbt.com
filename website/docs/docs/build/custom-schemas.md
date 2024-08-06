@@ -154,13 +154,9 @@ The following context methods _are_ available in the `generate_schema_name` macr
 Globally-scoped variables and variables defined on the command line with
 [--vars](/docs/build/project-variables) are accessible in the `generate_schema_name` context.
 
-<VersionBlock firstVersion="1.6">
-
 ### Managing different behaviors across packages
 
 See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
-
-</VersionBlock>
 
 ## A built-in alternative pattern for generating schema names
 
