@@ -73,8 +73,6 @@ $ dbt ls --select snowplow.* --output json
 
 **Listing JSON output with custom keys**
 
-<VersionBlock firstVersion="1.5">
-
 ```
 $ dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
 {"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
@@ -82,18 +80,12 @@ $ dbt ls --select snowplow.* --output json --output-keys "name resource_type des
 ...
 ```
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
 **Listing Semantic models**
 
 List all resources upstream of your orders semantic model:
 ```
 dbt ls -s +semantic_model:orders
 ```
-
-</VersionBlock>
 
 **Listing file paths**
 ```

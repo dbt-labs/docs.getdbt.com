@@ -18,8 +18,6 @@ id: "group"
 }>
 <TabItem value="models">
  
-<VersionBlock firstVersion="1.5">
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -60,13 +58,9 @@ select ...
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="seeds">
-
-<VersionBlock firstVersion="1.5">
 
 <File name='dbt_project.yml'>
 
@@ -88,14 +82,9 @@ seeds:
 
 </File>
 
-</VersionBlock>
-
-
 </TabItem>
 
 <TabItem value="snapshots">
-
-<VersionBlock firstVersion="1.5">
 
 <File name='dbt_project.yml'>
 
@@ -123,14 +112,9 @@ select ...
 
 </File>
 
-</VersionBlock>
-
-
 </TabItem>
 
 <TabItem value="tests">
-
-<VersionBlock firstVersion="1.5">
 
 <File name='dbt_project.yml'>
 
@@ -184,8 +168,6 @@ select ...
 
 </File>
 
-</VersionBlock>
-
 </TabItem>
 
 <TabItem value="analyses">
@@ -206,8 +188,6 @@ analyses:
 
 
 <TabItem value="metrics">
-
-<VersionBlock firstVersion="1.5">
 
 <File name='dbt_project.yml'>
 
@@ -232,8 +212,6 @@ metrics:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 

@@ -22,7 +22,7 @@ While you can use caching to speed up your queries and reduce compute time, know
 
 ## Prerequisites
 - dbt Cloud [Team or Enterprise](https://www.getdbt.com/) plan.
-- dbt Cloud environments that are versionless by opting to [Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version).
+- dbt Cloud environments that are ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless).
 - A successful job run and [production environment](/docs/deploy/deploy-environments#set-as-production-environment).
 - For declarative caching, you need to have [exports](/docs/use-dbt-semantic-layer/exports) defined in your [saved queries](/docs/build/saved-queries) YAML configuration file.
 
@@ -131,6 +131,16 @@ dbt Cloud uses the metadata from your dbt model runs to intelligently manage cac
 If an upstream model has data in it that was created after the cache was created, dbt Cloud invalidates the cache. This means queries won't use outdated cases and will instead query directly from the source data. Stale, outdated cache tables are periodically dropped and dbt Cloud will write a new cache the next time your saved query runs.
 
 You can manually invalidate the cache through the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using the `InvalidateCacheResult` field.
+
+## FAQs
+
+<detailsToggle alt_header="How does caching interact with access controls?">
+
+Cached data is stored separately from the underlying models. If metrics are pulled from the cache, we don’t have the security context applied to those tables at query time.
+
+In the future, we plan to clone credentials, identify the minimum access level needed, and apply those permissions to cached tables.
+
+</detailsToggle>
 
 
 ## Related docs
