@@ -18,14 +18,6 @@ At a high level, you’ll need to decide:
 - Where to draw the lines between your dbt Projects -- i.e. how do you determine where to split your DAG and which models go in which project?
 - How to manage your code -- do you want multiple dbt Projects living in the same repository (mono-repo) or do you want to have multiple repos with one repo per project?
 
-### Cycle detection
-
-Like resource dependencies, project dependencies are acyclic, meaning they only move in one direction. This prevents `ref` cycles (or loops), which lead to issues with your data workflows. For example, if project B depends on project A, a new model in project A could not import and use a public model from project B. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref) for more information.
-
-:::note 
-This requirement is likely to change in the future, so stay tuned for updates!
-:::
-
 ## Define your project interfaces by splitting your DAG
 
 The first (and perhaps most difficult!) decision when migrating to a multi-project architecture is deciding where to draw the line in your DAG to define the interfaces between your projects. Let's explore some language for discussing the design of these patterns.
@@ -73,6 +65,13 @@ A multi-project architecture can exist in a single repo (monorepo) or as multipl
 Since the launch of dbt Mesh, the most common pattern we've seen is one where projects are 1:1 aligned to teams, and each project has its own codebase in its own repository. This isn’t a hard-and-fast rule: Some organizations want multiple teams working out of a single repo, and some teams own multiple domains that feel awkward to keep combined.
 
 Users may need to contribute models across multiple projects and this is fine. There will be some friction doing this, versus a single repo, but this is _useful_ friction, especially if upstreaming a change from a “spoke” to a “hub.” This should be treated like making an API change, one that the other team will be living with for some time to come. You should be concerned if your teammates find they need to make a coordinated change across multiple projects very frequently (every week), or as a key prerequisite for ~20%+ of their work.
+
+### Cycle detection <Lifecycle status="beta"/>
+
+import CycleDetection from '/snippets/_mesh-cycle-detection.md';
+
+<CycleDetection />
+
 
 ### Tips and tricks
 
