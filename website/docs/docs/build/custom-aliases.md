@@ -6,7 +6,7 @@ id: "custom-aliases"
 
 ## Overview
 
-When dbt runs a model, it will generally create a relation (either a <Term id="table" /> or a <Term id="view" />) in the database, except in the case of an [ephemeral model](/docs/build/materializations), when it will create a <Term id="cte" /> for use in another model. By default, dbt uses the model's filename as the identifier for the relation or CTE it creates. This identifier can be overridden using the [`alias`](/reference/resource-configs/alias) model configuration.
+When dbt runs a model, it will generally create a relation (either a <Term id="table" /> or a <Term id="view" /> ) in the database, except in the case of an [ephemeral model](/docs/build/materializations), when it will create a <Term id="cte" /> for use in another model. By default, dbt uses the model's filename as the identifier for the relation or CTE it creates. This identifier can be overridden using the [`alias`](/reference/resource-configs/alias) model configuration.
 
 ### Why alias model names?
 The names of schemas and tables are effectively the "user interface" of your <Term id="data-warehouse" />. Well-named schemas and tables can help provide clarity and direction for consumers of this data. In combination with [custom schemas](/docs/build/custom-schemas), model aliasing is a powerful mechanism for designing your warehouse.
