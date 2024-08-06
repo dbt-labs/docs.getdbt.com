@@ -14,7 +14,7 @@ tags: ['dbt Core','Quickstart']
 
 ## Introduction
 
-In this quickstart guide, you will discover how to use dbt Core with DuckDB. This guide will demonstrate how to: 
+In this quickstart guide, you'll learn how to use dbt Core with DuckDB, enabling you to get set up quickly and efficiently. This guide will demonstrate how to: 
 
 - Create a GitHub Codespace using a template provided by dbt Labs.
    - This sets up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
@@ -42,7 +42,7 @@ For more information, please refer to the [Duck DB](https://duckdb.org/) website
  
  <TabItem value="web" label="Web browser">
 
-dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that you (and anyone else) can reuse to create a complete dbt environment with a working and runnable project. When you create the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) creates a fully functioning dbt environment, connects to a DuckDB database, and loads a year of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Jaffle Shop template also provides instructions on how to do this, along with animated GIFs. 
+dbt Labs offers a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that allows you and others to set up a comprehensive dbt environment with a functional and executable project. Upon creating the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) establishes a fully operational dbt environment, connects to a DuckDB database, and imports a year's worth of data from our fictional Jaffle Shop café, which operates in various US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) file for the Jaffle Shop template includes detailed instructions and animated GIFs to guide you through the process.
 
 
 </TabItem>
@@ -93,7 +93,7 @@ cd docs-duckdb
 
 3. Install dbt and DuckDB in a virtual environment.
 
-<detailsToggle alt_header="If you're using MAC, you can copy and paste the below:">
+<Expandable alt_header="If you're using MAC, you can copy and paste the below:" >
 
 ```Jinja
 
@@ -105,10 +105,10 @@ source venv/bin/activate
 
 ```
 
-</detailsToggle>
+</Expandable>
 
 
-<detailsToggle alt_header="For Windows cmd.exe, you can copy and paste the below:">
+<Expandable alt_header="For Windows cmd.exe, you can copy and paste the below:" >
 
 ```Jinja
 
@@ -120,10 +120,10 @@ venv\Scripts\activate.bat
 
 ```
 
-</detailsToggle>
+</Expandable>
 
 
-<detailsToggle alt_header="For Windows PowerShell, you can copy and paste the below:">
+<Expandable alt_header="For Windows PowerShell, you can copy and paste the below:" >
 
 ```Jinja
 
@@ -135,13 +135,13 @@ venv\Scripts\Activate.ps1
 
 ```
 
-</detailsToggle>
+</Expandable>
 
-
-
-For detailed information, refer to the dbt command reference. Frequently used commands include:
 
 4. Ensure your profile is setup correctly from the command line by running the following:
+
+For detailed information, refer to the [dbt command reference](/reference/dbt-commands). Frequently used commands include:
+
 
 - [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
 - [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
