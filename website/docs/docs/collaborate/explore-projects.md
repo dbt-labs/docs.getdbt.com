@@ -2,7 +2,7 @@
 title: "Discover data with dbt Explorer"
 sidebar_label: "Discover data with dbt Explorer"
 description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your dbt projects."
-pagination_next: "docs/collaborate/column-level-lineage"
+pagination_next: "docs/collaborate/access-from-dbt-cloud"
 pagination_prev: null
 ---
 
@@ -25,7 +25,7 @@ Navigate the dbt Explorer overview page to access your project's resources and m
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
 - **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/collaborate/govern/model-access#access-modifiers) in your project. 
 - **Model query history** &mdash; Use [model query history](/docs/collaborate/model-query-history) to track the history of queries on your models for deeper insights.
-- **Auto-exposures** &mdash; [Set up auto-exposures](/docs/collaborate/auto-exposures) to automatically expose relevant data models from your BI tool to enhance visibility.
+- **Auto-exposures** &mdash; [Set up and view auto-exposures](/docs/collaborate/auto-exposures) to automatically expose relevant data models from your BI tool to enhance visibility.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="100%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
 
