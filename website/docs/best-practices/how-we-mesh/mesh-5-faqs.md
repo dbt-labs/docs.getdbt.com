@@ -78,7 +78,10 @@ dbt Mesh also enhances the interoperability and reusability of data across diffe
 
 <DetailsToggle alt_header="Can dbt Mesh handle cyclic dependencies between projects?">
 
-Like resource dependencies, project dependencies are acyclic, meaning they only move in one direction. This prevents `ref` cycles (or loops). For example, if project B depends on project A, a new model in project A could not import and use a public model from project B. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies#how-to-use-ref) for more information.
+import CycleDetection from '/snippets/_mesh-cycle-detection.md';
+
+<CycleDetection />
+
 
 </DetailsToggle>
 
