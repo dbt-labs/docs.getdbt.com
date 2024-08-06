@@ -94,7 +94,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
     * Use incremental models when your `dbt run`s are becoming too slow (i.e. don't start with incremental models)
 
 ### Ephemeral
-`ephemeral` models are not directly built into the database. Instead, dbt will interpolate the code from an ephemeral model into its dependent models using a <Term id="cte" />. You can control the identifier for this CTE using a [model alias](/docs/build/custom-aliases), but dbt will always prefix the model identifier with `__dbt__cte__`.
+`ephemeral` models are not directly built into the database. Instead, dbt will interpolate the code from an ephemeral model into its dependent models using a common table expression (<Term id="cte" />). You can control the identifier for this CTE using a [model alias](/docs/build/custom-aliases), but dbt will always prefix the model identifier with `__dbt__cte__`.
 
 * **Pros:**
     * You can still write reusable logic
