@@ -81,7 +81,7 @@ When setting up projects that depend on each other, it's important to do so in a
 3. The `project_b` project runs in a deployment environment and produces public models.
 4. The `project_a` project adds `project_b` as a dependency.
 
-If you enable this feature and experience any issues, please be sure to each out to dbt Cloud support.
+If you enable this feature and experience any issues, please reach out to dbt Cloud support.
 
 ### Tips and tricks
 
