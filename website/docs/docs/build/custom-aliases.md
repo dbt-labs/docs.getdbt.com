@@ -77,8 +77,6 @@ To override dbt's alias name generation, create a macro named `generate_alias_na
 
 The default implementation of `generate_alias_name` simply uses the supplied `alias` config (if present) as the model alias, otherwise falling back to the model name. This implementation looks like this:
 
-<VersionBlock firstVersion="1.5">
-
 <File name='get_custom_alias.sql'>
 
 ```jinja2
@@ -103,8 +101,6 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 ```
 
 </File>
-
-</VersionBlock>
 
 import WhitespaceControl from '/snippets/_whitespace-control.md';
 

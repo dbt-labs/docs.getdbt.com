@@ -65,7 +65,7 @@ Many events are fired while compiling or running a specific DAG node (model, see
 | `node_finished_at` | Timestamp when node processing completed |
 | `node_name` | Name of this model/seed/test/etc |
 | `node_path` | File path to where this resource is defined |
-| `node_relation` | <VersionBlock firstVersion="1.5">Nested object containing this node's database representation: `database`, `schema`, `alias`, and full `relation_name` with quoting & inclusion policies applied</VersionBlock> |
+| `node_relation` | Nested object containing this node's database representation: `database`, `schema`, `alias`, and full `relation_name` with quoting & inclusion policies applied |
 | `node_started_at` | Timestamp when node processing started |
 | `node_status` | Current status of the node, either `RunningStatus` (while running) or `NodeStatus` (finished) as defined in [the result contract](https://github.com/dbt-labs/dbt-core/blob/eba90863ed4043957330ea44ca267db1a2d81fcd/core/dbt/contracts/results.py#L75-L88) |
 | `resource_type` | `model`, `test`, `seed`, `snapshot`, etc. |
@@ -121,10 +121,7 @@ Many events are fired while compiling or running a specific DAG node (model, see
 
 Older versions of `dbt-core` made available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object.
 
-<VersionBlock firstVersion="1.5">
-
 When [invoking dbt programmatically](programmatic-invocations#registering-callbacks), it is possible to register a callback on dbt's `EventManager`. This allows access to structured events as Python objects, to enable custom logging and integration with other systems.
 
-</VersionBlock>
 
 The Python interface into events is significantly less mature than the structured logging interface. For all standard use cases, we recommend parsing JSON-formatted logs.
