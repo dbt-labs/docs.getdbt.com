@@ -95,7 +95,11 @@ with monthly_revenue as (
 
 </File>
 
-**Cycle detection:** Currently, "project" dependencies can only go in one direction, meaning that the `jaffle_finance` project could not add a new model that depends, in turn, on `jaffle_marketing.roi_by_channel`. dbt will check for cycles across projects and raise errors if any are detected. We are considering support for this pattern in the future, whereby dbt would still check for node-level cycles while allowing cycles at the project level.
+#### Cycle detection
+
+import CycleDetection from '/snippets/_mesh-cycle-detection.md';
+
+<CycleDetection />
 
 For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/best-practices/how-we-mesh/mesh-1-intro) and also our freely available [dbt Mesh learning course](https://learn.getdbt.com/courses/dbt-mesh). 
 
