@@ -10,7 +10,7 @@ pagination_next: "docs/dbt-cloud-apis/service-tokens"
 
 [User API keys](#user-tokens) are being replaced by [account-scoped personal access tokens(PATs)](#account-scoped-personal-access-tokens). 
 
-We recommend rotating your existing user API keys with PATs. There are no deprecation plans for user API keys at this time; we will give ample notice when that timeline has been determined. 
+We recommend rotating your existing user API keys with PATs. At this time, there are no deprecation plans for user API keys; we will give ample notice when that timeline has been determined. 
 
 Cloud CLI config files do not need to be updated at this time. You will be notified when you need to re-download your configs.
 
@@ -63,7 +63,7 @@ Are you using a user API key today to access dbt Cloud APIs in any of your workf
 
 If not, you don’t have any action to take! 
 
-If you are using a user API key, please follow the instructions below:
+If you are using a user API key, please read the following instructions:
 
 1. Make a list of all the places where you’re making a call to the dbt Cloud API using the dbt Cloud user API key. 
 2. Create a new personal access token under **Account Settings → API Tokens → Personal Tokens.** 
