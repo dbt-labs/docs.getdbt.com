@@ -16,9 +16,9 @@ Using CI helps:
 
 ## How CI works
 
-When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt Cloud listens for notification from your Git provider indicating that a new PR has been opened or updated with new commits. When dbt Cloud receives one of these notifications, it enqueues a new run of the CI job. 
+When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt Cloud listens for notification from your Git provider indicating that a new PR has been opened or updated with new commits. When dbt Cloud receives one of these notifications, it enqueues a new run of the CI job.
 
-dbt Cloud builds and tests the models affected by the code change in a temporary schema, unique to the PR. This process ensures that the code builds without error and that it matches the expectations as defined by the project's dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
+dbt Cloud builds and tests models, semantic models, metrics, and saved queries affected by the code change in a temporary schema, unique to the PR. This process ensures that the code builds without error and that it matches the expectations as defined by the project's dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" width="90%"title="Viewing the temporary schema name for a run triggered by a PR"/>
 
@@ -50,6 +50,6 @@ When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the late
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-smart-cancel-job.png" width="70%" title="Example of an automatically canceled run"/>
 
-### Run slot treatment
+### Run slot treatment <Lifecycle status="team,enterprise" />
 
-For accounts on the [Enterprise or Team](https://www.getdbt.com/pricing) plans, CI runs won't consume run slots. This guarantees a CI check will never block a production run. 
+CI runs don't consume run slots. This guarantees a CI check will never block a production run.

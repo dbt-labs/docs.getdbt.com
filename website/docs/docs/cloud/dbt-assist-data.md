@@ -22,7 +22,7 @@ The user clicks the AI assist button, and the user does not otherwise enter data
 
 #### Does dbt Assist access my warehouse data?
 
-dbt Assist utilizes the button click to initiate a search via API of the AI vendor. Such output must be double-checked by the user for completeness and accuracy. This does not involve the use of client’s warehouse data.
+dbt Assist utilizes metadata, including column names, model SQL, the model's name, and model documentation. The row-level data from the warehouse is never used or sent to a third-party provider. Such output must be double-checked by the user for completeness and accuracy.
 
 #### Can dbt Assist data be deleted upon client written request?
 

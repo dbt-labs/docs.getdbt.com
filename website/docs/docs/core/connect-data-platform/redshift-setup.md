@@ -42,22 +42,20 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Authentication Parameters
 
-The authentication methods that dbt Core supports are:
 
-- `database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
-- `IAM` &mdash; IAM
+The authentication methods that dbt Core supports on Redshift are: 
 
-For dbt Cloud users, log in using the default **Database username** and **password**. This is necessary because dbt Cloud does not support `IAM` authentication.
+- `Database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
+- `IAM User` &mdash; IAM User authentication via AWS Profile
 
 Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
 
 <Tabs
   defaultValue="database"
   values={[
-    {label: 'database', value: 'database'},
-    {label: 'IAM', value: 'IAM'},
-  ]}
->
+    {label: 'Database', value: 'database'},
+    {label: 'IAM User via AWS Profile (Core)', value: 'iam-user-profile'}]
+}>
 
 <TabItem value="database">
 
@@ -66,7 +64,6 @@ The following table contains the parameters for the database (password-based) co
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `method` | database| Leave this parameter unconfigured, or set this to database |
-| `host` | hostname.region.redshift.amazonaws.com| Host of cluster |
 | `user`   | username | Account username to log into your cluster |
 | `password`  | password1 | Password for authentication  |
 
@@ -103,28 +100,22 @@ company-name:
 
 </TabItem>
 
-<TabItem value="IAM">
+<TabItem value="iam-user-profile">
 
 The following table lists the authentication parameters to use IAM authentication.
   
-To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication,
-consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
-and [boto3
-docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials)
-on generating user credentials with IAM Auth.
+To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication, consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html) and [boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials) on generating user credentials with IAM Auth.
 
-If you receive the "You must specify a region" error when using IAM
-Authentication, then your aws credentials are likely misconfigured. Try running
-`aws configure` to set up AWS access keys, and pick a default region. If you have any questions,
-please refer to the official AWS documentation on [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+If you receive the "You must specify a region" error when using IAM Authentication, then your aws credentials are likely misconfigured. Try running `aws configure` to set up AWS access keys, and pick a default region. If you have any questions, please refer to the official AWS documentation on [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
-| `method` |IAM| use IAM to authenticate |
+| `method` |IAM| use IAM to authenticate via IAM User authentication |
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
-| `cluster_id` | CLUSTER_ID| Required for IAM |
-| `user`   | username | Account user to log into your cluster |
-| `region`  | us-east-1 | Required for IAM authentication |
+| `cluster_id` | CLUSTER_ID| Required for IAM authentication only for provisoned cluster, not for Serverless |
+| `user`   | username | User querying the database, ignored for Serverless (but field still required) |
+| `region`  | us-east-1 | Region of your Redshift instance | 
+
 
 <br/>
 
@@ -163,13 +154,14 @@ please refer to the official AWS documentation on [Configuration and credential 
 
 </File>
 
-</TabItem>
-
-</Tabs>
-
-### Specifying an IAM Profile
+#### Specifying an IAM Profile
 
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
+
+</TabItem>
+
+
+</Tabs>
 
 ## Redshift notes
 
