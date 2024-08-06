@@ -65,7 +65,9 @@ To set up personal access tokens (PATs) needed for auto exposures, ask a site ad
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-select-collections.jpg" title="Select the collections you want to include for auto exposures."/>
 5. Click **Save**. dbt Cloud imports everything in this collection and you can continue to view them in Explorer using the next steps.
 
-For more information on how to view and use auto-exposures, refer to the [Auto-exposures](/docs/collaborate/auto-exposures) page.
+For more information on how to view and use auto-exposures, refer to [View auto-exposures from dbt Explorer](/docs/collaborate/auto-exposures) page.
+
+<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="100%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
 
 ## Refresh auto-exposures in jobs
 

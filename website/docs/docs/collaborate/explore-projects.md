@@ -108,13 +108,14 @@ Lenses are helpful to analyze a subset of the DAG if you're zoomed in, or to fin
 A resource in your project is characterized by resource type, materialization type, or model layer, as well as its latest run or latest test status. Lenses are available for the following metadata:
 
 - **Relationship**: Organizes resources by resource type, such as models, tests, seeds, and [more](/reference/node-selection/syntax). Resource type uses the `resource_type` selector.
-- **Materialization Type**: Identifies the strategy for building the dbt models in your data platform.
-- **Latest Status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
-- **Model Layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
+- **Materialization type**: Identifies the strategy for building the dbt models in your data platform.
+- **Latest status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
+- **Model layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
     - **Marts** &mdash; A model with the prefix `fct_` or `dim_` or a model that lives in the `/marts/` subdirectory.
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
-- **Test Status**: The status from the latest execution of the tests that ran again this resource. In the case that a model has multiple tests with different results, the lens reflects the 'worst case' status. 
+- **Test status**: The status from the latest execution of the tests that ran again this resource. In the case that a model has multiple tests with different results, the lens reflects the 'worst case' status. 
+- **Usage queries**: The number of queries against this resource over a given time period.
 
 </Expandable>
 
@@ -211,7 +212,7 @@ In the upper right corner of the resource details page, you can:
 <Expandable alt_header="What details are available for an exposure?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the exposure was updated. 
-- **General** tab includes:
+- **General** tab includes:<!-- add as bullet in next line: Data health &mdash; The status on data freshness and data quality. -->
     - **Status** section &mdash; The status on data freshness and data quality.
     - **Lineage** graph &mdash; The exposure’s lineage graph. Click the Expand icon in the graph's upper right corner to view the exposure in full lineage graph mode.
     - **Description** section &mdash; A description of the exposure.
@@ -267,6 +268,18 @@ You can explore the metadata from your production or staging environment to info
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="100%" title="Explore in a staging environment" />
 
+## Auto-exposures
+Auto-exposures helps users understand how their models are used in downstream analytics tools to inform investments and reduce incidents — ultimately building trust and confidence in data products. It imports and auto-generates exposures based on Tableau dashboards, with user-defined curation.
+
+Refer to [Auto-exposures](/docs/collaborate/auto-exposures) for more information.
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
+
+<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg" width="95%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
+
+</DocCarousel>
 
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 
