@@ -81,20 +81,19 @@ cd docs-duckdb
 
     </Expandable>
 
+    <Expandable alt_header="Example for Windows" >
 
-<Expandable alt_header="Example for Windows" >
+    ```Jinja
 
-```Jinja
+    python -m venv venv
+    venv\Scripts\activate.bat
+    python -m pip install --upgrade pip
+    python -m pip install -r requirements.txt
+    venv\Scripts\activate.bat
 
-python -m venv venv
-venv\Scripts\activate.bat
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-venv\Scripts\activate.bat
+    ```
 
-```
-
-</Expandable>
+    </Expandable>
 
 
 <Expandable alt_header="Example for Windows PowerShell" >
