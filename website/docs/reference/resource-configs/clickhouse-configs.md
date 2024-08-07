@@ -14,6 +14,7 @@ id: "clickhouse-configs"
 | ephemeral materialized      | YES        | Creates a ephemeral/CTE materialization.  This does model is internal to dbt and does not create any database objects            |
 
 ## Experimental Models
+The following are [experimental features](https://clickhouse.com/docs/en/beta-and-experimental-features) in Clickhouse:
 
 | Type                                    | Supported?        | Details                                                                                                                                                                                                                                         |
 |-----------------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
