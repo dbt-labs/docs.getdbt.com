@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react"
 import { versions } from '../../dbt-versions'
+import sanitizeHtml from "sanitize-html";
 
 const lastReleasedVersion = versions && versions.find(ver => ver.version && ver.version != "" && !ver.isPrerelease);
 
@@ -19,7 +20,10 @@ export const VersionContextProvider = ({ value = "", children }) => {
     const storageVersion = window.localStorage.getItem('dbtVersion')
     const { search } = window.location
     const urlParams = new URLSearchParams(search);
-    const versionParam = urlParams.get('version')
+    const originalVersionParam = urlParams.get('version')
+
+    // Sanitize version param
+    const versionParam = sanitizeHtml(originalVersionParam);
 
     if(versionParam && versions.find(ver => ver?.version && ver.version === versionParam)) {
       {/* 

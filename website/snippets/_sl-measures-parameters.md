@@ -1,4 +1,4 @@
-| Parameter | Description |
+| Parameter | Description | | 
 | --- | --- | --- | 
 | [`name`](/docs/build/measures#name) | Provide a name for the measure, which must be unique and can't be repeated across all semantic models in your dbt project. | Required | 
 | [`description`](/docs/build/measures#description) | Describes the calculated measure. | Optional | 

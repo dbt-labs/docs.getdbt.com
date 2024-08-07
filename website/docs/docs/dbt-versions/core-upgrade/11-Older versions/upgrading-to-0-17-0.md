@@ -252,7 +252,7 @@ BigQuery:
 - `as_text` Jinja filter: removed this defunct filter
 - [accessing nodes in the `graph` object](/reference/dbt-jinja-functions/graph)
 - [persist_docs](/reference/resource-configs/persist_docs)
-- [source properties](reference/source-properties)
+- [source properties](/reference/source-properties)
 - [source overrides](/reference/resource-properties/overrides)
 
 **BigQuery**

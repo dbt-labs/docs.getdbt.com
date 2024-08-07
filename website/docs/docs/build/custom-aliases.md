@@ -18,10 +18,10 @@ The `alias` config can be used to change the name of a model's identifier in the
 
 | Model | Config | Relation Type | Database Identifier |
 | ----- | ------ | --------------| ------------------- |
-| ga_sessions.sql | {{ config(materialization='view') }} | <Term id="view" /> | "analytics"."ga_sessions" |
-| ga_sessions.sql | {{ config(materialization='view', alias='sessions') }} | <Term id="view" /> | "analytics"."sessions" |
-| ga_sessions.sql | {{ config(materialization='ephemeral') }} | <Term id="cte" /> | "\__dbt\__cte\__ga_sessions" |
-| ga_sessions.sql | {{ config(materialization='ephemeral', alias='sessions') }} | <Term id="cte" /> | "\__dbt\__cte\__sessions" |
+| ga_sessions.sql | \{\{ config(materialization='view') \}\} | <Term id="view" /> | "analytics"."ga_sessions" |
+| ga_sessions.sql | \{\{ config(materialization='view', alias='sessions') \}\} | <Term id="view" /> | "analytics"."sessions" |
+| ga_sessions.sql | \{\{ config(materialization='ephemeral') \}\} | <Term id="cte" /> | "\__dbt\__cte\__ga_sessions" |
+| ga_sessions.sql | \{\{ config(materialization='ephemeral', alias='sessions') \}\} | <Term id="cte" /> | "\__dbt\__cte\__sessions" |
 
 To configure an alias for a model, supply a value for the model's `alias` configuration parameter. For example:
 
