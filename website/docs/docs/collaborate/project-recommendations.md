@@ -11,7 +11,8 @@ dbt Explorer provides recommendations about your project from the `dbt_project_e
 - For a seamless and consistent experience, recommendations use `dbt_project_evaluator`'s pre-defined settings and don't import customizations applied to your package or project.
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
-<ExplorerCourse/>
+
+<ExplorerCourse />
 
 ## Recommendations page
 The Recommendations overview page includes two top-level metrics measuring the test and documentation coverage of the models in your project. 

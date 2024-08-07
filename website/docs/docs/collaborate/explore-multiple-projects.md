@@ -7,7 +7,8 @@ description: "Learn about project-level lineage in dbt Explorer and its uses."
 View all the projects and public models in your account (where public models are defined) and gain a better understanding of your cross-project resources and how they're used.
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
-<ExplorerCourse/>
+
+<ExplorerCourse />
 
 The resource-level lineage graph for a project displays the cross-project relationships in the DAG, with a **PRJ** icon indicating whether or not it's a project resource. That icon is located to the left side of the node name.
 

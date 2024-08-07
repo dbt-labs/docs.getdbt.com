@@ -9,7 +9,8 @@ dbt Explorer provides metadata on dbt Cloud runs for in-depth model performance 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-model-performance.gif" width="100%" title="Overview of Performance page navigation."/>
 
 import ExplorerCourse from '/snippets/_explorer-course-link.md';
-<ExplorerCourse/>
+
+<ExplorerCourse />
 
 ## The Performance overview page 
 
