@@ -3,7 +3,7 @@ title: "ClickHouse setup"
 description: "Read this guide to learn about the ClickHouse warehouse setup in dbt."
 meta:
   maintained_by: Community
-  authors: 'Geoff Genz'
+  authors: 'Geoff Genz & Bentsi Leviav'
   github_repo: 'ClickHouse/dbt-clickhouse'
   pypi_package: 'dbt-clickhouse'
   min_core_version: 'v0.19.0'
