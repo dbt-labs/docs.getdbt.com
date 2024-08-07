@@ -195,8 +195,6 @@ dbt run --select "result:<status>+" state:modified+ --defer --state ./<dbt-artif
 
 ### The "source_status" status
 
-Only supported by v1.1 or newer.
-
 Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/reference/artifacts/sources-json) page. 
 
 The `dbt source freshness` command produces a `sources.json` artifact whose results can be referenced in subsequent dbt invocations. 
