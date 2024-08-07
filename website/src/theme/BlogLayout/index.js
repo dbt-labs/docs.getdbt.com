@@ -136,7 +136,7 @@ export default function BlogLayout(props) {
          </div>
        </div>
 
-      <div className="container margin-vert--lg">
+      <div className="container dbt-blog-container margin-vert--lg">
         <div className="row">
           {!isBlogPost && <BlogSidebar sidebar={sidebar} tagData={tagData} />}
           <main

@@ -14,9 +14,9 @@ dbt Cloud release notes for recent and historical changes. Release notes fall in
 - **Fix:** Bug and security fixes
 - **Behavior change:** A change to existing behavior that doesn't fit into the other categories, such as feature deprecations or changes to default settings
 
-Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC)[^*] environments
+Release notes are grouped by month for both multi-tenant and virtual private cloud (VPC)\* environments
 
-[^*] The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
+\* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## July 2024
 - **New:** [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management) are now available under **Account settings** as a global setting. Previously, they were found under **Project settings**.  This is being rolled out in phases over the coming weeks.
@@ -312,7 +312,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **New:** New metric type that allows you to measure conversion events. For example, users who viewed a web page and then filled out a form. For more details, refer to [Conversion metrics](/docs/build/conversion). 
 - **New:** Instead of specifying the fully qualified dimension name (for example, `order__user__country`) in the group by or filter expression, you now only need to provide the primary entity and dimensions name, like `user__county`. 
-- **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/cloud-integrations/semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
+- **New:** You can now query the [saved queries](/docs/build/saved-queries) you've defined in the dbt Semantic Layer using [Tableau](/docs/cloud-integrations/semantic-layer/tableau), [GraphQL API](/docs/dbt-cloud-apis/sl-graphql), [JDBC API](/docs/dbt-cloud-apis/sl-jdbc), and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 
 - <Expandable alt_header="New: Native support for partial parsing" >
 
@@ -326,7 +326,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
 - **Enhancement:** The YAML spec parameter `label` is now available for Semantic Layer metrics in [JDBC and GraphQL APIs](/docs/dbt-cloud-apis/sl-api-overview). This means you can conveniently use `label` as a display name for your metrics when exposing them.
 - **Enhancement:** Added support for `create_metric: true` for a measure, which is a shorthand to quickly create metrics. This is useful in cases when metrics are only used to build other metrics.
-- **Enhancement:** Added support for Tableau parameter filters. You can use the [Tableau connector](docs/cloud-integrations/semantic-layer/tableau) to create and use parameters with your dbt Semantic Layer data.
+- **Enhancement:** Added support for Tableau parameter filters. You can use the [Tableau connector](/docs/cloud-integrations/semantic-layer/tableau) to create and use parameters with your dbt Semantic Layer data.
 - **Enhancement:** Added support to expose `expr` and `agg` for [Measures](/docs/build/measures) in the [GraphQL API](/docs/dbt-cloud-apis/sl-graphql).
 - **Enhancement:** You have improved error messages in the command line interface when querying a dimension that is not reachable for a given metric.
 - **Enhancement:** You can now query entities using our Tableau integration (similar to querying dimensions). 

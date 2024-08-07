@@ -33,7 +33,7 @@ Alternatively, you can start the process from the **Settings** page in the **Sin
 
 Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. You can just skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/cloud/manage-access/sso-overview).
 
-:::warning Login {slug}
+:::warning Login \{slug\}
 
 Slugs should contain only letters, numbers, and dashes. Make sure to remove underscores (if they exist) from login slugs: 
 * before migrating on the **Account Settings** page, or 

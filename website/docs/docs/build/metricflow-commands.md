@@ -605,7 +605,7 @@ dbt sl export-all
 
 ## FAQs
 
-<detailsToggle alt_header="How can I add a dimension filter to a where filter?">
+<DetailsToggle alt_header="How can I add a dimension filter to a where filter?">
 
 To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: `{{Dimension('primary_entity__dimension_name')}}`.
 
@@ -642,17 +642,17 @@ Keep in mind that modifying your shell configuration files can have an impact on
 
 </details>
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Why is my query limited to 100 rows in the dbt Cloud CLI?">
+<DetailsToggle alt_header="Why is my query limited to 100 rows in the dbt Cloud CLI?">
 
 The default `limit` for query issues from the dbt Cloud CLI is 100 rows. We set this default to prevent returning unnecessarily large data sets as the dbt Cloud CLI is typically used to query the dbt Semantic Layer during the development process, not for production reporting or to access large data sets. For most workflows, you only need to return a subset of the data.
 
 However, you can change this limit if needed by setting the `--limit` option in your query. For example, to return 1000 rows, you can run `dbt sl list metrics --limit 1000`.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How can I query multiple metrics, group bys, or where statements?">
+<DetailsToggle alt_header="How can I query multiple metrics, group bys, or where statements?">
 
 To query multiple metrics, group bys, or where statements in your command, follow this guidance:
 
@@ -663,9 +663,9 @@ To query multiple metrics, group bys, or where statements in your command, follo
 - To query multiple where statements, use the `--where` syntax and wrap the statement in quotes:
   - Multiple where statement example: `dbt sl query --metrics accounts_active,users_active --group-by metric_time__week,accounts__plan_tier --where "metric_time__week >= '2024-02-01' and accounts__plan_tier = 'coco'"`
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How can I sort my query in ascending or descending order?">
+<DetailsToggle alt_header="How can I sort my query in ascending or descending order?">
 
 When you query metrics, use `--order-by` to specify metrics or groupings to order by. The `order_by` option applies to metrics, dimensions, and group bys. 
 
@@ -674,4 +674,4 @@ Add the `-` prefix to sort your query in descending (DESC) order. Leave blank fo
 - For example, to query a metric and sort `metric_time` in descending order, run `dbt sl query --metrics order_total --group-by metric_time --order-by -metric_time`. Note that the `-` prefix in `-metric_time` sorts the query in descending order.
 - To query a metric and sort `metric_time` in ascending order and `revenue` in descending order, run `dbt sl query --metrics order_total --order-by metric_time,-revenue`. Note that `metric_time` without a prefix is sorted in ascending order and `-revenue` with a `-` prefix sorts the query in descending order.
 
-</detailsToggle>
+</DetailsToggle>
