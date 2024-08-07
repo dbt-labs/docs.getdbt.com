@@ -49,50 +49,33 @@ The table below gives an overview of primary key support and enforcement in some
   <tr>
    <td>
    </td>
-   <td><strong>Supports primary keys?</strong>
-   </td>
-   <td><strong>Fully enforces primary keys?</strong>
-   </td>
+   <td><strong>Supports primary keys?</strong></td>
+   <td><strong>Fully enforces primary keys?</strong></td>
   </tr>
   <tr>
-   <td><a href="https://docs.snowflake.com/en/sql-reference/constraints-overview.html">Snowflake</a>
-   </td>
-   <td>✅
-   </td>
-   <td>❌
-   </td>
+   <td><a href="https://docs.snowflake.com/en/sql-reference/constraints-overview.html">Snowflake</a></td>
+   <td>✅</td>
+   <td>❌</td>
   </tr>
   <tr>
-   <td><a href="https://docs.aws.amazon.com/redshift/latest/dg/t_Defining_constraints.html">Amazon Redshift</a>
-   </td>
-   <td>✅
-   </td>
-   <td>❌
-   </td>
+   <td><a href="https://docs.aws.amazon.com/redshift/latest/dg/t_Defining_constraints.html">Amazon Redshift</a></td>
+   <td>✅</td>
+   <td>❌</td>
   </tr>
   <tr>
-   <td><a href="https://docs.getdbt.com/blog/primary-key-testing#bigquery-primary-keys">Google BigQuery</a>
-   </td>
-   <td>✅
-   </td>
-   <td>❌
-   </td>
+   <td><a href="https://docs.getdbt.com/blog/primary-key-testing#bigquery-primary-keys">Google BigQuery</a></td>
+   <td>✅</td>
+   <td>❌</td>
   </tr>
   <tr>
-   <td><a href="https://docs.databricks.com/delta/delta-constraints.html">Databricks</a>
-   </td>
-   <td>✅
-   </td>
-   <td>❌
-   </td>
+   <td><a href="https://docs.databricks.com/delta/delta-constraints.html">Databricks</a></td>
+   <td>✅</td>
+   <td>❌</td>
   </tr>
   <tr>
-   <td><a href="https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-primary-key/">Postgres</a>
-   </td>
-   <td>✅
-   </td>
-   <td>✅
-   </td>
+   <td><a href="https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-primary-key/">Postgres</a></td>
+   <td>✅</td>
+   <td>✅</td>
   </tr>
 </table>
 
