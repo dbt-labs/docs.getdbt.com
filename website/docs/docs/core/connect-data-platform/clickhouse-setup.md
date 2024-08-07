@@ -15,7 +15,8 @@ meta:
   config_page: '/reference/resource-configs/clickhouse-configs'
 ---
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+Some core functionality may be limited. If you're interested in contributing, check out the source code for each
+repository listed below.
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
@@ -23,7 +24,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 ## Connecting to ClickHouse with **dbt-clickhouse**
 
-To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.getdbt.com/docs/core/connection-profiles) to your `profiles.yml` file. A ClickHouse profile conforms to the following syntax:
+To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.getdbt.com/docs/core/connection-profiles)
+to your `profiles.yml` file. A ClickHouse profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 
@@ -99,6 +101,9 @@ To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.g
 #### Troubleshooting Connections
 
 If you encounter issues connecting to ClickHouse from dbt, make sure the following criteria are met:
-- The engine must be one of the [supported engines](/reference/resource-configs/clickhouse-configs#supported-table-engines).
+
+- The engine must be one of
+  the [supported engines](/reference/resource-configs/clickhouse-configs#supported-table-engines).
 - You must have adequate permissions to access the database.
-- If you're not using the default table engine for the database, you must specify a table engine in your model configuration.
+- If you're not using the default table engine for the database, you must specify a table engine in your model
+  configuration.
