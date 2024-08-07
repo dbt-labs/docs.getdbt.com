@@ -40,16 +40,15 @@ To connect to Firebolt from dbt, you'll need to add a [profile](https://docs.get
   outputs:
     <target-name>:
       type: firebolt
-      user: "<username>"
-      password: "<password>"
+      client_id: "<id>"
+      client_secret: "<secret>"
       database: "<database-name>"
       engine_name: "<engine-name>"
+      account_name: "<account-name>"
       schema: <tablename-prefix>
       threads: 1
       #optional fields
-      jar_path: <path-to-local-jdbc-driver>
       host: "<hostname>"
-      account_name: "<account-name>"
 ```
 
 </File>
@@ -57,30 +56,27 @@ To connect to Firebolt from dbt, you'll need to add a [profile](https://docs.get
 
 #### Description of Firebolt Profile Fields
 
-To specify values as environment variables, use the format `{{ env_var('<variable_name>' }}`. For example, `{{ env_var('DATABASE_NAME' }}`. 
+To specify values as environment variables, use the format `{{ env_var('<variable_name>' }}`. For example, `{{ env_var('DATABASE_NAME' }}`.
 
 | Field                    | Description |
 |--------------------------|--------------------------------------------------------------------------------------------------------|
 | `type`                   | This must be included either in `profiles.yml` or in the `dbt_project.yml` file. Must be set to `firebolt`. |
-| `user`                   | Required. A Firebolt username with adequate permissions to access the specified `engine_name`. |
-| `password`               | Required. The password associated with the specified `user`. |
+| `client_id`                   | Required. Your [service account](https://docs.firebolt.io/godocs/Guides/managing-your-organization/service-accounts.html) id. |
+| `client_secret`               | Required. The secret associated with the specified `client_id`. |
 | `database`               | Required. The name of the Firebolt database to connect to. |
 | `engine_name`            | Required in version 0.21.10 and later. Optional in earlier versions. The name (not the URL) of the Firebolt engine to use in the specified `database`. This must be a general purpose read-write engine and the engine must be running. If omitted in earlier versions, the default engine for the specified `database` is used. |
+| `account_name`           | Required. Specifies the account name under which the specified `database` exists. |
 | `schema`                 | Recommended. A string to add as a prefix to the names of generated tables when using the [custom schemas workaround](https://docs.getdbt.com/reference/warehouse-profiles/firebolt-profile#supporting-concurrent-development). |
-| `threads`                | Required. Must be set to `1`. Multi-threading is not currently supported. |
-| `jar_path`               | Required only with versions earlier than 0.21.0. Ignored in 0.21.0 and later. The path to your JDBC driver on your local drive. |
+| `threads`                | Required. Set to higher number to improve performance. |
 | `host`                   | Optional. The host name of the connection. For all customers it is `api.app.firebolt.io`, which will be used if omitted. |
-| `account_name`           | Required if more than one account is associated with the specified `user1`. Specifies the account name (not the account ID) under which the specified `database` exists. If omitted, the default account is assumed. |
 
-      
+
 #### Troubleshooting Connections
 
 If you encounter issues connecting to Firebolt from dbt, make sure the following criteria are met:
-- The engine must be a general-purpose read-write engine, not an analytics engine.
-- You must have adequate permissions to access the engine.
+- You must have adequate permissions to access the engine and the database.
+- Your service account must be attached to a user.
 - The engine must be running.
-- If you're not using the default engine for the database, you must specify an engine name.
-- If there is more than one account associated with your credentials, you must specify an account.
 
 
 ## Supporting Concurrent Development
