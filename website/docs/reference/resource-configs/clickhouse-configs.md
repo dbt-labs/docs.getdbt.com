@@ -24,7 +24,8 @@ id: "clickhouse-configs"
 
 ### View Materialization
 
-A dbt model can be created as a [ClickHouse view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/) and configured using the following syntax:
+A dbt model can be created as a [ClickHouse view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/)
+and configured using the following syntax:
 
 <Tabs
     groupId="config-view"
@@ -60,7 +61,8 @@ models:
 
 ### Table Materialization
 
-A dbt model can be created as a [ClickHouse table](https://clickhouse.com/docs/en/operations/system-tables/tables/) and configured using the following syntax:
+A dbt model can be created as a [ClickHouse table](https://clickhouse.com/docs/en/operations/system-tables/tables/) and
+configured using the following syntax:
 
 <Tabs
     groupId="config-table"
@@ -115,7 +117,9 @@ models:
 
 ### Incremental Materialization
 
-Table model will be reconstructed for each dbt execution. This may be infeasible and extremely costly for larger result sets or complex transformations. To address this challenge and reduce the build time, a dbt model can be created as an incremental ClickHouse table and is configured using the following syntax:
+Table model will be reconstructed for each dbt execution. This may be infeasible and extremely costly for larger result
+sets or complex transformations. To address this challenge and reduce the build time, a dbt model can be created as an
+incremental ClickHouse table and is configured using the following syntax:
 
 <Tabs
     groupId="config-incremental"
@@ -178,7 +182,9 @@ models:
 
 ## Snapshot
 
-dbt snapshots allow a record to be made of changes to a mutable model over time. This in turn allows point-in-time queries on models, where analysts can “look back in time” at the previous state of a model. This functionality is supported by the ClickHouse connector and is configured using the following syntax:
+dbt snapshots allow a record to be made of changes to a mutable model over time. This in turn allows point-in-time
+queries on models, where analysts can “look back in time” at the previous state of a model. This functionality is
+supported by the ClickHouse connector and is configured using the following syntax:
 
 <VersionBlock lastVersion="1.8">
 
@@ -253,7 +259,8 @@ dbt-clickhouse supports most of the cross database macros now included in dbt-co
 
 ## Setting `quote_columns`
 
-To prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See the [doc on quote_columns](https://docs.getdbt.com/reference/resource-configs/quote_columns) for more information.
+To prevent a warning, make sure to explicitly set a value for `quote_columns` in your `dbt_project.yml`. See
+the [doc on quote_columns](https://docs.getdbt.com/reference/resource-configs/quote_columns) for more information.
 
 ```yaml
 seeds:
