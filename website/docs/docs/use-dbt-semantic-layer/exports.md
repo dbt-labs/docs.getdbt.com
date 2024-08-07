@@ -58,7 +58,17 @@ There are two ways to run an export:
 
 ## Exports in development
 
-You can run an export in your development environment using your development credentials if you want to test the output of the export before production. You can use the following command to run exports in the dbt Cloud CLI:
+You can run an export in your development environment using your development credentials if you want to test the output of the export before production. 
+
+This section explains the different commands and options available to run exports in development.
+
+- Use the [`dbt sl export` command](#exports-for-single-saved-query) to test and generate exports in your development environment for a singular saved query. You can also use the `--select` flag to specify particular exports from a saved query.
+
+- Use the [`dbt sl export-all` command](#exports-for-multiple-saved-queries) to run exports for multiple saved queries at once. This command provides a convenient way to manage and execute exports for several queries simultaneously, saving time and effort. 
+
+### Exports for single saved query
+
+Use the following command to run exports in the dbt Cloud CLI:
 
 ```bash
 dbt sl export
@@ -78,13 +88,11 @@ The following table lists the options for `dbt sl export` command, using the `--
 
 You can also run any export defined for the saved query and write the table or view in your development environment. Refer to the following command example and output:
 
-#### Example
-
 ```bash
 dbt sl export --saved-query sq_name
 ```
 
-#### Output
+The output would look something like this: 
 
 ```bash
 Polling for export status - query_id: 2c1W6M6qGklo1LR4QqzsH7ASGFs..
@@ -119,6 +127,29 @@ dbt sl export --saved-query sq_number1 --export-as table --alias new_export
 ```
 </details>
 
+### Exports for multiple saved queries
+
+Use the command, `dbt sl export-all`, to run exports for multiple saved queries at once. This is different from the `dbt sl export` command, which only runs exports for a singular saved query.  For example, to run exports for multiple saved queries, you can use:
+
+```bash
+dbt sl export-all
+```
+
+The output would look something like this: 
+
+```bash
+Exports completed:
+- Created TABLE at `DBT_SL_TEST.new_customer_orders`
+- Created VIEW at `DBT_SL_TEST.new_customer_orders_export_alias`
+- Created TABLE at `DBT_SL_TEST.order_data_key_metrics`
+- Created TABLE at `DBT_SL_TEST.weekly_revenue`
+
+Polling completed
+```
+
+The command `dbt sl export-all` provides the flexibility to manage multiple exports in a single command.
+
+
 ## Exports in production
 
 Enabling and executing exports in dbt Cloud optimizes data workflows and ensures real-time data access. It enhances efficiency and governance for smarter decisions.  
@@ -144,7 +175,7 @@ If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_INCLUDE_SAVE
 
 </VersionBlock>
 
-<!-- for keep on latest version -->
+<!-- for Versionless -->
 <VersionBlock firstVersion="1.8">
 
 1. Click **Deploy** in the top navigation bar and choose **Environments**.

@@ -40,8 +40,9 @@ python -m pip install -r requirements.txt
 To install in editable mode, which includes your local changes as you make them:
 
 ```shell
-python -m pip install -e editable-requirements.txt` instead.
+python -m pip install -e editable-requirements.txt` 
 ```
+instead.
 
 ### Installing adapter plugins
 

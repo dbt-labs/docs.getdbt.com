@@ -48,28 +48,6 @@ select 1 as id
 
 </File>
 
-<VersionBlock lastVersion="1.5">
-
-```shell
-$ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
-```
-
-<File name='target/compiled/my_project/models/my_model.sql'>
-
-```sql
--- invocation_args_dict:
--- {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/Users/.../.dbt', 'send_anonymous_usage_stats': False, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'parse_only': False, 'which': 'compile', 'rpc_method': 'compile', 'indirect_selection': 'eager'}
-
--- dbt_metadata_envs:
--- {'MYVAR': 'myvalue'}
-
-select 1 as id
-```
-
-</File>
-
-<VersionBlock firstVersion="1.6">
-
 The `invocation_command` key within `invocation_args_dict` includes the entire subcommand when it compiles:
 
 ```shell
@@ -90,7 +68,3 @@ $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
 
 select 1 as id
 ```
-
-</VersionBlock>
-
-</VersionBlock>
