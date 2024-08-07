@@ -14,7 +14,7 @@ seeds:
 ```
 
 
-## Model Configuration for Fact Tables
+## Model configuration for fact tables
 
 A dbt model can be created as a Firebolt fact <Term id="table" /> and configured using the following syntax:
 
@@ -91,7 +91,7 @@ models:
 </Tabs>
 
 
-#### Fact Table Configurations
+#### Fact table configurations
 
 | Configuration     | Description                                                                               |
 |-------------------|-------------------------------------------------------------------------------------------|
@@ -104,7 +104,7 @@ models:
 | `aggregation`     | Sets the aggregations on the aggregating index using the inputted list of SQL agg expressions. |
 
 
-#### Example of a Fact Table With an Aggregating Index
+#### Example of a fact table with an aggregating index
 
 ```
 {{ config(
@@ -122,7 +122,7 @@ models:
 ```
 
 
-## Model Configuration for Dimension Tables
+## Model configuration for dimension tables
 
 A dbt model can be materialized as a Firebolt dimension table and configured using the following syntax:
 
@@ -182,7 +182,7 @@ models:
 
 Dimension tables do not support aggregation indexes.
 
-#### Dimension Table Configurations
+#### Dimension table configurations
 
 | Configuration      | Description                                                                               |
 |--------------------|-------------------------------------------------------------------------------------------|
@@ -201,7 +201,7 @@ In dbt-firebolt, you do not provide names for aggregating indexes; they are name
 For example, a join index could be named `my_users__id__join_1633504263` and an aggregating index could be named `my_orders__order_date__aggregating_1633504263`.
 
 
-## Managing Ingestion via External Tables
+## Managing ingestion via external tables
 
 `dbt-firebolt` supports dbt's [external tables feature](https://docs.getdbt.com/reference/resource-properties/external), which allows dbt to manage the table ingestion process from S3 into Firebolt. This is an optional feature but can be highly convenient depending on your use case.
 
@@ -231,7 +231,7 @@ To install and use `dbt-external-tables` with Firebolt, you must:
 3. Pull in the `packages.yml` dependencies by calling `dbt deps`.
 
 
-#### Using External Tables
+#### Using external tables
 
 To use external tables, you must define a table as `external` in your `dbt_project.yml` file. Every external table must contain the fields `url`, `type`, and `object_pattern`. Note that the Firebolt external table specification requires fewer fields than what is specified in the dbt documentation.
 
@@ -269,7 +269,7 @@ sources:
 `aws_key_id` and `aws_secret_key` are the credentails that allow Firebolt access to your S3 bucket. Learn
 how to set them up by following this [guide](https://docs.firebolt.io/godocs/Guides/loading-data/creating-access-keys-aws.html). If your bucket is public these parameters are not necessary.
 
-#### Running External tables
+#### Running external tables
 
 The `stage_external_sources` macro is inherited from the [dbt-external-tables package](https://github.com/dbt-labs/dbt-external-tables#syntax) and is the primary point of entry when using thes package. It has two operational modes: standard and "full refresh."
 
