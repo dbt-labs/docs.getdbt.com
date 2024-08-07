@@ -190,7 +190,7 @@ Dimension tables do not support aggregation indexes.
 | `table_type`       | Whether the materialized table will be a [fact or dimension](https://docs.firebolt.io/godocs/Overview/working-with-tables/working-with-tables.html#fact-and-dimension-tables) table. |
 
 
-## How Aggregating Indexes Are Named
+## How aggregating indexes are named
 
 In dbt-firebolt, you do not provide names for aggregating indexes; they are named programmatically. dbt will generate index names using the following convention:
 
@@ -208,7 +208,7 @@ For example, a join index could be named `my_users__id__join_1633504263` and an 
 More information on using external tables including properly configuring IAM can be found in the Firebolt [documentation](https://docs.firebolt.io/godocs/Guides/loading-data/working-with-external-tables.html).
 
 
-#### Installation of External Tables Package
+#### Installation of external tables package
 
 To install and use `dbt-external-tables` with Firebolt, you must:
 
@@ -238,7 +238,7 @@ To use external tables, you must define a table as `external` in your `dbt_proje
 In addition to specifying the columns, an external table may specify partitions. Partitions are not columns and they cannot have the same name as columns. To avoid YAML parsing errors, remember to encase string literals (such as the `url` and `object_pattern` values) in single quotation marks.
 
 
-#### dbt_project.yml Syntax For an External Table
+#### dbt_project.yml syntax for an external table
 
 ```yml
 sources:
