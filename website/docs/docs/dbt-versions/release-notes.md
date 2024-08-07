@@ -18,6 +18,20 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
+## August 2024
+
+- <Expandable alt_header="New: Advanced CI" lifecycle="preview"> 
+  
+  [PLACEHOLDER STUB for content]
+
+  Advanced CI is now available as a [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud)! You can enable the Compare changes option when creating new CI jobs. PR comments LOREM IPSUM
+
+  To learn more, check out [Advanced CI](/docs/dbt-versions/product-lifecycles) and [Set up CI jobs](/docs/dbt-versions/product-lifecycles). LOREM IPSUM
+
+  If you're working with already-existing CI jobs, you can easily enable these new options by editing the job's settings. Subsequent runs will include those feature options. LOREM IPSUM 
+
+  </Expandable>
+
 ## July 2024
 - **New:** [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management) are now available under **Account settings** as a global setting. Previously, they were found under **Project settings**.  This is being rolled out in phases over the coming weeks.
 - **New:** Admins can now assign [environment-level permissions](/docs/cloud/manage-access/environment-permissions) to groups for specific roles.
