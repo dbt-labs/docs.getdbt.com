@@ -216,7 +216,11 @@ If you're on a Virtual Private dbt Enterprise plan using security features like 
 
 When you start a CI job, the pull request status should show as `pending` while it waits for an update from dbt. Once the CI job finishes, dbt sends the status to Azure DevOps (ADO), and the status will change to either `succeeded` or `failed`. 
 
-If the status doesn't get updated after the job runs, check if there are any git branch policies in place that's blocking ADO from receiving these updates. You can find relevant information here:
+If the status doesn't get updated after the job runs, check if there are any git branch policies in place blocking ADO from receiving these updates. 
+
+One potential issue is the **Reset conditions** under **Status checks** in the ADO repository branch policy. If you enable the **Reset status whenever there are new changes** checkbox (under **Reset conditions**), it can prevent dbt from updating ADO about your CI job run status.
+You can find relevant information here:
+- [Azure DevOps Services Status checks](https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops&tabs=browser#status-checks)
 - [Azure DevOps Services Pull Request Stuck Waiting on Status Update](https://support.hashicorp.com/hc/en-us/articles/18670331556627-Azure-DevOps-Services-Pull-Request-Stuck-Waiting-on-Status-Update-from-Terraform-Cloud-Enterprise-Run)
 - [Pull request status](https://learn.microsoft.com/en-us/azure/devops/repos/git/pull-request-status?view=azure-devops#pull-request-status)
 

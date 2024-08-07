@@ -142,7 +142,7 @@ from {{ ref('app_data_events') }}
 
   -- this filter will only be applied on an incremental run
   -- (uses >= to include records arriving later on the same day as the last run of this model)
-  where date_day >= (select coalesce(max(event_time), '1900-01-01') from {{ this }})
+  where date_day >= (select coalesce(max(date_day), '1900-01-01') from {{ this }})
 
 {% endif %}
 
