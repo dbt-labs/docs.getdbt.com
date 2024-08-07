@@ -18,7 +18,7 @@ id: "clickhouse-configs"
 | Type                                    | Supported?        | Details                                                                                                                                                                                                                                         |
 |-----------------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Materialized View materialization       | YES, Experimental | Creates a [materialized view](https://clickhouse.com/docs/en/materialized-view).                                                                                                                                                                |
-| Distributed table materialization       | YES, Experimental | Creates a [distributed table](https://clickhouse.com/docs/en/engines/table-engines/special/distributed). Visit [this](https://clickhouse.com/docs/en/engines/table-engines/special/distributed) for more info on how it works.                  |
+| Distributed table materialization       | YES, Experimental | Creates a [distributed table](https://clickhouse.com/docs/en/engines/table-engines/special/distributed).                                                                                                                                        |
 | Distributed incremental materialization | YES, Experimental | Incremental model based on the same idea as distributed table. Note that not all strategies are supported, visit [this](https://github.com/ClickHouse/dbt-clickhouse?tab=readme-ov-file#distributed-incremental-materialization) for more info. |
 | Dictionary materialization              | YES, Experimental | Creates a [dictionary](https://clickhouse.com/docs/en/engines/table-engines/special/dictionary).                                                                                                                                                |
 
@@ -28,12 +28,12 @@ A dbt model can be created as a [ClickHouse view](https://clickhouse.com/docs/en
 and configured using the following syntax:
 
 <Tabs
-    groupId="config-view"
-    defaultValue="project-yaml"
-    values={[
-        { label: 'Project file', value: 'project-yaml', },
-        { label: 'Config block', value: 'config', },
-    ]
+groupId="config-view"
+defaultValue="project-yaml"
+values={[
+{ label: 'Project file', value: 'project-yaml', },
+{ label: 'Config block', value: 'config', },
+]
 }>
 
 <TabItem value="project-yaml">
@@ -65,12 +65,12 @@ A dbt model can be created as a [ClickHouse table](https://clickhouse.com/docs/e
 configured using the following syntax:
 
 <Tabs
-    groupId="config-table"
-    defaultValue="project-yaml"
-    values={[
-        { label: 'Project file', value: 'project-yaml', },
-        { label: 'Config block', value: 'config', },
-    ]
+groupId="config-table"
+defaultValue="project-yaml"
+values={[
+{ label: 'Project file', value: 'project-yaml', },
+{ label: 'Config block', value: 'config', },
+]
 }>
 
 <TabItem value="project-yaml">
@@ -122,12 +122,12 @@ sets or complex transformations. To address this challenge and reduce the build 
 incremental ClickHouse table and is configured using the following syntax:
 
 <Tabs
-    groupId="config-incremental"
-    defaultValue="project-yaml"
-    values={[
-        { label: 'Project file', value: 'project-yaml', },
-        { label: 'Config block', value: 'config', },
-    ]}
+groupId="config-incremental"
+defaultValue="project-yaml"
+values={[
+{ label: 'Project file', value: 'project-yaml', },
+{ label: 'Config block', value: 'config', },
+]}
 >
 
 <TabItem value="project-yaml">
