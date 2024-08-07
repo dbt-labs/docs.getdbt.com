@@ -24,7 +24,7 @@ A maintainer can be a dbt Labs employee but does not have to be. *Slack channel 
   - Fill out the fields and click **Submit** to submit your request. Someone will get in touch from there.
 ![request-slack-chnl](https://github.com/siljamardla/docs.getdbt.com/assets/89008547/b14abc52-4164-40a8-b48a-e8061fb4b51a)
 
-3. If you are a vendor, review the [Vendor Expectations](community/resources/community-rules-of-the-road#vendor-expectations).
+3. If you are a vendor, review the [Vendor Expectations](/community/resources/community-rules-of-the-road#vendor-expectations).
 
 4. Add the Topic and Description to the channel. @Mention your name in the channel Description, identifying yourself as the maintainer. Ex: *Maintainer: First Last (pronouns).* If you are a vendor, make sure your Handle contains your affiliation.
 
