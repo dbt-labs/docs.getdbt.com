@@ -8,6 +8,9 @@ dbt Explorer provides metadata on dbt Cloud runs for in-depth model performance 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-model-performance.gif" width="100%" title="Overview of Performance page navigation."/>
 
+import ExplorerCourse from '/snippets/_explorer-course-link.md';
+<ExplorerCourse/>
+
 ## The Performance overview page 
 
 You can pinpoint areas for performance enhancement by using the Performance overview page. This page presents a comprehensive analysis across all project models and displays the longest-running models, those most frequently executed, and the ones with the highest failure rates during runs/tests. Data can be segmented by environment and job type which can offer insights into:
