@@ -6,14 +6,6 @@ tags: [Semantic Layer, API]
 hide_table_of_contents: true
 pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
 ---
-
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
-</VersionBlock>
  
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.<br /><br />
 

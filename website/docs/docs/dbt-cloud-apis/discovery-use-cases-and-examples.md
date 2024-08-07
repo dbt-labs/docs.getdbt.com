@@ -584,8 +584,6 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 </details>
 
-<VersionBlock firstVersion="1.5">
-
 ### How is this model contracted and versioned?
 
 To enforce the shape of a model's definition, you can define contracts on models and their columns. You can also specify model versions to keep track of discrete stages in its evolution and use the appropriate one.
@@ -627,8 +625,6 @@ query {
 ```
 
 </details>
-
-</VersionBlock>
 
 ## Discovery
 
@@ -908,11 +904,9 @@ Graph example:
 
 -->
 
-<VersionBlock firstVersion="1.6">
-
 ### Which metrics are available?
 
-You can define and query metrics using the [dbt Semantic Layer](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL). To learn more, refer to [Get started with MetricFlow](/docs/build/sl-getting-started).
+You can define and query metrics using the [dbt Semantic Layer](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
 
 <details>
 <summary>Example query</summary>
@@ -943,10 +937,6 @@ query ($environmentId: BigInt!, $first: Int!) {
 ```
 
 </details>
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
 
 ## Governance
 
@@ -1040,8 +1030,6 @@ query ($environmentId: BigInt!, $first: Int!) {
 }
 ```
 </details>
-
-</VersionBlock>
 
 ## Development
 
