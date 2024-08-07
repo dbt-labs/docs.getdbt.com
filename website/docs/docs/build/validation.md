@@ -12,7 +12,6 @@ These validations ensure that configuration files follow the expected schema, th
 
 The code that handles validation [can be found here](https://github.com/dbt-labs/dbt-semantic-interfaces/tree/main/dbt_semantic_interfaces/validations) for those who want to dive deeper into this topic. 
 
-
 ## Validations command
 
 You can run validations against the defined semantic model configurations from the command line with the following [MetricFlow commands](/docs/build/metricflow-commands):
@@ -33,9 +32,9 @@ In this validation step, we ensure your config files follow the defined schema f
 * Dimensions
 * Metrics
 
-## Semantic 
+## Semantic syntax
 
-This validation step occurs after we've built your semantic graph. The Semantic Layer, powered by MetricFlow, runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if measure names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
+This syntactic validation step occurs after we've built your semantic graph. The Semantic Layer, powered by MetricFlow, runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if measure names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
 
 1. Check those semantic models with measures have a valid time dimension
 2. Check that there is only one primary identifier defined in each semantic model
@@ -52,4 +51,4 @@ This type of validation checks to see if the semantic definitions in your semant
 * Underlying tables for data sources exist
 * Generated SQL for metrics will execute
 
-You can run semantic validations in a CI job to guarantee any code changes made to dbt models don't break these metrics. For more information, refer to [semantic validation in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci).
+You can run semantic validations (against your semantic layer) in a CI job to guarantee any code changes made to dbt models don't break these metrics. For more information, refer to [semantic validation in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci).
