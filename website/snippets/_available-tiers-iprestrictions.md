@@ -4,6 +4,6 @@ Organizations can configure IP restrictions using the following dbt Cloud Enterp
  * Business Critical 
  * Virtual Private
 
-To learn more about these tiers, contact us at <sales@getdbt.com>.
+To learn more about these tiers, contact us at [sales@getdbt.com](mailto:sales@getdbt.com).
 
 :::

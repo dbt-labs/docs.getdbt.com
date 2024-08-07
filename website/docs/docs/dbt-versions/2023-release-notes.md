@@ -326,7 +326,7 @@ Archived release notes for dbt Cloud from 2023
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
     * Check out how these community members use the dbt community in the [Community spotlight](/community/spotlight). 
-    * Blog posts published this summer include [Optimizing Materialized Views with dbt](/blog/announcing-materialized-views),  [Data Vault 2.0 with dbt Cloud](/blog/data-vault-with-dbt-cloud), and [Create dbt Documentation and Tests 10x faster with ChatGPT](/blog/create-dbt-documentation-10x-faster-with-chatgpt) 
+    * Blog posts published this summer include [Optimizing Materialized Views with dbt](/blog/announcing-materialized-views),  [Data Vault 2.0 with dbt Cloud](/blog/data-vault-with-dbt-cloud), and [Create dbt Documentation and Tests 10x faster with ChatGPT](/blog/create-dbt-documentation-10x-faster-with-ChatGPT) 
     - We now have two new best practice guides: [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) and [Set up Continuous Integration](/guides/set-up-ci).
 
   </Expandable>
@@ -618,7 +618,7 @@ Archived release notes for dbt Cloud from 2023
     ## 🎯 Core projects
 
     - We launched the new [MetricFlow docs](/docs/build/build-metrics-intro) on dbt Core v1.6 beta.
-    - Split [Global configs](reference/global-configs/about-global-configs) into individual pages, making it easier to find, especially using search. 
+    - Split [Global configs](/reference/global-configs/about-global-configs) into individual pages, making it easier to find, especially using search. 
 
     ## New 📚 Guides, ✏️ blog posts, and FAQs
 
@@ -800,7 +800,7 @@ Archived release notes for dbt Cloud from 2023
     - `created_at` and `-created_at`
     - `finished_at` and `-finished_at`
 
-    We recommend that you change your API requests to https://<YOUR_ACCESS_URL>/api/v2/accounts/{accountId}/runs/ to use a supported `order_by` before this date. 
+    We recommend that you change your API requests to https://&lt;YOUR_ACCESS_URL&gt;/api/v2/accounts/\{accountId\}/runs/ to use a supported `order_by` before this date. 
 
     :::info Access URLs
  
@@ -810,7 +810,7 @@ Archived release notes for dbt Cloud from 2023
 
     For more info, refer to our [documentation](/dbt-cloud/api-v2-legacy#tag/Runs/operation/listRunsForAccount).
 
- </Expandable>
+  </Expandable>
 
 - <Expandable alt_header='Scheduler optmization'>
 

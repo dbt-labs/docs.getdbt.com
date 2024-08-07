@@ -107,7 +107,7 @@ Below is how we can implement the same versioning using the new **VersionBlock**
 
 You see this block when the selected version is >= 0.21:
 
-```markdown
+```code
 
 <VersionBlock firstVersion="0.21">
 
@@ -116,11 +116,12 @@ $ dbt run --select [...] --defer --state path/to/artifacts
 $ dbt test --select [...] --defer --state path/to/artifacts
 \```
 
-```
 </VersionBlock>
-You see this version block when the selected version is <= 0.20
+```
 
-```markdown
+You see this version block when the selected version is `<= 0.20`
+
+```code
 <VersionBlock lastVersion="0.20">
 
 ```shell

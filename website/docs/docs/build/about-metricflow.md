@@ -245,7 +245,7 @@ metrics:
 
 ## FAQs
 
-<detailsToggle alt_header="Do my datasets need to be normalized?">
+<DetailsToggle alt_header="Do my datasets need to be normalized?">
 
 Not at all! While a cleaned and well-modeled data set can be extraordinarily powerful and is the ideal input, you can use any dataset from raw to fully denormalized datasets. 
 
@@ -253,34 +253,34 @@ It's recommended that you apply quality data consistency, such as filtering bad 
 
 If you have not invested in data consistency, that is okay. The Semantic Layer can take SQL queries or expressions to define consistent datasets.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Why is normalized data the ideal input?">
+<DetailsToggle alt_header="Why is normalized data the ideal input?">
 
 MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplish the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that MetricFlow can use to aggregate metrics.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Why not just make metrics the same as measures?">
+<DetailsToggle alt_header="Why not just make metrics the same as measures?">
 One principle of MetricFlow is to reduce the duplication of logic sometimes referred to as Don't Repeat Yourself(DRY).
 
 Many metrics are constructed from reused measures and in some cases constructed from measures from different semantic models. This allows for metrics to be built breadth-first (metrics that can stand alone) instead of depth-first (where you have multiple metrics acting as functions of each other).
 
 Additionally, not all metrics are constructed off of measures. As an example, a conversion metric is likely defined as the presence or absence of an event record after some other event record.
 
-</detailsToggle>
-<detailsToggle alt_header="How does the dbt Semantic Layer handle joins?">
+</DetailsToggle>
+<DetailsToggle alt_header="How does the dbt Semantic Layer handle joins?">
 The dbt Semantic Layer, powered by MetricFlow,  builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentation on join types.
 
 Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Are entities and join keys the same thing?">
+<DetailsToggle alt_header="Are entities and join keys the same thing?">
 If it helps you to think of entities as join keys, that is very reasonable. Entities in MetricFlow have applications beyond joining two tables, such as acting as a dimension.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Can a table without a primary or unique entities have dimensions?">
+<DetailsToggle alt_header="Can a table without a primary or unique entities have dimensions?">
 Yes, but because a dimension is considered an attribute of the primary or unique ent of the table, they are only usable by the metrics that are defined in that table. They cannot be joined to metrics from other tables. This is common in event logs.
-</detailsToggle>
+</DetailsToggle>
 
 ## Related docs
 - [Joins](/docs/build/join-logic)

@@ -15,7 +15,7 @@
   display_title: dbt tutorials
   description: Best practices in the usage of our favorite data transformation tool.
   is_featured: true    
-- name: SQL magic
+- name: sql magic
   display_title: SQL magic
   description: Stories of dbt developers making SQL sing across warehouses.
   is_featured: true
