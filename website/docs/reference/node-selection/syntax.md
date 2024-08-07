@@ -204,7 +204,7 @@ The `dbt source freshness` command produces a `sources.json` artifact whose resu
 
 When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal dbt to run and test only on the fresher sources and their children by including the `source_status:fresher+` argument. This requires both the previous and current states to have the `sources.json` artifact available. Or plainly said, both job states need to run `dbt source freshness`.
 
-After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
+After issuing the `dbt source freshness` command, you can reference the source freshness results by adding a selector to a subsequent command:
 
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
