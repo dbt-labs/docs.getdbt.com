@@ -238,7 +238,7 @@ For more information on configuration, check out the [snapshot configs](/referen
 | EmbeddedRocksDB        | https://clickhouse.com/docs/en/engines/table-engines/integrations/embedded-rocksdb        |
 | Hive                   | https://clickhouse.com/docs/en/engines/table-engines/integrations/hive                    |
 
-## Experimental Supported Table Engines
+## Experimental supported table engines
 
 | Type              | Details                                                                   |
 |-------------------|---------------------------------------------------------------------------|
