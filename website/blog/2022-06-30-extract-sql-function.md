@@ -5,7 +5,7 @@ slug: extract-sql-love-letter
 
 authors: [kira_furuichi]
 
-tags: [SQL Magic]
+tags: [sql magic]
 hide_table_of_contents: false
 
 date: 2022-05-15

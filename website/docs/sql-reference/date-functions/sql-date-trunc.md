@@ -38,7 +38,7 @@ In [Snowflake](https://docs.snowflake.com/en/sql-reference/functions/date_trunc.
 date_trunc(<date_part>, <date/time field>)
 ```
 
-In these platforms, the <date_part> is passed in as the first argument in the DATE_TRUNC function.
+In these platforms, the &lt;date_part&gt; is passed in as the first argument in the DATE_TRUNC function.
 
 ## The DATE_TRUNC function in Google BigQuery and Amazon Redshift​
 
