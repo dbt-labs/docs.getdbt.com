@@ -13,7 +13,7 @@ id: "clickhouse-configs"
 | incremental materialization | YES        | Creates a table if it doesn't exist, and then writes only updates to it.                                                         |
 | ephemeral materialized      | YES        | Creates a ephemeral/CTE materialization.  This does model is internal to dbt and does not create any database objects            |
 
-## Experimental Models
+## Experimental models
 The following are [experimental features](https://clickhouse.com/docs/en/beta-and-experimental-features) in Clickhouse:
 
 | Type                                    | Supported?        | Details                                                                                                                                                                                                                                         |
@@ -23,7 +23,7 @@ The following are [experimental features](https://clickhouse.com/docs/en/beta-an
 | Distributed incremental materialization | YES, Experimental | Incremental model based on the same idea as distributed table. Note that not all strategies are supported, visit [this](https://github.com/ClickHouse/dbt-clickhouse?tab=readme-ov-file#distributed-incremental-materialization) for more info. |
 | Dictionary materialization              | YES, Experimental | Creates a [dictionary](https://clickhouse.com/docs/en/engines/table-engines/special/dictionary).                                                                                                                                                |
 
-### View Materialization
+### View materialization
 
 A dbt model can be created as a [ClickHouse view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/)
 and configured using the following syntax:
@@ -60,7 +60,7 @@ models:
 </TabItem>
 </Tabs>
 
-### Table Materialization
+### Table materialization
 
 A dbt model can be created as a [ClickHouse table](https://clickhouse.com/docs/en/operations/system-tables/tables/) and
 configured using the following syntax:
@@ -107,7 +107,7 @@ models:
 </TabItem>
 </Tabs>
 
-#### Table Configuration
+#### Table configuration
 
 | Option         | Description                                                                                                                                          | Required?                         |
 |----------------|------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
@@ -116,7 +116,7 @@ models:
 | `order_by`     | A tuple of column names or arbitrary expressions. This allows you to create a small sparse index that helps find data faster.                        | Optional (default: `tuple()`)     |
 | `partition_by` | A partition is a logical combination of records in a table by a specified criterion. The partition key can be any expression from the table columns. | Optional                          |
 
-### Incremental Materialization
+### Incremental materialization
 
 Table model will be reconstructed for each dbt execution. This may be infeasible and extremely costly for larger result
 sets or complex transformations. To address this challenge and reduce the build time, a dbt model can be created as an
@@ -168,7 +168,7 @@ models:
 </TabItem>
 </Tabs>
 
-#### Incremental Table Configuration
+#### Incremental table configuration
 
 | Option                   | Description                                                                                                                                                                                                                                                       | Required?                                                                            |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
@@ -227,7 +227,7 @@ supported by the ClickHouse connector and is configured using the following synt
 
 For more information on configuration, check out the [snapshot configs](/reference/snapshot-configs) reference page.
 
-## Supported Table Engines
+## Supported table engines
 
 | Type                   | Details                                                                                   |
 |------------------------|-------------------------------------------------------------------------------------------|
@@ -248,7 +248,7 @@ For more information on configuration, check out the [snapshot configs](/referen
 If you encounter issues connecting to ClickHouse from dbt with one of the above engines, please report an
 issue [here](https://github.com/ClickHouse/dbt-clickhouse/issues).
 
-## Cross Database Macro Support
+## Cross database macro support
 
 dbt-clickhouse supports most of the cross database macros now included in dbt-core, with the following exceptions:
 
