@@ -56,7 +56,7 @@ The Semantic Layer JDBC API has built-in metadata calls which can provide a user
 
 Expand the following toggles for examples and metadata commands:
 
-<detailsToggle alt_header="Fetch defined metrics">
+<DetailsToggle alt_header="Fetch defined metrics">
 
 You can use this query to fetch all defined metrics in your dbt project:
 
@@ -65,9 +65,9 @@ select * from {{
 	semantic_layer.metrics() 
 }}
 ```
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Fetch dimension for a metric">
+<DetailsToggle alt_header="Fetch dimension for a metric">
 
 You can use this query to fetch all dimensions for a metric.
 
@@ -77,9 +77,9 @@ Note, metrics is a required argument that lists one or multiple metrics in it.
 select * from {{ 
     semantic_layer.dimensions(metrics=['food_order_amount'])}}
 ```
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Fetch dimension values">
+<DetailsToggle alt_header="Fetch dimension values">
 
 You can use this query to fetch dimension values for one or multiple metrics and a single dimension.
 
@@ -89,9 +89,9 @@ Note, metrics is a required argument that lists one or multiple metrics, and a s
 select * from {{ 
 semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['customer__customer_name'])}}
 ```
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Fetch granularities for metrics">
+<DetailsToggle alt_header="Fetch granularities for metrics">
 
 You can use this query to fetch queryable granularities for a list of metrics. 
 
@@ -103,9 +103,9 @@ select * from {{
     semantic_layer.queryable_granularities(metrics=['food_order_amount', 'order_gross_profit'])}}
 ```
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Fetch available metrics given dimensions">
+<DetailsToggle alt_header="Fetch available metrics given dimensions">
 
 You can use this query to fetch available metrics given dimensions. This command is essentially the opposite of getting dimensions given a list of metrics.
 
@@ -117,9 +117,9 @@ select * from {{
 }}
 ```
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Fetch granularities for all time dimensions">
+<DetailsToggle alt_header="Fetch granularities for all time dimensions">
 
 You can use this example query to fetch available granularities for all time dimensions (the similar queryable granularities API call only returns granularities for the primary time dimensions for metrics).
 
@@ -133,9 +133,9 @@ select NAME, QUERYABLE_GRANULARITIES from {{
 }}
 ```
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Fetch primary time dimension names">
+<DetailsToggle alt_header="Fetch primary time dimension names">
 
 It may be useful in your application to expose the names of the time dimensions that represent metric_time or the common thread across all metrics.
 
@@ -147,9 +147,9 @@ select * from {{
 }}
 ```
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="List saved queries">
+<DetailsToggle alt_header="List saved queries">
 
 You can use this example query to list all available saved queries in your dbt project.
 
@@ -165,7 +165,7 @@ select * from semantic_layer.saved_queries()
 | NAME | DESCRIPTION | LABEL | METRICS | GROUP_BY | WHERE_FILTER |
 ```
 
-</detailsToggle>
+</DetailsToggle>
 
 <!--
 <Tabs>
@@ -546,24 +546,24 @@ The JDBC API will use the saved query (`new_customer_orders`) as defined and app
 
 <FAQ path="Troubleshooting/sl-alpn-error" />
 
-<detailsToggle alt_header="Why do some dimensions use different syntax, like `metric_time` versus `Dimension('metric_time')`?">
+<DetailsToggle alt_header="Why do some dimensions use different syntax, like `metric_time` versus `Dimension('metric_time')`?">
 When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. 
 
 However, when you perform operations on the dimension, such as adding granularity, the object syntax `[Dimension('metric_time')` is required.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="What does the double underscore `'__'` syntax in dimensions mean?">
+<DetailsToggle alt_header="What does the double underscore `'__'` syntax in dimensions mean?">
 
 The double underscore `"__"` syntax indicates a mapping from an entity to a dimension, as well as where the dimension is located. For example, `user__country` means someone is looking at the `country` dimension from the `user` table.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="What is the default output when adding granularity?">
+<DetailsToggle alt_header="What is the default output when adding granularity?">
 
 The default output follows the format `{{time_dimension_name}__{granularity_level}}`. 
 
 So for example, if the `time_dimension_name` is `ds` and the granularity level is yearly, the output is `ds__year`.
 
-</detailsToggle>
+</DetailsToggle>
 
 ## Related docs
 
