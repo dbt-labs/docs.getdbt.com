@@ -38,12 +38,12 @@ to your `profiles.yml` file. A ClickHouse profile conforms to the following synt
       schema: [ default ] # ClickHouse database for dbt models
 
       # optional
-      driver: [ http ] # http or native.  If not set this will be auto-determined based on port setting
+      driver: [ http ] # http or native.  If not configured, this will be auto-determined based on the port setting
       host: [ localhost ]
-      port: [ 8123 ]  # If not set, defaults to 8123, 8443, 9000, 9440 depending on the secure and driver settings 
+      port: [ 8123 ]  # Defaults to 8123, 8443, 9000, 9440 depending on the secure and driver settings 
       user: [ default ] # User for all database operations
       password: [ <empty string> ] # Password for the user
-      cluster: [ <empty string> ] # If set, certain DDL/table operations will be executed with the `ON CLUSTER` clause using this cluster. Distributed materializations require this setting to work. See the following ClickHouse Cluster section for more details.
+      cluster: [ <empty string> ] # If configured, certain DDL/table operations will be executed with the `ON CLUSTER` clause using this cluster. Distributed materializations require this setting to work. See the following ClickHouse Cluster section for more details.
       verify: [ True ] # Validate TLS certificate if using TLS/SSL
       secure: [ False ] # Use TLS (native protocol) or HTTPS (http protocol)
       retries: [ 1 ] # Number of times to retry a "retriable" database exception (such as a 503 'Service Unavailable' error)
