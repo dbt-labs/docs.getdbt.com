@@ -68,7 +68,7 @@ to your `profiles.yml` file. A ClickHouse profile conforms to the following synt
 
 </File>
 
-#### Description of ClickHouse Profile Fields
+### Description of ClickHouse Profile Fields
 
 | Field                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -98,12 +98,11 @@ to your `profiles.yml` file. A ClickHouse profile conforms to the following synt
 | `database_engine`               | Optional. Database engine to use when creating new ClickHouse schemas (databases).  If not set (the default), new databases will use the default ClickHouse database engine (usually Atomic).                                                                                                                                                                                                                                                                                |
 | `custom_settings`               | Optional. A mapping of ClickHouse specific user settings to use with the connection.  See the ClickHouse documentation for supported settings.                                                                                                                                                                                                                                                                                                                               |
 
-#### Troubleshooting Connections
+## Troubleshooting Connections
 
 If you encounter issues connecting to ClickHouse from dbt, make sure the following criteria are met:
 
-- The engine must be one of
-  the [supported engines](/reference/resource-configs/clickhouse-configs#supported-table-engines).
+- The engine must be one of the [supported engines](/reference/resource-configs/clickhouse-configs#supported-table-engines).
 - You must have adequate permissions to access the database.
 - If you're not using the default table engine for the database, you must specify a table engine in your model
   configuration.
