@@ -8,7 +8,7 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 
 ## Set up CI jobs {#set-up-ci-jobs}
 
-dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
+dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schema builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch as part of your release process, having a separate environment will allow you to set a [custom branch](/faqs/Environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch. To learn more, refer to [Get started with CI tests](/guides/set-up-ci).
 
 ### Prerequisites
 - You have a dbt Cloud account. 
@@ -165,7 +165,7 @@ To validate _all_ semantic nodes in your project, add the following command to d
 
 ## Troubleshooting
 
-<detailsToggle alt_header="Temporary schemas aren't dropping">
+<DetailsToggle alt_header="Temporary schemas aren't dropping">
 If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates one of these issues:
 - You have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix.
 
@@ -176,17 +176,17 @@ To resolve this, change your macro so that the temporary PR schema name contains
 
 A macro is creating a schema but there are no dbt models writing to that schema. dbt Cloud doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Error messages that refer to schemas from previous PRs">
+<DetailsToggle alt_header="Error messages that refer to schemas from previous PRs">
 
 If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the CI job for the current PR is kicked off.
 
 To fix this issue, select a production job run to defer to instead of self.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Production job runs failing at the 'Clone Git Repository step'">
+<DetailsToggle alt_header="Production job runs failing at the 'Clone Git Repository step'">
 
 dbt Cloud can only check out commits that belong to the original repository. dbt Cloud <i>cannot</i> checkout commits that belong to a fork of that repository.
 
@@ -203,16 +203,16 @@ fatal: reference is not a tree: e845be54e6dc72342d5a8f814c8b3316ee220312
 ```
 
 Double-check that your PR isn't trying to merge using a commit that belongs to a fork of the repository attached to your dbt project.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="CI job not triggering for Virtual Private dbt users"> 
+<DetailsToggle alt_header="CI job not triggering for Virtual Private dbt users"> 
 
 To trigger jobs on dbt Cloud using the [API](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api), your Git provider needs to connect to your dbt Cloud account.
 
 If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="PR status for CI job stays in 'pending' in Azure DevOps after job run finishes">
+<DetailsToggle alt_header="PR status for CI job stays in 'pending' in Azure DevOps after job run finishes">
 
 When you start a CI job, the pull request status should show as `pending` while it waits for an update from dbt. Once the CI job finishes, dbt sends the status to Azure DevOps (ADO), and the status will change to either `succeeded` or `failed`. 
 
@@ -224,4 +224,4 @@ You can find relevant information here:
 - [Azure DevOps Services Pull Request Stuck Waiting on Status Update](https://support.hashicorp.com/hc/en-us/articles/18670331556627-Azure-DevOps-Services-Pull-Request-Stuck-Waiting-on-Status-Update-from-Terraform-Cloud-Enterprise-Run)
 - [Pull request status](https://learn.microsoft.com/en-us/azure/devops/repos/git/pull-request-status?view=azure-devops#pull-request-status)
 
-</detailsToggle>
+</DetailsToggle>

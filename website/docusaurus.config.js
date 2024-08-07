@@ -1,6 +1,7 @@
-const path = require("path");
-const math = require("remark-math");
-const katex = require("rehype-katex");
+import path from "path";
+import math from "remark-math";
+import katex from "rehype-katex";
+const { themes } = require('prism-react-renderer')
 
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
@@ -84,7 +85,7 @@ var siteSettings = {
     communitySpotlightMember: "meagan-palmer",
     prism: {
       theme: (() => {
-        var theme = require("prism-react-renderer/themes/nightOwl");
+        var theme = themes.nightOwl; 
         // Add additional rule to nightowl theme in order to change
         // the color of YAML keys (to be different than values).
         // There weren't many Prism themes that differentiated
