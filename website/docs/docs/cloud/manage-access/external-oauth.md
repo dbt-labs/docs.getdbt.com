@@ -163,17 +163,16 @@ Adjust the other settings as needed to meet your organizations configurations in
 4. **Save** the connection and you have now configured External Oauth with Okta and Snowflake!
 
 ## Set up with Entra ID
-You'll be
 
 ### 1. Initialize the dbt Cloud settings
 
 1. In your dbt Cloud account, navigate to **Account settings** —> **Integrations**. 
-2. Scroll down to **Custom integrations** and click **Add integrations**
+2. Scroll down to **Custom integrations** and click **Add integrations**.
 3. Leave this window open. You can set the **Integration type** to Okta and make a note of the **Redirect URI** at the bottom of the page. Copy this to your clipboard for use in the next steps.
 
 ### Entra ID
 
-You’ll be creating two different `apps` in the Azure portal &mdash; A resource server and client app
+You’ll be creating two different `apps` in the Azure portal &mdash; A resource server and client app.
 
 :::important
 
@@ -189,37 +188,37 @@ In your Azure portal, open the **Entra ID** and click **App registrations** from
 
 1. From the app registrations screen, click **New registration**
 2. Give the app a name. 
-3. Ensure **Supported account types** is set to “Accounts in this organizational directory only (`Org name` - Single Tenant)” 
-4. Click **Register.**
+3. Ensure **Supported account types** is set to “Accounts in this organizational directory only (`Org name` - Single Tenant).” 
+4. Click **Register**.
 5. From the app page, click **Expose an API** from the left menu.
-6. Click **Add** next to **Application ID URI**. The field will automatically populate, so click **Save.** 
-7.  Record the `value` field as it will be used in a future step. *This is only displayed once, so be sure to record it immediately. It will be hidden when you leave the page and come back.* 
-8. From the same screen, click **Add scope.**
+6. Click **Add** next to **Application ID URI**. The field will automatically populate, so click **Save**. 
+7. Record the `value` field as it will be used in a future step. *This is only displayed once, so be sure to record it immediately. It will be hidden when you leave the page and come back.* 
+8. From the same screen, click **Add scope**.
     1. Give the scope a name.
-    2. Set “Who can consent?” to **Admins and users**
+    2. Set “Who can consent?” to **Admins and users**.
     3. Set **Admin consent display name** session:role-any and give it a description.
-    4. Ensure **State** is set to **Enabled**
-    5. Click **Add scope**
+    4. Ensure **State** is set to **Enabled**.
+    5. Click **Add scope**.
 
 ### 2. Create a client app
 
-1. From the **App registration page**, click **New registration**
-2. Give the app a name that will uniquely identify it as the client app
-3. Ensure **Supported account types** is set to “Accounts in this organizational directory only (`Org name` - Single Tenant)” 
+1. From the **App registration page**, click **New registration**.
+2. Give the app a name that will uniquely identify it as the client app.
+3. Ensure **Supported account types** is set to “Accounts in this organizational directory only (`Org name` - Single Tenant).” 
 4. Set the **Redirect URI** to **Web** and copy/paste the **Redirect URI** from dbt Cloud into the field.
-5. Click **Register**
-6. From the app page, click **API permissions from the left menu, and click **Add permission**
+5. Click **Register**.
+6. From the app page, click **API permissions from the left menu, and click **Add permission**.
 7. From the pop-out screen, click **APIs my organization uses and search for the resource server name from the previous steps and click it.
 8. Ensure the box for the **Permissions** `session:role-any` is checked and click **Add permissions.
-9. Click **Grant admin consent** and from the popup modal click **Yes**
+9. Click **Grant admin consent** and from the popup modal click **Yes**.
 10. From the left menu, click **Certificates and secrets**. Click **New client secret**. Name the secret, set an expiration, and click **Add**. **Note**: Microsoft does not allow “forever” as an expiration. The maximum time is two years. It’s important to document the expiration date so that the secret can be refreshed before the expiration or user authorization will fail. 
-11. Record the **Value** for use in a future step and record it immediately. _Once you navigate away from this screen, this value will not be displayed again._
+11. Record the **Value** for use in a future step and record it immediately. Once you navigate away from this screen, this value will not be displayed again.
 
 ### 3. Snowflake configuration
 
-You will be going back and forth between the Entra ID site and Snowflake. Keep your Entra ID account open for this process. 
+You'll be going back-and-forth between the Entra ID site and Snowflake. Keep your Entra ID account open for this process. 
 
-Copy and paste the following as a template in a Snowflake worksheet
+Copy and paste the following as a template in a Snowflake worksheet:
 
 ```sql
 create or replace security integration <whatever you want to name it>
@@ -240,7 +239,7 @@ In the Entra ID site:
     - The **entity ID** on this page maps to the `external_oauth_issuer` field in the Snowflake config.
 2. Back on the list of endpoints, open the **OpenID Connect metadata document** in a new tab.
     - The **jwks_uri** field maps to the `external_oauth_jws_keys_url` field in Snowflake. 
-3. Navigate to the resource server in previous steps
+3. Navigate to the resource server in previous steps.
     - The **Application ID URI** maps to teh `external_oauth_audience_list` field in Snowflake.
 4. Run the configurations. Be sure the admin who created the Microsoft apps is also a user in Snowflake or the configuration will fail. 
 
