@@ -212,7 +212,7 @@ In your Azure portal, open the **Entra ID** and click **App registrations** from
 8. Ensure the box for the **Permissions** `session:role-any` is checked and click **Add permissions.
 9. Click **Grant admin consent** and from the popup modal click **Yes**.
 10. From the left menu, click **Certificates and secrets**. Click **New client secret**. Name the secret, set an expiration, and click **Add**. **Note**: Microsoft does not allow “forever” as an expiration. The maximum time is two years. It’s important to document the expiration date so that the secret can be refreshed before the expiration or user authorization will fail. 
-11. Record the **Value** for use in a future step and record it immediately. Once you navigate away from this screen, this value will not be displayed again.
+11. Record the **Value** for use in a future step and record it immediately. _Once you navigate away from this screen, this value will not be displayed again._
 
 ### 3. Snowflake configuration
 
