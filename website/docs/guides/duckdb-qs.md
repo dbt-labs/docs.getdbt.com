@@ -25,7 +25,6 @@ This guide will demonstrate how to:
 - Run any dbt command from the environment’s terminal. 
 - Generate a larger dataset for the Jaffle Shop café (for example, 5 years of data instead of just one).
 
-[Placeholder: Check if Core (vs Codespace) walks users through the same workflow as above ^. If not, consider adding a second bullet list for it below. ]
 
 ### Related content
 
@@ -46,7 +45,9 @@ This guide will demonstrate how to:
 
 ## Set up DuckDB for dbt Core
 
-The following will provide a step by step guide on setting up DuckDB for both local and web browser.
+The following will provide a step by step guide on setting up DuckDB for both local and web browser. 
+
+For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
 
 
 <Tabs>
@@ -78,70 +79,47 @@ cd docs-duckdb
     source venv/bin/activate
 
     ```
+    </Expandable>
+
+    <Expandable alt_header="Example for Windows" >
+
+    ```Jinja
+
+    python -m venv venv
+    venv\Scripts\activate.bat
+    python -m pip install --upgrade pip
+    python -m pip install -r requirements.txt
+    venv\Scripts\activate.bat
+
+    ```
 
     </Expandable>
 
+    <Expandable alt_header="Example for Windows PowerShell" >
 
-<Expandable alt_header="Example for Windows" >
+    ```Jinja
 
-```Jinja
+    python -m venv venv
+    venv\Scripts\Activate.ps1
+    python -m pip install --upgrade pip
+    python -m pip install -r requirements.txt
+    venv\Scripts\Activate.ps1
 
-python -m venv venv
-venv\Scripts\activate.bat
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-venv\Scripts\activate.bat
-
-```
-
-</Expandable>
-
-
-<Expandable alt_header="Example for Windows PowerShell" >
-
-```Jinja
-
-python -m venv venv
-venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-venv\Scripts\Activate.ps1
-
-```
-
-</Expandable>
+    ```
+    </Expandable>
 
 
 4. Ensure your profile is setup correctly from the command line by running the following:
 
-For detailed information, refer to the [dbt command reference](/reference/dbt-commands). Frequently used commands include:
 
-[review comment: consider reconstructing above two sentences so there's only one colon]
+    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
+    - [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
+    - [dbt test](https://docs.getdbt.com/reference/commands/test) — compiles and tests your project
+    - [dbt build](https://docs.getdbt.com/reference/commands/build) — compiles, runs, and tests your project
+    - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - generates your project's documentation.
+    - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) - starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
-- [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
-- [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
-- [dbt test](https://docs.getdbt.com/reference/commands/test) — compiles and tests your project
-- [dbt build](https://docs.getdbt.com/reference/commands/build) — compiles, runs, and tests your project
-- [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - generates your project's documentation.
-- [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) - starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
-
-[review comment: per nat's callout during meeting, indent list above for better alignment with step 4 when page is rendered]
-
-### Run build steps independently
-
-[review comment: consider if this whole section is necessary. some of the commands listed within it is mentioned in step 4. compare how the Codespace content is organized (primary) and other Cloud qs guides (secondary).]
-
-1. Load the CSVs with the demo data set. This materializes the CSVs as tables in your target schema. Note that a typical dbt project does not require this step since dbt assumes your raw data is already in your warehouse.
-
-
-- [dbt seed](/reference/commands/seed) - loads `csv` files located in the `seed-paths` directory of your dbt project into your data warehouse.
-
-
-2. Run the models:
-
-
-- [dbt run](/reference/commands/run) - compiles and runs your project.
-
+For detailed information, refer to the [dbt command reference](/reference/dbt-commands).
 
 :::note Note.
 
@@ -149,17 +127,13 @@ NOTE: If you decide to run this project in your own data warehouse (outside of t
 
 :::
 
-3. Test the output of the models using the test command:
-
-
-- [dbt test](/reference/commands/test) - compiles and tests your project.
-
 
 ### Troubleshoot
 
-[review comment: love this section. consider using expandable/detail for issue below. this is a bit of "future proofing" so if another item needs to be added later, it'll be easy to just add another list-like item to section]
-
 You may get an error like the one in the example below, in which case you will need to disconnect from any sessions that are locking the database:
+
+
+<Expandable alt_header="Could not set lock on file error" >
 
 ```Jinja
 
@@ -170,6 +144,8 @@ IO Error: Could not set lock on file "jaffle_shop.duckdb": Resource temporarily 
 This is a known issue in DuckDB. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
 
 As a last resort, deleting the database file will get you back in action (_but_ you will lose all your data).
+
+</Expandable>
 
 
  </TabItem>
@@ -206,10 +182,6 @@ As a last resort, deleting the database file will get you back in action (_but_ 
 
 </Tabs>
 
-
-Fore more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
-
-[review comment: as part of how to organize content, consider moving this sentence to the introduction part of the "Set up DuckDB for dbt Core" section.]
 
 ## Generate a larger data set
 
