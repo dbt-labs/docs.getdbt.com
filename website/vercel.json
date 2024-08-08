@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "docs/cloud/secure/environment-permissions",
-      "destination": "docs/cloud/manage-access/environment-permissions",
+      "source":  "docs/cloud/secure/environment-permissions",
+      "destination":  "docs/cloud/manage-access/environment-permissions",
       "permanent": true
     },
     {
