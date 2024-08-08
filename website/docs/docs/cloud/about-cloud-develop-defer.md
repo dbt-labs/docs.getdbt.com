@@ -11,6 +11,8 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 
 Both the dbt Cloud IDE and the dbt Cloud CLI enable users to natively defer to production metadata directly in their development workflows. 
 
+<Lightbox src src="/img/docs/reference/defer-diagram.png" title="Defer in dbt" />
+
 By default, dbt follows these rules:
 
 - dbt uses the production locations of parent models to resolve `{{ ref() }}` functions, based on metadata from the production environment.
