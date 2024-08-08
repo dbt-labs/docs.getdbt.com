@@ -11,7 +11,7 @@ description: "`model` is the dbt graph object (or node) for the current model."
 
 For example:
 ```jinja
-{% if model.config.materialization = 'view' %}
+{% if model.config.materialization == 'view' %}
   {{ log(model.name ~ " is a view.", info=True) }}
 {% endif %}
 ```
@@ -46,7 +46,7 @@ If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log) to prin
 
 To view the structure of `models` and their definitions:
 - Refer to [dbt JSON Schema](https://schemas.getdbt.com/) for describing and consuming dbt generated artifacts
-- Select the corresponding manifest version under **Manifest**. For example if you're on dbt v1.3, then you would select Manifest v7
+- Select the corresponding manifest version under **Manifest**. For example if you're on dbt v1.8, then you would select Manifest v12
   * The `manifest.json` version number is related to (but not _equal_ to) your dbt version, so you _must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, refer to [Manifest](/reference/artifacts/manifest-json) and select the dbt version on the top navigation (such as `v1.5`). This will help you find out which tags are associated with your model.
 - Then go to `nodes` --> Select Additional properties --> `CompiledModelNode` or view other definitions/objects.
 

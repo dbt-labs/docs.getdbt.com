@@ -8,7 +8,7 @@ const statusColors = {
   new: '#047377',
   beta: '#047377',
   ga: '#047377',
-  'public preview': '#047377',
+  preview: '#047377',
 };
 
 const fontColors = {

@@ -22,10 +22,11 @@ The user's assigned license determines the specific capabilities they can access
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API Access | ✅ | ❌ | ❌ |
-| Use [dbt Explorer](/docs/collaborate/explore-projects) | ✅  | ✅ | ✅  |
+| Use [dbt Explorer](/docs/collaborate/explore-projects) | ✅  | ✅ | ❌  |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
+
 *Available on Enterprise and Team plans only and doesn't count toward seat usage. Please note, that IT seats are limited to 1 seat per Team or Enterprise account.
 
 ## Licenses
@@ -174,6 +175,6 @@ Usage notes:
 
 ## Granular permissioning
 
-The dbt Cloud Enterprise plan supports Role-Based access controls for
+The dbt Cloud Enterprise plan supports role-based access controls for
 configuring granular in-app permissions. See [access control](/docs/cloud/manage-access/about-user-access)
 for more information on Enterprise permissioning.

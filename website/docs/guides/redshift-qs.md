@@ -22,7 +22,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Redshift. It wi
 - Schedule a job to run
 
 :::tips Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+Check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
 ### Prerequisites 
@@ -32,7 +32,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ### Related content
 
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
@@ -166,7 +166,7 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
     select * from stripe.payment;
     ```
 ## Connect dbt Cloud to Redshift 
-1. Create a new project in [dbt Cloud](https://cloud.getdbt.com/). From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
+1. Create a new project in [dbt Cloud](/docs/cloud/about-cloud/access-regions-ip-addresses). From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. For the warehouse, click **Redshift** then **Next** to set up your connection.
 4. Enter your Redshift settings. Reference your credentials you saved from the CloudFormation template.

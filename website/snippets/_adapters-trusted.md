@@ -14,15 +14,15 @@
 
  <Card
     title="Athena"
-    body="<ul><li><a href='/docs/core/connect-data-platform/athena-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-athena-community><img src=https://badge.fury.io/py/dbt-athena-community.svg/></a>"
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-amazon-athena'>Set up in dbt Cloud (beta) </a><br /></li><li><a href='/docs/core/connect-data-platform/athena-setup'>Install with dbt Core </a> </li> </ul><br /><br /><a href=https://badge.fury.io/py/dbt-athena-community><img src=https://badge.fury.io/py/dbt-athena-community.svg/></a>"
     pills='["dbt Core"]'
     icon="athena"/>
 
 <Card
     title="Azure Synapse"
-    body="<ul><li><a href='/docs/core/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /> <br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a>"
-    pills='["dbt Core"]'
-    icon="rocket"/>
+    body="<ul><li><a href='/docs/cloud/connect-data-platform/connect-azure-synapse-analytics'>Set up in dbt Cloud</a> <br /></li><li><a href='/docs/core/connect-data-platform/azuresynapse-setup'>Install with dbt Core  </a> </li> </ul><br /><a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/></a>"
+    pills='["dbt Cloud", "dbt Core"]'
+    icon="azure-synapse-analytics"/>
 
 <Card
     title="BigQuery"

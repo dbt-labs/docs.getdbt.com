@@ -91,7 +91,7 @@ You can also:
 - Add data tests to sources
 - Add descriptions to sources, that get rendered as part of your documentation site
 
-These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/data-tests) and [documentation](/docs/collaborate/documentation)).
+These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/data-tests) and [documentation](/docs/build/documentation)).
 
 <File name='models/<filename>.yml'>
 
@@ -155,7 +155,7 @@ sources:
           warn_after: {count: 6, period: hour}
           error_after: {count: 12, period: hour}
 
-      - name: customers # this will use the freshness defined above
+      - name: customers # this inherits the default freshness defined in the jaffle_shop source block at the beginning
 
 
       - name: product_skus
@@ -177,7 +177,7 @@ To snapshot freshness information for your sources, use the `dbt source freshnes
 $ dbt source freshness
 ```
 
-Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/runs/checking-logs).
+Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/Runs/checking-logs).
 
 ```sql
 select

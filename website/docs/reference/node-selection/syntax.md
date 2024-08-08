@@ -136,15 +136,6 @@ Together, the `state:` selector and deferral enable ["slim CI"](/best-practices/
 
 State and defer can be set by environment variables as well as CLI flags:
 
-<VersionBlock lastVersion="1.4">
-
-- `--state` or `DBT_ARTIFACT_STATE_PATH`: file path
-- `--defer` or `DBT_DEFER_TO_STATE`: boolean
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5" lastVersion="1.6">
-
 - `--state` or `DBT_STATE`: file path
 - `--defer` or `DBT_DEFER`: boolean
 
@@ -154,17 +145,11 @@ In dbt v1.5, we deprecated the original syntax for state (`DBT_ARTIFACT_STATE_PA
 
 :::
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
 - `--state` or `DBT_STATE`: file path
 - `--defer` or `DBT_DEFER`: boolean
 - `--defer-state` or `DBT_DEFER_STATE`: file path to use for deferral only (optional)
 
 If `--defer-state` is not specified, deferral will use the artifacts supplied by `--state`. This enables more granular control in cases where you want to compare against logical state from one environment or past point in time, and defer to applied state from a different environment or point in time.
-
-</VersionBlock>
 
 If both the flag and env var are provided, the flag takes precedence.
 
@@ -208,36 +193,19 @@ The state and result selectors can also be combined in a single invocation of db
 dbt run --select "result:<status>+" state:modified+ --defer --state ./<dbt-artifact-path>
 ```
 
-### Fresh rebuilds
-
-Only supported by v1.1 or newer.
-
-When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal to dbt to run and test only on these fresher sources and their children by including the `source_status:fresher+` argument. This requires both previous and current state to have the `sources.json` artifact be available. Or plainly said, both job states need to run `dbt source freshness`.
-
-As example:
-
-```bash
-# Command step order
-dbt source freshness
-dbt build --select "source_status:fresher+"
-```
-
-
-For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).
-
 ### The "source_status" status
-
-Only supported by v1.1 or newer.
 
 Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/reference/artifacts/sources-json) page. 
 
-The following dbt commands produce `sources.json` artifacts whose results can be referenced in subsequent dbt invocations:  
-- `dbt source freshness`
+The `dbt source freshness` command produces a `sources.json` artifact whose results can be referenced in subsequent dbt invocations. 
 
-After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
+When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal dbt to run and test only on the fresher sources and their children by including the `source_status:fresher+` argument. This requires both the previous and current states to have the `sources.json` artifact available. Or plainly said, both job states need to run `dbt source freshness`.
+
+After issuing the `dbt source freshness` command, you can reference the source freshness results by adding a selector to a subsequent command:
 
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
 dbt source freshness # must be run again to compare current to previous state
 dbt build --select "source_status:fresher+" --state path/to/prod/artifacts
 ```
+For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practice-workflows#pro-tips-for-workflows).

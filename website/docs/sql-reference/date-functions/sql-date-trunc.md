@@ -38,7 +38,7 @@ In [Snowflake](https://docs.snowflake.com/en/sql-reference/functions/date_trunc.
 date_trunc(<date_part>, <date/time field>)
 ```
 
-In these platforms, the <date_part> is passed in as the first argument in the DATE_TRUNC function.
+In these platforms, the &lt;date_part&gt; is passed in as the first argument in the DATE_TRUNC function.
 
 ## The DATE_TRUNC function in Google BigQuery and Amazon Redshift​
 
@@ -54,7 +54,7 @@ A note on BigQuery: BigQuery’s DATE_TRUNC function supports the truncation of 
 
 Why Snowflake, Amazon Redshift, Databricks, and Google BigQuery decided to use different implementations of essentially the same function is beyond us and it’s not worth the headache trying to figure that out. Instead of remembering if the `<date_part>` or the `<date/time field>` comes first, (which, let’s be honest, we can literally never remember) you can rely on a dbt Core macro to help you get away from finicky syntax.
 
-With dbt v1.2, [adapters](https://docs.getdbt.com/docs/supported-data-platforms) now support [cross-database macros](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like DATE_TRUNC and DATEDIFF, without having to memorize sticky function syntax.
+[Adapters](https://docs.getdbt.com/docs/supported-data-platforms) support [cross-database macros](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros) to help you write certain functions, like DATE_TRUNC and DATEDIFF, without having to memorize sticky function syntax.
 
 Using the [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop/blob/main/models/orders.sql), a simple dataset and dbt project, you can truncate the `order_date` from the orders table using the [dbt DATE_TRUNC macro](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#date_trunc):
 

@@ -8,9 +8,15 @@ keywords:
   - unit test, unit tests, unit testing, dag
 ---
 
+:::note 
+
+This functionality is only supported in dbt Core v1.8+ or accounts that have opted for a ["Versionless"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) dbt Cloud experience.
+
+:::
+
 Historically, dbt's test coverage was confined to [“data” tests](/docs/build/data-tests), assessing the quality of input data or resulting datasets' structure. However, these tests could only be executed _after_ building a model. 
 
-Now, we are introducing a new type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
+With dbt Core v1.8 and dbt Cloud environments that have gone versionless by selecting the **Versionless** option, we have introduced an additional type of test to dbt - unit tests. In software programming, unit tests validate small portions of your functional code, and they work much the same way here. Unit tests allow you to validate your SQL modeling logic on a small set of static inputs _before_ you materialize your full model in production. Unit tests enable test-driven development, benefiting developer efficiency and code reliability. 
 
 ## Before you begin
 
@@ -18,9 +24,10 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 - We currently only support adding unit tests to models in your _current_ project.
 - We currently *don't* support unit testing models that use recursive SQL.
 - You must specify all fields in a BigQuery STRUCT in a unit test. You cannot use only a subset of fields in a STRUCT.
-- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
+- If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
 - Table names must be [aliased](/docs/build/custom-aliases) in order to unit test `join` logic.
+- Redshift customers need to be aware of a [limitation when building unit tests](/reference/resource-configs/redshift-configs#unit-test-limitations) that requires a workaround. 
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
@@ -39,6 +46,12 @@ You should unit test a model:
 - Edge cases not yet seen in your actual data that you want to handle.
 - Prior to refactoring the transformation logic (especially if the refactor is significant).
 - Models with high "criticality" (public, contracted models or models directly upstream of an exposure).
+
+### When to run unit tests
+
+dbt Labs strongly recommends only running unit tests in development or CI environments. Since the inputs of the unit tests are static, there's no need to use additional compute cycles running them in production. Use them in development for a test-driven approach and CI to ensure changes don't break them. 
+
+Use the [resource type](/reference/global-configs/resource-type) flag `--exclude-resource-type` or the `DBT_EXCLUDE_RESOURCE_TYPES` environment variable to exclude unit tests from your production builds and save compute. 
 
 ## Unit testing a model
 
@@ -112,7 +125,7 @@ unit_tests:
 ```
 </file>
 
-The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. 
+The previous example defines the mock data using the inline `dict` format, but you can also use `csv` or `sql` either inline or in a separate fixture file. Store your fixture files in a `fixtures` subdirectory in any of your [test paths](/reference/project-configs/test-paths). For example, `tests/fixtures/my_unit_test_fixture.sql`. 
 
 When using the `dict` or `csv` format, you only have to define the mock data for the columns relevant to you. This enables you to write succinct and _specific_ unit tests.
 
@@ -293,7 +306,16 @@ unit_tests:
         - {id: 1, first_name: emily}
 ```
 
-## Known limitations 
+
+## Unit test exit codes
+
+Unit test successes and failures are represented by two exit codes:
+- Pass (0)
+- Fail (1)
+
+Exit codes differ from data test success and failure outputs because they don't directly reflect failing data tests. Data tests are queries designed to check specific conditions in your data, and they return one row per failed test case (for example, the number of values with duplicates for the `unique` test). dbt reports the number of failing records as failures. Whereas, each unit test represents one 'test case', so results are always 0 (pass) or 1 (fail) regardless of how many records failed within that test case.
+
+Learn about [exit codes](/reference/exit-codes) for more information.
 
 
 ## Additional resources

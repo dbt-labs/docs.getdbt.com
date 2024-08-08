@@ -1,6 +1,7 @@
-const path = require("path");
-const math = require("remark-math");
-const katex = require("rehype-katex");
+import path from "path";
+import math from "remark-math";
+import katex from "rehype-katex";
+const { themes } = require('prism-react-renderer')
 
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
@@ -71,20 +72,20 @@ var siteSettings = {
     },
     announcementBar: {
       id: "biweekly-demos",
-      content: "Join us on May 14th and 15th for the dbt Labs Launch Showcase event.",
+      content: "Join our biweekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
     announcementBarLink:
-      "https://www.getdbt.com/resources/webinars/dbt-cloud-launch-showcase/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2025_dbt-cloud-launch-showcase_aw&utm_content=____&utm_term=all___",
+      "https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2025_biweekly-demos_aw&utm_content=biweekly-demos____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "alison-stanton",
+    communitySpotlightMember: "meagan-palmer",
     prism: {
       theme: (() => {
-        var theme = require("prism-react-renderer/themes/nightOwl");
+        var theme = themes.nightOwl; 
         // Add additional rule to nightowl theme in order to change
         // the color of YAML keys (to be different than values).
         // There weren't many Prism themes that differentiated
@@ -111,10 +112,32 @@ var siteSettings = {
       },
       items: [
         {
-          to: "/docs/introduction",
           label: "Docs",
           position: "left",
-          activeBaseRegex: "docs/(?!(dbt-cloud))",
+          items: [
+            {
+              label: "Product docs",
+              to: "/docs/introduction",
+              activeBaseRegex: "docs/(?!(dbt-cloud))",
+            },
+            {
+              label: "API docs",
+              to: "/docs/dbt-cloud-apis/overview",
+            },
+            {
+              label: "Best practices",
+              to: "/best-practices",
+            },
+            {
+              label: "Release notes",
+              to: "/docs/dbt-versions/dbt-cloud-release-notes",
+            },
+          ],
+        },
+        {
+          to: "/guides",
+          label: "Guides",
+          position: "left",
         },
         {
           to: "reference/references-overview",
@@ -128,18 +151,14 @@ var siteSettings = {
           items: [
             {
               label: "Courses",
-              href: "https://courses.getdbt.com",
+              href: "https://learn.getdbt.com",
             },
             {
-              label: "Best Practices",
+              label: "Best practices",
               to: "/best-practices",
             },
             {
-              label: "Guides",
-              to: "/guides",
-            },
-            {
-              label: "Developer Blog",
+              label: "Developer blog",
               to: "/blog",
             },
             {
@@ -153,7 +172,7 @@ var siteSettings = {
           position: "right",
           items: [
             {
-              label: "Join the Community",
+              label: "Join the dbt Community",
               to: "/community/join",
             },
             {
@@ -161,7 +180,7 @@ var siteSettings = {
               to: "/community/contribute",
             },
             {
-              label: "Community Forum",
+              label: "Community forum",
               to: "/community/forum",
             },
             {
@@ -232,7 +251,7 @@ var siteSettings = {
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",
           blogDescription:
-            "Find tutorials, product updates, and developer insights in the dbt Developer Blog.",
+            "Find tutorials, product updates, and developer insights in the dbt Developer blog.",
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,

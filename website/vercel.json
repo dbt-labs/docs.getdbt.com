@@ -8,7 +8,7 @@
       "permanent": true
     },
     {
-      "source": "docs/cloud/secure/environment-permissions-setup",
+      "source":  "docs/cloud/secure/environment-permissions-setup",
       "destination": "docs/cloud/manage-access/environment-permissions-setup",
       "permanent": true
     },
@@ -267,6 +267,7 @@
       "destination": "/guides/dbt-python-snowpark",
       "permanent": true
     },
+
     {
       "source": "/guides/dbt-ecosystem/sl-partner-integration-guide",
       "destination": "/guides/sl-partner-integration-guide",
@@ -317,6 +318,7 @@
       "destination": "/guides/migrate-from-stored-procedures",
       "permanent": true
     },
+
     {
       "source": "/guides/migration/tools/refactoring-legacy-sql",
       "destination": "/guides/refactoring-legacy-sql",
@@ -2477,6 +2479,7 @@
       "destination": "/reference/commands/:path*",
       "permanent": true
     },
+
     {
       "source": "/docs/running-a-dbt-project/using-the-command-line-interface",
       "destination": "/docs/running-a-dbt-project/using-the-cli",

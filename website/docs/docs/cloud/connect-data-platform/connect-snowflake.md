@@ -17,6 +17,10 @@ The following fields are required when creating a Snowflake connection
 
 **Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of some [example permissions to configure Snowflake access](/reference/database-permissions/snowflake-permissions).
 
+## Authentication methods
+
+This section describes the different authentication methods available for connecting dbt Cloud to Snowflake.
+
 ### Username / Password
 
 **Available in:** Development environments, Deployment environments
@@ -27,13 +31,38 @@ username (specifically, the `login_name`) and the corresponding user's Snowflake
 to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowflake user.
 
 **Note**: The schema field in the **Developer Credentials** section is a required field.
-<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" title="Snowflake username/password authentication"/>
+<Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" width="70%" title="Snowflake username/password authentication"/>
+
+### Snowflake MFA
+
+**Prerequisites:**
+- A development environment in a dbt Cloud project
+- The Duo authentication app
+- Admin access to Snowflake (if MFA settings haven't already been applied to the account)
+- [Admin (write) access](/docs/cloud/manage-access/seats-and-users) to dbt Cloud environments
+
+dbt Cloud supports Snowflake's [multi-factor authentication (MFA)](https://docs.snowflake.com/en/user-guide/security-mfa) as another username and password option for increased login security. Snowflake's MFA support is powered by the Duo Security service.
+
+- In dbt Cloud, set the following [extended attribute](/docs/dbt-cloud-environments#extended-attributes) in the development environment **General settings** page, under the **Extended attributes** section:
+
+   ```yaml
+  authenticator: username_password_mfa
+   ```
+
+- To reduce the number of user prompts when connecting to Snowflake with MFA, [enable token caching](https://docs.snowflake.com/en/user-guide/security-mfa#using-mfa-token-caching-to-minimize-the-number-of-prompts-during-authentication-optional) in Snowflake.
+- Optionally, if users miss prompts and their Snowflake accounts get locked, you can prevent automatic retries by adding the following in the same **Extended attributes** section:
+
+  ```yaml
+  connect_retries: 0
+  ```
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/extended-attributes-mfa.jpg" width="70%" title="Configure the MFA username and password, and connect_retries in the development environment settings." />
 
 ### Key pair
 
 **Available in:** Development environments,  Deployment environments
 
-The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication) to authenticate Development or Deployment credentials for a dbt Cloud project.
+The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth) to authenticate Development or Deployment credentials for a dbt Cloud project.
 
 1. After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in dbt Cloud:
 
@@ -63,43 +92,48 @@ The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://doc
 **Available in:** Development environments, Enterprise plans only
 
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
-a Snowflake user without the configuration of Snowflake password in dbt Cloud. For
-more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth connection"/>
+a Snowflake user without the configuration of Snowflake password in dbt Cloud. 
+
+For more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" width="55%" title="Configuring Snowflake OAuth connection"/>
 
 ## Configuration
 
 To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
+
+### Custom domain URL
+
+To connect to Snowflake through a custom domain (vanity URL) instead of the account locator, use [extended attributes](/docs/dbt-cloud-environments#extended-attributes) to configure the `host` parameter with the custom domain:
+
+```yaml
+host: https://custom_domain_to_snowflake.com
+```
+
+This configuration may conflict with Snowflake OAuth when used with PrivateLink. IF users can't reach Snowflake authentication servers from a networking standpoint, please [contact dbt Support](mailto:support@getdbt.com) to find a workaround with this architecture.
 
 ## Troubleshooting
 <!--might need to turn this into details toggle if more troubleshooting items arise -->
 
 If you're receiving a `Could not deserialize key data` or `JWT token` error, refer to the following causes and solutions:
 
-<details>
+<DetailsToggle alt_header="Error: `Could not deserialize key data`">
 
-<summary>Error: <code>Could not deserialize key data</code></summary>
+Possible cause and solution for the error "Could not deserialize key data" in dbt Cloud.
+- This could be because of mistakes like not copying correctly, missing dashes, or leaving out commented lines.
 
-  - <b>Possible cause</b>
- 
-    - This could be because of mistakes like not copying correctly, missing dashes, or leaving out commented lines.
-  - <b>Solution</b> 
-    
-    - You can copy the key from its source and paste it into a text editor to verify it before using it in dbt Cloud. 
-  
-</details>
+**Solution**:
+- You can copy the key from its source and paste it into a text editor to verify it before using it in dbt Cloud.
 
-<details>
-<summary>Error: <code>JWT token</code></summary>
+</DetailsToggle>
 
-  - <b>Possible causes</b>
-  
-    - This could be a transient issue between Snowflake and dbt Cloud. When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in dbt Cloud.
-    -  The public key was not entered correctly in Snowflake.
-  
-  - <b>Solutions</b>
+<DetailsToggle alt_header="Error: `JWT token`">
 
-    - dbt needs to retry connections to Snowflake.
-    -  Confirm and enter Snowflake's public key correctly. Additionally, you can reach out to Snowflake for help or refer to this Snowflake doc for more info: [Key-Based Authentication Failed with JWT token is invalid Error](https://community.snowflake.com/s/article/Key-Based-Authentication-Failed-with-JWT-token-is-invalid-Error).
+Possible cause and solution for the error "JWT token" in dbt Cloud.
+- This could be a transient issue between Snowflake and dbt Cloud. When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in dbt Cloud.
+- The public key was not entered correctly in Snowflake.
 
-</details>
+**Solutions**
+- dbt needs to retry connections to Snowflake.
+- Confirm and enter Snowflake's public key correctly. Additionally, you can reach out to Snowflake for help or refer to this Snowflake doc for more info: [Key-Based Authentication Failed with JWT token is invalid Error](https://community.snowflake.com/s/article/Key-Based-Authentication-Failed-with-JWT-token-is-invalid-Error).
+
+</DetailsToggle>

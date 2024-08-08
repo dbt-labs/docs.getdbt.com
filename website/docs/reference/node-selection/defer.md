@@ -8,11 +8,7 @@ Defer requires that a manifest from a previous dbt invocation be passed to the `
 
 An alternative command that accomplishes similar functionality for different use cases is `dbt clone` - see the docs for [clone](/reference/commands/clone#when-to-use-dbt-clone-instead-of-deferral) for more information.
 
-<VersionBlock firstVersion="1.6">
-
 It is possible to use separate state for `state:modified` and `--defer`, by passing paths to different manifests to each of the `--state`/`DBT_STATE` and `--defer-state`/`DBT_DEFER_STATE`. This enables more granular control in cases where you want to compare against logical state from one environment or past point in time, and defer to applied state from a different environment or point in time. If `--defer-state` is not specified, deferral will use the manifest supplied to `--state`. In most cases, you will want to use the same state for both: compare logical changes against production, and also "fail over" to the production environment for unbuilt upstream resources.
-
-</VersionBlock>
 
 ### Usage
 
@@ -43,25 +39,12 @@ When using defer, you may be selecting from production datasets, development dat
 - if you apply env-specific limits in dev but not prod, as you may end up selecting more data than you expect
 - when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
 
-<VersionBlock lastVersion="1.4">
-
-Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER_TO_STATE` and `DBT_ARTIFACT_STATE_PATH`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/continuous-integration).
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
 Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/continuous-integration).
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.4">
 
 #### Favor state
 
 You can optionally skip the second criterion by passing the `--favor-state` flag. If passed, dbt will favor using the node defined in your `--state` namespace, even if the node exists in the current target.
-
-</VersionBlock>
 
 ### Example
 

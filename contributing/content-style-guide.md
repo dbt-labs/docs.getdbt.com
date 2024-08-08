@@ -11,6 +11,7 @@ This guide includes standards we want to emphasize, likely because we've made de
 * [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
 * [UI elements](#UI-elements)
+* [Capitalization](#Capitalization)
 * [Titles](#Titles)
 * [Placeholder text](#Placeholder-text)
 * [Oxford comma](#Oxford-comma)
@@ -225,6 +226,10 @@ When referring to different sections of the IDE, use the name of the section and
 
 :x: You can review all your past orders from the **History** pane.
 
+## Capitalization
+
+We should only capitalize products (dbt Explorer, dbt Cloud), but not features like column-level lineage. We also capitalize acronyms and proper nouns. Refer to [MS Style guide on capitalization](https://learn.microsoft.com/en-us/style-guide/capitalization) for more information.
+
 ## Titles
 
 People make use of titles in many places like table headers, section headings (such as an H2, H3, or H4), page titles, sidebars, and so much more.
@@ -354,10 +359,10 @@ There won't be many instances where you need to display 4 or 5 cards on the docs
 
 Otherwise, the text will appear squished and provide users with a bad experience.
 
-- `<divclassName="grid--2-col">`: creates 2 column cards
-- `<divclassName="grid--3-col">`: creates 3 columns cards
-- `<divclassName="grid--4-col">`: creates 4 columns cards (use sparingly)
-- `<divclassName="grid--5-col">`: creates 5 columns cards (use sparingly)
+- `<div className="grid--2-col">`: creates 2 column cards
+- `<div className="grid--3-col">`: creates 3 columns cards
+- `<div className="grid--4-col">`: creates 4 columns cards (use sparingly)
+- `<div className="grid--5-col">`: creates 5 columns cards (use sparingly)
 - You can't create cards with 6 or more columns as that would provide users a poor experience.
 
 Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/guides) as examples. 
@@ -451,7 +456,7 @@ In general, when the spelling of English words varies by locale &mdash; use the 
 standardize  | standardise 
 license | licence
 color | colour
-</div></b>
+<b>
 
 Avoid regional idiomatic phrases as well.  For example, a common saying amongst English speakers in India is "do the needful," but this phrase may be unrecognizable to English speakers from other regions. 
 
@@ -528,7 +533,7 @@ terminal | shell
 username | login
 dbt Cloud CLI | CLI, dbt CLI
 dbt Core | CLI, dbt CLI
-</div></b>
+</b>
 
 Note, let's make sure we're talking to our readers and keep them close to the content and documentation (second person). 
 

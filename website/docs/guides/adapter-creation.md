@@ -76,12 +76,12 @@ Differences between databases are encoded into discrete areas:
 
 | Components       | Code Path                                         | Function                                                                      |
 |------------------|---------------------------------------------------|-------------------------------------------------------------------------------|
-| Python Classes   | `adapters/<adapter_name>`                         | Configuration (See above [Python classes](##python classes)                   |
+| Python classes   | `adapters/<adapter_name>`                         | Configuration (Refer to [Python classes](#python classes)                   |
 | Macros           | `include/<adapter_name>/macros/adapters/`         | SQL API & statement syntax (for example, how to create schema or how to get table info) |
 | Materializations | `include/<adapter_name>/macros/materializations/` | Table/view/snapshot/ workflow definitions                                     |
 
 
-#### Python Classes
+#### Python classes
 
 These classes implement all the methods responsible for:
 - Connecting to a database and issuing queries.
@@ -118,7 +118,7 @@ The more you can answer Yes to the below questions, the easier your adapter deve
 
 ### Training
 
-- the developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) and [Advanced Materializations](https://courses.getdbt.com/courses/advanced-materializations) course.
+- The developer (and any product managers) ideally will have substantial experience as an end-user of dbt. If not, it is highly advised that you at least take the [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) and [Advanced Materializations](https://learn.getdbt.com/courses/advanced-materializations) course.
 
 ### Database
 
@@ -585,7 +585,7 @@ This document has two sections:
 ### Testing prerequisites
 
 - Your adapter must be compatible with dbt-core **v1.1** or newer
-- You should be familiar with **pytest**: <https://docs.pytest.org/>
+- You should be familiar with **pytest**: [https://docs.pytest.org](https://docs.pytest.org)
 
 ### About the testing framework
 
@@ -1290,14 +1290,13 @@ The adapter should have the required documentation for connecting and configurin
 
 Proceed to the "Document a new adapter" step for more information.
 
-### Release Cadence
+### Release cadence
 
-Keeping an adapter up-to-date with the latest features of dbt Core, as defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. Therefore, we ask that adapter maintainers:
+Keeping an adapter up-to-date with the latest features of dbt, as defined in [dbt-adapters](https://github.com/dbt-labs/dbt-adapters), is an integral part of being a trusted adapter. We encourage adapter maintainers to keep track of new dbt-adapter releases and support new features relevant to their platform, ensuring users have the best version of dbt. 
 
-- Release of new minor versions of the adapter with all tests passing within four weeks of dbt Core's release cut.
-- Release of new major versions of the adapter with all tests passing within eight weeks of dbt Core's release cut.
+Before [dbt Core version 1.8](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#new-dbt-core-adapter-installation-procedure), adapter versions needed to match the semantic versioning of dbt Core. After v1.8, this is no longer required. This means users can use an adapter on v1.8+ with a different version of dbt Core v1.8+. For example, a user could use dbt-core v1.9 with dbt-postgres v1.8. 
 
-### Community Responsiveness
+### Community responsiveness
 
 On a best effort basis, active participation and engagement with the dbt Community across the following forums:
 

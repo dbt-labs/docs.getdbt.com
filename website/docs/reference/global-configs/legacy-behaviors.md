@@ -33,15 +33,17 @@ flags:
 
 </File>
 
-When we use dbt Cloud in the following table, we're referring to "[Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version)."
+When we use dbt Cloud in the following table, we're referring to accounts that have gone "[Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless)."
 
 | Flag                                                            | dbt Cloud: Intro | dbt Cloud: Maturity | dbt Core: Intro | dbt Core: Maturity | 
 |-----------------------------------------------------------------|------------------|---------------------|-----------------|--------------------|
-| require_explicit_package_overrides_for_builtin_materializations | 2024.04.141      | 2024.05.TBD         | 1.6.14, 1.7.14    | 1.8.0             |
-| require_resource_names_without_spaces                           | 2024.05.TBD      | 2024.06.TBD         | 1.8.0           | 1.9.0             |
-| source_freshness_run_project_hooks                              | 2024.03.61       | 2024.06.TBD         | 1.8.0           | 1.9.0             |
+| require_explicit_package_overrides_for_builtin_materializations | 2024.04.141      | 2024.06.192         | 1.6.14, 1.7.14  | 1.8.0             |
+| require_resource_names_without_spaces                           | 2024.05.146      | TBD*                | 1.8.0           | 1.9.0             |
+| source_freshness_run_project_hooks                              | 2024.03.61       | TBD*                | 1.8.0           | 1.9.0             |
 
-
+When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
+- Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
+- Set the flag to `False`. You will continue to see warnings, and you will retain the legacy behavior even after the maturity date (when the default value changes).
 
 ###  Package override for built-in materialization 
 

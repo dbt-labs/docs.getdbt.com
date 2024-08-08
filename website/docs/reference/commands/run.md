@@ -36,11 +36,7 @@ dbt run --full-refresh
 
 </File>
 
-<VersionBlock firstVersion="1.3">
-
 You can also supply the flag by its short name: `dbt run -f`.
-
-</VersionBlock>
 
 In the dbt compilation context, this flag will be available as [flags.FULL_REFRESH](/reference/dbt-jinja-functions/flags). Further, the `is_incremental()` macro will return `false` for *all* models in response when the `--full-refresh` flag is specified.
 

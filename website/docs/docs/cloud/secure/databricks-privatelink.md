@@ -14,12 +14,13 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
 
 ## Configure PrivateLink
 
-1. Locate your [Databricks Workspace ID](https://kb.databricks.com/en_US/administration/find-your-workspace-id#:~:text=When%20viewing%20a%20Databricks%20workspace,make%20up%20the%20workspace%20ID)
+1. Locate your [Databricks instance name](https://docs.databricks.com/en/workspace/workspace-details.html#workspace-instance-names-urls-and-ids)
+  -  Example: `cust-success.cloud.databricks.com`
 2. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support): 
 ```
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Databricks
-- Databricks workspace name:
+- Databricks instance name:
 - Databricks cluster AWS Region (e.g., us-east-1, eu-west-2):
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```

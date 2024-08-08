@@ -21,19 +21,13 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Microsoft Fabr
 - Document your models.
 - Schedule a job to run.
 
-:::tip Public preview
-
-A public preview of Microsoft Fabric in dbt Cloud is now available! 
-
-:::
-
 ### Prerequisites
 - You have a [dbt Cloud](https://www.getdbt.com/signup/) account.
 - You have started the Microsoft Fabric (Preview) trial. For details, refer to [Microsoft Fabric (Preview) trial](https://learn.microsoft.com/en-us/fabric/get-started/fabric-trial) in the Microsoft docs.
 - As a Microsoft admin, you’ve enabled service principal authentication. You must add the service principal to the Microsoft Fabric workspace with either a Member (recommended) or Admin permission set. For details, refer to [Enable service principal authentication](https://learn.microsoft.com/en-us/fabric/admin/metadata-scanning-enable-read-only-apis) in the Microsoft docs. dbt Cloud needs these authentication credentials to connect to Microsoft Fabric.
 
 ### Related content
-- [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Learn courses](https://learn.getdbt.com)
 - [About continuous integration jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)

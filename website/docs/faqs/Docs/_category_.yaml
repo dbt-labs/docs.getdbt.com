@@ -1,10 +1,10 @@
 # position: 2.5 # float position is supported
-label: 'dbt Docs'
+label: 'Documentation'
 collapsible: true # make the category collapsible
 collapsed: true # keep the category collapsed by default
 className: red
 link:
   type: generated-index
-  title: dbt Docs FAQs
+  title: Documentation FAQs
 customProps:
-  description: Frequently asked questions about dbt Docs
+  description: Frequently asked questions about documentation

@@ -140,4 +140,4 @@ You can query out primary key columns from the `pg_index` and `pg_attribute` adm
 
 ## Have you started testing primary keys yet?
 
-If you’re looking for a deeper dive on testing primary keys, definitely check out the [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals), which includes a full section with examples + practice on data testing in dbt.
+If you’re looking for a deeper dive on testing primary keys, definitely check out the [dbt Fundamentals course](https://learn.getdbt.com/courses/dbt-fundamentals), which includes a full section with examples + practice on data testing in dbt.

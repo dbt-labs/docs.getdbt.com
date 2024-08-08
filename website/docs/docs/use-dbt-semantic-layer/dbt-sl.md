@@ -9,17 +9,9 @@ pagination_next: "guides/sl-snowflake-qs"
 pagination_prev: null
 ---
 
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
-</VersionBlock>
-
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handles data joins. 
 
-Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications.
+Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. To ensure secure access control, the dbt Semantic Layer implements robust [access permissions](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) mechanisms.
 
 Refer to the [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs) or [Why we need a universal semantic layer](https://www.getdbt.com/blog/universal-semantic-layer/)  blog post to learn more.
 
@@ -48,21 +40,33 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Write queries with exports"
-    body="Use exports to write commonly used queries directly within your data platform, on a schedule."
-    link="/docs/use-dbt-semantic-layer/exports"
-    icon="dbt-bit"/>
-
-<Card
     title="Architecture"
     body="Learn about the powerful components that make up the dbt Semantic Layer."
     link="/docs/use-dbt-semantic-layer/sl-architecture"
     icon="dbt-bit"/>
 
 <Card
+    title="Write queries with exports"
+    body="Use exports to write commonly used queries directly within your data platform, on a schedule."
+    link="/docs/use-dbt-semantic-layer/exports"
+    icon="dbt-bit"/>
+
+<Card
+    title="Cache common queries"
+    body="Leverage result caching and declarative caching for common queries to speed up performance and reduce query computation."
+    link="/docs/use-dbt-semantic-layer/sl-cache"
+    icon="dbt-bit"/>
+
+<Card
+    title="dbt Semantic Layer FAQs"
+    body="Discover answers to frequently asked questions about the dbt Semantic Layer, such as availability, integrations, and more."
+    link="/docs/use-dbt-semantic-layer/sl-faqs"
+    icon="dbt-bit"/>
+
+<Card
     title="Available integrations"
     body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
-    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
+    link="/docs/cloud-integrations/avail-sl-integrations"
     icon="dbt-bit"/>
 
 <Card

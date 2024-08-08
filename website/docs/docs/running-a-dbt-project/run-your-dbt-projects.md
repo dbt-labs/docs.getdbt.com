@@ -8,7 +8,7 @@ You can run your dbt projects with [dbt Cloud](/docs/cloud/about-cloud/dbt-cloud
 - **dbt Cloud**: A hosted application where you can develop directly from a web browser using the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). It also natively supports developing using a command line interface, [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). Among other features, dbt Cloud provides: 
 
   - Development environment to help you build, test, run, and [version control](/docs/collaborate/git-version-control) your project faster.
-  - Share your [dbt project's documentation](/docs/collaborate/build-and-view-your-docs) with your team.
+  - Share your [dbt project's documentation](/docs/build/documentation) with your team.
   - Integrates with the dbt Cloud IDE, allowing you to run development tasks and environment in the dbt Cloud UI for a seamless experience.
   - The dbt Cloud CLI to develop and run dbt commands against your dbt Cloud development environment from your local command line.
   - For more details, refer to [Develop dbt](/docs/cloud/about-develop-dbt).

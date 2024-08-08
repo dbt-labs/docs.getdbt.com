@@ -103,8 +103,6 @@ as (
 </TabItem>
 </Tabs>
 
-<VersionBlock firstVersion="1.4">
-
 #### Partitioning by an "ingestion" date or timestamp
 
 BigQuery supports an [older mechanism of partitioning](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time) based on the time when each row was ingested. While we recommend using the newer and more ergonomic approach to partitioning whenever possible, for very large datasets, there can be some performance improvements to using this older, more mechanistic approach. [Read more about the `insert_overwrite` incremental strategy below](#copying-ingestion-time-partitions).
@@ -171,8 +169,6 @@ select created_date as _partitiontime, * EXCEPT(created_date) from (
 
 </TabItem>
 </Tabs>
-
-</VersionBlock>
 
 #### Partitioning with integer buckets
 
@@ -340,7 +336,7 @@ dbt supports the specification of BigQuery labels for the tables and <Term id="v
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
   
- <VersionBlock firstVersion="1.5"> BigQuery key-value pair entries for labels larger than 63 characters are truncated. </VersionBlock>
+  BigQuery key-value pair entries for labels larger than 63 characters are truncated.
 
 **Configuring labels in a model file**
 
@@ -398,6 +394,12 @@ select * from {{ ref('another_model') }}
 ```
 
 </File>
+
+You can create a new label with no value or remove a value from an existing label key. 
+
+A label with a key that has an empty value can also be [referred](https://cloud.google.com/bigquery/docs/adding-labels#adding_a_label_without_a_value) to as a tag in BigQuery. However, this should not be confused with a [tag resource](https://cloud.google.com/bigquery/docs/tags), which conditionally applies IAM policies to BigQuery tables and datasets. Find out more in [labels and tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview). 
+
+Currently, it's not possible to apply IAM tags in BigQuery, however, you can weigh in by upvoting [GitHub issue 1134](https://github.com/dbt-labs/dbt-bigquery/issues/1134).
 
 ### Policy tags
 BigQuery enables [column-level security](https://cloud.google.com/bigquery/docs/column-level-security-intro) by setting [policy tags](https://cloud.google.com/bigquery/docs/best-practices-policy-tags) on specific columns.
@@ -594,8 +596,6 @@ with events as (
 ... rest of model ...
 ```
 
-<VersionBlock firstVersion="1.4">
-
 #### Copying partitions
 
 If you are replacing entire partitions in your incremental runs, you can opt to do so with the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators rather than a `merge` statement. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets because the copy table API does not incur any costs for inserting the data - it's equivalent to the `bq cp` gcloud command line interface (CLI) command.
@@ -638,8 +638,6 @@ from {{ ref('events') }}
 ```
 
 </File>
-
-</VersionBlock>
 
 ## Controlling table expiration
 
@@ -713,9 +711,6 @@ models:
 </File>
 
 Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
-
-#### Limitations
-Starting in v1.4, `grant_access_to` config _is thread-safe_. In earlier versions, it wasn't safe to use multiple threads for authorizing several views at once with `grant_access_to` for the same dataset. Initially, after adding a new `grant_access_to` setting, you can execute `dbt run` in a single thread. Later runs with the same configuration won't repeat the existing access grants and can use multiple threads.
 
 <VersionBlock firstVersion="1.7">
 
@@ -900,5 +895,25 @@ As with most data platforms, there are limitations associated with materialized 
 - Recreating/dropping the base table requires recreating/dropping the materialized view.
 
 Find more information about materialized view limitations in Google's BigQuery [docs](https://cloud.google.com/bigquery/docs/materialized-views-intro#limitations).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+## Python models
+
+The BigQuery adapter supports Python models with the following additional configuration parameters:
+
+| Parameter               | Type        | Required | Default   | Valid values     |
+|-------------------------|-------------|----------|-----------|------------------|
+| `enable_list_inference` | `<boolean>` | no       | `True`    | `True`, `False`  |
+| `intermediate_format`   | `<string>`  | no       | `parquet` | `parquet`, `orc` |
+
+### The `enable_list_inference` parameter
+The `enable_list_inference` parameter enables a PySpark data frame to read multiple records in the same operation.
+By default, this is set to `True` to support the default `intermediate_format` of `parquet`.
+
+### The `intermediate_format` parameter
+The `intermediate_format` parameter specifies which file format to use when writing records to a table. The default is `parquet`.
 
 </VersionBlock>

@@ -39,6 +39,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 |1.5.x              | ❌           | ✅          | ✅          | ✅          | ✅          | ✅
 |1.6.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
 |1.7.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
+|1.8.x              | ❌           | ❌          | ✅          | ✅          | ✅          | ✅
 
 ## dbt dependent packages version compatibility
 
@@ -46,7 +47,8 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 |--------------|------------|-------------------|----------------|
 | 1.2.x        | 1.2.x      | 0.1.0             | 0.9.x or below |
 | 1.6.7        | 1.6.7      | 1.1.1             | 1.1.1          |
-| 1.7.1        | 1.7.3      | 1.1.1             | 1.1.1          |
+| 1.7.x        | 1.7.x      | 1.1.1             | 1.1.1          |
+| 1.8.x        | 1.8.x      | 1.1.1             | 1.1.1          |
 
 
 ### Connecting to Teradata
@@ -124,10 +126,11 @@ Parameter               | Default     | Type           | Description
 `sslmode`               | `"PREFER"`  | string         | Specifies the mode for connections to the database. Equivalent to the Teradata JDBC Driver `SSLMODE` connection parameter.<br/>&bull; `DISABLE` disables HTTPS/TLS connections and uses only non-TLS connections.<br/>&bull; `ALLOW` uses non-TLS connections unless the database requires HTTPS/TLS connections.<br/>&bull; `PREFER` uses HTTPS/TLS connections unless the database does not offer HTTPS/TLS connections.<br/>&bull; `REQUIRE` uses only HTTPS/TLS connections.<br/>&bull; `VERIFY-CA` uses only HTTPS/TLS connections and verifies that the server certificate is valid and trusted.<br/>&bull; `VERIFY-FULL` uses only HTTPS/TLS connections, verifies that the server certificate is valid and trusted, and verifies that the server certificate matches the database hostname.
 `sslprotocol`           | `"TLSv1.2"` | string         | Specifies the TLS protocol for HTTPS/TLS connections. Equivalent to the Teradata JDBC Driver `SSLPROTOCOL` connection parameter.
 `teradata_values`       | `"true"`    | quoted boolean | Controls whether `str` or a more specific Python data type is used for certain result set column value types.
+`query_band`            | `"org=teradata-internal-telem;appname=dbt;"`    | string | Specifies the Query Band string to be set for each SQL request.
 
-For the full description of the connection parameters see https://github.com/Teradata/python-driver#connection-parameters.
+Refer to [connection parameters](https://github.com/Teradata/python-driver#connection-parameters) for the full description of the connection parameters.
 
-## Supported Features
+## Supported features
 
 ### Materializations
 
@@ -141,8 +144,12 @@ The following incremental materialization strategies are supported:
 * `append` (default)
 * `delete+insert`
 * `merge`
+* `valid_history` (early access)
 
-To learn more about dbt incremental strategies please check [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
+:::info
+- To learn more about dbt incremental strategies, refer to [the dbt incremental strategy documentation](/docs/build/incremental-strategy).
+- To learn more about `valid_history` incremental strategy, refer to [Teradata configs](/reference/resource-configs/teradata-configs).
+:::
 
 ### Commands
 
@@ -191,12 +198,12 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
 
 #### examples for cross DB macros
   ##### <a name="replace"></a>replace
-  {{ dbt.replace("string_text_column", "old_chars", "new_chars") }}
-  {{ replace('abcgef', 'g', 'd') }}
+  \{\{ dbt.replace("string_text_column", "old_chars", "new_chars") \}\}
+  \{\{ replace('abcgef', 'g', 'd') \}\}
 
   ##### <a name="date_trunc"></a>date_trunc
-  {{ dbt.date_trunc("date_part", "date") }}
-  {{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") }}
+  \{\{ dbt.date_trunc("date_part", "date") \}\}
+  \{\{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") \}\}
 
   ##### <a name="datediff"></a>datediff
   `datediff` macro in teradata supports difference between dates. Differece between timestamps is not supported.
@@ -224,6 +231,13 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
   ##### <a name="last_day"></a>last_day
 
   `last_day` in `teradata_utils`, unlike the corresponding macro in `dbt_utils`, doesn't support `quarter` datepart.
+
+<VersionBlock firstVersion="1.8">
+
+dbt-teradata 1.8.0 and later versions support unit tests, enabling you to validate SQL models and logic with a small set of static inputs before going to production. This feature enhances test-driven development and boosts developer efficiency and code reliability. Learn more about dbt unit tests [here](/docs/build/unit-tests).
+
+
+</VersionBlock>
 
 ## Limitations
 

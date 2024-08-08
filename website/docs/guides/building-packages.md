@@ -55,7 +55,7 @@ When working on your package, we often find it useful to install a local copy of
 ### Follow best practices
 _Modeling packages only_
 
-Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
+Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview), and our [best practices](/best-practices) for all of our advice on how to build your dbt project.
 
 This is where it comes in especially handy to have worked on your own dbt project previously.
 
@@ -108,7 +108,7 @@ The major exception to this is when working with data sources that benefit from 
 ### Test and document your package
 It's critical that you [test](/docs/build/data-tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
 
-Further, adding [documentation](/docs/collaborate/documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
+Further, adding [documentation](/docs/build/documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
 ### Include useful GitHub artifacts
 Over time, we've developed a set of useful GitHub artifacts that make administering our packages easier for us. In particular, we ensure that we include:
 - A useful README, that has:

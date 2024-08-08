@@ -6,7 +6,7 @@ description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
 ---
 
-<VersionBlock firstVersion="1.5" lastVersion="1.8">
+<VersionBlock lastVersion="1.8">
 
 :::info New functionality
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6736)!
@@ -414,7 +414,7 @@ To run a model with multiple versions, you can use the [`--select` flag](/refere
 - Run the latest version of `dim_customers` using the `--select` flag shorthand:
 
   ```bash
-  dbt run -s dim_customers version:latest # Run the latest version of the model
+  dbt run -s dim_customers,version:latest # Run the latest version of the model
   ```
 
 These commands provide flexibility in managing and executing different versions of a dbt model.

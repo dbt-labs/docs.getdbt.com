@@ -23,57 +23,6 @@ to understand how to effectively use this variable.
 The `graph` context variable is a dictionary which maps node ids onto dictionary
 representations of those nodes. A simplified example might look like:
 
-<VersionBlock lastVersion="1.4">
-
-```json
-{
-  "nodes": {
-    "model.my_project.model_name": {
-      "unique_id": "model.my_project.model_name",
-      "config": {"materialized": "table", "sort": "id"},
-      "tags": ["abc", "123"],
-      "path": "models/path/to/model_name.sql",
-      ...
-    },
-    ...
-  },
-  "sources": {
-    "source.my_project.snowplow.event": {
-      "unique_id": "source.my_project.snowplow.event",
-      "database": "analytics",
-      "schema": "analytics",
-      "tags": ["abc", "123"],
-      "path": "models/path/to/schema.yml",
-      ...
-    },
-    ...
-  },
-  "exposures": {
-    "exposure.my_project.traffic_dashboard": {
-      "unique_id": "source.my_project.traffic_dashboard",
-      "type": "dashboard",
-      "maturity": "high",
-      "path": "models/path/to/schema.yml",
-      ...
-    },
-    ...
-  },
-  "metrics": {
-    "metric.my_project.count_all_events": {
-      "unique_id": "metric.my_project.count_all_events",
-      "type": "count",
-      "path": "models/path/to/schema.yml",
-      ...
-    },
-    ...
-  }
-}
-```
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
 ```json
 {
   "nodes": {
@@ -129,8 +78,6 @@ representations of those nodes. A simplified example might look like:
   }
 }
 ```
-
-</VersionBlock>
 
 The exact contract for these model and source nodes is not currently documented,
 but that will change in the future.

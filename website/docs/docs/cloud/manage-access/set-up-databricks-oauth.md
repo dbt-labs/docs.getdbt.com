@@ -4,23 +4,14 @@ description: "Learn how dbt Cloud administrators can use Databricks OAuth to con
 id: "set-up-databricks-oauth"
 ---
 
-:::info Enterprise Feature
-
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
-
-:::
+# Set up Databricks OAuth <Lifecycle status="enterprise" />
 
 dbt Cloud supports developer OAuth ([OAuth for partner solutions](https://docs.databricks.com/en/integrations/manage-oauth.html)) with Databricks, providing an additional layer of security for dbt enterprise users. When you enable Databricks OAuth for a dbt Cloud project, all dbt Cloud developers must authenticate with Databricks in order to use the dbt Cloud IDE. The project's deployment environments will still leverage the Databricks authentication method set at the environment level.
 
-:::tip Beta Feature
 
-Databricks OAuth support in dbt Cloud is a [beta feature](/docs/dbt-versions/product-lifecycles#dbt-cloud) and subject to change without notification. More updates to this feature coming soon.
-
-Current limitations:
-- Databrick's OAuth applications are in public preview
+Current limitation:
 - The current experience requires the IDE to be restarted every hour (access tokens expire after 1 hour - [workaround](https://docs.databricks.com/en/integrations/manage-oauth.html#override-the-default-token-lifetime-policy-for-dbt-core-power-bi-or-tableau-desktop))
  
-:::
 
 ### Configure Databricks OAuth (Databricks admin)
 
@@ -40,12 +31,12 @@ To get started, you will need to [add dbt as an OAuth application](https://docs.
    - The refresh token time-to-live (TTL) in minutes. Default: 10080.
 4. Select **Generate a client secret**. Copy and securely store the client secret. The client secret will not be available later.
 
-You can use the following table to set up the redirect URLs for your application, replacing ACCOUNT_PREFIX with the cell 1 prefix for your region and INSTANCE_NAME with the custom name of your instance:
+You can use the following table to set up the redirect URLs for your application with dbt Cloud:
 
 | Region | Redirect URLs |
 | ------ | ----- |
 | **US multi-tenant** | https://cloud.getdbt.com/callback <br /> https://cloud.getdbt.com/complete/databricks |
-| **US cell 1** | https://ACCOUNT_PREFIX.us1.dbt.com/callback <br /> https://ACCOUNT_PREFIX.us1.dbt.com/complete/databricks |
+| **US cell 1** | https://us1.dbt.com/callback <br /> https://us1.dbt.com/complete/databricks |
 | **EMEA** | https://emea.dbt.com/callback <br /> https://emea.dbt.com/complete/databricks |
 | **APAC** | https://au.dbt.com/callback <br /> https://au.dbt.com/complete/databricks |
 | **Single tenant** | https://INSTANCE_NAME.getdbt.com/callback <br /> https://INSTANCE_NAME.getdbt.com/complete/databricks

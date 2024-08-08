@@ -21,9 +21,9 @@ dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each w
 A webhook in dbt Cloud has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out. This can result in a situation where the client responds successfully after the 10 second timeout and records a success status while the dbt cloud webhooks system will interpret this as a failure.
 
 :::tip Videos 
-If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
+If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://learn.getdbt.com/courses/webhooks) from dbt Labs.
 
-You can also check out the free [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals). 
+You can also check out the free [dbt Fundamentals course](https://learn.getdbt.com/courses/dbt-fundamentals). 
 :::
 
 ## Prerequisites
@@ -82,7 +82,7 @@ An example of a webhook payload for a run that's started:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde"
+  "webhooksID": "wsu_12345abcde",
   "eventId": "wev_2L6Z3l8uPedXKPq9D2nWbPIip7Z",
   "timestamp": "2023-01-31T19:28:15.742843678Z",
   "eventType": "job.run.started",
@@ -110,7 +110,7 @@ An example of a webhook payload for a completed run:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde"
+  "webhooksID": "wsu_12345abcde",
   "eventId": "wev_2L6ZDoilyiWzKkSA59Gmc2d7FDD",
   "timestamp": "2023-01-31T19:29:35.789265936Z",
   "eventType": "job.run.completed",
@@ -139,7 +139,7 @@ An example of a webhook payload for an errored run:
 ```json
 {
   "accountId": 1,
-  "webhooksID": "wsu_12345abcde"
+  "webhooksID": "wsu_12345abcde",
   "eventId": "wev_2L6m5BggBw9uPNuSmtg4MUiW4Re",
   "timestamp": "2023-01-31T21:15:20.419714619Z",
   "eventType": "job.run.errored",
@@ -549,5 +549,5 @@ DELETE https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscript
 
 ## Related docs 
 - [dbt Cloud CI](/docs/deploy/continuous-integration)
-- [Use dbt Cloud's webhooks with other SaaS apps](/guides)
+- [Use dbt Cloud's webhooks with other SaaS apps](https://docs.getdbt.com/guides?tags=Webhooks)
 

@@ -7,20 +7,7 @@ id: "databricks-configs"
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-<VersionBlock lastVersion="1.5">
-
-| Option              | Description                                                                                                                              | Required?                               | Example                  |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|--------------------------|
-| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).      | Optional                                | `delta`                  |
-| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                     | Optional                                | `/mnt/root`              |
-| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                         | Optional                                | `date_day`               |
-| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                               | Optional                                | `country_code`           |
-| buckets             | The number of buckets to create while clustering                                                                                         | Required if `clustered_by` is specified | `8`                      |
-| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table | Optional                                | `{'this.is.my.key': 12}` |
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6" lastVersion="1.6">
+<VersionBlock lastVersion="1.6">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
@@ -35,7 +22,7 @@ When materializing a model as `table`, you may include several optional configs 
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.7">
+<VersionBlock firstVersion="1.7" lastVersion="1.7">
 
  
 | Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
@@ -50,6 +37,29 @@ When materializing a model as `table`, you may include several optional configs 
 
 \* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation.
 We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+1.8 introduces support for [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) at the table level, in addition to all table configuration supported in 1.7.
+
+| Option              | Description                                                                                                                                                                                                        | Required?                                 | Model Support | Example                  |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|--------------------------|
+| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                  | SQL, Python   | `delta`                  |
+| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                  | SQL, Python   | `/mnt/root`              |
+| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                  | SQL, Python   | `date_day`               |
+| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                  | SQL           | `date_day`               |
+| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                  | SQL, Python   | `country_code`           |
+| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified   | SQL, Python   | `8`                      |
+| tblproperties       | [Tblproperties](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html) to be set on the created table                                                                           | Optional                                  | SQL, Python*  | `{'this.is.my.key': 12}` |
+| databricks_tags     | [Tags](https://docs.databricks.com/en/data-governance/unity-catalog/tags.html) to be set on the created table                                                                                                      | Optional                                  | SQL+, Python+ | `{'my_tag': 'my_value'}`  | 
+
+\* Beginning in 1.7.12, we have added tblproperties to Python models via an alter statement that runs after table creation.
+We do not yet have a PySpark API to set tblproperties at table creation, so this feature is primarily to allow users to anotate their python-derived tables with tblproperties.
+
+\+ `databricks_tags` are currently only supported at the table level, and applied via `ALTER` statements.
+
 </VersionBlock>
 
 ## Incremental models
@@ -598,10 +608,9 @@ snapshots:
 
 </File>
 
-<VersionBlock firstVersion="1.6">
+<VersionBlock lastVersion="1.7">
 
 ## Materialized views and streaming tables
-
 Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
 See [What are Delta Live Tables?](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) for more information and use cases.
 These features are still in preview, and the support in the dbt-databricks adapter should, for now, be considered _experimental_.
@@ -641,7 +650,106 @@ At this time the following configuration options are not available:
 
 Additionally, if you change the model definition of your materialized view or streaming table, you will need to drop the materialization in your warehouse directly before running dbt again; otherwise, you will get a refresh error.
 
-We plan to address these limitations during the 1.7.x timeframe.
+Please see the latest documentation for updates on these limitations.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.8">
+
+ ## Materialized views and streaming tables
+
+[Materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html) are alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
+See [What are Delta Live Tables?](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) for more information and use cases.
+
+In order to adopt these materialization strategies, you will need a workspace that is enabled for Unity Catalog and serverless SQL Warehouses.
+
+<File name='materialized_view.sql'>
+
+```sql
+{{ config(
+   materialized = 'materialized_view'
+ ) }}
+```
+
+</File>
+
+or
+
+<File name='streaming_table.sql'>
+
+```sql
+{{ config(
+   materialized = 'streaming_table'
+ ) }}
+```
+
+</File>
+
+We support [on_configuration_change](https://docs.getdbt.com/reference/resource-configs/on_configuration_change) for most available properties of these materializations.
+The following table summarizes our configuration support:
+
+| Databricks Concept | Config Name | MV/ST support |
+| ------------------ | ------------| ------------- |
+| [PARTITIONED BY](https://docs.databricks.com/en/sql/language-manual/sql-ref-partition.html#partitioned-by) | `partition_by` | MV/ST |
+| COMMENT | [`description`](https://docs.getdbt.com/reference/resource-properties/description) | MV/ST |
+| [TBLPROPERTIES](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html#tblproperties) | `tblproperties` | MV/ST |
+| [SCHEDULE CRON](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view.html#parameters) | `schedule: { 'cron': '\<cron schedule\>', 'time_zone_value': '\<time zone value\>' }` | MV/ST |
+| query | defined by your model sql | on_configuration_change for MV only |
+
+<File name='mv_example.sql'>
+
+```sql
+
+{{ config(
+    materialized='materialized_view',
+    partition_by='id',
+    schedule = {
+        'cron': '0 0 * * * ? *',
+        'time_zone': 'Etc/UTC'
+    },
+    tblproperties={
+        'key': 'value'
+    },
+) }}
+select * from {{ ref('my_seed') }}
+
+```
+
+</File>
+
+### Configuration Details
+
+#### partition_by
+`partition_by` works the same as for views and tables, i.e. can be a single column, or an array of columns to partition by.
+
+#### description
+As with views and tables, adding a `description` to your configuration will lead to a table-level comment getting added to your materialization.
+
+#### tblproperties
+`tblproperties` works the same as for views and tables with an important exception: the adapter maintains a list of keys that are set by Databricks when making an materialized view or streaming table which are ignored for the purpose of determining configuration changes.
+
+#### schedule
+Use this to set the refresh schedule for the model.  If you use the `schedule` key, a `cron` key is required in the associated dictionary, but `time_zone_value` is optional (see the example above).  The `cron` value should be formatted as documented by Databricks.
+If a schedule is set on the materialization in Databricks and your dbt project does not specify a schedule for it (when `on_configuration_change` is set to `apply`), the refresh schedule will be set to manual when you next run the project.
+Even when schedules are set, dbt will request that the materialization be refreshed manually when run.
+
+#### query
+For materialized views, if the compiled query for the model differs from the query in the database, we will the take the configured `on_configuration_change` action.
+Changes to query are not currently detectable for streaming tables; see the next section for details.
+
+### on_configuration_change 
+`on_configuration_change` is supported for materialized views and streaming tables, though the two materializations handle it different ways.
+
+#### Materialized Views
+Currently, the only change that can be applied without recreating the materialized view in Databricks is to update the schedule.
+This is due to limitations in the Databricks SQL API.
+
+#### Streaming Tables
+For streaming tables, only changes to the partitioning currently requires the table be dropped and recreated.
+For any other supported configuration change, we use `CREATE OR REFRESH` (+ an `ALTER` statement for changes to the schedule) to apply the changes.
+There is currently no mechanism for the adapter to detect if the streaming table query has changed, so in this case, regardless of the behavior requested by on_configuration_change, we will use a `create or refresh` statement (assuming `partitioned by` hasn't changed); this will cause the query to be applied to future rows without rerunning on any previously processed rows.
+If your source data is still available, running with '--full-refresh' will reprocess the available data with the updated current query.
+
 </VersionBlock>
 
 ## Setting table properties
@@ -667,3 +775,10 @@ These properties are sent directly to Databricks without validation in dbt, so b
 :::
 
 One application of this feature is making `delta` tables compatible with `iceberg` readers using the [Universal Format](https://docs.databricks.com/en/delta/uniform.html).
+
+<VersionBlock firstVersion="1.7">
+
+`tblproperties` can be specified for python models, but they will be applied via an `ALTER` statement after table creation.
+This is due to a limitation in PySpark.
+
+</VersionBlock>

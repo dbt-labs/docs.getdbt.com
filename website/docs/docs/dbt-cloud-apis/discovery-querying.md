@@ -27,7 +27,6 @@ Once you've created a token, you can use it in the Authorization header of reque
 
 3. For specific query points, refer to the [schema documentation](/docs/dbt-cloud-apis/discovery-schema-job).
 
-
 ## Run queries using HTTP requests
 
 You can run queries by sending a `POST` request to the Discovery API, making sure to replace:
