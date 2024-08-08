@@ -264,11 +264,15 @@ Historical limitations required customers to "duplicate" projects so that one ac
 
 <DetailsToggle alt_header="How does the dbt Semantic Layer relate to and work with dbt Mesh?">
 
+import SLMeshFAQs from '/snippets/_sl-dbt-mesh-faq.md';
+
 The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dbt Mesh are complementary mechanisms enabled by dbt Cloud that work together to enhance the management, usability, and governance of data in large-scale data environments.
 
 The Semantic Layer in dbt Cloud allows teams to centrally define business metrics and dimensions. It ensures consistent and reliable metric definitions across various analytics tools and platforms.
 
 dbt Mesh enables organizations to split their data architecture into multiple domain-specific projects, while retaining the ability to reference “public” models across projects. It is also possible to reference a “public” model from another project for the purpose of defining semantic models and metrics. Your organization can have multiple dbt projects feed into a unified semantic layer, ensuring that metrics and dimensions are consistently defined and understood across these domains.
+
+<SLMeshFAQs/>
 
 </DetailsToggle>
 
