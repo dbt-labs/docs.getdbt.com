@@ -20,6 +20,7 @@ Now, we are introducing a new type of test to dbt - unit tests. In software prog
 - You must specify all fields in a BigQuery STRUCT in a unit test. You cannot use only a subset of fields in a STRUCT.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](#unit-testing-versioned-models) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
+- Table names must be [aliased](/docs/build/custom-aliases) in order to unit test `join` logic.
 
 Read the [reference doc](/reference/resource-properties/unit-tests) for more details about formatting your unit tests.
 
@@ -291,6 +292,9 @@ unit_tests:
       rows:
         - {id: 1, first_name: emily}
 ```
+
+## Known limitations 
+
 
 ## Additional resources
 

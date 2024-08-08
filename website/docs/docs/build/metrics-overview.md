@@ -120,8 +120,6 @@ metrics:
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all of time)
 metrics:
   - name: wau_rolling_7
-    owners:
-      - support@getdbt.com
     type: cumulative
     label: Weekly active users
     type_params:
@@ -178,8 +176,6 @@ metrics:
 ```yaml
 metrics:
   - name: cancellation_rate
-    owners:
-      - support@getdbt.com
     type: ratio
     label: Cancellation rate
     type_params:
@@ -188,8 +184,6 @@ metrics:
     filter: |   
       {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
-    owners:
-      - support@getdbt.com
     type: ratio
     type_params:
       numerator:

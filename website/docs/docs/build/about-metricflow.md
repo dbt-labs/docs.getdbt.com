@@ -37,7 +37,7 @@ MetricFlow abides by these principles:
 - **Simplicity with gradual complexity:** Approach MetricFlow using familiar data modeling concepts.
 - **Performance and efficiency**: Optimize performance while supporting centralized data engineering and distributed logic ownership.
 
-### Semantic graph 
+### Semantic graph
 
 We're introducing a new concept: a "semantic graph". It's the relationship between semantic models and YAML configurations that creates a data landscape for building metrics. You can think of it like a map, where tables are like locations, and the connections between them (edges) are like roads. Although it's under the hood, the semantic graph is a subset of the <Term id="dag" />, and you can see the semantic models as nodes on the DAG.
 

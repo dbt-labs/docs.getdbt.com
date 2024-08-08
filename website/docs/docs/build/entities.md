@@ -18,7 +18,6 @@ There are four entity types: primary, foreign, unique, or natural.
 You can also use entities as dimensions, which allows you to aggregate a metric to the granularity of that entity.
 :::
 
-
 ## Entity types
 
 MetricFlow's join logic depends on the entity `type` you use, and it also determines how to join semantic models. Refer to [Joins](/docs/build/join-logic) for more info on how to construct joins.
