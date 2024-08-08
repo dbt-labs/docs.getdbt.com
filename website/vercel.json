@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/core/connect-data-platform/fal-setup",
+      "destination": "https://github.com/fal-ai/dbt-fal",
+      "permanent": true
+    },
+    {
+      "source": "/reference/warehouse-setups/fal-setup",
+      "destination": "https://github.com/fal-ai/dbt-fal",
+      "permanent": true
+    },
+    {
       "source": "/docs/core/homebrew-install",
       "destination": "/docs/core/installation-overview",
       "permanent": true
