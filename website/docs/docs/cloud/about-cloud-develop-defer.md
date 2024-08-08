@@ -11,7 +11,7 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 
 Both the dbt Cloud IDE and the dbt Cloud CLI enable users to natively defer to production metadata directly in their development workflows. 
 
-<Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="This diagram explains how to defer when running model in dbt" />
+<Lightbox src src="/img/docs/reference/defer-diagram.png" width="50%" title="Use 'defer' to modify end-of-pipeline models by pointing to production models, instead of running everything upstream." />
 
 By default, dbt follows these rules:
 
