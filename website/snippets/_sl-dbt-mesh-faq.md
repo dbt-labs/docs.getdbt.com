@@ -26,5 +26,5 @@ semantic_models:
 ```
 </File>
 
-Notice that in the `model` parameter, we're using the `ref` function to reference the `fct_orders` model in the `jaffle_finance` project. 
+Notice that in the `model` parameter, we're using the `ref` function with two arguments to reference the public model `fct_orders` defined in the `jaffle_finance` project.
 <br />
