@@ -1,5 +1,9 @@
 exports.versions = [
   {
+    version: "1.9",
+    isPrerelease: true, 
+  },
+  {
     version: "1.8",
     EOLDate: "2025-04-15",
   },
@@ -11,25 +15,17 @@ exports.versions = [
     version: "1.6",
     EOLDate: "2024-07-31",
   },
-  {
-    version: "1.5",
-    EOLDate: "2024-04-27",
-  },
-  {
-    version: "1.4",
-    EOLDate: "2024-01-25",
-  },
-  {
-    version: "1.3",
-    EOLDate: "2023-10-12",
-  },
-  {
-    version: "1.2",
-    EOLDate: "2023-07-26",
-  },
 ]
 
 exports.versionedPages = [
+  {
+    "page": "/reference/resource-configs/target_database",
+    "lastVersion": "1.8",
+  },
+  {
+    "page": "/reference/resource-configs/target_schema",
+    "lastVersion": "1.8",
+  },
   {
     "page": "reference/global-configs/indirect-selection",
     "firstVersion": "1.8",
@@ -157,26 +153,6 @@ exports.versionedPages = [
   {
     "page": "reference/resource-properties/versions",
     "firstVersion": "1.5",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/local-md5",
-    "firstVersion": "1.4",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/set",
-    "firstVersion": "1.2",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/zip",
-    "firstVersion": "1.2",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/cross-database-macros",
-    "firstVersion": "1.2",
-  },
-  {
-    "page": "reference/resource-configs/grants",
-    "firstVersion": "1.2",
   },
   {
     "page": "reference/resource-configs/on_configuration_change",
