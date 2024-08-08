@@ -1054,6 +1054,7 @@
       "destination": "/docs/get-started/develop-in-the-cloud",
       "permanent": true
     },
+
     {
       "source": "/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
       "destination": "/docs/get-started/dbt-cloud-features#model-timing-dashboard",
