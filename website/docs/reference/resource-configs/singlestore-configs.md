@@ -107,8 +107,6 @@ select ...
 
 </File>
 
-<VersionBlock firstVersion="1.5">
-
 ## Model contracts
 
 Starting from 1.5, the `dbt-singlestore` adapter supports model contracts.
@@ -217,5 +215,3 @@ It's important to note that certain data type mappings might show up differently
 
 
 Just keep these points in mind when setting up and using your `dbt-singlestore` adapter, and you'll avoid common pitfalls!
-
-</VersionBlock>

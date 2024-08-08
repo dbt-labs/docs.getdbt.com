@@ -76,12 +76,12 @@ Differences between databases are encoded into discrete areas:
 
 | Components       | Code Path                                         | Function                                                                      |
 |------------------|---------------------------------------------------|-------------------------------------------------------------------------------|
-| Python Classes   | `adapters/<adapter_name>`                         | Configuration (See above [Python classes](##python classes)                   |
+| Python classes   | `adapters/<adapter_name>`                         | Configuration (Refer to [Python classes](#python classes)                   |
 | Macros           | `include/<adapter_name>/macros/adapters/`         | SQL API & statement syntax (for example, how to create schema or how to get table info) |
 | Materializations | `include/<adapter_name>/macros/materializations/` | Table/view/snapshot/ workflow definitions                                     |
 
 
-#### Python Classes
+#### Python classes
 
 These classes implement all the methods responsible for:
 - Connecting to a database and issuing queries.
@@ -585,7 +585,7 @@ This document has two sections:
 ### Testing prerequisites
 
 - Your adapter must be compatible with dbt-core **v1.1** or newer
-- You should be familiar with **pytest**: <https://docs.pytest.org/>
+- You should be familiar with **pytest**: [https://docs.pytest.org](https://docs.pytest.org)
 
 ### About the testing framework
 

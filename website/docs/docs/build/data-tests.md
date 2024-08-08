@@ -19,7 +19,7 @@ keywords:
 
 :::important
 
-In dbt v1.8, what was previously known as "tests" are now called "data tests" with the addition of [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for data tests but will be deprecated in the future in favor of `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
+From dbt v1.8, "tests" are now called "data tests" to disambiguate from [unit tests](/docs/build/unit-tests). The YAML key `tests:` is still supported as an alias for `data_tests:`. Refer to [New `data_tests:` syntax](#new-data_tests-syntax) for more information.
 
 :::
 
@@ -275,13 +275,11 @@ In dbt version 1.8, we updated the `tests` configuration to `data_tests`. For de
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.8" lastVersion="1.8">
+<VersionBlock firstVersion="1.8">
   
-Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, it was necessary to update our naming conventions and syntax. 
+Data tests were historically called "tests" in dbt as the only form of testing available. With the introduction of unit tests in v1.8, the key was renamed from `tests:` to `data_tests:`. 
 
-As of v1.8, `tests:` is still supported in your YML configuration files as an alias but will be deprecated in the future in favor of `data_tests:`. 
-
-As we progress towards this deprecation, we'll update the examples in our docs pages to reflect this new syntax, but we highly recommend you begin the migration process as soon as you upgrade to v1.8 to avoid interruptions or issues in the future.
+dbt still supports `tests:` in your YML configuration files for backwards-compatibility purposes, and you might see it used throughout our documentation. However, you can't have a `tests` and a `data_tests` key associated with the same resource (e.g. a single model) at the same time.
 
 <File name='models/schema.yml'>
 
@@ -306,11 +304,13 @@ data_tests:
 
 </File>
 
+To suppress warnings about the rename, add `TestsConfigDeprecation` to the `silence` block of the `warn_error_options` flag in `dbt_project.yml`, [as described in the Warnings documentation](https://docs.getdbt.com/reference/global-configs/warnings).
+
 </VersionBlock>
 
 ## FAQs
 
-<FAQ path="/Tests/available-tests" />
+<FAQ path="Tests/available-tests" />
 <FAQ path="Tests/test-one-model" />
 <FAQ path="Runs/failed-tests" />
 <FAQ path="Tests/recommended-tests" />

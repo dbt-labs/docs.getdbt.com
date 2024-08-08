@@ -41,7 +41,8 @@ seeds:
       +schema: mappings
 ```
 
-This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.target_schema_mappings.product_mappings`. 
+This would result in the generated relation being located in the `mappings` schema, so the full relation name would be `analytics.mappings.seed_name`. 
+
 </File>
 </TabItem>
 
@@ -149,14 +150,16 @@ seeds:
 
 ### Tests
 
-Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results:
+Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results.
+The resulting schema is `{{ profile.schema }}_{{ tests.schema }}`, with a default suffix of `dbt_test__audit`.
+To use the same profile schema, set `+schema: null`.
 
 <File name='dbt_project.yml'>
 
 ```yml
 tests:
   +store_failures: true
-  +schema: the_island_of_misfit_tests
+  +schema: _sad_test_failures  # Will write tables to my_database.my_schema__sad_test_failures
 ```
 
 </File>

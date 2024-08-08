@@ -23,8 +23,6 @@ to understand how to effectively use this variable.
 The `graph` context variable is a dictionary which maps node ids onto dictionary
 representations of those nodes. A simplified example might look like:
 
-<VersionBlock firstVersion="1.5">
-
 ```json
 {
   "nodes": {
@@ -80,8 +78,6 @@ representations of those nodes. A simplified example might look like:
   }
 }
 ```
-
-</VersionBlock>
 
 The exact contract for these model and source nodes is not currently documented,
 but that will change in the future.
