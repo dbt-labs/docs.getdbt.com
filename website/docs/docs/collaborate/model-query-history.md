@@ -10,7 +10,7 @@ image: /img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg
 The model query history tile allows you to:
 
 - View the query count for a model based on the data warehouse's query logs.
-- Provides data teams insight so they can focus their time and infrastructure spend on the worthwhile used data products.
+- Provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products.
 - Enable analysts to find the most popular models used by other people.
 
 Model query history is powered by a single query of query log table in your data warehouse aggregated on a daily basis. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
