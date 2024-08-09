@@ -52,7 +52,7 @@ The model query history feature uses the credentials in your production environm
 
     <Expandable alt_header="For BigQuery">
 
-    This feature uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in BigQuery. To access this, the user configured for your production environment must have the following [IAM roles](https://cloud.google.com/bigquery/docs/access-control) for your Bigquery project:
+    This feature uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in BigQuery. To access this, the user configured for your production environment must have the following [IAM roles](https://cloud.google.com/bigquery/docs/access-control) for your BigQuery project:
 
     - `roles/bigquery.resourceViewer`
     - `roles/bigquery.jobs.create`
