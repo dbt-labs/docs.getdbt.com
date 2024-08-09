@@ -84,7 +84,6 @@ To embed the data health tile in Tableau, follow these steps:
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-stale.jpg" width="60%" title="Example of stale of degraded Data health tile in your dashboard." />
 </DocCarousel>
 
-
 3. For the job-based exposure tile you can insert these three fields into the following iFrame, and then embed them with your dashboard. The next section will have more details on the job-based exposure tile.
 
     `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&environment_id=<environment_id>&token=<metadata_token>' />`
@@ -95,7 +94,7 @@ To embed the data health tile in Tableau, follow these steps:
 
 The default experience is the [environment-based data health tile](#view-exposure-in-dbt-explorer) with dbt Explorer.
 
-This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile. However, note that 
+This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile.
 
 <Expandable alt_header="Job-based data health">  
 In dbt Cloud, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
@@ -120,7 +119,7 @@ In order to set up your dashboard status tile, here is what you need:
 
 2. **Exposure name.** You can learn more about how to set up exposures [here](/docs/build/exposures).
 
-3. **jobID.** Remember that you can select your jobId directly from the URL when looking at the relevant job in dbt Cloud.
+3. **Job iD.** Remember that you can select your job ID directly from the URL when looking at the relevant job in dbt Cloud.
 
 You can insert these three fields into the following iFrame, and then embed it **anywhere that you can embed an iFrame**:
 
@@ -158,7 +157,7 @@ Looker does not allow you to directly embed HTML and instead requires creating a
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/looker-visualization.jpeg" title="Configure a Looker visualization powered by the iFrame" />
 
-- Once you have set up your custom visualization, you can use it on any dashboard! You can configure it with the exposure name, jobID, and token relevant to that dashboard.
+- Once you have set up your custom visualization, you can use it on any dashboard! You can configure it with the exposure name, job ID, and token relevant to that dashboard.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/custom-looker.jpeg " width="60%"/>
 </TabItem>
