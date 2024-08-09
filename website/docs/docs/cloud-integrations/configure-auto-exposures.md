@@ -10,10 +10,6 @@ image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 
 As a data team, it’s critical that you have context into the downstream use cases and users of your data products. [Auto-exposures](/docs/collaborate/auto-exposures) integrates natively with Tableau (Power BI coming soon) and [auto-generates downstream lineage](/docs/collaborate/auto-exposures#view-auto-exposures-in-dbt-explorer) in dbt Explorer for a richer experience.
 
-:::info Available in beta
-Auto-exposures is currently in beta to dbt Cloud Enterprise accounts. If you have any feedback or would like to take part in the beta, please reach out to your account manager.
-:::
-
 Auto-exposures help data teams optimize their efficiency and ensure data quality by:
 
 - Helping users understand how their models are used in downstream analytics tools to inform investments and reduce incidents — ultimately building trust and confidence in data products.
