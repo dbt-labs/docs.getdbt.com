@@ -98,7 +98,7 @@ The default experience is the [environment-based data health tile](#view-exposur
 This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile. However, note that 
 
 <Expandable alt_header="Job-based data health">  
-In dbt Cloud, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
+In dbt Cloud, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done in dbt [exposures](/docs/build/exposures).
 
 #### Functionality
 The dashboard status tile looks like this:
