@@ -27,7 +27,7 @@ The data health tile:
 
 - You must have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
-- You must have [develop permissions](/docs/cloud/manage-access/seats-and-users)
+- You must have [develop permissions](/docs/cloud/manage-access/seats-and-users).
 - Have [exposures](/docs/build/exposures) configured in your project and [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
 
 ## View exposure in dbt Explorer
