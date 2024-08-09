@@ -276,8 +276,6 @@ You can explore the metadata from your production or staging environment to info
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="100%" title="Explore in a staging environment" />
 
-
-
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 
 - [About model governance](/docs/collaborate/govern/about-model-governance)

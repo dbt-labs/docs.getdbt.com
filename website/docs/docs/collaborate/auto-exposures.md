@@ -3,7 +3,7 @@ title: "Auto-exposures"
 sidebar_label: "Auto-exposures"
 description: "Import and auto-generate exposures from dashboards and understand how models are used in downstream tools for a richer lineage."
 pagination_prev: null
-pagination_next:  "docs/collaborate/model-query-history"
+pagination_next:  "docs/collaborate/data-tile"
 ---
 
 # Auto-exposures <Lifecycle status='beta' />

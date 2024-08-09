@@ -522,6 +522,7 @@ const sidebarSettings = {
               },
               items: [
                 "docs/collaborate/auto-exposures",
+                "docs/collaborate/data-tile",
                 "docs/collaborate/model-query-history",
               ],
             },
