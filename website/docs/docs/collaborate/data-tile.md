@@ -16,8 +16,8 @@ Data health tile is currently in beta. If you have any feedback or would like to
 
 The data health tile:
 
-- Distills trust signals for data consumers
-- Deep links you into dbt Explorer where you can further dive into upstream data issues
+- Distills trust signals for data consumers.
+- Deep links you into dbt Explorer where you can further dive into upstream data issues.
 - Provides richer information and makes it easier to debug.
 - Revamps the existing, [job-based tiles](#job-based-data-health).
 
@@ -27,7 +27,7 @@ The data health tile:
 
 - You must have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
-- You must have [develop permissions](/docs/cloud/manage-access/seats-and-users)
+- You must have [develop permissions](/docs/cloud/manage-access/seats-and-users).
 - Have [exposures](/docs/build/exposures) configured in your project and [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
 
 ## View exposure in dbt Explorer
@@ -35,7 +35,7 @@ The data health tile:
 First, be sure to enable [source freshness](/docs/deploy/source-freshness) in the job that generates this exposure.
 
 1. Navigate to dbt Explorer by clicking on the **Explore** link in the navigation.
-2. In the main **Overview** page, go to the left navigation
+2. In the main **Overview** page, go to the left navigation.
 3. Under the **Resources** tab, click on **Exposures** to view the exposures list.
 4. Select a dashboard exposure and go to the **General** tab to view the data health information.
 5. In this tab, you’ll see: 
@@ -60,7 +60,7 @@ Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to s
 
 5. Copy the **Metadata Only token** and save it in a secure location. You'll need it token in the next steps.
 6. Navigate back to dbt Explorer and select an exposure.
-7. Below the **Data health** section, expand on the toggle for instructions on to embed the exposure tile (if you're an account admin with develop permissions). 
+7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embded data health tile into your dashboard." />
 
@@ -97,7 +97,7 @@ The default experience is the [environment-based data health tile](#view-exposur
 This section is for legacy job-based data health tiles. If you're using the revamped environment-based exposure tile, refer to the previous section. Expand the following to learn more about the legacy job-based data health tile.
 
 <Expandable alt_header="Job-based data health">  
-In dbt Cloud, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
+In dbt Cloud, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power dashboard status tiles, which are job-based.  A dashboard status tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done in dbt [exposures](/docs/build/exposures).
 
 #### Functionality
 The dashboard status tile looks like this:

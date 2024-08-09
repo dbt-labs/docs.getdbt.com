@@ -35,7 +35,7 @@ This section of the document explains the steps you need to set up the auto-expo
 
 To set up [personal access tokens (PATs)](/docs/dbt-cloud-apis/user-tokens#using-the-new-personal-access-tokens) needed for auto exposures, ask a site admin to configure it for the account.
 
-1. Ensure you or a site admin enable PATs for the account in Tableau.
+1. Ensure you or a site admin enables PATs for the account in Tableau.
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/tableau-enable-pat.jpg" title="Enable PATs for the account in Tableau"/>
 
 2. Create a PAT that you can add to dbt Cloud to pull in Tableau metadata for auto exposures.

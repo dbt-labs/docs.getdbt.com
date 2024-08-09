@@ -10,10 +10,10 @@ image: /img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg
 The model query history tile allows you to:
 
 - View the query count for a model based on the data warehouse's query logs.
-- Provides data teams insight so they can focus their time and infrastructure spend on the worthwhile used data products.
+- Provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products.
 - Enable analysts to find the most popular models used by other people.
 
-Model query history is powered by a single query of query log table in your data warehouse aggregated on a daily basis. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
+Model query history is powered by a single query of the query log table in your data warehouse aggregated on a daily basis. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
 
 :::info Available in beta
 Model query history is currently in beta and available to [dbt Cloud Enterprise accounts](https://www.getdbt.com/pricing/) using Snowflake and BigQuery initially. If you have any feedback or would like to take part in the beta, please reach out to your account manager.
@@ -26,7 +26,7 @@ To access the features, you should meet the following:
 1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/).
 2. You have set up a [production](https://docs.getdbt.com/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings.
-4. Use Snowflake or BigQuery as your data warehouse and can enable query history permissions or work with an admin to do so. (Support for additional data platforms coming soon)
+4. Use Snowflake or BigQuery as your data warehouse and can enable query history permissions or work with an admin to do so (Support for additional data platforms coming soon).
 
 ## Credential permissions
 
@@ -44,7 +44,7 @@ The model query history feature uses the credentials in your production environm
 
     <Expandable alt_header="For Snowflake">
 
-    This feature makes use of metadata tables available to Snowflake Enterprise tier accounts or higher, `QUERY_HISTORY` and `ACCESS_HISTORY`. The snowflake user used in the production environment must have `GOVERNANCE_VIEWER` permissions to view the data. 
+    This feature makes use of metadata tables available to Snowflake Enterprise tier accounts or higher, `QUERY_HISTORY` and `ACCESS_HISTORY`. The Snowflake user used in the production environment must have `GOVERNANCE_VIEWER` permissions to view the data. 
 
     This can be granted to this user by your `ACCOUNTADMIN` user in Snowflake. For more details, view the snowflake docs [here](https://docs.snowflake.com/en/sql-reference/account-usage#enabling-other-roles-to-use-schemas-in-the-snowflake-database).
 
@@ -52,7 +52,7 @@ The model query history feature uses the credentials in your production environm
 
     <Expandable alt_header="For BigQuery">
 
-    This feature uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in BigQuery. To access this, the user configured for your production environment must have the following [IAM roles](https://cloud.google.com/bigquery/docs/access-control) for your Bigquery project:
+    This feature uses the metadata from the `INFORMATION_SCHEMA.JOBS` view in BigQuery. To access this, the user configured for your production environment must have the following [IAM roles](https://cloud.google.com/bigquery/docs/access-control) for your BigQuery project:
 
     - `roles/bigquery.resourceViewer`
     - `roles/bigquery.jobs.create`
