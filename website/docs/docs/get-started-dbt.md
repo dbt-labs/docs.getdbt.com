@@ -1,6 +1,7 @@
 ---
 title: "dbt Quickstarts"
 id: get-started-dbt
+unlisted: true
 hide_table_of_contents: true
 pagination_next: null
 pagination_prev: null
