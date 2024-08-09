@@ -2,6 +2,7 @@
 title: "Discover data with dbt Explorer"
 sidebar_label: "Discover data with dbt Explorer"
 description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your dbt projects."
+image: /img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png
 pagination_next: "docs/collaborate/access-from-dbt-cloud"
 pagination_prev: null
 ---

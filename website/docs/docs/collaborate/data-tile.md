@@ -3,6 +3,7 @@ title: "Data health tile"
 id: "data-tile"
 sidebar_label: "Data health tile"
 description: "Embed data health tiles in your dashboards to distill trust signals for data consumers."
+image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
 ---
 
 # Embed data health tile in dashboards <Lifecycle status='beta' />

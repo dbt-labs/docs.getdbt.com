@@ -4,6 +4,7 @@ sidebar_label: "Auto-exposures"
 description: "Import and auto-generate exposures from dashboards and understand how models are used in downstream tools for a richer lineage."
 pagination_prev: null
 pagination_next:  "docs/collaborate/data-tile"
+image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg
 ---
 
 # Auto-exposures <Lifecycle status='beta' />

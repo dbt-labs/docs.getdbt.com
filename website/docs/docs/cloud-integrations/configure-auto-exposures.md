@@ -3,6 +3,7 @@ title: "Auto-exposures"
 id: "configure-auto-exposures"
 sidebar_label: "Configure auto-exposures"
 description: "Import and auto-generate exposures from dashboards and understand how models are used in downstream tools for a richer lineage."
+image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 ---
 
 # Configure auto-exposures <Lifecycle status='beta' />
