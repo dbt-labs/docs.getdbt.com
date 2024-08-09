@@ -10,10 +10,6 @@ image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
 
 With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. This trust signal allows teams to immediately go back into Explorer to see more details and investigate issues.
 
-:::info Available in beta
-Data health tile is currently in beta. If you have any feedback or would like to take part in the beta, please reach out to your account manager.
-:::
-
 The data health tile:
 
 - Distills trust signals for data consumers.
@@ -25,7 +21,7 @@ The data health tile:
 
 ## Prerequisites
 
-- You must have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You must have a dbt Cloud account on a [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - You must have [develop permissions](/docs/cloud/manage-access/seats-and-users).
 - Have [exposures](/docs/build/exposures) configured in your project and [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
