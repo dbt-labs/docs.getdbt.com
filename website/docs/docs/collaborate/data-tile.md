@@ -60,7 +60,7 @@ Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to s
 
 5. Copy the **Metadata Only token** and save it in a secure location. You'll need it token in the next steps.
 6. Navigate back to dbt Explorer and select an exposure.
-7. Below the **Data health** section, expand on the toggle for instructions on to embed the exposure tile (if you're an account admin with develop permissions). 
+7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embded data health tile into your dashboard." />
 
