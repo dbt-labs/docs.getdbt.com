@@ -44,7 +44,7 @@ The model query history feature uses the credentials in your production environm
 
     <Expandable alt_header="For Snowflake">
 
-    This feature makes use of metadata tables available to Snowflake Enterprise tier accounts or higher, `QUERY_HISTORY` and `ACCESS_HISTORY`. The snowflake user used in the production environment must have `GOVERNANCE_VIEWER` permissions to view the data. 
+    This feature makes use of metadata tables available to Snowflake Enterprise tier accounts or higher, `QUERY_HISTORY` and `ACCESS_HISTORY`. The Snowflake user used in the production environment must have `GOVERNANCE_VIEWER` permissions to view the data. 
 
     This can be granted to this user by your `ACCOUNTADMIN` user in Snowflake. For more details, view the snowflake docs [here](https://docs.snowflake.com/en/sql-reference/account-usage#enabling-other-roles-to-use-schemas-in-the-snowflake-database).
 
