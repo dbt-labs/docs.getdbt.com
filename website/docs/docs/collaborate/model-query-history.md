@@ -14,8 +14,8 @@ The model query history tile allows you to:
 
 Model query history is powered by a single query of query log table in your data warehouse aggregated on a daily basis. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
 
-:::info
-Available for Snowflake and BigQuery users initially.
+:::info Available in beta
+Model query history is currently in beta and available to [dbt Cloud Enterprise accounts](https://www.getdbt.com/pricing/) using Snowflake and BigQuery initially. If you have any feedback or would like to take part in the beta, please reach out to your account manager.
 :::
 
 ## Prerequisites
@@ -75,7 +75,7 @@ During beta, the dbt Labs team will manually enable query history for your dbt C
 
 To enhance your discovery, you can view your model query history in various locations within dbt Explorer.  For details on how to access model query history in each location, expand the following toggles:
 
-<Expandable alt_header="View from Performance charts">
+### View from Performance charts
 
 1. Navigate to dbt Explorer by clicking on the **Explore** link in the navigation.
 2. In the main **Overview** page, under **Project** click **Performance** and scroll down to view the most queried models
@@ -86,9 +86,7 @@ To enhance your discovery, you can view your model query history in various loca
 4. In the model performance tab, open the **Usage** chart to see queries over time for that model.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-usage-queries.jpg" width="70%" title="View queries over time for a given model." />
 
-</Expandable>
-
-<Expandable alt_header="View from Project lineage">
+### View from Project lineage
 
 1. To view your model in your project lineage, go to the main **Overview page** and click on **Project lineage.**
 2. In the lower left of your lineage, click on **Lenses** and select **Usage queries**. 
@@ -96,13 +94,10 @@ To enhance your discovery, you can view your model query history in various loca
 
 3. Your lineage should display a small red box above each model, indicating the usage query number for each model. The query number for each model represents the query history over the last 30 days.
 
-</Expandable>
-
-<Expandable alt_header="View from Model list">
+### View from Model list
 
 1. To view your model in your project lineage, go to the main **Overview page**.
 2. In the left navigation, go to the **Resources** tab and click on **Models** to view the models list.
 3. You can view the usage query count for the models and sort by most or least queried. The query number for each model represents the query history over the last 30 days.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-list.jpg" width="85%" title="View models query history in the 'Models' list page under the 'Usage' column." />
 
-</Expandable>

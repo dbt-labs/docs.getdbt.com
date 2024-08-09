@@ -10,7 +10,7 @@ description: "Import and auto-generate exposures from dashboards and understand 
 As a data team, it’s critical that you have context into the downstream use cases and users of your data products. [Auto-exposures](/docs/collaborate/auto-exposures) integrates natively with Tableau (Power BI coming soon) and [auto-generates downstream lineage](/docs/collaborate/auto-exposures#view-auto-exposures-in-dbt-explorer) in dbt Explorer for a richer experience.
 
 :::info Available in beta
-Auto-exposures is currently in beta. If you have any feedback or would like to take part in the beta, please reach out to your account manager.
+Auto-exposures is currently in beta to dbt Cloud Enterprise accounts. If you have any feedback or would like to take part in the beta, please reach out to your account manager.
 :::
 
 Auto-exposures help data teams optimize their efficiency and ensure data quality by:

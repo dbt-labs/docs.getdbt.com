@@ -212,12 +212,13 @@ In the upper right corner of the resource details page, you can:
 <Expandable alt_header="What details are available for an exposure?">
 
 - **Status bar** (below the page title) &mdash; Information on the last time the exposure was updated. 
-- **General** tab includes:<!-- add as bullet in next line: Data health &mdash; The status on data freshness and data quality. -->
+- **General** tab includes:
+    - **Data health** &mdash; The status on data freshness and data quality.
     - **Status** section &mdash; The status on data freshness and data quality.
-    - **Lineage** graph &mdash; The exposure’s lineage graph. Click the Expand icon in the graph's upper right corner to view the exposure in full lineage graph mode.
+    - **Lineage** graph &mdash; The exposure’s lineage graph. Click the **Expand** icon in the graph's upper right corner to view the exposure in full lineage graph mode. Integrates natively with Tableau and auto-generates downstream lineage.
     - **Description** section &mdash; A description of the exposure.
     - **Details** section &mdash; Details like exposure type, maturity, owner information, and more.
-    - **Relationships** section &mdash; The nodes the exposure **Depends On**.
+    - **Relationships** section &mdash; The nodes the exposure **Depends On**. 
 
 </Expandable>
 
@@ -256,15 +257,11 @@ Example of the Tests view:
 
 ### Example of model details
 
-Example of the details view for the model `customers`: 
-
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
-
 <DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
+Example of the details view for the model `customers`:<br /> <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of resource details" />
 
-<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg" width="95%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
+<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="Example of auto-exposure details for the Tableau exposure."/>
 
 </DocCarousel>
 

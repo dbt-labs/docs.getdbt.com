@@ -9,17 +9,22 @@ description: "Embed data health tiles in your dashboards to distill trust signal
 
 With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. This trust signal allows teams to immediately go back into Explorer to see more details and investigate issues.
 
+:::info Available in beta
+Data health tile is currently in beta. If you have any feedback or would like to take part in the beta, please reach out to your account manager.
+:::
+
 The data health tile:
 
 - Distills trust signals for data consumers
 - Deep links you into dbt Explorer where you can further dive into upstream data issues
 - Provides richer information and makes it easier to debug.
-- Revamps the existing, job-based [dashboard status tiles](#job-based-data-health).
+- Revamps the existing, [job-based tiles](#job-based-data-health).
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
 
 ## Prerequisites
 
+- You must have a dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be an account admin to set up [service tokens](/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - You must have [develop permissions](/docs/cloud/manage-access/seats-and-users)
 - Have [exposures](/docs/build/exposures) configured in your project and [source freshness](/docs/deploy/source-freshness) enabled in the job that generates this exposure.
@@ -40,7 +45,7 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
    - You can also see the last check completed, the last check time, and the last check duration.
 6. You can also click the **Open Dashboard** button on the upper right to immediately view this in your analytics tool.
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.jpg" width="70%" title="View an exposure in dbt Explorer." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.jpg" width="95%" title="View an exposure in dbt Explorer." />
 
 ## Embed in your dashboard
 
@@ -50,13 +55,13 @@ Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to s
 2. Select **API tokens** in the left sidebar and then **Service tokens**.
 3. Click on **Create service token** and give it a name.
 4. Select the [**Metadata Only** permission](/docs/dbt-cloud-apis/service-tokens). This token will be used to embed the exposure tile in your dashboard in the later steps.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.jpg" width="70%" title="Set up your dashboard status tile and service token to embed a data health tile" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.jpg" width="95%" title="Set up your dashboard status tile and service token to embed a data health tile" />
 
 5. Copy the **Metadata Only token** and save it in a secure location. You'll need it token in the next steps.
 6. Navigate back to dbt Explorer and select an exposure.
 7. Below the **Data health** section, expand on the toggle for instructions on to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="70%" title="Expand the toggle to embded data health tile into your dashboard." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embded data health tile into your dashboard." />
 
 9. Once you’ve pasted your token, you can select either **URL** or **iFrame** depending on which you need to install into your dashboard.
 
@@ -70,19 +75,20 @@ To embed the data health tile in Tableau, follow these steps:
 
     `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?uniqueId=<exposure_unique_id>&environmentType=production&environmentId=<environment_id>&token=<metadata_token>' />`
 
-*Note, replace the placeholders with your actual values.*
-
-3. For the previous, legacy job-based exposure tile you can insert these three fields into the following iFrame, and then embed them with your dashboard.
-
-    `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&environment_id=<environment_id>&token=<metadata_token>' />`
-
-*Note, replace the placeholders with your actual values.*
+    *Note, replace the placeholders with your actual values.*
 
 <DocCarousel slidesPerView={1}>
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-iframe.jpg" width="70%" title="Example of embedded iFrame" />
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-stale.jpg" width="60%" title="Example of stale of degraded Data health tile in your dashboard." />
 </DocCarousel>
+
+
+3. For the job-based exposure tile you can insert these three fields into the following iFrame, and then embed them with your dashboard. The next section will have more details on the job-based exposure tile.
+
+    `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&environment_id=<environment_id>&token=<metadata_token>' />`
+
+    *Note, replace the placeholders with your actual values.*
 
 ## Job-based data health <Lifecycle status="Legacy"/>
 
