@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
 
-function detailsToggle({ children, alt_header = null }) {
+function DetailsToggle({ children, alt_header = null }) {
   const [isOn, setOn] = useState(false);
 
   const handleToggleClick = () => {
@@ -28,4 +28,4 @@ function detailsToggle({ children, alt_header = null }) {
   );
 }
 
-export default detailsToggle;
+export default DetailsToggle;
