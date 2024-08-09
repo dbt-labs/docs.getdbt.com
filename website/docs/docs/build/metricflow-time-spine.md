@@ -6,11 +6,38 @@ sidebar_label: "MetricFlow time spine"
 tags: [Metrics, Semantic Layer]
 ---
 
-MetricFlow uses a timespine table to construct cumulative metrics. By default, MetricFlow expects the timespine table to be named `metricflow_time_spine` and doesn't support using a different name. 
+It's a common for analytics engineers to have a date dimension or "time spine" table as a base table for diffrent types of time based joins and aggregations. The structure of this table is useually a base column of daily or hourly dates, with additional columns for other time grains like fiscal quarter defined based on the date. You can join other tables to the time spine to caluclate metrics like revenue at a point in time, or to aggregate to a fiscal qarter.
 
-To create this table, you need to create a model in your dbt project called `metricflow_time_spine` and add the following code. This example uses a `day` granularity to generate a table with one row per day. This is useful for metrics that need a daily aggregation.
+MetricFlow requires you to define a time spine table as a project level configration, which will then be used is used  for various time based joins and aggregations, like cumulative metrics. 
 
-<File name='metricflow_time_spine_day.sql'>
+If you already have a date dimension or time spine table in you dbt project, you need to update the `model` configruation to use this table in the semantic layer. For example, with the following directory structure I can create two time spine configuration, `time_spine_hourly` and `time_spine_daily`.
+
+![Time spine directory structure](/img/docs/building-metrics/time_spines.png)
+
+
+```yaml
+models:
+  - name: time_spine_hourly
+    time_spine:
+      standard_granularity_column: date_hour # column for the standard grain of your table
+    columns:
+      - name: date_hour
+        granularity: hour # set granularity at column-level for standard_granularity_column
+  - name: time_spine_daily
+    time_spine:
+      standard_granularity_column: date_day # column for the standard grain of your table
+    columns:
+      - name: date_day
+        granularity: day # set granularity at column-level for standard_granularity_column
+```
+
+Let's break down the configuration above. We're pointing to a model called `time_spine_daily`. We set the time spine configrations under the time_spine key. The `standard_granularity_column` is the lowest grain of the table, in this case hourly. It needs to refrence a column defined under the columns key, in the case `date_hour`. We will use the `standard_granularity_column` as the join key for the time spine table when joining tables in MetricFlow. The granularity of the `standard_granularity_column` is set at the column level, in this case `hour`.
+
+
+If you need to create a time spine table from scratch, you can do so by adding the following code to your dbt project. 
+The example creates a time spine at a daily grain and an hourly grain. We recomend creating both an hourly and daily time spines, MetricFlow will use the appropriate time spine based on the granualrity of the metric selected to minimize data scans.
+
+<File name='time_spine_daily.sql'>
 
 <VersionBlock lastVersion="1.6">
 
@@ -27,7 +54,7 @@ with days as (
         dbt_utils.date_spine(
             'day',
             "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2027','mm/dd/yyyy')"
+            "to_date('01/01/2025','mm/dd/yyyy')"
         )
     }}
 
@@ -39,6 +66,9 @@ final as (
 )
 
 select * from final
+-- filter the time spine to a specific range
+where date_day > dateadd(year, -4, current_timestamp()) 
+and date_hour < dateadd(day, 30, current_timestamp())
 ```
 
 </VersionBlock>
@@ -58,7 +88,7 @@ with days as (
         dbt.date_spine(
             'day',
             "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2027','mm/dd/yyyy')"
+            "to_date('01/01/2025','mm/dd/yyyy')"
         )
     }}
 
@@ -86,7 +116,7 @@ with days as (
     {{dbt_utils.date_spine(
         'day',
         "DATE(2000,01,01)",
-        "DATE(2030,01,01)"
+        "DATE(2025,01,01)"
     )
     }}
 ),
@@ -98,6 +128,9 @@ final as (
 
 select *
 from final
+-- filter the time spine to a specific range
+where date_day > dateadd(year, -4, current_timestamp()) 
+and date_hour < dateadd(day, 30, current_timestamp())
 ```
 
 </VersionBlock>
@@ -112,7 +145,7 @@ with days as (
     {{dbt.date_spine(
         'day',
         "DATE(2000,01,01)",
-        "DATE(2030,01,01)"
+        "DATE(2025,01,01)"
     )
     }}
 ),
@@ -124,19 +157,15 @@ final as (
 
 select *
 from final
+-- filter the time spine to a specific range
+where date_day > dateadd(year, -4, current_timestamp()) 
+and date_hour < dateadd(day, 30, current_timestamp())
 ```
 
 </VersionBlock>
 
-You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but it doesn't currently support finer grains.
-
 ## Hourly time spine
-
-This example uses `dbt.date_spine` with an `hour` granularity to generate a table with one row per hour. This is needed for hourly data aggregation and other sub-daily analyses. 
-
-WHAT ARE OTHER OPTIONS?? TO ADD BOTH, DO USERS NEED TWO FILES (HOUR AND DAY) OR CAN THEY BE COMBINED?
-
-<File name='metricflow_time_spine_hour.sql'>
+<File name='time_spine_hourly.sql'>
 
 ```sql
 -- filename: metricflow_time_spine_hour.sql
@@ -152,7 +181,7 @@ with hours as (
         dbt.date_spine(
             'hour',
             "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2030','mm/dd/yyyy')"
+            "to_date('01/01/2025','mm/dd/yyyy')"
         )
     }}
 
@@ -164,5 +193,8 @@ final as (
 )
 
 select * from final
+-- filter the time spine to a specific range
+where date_day > dateadd(year, -4, current_timestamp()) 
+and date_hour < dateadd(day, 30, current_timestamp())
 ```
 </File>

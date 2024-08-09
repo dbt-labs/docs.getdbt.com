@@ -104,10 +104,6 @@ dimensions:
 
 ## Time
 
-:::tip use datetime data type if using BigQuery
-To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as sub-daily like hour, or week, month, quarter, year, and so on. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
-:::
-
 Time has additional parameters specified under the `type_params` section. When you query one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the aggregation time dimension, which you can refer to as `metric_time` or use the dimensions' name. 
 
 You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
@@ -120,7 +116,7 @@ dbt sl query --metrics users_created,users_deleted --group-by metric_time__year 
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
-You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (like sub-daily (hourly), daily, weekly, and so on). For more sub-daily configuration details, refer to [sub-daily granularity](/docs/build/granularity).
+You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (hourly, daily, weekly, and so on).
 
 <Tabs>
 
@@ -171,11 +167,11 @@ measures:
 
 <TabItem value="time_gran" label="time_granularity">
 
-`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as [sub-daily](/docs/build/granularity), daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric specified with weekly granularity couldn't be aggregated to a daily grain. 
+`time_granularity` specifies the grain of a time dimension. MetricFlow will transfom the undelying column to the sepcifies granularity i.e if you add hourly granulairty to a time dimension column we will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate to a coarser grain, for example from hourly to monthly. You can't go from a coarser grain to a finer grain, for example from monthly to hourly.
 
-The current options for time granularity are day, week, month, quarter, and year. 
+Any granulairty supported by your engines `date_trunc` funciton are support, with the most common granularities being hour, day, week, month, quarter, and year. 
 
-Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the highest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarser granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
 ```yaml
 dimensions: 
@@ -185,14 +181,14 @@ dimensions:
     expr: date_trunc('day', ts_created) # ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
-      time_granularity: hour # or second, or millisecond etc
+      time_granularity: day 
   - name: deleted_at
     type: time
     label: "Date of deletion"
     expr: date_trunc('day', ts_deleted) # ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
-      time_granularity: hour # or second, or millisecond etc
+      time_granularity: month 
 
 measures:
   - name: users_deleted
