@@ -260,6 +260,14 @@ Example of the details view for the model `customers`:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
 
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
+
+<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg" width="95%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
+
+</DocCarousel>
+
 ## Staging environment
 
 dbt Explorer supports views for [staging deployment environments](/docs/deploy/deploy-environments#staging-environment), in addition to the production environment. This gives you a unique view into your pre-production data workflows, with the same tools available in production, while providing an extra layer of scrutiny. 
@@ -268,18 +276,7 @@ You can explore the metadata from your production or staging environment to info
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="100%" title="Explore in a staging environment" />
 
-## Auto-exposures
-Auto-exposures helps users understand how their models are used in downstream analytics tools to inform investments and reduce incidents — ultimately building trust and confidence in data products. It imports and auto-generates exposures based on Tableau dashboards, with user-defined curation.
 
-Refer to [Auto-exposures](/docs/collaborate/auto-exposures) for more information.
-
-<DocCarousel slidesPerView={1}>
-
-<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
-
-<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage.jpg" width="95%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
-
-</DocCarousel>
 
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 
