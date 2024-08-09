@@ -2,7 +2,6 @@
 title: "Model query history"
 sidebar_label: "Model query history"
 description: "Import and auto-generate exposures from dashboards and understand how models are used in downstream tools for a richer lineage."
-pagination_next: null
 ---
 
 # About model query history <Lifecycle status='beta' />

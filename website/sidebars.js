@@ -489,7 +489,6 @@ const sidebarSettings = {
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
-            "docs/deploy/dashboard-status-tiles",
           ],
         },
         "docs/deploy/deployment-tools",
@@ -522,8 +521,8 @@ const sidebarSettings = {
               },
               items: [
                 "docs/collaborate/auto-exposures",
-                "docs/collaborate/data-tile",
                 "docs/collaborate/model-query-history",
+                "docs/collaborate/data-tile",
               ],
             },
           ],
