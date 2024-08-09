@@ -16,7 +16,7 @@ Data health tile is currently in beta. If you have any feedback or would like to
 
 The data health tile:
 
-- Distills trust signals for data consumers
+- Distills trust signals for data consumers.
 - Deep links you into dbt Explorer where you can further dive into upstream data issues.
 - Provides richer information and makes it easier to debug.
 - Revamps the existing, [job-based tiles](#job-based-data-health).
