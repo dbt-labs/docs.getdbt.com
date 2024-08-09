@@ -59,7 +59,7 @@ These tests are defined in `.sql` files, typically in your `tests` directory (as
 select
     order_id,
     sum(amount) as total_amount
-from {{ ref('fct_payments' )}}
+from {{ ref('fct_payments') }}
 group by 1
 having total_amount < 0
 ```
