@@ -17,6 +17,8 @@ This portion of our documentation will go over dbt Cloud's various capabilities 
 - [Leverage artifacts](/docs/deploy/artifacts) &mdash; dbt Cloud generates and saves artifacts for your project, which it uses to power features like creating docs for your project and reporting freshness of your sources.
 - [Source freshness](/docs/deploy/source-freshness) &mdash; Monitor data governance by enabling snapshots to capture the freshness of your data sources. 
 
+To set up and add data health tiles to view data freshness and quality checks in your dashboard, refer to [data health tiles](/docs/collaborate/data-tile).
+
 <DocCarousel slidesPerView={1}>
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="98%" title="An overview of a dbt Cloud job run which contains Run Summary, Job Trigger, Run Duration, and more."/>
