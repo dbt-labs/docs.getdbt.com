@@ -78,7 +78,7 @@ var siteSettings = {
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://coalesce.getdbt.com/",
+    announcementBarLink: "https://coalesce.getdbt.com/register/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2025_coalesce-2024_aw&utm_content=coalesce____&utm_term=all_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "meagan-palmer",
