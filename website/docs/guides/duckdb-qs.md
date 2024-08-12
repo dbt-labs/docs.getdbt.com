@@ -19,11 +19,13 @@ In this quickstart guide, you'll learn how to use dbt Core with DuckDB, enabling
 
 This guide will demonstrate how to: 
 
-- Create a GitHub Codespace using a template provided by dbt Labs.
+- Create an online development environment using a template provided by dbt Labs.
    - This sets up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
    - For additional information, refer to the [README](https://github.com/gwenwindflower/octocatalog) for the Jaffle Shop template. It includes instructions on how to do this, along with animated GIFs.
 - Run any dbt command from the environment’s terminal. 
 - Generate a larger dataset for the Jaffle Shop café (for example, 5 years of data instead of just one).
+
+You can learn [dbt Learn courses](https://learn.getdbt.com) through high-quality courses and workshops.
 
 
 ### Related content
@@ -34,7 +36,6 @@ This guide will demonstrate how to:
 - [Build your first models](/guides/manual-install?step=3)
 - [Test and document your project](/guides/manual-install?step=4)
 - [Schedule a job](/guides/manual-install?step=5)
-- Learn more with [dbt Learn courses](https://learn.getdbt.com)
 
 
 ### Prerequisites
@@ -45,7 +46,7 @@ This guide will demonstrate how to:
 
 ## Set up DuckDB for dbt Core
 
-The following will provide a step by step guide on setting up DuckDB for both local and web browser. 
+The following will provide a step-by-step guide on setting up DuckDB for use in both local environments and web browsers.
 
 For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
 
@@ -56,7 +57,34 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 1. First, you'll need to clone this repository.
 
-[review: consider adding `git clone` command as an example for step 1]
+- You can add a `git clone` command for cloning a repository. You can follow these steps to achieve this:
+
+    - Open your terminal and navigate to the directory where you want to clone the repository. Use the `cd` command to change directories. 
+    - Go to the Git hosting service where the repository is hosted. Find the repository you want to clone and copy its URL. This URL is usually found by clicking the code or clone button on the repository's main page.
+    - Type `git clone` in the terminal, followed by the URL you copied. The command should look like this:
+
+
+```Jinja
+
+    git clone https://github.com/username/repository-name.git
+
+```
+
+As a note, you'll need to replace https://github.com/username/repository-name.git with the actual URL of the repository you want to clone.
+
+    - Following this, press Enter. Git will clone the repository into a new directory with the same name as the repository. This new directory will be created in the location you specified earlier.
+    - Once the repository is cloned, you may want to navigate into the new directory to start working on the project. Use the cd command to do this:
+
+```Jinja
+
+cd repository-name
+
+```
+
+You'll need to replace repository name with the actual name of the cloned directory.
+
+    - That's it! You've successfully added and executed a git clone command to clone a repository.
+
 
 2. Change into the docs-duckdb directory from the command line:
 
