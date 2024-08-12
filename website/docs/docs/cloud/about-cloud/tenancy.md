@@ -2,6 +2,7 @@
 title: Tenancy
 id: tenancy
 description: "Information about single tenant and multi-tenant dbt Cloud instances"
+unlisted: true
 ---
 
 import AboutCloud from '/snippets/_test-tenancy.md';

@@ -1,6 +1,7 @@
 ---
 title: "dbt Cloud Architecture"
 id: "architecture"
+unlisted: true
 description: "Information about the architecture, communication, and security of dbt Cloud"
 ---
 
