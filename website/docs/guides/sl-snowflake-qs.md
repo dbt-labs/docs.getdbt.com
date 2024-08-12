@@ -98,15 +98,15 @@ Open a new tab and follow these quick steps for account setup and data loading i
 
 - You need a [dbt Cloud](https://www.getdbt.com/signup/) Trial, Team, or Enterprise account for all deployments. Contact your representative for Single-tenant setup; otherwise, create an account using this guide.
 - Have the correct [dbt Cloud license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/self-service-permissions) based on your plan:
-  <detailsToggle alt_header="More info on license and permissions">  
+  <DetailsToggle alt_header="More info on license and permissions">  
   
   - Enterprise &mdash; Developer license with Account Admin permissions. Or "Owner" with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
   - Team &mdash; "Owner" access with a Developer license.
   - Trial &mdash; Automatic "Owner" access under a Team plan trial.
   
-  </detailsToggle>
+  </DetailsToggle>
 
-- Production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to "versionless" by selecting [ Keep on latest version](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) to always get the latest updates.
+- Production and development environments must be on [dbt version 1.6 or higher](/docs/dbt-versions/upgrade-dbt-version-in-cloud). Alternatively, set your environment to [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) to always get the latest updates.
 - Create a [trial Snowflake account](https://signup.snowflake.com/):
   - Select the Enterprise Snowflake edition with ACCOUNTADMIN access. Consider organizational questions when choosing a cloud provider, refer to Snowflake's [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms).
   - Select a cloud provider and region. All cloud providers and regions will work so choose whichever you prefer.
@@ -1056,7 +1056,7 @@ You've learned how to:
 - Build, test, and manage dbt Cloud projects, focusing on metrics and semantic layers.
 - Run production jobs and query metrics with our available integrations.
 
-For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), and more.
+For next steps, you can start defining your own metrics and learn additional configuration options such as [exports](/docs/use-dbt-semantic-layer/exports), [fill null values](/docs/build/advanced-topics), [implementing dbt Mesh with the Semantic Layer](/docs/use-dbt-semantic-layer/sl-faqs#how-can-i-implement-dbt-mesh-with-the-dbt-semantic-layer), and more.
 
 Here are some additional resources to help you continue your journey:
 

@@ -59,7 +59,7 @@ Depending on your Microsoft Entra ID settings, your App Registration page might 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-redirect-uri.png" title="Configuring a Redirect URI"/>
 
-### Azure <-> dbt Cloud User and Group mapping
+### Azure &lt;-&gt; dbt Cloud User and Group mapping
 
 The Azure users and groups you will create in the following steps are mapped to groups created in dbt Cloud based on the group name. Reference the docs on [enterprise permissions](enterprise-permissions) for additional information on how users, groups, and permission sets are configured in dbt Cloud.
 

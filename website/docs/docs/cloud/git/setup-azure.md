@@ -200,7 +200,7 @@ To re-enable MFA for the user, select them again and click **Enable**. Note, you
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -233,7 +233,7 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -268,7 +268,7 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -305,8 +305,8 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - repoV2 for access to all projects
-- repoV2/<azure_devops_project_object_id> for per project access
-- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for per repo access
+- repoV2/&lt;azure_devops_project_object_id&gt; for per project access
+- repoV2/&lt;azure_devops_project_object_id&gt;/&lt;azure_devops_repository_object_id&gt; for per repo access
 
 
 **UI/API/CLI:** UI, API, and CLI
@@ -345,8 +345,8 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - repoV2 for access to all projects
-- repoV2/<azure_devops_project_object_id> for access to a single project at a time
-- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for access to a single repo at a time
+- repoV2/&lt;azure_devops_project_object_id&gt; for access to a single project at a time
+- repoV2/&lt;azure_devops_project_object_id&gt;/&lt;azure_devops_repository_object_id&gt; for access to a single repo at a time
 
 
 **UI/API/CLI:** UI, API, and CLI

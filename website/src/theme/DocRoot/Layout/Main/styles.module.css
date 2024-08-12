@@ -19,8 +19,3 @@
     ) !important;
   }
 }
-
-/* Page Not Available Banner */
-:local(.versionBanner) h5 {
-  margin-bottom: 0;
-}

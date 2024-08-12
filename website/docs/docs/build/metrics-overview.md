@@ -261,7 +261,7 @@ filter: |
   {{ TimeDimension('time_dimension', 'granularity') }}
 
 filter: |  
-  {{ Metric('metric_name', group_by=['entity_name']) }}  {# Available in v1.8 or go [versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version). }
+ {{ Metric('metric_name', group_by=['entity_name']) }}  # Available in v1.8 or with [versionless (/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) dbt Cloud.
 ```
 
 </File>
@@ -271,6 +271,7 @@ For example, if I wanted to filter for the order date dimension, grouped by mont
 ```yaml
 filter: |  
   {{ TimeDimension('order_date', 'month') }}
+
 ```
 
 ## Further configuration
