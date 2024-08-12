@@ -29,13 +29,13 @@ dbt Cloud Enterprise plans can add multiple credentials and map those to service
 
 1. In the **Set Up Semantic Layer Configuration** page, enter the credentials specific to your data platform that you want the Semantic Layer to use.
    - Use credentials with minimal privileges. The Semantic Layer requires read access to the schema(s) containing the dbt models used in your semantic models for downstream applications
-   - Note, environment variables such as `{{env_var('DBT_WAREHOUSE')}`, aren't supported in the dbt Semantic Layer yet. You must use the actual credentials.
+   - Note, environment variables such as  `{{env_var('DBT_WAREHOUSE') }}`, aren't supported in the dbt Semantic Layer yet. You must use the actual credentials.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="45%" title="Enter the credentials specific to your data platform that you want the Semantic Layer to use and select the deployment environment."/>
 
-2. Create a **Service Token** after you add the credential.
+1. Create a **Service Token** after you add the credential.
    * Enterprise plans: Name and generate a service token on the credential page directly.
    * Team plans: You can return to the **Project Details** page and click the **Generate a Service Token** button. 
-3. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
+2. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
 
 :::info
 Teams plans can create multiple service tokens that map to one underlying credential. Adding [multiple credentials](#4-add-more-credentials) for tailored access is available for Enterprise plans.  
@@ -59,7 +59,7 @@ We recommend configuring credentials and service tokens to reflect your teams an
 Note that: 
 - Admins can link multiple service tokens to a single credential within a project, but each service token can only be linked to one credential per project.
 - When you send a request through the APIs, the service token of the linked credential will follow access policies of the underlying view and tables used to build your semantic layer requests.
-- [Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE')}` aren't supported the dbt Semantic Layer yet. You must use the actual credentials instead.
+- [Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren't supported the dbt Semantic Layer yet. You must use the actual credentials instead.
 
 To add multiple credentials and map them to service tokens:
 
