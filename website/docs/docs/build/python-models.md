@@ -765,15 +765,34 @@ storage.objects.delete
 
 **Installing packages:** 
 
-Depending on if you use Dataproc cluster or serverless, third-party packages installation is done differently.
-- When running in a **cluster**:  
-  Google recommends installing Python packages while creating the cluster via initialization actions:  
-  - [How initialization actions are used](https://github.com/GoogleCloudDataproc/initialization-actions/blob/master/README.md#how-initialization-actions-are-used)  
-  - [Actions for installing via `pip` or `conda`](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/python)
-    
-  You can also install packages at cluster creation time by [defining cluster properties](https://cloud.google.com/dataproc/docs/tutorials/python-configuration#image_version_20): `dataproc:pip.packages` or `dataproc:conda.packages`.
-- When running **serverless**:
-  Google recommends using a [custom docker image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers) to install thrid-party packages. The image needs to be hosted in [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs). It can then be used by providing the image path (using format `{hostname}/{project-id}/{image}:{tag}`) in dbt profiles, under the target key `dataproc_batch.runtime_config.container_image`.
+Depending on if you use Dataproc cluster or serverless, third-party packages installation is done differently.  
+
+- **Dataproc Cluster** &mdash; Google recommends installing Python packages while creating the cluster via initialization actions:  
+    - [How initialization actions are used](https://github.com/GoogleCloudDataproc/initialization-actions/blob/master/README.md#how-initialization-actions-are-used)  
+    - [Actions for installing via `pip` or `conda`](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/python)
+
+    You can also install packages at cluster creation time by [defining cluster properties](https://cloud.google.com/dataproc/docs/tutorials/python-configuration#image_version_20): `dataproc:pip.packages` or `dataproc:conda.packages`.  
+
+- **Dataproc Serverless** &mdash; Google recommends using a [custom docker image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers) to install thrid-party packages. The image needs to be hosted in [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs). It can then be used by providing the image path in dbt profiles:
+    <File name='profiles.yml'>
+    ```yml
+    my-profile:
+        target: dev
+        outputs:
+            dev:
+            type: bigquery
+            method: oauth
+            project: abc-123
+            dataset: my_dataset
+            
+            # for dbt Python models to be run on Dataproc Serverless
+            gcs_bucket: dbt-python
+            dataproc_region: us-central1
+            submission_method: serverless
+            dataproc_batch:
+                runtime_config:
+                    container_image: {HOSTNAME}/{PROJECT_ID}/{IMAGE}:{TAG}
+    ```
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-pip-packages.png" title="Adding packages to install via pip at cluster startup"/>
 
