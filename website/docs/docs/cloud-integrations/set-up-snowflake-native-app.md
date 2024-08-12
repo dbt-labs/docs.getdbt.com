@@ -149,5 +149,5 @@ If there's been an update to the dbt Cloud account ID, access URL, or API servic
 
 <Expandable alt_header="Are environment variables supported in the Native App?" >
 
-[Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren’t supported the dbt Semantic Layer yet. You must use the actual credentials instead.
+[Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren’t supported the dbt Semantic Layer yet. To use the 'Ask dbt' feature, you must use the actual credentials instead.
 </Expandable>
