@@ -109,7 +109,7 @@ function QuickstartTOC() {
         }
       });
 
-      // Get title by frontmatter title or markdown h1 (#) header
+      // Get title by frontmatter title
       let quickstartTitle = document?.querySelector("header h1");
 
       // Get lifecycle badge from markdown content h1
