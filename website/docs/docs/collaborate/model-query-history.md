@@ -15,7 +15,6 @@ The model query history tile allows you to:
 
 Model query history is powered by a single query of the query log table in your data warehouse aggregated on a daily basis. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
 
-
 ## Prerequisites
 
 To access the features, you should meet the following:
