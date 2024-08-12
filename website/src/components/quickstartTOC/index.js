@@ -108,8 +108,12 @@ function QuickstartTOC() {
         }
       });
 
-      const quickstartTitle = document.querySelector("header h1");
-      quickstartTitle.classList.add(style.quickstartTitle);
+      // Get title by frontmatter title or markdown h1 (#) header
+      const quickstartTitle = document?.querySelector("header h1");
+
+      if (quickstartTitle) {
+        quickstartTitle.classList.add(style.quickstartTitle);
+      } 
     }
   }, [mounted]);
 
