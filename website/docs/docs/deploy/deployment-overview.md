@@ -15,7 +15,7 @@ dbt Cloud offers the easiest and most reliable way to run your dbt project in pr
 - Ensure CI and production pipelines are efficient 
 - Identify the root cause of failures in deployment environments
 - Maintain high-quality code and data in production
-- Gain visibility into the health of deployment jobs, models, and tests
+- Gain visibility into the [health](/docs/collaborate/data-tile) of deployment jobs, models, and tests
 - Uses [exports](/docs/use-dbt-semantic-layer/exports) to write [saved queries](/docs/build/saved-queries) in your data platform for reliable and fast metric reporting
 
 Before continuing, make sure you understand dbt's approach to [deployment environments](/docs/deploy/deploy-environments). 
@@ -95,12 +95,6 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     title="Source freshness"
     body="Enable snapshots to capture the freshness of your data sources and configure how frequent these snapshots should be taken. This can help you determine whether your source data freshness is meeting your SLAs."
     link="/docs/deploy/source-freshness"
-    icon="dbt-bit"/>
-
-<Card
-    title="Dashboard status tiles"
-    body="Set up status tiles to see the data freshness and quality checks whenever you view your data. "
-    link="/docs/deploy/dashboard-status-tiles"
     icon="dbt-bit"/>
 
 </div> <br />
