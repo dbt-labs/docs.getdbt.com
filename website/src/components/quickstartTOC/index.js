@@ -114,7 +114,7 @@ function QuickstartTOC() {
 
       // Get lifecycle badge from markdown content h1
       // Example: # Demo h1 title <Lifecycle status="beta"/>
-      const markdownTitleLifeCycleBadge = document?.querySelector(
+      const markdownTitleLifeCycleBadge = document?.querySelectorAll(
         ".quickstart-container .step-container > h1 > span.lifecycle-badge"
       );
 
@@ -122,9 +122,11 @@ function QuickstartTOC() {
         quickstartTitle.classList.add(style.quickstartTitle);
 
         // If markdown title also set, check if LifeCycle span
-        // element exists and move to quickstartTitle if so.
-        if (markdownTitleLifeCycleBadge) {
-          quickstartTitle.appendChild(markdownTitleLifeCycleBadge);
+        // elements exists and move to quickstartTitle if so.
+        if (markdownTitleLifeCycleBadge?.length) {
+          for (let i = 0; i < markdownTitleLifeCycleBadge.length; i++) {
+            quickstartTitle.appendChild(markdownTitleLifeCycleBadge[i]);
+          }
         }
       }
     }
