@@ -126,7 +126,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
 | Field | Value |
 | ----- | ----- |
 | **Log&nbsp;in&nbsp;with** | Microsoft Entra ID Single Tenant |
-| **Client&nbspID** | Paste the **Application (client) ID** recorded in the steps above |
+| **Client&nbsp;ID** | Paste the **Application (client) ID** recorded in the steps above |
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) recorded in the steps above; <br />**Note:** When the client secret expires, an Entra ID admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access. |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (such as `fishtownanalytics.com`). Only use the primary domain; this won't block access for other domains. |
