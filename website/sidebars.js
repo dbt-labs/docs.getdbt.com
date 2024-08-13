@@ -225,7 +225,6 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/duckdb-setup",
                 "docs/core/connect-data-platform/exasol-setup",
                 "docs/core/connect-data-platform/extrica-setup",
-                "docs/core/connect-data-platform/fal-setup",
                 "docs/core/connect-data-platform/firebolt-setup",
                 "docs/core/connect-data-platform/greenplum-setup",
                 "docs/core/connect-data-platform/ibmdb2-setup",
@@ -489,7 +488,6 @@ const sidebarSettings = {
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
-            "docs/deploy/dashboard-status-tiles",
           ],
         },
         "docs/deploy/deployment-tools",
@@ -507,12 +505,25 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
+            "docs/collaborate/access-from-dbt-cloud",
             "docs/collaborate/column-level-lineage",
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
-            "docs/collaborate/access-from-dbt-cloud",
             "docs/collaborate/dbt-explorer-faqs",
+            {
+              type: "category",
+              label: "Model consumption",
+              link: {
+                type: "doc",
+                id: "docs/collaborate/auto-exposures",
+              },
+              items: [
+                "docs/collaborate/auto-exposures",
+                "docs/collaborate/data-tile",
+                "docs/collaborate/model-query-history",
+              ],
+            },
           ],
         },
         {
@@ -696,6 +707,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/cloud-integrations/overview" },
       items: [
         "docs/cloud-integrations/overview",
+        "docs/cloud-integrations/configure-auto-exposures",
         {
           type: "category",
           label: "Snowflake Native App",
@@ -834,7 +846,6 @@ const sidebarSettings = {
         "reference/resource-configs/impala-configs",
         "reference/resource-configs/clickhouse-configs",
         "reference/resource-configs/doris-configs",
-        "reference/resource-configs/fal-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/infer-configs",

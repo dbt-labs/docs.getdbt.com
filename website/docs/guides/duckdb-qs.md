@@ -120,6 +120,7 @@ cd docs-duckdb
     venv\Scripts\activate.bat
 
     ```
+    ```
 
     </Expandable>
 

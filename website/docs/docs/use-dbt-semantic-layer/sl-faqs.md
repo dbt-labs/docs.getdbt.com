@@ -279,6 +279,14 @@ We are currently working on introducing more fine-grained access controls, inclu
 
 ## Implementation
 
+<Expandable alt_header="How can I implement dbt Mesh with the dbt Semantic Layer">
+
+import SLMeshFAQs from '/snippets/_sl-dbt-mesh-faq.md';
+
+<SLMeshFAQs/>
+
+</Expandable>
+
 <Expandable alt_header="Which ‘staging layer’ should the dbt Semantic Layer talk to? Raw, staging, or marts?">
 
 We recommend to build your semantic layer on top of the [marts layer](/best-practices/how-we-structure/4-marts), which represents the clean and transformed data from your dbt models.
