@@ -44,7 +44,7 @@ If using an existing Databricks workspace, all workloads running in the workspac
 ## Configure Azure Private Link
 
 1. Navigate to your Azure Databricks workspace. 
-    The path is: `/subscriptions/<subscription_uuid>/resourceGroups/<resource_group_name>/providers/Microsoft.Databricks/workspaces/<workspace_name>`.
+    The path format is: `/subscriptions/<subscription_uuid>/resourceGroups/<resource_group_name>/providers/Microsoft.Databricks/workspaces/<workspace_name>`.
 2. From the workspace overview, click **JSON view**. 
 3. Copy the value in the `resource_id` field.  
 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support): 
