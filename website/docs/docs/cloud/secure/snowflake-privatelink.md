@@ -40,7 +40,7 @@ To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.ama
 
 2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
-3. Add the required information to the template below, and submit your request to  [dbt Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support):
+3. Add the required information to the following template and submit your request to  [dbt Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support):
 
 ```
 Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
@@ -62,7 +62,7 @@ import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
 
 To configure Snowflake instances hosted on Azure for [Private Link](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview):
 
-1. In your Snowflake account, run:
+1. In your Snowflake account, run the following SQL statements and copy the output: 
 
 ```sql
 
@@ -73,17 +73,17 @@ SYSTEM$GET_PRIVATELINK_CONFIG;
 
 Copy the output
 
-2. Contact [dbt Labs Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support) and provide the following information: 
+2. Add the required information to the following template and submit your request to  [dbt Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support): 
 
 ```
 Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
 - Type: Snowflake
-- SYSTEM$GET_PRIVATELINK_CONFIG output:
+- The output from SYSTEM$GET_PRIVATELINK_CONFIG:
   - Include the privatelink-pls-id
 - dbt Cloud Azure multi-tenant environment: 
 ```
 
-3. dbt will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [Snowflake configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting their support team. 
+3. dbt Support will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [PrivateLink configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting the Snowflake Support team. 
 
 ## Create Connection in dbt Cloud
 
