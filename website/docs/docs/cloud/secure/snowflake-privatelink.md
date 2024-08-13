@@ -67,7 +67,7 @@ To complete the setup, follow the remaining steps from the Snowflake setup guide
 - [Snowflake AWS PrivateLink](https://docs.snowflake.com/en/user-guide/admin-security-privatelink)
 - [Snowflake Azure Private Link](https://docs.snowflake.com/en/user-guide/privatelink-azure)
 
-There are some nuances for each connection, but in each case you will need a Snowflake administrator. As the Snowflake administrator, call the `SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS` function using the privateEndpointResourceID value as the function argument. This step authorizes access to the Snowflake internal stage through the Private Endpoint. 
+There are some nuances for each connection, but in each case, you will need a Snowflake administrator. As the Snowflake administrator, call the `SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS` function using the privateEndpointResourceID value as the function argument. This step authorizes access to the Snowflake internal stage through the private endpoint. 
 
 ```sql
 
