@@ -16,7 +16,7 @@ The following steps will walk you through the setup of a Databricks AWS PrivateL
 
 1. Locate your [Databricks instance name](https://docs.databricks.com/en/workspace/workspace-details.html#workspace-instance-names-urls-and-ids)
   -  Example: `cust-success.cloud.databricks.com`
-2. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support): 
+2. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support): 
 ```
 Subject: New AWS Multi-Tenant PrivateLink Request
 - Type: Databricks
@@ -47,7 +47,7 @@ If using an existing Databricks workspace, all workloads running in the workspac
     The path format is: `/subscriptions/<subscription_uuid>/resourceGroups/<resource_group_name>/providers/Microsoft.Databricks/workspaces/<workspace_name>`.
 2. From the workspace overview, click **JSON view**. 
 3. Copy the value in the `resource_id` field.  
-4. Add the required information to the following template and submit your request to [our Support team](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support): 
+4. Add the required information to the following template and submit your request to [our Support team](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support): 
     ```
       Subject: New Azure Multi-Tenant Private Link Request
     - Type: Databricks
