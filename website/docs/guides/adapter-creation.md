@@ -11,9 +11,6 @@ level: 'Advanced'
 recently_updated: true
 ---
 
-# test test <Lifecycle status="team,enterprise"/>
-<!-- # test h1 title <Lifecycle status="beta"/> -->
-
 <div style={{maxWidth: '900px'}}>
 
 ## Introduction
