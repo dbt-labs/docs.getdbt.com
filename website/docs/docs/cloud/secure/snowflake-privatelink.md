@@ -28,7 +28,7 @@ dbt Cloud supports private connectivity for Snowflake using one of the following
 
 ## Configure AWS PrivateLink
 
-To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.amazon.com/privatelink/):
+To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.amazon.com/privatelink):
 
 1. Open a Support case with Snowflake to allow access from the dbt Cloud AWS or Entra ID account.
 - Snowflake prefers that the account owner opens the Support case directly, rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
@@ -67,7 +67,7 @@ To configure Snowflake instances hosted on Azure for [Private Link](https://lear
 ```sql
 
 USE ROLE ACCOUNTADMIN;
-SYSTEM$GET_PRIVATELINK_CONFIG
+SYSTEM$GET_PRIVATELINK_CONFIG;
 
 ```
 
@@ -102,7 +102,7 @@ To complete the setup, follow the remaining steps from the Snowflake setup guide
 - [Snowflake AWS PrivateLink](https://docs.snowflake.com/en/user-guide/admin-security-privatelink)
 - [Snowflake Azure Private Link](https://docs.snowflake.com/en/user-guide/privatelink-azure)
 
-There are some nuances for each connection, but in each case you will need a Snowflake administrator. As the Snowflake administrator, call the `SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS` function using the privateEndpointResourceID value as the function argument. This step authorizes access to the Snowflake internal stage through the Private Endpoint. 
+There are some nuances for each connection, but in each case, you will need a Snowflake administrator. As the Snowflake administrator, call the `SYSTEM$AUTHORIZE_STAGE_PRIVATELINK_ACCESS` function using the privateEndpointResourceID value as the function argument. This step authorizes access to the Snowflake internal stage through the private endpoint. 
 
 ```sql
 
