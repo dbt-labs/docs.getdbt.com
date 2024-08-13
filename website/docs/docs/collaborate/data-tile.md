@@ -19,7 +19,7 @@ The data health tile:
 - Provides richer information and makes it easier to debug.
 - Revamps the existing, [job-based tiles](#job-based-data-health).
 
-<Lightbox src="img width="515" alt="image" src="https://github.com/user-attachments/assets/7772cb50-8193-454a-bbf7-c8601ef0c3ac" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers./>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
 
 ## Prerequisites
 
