@@ -90,11 +90,33 @@ import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-## Sub-daily granularity
+## Default granularity for metircs
 
-Sub-daily granularity enables you to query metrics at granularities at finer time grains below a day, such as hourly, minute, or even by the second. It support anything that `date_trunc` supports. This can be useful if you want more detailed analysis and for datasets where you need more granular time data, such as minute-by-minute event tracking.
+It's possible to define a default time granularity for metrics if it's different than the granularity of the default agg time dimensions (`metric_time`). This is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain. The granularity can be set using the `time_granularity` parameter on the metric, and defaults to `day`.
 
-For more configuration details, refer to [sub-daily granularity](/docs/build/granularity).
+### Example
+I have a semantic model called `orders` with a time dimension called `order_time`. I want the `orders` metric to roll up to `monthly` by default, however I want the option to be able to look at these metrics hourly. I can set the `time_granularity` parameter on the `order_time` dimensions to `hour`, and then set the `time_granularity` parameter in the metric to `month`.
+```yaml
+semantic_models:
+  ...
+  dimensions:
+    - name: order_time
+      type: time
+      type_params:
+      time_granularity: hour
+  measures:
+    - name: orders
+      expr: 1
+      agg: sum
+  metrics:
+    - name: orders
+      type: simple
+      label: Count of Orders
+      type_params:
+        measure:
+          name: orders
+      time_granularity: month -- Optional, defaults to day
+```
 
 ## Conversion metrics
 
