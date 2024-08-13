@@ -71,7 +71,6 @@ SYSTEM$GET_PRIVATELINK_CONFIG;
 
 ```
 
-Copy the output
 
 2. Add the required information to the following template and submit your request to  [dbt Support](https://docs.getdbt.com/docs/dbt-support#dbt-cloud-support): 
 
