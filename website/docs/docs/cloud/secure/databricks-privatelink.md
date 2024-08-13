@@ -55,7 +55,7 @@ If using an existing Databricks workspace, all workloads running in the workspac
     - Databricks Azure resource ID:
     - dbt Cloud multi-tenant environment: EMEA
     ```
-5. Once Support confirms the resources are available in the Azure portal, navigate to the Azure Databricks Workspace and go to **Networking** --> **Private Endpoint Connections** --> highlight the `dbt` named option, and select **Approve**.
+5. Once our Support team confirms the resources are available in the Azure portal, navigate to the Azure Databricks Workspace and browse to **Networking** > **Private Endpoint Connections**. Then, highlight the `dbt` named option and select **Approve**.
 
 
 ## Create Connection in dbt Cloud
