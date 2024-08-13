@@ -78,4 +78,4 @@ When we generate the dbt Explorer site, you'll see the exposure appear:
 
 * [Exposure properties](/reference/exposure-properties)
 * [`exposure:` selection method](/reference/node-selection/methods#the-exposure-method)
-* [Dashboard status tiles](/docs/deploy/dashboard-status-tiles)
+* [Data health tiles](/docs/collaborate/data-tile)

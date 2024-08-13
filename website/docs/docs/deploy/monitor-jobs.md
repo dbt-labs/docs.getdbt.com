@@ -16,7 +16,8 @@ This portion of our documentation will go over dbt Cloud's various capabilities 
 - [Webhooks](/docs/deploy/webhooks) &mdash; Use webhooks to send events about your dbt jobs' statuses to other systems.
 - [Leverage artifacts](/docs/deploy/artifacts) &mdash; dbt Cloud generates and saves artifacts for your project, which it uses to power features like creating docs for your project and reporting freshness of your sources.
 - [Source freshness](/docs/deploy/source-freshness) &mdash; Monitor data governance by enabling snapshots to capture the freshness of your data sources. 
-- [Dashboard status tiles](/docs/deploy/dashboard-status-tiles) &mdash; Set up and add status tiles to view data freshness and quality checks
+
+To set up and add data health tiles to view data freshness and quality checks in your dashboard, refer to [data health tiles](/docs/collaborate/data-tile).
 
 <DocCarousel slidesPerView={1}>
 
