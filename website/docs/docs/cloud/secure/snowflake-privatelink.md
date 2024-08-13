@@ -19,13 +19,21 @@ Users connecting to Snowflake using SSO over a PrivateLink connection from dbt C
 - [Snowflake SSO with Private Connectivity](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-overview#label-sso-private-connectivity)
 :::
 
-## Configure PrivateLink
+## About private connectivity for Snowflake
+
+dbt Cloud supports private connectivity for Snowflake using one of the following services:
+
+- AWS [PrivateLink](#configure-aws-privatelink)
+- Azure [Private Link](#configure-azure-private-link)
+
+## Configure AWS PrivateLink
+
+To configure Snowflake instances hosted on AWS for [PrivateLink](https://aws.amazon.com/privatelink/):
 
 1. Open a Support case with Snowflake to allow access from the dbt Cloud AWS or Entra ID account.
 - Snowflake prefers that the account owner opens the Support case directly, rather than dbt Labs acting on their behalf. For more information, refer to [Snowflake's knowledge base article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors).
 - Provide them with your dbt Cloud account ID along with any other information requested in the article.
   - **AWS account ID**: `346425330055` &mdash; _NOTE: This account ID only applies to AWS dbt Cloud multi-tenant environments. For AWS Virtual Private/Single-Tenant account IDs please contact [Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support)._
-  - Azure private endpoint resource ID: Please contact [Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support).
 - You will need to have `ACCOUNTADMIN` access to the Snowflake instance to submit a Support request.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
@@ -49,6 +57,33 @@ _*By default dbt Cloud will be configured to use `privatelink-account-url` from 
 import PrivateLinkSLA from '/snippets/_PrivateLink-SLA.md';
 
 <PrivateLinkSLA />
+
+## Configure Azure Private Link
+
+To configure Snowflake instances hosted on Azure for [Private Link](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview):
+
+1. In your Snowflake account, run:
+
+```sql
+
+USE ROLE ACCOUNTADMIN;
+SYSTEM$GET_PRIVATELINK_CONFIG
+
+```
+
+Copy the output
+
+2. Contact [dbt Labs Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support) and provide the following information: 
+
+```
+Subject: New Multi-Tenant (Azure or AWS) PrivateLink Request
+- Type: Snowflake
+- SYSTEM$GET_PRIVATELINK_CONFIG output:
+  - Include the privatelink-pls-id
+- dbt Cloud Azure multi-tenant environment: 
+```
+
+3. dbt will provide the `private endpoint resource_id` of our `private_endpoint` and the `CIDR` range for you to complete the [Snowflake configuration](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) by contacting their support team. 
 
 ## Create Connection in dbt Cloud
 
