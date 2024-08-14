@@ -57,34 +57,9 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 1. First, you'll need to clone this repository.
 
-- You can add a `git clone` command for cloning a repository. You can follow these steps to achieve this:
-
-    - Open your terminal and navigate to the directory where you want to clone the repository. Use the `cd` command to change directories. 
-    - Go to the Git hosting service where the repository is hosted. Find the repository you want to clone and copy its URL. This URL is usually found by clicking the code or clone button on the repository's main page.
-    - Type `git clone` in the terminal, followed by the URL you copied. The command should look like this:
-
-
-```Jinja
-
-    git clone https://github.com/username/repository-name.git
-
-```
-
-As a note, you'll need to replace https://github.com/username/repository-name.git with the actual URL of the repository you want to clone.
-
-    - Following this, press Enter. Git will clone the repository into a new directory with the same name as the repository. This new directory will be created in the location you specified earlier.
-    - Once the repository is cloned, you may want to navigate into the new directory to start working on the project. Use the cd command to do this:
-
-```Jinja
-
-cd repository-name
-
-```
-
-You'll need to replace repository name with the actual name of the cloned directory.
-
-    - That's it! You've successfully added and executed a git clone command to clone a repository.
-
+    ```bash
+    git clone <add name of git repo for this duckdb example>
+    ```
 
 2. Change into the docs-duckdb directory from the command line:
 
