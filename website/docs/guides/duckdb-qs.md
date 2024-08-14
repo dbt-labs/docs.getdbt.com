@@ -116,7 +116,7 @@ cd docs-duckdb
 
 
     - [dbt compile](https://docs.getdbt.com/reference/commands/compile) &mdash; generates executable SQL from your project source files
-    - [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
+    - [dbt run](https://docs.getdbt.com/reference/commands/run) &mdash;  compiles and runs your project
     - [dbt test](https://docs.getdbt.com/reference/commands/test) — compiles and tests your project
     - [dbt build](https://docs.getdbt.com/reference/commands/build) — compiles, runs, and tests your project
     - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - generates your project's documentation.
