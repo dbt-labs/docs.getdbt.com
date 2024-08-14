@@ -244,4 +244,4 @@ Do any audience members use a communication device? Can you share your slides ah
 
 ### Responding to a conference Call for Speakers
 
-If you’re submitting a response for a Call for Speakers, and talking about dbt, we’re happy to work with you on this. You can email us at [community@dbtlabs.com](mailto:community@dbtlabs.com) for more information.
+If you’re submitting a response for a Call for Speakers, and talking about dbt, we’re happy to work with you on this. You may email us at [community@dbtlabs.com](mailto:community@dbtlabs.com) for more information.
