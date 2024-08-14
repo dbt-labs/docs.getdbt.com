@@ -119,7 +119,7 @@ cd docs-duckdb
     - [dbt run](https://docs.getdbt.com/reference/commands/run) &mdash;  compiles and runs your project
     - [dbt test](https://docs.getdbt.com/reference/commands/test) &mdash;  compiles and tests your project
     - [dbt build](https://docs.getdbt.com/reference/commands/build) &mdash;  compiles, runs, and tests your project
-    - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - generates your project's documentation.
+    - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) &mdash; generates your project's documentation.
     - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) - starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
 For detailed information, refer to the [dbt command reference](/reference/dbt-commands).
