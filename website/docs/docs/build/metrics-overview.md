@@ -92,7 +92,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Default granularity for metircs
 
-It's possible to define a default time granularity for metrics that differs from the granularity of the default aggregation time dimensions (`metric_time`). This is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain. The granularity can be set using the `time_granularity` parameter on the metric and defaults to `day`.
+It's possible to define a default time granularity for metrics if it's different from the granularity of the default aggregation time dimensions (`metric_time`). This is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain. The granularity can be set using the `time_granularity` parameter on the metric, and defaults to `day`. If day is not available because the dimension is defined at a coarser granularity, it will default to the defined granularity for the dimension!
 
 ### Example
 You have a semantic model called `orders` with a time dimension called `order_time`. You want the `orders` metric to roll up to `monthly` by default; however, you want the option to look at these metrics hourly. You can set the `time_granularity` parameter on the `order_time` dimension to `hour`, and then set the `time_granularity` parameter in the metric to `month`.

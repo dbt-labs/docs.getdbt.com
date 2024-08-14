@@ -12,7 +12,7 @@ Dimensions represent the non-aggregatable columns in your data set, which are th
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
-All dimensions require a `name` and `type` and, in some cases, can optionally include an `expr` parameter. The `name` for your Dimension must be unique within the same semantic model.
+All dimensions require a `name`, `type`, and can optionally include an `expr` parameter. The `name` for your Dimension must be unique wihtin the same semantic model.
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
@@ -60,14 +60,16 @@ semantic_models:
         time_granularity: day
       label: "Date of transaction" # Recommend adding a label to provide more context to users consuming the data
       expr: ts
-    - name: is_bulk_transaction
+    - name: is_bulk
       type: categorical
       expr: case when quantity > 10 then true else false end
+    - name: type
+      type: categorical
 ```
 
-Dimensions are bound to the primary entity of the semantic model in which they are defined. For example, if a dimension called `is_bulk_transaction` is defined in a model with `transaction` as a primary entity, then `is_bulk_transaction` is scoped to the `transaction` entity. To reference this dimension you would use the fully qualified dimension name `transaction__is_bulk_transaction`. 
+Dimensions are bound to the primary entity of the semantic model they are defined in. For example the dimensoin `type` is defined in a model that has `transaction` as a primary entity. `type` is scoped to the `transaction` entity, and to reference this dimension you would use the fully qualified dimension name i.e `transaction__type`. 
 
-MetricFlow requires that all semantic models have a primary entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation. An example of defining a primary entity for a data source that doesn't have a primary entity column is below:
+MetricFlow requires that all semantic models have a primary entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation. We recommend making these "virtual primary entities" unique across your semantic model. An example of defining a primary entity for a data source that doesn't have a primary entity column is below:
 
 ```yaml
 semantic_model:
@@ -161,9 +163,15 @@ measures:
 
 `time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add hourly granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from hourly to monthly. However, you can't go from a coarser grain to a finer grain (monthly to hourly).
 
-Any granularity supported by your engine's `date_trunc` function will work, with the most common granularities being hour, day, week, month, quarter, and year.
+Our supported granularities are:
+* nanosecond (Snowflake only)
+* microsecond 
+* millisecond
+* second
+* minute
+* hour
 
-Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarser granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
 ```yaml
 dimensions: 

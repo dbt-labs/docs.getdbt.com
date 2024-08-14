@@ -84,7 +84,7 @@ semantic_models:
       - name: transaction_date
         type: time
         type_params:
-          time_granularity: day # Additional options include hour, week, month, quarter, year, and so on.
+          time_granularity: day
 
       - name: transaction_location
         type: categorical
