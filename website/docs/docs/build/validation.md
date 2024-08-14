@@ -20,7 +20,6 @@ You can run validations from dbt Cloud or the command line with the following [M
 dbt sl validate-configs # dbt Cloud users
 mf validate-configs # dbt Core users
 ```
- 
 
 ## Parsing
 
