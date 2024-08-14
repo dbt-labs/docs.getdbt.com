@@ -217,7 +217,7 @@ The list of available saved queries:
        - Export(new_customer_orders, alias=orders, schemas=customer_schema, exportAs=TABLE)
 ```
 
-### Validate-configs
+### Validate
 
 The following command performs validations against the defined semantic model configurations.
 
