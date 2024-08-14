@@ -115,7 +115,7 @@ cd docs-duckdb
 4. Ensure your profile is setup correctly from the command line by running the following:
 
 
-    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
+    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) &mdash; generates executable SQL from your project source files
     - [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
     - [dbt test](https://docs.getdbt.com/reference/commands/test) — compiles and tests your project
     - [dbt build](https://docs.getdbt.com/reference/commands/build) — compiles, runs, and tests your project
