@@ -26,13 +26,13 @@ Using MetricFlow with dbt Cloud means you won't need to manage versioning &mdash
 
 - MetricFlow [commands](#metricflow-commands) are embedded in the dbt Cloud CLI. This means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately.
 - You don't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
-
+ 
 </TabItem>
 
 <TabItem value="cloud ide" label="dbt Cloud IDE">
 
 :::info
-You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
+You can create metrics using MetricFlow in the dbt Cloud IDE and run the [dbt sl validate](/docs/build/validation#validations-command) command. Support for running more MetricFlow commands in the IDE will be available soon.
 :::
 
 </TabItem>
@@ -78,10 +78,9 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 - [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
 - [`export`](#export) &mdash;  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query.
 - [`export-all`](#export-all) &mdash; Runs exports for multiple saved queries at once, saving time and effort.
-
+- [`validate`](#validate) &mdash; Validates semantic model configurations.
 
 <!--below commands aren't supported in dbt cloud yet
-- [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 -->
@@ -218,14 +217,12 @@ The list of available saved queries:
        - Export(new_customer_orders, alias=orders, schemas=customer_schema, exportAs=TABLE)
 ```
 
-### Validate-configs
+### Validate
 
 The following command performs validations against the defined semantic model configurations.
 
-Note, in dbt Cloud you don't need to validate the Semantic Layer config separately. Running a dbt command (such as `dbt parse`, `dbt build`, `dbt compile`, `dbt run`) automatically checks it.
-
 ```bash
-
+dbt sl validate # dbt Cloud users
 mf validate-configs # In dbt Core
 
 Options:
