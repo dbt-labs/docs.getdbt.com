@@ -2026,6 +2026,13 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   width: 100%;
 }
 
+/* Hide `contentTitle` h1 from content for guides.
+   This header appears in the upperleft section for guides.
+*/
+.quickstart-container .step-container > h1 {
+  display: none;
+}
+
 .quickstart-container .step-container .intro {
   order: -1;
 }
