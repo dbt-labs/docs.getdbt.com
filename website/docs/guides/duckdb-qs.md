@@ -175,7 +175,7 @@ As a last resort, deleting the database file will get you back in action (_but_ 
     
     For complete information, refer to the [dbt command reference](https://docs.getdbt.com/reference/dbt-commands). Common commands are:
     
-    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
+    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) &mdash; generates executable SQL from your project source files
     - [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
     - [dbt test](https://docs.getdbt.com/reference/commands/test) — compiles and tests your project
     - [dbt build](https://docs.getdbt.com/reference/commands/build) — compiles, runs, and tests your project
