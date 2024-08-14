@@ -794,6 +794,8 @@ Installation of third-party packages on Dataproc varies depending on whether it'
                     container_image: {HOSTNAME}/{PROJECT_ID}/{IMAGE}:{TAG}
     ```
 
+</File>
+
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-pip-packages.png" title="Adding packages to install via pip at cluster startup"/>
 
 **Docs:**
