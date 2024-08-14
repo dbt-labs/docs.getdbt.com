@@ -765,7 +765,7 @@ storage.objects.delete
 
 **Installing packages:** 
 
-Depending on if you use Dataproc cluster or serverless, third-party packages installation is done differently.  
+Installation of third-party packages on Dataproc varies depending on whether it's a [cluster](https://cloud.google.com/dataproc/docs/guides/create-cluster) or [serverless](https://cloud.google.com/dataproc-serverless/docs).  
 
 - **Dataproc Cluster** &mdash; Google recommends installing Python packages while creating the cluster via initialization actions:  
     - [How initialization actions are used](https://github.com/GoogleCloudDataproc/initialization-actions/blob/master/README.md#how-initialization-actions-are-used)  
