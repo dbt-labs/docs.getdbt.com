@@ -208,7 +208,7 @@ For virtual events: is there a poll you can launch, or a question you can throw 
 
 ## Pair it with a blog post
 
-The hardest part of nailing a great talk is the content, so if you’ve made it this far, you’ve already done most of the work. Turning your content into a blog post is a great way to solidify your thinking, and get some extra exposure. If you’d like to be featured on the [dbt Blog](https://blog.getdbt.com/), reach out to us on Slack.
+The hardest part of nailing a great talk is the content, so if you’ve made it this far, you’ve already done most of the work. Turning your content into a blog post is a great way to solidify your thinking, and get some extra exposure. If you’d like to be featured on the [dbt Blog](https://blog.getdbt.com/), please email us at [community@dbtlabs.com](mailto:community@dbtlabs.com).
 
 We’ll also be adding more resources on how to write about your work soon!
 
@@ -244,4 +244,4 @@ Do any audience members use a communication device? Can you share your slides ah
 
 ### Responding to a conference Call for Speakers
 
-If you’re submitting a response for a Call for Speakers, and talking about dbt, we’re happy to work with you on this. Reach out to us in Slack to let us know!
+If you’re submitting a response for a Call for Speakers, and talking about dbt, we’re happy to work with you on this. You can email us at [community@dbtlabs.com](mailto:community@dbtlabs.com) for more information.
