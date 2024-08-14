@@ -133,7 +133,6 @@ If you decide to run this project in your own data warehouse (outside of this Du
 
 ### Troubleshoot
 
-You may get an error like the one in the example below, in which case you will need to disconnect from any sessions that are locking the database:
 
 
 <Expandable alt_header="Could not set lock on file error" >
