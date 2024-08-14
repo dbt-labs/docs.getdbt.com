@@ -144,7 +144,7 @@ IO Error: Could not set lock on file "jaffle_shop.duckdb": Resource temporarily 
 
 ```
 
-This is a known issue in DuckDB. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
+This is a known issue in DuckDB. Try disconnecting from any sessions that are locking the database. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
 
 As a last resort, deleting the database file will get you back in action (_but_ you will lose all your data).
 
