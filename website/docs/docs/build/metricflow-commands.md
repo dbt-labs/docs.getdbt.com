@@ -32,7 +32,7 @@ Using MetricFlow with dbt Cloud means you won't need to manage versioning &mdash
 <TabItem value="cloud ide" label="dbt Cloud IDE">
 
 :::info
-You can create metrics using MetricFlow in the dbt Cloud IDE and [run `dbt sl validate`](/docs/build/validation#validations-command). Support for running more MetricFlow commands in the IDE will be available soon.
+You can create metrics using MetricFlow in the dbt Cloud IDE and run the [dbt sl validate](/docs/build/validation#validations-command) command. Support for running more MetricFlow commands in the IDE will be available soon.
 :::
 
 </TabItem>
