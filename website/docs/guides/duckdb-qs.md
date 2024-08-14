@@ -122,7 +122,7 @@ cd docs-duckdb
     - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) &mdash; generates your project's documentation.
     - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) &mdash; starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
-For detailed information, refer to the [dbt command reference](/reference/dbt-commands).
+For complete details, refer to the [dbt command reference](/reference/dbt-commands).
 
 :::note Note.
 
