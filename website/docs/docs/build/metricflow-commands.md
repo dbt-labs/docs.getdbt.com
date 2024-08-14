@@ -78,7 +78,7 @@ You can use the `dbt sl` prefix before the command name to execute them in the d
 - [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
 - [`export`](#export) &mdash;  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query.
 - [`export-all`](#export-all) &mdash; Runs exports for multiple saved queries at once, saving time and effort.
-- [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
+- [`validate`](#validate) &mdash; Validates semantic model configurations.
 
 <!--below commands aren't supported in dbt cloud yet
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
@@ -222,7 +222,7 @@ The list of available saved queries:
 The following command performs validations against the defined semantic model configurations.
 
 ```bash
-dbt sl validate-configs # dbt Cloud users
+dbt sl validate # dbt Cloud users
 mf validate-configs # In dbt Core
 
 Options:

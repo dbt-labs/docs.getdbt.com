@@ -17,7 +17,7 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 You can run validations from dbt Cloud or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In dbt Cloud, you need developer credentials to run `dbt sl validate-configs` in the IDE or CLI, and deployment credentials to run it in CI.
 
 ```bash
-dbt sl validate-configs # dbt Cloud users
+dbt sl validate # dbt Cloud users
 mf validate-configs # dbt Core users
 ```
 
