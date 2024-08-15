@@ -16,7 +16,7 @@ If you already have a date dimension or time spine table in your dbt project, yo
 Previously, you were required to create a model called `metricflow_time_spine` in your dbt project. This is no longer required. However, you can build your time spine model from this table if you don't have another date dimension table you want to use in your project.
 :::
 
-<Lightbox src="/img/docs/building-metrics/time_spines.png" title="Time spine directory structure" />
+<Lightbox src="/img/time_spines.png" title="Time spine directory structure" />
 
 
 ```yaml
