@@ -13,7 +13,7 @@ MetricFlow requires you to define a time spine table as a project level configur
 If you already have a date dimension or time spine table in your dbt project you can simply point MetricFlow at this table. To do this, update the `model` configuration to use this table in the semantic layer. For example, given the following directory structure, you can create two time spine configurations, `time_spine_hourly` and `time_spine_daily`. 
 
 ::tip 
-Previously, we required you to create a model called `metricflow_time_spine` in your dbt project. This is no longer required, however you can build your time spine model from this table if you don't have another date dimension table you want to use in your project.
+Previously, you were required to create a model called `metricflow_time_spine` in your dbt project. This is no longer required. However, you can build your time spine model from this table if you don't have another date dimension table you want to use in your project.
 ::
 
 ![Time spine directory structure](/img/docs/building-metrics/time_spines.png)
