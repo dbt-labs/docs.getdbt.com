@@ -19,7 +19,7 @@ In this quickstart guide, you'll learn how to use dbt Core with DuckDB, enabling
 
 This guide will demonstrate how to: 
 
-- Create an online development environment using a template provided by dbt Labs.
+- Create an virtual development environment using a template provided by dbt Labs.
    - This sets up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
    - For additional information, refer to the [README](https://github.com/gwenwindflower/octocatalog) for the Jaffle Shop template. It includes instructions on how to do this, along with animated GIFs.
 - Run any dbt command from the environment’s terminal. 
@@ -95,7 +95,6 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
     venv\Scripts\activate.bat
 
     ```
-    ```
 
     </Expandable>
 
@@ -116,25 +115,24 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 4. Ensure your profile is setup correctly from the command line by running the following:
 
 
-    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
-    - [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
-    - [dbt test](https://docs.getdbt.com/reference/commands/test) — compiles and tests your project
-    - [dbt build](https://docs.getdbt.com/reference/commands/build) — compiles, runs, and tests your project
-    - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) - generates your project's documentation.
-    - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) - starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
+    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) &mdash; generates executable SQL from your project source files
+    - [dbt run](https://docs.getdbt.com/reference/commands/run) &mdash; compiles and runs your project
+    - [dbt test](https://docs.getdbt.com/reference/commands/test) &mdash; compiles and tests your project
+    - [dbt build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
+    - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) &mdash; generates your project's documentation.
+    - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) &mdash; starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
-For detailed information, refer to the [dbt command reference](/reference/dbt-commands).
+For complete details, refer to the [dbt command reference](/reference/dbt-commands).
 
-:::note Note.
+:::note
 
-NOTE: If you decide to run this project in your own data warehouse (outside of this DuckDB demo) and steps fail, it might mean that you need to make small changes to the SQL in the models folder to adjust for the flavor of SQL of your target database. Definitely consider this if you are using a community-contributed adapter.
+If you decide to run this project in your own data warehouse (outside of this DuckDB demo) and steps fail, it might mean that you need to make small changes to the SQL in the models folder to adjust for the flavor of SQL of your target database. Definitely consider this if you are using a community-contributed adapter.
 
 :::
 
 
 ### Troubleshoot
 
-You may get an error like the one in the example below, in which case you will need to disconnect from any sessions that are locking the database:
 
 
 <Expandable alt_header="Could not set lock on file error" >
@@ -145,7 +143,7 @@ IO Error: Could not set lock on file "jaffle_shop.duckdb": Resource temporarily 
 
 ```
 
-This is a known issue in DuckDB. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
+This is a known issue in DuckDB. Try disconnecting from any sessions that are locking the database. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
 
 As a last resort, deleting the database file will get you back in action (_but_ you will lose all your data).
 
@@ -176,10 +174,10 @@ As a last resort, deleting the database file will get you back in action (_but_ 
     
     For complete information, refer to the [dbt command reference](https://docs.getdbt.com/reference/dbt-commands). Common commands are:
     
-    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) — generates executable SQL from your project source files
-    - [dbt run](https://docs.getdbt.com/reference/commands/run) — compiles and runs your project
-    - [dbt test](https://docs.getdbt.com/reference/commands/test) — compiles and tests your project
-    - [dbt build](https://docs.getdbt.com/reference/commands/build) — compiles, runs, and tests your project
+    - [dbt compile](https://docs.getdbt.com/reference/commands/compile) &mdash; generates executable SQL from your project source files
+    - [dbt run](https://docs.getdbt.com/reference/commands/run) &mdash; compiles and runs your project
+    - [dbt test](https://docs.getdbt.com/reference/commands/test) &mdash; compiles and tests your project
+    - [dbt build](https://docs.getdbt.com/reference/commands/build) &mdash; compiles, runs, and tests your project
 
 
   </TabItem>
