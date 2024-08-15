@@ -63,108 +63,106 @@ Now, it’s time to write! Rather than starting with a slide deck, open up a bla
 
 Don’t get too hung up on a title at this stage — we’re happy to work with you on that later in the process.
 
-### The basic structure
+## The basic structure
 Below, we’ve outlined a common structure used for meetup talks — if this is your first talk, this is a great way to get started (in fact, even experienced speakers often use a structure like this). Use this as a starting point, rather than an exact formula!
 
-###### 1. What is the business problem?
+1. What is the business problem?
+    Relating to a business problem helps audience members understand why you undertook a project. For example:
+    - The finance team didn’t trust our numbers
+    - We were never sure what led to an increase in customer conversion
+    - The data team couldn’t find a balance between ad hoc requests and roadmap work
+    - Our tracking across mobile and web was completely inconsistent
 
-Relating to a business problem helps audience members understand why you undertook a project. For example:
-- The finance team didn’t trust our numbers
-- We were never sure what led to an increase in customer conversion
-- The data team couldn’t find a balance between ad hoc requests and roadmap work
-- Our tracking across mobile and web was completely inconsistent
+2. How did this manifest?
+    Include evidence that this is a genuine problem — this helps create buy-in from the audience. Slack screenshots, quotes, charts, etc. are all good here!
 
-###### 2. How did this manifest?
-Include evidence that this is a genuine problem — this helps create buy-in from the audience. Slack screenshots, quotes, charts, etc. are all good here!
+3. What tactics were used to solve the problem?
+    Three feels like a good number here. Make sure to emphasize people and process solutions as well as technology solutions.
 
-###### 3. What tactics were used to solve the problem?
-Three feels like a good number here. Make sure to emphasize people and process solutions as well as technology solutions.
+4. What was the impact on the business problem?
+    Since you set out a problem to be solved, it’s worth revisiting it. It’s okay if you found that your project didn’t go as planned — there’s a valuable lesson in there. Again, including evidence of improvement feels valuable.
 
-###### 4. What was the impact on the business problem?
-Since you set out a problem to be solved, it’s worth revisiting it. It’s okay if you found that your project didn’t go as planned — there’s a valuable lesson in there. Again, including evidence of improvement feels valuable.
-
-###### 5. What other things were learned, and/or what next steps are you taking?
-Summarize high level lessons that others can take-away, and potentially talk about what you’d do differently, or what you plan on doing next.
+5. What other things were learned, and/or what next steps are you taking?
+    Summarize high level lessons that others can take-away, and potentially talk about what you’d do differently, or what you plan on doing next.
 
 ### Why does this structure work?
 
-The above structure might seem formulaic, but we’ve seen it work a number of times. In our opinion, this structure works because:
+The previous structure might seem formulaic, but we’ve seen it work a number of times. In our opinion, this structure works because:
 
 - **Your presentation has the structure of a story** — problem, journey, solution. Human beings love stories, and so the flow feels natural and easy for your audience to follow.
 - **It increases the target audience**. Sharing a few different tactics means that it’s more likely there will be something in your talk for different audience members. Compare that to narrowly scoping a talk on “[Writing packages when a source table may or may not exist](https://discourse.getdbt.com/t/writing-packages-when-a-source-table-may-or-may-not-exist/1487)”— it’s not going to feel relevant to most people in the room.
 - **It covers both theory and application.** Too much theory and you’re giving a TedTalk, too much application and you’re just giving a product demo. The best Meetup talks help people understand how you thought through a problem and why you made certain decisions so they can apply your knowledge within their unique context.
 
-### Examples that follow this structure
+## Examples that follow this structure
 
 Here's a few of our favorite talks mapped to the structure — trust us, it works!
 
-#### Improving data reliability — Andrea Kopitz, Envoy
+### Improving data reliability — Andrea Kopitz, Envoy
 
 *[Video](https://www.youtube.com/watch?v=M_cNspn2XsE), [slides](https://docs.google.com/presentation/d/1gHChax5aM3tqKkhepX7Mghmg0DTDbY5yoDBCfUR23lg/).*
 
-###### 1. What is the business problem?
+1. What is the business problem?
 Envoy’s financial data appeared inconsistent.
 
-###### 2. How did this manifest?
+2. How did this manifest?
 Respondents to the team’s data survey said they no longer trusted the data.
 
-###### 3. What tactics were used to solve the problem?
-1. Determine responsibility
-2. Build more specific dbt tests
-3. Track progress
+3. What tactics were used to solve the problem?
+    1. Determine responsibility
+    2. Build more specific dbt tests
+    3. Track progress
 
-###### 4. What was the impact on the business problem?
+4. What was the impact on the business problem?
 In their next data survey, satisfaction rating increased, and no mention of financial data accuracy.
 
-###### 5. What other things were learned, and/or what next steps are you taking?
+5. What other things were learned, and/or what next steps are you taking?
 Lesson: Send out a data survey to your company to inform your roadmap.
 
-#### Predicting customer conversions with dbt + machine learning — Kenny Ning, Better.com
-
+### Predicting customer conversions with dbt + machine learning — Kenny Ning, Better.com
 
 *[Video](https://www.youtube.com/watch?v=BF7HH8JDUS0), [slides](https://docs.google.com/presentation/d/1iqVjzxxRggMnRoI40ku88miDKw795djpKV_v4bbLpPE/).*
 
-###### 1. What is the business problem?
-No one knew why conversion rates for better.com customers would improve or worsen, making it difficult to know the value of different parts of the business.
+1. What is the business problem?
+   No one knew why conversion rates for better.com customers would improve or worsen, making it difficult to know the value of different parts of the business.
 
-###### 2. How did this manifest?
-Different parts of the business took responsibility when it improved, no one took responsibility when it worsened.
+2. How did this manifest?
+   Different parts of the business took responsibility when it improved, no one took responsibility when it worsened.
 
-###### 3. What tactics were used to solve the problem?
-1. Use a different approach to conversion rates — kaplan-meier conversion rates
-2. Sketch out an ideal ML solution and see if it theoretically solves the problem
-3. Build it! (ft. demonstration of solution)
+3. What tactics were used to solve the problem?
+    1. Use a different approach to conversion rates — kaplan-meier conversion rates
+    2. Sketch out an ideal ML solution and see if it theoretically solves the problem
+    3. Build it! (ft. demonstration of solution)
 
-###### 4. What was the impact on the business problem?
-In the end — not as valuable as originally hoped (and that’s ok!). Editor note: [this article](https://better.engineering/2020-06-24-wizard-part-ii/) was a great follow up on the initial project.
+4. What was the impact on the business problem?
+   In the end — not as valuable as originally hoped (and that’s ok!). Editor note: [this article](https://better.engineering/2020-06-24-wizard-part-ii/) was a great follow up on the initial project.
 
-###### 5. What other things were learned, and/or what next steps are you taking?
-- Focus on end-to-end solutions
-- Materialize your clean dataset to improve collaboration
-- Sell to the business
+5. What other things were learned, and/or what next steps are you taking?
+    - Focus on end-to-end solutions
+    - Materialize your clean dataset to improve collaboration
+    - Sell to the business
 
-#### Migrating 387 models from Redshift to Snowflake — Bowery Farming Data Team
+### Migrating 387 models from Redshift to Snowflake — Bowery Farming Data Team
 
 *[Video](https://www.youtube.com/watch?v=VhH614WVufM), [slides](https://docs.google.com/presentation/d/1wE8NSkFPLFKGQ8fvFUUKoZFVoUhws_FhFip-9mDhoPU/).*
 
-###### 1. What is the business problem?
-A new Bowery Farming site had increased the amount of data the team were dealing with, which put a strain on their data stack.
+1. What is the business problem?
+   A new Bowery Farming site had increased the amount of data the team were dealing with, which put a strain on their data stack.
 
-###### 2. How did this manifest?
-Charts show increased dbt run times, and increased Redshift costs.
+3. How did this manifest?
+   Charts show increased dbt run times, and increased Redshift costs.
 
-###### 3. What tactics were used to solve the problem?
-1. Push Redshift to its limit: Leverage Athena, Redshift configurations, separate clusters, python pre-processing
-2. Trial Snowflake for cost and performance
-3. Commit to a migration with strong project management
+3. What tactics were used to solve the problem?
+    1. Push Redshift to its limit: Leverage Athena, Redshift configurations, separate clusters, python pre-processing
+    2. Trial Snowflake for cost and performance
+    3. Commit to a migration with strong project management
 
-###### 4. What was the impact on the business problem?
-Yet to be determined (at the time, they had just finished the project). But the team showed evidence that the project has been successfully completed!
+4. What was the impact on the business problem?
+   Yet to be determined (at the time, they had just finished the project). But the team showed evidence that the project has been successfully completed!
 
-###### 5. What other things were learned, and/or what next steps are you taking?
-Other things learned:
-- Differences between Redshift and Snowflake SQL syntax
-- Teamwork and coordination are key to completing a migration
+5. What other things were learned, and/or what next steps are you taking?
+    Other things learned:
+    - Differences between Redshift and Snowflake SQL syntax
+    - Teamwork and coordination are key to completing a migration
 
 ## Turn it into a presentation
 Now, it's time to take your idea and turn it into a presentation.
@@ -210,7 +208,7 @@ For virtual events: is there a poll you can launch, or a question you can throw 
 
 ## Pair it with a blog post
 
-The hardest part of nailing a great talk is the content, so if you’ve made it this far, you’ve already done most of the work. Turning your content into a blog post is a great way to solidify your thinking, and get some extra exposure. If you’d like to be features on the [dbt Blog](https://blog.getdbt.com/), reach out to us (@Claire and @Janessa) on Slack.
+The hardest part of nailing a great talk is the content, so if you’ve made it this far, you’ve already done most of the work. Turning your content into a blog post is a great way to solidify your thinking, and get some extra exposure. If you’d like to be featured on the [dbt Blog](https://blog.getdbt.com/), please email us at [community@dbtlabs.com](mailto:community@dbtlabs.com).
 
 We’ll also be adding more resources on how to write about your work soon!
 
@@ -246,4 +244,4 @@ Do any audience members use a communication device? Can you share your slides ah
 
 ### Responding to a conference Call for Speakers
 
-If you’re submitting a response for a Call for Speakers, and talking about dbt, we’re happy to work with you on this. Reach out to us (@Claire and @Janessa) in Slack to let us know!
+If you’re submitting a response for a Call for Speakers, and talking about dbt, we’re happy to work with you on this. You may email us at [community@dbtlabs.com](mailto:community@dbtlabs.com) for more information.
