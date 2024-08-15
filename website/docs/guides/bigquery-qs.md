@@ -13,101 +13,222 @@ recently_updated: true
 
 ## Introduction
 
-In this quickstart guide, you'll learn how to use dbt Cloud with BigQuery. It will show you how to: 
+In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It will show you how to: 
 
-- Create a Google Cloud Platform (GCP) project.
-- Access sample data in a public dataset.
-- Connect dbt Cloud to BigQuery.
+- Create a new Snowflake worksheet.
+- Load sample data into your Snowflake account.
+- Connect dbt Cloud to Snowflake.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+- Add sources to your dbt project. Sources allow you to name and describe the raw data already loaded into Snowflake.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
+Snowflake also provides a quickstart for you to learn how to use dbt Cloud. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with dbt Cloud & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
+
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
-:::
 
+You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
+:::
+ 
 ### Prerequisites​
 
-- You have a  [dbt Cloud account](https://www.getdbt.com/signup/). 
-- You have a [Google account](https://support.google.com/accounts/answer/27441?hl=en).
-- You can use a personal or work account to set up BigQuery through [Google Cloud Platform (GCP)](https://cloud.google.com/free).
+- You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
+- You have a [trial Snowflake account](https://signup.snowflake.com/). During trial account creation, make sure to choose the **Enterprise** Snowflake edition so you have `ACCOUNTADMIN` access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html) in the Snowflake docs. For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like.
 
 ### Related content
 
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
+- [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 
-## Create a new GCP project​
+## Create a new Snowflake worksheet 
+1. Log in to your trial Snowflake account. 
+2. In the Snowflake UI, click **+ Worksheet** in the upper right corner to create a new worksheet.
 
-1. Go to the [BigQuery Console](https://console.cloud.google.com/bigquery) after you log in to your Google account. If you have multiple Google accounts, make sure you’re using the correct one. 
-2. Create a new project from the [Manage resources page](https://console.cloud.google.com/projectcreate?previousPage=%2Fcloud-resource-manager%3Fwalkthrough_id%3Dresource-manager--create-project%26project%3D%26folder%3D%26organizationId%3D%23step_index%3D1&walkthrough_id=resource-manager--create-project). For more information, refer to [Creating a project](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project) in the Google Cloud docs. GCP automatically populates the Project name field for you. You can change it to be more descriptive for your use. For example, `dbt Learn - BigQuery Setup`.
+## Load data 
+The data used here is stored as CSV files in a public S3 bucket and the following steps will guide you through how to prepare your Snowflake account for that data and upload it.
 
-## Create BigQuery datasets
+1. Create a new virtual warehouse, two new databases (one for raw data, the other for future dbt development), and two new schemas (one for `jaffle_shop` data, the other for `stripe` data). 
 
-1. From the [BigQuery Console](https://console.cloud.google.com/bigquery), click **Editor**. Make sure to select your newly created project, which is available at the top of the page.
-1. Verify that you can run SQL queries. Copy and paste these queries into the Query Editor: 
+    To do this, run these SQL commands by typing them into the Editor of your new Snowflake worksheet and clicking **Run** in the upper right corner of the UI:
     ```sql
-    select * from `dbt-tutorial.jaffle_shop.customers`;
-    select * from `dbt-tutorial.jaffle_shop.orders`;
-    select * from `dbt-tutorial.stripe.payment`;
+    create warehouse transforming;
+    create database raw;
+    create database analytics;
+    create schema raw.jaffle_shop;
+    create schema raw.stripe;
     ```
 
-    Click **Run**, then check for results from the queries. For example: 
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/bigquery/query-results.png" title="Bigquery Query Results" />
-    </div>
-2. Create new datasets from the [BigQuery Console](https://console.cloud.google.com/bigquery). For more information, refer to [Create datasets](https://cloud.google.com/bigquery/docs/datasets#create-dataset) in the Google Cloud docs. Datasets in BigQuery are equivalent to schemas in a traditional database. On the **Create dataset** page:
-    - **Dataset ID** &mdash; Enter a name that fits the purpose. This name is used like schema in fully qualified references to your database objects such as `database.schema.table`. As an example for this guide, create one for `jaffle_shop` and another one for `stripe` afterward.
-    - **Data location** &mdash; Leave it blank (the default). It determines the GCP location of where your data is stored. The current default location is the US multi-region. All tables within this dataset will share this location.
-    - **Enable table expiration** &mdash; Leave it unselected (the default). The default for the billing table expiration is 60 days. Because billing isn’t enabled for this project, GCP defaults to deprecating tables.
-    - **Google-managed encryption key** &mdash; This option is available under **Advanced options**. Allow Google to manage encryption (the default). 
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/bigquery/create-dataset-id.png" title="Bigquery Create Dataset ID" />
-    </div>
-3. After you create the `jaffle_shop` dataset, create one for `stripe` with all the same values except for **Dataset ID**.
+2. In the `raw` database and `jaffle_shop` and `stripe` schemas, create three tables and load relevant data into them: 
 
-## Generate BigQuery credentials {#generate-bigquery-credentials}
-In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database username and password with most other <Term id="data-warehouse">data warehouses</Term>.
+    - First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the `customer` table:
 
-1. Start the [GCP credentials wizard](https://console.cloud.google.com/apis/credentials/wizard). Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify you are using the correct email account. For **Credential Type**: 
-    - From the **Select an API** dropdown, choose **BigQuery API**
-    - Select **Application data** for the type of data you will be accessing
-    - Click **Next** to create a new service account.
-2. Create a service account for your new project from the [Service accounts page](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project). For more information, refer to [Create a service account](https://developers.google.com/workspace/guides/create-credentials#create_a_service_account) in the Google Cloud docs. As an example for this guide, you can:
-    - Type `dbt-user` as the **Service account name**
-    - From the **Select a role** dropdown, choose **BigQuery Job User** and **BigQuery Data Editor** roles and click **Continue** 
-    - Leave the **Grant users access to this service account** fields blank
-    - Click **Done**
-3. Create a service account key for your new project from the [Service accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts?walkthrough_id=iam--create-service-account-keys&start_index=1#step_index=1). For more information, refer to [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) in the Google Cloud docs. When downloading the JSON file, make sure to use a filename you can easily remember. For example, `dbt-user-creds.json`. For security reasons, dbt Labs recommends that you protect this JSON file like you would your identity credentials; for example, don't check the JSON file into your version control software.
+        ```sql 
+        create table raw.jaffle_shop.customers 
+        ( id integer,
+          first_name varchar,
+          last_name varchar
+        );
+        ```
 
-## Connect dbt Cloud to BigQuery​
-1. Create a new project in [dbt Cloud](https://cloud.getdbt.com/). From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
+    - Delete all contents in the Editor, then run this command to load data into the `customer` table: 
+
+        ```sql 
+        copy into raw.jaffle_shop.customers (id, first_name, last_name)
+        from 's3://dbt-tutorial-public/jaffle_shop_customers.csv'
+        file_format = (
+            type = 'CSV'
+            field_delimiter = ','
+            skip_header = 1
+            ); 
+        ```
+    - Delete all contents in the Editor (empty), then run this command to create the `orders` table:
+        ```sql
+        create table raw.jaffle_shop.orders
+        ( id integer,
+          user_id integer,
+          order_date date,
+          status varchar,
+          _etl_loaded_at timestamp default current_timestamp
+        );
+        ```
+
+    - Delete all contents in the Editor, then run this command to load data into the `orders` table:
+        ```sql
+        copy into raw.jaffle_shop.orders (id, user_id, order_date, status)
+        from 's3://dbt-tutorial-public/jaffle_shop_orders.csv'
+        file_format = (
+            type = 'CSV'
+            field_delimiter = ','
+            skip_header = 1
+            );
+        ```
+    - Delete all contents in the Editor (empty), then run this command to create the `payment` table:
+        ```sql
+        create table raw.stripe.payment 
+        ( id integer,
+          orderid integer,
+          paymentmethod varchar,
+          status varchar,
+          amount integer,
+          created date,
+          _batched_at timestamp default current_timestamp
+        );
+        ```
+    - Delete all contents in the Editor, then run this command to load data into the `payment` table:
+        ```sql
+        copy into raw.stripe.payment (id, orderid, paymentmethod, status, amount, created)
+        from 's3://dbt-tutorial-public/stripe_payments.csv'
+        file_format = (
+            type = 'CSV'
+            field_delimiter = ','
+            skip_header = 1
+            );
+        ```
+3. Verify that the data is loaded by running these SQL queries. Confirm that you can see output for each one. 
+    ```sql
+    select * from raw.jaffle_shop.customers;
+    select * from raw.jaffle_shop.orders;
+    select * from raw.stripe.payment;   
+    ```
+
+## Connect dbt Cloud to Snowflake
+
+There are two ways to connect dbt Cloud to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Snowflake trial account. The second option is to create your dbt Cloud account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, dbt Labs recommends connecting manually.
+
+<Tabs>
+<TabItem value="partner-connect" label="Use Partner Connect" default>
+
+Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
+
+1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Data Products**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+
+    <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
+
+    If you’re using the classic version of the Snowflake UI, you can click the **Partner Connect** button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
+
+    <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
+
+2. In the **Connect to dbt** popup, find the **Optional Grant** option and select the **RAW** and **ANALYTICS** databases. This will grant access for your new dbt user role to each database. Then, click **Connect**.
+
+    <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_connection_box.png" title="Snowflake Classic UI - Connection Box" />
+
+    <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_connection_box.png" title="Snowflake New UI - Connection Box" />
+
+3. Click **Activate** when a popup appears: 
+
+<Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_activation_window.png" title="Snowflake Classic UI - Actviation Window" />
+
+<Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_activation_window.png" title="Snowflake New UI - Activation Window" />
+
+4. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password.
+
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_account_info.png" title="dbt Cloud - Account Info" />
+
+5. After you have filled out the form and clicked **Complete Registration**, you will be logged into dbt Cloud automatically.
+
+6. From your **Account Settings** in dbt Cloud (using the gear menu in the upper right corner), choose the "Partner Connect Trial" project and select **snowflake** in the overview table. Select edit and update the fields **Database** and **Warehouse** to be `analytics` and `transforming`, respectively.
+
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_project_overview.png" title="dbt Cloud - Snowflake Project Overview" />
+
+<Lightbox src="/img/snowflake_tutorial/dbt_cloud_update_database_and_warehouse.png" title="dbt Cloud - Update Database and Warehouse" />
+
+</TabItem>
+<TabItem value="manual-connect" label="Connect manually">
+
+
+1. Create a new project in dbt Cloud. From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
 2. Enter a project name and click **Continue**.
-3. For the warehouse, click **BigQuery** then **Next** to set up your connection.
-4. Click **Upload a Service Account JSON File** in settings.
-5. Select the JSON file you downloaded in [Generate BigQuery credentials](#generate-bigquery-credentials) and dbt Cloud will fill in all the necessary fields.
-6. Click **Test Connection**. This verifies that dbt Cloud can access your BigQuery account.
-7. Click **Next** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.
+3. For the warehouse, click **Snowflake** then **Next** to set up your connection.
 
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_setup_snowflake_connection_start.png" title="dbt Cloud - Choose Snowflake Connection" />
+
+4. Enter your **Settings** for Snowflake with: 
+    * **Account** &mdash; Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
+
+        <Snippet path="snowflake-acct-name" />
+    
+    * **Role** &mdash; Leave blank for now. You can update this to a default Snowflake role later.
+    * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
+    * **Warehouse** &mdash; `transforming`. This tells dbt to use the transforming warehouse that was created earlier.
+
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_account_settings.png" title="dbt Cloud - Snowflake Account Settings" />
+
+5. Enter your **Development Credentials** for Snowflake with: 
+    * **Username** &mdash; The username you created for Snowflake. The username is not your email address and is usually your first and last name together in one word. 
+    * **Password** &mdash; The password you set when creating your Snowflake account.
+    * **Schema** &mdash; You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
+    * **Target name** &mdash; Leave as the default.
+    * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that dbt Cloud will make to build models concurrently.
+
+    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_snowflake_development_credentials.png" title="dbt Cloud - Snowflake Development Credentials" />
+
+6. Click **Test Connection**. This verifies that dbt Cloud can access your Snowflake account.
+7. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.
+
+</TabItem>
+</Tabs>
 
 ## Set up a dbt Cloud managed repository 
-<Snippet path="tutorial-managed-repo" />
+If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
 
+<Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
 1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
+3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:  
+    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
         ```sql
-        select * from `dbt-tutorial.jaffle_shop.customers`
+        select * from raw.jaffle_shop.customers
         ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
@@ -124,7 +245,6 @@ Name the new branch `add-customers-model`.
 2. Name the file `customers.sql`, then click **Create**.
 3. Copy the following query into the file and click **Save**.
 
-
 ```sql
 with customers as (
 
@@ -133,7 +253,7 @@ with customers as (
         first_name,
         last_name
 
-    from `dbt-tutorial`.jaffle_shop.customers
+    from raw.jaffle_shop.customers
 
 ),
 
@@ -145,7 +265,7 @@ orders as (
         order_date,
         status
 
-    from `dbt-tutorial`.jaffle_shop.orders
+    from raw.jaffle_shop.orders
 
 ),
 
@@ -187,14 +307,6 @@ select * from final
 
 Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 
-#### FAQs
-
-<FAQ path="Runs/checking-logs" />
-<FAQ path="Project/which-schema" />
-<FAQ path="Models/create-a-schema" />
-<FAQ path="Models/run-downtime" />
-<FAQ path="Troubleshooting/sql-errors" />
-
 ## Change the way your model is materialized
 
 <Snippet path="quickstarts/change-way-model-materialized" />
@@ -218,7 +330,7 @@ Later, you can connect your business intelligence (BI) tools to these views and 
         first_name,
         last_name
 
-    from `dbt-tutorial`.jaffle_shop.customers
+    from raw.jaffle_shop.customers
     ```
 
     </File>
@@ -232,7 +344,7 @@ Later, you can connect your business intelligence (BI) tools to these views and 
         order_date,
         status
 
-    from `dbt-tutorial`.jaffle_shop.orders
+    from raw.jaffle_shop.orders
     ```
 
     </File>
@@ -295,16 +407,80 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
     This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
 
-
 #### FAQs {#faq-2}
 
 <FAQ path="Runs/run-one-model" />
 <FAQ path="Models/unique-model-names" />
 <FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
-</div>
+## Build models on top of sources
+
+Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in dbt, you can:
+- select from source tables in your models using the `{{ source() }}` function, helping define the lineage of your data
+- test your assumptions about your source data
+- calculate the freshness of your source data
+
+1. Create a new YML file `models/sources.yml`.
+2. Declare the sources by copying the following into the file and clicking **Save**.
+
+    <File name='models/sources.yml'>
+
+    ```yml
+    version: 2
+
+    sources:
+        - name: jaffle_shop
+          description: This is a replica of the Postgres database used by our app
+          database: raw
+          schema: jaffle_shop
+          tables:
+              - name: customers
+                description: One record per customer.
+              - name: orders
+                description: One record per order. Includes cancelled and deleted orders.
+    ```
+
+    </File>
+
+3. Edit the `models/stg_customers.sql` file to select from the `customers` table in the `jaffle_shop` source.
+
+    <File name='models/stg_customers.sql'>
+
+    ```sql
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from {{ source('jaffle_shop', 'customers') }}
+    ```
+
+    </File>
+
+4. Edit the `models/stg_orders.sql` file to select from the `orders` table in the `jaffle_shop` source.
+
+    <File name='models/stg_orders.sql'>
+
+    ```sql
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from {{ source('jaffle_shop', 'orders') }}
+    ```
+
+    </File>
+
+5. Execute `dbt run`. 
+
+    The results of your `dbt run` will be exactly the same as the previous step. Your `stg_customers` and `stg_orders`
+    models will still query from the same raw data source in Snowflake. By using `source`, you can
+    test and document your raw data and also understand the lineage of your sources. 
+
+</div> 
 
 <Snippet path="quickstarts/test-and-document-your-project" />
 
 <Snippet path="quickstarts/schedule-a-job" />
-
