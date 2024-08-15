@@ -9,176 +9,90 @@ date: 2024-07-10
 is_featured: true
 ---
 
-At dbt Labs, we’ve always believed in meeting analytics engineers where they are. That’s why we’re so excited to announce that today, analytics engineers within the Microsoft Ecosystem can use dbt Cloud with not only Microsoft Fabric but also Azure Synapse Analytics Dedicated SQL Pools (ASADSP).
+The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) is founded on the idea that data transformation should be both _flexible_, allowing for on-the-fly aggregations grouped and filtered by definable dimensions and _version-controlled and tested_. Like any other codebase, you should have confidence that your transformations express your organization’s business logic correctly. Historically, you had to choose between these options, but the dbt Semantic Layer brings them together. This has required new paradigms for _how_ you express your transformations though.
 
-Since the early days of dbt, folks have been interested having MSFT data platforms. Huge shoutout to [Mikael Ene](https://github.com/mikaelene) and [Jacob Mastel](https://github.com/jacobm001) for their efforts back in 2019 on the original SQL Server adapters ([dbt-sqlserver](https://github.com/dbt-msft/dbt-sqlserver) and [dbt-mssql](https://github.com/jacobm001/dbt-mssql), respectively)
+<!-- truncate -->
 
-The journey for the Azure Synapse dbt adapter, dbt-synapse, is closely tied to my journey with dbt. I was the one who forked dbt-sqlserver into dbt-synapse in April of 2020. I had first learned of dbt only a month earlier and knew immediately that my team needed the tool. With a great deal of assistance from Jeremy and experts at Microsoft, my team and I got it off the ground and started using it. When I left my team at Avanade in early 2022 to join dbt Labs, I joked that I wasn’t actually leaving the team; I was just temporarily embedding at dbt Labs to expedite dbt Labs getting into Cloud. Two years later, I can tell my team that the mission has been accomplished! Kudos to all the folks who have contributed to the TSQL adapters either directly in GitHub or in the community Slack channels. The integration would not exist if not for you!
+Because of this, we’ve noticed when talking to dbt users that they _want_ to adopt the Semantic Layer, but feel daunted by the idea of migrating their transformations to this new paradigm. The good news is that you do _not_ need to make a huge one-time migration.
 
-<!--truncate-->
+We’re here to discuss another way: building a Semantic Layer in pieces. Our goal is to make sure you derive increased leverage and velocity from each step on your journey. If you’re eager to start building but have limited bandwidth (like most busy analytics engineers), this one is especially for you.
 
-## Fabric Best Practices
+## System of a noun: deciding what happens where
 
-With the introduction of dbt Cloud support for Microsoft Fabric and Azure Synapse Analytics Dedicated SQL Pools, we're opening up new possibilities for analytics engineers in the Microsoft Ecosystem.
+When you’re using the dbt Semantic Layer, you want to _minimize_ _the modeling that exists outside of dbt_. Eliminate it completely if you can. Why?
 
-The goal of this blog is to ensure a great experience for both
+- It’s **duplicative, patchy, and confusing** as discussed above.
+- It’s **less powerful**.
+- You **can’t** **test** it.
+- Depending on the tool, oftentimes you **can’t** **version control** it.
 
-- end-user data analysts who rely upon the data products built with dbt and
-- the analytics engineers, who should predominately spend time creating and maintaining data products instead of maintaining and spinning up infrastructure
-- data engineers who focus on data movement and ingestion into Synapse
+What you want is a unified development flow that handles **normalized transformation in dbt models** and **dynamic denormalization in the dbt Semantic Layer** (meaning it dynamically combines and reshapes normalized data models into different formats whenever you need them).
 
-To achieve this goal, this post will cover four main areas
-
-- Microsoft Fabric: the future of data warehousing in the Microsoft/Azure stack
-- strategic recommendations for provisioning Synapse environment
-- data modeling in dbt: Synapse style
-- Considerations for upstream and downstream of a Synapse-backed dbt project
-
-With that, let’s dive in!
-
-## Fabric is the future
-
-Many data teams currently use Azure Synapse dedicated pools. However, Fabric Synapse Data Warehouse is the future of data warehousing in the Microsoft Ecosystem.  Azure Synapse Analytics will remain available for a few more years, but Microsoft’s main focus is on Fabric as we can see in their roadmap and launches.
-
-Because data platform migrations are complex and time-consuming, it’s perfectly reasonable to still be using dbt with Azure Synapse for the next two years while the migration is under way. Thankfully, if your team already is using ASADSP, transitioning to the new Cloud offering will be much more straightforward than the migration from on-premise databases to the Cloud.
-
-In addition, if you're already managing your Synapse warehouse with a dbt project, you'll benefit from an even smoother migration process. Your DDL statements will be automatically handled, reducing the need for manual refactoring.
-
-Bottom line, Fabric is the future of data warehousing for Microsoft customers, and Synapse is will be deprecated at an as-of-yet undeclared End-of-Life.
-
- There’s undeniable potential offered by Fabric with it’s:
-
-- fully-separated storage and compute, and
-- pay-per-second compute.
-
-These two things alone greatly simplify the below section on Resource Provisioning.
-
-For more information, see:
-
-- the official guide: [Migration: Azure Synapse Analytics dedicated SQL pools to Fabric](https://learn.microsoft.com/en-us/fabric/data-warehouse/migration-synapse-dedicated-sql-pool-warehouse).
-- this blog about [the Future of Azure Synapse Analytics](https://blog.fabric.microsoft.com/en-us/blog/microsoft-fabric-explained-for-existing-synapse-users/)
-
-## Resource Provisioning
-
-Here are some considerations if you’re setting up an environment from scratch. If the infrastructure of multiple Synapse dedicated SQL pools and a Git repo already exist, you can skip to the next section, though a review of the below as a refresher wouldn’t hurt.
-
-### minimize pools; maximize DWUs
-
-#### definitions
-
-- dedicated SQL pools: effectively one data warehouse
-- Data warehouse units (DWUs): the size of the cluster
-
-#### number of pools
-
-With Synapse, a warehouse is both storage and compute. That is to say, to access data, the cluster needs to be on and warmed up.
-
-If you only have one team of analytics engineers, you should have two SQL pools: one for development and one for production. If you have multiple distinct teams that will be modeling data in Synapse using dbt, consider using dbt Cloud’s Mesh paradigm to enable cross team collaboration.
-
-Each should be at the highest tier that you can afford. You should also consider purchasing “year-long reservations” for a steep discount.
-
-Some folks will recommend looking into scaling up and down pools based on demand. However, I’ve learned from personal experience that this optimization is not a free lunch and will require significant investment to not only build out but maintain. A large enough instance that is on whenever needed, keeps at least half an engineers time free to work on actual data modeling rather than platform maintenance.
-
-#### DWUs
-
-The starting tier is `DW100c`, which costs $1.20/hour, has limitations such as only allowing 4 concurrent queries. To add 4  concurrent queries, you must increase the DWH tier. For every increase in 100 `c`'s, you gain an additional 4 concurrent queries.
-
-If this warehouse is intended to be the single source of truth for data analysts, you should design it to perform for that use case. In all likelihood, that means paying for a higher tier. Just like the above discussed potential for saving money by turning the cluster on and off as needed, paying for a lower tier, introduces another host of problems. If the limitation of 4 concurrent queries becomes a bottleneck, your choice is to either
-
-- design infrastructure to push the data out of Synapse and into a Azure SQL db or elsewhere
-- increase the tier of service paid (i.e. increase the `DWU`s)
-
-I’m of the opinion that minimizing Cloud spend should not come at the expense of developer productivity — both sides of the equation need to be considered. As such, I advocate predominately for the latter of the above two choices.
-
-### Deployment Resources
-
-In the Microsoft ecosystem, data warehouse deployments are more commonly conducted with Azure Data Factory instead of Azure DevOps pipelines or GitHub Actions. We recommend separating dbt project deployments from any ingestion pipeline defined in ADF.
-
-However, if you must use ADF as the deployment pipeline, it is possible to use dbt Cloud APIs. Running dbt Core within Azure Data Factory can be challenging as there’s no easy way to install and invoke dbt Core, because there’s no easy way to install and run Python. The workarounds aren’t great, for example: Setting up dbt calls via Azure Serverless Functions and invoking them  from ADF.  
-
-### access control
-
-#### permissions for analytics engineers
-
-:::caution
-⚠️ User-based Azure Active Directory authentication is not yet supported in dbt Cloud. As a workaround, consider having a [Service Principal](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=browser) made for each contributing Analytics Engineer for use in dbt Cloud
+:::info
+🏎️ **The Semantic Layer is a denormalization engine.** dbt transforms your data into clean, normalized marts. The dbt Semantic Layer is a denormalization engine that dynamically connects and molds these building blocks into the maximum amount of shapes available _dynamically_.
 :::
 
-In the development warehouse, each user should have the following privileges: `EXECUTE`, `SELECT`, `INSERT`, `UPDATE`, and `DELETE`.
+This enables a more **flexible consumption layer**, meaning downstream tools (like AI or dashboards) can sit as directly on top of Semantic Layer-generated artifacts and APIs as possible, and focus on what makes them shine instead of being burdened by basic dynamic modeling and aggregation tasks. Any tool-specific constructs should typically operate as close to **transparent pass-throughs** as you can make them, primarily serving to surface metrics and dimensions from the Semantic Layer in your downstream tool. There may be exceptions of course, but as a general guiding principle this gets you the most dynamic denormalization ability, and thus value, from your Semantic Layer code.
 
-#### service principal permissions
+So now we’ve established the system, let’s dig into the _plan_ for how we can get there iteratively.
 
-In addition, a service principal is required for dbt Cloud to directly interact with both the warehouse and your Git service provider (e.g. GitHub or Azure DevOps).
+## The plan: towards iterative velocity
 
-Only the Service Principal in charge of deployment has the above permissions in production. End users have only `SELECT` access to this environment.
+1. **Identify a Data Product that is impactful** Find something that is in heavy use and high value, but fairly narrow scope. **Don’t start with a broad executive dashboard** that shows metrics from across the company because you’re looking to optimize for migrating the **smallest amount of modeling for the highest amount of impact** that you can.
 
-## Model Considerations
+   For example, a good starting place would be a dashboard focused on Customer Acquisition Cost (CAC) that relies on a narrow set of metrics and underlying tables that are nonetheless critical for your company.
+2. **Catalog the models and their columns that service the Data Product**, both **in dbt _and_ the BI tool**, including rollups, metrics tables, and marts that support those. Pay special attention to aggregations as these will constitute _metrics_. You can reference [this example Google Sheet](https://docs.google.com/spreadsheets/d/1BR62C5jY6L5f5NvieMcA7OVldSFxu03Y07TG3waq0As/edit?usp=sharing) for one-way you might track this.
+3. [**Melt the frozen rollups**](https://docs.getdbt.com/best-practices/how-we-build-our-metrics/semantic-layer-6-terminology) in your dbt project, as well as variations modeled in your BI tool, **into Semantic Layer code.** We’ll go much more in-depth on this process, and we encourage you to read more about this tactical terminology (frozen, rollup, etc) in the link &mdash; it will be used throughout this article!
+4. **Create a parallel version of your data product that points to Semantic Layer artifacts, audit, and then publish.** Creating in parallel takes the pressure off, allowing you to fix any issues and publish gracefully. You’ll keep the existing Data Product as-is while swapping the clone to be supplied with data from the Semantic Layer.
 
-The magic begins when the environments are provisioned and dbt Cloud is connected.
+<Lightbox src="/img/blog/2024-07-09-semantic-layer-in-pieces/elsa_meme.jpg" title="Elsa iterates rapidly." />
 
-With dbt on Synapse, you can own the entire data transformation workflow from raw data to modeled data that data analysts and end users rely upon. The end product of which will be documented and tested.
+These steps constitute an **iterative piece** you will ship as you **progressively** move code into your Semantic Layer. As we dig into how to do this, we’ll discuss the **immediate value** this provides to your team and stakeholders. Broadly, it enables you to drastically increase [**iteration velocity**](https://www.linkedin.com/posts/rauchg_iteration-velocity-is-the-right-metric-to-activity-7087498430226313216-BVIP?utm_source=share&utm_medium=member_desktop).
 
-With dbt Cloud, things are even more streamlined. The dbt Cloud CLI allows developers to build only the models they need for a PR, deferring to the production environment for dependencies. There’s also dbt Explorer, which now has column-level lineage.
+The process of **melting static, frozen tables** into more flexible, fluid, **dynamic Semantic Layer code** is not complex, but it’s helpful to dig into the specific steps in the process. In the next section, we’ll dive into what this looks like in practice so you have a solid understanding of the "what’s required".
 
-While there are already platform-agnostic best practice guides that still apply for Synapse, there are some additional factors related to data distribution and indexing.
+This is the most **technical, detailed, and specific section of this article**, so make sure to bookmark it and **reference it** as often as you can until the process becomes as intuitive as regular modeling in dbt!
 
-### distributions & indices
+## Migrating a chunk: step-by-step
 
-Working in ASADSP, it is important to remember that you’re working in a [Massively-Parallel Processing (MPP) architecture](https://www.indicative.com/resource/what-is-massively-parallel-processing-mpp/).
+### 1. Identify target
 
-What this means for an analytics engineer working using dedicated SQL pools is that for every table model, it must have an `index` and `distribution` configured. In `dbt-synapse` the defaults are:
+1. **Identify a relatively normalized mart that is powering rollups in dbt**. If you do your rollups in your BI tool, start there. But we recommend starting with the frozen tables in dbt _first_ and moving through the flow of the DAG progressively, bringing logic in your BI tool into play last. This is because we want to iteratively break up these frozen concepts in such a way that we benefit from earlier parts of the chain being migrated already. Think "moving left-to-right in a big DAG" that spans all your tools.
+   - ✅ `orders`, `customers` — these are basic concepts powering your business, so should be marts models materialized via dbt.
+   - ❌ `active_accounts_per_week` — this is built on top of the above, and something we want to generate dynamically in the dbt Semantic Layer.
+   - Put another way: `customers` and `orders` are **normalized building blocks**, `active_accounts_per_week` is a **rollup** and we always want to _migrate those to the Semantic Layer_.
+     <Lightbox src="/img/blog/2024-07-09-semantic-layer-in-pieces/rollup_dag.png" title="A frozen rollup built on normalized marts." />
 
-- index: `CLUSTERED COLUMNSTORE INDEX`
-- distribution `ROUND_ROBIN`
+### 2. Catalog the inputs
 
-If you want something different, you can define it like below. For more information, see [dbt docs: configurations for Azure Synapse DWH: Indices and distributions](https://docs.getdbt.com/reference/resource-configs/azuresynapse-configs#indices-and-distributions).
+1. Identify **normalized columns** and **ignore any aggregation columns** for now. For example, `order_id`, `ordered_at`, `customer_id`, `order_total` are fields we want to put in our semantic model, a window function that sums `customer_cac` _statically_ in the dbt model is _not_ a field we want in our semantic model because we want to _dynamically_ codify that calculation as a metric in the Semantic Layer.
+   1. If you find in the next step that you can’t express a certain calculation in the Semantic Layer yet, use dbt to model it**.** This is the beauty of having your Semantic Layer code integrated in your dbt codebase, it’s easy to manage the push and pull of the line between the Transformation and Semantic Layers because you’re managing **a cohesive set of code and tooling.**
 
-```sql
-{{
-    config(
-        index='HEAP',
-        dist='ROUND_ROBIN'
-        )
-}}
-SELECT * FROM {{ ref('some_model') }}
-```
+### 3. Write Semantic Layer code
 
-A distribution specifies how the table rows should be stored across the 60 nodes of the cluster. The goal is to provide a configuration that both:
+1. **Start with the semantic model** going through column by column and putting all identified columns from Step 2 into the 3 semantic buckets:
+   1. [**Entities**](/docs/build/entities) — these are the spine of your semantic concepts or objects, you can think of them as roughly correlating to IDs or keys that form the grain.
+   2. [**Dimensions**](/docs/build/dimensions) — these are ways of grouping and bucketing these objects or concepts, such as time and categories.
+   3. [**Measures**](/docs/build/measures) — these are numeric values that you want to aggregate such as an order total or number of times a user clicked an ad.
+2. **Create metrics for the aggregation columns** we didn’t encode into the semantic model.
+3. Now, **identify a rollup you want to melt**. Refer to the [earlier example](#1-identify-target) to help distinguish these types of models.
+4. **Repeat these steps for any** **other concepts** that you need to create that rollup e.g. `active_accounts_per_week` may need **both `customers` and `orders`.**
+5. **Create metrics for the aggregation columns present in the rollup**. If your rollup references multiple models, put metrics in the YAML file that is most closely related to the grain or key aggregation of the table. For example, `active_accounts_per_week` is aggregated at a weekly time grain, but the key metric counts customer accounts, so we’d want to put that metric in the `customers.yml` or `sem_customers.yml` file (depending on [the naming system](/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure) you prefer). If it also contained a metric aggregating total orders in a given week, we’d put that metric into `orders.yml` or `sem_orders.yml`.
+6. **Create [saved queries with exports](/docs/build/saved-queries)** configured to materialize your new Semantic Layer-based artifacts into the warehouse in parallel with the frozen rollup. This will allow us to shift consumption tools and audit results.
 
-1. ensures data is split evenly across the nodes of the cluster, and
-2. minimizes inter-node movement of data.
+### 4. Connect external tools in parallel
 
-For example, imagine querying a 100-row seed table in a downstream model. Using `distribution=ROUND_ROBIN` instructs the pool to evenly distribute the rows between the 60 node, which equates to  having only one or two rows in each node. This `SELECT`-ing all these an operation that touches all 60 nodes. The end result is that the query will run much slower than you might expect.
+1. Now, **shift your external analysis tool to point at the Semantic Layer exports instead of the rollup**. Remember, we only want to shift the pointers for the rollup that we’ve migrated, everything else should stay pointing to frozen rollups. We’re migrating iteratively in pieces!
+   1. If your downstream tools have an integration with the Semantic Layer, you’ll want to set that up as well. This will allow not only [declarative caching](/docs/use-dbt-semantic-layer/sl-cache#declarative-caching) of common query patterns with exports but also easy, totally dynamic on-the-fly queries.
+2. Once you’ve replicated the previous state of things, with the Semantic Layer providing the data instead of frozen rollups, now you’re ready to **shift the transformations happening in your BI tool into the Semantic Layer**, following the same process.
+3. Finally, to **feel the new speed and power you’ve unlocked**, ask a stakeholder for a dimension or metric that’s on their wishlist for the data product you’re working with. Then, bask in the glory of amazing them when you ship it an hour later!
 
-The optimal distribution is `REPLICATE` which will load a full copy of the table to every node. In this scenario, any node can return the 100 rows without coordination from the others. This is ideal for a lookup table which could limit the result set within each node before aggregating each nodes results.
+:::tip
+💁🏻‍♀️ If your BI tool allows it, make sure to do the BI-related steps above **in a development environment**. If it doesn’t have these capabilities, stick with duplicating the data product you’re re-building and perform this there so you can swap it later after you’ve tested it thoroughly.
+:::
 
+## Deep impact
 
-#### more information
+The first time you turn around a newly sliced, diced, filtered, and rolled up metric table for a stakeholder in under an hour instead of a week, not only you, but the stakeholder will immediately feel the value and power of the Semantic Layer.
 
-- [Guidance for designing distributed tables using dedicated SQL pool in Azure Synapse Analytics](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)
-- [source code for `synapse__create_table_as()` macro](https://github.com/microsoft/dbt-synapse/blob/master/dbt/include/synapse/macros/materializations/models/table/create_table_as.sql)
-
-
-## Deployments & Ecosystem
-
-With the infrastructure in place and the analytics engineers enabled with best practices, the final piece is to think through how a dbt project sits in the larger data stack of your organization both upstream and downstream.
-
-### Upstream
-
-In dbt, we assume the data has already been ingested into the warehouse raw. This follows a broader paradigm known as Extract-Load-Transform (ELT). The same goes for dbt with Azure Synapse. The goal should be to have the data ingested into Synapse that is as “untouched” as possible from when it came from the upstream source system. It’s common for data teams using Azure Data Factory to continue to imploy an ETL-paradigm where data is transformed before it even lands in the warehouse. We do not recommend this, as it results in critical data transformation living outside of the dbt project, and therefore undocumented.
-
-If you have not already, engage the central/upstream data engineering team to devise a plan to integrate data extraction and movement in tools such as SSIS and Azure Data Factory with the transformation performed via dbt Cloud.
-
-### Downstream Consumers (Power BI)
-
-It is extremely common in MSFT data ecosystem to have significant amounts of data modeling live within Power BI reports and/or datasets. This is ok up to a certain point.
-
-The correct approach is not to mandate that all data modeling should be done in dbt with `SQL`. Instead seek out the most business critical Power BI datasets and reports. Any modeling done in those reports should be upstreamed into the dbt project where it can be properly tested and documented.
-
-There should be a continuous effort to take and Power Query code written in PBI as transformation code and to upstream it into the data warehouse where the modeling can be tested, documented, reused by others and deployed with confidence.
-
-## Conclusion
-
-There’s great opportunity in dbt Cloud today for data teams using Azure Synapse. While Fabric is the future, there’s meaningful considerations when it comes to resource provisioning, model design, and deployments within the larger ecosystem.
-
-As we look ahead, we're excited about the possibilities that Microsoft Fabric holds for the future of data analytics. With dbt Cloud and Azure Synapse, analytics engineers can be disseminate knowledge with confidence to the rest of their organization.
+dbt Labs’ mission is to create and disseminate organizational knowledge. This process, and building a Semantic Layer generally, is about encoding organizational knowledge in such a way that it creates and disseminates _leverage_. Enabled by this process, you can start building your Semantic Layer _today_, without waiting for the magical capacity for a giant overhaul to materialize. Building iterative velocity as you progress, your team can finally make any BI tool deliver the way you need it to.
