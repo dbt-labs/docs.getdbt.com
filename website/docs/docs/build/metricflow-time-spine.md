@@ -10,13 +10,13 @@ It's common in analytics engineering to have a date dimension or "time spine" ta
 
 MetricFlow requires you to define a time spine table as a project level configuration, which then is used for various time-based joins and aggregations, like cumulative metrics. At a minimum, you need to define a time spine table for a daily grain. You can optionally define a time spine table for a different granularity, like hourly.
 
-If you already have a date dimension or time spine table in your dbt project you can simply point MetricFlow at this table. To do this, update the `model` configuration to use this table in the semantic layer. For example, given the following directory structure, you can create two time spine configurations, `time_spine_hourly` and `time_spine_daily`. 
+If you already have a date dimension or time spine table in your dbt project, you can point MetricFlow to this table by updating the `model` configuration to use this table in the Semantic Layer. For example, given the following directory structure, you can create two time spine configurations, `time_spine_hourly` and `time_spine_daily`. 
 
 ::tip 
 Previously, you were required to create a model called `metricflow_time_spine` in your dbt project. This is no longer required. However, you can build your time spine model from this table if you don't have another date dimension table you want to use in your project.
-::
+:::
 
-![Time spine directory structure](/img/docs/building-metrics/time_spines.png)
+<Lightbox src="/img/docs/building-metrics/time_spines.png" title="Time spine directory structure" />
 
 
 ```yaml
