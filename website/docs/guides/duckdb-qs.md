@@ -19,7 +19,7 @@ In this quickstart guide, you'll learn how to use dbt Core with DuckDB, enabling
 
 This guide will demonstrate how to: 
 
-- Create an virtual development environment using a template provided by dbt Labs.
+- Create a virtual development environment using a template provided by dbt Labs.
    - This sets up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
    - For additional information, refer to the [README](https://github.com/gwenwindflower/octocatalog) for the Jaffle Shop template. It includes instructions on how to do this, along with animated GIFs.
 - Run any dbt command from the environment’s terminal. 
