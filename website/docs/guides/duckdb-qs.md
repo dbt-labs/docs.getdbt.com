@@ -59,6 +59,10 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 For more information, read the [Git Guide](https://github.com/git-guides/git-clone)
 
+You can access the repository for DuckDB by following the URL:
+
+```bash
+https://github.com/duckdb/duckdb.git
 2. Change into the docs-duckdb directory from the command line:
 
     ```Jinja
