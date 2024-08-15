@@ -59,7 +59,6 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
     ```bash
     git clone <add name of git repo for this duckdb example>
-    ```
 
 2. Change into the docs-duckdb directory from the command line:
 
