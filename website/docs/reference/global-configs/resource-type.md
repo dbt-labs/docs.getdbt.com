@@ -64,25 +64,25 @@ Instead of targeting specific resources, use the `--resource-flag` or `--exclude
 
 - For example, use the following command to include _all_ snapshots from your dbt build process:
 
-<File name='Usage'>
+    <File name='Usage'>
 
-```text
-dbt build --resource-type snapshot
-```
+    ```text
+    dbt build --resource-type snapshot
+    ```
 
-</File>
+    </File>
 
 <VersionBlock firstVersion="1.7">
 
 - In this example, run the following command to include _all_ saved queries with the `--resource-type` flag:
 
-<File name='Usage'>
+    <File name='Usage'>
 
-```text
-dbt build --resource-type saved_query
-```
+    ```text
+    dbt build --resource-type saved_query
+    ```
 
-</File>
+    </File>
 
 </VersionBlock>
 
@@ -90,22 +90,22 @@ dbt build --resource-type saved_query
 
 -  In this example, use the following command to exclude _all_ unit tests from your dbt build process. Note that the `--exclude-resource-type` flag is only available in dbt version 1.8 and higher:
 
-<File name='Usage'>
+    <File name='Usage'>
 
-```text
-dbt build --exclude-resource-type unit_test
-```
+    ```text
+    dbt build --exclude-resource-type unit_test
+    ```
 
-</File>
+    </File>
 
 - In this example, use the following command to include all data tests in your build process:
 
-<File name='Usage'>
+    <File name='Usage'>
 
-```text
-dbt build --resource-type test
-```
+    ```text
+    dbt build --resource-type test
+    ```
 
-</File>
+    </File>
 
 </VersionBlock>
