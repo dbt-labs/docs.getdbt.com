@@ -57,22 +57,22 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 1. First, you'll need to clone this repository.
 
-You can access the repository for DuckDB by following the URL:
+    You can access the repository for DuckDB by following the URL:
 
-```bash
-https://github.com/duckdb/duckdb.git
+    ```bash
+    https://github.com/duckdb/duckdb.git
 
-```
+    ```
 
 2. Change into the docs-duckdb directory from the command line:
 
-```Jinja
+    ```Jinja
 
-cd docs-duckdb
+    cd docs-duckdb
 
-```
+    ```
 
-For more information, read the [Git Guide](https://github.com/git-guides/git-clone).
+    For a more comprehensive understanding and additional information, refer to the [Git Guide](https://github.com/git-guides/git-clone).
 
 
 3. Install dbt and DuckDB in a virtual environment.
@@ -130,11 +130,11 @@ For more information, read the [Git Guide](https://github.com/git-guides/git-clo
 
     For complete details, refer to the [dbt command reference](/reference/dbt-commands).
 
-    :::note
+:::note
 
-    If you decide to run this project in your own data warehouse (outside of this DuckDB demo) and steps fail, it might mean that you need to make small changes to the SQL in the models folder to adjust for the flavor of SQL of your target database. Definitely consider this if you are using a community-contributed adapter.
+If you decide to run this project in your own data warehouse (outside of this DuckDB demo) and steps fail, it might mean that you need to make small changes to the SQL in the models folder to adjust for the flavor of SQL of your target database. Definitely consider this if you are using a community-contributed adapter.
 
-    :::
+:::
 
 
 ### Troubleshoot
@@ -156,9 +156,9 @@ For more information, read the [Git Guide](https://github.com/git-guides/git-clo
    </Expandable>
 
 
- </TabItem>
+</TabItem>
  
- <TabItem value="web" label="Web browser">
+<TabItem value="web" label="Web browser">
 
 1. Go to the `jaffle-shop-template` [repository](https://github.com/dbt-labs/jaffle-shop-template) after you log in to your GitHub account. 
 1. Click **Use this template** at the top of the page and choose **Create new repository**.
