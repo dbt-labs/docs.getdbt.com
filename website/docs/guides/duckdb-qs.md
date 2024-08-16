@@ -57,19 +57,23 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 1. First, you'll need to clone this repository.
 
-For more information, read the [Git Guide](https://github.com/git-guides/git-clone)
-
 You can access the repository for DuckDB by following the URL:
 
 ```bash
 https://github.com/duckdb/duckdb.git
+
+```
+
 2. Change into the docs-duckdb directory from the command line:
 
-    ```Jinja
+```Jinja
 
-    cd docs-duckdb
+cd docs-duckdb
 
-    ```
+```
+
+For more information, read the [Git Guide](https://github.com/git-guides/git-clone).
+
 
 3. Install dbt and DuckDB in a virtual environment.
 
@@ -124,32 +128,32 @@ https://github.com/duckdb/duckdb.git
     - [dbt docs generate](/reference/commands/cmd-docs#dbt-docs-generate) &mdash; generates your project's documentation.
     - [dbt docs serve](/reference/commands/cmd-docs#dbt-docs-serve) &mdash; starts a webserver on port 8080 to serve your documentation locally and opens the documentation site in your default browser.
 
-For complete details, refer to the [dbt command reference](/reference/dbt-commands).
+    For complete details, refer to the [dbt command reference](/reference/dbt-commands).
 
-:::note
+    :::note
 
-If you decide to run this project in your own data warehouse (outside of this DuckDB demo) and steps fail, it might mean that you need to make small changes to the SQL in the models folder to adjust for the flavor of SQL of your target database. Definitely consider this if you are using a community-contributed adapter.
+    If you decide to run this project in your own data warehouse (outside of this DuckDB demo) and steps fail, it might mean that you need to make small changes to the SQL in the models folder to adjust for the flavor of SQL of your target database. Definitely consider this if you are using a community-contributed adapter.
 
-:::
+    :::
 
 
 ### Troubleshoot
 
 
 
-<Expandable alt_header="Could not set lock on file error" >
+   <Expandable alt_header="Could not set lock on file error" >
 
-```Jinja
+    ```Jinja
 
-IO Error: Could not set lock on file "jaffle_shop.duckdb": Resource temporarily unavailable
+    IO Error: Could not set lock on file "jaffle_shop.duckdb": Resource temporarily unavailable
 
-```
+    ```
 
-This is a known issue in DuckDB. Try disconnecting from any sessions that are locking the database. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
+    This is a known issue in DuckDB. Try disconnecting from any sessions that are locking the database. If you are using DBeaver, this means shutting down DBeaver (disconnecting doesn't always work).
 
-As a last resort, deleting the database file will get you back in action (_but_ you will lose all your data).
+    As a last resort, deleting the database file will get you back in action (_but_ you will lose all your data).
 
-</Expandable>
+   </Expandable>
 
 
  </TabItem>
