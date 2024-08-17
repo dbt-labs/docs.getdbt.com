@@ -85,3 +85,6 @@ This logic is encoded in the [`should_full_refresh()`](https://github.com/dbt-la
 
 ## Recommendation
 Set `full_refresh: false` for models of especially large datasets, which you would _never_ want dbt to fully drop and recreate.
+
+## Reference docs
+* [on_configuration_change](/reference/resource-configs/on_configuration_change)
