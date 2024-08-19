@@ -66,9 +66,12 @@ export const VersionContextProvider = ({ value = "", children }) => {
 
   // Determine isPrerelease status + End of Life date for current version
   const currentVersion = versions.find(ver => ver.version === version)
-  if(currentVersion)
+  if(currentVersion) {
+    console.log("currentVersion", currentVersion);
     context.EOLDate = currentVersion.EOLDate
     context.isPrerelease = currentVersion?.isPrerelease
+    context.customDisplay = currentVersion?.customDisplay;
+  }
   
   // Get latest stable release
   const latestStableRelease = versions.find(ver => !ver?.isPrerelease)
