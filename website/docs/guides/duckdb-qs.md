@@ -58,7 +58,6 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 1. First, you'll need to [clone](https://github.com/git-guides/git-clone) the Jaffle Shop repository by running the following command in your terminal:
 
 
-    You can access the repository for DuckDB by following the URL:
 
     ```bash
     git clone https://github.com.dbt-labs/jaffle_shop_duckdb.git
