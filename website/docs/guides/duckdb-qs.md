@@ -46,7 +46,7 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Set up DuckDB for dbt Core
 
-The following will provide a step-by-step guide on setting up DuckDB for use in both local environments and web browsers.
+The following provides a step-by-step guide for setting up DuckDB for use in local (Mac and Windows) environments and web browsers.
 
 For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
 
