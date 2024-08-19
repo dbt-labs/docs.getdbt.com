@@ -90,7 +90,7 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
     <Expandable alt_header="Example for Windows" >
 
-    ```Jinja
+    ```shell
 
     python -m venv venv
     venv\Scripts\activate.bat
