@@ -104,7 +104,7 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
     <Expandable alt_header="Example for Windows PowerShell" >
 
-    ```Jinja
+    ```shell
 
     python -m venv venv
     venv\Scripts\Activate.ps1
