@@ -77,7 +77,7 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
     <Expandable alt_header="Example for MAC" >
 
-    ```Jinja
+    ```shell
 
     python3 -m venv venv
     source venv/bin/activate
