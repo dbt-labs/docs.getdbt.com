@@ -55,7 +55,7 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 <TabItem value="local" label="Local">
 
-1. First, you'll need to clone this repository.
+1. First, you'll need to [clone](https://github.com/git-guides/git-clone) the Jaffle Shop repository by running the following command in your terminal:
 
     For a more comprehensive understanding and additional information, refer to the [Git Guide](https://github.com/git-guides/git-clone).
 
