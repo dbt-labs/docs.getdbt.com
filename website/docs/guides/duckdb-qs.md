@@ -23,7 +23,7 @@ This guide will demonstrate how to:
    - This sets up a fully functional dbt environment with an operational and executable project. The codespace automatically connects to the DuckDB database and loads a year's worth of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities.
    - For additional information, refer to the [README](https://github.com/gwenwindflower/octocatalog) for the Jaffle Shop template. It includes instructions on how to do this, along with animated GIFs.
 - Run any dbt command from the environment’s terminal. 
-- Generate a larger dataset for the Jaffle Shop café (for example, 5 years of data instead of just one).
+- Generate a larger dataset for the Jaffle Shop café (for example, five years of data instead of just one).
 
 You can learn [dbt Learn courses](https://learn.getdbt.com) through high-quality courses and workshops.
 
