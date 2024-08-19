@@ -75,7 +75,7 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 3. Install dbt Core and DuckDB in a virtual environment.
 
-    <Expandable alt_header="Example for MAC" >
+    <Expandable alt_header="Example for Mac" >
 
     ```shell
 
