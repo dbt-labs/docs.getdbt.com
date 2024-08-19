@@ -57,10 +57,12 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 1. First, you'll need to clone this repository.
 
+    For a more comprehensive understanding and additional information, refer to the [Git Guide](https://github.com/git-guides/git-clone).
+
     You can access the repository for DuckDB by following the URL:
 
     ```bash
-    https://github.com/duckdb/duckdb.git
+    git clone https://github.com.dbt-labs/jaffle_shop_duckdb.git
 
     ```
 
@@ -68,11 +70,9 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
     ```Jinja
 
-    cd docs-duckdb
+    cd jaffle_shop_duck_db
 
     ```
-
-    For a more comprehensive understanding and additional information, refer to the [Git Guide](https://github.com/git-guides/git-clone).
 
 
 3. Install dbt and DuckDB in a virtual environment.
