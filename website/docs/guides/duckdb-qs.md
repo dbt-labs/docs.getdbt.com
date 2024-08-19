@@ -68,7 +68,7 @@ For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/doc
 
 2. Change into the docs-duckdb directory from the command line:
 
-    ```Jinja
+    ```shell
 
     cd jaffle_shop_duck_db
 
