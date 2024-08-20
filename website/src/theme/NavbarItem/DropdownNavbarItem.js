@@ -114,11 +114,10 @@ function DropdownNavbarItemDesktop({
       </NavbarNavLink>
       <ul className="dropdown__menu">
         {items.map((childItemProps, i) => {
-          console.log("childItemProps", childItemProps);
           const thisVersion = versions.find(
             (version) => childItemProps.label == version.version
           );
-          const versionDisplay = `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
+          const versionDisplay = thisVersion?.customDisplay ? thisVersion.customDisplay : `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
                     
           return (
             <React.Fragment key={i}>
@@ -126,6 +125,7 @@ function DropdownNavbarItemDesktop({
                 <li>
                   <a
                     className="dropdown__link nav-versioning-dropdown__link"
+                    data-dbt-version={childItemProps.label}
                     onClick={(e) => {
                       handleVersionMenuClick();
                       versionContext.updateVersion(e);
