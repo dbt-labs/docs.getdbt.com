@@ -51,9 +51,13 @@ export const VersionContextProvider = ({ value = "", children }) => {
     if(!e.target)
       return
       
-    const vRegex = /(?:v)?(\d+(\.\d+)*)/ // Regex that will parse out the version number, even if there is/isn't a 'v' in front of version number and a '(Beta)' afterwards.
-    const versionValue = e.target.text.match(vRegex)[1]
+    
+    // const vRegex = /(?:v)?(\d+(\.\d+)*)/ // Regex that will parse out the version number, even if there is/isn't a 'v' in front of version number and a '(Beta)' afterwards.
+    // const versionValue = e.target.text.match(vRegex)[1]
 
+    const versionValue = e.target?.dataset?.dbtVersion
+    console.log('versionValue', versionValue)
+    
     versionValue &&
       setVersion(versionValue)
       window.localStorage.setItem('dbtVersion', versionValue)

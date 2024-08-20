@@ -188,42 +188,56 @@ function DropdownNavbarItemMobile({
   }, [localPathname, containsActive, setCollapsed]);
   return (
     <li
-      className={clsx('menu__list-item', {
-        'menu__list-item--collapsed': collapsed,
-      })}>
+      className={clsx("menu__list-item", {
+        "menu__list-item--collapsed": collapsed,
+      })}
+    >
       <NavbarNavLink
         role="button"
         className={clsx(
-          'menu__link menu__link--sublist menu__link--sublist-caret',
-          className,
+          "menu__link menu__link--sublist menu__link--sublist-caret",
+          className
         )}
         {...props}
         onClick={(e) => {
           e.preventDefault();
           toggleCollapsed();
         }}
-        label={className === "nav-versioning" ? `v${versionContext.version} ${versionContext.isPrerelease ? "(Beta)" : ""}` : props.children ?? props.label}
+        label={
+          className === "nav-versioning"
+            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
+            : props.children ?? props.label
+        }
       >
         {props.children ?? props.label}
       </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
         {items.map((childItemProps, i) => {
-          childItemProps.label = versions.find((version) => (childItemProps.label == version.version))?.isPrerelease ? `${childItemProps.label} (Beta)` : `${childItemProps.label}`;
+          const thisVersion = versions.find(
+            (version) => childItemProps.label == version.version
+          );
+          const versionDisplay = thisVersion?.customDisplay
+            ? thisVersion.customDisplay
+            : `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
+
+          // TODO: issue here setting label to custom display
+          childItemProps.label = versionDisplay;
           return (
             <NavbarItem
               mobile
               isDropdownItem
-              onClick={className === "nav-versioning" 
-                ? (e) => versionContext.updateVersion(e)
-                : onClick
+              data-dbt-version={childItemProps.label}
+              onClick={
+                className === "nav-versioning"
+                  ? (e) => versionContext.updateVersion(e)
+                  : onClick
               }
               activeClassName="menu__link--active"
               {...childItemProps}
               key={i}
             />
-          )
-        } 
-        )}
+          );
+        })}
       </Collapsible>
     </li>
   );
