@@ -46,9 +46,26 @@ You can learn more through high-quality [dbt Learn courses and workshops](https:
 
 ## Set up DuckDB for dbt Core
 
+The `requirements.txt` file is used to install dbt Core, DuckDB, and all other necessary dependencies. You can check this file to see what will be installed on your machine. It's typically located in the root directory of your project.
+
+The `requirements.txt` file is placed at the top level of your dbt project directory, alongside other key files like `dbt_project.yml`:
+
+
+```shell
+
+/my_dbt_project/
+├── dbt_project.yml
+├── models/
+│   ├── my_model.sql
+├── tests/
+│   ├── my_test.sql
+└── requirements.txt
+
+```
+
 The following provides a step-by-step guide for setting up DuckDB for use in local (Mac and Windows) environments and web browsers.
 
-For more information on the setup of DuckDB, you can refer to [DuckDBsetup](/docs/core/connect-data-platform/duckdb-setup).
+For more information on the setup of DuckDB, you can refer to [DuckDB setup](/docs/core/connect-data-platform/duckdb-setup).
 
 
 <Tabs>
