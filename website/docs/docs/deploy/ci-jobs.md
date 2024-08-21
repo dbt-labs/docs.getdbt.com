@@ -32,7 +32,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 
 1. Options in the **Execution settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
-    - **Run compare changes** &mdash; LOREM IPSUM Enable to compare changes between job runs. When enabled, you can review [Compare](/docs/deploy/run-visibility#compare-tab) dashboard. Refer to [Advanced CI](/docs/deploy/continuous-integration#advanced-ci) for more details. LOREM IPSUM
+    - **Run compare changes**<Lifecycle status="beta" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To review the comparison report, browse to the [Compare tab](/docs/deploy/run-visibility#compare-tab) in the job run's details. A summary of the report is also available from the pull request in your Git provider (see [example](#example-ci-report)).
     - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
 
       :::info
@@ -51,12 +51,17 @@ To make CI job creation easier, many options on the **CI job** page are set to d
    - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this job runs. This option is disabled by default since most teams do not want to test doc generation on every CI check.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
-   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" title="Example of CI Job page in dbt Cloud UI"/>
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in dbt Cloud UI"/>
 
-### Example of GitHub pull request
-The following is an example of GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+### Example of CI check in pull request {#example-ci-check}
+The following is an example of a CI check in a GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="60%" title="GitHub pull request example"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="60%" title="Example of CI check in GitHub pull request"/>
+
+### Example of CI report in pull request <Lifecycle status="beta" /> {#example-ci-report}
+The following is an example of a CI report in a GitHub pull request, which is shown when the **Run compare changes** option is enabled for the CI job. It displays a high-level summary of the models that changed from the pull request.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-ci-report.png" width="75%" title="Example of CI report comment in GitHub pull request"/>
 
 ## Trigger a CI job with the API
 

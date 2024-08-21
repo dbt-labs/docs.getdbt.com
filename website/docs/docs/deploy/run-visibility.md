@@ -59,7 +59,7 @@ Provides a list of the artifacts that were generated from the job run. dbt saves
 
 The **Compare** tab is shown for [CI job runs](/docs/deploy/ci-jobs) with the **Run compare changes** setting enabled. It displays details about [the changes from the comparison dbt performed](/docs/deploy/continuous-integration#compare-changes) between what's in your production environment and the pull request. To help you better visualize the differences, dbt Cloud highlights changes to your models in red (deletions) and green (inserts).
 
-From the **Modified** section, you can view the:
+From the **Modified** section, you can view the following:
 
 - **Overview** &mdash; High-level summary about the changes to the models such as the number of primary keys that were added or removed. 
 - **Primary keys** &mdash; Details about the changes to the records.
