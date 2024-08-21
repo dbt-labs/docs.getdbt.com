@@ -192,6 +192,6 @@ This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt`
 
 <Expandable alt_header="How to skip artifacts from being downloaded">
 
-By default, all artifacts are downloaded when you execute dbt commands from the dbt Cloud CLI. To skip these files from being downloaded, add `--download-artifacts=false` to the dbt command you want to run. This can help improve run-time performance but be careful as this can result in unexpected behavior. 
+By default, all artifacts are downloaded when you execute dbt commands from the dbt Cloud CLI. To skip these files from being downloaded, add `--download-artifacts=false` to the dbt command you want to run. This can help improve run-time performance but can also result in unexpected behavior so be careful. 
 
 </Expandable>
