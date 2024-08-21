@@ -661,7 +661,8 @@ semantic_models:
     entities: 
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
 ```
 
@@ -686,8 +687,9 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
-        type: foreign  
+      - name: customer
+        expr: customer_id
+        type: foreign
     # Newly added
     dimensions:   
       - name: order_date
@@ -717,7 +719,8 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
     dimensions:
       - name: order_date
@@ -777,7 +780,8 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
     dimensions:
       - name: order_date
@@ -825,7 +829,7 @@ metrics:
     type_params:
       measure: order_count
     filter: |
-      {{ Dimension('order_id__order_total_dim') }} >= 20
+      {{ Metric('order_total', group_by=['order_id']) }} >=  20
   # Ratio type metric
   - name: "avg_order_value"
     label: "avg_order_value"
