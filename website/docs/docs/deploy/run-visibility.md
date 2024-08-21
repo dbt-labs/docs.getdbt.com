@@ -37,7 +37,9 @@ You can view or download in-progress and historical access logs for your dbt run
 
 ### Lineage tab
 
-[PLACEHOLDER STUB for content]
+Displays the lineage graph associated with the job run so you can better understand the dependencies and relationships of the resources in your project. To view a node's metadata directly in [dbt Explorer](/docs/collaborate/explore-projects), select it (double-click) from the graph. 
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-lineage.gif" width="85%" title="Example of accessing dbt Explorer from the Lineage tab" />
 
 ### Model timing tab <Lifecycle status="team,enterprise" /> 
 
@@ -49,10 +51,22 @@ You can find the dashboard on the [job's run details](#job-run-details).
 
 ### Artifacts tab
 
-[PLACEHOLDER STUB for content]
+Provides a list of the artifacts that were generated from the job run. dbt saves these files and you can download them if you want.
 
-### Compare tab
+<Lightbox src="/img/docs/dbt-cloud/example-artifacts-tab.png" width="85%" title="Example of the Artifacts tab" />
 
-[PLACEHOLDER STUB for content]
+### Compare tab <Lifecycle status="beta"/>
 
-LOREM IPSOM add content about the different tabs, tables, Explorer link, etc
+The **Compare** tab is shown for [CI job runs](/docs/deploy/ci-jobs) with the **Run compare changes** setting enabled. It displays details about [the changes from the comparison dbt performed](/docs/deploy/continuous-integration#compare-changes) between what's in your production environment and the pull request. To help you better visualize the differences, dbt Cloud highlights changes to your models in red (deletions) and green (inserts).
+
+From the **Modified** section, you can view the:
+
+- **Overview** &mdash; High-level summary about the changes to the models such as the number of primary keys that were added or removed. 
+- **Primary keys** &mdash; Details about the changes to the records.
+- **Modified rows** &mdash; Details about the modified rows. Click **Show full preview** to display all columns.
+- **Columns** &mdash; Details about the changes to the columns. 
+
+To view the dependencies and relationships of the resources in your project more closely, click **View in Explorer** to launch [dbt Explorer](/docs/collaborate/explore-projects). 
+
+<Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
+

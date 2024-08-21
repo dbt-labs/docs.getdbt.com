@@ -56,10 +56,16 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 </Expandable>
 
-## How Advanced CI works {#advanced-ci}
+<Expandable alt_header="Compare changes" lifecycle="beta" >
 
-[PLACEHOLDER STUB for content]
+When a pull request is opened or new commits are pushed, dbt Cloud enqueues a new CI run _and_ compares the changes between the last applied state of the production environment (using deferral to lower compute) and the latest changes from the pull request. By analyzing these comparisons, you can gain a better understanding of how the data changes are affected by code changes to help ensure trusted data products are being developed. 
 
-- Compare changes LOREM IPSUM
-- PR comments LOREM IPSUM
+dbt provides the comparison details
 
+For comparison details, you can view the comparison details: 
+After the comparison, you can view:
+
+- In dbt Cloud &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns. To learn more, refer to the [Compare tab](/docs/deploy/run-visibility#compare-tab) in the [Job run details](/docs/deploy/run-visibility#job-run-details). 
+- From the pull request in your Git provider &mdash; Shows a summary of the changes, as a git comment.
+
+</Expandable>
