@@ -51,7 +51,7 @@ Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs
 Job admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs. 
 
 **Job Runner**<br/>
-Job runner service tokens can authorize requests for triggering runs and viewing historical runs. 
+Job runner service tokens can authorize requests for triggering runs and viewing historical runs.
 
 **Member** <br/>
 Member service tokens can authorize requests for viewing and editing resources, triggering runs, and inviting members to the account. Tokens assigned the Member permission set will have the same permissions as a Member user. For more information about Member users, see "[Self-service permissions](/docs/cloud/manage-access/self-service-permissions)".
