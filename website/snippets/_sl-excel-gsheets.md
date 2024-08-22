@@ -68,7 +68,7 @@
 #### Other settings 
 
 <p>If you would like to just query the data values without the headers, you can optionally select the <strong>Exclude Column Names</strong> box.</p>
-<p>If you would like to return your results and keep any previously selected data below it in tact, you can un-select the <strong>Exclude Column Names</strong> box. By default, we'll clear all trailing rows in case there's stale data. </p>
+<p>To return your results and keep any previously selected data below it intact, un-select the <strong>Exclude Column Names</strong> box. By default, we'll clear all trailing rows if there's stale data. </p>
 
 
 
