@@ -14,14 +14,15 @@ You can use the Lightbox component to add an image or screenshot to your page. I
 
 ## Example usage
 
-<code><Lightbox</code><br>
-<code>src="/img/hamburger-icon.jpg"</code><br>
-<code>lt="Alt text"</code><br>
-<code>title="This text is visible"</code><br> 
-<code>collapsed={true}</code><br>
-<code>width="600px"</code><br>
-<code>alignment="left"</code><br>
-<code>/></code>
-
+```mdx
+<Lightbox
+  src="/img/hamburger-icon.jpg"
+  lt="Alt text"
+  title="This text is visible" 
+  collapsed={true}
+  width="600px"
+  alignment="left"
+/>
+```
 
 <LoomVideo id="2b64dbd47a2d46dbafa5b43ed52a91e0" />   

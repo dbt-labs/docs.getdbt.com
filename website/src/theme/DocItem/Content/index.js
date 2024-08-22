@@ -29,12 +29,18 @@ import styles from "./styles.module.css";
 
 function useSyntheticTitle() {
   const { metadata, frontMatter, contentTitle } = useDoc();
-  const shouldRender =
-    !frontMatter.hide_title && typeof contentTitle === "undefined";
+
+  const shouldRender = 
+  metadata?.id?.includes("guides/") || 
+  (
+    !frontMatter.hide_title && typeof contentTitle === "undefined"
+  );
+  
   if (!shouldRender) {
     return null;
   }
-  return metadata.title;
+
+  return contentTitle || metadata.title;
 }
 export default function DocItemContent({ children }) {
   const syntheticTitle = useSyntheticTitle();

@@ -6,20 +6,18 @@ sidebar_label: "Dimensions"
 tags: [Metrics, Semantic Layer]
 ---
 
-Dimensions are a way to group or filter information based on categories or time. It's like a special label that helps organize and analyze data. 
-
-In a data platform, dimensions are part of a larger structure called a semantic model. It's created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures) and used to add more details to your data that can't be easily added up or combined.  In SQL, dimensions are typically included in the `group by` clause of your SQL query.
+Dimensions represent the non-aggregatable columns in your data set, which are the attributes, features, or characteristics that describe or categorize data. In the context of the dbt Semantic Layer, dimensions are part of a larger structure called a semantic model. They are created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures) and used to add more details to your data. In SQL, dimensions are typically included in the `group by` clause of your SQL query.
 
 <!--dimensions are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
-All dimensions require a `name`, `type` and in some cases, an `expr` parameter. The `name` for your dimension must be unique to the semantic model and can not be the same as an existing `entity` or `measure` within that same model.
+All dimensions require a `name`, `type`, and can optionally include an `expr` parameter. The `name` for your Dimension must be unique wihtin the same semantic model.
 
 | Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` |  Refers to the name of the group that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> Dimension names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
-| `type` | Specifies the type of group created in the semantic model. There are two types:<br /><br />- **Categorical**: Group rows in a table by categories like geography, color, and so on. <br />- **Time**: Point to a date field in the data platform. Must be of type TIMESTAMP or equivalent in the data platform engine. <br />      - You can also use time dimensions to specify time spans for [slowly changing dimensions](/docs/build/dimensions#scd-type-ii) tables. | Required |
+| `type` | Specifies the type of group created in the semantic model. There are two types:<br /><br />- **Categorical**: Describe attributes or features like geography or sales region. <br />- **Time**: Time-based dimensions like timestamps or dates. | Required |
 | `type_params` | Specific type params such as if the time is primary or used as a partition | Required |
 | `description` | A clear description of the dimension | Optional |
 | `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use the column name itself to input a SQL expression. | Optional |
@@ -48,6 +46,8 @@ semantic_models:
       agg_time_dimension: order_date
 # --- entities --- 
   entities: 
+    - name: transaction
+      type: primary
       ...
 # --- measures --- 
   measures: 
@@ -56,14 +56,20 @@ semantic_models:
   dimensions:
     - name: order_date
       type: time
-      label: "Date of transaction" # Recommend adding a label to define the value displayed in downstream tools
-      expr: date_trunc('day', ts)
-    - name: is_bulk_transaction
+      type_params:
+        time_granularity: day
+      label: "Date of transaction" # Recommend adding a label to provide more context to users consuming the data
+      expr: ts
+    - name: is_bulk
       type: categorical
       expr: case when quantity > 10 then true else false end
+    - name: type
+      type: categorical
 ```
 
-MetricFlow requires that all dimensions have a primary entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity: entity_name` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation.
+Dimensions are bound to the primary entity of the semantic model they are defined in. For example the dimensoin `type` is defined in a model that has `transaction` as a primary entity. `type` is scoped to the `transaction` entity, and to reference this dimension you would use the fully qualified dimension name i.e `transaction__type`. 
+
+MetricFlow requires that all semantic models have a primary entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation. We recommend making these "virtual primary entities" unique across your semantic model. An example of defining a primary entity for a data source that doesn't have a primary entity column is below:
 
 ```yaml
 semantic_model:
@@ -93,7 +99,7 @@ This section further explains the dimension definitions, along with examples. Di
 
 ## Categorical
 
-Categorical is used to group metrics by different categories such as product type, color, or geographical area. They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a category dimension is `is_bulk_transaction`, which is a group created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
+Categorical dimensions are used to group metrics by different attributes, features, or characteristics such as product type. They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a categorical dimension is `is_bulk_transaction`, which is a group created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
 
 ```yaml
 dimensions: 
@@ -104,14 +110,9 @@ dimensions:
 
 ## Time
 
-:::tip use datetime data type if using BigQuery
-To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
-:::
-
-Time has additional parameters specified under the `type_params` section. When you query one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the aggregation time dimension, which you can refer to as `metric_time` or use the dimensions' name. 
+Time has additional parameters specified under the `type_params` section. When you query one or more metrics, the default time dimension for each metric is the aggregation time dimension, which you can refer to as `metric_time` or use the dimension's name. 
 
 You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
-
 
 ```bash
 # dbt Cloud users
@@ -121,8 +122,7 @@ dbt sl query --metrics users_created,users_deleted --group-by metric_time__year 
 mf query --metrics users_created,users_deleted --group-by metric_time__year --order-by metric_time__year
 ```
 
-
-You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (like daily, weekly, and so on):
+You can set `is_partition` for time to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (hourly, daily, weekly, and so on).
 
 <Tabs>
 
@@ -130,31 +130,19 @@ You can set `is_partition` for time or categorical dimensions to define specific
 
 Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the dbt Semantic Layer uses this parameter to ensure that the correct dimensional values are joined to measures. 
 
-You can also use `is_partition` for [categorical](#categorical) dimensions as well.
-
-MetricFlow enables metric aggregation during query time. For example, you can aggregate the `messages_per_month` measure. If you originally had a `time_granularity` for the time dimensions `metric_time`, you can specify a yearly granularity for aggregation in your query:
-
-```bash
-# dbt Cloud users
-dbt sl query --metrics messages_per_month --group-by metric_time__year --order-by metric_time__year
-
-# dbt Core users
-mf query --metrics messages_per_month --group-by metric_time__year --order metric_time__year  
-```
-
 ```yaml
 dimensions: 
   - name: created_at
     type: time
     label: "Date of creation"
-    expr: date_trunc('day', ts_created) # ts_created is the underlying column name from the table 
-    is_partition: True 
+    expr: ts_created # ts_created is the underlying column name from the table 
+    is_partition: True
     type_params:
       time_granularity: day
   - name: deleted_at
     type: time
     label: "Date of deletion"
-    expr: date_trunc('day', ts_deleted) # ts_deleted is the underlying column name from the table 
+    expr: ts_deleted # ts_deleted is the underlying column name from the table
     is_partition: True 
     type_params:
       time_granularity: day
@@ -173,28 +161,34 @@ measures:
 
 <TabItem value="time_gran" label="time_granularity">
 
-`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric specified with weekly granularity couldn't be aggregated to a daily grain. 
+`time_granularity` specifies the grain of a time dimension. MetricFlow will transform the underlying column to the specified granularity. For example, if you add hourly granularity to a time dimension column, MetricFlow will run a `date_trunc` function to convert the timestamp to hourly. You can easily change the time grain at query time and aggregate it to a coarser grain, for example, from hourly to monthly. However, you can't go from a coarser grain to a finer grain (monthly to hourly).
 
-The current options for time granularity are day, week, month, quarter, and year. 
+Our supported granularities are:
+* nanosecond (Snowflake only)
+* microsecond 
+* millisecond
+* second
+* minute
+* hour
 
-Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the highest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
 ```yaml
 dimensions: 
   - name: created_at
     type: time
     label: "Date of creation"
-    expr: date_trunc('day', ts_created) # ts_created is the underlying column name from the table 
+    expr: ts_created # ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
-      time_granularity: day
+      time_granularity: hour 
   - name: deleted_at
     type: time
     label: "Date of deletion"
-    expr: date_trunc('day', ts_deleted) # ts_deleted is the underlying column name from the table 
+    expr: ts_deleted # ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
-      time_granularity: day
+      time_granularity: day 
 
 measures:
   - name: users_deleted
@@ -213,7 +207,7 @@ measures:
 ### SCD Type II
 
 :::caution
-Currently, there are limitations in supporting SCDs.
+Currently, semantic models with SCD Type II dimensions cannot contain measures.
 :::
 
 MetricFlow supports joins against dimensions values in a semantic model built on top of a slowly changing dimension (SCD) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country.

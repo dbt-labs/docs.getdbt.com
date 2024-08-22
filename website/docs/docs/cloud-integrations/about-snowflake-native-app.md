@@ -12,7 +12,7 @@ The dbt Snowflake Native App &mdash; powered by the Snowflake Native App Framewo
 
 - **dbt Explorer** &mdash; An embedded version of [dbt Explorer](/docs/collaborate/explore-projects) 
 - **Ask dbt** &mdash; A dbt-assisted chatbot, powered by [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), OpenAI, and Snowflake Cortex
-- **Orchestration observability** &mdash; A view into the [job run history](/docs/deploy/run-visibility) and the ability to trigger Snowflake tasks with [deploy jobs](/docs/deploy/deploy-jobs). 
+- **Orchestration observability** &mdash; A view into the [job run history](/docs/deploy/run-visibility) and sample code to create Snowflake tasks that trigger [deploy jobs](/docs/deploy/deploy-jobs). 
 
 These experiences enable you to extend what's been built with dbt Cloud to users who have traditionally worked downstream from the dbt project, such as BI analysts and technical stakeholders. 
 
@@ -45,3 +45,6 @@ If you're interested, please [contact us](matilto:sales_snowflake_marketplace@db
 
 ## Support
 If you have any questions about the dbt Snowflake Native App, you may [contact our Support team](mailto:dbt-snowflake-marketplace@dbtlabs.com) for help. Please provide information about your installation of the Native App, including your dbt Cloud account ID and Snowflake account identifier. 
+
+## Limitations
+- The Native app does not support dbt Cloud accounts with [IP Restrictions](/docs/cloud/secure/ip-restrictions] enabled. 

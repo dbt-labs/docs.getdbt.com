@@ -13,7 +13,6 @@ If you encounter issues like problems reverting changes, checking out or creatin
 
 To resolve issues with your `gitignore` file, adding the correct entries won't automatically remove (or 'untrack') files or folders that have already been tracked by git. The updated `gitignore` will only prevent new files or folders from being tracked. So you'll need to first fix the `gitignore` file, then perform some additional git operations to untrack any incorrect files or folders.  
 
-<VersionBlock firstVersion="1.5">
 
 1. Launch the Cloud IDE into the project that is being fixed, by selecting **Develop** on the menu bar.
 2. In your **File Explorer**, check to see if a `.gitignore` file exists at the root of your dbt project folder. If it doesn't exist, create a new file.
@@ -120,7 +119,5 @@ dbt_modules/
 
 </TabItem>
 </Tabs>
-
-</VersionBlock> 
 
 For more info, refer to this [detailed video](https://www.loom.com/share/9b3b8e2b617f41a8bad76ec7e42dd014) for additional guidance. 
