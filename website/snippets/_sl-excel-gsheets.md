@@ -5,7 +5,7 @@
 
 <ul>
   <li>It returns the data to the cell you have clicked on, and each cell where data is requested will have a note attached to it, indicating what has been queried and the timestamp.</li>
-  <li> {props.bullet_1}</li>
+  <li> {props.bullet_1}</li> 
   <li>{props.bullet_2}</li>
 </ul>
 
@@ -86,18 +86,11 @@
 
 <Lightbox src={ props.queryBuilder } width="25%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
 
-<p>You can also make these selections private or public:</p>
-
-<ul>
-  <li><strong>Public selections</strong> mean your inputs are available in the menu to everyone on the sheet.</li>
-  <li><strong>Private selections</strong> mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu or benefit from the automatic refresh.</li>
-</ul>
-
 ### Refreshing selections
 
 <p>Set your saved selections to automatically refresh every time you load the addon. You can do this by selecting <strong>Refresh on Load</strong> when creating the saved selection. When you access the addon and have saved selections that should refresh, you'll see "Loading..." in the cells that are refreshing.</p>
 
-<p>Public saved selections will refresh for anyone who edits the sheet while private selections will only update for the user who created it.</p>
+<p>Public saved selections will refresh for anyone who edits the sheet.</p>
 
 :::tip What's the difference between saved selections and saved queries?
 
