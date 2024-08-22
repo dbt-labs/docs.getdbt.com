@@ -65,7 +65,7 @@
   <li>For time dimensions, you can use the time range selector to filter on presets or custom options. The time range selector applies only to the primary time dimension (<code>metric_time</code>). For all other time dimensions that aren't <code>metric_time</code>, you can use the "Where" option to apply filters.</li>
 </ul>
 
-#### Other Settings 
+#### Other settings 
 
 <p>If you would like to just query the data values without the headers, you can optionally select the <strong>Exclude Column Names</strong> box.</p>
 <p>If you would like to return your results and keep any previously selected data below it in tact, you can un-select the <strong>Exclude Column Names</strong> box. By default, we'll clear all trailing rows in case there's stale data. </p>
