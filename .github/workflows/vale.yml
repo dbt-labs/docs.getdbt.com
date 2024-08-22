@@ -15,19 +15,12 @@ jobs:
         with:
           fetch-depth: 0  # Ensure the full history is fetched
 
-      - name: Cache Vale binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.vale
-          key: ${{ runner.os }}-vale-${{ hashFiles('**/.vale.ini') }}
-          restore-keys: |
-            ${{ runner.os }}-vale-
-
       - name: Set up vale
         uses: errata-ai/vale-action@reviewdog
         with:
-          files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
+          files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
           token: ${{ secrets.VALE_GITHUB_TOKEN }}
+          version: 2.17.0
           reporter: github-pr-check
           debug: true
 
@@ -42,18 +35,12 @@ jobs:
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
 
-      - name: Set up Reviewdog
-        uses: reviewdog/action-setup@v1
-
-      - name: Run Vale with Reviewdog on Changed Files
+      - name: Run Vale with reviewdog
         run: |
-          export PATH=$PATH:/home/runner/vale  # Ensure Vale is in the PATH
           if [ -z "${{ env.CHANGED_FILES }}" ]; then
             echo "No changed files to lint."
           else
             for file in ${{ env.CHANGED_FILES }}; do
-              vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
+             vale --output=JSON "$file" | /home/runner/reviewdog -f=vale -name="vale" -reporter=github-pr-review -level=warning -filter-mode=added -fail-on-error=true -tee
             done
           fi
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
