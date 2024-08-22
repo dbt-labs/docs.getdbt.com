@@ -47,6 +47,7 @@ jobs:
 
       - name: Run Vale with Reviewdog on Changed Files
         run: |
+          export PATH=$PATH:/home/runner/vale  # Ensure Vale is in the PATH
           if [ -z "${{ env.CHANGED_FILES }}" ]; then
             echo "No changed files to lint."
           else
