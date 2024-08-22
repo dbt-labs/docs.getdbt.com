@@ -6,7 +6,7 @@ id: IDE
 
 ---
 
-If you're experiencing the below error when you try to open the cloud IDE, it may be due to a few scenarios but it typically indicates a missing repository.
+If you're seeing the following error when you launch the dbt Cloud IDE, it could be due to a few scenarios but, commonly, it indicates a missing repository:
 
 ```shell
 
