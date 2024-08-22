@@ -15,12 +15,16 @@ Some common reasons for higher memory usage are:
 
 ## Resolution
 
-Try the following to resolve this:
+There are various reasons why you could be experiencing this error but they are mostly the outcome of retrieving too much data back into dbt. For example, using the `run_query()` operations or similar macros, or even using database/schemas that have a lot of other non-dbt related tables/views. Try to reduce the amount of data / number of rows retrieved back into dbt by refactoring the SQL in your `run_query()` operation using `group`, `where`, or `limit` clauses. Additionally, you can also use a database/schema with fewer non-dbt related tables/views.
 
-1. **Use incremental models**: Try using [incremental models](/docs/build/incremental-models-overview) to reduce the amount of data being processed in each run. Incremental models only process new or updated data, which can help reduce the memory usage of your jobs.
-2. **Refactor your data model**: Review your data models to see if there are any opportunities to optimize or refactor them. For example, you can try to reduce the number of columns being selected, use `where` clauses to filter data early in the query or use `limit` clauses to reduce the amount of data being processed.
 
-If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com) and we can try increasing your account's memory. We're happy to help!
+
+:::tip Video example
+As an additional resource, check out [this example video](https://www.youtube.com/watch?v=sTqzNaFXiZ8), which demonstrates how to refactor the sample code by reducing the number of rows returned. 
+:::
+
+
+If you've tried the earlier suggestions and are still experiencing failed job runs with this error about hitting the memory limits of your account, please [reach out to support](mailto:support@getdbt.com). We're happy to help!
 
 ## Additional resources
 - [Blog post on how we shaved 90 mins off](https://docs.getdbt.com/blog/how-we-shaved-90-minutes-off-model)

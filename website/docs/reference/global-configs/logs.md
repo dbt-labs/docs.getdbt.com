@@ -8,11 +8,7 @@ sidebar: "logs"
 
 dbt outputs logs to two different locations: CLI console and the log file.
 
-<VersionBlock firstVersion="1.5">
-
 The `LOG_FORMAT` and `LOG_FORMAT_FILE` configs specify how dbt's logs should be formatted, and they each have the same options: `json`, `text`, and `debug`.
-
-</VersionBlock>
 
 <File name='Usage'>
 
@@ -44,8 +40,6 @@ The `json` format outputs fully structured logs in the <Term id="json" /> format
 {"data": {"adapter_name": "postgres", "adapter_version": "=1.8.0"}, "info": {"category": "", "code": "E034", "extra": {}, "invocation_id": "82131fa0-d2b4-4a77-9436-019834e22746", "level": "info", "msg": "Registered adapter: postgres=1.8.0", "name": "AdapterRegistered", "pid": 7875, "thread": "MainThread", "ts": "2024-05-29T23:32:56.437986Z"}}
 ```
 
-<VersionBlock firstVersion="1.5">
-
 When the `LOG_FORMAT` is set explicitly, it will take affect in both the console and log files whereas the `LOG_FORMAT_FILE` only affects the log file.
 
 <File name='Usage'>
@@ -55,8 +49,6 @@ dbt --log-format-file json run
 ```
 
 </File>
-
-</VersionBlock>
 
 :::tip Tip: verbose structured logs
 
@@ -69,8 +61,6 @@ dbt --debug --log-format json run
 See [structured logging](/reference/events-logging#structured-logging) for more details.
 
 :::
-
-<VersionBlock firstVersion="1.5">
 
 ### Log Level
 
@@ -89,9 +79,6 @@ To set the file log level as a different value than the console, use the `--log-
 ```text
 dbt --log-level-file error run
 ```
-
-
-</VersionBlock>
 
 ### Debug-level logging
 
@@ -150,13 +137,11 @@ You can use either of these parameters to ensure clean output that's compatible 
 
 ### Logging relational cache events
 
-The `LOG_CACHE_EVENTS` config allows detailed logging for [relational cache](reference/global-configs/cache) events, which are disabled by default.
+The `LOG_CACHE_EVENTS` config allows detailed logging for [relational cache](/reference/global-configs/cache) events, which are disabled by default.
 
 ```text
 dbt --log-cache-events compile
 ```
-
-<VersionBlock firstVersion="1.5">
 
 ### Color
 
@@ -175,5 +160,3 @@ config:
 dbt --use-colors-file run
 dbt --no-use-colors-file run
 ```
-
-</VersionBlock>

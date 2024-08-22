@@ -5,12 +5,6 @@ sidebar_label: "Model access"
 description: "Define model access with group capabilities"
 ---
 
-<VersionBlock lastVersion="1.5">
-
-:::info New functionality
-This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6730)!
-:::
-
 :::info "Model access" is not "User access"
 
 **Model groups and access** and **user groups and access** mean two different things. "User groups and access" is a specific term used in dbt Cloud to manage permissions. Refer to [User access](/docs/cloud/manage-access/about-user-access) for more info.
@@ -19,9 +13,6 @@ The two concepts will be closely related, as we develop multi-project collaborat
 - Users with access to develop in a dbt project can view and modify **all** models in that project, including private models.
 - Users in the same dbt Cloud account _without_ access to develop in a project cannot view that project's private models, and they can take a dependency on its public models only.
 :::
-
-</VersionBlock>
-
 
 ## Related documentation
 * [`groups`](/docs/build/groups)
@@ -108,8 +99,6 @@ models:
 
 </File>
 
-<VersionBlock firstVersion="1.6">
-
 Models with `materialized` set to `ephemeral` cannot have the access property set to public.
 
 For example, if you have a model config set as:
@@ -124,7 +113,7 @@ For example, if you have a model config set as:
 
 </File>
 
-And the model contract is defined:
+And the model access is defined:
 
 <File name="models/my_project.yml">
 
@@ -147,8 +136,6 @@ Parsing Error
   Node model.jaffle_shop.my_model with 'ephemeral' materialization has an invalid value (public) for the access field
 ```
 
-</VersionBlock>
-
 ## FAQs
 
 ### How does model access relate to database permissions?
@@ -164,16 +151,6 @@ Of course, dbt can facilitate this by means of [the `grants` config](/reference/
 As we continue to develop multi-project collaboration, `access: public` will mean that other teams are allowed to start taking a dependency on that model. This assumes that they've requested, and you've granted them access, to select from the underlying dataset.
 
 ### How do I ref a model from another project?
-
-<VersionBlock lastVersion="1.5">
-
-In dbt Core v1.5 (and earlier versions), the only way to reference a model from another project is by installing that project as a package, including its full source code. It is not possible to restrict references across projects based on model `access`.
-
-For more control over per-model access across projects, select v1.6 (or newer) from the version dropdown.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
 
 You can `ref` a model from another project in two ways:
 1. [Project dependency](/docs/collaborate/govern/project-dependencies): In dbt Cloud Enterprise, you can use project dependencies to `ref`  a model. dbt Cloud uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
@@ -203,4 +180,3 @@ restrict-access: True  # default is False
 
 </File>
 
-</VersionBlock>
