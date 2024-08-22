@@ -1,25 +1,39 @@
-name: reviewdog
+name: Vale lint checker
 
-on: 
+on:
   pull_request:
+    branches:
+      - '**'
 
 jobs:
-  vale:
-    name: runner / vale
+  lint:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: Set up Reviewdog with Vale
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Ensure the full history is fetched
+
+      - name: Cache Vale binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.vale
+          key: ${{ runner.os }}-vale-${{ hashFiles('**/.vale.ini') }}
+          restore-keys: |
+            ${{ runner.os }}-vale-
+
+      - name: Set up vale
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
-          reporter: github-pr-check
           token: ${{ secrets.VALE_GITHUB_TOKEN }}
+          reporter: github-pr-check
 
       - name: Get changed files
         id: changed-files
         run: |
+          git fetch origin ${{ github.base_ref }} ${{ github.head_ref }}
           CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.md' '*.txt' '*.rst' | tr '\n' ' ')
           echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
 
@@ -27,8 +41,10 @@ jobs:
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
 
-      - name: Run Vale with Reviewdog on Changed Files
-        if: env.CHANGED_FILES != ''
+      - name: Set up Reviewdog
+        uses: reviewdog/action-setup@v1
+
+      - name: Run vale with reviewdog
         run: |
           for file in ${{ env.CHANGED_FILES }}; do
             vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
