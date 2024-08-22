@@ -49,26 +49,26 @@ So far we've been working in new pointing at a staging model to simplify things 
 
 ```yaml
 semantic_models:
-- name: locations
-   description: |
-   Location dimension table. The grain of the table is one row per location.
-   model: ref('stg_locations')
-   entities:
-   - name: location
-      type: primary
-      expr: location_id
-   dimensions:
-   - name: location_name
-      type: categorical
-   - name: date_trunc('day', opened_at)
-      type: time
-      type_params:
-         time_granularity: day
-   measures:
-   - name: average_tax_rate
-      description: Average tax rate.
-      expr: tax_rate
-      agg: avg
+  - name: locations
+    description: |
+      Location dimension table. The grain of the table is one row per location.
+    model: ref('stg_locations')
+    entities:
+      - name: location
+        type: primary
+        expr: location_id
+    dimensions:
+      - name: location_name
+        type: categorical
+      - name: date_trunc('day', opened_at)
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - name: average_tax_rate
+        description: Average tax rate.
+        expr: tax_rate
+        agg: avg
 ```
 
 ## Semantic and logical interaction
