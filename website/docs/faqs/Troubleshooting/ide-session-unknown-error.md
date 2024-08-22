@@ -14,7 +14,7 @@ Your IDE session experienced an unknown error and was terminated. Please contact
 
 ```
 
-To resolve this, we recommend adding a repository like a [managed repository](/docs/collaborate/git/managed-repository) or your preferred Git account by navigating to Project > Repository and selecting your repository.
+You can try to resolve this by adding a repository like a [managed repository](/docs/collaborate/git/managed-repository) or your preferred Git account. To add your Git account, navigate to **Project** > **Repository** and select your repository.
 
 
 If you've tried the steps above and are still experiencing this behavior - reach out to the Support team at support@getdbt.com and we'll be happy to help.
