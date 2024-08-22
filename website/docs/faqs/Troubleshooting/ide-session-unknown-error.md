@@ -10,7 +10,7 @@ If you're seeing the following error when you launch the dbt Cloud IDE, it could
 
 ```shell
 
-Your IDE session experienced an unknown error and was terminated. Please contact support
+Your IDE session experienced an unknown error and was terminated. Please contact support.
 
 ```
 
