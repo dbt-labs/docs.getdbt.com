@@ -434,7 +434,7 @@ from {{ ref('model') }} {% endsnapshot %}
 
 ## AWS Lake Formation integration
 
-The adapter implements AWS Lake Formation tag management in the following way:
+The following is how the adapter implements AWS Lake Formation tag management:
 
 - You can enable or disable lf-tags management via [config](#table-configuration) (disabled by default)
 - Once you enable the feature, lf-tags will be updated on every dbt run
