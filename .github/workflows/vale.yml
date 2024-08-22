@@ -29,6 +29,7 @@ jobs:
           files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
           token: ${{ secrets.VALE_GITHUB_TOKEN }}
           reporter: github-pr-check
+          debug: true
 
       - name: Get changed files
         id: changed-files
@@ -44,8 +45,14 @@ jobs:
       - name: Set up Reviewdog
         uses: reviewdog/action-setup@v1
 
-      - name: Run vale with reviewdog
+      - name: Run Vale with Reviewdog on Changed Files
         run: |
-          for file in ${{ env.CHANGED_FILES }}; do
-            vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
-          done
+          if [ -z "${{ env.CHANGED_FILES }}" ]; then
+            echo "No changed files to lint."
+          else
+            for file in ${{ env.CHANGED_FILES }}; do
+              vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
+            done
+          fi
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.VALE_GITHUB_TOKEN }}
