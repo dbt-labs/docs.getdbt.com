@@ -4,7 +4,7 @@
 <p><span>When querying your data with {props.type}:</span></p>
 
 <ul>
-  <li>It returns the data to the cell you have clicked on, and each cell where data is requested will have a note attached to it, indicating what has been queried and the timestamp.</li>
+  <li>It returns the data to the cell you clicked on. Note that due to Excel's API, it doesn't display any timestamp or details of the query. </li>
   <li> {props.bullet_1}</li> 
   <li>{props.bullet_2}</li>
 </ul>
