@@ -2,7 +2,6 @@
 title: I'm receiving an 'Your IDE session experienced an unknown error and was terminated. Please contact support'.
 description: "Add a repository when seeing IDE unknown error"
 sidebar_label: 'Receiving unknown error in the IDE'
-id: IDE
 
 ---
 
