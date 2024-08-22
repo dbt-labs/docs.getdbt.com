@@ -15,14 +15,6 @@ jobs:
         with:
           fetch-depth: 0  # Ensure the full history is fetched
 
-      - name: Cache Vale binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.vale
-          key: ${{ runner.os }}-vale-${{ hashFiles('**/.vale.ini') }}
-          restore-keys: |
-            ${{ runner.os }}-vale-
-
       - name: Set up vale
         uses: errata-ai/vale-action@reviewdog
         with:
