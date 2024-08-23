@@ -53,7 +53,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
    - **Generate docs on run** &mdash; Enable this if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this job runs. This is disabled by default since testing doc generation on every CI check is not a recommended practice.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
-   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in dbt Cloud UI"/>
+   <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in the dbt Cloud UI"/>
 
 ### Example of CI check in pull request {#example-ci-check}
 The following is an example of a CI check in a GitHub pull request. The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
