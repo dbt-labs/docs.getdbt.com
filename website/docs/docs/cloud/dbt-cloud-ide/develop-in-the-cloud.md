@@ -11,7 +11,6 @@ pagination_prev: null
 The dbt Cloud integrated development environment (IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 
 
 The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) and [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
-The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) and [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
 
 - Syntax highlighting for SQL &mdash; Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
 - AI co-pilot &mdash; Use [dbt Assist](/docs/cloud/dbt-assist), a powerful AI co-pilot feature, to generate documentation and tests for your dbt SQL models.
