@@ -43,7 +43,7 @@ Displays the lineage graph associated with the job run so you can better underst
 
 ### Model timing tab <Lifecycle status="team,enterprise" /> 
 
-The **Model timing** tab displays the composition, order, and time taken by each model in a job run. The visualization appears for successful jobs and highlights the top 1% of model durations. This helps you identify bottlenecks in your runs, so you can investigate them and potentially make changes to improve their performance. 
+The **Model timing** tab displays the composition, order, and time each model takes in a job run. The visualization appears for successful jobs and highlights the top 1% of model durations. This helps you identify bottlenecks in your runs so you can investigate them and potentially make changes to improve their performance. 
 
 You can find the dashboard on the [job's run details](#job-run-details). 
 
