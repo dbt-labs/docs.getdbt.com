@@ -62,7 +62,7 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
  :::info Beta feature
 
- Currently, the compare changes feature is available as a beta to a limited group of people. If you're interested in gaining access or learning more, please stay tuned for more updates.
+The compare changes feature is currently in limited beta for select accounts. If you're interested in gaining access or learning more, please stay tuned for updates.
 
  :::
 
