@@ -76,10 +76,10 @@ You can also use a [macro](/docs/build/jinja-macros#macros) to bundle up hook lo
 
 ```sql
 {{ config(
-    pre_hook="{{ some_macro() }}"
+    pre_hook=[
+      "{{ some_macro() }}"
+    ]
 ) }}
-
-select 1 as id
 ```
 
 </File>
@@ -89,7 +89,8 @@ select 1 as id
 ```sql
 models:
   <project_name>:
-    +pre-hook: "{{ some_macro() }}"
+    +pre-hook:
+      - "{{ some_macro() }}"
 ```
 
 </File>
