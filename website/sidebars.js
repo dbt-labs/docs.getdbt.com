@@ -933,6 +933,7 @@ const sidebarSettings = {
           label: "For snapshots",
           items: [
             "reference/snapshot-properties",
+            "/reference/resource-configs/snapshot_name",
             "reference/snapshot-configs",
             "reference/resource-configs/check_cols",
             "reference/resource-configs/strategy",
