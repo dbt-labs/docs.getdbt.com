@@ -42,7 +42,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
       Older versions of dbt Cloud only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. Deferral to an environment is more efficient as dbt Cloud will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ [deploy jobs](/docs/deploy/deploy-jobs) that run in the deferred environment, dbt Cloud will get a more accurate, latest project representation state.
       :::
 
-    - **Run timeout** &mdash; Cancel this CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources. If you enabled the **Run compare changes** option, the timeout value defaults to `3600` (one hour) for preventing long-running comparisons. 
+    - **Run timeout** &mdash; Cancel the CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too much of your warehouse resources. If you enable the **Run compare changes** option, the timeout value defaults to `3600` (one hour) to prevent long-running comparisons. 
 
 
 1. (optional) Options in the **Advanced settings** section: 
