@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/faqs/Models/unique-model-names",
+      "destination": "/docs/faqs/Project/unique-resource-names",
+      "permanent": true
+    },
+    {
       "source":  "/docs/deploy/dashboard-status-tiles",
       "destination":  "/docs/collaborate/data-tile",
       "permanent": true
