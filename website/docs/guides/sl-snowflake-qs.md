@@ -917,7 +917,6 @@ metrics:
 
 </File>
 
-
 This semantic model uses simple metrics to focus on customer metrics and emphasizes customer dimensions like name, type, and order dates. It uniquely analyzes customer behavior, lifetime value, and order patterns.
 
 ## Test and query metrics
