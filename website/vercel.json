@@ -3318,17 +3318,17 @@
     },
     {
       "source": "/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true
     },
     {
       "source": "/docs/dbt-cloud/cloud-ide/ide-beta",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true
     },
     {
       "source": "/docs/running-a-dbt-project/using-the-dbt-ide",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/running-a-dbt-project/using-the-dbt-ide",
       "permanent": true
     },
     {
