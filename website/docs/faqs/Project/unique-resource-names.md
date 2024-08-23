@@ -3,7 +3,6 @@ title: Do ref-able resource names need to be unique?
 description: "Unique resource names to build dependencies"
 sidebar_label: 'Resource names need to be unique'
 id: unique-resource-names
-
 ---
 
 Within one project: yes! To build dependencies between resources (such as models, seeds, and snapshots), you need to use the `ref` function, and pass in the resource name as an argument. dbt uses that resource name to uniquely resolve the `ref` to a specific resource. As a result, these resource names need to be unique, _even if they are in distinct folders_.
