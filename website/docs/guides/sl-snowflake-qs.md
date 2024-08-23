@@ -811,19 +811,22 @@ metrics:
     type: simple
     label: "order_total"
     type_params:
-      measure: order_total
+      measure:
+        name: order_total
   - name: "order_count"
     description: "number of orders"
     type: simple
     label: "order_count"
     type_params:
-      measure: order_count
+      measure:
+        name: order_count
   - name: large_orders
     description: "Count of orders with order total over 20."
     type: simple
     label: "Large Orders"
     type_params:
-      measure: order_count
+      measure:
+        name: order_count
     filter: |
       {{ Dimension('order_id__order_total_dim') }} >= 20
   # Ratio type metric
@@ -840,7 +843,8 @@ metrics:
     description: "The month to date value of all orders"
     type: cumulative
     type_params:
-      measure: order_total
+      measure:
+        name: order_total
       grain_to_date: month
   # Derived metric
   - name: "pct_of_orders_that_are_large"
@@ -912,7 +916,8 @@ metrics:
     description: "Unique count of customers placing orders"
     type: simple
     type_params:
-      measure: customers
+      measure:
+        name: customers
 ```
 
 </File>
