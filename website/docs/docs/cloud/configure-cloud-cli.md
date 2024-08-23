@@ -189,3 +189,10 @@ move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
 This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
 
 </Expandable>
+
+<Expandable alt_header="How to skip artifacts from being downloaded">
+
+By default, [all artifacts](/reference/artifacts/dbt-artifacts) are downloaded when you execute dbt commands from the dbt Cloud CLI. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json). 
+
+
+</Expandable>
