@@ -911,6 +911,7 @@ const sidebarSettings = {
           label: "For models",
           items: [
             "reference/model-properties",
+            "reference/resource-properties/model_name",
             "reference/model-configs",
             "reference/resource-configs/materialized",
             "reference/resource-configs/on_configuration_change",
@@ -933,6 +934,7 @@ const sidebarSettings = {
           label: "For snapshots",
           items: [
             "reference/snapshot-properties",
+            "reference/resource-configs/snapshot_name",
             "reference/snapshot-configs",
             "reference/resource-configs/check_cols",
             "reference/resource-configs/strategy",
