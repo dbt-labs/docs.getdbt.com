@@ -37,7 +37,7 @@ You can view or download in-progress and historical logs for your dbt runs. This
 
 ### Lineage tab
 
-Displays the lineage graph associated with the job run so you can better understand the dependencies and relationships of the resources in your project. To view a node's metadata directly in [dbt Explorer](/docs/collaborate/explore-projects), select it (double-click) from the graph. 
+View the lineage graph associated with the job run so you can better understand the dependencies and relationships of the resources in your project. To view a node's metadata directly in [dbt Explorer](/docs/collaborate/explore-projects), select it (double-click) from the graph. 
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-from-lineage.gif" width="85%" title="Example of accessing dbt Explorer from the Lineage tab" />
 
