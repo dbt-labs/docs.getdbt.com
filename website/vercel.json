@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/docs/faqs/Models/unique-model-names",
-      "destination": "/docs/faqs/Project/unique-resource-names",
+      "source": "/faqs/Models/unique-model-names",
+      "destination": "/faqs/Project/unique-resource-names",
       "permanent": true
     },
     {
