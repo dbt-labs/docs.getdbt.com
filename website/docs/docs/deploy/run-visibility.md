@@ -9,7 +9,7 @@ You can view the history of your runs and the model timing dashboard to help ide
 
 ## Run history
 
-The **Run history** dashboard in dbt Cloud helps you monitor the health of your dbt project. It provides a detailed overview of all of your project's job runs and empowers you with a variety of filters to help you focus on specific aspects. You can also use it to review recent runs, find errored runs, and track the progress of runs in progress. You can access it from the top navigation menu by clicking **Deploy** and then **Run history**. 
+The **Run history** dashboard in dbt Cloud helps you monitor the health of your dbt project. It provides a detailed overview of all your project's job runs and empowers you with a variety of filters that enable you to focus on specific aspects. You can also use it to review recent runs, find errored runs, and track the progress of runs in progress. You can access it from the top navigation menu by clicking **Deploy** and then **Run history**. 
 
 The dashboard displays your full run history, including job name, status, associated environment, job trigger, commit SHA, schema, and timing info. 
 
