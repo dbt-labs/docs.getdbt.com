@@ -60,7 +60,7 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
  When a pull request is opened or new commits are pushed, dbt Cloud compares the changes between the last applied state of the production environment (defaulting to deferral for lower computation costs) and the latest changes from the pull request for CI jobs that have the **Run compare changes** option enabled. By analyzing these comparisons, you can gain a better understanding of how the data changes are affected by code changes to help ensure you always ship the correct changes to production and create trusted data products.
 
- :::info Available in beta 
+ :::info Beta feature
 
  Currently, the compare changes feature is available as a beta to a limited group of people. If you're interested in gaining access or learning more, please stay tuned for more updates.
 
