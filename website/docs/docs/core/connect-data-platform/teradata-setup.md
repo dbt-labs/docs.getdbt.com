@@ -67,7 +67,7 @@ To connect to Teradata Vantage from dbt, you'll need to add a [profile](https://
       password: <password>
       schema: <database-name>
       tmode: ANSI
-      threads: 1
+      threads: [optional, 1 or more]
       #optional fields
       <field-name: <field-value>
 ```
