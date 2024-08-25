@@ -84,9 +84,21 @@ You can also use a [macro](/docs/build/jinja-macros#macros) to bundle up hook lo
 
 </File>
 
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: <model_name>
+    config:
+      pre_hook:
+        - "{{ some_macro() }}"
+```
+
+</File>
+
 <File name='dbt_project.yml'>
 
-```sql
+```yaml
 models:
   <project_name>:
     +pre-hook:
