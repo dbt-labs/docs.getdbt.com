@@ -23,11 +23,9 @@ To use Snowflake in the dbt Cloud IDE, all developers must [Authenticate with Sn
 
 To get started, locate the connection's redirect URI for configuring Snowflake OAuth:
 1.  Navigate to **Account settings**
-1. Select **Projects** and choose a project from the list. 
-  - Choose the project from the list
-  - Select the connection to view its details
-  - Set the **OAuth method** to "Snowflake SSO"
-  - Copy the **Redirect URI**
+1. Select **Projects** and choose a project from the list 
+1. Select the connection to view its details abd set the **OAuth method** to "Snowflake SSO"
+1. Copy the **Redirect URI** for use in later steps
 
 <Lightbox
 	src="/img/docs/dbt-cloud/dbt-cloud-enterprise/snowflake-oauth-redirect-uri.png"
