@@ -78,8 +78,6 @@ function DropdownNavbarItemDesktop({
   useEffect(() => {
     setShowVersionDropdown(true)
   }, [showVersionDropdown])
-
-  console.log("versionContext", versionContext);
   
   return (
     <div
