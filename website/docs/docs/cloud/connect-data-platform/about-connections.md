@@ -52,8 +52,8 @@ As shown in the image, a project with 2 environments can target between 1 and 2 
 
 Rolling out account-level connections will not require any interruption of service in your current usage (IDE, CLI, jobs, etc.).
 
-:::info Why am I asked to configure a developmenent environment?
-If your project did not previously have a development environment, you may be redirected to the project setup page. Don't worry, your project is still intact. Choose a connection for your new development environment and you'll be able to view all your environments again.
+:::info Why am I prompted to configure a development environment?
+If your project did not previously have a development environment, you may be redirected to the project setup page. Your project is still intact. Choose a connection for your new development environment, and you can view all your environments again.
 :::
 
 However, to fully utilize the value of account-level connections, you may have to rethink how you assign and use connections across projects and environments.
