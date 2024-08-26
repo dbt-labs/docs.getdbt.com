@@ -60,7 +60,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
 | ENABLED  | Required |
 | OAUTH_CLIENT  | Required |
 | OAUTH_CLIENT_TYPE  | Required |
-| OAUTH_REDIRECT_URI  | Required. Use the value that you [located earlier in dbt Cloud](#locate-the-redirect-uri-value). |
+| OAUTH_REDIRECT_URI  | Required. Use the value in the [dbt Cloud account settings](#locate-the-redirect-uri-value). |
 | OAUTH_ISSUE_REFRESH_TOKENS  | Required |
 | OAUTH_REFRESH_TOKEN_VALIDITY  | Required. This configuration dictates the number of seconds that a refresh token is valid for. Use a smaller value to force users to re-authenticate with Snowflake more frequently. |
 
