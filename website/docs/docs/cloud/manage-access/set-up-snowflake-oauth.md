@@ -17,7 +17,7 @@ To set up Snowflake OAuth in dbt Cloud, admins from both are required for the fo
 2. [Create a security integration](#create-a-security-integration) in Snowflake.
 3. [Configure a connection](#configure-a-connection-in-dbt-cloud) in dbt Cloud.
 
-To use Snowflake in the dbt Cloud IDE, all developers must [Authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
+To use Snowflake in the dbt Cloud IDE, all developers must [authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
 
 ### Locate the redirect URI value
 
