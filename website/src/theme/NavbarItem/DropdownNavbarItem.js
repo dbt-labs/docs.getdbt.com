@@ -220,8 +220,6 @@ function DropdownNavbarItemMobile({
             ? thisVersion.customDisplay
             : `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
 
-          // TODO: issue here setting label to custom display
-          childItemProps.label = versionDisplay;
           return (
             <NavbarItem
               mobile
@@ -234,6 +232,7 @@ function DropdownNavbarItemMobile({
               }
               activeClassName="menu__link--active"
               {...childItemProps}
+              label={versionDisplay}
               key={i}
             />
           );
