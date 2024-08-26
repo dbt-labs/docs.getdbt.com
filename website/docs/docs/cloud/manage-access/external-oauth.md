@@ -172,7 +172,7 @@ Adjust the other settings as needed to meet your organizations configurations in
 
 ### Entra ID
 
-You’ll create two different `apps` in the Azure portal &mdash: A resource server and a client app.
+You’ll create two different `apps` in the Azure portal &mdash; A resource server and a client app.
 
 :::important
 

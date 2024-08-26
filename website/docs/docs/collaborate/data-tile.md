@@ -10,7 +10,7 @@ image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
 
 With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. This trust signal allows teams to immediately go back into Explorer to see more details and investigate issues.
 :::info Available in beta
-Data health tiles are currently available in beta to a limited group of users and are gradually being rolled out. If you're interested in gaining access or learning more, stay tuned for updates!
+Data health tile is currently available in open beta.
 :::
 The data health tile:
 

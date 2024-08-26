@@ -18,15 +18,15 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
+## August 2024
+- **New**: You can now configure metrics at granularities at finer time grains, such as hour, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [dimensions](/docs/build/dimensions) for more information about time granularity.
+
 ## July 2024
 - **New:** [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management) are now available under **Account settings** as a global setting. Previously, they were found under **Project settings**.  This is being rolled out in phases over the coming weeks.
 - **New:** Admins can now assign [environment-level permissions](/docs/cloud/manage-access/environment-permissions) to groups for specific roles.
 - **New:** [Merge jobs](/docs/deploy/merge-jobs) for implementing [continuous deployment (CD)](/docs/deploy/continuous-deployment) workflows are now GA in dbt Cloud. Previously, you had to either set up a custom GitHub action or manually build the changes every time a pull request is merged.
 - **New**: The ability to lint your SQL files from the dbt Cloud CLI is now available. To learn more, refer to [Lint SQL files](/docs/cloud/configure-cloud-cli#lint-sql-files).
 - **Behavior change:** dbt Cloud IDE automatically adds a `--limit 100` to preview queries to avoid slow and expensive queries during development. Recently, dbt Core changed how the `limit` is applied to ensure that `order by` clauses are consistently respected. Because of this, queries that already contain a limit clause might now cause errors in the IDE previews. To address this, dbt Labs plans to provide an option soon to disable the limit from being applied. Until then, dbt Labs recommends removing the (duplicate) limit clause from your queries during previews to avoid these IDE errors.
-- **Enhancement:** Custom configurations are now supported by generic data tests. Use this to configure how dbt should run the data test (for example, specifying a Snowflake virtual warehouse different from the one in your connection). To learn more, refer to [Specify custom configurations for generic data tests](/reference/data-test-configs#specify-custom-configurations-for-generic-data-tests).
-
-  Support for this configuration is available in dbt Cloud when selecting **Versionless**. Specifying custom configurations for data tests will become available in dbt Core later this year.
 
 - **Enhancement**: Introducing a revamped overview page for dbt Explorer, available in beta. It includes a new design and layout for the Explorer homepage. The new layout provides a more intuitive experience for users to navigate their dbt projects, as well as a new **Latest updates** section to view the latest changes or issues related to project resources. To learn more, refer to [Overview page](/docs/collaborate/explore-projects#overview-page).
 
