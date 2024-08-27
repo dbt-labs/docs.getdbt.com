@@ -208,7 +208,7 @@ Spark can be customized using [Application Properties](https://spark.apache.org/
 
 ## Caveats
 
-When facing difficulties you can run `poetry run dbt debug --log-level=debug`. The logs are persisted at `logs/dbt.log`.
+When facing difficulties, run `poetry run dbt debug --log-level=debug`. The logs are saved at `logs/dbt.log`.
 
 ### Usage with EMR
 To connect to Apache Spark running on an Amazon EMR cluster, you will need to run `sudo /usr/lib/spark/sbin/start-thriftserver.sh` on the master node of the cluster to start the Thrift server (see [the docs](https://aws.amazon.com/premiumsupport/knowledge-center/jdbc-connection-emr/) for more information). You will also need to connect to port 10001, which will connect to the Spark backend Thrift server; port 10000 will instead connect to a Hive backend, which will not work correctly with dbt.
