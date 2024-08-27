@@ -2,7 +2,6 @@ exports.versions = [
   {
     version: "1.9",
     isPrerelease: true, 
-    customDisplay: "dbt Cloud"
   },
   {
     version: "1.8",
