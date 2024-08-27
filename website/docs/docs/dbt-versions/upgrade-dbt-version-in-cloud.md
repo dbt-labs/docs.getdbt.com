@@ -7,7 +7,7 @@ In dbt Cloud, both [jobs](/docs/deploy/jobs) and [environments](/docs/dbt-cloud-
 
 ## Environments
 
-Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a previous release of dbt Core or go [**Versionless**](#versionless)(recommended). Be sure to save your changes before navigating away.
+Navigate to the settings page of an environment, then click **Edit**. Click the **dbt version** dropdown bar and make your selection. You can select a previous release of dbt Core or go [**Versionless**](#versionless) (recommended). Be sure to save your changes before navigating away.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choosing-dbt-version/example-environment-settings.png" width="90%" title="Example environment settings in dbt Cloud"/>
 
