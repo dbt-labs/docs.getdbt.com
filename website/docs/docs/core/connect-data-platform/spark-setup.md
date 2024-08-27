@@ -208,6 +208,8 @@ Spark can be customized using [Application Properties](https://spark.apache.org/
 
 ## Caveats
 
+When facing difficulties, run `poetry run dbt debug --log-level=debug`. The logs are saved at `logs/dbt.log`.
+
 ### Usage with EMR
 To connect to Apache Spark running on an Amazon EMR cluster, you will need to run `sudo /usr/lib/spark/sbin/start-thriftserver.sh` on the master node of the cluster to start the Thrift server (see [the docs](https://aws.amazon.com/premiumsupport/knowledge-center/jdbc-connection-emr/) for more information). You will also need to connect to port 10001, which will connect to the Spark backend Thrift server; port 10000 will instead connect to a Hive backend, which will not work correctly with dbt.
 
@@ -223,6 +225,6 @@ Delta-only features:
 
 ### Default namespace with Thrift connection method
 
-If your Spark cluster doesn't have a default namespace, metadata queries that run before any dbt workflow will fail, causing the entire workflow to fail, even if your configurations are correct. The metadata queries fail there's no default namespace in which to run it.
+To run metadata queries in dbt, you need to have a namespace named `default` in Spark when connecting with Thrift. You can check available namespaces by using Spark's `pyspark` and running `spark.sql("SHOW NAMESPACES").show()`. If the default namespace doesn't exist, create it by running `spark.sql("CREATE NAMESPACE default").show()`.
 
-To debug, review the debug-level logs to confirm the query dbt is running when it encounters the error: `dbt run --debug` or `logs/dbt.log`.
+If there's a network connection issue, your logs will display an error like `Could not connect to any of [('127.0.0.1', 10000)]` (or something similar).
