@@ -58,7 +58,7 @@ You can re-use connections across multiple projects with [global connections](/c
 
 BigQuery connections in dbt Cloud currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
 
-For a project, we will first create an environment variable to store the secret `private_key` value. Then we will use extended attributes to override the entire service account JSON (due to a constraint of extended attributes, we can't only override the secret key).
+For a project, you will first create an environment variable to store the secret `private_key` value. Then, you will use extended attributes to override the entire service account JSON (due to a constraint of extended attributes, you can't only override the secret key).
 
 1. **New environment variable**
 
