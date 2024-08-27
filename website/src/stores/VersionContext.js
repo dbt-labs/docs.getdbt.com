@@ -51,6 +51,7 @@ export const VersionContextProvider = ({ value = "", children }) => {
     if(!e.target)
       return
 
+    // Get selected version value from `dbt-version` data attribute
     const versionValue = e.target?.dataset?.dbtVersion
     
     versionValue &&
