@@ -65,26 +65,24 @@
   <li>For time dimensions, you can use the time range selector to filter on presets or custom options. The time range selector applies only to the primary time dimension (<code>metric_time</code>). For all other time dimensions that aren't <code>metric_time</code>, you can use the "Where" option to apply filters.</li>
 </ul>
 
-#### Other settings 
+#### Other settings
 
 <p>If you would like to just query the data values without the headers, you can optionally select the <strong>Exclude Column Names</strong> box.</p>
-<p>To return your results and keep any previously selected data below it intact, un-select the <strong>Exclude Column Names</strong> box. By default, we'll clear all trailing rows if there's stale data. </p>
-
-
-
-<!-- hide this content for initial launch
+<p>To return your results and keep any previously selected data below it intact, un-select the <strong>Exclude Column Names</strong> box. By default, we'll clear all trailing rows if there's stale data.</p>
 
 ## Using saved selections
 
 <p><span>Saved selections allow you to save the inputs you've created in the {props.type} <strong>Query Builder</strong> and easily access them again so you don't have to continuously build common queries from scratch. To create a saved selection:</span></p>
 
 <ol>
-  <li>Run a <span>query in the {props.type} <strong>Query Builder</strong>.</span></li>
+  <li>Run a <span>query in the <strong>Query Builder</strong>.</span></li>
   <li>Save the selection by selecting the arrow next to the <strong>Query</strong> button and then select <strong>Query & Save Selection</strong>.</li>
   <li>The application saves these selections, allowing you to view and edit them from the hamburger menu under <strong>Saved Selections</strong>.</li>
 </ol>
 
-<Lightbox src={ props.queryBuilder } width="25%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
+<Lightbox src={ props.queryBuilder } width="75%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
+
+<p><span>{props.PrivateSelections}</span></p>
 
 ### Refreshing selections
 
@@ -105,10 +103,8 @@
 <ol>
   <li>Open the hamburger menu in {props.type}.</li>
   <li>Navigate to <strong>Saved Queries</strong> to access the ones available to you.</li>
-  <li>You can also select <strong>Build Selection</strong>, which allows you to explore the existing query. This won't change the original query defined in the code.
+  <li>You can also select <strong>Build Selection</strong>, which allows you to explore the existing query. This won't change the original query defined in the code.</li>
     <ul>
       <li>If you use a <code>WHERE</code> filter in a saved query, {props.type} displays the advanced syntax for this filter.</li>
     </ul>
-  </li>
 </ol>
--->
