@@ -75,7 +75,7 @@ Support for BigQuery coming soon.
 
 [**Deprecation date**](/reference/resource-properties/deprecation_date): Models can declare a deprecation date that will warn model producers and downstream consumers. This enables clear migration windows for versioned models, and provides a mechanism to facilitate removal of immature or little-used models, helping to avoid project bloat.
 
-[Model names](/faqs/Models/unique-model-names) can be duplicated across different namespaces (projects/packages), so long as they are unique within each project/package. We strongly encourage using [two-argument `ref`](/reference/dbt-jinja-functions/ref#ref-project-specific-models) when referencing a model from a different package/project.
+[Model names](/faqs/Project/unique-resource-names) can be duplicated across different namespaces (projects/packages), so long as they are unique within each project/package. We strongly encourage using [two-argument `ref`](/reference/dbt-jinja-functions/ref#ref-project-specific-models) when referencing a model from a different package/project.
 
 More consistency and flexibility around packages. Resources defined in a package will respect variable and global macro definitions within the scope of that package.
 - `vars` defined in a package's `dbt_project.yml` are now available in the resolution order when compiling nodes in that package, though CLI `--vars` and the root project's `vars` will still take precedence. See ["Variable Precedence"](/docs/build/project-variables#variable-precedence) for details.
