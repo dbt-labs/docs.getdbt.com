@@ -266,7 +266,7 @@ You can also document and test models &mdash; skip ahead to the section on [test
 <FAQ path="Project/example-projects" alt_header="Are there any example dbt models?" />
 <FAQ path="Models/configurable-model-path" />
 <FAQ path="Models/model-custom-schemas" />
-<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/unique-resource-names" />
 <FAQ path="Models/removing-deleted-models" />
 <FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 <FAQ path="Models/insert-records" />
