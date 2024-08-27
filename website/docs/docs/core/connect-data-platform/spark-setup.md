@@ -225,6 +225,6 @@ Delta-only features:
 
 ### Default namespace with Thrift connection method
 
-A namespace named `default` is required to exist in Spark when connecting via Thrift for dbt to run metadata queries in. You can use Spark's `pyspark` and run `spark.sql("SHOW NAMESPACES").show()` to see the available namespaces and create the required namespace by running `spark.sql("CREATE NAMESPACE default").show()`.
+To run metadata queries in dbt, you need to have a namespace named `default` in Spark when connecting with Thrift. You can check available namespaces by using Spark's `pyspark` and running `spark.sql("SHOW NAMESPACES").show()`. If the default namespace doesn't exist, create it by running `spark.sql("CREATE NAMESPACE default").show()`.
 
 If there's a network connection issue instead, your logs will contain `Could not connect to any of [('127.0.0.1', 10000)]` (or similar).
