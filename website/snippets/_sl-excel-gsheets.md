@@ -80,7 +80,7 @@
   <li>The application saves these selections, allowing you to view and edit them from the hamburger menu under <strong>Saved Selections</strong>.</li>
 </ol>
 
-<Lightbox src={ props.queryBuilder } width="75%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
+<Lightbox src={ props.queryBuilder } width="35%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
 
 <p><span>{props.PrivateSelections}</span></p>
 
