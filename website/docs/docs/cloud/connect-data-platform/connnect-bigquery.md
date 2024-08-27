@@ -63,27 +63,26 @@ For a project, you will first create an environment variable to store the secret
 1. **New environment variable**
 
     - Create a new _secret_ [environment variable](https://docs.getdbt.com/docs/build/environment-variables#handling-secrets) to handle the private key: `DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY`
-``
     - Fill in the private key value according the environment
 
     To automate your deployment, you can use the following [admin API request](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Create%20Projects%20Environment%20Variables%20Bulk), with `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-cloud-apis/authentication):
 
     ```shell
-curl --request POST \
---url https://cloud.getdbt.com/api/v3/accounts/XXXXX/projects/YYYYY/environment-variables/bulk/ \
---header 'Accept: application/json' \
---header 'Authorization: Bearer ZZZZZ' \
---header 'Content-Type: application/json' \
---data '{
-"env_var": [
-{
-    "new_name": "DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY",
-    "project": "Value by default for the entire project",
-    "ENVIRONMENT_NAME_1": "Optional, if wanted, value for environment name 1",
-    "ENVIRONMENT_NAME_2": "Optional, if wanted, value for environment name 2"
-}
-]
-}'
+    curl --request POST \
+    --url https://cloud.getdbt.com/api/v3/accounts/XXXXX/projects/YYYYY/environment-variables/bulk/ \
+    --header 'Accept: application/json' \
+    --header 'Authorization: Bearer ZZZZZ' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "env_var": [
+    {
+        "new_name": "DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY",
+        "project": "Value by default for the entire project",
+        "ENVIRONMENT_NAME_1": "Optional, if wanted, value for environment name 1",
+        "ENVIRONMENT_NAME_2": "Optional, if wanted, value for environment name 2"
+    }
+    ]
+    }'
     ```
 
 
@@ -91,61 +90,61 @@ curl --request POST \
 
 In the environment details, fill the [extended attributes](/docs/dbt-cloud-environments#extended-attributes) block with the following payload (replacing `XXX` with your relevant information):
 
-    ```YAML
-keyfile_json:
-  type: service_account
-  project_id: xxx
-  private_key_id: xxx
-  private_key: '{{ env_var(''DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY'') }}'
-  client_email: xxx
-  client_id: xxx
-  auth_uri: xxx
-  token_uri: xxx
-  auth_provider_x509_cert_url: xxx
-  client_x509_cert_url: xxx
+    ```yaml
+    keyfile_json:
+      type: service_account
+      project_id: xxx
+      private_key_id: xxx
+      private_key: '{{ env_var(''DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY'') }}'
+      client_email: xxx
+      client_id: xxx
+      auth_uri: xxx
+      token_uri: xxx
+      auth_provider_x509_cert_url: xxx
+      client_x509_cert_url: xxx
     ```
 
     If you require [other fields](/docs/core/connect-data-platform/bigquery-setup#service-account-json) to be overridden at the enviromnent level via extended attributes, please respect the [expected indentiation](/docs/dbt-cloud-environments#only-the-top-level-keys-are-accepted-in-extended-attributes) (ordering doesn't matter):
 
-    ```YAML
-priority: interactive
-keyfile_json:
-  type: xxx
-  project_id: xxx
-  private_key_id: xxx
-  private_key: '{{ env_var(''DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY'') }}'
-  client_email: xxx
-  client_id: xxx
-  auth_uri: xxx
-  token_uri: xxx
-  auth_provider_x509_cert_url: xxx
-  client_x509_cert_url: xxx
-execution_project: buck-stops-here-456
+    ```yaml
+    priority: interactive
+    keyfile_json:
+      type: xxx
+      project_id: xxx
+      private_key_id: xxx
+      private_key: '{{ env_var(''DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY'') }}'
+      client_email: xxx
+      client_id: xxx
+      auth_uri: xxx
+      token_uri: xxx
+      auth_provider_x509_cert_url: xxx
+      client_x509_cert_url: xxx
+    execution_project: buck-stops-here-456
     ```
 
     To automate your deployment, you first need to [create the extended attributes payload](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Create%20Extended%20Attributes) for a given project, and then [assign it](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Update%20Environment) to a specific environment. With `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-cloud-apis/authentication):
 
-    ```SHELL
-curl --request POST \
---url https://cloud.getdbt.com/api/v3/accounts/XXXXX/projects/YYYYY/extended-attributes/ \
---header 'Accept: application/json' \
---header 'Authorization: Bearer ZZZZZ' \
---header 'Content-Type: application/json' \
---data '{
-"id": null,
-"extended_attributes": {"type":"service_account","project_id":"xxx","private_key_id":"xxx","private_key":"{{ env_var('DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY') }}","client_email":"xxx","client_id":xxx,"auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url":"xxx"},
-"state": 1
-}'
+    ```shell
+    curl --request POST \
+    --url https://cloud.getdbt.com/api/v3/accounts/XXXXX/projects/YYYYY/extended-attributes/ \
+    --header 'Accept: application/json' \
+    --header 'Authorization: Bearer ZZZZZ' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "id": null,
+    "extended_attributes": {"type":"service_account","project_id":"xxx","private_key_id":"xxx","private_key":"{{ env_var('DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY')    }}","client_email":"xxx","client_id":xxx,"auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url":"xxx"},
+    "state": 1
+    }'
     ```
     **You will need to make a note of the `id` returned in the message**. It will be used in the following call. With `EEEEE` the environment id, `FFFFF` the extended attributes id: 
 
-    ```SHELL
-curl --request POST \
---url https://cloud.getdbt.com/api/v3/accounts/XXXXX/projects/YYYYY/environments/EEEEE/ \
---header 'Accept: application/json' \
---header 'Authorization: Bearer ZZZZZZ' \
---header 'Content-Type: application/json' \
---data '{
-  "extended_attributes_id": FFFFF
-}'
+    ```shell
+    curl --request POST \
+    --url https://cloud.getdbt.com/api/v3/accounts/XXXXX/projects/YYYYY/environments/EEEEE/ \
+    --header 'Accept: application/json' \
+    --header 'Authorization: Bearer ZZZZZZ' \
+    --header 'Content-Type: application/json' \
+    --data '{
+      "extended_attributes_id": FFFFF
+    }'
     ```
