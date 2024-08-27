@@ -85,10 +85,9 @@ For a project, you will first create an environment variable to store the secret
     }'
     ```
 
-
 2. **Extended attributes**
 
-In the environment details, fill the [extended attributes](/docs/dbt-cloud-environments#extended-attributes) block with the following payload (replacing `XXX` with your relevant information):
+    In the environment details, fill the [extended attributes](/docs/dbt-cloud-environments#extended-attributes) block with the following payload (replacing `XXX` with your relevant information):
 
     ```yaml
     keyfile_json:
