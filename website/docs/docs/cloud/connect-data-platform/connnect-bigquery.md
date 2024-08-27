@@ -58,14 +58,14 @@ You can re-use connections across multiple projects with [global connections](/d
 
 BigQuery connections in dbt Cloud currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate creating a new connection by uploading a service account keyfile. This describes how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), _to allow project administrators to manage credentials independently_ of the account level connection details used for that environment.
 
-For a project, you will first create an environment variable to store the secret `private_key` value. Then, you will use extended attributes to override the entire service account JSON (due to a constraint of extended attributes, you can't only override the secret key).
+For a project, you will first create an environment variable to store the secret `private_key` value. Then, you will use extended attributes to override the entire service account JSON (you can't only override the secret key due to a constraint of extended attributes).
 
 1. **New environment variable**
 
     - Create a new _secret_ [environment variable](https://docs.getdbt.com/docs/build/environment-variables#handling-secrets) to handle the private key: `DBT_ENV_SECRET_PROJECTXXX_PRIVATE_KEY`
     - Fill in the private key value according the environment
 
-    To automate your deployment, you can use the following [admin API request](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Create%20Projects%20Environment%20Variables%20Bulk), with `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-cloud-apis/authentication):
+    To automate your deployment, use the following [admin API request](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Create%20Projects%20Environment%20Variables%20Bulk), with `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-cloud-apis/authentication):
 
     ```shell
     curl --request POST \
@@ -87,7 +87,7 @@ For a project, you will first create an environment variable to store the secret
 
 2. **Extended attributes**
 
-    In the environment details, fill the [extended attributes](/docs/dbt-cloud-environments#extended-attributes) block with the following payload (replacing `XXX` with your relevant information):
+    In the environment details, complete the [extended attributes](/docs/dbt-cloud-environments#extended-attributes) block with the following payload (replacing `XXX` with your corresponding information):
 
     ```yaml
     keyfile_json:
@@ -103,7 +103,7 @@ For a project, you will first create an environment variable to store the secret
       client_x509_cert_url: xxx
     ```
 
-    If you require [other fields](/docs/core/connect-data-platform/bigquery-setup#service-account-json) to be overridden at the enviromnent level via extended attributes, please respect the [expected indentiation](/docs/dbt-cloud-environments#only-the-top-level-keys-are-accepted-in-extended-attributes) (ordering doesn't matter):
+    If you require [other fields](/docs/core/connect-data-platform/bigquery-setup#service-account-json) to be overridden at the environment level via extended attributes, please respect the [expected indentation](/docs/dbt-cloud-environments#only-the-top-level-keys-are-accepted-in-extended-attributes) (ordering doesn't matter):
 
     ```yaml
     priority: interactive
@@ -121,7 +121,7 @@ For a project, you will first create an environment variable to store the secret
     execution_project: buck-stops-here-456
     ```
 
-    To automate your deployment, you first need to [create the extended attributes payload](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Create%20Extended%20Attributes) for a given project, and then [assign it](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Update%20Environment) to a specific environment. With `XXXXX` your account number, `YYYYY` your project number, `ZZZZZ` your [API token](/docs/dbt-cloud-apis/authentication):
+    To automate your deployment, you first need to [create the extended attributes payload](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Create%20Extended%20Attributes) for a given project, and then [assign it](https://docs.getdbt.com/dbt-cloud/api-v3#/operations/Update%20Environment) to a specific environment. With `XXXXX` as your account number, `YYYYY` as your project number, and `ZZZZZ` as your [API token](/docs/dbt-cloud-apis/authentication):
 
     ```shell
     curl --request POST \
@@ -135,7 +135,7 @@ For a project, you will first create an environment variable to store the secret
     "state": 1
     }'
     ```
-    **You will need to make a note of the `id` returned in the message**. It will be used in the following call. With `EEEEE` the environment id, `FFFFF` the extended attributes id: 
+    _Make a note of the `id` returned in the message._ It will be used in the following call. With `EEEEE` the environment id, `FFFFF` the extended attributes id: 
 
     ```shell
     curl --request POST \
