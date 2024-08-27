@@ -54,7 +54,7 @@ To learn how to optimize performance with data platform-specific configurations 
 
 ### Account level connections and credential management
 
-With [global connections](/cloud/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections), you can now re-use connections across multiple projects. In addition, connections are now attached at the environment level (formerly project level), so you can utilize multiple connections inside of a single project (to handle dev, staging, production, etc).
+You can re-use connections across multiple projects with [global connections](/cloud/connect-data-platform/about-connections#migration-from-project-level-connections-to-account-level-connections). Connections are attached at the environment level (formerly project level), so you can utilize multiple connections inside of a single project (to handle dev, staging, production, etc.).
 
 In dbt Cloud, BigQuery connections currently expect the credentials to be handled at the connection level (and only BigQuery connections). This was originally designed to facilitate the creation of a new connection via the upload of a service account keyfile. Here we describe how to override credentials at the environment level, via [extended attributes](/docs/dbt-cloud-environments#extended-attributes), **to allow project administrators to manage credentials independently** of the account level connection details being used for that environment.
 
