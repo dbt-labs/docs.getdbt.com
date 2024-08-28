@@ -67,8 +67,10 @@
 
 #### Other settings
 
-<p>If you would like to just query the data values without the headers, you can optionally select the <strong>Exclude Column Names</strong> box.</p>
-<p>To return your results and keep any previously selected data below it intact, un-select the <strong>Exclude Column Names</strong> box. By default, we'll clear all trailing rows if there's stale data.</p>
+<p>If you would like to just query the data values without the headers, you can optionally select the <strong>Exclude column names</strong> box.</p>
+<p>To return your results and keep any previously selected data below it intact, un-select the <strong>Clear trailing rows</strong> box. By default, we'll clear all trailing rows if there's stale data.</p>
+
+<Lightbox src={ props.queryBuilder } width="35%" title="Run a query in the Query Builder. Use the arrow next to the Query button to select additional settings." />
 
 ## Using saved selections
 
@@ -79,8 +81,6 @@
   <li>Save the selection by selecting the arrow next to the <strong>Query</strong> button and then select <strong>Query & Save Selection</strong>.</li>
   <li>The application saves these selections, allowing you to view and edit them from the hamburger menu under <strong>Saved Selections</strong>.</li>
 </ol>
-
-<Lightbox src={ props.queryBuilder } width="35%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
 
 <p><span>{props.PrivateSelections}</span></p>
 
