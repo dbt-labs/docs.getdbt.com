@@ -21,7 +21,7 @@ description: "Upsolver Configurations - Read this in-depth guide to learn about 
 | Config | Required | Materialization | Description | Example |
 | ------ | --------- | --------------- | ---------- | ------- |
 | connection_type | Yes | connection | Connection identifier: S3/GLUE_CATALOG/KINESIS | connection_type='S3' |
-| connection_options | Yes | connection | Dictionary of options supported by selected connection |           connection_options={ 'aws_role': 'aws_role', 'external_id': 'SAMPLES', 'read_only': True } |
+| connection_options | Yes | connection | Dictionary of options supported by selected connection |           connection_options=\{ 'aws_role': 'aws_role', 'external_id': 'SAMPLES', 'read_only': True \} |
 | incremental_strategy | No | incremental | Define one of incremental strategies: merge/copy/insert. Default: copy | incremental_strategy='merge' |
 | source | No | incremental | Define source to copy from: S3/KAFKA/KINESIS | source = 'S3' |
 | target_type | No | incremental | Define target type REDSHIFT/ELASTICSEARCH/S3/SNOWFLAKE/POSTGRES. Default None for Data lake | target_type='Snowflake' |
@@ -31,11 +31,11 @@ description: "Upsolver Configurations - Read this in-depth guide to learn about 
 | database | Yes/No | incremental | Define target connection. Required if target_type, no table created in a metastore connection | database = 'target_connection' |
 | alias | Yes/No | incremental | Define target table. Required if target_type, no table created in a metastore connection | alias = 'target_table' |
 | delete_condition | No | incremental | Records that match the ON condition and a delete condition can be deleted | delete_condition='nettotal > 1000' |
-| partition_by | No | incremental | List of dictionaries to define partition_by for target metastore table | partition_by=[{'field':'$field_name'}] |
-| primary_key | No | incremental | List of dictionaries to define partition_by for target metastore table  | primary_key=[{'field':'customer_email', 'type':'string'}] |
+| partition_by | No | incremental | List of dictionaries to define partition_by for target metastore table | partition_by=[\{'field':'$field_name'\}] |
+| primary_key | No | incremental | List of dictionaries to define partition_by for target metastore table  | primary_key=[\{'field':'customer_email', 'type':'string'\}] |
 | map_columns_by_name | No | incremental | Maps columns from the SELECT statement to the table. Boolean. Default: False | map_columns_by_name=True |
 | sync | No | incremental/materializedview | Boolean option to define if job is synchronized or non-msynchronized. Default: False | sync=True |
-| options | No | incremental/materializedview | Dictionary of job options | options={ 'START_FROM': 'BEGINNING', 'ADD_MISSING_COLUMNS': True } |
+| options | No | incremental/materializedview | Dictionary of job options | options=\{ 'START_FROM': 'BEGINNING', 'ADD_MISSING_COLUMNS': True \} |
 
 ## SQL connection
 
@@ -280,14 +280,14 @@ models:
 | disable_compaction | datalake | True | True | 'disable_compaction': True/False |
 | retention_date_partition | datalake | False | True | 'retention_date_partition': `'<column>'` |
 | table_data_retention | datalake | True | True | 'table_data_retention': `'<N DAYS>'` |
-| column_data_retention | datalake | True | True | 'column_data_retention': ({'COLUMN' : `'<column>'`,'DURATION': `'<N DAYS>'`}) |
+| column_data_retention | datalake | True | True | 'column_data_retention': (\{'COLUMN' : `'<column>'`,'DURATION': `'<N DAYS>'`\}) |
 | comment | datalake | True | True | 'comment': `'<comment>'` |
 | storage_connection | materialized_view | False | True | 'storage_connection': `'<storage_connection>'` |
 | storage_location | materialized_view | False | True | 'storage_location': `'<storage_location>'` |
 | max_time_travel_duration | materialized_view | True | True | 'max_time_travel_duration': `'<N DAYS>'` |
 | compute_cluster | materialized_view | True | True | 'compute_cluster': `'<compute_cluster>'` |
-| column_transformations | snowflake | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
-| deduplicate_with | snowflake | False | True | 'deduplicate_with': {'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'} |
+| column_transformations | snowflake | False | True | 'column_transformations': \{`'<column>'` : `'<expression>'` , ...\} |
+| deduplicate_with | snowflake | False | True | 'deduplicate_with': \{'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'\} |
 | exclude_columns | snowflake | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
 | create_table_if_missing | snowflake | False | True | 'create_table_if_missing': True/False} |
 | run_interval | snowflake | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
@@ -321,8 +321,8 @@ models:
 | bulk_max_size_bytes | elasticsearch | True | True | 'bulk_max_size_bytes': `<integer>` |
 | index_partition_size | elasticsearch | True | True | 'index_partition_size': 'HOURLY/DAILY ...' |
 | comment | elasticsearch | True | True | 'comment': `'<comment>'` |
-| custom_insert_expressions | snowflake | True | True | 'custom_insert_expressions': {'INSERT_TIME' : 'CURRENT_TIMESTAMP()','MY_VALUE': `'<value>'`} |
-| custom_update_expressions | snowflake | True | True | 'custom_update_expressions': {'UPDATE_TIME' : 'CURRENT_TIMESTAMP()','MY_VALUE': `'<value>'`} |
+| custom_insert_expressions | snowflake | True | True | 'custom_insert_expressions': \{'INSERT_TIME' : 'CURRENT_TIMESTAMP()','MY_VALUE': `'<value>'`\} |
+| custom_update_expressions | snowflake | True | True | 'custom_update_expressions': \{'UPDATE_TIME' : 'CURRENT_TIMESTAMP()','MY_VALUE': `'<value>'`\} |
 | keep_existing_values_when_null | snowflake | True | True | 'keep_existing_values_when_null': True/False |
 | add_missing_columns | snowflake | False | True | 'add_missing_columns': True/False |
 | run_interval | snowflake | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
@@ -372,7 +372,7 @@ models:
 | -------| ---------- | -------- | -------- | -------- | ------------- |
 | topic | kafka | source_options | False | False | 'topic': `'<topic>'` |
 | exclude_columns | kafka | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
-| deduplicate_with | kafka | job_options | False | True | 'deduplicate_with': {'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'} |
+| deduplicate_with | kafka | job_options | False | True | 'deduplicate_with': \{'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'\} |
 | consumer_properties | kafka | job_options | True | True | 'consumer_properties': `'<consumer_properties>'` |
 | reader_shards | kafka | job_options | True | True | 'reader_shards': `<integer>` |
 | store_raw_data | kafka | job_options | False | True | 'store_raw_data': True/False |
@@ -382,7 +382,7 @@ models:
 | run_parallelism | kafka | job_options | True | True | 'run_parallelism': `<integer>` |
 | content_type | kafka | job_options | True | True | 'content_type': 'AUTO/CSV/...' |
 | compression | kafka | job_options | False | True | 'compression': 'AUTO/GZIP/...' |
-| column_transformations | kafka | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
+| column_transformations | kafka | job_options | False | True | 'column_transformations': \{`'<column>'` : `'<expression>'` , ...\} |
 | commit_interval | kafka | job_options | True | True | 'commit_interval': `'<N MINUTE[S]/HOUR[S]/DAY[S]>'` |
 | skip_validations | kafka | job_options | False | True | 'skip_validations': ('MISSING_TOPIC') |
 | skip_all_validations | kafka | job_options | False | True | 'skip_all_validations': True/False |
@@ -390,7 +390,7 @@ models:
 | table_include_list | mysql | source_options | True | True | 'table_include_list': (`'<regexFilter>'`, ...) |
 | column_exclude_list | mysql | source_options | True | True | 'column_exclude_list': (`'<regexFilter>'`, ...) |
 | exclude_columns | mysql | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
-| column_transformations | mysql | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
+| column_transformations | mysql | job_options | False | True | 'column_transformations': \{`'<column>'` : `'<expression>'` , ...\} |
 | skip_snapshots | mysql | job_options | True | True | 'skip_snapshots': True/False |
 | end_at | mysql | job_options | True | True | 'end_at': `'<timestamp>/NOW'` |
 | compute_cluster | mysql | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
@@ -406,7 +406,7 @@ models:
 | compute_cluster | postgres | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | comment | postgres | job_options | True | True | 'comment': `'<comment>'` |
 | parse_json_columns | postgres | job_options | False | False | 'parse_json_columns': True/False |
-| column_transformations | postgres | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
+| column_transformations | postgres | job_options | False | True | 'column_transformations': \{`'<column>'` : `'<expression>'` , ...\} |
 | snapshot_parallelism | postgres | job_options | True | True | 'snapshot_parallelism': `<integer>` |
 | exclude_columns | postgres | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
 | location | s3 | source_options | False | False | 'location': `'<location>'` |
@@ -415,7 +415,7 @@ models:
 | initial_load_pattern | s3 | job_options | False | True | 'initial_load_pattern': `'<initial_load_pattern>'` |
 | initial_load_prefix | s3 | job_options | False | True | 'initial_load_prefix': `'<initial_load_prefix>'` |
 | delete_files_after_load | s3 | job_options | False | True | 'delete_files_after_load': True/False |
-| deduplicate_with | s3 | job_options | False | True | 'deduplicate_with': {'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'} |
+| deduplicate_with | s3 | job_options | False | True | 'deduplicate_with': \{'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'\} |
 | end_at | s3 | job_options | True | True | 'end_at': `'<timestamp>/NOW'` |
 | start_from | s3 | job_options | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
 | compute_cluster | s3 | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
@@ -423,7 +423,7 @@ models:
 | content_type | s3 | job_options | True | True | 'content_type': 'AUTO/CSV...' |
 | compression | s3 | job_options | False | True | 'compression': 'AUTO/GZIP...' |
 | comment | s3 | job_options | True | True | 'comment': `'<comment>'` |
-| column_transformations | s3 | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
+| column_transformations | s3 | job_options | False | True | 'column_transformations': \{`'<column>'` : `'<expression>'` , ...\} |
 | commit_interval | s3 | job_options | True | True | 'commit_interval': `'<N MINUTE[S]/HOUR[S]/DAY[S]>'` |
 | skip_validations | s3 | job_options | False | True | 'skip_validations': ('EMPTY_PATH') |
 | skip_all_validations | s3 | job_options | False | True | 'skip_all_validations': True/False |
@@ -438,8 +438,8 @@ models:
 | content_type | kinesis | job_options | True | True | 'content_type': 'AUTO/CSV...' |
 | compression | kinesis | job_options | False | True | 'compression': 'AUTO/GZIP...' |
 | comment | kinesis | job_options | True | True | 'comment': `'<comment>'` |
-| column_transformations | kinesis | job_options | True | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
-| deduplicate_with | kinesis | job_options | False | True | 'deduplicate_with': {'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'} |
+| column_transformations | kinesis | job_options | True | True | 'column_transformations': \{`'<column>'` : `'<expression>'` , ...\} |
+| deduplicate_with | kinesis | job_options | False | True | 'deduplicate_with': \{'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'\} |
 | commit_interval | kinesis | job_options | True | True | 'commit_interval': `'<N MINUTE[S]/HOUR[S]/DAY[S]>'` |
 | skip_validations | kinesis | job_options | False | True | 'skip_validations': ('MISSING_STREAM') |
 | skip_all_validations | kinesis | job_options | False | True | 'skip_all_validations': True/False |
@@ -447,7 +447,7 @@ models:
 | table_include_list | mssql | source_options | True | True | 'table_include_list': (`'<regexFilter>'`, ...) |
 | column_exclude_list | mssql | source_options | True | True | 'column_exclude_list': (`'<regexFilter>'`, ...) |
 | exclude_columns | mssql | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
-| column_transformations | mssql | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
+| column_transformations | mssql | job_options | False | True | 'column_transformations': \{`'<column>'` : `'<expression>'` , ...\} |
 | skip_snapshots | mssql | job_options | True | True | 'skip_snapshots': True/False |
 | end_at | mssql | job_options | True | True | 'end_at': `'<timestamp>/NOW'` |
 | compute_cluster | mssql | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
@@ -456,7 +456,7 @@ models:
 | comment | mssql | job_options | True | True | 'comment': `'<comment>'` |
 | collection_include_list | mongodb | source_options | True | True | 'collection_include_list': (`'<regexFilter>'`, ...) |
 | exclude_columns | mongodb | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
-| column_transformations | mongodb | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
+| column_transformations | mongodb | job_options | False | True | 'column_transformations': \{`'<column>'` : `'<expression>'` , ...\} |
 | skip_snapshots | mongodb | job_options | True | True | 'skip_snapshots': True/False |
 | end_at | mongodb | job_options | True | True | 'end_at': `'<timestamp>/NOW'` |
 | compute_cluster | mongodb | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |

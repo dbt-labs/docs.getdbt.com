@@ -8,14 +8,6 @@ tags: [Semantic Layer]
 
 With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. 
 
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
- </VersionBlock>
-
 ## Prerequisites
 
 import SetUp from '/snippets/_v2-sl-prerequisites.md';
@@ -53,10 +45,10 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## FAQs
 
-<detailsToggle alt_header="How does caching interact with access controls?">
+<DetailsToggle alt_header="How does caching interact with access controls?">
 
 Cached data is stored separately from the underlying models. If metrics are pulled from the cache, we don’t have the security context applied to those tables at query time.
 
 In the future, we plan to clone credentials, identify the minimum access level needed, and apply those permissions to cached tables.
 
-</detailsToggle>
+</DetailsToggle>

@@ -116,7 +116,7 @@ This configuration may conflict with Snowflake OAuth when used with PrivateLink.
 
 If you're receiving a `Could not deserialize key data` or `JWT token` error, refer to the following causes and solutions:
 
-<detailsToggle alt_header="Error: `Could not deserialize key data`">
+<DetailsToggle alt_header="Error: `Could not deserialize key data`">
 
 Possible cause and solution for the error "Could not deserialize key data" in dbt Cloud.
 - This could be because of mistakes like not copying correctly, missing dashes, or leaving out commented lines.
@@ -124,9 +124,9 @@ Possible cause and solution for the error "Could not deserialize key data" in db
 **Solution**:
 - You can copy the key from its source and paste it into a text editor to verify it before using it in dbt Cloud.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Error: `JWT token`">
+<DetailsToggle alt_header="Error: `JWT token`">
 
 Possible cause and solution for the error "JWT token" in dbt Cloud.
 - This could be a transient issue between Snowflake and dbt Cloud. When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in dbt Cloud.
@@ -136,4 +136,4 @@ Possible cause and solution for the error "JWT token" in dbt Cloud.
 - dbt needs to retry connections to Snowflake.
 - Confirm and enter Snowflake's public key correctly. Additionally, you can reach out to Snowflake for help or refer to this Snowflake doc for more info: [Key-Based Authentication Failed with JWT token is invalid Error](https://community.snowflake.com/s/article/Key-Based-Authentication-Failed-with-JWT-token-is-invalid-Error).
 
-</detailsToggle>
+</DetailsToggle>

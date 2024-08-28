@@ -186,7 +186,7 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 
 ## FAQs
 
-<detailsToggle alt_header="When should I use SQLFluff and when should I use sqlfmt?">
+<DetailsToggle alt_header="When should I use SQLFluff and when should I use sqlfmt?">
 
 SQLFluff and sqlfmt are both tools used for formatting SQL code, but some differences may make one preferable to the other depending on your use case. <br />
 
@@ -200,32 +200,32 @@ You can use either SQLFluff or sqlfmt depending on your preference and what work
 
 - Use sqlfmt to only have your code well-formatted without analyzing it for errors and bugs. You can use sqlfmt out of the box, making it convenient to use right away without having to configure it.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Can I nest `.sqlfluff` files?">
+<DetailsToggle alt_header="Can I nest `.sqlfluff` files?">
 
 To ensure optimal code quality, consistent code, and styles &mdash; it's highly recommended you have one main `.sqlfluff` configuration file in the root folder of your project. Having multiple files can result in various different SQL styles in your project. <br /><br />
 
 However, you can customize and include an additional child `.sqlfluff` configuration file within specific subfolders of your dbt project. <br /><br />By nesting a `.sqlfluff` file in a subfolder, SQLFluff will apply the rules defined in that subfolder's configuration file to any files located within it. The rules specified in the parent `.sqlfluff` file will be used for all other files and folders outside of the subfolder. This hierarchical approach allows for tailored linting rules while maintaining consistency throughout your project. Refer to [SQLFluff documentation](https://docs.sqlfluff.com/en/stable/configuration.html#configuration-files) for more info.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Can I run SQLFluff commands from the terminal?">
+<DetailsToggle alt_header="Can I run SQLFluff commands from the terminal?">
 
 Currently, running SQLFluff commands from the terminal isn't supported. 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE?">
+<DetailsToggle alt_header="Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE?">
 - Double-check that your SQLFluff version matches the one in dbt Cloud IDE (found in the <b>Code Quality</b> tab after a lint operation). <br /><br />
 - If your lint operation passes despite clear rule violations, confirm you're not linting models with ephemeral models. Linting doesn't support ephemeral models in dbt v1.5 and lower. 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="What are some considerations when using dbt Cloud linting?">
+<DetailsToggle alt_header="What are some considerations when using dbt Cloud linting?">
 Currently, the dbt Cloud IDE can lint or fix files up to a certain size and complexity. If you attempt to lint or fix files that are too large, taking more than 60 seconds for the dbt Cloud backend to process, you will see an 'Unable to complete linting this file' error. 
 
 To avoid this, break up your model into smaller models (files) so that they are less complex to lint or fix. Note that linting is simpler than fixing so there may be cases where a file can be linted but not fixed. 
 
-</detailsToggle>
+</DetailsToggle>
 
 ## Related docs
 

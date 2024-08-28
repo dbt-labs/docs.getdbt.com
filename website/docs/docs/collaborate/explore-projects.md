@@ -2,11 +2,16 @@
 title: "Discover data with dbt Explorer"
 sidebar_label: "Discover data with dbt Explorer"
 description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your dbt projects."
-pagination_next: "docs/collaborate/column-level-lineage"
+image: /img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png
+pagination_next: "docs/collaborate/access-from-dbt-cloud"
 pagination_prev: null
 ---
 
-With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
+With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics), their <Term id="data-lineage">lineage</Term>, and [model consumption](/docs/collaborate/auto-exposures) to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources. 
+
+import ExplorerCourse from '/snippets/_explorer-course-link.md';
+
+<ExplorerCourse />
 
 ## Prerequisites
 
@@ -24,6 +29,8 @@ Navigate the dbt Explorer overview page to access your project's resources and m
 - **Lineage graph** &mdash; Explore your project's or account's [lineage graph](#project-lineage) to visualize the relationships between resources.
 - **Latest updates** &mdash; View the latest changes or issues related to your project's resources, including the most recent job runs, changed properties, lineage, and issues.
 - **Marts and public models** &mdash; View the [marts](/best-practices/how-we-structure/1-guide-overview#guide-structure-overview) and [public models](/docs/collaborate/govern/model-access#access-modifiers) in your project. 
+- **Model query history** &mdash; Use [model query history](/docs/collaborate/model-query-history) to track the history of queries on your models for deeper insights.
+- **Auto-exposures** &mdash; [Set up and view auto-exposures](/docs/collaborate/auto-exposures) to automatically expose relevant data models from Tableau to enhance visibility.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explorer-main-page.gif" width="100%" title="Access dbt Explorer from dbt Cloud by clicking Explore in the navigation."/>
 
@@ -106,13 +113,14 @@ Lenses are helpful to analyze a subset of the DAG if you're zoomed in, or to fin
 A resource in your project is characterized by resource type, materialization type, or model layer, as well as its latest run or latest test status. Lenses are available for the following metadata:
 
 - **Relationship**: Organizes resources by resource type, such as models, tests, seeds, and [more](/reference/node-selection/syntax). Resource type uses the `resource_type` selector.
-- **Materialization Type**: Identifies the strategy for building the dbt models in your data platform.
-- **Latest Status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
-- **Model Layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
+- **Materialization type**: Identifies the strategy for building the dbt models in your data platform.
+- **Latest status**: The status from the latest execution of the resource in the current environment. For example, diagnosing a failed DAG region.
+- **Model layer**: The modeling layer that the model belongs to according to [best practices guide](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview#guide-structure-overview). For example, discovering marts models to analyze.
     - **Marts** &mdash; A model with the prefix `fct_` or `dim_` or a model that lives in the `/marts/` subdirectory.
     - **Intermediate** &mdash; A model with the prefix `int_`. Or, a model that lives in the `/int/` or `/intermediate/` subdirectory.
     - **Staging** &mdash; A model with the prefix `stg_`. Or, a model that lives in the `/staging/` subdirectory.
-- **Test Status**: The status from the latest execution of the tests that ran again this resource. In the case that a model has multiple tests with different results, the lens reflects the 'worst case' status. 
+- **Test status**: The status from the latest execution of the tests that ran again this resource. In the case that a model has multiple tests with different results, the lens reflects the 'worst case' status. 
+- **Usage queries**: The number of queries against this resource over a given time period.
 
 </Expandable>
 
@@ -210,11 +218,12 @@ In the upper right corner of the resource details page, you can:
 
 - **Status bar** (below the page title) &mdash; Information on the last time the exposure was updated. 
 - **General** tab includes:
+    - **Data health** &mdash; The status on data freshness and data quality.
     - **Status** section &mdash; The status on data freshness and data quality.
-    - **Lineage** graph &mdash; The exposure’s lineage graph. Click the Expand icon in the graph's upper right corner to view the exposure in full lineage graph mode.
+    - **Lineage** graph &mdash; The exposure’s lineage graph. Click the **Expand** icon in the graph's upper right corner to view the exposure in full lineage graph mode. Integrates natively with Tableau and auto-generates downstream lineage.
     - **Description** section &mdash; A description of the exposure.
     - **Details** section &mdash; Details like exposure type, maturity, owner information, and more.
-    - **Relationships** section &mdash; The nodes the exposure **Depends On**.
+    - **Relationships** section &mdash; The nodes the exposure **Depends On**. 
 
 </Expandable>
 
@@ -253,9 +262,13 @@ Example of the Tests view:
 
 ### Example of model details
 
-Example of the details view for the model `customers`: 
+<DocCarousel slidesPerView={1}>
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="100%" title="Example of resource details" />
+Example of the details view for the model `customers`:<br /> <Lightbox src="/img/docs/collaborate/dbt-explorer/example-model-details.png" width="95%" title="Example of resource details" />
+
+<Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="95%" title="Example of auto-exposure details for the Tableau exposure."/>
+
+</DocCarousel>
 
 ## Staging environment
 
@@ -264,7 +277,6 @@ dbt Explorer supports views for [staging deployment environments](/docs/deploy/d
 You can explore the metadata from your production or staging environment to inform your data development lifecycle. Just [set a single environment](/docs/deploy/deploy-environments) per dbt Cloud project as “production” or “staging," and ensure the proper metadata has been generated then you’ll be able to view it in Explorer. Refer to [Generating metadata](/docs/collaborate/explore-projects#generate-metadata) for more details.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/explore-staging-env.png" width="100%" title="Explore in a staging environment" />
-
 
 ## Related content
 - [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 

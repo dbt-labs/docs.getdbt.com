@@ -14,20 +14,9 @@ To-do:
 
 In dbt-redshift, the following incremental materialization strategies are supported:
 
-<VersionBlock lastVersion="1.5">
-
-- `append` (default when `unique_key` is not defined)
-- `delete+insert` (default when `unique_key` is defined)
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
 - `append` (default when `unique_key` is not defined)
 - `merge`
 - `delete+insert` (default when `unique_key` is defined)
-
-</VersionBlock>
 
 All of these strategies are inherited from dbt-postgres.
 
@@ -38,8 +27,10 @@ All of these strategies are inherited from dbt-postgres.
 Tables in Amazon Redshift have two powerful optimizations to improve query performance: distkeys and sortkeys. Supplying these values as model-level configurations apply the corresponding settings in the generated `CREATE TABLE` <Term id="ddl" />. Note that these settings will have no effect on models set to `view` or `ephemeral` models.
 
 - `dist` can have a setting of `all`, `even`, `auto`, or the name of a key.
-- `sort` accepts a list of sort keys, for example: `['timestamp', 'userid']`. dbt will build the sort key in the same order the fields are supplied.
+- `sort` accepts a list of sort keys, for example: `['reporting_day', 'category']`. dbt will build the sort key in the same order the fields are supplied.
 - `sort_type` can have a setting of `interleaved` or `compound`. if no setting is specified, sort_type defaults to `compound`.
+
+When working with sort keys, it's highly recommended you follow [Redshift's best practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/query-best-practices-redshift/best-practices-tables.html#sort-keys) on sort key effectiveness and cardinality. 
 
 Sort and dist keys should be added to the `{{ config(...) }}` block in model `.sql` files, eg:
 
@@ -47,13 +38,13 @@ Sort and dist keys should be added to the `{{ config(...) }}` block in model `.s
 
 ```sql
 -- Example with one sort key
-{{ config(materialized='table', sort='id', dist='received_at') }}
+{{ config(materialized='table', sort='reporting_day', dist='unique_id') }}
 
 select ...
 
 
 -- Example with multiple sort keys
-{{ config(materialized='table', sort=['id', 'category'], dist='received_at') }}
+{{ config(materialized='table', sort=['category', 'region', 'reporting_day'], dist='received_at') }}
 
 select ...
 
@@ -61,8 +52,8 @@ select ...
 -- Example with interleaved sort keys
 {{ config(materialized='table',
           sort_type='interleaved'
-          sort=['id', 'category'],
-          dist='received_at')
+          sort=['category', 'region', 'reporting_day'],
+          dist='unique_id')
 }}
 
 select ...
@@ -106,8 +97,6 @@ models:
 ```
 
 </File>
-
-<VersionBlock firstVersion="1.6">
 
 ## Materialized views
 
@@ -241,7 +230,7 @@ As with most data platforms, there are limitations associated with materialized 
 
 Find more information about materialized view limitations in Redshift's [docs](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MATERIALIZED_VIEW-limitations).
 
-<VersionBlock firstVersion="1.6" lastVersion="1.6">
+<VersionBlock lastVersion="1.6">
 
 #### Changing materialization from "materialized_view" to "table" or "view"
 
@@ -253,8 +242,6 @@ This would only need to be done once as the existing object would then be a mate
 For example, assume that a materialized view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`.
 If the user changes the model's config to `materialized="table"`, they will get an error.
 The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data warehouse before trying the model again.
-
-</VersionBlock>
 
 </VersionBlock>
 

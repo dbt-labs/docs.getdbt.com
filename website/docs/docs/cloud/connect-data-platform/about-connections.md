@@ -8,6 +8,7 @@ pagination_prev: null
 ---
 dbt Cloud can connect with a variety of data platform providers including: 
 - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
+- [Amazon Athena (Beta)](/docs/cloud/connect-data-platform/connect-amazon-athena)
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark)
 - [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics)
@@ -35,7 +36,6 @@ Up until July 2024, connections were nested under projects. One dbt Cloud projec
 We are rolling out an important change that moves connection management to the account level. The following connection management section describes these changes. 
 
 This feature is being rolled out in phases over the coming weeks. 
-
 :::
 
 Warehouse connections are an account-level resource. As such you can find them under **Accounts Settings** > **Connections**:
@@ -51,6 +51,10 @@ As shown in the image, a project with 2 environments can target between 1 and 2 
 ### Migration from project level connections to account level connections
 
 Rolling out account-level connections will not require any interruption of service in your current usage (IDE, CLI, jobs, etc.).
+
+:::info Why am I prompted to configure a development environment?
+If your project did not previously have a development environment, you may be redirected to the project setup page. Your project is still intact. Choose a connection for your new development environment, and you can view all your environments again.
+:::
 
 However, to fully utilize the value of account-level connections, you may have to rethink how you assign and use connections across projects and environments.
 

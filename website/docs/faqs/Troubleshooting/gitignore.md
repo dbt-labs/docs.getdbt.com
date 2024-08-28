@@ -11,8 +11,6 @@ If you can't revert changes, check out a branch, or click commit &mdash; this is
 
 To fix this, complete the following steps:
 
-<VersionBlock firstVersion="1.5">
-
 1. In the dbt Cloud IDE, add the following [.gitignore contents](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) in your dbt project `.gitignore` file:
 ```bash
 target/
@@ -36,8 +34,5 @@ dbt_modules/
 10. Switch to your main branch and click on **Pull from remote** to pull in all the changes you made to your main branch. You can verify the changes by making sure the files/folders in the .gitignore file are in italics. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/gitignore-italics.jpg" width="50%" title="A dbt project on the main branch that has properly configured gitignore folders (highlighted in italics)."/>
-
-
-</VersionBlock> 
 
 For more info, refer to this [detailed video](https://www.loom.com/share/9b3b8e2b617f41a8bad76ec7e42dd014) for additional guidance. 
