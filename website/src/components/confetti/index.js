@@ -1,6 +1,10 @@
 import React from 'react';
 import confetti from 'canvas-confetti';
+/**
 
+ * @param {*} param0 
+ * @returns 
+ */
 const ConfettiTrigger = ({ children }) => {
     const triggerConfetti = (event) => {
       if (event?.target?.closest('a, h2, h3')) {
