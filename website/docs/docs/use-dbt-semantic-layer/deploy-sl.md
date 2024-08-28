@@ -1,0 +1,27 @@
+---
+title: "Deploy your Semantic Layer"
+id: deploy-sl
+description: "Deploy the dbt Semantic Layer in dbt Cloud by running a job to materialize your metrics."
+sidebar_label: "Deploy your Semantic Layer"
+tags: [Semantic Layer]
+---
+
+<!-- The below snippet can be found in the following file locations in the docs code repository) 
+
+https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-run-prod-job.md
+-->
+
+import RunProdJob from '/snippets/_sl-run-prod-job.md';
+
+<RunProdJob/>
+
+## Next steps
+After you've ran a job and deployed your Semantic Layer, [set up your Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) in dbt Cloud. 
+
+Discover the [available integrations](/docs/cloud-integrations/avail-sl-integrations), such as Tableau, Google Sheets, Microsoft Excel, and more, to start querying your metrics.
+
+
+## Related docs
+- [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
+- If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.

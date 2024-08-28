@@ -32,10 +32,10 @@ dbt Cloud Enterprise plans can add multiple credentials and map those to service
    - Note, environment variables such as  `{{env_var('DBT_WAREHOUSE') }}`, aren't supported in the dbt Semantic Layer yet. You must use the actual credentials.
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="45%" title="Enter the credentials specific to your data platform that you want the Semantic Layer to use and select the deployment environment."/>
 
-1. Create a **Service Token** after you add the credential.
+2. Create a **Service Token** after you add the credential.
    * Enterprise plans: Name and generate a service token on the credential page directly.
    * Team plans: You can return to the **Project Details** page and click the **Generate a Service Token** button. 
-2. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
+3. Name the token and save it. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
 
 :::info
 Teams plans can create multiple service tokens that map to one underlying credential. Adding [multiple credentials](#4-add-more-credentials) for tailored access is available for Enterprise plans.  
@@ -74,7 +74,7 @@ To add multiple credentials and map them to service tokens:
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-credential-created.jpg" width="100%" title="Manage multiple credentials and link them to service tokens for more granular control."/>
 
 6. To delete a credential, go back to the **Semantic Layer & Credential**s page. Select **Delete credential** to remove a credential and click **Save**. 
-   
+
    When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
 
 ## Additional configuration
