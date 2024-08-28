@@ -11,7 +11,7 @@ id: "cmd-docs"
 The command is responsible for generating your project's documentation website by
 
 1. Copying the website `index.html` file into the `target/` directory
-2. Compiling the resources in your project, so that their `compiled_code` will be included in [`manifest.json`](/reference/artifacts/manifest-json)
+2. Compiling the resources in your project, so that their `compiled_code` will be included in [`manifest.json`](/reference/artifacts/manifest-json).
 3. Running queries against database metadata to produce the [`catalog.json`](/reference/artifacts/catalog-json) file, which contains metadata about the tables and <Term id="view">views</Term> produced by the models in your project.
 
 **Example**:
