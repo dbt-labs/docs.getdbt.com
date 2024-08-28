@@ -13,6 +13,10 @@
  */
 exports.versions = [
   {
+    version: "1.10",
+    customDisplay: "dbt Cloud (Versionless)",
+  },
+  {
     version: "1.9",
     isPrerelease: true,
   },
