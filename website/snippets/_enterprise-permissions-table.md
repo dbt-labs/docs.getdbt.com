@@ -19,6 +19,7 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 | Audit logs              |     R         |               |                           |                 |       R        |   R    |
 | Auth provider           |     W         |               |                           |                 |       W        |   R    |
 | Billing                 |     W         |       W       |                           |                 |                |   R    |
+| Connections             |     W         |               |                           |        W        |                |        |
 | Groups                  |     W         |               |                           |        R        |       W        |   R    |
 | Invitations             |     W         |               |                           |        W        |       W        |   R    |
 | IP restrictions         |     W         |               |                           |                 |       W        |   R    |
@@ -34,7 +35,6 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
  
 |Project-level permission | Account Admin | Billing admin | Project creator | Security admin | Viewer | 
 |:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
-| Data platform connections             |       W       |               |       W         |                |   R    |
 | Environment credentials (deployment)      |       W       |               |       W         |                |   R    |
 | Custom env. variables   |       W       |               |       W         |                |   R    |
 | Data platform configurations            |       W       |               |       W         |                |   R    |
@@ -61,6 +61,7 @@ The project roles enable you to work within the projects in various capacities. 
 | Account settings         |   R   |         |      R         |           |     R     |           |             |             |          |                |             |     R      |         |
 | Auth provider            |       |         |                |           |           |           |             |             |          |                |             |            |         |
 | Billing                  |       |         |                |           |           |           |             |             |          |                |             |            |         |
+| Connections              |   R   |    R    |      R         |     R     |     R     |     R     |             |             |          |                |      R      |     R      |         |
 | Groups                   |   R   |         |      R         |     R     |     R     |           |             |             |          |                |      R      |     R      |         |
 | Invitations              |   W   |    R    |      R         |     R     |     R     |     R     |             |      R      |          |                |      R      |     R      |         |
 | Licenses                 |   W   |    R    |      R         |     R     |     R     |     R     |             |      R      |          |                |             |     R      |         |
@@ -74,7 +75,6 @@ The project roles enable you to work within the projects in various capacities. 
  
 |Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job runner  | Job viewer  | Metadata <br></br> (Discovery API only) | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:-------:|  
-| Data platform connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |                |     R       |     R      |         |
 | Environment credentials (deployment)        |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
 | Custom env. variables    |   W   |    W    |       W        |     W     |     W     |     W     |             |      R      |          |                |     R       |     W      |         |
 | Data platform configurations            |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
