@@ -1,7 +1,7 @@
 ---
 resource_types: all
 datatype: markdown_string
-
+description: "This guide explains how to use the description key to add YAML descriptions to dbt resources (models, sources, seeds) using markdown and Jinja for better documentation."
 ---
 
 <Tabs
