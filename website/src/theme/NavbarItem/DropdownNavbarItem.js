@@ -78,74 +78,89 @@ function DropdownNavbarItemDesktop({
   useEffect(() => {
     setShowVersionDropdown(true)
   }, [showVersionDropdown])
-
+  
   return (
     <div
       ref={dropdownRef}
-      className={clsx('navbar__item', 'dropdown', 'dropdown--hoverable', {
-        'dropdown--right': position === 'right',
-        'dropdown--show': showDropdown,
-        'dropdown--version--hide': !showVersionDropdown,
-      })}>
+      className={clsx("navbar__item", "dropdown", "dropdown--hoverable", {
+        "dropdown--right": position === "right",
+        "dropdown--show": showDropdown,
+        "dropdown--version--hide": !showVersionDropdown,
+      })}
+    >
       <NavbarNavLink
         aria-haspopup="true"
         aria-expanded={showDropdown}
         role="button"
-        href={props.to ? undefined : '#'}
-        className={clsx('navbar__link', className)}
+        href={props.to ? undefined : "#"}
+        className={clsx("navbar__link", className)}
         {...props}
         onClick={props.to ? undefined : (e) => e.preventDefault()}
         onKeyDown={(e) => {
-          if (e.key === 'Enter') {
+          if (e.key === "Enter") {
             e.preventDefault();
             setShowDropdown(!showDropdown);
           }
         }}
-        label={className === "nav-versioning" ? `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}` : props.children ?? props.label}
+        label={
+          className === "nav-versioning"
+            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
+            : props.children ?? props.label
+        }
       >
         {props.children ?? props.label}
       </NavbarNavLink>
       <ul className="dropdown__menu">
-        {items.map((childItemProps, i) => (
-          <React.Fragment key={i}>
-            {className === "nav-versioning" ? (
-              <li>
-                <a
-                  className='dropdown__link nav-versioning-dropdown__link'
-                  onClick={(e) => {
-                    handleVersionMenuClick()
-                    versionContext.updateVersion(e)
-                  }
-                  }
-                >{childItemProps.label}
-                  {versions.find((version) => (childItemProps.label == version.version))?.isPrerelease && " (Beta)"}</a>
-              </li>
-            ) : (
-              <NavbarItem
-                isDropdownItem
-                onKeyDown={(e) => {
-                  if (i === items.length - 1 && e.key === 'Tab') {
-                    e.preventDefault();
-                    setShowDropdown(false);
-                    const nextNavbarItem = dropdownRef.current.nextElementSibling;
-                    if (nextNavbarItem) {
-                      const targetItem =
-                        nextNavbarItem instanceof HTMLAnchorElement
-                          ? nextNavbarItem
-                          : // Next item is another dropdown; focus on the inner
-                          // anchor element instead so there's outline
-                          nextNavbarItem.querySelector('a');
-                      targetItem.focus();
+        {items.map((childItemProps, i) => {
+          const thisVersion = versions.find(
+            (version) => childItemProps.label == version.version
+          );
+          const versionDisplay = thisVersion?.customDisplay ? thisVersion.customDisplay : `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
+                    
+          return (
+            <React.Fragment key={i}>
+              {className === "nav-versioning" ? (
+                <li>
+                  <a
+                    className="dropdown__link nav-versioning-dropdown__link"
+                    data-dbt-version={childItemProps.label}
+                    onClick={(e) => {
+                      handleVersionMenuClick();
+                      versionContext.updateVersion(e);
+                    }}
+                  >
+                    {versionDisplay}
+                  </a>
+                </li>
+              ) : (
+                <NavbarItem
+                  isDropdownItem
+                  onKeyDown={(e) => {
+                    if (i === items.length - 1 && e.key === "Tab") {
+                      e.preventDefault();
+                      setShowDropdown(false);
+                      const nextNavbarItem =
+                        dropdownRef.current.nextElementSibling;
+                      if (nextNavbarItem) {
+                        const targetItem =
+                          nextNavbarItem instanceof HTMLAnchorElement
+                            ? nextNavbarItem
+                            : // Next item is another dropdown; focus on the inner
+                              // anchor element instead so there's outline
+                              nextNavbarItem.querySelector("a");
+                        targetItem.focus();
+                      }
                     }
-                  }
-                }}
-                activeClassName="dropdown__link--active"
-                {...childItemProps}
-                key={i}
-              />
-            )}
-          </React.Fragment>
-        ))}
+                  }}
+                  activeClassName="dropdown__link--active"
+                  {...childItemProps}
+                  key={i}
+                />
+              )}
+            </React.Fragment>
+          );
+        } 
+        )}
       </ul>
     </div>
   );
@@ -171,42 +186,55 @@ function DropdownNavbarItemMobile({
   }, [localPathname, containsActive, setCollapsed]);
   return (
     <li
-      className={clsx('menu__list-item', {
-        'menu__list-item--collapsed': collapsed,
-      })}>
+      className={clsx("menu__list-item", {
+        "menu__list-item--collapsed": collapsed,
+      })}
+    >
       <NavbarNavLink
         role="button"
         className={clsx(
-          'menu__link menu__link--sublist menu__link--sublist-caret',
-          className,
+          "menu__link menu__link--sublist menu__link--sublist-caret",
+          className
         )}
         {...props}
         onClick={(e) => {
           e.preventDefault();
           toggleCollapsed();
         }}
-        label={className === "nav-versioning" ? `v${versionContext.version} ${versionContext.isPrerelease ? "(Beta)" : ""}` : props.children ?? props.label}
+        label={
+          className === "nav-versioning"
+            ? `${versionContext?.customDisplay ? `${versionContext.customDisplay}` : `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}`}`
+            : props.children ?? props.label
+        }
       >
         {props.children ?? props.label}
       </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
         {items.map((childItemProps, i) => {
-          childItemProps.label = versions.find((version) => (childItemProps.label == version.version))?.isPrerelease ? `${childItemProps.label} (Beta)` : `${childItemProps.label}`;
+          const thisVersion = versions.find(
+            (version) => childItemProps.label == version.version
+          );
+          const versionDisplay = thisVersion?.customDisplay
+            ? thisVersion.customDisplay
+            : `${childItemProps.label} ${thisVersion?.isPrerelease ? " (Beta)" : ""}`;
+
           return (
             <NavbarItem
               mobile
               isDropdownItem
-              onClick={className === "nav-versioning" 
-                ? (e) => versionContext.updateVersion(e)
-                : onClick
+              data-dbt-version={childItemProps.label}
+              onClick={
+                className === "nav-versioning"
+                  ? (e) => versionContext.updateVersion(e)
+                  : onClick
               }
               activeClassName="menu__link--active"
               {...childItemProps}
+              label={versionDisplay}
               key={i}
             />
-          )
-        } 
-        )}
+          );
+        })}
       </Collapsible>
     </li>
   );
