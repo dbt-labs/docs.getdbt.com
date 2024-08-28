@@ -1,4 +1,4 @@
-Once you’ve defined your semantic models and metrics, commit and merge your metric changes in your dbt project. 
+Once you’ve [defined your semantic models and metrics](/guides/sl-snowflake-qs?step=10), commit and merge your metric changes in your dbt project. 
 
 This section explains how you can perform a job run in your deployment environment in dbt Cloud to materialize and deploy your metrics. Currently, the deployment environment is only supported.
 
@@ -9,7 +9,7 @@ This section explains how you can perform a job run in your deployment environme
 4. [Create a new deploy job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) that runs in the environment you just created. Go back to the **Deploy** menu, select **Jobs**, select **Create job**, and click **Deploy job**.
 5. Set the job to run a `dbt build` and select the **Generate docs on run** checkbox.
 6. Run the job by clicking the **Run now** button. Monitor the job's progress in real-time through the **Run summary** tab. 
-    
+
     Once the job completes successfully, your dbt project, including the generated documentation, will be fully deployed and available for use in your production environment. If any issues arise, review the logs to diagnose and address any errors.
 
 <details>
