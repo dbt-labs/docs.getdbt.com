@@ -2,7 +2,7 @@
 title: "Deploy your Semantic Layer"
 id: deploy-sl
 description: "Deploy the dbt Semantic Layer in dbt Cloud by running a job to materialize your metrics."
-sidebar_label: "Deploy your Semantic Layer"
+sidebar_label: "Deploy your metrics"
 tags: [Semantic Layer]
 ---
 

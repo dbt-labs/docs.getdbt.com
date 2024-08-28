@@ -2,7 +2,7 @@
 title: "Set up the dbt Semantic Layer"
 id: setup-sl
 description: "Seamlessly set up the dbt Semantic Layer in dbt Cloud using intuitive navigation."
-sidebar_label: "Set up your Semantic Layer"
+sidebar_label: "Set up the Semantic Layer"
 tags: [Semantic Layer]
 ---
 
