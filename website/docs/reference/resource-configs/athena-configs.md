@@ -12,7 +12,7 @@ id: "athena-configs"
 |-----------|---------|-------------|
 | `external_location` | None | The full S3 path to where the table is saved. It only works with incremental models. It doesn't work with Hive tables with `ha` set to `true`. |
 | `partitioned_by` | None | An array list of columns by which the table will be partitioned. Currently limited to 100 partitions. |
-| `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg |
+| `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg. |
 | `bucket_count` | None | The number of buckets for bucketing your data. This parameter is ignored if using Iceberg. |
 | `table_type` | Hive | The type of table. Supports `hive` or `iceberg`. |
 | `ha` | False | Build the table using the high-availability method. Only available for Hive tables. |
