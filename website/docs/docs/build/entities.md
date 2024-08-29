@@ -12,7 +12,11 @@ Within a semantic graph, the required parameters for an entity are `name` and `t
 
 Entities can be specified with a single column or multiple columns. Entities (join keys) in a semantic model are identified by their name. Each entity name must be unique within a semantic model, but it doesn't have to be unique across different semantic models. 
 
-There are four entity types: primary, foreign, unique, or natural.
+There are four entity types: 
+- [Primary](#primary) &mdash; Has only one record for each row in the table and includes every record in the data platform. This key uniquely identifies each record in the table.
+- [Foreign](#foreign) &mdash; Contains only one record per row in the table but may have a subset of records in the data warehouse. This key links to a primary key in another table, establishing relationships between tables.
+- [Unique](#unique) &mdash; A field (or a set of fields) in one table that uniquely identifies a row in another table. Ensures that no two rows have the same value in the specified column(s), maintaining data integrity.
+- [Natural](#natural) &mdash; Columns or combinations of columns in a table that uniquely identify a record based on real-world data. This key is derived from actual data attributes rather than artificially generated identifiers.
 
 :::tip Use entities as dimensions
 You can also use entities as dimensions, which allows you to aggregate a metric to the granularity of that entity.
