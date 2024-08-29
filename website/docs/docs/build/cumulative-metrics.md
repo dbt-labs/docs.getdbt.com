@@ -16,6 +16,8 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 
 ## Parameters
 
+<VersionBlock firstVersion="1.9">
+
 | Parameter | <div style={{width:'350px'}}>Description</div> | Type |
 | --------- | ----------- | ---- |
 | `name` | The name of the metric. | Required |
@@ -32,10 +34,32 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `measure::fill_nulls_with` | Set the value in your metric definition instead of null (such as zero). | Optional |
 | `measure::join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+| Parameter | <div style={{width:'350px'}}>Description</div> | Type |
+| --------- | ----------- | ---- |
+| `name` | The name of the metric. | Required |
+| `description` | The description of the metric. | Optional |
+| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
+| `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
+| `type_params` | The type parameters of the metric. Supports nested parameters indicated by the double colon, such as `type_params::measure`. | Required |
+| `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
+| `grain_to_date` |Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
+| `type_params::measure` | A list of measure inputs | Required |
+| `measure:name` | TThe measure you are referencing. | Optional  |
+| `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
+| `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
+
+</VersionBlock>
+
 ### Complete specification
 The following displays the complete specification for cumulative metrics, along with an example:
 
 <File name='models/marts/sem_semantic_model_name.yml'>
+
+<VersionBlock firstVersion="1.9">
 
 ```yaml
 metrics:
@@ -54,13 +78,35 @@ metrics:
         join_to_timespine: true/false # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
 
 ```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+```yaml
+metrics:
+  - name: The metric name  # Required
+    description: The metric description  # Optional
+    type: cumulative  # Required
+    label: The value that will be displayed in downstream tools  # Required
+    type_params:  # Required
+      measure: 
+        name: The measure you are referencing  # Required
+        fill_nulls_with: Set the value in your metric definition instead of null (such as zero)  # Optional
+        join_to_timespine: false  # Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. # Optional
+      window: 1 month  # The accumulation window, such as 1 month, 7 days, 1 year. Optional. Cannot be used with grain_to_date.
+      grain_to_date: month  # Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next. Optional. Cannot be used with window.
+```
+</VersionBlock>
+
 </File>
 
 ## Cumulative metrics example
 
 Cumulative metrics measure data over a given window and consider the window infinite when no window parameter is passed, accumulating the data over all time.
 
-The following example shows how to define cumulative metrics in a YAML file. In this example, we define three cumulative metrics:
+The following example shows how to define cumulative metrics in a YAML file:
+
+<VersionBlock firstVersion="1.9">
 
 - `cumulative_order_total`: Calculates the cumulative order total over all time. Uses `type params` to specify the measure `order_total` to be aggregated.
 
@@ -68,10 +114,23 @@ The following example shows how to define cumulative metrics in a YAML file. In 
 
 - `cumulative_order_total_mtd`: Calculates the month-to-date cumulative order total, respectively. Uses `cumulative_type_params` to specify a `grain_to_date` of `month`.
 
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+- `cumulative_order_total`: Calculates the cumulative order total over all time. Uses `type params` to specify the measure `order_total` to be aggregated.
+
+- `cumulative_order_total_l1m`: Calculates the trailing 1-month cumulative order total. Uses `type params` to specify a `window` of 1 month.
+
+- `cumulative_order_total_mtd`: Calculates the month-to-date cumulative order total, respectively. Uses `type params` to specify a `grain_to_date` of `month`.
+
+</VersionBlock>
+
 <File name='models/marts/sem_semantic_model_name.yml'>
 
-```yaml
+<VersionBlock firstVersion="1.9">
 
+```yaml
 metrics:
   - name: cumulative_order_total
     label: Cumulative order total (All-Time)    
@@ -101,7 +160,43 @@ metrics:
       cumulative_type_params:
         grain_to_date: month
 ```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.9">
+
+```yaml
+metrics:
+  - name: cumulative_order_total
+    label: Cumulative order total (All-Time)    
+    description: The cumulative value of all orders
+    type: cumulative
+    type_params:
+      measure: 
+        name: order_total
+  
+  - name: cumulative_order_total_l1m
+    label: Cumulative order total (L1M)   
+    description: Trailing 1-month cumulative order total
+    type: cumulative
+    type_params:
+      measure: 
+        name: order_total
+      window: 1 month
+  
+  - name: cumulative_order_total_mtd
+    label: Cumulative order total (MTD)
+    description: The month-to-date value of all orders
+    type: cumulative
+    type_params:
+      measure: 
+        name: order_total
+      grain_to_date: month
+```
+</VersionBlock>
+
 </File>
+
+<VersionBlock firstVersion="1.9">
 
 ### Granularity options
 
@@ -192,6 +287,8 @@ group by
 
 </Expandable>
 
+</VersionBlock>
+
 ### Window options
 
 This section details examples of when to specify and not to specify window options.
@@ -218,6 +315,8 @@ measures:
 
 We can write a cumulative metric `weekly_customers` as such:
 
+<VersionBlock firstVersion="1.9">
+
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ``` yaml
@@ -237,6 +336,31 @@ From the sample YAML example, note the following:
 * `type`: Specify cumulative to indicate the type of metric. 
 * `type_params`: Configure the cumulative metric by providing a `measure`.
 * `cumulative_type_params`: Optionally add a `window`, `period_agg` and `grain_to_date` configuration.
+
+For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
+
+If you remove `window`, the measure will accumulate over all time.
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+<File name='models/marts/sem_semantic_model_name.yml'>
+
+``` yaml
+metrics: 
+  - name: weekly_customers # Define the measure and the window.
+  type: cumulative
+  type_params:
+    measure: customers
+    window: 7 days # Setting the window to 7 days since we want to track weekly active
+```
+</File>
+</VersionBlock>
+
+From the sample YAML example, note the following:
+
+* `type`: Specify cumulative to indicate the type of metric. 
+* `type_params`: Configure the cumulative metric by providing a `measure` and optionally add a `window` or `grain_to_date` configuration.
 
 For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
 
@@ -286,7 +410,6 @@ metrics:
 ```
 
 </File>
-
 </Expandable>
 
 ### Grain to date
@@ -310,6 +433,8 @@ We can compare the difference between a 1-month window and a monthly grain to da
 
 <File name='models/marts/sem_semantic_model_name.yml'>
 
+<VersionBlock firstVersion="1.9">
+
 ```yaml
 metrics:
   - name: cumulative_order_total_l1m  # For this metric, we use a window of 1 month 
@@ -330,10 +455,33 @@ metrics:
         grain_to_date: month # Resets at the beginning of each month
         period_agg: first # Optional. Defaults to first. Accepted values: first|last|average
 ```
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+```yaml
+metrics:
+  - name: cumulative_order_total_l1m  # For this metric, we use a window of 1 month 
+    label: Cumulative order total (L1M)
+    description: Trailing 1-month cumulative order amount
+    type: cumulative
+    type_params:
+      measure: order_total
+    window: 1 month # Applies a sliding window of 1 month
+  - name: cumulative_order_total_mtd   # For this metric, we use a monthly grain-to-date 
+    label: Cumulative order total (MTD)
+    description: The month-to-date value of all orders
+    type: cumulative
+    type_params:
+      measure: order_total
+      grain_to_date: month # Resets at the beginning of each month
+```
+</VersionBlock>
 </File>
 
 Cumulative metric with grain to date:
 
+<VersionBlock firstVersion="1.9">
 <File name='models/marts/sem_semantic_model_name.yml'>
 
 ```yaml
@@ -390,10 +538,25 @@ order by
 ```
 
 </Expandable>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+<File name='models/marts/sem_semantic_model_name.yml'>
+
+```yaml
+- name: orders_last_month_to_date
+  label: Orders month to date
+  type: cumulative
+  type_params:
+    measure: order_count
+    grain_to_date: month
+```
+</File>
+</VersionBlock>
 
 ## SQL implementation example
 
-To calculate the cumulative value of the metric over a given window, join the timespine table using the primary time dimension. Use the accumulation window in the join to decide which days to include in the calculation.
+To calculate the cumulative value of the metric over a given window we do a time range join to a timespine table using the primary time dimension as the join key. We use the accumulation window in the join to decide whether a record should be included on a particular day. The following SQL code produced from an example cumulative metric is provided for reference:
 
 To implement cumulative metrics, refer to the SQL code example:
 
