@@ -197,9 +197,12 @@ To use Iceberg incrementally, use one of the following supported strategies:
   - `delete_condition` (optional): SQL condition used to identify records that should be deleted.
   - `update_condition` (optional): SQL condition used to identify records that should be updated.
   - `insert_condition` (optional): SQL condition used to identify records that should be inserted.
-    - `incremental_predicates`, `delete_condition`, `update_condition` and `insert_condition` can include any column of the incremental table (`src`) or the final table (`target`). Column names must be prefixed by either `src` or `target` to prevent a `Column is ambiguous` error.
-    
-Example of `delete_condition`:
+
+`incremental_predicates`, `delete_condition`, `update_condition` and `insert_condition` can include any column of the incremental table (`src`) or the final table (`target`). Column names must be prefixed by either `src` or `target` to prevent a `Column is ambiguous` error.
+
+<Tabs>
+
+<TabItem value="delete_condition">
 
 ```sql
 {{ config(
@@ -221,7 +224,9 @@ select 'A' as user_id,
        current_date as my_date
 ```
 
-`update_condition` example:
+</TabItem>
+
+<TabItem value="update_condition" >
 
 ```sql
 {{ config(
@@ -254,7 +259,9 @@ select * from (
 {% endif %}
 ```
 
-Example of `insert_condition`:
+</TabItem>
+
+<TabItem value="insert_condition" >
 
 ```sql
 {{ config(
@@ -273,6 +280,10 @@ select * from (
 ) as t (id, status)
 
 ```
+
+</TabItem>
+
+</Tabs>
 
 ### High availablity table (HA)
 
