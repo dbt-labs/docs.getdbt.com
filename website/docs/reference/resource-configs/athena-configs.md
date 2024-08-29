@@ -535,12 +535,13 @@ def model(dbt, spark_session):
 ### Known issues in Python models
 
 - Python models can't [reference Athena SQL views](https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html).
-- You can use third-party Python libraries, however, they must be [included in the pre-installed list][pre-installed list] or [imported manually][imported manually].
+- You can use third-party Python libraries; however, they must be [included in the pre-installed list][pre-installed list] or [imported manually][imported manually].
 - Python models can only reference or write to tables with names matching the regular expression: `^[0-9a-zA-Z_]+$`. Spark doesn't support dashes or special characters, even though Athena supports them.
 - Incremental models don't fully utilize Spark capabilities. They depend partially on existing SQL-based logic that runs on Trino.
 - Snapshot materializations are not supported.
 - Spark can only reference tables within the same catalog.
-- For tables created outside of the dbt tool, be sure to populate the location field or dbt will throw an error when trying to create the table.
+- For tables created outside of the dbt tool, be sure to populate the location field, or dbt will throw an error when creating the table.
+
 
 [pre-installed list]: https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark-preinstalled-python-libraries.html
 [imported manually]: https://docs.aws.amazon.com/athena/latest/ug/notebooks-import-files-libraries.html
