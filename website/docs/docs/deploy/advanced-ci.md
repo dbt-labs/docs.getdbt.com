@@ -7,7 +7,7 @@ description: "Advanced CI enables developers to compare changes by demonstrating
 
 Advanced CI helps developers answer the question, “Will this PR build the correct changes in production?” By demonstrating the data changes that code changes produce, users can ensure they always ship trusted data products as they develop.
 
-Customers control what data to use and may implement synthetic data if pre-production or development data is heavily regulated or sensitive. The data clients choose is cached on dbt Labs systems for up to 30 days. dbt Labs does not access Advanced CI cached data for its benefit, and the data is only used to provide services to clients as they direct. This caching optimizes compute usage so that the entire comparison is not rerun against the data warehouse each time the **Compare** tab is viewed.
+Customers control what data to use and may implement synthetic data if pre-production or development data is heavily regulated or sensitive. The data selected by users is cached on dbt Labs' systems for up to 30 days. dbt Labs does not access Advanced CI cached data for its benefit, and the data is only used to provide services to clients as they direct. This caching optimizes compute usage so that the entire comparison is not rerun against the data warehouse each time the **Compare** tab is viewed.
 
 ## Data caching
 
