@@ -34,7 +34,8 @@ The following diagram provides an illustration of the architecture:
 
 
 ## Access
-You can log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. During this [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud), you do not need dbt Cloud credentials (a dbt Cloud seat) to access the application but this is subject to change. 
+
+Log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. The Snowflake user must have a corresponding dbt Cloud user. Previously, this wasn't a requirement during the feature [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). If your account is already configured, you will be prompted to [link credentials](#link-credentials) the next time you access dbt Cloud from the Snowflake app, and if you don't have dbt Cloud credentials, the integration will no longer work for your user. 
 
 App users are able to access all information that's available to the API service token.
 
@@ -47,4 +48,18 @@ If you're interested, please [contact us](matilto:sales_snowflake_marketplace@db
 If you have any questions about the dbt Snowflake Native App, you may [contact our Support team](mailto:dbt-snowflake-marketplace@dbtlabs.com) for help. Please provide information about your installation of the Native App, including your dbt Cloud account ID and Snowflake account identifier. 
 
 ## Limitations
-- The Native app does not support dbt Cloud accounts with [IP Restrictions](/docs/cloud/secure/ip-restrictions] enabled. 
+- The Native app does not support dbt Cloud accounts with [IP Restrictions](/docs/cloud/secure/ip-restrictions) enabled. 
+
+## Link credentials
+
+During the early stages of the Snowflake Native App preview, users were only required to exist in the Snowflake platform and could access dbt Cloud via the app without having a corresponding user. This is no longer the case, and every Snowflake user must also have dbt Cloud account access. 
+
+For existing accounts with the Snowflake Native App configured, users will be prompted to authenticate with dbt Cloud the next time they log in. This is a one-time process if they have a user in dbt Cloud. If they don’t have a dbt Cloud user, they will be denied access, and an admin will need to [create one](/docs/cloud/manage-access/invite-users). 
+
+1. When you attempt to access the dbt Cloud platform from the Snowflake Native App, you will be prompted to link your accounts.
+
+<Lightbox src="/img/docs/dbt-cloud/snowflake-link-account-prompt.png" width="90%" title="The Snowflake Native App prompt to link accounts" />
+
+2. Click **Link account** and you will be prompted for your dbt Cloud credentials. 
+
+<Lightbox src="/img/docs/dbt-cloud/snowflake-link-dbt-cloud.png" width="90%" title="The link accounts prompt" />
