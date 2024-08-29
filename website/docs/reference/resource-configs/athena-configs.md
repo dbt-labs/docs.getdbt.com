@@ -9,16 +9,16 @@ id: "athena-configs"
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `external_location` | None | The full S3 path to where the table will be saved. Only works with incremental models. Doesn't work with Hive table with `ha` set to `true`. |
+| `external_location` | None | The full S3 path to where the table is saved. It only works with incremental models. It doesn't work with Hive tables with `ha` set to `true`. |
 | `partitioned_by` | None | An array list of columns by which the table will be partitioned. Currently limited to 100 partitions. |
 | `bucketed_by` | None | An array list of the columns to bucket data. Ignored if using Iceberg |
-| `bucket_count` | None | The number of buckets for bucketing your data. Ignored if using Iceberg |
-| `table_type` | Hive | The type of table. Supports `hive` or `iceberg` |
+| `bucket_count` | None | The number of buckets for bucketing your data. This parameter is ignored if using Iceberg. |
+| `table_type` | Hive | The type of table. Supports `hive` or `iceberg`. |
 | `ha` | False | Build the table using the high-availability method. Only available for Hive tables. |
-| `format` | Parquet | The data format for the table. Supports `ORC`, `PARQUET`, `AVRO`, `JSON`, and `TEXTFILE` |
+| `format` | Parquet | The data format for the table. Supports `ORC`, `PARQUET`, `AVRO`, `JSON`, and `TEXTFILE`. |
 | `write_compression` | None | The compression type for any storage format that allows compressions. See [CREATE TABLE AS][#create-table-as] for available options |
-| `field_delimeter` | None | Custome field delimiter for when the format is set to `TEXTFIRE` |
-| `table_properties` | N/A | The tabe properties to add to the table. For Iceberg only. |
+| `field_delimeter` | None | Specify the custom field delimiter to use when the format is set to `TEXTFIRE`. |
+| `table_properties` | N/A | The table properties to add to the table. This is only for Iceberg. |
 | `native_drop` | N/A | Relation drop operations will be performed with SQL, not direct Glue API calls. No S3 calls will be made to manage data in S3. Data in S3 will only be cleared up for Iceberg tables. See the [AWS docs](https://docs.aws.amazon.com/athena/latest/ug/querying-iceberg-managing-tables.html) for more info. Iceberg DROP TABLE operations may timeout if they take longer than 60 seconds.|
 | `seed_by_insert` | False | Creates seeds using an SQL insert statement. Large seed files can't exceed the Athena 262144 bytes limit. |
 | `force_batch` | False | Run the table creation directly in batch insert mode. Useful when the standard table creation fails due to partition limitation. |
