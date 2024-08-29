@@ -340,26 +340,25 @@ models:
           primary_key: true
 ```
 
-See [persist docs](https://docs.getdbt.com/reference/resource-configs/persist_docs) for more details.
+Refer to [persist_docs](https://docs.getdbt.com/reference/resource-configs/persist_docs) for more details.
 
 ## Snapshots
 
-The adapter supports snapshot materialization. It supports both timestamp and check strategy. To create a snapshot
-create a snapshot file in the snapshots directory. If the directory does not exist create one.
+The adapter supports snapshot materialization. It supports both the timestamp and check strategies. To create a snapshot, create a snapshot file in the `snapshots` directory. You'll need to create this directory if it doesn't already exist.
 
 ### Timestamp strategy
 
-To use the timestamp strategy refer to
-the [dbt docs](https://docs.getdbt.com/docs/build/snapshots#timestamp-strategy-recommended)
+
+Refer to [Timestamp strategy](/docs/build/snapshots#timestamp-strategy-recommended) for details on how to use it. 
+
 
 ### Check strategy
 
-To use the check strategy refer to the [dbt docs](https://docs.getdbt.com/docs/build/snapshots#check-strategy)
+Refer to [Check strategy](/docs/build/snapshots#check-strategy) for details on how to use it.
 
-### Hard-deletes
+### Hard deletes
 
-The materialization also supports invalidating hard deletes. Check
-the [docs](https://docs.getdbt.com/docs/build/snapshots#hard-deletes-opt-in) to understand usage.
+The materialization also supports invalidating hard deletes. For usage details, refer to [Hard deletes](/docs/build/snapshots#hard-deletes-opt-in). 
 
 ### Working example
 
@@ -462,20 +461,20 @@ from {{ ref('model') }} {% endsnapshot %}
 
 ## AWS Lake Formation integration
 
-The following is how the adapter implements AWS Lake Formation tag management:
+The following describes how the adapter implements the AWS Lake Formation tag management:
 
-- You can enable or disable lf-tags management via [config](#table-configuration) (disabled by default)
-- Once you enable the feature, lf-tags will be updated on every dbt run
-- First, all lf-tags for columns are removed to avoid inheritance issues
+- [Enable](#table-configuration) LF tags management with the `lf_tags_config` parameter. By default, it's disabled. 
+- Once enabled, LF tags are updated on every dbt run.
+- First, all lf-tags for columns are removed to avoid inheritance issues.
 - Then, all redundant lf-tags are removed from tables and actual tags from table configs are applied
 - Finally, lf-tags for columns are applied
 
 It's important to understand the following points:
 
-- dbt does not manage `lf-tags` for databases
-- dbt does not manage Lake Formation permissions
+- dbt doesn't manage `lf-tags` for databases
+- dbt doesn't manage Lake Formation permissions
 
-That's why you should handle this by yourself manually or using an automation tool like terraform, AWS CDK, etc. You may find the following links useful to manage that:
+That's why it's important to take care of this yourself or use an automation tool such as terraform and AWS CDK. For more details, refer to:
 
 * [terraform aws_lakeformation_permissions](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lakeformation_permissions)
 * [terraform aws_lakeformation_resource_lf_tags](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lakeformation_resource_lf_tags)
@@ -508,7 +507,7 @@ The adapter supports Python models using [`spark`](https://docs.aws.amazon.com/a
 - A session is created for each unique engine configuration defined in the models that are part of the invocation.
 - A session's idle timeout is set to 10 minutes. Within the timeout period, if there is a new calculation (Spark Python model) ready for execution and the engine configuration matches, the process will reuse the same session.
 - The number of Python models running at a time depends on the `threads`. The number of sessions created for the entire run depends on the number of unique engine configurations and the availability of sessions to maintain thread concurrency.
-- For Iceberg tables, it is recommended to use `table_properties` configuration to set the `format_version` to 2. This is to maintain compatibility between Iceberg tables created by Trino with those created by Spark.
+- For Iceberg tables, it's recommended to use the `table_properties` configuration to set the `format_version` to `2`. This helps maintain compatibility between Iceberg tables created by Trino with those created by Spark.
 
 ### Example models
 
@@ -612,10 +611,10 @@ def model(dbt, spark_session):
 
 ### Known issues in Python models
 
-- Python models cannot [reference Athena SQL views](https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html).
-- Third-party Python libraries can be used, but they must be [included in the pre-installed list][pre-installed list] or [imported manually][imported manually].
-- Python models can only reference or write to tables with names meeting the regular expression: `^[0-9a-zA-Z_]+$`. Dashes and special characters are not supported by Spark, even though Athena supports them.
-- Incremental models do not fully utilize Spark capabilities. They depend partially on existing SQL-based logic which runs on Trino.
+- Python models can't [reference Athena SQL views](https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html).
+- You can use third-party Python libraries, however, they must be [included in the pre-installed list][pre-installed list] or [imported manually][imported manually].
+- Python models can only reference or write to tables with names matching the regular expression: `^[0-9a-zA-Z_]+$`. Spark doesn't support dashes or special characters, even though Athena supports them.
+- Incremental models don't fully utilize Spark capabilities. They depend partially on existing SQL-based logic that runs on Trino.
 - Snapshot materializations are not supported.
 - Spark can only reference tables within the same catalog.
 - For tables created outside of the dbt tool, be sure to populate the location field or dbt will throw an error when trying to create the table.
