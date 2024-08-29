@@ -289,6 +289,7 @@ select * from (
 
 The current implementation of table materialization can lead to downtime, as the target table is dropped and re-created. For less destructive behavior, you can use the `ha` config on your `table` materialized models. It leverages the table versions feature of the glue catalog, which creates a temporary table and swaps the target table to the location of the temporary table. This materialization is only available for `table_type=hive` and requires using unique locations. For Iceberg, high availability is the default.
 
+By default, the materialization keeps the last 4 table versions,but you can change it by setting `versions_to_keep`.
 
 ```sql
 {{ config(
@@ -309,18 +310,17 @@ select 'b'        as user_id,
        'disabled' as status
 ```
 
-By default, the materialization keeps the last 4 table versions,but you can change it by setting `versions_to_keep`.
 
 #### HA known issues
 
-- When swapping from a table with partitions to a table without (and the other way around), there could be a little
-  downtime. If high performances is needed consider bucketing instead of partitions.
+- There could be a little downtime when swapping from a table with partitions to a table without (and the other way around). If higher performance is needed, consider bucketing instead of partitions.
 - By default, Glue "duplicates" the versions internally, so the last two versions of a table point to the same location.
 - It's recommended to set `versions_to_keep` >= 4, as this will avoid having the older location removed.
 
 ### Update glue data catalog
 
 Persist resource descriptions as column and relation comments to the glue data catalog, and meta as [glue table properties](https://docs.aws.amazon.com/glue/latest/dg/tables-described.html#table-properties) and [column parameters](https://docs.aws.amazon.com/glue/latest/webapi/API_Column.html). By default, documentation persistence is disabled, but it can be enabled for specific resources or groups of resources as needed.
+
 
 For example:
 
