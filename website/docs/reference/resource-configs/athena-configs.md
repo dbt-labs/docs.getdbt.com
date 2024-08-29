@@ -187,7 +187,7 @@ conditions.
 
 Iceberg supports these table formats for data : `PARQUET`, `AVRO` and `ORC`.
 
-It is possible to use Iceberg in an incremental fashion, specifically two strategies are supported:
+To use Iceberg incrementally, use one of the following supported strategies:
 
 - `append`: New records are appended to the table (this can lead to duplicates).
 - `merge`: Perform an update and insert (and optional delete), where new records are added and existing records are updated. Only available with Athena engine version 3.
