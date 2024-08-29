@@ -190,13 +190,12 @@ Iceberg supports the `PARQUET`, `AVRO` and `ORC` table formats for data .
 The following are the supported strategies for using Iceberg incrementally:
 
 - `append`: New records are appended to the table (this can lead to duplicates).
-- `merge`: Perform an update and insert (and optional delete), where new and existing records are added. It is only available with Athena engine version 3.
-  - `unique_key`(required): Columns defining a unique source and target table record.
-  - `incremental_predicates` (optional): SQL conditions that enable custom join clauses in the merge statement. This can
-    help improve performance via predicate pushdown on the target table.
-  - `delete_condition` (optional): SQL condition used to identify records that should be deleted.
-  - `update_condition` (optional): SQL condition used to identify records that should be updated.
-  - `insert_condition` (optional): SQL condition used to identify records that should be inserted.
+- `merge`: Perform an update and insert (and optional delete) where new and existing records are added. This is only available with Athena engine version 3.
+  - `unique_key`(required): Columns that define a unique source and target table record.
+  - `incremental_predicates` (optional): The SQL conditions that enable custom join clauses in the merge statement. This helps improve performance via predicate pushdown on target tables. 
+  - `delete_condition` (optional): SQL condition that identifies records that should be deleted.
+  - `update_condition` (optional): SQL condition that identifies records that should be updated.
+  - `insert_condition` (optional): SQL condition that identifies records that should be inserted.
 
 `incremental_predicates`, `delete_condition`, `update_condition` and `insert_condition` can include any column of the incremental table (`src`) or the final table (`target`). Column names must be prefixed by either `src` or `target` to prevent a `Column is ambiguous` error.
 
