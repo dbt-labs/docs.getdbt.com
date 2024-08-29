@@ -185,9 +185,9 @@ select 'A'          as user_id,
 Iceberg supports bucketing as hidden partitions. Use the `partitioned_by` config to add specific bucketing
 conditions.
 
-Iceberg supports these table formats for data : `PARQUET`, `AVRO` and `ORC`.
+Iceberg supports the `PARQUET`, `AVRO` and `ORC` table formats for data .
 
-To use Iceberg incrementally, use one of the following supported strategies:
+The following are the supported strategies for using Iceberg incrementally:
 
 - `append`: New records are appended to the table (this can lead to duplicates).
 - `merge`: Perform an update and insert (and optional delete), where new and existing records are added. It is only available with Athena engine version 3.
