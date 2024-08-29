@@ -2,6 +2,7 @@
 title: "Continuous integration in dbt Cloud"
 sidebar_label: "Continuous integration"
 description: "You can set up continuous integration (CI) checks to test every single change prior to deploying the code to production just like in a software development workflow."
+pagination_next: "docs/deploy/advanced-ci"
 ---
 
 To implement a continuous integration (CI) workflow in dbt Cloud, you can set up automation that tests code changes by running [CI jobs](/docs/deploy/ci-jobs) before merging to production. dbt Cloud tracks the state of what’s running in your production environment so, when you run a CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema. You can also view the status of the CI checks (tests) directly from within the PR; this information is posted to your Git provider as soon as a CI job completes. Additionally, you can enable settings in your Git provider that allow PRs only with successful CI checks be approved for merging.  

@@ -462,7 +462,16 @@ const sidebarSettings = {
         "docs/deploy/deployments",
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
+        {
+        type: "category",
+        label: "Continuous integration",
+        collapsed: true,
+        link: { type: "doc", id: "docs/deploy/continuous-integration" },
+        items: [
         "docs/deploy/continuous-integration",
+        "docs/deploy/advanced-ci",
+        ],
+        },
         "docs/deploy/continuous-deployment",
         {
           type: "category",
