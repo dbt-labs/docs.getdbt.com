@@ -46,9 +46,9 @@ Note that we use the double colon (::) to indicate whether a parameter is nested
 | `label` | Required string that defines the display value in downstream tools. Accepts plain text, spaces, and quotes (such as `orders_total` or `"orders_total"`). | Required |
 | `type_params` | The type parameters of the metric. Supports nested parameters indicated by the double colon, such as `type_params::measure`. | Required |
 | `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
-| `grain_to_date` |Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
+| `grain_to_date` | Sets the accumulation grain, such as `month`, which will accumulate data for one month and then restart at the beginning of the next. This can't be used with `window`. | Optional |
 | `type_params::measure` | A list of measure inputs | Required |
-| `measure:name` | TThe measure you are referencing. | Optional  |
+| `measure:name` | The measure you are referencing. | Optional  |
 | `measure:fill_nulls_with` | Set the value in your metric definition instead of null (such as zero).| Optional |
 | `measure:join_to_timespine` | Boolean that indicates if the aggregated measure should be joined to the time spine table to fill in missing dates. Default `false`. | Optional |
 
@@ -162,7 +162,7 @@ metrics:
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.9">
+<VersionBlock lastVersion="1.8">
 
 ```yaml
 metrics:
