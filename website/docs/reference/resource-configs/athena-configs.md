@@ -1,6 +1,6 @@
 ---
 title: "Amazon Athena configurations"
-description: "Reference guide for the Amazon Athena adapter for dbt Core and dbt Cloud."
+description: "Reference article for the Amazon Athena adapter for dbt Core and dbt Cloud."
 id: "athena-configs"
 ---
 
@@ -391,7 +391,7 @@ That's why it's important to take care of this yourself or use an automation too
 
 The adapter supports Python models using [`spark`](https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html).
 
-### Setup
+### Prerequisites
 
 - A Spark-enabled workgroup created in Athena.
 - Spark execution role granted access to Athena, Glue and S3.
