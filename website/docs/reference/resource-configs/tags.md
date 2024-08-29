@@ -44,8 +44,7 @@ version: 2
 
 models:
   - name: model_name
-    config:
-      tags: <string> | [<string>]
+    tags: <string> | [<string>]
 
     columns:
       - name: column_name
