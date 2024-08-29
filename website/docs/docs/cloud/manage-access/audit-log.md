@@ -9,12 +9,12 @@ pagination_prev: "docs/cloud/manage-access/about-user-access"
 
 To review actions performed by people in your organization, dbt provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
 
-You must be an **Account Admin** to access the audit log and this feature is only available on Enterprise plans.
+You must be an **Account Admin** or an **Account Viewer** to access the audit log and this feature is only available on Enterprise plans.
 
 The dbt Cloud audit log stores all the events that occurred in your organization in real-time, including:
 
 - For events within 90 days, the dbt Cloud audit log has a selectable date range that lists events triggered.
-- For events beyond 90 days, **Account Admins** can [export all events](#exporting-logs) by using **Export All**.
+- For events beyond 90 days, **Account Admins** and **Account Viewers** can [export all events](#exporting-logs) by using **Export All**.
 
 ## Accessing the audit log
 
@@ -170,6 +170,6 @@ You can use the audit log to export all historical audit results for security, c
 
 - **For events within 90 days** &mdash; dbt Cloud will automatically display the 90-day selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
 
-- **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin will receive an email link to download a CSV file of all the events that occurred in your organization.
+- **For events beyond 90 days** &mdash; Select **Export All**. The Account Admin or Account Viewer will receive an email link to download a CSV file of all the events that occurred in your organization.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" width="95%" title="View audit log export options"/>

@@ -462,7 +462,16 @@ const sidebarSettings = {
         "docs/deploy/deployments",
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
+        {
+        type: "category",
+        label: "Continuous integration",
+        collapsed: true,
+        link: { type: "doc", id: "docs/deploy/continuous-integration" },
+        items: [
         "docs/deploy/continuous-integration",
+        "docs/deploy/advanced-ci",
+        ],
+        },
         "docs/deploy/continuous-deployment",
         {
           type: "category",
@@ -912,6 +921,7 @@ const sidebarSettings = {
           label: "For models",
           items: [
             "reference/model-properties",
+            "reference/resource-properties/model_name",
             "reference/model-configs",
             "reference/resource-configs/materialized",
             "reference/resource-configs/on_configuration_change",
@@ -934,6 +944,7 @@ const sidebarSettings = {
           label: "For snapshots",
           items: [
             "reference/snapshot-properties",
+            "reference/resource-configs/snapshot_name",
             "reference/snapshot-configs",
             "reference/resource-configs/check_cols",
             "reference/resource-configs/strategy",
