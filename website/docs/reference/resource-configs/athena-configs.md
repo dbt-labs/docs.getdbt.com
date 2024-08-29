@@ -17,7 +17,7 @@ id: "athena-configs"
 | `table_type` | Hive | The type of table. Supports `hive` or `iceberg`. |
 | `ha` | False | Build the table using the high-availability method. Only available for Hive tables. |
 | `format` | Parquet | The data format for the table. Supports `ORC`, `PARQUET`, `AVRO`, `JSON`, and `TEXTFILE`. |
-| `write_compression` | None | The compression type for any storage format that allows compressions. See [CREATE TABLE AS][#create-table-as] for available options |
+| `write_compression` | None | The compression type for any storage format that allows compressions. |
 | `field_delimeter` | None | Specify the custom field delimiter to use when the format is set to `TEXTFIRE`. |
 | `table_properties` | N/A | The table properties to add to the table. This is only for Iceberg. |
 | `native_drop` | N/A | Relation drop operations will be performed with SQL, not direct Glue API calls. No S3 calls will be made to manage data in S3. Data in S3 will only be cleared up for Iceberg tables. See the [AWS docs](https://docs.aws.amazon.com/athena/latest/ug/querying-iceberg-managing-tables.html) for more info. Iceberg DROP TABLE operations may timeout if they take longer than 60 seconds.|
@@ -31,7 +31,9 @@ id: "athena-configs"
 
 #### Configuration examples
 
-Example of the models `schema.yml` file:
+<Tabs>
+
+<TabItem value="schema.yml">
 
 <File name="models/schema.yml">
 
@@ -62,7 +64,9 @@ Example of the models `schema.yml` file:
 ```
 </File>
 
-Example of the `dbt_project.yml`
+</TabItem>
+
+<TabItem value="dbt_project.yml" >
 
 <File name='dbt_project.yml' >
 
@@ -80,7 +84,9 @@ Example of the `dbt_project.yml`
 
 </File>
 
-Lake Formation grants: 
+</TabItem>
+
+<TabItem value="Lake formation grants" >
 
 ```python
 lf_grants={
@@ -95,6 +101,10 @@ lf_grants={
         }
     }
 ```
+
+</TabItem>
+
+</Tabs>
 
 There are some limitations and recommendations that should be considered: 
 
@@ -122,7 +132,7 @@ The following options are available for `s3_data_naming`:
 - `schema_table`: `{s3_data_dir}/{schema}/{table}/`
 - `s3_data_naming=schema_table_unique`: `{s3_data_dir}/{schema}/{table}/{uuid4()}/`
 
-It's possible to set the `s3_data_naming` globally in the target profile, overwrite the value in the table config, or set up the value for groups of the models in dbt_project.yml.
+To set the `s3_data_naming` globally in the target profile, overwrite the value in the table config, or set up the value for groups of the models in dbt_project.yml.
 
 Note: If you're using a workgroup with a default output location configured, `s3_data_naming` ignores any configured buckets and uses the location configured in the workgroup.
 
@@ -130,9 +140,10 @@ Note: If you're using a workgroup with a default output location configured, `s3
 
 The following [incremental models](https://docs.getdbt.com/docs/build/incremental-models) strategies are supported:
 
-- `insert_overwrite` (default): The insert overwrite strategy deletes the overlapping partitions from the destination table, and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! If no partitions are defined, dbt will fall back to the `append` strategy.
-- `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (e.g. great for log or historical data).
-- `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`.Only available when using Iceberg.
+- `insert_overwrite` (default): The insert-overwrite strategy deletes the overlapping partitions from the destination table and then inserts the new records from the source. This strategy depends on the `partitioned_by` keyword! dbt will fall back to the `append` strategy if no partitions are defined.
+- `append`: Insert new records without updating, deleting or overwriting any existing data. There might be duplicate data (great for log or historical data).
+- `merge`: Conditionally updates, deletes, or inserts rows into an Iceberg table. Used in combination with `unique_key`.It is only available when using Iceberg.
+
 
 ### On schema change
 
