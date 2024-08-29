@@ -318,7 +318,7 @@ select 'b'        as user_id,
 
 ### Update glue data catalog
 
-Persist resource descriptions as column and relation comments to the glue data catalog, and meta as [glue table properties](https://docs.aws.amazon.com/glue/latest/dg/tables-described.html#table-properties) and [column parameters](https://docs.aws.amazon.com/glue/latest/webapi/API_Column.html). By default, documentation persistence is disabled, but it can be enabled for specific resources or groups of resources as needed.
+You can persist your column and model level descriptions to the Glue Data Catalog as [glue table properties](https://docs.aws.amazon.com/glue/latest/dg/tables-described.html#table-properties) and [column parameters](https://docs.aws.amazon.com/glue/latest/webapi/API_Column.html). To enable this, set the configuration to `true` as shown in the following examples. By default, documentation persistence is disabled, but it can be enabled for specific resources or groups of resources as needed.
 
 
 For example:
