@@ -400,15 +400,13 @@ The adapter supports Python models using [`spark`](https://docs.aws.amazon.com/a
 
 ### Spark-specific table configuration
 
-- `timeout` (`default=43200`)
-  - Time out in seconds for each Python model execution. Defaults to 12 hours/43200 seconds.
-- `spark_encryption` (`default=false`)
-  - If this flag is set to true, encrypts data in transit between Spark nodes and also encrypts data at rest stored locally by Spark.
-- `spark_cross_account_catalog` (`default=false`)
-  - When using the Spark Athena workgroup, queries can only be made against catalogs located on the same AWS account by default. However, sometimes you want to query another catalog located on an external AWS account. Setting this additional Spark properties parameter to true will enable querying external catalogs. You can use the syntax `external_catalog_id/database.table` to access the external table on the external catalog (For example, `999999999999/mydatabase.cloudfront_logs` where 999999999999 is the external catalog ID)
-- `spark_requester_pays` (`default=false`)
-  - When an Amazon S3 bucket is configured as requester pays, the account of the user running the query is charged for data access and data transfer fees associated with the query.
-  - If this flag is set to true, requester pays S3 buckets are enabled in Athena for Spark.
+| Configuration | Default |  Description |
+|---------------|---------|--------------|
+| `timeout`     | 43200   | Time out in seconds for each Python model execution. Defaults to 12 hours/43200 seconds. |
+| `spark_encryption` | False | When set to `true,` it encrypts data stored locally by Spark and in transit between Spark nodes. |
+| `spark_cross_account_catalog` | False | When using the Spark Athena workgroup, queries can only be made against catalogs on the same AWS account by default. Setting this parameter to true will enable querying external catalogs if you want to query another catalog on an external AWS account. <br></br> Use the syntax `external_catalog_id/database.table` to access the external table on the external catalog (For example, `999999999999/mydatabase.cloudfront_logs` where 999999999999 is the external catalog ID).|
+| `spark_requester_pays` | False | When set to true, if an Amazon S3 bucket is configured as `requester pays`, the user account running the query is charged for data access and data transfer fees associated with the query. | 
+
 
 ### Spark notes
 
