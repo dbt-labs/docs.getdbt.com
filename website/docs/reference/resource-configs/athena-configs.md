@@ -221,7 +221,7 @@ select 'A' as user_id,
        current_date as my_date
 ```
 
-`update_condition` example:
+Example of `update_condition`:
 
 ```sql
 {{ config(
@@ -274,9 +274,9 @@ select * from (
 
 ```
 
-### High availablity table (HA)
+### High availability (HA) table
 
-The current implementation of table materialization can lead to downtime, as the target table is dropped and re-created. To have less destructive behavior, it's possible to use the `ha` config on your `table` materialized models. It leverages the table versions feature of the glue catalog, creating a temp table and swapping the target table to the location of the temp table. This materialization is only available for `table_type=hive` and requires using unique locations. For Iceberg, high availability is the default.
+The current implementation of table materialization can lead to downtime, as the target table is dropped and re-created. For less destructive behavior, you can use the `ha` config on your `table` materialized models. It leverages the table versions feature of the glue catalog, which creates a temporary table and swaps the target table to the location of the temporary table. This materialization is only available for `table_type=hive` and requires using unique locations. For Iceberg, high availability is the default.
 
 
 ```sql
@@ -289,7 +289,7 @@ The current implementation of table materialization can lead to downtime, as the
     s3_data_naming='table_unique'
 ) }}
 
-select 'a'      as user_id,
+select 'a' as user_id,
        'pi'     as user_name,
        'active' as status
 union all
