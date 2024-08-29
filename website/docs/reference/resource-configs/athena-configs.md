@@ -108,7 +108,7 @@ There are some limitations and recommendations that should be considered:
 
 ### Table location
 
-The saved location of a table is determined by the following conditions:
+The saved location of a table is determined in precedence by the following conditions:
 
 1. If `external_location` is defined, that value is used.
 2. If `s3_data_dir` is defined, the path is determined by that and `s3_data_naming`.
