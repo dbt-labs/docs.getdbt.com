@@ -5,6 +5,46 @@ pagination_next: null
 pagination_prev: null
 ---
 
+:::note
+
+Some **content** with _Markdown_ `syntax`. Check [this api](#).
+
+ >After creating (or updating) a workspace, wait until it’s available for using or creating clusters. The workspace status stays at status RUNNING and the VPC change happens immediately. However, you cannot use or create clusters for another 20 minutes. If you create or use clusters before this time interval elapses, clusters do not launch successfully, fail, or could cause other unexpected behavior.
+
+:::
+
+:::tip
+
+Some **content** with _Markdown_ `syntax`. Check [this api](#).
+
+ >After creating (or updating) a workspace, wait until it’s available for using or creating clusters. The workspace status stays at status RUNNING and the VPC change happens immediately. However, you cannot use or create clusters for another 20 minutes. If you create or use clusters before this time interval elapses, clusters do not launch successfully, fail, or could cause other unexpected behavior.
+
+:::
+
+:::info
+
+Some **content** with _Markdown_ `syntax`. Check [this api](#).
+
+ >After creating (or updating) a workspace, wait until it’s available for using or creating clusters. The workspace status stays at status RUNNING and the VPC change happens immediately. However, you cannot use or create clusters for another 20 minutes. If you create or use clusters before this time interval elapses, clusters do not launch successfully, fail, or could cause other unexpected behavior.
+
+:::
+
+:::warning
+
+Some **content** with _Markdown_ `syntax`. Check [this api](#).
+
+ >After creating (or updating) a workspace, wait until it’s available for using or creating clusters. The workspace status stays at status RUNNING and the VPC change happens immediately. However, you cannot use or create clusters for another 20 minutes. If you create or use clusters before this time interval elapses, clusters do not launch successfully, fail, or could cause other unexpected behavior.
+
+:::
+
+:::danger
+
+Some **content** with _Markdown_ `syntax`. Check [this api](#).
+
+ >After creating (or updating) a workspace, wait until it’s available for using or creating clusters. The workspace status stays at status RUNNING and the VPC change happens immediately. However, you cannot use or create clusters for another 20 minutes. If you create or use clusters before this time interval elapses, clusters do not launch successfully, fail, or could cause other unexpected behavior.
+
+:::
+
 <Snippet path="what-is-dbt-intro" />
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. This single source of truth, combined with the ability to define tests for your data, reduces errors when logic changes, and alerts you when issues arise.
