@@ -360,104 +360,12 @@ Refer to [Check strategy](/docs/build/snapshots#check-strategy) for details on h
 
 The materialization also supports invalidating hard deletes. For usage details, refer to [Hard deletes](/docs/build/snapshots#hard-deletes-opt-in). 
 
-### Working example
-
-seed file - employent_indicators_november_2022_csv_tables.csv
-
-```csv
-Series_reference,Period,Data_value,Suppressed
-MEIM.S1WA,1999.04,80267,
-MEIM.S1WA,1999.05,70803,
-MEIM.S1WA,1999.06,65792,
-MEIM.S1WA,1999.07,66194,
-MEIM.S1WA,1999.08,67259,
-MEIM.S1WA,1999.09,69691,
-MEIM.S1WA,1999.1,72475,
-MEIM.S1WA,1999.11,79263,
-MEIM.S1WA,1999.12,86540,
-MEIM.S1WA,2000.01,82552,
-MEIM.S1WA,2000.02,81709,
-MEIM.S1WA,2000.03,84126,
-MEIM.S1WA,2000.04,77089,
-MEIM.S1WA,2000.05,73811,
-MEIM.S1WA,2000.06,70070,
-MEIM.S1WA,2000.07,69873,
-MEIM.S1WA,2000.08,71468,
-MEIM.S1WA,2000.09,72462,
-MEIM.S1WA,2000.1,74897,
-```
-
-model.sql
-
-```sql
-{{ config(
-    materialized='table'
-) }}
-
-select row_number() over() as id
-       , *
-       , cast(from_unixtime(to_unixtime(now())) as timestamp(6)) as refresh_timestamp
-from {{ ref('employment_indicators_november_2022_csv_tables') }}
-```
-
-timestamp strategy - model_snapshot_1
-
-```sql
-{% snapshot model_snapshot_1 %}
-
-{{
-    config(
-      strategy='timestamp',
-      updated_at='refresh_timestamp',
-      unique_key='id'
-    )
-}}
-
-select *
-from {{ ref('model') }} {% endsnapshot %}
-```
-
-invalidate hard deletes - model_snapshot_2
-
-```sql
-{% snapshot model_snapshot_2 %}
-
-{{
-    config
-    (
-        unique_key='id',
-        strategy='timestamp',
-        updated_at='refresh_timestamp',
-        invalidate_hard_deletes=True,
-    )
-}}
-select *
-from {{ ref('model') }} {% endsnapshot %}
-```
-
-check strategy - model_snapshot_3
-
-```sql
-{% snapshot model_snapshot_3 %}
-
-{{
-    config
-    (
-        unique_key='id',
-        strategy='check',
-        check_cols=['series_reference','data_value']
-    )
-}}
-select *
-from {{ ref('model') }} {% endsnapshot %}
-```
-
 ### Snapshots known issues
 
-- Incremental Iceberg models - Sync all columns on schema change can't remove columns used for partitioning. The only way, from a dbt perspective, is to do a full-refresh of the incremental model.
+- Incremental Iceberg models - Sync all columns on schema change. Columns used for partitioning can't be removed. From a dbt perspective, the only way is to fully refresh the incremental model.
 - Tables, schemas and database names should only be lowercase
-- In order to avoid potential conflicts, make sure [`dbt-athena-adapter`](https://github.com/Tomme/dbt-athena) is not installed in the target environment.
-- Snapshot does not support dropping columns from the source table. If you drop a column make sure to drop the column from the snapshot as well. Another workaround is to NULL the column in the snapshot definition to preserve history
+- To avoid potential conflicts, make sure [`dbt-athena-adapter`](https://github.com/Tomme/dbt-athena) is not installed in the target environment.
+- Snapshot does not support dropping columns from the source table. If you drop a column, make sure to drop the column from the snapshot as well. Another workaround is to NULL the column in the snapshot definition to preserve the history.
 
 ## AWS Lake Formation integration
 
@@ -466,8 +374,8 @@ The following describes how the adapter implements the AWS Lake Formation tag ma
 - [Enable](#table-configuration) LF tags management with the `lf_tags_config` parameter. By default, it's disabled. 
 - Once enabled, LF tags are updated on every dbt run.
 - First, all lf-tags for columns are removed to avoid inheritance issues.
-- Then, all redundant lf-tags are removed from tables and actual tags from table configs are applied
-- Finally, lf-tags for columns are applied
+- Then, all redundant lf-tags are removed from tables and actual tags from table configs are applied.
+- Finally, lf-tags for columns are applied.
 
 It's important to understand the following points:
 
@@ -485,10 +393,10 @@ The adapter supports Python models using [`spark`](https://docs.aws.amazon.com/a
 
 ### Setup
 
-- A Spark-enabled workgroup created in Athena
-- Spark execution role granted access to Athena, Glue and S3
+- A Spark-enabled workgroup created in Athena.
+- Spark execution role granted access to Athena, Glue and S3.
 - The Spark workgroup is added to the `~/.dbt/profiles.yml` file and the profile to be used
-  is referenced in `dbt_project.yml`
+  is referenced in `dbt_project.yml`.
 
 ### Spark-specific table configuration
 
@@ -505,13 +413,15 @@ The adapter supports Python models using [`spark`](https://docs.aws.amazon.com/a
 ### Spark notes
 
 - A session is created for each unique engine configuration defined in the models that are part of the invocation.
-- A session's idle timeout is set to 10 minutes. Within the timeout period, if there is a new calculation (Spark Python model) ready for execution and the engine configuration matches, the process will reuse the same session.
-- The number of Python models running at a time depends on the `threads`. The number of sessions created for the entire run depends on the number of unique engine configurations and the availability of sessions to maintain thread concurrency.
-- For Iceberg tables, it's recommended to use the `table_properties` configuration to set the `format_version` to `2`. This helps maintain compatibility between Iceberg tables created by Trino with those created by Spark.
+A session's idle timeout is set to 10 minutes. Within the timeout period, if a new calculation (Spark Python model) is ready for execution and the engine configuration matches, the process will reuse the same session.
+- The number of Python models running simultaneously depends on the `threads`. The number of sessions created for the entire run depends on the number of unique engine configurations and the availability of sessions to maintain thread concurrency.
+- For Iceberg tables, it's recommended to use the `table_properties` configuration to set the `format_version` to `2`. This helps maintain compatibility between the Iceberg tables Trino created and those Spark created.
 
 ### Example models
 
-#### Simple pandas model
+<Tabs>
+
+<TabItem value="Simple pandas">
 
 ```python
 import pandas as pd
@@ -525,7 +435,9 @@ def model(dbt, session):
     return model_df
 ```
 
-#### Simple spark
+</TabItem>
+
+<TabItem value="Simple Spark" >
 
 ```python
 def model(dbt, spark_session):
@@ -537,8 +449,9 @@ def model(dbt, spark_session):
 
     return df
 ```
+</TabItem>
 
-#### Spark incremental
+<TabItem value="Spark incremental" >
 
 ```python
 def model(dbt, spark_session):
@@ -554,7 +467,9 @@ def model(dbt, spark_session):
     return df
 ```
 
-#### Config spark model
+</TabItem>
+
+<TabItem value="Config Spark model">
 
 ```python
 def model(dbt, spark_session):
@@ -579,7 +494,11 @@ def model(dbt, spark_session):
     return df
 ```
 
-#### Create pySpark udf using imported external python files
+</TabItem>
+
+<TabItem value="PySpark UDF" >
+
+Using imported external python files:
 
 ```python
 def model(dbt, spark_session):
@@ -609,6 +528,10 @@ def model(dbt, spark_session):
     return df.withColumn("udf_test_col", udf_with_import(col("alpha")))
 ```
 
+</TabItem>
+
+</Tabs>
+
 ### Known issues in Python models
 
 - Python models can't [reference Athena SQL views](https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html).
@@ -626,6 +549,6 @@ def model(dbt, spark_session):
 
 The adapter partly supports contract definitions:
 
-- `data_type` is supported but needs to be adjusted for complex types. Types must be specified entirely (for instance `array<int>`) even though they won't be checked. Indeed, as dbt recommends, we only compare the broader type (array, map, int, varchar). The complete definition is used in order to check that the data types defined in Athena are ok (pre-flight check).
-- The adapter does not support the constraints since there is no constraint concept in Athena.
+- `data_type` is supported but needs to be adjusted for complex types. Types must be specified entirely (for example, `array<int>`) even though they won't be checked. Indeed, as dbt recommends, we only compare the broader type (array, map, int, varchar). The complete definition is used to check that the data types defined in Athena are ok (pre-flight check).
+- The adapter does not support the constraints since Athena has no constraint concept.
 
