@@ -14,9 +14,9 @@ Entities can be specified with a single column or multiple columns. Entities (jo
 
 There are four entity types: 
 - [Primary](#primary) &mdash; Has only one record for each row in the table and includes every record in the data platform. This key uniquely identifies each record in the table.
-- [Foreign](#foreign) &mdash; Contains only one record per row in the table but may have a subset of records in the data warehouse. This key links to a primary key in another table, establishing relationships between tables.
-- [Unique](#unique) &mdash; A field (or a set of fields) in one table that uniquely identifies a row in another table. Ensures that no two rows have the same value in the specified column(s), maintaining data integrity.
-- [Natural](#natural) &mdash; Columns or combinations of columns in a table that uniquely identify a record based on real-world data. This key is derived from actual data attributes rather than artificially generated identifiers.
+- [Unique](#unique) &mdash;  Contains only one record per row in the table but may have a subset of records in the data warehouse. 
+- [Foreign](#foreign) &mdash; A field (or a set of fields) in one table that uniquely identifies a row in another table. This key links to a primary key in another table, establishing relationships between tables.
+- [Natural](#natural) &mdash; Columns or combinations of columns in a table that uniquely identify a record based on real-world data. This key is derived from actual data attributes.
 
 :::tip Use entities as dimensions
 You can also use entities as dimensions, which allows you to aggregate a metric to the granularity of that entity.
