@@ -147,21 +147,20 @@ The following [incremental models](https://docs.getdbt.com/docs/build/incrementa
 
 ### On schema change
 
-`on_schema_change` is an option to reflect changes of schema in incremental models.
-The following options are supported:
+The `on_schema_change` option reflects changes of the schema in incremental models. The values you can set this to are:
 
 - `ignore` (default)
 - `fail`
 - `append_new_columns`
 - `sync_all_columns`
 
-For details, please refer to the [incremental models](https://docs.getdbt.com/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change) article.
+To learn more, refer to [What if the columns of my incremental model change](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change).
 
 ### Iceberg
 
 The adapter supports table materialization for Iceberg.
 
-Take the following model as an example:
+For example:
 
 ```sql
 {{ config(
@@ -186,9 +185,9 @@ select 'A'          as user_id,
 Iceberg supports bucketing as hidden partitions. Use the `partitioned_by` config to add specific bucketing
 conditions.
 
-Iceberg supports several table formats for data : `PARQUET`, `AVRO` and `ORC`.
+Iceberg supports these table formats for data : `PARQUET`, `AVRO` and `ORC`.
 
-It is possible to use Iceberg in an incremental fashion, specifically two strategies are supported:
+To use Iceberg incrementally, use one of the following supported strategies:
 
 - `append`: New records are appended to the table (this can lead to duplicates).
 - `merge`: Perform an update and insert (and optional delete), where new and existing records are added. It is only available with Athena engine version 3.
