@@ -35,7 +35,9 @@ The following diagram provides an illustration of the architecture:
 
 ## Access
 
-Log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. The Snowflake user must have a corresponding dbt Cloud user with a _[developer license](/docs/cloud/manage-access/seats-and-users)_. Previously, this wasn't a requirement during the feature [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). If your account is already configured, you will be prompted to [link credentials](#link-credentials) the next time you access dbt Cloud from the Snowflake app, and if you don't have dbt Cloud credentials, the integration will no longer work for your user. 
+Log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. The Snowflake user must have a corresponding dbt Cloud user with a _[developer license](/docs/cloud/manage-access/seats-and-users)_. Previously, this wasn't a requirement during the feature [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
+
+If your Snowflake Native App is already configured, you will be prompted to [link credentials](#link-credentials) the next time you access dbt Cloud from the app. This is a one-time process. If you don't have a dbt Cloud account associated with a developer license, you will be denied access to the dbt Cloud environment and will need an admin to create the account.
 
 _Users with IT or read-only licenses will be denied access to dbt Cloud via the Snowflake Native App._
 
