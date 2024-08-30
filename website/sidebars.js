@@ -577,11 +577,30 @@ const sidebarSettings = {
           label: "Quickstart with the dbt Cloud Semantic Layer",
           href: `/guides/sl-snowflake-qs`,
         },
-        "docs/use-dbt-semantic-layer/deploy-sl",
-        "docs/use-dbt-semantic-layer/setup-sl",
-        "docs/use-dbt-semantic-layer/sl-architecture",
-        "docs/use-dbt-semantic-layer/exports",
-        "docs/use-dbt-semantic-layer/sl-cache",
+        {
+          type: "category",
+          label: "Configure",
+          items: [
+            "docs/use-dbt-semantic-layer/sl-architecture", 
+            "docs/use-dbt-semantic-layer/setup-sl" 
+          ]
+        },
+        {
+          type: "category",
+          label: "Deploy metrics",
+          items: [
+            "docs/use-dbt-semantic-layer/deploy-sl", 
+            "docs/use-dbt-semantic-layer/exports", 
+            "docs/use-dbt-semantic-layer/sl-cache" 
+          ]
+        },
+        {
+          type: "category",
+          label: "Consume",
+          items: [
+            "docs/use-dbt-semantic-layer/consume-metrics",
+          ]
+        },
         "docs/use-dbt-semantic-layer/sl-faqs",
       ],
     },
