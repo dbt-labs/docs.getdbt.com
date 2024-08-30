@@ -305,7 +305,9 @@ select
 
 ### Custom constraints on models for advanced configuration of tables
 
-In dbt Cloud, you can use custom constraints on models for advanced configuration of tables. Custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a  Create Table As Select (CTAS).
+In dbt Cloud, you can use custom constraints on models for advanced configuration of tables. For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
+
+Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema)".
 
 
 Contracts and constraints support tag-based masking policies using the following syntax:
