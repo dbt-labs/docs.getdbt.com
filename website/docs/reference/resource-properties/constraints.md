@@ -327,7 +327,7 @@ config:
       data_type: int
       constraints:
         - type: custom
-        expression: "tag (my_tag = 'my_value')" #  A custom SQL expression used to enforce a specific constraint on a column.
+          expression: "tag (my_tag = 'my_value')" #  A custom SQL expression used to enforce a specific constraint on a column.
 
 ```
 
