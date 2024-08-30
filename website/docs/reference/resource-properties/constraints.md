@@ -303,6 +303,67 @@ select
 
 </File>
 
+### Custom constraints on models for advanced configuration of tables
+
+In dbt Cloud, you can use custom constraints on models for advanced configuration of tables. Custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a  Create Table As Select (CTAS).
+
+Masking policies conceal sensitive data from unauthorized access, while still allowing authorized users to retrieve the data during query execution.
+
+Contracts and constraints support tag-based masking policies using the following syntax:
+
+<File name='models/constraints_example.sql'>
+
+```shell
+
+models:
+
+- name: my_model
+config:
+contract: {enforced: true}
+materialized: table
+columns:
+    - name: id
+    data_type: int
+    constraints:
+        - type: custom
+        expression: "tag (my_tag = 'my_value')" #  A custom SQL expression used to enforce a specific constraint on a column.
+
+```
+
+</File>
+
+Using this syntax requires defining all the columns and their types as it’s the only way where to send a create or replace `<cols_info_with_masking> mytable as ...`. It’s not possible to do it with just a partial list of columns.
+
+To generate a YAML with all the columns, you could also use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
+
+Alternatively, you can add a masking policy without tags:
+
+<File name='models/constraints_example.sql'>
+
+```shell
+
+models:
+  - name: my_model
+    config:
+      contract: {enforced: true}
+      materialized: table
+    columns:
+      - name: id
+        data_type: int
+        constraints:
+          - type: custom
+            expression: "masking policy my_policy"
+
+```
+
+</File>
+
+:::info
+
+Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example for [DBX](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) for [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema).
+
+:::
+
 </div>
 
 <div warehouse="BigQuery">
