@@ -331,7 +331,7 @@ columns:
 
 </File>
 
-Using this syntax requires defining all the columns and their types as it’s the only way where to send a create or replace `<cols_info_with_masking> mytable as ...`. It’s not possible to do it with just a partial list of columns.
+Using this syntax requires configuring all the columns and their types as it’s the only way where to send a create or replace `<cols_info_with_masking> mytable as ...`. It’s not possible to do it with just a partial list of columns. This means making sure the columns and constraints fields are fully defined.
 
 To generate a YAML with all the columns, you could also use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
 
