@@ -312,7 +312,7 @@ Contracts and constraints support tag-based masking policies using the following
 
 <File name='models/constraints_example.sql'>
 
-```shell
+```yaml
 
 models:
 
