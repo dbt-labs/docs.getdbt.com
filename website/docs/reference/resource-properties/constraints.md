@@ -358,7 +358,6 @@ models:
 </File>
 
 
-Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example for [DBX](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) for [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema).
 
 :::
 
