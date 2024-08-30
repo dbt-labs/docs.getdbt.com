@@ -310,7 +310,7 @@ In dbt Cloud, you can use custom constraints on models for advanced configuratio
 Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema)".
 
 
-Contracts and constraints support tag-based masking policies using the following syntax:
+Here are a few examples of how to implement tag-based masking policies with contracts and constraints using the following syntax:
 
 <File name='models/constraints_example.sql'>
 
