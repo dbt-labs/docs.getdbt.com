@@ -34,7 +34,7 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Deploy dbt Semantic Layer"
+    title="Deploy metrics"
     body="Deploy the dbt Semantic Layer by running a job to materialize your metrics."
     link="/docs/use-dbt-semantic-layer/deploy-sl"
     icon="dbt-bit"/>
