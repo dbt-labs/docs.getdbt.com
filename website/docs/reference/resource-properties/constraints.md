@@ -321,7 +321,7 @@ models:
 - name: my_model
 config:
     contract: {enforced: true}
-materialized: table
+    materialized: table
 columns:
     - name: id
     data_type: int
