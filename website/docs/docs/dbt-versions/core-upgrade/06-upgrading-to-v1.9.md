@@ -9,7 +9,7 @@ displayed_sidebar: "docs"
 
 - Changelog (coming soon)
 - [dbt Core CLI Installation guide](/docs/core/installation-overview)
-- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud) &mdash; dbt Cloud is now versionless. dbt v1.9 will not appear in the version dropdown. Select "Keep on latest version" to get all the latest features and functionality in your dbt Cloud account.
+- [Cloud upgrade guide](/docs/dbt-versions/upgrade-dbt-version-in-cloud) &mdash; dbt Cloud is now versionless. dbt v1.9 will not appear in the version dropdown. Select **Versionless** to get all the latest features and functionality in your dbt Cloud account.
 
 ## What to know before upgrading
 

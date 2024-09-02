@@ -53,7 +53,7 @@ To use the dbt API to trigger a job in dbt Cloud through ADF:
 2. You'll want to create a pipeline in ADF to trigger a dbt Cloud job.
 3. Securely fetch the dbt Cloud service token from a key vault in ADF, using a web call as the first step in the pipeline.
 4. Set the parameters in the pipeline, including the dbt Cloud account ID and  job ID, as well as the name of the key vault and secret that contains the service token. 
-    * You can find the dbt Cloud job and account id in the URL, for example, if your URL is `https://cloud.getdbt.com/deploy/88888/projects/678910/jobs/123456`, the account ID is 88888 and the job ID is 123456
+    * You can find the dbt Cloud job and account id in the URL, for example, if your URL is `https://YOUR_ACCESS_URL/deploy/88888/projects/678910/jobs/123456`, the account ID is 88888 and the job ID is 123456
 5. Trigger the pipeline in ADF to start the dbt Cloud job and monitor the status of the dbt Cloud job in ADF.
 6. In dbt Cloud, you can check the status of the job and how it was triggered in dbt Cloud.
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react"
 import { versions } from '../../dbt-versions'
+import sanitizeHtml from "sanitize-html";
 
 const lastReleasedVersion = versions && versions.find(ver => ver.version && ver.version != "" && !ver.isPrerelease);
 
@@ -19,7 +20,10 @@ export const VersionContextProvider = ({ value = "", children }) => {
     const storageVersion = window.localStorage.getItem('dbtVersion')
     const { search } = window.location
     const urlParams = new URLSearchParams(search);
-    const versionParam = urlParams.get('version')
+    const originalVersionParam = urlParams.get('version')
+
+    // Sanitize version param
+    const versionParam = sanitizeHtml(originalVersionParam);
 
     if(versionParam && versions.find(ver => ver?.version && ver.version === versionParam)) {
       {/* 
@@ -46,10 +50,10 @@ export const VersionContextProvider = ({ value = "", children }) => {
   const updateVersion = (e) => {
     if(!e.target)
       return
-      
-    const vRegex = /(?:v)?(\d+(\.\d+)*)/ // Regex that will parse out the version number, even if there is/isn't a 'v' in front of version number and a '(Beta)' afterwards.
-    const versionValue = e.target.text.match(vRegex)[1]
 
+    // Get selected version value from `dbt-version` data attribute
+    const versionValue = e.target?.dataset?.dbtVersion
+    
     versionValue &&
       setVersion(versionValue)
       window.localStorage.setItem('dbtVersion', versionValue)
@@ -62,9 +66,11 @@ export const VersionContextProvider = ({ value = "", children }) => {
 
   // Determine isPrerelease status + End of Life date for current version
   const currentVersion = versions.find(ver => ver.version === version)
-  if(currentVersion)
+  if(currentVersion) {
     context.EOLDate = currentVersion.EOLDate
     context.isPrerelease = currentVersion?.isPrerelease
+    context.customDisplay = currentVersion?.customDisplay;
+  }
   
   // Get latest stable release
   const latestStableRelease = versions.find(ver => !ver?.isPrerelease)

@@ -67,7 +67,7 @@ To connect to Teradata Vantage from dbt, you'll need to add a [profile](https://
       password: <password>
       schema: <database-name>
       tmode: ANSI
-      threads: 1
+      threads: [optional, 1 or more]
       #optional fields
       <field-name: <field-value>
 ```
@@ -198,12 +198,12 @@ For using cross-DB macros, teradata-utils as a macro namespace will not be used,
 
 #### examples for cross DB macros
   ##### <a name="replace"></a>replace
-  {{ dbt.replace("string_text_column", "old_chars", "new_chars") }}
-  {{ replace('abcgef', 'g', 'd') }}
+  \{\{ dbt.replace("string_text_column", "old_chars", "new_chars") \}\}
+  \{\{ replace('abcgef', 'g', 'd') \}\}
 
   ##### <a name="date_trunc"></a>date_trunc
-  {{ dbt.date_trunc("date_part", "date") }}
-  {{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") }}
+  \{\{ dbt.date_trunc("date_part", "date") \}\}
+  \{\{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") \}\}
 
   ##### <a name="datediff"></a>datediff
   `datediff` macro in teradata supports difference between dates. Differece between timestamps is not supported.

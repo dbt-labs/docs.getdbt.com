@@ -83,7 +83,7 @@ my-starrocks-db:
 
 ## Supported features
 
-| Starrocks <= 2.5 | Starrocks 2.5 ~ 3.1  | Starrocks >= 3.1  |              Feature              |
+| Starrocks &lt;= 2.5 | Starrocks 2.5 ~ 3.1  | Starrocks &gt;= 3.1  |              Feature              |
 |:----------------:|:--------------------:|:-----------------:|:---------------------------------:|
 |        ✅         |          ✅           |         ✅         |       Table materialization       |
 |        ✅         |          ✅           |         ✅         |       View materialization        |

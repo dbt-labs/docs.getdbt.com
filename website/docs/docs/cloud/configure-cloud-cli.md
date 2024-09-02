@@ -40,6 +40,13 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 2. Save the `dbt_cloud.yml` file in the `.dbt` directory, which stores your dbt Cloud CLI configuration. Store it in a safe place as it contains API keys. Check out the [FAQs](#faqs) to learn how to create a `.dbt` directory and move the `dbt_cloud.yml` file.
    
+    - North America: https://YOUR_ACCESS_URL/cloud-cli
+    - EMEA: https://emea.dbt.com/cloud-cli
+    - APAC: https://au.dbt.com/cloud-cli
+    - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
+    - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
+  
+3. Follow the banner instructions and download the config file to:
    - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
    - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
 
@@ -79,7 +86,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
         project-id: PROJECT_ID
     ```
 
-   - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://cloud.getdbt.com/develop/26228/projects/123456`, the project ID is `123456`.
+   - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://YOUR_ACCESS_URL/develop/26228/projects/123456`, the project ID is `123456`.
 
 5. You should now be able to [use the dbt Cloud CLI](#use-the-dbt-cloud-cli) and run [dbt commands](/reference/dbt-commands) like [`dbt environment show`](/reference/commands/dbt-environment) to view your dbt Cloud configuration details or `dbt compile` to compile models in your dbt project.
 
@@ -180,5 +187,12 @@ move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
 </Tabs>
 
 This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
+
+</Expandable>
+
+<Expandable alt_header="How to skip artifacts from being downloaded">
+
+By default, [all artifacts](/reference/artifacts/dbt-artifacts) are downloaded when you execute dbt commands from the dbt Cloud CLI. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json). 
+
 
 </Expandable>

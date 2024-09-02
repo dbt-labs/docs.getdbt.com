@@ -35,18 +35,12 @@ In both cases, `test_type` checks a property of the test itself. These are forms
 
 ### Indirect selection
 
-<VersionBlock firstVersion="1.5" >
-
 <IndirSelect features={'/snippets/indirect-selection-definitions.md'}/>
-
-</VersionBlock>
 
 <!--tabs for eager mode, cautious mode, empty, and buildable mode -->
 <!--Tabs for 1.5+ -->
 
 ### Indirect selection examples
-
-<VersionBlock firstVersion="1.5">
 
 To visualize these methods, suppose you have `model_a`, `model_b`, and `model_c` and associated data tests. The following illustrates which tests will be run when you execute `dbt build` with the various indirect selection modes:
 
@@ -114,8 +108,6 @@ dbt build --select "orders" --indirect-selection=empty
 </TabItem>
 
 </Tabs>
-
-</VersionBlock>
 
 <!--End of tabs for eager mode, cautious mode, buildable mode, and empty mode -->
 

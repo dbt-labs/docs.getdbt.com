@@ -2,6 +2,7 @@
 title: "Write queries with exports"
 description: "Use exports to write tables to the data platform on a schedule."
 sidebar_label: "Write queries with exports"
+keywords: [DBT_INCLUDE_SAVED_QUERY, exports, DBT_EXPORTS_SAVED_QUERY, dbt Cloud, Semantic Layer]
 ---
 
 Exports enhance [saved queries](/docs/build/saved-queries) by running your saved queries and writing the output to a table or view within your data platform. Saved queries are a way to save and reuse commonly used queries in MetricFlow, exports take this functionality a step further by:
@@ -53,7 +54,7 @@ Before you're able to run exports in development or production, you'll need to m
 
 There are two ways to run an export:
   
-- [Run exports in development](#exports-in-development) using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to test the output before production (dbt Cloud IDE isn't supported yet).
+- [Run exports in development](#exports-in-development) using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to test the output before production (You can configure exports in the dbt Cloud IDE, however running them directly in the IDE isn't supported yet).
 - [Run exports in production](#exports-in-production) using the [dbt Cloud job scheduler](/docs/deploy/job-scheduler) to write these queries within your data platform.
 
 ## Exports in development
@@ -175,12 +176,13 @@ If exports aren't needed, you can set the value(s) to `FALSE` (`DBT_INCLUDE_SAVE
 
 </VersionBlock>
 
-<!-- for keep on latest version -->
+<!-- for Versionless -->
 <VersionBlock firstVersion="1.8">
 
 1. Click **Deploy** in the top navigation bar and choose **Environments**.
 2. Select **Environment variables**.
 3. [Set the environment variable](/docs/build/environment-variables#setting-and-overriding-environment-variables) key to `DBT_EXPORT_SAVED_QUERIES` and the environment variable's value to `TRUE` (`DBT_EXPORT_SAVED_QUERIES=TRUE`).
+*Note, if you're on dbt v1.7, set the environment variable key to `DBT_INCLUDE_SAVED_QUERY`. Use the documentation toggle to select version "1.7" to view more details.
 
 Doing this ensures saved queries and exports are included in your dbt build job. For example, running `dbt build sq_name` runs the equivalent of `dbt sl export --saved-query sq_name` in the dbt Cloud Job scheduler.
 
@@ -221,43 +223,43 @@ When you run a build job, any saved queries downstream of the dbt models in that
 
 ## FAQs
 
-<detailsToggle alt_header="Can I have multiple exports in a single saved query?">
+<DetailsToggle alt_header="Can I have multiple exports in a single saved query?">
 
 Yes, this is possible. However, the difference would be the name, schema, and materialization strategy of the export.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How do I run all exports for a saved query?">
+<DetailsToggle alt_header="How do I run all exports for a saved query?">
 
 - In production runs, you can build the saved query by calling it directly in the build command, or you build a model and any exports downstream of that model.
 - In development, you can run all exports by running `dbt sl export --saved-query sq_name`.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Will I run duplicate exports if multiple models are downstream of my saved query?">
+<DetailsToggle alt_header="Will I run duplicate exports if multiple models are downstream of my saved query?">
 
 dbt will only run each export once even if it builds multiple models that are downstream of the saved query. For example, you could have a saved query called `order_metrics`, which has metrics from both the `orders` and `order_items` semantic models.
 
 You can run a job that includes both models using `dbt build`. This runs both the `orders` and `order_items` models, however, it will only run the `order_metrics` export once.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="Can I reference an export as a dbt model using ref()">
+<DetailsToggle alt_header="Can I reference an export as a dbt model using ref()">
 
 No, you won't be able to reference an export using `ref`. Exports are treated as leaf nodes in your DAG. Modifying an export could lead to inconsistencies with the original metrics from the Semantic Layer.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How do exports help me use the dbt Semantic Layer in tools that don't support it, such as PowerBI?">
+<DetailsToggle alt_header="How do exports help me use the dbt Semantic Layer in tools that don't support it, such as PowerBI?">
 
 Exports provide an integration path for tools that don't natively connect with the dbt Semantic Layer by exposing tables of metrics and dimensions in the data platform.
 
 You can use exports to create a custom integration with tools such as PowerBI, and more.
 
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How can I select saved_queries by their resource type?">
+<DetailsToggle alt_header="How can I select saved_queries by their resource type?">
 
 To include all saved queries in the dbt build run, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
 
-</detailsToggle>
+</DetailsToggle>
 
 ## Related docs
 - [Validate semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci)
