@@ -12,4 +12,4 @@ pagination_prev: null
 
 [**Model versions**](model-versions): When a breaking change is unavoidable, provide a smoother upgrade pathway by creating a new version of the model. These model versions share a common reference name and can reuse properties & configurations.
 
-[**Project dependencies**](project-dependencies): Use cross project dependencies to reference public models across dbt projects using the [two-argument ref](/reference/dbt-jinja-functions/ref#ref-project-specific-models), which includes the project name.
+[**Project dependencies**](/docs/collaborate/govern/project-dependencies): Use cross project dependencies to reference public models across dbt projects using the [two-argument ref](/reference/dbt-jinja-functions/ref#ref-project-specific-models), which includes the project name.
