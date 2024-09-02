@@ -19,7 +19,8 @@ Previously, you were required to create a model called `metricflow_time_spine` i
 
 <Lightbox src="/img/time_spines.png" title="Time spine directory structure" />
 
-
+<File name="models/_models.yml">
+  
 ```yaml
 models:
   - name: time_spine_hourly
@@ -35,6 +36,7 @@ models:
       - name: date_day
         granularity: day # set granularity at column-level for standard_granularity_column
 ```
+</File>
 
 Now, break down the configuration above. It's pointing to a model called `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. The `standard_granularity_column` is the lowest grain of the table, in this case, it's hourly. It needs to reference a column defined under the columns key, in this case, `date_hour`. Use the `standard_granularity_column` as the join key for the time spine table when joining tables in MetricFlow. Here, the granularity of the `standard_granularity_column` is set at the column level, in this case, `hour`.
 
@@ -83,6 +85,8 @@ and date_hour < dateadd(day, 30, current_timestamp())
 
 <VersionBlock firstVersion="1.7">
 
+<File name="metricflow_time_spine.sql">
+
 ```sql
 {{
     config(
@@ -111,6 +115,7 @@ select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
+</File>
 
 </VersionBlock>
 
@@ -118,8 +123,9 @@ and date_hour < dateadd(day, 30, current_timestamp())
 
 <VersionBlock lastVersion="1.6">
 
+<File name="metricflow_time_spine.sql">
+  
 ```sql
--- filename: metricflow_time_spine.sql
 -- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
 {{config(materialized='table')}}
 with days as (
@@ -142,13 +148,15 @@ from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
+</File>
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.7">
 
+<File name="metricflow_time_spine.sql">
+  
 ```sql
--- filename: metricflow_time_spine.sql
 -- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
 {{config(materialized='table')}}
 with days as (
@@ -171,6 +179,7 @@ from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
+</File>
 
 </VersionBlock>
 
@@ -178,7 +187,6 @@ and date_hour < dateadd(day, 30, current_timestamp())
 <File name='time_spine_hourly.sql'>
 
 ```sql
--- filename: metricflow_time_spine_hour.sql
 {{
     config(
         materialized = 'table',
