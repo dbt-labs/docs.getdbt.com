@@ -47,9 +47,9 @@ The example creates a time spine at a daily grain and an hourly grain. A few thi
 * You can add a time spine for each granularity you intend to use if query efficiency is more important to you than configuration time, or storage constraints. For most engines, the query performance difference should be minimal and transforming your time spine to a coarser grain at query time shouldn't add significant overhead to your queries.
 * We recommend having a time spine at the finest grain used in any of your dimensions to avoid unexpected errors. i.e., if you have dimensions at an hourly grain, you should have a time spine at an hourly grain.
 
-<File name='time_spine_daily.sql'>
-
 <VersionBlock lastVersion="1.6">
+
+<File name='time_spine_daily.sql'>
 
 ```sql
 {{
@@ -80,6 +80,7 @@ select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
+</File
 
 </VersionBlock>
 
