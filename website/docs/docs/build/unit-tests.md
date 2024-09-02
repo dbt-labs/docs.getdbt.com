@@ -22,7 +22,8 @@ With dbt Core v1.8 and dbt Cloud environments that have gone versionless by sele
 
 - We currently only support unit testing SQL models.
 - We currently only support adding unit tests to models in your _current_ project.
-- We currently *don't* support unit testing models that use recursive SQL.
+- We currently _don't_ support unit testing models that use the [`materialized view`](/docs/build/materializations#materialized-view) materialization.
+- We currently _don't_ support unit testing models that use recursive SQL.
 - You must specify all fields in a BigQuery STRUCT in a unit test. You cannot use only a subset of fields in a STRUCT.
 - If your model has multiple versions, by default the unit test will run on *all* versions of your model. Read [unit testing versioned models](/reference/resource-properties/unit-testing-versions) for more information.
 - Unit tests must be defined in a YML file in your `models/` directory.
