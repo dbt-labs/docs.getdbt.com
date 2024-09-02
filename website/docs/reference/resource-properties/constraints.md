@@ -529,7 +529,7 @@ Here's an example of how to implement tag-based masking policies with contracts 
 
 <File name='models/constraints_example.sql'>
 
-```shell
+```yaml
 
 models:
 
