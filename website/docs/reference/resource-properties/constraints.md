@@ -556,7 +556,7 @@ Alternatively, you can add a masking policy without tags:
 
 <File name='models/constraints_example.sql'>
  
-```shell
+```yaml
 
 models:
   - name: my_model
