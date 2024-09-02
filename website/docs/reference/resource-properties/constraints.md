@@ -303,65 +303,6 @@ select
 
 </File>
 
-### Custom constraints on models for advanced configuration of tables
-
-In dbt Cloud, you can use custom constraints on models for advanced configuration of tables. For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
-
-Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema)".
-
-
-Here are a few examples of how to implement tag-based masking policies with contracts and constraints using the following syntax:
-
-<File name='models/constraints_example.sql'>
-
-```yaml
-
-models:
-
-- name: my_model
-config:
-    contract: {enforced: true}
-    materialized: table
-  columns:
-    - name: id
-      data_type: int
-      constraints:
-        - type: custom
-          expression: "tag (my_tag = 'my_value')" #  A custom SQL expression used to enforce a specific constraint on a column.
-
-```
-
-</File>
-
-Using this syntax requires configuring all the columns and their types as it’s the only way where to send a create or replace `<cols_info_with_masking> mytable as ...`. It’s not possible to do it with just a partial list of columns. This means making sure the columns and constraints fields are fully defined.
-
-To generate a YAML with all the columns, you could also use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
-
-Alternatively, you can add a masking policy without tags:
-
-<File name='models/constraints_example.sql'>
-
-```yaml
-
-models:
-  - name: my_model
-    config:
-      contract: {enforced: true}
-      materialized: table
-    columns:
-      - name: id
-        data_type: int
-        constraints:
-          - type: custom
-            expression: "masking policy my_policy"
-
-```
-
-</File>
-
-
-
-
 </div>
 
 <div warehouse="BigQuery">
@@ -577,3 +518,60 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 </div>
 
 </WHCode>
+
+### Custom constraints on models for advanced configuration of tables
+
+In dbt Cloud, you can use custom constraints on models for advanced configuration of tables. For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
+
+Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema)".
+
+Here's an example of how to implement tag-based masking policies with contracts and constraints using the following syntax:
+
+<File name='models/constraints_example.sql'>
+
+```shell
+
+models:
+
+- name: my_model
+config:
+    contract: {enforced: true}
+    materialized: table
+  columns:
+    - name: id
+      data_type: int
+      constraints:
+        - type: custom
+          expression: "tag (my_tag = 'my_value')" #  A custom SQL expression used to enforce a specific constraint on a column.
+
+```
+
+</File>
+
+Using this syntax requires configuring all the columns and their types as it’s the only way where to send a create or replace `<cols_info_with_masking> mytable as ...`. It’s not possible to do it with just a partial list of columns. This means making sure the columns and constraints fields are fully defined.
+
+To generate a YAML with all the columns, you could also use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
+
+Alternatively, you can add a masking policy without tags:
+
+<File name='models/constraints_example.sql'>
+ 
+```shell
+
+models:
+  - name: my_model
+    config:
+      contract: {enforced: true}
+      materialized: table
+    columns:
+      - name: id
+        data_type: int
+        constraints:
+          - type: custom
+            expression: "masking policy my_policy"
+
+```
+
+</File>
+
+
