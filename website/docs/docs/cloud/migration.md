@@ -11,7 +11,7 @@ dbt Labs is in the process of rolling out a new cell-based architecture for dbt 
 
 Migrations are being scheduled on a per-account basis. If you have yet to receive any communication (either with a banner or by email) about a migration date, you don't need to take any action at this time. dbt Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
 
-The migration process has been automated to the extent possible. However, you must take action to complete it. This document outlines the steps you must take to prevent service disruptions when your account is migrated to the cell-based architecture. 
+Your account will be automatically migrated on its scheduled date. However, if you use certain features, you must take action before that date to avoid service disruptions.
 
 ## Recommended actions
 
