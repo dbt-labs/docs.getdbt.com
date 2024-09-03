@@ -534,7 +534,7 @@ Here's an example of how to implement tag-based masking policies with contracts 
 models:
 
     - name: my_model
-config:
+    config:
     contract: {enforced: true}
     materialized: table
   columns:
