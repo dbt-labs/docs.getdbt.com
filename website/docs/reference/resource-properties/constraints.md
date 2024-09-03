@@ -535,7 +535,7 @@ models:
 
   - name: my_model
     config:
-    contract: {enforced: true}
+      contract: {enforced: true}
     materialized: table
   columns:
     - name: id
