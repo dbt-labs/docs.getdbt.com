@@ -15,9 +15,9 @@ Your account will be automatically migrated on its scheduled date. However, if y
 
 ## Recommended actions
 
-It's highly recommended you take action on the following:
+It's highly recommended you take action in the following areas:
 
-Ensure pending user invitations are accepted or note outstanding invitations. Pending user invitations will be voided during the migration and must be resent after it is complete.
+- Ensure pending user invitations are accepted or note outstanding invitations. Pending user invitations will be voided during the migration and must be resent after it is complete.
 - Commit unsaved changes in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  Unsaved changes will be lost during migration.
 - Export and download [audit logs](/docs/cloud/manage-access/audit-log) older than 90 days, as they will be lost during migration. If you lose critical logs older than 90 days during the migration, you will have to work with the dbt Labs Customer Support team to recover.
 
