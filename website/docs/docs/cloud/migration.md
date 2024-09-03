@@ -7,7 +7,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-dbt Labs is in the process of rolling out a new cell-based architecture for dbt Cloud. This architecture will be the foundation of dbt Cloud for years to come, and brings improved reliability, performance, and consistency to users of dbt Cloud.
+dbt Labs is in the process of rolling out a new cell-based architecture for dbt Cloud. This architecture provides the foundation of dbt Cloud for years to come, and brings improved reliability, performance, and consistency to users of dbt Cloud.
 
 Migrations are being scheduled on a per-account basis. If you have yet to receive any communication (either with a banner or by email) about a migration date, you don't need to take any action at this time. dbt Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
 
@@ -21,7 +21,7 @@ It's highly recommended you take action in the following areas:
 - Commit unsaved changes in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  Unsaved changes will be lost during migration.
 - Export and download [audit logs](/docs/cloud/manage-access/audit-log) older than 90 days, as they will be lost during migration. If you lose critical logs older than 90 days during the migration, you will have to work with the dbt Labs Customer Support team to recover.
 
-## Required action
+## Required actions
 
 These actions are required to prevent users from losing access dbt Cloud:
 
