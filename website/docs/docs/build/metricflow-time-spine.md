@@ -115,10 +115,13 @@ and date_hour < dateadd(day, 30, current_timestamp())
 ```
 </VersionBlock>
 
+
+Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
 <VersionBlock lastVersion="1.6">
+
+<File name="metricflow_time_spine.sql">
   
 ```sql
--- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
 {{config(materialized='table')}}
 with days as (
     {{dbt_utils.date_spine(
@@ -140,13 +143,15 @@ from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
-
+</File>
 </VersionBlock>
 
 <VersionBlock firstVersion="1.7">
-  
+
+<File name="metricflow_time_spine.sql">
+
 ```sql
--- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
+
 {{config(materialized='table')}}
 with days as (
     {{dbt.date_spine(
@@ -168,7 +173,9 @@ from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
+</File>
 </VersionBlock>
+
 </File>
 
 ## Hourly time spine
