@@ -537,7 +537,7 @@ models:
     config:
     contract: {enforced: true}
     materialized: table
-    columns:
+  columns:
     - name: id
       data_type: int
       constraints:
