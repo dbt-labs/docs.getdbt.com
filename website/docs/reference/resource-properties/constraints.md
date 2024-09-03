@@ -554,7 +554,7 @@ To generate a YAML with all the columns, you could also use `generate_model_yaml
 
 Alternatively, you can add a masking policy without tags:
 
-<File name='models/constraints_example.sql'>
+<File name='models/constraints_example.yml'>
  
 ```yaml
 
