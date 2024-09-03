@@ -9,7 +9,7 @@ pagination_prev: null
 
 dbt Labs is in the process of rolling out a new cell-based architecture for dbt Cloud. This architecture provides the foundation of dbt Cloud for years to come, and brings improved reliability, performance, and consistency to users of dbt Cloud.
 
-Migrations are being scheduled on a per-account basis. If you have yet to receive any communication (either with a banner or by email) about a migration date, you don't need to take any action at this time. dbt Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
+We're scheduling migrations by account. When we're ready to migrate your account, you will receive a banner or email communication with your migration date. If you have not received this communication, then you don't need to take action at this time. dbt Labs will share information about your migration with you, with appropriate advance notice, when applicable to your account.
 
 Your account will be automatically migrated on its scheduled date. However, if you use certain features, you must take action before that date to avoid service disruptions.
 
