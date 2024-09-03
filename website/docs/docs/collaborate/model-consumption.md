@@ -9,7 +9,7 @@ image: /img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg
 
 The model consumption tile allows you to:
 
-- View the query count for a model based on the data warehouse's query logs.
+- View the count of queries for a given model based on the data warehouse's query logs.
 - Provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products.
 - Enable analysts to find the most popular models used by other people.
 
