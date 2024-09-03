@@ -71,7 +71,7 @@ export default function DocRootLayoutMain({
     } else {
       setPreData({
         showisPrereleaseBanner: true,
-        isPrereleaseBannerText: `You are currently viewing v${dbtVersion}, which is a prerelease of dbt Core. The latest stable version is v${latestStableRelease}`,
+        isPrereleaseBannerText: `You are viewing the docs for a prerelease version of dbt Core. There may features described that are still in development, incomplete, or unstable.`,
       });
     }
     // If EOLDate not set for version, do not show banner
