@@ -91,7 +91,7 @@ To enhance your discovery, you can view your model consumption in various locati
 2. In the lower left of your lineage, click on **Lenses** and select **Usage queries**. 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-lenses.jpg" width="85%" title="View model usage query in your lineage using the 'Lenses' feature." />
 
-1. Your lineage should display a small red box above each model, indicating the usage query number for each model. The query number for each model represents the model consumption over the last 30 days.
+3. Your lineage should display a small red box above each model, indicating the usage query number for each model. The query number for each model represents the model consumption over the last 30 days.
 
 ### View from Model list
 
