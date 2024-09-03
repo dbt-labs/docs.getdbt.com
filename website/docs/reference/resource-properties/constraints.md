@@ -527,7 +527,7 @@ Each data warehouse has its own set of parameters that can be set for columns in
 
 Here's an example of how to implement tag-based masking policies with contracts and constraints using the following syntax:
 
-<File name='models/constraints_example.sql'>
+<File name='models/constraints_example.yml'>
 
 ```yaml
 
