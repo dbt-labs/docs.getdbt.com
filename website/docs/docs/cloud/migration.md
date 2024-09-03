@@ -15,7 +15,7 @@ Your account will be automatically migrated on its scheduled date. However, if y
 
 ## Recommended actions
 
-It's highly recommended you take action in the following areas:
+We highly recommended you take these actions:
 
 - Ensure pending user invitations are accepted or note outstanding invitations. Pending user invitations will be voided during the migration and must be resent after it is complete.
 - Commit unsaved changes in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  Unsaved changes will be lost during migration.
