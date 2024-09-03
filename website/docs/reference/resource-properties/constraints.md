@@ -521,7 +521,9 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ### Custom constraints on models for advanced configuration of tables
 
-In dbt Cloud, you can use custom constraints on models for advanced configuration of tables. For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
+In dbt Cloud, you can use custom constraints on models for advanced configuration of tables. Different data warehouses will support different syntax and different capabilities, but custom constraints will always allow you to add configuration to specific columns.
+
+For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
 
 Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema).
 
