@@ -36,9 +36,9 @@ These actions are required to prevent users from losing access dbt Cloud:
 
 ## Post-migration​
 
-If all items on this checklist are completed, your dbt Cloud resources and jobs will continue working without interruption.
+Complete all of these items to ensure your dbt Cloud resources and jobs will continue working without interruption.
 
-You will have two URL login options:
+Use one of these two URL login options:
 
 - `us1.dbt.com.` If you were previously logging in at `cloud.getdbt.com`, you should instead plan to log in at us1.dbt.com. The original URL will still work, but you’ll have to click through to be redirected upon login.
 - `ACCOUNT_PREFIX.us1.dbt.com`: A unique URL specifically for your account. If you belong to multiple accounts, each will have a unique URL available as long as they have been migrated to multi-cell. 
