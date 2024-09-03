@@ -9,7 +9,7 @@ image: /img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg
 
 The model query history tile allows you to:
 
-- View the query count for a model based on the data warehouse's query logs.
+- View the count of consumption queries for a model based on the data warehouse's query logs.
 - Provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products.
 - Enable analysts to find the most popular models used by other people.
 
@@ -82,21 +82,21 @@ To enhance your discovery, you can view your model query history in various loca
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg" width="70%" title="View most queried models in 'Performance' page in dbt Explorer." />
 
-4. In the model performance tab, open the **Usage** chart to see queries over time for that model.
+4. In the model performance tab, open the **Consumption** chart to see queries over time for that model.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-usage-queries.jpg" width="70%" title="View queries over time for a given model." />
 
 ### View from Project lineage
 
 1. To view your model in your project lineage, go to the main **Overview page** and click on **Project lineage.**
-2. In the lower left of your lineage, click on **Lenses** and select **Usage queries**. 
+2. In the lower left of your lineage, click on **Lenses** and select **Consumption Queries**. 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-lenses.jpg" width="85%" title="View model usage query in your lineage using the 'Lenses' feature." />
 
-3. Your lineage should display a small red box above each model, indicating the usage query number for each model. The query number for each model represents the query history over the last 30 days.
+3. Your lineage should display a small red box above each model, indicating the consumption query number for each model. The query number for each model represents the query history over the last 30 days.
 
 ### View from Model list
 
 1. To view your model in your project lineage, go to the main **Overview page**.
 2. In the left navigation, go to the **Resources** tab and click on **Models** to view the models list.
-3. You can view the usage query count for the models and sort by most or least queried. The query number for each model represents the query history over the last 30 days.
+3. You can view the consumption query count for the models and sort by most or least queried. The query number for each model represents the query history over the last 30 days.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-list.jpg" width="85%" title="View models query history in the 'Models' list page under the 'Usage' column." />
 
