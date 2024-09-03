@@ -527,6 +527,11 @@ For example, custom constraints allow you to set [masking policies](https://docs
 
 Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema).
 
+There are some different scenarios of implementing contracts and constraints:
+
+- [Tag-based masking policies](https://github.com/dbt-labs/dbt-adapters/issues/85#issuecomment-2310772737).
+- [Add a masking policy without a tag](https://github.com/dbt-labs/dbt-adapters/issues/85#issuecomment-2314547162).
+
 Here's an example of how to implement tag-based masking policies with contracts and constraints using the following syntax:
 
 <File name='models/constraints_example.yml'>
