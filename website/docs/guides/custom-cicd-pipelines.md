@@ -12,7 +12,7 @@ level: 'Intermediate'
 recently_updated: true
 search_weight: "heavy"
 keywords:
-  - bitbucket, custom pipelines, github, gitlab, azure devops, ci/cd custom pipeline
+  - bitbucket pipeline, custom pipelines, github, gitlab, azure devops, ci/cd custom pipeline
 ---
 <div style={{maxWidth: '900px'}}>
 
