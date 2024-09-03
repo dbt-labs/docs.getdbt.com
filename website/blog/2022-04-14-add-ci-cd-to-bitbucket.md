@@ -14,7 +14,7 @@ is_featured: true
 
 
 :::info Set up CI/CD with dbt Cloud
-This blog is specifically tailored for dbt Core users. If you're using dbt Cloud and your Git provider doesn't have a native dbt Cloud integration (like BitBucket) follow the [Customizing CI/CD with custom pipelines guide](/guides/custom-cicd-pipelines?step=3) to set up CI/CD.
+This blog is specifically tailored for dbt Core users. If you're using dbt Cloud and your Git provider doesn't have a native dbt Cloud integration (like BitBucket), follow the [Customizing CI/CD with custom pipelines guide](/guides/custom-cicd-pipelines?step=3) to set up CI/CD.
 :::
 
 Continuous Integration (CI) sets the system up to test everyone’s pull request before merging. Continuous Deployment (CD) deploys each approved change to production. “Slim CI” refers to running/testing only the changed code, [thereby saving compute](https://discourse.getdbt.com/t/how-we-sped-up-our-ci-runs-by-10x-using-slim-ci/2603). In summary, CI/CD automates dbt pipeline testing and deployment.
