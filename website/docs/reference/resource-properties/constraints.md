@@ -521,16 +521,16 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ### Custom constraints on models for advanced configuration of tables
 
-In dbt Cloud, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses will support different syntax and capabilities, but custom constraints will always allow you to add configuration to specific columns.
+In dbt Cloud, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. However, custom constraints allow you to add configuration to specific columns.
 
-For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
+  - For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
+  
+  - [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema) ar other examples of data warehouses having their own set of parameters that can be set for columns in their CTAS statements.
 
-[Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema) are also other examples of data warehouses having their own set of parameters that can be set for columns in their CTAS statements.
 
-There are different scenarios of implementing contracts and constraints:
+You can implement constraints in a couple of different ways:
 
-- [Tag-based masking policies](https://github.com/dbt-labs/dbt-adapters/issues/85#issuecomment-2310772737).
-- [Add a masking policy without a tag](https://github.com/dbt-labs/dbt-adapters/issues/85#issuecomment-2314547162).
+### Custom constraints with tags
 
 Here's an example of how to implement tag-based masking policies with contracts and constraints using the following syntax:
 
@@ -559,6 +559,9 @@ Using this syntax requires configuring all the columns and their types as it’s
 
 To generate a YAML with all the columns, you can use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
 
+
+### Custom constraints without tags
+
 Alternatively, you can add a masking policy without tags:
 
 <File name='models/constraints_example.yml'>
@@ -576,7 +579,7 @@ models:
         data_type: int
         constraints:
           - type: custom
-            expression: masking policy my_policy
+            expression: "masking policy my_policy"
 
 ```
 
