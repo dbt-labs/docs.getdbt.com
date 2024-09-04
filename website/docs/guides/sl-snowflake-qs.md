@@ -661,7 +661,8 @@ semantic_models:
     entities: 
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
 ```
 
@@ -686,8 +687,9 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
-        type: foreign  
+      - name: customer
+        expr: customer_id
+        type: foreign
     # Newly added
     dimensions:   
       - name: order_date
@@ -717,7 +719,8 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
     dimensions:
       - name: order_date
@@ -777,7 +780,8 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
     dimensions:
       - name: order_date
@@ -811,21 +815,24 @@ metrics:
     type: simple
     label: "order_total"
     type_params:
-      measure: order_total
+      measure:
+        name: order_total
   - name: "order_count"
     description: "number of orders"
     type: simple
     label: "order_count"
     type_params:
-      measure: order_count
+      measure:
+        name: order_count
   - name: large_orders
     description: "Count of orders with order total over 20."
     type: simple
     label: "Large Orders"
     type_params:
-      measure: order_count
+      measure:
+        name: order_count
     filter: |
-      {{ Dimension('order_id__order_total_dim') }} >= 20
+      {{ Metric('order_total', group_by=['order_id']) }} >=  20
   # Ratio type metric
   - name: "avg_order_value"
     label: "avg_order_value"
@@ -840,7 +847,8 @@ metrics:
     description: "The month to date value of all orders"
     type: cumulative
     type_params:
-      measure: order_total
+      measure:
+        name: order_total
       grain_to_date: month
   # Derived metric
   - name: "pct_of_orders_that_are_large"
@@ -912,11 +920,11 @@ metrics:
     description: "Unique count of customers placing orders"
     type: simple
     type_params:
-      measure: customers
+      measure:
+        name: customers
 ```
 
 </File>
-
 
 This semantic model uses simple metrics to focus on customer metrics and emphasizes customer dimensions like name, type, and order dates. It uniquely analyzes customer behavior, lifetime value, and order patterns.
 
