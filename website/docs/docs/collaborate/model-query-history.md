@@ -80,11 +80,11 @@ To enhance your discovery, you can view your model query history in various loca
 2. In the main **Overview** page, click on **Performance** under the **Project details** section. Scroll down to view the most consumed models
 3. Use the dropdown menu on the right to select the desired time period, with options available for up to the past 3 months. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/most-consumed-models.jpg" width="70%" title="View most consumed models on the 'Performance' page in dbt Explorer." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/most-consumed-models.jpg" width="85%" title="View most consumed models on the 'Performance' page in dbt Explorer." />
 
 4. Click on a model for more details to go to the **Performance** tab.
 5. On the **Performance** tab, scroll down to the **Model performance** section. Select the **Consumption queries** tab to view the consumption queries over time for that model.
-<Lightbox src="/img/docs/collaborate/model-consumption-queries.jpg" width="70%" title="View consumption queries over time for a given model." />
+<Lightbox src="/img/docs/collaborate/model-consumption-queries.jpg" width="85%" title="View consumption queries over time for a given model." />
 
 ### View from Project lineage
 
