@@ -72,31 +72,31 @@ During beta, the dbt Labs team will manually enable query history for your dbt C
 
 ## View query history in Explorer
 
-To enhance your discovery, you can view your model query history in various locations within dbt Explorer.  For details on how to access model query history in each location, expand the following toggles:
+To enhance your discovery, you can view your model query history in various locations within dbt Explorer:
 
 ### View from Performance charts
 
 1. Navigate to dbt Explorer by clicking on the **Explore** link in the navigation.
-2. In the main **Overview** page, under **Project** click **Performance** and scroll down to view the most queried models
+2. In the main **Overview** page, click on **Performance** under the **Project details** section. Scroll down to view the most consumed models
 3. Use the dropdown menu on the right to select the desired time period, with options available for up to the past 3 months. 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg" width="70%" title="View most queried models in 'Performance' page in dbt Explorer." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/most-consumed-models.jpg" width="70%" title="View most consumed models on the 'Performance' page in dbt Explorer." />
 
-4. In the model performance tab, open the **Consumption** chart to see queries over time for that model.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-usage-queries.jpg" width="70%" title="View queries over time for a given model." />
+4. Click on a model for more details to go to the **Performance** tab.
+5. On the **Performance** tab, scroll down to the **Model performance** section. Select the **Consumption queries** tab to view the consumption queries over time for that model.
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-queries.jpg" width="70%" title="View consumption queries over time for a given model." />
 
 ### View from Project lineage
 
 1. To view your model in your project lineage, go to the main **Overview page** and click on **Project lineage.**
-2. In the lower left of your lineage, click on **Lenses** and select **Consumption Queries**. 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-lenses.jpg" width="85%" title="View model usage query in your lineage using the 'Lenses' feature." />
+2. In the lower left of your lineage, click on **Lenses** and select **Consumption queries**. 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-lenses.jpg" width="85%" title="View model consumption queries in your lineage using the 'Lenses' feature." />
 
-3. Your lineage should display a small red box above each model, indicating the consumption query number for each model. The query number for each model represents the query history over the last 30 days.
+3. Your lineage should display a small red box above each model, indicating the usage query number for each model. The query number for each model represents the model consumption over the last 30 days.
 
 ### View from Model list
 
 1. To view your model in your project lineage, go to the main **Overview page**.
 2. In the left navigation, go to the **Resources** tab and click on **Models** to view the models list.
-3. You can view the consumption query count for the models and sort by most or least queried. The query number for each model represents the query history over the last 30 days.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-query-list.jpg" width="85%" title="View models query history in the 'Models' list page under the 'Usage' column." />
-
+3. You can view the consumption query count for the models and sort by most or least queried. The consumption query number for each model represents the consumption over the last 30 days.
+<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-list.jpg" width="85%" title="View models consumption in the 'Models' list page under the 'Usage' column." />
