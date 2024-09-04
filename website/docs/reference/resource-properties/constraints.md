@@ -540,16 +540,16 @@ Here's an example of how to implement tag-based masking policies with contracts 
 
 models:
   - name: my_model
-config: null
-contract:
-  enforced: true
-materialized: table
-columns:
-  - name: id
-    data_type: int
-    constraints:
-      - type: custom
-        expression: tag (my_tag = 'my_value') #  A custom SQL expression used to enforce a specific constraint on a column.
+    config: null
+      contract:
+        enforced: true
+      materialized: table
+    columns:
+      - name: id
+        data_type: int
+        constraints:
+          - type: custom
+            expression: tag (my_tag = 'my_value') #  A custom SQL expression used to enforce a specific constraint on a column.
 
 ```
 
