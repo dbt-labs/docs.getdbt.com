@@ -577,7 +577,7 @@ models:
         data_type: int
         constraints:
           - type: custom
-            expression: masking policy my_policy
+            expression: "masking policy my_policy"
 
 ```
 
