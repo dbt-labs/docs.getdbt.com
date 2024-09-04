@@ -84,7 +84,7 @@ To enhance your discovery, you can view your model query history in various loca
 
 4. Click on a model for more details to go to the **Performance** tab.
 5. On the **Performance** tab, scroll down to the **Model performance** section. Select the **Consumption queries** tab to view the consumption queries over time for that model.
-<Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-queries.jpg" width="70%" title="View consumption queries over time for a given model." />
+<Lightbox src="/img/docs/collaborate/model-consumption-queries.jpg" width="70%" title="View consumption queries over time for a given model." />
 
 ### View from Project lineage
 
