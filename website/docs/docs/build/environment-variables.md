@@ -97,7 +97,7 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 dbt Cloud has a number of pre-defined variables built in. Variables are set automatically and cannot be changed.
 
-**dbt Cloud IDE details**
+#### dbt Cloud IDE details
 
 The following environment variable is set automatically for the dbt Cloud IDE:
 
@@ -109,13 +109,16 @@ The following environment variable is set automatically for the dbt Cloud IDE:
 
 Use case &mdash; This is useful in cases where you want to dynamically use the Git branch name as a prefix for a [development schema](/docs/build/custom-schemas) ( `{{ env_var ('DBT_CLOUD_GIT_BRANCH') }}` ).
 
-**dbt Cloud context**
+#### dbt Cloud context
 
-The following environment variables are set automatically for deployment runs:
+The following environment variables are set automatically: 
 
-- `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod'
+- `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod' (for deployment runs only).
+- `DBT_CLOUD_ENVIRONMENT_NAME`: The name of the dbt Cloud environment in which `dbt`is running. 
+- `DBT_CLOUD_ENVIRONMENT_TYPE`: The type of dbt Cloud environment in which `dbt` is running. The values are `development` or `deployment`.
 
-**Run details**
+#### Run details
+
 - `DBT_CLOUD_PROJECT_ID`: The ID of the dbt Cloud Project for this run
 - `DBT_CLOUD_JOB_ID`: The ID of the dbt Cloud Job for this run
 - `DBT_CLOUD_RUN_ID`: The ID of this particular run
@@ -124,7 +127,7 @@ The following environment variables are set automatically for deployment runs:
 - `DBT_CLOUD_ENVIRONMENT_ID`: The ID of the environment for this run
 - `DBT_CLOUD_ACCOUNT_ID`: The ID of the dbt Cloud account for this run
 
-**Git details**
+#### Git details
 
 _The following variables are currently only available for GitHub, GitLab, and Azure DevOps PR builds triggered via a webhook_
 
