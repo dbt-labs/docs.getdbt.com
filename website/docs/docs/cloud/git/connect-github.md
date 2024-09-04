@@ -55,7 +55,7 @@ If you are your GitHub organization owner, you can also configure the dbt Cloud 
 
 ## Authenticate your personal GitHub account
 
-After the dbt Cloud administrator [sets up a connection](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) to your organization's GitHub account, you need to authenticate using your personal account. You must connect your personal GitHub profile to dbt Cloud to use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and verify your read and write access to the repository.
+After the dbt Cloud administrator [sets up a connection](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) to your organization's GitHub account, you need to authenticate using your personal account. You must connect your personal GitHub profile to dbt Cloud to use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and [CLI](/docs/cloud/cloud-cli-installation) and verify your read and write access to the repository.
 
 :::info GitHub profile connection
 
