@@ -531,7 +531,6 @@ In dbt Cloud, you can use custom constraints on models for the advanced configur
 You can implement constraints in a couple of different ways:
 
 - ### Custom constraints with tags
-- ### Custom constraints without tags
 
 Here's an example of how to implement tag-based masking policies with contracts and constraints using the following syntax:
 
