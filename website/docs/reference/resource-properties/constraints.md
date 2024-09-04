@@ -521,13 +521,13 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ### Custom constraints on models for advanced configuration of tables
 
-In dbt Cloud, you can use custom constraints on models for advanced configuration of tables. Different data warehouses will support different syntax and different capabilities, but custom constraints will always allow you to add configuration to specific columns.
+In dbt Cloud, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses will support different syntax and capabilities, but custom constraints will always allow you to add configuration to specific columns.
 
 For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
 
-Each data warehouse has its own set of parameters that can be set for columns in their CTAS statements. For example [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema).
+[Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema) are also other examples of data warehouses having their own set of parameters that can be set for columns in their CTAS statements.
 
-There are some different scenarios of implementing contracts and constraints:
+There are different scenarios of implementing contracts and constraints:
 
 - [Tag-based masking policies](https://github.com/dbt-labs/dbt-adapters/issues/85#issuecomment-2310772737).
 - [Add a masking policy without a tag](https://github.com/dbt-labs/dbt-adapters/issues/85#issuecomment-2314547162).
@@ -539,25 +539,25 @@ Here's an example of how to implement tag-based masking policies with contracts 
 ```yaml
 
 models:
-
   - name: my_model
-    config:
-      contract: {enforced: true}
-      materialized: table
-    columns:
-    - name: id
-      data_type: int
-      constraints:
-        - type: custom
-          expression: "tag (my_tag = 'my_value')" #  A custom SQL expression used to enforce a specific constraint on a column.
+config: null
+contract:
+  enforced: true
+materialized: table
+columns:
+  - name: id
+    data_type: int
+    constraints:
+      - type: custom
+        expression: tag (my_tag = 'my_value') #  A custom SQL expression used to enforce a specific constraint on a column.
 
 ```
 
 </File>
 
-Using this syntax requires configuring all the columns and their types as it’s the only way where to send a create or replace `<cols_info_with_masking> mytable as ...`. It’s not possible to do it with just a partial list of columns. This means making sure the columns and constraints fields are fully defined.
+Using this syntax requires configuring all the columns and their types as it’s the only way to send a create or replace `<cols_info_with_masking> mytable as ...`. It’s not possible to do it with just a partial list of columns. This means making sure the columns and constraints fields are fully defined.
 
-To generate a YAML with all the columns, you could also use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
+To generate a YAML with all the columns, you can use `generate_model_yaml` from [dbt-codegen](https://github.com/dbt-labs/dbt-codegen/tree/0.12.1/?tab=readme-ov-file#generate_model_yaml-source).
 
 Alternatively, you can add a masking policy without tags:
 
@@ -568,14 +568,15 @@ Alternatively, you can add a masking policy without tags:
 models:
   - name: my_model
     config:
-      contract: {enforced: true}
+      contract:
+        enforced: true
       materialized: table
     columns:
       - name: id
         data_type: int
         constraints:
           - type: custom
-            expression: "masking policy my_policy"
+            expression: masking policy my_policy
 
 ```
 
