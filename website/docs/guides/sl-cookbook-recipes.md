@@ -19,6 +19,14 @@ These cookbook recipes are a collection of scenario-based, real-world examples f
 
 The recipes cover a range of use cases, including calculating active users, annual recurring revenue (ARR), and customer acquisition cost (CAC). Each recipe includes step-by-step instructions on how to define semantic models and metrics in dbt, as well as how to validate and query your metrics.
 
+These recipes are designed to help you get started with the dbt Semantic Layer and cover the following:
+
+- [How to calculate active users and active users WoW growth](#how-to-calculate-active-users-and-active-users-wow-growth)
+- [How to calculate ARR using metrics](#how-to-calculate-arr-using-metrics)
+- [How to calculate CAC using metrics](#how-to-calculate-cac-using-metrics)
+- [How to join multiple fact metrics](#how-tojoin-multiple-fact-metrics)
+- [How to test your metrics](#how-to-test-your-metrics)
+
 <!-- Cookbook 1 -->
 
 ## How to calculate active users and active users WoW growth
@@ -235,7 +243,7 @@ After saving your new or updated metric, try the following process in your devel
 
 <!-- Cookbook 2 -->
 
-## How to calculate ARR using metrics in dbt
+## How to calculate ARR using metrics
 
 Use this cookbook recipe to understand how to calculate [annual recurring revenue (ARR)](https://en.wikipedia.org/wiki/Revenue_stream) using derived metrics in dbt, specifically leveraging the monthly recurring revenue (MRR) metric.
 
@@ -335,7 +343,7 @@ This model calculates ARR by multiplying the MRR (defined in the `sem_revenue_mo
 
 <!-- Cookbook 3 -->
 
-## How to calculate CAC using metrics in dbt
+## How to calculate CAC using metrics
 
 Use this cookbook recipe to understand how to [calculate customer acquisition cost (CAC)](https://en.wikipedia.org/wiki/Customer_acquisition_cost) using ratio metrics in dbt.
 
