@@ -146,3 +146,8 @@ Check that the SL user has been granted access to the `dbt_sl_llm` schema and ma
 
 If there's been an update to the dbt Cloud account ID, access URL, or API service token, you need to update the configuration for the dbt Snowflake Native App. In Snowflake, navigate to the app's configuration page and delete the existing configurations. Add the new configuration and then run `CALL app_public.restart_ap ();` in the application database in Snowsight. 
 </Expandable>
+
+<Expandable alt_header="Are environment variables supported in the Native App?" >
+
+[Environment variables](/docs/build/environment-variables), like `{{env_var('DBT_WAREHOUSE') }}` aren’t supported in the dbt Semantic Layer yet. To use the 'Ask dbt' feature, you must use the actual credentials instead.
+</Expandable>

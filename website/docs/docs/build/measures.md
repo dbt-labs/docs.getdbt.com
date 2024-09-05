@@ -233,7 +233,7 @@ semantic_models:
         non_additive_dimension: 
           name: metric_time
           window_choice: max
-      - name: mrr
+      - name: user_mrr
         description: Group by user_id to achieve each user's MRR
         expr: subscription_value
         agg: sum  

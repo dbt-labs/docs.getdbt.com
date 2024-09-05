@@ -77,7 +77,36 @@ Top-level keys for the semantic manifest are:
         ],
         "metadata": null,
         "dsi_package_version": {}
-    }
+    },
+    "saved_queries": [
+        {
+            "name": "name of the saved query",
+            "query_params": {
+                "metrics": [
+                    "metrics used in the saved query"
+                ],
+                "group_by": [
+                    "TimeDimension('model_primary_key__date_column', 'day')",
+                    "Dimension('model_primary_key__metric_one')",
+                    "Dimension('model__dimension')"
+                ],
+                "where": null
+            },
+            "description": "Description of the saved query",
+            "metadata": null,
+            "label": null,
+            "exports": [
+                {
+                    "name": "saved_query_name",
+                    "config": {
+                        "export_as": "view",
+                        "schema_name": null,
+                        "alias": null
+                    }
+                }
+            ]
+        }
+    ]
 }
     ]
 }

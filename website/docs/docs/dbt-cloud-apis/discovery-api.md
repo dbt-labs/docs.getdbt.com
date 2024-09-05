@@ -7,7 +7,7 @@ Every time dbt Cloud runs a project, it generates and stores information about t
 
 By leveraging the metadata in dbt Cloud, you can create systems for data monitoring and alerting, lineage exploration, and automated reporting. This can help you improve data discovery, data quality, and pipeline operations within your organization.
 
-You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using dbt Cloud features like [model timing](/docs/deploy/run-visibility#model-timing) and [dashboard status tiles](/docs/deploy/dashboard-status-tiles).
+You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using dbt Cloud features like [model timing](/docs/deploy/run-visibility#model-timing) and [data health tiles]/(docs/collaborate/data-tile).
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/discovery-api-figure.png" width="80%" title="A rich ecosystem for integration "/>
 
@@ -66,6 +66,9 @@ Use the API to review dataset changes and uses by examining exposures, lineage, 
 
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/data-freshness-metadata.jpg" width="25%" title="Quality and freshness dashboard status tile defined via exposures"/>
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Use exposures to embed data health tiles in your dashboards to distill trust signals for data consumers." />
+
 </TabItem>
 
 

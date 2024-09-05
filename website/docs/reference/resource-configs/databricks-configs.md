@@ -776,6 +776,15 @@ These properties are sent directly to Databricks without validation in dbt, so b
 
 One application of this feature is making `delta` tables compatible with `iceberg` readers using the [Universal Format](https://docs.databricks.com/en/delta/uniform.html).
 
+```sql
+{{ config(
+    tblproperties={
+      'delta.enableIcebergCompatV2' = 'true'
+      'delta.universalFormat.enabledFormats' = 'iceberg'
+    }
+ ) }}
+```
+
 <VersionBlock firstVersion="1.7">
 
 `tblproperties` can be specified for python models, but they will be applied via an `ALTER` statement after table creation.

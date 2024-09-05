@@ -3,6 +3,26 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/faqs/Models/unique-model-names",
+      "destination": "/faqs/Project/unique-resource-names",
+      "permanent": true
+    },
+    {
+      "source":  "/docs/deploy/dashboard-status-tiles",
+      "destination":  "/docs/collaborate/data-tile",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/connect-data-platform/fal-setup",
+      "destination": "https://github.com/fal-ai/dbt-fal",
+      "permanent": true
+    },
+    {
+      "source": "/reference/warehouse-setups/fal-setup",
+      "destination": "https://github.com/fal-ai/dbt-fal",
+      "permanent": true
+    },
+    {
       "source":  "docs/cloud/secure/environment-permissions",
       "destination":  "docs/cloud/manage-access/environment-permissions",
       "permanent": true
@@ -3303,17 +3323,17 @@
     },
     {
       "source": "/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true
     },
     {
       "source": "/docs/dbt-cloud/cloud-ide/ide-beta",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
       "permanent": true
     },
     {
       "source": "/docs/running-a-dbt-project/using-the-dbt-ide",
-      "destination": "/docs/getting-started/develop-in-the-cloud",
+      "destination": "/docs/running-a-dbt-project/using-the-dbt-ide",
       "permanent": true
     },
     {

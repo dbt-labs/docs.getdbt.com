@@ -227,20 +227,20 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 ### Dimensions
 
-[Dimensions](/docs/build/dimensions) are different ways to organize or look at data. For example, you might group data by things like region, country, or what job someone has. However, trying to set up a system that covers every possible way to group data can be time-consuming and prone to errors.
+[Dimensions](/docs/build/dimensions) are different ways to organize or look at data. They are effectively the group by parameters for metrics. For example, you might group data by things like region, country, or job title.
 
-Instead of trying to figure out all the possible groupings ahead of time, MetricFlow lets you ask for the data you need and sorts out how to group it dynamically. You tell it what groupings (dimensions parameters) you're interested in by giving it a `name` (either a column or SQL expression like "country" or "user role") and the `type` of grouping it is (`categorical` or `time`). Categorical groups are for things you can't measure in numbers, while time groups represent dates.
+MetricFlow takes a dynamic approach when making dimensions available for metrics. Instead of trying to figure out all the possible groupings ahead of time, MetricFlow lets you ask for the dimensions you need and constructs any joins necessary to reach the requested dimensions at query time. The advantage of this approach is that you don't need to set up a system that pre-materializes every possible way to group data, which can be time-consuming and prone to errors. Instead, you define the dimensions (group by parameters) you're interested in within the semantic model, and they will automatically be made available for valid metrics.
 
-- Dimensions are identified using the name parameter, just like identifiers.
-- The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups.
-- MetricFlow requires all dimensions to be tied to a primary entity.
+Dimensions have the following characteristics:
 
-While there's technically no limit to the number of dimensions in a semantic model, it's important to ensure the model remains effective and efficient for its intended purpose.
+- There are two types of dimensions: categorical and time. Categorical dimensions are for things you can't measure in numbers, while time dimensions represent dates and timestamps.
+- Dimensions are bound to the primary entity of the semantic model in which they are defined. For example, if a dimension called `full_name` is defined in a model with `user` as a primary entity, then `full_name` is scoped to the `user` entity. To reference this dimension, you would use the fully qualified dimension name `user__full_name`.
+- The naming of dimensions must be unique in each semantic model with the same primary entity. Dimension names can be repeated if defined in semantic models with a different primary entity.
+
 
 :::info For time groups
 
 For semantic models with a measure, you must have a [primary time group](/docs/build/dimensions#time).
-
 :::
 
 ### Measures
