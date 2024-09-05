@@ -41,7 +41,7 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
 3. Under the **Resources** tab, click on **Exposures** to view the [exposures](/docs/build/exposures) list.
 4. Select a dashboard exposure and go to the **General** tab to view the data health information.
 5. In this tab, you’ll see:   
-  - Name of the exposure. 
+   - Name of the exposure. 
    - Data health status: Data freshness passed, Data quality passed, Data may be stale, Data quality degraded
    - Resource type (model, source, and so on).
    - Dashboard status: Failure, Pass, Stale.
