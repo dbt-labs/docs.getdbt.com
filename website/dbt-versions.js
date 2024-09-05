@@ -11,7 +11,7 @@
  * @property {boolean} isPrerelease Boolean used for showing the prerelease banner
  * @property {string} customDisplay Allows setting a custom display name for the current version
  * 
- * customDisplay for dbt Cloud should be a version ahead of latest Core release (GA or beta).
+ * customDisplay for dbt Cloud should be a version ahead of latest dbt Core release (GA or beta).
  */
 exports.versions = [
   {
