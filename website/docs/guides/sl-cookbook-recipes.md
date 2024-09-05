@@ -7,7 +7,7 @@ hoverSnippet: Read a collection of scenario-based, real-world examples for build
 # time_to_complete: '30 minutes' commenting out until we test
 hide_table_of_contents: true
 icon: 'guides'
-tags: ['Semantic Layer','dbt Cloud', 'Cookbook recipe']
+tags: ['Semantic Layer','dbt Cloud', 'Cookbook']
 level: 'Intermediate'
 recently_updated: true
 ---
