@@ -13,8 +13,12 @@ Model query history allows you to:
 - Provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products.
 - Enable analysts to find the most popular models used by other people.
 
-:::info Available in beta
-Model query history is powered by a single query of the query log table in your data warehouse aggregated on a daily basis. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
+Model query history is powered by a single consumption query of the query log table in your data warehouse aggregated on a daily basis. 
+
+:::info What is a consumption query?
+Consumption query is a metric of queries in your dbt project that has used the model in a given time. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
+
+So for example, if `model_super_santi` was queried 10 times in the past week, it would count as having 10 consumption queries for that particular time period.
 :::
 
 ## Prerequisites
