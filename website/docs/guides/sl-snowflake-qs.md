@@ -1078,7 +1078,7 @@ For next steps, you can start defining your own metrics and learn additional con
 Here are some additional resources to help you continue your journey:
 
 - [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
-- [dbt Semantic Layer cookbook recipes](/docs/guides/sl-cookbook-recipes) 
+- [dbt Semantic Layer cookbook recipes](/guides/sl-cookbook-recipes) 
 - [Available integrations](/docs/cloud-integrations/avail-sl-integrations)
 - Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
 - [Join our live demos](https://www.getdbt.com/resources/webinars/dbt-cloud-demos-with-experts)
