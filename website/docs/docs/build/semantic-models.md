@@ -264,4 +264,4 @@ import SetUpPages from '/snippets/\_metrics-dependencies.md';
 - [Entities](/docs/build/entities)
 - [Measures](/docs/build/measures)
 - [Semantic Layer best practices guide](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro)
-- [dbt Semantic Layer cookbook recipes](/docs/guides/sl-cookbook-recipes) 
+- [dbt Semantic Layer cookbook recipes](/guides/sl-cookbook-recipes) 
