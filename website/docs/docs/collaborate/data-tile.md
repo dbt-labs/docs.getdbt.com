@@ -9,15 +9,19 @@ image: /img/docs/collaborate/dbt-explorer/data-tile-pass.jpg
 # Embed data health tile in dashboards <Lifecycle status='beta' />
 
 With data health tiles, stakeholders will get an at-a-glance confirmation on whether the data they’re looking at is stale or degraded. This trust signal allows teams to immediately go back into Explorer to see more details and investigate issues.
+
 :::info Available in beta
 Data health tile is currently available in open beta.
 :::
+
 The data health tile:
 
 - Distills trust signals for data consumers.
 - Deep links you into dbt Explorer where you can further dive into upstream data issues.
 - Provides richer information and makes it easier to debug.
 - Revamps the existing, [job-based tiles](#job-based-data-health).
+
+Data health tiles rely on [exposures](/docs/build/exposures) to surface trust signals in your dashboards. When you configure exposures in your dbt project, you are explicitly defining how specific outputs—like dashboards or reports—depend on your data models.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
 
@@ -34,31 +38,31 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
 
 1. Navigate to dbt Explorer by clicking on the **Explore** link in the navigation.
 2. In the main **Overview** page, go to the left navigation.
-3. Under the **Resources** tab, click on **Exposures** to view the exposures list.
+3. Under the **Resources** tab, click on **Exposures** to view the [exposures](/docs/build/exposures) list.
 4. Select a dashboard exposure and go to the **General** tab to view the data health information.
-5. In this tab, you’ll see: 
+5. In this tab, you’ll see:   
+  - Name of the exposure. 
    - Data health status: Data freshness passed, Data quality passed, Data may be stale, Data quality degraded
-   - Name of the exposure.
    - Resource type (model, source, and so on).
    - Dashboard status: Failure, Pass, Stale.
    - You can also see the last check completed, the last check time, and the last check duration.
-6. You can also click the **Open Dashboard** button on the upper right to immediately view this in your analytics tool.
+6. You can click the **Open Dashboard** button on the upper right to immediately view this in your analytics tool.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-exposures.jpg" width="95%" title="View an exposure in dbt Explorer." />
 
 ## Embed in your dashboard
 
-Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to set up your dashboard status tile and [service token](/docs/dbt-cloud-apis/service-tokens). You can embed Data health tile to any analytics tool that supports URL or iFrame embedding.
+Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to set up your data health tile and [service token](/docs/dbt-cloud-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
 
-Follow these steps to set up your data health tile in your dashboard:
+Follow these steps to set up your data health tile:
 
 1. Go to **Account settings** in dbt Cloud.
 2. Select **API tokens** in the left sidebar and then **Service tokens**.
 3. Click on **Create service token** and give it a name.
-4. Select the [**Metadata Only** permission](/docs/dbt-cloud-apis/service-tokens). This token will be used to embed the exposure tile in your dashboard in the later steps.
+4. Select the [**Metadata Only**](/docs/dbt-cloud-apis/service-tokens) permission. This token will be used to embed the tile in your dashboard in the later steps.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-setup.jpg" width="95%" title="Set up your dashboard status tile and service token to embed a data health tile" />
 
-5. Copy the **Metadata Only token** and save it in a secure location. You'll need it token in the next steps.
+5. Copy the **Metadata Only** token and save it in a secure location. You'll need it token in the next steps.
 6. Navigate back to dbt Explorer and select an exposure.
 7. Below the **Data health** section, expand on the toggle for instructions on how to embed the exposure tile (if you're an account admin with develop permissions). 
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
