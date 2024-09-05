@@ -18,7 +18,7 @@ These flags go through three phases of development:
 
 ## What is a behavior change?
 
-> The same dbt project code and same dbt commands return one result before the behavior change, and they would return a different result after the behavior change.
+The same dbt project code and the same dbt commands return one result before the behavior change, and they return a different result after the behavior change.
 
 Examples of behavior changes:
 - dbt begins raising a validation _error_ that it didn't previously.
