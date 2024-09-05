@@ -21,11 +21,11 @@ The recipes cover a range of use cases, including calculating active users, annu
 
 These recipes are designed to help you get started with the dbt Semantic Layer and cover the following:
 
-- [How to calculate active users and active users WoW growth](#how-to-calculate-active-users-and-active-users-wow-growth)
-- [How to calculate ARR using metrics](#how-to-calculate-arr-using-metrics)
-- [How to calculate CAC using metrics](#how-to-calculate-cac-using-metrics)
-- [How to join multiple fact metrics](#how-tojoin-multiple-fact-metrics)
-- [How to test your metrics](#how-to-test-your-metrics)
+- [How to calculate active users and active users WoW growth](https://docs.getdbt.com/guides/sl-cookbook-receipes#how-to-calculate-active-users-and-active-users-wow-growth)
+- [How to calculate ARR using metrics](https://docs.getdbt.com/guides/sl-cookbook-receipes#how-to-calculate-arr-using-metrics)
+- [How to calculate CAC using metrics](https://docs.getdbt.com/guides/sl-cookbook-receipes#how-to-calculate-cac-using-metrics)
+- [How to join multiple fact metrics](https://docs.getdbt.com/guides/sl-cookbook-receipes#how-tojoin-multiple-fact-metrics)
+- [How to test your metrics](https://docs.getdbt.com/guides/sl-cookbook-receipes#how-to-test-your-metrics)
 
 <!-- Cookbook 1 -->
 
@@ -608,7 +608,7 @@ dbt sl query --metrics total_sales,stock_available --group-by date_day
 
 ## How to test your metrics
 
-After defining your metrics in your dbt project, test them in your development tool by running the following commands to ensure they work as expected. For a full list of available commands, refer to[MetricFlow commands](/docs/build/metricflow-commands).
+After defining your metrics in your dbt project, test them in your development tool by running the following commands to ensure they work as expected. For a full list of available commands, refer to [MetricFlow commands](/docs/build/metricflow-commands).
 
 ### Rebuild your semantic_manifest.json file
 
