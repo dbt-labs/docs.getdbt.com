@@ -41,7 +41,7 @@ To add an IP to the allowlist, from the **IP Restrictions** page:
 
 Add multiple IP ranges by clicking the **Add IP range** button to create a new text field.
 
-Note that simply adding the IP Ranges will not enforce IP restrictions. For more information, see the [Enabling Restrictions](#enabling-restrictions) section.
+Note that simply adding the IP Ranges will not enforce IP restrictions. For more information, see the [Enabling restrictions](#enabling-restrictions) section.
 
 If you only want to allow the IP ranges added to this list and deny all other requests, adding a denylist is not necessary. By default, if only an allow list is added, dbt Cloud will only allow IPs in the allowable range and deny all other IPs. However, you can add a denylist if you want to deny specific IP addresses within your allowlist CIDR range.
 
