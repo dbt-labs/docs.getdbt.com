@@ -54,7 +54,7 @@ Track and analyze user activity on a daily basis, including page views, time-on-
 Alternatively, you can use the [one-YAML-per-marts-model approach](/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure#files-and-folders) which puts documentation, data tests, unit tests, semantic models, and metrics into a unified file corresponding to a dbt-modeled mart.
 :::
 
-### Step 1: **Define semantic models**
+### Step 1: Define semantic models
 1. Create a YAML file under the `semantic_models` folder: (`models/semantic_models/sem_user_activity_daily.yml`) to create a [semantic model](/docs/build/semantic-models) that tracks daily user activity. 
    This semantic model refs the `fct_user_activity_daily` model.
 
