@@ -103,7 +103,7 @@ dbt Core v1.8 has introduced flags for [managing changes to legacy behaviors](/r
 You can read more about each of these behavior changes in the following links:
 
 - (Mature, enabled by default) [Require explicit package overrides for builtin materializations](/reference/global-configs/behavior-changes#require_explicit_package_overrides_for_builtin_materializations)
-- (Introduced, disabled by default) [Require resource names without spaces](https://docs.getdbt.com/reference/global-configs/behavior-changes#require_resource_names_without_spaces)
+- (Introduced, disabled by default) [Require resource names without spaces](/reference/global-configs/behavior-changes#require_resource_names_without_spaces)
 - (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks)
 
 ## Quick hits
