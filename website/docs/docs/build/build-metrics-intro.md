@@ -65,6 +65,7 @@ MetricFlow allows you to:
 
 ## Related docs
 
+- [dbt Semantic Layer cookbook recipes](/docs/guides/sl-cookbook-recipes) 
 - [Quickstart guide with the dbt Semantic Layer](/guides/sl-snowflake-qs)
 - [The dbt Semantic Layer: what's next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog
 - [dbt Semantic Layer on-demand course](https://learn.getdbt.com/courses/semantic-layer)
