@@ -1,6 +1,6 @@
 ---
 title: dbt Semantic Layer cookbook recipes
-id: "sl-cookbook"
+id: "sl-cookbook-recipes"
 description: "These cookbook recipes are a collection of scenario-based, real-world examples for building with the dbt Semantic Layer."
 displayText: Cookbook recipes offer practical, scenario-based examples for semantic models and metrics with the dbt Semantic Layer.
 hoverSnippet: Read a collection of scenario-based, real-world examples for building metrics and semantic models with the dbt Semantic Layer.
