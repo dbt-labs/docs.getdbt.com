@@ -27,7 +27,7 @@ This credential controls the physical access to underlying data accessed by the 
 
 | Feature | Team plan | Enterprise plan |
 | --- | :---: | :---: |
-| Service tokens | Can create multiple service tokens linked to one credential. | Can create multiple service tokens linked to multiple credentials. |
+| Service tokens | Can create multiple service tokens linked to one credential. | Can use multiple credentials and link multiple service tokens to each credential. Note that you cannot link a single service token to more than one credential. |
 | Credentials per project | One credential per project. | Can [add multiple](#4-add-more-credentials) credentials per project. |
 | Link multiple service tokens to a single credential | ✅ | ✅ |
 
@@ -42,7 +42,7 @@ This credential controls the physical access to underlying data accessed by the 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.jpg" width="55%" title="Add credentials and map them to a service token. " />
 
 4. After adding credentials, scroll to **2. Map new service token**.
-5. Name the token and ensure the permission set is 'Semantic Layer Only' and 'Metadata Only'. 
+5. Name the token and ensure the permission set includes 'Semantic Layer Only' and 'Metadata Only'.
 6. Click **Save**. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
 
 :::info
@@ -78,14 +78,13 @@ To add multiple credentials and map them to service tokens:
 
 3. In the **2. Map new service token** section, map a service token to the credential you configured in the previous step. dbt Cloud automatically selects the service token permission set you need (Semantic Layer Only and Metadata Only).
 
-4. To add another service token during configuration, click **Add permission**. 
-   - (To add another service token to an existing Semantic Layer configuration, click **Add service token** under the **Linked service tokens** section in the **Semantic Layer Configuration Details** page.)
+4. To add another service token during configuration, click **Add Service Token**. 
+5. You can link more service tokens to the same credential later on in the **Semantic Layer Configuration Details** page. To add another service token to an existing Semantic Layer configuration, click **Add service token** under the **Linked service tokens** section.
+6. Click **Save** to link the service token to the credential. Remember to copy and save the service token securely, as it won't be viewable again after generation.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-credentials-service-token.jpg" width="90%" title="Use the configuration page to manage multiple credentials or link or unlink service tokens for more granular control."/>
 
-5. Click **Save** to link the service token to the credential. Remember to copy and save the service token securely, as it won't be viewable again after generation.
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-credential-created.jpg" width="100%" title="Manage multiple credentials and link them to service tokens for more granular control."/>
-
-6. To delete a credential, go back to the **Credentials & service tokens** page.
-7. Under **Linked Service Tokens**, click **Edit**. Select **Delete Credential** to remove a credential.
+7. To delete a credential, go back to the **Credentials & service tokens** page.
+8. Under **Linked Service Tokens**, click **Edit**. Select **Delete Credential** to remove a credential.
 
    When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
 
