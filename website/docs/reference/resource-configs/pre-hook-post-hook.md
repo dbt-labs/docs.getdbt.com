@@ -47,6 +47,18 @@ select ...
 
 </File>
 
+<File name='models/properties.yml'>
+
+```yml
+models:
+  - name: [<model_name>]
+    config:
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+```
+
+</File>
+
 </TabItem>
 
 <TabItem value="seeds">
@@ -62,6 +74,18 @@ seeds:
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
+```
+
+</File>
+
+<File name='seeds/properties.yml'>
+
+```yml
+seeds:
+  - name: [<seed_name>]
+    config:
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
 ```
 
 </File>
@@ -98,6 +122,18 @@ select ...
 
 {% end_snapshot %}
 
+```
+
+</File>
+
+<File name='snapshots/properties.yml'>
+
+```yml
+snapshots:
+  - name: [<snapshot_name>]
+    config:
+      [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
 ```
 
 </File>
