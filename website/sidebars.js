@@ -1073,6 +1073,7 @@ const sidebarSettings = {
           },
           items: [
             "reference/global-configs/about-global-configs",
+            "reference/global-configs/behavior-changes",
             {
               type: "category",
               label: "Setting flags",
@@ -1091,7 +1092,6 @@ const sidebarSettings = {
                 "reference/global-configs/failing-fast",
                 "reference/global-configs/indirect-selection",
                 "reference/global-configs/json-artifacts",
-                "reference/global-configs/legacy-behaviors",
                 "reference/global-configs/parsing",
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",
