@@ -7,7 +7,6 @@ sidebar_label: "Connect to GitHub"
 
 
 Connecting your GitHub account to dbt Cloud provides convenience and another layer of security to dbt Cloud:
-- Log into dbt Cloud using OAuth through GitHub.
 - Import new GitHub repositories with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH.
 - Trigger [Continuous integration](/docs/deploy/continuous-integration)(CI) builds when pull requests are opened in GitHub.
@@ -48,15 +47,15 @@ To connect your dbt Cloud account to your GitHub account:
    - Read and write access to Workflows
 
 6. Once you grant access to the app, you will be redirected back to dbt Cloud and shown a linked account success state. You are now personally authenticated. 
-7. Ask your team members to [personally authenticate](/docs/cloud/git/connect-github#personally-authenticate-with-github) by connecting their GitHub profiles.
+7. Ask your team members to individually authenticate by connecting their [personal GitHub profiles](#authenticate-your-personal-github-account).
 
 ## Limiting repository access in GitHub
 If you are your GitHub organization owner, you can also configure the dbt Cloud GitHub application to have access to only select repositories. This configuration must be done in GitHub, but we provide an easy link in dbt Cloud to start this process.
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/configure-github.png" title="Configuring the dbt Cloud app"/>
 
-## Personally authenticate with GitHub
+## Authenticate your personal GitHub account
 
-Once the dbt Cloud admin has [set up a connection](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) to your organization GitHub account, you need to personally authenticate, which improves the security of dbt Cloud by enabling you to log in using OAuth through GitHub.
+After the dbt Cloud administrator [sets up a connection](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) to your organization's GitHub account, you need to authenticate using your personal account. You must connect your personal GitHub profile to dbt Cloud to use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and [CLI](/docs/cloud/cloud-cli-installation) and verify your read and write access to the repository.
 
 :::info GitHub profile connection
 
@@ -77,7 +76,7 @@ To connect a personal GitHub account:
 
 4. Once you approve authorization, you will be redirected to dbt Cloud, and you should now see your connected account. 
 
-The next time you log into dbt Cloud, you will be able to do so via OAuth through GitHub, and if you're on the Enterprise plan, you're ready to use the dbt Cloud IDE or dbt Cloud CLI.
+You can now use the dbt Cloud IDE or dbt Cloud CLI.
 
 
 ## FAQs
