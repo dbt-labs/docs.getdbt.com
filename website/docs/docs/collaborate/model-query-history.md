@@ -89,9 +89,9 @@ To enhance your discovery, you can view your model query history in various loca
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/most-consumed-models.jpg" width="85%" title="View most consumed models on the 'Performance' page in dbt Explorer." />
 
-4. Click on a model for more details and to go to the **Performance** tab.
+4. Click on a model for more details and go to the **Performance** tab.
 5. On the **Performance** tab, scroll down to the **Model performance** section. 
-6. Select the **Consumption queries** tab to view the consumption queries over a given time for that model.
+6. Select the **Consumption queries** tab to view the consumption queries over a given time for that model. 
 <Lightbox src="/img/docs/collaborate/model-consumption-queries.jpg" width="85%" title="View consumption queries over time for a given model." />
 
 ### View from Project lineage
@@ -100,11 +100,11 @@ To enhance your discovery, you can view your model query history in various loca
 2. In the lower left of your lineage, click on **Lenses** and select **Consumption queries**. 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-lenses.jpg" width="85%" title="View model consumption queries in your lineage using the 'Lenses' feature." />
 
-3. Your lineage should display a small red box above each model, indicating the consumption query number for each model. The number for each model represents the model consumption over the last 30 days.
+3. Your lineage should display a small red box above each model, indicating the consumption query number. The number for each model represents the model consumption over the last 30 days.
 
 ### View from Model list
 
-1. To view your model in your project lineage, go to the main **Overview page**.
+1. To view a list of models, go to the main **Overview page**.
 2. In the left navigation, go to the **Resources** tab and click on **Models** to view the models list.
 3. You can view the consumption query count for the models and sort by most or least consumed. The consumption query number for each model represents the consumption over the last 30 days.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/model-consumption-list.jpg" width="85%" title="View models consumption in the 'Models' list page under the 'Consumption' column." />
