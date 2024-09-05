@@ -48,7 +48,9 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
 
 ## Embed in your dashboard
 
-Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to set up your dashboard status tile and [service token](/docs/dbt-cloud-apis/service-tokens):
+Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to set up your dashboard status tile and [service token](/docs/dbt-cloud-apis/service-tokens). You can embed Data health tile to any analytics tool that supports URL or iFrame embedding.
+
+Follow these steps to set up your data health tile in your dashboard:
 
 1. Go to **Account settings** in dbt Cloud.
 2. Select **API tokens** in the left sidebar and then **Service tokens**.
@@ -62,15 +64,15 @@ Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to s
 8. In the expanded toggle, you'll see a text field where you can paste your **Metadata Only token**.
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-example.jpg" width="85%" title="Expand the toggle to embded data health tile into your dashboard." />
 
-9. Once you’ve pasted your token, you can select either **URL** or **iFrame** depending on which you need to install into your dashboard.
+9. Once you’ve pasted your token, you can select either **URL** or **iFrame** depending on which you need to add to your dashboard.
 
 If your analytics tool supports iFrames, you can embed the dashboard tile within it. 
 
-### Embed data health tile in Tableau
-To embed the data health tile in Tableau, follow these steps:
+#### Tableau example
+Here’s an example with Tableau, where you can embed the iFrame in a web page object:
 
-1. Ensure you've copied the embed iFrame content in dbt Explorer.
-2. For the revamped environment-based exposure tile you can insert these fields into the following iFrame, and then embed them with your dashboard. This is the iFrame that is available from the **Exposure details** page in dbt Explorer.
+- Ensure you've copied the embed iFrame snippet from the dbt Explorer **Data health** section.
+- **For the revamped environment-based exposure tile** &mdash; Insert the following fields into the following iFrame. Then embed them with your dashboard. This is the iFrame available from the **Exposure details** page in dbt Explorer.
 
     `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?uniqueId=<exposure_unique_id>&environmentType=production&environmentId=<environment_id>&token=<metadata_token>' />`
 
@@ -82,7 +84,7 @@ To embed the data health tile in Tableau, follow these steps:
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-stale.jpg" width="60%" title="Example of stale of degraded Data health tile in your dashboard." />
 </DocCarousel>
 
-3. For the job-based exposure tile you can insert these three fields into the following iFrame, and then embed them with your dashboard. The next section will have more details on the job-based exposure tile.
+- **For job-based exposure tile** &mdash; Insert the following fields into the following iFrame. Then embed them with your dashboard. The next [section](#job-based-data-health) will have more details on the job-based exposure tile.
 
     `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&environment_id=<environment_id>&token=<metadata_token>' />`
 
