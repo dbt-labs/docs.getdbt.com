@@ -31,7 +31,7 @@ The following are **not** behavior changes:
 - Fixing a bug where the previous behavior was defective, undesirable, or undocumented.
 - dbt begins raising a _warning_ that it didn't previously.
 - dbt updates the language of human-friendly messages in log events.
-- dbt makes a non-breaking change to contracted metadata artifacts by adding a new field with a default, or deleting a field with a default ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#non-breaking-changes))
+- dbt makes a non-breaking change to contracted metadata artifacts by adding a new field with a default, or deleting a field with a default ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#non-breaking-changes)).
 
 The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of dbt Cloud and patch releases of dbt Core.
 
