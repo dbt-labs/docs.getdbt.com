@@ -955,15 +955,6 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-ru
 
 <RunProdJob/>
 
-<details>
-
-<summary>What’s happening internally?</summary>
-
-- Merging the code into your main branch allows dbt Cloud to pull those changes and build the definition in the manifest produced by the run. <br />
-- Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.<br />
-- The Semantic Layer APIs pull in the most recent manifest and enables your integration to extract metadata from it.
-
-</details>
 
 ## Set up dbt Semantic Layer
 
