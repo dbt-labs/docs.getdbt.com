@@ -97,7 +97,7 @@ Follow these steps to delete the Semantic Layer configuration for a project:
 2. In the **Semantic Layer** section, select **Delete Semantic Layer**. 
 3. Confirm the deletion by clicking **Yes, delete semantic layer** in the confirmation pop up.
 
-To re-enable the dbt Semantic Layer in the future, you will need to recreate your configurations by following the [previous steps](#set-up-dbt-semantic-layer).
+To re-enable the dbt Semantic Layer setup in the future, you will need to recreate your setup configurations by following the [previous steps](#set-up-dbt-semantic-layer). If your semantic models and metrics are still in your project, no changes are needed. If you've removed them, you'll need to set up the YAML configs again.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-delete-config.jpg" width="90%" title="Delete the Semantic Layer configuration for a project."/>
 
