@@ -41,7 +41,7 @@ The following resources provide information on how to configure the dbt Semantic
 
 ## Deploy metrics
 This section provides information on how to deploy the dbt Semantic Layer and materialize your metrics:
-- [Deploy your Semantic Layer](/docs/use-dbt-semantic-layer/deploy-sl) &mdash; Run a dbt Cloud job to deploy the dbt Semantic Layer and materialize your metrics.
+- [Deploy your Semantic Layer](/docs/use-dbt-semantic-layer/deploy-sl) &mdash; Run a dbt Cloud job with `dbt parse` to deploy the dbt Semantic Layer and materialize your metrics.
 - [Write queries with exports](/docs/use-dbt-semantic-layer/exports) &mdash; Use exports to write commonly used queries directly within your data platform, on a schedule.
 - [Cache common queries](/docs/use-dbt-semantic-layer/sl-cache) &mdash; Leverage result caching and declarative caching for common queries to speed up performance and reduce query computation.
 
