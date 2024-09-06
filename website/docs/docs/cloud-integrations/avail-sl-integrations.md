@@ -20,7 +20,7 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 ### Custom integration
 
 - [Exports](/docs/use-dbt-semantic-layer/exports) enable custom integration with additional tools that don't natively connect with the dbt Semantic Layer, such as PowerBI.
-- Develop custom integrations using different languages and tools, supported through JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
+- [Consume metrics](/docs/use-dbt-semantic-layer/consume-metrics) and develop custom integrations using different languages and tools, supported through [JDBC](/docs/dbt-cloud-apis/sl-jdbc), ADBC, and [GraphQL](/docs/dbt-cloud-apis/sl-graphql) APIs, and [Python SDK library](/docs/dbt-cloud-apis/sl-python). For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
 - Connect to any tool that supports SQL queries. These tools must meet one of the two criteria:
     - Offers a generic JDBC driver option (such as DataGrip) or
     - Is compatible Arrow Flight SQL JDBC driver version 12.0.0 or higher.

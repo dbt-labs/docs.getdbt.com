@@ -2,8 +2,10 @@
 title: "Set up the dbt Semantic Layer"
 id: setup-sl
 description: "Seamlessly set up the dbt Semantic Layer in dbt Cloud using intuitive navigation."
-sidebar_label: "Set up your Semantic Layer"
+sidebar_label: "Set up the Semantic Layer"
 tags: [Semantic Layer]
+pagination_next: "docs/use-dbt-semantic-layer/sl-architecture"
+pagination_prev: "guides/sl-snowflake-qs"
 ---
 
 With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. 

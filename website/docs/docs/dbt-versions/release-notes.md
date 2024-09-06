@@ -19,10 +19,13 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
 ## August 2024
-- **Behavior change:** GitHub is no longer supported for OAuth login to dbt Cloud. Use a supported [SSO or OAuth provider](/docs/cloud/manage-access/sso-overview) to securely manage access to your dbt Cloud account.
+- **New**: Configure metrics at finer time grains, such as an hour, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [dimensions](/docs/build/dimensions) for more information about time granularity.
 - **New**: You can now configure metrics at granularities at finer time grains, such as hour, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [dimensions](/docs/build/dimensions) for more information about time granularity.
+- **Enhancement**: Microsoft Excel now supports [saved selections](/docs/cloud-integrations/semantic-layer/excel#using-saved-selections) and [saved queries](/docs/cloud-integrations/semantic-layer/excel#using-saved-queries). Use Saved selections to save your query selections within the Excel application. The application also clears stale data in [trailing rows](/docs/cloud-integrations/semantic-layer/excel#other-settings) by default. To return your results and keep any previously selected data intact, un-select the **Clear trailing rows** option. 
+- **Behavior change:** GitHub is no longer supported for OAuth login to dbt Cloud. Use a supported [SSO or OAuth provider](/docs/cloud/manage-access/sso-overview) to securely manage access to your dbt Cloud account.
 
 ## July 2024
+- **Behavior change:** `target_schema` is no longer a required configuration for [snapshots](/docs/build/snapshots). You can now target different schemas for snapshots across development and deployment environments using the [schema config](/reference/resource-configs/schema).
 - **New:** [Connections](/docs/cloud/connect-data-platform/about-connections#connection-management) are now available under **Account settings** as a global setting. Previously, they were found under **Project settings**.  This is being rolled out in phases over the coming weeks.
 - **New:** Admins can now assign [environment-level permissions](/docs/cloud/manage-access/environment-permissions) to groups for specific roles.
 - **New:** [Merge jobs](/docs/deploy/merge-jobs) for implementing [continuous deployment (CD)](/docs/deploy/continuous-deployment) workflows are now GA in dbt Cloud. Previously, you had to either set up a custom GitHub action or manually build the changes every time a pull request is merged.
@@ -148,7 +151,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
 
-- **Behavior change:** Introduced the `require_resource_names_without_spaces` flag, opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt. Read [No spaces in resource names](/reference/global-configs/legacy-behaviors#no-spaces-in-resource-names) for more information.
+- **Behavior change:** Introduced the `require_resource_names_without_spaces` flag, opt-in and disabled by default. If set to `True`, dbt will raise an exception if it finds a resource name containing a space in your project or an installed package. This will become the default in a future version of dbt. Read [No spaces in resource names](/reference/global-configs/behavior-changes#no-spaces-in-resource-names) for more information.
 
 ## April 2024
 
@@ -160,7 +163,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   </Expandable>
   
-- **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and "Versionless" dbt Cloud). Read [Package override for built-in materialization](/reference/global-configs/legacy-behaviors#package-override-for-built-in-materialization) for more information.
+- **Behavior change:** Introduced the `require_explicit_package_overrides_for_builtin_materializations` flag, opt-in and disabled by default. If set to `True`, dbt will only use built-in materializations defined in the root project or within dbt, rather than implementations in packages. This will become the default in May 2024 (dbt Core v1.8 and "Versionless" dbt Cloud). Read [Package override for built-in materialization](/reference/global-configs/behavior-changes#package-override-for-built-in-materialization) for more information.
 
 **dbt Semantic Layer**
 - **New**: Use Saved selections to [save your query selections](/docs/cloud-integrations/semantic-layer/gsheets#using-saved-selections) within the [Google Sheets application](/docs/cloud-integrations/semantic-layer/gsheets). They can be made private or public and refresh upon loading.
@@ -182,7 +185,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 - **Fix:** `dbt parse` no longer shows an error when you use a list of filters (instead of just a string filter) on a metric.
 - **Fix:** `join_to_timespine` now properly gets applied to conversion metric input measures.
 - **Fix:** Fixed an issue where exports in Redshift were not always committing to the DWH, which also had the side-effect of leaving table locks open.
-- **Behavior change:** Introduced the `source_freshness_run_project_hooks` flag, opt-in and disabled by default. If set to `True`, dbt will include `on-run-*` project hooks in the `source freshness` command. This will become the default in a future version of dbt. Read [Project hooks with source freshness](/reference/global-configs/legacy-behaviors#project-hooks-with-source-freshness) for more information.
+- **Behavior change:** Introduced the `source_freshness_run_project_hooks` flag, opt-in and disabled by default. If set to `True`, dbt will include `on-run-*` project hooks in the `source freshness` command. This will become the default in a future version of dbt. Read [Project hooks with source freshness](/reference/global-configs/behavior-changes#project-hooks-with-source-freshness) for more information.
 
 
 ## February 2024
