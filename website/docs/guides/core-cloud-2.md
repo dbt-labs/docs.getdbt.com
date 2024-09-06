@@ -182,6 +182,7 @@ This guide should now have given you some insight and equipped you with a framew
 
 <ConfettiTrigger>
 
+
 Congratulations on finishing this guide, we hope it's given you insight into the considerations you need to take to best plan your move to dbt Cloud.
 
 For the next steps, you can continue exploring our 3-part-guide series on moving from dbt Core to dbt Cloud:
