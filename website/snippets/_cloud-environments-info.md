@@ -115,11 +115,11 @@ To enable, select **Account settings** from the gear menu and enable the **Parti
 
 ### Account access to Advanced CI features <Lifecycle status="beta" />
 
-To help increase the governance and improve the quality of the data, you can set up automation that tests code changes before merging them into production with [CI jobs](/docs/deploy/ci-jobs). You can also enable Advanced CI features, such as [compare changes](/docs/deploy/continuous-integration#compare-changes), that allow dbt Cloud account members to view details about the changes between what's currently in your production environment and the pull request's latest commit, providing observability into how data changes are affected by code changes.
+[Advanced CI](docs/deploy/advanced-ci) features, such as [compare changes](/docs/deploy/advanced-ci#compare-changes), allow dbt Cloud account members to view details about the changes between what's in the production environment and the pull request.
 
 To use Advanced CI features, your dbt Cloud account must have access to them. Ask your dbt Cloud administrator to enable Advanced CI features on your account, which they can do by selecting **Account settings** from the gear menu and choosing the **Enable account access to Advanced CI** option.
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Advanced CI option" />
+Once enabled, the **Run compare changes** option becomes available in the CI job settings for you to select.
 
-
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Advanced CI option in Account settings" />
 

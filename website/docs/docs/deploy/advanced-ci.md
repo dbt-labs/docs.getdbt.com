@@ -5,24 +5,45 @@ sidebar_label: "Advanced CI"
 description: "Advanced CI enables developers to compare changes by demonstrating the changes the code produces."
 ---
 
-Advanced CI helps developers answer the question, “Will this PR build the correct changes in production?” By demonstrating the data changes that code changes produce, users can ensure they always ship trusted data products as they develop.
+# Advanced CI <Lifecycle status="beta" />
 
-Customers control what data to use and may implement synthetic data if pre-production or development data is heavily regulated or sensitive. The data selected by users is cached on dbt Labs' systems for up to 30 days. dbt Labs does not access Advanced CI cached data for its benefit, and the data is only used to provide services to clients as they direct. This caching optimizes compute usage so that the entire comparison is not rerun against the data warehouse each time the **Compare** tab is viewed.
+[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these [CI jobs](/docs/deploy/ci-jobs), you can use Advanced CI features, such as compare changes, that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing.
 
-## Data caching
+:::info Beta feature
+The compare changes feature is currently in limited beta for select accounts. If you're interested in gaining access or learning more, please stay tuned for updates.
 
-When you run Advanced CI (by enabling **Compare changes**), dbt Cloud stores a cache of no more than 100 records for each modified model. By caching this data, users can view the examples of changed data without rerunning the comparison against the data warehouse every time. To display the changes, dbt Cloud uses a cached version of a sample of data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on.) set in the CI job's environment.
+dbt Labs plans to provide more Advanced CI features in the near future. Details coming soon.
 
-<Lightbox src="/img/docs/deploy/compare-changes.png" width="60%" title="The compare tab of the CI job in dbt Cloud" />
+:::
 
-The cache is encrypted, stored in Amazon S3 or Azure blob storage in your account’s region, and automatically deleted after 30 days. No data is retained on dbt Labs' systems beyond this period. Users accessing a CI run that is more than 30 days old will not be able to see the comparison; instead, they will see a message indicating that the data has expired. No other third-party subcontractor(s), aside from the storage subcontractor(s), has access to the cached data.
+## Compare changes feature {#compare-changes}
 
-<Lightbox src="/img/docs/deploy/compare-expired.png" width="60%" title="The compare tab once the results have expired" />
+For [CI jobs](/docs/deploy/ci-jobs) that have the **Run compare changes** option enabled, dbt Cloud compares the changes between the last applied state of the production environment (defaulting to deferral for lower compute costs) and the latest changes from the pull request, whenever a pull request is opened or new commits are pushed.  
 
-## Connection permissions
+dbt reports the comparison differences in:
 
-The **Compare changes** feature uses the same credentials as your CI job, as defined in your CI job’s environment. Since all users will be able to view the comparison results and the cached data, the account administrator must ensure that client CI credentials are appropriately restricted.
+- **dbt Cloud** &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns in the [Compare tab](/docs/deploy/run-visibility#compare-tab) from the [Job run details](/docs/deploy/run-visibility#job-run-details) page. 
+- **The pull request from your Git provider** &mdash; Shows a summary of the changes as a Git comment.
 
-In particular, if you use dynamic data masking in your data warehouse, the cached data will no longer be dynamically masked in the Advanced CI output, depending on the permissions of the users who view it. We recommend limiting user access to unmasked data or considering using synthetic data for the Advanced CI testing functionality.
+## About the cached data
 
-<Lightbox src="/img/docs/deploy/compare-credentials.png" width="60%" title="The credentials in the user settings" />
+When [comparing changes](#compare-changes), dbt Cloud stores a cache of no more than 100 records for each modified model. By caching this data, you can view the examples of changed data without rerunning the comparison against the data warehouse every time (optimizing for lower compute costs). To display the changes, dbt Cloud uses a cached version of a sample of the data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on) that's set in the CI job's environment. 
+
+You control what data to use, including synthetic data if pre-production or development data is heavily regulated or sensitive. 
+
+- The selected data is cached on dbt Labs' systems for up to 30 days. No data is retained on dbt Labs' systems beyond this period.
+- The cache is encrypted and stored in an Amazon S3 or Azure blob storage in your account’s region. 
+- dbt Labs will not access cached data from Advanced CI for its benefit and the data is only used to provide services as directed by you. 
+- Third-party subcontractors, other than storage subcontractors, will not have access to the cached data.
+
+If you access a CI job run that's more than 30 days old, you will not be able to see the comparison results. Instead, a message will appear indicating that the data has expired.
+
+<Lightbox src="/img/docs/deploy/compare-expired.png" width="60%" title="Example of message about expired data in the Compare tab" />
+
+## About connection permissions
+
+The compare changes feature uses the same credentials as the CI job, as defined in the CI job’s environment. The dbt Cloud administrator must ensure that client CI credentials are appropriately restricted since all users will be able to view the comparison results and the cached data.
+
+If using dynamic data masking in the data warehouse, the cached data will no longer be dynamically masked in the Advanced CI output, depending on the permissions of the users who view it. dbt Labs recommends limiting user access to unmasked data or considering using synthetic data for the Advanced CI testing functionality.
+
+<Lightbox src="/img/docs/deploy/compare-credentials.png" width="60%" title="Example of credentials in the user settings" />
