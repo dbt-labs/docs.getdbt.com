@@ -7,7 +7,7 @@ Starting from dbt v1.6, we added a new configuration file called `dependencies.y
 
 If your dbt project doesn't require the use of Jinja within the package specifications, you can simply rename your existing `packages.yml` to `dependencies.yml`. However, something to note is if your project's package specifications use Jinja, particularly for scenarios like adding an environment variable or a [Git token method](/docs/build/packages#git-token-method) in a private Git package specification, you should continue using the `packages.yml` file name.
 
-Examine the following tabs to understand the differences and determine when should use to `dependencies.yml` or `packages.yml`.
+Examine the following tabs to understand the differences and determine when should use to `dependencies.yml` or `packages.yml` (or both at the same time).
 
 <Tabs>
 <TabItem value="project" label="When to use Project dependencies">
