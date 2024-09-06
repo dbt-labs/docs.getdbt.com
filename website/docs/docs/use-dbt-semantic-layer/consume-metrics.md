@@ -5,7 +5,7 @@ sidebar_label: "Consume your metrics"
 tags: [Semantic Layer]
 ---
 
-After deploying your dbt Semantic Layer, the next important (and fun!) step is querying and consuming the metrics you’ve defined. This page links to key resources that guide you through the process of consuming metrics across different integrations, APIs, and tools, using various different [query syntaxes](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata).
+After [deploying](/docs/use-dbt-semantic-layer/deploy-sl) your dbt Semantic Layer, the next important (and fun!) step is querying and consuming the metrics you’ve defined. This page links to key resources that guide you through the process of consuming metrics across different integrations, APIs, and tools, using various different [query syntaxes](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata).
 
 Once your Semantic Layer is deployed, you can start querying your metrics using a variety of tools and APIs. Here are the main resources to get you started:
 

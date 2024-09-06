@@ -589,6 +589,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Configure",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/sl-architecture" },
           items: [
             "docs/use-dbt-semantic-layer/sl-architecture", 
             "docs/use-dbt-semantic-layer/setup-sl" 
@@ -597,6 +598,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Deploy metrics",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/deploy-sl" },
           items: [
             "docs/use-dbt-semantic-layer/deploy-sl", 
             "docs/use-dbt-semantic-layer/exports", 
@@ -606,6 +608,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Consume",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/consume-metrics" },
           items: [
             "docs/use-dbt-semantic-layer/consume-metrics",
           ]
