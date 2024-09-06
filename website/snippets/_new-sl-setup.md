@@ -84,7 +84,7 @@ To add multiple credentials and map them to service tokens:
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-credentials-service-token.jpg" width="90%" title="Use the configuration page to manage multiple credentials or link or unlink service tokens for more granular control."/>
 
 7. To delete a credential, go back to the **Credentials & service tokens** page.
-8. Under **Linked Service Tokens**, click **Edit**. Select **Delete Credential** to remove a credential.
+8. Under **Linked Service Tokens**, click **Edit** and, select **Delete Credential** to remove a credential.
 
    When you delete a credential, any service tokens mapped to that credential in the project will no longer work and will break for any end users.
 
