@@ -15,7 +15,7 @@ Moving metric definitions out of the BI layer and into the modeling layer allows
 
 Refer to the [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs) or [Why we need a universal semantic layer](https://www.getdbt.com/blog/universal-semantic-layer/)  blog post to learn more.
 
-## Get started
+## Get started with the dbt Semantic Layer
 
 <!-- this partial lives here: https://github.com/dbt-labs/docs.getdbt.com/website/snippets/_sl-plan-info. Use it on diff pages and to tailor the message depending which instance can access the SL and what product lifecycle we're in. -->
 
