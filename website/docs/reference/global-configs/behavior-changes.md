@@ -1,7 +1,7 @@
 ---
-title: "Legacy behaviors"
-id: "legacy-behaviors"
-sidebar: "Legacy behaviors"
+title: "Behavior changes"
+id: "behavior-changes"
+sidebar: "Behavior changes"
 ---
 
 Most flags exist to configure runtime behaviors with multiple valid choices. The right choice may vary based on the environment, user preference, or the specific invocation.
@@ -12,9 +12,30 @@ Another category of flags provides existing projects with a migration window for
 - Providing maintainability of dbt software. Every fork in behavior requires additional testing & cognitive overhead that slows future development. These flags exist to facilitate migration from "current" to "better," not to stick around forever.
 
 These flags go through three phases of development:
-1. **Introduction (disabled by default):** dbt adds logic to support both 'old' + 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior.
+1. **Introduction (disabled by default):** dbt adds logic to support both 'old' and 'new' behaviors. The 'new' behavior is gated behind a flag, disabled by default, preserving the old behavior.
 2. **Maturity (enabled by default):** The default value of the flag is switched, from `false` to `true`, enabling the new behavior by default. Users can preserve the 'old' behavior and opt out of the 'new' behavior by setting the flag to `false` in their projects. They may see deprecation warnings when they do so.
 3. **Removal (generally enabled):** After marking the flag for deprecation, we remove it along with the 'old' behavior it supported from the dbt codebases. We aim to support most flags indefinitely, but we're not committed to supporting them forever. If we choose to remove a flag, we'll offer significant advance notice.
+
+## What is a behavior change?
+
+The same dbt project code and the same dbt commands return one result before the behavior change, and they return a different result after the behavior change.
+
+Examples of behavior changes:
+- dbt begins raising a validation _error_ that it didn't previously.
+- dbt changes the signature of a built-in macro. Your project has a custom reimplementation of that macro. This could lead to errors, because your custom reimplementation will be passed arguments it cannot accept.
+- A dbt adapter renames or removes a method that was previously available on the `{{ adapter }}` object in the dbt-Jinja context.
+- dbt makes a breaking change to contracted metadata artifacts by deleting a required field, changing the name or type of an existing field, or removing the default value of an existing field ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#breaking-changes)).
+- dbt removes one of the fields from [structured logs](/reference/events-logging#structured-logging).
+
+The following are **not** behavior changes:
+- Fixing a bug where the previous behavior was defective, undesirable, or undocumented.
+- dbt begins raising a _warning_ that it didn't previously.
+- dbt updates the language of human-friendly messages in log events.
+- dbt makes a non-breaking change to contracted metadata artifacts by adding a new field with a default, or deleting a field with a default ([README](https://github.com/dbt-labs/dbt-core/blob/37d382c8e768d1e72acd767e0afdcb1f0dc5e9c5/core/dbt/artifacts/README.md#non-breaking-changes)).
+
+The vast majority of changes are not behavior changes. Because introducing these changes does not require any action on the part of users, they are included in continuous releases of dbt Cloud and patch releases of dbt Core.
+
+By contrast, behavior change migrations happen slowly, over the course of months, facilitated by behavior change flags. The flags are loosely coupled to the specific dbt runtime version. By setting flags, users have control over opting in (and later opting out) of these changes.
 
 ## Behavior change flags
 

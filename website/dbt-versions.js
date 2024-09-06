@@ -10,15 +10,13 @@
  * @property {string} EOLDate "End of Life" date which is used to show the EOL banner
  * @property {boolean} isPrerelease Boolean used for showing the prerelease banner
  * @property {string} customDisplay Allows setting a custom display name for the current version
+ * 
+ * customDisplay for dbt Cloud should be a version ahead of latest dbt Core release (GA or beta).
  */
 exports.versions = [
   {
     version: "1.9.1",
     customDisplay: "Cloud (Versionless)",
-  },
-  {
-    version: "1.9",
-    isPrerelease: true,
   },
   {
     version: "1.8",

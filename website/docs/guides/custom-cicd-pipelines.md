@@ -10,6 +10,9 @@ hide_table_of_contents: true
 tags: ['dbt Cloud', 'Orchestration', 'CI']
 level: 'Intermediate'
 recently_updated: true
+search_weight: "heavy"
+keywords:
+  - bitbucket pipeline, custom pipelines, github, gitlab, azure devops, ci/cd custom pipeline
 ---
 <div style={{maxWidth: '900px'}}>
 
@@ -18,7 +21,6 @@ recently_updated: true
 One of the core tenets of dbt is that analytic code should be version controlled. This provides a ton of benefit to your organization in terms of collaboration, code consistency, stability, and the ability to roll back to a prior version. There’s an additional benefit that is provided with your code hosting platform that is often overlooked or underutilized. Some of you may have experience using dbt Cloud’s [webhook functionality](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration) to run a job when a PR is created. This is a fantastic capability, and meets most use cases for testing your code before merging to production. However, there are circumstances when an organization needs additional functionality, like running workflows on every commit (linting), or running workflows after a merge is complete. In this article, we will show you how to setup custom pipelines to lint your project and trigger a dbt Cloud job via the API.
 
 A note on parlance in this article since each code hosting platform uses different terms for similar concepts. The terms `pull request` (PR) and `merge request` (MR) are used interchangeably to mean the process of merging one branch into another branch.
-
 
 ### What are pipelines?
 
