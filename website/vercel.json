@@ -600,6 +600,11 @@
       "permanent": true
     },
     {
+      "source": "/reference/global-configs/legacy-behaviors",
+      "destination": "/reference/global-configs/behavior-changes",
+      "permanent": true
+    },
+    {
       "source": "/reference/global-configs/yaml-configurations",
       "destination": "/reference/global-configs/project-flags",
       "permanent": true
