@@ -427,11 +427,11 @@ To take advantage of this capability, you will need to add compute blocks to you
 
         ### Name that you will use to refer to an alternate compute
        Compute1:
-          http_path: [‘/sql/your/http/path’] # Required of each alternate compute
+          http_path: ['/sql/your/http/path'] # Required of each alternate compute
 
         ### A third named compute, use whatever name you like
         Compute2:
-          http_path: [‘/some/other/path’] # Required of each alternate compute
+          http_path: ['/some/other/path'] # Required of each alternate compute
       ...
 
     <target-name>: # additional targets
@@ -442,11 +442,11 @@ To take advantage of this capability, you will need to add compute blocks to you
 
         ### Name that you will use to refer to an alternate compute
         Compute1:
-          http_path: [‘/sql/your/http/path’] # Required of each alternate compute
+          http_path: ['/sql/your/http/path'] # Required of each alternate compute
 
         ### A third named compute, use whatever name you like
         Compute2:
-          http_path: [‘/some/other/path’] # Required of each alternate compute
+          http_path: ['/some/other/path'] # Required of each alternate compute
       ...
 
 ```
