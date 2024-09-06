@@ -589,10 +589,10 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Configure",
-          link: { type: "doc", id: "docs/use-dbt-semantic-layer/sl-architecture" },
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/sl-setup-sl" },
           items: [
-            "docs/use-dbt-semantic-layer/sl-architecture", 
-            "docs/use-dbt-semantic-layer/setup-sl" 
+            "docs/use-dbt-semantic-layer/setup-sl",
+            "docs/use-dbt-semantic-layer/sl-architecture",  
           ]
         },
         {
