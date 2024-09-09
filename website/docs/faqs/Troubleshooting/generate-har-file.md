@@ -68,4 +68,4 @@ Remove or hide any confidential or personally identifying information before you
 9. Upload the HAR file to the dbt Support ticket thread.
 
 ### Additional resources
-- Check out the [How to generate a HAR file in Chrome](https://www.loom.com/share/cabdb7be338243f188eb619b4d1d79ca) video for a visual guide on how to generate HAR files in Chrome.
+Check out the [How to generate a HAR file in Chrome](https://www.loom.com/share/cabdb7be338243f188eb619b4d1d79ca) video for a visual guide on how to generate HAR files in Chrome.
