@@ -86,10 +86,12 @@ You can embed the data health tile iFrame in PowerBI using PowerBI Pro Online, F
 Follow these steps to embed the data health tile in PowerBI:
 
 1. Create a dashboard in PowerBI and connect to your database to pull in the data.
-2. Create a new measurement with the iFrame.
-3. In dbt Explorer, navigate to the exposure and expand the [**Embed data health into your dashboard**](/docs/collaborate/data-tile#embed-in-your-dashboard) toggle. 
+2. Create a new PowerBI measure by right-clicking on your **Data**, **More options**, and then **New measure**.
+<Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-measure.png" width="80%" title="Create a new PowerBI measure."/>
+
+3. Navigate to dbt Explorer, select the exposure, and expand the [**Embed data health into your dashboard**](/docs/collaborate/data-tile#embed-in-your-dashboard) toggle. 
 4. Go to the **iFrame** tab and copy the iFrame code. Make sure the Metadata Only token is already set up.
-5. In PowerBI, under the **Measure tools** tab, replace your values with the iFrame code in the calculation window.
+5. In PowerBI, paste the iFrame code you copied into your measure calculation window. The iFrame code should look like this:
 
     ```html
         Website =
