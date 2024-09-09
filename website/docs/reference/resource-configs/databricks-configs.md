@@ -410,31 +410,31 @@ To take advantage of this capability, you will need to add compute blocks to you
 
 ```yaml
 
-<profile-name>:
-  target: <target-name> # this is the default target
+profile-name:
+  target: target-name # this is the default target
   outputs:
-    <target-name>:
+    target-name:
       type: databricks
-      catalog: [optional catalog name if you are using Unity Catalog]
-      schema: [schema name] # Required        
-      host: [yourorg.databrickshost.com] # Required
+      catalog: optional catalog name if you are using Unity Catalog
+      schema: schema name # Required        
+      host: yourorg.databrickshost.com # Required
 
       ### This path is used as the default compute
-      http_path: [/sql/your/http/path] # Required        
+      http_path: /sql/your/http/path # Required        
       
       ### New compute section
       compute:
 
         ### Name that you will use to refer to an alternate compute
        Compute1:
-          http_path: [‘/sql/your/http/path’] # Required of each alternate compute
+          http_path: '/sql/your/http/path' # Required of each alternate compute
 
         ### A third named compute, use whatever name you like
         Compute2:
-          http_path: [‘/some/other/path’] # Required of each alternate compute
+          http_path: '/some/other/path' # Required of each alternate compute
       ...
 
-    <target-name>: # additional targets
+    target-name: # additional targets
       ...
       ### For each target, you need to define the same compute,
       ### but you can specify different paths
@@ -442,11 +442,11 @@ To take advantage of this capability, you will need to add compute blocks to you
 
         ### Name that you will use to refer to an alternate compute
         Compute1:
-          http_path: [‘/sql/your/http/path’] # Required of each alternate compute
+          http_path: '/sql/your/http/path' # Required of each alternate compute
 
         ### A third named compute, use whatever name you like
         Compute2:
-          http_path: [‘/some/other/path’] # Required of each alternate compute
+          http_path: '/some/other/path' # Required of each alternate compute
       ...
 
 ```
