@@ -33,29 +33,27 @@ Remove or hide any confidential or personally identifying information before you
 
 ### Mozilla Firefox
 
-1. Open Firefox
-2. Go to the page to be recorded.
-3. Click the application menu and then **More tools** --> **Web Developer Tools**.
-4. In the developer tools docked tab, select **Network**.
-5. Go to the page where the issue occurred and reproduce the issue. The page automatically starts recording as you navigate.
-6. When you're finished, click **Pause/Resume recording network log**.
-7. Right-click anywhere in the **File** column and select **Save All as HAR**.
-8. Save the HAR file.
-9. Upload the HAR file to the dbt Support ticket thread.
+1. Open Firefox.
+2. Click the application menu and then **More tools** --> **Web Developer Tools**.
+3. In the developer tools docked tab, select **Network**.
+4. Go to the page where the issue occurred and reproduce the issue. The page automatically starts recording as you navigate.
+5. When you're finished, click **Pause/Resume recording network log**.
+6. Right-click anywhere in the **File** column and select **Save All as HAR**.
+7. Save the HAR file.
+8. Upload the HAR file to the dbt Support ticket thread.
 
 ### Apple Safari
 
 1. Open Safari.
 2. In case the **Develop** menu doesn't appear in the menu bar, go to **Safari** and then **Settings**.
 3. Click **Advanced**.
-4. Select the **Show features for web developers** checkbox.
-5. Go to the page to be recorded.
-6. From the **Develop** menu, select **Show Web Inspector**.
-7. Click the **Network tab**.
-8. Go to the page where the issue occurred and reproduce the issue.
-9. When you're finished, click **Export**.
-10. Save the file.
-11. Upload the HAR file to the dbt Support ticket thread.
+4. Select the **Show features for web developers** checkbox..
+5. From the **Develop** menu, select **Show Web Inspector**.
+6. Click the **Network tab**.
+7. Go to the page where the issue occurred and reproduce the issue.
+8. When you're finished, click **Export**.
+9. Save the file.
+10. Upload the HAR file to the dbt Support ticket thread.
 
 ### Microsoft Edge
 
@@ -63,7 +61,7 @@ Remove or hide any confidential or personally identifying information before you
 2. Click the **Settings and more** menu (...) to the right of the toolbar and then select **More tools** --> **Developer tools**.
 3. Click **Network**.
 4. Ensure that Microsoft Edge is recording. A red button (🔴) indicates that a recording is already in progress. Otherwise, click **Record network log**.
-5. Visit the page and reproduce the issue.
+5. Go to the page where the issue occurred and reproduce the issue.
 6. When you're finished, click **Stop recording network log**.
 7. Click **Export HAR** (the down arrow icon) or press **Ctrl + S** to export the file as HAR.
 8. Save the HAR file.
