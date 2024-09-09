@@ -112,7 +112,9 @@ Follow these steps to embed the data health tile in PowerBI:
 
 <TabItem value="tableau" label="Tableau example">
 
-Here’s an example with Tableau, where you can embed the iFrame in a web page object:
+Follow these steps to embed the data health tile in Tableau:
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/tableau-example.png" width="80%" title="Embed data health tile iFrame in Tableau"/>
 
 1. Create a dashboard in Tableau and connect to your database to pull in the data.
 2. Ensure you've copied the iFrame snippet available in dbt Explorer's **Data health** section, under the **Embed data health into your dashboard** toggle.
