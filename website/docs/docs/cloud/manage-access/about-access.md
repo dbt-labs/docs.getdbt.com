@@ -12,6 +12,8 @@ pagination_prev: null
 
 :::
 
+# About user access
+
 You can regulate access to dbt Cloud by various measures, including licenses, groups, permissions, and role-based access control (RBAC). To understand the possible approaches to user access to dbt Cloud features and functionality, you should first know how we approach users and groups.
 
 ### Users
