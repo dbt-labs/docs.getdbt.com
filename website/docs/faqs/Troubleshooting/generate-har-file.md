@@ -27,7 +27,7 @@ Remove or hide any confidential or personally identifying information before you
 5. Select **Preserve Log**.
 6. Clear any existing logs by clicking **Clear network log** (🚫).
 7. Go to the page where the issue occurred and reproduce the issue.
-8. Click Export HAR (the down arrow icon) to export the file as HAR. The icon is located on the same row as the **Clear network log** button.
+8. Click **Export HAR** (the down arrow icon) to export the file as HAR. The icon is located on the same row as the **Clear network log** button.
 9. Save the HAR file.
 10. Upload the HAR file to the dbt Support ticket thread.
 
@@ -36,7 +36,7 @@ Remove or hide any confidential or personally identifying information before you
 1. Open Firefox
 2. Go to the page to be recorded.
 3. Click the application menu and then **More tools** --> **Web Developer Tools**.
-4. In the developer tools docked tab select **Network**.
+4. In the developer tools docked tab, select **Network**.
 5. Go to the page where the issue occurred and reproduce the issue. The page automatically starts recording as you navigate.
 6. When you're finished, click **Pause/Resume recording network log**.
 7. Right-click anywhere in the **File** column and select **Save All as HAR**.
