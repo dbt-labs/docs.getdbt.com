@@ -47,7 +47,7 @@ Remove or hide any confidential or personally identifying information before you
 1. Open Safari.
 2. In case the **Develop** menu doesn't appear in the menu bar, go to **Safari** and then **Settings**.
 3. Click **Advanced**.
-4. Select the **Show features for web developers** checkbox..
+4. Select the **Show features for web developers** checkbox.
 5. From the **Develop** menu, select **Show Web Inspector**.
 6. Click the **Network tab**.
 7. Go to the page where the issue occurred and reproduce the issue.
