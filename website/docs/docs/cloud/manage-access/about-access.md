@@ -36,9 +36,9 @@ Groups in dbt Cloud serve much of the same purpose as they do in traditional dir
 
 There are three default groups available as soon as you create your dbt Cloud account (the person who created the account is added to all three automatically):
 
-- **Owner:** This group is for individuals responsible for the entire account. You can not change the permissions. By default, dbt Cloud adds new users to this group.
+- **Owner:** This group is for individuals responsible for the entire account. You can not change the permissions.
 - **Member:** This group is for the general members of your organization, who will also have full access to the account. You can not change the permissions. By default, dbt Cloud adds new users to this group.
-- **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. 
+- **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, dbt Cloud adds new users to this group.
 
 Create new groups from the **Groups & Licenses** section of the **Account settings**. If you use an external IdP for SSO, you can sync those SSO groups to dbt Cloud from the **Group details** pane when creating or editing existing groups.
 
