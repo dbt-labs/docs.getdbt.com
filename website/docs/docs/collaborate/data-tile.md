@@ -77,31 +77,6 @@ The following examples show how to embed the data health tile in Tableau and Pow
 
 <Tabs>
 
-<TabItem value="tableau" label="Tableau example">
-
-Here’s an example with Tableau, where you can embed the iFrame in a web page object:
-
-1. Create a dashboard in Tableau and connect to your database to pull in the data.
-2. Ensure you've copied the iFrame snippet available in dbt Explorer's **Data health** section, under the **Embed data health into your dashboard** toggle.
-3. Embed the snippet in your dashboard.
-
-    `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?uniqueId=<exposure_unique_id>&environmentType=production&environmentId=<environment_id>&token=<metadata_token>' />`
-
-    *Note, replace the placeholders with your actual values.*
-
-<DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-iframe.jpg" width="70%" title="Example of embedded iFrame" />
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-stale.jpg" width="60%" title="Example of stale of degraded Data health tile in your dashboard." />
-</DocCarousel>
-
-   - **For job-based exposure tile** &mdash; Insert the following fields into the following iFrame. Then embed them with your dashboard. The next [section](#job-based-data-health) will have more details on the job-based exposure tile.
-      - `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&environment_id=<environment_id>&token=<metadata_token>' />`
-
-        *Note, replace the placeholders with your actual values.*
-
-</TabItem>
-
 <TabItem value="powerbi" label="PowerBI example">
 
 You can embed the data health tile iFrame in PowerBI using PowerBI Pro Online, Fabric PowerBI, or PowerBI Desktop. 
@@ -130,6 +105,31 @@ Follow these steps to embed the data health tile in PowerBI:
 10. Drag the metric with the iFrame code into the HTML content widget in PowerBI. This should now display your data health tile.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-final.png" width="80%" title="Drag the metric with the iFrame code into the HTML content widget in PowerBI. This should now display your data health tile."/>
+
+</TabItem>
+
+<TabItem value="tableau" label="Tableau example">
+
+Here’s an example with Tableau, where you can embed the iFrame in a web page object:
+
+1. Create a dashboard in Tableau and connect to your database to pull in the data.
+2. Ensure you've copied the iFrame snippet available in dbt Explorer's **Data health** section, under the **Embed data health into your dashboard** toggle.
+3. Embed the snippet in your dashboard.
+
+    `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?uniqueId=<exposure_unique_id>&environmentType=production&environmentId=<environment_id>&token=<metadata_token>' />`
+
+    *Note, replace the placeholders with your actual values.*
+
+<DocCarousel slidesPerView={1}>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-iframe.jpg" width="70%" title="Example of embedded iFrame" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-stale.jpg" width="60%" title="Example of stale of degraded Data health tile in your dashboard." />
+</DocCarousel>
+
+   - **For job-based exposure tile** &mdash; Insert the following fields into the following iFrame. Then embed them with your dashboard. The next [section](#job-based-data-health) will have more details on the job-based exposure tile.
+      - `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&environment_id=<environment_id>&token=<metadata_token>' />`
+
+        *Note, replace the placeholders with your actual values.*
 
 </TabItem>
 </Tabs>
