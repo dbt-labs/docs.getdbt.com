@@ -23,7 +23,12 @@ The data health tile:
 
 Data health tiles rely on [exposures](/docs/build/exposures) to surface trust signals in your dashboards. When you configure exposures in your dbt project, you are explicitly defining how specific outputs—like dashboards or reports—depend on your data models.
 
+<DocCarousel slidesPerView={1}>
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
+</DocCarousel>
+
+
 
 ## Prerequisites
 
@@ -125,12 +130,6 @@ Follow these steps to embed the data health tile in Tableau:
     `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?uniqueId=<exposure_unique_id>&environmentType=production&environmentId=<environment_id>&token=<metadata_token>' />`
 
     *Note, replace the placeholders with your actual values.*
-
-<DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-iframe.jpg" width="70%" title="Example of embedded iFrame" />
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-stale.jpg" width="60%" title="Example of stale of degraded Data health tile in your dashboard." />
-</DocCarousel>
 
    - **For job-based exposure tile** &mdash; Insert the following fields into the following iFrame. Then embed them with your dashboard. The next [section](#job-based-data-health) will have more details on the job-based exposure tile.
       - `<iframe src='https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&environment_id=<environment_id>&token=<metadata_token>' />`
