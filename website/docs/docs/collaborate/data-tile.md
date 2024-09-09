@@ -106,6 +106,8 @@ Follow these steps to embed the data health tile in PowerBI:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-final.png" width="80%" title="Drag the metric with the iFrame code into the HTML content widget in PowerBI. This should now display your data health tile."/>
 
+*Refer to [this tutorial](https://www.youtube.com/watch?v=SUm9Hnq8Th8) for additional info on embedding a website into your Power BI report.*
+
 </TabItem>
 
 <TabItem value="tableau" label="Tableau example">
