@@ -98,7 +98,7 @@ Follow these steps to embed the data health tile in PowerBI:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-measure-tools.png" width="100%" title="In the 'Measure tools' tab, replace your values with the iFrame code."/>
 
-6. PowerBI desktop doesn't have HTML rendering by default, so you need to install an HTML visual from the PowerBI Visuals Store.
+6. PowerBI desktop doesn't support HTML rendering by default, so you need to install an HTML component from the PowerBI Visuals Store.
 7. To do this, go to **Build visuals** and then **Get more visuals**.
 8. Login with your PowerBI account.
 9. Search for an HTML visual and install it. For example, [HTML content](https://appsource.microsoft.com/en-us/product/power-bi-visuals/WA200001930?tab=Overview).
