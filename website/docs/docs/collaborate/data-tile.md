@@ -24,11 +24,9 @@ The data health tile:
 Data health tiles rely on [exposures](/docs/build/exposures) to surface trust signals in your dashboards. When you configure exposures in your dbt project, you are explicitly defining how specific outputs—like dashboards or reports—depend on your data models.
 
 <DocCarousel slidesPerView={1}>
-<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
 <Lightbox src="/img/docs/collaborate/dbt-explorer/data-tile-pass.jpg" width="60%" title="Example of passing Data health tile in your dashboard." />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/data-tiles.png" width="60%" title="Embed data health tiles in your dashboards to distill trust signals for data consumers." />
 </DocCarousel>
-
-
 
 ## Prerequisites
 
@@ -103,7 +101,7 @@ Follow these steps to embed the data health tile in PowerBI:
         "<iframe src='https://1234.metadata.us1.dbt.com/exposure-tile?uniqueId=exposure.jaffle_shop.OrderQualityDashboard&environmentType=staging&environmentId=123456789&token=YOUR_METADATA_TOKEN' title='Exposure status tile' height='400'></iframe>"
     ```
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-measure-tools.png" width="100%" title="In the 'Measure tools' tab, replace your values with the iFrame code."/>
+    <Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-measure-tools.png" width="90%" title="In the 'Measure tools' tab, replace your values with the iFrame code."/>
 
 6. PowerBI desktop doesn't support HTML rendering by default, so you need to install an HTML component from the PowerBI Visuals Store.
 7. To do this, go to **Build visuals** and then **Get more visuals**.
