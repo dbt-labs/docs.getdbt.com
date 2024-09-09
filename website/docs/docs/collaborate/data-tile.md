@@ -101,7 +101,7 @@ Follow these steps to embed the data health tile in PowerBI:
 6. PowerBI desktop doesn't support HTML rendering by default, so you need to install an HTML component from the PowerBI Visuals Store.
 7. To do this, go to **Build visuals** and then **Get more visuals**.
 8. Login with your PowerBI account.
-9. Search for an HTML visual and install it. For example, [HTML content](https://appsource.microsoft.com/en-us/product/power-bi-visuals/WA200001930?tab=Overview).
+9. There are several third-party HTML visuals. The one tested for this guide is [HTML content](https://appsource.microsoft.com/en-us/product/power-bi-visuals/WA200001930?tab=Overview). Install it, but please keep in mind it's a third-party plugin not created or supported by dbt Labs.
 10. Drag the metric with the iFrame code into the HTML content widget in PowerBI. This should now display your data health tile.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/power-bi-final.png" width="80%" title="Drag the metric with the iFrame code into the HTML content widget in PowerBI. This should now display your data health tile."/>
