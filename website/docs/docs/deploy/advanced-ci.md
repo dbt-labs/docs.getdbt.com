@@ -7,7 +7,7 @@ description: "Advanced CI enables developers to compare changes by demonstrating
 
 # Advanced CI <Lifecycle status="beta" />
 
-[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these [CI jobs](/docs/deploy/ci-jobs), you can use Advanced CI features, such as compare changes, that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing.
+[Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing.
 
 :::info Beta feature
 The compare changes feature is currently in limited beta for select accounts. If you're interested in gaining access or learning more, please stay tuned for updates.
@@ -40,7 +40,7 @@ If you access a CI job run that's more than 30 days old, you will not be able to
 
 <Lightbox src="/img/docs/deploy/compare-expired.png" width="60%" title="Example of message about expired data in the Compare tab" />
 
-## About connection permissions
+## Connection permissions
 
 The compare changes feature uses the same credentials as the CI job, as defined in the CI job’s environment. The dbt Cloud administrator must ensure that client CI credentials are appropriately restricted since all users will be able to view the comparison results and the cached data.
 
