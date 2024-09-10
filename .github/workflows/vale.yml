@@ -63,6 +63,8 @@ jobs:
           echo "Changed files: ${{ env.CHANGED_FILES }}"
 
       - name: Run vale with reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ -z "${{ env.CHANGED_FILES }}" ]; then
             echo "No changed files to lint."
