@@ -13,20 +13,36 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure the full history is fetched
+          fetch-depth: 0
 
-      - name: Set up Vale
-        uses: errata-ai/vale-action@reviewdog
+      - name: Set up Python
+        uses: actions/setup-python@v5.1.0
         with:
-          files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
-          token: ${{secrets.REVIEWDOG_GITHUB_API_TOKEN}}
-          reporter: github-pr-check
-          version: 2.17.0
+          python-version: '3.11'
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Vale
+        run: pip install vale
+
+      - name: Cache Vale
+        uses: actions/cache@v3
+        with:
+          path: ~/.vale
+          key: ${{ runner.os }}-vale-${{ hashFiles('**/.vale.ini') }}
+          restore-keys: |
+            ${{ runner.os }}-vale-
 
       - name: Check if Vale is installed
         run: |
           if ! command -v vale &> /dev/null; then
-            echo "Vale is not installed."
+            echo "Vale is not installed correctly."
             exit 1
           fi
 
