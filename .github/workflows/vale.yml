@@ -15,19 +15,20 @@ jobs:
         with:
           fetch-depth: 0  # Ensure the full history is fetched
 
-      - name: Cache Vale binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.vale
-          key: ${{ runner.os }}-vale-${{ hashFiles('**/.vale.ini') }}
-
-      - name: Set up vale
+      - name: Set up Vale
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
-          token: ${{secrets.VALE_GITHUB_TOKEN}}
+          token: ${{secrets.REVIEWDOG_GITHUB_API_TOKEN}}
           reporter: github-pr-check
           version: 2.17.0
+
+      - name: Check if Vale is installed
+        run: |
+          if ! command -v vale &> /dev/null; then
+            echo "Vale is not installed."
+            exit 1
+          fi
 
       - name: Get changed files
         id: changed-files
@@ -39,9 +40,6 @@ jobs:
       - name: Debug CHANGED_FILES
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
-
-      - name: Set up Reviewdog
-        uses: reviewdog/action-setup@v1
 
       - name: Run vale with reviewdog
         run: |
