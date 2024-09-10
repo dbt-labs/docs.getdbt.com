@@ -6,7 +6,10 @@ description: "Learn about continuous deployment (CD) workflows "
 
 To help you improve data transformations and ship data products faster, you can run [merge jobs](/docs/deploy/merge-jobs) to implement a continuous deployment (CD) workflow in dbt Cloud. Merge jobs can automatically build modified models whenever a pull request (PR) merges, making sure the latest code changes are in production. You don't have to wait for the next scheduled job to run to get the latest updates. 
 
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/cd-workflow.png" width="90%" title="Workflow of continuous deployment in dbt Cloud"/>
+
 You can also implement continuous integration (CI) in dbt Cloud, which can help further to reduce the time it takes to push changes to production and improve code quality. To learn more, refer to [Continuous integration in dbt Cloud](/docs/deploy/continuous-integration). 
+
 
 ## How merge jobs work
 
