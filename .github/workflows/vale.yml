@@ -70,6 +70,6 @@ jobs:
             echo "No changed files to lint."
           else
             for file in ${{ env.CHANGED_FILES }}; do
-              vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
+              vale --output=checkstyle "$file" | reviewdog -f=checkstyle -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
             done
           fi
