@@ -37,7 +37,7 @@ The following diagram provides an illustration of the architecture:
 
 Log in to the dbt Snowflake Native App using your regular Snowflake login authentication method. The Snowflake user must have a corresponding dbt Cloud user with a _[developer license](/docs/cloud/manage-access/seats-and-users)_. Previously, this wasn't a requirement during the feature [Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
 
-If your Snowflake Native App is already configured, you will be prompted to [link credentials](#link-credentials) the next time you access dbt Cloud from the app. This is a one-time process. If you don't have a dbt Cloud account associated with a developer license, you will be denied access to the dbt Cloud environment and will need an admin to create the account.
+If your Snowflake Native App is already configured, you will be prompted to [link credentials](#link-credentials) the next time you access dbt Cloud from the app. This is a one-time process. If you don't have a dbt Cloud account associated with a developer license, you will be denied access to the dbt Cloud environment and will need an admin to assist.
 
 _Users with IT or read-only licenses will be denied access to dbt Cloud via the Snowflake Native App._
 
@@ -60,7 +60,7 @@ During the early stages of the Snowflake Native App preview, users were only req
 
 For existing accounts with the Snowflake Native App configured, users will be prompted to authenticate with dbt Cloud the next time they log in. This is a one-time process if they have a user in dbt Cloud. If they don’t have a dbt Cloud user, they will be denied access, and an admin will need to [create one](/docs/cloud/manage-access/invite-users). 
 
-1. When you attempt to access the dbt Cloud platform from the Snowflake Native App, you will be prompted to link your accounts.
+1. When you attempt to access the dbt Cloud platform from the Snowflake Native App, you will be prompted to link your account.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflake-link-account-prompt.png" width="90%" title="The Snowflake Native App prompt to link accounts" />
 
