@@ -5,7 +5,7 @@ description: "Configure the Amazon Athena data platform connection in dbt Cloud.
 sidebar_label: "Connect Amazon Athena"
 ---
 
-# Connect Amazon Athena <Lifecycle status="beta" />
+# Connect Amazon Athena <Lifecycle status="preview" />
 
 :::note beta
 
