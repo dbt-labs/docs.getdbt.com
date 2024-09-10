@@ -40,13 +40,15 @@ import Tools from '/snippets/_sl-excel-gsheets.md';
 type="Google Sheets"
 bullet_1="The custom menu operation has a timeout limit of six (6) minutes."
 bullet_2="If you're using this extension, make sure you're signed into Chrome with the same Google profile you used to set up the Add-On. Log in with one Google profile at a time as using multiple Google profiles at once might cause issues."
-queryBuilder="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg"
+queryBuilder="/img/docs/dbt-cloud/semantic-layer/query-builder.png"
+PrivateSelections="You can also make these selections private or public. Public selections mean your inputs are available in the menu to everyone on the sheet. 
+Private selections mean your inputs are only visible to you. Note that anyone added to the sheet can still see the data from these private selections, but they won't be able to interact with the selection in the menu or benefit from the automatic refresh."
 />
 
-<!-- adding this section here temporarily (not incl limited policy) until saved queries is available for excel. when saved queries becomes available for excel365 integration:
-1. remove the below content (tip and using saved queries header
-2. then go to the website/snippets/_sl-excel-gsheets.md snippet
-3. And uncomment line 97 - 118 to make saved queries content available to gsheets AND excel -->
+<!-- this comment explains the following:
+1. uses the /snippets/_sl-excel-gsheets.md snippet file to render gsheets and excel content since they're similar
+2. removes the below content (tip and using saved queries header) so it's not duplicative. removing the below content fully a month or so after the launch.
+3. keep tje limited policy section in gsheets only and do not add to the /snippets/_sl-excel-gsheets.md snippet file.
 
 ## Using saved selections
 
@@ -56,7 +58,6 @@ Saved selections allow you to save inputs in the **Query Builder** to easily acc
 - Save the selection by selecting the arrow next to the **Query** button and then select **Query & Save Selection**.
 - The application saves these selections, allowing you to view and edit them from the hamburger menu under **Saved Selections**.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/gsheets-query-builder.jpg" width="25%" title="Query and save selections in the Query Builder using the arrow next to the Query button." />
 
 You can also make these selections private or public:
 
@@ -83,6 +84,7 @@ Access <a href="/docs/build/saved-queries">saved queries</a>, powered by MetricF
 - Navigate to **Saved Queries** to access the ones available to you.
 - You can also select **Build Selection**, which allows you to explore the existing query. This won't change the original query defined in the code.
   - If you use a [`where` filter](/docs/build/saved-queries#where-clause) in a saved query, Google Sheets displays the advanced syntax for this filter.
+-->
 
 **Limited use policy disclosure**
 

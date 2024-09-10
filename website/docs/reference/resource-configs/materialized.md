@@ -81,3 +81,14 @@ select ...
 
 You can also configure [custom materializations](/guides/create-new-materializations?step=1) in dbt. Custom materializations are a powerful way to extend dbt's functionality to meet your specific needs.
 
+## Creation Precedence
+<!-- This text is copied from /reference/resource-configs/on_configuration_change.md -->
+Materializations are implemented following this "drop through" life cycle:
+
+1. If a model does not exist with the provided path, create the new model.
+2. If a model exists, but has a different type, drop the existing model and create the new model.
+3. If [`--full-refresh`](/reference/resource-configs/full_refresh) is supplied, replace the existing model regardless of configuration changes and the [`on_configuration_change`](/reference/resource-configs/on_configuration_change) setting.
+4. If there are no configuration changes, perform the default action for that type (e.g. apply refresh for a materialized view).
+5. Determine whether to apply the configuration changes according to the `on_configuration_change` setting.
+
+
