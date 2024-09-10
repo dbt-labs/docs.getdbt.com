@@ -32,11 +32,11 @@ Delete users from this same window to free up licenses for new users.
 
 ### Groups
 
-Groups in dbt Cloud serve much of the same purpose as in traditional directory tools &mdash; to gather individual users together to make bulk assignment of permissions easier. Admins use groups in dbt Cloud to assign [licenses](#licenses) and [permissions](#permissions). The permissions are more granular than licenses, and you only assign them at the group level; _ you can’t assign permissions at the user level._ Every user in dbt Cloud must be assigned to at least one group.
+Groups in dbt Cloud serve much of the same purpose as in traditional directory tools &mdash; to gather individual users together to make bulk assignment of permissions easier. Admins use groups in dbt Cloud to assign [licenses](#licenses) and [permissions](#permissions). The permissions are more granular than licenses, and you only assign them at the group level; _You can’t assign permissions at the user level._ Every user in dbt Cloud must be assigned to at least one group.
 
 There are three default groups available as soon as you create your dbt Cloud account (the person who created the account is added to all three automatically):
 
-- **Owner:** This group is for individuals responsible for the entire account. You can not change the permissions. 
+- **Owner:** This group is for individuals responsible for the entire account. You can not change the permissions and adding them to the configuration has no impact. 
 - **Member:** This group is for the general members of your organization, who will also have full access to the account. You can not change the permissions. By default, dbt Cloud adds new users to this group.
 - **Everyone:** This is a general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, dbt Cloud adds new users to this group.
 
@@ -86,17 +86,73 @@ Some permissions (those that don't grant full access, like admins) allow groups 
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/environment-access-control.png" width="60%" title="Example the environment access control for a group with Git admin assigned." />
 
-### Role-based access control
-
-:::info dbt Cloud Enterprise
-
-Role-based access control is a feature of the dbt Cloud Enterprise plan.
-
-:::
+## Role-based access control <Lifecycle status='enterprise' />
 
 Role-based access control (RBAC) allows you to grant users access to features and functionality based on their group membership. With this method, you can grant users varying access levels to different projects and environments. You can take access and security to the next level by integrating dbt Cloud with a third-party identity provider (IdP) to grant users access when they authenticate with your SSO or OAuth service.
 
-Let's use the example of a new employee being onboarded in your organization using [Okta](/docs/cloud/manage-access/set-up-sso-okta) and dbt Cloud groups with SSO mappings.
+There are a few things you need to know before you configure RBAC for SSO users:
+- New SSO users join any groups that have the **Add all new users by default** option enabled. By default, the `Everyone` and `member` group have this option enabled. Disable this option across all groups for the best RBAC experience.
+- You must have the appropriate SSO groups configured in the group details SSO section. If the SSO group name does not match _exactly_, users will not be placed in the group correctly. 
+  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-window-details.png" width="60%" title="The Group details SSO section with a group configured." />
+- It's a good idea for your dbt Cloud group names to match the IdP group names.
+
+Let's say you have a new employee being onboarded into your organization using [Okta](/docs/cloud/manage-access/set-up-sso-okta) as the IdP and dbt Cloud groups with SSO mappings. In this scenario, users are working on `The Big Project` and a new analyst named `Euclid Ean` is joining the group.
+
+Check out the following example configurations for an idea of how you can implement RBAC for your organization (these examples assume you have already configured [SSO](/docs/cloud/manage-access/sso-overview)):
+
+<Expandable alt_header="Okta configuration"> 
+
+You and your IdP team add `Euclid Ean` to your Okta environment and assign them to the `dbt Cloud` SSO app via a group called `The Big Project`. 
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/okta-group-config.png" width="60%" title="The user in the group in Okta." />
+
+Configure the group attribute statements the `dbt Cloud` application in Okta. The group statements in the following example are set to the group name exactly (`The Big Project`), but yours will likely be a much broader configuration. Companies often use the same prefix across all dbt groups in their IdP. For example `DBT_GROUP_`
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-attributes.png" width="60%" title="Group attributes set in the dbt Cloud SAML 2.0 app in Okta." />
+
+</Expandable>
+
+
+<Expandable alt_header="dbt Cloud configuration"> 
+
+You and your dbt Cloud admin team configure the groups in your account's settings: 
+1. Navigate to the **Account settings** and click **Groups & Licenses** on the left-side menu. 
+2. Click **Create group** or select and existing group and click **Edit**.
+3. Enter the group name in the **SSO** field.
+4. Configure the **Access and permissions** fields to your needs. Select a [permission set](/docs/cloud/manage-access/enterprise-permissions), the project-level access, and [environment-level access](/docs/cloud/manage-access/environment-permissions).
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/dbt-cloud-group-config.png" width="60%" title="The group configuration with SSO field filled out in dbt Cloud." />
+
+Euclid is limited to the `Analyst` role, the `Jaffle Shop` project, and the `Development`, `Staging`, and `General` environments of that project. Euclid has no access to the `Production` environment in their role. 
+
+</Expandable>
+
+<Expandable alt_header="The user journey">
+
+Euclid takes the following steps to log in: 
+1. Access the SSO URL or the dbt Cloud app in their Okta account. The URL can be found on the **Single sign-on** configuration page in the **Account settings**. 
+  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login-url.png" width="60%" title="The SSO login URL in the account settings." />
+2. Login with their Okta credentials.
+  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-login.png" width="60%" title="The SSO login screen when using Okta as the identity provider." />
+3. Since it's their first time logging in with SSO, Euclid Ean is presented with a message and no option to move forward until they check their email address associated with their Okta account. 
+  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/post-login-screen.png" width="60%" title="The screen users see after their first SSO login." />
+4. They now open their email and click the link to join dbt Labs which completes the process.
+  <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sample-email.png" width="60%" title="The email the user receives on first SSO login." />
+
+Euclid is now logged in to their account. They only have access to the `Jaffle Shop` project and the project selection option is gone from their UI entirely. 
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/rbac-account-home.png" width="60%" title="The home screen with access restricted." />
+
+They can now configure development credentials. The `Production` environment is visible, but it is `read-only`, and they have full access in the `Staging` environment. 
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/production-restricted.png" width="60%" title="The Production environment landing page with read-only access." />
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/staging-access.png" width="60%" title="The Staging environment landing page with full access." />
+
+</Expandable>
+
+With RBAC configured, you now have granular control over user access to features across dbt Cloud.
+
 
 ## FAQs
 
