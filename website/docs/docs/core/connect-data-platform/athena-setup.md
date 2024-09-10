@@ -4,7 +4,7 @@ description: "Read this guide to learn about the Athena warehouse setup in dbt."
 meta:
   maintained_by: dbt Labs
   authors: dbt Labs
-  github_repo: 'dbt-athena/dbt-athena'
+  github_repo: 'dbt-labs/dbt-athena'
   pypi_package: 'dbt-athena-community'
   min_core_version: 'v1.3.0'
   cloud_support: Not Supported
