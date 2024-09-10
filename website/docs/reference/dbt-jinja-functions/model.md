@@ -11,7 +11,7 @@ description: "`model` is the dbt graph object (or node) for the current model."
 
 For example:
 ```jinja
-{% if model.config.materialization == 'view' %}
+{% if model.config.materialized == 'view' %}
   {{ log(model.name ~ " is a view.", info=True) }}
 {% endif %}
 ```
