@@ -100,11 +100,14 @@ Once the connection is saved, a public key will be generated and displayed for t
 <details>
   <summary>What is a Bastion server?</summary>
   <div>
-    <div>A bastion server in <a href="https://aws.amazon.com/blogs/security/how-to-record-ssh-sessions-established-through-a-bastion-host/">Amazon Web Services (AWS)</a> is a host that allows dbt Cloud to open an SSH connection. <br></br>
+    <div>
+      A bastion server in <a href="https://aws.amazon.com/blogs/security/how-to-record-ssh-sessions-established-through-a-bastion-host/">Amazon Web Services (AWS)</a> is a host that allows dbt Cloud to open an SSH connection. 
+      
+      <br></br>
     
-dbt Cloud only sends queries and doesn't transmit large data volumes. This means the bastion server can run on an AWS instance of any size, like a t2.small instance or t2.micro.<br></br><br></br>
+      dbt Cloud only sends queries and doesn't transmit large data volumes. This means the bastion server can run on an AWS instance of any size, like a t2.small instance or t2.micro.<br></br><br></br>
     
-Make sure the location of the instance is the same Virtual Private Cloud (VPC) as the Redshift instance, and configure the security group for the bastion server to ensure that it's able to connect to the warehouse port.
+      Make sure the location of the instance is the same Virtual Private Cloud (VPC) as the Redshift instance, and configure the security group for the bastion server to ensure that it's able to connect to the warehouse port.
     </div>
   </div>
 </details>
@@ -140,7 +143,7 @@ To grant users or roles database permissions (access rights and privileges), ref
 
 ## FAQs
 
-<detailsToggle alt_header="Database Error - could not connect to server: Connection timed out">
+<DetailsToggle alt_header="Database Error - could not connect to server: Connection timed out">
 When setting up a database connection using an SSH tunnel, you need the following components:
 
 - A load balancer (like ELB or NLB) to manage traffic.
@@ -163,4 +166,4 @@ To prevent premature disconnections, you can adjust the settings on the bastion 
 - `ClientAliveInterval` &mdash; Configures when to check for client activity. For example, `ClientAliveInterval 30` checks every 30 seconds.
 The example adjustments ensure that inactive SSH clients are disconnected after about 300 seconds, reducing the chance of tunnel failures.
 
-</detailsToggle>
+</DetailsToggle>

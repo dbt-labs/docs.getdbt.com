@@ -15,19 +15,11 @@ jobs:
         with:
           fetch-depth: 0  # Ensure the full history is fetched
 
-      - name: Cache Vale binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.vale
-          key: ${{ runner.os }}-vale-${{ hashFiles('**/.vale.ini') }}
-          restore-keys: |
-            ${{ runner.os }}-vale-
-
       - name: Set up vale
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
-          token: ${{ secrets.VALE_GITHUB_TOKEN }}
+          token: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
           reporter: github-pr-check
 
       - name: Get changed files
@@ -43,6 +35,8 @@ jobs:
 
       - name: Set up Reviewdog
         uses: reviewdog/action-setup@v1
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.REVIEWDOG_GITHUB_API_TOKEN }}
 
       - name: Run vale with reviewdog
         run: |

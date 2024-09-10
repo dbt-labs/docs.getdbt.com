@@ -35,6 +35,8 @@ This order is now in the "shipped" state, but we've lost the information about w
 
 In dbt, snapshots are `select` statements, defined within a snapshot block in a `.sql` file (typically in your `snapshots` directory). You'll also need to configure your snapshot to tell dbt how to detect record changes.
 
+<VersionBlock lastVersion="1.8">
+
 <File name='snapshots/orders_snapshot.sql'>
 
 ```sql
@@ -57,6 +59,33 @@ select * from {{ source('jaffle_shop', 'orders') }}
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/orders_snapshot.sql'>
+
+```sql
+{% snapshot orders_snapshot %}
+
+{{
+    config(
+      unique_key='id',
+      schema='snapshots', 
+      strategy='timestamp',
+      updated_at='updated_at',
+    )
+}}
+
+select * from {{ source('jaffle_shop', 'orders') }}
+
+{% endsnapshot %}
+```
+
+</File>
+
+</VersionBlock>
 
 :::info Preview or Compile Snapshots in IDE
 
@@ -107,6 +136,8 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 5. Add configurations to your snapshot using a `config` block (more details below). You can also configure your snapshot from your `dbt_project.yml` file ([docs](/reference/snapshot-configs)).
 
+<VersionBlock lastVersion="1.8">
+
 <File name='snapshots/orders_snapshot.sql'>
 
 ```sql
@@ -132,9 +163,38 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 6. Run the `dbt snapshot` [command](/reference/commands/snapshot) — for our example a new table will be created at `analytics.snapshots.orders_snapshot`. You can change the `target_database` configuration, the `target_schema` configuration and the name of the snapshot (as defined in `{% snapshot .. %}`) will change how dbt names this table.
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/orders_snapshot.sql'>
+
+```sql
+{% snapshot orders_snapshot %}
+
+{{
+    config(
+      schema='snapshots',
+      unique_key='id',
+      strategy='timestamp',
+      updated_at='updated_at',
+    )
+}}
+
+select * from {{ source('jaffle_shop', 'orders') }}
+
+{% endsnapshot %}
+```
+
+</File>
+
+6. Run the `dbt snapshot` [command](/reference/commands/snapshot)  &mdash; for our example, a new table will be created at `analytics.snapshots.orders_snapshot`. The [`schema`](/reference/resource-configs/schema) config will utilize the `generate_schema_name` macro.
+
+</VersionBlock>
+
 ```
 $ dbt snapshot
-Running with dbt=0.16.0
+Running with dbt=1.8.0
 
 15:07:36 | Concurrency: 8 threads (target='dev')
 15:07:36 |
@@ -179,6 +239,8 @@ The `timestamp` strategy requires the following configurations:
 
 **Example usage:**
 
+<VersionBlock lastVersion="1.8">
+
 <File name='snapshots/orders_snapshot_timestamp.sql'>
 
 ```sql
@@ -200,6 +262,33 @@ The `timestamp` strategy requires the following configurations:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/orders_snapshot_timestamp.sql'>
+
+```sql
+{% snapshot orders_snapshot_timestamp %}
+
+    {{
+        config(
+          schema='snapshots',
+          strategy='timestamp',
+          unique_key='id',
+          updated_at='updated_at',
+        )
+    }}
+
+    select * from {{ source('jaffle_shop', 'orders') }}
+
+{% endsnapshot %}
+```
+
+</File>
+
+</VersionBlock>
+
 ### Check strategy
 The `check` strategy is useful for tables which do not have a reliable `updated_at` column. This strategy works by comparing a list of columns between their current and historical values. If any of these columns have changed, then dbt will invalidate the old record and record the new one. If the column values are identical, then dbt will not take any action.
 
@@ -219,6 +308,8 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 
 **Example Usage**
+
+<VersionBlock lastVersion="1.8">
 
 <File name='snapshots/orders_snapshot_check.sql'>
 
@@ -241,6 +332,32 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/orders_snapshot_check.sql'>
+
+```sql
+{% snapshot orders_snapshot_check %}
+
+    {{
+        config(
+          schema='snapshots',
+          strategy='check',
+          unique_key='id',
+          check_cols=['status', 'is_cancelled'],
+        )
+    }}
+
+    select * from {{ source('jaffle_shop', 'orders') }}
+
+{% endsnapshot %}
+```
+
+</File>
+
+</VersionBlock>
 
 ### Hard deletes (opt-in)
 
@@ -251,6 +368,8 @@ This configuration is not a different strategy as described above, but is an add
 For this configuration to work with the `timestamp` strategy, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
 
 **Example Usage**
+
+<VersionBlock lastVersion="1.8">
 
 <File name='snapshots/orders_snapshot_hard_delete.sql'>
 
@@ -274,10 +393,39 @@ For this configuration to work with the `timestamp` strategy, the configured `up
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<File name='snapshots/orders_snapshot_hard_delete.sql'>
+
+```sql
+{% snapshot orders_snapshot_hard_delete %}
+
+    {{
+        config(
+          schema='snapshots',
+          strategy='timestamp',
+          unique_key='id',
+          updated_at='updated_at',
+          invalidate_hard_deletes=True,
+        )
+    }}
+
+    select * from {{ source('jaffle_shop', 'orders') }}
+
+{% endsnapshot %}
+```
+
+</File>
+
+</VersionBlock>
 
 ## Configuring snapshots
 ### Snapshot configurations
 There are a number of snapshot-specific configurations:
+
+<VersionBlock lastVersion="1.8">
 
 | Config | Description | Required? | Example |
 | ------ | ----------- | --------- | ------- |
@@ -295,6 +443,28 @@ Snapshots can be configured from both your `dbt_project.yml` file and a `config`
 
 Note: BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+| Config | Description | Required? | Example |
+| ------ | ----------- | --------- | ------- |
+| [database](/reference/resource-configs/database) | Specify a custom database for the snapshot | No | analytics |
+| [schema](/reference/resource-configs/schema) | Specify a custom schema for the snapshot | No | snapshots |
+| [alias](/reference/resource-configs/alias)   | Specify an alias for the snapshot | No | your_custom_snapshot |
+| [strategy](/reference/resource-configs/strategy) | The snapshot strategy to use. Valid values: `timestamp` or `check` | Yes | timestamp |
+| [unique_key](/reference/resource-configs/unique_key) | A <Term id="primary-key" /> column or expression for the record | Yes | id |
+| [check_cols](/reference/resource-configs/check_cols) | If using the `check` strategy, then the columns to check | Only if using the `check` strategy | ["status"] |
+| [updated_at](/reference/resource-configs/updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
+| [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) | Find hard deleted records in source and set `dbt_valid_to` to current time if the record no longer exists | No | True |
+
+In versions prior to v1.9, the `target_schema` (required) and `target_database` (optional) configurations defined a single schema or database to build a snapshot into across users and environments. This created problems when testing or developing a snapshot, as there was no clear separation between development and production environments. In v1.9, support was added for environment-aware snapshots by making `target_schema` optional. Snapshots, by default with no `target_schema` or `target_database` config defined, now resolve the schema or database to build the snapshot into using the `generate_schema_name` or `generate_database_name` macros. Developers can optionally define a custom location for snapshots to build to with the [`schema`](/reference/resource-configs/schema) and [`database`](/reference/resource-configs/database) configs, as is consistent with other resource types. 
+
+A number of other configurations are also supported (for example, `tags` and `post-hook`). For the complete list, refer to [Snapshot configurations](/reference/snapshot-configs).
+
+You can configure snapshots from both the `dbt_project.yml` file and a `config` block. For more information, refer to the [configuration docs](/reference/snapshot-configs).
+
+</VersionBlock>
 
 ### Configuration best practices
 #### Use the `timestamp` strategy where possible
@@ -303,8 +473,19 @@ This strategy handles column additions and deletions better than the `check` str
 #### Ensure your unique key is really unique
 The unique key is used by dbt to match rows up, so it's extremely important to make sure this key is actually unique! If you're snapshotting a source, I'd recommend adding a uniqueness test to your source ([example](https://github.com/dbt-labs/jaffle_shop/blob/8e7c853c858018180bef1756ec93e193d9958c5b/models/staging/schema.yml#L26)).
 
+<VersionBlock lastVersion="1.8">
+
 #### Use a `target_schema` that is separate to your analytics schema
 Snapshots cannot be rebuilt. As such, it's a good idea to put snapshots in a separate schema so end users know they are special. From there, you may want to set different privileges on your snapshots compared to your models, and even run them as a different user (or role, depending on your warehouse) to make it very difficult to drop a snapshot unless you really want to.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+#### Use a schema that is separate to your models' schema
+Snapshots can't be rebuilt. Because of this, it's a good idea to put snapshots in a separate schema so end users know they're special. From there, you may want to set different privileges on your snapshots compared to your models, and even run them as a different user (or role, depending on your warehouse) to make it very difficult to drop a snapshot unless you really want to.
+
+</VersionBlock>
 
 ## Snapshot query best practices
 
@@ -412,6 +593,5 @@ Snapshot results:
 <FAQ path="Runs/snapshot-frequency" />
 <FAQ path="Snapshots/snapshot-schema-changes" />
 <FAQ path="Snapshots/snapshot-hooks" />
-<FAQ path="Snapshots/snapshot-target-schema" />
 <FAQ path="Accounts/configurable-snapshot-path" />
 <FAQ path="Snapshots/snapshot-target-is-not-a-snapshot-table" />

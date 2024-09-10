@@ -22,7 +22,7 @@ When you set this configuration, dbt sends a helpful error message for any user 
 
 If this configuration is not specified, no version check will occur.
 
-:::info Keep on latest version 
+:::info Versionless 
 
 <Snippet path="_config-dbt-version-check" />
 

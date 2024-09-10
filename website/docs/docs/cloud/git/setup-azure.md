@@ -112,7 +112,7 @@ Once you connect your Microsoft Entra ID app and Azure DevOps, you need to provi
 4. Complete the form:
     - **Azure DevOps Organization:** Must match the name of your Azure DevOps organization exactly. Do not include the `dev.azure.com/` prefix in this field. ✅ Use `my-devops-org` ❌ Avoid `dev.azure.com/my-devops-org`
     - **Application (client) ID:** Found in the Microsoft Entra ID app.
-    - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in dbt Cloud. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should not the expiration date for rotation.
+    - **Client Secrets:** Copy the **Value** field in the Microsoft Entra ID app client secrets and paste it in the **Client Secret** field in dbt Cloud. Entra ID admins are responsible for the Entra ID app secret expiration and dbt Admins should note the expiration date for rotation.
     - **Directory(tenant) ID:** Found in the Microsoft Entra ID app.
         <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding a Microsoft Entra ID app to dbt Cloud"/>
 
@@ -200,7 +200,7 @@ To re-enable MFA for the user, select them again and click **Enable**. Note, you
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -233,7 +233,7 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -268,7 +268,7 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - PublisherSecurity for access to all projects
-- PublisherSecurity/<azure_devops_project_object_id> for per project access
+- PublisherSecurity/&lt;azure_devops_project_object_id&gt; for per project access
 
 **UI/API/CLI:** API/CLI only
 
@@ -305,8 +305,8 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - repoV2 for access to all projects
-- repoV2/<azure_devops_project_object_id> for per project access
-- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for per repo access
+- repoV2/&lt;azure_devops_project_object_id&gt; for per project access
+- repoV2/&lt;azure_devops_project_object_id&gt;/&lt;azure_devops_repository_object_id&gt; for per repo access
 
 
 **UI/API/CLI:** UI, API, and CLI
@@ -345,8 +345,8 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 **Token (where applicable - API only):**
 - repoV2 for access to all projects
-- repoV2/<azure_devops_project_object_id> for access to a single project at a time
-- repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for access to a single repo at a time
+- repoV2/&lt;azure_devops_project_object_id&gt; for access to a single project at a time
+- repoV2/&lt;azure_devops_project_object_id&gt;/&lt;azure_devops_repository_object_id&gt; for access to a single repo at a time
 
 
 **UI/API/CLI:** UI, API, and CLI

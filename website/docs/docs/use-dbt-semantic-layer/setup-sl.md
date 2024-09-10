@@ -2,19 +2,13 @@
 title: "Set up the dbt Semantic Layer"
 id: setup-sl
 description: "Seamlessly set up the dbt Semantic Layer in dbt Cloud using intuitive navigation."
-sidebar_label: "Set up your Semantic Layer"
+sidebar_label: "Set up the Semantic Layer"
 tags: [Semantic Layer]
+pagination_next: "docs/use-dbt-semantic-layer/sl-architecture"
+pagination_prev: "guides/sl-snowflake-qs"
 ---
 
-<VersionBlock lastVersion="1.5">
-
-import DeprecationNotice from '/snippets/_sl-deprecation-notice.md';
-
-<DeprecationNotice />
- 
- </VersionBlock>
-
-With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
+With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. 
 
 ## Prerequisites
 
@@ -43,10 +37,20 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 8. You’re done 🎉! The semantic layer should is now enabled for your project. 
 -->
 
-## Related docs
+## Next steps
 
-- [Build your metrics](/docs/build/build-metrics-intro)
-- [Available integrations](/docs/cloud-integrations/avail-sl-integrations)
-- [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
-- [Get started with the dbt Semantic Layer](/guides/sl-snowflake-qs)
-- [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs)
+- Now that you've set up the dbt Semantic Layer, start querying your metrics with the [available integrations](/docs/cloud-integrations/avail-sl-integrations).
+- [Optimize querying performance](/docs/use-dbt-semantic-layer/sl-cache) using declarative caching.
+- [Validate semantic nodes in CI](/docs/deploy/ci-jobs#semantic-validations-in-ci) to ensure code changes made to dbt models don't break these metrics.
+- If you haven't already, learn how to [build you metrics and semantic models](/docs/build/build-metrics-intro) in your development tool of choice.
+- Learn about commonly asked [dbt Semantic Layer FAQs](/docs/use-dbt-semantic-layer/sl-faqs).
+
+## FAQs
+
+<DetailsToggle alt_header="How does caching interact with access controls?">
+
+Cached data is stored separately from the underlying models. If metrics are pulled from the cache, we don’t have the security context applied to those tables at query time.
+
+In the future, we plan to clone credentials, identify the minimum access level needed, and apply those permissions to cached tables.
+
+</DetailsToggle>

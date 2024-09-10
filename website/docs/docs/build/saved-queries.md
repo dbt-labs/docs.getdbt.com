@@ -218,17 +218,17 @@ For more information on how to run exports, refer to the [Exports](/docs/use-dbt
 
 ## FAQs
 
-<detailsToggle alt_header="Can I have multiple exports in a single saved query?">
+<DetailsToggle alt_header="Can I have multiple exports in a single saved query?">
 
 Yes, this is possible. However, the difference would be the name, schema, and materialization strategy of the export.
-</detailsToggle>
+</DetailsToggle>
 
-<detailsToggle alt_header="How can I select saved_queries by their resource type?">
+<DetailsToggle alt_header="How can I select saved_queries by their resource type?">
 
 To include all saved queries in the dbt build run, use the [`--resource-type` flag](/reference/global-configs/resource-type) and run the command `dbt build --resource-type saved_query`.
 
-</detailsToggle>
+</DetailsToggle>
 
 ## Related docs
-
+- [Validate semantic nodes in a CI job](/docs/deploy/ci-jobs#semantic-validations-in-ci)
 - Configure [caching](/docs/use-dbt-semantic-layer/sl-cache)
