@@ -19,7 +19,8 @@ Previously, you were required to create a model called `metricflow_time_spine` i
 
 <Lightbox src="/img/time_spines.png" title="Time spine directory structure" />
 
-
+<File name="models/_models.yml">
+  
 ```yaml
 models:
   - name: time_spine_hourly
@@ -35,6 +36,7 @@ models:
       - name: date_day
         granularity: day # set granularity at column-level for standard_granularity_column
 ```
+</File>
 
 Now, break down the configuration above. It's pointing to a model called `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. The `standard_granularity_column` is the lowest grain of the table, in this case, it's hourly. It needs to reference a column defined under the columns key, in this case, `date_hour`. Use the `standard_granularity_column` as the join key for the time spine table when joining tables in MetricFlow. Here, the granularity of the `standard_granularity_column` is set at the column level, in this case, `hour`.
 
@@ -45,7 +47,7 @@ The example creates a time spine at a daily grain and an hourly grain. A few thi
 * You can add a time spine for each granularity you intend to use if query efficiency is more important to you than configuration time, or storage constraints. For most engines, the query performance difference should be minimal and transforming your time spine to a coarser grain at query time shouldn't add significant overhead to your queries.
 * We recommend having a time spine at the finest grain used in any of your dimensions to avoid unexpected errors. i.e., if you have dimensions at an hourly grain, you should have a time spine at an hourly grain.
 
-<File name='time_spine_daily.sql'>
+<File name="metricflow_time_spine.sql">
 
 <VersionBlock lastVersion="1.6">
 
@@ -111,16 +113,15 @@ select * from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
-
 </VersionBlock>
 
-</File>
 
+Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
 <VersionBlock lastVersion="1.6">
 
+<File name="metricflow_time_spine.sql">
+  
 ```sql
--- filename: metricflow_time_spine.sql
--- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
 {{config(materialized='table')}}
 with days as (
     {{dbt_utils.date_spine(
@@ -142,14 +143,15 @@ from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
-
+</File>
 </VersionBlock>
 
 <VersionBlock firstVersion="1.7">
 
+<File name="metricflow_time_spine.sql">
+
 ```sql
--- filename: metricflow_time_spine.sql
--- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
+
 {{config(materialized='table')}}
 with days as (
     {{dbt.date_spine(
@@ -171,14 +173,15 @@ from final
 where date_day > dateadd(year, -4, current_timestamp()) 
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
-
+</File>
 </VersionBlock>
+
+</File>
 
 ## Hourly time spine
 <File name='time_spine_hourly.sql'>
 
 ```sql
--- filename: metricflow_time_spine_hour.sql
 {{
     config(
         materialized = 'table',
