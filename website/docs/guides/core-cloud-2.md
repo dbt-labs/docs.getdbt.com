@@ -20,6 +20,7 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <CoretoCloudTable/>
 
+
 ## What you'll learn
 Today thousands of companies, with data teams ranging in size from 2 to 2,000, rely on dbt Cloud to accelerate data work, increase collaboration, and win the trust of the business. Understanding what you'll need to do in order to move between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
 
