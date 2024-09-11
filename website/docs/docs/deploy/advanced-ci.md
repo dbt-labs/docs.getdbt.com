@@ -5,14 +5,12 @@ sidebar_label: "Advanced CI"
 description: "Advanced CI enables developers to compare changes by demonstrating the changes the code produces."
 ---
 
-# Advanced CI <Lifecycle status="beta" />
+# Advanced CI <Lifecycle status="preview" />
 
 [Continuous integration workflows](/docs/deploy/continuous-integration) help increase the governance and improve the quality of the data. Additionally for these CI jobs, you can use Advanced CI features, such as [compare changes](#compare-changes), that provide details about the changes between what's currently in your production environment and the pull request's latest commit, giving you observability into how data changes are affected by your code changes. By analyzing the data changes that code changes produce, you can ensure you're always shipping trustworthy data products as you're developing.
 
-:::info Beta feature
-The compare changes feature is currently in limited beta for select accounts. If you're interested in gaining access or learning more, please stay tuned for updates.
-
-dbt Labs plans to provide more Advanced CI features in the near future. Details coming soon.
+:::tip Preview feature
+The compare changes feature is currently available as a [preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) in dbt Cloud. dbt Labs plans to provide additional Advanced CI features in the near future. More info coming soon.
 
 :::
 
@@ -24,6 +22,8 @@ dbt reports the comparison differences in:
 
 - **dbt Cloud** &mdash; Shows the changes (if any) to the data's primary keys, rows, and columns in the [Compare tab](/docs/deploy/run-visibility#compare-tab) from the [Job run details](/docs/deploy/run-visibility#job-run-details) page. 
 - **The pull request from your Git provider** &mdash; Shows a summary of the changes as a Git comment.
+
+<Lightbox src="/img/docs/dbt-cloud/example-ci-compare-changes-tab.png" width="85%" title="Example of the Compare tab" />
 
 ## About the cached data
 
