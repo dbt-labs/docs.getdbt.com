@@ -15,22 +15,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5.1.0
-        with:
-          python-version: '3.11'
-
-      - name: Cache Python dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install Vale
-        run: pip install vale
-
       - name: Cache Vale
         uses: actions/cache@v3
         with:
@@ -38,6 +22,12 @@ jobs:
           key: ${{ runner.os }}-vale-${{ hashFiles('**/.vale.ini') }}
           restore-keys: |
             ${{ runner.os }}-vale-
+
+      - name: Download Vale
+        run: |
+          curl -L https://github.com/errata-ai/vale/releases/download/v3.7.1/vale_3.7.1_Linux_64-bit.tar.gz --output vale.tar.gz
+          tar -xzf vale.tar.gz
+          sudo mv ./vale /usr/local/bin/
 
       - name: Check if Vale is installed
         run: |
