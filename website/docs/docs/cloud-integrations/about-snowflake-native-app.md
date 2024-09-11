@@ -44,7 +44,7 @@ _Users with IT or read-only licenses will be denied access to dbt Cloud via the 
 App users are able to access all information that's available to the API service token.
 
 ## Procurement
-The dbt Snowflake Native App is available on the [Snowflake Marketplace](https://app.snowflake.com/marketplace/listing/GZTYZSRT2R3). With purchase, users will have access to the Native App and a dbt Cloud account that's on the Enterprise plan. It is also available to all dbt Cloud Enterprise customers. If you are interested, speak to your Enterprise Account Manager. 
+The dbt Snowflake Native App is available on the [Snowflake Marketplace](https://app.snowflake.com/marketplace/listing/GZTYZSRT2R3). Purchasing it includes access to the Native App and a dbt Cloud account that's on the Enterprise plan. Existing dbt Cloud Enterprise customers can also access it. If interested, contact your Enterprise account manager.
 
 If you're interested, please [contact us](matilto:sales_snowflake_marketplace@dbtlabs.com) for more information. 
 
