@@ -23,6 +23,8 @@ The structure of a constraint is:
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
 - `columns` (model-level only): List of column names to apply the constraint over
 
+When using `foreign_key`, the schema of the relation being referenced needs to be set explicitly. You can use `{{ target.schema }}` to let dbt pass the schema used by the target being used.
+
 <File name='models/schema.yml'>
 
 ```yml
@@ -61,6 +63,8 @@ models:
 ```
 
 </File>
+
+
 
 ## Platform-specific support
 
