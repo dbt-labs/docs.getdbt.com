@@ -55,7 +55,7 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in 
 
 ## Embed in your dashboard
 
-Once you’ve navigated to the auto-exposure in dbt Explorer, you’ll need to set up your data health tile and [service token](/docs/dbt-cloud-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
+Once you’ve navigated to the exposure in dbt Explorer, you’ll need to set up your data health tile and [service token](/docs/dbt-cloud-apis/service-tokens). You can embed data health tile to any analytics tool that supports URL or iFrame embedding.
 
 Follow these steps to set up your data health tile:
 

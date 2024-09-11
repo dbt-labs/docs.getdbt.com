@@ -24,7 +24,7 @@ Sync installation means your program waits for each task to finish before moving
 It's simpler, easier to understand, and suitable for smaller tasks or when your program doesn't need to handle many tasks at the same time.
 
 ```bash
-pip install dbt-sl-sdk[sync]
+pip install "dbt-sl-sdk[sync]"
 ```
 If you're using async frameworks like [FastAPI](https://fastapi.tiangolo.com/) or [Strawberry](https://github.com/strawberry-graphql/strawberry), installing the sync version of the SDK will block your event loop and can significantly slow down your program. In this case, we strongly recommend using async installation.
 
@@ -37,7 +37,7 @@ Async installation means your program can start a task and then move on to other
 For more details, refer to [asyncio](https://docs.python.org/3/library/asyncio.html).
 
 ```bash
-pip install dbt-sl-sdk[async]
+pip install "dbt-sl-sdk[sync]"
 ```
 
 Since the [Python ADBC driver](https://github.com/apache/arrow-adbc/tree/main/python/adbc_driver_manager) doesn't yet support asyncio natively, `dbt-sl-sdk` uses a [`ThreadPoolExecutor`](https://github.com/dbt-labs/semantic-layer-sdk-python/blob/5e52e1ca840d20a143b226ae33d194a4a9bc008f/dbtsl/api/adbc/client/asyncio.py#L62) to run `query` and `list dimension-values` (all operations that are done with ADBC).  This is why you might see multiple Python threads spawning.
