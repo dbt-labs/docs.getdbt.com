@@ -28,6 +28,11 @@ jobs:
             exit 1
           fi
 
+      - name: Install Reviewdog
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
       - name: Get changed files
         id: changed-files
         run: |
