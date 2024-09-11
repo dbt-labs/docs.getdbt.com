@@ -11,16 +11,22 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Vale and Reviewdog
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          files: '["docs/docs", "docs/reference", "docs/guides", "docs/best-practices"]'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
+      - name: Install Vale
+        run: |
+          curl -L https://github.com/errata-ai/vale/releases/download/v2.28.0/vale_2.28.0_Linux_64-bit.tar.gz -o vale.tar.gz
+          tar -xvzf vale.tar.gz
+          sudo mv vale /usr/local/bin/
+
+      - name: Check if Vale is installed
+        run: |
+          if ! command -v vale &> /dev/null; then
+            echo "Vale is not installed correctly."
+            exit 1
+          fi
 
       - name: Get changed files
         id: changed-files
@@ -34,6 +40,8 @@ jobs:
           echo "Changed files: ${{ env.CHANGED_FILES }}"
 
       - name: Run Vale on changed files
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ -z "${{ env.CHANGED_FILES }}" ]; then
             echo "No changed files to lint."
