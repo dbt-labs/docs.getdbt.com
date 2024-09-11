@@ -16,7 +16,7 @@ The tech writer writes teh documentation. It is organized by the writer too reci
 I can't can't seem to understand teh main points e.g. etc. 
 
 
-## About dbt Cloud
+## About DBT Cloud AND Explorer
 dbt Cloud is a data transformation workflow.
 
 <Lightbox src="/img/docs/cloud-overview.jpg" width="60%" title="dbt works alongside your ingestion, visualization, and other data tools, so you can transform data directly in your cloud data platform." />
