@@ -521,7 +521,9 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 ### Custom constraints 
 
-In dbt Cloud and dbt Core, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. However, custom constraints allow you to add configuration to specific columns.
+In dbt Cloud and dbt Core, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
+
+Custom constraints allow you to add configuration to specific columns:
 
   - For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
   
