@@ -28,7 +28,8 @@ export default function VersionBlock({ firstVersion = "0", lastVersion = undefin
       * If either is true, hide block
       * Else, if current version less than first version, hide block
     */}
-    if (lastVersionIndex) {
+    if (lastVersionIndex >= 0) {
+      console.log('last version is set')
       if (
         currentVersionIndex > lastVersionIndex ||
         currentVersionIndex < firstVersionIndex

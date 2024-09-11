@@ -1,3 +1,5 @@
+// Sorts versions from earliest to latest and returns array
+
 export const sortVersions = (versionsArr) => {
   if (!Array?.isArray(versionsArr) || versionsArr?.length <= 0) return null
 
@@ -6,11 +8,14 @@ export const sortVersions = (versionsArr) => {
   const sortedVersions = versionsArr?.sort(function (a, b) {
     console.log('a', a)
     console.log('b', b)
+    
     // Split versions into arrays by decimal
     const aSegments = a?.split('.', 2)
     const bSegments = b?.split('.', 2)
+
     console.log("aSegments", aSegments)
     console.log("bSegments", bSegments)
+
     // Sort by major version
     if (aSegments[0] < bSegments[0]) return -1
     if (aSegments[0] > bSegments[0]) return 1
