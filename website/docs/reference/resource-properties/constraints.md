@@ -525,7 +525,7 @@ In dbt Cloud and dbt Core, you can use custom constraints on models for the adva
 
 Custom constraints allow you to add configuration to specific columns. For example:
 
-  - For example, custom constraints allow you to set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
+  - Set [masking policies](https://docs.snowflake.com/en/user-guide/security-column-intro#what-are-masking-policies) in Snowflake when using a Create Table As Select (CTAS).
   
   - [Databricks](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-create-table-using.html) and [BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#column_name_and_column_schema) are other examples of data warehouses having their own set of parameters that can be set for columns in their CTAS statements.
 
