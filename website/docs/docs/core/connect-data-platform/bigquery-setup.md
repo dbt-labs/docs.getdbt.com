@@ -372,9 +372,9 @@ For a general overview of this process, see the official docs for [Creating Shor
 
 By default, dbt will use the specified `project`/`database` as both:
 1. The location to materialize resources (models, seeds, snapshots, etc), unless they specify a custom `project`/`database` config
-2. The GCP project that receives the bill for query costs or slot usage
+2. The GCP project that creates and runs the BigQuery job from
 
-Optionally, you may specify an `execution_project` to bill for query execution, instead of the `project`/`database` where you materialize most resources.
+Optionally, you may specify an `execution_project` to run the BigQuery job from, instead of the `project`/`database` where you materialize most resources.
 
 ```yaml
 my-profile:
@@ -387,6 +387,27 @@ my-profile:
       dataset: my_dataset
       execution_project: buck-stops-here-456
 ```
+
+### Quota project
+
+By default, dbt will use the `quota_project_id` set within credentials of the account you are using to authenticate to BigQuery
+
+Optionally, you may specify `quota_project` to bill for query execution, instead of the default quota project specified for the account from the environment.
+
+This can sometimes be required when impersonating service accounts that do not have the BigQuery API enabled within the project they are defined in. Without overriding the quota project it will fail to connect.
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      quota_project: my-bg-quota-project
+```
+
 
 ### Running Python models on Dataproc
 
