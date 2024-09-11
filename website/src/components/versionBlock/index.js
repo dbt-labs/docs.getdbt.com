@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import VersionContext from '../../stores/VersionContext';
+import { sortVersions } from '../../utils/sort-versions';
 
-export default function VersionBlock({ firstVersion = 0, lastVersion = undefined, children }) {
+export default function VersionBlock({ firstVersion = "0", lastVersion = undefined, children }) {
   const { version } = useContext(VersionContext)
 
   const [loading, setLoading] = useState(true)
@@ -13,23 +14,30 @@ export default function VersionBlock({ firstVersion = 0, lastVersion = undefined
 
   // Only check version if current version set
   if(version) {
-    const currentVersionVal = parseFloat(version)
-    const firstVersionVal = parseFloat(firstVersion)
+    const sortedVersions = sortVersions([version, firstVersion, ...(lastVersion ? [lastVersion] : [])]);
+    console.log("sortedVersions", sortedVersions);
+    const currentVersionIndex = sortedVersions?.indexOf(version)
+    const firstVersionIndex = sortedVersions?.indexOf(firstVersion);
+    const lastVersionIndex = sortedVersions?.indexOf(lastVersion);
+    console.log("currentVersionIndex", currentVersionIndex);
+    console.log("firstVersionIndex", firstVersionIndex);
+    console.log("lastVersionIndex", lastVersionIndex);
     {/* 
       * If last version set, check if current version greater than last version
       * Or if current version less than first version
       * If either is true, hide block
       * Else, if current version less than first version, hide block
     */}
-    if(lastVersion) {
-      if((currentVersionVal > parseFloat(lastVersion)) 
-      || (currentVersionVal < firstVersionVal))
-        return null
+    if (lastVersionIndex) {
+      if (
+        currentVersionIndex > lastVersionIndex ||
+        currentVersionIndex < firstVersionIndex
+      )
+        return null;
     } else {
-      if(currentVersionVal < firstVersionVal) {
-        return null
+      if (currentVersionIndex < firstVersionIndex) {
+        return null;
       }
-      
     }
   }
 

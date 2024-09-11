@@ -15,6 +15,18 @@
  */
 exports.versions = [
   {
+    version: "2.1",
+    EOLDate: "2026-04-15",
+  },
+  {
+    version: "1.10.1",
+    EOLDate: "2026-04-15",
+  },
+  {
+    version: "1.10",
+    EOLDate: "2026-04-15",
+  },
+  {
     version: "1.9.1",
     customDisplay: "Cloud (Versionless)",
   },
@@ -30,7 +42,7 @@ exports.versions = [
     version: "1.6",
     EOLDate: "2024-07-31",
   },
-]
+];
 
 /**
  * Controls doc page visibility in the sidebar based on the current version

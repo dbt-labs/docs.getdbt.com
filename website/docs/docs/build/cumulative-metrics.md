@@ -6,6 +6,19 @@ sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
 ---
 
+<VersionBlock firstVersion="1.8" lastVersion="1.10">
+  ## first version - 1.8 | last version - 1.10
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+  ## first version - 1.9
+</VersionBlock>
+
+<VersionBlock firstVersion="1.10">
+  ## first version - 1.10
+</VersionBlock>
+
+
 Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create a [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
 Cumulative metrics are useful for calculating things like weekly active users, or month-to-date revenue. The parameters, description, and types for cumulative metrics are: 
