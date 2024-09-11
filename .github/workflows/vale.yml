@@ -18,7 +18,7 @@ jobs:
       - name: Set up Vale and Reviewdog
         uses: errata-ai/vale-action@reviewdog
         with:
-          files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
+          files: '["docs/docs", "docs/reference", "docs/guides", "docs/best-practices"]'
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
 
