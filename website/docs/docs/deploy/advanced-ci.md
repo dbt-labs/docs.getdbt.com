@@ -29,7 +29,7 @@ dbt reports the comparison differences in:
 
 When [comparing changes](#compare-changes), dbt Cloud stores a cache of no more than 100 records for each modified model. By caching this data, you can view the examples of changed data without rerunning the comparison against the data warehouse every time (optimizing for lower compute costs). To display the changes, dbt Cloud uses a cached version of a sample of the data records. These data records are queried from the database using the connection configuration (such as user, role, service account, and so on) that's set in the CI job's environment. 
 
-You control what data to use, including synthetic data if pre-production or development data is heavily regulated or sensitive. 
+You control what data to use. This may include synthetic data if pre-production or development data is heavily regulated or sensitive. 
 
 - The selected data is cached on dbt Labs' systems for up to 30 days. No data is retained on dbt Labs' systems beyond this period.
 - The cache is encrypted and stored in an Amazon S3 or Azure blob storage in your account’s region. 
@@ -42,7 +42,7 @@ If you access a CI job run that's more than 30 days old, you will not be able to
 
 ## Connection permissions
 
-The compare changes feature uses the same credentials as the CI job, as defined in the CI job’s environment. The dbt Cloud administrator must ensure that client CI credentials are appropriately restricted since all users will be able to view the comparison results and the cached data.
+The compare changes feature uses the same credentials as the CI job, as defined in the CI job’s environment. The dbt Cloud administrator must ensure that client CI credentials are appropriately restricted since all customer's account users will be able to view the comparison results and the cached data.
 
 If using dynamic data masking in the data warehouse, the cached data will no longer be dynamically masked in the Advanced CI output, depending on the permissions of the users who view it. dbt Labs recommends limiting user access to unmasked data or considering using synthetic data for the Advanced CI testing functionality.
 
