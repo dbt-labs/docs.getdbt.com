@@ -55,11 +55,11 @@ exports.versions = [
  */
 exports.versionedPages = [
   {
-    "page": "/reference/resource-configs/target_database",
+    "page": "reference/resource-configs/target_database",
     "lastVersion": "1.8",
   },
   {
-    "page": "/reference/resource-configs/target_schema",
+    "page": "reference/resource-configs/target_schema",
     "lastVersion": "1.8",
   },
   {
