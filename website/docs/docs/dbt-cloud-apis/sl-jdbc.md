@@ -544,7 +544,7 @@ The JDBC API will use the saved query (`new_customer_orders`) as defined and app
 
 ### Multi-hop joins
 
-In cases where you need to query across multiple related tables (multi-hop joins), you can use the `entity_path` argument to specify the path between related entities. The following are examples of how you can define these joins:
+In cases where you need to query across multiple related tables (multi-hop joins), use the `entity_path` argument to specify the path between related entities. The following are examples of how you can define these joins:
 
 - In this example, you're querying the `location_name` dimension but specifying that it should be joined using the `order_id` field.
 	```sql
