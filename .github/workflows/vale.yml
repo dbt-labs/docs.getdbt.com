@@ -15,10 +15,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set environment variables
+      - name: Install Vale
         run: |
-          echo "HOME=/home/runner" >> $GITHUB_ENV
-          echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
+          curl -L https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz
+          tar -xvzf vale.tar.gz
+          sudo mv vale /usr/local/bin/
+
+      - name: Set VALE_CONFIG_PATH
+        run: echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
 
       - name: Set up Vale with Reviewdog
         uses: errata-ai/vale-action@reviewdog
