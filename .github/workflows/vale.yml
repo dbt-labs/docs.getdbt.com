@@ -36,3 +36,14 @@ jobs:
       - name: Debug CHANGED_FILES
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
+      
+      - name: Run Vale with reviewdog
+        run: |
+          if [ -z "${{ env.CHANGED_FILES }}" ]; then
+            echo "No changed files to lint."
+          else
+            for file in ${{ env.CHANGED_FILES }}; do
+              vale "$file" || true  # Log Vale output
+            done
+          fi
+        
