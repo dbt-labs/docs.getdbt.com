@@ -477,7 +477,7 @@ semantic_models:
       agg_time_dimension: date_day
     
     entities:
-      - name: store_id
+      - name: store
         type: primary
         expr: store_id
       - name: date
