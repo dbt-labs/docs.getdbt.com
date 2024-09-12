@@ -519,7 +519,7 @@ alter table schema_name.my_model add constraint 472394792387497234 check (id > 0
 
 </WHCode>
 
-### Custom constraints 
+## Custom constraints 
 
 In dbt Cloud and dbt Core, you can use custom constraints on models for the advanced configuration of tables. Different data warehouses support different syntax and capabilities. 
 
