@@ -11,47 +11,24 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: Install Vale
-        run: |
-          curl -L https://github.com/errata-ai/vale/releases/download/v2.28.0/vale_2.28.0_Linux_64-bit.tar.gz -o vale.tar.gz
-          tar -xvzf vale.tar.gz
-          sudo mv vale /usr/local/bin/
-
-      - name: Check if Vale is installed
-        run: |
-          if ! command -v vale &> /dev/null; then
-            echo "Vale is not installed correctly."
-            exit 1
-          fi
-
-      - name: Install Reviewdog
-        uses: reviewdog/action-setup@v1
+      - name: Set up Vale
+        uses: errata-ai/vale-action@reviewdog
         with:
-          reviewdog_version: latest
+          files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's built-in token
+          version: 2.17.0
 
       - name: Get changed files
         id: changed-files
         run: |
           git fetch origin ${{ github.base_ref }} ${{ github.head_ref }}
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.md' '*.txt' '*.rst' | tr '\n' ' ' | xargs)
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.md' '*.txt' '*.rst' | tr '\n' ' ')
           echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
 
       - name: Debug CHANGED_FILES
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
-
-      - name: Run Vale on changed files
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ -z "${{ env.CHANGED_FILES }}" ]; then
-            echo "No changed files to lint."
-          else
-            for file in ${{ env.CHANGED_FILES }}; do
-              vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
-            done
-          fi
