@@ -20,7 +20,7 @@ jobs:
           echo "HOME=/home/runner" >> $GITHUB_ENV
           echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
 
-      - name: Set up Vale
+      - name: Set up Vale with Reviewdog
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
@@ -38,18 +38,3 @@ jobs:
       - name: Debug CHANGED_FILES
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
-
-      - name: Set REVIEWDOG_GITHUB_API_TOKEN
-        run: echo "REVIEWDOG_GITHUB_API_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
-            
-      
-      - name: Run Vale with reviewdog
-        run: |
-          if [ -z "${{ env.CHANGED_FILES }}" ]; then
-            echo "No changed files to lint."
-          else
-            for file in ${{ env.CHANGED_FILES }}; do
-              vale "$file" --output=JSON | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
-            done
-          fi
-        
