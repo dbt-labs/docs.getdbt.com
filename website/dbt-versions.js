@@ -213,5 +213,10 @@ exports.versionedCategories = [
   {
     "category": "Build your metrics",
     "firstVersion": "1.6",
-  }
+  },
+  // TODO: Delete demo entry below
+  {
+    "category": "Project configs",
+    "firstVersion": "1.8",
+  },
 ]
