@@ -38,6 +38,11 @@ jobs:
       - name: Debug CHANGED_FILES
         run: |
           echo "Changed files: ${{ env.CHANGED_FILES }}"
+
+      - name: Set up Reviewdog
+        uses: reviewdog/action-setup@v1
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Run Vale with reviewdog
         run: |
@@ -45,7 +50,7 @@ jobs:
             echo "No changed files to lint."
           else
             for file in ${{ env.CHANGED_FILES }}; do
-              vale "$file" || true  # Log Vale output
+              vale "$file" --output=JSON | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
             done
           fi
         
