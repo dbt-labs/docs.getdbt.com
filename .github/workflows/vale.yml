@@ -21,6 +21,7 @@ jobs:
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
           token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's built-in token
           version: 2.17.0
+          reporter: github-pr-check
 
       - name: Get changed files
         id: changed-files
