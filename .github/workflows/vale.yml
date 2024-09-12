@@ -19,8 +19,11 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
-          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's built-in token
+          token: ${{ secrets.GITHUB_TOKEN }}
           version: 2.17.0
+
+      - name: Set $HOME environment variable
+        run: echo "HOME=/home/runner" >> $GITHUB_ENV
 
       - name: Get changed files
         id: changed-files
