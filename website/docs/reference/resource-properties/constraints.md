@@ -23,7 +23,13 @@ The structure of a constraint is:
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
 - `columns` (model-level only): List of column names to apply the constraint over
 
-When using `foreign_key`, the schema of the relation being referenced needs to be set explicitly. You can use `{{ target.schema }}` to let dbt pass the schema used by the target being used.
+<VersionBlock lastVersion="1.8">
+
+When using `foreign_key`, you need to manually specify the schema of the referenced table. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment. Note that versions of dbt will have more efficient ways of handling this. 
+
+For example: `expression: "{{ target.schema }}.customers(customer_id)"`
+
+</VersionBlock>
 
 <File name='models/schema.yml'>
 
