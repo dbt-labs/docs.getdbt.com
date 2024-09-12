@@ -22,8 +22,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: 2.17.0
 
-      - name: Set $HOME environment variable
-        run: echo "HOME=/home/runner" >> $GITHUB_ENV
+      - name: Set VALE_CONFIG_PATH
+        run: echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
 
       - name: Get changed files
         id: changed-files
