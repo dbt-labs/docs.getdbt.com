@@ -68,7 +68,7 @@ git clone https://github.com/dbt-labs/airflow-dbt-cloud.git
 cd airflow-dbt-cloud
 ```
 
-<WistiaVideo id="oo1yel115i" paddingTweak="62.25%" />
+For more information about cloning GitHub repositories, refer to "[Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)" in the GitHub documentation.
 
 ## Start the Docker container
 
