@@ -12,23 +12,36 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      - name: Set environment variables
+      - name: Install Vale
         run: |
-          echo "HOME=/home/runner" >> $GITHUB_ENV
-          echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
+          curl -L https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz
+          tar -xvzf vale.tar.gz
+          sudo mv vale /usr/local/bin/
 
-      - name: Run Vale with Reviewdog
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          files: '**/*.md'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          version: '2.17.0'
-          reporter: github-pr-check
-          level: error
-          filter_mode: diff_context
+      - name: Get changed files
+        id: changed-files
+        run: |
+          git fetch origin ${{ github.base_ref }} ${{ github.head_ref }}
+          CHANGED_FILES=$(git diff --name-only --diff-filter=AM origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- 'website/docs/docs/**/*.md' 'website/docs/reference/**/*.md' 'website/docs/guides/**/*.md')
+          echo "changed_files=$(echo $CHANGED_FILES)" >> $GITHUB_OUTPUT
+          echo "Changed files: $CHANGED_FILES"
+
+      - name: Run Vale Lint
+        if: steps.changed-files.outputs.changed_files != ''
+        run: |
+          echo "${{ steps.changed-files.outputs.changed_files }}" | xargs vale --output=JSON > vale_report.json
         env:
-          HOME: /home/runner
           VALE_CONFIG_PATH: $(pwd)/.vale.ini
+
+      - name: Run reviewdog
+        uses: reviewdog/reviewdog@v0.14.1
+        with:
+          name: vale
+          reporter: github-pr-check
+          fail_on_error: true
+          filter_mode: added
+          format: vale
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
