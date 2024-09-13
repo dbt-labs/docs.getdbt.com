@@ -6,7 +6,7 @@ sidebar_label: 'Receiving `authentication has expired` error in the IDE'
 
 If you see a `authentication has expired` error when you try to run queries in the dbt CLoud IDE, this means your [OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth) connection between Snowflake and dbt Cloud has expired.
 
-To fix this, you'll need to re-connect the two tools.
+To fix this, you must reconnect the two tools.
 
 Your Snowflake administrator can [configure](/docs/cloud/manage-access/set-up-snowflake-oauth#create-a-security-integration) the refresh tokens' validity, which has a maximum 90-day validity period.
 
