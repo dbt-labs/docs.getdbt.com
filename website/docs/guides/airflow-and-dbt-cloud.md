@@ -61,10 +61,10 @@ Follow the instructions [here](https://docs.docker.com/desktop/) to install Dock
 
 ## Clone the airflow-dbt-cloud repository
 
-Open your terminal and clone the [airflow-dbt-cloud repository](https://github.com/sungchun12/airflow-dbt-cloud). This contains example Airflow DAGs that you’ll use to orchestrate your dbt Cloud job. Once cloned, navigate into the `airflow-dbt-cloud` project.
+Open your terminal and clone the [airflow-dbt-cloud repository](https://github.com/dbt-labs/airflow-dbt-cloud). This contains example Airflow DAGs that you’ll use to orchestrate your dbt Cloud job. Once cloned, navigate into the `airflow-dbt-cloud` project.
 
 ```bash
-git clone https://github.com/sungchun12/airflow-dbt-cloud.git
+git clone https://github.com/dbt-labs/airflow-dbt-cloud.git
 cd airflow-dbt-cloud
 ```
 
@@ -140,7 +140,7 @@ Now you have all the working pieces to get up and running with Airflow + dbt Clo
 
 ## Update the placeholders in the sample code
 
- Add your `account_id` and `job_id` to the python file [dbt_cloud_provider_eltml.py](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/dags/dbt_cloud_provider_eltml.py).
+ Add your `account_id` and `job_id` to the python file [dbt_cloud_provider_eltml.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/dbt_cloud_provider_eltml.py).
 
 Both IDs are included inside of the dbt Cloud job URL as shown in the following snippets:
 
