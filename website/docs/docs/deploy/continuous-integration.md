@@ -33,7 +33,7 @@ The [dbt Cloud scheduler](/docs/deploy/job-scheduler) executes CI jobs different
 
 - **Concurrent CI checks** &mdash; CI runs triggered by the same dbt Cloud CI job execute concurrently (in parallel), when appropriate.
 - **Smart cancellation of stale builds** &mdash; Automatically cancels stale, in-flight CI runs when there are new commits to the PR.
-- **Run slot treatment** &mdash; CI runs don't consume a run slot
+- **Run slot treatment** &mdash; CI runs don't consume a run slot.
 
 ### Concurrent CI checks
 
