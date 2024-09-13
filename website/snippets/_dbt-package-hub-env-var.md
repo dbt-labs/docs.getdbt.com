@@ -4,7 +4,7 @@ It provides organizations with the flexibility, control, and security when manag
 
 - Host internal dbt packages for organizational use &mdash; Useful for sharing sensitive or proprietary data models, macros, or other items across the organization.
 - Manage custom versions of public dbt packages &mdash; Beneficial for maintaining a fork of a public package with customizations or bug fixes.
-- Operate in secure, regulated, or air-gapped environments &mdash; Useful for organizations that require strict control over the software they use.
+- Operate in secure, regulated, or air-gapped environments &mdash; Helpful for organizations that require strict control over the software they use.
 - Gain control over package updates and dependencies &mdash; Useful for organizations that need to manage dependencies and updates carefully.
 
 To set the `DBT_PACKAGE_HUB_URL` environment variable:
