@@ -25,7 +25,7 @@ The structure of a constraint is:
 
 <VersionBlock lastVersion="1.8">
 
-When using `foreign_key`, you need to manually specify the schema of the referenced table. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment. Note that versions of dbt will have more efficient ways of handling this. 
+When using `foreign_key`, you need to specify the referenced table's schema manually. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment. Note that later versions of dbt will have more efficient ways of handling this. 
 
 For example: `expression: "{{ target.schema }}.customers(customer_id)"`
 
