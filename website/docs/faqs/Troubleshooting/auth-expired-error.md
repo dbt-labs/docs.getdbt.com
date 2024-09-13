@@ -16,4 +16,4 @@ To resolve the issue, complete the following steps:
 2. Navigate to **Credentials** and click on the project you're experiencing the issue with.
 3. Under **Development credentials**, click the **Reconnect Snowflake Account** (green) button. This steps you through reauthentication using the SSO workflow. 
 
-If you've tried these step and are still experiencing this behavior, reach out to the Support team at support@getdbt.com for further assistance.
+If you've tried these step and are still getting this error, please contact the Support team at support@getdbt.com for further assistance.
