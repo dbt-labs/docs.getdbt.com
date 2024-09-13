@@ -5,7 +5,8 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  lint:
+  vale:
+    name: Vale Linting
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -15,30 +16,16 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v34
         with:
+          separator: ' '
           files: |
             **/*.md
             **/*.txt
             **/*.rst
 
-      - name: Install Vale
-        run: |
-          curl -fsSL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          vale sync
-
-      - name: Run Vale on changed files
+      - name: Set VALE_FILES environment variable
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        run: |
-          echo "Changed files:"
-          echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
-          # Convert the comma-separated list to space-separated
-          files=$(echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}" | tr ',' ' ')
-          # Ensure files exist (they might have been deleted)
-          existing_files=$(echo "$files" | xargs ls 2>/dev/null || true)
-          if [ -n "$existing_files" ]; then
-            echo "Running Vale on the following files:"
-            echo "$existing_files"
-            vale $existing_files
-          else
-            echo "No files to lint."
-          fi
+        run: echo "VALE_FILES=${{ steps.changed-files.outputs.all_changed_and_modified_files }}" >> $GITHUB_ENV
+
+      - name: Run Vale
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        uses: errata-ai/vale-action@reviewdog
