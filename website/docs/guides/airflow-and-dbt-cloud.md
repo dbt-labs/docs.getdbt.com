@@ -140,7 +140,7 @@ Now you have all the working pieces to get up and running with Airflow + dbt Clo
 
 ## Update the placeholders in the sample code
 
- Add your `account_id` and `job_id` to the python file [dbt_cloud_provider_eltml.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/dbt_cloud_provider_eltml.py).
+ Add your `account_id` and `job_id` to the python file [dbt_cloud_run_job.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/dbt_cloud_run_job.py).
 
 Both IDs are included inside of the dbt Cloud job URL as shown in the following snippets:
 
