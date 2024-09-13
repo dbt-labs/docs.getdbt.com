@@ -15,11 +15,11 @@ displayed_sidebar: "docs"
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x, except for any changes explicitly mentioned on this page. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-## Keep on latest version 
+## Versionless 
 
 dbt Cloud is going "versionless." This means you'll automatically get early access to new features and functionality before they're available in final releases of dbt Core. 
 
-Select ["Keep on latest version"](/docs/dbt-versions/upgrade-dbt-version-in-cloud#keep-on-latest-version) in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access to everything in dbt Core v1.8 and more.
+Select [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) in your development, staging, and production [environments](/docs/deploy/deploy-environments) to access to everything in dbt Core v1.8+ and more.
 
 To upgrade an environment in the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api) or [Terraform](https://registry.terraform.io/providers/dbt-labs/dbtcloud/latest), set `dbt_version` to the string `versionless`.
 
@@ -98,13 +98,13 @@ The ability for installed packages to override built-in materializations without
 
 ### Managing changes to legacy behaviors
 
-dbt Core v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/legacy-behaviors). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
+dbt Core v1.8 has introduced flags for [managing changes to legacy behaviors](/reference/global-configs/behavior-changes). You may opt into recently introduced changes (disabled by default), or opt out of mature changes (enabled by default), by setting `True` / `False` values, respectively, for `flags` in `dbt_project.yml`.
 
 You can read more about each of these behavior changes in the following links:
 
-- (Mature, enabled by default) [Require explicit package overrides for builtin materializations](/reference/global-configs/legacy-behaviors#require_explicit_package_overrides_for_builtin_materializations)
-- (Introduced, disabled by default) [Require resource names without spaces](https://docs.getdbt.com/reference/global-configs/legacy-behaviors#require_resource_names_without_spaces)
-- (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](/reference/global-configs/legacy-behaviors#source_freshness_run_project_hooks)
+- (Mature, enabled by default) [Require explicit package overrides for builtin materializations](/reference/global-configs/behavior-changes#require_explicit_package_overrides_for_builtin_materializations)
+- (Introduced, disabled by default) [Require resource names without spaces](/reference/global-configs/behavior-changes#require_resource_names_without_spaces)
+- (Introduced, disabled by default) [Run project hooks (`on-run-*`) in the `dbt source freshness` command](/reference/global-configs/behavior-changes#source_freshness_run_project_hooks)
 
 ## Quick hits
 

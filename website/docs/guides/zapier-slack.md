@@ -100,7 +100,7 @@ run_id = hook_data['runId']
 account_id = full_body['accountId']
 
 # Fetch run info from the dbt Cloud Admin API
-url = f'https://cloud.getdbt.com/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
+url = f'https://YOUR_ACCESS_URL/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
 headers = {'Authorization': f'Token {api_token}'}
 run_data_response = requests.get(url, headers=headers)
 run_data_response.raise_for_status()
@@ -224,7 +224,7 @@ This guide assumes the name for the secret key is `DBT_CLOUD_SERVICE_TOKEN`. If 
 This guide uses a short-lived code action to store the secrets, but you can also use a tool like Postman to interact with the [REST API](https://store.zapier.com/) or create a separate Zap and call the [Set Value Action](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps#3-set-a-value-in-your-store-0-3).
 
 #### a. Create a Storage by Zapier connection
-If you haven't already got one, go to <https://zapier.com/app/connections/storage> and create a new connection.  Remember the UUID secret you generate for later.
+If you haven't already got one, go to [https://zapier.com/app/connections/storage](https://zapier.com/app/connections/storage) and create a new connection.  Remember the UUID secret you generate for later.
 
 #### b. Add a temporary code step
 Choose **Run Python** as the Event. Run the following code: 
@@ -260,7 +260,7 @@ api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
 commands_to_skip_logs = ['dbt source', 'dbt docs']
 run_id = input_data['run_id']
 account_id = input_data['account_id']
-url = f'https://cloud.getdbt.com/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
+url = f'https://YOUR_ACCESS_URL/api/v2/accounts/{account_id}/runs/{run_id}/?include_related=["run_steps"]'
 headers = {'Authorization': f'Token {api_token}'}
 
 response = requests.get(url, headers=headers)

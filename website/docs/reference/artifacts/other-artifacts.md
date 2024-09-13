@@ -25,14 +25,6 @@ Stores the network representation of the dbt resource DAG.
 
 ### graph_summary.json
 
-<VersionBlock lastVersion="1.5">
-
-:::info New functionality
-This functionality is new in v1.6. 
-:::
-
-</VersionBlock>
-
 **Produced by:** [manifest commands](/reference/artifacts/manifest-json)
 
 This file is useful for investigating performance issues in dbt Core's graph algorithms.

@@ -48,7 +48,10 @@ Metadata-only service tokens authorize requests to the Discovery API.
 Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
 
 **Job Admin**<br/>
-Job admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs.  
+Job admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs. 
+
+**Job Runner**<br/>
+Job runner service tokens can authorize requests for triggering runs and viewing historical runs.
 
 **Member** <br/>
 Member service tokens can authorize requests for viewing and editing resources, triggering runs, and inviting members to the account. Tokens assigned the Member permission set will have the same permissions as a Member user. For more information about Member users, see "[Self-service permissions](/docs/cloud/manage-access/self-service-permissions)".
@@ -68,6 +71,9 @@ Security Admin service tokens have certain account-level permissions.  For more 
 
 **Billing Admin** <br/>
 Billing Admin service tokens have certain account-level permissions.  For more on these permissions, see [Billing Admin](/docs/cloud/manage-access/enterprise-permissions#billing-admin).
+
+**Manage marketplace apps** <br/>
+Used only for service tokens assigned to marketplace apps (for example, the [Snowflake Native app](/docs/cloud-integrations/snowflake-native-app)). 
 
 **Metadata Only**<br/>
 Metadata-only service tokens authorize requests to the Discovery API.

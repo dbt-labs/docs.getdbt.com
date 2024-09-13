@@ -1,55 +1,35 @@
-name: Vale lint checker
+name: Vale Linting
 
 on:
   pull_request:
-    branches:
-      - '**'
+    types: [opened, synchronize, reopened]
 
 jobs:
-  lint:
+  vale:
+    name: Vale Linting
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Ensure the full history is fetched
-
-      - name: Cache Vale binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.vale
-          key: ${{ runner.os }}-vale-${{ hashFiles('**/.vale.ini') }}
-          restore-keys: |
-            ${{ runner.os }}-vale-
-
-      - name: Set up vale
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          files: '["website/docs/docs", "website/docs/reference", "website/docs/guides"]'
-          token: ${{ secrets.VALE_GITHUB_TOKEN }}
-          reporter: github-pr-check
+        uses: actions/checkout@v3
 
       - name: Get changed files
         id: changed-files
-        run: |
-          git fetch origin ${{ github.base_ref }} ${{ github.head_ref }}
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.md' '*.txt' '*.rst' | tr '\n' ' ')
-          echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+        uses: tj-actions/changed-files@v34
+        with:
+          separator: ' '
+          files: |
+            **/*.md
+            **/*.txt
+            **/*.rst
 
-      - name: Debug CHANGED_FILES
-        run: |
-          echo "Changed files: ${{ env.CHANGED_FILES }}"
+      - name: Set VALE_FILES environment variable
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        run: echo "VALE_FILES=${{ steps.changed-files.outputs.all_changed_and_modified_files }}" >> $GITHUB_ENV
 
-      - name: Set up Reviewdog
-        uses: reviewdog/action-setup@v1
-
-      - name: Run vale with reviewdog
-        run: |
-          if [ -z "${{ env.CHANGED_FILES }}" ]; then
-            echo "No changed files to lint."
-          else
-            for file in ${{ env.CHANGED_FILES }}; do
-              vale --output=JSON "$file" | reviewdog -f=vale -name="vale" -reporter=github-pr-check -level=warning -filter-mode=added -fail-on-error=true -tee
-            done
-          fi
+      - name: Run Vale
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          files: ${{ env.VALE_FILES }}
