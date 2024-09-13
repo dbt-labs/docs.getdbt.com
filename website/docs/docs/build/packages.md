@@ -94,7 +94,7 @@ Where possible, we recommend installing packages via dbt Hub, since this allows 
 
 In comparison, other package installation methods are unable to handle the duplicate dbt-utils package. 
 
-Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and set the `DBT_PACKAGE_HUB_URL` environment variable. Refer to [Using the `DBT_PACKAGE_HUB_URL` environment variable](#using-the-dbt_package_hub_url-environment-variable) for more information.
+Advanced users can choose to host an internal version of the package hub based on [this repository](https://github.com/dbt-labs/hub.getdbt.com) and set the `DBT_PACKAGE_HUB_URL` environment variable. Refer to [the `DBT_PACKAGE_HUB_URL` environment variable](#the-dbt_package_hub_url-environment-variable) section for more information.
 
 #### Prerelease versions
 
