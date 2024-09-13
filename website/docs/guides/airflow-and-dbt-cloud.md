@@ -146,23 +146,10 @@ Both IDs are included inside of the dbt Cloud job URL as shown in the following 
 
 ```python
 # For the dbt Cloud Job URL https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/
-# The account_id is 16173
-
-# Update line 28
-default_args={"dbt_cloud_conn_id": "dbt_cloud", "account_id": 16173},
-```
-
-```python
-# For the dbt Cloud Job URL https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/
-# The job_id is 65767
-
-# Update line 39
-trigger_dbt_cloud_job_run = DbtCloudRunJobOperator(
-        task_id="trigger_dbt_cloud_job_run",
-        job_id=65767,
-        check_interval=10,
-        timeout=300,
-    )
+# The account_id is 16173 and the job_id is 65767
+# Update lines 34 and 35
+ACCOUNT_ID = "16173"
+JOB_ID = "65767"
 ```
 
 <WistiaVideo id="wgy7wvgqof" paddingTweak="62.25%" />
