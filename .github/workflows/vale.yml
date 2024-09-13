@@ -1,4 +1,4 @@
-name: Vale Lint Checker
+name: Vale lint checker
 
 on:
   pull_request:
@@ -15,23 +15,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set VALE_CONFIG_PATH
-        run: echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
-
-      - name: Get Changed Files
-        id: changed-files
+      - name: Set environment variables
         run: |
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.md' '*.txt' '*.rst')
-          echo "changed_files=${CHANGED_FILES}" >> $GITHUB_OUTPUT
-          echo "Changed files:"
-          echo "${CHANGED_FILES}"
+          echo "HOME=/home/runner" >> $GITHUB_ENV
+          echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
 
       - name: Run Vale with Reviewdog
-        if: steps.changed-files.outputs.changed_files != ''
-        uses: reviewdog/action-vale@v1
+        uses: errata-ai/vale-action@reviewdog
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: '**/*.md'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: '2.17.0'
           reporter: github-pr-check
-          args: '${{ steps.changed-files.outputs.changed_files }}'
+          level: error
+          filter_mode: diff_context
         env:
-          VALE_CONFIG_PATH: ${{ env.VALE_CONFIG_PATH }}
+          HOME: /home/runner
+          VALE_CONFIG_PATH: $(pwd)/.vale.ini
