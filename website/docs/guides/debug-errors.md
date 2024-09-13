@@ -395,7 +395,7 @@ If you just opened a SQL file in the `target/` directory to help debug an issue,
 Here are some useful FAQs to help you debug your dbt project:
 
 - <FAQ path="Troubleshooting/generate-har-file" />
-- <FAQ path="Troubleshooting/access_token_error" />
+- <FAQ path="Troubleshooting/auth-expired-error" />  
 - <FAQ path="Troubleshooting/could-not-parse-project" />
 - <FAQ path="Troubleshooting/gitignore" />
 - <FAQ path="Troubleshooting/job-memory-limits" />
