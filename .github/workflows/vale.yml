@@ -32,4 +32,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
-          files: ${{ env.VALE_FILES }}
+          files: '["website/docs/docs", "website/docs/reference", "website/docs/guides", "website/docs/best-practices"]'
