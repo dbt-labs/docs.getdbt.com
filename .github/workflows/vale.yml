@@ -1,4 +1,4 @@
-name: Vale lint checker
+name: Vale Lint Checker
 
 on:
   pull_request:
@@ -11,39 +11,27 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Install Vale
-        run: |
-          curl -L https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz
-          tar -xvzf vale.tar.gz
-          sudo mv vale /usr/local/bin/
+      - name: Set VALE_CONFIG_PATH
+        run: echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
 
-      - name: Set environment variables
-        run: |
-          echo "HOME=/home/runner" >> $GITHUB_ENV
-          echo "VALE_CONFIG_PATH=$(pwd)/.vale.ini" >> $GITHUB_ENV
-
-      - name: Set up Vale with Reviewdog
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          files: '["website/docs/docs", "website/docs/reference","website/docs/guides"]'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          version: 2.17.0
-          reporter: github-pr-check
-        env:
-          HOME: /home/runner
-          VALE_CONFIG_PATH: $(pwd)/.vale.ini
-
-      - name: Get changed files
+      - name: Get Changed Files
         id: changed-files
         run: |
-          git fetch origin ${{ github.base_ref }} ${{ github.head_ref }}
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.md' '*.txt' '*.rst' | tr '\n' ' ')
-          echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.md' '*.txt' '*.rst')
+          echo "changed_files=${CHANGED_FILES}" >> $GITHUB_OUTPUT
+          echo "Changed files:"
+          echo "${CHANGED_FILES}"
 
-      - name: Debug CHANGED_FILES
-        run: |
-          echo "Changed files: ${{ env.CHANGED_FILES }}"
+      - name: Run Vale with Reviewdog
+        if: steps.changed-files.outputs.changed_files != ''
+        uses: reviewdog/action-vale@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          args: '${{ steps.changed-files.outputs.changed_files }}'
+        env:
+          VALE_CONFIG_PATH: ${{ env.VALE_CONFIG_PATH }}
