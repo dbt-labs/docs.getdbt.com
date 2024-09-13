@@ -19,7 +19,7 @@ This feature is currently only available for the Okta and Entra ID identity prov
 :::
 
 
-dbt Cloud Enterprise supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with external providers. When External OAuth is enabled, users can authorize their Development credentials using single sign-on (SSO) via the identity provider (IdP).  This grants users authorization to access multiple applications, including dbt Cloud, without their credentials being shared with the service. Not only does this make the process of authenticating for development environments easier on the user, it provides an additional layer of security to your dbt Cloud account. 
+dbt Cloud Enterprise supports [external OAuth authentication](https://docs.snowflake.com/en/user-guide/oauth-ext-overview) with external providers. When External OAuth is enabled, users can authorize their Development credentials using single sign-on (SSO) via the identity provider (IdP).  This grants users authorization to access multiple applications, including dbt Cloud, without their credentials being shared with the service. Not only does this make the process of authenticating for development environments easier on the user, it provides an additional layer of security to your dbt Cloud account. 
 
 ## Getting started
 
@@ -168,11 +168,11 @@ Adjust the other settings as needed to meet your organizations configurations in
 
 1. In your dbt Cloud account, navigate to **Account settings** —> **Integrations**. 
 2. Scroll down to **Custom integrations** and click **Add integrations**.
-3. Leave this window open. You can set the **Integration type** to Okta and make a note of the **Redirect URI** at the bottom of the page. Copy this to your clipboard for use in the next steps.
+3. Leave this window open. You can set the **Integration type** to Entra ID and make a note of the **Redirect URI** at the bottom of the page. Copy this to your clipboard for use in the next steps.
 
 ### Entra ID
 
-You’ll create two different `apps` in the Azure portal &mdash: A resource server and a client app.
+You’ll create two different `apps` in the Azure portal &mdash; A resource server and a client app.
 
 :::important
 

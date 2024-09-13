@@ -23,11 +23,13 @@ We want to help you work through implementing and utilizing dbt Cloud at your or
 
 - **Enterprise plans** &mdash; Priority [support](#severity-level-for-enterprise-support), options for custom support coverage hours, implementation assistance, dedicated management, and dbt Labs security reviews depending on price point.
 - **Developer and Team plans** &mdash; 24x5 support (no service level agreement (SLA); [contact Sales](https://www.getdbt.com/pricing/) for Enterprise plan inquiries).
-- **Support team help** &mdash; Assistance with dbt Cloud questions, like project setup, login issues, error understanding, setup private packages, link to a new GitHub account, and so on.
+- **Support team help** &mdash; Assistance with [common dbt Cloud questions](/category/troubleshooting), like project setup, login issues, error understanding, setup private packages, link to a new GitHub account, [how to generate a har file](/faqs/Troubleshooting/generate-har-file), and so on.
 - **Resource guide** &mdash; Check the [guide](/community/resources/getting-help) for effective help-seeking strategies.
 
 <details>
+
 <summary>Example of common support questions</summary>
+
 Types of dbt Cloud-related questions our Support team can assist you with, regardless of your dbt Cloud plan:<br /><br />
 <b>How do I...</b><br />
     - set up a dbt Cloud project?<br />

@@ -11,7 +11,7 @@ Simple metrics are metrics that directly reference a single measure, without any
 
  The parameters, description, and type for simple metrics are:
 
- :::tip
+:::tip
 Note that we use the double colon (::) to indicate whether a parameter is nested within another parameter. So for example, `query_params::metrics` means the `metrics` parameter is nested under `query_params`.
 :::
 
