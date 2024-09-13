@@ -372,9 +372,9 @@ For a general overview of this process, see the official docs for [Creating Shor
 
 By default, dbt will use the specified `project`/`database` as both:
 1. The location to materialize resources (models, seeds, snapshots, etc), unless they specify a custom `project`/`database` config
-2. The GCP project that creates and runs the BigQuery job from
+2. The GCP project that receives the bill for query costs or slot usage
 
-Optionally, you may specify an `execution_project` to run the BigQuery job from, instead of the `project`/`database` where you materialize most resources.
+Optionally, you may specify an `execution_project` to bill for query execution, instead of the `project`/`database` where you materialize most resources.
 
 ```yaml
 my-profile:
@@ -407,7 +407,6 @@ my-profile:
       dataset: my_dataset
       quota_project: my-bg-quota-project
 ```
-
 
 ### Running Python models on Dataproc
 
