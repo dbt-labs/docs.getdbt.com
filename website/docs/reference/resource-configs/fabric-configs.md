@@ -169,7 +169,7 @@ select created_date as _partitiontime, * EXCEPT(created_date) from (
 </TabItem>
 </Tabs>
 
-#### Partitioning with integer buckets
+#### Partitioning With Integer Buckets
 
 If the `data_type` is specified as `int64`, then a `range` key must also
 be provided in the `partition_by` dict. dbt will use the values provided in
