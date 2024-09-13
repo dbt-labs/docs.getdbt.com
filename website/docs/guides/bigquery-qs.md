@@ -37,7 +37,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
 - You have a [trial Snowflake account](https://signup.snowflake.com/). During trial account creation, make sure to choose the **Enterprise** Snowflake edition so you have `ACCOUNTADMIN` access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html) in the Snowflake docs. For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like.
 
-### Related content
+### Related Content
 
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
