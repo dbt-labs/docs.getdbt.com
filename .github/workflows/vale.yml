@@ -65,3 +65,15 @@ jobs:
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
           version: '2.27.0'
+
+      - name: Post Summary Comment
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        run: |
+          COMMENT="Vale linting found issues. Please check the 'Checks' tab for detailed results."
+          COMMENT+=$'\n'
+          COMMENT+="Warnings: ${{ steps.reviewdog.outputs.warning }} | Errors: ${{ steps.reviewdog.outputs.error }} | Total: ${{ steps.reviewdog.outputs.total }}"
+          COMMENT+=$'\n\n'
+          COMMENT+="Link to detailed report: [Check results](${{ github.event.pull_request.html_url }}/checks)"
+          gh pr comment ${{ github.event.pull_request.number }} --body "$COMMENT"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
