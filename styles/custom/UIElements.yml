@@ -1,7 +1,7 @@
 extends: existence
 
 message: "UI elements should be bold: '%s'."
-level: suggestion
+level: warning
 tokens:
   - '\bSave\b'
   - '\bCancel\b'
