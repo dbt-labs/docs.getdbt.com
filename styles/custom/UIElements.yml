@@ -3,11 +3,12 @@ extends: existence
 message: "UI elements should be bold: '%s'."
 level: warning
 tokens:
-  - '\bSave\b'
-  - '\bCancel\b'
-  - '\bSubmit\b'
-  - '\bEdit\b'
-  - '\bAccount settings\b'
-  - '\bProject details\b'
-  - '\bProfile settings\b'
-  - '\bPersonal profile\b'
+  # Match if the UI element is not already surrounded by **
+  - '(?<!\*\*)\bSave\b(?!\*\*)'
+  - '(?<!\*\*)\bCancel\b(?!\*\*)'
+  - '(?<!\*\*)\bSubmit\b(?!\*\*)'
+  - '(?<!\*\*)\bEdit\b(?!\*\*)'
+  - '(?<!\*\*)\bAccount settings\b(?!\*\*)'
+  - '(?<!\*\*)\bProject details\b(?!\*\*)'
+  - '(?<!\*\*)\bProfile settings\b(?!\*\*)'
+  - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'

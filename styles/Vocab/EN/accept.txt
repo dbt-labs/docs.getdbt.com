@@ -55,3 +55,6 @@ n/a
 N/A      
 \w+/\w+|\w+-\w+|n/a
 boolean
+defaultValue=
+DWH
+BQ
