@@ -3,28 +3,39 @@ name: Vale Linting
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - 'website/docs/**/*'
+      - 'website/blog/**/*'
+      - 'website/**/*'
 
 jobs:
-  lint:
+  vale:
+    name: Vale Linting
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v34
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          separator: ','
-          files: |
-            **/*.md
-            **/*.txt
-            **/*.rst
+          python-version: '3.x'
+      
+      - name: Install Vale
+        run: pip install vale
+
+      - name: Find changed lines and files
+        id: changed_lines
+        uses: hestonhoffman/changed-lines@v1
+        with:
+          file_filter: '.md'
+          delimiter: ','  # Use comma as the delimiter
 
       - name: Run Vale
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        uses: errata-ai/vale-action@reviewdog
+        if: ${{ steps.changed_lines.outputs.changed_files != '' }}
+        uses: errata-ai/vale-action@v2  # Use a valid version tag
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
-          files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+          files: ${{ steps.changed_lines.outputs.changed_files }}
+          separator: ','
