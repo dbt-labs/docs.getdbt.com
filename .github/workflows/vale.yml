@@ -3,28 +3,52 @@ name: Vale Linting
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - 'website/docs/**/*'
+      - 'website/blog/**/*'
+      - 'website/**/*'
 
 jobs:
-  lint:
+  vale:
+    name: Vale Linting
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v34
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          separator: ','
-          files: |
-            **/*.md
-            **/*.txt
-            **/*.rst
+          python-version: '3.x'
+      
+      - name: Install Vale
+        run: pip install vale
+
+      - name: Find changed lines and files
+        id: changed_lines
+        uses: hestonhoffman/changed-lines@v1
+        with:
+          file_filter: '.md'
+          # Ensure the output is newline-separated
+          delimiter: ','
+
+      - name: Prepare files for Vale
+        if: ${{ steps.changed_lines.outputs.changed_files != '' }}
+        run: |
+          echo "Formatting changed files for Vale"
+          # Remove any empty lines
+          echo "${{ steps.changed_lines.outputs.changed_files }}" | awk 'NF' > changed_files.txt
+          # Create a comma-separated list
+          files_list=$(paste -sd ',' changed_files.txt)
+          echo "Formatted files as comma-separated list:"
+          echo "$files_list"
+          echo "VALE_FILES=$files_list" >> $GITHUB_ENV
 
       - name: Run Vale
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        if: ${{ steps.changed_lines.outputs.changed_files != '' }}
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
-          files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+          files: ${{ env.VALE_FILES }}
+          separator: ','
