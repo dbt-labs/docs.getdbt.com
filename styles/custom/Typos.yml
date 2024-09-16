@@ -1,7 +1,7 @@
 extends: spelling
 
 message: "Oops there's a typo -- did you really mean '%s'? "
-level: warning
+level: suggestion
 
 action:
   name: suggest

@@ -1,9 +1,8 @@
 extends: capitalization
 message: "'%s' should use sentence-style capitalization. Try '%s' instead."
-level: warning
+level: suggestion
 scope: heading
 match: $sentence
-transform: sentence
 indicators:
   - ":"
 exceptions:
