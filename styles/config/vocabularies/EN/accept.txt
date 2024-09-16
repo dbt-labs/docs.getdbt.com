@@ -27,4 +27,24 @@ Snowflake
 dbt Mesh
 dbt mesh
 mesh
-
+Snowflake
+Databricks
+Fabric
+ETL
+ETL
+Redshift
+Azure
+DevOps
+Athena
+Amazon
+UI
+CSV
+S3
+SCD
+repo
+YAML
+YML
+pseudocolumn
+<Tabs
+values={['
+dbt_project.yml

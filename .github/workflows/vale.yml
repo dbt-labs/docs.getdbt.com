@@ -5,7 +5,6 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - 'website/docs/**/*'
-      - 'website/blog/**/*'
       - 'website/**/*'
 
 jobs:
@@ -27,7 +26,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install Vale
-        run: pip install vale==2.27.0  # Install a stable version of Vale
+        run: pip install vale  # Install a stable version of Vale
 
       - name: Get changed files
         id: changed-files
@@ -64,4 +63,3 @@ jobs:
           reporter: github-pr-check
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ' '
-          version: '2.27.0'
