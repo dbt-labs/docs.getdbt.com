@@ -1,14 +1,17 @@
+# styles/custom/BoldUIElements.yml
 extends: existence
-
-message: "UI elements should be bold: '%s'."
+message: "UI elements like '%s' should be bold."
 level: warning
 tokens:
-  # Match if the UI element is not already surrounded by **
-  - '(?<!\*\*)\bSave\b(?!\*\*)'
-  - '(?<!\*\*)\bCancel\b(?!\*\*)'
-  - '(?<!\*\*)\bSubmit\b(?!\*\*)'
-  - '(?<!\*\*)\bEdit\b(?!\*\*)'
-  - '(?<!\*\*)\bAccount settings\b(?!\*\*)'
-  - '(?<!\*\*)\bProject details\b(?!\*\*)'
-  - '(?<!\*\*)\bProfile settings\b(?!\*\*)'
-  - '(?<!\*\*)\bPersonal profile\b(?!\*\*)'
+  # Only match UI elements that are not bolded (i.e., not within **)
+  - '\bSave\b'
+  - '\bSave as\b'
+  - '\bCancel\b'
+  - '\bSubmit\b'
+  - '\bEdit\b'
+  - '\bAccount settings\b'
+  - '\bProject details\b'
+  - '\bProfile settings\b'
+  - '\bPersonal profile\b'
+
+scope: raw  # Ensure the rule is applied before formatting
