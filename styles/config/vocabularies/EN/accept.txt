@@ -45,6 +45,7 @@ repo
 YAML
 YML
 pseudocolumn
-\Q<Tabs\E
-\Qvalues={['\E
+\<Tabs
+values=
 dbt_project.yml
+<[^>]+>
