@@ -16,6 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: List repository contents
+        run: |
+          pwd
+          ls -R
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -29,26 +34,20 @@ jobs:
         uses: hestonhoffman/changed-lines@v1
         with:
           file_filter: '.md'
-          delimiter: ','  # Use comma as the delimiter
+          delimiter: ','
 
-      - name: Adjust file paths
+      - name: Debugging - Print changed files
         if: ${{ steps.changed_lines.outputs.changed_files != '' }}
-        id: adjust_paths
         run: |
-          echo "Adjusting file paths"
-          echo "${{ steps.changed_lines.outputs.changed_files }}" > changed_files_raw.txt
-          # Remove 'website/' prefix from each file path
-          adjusted_files=$(cat changed_files_raw.txt | sed 's|website/||g')
-          echo "Adjusted files:"
-          echo "$adjusted_files"
-          echo "ADJUSTED_FILES=$adjusted_files" >> $GITHUB_ENV
+          echo "Changed files:"
+          echo "${{ steps.changed_lines.outputs.changed_files }}"
 
       - name: Run Vale
-        if: ${{ env.ADJUSTED_FILES != '' }}
-        uses: errata-ai/vale-action@reviewdog
+        if: ${{ steps.changed_lines.outputs.changed_files != '' }}
+        uses: errata-ai/vale-action@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
-          files: ${{ env.ADJUSTED_FILES }}
+          files: ${{ steps.changed_lines.outputs.changed_files }}
           separator: ','
           version: '3.7.1'
