@@ -57,4 +57,10 @@ N/A
 boolean
 defaultValue=
 DWH
+DWHs
+ADF
 BQ
+gcloud
+MSFT
+shoutout
+DDL
