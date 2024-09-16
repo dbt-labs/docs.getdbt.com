@@ -111,7 +111,7 @@ This is a **required configuration**. There is no default value.
 </File>
 
 
-### Use the check_cols strategy
+### Use the check strategy
 
 ```sql
 {% snapshot orders_snapshot_check %}
