@@ -15,6 +15,8 @@ filters:
   - '\bdbt\s+Core\b'
   - '\bdbt\s+Cloud\s+CLI\b'
   - '\bdbt\s+.*?\b'
+  - '<[^>]+>' # Ignore all HTML-like components starting with < and ending with >
+  - '<[^>]+>.*<\/[^>]+>'
 
 ---
 
@@ -28,3 +30,5 @@ tokens:
   - '\bdbt\s+Core\b'
   - '\bdbt\s+Cloud\s+CLI\b'
   - '\bdbt\s+.*?\b'
+  - '<[^>]+>' # Ignore all HTML-like components starting with < and ending with >
+  - '<[^>]+>.*<\/[^>]+>'
