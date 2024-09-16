@@ -27,6 +27,7 @@ To access the features, you should meet the following:
 3. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 4. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings
 5. Use Tableau as your BI tool and can enable metadata permissions or work with an admin to do so. Compatible with Tableau Cloud or Tableau Server with the Metadata API enabled. 
+6. Run a production job _after_ saving the Tableau collections.
 
 ## Set up in Tableau
 
