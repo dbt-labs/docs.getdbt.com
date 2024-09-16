@@ -3,7 +3,7 @@ extends: existence
 message: "UI elements should be bold: '%s'."
 level: suggestion
 tokens:
-  - '\Save\b'
+  - '\bSave\b'
   - '\bCancel\b'
   - '\bSubmit\b'
   - '\bEdit\b'
