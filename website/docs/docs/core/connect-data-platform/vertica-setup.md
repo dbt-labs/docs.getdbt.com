@@ -80,7 +80,7 @@ backup_server_node|	List of hosts to connect to if the primary host specified in
 retries	|The retry times after an unsuccessful connection.|	No|	2	|3|
 threads	|The number of threads the dbt project will run on.|	No|	1|	3|
 label|	A session label to identify the connection.	|No	|An auto-generated label with format of: dbt_username	|dbt_dbadmin|
-autocommit | A Boolean value that indicates whether the connection can set the status of autocommit.| No| True|False
+autocommit | Boolean value that indicates if the connection can enable or disable auto-commit.| No | True | False
 
 
 For more information on Vertica’s connection properties please refer to [Vertica-Python](https://github.com/vertica/vertica-python#create-a-connection) Connection Properties.
