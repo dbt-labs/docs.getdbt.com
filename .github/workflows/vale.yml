@@ -27,27 +27,41 @@ jobs:
           python-version: '3.x'
       
       - name: Install Vale
-        run: pip install vale
+        run: pip install vale==2.27.0
 
-      - name: Find changed lines and files
-        id: changed_lines
-        uses: hestonhoffman/changed-lines@v1
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v34
         with:
-          file_filter: '.md'
-          delimiter: ','
-
+          files: |
+            website/**/*.md
+          separator: ','
+      
       - name: Debugging - Print changed files
-        if: ${{ steps.changed_lines.outputs.changed_files != '' }}
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         run: |
           echo "Changed files:"
-          echo "${{ steps.changed_lines.outputs.changed_files }}"
+          echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
+
+      - name: Confirm files exist
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        run: |
+          echo "Checking if files exist..."
+          for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+            if [ -f "$file" ]; then
+              echo "Found: $file"
+            else
+              echo "File not found: $file"
+              exit 1
+            fi
+          done
 
       - name: Run Vale
-        if: ${{ steps.changed_lines.outputs.changed_files != '' }}
-        uses: errata-ai/vale-action@v2
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
+        uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
-          files: ${{ steps.changed_lines.outputs.changed_files }}
+          files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
           separator: ','
-          version: '3.7.1'
+          version: '2.27.0'
