@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  lint:
+  vale:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -15,16 +15,16 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v34
         with:
-          separator: ','
           files: |
             **/*.md
             **/*.txt
             **/*.rst
+          separator: '\n'
 
       - name: Run Vale
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        uses: errata-ai/vale-action@reviewdog
+        uses: errata-ai/vale-action@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
-          files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+          wrapper_script: |
+            echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}" > file_list.txt
+            cat file_list.txt | xargs vale
