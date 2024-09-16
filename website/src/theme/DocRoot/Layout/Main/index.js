@@ -120,8 +120,7 @@ export default function DocRootLayoutMain({
         )}
       >
         {!pageAvailable &&
-          dbtVersion &&
-          (hasFirstAvailableVersion || lastAvailableVersion) && (
+          dbtVersion && (
             <div className={styles.versionBanner}>
               <Admonition
                 type="caution"
