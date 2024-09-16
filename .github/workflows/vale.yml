@@ -24,19 +24,31 @@ jobs:
       - name: Install Vale
         run: pip install vale
 
-      - name: Find changed lines adn files
-        id: changed-files
+      - name: Find changed lines and files
+        id: changed_lines
         uses: hestonhoffman/changed-lines@v1
-        with: 
+        with:
           file_filter: '.md'
+          # Ensure the output is newline-separated
+          delimiter: ','
 
-      - name: Set VALE_FILES environment variable
+      - name: Prepare files for Vale
         if: ${{ steps.changed_lines.outputs.changed_files != '' }}
-        run: echo "VALE_FILES=${{ steps.changed_lines.outputs.changed_files }}" >> $GITHUB_ENV
+        run: |
+          echo "Formatting changed files for Vale"
+          # Remove any empty lines
+          echo "${{ steps.changed_lines.outputs.changed_files }}" | awk 'NF' > changed_files.txt
+          # Create a comma-separated list
+          files_list=$(paste -sd ',' changed_files.txt)
+          echo "Formatted files as comma-separated list:"
+          echo "$files_list"
+          echo "VALE_FILES=$files_list" >> $GITHUB_ENV
 
       - name: Run Vale
-        if: ${{ steps.changed_lines.outputs.changed_files == 'true' }}
+        if: ${{ steps.changed_lines.outputs.changed_files != '' }}
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
+          files: ${{ env.VALE_FILES }}
+          separator: ','
