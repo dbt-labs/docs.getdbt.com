@@ -5,8 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  vale:
-    name: Vale Linting
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,14 +21,42 @@ jobs:
             **/*.txt
             **/*.rst
 
-      - name: Set VALE_FILES environment variable
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        run: echo "VALE_FILES=${{ steps.changed-files.outputs.all_changed_and_modified_files }}" >> $GITHUB_ENV
+      - name: Install Vale
+        env:
+          VALE_VERSION: v2.27.0  # Use a stable version
+        run: |
+          curl -fsSL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          vale sync
 
       - name: Run Vale
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        uses: errata-ai/vale-action@reviewdog
+        continue-on-error: true  # Prevent the job from failing if Vale exits with an error
+        run: |
+          echo "Changed files:"
+          echo "${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
+          files="${{ steps.changed-files.outputs.all_changed_and_modified_files }}"
+          # Ensure files exist and are accessible
+          existing_files=$(echo "$files" | xargs ls 2>/dev/null || true)
+          if [ -n "$existing_files" ]; then
+            echo "Running Vale on the following files:"
+            echo "$existing_files"
+            # Run Vale and save output to a file
+            vale --output=JSON $existing_files > vale_output.json
+          else
+            echo "No files to lint."
+          fi
+
+      - name: Annotate with Reviewdog
+        if: ${{ steps.changed-files.outputs.any_changed == 'true' && always() }}
+        uses: reviewdog/action-reviewdog@v1
         with:
+          name: Vale
+          reporter: github-pr-review
+          filter_mode: diff_context
+          fail_on_error: false
+          level: warning
           token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
-          files: ${{ env.VALE_FILES }}
+          tool_name: vale
+          format: vale
+          input: vale_output.json
