@@ -25,9 +25,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      
+
       - name: Install Vale
-        run: pip install vale==2.27.0
+        run: pip install vale==2.27.0  # Install a stable version of Vale
 
       - name: Get changed files
         id: changed-files
@@ -35,8 +35,8 @@ jobs:
         with:
           files: |
             website/**/*.md
-          separator: ','
-      
+          separator: ' '
+
       - name: Debugging - Print changed files
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         run: |
@@ -63,5 +63,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
           files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
-          separator: ','
+          separator: ' '
           version: '2.27.0'
