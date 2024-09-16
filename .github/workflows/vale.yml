@@ -29,26 +29,13 @@ jobs:
         uses: hestonhoffman/changed-lines@v1
         with:
           file_filter: '.md'
-          # Ensure the output is newline-separated
-          delimiter: ','
-
-      - name: Prepare files for Vale
-        if: ${{ steps.changed_lines.outputs.changed_files != '' }}
-        run: |
-          echo "Formatting changed files for Vale"
-          # Remove any empty lines
-          echo "${{ steps.changed_lines.outputs.changed_files }}" | awk 'NF' > changed_files.txt
-          # Create a comma-separated list
-          files_list=$(paste -sd ',' changed_files.txt)
-          echo "Formatted files as comma-separated list:"
-          echo "$files_list"
-          echo "VALE_FILES=$files_list" >> $GITHUB_ENV
+          delimiter: ','  # Use comma as the delimiter
 
       - name: Run Vale
         if: ${{ steps.changed_lines.outputs.changed_files != '' }}
-        uses: errata-ai/vale-action@reviewdog
+        uses: errata-ai/vale-action@v2  # Use a valid version tag
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
-          files: ${{ env.VALE_FILES }}
+          files: ${{ steps.changed_lines.outputs.changed_files }}
           separator: ','
