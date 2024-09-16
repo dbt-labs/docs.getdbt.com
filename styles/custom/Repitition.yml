@@ -1,6 +1,6 @@
 extends: repetition
 message: "'%s' is repeated!"
-level: suggestion
+level: warning
 alpha: true
 tokens:
   - '[^\s]+'
