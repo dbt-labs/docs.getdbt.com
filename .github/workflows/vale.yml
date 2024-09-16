@@ -31,11 +31,24 @@ jobs:
           file_filter: '.md'
           delimiter: ','  # Use comma as the delimiter
 
-      - name: Run Vale
+      - name: Adjust file paths
         if: ${{ steps.changed_lines.outputs.changed_files != '' }}
-        uses: errata-ai/vale-action@v2  # Use a valid version tag
+        id: adjust_paths
+        run: |
+          echo "Adjusting file paths"
+          echo "${{ steps.changed_lines.outputs.changed_files }}" > changed_files_raw.txt
+          # Remove 'website/' prefix from each file path
+          adjusted_files=$(cat changed_files_raw.txt | sed 's|website/||g')
+          echo "Adjusted files:"
+          echo "$adjusted_files"
+          echo "ADJUSTED_FILES=$adjusted_files" >> $GITHUB_ENV
+
+      - name: Run Vale
+        if: ${{ env.ADJUSTED_FILES != '' }}
+        uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
-          files: ${{ steps.changed_lines.outputs.changed_files }}
+          files: ${{ env.ADJUSTED_FILES }}
           separator: ','
+          version: '3.7.1'
