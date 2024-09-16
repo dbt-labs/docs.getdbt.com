@@ -1,6 +1,6 @@
 extends: substitution
 message: "Avoid latin abbreviations: '%s'. Consider using '%s' instead."
-level: suggestion
+level: warning
 ignorecase: false
 
 swap:
