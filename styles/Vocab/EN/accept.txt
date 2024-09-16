@@ -49,3 +49,9 @@ pseudocolumn
 values=
 dbt_project.yml
 <[^>]+>
+\w+-\w+    
+\w+/\w+    
+n/a 
+N/A      
+\w+/\w+|\w+-\w+|n/a
+boolean

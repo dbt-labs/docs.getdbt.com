@@ -3,6 +3,7 @@ message: "'%s' should use sentence-style capitalization. Try '%s' instead."
 level: warning
 scope: heading
 match: $sentence
+transform: sentence
 indicators:
   - ":"
 exceptions:
@@ -10,4 +11,4 @@ exceptions:
   - '\bdbt\s+Cloud\b'
   - '\bdbt\s+Core\b'
   - '\bdbt\s+Cloud\s+CLI\b'
-  - '\bdbt\s+.*?\b'
+  -  '\bdbt\s+.*?\b'
