@@ -21,14 +21,6 @@ jobs:
             **/*.txt
             **/*.rst
 
-      - name: Install Vale
-        env:
-          VALE_VERSION: v2.27.0  # Use a stable version
-        run: |
-          curl -fsSL https://install.goreleaser.com/github.com/errata-ai/vale.sh | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          vale sync
-
       - name: Run Vale
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         uses: errata-ai/vale-action@reviewdog
