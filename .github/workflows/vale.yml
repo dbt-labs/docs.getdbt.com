@@ -15,7 +15,7 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v34
         with:
-          separator: ' '
+          separator: ','
           files: |
             **/*.md
             **/*.txt
@@ -29,13 +29,10 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           vale sync
 
-      - name: Set VALE_FILES environment variable
-        if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
-        run: echo "VALE_FILES=${{ steps.changed-files.outputs.all_changed_and_modified_files }}" >> $GITHUB_ENV
-  
       - name: Run Vale
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         uses: errata-ai/vale-action@reviewdog
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-check
+          files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
