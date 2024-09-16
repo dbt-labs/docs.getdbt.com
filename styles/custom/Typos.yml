@@ -32,3 +32,8 @@ tokens:
   - '\bdbt\s+.*?\b'
   - '<[^>]+>' # Ignore all HTML-like components starting with < and ending with >
   - '<[^>]+>.*<\/[^>]+>'
+  - '\w+-\w+'
+  - '\w+/\w+'
+  - '\w+/\w+|\w+-\w+|n/a'
+  - 'n/a' 
+  - 'N/A'
