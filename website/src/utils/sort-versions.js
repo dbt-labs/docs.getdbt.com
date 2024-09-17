@@ -40,7 +40,5 @@ export const sortVersions = (versionsArr) => {
     return 0
   });
 
-  console.log('sortedVersions', sortedVersions)
-
   return sortedVersions
 }
