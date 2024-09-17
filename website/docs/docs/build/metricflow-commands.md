@@ -18,34 +18,14 @@ MetricFlow is a dbt package that allows you to define and query metrics in your 
 
 Using MetricFlow with dbt Cloud means you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
 
-**dbt Cloud jobs** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
+dbt Cloud jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 
-<Tabs>
+#### dbt Cloud
+In dbt Cloud, run MetricFlow commands directly in the dbt Cloud IDE or in the dbt Cloud CLI. 
 
-<TabItem value="cloudcli" label="dbt Cloud CLI">
+For dbt Cloud CLI users, MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately. You don't need to manage versioning because your dbt Cloud account will automatically manage the versioning for you.
 
-- MetricFlow [commands](#metricflow-commands) are embedded in the dbt Cloud CLI. This means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately.
-- You don't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
- 
-</TabItem>
-
-<TabItem value="cloud ide" label="dbt Cloud IDE">
-
-:::info
-You can create metrics using MetricFlow in the dbt Cloud IDE and run the [dbt sl validate](/docs/build/validation#validations-command) command. Support for running more MetricFlow commands in the IDE will be available soon.
-:::
-
-</TabItem>
-
-<TabItem value="core" label="dbt Core">
-
-:::tip Use dbt Cloud CLI for semantic layer development
-
-You can use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project.
-
-A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
-:::
-
+#### dbt Core
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
 1. Create or activate your virtual environment `python -m venv venv`
@@ -54,10 +34,6 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 
 **Note**, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 
-</TabItem>
-
-</Tabs>
-
 Something to note, MetricFlow `mf` commands return an error if you have a Metafont latex package installed. To run `mf` commands, uninstall the package.
 
 ## MetricFlow commands
@@ -65,9 +41,9 @@ Something to note, MetricFlow `mf` commands return an error if you have a Metafo
 MetricFlow provides the following commands to retrieve metadata and query metrics. 
 
 <Tabs>
-<TabItem value="cloud" label="Commands for dbt Cloud CLI">
+<TabItem value="cloud" label="Commands for dbt Cloud">
 
-You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands and flags, run the `dbt sl --help` command in your terminal.
+You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud IDE or dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands and flags, run the `dbt sl --help` command in your terminal.
 
 - [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
