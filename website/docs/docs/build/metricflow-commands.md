@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands. 
 
-MetricFlow allows you to define and query metrics in your dbt project in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [dbt Core](/docs/core/installation-overview). To experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your dbt project in the [dbt Cloud](/docs/cloud/about-develop-dbt) or [dbt Core](/docs/core/installation-overview). To experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
@@ -20,12 +20,17 @@ Using MetricFlow with dbt Cloud means you won't need to manage versioning &mdash
 
 dbt Cloud jobs support the `dbt sl validate` command to [automatically test your semantic nodes](/docs/deploy/ci-jobs#semantic-validations-in-ci). You can also add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`python -m pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
 
-#### dbt Cloud
-In dbt Cloud, run MetricFlow commands directly in the dbt Cloud IDE or in the dbt Cloud CLI. 
+<Tabs>
+
+<TabItem value="cloud" label="MetricFlow with dbt Cloud">
+
+In dbt Cloud, run MetricFlow commands directly in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 
 For dbt Cloud CLI users, MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them once you install the dbt Cloud CLI and don't need to install MetricFlow separately. You don't need to manage versioning because your dbt Cloud account will automatically manage the versioning for you.
+</TabItem>
 
-#### dbt Core
+<TabItem value="core" label="MetricFlow with dbt Core">  
+
 You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
 1. Create or activate your virtual environment `python -m venv venv`
@@ -36,25 +41,32 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 
 Something to note, MetricFlow `mf` commands return an error if you have a Metafont latex package installed. To run `mf` commands, uninstall the package.
 
+</TabItem>
+</Tabs>
+
 ## MetricFlow commands
 
 MetricFlow provides the following commands to retrieve metadata and query metrics. 
 
 <Tabs>
-<TabItem value="cloud" label="Commands for dbt Cloud">
+<TabItem value="cloudcommands" label="Commands for dbt Cloud">
 
-You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud IDE or dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands and flags, run the `dbt sl --help` command in your terminal.
+You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud IDE or dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands and flags, run the `dbt sl --help` command in your terminal. 
 
-- [`list`](#list) &mdash; Retrieves metadata values.
-- [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
-- [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
-- [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
-- [`list entities`](#list-entities) &mdash; Lists all unique entities.
-- [`list saved-queries`](#list-saved-queries) &mdash; Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query.
-- [`query`](#query) &mdash; Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
-- [`export`](#export) &mdash;  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query.
-- [`export-all`](#export-all) &mdash; Runs exports for multiple saved queries at once, saving time and effort.
-- [`validate`](#validate) &mdash; Validates semantic model configurations.
+Note: Only the `list`, `query`, and `validate` commands are available in the dbt Cloud IDE.
+
+| <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | dbt Cloud IDE | dbt Cloud CLI |
+|---------|-------------|---------------|---------------|
+| [`list`](#list) | Retrieves metadata values. | ✅ | ✅ |
+| [`list metrics`](#list-metrics) | Lists metrics with dimensions. |  ✅ | ✅ |
+| [`list saved-queries`](#list-saved-queries) | Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query. |  ✅ | ✅ |
+| [`query`](#query) | Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.  |  ✅ | ✅ |
+| [`validate`](#validate) | Validates semantic model configurations. |  ✅ | ✅ |
+| [`export`](#export) |  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. |  ❌ | ✅ |
+| [`export-all`](#export-all) | Runs exports for multiple saved queries at once, saving time and effort. |  ❌ | ✅ |
+| [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ❌ | ✅ |
+| [`list dimension-values`](#list-dimension-values) | List dimensions with metrics. |  ❌ | ✅ |
+| [`list entities`](#list-entities) | Lists all unique entities.  |  ❌ | ✅ |
 
 <!--below commands aren't supported in dbt cloud yet
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
@@ -75,7 +87,7 @@ Check out the following video for a short video demo of how to query or preview 
 
 </TabItem>
 
-<TabItem value="core" label="Commands for dbt Core">
+<TabItem value="corecommands" label="Commands for dbt Core">
 
 Use the `mf` prefix before the command name to execute them in dbt Core. For example, to list all metrics, run `mf list metrics`.
 
@@ -478,8 +490,6 @@ The following tabs present additional query examples, like exporting to a CSV. S
 
 <Tabs>
 
-
-
 <TabItem value="eg6" label="--compile/--explain flag">
 
 Add `--compile` (or `--explain` for dbt Core users) to your query to view the SQL generated by MetricFlow. 
@@ -498,24 +508,24 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
  ```bash
  ✔ Success 🦄 - query completed after 0.28 seconds
 🔎 SQL (remove --compile to see data or add --show-dataflow-plan to see the generated dataflow plan):
-SELECT
+select
   metric_time
   , is_food_order
-  , SUM(order_cost) AS order_total
-FROM (
-  SELECT
-    cast(ordered_at as date) AS metric_time
+  , sum(order_cost) as order_total
+from (
+  select
+    cast(ordered_at as date) as metric_time
     , is_food_order
     , order_cost
-  FROM ANALYTICS.js_dbt_sl_demo.orders orders_src_1
-  WHERE cast(ordered_at as date) BETWEEN CAST('2017-08-22' AS TIMESTAMP) AND CAST('2017-08-27' AS TIMESTAMP)
+  from analytics.js_dbt_sl_demo.orders orders_src_1
+  where cast(ordered_at as date) between cast('2017-08-22' as timestamp) and cast('2017-08-27' as timestamp)
 ) subq_3
-WHERE is_food_order = True
-GROUP BY
+where is_food_order = True
+group by
   metric_time
   , is_food_order
-ORDER BY metric_time DESC
-LIMIT 10
+order by metric_time desc
+limit 10
 ```
 
 </TabItem>

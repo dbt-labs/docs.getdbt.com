@@ -127,6 +127,7 @@ Nice job, you're ready to start developing and building models 🎉!
   - If a model or test fails, dbt Cloud makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
   - Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
   - Starting from dbt v1.6, leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the Git branch name. For example, using the branch name as a prefix for a development schema.
+  - Run [MetricFlow commands](/docs/build/metricflow-commands) to create and manage metrics in your project with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
 
 - **Generate your YAML configurations with dbt Assist** <Lifecycle status="beta"/>  &mdash; [dbt Assist](/docs/cloud/dbt-assist) is a powerful artificial intelligence (AI) co-pilot feature that helps automate development in dbt Cloud. It generates documentation and tests for your dbt SQL models directly in the dbt Cloud IDE, with a click of a button, and helps you accomplish more in less time. Available for dbt Cloud Enterprise plans.
 
