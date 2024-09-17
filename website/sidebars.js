@@ -49,6 +49,7 @@ const sidebarSettings = {
           items: [
             "docs/cloud/about-cloud-setup",
             "docs/dbt-cloud-environments",
+            "docs/cloud/account-settings",
             "docs/cloud/migration",
             {
               type: "category",
