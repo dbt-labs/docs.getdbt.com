@@ -1,7 +1,12 @@
 ---
 title: "Account settings in dbt Cloud"
+sidebar_label: "Account settings" 
 description: "Learn how to enable account settings for your dbt Cloud users."
 ---
+
+The following sections describe the different **Account settings** available from your dbt Cloud account in the sidebar (lower left-hand side). 
+
+<Lightbox src="/img/docs/dbt-cloud/example-sidebar-account-settings.png" title="Example of Account settings from the sidebar" /> 
 
 ## Git repository caching <Lifecycle status="enterprise" />
 
