@@ -57,12 +57,9 @@ function CommunitySpotlightList({ spotlightData }) {
               {previousSpotlightMembers?.length ? (
                 <>
                   <h2>Previously on the Spotlight</h2>
-                  {previousSpotlightMembers.map((member, i) => {
-                    console.log(member.data)
-                    return <CommunitySpotlightCard frontMatter={member.data} key={i} />
-                  }
-                    
-                  )}
+                  {previousSpotlightMembers.map((member, i) => (
+                    <CommunitySpotlightCard frontMatter={member.data} key={i} />
+                  ))}
                 </>
               ) : ''}
             </>
