@@ -75,7 +75,7 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
       ) : null}
       {communityAward ? (
         <div className={styles.awardBadge}>
-          <span>Community Award Recipient {`${communityAwardYear}`}</span>
+          <span>Community Award Recipient {communityAwardYear}</span>
         </div>
       ) : null}
       {image && (
