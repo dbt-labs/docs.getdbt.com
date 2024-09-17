@@ -551,3 +551,10 @@ DELETE https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscript
 - [dbt Cloud CI](/docs/deploy/continuous-integration)
 - [Use dbt Cloud's webhooks with other SaaS apps](https://docs.getdbt.com/guides?tags=Webhooks)
 
+## Troubleshooting
+
+* If your destination system is not correctly receiving dbt Cloud webhooks - check that the system allows Authorization headers. dbt Cloud webhooks necessarily send an Authorization header and if your endpoint does not support receiving Authorization headers, then it may be incompatible with dbt Cloud webhooks. Some services like Azure Logic Apps / Power Automate may not accept Authorization headers and therefore will not work with dbt Cloud webhooks. You can test if your destination endpoint supports Authorization headers by sending a request using curl with an Authorization header - for example:
+
+```shell
+curl -H 'Authorization: 123' -X POST https://<your-webhook-endpoint>
+```
