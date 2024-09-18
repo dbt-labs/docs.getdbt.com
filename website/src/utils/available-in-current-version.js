@@ -5,6 +5,16 @@ export const availableInCurrentVersion = (
   firstVersion = "0", 
   lastVersion = undefined
 ) => {
+  // If `firstVersion` prop set on VersionBlock component without a value,
+  // it defaults to boolean `true`. This overrides to ensure `firstVersion` is string.
+  if(typeof firstVersion === "boolean") {
+    firstVersion = "0"
+  }
+  // Do the same to ensure `lastVersion` cannot be a boolean
+  if (typeof lastVersion === "boolean") {
+    lastVersion = undefined;
+  }
+
   // Get versions sorted from earliest to latest
   const sortedVersions = sortVersions([
     currentVersion,
