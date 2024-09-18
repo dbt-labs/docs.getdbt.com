@@ -558,7 +558,8 @@ See [this GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/54
 
 ### Behavior change flags
 
-Starting in `dbt-adapters==1.5`, adapter maintainers have the ability to implement their own behavior change flags. For more information on what a behavior change is, please refer to [Behavior changes](https://docs.getdbt.com/reference/global-configs/behavior-changes).
+Starting in `dbt-adapters==1.5.0` and `dbt-core==1.8.7`, adapter maintainers have the ability to implement their own behavior change flags.
+For more information on what a behavior change is, please refer to [Behavior changes](https://docs.getdbt.com/reference/global-configs/behavior-changes).
 To implement a behavior change flag, provide a name, a default setting (`True` / `False`), and optional source, and either a description or a link to the flag's documentation on docs.getdbt.com.
 The description and/or docs should provide end users with context for why the flag exists, why they may see a warning, and why they may want to override the default.
 Behavior change flags can be implemented by overwriting `_behavior_flags()` on the adapter in `impl.py`:
