@@ -293,7 +293,7 @@ semantic_models:
 
 Let's review the basics of semantic models:
 
-- 🧱 Consist off **entities, dimensions, and measures**.
+- 🧱 Consist of **entities, dimensions, and measures**.
 - 🫂 Describe the **semantics and relationships of objects** in the warehouse.
 - 1️⃣ Correspond to a **single logical model** in your dbt project.
 
