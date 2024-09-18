@@ -363,7 +363,7 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 You must connect your service user before setting up a dbt Cloud project, as the service user's permissions determine which projects dbt Cloud can import.
 
-When using Azure AD to SSO to connect to dbt Cloud, and also SSO to your MS tools, a dbt Cloud account admin with access to the service user's Azure DevOps account must complete the following to connect the service user:
+A dbt Cloud account admin with access to the service user's Azure DevOps account must complete the following to connect the service user:
 1. Sign into the service user's Azure DevOps account.
 2. When connected to dbt Cloud, sign out of Azure AD by visiting the [Azure Portal](https://portal.azure.com/).
 3. From there, disconnect the service user in dbt Cloud, and go through the steps to set it up again.
