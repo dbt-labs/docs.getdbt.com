@@ -112,10 +112,24 @@ Use case &mdash; This is useful in cases where you want to dynamically use the G
 **dbt Cloud context**
 
 The following environment variables are set automatically for deployment runs:
-
+- `DBT_CLOUD_ENVIRONMENT_NAME`: The name of the environment for this execution
+- `DBT_CLOUD_ENVIRONMENT_TYPE`:  The type of the environment for this execution (one of: `dev`,`staging`,`prod`). 
+- `DBT_CLOUD_INVOCATION_CONTEXT`: The invocation context for this execution (one of: `dev`,`staging`,`ci`,`prod`). This differs from the environment type by providing the `ci` context for ci jobs
 - `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod'
 
+**Smart defaults**
+Depending on the invocation context (`DBT_CLOUD_INVOCATION_CONTEXT`, see above), the following environment variables will be set automatically, for optimization purposes. These can be overriden by creating similarly named variables for each environment.
+
+- When `prod` :
+  - `DBT_EXCLUDE_RESOURCE_TYPE` receives `unit_test`
+  - `DBT_EXPORT_SAVED_QUERIES` receives `true`
+- When `ci` :
+  - `DBT_FAIL_FAST` receives `true`
+  - `DBT_FAVOR_STATE` receives `true`
+
+
 **Run details**
+
 - `DBT_CLOUD_PROJECT_ID`: The ID of the dbt Cloud Project for this run
 - `DBT_CLOUD_JOB_ID`: The ID of the dbt Cloud Job for this run
 - `DBT_CLOUD_RUN_ID`: The ID of this particular run
