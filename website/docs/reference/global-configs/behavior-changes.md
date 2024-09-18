@@ -129,4 +129,4 @@ on-run-start:
 
 Originally, the `dbt-redshift` adapter was built on top of the `dbt-postgres` adapter and used Postgres tables for metadata access. With this flag enabled, the adapter will use the Redshift API (through the Python client) if available, or query Redshift's `information_schema` tables instead.
 
-While we don't intend for there to be any user-noticeable behavior changes as a result of this change, out of an abundance of caution, we are gating it behind a behavior-change flag and encouraging users to test it out before it becomes the default for everyone.
+While we don't expect any user-noticeable behavior changes due to this change, out of caution we are gating it behind a behavior-change flag and encouraging users to test it before it becomes the default for everyone.
