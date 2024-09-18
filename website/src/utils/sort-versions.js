@@ -11,6 +11,9 @@ export const sortVersions = (versionsArr) => {
     // A positive value indicates that a should come after b.
     // Zero or NaN indicates that a and b are considered equal.
 
+    // Ensure compare items are strings which can be split
+    if(!a?.length || !b?.length) return null
+
     // Split versions into arrays by decimal
     // split into max 3 length array (major, minor, patch versions)
     const aSegments = a?.split(".", 3);
