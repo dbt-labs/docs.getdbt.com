@@ -216,7 +216,7 @@ This is the behavior if `on_schema_change: ignore`, which is set by default, and
 
 If you add a column to your incremental model, and execute a `dbt run`, this column will _not_ appear in your target table.
 
-Similarly, if you remove a column from your incremental model, and execute a `dbt run`, `dbt run` will fail.
+If you remove a column from your incremental model and execute a `dbt run`, `dbt run` will fail.
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
