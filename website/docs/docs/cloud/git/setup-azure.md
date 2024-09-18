@@ -17,7 +17,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Entra ID app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also [connect a service user](#connecting-a-service-user) via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
+Once the Microsoft Entra ID app is added to dbt Cloud, an account admin must also [connect a service user](/docs/cloud/git/setup-azure#connect-a-service-user) via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 
 
 Once the Microsoft Entra ID app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
@@ -363,10 +363,11 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 
 You must connect your service user before setting up a dbt Cloud project, as the service user's permissions determine which projects dbt Cloud can import.
 
-A dbt Cloud account admin with access to the service user's Azure DevOps account must complete the following to connect the service user:
-1. Sign in to the service user's Azure DevOps account.
-2. In dbt Cloud, click **Link Azure Service User**.
-3. You will be directed to Azure DevOps and must accept the Microsoft Entra ID app's permissions.
+When using Azure AD to SSO to connect to dbt Cloud, and also SSO to your MS tools, a dbt Cloud account admin with access to the service user's Azure DevOps account must complete the following to connect the service user:
+1. Sign into the service user's Azure DevOps account.
+2. When connected to dbt Cloud, sign out of Azure AD by visiting the [Azure Portal](https://portal.azure.com/).
+3. From there, disconnect the service user in dbt Cloud, and go through the steps to set it up again.
+4. You should then be prompted for the service user's credentials.
 4. Finally, you will be redirected to dbt Cloud, and the service user will be connected.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" title="Connecting an Azure Service User"/>
