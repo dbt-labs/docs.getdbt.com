@@ -556,6 +556,105 @@ While much of dbt's adapter-specific functionality can be modified in adapter ma
 
 See [this GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/5468) for information on the macros required for `GRANT` statements:
 
+### Behavior change flags
+
+Starting in `dbt-adapters==1.5`, adapter maintainers have the ability to implement their own behavior change flags. For more information on what a behavior change is, please refer to [Behavior changes](https://docs.getdbt.com/reference/global-configs/behavior-changes).
+To implement a behavior change flag, provide a name, a default setting (`True` / `False`), and optional source, and either a description or a link to the flag's documentation on docs.getdbt.com.
+The description and/or docs should provide end users with context for why the flag exists, why they may see a warning, and why they may want to override the default.
+Behavior change flags can be implemented by overwriting `_behavior_flags()` on the adapter in `impl.py`:
+
+<File name='impl.py'>
+
+```python
+class ABCAdapter(BaseAdapter):
+    ...
+    @property
+    def _behavior_flags(self) -> List[BehaviorFlag]:
+        return [
+            {
+                "name": "enable_new_functionality_requiring_higher_permissions",
+                "default": False,
+                "source": "dbt-abc",
+                "description": (
+                    "The dbt-abc adapter is implementing a new method for sourcing metadata. "
+                    "While we feel this is a better way to source metadata, it does require higher permissions on the platform. "
+                    "Enabling this without granting the requisite permissions will result in an error. "
+                    "This feature is expected to be required by Spring 2025."
+                ),
+                "docs_url": "https://docs.getdbt.com/reference/global-configs/behavior-changes#abc-enable_new_functionality_requiring_higher_permissions",
+            }
+        ]
+```
+
+</File>
+
+Once a behavior change flag has been implemented, it can be referenced on the adapter both in `impl.py` and in jinja macros:
+
+<File name='impl.py'>
+
+```python
+class ABCAdapter(BaseAdapter):
+    ...
+    def some_method(self, *args, **kwargs):
+        if self.behavior.enable_new_functionality_requiring_higher_permissions:
+            # do the new thing
+        else:
+            # do the old thing
+```
+
+</File>
+
+<File name='adapters.sql'>
+
+```sql
+{% macro some_macro(**kwargs) %}
+    {% if adapter.behavior.enable_new_functionality_requiring_higher_permissions %}
+        {# do the new thing #}
+    {% else %}
+        {# do the old thing #}
+    {% endif %}
+{% endmacro %}
+```
+
+</File>
+
+Every time the behavior flag evaluates to `False`, it will fire a warning to the user informing them that there will be a future change.
+This warning doesn't fire when the flag evaluates to `True` as the user is already in the new experience.
+The warnings can be noisy, and isn't always desired. To evaluate the flag without firing the warning, append `.no_warn` to the end of the flag:
+
+<File name='impl.py'>
+
+```python
+    class ABCAdapter(BaseAdapter):
+        ...
+        def some_method(self, *args, **kwargs):
+            if self.behavior.enable_new_functionality_requiring_higher_permissions.no_warn:
+                # do the new thing
+            else:
+                # do the old thing
+```
+
+</File>
+
+<File name='adapters.sql'>
+
+```sql
+{% macro some_macro(**kwargs) %}
+    {% if adapter.behavior.enable_new_functionality_requiring_higher_permissions.no_warn %}
+        {# do the new thing #}
+    {% else %}
+        {# do the old thing #}
+    {% endif %}
+{% endmacro %}
+```
+
+</File>
+
+It's best practice to evaluate a behavior flag as few times as possible. This will make it easier to remove once the behavior change has matured.
+As a result, it tends to be easier to evaluate the flag earlier in logic flow, then take either the old path or the new path.
+While this may create some duplication in code, using behavior flags in this way provides a safer way to implement a change
+which we are already admitting is risky or even breaking in nature.
+
 ### Other files
 
 #### `profile_template.yml`
