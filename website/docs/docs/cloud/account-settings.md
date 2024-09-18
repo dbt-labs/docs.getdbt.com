@@ -23,9 +23,9 @@ dbt Cloud will use the cached copy of your project's Git repo under these circum
 - There are syntax errors in the `packages.yml` file. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to find these errors sooner.
 - If a package doesn't work with the current dbt version. You can set up and use [continuous integration (CI)](/docs/deploy/continuous-integration) to identify this issue sooner.
 
-To enable Git repository caching, select **Account settings** from the gear menu and enable the **Repository caching** option. 
+To use, select the **Enable repository caching** option from your account settings. 
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Repository caching option" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable repository caching option" />
 
 ## Partial parsing
 
@@ -35,7 +35,7 @@ Parsing projects can be time-consuming, especially for large projects with hundr
 
 Partial parsing in dbt Cloud requires dbt version 1.4 or newer. The feature does have some known limitations. Refer to [Known limitations](/reference/parsing#known-limitations) to learn more about them.
 
-To enable, select **Account settings** from the gear menu and enable the **Partial parsing** option.
+To use, select the **Enable partial parsing between deployment runs** option from your account settings.
 
 <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
 
@@ -43,7 +43,7 @@ To enable, select **Account settings** from the gear menu and enable the **Parti
 
 [Advanced CI](/docs/deploy/advanced-ci) features, such as [compare changes](/docs/deploy/advanced-ci#compare-changes), allow dbt Cloud account members to view details about the changes between what's in the production environment and the pull request.
 
-To use Advanced CI features, your dbt Cloud account must have access to them. Ask your dbt Cloud administrator to enable Advanced CI features on your account, which they can do by selecting **Account settings** from the gear menu and choosing the **Enable account access to Advanced CI** option.
+To use Advanced CI features, your dbt Cloud account must have access to them. Ask your dbt Cloud administrator to enable Advanced CI features on your account, which they can do by choosing the **Enable account access to Advanced CI** option from the account settings.
 
 Once enabled, the **Run compare changes** option becomes available in the CI job settings for you to select.
 
