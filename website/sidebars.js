@@ -48,8 +48,8 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud/about-cloud-setup" },
           items: [
             "docs/cloud/about-cloud-setup",
-            "docs/dbt-cloud-environments",
             "docs/cloud/account-settings",
+            "docs/dbt-cloud-environments",
             "docs/cloud/migration",
             {
               type: "category",
