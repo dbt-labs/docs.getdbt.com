@@ -367,7 +367,6 @@ A dbt Cloud account admin with access to the service user's Azure DevOps account
 1. Sign into the service user's Azure DevOps account.
 2. In dbt Cloud, click **Link Azure Service User**.
 3. You will be directed to Azure DevOps and must accept the Microsoft Entra ID app's permissions.
-4. You should then be prompted for the service user's credentials.
 4. Finally, you will be redirected to dbt Cloud, and the service user will be connected.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" title="Connecting an Azure Service User"/>
