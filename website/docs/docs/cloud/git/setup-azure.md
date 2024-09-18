@@ -364,7 +364,7 @@ az devops security permission update --organization https://dev.azure.com/<org_n
 You must connect your service user before setting up a dbt Cloud project, as the service user's permissions determine which projects dbt Cloud can import.
 
 A dbt Cloud account admin with access to the service user's Azure DevOps account must complete the following to connect the service user:
-1. Sign into the service user's Azure DevOps account.
+1. Sign in to the service user's Azure DevOps account.
 2. In dbt Cloud, click **Link Azure Service User**.
 3. You will be directed to Azure DevOps and must accept the Microsoft Entra ID app's permissions.
 4. Finally, you will be redirected to dbt Cloud, and the service user will be connected.
@@ -372,6 +372,17 @@ A dbt Cloud account admin with access to the service user's Azure DevOps account
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/azure-service-user.png" title="Connecting an Azure Service User"/>
 
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
+
+<Expandable alt_header="I have set up the integration, but it's not working properly" > 
+
+If you're using Azure AD for SSO with dbt Cloud and Microsoft tools, the SSO flow may sometimes direct your account admin to their personal user account. If this happens instead of prompting to connect a service account, they can follow these steps to resolve it:
+
+1. Sign in to the service user's Azure DevOps account (they should also make sure they are connected to dbt Cloud via SSO).
+2. When connected to dbt Cloud, sign out of Azure AD through the [Azure portal](https://portal.azure.com/).
+3. From there, disconnect the service user in dbt Cloud and go through the steps to set it up again.
+4. You should then be prompted for service user credentials.
+
+</Expandable>
 
 :::info Personal Access Tokens (PATs)
 dbt Cloud leverages the service user to generate temporary access tokens called [PATs](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?toc=%2Fazure%2Fdevops%2Fmarketplace-extensibility%2Ftoc.json&view=azure-devops&tabs=Windows). 
