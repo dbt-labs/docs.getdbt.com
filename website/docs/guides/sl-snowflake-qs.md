@@ -619,6 +619,11 @@ select * from final
 In the following steps, semantic models enable you to define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
 
 1. In the `metrics` sub-directory, create a new file `fct_orders.yml`.
+
+:::tip 
+Make sure to save all semantic models and metrics under the directory defined in the [`model-paths`](/reference/project-configs/model-paths) (or a subdirectory of it, like `models/semantic_models/`). If you save them outside of this path, it will result in an empty `semantic_manifest.json` file, and your semantic models or metrics won't be recognized.
+:::
+
 2. Add the following code to that newly created file:
 
 <File name='models/metrics/fct_orders.yml'>
@@ -765,7 +770,11 @@ There are different types of metrics you can configure:
 
 Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics:
 
-Add metrics to your `fct_orders.yml` semantic model file:
+1. Add metrics to your `fct_orders.yml` semantic model file:
+
+:::tip 
+Make sure to save all semantic models and metrics under the directory defined in the [`model-paths`](/reference/project-configs/model-paths) (or a subdirectory of it, like `models/semantic_models/`). If you save them outside of this path, it will result in an empty `semantic_manifest.json` file, and your semantic models or metrics won't be recognized.
+:::
 
 <File name='models/metrics/fct_orders.yml'>
 
@@ -815,19 +824,22 @@ metrics:
     type: simple
     label: "order_total"
     type_params:
-      measure: order_total
+      measure:
+        name: order_total
   - name: "order_count"
     description: "number of orders"
     type: simple
     label: "order_count"
     type_params:
-      measure: order_count
+      measure:
+        name: order_count
   - name: large_orders
     description: "Count of orders with order total over 20."
     type: simple
     label: "Large Orders"
     type_params:
-      measure: order_count
+      measure:
+        name: order_count
     filter: |
       {{ Metric('order_total', group_by=['order_id']) }} >=  20
   # Ratio type metric
@@ -844,7 +856,8 @@ metrics:
     description: "The month to date value of all orders"
     type: cumulative
     type_params:
-      measure: order_total
+      measure:
+        name: order_total
       grain_to_date: month
   # Derived metric
   - name: "pct_of_orders_that_are_large"
@@ -916,7 +929,8 @@ metrics:
     description: "Unique count of customers placing orders"
     type: simple
     type_params:
-      measure: customers
+      measure:
+        name: customers
 ```
 
 </File>
@@ -941,15 +955,6 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-ru
 
 <RunProdJob/>
 
-<details>
-
-<summary>What’s happening internally?</summary>
-
-- Merging the code into your main branch allows dbt Cloud to pull those changes and build the definition in the manifest produced by the run. <br />
-- Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.<br />
-- The Semantic Layer APIs pull in the most recent manifest and enables your integration to extract metadata from it.
-
-</details>
 
 ## Set up dbt Semantic Layer
 

@@ -1,3 +1,5 @@
+import { availableInCurrentVersion } from "./available-in-current-version";
+
 export default function pageVersionCheck(version, versionedPages, path) {
   let pageAvailableObj = {
     pageAvailable: true
@@ -13,28 +15,15 @@ export default function pageVersionCheck(version, versionedPages, path) {
   const itemFound = versionedPages.find(vpage => vpage.page === updatedPath) 
   
   if(itemFound) {
-    
-    const { firstVersion, lastVersion } = itemFound
-    const currentVersionVal = parseFloat(version)
-    const firstVersionVal = parseFloat(firstVersion) || 0
+    const { firstVersion, lastVersion } = itemFound;
 
-    pageAvailableObj.firstAvailableVersion = firstVersion
+    pageAvailableObj.firstAvailableVersion = firstVersion || "0";
 
-    // Determine if sidebar item within version range
-    if(lastVersion) {
-      const lastVersionVal = parseFloat(lastVersion)
-      // If lastVersion set for sidebar item, 
-      // check if current version is higher than lastVersion
-      // or if current version is less than firstVersion
-      // If true, remove item in sidebar
-      if(currentVersionVal > lastVersionVal || currentVersionVal < firstVersionVal) {
-        pageAvailableObj.pageAvailable = false
-      }
-    } else if(firstVersionVal > currentVersionVal) {
-      // If firstVersion is greater than currentVersion
-      // remove item from sidebar
-      pageAvailableObj.pageAvailable = false
-    }
+    pageAvailableObj.pageAvailable = availableInCurrentVersion(
+      version,
+      firstVersion,
+      lastVersion
+    );
   }
 
   return pageAvailableObj
