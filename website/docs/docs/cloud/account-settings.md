@@ -37,7 +37,7 @@ Partial parsing in dbt Cloud requires dbt version 1.4 or newer. The feature does
 
 To use, select the **Enable partial parsing between deployment runs** option from your account settings.
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable partial parsing between deployment runs option" />
 
 ## Account access to Advanced CI features <Lifecycle status="beta" />
 
@@ -47,4 +47,4 @@ To use Advanced CI features, your dbt Cloud account must have access to them. As
 
 Once enabled, the **Run compare changes** option becomes available in the CI job settings for you to select.
 
-<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Advanced CI option in Account settings" />
+<Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Enable account access to Advanced CI option" />
