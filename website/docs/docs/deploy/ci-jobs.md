@@ -15,7 +15,7 @@ dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deploy
 - CI features:
    - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - [Advanced CI](/docs/deploy/advanced-ci) features:<Lifecycle status="preview" />
-   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your dbt Cloud account must have access to Advanced CI. Please ask your [dbt Cloud administrator to enable](/docs/dbt-cloud-environments#account-access-to-advanced-ci-features) this for you.
+   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your dbt Cloud account must have access to Advanced CI. Please ask your [dbt Cloud administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this for you.
 - Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 
