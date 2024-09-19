@@ -190,7 +190,7 @@ Drops a schema (or equivalent) in the target database. If the target schema does
 
 ```sql
 
-{% do adapter.drop_schema(api.Relation.create(database=target.database, schema="my_schema"))) %}
+{% do adapter.drop_schema(api.Relation.create(database=target.database, schema="my_schema")) %}
 ```
 
 </File>
