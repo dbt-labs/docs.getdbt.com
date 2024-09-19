@@ -46,7 +46,7 @@ The following example displays the current flags and their current default value
 - Resolve the issue (by switching the flag to `True`)
 - Silence the warnings using the `warn_error_options.silence` flag
 
-Here is an example of the available behavior change flags with their default values:
+Here's an example of the available behavior change flags with their default values:
 
 <File name='dbt_project.yml'>
 
