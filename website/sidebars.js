@@ -48,6 +48,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud/about-cloud-setup" },
           items: [
             "docs/cloud/about-cloud-setup",
+            "docs/cloud/account-settings",
             "docs/dbt-cloud-environments",
             "docs/cloud/migration",
             {
@@ -462,7 +463,17 @@ const sidebarSettings = {
         "docs/deploy/deployments",
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
-        "docs/deploy/continuous-integration",
+        {
+        type: "category",
+        label: "Continuous integration",
+        collapsed: true,
+        link: { type: "doc", id: "docs/deploy/about-ci" },
+        items: [
+          "docs/deploy/about-ci",
+          "docs/deploy/continuous-integration",
+          "docs/deploy/advanced-ci",
+          ],
+        },
         "docs/deploy/continuous-deployment",
         {
           type: "category",
@@ -488,7 +499,6 @@ const sidebarSettings = {
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
-            "docs/deploy/dashboard-status-tiles",
           ],
         },
         "docs/deploy/deployment-tools",
@@ -506,12 +516,25 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/collaborate/explore-projects" },
           items: [
             "docs/collaborate/explore-projects",
+            "docs/collaborate/access-from-dbt-cloud",
             "docs/collaborate/column-level-lineage",
             "docs/collaborate/model-performance",
             "docs/collaborate/project-recommendations",
             "docs/collaborate/explore-multiple-projects",
-            "docs/collaborate/access-from-dbt-cloud",
             "docs/collaborate/dbt-explorer-faqs",
+            {
+              type: "category",
+              label: "Model consumption",
+              link: {
+                type: "doc",
+                id: "docs/collaborate/auto-exposures",
+              },
+              items: [
+                "docs/collaborate/auto-exposures",
+                "docs/collaborate/data-tile",
+                "docs/collaborate/model-query-history",
+              ],
+            },
           ],
         },
         {
@@ -565,10 +588,33 @@ const sidebarSettings = {
           label: "Quickstart with the dbt Cloud Semantic Layer",
           href: `/guides/sl-snowflake-qs`,
         },
-        "docs/use-dbt-semantic-layer/setup-sl",
-        "docs/use-dbt-semantic-layer/sl-architecture",
-        "docs/use-dbt-semantic-layer/exports",
-        "docs/use-dbt-semantic-layer/sl-cache",
+        {
+          type: "category",
+          label: "Configure",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/setup-sl" },
+          items: [
+            "docs/use-dbt-semantic-layer/setup-sl",
+            "docs/use-dbt-semantic-layer/sl-architecture",  
+          ]
+        },
+        {
+          type: "category",
+          label: "Deploy metrics",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/deploy-sl" },
+          items: [
+            "docs/use-dbt-semantic-layer/deploy-sl", 
+            "docs/use-dbt-semantic-layer/exports", 
+            "docs/use-dbt-semantic-layer/sl-cache" 
+          ]
+        },
+        {
+          type: "category",
+          label: "Consume",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/consume-metrics" },
+          items: [
+            "docs/use-dbt-semantic-layer/consume-metrics",
+          ]
+        },
         "docs/use-dbt-semantic-layer/sl-faqs",
       ],
     },
@@ -695,6 +741,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/cloud-integrations/overview" },
       items: [
         "docs/cloud-integrations/overview",
+        "docs/cloud-integrations/configure-auto-exposures",
         {
           type: "category",
           label: "Snowflake Native App",
@@ -822,26 +869,27 @@ const sidebarSettings = {
       type: "category",
       label: "Platform-specific configs",
       items: [
+        "reference/resource-configs/athena-configs",
+        "reference/resource-configs/impala-configs",
         "reference/resource-configs/spark-configs",
         "reference/resource-configs/bigquery-configs",
-        "reference/resource-configs/databricks-configs",
-        "reference/resource-configs/fabric-configs",
-        "reference/resource-configs/postgres-configs",
-        "reference/resource-configs/redshift-configs",
-        "reference/resource-configs/snowflake-configs",
-        "reference/resource-configs/trino-configs",
-        "reference/resource-configs/impala-configs",
         "reference/resource-configs/clickhouse-configs",
+        "reference/resource-configs/databricks-configs",
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/infer-configs",
         "reference/resource-configs/materialize-configs",
         "reference/resource-configs/azuresynapse-configs",
+        "reference/resource-configs/fabric-configs",
         "reference/resource-configs/mssql-configs",
         "reference/resource-configs/mindsdb-configs",
         "reference/resource-configs/oracle-configs",
+        "reference/resource-configs/postgres-configs",
+        "reference/resource-configs/redshift-configs",
         "reference/resource-configs/singlestore-configs",
+        "reference/resource-configs/snowflake-configs",
+        "reference/resource-configs/trino-configs",
         "reference/resource-configs/starrocks-configs",
         "reference/resource-configs/teradata-configs",
         "reference/resource-configs/upsolver-configs",
@@ -898,6 +946,7 @@ const sidebarSettings = {
           label: "For models",
           items: [
             "reference/model-properties",
+            "reference/resource-properties/model_name",
             "reference/model-configs",
             "reference/resource-configs/materialized",
             "reference/resource-configs/on_configuration_change",
@@ -920,6 +969,7 @@ const sidebarSettings = {
           label: "For snapshots",
           items: [
             "reference/snapshot-properties",
+            "reference/resource-configs/snapshot_name",
             "reference/snapshot-configs",
             "reference/resource-configs/check_cols",
             "reference/resource-configs/strategy",
@@ -1048,6 +1098,7 @@ const sidebarSettings = {
           },
           items: [
             "reference/global-configs/about-global-configs",
+            "reference/global-configs/behavior-changes",
             {
               type: "category",
               label: "Setting flags",
@@ -1066,7 +1117,6 @@ const sidebarSettings = {
                 "reference/global-configs/failing-fast",
                 "reference/global-configs/indirect-selection",
                 "reference/global-configs/json-artifacts",
-                "reference/global-configs/legacy-behaviors",
                 "reference/global-configs/parsing",
                 "reference/global-configs/print-output",
                 "reference/global-configs/record-timing-info",

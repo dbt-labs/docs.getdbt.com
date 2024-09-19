@@ -8,7 +8,7 @@ pagination_prev: null
 ---
 dbt Cloud can connect with a variety of data platform providers including: 
 - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
-- [Amazon Athena (Beta)](/docs/cloud/connect-data-platform/connect-amazon-athena)
+- [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena)<Lifecycle status="Preview" />
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark)
 - [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics)
@@ -27,15 +27,13 @@ These connection instructions provide the basic fields required for configuring 
 
 ## Connection management
 
-:::info Connections are moving!
+:::info Connection management now at account-level
 
-Up until July 2024, connections were nested under projects. One dbt Cloud project could only have one connection, which was re-used across all its environments. Extended attributes were leveraged to switch warehouse instances depending on the environment for a given project. 
+Starting July 2024, connection management has moved from the project level to the account level for all users in dbt Cloud. Previously, each dbt Cloud project could only have one connection, which was used across all its environments. Extended attributes were used to switch warehouse instances depending on the environment for a given project.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" width="60%" title="Previous connection model"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-legacy-model.png" width="55%" title="Previous connection model"/>
 
-We are rolling out an important change that moves connection management to the account level. The following connection management section describes these changes. 
-
-This feature is being rolled out in phases over the coming weeks. 
+The following connection management section describes these changes.
 
 :::
 
@@ -43,7 +41,7 @@ Warehouse connections are an account-level resource. As such you can find them u
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-list.png" width="60%" title="Connection list"/>
 
-Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection in order to streamline your management operations. Connections are assigned to a project via an [environment](/docs/dbt-cloud-environments). 
+Warehouse connections can be re-used across projects. If multiple projects all connect to the same warehouse, you should re-use the same connection to streamline your management operations. Connections are assigned to a project via an [environment](/docs/dbt-cloud-environments). 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-new-model.png" width="60%" title="Connection model"/>
 
@@ -51,13 +49,17 @@ As shown in the image, a project with 2 environments can target between 1 and 2 
 
 ### Migration from project level connections to account level connections
 
-Rolling out account-level connections will not require any interruption of service in your current usage (IDE, CLI, jobs, etc.).
+Rolling out account-level connections will not require any interruption of service in your current usage (IDE, CLI, jobs, and so on.).
+
+:::info Why am I prompted to configure a development environment?
+If your project did not previously have a development environment, you may be redirected to the project setup page. Your project is still intact. Choose a connection for your new development environment, and you can view all your environments again.
+:::
 
 However, to fully utilize the value of account-level connections, you may have to rethink how you assign and use connections across projects and environments.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connections-post-rollout.png" width="60%" title="Typical connection setup post rollout"/>
 
-Please consider all of the following actions, as the steps you take will depend on the desired outcome.
+Please consider the following actions, as the steps you take will depend on the desired outcome.
 
 - The initial clean-up of your connection list
   - Delete unused connections with 0 environments. 

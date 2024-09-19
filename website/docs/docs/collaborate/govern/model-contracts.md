@@ -28,7 +28,8 @@ At present, model contracts are supported for:
 
 Model contracts are _not_ supported for:
 - Python models.
-- `ephemeral`-materialized SQL models.
+- `materialized view` or `ephemeral`-materialized SQL models.
+- Custom materializations (unless added by the author).
 - Models with recursive <Term id="cte" />'s in BigQuery.
 - Other resource types, such as `sources`, `seeds`, `snapshots`, and so on.
 

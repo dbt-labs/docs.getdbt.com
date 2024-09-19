@@ -43,11 +43,14 @@ export default function DocRootLayoutMain({
     latestStableRelease,
   } = useContext(VersionContext);
 
-  const { pageAvailable, firstAvailableVersion } = pageVersionCheck(
-    dbtVersion,
-    versionedPages,
-    currentDocRoute
-  );
+  const { 
+    pageAvailable, 
+    firstAvailableVersion, 
+    lastAvailableVersion 
+  } = pageVersionCheck(dbtVersion, versionedPages, currentDocRoute);
+
+  const hasFirstAvailableVersion =
+    firstAvailableVersion && firstAvailableVersion !== "0";
 
   // Check whether this version is a isPrerelease, and show banner if so
   const [PreData, setPreData] = useState({
@@ -71,7 +74,7 @@ export default function DocRootLayoutMain({
     } else {
       setPreData({
         showisPrereleaseBanner: true,
-        isPrereleaseBannerText: `You are currently viewing v${dbtVersion}, which is a prerelease of dbt Core. The latest stable version is v${latestStableRelease}`,
+        isPrereleaseBannerText: `You are viewing the docs for a prerelease version of dbt Core. There may be features described that are still in development, incomplete, or unstable. For the latest generally available features, install the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>`,
       });
     }
     // If EOLDate not set for version, do not show banner
@@ -86,12 +89,12 @@ export default function DocRootLayoutMain({
       if (new Date() > new Date(EOLDate)) {
         setEOLData({
           showEOLBanner: true,
-          EOLBannerText: `This version of dbt Core is <a href="/docs/core-versions">no longer supported</a>. No patch releases will be made, even for critical security issues. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`,
+          EOLBannerText: `This version of dbt Core is <a href="/docs/dbt-versions/core">no longer supported</a>. There will be no more patches or security fixes. For improved performance, security, and features, upgrade to the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>.`,
         });
       } else if (new Date() > threeMonths) {
         setEOLData({
           showEOLBanner: true,
-          EOLBannerText: `This version of dbt Core is nearing the end of its <a href="/docs/core-versions">critical support period</a>. For better performance, improved security, and new features, you should upgrade to ${latestStableRelease}, the latest stable version.`,
+          EOLBannerText: `This version of dbt Core is nearing the end of its <a href="/docs/dbt-versions/core">critical support period</a>. For improved perfomance, security, and features, upgrade to the <a href="https://github.com/dbt-labs/dbt-core/releases/latest"> latest stable version</a>.`,
         });
       } else {
         setEOLData({
@@ -116,21 +119,34 @@ export default function DocRootLayoutMain({
           hiddenSidebarContainer && styles.docItemWrapperEnhanced
         )}
       >
-        {!pageAvailable && dbtVersion && firstAvailableVersion && (
-          <div className={styles.versionBanner}>
-            <Admonition type="caution" title={`New feature!`} icon="🎉 ">
-              <p style={{ marginTop: "5px", marginBottom: "0" }}>
-                Unfortunately, this feature is not available in dbt Core version{" "}
-                {dbtVersion}
-              </p>
-              <p>
-                {" "}
-                You should upgrade to {firstAvailableVersion} or later if you
-                want to use this feature.
-              </p>
-            </Admonition>
-          </div>
-        )}
+        {!pageAvailable &&
+          dbtVersion && (
+            <div className={styles.versionBanner}>
+              <Admonition
+                type="caution"
+                title={`${hasFirstAvailableVersion ? "New feature!" : lastAvailableVersion ? "Old feature" : "Note"}`}
+                icon={
+                  hasFirstAvailableVersion
+                    ? "🎉"
+                    : lastAvailableVersion
+                      ? "❗"
+                      : ""
+                }
+              >
+                <p style={{ marginTop: "5px", marginBottom: "0" }}>
+                  Unfortunately, this feature is not available in dbt Core
+                  version {dbtVersion}
+                </p>
+                {hasFirstAvailableVersion ? (
+                  <p>
+                    {" "}
+                    You should upgrade to {firstAvailableVersion} or later if
+                    you want to use this feature.
+                  </p>
+                ) : null}
+              </Admonition>
+            </div>
+          )}
         {PreData.showisPrereleaseBanner && (
           <div className={styles.versionBanner}>
             <Admonition type="caution" title="Warning">

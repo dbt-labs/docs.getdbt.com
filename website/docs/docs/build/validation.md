@@ -14,11 +14,10 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 
 ## Validations command
 
-You can run validations against the defined semantic model configurations from the command line with the following [MetricFlow commands](/docs/build/metricflow-commands):
-
-Note, in dbt Cloud you don't need to validate the Semantic Layer config separately. Running a dbt command (such as `dbt parse`, `dbt build`, `dbt compile`, or `dbt run`) automatically checks it.
+You can run validations from dbt Cloud or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands). In dbt Cloud, you need developer credentials to run `dbt sl validate-configs` in the IDE or CLI, and deployment credentials to run it in CI.
 
 ```bash
+dbt sl validate # dbt Cloud users
 mf validate-configs # dbt Core users
 ```
 
