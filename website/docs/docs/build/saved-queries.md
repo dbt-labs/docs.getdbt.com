@@ -69,26 +69,6 @@ Use saved queries to define and manage common Semantic Layer queries in YAML, in
 
 In your saved query config, you can also leverage [caching](/docs/use-dbt-semantic-layer/sl-cache) with the dbt Cloud job scheduler to cache common queries, speed up performance, and reduce compute costs.
 
-<VersionBlock firstVersion="1.7">
-
-  #### Project-level saved queries
-
-To enable saved queries at the project level, you can set the `saved-queries` configuration in the [`dbt_project.yml` file](/reference/dbt_project.yml). This saves you time in configuring saved queries in each file:
-
-<File name='dbt_project.yml'>
-
-```yaml
-saved-queries:
-  my_saved_query:
-    config:
-      +cache:
-        enabled: true
-```
-</File>
-
-For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
-</VersionBlock>
-
 <!-- For versions 1.8 and higher -->
 
 <VersionBlock firstVersion="1.8">
@@ -142,6 +122,26 @@ filter: |
   {{ Metric('metric_name', group_by=['entity_name']) }}
 ```
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+#### Project-level saved queries
+
+To enable saved queries at the project level, you can set the `saved-queries` configuration in the [`dbt_project.yml` file](/reference/dbt_project.yml). This saves you time in configuring saved queries in each file:
+
+<File name='dbt_project.yml'>
+
+```yaml
+saved-queries:
+  my_saved_query:
+    config:
+      +cache:
+        enabled: true
+```
+</File>
+
+For more information on `dbt_project.yml` and config naming conventions, see the [dbt_project.yml reference page](/reference/dbt_project.yml#naming-convention).
 </VersionBlock>
 
 <!-- For versions 1.7 and lower-->
