@@ -3,6 +3,17 @@ name: Vercel deployment preview link generator
 on:
   pull_request:
     types: [opened, synchronize]
+    paths:
+      - 'website/docs/docs/**'
+      - 'website/docs/best-practices/**'
+      - 'website/docs/guides/**'
+      - 'website/docs/faqs/**'
+      - 'website/docs/reference/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
 
 jobs:
   comment-deployment-link:
@@ -10,12 +21,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
 
       - name: Wait for Vercel deployment
         run: |
           echo "Waiting for Vercel deployment to complete..."
-          sleep 500  # Adjust based on deployment time
+          sleep 300  # Adjust based on deployment time
 
       - name: Get Vercel deployment URL
         id: vercel_url
