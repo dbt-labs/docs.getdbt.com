@@ -80,11 +80,11 @@ The project roles enable you to work within the projects in various capacities. 
 | Data platform configurations            |   W   |    W    |       W        |     W     |     R     |     W     |             |             |          |                |     R       |     R      |         |
 | Develop <br />(IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |             |          |                |             |            |         |
 | Environments             |   W   |    R    |       R        |     R     |     R     |     W     |             |      R      |          |                |     R       |     R      |         |
-| Jobs                     |   W   |    R    |       R        |     W     |     R     |     W     |      R      |      R      |          |                |     R       |     R      |         |
+| Jobs                     |   W   |    R    |       R        |     R     |     R     |     W     |      R      |      R      |          |                |     R       |     R      |         |
 | Metadata GraphQL API access    |   R   |    R    |       R        |     R     |     R     |     R     |             |      R      |     R    |                |     R       |     R      |         |
 | Permissions (Groups & Licenses)              |   W   |         |       R        |     R     |     R     |           |             |             |          |                |             |     R      |         |
 | Profile (Credentials)                 |   W   |    R    |                |     R     |     R     |     R     |             |             |          |                |     R       |             |         |
 | Projects                 |   W   |    W    |       W        |     W     |     W     |     R     |             |      R      |          |                |     R       |     W      |         |
 | Repositories             |   W   |         |       R        |     R     |     W     |           |             |             |          |                |     R       |     R      |         |
-| Runs                     |   W   |    R    |       R        |     W     |     R     |     W     |      W      |      R      |          |                |     R       |     R      |         |
+| Runs                     |   W   |    R    |       R        |     R     |     R     |     W     |      W      |      R      |          |                |     R       |     R      |         |
 | Semantic Layer config    |   W   |    R    |       W        |     R     |     R     |     R     |             |             |          |        W       |     R       |     R      |         |

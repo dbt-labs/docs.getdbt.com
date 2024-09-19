@@ -48,6 +48,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/cloud/about-cloud-setup" },
           items: [
             "docs/cloud/about-cloud-setup",
+            "docs/cloud/account-settings",
             "docs/dbt-cloud-environments",
             "docs/cloud/migration",
             {
@@ -466,11 +467,12 @@ const sidebarSettings = {
         type: "category",
         label: "Continuous integration",
         collapsed: true,
-        link: { type: "doc", id: "docs/deploy/continuous-integration" },
+        link: { type: "doc", id: "docs/deploy/about-ci" },
         items: [
-        "docs/deploy/continuous-integration",
-        "docs/deploy/advanced-ci",
-        ],
+          "docs/deploy/about-ci",
+          "docs/deploy/continuous-integration",
+          "docs/deploy/advanced-ci",
+          ],
         },
         "docs/deploy/continuous-deployment",
         {
