@@ -373,7 +373,7 @@ A dbt Cloud account admin with access to the service user's Azure DevOps account
 
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
 
-<Expandable alt_header="I have set up the integration, but it's not working properly" > 
+<Expandable alt_header="I can't select the service user, dbt Cloud automatically connects my personal user" > 
 
 If you're using Azure AD for SSO with dbt Cloud and Microsoft tools, the SSO flow may sometimes direct your account admin to their personal user account. If this happens instead of prompting to connect a service account, they can follow these steps to resolve it:
 
