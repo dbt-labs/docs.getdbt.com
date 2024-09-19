@@ -390,11 +390,11 @@ my-profile:
 
 ### Quota project
 
-By default, dbt will use the `quota_project_id` set within credentials of the account you are using to authenticate to BigQuery
+By default, dbt will use the `quota_project_id` set within the credentials of the account you are using to authenticate to BigQuery.
 
-Optionally, you may specify `quota_project` to bill for query execution, instead of the default quota project specified for the account from the environment.
+Optionally, you may specify `quota_project` to bill for query execution instead of the default quota project specified for the account from the environment.
 
-This can sometimes be required when impersonating service accounts that do not have the BigQuery API enabled within the project they are defined in. Without overriding the quota project it will fail to connect.
+This can sometimes be required when impersonating service accounts that do not have the BigQuery API enabled within the project in which they are defined. Without overriding the quota project, it will fail to connect.
 
 ```yaml
 my-profile:
