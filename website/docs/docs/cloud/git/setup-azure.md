@@ -377,7 +377,7 @@ Once connected, dbt Cloud displays the email address of the service user so you 
 
 If you're using Azure AD for SSO with dbt Cloud and Microsoft tools, the SSO flow may sometimes direct your account admin to their personal user account instead of the service user. If this happens, follow these steps to resolve it:
 
-1. Sign in to the service user's Azure DevOps account (they should also make sure they are connected to dbt Cloud via SSO).
+1. Sign in to the service user's Azure DevOps account (ensure they are also connected to dbt Cloud through SSO).
 2. When connected to dbt Cloud, sign out of Azure AD through the [Azure portal](https://portal.azure.com/).
 3. From there, disconnect the service user in dbt Cloud and go through the steps to set it up again.
 4. You should then be prompted for service user credentials.
