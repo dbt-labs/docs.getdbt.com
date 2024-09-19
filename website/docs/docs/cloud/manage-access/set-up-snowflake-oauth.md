@@ -35,7 +35,9 @@ To get started, copy the connection's redirect URI from dbt Cloud:
 
 ### Create a security integration
 
-In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). In the following example `create or replace security integration` query, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). 
+
+In the following `CREATE OR REPLACE SECURITY INTEGRATION` example query, replace `<LOCATED_REDIRECT_URI>` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
 
 ```
 CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
@@ -43,7 +45,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
   ENABLED = TRUE
   OAUTH_CLIENT = CUSTOM
   OAUTH_CLIENT_TYPE = 'CONFIDENTIAL'
-  OAUTH_REDIRECT_URI = '<LOCATED_REDIRECT_URI>'
+  OAUTH_REDIRECT_URI = '<LOCATED_REDIRECT_URI>' #  Refers to the [Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) of your dbt Cloud region.
   OAUTH_ISSUE_REFRESH_TOKENS = TRUE
   OAUTH_REFRESH_TOKEN_VALIDITY = 7776000;
 ```
