@@ -90,7 +90,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 <SLCourses/>
 
-## Default granularity for metircs
+## Default granularity for metrics
 
 It's possible to define a default time granularity for metrics if it's different from the granularity of the default aggregation time dimensions (`metric_time`). This is useful if your time dimension has a very fine grain, like second or hour, but you typically query metrics rolled up at a coarser grain. The granularity can be set using the `time_granularity` parameter on the metric, and defaults to `day`. If day is not available because the dimension is defined at a coarser granularity, it will default to the defined granularity for the dimension.
 

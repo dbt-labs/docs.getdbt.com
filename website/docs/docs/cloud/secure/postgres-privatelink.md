@@ -5,6 +5,7 @@ description: "Configuring PrivateLink for Postgres"
 sidebar_label: "PrivateLink for Postgres"
 ---
 import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+import PrivateLinkTroubleshooting from '/snippets/_privatelink-troubleshooting.md';
 
 <SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
 
@@ -86,3 +87,5 @@ Once dbt Cloud support completes the configuration, you can start creating new c
 3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
 4. Configure the remaining data platform details.
 5. Test your connection and save it.
+
+<PrivateLinkTroubleshooting features={'/snippets/_privatelink-troubleshooting.md'}/>

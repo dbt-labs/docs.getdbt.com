@@ -390,4 +390,17 @@ _(More likely for dbt Core users)_
 
 If you just opened a SQL file in the `target/` directory to help debug an issue, it's not uncommon to accidentally edit that file! To avoid this, try changing your code editor settings to grey out any files in the `target/` directory — the visual cue will help avoid the issue.
 
+## FAQs
+
+Here are some useful FAQs to help you debug your dbt project:
+
+- <FAQ path="Troubleshooting/generate-har-file" />
+- <FAQ path="Troubleshooting/auth-expired-error" />  
+- <FAQ path="Troubleshooting/could-not-parse-project" />
+- <FAQ path="Troubleshooting/gitignore" />
+- <FAQ path="Troubleshooting/job-memory-limits" />
+- <FAQ path="Troubleshooting/runtime-packages.yml" />
+- <FAQ path="Troubleshooting/dispatch-could-not-find-package" />
+- <FAQ path="Troubleshooting/sql-errors" />
+
 </div>
