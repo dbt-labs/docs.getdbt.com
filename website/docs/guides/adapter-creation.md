@@ -559,9 +559,9 @@ See [this GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/54
 ### Behavior change flags
 
 Starting in `dbt-adapters==1.5.0` and `dbt-core==1.8.7`, adapter maintainers have the ability to implement their own behavior change flags.
-For more information on what a behavior change is, please refer to [Behavior changes](https://docs.getdbt.com/reference/global-configs/behavior-changes).
-To implement a behavior change flag, provide a name, a default setting (`True` / `False`), and optional source, and either a description or a link to the flag's documentation on docs.getdbt.com.
-The description and/or docs should provide end users with context for why the flag exists, why they may see a warning, and why they may want to override the default.
+For more information on what a behavior change is, please refer to [Behavior changes](https://docs.getdbt.com/reference/global-configs/behavior-changes). Behavior Flags are not intended to be long living feature flags and should be implemented with the expectation that the behavior will be default within an expected period of time. 
+To implement a behavior change flag, you will need to provide a name for the flag, a default setting (`True` / `False`), optional source, and  a description and/or a link to the flag's documentation on docs.getdbt.com. We recommend having a description and documentation link whenever possible. 
+The description and/or docs should provide end users with context for why the flag exists, why they may see a warning, and why they may want to utilize the behavior flag. 
 Behavior change flags can be implemented by overwriting `_behavior_flags()` on the adapter in `impl.py`:
 
 <File name='impl.py'>
@@ -578,7 +578,7 @@ class ABCAdapter(BaseAdapter):
                 "source": "dbt-abc",
                 "description": (
                     "The dbt-abc adapter is implementing a new method for sourcing metadata. "
-                    "While we feel this is a better way to source metadata, it does require higher permissions on the platform. "
+                    "This is a more performant way for dbt to source metadata but requires higher permissions on the platform. "
                     "Enabling this without granting the requisite permissions will result in an error. "
                     "This feature is expected to be required by Spring 2025."
                 ),
