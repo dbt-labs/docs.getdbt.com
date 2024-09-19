@@ -10,6 +10,8 @@ Retry works with the following commands:
 
 - [`build`](/reference/commands/build)
 - [`compile`](/reference/commands/compile)
+- [`clone`](/reference/commands/clone)
+- [`docs generate`](/reference/commands/cmd-docs#dbt-docs-generate)
 - [`seed`](/reference/commands/seed)
 - [`snapshot`](/reference/commands/build)
 - [`test`](/reference/commands/test)
