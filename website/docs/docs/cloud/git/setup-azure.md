@@ -89,7 +89,7 @@ An Azure admin will need one of the following permissions in both the Microsoft 
 - Azure Service Administrator
 - Azure Co-administrator
 
-If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connecting a service user](#connecting-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
+If your Azure DevOps account is connected to Entra ID, then you can proceed to [Connecting a service user](#connect-a-service-user). However, if you're just getting set up, connect Azure DevOps to the Microsoft Entra ID app you just created:
 
 1. From your Azure DevOps account, select **Organization settings** in the bottom left.
 2. Navigate to Microsoft Entra ID.
