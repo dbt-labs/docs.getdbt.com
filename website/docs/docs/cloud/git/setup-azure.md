@@ -382,7 +382,6 @@ If you're using Azure AD for SSO with dbt Cloud and Microsoft tools, the SSO flo
 3. Disconnect the service user in dbt Cloud, and follow the steps to set it up again.
 4. You should then be prompted to enter service user credentials.
 
-</Expandable>
 
 :::info Personal Access Tokens (PATs)
 dbt Cloud leverages the service user to generate temporary access tokens called [PATs](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?toc=%2Fazure%2Fdevops%2Fmarketplace-extensibility%2Ftoc.json&view=azure-devops&tabs=Windows). 
