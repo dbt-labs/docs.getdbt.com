@@ -1,0 +1,38 @@
+name: Vercel deployment preview link generator
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  comment-deployment-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get vercel deployment URL
+        id: vercel
+        run: |
+          # Fetch the Vercel URL using API or extract from a known pattern
+          DEPLOYMENT_URL="https://docs-getdbt-${{ github.sha }}-dbt-labs.vercel.app"
+          echo "::set-output name=deployment_url::${DEPLOYMENT_URL}"
+
+      - name: Get changed files
+        id: files
+        run: |
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep 'website/docs/docs/')
+          echo "::set-output name=changed_files::${CHANGED_FILES}"
+
+      - name: Post comment with deployment link
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🚀 Deployment available: ${{ steps.vercel.outputs.deployment_url }}
+            Here are the direct links to the updated files:
+
+            ${{ steps.files.outputs.changed_files }}
+
+            You can review the changes directly in the deployed environment!
