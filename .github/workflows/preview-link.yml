@@ -15,7 +15,14 @@ jobs:
       - name: Wait for Vercel deployment
         run: |
           echo "Waiting for Vercel deployment to complete..."
-          sleep 300  # Adjust this based on deployment speed
+          sleep 500  # Adjust based on deployment time
+
+      - name: Get Vercel deployment URL
+        id: vercel_url
+        run: |
+          # If the Vercel deployment URL is available via API, capture it here
+          DEPLOYMENT_URL="https://docs-getdbt-${{ github.sha }}-dbt-labs.vercel.app"
+          echo "::set-output name=deployment_url::${DEPLOYMENT_URL}"
 
       - name: Get changed files
         id: files
@@ -23,22 +30,21 @@ jobs:
           CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep 'website/docs/docs/')
           echo "::set-output name=changed_files::${CHANGED_FILES}"
 
-      - name: Generate deployment link
-        id: vercel
+      - name: Generate file preview links
+        id: links
         run: |
-          DEPLOYMENT_URL="https://docs-getdbt-${{ github.sha }}-dbt-labs.vercel.app"
-          CHANGED_FILES=${{ steps.files.outputs.changed_files }}
-          # Formatting links for each changed file
-          LINKS=$(echo "$CHANGED_FILES" | awk -v url="$DEPLOYMENT_URL" '{print url "/" $0}')
+          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
+          CHANGED_FILES="${{ steps.files.outputs.changed_files }}"
+          LINKS=$(echo "$CHANGED_FILES" | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/" $0 ")"}')
           echo "::set-output name=links::${LINKS}"
 
       - name: Post comment with deployment link
-        uses: peter-evans/create-or-update-comment@v1
+        uses: peter-evans/create-or-update-comment@v4.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🚀 Deployment available: ${{ steps.vercel.outputs.deployment_url }}
+            🚀 Deployment available: ${{ steps.vercel_url.outputs.deployment_url }}
             Here are the direct links to the updated files:
             
-            ${{ steps.vercel.outputs.links }}
+            ${{ steps.links.outputs.links }}
