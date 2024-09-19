@@ -28,12 +28,14 @@ The schema name as stored in the database.
 This parameter is useful if you want to use a source name that differs from the schema name.
 
 
-#### BigQuery terminology
+:::info BigQuery terminology
 
-If you're using BigQuery, use the _dataset_ name as the `schema:` property.
+If you're using BigQuery, use the _dataset_ name as the `schema` property.
+
+:::
 
 ## Default
-By default, dbt will use the source's `name:` parameter as the schema name.
+By default, dbt will use the source's `name` parameter as the schema name.
 
 ## Examples
 ### Use a simpler name for a source schema than the one in your database

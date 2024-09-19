@@ -6,9 +6,9 @@ meta:
   authors: 'Vertica (Former authors: Matthew Carter, Andy Regan, Andrew Hedengren)'
   github_repo: 'vertica/dbt-vertica'
   pypi_package: 'dbt-vertica'
-  min_core_version: 'v1.7.0'
+  min_core_version: 'v1.8.5'
   cloud_support: 'Not Supported'
-  min_supported_version: 'Vertica 23.4.0'
+  min_supported_version: 'Vertica 24.3.0'
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
@@ -50,7 +50,8 @@ your-profile:
       schema: [dbt schema]
       connection_load_balance: True
       backup_server_node: [list of backup hostnames or IPs]
-      retries: [1 or more]  
+      retries: [1 or more]
+      autocommit: False
       
       threads: [1 or more]
   target: dev
@@ -79,6 +80,7 @@ backup_server_node|	List of hosts to connect to if the primary host specified in
 retries	|The retry times after an unsuccessful connection.|	No|	2	|3|
 threads	|The number of threads the dbt project will run on.|	No|	1|	3|
 label|	A session label to identify the connection.	|No	|An auto-generated label with format of: dbt_username	|dbt_dbadmin|
+autocommit | Boolean value that indicates if the connection can enable or disable auto-commit.| No | True | False
 
 
 For more information on Vertica’s connection properties please refer to [Vertica-Python](https://github.com/vertica/vertica-python#create-a-connection) Connection Properties.
