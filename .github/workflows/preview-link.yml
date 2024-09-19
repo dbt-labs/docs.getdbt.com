@@ -38,10 +38,14 @@ jobs:
       - name: Get Vercel deployment URL from GitHub Check
         id: vercel_url
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
         run: |
           CHECK_RUNS=$(gh api repos/${{ github.repository }}/commits/${{ github.sha }}/check-runs)
           VERCEL_URL=$(echo $CHECK_RUNS | jq -r '.check_runs[] | select(.name=="Vercel") | .details_url')
+          if [ -z "$VERCEL_URL" ]; then
+            echo "Vercel URL not found, defaulting to GitHub URL."
+            VERCEL_URL="https://github.com"
+          fi
           echo "::set-output name=deployment_url::${VERCEL_URL}"
 
       - name: Get changed files
@@ -55,7 +59,7 @@ jobs:
         run: |
           DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
           CHANGED_FILES="${{ steps.files.outputs.changed_files }}"          
-          # Strip the 'website/docs/docs/' portion and append the rest to the URL
+          # Remove 'website/docs/docs/' and '.md' extension from the filenames
           LINKS=$(echo "$CHANGED_FILES" | sed 's#website/docs/docs/##; s/.md$//' | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/docs/" $0 ")"}')
           echo "::set-output name=links::${LINKS}"
 
