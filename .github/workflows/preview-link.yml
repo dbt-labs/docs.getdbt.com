@@ -9,25 +9,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Wait for Vercel deployment
-        run: |
-          echo "Waiting for Vercel deployment to complete..."
-          sleep 120  # Adjust this based on your deployment time
-
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get vercel deployment URL
-        id: vercel
+      - name: Wait for Vercel deployment
         run: |
-          DEPLOYMENT_URL="https://docs-getdbt-${{ github.sha }}-dbt-labs.vercel.app"
-          echo "::set-output name=deployment_url::${DEPLOYMENT_URL}"
+          echo "Waiting for Vercel deployment to complete..."
+          sleep 300  # Adjust this based on deployment speed
 
       - name: Get changed files
         id: files
         run: |
           CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep 'website/docs/docs/')
           echo "::set-output name=changed_files::${CHANGED_FILES}"
+
+      - name: Generate deployment link
+        id: vercel
+        run: |
+          DEPLOYMENT_URL="https://docs-getdbt-${{ github.sha }}-dbt-labs.vercel.app"
+          CHANGED_FILES=${{ steps.files.outputs.changed_files }}
+          # Formatting links for each changed file
+          LINKS=$(echo "$CHANGED_FILES" | awk -v url="$DEPLOYMENT_URL" '{print url "/" $0}')
+          echo "::set-output name=links::${LINKS}"
 
       - name: Post comment with deployment link
         uses: peter-evans/create-or-update-comment@v1
@@ -37,7 +40,5 @@ jobs:
           body: |
             🚀 Deployment available: ${{ steps.vercel.outputs.deployment_url }}
             Here are the direct links to the updated files:
-
-            ${{ steps.files.outputs.changed_files }}
-
-            You can review the changes directly in the deployed environment!
+            
+            ${{ steps.vercel.outputs.links }}
