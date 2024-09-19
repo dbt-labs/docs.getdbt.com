@@ -14,7 +14,6 @@ permissions:
   contents: read
   pull-requests: write
 
-
 jobs:
   comment-deployment-link:
     runs-on: ubuntu-latest
@@ -23,19 +22,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-            fetch-depth: 0
+          fetch-depth: 0
 
       - name: Wait for Vercel deployment
         run: |
           echo "Waiting for Vercel deployment to complete..."
           sleep 300  # Adjust based on deployment time
 
-      - name: Get Vercel deployment URL
+      - name: Install GitHub CLI and jq
+        run: |
+          sudo apt-get install jq -y
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          sudo apt-get install gh -y
+
+      - name: Get Vercel deployment URL from GitHub Check
         id: vercel_url
         run: |
-          # If the Vercel deployment URL is available via API, capture it here
-          DEPLOYMENT_URL="https://docs-getdbt-${{ github.sha }}-dbt-labs.vercel.app"
-          echo "::set-output name=deployment_url::${DEPLOYMENT_URL}"
+          CHECK_RUNS=$(gh api repos/${{ github.repository }}/commits/${{ github.sha }}/check-runs)
+          VERCEL_URL=$(echo $CHECK_RUNS | jq -r '.check_runs[] | select(.name=="Vercel") | .details_url')
+          echo "::set-output name=deployment_url::${VERCEL_URL}"
 
       - name: Get changed files
         id: files
