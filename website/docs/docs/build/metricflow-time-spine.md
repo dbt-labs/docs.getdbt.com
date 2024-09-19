@@ -12,7 +12,7 @@ MetricFlow requires you to define a time spine table as a project-level configur
 
 If you already have a date dimension or time spine table in your dbt project, you can point MetricFlow to this table by updating the `model` configuration to use this table in the Semantic Layer. This is a model-level configuration that tells dbt to use the model for time range joins in the Semantic Layer. 
 
-For example, given the following directory structure, you can create two time spine configurations, `time_spine_hourly` and `time_spine_daily`.  MetricFlow supports granularities ranging from milliseconds to years, refer to the [Dimensions page](/docs/build/dimensions#time?dimension=time_granularity) to find the full list of supported granularities.
+For example, given the following directory structure, you can create two time spine configurations, `time_spine_hourly` and `time_spine_daily`.  MetricFlow supports granularities ranging from milliseconds to years, refer to the [Dimensions page](/docs/build/dimensions?dimension=time_gran#time) (time_granularity tab) to find the full list of supported granularities.
 
 :::tip 
 Previously, you were required to create a model called `metricflow_time_spine` in your dbt project. This is no longer required. However, you can build your time spine model from this table if you don't have another date dimension table you want to use in your project.
