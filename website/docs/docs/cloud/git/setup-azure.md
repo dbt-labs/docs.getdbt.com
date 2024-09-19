@@ -379,7 +379,7 @@ If you're using Azure AD for SSO with dbt Cloud and Microsoft tools, the SSO flo
 
 1. Sign in to the service user's Azure DevOps account (ensure they are also connected to dbt Cloud through SSO).
 2. When connected to dbt Cloud, sign out of Azure AD through the [Azure portal](https://portal.azure.com/).
-3. From there, disconnect the service user in dbt Cloud and go through the steps to set it up again.
+3. Disconnect the service user in dbt Cloud, and follow the steps to set it up again.
 4. You should then be prompted for service user credentials.
 
 </Expandable>
