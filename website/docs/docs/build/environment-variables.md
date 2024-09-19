@@ -114,7 +114,7 @@ Use case &mdash; This is useful in cases where you want to dynamically use the G
 The following environment variables are set automatically: 
 
 - `DBT_ENV`: This key is reserved for the dbt Cloud application and will always resolve to 'prod'. For deployment runs only.
-- `DBT_CLOUD_ENVIRONMENT_NAME`: The name of the dbt Cloud environment in which `dbt`is running. 
+- `DBT_CLOUD_ENVIRONMENT_NAME`: The name of the dbt Cloud environment in which `dbt` is running. 
 - `DBT_CLOUD_ENVIRONMENT_TYPE`: The type of dbt Cloud environment in which `dbt` is running. The values are `development` or `deployment`.
 
 #### Run details
