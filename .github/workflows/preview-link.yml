@@ -47,8 +47,9 @@ jobs:
         id: links
         run: |
           DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
-          CHANGED_FILES="${{ steps.files.outputs.changed_files }}"
-          LINKS=$(echo "$CHANGED_FILES" | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/" $0 ")"}')
+          CHANGED_FILES="${{ steps.files.outputs.changed_files }}"          
+          # Strip the 'website/docs/docs/' portion and append the rest to the URL
+          LINKS=$(echo "$CHANGED_FILES" | sed 's#website/docs/docs/##; s/.md$//' | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/docs/" $0 ")"}')
           echo "::set-output name=links::${LINKS}"
 
       - name: Post comment with deployment link
