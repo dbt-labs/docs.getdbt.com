@@ -100,7 +100,6 @@ To set environment variables in the dbt Cloud CLI for your dbt project:
 2. Then select **Profile Settings**, then **Credentials**.
 3. Click on your project and scroll to the **Environment Variables** section.
 4. Click **Edit** on the lower right and then set the user-level environment variables.  
-   - Note, when setting up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), using [environment variables](/docs/build/environment-variables) like `{{env_var('DBT_WAREHOUSE')}}` is not supported. You should use the actual credentials instead.
 
 ## Use the dbt Cloud CLI
 
