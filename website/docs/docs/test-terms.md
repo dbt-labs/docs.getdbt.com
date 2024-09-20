@@ -17,4 +17,4 @@ This should show noDisplayText term id as children and displayText not set: <Ter
 
 This has displayText set but no hoverSnippet set: <Term id="noHoverSnippet" />
 
-This should NOT show a term (but should fail gracefully): <Term id="demo">Demo</Term>
+This should NOT show a hover snippet (but should still show children): <Term id="demo">Demo</Term>
