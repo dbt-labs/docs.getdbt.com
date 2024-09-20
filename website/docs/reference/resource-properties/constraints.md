@@ -101,7 +101,6 @@ Here are some examples showing how the new syntax is used:
 ```yml
 
 models:
-        to_columns: [id]
     columns:
       - name: id
         data_type: integer
