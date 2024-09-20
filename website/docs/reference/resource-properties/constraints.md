@@ -90,7 +90,7 @@ In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versi
 
 ### What's better about this syntax?
 
-dbt will automatically resolve references to other models so that these references:
+dbt automatically resolves references to other models, ensuring they:
 
 - Capture dependencies
 - Work across different environments
