@@ -243,7 +243,7 @@ var siteSettings = {
 
           sidebarCollapsible: true,
           exclude: [
-            'terms/**'
+            'hover-terms.md'
           ]
         },
         blog: {
