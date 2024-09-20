@@ -139,7 +139,6 @@ models:
 
 </File>
 
-:::info
 
 The recommended syntax for defining foreign keys will be included in dbt Core v1.9 (open source) when it is released.
 
