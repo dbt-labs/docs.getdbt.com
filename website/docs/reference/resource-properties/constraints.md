@@ -101,7 +101,6 @@ Here are some examples showing how the new syntax is used:
 ```yml
 
 models:
-    constraints:
       - type: foreign_key
         columns: [id]
         to: ref('my_model_to') | source('source', 'source_table')
