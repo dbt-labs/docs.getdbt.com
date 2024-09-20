@@ -1,5 +1,4 @@
 .term {
-  cursor: pointer;
   position: relative;
   text-decoration: underline dotted var(--ifm-font-color-base);
   color: var(--ifm-font-color-base);

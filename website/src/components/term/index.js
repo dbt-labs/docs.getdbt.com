@@ -20,48 +20,47 @@ export default function Term({ id, children = undefined }) {
     setPageReady(true)
   })
 
-  const file = require('../../../docs/terms/' + id + '.md')
-  if(!file)
-    return null
+  const file = require('../../../docs/terms/terms.md')
+  const term = file?.frontMatter?.[id]
   
-  const fm = file.frontMatter
-  if(!fm)
+  if(!term) 
     return null
-  
-  const { displayText, hoverSnippet } = fm
+
+  const { displayText, hoverSnippet } = term;
+
+  const displayValue = children ? children : displayText ? displayText : id
 
   return (
     <>
       {pageReady ? (
         <>
-          <Link
-            to={`/terms/${id}`}
+          <span
             key={id}
             className={styles.term}
-            data-tip 
+            data-tip
             data-for={uniqueID}
           >
             {/* If component has children, show children text,
-                Else, default to displayText frontmatter field,
-                Or filename if displayText not set
-            */}
-            {children ? children : displayText ? displayText : id}
-          </Link>
+              Else, default to displayText frontmatter field,
+              Or filename if displayText not set
+          */}
+            {displayValue}
+          </span>
           {hoverSnippet && (
-            <ReactTooltip 
-              id={uniqueID} 
-              className={styles.termToolTip} 
-              place="bottom" 
+            <ReactTooltip
+              id={uniqueID}
+              className={styles.termToolTip}
+              place="bottom"
               effect="solid"
-              wrapper="span" 
+              wrapper="span"
             >
               {hoverSnippet}
             </ReactTooltip>
-          )} 
+          )}
         </>
       ) : (
-        <span>{children ? children : displayText ? displayText : id}</span>
+        <span>{displayValue}</span>
       )}
     </>
-  )
+  );
 }
