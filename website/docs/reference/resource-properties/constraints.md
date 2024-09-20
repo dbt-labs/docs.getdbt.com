@@ -102,7 +102,6 @@ Here are some examples showing how the new syntax is used:
 
 models:
 
-```yml
 
 models:
   - name: my_model
