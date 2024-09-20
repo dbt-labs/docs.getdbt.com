@@ -119,34 +119,6 @@ export default function DocRootLayoutMain({
           hiddenSidebarContainer && styles.docItemWrapperEnhanced
         )}
       >
-        {!pageAvailable &&
-          dbtVersion && (
-            <div className={styles.versionBanner}>
-              <Admonition
-                type="caution"
-                title={`${hasFirstAvailableVersion ? "New feature!" : lastAvailableVersion ? "Old feature" : "Note"}`}
-                icon={
-                  hasFirstAvailableVersion
-                    ? "🎉"
-                    : lastAvailableVersion
-                      ? "❗"
-                      : ""
-                }
-              >
-                <p style={{ marginTop: "5px", marginBottom: "0" }}>
-                  Unfortunately, this feature is not available in dbt Core
-                  version {dbtVersion}
-                </p>
-                {hasFirstAvailableVersion ? (
-                  <p>
-                    {" "}
-                    You should upgrade to {firstAvailableVersion} or later if
-                    you want to use this feature.
-                  </p>
-                ) : null}
-              </Admonition>
-            </div>
-          )}
         {PreData.showisPrereleaseBanner && (
           <div className={styles.versionBanner}>
             <Admonition type="caution" title="Warning">
