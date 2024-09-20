@@ -88,7 +88,6 @@ The structure of a constraint is:
 
 In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release. The recommended syntax means:
 
-### What's better about this syntax?
 
 dbt automatically resolves references to other models, ensuring they:
 
