@@ -43,9 +43,9 @@ This credential controls the physical access to underlying data accessed by the 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-add-credential.jpg" width="55%" title="Add credentials and map them to a service token. " />
 
-1. After adding credentials, scroll to **2. Map new service token**.
-2. Name the token and ensure the permission set includes 'Semantic Layer Only' and 'Metadata Only'.
-3. Click **Save**. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
+4. After adding credentials, scroll to **2. Map new service token**.
+5. Name the token and ensure the permission set includes 'Semantic Layer Only' and 'Metadata Only'.
+6. Click **Save**. Once the token is generated, you won't be able to view this token again so make sure to record it somewhere safe.
 
 :::info
 - Team plans can create multiple service tokens that link to a single underlying credential, but each project can only have one credential.
