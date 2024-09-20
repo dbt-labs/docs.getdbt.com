@@ -103,7 +103,6 @@ Here are some examples showing how the new syntax is used:
 models:
 
 
-      - name: id
         data_type: integer
         constraints:
         - type: foreign_key
