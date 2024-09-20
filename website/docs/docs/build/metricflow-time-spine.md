@@ -13,6 +13,7 @@ MetricFlow requires you to define a time spine table as a project-level configur
 - At a minimum, define a time spine table for a daily grain.
 - You can optionally define a time spine table for a different granularity, like hourly.
 - Note that if you don’t have a date or calendar model in your project, you'll need to create one. 
+- If you're looking to specify the grain of a time dimension so that MetricFlow can transform the underlying column to the required granularity, refer to the [Time granularity documentation](/docs/build/dimensions?dimension=time_gran)
 
 If you already have a date dimension or time spine table in your dbt project, you can point MetricFlow to this table by updating the `model` configuration to use this table in the Semantic Layer. This is a model-level configuration that tells dbt to use the model for time range joins in the Semantic Layer. 
 
