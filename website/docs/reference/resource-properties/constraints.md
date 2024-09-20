@@ -21,15 +21,13 @@ The structure of a constraint is:
 - `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`
 - `expression`: Free text input to qualify the constraint. Required for certain constraint types, and optional for others.
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
-- `columns` (model-level only): List of column names to apply the constraint over
+- `columns` (model-level only): List of column names to apply the constraint over.
 
 <VersionBlock lastVersion="1.8">
 
 When using `foreign_key`, you need to specify the referenced table's schema manually. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment. Note that later versions of dbt will have more efficient ways of handling this. 
 
 For example: `expression: "{{ target.schema }}.customers(customer_id)"`
-
-</VersionBlock>
 
 <File name='models/schema.yml'>
 
@@ -70,7 +68,54 @@ models:
 
 </File>
 
+In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release. For more information, update the documentation version to 1.9 and refer to the 'What's better about this syntax' section.
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release.
+
+#### What's better about this syntax
+
+The recommended syntax means dbt automatically resolves references to other models, ensuring they:
+
+- Capture dependencies
+- Work across different environments
+
+Here's an example showing how to use the recommended syntax:
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: <model_name>
+
+    # required 
+    config:
+      contract:
+        enforced: true
+
+    # Model-level constraints
+    constraints:
+      - type: foreign_key
+        columns: [id]
+        to: {{ ref('my_model_to') }}  # or {{ source('source', 'source_table') }}
+        to_columns: [id]
+
+    # Column-level definitions and constraints
+    columns:
+      - name: id
+        data_type: integer
+        constraints:
+          - type: foreign_key
+            to: {{ ref('my_model_to') }}  # or {{ source('source', 'source_table') }}
+            to_columns: [id]
+```
+
+</File>
+
+</VersionBlock>
 
 ## Platform-specific support
 
