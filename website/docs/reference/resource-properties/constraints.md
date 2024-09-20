@@ -66,7 +66,7 @@ models:
           - type: ...
 ```
 
-Today, in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the new recommended syntax for defining foreign keys. This syntax leverages `ref`. For more information, refer to the section for the [forthcoming v1.9 release](/reference/resource-properties/constraints#whats-better-about-this-syntax).
+In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release. For more information, update the documentation version to 1.9 and refer to the [following section](/reference/resource-properties/constraints#whats-better-about-this-syntax).
 
 </File>
 
