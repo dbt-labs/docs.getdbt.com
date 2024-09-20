@@ -24,48 +24,52 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install GitHub CLI and jq
+      - name: Install necessary tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y jq
-          sudo apt-get install -y gh
+          sudo apt-get install -y jq curl
 
-      - name: Wait for Vercel deployment
-        id: vercel_deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate Vercel deployment URL
+        id: vercel_url
         run: |
-          CHECK_RUN_ID=""
-          ATTEMPTS=0
+          # Get the branch name
+          BRANCH_NAME="${{ github.head_ref }}"
+
+          # Convert to lowercase
+          BRANCH_NAME_LOWER=$(echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]')
+
+          # Replace non-alphanumeric characters with hyphens
+          BRANCH_NAME_SANITIZED=$(echo "$BRANCH_NAME_LOWER" | sed 's/[^a-z0-9]/-/g')
+
+          # Construct the deployment URL
+          DEPLOYMENT_URL="https://docs-getdbt-com-git-${BRANCH_NAME_SANITIZED}-dbt-labs.vercel.app"
+
+          echo "deployment_url=$DEPLOYMENT_URL" >> $GITHUB_OUTPUT
+
+      - name: Wait for deployment to be accessible (optional)
+        id: wait_for_deployment
+        run: |
+          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
+          echo "Waiting for deployment at $DEPLOYMENT_URL to become accessible..."
+
           MAX_ATTEMPTS=30  # Adjust as needed
           SLEEP_TIME=10    # Adjust as needed
+          ATTEMPTS=0
+
           while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
-            CHECK_RUNS=$(gh api repos/${{ github.repository }}/commits/${{ github.sha }}/check-runs)
-            VERCEL_CHECK=$(echo $CHECK_RUNS | jq '.check_runs[] | select(.name=="Vercel")')
-            if [ -n "$VERCEL_CHECK" ]; then
-              STATUS=$(echo $VERCEL_CHECK | jq -r '.status')
-              CONCLUSION=$(echo $VERCEL_CHECK | jq -r '.conclusion')
-              if [ "$STATUS" == "completed" ]; then
-                if [ "$CONCLUSION" == "success" ]; then
-                  echo "Vercel deployment completed successfully."
-                  VERCEL_URL=$(echo $VERCEL_CHECK | jq -r '.details_url')
-                  echo "deployment_url=$VERCEL_URL" >> $GITHUB_OUTPUT
-                  break
-                else
-                  echo "Vercel deployment failed."
-                  exit 1
-                fi
-              else
-                echo "Vercel deployment status: $STATUS. Waiting..."
-              fi
+            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL")
+            if [ "$STATUS_CODE" -eq 200 ]; then
+              echo "Deployment is accessible."
+              break
             else
-              echo "Vercel check not found. Waiting..."
+              echo "Deployment not yet accessible (status code: $STATUS_CODE). Waiting..."
+              sleep $SLEEP_TIME
+              ATTEMPTS=$((ATTEMPTS + 1))
             fi
-            ATTEMPTS=$((ATTEMPTS + 1))
-            sleep $SLEEP_TIME
           done
+
           if [ $ATTEMPTS -eq $MAX_ATTEMPTS ]; then
-            echo "Vercel deployment did not complete within expected time."
+            echo "Deployment did not become accessible within the expected time."
             exit 1
           fi
 
@@ -78,9 +82,16 @@ jobs:
       - name: Generate file preview links
         id: links
         run: |
-          DEPLOYMENT_URL="${{ steps.vercel_deploy.outputs.deployment_url }}"
+          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
           CHANGED_FILES="${{ steps.files.outputs.changed_files }}"
-          LINKS=$(echo "$CHANGED_FILES" | sed 's#website/docs/docs/##; s/.md$//' | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/docs/" $0 ")"}')
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files found in the specified directories."
+            LINKS="- No documentation files were changed."
+          else
+            LINKS=$(echo "$CHANGED_FILES" | sed 's#website/docs/docs/##; s/.md$//' | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/docs/" $0 ")"}')
+          fi
+
           echo "links=$LINKS" >> $GITHUB_OUTPUT
 
       - name: Post comment with deployment link
@@ -89,7 +100,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🚀 Deployment available: ${{ steps.vercel_deploy.outputs.deployment_url }}
+            🚀 **Deployment available:** ${{ steps.vercel_url.outputs.deployment_url }}
             Here are the direct links to the updated files:
 
             ${{ steps.links.outputs.links }}
