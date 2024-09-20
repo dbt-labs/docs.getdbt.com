@@ -103,7 +103,6 @@ Here are some examples showing how the new syntax is used:
 models:
 
 
-        - type: foreign_key
           to: ref('my_model_to') | source('source', 'source_table')
           to_columns: [id]
 
