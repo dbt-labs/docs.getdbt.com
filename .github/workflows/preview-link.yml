@@ -46,14 +46,14 @@ jobs:
 
           echo "deployment_url=$DEPLOYMENT_URL" >> $GITHUB_OUTPUT
 
-      - name: Wait for deployment to be accessible (optional)
+      - name: Wait for deployment to be accessible
         id: wait_for_deployment
         run: |
           DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
           echo "Waiting for deployment at $DEPLOYMENT_URL to become accessible..."
 
-          MAX_ATTEMPTS=30  # Adjust as needed
-          SLEEP_TIME=10    # Adjust as needed
+          MAX_ATTEMPTS=60  # Adjust as needed (e.g., wait up to 10 minutes)
+          SLEEP_TIME=10    # Check every 10 seconds
           ATTEMPTS=0
 
           while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
@@ -76,8 +76,20 @@ jobs:
       - name: Get changed files
         id: files
         run: |
-          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep 'website/docs/docs/')
-          echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          # Get the list of changed files in the specified directories
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -E '^website/docs/(docs|best-practices|guides|faqs|reference)/.*\.md$' || true)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          # Check if any files were changed
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No documentation files were changed."
+            echo "changed_files=" >> $GITHUB_OUTPUT
+          else
+            # Convert line-separated files to space-separated for easier handling
+            CHANGED_FILES="$(echo "$CHANGED_FILES" | tr '\n' ' ')"
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          fi
 
       - name: Generate file preview links
         id: links
@@ -86,13 +98,23 @@ jobs:
           CHANGED_FILES="${{ steps.files.outputs.changed_files }}"
 
           if [ -z "$CHANGED_FILES" ]; then
-            echo "No changed files found in the specified directories."
+            echo "No documentation files were changed."
             LINKS="- No documentation files were changed."
           else
-            LINKS=$(echo "$CHANGED_FILES" | sed 's#website/docs/docs/##; s/.md$//' | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/docs/" $0 ")"}')
+            LINKS=""
+            for FILE in $CHANGED_FILES; do
+              # Remove 'website/docs/' prefix and '.md' extension
+              FILE_PATH="${FILE#website/docs/}"
+              FILE_PATH="${FILE_PATH%.md}"
+              # Replace spaces and special characters with hyphens in URL path
+              URL_PATH=$(echo "$FILE_PATH" | sed 's/ /-/g; s/[^a-zA-Z0-9\-\/]//g' | tr '[:upper:]' '[:lower:]')
+              FULL_URL="$DEPLOYMENT_URL/$URL_PATH"
+              LINKS="$LINKS\n- [$FULL_URL]($FULL_URL)"
+            done
           fi
 
-          echo "links=$LINKS" >> $GITHUB_OUTPUT
+          # Output the links
+          echo -e "links=$LINKS" >> $GITHUB_OUTPUT
 
       - name: Post comment with deployment link
         uses: peter-evans/create-or-update-comment@v4
@@ -100,7 +122,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🚀 **Deployment available:** ${{ steps.vercel_url.outputs.deployment_url }}
-            Here are the direct links to the updated files:
-
+            🚀 Deployment available! Here are the direct links to the updated files:
             ${{ steps.links.outputs.links }}
