@@ -19,7 +19,9 @@ If you already have a date dimension or time spine table in your dbt project, yo
 For example, given the following directory structure, you can create two time spine configurations, `time_spine_hourly` and `time_spine_daily`.  MetricFlow supports granularities ranging from milliseconds to years, refer to the [Dimensions page](/docs/build/dimensions?dimension=time_gran#time) (time_granularity tab) to find the full list of supported granularities.
 
 :::tip 
-Previously, you were required to create a model called `metricflow_time_spine` in your dbt project. This is no longer required. However, you can build your time spine model from this table if you don't have another date dimension table you want to use in your project.
+Previously, you had to create a model called `metricflow_time_spine` in your dbt project. Now, if your project already includes a date dimension or time spine table, you can simply configure MetricFlow to use that table by updating the `model` setting in the Semantic Layer.
+
+If you don’t have a date dimension table, you can still create one by using the code snippet below to build your time spine model.
 
 :::
 
