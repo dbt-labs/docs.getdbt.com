@@ -84,7 +84,7 @@ saved-queries:
   +schema: metrics
 ```
 </File>
-
+</TabItem>
 <TabItem value="tests" label="Test">
 
 Customize the schema for storing test results in your `dbt_project.yml` file. 
