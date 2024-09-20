@@ -246,6 +246,9 @@ var siteSettings = {
           //showLastUpdateAuthor: false,
 
           sidebarCollapsible: true,
+          exclude: [
+            'terms/**'
+          ]
         },
         blog: {
           blogTitle: "Developer Blog | dbt Developer Hub",

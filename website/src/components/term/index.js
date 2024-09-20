@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 
 {/* 
   Props:
-  id: filename of term
+  id: maps to term in website/docs/terms/terms.md
   children (optional): to display different text 
   other than displayText property for term
 */}
