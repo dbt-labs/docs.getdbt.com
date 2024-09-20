@@ -160,10 +160,6 @@ var siteSettings = {
               label: "Developer blog",
               to: "/blog",
             },
-            {
-              label: "Glossary",
-              to: "/glossary",
-            },
           ],
         },
         {
