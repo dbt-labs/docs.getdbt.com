@@ -140,7 +140,7 @@ models:
 </File>
 
 
-The recommended syntax for defining foreign keys will be included in dbt Core v1.9 (open source) when it is released.
+In dbt Cloud Versionless, you can now use the recommended syntax for defining foreign keys. This will become available in dbt Core v1.9.
 
 :::
 
