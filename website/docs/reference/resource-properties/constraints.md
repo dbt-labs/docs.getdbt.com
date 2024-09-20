@@ -101,7 +101,6 @@ Here are some examples showing how the new syntax is used:
 ```yml
 
 models:
-        data_type: integer
 
 ```
 
