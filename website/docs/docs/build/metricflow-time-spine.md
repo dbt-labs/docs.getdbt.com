@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 It's common in analytics engineering to have a date dimension or "time spine" table as a base table for different types of time-based joins and aggregations. The structure of this table is typically a base column of daily or hourly dates, with additional columns for other time grains, like fiscal quarters, defined based on the base column. You can join other tables to the time spine on the base column to calculate metrics like revenue at a point in time, or to aggregate to a specific time grain.
 
-MetricFlow requires you to define a time spine table as a project-level configuration for time-based joins and aggregations, like cumulative metrics. 
+MetricFlow requires you to define a time spine table as a model-level configuration in the Semantic Layer for time-based joins and aggregations, such as cumulative metrics. This configuration informs dbt which model should be used for time range joins. It is especially useful for cumulative metrics or calculating time-based offsets.
 - You only need to configure time spine models that the Semantic Layer should recognize.
 - At a minimum, define a time spine table for a daily grain.
 - You can optionally define a time spine table for a different granularity, like hourly.
