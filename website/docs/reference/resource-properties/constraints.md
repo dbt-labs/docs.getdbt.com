@@ -95,7 +95,7 @@ dbt will automatically resolve references to other models so that these referenc
 - It captures dependencies.
 - Works across environments.
 
-Here are two examples demonstrating how the new syntax is utilized:
+Here are some examples showing how the new syntax is used:
 
 <File name='models/schema.yml'>
 
