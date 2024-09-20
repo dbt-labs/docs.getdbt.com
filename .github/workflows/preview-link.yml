@@ -24,52 +24,72 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Wait for Vercel deployment
-        run: |
-          echo "Waiting for Vercel deployment to complete..."
-          sleep 300  # Adjust based on deployment time
-
       - name: Install GitHub CLI and jq
         run: |
-          sudo apt-get install jq -y
-          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-          sudo apt-get install gh -y
+          sudo apt-get update
+          sudo apt-get install -y jq
+          sudo apt-get install -y gh
 
-      - name: Get Vercel deployment URL from GitHub Check
-        id: vercel_url
+      - name: Wait for Vercel deployment
+        id: vercel_deploy
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          CHECK_RUNS=$(gh api repos/${{ github.repository }}/commits/${{ github.sha }}/check-runs)
-          VERCEL_URL=$(echo $CHECK_RUNS | jq -r '.check_runs[] | select(.name=="Vercel") | .details_url')
-          if [ -z "$VERCEL_URL" ]; then
-            echo "Vercel URL not found, defaulting to GitHub URL."
-            VERCEL_URL="https://github.com"
+          CHECK_RUN_ID=""
+          ATTEMPTS=0
+          MAX_ATTEMPTS=30  # Adjust as needed
+          SLEEP_TIME=10    # Adjust as needed
+          while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
+            CHECK_RUNS=$(gh api repos/${{ github.repository }}/commits/${{ github.sha }}/check-runs)
+            VERCEL_CHECK=$(echo $CHECK_RUNS | jq '.check_runs[] | select(.name=="Vercel")')
+            if [ -n "$VERCEL_CHECK" ]; then
+              STATUS=$(echo $VERCEL_CHECK | jq -r '.status')
+              CONCLUSION=$(echo $VERCEL_CHECK | jq -r '.conclusion')
+              if [ "$STATUS" == "completed" ]; then
+                if [ "$CONCLUSION" == "success" ]; then
+                  echo "Vercel deployment completed successfully."
+                  VERCEL_URL=$(echo $VERCEL_CHECK | jq -r '.details_url')
+                  echo "deployment_url=$VERCEL_URL" >> $GITHUB_OUTPUT
+                  break
+                else
+                  echo "Vercel deployment failed."
+                  exit 1
+                fi
+              else
+                echo "Vercel deployment status: $STATUS. Waiting..."
+              fi
+            else
+              echo "Vercel check not found. Waiting..."
+            fi
+            ATTEMPTS=$((ATTEMPTS + 1))
+            sleep $SLEEP_TIME
+          done
+          if [ $ATTEMPTS -eq $MAX_ATTEMPTS ]; then
+            echo "Vercel deployment did not complete within expected time."
+            exit 1
           fi
-          echo "::set-output name=deployment_url::${VERCEL_URL}"
 
       - name: Get changed files
         id: files
         run: |
           CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep 'website/docs/docs/')
-          echo "::set-output name=changed_files::${CHANGED_FILES}"
+          echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
 
       - name: Generate file preview links
         id: links
         run: |
-          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
-          CHANGED_FILES="${{ steps.files.outputs.changed_files }}"          
-          # Remove 'website/docs/docs/' and '.md' extension from the filenames
+          DEPLOYMENT_URL="${{ steps.vercel_deploy.outputs.deployment_url }}"
+          CHANGED_FILES="${{ steps.files.outputs.changed_files }}"
           LINKS=$(echo "$CHANGED_FILES" | sed 's#website/docs/docs/##; s/.md$//' | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/docs/" $0 ")"}')
-          echo "::set-output name=links::${LINKS}"
+          echo "links=$LINKS" >> $GITHUB_OUTPUT
 
       - name: Post comment with deployment link
-        uses: peter-evans/create-or-update-comment@v4.0.0
+        uses: peter-evans/create-or-update-comment@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🚀 Deployment available: ${{ steps.vercel_url.outputs.deployment_url }}
+            🚀 Deployment available: ${{ steps.vercel_deploy.outputs.deployment_url }}
             Here are the direct links to the updated files:
-            
+
             ${{ steps.links.outputs.links }}
