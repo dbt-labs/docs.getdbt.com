@@ -44,7 +44,7 @@ sources:
 
 *By default, `schema` will be the same as `name`. Add `schema` only if you want to use a source name that differs from the existing schema.
 
-If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](/reference/configs-and-properties) before proceeding.
+If you're not already familiar with these files, be sure to check out [the documentation on properties.yml files](/reference/configs-and-properties) before proceeding.
 
 ### Selecting from a source
 
