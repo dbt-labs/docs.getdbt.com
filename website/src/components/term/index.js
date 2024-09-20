@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Link from '@docusaurus/Link';
 import ReactTooltip from "react-tooltip";
 import styles from './styles.module.css';
 
