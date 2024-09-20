@@ -20,14 +20,22 @@ export default function Term({ id, children = undefined }) {
     setPageReady(true)
   })
 
+  // Get terms file
   const file = require('../../../docs/terms/terms.md')
+
+  // Get term by id
   const term = file?.frontMatter?.[id]
   
+  // If term not found in file, return children if available or null
   if(!term) 
-    return null
+    return children || null
 
+  // Get properties from front matter
   const { displayText, hoverSnippet } = term;
 
+  // If component has children, show children text,
+  // Else, default to displayText frontmatter field,
+  // Or filename if displayText not set
   const displayValue = children ? children : displayText ? displayText : id
 
   return (
@@ -40,10 +48,6 @@ export default function Term({ id, children = undefined }) {
             data-tip
             data-for={uniqueID}
           >
-            {/* If component has children, show children text,
-              Else, default to displayText frontmatter field,
-              Or filename if displayText not set
-          */}
             {displayValue}
           </span>
           {hoverSnippet && (
