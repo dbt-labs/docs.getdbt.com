@@ -21,7 +21,7 @@ export default function Term({ id, children = undefined }) {
   })
 
   // Get terms file
-  const file = require('../../../docs/terms/terms.md')
+  const file = require('../../../docs/terms.md')
 
   // Get term by id
   const term = file?.frontMatter?.[id]
