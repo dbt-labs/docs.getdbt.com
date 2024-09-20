@@ -11,6 +11,8 @@ Constraints require the declaration and enforcement of a model [contract](/refer
 
 **Constraints are never applied on `ephemeral` models or those materialized as `view`**. Only `table` and `incremental` models support applying and enforcing constraints.
 
+<VersionBlock lastVersion="1.8">
+
 ## Defining constraints
 
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
@@ -23,13 +25,9 @@ The structure of a constraint is:
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
 - `columns` (model-level only): List of column names to apply the constraint over
 
-<VersionBlock lastVersion="1.8">
-
 When using `foreign_key`, you need to specify the referenced table's schema manually. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment. Note that later versions of dbt will have more efficient ways of handling this. 
 
 For example: `expression: "{{ target.schema }}.customers(customer_id)"`
-
-</VersionBlock>
 
 <File name='models/schema.yml'>
 
@@ -68,9 +66,81 @@ models:
           - type: ...
 ```
 
+Today, in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the new recommended syntax for defining foreign keys. This syntax leverages `ref`. For more information, refer to the section for the [forthcoming v1.9 release](/reference/resource-properties/constraints#whats-better-about-this-syntax).
+
 </File>
 
+</VersionBlock>
 
+<VersionBlock firstVersion="1.9">
+
+## Defining constraints
+
+Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
+
+If you are defining multiple `primary_key` constraints for a single model, those _must_ be defined at the model level. Defining multiple `primary_key` constraints at the column level is not supported. 
+
+The structure of a constraint is:
+- `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`
+- `expression`: Free text input to qualify the constraint. Required for certain constraint types, and optional for others.
+- `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
+- `columns` (model-level only): List of column names to apply the constraint over
+
+Today, in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the new recommended syntax for defining foreign keys. This syntax leverages `ref`.
+
+### What's better about this syntax?
+
+dbt will automatically resolve references to other models so that these references:
+
+- It captures dependencies.
+- Works across environments.
+
+Here are two examples demonstrating how the new syntax is utilized:
+
+<File name='models/schema.yml'>
+
+```yml
+
+models:
+  - name: my_model
+    constraints:
+      - type: foreign_key
+        columns: [id]
+        to: ref('my_model_to') | source('source', 'source_table')
+        to_columns: [id]
+    columns:
+      - name: id
+        data_type: integer
+
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yml
+
+models:
+  - name: my_model
+    columns:
+      - name: id
+        data_type: integer
+        constraints:
+        - type: foreign_key
+          to: ref('my_model_to') | source('source', 'source_table')
+          to_columns: [id]
+
+```
+
+</File>
+
+:::info
+
+The recommended syntax for defining foreign keys will be included in dbt Core v1.9 (open source) when it is released.
+
+:::
+
+</VersionBlock>
 
 ## Platform-specific support
 
