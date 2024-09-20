@@ -101,20 +101,10 @@ jobs:
             echo "No changed files found in the specified directories."
             LINKS="- No documentation files were changed."
           else
-            LINKS=""
-            for FILE in $CHANGED_FILES; do
-              # Remove 'website/docs/' prefix and '.md' extension
-              FILE_PATH="${FILE#website/docs/}"
-              FILE_PATH="${FILE_PATH%.md}"
-              # Replace spaces and special characters with hyphens in URL path
-              URL_PATH=$(echo "$FILE_PATH" | sed 's/ /-/g; s/[^a-zA-Z0-9\-_\/]//g' | tr '[:upper:]' '[:lower:]')
-              FULL_URL="$DEPLOYMENT_URL/$URL_PATH"
-              LINKS="$LINKS\n- [$FULL_URL]($FULL_URL)"
-            done
+            LINKS=$(echo "$CHANGED_FILES" | sed 's#website/docs/docs/##; s/.md$//' | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/docs/" $0 ")"}')
           fi
 
-          # Output the links
-          echo -e "links=$LINKS" >> $GITHUB_OUTPUT
+          echo "links=$LINKS" >> $GITHUB_OUTPUT
 
       - name: Post comment with deployment link
         uses: actions/github-script@v6
