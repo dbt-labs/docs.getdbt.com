@@ -101,7 +101,6 @@ Here are some examples showing how the new syntax is used:
 ```yml
 
 models:
-  - name: my_model
     constraints:
       - type: foreign_key
         columns: [id]
