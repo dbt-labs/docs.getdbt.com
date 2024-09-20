@@ -107,18 +107,11 @@ jobs:
           echo "links=$LINKS" >> $GITHUB_OUTPUT
 
       - name: Post comment with deployment link
-        uses: actions/github-script@v6
+        uses: peter-evans/create-or-update-comment@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { github, context } = require('@actions/github');
-            const issue_number = context.payload.pull_request.number;
-            const body = `
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            <!-- vercel-preview-comment -->
             🚀 Deployment available! Here are the direct links to the updated files:
             ${{ steps.links.outputs.links }}
-            `;
-            await github.rest.issues.createComment({
-              ...context.repo,
-              issue_number,
-              body: body
-            });
