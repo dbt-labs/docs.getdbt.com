@@ -142,7 +142,6 @@ models:
 
 In dbt Cloud Versionless, you can now use the recommended syntax for defining foreign keys. This will become available in dbt Core v1.9.
 
-:::
 
 </VersionBlock>
 
