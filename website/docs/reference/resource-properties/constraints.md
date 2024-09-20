@@ -93,7 +93,7 @@ Today, in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-clou
 dbt will automatically resolve references to other models so that these references:
 
 - It captures dependencies.
-- Works across environments.
+- Work across different environments
 
 Here are some examples showing how the new syntax is used:
 
