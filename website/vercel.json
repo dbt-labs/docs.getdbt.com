@@ -3530,6 +3530,66 @@
       "source": "/best-practices/how-we-structure/5-semantic-layer-marts",
       "destination": "/best-practices/how-we-build-our-metrics/semantic-layer-7-semantic-structure",
       "permanent": true
+    },
+    {
+      "source": "/terms/cte",
+      "destination": "https://www.getdbt.com/blog/guide-to-cte",
+      "permanent": true
+    },
+    {
+      "source": "/terms/dag",
+      "destination": "https://www.getdbt.com/blog/guide-to-dag",
+      "permanent": true
+    },
+    {
+      "source": "/terms/data-lineage",
+      "destination": "https://www.getdbt.com/blog/guide-to-data-lineage",
+      "permanent": true
+    },
+    {
+      "source": "/terms/ddl",
+      "destination": "https://www.getdbt.com/blog/guide-to-ddl",
+      "permanent": true
+    },
+    {
+      "source": "/terms/dimensional-modeling",
+      "destination": "https://www.getdbt.com/blog/guide-to-dimensional-modeling",
+      "permanent": true
+    },
+    {
+      "source": "/terms/dml",
+      "destination": "https://www.getdbt.com/blog/guide-to-dml",
+      "permanent": true
+    },
+    {
+      "source": "/terms/dry",
+      "destination": "https://www.getdbt.com/blog/guide-to-dry",
+      "permanent": true
+    },
+    {
+      "source": "/terms/grain",
+      "destination": "https://www.getdbt.com/blog/guide-to-grain",
+      "permanent": true
+    },
+    {
+      "source": "/terms/subquery",
+      "destination": "https://www.getdbt.com/blog/guide-to-subquery",
+      "permanent": true
+    },
+    {
+      "source": "/terms/surrogate-key",
+      "destination": "https://www.getdbt.com/blog/guide-to-surrogate-key",
+      "permanent": true
+    },
+    {
+      "source": "/glossary",
+      "destination": "https://www.getdbt.com/blog",
+      "permanent": true
+    },
+    {
+      "source": "/terms/:path*",
+      "destination": "https://www.getdbt.com/blog",
+      "permanent": true
     }
   ],
   "headers": [
