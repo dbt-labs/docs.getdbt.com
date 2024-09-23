@@ -36,25 +36,38 @@ Groups in dbt Cloud serve much of the same purpose as they do in traditional dir
 
 There are three default groups available as soon as you create your dbt Cloud account (the person who created the account is added to all three automatically):
 
-- **Owner:** This group is for individuals responsible for the entire account. You can not change the permissions. By default, dbt Cloud adds new users to this group.
+- **Owner:** This group is for individuals responsible for the entire account and will give them elevated account admin privileges. You can not change the permissions. 
 - **Member:** This group is for the general members of your organization, who will also have full access to the account. You can not change the permissions. By default, dbt Cloud adds new users to this group.
-- **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. 
+- **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, dbt Cloud adds new users to this group.
+
+We recommend deleting the default `Owner`, `Member`, and `Everyone` groups before deploying and replacing them with your organizational groups. This prevents users from receiving more elevated privileges than they should and helps admins ensure they are properly placed.
 
 Create new groups from the **Groups & Licenses** section of the **Account settings**. If you use an external IdP for SSO, you can sync those SSO groups to dbt Cloud from the **Group details** pane when creating or editing existing groups.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/new-group.png" width="60%" title="Example the new group pane in the account settings." />
 
-If a user is assigned licenses and permissions from multiple groups, the group that grants the most access will take precedence. You must assign a permission set to any groups created beyond the three defaults or users assigned will not have access to features beyond their user profile.
+If a user is assigned licenses and permissions from multiple groups, the group that grants the most access will take precedence. You must assign a permission set to any groups created beyond the three defaults, or users assigned will not have access to features beyond their user profile.
 
 #### SSO mappings
 
-SSO Mappings connect an identity provider (IdP) group membership to a dbt Cloud group. When a user logs into dbt Cloud via a supported identity provider, their IdP group memberships sync with dbt Cloud. Upon logging in successfully, the user's group memberships (and permissions) automatically adjust within dbt Cloud.
+SSO Mappings connect an identity provider (IdP) group membership to a dbt Cloud group. When users log into dbt Cloud via a supported identity provider, their IdP group memberships sync with dbt Cloud. Upon logging in successfully, the user's group memberships (and permissions) will automatically adjust within dbt Cloud.
 
 :::tip Creating SSO Mappings
 
 While dbt Cloud supports mapping multiple IdP groups to a single dbt Cloud group, we recommend using a 1:1 mapping to make administration as simple as possible. Use the same names for your dbt Cloud groups and your IdP groups.
 
 :::
+
+Create an SSO mapping in the group view:
+
+1. Open an existing group to edit or create a new group.
+2. In the **SSO** portion of the group screen, enter the name of the SSO group exactly as it appears in the IdP. If the name is not the same, the users will not be properly placed into the group. 
+3. In the **Users** section, ensure the **Add all users by default** option is disabled.
+4. Save the group configuration. New SSO users will be added to the group upon login, and existing users will be added to the group upon their next login. 
+
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-mapping.png" width="60%" title="Example of an SSO group mapped to a dbt Cloud group." />
+
+See [role-based access control](#role-based-access-control) for more information about mapping SSO groups for user assignment to dbt Cloud groups.
 
 ## Grant access
 
@@ -91,7 +104,7 @@ Some permissions (those that don't grant full access, like admins) allow groups 
 Role-based access control (RBAC) allows you to grant users access to features and functionality based on their group membership. With this method, you can grant users varying access levels to different projects and environments. You can take access and security to the next level by integrating dbt Cloud with a third-party identity provider (IdP) to grant users access when they authenticate with your SSO or OAuth service.
 
 There are a few things you need to know before you configure RBAC for SSO users:
-- New SSO users join any groups with the **Add all new users by default** option enabled. By default, the `Everyone` and `member` groups have this option enabled. Disable this option across all groups for the best RBAC experience.
+- New SSO users join any groups with the **Add all new users by default** option enabled. By default, the `Everyone` and `Member` groups have this option enabled. Disable this option across all groups for the best RBAC experience.
 - You must have the appropriate SSO groups configured in the group details SSO section. If the SSO group name does not match _exactly_, users will not be placed in the group correctly. 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-window-details.png" width="60%" title="The Group details SSO section with a group configured." />
 - It's a good idea for your dbt Cloud group names to match the IdP group names.
