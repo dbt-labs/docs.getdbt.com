@@ -36,8 +36,8 @@ Groups in dbt Cloud serve much of the same purpose as they do in traditional dir
 
 There are three default groups available as soon as you create your dbt Cloud account (the person who created the account is added to all three automatically):
 
-- **Owner:** This group is for individuals responsible for the entire account and will give them elevated account admin privileges. You can not change the permissions. 
-- **Member:** This group is for the general members of your organization, who will also have full access to the account. You can not change the permissions. By default, dbt Cloud adds new users to this group.
+- **Owner:** This group is for individuals responsible for the entire account and will give them elevated account admin privileges. You cannot change the permissions. 
+- **Member:** This group is for the general members of your organization, who will also have full access to the account. You cannot change the permissions. By default, dbt Cloud adds new users to this group.
 - **Everyone:** A general group for all members of your organization. Customize the permissions to fit your organizational needs. By default, dbt Cloud adds new users to this group.
 
 We recommend deleting the default `Owner`, `Member`, and `Everyone` groups before deploying and replacing them with your organizational groups. This prevents users from receiving more elevated privileges than they should and helps admins ensure they are properly placed.
@@ -195,7 +195,7 @@ Yes, see the docs on [managing license types](/docs/cloud/manage-access/seats-an
 
 <Expandable alt_header="Why can't I edit a user's group membership?">
 
-Do not try to edit your own user, as this isn't allowed for security reasons. You'll need a different user to make changes to your own user's group membership.
+Don't try to edit your own user, as this isn't allowed for security reasons. You'll need a different user to make changes to your own user's group membership.
 
 </Expandable>
 
