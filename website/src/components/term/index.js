@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 {/* 
   Props:
-  id: maps to term in website/docs/hover-terms.md
+  id: maps to term in website/docs/terms/hover-terms.md
   children (optional): to display different text 
   other than displayText property for term
 */}
@@ -20,7 +20,7 @@ export default function Term({ id, children = undefined }) {
   })
 
   // Get terms file
-  const file = require('../../../docs/hover-terms.md')
+  const file = require('../../../docs/terms/hover-terms.md')
 
   // Get term by id
   const term = file?.frontMatter?.[id]
