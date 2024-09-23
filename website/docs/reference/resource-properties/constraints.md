@@ -86,53 +86,46 @@ The structure of a constraint is:
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
 - `columns` (model-level only): List of column names to apply the constraint over
 
-In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release. The recommended syntax means:
+In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release. 
 
-
-dbt automatically resolves references to other models, ensuring they:
+The recommended syntax means dbt automatically resolves references to other models, ensuring they:
 
 - Capture dependencies
 - Work across different environments
 
-Here are some examples showing how the new syntax is used:
+Here's an example showing how the new syntax is used:
 
 <File name='models/schema.yml'>
 
 ```yml
 
 models:
-models:
-  - name: <model_name>
-    
-    # required
+name: <my_model>
+
+# required
     config:
       contract:
         enforced: true
-    
-    # model-level constraints
+
+# Model-level constraints
     constraints:
-      - type: primary_key
-        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
-      - type: FOREIGN_KEY # multi_column
-        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
-        expression: "OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_FIRST_COLUMN, OTHER_MODEL_SECOND_COLUMN, ...)"
-      - type: check
-        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
-        expression: "FIRST_COLUMN != SECOND_COLUMN"
-        name: HUMAN_FRIENDLY_NAME
-      - type: ...
+      - type: foreign_key
+        columns: [id]
+        to: ref('my_model_to')  # or source('source', 'source_table')
+        to_columns: [id]
+columns:
+      - name: id
+        data_type: integer
+
     
+    # Column-level definitions and constraints
     columns:
-      - name: FIRST_COLUMN
-        data_type: DATA_TYPE
-        
-        # column-level constraints
+      - name: id
+        data_type: integer
         constraints:
-          - type: not_null
-          - type: unique
           - type: foreign_key
-            expression: OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_COLUMN)
-          - type: ...
+            to: ref('my_model_to')  # or source('source', 'source_table')
+            to_columns: [id]
 
 
 ```
