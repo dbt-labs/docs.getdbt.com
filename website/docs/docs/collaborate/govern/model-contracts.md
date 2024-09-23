@@ -211,7 +211,7 @@ Breaking changes include:
 - Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher).
 - Removing a contracted model constitutes a breaking change. A model is considered 'removed' if it is deleted, renamed, or disabled:
   - If the model is versioned, dbt will throw an error.
-  - if the model is unversioned, dbt will raise a warning.
+  - If the model is unversioned, dbt will raise a warning.
 
 
 More details are available in the [contract reference](/reference/resource-configs/contract#detecting-breaking-changes).
