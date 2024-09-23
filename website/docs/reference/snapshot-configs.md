@@ -80,7 +80,22 @@ snapshots:
 
 <TabItem value="property-yaml">
 
-**Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
+
+
+
+<File name='snapshots/schema.yml'>
+
+```yml
+
+snapshots:
+  - name: my_snapshot
+    config:
+      schema: specific_schema
+      unique_key: specific_id
+      strategy: timestamp
+      updated_at: updated_at
+```
+</File>
 
 </TabItem>
 
