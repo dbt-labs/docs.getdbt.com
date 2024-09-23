@@ -124,7 +124,7 @@ mf query --metrics users_created,users_deleted --group-by metric_time__year --or
 
 You can set `is_partition` for time to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (hourly, daily, weekly, and so on).
 
-<Tabs>
+<Tabs queryString="dimension">
 
 <TabItem value="is_partition" label="is_partition">
 

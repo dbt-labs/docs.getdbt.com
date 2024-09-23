@@ -21,6 +21,7 @@ socialLinks:
 dateCreated: 2023-11-05
 hide_table_of_contents: true
 communityAward: true
+communityAwardYear: 2023
 ---
 
 ## When did you join the dbt community and in what way has it impacted your career?
