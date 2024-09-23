@@ -256,6 +256,9 @@ models:
 <div warehouse="Snowflake">
 
 * dbt accounts for the [`copy_grants` configuration](/reference/resource-configs/snowflake-configs#copying-grants) when calculating which grants need to be added or removed.
+* Granting to / revoking from is only fully supported for Snowflake roles (not [database roles](https://docs.snowflake.com/user-guide/security-access-control-overview#types-of-roles)).
+
+https://docs.snowflake.com/en/sql-reference/sql/grant-privilege#syntax
 
 </div>
 
