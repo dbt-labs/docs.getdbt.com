@@ -27,6 +27,12 @@ snapshots:
 
 </File>
 
+:::caution
+
+You may get a warning if the data type of the `updated_at` column does not match the adapter-configured default.
+
+:::
+
 ## Description
 A column within the results of your snapshot query that represents when the record row was last updated.
 
