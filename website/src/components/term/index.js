@@ -39,19 +39,25 @@ export default function Term({ id, children = undefined }) {
 
   return (
     <>
-      <span key={id} className={styles.term} data-tip data-for={uniqueID}>
-        {displayValue}
-      </span>
-      {pageReady && hoverSnippet && (
-        <ReactTooltip
-          id={uniqueID}
-          className={styles.termToolTip}
-          place="bottom"
-          effect="solid"
-          wrapper="span"
-        >
-          {hoverSnippet}
-        </ReactTooltip>
+      {pageReady ? (
+        <>
+          <span key={id} className={styles.term} data-tip data-for={uniqueID}>
+            {displayValue}
+          </span>
+          {hoverSnippet && (
+            <ReactTooltip
+              id={uniqueID}
+              className={styles.termToolTip}
+              place="bottom"
+              effect="solid"
+              wrapper="span"
+            >
+              {hoverSnippet}
+            </ReactTooltip>
+          )}
+        </>
+      ) : (
+        <span>{displayValue}</span>
       )}
     </>
   );
