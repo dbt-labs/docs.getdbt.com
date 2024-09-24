@@ -41,7 +41,12 @@ By contrast, behavior change migrations happen slowly, over the course of months
 
 These flags _must_ be set in the `flags` dictionary in `dbt_project.yml`. They configure behaviors closely tied to project code, which means they should be defined in version control and modified through pull or merge requests, with the same testing and peer review.
 
-The following example displays the current flags and their current default values in the latest dbt Cloud and dbt Core versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You'll continue to see warnings for legacy behaviors that you have opted out of explicitly until you either resolve them (switch the flag to `True`) or choose to silence the warnings using the `warn_error_options.silence` flag.
+The following example displays the current flags and their current default values in the latest dbt Cloud and dbt Core versions. To opt out of a specific behavior change, set the values of the flag to `False` in `dbt_project.yml`. You will continue to see warnings for legacy behaviors you’ve opted out of, until you either:
+
+- Resolve the issue (by switching the flag to `True`)
+- Silence the warnings using the `warn_error_options.silence` flag
+
+Here's an example of the available behavior change flags with their default values:
 
 <File name='dbt_project.yml'>
 
@@ -50,6 +55,7 @@ flags:
   require_explicit_package_overrides_for_builtin_materializations: False
   require_model_names_without_spaces: False
   source_freshness_run_project_hooks: False
+  restrict_direct_pg_catalog_access: False
 ```
 
 </File>
@@ -61,6 +67,7 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 | require_explicit_package_overrides_for_builtin_materializations | 2024.04.141      | 2024.06.192         | 1.6.14, 1.7.14  | 1.8.0             |
 | require_resource_names_without_spaces                           | 2024.05.146      | TBD*                | 1.8.0           | 1.9.0             |
 | source_freshness_run_project_hooks                              | 2024.03.61       | TBD*                | 1.8.0           | 1.9.0             |
+| [Redshift] [restrict_direct_pg_catalog_access](#redshift-restrict_direct_pg_catalog_access)    | 2024.09.242      | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
 
 When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
@@ -121,3 +128,11 @@ on-run-start:
   - '{{ ... if flags.WHICH != 'freshness' }}'
 ```
 </File>
+
+## Adapter-specific behavior changes
+Some adapters may show behavior changes when certain flags are enabled. Refer to the following sections for each respective adapter.
+### [Redshift] restrict_direct_pg_catalog_access
+
+Originally, the `dbt-redshift` adapter was built on top of the `dbt-postgres` adapter and used Postgres tables for metadata access. With this flag enabled, the adapter will use the Redshift API (through the Python client) if available, or query Redshift's `information_schema` tables instead of using `pg_` tables.
+
+While we don't expect any user-noticeable behavior changes due to this change, out of caution we are gating it behind a behavior-change flag and encouraging users to test it before it becomes the default for everyone.

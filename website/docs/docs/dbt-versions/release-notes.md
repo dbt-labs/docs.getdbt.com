@@ -18,8 +18,14 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 \* The official release date for this new format of release notes is May 15th, 2024. Historical release notes for prior dates may not reflect all available features released earlier this year or their tenancy availability.
 
+## September 2024
+
+- **New:** There are two new [environment variable defaults](/docs/build/environment-variables#dbt-cloud-context) &mdash; `DBT_CLOUD_ENVIRONMENT_NAME` and `DBT_CLOUD_ENVIRONMENT_TYPE`.
+- **New:** The [Amazon Athena warehouse connection](/docs/cloud/connect-data-platform/connect-amazon-athena) is available as a public preview for dbt Cloud accounts that have upgraded to [`versionless`](/docs/dbt-versions/versionless-cloud).
+
 ## August 2024
-- **New**: Configure metrics at finer time grains, such as an hour, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [dimensions](/docs/build/dimensions) for more information about time granularity.
+
+- **Fix:** Fixed an issue in [dbt Explorer](/docs/collaborate/explore-projects) where navigating to a consumer project from a public node resulted in displaying a random public model rather than the original selection. 
 - **New**: You can now configure metrics at granularities at finer time grains, such as hour, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [dimensions](/docs/build/dimensions) for more information about time granularity.
 - **Enhancement**: Microsoft Excel now supports [saved selections](/docs/cloud-integrations/semantic-layer/excel#using-saved-selections) and [saved queries](/docs/cloud-integrations/semantic-layer/excel#using-saved-queries). Use Saved selections to save your query selections within the Excel application. The application also clears stale data in [trailing rows](/docs/cloud-integrations/semantic-layer/excel#other-settings) by default. To return your results and keep any previously selected data intact, un-select the **Clear trailing rows** option. 
 - **Behavior change:** GitHub is no longer supported for OAuth login to dbt Cloud. Use a supported [SSO or OAuth provider](/docs/cloud/manage-access/sso-overview) to securely manage access to your dbt Cloud account.
@@ -305,7 +311,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   January also saw some refreshed content, either aligning with new product features or requests from the community:
 
-  - Native support for [partial parsing in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud-environments#partial-parsing)
+  - Native support for [partial parsing in dbt Cloud](https://docs.getdbt.com/docs/cloud/account-settings#partial-parsing)
   - Updated guidance on using dots or underscores in the [Best practice guide for models](https://docs.getdbt.com/best-practices/how-we-style/1-how-we-style-our-dbt-models)
   - Updated [PrivateLink for VCS docs](https://docs.getdbt.com/docs/cloud/secure/vcs-privatelink)
   - Added a new `job_runner` role in our [Enterprise project role permissions docs](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions#project-role-permissions)
@@ -322,7 +328,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   By default, dbt parses all the files in your project at the beginning of every dbt invocation. Depending on the size of your project, this operation can take a long time to complete. With the new partial parsing feature in dbt Cloud, you can reduce the time it takes for dbt to parse your project. When enabled, dbt Cloud parses only the changed files in your project instead of parsing all the project files. As a result, your dbt invocations will take less time to run.
 
-  To learn more, refer to [Partial parsing](/docs/dbt-cloud-environments#partial-parsing).
+  To learn more, refer to [Partial parsing](/docs/cloud/account-settings#partial-parsing).
 
   <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
 

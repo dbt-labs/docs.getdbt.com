@@ -20,6 +20,20 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <CoretoCloudTable/>
 
+<Expandable alt_header="What is dbt Cloud and dbt Core?">
+
+   - dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+     - Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
+     - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
+     - The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+     - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
+     - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
+
+   Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
+- dbt Core is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
+
+</Expandable>
+
 ## What you'll learn
 Today thousands of companies, with data teams ranging in size from 2 to 2,000, rely on dbt Cloud to accelerate data work, increase collaboration, and win the trust of the business. Understanding what you'll need to do in order to move between dbt Cloud and your current Core deployment will help you strategize and plan for your move.
 

@@ -61,14 +61,14 @@ Follow the instructions [here](https://docs.docker.com/desktop/) to install Dock
 
 ## Clone the airflow-dbt-cloud repository
 
-Open your terminal and clone the [airflow-dbt-cloud repository](https://github.com/sungchun12/airflow-dbt-cloud). This contains example Airflow DAGs that you’ll use to orchestrate your dbt Cloud job. Once cloned, navigate into the `airflow-dbt-cloud` project.
+Open your terminal and clone the [airflow-dbt-cloud repository](https://github.com/dbt-labs/airflow-dbt-cloud). This contains example Airflow DAGs that you’ll use to orchestrate your dbt Cloud job. Once cloned, navigate into the `airflow-dbt-cloud` project.
 
 ```bash
-git clone https://github.com/sungchun12/airflow-dbt-cloud.git
+git clone https://github.com/dbt-labs/airflow-dbt-cloud.git
 cd airflow-dbt-cloud
 ```
 
-<WistiaVideo id="oo1yel115i" paddingTweak="62.25%" />
+For more information about cloning GitHub repositories, refer to "[Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)" in the GitHub documentation.
 
 ## Start the Docker container
 
@@ -140,29 +140,16 @@ Now you have all the working pieces to get up and running with Airflow + dbt Clo
 
 ## Update the placeholders in the sample code
 
- Add your `account_id` and `job_id` to the python file [dbt_cloud_provider_eltml.py](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/dags/dbt_cloud_provider_eltml.py).
+ Add your `account_id` and `job_id` to the python file [dbt_cloud_run_job.py](https://github.com/dbt-labs/airflow-dbt-cloud/blob/main/dags/dbt_cloud_run_job.py).
 
 Both IDs are included inside of the dbt Cloud job URL as shown in the following snippets:
 
 ```python
 # For the dbt Cloud Job URL https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/
-# The account_id is 16173
-
-# Update line 28
-default_args={"dbt_cloud_conn_id": "dbt_cloud", "account_id": 16173},
-```
-
-```python
-# For the dbt Cloud Job URL https://YOUR_ACCESS_URL/#/accounts/16173/projects/36467/jobs/65767/
-# The job_id is 65767
-
-# Update line 39
-trigger_dbt_cloud_job_run = DbtCloudRunJobOperator(
-        task_id="trigger_dbt_cloud_job_run",
-        job_id=65767,
-        check_interval=10,
-        timeout=300,
-    )
+# The account_id is 16173 and the job_id is 65767
+# Update lines 34 and 35
+ACCOUNT_ID = "16173"
+JOB_ID = "65767"
 ```
 
 <WistiaVideo id="wgy7wvgqof" paddingTweak="62.25%" />
