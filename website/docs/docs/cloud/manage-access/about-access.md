@@ -29,15 +29,14 @@ In either scenario, when you add a user to dbt Cloud, they are assigned a [licen
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/license-dropdown.png" width="60%" title="Example of the license dropdown in the user invitation window." />
 
-You can edit an existing user's license by navigating to the **Users** section of the **Account settings**, clicking on a user, and clicking **Edit** on the user pane.
+You can edit an existing user's license by navigating to the **Users** section of the **Account settings**, clicking on a user, and clicking **Edit** on the user pane. Delete users from this same window to free up licenses for new users.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/edit-user.png" width="60%" title="Example of the user information window in the user directory" />
 
-Delete users from this same window to free up licenses for new users.
 
 ### Groups
 
-Groups in dbt Cloud serve much of the same purpose as they do in traditional directory tools &mdash; to gather individual users together to make bulk assignment of permissions easier. Admins use groups in dbt Cloud to assign [licenses](#licenses) and [permissions](#permissions). The permissions are more granular than licenses, and you only assign them at the group level; _ you can’t assign permissions at the user level._ Every user in dbt Cloud must be assigned to at least one group.
+Groups in dbt Cloud serve much of the same purpose as they do in traditional directory tools &mdash; to gather individual users together to make bulk assignment of permissions easier. Admins use groups in dbt Cloud to assign [licenses](#licenses) and [permissions](#permissions). The permissions are more granular than licenses, and you only assign them at the group level; _you can’t assign permissions at the user level._ Every user in dbt Cloud must be assigned to at least one group.
 
 There are three default groups available as soon as you create your dbt Cloud account (the person who created the account is added to all three automatically):
 
@@ -76,7 +75,7 @@ Create an SSO mapping in the group view:
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-mapping.png" width="60%" title="Example of an SSO group mapped to a dbt Cloud group." />
 
-See [role-based access control](#role-based-access-control) for more information about mapping SSO groups for user assignment to dbt Cloud groups.
+Refer to [role-based access control](#role-based-access-control) for more information about mapping SSO groups for user assignment to dbt Cloud groups.
 
 ## Grant access
 
@@ -102,11 +101,11 @@ Permissions determine what a developer-licensed user can do in your dbt Cloud ac
 
 The permissions available depends on whether you're on an [Enterprise](/docs/cloud/manage-access/enterprise-permissions) or [self-service Team](/docs/cloud/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example the permissions dropdown while editing an existing group." />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example permissions dropdown while editing an existing group." />
 
 Some permissions (those that don't grant full access, like admins) allow groups to be "assigned" to specific projects and environments only. Read about [environment-level permissions](/docs/cloud/manage-access/environment-permissions-setup) for more information on restricting environment access.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/environment-access-control.png" width="60%" title="Example the environment access control for a group with Git admin assigned." />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
 
 ## Role-based access control <Lifecycle status='enterprise' />
 
@@ -116,7 +115,7 @@ There are a few things you need to know before you configure RBAC for SSO users:
 - New SSO users join any groups with the **Add all new users by default** option enabled. By default, the `Everyone` and `Member` groups have this option enabled. Disable this option across all groups for the best RBAC experience.
 - You must have the appropriate SSO groups configured in the group details SSO section. If the SSO group name does not match _exactly_, users will not be placed in the group correctly. 
   <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-window-details.png" width="60%" title="The Group details SSO section with a group configured." />
-- It's a good idea for your dbt Cloud group names to match the IdP group names.
+-dbt Labs recommends that your dbt Cloud group names match the IdP group names.
 
 Let's say you have a new employee being onboarded into your organization using [Okta](/docs/cloud/manage-access/set-up-sso-okta) as the IdP and dbt Cloud groups with SSO mappings. In this scenario, users are working on `The Big Project` and a new analyst named `Euclid Ean` is joining the group.
 
@@ -138,9 +137,9 @@ Configure the group attribute statements the `dbt Cloud` application in Okta. Th
 
 You and your dbt Cloud admin team configure the groups in your account's settings: 
 1. Navigate to the **Account settings** and click **Groups & Licenses** on the left-side menu. 
-2. Click **Create group** or select and existing group and click **Edit**.
+2. Click **Create group** or select an existing group and click **Edit**.
 3. Enter the group name in the **SSO** field.
-4. Configure the **Access and permissions** fields to your needs. Select a [permission set](/docs/cloud/manage-access/enterprise-permissions), the project-level access, and [environment-level access](/docs/cloud/manage-access/environment-permissions).
+4. Configure the **Access and permissions** fields to your needs. Select a [permission set](/docs/cloud/manage-access/enterprise-permissions), the project they can access, and [environment-level access](/docs/cloud/manage-access/environment-permissions).
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/dbt-cloud-group-config.png" width="60%" title="The group configuration with SSO field filled out in dbt Cloud." />
 
@@ -196,7 +195,7 @@ Yes, see the documentation on [Manual Assignment](#manual-assignment) above for 
 
 </Expandable>
 
-<Expandable alt_header="Can I configure a user's License Type based on IdP Attributes?">
+<Expandable alt_header="Can I configure a user's license type based on IdP attributes?">
 
 Yes, see the docs on [managing license types](/docs/cloud/manage-access/seats-and-users#managing-license-types) for more information.
 
@@ -214,6 +213,6 @@ Each dbt Cloud plan has a base number of Developer and Read-Only licenses. You c
   - If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
   - If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers by making two changes: adjust your developer user seat count AND your developer billing seat count in **Account settings** -> **Users** and then in **Account settings** -> **Billing**.
 
-For detailed steps, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users#licenses)eps.
+For detailed steps, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users#licenses).
 
 </Expandable>
