@@ -101,10 +101,25 @@ jobs:
             echo "No changed files found in the specified directories."
             LINKS="- No documentation files were changed."
           else
-            LINKS=$(echo "$CHANGED_FILES" | sed 's#website/docs/docs/##; s/.md$//' | awk -v url="$DEPLOYMENT_URL" '{print "- [" $0 "](" url "/docs/" $0 ")"}')
+            LINKS=""
+            # Convert CHANGED_FILES back to newline-separated for processing
+            CHANGED_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n')
+            for FILE in $CHANGED_FILES; do
+              # Remove 'website/docs/' prefix
+              FILE_PATH="${FILE#website/docs/}"
+              # Keep the .md extension as per your desired output
+              # FILE_PATH="${FILE_PATH%.md}"
+
+              # Construct the full URL
+              FULL_URL="$DEPLOYMENT_URL/$FILE_PATH"
+              LINKS="$LINKS\n- $FULL_URL"
+            done
           fi
 
-          echo "links=$LINKS" >> $GITHUB_OUTPUT
+          # Properly set the multi-line output
+          echo "links<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$LINKS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Post comment with deployment link
         uses: peter-evans/create-or-update-comment@v4
