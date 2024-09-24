@@ -42,7 +42,7 @@ The available resource types are:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.8">
+<VersionBlock lastVersion="1.8">
 
 - [`analysis`](/docs/build/analyses)
 - [`exposure`](/docs/build/exposures)
@@ -55,6 +55,47 @@ The available resource types are:
 - [`source`](/docs/build/sources)
 - [`test`](/docs/build/data-tests)
 - [`unit_test`](/docs/build/unit-tests)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+- [`analysis`](/docs/build/analyses)
+- [`exposure`](/docs/build/exposures)
+- [`metric`](/docs/build/build-metrics-intro)
+- [`model`](/docs/build/models)
+- [`saved_query`](/docs/build/saved-queries)
+- [`seed`](/docs/build/seeds)
+- [`semantic_model`](/docs/build/semantic-models)
+- [`snapshot`](/docs/build/snapshots)
+- [`source`](/docs/build/sources)
+- [`test`](/docs/build/data-tests)
+- [`unit_test`](/docs/build/unit-tests)
+
+dbt `test` now enables passing values such as `unit_tests`, `tests` and more so in the `--resource-type` and `--exclude-resource-type` for CLI flags (or in the environment variables `DBT_RESOURCE_TYPES` and `DBT_EXCLUDE_RESOURCE_TYPES)`.
+
+Here are some examples of how dbt `test` enables passing values:
+
+<Expandable alt_header="CLI flag">
+
+```
+dbt `test` --resource-type unit_test
+dbt `test` --exclude-resource-type unit_test
+
+```
+
+</Expandable>
+
+<Expandable alt_header="Environment variables">
+
+```
+
+`DBT_RESOURCE_TYPES`=`unit_test` dbt `test`
+`DBT_EXCLUDE_RESOURCE_TYPES`=`unit_test` dbt `test`
+
+```
+
+</Expandable>
 
 </VersionBlock>
 
