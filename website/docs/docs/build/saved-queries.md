@@ -165,9 +165,8 @@ To enable saved queries at the project level, you can set the `saved-queries` co
 ```yaml
 saved-queries:
   my_saved_query:
-    config:
-      +cache:
-        enabled: true
+    +cache:
+      enabled: true
 ```
 </File>
 
