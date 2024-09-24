@@ -4,7 +4,7 @@ description: "Target_schema - Read this in-depth guide to learn about configurat
 datatype: string
 ---
 
-:::note
+:::info
 
 For [versionless](/docs/dbt-versions/core-upgrade/upgrading-to-v1.8#versionless) dbt Cloud accounts and dbt Core v1.9+, this functionality is no longer required. Use the [schema](/reference/resource-configs/schema) config as an alternative to define a custom schema while still respecting the `generate_schema_name` macro. 
 
