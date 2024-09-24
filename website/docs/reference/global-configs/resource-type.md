@@ -72,7 +72,7 @@ The available resource types are:
 - [`test`](/docs/build/data-tests)
 - [`unit_test`](/docs/build/unit-tests)
 
-dbt `test` now enables passing values such as `unit_tests`, `tests` and more so in the `--resource-type` and `--exclude-resource-type` for CLI flags (or in the environment variables `DBT_RESOURCE_TYPES` and `DBT_EXCLUDE_RESOURCE_TYPES)`.
+dbt `test` now enables passing values such as `unit_tests`, `tests`, and more in the `--resource-type` and `--exclude-resource-type` for CLI flags (or in the environment variables `DBT_RESOURCE_TYPES` and `DBT_EXCLUDE_RESOURCE_TYPES)`.
 
 Here are some examples of how dbt `test` enables passing values:
 
