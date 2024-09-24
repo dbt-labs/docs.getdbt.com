@@ -130,7 +130,7 @@ select user_group as "group"
 ```
 
 Without setting `quote: true`:
-- Schema tests applied to this column may fail due to invalid SQL
+- [Data tests](/docs/build/data-tests) applied to this column may fail due to invalid SQL
 - Documentation may not render correctly, e.g. `group` and `"group"` may not be matched as the same column name.
 
 ## Example
