@@ -53,38 +53,14 @@ snapshots:
 
 </File>
 
+<VersionBlock lastVersion="1.8" >
+
 ### Use a target-aware schema
-Use the [`{{ target }}` variable](/reference/dbt-jinja-functions/target) to change which schema a snapshot <Term id="table" /> is built in.
 
-Note: consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots (see above [FAQ](#faqs))
-
-<File name='dbt_project.yml'>
-
-```yml
-snapshots:
-  +target_schema: "{% if target.name == 'prod' %}snapshots{% else %}{{ target.schema }}{% endif %}"
-
-```
-
-</File>
+For native support of environment-aware snapshots, upgrade to dbt Core version 1.9. 
 
 ### Use the same schema-naming behavior as models
 
-Leverage the [`generate_schema_name` macro](/docs/build/custom-schemas) to build snapshots in schemas that follow the same naming behavior as your models.
+For native support of environment-aware snapshots, upgrade to dbt Core version 1.9. 
 
-Notes:
-* This macro is not available when configuring from the `dbt_project.yml` file, so must be configured in a snapshot config block.
-* Consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots (see above [FAQ](#faqs))
-
-
-<File name='snapshots/orders_snapshot.sql'>
-
-```sql
-{{
-    config(
-      target_schema=generate_schema_name('snapshots')
-    )
-}}
-```
-
-</File>
+</VersionBlock>
