@@ -47,7 +47,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
     </div>
 
-2. On the next page, select your cloud provider. This tutorial uses AWS as the cloud provider but if you use Azure or GCP internally, please choose one of them. The setup process will be similar. Do not select the **Get started with Community Edition** option as this will not have the required compute for this guide. 
+2. On the next screen, select your cloud provider. This tutorial uses AWS as the cloud provider, but if you use Azure or GCP internally, please select your platform. The setup process will be similar. Do not select the **Get started with Community Edition** option, as this will not provide the required compute for this guide. 
 
         <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/choose_provider.png" title="Choose cloud provider" />
