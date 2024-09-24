@@ -61,7 +61,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
     <Lightbox src="/img/databricks_tutorial/images/choose_plan.png" title="Choose Databricks Plan" />
     </div>
 
-5. Now, it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, etc, into one place.  Provide the name of your workspace, choose the appropriate AWS region, and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for this tutorial. 
+5. Now, it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, and more so into one place.  Provide the name of your workspace, choose the appropriate AWS region, and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for this tutorial. 
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/start_quickstart.png" title="Create AWS resources" />
