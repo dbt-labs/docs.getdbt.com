@@ -66,7 +66,7 @@ Create an SSO mapping in the group view:
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/sso-mapping.png" width="60%" title="Example of an SSO group mapped to a dbt Cloud group." />
 
-See [role-based access control](#role-based-access-control) for more information about mapping SSO groups for user assignment to dbt Cloud groups.
+Refer to [role-based access control](#role-based-access-control) for more information about mapping SSO groups for user assignment to dbt Cloud groups.
 
 ## Grant access
 
