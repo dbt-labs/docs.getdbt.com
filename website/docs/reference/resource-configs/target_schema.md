@@ -57,10 +57,10 @@ snapshots:
 
 ### Use a target-aware schema
 
-For native support of environment-aware snapshots, upgrade to dbt Core version 1.9. 
+For native support of environment-aware snapshots, upgrade to dbt Core version 1.9+. 
 
 ### Use the same schema-naming behavior as models
 
-For native support of environment-aware snapshots, upgrade to dbt Core version 1.9. 
+For native support of environment-aware snapshots, upgrade to dbt Core version 1.9+. 
 
 </VersionBlock>
