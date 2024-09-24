@@ -107,8 +107,8 @@ jobs:
             for FILE in $CHANGED_FILES; do
               # Remove 'website/docs/' prefix
               FILE_PATH="${FILE#website/docs/}"
-              # Keep the .md extension as per your desired output
-              # FILE_PATH="${FILE_PATH%.md}"
+              # Remove the .md extension as per your desired output
+              FILE_PATH="${FILE_PATH%.md}"
 
               # Construct the full URL
               FULL_URL="$DEPLOYMENT_URL/$FILE_PATH"
