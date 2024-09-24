@@ -43,11 +43,14 @@ export default function DocRootLayoutMain({
     latestStableRelease,
   } = useContext(VersionContext);
 
-  const { pageAvailable, firstAvailableVersion } = pageVersionCheck(
-    dbtVersion,
-    versionedPages,
-    currentDocRoute
-  );
+  const { 
+    pageAvailable, 
+    firstAvailableVersion, 
+    lastAvailableVersion 
+  } = pageVersionCheck(dbtVersion, versionedPages, currentDocRoute);
+
+  const hasFirstAvailableVersion =
+    firstAvailableVersion && firstAvailableVersion !== "0";
 
   // Check whether this version is a isPrerelease, and show banner if so
   const [PreData, setPreData] = useState({
@@ -116,21 +119,6 @@ export default function DocRootLayoutMain({
           hiddenSidebarContainer && styles.docItemWrapperEnhanced
         )}
       >
-        {!pageAvailable && dbtVersion && firstAvailableVersion && (
-          <div className={styles.versionBanner}>
-            <Admonition type="caution" title={`New feature!`} icon="🎉 ">
-              <p style={{ marginTop: "5px", marginBottom: "0" }}>
-                Unfortunately, this feature is not available in dbt Core version{" "}
-                {dbtVersion}
-              </p>
-              <p>
-                {" "}
-                You should upgrade to {firstAvailableVersion} or later if you
-                want to use this feature.
-              </p>
-            </Admonition>
-          </div>
-        )}
         {PreData.showisPrereleaseBanner && (
           <div className={styles.versionBanner}>
             <Admonition type="caution" title="Warning">
