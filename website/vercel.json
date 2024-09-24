@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/faqs/Troubleshooting/access_token_error",
+      "destination": "/faqs/Troubleshooting/auth-expired-error",
+      "permanent": true
+    },
+    {
       "source": "/faqs/Models/unique-model-names",
       "destination": "/faqs/Project/unique-resource-names",
       "permanent": true
@@ -597,6 +602,11 @@
     {
       "source": "/reference/global-configs/command-line-flags",
       "destination": "/reference/global-configs/command-line-options",
+      "permanent": true
+    },
+    {
+      "source": "/reference/global-configs/legacy-behaviors",
+      "destination": "/reference/global-configs/behavior-changes",
       "permanent": true
     },
     {

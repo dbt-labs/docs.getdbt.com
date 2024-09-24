@@ -55,9 +55,9 @@ If you need dedicated support to build your dbt project, consider reaching out r
 If you want to receive dbt training, check out our [dbt Learn](https://learn.getdbt.com/) program.
 
 ## dbt Cloud support
-**Note:** If you are a **dbt Cloud user** and need help with one of the following issues, please reach out to us by using the speech bubble (💬) in the dbt Cloud interface or at support@getdbt.com
+**Note:** If you are a **dbt Cloud user** and need help with one of the following issues, please reach out to us by clicking **Create a support ticket** through the dbt Cloud navigation or emailing support@getdbt.com:
 - Account setup (e.g. connection issues, repo connections)
 - Billing
 - Bug reports related to the web interface
 
-As a rule of thumb, if you are using dbt Cloud, but your problem is related to code within your dbt project, then please follow the above process rather than reaching out to support. Refer to [dbt Cloud support](/docs/dbt-support) for more information.
+As a rule of thumb, if you are using dbt Cloud, but your problem is related to code within your dbt project, then please follow the above process or checking out the [FAQs](/docs/faqs) rather than reaching out to support. Refer to [dbt Cloud support](/docs/dbt-support) for more information.
