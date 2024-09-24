@@ -3568,7 +3568,7 @@
     },
     {
       "source": "/terms/grain",
-      "destination": "https://www.getdbt.com/blog/guide-to-grain",
+      "destination": "https://www.getdbt.com/blog/guide-to-data-grain",
       "permanent": true
     },
     {
