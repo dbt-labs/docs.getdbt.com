@@ -33,12 +33,13 @@ snapshots:
 </File>
 
 ## Description
-The schema that dbt should build a [snapshot](/docs/build/snapshots) <Term id="table" /> into. Snapshots build into the same `target_schema`, no matter who is running them.
+The schema that dbt should build a [snapshot](/docs/build/snapshots) <Term id="table" /> into. When `target_schema` is provided, snapshots build into the same `target_schema`, no matter who is running them.
 
 On **BigQuery**, this is analogous to a `dataset`.
 
 ## Default
-This is a **required** parameter, no default is provided.
+
+<VersionBlock lastVersion="1.8" >This is a required parameter, no default is provided. </VersionBlock>For versionless dbt Cloud accounts and dbt Core v1.9+, this is not a required parameter. 
 
 ## Examples
 ### Build all snapshots in a schema named `snapshots`
@@ -54,10 +55,6 @@ snapshots:
 </File>
 
 <VersionBlock lastVersion="1.8" >
-
-### Use a target-aware schema
-
-For native support of environment-aware snapshots, upgrade to dbt Core version 1.9+. 
 
 ### Use the same schema-naming behavior as models
 
