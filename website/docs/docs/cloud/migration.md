@@ -19,7 +19,7 @@ We highly recommended you take these actions:
 
 - Ensure pending user invitations are accepted or note outstanding invitations. Pending user invitations might be voided during the migration. You can resend user invitations after the migration is complete.
 - Commit unsaved changes in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).  Unsaved changes might be lost during migration.
-- Export and download [audit logs](/docs/cloud/manage-access/audit-log) older than 90 days, as they may be unavailable from dbt Cloud after the migration is complete. Logs older than 90 days while within the data retention period are not deleted, but you will have to work with the dbt Labs Customer Support team to recover.
+- Export and download [audit logs](/docs/cloud/manage-access/audit-log) older than 90 days, as they will be unavailable from dbt Cloud after the migration is complete. Logs older than 90 days while within the data retention period are not deleted, but you will have to work with the dbt Labs Customer Support team to recover.
 
 ## Required actions
 
