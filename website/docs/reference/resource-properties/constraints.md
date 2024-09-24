@@ -93,7 +93,7 @@ The recommended syntax means dbt automatically resolves references to other mode
 - Capture dependencies
 - Work across different environments
 
-Here's an example showing how the new syntax is used:
+Here's an example showing how to use the recommended syntax:
 
 <File name='models/schema.yml'>
 
