@@ -13,6 +13,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  checks: read  # Added permission to read checks
 
 jobs:
   comment-deployment-link:
@@ -46,30 +47,54 @@ jobs:
 
           echo "deployment_url=$DEPLOYMENT_URL" >> $GITHUB_OUTPUT
 
-      - name: Wait for deployment to be accessible
-        id: wait_for_deployment
+      - name: Wait for Vercel deployment check to complete
+        id: wait_for_vercel
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
-          echo "Waiting for deployment at $DEPLOYMENT_URL to become accessible..."
+          # Set variables
+          COMMIT_SHA="${{ github.event.pull_request.head.sha }}"
+          REPO="${{ github.repository }}"
 
-          MAX_ATTEMPTS=60  # Adjust as needed (e.g., wait up to 10 minutes)
+          echo "Waiting for Vercel deployment check to complete..."
+
+          MAX_ATTEMPTS=60  # Adjust as needed
           SLEEP_TIME=10    # Check every 10 seconds
           ATTEMPTS=0
 
           while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
-            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL")
-            if [ "$STATUS_CODE" -eq 200 ]; then
-              echo "Deployment is accessible."
-              break
+            # Get the check runs for the commit
+            CHECK_RUNS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+              "https://api.github.com/repos/$REPO/commits/$COMMIT_SHA/check-runs")
+
+            # Filter for the Vercel check run
+            VERCEL_CHECK=$(echo "$CHECK_RUNS" | jq -r '.check_runs[] | select(.name == "Vercel")')
+
+            if [ -n "$VERCEL_CHECK" ]; then
+              STATUS=$(echo "$VERCEL_CHECK" | jq -r '.status')
+              CONCLUSION=$(echo "$VERCEL_CHECK" | jq -r '.conclusion')
+
+              echo "Vercel check status: $STATUS"
+
+              if [ "$STATUS" == "completed" ]; then
+                if [ "$CONCLUSION" == "success" ]; then
+                  echo "Vercel deployment check completed successfully."
+                  break
+                else
+                  echo "Vercel deployment check failed."
+                  exit 1
+                fi
+              fi
             else
-              echo "Deployment not yet accessible (status code: $STATUS_CODE). Waiting..."
-              sleep $SLEEP_TIME
-              ATTEMPTS=$((ATTEMPTS + 1))
+              echo "Vercel check not found. Waiting..."
             fi
+
+            sleep $SLEEP_TIME
+            ATTEMPTS=$((ATTEMPTS + 1))
           done
 
           if [ $ATTEMPTS -eq $MAX_ATTEMPTS ]; then
-            echo "Deployment did not become accessible within the expected time."
+            echo "Vercel deployment check did not complete within expected time."
             exit 1
           fi
 
@@ -107,7 +132,7 @@ jobs:
             for FILE in $CHANGED_FILES; do
               # Remove 'website/docs/' prefix
               FILE_PATH="${FILE#website/docs/}"
-              # Remove the .md extension as per your desired output
+              # Remove the .md extension
               FILE_PATH="${FILE_PATH%.md}"
 
               # Construct the full URL
@@ -122,11 +147,16 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Post comment with deployment link
-        uses: peter-evans/create-or-update-comment@v4
+        uses: actions/github-script@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            <!-- vercel-preview-comment -->
-            🚀 Deployment available! Here are the direct links to the updated files:
-            ${{ steps.links.outputs.links }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { github, context } = require('@actions/github');
+            const issue_number = context.payload.pull_request.number;
+            const links = `\n${{ steps.links.outputs.links }}`;
+            const body = `<!-- vercel-preview-comment -->\n🚀 Deployment available! Here are the direct links to the updated files:${links}`;
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number,
+              body: body
+            });
