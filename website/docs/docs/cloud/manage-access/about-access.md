@@ -96,7 +96,7 @@ The permissions available depends on whether you're on an [Enterprise](/docs/clo
 
 Some permissions (those that don't grant full access, like admins) allow groups to be "assigned" to specific projects and environments only. Read about [environment-level permissions](/docs/cloud/manage-access/environment-permissions-setup) for more information on restricting environment access.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/environment-access-control.png" width="60%" title="Example the environment access control for a group with Git admin assigned." />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/environment-access-control.png" width="60%" title="Example environment access control for a group with Git admin assigned." />
 
 ## Role-based access control <Lifecycle status='enterprise' />
 
@@ -128,9 +128,9 @@ Configure the group attribute statements the `dbt Cloud` application in Okta. Th
 
 You and your dbt Cloud admin team configure the groups in your account's settings: 
 1. Navigate to the **Account settings** and click **Groups & Licenses** on the left-side menu. 
-2. Click **Create group** or select and existing group and click **Edit**.
+2. Click **Create group** or select an existing group and click **Edit**.
 3. Enter the group name in the **SSO** field.
-4. Configure the **Access and permissions** fields to your needs. Select a [permission set](/docs/cloud/manage-access/enterprise-permissions), the project-level access, and [environment-level access](/docs/cloud/manage-access/environment-permissions).
+4. Configure the **Access and permissions** fields to your needs. Select a [permission set](/docs/cloud/manage-access/enterprise-permissions), the project they can access, and [environment-level access](/docs/cloud/manage-access/environment-permissions).
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/dbt-cloud-group-config.png" width="60%" title="The group configuration with SSO field filled out in dbt Cloud." />
 
@@ -186,7 +186,7 @@ Yes, see the documentation on [Manual Assignment](#manual-assignment) above for 
 
 </Expandable>
 
-<Expandable alt_header="Can I configure a user's License Type based on IdP Attributes?">
+<Expandable alt_header="Can I configure a user's license type based on IdP attributes?">
 
 Yes, see the docs on [managing license types](/docs/cloud/manage-access/seats-and-users#managing-license-types) for more information.
 
@@ -204,6 +204,6 @@ Each dbt Cloud plan has a base number of Developer and Read-Only licenses. You c
   - If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
   - If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers by making two changes: adjust your developer user seat count AND your developer billing seat count in **Account settings** -> **Users** and then in **Account settings** -> **Billing**.
 
-For detailed steps, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users#licenses)eps.
+For detailed steps, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users#licenses).
 
 </Expandable>
