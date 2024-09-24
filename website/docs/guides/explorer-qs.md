@@ -32,3 +32,15 @@ Unlock the power of [dbt Explorer](/docs/collaborate/explore-projects) in this h
 **Prerequisites:**
 - Familiarity with data platforms
 
+## Setup
+Now we’ll be creating your dbt Cloud account and connecting it to a data warehouse. 
+- Go to this URL:  https://cloud.getdbt.com/coalesce-workshop-signup
+  - If you are already signed into dbt Cloud, sign out first!
+  - Enter your first name and last name
+  - Choose the “Exploring a dbt Mesh implementation with dbt Explorer” option.
+- Agree to the terms of service and click the “Complete Registration” button. Wait about 30 seconds, and you’ll be in the dbt Cloud project for this course, already connected to a data warehouse!
+
+## Get and overview of your project and view the status of your latest runs
+
+With dbt Explorer, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
+
