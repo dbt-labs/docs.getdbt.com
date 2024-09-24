@@ -92,7 +92,7 @@ Permissions determine what a developer-licensed user can do in your dbt Cloud ac
 
 The permissions available depends on whether you're on an [Enterprise](/docs/cloud/manage-access/enterprise-permissions) or [self-service Team](/docs/cloud/manage-access/self-service-permissions) plan. Developer accounts only have a single user, so permissions aren't applicable.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example the permissions dropdown while editing an existing group." />
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/assign-group-permissions.png" width="60%" title="Example permissions dropdown while editing an existing group." />
 
 Some permissions (those that don't grant full access, like admins) allow groups to be "assigned" to specific projects and environments only. Read about [environment-level permissions](/docs/cloud/manage-access/environment-permissions-setup) for more information on restricting environment access.
 
