@@ -40,7 +40,7 @@ Individual values from an array can be called by referencing the location of a v
 
 Dictionaries and arrays can be nested in JSON objects as well as nested in each other. **Dictionaries and arrays can only be values. They can never be keys.**
 
-Here’s an example of a JSON object describing a tweet from [X (formerly Twitter’s) developer platform](https://developer.x.com/en/docs/twitter-api/v1/data-dictionary/overview).
+Here’s an example of a JSON object describing a tweet from [X's (formerly Twitter) developer platform](https://developer.x.com/en/docs/twitter-api/v1/data-dictionary/overview).
 
 ```json
 tweet = 
