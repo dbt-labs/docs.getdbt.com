@@ -8,7 +8,12 @@ pagination_prev: null
 
 :::info "User access" is not "Model access"
 
-**User groups and access** and **model groups and access** are two different things. "Model groups and access" is a specific term used in the language of [model governance](/docs/collaborate/govern/about-model-governance). Refer to [Model access](/docs/collaborate/govern/model-access) for more information.
+This page is specific to user groups and access, which includes:
+- User licenses, permissions, and group memberships
+- Role-based access controls for projects and environments
+- Single sign-on and secure authentication
+
+"Model groups and access" is a feature specific to models and their availability across projects. Refer to [Model access](/docs/collaborate/govern/model-access) for more info on what it means for your dbt projects.
 
 :::
 
@@ -46,7 +51,11 @@ Create new groups from the **Groups & Licenses** section of the **Account settin
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/new-group.png" width="60%" title="Example the new group pane in the account settings." />
 
+:::important
+
 If a user is assigned licenses and permissions from multiple groups, the group that grants the most access will take precedence. You must assign a permission set to any groups created beyond the three defaults, or users assigned will not have access to features beyond their user profile.
+
+:::
 
 #### SSO mappings
 
