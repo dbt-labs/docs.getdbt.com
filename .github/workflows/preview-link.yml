@@ -112,7 +112,7 @@ jobs:
 
               # Construct the full URL
               FULL_URL="$DEPLOYMENT_URL/$FILE_PATH"
-              LINKS="$LINKS\n$FULL_URL"
+              LINKS="$LINKS\n- $FULL_URL"
             done
           fi
 
@@ -145,12 +145,16 @@ jobs:
             const deploymentUrl = process.env.DEPLOYMENT_URL;
             const links = process.env.LINKS;
 
-            // Build the deployment content
-            const deploymentContent = `${startMarker}
-            🚀 Deployment available! Here are the direct links to the updated files:              
-            ${links}
-            ---
-              ${endMarker}`;
+            // Build the deployment content without leading whitespace
+            const deploymentContent = [
+              `${startMarker}`,
+              '🚀 Deployment available! Here are the direct links to the updated files:',
+              '',
+              `${links}`,
+              '',
+              '---',
+              `${endMarker}`
+            ].join('\n');
 
             // Remove existing deployment content between markers
             const regex = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`, 'g');
