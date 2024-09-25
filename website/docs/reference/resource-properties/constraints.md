@@ -68,7 +68,7 @@ models:
 
 </File>
 
-In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release. For more information, update the documentation version to 1.9 and refer to the [following section](/reference/resource-properties/constraints#whats-better-about-this-syntax).
+In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release. For more information, update the documentation version to 1.9 and refer to the [What's better about this syntax section](/reference/resource-properties/constraints?version=1.9.1#whats-better-about-this-syntax).
 
 </VersionBlock>
 
@@ -88,29 +88,29 @@ Here's an example showing how to use the recommended syntax:
 <File name='models/schema.yml'>
 
 ```yml
+models:
+  - name: <model_name>
 
-name: <my_model>  
+    # required 
+    config:
+      contract:
+        enforced: true
 
-#required 
-config:
-  contract:
-    enforced: true
-
-# Model-level constraints
-constraints:
-  - type: foreign_key
-    columns: [id]
-    to: ref('my_model_to')  # or source('source', 'source_table')
-    to_columns: [id]
-
-# Column-level definitions and constraints
-columns:
-  - name: id
-    data_type: integer
+    # Model-level constraints
     constraints:
       - type: foreign_key
-        to: ref('my_model_to')  # or source('source', 'source_table')
+        columns: [id]
+        to: {{ ref('my_model_to') }}  # or {{ source('source', 'source_table') }}
         to_columns: [id]
+
+    # Column-level definitions and constraints
+    columns:
+      - name: id
+        data_type: integer
+        constraints:
+          - type: foreign_key
+            to: {{ ref('my_model_to') }}  # or {{ source('source', 'source_table') }}
+            to_columns: [id]
 ```
 
 </File>
