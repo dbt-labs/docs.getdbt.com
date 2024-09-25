@@ -324,7 +324,7 @@ snapshots:
 </File>
 
 - When you run your snapshots, dbt handles the renames from `dbt_valid_from` to `example_valid_from` for you.
-- Update your config to:
+- If you make subsequent updates to the config to rename the column, dbt manages the migration of column names for each configuration change. For example:
 
 <File name='dbt_project.yml'>
 
