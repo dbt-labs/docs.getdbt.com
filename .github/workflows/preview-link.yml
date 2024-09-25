@@ -4,7 +4,11 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - 'website/docs/**'
+      - 'website/docs/docs/**'
+      - 'website/docs/best-practices/**'
+      - 'website/docs/guides/**'
+      - 'website/docs/faqs/**'
+      - 'website/docs/reference/**'
 
 permissions:
   contents: write
