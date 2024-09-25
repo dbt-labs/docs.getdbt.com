@@ -30,7 +30,7 @@ For example, given the following directory structure, you can create two time sp
 :::tip 
 Previously, you had to create a model called `metricflow_time_spine` in your dbt project. Now, if your project already includes a date dimension or time spine table, you can simply configure MetricFlow to use that table by updating the `model` setting in the Semantic Layer.
 
-If you don’t have a date dimension table, you can still create one by using the code snippet below to build your time spine model.
+If you don’t have a date dimension table, you can still create one by using the following code snippet to build your time spine model.
 
 :::
 
@@ -85,9 +85,10 @@ models:
 
 For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/blob/main/models/marts/_models.yml) example.
 
-Now, break down the configuration above. It's pointing to a model called `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. The `standard_granularity_column` is the lowest grain of the table, in this case, it's hourly. It needs to reference a column defined under the columns key, in this case, `date_hour`. Use the `standard_granularity_column` as the join key for the time spine table when joining tables in MetricFlow. Here, the granularity of the `standard_granularity_column` is set at the column level, in this case, `hour`.
+#### Understanding time-spine and granularity
+The previous configuration demonstrates a time-spine model called `time_spine_daily`. It sets the time spine configurations under the `time_spine` key. The `standard_granularity_column` is the lowest grain of the table, in this case, it's hourly. It needs to reference a column defined under the columns key, in this case, `date_hour`. Use the `standard_granularity_column` as the join key for the time spine table when joining tables in MetricFlow. Here, the granularity of the `standard_granularity_column` is set at the column level, in this case, `hour`. Additionally, the `custom_granularities` field lets you specify non-standard time periods like `fiscal_year` or `retail_month` that your organization may use.
 
-
+#### Creating a time-spine table
 If you need to create a time spine table from scratch, you can do so by adding the following code to your dbt project. 
 The example creates a time spine at a daily grain and an hourly grain. A few things to note when creating time spine models:
 * MetricFlow will use the time spine with the largest compatible granularity for a given query to ensure the most efficient query possible. For example, if you have a time spine at a monthly grain, and query a dimension at a monthly grain, MetricFlow will use the monthly time spine. If you only have a daily time spine, MetricFlow will use the daily time spine and date_trunc to month.
