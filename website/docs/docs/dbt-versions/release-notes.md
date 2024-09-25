@@ -20,6 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## September 2024
 
+- **New**: dbt Explorer's Model query history feature is now in Preview for dbt Cloud Enterprise customers. Model query history allows you to view the count of consumption queries for a model based on the data warehouse's query logs. This feature provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products. To learn more, refer to [Model query history](/docs/collaborate/model-query-history). 
 - **New:** There are two new [environment variable defaults](/docs/build/environment-variables#dbt-cloud-context) &mdash; `DBT_CLOUD_ENVIRONMENT_NAME` and `DBT_CLOUD_ENVIRONMENT_TYPE`.
 - **New:** The [Amazon Athena warehouse connection](/docs/cloud/connect-data-platform/connect-amazon-athena) is available as a public preview for dbt Cloud accounts that have upgraded to [`versionless`](/docs/dbt-versions/versionless-cloud).
 
