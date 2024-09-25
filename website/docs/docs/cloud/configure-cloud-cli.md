@@ -52,21 +52,29 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
   The config file looks like this:
 
-    ```yaml
-    version: "1"
-    context:
-        active-project: "<project id from the list below>"
-        active-host: "<active host from the list>"
-        defer-env-id: "<optional defer environment id>"
-    projects:
-    - project-id: "<project-id>"
-        account-host: "<account-host>"
-        api-key: "<user-api-key>"
-
-    - project-id: "<project-id>"
-        account-host: "<account-host>"
-        api-key: "<user-api-key>"
-    ```
+  ```yaml
+  version: "1"
+  context:
+    active-project: "<project id from the list below>"
+    active-host: "<active host from the list>"
+    defer-env-id: "<optional defer environment id>"
+  projects:
+    - project-name: "<project-name>"
+      project-id: "<project-id>"
+      account-name: "<account-name>"
+      account-id: "<account-id>"
+      account-host: "<account-host>" # for example, "cloud.getdbt.com"
+      token-name: "<pat-or-service-token-name>"
+      token-value: "<pat-or-service-token-value>"
+  
+    - project-name: "<project-name>"
+      project-id: "<project-id>"
+      account-name: "<account-name>"
+      account-id: "<account-id>"
+      account-host: "<account-host>" # for example, "cloud.getdbt.com"
+      token-name: "<pat-or-service-token-name>"
+      token-value: "<pat-or-service-token-value>"  
+  ```
 
 3. After downloading the config file and creating your directory, navigate to a dbt project in your terminal:
 
