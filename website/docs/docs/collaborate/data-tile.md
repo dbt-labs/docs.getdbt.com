@@ -121,6 +121,7 @@ Follow these steps to embed the data health tile in Tableau:
 4. Insert the URL and click **Ok**.
 
     `https://metadata.cloud.getdbt.com/exposure-tile?uniqueId=exposure.snowflake_tpcds_sales_spoke.customer360_test&environmentType=production&environmentId=220370&token=<YOUR_METADATA_TOKEN>`
+    
     *Note, replace the placeholders with your actual values.*
 5. You should now see the data health tile embedded in your Tableau dashboard.
 
