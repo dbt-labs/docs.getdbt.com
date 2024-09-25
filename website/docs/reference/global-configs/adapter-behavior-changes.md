@@ -8,7 +8,7 @@ pagination_next: null
 pagination_prev: null
 ---
 
-The adapter-specific behavior changes eferences section contains reference materials for adapters for dbt Cloud and dbt Core.
+The adapter-specific behavior changes references section contains materials for dbt Cloud and dbt Core adapters.
 
 Some adapters may show behavior changes when certain flags are enabled. Refer to the following sections for each respective adapter.
 
