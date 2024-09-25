@@ -74,7 +74,7 @@ Singular data tests are easy to write—so easy that you may find yourself writi
 
 ### Document singular tests
 
-Previously, documenting a data test such as a singular data test would result a parsing error. However, in [Versionless](/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can allow setting descriptions in your yaml files to enable you to document singular data tests.
+Previously, documenting a data test such as a singular data test would result in a parsing error. However, in [Versionless](/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can set descriptions in your YAML files to document singular data tests.
 
 <File name='data_tests.yml'>
 
