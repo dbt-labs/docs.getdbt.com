@@ -20,6 +20,7 @@ To see the generated SQL for the metric and dimension types that use time-spine 
 - You only need to configure time-spine models that the Semantic Layer should recognize.
 - At a minimum, define a time-spine table for a daily grain.
 - You can optionally define a time-spine table for a different granularity, like hourly.
+- If your organization uses [custom calendars](#custom-calendar) (like fiscal years) or custom granularities (like `retail_month`), you can configure those as well. Learn how to [add custom calendars and granularities](#add-custom-granularities) further down this page to help support specific business needs.
 - Note that if you don’t have a date or calendar model in your project, you'll need to create one. 
 - If you're looking to specify the grain of a time dimension so that MetricFlow can transform the underlying column to the required granularity, refer to the [Time granularity documentation](/docs/build/dimensions?dimension=time_gran)
 
@@ -36,11 +37,38 @@ If you don’t have a date dimension table, you can still create one by using th
 
 <Lightbox src="/img/time_spines.png" title="Time spine directory structure" />
 
+<VersionBlock firstVersion="1.9">
 <File name="models/_models.yml">
   
 ```yaml
 models:
   - name: time_spine_hourly
+    description: "my favorite time spine"
+    time_spine:
+      standard_granularity_column: date_hour # column for the standard grain of your table
+      custom_granularities:
+        - name: fiscal_year
+          column_name: fiscal_year_column
+    columns:
+      - name: date_hour
+        granularity: hour # set granularity at column-level for standard_granularity_column
+  - name: time_spine_daily
+    time_spine:
+      standard_granularity_column: date_day # column for the standard grain of your table
+    columns:
+      - name: date_day
+        granularity: day # set granularity at column-level for standard_granularity_column
+```
+</File>
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+<File name="models/_models.yml">
+  
+```yaml
+models:
+  - name: time_spine_hourly
+    description: "my favorite time spine"
     time_spine:
       standard_granularity_column: date_hour # column for the standard grain of your table
     columns:
@@ -54,6 +82,7 @@ models:
         granularity: day # set granularity at column-level for standard_granularity_column
 ```
 </File>
+</VersionBlock>
 
 For an example project, refer to our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/blob/main/models/marts/_models.yml) example.
 
@@ -230,3 +259,52 @@ where date_day > dateadd(year, -4, current_timestamp())
 and date_hour < dateadd(day, 30, current_timestamp())
 ```
 </File>
+
+
+## Custom calendar
+
+<VersionBlock lastVersion="1.8">
+
+Being able to configure custom calendars, such as like a fiscal calendar, is available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) or dbt Core [v1.9 and above](/docs/dbt-versions/core). 
+
+To access this feature, [upgrade to Versionless](/docs/dbt-versions/versionless-cloud) or dbt Core v1.9 and above.
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+If you use a custom calendar in your organization, such as a fiscal calendar, you can configure it in MetricFlow using its date and time operations. 
+
+This is useful for calculating metrics based on a custom calendar, such as fiscal quarters or weeks. Use the `custom_granularities` key to define a non-standard time period for querying data, such as a `retail_month` or `fiscal_week`, instead of standard options like `day`, `month`, or `year`. This feature provides more control over how time-based metrics are calculated.
+
+
+### Why use a custom calendar model?
+Custom date transformations can be complex, and organizations often have unique needs that can’t be easily generalized. Creating a custom calendar model allows you to define these transformations in SQL, offering more flexibility than native transformations in MetricFlow. This approach lets you map custom columns back to MetricFlow granularities, ensuring consistency while giving you control over the transformations.
+
+### Calendar model requirements
+
+To use a custom calendar model, ensure it meets the following requirements:
+
+- The model must be at a daily grain and joinable to other date columns using `date_day`.
+- Columns must align with expected data types for a given granularity (for example, `quarter` should be a date).
+- Support period-over-period calculations.
+- Support cumulative metric windows using custom granularities (for example, cumulative fiscal year-to-date bookings).
+
+### Add custom granularities
+
+To add custom granularities, the Semantic Layer supports custom calendar configurations that allow users to query data using non-standard time periods like `fiscal_year` or `retail_month`. You can define these custom granularities by modifying your model's YAML configuration like this:
+
+<File name="models/_models.yml">
+
+```yaml
+models:
+ - name: my_time_spine
+   description: "my favorite time spine"
+   time_spine:
+      standard_granularity_column: date_day
+      custom_granularities:
+        - name: fiscal_year
+          column_name: fiscal_year_column
+```          
+</File>
+
+</VersionBlock>

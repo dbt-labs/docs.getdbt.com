@@ -20,6 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## September 2024
 
+- **New**: The dbt Semantic Layer supports custom calendar configurations in MetricFlow that allow you to query data using non-standard time periods like `fiscal_year` or `retail_month`. Refer to [custom calendar](/docs/build/metricflow-time-spine#custom-calendar) to learn how to define these custom granularities in your MetricFlow timespine YAML configuration.
 - **New:** There are two new [environment variable defaults](/docs/build/environment-variables#dbt-cloud-context) &mdash; `DBT_CLOUD_ENVIRONMENT_NAME` and `DBT_CLOUD_ENVIRONMENT_TYPE`.
 - **New:** The [Amazon Athena warehouse connection](/docs/cloud/connect-data-platform/connect-amazon-athena) is available as a public preview for dbt Cloud accounts that have upgraded to [`versionless`](/docs/dbt-versions/versionless-cloud).
 
