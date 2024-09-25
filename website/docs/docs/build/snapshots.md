@@ -587,6 +587,16 @@ Snapshot results:
 
 </details>
 
+<VersionBlock firstVersion="1.9">
+
+### Define column names in snapshot table
+
+In dbt Cloud, there's a config which will now allow you to define the names of the columns that are created in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields). Users can now set this config to use different names.
+
+If a user renames the columns for a snapshot without updating an existing table, they will get an error. The recommendation is to use these settings for new snapshots, or to arrange to update your existing tables prior to committing a column name change.
+
+</VersionBlock>
+
 
 ## FAQs
 <FAQ path="Runs/run-one-snapshot" />
