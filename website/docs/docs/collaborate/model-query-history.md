@@ -9,11 +9,11 @@ image: /img/docs/collaborate/dbt-explorer/model-query-queried-models.jpg
 
 Model query history allows you to:
 
-- View the count of consumption queries for a model based on the data warehouse's query logs.
+- View the count of consumption queries for a model based on the data warehouse's query logs. 
 - Provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products.
 - Enable analysts to find the most popular models used by other people.
 
-Model query history is powered by a single consumption query of the query log table in your data warehouse aggregated on a daily basis. 
+Model query history is powered by a single consumption query of the query log table in your data warehouse aggregated on a daily basis. It currently supports Snowflake and BigQuery only, with additional platforms coming soon.
 
 :::info What is a consumption query?
 Consumption query is a metric of queries in your dbt project that has used the model in a given time. It filters down to `select` statements only to gauge model consumption and excludes dbt model build and test executions.
@@ -28,7 +28,7 @@ To access the features, you should meet the following:
 1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/).
 2. You have set up a [production](https://docs.getdbt.com/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
 3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings.
-4. Use Snowflake or BigQuery as your data warehouse and can enable query history permissions or work with an admin to do so.   Support for additional data platforms coming soon.
+4. Use Snowflake or BigQuery as your data warehouse and can enable query history permissions or work with an admin to do so. Support for additional data platforms coming soon.
 
 ## Enable query history in dbt Cloud
 
