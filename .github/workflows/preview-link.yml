@@ -13,6 +13,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  checks: write  # Added permission for creating check runs
 
 jobs:
   comment-deployment-link:
@@ -112,7 +113,7 @@ jobs:
 
               # Construct the full URL
               FULL_URL="$DEPLOYMENT_URL/$FILE_PATH"
-              LINKS="$LINKS\n- $FULL_URL"
+              LINKS="$LINKS\n- [$FILE_PATH]($FULL_URL)"
             done
           fi
 
@@ -121,12 +122,52 @@ jobs:
           echo -e "$LINKS" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Post comment with deployment link
-        uses: peter-evans/create-or-update-comment@v4
+      - name: Post deployment links in a check run
+        uses: actions/github-script@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            <!-- vercel-preview-comment -->
-            🚀 Deployment available! Here are the direct links to the updated files:
-            ${{ steps.links.outputs.links }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const deploymentUrl = `🚀 Deployment available at: [${{ steps.vercel_url.outputs.deployment_url }}](${{ steps.vercel_url.outputs.deployment_url }})`;
+
+            const links = `Here are the direct links to the updated files:\n${{ steps.links.outputs.links }}`;
+
+            const summary = `${deploymentUrl}\n\n${links}`;
+
+            // Check if a check run already exists
+            const checkRuns = await github.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.payload.pull_request.head.sha,
+            });
+
+            const existingCheckRun = checkRuns.data.check_runs.find(
+              (run) => run.name === 'Vercel Deployment Preview'
+            );
+
+            if (existingCheckRun) {
+              // Update the existing check run
+              await github.checks.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                check_run_id: existingCheckRun.id,
+                output: {
+                  title: 'Vercel Deployment Preview',
+                  summary: summary,
+                },
+                conclusion: 'success',
+              });
+            } else {
+              // Create a new check run
+              await github.checks.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'Vercel Deployment Preview',
+                head_sha: context.payload.pull_request.head.sha,
+                status: 'completed',
+                conclusion: 'success',
+                output: {
+                  title: 'Vercel Deployment Preview',
+                  summary: summary,
+                },
+              });
+            }
