@@ -121,8 +121,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          deployment_url: ${{ steps.vercel_url.outputs.deployment_url }}
-          links: ${{ steps.links.outputs.links }}
           script: |
             const prNumber = context.issue.number;
 
@@ -139,12 +137,17 @@ jobs:
             const startMarker = '<!-- vercel-deployment-preview -->';
             const endMarker = '<!-- end-vercel-deployment-preview -->';
 
+            // Get the deployment URL and links from environment variables
+            const deploymentUrl = process.env.DEPLOYMENT_URL;
+            const links = process.env.LINKS;
+
             // Build the deployment content
             const deploymentContent = `${startMarker}
             🚀 **Deployment preview available!**
-            **Deployment URL:** [${inputs.deployment_url}](${inputs.deployment_url})
+            **Deployment URL:** [${deploymentUrl}](${deploymentUrl})
+
             **Direct links to the updated files:**
-            ${inputs.links}
+            ${links}
             ---
               ${endMarker}`;
 
@@ -162,3 +165,6 @@ jobs:
               pull_number: prNumber,
               body: body,
             });
+        env:
+          DEPLOYMENT_URL: ${{ steps.vercel_url.outputs.deployment_url }}
+          LINKS: ${{ steps.links.outputs.links }}
