@@ -6,6 +6,8 @@ id: change-user-license
 
 ---
 
+TEST TEST
+
 To change the license type for a user from `developer` to `read-only` or `IT` in dbt Cloud, you must be an account owner or have admin privileges. You might make this change to free up a billable seat but retain the user’s access to view the information in the dbt Cloud account.
 
 1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
