@@ -139,8 +139,8 @@ jobs:
 
             // Build the deployment content
             const deploymentContent = `${startMarker}
-            🚀 **Deployment Preview Available!**
-            **Deployment URL:** [${{ steps.vercel_url.outputs.deployment_url }}](${{ steps.vercel_url.outputs.deployment_url }})
+            🚀 **Deployment preview available!**
+            **Deployment URLs:** [${{ steps.links.outputs.links }}](${{ steps.links.outputs.links }})
             **Direct links to the updated files:**
             ${{ steps.links.outputs.links }}
             ---
