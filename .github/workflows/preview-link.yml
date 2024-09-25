@@ -140,9 +140,9 @@ jobs:
             // Build the deployment content
             const deploymentContent = `${startMarker}
             🚀 **Deployment preview available!**
-            **Deployment URLs:** [${{ steps.links.outputs.links }}](${{ steps.links.outputs.links }})
+            **Deployment URL:** [${inputs.deployment_url}](${inputs.deployment_url})
             **Direct links to the updated files:**
-            ${{ steps.links.outputs.links }}
+            ${inputs.links}
             ---
               ${endMarker}`;
 
@@ -160,3 +160,5 @@ jobs:
               pull_number: prNumber,
               body: body,
             });
+          deployment_url: ${{ steps.vercel_url.outputs.deployment_url }}
+          links: ${{ steps.links.outputs.links }}
