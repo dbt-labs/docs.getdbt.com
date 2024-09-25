@@ -24,13 +24,13 @@ link="/dbt-cloud/api-v2-legacy"
     icon="pencil-paper"/>
 
 <Card
-    title="API v2 (beta docs)"
+    title="API v2"
     body="Our legacy API version, with limited endpoints and features. Contains information not available in v3. These docs are in beta and may not be complete."
 link="/dbt-cloud/api-v2"
     icon="pencil-paper"/>
 
 <Card
-    title="API v3 (beta docs)"
+    title="API v3"
     body="Our latest API version, with new endpoints and features. These docs are in beta and may not be complete."
 link="/dbt-cloud/api-v3"
     icon="pencil-paper"/>
