@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/reference/global-configs/legacy-behaviors#adapter-specific-behavior-changes",
+      "source": "/reference/global-configs/behavior-changes#adapter-specific-behavior-changes",
       "destination": "reference/global-configs/adapter-behavior-changes",
       "permanent": true
     },
