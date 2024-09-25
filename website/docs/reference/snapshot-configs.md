@@ -301,3 +301,48 @@ snapshots:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.9">
+
+#### Define column names in snapshot table
+
+You can use the following config to define the names of the columns that are created in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields).
+
+<File name='dbt_project.yml'>
+
+```yml
+
+snapshots:
+  my_project:
+    +snapshot_meta_column_names ={
+      dbt_valid_from: example_valid_from,
+      dbt_valid_to: example_valid_to
+    }
+
+```
+
+</File>
+
+- When you run your snapshots, dbt handles the renames from `dbt_valid_from` to `example_valid_from` for you.
+- Update your config to:
+
+<File name='dbt_project.yml'>
+
+```yml
+
+snapshots:
+  my_project:
+    +snapshot_meta_column_names ={
+      dbt_valid_from: test_valid_from,
+      dbt_valid_to: test_valid_to
+    }
+
+```
+
+</File>
+
+- When you run your snapshots, dbt handles the renames from `example_valid_from` to `test_valid_from` for you.
+
+You can read through the section on [Defining column names](/docs/build/snapshots#define-column-names-in-snapshot-table) for more information.
+
+</VersionBlock>
