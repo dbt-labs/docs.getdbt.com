@@ -1,0 +1,24 @@
+---
+title: "About adapter-specific behavior changes"
+id: "adapter-behavior-changes"
+sidebar_label: "Adapter behavior changes"
+description: "Adapter-specific behavior changes"
+hide_table_of_contents: true
+pagination_next: null
+pagination_prev: null
+---
+
+The adapter-specific behavior changes eferences section contains reference materials for adapters for dbt Cloud and dbt Core.
+
+Some adapters may show behavior changes when certain flags are enabled. Refer to the following sections for each respective adapter.
+
+
+<div className="grid--3-col">
+
+<Card
+    title="Redshift"
+    body="Behavior changes for the Amazon Redshift adapter."
+    link="reference/global-configs/redshift-changes"
+    icon="redshift"/>
+
+</div>
