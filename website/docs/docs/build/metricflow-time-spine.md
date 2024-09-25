@@ -271,13 +271,13 @@ To access this feature, [upgrade to Versionless](/docs/dbt-versions/versionless-
 
 <VersionBlock firstVersion="1.9">
 
-If you use a custom calendar in your organization, such as a fiscal calendar, you can configure it in MetricFlow using its date and time operations. 
-
-This is useful for calculating metrics based on a custom calendar, such as fiscal quarters or weeks. Use the `custom_granularities` key to define a non-standard time period for querying data, such as a `retail_month` or `fiscal_week`, instead of standard options like `day`, `month`, or `year`. This feature provides more control over how time-based metrics are calculated.
-
-
-### Why use a custom calendar model?
 Custom date transformations can be complex, and organizations often have unique needs that can’t be easily generalized. Creating a custom calendar model allows you to define these transformations in SQL, offering more flexibility than native transformations in MetricFlow. This approach lets you map custom columns back to MetricFlow granularities, ensuring consistency while giving you control over the transformations.
+
+For example, if you use a custom calendar in your organization, such as a fiscal calendar, you can configure it in MetricFlow using its date and time operations. 
+
+- This is useful for calculating metrics based on a custom calendar, such as fiscal quarters or weeks. 
+- Use the `custom_granularities` key to define a non-standard time period for querying data, such as a `retail_month` or `fiscal_week`, instead of standard options like `day`, `month`, or `year`. 
+- This feature provides more control over how time-based metrics are calculated.
 
 ### Calendar model requirements
 
