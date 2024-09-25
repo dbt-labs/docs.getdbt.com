@@ -121,6 +121,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          deployment_url: ${{ steps.vercel_url.outputs.deployment_url }}
+          links: ${{ steps.links.outputs.links }}
           script: |
             const prNumber = context.issue.number;
 
@@ -160,5 +162,3 @@ jobs:
               pull_number: prNumber,
               body: body,
             });
-          deployment_url: ${{ steps.vercel_url.outputs.deployment_url }}
-          links: ${{ steps.links.outputs.links }}
