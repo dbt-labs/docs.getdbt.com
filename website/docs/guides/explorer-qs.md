@@ -42,7 +42,7 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
 
 ## Get and overview of your project and view the status of your latest runs
 
-image goes here
+   <Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" title="dbt Explorer performance tab" />
 
 With dbt Explorer, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
@@ -61,18 +61,16 @@ With dbt Explorer, you can view your project's resources (such as models, tests,
 
 dbt Explorer provides a visualization of your project’s [DAG](/terms/dag) that you can interact with. The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
-image goes here
-
 - Use the search bar and [node selectors](/reference/node-selection/syntax) to filter your dag.
 - [Lenses](docs/collaborate/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
   - When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value
 
- image goes here
+ <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" title="dbt Explorer's lineage graph" />
   
 - Use the [advanced search](/docs/collaborate/explore-projects#search-resources) feature to locate resources in your project. Perform hard searches and key word searches. All resource names, column names, resources descriptions, warehouse relations, and code matching your search criteria will appear in the center of the page. Apply filters to fully refine your search
 - When searching for a column name, the results show all relational nodes containing htat column in their schemas. 
 
-image goes here
+ <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_advanced_search.png" title="dbt Explorer's advanced search feature" />
 
 #### Hands-On
 - On the left hand side, Click on the company and make sure you are in the section “overview of Project Details → Next to Overview → View Lineage
@@ -101,6 +99,8 @@ Use dbt Explorer to gain a deeper understanding of *all* of you dbt Cloud projec
 ## Project Recommendations
 The [project recommendations](/docs/collaborate/project-recommendations) page suggests project improvements and provides insight into how you can create a better-documented, better-tested, and better-built dbt project, creating more trust and less confusion.
 Learn more about what sort of suggestions it makes and why on our [docs site](/docs/collaborate/project-recommendations).
+
+ <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" title="dbt Explorer's project recommendation tab" />
 
 #### Hands-On
 - Read through the project recommendations. Select one improvement to make and make it! (Ex: Add a description to a primary key that lacks one)
