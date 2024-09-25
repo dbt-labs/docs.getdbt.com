@@ -70,6 +70,30 @@ The name of this test is the name of the file: `assert_total_payment_amount_is_p
 
 Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
 
+<VersionBlock firstVersion="1.9">
+
+### Document singular tests
+
+Previously, documenting a data test such as a singular data test would result a parsing error. However, in [Versionless](/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can allow setting descriptions in your yaml files to enable you to document singular data tests.
+
+<File name='data_tests.yml'>
+
+```yml
+
+# top-level
+data_tests:
+  - name: my_super_cool_singular_test
+    description: The order_id is unique for every row in the orders model
+    config:
+      error_if: ">10"
+  - name: my_super_cool_singular_test2
+    description: '{{ doc("not_null_test") }}'
+
+```
+
+</File>
+
+</VersionBlock>
 
 
 ## Generic data tests
