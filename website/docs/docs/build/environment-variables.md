@@ -139,10 +139,14 @@ _The following variables are currently only available for GitHub, GitLab, and Az
 
 Environment variables can be used in many ways, and they give you the power and flexibility to do what you want to do more easily in dbt Cloud.
 
-#### Clone private packages
+<Expandable alt_header="Clone private packages">
+
 Now that you can set secrets as environment variables, you can pass git tokens into your package HTTPS URLs to allow for on-the-fly cloning of private repositories. Read more about enabling [private package cloning](/docs/build/packages#private-packages).
 
-#### Dynamically set your warehouse in your Snowflake connection
+</Expandable>
+
+<Expandable alt_header="Dynamically set your warehouse in your Snowflake connection">
+
 Environment variables make it possible to dynamically change the Snowflake virtual warehouse size depending on the job. Instead of calling the warehouse name directly in your project connection, you can reference an environment variable which will get set to a specific virtual warehouse at runtime. 
 
 For example, suppose you'd like to run a full-refresh job in an XL warehouse, but your incremental job only needs to run in a medium-sized warehouse. Both jobs are configured in the same dbt Cloud environment. In your connection configuration, you can use an environment variable to set the warehouse name to `{{env_var('DBT_WAREHOUSE')}}`. Then in the job settings, you can set a different value for the `DBT_WAREHOUSE` environment variable depending on the job's workload.
@@ -163,7 +167,10 @@ However, there are some limitations when using env vars with Snowflake OAuth Con
 Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so dbt Cloud simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname. Use [extended attributes](/docs/deploy/deploy-environments#deployment-credentials) instead.
 :::
 
-#### Audit your run metadata
+</Expandable>
+
+<Expandable alt_header="Audit your run metadata">
+
 Here's another motivating example that uses the dbt Cloud run ID, which is set automatically at each run. This additional data field can be used for auditing and debugging:
 
 ```sql
@@ -189,3 +196,13 @@ select *,
 
 from users_aggregated
 ```
+
+</Expandable>
+
+<Expandable alt_header="Configure Semantic Layer credentials">
+
+import SLEnvVars from '/snippets/_sl-env-vars.md';
+
+<SLEnvVars/>
+
+</Expandable>
