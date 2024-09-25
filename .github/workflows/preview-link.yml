@@ -11,12 +11,11 @@ on:
       - 'website/docs/reference/**'
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
-  checks: write  # Ensure this permission is set
 
 jobs:
-  comment-deployment-link:
+  update-pr-description:
     runs-on: ubuntu-latest
 
     steps:
@@ -53,7 +52,7 @@ jobs:
           DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
           echo "Waiting for deployment at $DEPLOYMENT_URL to become accessible..."
 
-          MAX_ATTEMPTS=60  # Adjust as needed (e.g., wait up to 10 minutes)
+          MAX_ATTEMPTS=60  # Wait up to 10 minutes
           SLEEP_TIME=10    # Check every 10 seconds
           ATTEMPTS=0
 
@@ -104,17 +103,18 @@ jobs:
           else
             LINKS=""
             # Convert CHANGED_FILES back to newline-separated for processing
-            CHANGED_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n')
-            for FILE in $CHANGED_FILES; do
+            echo "$CHANGED_FILES" | tr ' ' '\n' > files.txt
+            while IFS= read -r FILE; do
               # Remove 'website/docs/' prefix
               FILE_PATH="${FILE#website/docs/}"
-              # Remove the .md extension as per your desired output
+              # Remove the .md extension
               FILE_PATH="${FILE_PATH%.md}"
 
               # Construct the full URL
               FULL_URL="$DEPLOYMENT_URL/$FILE_PATH"
               LINKS="$LINKS\n- [$FILE_PATH]($FULL_URL)"
-            done
+            done < files.txt
+            rm files.txt
           fi
 
           # Properly set the multi-line output
@@ -122,52 +122,20 @@ jobs:
           echo -e "$LINKS" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Post deployment links in a check run
-        uses: actions/github-script@v6
+      - name: Update PR description with deployment links
+        uses: peter-evans/pull-request-description@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const deploymentUrl = `🚀 Deployment available at: [${{ steps.vercel_url.outputs.deployment_url }}](${{ steps.vercel_url.outputs.deployment_url }})`;
+          token: ${{ secrets.GITHUB_TOKEN }}
+          prepend: |
+            <!-- vercel-deployment-preview -->
 
-            const links = `Here are the direct links to the updated files:\n${{ steps.links.outputs.links }}`;
+            🚀 **Deployment Preview Available!**
 
-            const summary = `${deploymentUrl}\n\n${links}`;
+            **Deployment URL:** [${{ steps.vercel_url.outputs.deployment_url }}](${{ steps.vercel_url.outputs.deployment_url }})
 
-            // Access github.rest instead of octokit
-            const checkRuns = await github.rest.checks.listForRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: context.payload.pull_request.head.sha,
-            });
+            **Direct links to the updated files:**
+            ${{ steps.links.outputs.links }}
 
-            const existingCheckRun = checkRuns.data.check_runs.find(
-              (run) => run.name === 'Vercel Deployment Preview'
-            );
+            ---
 
-            if (existingCheckRun) {
-              // Update the existing check run
-              await github.rest.checks.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                check_run_id: existingCheckRun.id,
-                output: {
-                  title: 'Vercel Deployment Preview',
-                  summary: summary,
-                },
-                conclusion: 'success',
-              });
-            } else {
-              // Create a new check run
-              await github.rest.checks.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                name: 'Vercel Deployment Preview',
-                head_sha: context.payload.pull_request.head.sha,
-                status: 'completed',
-                conclusion: 'success',
-                output: {
-                  title: 'Vercel Deployment Preview',
-                  summary: summary,
-                },
-              });
-            }
+          retain-cycles: 1
