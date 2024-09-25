@@ -13,10 +13,9 @@ MetricFlow requires you to define a time-spine table as a model-level configurat
 - [Metric offsets](/docs/build/derived#derived-metric-offset)
 - [Conversion metrics](/docs/build/conversion)
 - [Slowly Changing Dimensions](/docs/build/dimensions#scd-type-ii)
-- [Metrics](/docs/build/metrics-overview) with the `join_to_timespine` configuration set to true
-To see the generated SQL for the metric and dimension types that use time-spine joins, refer to the respective documentation or add the `compile=True` flag when querying the Semantic Layer to return the compiled SQL.
+- [Metrics](/docs/build/metrics-overview) with the `join_to_timespine` configuration set to `true`. To see the generated SQL for the metric and dimension types that use time-spine joins, refer to the respective documentation or add the `compile=True` flag when querying the Semantic Layer to return the compiled SQL.
 
-#### Configuring time-spine
+### Configuring time-spine
 - You only need to configure time-spine models that the Semantic Layer should recognize.
 - At a minimum, define a time-spine table for a daily grain.
 - You can optionally define a time-spine table for a different granularity, like hourly.
