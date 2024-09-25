@@ -9,7 +9,7 @@ pagination_prev: null
 ---
 
 
-Some adapters may show behavior changes when certain flags are enabled. Refer to the following sections for each respective adapter.
+Some adapters can display behavior changes when certain flags are enabled. The following sections contain details about these adapter-specific behavior changes. 
 
 
 <div className="grid--3-col">
