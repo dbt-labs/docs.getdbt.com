@@ -58,7 +58,7 @@ CI runs don't consume run slots. This guarantees a CI check will never block a p
 
 ### SQL linting <Lifecycle status="beta" />
 
-When enabled for your CI job, dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. By default, it will lint all the SQL files in your project. 
+When enabled for your CI job, dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. By default, it lints all the SQL files in your project. 
 
 If the linter runs into errors, you can specify dbt to fail the job or continue running it. When failing jobs, you can reduce spend on compute costs by not building a pull request that doesn't satisfy your SQL code quality CI check. 
 
