@@ -162,8 +162,40 @@ Under the the **Models** option, you can filter on model properties (access or m
 
 </Expandable>
 
+<Expandable alt_header="Trust signals for models">
+
+Trust signal icons offer a quick, at-a-glance view of data health when browsing your dbt models in Explorer. These icons indicate whether a model is **Healthy**, **Caution**, **Degraded**, or **Unknown**. For accurate health data, ensure the resource is up-to-date and has had a recent job run.
+
+Each trust signal icon reflects key data health components, such as whether tests were run successfully, whether the resource has a description, whether it has been built in the past 30 days, and more. 
+
+Access trust signals using the search function or when clicking on **Models** under the **Resource** tab. Hover over or click the trust signal to see detailed information.
+
+#### Healthy 
+- Resource is healthy and ran all tests successfully
+- Successfully built in its last run
+- Has a description
+- Has tests configured
+- Has been built in the past 30 days 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-healthy.png" title="Healthy trust signal icon"/>
+
+#### Caution
+- Successfully built in its last run
+- Is missing a description
+- Does not have any tests configured
+- Has been built in the past 30 day
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-caution.png" title="Caution trust signal icon"/>
+
+#### Degraded
+- Last run failed or source freshness error
+  
+#### Unknown
+- Health information is unknown because the resource hasn't been run recently. 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-unknown.png" title="Unknown trust signal icon"/>
+  
+ </Expandable>
+  
 ### Example of keyword search
-Example of results from searching on the keyword `item` and applying the filters models, description, and code:
+Example of results from searching on the keyword `customers` and applying the filters models, description, and code. Trust signals are visible to the right of the model name in the search results.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-keyword-search.png" width="100%" title="Example of keyword search" />
 
@@ -201,6 +233,7 @@ In the upper right corner of the resource details page, you can:
 
 <Expandable alt_header="What details are available for a model?">
 
+- Trust signal icon &mdash; Icons offering a quick, at-a-glance view of data health. These icons indicate whether a model is Healthy, Caution, Degraded, or Unknown. Hover over an icon to view detailed information about the model's health.
 - **Status bar** (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
 - **General** tab includes:
     - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one upstream node and one downstream node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
