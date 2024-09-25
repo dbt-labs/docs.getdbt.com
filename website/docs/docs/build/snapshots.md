@@ -594,7 +594,7 @@ Snapshot results:
 In [Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can now define the names of the columns created in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields) using custom configurations. The original columns were named `dbt_valid_to`, `dbt_valid_from`, `dbt_scd_id`, and `dbt_updated_at`, however, users can now customize these names as needed.
 
 Note, if you rename snapshot columns without updating the existing table, it will cause an error. It's recommended to use this feature for new snapshots or update your existing tables before committing a column name change.
-
+This feature will also be available in the upcoming 1.9 release. 
 </VersionBlock>
 
 
