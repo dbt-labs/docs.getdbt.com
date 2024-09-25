@@ -49,29 +49,8 @@ jobs:
       - name: Wait for deployment to be accessible
         id: wait_for_deployment
         run: |
-          DEPLOYMENT_URL="${{ steps.vercel_url.outputs.deployment_url }}"
-          echo "Waiting for deployment at $DEPLOYMENT_URL to become accessible..."
-
-          MAX_ATTEMPTS=60  # Wait up to 10 minutes
-          SLEEP_TIME=10    # Check every 10 seconds
-          ATTEMPTS=0
-
-          while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
-            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$DEPLOYMENT_URL")
-            if [ "$STATUS_CODE" -eq 200 ]; then
-              echo "Deployment is accessible."
-              break
-            else
-              echo "Deployment not yet accessible (status code: $STATUS_CODE). Waiting..."
-              sleep $SLEEP_TIME
-              ATTEMPTS=$((ATTEMPTS + 1))
-            fi
-          done
-
-          if [ $ATTEMPTS -eq $MAX_ATTEMPTS ]; then
-            echo "Deployment did not become accessible within the expected time."
-            exit 1
-          fi
+          echo "Waiting for 5 minutes to allow the deployment to complete..."
+          sleep 300  # Wait for 300 seconds (5 minutes)
 
       - name: Get changed files
         id: files
@@ -112,7 +91,7 @@ jobs:
 
               # Construct the full URL
               FULL_URL="$DEPLOYMENT_URL/$FILE_PATH"
-              LINKS="$LINKS\n- $FULL_URL"
+              LINKS="$LINKS\n$FULL_URL"
             done
           fi
 
@@ -148,11 +127,12 @@ jobs:
             // Build the deployment content without leading whitespace
             const deploymentContent = [
               `${startMarker}`,
+              '',
+              '---',
               '🚀 Deployment available! Here are the direct links to the updated files:',
               '',
               `${links}`,
               '',
-              '---',
               `${endMarker}`
             ].join('\n');
 
@@ -160,8 +140,8 @@ jobs:
             const regex = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`, 'g');
             body = body.replace(regex, '').trim();
 
-            // Prepend the new deployment content
-            body = `${deploymentContent}\n\n${body}`;
+            // Append the new deployment content
+            body = `${body}\n\n${deploymentContent}`;
 
             // Update the PR description
             await github.rest.pulls.update({
@@ -170,6 +150,6 @@ jobs:
               pull_number: prNumber,
               body: body,
             });
-        env:
-          DEPLOYMENT_URL: ${{ steps.vercel_url.outputs.deployment_url }}
-          LINKS: ${{ steps.links.outputs.links }}
+          env:
+            DEPLOYMENT_URL: ${{ steps.vercel_url.outputs.deployment_url }}
+            LINKS: ${{ steps.links.outputs.links }}
