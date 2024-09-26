@@ -6,7 +6,7 @@ dbt has a number of classes it uses to represent objects in a <Term id="data-war
 
 These classes are often useful when building advanced dbt models and macros.
 
-## Relation
+## This is a test update
 
 The `Relation` object is used to interpolate schema and <Term id="table" /> names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config](/reference/project-configs/quoting).
 
