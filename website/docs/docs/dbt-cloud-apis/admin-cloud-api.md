@@ -25,7 +25,7 @@ link="/dbt-cloud/api-v2-legacy"
 
 <Card
     title="API v2"
-    body="Our legacy API version, with limited endpoints and features. Contains information not available in v3. These docs are in beta and may not be complete."
+    body="Our legacy API version, with limited endpoints and features. Contains information not available in v3."
 link="/dbt-cloud/api-v2"
     icon="pencil-paper"/>
 
