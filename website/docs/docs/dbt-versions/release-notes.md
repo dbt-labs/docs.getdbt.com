@@ -20,7 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## September 2024
 
-- **New**: In [Versionless](/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can set descriptions in your YAML files to document [singular data tests](/docs/build/data-tests#singular-tests).
+- **New**: You can set descriptions in your YAML files to document [singular data tests](/docs/build/data-tests#singular-tests).
 - **New**: The snapshot config can now be set in schema yml file.
 - **New**: You will now get a warning if the data type of the `updated_at` column does not match the adapter-configured default.
 - **New**: You can now define the names of the columns created in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields) using custom configurations.
