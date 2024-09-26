@@ -78,7 +78,6 @@ To carry out light transformation on your source or add logic into your snapshot
 
 This approach also speeds up development, as it lets you run the query directly without needing to run the snapshot every time.
 
-</Expandable>
 
 </VersionBlock>
 
