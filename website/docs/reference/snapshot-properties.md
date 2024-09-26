@@ -44,7 +44,7 @@ snapshots:
 
 <VersionBlock firstVersion="1.9">
 
-## Define snapshots in yml
+## Define snapshots in YAML
 
 Defining a snapshot in YAML treats snapshots as a distinct resource type, separate from models, allowing for improved organization and consistency within your code.
 
