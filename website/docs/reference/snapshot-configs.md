@@ -99,6 +99,8 @@ snapshots:
 
 </TabItem>
 
+</VersionBlock>
+
 <TabItem value="config">
 
 <VersionBlock lastVersion="1.8">
