@@ -14,9 +14,10 @@ MetricFlow requires you to define a time-spine table as a model-level configurat
 - [Conversion metrics](/docs/build/conversion)
 - [Slowly Changing Dimensions](/docs/build/dimensions#scd-type-ii)
 - [Metrics](/docs/build/metrics-overview) with the `join_to_timespine` configuration set to true
+
 To see the generated SQL for the metric and dimension types that use time-spine joins, refer to the respective documentation or add the `compile=True` flag when querying the Semantic Layer to return the compiled SQL.
 
-#### Configuring time-spine
+## Configuring time-spine in YAML
 - You only need to configure time-spine models that the Semantic Layer should recognize.
 - At a minimum, define a time-spine table for a daily grain.
 - You can optionally define a time-spine table for a different granularity, like hourly.
@@ -66,6 +67,9 @@ The example creates a time spine at a daily grain and an hourly grain. A few thi
 * You can add a time spine for each granularity you intend to use if query efficiency is more important to you than configuration time, or storage constraints. For most engines, the query performance difference should be minimal and transforming your time spine to a coarser grain at query time shouldn't add significant overhead to your queries.
 * We recommend having a time spine at the finest grain used in any of your dimensions to avoid unexpected errors. i.e., if you have dimensions at an hourly grain, you should have a time spine at an hourly grain.
 
+## Example time-spine tables
+
+### Daily
 <File name="metricflow_time_spine.sql">
 
 <VersionBlock lastVersion="1.6">
@@ -134,7 +138,7 @@ and date_hour < dateadd(day, 30, current_timestamp())
 ```
 </VersionBlock>
 
-
+### Daily (BigQuery)
 Use this model if you're using BigQuery. BigQuery supports `DATE()` instead of `TO_DATE()`:
 <VersionBlock lastVersion="1.6">
 
@@ -197,7 +201,7 @@ and date_hour < dateadd(day, 30, current_timestamp())
 
 </File>
 
-## Hourly time spine
+### Hourly 
 <File name='time_spine_hourly.sql'>
 
 ```sql
