@@ -1,6 +1,5 @@
 ---
 title: "Quickstart for the dbt Explorer Workshop"
-id: ex-qs
 description: "Use this guide to build and define metrics, set up the dbt Cloud Semantic Layer, and query them using Google Sheets."
 sidebar_label: "Quickstart dbt Explorer"
 icon: 'guides'
