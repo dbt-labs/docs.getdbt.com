@@ -29,7 +29,7 @@ snapshots:
 
 :::caution
 
-You might get a warning if the data type of the `updated_at` column does not match the adapter-configured default.
+You will get a warning if the data type of the `updated_at` column does not match the adapter-configured default.
 
 :::
 
