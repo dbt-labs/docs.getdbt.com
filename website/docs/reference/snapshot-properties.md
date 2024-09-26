@@ -69,7 +69,7 @@ snapshots:
 
 </File>
 
-<Expandable alt_header="Exceptions" >
+### Exceptions
 
 To carry out light transformation on your source or add logic into your snapshot, incorporate the following:
 
