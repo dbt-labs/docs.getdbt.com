@@ -12,15 +12,21 @@ recently_updated: true
 
 
 ## Introduction
-Unlock the power of [dbt Explorer](/docs/collaborate/explore-projects) in this hands-on workshop designed for analytics engineers, data analysts, stakeholders, and data leaders! Dive into a production-level dbt Mesh implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your dbt projects to the next level.
 
-**You’ll learn how to:**
+Unlock the power of [dbt Explorer](/docs/collaborate/explore-projects) in this hands-on workshop designed for analytics engineers, data analysts, stakeholders, and data leaders.
+
+This quickstart guide accompanies the Explorer hands-on workshop and help you dive into a production-level dbt Mesh implementation and discover how to explore your data workflows.⁠ Whether you're looking to streamline your data operations, improve data quality, or self-serve information about your data platform, this workshop will equip you with the tools and knowledge to take your dbt projects to the next level.
+
+By the end of the guide and workshop, you'll understand how to leverage dbt Explorer and have the confidence to navigate multiple dbt projects, trace dependencies, and identify opportunities to improve performance and data quality.
+
+### What you'll learn
+In this guide, you will learn how to:
 - Navigate multiple dbt projects using dbt Explorer
 - Self-serve on data documentation
 - Trace dependencies at the model and column level
 - Identify opportunities to improve performance and data quality
 
-**Prerequisites:**
+### Prerequisites
 - Familiarity with data platforms
 
 ## Setup
@@ -28,8 +34,10 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
 - Go to this URL:  https://cloud.getdbt.com/coalesce-workshop-signup
   - If you are already signed into dbt Cloud, sign out first!
   - Enter your first name and last name
-  - Choose the “Exploring a dbt Mesh implementation with dbt Explorer” option.
-- Agree to the terms of service and click the “Complete Registration” button. Wait about 30 seconds, and you’ll be in the dbt Cloud project for this course, already connected to a data warehouse!
+  - Choose the **Exploring a dbt Mesh implementation with dbt Explorer** option.
+  - Enter the password provided by the workshop facilitator
+- Agree to the terms of service and click the **Complete Registration** button.
+- Wait about 30 seconds, and you’ll be in the dbt Cloud project for this course, already connected to a data warehouse!
 
 ## Get and overview of your project and view the status of your latest runs
 
@@ -50,7 +58,7 @@ With dbt Explorer, you can view your project's resources (such as models, tests,
  
 ## Lineage
 
-dbt Explorer provides a visualization of your project’s [DAG](/terms/dag) that you can interact with. The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
+dbt Explorer provides a visualization of your project’s <Term id="dag"/> that you can interact with. The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
 - Use the search bar and [node selectors](/reference/node-selection/syntax) to filter your dag.
 - [Lenses](/docs/collaborate/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
