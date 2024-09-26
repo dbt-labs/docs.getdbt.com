@@ -31,7 +31,7 @@ link="/dbt-cloud/api-v2"
 
 <Card
     title="API v3"
-    body="Our latest API version, with new endpoints and features. These docs are in beta and may not be complete."
+    body="Our latest API version, with new endpoints and features."
 link="/dbt-cloud/api-v3"
     icon="pencil-paper"/>
 
