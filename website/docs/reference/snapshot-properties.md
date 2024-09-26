@@ -71,7 +71,7 @@ snapshots:
 
 <Expandable alt_header="Exceptions" >
 
-If you want to carry out light transformation on your source, or bake logic into your snapshot, you can incorporate the following:
+To carry out light transformation on your source or add logic into your snapshot, incorporate the following:
 
 - Types of logic: filters, deduplication, surrogate → unique key and more so.
 - Best practice: you can snapshot an ephemeral model that contains the logic.
