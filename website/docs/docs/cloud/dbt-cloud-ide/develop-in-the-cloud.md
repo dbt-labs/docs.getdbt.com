@@ -11,7 +11,6 @@ pagination_prev: null
 The dbt Cloud integrated development environment (IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 
 
 The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) and [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
-The dbt Cloud IDE offers several [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/keyboard-shortcuts) and [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and efficient development and governance:
 
 - Syntax highlighting for SQL &mdash; Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
 - AI co-pilot &mdash; Use [dbt Assist](/docs/cloud/dbt-assist), a powerful AI co-pilot feature, to generate documentation and tests for your dbt SQL models.
@@ -102,6 +101,7 @@ Nice job, you're ready to start developing and building models 🎉!
 ### Considerations
 - To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
 - To preserve performance, there's a file size limitation for repositories over 6 GB. If you have a repo over 6 GB, please contact [dbt Support](mailto:support@getdbt.com) before running dbt Cloud.
+- The IDE's idle session timeout is one hour.
 - <Expandable alt_header="About the start up process and work retention">
   
   ### Start-up process
@@ -128,6 +128,7 @@ Nice job, you're ready to start developing and building models 🎉!
   - If a model or test fails, dbt Cloud makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
   - Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
   - Starting from dbt v1.6, leverage [environments variables](/docs/build/environment-variables#special-environment-variables) to dynamically use the Git branch name. For example, using the branch name as a prefix for a development schema.
+  - Run [MetricFlow commands](/docs/build/metricflow-commands) to create and manage metrics in your project with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
 
 - **Generate your YAML configurations with dbt Assist** <Lifecycle status="beta"/>  &mdash; [dbt Assist](/docs/cloud/dbt-assist) is a powerful artificial intelligence (AI) co-pilot feature that helps automate development in dbt Cloud. It generates documentation and tests for your dbt SQL models directly in the dbt Cloud IDE, with a click of a button, and helps you accomplish more in less time. Available for dbt Cloud Enterprise plans.
 

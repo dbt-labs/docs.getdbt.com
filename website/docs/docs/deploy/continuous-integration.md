@@ -2,6 +2,7 @@
 title: "Continuous integration in dbt Cloud"
 sidebar_label: "Continuous integration"
 description: "You can set up continuous integration (CI) checks to test every single change prior to deploying the code to production just like in a software development workflow."
+pagination_next: "docs/deploy/advanced-ci"
 ---
 
 To implement a continuous integration (CI) workflow in dbt Cloud, you can set up automation that tests code changes by running [CI jobs](/docs/deploy/ci-jobs) before merging to production. dbt Cloud tracks the state of what’s running in your production environment so, when you run a CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema. You can also view the status of the CI checks (tests) directly from within the PR; this information is posted to your Git provider as soon as a CI job completes. Additionally, you can enable settings in your Git provider that allow PRs only with successful CI checks be approved for merging.  
@@ -30,9 +31,10 @@ dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> w
 
 The [dbt Cloud scheduler](/docs/deploy/job-scheduler) executes CI jobs differently from other deployment jobs in these important ways:
 
-- **Concurrent CI checks** &mdash; CI runs triggered by the same dbt Cloud CI job execute concurrently (in parallel), when appropriate
-- **Smart cancellation of stale builds** &mdash; Automatically cancels stale, in-flight CI runs when there are new commits to the PR
-- **Run slot treatment** &mdash; CI runs don't consume a run slot
+- **Concurrent CI checks** &mdash; CI runs triggered by the same dbt Cloud CI job execute concurrently (in parallel), when appropriate.
+- **Smart cancellation of stale builds** &mdash; Automatically cancels stale, in-flight CI runs when there are new commits to the PR.
+- **Run slot treatment** &mdash; CI runs don't consume a run slot.
+- **SQL linting**<Lifecycle status="beta" /> &mdash; When enabled, automatically lints all SQL files in your project as a run step before your CI job builds.
 
 ### Concurrent CI checks
 
@@ -44,7 +46,7 @@ Below describes the conditions when CI checks are run concurrently and when they
 - CI runs with the _same_ PR number and _different_ commit SHAs execute serially because they’re building into the same schema. dbt Cloud will run the latest commit and cancel any older, stale commits. For details, refer to [Smart cancellation of stale builds](#smart-cancellation). 
 - CI runs with the same PR number and same commit SHA, originating from different dbt Cloud projects will execute jobs concurrently. This can happen when two CI jobs are set up in different dbt Cloud projects that share the same dbt repository.
 
-### Smart cancellation of stale builds {#smart-cancellation}
+### Smart cancellation of stale builds
 
 When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the latest commit and cancels any CI run that is (now) stale and still in flight. This can happen when you’re pushing new commits while a CI build is still in process and not yet done. By cancelling runs in a safe and deliberate way, dbt Cloud helps improve productivity and reduce data platform spend on wasteful CI runs.
 
@@ -53,3 +55,11 @@ When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the late
 ### Run slot treatment <Lifecycle status="team,enterprise" />
 
 CI runs don't consume run slots. This guarantees a CI check will never block a production run.
+
+### SQL linting <Lifecycle status="beta" />
+
+When enabled for your CI job, dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. By default, it lints all the SQL files in your project. 
+
+If the linter runs into errors, you can specify whether dbt should fail the job or continue running it. When failing jobs, it helps reduce compute costs by avoiding builds for pull requests that don't meet your SQL code quality CI check. 
+
+To override the default linting behavior, create an `.sqlfluff` config file in your project and add your linting rules to it. dbt Cloud will use the rules defined in the config file when linting. For details about linting rules, refer to [Custom Usage](https://docs.sqlfluff.com/en/stable/gettingstarted.html#custom-usage) in the SQLFluff documentation.

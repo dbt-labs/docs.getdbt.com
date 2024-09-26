@@ -72,6 +72,41 @@ You can use hooks to provide database-specific functionality not available out-o
 
 You can also use a [macro](/docs/build/jinja-macros#macros) to bundle up hook logic. Check out some of the examples in the reference sections for [on-run-start and on-run-end hooks](/reference/project-configs/on-run-start-on-run-end) and [pre- and post-hooks](/reference/resource-configs/pre-hook-post-hook).
 
+<File name='models/<model_name>.sql'>
+
+```sql
+{{ config(
+    pre_hook=[
+      "{{ some_macro() }}"
+    ]
+) }}
+```
+
+</File>
+
+<File name='models/properties.yml'>
+
+```yaml
+models:
+  - name: <model_name>
+    config:
+      pre_hook:
+        - "{{ some_macro() }}"
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  <project_name>:
+    +pre-hook:
+      - "{{ some_macro() }}"
+```
+
+</File>
+
 ## About operations
 
 Operations are [macros](/docs/build/jinja-macros#macros) that you can run using the [`run-operation`](/reference/commands/run-operation) command. As such, operations aren't actually a separate resource in your dbt project — they are just a convenient way to invoke a macro without needing to run a model.

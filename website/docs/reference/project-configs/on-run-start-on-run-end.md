@@ -20,7 +20,7 @@ on-run-end: sql-statement | [sql-statement]
 
 A SQL statement (or list of SQL statements) to be run at the start or end of the following commands: <OnRunCommands />
 
-`on-run-start` and `on-run-end` hooks can also call macros that return SQL statements
+`on-run-start` and `on-run-end` hooks can also [call macros](#call-a-macro-to-grant-privileges) that return SQL statements.
 
 ## Usage notes
 * The `on-run-end` hook has additional jinja variables available in the context — check out the [docs](/reference/dbt-jinja-functions/on-run-end-context).

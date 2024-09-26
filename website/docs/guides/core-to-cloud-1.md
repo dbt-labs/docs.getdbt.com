@@ -24,17 +24,19 @@ import CoretoCloudTable from '/snippets/_core-to-cloud-guide-table.md';
 
 <CoretoCloudTable/>
 
+<Expandable alt_header="What is dbt Cloud and dbt Core?">
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
-- Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
-- Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
-- The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
-- Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
-- [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
+   - dbt Cloud is the fastest and most reliable way to deploy dbt. It enables you to develop, test, deploy, and explore data products using a single, fully managed service. It also supports:
+     - Development experiences tailored to multiple personas ([dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation))
+     - Out-of-the-box [CI/CD workflows](/docs/deploy/ci-jobs)
+     - The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) for consistent metrics
+     - Domain ownership of data with multi-project [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro) setups
+     - [dbt Explorer](/docs/collaborate/explore-projects) for easier data discovery and understanding
 
-Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
+   Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
+- dbt Core is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
 
-dbt Core is an open-source tool that enables data teams to define and execute data transformations in a cloud data warehouse following analytics engineering best practices. While this can work well for ‘single players’ and small technical teams, all development happens on a command-line interface, and production deployments must be self-hosted and maintained. This requires significant, costly work that adds up over time to maintain and scale.
+</Expandable>
 
 ## What you'll learn
 
@@ -57,7 +59,7 @@ This guide outlines the steps you need to take to move from dbt Core to dbt Clou
 ## Prerequisites
 
 - You have an existing dbt Core project connected to a Git repository and data platform supported in [dbt Cloud](/docs/cloud/connect-data-platform/about-connections).
-- A [supported version](/docs/dbt-versions/core) of dbt or select [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) of dbt. <Lifecycle status="Preview"/>
+- A [supported version](/docs/dbt-versions/core) of dbt or select [**Versionless**](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) of dbt. 
 - You have a dbt Cloud account. **[Don't have one? Start your free trial today](https://www.getdbt.com/signup)**!
 
 ## Account setup
@@ -74,9 +76,9 @@ This section outlines the steps to set up your dbt Cloud account and configure i
 ### Additional configuration
 Explore these additional configurations for performance and reliability improvements:
 
-1. In **Account settings**, enable [partial parsing](/docs/deploy/deploy-environments#partial-parsing) to only reparse changed files, saving time.
+1. In **Account settings**, enable [partial parsing](/docs/cloud/account-settings#partial-parsing) to only reparse changed files, saving time.
 
-2. In **Account settings**, enable [Git repo caching](/docs/deploy/deploy-environments#git-repository-caching) for job reliability & third-party outage protection. <Lifecycle status='enterprise' />
+2. In **Account settings**, enable [Git repo caching](/docs/cloud/account-settings#git-repository-caching) for job reliability & third-party outage protection. <Lifecycle status='enterprise' />
 
 ## Data platform setup
 
@@ -84,8 +86,10 @@ This section outlines the considerations and methods to connect your data platfo
 
 1. In dbt Cloud, set up your [data platform connections](/docs/cloud/connect-data-platform/about-connections) and [environment variables](/docs/build/environment-variables). dbt Cloud can connect with a variety of data platform providers including:
    - [AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
+   - [Amazon Athena](/docs/cloud/connect-data-platform/connect-amazon-athena) (beta)
    - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
    - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
+   - [Azure Synapse Analytics](/docs/cloud/connect-data-platform/connect-azure-synapse-analytics)
    - [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
    - [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery)
    - [Microsoft Fabric](/docs/cloud/connect-data-platform/connect-microsoft-fabric)
@@ -138,7 +142,7 @@ The most common data environments are production, staging, and development. The 
 - Streamlining the process of switching between development, staging, and production contexts.
 - Making it easy to configure environments through the dbt Cloud UI instead of manually editing the `profiles.yml` file. You can also [set up](/reference/dbt-jinja-functions/target) or [customize](/docs/build/custom-target-names) target names in dbt Cloud.
 - Adding `profiles.yml` attributes to dbt Cloud environment settings with [Extended Attributes](/docs/dbt-cloud-environments#extended-attributes).
-- Using [Git repo caching](/docs/dbt-cloud-environments#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="enterprise"/>
+- Using [Git repo caching](/docs/cloud/account-settings#git-repository-caching) to protect you from third-party outages, Git auth failures, and more. <Lifecycle status="enterprise"/>
 
 ### Initial setup steps
 1. **Set up development environment** &mdash; Set up your [development](/docs/dbt-cloud-environments#create-a-development-environment) environment and [development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide). You’ll need this to access your dbt project and start developing.
@@ -229,6 +233,8 @@ Explore these additional configurations to optimize your dbt Cloud orchestration
 ### CI/CD setup
 
 Building a custom solution to efficiently check code upon pull requests is complicated. With dbt Cloud, you can enable [continuous integration / continuous deployment (CI/CD)](/docs/deploy/continuous-integration) and configure dbt Cloud to run your dbt projects in a temporary schema when new commits are pushed to open pull requests.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-workflow.png" width="90%" title="Workflow of continuous integration in dbt Cloud"/>
 
 This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool for data practitioners.
 

@@ -52,21 +52,29 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
   The config file looks like this:
 
-    ```yaml
-    version: "1"
-    context:
-        active-project: "<project id from the list below>"
-        active-host: "<active host from the list>"
-        defer-env-id: "<optional defer environment id>"
-    projects:
-    - project-id: "<project-id>"
-        account-host: "<account-host>"
-        api-key: "<user-api-key>"
-
-    - project-id: "<project-id>"
-        account-host: "<account-host>"
-        api-key: "<user-api-key>"
-    ```
+  ```yaml
+  version: "1"
+  context:
+    active-project: "<project id from the list below>"
+    active-host: "<active host from the list>"
+    defer-env-id: "<optional defer environment id>"
+  projects:
+    - project-name: "<project-name>"
+      project-id: "<project-id>"
+      account-name: "<account-name>"
+      account-id: "<account-id>"
+      account-host: "<account-host>" # for example, "cloud.getdbt.com"
+      token-name: "<pat-or-service-token-name>"
+      token-value: "<pat-or-service-token-value>"
+  
+    - project-name: "<project-name>"
+      project-id: "<project-id>"
+      account-name: "<account-name>"
+      account-id: "<account-id>"
+      account-host: "<account-host>" # for example, "cloud.getdbt.com"
+      token-name: "<pat-or-service-token-name>"
+      token-value: "<pat-or-service-token-value>"  
+  ```
 
 3. After downloading the config file and creating your directory, navigate to a dbt project in your terminal:
 
@@ -100,7 +108,6 @@ To set environment variables in the dbt Cloud CLI for your dbt project:
 2. Then select **Profile Settings**, then **Credentials**.
 3. Click on your project and scroll to the **Environment Variables** section.
 4. Click **Edit** on the lower right and then set the user-level environment variables.  
-   - Note, when setting up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), using [environment variables](/docs/build/environment-variables) like `{{env_var('DBT_WAREHOUSE')}}` is not supported. You should use the actual credentials instead.
 
 ## Use the dbt Cloud CLI
 
@@ -187,5 +194,12 @@ move %USERPROFILE%\Downloads\dbt_cloud.yml %USERPROFILE%\.dbt\dbt_cloud.yml
 </Tabs>
 
 This command moves the `dbt_cloud.yml` from the `Downloads` folder to the `.dbt` folder. If your `dbt_cloud.yml` file is located elsewhere, adjust the path accordingly.
+
+</Expandable>
+
+<Expandable alt_header="How to skip artifacts from being downloaded">
+
+By default, [all artifacts](/reference/artifacts/dbt-artifacts) are downloaded when you execute dbt commands from the dbt Cloud CLI. To skip these files from being downloaded, add `--download-artifacts=false` to the command you want to run. This can help improve run-time performance but might break workflows that depend on assets like the [manifest](/reference/artifacts/manifest-json). 
+
 
 </Expandable>

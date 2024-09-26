@@ -339,9 +339,7 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project and start developing
-This guide assumes you use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project and define metrics. However, the dbt Cloud IDE doesn't support using [MetricFlow commands](/docs/build/metricflow-commands) to query or preview metrics (support coming soon).
-
-To query and preview metrics in your development tool, you can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to run the [MetricFlow commands](/docs/build/metricflow-commands).
+This guide assumes you use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
 
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud using the IDE:
 
@@ -619,6 +617,11 @@ select * from final
 In the following steps, semantic models enable you to define how to interpret the data related to orders. It includes entities (like ID columns serving as keys for joining data), dimensions (for grouping or filtering data), and measures (for data aggregations).
 
 1. In the `metrics` sub-directory, create a new file `fct_orders.yml`.
+
+:::tip 
+Make sure to save all semantic models and metrics under the directory defined in the [`model-paths`](/reference/project-configs/model-paths) (or a subdirectory of it, like `models/semantic_models/`). If you save them outside of this path, it will result in an empty `semantic_manifest.json` file, and your semantic models or metrics won't be recognized.
+:::
+
 2. Add the following code to that newly created file:
 
 <File name='models/metrics/fct_orders.yml'>
@@ -661,7 +664,8 @@ semantic_models:
     entities: 
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
 ```
 
@@ -686,8 +690,9 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
-        type: foreign  
+      - name: customer
+        expr: customer_id
+        type: foreign
     # Newly added
     dimensions:   
       - name: order_date
@@ -717,7 +722,8 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
     dimensions:
       - name: order_date
@@ -762,7 +768,11 @@ There are different types of metrics you can configure:
 
 Once you've created your semantic models, it's time to start referencing those measures you made to create some metrics:
 
-Add metrics to your `fct_orders.yml` semantic model file:
+1. Add metrics to your `fct_orders.yml` semantic model file:
+
+:::tip 
+Make sure to save all semantic models and metrics under the directory defined in the [`model-paths`](/reference/project-configs/model-paths) (or a subdirectory of it, like `models/semantic_models/`). If you save them outside of this path, it will result in an empty `semantic_manifest.json` file, and your semantic models or metrics won't be recognized.
+:::
 
 <File name='models/metrics/fct_orders.yml'>
 
@@ -777,7 +787,8 @@ semantic_models:
     entities:
       - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
+        expr: customer_id
         type: foreign
     dimensions:
       - name: order_date
@@ -811,21 +822,24 @@ metrics:
     type: simple
     label: "order_total"
     type_params:
-      measure: order_total
+      measure:
+        name: order_total
   - name: "order_count"
     description: "number of orders"
     type: simple
     label: "order_count"
     type_params:
-      measure: order_count
+      measure:
+        name: order_count
   - name: large_orders
     description: "Count of orders with order total over 20."
     type: simple
     label: "Large Orders"
     type_params:
-      measure: order_count
+      measure:
+        name: order_count
     filter: |
-      {{ Dimension('order_id__order_total_dim') }} >= 20
+      {{ Metric('order_total', group_by=['order_id']) }} >=  20
   # Ratio type metric
   - name: "avg_order_value"
     label: "avg_order_value"
@@ -840,7 +854,8 @@ metrics:
     description: "The month to date value of all orders"
     type: cumulative
     type_params:
-      measure: order_total
+      measure:
+        name: order_total
       grain_to_date: month
   # Derived metric
   - name: "pct_of_orders_that_are_large"
@@ -912,11 +927,11 @@ metrics:
     description: "Unique count of customers placing orders"
     type: simple
     type_params:
-      measure: customers
+      measure:
+        name: customers
 ```
 
 </File>
-
 
 This semantic model uses simple metrics to focus on customer metrics and emphasizes customer dimensions like name, type, and order dates. It uniquely analyzes customer behavior, lifetime value, and order patterns.
 
@@ -938,15 +953,6 @@ https://github.com/dbt-labs/docs.getdbt.com/blob/current/website/snippets/_sl-ru
 
 <RunProdJob/>
 
-<details>
-
-<summary>What’s happening internally?</summary>
-
-- Merging the code into your main branch allows dbt Cloud to pull those changes and build the definition in the manifest produced by the run. <br />
-- Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.<br />
-- The Semantic Layer APIs pull in the most recent manifest and enables your integration to extract metadata from it.
-
-</details>
 
 ## Set up dbt Semantic Layer
 

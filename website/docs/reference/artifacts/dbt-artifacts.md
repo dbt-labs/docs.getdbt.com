@@ -28,6 +28,8 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [catalog](catalog-json): produced by `docs generate`
 - [sources](/reference/artifacts/sources-json): produced by `source freshness`
 
+When running commands from the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), all artifacts are downloaded by default. If you want to change this behavior, refer to [How to skip artifacts from being downloaded](/docs/cloud/configure-cloud-cli#how-to-skip-artifacts-from-being-downloaded).
+
 ## Where are artifacts produced?
 
 By default, artifacts are written to the `/target` directory of your dbt project. You can configure the location using the [`target-path` flag](/reference/global-configs/json-artifacts).

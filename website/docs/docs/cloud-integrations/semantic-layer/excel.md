@@ -6,8 +6,6 @@ tags: [Semantic Layer]
 sidebar_label: "Microsoft Excel"
 ---
 
-# Microsoft Excel <Lifecycle status='preview'/>
-
 The dbt Semantic Layer offers a seamless integration with Excel Online and Desktop through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Excel.
 
 ## Prerequisites
@@ -25,7 +23,7 @@ import SLCourses from '/snippets/_sl-course.md';
 
 ## Installing the add-on
 
-The dbt Semantic Layer Microsoft Excel integration is available to download directly on [Microsoft AppSource](https://appsource.microsoft.com/en-us/marketplace/apps?product=office). You can choose to download this add in for both [Excel Desktop](https://pages.store.office.com/addinsinstallpage.aspx?assetid=WA200007100&rs=en-US&correlationId=4132ecd1-425d-982d-efb4-de94ebc83f26) and [Excel Online](https://pages.store.office.com/addinsinstallpage.aspx?assetid=WA200007100&rs=en-US&correlationid=4132ecd1-425d-982d-efb4-de94ebc83f26&isWac=True)
+The dbt Semantic Layer Microsoft Excel integration is available to download directly on [Microsoft AppSource](https://appsource.microsoft.com/en-us/product/office/WA200007100?tab=Overview). You can choose to download this add-on in for both [Excel Desktop](https://pages.store.office.com/addinsinstallpage.aspx?assetid=WA200007100&rs=en-US&correlationId=4132ecd1-425d-982d-efb4-de94ebc83f26) and [Excel Online](https://pages.store.office.com/addinsinstallpage.aspx?assetid=WA200007100&rs=en-US&correlationid=4132ecd1-425d-982d-efb4-de94ebc83f26&isWac=True)
 
 1. In Excel, authenticate with your host, dbt Cloud environment ID, and service token.
    - Access your Environment ID, Host, and URLs in your dbt Cloud Semantic Layer settings. Generate a service token in the Semantic Layer settings or API tokens settings
@@ -37,11 +35,11 @@ import Tools from '/snippets/_sl-excel-gsheets.md';
 
 <Tools 
 type="Microsoft Excel"
-bullet_1="There's no timeout limit."
+bullet_1="There's a timeout of 1 minute for queries."
 bullet_2="If you're using this extension, make sure you're signed into Microsoft with the same Excel profile you used to set up the Add-In. Log in with one profile at a time as using multiple  profiles at once might cause issues."
+queryBuilder="/img/docs/dbt-cloud/semantic-layer/query-builder.png"
 />
 
-<!-- placeholder for excel image URL prop: queryBuilder="/img/docs/dbt-cloud/semantic-layer/sl-and-gsheets.jpg"-->
 
 ## FAQs
 <FAQ path="Troubleshooting/sl-alpn-error" />

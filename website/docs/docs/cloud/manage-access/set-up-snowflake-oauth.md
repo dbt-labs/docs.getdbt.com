@@ -10,14 +10,34 @@ This guide describes a feature of the dbt Cloud Enterprise plan. If you’re int
 
 :::
 
-dbt Cloud Enterprise supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with Snowflake. When Snowflake OAuth is enabled, users can authorize their Development credentials using Single Sign On (SSO) via Snowflake rather than submitting a username and password to dbt Cloud. If Snowflake is setup with SSO through a third-party identity provider, developers can use this method to log into Snowflake and authorize the dbt Development credentials without any additional setup.
+dbt Cloud Enterprise supports [OAuth authentication](https://docs.snowflake.net/manuals/user-guide/oauth-intro.html) with Snowflake. When Snowflake OAuth is enabled, users can authorize their Development credentials using Single Sign On (SSO) via Snowflake rather than submitting a username and password to dbt Cloud. If Snowflake is set up with SSO through a third-party identity provider, developers can use this method to log into Snowflake and authorize the dbt Development credentials without any additional setup.
 
-### Configuring a security integration
-To enable Snowflake OAuth, you will need to create a [security integration](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html) in Snowflake to manage the OAuth connection between dbt Cloud and Snowflake.
+To set up Snowflake OAuth in dbt Cloud, admins from both are required for the following steps:
+1. [Locate the redirect URI value](#locate-the-redirect-uri-value) in dbt Cloud.
+2. [Create a security integration](#create-a-security-integration) in Snowflake.
+3. [Configure a connection](#configure-a-connection-in-dbt-cloud) in dbt Cloud.
+
+To use Snowflake in the dbt Cloud IDE, all developers must [authenticate with Snowflake](#authorize-developer-credentials) in their profile credentials.
+
+### Locate the redirect URI value
+
+To get started, copy the connection's redirect URI from dbt Cloud:
+1. Navigate to **Account settings**.
+1. Select **Projects** and choose a project from the list. 
+1. Select the connection to view its details and set the **OAuth method** to "Snowflake SSO".
+1. Copy the **Redirect URI** to use in the later steps.
+
+<Lightbox
+	src="/img/docs/dbt-cloud/dbt-cloud-enterprise/snowflake-oauth-redirect-uri.png"
+	title="Locate the Snowflake OAuth redirect URI"
+	alt="The OAuth method and Redirect URI inputs for a Snowflake connection in dbt Cloud."
+/>
 
 ### Create a security integration
 
-In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). In the following example `create or replace security integration` query, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/access-regions-ip-addresses) for your region and plan.
+In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). 
+
+In the following `CREATE OR REPLACE SECURITY INTEGRATION` example query, replace `<REDIRECT_URI>` value with the Redirect URI (also referred to as the [access URL](/docs/cloud/about-cloud/access-regions-ip-addresses)) copied in dbt Cloud. To locate the Redirect URI, refer to the previous [locate the redirect URI value](#locate-the-redirect-uri-value) section.
 
 ```
 CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
@@ -25,7 +45,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
   ENABLED = TRUE
   OAUTH_CLIENT = CUSTOM
   OAUTH_CLIENT_TYPE = 'CONFIDENTIAL'
-  OAUTH_REDIRECT_URI = 'https://YOUR_ACCESS_URL/complete/snowflake'
+  OAUTH_REDIRECT_URI = '<REDIRECT_URI>'
   OAUTH_ISSUE_REFRESH_TOKENS = TRUE
   OAUTH_REFRESH_TOKEN_VALIDITY = 7776000;
 ```
@@ -42,7 +62,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
 | ENABLED  | Required |
 | OAUTH_CLIENT  | Required |
 | OAUTH_CLIENT_TYPE  | Required |
-| OAUTH_REDIRECT_URI  | Required. Use the access URL that corresponds to your server [region](/docs/cloud/about-cloud/access-regions-ip-addresses). |
+| OAUTH_REDIRECT_URI  | Required. Use the value in the [dbt Cloud account settings](#locate-the-redirect-uri-value). |
 | OAUTH_ISSUE_REFRESH_TOKENS  | Required |
 | OAUTH_REFRESH_TOKEN_VALIDITY  | Required. This configuration dictates the number of seconds that a refresh token is valid for. Use a smaller value to force users to re-authenticate with Snowflake more frequently. |
 
@@ -70,11 +90,11 @@ Enter the Client ID and Client Secret into dbt Cloud to complete the creation of
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth credentials in dbt Cloud" />
 
-### Authorize Developer Credentials
+### Authorize developer credentials
 
 Once Snowflake SSO is enabled, users on the project will be able to configure their credentials in their Profiles. By clicking the "Connect to Snowflake Account" button, users will be redirected to Snowflake to authorize with the configured SSO provider, then back to dbt Cloud to complete the setup process. At this point, users should now be able to use the dbt IDE with their development credentials.
 
-### SSO OAuth Flow Diagram
+### SSO OAuth flow diagram
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/84427818-841b3680-abf3-11ea-8faf-693d4a39cffb.png" title="SSO OAuth flow diagram" />
 

@@ -5,13 +5,7 @@ description: "Configure the Amazon Athena data platform connection in dbt Cloud.
 sidebar_label: "Connect Amazon Athena"
 ---
 
-# Connect Amazon Athena <Lifecycle status="beta" />
-
-:::note beta
-
-This is a beta feature with limited availability. A public preview will follow shortly, for wider early access. For more information, check out our [product lifecycle](/docs/dbt-versions/product-lifecycles#dbt-cloud) page. 
-
-:::
+# Connect Amazon Athena <Lifecycle status="preview" />
 
 Your environment(s) must be on ["Versionless"](/docs/dbt-versions/versionless-cloud) to use the Amazon Athena connection.
 

@@ -124,7 +124,7 @@ mf query --metrics users_created,users_deleted --group-by metric_time__year --or
 
 You can set `is_partition` for time to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation details (hourly, daily, weekly, and so on).
 
-<Tabs>
+<Tabs queryString="dimension">
 
 <TabItem value="is_partition" label="is_partition">
 
@@ -170,6 +170,10 @@ Our supported granularities are:
 * second
 * minute
 * hour
+* day
+* week
+* quarter
+* year
 
 Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the coarsest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
@@ -240,7 +244,7 @@ Here’s an example configuration:
 - name: tier_start #  The name of the dimension.
   type: time # The type of dimension (such as time)
   label: "Start date of tier" # A readable label for the dimension
-  expr: start_date # Expression or column name the the dimension represents
+  expr: start_date # Expression or column name the dimension represents
   type_params: # Additional parameters for the dimension type
     time_granularity: day # Specifies the granularity of the time dimension (such as day)
     validity_params: # Defines the validity window
