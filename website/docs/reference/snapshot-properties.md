@@ -48,7 +48,7 @@ snapshots:
 
 Defining a snapshot in YAML treats snapshots as a distinct resource type, separate from models, allowing for improved organization and consistency within your code.
 
-To add extra logic to your snapshot, you can break it out into an ephemeral model for cleaner development and testing, and then create a snapshot of that model.
+They don't contain logic, similar to exposures, sources, and tests. To add extra logic to your snapshot, you can break it out into an ephemeral model for cleaner development and testing, and then create a snapshot of that model.
 
 <File name='snapshots/<filename>.yml'>
 
