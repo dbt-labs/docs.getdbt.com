@@ -81,7 +81,7 @@ snapshots:
 <TabItem value="property-yaml">
 
 
-
+<VersionBlock firstVersion="1.9">
 
 <File name='snapshots/schema.yml'>
 
