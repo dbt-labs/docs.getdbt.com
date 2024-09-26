@@ -74,7 +74,7 @@ snapshots:
 To carry out light transformation on your source or add logic into your snapshot, incorporate the following:
 
 - Types of logic: filters, deduplication, surrogate → unique key, and so on.
-- Best practice: you can snapshot an ephemeral model that contains the logic.
+- Best practice: snapshot an ephemeral model that contains the logic.
 
 This approach also speeds up development, as it lets you run the query directly without needing to run the snapshot every time.
 
