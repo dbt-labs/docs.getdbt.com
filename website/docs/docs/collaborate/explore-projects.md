@@ -187,7 +187,8 @@ Access trust signals using the search function or when clicking on **Models** un
 
 #### Degraded
 - Last run failed or source freshness error
-  
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signals-degraded.jpg" title="Degraded trust signal icon"/>
+
 #### Unknown
 - Health information is unknown because the resource hasn't been run recently. 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-unknown.png" title="Unknown trust signal icon"/>
