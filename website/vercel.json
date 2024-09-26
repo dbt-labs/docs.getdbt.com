@@ -3587,7 +3587,7 @@
       "permanent": true
     },
     {
-      "source": "/terms/:path*",
+      "source": "/terms/:path((?!elt|etl|reverse-etl).*)",
       "destination": "https://www.getdbt.com/blog",
       "permanent": true
     }
