@@ -64,7 +64,6 @@ dbt Cloud CLI users can run `dbt sl --help` in the terminal for a complete list 
 | [`query`](#query) | Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.  |  ✅ | ✅ |
 | [`validate`](#validate) | Validates semantic model configurations. |  ✅ | ✅ |
 | [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ |
-
 | [`list entities`](#list-entities) | Lists all unique entities.  |  ✅  | ✅ |
 | [`export`](#export) |  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. |  ❌ | ✅ |
 | [`export-all`](#export-all) | Runs exports for multiple saved queries at once, saving time and effort. |  ❌ | ✅ |
