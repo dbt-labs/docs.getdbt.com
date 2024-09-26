@@ -1,5 +1,6 @@
 ---
 title: "Quickstart for the dbt Explorer workshop"
+id: "explorer-quickstart"
 description: "Use this guide to build and define metrics, set up the dbt Cloud Semantic Layer, and query them using Google Sheets."
 sidebar_label: "Quickstart dbt Explorer"
 icon: 'guides'
@@ -81,10 +82,9 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
   - Click on the other project's lineage.
 3. Explore lenses and find table materializations in your current project.
   - Which are the biggest view clusters?
-4. Experiment with different lenses, such as **Model Layer**, **Test Status**, or **Resource**.
-- Drill down on a node→ Explore the Column Lineage and its Evolution
-  - Expand each columns full lineage
-
+4. Experiment with different lenses, such as **Model layer**, **Test status**, **Resource type**, and so on.
+5. Drill down on a node and explore the **Column Lineage** and its evolution.
+  - Expand each column's full lineage.
 
 ## Mutli-Project
 Use dbt Explorer to gain a deeper understanding of *all* of you dbt Cloud projects with it's [multi-project capabilities](/docs/collaborate/explore-multiple-projects). 
