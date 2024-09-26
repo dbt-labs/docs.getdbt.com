@@ -54,7 +54,7 @@ With dbt Explorer, you can view your project's resources (such as models, tests,
 dbt Explorer provides a visualization of your project’s [DAG](/terms/dag) that you can interact with. The nodes in the lineage graph represent the project’s resources and the edges represent the relationships between the nodes. Nodes are color-coded and include iconography according to their resource type.
 
 - Use the search bar and [node selectors](/reference/node-selection/syntax) to filter your dag.
-- [Lenses](docs/collaborate/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
+- [Lenses](/docs/collaborate/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
   - When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value
 
  <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" title="dbt Explorer's lineage graph" />
