@@ -51,9 +51,11 @@ MetricFlow provides the following commands to retrieve metadata and query metric
 <Tabs>
 <TabItem value="cloudcommands" label="Commands for dbt Cloud">
 
-You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud IDE or dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. Note: Only the `list`, `query`, and `validate` commands are available in the dbt Cloud IDE.
+You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud IDE or dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. 
 
 dbt Cloud CLI users can run `dbt sl --help` in the terminal for a complete list of the MetricFlow commands and flags.
+
+The following table lists the commands compatible with the dbt Cloud IDE and dbt Cloud CLI:
 
 | <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | dbt Cloud IDE | dbt Cloud CLI |
 |---------|-------------|---------------|---------------|
