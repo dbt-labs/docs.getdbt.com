@@ -44,13 +44,8 @@ Use the `resource_type` method to select nodes of a particular type (`model`, `t
 
   ```bash
 dbt build --select "resource_type:exposure"    # build all resources upstream of exposures
-dbt list --select "resource_type:test"    # list all tests in your project
-```
-
-Note: This method doesn't work for sources, so use the [`--resource-type`](/reference/commands/list) option of the list command instead:
-
-  ```bash
-dbt list --resource-type source
+dbt list --select "resource_type:test"         # list all tests in your project
+dbt list --select "resource_type:source"       # list all sources in your project
 ```
 
 ### The "path" method

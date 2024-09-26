@@ -60,7 +60,6 @@ The audit log supports various events for different objects in dbt Cloud. You wi
 | Event Name                 | Event Type                               | Description                                            |
 | -------------------------- | ---------------------------------------- | ------------------------------------------------------ |
 | Auth Provider Changed      | auth_provider.Changed          | Authentication provider settings changed               |
-| Credential Login Failed    | auth.CredentialsLoginFailed    | User login via username and password failed            |
 | Credential Login Succeeded | auth.CredentialsLoginSucceeded | User successfully logged in with username and password |
 | SSO Login Failed           | auth.SsoLoginFailed            | User login via SSO failed                              |
 | SSO Login Succeeded        | auth.SsoLoginSucceeded         | User successfully logged in via SSO  
