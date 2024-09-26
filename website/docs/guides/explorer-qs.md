@@ -32,28 +32,31 @@ In this guide, you will learn how to:
 ## Setup
 Now we’ll be creating your dbt Cloud account and connecting it to a data warehouse. 
 - Go to this URL:  https://cloud.getdbt.com/coalesce-workshop-signup
-  - If you are already signed into dbt Cloud, sign out first!
-  - Enter your first name and last name
-  - Choose the **Exploring a dbt Mesh implementation with dbt Explorer** option.
-  - Enter the password provided by the workshop facilitator
+  - Sign out if you're already logged in.
+  - Enter your first name and last name.
+  - Select the **Exploring a dbt Mesh implementation with dbt Explorer** option.
+  - Use the password provided by the workshop facilitator.
 - Agree to the terms of service and click the **Complete Registration** button.
-- Wait about 30 seconds, and you’ll be in the dbt Cloud project for this course, already connected to a data warehouse!
+- Wait about 30 seconds, you’ll be in the dbt Cloud project for this course and already connected to a data warehouse.
 
-## Get and overview of your project and view the status of your latest runs
+## Project overview and latest run status
 
-   <Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" title="dbt Explorer performance tab" />
+<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="90%" title="dbt Explorer performance tab" />
 
 With dbt Explorer, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
-#### Hands-On
-- Explore the Model tab 
+### Hands-On
+- Explore the **Model** tab 
   - Which job took the Longest? 
   - Which job/jobs failed? Why?
-- Explore the Sources tab
+
+- Explore the **Sources** tab
   - What sources can we see?
-- Explore the Tests Tab
+
+- Explore the **Tests** Tab
   - Did we run the right test?, Which test were missing? Why?
-- Explore Exposures 
+
+- Explore **Exposures** 
   - Check Quality and where they came from
  
 ## Lineage
@@ -62,23 +65,23 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
 
 - Use the search bar and [node selectors](/reference/node-selection/syntax) to filter your dag.
 - [Lenses](/docs/collaborate/explore-projects#lenses) make it easier to understand your project’s contextual metadata at scales, especially to distinguish a particular model or a subset of models.
-  - When you apply a lens, tags become visible on the nodes in the lineage graph, indicating the layer value along with coloration based on that value
+  - Applying a lens adds tags to the nodes, showing metadata like layer values, with color coding to help you distinguish them.
 
- <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" title="dbt Explorer's lineage graph" />
+ <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_dag.png" width="90%" title="dbt Explorer's lineage graph" />
   
-- Use the [advanced search](/docs/collaborate/explore-projects#search-resources) feature to locate resources in your project. Perform hard searches and key word searches. All resource names, column names, resources descriptions, warehouse relations, and code matching your search criteria will appear in the center of the page. Apply filters to fully refine your search
-- When searching for a column name, the results show all relational nodes containing htat column in their schemas. 
+- Use the [advanced search](/docs/collaborate/explore-projects#search-resources) feature to locate resources in your project. Perform hard searches and keyword searches. All resource names, column names, resources descriptions, warehouse relations, and code matching your search criteria will appear in the center of the page. Apply filters to fully refine your search
+- When searching for a column name, the results show all relational nodes containing that column in their schemas. 
 
- <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_advanced_search.png" title="dbt Explorer's advanced search feature" />
+ <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_advanced_search.png" width="90%" title="dbt Explorer's advanced search feature" />
 
 #### Hands-On
-- On the left hand side, Click on the company and make sure you are in the section “overview of Project Details → Next to Overview → View Lineage
-- Pick a Mart Model → Select Everything downstream
+1. On the left hand side, click on the company and ensure you're in the **Overview Project details** section → Next to **Overview** → Select **View Lineage**.
+2. Select a mart model and select everything downstream.
   - Which models depend on models from another project?
-    - Click on the other Projects lineage
-- Explore lenses – Explore table materializations clustered in current Project
+  - Click on the other project's lineage.
+3. Explore lenses and find table materializations in your current project.
   - Which are the biggest view clusters?
-- Explore different lenses (Model Layer, Test Status, Resource)
+4. Experiment with different lenses, such as **Model Layer**, **Test Status**, or **Resource**.
 - Drill down on a node→ Explore the Column Lineage and its Evolution
   - Expand each columns full lineage
 
