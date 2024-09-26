@@ -130,7 +130,7 @@ You've learned how to:
 For the next steps, you can check out the [dbt Explorer documentation](/docs/collaborate/explore-projects) and [FAQs](/docs/collaborate/dbt-explorer-faqs) to learn more about how to use dbt Explorer.
 
 Keep an eye out for new features coming out soon, like:
-- More auto exposure integrations (Like PowerBI!)
+- More auto exposure integrations (like PowerBI)
 - Model query history for additional warehouses (like Redshift and DataBricks)
 - Improvements to data health tiles
 
