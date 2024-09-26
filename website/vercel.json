@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/reference/global-configs/behavior-changes#adapter-specific-behavior-changes",
-      "destination": "reference/global-configs/adapter-behavior-changes",
+      "destination": "/reference/global-configs/adapter-behavior-changes",
       "permanent": true
     },
     {
