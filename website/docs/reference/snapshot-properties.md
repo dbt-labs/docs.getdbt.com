@@ -41,3 +41,44 @@ snapshots:
 
 ```
 </File>
+
+<VersionBlock firstVersion="1.9">
+
+## Define snapshots in yml
+
+Defining a snapshot in YAML treats snapshots as a distinct resource type, separate from models, allowing for improved organization and consistency within your code.
+
+To add extra logic to your snapshot, you can break it out into an ephemeral model for cleaner development and testing, and then create a snapshot of that model.
+
+<File name='snapshots/<filename>.yml'>
+
+```yml
+
+# snapshots/my_snapshots.yml
+snapshots:
+  - name: orders_snapshot
+    relation: source('jaffle_shop', 'orders')
+    config:
+      schema: snapshots
+      database: analytics
+      unique_key: id
+      strategy: timestamp
+      updated_at: updated_at
+
+```
+
+</File>
+
+<Expandable alt_header="Exceptions" >
+
+If you want to carry out light transformation on your source, or bake logic into your snapshot, you can incorporate the following:
+
+- Types of logic: filters, deduplication, surrogate → unique key and more so.
+- Best practice: you can snapshot an ephemeral model that contains the logic.
+
+This approach also aids in development by allowing you to run the query directly, instead of executing a snapshot each time.
+
+</Expandable>
+
+</VersionBlock>
+
