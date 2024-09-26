@@ -122,15 +122,4 @@ table:
 view:
   displayText: view  
   hoverSnippet: A view (as opposed to a table) is a defined passthrough SQL query that can be run against a database (or data warehouse).
-
-# Test terms (DELETE BEFORE MERGE)
-demoTerm:
-  hoverSnippet: This is a demo term hover snippet
-  displayText: Yay demo term
-
-noDisplayText:
-  hoverSnippet: No Display Text hover snip
-
-noHoverSnippet:
-  displayText: No Hover Snip
 ---
