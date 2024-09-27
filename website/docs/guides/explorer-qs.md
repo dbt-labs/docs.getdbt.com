@@ -31,13 +31,13 @@ In this guide, you will learn how to:
 
 ## Setup
 Now we’ll be creating your dbt Cloud account and connecting it to a data warehouse. 
-- Go to this URL:  https://cloud.getdbt.com/coalesce-workshop-signup
+1. Go to this URL:  https://cloud.getdbt.com/coalesce-workshop-signup:
   - Sign out if you're already logged in.
-  - Enter your first name and last name.
-  - Select the **Exploring a dbt Mesh implementation with dbt Explorer** option.
-  - Use the passcode provided by the workshop facilitator.
-- Agree to the terms of service and click the **Complete Registration** button.
-- Wait about 30 seconds, you’ll be in the dbt Cloud project for this course and already connected to a data warehouse.
+2. Enter your first name and last name.
+3. Select the **Exploring a dbt Mesh implementation with dbt Explorer** option.
+4. Use the passcode provided by the workshop facilitator.
+5. Agree to the terms of service and click the **Complete Registration** button.
+6. Wait about 30 seconds, you’ll be in the dbt Cloud project for this course and already connected to a data warehouse.
 
 ## Project overview and latest run status
 
