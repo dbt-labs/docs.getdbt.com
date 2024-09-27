@@ -131,7 +131,7 @@ For the next steps, you can check out the [dbt Explorer documentation](/docs/col
 
 Keep an eye out for new features coming out soon, like:
 - More auto exposure integrations (like PowerBI)
-- Model query history for additional warehouses (like Redshift and Databricks)
+- [Model query history](/docs/collaborate/model-query-history) for additional warehouses (like Redshift and Databricks)
 - Improvements to [data health tiles](/docs/collaborate/data-tile)
 
 </ConfettiTrigger>
