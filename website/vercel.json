@@ -3,11 +3,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/reference/global-configs/behavior-changes#adapter-specific-behavior-changes",
-      "destination": "/reference/global-configs/adapter-behavior-changes",
-      "permanent": true
-    },
-    {
       "source": "/faqs/Troubleshooting/access_token_error",
       "destination": "/faqs/Troubleshooting/auth-expired-error",
       "permanent": true
