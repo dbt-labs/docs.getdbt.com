@@ -166,7 +166,7 @@ Under the the **Models** option, you can filter on model properties (access or m
 
 Trust signal icons offer a quick, at-a-glance view of data health when browsing your models in dbt Explorer. These icons keep you informed on the status of your model's health using the indicators **Healthy**, **Caution**, **Degraded**, and **Unknown**. For accurate health data, ensure the resource is up-to-date and has had a recent job run.
 
-Each trust signal icon reflects key data health components, such as whether tests were run successfully, whether the resource has a description, whether it has been built in the past 30 days, and more. 
+Each trust signal icon reflects key data health components, such as test success status, missing resource descriptions, absence of builds in 30-day windows, and more. 
 
 Access trust signals using the search function or when clicking on **Models** under the **Resource** tab. Hover over or click the trust signal to see detailed information.
 
