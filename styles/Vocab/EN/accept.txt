@@ -1,3 +1,4 @@
+# Proper nouns and terms that should always be accepted
 dbt Cloud
 dbt Core
 dbt Semantic Layer
@@ -7,16 +8,12 @@ dbt-tonic
 dbtonic
 IDE
 CLI
-Config
-config
-configs
+Config  # Proper noun capitalization
 info
 docs
-doc
 yaml
 YAML
 SQL
-sql
 bash
 shell
 MetricFlow
@@ -24,14 +21,8 @@ jinja
 jinja2
 sqlmesh
 Snowflake
-dbt Mesh
-dbt mesh
-mesh
-Snowflake
 Databricks
 Fabric
-ETL
-ETL
 Redshift
 Azure
 DevOps
@@ -42,44 +33,30 @@ CSV
 S3
 SCD
 repo
-YAML
-YML
-pseudocolumn
-\<Tabs
-values=
 dbt_project.yml
-<[^>]+> <   !-- allows tags -->
-\w+-\w+     <!-- allows dashes -->
-\w+/\w+     <!-- allows slashes -->
-n/a 
-N/A      
-\w+/\w+|\w+-\w+|n/a
 boolean
 defaultValue=
 DWH
-DWHs
 ADF
 BQ
 gcloud
 MSFT
-shoutout
 DDL
-DWUs
-DWU
 APIs
 API
-:::caution
-:::info
-:::tip
-:::note
-:::warning
-ing
-ETL
-ELT
-SSIS
-PBI
-PowerBI
 datetime
 PySpark
-\b[a-z]+(?:_[a-z]+)*\b 
-\b[A-Z]{2,}(?:/[A-Z]{2,})?\b
+:::caution
+:::note
+:::info
+:::tip
+:::warning
+
+# Regex patterns to allow specific formats
+\<[^>]+\>         # Allows HTML-like tags
+\b[a-z]+(?:_[a-z]+)*\b  # Allows snake_case words
+\b[A-Z]{2,}(?:/[A-Z]{2,})?\b  # Allows acronyms like SQL, IDE
+\w+-\w+          # Allows hyphenated words (e.g., dbt-core)
+\w+/\w+          # Allows slash-separated words (e.g., API/CLI)
+n/a
+N/A
