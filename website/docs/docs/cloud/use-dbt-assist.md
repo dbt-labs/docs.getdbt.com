@@ -1,12 +1,12 @@
 --- 
 title: "Use dbt Assist" 
 sidebar_label: "Use dbt Assist" 
-description: "Use dbt Assist to generate documentation and tests from scratch, giving you the flexibility to modify or fix generated code." 
+description: "Use dbt Assist to generate documentation, semantic models, and tests from scratch, giving you the flexibility to modify or fix generated code." 
 ---
 
 # Use dbt Assist <Lifecycle status='beta'/> 
 
-Use dbt Assist to generate documentation, semantic model, and tests from scratch, giving you the flexibility to modify or fix generated code. To access and use dbt Assist:
+Use dbt Assist to generate documentation, semantic models, and tests from scratch, giving you the flexibility to modify or fix generated code. To access and use dbt Assist:
 
 1. Navigate to the dbt Cloud IDE and select a SQL model file under the **File Explorer**.
 
