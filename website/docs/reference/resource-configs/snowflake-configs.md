@@ -20,10 +20,16 @@ For now, Iceberg tables require a [behavior flag](/reference/global-configs/beha
 
 To use Iceberg, set the Iceberg Materialization Behavior flag to true in your dbt_project.yml:
 
+<File name='dbt_project.yml'>
+
 ```yaml
+
 flags:
   enable_iceberg_materializations: True
+
 ```
+
+</File>
 
 If you do not set this behavior flag, you will get an error, and dbt won’t materialize the table in the Iceberg format.
 
