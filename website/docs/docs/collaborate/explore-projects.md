@@ -168,7 +168,7 @@ Trust signal icons offer a quick, at-a-glance view of data health when browsing 
 
 Each trust signal icon reflects key data health components, such as test success status, missing resource descriptions, absence of builds in 30-day windows, and more. 
 
-Access trust signals using the search function or by clicking on **Models** under the **Resource** tab. Hover over or click the trust signal to see detailed information.
+Access trust signals using the search function or by clicking on **Models** or **Sources** under the **Resource** tab. Hover over or click the trust signal to see detailed information. For sources, the trust signal also indicates the source freshness status.
 
 <Tabs>
 <TabItem value="healthy" label="Healthy">
