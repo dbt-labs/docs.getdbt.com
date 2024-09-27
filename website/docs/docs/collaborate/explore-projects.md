@@ -171,7 +171,7 @@ Each trust signal icon reflects key data health components, such as test success
 Access trust signals using the search function or by clicking on **Models** under the **Resource** tab. Hover over or click the trust signal to see detailed information.
 
 #### Healthy 
-- Resource is healthy and ran all tests successfully
+- Ran all tests successfully
 - Successfully built in its last run
 - Has a description
 - Has tests configured
