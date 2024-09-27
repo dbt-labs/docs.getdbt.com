@@ -162,7 +162,7 @@ Under the the **Models** option, you can filter on model properties (access or m
 
 </Expandable>
 
-<Expandable alt_header="Trust signals for models" lifecycle="preview">
+<Expandable alt_header="Trust signals for resources" lifecycle="preview">
 
 Trust signal icons offer a quick, at-a-glance view of data health when browsing your models in dbt Explorer. These icons keep you informed on the status of your model's health using the indicators **Healthy**, **Caution**, **Degraded**, and **Unknown**. For accurate health data, ensure the resource is up-to-date and has had a recent job run.
 
@@ -170,36 +170,45 @@ Each trust signal icon reflects key data health components, such as test success
 
 Access trust signals using the search function or by clicking on **Models** under the **Resource** tab. Hover over or click the trust signal to see detailed information.
 
-#### Healthy 
+<Tabs>
+<TabItem value="healthy" label="Healthy">
+A resource is considered Healthy if it meets the following criteria:
 - Ran all tests successfully
 - Successfully built in its last run
-- Has a description
-- Has tests configured
+- Has a description and tests configured
 - Has been built in the past 30 days 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-healthy.png" title="Healthy trust signal icon"/>
+</TabItem>
 
-#### Caution
+<TabItem value="caution" label="Caution">
+Any of the following conditions can trigger a caution status:
 - Successfully built in its last run
 - Is missing a description
 - Does not have any tests configured
 - Has been built in the past 30 day
 <Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-caution.png" title="Caution trust signal icon"/>
+</TabItem>
 
-#### Degraded
+<TabItem value="degraded" label="Degraded">
+A resource is considered Degraded if it meets any of the following criteria:
 - Last run failed or source freshness error
-<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signals-degraded.jpg" width="50%" title="Degraded trust signal icon"/>
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signals-degraded.jpg" width="35%" title="Degraded trust signal icon"/>
+</TabItem>
 
-#### Unknown
+<TabItem value="unknown" label="Unknown">
+The Unknown trust signal icon indicates that:
 - Health information is unknown because the resource hasn't been run recently. 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-unknown.png" title="Unknown trust signal icon"/>
-  
+
+</TabItem>
+</Tabs>
+
  </Expandable>
   
 ### Example of keyword search
 Example of results from searching on the keyword `customers` and applying the filters models, description, and code. Trust signals are visible to the right of the model name in the search results.
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-keyword-search.png" width="100%" title="Example of keyword search" />
-
 
 ## Browse with the sidebar
 
