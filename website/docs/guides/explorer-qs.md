@@ -54,7 +54,7 @@ With dbt Explorer, you can view your project's resources (such as models, tests,
   - What sources can we see?
 
 - Explore the **Tests** Tab
-  - Did we run the right test?, Which test were missing? Why?
+  - Did we run the right test? Which tests were missing? Why?
 
 - Explore **Exposures** 
   - Check Quality and where they came from
