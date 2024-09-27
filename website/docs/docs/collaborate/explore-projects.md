@@ -182,7 +182,7 @@ Access trust signals using the search function or by clicking on **Models** unde
 - Successfully built in its last run
 - Is missing a description
 - Does not have any tests configured
-- Has been built in the past 30 day
+- Has not been built in the past 30 day
 <Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-caution.png" title="Caution trust signal icon"/>
 
 #### Degraded
