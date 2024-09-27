@@ -1,4 +1,3 @@
-# Proper nouns and terms that should always be accepted
 dbt Cloud
 dbt Core
 dbt Semantic Layer
@@ -8,7 +7,7 @@ dbt-tonic
 dbtonic
 IDE
 CLI
-Config  # Proper noun capitalization
+Config  
 info
 docs
 yaml
@@ -37,6 +36,8 @@ dbt_project.yml
 boolean
 defaultValue=
 DWH
+DWUs
+shoutout
 ADF
 BQ
 gcloud
@@ -44,6 +45,9 @@ MSFT
 DDL
 APIs
 API
+SSIS
+PBI
+PowerBI
 datetime
 PySpark
 :::caution
@@ -58,3 +62,7 @@ PySpark
 \w+/\w+          
 n/a
 N/A
+\<Tabs
+pseudocolumn
+yml
+values=
