@@ -2,7 +2,7 @@ extends: capitalization
 message: "'%s' should use sentence-style capitalization. Try '%s' instead."
 level: warning
 scope: heading
-match: $sentence  # enforce sentence-style capitalization for headers
+match: $sentence  # Enforces sentence-style capitalization
 indicators:
   - ":"
 exceptions:
@@ -10,7 +10,6 @@ exceptions:
   - '\bdbt\s+Cloud\b'
   - '\bdbt\s+Core\b'
   - '\bdbt\s+Cloud\s+CLI\b'
-  -  '\bdbt\s+.*?\b'
   - Snowflake
   - Databricks
   - Azure
@@ -33,4 +32,3 @@ exceptions:
   - Postgres
   - Explorer
   - IDE
-  - 

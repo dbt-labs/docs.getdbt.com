@@ -1,4 +1,3 @@
-# Proper nouns and terms that should always be accepted
 dbt Cloud
 dbt Core
 dbt Semantic Layer
@@ -8,7 +7,7 @@ dbt-tonic
 dbtonic
 IDE
 CLI
-Config  # Proper noun capitalization
+Config  
 info
 docs
 yaml
@@ -37,6 +36,8 @@ dbt_project.yml
 boolean
 defaultValue=
 DWH
+DWUs
+shoutout
 ADF
 BQ
 gcloud
@@ -44,6 +45,9 @@ MSFT
 DDL
 APIs
 API
+SSIS
+PBI
+PowerBI
 datetime
 PySpark
 :::caution
@@ -51,12 +55,14 @@ PySpark
 :::info
 :::tip
 :::warning
-
-# Regex patterns to allow specific formats
-\<[^>]+\>         # Allows HTML-like tags
-\b[a-z]+(?:_[a-z]+)*\b  # Allows snake_case words
-\b[A-Z]{2,}(?:/[A-Z]{2,})?\b  # Allows acronyms like SQL, IDE
-\w+-\w+          # Allows hyphenated words (e.g., dbt-core)
-\w+/\w+          # Allows slash-separated words (e.g., API/CLI)
+\<[^>]+\>        
+\b[a-z]+(?:_[a-z]+)*\b 
+\b[A-Z]{2,}(?:/[A-Z]{2,})?\b
+\w+-\w+          
+\w+/\w+          
 n/a
 N/A
+\<Tabs
+pseudocolumn
+yml
+values=
