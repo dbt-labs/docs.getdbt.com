@@ -9,6 +9,367 @@ To-do:
 - use the reference doc structure for this article / split into separate articles
 --->
 
+## Iceberg table format <Lifecycle status="beta"/>
+
+Snowflake Iceberg tables support for the dbt-snowflake adapter is available for three out-of-the-box materializations:  
+- [Table](/docs/build/materializations#table)
+- [Incremental](/docs/build/materializations#view)
+- [Dynamic](#dynamic-tables) 
+
+For now, Iceberg tables require a [behavior flag](/reference/global-configs/behavior-changes) due to performance impact related to using Iceberg tables. Snowflake does not support `is_iceberg` on the  `Show Objects` queries, which dbt depends on for metadata.
+
+To use Iceberg, set the Iceberg Materialization Behavior flag to true in your dbt_project.yml:
+
+```yaml
+flags:
+  enable_iceberg_materializations: True
+```
+
+If you do not set this behavior flag, you will get an error, and dbt won’t materialize the table in the Iceberg format.
+
+The following configurations are supported: 
+
+| Field | Type | Required | Description | Sample input |
+|-------|------|----------|-------------|-------|
+|Table Format | String | Yes | Configures the objects table format. | `iceberg` |
+|External volumne | String | Yes | Specifies the identifier (name) of the external volume where the Iceberg table stores its metadata files and data in Parquet format. If you don’t specify this parameter, the Iceberg table defaults to the external volume for the schema, database, or account. The schema takes precedence over the database, and the database takes precedence over the account.| `my_s3_bucket` |
+|Base location |String | No | Defines the directory path for Snowflake to write the table data and metadata files. You can’t change this after creating the table. If not specified, Snowflake will use the current schema. | `jaffle_marketing_folder` |
+
+Example of an Iceberg table materialization configuration:
+
+<File name='models/<modelname>.sql'>
+
+```sql
+
+{{
+  config(
+    materialized = "table",
+    table_format="iceberg",
+    external_volume="s3_iceberg_snow",
+    base_location_subpath="jaffle_shop_folder",
+  )
+}}
+
+select * from {{ ref('raw_orders') }}
+
+```
+
+</File>
+
+There are some limitations to the implementation you need to be aware of:
+
+- You cannot create transient or temporary Iceberg tables on Snowflake. 
+- Supplying an input to `base_location_subpath` will always be apprehended to your schema name. Currently, you cannot override this behavior, which ensures that dbt can differentiate Iceberg model builds based on the environment. 
+- Snowflake has limitations for Dynamic Tables. Check out the [Snowflake docs]( https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#usage-notes) for more information. By default, we recommend leaving the `base_location_subpath` field blank, as each target has it’s own default path.
+- Copying rows from an existing default-format model into an Iceberg-format model is not currently supported. This means for incremental models, you will have to use `--full-refresh` to drop and recreate the table from scratch. An exception is thrown without `--full-refresh`.
+- Only `on_schema_change` strategies fail/ignore are supported at p0.
+
+
+## Dynamic tables
+
+The Snowflake adapter supports [dynamic tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about).
+This materialization is specific to Snowflake, which means that any model configuration that
+would normally come along for the ride from `dbt-core` (e.g. as with a `view`) may not be available
+for dynamic tables. This gap will decrease in future patches and versions.
+While this materialization is specific to Snowflake, it very much follows the implementation
+of [materialized views](/docs/build/materializations#Materialized-View).
+In particular, dynamic tables have access to the `on_configuration_change` setting.
+Dynamic tables are supported with the following configuration parameters:
+
+<VersionBlock lastVersion="1.8">
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+| Parameter          | Type       | Required | Default     | Change Monitoring Support |
+|--------------------|------------|----------|-------------|---------------------------|
+| [`on_configuration_change`](/reference/resource-configs/on_configuration_change) | `<string>` | no       | `apply`     | n/a                       |
+| [`target_lag`](#target-lag)      | `<string>` | yes      |        | alter          |
+| [`snowflake_warehouse`](#configuring-virtual-warehouses)   | `<string>` | yes      |       | alter  |
+| [`refresh_mode`](#refresh-mode)       | `<string>` | no       | `AUTO`      | refresh        |
+| [`initialize`](#initialize)     | `<string>` | no       | `ON_CREATE` | n/a   |
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): dynamic_table
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [target_lag](#target-lag): downstream | <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="dynamic_table",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+
+) }}
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+<Tabs
+  groupId="config-languages"
+  defaultValue="project-yaml"
+  values={[
+    { label: 'Project file', value: 'project-yaml', },
+    { label: 'Property file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config', },
+  ]
+}>
+
+<TabItem value="project-yaml">
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): dynamic_table
+    [+](/reference/resource-configs/plus-prefix)[on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+    [+](/reference/resource-configs/plus-prefix)[target_lag](#target-lag): downstream | <time-delta>
+    [+](/reference/resource-configs/plus-prefix)[snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+    [+](/reference/resource-configs/plus-prefix)[refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL
+    [+](/reference/resource-configs/plus-prefix)[initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="property-yaml">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+models:
+  - name: [<model-name>]
+    config:
+      [materialized](/reference/resource-configs/materialized): dynamic_table
+      [on_configuration_change](/reference/resource-configs/on_configuration_change): apply | continue | fail
+      [target_lag](#target-lag): downstream | <time-delta>
+      [snowflake_warehouse](#configuring-virtual-warehouses): <warehouse-name>
+      [refresh_mode](#refresh-mode): AUTO | FULL | INCREMENTAL 
+      [initialize](#initialize): ON_CREATE | ON_SCHEDULE 
+
+```
+
+</File>
+
+</TabItem>
+
+
+<TabItem value="config">
+
+<File name='models/<model_name>.sql'>
+
+```jinja
+
+{{ config(
+    [materialized](/reference/resource-configs/materialized)="dynamic_table",
+    [on_configuration_change](/reference/resource-configs/on_configuration_change)="apply" | "continue" | "fail",
+    [target_lag](#target-lag)="downstream" | "<integer> seconds | minutes | hours | days",
+    [snowflake_warehouse](#configuring-virtual-warehouses)="<warehouse-name>",
+    [refresh_mode](#refresh-mode)="AUTO" | "FULL" | "INCREMENTAL",
+    [initialize](#initialize)="ON_CREATE" | "ON_SCHEDULE", 
+
+) }}
+
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+</VersionBlock>
+
+Learn more about these parameters in Snowflake's [docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table):
+
+### Target lag
+
+Snowflake allows two configuration scenarios for scheduling automatic refreshes: 
+- **Time-based** &mdash; Provide a value of the form `<int> { seconds | minutes | hours | days }`. For example, if the dynamic table needs to be updated every 30 minutes, use `target_lag='30 minutes'`.
+- **Downstream** &mdash; Applicable when the dynamic table is referenced by other dynamic tables. In this scenario, `target_lag='downstream'` allows for refreshes to be controlled at the target, instead of at each layer.
+
+Learn more about `target_lag` in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh#understanding-target-lag).
+
+<VersionBlock firstVersion="1.9">
+
+### Refresh mode
+
+Snowflake allows three options for refresh mode:
+- **AUTO** &mdash; Enforces an incremental refresh of the dynamic table by default. If the `CREATE DYNAMIC TABLE` statement does not support the incremental refresh mode, the dynamic table is automatically created with the full refresh mode.
+- **FULL** &mdash; Enforces a full refresh of the dynamic table, even if the dynamic table can be incrementally refreshed.
+- **INCREMENTAL** &mdash; Enforces an incremental refresh of the dynamic table. If the query that underlies the dynamic table can’t perform an incremental refresh, dynamic table creation fails and displays an error message.
+
+Learn more about `refresh_mode` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
+
+### Initialize
+
+Snowflake allows two options for initialize:
+- **ON_CREATE** &mdash; Refreshes the dynamic table synchronously at creation. If this refresh fails, dynamic table creation fails and displays an error message.
+- **ON_SCHEDULE** &mdash; Refreshes the dynamic table at the next scheduled refresh.
+
+Learn more about `initialize` in [Snowflake's docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-refresh).
+
+</VersionBlock>
+
+### Limitations
+
+As with materialized views on most data platforms, there are limitations associated with dynamic tables. Some worth noting include:
+
+- Dynamic table SQL has a [limited feature set](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#query-constructs-not-currently-supported-in-dynamic-tables).
+- Dynamic table SQL cannot be updated; the dynamic table must go through a `--full-refresh` (DROP/CREATE).
+- Dynamic tables cannot be downstream from: materialized views, external tables, streams.
+- Dynamic tables cannot reference a view that is downstream from another dynamic table.
+
+Find more information about dynamic table limitations in Snowflake's [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-tasks-create#dynamic-table-limitations-and-supported-functions).
+
+For dbt limitations, these dbt features are not supported:
+- [Model contracts](/docs/collaborate/govern/model-contracts)
+- [Copy grants configuration](/reference/resource-configs/snowflake-configs#copying-grants)
+
+<VersionBlock lastVersion="1.6">
+
+#### Changing materialization to and from "dynamic_table"
+
+Version `1.6.x` does not support altering the materialization from a non-dynamic table be a dynamic table and vice versa.
+Re-running with the `--full-refresh` does not resolve this either.
+The workaround is manually dropping the existing model in the warehouse prior to calling `dbt run`.
+This only needs to be done once for the conversion.
+
+For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
+If the model config is updated to `materialized="dynamic_table"`, dbt will return an error.
+The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+
+<File name='my_model.sql'>
+
+```yaml
+
+{{ config(
+    materialized="table" # or any model type (e.g. view, incremental)
+) }}
+
+```
+
+</File>
+
+</VersionBlock>
+
+## Temporary tables
+
+Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time. 
+
+However, some situations remain where a temporary table would achieve results faster or more safely. The `tmp_relation_type` configuration enables you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
+
+To guarantee accuracy, an incremental model using the `delete+insert` strategy with a `unique_key` defined requires a temporary table; trying to change this to a view will result in an error.
+
+Defined in the project YAML:
+
+<File name='dbt_project.yml'>
+
+```yaml
+name: my_project
+
+...
+
+models:
+  <resource-path>:
+    +tmp_relation_type: table | view ## If not defined, view is the default.
+  
+```
+
+</File>
+
+In the configuration format for the model SQL file:
+
+<File name='dbt_model.sql'>
+
+```yaml
+
+{{ config(
+    tmp_relation_type="table | view", ## If not defined, view is the default.
+) }}
+
+```
+
+</File>
+
+
 ## Transient tables
 
 Snowflake supports the creation of [transient tables](https://docs.snowflake.net/manuals/user-guide/tables-temp-transient.html). Snowflake does not preserve a history for these tables, which can result in a measurable reduction of your Snowflake storage costs. Transient tables participate in time travel to a limited degree with a retention period of 1 day by default with no fail-safe period. Weigh these tradeoffs when deciding whether or not to configure your dbt models as `transient`. **By default, all Snowflake tables created by dbt are `transient`.**
@@ -299,46 +660,7 @@ models:
 
 </File>
 
-## Temporary tables
 
-Incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning is to avoid the database write step that a temporary table would initiate and save compile time. 
-
-However, some situations remain where a temporary table would achieve results faster or more safely. The `tmp_relation_type` configuration enables you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
-
-To guarantee accuracy, an incremental model using the `delete+insert` strategy with a `unique_key` defined requires a temporary table; trying to change this to a view will result in an error.
-
-Defined in the project YAML:
-
-<File name='dbt_project.yml'>
-
-```yaml
-name: my_project
-
-...
-
-models:
-  <resource-path>:
-    +tmp_relation_type: table | view ## If not defined, view is the default.
-  
-```
-
-</File>
-
-In the configuration format for the model SQL file:
-
-<File name='dbt_model.sql'>
-
-```yaml
-
-{{ config(
-    tmp_relation_type="table | view", ## If not defined, view is the default.
-) }}
-
-```
-
-</File>
-
-## Dynamic tables
 
 The Snowflake adapter supports [dynamic tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about).
 This materialization is specific to Snowflake, which means that any model configuration that
