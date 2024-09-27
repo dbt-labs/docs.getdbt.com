@@ -99,11 +99,11 @@ dbt Cloud provides robust orchestration that enables you to schedule, run, and m
 
 ### Tips
 
-- Enable [partial parsing](/docs/deploy/deploy-environments#partial-parsing) between jobs in dbt Cloud to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
+- Enable [partial parsing](/docs/cloud/account-settings#partial-parsing) between jobs in dbt Cloud to significantly speed up project parsing by only processing changed files, optimizing performance for large projects.
 - [Run multiple CI/CD](/docs/deploy/continuous-integration) jobs at the same time which will not block production runs. The Job scheduler automatically cancels stale runs  when a newer commit is pushed. This is because each PR will run in its own schema.
 - dbt Cloud automatically [cancels](/docs/deploy/job-scheduler#run-cancellation-for-over-scheduled-jobs) a scheduled run if the existing run is still executing. This prevents unnecessary, duplicative executions.
-- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/deploy/deploy-environments#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="enterprise"/>
-- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion--) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="team,enterprise"/>
+- Protect you and your data freshness from third-party outages by enabling dbt Cloud’s [Git repository caching](/docs/cloud/account-settings#git-repository-caching), which keeps a cache of the project's Git repository. <Lifecycle status="enterprise"/>
+- [Link deploy jobs](/docs/deploy/deploy-jobs#trigger-on-job-completion) across dbt Cloud projects by configuring your job or using the [Create Job API](/dbt-cloud/api-v2#/operations/Create%20Job) to do this. <Lifecycle status="team,enterprise"/>
 - [Rerun your jobs](/docs/deploy/retry-jobs) from the start or the point of failure if your dbt job run completed with a status of **`Error.`**
 
 ### Caveats

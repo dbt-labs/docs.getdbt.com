@@ -20,9 +20,16 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## September 2024
 
+- **Enhancement**: You can now run [Semantic Layer commands](/docs/build/metricflow-commands) commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). The supported commands are `dbt sl list`, `dbt sl list metrics`, `dbt sl list dimension-values`, `dbt sl list saved-queries`, `dbt sl query`, `dbt sl list dimensions`, `dbt sl list entities`, and `dbt sl validate`. 
+- **New**: Microsoft Excel, a dbt Semantic Layer integration, is now generally available. The integration allows you to connect to Microsoft Excel to query metrics and collaborate with your team. Available for [Excel Desktop](https://pages.store.office.com/addinsinstallpage.aspx?assetid=WA200007100&rs=en-US&correlationId=4132ecd1-425d-982d-efb4-de94ebc83f26) or [Excel Online](https://pages.store.office.com/addinsinstallpage.aspx?assetid=WA200007100&rs=en-US&correlationid=4132ecd1-425d-982d-efb4-de94ebc83f26&isWac=True). For more information, refer to [Microsoft Excel](/docs/cloud-integrations/semantic-layer/excel).
+- **New**: [Data health tile](/docs/collaborate/data-tile) is now generally available in dbt Explorer. Data health tiles provide a quick at-a-glance view of your data quality, highlighting potential issues in your data. You can embed these tiles in your dashboards to quickly identify and address data quality issues in your dbt project.
+- **New**: dbt Explorer's Model query history feature is now in Preview for dbt Cloud Enterprise customers. Model query history allows you to view the count of consumption queries for a model based on the data warehouse's query logs. This feature provides data teams insight, so they can focus their time and infrastructure spend on the worthwhile used data products. To learn more, refer to [Model query history](/docs/collaborate/model-query-history). 
+- **Enhancement**: You can now use [Extended Attributes](/docs/dbt-cloud-environments#extended-attributes) and [Environment Variables](/docs/build/environment-variables) when connecting to the Semantic Layer. If you set a value directly in the Semantic Layer Credentials, it will have a higher priority than Extended Attributes. When using environment variables, the default value for the environment will be used.  If you're using exports, job environment variable overrides aren't supported yet, but they will be soon.
+- **New:** There are two new [environment variable defaults](/docs/build/environment-variables#dbt-cloud-context) &mdash; `DBT_CLOUD_ENVIRONMENT_NAME` and `DBT_CLOUD_ENVIRONMENT_TYPE`.
 - **New:** The [Amazon Athena warehouse connection](/docs/cloud/connect-data-platform/connect-amazon-athena) is available as a public preview for dbt Cloud accounts that have upgraded to [`versionless`](/docs/dbt-versions/versionless-cloud).
 
 ## August 2024
+
 - **Fix:** Fixed an issue in [dbt Explorer](/docs/collaborate/explore-projects) where navigating to a consumer project from a public node resulted in displaying a random public model rather than the original selection. 
 - **New**: You can now configure metrics at granularities at finer time grains, such as hour, minute, or even by the second. This is particularly useful for more detailed analysis and for datasets where high-resolution time data is required, such as minute-by-minute event tracking. Refer to [dimensions](/docs/build/dimensions) for more information about time granularity.
 - **Enhancement**: Microsoft Excel now supports [saved selections](/docs/cloud-integrations/semantic-layer/excel#using-saved-selections) and [saved queries](/docs/cloud-integrations/semantic-layer/excel#using-saved-queries). Use Saved selections to save your query selections within the Excel application. The application also clears stale data in [trailing rows](/docs/cloud-integrations/semantic-layer/excel#other-settings) by default. To return your results and keep any previously selected data intact, un-select the **Clear trailing rows** option. 
@@ -309,7 +316,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   January also saw some refreshed content, either aligning with new product features or requests from the community:
 
-  - Native support for [partial parsing in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud-environments#partial-parsing)
+  - Native support for [partial parsing in dbt Cloud](https://docs.getdbt.com/docs/cloud/account-settings#partial-parsing)
   - Updated guidance on using dots or underscores in the [Best practice guide for models](https://docs.getdbt.com/best-practices/how-we-style/1-how-we-style-our-dbt-models)
   - Updated [PrivateLink for VCS docs](https://docs.getdbt.com/docs/cloud/secure/vcs-privatelink)
   - Added a new `job_runner` role in our [Enterprise project role permissions docs](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions#project-role-permissions)
@@ -326,7 +333,7 @@ The following features are new or enhanced as part of our [dbt Cloud Launch Show
 
   By default, dbt parses all the files in your project at the beginning of every dbt invocation. Depending on the size of your project, this operation can take a long time to complete. With the new partial parsing feature in dbt Cloud, you can reduce the time it takes for dbt to parse your project. When enabled, dbt Cloud parses only the changed files in your project instead of parsing all the project files. As a result, your dbt invocations will take less time to run.
 
-  To learn more, refer to [Partial parsing](/docs/dbt-cloud-environments#partial-parsing).
+  To learn more, refer to [Partial parsing](/docs/cloud/account-settings#partial-parsing).
 
   <Lightbox src="/img/docs/deploy/example-account-settings.png" width="85%" title="Example of the Partial parsing option" />
 

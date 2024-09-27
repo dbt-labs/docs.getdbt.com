@@ -12,8 +12,11 @@ dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deploy
 
 ### Prerequisites
 - You have a dbt Cloud account. 
-- For the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
-- For the [compare changes](/docs/deploy/continuous-integration#compare-changes) feature, your dbt Cloud account must have access to Advanced CI. Please ask your [dbt Cloud administrator to enable](/docs/dbt-cloud-environments#account-access-to-advanced-ci-features) this for you.
+- CI features:
+   - For both the [concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your dbt Cloud account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+   - The [SQL linting](/docs/deploy/continuous-integration#sql-linting) feature is currently available in beta to a limited group of users and is gradually being rolled out. If you're in the beta, the **Linting** option is available for use. 
+- [Advanced CI](/docs/deploy/advanced-ci) features:<Lifecycle status="preview" />
+   - For the [compare changes](/docs/deploy/advanced-ci#compare-changes) feature, your dbt Cloud account must have access to Advanced CI. Please ask your [dbt Cloud administrator to enable](/docs/cloud/account-settings#account-access-to-advanced-ci-features) this for you.
 - Set up a [connection with your Git provider](/docs/cloud/git/git-configuration-in-dbt-cloud). This integration lets dbt Cloud run jobs on your behalf for job triggering.
    - If you're using a native [GitLab](/docs/cloud/git/connect-gitlab) integration, you need a paid or self-hosted account that includes support for GitLab webhooks and [project access tokens](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html). If you're using GitLab Free, merge requests will trigger CI jobs but CI job status updates (success or failure of the job) will not be reported back to GitLab.
 
@@ -33,7 +36,8 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 
 1. Options in the **Execution settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
-    - **Run compare changes**<Lifecycle status="beta" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To enable record-level comparison and primary key analysis, you must add a [primary key constraint](/reference/resource-properties/constraints) or [uniqueness test](/reference/resource-properties/data-tests#unique). Otherwise, you'll receive a "Primary key missing" error message in dbt Cloud.
+    - **Linting**<Lifecycle status="beta" /> &mdash; Enable this option for dbt to [lint the SQL files](/docs/deploy/continuous-integration#sql-linting) in your project as the first step in `dbt run`. If this check runs into an error, dbt can either **Fail job run** or **Continue running job**. 
+    - **Run compare changes**<Lifecycle status="preview" /> &mdash; Enable this option to compare the last applied state of the production environment (if one exists) with the latest changes from the pull request, and identify what those differences are. To enable record-level comparison and primary key analysis, you must add a [primary key constraint](/reference/resource-properties/constraints) or [uniqueness test](/reference/resource-properties/data-tests#unique). Otherwise, you'll receive a "Primary key missing" error message in dbt Cloud.
     
       To review the comparison report, navigate to the [Compare tab](/docs/deploy/run-visibility#compare-tab) in the job run's details. A summary of the report is also available from the pull request in your Git provider (see the [CI report example](#example-ci-report)). 
     - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
@@ -60,7 +64,7 @@ The following is an example of a CI check in a GitHub pull request. The green ch
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="60%" title="Example of CI check in GitHub pull request"/>
 
-### Example of CI report in pull request <Lifecycle status="beta" /> {#example-ci-report}
+### Example of CI report in pull request <Lifecycle status="preview" /> {#example-ci-report}
 The following is an example of a CI report in a GitHub pull request, which is shown when the **Run compare changes** option is enabled for the CI job. It displays a high-level summary of the models that changed from the pull request.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-ci-report.png" width="75%" title="Example of CI report comment in GitHub pull request"/>
