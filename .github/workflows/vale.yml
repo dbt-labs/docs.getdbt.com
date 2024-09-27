@@ -1,4 +1,4 @@
-name: Vale Linting
+name: Vale linting
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   vale:
-    name: Vale Linting
+    name: Vale linting
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -58,7 +58,7 @@ jobs:
             fi
           done
 
-      - name: Run Vale
+      - name: Run vale
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         uses: errata-ai/vale-action@reviewdog
         with:
@@ -68,7 +68,7 @@ jobs:
           separator: ' '
           version: '2.27.0'
 
-      - name: Post Summary Comment
+      - name: Post summary comment
         if: ${{ steps.changed-files.outputs.any_changed == 'true' }}
         run: |
           COMMENT="❗️Oh no, some Vale linting found issues! Please check the **Files change** tab for detailed results and make the necessary updates."
