@@ -6,6 +6,7 @@ ignorecase: false
 swap:
   - e.g.: for example
   - eg: for example
+  - e.g: for example
   - i.e.: for example
   - i.e.: that is
   - etc.: and so on
