@@ -185,7 +185,7 @@ Any of the following conditions can trigger a caution status:
 - Successfully built in its last run
 - Is missing a description
 - Does not have any tests configured
-- Has been built in the past 30 day
+- Has not been built in the past 30 day
 <Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-caution.png" title="Caution trust signal icon"/>
 </TabItem>
 
