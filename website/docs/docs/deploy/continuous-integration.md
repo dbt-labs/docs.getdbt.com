@@ -34,6 +34,7 @@ The [dbt Cloud scheduler](/docs/deploy/job-scheduler) executes CI jobs different
 - **Concurrent CI checks** &mdash; CI runs triggered by the same dbt Cloud CI job execute concurrently (in parallel), when appropriate.
 - **Smart cancellation of stale builds** &mdash; Automatically cancels stale, in-flight CI runs when there are new commits to the PR.
 - **Run slot treatment** &mdash; CI runs don't consume a run slot.
+- **SQL linting**<Lifecycle status="beta" /> &mdash; When enabled, automatically lints all SQL files in your project as a run step before your CI job builds.
 
 ### Concurrent CI checks
 
@@ -54,3 +55,11 @@ When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the late
 ### Run slot treatment <Lifecycle status="team,enterprise" />
 
 CI runs don't consume run slots. This guarantees a CI check will never block a production run.
+
+### SQL linting <Lifecycle status="beta" />
+
+When enabled for your CI job, dbt invokes [SQLFluff](https://sqlfluff.com/) which is a modular and configurable SQL linter that warns you of complex functions, syntax, formatting, and compilation errors. By default, it lints all the SQL files in your project. 
+
+If the linter runs into errors, you can specify whether dbt should fail the job or continue running it. When failing jobs, it helps reduce compute costs by avoiding builds for pull requests that don't meet your SQL code quality CI check. 
+
+To override the default linting behavior, create an `.sqlfluff` config file in your project and add your linting rules to it. dbt Cloud will use the rules defined in the config file when linting. For details about linting rules, refer to [Custom Usage](https://docs.sqlfluff.com/en/stable/gettingstarted.html#custom-usage) in the SQLFluff documentation.

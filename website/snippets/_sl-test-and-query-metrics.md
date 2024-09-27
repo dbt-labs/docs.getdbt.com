@@ -1,6 +1,6 @@
 To work with metrics in dbt, you have several tools to validate or run commands. Here's how you can test and query metrics depending on your setup:
 
-- [**dbt Cloud IDE users**](#dbt-cloud-ide-users) &mdash; Currently, running MetricFlow commands directly in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) isn't supported, but is coming soon. You can view metrics visually through the DAG in the **Lineage** tab without directly running commands.
+- [**dbt Cloud IDE users**](#dbt-cloud-ide-users) &mdash; Run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) directly in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to query/preview metrics. View metrics visually in the **Lineage** tab.
 - [**dbt Cloud CLI users**](#dbt-cloud-cli-users) &mdash; The [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) enables you to run [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) to query and preview metrics directly in your command line interface.
 - **dbt Core users** &mdash; Use the MetricFlow CLI for command execution. While this guide focuses on dbt Cloud users, dbt Core users can find detailed MetricFlow CLI setup instructions in the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commands) page. Note that to use the dbt Semantic Layer, you need to have a [Team or Enterprise account](https://www.getdbt.com/).
 
@@ -8,7 +8,9 @@ Alternatively, you can run commands with SQL client tools like DataGrip, DBeaver
 
 ### dbt Cloud IDE users
 
-You can view your metrics in the dbt Cloud IDE by viewing them in the **Lineage** tab. The dbt Cloud IDE **Status button** (located in the bottom right of the editor) displays an **Error** status if there's an error in your metric or semantic model definition. You can click the button to see the specific issue and resolve it.
+You can use the `dbt sl` prefix before the command name to execute them in dbt Cloud. For example, to list all metrics, run `dbt sl list metrics`. For a complete list of the MetricFlow commands available in the dbt Cloud IDE, refer to the [MetricFlow commands](/docs/build/metricflow-commands#metricflow-commandss) page.
+
+The dbt Cloud IDE **Status button** (located in the bottom right of the editor) displays an **Error** status if there's an error in your metric or semantic model definition. You can click the button to see the specific issue and resolve it.
 
 Once viewed, make sure you commit and merge your changes in your project.
 
