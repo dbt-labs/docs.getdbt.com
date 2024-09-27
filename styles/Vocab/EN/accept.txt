@@ -51,12 +51,10 @@ PySpark
 :::info
 :::tip
 :::warning
-
-# Regex patterns to allow specific formats
-\<[^>]+\>         # Allows HTML-like tags
-\b[a-z]+(?:_[a-z]+)*\b  # Allows snake_case words
-\b[A-Z]{2,}(?:/[A-Z]{2,})?\b  # Allows acronyms like SQL, IDE
-\w+-\w+          # Allows hyphenated words (e.g., dbt-core)
-\w+/\w+          # Allows slash-separated words (e.g., API/CLI)
+\<[^>]+\>        
+\b[a-z]+(?:_[a-z]+)*\b 
+\b[A-Z]{2,}(?:/[A-Z]{2,})?\b
+\w+-\w+          
+\w+/\w+          
 n/a
 N/A
