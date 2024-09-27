@@ -51,21 +51,22 @@ MetricFlow provides the following commands to retrieve metadata and query metric
 <Tabs>
 <TabItem value="cloudcommands" label="Commands for dbt Cloud">
 
-You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud IDE or dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. Note: Only the `list`, `query`, and `validate` commands are available in the dbt Cloud IDE.
+You can use the `dbt sl` prefix before the command name to execute them in the dbt Cloud IDE or dbt Cloud CLI. For example, to list all metrics, run `dbt sl list metrics`. 
 
 dbt Cloud CLI users can run `dbt sl --help` in the terminal for a complete list of the MetricFlow commands and flags.
+
+The following table lists the commands compatible with the dbt Cloud IDE and dbt Cloud CLI:
 
 | <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | dbt Cloud IDE | dbt Cloud CLI |
 |---------|-------------|---------------|---------------|
 | [`list`](#list) | Retrieves metadata values. | ✅ | ✅ |
 | [`list metrics`](#list-metrics) | Lists metrics with dimensions. |  ✅ | ✅ |
+| [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ |
 | [`list dimension-values`](#list-dimension-values) | List dimensions with metrics. | ✅ | ✅ |
+| [`list entities`](#list-entities) | Lists all unique entities.  |  ✅  | ✅ |
 | [`list saved-queries`](#list-saved-queries) | Lists available saved queries. Use the `--show-exports` flag to display each export listed under a saved query or `--show-parameters` to show the full query parameters each saved query uses. |  ✅ | ✅ |
 | [`query`](#query) | Query metrics, saved queries, and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.  |  ✅ | ✅ |
 | [`validate`](#validate) | Validates semantic model configurations. |  ✅ | ✅ |
-| [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ |
-
-| [`list entities`](#list-entities) | Lists all unique entities.  |  ✅  | ✅ |
 | [`export`](#export) |  Runs exports for a singular saved query for testing and generating exports in your development environment. You can also use the `--select` flag to specify particular exports from a saved query. |  ❌ | ✅ |
 | [`export-all`](#export-all) | Runs exports for multiple saved queries at once, saving time and effort. |  ❌ | ✅ |
 
