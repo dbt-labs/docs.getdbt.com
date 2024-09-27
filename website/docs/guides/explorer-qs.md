@@ -35,7 +35,7 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
   - Sign out if you're already logged in.
   - Enter your first name and last name.
   - Select the **Exploring a dbt Mesh implementation with dbt Explorer** option.
-  - Use the password provided by the workshop facilitator.
+  - Use the passcode provided by the workshop facilitator.
 - Agree to the terms of service and click the **Complete Registration** button.
 - Wait about 30 seconds, you’ll be in the dbt Cloud project for this course and already connected to a data warehouse.
 
