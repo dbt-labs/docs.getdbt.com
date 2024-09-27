@@ -48,7 +48,7 @@ pseudocolumn
 \<Tabs
 values=
 dbt_project.yml
-<[^>]+> <   !-- allows tabs -->
+<[^>]+> <   !-- allows tags -->
 \w+-\w+     <!-- allows dashes -->
 \w+/\w+     <!-- allows slashes -->
 n/a 
@@ -81,5 +81,5 @@ PBI
 PowerBI
 datetime
 PySpark
-\b[a-z]+(?:_[a-z]+)*\b <!-- allows snake_case -->
-\b[A-Z]{2,}(?:/[A-Z]{2,})?\b <-- This should allow acronyms like API, AI/ML -->
+\b[a-z]+(?:_[a-z]+)*\b 
+\b[A-Z]{2,}(?:/[A-Z]{2,})?\b
