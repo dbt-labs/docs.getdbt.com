@@ -96,7 +96,7 @@ To explore the lineage graphs of tests and macros, view [their resource details 
 
 ### Example of full lineage graph
 
-Example of exploring the `order_items` model in the project's lineage graph:
+Example of exploring a model in the project's lineage graph:
 
 <Lightbox src="/img/docs/collaborate/dbt-explorer/example-project-lineage-graph.png" width="100%" title="Example of full lineage graph" />
 
@@ -168,7 +168,15 @@ Trust signal icons offer a quick, at-a-glance view of data health when browsing 
 
 Each trust signal icon reflects key data health components, such as test success status, missing resource descriptions, absence of builds in 30-day windows, and more. 
 
-Access trust signals using the search function or by clicking on **Models** or **Sources** under the **Resource** tab. Hover over or click the trust signal to see detailed information. For sources, the trust signal also indicates the source freshness status.
+To access trust signals:
+- Use the search function or click on **Models** or **Sources** under the **Resource** tab. 
+- View the icons under the **Health** column. 
+- Hover over or click the trust signal to see detailed information. 
+- For sources, the trust signal also indicates the source freshness status.
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/trust-signal-health.jpg" width="60%" title="View trust signals for your models."/>
+
+<!-- commenting out until further iteration on the content
 
 <Tabs>
 <TabItem value="healthy" label="Healthy">
@@ -203,8 +211,10 @@ The Unknown trust signal icon indicates that:
 </TabItem>
 </Tabs>
 
+-->
+
  </Expandable>
-  
+
 ### Example of keyword search
 Example of results from searching on the keyword `customers` and applying the filters models, description, and code. Trust signals are visible to the right of the model name in the search results.
 
