@@ -48,9 +48,9 @@ pseudocolumn
 \<Tabs
 values=
 dbt_project.yml
-<[^>]+>
-\w+-\w+    
-\w+/\w+    
+<[^>]+> <   !-- allows tabs -->
+\w+-\w+     <!-- allows dashes -->
+\w+/\w+     <!-- allows slashes -->
 n/a 
 N/A      
 \w+/\w+|\w+-\w+|n/a
@@ -64,3 +64,22 @@ gcloud
 MSFT
 shoutout
 DDL
+DWUs
+DWU
+APIs
+API
+:::caution
+:::info
+:::tip
+:::note
+:::warning
+ing
+ETL
+ELT
+SSIS
+PBI
+PowerBI
+datetime
+PySpark
+\b[a-z]+(?:_[a-z]+)*\b <!-- allows snake_case -->
+\b[A-Z]{2,}(?:/[A-Z]{2,})?\b <-- This should allow acronyms like API, AI/ML -->
