@@ -73,7 +73,7 @@ _dbt/{SCHEMA_NAME}/{MODEL_NAME}.
 
 However, dbt allows users to configure a `base_location_subpath` that is empty by default but, when provided, will be concatenated to the end of the previously described pattern for `base_location` string generation.
 
-dbt does this to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The base location declares where to write the external volume. The Snowflake Iceberg catalog will keep track of your Iceberg table regardless of where the data lives within the external volume declared and what `base_location` is provided. However, passing anything into the `base_location` field, including an empty string, is possible. An empty string could result in future technical debt because it will limit the ability to:
+dbt does this to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The base location declares where to write in the external volume. The Snowflake Iceberg catalog will keep track of your Iceberg table regardless of where the data lives within the external volume declared and what `base_location` is provided. However, passing anything into the `base_location` field, including an empty string, is possible.  If a project does not enforce an input and always allows empty strings, this could result in future technical debt because it will limit the ability to:
 
 - Navigate the underlying object store (S3/Azure blob)
 - Read Iceberg tables via an object-store integration
