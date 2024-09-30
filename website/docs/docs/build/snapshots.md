@@ -589,7 +589,7 @@ Snapshot results:
 
 <VersionBlock firstVersion="1.9">
 
-### Define column names in snapshot table
+### Customize names of dbt-generated meta fields in snapshot tables 
 
 In [Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can now customize the names of the meta columns created by dbt in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields) using the `snapshot_meta_column_names` configuration. 
 
