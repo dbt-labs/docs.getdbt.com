@@ -9,7 +9,6 @@ date: 2024-09-30
 is_featured: true
 ---
 
-
 One of the most important things that dbt does is unlock the ability for teams to collaborate on creating and disseminating organizational knowledge.
 
 In the past, this primarily looked like a team working in one dbt Project to create a set of transformed objects in their data platform.
