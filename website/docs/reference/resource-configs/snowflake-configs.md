@@ -32,7 +32,7 @@ flags:
 
 </File>
 
-If you don't set this behavior flag, you will get an error and dbt won’t materialize the table in the Iceberg format.
+If you don't set this behavior flag, you will get an error and dbt will not materialize the table in the Iceberg format.
 
 The following configurations are supported: 
 
