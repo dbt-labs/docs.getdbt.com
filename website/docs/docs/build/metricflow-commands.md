@@ -59,7 +59,6 @@ The following table lists the commands compatible with the dbt Cloud IDE and dbt
 
 | <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | dbt Cloud IDE | dbt Cloud CLI |
 |---------|-------------|---------------|---------------|
-| [`list`](#list) | Retrieves metadata values. | ✅ | ✅ |
 | [`list metrics`](#list-metrics) | Lists metrics with dimensions. |  ✅ | ✅ |
 | [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ |
 | [`list dimension-values`](#list-dimension-values) | List dimensions with metrics. | ✅ | ✅ |
@@ -94,7 +93,6 @@ Check out the following video for a short video demo of how to query or preview 
 
 Use the `mf` prefix before the command name to execute them in dbt Core. For example, to list all metrics, run `mf list metrics`.
 
-- [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
 - [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
@@ -107,17 +105,7 @@ Use the `mf` prefix before the command name to execute them in dbt Core. For exa
 </TabItem>
 </Tabs>
 
-### List
-
-This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entities](/docs/build/entities) values. 
-
-
 ### List metrics
-
-```bash
-dbt sl list # In dbt Cloud
-mf list # In dbt Core
-```
 This command lists the metrics with their available dimensions:
 
 ```bash
