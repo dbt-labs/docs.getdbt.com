@@ -18,7 +18,7 @@ As dbt was adopted by larger organizations and began to drive workloads at a glo
 
 <!-- truncate -->
 
-dbt Mesh, available on [Enterprise plans](https://www.getdbt.com/pricing), is powerful because it allows teams to operate _independently_ but _collaboratively_, each team free to build on their own but contributing to a larger, shared set of data outputs.
+dbt Mesh is powerful because it allows teams to operate _independently_ but _collaboratively_, each team free to build on their own but contributing to a larger, shared set of data outputs.
 
 The flexibility of dbt Mesh means that it can support [a wide variety of patterns and designs](/best-practices/how-we-mesh/mesh-3-structures). Today, let’s dive into one pattern that is showing promise as a way to enable teams working on very different dbt deployments to work together.
 
@@ -57,7 +57,7 @@ Configure public models to serve as stable interfaces for downstream dbt Project
 This allows dbt Cloud to know about the contents and metadata of your project, which in turn allows for other projects to access its models.
 
 - [Create a dbt Cloud account](https://www.getdbt.com/signup/) and a dbt project for each upstream Core project.
-- Note: If you have [environment variables](/docs/build/environment-variables) in your project, dbt Cloud environment variables must be prefixed with `DBT_ `(including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`). Follow the instructions in [this guide](https://docs.getdbt.com/guides/core-to-cloud-1?step=8#environment-variables) to convert them for dbt Cloud.
+  - Note: If you have [environment variables](/docs/build/environment-variables) in your project, dbt Cloud environment variables must be prefixed with `DBT_ `(including `DBT_ENV_CUSTOM_ENV_` or `DBT_ENV_SECRET`). Follow the instructions in [this guide](https://docs.getdbt.com/guides/core-to-cloud-1?step=8#environment-variables) to convert them for dbt Cloud.
 - Each upstream Core project has to have a production [environment](/docs/dbt-cloud-environments) in dbt Cloud. You need to configure credentials and environment variables in dbt Cloud just so that it will resolve relation names to the same places where your dbt Core workflows are deploying those models.
 - Set up a [merge job](/docs/deploy/merge-jobs) in a production environment to run `dbt parse`. This will enable connecting downstream projects in dbt Mesh by producing the necessary [artifacts](/reference/artifacts/dbt-artifacts) for cross-project referencing.
   - Note: Set up a regular job to run `dbt build` instead of using a merge job for `dbt parse`, and centralize your dbt orchestration by moving production runs to dbt Cloud. Check out [this guide](/guides/core-to-cloud-1?step=9) for more details on converting your production runs to dbt Cloud.
