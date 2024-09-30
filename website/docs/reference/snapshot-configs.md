@@ -304,7 +304,7 @@ snapshots:
 
 <VersionBlock firstVersion="1.9">
 
-#### Define column names in snapshot table
+#### Customize meta column names in snapshot table
 
 Use the following configuration to define the names of the columns created in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields).
 
