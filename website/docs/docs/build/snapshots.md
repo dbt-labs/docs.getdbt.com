@@ -594,7 +594,7 @@ Snapshot results:
 In [Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can now customize the names of the meta columns created by dbt in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields) using the `snapshot_meta_column_names` configuration. 
 
 Note, if you rename snapshot columns without updating the existing table, it will cause an error. It's recommended to use this feature for new snapshots or update your existing tables before committing a column name change.
-This feature will also be available in the upcoming 1.9 release. 
+This feature will also be available in the upcoming 1.9 release of dbt Core. 
 </VersionBlock>
 
 
