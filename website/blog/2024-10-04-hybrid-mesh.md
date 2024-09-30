@@ -18,7 +18,7 @@ As dbt was adopted by larger organizations and began to drive workloads at a glo
 
 <!-- truncate -->
 
-dbt Mesh is powerful because it allows teams to operate _independently_ but _collaboratively_, each team free to build on their own but contributing to a larger, shared set of data outputs.
+dbt Mesh is powerful because it allows teams to operate _independently_ and _collaboratively_, each team free to build on their own but contributing to a larger, shared set of data outputs.
 
 The flexibility of dbt Mesh means that it can support [a wide variety of patterns and designs](/best-practices/how-we-mesh/mesh-3-structures). Today, let’s dive into one pattern that is showing promise as a way to enable teams working on very different dbt deployments to work together.
 
