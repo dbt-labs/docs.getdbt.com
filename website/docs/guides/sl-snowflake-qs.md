@@ -339,9 +339,7 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 <Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project and start developing
-This guide assumes you use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project and define metrics. However, the dbt Cloud IDE doesn't support using [MetricFlow commands](/docs/build/metricflow-commands) to query or preview metrics (support coming soon).
-
-To query and preview metrics in your development tool, you can use the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to run the [MetricFlow commands](/docs/build/metricflow-commands).
+This guide assumes you use the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) to develop your dbt project, define metrics, and query and preview metrics using [MetricFlow commands](/docs/build/metricflow-commands).
 
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud using the IDE:
 
