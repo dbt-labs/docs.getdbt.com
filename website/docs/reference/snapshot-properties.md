@@ -69,7 +69,6 @@ snapshots:
 
 </File>
 In this example, the snapshot configuration tracks changes to the orders table over time. The transformation in this snapshot is:  `select * from {{ source('jaffle_shop', 'orders') }}`.
-### Exceptions
 
 
 </VersionBlock>
