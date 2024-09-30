@@ -93,7 +93,6 @@ Check out the following video for a short video demo of how to query or preview 
 
 Use the `mf` prefix before the command name to execute them in dbt Core. For example, to list all metrics, run `mf list metrics`.
 
-- [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
 - [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
@@ -112,11 +111,6 @@ This command retrieves metadata values related to [Metrics](/docs/build/metrics-
 
 
 ### List metrics
-
-```bash
-dbt sl list # In dbt Cloud
-mf list # In dbt Core
-```
 This command lists the metrics with their available dimensions:
 
 ```bash
