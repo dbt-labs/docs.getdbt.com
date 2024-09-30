@@ -70,7 +70,6 @@ snapshots:
 </File>
 In this example, the snapshot configuration tracks changes to the orders table over time. The transformation in this snapshot is:  `select * from {{ source('jaffle_shop', 'orders') }}`.
 ### Exceptions
-- Best practice: snapshot an ephemeral model that contains the logic.
   -  Create a "staging" layer on top of your snapshots for cleanup (this could even be an ephemeral model if you don’t want clutter in your warehouse).
 
 This approach also speeds up development, as it lets you run the query directly without needing to run the snapshot every time.
