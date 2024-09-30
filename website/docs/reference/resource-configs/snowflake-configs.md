@@ -11,7 +11,8 @@ To-do:
 
 ## Iceberg table format <Lifecycle status="beta"/>
 
-Snowflake Iceberg tables support for the dbt-snowflake adapter is available for three out-of-the-box materializations:  
+Snowflake Iceberg tables support for the dbt-snowflake adapter is available for three out-of-the-box materializations:
+
 - [Table](/docs/build/materializations#table)
 - [Incremental](/docs/build/materializations#incremental)
 - [Dynamic](#dynamic-tables) 
@@ -42,6 +43,7 @@ The following configurations are supported:
 |Base location |String | No | Defines the directory path for Snowflake to write the table data and metadata files. You can’t change this after creating the table. If not specified, dbt-snowflake will chose one based on the model's current schema. | `jaffle_marketing_folder` |
 
 ### Example configuration
+
 To configure an Iceberg table materialization in dbt, refer to the example configuration:
 
 <File name='models/<modelname>.sql'>
@@ -63,7 +65,25 @@ select * from {{ ref('raw_orders') }}
 
 </File>
 
+### Base location 
+
+If you were to create an Iceberg Table in the Snowflake query editor, you would be required to provide a `base_location` as an input. dbt Labs has chosen to abstract away from that. The default behavior in dbt is to provide a `base_location` string that follows this convention:
+
+_dbt/{SCHEMA_NAME}/{MODEL_NAME}. 
+
+However, dbt allows users to configure a `base_location_subpath` that is empty by default but, when provided, will be concatenated to the end of the previously described pattern for `base_location` string generation.
+
+dbt does this to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The base location declares where to write the external volume. The Snowflake Iceberg catalog will keep track of your Iceberg table regardless of where the data lives within the external volume declared and what `base_location` is provided. However, passing anything into the `base_location` field, including an empty string, is possible. An empty string could result in future technical debt because it will limit the ability to:
+
+- Navigate the underlying object store (S3/Azure blob)
+- Read Iceberg tables via an object-store integration
+- Grant schema-specific access to tables via object store
+- Use a crawler pointed at the tables within the external volume to build a new catalog with another tool
+
+In summary, dbt-snowflake does not support arbitrary definition of base_location for Iceberg tables. Instead, dbt, by default, writes your tables within a `_dbt/{SCHEMA_NAME}` prefix to ensure easier object-store observability and auditability.
+
 ### Limitations
+
 There are some limitations to the implementation you need to be aware of:
 
 -  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
