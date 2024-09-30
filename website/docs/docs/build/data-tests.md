@@ -76,7 +76,7 @@ Singular data tests are easy to write—so easy that you may find yourself writi
 
 You can set descriptions in your YAML files to document singular data tests:
 
-<File name='data_tests.yml'>
+<File name='tests/singular/data_tests.yml'>
 
 ```yml
 
