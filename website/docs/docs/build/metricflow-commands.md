@@ -213,23 +213,23 @@ The list of available saved queries:
 The following command performs validations against the defined semantic model configurations.
 
 ```bash
-dbt sl validate # dbt Cloud users
-mf validate-configs # In dbt Core
+dbt sl validate # For dbt Cloud users
+mf validate-configs # For dbt Core users
 
 Options:
-  --dw-timeout INTEGER            Optional timeout for data warehouse
+  --timeout                       # dbt Cloud only
+                                  Optional timeout for data warehouse validation in dbt Cloud.
+  --dw-timeout INTEGER            # dbt Core only
+                                  Optional timeout for data warehouse
                                   validation steps. Default None.
-  --skip-dw                       If specified, skips the data warehouse
-                                  validations
-  --show-all                      If specified, prints warnings and future-
-                                  errors
-  --verbose-issues                If specified, prints any extra details
-                                  issues might have
-  --semantic-validation-workers INTEGER
-                                  Optional. Uses the number of workers
-                                  specified to run the semantic validations.
-                                  Should only be used for exceptionally large
-                                  configs
+  --skip-dw                       # dbt Core only
+                                  Skips the data warehouse validations.
+  --show-all                      # dbt Core only
+                                  Prints warnings and future errors.
+  --verbose-issues                # dbt Core only
+                                  Prints extra details about issues.
+  --semantic-validation-workers INTEGER  # dbt Core only
+                                  Uses specified number of workers for large configs.
   --help                          Show this message and exit.
 ```
 
