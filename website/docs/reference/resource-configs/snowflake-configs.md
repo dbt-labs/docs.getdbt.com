@@ -66,7 +66,7 @@ select * from {{ ref('raw_orders') }}
 ### Limitations
 There are some limitations to the implementation you need to be aware of:
 
-- You cannot create transient or temporary Iceberg tables on Snowflake. 
+-  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
 - The `base_location_subpath` input is always appended to your schema name, and this behavior cannot be overridden. This ensures dbt can differentiate Iceberg model builds by environment.
 - Snowflake has limitations for Dynamic Tables. Check out the [Snowflake docs]( https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#usage-notes) for more information. By default, we recommend leaving the `base_location_subpath` field blank, as each target has it’s own default path.
 - You cannot incrementally update a preexisting incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
