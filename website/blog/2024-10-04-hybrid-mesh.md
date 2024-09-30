@@ -14,7 +14,7 @@ One of the most important things that dbt does is unlock the ability for teams t
 
 In the past, this primarily looked like a team working in one dbt Project to create a set of transformed objects in their data platform.
 
-As dbt was adopted by larger organizations and began to drive workloads at global scale, it became clear that we needed mechanisms to allow teams to operate independently from each other, creating and sharing data models across teams &mdash; [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro).
+As dbt was adopted by larger organizations and began to drive workloads at a global scale, it became clear that we needed mechanisms to allow teams to operate independently from each other, creating and sharing data models across teams &mdash; [dbt Mesh](/best-practices/how-we-mesh/mesh-1-intro).
 
 <!-- truncate -->
 
@@ -40,7 +40,7 @@ Each team will fully own its dbt code, from development through deployment, usin
 
 Creating a Hybrid Mesh is mostly the same as creating any other [dbt Mesh](/guides/mesh-qs?step=1) workflow &mdash; there are a few considerations but mostly _it just works_. We anticipate it will continue to see adoption as more central data teams look to onboard their downstream domain teams. 
 
-A Hybrid Mesh can be adopted as a stable long term pattern, or as an intermediary while you perform a [migration from dbt Core to dbt Cloud](/guides/core-cloud-2?step=1).
+A Hybrid Mesh can be adopted as a stable long-term pattern, or as an intermediary while you perform a [migration from dbt Core to dbt Cloud](/guides/core-cloud-2?step=1).
 
 ## How to build a Hybrid Mesh
 Enabling a Hybrid Mesh is as simple as a few additional steps to import the metadata from your Core project into dbt Cloud. Once you’ve done this, you should be able to operate your dbt Mesh like normal and all of our [standard recommendations](/best-practices/how-we-mesh/mesh-1-intro) still apply. 
@@ -78,7 +78,7 @@ Now that dbt Cloud has the necessary information about your Core project, you ca
   select * from {{ ref('upstream_project_name', 'monthly_revenue') }}
   ```
 
-And that’s all it takes! From here, the domain teams that own each dbt Project can build out their models in order to fit their own use cases. You can now build out your Hybrid Mesh however you want, accessing the full suite of dbt Cloud features.
+And that’s all it takes! From here, the domain teams that own each dbt Project can build out their models to fit their own use cases. You can now build out your Hybrid Mesh however you want, accessing the full suite of dbt Cloud features.
 - Orchestrate your Mesh to ensure timely delivery of data products and make them available to downstream consumers.
 - Use [dbt Explorer](/docs/collaborate/explore-projects) to trace the lineage of your data back to its source.
 - Onboard more teams and connect them to your Mesh.
@@ -87,4 +87,4 @@ And that’s all it takes! From here, the domain teams that own each dbt Project
 
 ## Conclusion
 
-In a world where organizations have complex and ever changing data needs, there is no one-size fits all solution. Instead, data practitioners needs flexible tooling that meets them where they are. The Hybrid Mesh presents a model for this approach, where teams that are comfortable and getting value out of dbt Core can collaborate frictionlessly with domain teams on dbt Cloud.
+In a world where organizations have complex and ever-changing data needs, there is no one-size fits all solution. Instead, data practitioners need flexible tooling that meets them where they are. The Hybrid Mesh presents a model for this approach, where teams that are comfortable and getting value out of dbt Core can collaborate frictionlessly with domain teams on dbt Cloud.
