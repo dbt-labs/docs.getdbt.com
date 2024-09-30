@@ -72,9 +72,9 @@ Singular data tests are easy to write—so easy that you may find yourself writi
 
 <VersionBlock firstVersion="1.9">
 
-### Document singular tests
+### Document singular data tests
 
-You can set descriptions in your YAML files to document singular data tests:
+The top-level `data_tests:` key in YAML files allows for adding a [`description`](/reference/resource-properties/description) for singular data tests. Descriptions can include Markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
 
 <File name='tests/singular/data_tests.yml'>
 
@@ -83,12 +83,7 @@ You can set descriptions in your YAML files to document singular data tests:
 # top-level
 data_tests:
   - name: my_super_cool_singular_test
-    description: The order_id is unique for every row in the orders model
-    config:
-      error_if: ">10"
-  - name: my_super_cool_singular_test2
-    description: '{{ doc("not_null_test") }}'
-
+    description: The `order_id` is unique for every row in the orders model
 ```
 
 </File>
