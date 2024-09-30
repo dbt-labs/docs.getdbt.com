@@ -41,36 +41,33 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 ## Create a Databricks workspace
 
-1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information.
+1. Use your existing account or [sign up for a Databricks account](https://databricks.com/). Complete the form with your user information and click **Continue**.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/signup_form.png" title="Sign up for Databricks" />
     </div>
 
-2. For the purpose of this tutorial, you will be selecting AWS as our cloud provider but if you use Azure or GCP internally, please choose one of them. The setup process will be similar.
-3. Check your email to complete the verification process.
-4. After setting up your password, you will be guided to choose a subscription plan. Select the `Premium` or `Enterprise` plan to access the SQL Compute functionality required for using the SQL warehouse for dbt. We have chosen `Premium` for this tutorial. Click **Continue** after selecting your plan.
+2. On the next screen, select your cloud provider. This tutorial uses AWS as the cloud provider, but if you use Azure or GCP internally, please select your platform. The setup process will be similar. Do not select the **Get started with Community Edition** option, as this will not provide the required compute for this guide. 
+
+        <div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/databricks_tutorial/images/choose_provider.png" title="Choose cloud provider" />
+    </div>
+
+3. Check your email and complete the verification process.
+
+4. After completing the verification processes, you will be brought to the first setup screen. Databricks defaults to the `Premium` plan and you can change the trial to `Enterprise` on this page.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/choose_plan.png" title="Choose Databricks Plan" />
     </div>
 
-5. Click **Get Started** when you come to this below page and then **Confirm** after you validate that you have everything needed.
+5. Now, it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, and more so into one place.  Provide the name of your workspace, choose the appropriate AWS region, and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for this tutorial. 
 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/validate_1.png" />
-    </div>
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/validate_2.png" />
+    <Lightbox src="/img/databricks_tutorial/images/start_quickstart.png" title="Create AWS resources" />
     </div>
 
-6. Now it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, etc into one place.  Provide the name of your workspace and choose the appropriate AWS region and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for the purpose of this tutorial. 
-
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" title="Setup First Workspace" />
-    </div>
-
-7. By clicking on `Start Quickstart`, you will be redirected to AWS and asked to log in if you haven’t already. After logging in, you should see a page similar to this. 
+6. By clicking on `Start Quickstart`, you will be redirected to AWS and asked to log in if you haven’t already. After logging in, you should see a page similar to this. 
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/quick_create_stack.png" title="Create AWS resources" />
@@ -80,7 +77,7 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 If you get a session error and don’t get redirected to this page, you can go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**.
 :::
 
-8. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
+7. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/parameters.png" title="Parameters" />
     </div>    
@@ -89,11 +86,11 @@ If you get a session error and don’t get redirected to this page, you can go b
     <Lightbox src="/img/databricks_tutorial/images/create_stack.png" title="Capabilities" />
     </div>    
 
-10. Go back to the Databricks tab. You should see that your workspace is ready to use.
+8. Go back to the Databricks tab. You should see that your workspace is ready to use.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/workspaces.png" title="A Databricks Workspace" />
     </div>
-11. Now let’s jump into the workspace. Click **Open** and log into the workspace using the same login as you used to log into the account. 
+9. Now let’s jump into the workspace. Click **Open** and log into the workspace using the same login as you used to log into the account. 
 
 ## Load data
 
