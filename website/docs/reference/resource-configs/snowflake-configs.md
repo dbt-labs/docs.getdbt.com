@@ -69,7 +69,7 @@ There are some limitations to the implementation you need to be aware of:
 - You cannot create transient or temporary Iceberg tables on Snowflake. 
 - The `base_location_subpath` input is always appended to your schema name, and this behavior cannot be overridden. This ensures dbt can differentiate Iceberg model builds by environment.
 - Snowflake has limitations for Dynamic Tables. Check out the [Snowflake docs]( https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake#usage-notes) for more information. By default, we recommend leaving the `base_location_subpath` field blank, as each target has it’s own default path.
-- Copying rows from an existing default-format model into an Iceberg-format model is not currently supported. This means for incremental models, you will have to use `--full-refresh` to drop and recreate the table from scratch. An exception is thrown without `--full-refresh`.
+- You cannot incrementally update a preexisting incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
 - For `on_schema_change`, only the `fail` and `ignore` strategies are currently supported.
 
 
