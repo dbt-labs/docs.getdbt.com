@@ -68,11 +68,11 @@ having total_amount < 0
 
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
 
-Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
-
-<VersionBlock firstVersion="1.9">
+Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend [generic data tests](#generic-data-tests).
 
 ### Document singular data tests
+
+<VersionBlock firstVersion="1.9">
 
 The top-level `data_tests:` key in YAML files allows for adding a [`description`](/reference/resource-properties/description) for singular data tests. Descriptions can include Markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
 
@@ -87,6 +87,12 @@ data_tests:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+The `description` property is available for [singular data tests](/build/data-tests#singular-data-tests) beginning in dbt v1.9.
 
 </VersionBlock>
 
