@@ -306,7 +306,7 @@ snapshots:
 
 #### Customize meta column names in snapshot table
 
-Use the following configuration to define the names of the columns created in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields).
+Use the following configuration to customize the names of the meta columns dbt creates in the [snapshot table](/docs/build/snapshots#snapshot-meta-fields).
 
 <File name='dbt_project.yml'>
 
