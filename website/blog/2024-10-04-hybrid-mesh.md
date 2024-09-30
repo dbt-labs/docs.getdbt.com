@@ -36,7 +36,7 @@ The flexibility of dbt Mesh means that it can support [a wide variety of pattern
 
 Each team will fully own its dbt code, from development through deployment, using the product that is appropriate to their needs and capabilities _while sharing data products across teams using both dbt Core and dbt Cloud._
 
-<Lightbox src="/img/blog/2024-10-04-hybrid-mesh/hybrid-mesh.png" width="75%" title="A before and after diagram highlighting how a Hybrid Mesh allows central data teams using dbt Core to work with domain data teams using dbt Cloud." />
+<Lightbox src="/img/blog/2024-09-30-hybrid-mesh/hybrid-mesh.png" width="75%" title="A before and after diagram highlighting how a Hybrid Mesh allows central data teams using dbt Core to work with domain data teams using dbt Cloud." />
 
 Creating a Hybrid Mesh is mostly the same as creating any other [dbt Mesh](/guides/mesh-qs?step=1) workflow &mdash; there are a few considerations but mostly _it just works_. We anticipate it will continue to see adoption as more central data teams look to onboard their downstream domain teams. 
 
