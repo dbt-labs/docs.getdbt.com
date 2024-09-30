@@ -18,7 +18,7 @@ Snowflake Iceberg tables support for the dbt-snowflake adapter is available for 
 
 For now, Iceberg tables require a [behavior flag](/reference/global-configs/behavior-changes) due to performance impact related to using Iceberg tables. Snowflake does not support `is_iceberg` on the  `Show Objects` queries, which dbt depends on for metadata.
 
-To use Iceberg, set the Iceberg Materialization Behavior flag to true in your dbt_project.yml:
+To use Iceberg, set the Iceberg Materialization Behavior flag to `True` in your dbt_project.yml:
 
 <File name='dbt_project.yml'>
 
