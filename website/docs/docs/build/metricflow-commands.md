@@ -376,7 +376,7 @@ Note that when you query a dimension, you need to specify the primary entity for
 dbt sl query --metrics order_total --group-by primary_entity__is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
-mf query --metrics order_total --group-byprimary_entity__is_food_order --limit 10 --order-by -metric_time 
+mf query --metrics order_total --group-by primary_entity__is_food_order --limit 10 --order-by -metric_time 
 ```
 
 **Result**
