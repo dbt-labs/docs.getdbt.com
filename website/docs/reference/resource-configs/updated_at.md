@@ -35,6 +35,7 @@ You will get a warning if the data type of the `updated_at` column does not matc
 
 :::
 
+
 </VersionBlock>
 
 ## Description
