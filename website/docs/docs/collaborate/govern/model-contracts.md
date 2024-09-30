@@ -215,7 +215,7 @@ Breaking changes include:
 - Removing a contracted model constitutes a breaking change. A model is considered 'removed' if it is deleted, renamed, or disabled:
   - When you remove a versioned model, you will receive an error.
   - When you remove an unversioned contract, you will receive a warning.
-
+</VersionBlock>
 
 More details are available in the [contract reference](/reference/resource-configs/contract#detecting-breaking-changes).
 
