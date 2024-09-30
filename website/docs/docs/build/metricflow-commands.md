@@ -59,7 +59,6 @@ The following table lists the commands compatible with the dbt Cloud IDE and dbt
 
 | <div style={{width:'250px'}}>Command</div>  | <div style={{width:'100px'}}>Description</div> | dbt Cloud IDE | dbt Cloud CLI |
 |---------|-------------|---------------|---------------|
-| [`list`](#list) | Retrieves metadata values. | ✅ | ✅ |
 | [`list metrics`](#list-metrics) | Lists metrics with dimensions. |  ✅ | ✅ |
 | [`list dimensions`](#list) | Lists unique dimensions for metrics. |  ✅  | ✅ |
 | [`list dimension-values`](#list-dimension-values) | List dimensions with metrics. | ✅ | ✅ |
