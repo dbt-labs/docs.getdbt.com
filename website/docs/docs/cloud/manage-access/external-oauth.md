@@ -1,13 +1,13 @@
 ---
-title: "Set up external Oauth"
+title: "Set up external OAuth"
 id: external-oauth
-description: "Configuration instructions for dbt Cloud and external Oauth connections"
-sidebar_label: "Set up external Oauth"
+description: "Configuration instructions for dbt Cloud and external OAuth connections"
+sidebar_label: "Set up external OAuth"
 pagination_next: null
 pagination_prev: null
 ---
 
-# Set up external Oauth <Lifecycle status="enteprise" />
+# Set up external OAuth <Lifecycle status="enteprise" />
 
 :::note 
 
@@ -20,7 +20,7 @@ dbt Cloud Enterprise supports [external OAuth authentication](https://docs.snow
 
 ## Getting started
 
-The process of setting up external Oauth will require a little bit of back-and-forth between your dbt Cloud, IdP, and Snowflake accounts, and having them open in multiple browser tabs will help speed up the configuration process:
+The process of setting up external OAuth will require a little bit of back-and-forth between your dbt Cloud, IdP, and Snowflake accounts, and having them open in multiple browser tabs will help speed up the configuration process:
 
 - **dbt Cloud:** You’ll primarily be working in the **Account Settings** —> **Integrations** page. You will need [proper permission](/docs/cloud/manage-access/enterprise-permissions) to set up the integration and create the connections.
 - **Snowflake:** Open a worksheet in an account that has permissions to [create a security integration](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration).
@@ -31,7 +31,7 @@ If the admins that handle these products are all different people, it’s better
 
 ### Snowflake commands
 
-The following is a template for creating the Oauth configurations in the Snowflake environment:
+The following is a template for creating the OAuth configurations in the Snowflake environment:
 
 ```sql
 
@@ -50,7 +50,7 @@ external_oauth_any_role_mode = 'ENABLE'
 
 The `external_oauth_token_user_mapping_claim` and `external_oauth_snowflake_user_mapping_attribute` can be modified based on the your organizations needs. These values point to the claim in the users’ token. In the example, Snowflake will look up the Snowflake user whose `email` matches the value in the `sub` claim. 
 
-**Note:** The Snowflake default roles ACCOUNTADMIN, ORGADMIN, or SECURITYADMIN, are blocked from external Oauth by default and they will likely fail to authenticate. See the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration-oauth-external) for more information. 
+**Note:** The Snowflake default roles ACCOUNTADMIN, ORGADMIN, or SECURITYADMIN, are blocked from external OAuth by default and they will likely fail to authenticate. See the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration-oauth-external) for more information. 
 
 ## Identity provider configuration
 
@@ -73,7 +73,7 @@ Select a supported identity provider (IdP) for instructions on configuring exter
 
 <Lightbox src="/img/docs/dbt-cloud/create-okta-app.png" width="60%" title="The Okta app creation window with OIDC and Web Application selected" />
 
-3. Give the application an appropriate name, something like “External Oauth app for dbt Cloud,” that will make it easily identifiable.
+3. Give the application an appropriate name, something like “External OAuth app for dbt Cloud,” that will make it easily identifiable.
 4. In the **Grant type** section, enable the **Refresh token** option.
 5. Scroll down to the **Sign-in redirect URIs** option. You’ll need to paste the redirect URI you gathered from dbt Cloud in step 1.3.
 
@@ -155,19 +155,19 @@ Adjust the other settings as needed to meet your organization's configurations i
 
 
 1. Navigate the **Account settings** and click **Connections** from the menu. Click **Add connection**.
-2. Configure the `Account`, `Database`, and `Warehouse` as you normally would, and for the `Oauth method`, select the external OAuth you just created.
+2. Configure the `Account`, `Database`, and `Warehouse` as you normally would, and for the `OAuth method`, select the external OAuth you just created.
 
 
-<Lightbox src="/img/docs/dbt-cloud/configure-new-connection.png" width="60%" title="The new configuration window in dbt Cloud with the External Oauth showing as an option" />
+<Lightbox src="/img/docs/dbt-cloud/configure-new-connection.png" width="60%" title="The new configuration window in dbt Cloud with the External OAuth showing as an option" />
 
 
-3. Scroll down to the **External Oauth** configurations box and select the config from the list.
+3. Scroll down to the **External OAuth** configurations box and select the config from the list.
 
 
-<Lightbox src="/img/docs/dbt-cloud/select-oauth-config.png" width="60%" title="The new connection displayed in the External Oauth Configurations box" />
+<Lightbox src="/img/docs/dbt-cloud/select-oauth-config.png" width="60%" title="The new connection displayed in the External OAuth Configurations box" />
 
 
-4. **Save** the connection, and you have now configured External Oauth with Okta and Snowflake!
+4. **Save** the connection, and you have now configured External OAuth with Okta and Snowflake!
 
 </Expandable>
 
@@ -263,7 +263,7 @@ app in Entra ID, click **Endpoints** and open the **Federation metadata document
 2. `Integration name`: Give the integration a descriptive name that includes identifying information about the Entra ID environment so future users won’t have to guess where it belongs.
 3. `Client secrets`: Found in the Client ID from the **Certificates and secrets** page. `Value` is the `Client secret`. Note that it only appears when created; _Microsoft hides the secret if you return later, and you must recreate it._
 4. `Client ID`: Copy the’ Application (client) ID’ on the overview page for the client ID app.
-5. `Authorization URL` and `Token URL`: From the client ID app, open the `Endpoints` tab. These URLs map to the `Oauth 2.0 authorization endpoint (v2)` and `Oauth 2.0 token endpoint (v2)` fields. *You must use v2 of the `Oauth 2.0 authorization endpoint`. Do not use V1.* You can use either version of the `Oauth 2.0 token endpoint`.
+5. `Authorization URL` and `Token URL`: From the client ID app, open the `Endpoints` tab. These URLs map to the `OAuth 2.0 authorization endpoint (v2)` and `OAuth 2.0 token endpoint (v2)` fields. *You must use v2 of the `OAuth 2.0 authorization endpoint`. Do not use V1.* You can use either version of the `OAuth 2.0 token endpoint`.
 6. `Application ID URI`: Copy the `Application ID URI` field from the resource server’s Overview screen.
 
 </Expandable>
