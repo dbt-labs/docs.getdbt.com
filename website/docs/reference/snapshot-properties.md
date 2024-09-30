@@ -70,7 +70,6 @@ snapshots:
 </File>
 In this example, the snapshot configuration tracks changes to the orders table over time. The transformation in this snapshot is:  `select * from {{ source('jaffle_shop', 'orders') }}`.
 ### Exceptions
-
 To carry out light transformation on your source or add logic into your snapshot, incorporate the following:
 
 - Types of logic: filters, deduplication, surrogate → unique key, and so on.
