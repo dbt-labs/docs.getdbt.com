@@ -42,7 +42,6 @@ snapshots:
 ```
 </File>
 
-<VersionBlock firstVersion="1.9">
 
 ## Define snapshots in YAML
 
