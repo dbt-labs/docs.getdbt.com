@@ -82,11 +82,13 @@ snapshots:
 
 
 <VersionBlock firstVersion="1.9">
+
 :::info
 
 In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), the snapshot config can be set in schema yml file. This feature will also be available in the upcoming 1.9 release.
 
 :::
+
 <File name='snapshots/schema.yml'>
 
 ```yml
@@ -101,11 +103,7 @@ snapshots:
 ```
 </File>
 
-</TabItem>
-
 </VersionBlock>
-
-<TabItem value="config">
 
 <VersionBlock lastVersion="1.8">
 
