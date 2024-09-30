@@ -396,15 +396,15 @@ mf query --metrics order_total --group-byprimary_entity__is_food_order --limit 1
 
 <TabItem value="eg4" label="where clause">
 
-You can further filter the data set by adding a `where` clause to your query. The following example shows you how to query the `order_total` metric, grouped by `metric_time` with multiple where statements (orders that are food orders and orders from the week starting on or after Feb 1st, 2024):
+You can further filter the data set by adding a `where` clause to your query. The following example shows you how to query the `order_total` metric, grouped by `is_food_order` with multiple where statements (orders that are food orders and orders from the week starting on or after Feb 1st, 2024). Note that when you query a dimension, you need to specify the primary entity for that dimension. In the following example, the primary entity is `order_id`.
 
 **Query**
 ```bash
 # In dbt Cloud 
-dbt sl query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'"
+dbt sl query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'"
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'" 
+mf query --metrics order_total --group-by order_id__is_food_order --where "{{ Dimension('order_id__is_food_order') }} = True and metric_time__week >= '2024-02-01'" 
 ```
 
 **Result**
