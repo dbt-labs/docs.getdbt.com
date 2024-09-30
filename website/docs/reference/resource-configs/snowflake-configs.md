@@ -13,7 +13,7 @@ To-do:
 
 Snowflake Iceberg tables support for the dbt-snowflake adapter is available for three out-of-the-box materializations:  
 - [Table](/docs/build/materializations#table)
-- [Incremental](/docs/build/materializations#view)
+- [Incremental](/docs/build/materializations#incremental)
 - [Dynamic](#dynamic-tables) 
 
 For now, Iceberg tables require a [behavior flag](/reference/global-configs/behavior-changes) due to performance impact related to using Iceberg tables. Snowflake does not support `is_iceberg` on the  `Show Objects` queries, which dbt depends on for metadata.
@@ -31,17 +31,18 @@ flags:
 
 </File>
 
-If you do not set this behavior flag, you will get an error, and dbt won’t materialize the table in the Iceberg format.
+If you don't set this behavior flag, you will get an error and dbt won’t materialize the table in the Iceberg format.
 
 The following configurations are supported: 
 
 | Field | Type | Required | Description | Sample input |
 |-------|------|----------|-------------|-------|
 |Table Format | String | Yes | Configures the objects table format. | `iceberg` |
-|External volumne | String | Yes | Specifies the identifier (name) of the external volume where the Iceberg table stores its metadata files and data in Parquet format. If you don’t specify this parameter, the Iceberg table defaults to the external volume for the schema, database, or account. The schema takes precedence over the database, and the database takes precedence over the account.| `my_s3_bucket` |
-|Base location |String | No | Defines the directory path for Snowflake to write the table data and metadata files. You can’t change this after creating the table. If not specified, Snowflake will use the current schema. | `jaffle_marketing_folder` |
+|External volume | String | Yes | Specifies the identifier (name) of the external volume where the Iceberg table stores its metadata files and data in Parquet format. If you don’t specify this parameter, the Iceberg table defaults to the external volume for the schema, database, or account. The schema takes precedence over the database, and the database takes precedence over the account.| `my_s3_bucket` |
+|Base location |String | No | Defines the directory path for Snowflake to write the table data and metadata files. You can’t change this after creating the table. If not specified, dbt-snowflake will chose one based on the model's current schema. | `jaffle_marketing_folder` |
 
-Example of an Iceberg table materialization configuration:
+### Example configuration
+To configure an Iceberg table materialization in dbt, refer to the example configuration:
 
 <File name='models/<modelname>.sql'>
 
@@ -62,6 +63,7 @@ select * from {{ ref('raw_orders') }}
 
 </File>
 
+### Limitations
 There are some limitations to the implementation you need to be aware of:
 
 - You cannot create transient or temporary Iceberg tables on Snowflake. 
