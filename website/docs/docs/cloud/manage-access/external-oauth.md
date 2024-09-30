@@ -11,7 +11,7 @@ pagination_prev: null
 
 :::note 
 
-This feature is currently only available for the Okta and Entra ID identity providers and Snowflake connections.
+This feature is currently only available for the Okta and Entra ID identity providers and [Snowflake connections](/docs/cloud/connect-data-platform/connect-snowflake).
 
 :::
 
