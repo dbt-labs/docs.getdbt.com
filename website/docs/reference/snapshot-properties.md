@@ -68,7 +68,7 @@ snapshots:
 
 </File>
 In this example, the snapshot configuration tracks changes to the orders table over time. The transformation in this snapshot is:  `select * from {{ source('jaffle_shop', 'orders') }}`.
-<VersionBlock latestVersion="1.8">
+<VersionBlock lastVersion="1.8">
 
 In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the new way to define snapshots in your project. This feature will also be available in the upcoming 1.9 release. 
 
