@@ -1,6 +1,6 @@
 ---
 title: MetricFlow time spine
-id: metricflow-time spine
+id: metricflow-time-spine
 description: "MetricFlow expects a default timespine table called metricflow_time_spine"
 sidebar_label: "MetricFlow time spine"
 tags: [Metrics, Semantic Layer]
@@ -314,5 +314,8 @@ models:
           column_name: fiscal_year_column
 ```
 </File>
+
+#### Coming soon
+Note that features like calculating offsets and period-over-period will be supported soon.
 
 </VersionBlock>
