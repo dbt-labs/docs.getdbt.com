@@ -5,7 +5,7 @@ slug: hybrid-mesh
 authors: [jason_ganz]
 tags: [analytics craft]
 hide_table_of_contents: false
-date: 2024-10-04
+date: 2024-09-30
 is_featured: true
 ---
 
