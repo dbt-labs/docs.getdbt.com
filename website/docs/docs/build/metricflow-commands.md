@@ -344,7 +344,7 @@ You can include multiple dimensions in a query. For example, you can group by th
 ```bash
 dbt sl query --metrics order_total --group-by order_id__is_food_order # In dbt Cloud
 
-mf query --metrics order_total --group-by primary_entity__is_food_order # In dbt Core
+mf query --metrics order_total --group-by order_id__is_food_order # In dbt Core
 ```
 
 **Result**
