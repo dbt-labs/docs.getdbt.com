@@ -105,11 +105,6 @@ Use the `mf` prefix before the command name to execute them in dbt Core. For exa
 </TabItem>
 </Tabs>
 
-### List
-
-This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entities](/docs/build/entities) values. 
-
-
 ### List metrics
 This command lists the metrics with their available dimensions:
 
