@@ -85,7 +85,7 @@ snapshots:
 
 :::info
 
-In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), the snapshot config can be set in schema yml file. This feature will also be available in the upcoming 1.9 release.
+In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), the snapshot config can be set in a `schema.yml` file. This feature will also be available in the upcoming dbt Core 1.9 release.
 
 :::
 
