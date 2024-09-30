@@ -3,18 +3,15 @@ title: "Set up external Oauth"
 id: external-oauth
 description: "Configuration instructions for dbt Cloud and external Oauth connections"
 sidebar_label: "Set up external Oauth"
-unlisted: true
 pagination_next: null
 pagination_prev: null
 ---
 
-# Set up external Oauth <Lifecycle status="beta, enteprise" />
+# Set up external Oauth <Lifecycle status="enteprise" />
 
-:::note Beta feature
+:::note 
 
-External OAuth for authentication is available in a limited beta. If you are interested in joining the beta, please contact your account manager. 
-
-This feature is currently only available for the Okta and Entra ID identity providers and Snowflake connections. Only available to Enterprise accounts.
+This feature is currently only available for the Okta and Entra ID identity providers and Snowflake connections.
 
 :::
 
@@ -55,7 +52,11 @@ The `external_oauth_token_user_mapping_claim` and `external_oauth_snowflake_u
 
 **Note:** The Snowflake default roles ACCOUNTADMIN, ORGADMIN, or SECURITYADMIN, are blocked from external Oauth by default and they will likely fail to authenticate. See the [Snowflake documentation](https://docs.snowflake.com/en/sql-reference/sql/create-security-integration-oauth-external) for more information. 
 
-## Set up with Okta
+## Identity provider configuration
+
+Select a supported identity provider (IdP) for instructions on configuring external OAuth in their environment and completing the integration in dbt Cloud.
+
+<Expandable alt_header="Okta">
 
 ### 1. Initialize the dbt Cloud settings
 
@@ -162,7 +163,9 @@ Adjust the other settings as needed to meet your organizations configurations in
 
 4. **Save** the connection and you have now configured External Oauth with Okta and Snowflake!
 
-## Set up with Entra ID
+</Expandable>
+
+<Expandable alt_header="Entra ID">
 
 ### 1. Initialize the dbt Cloud settings
 
@@ -252,3 +255,5 @@ On the Entra ID site:
 4. `Client ID`: Copy the’ Application (client) ID’ on the overview page for the client ID app.
 5. `Authorization URL` and `Token URL`: From the client ID app, open the `Endpoints` tab. The `Oauth 2.0 authorization endpoint (v2)` and `Oauth 2.0 token endpoint (v2)` fields map to these. *You must use v2 of the `Oauth 2.0 authorization endpoint`. Do not use V1.* You can use either version of the `Oauth 2.0 token endpoint`.
 6. `Application ID URI`: Copy the `Application ID URI` field from the resource server’s Overview screen.
+
+</Expandable>
