@@ -338,13 +338,13 @@ mf query --metrics order_total,users_active --group-by metric_time # In dbt Core
 
 <TabItem value="eg2" label="Dimensions">
 
-You can include multiple dimensions in a query. For example, you can group by the `is_food_order` dimension to confirm if orders were for food or not. 
+You can include multiple dimensions in a query. For example, you can group by the `is_food_order` dimension to confirm if orders were for food or not.  Note that when you query a dimension, you need to specify the primary entity for that dimension.
 
 **Query**
 ```bash
-dbt sl query --metrics order_total --group-by metric_time,is_food_order # In dbt Cloud
+dbt sl query --metrics order_total --group-by primary_entity__is_food_order # In dbt Cloud
 
-mf query --metrics order_total --group-by metric_time,is_food_order # In dbt Core
+mf query --metrics order_total --group-by primary_entity__is_food_order # In dbt Core
 ```
 
 **Result**
@@ -368,13 +368,15 @@ mf query --metrics order_total --group-by metric_time,is_food_order # In dbt Cor
 
 You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records and orders them by `metric_time`, descending. Note that using the `-` prefix will sort the query in descending order. Without the `-` prefix sorts the query in ascending order.
 
+Note that when you query a dimension, you need to specify the primary entity for that dimension.
+
 **Query**
 ```bash
 # In dbt Cloud 
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time 
+dbt sl query --metrics order_total --group-by primary_entity__is_food_order --limit 10 --order-by -metric_time 
 
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time 
+mf query --metrics order_total --group-byprimary_entity__is_food_order --limit 10 --order-by -metric_time 
 ```
 
 **Result**
@@ -428,16 +430,16 @@ mf query --metrics order_total --group-by metric_time --where "{{ Dimension('ord
 
 To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
 
-
+Note that when you query a dimension, you need to specify the primary entity for that dimension.
 <!--
 bash not support in cloud yet
 # In dbt Cloud
-dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+dbt sl query --metrics order_total --group-by primary_entity__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 -->
 **Query**
 ```bash
 # In dbt Core
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+mf query --metrics order_total --group-by primary_entity__is_food_order --limit 10 --order-by -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 ```
 
  **Result**
