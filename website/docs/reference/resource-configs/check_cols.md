@@ -10,7 +10,7 @@ datatype: "[column_name] | all"
   ```yml
   snapshots:
   - name: snapshot_name
-    relation: source('jaffle_shop', 'orders')
+    relation: source('my_source', 'my_table')
     config:
       schema: string
       unique_key: column_name_or_expression

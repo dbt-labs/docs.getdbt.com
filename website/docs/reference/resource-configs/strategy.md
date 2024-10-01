@@ -237,7 +237,6 @@ snapshots:
       strategy: timestamp_with_deletes
       updated_at: updated_at_column
       unique_key: id
-      schema: snapshots
 ```
 </File>
 </VersionBlock>

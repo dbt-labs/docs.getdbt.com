@@ -23,15 +23,24 @@ Parts of a snapshot:
 
 <ConfigResource meta={frontMatter.meta} />
 
+<VersionBlock lastVersion="1.8">
+
+:::info Use the latest snapshot syntax
+
+In Versionless and dbt v1.9 and later, snapshots are defined in an updated syntax using a YAML file within your `snapshots/` directory (as defined by the [`snapshot-paths` config](/reference/project-configs/snapshot-paths)). For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt Core v1.9 and later](/docs/dbt-versions/core).
+:::
+</VersionBlock>
+
 <Tabs
   groupId="config-languages"
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
-    { label: 'Config block', value: 'config', },
+    { label: 'YAML file', value: 'property-yaml', },
+    { label: 'Config block', value: 'config-resource', },
   ]
 }>
+
 <TabItem value="project-yaml">
 
 <VersionBlock lastVersion="1.8">
@@ -83,7 +92,7 @@ snapshots:
 
 **Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
 
-For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt v1.9 and later](/docs/dbt-versions/core).
+For faster and more efficient management, consider the [updated snapshot YAML syntax](/docs/build/snapshots), [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt v1.9 and later](/docs/dbt-versions/core).
 
 </VersionBlock>
 
@@ -111,7 +120,13 @@ snapshots:
 
 </TabItem>
 
-<TabItem value="config">
+<TabItem value="config-resource">
+
+<VersionBlock firsttVersion="1.9">
+
+Configurations can be applied to snapshots using the more performant [YAML syntax](/docs/build/snapshots), aavilable in Versionless and dbt v1.9 and higher, in the the `snapshot` directory file.
+
+</VersionBlock>
 
 <VersionBlock lastVersion="1.8">
 
@@ -127,25 +142,6 @@ snapshots:
 ) }}
 
 ```
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.9">
-
-```jinja
-
-{{ config(
-    [schema](/reference/resource-configs/schema)="<string>",
-    [database](/reference/resource-configs/database)="<string>",
-    [alias](/reference/resource-configs/alias)="<string>",
-    [unique_key](/reference/resource-configs/unique_key)="<column_name_or_expression>",
-    [strategy](/reference/resource-configs/strategy)="timestamp" | "check",
-    [updated_at](/reference/resource-configs/updated_at)="<column_name>",
-    [check_cols](/reference/resource-configs/check_cols)=["<column_name>"] | "all"
-) }}
-
-```
-
 </VersionBlock>
 
 </TabItem>
@@ -162,7 +158,7 @@ snapshots:
   defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
-    { label: 'Property file', value: 'property-yaml', },
+    { label: 'YAML file', value: 'property-yaml', },
     { label: 'Config block', value: 'config', },
   ]
 }>
@@ -188,6 +184,7 @@ snapshots:
 <TabItem value="property-yaml">
 
 <VersionBlock lastVersion="1.8">
+
 <File name='snapshots/properties.yml'>
 
 ```yaml
@@ -209,6 +206,7 @@ snapshots:
 </VersionBlock>
 
 <VersionBlock firstVersion="1.9">
+
 <File name='snapshots/properties.yml'>
 
 ```yaml
@@ -234,6 +232,13 @@ snapshots:
 
 <TabItem value="config">
 
+<VersionBlock firsttVersion="1.9">
+
+Configurations can be applied to snapshots using the more performant [YAML syntax](/docs/build/snapshots), aavilable in Versionless and dbt v1.9 and higher, in the the `snapshot` directory file.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
 
 ```jinja
 
@@ -249,18 +254,30 @@ snapshots:
 
 ```
 
+</VersionBlock>
+
 </TabItem>
 
 </Tabs>
 
-
 ## Configuring snapshots
 Snapshots can be configured in multiple ways:
 
-1. Defined in YAML files, typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
+<VersionBlock firstVersion="1.9">
+
+1. Defined in YAML files using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
+2. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+1. Defined in YAML files using a `config` [resource property](/reference/model-properties), typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
 2. Using a `config` block within a snapshot
-3. Using a `config` [resource property](/reference/model-properties) in a `.yml` file
-4. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
+3. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
+
+Note that in Versionless and dbt v1.9 and later, snapshots are defined in an updated syntax using a YAML file within your `snapshots/` directory (as defined by the [`snapshot-paths` config](/reference/project-configs/snapshot-paths)). For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt Core v1.9 and later](/docs/dbt-versions/core).
+
+</VersionBlock>
 
 Snapshot configurations are applied hierarchically in the order above.
 
@@ -301,7 +318,7 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
 - #### Apply configurations to one snapshot only
   
   <VersionBlock lastVersion="1.8">
-  We recommend using `config` blocks if you need to apply a configuration to one snapshot only.
+  Use `config` blocks if you need to apply a configuration to one snapshot only. 
 
     <File name='snapshots/postgres_app/orders_snapshot.sql'>
 
