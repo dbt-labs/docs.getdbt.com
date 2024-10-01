@@ -323,7 +323,7 @@ The following examples demonstrate how to configure snapshots using the `dbt_pro
     </VersionBlock>
 
     <VersionBlock firstVersion="1.9">
-     <File name='snapshots/postgres_app/your_snapshot_name.yml'>
+     <File name='snapshots/postgres_app/order_snapshot.yml'>
 
     ```yaml
     snapshots:
