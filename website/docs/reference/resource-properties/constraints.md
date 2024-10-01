@@ -23,11 +23,11 @@ The structure of a constraint is:
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
 - `columns` (model-level only): List of column names to apply the constraint over.
 
-<VersionBlock lastVersion="1.8">
+Foreign key constraints accept two additional inputs:
+- `to`: A relation input, likely `ref()`, indicating the referenced table.
+- `to_columns`: A list of column(s) in that table containing the corresponding primary or unique key.
 
-When using `foreign_key`, you need to specify the referenced table's schema manually. Use `{{ target.schema }}` in the `expression` field to automatically pass the schema used by the target environment. Note that later versions of dbt will have more efficient ways of handling this. 
-
-For example: `expression: "{{ target.schema }}.customers(customer_id)"`
+This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It is available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), and versions of dbt Core starting with v1.9.
 
 <File name='models/schema.yml'>
 
@@ -37,80 +37,78 @@ models:
     
     # required
     config:
-      contract:
-        enforced: true
+      contract: {enforced: true}
     
     # model-level constraints
     constraints:
       - type: primary_key
-        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
-      - type: FOREIGN_KEY # multi_column
-        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
-        expression: "OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_FIRST_COLUMN, OTHER_MODEL_SECOND_COLUMN, ...)"
+        columns: [first_column, second_column, ...]
+      - type: foreign_key # multi_column
+        columns: [first_column, second_column, ...]
+        to: "{{ ref('other_model_name') }}"
+        to_columns: [other_model_first_column, other_model_second_columns, ...]
       - type: check
-        columns: [FIRST_COLUMN, SECOND_COLUMN, ...]
-        expression: "FIRST_COLUMN != SECOND_COLUMN"
-        name: HUMAN_FRIENDLY_NAME
+        columns: [first_column, second_column, ...]
+        expression: "first_column != second_column"
+        name: human_friendly_name
       - type: ...
     
     columns:
-      - name: FIRST_COLUMN
-        data_type: DATA_TYPE
+      - name: first_column
+        data_type: string
         
         # column-level constraints
         constraints:
           - type: not_null
           - type: unique
           - type: foreign_key
-            expression: OTHER_MODEL_SCHEMA.OTHER_MODEL_NAME (OTHER_MODEL_COLUMN)
+            to: "{{ ref('other_model_name') }}"
+            to_columns: other_model_column
           - type: ...
 ```
 
 </File>
 
-In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release. For more information, update the documentation version to 1.9 and refer to the 'What's better about this syntax' section.
-
 </VersionBlock>
 
-<VersionBlock firstVersion="1.9">
+<VersionBlock lastVersion="1.8">
 
-In [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), you can use the improved syntax to define foreign keys, which uses `ref`. This feature will be available in the upcoming 1.9 release.
-
-#### What's better about this syntax
-
-The recommended syntax means dbt automatically resolves references to other models, ensuring they:
-
-- Capture dependencies
-- Work across different environments
-
-Here's an example showing how to use the recommended syntax:
+In older versions of dbt Core, when defining a `foreign_key` constraint, you need to manually specify the referenced table in the `expression` field. You can use `{{ target }}` variables to make this expression environment-aware, but the dependency between this model and the referenced table is not captured. Starting in dbt Core v1.9, you can specify the referenced table using the `ref()` function.
 
 <File name='models/schema.yml'>
 
 ```yml
 models:
   - name: <model_name>
-
-    # required 
+    
+    # required
     config:
-      contract:
-        enforced: true
-
-    # Model-level constraints
+      contract: {enforced: true}
+    
+    # model-level constraints
     constraints:
-      - type: foreign_key
-        columns: [id]
-        to: {{ ref('my_model_to') }}  # or {{ source('source', 'source_table') }}
-        to_columns: [id]
-
-    # Column-level definitions and constraints
+      - type: primary_key
+        columns: [first_column, second_column, ...]
+      - type: foreign_key # multi_column
+        columns: [first_column, second_column, ...]
+        expression: "{{ target.schema }}.other_model_name (other_model_first_column, other_model_second_column, ...)"
+      - type: check
+        columns: [first_column, second_column, ...]
+        expression: "first_column != second_column"
+        name: human_friendly_name
+      - type: ...
+    
     columns:
-      - name: id
-        data_type: integer
+      - name: first_column
+        data_type: string
+        
+        # column-level constraints
         constraints:
+          - type: not_null
+          - type: unique
           - type: foreign_key
-            to: {{ ref('my_model_to') }}  # or {{ source('source', 'source_table') }}
-            to_columns: [id]
+            expression: "{{ target.schema }}.other_model_name (other_model_column)"
+          - type: ...
 ```
 
 </File>
