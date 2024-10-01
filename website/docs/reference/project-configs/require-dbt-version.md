@@ -93,7 +93,7 @@ In the following example, the project will only run with dbt v1.5:
 <File name='dbt_project.yml'>
 
 ```yml
-require-dbt-version: 1.5
+require-dbt-version: "1.5.0"
 ```
 
 </File>
