@@ -70,6 +70,7 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 | [Redshift] [restrict_direct_pg_catalog_access](#redshift-restrict_direct_pg_catalog_access)    | 2024.09.242      | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
 | skip_nodes_if_on_run_start_fails                                |                  | TBD*                | 1.9.0           | TBD*              |
 | state_modified_compare_more_unrendered                          |                  | TBD*                | 1.9.0           | TBD*              |
+| state_modified_compare_vars                                     |                  | TBD*                | 1.9.0           | TBD*              |
 
 When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
