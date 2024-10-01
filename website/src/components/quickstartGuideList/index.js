@@ -100,7 +100,7 @@ function QuickstartList({ quickstartData }) {
 
   // Set the featured guides that will show as CTAs in the hero section
   // The value of the tag must match a tag in the frontmatter of the guides in order for the filter to apply after clicking
-  const featuredGuides = [
+  const heroCTAs = [
     {
       title: 'Quickstart Guides',
       value: 'Quickstart'
@@ -140,7 +140,7 @@ function QuickstartList({ quickstartData }) {
         showGraphic={false}
         customStyles={{ marginBottom: 0 }}
         classNames={styles.quickstartHero}
-        callToActions={featuredGuides.map(guide => ({
+        callToActions={heroCTAs.map(guide => ({
           title: guide.title,
           href: guide.href,
           onClick: () => handleCallToActionClick(guide.value),
