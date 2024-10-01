@@ -23,13 +23,14 @@ The structure of a constraint is:
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
 - `columns` (model-level only): List of column names to apply the constraint over.
 
+<VersionBlock firstVersion="1.9">
+
 Foreign key constraints accept two additional inputs:
 - `to`: A relation input, likely `ref()`, indicating the referenced table.
 - `to_columns`: A list of column(s) in that table containing the corresponding primary or unique key.
 
 This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It's available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and versions of dbt Core starting with v1.9.
 
-<VersionBlock firstVersion="1.9">
 <File name='models/schema.yml'>
 
 ```yml
