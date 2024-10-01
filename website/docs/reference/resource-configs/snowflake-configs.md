@@ -71,11 +71,11 @@ If you were to create an Iceberg table in the Snowflake query editor, you would 
 `_dbt/{SCHEMA_NAME}/{MODEL_NAME} `
 
 #### Base Location Subpath
-We recommend using dbt's auto-generated `base_location`. However, if you have a need to customize the resulting `base_location`, dbt allows users to configure a `base_location_subpath`. When specified, it will be concatenated to the end of the previously described pattern for `base_location` string generation.
+We recommend using dbt's auto-generated `base_location`. However, if you need to customize the resulting `base_location`, dbt allows users to configure a `base_location_subpath`. When specified, the subpath concatenates to the end of the previously described pattern for `base_location` string generation.
 
-For example, `config(base_location_subpath="prod")` will generate a `base_location` of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`
+For example, `config(base_location_subpath="prod")` will generate a `base_location` of the form `_dbt/{SCHEMA_NAME}/{MODEL_NAME}`.
 
-A theoretical (not recommended) use case: re-using an `EXTERNAL VOLUME` while still maintaining isolation  across development and production environments. This is not recommended as storage permissions should configured on the external volume and underlying storage, not paths that can be modified by any analytics engineer.
+A theoretical (but not recommended) use case is re-using an `EXTERNAL VOLUME` while maintaining isolation across development and production environments. We recommend against this as storage permissions should configured on the external volume and underlying storage, not paths that any analytics engineer can modify.
 
 #### Rationale
 
