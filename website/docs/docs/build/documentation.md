@@ -104,7 +104,7 @@ In the above example, a docs block named `table_events` is defined with some des
 
 <VersionBlock firstVersion="1.9">
 
-Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths) and [snapshot-paths](/reference/project-configs/snapshot-paths)) — you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
+Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths) and [snapshot-paths](/reference/project-configs/snapshot-paths)) &mdash; you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 
 </VersionBlock>
 
