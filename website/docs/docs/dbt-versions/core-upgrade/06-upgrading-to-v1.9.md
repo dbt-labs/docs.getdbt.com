@@ -85,7 +85,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### Redshift
 
-- We are changing the adapter's behavior when accessing metadata on Redshift. It’s currently under a [behavior flag](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) to mitigate any breaking changes.
+- We are changing the adapter's behavior when accessing metadata on Redshift. It’s currently under a behavior flag to mitigate any breaking changes.
 
 ### Snowflake
 
