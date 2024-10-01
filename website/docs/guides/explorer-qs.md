@@ -121,9 +121,7 @@ To learn more about the specific suggestions and the reasons behind them, check 
 <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Explorer's project recommendation tab" />
 
 ### Hands-On
-- Review your project recommendations and choose one improvement to implement. Find a project recommendation saying that a model or column that is not documented. 
-  - From the Model Resource page, click Open in IDE
-  - Edit the file and commit your changes
+- Review your project recommendations. Find the project recommendation for the model agg_daily_returned_orders. Add documentation to this model in the aggregates.yml file.
 
 ## What's next
 
