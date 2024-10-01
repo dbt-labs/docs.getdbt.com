@@ -5,7 +5,7 @@ slug: snowflake-feature-store
 authors: [randy_pettus, luis_leon]
 tags: [snowflake ML]
 hide_table_of_contents: false
-date: 2024-10-01
+date: 2024-10-08
 is_featured: true
 ---
 
