@@ -62,7 +62,7 @@ The Feature Store is one component of [Snowflake ML’s](https://www.snowflake.c
 
 dbt Cloud offers the fastest and easiest way to run dbt. It offers a Cloud-based IDE, Cloud-attached CLI, and even a low-code visual editor option (currently in beta), meaning it’s perfect for connecting users across different teams with different workflows and tooling preferences, which is very common in AI/ML workflows. This is the tool you will use to prepare and manage data for AI/ML, promote collaboration across the different teams needed for a successful AI/ML workflow, and ensure the quality and consistency of the underlying data that will be used to create features and train models.
 
-Organizations interested in AI/ML workflows through Snowflake should also look at the new dbt for Snowflake Native App &mdash; a Snowflake Native Application that extends the functionality of dbt Cloud into Snowflake. Of particular interest is Ask dbt &mdash; a chatbot that integrates directly with Snowflake Cortex and the dbt Semantic Layer to allow natural language questions of Snowflake data.
+Organizations interested in AI/ML workflows through Snowflake should also look at the new dbt Snowflake Native App &mdash; a Snowflake Native Application that extends the functionality of dbt Cloud into Snowflake. Of particular interest is Ask dbt &mdash; a chatbot that integrates directly with Snowflake Cortex and the dbt Semantic Layer to allow natural language questions of Snowflake data.
 
 
 ## How to power ML pipelines with dbt and Snowflake’s Feature Store
