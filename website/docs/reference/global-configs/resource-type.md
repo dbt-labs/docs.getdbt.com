@@ -52,7 +52,7 @@ The available resource types are:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.8" lastVersion="1.8">
+<VersionBlock firstVersion="1.8">
 
 - [`analysis`](/docs/build/analyses)
 - [`exposure`](/docs/build/exposures)
