@@ -8,7 +8,7 @@ id: "incremental-microbatch"
 
 :::info Microbatch
 
-The `microbatch` strategy is available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9.
+The `microbatch` strategy is available in beta for [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9. To enable this feature,  set `DBT_EXPERIMENTAL_MICROBATCH` to true in your project.
 
 Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-labs/dbt-core/discussions/10672)
 
@@ -24,13 +24,16 @@ Where other incremental strategies operate only on "old" and "new" data, microba
 
 ### Available configs
 
-- `event_time` - The column indicating "at what time did the row occur" (for both your microbatch model and its direct parents)
-    
+The following configurations are available for microbatch models:
+
+| Config   | Type | Description   | Default |
+|----------|------|---------------|---------|
+| `event_time` | Column             | The column indicating "at what time did the row occur" (for both your microbatch model and its direct parents).          | N/A     |
+| `batch_size` | String (optional)  | The granularity of your batches. The default is `day`, and currently that is the only granularity supported.             | `day`   |
+| `lookback`   | Integer (optional) | Process X batches prior to the latest bookmark to capture late-arriving records.                                         | `0`     |
+| `begin`      | Date    | The "beginning of time" for your data. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches. (It's a leap year!)        | N/A     |
+
 <Lightbox src="/img/docs/building-a-dbt-project/microbatch/event_time.png" title="The event_time column configures the real-world time of this record"/>
-    
-- `batch_size` (string, optional) - The granularity of your batches. The default is `day`, and currently that is the only granularity supported.
-- `lookback` (integer, optional) - Process X batches prior to the latest bookmark, in order to capture late-arriving records. The default value is `0`.
-- `begin` (date, optional) - The "beginning of time" for your data. This is the starting point for any initial or full-refresh builds. For example, a daily-grain microbatch model run on `2024-10-01` with `begin = '2023-10-01` will process 366 batches. (It's a leap year!)
 
 As a best practice, we recommend configuring `full_refresh: False` on microbatch models so that they ignore invocations with the `--full-refresh` flag. If you need to reprocess historical data, do so with a targeted backfill.
 
