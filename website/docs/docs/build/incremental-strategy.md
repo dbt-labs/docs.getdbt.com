@@ -12,7 +12,7 @@ There are various strategies to implement the concept of incremental materializa
 
 An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses to build incremental models.
 
-:::callout Microbatch <Lifecycle status="beta" />
+:::info Microbatch <Lifecycle status="beta" />
 
 The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is intended for large time-series datasets. dbt will process the incremental model in multiple queries (or "batches") based on a configured `event_time` column. Depending on the volume and nature of your data, this can be more efficient and resilient than using a single query for adding new data.
 
