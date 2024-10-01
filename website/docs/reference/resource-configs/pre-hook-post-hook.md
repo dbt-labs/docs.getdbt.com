@@ -129,7 +129,7 @@ select ...
 </File>
 </VersionBlock>
 
-<File name='snapshots/properties.yml'>
+<File name='snapshots/snapshot.yml'>
 
 ```yml
 snapshots:
