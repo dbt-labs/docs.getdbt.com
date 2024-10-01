@@ -22,7 +22,7 @@ datatype: "[column_name] | all"
 </File>
 </VersionBlock>
 
-<VersionBlock lastVersion="1.8"
+<VersionBlock lastVersion="1.8">
 
 :::info Use the latest snapshot syntax
 
