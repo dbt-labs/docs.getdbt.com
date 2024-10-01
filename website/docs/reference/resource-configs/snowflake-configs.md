@@ -54,7 +54,6 @@ To configure an Iceberg table materialization in dbt, refer to the example confi
     materialized = "table",
     table_format="iceberg",
     external_volume="s3_iceberg_snow",
-    base_location_subpath="jaffle_shop_folder",
   )
 }}
 
