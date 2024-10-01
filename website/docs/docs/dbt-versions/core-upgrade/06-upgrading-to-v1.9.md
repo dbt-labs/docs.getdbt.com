@@ -83,7 +83,22 @@ You can read more about each of these behavior changes in the following links:
 
 ## Adapter specific features and functionalities
 
-TBD
+### Redshift
+
+- We are changing the adapter's behavior when accessing metadata on Redshift. It’s currently under a [behavior flag](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) to mitigate any breaking changes.
+
+### Snowflake
+
+- Iceberg Table Format support will be available on three out of the box materializations: table, incremental, dynamic tables. INSERT HERE link to docs.
+
+### Bigquery
+
+- Can cancel running queries on keyboard interrupt
+- auto-drop intermediate tables created by incremental models to save resources
+
+### Spark
+
+- Support overriding the ODBC driver connection string which now enables you to provide custom connections
 
 ## Quick hits
 
