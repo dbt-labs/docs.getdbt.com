@@ -46,7 +46,6 @@ flags:
     error: # Previously called "include"
     warn: # Previously called "exclude"
     silence: # To silence or ignore warnings
-      - TestsConfigDeprecation
       - NoNodesForSelectionCriteria
 ```
 
@@ -131,7 +130,6 @@ config:
     warn: # Previously called "exclude"
       - NoNodesForSelectionCriteria
     silence: # Silence or ignore warnings
-      - TestsConfigDeprecation
       - NoNodesForSelectionCriteria
 ```
 
