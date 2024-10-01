@@ -255,7 +255,7 @@ snapshots:
 
 
 ## Configuring snapshots
-Snapshots can be configured in one of three ways:
+Snapshots can be configured in multiple ways:
 
 1. Defined in YAML files, typically in your snapshots directory (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
 2. Using a `config` block within a snapshot
