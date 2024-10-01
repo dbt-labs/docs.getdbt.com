@@ -4,6 +4,7 @@ description: "Learn about the 'microbatch' strategy for incremental models."
 id: "incremental-microbatch"
 ---
 
+# About microbatch incremental models <Lifecycle status="beta" />
 :::info Microbatch <Lifecycle status="beta" />
 
 The `microbatch` strategy is available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) and dbt Core v1.9.
