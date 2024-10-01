@@ -11,7 +11,7 @@ To-do:
 
 ## Iceberg table format <Lifecycle status="beta"/>
 
-Snowflake Iceberg tables support for the dbt-snowflake adapter is available for three out-of-the-box materializations:
+The dbt-snowflake adapter supports the Iceberg table format. It is available for three of the Snowflake materializations: 
 
 - [Table](/docs/build/materializations#table)
 - [Incremental](/docs/build/materializations#incremental)
