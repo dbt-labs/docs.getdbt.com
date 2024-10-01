@@ -134,7 +134,7 @@ select ...
 ```yml
 snapshots:
   - name: [<snapshot_name>]
-  [config](/reference/resource-properties/config):
+    [config](/reference/resource-properties/config):
       [<snapshot_config>](/reference/snapshot-configs): <config_value>
       [pre_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [post_hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
