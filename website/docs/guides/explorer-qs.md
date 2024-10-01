@@ -37,6 +37,10 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
 4. Use the passcode provided by the workshop facilitator.
 5. Agree to the terms of service and click the **Complete Registration** button.
 6. Wait about 30 seconds, you’ll be in the dbt Cloud project for this course and already connected to a data warehouse.
+7. Go to the Deploy tab and select Jobs from the dropdown menu. Run each job you see by clicking on the job and then selecting 'Run'.
+ <Lightbox src="/img/quickstarts/dbt-cloud/go_to_jobs.png" width="100%" title="Click on the Jobs tab" />
+ <Lightbox src="/img/quickstarts/dbt-cloud/run_job.png" width="100%" title="Run the jobs" />
+   
 
 ## Performance
 <Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer performance tab" />
@@ -99,7 +103,7 @@ Use dbt Explorer to gain a deeper understanding of *all* of you dbt Cloud projec
 - Explore column-level lineage across projects.
 
 ### Hands-On
-- Filter the Platform Project’s Project-Level Lineage for Public models using the access:public filter
+- In the lineage graph, filter the Platform Project’s Project-Level Lineage for Public models using the access:public filter
   - Make a note of which models are referenced by the analytics project.
 - Explore the Analytics Project’s lineage
   - Choose a model in the Platform project referenced by the Analytics project. Look at the multi-project column level lineage of its primary key column.
@@ -107,9 +111,6 @@ Use dbt Explorer to gain a deeper understanding of *all* of you dbt Cloud projec
 
 
 ## Project recommendations
-- Review your project recommendations and choose one improvement to implement. Find a project recommendation saying that a model or column that is not documented. 
-  - From the Model Resource page, click Open in IDE
-  - Edit the file and commit your changes
 
 These recommendations are designed to build trust in your project and reduce confusion.
 
@@ -118,7 +119,9 @@ To learn more about the specific suggestions and the reasons behind them, check 
 <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Explorer's project recommendation tab" />
 
 ### Hands-On
-- Review your project recommendations and choose one improvement to implement (such as adding a description to a primary key that’s missing one).
+- Review your project recommendations and choose one improvement to implement. Find a project recommendation saying that a model or column that is not documented. 
+  - From the Model Resource page, click Open in IDE
+  - Edit the file and commit your changes
 
 ## What's next
 
