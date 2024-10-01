@@ -30,9 +30,6 @@ import UseCaseInfo from '/snippets/_packages_or_dependencies.md';
 
 <UseCaseInfo/>
 
-Refer to the [FAQs](#faqs) for more info.
-
-
 ## Example
 
 As an example, let's say you work on the Marketing team at the Jaffle Shop. The name of your team's project is `jaffle_marketing`:
