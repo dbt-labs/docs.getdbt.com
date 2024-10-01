@@ -289,7 +289,7 @@ const sidebarSettings = {
             "docs/cloud/dbt-cloud-ide/lint-format",
             {
               type: "category",
-              label: "dbt Assist",
+              label: "dbt Copilot",
               link: { type: "doc", id: "docs/cloud/dbt-assist" },
               items: [
                 "docs/cloud/dbt-assist",
