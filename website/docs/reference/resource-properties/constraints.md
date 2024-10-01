@@ -29,6 +29,7 @@ Foreign key constraints accept two additional inputs:
 
 This syntax for defining foreign keys uses `ref`, meaning it will capture dependencies and works across different environments. It is available in [dbt Cloud Versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless), and versions of dbt Core starting with v1.9.
 
+<VersionBlock firstVersion="1.9">
 <File name='models/schema.yml'>
 
 ```yml
@@ -68,7 +69,6 @@ models:
 ```
 
 </File>
-
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
