@@ -645,11 +645,6 @@ const sidebarSettings = {
             "docs/dbt-cloud-apis/admin-cloud-api",
             {
               type: "link",
-              label: "API v2 (legacy docs)",
-              href: "/dbt-cloud/api-v2-legacy",
-            },
-            {
-              type: "link",
               label: "API v2",
               href: "/dbt-cloud/api-v2",
             },
