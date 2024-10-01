@@ -124,6 +124,7 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
                     "docs/cloud/manage-access/set-up-databricks-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
+                    "docs/cloud/manage-access/external-oauth",
                   ],
                 }, // SSO
                 "docs/cloud/manage-access/audit-log",
@@ -641,11 +642,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
           items: [
             "docs/dbt-cloud-apis/admin-cloud-api",
-            {
-              type: "link",
-              label: "API v2 (legacy docs)",
-              href: "/dbt-cloud/api-v2-legacy",
-            },
             {
               type: "link",
               label: "API v2",
