@@ -6,7 +6,7 @@ The following setup will work for every dbt project:
 - Add [any package dependencies](/docs/collaborate/govern/project-dependencies#when-to-use-project-dependencies) to `packages.yml`
 - Add [any project dependencies](/docs/collaborate/govern/project-dependencies#when-to-use-package-dependencies) to `dependencies.yml`
 
-However, you can consolidate both into a single `dependencies.yml` file. Read the following section to learn more.
+However, you may be able to consolidate both into a single `dependencies.yml` file. Read the following section to learn more.
 
 #### About packages.yml and dependencies.yml
 The `dependencies.yml`. file can contain both types of dependencies: "package" and "project" dependencies.
