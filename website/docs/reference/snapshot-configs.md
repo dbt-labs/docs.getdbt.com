@@ -20,7 +20,6 @@ Parts of a snapshot:
 -->
 
 ## Available configurations
-### Snapshot-specific configurations
 
 <ConfigResource meta={frontMatter.meta} />
 
@@ -80,7 +79,35 @@ snapshots:
 
 <TabItem value="property-yaml">
 
+<VersionBlock lastVersion="1.8">
+
 **Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
+
+For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or the [latest version of dbt Core](/docs/dbt-versions/core).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+Refer to [configuring snapshots](/docs/build/snapshots#configuring-snapshots) for the available configurations.
+
+<File name="snapshots/my_snapshots.yml">
+  
+```yaml
+snapshots:
+  - name: snapshot_name
+    relation: source('my_source', 'my_table')
+    config:
+      schema: string
+      database: string
+      unique_key: column_name_or_expression
+      strategy: timestamp | check
+      updated_at: column_name  # Required if strategy is 'timestamp'
+      check_cols: [column_name] | 'all'  # Required if strategy is 'check'
+      invalidate_hard_deletes: true | false
+```
+</File>
+</VersionBlock>
 
 </TabItem>
 
@@ -160,6 +187,7 @@ snapshots:
 
 <TabItem value="property-yaml">
 
+<VersionBlock lastVersion="1.8">
 <File name='snapshots/properties.yml'>
 
 ```yaml
@@ -178,6 +206,29 @@ snapshots:
 ```
 
 </File>
+</VersionBlock>
+
+<VersionBlock firsttVersion="1.9">
+<File name='snapshots/properties.yml'>
+
+```yaml
+version: 2
+
+snapshots:
+  - name: [<snapshot-name>]
+    relation: source('my_source', 'my_table')
+    config:
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [alias](/reference/resource-configs/alias): <string>
+      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
+      [grants](/reference/resource-configs/grants): {<dictionary>}
+```
+
+</File>
+</VersionBlock>
 
 </TabItem>
 
@@ -206,98 +257,121 @@ snapshots:
 ## Configuring snapshots
 Snapshots can be configured in one of three ways:
 
-1. Using a `config` block within a snapshot
-2. Using a `config` [resource property](/reference/model-properties) in a `.yml` file
-3. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
+1. Defined in YAML files, typically in your snapshots directory (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
+2. Using a `config` block within a snapshot
+3. Using a `config` [resource property](/reference/model-properties) in a `.yml` file
+4. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 
 Snapshot configurations are applied hierarchically in the order above.
 
 ### Examples
-#### Apply configurations to all snapshots
-To apply a configuration to all snapshots, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `snapshots` key:
+The following examples demonstrate how to configure snapshots using the `dbt_project.yml` file, a `config` block within a snapshot, and a `.yml` file.
 
-<File name='dbt_project.yml'>
+- #### Apply configurations to all snapshots
+  To apply a configuration to all snapshots, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `snapshots` key:
 
-```yml
+    <File name='dbt_project.yml'>
 
-snapshots:
-  +unique_key: id
-```
+    ```yml
 
-</File>
+    snapshots:
+      +unique_key: id
+    ```
 
+    </File>
 
-#### Apply configurations to all snapshots in your project
-To apply a configuration to all snapshots in your project only (for example, _excluding_ any snapshots in installed packages), provide your project name as part of the resource path.
+- #### Apply configurations to all snapshots in your project
+  To apply a configuration to all snapshots in your project only (for example, _excluding_ any snapshots in installed packages), provide your project name as part of the resource path.
 
-For a project named `jaffle_shop`:
+  For a project named `jaffle_shop`:
 
-<File name='dbt_project.yml'>
+    <File name='dbt_project.yml'>
 
-```yml
+    ```yml
 
-snapshots:
-  jaffle_shop:
-    +unique_key: id
-```
-
-</File>
-
-Similarly, you can use the name of an installed package to configure snapshots in that package.
-
-#### Apply configurations to one snapshot only
-
-We recommend using `config` blocks if you need to apply a configuration to one snapshot only.
-
-<File name='snapshots/postgres_app/orders_snapshot.sql'>
-
-```sql
-{% snapshot orders_snapshot %}
-    {{
-        config(
-          unique_key='id',
-          strategy='timestamp',
-          updated_at='updated_at'
-        )
-    }}
-    -- Pro-Tip: Use sources in snapshots!
-    select * from {{ source('jaffle_shop', 'orders') }}
-{% endsnapshot %}
-```
-
-</File>
-
-You can also use the full resource path (including the project name, and subdirectories) to configure an individual snapshot from your `dbt_project.yml` file.
-
-For a project named `jaffle_shop`, with a snapshot file within the `snapshots/postgres_app/` directory, where the snapshot is named `orders_snapshot` (as above), this would look like:
-
-<File name='dbt_project.yml'>
-
-```yml
-snapshots:
-  jaffle_shop:
-    postgres_app:
-      orders_snapshot:
+    snapshots:
+      jaffle_shop:
         +unique_key: id
-        +strategy: timestamp
-        +updated_at: updated_at
-```
+    ```
 
-</File>
+    </File>
 
-You can also define some common configs in a snapshot's `config` block. We don't recommend this for a snapshot's required configuration, however.
+  Similarly, you can use the name of an installed package to configure snapshots in that package.
 
-<File name='dbt_project.yml'>
+- #### Apply configurations to one snapshot only
+  
+  <VersionBlock lastVersion="1.8">
+  We recommend using `config` blocks if you need to apply a configuration to one snapshot only.
 
-```yml
-version: 2
+    <File name='snapshots/postgres_app/orders_snapshot.sql'>
 
-snapshots:
-  - name: orders_snapshot
-    config:
-      persist_docs:
-        relation: true
-        columns: true
-```
+    ```sql
+    {% snapshot orders_snapshot %}
+        {{
+            config(
+              unique_key='id',
+              strategy='timestamp',
+              updated_at='updated_at'
+            )
+        }}
+        -- Pro-Tip: Use sources in snapshots!
+        select * from {{ source('jaffle_shop', 'orders') }}
+    {% endsnapshot %}
+    ```
 
-</File>
+    </File>
+    </VersionBlock>
+
+    <VersionBlock firstVersion="1.9">
+     <File name='snapshots/postgres_app/your_snapshot_name.yml'>
+
+    ```yaml
+    snapshots:
+     - name: orders_snapshot
+       relation: source('jaffle_shop', 'orders')
+       config:
+         unique_key: id
+         strategy: timestamp
+         updated_at: updated_at
+         persist_docs:
+           relation: true
+           columns: true
+    ```
+    </File>
+   Pro-tip: Use sources in snapshots: `select * from {{ source('jaffle_shop', 'orders') }}`
+    </VersionBlock>
+
+  You can also use the full resource path (including the project name, and subdirectories) to configure an individual snapshot from your `dbt_project.yml` file.
+
+  For a project named `jaffle_shop`, with a snapshot file within the `snapshots/postgres_app/` directory, where the snapshot is named `orders_snapshot` (as above), this would look like:
+
+    <File name='dbt_project.yml'>
+
+    ```yml
+    snapshots:
+      jaffle_shop:
+        postgres_app:
+          orders_snapshot:
+            +unique_key: id
+            +strategy: timestamp
+            +updated_at: updated_at
+    ```
+
+    </File>
+
+  You can also define some common configs in a snapshot's `config` block. We don't recommend this for a snapshot's required configuration, however.
+
+    <File name='dbt_project.yml'>
+
+    ```yml
+    version: 2
+
+    snapshots:
+      - name: orders_snapshot
+        config:
+          persist_docs:
+            relation: true
+            columns: true
+    ```
+
+    </File>
