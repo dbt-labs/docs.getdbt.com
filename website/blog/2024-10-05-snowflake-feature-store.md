@@ -199,7 +199,7 @@ customer_transactions_fv = fs.register_feature_view(
 
 ### Search and discover features in the Snowflake UI
 
-Now with features created, teams can view their features directly in the Snowflake UI, as shown below. This enables teams to easily search and browse features, all governed through Snowflake’s role-based access control (RBAC).
+Now, with features created, teams can view their features directly in the Snowflake UI, as shown below. This enables teams to easily search and browse features, all governed through Snowflake’s role-based access control (RBAC).
 
 <Lightbox src="/img/blog/example-snowflake-ui.png" title="Example of Snowflake UI" />
 
