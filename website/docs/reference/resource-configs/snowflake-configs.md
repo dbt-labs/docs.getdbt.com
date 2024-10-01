@@ -65,7 +65,7 @@ select * from {{ ref('raw_orders') }}
 
 ### Base location 
 
-If you were to create an Iceberg table in the Snowflake query editor, you would be required to provide a `base_location` as an input. dbt abstracts away from that. The default behavior in dbt is to provide a `base_location` string that follows this convention:
+Snowflake's `CREATE ICEBERG TABLE` DDEL requires that a `base_location` be provided. dbt defines this parameter on behalf of the user to both streamline usage and enforce basic isolation of table data within the `EXTERNAL VOLUME`. The default behavior in dbt is to provide a `base_location` string that follows the below convention:
 
 `_dbt/{SCHEMA_NAME}/{MODEL_NAME} `
 
