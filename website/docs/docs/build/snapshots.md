@@ -45,7 +45,7 @@ It is not possible to "preview data" or "compile sql" for snapshots in dbt Cloud
 <VersionBlock lastVersion="1.8" >
 
 - To configure snapshots in versions 1.8 and earlier, refer to [Configure snapshots in versions 1.8 and earlier](#configure-snapshots-in-versions-18-and-earlier). These versions use an older syntax where snapshots are defined within a snapshot block in a `.sql` file, typically located in your `snapshots` directory. 
-- Note that defining multiple resources in a single file can significantly slow down parsing and compilation. For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or the [latest version of dbt Core](/docs/dbt-versions/core).
+- Note that defining multiple resources in a single file can significantly slow down parsing and compilation. For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt Core v1.9 and later](/docs/dbt-versions/core).
 
 
 </VersionBlock>
