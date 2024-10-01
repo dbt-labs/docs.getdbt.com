@@ -88,7 +88,7 @@ Window aggregations play an important role in the creation of features. Because 
 
 ```
 
-Now, we use this macro in our feature table to build out various aggregations of customer transactions over the last day, 7 days, and 30 days. Snowflake has just taken significant complexity away in generating appropriate feature values and dbt has just made the code even more readable and repeatable. While the follwing example is built in SQL, teams can also build these pipelines using Python directly. 
+Now, we use this macro in our feature table to build out various aggregations of customer transactions over the last day, 7 days, and 30 days. Snowflake has just taken significant complexity away in generating appropriate feature values and dbt has just made the code even more readable and repeatable. While the following example is built in SQL, teams can also build these pipelines using Python directly. 
 
 ```sql
 
