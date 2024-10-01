@@ -19,6 +19,10 @@ exports.versions = [
     customDisplay: "Cloud (Versionless)",
   },
   {
+    version: "1.9",
+    isPrerelease: true,
+  },
+  {
     version: "1.8",
     EOLDate: "2025-04-15",
   },
