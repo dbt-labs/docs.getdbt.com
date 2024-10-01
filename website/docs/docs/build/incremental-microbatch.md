@@ -16,7 +16,7 @@ Read and participate in the discussion: [dbt-core#10672](https://github.com/dbt-
 
 ## What is microbatch?
 
-Incremental models in dbt are a [materialization](https://docs.getdbt.com/docs/build/materializations) designed to efficiently update your data warehouse tables by only transforming and loading _new or changed data_ since the last run. Instead of reprocessing an entire dataset every time, incremental models append, update, or replace rows in the existing table with the new data just processed. This can significantly reduce the time and resources required for your data transformations.
+Incremental models in dbt are a [materialization](/docs/build/materializations) designed to efficiently update your data warehouse tables by only transforming and loading _new or changed data_ since the last run. Instead of reprocessing an entire dataset every time, incremental models append, update, or replace rows in the existing table with the new data just processed. This can significantly reduce the time and resources required for your data transformations.
 
 Microbatch incremental models make it possible to process transformations on large time-series datasets with efficiency and resiliency. When dbt runs a microbatch model — whether for the first time, during incremental runs, or during manual backfills — it will split the processing into multiple queries (or "batches"), based on the `event_time` column you configure.
 
