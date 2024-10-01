@@ -68,34 +68,7 @@ having total_amount < 0
 
 The name of this test is the name of the file: `assert_total_payment_amount_is_positive`. Simple enough.
 
-Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend [generic data tests](#generic-data-tests).
-
-### Document singular data tests
-
-<VersionBlock firstVersion="1.9">
-
-The top-level `data_tests:` key in YAML files allows for adding a [`description`](/reference/resource-properties/description) for singular data tests. Descriptions can include Markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
-
-<File name='tests/singular/data_tests.yml'>
-
-```yml
-
-# top-level
-data_tests:
-  - name: my_super_cool_singular_test
-    description: The `order_id` is unique for every row in the orders model
-```
-
-</File>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.8">
-
-The `description` property is available for [singular data tests](/build/data-tests#document-singular-data-tests) beginning in dbt v1.9.
-
-</VersionBlock>
-
+Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
 
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
