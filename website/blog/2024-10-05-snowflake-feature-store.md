@@ -49,7 +49,7 @@ Finally, dbt Cloud also provides [dbt Explorer](/docs/collaborate/explore-projec
 
 ## What tech is at play?
 
-Here’s what you need from dbt. dbt should be used to manage data transformation pipelines and used to generate the datasets needed by ML engineers and data scientists maintaining the Snowflake Feature Store. dbt Cloud Enterprise users should leverage dbt Mesh to create different projects with clear owners for these different domains of data pipelines. This Mesh design will promote easier collaboration by keeping each dbt project smaller and more manageable for the people building and maintaining it. dbt also supports both SQL and Python based transformations making it an ideal fit for AI/ML workflows, which commonly leverage both languages.
+Here’s what you need from dbt. dbt should be used to manage data transformation pipelines and generate the datasets needed by ML engineers and data scientists maintaining the Snowflake Feature Store. dbt Cloud Enterprise users should leverage dbt Mesh to create different projects with clear owners for these different domains of data pipelines. This Mesh design will promote easier collaboration by keeping each dbt project smaller and more manageable for the people building and maintaining it. dbt also supports both SQL and Python-based transformations making it an ideal fit for AI/ML workflows, which commonly leverage both languages.
 
 Using dbt for the data transformation pipelines will also ensure the quality and consistency of data products, which is critical for ensuring successful AI/ML efforts.
 
