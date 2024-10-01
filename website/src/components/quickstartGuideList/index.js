@@ -115,7 +115,7 @@ function QuickstartList({ quickstartData }) {
     },
     {
       title: 'Sign up for dbt Cloud',
-      href: 'https://cloud.getdbt.com/signup/',
+      href: 'https://www.getdbt.com/signup',
       newTab: true
     }
   ];
