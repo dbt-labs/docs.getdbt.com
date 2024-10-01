@@ -68,6 +68,7 @@ When we use dbt Cloud in the following table, we're referring to accounts that h
 | require_resource_names_without_spaces                           | 2024.05.146      | TBD*                | 1.8.0           | 1.9.0             |
 | source_freshness_run_project_hooks                              | 2024.03.61       | TBD*                | 1.8.0           | 1.9.0             |
 | [Redshift] [restrict_direct_pg_catalog_access](#redshift-restrict_direct_pg_catalog_access)    | 2024.09.242      | TBD*                | dbt-redshift v1.9.0           | 1.9.0             |
+| skip_nodes_if_on_run_start_fails                                |                  | TBD*                | 1.9.0           | TBD*              |
 
 When the dbt Cloud Maturity is "TBD," it means we have not yet determined the exact date when these flags' default values will change. Affected users will see deprecation warnings in the meantime, and they will receive emails providing advance warning ahead of the maturity date. In the meantime, if you are seeing a deprecation warning, you can either:
 - Migrate your project to support the new behavior, and then set the flag to `True` to stop seeing the warnings.
@@ -128,6 +129,12 @@ on-run-start:
   - '{{ ... if flags.WHICH != 'freshness' }}'
 ```
 </File>
+
+### On-run-start hook
+
+Set the `skip_nodes_if_on_run_start_fails` flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook. 
+
+The flag is `False` by default.
 
 ## Adapter-specific behavior changes
 Some adapters may show behavior changes when certain flags are enabled. Refer to the following sections for each respective adapter.
