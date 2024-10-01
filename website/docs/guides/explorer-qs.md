@@ -43,7 +43,7 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
    
 
 ## Performance
-<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer performance tab" />
+<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer's Performance tab" />
 dbt Explorer will show you your project's most executed models, longest model executions, most failed models and tests, and most consumed models all in one place: The performance tab.
 
 ### Hands-On
@@ -58,6 +58,8 @@ dbt Explorer will show you your project's most executed models, longest model ex
 ## Resources
 
 With dbt Explorer, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
+
+<Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer's Models tab" />
 
 ### Hands-On
 - Explore the Model tab 
@@ -114,7 +116,7 @@ Use dbt Explorer to gain a deeper understanding of *all* of you dbt Cloud projec
 
 These recommendations are designed to build trust in your project and reduce confusion.
 
-To learn more about the specific suggestions and the reasons behind them, check out the [Project recommendations page](/docs/collaborate/project-recommendations).
+To learn more about the specific suggestions and the reasons behind them, check out [our docs](/docs/collaborate/project-recommendations).
 
 <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_project_recs.png" width="80%" title="dbt Explorer's project recommendation tab" />
 
