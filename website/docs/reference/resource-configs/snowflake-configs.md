@@ -38,7 +38,7 @@ The following configurations are supported:
 
 | Field | Type | Required | Description | Sample input |
 |-------|------|----------|-------------|-------|
-|Table Format | String | Yes | Configures the objects table format. | `iceberg` |
+|Table Format | String | Yes | Configures the object table format. | `iceberg` |
 |External volume | String | Yes | Specifies the identifier (name) of the external volume where the Iceberg table stores its metadata files and data in Parquet format. If you don’t specify this parameter, the Iceberg table defaults to the external volume for the schema, database, or account. The schema takes precedence over the database, and the database takes precedence over the account.| `my_s3_bucket` |
 |Base location Subpath |String | No | Defines the directory path for Snowflake to write the table data and metadata files. If you change this after creating the table, it will write a new table but leave the existing one. If not specified, dbt-snowflake will default to one based on the model's current schema. | `jaffle_marketing_folder` |
 
