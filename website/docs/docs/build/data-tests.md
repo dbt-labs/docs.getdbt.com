@@ -329,7 +329,6 @@ data_tests:
 
 </File>
 
-To suppress warnings about the rename, add `TestsConfigDeprecation` to the `silence` block of the `warn_error_options` flag in `dbt_project.yml`, [as described in the Warnings documentation](https://docs.getdbt.com/reference/global-configs/warnings).
 
 </VersionBlock>
 
