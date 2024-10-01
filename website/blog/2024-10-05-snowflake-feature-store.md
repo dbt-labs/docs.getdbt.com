@@ -120,7 +120,7 @@ from {{ ref("stg_transactions") }}
 
 ### Create or connect to a Snowflake Feature Store
 
-Once a feature table is built in dbt, data scientists use Snowflake’s [snowflake-ml-python](https://docs.snowflake.com/en/developer-guide/snowflake-ml/snowpark-ml) package to create or connect to an existing Feature Store in Snowflake. Data scientists can do this all in python, including in jupyter notebooks or directly in Snowflake using [Snowflake Notebooks](https://docs.snowflake.com/en/user-guide/ui-snowsight/notebooks).
+Once a feature table is built in dbt, data scientists use Snowflake’s [snowflake-ml-python](https://docs.snowflake.com/en/developer-guide/snowflake-ml/snowpark-ml) package to create or connect to an existing Feature Store in Snowflake. Data scientists can do this all in Python, including in Jupyter Notebooks or directly in Snowflake using [Snowflake Notebooks](https://docs.snowflake.com/en/user-guide/ui-snowsight/notebooks).
 
 Let’s go ahead and create the Feature Store in Snowflake:
 
