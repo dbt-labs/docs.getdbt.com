@@ -113,6 +113,11 @@ function QuickstartList({ quickstartData }) {
       title: 'Orchestration',
       value: 'Orchestration'
     },
+    {
+      title: 'Sign up for dbt Cloud',
+      href: 'https://cloud.getdbt.com/signup/',
+      newTab: true
+    }
   ];
 
   // Function to handle CTA clicks
@@ -137,7 +142,9 @@ function QuickstartList({ quickstartData }) {
         classNames={styles.quickstartHero}
         callToActions={featuredGuides.map(guide => ({
           title: guide.title,
-          onClick: () => handleCallToActionClick(guide.value)
+          href: guide.href,
+          onClick: () => handleCallToActionClick(guide.value),
+          newTab: guide.newTab
         }))}
         callToActionsTitle={'Popular guides'}
       />

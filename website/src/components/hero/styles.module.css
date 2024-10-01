@@ -65,7 +65,7 @@
   justify-content: center;
 }
 
-.callToActions a {
+.callToAction {
   outline: #fff solid 1px;
   border-radius: 4px;
   padding: 0 12px;
@@ -74,7 +74,7 @@
   cursor: pointer;
 }
 
-.callToActions a:hover, .callToActions a:active, .callToActions a:focus {
+.callToAction:hover, .callToAction:active, .callToAction:focus {
   text-decoration: none;
   outline: rgb(4, 115, 119) solid 1px;
   color: #fff;

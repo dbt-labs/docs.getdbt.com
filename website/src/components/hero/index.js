@@ -17,8 +17,8 @@ function Hero({ heading, subheading, showGraphic = false, customStyles = {}, cla
               <div className={styles.callToActions}>
                 {callToActions.map((c, index) => (
                   c.href ? (
-                    <a key={index} href={c.href} className={`${styles.callToAction}`}>
-                      {c.label}
+                    <a key={index} href={c.href} title={c.title} className={`${styles.callToAction}`} target={c.newTab ? '_blank' : '_self'}>
+                      {c.title}
                     </a>
                   ) : (
                     <a key={index} onClick={c.onClick} className={`${styles.callToAction}`}>
