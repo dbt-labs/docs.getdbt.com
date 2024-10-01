@@ -24,7 +24,7 @@ dbt is the standard for data transformation in the enterprise. Organizations lev
 
 ## Who is going to use this and what benefits will they see?
 
-Snowflake and dbt is already a well-established and trusted combination for delivering data excellence across the enterprise. The ability to register dbt pipelines in the Snowflake Feature Store further extends this combination for ML and AI workloads, while fitting naturally into the data engineering and feature pipelines already present in dbt.  
+Snowflake and dbt are already a well-established and trusted combination for delivering data excellence across the enterprise. The ability to register dbt pipelines in the Snowflake Feature Store further extends this combination for ML and AI workloads, while fitting naturally into the data engineering and feature pipelines already present in dbt.  
 
 
 Some of the key benefits are:
