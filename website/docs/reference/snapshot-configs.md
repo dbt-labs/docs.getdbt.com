@@ -83,7 +83,7 @@ snapshots:
 
 **Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
 
-For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or the [latest version of dbt Core](/docs/dbt-versions/core).
+For faster and more efficient management, consider the updated snapshot YAML syntax, [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt v1.9 and later](/docs/dbt-versions/core).
 
 </VersionBlock>
 
@@ -208,7 +208,7 @@ snapshots:
 </File>
 </VersionBlock>
 
-<VersionBlock firsttVersion="1.9">
+<VersionBlock firstVersion="1.9">
 <File name='snapshots/properties.yml'>
 
 ```yaml
