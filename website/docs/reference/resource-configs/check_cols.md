@@ -86,7 +86,7 @@ snapshots:
 ```
 </File>
 
-To select from this snapshot in a downstream model: `select * from {{ source('jaffle_shop', 'orders') }}`
+To select from this snapshot in a downstream model: `select * from {{ ref('orders_snapshot_check') }}`
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
@@ -128,7 +128,7 @@ snapshots:
   ```
 </File>
 
-To select from this snapshot in a downstream model: `select * from {{ source('jaffle_shop', 'orders') }}`
+To select from this snapshot in a downstream model: `select * from {{{ ref('orders_snapshot_check') }}`
 </VersionBlock>
 
 <VersionBlock lastVersion="1.8">
