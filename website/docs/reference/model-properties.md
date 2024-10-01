@@ -2,9 +2,9 @@
 title: Model properties
 ---
 
-Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)).
+Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)). 
 
-You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
+You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory. The [MetricFlow time spine](/docs/build/metricflow-time-spine) is a model property that tells dbt and MetricFlow how to use specific columns by defining their properties.
 
 <File name='models/<filename>.yml'>
 
@@ -74,7 +74,3 @@ models:
 
 </File>
 
-<!---
-FAQs
-- Do I need to declare every column for it to render in documentation?
---->
