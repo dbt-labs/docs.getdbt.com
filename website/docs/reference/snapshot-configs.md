@@ -257,7 +257,7 @@ snapshots:
 ## Configuring snapshots
 Snapshots can be configured in multiple ways:
 
-1. Defined in YAML files, typically in your snapshots directory (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
+1. Defined in YAML files, typically in your [snapshots directory](/reference/project-configs/snapshot-paths) (available in [Versionless](/docs/dbt-versions/versionless-cloud) or and dbt Core v1.9 and higher).
 2. Using a `config` block within a snapshot
 3. Using a `config` [resource property](/reference/model-properties) in a `.yml` file
 4. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
