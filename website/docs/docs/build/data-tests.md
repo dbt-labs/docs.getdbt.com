@@ -92,7 +92,7 @@ data_tests:
 
 <VersionBlock lastVersion="1.8">
 
-The `description` property is available for [singular data tests](/build/data-tests#singular-data-tests) beginning in dbt v1.9.
+The `description` property is available for [singular data tests](/build/data-tests#document-singular-data-tests) beginning in dbt v1.9.
 
 </VersionBlock>
 
