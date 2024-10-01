@@ -25,6 +25,11 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Teradata Vantag
 You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundamentals) for free if you're interested in course learning with videos.
 :::
 
+## Create a new Teradata Clearscape instance
+
+- If you need a test instance of Vantage, you can provision one for free at https://clearscape.teradata.com
+- Here is the quickstart guide for creating a Clearscape enviroment [getting-started-with-csae](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/)
+
 ### Prerequisites​
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
@@ -32,6 +37,8 @@ You can check out [dbt Fundamentals](https://learn.getdbt.com/courses/dbt-fundam
 
 :::tip Test instance of Vantage
 If you need a test instance of Vantage, you can provision one for free at https://clearscape.teradata.com
+
+### Related content
 
 - Learn more with [dbt Learn courses](https://learn.getdbt.com)
 - [How we provision Teradata Clearscape Vantage instance](https://developers.teradata.com/quickstarts/get-access-to-vantage/clearscape-analytics-experience/getting-started-with-csae/)
@@ -55,7 +62,7 @@ If you need a test instance of Vantage, you can provision one for free at https:
 
 3. In the databases jaffle_shop and stripe, create three tables and load relevant data into them:
 
-   <Lightbox src="/img/teradata/dbt_cloud_teradata_create_tables.png.png" title="dbt Cloud - Teradata Creating Tables" />
+   <Lightbox src="/img/teradata/dbt_cloud_teradata_create_tables.png" title="dbt Cloud - Teradata Creating Tables" />
 
 ## Connect dbt cloud to Teradata
 
@@ -63,28 +70,22 @@ If you need a test instance of Vantage, you can provision one for free at https:
    
 2. Enter a project name and click Continue.
 
-3. For the warehouse, click Teradata then Next to set up your connection.
+3. In "Configure your development environment", click “Add new connection”
+
+4. Select "Teradata", fill in all the required details in the "Settings" section and test the connection.
 
    <Lightbox src="/img/teradata/dbt_cloud_teradata_setup_connection_start.png" title="dbt Cloud - Choose Teradata Connection" />
-
-4. Enter your Settings for Teradata with:
-
-    * **hostname** &mdash; Hostname of Teradata Database
-    * **username** &mdash; Username of Teradata Database
-    * **password** &mdash; Password of Teradata Database
     
-    <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt Cloud - Teradata Account Settings" />
+   <Lightbox src="/img/teradata/dbt_cloud_teradata_account_settings.png" title="dbt Cloud - Teradata Account Settings" />
 
 5. Enter your **Development Credentials** for Teradata with: 
     * **Username** &mdash; The username of Teradata database.
     * **Password** &mdash; The password of Teradata database.
     * **Schema** &mdash; The default database to use
-    * **Target name** &mdash; Leave as the default.
-    * **Threads** &mdash; Leave as 4. This is the number of simultaneous connects that dbt Cloud will make to build models concurrently.
     
-    <Lightbox src="/img/snowflake_tutorial/dbt_cloud_teradata_development_credentials.png" title="dbt Cloud - Teradata Development Credentials" />
+    <Lightbox src="/img/teradata/dbt_cloud_teradata_development_credentials.png" title="dbt Cloud - Teradata Development Credentials" />
 
-6. Click Test Connection. This verifies that dbt Cloud can access your Teradata database.
+6. Click Test Connection. This verifies that dbt Cloud can access your Teradata Vantage instance.
 7. If the connection test succeeds, click Next. If it fails, you may need to check your Teradata settings and credentials.
 
 ## Set up a dbt Cloud managed repository 
