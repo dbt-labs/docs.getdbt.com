@@ -113,11 +113,6 @@ function QuickstartList({ quickstartData }) {
       title: 'Orchestration',
       value: 'Orchestration'
     },
-    {
-      title: 'Sign up for dbt Cloud',
-      href: 'https://www.getdbt.com/signup',
-      newTab: true
-    }
   ];
 
   // Function to handle CTA clicks
