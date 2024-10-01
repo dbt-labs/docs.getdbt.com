@@ -90,5 +90,5 @@ TBD
 We also made some quality-of-life improvements in Core 1.9, enabling you to:
 
 - Document [singular data tests](/docs/build/data-tests#document-singular-tests).
-- Use `ref` and `source` in foreign key constraints.
+- Use `ref` and `source` in [foreign key constraints](/reference/resource-properties/constraints).
 - `dbt test` supports the `--resource-type` / `--exclude-resource-type` flag, making it possible to include or exclude data tests (`test`) or unit tests (`unit_test`).
