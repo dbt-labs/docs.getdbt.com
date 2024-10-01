@@ -38,25 +38,34 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
 5. Agree to the terms of service and click the **Complete Registration** button.
 6. Wait about 30 seconds, you’ll be in the dbt Cloud project for this course and already connected to a data warehouse.
 
-## Project overview and latest run status
-
+## Performance
 <Lightbox src="/img/quickstarts/dbt-cloud/explorer_performance_tab.png" width="100%" title="dbt Explorer performance tab" />
+dbt Explorer will show you your project's most executed models, longest model executions, most failed models and tests, and most consumed models all in one place: The performance tab.
+
+### Hands-On
+- Trigger the Daily Prod job to run again
+- Explore the Performance tab on the Project Details page
+  - Which model took the longest over the last two weeks? Over the last month? 
+  - Which model failed the most tests? 
+  - Click on the model that took the longest to run in the Longest model executions graph
+    - What is the average duration time over the last two weeks? Over the last month?
+    - How often is the model being built? What is the Model Test Failure Rate?
+
+## Resources
 
 With dbt Explorer, you can view your project's resources (such as models, tests, and metrics), their lineage, and model consumption to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
 ### Hands-On
-- Explore the **Model** tab 
-  - Which job took the Longest? 
-  - Which job/jobs failed? Why?
+- Explore the Model tab 
+  - Pick a model. What’s its row count?
+  - Use the test results drop down to see if  this model’s tests passed. What other models does it depend on?
+- Explore the Tests Tab
+  - What tests do we see? Which tests have warnings? Failures?
+- Explore the Sources tab
+  - What sources can we see? Which sources have stale data? Which sources have fresh data?
+- Explore Exposures 
+  - Use the lineage graph to find an exposure. Which  models and metrics does the Exposure reference?
 
-- Explore the **Sources** tab
-  - What sources can we see?
-
-- Explore the **Tests** Tab
-  - Did we run the right test? Which tests were missing? Why?
-
-- Explore **Exposures** 
-  - Check Quality and where they came from
  
 ## Lineage
 
@@ -74,19 +83,14 @@ dbt Explorer provides a visualization of your project’s <Term id="dag"/> that 
  <Lightbox src="/img/quickstarts/dbt-cloud/dbt_explorer_advanced_search.png" width="100%" title="dbt Explorer's advanced search feature" />
 
 ### Hands-On
-1. On the left hand side, click on the company and ensure you're in the **Overview Project details** section → Next to **Overview** → Select **View Lineage**.
-
-2. Select a mart model and select everything downstream.
-   - Which models depend on models from another project?
-   - Click on the other project's lineage.
-
-3. Explore lenses and find table materializations in your current project.
-   - Which are the biggest view clusters?
-
-4. Experiment with different lenses, such as **Model layer**, **Test status**, **Resource type**, and so on.
-
-5. Drill down on a node and explore the **Column Lineage** and its evolution.
-   - Expand each column's full lineage.
+- Explore Project-Level Lineage
+  - Pick a model and review its upstream and downstream dependencies
+  - Which sources does this model depend on? Which models depend on this model?
+- Explore Lenses
+  - Apply the Test Status Lenses. Which models passed tests? Which had warnings?
+  - Explore different lenses (Model Layer, Materialization Type, Resource). What information do you see?
+- Explore Column-Level Lineage 
+  - Navigate to the that model’s Model Resource page and explore the primary key column’s Column-Level Lineage
 
 ## Multi-project
 Use dbt Explorer to gain a deeper understanding of *all* of you dbt Cloud projects with its [multi-project capabilities](/docs/collaborate/explore-multiple-projects). 
@@ -95,13 +99,17 @@ Use dbt Explorer to gain a deeper understanding of *all* of you dbt Cloud projec
 - Explore column-level lineage across projects.
 
 ### Hands-On
-- Identify which models in the project are public and being referenced by another project.
-- Switch between the lineage graphs of two different projects and explore the available assets.
-  - What sources are visible?
-- Use the multi-project column-level lineage to locate a column that exists in models across multiple projects.
+- Filter the Platform Project’s Project-Level Lineage for Public models using the access:public filter
+  - Make a note of which models are referenced by the analytics project.
+- Explore the Analytics Project’s lineage
+  - Choose a model in the Platform project referenced by the Analytics project. Look at the multi-project column level lineage of its primary key column.
+  - Open the Analytics project’s lineage graph. Which models does it reference? 
+
 
 ## Project recommendations
-Project recommendations suggests project improvements and provides insight into how you can create a better-documented, better-tested, and better-built dbt project.
+- Review your project recommendations and choose one improvement to implement. Find a project recommendation saying that a model or column that is not documented. 
+  - From the Model Resource page, click Open in IDE
+  - Edit the file and commit your changes
 
 These recommendations are designed to build trust in your project and reduce confusion.
 
