@@ -74,7 +74,7 @@ You can read more about each of these behavior changes in the following links:
 - (Introduced, disabled by default) [`state_modified_compare_more_unrendered_values` and  `state_modified_compare_vars`](/reference/global-configs/behavior-changes#behavior-change-flags) .
 - (Introduced, disabled by default) new [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped
     - `on-run-start/end` hooks are **always** run, regardless of whether they passed or failed last time
-- [Removing a contracted model by deleting, renaming, or disabling]/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it will return an error (versioned models) or warning (unversioned models).
+- [Removing a contracted model by deleting, renaming, or disabling](/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it will return an error (versioned models) or warning (unversioned models).
 
 ## Adapter specific features and functionalities
 
