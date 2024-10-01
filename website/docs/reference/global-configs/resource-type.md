@@ -160,3 +160,27 @@ Instead of targeting specific resources, use the `--resource-flag` or `--exclude
     </File>
 
 </VersionBlock>
+
+<VersionBlock firstVersion="1.9">
+
+-  In this example, use the following command to exclude _all_ unit tests when running tests. Note that the `--exclude-resource-type` flag is only available in dbt version 1.8 and higher:
+
+    <File name='Usage'>
+
+    ```text
+    dbt test --exclude-resource-type unit_test
+    ```
+
+    </File>
+
+- In this example, use the following command to include all data tests when running tests:
+
+    <File name='Usage'>
+
+    ```text
+    dbt test --resource-type test
+    ```
+
+    </File>
+
+</VersionBlock>
