@@ -808,7 +808,7 @@ Archived release notes for dbt Cloud from 2023
 
     :::
 
-    For more info, refer to our [documentation](#tag/Runs/operation/listRunsForAccount).
+    For more info, refer to our [documentation](https://docs.getdbt.com/dbt-cloud/api-v2#/operations/List%20Runs).
 
   </Expandable>
 
