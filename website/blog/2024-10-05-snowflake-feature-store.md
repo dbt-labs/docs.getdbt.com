@@ -67,7 +67,7 @@ Organizations interested in AI/ML workflows through Snowflake should also look a
 
 ## How to power ML pipelines with dbt and Snowflake’s Feature Store
 
-Let’s provide a brief example of what this workflow looks like in dbt and Snowflake to build and use the powerful capabilities of a Feature Store. For this example, consider that we have a data pipeline in dbt to process customer transaction data. Various data science teams in the organization need to derive features from these transactions to use in various models, including to predict fraud and perform customer segmentation and personalization. These different use cases all benefit from having related features, such as the count of transactions or purchased amounts over different periods of time (for example, the last day, 7 days, 30 days) for a given customer. 
+Let’s provide a brief example of what this workflow looks like in dbt and Snowflake to build and use the powerful capabilities of a Feature Store. For this example, consider that we have a data pipeline in dbt to process customer transaction data. Various data science teams in the organization need to derive features from these transactions to use in various models, including to predict fraud and perform customer segmentation and personalization. These different use cases all benefit from having related features, such as the count of transactions or purchased amounts over different periods of time (for example, the last day, 7 days, or 30 days) for a given customer. 
 
 Instead of the data scientists building out their own workflows to derive these features, let’s look at the flow of using dbt to manage the feature pipeline and Snowflake’s Feature Store to solve this problem. The following subsections describe the workflow step by step.
 
