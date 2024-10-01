@@ -17,8 +17,18 @@ Optionally specify a custom list of directories where [docs blocks](/docs/build/
 
 
 ## Default
-By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [macro-paths](/reference/project-configs/macro-paths) and [snapshot-paths](/reference/project-configs/snapshot-paths)). If this option is configured, dbt will _only_ look in the specified directory for docs blocks.
 
+<VersionBlock firstVersion="1.9">
+
+By default, dbt will search in all resource paths for docs blocks (for example, the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [test-paths](/reference/project-configs/test-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)). If this option is configured, dbt will _only_ look in the specified directory for docs blocks.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.8">
+
+By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [macro-paths](/reference/project-configs/macro-paths), and [snapshot-paths](/reference/project-configs/snapshot-paths)). If this option is configured, dbt will _only_ look in the specified directory for docs blocks.
+
+</VersionBlock>
 
 ## Example
 
