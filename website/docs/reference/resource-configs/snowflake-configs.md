@@ -67,11 +67,11 @@ select * from {{ ref('raw_orders') }}
 
 ### Base location 
 
-If you were to create an Iceberg Table in the Snowflake query editor, you would be required to provide a `base_location` as an input. dbt abstracts away from that. The default behavior in dbt is to provide a `base_location` string that follows this convention:
+If you were to create an Iceberg table in the Snowflake query editor, you would be required to provide a `base_location` as an input. dbt abstracts away from that. The default behavior in dbt is to provide a `base_location` string that follows this convention:
 
 _dbt/{SCHEMA_NAME}/{MODEL_NAME}. 
 
-However, dbt allows users to configure a `base_location_subpath` that is empty by default but, when provided, will be concatenated to the end of the previously described pattern for `base_location` string generation.
+However, dbt allows users to configure a `base_location_subpath` that is empty by default but, when provided, will be concatenated to the end of the previously described pattern for `base_location` string generation. We recommend leaving the `base_location_subpath` field blank, as each target has a default path. The `base_location_subpath` input is always appended to your schema name, and this behavior cannot be overridden. This ensures dbt can differentiate Iceberg model builds by environment.
 
 dbt does this to enforce best practices. With Snowflake-managed Iceberg format tables, the user owns and maintains the data storage of the tables in an external storage solution (the declared `external volume`). The base location declares where to write in the external volume. The Snowflake Iceberg catalog will keep track of your Iceberg table regardless of where the data lives within the external volume declared and what `base_location` is provided. However, passing anything into the `base_location` field, including an empty string, is possible.  If a project does not enforce an input and always allows empty strings, this could result in future technical debt because it will limit the ability to:
 
@@ -87,8 +87,6 @@ In summary, dbt-snowflake does not support arbitrary definition of base_location
 There are some limitations to the implementation you need to be aware of:
 
 -  Using Iceberg tables with dbt, the result is that your query is materialized in Iceberg. However, often, dbt creates intermediary objects as temporary and transient tables for certain materializations, such as incremental ones. It is not possible to configure these temporary objects also to be Iceberg-formatted. You may see non-Iceberg tables created in the logs to support specific materializations, but they will be dropped after usage.
-- The `base_location_subpath` input is always appended to your schema name, and this behavior cannot be overridden. This ensures dbt can differentiate Iceberg model builds by environment.
-- By default, we recommend leaving the `base_location_subpath` field blank, as each target has a default path.
 - You cannot incrementally update a preexisting incremental model to be an Iceberg table. To do so, you must fully rebuild the table with the `--full-refresh` flag.
 
 
