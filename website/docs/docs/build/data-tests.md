@@ -70,8 +70,6 @@ The name of this test is the name of the file: `assert_total_payment_amount_is_p
 
 Singular data tests are easy to write—so easy that you may find yourself writing the same basic structure over and over, only changing the name of a column or model. By that point, the test isn't so singular! In that case, we recommend...
 
-
-
 ## Generic data tests
 Certain data tests are generic: they can be reused over and over again. A generic data test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
 
@@ -304,7 +302,6 @@ data_tests:
 
 </File>
 
-To suppress warnings about the rename, add `TestsConfigDeprecation` to the `silence` block of the `warn_error_options` flag in `dbt_project.yml`, [as described in the Warnings documentation](https://docs.getdbt.com/reference/global-configs/warnings).
 
 </VersionBlock>
 
