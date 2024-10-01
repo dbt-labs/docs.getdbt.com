@@ -18,11 +18,14 @@ MetricFlow requires you to define a time-spine table as a model-level configurat
 To see the generated SQL for the metric and dimension types that use time-spine joins, refer to the respective documentation or add the `compile=True` flag when querying the Semantic Layer to return the compiled SQL.
 
 ## Configuring time-spine in YAML
+
+- The time spine is a special model that tells dbt and MetricFlow how to use specific columns by defining their properties.
+- The [`models` key](/reference/model-properties) for the time spine must be in your `models/` directory.
 - You only need to configure time-spine models that the Semantic Layer should recognize.
 - At a minimum, define a time-spine table for a daily grain.
 - You can optionally define a time-spine table for a different granularity, like hourly.
 - Note that if you don’t have a date or calendar model in your project, you'll need to create one.
-- The [`models` key](/reference/model-properties) in the time spine configuration must be placed in your `models/` directory.
+
 - If you're looking to specify the grain of a time dimension so that MetricFlow can transform the underlying column to the required granularity, refer to the [Time granularity documentation](/docs/build/dimensions?dimension=time_gran)
 
 If you already have a date dimension or time-spine table in your dbt project, you can point MetricFlow to this table by updating the `model` configuration to use this table in the Semantic Layer. This is a model-level configuration that tells dbt to use the model for time range joins in the Semantic Layer. 
