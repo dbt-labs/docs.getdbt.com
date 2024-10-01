@@ -69,7 +69,7 @@ select * from {{ ref('raw_orders') }}
 
 If you were to create an Iceberg table in the Snowflake query editor, you would be required to provide a `base_location` as an input. dbt abstracts away from that. The default behavior in dbt is to provide a `base_location` string that follows this convention:
 
-_dbt/{SCHEMA_NAME}/{MODEL_NAME}. 
+`_dbt/{SCHEMA_NAME}/{MODEL_NAME} `
 
 However, dbt allows users to configure a `base_location_subpath` that is empty by default but, when provided, will be concatenated to the end of the previously described pattern for `base_location` string generation. We recommend leaving the `base_location_subpath` field blank, as each target has a default path. The `base_location_subpath` input is always appended to your schema name, and this behavior cannot be overridden. This ensures dbt can differentiate Iceberg model builds by environment.
 
