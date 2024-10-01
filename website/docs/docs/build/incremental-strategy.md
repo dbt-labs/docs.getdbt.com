@@ -10,32 +10,33 @@ There are various strategies to implement the concept of incremental materializa
 * The reliability of your `unique_key`.
 * The support of certain features in your data platform.
 
-An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses
-to build incremental models.
+An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses to build incremental models.
+
+:::callout Microbatch <Lifecycle status="beta" />
+
+The [`microbatch` incremental strategy](/docs/build/incremental-microbatch) is intended for large time-series datasets. dbt will process the incremental model in multiple queries (or "batches") based on a configured `event_time` column. Depending on the volume and nature of your data, this can be more efficient and resilient than using a single query for adding new data.
+
+:::
 
 ### Supported incremental strategies by adapter
+
+This table represents the availability of each incremental strategy 
 
 Click the name of the adapter in the below table for more information about supported incremental strategies.
 
 The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in dbt v1.6.
 
-| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |
-|-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|
-| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅        |                    |
-| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅        |                    |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |          |     ✅  |                 |          ✅         |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅    |    ✅  |                  |          ✅        |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅   |                 |          ✅        |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅   |        ✅       |                    |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅   |        ✅       |                    |
-| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |         |        ✅       |                    |
-
-
-:::note Snowflake Configurations
-
-dbt has changed the default materialization for incremental table merges from `temporary table` to `view`. For more information about this change and instructions for setting the configuration to a temp table, please read about [Snowflake temporary tables](/reference/resource-configs/snowflake-configs#temporary-tables).
-
-:::
+| data platform adapter                                                                               | `append` | `merge` | `delete+insert` | `insert_overwrite` |  `microbatch` |
+|-----------------------------------------------------------------------------------------------------|:--------:|:-------:|:---------------:|:------------------:|: ------------:|
+| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅       |                    |      ✅       |
+| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) |     ✅    |    ✅  |        ✅       |                    |      ✅       |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      |           |    ✅  |                 |          ✅        |      ✅       |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           |     ✅    |    ✅  |                 |          ✅        |      ✅       |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 |     ✅    |    ✅  |                 |          ✅        |               |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    |     ✅    |    ✅  |        ✅       |                    |      ✅       |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  |     ✅    |    ✅  |        ✅       |                    |               |
+| [dbt-fabric](/reference/resource-configs/fabric-configs#incremental)                                |     ✅    |        |        ✅       |                    |               |
+| [dbt-athena](/reference/resource-configs/athena-configs#incremental-models)                         |     ✅    |    ✅  |                 |         ✅         |               |
 
 ### Configuring incremental strategy
 
