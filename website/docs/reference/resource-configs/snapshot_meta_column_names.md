@@ -6,7 +6,7 @@ default_value: {"dbt_valid_from": "dbt_valid_from", "dbt_valid_to": "dbt_valid_t
 id: "snapshot_meta_column_names"
 ---
 
-Starting in v1.9 or with [versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) dbt Cloud.
+Starting in 1.9 or with [versionless](/docs/dbt-versions/upgrade-dbt-version-in-cloud#versionless) dbt Cloud.
 
 <File name='snapshots/schema.yml'>
 
