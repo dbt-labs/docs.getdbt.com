@@ -31,7 +31,7 @@ In DAG order, for selected resources or an entire project.
 
 The `build` command supports the `--empty` flag for building schema-only dry runs. The `--empty` flag limits the refs and sources to zero rows. dbt will still execute the model SQL against the target data warehouse but will avoid expensive reads of input data. This validates dependencies and ensures your models will build properly.
 
-#### SQL compilation error when running the `--empty flag` on model
+#### SQL compilation error when running the `--empty` flag on a model
 
 If you encounter the error: `SQL compilation error: syntax error line 1 at position 21 unexpected '('.` when running a model with the `--empty flag`, explicitly call the `.render()` method on that relation.
 
