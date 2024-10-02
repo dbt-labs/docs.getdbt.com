@@ -54,14 +54,6 @@ Then your configuration in a SQL snapshot file would look like:
 Alternatively, your configuration in a YAML snapshot configuration file would look like:
 
 ```yaml
-      snapshot_meta_column_names:
-        dbt_valid_from: start_date
-        dbt_valid_to: end_date
-        dbt_scd_id: scd_id
-        dbt_updated_at: modified_date
-```
-
-```yaml
 snapshots:
   - name: snapshot_name
     config:
