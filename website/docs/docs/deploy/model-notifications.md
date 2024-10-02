@@ -15,6 +15,12 @@ To be timely and keep the number of notifications to a reasonable amount, dbt ob
 
 Create configuration YAML files in your project for dbt to send notifications about the failures with your models.
 
+:::info Beta feature
+
+This feature is currently available in [beta](/docs/dbt-versions/product-lifecycles#dbt-cloud) to a limited group of users and is gradually being rolled out. If you're in the beta, please contact the Support team at support@getdbt.com for assistance or questions.
+
+:::
+
 ## Prerequisites
 
 ## Configure groups
