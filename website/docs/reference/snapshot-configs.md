@@ -90,32 +90,30 @@ snapshots:
 
 <VersionBlock lastVersion="1.8">
 
-**Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
-
-For faster and more efficient management, consider the [updated snapshot YAML syntax](/docs/build/snapshots), [available in Versionless](/docs/dbt-versions/versionless-cloud) or [dbt v1.9 and later](/docs/dbt-versions/core).
+**Note:** Required snapshot properties _will not_ work when only defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file or upgrade to v1.9.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.9">
-
+  
 Refer to [configuring snapshots](/docs/build/snapshots#configuring-snapshots) for the available configurations.
 
-<File name="snapshots/my_snapshots.yml">
-  
-```yaml
+<File name='snapshots/schema.yml'>
+
+```yml
 snapshots:
-  - name: snapshot_name
-    relation: source('my_source', 'my_table')
+  - name: <string>
     config:
-      schema: string
-      database: string
-      unique_key: column_name_or_expression
+      database: <string>
+      schema: <string>
+      unique_key: <column_name_or_expression>
       strategy: timestamp | check
-      updated_at: column_name  # Required if strategy is 'timestamp'
-      check_cols: [column_name] | 'all'  # Required if strategy is 'check'
-      invalidate_hard_deletes: true | false
+      updated_at: <column_name>
+      check_cols: [<column_name>] | all
+
 ```
 </File>
+
 </VersionBlock>
 
 </TabItem>
