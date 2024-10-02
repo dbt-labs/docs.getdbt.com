@@ -76,7 +76,7 @@ However, these column names can be customized using the `snapshot_meta_column_na
 
 :::note
 
-To avoid any uninentional data modification, dbt will **not** automatically apply any column renames. So if a user applyies `snapshot_meta_column_names` config for a snapshot without updating the pre-existing table, they will get an error. Our recommendation is to either only use these settings for net-new snapshots, or to arrange an update of pre-existing tables prior to committing a column name change.
+To avoid any unintentional data modification, dbt will **not** automatically apply any column renames. So if a user applies `snapshot_meta_column_names` config for a snapshot without updating the pre-existing table, they will get an error. We recommend either only using these settings for net-new snapshots, or arranging an update of pre-existing tables prior to committing a column name change.
 
 :::
 
