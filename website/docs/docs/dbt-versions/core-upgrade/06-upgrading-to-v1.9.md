@@ -94,7 +94,7 @@ You can read more about each of these behavior changes in the following links:
 ### Bigquery
 
 - Can cancel running queries on keyboard interrupt
-- auto-drop intermediate tables created by incremental models to save resources
+- Auto-drop intermediate tables created by incremental models to save resources
 
 ### Spark
 
