@@ -624,6 +624,12 @@ When describing icons that appear on-screen, use the [_Google Material Icons_](h
 
 :white_check_mark:Click on the menu icon
 
+#### Upload icons
+If you're using icons to document things like [third-party vendors](https://docs.getdbt.com/docs/cloud-integrations/avail-sl-integrations), etc. &mdash; you need to add the icon file in the following locations to ensure the icons render correctly in light and dark mode:
+
+- website/static/img/icons
+- website/static/img/icons/white
+
 ### Image names
 
 Two words that are either adjectives or nouns describing the name of a file separated by an underscore `_` (known as `snake_case`). The two words can also be separated by a hyphen (`kebab-case`).
