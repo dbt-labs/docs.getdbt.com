@@ -936,7 +936,7 @@ Archived release notes for dbt Cloud from 2023
 
     This maximum limit applies to [multi-tenant instances](/docs/cloud/about-cloud/access-regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
-    Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2#/) section for more information on this change. 
+    Refer to the [Pagination](https://docs.getdbt.com/dbt-cloud/api-v2#/) section of the overview for more information on this change. 
 
     </Expandable>
 
