@@ -65,7 +65,7 @@ Beginning in dbt Core 1.9, we've streamlined snapshot configuration and added a 
 
 ### `state:modified` improvements
 
-We’ve made improvements to `state:modified` behaviors to help reduce the risk of false positives/negatives. Read more about [the `state:modified` behavior flags](#managing-changes-to-legacy-behaviors) that leverage these improvements:
+We’ve made improvements to `state:modified` behaviors to help reduce the risk of false positives and negatives. Read more about [the `state:modified` behavior flags](#managing-changes-to-legacy-behaviors) that leverage these improvements:
 
 - Added environment-aware enhancements for environments where the logic purposefully differs (for example, materializing as a table in `prod` but a `view` in dev).
 - Enhanced performance so that models that use `var` or `env_var` are included in `state:modified`.
@@ -79,13 +79,14 @@ You can read more about each of these behavior changes in the following links:
 - (Introduced, disabled by default) [`state_modified_compare_more_unrendered_values` and  `state_modified_compare_vars`](/reference/global-configs/behavior-changes#behavior-change-flags) .
 - (Introduced, disabled by default) new [`skip_nodes_if_on_run_start_fails` project config flag](/reference/global-configs/behavior-changes#behavior-change-flags). If the flag is set and **any** `on-run-start` hook fails, mark all selected nodes as skipped
     - `on-run-start/end` hooks are **always** run, regardless of whether they passed or failed last time
-- [Removing a contracted model by deleting, renaming, or disabling](/docs/collaborate/govern/model-contracts#how-are-breaking-changes-handled) it will return an error (versioned models) or warning (unversioned models).
 
 ## Adapter specific features and functionalities
 
 ### Redshift
 
-- We are changing the adapter's behavior when accessing metadata on Redshift. It’s currently under a [behavior flag](reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) to mitigate any breaking changes. There are no expected impacts to the user experience. 
+- We are changing the adapter's behavior when accessing metadata on Redshift. It’s currently under a [behavior flag](/reference/global-configs/redshift-changes#the-restrict_direct_pg_catalog_access-flag) to mitigate any breaking changes. There are no expected impacts to the user experience. 
+
+- Support IAM Role auth
 
 ### Snowflake
 
