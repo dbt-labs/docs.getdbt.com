@@ -25,10 +25,10 @@ snapshots:
 {{
     config(
       snapshot_meta_column_names={
-        dbt_valid_from="<string>",
-        dbt_valid_to="<string>",
-        dbt_scd_id="<string>",
-        dbt_updated_at="<string>",
+        "dbt_valid_from": "<string>",
+        "dbt_valid_to": "<string>",
+        "dbt_scd_id": "<string>",
+        "dbt_updated_at": "<string>",
       }
     )
 }}
