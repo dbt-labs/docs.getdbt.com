@@ -8,13 +8,20 @@ module.exports = function buildRSSFeedsPlugin() {
   return {
     name: 'docusaurus-build-rss-feeds-plugin',
     async loadContent() {
+
+      // Skip generating RSS feeds in non-production environments
+      if (process.env.VERCEL_ENV !== "production") {
+        console.log('RSS Feeds are only generated in production. Skipping creation of RSS Feed.')
+        return null
+      }
+
       // Release Notes directory
       const releaseNotesDirectory = 'docs/docs/dbt-versions/release-notes'
 
       // Get all files and file data within all release notes directories
       const releaseNotesFiles = getDirectoryFiles(releaseNotesDirectory, [], true)
 
-      if(!releaseNotesFiles || !releaseNotesFiles.length) 
+      if (!releaseNotesFiles || !releaseNotesFiles.length)
         return null
       
       // Generate RSS feeds

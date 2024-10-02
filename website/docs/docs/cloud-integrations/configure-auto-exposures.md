@@ -6,12 +6,10 @@ description: "Import and auto-generate exposures from dashboards and understand 
 image: /img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg
 ---
 
-# Configure auto-exposures <Lifecycle status='beta' />
+# Configure auto-exposures <Lifecycle status='preview' />
 
 As a data team, it’s critical that you have context into the downstream use cases and users of your data products. [Auto-exposures](/docs/collaborate/auto-exposures) integrates natively with Tableau and [auto-generates downstream lineage](/docs/collaborate/auto-exposures#view-auto-exposures-in-dbt-explorer) in dbt Explorer for a richer experience.
-:::info Available in beta
-Auto-exposures are currently available in beta to a limited group of users and are gradually being rolled out. If you're interested in gaining access or learning more, stay tuned for updates!
-:::
+
 Auto-exposures help data teams optimize their efficiency and ensure data quality by:
 
 - Helping users understand how their models are used in downstream analytics tools to inform investments and reduce incidents — ultimately building trust and confidence in data products.
@@ -22,10 +20,12 @@ Auto-exposures help data teams optimize their efficiency and ensure data quality
 
 To access the features, you should meet the following:
 
-1. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/).
-2. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
-3. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings
-4. Use Tableau as your BI tool and can enable metadata permissions or work with an admin to do so. Compatible with Tableau Cloud or Tableau Server with the Metadata API enabled. 
+1. Your environment and jobs are on [Versionless](/docs/dbt-versions/versionless-cloud) dbt.
+2. You have a dbt Cloud account on the [Enterprise plan](https://www.getdbt.com/pricing/).
+3. You have set up a [production](/docs/deploy/deploy-environments#set-as-production-environment) deployment environment for each project you want to explore, with at least one successful job run. 
+4. You have [admin permissions](/docs/cloud/manage-access/enterprise-permissions) in dbt Cloud to edit project settings or production environment settings.
+5. Use Tableau as your BI tool and enable metadata permissions or work with an admin to do so. Compatible with Tableau Cloud or Tableau Server with the Metadata API enabled. 
+6. Run a production job _after_ saving the Tableau collections.
 
 ## Set up in Tableau
 
@@ -62,9 +62,10 @@ To set up [personal access tokens (PATs)](/docs/dbt-cloud-apis/user-tokens#using
    
    dbt Cloud automatically imports and syncs any workbook within the selected collections. New additions to the collections will be added to the lineage in dbt Cloud during the next automatic sync (usually once per day).
    <Lightbox src="/img/docs/cloud-integrations/auto-exposures/cloud-select-collections.jpg" title="Select the collections you want to include for auto exposures."/>
-5. Click **Save**. dbt Cloud imports everything in this collection and you can continue to view them in Explorer using the next steps.
+5. Click **Save**. 
+6. Run a production job _after_ saving the Tableau collections.
 
-For more information on how to view and use auto-exposures, refer to [View auto-exposures from dbt Explorer](/docs/collaborate/auto-exposures) page.
+dbt Cloud imports everything in the collection(s) and you can continue to view them in Explorer. For more information on how to view and use auto-exposures, refer to [View auto-exposures from dbt Explorer](/docs/collaborate/auto-exposures) page.
 
 <Lightbox src="/img/docs/cloud-integrations/auto-exposures/explorer-lineage2.jpg" width="100%" title="View from the dbt Explorer in your Project lineage view, displayed with the Tableau icon."/>
 
