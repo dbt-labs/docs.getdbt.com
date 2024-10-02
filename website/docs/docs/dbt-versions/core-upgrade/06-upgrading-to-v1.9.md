@@ -89,7 +89,7 @@ You can read more about each of these behavior changes in the following links:
 
 ### Snowflake
 
-- Iceberg Table Format support will be available on three out of the box materializations: table, incremental, dynamic tables. INSERT HERE link to docs.
+- Iceberg Table Format support will be available on three out of the box materializations: table, incremental, dynamic tables. 
 
 ### Bigquery
 
