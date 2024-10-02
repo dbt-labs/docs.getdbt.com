@@ -37,8 +37,10 @@ Now we’ll be creating your dbt Cloud account and connecting it to a data wareh
 4. Use the passcode provided by the workshop facilitator.
 5. Agree to the terms of service and click the **Complete Registration** button.
 6. Wait about 30 seconds, you’ll be in the dbt Cloud account for this workshop and already connected to a data warehouse.
-7. Toggle into the Platform project. Go to the Deploy tab and select Jobs from the dropdown menu. 
-8. Run each job you see by clicking on the job and then selecting 'Run'. This will run the upstream project job in both a production and staging environment.
+7. Toggle into the *Platform project*. Go to the Deploy tab and select Jobs from the dropdown menu. 
+8. Run each job you see by clicking on the job and then selecting 'Run'. This will run the *upstream* project job in both a production and staging environment.
+9. Toggle into the *Analytics project*. Go to the Deploy tab and select Jobs from the dropdown menu. 
+10. Run each job you see by clicking on the job and then selecting 'Run'. This will run the *downstream* project job in both a production and staging environment.
  <Lightbox src="/img/quickstarts/dbt-cloud/go_to_jobs.png" width="80%" title="Click on the Jobs tab" />
  <Lightbox src="/img/quickstarts/dbt-cloud/run_job.png" width="80%" title="Run the jobs" />
    
