@@ -22,6 +22,8 @@ This feature is currently available in [beta](/docs/dbt-versions/product-lifecyc
 :::
 
 ## Prerequisites
+- Your dbt Cloud administrator has [enabled the appropriate Account settings](/docs/cloud/account-settings) for you.
+
 
 ## Configure groups
 
