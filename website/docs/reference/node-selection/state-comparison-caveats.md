@@ -60,7 +60,7 @@ models:
 
 </File>
 
-Of course, if the raw Jinja expression is modified, it will be marked as a modification.
+Of course, if the raw Jinja expression is modified, it will be marked as a modification unless you use the `state_modified_compare_more_unrendered` behavior flag to `True`. Read more about this flag in [Behavior changes](/reference/global-configs/behavior-changes#behavior-change-flags)
 
 Note that, as of now, this improved detection is true _only_ for `dbt_project.yml` configuration. It does not apply to:
 - `.yml` resource properties (including `sources`)
