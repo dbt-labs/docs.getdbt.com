@@ -192,6 +192,8 @@ See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest
 
 </File>
 
+import SQLcompilationerror from '/snippets/_About-dbt-build-command.md';
+
 ### Additional examples
 We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).
 
