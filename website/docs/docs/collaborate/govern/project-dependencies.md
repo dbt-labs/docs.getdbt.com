@@ -104,7 +104,7 @@ For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide
 
 When working in a Development environment, cross-project `ref`s normally resolve to the Production environment of the project. However, to protect production data, set up a [Staging deployment environment](/docs/deploy/deploy-environments#staging-environment) within your projects. 
 
-With a staging environment integrated into the project, dbt Mesh automatically fetches public model information from the producer’s staging environment if the consumer is also in staging. Similarly, if the consumer is in production, dbt Mesh fetches from the producer’s production environment. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
+With a staging environment integrated into the project, dbt Mesh automatically fetches public model information from the producer’s staging environment if the consumer is also in staging. Similarly, dbt Mesh fetches from the producer’s production environment if the consumer is in production. This ensures consistency between environments and adds a layer of security by preventing access to production data during development workflows.
 
 Read [Why use a staging environment](/docs/deploy/deploy-environments#why-use-a-staging-environment) for more information about the benefits. 
 
