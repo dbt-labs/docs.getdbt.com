@@ -33,7 +33,7 @@ The `build` command supports the `--empty` flag for building schema-only dry run
 
 #### SQL compilation error when running the `--empty` flag on a model
 
-If you encounter the error: `SQL compilation error: syntax error line 1 at position 21 unexpected '('.` when running a model with the `--empty flag`, explicitly call the `.render()` method on that relation.
+If you encounter the error: `SQL compilation error: syntax error line 1 at position 21 unexpected '('.` when running a model with the `--empty` flag, explicitly call the `.render()` method on that relation.
 
 
 <File name='models.sql'>
