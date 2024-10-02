@@ -26,7 +26,7 @@ python3 -m pip install dbt-core dbt-snowflake
 
 Features and functionality new in dbt v1.9.
 
-### New microbatch `incremental_strategy`
+### Microbatch `incremental_strategy`
 
 Incremental models are, and have always been, a *performance optimization* — for datasets that are too large to be dropped and recreated from scratch every time you do a `dbt run`.
 
