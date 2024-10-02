@@ -1095,6 +1095,14 @@ const sidebarSettings = {
           items: [
             "reference/global-configs/about-global-configs",
             "reference/global-configs/behavior-changes",
+            { type: "category",
+              label: "Adapter behavior changes",
+              link: { type: "doc", id: "reference/global-configs/adapter-behavior-changes" },
+              items: [
+                "reference/global-configs/adapter-behavior-changes",
+                "reference/global-configs/redshift-changes",
+              ],
+            },
             {
               type: "category",
               label: "Setting flags",
