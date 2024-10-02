@@ -23,7 +23,7 @@ If a model uses a `var` or `env_var` in its definition, dbt Core 1.8 and earlier
 
 <VersionBlock firstVersion="1.9">
 
-Beginning in dbt Core 1.9, when you set the `state_modified_compare_vars` behavior flag to `True` and a model uses a `var` or `env_var` in its definition, dbt will identify that lineage in such a way that it can include the model in `state:modified` because the `var` or `env_var` value has changed.
+Beginning in dbt Core 1.9, when you set the `state_modified_compare_vars` behavior flag to `True` and a model uses a `var` or `env_var` in its definition, dbt will identify that lineage in such a way that it will include the model in `state:modified` when the `var` or `env_var` value has changed.
 
 Learn more about [Behavior flags](/reference/global-configs/behavior-changes#behavior-change-flags).
 
