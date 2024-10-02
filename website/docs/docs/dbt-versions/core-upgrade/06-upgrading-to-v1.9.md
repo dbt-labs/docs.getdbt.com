@@ -47,6 +47,7 @@ Starting in Core 1.9, you can use the new microbatch strategy to optimize your l
 While microbatch is in "beta", this functionality is still gated behind an env var, which will change to a behavior flag when 1.9 is GA. To use microbatch:
 
 - Set `DBT_EXPERIMENTAL_MICROBATCH` to `true` in your project
+
 Currently microbatch is supported on these adapters with more to come:
  * postgres
  * snowflake
@@ -70,7 +71,7 @@ Read more about [Snapshots meta fields](/docs/build/snapshots#snapshot-meta-fiel
 We’ve made improvements to `state:modified` behaviors to help reduce the risk of false positives and negatives. Read more about [the `state:modified` behavior flags](#managing-changes-to-legacy-behaviors) that leverage these improvements:
 
 - Added environment-aware enhancements for environments where the logic purposefully differs (for example, materializing as a table in `prod` but a `view` in dev).
-- Models that use `var` or `env_var` are included in `state:modified`.
+- Models that use `var` or `env_var` in their definition are included in `state:modified` when their values change.
 
 ### Managing changes to legacy behaviors
 
