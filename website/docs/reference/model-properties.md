@@ -40,7 +40,7 @@ models:
         [tags](/reference/resource-configs/tags): [<string>]
         
         # only required in conjunction with time_spine key
-        granularity: <[any supported time granularity](docs/build/dimensions?dimension=time_gran)> 
+        granularity: <[any supported time granularity](/docs/build/dimensions?dimension=time_gran)> 
 
       - name: ... # declare properties of additional columns
 
