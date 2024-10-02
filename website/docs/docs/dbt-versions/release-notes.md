@@ -20,7 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2024
 
-- **Behavior change:** Set [`state_modified_compare_more_unrendered`](reference/global-configs/behavior-changes#source-definitions-for-state) to true to reduce false positives for `state:modified` when configs differ between `dev` and `prod` environments.
+- **Behavior change:** Set [`state_modified_compare_more_unrendered`](/reference/global-configs/behavior-changes#source-definitions-for-state) to true to reduce false positives for `state:modified` when configs differ between `dev` and `prod` environments.
 - **Behavior change:** Set the [`skip_nodes_if_on_run_start_fails`](/reference/global-configs/behavior-changes#on-run-start-hook) flag to `True` to skip all selected resources from running if there is a failure on an `on-run-start` hook.
 - **Enhancement**: In dbt Cloud Versionless, snapshots defined in SQL files can now use `config` defined in `schema.yml` YAML files. This update resolves the previous limitation that required snapshot properties to be defined exclusively in `dbt_project.yml` and/or a `config()` block within the SQL file. This enhancement will be included in the upcoming dbt Core v1.9 release.
 - **Enhancement**: In May 2024, dbt Cloud versionless began inferring a model's `primary_key` based on configured data tests and/or constraints within `manifest.json`. The inferred `primary_key` is visible in dbt Explorer and utilized by the dbt Cloud [compare changes](/docs/deploy/run-visibility#compare-tab) feature. This will also be released in dbt Core 1.9.
