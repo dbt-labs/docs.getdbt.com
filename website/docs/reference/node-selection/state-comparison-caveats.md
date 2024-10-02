@@ -55,7 +55,7 @@ dbt test -s "state:modified" --exclude "test_name:relationships"
 
 <VersionBlock firstVersion="1.9">
 
-To reduce false positives during `state:modified` checks due to env-aware logic, you can set the `state_modified_compare_more_unrendered` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`. 
+To reduce false positives during `state:modified` selection due to env-aware logic, you can set the `state_modified_compare_more_unrendered` [behavior flag](/reference/global-configs/behavior-changes#behavior-change-flags) to `True`. 
 
 </VersionBlock>
 
