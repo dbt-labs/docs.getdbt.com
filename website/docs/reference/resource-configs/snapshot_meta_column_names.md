@@ -74,7 +74,7 @@ By default, dbt snapshots use the following column names to track change history
 
 However, these column names can be customized using the `snapshot_meta_column_names` config.
 
-:::note
+:::warning
 
 To avoid any unintentional data modification, dbt will **not** automatically apply any column renames. So if a user applies `snapshot_meta_column_names` config for a snapshot without updating the pre-existing table, they will get an error. We recommend either only using these settings for net-new snapshots, or arranging an update of pre-existing tables prior to committing a column name change.
 
