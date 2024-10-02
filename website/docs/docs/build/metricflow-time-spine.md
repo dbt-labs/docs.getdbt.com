@@ -21,7 +21,7 @@ To see the generated SQL for the metric and dimension types that use time-spine 
 ## Configuring time-spine in YAML
 
 - Each time spine is a normal dbt model with extra configurations that tell dbt and MetricFlow how to use specific columns by defining their properties.
-- You likely already have a calendar table in your project which you can use. If you don't, review the [example time-spine tables](#example-time-spine-tables) below for sample code.
+- You likely already have a calendar table in your project which you can use. If you don't, review the [example time-spine tables](#example-time-spine-tables) for sample code.
 - You add the configurations under the `time_spine` key for that [model's properties](/reference/model-properties), just as you would add a description or tests.
 - You only need to configure time-spine models that the Semantic Layer should recognize.
 - At a minimum, define a time-spine table for a daily grain.
