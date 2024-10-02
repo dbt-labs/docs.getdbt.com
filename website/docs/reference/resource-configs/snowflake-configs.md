@@ -34,7 +34,7 @@ flags:
 
 
 The following configurations are supported.
-For more information, see the Snowflake reference for [`CREATE ICEBERG TABLE` (Snowflake as the catalog)](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake).
+For more information, check out the Snowflake reference for [`CREATE ICEBERG TABLE` (Snowflake as the catalog)](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake).
 
 | Field                 | Type   | Required | Description                                                                                                                | Sample input              | Note                                                                                                                                                                                                                                                         |
 | --------------------- | ------ | -------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
