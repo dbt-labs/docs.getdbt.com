@@ -20,7 +20,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 
 ## October 2024
 
-- **Enhancement**: In dbt Cloud versionless and Core 1.9, we now infer a model's `primary_key` based on configured data tests and/or constraints within `manifest.json`. The inferred `primary_key`is visible in dbt Explorer.  Read about the [order dbt infers columns can be used as primary key of a model](https://github.com/dbt-labs/dbt-core/blob/7940ad5c7858ff11ef100260a372f2f06a86e71f/core/dbt/contracts/graph/nodes.py#L534-L541). 
+- **Enhancement**: In dbt Cloud versionless and Core 1.9, we now infer a model's `primary_key` based on configured data tests and/or constraints within `manifest.json`. The inferred `primary_key` is visible in dbt Explorer. Read about the [order dbt infers columns can be used as primary key of a model](https://github.com/dbt-labs/dbt-core/blob/7940ad5c7858ff11ef100260a372f2f06a86e71f/core/dbt/contracts/graph/nodes.py#L534-L541). 
 - **New**: In dbt Cloud Versionless, [Snapshots](/docs/build/snapshots) have been updated to use YAML configuration files instead of SQL snapshot blocks. This new feature simplifies snapshot management and improves performance, and will soon be released in dbt Core 1.9.
   - Who does this affect? New user on Versionless can define snapshots using the new YAML specification. Users upgrading to Versionless who use snapshots can keep their existing configuration or can choose to migrate their snapshot definitions to YAML. 
   - Users on dbt 1.8 and earlier: No action is needed; existing snapshots will continue to work as before. However, we recommend upgrading to Versionless to take advantage of the new snapshot features.
