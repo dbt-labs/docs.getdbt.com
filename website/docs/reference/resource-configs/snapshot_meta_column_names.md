@@ -3,6 +3,39 @@ resource_types: [snapshots]
 description: "Snapshot meta column names"
 ---
 
+<File name='snapshots/<filename>.sql'>
+
+```jinja2
+{{
+    config(
+      snapshot_meta_column_names={
+        dbt_valid_from="<string>",
+        dbt_valid_to="<string>",
+        dbt_scd_id="<string>",
+        dbt_updated_at="<string>",
+      }
+    )
+}}
+
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yml
+snapshots:
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +snapshot_meta_column_names:
+      dbt_valid_from: <string>
+      dbt_valid_to: <string>
+      dbt_scd_id: <string>
+      dbt_updated_at: <string>
+
+```
+
+</File>
+
 ## Description
 
 In order to align with an organization's naming conventions, the `snapshot_meta_column_names` config can be used to customize the names of the metadata columns within each dbt snapshot.
