@@ -21,7 +21,7 @@ Release notes are grouped by month for both multi-tenant and virtual private clo
 ## October 2024
 
 
-- **New**: In dbt Cloud Versionless, [Snapshots](/docs/build/snapshots) have been updated to use YAML configuration files instead of SQL snapshot blocks. This new feature simplifies snapshot management and improves performance, and will soon be released in dbt Core 1.9. This includes a new `snapshot_meta_column_names` config for customizing the metadata columns for the Type 2 Slowly Changing Dimension (SCD).
+- **New**: In dbt Cloud Versionless, [Snapshots](/docs/build/snapshots) have been updated to use YAML configuration files instead of SQL snapshot blocks. This new feature simplifies snapshot management and improves performance, and will soon be released in dbt Core 1.9. This includes a new `snapshot_meta_column_names` config for customizing the snapshot metadata columns.
   - Who does this affect? New user on Versionless can define snapshots using the new YAML specification. Users upgrading to Versionless who use snapshots can keep their existing configuration or can choose to migrate their snapshot definitions to YAML. 
   - Users on dbt 1.8 and earlier: No action is needed; existing snapshots will continue to work as before. However, we recommend upgrading to Versionless to take advantage of the new snapshot features.
 - **Enhancement**: In dbt Cloud Versionless, snapshots defined in SQL files can now use `config` defined in `schema.yml` YAML files. This update resolves the previous limitation that required snapshot properties to be defined exclusively in `dbt_project.yml` and/or a `config()` block within the SQL file. This enhancement will be included in the upcoming dbt Core v1.9 release.
