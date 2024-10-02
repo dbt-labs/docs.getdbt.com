@@ -2,9 +2,9 @@
 title: Model properties
 ---
 
-Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)). 
+Models properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)).
 
-You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory. The [MetricFlow time spine](/docs/build/metricflow-time-spine) is a model property that tells dbt and MetricFlow how to use specific columns by defining their properties.
+You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
 <File name='models/<filename>.yml'>
 
@@ -38,8 +38,14 @@ models:
           - <test>
           - ... # declare additional data tests
         [tags](/reference/resource-configs/tags): [<string>]
+        
+        # only required in conjunction with time_spine key
+        granularity: <[any supported time granularity](docs/build/dimensions?dimension=time_gran)> 
 
       - name: ... # declare properties of additional columns
+
+    [time_spine](/docs/build/metricflow-time-spine):
+      standard_granularity_column: <column_name>
 
     [versions](/reference/resource-properties/versions):
       - [v](/reference/resource-properties/versions#v): <version_identifier> # required
