@@ -5,19 +5,9 @@ pagination_next: "docs/cloud/git/connect-github"
 pagination_prev: null
 ---
 
-:::note limited integration
-
-Some features of dbt Cloud require a tight integration with your git host, for example, updating GitHub pull requests with dbt Cloud run statuses. Importing your project by a URL prevents you from using these features. Once you give dbt Cloud access to your repository, you can continue to set up your project by adding a connection and creating and running your first dbt Cloud job.
-
-Don't see your git provider on this page? Please [contact dbt Support](mailto:support@getdbt.com) - we're happy to help you set up dbt Cloud with any supported git provider.
-
-:::
-
 In dbt Cloud, you can import a git repository from any valid git URL that points to a dbt project. There are some important considerations to keep in mind when doing this.
 
-
 ## Git protocols
-
 You must use the `git@...` or `ssh:..`. version of your git URL, not the `https://...` version. dbt Cloud uses the SSH protocol to clone repositories, so dbt Cloud will be unable to clone repos supplied with the HTTP protocol.
 
 ## Managing Deploy Keys
@@ -150,6 +140,12 @@ If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can im
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/d19f199-Screen_Shot_2020-03-09_at_4.13.50_PM.png" title="Enter and save the public key generated for your repository by dbt Cloud" />
 
+## Other git providers
+
+Don't see your git provider here? Please [contact dbt Support](mailto:support@getdbt.com) - we're happy to help you set up dbt Cloud with any supported git provider.
+
+## Limited integration
+Some features of dbt Cloud require a tight integration with your git host, for example, updating GitHub pull requests with dbt Cloud run statuses. Importing your project by a URL prevents you from using these features. Once you give dbt Cloud access to your repository, you can continue to set up your project by adding a connection and creating and running your first dbt Cloud job.
 
 ## FAQs
 <FAQ path="Git/gitignore"/>
